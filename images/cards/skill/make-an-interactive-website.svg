@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+<circle fill="#204156" cx="60" cy="60" r="59.5"/>
+<g>
+	<defs>
+		<circle id="SVGID_1_" cx="60" cy="60" r="60"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_2_)">
+		<rect y="34" fill="#BDBEC0" width="120" height="12"/>
+		<rect y="46" fill="#FFFFFF" width="120" height="74"/>
+		<rect y="58" fill="#FFFFFF" width="120" height="62"/>
+		<rect y="87" fill="#E7E7E7" width="58" height="33"/>
+		<rect x="62" y="87" fill="#E7E7E7" width="58" height="33"/>
+		<rect y="46" fill="#E7E7E7" width="120" height="12"/>
+		<rect x="40" y="46" fill="#204156" width="40" height="12"/>
+		<rect x="49" y="50" fill="#FFFFFF" width="22" height="4"/>
+		<rect x="40" y="58" fill="#BDBEC0" width="40" height="12"/>
+		<rect x="49" y="62" fill="#FFFFFF" width="22" height="4"/>
+		<rect x="40" y="70" fill="#BDBEC0" width="40" height="12"/>
+		<rect x="49" y="74" fill="#FFFFFF" width="22" height="4"/>
+		<rect x="40" y="82" fill="#BDBEC0" width="40" height="12"/>
+		<rect x="49" y="86" fill="#FFFFFF" width="22" height="4"/>
+		<rect x="40" y="94" fill="#BDBEC0" width="40" height="12"/>
+		<rect x="49" y="98" fill="#FFFFFF" width="22" height="4"/>
+		<rect x="9" y="50" fill="#BDBEC0" width="22" height="4"/>
+		<rect x="89" y="50" fill="#BDBEC0" width="22" height="4"/>
+		<g>
+			<g>
+				<g>
+					<polygon fill="#204156" points="78,56 78,55 77,55 76,55 76,56 77,56 					"/>
+					<polygon fill="#204156" points="78,58 78,59 78,60 78,61 78,62 78,63 78,64 78,65 79,65 79,64 79,63 79,62 79,61 80,61 81,61 
+						81,60 80,60 79,60 79,59 79,58 79,57 79,56 78,56 78,57 					"/>
+					<polygon fill="#204156" points="81,63 81,64 81,65 82,65 82,64 82,63 82,62 83,62 84,62 84,61 83,61 82,61 81,61 81,62 					
+						"/>
+					<polygon fill="#204156" points="84,64 84,65 84,66 85,66 85,65 85,64 85,63 86,63 86,62 85,62 84,62 84,63 					"/>
+					<rect x="86" y="63" fill="#204156" width="1" height="1"/>
+					<polygon fill="#204156" points="87,64 87,65 87,66 87,67 87,68 87,69 87,70 87,71 88,71 88,70 88,69 88,68 88,67 88,66 88,65 
+						88,64 					"/>
+					<polygon fill="#204156" points="86,72 86,73 86,74 87,74 87,73 87,72 87,71 86,71 					"/>
+					<polygon fill="#204156" points="85,75 85,76 84,76 83,76 82,76 81,76 80,76 79,76 78,76 77,76 77,75 77,74 76,74 76,75 76,76 
+						76,77 77,77 78,77 79,77 80,77 81,77 82,77 83,77 84,77 85,77 86,77 86,76 86,75 86,74 85,74 					"/>
+					<polygon fill="#204156" points="76,72 75,72 75,73 75,74 76,74 76,73 					"/>
+					<polygon fill="#204156" points="75,70 74,70 74,71 74,72 75,72 75,71 					"/>
+					<polygon fill="#204156" points="74,68 73,68 73,69 73,70 74,70 74,69 					"/>
+					<rect x="72" y="67" fill="#204156" width="1" height="1"/>
+					<polygon fill="#204156" points="72,65 73,65 74,65 74,64 73,64 72,64 71,64 71,65 71,66 71,67 72,67 72,66 					"/>
+					<polygon fill="#204156" points="75,66 75,67 76,67 76,66 76,65 76,64 76,63 76,62 76,61 76,60 76,59 76,58 76,57 76,56 75,56 
+						75,57 75,58 75,59 75,60 75,61 75,62 75,63 75,64 75,65 74,65 74,66 					"/>
+				</g>
+				<polygon fill="#FFFFFF" points="86,64 86,63 85,63 85,66 84,66 84,65 84,62 82,62 82,65 81,65 81,61 79,61 79,65 78,65 78,56 
+					76,56 76,67 75,67 75,66 74,66 74,65 72,65 72,67 73,67 73,68 74,68 74,70 75,70 75,72 76,72 76,74 77,74 77,76 79,76 85,76 
+					85,74 86,74 86,71 87,71 87,64 				"/>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>
