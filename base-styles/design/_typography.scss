@@ -1,0 +1,193 @@
+// Brand-specific resets ******************
+
+body, button, input, select {
+  @include oxygen;
+  color: $grey5;
+}
+
+th {
+  @include oxygen-bold;
+}
+
+/*
+Standard body text, links and footnotes.
+
+Styleguide 2.0
+*/
+
+p {
+  margin: 0;
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+  &.inline {
+    display: inline-block;
+  }
+  @extend %text--normal;
+}
+
+small {
+  @extend %text--small;
+}
+
+strong {
+  font-weight: normal;
+  @include oxygen-bold;
+}
+
+a {
+  color: $darkblue;
+  text-decoration: none;
+
+  &[href] { // Don't underline anchors with no href
+    @include hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.no-underline {
+    @include hover {
+      text-decoration: none;
+    }
+  }
+}
+
+a.cta {
+  color: $red !important;
+}
+
+
+.text--large {
+  @extend %text--large;
+}
+
+.text--small {
+  @extend %text--small;
+}
+
+
+
+/*
+Use headings to denote sections.
+
+Styleguide 2.1
+*/
+
+h1, h2, h3, h4, h5 {
+  @include oxygen;
+  margin: 0;
+  color: $darkblue;
+  position: relative;
+}
+
+h5 {
+  @extend %text--large;
+  &:not(:last-child):not(.no-margin) {
+    margin-bottom: 10px;
+  }
+}
+
+
+h4 {
+  @extend %text--large;
+  text-transform: uppercase;
+
+  &:not(:last-child):not(.no-margin) {
+    margin-bottom: 10px;
+  }
+}
+
+h3 {
+  @extend %text--xlarge;
+  &:not(:last-child):not(.no-margin){
+    margin-bottom: 14px;
+  }
+}
+
+h2 {
+  @extend %text--xxlarge;
+  &:not(:last-child):not(.no-margin) {
+    margin-bottom: 18px;
+  }
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 46px;
+
+  &:not(:last-child):not(.no-margin) {
+    margin-bottom: 22px;
+  }
+}
+
+/*
+Ellipsis are great for super long text
+
+Styleguide 2.2
+*/
+
+.text--ellipsis {
+  @include text-ellipsis;
+}
+
+/*
+Unordered lists are great for listing things.
+
+Styleguide 2.2
+*/
+
+ul, ol {
+  margin: 0;
+  padding-left: 1em;
+
+  li {
+    @extend %text--normal;
+  }
+}
+
+ul li {
+  // Custom dash
+  list-style: none;
+
+  &:before {
+    content:"-"; position:relative; left:-5px;
+  }
+}
+
+ul.no-style {
+  padding-left: 0;
+
+  li:before {
+    display: none;
+  }
+}
+
+/*
+Add a magic icon to any heading to link directly to that section's ID. (Hover over heading to see it).
+
+@background grey
+
+Styleguide 2.3
+*/
+
+a.hover-anchor {
+  float: right;
+  position: absolute;
+  top: -1rem;
+  left: -3rem;
+  padding: 1rem;
+  display: none;
+
+  *:hover > & {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+.markdown {
+  @include markdown-theme(1.125em);
+}
+
+code {
+  font-family: "M+1m" "Monaco" monospace;
+}

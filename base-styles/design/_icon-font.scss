@@ -1,0 +1,35 @@
+/*
+The icon font contains all the icons we use across the site.
+Use its glyph feature to semantically identify which icon you want.
+
+Styleguide 4.0
+*/
+
+.new-cc-icon {
+  font-size: 16px;
+  @extend %new-cc-icon;
+}
+
+.icon--large {
+  font-size: 20px;
+}
+
+.icon--super-large {
+  font-size: 60px;
+}
+
+.icon--space-right {
+  margin-right: 0.3em;
+}
+
+.icon--space-left {
+  margin-left: 0.3em;
+}
+
+@each $new-cc-icon in $new-cc-icons {
+  $name: nth($new-cc-icon, 1);
+
+  .icon-#{$name} {
+    @include new-cc-icon($name);
+  }
+}

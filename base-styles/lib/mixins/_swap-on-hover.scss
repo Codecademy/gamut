@@ -1,0 +1,19 @@
+@mixin swap-on-hover($no-hover, $hover, $display) {
+  @extend #{$no-hover};
+  #{$hover} {
+    display: none !important;
+  }
+  #{$no-hover} {
+    display: $display !important;
+  }
+
+  &:hover {
+    @extend #{$hover};
+    #{$no-hover} {
+      display: none !important;
+    }
+    #{$hover} {
+      display: $display !important;
+    }
+  }
+}

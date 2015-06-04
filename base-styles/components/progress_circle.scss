@@ -1,0 +1,13 @@
+@import "rebrand/lib/cc";
+
+.progress-circle {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 2.5rem;
+  line-height: 5rem;
+  text-align:center;
+  @include margin(1, bottom);
+  h3 {
+    line-height: 5rem;
+  }
+}

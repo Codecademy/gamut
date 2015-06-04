@@ -1,0 +1,72 @@
+/*
+We provide a progress bar widget.
+
+Styleguide 9.0
+*/
+@import "rebrand/lib/cc";
+
+
+$height: 1em;
+$check-mark-size: 1.5em;
+$check-mark-padding: 0.3em 0.33em 0.2em 0.2em;
+$indicator-width: 3em;
+$progress-bar-height: 0.4em;
+
+.progress {
+  position: relative;
+  height: $height;
+  width: 100%;
+
+  .progress__indicator {
+    @include apply-color(color, complement);
+  }
+  .progress__bar {
+    %color-scheme--white &, %color-scheme--grey &, %color-scheme--darkgrey & {
+      background-color: $grey1;
+    }
+    %color-scheme--mint & {
+      background-color: rgba(white, 0.5);
+    }
+  }
+  .progress__bar__complete {
+    @include apply-color(background-color, complement);
+  }
+}
+
+.progress__indicator {
+  float: right;
+  width: $indicator-width;
+  text-align: right;
+  height: $height;
+  line-height: $height;
+
+  .check-mark {
+    width: $check-mark-size;
+    height: $check-mark-size;
+    padding: $check-mark-padding;
+    position: relative;
+    margin-left: 21px;
+    bottom: 4px;
+    border-radius: $check-mark-size / 2;
+    @include apply-color(background-color, complement);
+    .new-cc-icon {
+      @include apply-color(color, primary);
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+  }
+}
+
+.progress__bar {
+  position: absolute;
+  height: $progress-bar-height;
+  left: 0px;
+  right: $indicator-width;
+  top: $height / 2 - $progress-bar-height / 2;
+}
+
+.progress__bar__complete {
+  position: absolute;
+  height: 100%;
+}
+

@@ -1,0 +1,80 @@
+
+/*
+And custom text boxes.
+
+Styleguide 5.1.2
+*/
+
+/*
+Use the field--text wrapper element for text input.
+It supports success and error states.
+
+@background grey
+@cols 4
+
+Styleguide 5.0
+*/
+
+div.field.field--text {
+  @extend %text--normal;
+  @include border-box;
+  background-color: white;
+  display: inline-block;
+  border: 1px solid transparent;
+  margin: 0.2em 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+
+  // CSS to hide honeypot form fields
+  &.false {
+    display: none;
+  }
+
+  &[status="success"] {
+    border-color: $mint!important;
+
+    .field__status-icon:after {
+      @extend %new-cc-icon;
+      @extend %text--normal;
+      content: "check";
+      color: $mint;
+    }
+  }
+
+  &[status="error"] {
+    border-color: $red!important;
+
+    .field__status-icon:after {
+      @extend %new-cc-icon;
+      @extend %text--normal;
+      content: "ex";
+      color: $red;
+    }
+  }
+
+  input[type="text"], input[type="password"], textarea {
+    @extend %text--normal;
+    @include border-box;
+    color: inherit;
+    font-family: inherit;
+    padding: 0.8em 0 10px 0.8em;
+    border: none;
+    outline: none;
+    display: inline-block;
+    margin: 0;
+    background-color: transparent;
+    padding-right: 2em;
+    width: 100%;
+  }
+
+  .field__status-icon {
+    border: none;
+    line-height: 46px;
+    padding: 0 0.5em;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right:0;
+  }
+}
