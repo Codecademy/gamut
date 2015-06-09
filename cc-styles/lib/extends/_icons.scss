@@ -1,0 +1,14 @@
+@include include-once('cc-icon') {
+  // generic icon styles
+  %cc-icon {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-feature-settings: "liga";
+    @include font-smoothing;
+  }
+
+}

@@ -1,0 +1,35 @@
+
+ //
+ // CodeMirror theme color mixin
+ // Requires a list of colors in this format:
+ //
+ // $codemirror-theme-mapping:
+ //   comment #ffffff,
+ //   property #ffffff,
+ //   string #ffffff,
+ //   atom #ffffff,
+ //   attribute #ffffff,
+ //   qualifier #ffffff,
+ //   variable #ffffff,
+ //   variable-2 #ffffff,
+ //   variable-3 #ffffff,
+ //   tag #ffffff,
+ //   bracket #ffffff,
+ //   keyword #ffffff,
+ //   def #ffffff,
+ //   number #ffffff,
+ //   operator #ffffff,
+ //   error #ffffff,
+ //   builtin #ffffff;
+
+@mixin codemirror-theme($color-scheme, $fallback-color) {
+  color: $fallback-color;
+
+  @each $attr in $color-scheme {
+    $property: nth($attr, 1);
+    $color: nth($attr, 2);
+    .cm-#{$property} {
+      color: $color;
+    }
+  }
+}

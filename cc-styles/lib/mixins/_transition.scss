@@ -1,0 +1,8 @@
+
+// DEPRECATED: just use the unprefixed css property
+// IE: transition: all 0.2 ease-in-out;
+@mixin transition($args) {
+  transition: $args;
+}
+
+

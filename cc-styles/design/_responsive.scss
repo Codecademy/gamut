@@ -1,0 +1,6 @@
+// Helper [visible] attribute
+
+[exclude~="phone"]         { @include device-phone   { display: none!important; }}
+[exclude~="tablet"]        { @include device-tablet  { display: none!important; }}
+[exclude~="desktop"]       { @include device-desktop { display: none!important; }}
+

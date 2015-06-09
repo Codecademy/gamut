@@ -1,0 +1,16 @@
+/* Ace dark imitaiton theme */
+
+// Colors
+$editor-dark-background: #232C31; // Background - black
+$editor-dark-normal:     #C5C8C6; // Normal - grey
+$editor-dark-comments:   #839496; // Comments - light-grey
+$editor-dark-keywords:   #B294BB; // Keywords - purple
+$editor-dark-numbers:    #DE935F; // Numbers - orange
+$editor-dark-strings:    #B5BD68; // Strings - green
+$editor-dark-decorators: #CC6666; // Titles, decorators - red
+$editor-dark-attributes: #B58900; // Attributes - yellow
+$editor-dark-special:    #CB4B16; // Symbols, special - redorange
+
+// Fonts
+$editor-dark-font:       $font-monospace;
+$editor-dark-font-size:  0.8em;
