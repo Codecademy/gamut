@@ -1,0 +1,52 @@
+/*
+
+  Helper function for other fib scale measurements.
+
+  Example usage:
+
+  .my-fixed-height-component {
+    height: fib-scale(5);
+  }
+
+*/
+
+@function fib-scale($nth) {
+  $a: 1;
+  $b: 1;
+
+  @for $i from 1 through $nth - 1 {
+    $new: $a + $b;
+    $a: $b;
+    $b: $new;
+  }
+
+  @return $b * 1rem;
+}
+
+@mixin margin($amt, $directions...) {
+  $amt-rem: fib-scale($amt);
+
+  @if length($directions) == 0 {
+    margin: $amt-rem !important;
+
+  } @else {
+    @each $direction in $directions {
+      margin-#{$direction}: $amt-rem !important;
+    }
+
+  }
+}
+
+@mixin padding($amt, $directions...) {
+  $amt-rem: fib-scale($amt);
+
+  @if length($directions) == 0 {
+    padding: $amt-rem !important;
+
+  } @else {
+    @each $direction in $directions {
+      padding-#{$direction}: $amt-rem !important;
+    }
+
+  }
+}

@@ -1,0 +1,14 @@
+@mixin sideline($color, $thickness) {
+  &:first-child {
+    border-left: $thickness solid $color;
+  }
+
+  border-right: $thickness solid $color;
+}
+
+@mixin links-seperated-by-line {
+  &:not(:last-child):after {
+    content: "|";
+    margin: 0 0.2em;
+  }
+}

@@ -1,0 +1,79 @@
+
+/*
+We also have custom checkboxes.
+
+Styleguide 5.1.0
+*/
+
+
+.field.field--checkbox {
+  @include no-select;
+  margin: 0.4em 0;
+  height: $checkbox-radio-dimensions;
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  &.checkbox--white {
+    input[type="checkbox"] + label:before {
+      background-color: white;
+    }
+  }
+
+  input[type="checkbox"] + label {
+    position: relative;
+    cursor: pointer;
+    display: block;
+    padding-left: $checkbox-radio-dimensions + $checkbox-radio-label-gutter;
+    height: $checkbox-radio-dimensions;
+    margin: 0.4em 0;
+
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top: ($checkbox-radio-dimensions - 1) * -1;
+      padding: 0.2rem;
+      @include new-cc-icon('check', false);
+      border: 1px solid $grey3;
+      display: block;
+      width: $checkbox-radio-dimensions;
+      height: $checkbox-radio-dimensions;
+      text-align: center;
+      margin-top: 0.4em;
+    }
+  }
+
+  input[type="checkbox"][disabled] + label {
+    cursor: not-allowed;
+
+    &:before {
+      opacity: 0.4;
+    }
+  }
+
+  input[type="checkbox"]:not(:checked) {
+    & + label:before {
+      color: transparent !important;
+    }
+  }
+
+  input[type="checkbox"]:checked {
+    & + label:before {
+      color: $darkblue;
+    }
+
+    &:hover + label:before {
+      color: lighten($darkblue, 10%);
+    }
+  }
+
+  input[type="checkbox"]:hover + label:before {
+    border-color: lighten($grey3, 5%);
+  }
+
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
+}
