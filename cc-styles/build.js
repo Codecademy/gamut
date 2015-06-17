@@ -8,7 +8,9 @@ var taskName = 'cc-styles';
 gulp.task(taskName, function() {
   return gulp
     .src(dir('/cc-core.scss'))
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: '/'
+    }))
     .pipe(gulp.dest(dir('/tmp/')));
 });
 
