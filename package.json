@@ -2,5 +2,12 @@
   "name": "code_modules",
   "version": "0.0.1",
   "description": "Shared modules and styles for Codecademy",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "glob": "^5.0.10",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-json-sass": "0.0.2",
+    "lodash": "^3.9.3"
+  }
 }

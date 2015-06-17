@@ -1,0 +1,26 @@
+
+var base = require('./base');
+
+var shared = {
+  bgDark: '#152b39'
+};
+
+module.exports = {
+  lp: {
+    'bg-dark': shared.bgDark,
+    'bg-light': base.white,
+    'module-bg-light': base.grey1,
+    'module-bg-dark': '#354551',
+    'button-bg': '#DEE3E6',
+    'editor-bg': '#354551',
+    'chrome-bg-light': '#C3C8CB',
+    'chrome-bg-tabs-light': '#2A3034',
+    'chrome-bg-dark': '#2A3034',
+    'chrome-bg-tabs-dark': '#4A4F52',
+    'chrome-bg-tabs-dark--hover': '#5F6467',
+    'font-dark': '#204056',
+    'filetree-icon': '#fbb03b',
+    'button-everyday': shared.bgDark,
+    'button-everyday--hover': '#5A6A73'
+  }
+};
