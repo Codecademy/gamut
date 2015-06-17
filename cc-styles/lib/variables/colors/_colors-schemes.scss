@@ -1,11 +1,11 @@
 // Schemes
 
 // Background, foreground, important foreground, accent, complement
-$color-scheme--white    : white  $grey5 $darkblue $red  $mint;
-$color-scheme--grey     : $grey1 $grey5 $darkblue $red  $red;
-$color-scheme--darkgrey : $grey2 $grey5 $darkblue $red  $red;
-$color-scheme--mint     : $mint  white  white     white white;
-$color-scheme--blue     : $blue  white  white     white white;
-$color-scheme--darkblue : $darkblue white  $grey3    white white;
+$color-scheme--white    : $color-white $color-grey5 $color-darkblue $color-red  $color-mint;
+$color-scheme--grey     : $color-grey1 $color-grey5 $color-darkblue $color-red  $color-red;
+$color-scheme--darkgrey : $color-grey2 $color-grey5 $color-darkblue $color-red  $color-red;
+$color-scheme--mint     : $color-mint  $color-white $color-white $color-white $color-white;
+$color-scheme--blue     : $color-blue  $color-white $color-white $color-white $color-white;
+$color-scheme--darkblue : $color-darkblue $color-white $color-grey3 $color-white $color-white;
 
 $color-scheme-keys: primary secondary tertiary accent complement;

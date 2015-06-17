@@ -2,7 +2,7 @@
 
 body, button, input, select {
   @include oxygen;
-  color: $grey5;
+  color: $color-grey5;
 }
 
 th {
@@ -36,7 +36,7 @@ strong {
 }
 
 a {
-  color: $darkblue;
+  color: $color-darkblue;
   text-decoration: none;
 
   &[href] { // Don't underline anchors with no href
@@ -53,7 +53,7 @@ a {
 }
 
 a.cta {
-  color: $red !important;
+  color: $color-red !important;
 }
 
 
@@ -76,7 +76,7 @@ Styleguide 2.1
 h1, h2, h3, h4, h5 {
   @include oxygen;
   margin: 0;
-  color: $darkblue;
+  color: $color-darkblue;
   position: relative;
 }
 

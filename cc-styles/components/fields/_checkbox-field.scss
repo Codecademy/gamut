@@ -36,7 +36,7 @@ Styleguide 5.1.0
       top: ($checkbox-radio-dimensions - 1) * -1;
       padding: 0.2rem;
       @include new-cc-icon('check', false);
-      border: 1px solid $grey3;
+      border: 1px solid $color-grey3;
       display: block;
       width: $checkbox-radio-dimensions;
       height: $checkbox-radio-dimensions;
@@ -61,16 +61,16 @@ Styleguide 5.1.0
 
   input[type="checkbox"]:checked {
     & + label:before {
-      color: $darkblue;
+      color: $color-darkblue;
     }
 
     &:hover + label:before {
-      color: lighten($darkblue, 10%);
+      color: lighten($color-darkblue, 10%);
     }
   }
 
   input[type="checkbox"]:hover + label:before {
-    border-color: lighten($grey3, 5%);
+    border-color: lighten($color-grey3, 5%);
   }
 
   input[type="checkbox"] {

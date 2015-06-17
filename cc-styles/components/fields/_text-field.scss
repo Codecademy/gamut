@@ -32,24 +32,24 @@ div.field.field--text {
   }
 
   &[status="success"] {
-    border-color: $mint!important;
+    border-color: $color-mint!important;
 
     .field__status-icon:after {
       @extend %new-cc-icon;
       @extend %text--normal;
       content: "check";
-      color: $mint;
+      color: $color-mint;
     }
   }
 
   &[status="error"] {
-    border-color: $red!important;
+    border-color: $color-red!important;
 
     .field__status-icon:after {
       @extend %new-cc-icon;
       @extend %text--normal;
       content: "ex";
-      color: $red;
+      color: $color-red;
     }
   }
 
