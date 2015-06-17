@@ -4,13 +4,13 @@
 // with some very specific exceptions noted below.
 
 @import 'cc-identity/cc-identity';
-@import './variables/index';
-@import './mixins/index';
-@import './extends/index';
+@import 'variables/index';
+@import 'mixins/index';
+@import 'extends/index';
 
 // Includes export actual CSS, and are required in every bundle
 // This should be used sparingly, and every file should be wrapped in
 // the `include-once` mixin to avoid duplication.
 // There will still be duplication across files, so be careful about
 // what goes in here.
-@import './includes/index';
+@import 'includes/index';
