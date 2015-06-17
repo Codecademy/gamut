@@ -6,7 +6,7 @@ var shared = {
   moduleBgDark: '#354551'
 };
 
-module.exports = {
+var lpColors = {
   lp: {
     'bg-dark': shared.bgDark,
     'bg-light': base.white,
@@ -27,3 +27,6 @@ module.exports = {
     'overlay-bg-opacity': 0.9
   }
 };
+
+
+module.exports = lpColors;
