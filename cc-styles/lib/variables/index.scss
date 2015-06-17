@@ -1,8 +1,8 @@
-@import 'colors/index';
-@import 'icons';
-@import 'fonts';
-@import 'sizes';
+@import './colors/index';
+@import './icons';
+@import './fonts';
+@import './sizes';
 
 // fcn-specific
-@import 'sizes-fcn';
-@import 'z_indexer';
+@import './sizes-fcn';
+@import './z_indexer';
