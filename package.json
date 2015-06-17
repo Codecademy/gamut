@@ -9,6 +9,8 @@
     "gulp-concat": "^2.5.2",
     "gulp-json-sass": "0.0.2",
     "gulp-sass": "^2.0.1",
-    "lodash": "^3.9.3"
+    "gulp-util": "^3.0.5",
+    "lodash": "^3.9.3",
+    "normalize-object": "^1.1.3"
   }
 }
