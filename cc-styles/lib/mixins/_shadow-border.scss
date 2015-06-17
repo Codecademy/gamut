@@ -1,0 +1,4 @@
+@mixin shadow-border {
+  border-bottom: 2px solid rgba(0,0,0,0.08);
+  background-clip: padding-box;
+}

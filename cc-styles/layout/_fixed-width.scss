@@ -1,0 +1,68 @@
+
+body, html {
+  height: 100%;
+  background-color: $grey1;
+}
+
+main {
+  padding-top: $header-height - 2px;
+
+  &.extra-padding-for-argentina {
+    padding-top: $header-height + 54px - 2px;
+  }
+
+  min-height: 100%;
+  @include border-box;
+  display: block;
+
+  &:not(.no-footer) {
+
+    min-height: 100%;
+    @include border-box;
+    display: block;
+
+    &:after {
+      content: "";
+      display: block;
+    }
+  }
+
+}
+
+article, section, header, footer, div {
+  @include border-box;
+  display: block;
+
+  @include grid-cols(0.02);
+
+  &.fit-fixed {
+    @include border-box;
+    max-width: $fixed-width;
+    min-width: 200px; // cmon now
+    margin: 0 auto;
+  }
+
+  &.fit-full {
+    width: 100%;
+  }
+}
+
+@include devices(desktop,tablet) {
+  main {
+    margin-bottom: -$web-footer-height;
+  }
+
+  main:after, footer {
+    height: $web-footer-height;
+  }
+}
+
+@include devices(phone) {
+  main {
+    margin-bottom: -$phone-footer-height;
+  }
+
+  main:after, footer {
+    height: $phone-footer-height;
+  }
+}

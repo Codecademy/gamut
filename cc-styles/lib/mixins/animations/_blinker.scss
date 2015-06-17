@@ -1,0 +1,13 @@
+@include include-once('animation-blinker') {
+  @keyframes blinker {
+    from { opacity: 1.0; }
+    to { opacity: 0.0; }
+  }
+}
+
+@mixin animation-blink($duration: 1s) {
+  animation-name: blinker;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+  animation-duration: $duration;
+}

@@ -1,0 +1,17 @@
+// Allows wrapping something so it won't be duplicated with multiple imports
+//
+// Usage:
+// @include include-once('name') {
+//   .button {
+//     background-color: red;
+//   }
+// }
+
+$exported-modules: () !default;
+@mixin include-once($name) {
+  $module_index: index($exported-modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
+    $exported-modules: append($exported-modules, $name); // add !global if we upgrade SASS
+    @content;
+  }
+}

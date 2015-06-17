@@ -1,0 +1,36 @@
+@include include-once('animation-ring') {
+  @keyframes ring {
+    0% { transform: rotate(0); }
+    2% { transform: rotate(30deg); }
+    6% { transform: rotate(-28deg); }
+    10% { transform: rotate(34deg); }
+    14% { transform: rotate(-32deg); }
+    18% { transform: rotate(30deg); }
+    22% { transform: rotate(-28deg); }
+    26% { transform: rotate(26deg); }
+    30% { transform: rotate(-24deg); }
+    34% { transform: rotate(22deg); }
+    38% { transform: rotate(-20deg); }
+    42% { transform: rotate(18deg); }
+    46% { transform: rotate(-16deg); }
+    50% { transform: rotate(14deg); }
+    54% { transform: rotate(-12deg); }
+    58% { transform: rotate(10deg); }
+    62% { transform: rotate(-8deg); }
+    66% { transform: rotate(6deg); }
+    70% { transform: rotate(-4deg); }
+    74% { transform: rotate(2deg); }
+    78% { transform: rotate(-1deg); }
+    82% { transform: rotate(1deg); }
+    86% { transform: rotate(0); }
+    100% { transform: rotate(0); }
+  }
+}
+
+@mixin animation-ring($duration: 4s) {
+  animation-name: ring;
+  animation-iteration-count: infiine;
+  animation-timing-function: ease-in-out;
+  animation-duration: $duration
+}
+
