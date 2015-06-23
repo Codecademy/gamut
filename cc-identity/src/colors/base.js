@@ -10,9 +10,7 @@ var baseColors = {
   blue: '#59A1C9',
   darkblue: '#204056',
   mint: '#39D1B4',
-  red: '#F65A5B',
-  pink: 'rgba(246, 90, 91, 0.15)',
-  pinkHover: 'rgba(246, 90, 91, 0.30)'
+  red: '#F65A5B'
 };
 
 module.exports = baseColors;
