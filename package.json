@@ -11,6 +11,6 @@
     "gulp-json-sass": "0.0.2",
     "gulp-sass": "^2.0.1",
     "gulp-util": "^3.0.5",
-    "lodash": "^3.9.3",
+    "lodash": "^3.9.3"
   }
 }
