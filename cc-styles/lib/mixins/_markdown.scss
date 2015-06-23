@@ -4,10 +4,10 @@
     inputs:
       - base font-size: *require input*
       - code-font-family: monospace
-      - code-color: $color-grey4
-      - code-background-color: $color-grey1
-      - blockquote-color: $color-grey4
-      - blockquote-border-color: $color-grey4
+      - code-color: $color-grey-4
+      - code-background-color: $color-grey-1
+      - blockquote-color: $color-grey-4
+      - blockquote-border-color: $color-grey-4
       - blockquote-border-width: 0.25rem
 
     issues:
@@ -16,12 +16,12 @@
 
 @mixin markdown-theme(
   $base-font-size: 1rem,
-  $base-font-color: $color-grey5,
+  $base-font-color: $color-grey-5,
   $code-font-family: monospace,
-  $code-color: $color-grey5,
-  $code-background-color: darken($color-grey1, 5%),
-  $blockquote-color: $color-grey4,
-  $blockquote-border-color: $color-grey4,
+  $code-color: $color-grey-5,
+  $code-background-color: darken($color-grey-1, 5%),
+  $blockquote-color: $color-grey-4,
+  $blockquote-border-color: $color-grey-4,
   $blockquote-border-width: 1rem,
   $blockquote-font-size: 0.875em) {
 

@@ -22,7 +22,7 @@ $progress-bar-height: 0.4em;
   }
   .progress__bar {
     %color-scheme--white &, %color-scheme--grey &, %color-scheme--darkgrey & {
-      background-color: $color-grey1;
+      background-color: $color-grey-1;
     }
     %color-scheme--mint & {
       background-color: rgba(white, 0.5);

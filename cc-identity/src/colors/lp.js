@@ -8,23 +8,23 @@ var shared = {
 
 var lpColors = {
   lp: {
-    'bg-dark': shared.bgDark,
-    'bg-light': base.white,
-    'module-bg-light': base.grey1,
-    'module-bg-dark': shared.moduleBgDark,
-    'button-bg': '#DEE3E6',
-    'editor-bg': shared.moduleBgDark,
-    'chrome-bg-light': base.grey2,
-    'chrome-bg-tabs-light': '#C3C8CB',
-    'chrome-bg-dark': '#2A3034',
-    'chrome-bg-tabs-dark': '#4A4F52',
-    'chrome-bg-tabs-dark--hover': '#5F6467',
-    'font-dark': '#204056',
-    'filetree-icon': '#fbb03b',
-    'button-everyday': shared.bgDark,
-    'button-everyday--hover': '#5A6A73',
-    'overlay-bg': shared.bgDark,
-    'overlay-bg-opacity': 0.9
+    bgDark: shared.bgDark,
+    bgLight: base.white,
+    moduleBgLight: base.grey1,
+    moduleBgDark: shared.moduleBgDark,
+    buttonBg: '#DEE3E6',
+    editorBg: shared.moduleBgDark,
+    chromeBgLight: base.grey2,
+    chromeBgTabsLight: '#C3C8CB',
+    chromeBgDark: '#2A3034',
+    chromeBgTabsDark: '#4A4F52',
+    chromeBgTabsDarkHover: '#5F6467',
+    fontDark: '#204056',
+    filetreeIcon: '#fbb03b',
+    buttonEveryday: shared.bgDark,
+    buttonEverydayHover: '#5A6A73',
+    overlayBg: shared.bgDark,
+    overlayBgOpacity: 0.9
   }
 };
 

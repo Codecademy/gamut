@@ -2,18 +2,29 @@
 var fs = require('fs');
 var _ = require('lodash');
 var gulp = require('gulp');
+var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
 var jsonSass = require('gulp-json-sass');
 var dir = require('../build-utils/dir')(__dirname);
-var normalize = require('normalize-object');
 
 var taskName = 'cc-identity';
 
 var ccData = require('./src');
 
+var kebabitize = function(obj) {
+  var res = obj;
+  if (_.isObject(obj)) {
+    res = {};
+    for (k in obj) {
+      res[_.kebabCase(k)] = kebabitize(obj[k]);
+    }
+  }
+  return res;
+};
+
 gulp.task('build-json', function(callback) {
-  var ccDataJSON = JSON.stringify(ccData);
-  var ccDataJS = JSON.stringify(normalize(ccData));
+  var ccDataJSON = JSON.stringify(kebabitize(ccData));
+  var ccDataJS = JSON.stringify(ccData);
   // JS variables are camel case for dot-notation
   fs.writeFile(dir('/cc-identity.json'), ccDataJS, _.noop);
   // TMP file used to create the SCSS variables (kebab case)
@@ -23,6 +34,7 @@ gulp.task('build-json', function(callback) {
 gulp.task(taskName, ['build-json'], function() {
   return gulp
     .src(dir('/tmp/cc-identity.json'))
+    .pipe(plumber())
     .pipe(jsonSass())
     .pipe(concat('cc-identity.scss'))
     .pipe(gulp.dest(dir('/')));
