@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/wall",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Wall",
   "main": "index.js",
   "scripts": {
