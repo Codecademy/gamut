@@ -1,68 +1,88 @@
-import _ from 'lodash';
-import React from 'react/addons';
-import layeredComponentMixin from './mixins/LayeredComponentMixin';
+'use strict';
 
-import cx from 'classnames';
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
 
-const overlayTypes = [
-  'transparent'
-];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var Modal = React.createClass({
-  mixins: [layeredComponentMixin],
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _reactAddons = require('react/addons');
+
+var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+var _mixinsLayeredComponentMixin = require('./mixins/LayeredComponentMixin');
+
+var _mixinsLayeredComponentMixin2 = _interopRequireDefault(_mixinsLayeredComponentMixin);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var overlayTypes = ['transparent'];
+
+var Modal = _reactAddons2['default'].createClass({
+  displayName: 'Modal',
+
+  mixins: [_mixinsLayeredComponentMixin2['default']],
 
   propTypes: {
-    children: React.PropTypes.oneOfType([
-      React.PropTypes.arrayOf(React.PropTypes.element),
-      React.PropTypes.element
-    ]),
-    onOutsideClick: React.PropTypes.func,
-    overlayType: React.PropTypes.oneOf(overlayTypes)
+    children: _reactAddons2['default'].PropTypes.oneOfType([_reactAddons2['default'].PropTypes.arrayOf(_reactAddons2['default'].PropTypes.element), _reactAddons2['default'].PropTypes.element]),
+    onOutsideClick: _reactAddons2['default'].PropTypes.func,
+    overlayType: _reactAddons2['default'].PropTypes.oneOf(overlayTypes)
   },
 
-  componentDidMount() {
+  componentDidMount: function componentDidMount() {
     document.body.classList.add('modal-overlay-active');
   },
 
-  componentWillUnmount() {
+  componentWillUnmount: function componentWillUnmount() {
     document.body.classList.remove('modal-overlay-active');
   },
 
-  getDefaultProps() {
+  getDefaultProps: function getDefaultProps() {
     return {
-      onOutsideClick: _.noop
+      onOutsideClick: _lodash2['default'].noop
     };
   },
 
   // stop clicks on the content from triggering onOverlayClick
-  onContentClick(e) {
+  onContentClick: function onContentClick(e) {
     e.stopPropagation();
   },
 
-  onOverlayClick() {
+  onOverlayClick: function onOverlayClick() {
     this.props.onOutsideClick();
   },
 
-  renderLayer() {
-    let overlayClasses = cx({
-      'ModalOverlay': true,
-      [`ModalOverlay--${this.props.overlayType}`]: (overlayTypes.indexOf(this.props.overlayType) !== -1)
-    });
+  renderLayer: function renderLayer() {
+    var overlayClasses = (0, _classnames2['default'])(_defineProperty({
+      'ModalOverlay': true
+    }, 'ModalOverlay--' + this.props.overlayType, overlayTypes.indexOf(this.props.overlayType) !== -1));
 
-    return (
-      <div className={overlayClasses} onClick={this.onOverlayClick}>
-        <div className='ModalOverlay__content' onClick={this.onContentClick}>
-          {this.props.children}
-        </div>
-      </div>
+    return _reactAddons2['default'].createElement(
+      'div',
+      { className: overlayClasses, onClick: this.onOverlayClick },
+      _reactAddons2['default'].createElement(
+        'div',
+        { className: 'ModalOverlay__content', onClick: this.onContentClick },
+        this.props.children
+      )
     );
   },
 
   // render is a noop, modal is rendered through renderLayer.
-  render() {
+  render: function render() {
     return null;
   }
 
 });
 
-export default Modal;
+exports['default'] = Modal;
+module.exports = exports['default'];
+//# sourceMappingURL=modal.js.map
