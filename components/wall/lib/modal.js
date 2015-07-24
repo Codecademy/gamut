@@ -16,9 +16,9 @@ var _reactAddons = require('react/addons');
 
 var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
-var _mixinsLayeredComponentMixin = require('./mixins/LayeredComponentMixin');
+var _LayeredComponentMixin = require('./LayeredComponentMixin');
 
-var _mixinsLayeredComponentMixin2 = _interopRequireDefault(_mixinsLayeredComponentMixin);
+var _LayeredComponentMixin2 = _interopRequireDefault(_LayeredComponentMixin);
 
 var _classnames = require('classnames');
 
@@ -29,7 +29,7 @@ var overlayTypes = ['transparent'];
 var Modal = _reactAddons2['default'].createClass({
   displayName: 'Modal',
 
-  mixins: [_mixinsLayeredComponentMixin2['default']],
+  mixins: [_LayeredComponentMixin2['default']],
 
   propTypes: {
     children: _reactAddons2['default'].PropTypes.oneOfType([_reactAddons2['default'].PropTypes.arrayOf(_reactAddons2['default'].PropTypes.element), _reactAddons2['default'].PropTypes.element]),

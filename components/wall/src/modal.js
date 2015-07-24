@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react/addons';
-import layeredComponentMixin from './mixins/LayeredComponentMixin';
+import layeredComponentMixin from './LayeredComponentMixin';
 
 import cx from 'classnames';
 
