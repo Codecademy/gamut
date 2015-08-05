@@ -30,3 +30,6 @@ build/Release
 node_modules
 
 .sass-cache
+
+# Ignore compiled es5 code
+components/wall/lib
