@@ -4,9 +4,6 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var _ = require('lodash');
-var camelcase = _.camelcase;
-var kebabcase = _.kebabcase;
-var trim = _.trim;
 var Promise = require('bluebird');
 var exec = Promise.promisify(require('child_process').exec);
 var gitConfig = require('git-config');
@@ -30,7 +27,7 @@ module.exports = generators.Base.extend({
     })])
     .then(function(result) {
       result = result ? result : {};
-      this.username = trim(result[0]);
+      this.username = _.trim(result[0]);
       this._showPrompts(done);
     }.bind(this));
   },
@@ -48,7 +45,7 @@ module.exports = generators.Base.extend({
       type: 'input',
       name: 'repo',
       message: 'What is the repository/project name?',
-      default: kebabcase(this.appname)
+      default: _.kebabcase(this.appname)
     }, {
       type: 'input',
       name: 'description',
@@ -70,7 +67,7 @@ module.exports = generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.user = props.user;
       this.repo = props.repo;
-      this.variable = camelcase(props.repo);
+      this.variable = _.camelcase(props.repo);
       this.description = props.description;
       this.author = props.author;
       this.license = props.license;

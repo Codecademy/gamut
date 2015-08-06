@@ -8,5 +8,5 @@
   The credentials are in the wiki.
 
 2. `cd` into the folder for your module
-3. run `yo cc-module` and follow the prompts
+3. run `yo @codecademy/cc-module` and follow the prompts
 4. profit
