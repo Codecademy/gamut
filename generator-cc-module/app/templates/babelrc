@@ -1,6 +1,5 @@
 {
   "loose": true,
-  "cacheDirectory": true,
   "optional": [
     "es7.objectRestSpread"
   ]

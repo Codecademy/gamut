@@ -45,7 +45,7 @@ module.exports = generators.Base.extend({
       type: 'input',
       name: 'repo',
       message: 'What is the repository/project name?',
-      default: _.kebabcase(this.appname)
+      default: _.kebabCase(this.appname)
     }, {
       type: 'input',
       name: 'description',
@@ -67,7 +67,7 @@ module.exports = generators.Base.extend({
     this.prompt(prompts, function (props) {
       this.user = props.user;
       this.repo = props.repo;
-      this.variable = _.camelcase(props.repo);
+      this.variable = _.camelCase(props.repo);
       this.description = props.description;
       this.author = props.author;
       this.license = props.license;

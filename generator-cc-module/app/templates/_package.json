@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "<%- author %>",
   "scripts": {
-    "compile": "babel -sd lib/ src/",
+    "compile": "babel -sd dist/ src/",
     "prepublish": "npm run compile"
   },
   "main": "dist/<%= repo %>.js",

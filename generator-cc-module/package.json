@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/generator-cc-module",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Codecademy frontend module generator",
   "main": "app/index.js",
   "repository": {
