@@ -7,7 +7,9 @@ import cx from 'classnames';
 const ESCAPE_KEY = 27;
 
 // Reusable class for 'walls' in the LE.
-var Wall = React.createClass({
+let Wall = React.createClass({
+  displayName: 'Wall',
+
   propTypes: {
     children: React.PropTypes.oneOfType([
       React.PropTypes.arrayOf(React.PropTypes.element),
@@ -18,18 +20,18 @@ var Wall = React.createClass({
     responseRequired: React.PropTypes.bool,
     padding: React.PropTypes.bool,
     width: React.PropTypes.string,
-    height: React.PropTypes.string,
+    height: React.PropTypes.string
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     window.addEventListener('keydown', this.onEscape);
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     window.removeEventListener('keydown', this.onEscape);
   },
 
-  onEscape: function (e) {
+  onEscape(e) {
     if (e.keyCode === ESCAPE_KEY) {
       this.closeIfNotRequired();
     }
