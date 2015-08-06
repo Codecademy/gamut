@@ -1,0 +1,16 @@
+{
+  "name": "@codecademy/<%= repo %>",
+  "version": "1.0.0",
+  "author": "<%- author %>",
+  "scripts": {
+    "compile": "babel -sd lib/ src/",
+    "prepublish": "npm run compile"
+  },
+  "main": "dist/<%= repo %>.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel": "^5.8.3"
+  },
+  "license": "<%= license %>"
+}
