@@ -1,17 +1,14 @@
-//
-// Deprecated: use the lp colors instead
-
-$fcn-bg-color: $color-lp-bg-dark;
-$fcn-header-bg-color: $color-lp-chrome-bg-dark;
-$fcn-header-tabs-bg-color: $color-lp-chrome-bg-tabs-dark;
-$fcn-module-bg-color: $color-lp-module-bg-light;
-$fcn-button-bg-color: $color-lp-button-bg;
-$fcn-editor-bg-color: $color-lp-editor-bg;
-$fcn-editor-header-bg-color: $color-lp-chrome-bg-dark;
-$fcn-font-color: $color-lp-font-dark;
-$fcn-yellow: $color-lp-filetree-icon;
-$fcn-everyday-hover: $color-lp-button-everyday;
-$fcn-tab-background: $color-lp-chrome-bg-tabs-dark;
-$fcn-tab-hover: $color-lp-chrome-bg-tabs-dark-hover;
-$fcn-overlay-color: $color-lp-overlay-bg;
-$fcn-overlay-opacity: $color-lp-overlay-bg-opacity;
+/* Palette */
+$fcn-bg-color: #152b39;
+$fcn-header-bg-color: #C3C8CB;
+$fcn-header-tabs-bg-color: #2A3034;
+$fcn-module-bg-color: rgba(241, 242, 243, 1);
+$fcn-button-bg-color: #DEE3E6;
+$fcn-editor-bg-color: #354551;
+$fcn-editor-header-bg-color: $fcn-header-tabs-bg-color;
+$fcn-font-color: #204056;
+$fcn-yellow: #fbb03b;
+$fcn-gray: #D1D3D4;
+$fcn-everyday--hover: #5A6A73;
+$fcn-tab--background: #4A4F52;
+$fcn-tab--hover: #5F6467;

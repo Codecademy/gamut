@@ -2,7 +2,7 @@
   /*
      Example:
      get-color(white, secondary)
-     => $color-grey-4
+     => $grey4
   */
 
   @if $scheme == white {
@@ -31,13 +31,13 @@
   Generates:
 
   .color-scheme--white .progress-bar__inside {
-    background-color: $color-grey-4;
+    background-color: $grey4;
   }
   .color-scheme--grey .progress-bar__inside {
-    background-color: $color-grey-4;
+    background-color: $grey4;
   }
   .color-scheme--darkgrey .progress-bar__inside {
-    background-color: $color-grey-5;
+    background-color: $grey5;
   }
   .color-scheme--mint .progress-bar__inside {
     background-color: white;
