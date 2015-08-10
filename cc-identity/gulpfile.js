@@ -40,4 +40,5 @@ gulp.task(taskName, ['build-json'], function() {
     .pipe(gulp.dest(dir('/')));
 });
 
-module.exports = taskName;
+
+gulp.task('default', [taskName]);
