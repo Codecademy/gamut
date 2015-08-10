@@ -1,0 +1,6 @@
+{
+  "loose": true,
+  "optional": [
+    "es7.objectRestSpread"
+  ]
+}
