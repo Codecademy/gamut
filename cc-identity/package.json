@@ -1,0 +1,17 @@
+{
+  "name": "@codecademy/identity",
+  "version": "1.2.0",
+  "main": "dist/identity.json",
+  "scripts": {
+    "prepublish": "gulp"
+  },
+  "devDependencies": {
+    "gulp-plumber": "^1.0.1",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-json-sass": "0.0.2",
+    "gulp-sass": "^2.0.1",
+    "gulp-util": "^3.0.5",
+    "lodash": "^3.9.3"
+  }
+}
