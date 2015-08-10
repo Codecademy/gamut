@@ -1,13 +1,11 @@
-
+var path = require('path');
 var fs = require('fs');
 var _ = require('lodash');
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');
 var concat = require('gulp-concat');
 var jsonSass = require('gulp-json-sass');
-var dir = require('../build-utils/dir')(__dirname);
-
-var taskName = 'cc-identity';
+var dir = _.partial(path.join, __dirname);
 
 var ccData = require('./index.js');
 
@@ -31,7 +29,7 @@ gulp.task('build-json', function(callback) {
   fs.writeFile(dir('/tmp/cc-identity.json'), ccDataJSON, callback);
 });
 
-gulp.task(taskName, ['build-json'], function() {
+gulp.task('cc-identity', ['build-json'], function() {
   return gulp
     .src(dir('/tmp/cc-identity.json'))
     .pipe(plumber())
@@ -41,4 +39,4 @@ gulp.task(taskName, ['build-json'], function() {
 });
 
 
-gulp.task('default', [taskName]);
+gulp.task('default', ['cc-identity']);
