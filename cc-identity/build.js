@@ -9,13 +9,13 @@ var dir = require('../build-utils/dir')(__dirname);
 
 var taskName = 'cc-identity';
 
-var ccData = require('./src');
+var ccData = require('./index.js');
 
 var kebabitize = function(obj) {
   var res = obj;
   if (_.isObject(obj)) {
     res = {};
-    for (k in obj) {
+    for (var k in obj) {
       res[_.kebabCase(k)] = kebabitize(obj[k]);
     }
   }
@@ -26,7 +26,7 @@ gulp.task('build-json', function(callback) {
   var ccDataJSON = JSON.stringify(kebabitize(ccData));
   var ccDataJS = JSON.stringify(ccData);
   // JS variables are camel case for dot-notation
-  fs.writeFile(dir('/cc-identity.json'), ccDataJS, _.noop);
+  fs.writeFile(dir('/dist/cc-identity.json'), ccDataJS, _.noop);
   // TMP file used to create the SCSS variables (kebab case)
   fs.writeFile(dir('/tmp/cc-identity.json'), ccDataJSON, callback);
 });
@@ -36,7 +36,7 @@ gulp.task(taskName, ['build-json'], function() {
     .src(dir('/tmp/cc-identity.json'))
     .pipe(plumber())
     .pipe(jsonSass())
-    .pipe(concat('cc-identity.scss'))
+    .pipe(concat('dist/cc-identity.scss'))
     .pipe(gulp.dest(dir('/')));
 });
 

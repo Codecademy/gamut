@@ -9,7 +9,7 @@ var baseColors = {
   grey5: '#4a4a4c',
   blue: '#59A1C9',
   darkblue: '#204056',
-  mint: '#39D1B4',
+  mint: '#34B3A0',
   red: '#F65A5B'
 };
 

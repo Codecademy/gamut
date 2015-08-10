@@ -1,5 +1,5 @@
 {
-  "name": "cc-identity",
-  "version": "0.0.1",
-  "main": "cc-identity.json"
+  "name": "@codecademy/identity",
+  "version": "1.0.0",
+  "main": "dist/cc-identity.json"
 }
