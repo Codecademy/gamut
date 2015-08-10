@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/identity",
   "version": "1.0.1",
-  "main": "dist/cc-identity.json",
+  "main": "dist/identity.json",
   "scripts": {
     "prepublish": "gulp"
   },

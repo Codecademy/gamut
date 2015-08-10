@@ -24,17 +24,17 @@ gulp.task('build-json', function(callback) {
   var ccDataJSON = JSON.stringify(kebabitize(ccData));
   var ccDataJS = JSON.stringify(ccData);
   // JS variables are camel case for dot-notation
-  fs.writeFile(dir('/dist/cc-identity.json'), ccDataJS, _.noop);
+  fs.writeFile(dir('/dist/identity.json'), ccDataJS, _.noop);
   // TMP file used to create the SCSS variables (kebab case)
-  fs.writeFile(dir('/tmp/cc-identity.json'), ccDataJSON, callback);
+  fs.writeFile(dir('/tmp/identity.json'), ccDataJSON, callback);
 });
 
 gulp.task('cc-identity', ['build-json'], function() {
   return gulp
-    .src(dir('/tmp/cc-identity.json'))
+    .src(dir('/tmp/identity.json'))
     .pipe(plumber())
     .pipe(jsonSass())
-    .pipe(concat('dist/cc-identity.scss'))
+    .pipe(concat('dist/identity.scss'))
     .pipe(gulp.dest(dir('/')));
 });
 

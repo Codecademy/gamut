@@ -21,4 +21,5 @@ in SCSS:
 in JS, variable names are camel case so you can use dot-notation
 
 JS: `identity.color.lp.chromeBgDark`
+
 SCSS: `$color-lp-chrome-bg-dark`
