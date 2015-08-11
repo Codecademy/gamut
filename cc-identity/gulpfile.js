@@ -7,7 +7,7 @@ var concat = require('gulp-concat');
 var jsonSass = require('gulp-json-sass');
 var dir = _.partial(path.join, __dirname);
 
-var ccData = require('./index.js');
+var ccData = require('./identity/index.js');
 
 var kebabitize = function(obj) {
   var res = obj;
@@ -24,7 +24,7 @@ gulp.task('build-json', function(callback) {
   var ccDataJSON = JSON.stringify(kebabitize(ccData));
   var ccDataJS = JSON.stringify(ccData);
   // JS variables are camel case for dot-notation
-  fs.writeFile(dir('/dist/identity.json'), ccDataJS, _.noop);
+  fs.writeFile(dir('./identity.json'), ccDataJS, _.noop);
   // TMP file used to create the SCSS variables (kebab case)
   fs.writeFile(dir('/tmp/identity.json'), ccDataJSON, callback);
 });
@@ -70,9 +70,13 @@ gulp.task('cc-identity', ['build-json', 'build-html'], function() {
     .src(dir('/tmp/identity.json'))
     .pipe(plumber())
     .pipe(jsonSass())
-    .pipe(concat('dist/identity.scss'))
+    .pipe(concat('./identity.scss'))
     .pipe(gulp.dest(dir('/')));
 });
 
+gulp.task('watch', ['cc-identity'], function() {
+  gulp.watch('./identity/**/*', ['cc-identity']);
+  gulp.watch('./public/**/*', ['cc-identity']);
+});
 
 gulp.task('default', ['cc-identity']);
