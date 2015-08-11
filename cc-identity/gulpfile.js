@@ -29,7 +29,43 @@ gulp.task('build-json', function(callback) {
   fs.writeFile(dir('/tmp/identity.json'), ccDataJSON, callback);
 });
 
-gulp.task('cc-identity', ['build-json'], function() {
+gulp.task('build-html', function(callback) {
+  var colorData = [];
+
+  var colorGroup = function(key, value) {
+    var title = _.capitalize(key || 'base') + ' Colors';
+    var colors = [];
+    _.each(value, function(val, k) {
+      if (_.isObject(val)) {
+        return colorGroup(k, val);
+      }
+      var str = 'color';
+      if (key) {
+        str += ('.' + key);
+      }
+      str += ('.' + k);
+
+      colors.push({
+        value: val,
+        JSON: str,
+        SCSS: '$' + _.kebabCase(str)
+      });
+    });
+
+    colorData.push({title: title, colors: colors});
+  };
+
+  colorGroup(null, ccData.color);
+  colorData = _.sortBy(colorData, 'title');
+  var tpl = null;
+  fs.readFile(dir('/public/_index.html'), {encoding: 'utf8'}, function(err, data) {
+    tpl = _.template(data);
+    fs.writeFile(dir('/public/index.html'), tpl({yield: colorData}), callback);
+  });
+
+});
+
+gulp.task('cc-identity', ['build-json', 'build-html'], function() {
   return gulp
     .src(dir('/tmp/identity.json'))
     .pipe(plumber())

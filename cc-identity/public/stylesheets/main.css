@@ -1,0 +1,47 @@
+
+body {
+  font-family: helvetica, arial;
+  display: flex;
+}
+
+.color-group {
+  flex: 1;
+}
+
+.color-group__heading {
+  margin: 0.5rem;
+}
+
+.color {
+  display: flex;
+}
+
+.color__swatch {
+  height: 75px;
+  width: 75px;
+  min-width: 75px;
+  border: 1px solid rgba(0,0,0,.3);
+}
+
+.color__swatch,
+.color__values {
+  margin: 0.5rem;
+}
+
+.color__values {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.color__title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  -webkit-appearance: none;
+  font-family: monospace;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
