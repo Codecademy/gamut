@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/code_modules",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Shared modules and styles for Codecademy",
   "readmeFilename": "README.md"
 }
