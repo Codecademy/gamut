@@ -19,9 +19,9 @@
   "homepage": "https://github.com/RyzacInc/webpack-config",
   "dependencies": {
     "lodash": "^3.10.0",
-    "extract-text-webpack-plugin": "0.8.2",
+    "extract-text-webpack-plugin": "0.8.2"
   },
   "devDependencies": {
-    "babel": "^5.8.3",
+    "babel": "^5.8.3"
   }
 }
