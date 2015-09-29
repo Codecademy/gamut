@@ -1,0 +1,27 @@
+{
+  "name": "@codecademy/webpack-config",
+  "version": "0.0.1",
+  "description": "Config files for webpack",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "babel -sd dist/ src/",
+    "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyzacInc/webpack-config"
+  },
+  "author": "codecademy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyzacInc/webpack-config"
+  },
+  "homepage": "https://github.com/RyzacInc/webpack-config",
+  "dependencies": {
+    "lodash": "^3.10.0",
+    "extract-text-webpack-plugin": "0.8.2",
+  },
+  "devDependencies": {
+    "babel": "^5.8.3",
+  }
+}
