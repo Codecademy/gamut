@@ -11,7 +11,14 @@ let loader = function(options) {
 let loaders = {
   babel: loader({
     test: /\.js?$/,
-    loader: 'babel?cacheDirectory'
+    loader: 'babel',
+    query: {
+      loose: true,
+      cacheDirectory: true,
+      optional: [
+        'es7.objectRestSpread'
+      ]
+    }
   }),
   css: {
     default: loader({
