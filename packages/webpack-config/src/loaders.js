@@ -5,7 +5,7 @@ const CSS_CLIENT_PREFIX = '!css';
 const CSS_SERVER_PREFIX = 'css/locals';
 
 const SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap';
-const CSS_OPTIONS = '?-minimize&modules&sourceMap';
+const CSS_OPTIONS = '?-minimize&sourceMap';
 
 const SCSS_CLIENT = `${CSS_CLIENT_PREFIX}${SCSS_OPTIONS}`;
 const SCSS_SERVER = `${CSS_SERVER_PREFIX}${SCSS_OPTIONS}`;
