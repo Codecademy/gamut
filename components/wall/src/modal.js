@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React from 'react/addons';
+import React from 'react';
 import layeredComponentMixin from './LayeredComponentMixin';
 
 import cx from 'classnames';
