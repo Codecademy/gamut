@@ -14,6 +14,7 @@
  */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 let LayeredComponentMixin = {
     componentDidMount: function() {
@@ -61,7 +62,7 @@ let LayeredComponentMixin = {
         this.layerWillUnmount(this._layer);
       }
 
-      React.unmountComponentAtNode(this._layer);
+      ReactDOM.unmountComponentAtNode(this._layer);
     }
 };
 

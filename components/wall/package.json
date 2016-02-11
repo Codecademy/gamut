@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/wall",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "React Wall",
   "main": "dist/index.js",
   "scripts": {
@@ -20,7 +20,8 @@
   "dependencies": {
     "classnames": "^2.1.3",
     "lodash": "^3.10.0",
-    "react": "^0.14.7"
+    "react": "^0.14.7",
+    "react-dom": "0.14.6"
   },
   "devDependencies": {
     "babel": "^5.8.3"
