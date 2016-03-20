@@ -10,6 +10,10 @@
     "javascript"
   ],
   "author": "Jake Hiller <jake@codecademy.com>",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/babel-preset-codecademy.git"
+  },
   "license": "Apache-2.0",
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
