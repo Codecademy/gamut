@@ -78,7 +78,6 @@ module.exports = generators.Base.extend({
   writing: {
     app: function() {
       this.template('babelrc', '.babelrc');
-      this.template('jscsrc', '.jscsrc');
       this.template('eslintrc', '.eslintrc');
       this.template('editorconfig', '.editorconfig');
       this.template('_package.json', 'package.json');
