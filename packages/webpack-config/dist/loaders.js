@@ -18,7 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var CSS_CLIENT_PREFIX = '!css';
 var CSS_SERVER_PREFIX = 'css/locals';
 
-var SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap';
+var SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1!sass?sourceMap';
 var CSS_OPTIONS = '?-minimize&sourceMap';
 
 var SCSS_CLIENT = '' + CSS_CLIENT_PREFIX + SCSS_OPTIONS;

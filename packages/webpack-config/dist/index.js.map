@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;;;;;qBACiB,MAAM;;;;;;;;QAAhB,OAAO","file":"index.js","sourcesContent":["\nexport loaders, {loader} from './loaders';\n"]}
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;;;;;qBACiB,M;;;;;;;;QAAV,O","file":"index.js","sourcesContent":["\nexport loaders, {loader} from './loaders';\n"]}
