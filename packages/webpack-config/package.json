@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "compile": "babel -sd dist/ src/",
-    "prepublish": "npm run compile"
+    "preversion": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,11 @@
     "url": "https://github.com/RyzacInc/webpack-config"
   },
   "homepage": "https://github.com/RyzacInc/webpack-config",
-  "dependencies": {
-    "lodash": "^3.10.0",
-    "extract-text-webpack-plugin": "0.8.2"
+  "peerDependencies": {
+    "extract-text-webpack-plugin": "*"
   },
   "devDependencies": {
+    "extract-text-webpack-plugin": "0.8.2",
     "babel-cli": "^6.4.0",
     "babel-preset-codecademy": "latest"
   }

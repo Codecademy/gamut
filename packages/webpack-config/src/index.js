@@ -1,2 +1,2 @@
 
-export loaders, {loader} from './loaders';
+export loaders, { loader } from './loaders';

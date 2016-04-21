@@ -1,10 +1,14 @@
-import _ from 'lodash';
+
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const CSS_CLIENT_PREFIX = '!css';
 const CSS_SERVER_PREFIX = 'css/locals';
 
-const SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1!sass?sourceMap';
+// Only use debuggable class names in dev
+const DEV_CSS_MODULE_IDENT = '&localIdentName=[name]__[local]___[hash:base64:5]';
+const CSS_MODULE_IDENT = (process.env.NODE_ENV === 'production') ? '' : DEV_CSS_MODULE_IDENT;
+
+const SCSS_OPTIONS = `?-minimize&sourceMap&modules&importLoaders=1${CSS_MODULE_IDENT}!sass?sourceMap`;
 const CSS_OPTIONS = '?-minimize&sourceMap';
 
 const SCSS_CLIENT = `${CSS_CLIENT_PREFIX}${SCSS_OPTIONS}`;
@@ -13,8 +17,10 @@ const SCSS_SERVER = `${CSS_SERVER_PREFIX}${SCSS_OPTIONS}`;
 const CSS_CLIENT = `${CSS_CLIENT_PREFIX}${CSS_OPTIONS}`;
 const CSS_SERVER = `${CSS_SERVER_PREFIX}${CSS_OPTIONS}`;
 
-export let loader = function(options) {
-  return (opts) => _.extend({}, options, opts);
+export let loader = (options) => {
+  return (opts) => {
+    return {...options, ...opts};
+  };
 };
 
 let loaders = {

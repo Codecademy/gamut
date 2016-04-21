@@ -9,14 +9,18 @@ var _loaders2 = require('./loaders');
 
 Object.defineProperty(exports, 'loader', {
   enumerable: true,
-  get: function get() {
-    return _loaders2.loader;
-  }
+  get: function () {
+    function get() {
+      return _loaders2.loader;
+    }
+
+    return get;
+  }()
 });
 
 var _loaders3 = _interopRequireDefault(_loaders2);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-exports.loaders = _loaders3.default;
+exports.loaders = _loaders3['default'];
 //# sourceMappingURL=index.js.map
