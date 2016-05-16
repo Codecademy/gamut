@@ -20,8 +20,8 @@ var CSS_SERVER_PREFIX = 'css/locals';
 var DEV_CSS_MODULE_IDENT = '&localIdentName=[name]__[local]___[hash:base64:5]';
 var CSS_MODULE_IDENT = process.env.NODE_ENV === 'production' ? '' : DEV_CSS_MODULE_IDENT;
 
-var SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1' + CSS_MODULE_IDENT + '!sass?sourceMap';
-var CSS_OPTIONS = '?-minimize&sourceMap';
+var SCSS_OPTIONS = '?-minimize&sourceMap&modules&importLoaders=1' + CSS_MODULE_IDENT + '!postcss-loader!sass?sourceMap';
+var CSS_OPTIONS = '?-minimize&sourceMap!postcss-loader';
 
 var SCSS_CLIENT = '' + CSS_CLIENT_PREFIX + SCSS_OPTIONS;
 var SCSS_SERVER = '' + CSS_SERVER_PREFIX + SCSS_OPTIONS;
