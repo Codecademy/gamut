@@ -1,7 +1,7 @@
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const CSS_CLIENT_PREFIX = 'css';
+const CSS_CLIENT_PREFIX = '!css';
 const CSS_SERVER_PREFIX = 'css/locals';
 
 // Only use debuggable class names in dev
