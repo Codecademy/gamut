@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/RyzacInc/webpack-config",
   "peerDependencies": {
-    "extract-text-webpack-plugin": "*"
+    "extract-text-webpack-plugin": ">=2.0.0-beta"
   },
   "devDependencies": {
-    "extract-text-webpack-plugin": "0.8.2",
+    "extract-text-webpack-plugin": "*",
     "babel-cli": "^6.4.0",
     "babel-preset-codecademy": "latest"
   }

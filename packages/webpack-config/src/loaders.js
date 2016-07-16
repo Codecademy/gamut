@@ -1,7 +1,7 @@
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const CSS_CLIENT_PREFIX = '!css';
+const CSS_CLIENT_PREFIX = 'css';
 const CSS_SERVER_PREFIX = 'css/locals';
 
 // Only use debuggable class names in dev
@@ -35,7 +35,10 @@ let loaders = {
     }),
     extracted: loader({
       test: /\.css?$/,
-      loader: ExtractTextPlugin.extract('style', CSS_CLIENT)
+      loader: ExtractTextPlugin.extract({
+        notExtractLoader: 'style',
+        extract: CSS_CLIENT
+      })
     }),
     server: loader({
       test: /\.css?$/,
@@ -49,7 +52,10 @@ let loaders = {
     }),
     extracted: loader({
       test: /\.scss?$/,
-      loader: ExtractTextPlugin.extract('style', SCSS_CLIENT)
+      loader: ExtractTextPlugin.extract({
+        notExtractLoader: 'style',
+        extract: SCSS_CLIENT
+      })
     }),
     server: loader({
       test: /\.scss?$/,

@@ -13,7 +13,7 @@ var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugi
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var CSS_CLIENT_PREFIX = '!css';
+var CSS_CLIENT_PREFIX = 'css';
 var CSS_SERVER_PREFIX = 'css/locals';
 
 // Only use debuggable class names in dev
@@ -47,7 +47,10 @@ var loaders = {
     }),
     extracted: loader({
       test: /\.css?$/,
-      loader: _extractTextWebpackPlugin2['default'].extract('style', CSS_CLIENT)
+      loader: _extractTextWebpackPlugin2['default'].extract({
+        notExtractLoader: 'style',
+        extract: CSS_CLIENT
+      })
     }),
     server: loader({
       test: /\.css?$/,
@@ -61,7 +64,10 @@ var loaders = {
     }),
     extracted: loader({
       test: /\.scss?$/,
-      loader: _extractTextWebpackPlugin2['default'].extract('style', SCSS_CLIENT)
+      loader: _extractTextWebpackPlugin2['default'].extract({
+        notExtractLoader: 'style',
+        extract: SCSS_CLIENT
+      })
     }),
     server: loader({
       test: /\.scss?$/,
