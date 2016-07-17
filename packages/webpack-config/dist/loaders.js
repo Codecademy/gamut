@@ -49,7 +49,7 @@ var loaders = {
       test: /\.css?$/,
       loader: _extractTextWebpackPlugin2['default'].extract({
         notExtractLoader: 'style',
-        extract: CSS_CLIENT
+        loader: CSS_CLIENT
       })
     }),
     server: loader({
@@ -66,7 +66,7 @@ var loaders = {
       test: /\.scss?$/,
       loader: _extractTextWebpackPlugin2['default'].extract({
         notExtractLoader: 'style',
-        extract: SCSS_CLIENT
+        loader: SCSS_CLIENT
       })
     }),
     server: loader({
