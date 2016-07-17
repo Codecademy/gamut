@@ -13,7 +13,7 @@ var _extractTextWebpackPlugin2 = _interopRequireDefault(_extractTextWebpackPlugi
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var CSS_CLIENT_PREFIX = 'css';
+var CSS_CLIENT_PREFIX = '!css';
 var CSS_SERVER_PREFIX = 'css/locals';
 
 // Only use debuggable class names in dev
