@@ -37,7 +37,7 @@ let loaders = {
       test: /\.css?$/,
       loader: ExtractTextPlugin.extract({
         notExtractLoader: 'style',
-        extract: CSS_CLIENT
+        loader: CSS_CLIENT
       })
     }),
     server: loader({
@@ -54,7 +54,7 @@ let loaders = {
       test: /\.scss?$/,
       loader: ExtractTextPlugin.extract({
         notExtractLoader: 'style',
-        extract: SCSS_CLIENT
+        loader: SCSS_CLIENT
       })
     }),
     server: loader({
