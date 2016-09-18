@@ -1,6 +1,46 @@
 {
   "name": "@codecademy/code_modules",
-  "version": "0.0.2",
   "description": "Shared modules and styles for Codecademy",
-  "readmeFilename": "README.md"
+  "version": "0.0.2",
+  "author": "Jake Hiller <jake@codecademy.com>",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.5.2"
+  },
+  "scripts": {
+    "compile": "babel -sd dist/ src/",
+    "preversion": "npm run compile",
+    "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RyzacInc/code_modules.git"
+  },
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "react": ">=0.14.0"
+  },
+  "dependencies": {
+    "invariant": "^2.2.0",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.4.0",
+    "babel-eslint": "5.0.0-beta10",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-codecademy": "^1.0.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "enzyme": "^2.2.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.0",
+    "eslint-plugin-react": "^3.16.1",
+    "jsdom": "^8.3.1",
+    "mocha": "^2.4.5",
+    "react": "15.x.x",
+    "react-addons-test-utils": "15.x.x",
+    "react-dom": "15.x.x"
+  },
+  "license": "MIT"
 }
