@@ -18,7 +18,7 @@ export const presetThemes = {
 };
 
 export class Button extends PureComponent {
-
+  static displayName = 'Button';
   static propTypes = {
     theme: React.PropTypes.string.isRequired,
     size: React.PropTypes.oneOf(['large', 'small']),

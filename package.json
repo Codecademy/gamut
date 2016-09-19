@@ -8,12 +8,11 @@
     "npm": ">=3.5.2"
   },
   "scripts": {
-    "compile": "babel -sd dist/ src/",
-    "preversion": "npm run compile",
+    "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build-storybook-static": "build-storybook -c .storybook -o docs"
+    "build": "npm run build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",

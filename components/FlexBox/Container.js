@@ -31,7 +31,7 @@ const internalProps = [
 ];
 
 class Container extends React.Component {
-
+  static displayName = 'Container';
   static propTypes = {
     flex: React.PropTypes.bool,
     inline: React.PropTypes.bool,
