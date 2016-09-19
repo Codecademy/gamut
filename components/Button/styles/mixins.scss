@@ -1,0 +1,113 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($color, $background, $border: transparent) {
+  $active-background: lighten($background, $btn-state-modifier);
+  $active-background-hover: lighten($background, $btn-state-modifier-active);
+
+  $active-border: lighten($border, $btn-state-modifier-active);
+  $active-border-hover: lighten($border, $btn-state-modifier-active);
+
+  @if $border == transparent {
+    $active-border: transparent;
+    $active-border-hover: transparent;
+  }
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover {
+    color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  &:active,
+  &.active {
+    color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $color;
+      background-color: $active-background-hover;
+      border-color: $active-border-hover;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      background-color: $background;
+      border-color: $border;
+    }
+    &:hover {
+      background-color: $background;
+      border-color: $border;
+    }
+  }
+}
+
+@mixin button-outline-variant($color) {
+  color: $color;
+  background-image: none;
+  background-color: transparent;
+  border-color: $color;
+
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    color: lighten($color, $btn-outline-state-modifier);
+    border-color: lighten($color, $btn-outline-state-modifier);
+  }
+  &:hover {
+    color: lighten($color, $btn-outline-state-modifier);
+    border-color: lighten($color, $btn-outline-state-modifier);
+  }
+
+  &.disabled,
+  &:disabled {
+    &:focus,
+    &.focus {
+      border-color: lighten($color, $btn-outline-state-modifier);
+    }
+    &:hover {
+      border-color: lighten($color, $btn-outline-state-modifier);
+    }
+  }
+}
+
+// Button sizes
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin button-variants($name, $color, $background, $border: transparent) {
+  .btn-#{$name} {
+    @include button-variant($color, $background, $border);
+    &.link {
+      color: $background;
+    }
+    &.outline {
+      @include button-outline-variant($background);
+    }
+    @content;
+  }
+}

@@ -1,0 +1,171 @@
+@import 'variables';
+@import 'mixins';
+
+//
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
+  transition: all 0.1s ease-in-out;
+  font-family: $btn-font-family;
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      // Default
+      // outline: thin dotted;
+      // outline-offset: -2px;
+      outline: none; // disabled
+    }
+  }
+
+  &:hover:focus {
+    text-decoration: none;
+  }
+  &.focus,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    background-image: none;
+    outline: 0;
+  }
+
+  &.disabled,
+  &:disabled {
+    cursor: $btn-cursor-disabled;
+    opacity: 0.65;
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+@each $name, $color in $btn-swatches {
+  @if lightness($color) > 75 {
+    @include button-variants($name, $swatches-cc-blue-700, $color);
+  } @else {
+    @include button-variants($name, $color-white, $color);
+  }
+};
+
+
+//
+// Button Sizes
+//
+
+.large {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg);
+}
+
+.small {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm);
+}
+
+.link {
+
+  padding: 0;
+
+  &,
+  &:active,
+  &.active,
+  &:disabled {
+    background-color: transparent;
+  }
+  &,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+    text-decoration: none;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  &:hover:focus {
+    opacity: 0.7;
+    background-color: transparent;
+  }
+  &:disabled {
+    &:hover:focus {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+  }
+}
+
+//
+// Block button
+//
+
+.block {
+  display: block;
+  width: 100%;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.underline {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.block {
+    width: 100%;
+  }
+}
+
+
+// "go" animation styles
+
+@keyframes lantern-pulse {
+  0% {
+    background-color: rgba($color-mint, 0.2);
+  }
+  100% {
+    background-color: rgba($color-mint, 0.5);
+  }
+}
+
+.go {
+
+  // lantern
+  &.btn-darkmint {
+
+    background-color: rgba($color-mint, 0.5);
+    animation: lantern-pulse 2s infinite ease;
+    animation-direction: alternate;
+
+    &:hover {
+      animation: none;
+    }
+  }
+}
