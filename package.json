@@ -12,7 +12,8 @@
     "preversion": "npm run compile",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "build-storybook-static": "build-storybook -c .storybook -o docs"
   },
   "repository": {
     "type": "git",
