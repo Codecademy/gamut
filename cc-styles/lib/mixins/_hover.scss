@@ -1,7 +1,0 @@
-@mixin transluscent-hover() {
-  &:hover {
-    opacity: 0.80;
-  }
-
-  @include transition(opacity 0.05s ease-in-out);
-}

@@ -1,6 +1,62 @@
 {
   "name": "@codecademy/code_modules",
-  "version": "0.0.2",
   "description": "Shared modules and styles for Codecademy",
-  "readmeFilename": "README.md"
+  "version": "0.0.2",
+  "author": "Jake Hiller <jake@codecademy.com>",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.5.2"
+  },
+  "scripts": {
+    "compile": "babel -sd dist/ src/",
+    "preversion": "npm run compile",
+    "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "build-storybook-static": "build-storybook -c .storybook -o docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RyzacInc/code_modules.git"
+  },
+  "main": "dist/index.js",
+  "peerDependencies": {
+    "react": ">=0.14.0"
+  },
+  "dependencies": {
+    "@codecademy/identity": "^1.14.1",
+    "classnames": "^2.2.5",
+    "invariant": "^2.2.0",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "@codecademy/webpack-config": "0.6.0",
+    "@kadira/react-storybook-addon-info": "^3.2.1",
+    "@kadira/react-storybook-decorator-centered": "^1.0.0",
+    "@kadira/storybook": "^2.5.2",
+    "@kadira/storybook-addon-knobs": "^1.2.0",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^6.1.2",
+    "babel-polyfill": "^6.7.4",
+    "babel-preset-codecademy": "^1.0.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
+    "enzyme": "^2.2.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.2",
+    "extract-text-webpack-plugin": "1.0.1",
+    "jsdom": "^8.3.1",
+    "mocha": "^2.4.5",
+    "node-sass": "^3.10.0",
+    "react": "15.x.x",
+    "react-addons-test-utils": "15.x.x",
+    "react-dom": "15.x.x",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
+  },
+  "license": "MIT"
 }
