@@ -5,10 +5,14 @@ import { wrapper } from './decorators/wrapper';
 
 addDecorator(withKnobs);
 addDecorator(wrapper);
-
 setAddon(infoAddon);
+
+// Require all files that match `stories/*-story.js`
+const req = require.context('../', true, /stories\/.*-story\.js$/);
+
+// And load them
 function loadStories() {
-  require('../stories');
+  req.keys().forEach(req);
 }
 
 configure(loadStories, module);

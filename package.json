@@ -23,7 +23,7 @@
     "react": ">=0.14.0"
   },
   "dependencies": {
-    "@codecademy/identity": "^1.14.1",
+    "@codecademy/identity": "^1.15.2",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1"

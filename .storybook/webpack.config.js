@@ -7,13 +7,14 @@ module.exports = {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.scss', '.css', '.gscss', '.json'],
     root: [
       path.join(__dirname, '../'),
-      path.join(__dirname, '../node_modules/@codecademy')
+      path.join(__dirname, '../node_modules/@codecademy/')
     ]
   },
   module: {
     loaders: [
       loaders.css.default(),
-      loaders.scss.default()
+      loaders.scss.default(),
+      loaders.json()
     ]
   },
   plugins: [
