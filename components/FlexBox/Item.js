@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Container from './index';
+import Container from './Container';
 
 class Item extends React.Component {
   static displayName = 'Item';

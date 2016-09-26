@@ -62,7 +62,7 @@ export class Button extends PureComponent {
       [s[this.props.size]]: Boolean(this.props.size)
     }, this.props.className);
 
-    const propsToTransfer = _.omit(this.props, 'theme', 'color', 'type');
+    const propsToTransfer = _.omit(this.props, 'theme', 'color', 'type', 'go');
 
     if (this.props.href) {
       return (

@@ -55,7 +55,7 @@ storiesOf('Button', module)
             background: id.color.midnightblue,
             padding: '0.5rem'
           }}>
-          <h3>Platform Button themes:</h3>
+          <h3 style={{color: '#fff'}}>Platform Button themes:</h3>
           <Button style={btnStyle} theme="platform">Platform</Button>
           <Button style={btnStyle} theme="lantern">Lantern</Button>
           <Button style={btnStyle} theme="lantern" go>Lantern: go</Button>

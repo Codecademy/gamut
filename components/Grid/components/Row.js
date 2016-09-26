@@ -1,0 +1,47 @@
+import React, { PropTypes } from 'react';
+import cx from 'classnames';
+import createProps from '../createProps';
+import style from '../styles';
+
+const ModificatorType = PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
+const modificatorKeys = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
+
+const propTypes = {
+  reverse: PropTypes.bool,
+  start: ModificatorType,
+  center: ModificatorType,
+  end: ModificatorType,
+  top: ModificatorType,
+  middle: ModificatorType,
+  bottom: ModificatorType,
+  around: ModificatorType,
+  between: ModificatorType,
+  first: ModificatorType,
+  last: ModificatorType,
+  className: PropTypes.string,
+  tagName: PropTypes.string,
+  children: PropTypes.node
+};
+
+function getClassNames(props) {
+  const modificators = [style.row];
+
+  for (let key of modificatorKeys) {
+    const value = props[key];
+    if (value) {
+      modificators.push(style[`${key}-${value}`]);
+    }
+  }
+
+  if (props.reverse) {
+    modificators.push(style.reverse);
+  }
+
+  return cx(props.className, modificators);
+}
+
+export default function Row(props) {
+  return React.createElement(props.tagName || 'div', createProps(propTypes, props, getClassNames(props)));
+}
+
+Row.propTypes = propTypes;
