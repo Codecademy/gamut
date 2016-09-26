@@ -4,8 +4,6 @@ import { Item } from 'components/FlexBox';
 import { Grid, Row, Col } from 'components/Grid';
 import { swatches } from 'identity';
 
-console.log(swatches);
-
 let Box = () => {
   return (
     <Item style={{height: 30, border: '1px solid #fff', backgroundColor: swatches.mint[500]}} />
