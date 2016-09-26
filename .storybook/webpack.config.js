@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const loaders = require('@codecademy/webpack-config').loaders;
+const ENV = (process.env.NODE_ENV || 'development');
 
 module.exports = {
   resolve: {
@@ -19,8 +20,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"' + process.env.NODE_ENV + '"',
-      '__DEV__': (process.env.NODE_ENV === 'development')
+      'process.env.NODE_ENV': '"' + ENV + '"',
+      '__DEV__': (ENV !== 'production')
     })
   ]
 };
