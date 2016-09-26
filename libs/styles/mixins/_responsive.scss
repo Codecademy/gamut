@@ -21,7 +21,7 @@
   }
 }
 
-// Helper mixins
+// Legacy Helper mixins
 
 @mixin device-phone {
   @include screen-size-between($bp-phone, $bp-tablet - 1) { @content; }
@@ -48,5 +48,3 @@
     }
   }
 }
-
-
