@@ -31,7 +31,7 @@ const classMap = {
 };
 
 function getClassNames(props) {
-  const extraClasses = ['col'];
+  const extraClasses = [style.col];
 
   if (props.className) {
     extraClasses.push(props.className);

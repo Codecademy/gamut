@@ -6,7 +6,7 @@ import { swatches } from 'identity';
 
 let Box = () => {
   return (
-    <Item style={{height: 30, border: '1px solid #fff', backgroundColor: swatches.mint[500]}} />
+    <Item style={{height: 30, border: '1px solid #fff', marginBottom: '0.5rem', backgroundColor: swatches.mint[500]}} />
   );
 };
 
