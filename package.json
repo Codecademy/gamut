@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/code_modules",
+  "name": "@codecademy/gamut",
   "description": "Shared modules and styles for Codecademy",
   "version": "0.0.2",
   "author": "Jake Hiller <jake@codecademy.com>",
@@ -7,6 +7,7 @@
     "node": ">=4.0.0",
     "npm": ">=3.5.2"
   },
+  "main": "./src/index.js",
   "scripts": {
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
@@ -19,7 +20,7 @@
     "url": "git@github.com:RyzacInc/code_modules.git"
   },
   "peerDependencies": {
-    "react": ">=0.14.0"
+    "react": ">=15.3.2"
   },
   "dependencies": {
     "@codecademy/identity": "^1.15.2",
@@ -50,7 +51,7 @@
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
     "node-sass": "^3.10.0",
-    "react": "15.x.x",
+    "react": "15.3.2",
     "react-addons-test-utils": "15.x.x",
     "react-dom": "15.x.x",
     "sass-loader": "^4.0.2",

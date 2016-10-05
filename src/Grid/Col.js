@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import createProps from '../createProps';
-import style from '../styles';
+import omitProps from '../utils/omitProps';
+import style from './styles';
 
 const ModificatorType = PropTypes.oneOfType([PropTypes.number, PropTypes.bool]);
 
@@ -18,6 +18,8 @@ const propTypes = {
   tagName: PropTypes.string,
   children: PropTypes.node
 };
+
+const propKeys = Object.keys(propTypes);
 
 const classMap = {
   xs: 'col-xs',
@@ -51,7 +53,7 @@ function getClassNames(props) {
 export default function Col(props) {
   const className = getClassNames(props);
 
-  return React.createElement(props.tagName || 'div', createProps(propTypes, props, className));
+  return React.createElement(props.tagName || 'div', omitProps(propKeys, {...props, className }));
 }
 
 Col.propTypes = propTypes;

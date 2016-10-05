@@ -1,17 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Oxygen:300,700);
 
-@function pow($number, $exponent) {
-  $value: 1;
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
-    }
-  }
-
-  @return $value;
-}
-
 html {
   font-size: $font-size-base;
 }

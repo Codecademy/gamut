@@ -3,11 +3,6 @@ import React, { PureComponent } from 'react';
 import cx from 'classnames';
 import s from './styles';
 
-/**
- * Reference:
- * http://codecademy.com/styleguide/buttons
- */
-
 // themes can be an alias to a color
 // or a unique button type
 export const presetThemes = {
@@ -17,7 +12,7 @@ export const presetThemes = {
   lantern: 'darkmint'
 };
 
-export class Button extends PureComponent {
+class Button extends PureComponent {
   static displayName = 'Button';
   static propTypes = {
     theme: React.PropTypes.string.isRequired,

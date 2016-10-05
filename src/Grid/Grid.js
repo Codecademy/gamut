@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
-import createProps from '../createProps';
-import style from '../styles';
+import omitProps from '../utils/omitProps';
+import style from './styles';
 
 const propTypes = {
   fluid: PropTypes.bool,
@@ -10,11 +10,13 @@ const propTypes = {
   children: PropTypes.node
 };
 
+const propKeys = Object.keys(propTypes);
+
 export default function Grid(props) {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 
-  return React.createElement(props.tagName || 'div', createProps(propTypes, props, className));
+  return React.createElement(props.tagName || 'div', omitProps(propKeys, { ...props, className }));
 }
 
 Grid.propTypes = propTypes;

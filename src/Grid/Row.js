@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
-import createProps from '../createProps';
-import style from '../styles';
+import omitProps from '../utils/omitProps';
+import style from './styles';
 
 const ModificatorType = PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
 const modificatorKeys = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
@@ -23,6 +23,8 @@ const propTypes = {
   children: PropTypes.node
 };
 
+const propKeys = Object.keys(propTypes);
+
 function getClassNames(props) {
   const modificators = [style.row];
 
@@ -41,7 +43,7 @@ function getClassNames(props) {
 }
 
 export default function Row(props) {
-  return React.createElement(props.tagName || 'div', createProps(propTypes, props, getClassNames(props)));
+  return React.createElement(props.tagName || 'div', omitProps(propKeys, { ...props, className: getClassNames(props) }));
 }
 
 Row.propTypes = propTypes;

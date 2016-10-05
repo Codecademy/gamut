@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Container } from 'components/FlexBox';
+import { Container } from 'src/FlexBox';
 
-storiesOf('Typography', module)
+storiesOf('[WIP] Typography', module)
   .addWithInfo(
     'Details',
     `
