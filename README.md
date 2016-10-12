@@ -4,7 +4,7 @@
 
 ---
 
-[storybook](styleguide.codecademy.com/storybook)
+[storybook](http://styleguide.codecademy.com/storybook)
 
 ### Publishing the component library
 
@@ -17,4 +17,4 @@
 ### Publishing the storybook
 
 1. From the root directory, run `npm run build`, this will run the storybook static build process and put the output into the `doc` folder.
-1. Merge into the master branch and push, and your changes should go live on the [storybook](styleguide.codecademy.com/storybook) page.
+1. Merge into the master branch and push, and your changes should go live on the [storybook](http://styleguide.codecademy.com/storybook) page.
