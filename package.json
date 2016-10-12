@@ -10,11 +10,11 @@
   "main": "./index.js",
   "scripts": {
     "postinstall": "npm run copy-package",
-    "prepublish": "npm run copy-package",
+    "postversion": "npm run copy-package",
     "release": "npm publish src",
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
-    "preversion": "npm run build && npm run copy-package",
+    "preversion": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build": "npm run build-storybook",
     "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook",
