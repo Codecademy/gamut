@@ -1,13 +1,13 @@
 {
-  "name": "@codecademy/gamut",
+  "name": "@codecademy/gamut-build",
+  "private": true,
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "1.0.1-0",
+  "version": "1.0.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "main": "./src/index.js",
   "scripts": {
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
@@ -17,18 +17,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/code_modules.git"
+    "url": "git@github.com:RyzacInc/gamut.git"
   },
-  "peerDependencies": {
-    "react": ">=15.3.2"
-  },
-  "dependencies": {
+  "devDependencies": {
     "@codecademy/identity": "^1.15.2",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
-    "lodash": "^3.10.1"
-  },
-  "devDependencies": {
+    "lodash": "^3.10.1",
     "@codecademy/webpack-config": "0.6.0",
     "@kadira/react-storybook-addon-info": "^3.2.1",
     "@kadira/react-storybook-decorator-centered": "^1.0.0",

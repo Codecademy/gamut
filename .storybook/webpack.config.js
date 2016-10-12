@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const loaders = require('@codecademy/webpack-config').loaders;
+
 const ENV = (process.env.NODE_ENV || 'development');
 
 module.exports = {
