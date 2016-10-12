@@ -10,7 +10,7 @@
   "main": "./src/index.js",
   "scripts": {
     "postinstall": "cp package.json ./src",
-    "publish": "npm publish src",
+    "release": "npm publish src",
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
     "preversion": "npm run build",
