@@ -9,9 +9,8 @@
   },
   "main": "./index.js",
   "scripts": {
-    "postinstall": "npm run copy-package",
     "postversion": "npm run copy-package",
-    "release": "npm publish src",
+    "release": "npm run copy-package && npm publish src",
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
     "preversion": "npm run build",
