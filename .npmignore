@@ -1,2 +1,3 @@
-# uncompiled js
-src
+docs
+.storybook
+.stories

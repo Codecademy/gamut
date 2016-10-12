@@ -1,3 +1,5 @@
-# code_modules
+# GAMUT
 
-Shared frontend modules repo for all Codecademy products
+*Styleguide & Component library for codecademy.com*
+
+---

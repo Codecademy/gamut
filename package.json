@@ -1,10 +1,10 @@
 {
   "name": "@codecademy/gamut",
-  "description": "Shared modules and styles for Codecademy",
-  "version": "0.0.2",
+  "description": "Styleguide & Component library for codecademy.com",
+  "version": "1.0.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "engines": {
-    "node": ">=4.0.0",
+    "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
   "main": "./src/index.js",
