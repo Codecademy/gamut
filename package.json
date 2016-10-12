@@ -9,14 +9,16 @@
   },
   "main": "./index.js",
   "scripts": {
-    "postinstall": "cp package.json ./src",
+    "postinstall": "npm run copy-package",
+    "prepublish": "npm run copy-package",
     "release": "npm publish src",
     "start": "npm run storybook",
     "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
-    "preversion": "npm run build",
+    "preversion": "npm run build && npm run copy-package",
     "storybook": "start-storybook -p 6006",
     "build": "npm run build-storybook",
-    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook"
+    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook",
+    "copy-package": "cp package.json ./src"
   },
   "repository": {
     "type": "git",
