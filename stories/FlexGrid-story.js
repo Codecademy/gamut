@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Item } from 'src/FlexBox';
-import { Grid, Row, Col } from 'src/Grid';
+import { Grid, Row, Col } from 'src/FlexGrid';
 import { swatches } from 'identity';
 
 let Box = () => {

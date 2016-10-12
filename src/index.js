@@ -1,3 +1,4 @@
 export Button from './Button';
+export Icon from './Icon';
 export * as FlexBox from './FlexBox';
-export { Grid, Row, Col } from './Grid';
+export * as FlexGrid from './FlexGrid';
