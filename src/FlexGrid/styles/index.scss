@@ -21,6 +21,11 @@ $container-lg: $grid-lg-min + $grid-gutter-width;
   margin-right: auto;
 }
 
+.container {
+  padding-left: $grid-gutter-width / 2;
+  padding-right: $grid-gutter-width / 2;
+}
+
 .container-fluid {
   padding-left: $grid-outer-margin;
   padding-right: $grid-outer-margin;
