@@ -5,6 +5,7 @@ module.exports = {
     require('babel-preset-stage-0')
   ],
   plugins: [
+    require('babel-plugin-add-module-exports'),
     require('babel-plugin-transform-decorators-legacy').default,
     require('babel-plugin-transform-es2015-template-literals'),
     require('babel-plugin-transform-es3-member-expression-literals'),
