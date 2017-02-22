@@ -59,29 +59,11 @@ let BasicGridExample = (props) => (
   </Grid>
 );
 
-storiesOf('Grid', module)
+storiesOf('Grid System', module)
   .addWithInfo(
-    'Details',
+    'Fixed Grid (Default)',
     `
-      Flexbox-based grid system
-
-      ~~~js
-      <Grid fluid>
-        <Row>
-          <Col xs={12} sm={3} md={2} lg={1} />
-          <Col xs={6} sm={6} md={8} lg={10} />
-          <Col xs={6} sm={3} md={2} lg={1} />
-        </Row>
-      </Grid>
-      ~~~
-    `,
-    () => <BasicGridExample fluid />,
-    infoOptions
-  )
-  .addWithInfo(
-    'Fixed',
-    `
-    The default grid has a fixed width, and jumps to fixed widths at the various breakpoints.
+    The default grid has a fixed width, and jumps to other fixed widths at the various breakpoints.
 
     ~~~js
     <Grid>
@@ -117,6 +99,8 @@ storiesOf('Grid', module)
   .addWithInfo(
     'Offsets',
     `
+    A column can be offset with the <code>xs</code> property
+
     ~~~js
     <Col xsOffset={11} xs={1} />
     <Col xsOffset={10} xs={2} />
