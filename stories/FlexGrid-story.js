@@ -63,14 +63,41 @@ storiesOf('Grid System', module)
   .addWithInfo(
     'Fixed Grid (Default)',
     `
-    The default grid has a fixed width, and jumps to other fixed widths at the various breakpoints.
+    The grid layout is composed of rows of columns.
 
+    A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
     ~~~js
     <Grid>
       <Row>
-        <Col xs={12} sm={3} md={2} lg={1} />
-        <Col xs={6} sm={6} md={8} lg={10} />
-        <Col xs={6} sm={3} md={2} lg={1} />
+        <Col xs={12} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={6} md={8} lg={10}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
       </Row>
     </Grid>
     ~~~
@@ -86,9 +113,35 @@ storiesOf('Grid System', module)
     ~~~js
     <Grid fluid>
       <Row>
-        <Col xs={12} sm={3} md={2} lg={1} />
-        <Col xs={6} sm={6} md={8} lg={10} />
-        <Col xs={6} sm={3} md={2} lg={1} />
+        <Col xs={12} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={6} md={8} lg={10}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
       </Row>
     </Grid>
     ~~~
