@@ -24,5 +24,6 @@ module.exports = {
       'process.env.NODE_ENV': '"' + ENV + '"',
       '__DEV__': (ENV !== 'production')
     })
-  ]
+  ],
+  postcss: {}
 };
