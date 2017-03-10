@@ -59,36 +59,45 @@ let BasicGridExample = (props) => (
   </Grid>
 );
 
-storiesOf('Grid', module)
+storiesOf('Grid System', module)
   .addWithInfo(
-    'Details',
+    'Fixed Grid (Default)',
     `
-      Flexbox-based grid system
+    The grid layout is composed of rows of columns.
 
-      ~~~js
-      <Grid fluid>
-        <Row>
-          <Col xs={12} sm={3} md={2} lg={1} />
-          <Col xs={6} sm={6} md={8} lg={10} />
-          <Col xs={6} sm={3} md={2} lg={1} />
-        </Row>
-      </Grid>
-      ~~~
-    `,
-    () => <BasicGridExample fluid />,
-    infoOptions
-  )
-  .addWithInfo(
-    'Fixed',
-    `
-    The default grid has a fixed width, and jumps to fixed widths at the various breakpoints.
-
+    A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
     ~~~js
     <Grid>
       <Row>
-        <Col xs={12} sm={3} md={2} lg={1} />
-        <Col xs={6} sm={6} md={8} lg={10} />
-        <Col xs={6} sm={3} md={2} lg={1} />
+        <Col xs={12} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={6} md={8} lg={10}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
       </Row>
     </Grid>
     ~~~
@@ -104,9 +113,35 @@ storiesOf('Grid', module)
     ~~~js
     <Grid fluid>
       <Row>
-        <Col xs={12} sm={3} md={2} lg={1} />
-        <Col xs={6} sm={6} md={8} lg={10} />
-        <Col xs={6} sm={3} md={2} lg={1} />
+        <Col xs={12} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={6} md={8} lg={10}>
+          <Box />
+        </Col>
+        <Col xs={6} sm={3} md={2} lg={1}>
+          <Box />
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
+        <Col xs={12} sm={2}>
+          <Box />
+        </Col>
       </Row>
     </Grid>
     ~~~
@@ -117,6 +152,8 @@ storiesOf('Grid', module)
   .addWithInfo(
     'Offsets',
     `
+    A column can be offset with the <code>xs</code> property
+
     ~~~js
     <Col xsOffset={11} xs={1} />
     <Col xsOffset={10} xs={2} />
