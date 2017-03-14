@@ -3,6 +3,12 @@ import { storiesOf } from '@kadira/storybook';
 import { Container } from 'src/FlexBox';
 import id from 'identity';
 
+let infoOptions = {
+  inline: true,
+  source: false,
+  propTables: false
+};
+
 let parseCamelCase = (string) => {
   return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 };
@@ -66,20 +72,40 @@ let renderSwatchRows = (data) => {
     if (['code', 'basic'].includes(variablePrefix)) return null;
     return (
       <div key={variablePrefix}>
-        <h2>{parseCamelCase(variablePrefix)}</h2>
         {renderSwatchRow(data, variablePrefix)}
       </div>
     );
   });
 };
 
-
 storiesOf('Colors', module)
-  .add('with text', () => (
-    <Container column>
+  .addWithInfo(
+    'Standard',
+    `
+      Standard
+    `,
+    () => (
       <div>
-        {renderSwatchRows({'standard': id.color})}
-        {renderSwatchRows(id.swatches)}
+        {renderSwatchRow({'standard': id.color}, 'standard')}
       </div>
-    </Container>
-  ));
+    ),
+    infoOptions
+  );
+
+      // <div>
+        // {renderSwatchRows(id.swatches)}
+      // </div>
+// let stories = storiesOf('Colors', module)
+// .add('Color mint', () => (
+  // <CourseIcon slug='learn-angularjs' fill={swatches.mint[500]} {...defaultProps} />
+// )).add('Unknown slug', () => (
+  // <CourseIcon slug='i-am-not-a-slug-i-am-snail' fill={swatches.mint[500]} {...defaultProps} />
+// ));
+
+
+// slugs.map((s) => {
+  // stories.add(s, () => (
+    // <CourseIcon slug={s} {...defaultProps} />
+  // ));
+// });
+
