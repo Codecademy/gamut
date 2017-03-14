@@ -40,72 +40,54 @@ let containerStyles = {
 };
 
 let getSassVariableName = (variablePrefix, variableSuffix) => {
-  if (variablePrefix === 'standard') {
-    return `$color-${parseCamelCase(variableSuffix)}`;
+  if (variablePrefix) {
+    return `$swatches-${parseCamelCase(variablePrefix)}-${variableSuffix}`;
   }
-  return `$swatches-${parseCamelCase(variablePrefix)}-${variableSuffix}`;
+  return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
-let renderSwatchRow = (data, variablePrefix) => {
-  return Object.keys(data[variablePrefix]).map((variableSuffix) => {
+let renderSwatch = (data, variablePrefix) => {
+  return Object.keys(data).map((variableSuffix) => {
     let swatchStyles = {
-      color: contrastColor(data[variablePrefix][variableSuffix]),
-      backgroundColor: data[variablePrefix][variableSuffix],
-      height: '222px',
+      color: contrastColor(data[variableSuffix]),
+      backgroundColor: data[variableSuffix],
+      height: '160px',
       margin: '10px 0',
-      width: '222px'
+      width: '160px'
     };
     let sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
     return (
       <div style={containerStyles} key={sassVariableName}>
         <Container style={swatchStyles} center>
-          {data[variablePrefix][variableSuffix]}
+          {data[variableSuffix]}
         </Container>
-        <span>{sassVariableName}</span>
+        <span style={{fontSize: '13px'}}>{sassVariableName}</span>
       </div>
     );
   });
 };
 
-let renderSwatchRows = (data) => {
-  return Object.keys(data).map((variablePrefix) => {
-    if (['code', 'basic'].includes(variablePrefix)) return null;
-    return (
-      <div key={variablePrefix}>
-        {renderSwatchRow(data, variablePrefix)}
-      </div>
-    );
-  });
-};
-
-storiesOf('Colors', module)
+let stories = storiesOf('Colors', module)
   .addWithInfo(
-    'Standard',
-    `
-      Standard
-    `,
+    'standard',
     () => (
       <div>
-        {renderSwatchRow({'standard': id.color}, 'standard')}
+        {renderSwatch(id.color)}
       </div>
     ),
     infoOptions
   );
 
-      // <div>
-        // {renderSwatchRows(id.swatches)}
-      // </div>
-// let stories = storiesOf('Colors', module)
-// .add('Color mint', () => (
-  // <CourseIcon slug='learn-angularjs' fill={swatches.mint[500]} {...defaultProps} />
-// )).add('Unknown slug', () => (
-  // <CourseIcon slug='i-am-not-a-slug-i-am-snail' fill={swatches.mint[500]} {...defaultProps} />
-// ));
-
-
-// slugs.map((s) => {
-  // stories.add(s, () => (
-    // <CourseIcon slug={s} {...defaultProps} />
-  // ));
-// });
+Object.keys(id.swatches).map((color) => {
+  if (['code', 'basic'].includes(color)) return null;
+  return stories.addWithInfo(
+    color,
+    () => (
+      <div>
+        {renderSwatch(id.swatches[color], color)}
+      </div>
+    ),
+    infoOptions
+  );
+});
 
