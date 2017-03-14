@@ -1,11 +1,10 @@
 import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { Container, Item } from 'src/FlexBox';
-import Button, { presetThemes } from 'src/Button';
+import { storiesOf } from '@kadira/storybook';
+import { Container } from 'src/FlexBox';
 import id from 'identity';
 
-let formatCamelCase = (string) => {
-  return string.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
+let parseCamelCase = (string) => {
+  return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 };
 
 let hexToRgb = (hex) => {
@@ -15,18 +14,18 @@ let hexToRgb = (hex) => {
     g: parseInt(result[2], 16),
     b: parseInt(result[3], 16)
   } : null;
-}
+};
 
 let contrastColor = (hex) => {
   let rgb = hexToRgb(hex);
-  let red = rgb['r'];
-  let green = rgb['g'];
-  let blue = rgb['b'];
-  if ((red*0.299 + green*0.587 + blue*0.114) > 176) {
+  let red = rgb.r;
+  let green = rgb.g;
+  let blue = rgb.b;
+  if (((red * 0.299) + (green * 0.587) + (blue * 0.114)) > 176) {
     return '#000000';
   }
   return '#ffffff';
-}
+};
 
 let containerStyles = {
   display: 'inline-block',
@@ -34,44 +33,52 @@ let containerStyles = {
   marginRight: '1rem'
 };
 
-let renderSwatchRow = (data, swatchName) => {
-  return Object.keys(data[swatchName]).map(function (colorSuffix) {
+let getSassVariableName = (variablePrefix, variableSuffix) => {
+  if (variablePrefix === 'standard') {
+    return `$color-${parseCamelCase(variableSuffix)}`;
+  }
+  return `$swatches-${parseCamelCase(variablePrefix)}-${variableSuffix}`;
+};
+
+let renderSwatchRow = (data, variablePrefix) => {
+  return Object.keys(data[variablePrefix]).map((variableSuffix) => {
     let swatchStyles = {
-      color: contrastColor(data[swatchName][colorSuffix]),
-      backgroundColor: data[swatchName][colorSuffix],
+      color: contrastColor(data[variablePrefix][variableSuffix]),
+      backgroundColor: data[variablePrefix][variableSuffix],
       height: '222px',
       margin: '10px 0',
       width: '222px'
     };
-    let colorName = swatchName === 'standard' ? colorSuffix : formatCamelCase(swatchName) + '-' + colorSuffix;
+    let sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
     return (
-      <div style={containerStyles} key={colorName}>
+      <div style={containerStyles} key={sassVariableName}>
         <Container style={swatchStyles} center>
-          {data[swatchName][colorSuffix]}
+          {data[variablePrefix][variableSuffix]}
         </Container>
-        <span>{colorName}</span>
-      </div>
-    );
-  });
-}
-
-let renderSwatchRows = (data) => {
-  return Object.keys(data).map(function (swatchName) {
-    if (['code', 'basic'].includes(swatchName)) return null;
-    return (
-      <div key={swatchName}>
-        <h2>{formatCamelCase(swatchName)}</h2>
-        {renderSwatchRow(data, swatchName)}
+        <span>{sassVariableName}</span>
       </div>
     );
   });
 };
 
+let renderSwatchRows = (data) => {
+  return Object.keys(data).map((variablePrefix) => {
+    if (['code', 'basic'].includes(variablePrefix)) return null;
+    return (
+      <div key={variablePrefix}>
+        <h2>{parseCamelCase(variablePrefix)}</h2>
+        {renderSwatchRow(data, variablePrefix)}
+      </div>
+    );
+  });
+};
+
+
 storiesOf('Colors', module)
   .add('with text', () => (
     <Container column>
       <div>
-        {renderSwatchRows({ 'standard': id.color })}
+        {renderSwatchRows({'standard': id.color})}
         {renderSwatchRows(id.swatches)}
       </div>
     </Container>
