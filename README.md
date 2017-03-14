@@ -6,6 +6,13 @@
 
 [storybook](http://styleguide.codecademy.com/storybook)
 
+See the wiki for 
+[more info about Storybook](https://github.com/RyzacInc/Codecademy/wiki/Storybook:-A-React-Component-Style-Guide)
+
+### Local development
+
+`npm start`
+
 ### Publishing the component library
 
 1. Make sure your changes have been merged into the master branch

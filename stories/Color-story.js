@@ -41,7 +41,7 @@ let containerStyles = {
 
 let getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
-    return `$swatches-${parseCamelCase(variablePrefix)}-${variableSuffix}`;
+    return `$swatches-${parseCamelCase(variablePrefix)}-${parseCamelCase(variableSuffix)}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
@@ -79,7 +79,7 @@ let stories = storiesOf('Colors', module)
   );
 
 Object.keys(id.swatches).map((color) => {
-  if (['code', 'basic'].includes(color)) return null;
+  if ('basic'.includes(color)) return null;
   return stories.addWithInfo(
     color,
     () => (
