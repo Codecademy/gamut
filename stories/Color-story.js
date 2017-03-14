@@ -81,7 +81,7 @@ let stories = storiesOf('Colors', module)
 Object.keys(id.swatches).map((color) => {
   if ('basic'.includes(color)) return null;
   return stories.addWithInfo(
-    color,
+    parseCamelCase(color),
     () => (
       <div>
         {renderSwatch(id.swatches[color], color)}
