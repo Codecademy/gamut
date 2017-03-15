@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Container } from 'src/FlexBox';
 import id from 'identity';
 
 const infoOptions = {
@@ -13,30 +12,17 @@ const parseCamelCase = (string) => {
   return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 };
 
-const hexToRgb = (hex) => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-};
-
-const contrastColor = (hex) => {
-  const rgb = hexToRgb(hex);
-  const red = rgb.r;
-  const green = rgb.g;
-  const blue = rgb.b;
-  if (((red * 0.299) + (green * 0.587) + (blue * 0.114)) > 176) {
-    return '#000000';
-  }
-  return '#ffffff';
-};
-
 const containerStyles = {
   display: 'inline-block',
   marginBottom: '1rem',
   marginRight: '1rem'
+};
+
+const headerStyles = {
+  fontSize: '22px',
+  fontWeight: '400',
+  margin: '0 0 10px 0',
+  padding: '0'
 };
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
@@ -49,7 +35,6 @@ const getSassVariableName = (variablePrefix, variableSuffix) => {
 const renderSwatch = (data, variablePrefix) => {
   return Object.keys(data).map((variableSuffix) => {
     const swatchStyles = {
-      color: contrastColor(data[variableSuffix]),
       backgroundColor: data[variableSuffix],
       height: '160px',
       margin: '10px 0',
@@ -58,10 +43,11 @@ const renderSwatch = (data, variablePrefix) => {
     const sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
     return (
       <div style={containerStyles} key={sassVariableName}>
-        <Container style={swatchStyles} center>
+        <div style={swatchStyles} />
+        <span style={{fontSize: '13px'}}>
+          {sassVariableName}<br />
           {data[variableSuffix]}
-        </Container>
-        <span style={{fontSize: '13px'}}>{sassVariableName}</span>
+        </span>
       </div>
     );
   });
@@ -69,25 +55,34 @@ const renderSwatch = (data, variablePrefix) => {
 
 const stories = storiesOf('Colors', module)
   .addWithInfo(
-    'standard',
+    'Basic',
     () => (
       <div>
-        {renderSwatch(id.color)}
+        <div>
+          {renderSwatch(id.color)}
+        </div>
+        <div>
+          {Object.keys(id.swatches).map((color) => {
+            if (['basic', 'code'].includes(color)) return null;
+            return (
+              <div>
+                <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
+                {renderSwatch(id.swatches[color], color)}
+              </div>
+            );
+          })}
+        </div>
       </div>
     ),
     infoOptions
   );
 
-Object.keys(id.swatches).map((color) => {
-  if ('basic'.includes(color)) return null;
-  return stories.addWithInfo(
-    parseCamelCase(color),
-    () => (
-      <div>
-        {renderSwatch(id.swatches[color], color)}
-      </div>
-    ),
-    infoOptions
-  );
-});
-
+stories.addWithInfo(
+  'Editor theme',
+  () => (
+    <div>
+      {renderSwatch(id.swatches.code, 'code')}
+    </div>
+  ),
+  infoOptions
+);
