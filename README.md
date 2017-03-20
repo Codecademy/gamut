@@ -11,7 +11,15 @@ See the wiki for
 
 ### Local development
 
+Install dependencies
+
+`npm install`
+
+Run the development server
+
 `npm start`
+
+Visit http://localhost:6006 to see the styleguide.
 
 ### Publishing the component library
 
