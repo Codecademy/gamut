@@ -93,6 +93,36 @@ storiesOf('Form', module)
     }
   )
   .add(
+    'FormGroupHeader',
+    () => (
+      <FormGroupHeader>Password</FormGroupHeader>
+    )
+  )
+  .addWithInfo(
+    'FormGroupHeader',
+    () => (
+      <FormGroupHeader>Password</FormGroupHeader>
+    ), {
+      inline: true,
+      propTables: false
+    }
+  )
+  .add(
+    'FormButton',
+    () => (
+      <FormButton>Submit</FormButton>
+    )
+  )
+  .addWithInfo(
+    'FormButton',
+    () => (
+      <FormButton>Submit</FormButton>
+    ), {
+      inline: true,
+      propTables: false
+    }
+  )
+  .add(
     'Checkbox',
     () => (
       <Checkbox
@@ -202,21 +232,6 @@ storiesOf('Form', module)
         label="Select"
         options={['one', 'two', 'three', 'option four', 'five']}
       />
-    ), {
-      inline: true,
-      propTables: false
-    }
-  )
-  .add(
-    'FormGroupHeader',
-    () => (
-      <FormGroupHeader>Password</FormGroupHeader>
-    )
-  )
-  .addWithInfo(
-    'FormGroupHeader',
-    () => (
-      <FormGroupHeader>Password</FormGroupHeader>
     ), {
       inline: true,
       propTables: false
