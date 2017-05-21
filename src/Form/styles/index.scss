@@ -1,0 +1,222 @@
+@import 'src/styles/utils';
+@import '~identity/identity.scss';
+$color-border: $swatches-grey-200;
+$item-background: $color-white;
+$item-background-hover: $swatches-grey-100;
+$item-background-selected: $swatches-mint-700;
+$item-background-selected-hover: rgba($item-background-selected, 0.7);
+$border-radius: 2px;
+$transition-time: 0.15s;
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Input {
+  font-size: 1em;
+  text-indent: 0.8em;
+  padding: 0.8rem 0;
+  outline: none;
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: $transition-time;
+
+  .red {
+    color: $color-red;
+  }
+
+  &::placeholder {
+    color: $swatches-grey-500;
+  }
+
+  &:focus {
+    border-color: $color-blue;
+  }
+
+  &.error {
+    border-color: $color-red;
+  }
+}
+
+.TextArea {
+  font-size: 1em;
+  padding: 0.8rem;
+  outline: none;
+  width: calc(100% - 1.6em);
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: $transition-time;
+
+  &::placeholder {
+    color: $swatches-grey-500;
+  }
+
+  &:focus {
+    border-color: $color-blue;
+  }
+
+  &.error {
+    border-color: $color-red;
+  }
+}
+
+.Checkbox {
+  @include no-select;
+  margin: 0.4em 0;
+  width: 100%;
+
+  &.tags {
+    width: auto;
+    margin-right: 1em;
+    min-width: 8em;
+  }
+
+  .checkboxLabel {
+    display: block;
+    padding: 0.8em;
+    border-radius: $border-radius;
+    border: 1px solid $swatches-grey-100;
+    transition: $transition-time;
+  }
+
+  .checkboxInput {
+    display: none;
+  }
+
+  .checkboxSpan {
+    display: flex;
+    position: relative;
+    top: 0.1em;
+  }
+
+  .checkboxSpan::before {
+    content: '';
+    display: block;
+    position: relative;
+    top: -0.1em;
+    background-position: center;
+    width: 1.25em;
+    height: 1.25em;
+    min-width: 1.25em;
+    min-height: 1.25em;
+    border-radius: $border-radius;
+    border: 2px solid $swatches-grey-300;
+    margin-right: 0.8em;
+    transition: $transition-time;
+    background-color: white;
+  }
+
+  .checkboxInput:checked + .checkboxLabel {
+    background-color: $swatches-grey-100;
+    transition: $transition-time;
+  }
+
+  .checkboxInput:checked + .checkboxLabel .checkboxSpan::before {
+    background: url('data:image/svg+xml;utf8,<svg width="14" height="11" viewBox="0 0 14 11" xmlns="http://www.w3.org/2000/svg"><path d="M5.048 8.164L12.61.532l1.452 1.48L5.048 11-.032 5.98l1.408-1.409z" fill="%23E9EAEA"/></svg>') center center no-repeat;
+    background-color: $color-mint;
+    border-color: $color-mint;
+  }
+}
+
+.Select {
+  position: relative;
+  width: 100%;
+
+  .selectIcon {
+    pointer-events: none;
+    position: absolute;
+    right: 1em;
+    top: 1.25em;
+    width: 0.75em;
+  }
+
+  .selectInput {
+    display: block;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    border-radius: $border-radius;
+    border: 1px solid $swatches-grey-100;
+    width: 100%;
+    padding: 0.8em;
+    padding-right: 2.5em;
+    background-color: $item-background;
+    font-size: 1em;
+
+    // Firefox hack
+    color: transparent;
+    text-shadow: 0 0 0 $color-black;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $item-background-hover;
+      background-color: $item-background-hover;
+    }
+  }
+}
+
+.FormGroupHeader {
+  margin: 1.5em 0 0.25em 0;
+  font-weight: bold;
+}
+
+.Radio {
+  @include no-select;
+  margin: 0.25em 0;
+  width: 100%;
+
+  .radioLabel {
+    display: block;
+    padding: 0.8em;
+    border-radius: $border-radius;
+    border: 1px solid $swatches-grey-100;
+    transition: $transition-time;
+  }
+
+  .radioInput {
+    display: none;
+  }
+
+  .radioSpan {
+    display: flex;
+    position: relative;
+    top: 0.1em;
+  }
+
+  .radioSpan::before {
+    content: '';
+    display: block;
+    position: relative;
+    top: -0.1em;
+    width: 1.25em;
+    height: 1.25em;
+    min-width: 1.25em;
+    min-height: 1.25em;
+    border-radius: 100%;
+    border: 2px solid $swatches-grey-300;
+    margin-right: 0.8em;
+    transition: $transition-time;
+  }
+
+  .radioInput:checked + .radioLabel {
+    background-color: $swatches-grey-100;
+  }
+
+  .radioInput:checked + .radioLabel .radioSpan::before {
+    background-color: $color-mint;
+    border: 0.25em solid $swatches-grey-100;
+    border-radius: 100%;
+    box-shadow: 0 0 0 2px $color-mint;
+    width: 1em;
+    height: 1em;
+    min-width: 1em;
+    min-height: 1em;
+  }
+}
+
+.FormButton {
+  margin-top: 1em;
+}
