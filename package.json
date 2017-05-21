@@ -55,7 +55,7 @@
     "jsdom": "^8.3.1",
     "mocha": "^2.4.5",
     "node-sass": "^3.10.0",
-    "react": "15.3.2",
+    "react": "15.5.4",
     "react-addons-test-utils": "15.x.x",
     "react-dom": "15.x.x",
     "sass-loader": "^4.0.2",

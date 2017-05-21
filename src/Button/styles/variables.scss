@@ -2,8 +2,8 @@
 
 $btn-padding-x: 1rem !default;
 $btn-padding-y: 0.375rem !default;
-$btn-font-weight: normal !default;
-$btn-font-family: $font-oxygen, 'Helvetica', arial;
+$btn-font-weight: $font-weight !default;
+$btn-font-family: $font-base;
 
 $btn-cursor-disabled: not-allowed !default;
 
