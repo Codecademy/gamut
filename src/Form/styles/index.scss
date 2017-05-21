@@ -1,6 +1,6 @@
 @import 'src/styles/utils';
 @import '~identity/identity.scss';
-$color-border: $swatches-grey-200;
+$color-border: $swatches-grey-100;
 $item-background: $color-white;
 $item-background-hover: $swatches-grey-100;
 $item-background-selected: $swatches-mint-700;
@@ -89,14 +89,14 @@ $transition-time: 0.15s;
   .checkboxSpan {
     display: flex;
     position: relative;
-    top: 0.1em;
+    top: 0.2em;
   }
 
   .checkboxSpan::before {
     content: '';
     display: block;
     position: relative;
-    top: -0.1em;
+    top: -0.2em;
     background-position: center;
     width: 1.25em;
     height: 1.25em;
@@ -159,7 +159,7 @@ $transition-time: 0.15s;
 }
 
 .FormGroupHeader {
-  margin: 1.5em 0 0.25em 0;
+  margin: 1.5em 0 0.5em 0;
   font-weight: bold;
 }
 
@@ -183,14 +183,14 @@ $transition-time: 0.15s;
   .radioSpan {
     display: flex;
     position: relative;
-    top: 0.1em;
+    top: 0.2em;
   }
 
   .radioSpan::before {
     content: '';
     display: block;
     position: relative;
-    top: -0.1em;
+    top: -0.2em;
     width: 1.25em;
     height: 1.25em;
     min-width: 1.25em;
