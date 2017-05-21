@@ -96,20 +96,3 @@ storiesOf('Typography', module)
       </div>
     )
   );
-  // .addWithInfo(
-  //   'Typography',
-  //   () => (
-  //   ), {
-  //     inline: true,
-  //     propTables: false
-  //   }
-  // )
-  // .addWithInfo(
-  //   'Editable',
-  //   () => (
-  //     <Spinner fill={text('Fill color', 'grey')} size={text('Size', '1em')} />
-  //   ), {
-  //     inline: true,
-  //     propTables: false
-  //   }
-  // );
