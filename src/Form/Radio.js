@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
-import s from './styles/index.scss'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import s from './styles/index.scss';
 
 class Radio extends PureComponent {
   render() {
-    const className = cx(s.Radio, this.props.className)
+    const className = cx(s.Radio, this.props.className);
     return (
       <fieldset
         className={className}
@@ -29,7 +29,7 @@ class Radio extends PureComponent {
           </span>
         </label>
       </fieldset>
-    )
+    );
   }
 }
 
@@ -39,6 +39,6 @@ Radio.propTypes = {
   name: PropTypes.string,
   required: PropTypes.bool,
   label: PropTypes.string
-}
+};
 
-export default Radio
+export default Radio;

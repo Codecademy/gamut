@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
-import s from './styles/index.scss'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import s from './styles/index.scss';
 
 class TextArea extends PureComponent {
   render() {
@@ -14,7 +14,7 @@ class TextArea extends PureComponent {
         required={this.props.required}
         className={className}
       />
-    )
+    );
   }
 }
 
@@ -23,6 +23,6 @@ TextArea.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   name: PropTypes.string,
   required: PropTypes.bool
-}
+};
 
-export default TextArea
+export default TextArea;

@@ -1,11 +1,11 @@
-import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
-import s from './styles/index.scss'
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import s from './styles/index.scss';
 
 class Input extends PureComponent {
   render() {
-    const className = cx(s.Input, this.props.className)
+    const className = cx(s.Input, this.props.className);
     return (
       <input
         {...this.props}
@@ -16,13 +16,13 @@ class Input extends PureComponent {
         type={this.props.type}
         className={className}
       />
-    )
+    );
   }
 }
 
 Input.defaultProps = {
   type: 'text'
-}
+};
 
 Input.propTypes = {
   className: PropTypes.string,
@@ -31,6 +31,6 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string
-}
+};
 
-export default Input
+export default Input;

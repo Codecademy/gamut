@@ -10,13 +10,11 @@ storiesOf('Form', module)
         <FormGroupHeader>Name</FormGroupHeader>
         <Input
           htmlFor="name"
-          label="firstName"
           placeholder="First Name"
         />
         <FormGroupHeader>About</FormGroupHeader>
         <TextArea
           htmlFor="about"
-          label="aboutYou"
           placeholder="About you"
           rows="8"
         />
@@ -34,7 +32,6 @@ storiesOf('Form', module)
         <FormGroupHeader>Select an option</FormGroupHeader>
         <Select
           htmlFor="select"
-          label="Select"
           options={['one', 'two', 'three', 'option four', 'five']}
         />
         <FormGroupHeader>Terms of Service</FormGroupHeader>
@@ -53,13 +50,11 @@ storiesOf('Form', module)
         <FormGroupHeader>Name</FormGroupHeader>
         <Input
           htmlFor="name"
-          label="firstName"
           placeholder="First Name"
         />
         <FormGroupHeader>About</FormGroupHeader>
         <TextArea
           htmlFor="about"
-          label="aboutYou"
           placeholder="About you"
           rows="8"
         />
@@ -77,7 +72,6 @@ storiesOf('Form', module)
         <FormGroupHeader>Select an option</FormGroupHeader>
         <Select
           htmlFor="select"
-          label="Select"
           options={['one', 'two', 'three', 'option four', 'five']}
         />
         <FormGroupHeader>Terms of Service</FormGroupHeader>
@@ -171,7 +165,6 @@ storiesOf('Form', module)
     () => (
       <Input
         htmlFor="name"
-        label="firstName"
         placeholder="First Name"
       />
     )
@@ -181,7 +174,6 @@ storiesOf('Form', module)
     () => (
       <Input
         htmlFor="name"
-        label="firstName"
         placeholder="First Name"
       />
     ), {
@@ -194,7 +186,6 @@ storiesOf('Form', module)
     () => (
       <TextArea
         htmlFor="about"
-        label="aboutYou"
         placeholder="About you"
         rows="8"
       />
@@ -205,7 +196,6 @@ storiesOf('Form', module)
     () => (
       <TextArea
         htmlFor="about"
-        label="aboutYou"
         placeholder="About you"
         rows="8"
       />
@@ -219,7 +209,6 @@ storiesOf('Form', module)
     () => (
       <Select
         htmlFor="select"
-        label="Select"
         options={['one', 'two', 'three', 'option four', 'five']}
       />
     )
@@ -229,7 +218,6 @@ storiesOf('Form', module)
     () => (
       <Select
         htmlFor="select"
-        label="Select"
         options={['one', 'two', 'three', 'option four', 'five']}
       />
     ), {
