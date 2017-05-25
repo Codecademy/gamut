@@ -1,0 +1,25 @@
+{
+  "name": "@codecademy/gamut",
+  "description": "Styleguide & Component library for codecademy.com",
+  "version": "1.1.2",
+  "author": "Jake Hiller <jake@codecademy.com>",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.5.2"
+  },
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RyzacInc/gamut.git"
+  },
+  "peerDependencies": {
+    "react": ">=15.3.2"
+  },
+  "dependencies": {
+    "@codecademy/gamut-identity": "^1.1.2",
+    "classnames": "^2.2.5",
+    "invariant": "^2.2.0",
+    "lodash": "^3.10.1"
+  },
+  "license": "MIT"
+}

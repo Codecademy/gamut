@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { Container } from 'src/FlexBox';
-import Button, { presetThemes } from 'src/Button';
+import { Container } from 'packages/gamut/FlexBox';
+import Button, { presetThemes } from 'packages/gamut/Button';
 import { select, text } from '@kadira/storybook-addon-knobs';
 import id from 'identity';
 

@@ -7,17 +7,11 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "main": "./index.js",
   "scripts": {
-    "postversion": "npm run copy-package",
-    "release": "npm run copy-package && npm publish src",
     "start": "npm run storybook",
-    "test": "mocha --compilers js:babel-register test/.setup.js test/**/*-test.js",
-    "preversion": "npm run build",
     "storybook": "start-storybook -p 6006",
     "build": "npm run build-storybook",
-    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook",
-    "copy-package": "cp package.json ./src"
+    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook"
   },
   "repository": {
     "type": "git",
@@ -27,7 +21,8 @@
     "react": ">=15.3.2"
   },
   "dependencies": {
-    "@codecademy/identity": "^1.15.2",
+    "@codecademy/gamut-identity": "^1.1.2",
+    "@codecademy/gamut": "^1.1.2",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1"
