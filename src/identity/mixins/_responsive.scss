@@ -1,0 +1,47 @@
+// Media query abstractions
+// variables are defined in breakpoints.json
+
+@mixin screen-size-lte($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-size-between($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin screen-size-gte($min) {
+  @media screen and (min-width: $min) {
+    @content;
+  }
+}
+
+// Legacy Helper mixins
+@mixin device-phone {
+  @include screen-size-between($bp-phone, $bp-tablet - 1) { @content; }
+}
+
+@mixin device-tablet {
+  @include screen-size-between($bp-tablet, $bp-desktop - 1) { @content; }
+}
+
+@mixin device-desktop {
+  @include screen-size-gte($bp-desktop) { @content; }
+}
+
+@mixin devices($devices...) {
+  @each $device in $devices {
+    @if $device == phone {
+      @include device-phone { @content; };
+    }
+    @if $device == tablet {
+      @include device-tablet { @content; };
+    }
+    @if $device == desktop {
+      @include device-desktop { @content; };
+    }
+  }
+}

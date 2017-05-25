@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+
+// Font families
+$font-base: 'Oxygen', 'Oxygen', 'Segoe UI', 'Helvetica Neue', sans-serif;
+$font-monospace: Monaco, Menlo, 'Ubuntu Mono', 'Droid Sans Mono', Consolas, monospace;
+$font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+// Base measures
+$font-family: $font-base;
+$base-unit: 1rem;
+$line-height: 1.8;
+$base-margin: 1em;
+$font-size: px-em(16px, 16px);
+$font-weight: 400;
+$text-color: $color-grey-5;
+$link-color: $color-mint;
+
+// Typography variables
+$font-size-1: px-em(46px, 16px);
+$font-size-2: px-em(32px, 16px);
+$font-size-3: px-em(23px, 16px);
+$font-size-4: px-em(16px, 16px);
+$font-size-5: px-em(12px, 16px);
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: $font-family;
+  color: $text-color;
+  font-weight: $font-weight;
+  @include font-smoothing;
+}
+
+h1 {
+  font-size: $font-size-1;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: px-em(64px, 46px);
+  margin-bottom: $base-margin / 2;
+}
+
+h2 {
+  font-size: $font-size-2;
+  font-weight: 900;
+  line-height: px-em(48px, 32px);
+  margin-bottom: $base-margin / 2;
+}
+
+h3 {
+  font-size: $font-size-3;
+  font-weight: 900;
+  line-height: px-em(32px, 23px);
+  letter-spacing: 0.00625em;
+  margin-bottom: $base-margin / 2;
+}
+
+h4 {
+  font-size: $font-size-3;
+  line-height: px-em(32px, 23px);
+  font-weight: 300;
+  letter-spacing: 0.00625em;
+  margin-bottom: $base-margin / 2;
+}
+
+h5 {
+  font-size: $font-size-4;
+  line-height: px-em(24px, 16px);
+  font-weight: 900;
+  letter-spacing: 0.00625em;
+  margin-bottom: $base-margin / 2;
+}
+
+h6 {
+  font-size: $font-size-4;
+  text-transform: uppercase;
+  line-height: px-em(24px, 16px);
+  letter-spacing: 0.00625em;
+  margin-bottom: $base-margin / 2;
+}
+
+p {
+  line-height: px-em(24px, 16px);
+  margin-bottom: $base-margin;
+  font-size: $font-size-4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: 0.00625em;
+
+
+  &:empty {
+    display: none;
+  }
+}
+
+caption {
+  font-size: $font-size-5;
+  letter-spacing: 0.03125em;
+  line-height: px-em(16px, 16px);
+  margin-bottom: $base-margin;
+}
+
+ol li,
+ul li {
+  font-size: $font-size;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  margin-bottom: $base-margin / 2;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: $base-margin 0;
+
+  ol,
+  ul {
+    // Even out nested lists
+    margin-top: $base-unit / 2;
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  li {
+    position: relative;
+    margin-left: $base-unit * 2;
+    margin-bottom: $base-unit / 2;
+    line-height: $line-height;
+
+    &:last-child {
+      margin-bottom: $base-unit;
+    }
+  }
+}
+
+ul li::before {
+  content: "\25CF";
+  position: absolute;
+  transform: scale(0.7);
+  top: 0;
+  left: -$base-unit * 2;
+  width: $base-unit * 2;
+  line-height: $line-height;
+  text-align: center;
+}
+
+ol {
+  counter-reset: "ordered-list";
+
+  li {
+    counter-increment: ordered-list;
+
+    &::before {
+      content: counter(ordered-list) ".";
+      position: absolute;
+      top: 0;
+      left: -($base-unit * 2);
+      width: $base-unit * 2;
+      text-align: center;
+      line-height: inherit;
+    }
+  }
+}
+
+// Inline code style.
+code {
+  padding: 0 0.25rem;
+  margin: 0 0.0625rem;
+  border-radius: 0.125rem;
+  color: $color-darkblue;
+  background-color: $swatches-grey-200;
+  white-space: normal;
+  vertical-align: baseline;
+  font-family: $font-monospace;
+}
+
+// CodeBlock
+pre > code {
+  display: block;
+  margin: $base-margin 0;
+  padding: 0;
+  background-color: transparent;
+}

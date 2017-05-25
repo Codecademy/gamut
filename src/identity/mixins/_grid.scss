@@ -1,0 +1,17 @@
+@mixin sm-viewport {
+  @media only screen and (min-width: $grid-sm-min) {
+    @content;
+  }
+}
+
+@mixin md-viewport {
+  @media only screen and (min-width: $grid-md-min) {
+    @content;
+  }
+}
+
+@mixin lg-viewport {
+  @media only screen and (min-width: $grid-lg-min) {
+    @content;
+  }
+}
