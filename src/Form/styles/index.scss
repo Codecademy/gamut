@@ -6,6 +6,7 @@ $item-background-selected: $swatches-mint-700;
 $item-background-selected-hover: rgba($item-background-selected, 0.7);
 $border-radius: 2px;
 $transition-time: 0.15s;
+$form-padding: 0.8rem;
 
 .Form {
   display: flex;
@@ -14,9 +15,9 @@ $transition-time: 0.15s;
 }
 
 .Input {
-  font-size: 1em;
-  text-indent: 0.8em;
-  padding: 0.8rem 0;
+  font-size: 1rem;
+  text-indent: $form-padding;
+  padding: $form-padding 0;
   outline: none;
   width: 100%;
   border: 1px solid $color-border;
@@ -34,10 +35,10 @@ $transition-time: 0.15s;
 }
 
 .TextArea {
-  font-size: 1em;
-  padding: 0.8rem;
+  font-size: 1rem;
+  padding: $form-padding;
   outline: none;
-  width: calc(100% - 1.6em);
+  width: calc(100% - 1.6rem);
   border: 1px solid $color-border;
   border-radius: $border-radius;
   transition: $transition-time;
@@ -54,19 +55,19 @@ $transition-time: 0.15s;
 
 .Checkbox {
   @include no-select;
-  margin: 0.4em 0;
+  margin: 0.4rem 0;
   width: 100%;
   font-weight: normal;
 
   &.tags {
     width: auto;
-    margin-right: 1em;
-    min-width: 8em;
+    margin-right: 1rem;
+    min-width: 8rem;
   }
 
   .checkboxLabel {
     display: block;
-    padding: 0.8em;
+    padding: $form-padding;
     border-radius: $border-radius;
     border: 1px solid $swatches-grey-100;
     transition: $transition-time;
@@ -79,22 +80,22 @@ $transition-time: 0.15s;
   .checkboxSpan {
     display: flex;
     position: relative;
-    top: 0.2em;
+    top: 0.2rem;
   }
 
   .checkboxSpan::before {
     content: '';
     display: block;
     position: relative;
-    top: -0.2em;
+    top: -0.2rem;
     background-position: center;
-    width: 1.25em;
-    height: 1.25em;
-    min-width: 1.25em;
-    min-height: 1.25em;
+    width: 1.25rem;
+    height: 1.25rem;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
     border-radius: $border-radius;
     border: 2px solid $swatches-grey-300;
-    margin-right: 0.8em;
+    margin-right: $form-padding;
     transition: $transition-time;
     background-color: white;
   }
@@ -119,9 +120,9 @@ $transition-time: 0.15s;
   .selectIcon {
     pointer-events: none;
     position: absolute;
-    right: 1em;
-    top: 1.25em;
-    width: 0.75em;
+    right: 1rem;
+    top: 1.25rem;
+    width: 0.75rem;
   }
 
   .selectInput {
@@ -132,10 +133,10 @@ $transition-time: 0.15s;
     border-radius: $border-radius;
     border: 1px solid $swatches-grey-100;
     width: 100%;
-    padding: 0.8em;
-    padding-right: 2.5em;
+    padding: $form-padding;
+    padding-right: 2.5rem;
     background-color: $item-background;
-    font-size: 1em;
+    font-size: 1rem;
 
     // Firefox hack
     color: transparent;
@@ -150,19 +151,19 @@ $transition-time: 0.15s;
 }
 
 .FormGroupHeader {
-  margin: 1.5em 0 0.5em 0;
+  margin: 1.5rem 0 0.5rem 0;
   font-weight: bold;
 }
 
 .Radio {
   @include no-select;
-  margin: 0.25em 0;
+  margin: 0.25rem 0;
   width: 100%;
   font-weight: normal;
 
   .radioLabel {
     display: block;
-    padding: 0.8em;
+    padding: $form-padding;
     border-radius: $border-radius;
     border: 1px solid $swatches-grey-100;
     transition: $transition-time;
@@ -175,21 +176,21 @@ $transition-time: 0.15s;
   .radioSpan {
     display: flex;
     position: relative;
-    top: 0.2em;
+    top: 0.2rem;
   }
 
   .radioSpan::before {
     content: '';
     display: block;
     position: relative;
-    top: -0.2em;
-    width: 1.25em;
-    height: 1.25em;
-    min-width: 1.25em;
-    min-height: 1.25em;
+    top: -0.2rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
     border-radius: 100%;
     border: 2px solid $swatches-grey-300;
-    margin-right: 0.8em;
+    margin-right: $form-padding;
     transition: $transition-time;
   }
 
@@ -199,16 +200,16 @@ $transition-time: 0.15s;
 
   .radioInput:checked + .radioLabel .radioSpan::before {
     background-color: $color-mint;
-    border: 0.25em solid $swatches-grey-100;
+    border: 0.25rem solid $swatches-grey-100;
     border-radius: 100%;
     box-shadow: 0 0 0 2px $color-mint;
-    width: 1em;
-    height: 1em;
-    min-width: 1em;
-    min-height: 1em;
+    width: 1rem;
+    height: 1rem;
+    min-width: 1rem;
+    min-height: 1rem;
   }
 }
 
 .FormButton {
-  margin-top: 1em;
+  margin-top: 1rem;
 }
