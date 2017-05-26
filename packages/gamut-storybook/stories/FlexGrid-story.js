@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Item } from 'src/FlexBox';
-import { Grid, Row, Col } from 'src/FlexGrid';
+import { Item } from 'gamut/FlexBox';
+import { Grid, Row, Col } from 'gamut/FlexGrid';
 import { swatches } from 'identity';
 
 let Box = () => {
@@ -23,7 +23,7 @@ let defaultGridProps = {
   }
 };
 
-let BasicGridExample = (props) => (
+let BasicGridExample = props => (
   <Grid {...props} {...defaultGridProps} >
     <Row>
       <Col xs={12} sm={3} md={2} lg={1}>
