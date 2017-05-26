@@ -1,37 +1,35 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/Radio.scss';
 
-class Radio extends PureComponent {
-  render() {
-    const className = cx(s.Radio, this.props.className);
-    return (
-      <fieldset
-        className={className}
+const Radio = (props) => {
+  const className = cx(s.Radio, props.className);
+  return (
+    <div
+      className={className}
+    >
+      <input
+        className={s.radioInput}
+        id={props.htmlFor}
+        name={props.name}
+        required={props.required}
+        type="radio"
+        label={props.label}
+      />
+      <label
+        htmlFor={props.htmlFor}
+        className={s.radioLabel}
       >
-        <input
-          className={s.radioInput}
-          id={this.props.htmlFor}
-          name={this.props.name}
-          required={this.props.required}
-          type="radio"
-          label={this.props.label}
-        />
-        <label
-          htmlFor={this.props.htmlFor}
-          className={s.radioLabel}
+        <span
+          className={s.radioSpan}
         >
-          <span
-            className={s.radioSpan}
-          >
-            {this.props.label}
-          </span>
-        </label>
-      </fieldset>
-    );
-  }
-}
+          {props.label}
+        </span>
+      </label>
+    </div>
+  );
+};
 
 Radio.propTypes = {
   className: PropTypes.string,

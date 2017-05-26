@@ -1,0 +1,41 @@
+@import 'variables';
+
+.Select {
+  position: relative;
+  width: 100%;
+  font-weight: normal;
+}
+
+.selectIcon {
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 1.25rem;
+  width: 0.75rem;
+}
+
+.selectInput {
+  display: block;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  border-radius: $border-radius;
+  border: 1px solid $swatches-grey-100;
+  width: 100%;
+  padding: $form-padding;
+  padding-right: 2.5rem;
+  background-color: $item-background;
+  font-size: 1rem;
+  transition: background-color $transition-time;
+
+  // Firefox hack
+  color: transparent;
+  text-shadow: 0 0 0 $color-black;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $item-background-hover;
+    background-color: $item-background-hover;
+    transition: background-color $transition-time;
+  }
+}

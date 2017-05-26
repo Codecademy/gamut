@@ -1,23 +1,21 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import Button from '../Button';
-import s from './styles/index.scss';
+import s from './styles/FormButton.scss';
 
-class FormButton extends PureComponent {
-  render() {
-    const className = cx(s.FormButton, this.props.className);
-    return (
-      <Button
-        {...this.props}
-        type={this.props.type}
-        value={this.props.value}
-        theme={this.props.theme}
-        className={className}
-      />
-    );
-  }
-}
+const FormButton = (props) => {
+  const className = cx(s.FormButton, props.className);
+  return (
+    <Button
+      {...props}
+      type={props.type}
+      value={props.value}
+      theme={props.theme}
+      className={className}
+    />
+  );
+};
 
 FormButton.defaultProps = {
   type: 'submit',

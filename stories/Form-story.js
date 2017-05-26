@@ -1,64 +1,26 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Checkbox, Radio, Input, TextArea, Select, FormGroupHeader, Form, FormButton } from 'src/Form';
+import { Checkbox, Radio, Input, TextArea, Select, FormGroupLabel, FormGroupDescription, Form, FormButton } from 'src/Form';
 
 storiesOf('Form', module)
-  .add(
-    'Form',
-    () => (
-      <Form>
-        <FormGroupHeader>Name</FormGroupHeader>
-        <Input
-          htmlFor="name"
-          placeholder="First Name"
-        />
-        <FormGroupHeader>About</FormGroupHeader>
-        <TextArea
-          htmlFor="about"
-          placeholder="About you"
-          rows="8"
-        />
-        <FormGroupHeader>Development Goal</FormGroupHeader>
-        <Radio
-          htmlFor="radioOne"
-          label="Skills to communicate with developers and other technical people"
-          name="radios"
-        />
-        <Radio
-          htmlFor="radioTwo"
-          label="A better understanding of web development in general"
-          name="radios"
-        />
-        <FormGroupHeader>Select an option</FormGroupHeader>
-        <Select
-          htmlFor="select"
-          options={['one', 'two', 'three', 'option four', 'five']}
-        />
-        <FormGroupHeader>Terms of Service</FormGroupHeader>
-        <Checkbox
-          htmlFor="tos"
-          label="I agree"
-        />
-        <FormButton>Submit</FormButton>
-      </Form>
-    )
-  )
   .addWithInfo(
     'Form',
     () => (
       <Form>
-        <FormGroupHeader>Name</FormGroupHeader>
+        <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
         <Input
           htmlFor="name"
           placeholder="First Name"
         />
-        <FormGroupHeader>About</FormGroupHeader>
+        <FormGroupLabel htmlFor="about">About</FormGroupLabel>
+        <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
         <TextArea
           htmlFor="about"
           placeholder="About you"
           rows="8"
         />
-        <FormGroupHeader>Development Goal</FormGroupHeader>
+        <FormGroupLabel>Development Goal</FormGroupLabel>
+        <FormGroupDescription>Which goal do you identify with?</FormGroupDescription>
         <Radio
           htmlFor="radioOne"
           label="Skills to communicate with developers and other technical people"
@@ -69,12 +31,12 @@ storiesOf('Form', module)
           label="A better understanding of web development in general"
           name="radios"
         />
-        <FormGroupHeader>Select an option</FormGroupHeader>
+        <FormGroupLabel>Select an option</FormGroupLabel>
         <Select
           htmlFor="select"
           options={['one', 'two', 'three', 'option four', 'five']}
         />
-        <FormGroupHeader>Terms of Service</FormGroupHeader>
+        <FormGroupLabel>Terms of Service</FormGroupLabel>
         <Checkbox
           htmlFor="tos"
           label="I agree"
@@ -86,26 +48,23 @@ storiesOf('Form', module)
       propTables: false
     }
   )
-  .add(
-    'FormGroupHeader',
-    () => (
-      <FormGroupHeader>Password</FormGroupHeader>
-    )
-  )
   .addWithInfo(
-    'FormGroupHeader',
+    'FormGroupLabel',
     () => (
-      <FormGroupHeader>Password</FormGroupHeader>
+      <FormGroupLabel>Password</FormGroupLabel>
     ), {
       inline: true,
       propTables: false
     }
   )
-  .add(
-    'FormButton',
+  .addWithInfo(
+    'FormGroupDescription',
     () => (
-      <FormButton>Submit</FormButton>
-    )
+      <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
+    ), {
+      inline: true,
+      propTables: false
+    }
   )
   .addWithInfo(
     'FormButton',
@@ -115,15 +74,6 @@ storiesOf('Form', module)
       inline: true,
       propTables: false
     }
-  )
-  .add(
-    'Checkbox',
-    () => (
-      <Checkbox
-        htmlFor="checkbox1"
-        label="HTML & CSS"
-      />
-    )
   )
   .addWithInfo(
     'Checkbox',
@@ -136,16 +86,6 @@ storiesOf('Form', module)
       inline: true,
       propTables: false
     }
-  )
-  .add(
-    'Radio',
-    () => (
-      <Radio
-        htmlFor="radioOne"
-        label="Skills to communicate with developers and other technical people"
-        name="radios"
-      />
-    )
   )
   .addWithInfo(
     'Radio',
@@ -160,15 +100,6 @@ storiesOf('Form', module)
       propTables: false
     }
   )
-  .add(
-    'Input',
-    () => (
-      <Input
-        htmlFor="name"
-        placeholder="First Name"
-      />
-    )
-  )
   .addWithInfo(
     'Input',
     () => (
@@ -181,15 +112,18 @@ storiesOf('Form', module)
       propTables: false
     }
   )
-  .add(
-    'TextArea',
+  .addWithInfo(
+    'Input error state',
     () => (
-      <TextArea
-        htmlFor="about"
-        placeholder="About you"
-        rows="8"
+      <Input
+        htmlFor="name"
+        placeholder="First Name"
+        error
       />
-    )
+    ), {
+      inline: true,
+      propTables: false
+    }
   )
   .addWithInfo(
     'TextArea',
@@ -204,14 +138,19 @@ storiesOf('Form', module)
       propTables: false
     }
   )
-  .add(
-    'Select',
+  .addWithInfo(
+    'TextArea error state',
     () => (
-      <Select
-        htmlFor="select"
-        options={['one', 'two', 'three', 'option four', 'five']}
+      <TextArea
+        htmlFor="about"
+        placeholder="About you"
+        rows="8"
+        error
       />
-    )
+    ), {
+      inline: true,
+      propTables: false
+    }
   )
   .addWithInfo(
     'Select',

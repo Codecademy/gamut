@@ -1,17 +1,15 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/Form.scss';
 
-class Form extends PureComponent {
-  render() {
-    const className = cx(s.Form, this.props.className);
+const Form = (props) => {
+  const className = cx(s.Form, props.className);
 
-    return (
-      <form {...this.props} className={className} />
-    );
-  }
-}
+  return (
+    <form {...props} className={className} />
+  );
+};
 
 Form.propTypes = {
   className: PropTypes.string

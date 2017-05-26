@@ -1,28 +1,30 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/TextArea.scss';
 
-class TextArea extends PureComponent {
-  render() {
-    const className = cx(s.TextArea, this.props.className);
-    return (
-      <textarea
-        {...this.props}
-        id={this.props.htmlFor}
-        name={this.props.name}
-        required={this.props.required}
-        className={className}
-      />
-    );
-  }
-}
+const TextArea = (props) => {
+  const className = cx(s.TextArea, {
+    [s.error]: props.error
+  }, props.className);
+
+  return (
+    <textarea
+      {...props}
+      id={props.htmlFor}
+      name={props.name}
+      required={props.required}
+      className={className}
+    />
+  );
+};
 
 TextArea.propTypes = {
   className: PropTypes.string,
-  htmlFor: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
   name: PropTypes.string,
-  required: PropTypes.bool
+  required: PropTypes.bool,
+  error: PropTypes.bool
 };
 
 export default TextArea;

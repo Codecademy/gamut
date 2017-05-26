@@ -1,40 +1,34 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/Checkbox.scss';
 
-class Checkbox extends PureComponent {
-  render() {
-    const tag = this.props.tag;
-    const className = cx(s.Checkbox, this.props.className, {
-      [s.tags]: tag
-    });
-    return (
-      <fieldset className={className}>
-        <input
-          {...this.props}
-          id={this.props.htmlFor}
-          name={this.props.name}
-          required={this.props.required}
-          type="checkbox"
-          className={s.checkboxInput}
-        />
-        <label
-          htmlFor={this.props.htmlFor}
-          label={this.props.label}
-          className={s.checkboxLabel}
-        >
-          <span className={s.checkboxSpan}>
-            {this.props.label}
-          </span>
-        </label>
-      </fieldset>
-    );
-  }
-}
-
-Checkbox.defaultProps = {
-  required: false
+const Checkbox = (props) => {
+  const tag = props.tag;
+  const className = cx(s.Checkbox, props.className, {
+    [s.tags]: tag
+  });
+  return (
+    <div className={className}>
+      <input
+        {...props}
+        id={props.htmlFor}
+        name={props.name}
+        required={props.required}
+        type="checkbox"
+        className={s.checkboxInput}
+      />
+      <label
+        htmlFor={props.htmlFor}
+        label={props.label}
+        className={s.checkboxLabel}
+      >
+        <span className={s.checkboxSpan}>
+          {props.label}
+        </span>
+      </label>
+    </div>
+  );
 };
 
 Checkbox.propTypes = {
