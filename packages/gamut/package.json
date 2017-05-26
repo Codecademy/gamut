@@ -16,7 +16,7 @@
     "react": ">=15.3.2"
   },
   "dependencies": {
-    "@codecademy/gamut-identity": "^1.1.2",
+    "@codecademy/gamut-styles": "^1.1.2",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1"

@@ -1,8 +1,8 @@
 
 // font is imported in the app css, not here
 
-@import '~identity/ikona/mixins';
-@import '~identity/ikona/classes';
+@import '~@codecademy/identity/ikona/mixins';
+@import '~@codecademy/identity/ikona/classes';
 
 .i {
   @include ikona-styles;

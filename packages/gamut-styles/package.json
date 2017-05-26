@@ -1,5 +1,5 @@
 {
-  "name": "@codecademy/gamut-identity",
+  "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
   "version": "1.1.2",
   "author": "Jake Hiller <jake@codecademy.com>",
@@ -7,7 +7,6 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "main": "./index.scss",
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
