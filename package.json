@@ -1,5 +1,6 @@
 {
-  "name": "@codecademy/gamut",
+  "name": "Gamut",
+  "private": true,
   "description": "Styleguide & Component library for codecademy.com",
   "version": "1.1.2",
   "author": "Jake Hiller <jake@codecademy.com>",
@@ -7,55 +8,24 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "scripts": {
-    "start": "npm run storybook",
-    "storybook": "start-storybook -p 6006",
-    "build": "npm run build-storybook",
-    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o docs/storybook"
-  },
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
-  "peerDependencies": {
-    "react": ">=15.3.2"
-  },
-  "dependencies": {
-    "@codecademy/gamut-identity": "^1.1.2",
-    "@codecademy/gamut": "^1.1.2",
-    "classnames": "^2.2.5",
-    "invariant": "^2.2.0",
-    "lodash": "^3.10.1"
-  },
   "devDependencies": {
-    "@codecademy/webpack-config": "0.6.0",
-    "@kadira/react-storybook-addon-info": "^3.2.1",
-    "@kadira/react-storybook-decorator-centered": "^1.0.0",
-    "@kadira/storybook": "^2.5.2",
-    "@kadira/storybook-addon-knobs": "^1.2.0",
-    "babel-cli": "^6.6.5",
-    "babel-core": "^6.4.0",
-    "babel-eslint": "^6.1.2",
-    "babel-polyfill": "^6.7.4",
-    "babel-preset-codecademy": "^1.0.0",
-    "babel-register": "^6.7.2",
-    "chai": "^3.5.0",
     "enzyme": "^2.2.0",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
-    "extract-text-webpack-plugin": "1.0.1",
     "jsdom": "^8.3.1",
     "lerna": "^2.0.0-rc.5",
     "mocha": "^2.4.5",
     "node-sass": "^3.10.0",
     "react": "15.3.2",
-    "react-addons-test-utils": "15.x.x",
-    "react-dom": "15.x.x",
-    "sass-loader": "^4.0.2",
-    "style-loader": "^0.13.1"
+    "react-dom": "15.3.2",
+    "react-addons-test-utils": "15.3.2"
   },
   "license": "MIT"
 }
