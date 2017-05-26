@@ -7,7 +7,7 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "main": "./utils.scss",
+  "main": "./index.scss",
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
