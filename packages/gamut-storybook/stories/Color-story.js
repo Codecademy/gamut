@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import id from 'identity';
+import id from '@codecademy/identity';
 
 const infoOptions = {
   inline: true,

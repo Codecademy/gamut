@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Item } from 'gamut/FlexBox';
-import { Grid, Row, Col } from 'gamut/FlexGrid';
-import { swatches } from 'identity';
+import { Item } from '@codecademy/gamut/FlexBox';
+import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
+import { swatches } from '@codecademy/identity';
 
 let Box = () => {
   return (

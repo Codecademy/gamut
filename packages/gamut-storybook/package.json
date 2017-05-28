@@ -23,6 +23,7 @@
   "dependencies": {
     "@codecademy/gamut-styles": "^1.1.2",
     "@codecademy/gamut": "^1.1.2",
+    "@codecademy/identity": "latest",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1"
@@ -48,7 +49,7 @@
     "node-sass": "^3.10.0",
     "react": "15.3.2",
     "react-addons-test-utils": "15.x.x",
-    "react-dom": "15.x.x",
+    "react-dom": "15.3.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1"
   },

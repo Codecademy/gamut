@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf, action } from '@kadira/storybook';
-import { Container } from 'gamut/FlexBox';
-import Button, { presetThemes } from 'gamut/Button';
+import { Container } from '@codecademy/gamut/FlexBox';
+import Button, { presetThemes } from '@codecademy/gamut/Button';
 import { select, text } from '@kadira/storybook-addon-knobs';
-import id from 'identity';
+import id from '@codecademy/identity';
 
 const themeKeys = [
   ...Object.keys(presetThemes),
