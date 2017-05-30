@@ -29,4 +29,4 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ### Publishing the storybook
 
-1. A new build of the storybook will be generated automatically whenever `lerna publish` is run. These updates will be available on `styleguide.codecademy.com/storybook` whenever those updates are pushed into master.
+1. A new build of the storybook will be generated automatically whenever `lerna publish` is run. These updates will be available on [`styleguide.codecademy.com/storybook`](http://styleguide.codecademy.com/storybook) whenever those updates are pushed into master.
