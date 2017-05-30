@@ -1,2 +1,1 @@
-
-# Gamut component library
+# Gamut Components

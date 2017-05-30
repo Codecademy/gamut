@@ -4,32 +4,29 @@
 
 ---
 
-[storybook](http://styleguide.codecademy.com/storybook)
+This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we actually publish several packages to npm from the same codebase, including:
 
-See the wiki for 
-[more info about Storybook](https://github.com/RyzacInc/Codecademy/wiki/Storybook:-A-React-Component-Style-Guide)
+[`gamut`: Our React UI component library](/packages/gamut/README.md)
+
+[`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
+
+[`gamut-storybook`: A component development sandbox for Gamut components](/packages/gamut-storybook/README.md)
 
 ### Local development
 
-Install dependencies
+1. Run `npm install lerna -g` to install `lerna` globally
+1. Run `lerna bootstrap` to bootstrap the modules in the repo for development
 
-`npm install`
+  #### Running storybook
+  1. Cd into `packages/gamut-storybook` and run `npm start` to start the storybook server
+  1. Add new stories to `packages/gamut-storybook/stories`
 
-Run the development server
+### Publishing the modules
 
-`npm start`
-
-Visit http://localhost:6006 to see the styleguide.
-
-### Publishing the component library
-
-1. Make sure your changes have been merged into the master branch
-1. Run the `npm version` command with the appropriate semver version (major, minor, patch): [npm version](https://docs.npmjs.com/cli/version)
-1. Run `npm run release` from the root directory†
-
-† **Do not** run `npm publish` directly, use `npm run release`. This copies the package.json file to the `src` directory, and runs `npm publish src`. This makes it so only things in the `src` directory are published to npm. It also makes it possible to import components like `import Button from 'gamut/Button'` instead of `import Button from 'gamut/src/Button'`.
+1. Make sure your changes have been reviewed and then merged into the `master` branch
+1. Run `lerna publish`
+1. Push the updated master branch, and then run `git push --tags` to push up the new tags.
 
 ### Publishing the storybook
 
-1. From the root directory, run `npm run build`, this will run the storybook static build process and put the output into the `doc` folder.
-1. Merge into the master branch and push, and your changes should go live on the [storybook](http://styleguide.codecademy.com/storybook) page.
+1. A new build of the storybook will be generated automatically whenever `lerna publish` is run. These updates will be available on `styleguide.codecademy.com/storybook` whenever those updates are pushed into master.
