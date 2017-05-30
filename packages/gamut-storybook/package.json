@@ -21,12 +21,13 @@
     "react": ">=15.3.2"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^1.1.2",
     "@codecademy/gamut": "^1.1.2",
+    "@codecademy/gamut-styles": "^1.1.2",
     "@codecademy/identity": "latest",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
     "@codecademy/webpack-config": "0.6.0",

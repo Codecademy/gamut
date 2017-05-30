@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const loaders = require('@codecademy/webpack-config').loaders;
 const babelCodecademyPreset = require('babel-preset-codecademy');
+const merge = require('webpack-merge');
 
 const ENV = (process.env.NODE_ENV || 'development');
 
@@ -37,6 +38,5 @@ const config = {
 };
 
 module.exports = (defaultConfig) => {
-  const newConfig = Object.assign({}, defaultConfig, config);
-  return newConfig;
+  return merge.smart(defaultConfig, config);
 };

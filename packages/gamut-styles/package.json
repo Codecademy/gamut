@@ -3,7 +3,7 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "1.1.2",
   "author": "Jake Hiller <jake@codecademy.com>",
-  "main": "utils/index.scss",
+  "main": "utils.scss",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
