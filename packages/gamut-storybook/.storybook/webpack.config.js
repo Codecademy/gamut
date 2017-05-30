@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
 const loaders = require('@codecademy/webpack-config').loaders;
+const babelCodecademyPreset = require('babel-preset-codecademy');
 
 const ENV = (process.env.NODE_ENV || 'development');
 
-module.exports = {
+
+const config = {
   resolve: {
     extensions: ['', '.webpack.js', '.web.js', '.js', '.scss', '.css', '.gscss', '.json'],
     root: [
@@ -14,10 +16,16 @@ module.exports = {
   },
   module: {
     loaders: [
+      loaders.babel({
+        exclude: [/node_modules(?!(\/@codecademy))/]
+      }),
       loaders.css.default(),
       loaders.scss.default(),
       loaders.json()
     ]
+  },
+  babel: {
+    presets: [babelCodecademyPreset]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -26,4 +34,9 @@ module.exports = {
     })
   ],
   postcss: {}
+};
+
+module.exports = (defaultConfig) => {
+  const newConfig = Object.assign({}, defaultConfig, config);
+  return newConfig;
 };
