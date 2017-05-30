@@ -12,19 +12,5 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
-  "devDependencies": {
-    "enzyme": "^2.2.0",
-    "eslint": "^3.5.0",
-    "eslint-config-airbnb": "^11.1.0",
-    "eslint-plugin-import": "^1.15.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.2.2",
-    "jsdom": "^8.3.1",
-    "lerna": "^2.0.0-rc.5",
-    "node-sass": "^3.10.0",
-    "react": "15.3.2",
-    "react-dom": "15.3.2",
-    "react-addons-test-utils": "15.3.2"
-  },
   "license": "MIT"
 }

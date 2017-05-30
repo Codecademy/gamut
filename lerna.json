@@ -6,6 +6,9 @@
     "packages/*"
   ],
   "commands": {
+    "bootstrap": {
+      "hoist": true
+    },
     "publish": {
       "ignore": "gamut-storybook"
     }
