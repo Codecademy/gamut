@@ -1,2 +1,0 @@
-
-# Gamut component library
