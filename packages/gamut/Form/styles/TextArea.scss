@@ -4,11 +4,12 @@
   font-size: 1rem;
   padding: $form-padding;
   outline: none;
-  width: calc(100% - 1.6rem);
+  width: 100%;
   border: 1px solid $color-border;
   border-radius: $border-radius;
   transition: border-color $transition-time;
   font-weight: normal;
+  box-sizing: border-box;
 
   &::placeholder {
     color: $swatches-grey-500;

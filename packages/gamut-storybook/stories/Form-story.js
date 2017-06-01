@@ -1,47 +1,82 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { Checkbox, Radio, Input, TextArea, Select, FormGroupLabel, FormGroupDescription, Form, FormButton } from '@codecademy/gamut/Form';
+import { Button } from '@codecademy/gamut';
+import { Checkbox, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
 
 storiesOf('Form', module)
   .addWithInfo(
     'Form',
     () => (
       <Form>
-        <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
-        <Input
+        <FormGroup
           htmlFor="name"
-          placeholder="First Name"
-        />
-        <FormGroupLabel htmlFor="about">About</FormGroupLabel>
-        <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
-        <TextArea
+          label="blah"
+          description="blah2"
+        >
+          <Input
+            htmlFor="name"
+            placeholder="First Name"
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
+          <FormGroupDescription>Name</FormGroupDescription>
+          <Input
+            htmlFor="name"
+            placeholder="First Name"
+          />
+        </FormGroup>
+
+        <FormGroup htmlFor="name" label="Name">
+          <Input
+            htmlFor="name"
+            placeholder="First Name"
+          />
+        </FormGroup>
+
+        <FormGroup
           htmlFor="about"
-          placeholder="About you"
-          rows="8"
-        />
-        <FormGroupLabel>Development Goal</FormGroupLabel>
-        <FormGroupDescription>Which goal do you identify with?</FormGroupDescription>
-        <Radio
-          htmlFor="radioOne"
-          label="Skills to communicate with developers and other technical people"
-          name="radios"
-        />
-        <Radio
-          htmlFor="radioTwo"
-          label="A better understanding of web development in general"
-          name="radios"
-        />
-        <FormGroupLabel>Select an option</FormGroupLabel>
-        <Select
-          htmlFor="select"
-          options={['one', 'two', 'three', 'option four', 'five']}
-        />
-        <FormGroupLabel>Terms of Service</FormGroupLabel>
-        <Checkbox
-          htmlFor="tos"
-          label="I agree"
-        />
-        <FormButton>Submit</FormButton>
+          label="About"
+          description="Write about your self in Haiku form."
+        >
+          <TextArea
+            htmlFor="about"
+            placeholder="About you"
+            rows="8"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <FormGroupLabel>Development Goal</FormGroupLabel>
+          <FormGroupDescription>Which goal do you identify with?</FormGroupDescription>
+          <Radio
+            htmlFor="radioOne"
+            label="Skills to communicate with developers and other technical people"
+            name="radios"
+          />
+          <Radio
+            htmlFor="radioTwo"
+            label="A better understanding of web development in general"
+            name="radios"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <FormGroupLabel>Select an option</FormGroupLabel>
+          <Select
+            htmlFor="select"
+            options={['one', 'two', 'three', 'option four', 'five']}
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <FormGroupLabel>Terms of Service</FormGroupLabel>
+          <Checkbox
+            htmlFor="tos"
+            label="I agree"
+          />
+        </FormGroup>
+        <Button type="submit">Submit</Button>
       </Form>
     ), {
       inline: true,
@@ -61,15 +96,6 @@ storiesOf('Form', module)
     'FormGroupDescription',
     () => (
       <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
-    ), {
-      inline: true,
-      propTables: false
-    }
-  )
-  .addWithInfo(
-    'FormButton',
-    () => (
-      <FormButton>Submit</FormButton>
     ), {
       inline: true,
       propTables: false

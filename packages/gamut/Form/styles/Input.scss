@@ -10,6 +10,7 @@
   border-radius: $border-radius;
   transition: border-color $transition-time;
   font-weight: normal;
+  box-sizing: border-box;
 
   &::placeholder {
     color: $swatches-grey-500;
