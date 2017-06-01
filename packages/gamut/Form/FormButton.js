@@ -9,9 +9,6 @@ const FormButton = (props) => {
   return (
     <Button
       {...props}
-      type={props.type}
-      value={props.value}
-      theme={props.theme}
       className={className}
     />
   );

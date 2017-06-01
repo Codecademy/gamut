@@ -12,8 +12,6 @@ const TextArea = (props) => {
     <textarea
       {...props}
       id={props.htmlFor}
-      name={props.name}
-      required={props.required}
       className={className}
     />
   );

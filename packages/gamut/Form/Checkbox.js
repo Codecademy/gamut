@@ -13,8 +13,6 @@ const Checkbox = (props) => {
       <input
         {...props}
         id={props.htmlFor}
-        name={props.name}
-        required={props.required}
         type="checkbox"
         className={s.checkboxInput}
       />
