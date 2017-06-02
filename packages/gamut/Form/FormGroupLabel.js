@@ -19,7 +19,7 @@ const FormGroupLabel = ({htmlFor, className, ...rest}) => {
   return (
     <div
       {...rest}
-      className={className}
+      className={classNames}
     />
   );
 

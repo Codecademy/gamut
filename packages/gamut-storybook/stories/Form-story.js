@@ -9,29 +9,21 @@ storiesOf('Form', module)
     () => (
       <Form>
         <FormGroup
-          htmlFor="name"
-          label="blah"
-          description="blah2"
+          htmlFor="firstName"
+          label="First Name"
+          description="Type your first name"
         >
           <Input
-            htmlFor="name"
+            htmlFor="firstName"
             placeholder="First Name"
           />
         </FormGroup>
 
         <FormGroup>
-          <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
-          <FormGroupDescription>Name</FormGroupDescription>
+          <FormGroupLabel htmlFor="lastName">Last Name</FormGroupLabel>
           <Input
-            htmlFor="name"
-            placeholder="First Name"
-          />
-        </FormGroup>
-
-        <FormGroup htmlFor="name" label="Name">
-          <Input
-            htmlFor="name"
-            placeholder="First Name"
+            htmlFor="lastName"
+            placeholder="Last Name"
           />
         </FormGroup>
 
@@ -77,7 +69,7 @@ storiesOf('Form', module)
             label="I agree"
           />
         </FormGroup>
-        <Button type="submit">Submit</Button>
+        <Button href="/" type="submit" caps>Submit</Button>
       </Form>
     ), {
       inline: true,
