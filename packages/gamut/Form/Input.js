@@ -10,6 +10,7 @@ const Input = (props) => {
   return (
     <input
       {...props}
+      id={props.htmlFor}
       className={className}
     />
   );
