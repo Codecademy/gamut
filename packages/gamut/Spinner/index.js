@@ -2,14 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
+import SpinnerIcon from './SpinnerIcon';
 
-const SpinnerIcon = require('./SpinnerIcon');
-
-const Spinner = (props) => {
-  const { size, className, fill } = props;
-  const styles = cx(s.spinner, className);
+const Spinner = ({ size, className, fill}) => {
+  const classNames = cx(s.spinner, className);
   return (
-    <SpinnerIcon className={styles} fill={fill} height={size} width={size} />
+    <SpinnerIcon className={classNames} fill={fill} height={size} width={size} />
   );
 };
 
