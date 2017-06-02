@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Input.scss';
 
-const Input = (props) => {
-  const className = cx(s.Input, {
-    [s.error]: props.error
-  }, props.className);
+const Input = ({error, htmlFor, className, ...rest}) => {
+  const classNames = cx(s.Input, {
+    [s.error]: error
+  }, className);
   return (
     <input
-      {...props}
-      id={props.htmlFor}
-      className={className}
+      {...rest}
+      id={htmlFor}
+      className={classNames}
     />
   );
 };

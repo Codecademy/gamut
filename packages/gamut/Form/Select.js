@@ -43,7 +43,7 @@ const Select = (props) => {
 
 Select.propTypes = {
   className: PropTypes.string,
-  options: PropTypes.oneOf([
+  options: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.object
   ]),

@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/TextArea.scss';
 
-const TextArea = (props) => {
-  const className = cx(s.TextArea, {
-    [s.error]: props.error
-  }, props.className);
+const TextArea = ({error, htmlFor, className, ...rest}) => {
+  const classNames = cx(s.TextArea, {
+    [s.error]: error
+  }, className);
 
   return (
     <textarea
-      {...props}
-      id={props.htmlFor}
-      className={className}
+      {...rest}
+      id={htmlFor}
+      className={classNames}
     />
   );
 };

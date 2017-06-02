@@ -18,6 +18,7 @@ storiesOf('Form', module)
             placeholder="First Name"
           />
         </FormGroup>
+
         <FormGroup>
           <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
           <FormGroupDescription>Name</FormGroupDescription>
