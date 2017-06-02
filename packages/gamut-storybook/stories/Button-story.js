@@ -38,17 +38,21 @@ storiesOf('Button', module)
         <div>
           <h3>Standard Button themes</h3>
           <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
-          <Button style={btnStyle} theme="primary">Primary (red)</Button>
+          <Button style={btnStyle} theme="primary" href="#">Primary (red)</Button>
           <Button style={btnStyle} theme="secondary">Secondary (mint)</Button>
-          <Button style={btnStyle} theme="blue">Blue</Button>
+          <Button style={btnStyle} theme="blue" href="#">Blue</Button>
           <Button style={btnStyle} theme="yellow">Yellow</Button>
-          <Button style={btnStyle} theme="white">White</Button>
+          <Button style={btnStyle} theme="white" href="#">White</Button>
           <h3>Button options:</h3>
-          <Button style={btnStyle} theme="primary" outline>Outline</Button>
+          <Button style={btnStyle} theme="primary" outline href="#">Outline</Button>
           <Button style={btnStyle} theme="primary" size="large">Large</Button>
-          <Button style={btnStyle} theme="secondary" size="small">Small</Button>
+          <Button style={btnStyle} theme="secondary" size="small" href="#">Small</Button>
           <Button style={btnStyle} theme="primary" disabled>Disabled</Button>
-          <Button style={btnStyle} theme="primary" caps>Caps</Button>
+          <Button style={btnStyle} theme="primary" caps href="#">Caps</Button>
+          <h3>Link Buttons</h3>
+          <p>
+            This is an example of a <Button theme="primary" link href="#">Link</Button> style button.
+          </p>
         </div>
         <div
           style={{

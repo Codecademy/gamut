@@ -9,6 +9,7 @@
   display: inline-block;
   font-weight: $btn-font-weight;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
@@ -81,7 +82,7 @@ fieldset[disabled] a.btn {
 }
 
 .link {
-
+  line-height: inherit;
   padding: 0;
 
   &,
