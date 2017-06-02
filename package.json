@@ -2,7 +2,7 @@
   "name": "Gamut",
   "private": true,
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
