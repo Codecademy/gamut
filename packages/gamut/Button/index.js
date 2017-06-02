@@ -1,6 +1,8 @@
-import _ from 'lodash';
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
+
+import omitProps from '../utils/omitProps';
 import s from './styles';
 
 // themes can be an alias to a color
@@ -12,67 +14,67 @@ export const presetThemes = {
   lantern: 'darkmint'
 };
 
-class Button extends PureComponent {
-  static displayName = 'Button';
-  static propTypes = {
-    theme: React.PropTypes.string.isRequired,
-    size: React.PropTypes.oneOf(['large', 'small']),
-    disabled: React.PropTypes.bool,
-    focused: React.PropTypes.bool,
-    active: React.PropTypes.bool,
-    outline: React.PropTypes.bool,
-    underline: React.PropTypes.bool,
-    link: React.PropTypes.bool,
-    caps: React.PropTypes.bool,
-    go: React.PropTypes.bool,
-    children: React.PropTypes.node,
-    block: React.PropTypes.bool,
-    className: React.PropTypes.string,
-    href: React.PropTypes.string
-  };
+const propTypes = {
+  theme: PropTypes.string,
+  size: PropTypes.oneOf(['large', 'small']),
+  disabled: PropTypes.bool,
+  focused: PropTypes.bool,
+  active: PropTypes.bool,
+  outline: PropTypes.bool,
+  underline: PropTypes.bool,
+  link: PropTypes.bool,
+  caps: PropTypes.bool,
+  go: PropTypes.bool,
+  children: PropTypes.node,
+  block: PropTypes.bool,
+  className: PropTypes.string,
+  href: PropTypes.string
+};
 
-  static defaultProps = {
-    theme: 'primary'
-  };
+const Button = (props) => {
+  let { theme = 'primary' } = props;
 
-  render() {
-    let { theme } = this.props;
+  if (theme && presetThemes[theme]) {
+    theme = presetThemes[theme];
+  }
 
-    if (theme && presetThemes[theme]) {
-      theme = presetThemes[this.props.theme];
-    }
+  let typeClassName = props.link ? s.link : s.btn;
+  let themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
-    const classes = cx({
-      [s.btn]: true,
-      [s.link]: this.props.link,
-      [s[`btn-${theme}`]]: Boolean(theme),
-      [s.active]: this.props.active,
-      [s.focus]: this.props.focused,
-      [s.block]: this.props.block,
-      [s.go]: this.props.go,
-      [s.disabled]: this.props.disabled,
-      [s.outline]: this.props.outline,
-      [s.underline]: this.props.underline,
-      [s.caps]: this.props.caps,
-      [s[this.props.size]]: Boolean(this.props.size)
-    }, this.props.className);
+  const classes = cx(
+    typeClassName,
+    themeClassName,
+    s[props.size],
+    {
+      [s.active]: props.active,
+      [s.focus]: props.focused,
+      [s.block]: props.block,
+      [s.go]: props.go,
+      [s.disabled]: props.disabled,
+      [s.outline]: props.outline,
+      [s.underline]: props.underline,
+      [s.caps]: props.caps
+    },
+    props.className
+  );
 
-    const propsToTransfer = _.omit(this.props, 'theme', 'color', 'type', 'go');
+  const propsToTransfer = omitProps(propTypes, props);
 
-    if (this.props.href) {
-      return (
-        <a data-btn {...propsToTransfer} className={classes}>
-          {this.props.children}
-        </a>
-      );
-    }
-
+  if (props.href) {
     return (
-      <button data-btn {...propsToTransfer} className={classes}>
-        {this.props.children}
-      </button>
+      <a data-btn {...propsToTransfer} href={props.href} className={classes}>
+        {props.children}
+      </a>
     );
   }
-}
+
+  return (
+    <button data-btn {...propsToTransfer} disabled={props.disabled} className={classes}>
+      {props.children}
+    </button>
+  );
+};
+
+Button.propTypes = propTypes;
 
 export default Button;
