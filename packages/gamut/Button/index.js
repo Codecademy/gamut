@@ -38,12 +38,14 @@ const Button = (props) => {
     theme = presetThemes[theme];
   }
 
+  let typeClassName = props.link ? s.link : s.btn;
+  let themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
+
   const classes = cx(
-    s.btn,
-    s[`btn-${theme}`],
+    typeClassName,
+    themeClassName,
     s[props.size],
     {
-      [s.link]: props.link,
       [s.active]: props.active,
       [s.focus]: props.focused,
       [s.block]: props.block,

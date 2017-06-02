@@ -102,12 +102,12 @@
 @mixin button-variants($name, $color, $background, $border: transparent) {
   .btn-#{$name} {
     @include button-variant($color, $background, $border);
-    &.link {
-      color: $background;
-    }
     &.outline {
       @include button-outline-variant($background);
     }
     @content;
+  }
+  .link-#{$name} {
+    color: $background;
   }
 }
