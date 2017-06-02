@@ -1,0 +1,26 @@
+@import 'variables';
+
+.Input {
+  font-size: 1rem;
+  text-indent: $form-padding;
+  padding: $form-padding 0;
+  outline: none;
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: border-color $transition-time;
+  font-weight: normal;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $swatches-grey-500;
+  }
+
+  &:focus {
+    border-color: $swatches-mint-600;
+  }
+}
+
+.error {
+  border-color: $swatches-red-400;
+}

@@ -1,0 +1,51 @@
+@import 'variables';
+
+.Checkbox {
+  @include no-select;
+  margin: 0.4rem 0;
+  width: 100%;
+  font-weight: normal;
+}
+
+.checkboxLabel {
+  display: block;
+  padding: $form-padding;
+  border-radius: $border-radius;
+  border: 1px solid $swatches-grey-100;
+  transition: $transition-time;
+  cursor: pointer;
+}
+
+.checkboxInput {
+  display: none;
+}
+
+.checkboxSpan {
+  display: flex;
+}
+
+.checkboxSpan::before {
+  content: '';
+  display: block;
+  background-position: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  border-radius: $border-radius;
+  border: 2px solid $swatches-grey-300;
+  margin-right: $form-padding;
+  transition: $transition-time;
+  background-color: white;
+}
+
+.checkboxInput:checked + .checkboxLabel {
+  background-color: $swatches-grey-100;
+  transition: $transition-time;
+}
+
+.checkboxInput:checked + .checkboxLabel .checkboxSpan::before {
+  background: url('data:image/svg+xml;utf8,<svg width="14" height="11" viewBox="0 0 14 11" xmlns="http://www.w3.org/2000/svg"><path d="M5.048 8.164L12.61.532l1.452 1.48L5.048 11-.032 5.98l1.408-1.409z" fill="%23E9EAEA"/></svg>') center center no-repeat;
+  background-color: $color-mint;
+  border-color: $color-mint;
+}

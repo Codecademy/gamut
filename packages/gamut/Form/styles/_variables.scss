@@ -1,0 +1,9 @@
+@import '~@codecademy/gamut-styles/utils';
+$color-border: $swatches-grey-100;
+$item-background: $color-white;
+$item-background-hover: $swatches-grey-100;
+$item-background-selected: $swatches-mint-700;
+$item-background-selected-hover: rgba($item-background-selected, 0.7);
+$border-radius: 2px;
+$transition-time: 0.15s;
+$form-padding: 0.8rem;
