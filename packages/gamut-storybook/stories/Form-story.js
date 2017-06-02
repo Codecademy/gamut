@@ -10,8 +10,7 @@ storiesOf('Form', module)
       <Form>
         <FormGroup
           htmlFor="name"
-          label="blah"
-          description="blah2"
+          label="First Name"
         >
           <Input
             htmlFor="name"
@@ -19,19 +18,13 @@ storiesOf('Form', module)
           />
         </FormGroup>
 
-        <FormGroup>
-          <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
-          <FormGroupDescription>Name</FormGroupDescription>
+        <FormGroup
+          htmlFor="lastName"
+          label="Last Name"
+        >
           <Input
-            htmlFor="name"
-            placeholder="First Name"
-          />
-        </FormGroup>
-
-        <FormGroup htmlFor="name" label="Name">
-          <Input
-            htmlFor="name"
-            placeholder="First Name"
+            htmlFor="lastName"
+            placeholder="Last Name"
           />
         </FormGroup>
 
