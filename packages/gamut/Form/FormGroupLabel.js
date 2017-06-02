@@ -3,22 +3,22 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/FormGroupLabel.scss';
 
-const FormGroupLabel = (props) => {
-  const className = cx(s.FormGroupLabel, props.className);
+const FormGroupLabel = ({htmlFor, className, ...rest}) => {
+  const classNames = cx(s.FormGroupLabel, className);
 
-  if (props.htmlFor) {
+  if (htmlFor) {
     return (
       <label
-        {...props}
-        htmlFor={props.htmlFor}
-        className={className}
+        {...rest}
+        htmlFor={htmlFor}
+        className={classNames}
       />
     );
   }
 
   return (
     <div
-      {...props}
+      {...rest}
       className={className}
     />
   );
