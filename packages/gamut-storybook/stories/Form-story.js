@@ -8,19 +8,29 @@ storiesOf('Form', module)
     'Form',
     () => (
       <Form>
-        <FormGroup>
-          <FormGroupLabel htmlFor="firstName">First Name</FormGroupLabel>
-          <FormGroupDescription>Provide your first name</FormGroupDescription>
+        <FormGroup
+          htmlFor="name"
+          label="blah"
+          description="blah2"
+        >
           <Input
-            htmlFor="firstName"
+            htmlFor="name"
+            placeholder="First Name"
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormGroupLabel htmlFor="name">Name</FormGroupLabel>
+          <FormGroupDescription>Name</FormGroupDescription>
+          <Input
+            htmlFor="name"
             placeholder="First Name"
           />
         </FormGroup>
 
-        <FormGroup htmlFor="lastName" label="Last Name">
+        <FormGroup htmlFor="name" label="Name">
           <Input
-            htmlFor="lastName"
-            placeholder="Last Name"
+            htmlFor="name"
+            placeholder="First Name"
           />
         </FormGroup>
 

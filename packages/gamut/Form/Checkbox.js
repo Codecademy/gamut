@@ -3,26 +3,25 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Checkbox.scss';
 
-const Checkbox = (props) => {
-  const tag = props.tag;
-  const className = cx(s.Checkbox, props.className, {
-    [s.tags]: tag
-  });
+const Checkbox = ({className, label, htmlFor, ...rest}) => {
+
+  const classNames = cx(s.Checkbox, className);
+
   return (
-    <div className={className}>
+    <div className={classNames}>
       <input
-        {...props}
-        id={props.htmlFor}
+        {...rest}
+        id={htmlFor}
         type="checkbox"
         className={s.checkboxInput}
       />
       <label
-        htmlFor={props.htmlFor}
-        label={props.label}
+        htmlFor={htmlFor}
+        label={label}
         className={s.checkboxLabel}
       >
         <span className={s.checkboxSpan}>
-          {props.label}
+          {label}
         </span>
       </label>
     </div>
@@ -34,8 +33,7 @@ Checkbox.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   name: PropTypes.string,
   required: PropTypes.bool,
-  label: PropTypes.string.isRequired,
-  tag: PropTypes.bool
+  label: PropTypes.string.isRequired
 };
 
 export default Checkbox;
