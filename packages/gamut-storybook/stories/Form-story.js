@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Button } from '@codecademy/gamut';
-import { Checkbox, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
+import { Checkbox, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form, DataList } from '@codecademy/gamut/Form';
 
 storiesOf('Form', module)
   .addWithInfo(
@@ -25,6 +25,13 @@ storiesOf('Form', module)
             htmlFor="lastName"
             placeholder="Last Name"
           />
+        </FormGroup>
+
+        <FormGroup
+          htmlFor="advisors"
+          label="Advisors"
+        >
+          <DataList options={['Farish Kashefinejad', 'Aubrey Wullschleger', 'Sarah Edkins', 'Jeremiah Crowley', 'Jerica Huang']} htmlFor="advisors" />
         </FormGroup>
 
         <FormGroup
@@ -166,6 +173,15 @@ storiesOf('Form', module)
         rows="8"
         error
       />
+    ), {
+      inline: true,
+      propTables: false
+    }
+  )
+  .addWithInfo(
+    'DataList',
+    () => (
+      <DataList options={['Farish Kashefinejad', 'Aubrey Wullschleger', 'Sarah Edkins', 'Jeremiah Crowley', 'Jerica Huang']} htmlFor="advisors" />
     ), {
       inline: true,
       propTables: false
