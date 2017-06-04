@@ -4,6 +4,7 @@ export FormGroupDescription from './FormGroupDescription';
 export Checkbox from './Checkbox';
 export Select from './Select';
 export Input from './Input';
+export DataList from './DataList';
 export Form from './Form';
 export TextArea from './TextArea';
 export Radio from './Radio';
