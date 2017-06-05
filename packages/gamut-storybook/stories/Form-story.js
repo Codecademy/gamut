@@ -72,8 +72,7 @@ storiesOf('Form', module)
         <Button href="/" type="submit" caps>Submit</Button>
       </Form>
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -81,8 +80,7 @@ storiesOf('Form', module)
     () => (
       <FormGroupLabel>Password</FormGroupLabel>
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -90,8 +88,7 @@ storiesOf('Form', module)
     () => (
       <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -102,8 +99,7 @@ storiesOf('Form', module)
         label="HTML & CSS"
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -115,8 +111,7 @@ storiesOf('Form', module)
         name="radios"
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -127,8 +122,7 @@ storiesOf('Form', module)
         placeholder="First Name"
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -140,8 +134,7 @@ storiesOf('Form', module)
         error
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -153,8 +146,7 @@ storiesOf('Form', module)
         rows="8"
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -167,8 +159,7 @@ storiesOf('Form', module)
         error
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   )
   .addWithInfo(
@@ -179,7 +170,6 @@ storiesOf('Form', module)
         options={['one', 'two', 'three', 'option four', 'five']}
       />
     ), {
-      inline: true,
-      propTables: false
+      inline: true
     }
   );
