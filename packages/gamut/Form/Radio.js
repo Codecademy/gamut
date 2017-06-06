@@ -6,9 +6,7 @@ import s from './styles/Radio.scss';
 const Radio = (props) => {
   const className = cx(s.Radio, props.className);
   return (
-    <div
-      className={className}
-    >
+    <div className={className}>
       <input
         className={s.radioInput}
         id={props.htmlFor}
@@ -16,14 +14,15 @@ const Radio = (props) => {
         required={props.required}
         type="radio"
         label={props.label}
+        checked={props.checked}
+        onChange={props.onChange}
+        value={props.value}
       />
       <label
         htmlFor={props.htmlFor}
         className={s.radioLabel}
       >
-        <span
-          className={s.radioSpan}
-        >
+        <span className={s.radioSpan}>
           {props.label}
         </span>
       </label>
@@ -32,11 +31,14 @@ const Radio = (props) => {
 };
 
 Radio.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  label: PropTypes.string,
+  checked: PropTypes.bool,
   className: PropTypes.string,
   htmlFor: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  required: PropTypes.bool,
-  label: PropTypes.string
+  onChange: PropTypes.func,
+  required: PropTypes.bool
 };
 
 export default Radio;
