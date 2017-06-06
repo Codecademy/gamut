@@ -3,11 +3,16 @@ import { shallow } from 'enzyme';
 import Checkbox from '../Checkbox';
 
 describe('<Checkbox>', () => {
+
+  const defaultProps = {
+    htmlFor: 'some-label',
+    label: 'Some label'
+  };
+
   it('sets the input checked state when the prop is passed', () => {
     const wrapper = shallow(
       <Checkbox
-        htmlFor="some-label"
-        label="Some Label"
+        {...defaultProps}
         checked
       />
     );
@@ -21,8 +26,7 @@ describe('<Checkbox>', () => {
 
     const wrapper = shallow(
       <Checkbox
-        htmlFor="some-label"
-        label="Some Label"
+        {...defaultProps}
         onChange={onChangeCallback}
         value="a"
       />
