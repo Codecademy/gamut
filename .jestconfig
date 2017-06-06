@@ -24,10 +24,6 @@
   ],
   "testRegex": "\\-test\\.js$",
   "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "modulePaths": [
-    "src",
-    "node_modules/@codecademy"
-  ],
   "moduleDirectories": [
     "node_modules"
   ]
