@@ -2,6 +2,5 @@ machine:
   node:
     version: 6.6.0
 dependencies:
-  override:
-    - npm install
+  post:
     - $(npm bin)/lerna bootstrap
