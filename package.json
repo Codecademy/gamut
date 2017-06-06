@@ -32,5 +32,8 @@
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
   },
-  "license": "Proprietary"
+  "license": "Proprietary",
+  "dependencies": {
+    "lerna": "^2.0.0-rc.5"
+  }
 }
