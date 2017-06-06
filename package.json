@@ -8,16 +8,28 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
+  "scripts": {
+    "test": "jest --config=.jestconfig --runInBand"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "devDependencies": {
+    "babel-jest": "^20.0.3",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-codecademy": "^1.1.0",
+    "enzyme": "^2.8.2",
+    "enzyme-to-json": "^1.5.1",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.2.2"
+    "eslint-plugin-react": "^6.2.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^19.0.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "license": "MIT"
 }
