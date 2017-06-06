@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.DataListInput {
+  font-size: 1rem;
+  text-indent: $form-padding;
+  padding: $form-padding 0;
+  outline: none;
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: border-color $transition-time;
+  font-weight: normal;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $swatches-grey-500;
+  }
+
+  &:focus {
+    border-color: $swatches-mint-600;
+  }
+}
+
+.DataListOption {
+  padding: $form-padding;
+  cursor: pointer;
+  &:hover {
+    background-color: $swatches-grey-100;
+  }
+}
+
+.optionWrapper {
+  background-color: $color-white;
+  border: 1px solid $color-border;
+  position: absolute;
+  font-weight: normal;
+  z-index: 1;
+  width: calc(100% - (#{$form-padding} * 2) - 1.5rem);
+}
+
+.hide {
+  display: none;
+}
+
+.selected {
+  background-color: $swatches-grey-100;
+}
