@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Button } from '@codecademy/gamut';
-import { Checkbox, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
+import { Checkbox, RadioGroup, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
 
 storiesOf('Form', module)
   .addWithInfo(
@@ -42,16 +42,19 @@ storiesOf('Form', module)
         <FormGroup>
           <FormGroupLabel>Development Goal</FormGroupLabel>
           <FormGroupDescription>Which goal do you identify with?</FormGroupDescription>
-          <Radio
-            htmlFor="radioOne"
-            label="Skills to communicate with developers and other technical people"
-            name="radios"
-          />
-          <Radio
-            htmlFor="radioTwo"
-            label="A better understanding of web development in general"
-            name="radios"
-          />
+          <RadioGroup
+            htmlForPrefix="why-are-you-learning"
+            name="why-are-you-learning"
+          >
+            <Radio
+              label="Skills to communicate with developers and other technical people"
+              value="skills"
+            />
+            <Radio
+              label="A better understanding of web development in general"
+              value="understanding"
+            />
+          </RadioGroup>
         </FormGroup>
 
         <FormGroup>
@@ -103,13 +106,21 @@ storiesOf('Form', module)
     }
   )
   .addWithInfo(
-    'Radio',
+    'RadioGroup',
     () => (
-      <Radio
-        htmlFor="radioOne"
-        label="Skills to communicate with developers and other technical people"
-        name="radios"
-      />
+      <RadioGroup
+        htmlForPrefix="why-are-you-learning"
+        name="why-are-you-learning"
+      >
+        <Radio
+          label="Skills to communicate with developers and other technical people"
+          value="skills"
+        />
+        <Radio
+          label="A better understanding of web development in general"
+          value="understanding"
+        />
+      </RadioGroup>
     ), {
       inline: true
     }
