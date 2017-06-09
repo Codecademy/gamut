@@ -42,4 +42,16 @@ describe('<Checkbox>', () => {
     const firstArgument = onChangeCallback.mock.calls[0][0];
     expect(firstArgument.target.value).toBe('a');
   });
+
+  it('accepts JSX in the label', () => {
+    const wrapper = shallow(
+      <Checkbox
+        {...defaultProps}
+        label={
+          <img alt="my cat" src="cat.jpg" />
+        }
+      />
+    );
+    expect(wrapper.find('img').length).toBe(1);
+  });
 });

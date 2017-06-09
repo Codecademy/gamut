@@ -36,4 +36,16 @@ describe('<Radio>', () => {
     const firstArgument = onChangeCallback.mock.calls[0][0];
     expect(firstArgument.target.value).toBe('a');
   });
+
+  it('accepts JSX in the label', () => {
+    const wrapper = shallow(
+      <Radio
+        htmlFor="some-label"
+        label={
+          <img alt="my cat" src="cat.jpg" />
+        }
+      />
+    );
+    expect(wrapper.find('img').length).toBe(1);
+  });
 });
