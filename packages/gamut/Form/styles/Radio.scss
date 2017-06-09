@@ -22,6 +22,7 @@
 
 .radioSpan {
   display: flex;
+  align-items: center;
 }
 
 .radioSpan::before {
@@ -46,8 +47,8 @@
   border: 0.25rem solid $swatches-grey-100;
   border-radius: 100%;
   box-shadow: 0 0 0 2px $color-mint;
-  width: 1rem;
-  height: 1rem;
-  min-width: 1rem;
-  min-height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
 }
