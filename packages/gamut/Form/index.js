@@ -7,3 +7,4 @@ export Input from './Input';
 export Form from './Form';
 export TextArea from './TextArea';
 export Radio from './Radio';
+export RadioGroup from './RadioGroup';

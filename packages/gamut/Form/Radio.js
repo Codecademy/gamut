@@ -36,7 +36,7 @@ Radio.propTypes = {
   label: PropTypes.string,
   checked: PropTypes.bool,
   className: PropTypes.string,
-  htmlFor: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string,
   onChange: PropTypes.func,
   required: PropTypes.bool
 };
