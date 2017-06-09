@@ -5,4 +5,8 @@
   margin-bottom: 0.5rem;
   font-weight: normal;
   line-height: 1.25rem;
+  box-sizing: border-box;
+  & *, & *::before, & *::after {
+    box-sizing: border-box;
+  }
 }

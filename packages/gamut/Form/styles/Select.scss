@@ -4,6 +4,10 @@
   position: relative;
   width: 100%;
   font-weight: normal;
+  box-sizing: border-box;
+  & *, & *::before, & *::after {
+    box-sizing: border-box;
+  }
 }
 
 .selectIcon {

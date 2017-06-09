@@ -3,4 +3,8 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
+  box-sizing: border-box;
+  & *, & *::before, & *::after {
+    box-sizing: border-box;
+  }
 }
