@@ -20,9 +20,7 @@ const Checkbox = ({className, label, htmlFor, ...inputProps}) => {
         label={label}
         className={s.checkboxLabel}
       >
-        <span className={s.checkboxSpan}>
-          {label}
-        </span>
+        {label}
       </label>
     </div>
   );
@@ -33,7 +31,7 @@ Checkbox.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   name: PropTypes.string,
   required: PropTypes.bool,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node,
   onChange: PropTypes.func,
   value: PropTypes.string,
   checked: PropTypes.bool

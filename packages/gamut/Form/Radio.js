@@ -22,9 +22,7 @@ const Radio = (props) => {
         htmlFor={props.htmlFor}
         className={s.radioLabel}
       >
-        <span className={s.radioSpan}>
-          {props.label}
-        </span>
+        {props.label}
       </label>
     </div>
   );
@@ -33,7 +31,7 @@ const Radio = (props) => {
 Radio.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.node,
   checked: PropTypes.bool,
   className: PropTypes.string,
   htmlFor: PropTypes.string,
