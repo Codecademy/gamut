@@ -1,24 +1,18 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 
-const RadioGroup = (props) => {
-  const children = props.children.map((child, index) => {
-    return cloneElement(
-      child,
-      {
-        onChange: props.onChange,
-        htmlFor: `${props.htmlForPrefix}-${index}`,
-        name: props.name,
+const RadioGroup = ({children, onChange, htmlForPrefix, name}) => (
+  <div>
+    {React.Children.map(children, (child, index) => cloneElement(
+      child, {
+        onChange: onChange,
+        htmlFor: `${htmlForPrefix}-${index}`,
+        name: name,
         key: child.props.key || child.props.value
-      }
-    );
-  });
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
+      })
+    )}
+  </div>
+);
 
 RadioGroup.propTypes = {
   name: PropTypes.string,
