@@ -29,3 +29,6 @@ tmp
 
 # Users Environment Variables
 .lock-wscript
+
+# lerna-changelog cache
+.changelog
