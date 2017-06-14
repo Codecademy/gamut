@@ -7,8 +7,7 @@ const RadioGroup = ({children, onChange, htmlForPrefix, name}) => (
       child, {
         onChange: onChange,
         htmlFor: `${htmlForPrefix}-${index}`,
-        name: name,
-        key: child.props.key || child.props.value
+        name: name
       })
     )}
   </div>
