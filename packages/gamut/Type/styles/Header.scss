@@ -1,0 +1,58 @@
+@import 'mixins';
+@import 'variables';
+
+.Header1,
+.Header2,
+.Header3,
+.Header4,
+.Header5,
+.Header6 {
+  @include standard-type;
+}
+
+.Header1 {
+  font-size: $font-size-1;
+  font-weight: $font-weight-heavy;
+  letter-spacing: 0.0625rem;
+  line-height: px-em(64px, 46px);
+  margin-bottom: $base-margin / 2;
+}
+
+.Header2 {
+  font-size: $font-size-2;
+  font-weight: $font-weight-heavy;
+  line-height: px-em(48px, 32px);
+  margin-bottom: $base-margin / 2;
+}
+
+.Header3 {
+  font-size: $font-size-3;
+  font-weight: $font-weight-heavy;
+  line-height: px-em(32px, 23px);
+  letter-spacing: 0.00625rem;
+  margin-bottom: $base-margin / 2;
+}
+
+.Header4 {
+  font-size: $font-size-3;
+  line-height: px-rem(32px, 23px);
+  font-weight: $font-weight-light;
+  letter-spacing: 0.00625rem;
+  margin-bottom: $base-margin / 2;
+}
+
+.Header5 {
+  font-size: $font-size-4;
+  line-height: px-em(24px, 16px);
+  font-weight: $font-weight-heavy;
+  letter-spacing: 0.00625rem;
+  margin-bottom: $base-margin / 2;
+}
+
+.Header6 {
+  font-size: $font-size-4;
+  text-transform: uppercase;
+  line-height: px-em(24px, 16px);
+  letter-spacing: 0.00625rem;
+  margin-bottom: $base-margin / 2;
+}

@@ -1,0 +1,19 @@
+@import '~@codecademy/gamut-styles/utils';
+@import 'variables';
+
+@mixin standard-type {
+  font-family: $font-base;
+  color: $text-color;
+  font-weight: $font-weight-normal;
+  margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+  @include font-smoothing;
+
+  a {
+    color: $link-color;
+    text-decoration: none;
+  }
+}

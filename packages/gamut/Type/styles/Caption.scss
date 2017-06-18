@@ -1,0 +1,10 @@
+@import 'mixins';
+@import 'variables';
+
+.Caption {
+  @include standard-type;
+  font-size: $font-size-5;
+  letter-spacing: 0.03125rem;
+  line-height: px-em(16px, 16px);
+  margin-bottom: $base-margin;
+}
