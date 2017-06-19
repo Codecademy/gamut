@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { Header, Paragraph, Code, Caption } from '@codecademy/gamut/Type';
-// import { text } from '@kadira/storybook-addon-knobs';
 
 storiesOf('Type', module)
   .addWithInfo(
@@ -65,7 +64,7 @@ storiesOf('Type', module)
         raced on toward the trees intending to pass beneath that which held the
         man-things and take refuge in another farther on; but the wolf-dogs were
         very close behind me—so close that I had despaired of escaping them,
-        when one of the creatures in the tree above swung down. Source: <a href="#">Sample link</a>
+        when one of the creatures in the tree above swung down. Source: <a href="">Sample link</a>
       </Paragraph>,
   {
     inline: true
@@ -75,7 +74,7 @@ storiesOf('Type', module)
     'Caption',
     () =>
       <div>
-        <img src="https://avatar.tobi.sh?size=300" />
+        <img src="https://avatar.tobi.sh?size=300" alt="gradient" />
         <Caption>
           This image is a demonstration of a gradient.
         </Caption>
