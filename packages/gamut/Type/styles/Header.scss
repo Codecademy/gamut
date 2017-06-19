@@ -14,45 +14,45 @@
   font-size: $font-size-1;
   font-weight: $font-weight-heavy;
   letter-spacing: 0.0625rem;
-  line-height: px-em(64px, 46px);
-  margin-bottom: $base-margin / 2;
+  line-height: 4rem;
+  margin-bottom: 1rem;
 }
 
 .Header2 {
   font-size: $font-size-2;
   font-weight: $font-weight-heavy;
-  line-height: px-em(48px, 32px);
-  margin-bottom: $base-margin / 2;
+  line-height: 3rem;
+  margin-bottom: 1rem;
 }
 
 .Header3 {
   font-size: $font-size-3;
   font-weight: $font-weight-heavy;
-  line-height: px-em(32px, 23px);
+  line-height: 2rem;
   letter-spacing: 0.00625rem;
-  margin-bottom: $base-margin / 2;
+  margin-bottom: 0.5rem;
 }
 
 .Header4 {
   font-size: $font-size-3;
-  line-height: px-em(32px, 23px);
+  line-height: 2rem;
   font-weight: $font-weight-light;
   letter-spacing: 0.00625rem;
-  margin-bottom: $base-margin / 2;
+  margin-bottom: 0.5rem;
 }
 
 .Header5 {
   font-size: $font-size-4;
-  line-height: px-em(24px, 16px);
+  line-height: 1.5rem;
   font-weight: $font-weight-heavy;
   letter-spacing: 0.00625rem;
-  margin-bottom: $base-margin / 2;
+  margin-bottom: 0.5rem;
 }
 
 .Header6 {
   font-size: $font-size-4;
   text-transform: uppercase;
-  line-height: px-em(24px, 16px);
+  line-height: 1.5rem;
   letter-spacing: 0.00625rem;
-  margin-bottom: $base-margin / 2;
+  margin-bottom: 0.5rem;
 }
