@@ -11,7 +11,7 @@ const propTypes = {
 const Code = (props) => {
   const CodeClassName = cx(s.Code, props.className);
 
-  return <span {...props} className={CodeClassName}>{props.children}</span>;
+  return <code {...props} className={CodeClassName}>{props.children}</code>;
 };
 
 Code.propTypes = propTypes;
