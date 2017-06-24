@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":";;;;;;;;;;;;;uBACkB,M;;;;;;;;;;;QAAX,O","file":"index.js","sourcesContent":["\nexport loaders, { loader } from './loaders';\n"]}
