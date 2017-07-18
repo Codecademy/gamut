@@ -4,6 +4,9 @@ module.exports = {
   globals: {
     '__DEV__': true
   },
+  roots: [
+    '<rootDir>/packages'
+  ],
   projects: [
     '<rootDir>/packages'
   ],
