@@ -6,4 +6,4 @@ dependencies:
     - $(npm bin)/lerna bootstrap
 test:
   override:
-    - $(npm bin)/jest --config=.jestconfig --runInBand
+    - $(npm bin)/jest --runInBand
