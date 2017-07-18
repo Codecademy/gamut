@@ -4,3 +4,6 @@ machine:
 dependencies:
   post:
     - $(npm bin)/lerna bootstrap
+test:
+  override:
+    - $(npm bin)/jest --runInBand

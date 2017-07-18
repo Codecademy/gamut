@@ -17,7 +17,7 @@
     "cacheDir": ".changelog"
   },
   "scripts": {
-    "test": "jest --config=.jestconfig --runInBand"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^19.0.0",
+    "jest": "^20.0.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
