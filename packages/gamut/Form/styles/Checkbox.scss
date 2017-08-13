@@ -1,48 +1,104 @@
 @import 'variables';
 
-.Checkbox {
-  @include no-select;
-  margin: 0.4rem 0;
-  width: 100%;
-  font-weight: normal;
-}
-
-.checkboxInput {
-  display: none;
-}
-
-.checkboxLabel {
-  display: flex;
-  padding: $form-padding;
-  border-radius: $border-radius;
-  border: 1px solid $swatches-grey-100;
-  align-items: center;
-  transition: $transition-time;
+.labelCbx {
   cursor: pointer;
+
+  .Checkbox {
+    @include no-select;
+    margin: 0.4rem 0;
+    width: 100%;
+    font-weight: normal;
+    padding: $form-padding;
+    border-radius: $border-radius;
+    border: 1px solid $swatches-grey-100;
+    align-items: center;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  input:checked + .checkbox {
+    border-color: $color-mint;
+    svg {
+      path {
+        fill: $color-mint;
+      }
+      polyline {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+
+  .checkbox {
+    position: relative;
+    float: left;
+    margin-right: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid $swatches-grey-200;
+    border-radius: $border-radius;
+    min-width: 1.5rem;
+
+    svg {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+
+      path {
+        fill: none;
+      }
+
+      & polyline {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 18px;
+        stroke-dashoffset: 18px;
+        transition: all $transition-time ease;
+      }
+    }
+  }
 }
 
-.checkboxLabel::before {
-  content: '';
-  display: block;
-  background-position: center;
-  width: px-rem(24px);
-  height: px-rem(24px);
-  min-width: px-rem(24px);
-  min-height: px-rem(24px);
-  border-radius: $border-radius;
-  border: 2px solid $swatches-grey-300;
-  margin-right: $form-padding;
-  transition: $transition-time;
-  background-color: white;
+.invisible {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
-.checkboxInput:checked + .checkboxLabel {
-  background-color: $swatches-grey-100;
-  transition: $transition-time;
-}
+// .checkboxLabel {
+//   display: flex;
 
-.checkboxInput:checked + .checkboxLabel::before {
-  background: url('data:image/svg+xml;utf8,<svg width="14" height="11" viewBox="0 0 14 11" xmlns="http://www.w3.org/2000/svg"><path d="M5.048 8.164L12.61.532l1.452 1.48L5.048 11-.032 5.98l1.408-1.409z" fill="%23E9EAEA"/></svg>') center center no-repeat;
-  background-color: $color-mint;
-  border-color: $color-mint;
-}
+//   transition: $transition-time;
+//   cursor: pointer;
+// }
+//
+// .checkboxLabel::before {
+//   content: '';
+//   display: block;
+//   background-position: center;
+//   width: px-rem(24px);
+//   height: px-rem(24px);
+//   min-width: px-rem(24px);
+//   min-height: px-rem(24px);
+//   border-radius: $border-radius;
+//   border: 2px solid $swatches-grey-300;
+//   margin-right: $form-padding;
+//   transition: $transition-time;
+//   background-color: white;
+// }
+//
+// .checkboxInput:checked + .checkboxLabel {
+//   background-color: $swatches-grey-100;
+//   transition: $transition-time;
+// }
+//
+// .checkboxInput:checked + .checkboxLabel::before {
+//   background: url('data:image/svg+xml;utf8,<svg width="14" height="11" viewBox="0 0 14 11" xmlns="http://www.w3.org/2000/svg"><path d="M5.048 8.164L12.61.532l1.452 1.48L5.048 11-.032 5.98l1.408-1.409z" fill="%23E9EAEA"/></svg>')
+//     center center no-repeat;
+//   background-color: $color-mint;
+//   border-color: $color-mint;
+// }
