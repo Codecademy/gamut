@@ -1,11 +1,11 @@
 @import 'variables';
 
-.labelCbx {
+.checkboxWrapper {
   cursor: pointer;
 
-  .checkboxWrapper {
+  .checkboxLabel {
     @include no-select;
-    margin: 0.4rem 0;
+    margin: ($form-padding / 2) 0;
     width: 100%;
     font-weight: normal;
     padding: $form-padding;
@@ -16,43 +16,40 @@
     align-items: flex-start;
   }
 
-  input:checked + .checkboxWrapper .checkboxSquare {
+  input:checked + .checkboxLabel .checkbox {
     border-color: $color-mint;
-    svg {
-      path {
+
+    .checkboxVector {
+      .squareVector {
         fill: $color-mint;
       }
-      polyline {
+
+      .checkVector {
         stroke-dashoffset: 0;
       }
     }
   }
 
-  input:checked + .checkboxWrapper {
+  input:checked + .checkboxLabel {
     background-color: $swatches-grey-100;
     transition: $transition-time;
   }
 
-  .checkboxSquare {
+  .checkbox {
     position: relative;
     float: left;
     margin-right: 0.5rem;
-    width: 1.5rem;
+    min-width: 1.5rem;
     height: 1.5rem;
     border: 2px solid $swatches-grey-200;
     border-radius: $border-radius;
-    min-width: 1.5rem;
 
-    svg {
+    .checkboxVector {
       position: absolute;
       top: -2px;
       left: -2px;
 
-      path {
-        fill: none;
-      }
-
-      & polyline {
+      .checkVector {
         fill: none;
         stroke: $swatches-grey-100;
         stroke-width: 2;
@@ -67,9 +64,5 @@
 }
 
 .invisible {
-  position: absolute;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  opacity: 0;
+  display: none;
 }
