@@ -1,67 +1,72 @@
 @import 'variables';
 
-.checkboxWrapper {
+.checkboxLabel {
+  @include no-select;
   cursor: pointer;
+  margin: ($form-padding / 2) 0;
+  width: 100%;
+  font-weight: normal;
+  padding: $form-padding;
+  border-radius: $border-radius;
+  border: 1px solid $swatches-grey-100;
+  align-items: center;
+  display: flex;
+  align-items: flex-start;
+}
 
-  .checkboxLabel {
-    @include no-select;
-    margin: ($form-padding / 2) 0;
-    width: 100%;
-    font-weight: normal;
-    padding: $form-padding;
-    border-radius: $border-radius;
-    border: 1px solid $swatches-grey-100;
-    align-items: center;
-    display: flex;
-    align-items: flex-start;
-  }
+input:checked + .checkboxLabel .checkbox {
+  border-color: $color-mint;
 
-  input:checked + .checkboxLabel .checkbox {
-    border-color: $color-mint;
+  .checkboxVector {
+    .squareVector {
+      fill: $color-mint;
+    }
 
-    .checkboxVector {
-      .squareVector {
-        fill: $color-mint;
-      }
-
-      .checkVector {
-        stroke-dashoffset: 0;
-      }
+    .checkVector {
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset $transition-time;
     }
   }
+}
 
-  input:checked + .checkboxLabel {
-    background-color: $swatches-grey-100;
-    transition: $transition-time;
-  }
+input:checked + .checkboxLabel {
+  background-color: $swatches-grey-100;
+}
 
-  .checkbox {
-    position: relative;
-    margin-right: 0.5rem;
-    min-width: 1.5rem;
-    height: 1.5rem;
-    border: 2px solid $swatches-grey-200;
-    border-radius: $border-radius;
+.checkbox {
+  position: relative;
+  margin-right: 0.5rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid $swatches-grey-200;
+  border-radius: $border-radius;
 
-    .checkboxVector {
-      position: absolute;
-      top: -2px;
-      left: -2px;
+  .checkboxVector {
+    position: absolute;
+    top: -2px;
+    left: -2px;
 
-      .checkVector {
-        fill: none;
-        stroke: $swatches-grey-100;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-dasharray: 18px;
-        stroke-dashoffset: 18px;
-        transition: all $transition-time ease;
-      }
+    .checkVector {
+      fill: none;
+      stroke: $swatches-grey-100;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 18px;
+      stroke-dashoffset: 18px;
     }
   }
 }
 
 .invisible {
-  display: none;
+  // @include sr-only;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
 }

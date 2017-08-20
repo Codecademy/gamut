@@ -4,10 +4,8 @@ import cx from 'classnames';
 import s from './styles/Checkbox.scss';
 
 const Checkbox = ({ className, label, htmlFor, ...inputProps }) => {
-  const classNames = cx(s.checkboxWrapper, className);
-
   return (
-    <div className={classNames}>
+    <div className={className}>
       <input
         id={htmlFor}
         type="checkbox"
