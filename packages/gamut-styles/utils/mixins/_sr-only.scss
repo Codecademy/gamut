@@ -1,0 +1,27 @@
+// shamelessly stolen from bootstrap
+// https://github.com/twbs/bootstrap/blob/2085c142679563189dbc34ec6bf4b00e32b8f615/scss/mixins/_screen-reader.scss
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+@mixin sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+    clip-path: none;
+  }
+}
