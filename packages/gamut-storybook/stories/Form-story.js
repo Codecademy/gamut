@@ -97,10 +97,20 @@ storiesOf('Form', module)
   .addWithInfo(
     'Checkbox',
     () => (
-      <Checkbox
-        htmlFor="checkbox1"
-        label="HTML & CSS"
-      />
+      <div>
+        <Checkbox
+          htmlFor="html-css"
+          label="HTML & CSS"
+        />
+        <Checkbox
+          htmlFor="javascript"
+          label="JavaScript"
+        />
+        <Checkbox
+          htmlFor="ruby"
+          label="Ruby"
+        />
+      </div>
     ), {
       inline: true
     }
