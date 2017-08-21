@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## @codecademy/gamut-storybook@1.2.6 (2017-08-21)
+
+### enhancement
+* `gamut`
+  * [#26](https://github.com/RyzacInc/gamut/pull/26) Adding accessibility mixins ([aholachek](https://github.com/aholachek))
+  * [#25](https://github.com/RyzacInc/gamut/pull/25) Checkbox check mark animation ([jonsamp](https://github.com/jonsamp))
+  
+#### Committers: 2
+- Jon Samp ([jonsamp](https://github.com/jonsamp))
+- Alex Holechek(([aholachek)[https://github.com/aholachek])
+
+
 ## @codecademy/gamut-storybook@1.2.4 (2017-06-09)
 
 #### enhancement
