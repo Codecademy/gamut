@@ -9,7 +9,7 @@
   
 #### Committers: 2
 - Jon Samp ([jonsamp](https://github.com/jonsamp))
-- Alex Holechek(([aholachek](https://github.com/aholachek))
+- Alex Holechek ([aholachek](https://github.com/aholachek))
 
 
 ## @codecademy/gamut-storybook@1.2.4 (2017-06-09)
