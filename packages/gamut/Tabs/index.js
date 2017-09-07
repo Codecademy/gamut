@@ -21,7 +21,7 @@ export default class Tabs extends Component {
   componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this._idPrefix = Math.random();
+    this._idPrefix = Math.random().toString().replace('.', '');
   }
 
   createId(index) {
