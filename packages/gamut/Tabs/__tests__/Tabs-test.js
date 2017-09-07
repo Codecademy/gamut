@@ -6,7 +6,7 @@ import Tabs from '../index';
 describe('Accessible Tabs', () => {
 
   function generateTabConfig(num, isDefault) {
-    return [...Array(num).keys()].map(ind => {
+    return Array(num).fill().map((x, ind) => {
       const displayInd = ind + 1;
       return {
         text: 'Tab Number ' + displayInd,
