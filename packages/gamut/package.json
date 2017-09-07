@@ -20,7 +20,8 @@
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.5.10",
+    "react-aria-tabpanel": "^4.2.2"
   },
   "license": "MIT"
 }
