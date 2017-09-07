@@ -1,0 +1,58 @@
+@import '~@codecademy/gamut-styles/utils';
+
+$anim-duration: 200ms;
+
+.tabList {
+  display: flex;
+  position: relative;
+}
+
+.tabPanelContainer {
+  padding: 1.5rem;
+  background-color: $color-white;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+  transition: background-color $anim-duration;
+  &::after {
+    height: 0.25rem;
+    background-color: fade-out($swatches-blue-800, 0.9);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    transition: opacity $anim-duration;
+    opacity: 0;
+    width: 100%;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: fade-out($swatches-grey-800, 0.9);
+  }
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+  &[aria-selected="false"] {
+    cursor: pointer;
+  }
+  &[aria-selected="true"] {
+    font-weight: bold;
+  }
+}
+
+// animated tab underline thing
+.tabIndicator {
+  transition: left $anim-duration ease-in;
+  background: $swatches-blue-800;
+  height: 0.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
