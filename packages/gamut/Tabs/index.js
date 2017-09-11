@@ -13,7 +13,8 @@ export default class Tabs extends Component {
       })
     ).isRequired,
     onChange: PropTypes.func,
-    children: PropTypes.arrayOf(PropTypes.node).isRequired
+    children: PropTypes.arrayOf(PropTypes.node).isRequired,
+    renderAllChildren: PropTypes.bool
   };
 
   state = { activeTabId: undefined };
@@ -76,7 +77,11 @@ export default class Tabs extends Component {
               active={isActive}
               className={s.tabPanel}
             >
-              {isActive ? Children.toArray(this.props.children)[i] : <div />}
+              {
+                isActive || this.props.renderAllChildren ?
+               Children.toArray(this.props.children)[i] :
+               <div />
+               }
             </TabPanel>
           );
         })}
