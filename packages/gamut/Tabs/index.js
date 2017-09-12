@@ -14,7 +14,8 @@ export default class Tabs extends Component {
     ).isRequired,
     onChange: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
-    renderAllChildren: PropTypes.bool
+    renderAllChildren: PropTypes.bool,
+    animatedUnderlineStyle: PropTypes.bool
   };
 
   state = { activeTabId: undefined };
@@ -29,8 +30,9 @@ export default class Tabs extends Component {
     return `${this._idPrefix}-${index}`;
   }
 
-  renderTabList = activeTabId => {
+  renderTabList = (activeTabId) => {
     // leftPercent determines where the animated underline should be positioned
+    // if animatedUnderlineStyle === true
     const leftPercent =
       (this.props.config.findIndex((c, i) => this.createId(i) === activeTabId) /
       this.props.config.length) *
@@ -44,26 +46,29 @@ export default class Tabs extends Component {
             <Tab
               id={key}
               key={key}
-              className={s.tab}
+              className={`${s.tab} ${this.props.animatedUnderlineStyle ? s.animatedUnderline : s.traditional}`}
               active={key === activeTabId}
             >
               {c.text}
             </Tab>
           );
         })}
-        <div
-          className={s.tabIndicator}
-          style={{
-            left: `${leftPercent}%`,
-            width: `${100 / this.props.config.length}%`
-          }}
-          aria-hidden
+        { this.props.animatedUnderlineStyle &&
+          <div
+            className={s.tabIndicator}
+            style={{
+              left: `${leftPercent}%`,
+              width: `${100 / this.props.config.length}%`
+            }}
+            aria-hidden
         />
+        }
+
       </TabList>
     );
   };
 
-  renderTabPanels = activeTabId => {
+  renderTabPanels = (activeTabId) => {
     // render all tab panels, but only active tab panel contains anything
     return (
       <div className={s.tabPanelContainer}>
@@ -112,7 +117,7 @@ export default class Tabs extends Component {
     );
   }
 
-  onChange = id => {
+  onChange = (id) => {
     if (this.props.onChange) this.props.onChange(id);
     this.setState(() => ({ activeTabId: id }));
   };
