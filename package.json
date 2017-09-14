@@ -17,7 +17,7 @@
     "cacheDir": ".changelog"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage --maxWorkers 2"
   },
   "repository": {
     "type": "git",
