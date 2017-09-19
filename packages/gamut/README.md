@@ -7,7 +7,7 @@
 
 ## When to add a component to Gamut
 
-When considering whether to add a component to gamut, answer these questions:
+When considering whether to add a component to Gamut, answer these questions:
 
 1. Is this component necessary to complete a basic set of styleguide components? Using examples from other popular component libraries can be helpful.
 2. Is this component or some version of it used across all or most new React based applications at Codecademy?
