@@ -23,4 +23,7 @@
 
 .error {
   border-color: $swatches-red-400;
+  &:focus {
+    border-color: $swatches-red-200;
+  }
 }
