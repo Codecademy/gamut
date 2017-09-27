@@ -28,6 +28,7 @@
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1",
+    "react-marked": "0.3.1",
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {

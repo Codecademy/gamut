@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
 import id from '@codecademy/identity';
 
 const infoOptions = {
@@ -53,36 +52,37 @@ const renderSwatch = (data, variablePrefix) => {
   });
 };
 
-const stories = storiesOf('Colors', module)
-  .addWithInfo(
-    'Basic',
-    () => (
-      <div>
-        <div>
-          {renderSwatch(id.color)}
-        </div>
-        <div>
-          {Object.keys(id.swatches).map((color) => {
-            if (['basic', 'code'].includes(color)) return null;
-            return (
-              <div>
-                <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
-                {renderSwatch(id.swatches[color], color)}
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    ),
-    infoOptions
-  );
-
-stories.addWithInfo(
-  'Editor theme',
-  () => (
+export default {
+  title: 'Colors',
+  story: () => (
     <div>
+      <h3>Basic Colors</h3>
+      <div>
+        {renderSwatch(id.color)}
+      </div>
+      <div>
+        {Object.keys(id.swatches).map((color) => {
+          if (['basic', 'code'].includes(color)) return null;
+          return (
+            <div>
+              <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
+              {renderSwatch(id.swatches[color], color)}
+            </div>
+          );
+        })}
+      </div>
+      <h3>Editor Colors</h3>
       {renderSwatch(id.swatches.code, 'code')}
     </div>
   ),
-  infoOptions
-);
+  options: infoOptions
+  // editor: {
+  //   title: 'Colors: Editor',
+  //   story: () => (
+  //     <div>
+  //       {renderSwatch(id.swatches.code, 'code')}
+  //     </div>
+  //   ),
+  //   options: infoOptions
+  // }
+};

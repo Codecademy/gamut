@@ -3,10 +3,11 @@ import { storiesOf } from '@kadira/storybook';
 import { Button } from '@codecademy/gamut';
 import { Checkbox, RadioGroup, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
 
-storiesOf('Form', module)
-  .addWithInfo(
-    'Form',
-    () => (
+export default {
+  title: 'Form',
+  story: () => (
+    <div>
+      <h3>Form Elements</h3>
       <Form>
         <FormGroup
           htmlFor="firstName"
@@ -74,29 +75,14 @@ storiesOf('Form', module)
         </FormGroup>
         <Button href="/" type="submit" caps>Submit</Button>
       </Form>
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'FormGroupLabel',
-    () => (
+
+      <h3>FormGroupLabel</h3>
       <FormGroupLabel>Password</FormGroupLabel>
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'FormGroupDescription',
-    () => (
+
+      <h3>FormGroupDescription</h3>
       <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'Checkbox',
-    () => (
+
+      <h3>Checkbox</h3>
       <div>
         <Checkbox
           htmlFor="html-css"
@@ -111,16 +97,11 @@ storiesOf('Form', module)
           label="Ruby"
         />
       </div>
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'RadioGroup',
-    () => (
+
+      <h3>RadioGroup</h3>
       <RadioGroup
-        htmlForPrefix="why-are-you-learning"
-        name="why-are-you-learning"
+        htmlForPrefix="why-are-you-learning-individual"
+        name="why-are-you-learning-individual"
       >
         <Radio
           label="Skills to communicate with developers and other technical people"
@@ -131,66 +112,28 @@ storiesOf('Form', module)
           value="understanding"
         />
       </RadioGroup>
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'Input',
-    () => (
+
+      <h3>Input</h3>
       <Input
         htmlFor="name"
         placeholder="First Name"
       />
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'Input error state',
-    () => (
-      <Input
-        htmlFor="name"
-        placeholder="First Name"
-        error
-      />
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'TextArea',
-    () => (
+
+      <h3>TextArea</h3>
       <TextArea
         htmlFor="about"
         placeholder="About you"
         rows="8"
       />
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'TextArea error state',
-    () => (
-      <TextArea
-        htmlFor="about"
-        placeholder="About you"
-        rows="8"
-        error
-      />
-    ), {
-      inline: true
-    }
-  )
-  .addWithInfo(
-    'Select',
-    () => (
+
+      <h3>Select</h3>
       <Select
         htmlFor="select"
         options={['one', 'two', 'three', 'option four', 'five']}
       />
-    ), {
-      inline: true
-    }
-  );
+    </div>
+  ),
+  options: {
+    inline: true
+  }
+};

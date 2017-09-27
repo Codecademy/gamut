@@ -1,0 +1,73 @@
+import React from 'react';
+import { Container } from '@codecademy/gamut/FlexBox';
+import Button, { presetThemes } from '@codecademy/gamut/Button';
+import { select, text } from '@kadira/storybook-addon-knobs';
+import id from '@codecademy/identity';
+
+const themeKeys = [
+  ...Object.keys(presetThemes),
+  'mint',
+  'darkmint',
+  'blue',
+  'darkblue',
+  'midnightblue',
+  'grey',
+  'red',
+  'yellow',
+  'greyblue',
+  'white',
+  'ccblue'
+];
+
+let themes = {};
+themeKeys.forEach((k) => {
+  themes[k] = k;
+});
+
+let btnStyle = {
+  marginBottom: '0.5rem',
+  marginRight: '0.5rem'
+};
+
+export default {
+  title: 'Button',
+  story: () => (
+    <Container column>
+      <div>
+        <h3>Standard Button themes</h3>
+        <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
+        <Button style={btnStyle} theme="primary" href="#">Primary (red)</Button>
+        <Button style={btnStyle} theme="secondary">Secondary (mint)</Button>
+        <Button style={btnStyle} theme="blue" href="#">Blue</Button>
+        <Button style={btnStyle} theme="yellow">Yellow</Button>
+        <Button style={btnStyle} theme="white" href="#">White</Button>
+        <h3>Button options:</h3>
+        <Button style={btnStyle} theme="primary" outline href="#">Outline</Button>
+        <Button style={btnStyle} theme="primary" size="large">Large</Button>
+        <Button style={btnStyle} theme="secondary" size="small" href="#">Small</Button>
+        <Button style={btnStyle} theme="primary" disabled>Disabled</Button>
+        <Button style={btnStyle} theme="primary" caps href="#">Caps</Button>
+        <h3>Link Buttons</h3>
+        <p>
+          This is an example of a <Button theme="primary" link href="#">Link</Button> style button.
+        </p>
+      </div>
+      <h3>Platform Button themes:</h3>
+      <div
+        style={{
+          background: id.color.midnightblue,
+          padding: '0.5rem'
+        }}
+      >
+        <Button style={btnStyle} theme="platform">Platform</Button>
+        <Button style={btnStyle} theme="lantern">Lantern</Button>
+        <Button style={btnStyle} theme="lantern" go>Lantern: go</Button>
+        <Button style={btnStyle} theme="platform" disabled>Disabled</Button>
+      </div>
+    </Container>
+  ),
+  options: {
+    inline: true,
+    propTables: false
+  }
+};
