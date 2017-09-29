@@ -1,0 +1,16 @@
+@import 'mixins';
+@import 'variables';
+
+.Paragraph {
+  @include standard-type;
+  line-height: 1.5rem;
+  font-size: $font-size-4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: 0.00625rem;
+  margin-bottom: 1rem;
+
+  &:empty {
+    display: none;
+  }
+}
