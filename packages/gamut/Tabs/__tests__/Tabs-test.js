@@ -59,7 +59,7 @@ describe('Accessible Tabs', () => {
   it('Shows the correct tab panel on click, with proper tab highlighted via animated underline', () => {
 
     const wrapper = mount(
-      <Tabs config={generateTabConfig(2)}>
+      <Tabs config={generateTabConfig(2)} animatedUnderlineStyle>
         <div>Tab 1</div>
         <div>Tab 2</div>
       </Tabs>
