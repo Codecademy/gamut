@@ -28,7 +28,8 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
+  id: PropTypes.string
 };
 
 const Button = (props) => {
