@@ -1,6 +1,6 @@
 @import '~@codecademy/gamut-styles/utils';
 
-@import url(https://fonts.googleapis.com/css?family=Oxygen:300,700);
+@import url(https://fonts.googleapis.com/css?family=Oxygen:400,700);
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -22,7 +22,7 @@ input,
 select {
   color: $color-grey-5;
   font-family: $font-system;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p {
@@ -33,7 +33,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: inherit;
+  font-weight: 400;
   line-height: 1.2;
   margin: 1.414rem 0 0.5rem;
   @include font-smoothing;
@@ -50,6 +50,10 @@ h2 {
 
 h3 {
   font-size: $base-unit * pow($base-rhythm, 2);
+  background-color: #f7f7f7;
+  padding: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
 }
 
 h4 {
