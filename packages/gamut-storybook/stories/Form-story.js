@@ -1,10 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import { Button } from '@codecademy/gamut';
 import { Checkbox, RadioGroup, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
 
-storiesOf('Form', module)
-  .addWithInfo(
+storiesOf('Component/Form', module)
+  .add(
     'Form',
     () => (
       <Form>
@@ -78,7 +78,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'FormGroupLabel',
     () => (
       <FormGroupLabel>Password</FormGroupLabel>
@@ -86,7 +86,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'FormGroupDescription',
     () => (
       <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
@@ -94,7 +94,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'Checkbox',
     () => (
       <div>
@@ -115,7 +115,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'RadioGroup',
     () => (
       <RadioGroup
@@ -135,7 +135,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'Input',
     () => (
       <Input
@@ -146,7 +146,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'Input error state',
     () => (
       <Input
@@ -158,7 +158,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'TextArea',
     () => (
       <TextArea
@@ -170,7 +170,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'TextArea error state',
     () => (
       <TextArea
@@ -183,7 +183,7 @@ storiesOf('Form', module)
       inline: true
     }
   )
-  .addWithInfo(
+  .add(
     'Select',
     () => (
       <Select
