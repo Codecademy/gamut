@@ -21,7 +21,7 @@ const Box = () => {
 
 const defaultGridProps = {
   style: {
-    marginBottom: '1rem',
+    padding: '1rem',
     backgroundColor: swatches.mint[100]
   }
 };
