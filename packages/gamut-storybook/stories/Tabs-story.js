@@ -1,9 +1,9 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
-import Tabs from '../index';
+import { storiesOf } from '@storybook/react';
+import Tabs from '@codecademy/gamut/Tabs';
 
 function generateTabConfig(num, isDefault) {
-  return [...Array(num).keys()].map(ind => {
+  return [...Array(num).keys()].map((ind) => {
     const displayInd = ind + 1;
     return {
       text: 'Tab Number ' + displayInd,
@@ -12,9 +12,8 @@ function generateTabConfig(num, isDefault) {
   });
 }
 
-storiesOf('Tabs', module)
-
-  .addWithInfo('Default style', () => (
+storiesOf('Component/Tabs', module)
+  .add('Default style', () => (
     <Tabs config={generateTabConfig(5, 2)}>
       <div>
         Tab 1: Illum et molestiae eum. Voluptatem molestiae iure cum placeat
@@ -35,7 +34,7 @@ storiesOf('Tabs', module)
       </div>
     </Tabs>
   ))
-  .addWithInfo('Animated underline style', () => (
+  .add('Animated underline style', () => (
     <Tabs config={generateTabConfig(5, 0)} animatedUnderlineStyle>
       <div>
         Tab 1: Illum et molestiae eum. Voluptatem molestiae iure cum placeat
@@ -55,4 +54,4 @@ storiesOf('Tabs', module)
         rerum natus consequuntur necessitatibus.
       </div>
     </Tabs>
-  ));;
+  ));

@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@kadira/storybook';
+import { storiesOf } from '@storybook/react';
 import id from '@codecademy/identity';
 
 const infoOptions = {
@@ -53,8 +53,8 @@ const renderSwatch = (data, variablePrefix) => {
   });
 };
 
-const stories = storiesOf('Colors', module)
-  .addWithInfo(
+const stories = storiesOf('Visuals/Colors', module)
+  .add(
     'Basic',
     () => (
       <div>
@@ -77,7 +77,7 @@ const stories = storiesOf('Colors', module)
     infoOptions
   );
 
-stories.addWithInfo(
+stories.add(
   'Editor theme',
   () => (
     <div>

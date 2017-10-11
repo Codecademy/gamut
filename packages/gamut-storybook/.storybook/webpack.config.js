@@ -1,40 +1,56 @@
 const webpack = require('webpack');
 const path = require('path');
-const loaders = require('@codecademy/webpack-config').loaders;
 const babelCodecademyPreset = require('babel-preset-codecademy');
 const merge = require('webpack-merge');
 
-const ENV = (process.env.NODE_ENV || 'development');
-
+const ENV = process.env.NODE_ENV || 'development';
 
 const config = {
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.scss', '.css', '.gscss', '.json'],
-    root: [
+    modules: [
       path.join(__dirname, '../'),
       path.join(__dirname, '../node_modules/@codecademy/')
-    ]
+    ],
+    extensions: ['.js', '.json', '.scss', '.css']
   },
   module: {
-    loaders: [
-      loaders.babel({
-        exclude: [/node_modules(?!(\/@codecademy))/]
-      }),
-      loaders.css.default(),
-      loaders.scss.default(),
-      loaders.json()
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: [/node_modules(?!(\/@codecademy))/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [babelCodecademyPreset]
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      }
     ]
-  },
-  babel: {
-    presets: [babelCodecademyPreset]
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"' + ENV + '"',
-      '__DEV__': (ENV !== 'production')
+      __DEV__: ENV !== 'production'
     })
-  ],
-  postcss: {}
+  ]
 };
 
 module.exports = (defaultConfig) => {
