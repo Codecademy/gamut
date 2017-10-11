@@ -1,39 +1,34 @@
-import React from "react"
-import { storiesOf } from "@storybook/react"
-import { withInfo } from "@storybook/addon-info"
-import { Item } from "@codecademy/gamut/FlexBox"
-import { Grid, Row, Col } from "@codecademy/gamut/FlexGrid"
-import { swatches } from "@codecademy/identity"
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
+import { Item } from '@codecademy/gamut/FlexBox';
+import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
+import { swatches } from '@codecademy/identity';
+import { addonInfoOptions as options } from './options';
 
 const Box = () => {
   return (
     <Item
       style={{
         height: 30,
-        border: "1px solid #fff",
-        marginBottom: "0.5rem",
+        border: '1px solid #fff',
+        marginBottom: '0.5rem',
         backgroundColor: swatches.mint[500]
       }}
     />
-  )
-}
+  );
+};
 
 const defaultGridProps = {
   style: {
-    marginBottom: "1rem",
+    marginBottom: '1rem',
     backgroundColor: swatches.mint[100]
   }
-}
+};
 
-const options = {
-  inline: true,
-  source: true,
-  propTables: false
-}
-
-storiesOf("Layout/Grid System", module)
+storiesOf('Layout/Grid System', module)
   .add(
-    "Fixed Grid (Default)",
+    'Fixed Grid (Default)',
     withInfo({
       text: `
       The grid layout is composed of rows of columns.
@@ -78,7 +73,7 @@ storiesOf("Layout/Grid System", module)
     ))
   )
   .add(
-    "Fluid",
+    'Fluid',
     withInfo({
       text: `
       Adding the fluid prop allows the grid to grow and shrink freely inside its container.
@@ -121,7 +116,7 @@ storiesOf("Layout/Grid System", module)
     ))
   )
   .add(
-    "Offsets",
+    'Offsets',
     withInfo({
       text: `
       A column can be offset with the <code>xs</code> property
@@ -168,7 +163,7 @@ storiesOf("Layout/Grid System", module)
     ))
   )
   .add(
-    "Center",
+    'Center',
     withInfo({
       text: `
       Centered component
@@ -187,4 +182,4 @@ storiesOf("Layout/Grid System", module)
         </Row>
       </Grid>
     ))
-  )
+  );
