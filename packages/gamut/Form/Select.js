@@ -7,9 +7,9 @@ import s from './styles/Select.scss';
 const Select = (props) => {
   const className = cx(s.Select, props.className);
 
-  // Generate list of options
-  const { options, ...propsToTransfer } = props;
+  const { options, handleChange, ...propsToTransfer } = props;
 
+  // Generate list of options
   let selectOptions = [];
 
   if (isArray(options)) {
@@ -34,6 +34,7 @@ const Select = (props) => {
         className={s.selectInput}
         defaultValue={props.defaultValue || ''}
         id={props.htmlFor}
+        onChange={handleChange}
       >
         {selectOptions}
       </select>
@@ -48,7 +49,8 @@ Select.propTypes = {
     PropTypes.object
   ]),
   defaultValue: PropTypes.string,
-  htmlFor: PropTypes.string
+  htmlFor: PropTypes.string,
+  handleChange: PropTypes.func
 };
 
 export default Select;
