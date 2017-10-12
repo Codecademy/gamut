@@ -24,12 +24,6 @@ const Select = (props) => {
     });
   }
 
-  console.log('handleChange');
-  console.log(handleChange);
-
-  console.log('propsToTransfer');
-  console.log(propsToTransfer);
-
   return (
     <div className={className}>
       <svg className={s.selectIcon}>
