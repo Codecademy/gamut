@@ -1,5 +1,5 @@
 const colors = {
-  primary: {
+  portal: {
     white: '#FFFFFF',
     black: '#000000',
     grey1: '#E9EAEA',
@@ -90,30 +90,30 @@ const colors = {
       700: '#956721',
       800: '#634213',
       900: '#301E06'
-    },
-    editor: {
-      black: '#000000',
-      white: '#FFFFFF',
-      default: '#FFFFFF',
-      atom: '#FF7155',
-      attribute: '#CEFF00',
-      builtin: '#DDDA6F',
-      comment: '#737887',
-      def: '#B5A1A1',
-      error: '#E83131',
-      keyword: '#64FFE1',
-      meta: '#D478EA',
-      number: '#EF9EB4',
-      operator: '#B5A1A1',
-      property: '#9771FF',
-      qualifier: '#FFF543',
-      string1: '#FFDE52',
-      string2: '#AC99BF',
-      tag: '#E85D7F',
-      variable1: '#249CFF',
-      variable2: '#57FF93',
-      variable3: '#5AFFEF'
     }
+  },
+  platform: {
+    black: '#000000',
+    white: '#FFFFFF',
+    default: '#FFFFFF',
+    atom: '#FF7155',
+    attribute: '#CEFF00',
+    builtin: '#DDDA6F',
+    comment: '#737887',
+    def: '#B5A1A1',
+    error: '#E83131',
+    keyword: '#64FFE1',
+    meta: '#D478EA',
+    number: '#EF9EB4',
+    operator: '#B5A1A1',
+    property: '#9771FF',
+    qualifier: '#FFF543',
+    string1: '#FFDE52',
+    string2: '#AC99BF',
+    tag: '#E85D7F',
+    variable1: '#249CFF',
+    variable2: '#57FF93',
+    variable3: '#5AFFEF'
   }
 };
 
