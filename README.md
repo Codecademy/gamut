@@ -37,7 +37,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 Install `lerna-changelog`
 
 ```bash
-npm install -g lerna-changelog
+yarn global add lerna-changelog
 ```
 
 [Setup a Github personal authentication token as described in lerna-changelog's README](https://github.com/lerna/lerna-changelog)
