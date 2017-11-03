@@ -1,7 +1,7 @@
 // NOTE: When updating, make sure you also update the gamut-styles/variables.js file
 
 // =======================================
-//            PRIMARY COLORS
+//            PORTAL COLORS
 // =======================================
 
 $color-white: #FFFFFF;
@@ -16,6 +16,32 @@ $color-darkblue: #204056;
 $color-midnightblue: #152B39;
 $color-mint: #34B3A0;
 $color-red: #F65A5B;
+
+// =======================================
+//            PLATFORM COLORS
+// =======================================
+
+$swatches-basic-black: #000000;
+$swatches-basic-white: #FFFFFF;
+$swatches-code-default: #FFFFFF;
+$swatches-code-atom: #FF7155;
+$swatches-code-attribute: #CEFF00;
+$swatches-code-builtin: #DDDA6F;
+$swatches-code-comment: #737887;
+$swatches-code-def: #B5A1A1;
+$swatches-code-error: #E83131;
+$swatches-code-keyword: #64FFE1;
+$swatches-code-meta: #D478EA;
+$swatches-code-number: #EF9EB4;
+$swatches-code-operator: #B5A1A1;
+$swatches-code-property: #9771FF;
+$swatches-code-qualifier: #FFF543;
+$swatches-code-string-1: #FFDE52;
+$swatches-code-string-2: #AC99BF;
+$swatches-code-tag: #E85D7F;
+$swatches-code-variable-1: #249CFF;
+$swatches-code-variable-2: #57FF93;
+$swatches-code-variable-3: #5AFFEF;
 
 // =======================================
 //            COLOR SWATCHES
@@ -90,29 +116,3 @@ $swatches-yellow-600: #C88B2E;
 $swatches-yellow-700: #956721;
 $swatches-yellow-800: #634213;
 $swatches-yellow-900: #301E06;
-
-// =======================================
-//            CODE EDITOR SWATCH
-// =======================================
-
-$swatches-basic-black: #000000;
-$swatches-basic-white: #FFFFFF;
-$swatches-code-default: #FFFFFF;
-$swatches-code-atom: #FF7155;
-$swatches-code-attribute: #CEFF00;
-$swatches-code-builtin: #DDDA6F;
-$swatches-code-comment: #737887;
-$swatches-code-def: #B5A1A1;
-$swatches-code-error: #E83131;
-$swatches-code-keyword: #64FFE1;
-$swatches-code-meta: #D478EA;
-$swatches-code-number: #EF9EB4;
-$swatches-code-operator: #B5A1A1;
-$swatches-code-property: #9771FF;
-$swatches-code-qualifier: #FFF543;
-$swatches-code-string-1: #FFDE52;
-$swatches-code-string-2: #AC99BF;
-$swatches-code-tag: #E85D7F;
-$swatches-code-variable-1: #249CFF;
-$swatches-code-variable-2: #57FF93;
-$swatches-code-variable-3: #5AFFEF;
