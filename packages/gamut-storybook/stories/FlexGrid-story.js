@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { Item } from '@codecademy/gamut/FlexBox';
 import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
-import { swatches } from '@codecademy/identity';
+import gamut from '@codecademy/gamut-styles/variables';
 import { addonInfoOptions as options } from './options';
 
 const Box = () => {
@@ -11,9 +11,8 @@ const Box = () => {
     <Item
       style={{
         height: 30,
-        border: '1px solid #fff',
         marginBottom: '0.5rem',
-        backgroundColor: swatches.mint[500]
+        backgroundColor: gamut.colors.swatches.ccBlue[500]
       }}
     />
   );
@@ -22,7 +21,7 @@ const Box = () => {
 const defaultGridProps = {
   style: {
     padding: '1rem',
-    backgroundColor: swatches.mint[100]
+    backgroundColor: gamut.colors.swatches.ccBlue[100]
   }
 };
 
