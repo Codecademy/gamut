@@ -1,5 +1,6 @@
 import { isNumber, omit } from 'lodash';
 import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
 
@@ -33,22 +34,22 @@ const internalProps = [
 class Container extends React.Component {
   static displayName = 'Container';
   static propTypes = {
-    flex: React.PropTypes.bool,
-    inline: React.PropTypes.bool,
-    grow: React.PropTypes.number,
-    shrink: React.PropTypes.number,
-    row: React.PropTypes.bool,
-    column: React.PropTypes.bool,
-    wrap: React.PropTypes.bool,
-    nowrap: React.PropTypes.bool,
-    center: React.PropTypes.bool,
-    reverse: React.PropTypes.bool,
-    fit: React.PropTypes.bool,
-    align: React.PropTypes.oneOf(positions),
-    justify: React.PropTypes.oneOf(positions),
-    alignSelf: React.PropTypes.oneOf(positions),
-    children: React.PropTypes.node,
-    className: React.PropTypes.string
+    flex: PropTypes.bool,
+    inline: PropTypes.bool,
+    grow: PropTypes.number,
+    shrink: PropTypes.number,
+    row: PropTypes.bool,
+    column: PropTypes.bool,
+    wrap: PropTypes.bool,
+    nowrap: PropTypes.bool,
+    center: PropTypes.bool,
+    reverse: PropTypes.bool,
+    fit: PropTypes.bool,
+    align: PropTypes.oneOf(positions),
+    justify: PropTypes.oneOf(positions),
+    alignSelf: PropTypes.oneOf(positions),
+    children: PropTypes.node,
+    className: PropTypes.string
   };
 
   static defaultProps = {

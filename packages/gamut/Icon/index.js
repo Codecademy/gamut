@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
 
@@ -31,11 +32,11 @@ const ICON_SIZE = 16;
 class Icon extends PureComponent {
 
   static propTypes = {
-    name: React.PropTypes.string.isRequired,
-    size: React.PropTypes.number,
-    className: React.PropTypes.string,
-    children: React.PropTypes.node,
-    style: React.PropTypes.object
+    name: PropTypes.string.isRequired,
+    size: PropTypes.number,
+    className: PropTypes.string,
+    children: PropTypes.node,
+    style: PropTypes.object
   };
 
   render() {
