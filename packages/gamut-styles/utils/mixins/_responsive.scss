@@ -25,6 +25,7 @@
 
 // these variables should be located in ../variables
 // instead, they're co-located with their legacy functions so they can be removed more easily
+// NOTE: when removing, also remove the legacyBreakpoints JS object in gamut-styles/variables.js
 $bp-phone: 0;
 $bp-tablet: 736px;
 $bp-desktop: 960px;
