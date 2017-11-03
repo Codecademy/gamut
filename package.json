@@ -3,7 +3,7 @@
   "private": true,
   "description": "Styleguide & Component library for codecademy.com",
   "version": "1.2.0",
-  "author": "Jake Hiller <jake@codecademy.com>",
+  "author": "Jakee Hiller <jake@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
