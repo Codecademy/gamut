@@ -23,6 +23,12 @@
 
 // Legacy Helper mixins
 
+// these variables should be located in ../variables;
+// co-locating them with their legacy functions so they can be removed more easily, later
+$bp-phone: 0;
+$bp-tablet: 736px;
+$bp-desktop: 960px;
+
 @mixin device-phone {
   @include screen-size-between($bp-phone, $bp-tablet - 1) { @content; }
 }

@@ -1,6 +1,3 @@
-$bp-phone: 0;
-$bp-tablet: 736px;
-$bp-desktop: 960px;
 @mixin font-smoothing($value: on) {
     @if $value == on {
         -webkit-font-smoothing: antialiased;
