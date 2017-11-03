@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import id from '@codecademy/identity';
+import gamut from '@codecademy/gamut-styles/variables';
 
 const infoOptions = {
   inline: true,
@@ -38,16 +38,18 @@ const renderSwatch = (data, variablePrefix) => {
       backgroundColor: data[variableSuffix],
       height: '160px',
       margin: '10px 0',
-      width: '160px'
+      width: '160px',
+      border: '1px solid black',
+      borderRadius: '8px'
     };
     const sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
     return (
       <div style={containerStyles} key={sassVariableName}>
         <div style={swatchStyles} />
-        <span style={{fontSize: '13px'}}>
+        <div style={{fontSize: '13px', textAlign: 'center'}}>
           {sassVariableName}<br />
           {data[variableSuffix]}
-        </span>
+        </div>
       </div>
     );
   });
@@ -55,33 +57,44 @@ const renderSwatch = (data, variablePrefix) => {
 
 const stories = storiesOf('Visuals/Colors', module)
   .add(
-    'Basic',
+    'Portal',
     () => (
       <div>
-        <div>
-          {renderSwatch(id.color)}
-        </div>
-        <div>
-          {Object.keys(id.swatches).map((color) => {
-            if (['basic', 'code'].includes(color)) return null;
-            return (
-              <div>
-                <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
-                {renderSwatch(id.swatches[color], color)}
-              </div>
-            );
-          })}
-        </div>
+        {renderSwatch(gamut.colors.portal)}
       </div>
     ),
     infoOptions
   );
 
 stories.add(
-  'Editor theme',
+  'Platform',
+  () => {
+    const { white, black, ...platformRest } = gamut.colors.platform;
+    return (
+      <div>
+        {renderSwatch({
+          white,
+          black
+        }, 'basic')}
+        {renderSwatch(platformRest, 'code')}
+      </div>
+    );
+  },
+  infoOptions
+);
+
+stories.add(
+  'Swatches',
   () => (
     <div>
-      {renderSwatch(id.swatches.code, 'code')}
+      {Object.keys(gamut.colors.swatches).map((color) => {
+        return (
+          <div>
+            <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
+            {renderSwatch(gamut.colors.swatches[color], color)}
+          </div>
+        );
+      })}
     </div>
   ),
   infoOptions
