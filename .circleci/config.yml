@@ -6,16 +6,16 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-          #     - restore_cache:
-          #         key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn install --pure-lockfile
       - run:
           name: lerna boostrap
           command: $(npm bin)/lerna bootstrap
-          #     - save_cache:
-          #         key: dependency-cache-{{ checksum "package.json" }}
-          #         paths:
-          #           - node_modules
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       - run:
-          name: Test
+          name: Run test suite
           command: yarn test
