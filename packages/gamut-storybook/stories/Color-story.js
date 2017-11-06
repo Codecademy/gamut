@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import gamut from '@codecademy/gamut-styles/variables';
+import { colors, editorColors } from '@codecademy/gamut-styles/variables';
 
 const infoOptions = {
   inline: true,
@@ -60,16 +60,16 @@ const stories = storiesOf('Visuals/Colors', module)
     'Portal',
     () => (
       <div>
-        {renderSwatch(gamut.colors.portal)}
+        {renderSwatch(colors.portal)}
       </div>
     ),
     infoOptions
   );
 
 stories.add(
-  'Platform',
+  'Editor',
   () => {
-    const { white, black, ...platformRest } = gamut.colors.platform;
+    const { white, black, ...platformRest } = editorColors;
     return (
       <div>
         {renderSwatch({
@@ -87,11 +87,11 @@ stories.add(
   'Swatches',
   () => (
     <div>
-      {Object.keys(gamut.colors.swatches).map((color) => {
+      {Object.keys(colors.swatches).map((color) => {
         return (
           <div>
             <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
-            {renderSwatch(gamut.colors.swatches[color], color)}
+            {renderSwatch(colors.swatches[color], color)}
           </div>
         );
       })}

@@ -1,6 +1,6 @@
 $font-oxygen: 'Oxygen', 'Oxygen', 'Segoe UI', 'Helvetica Neue', sans-serif;
 $font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-$font-base: 'Oxygen', 'Oxygen', 'Segoe UI', 'Helvetica Neue', sans-serif;
+$font-base: $font-oxygen;
 $font-monospace: Monaco, Menlo, 'Ubuntu Mono', 'Droid Sans Mono', Consolas, monospace;
 $base-unit: 1rem;
 $font-size-base: $base-unit;
