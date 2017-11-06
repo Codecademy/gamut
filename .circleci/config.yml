@@ -7,7 +7,7 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --cache-folder .yarncache --frozen-lockfile
       - run:
           name: lerna boostrap
           command: $(npm bin)/lerna bootstrap
@@ -15,6 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+            - .yarncache
             - packages/*/node_modules
             - packages/**/node_modules
       - run:
