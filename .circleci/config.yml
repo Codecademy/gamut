@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6.11
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: yarn install --cache-folder .yarncache
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - .yarncache
+            - packages/*/node_modules
+            - packages/**/node_modules
+      - run:
+          name: lerna boostrap
+          command: $(npm bin)/lerna bootstrap
+      - run:
+          name: Run test suite
+          command: yarn test
