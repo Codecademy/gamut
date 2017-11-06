@@ -1,9 +1,0 @@
-machine:
-  node:
-    version: 6.6.0
-dependencies:
-  post:
-    - $(npm bin)/lerna bootstrap
-test:
-  override:
-    - $(npm bin)/jest --runInBand
