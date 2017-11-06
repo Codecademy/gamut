@@ -17,6 +17,8 @@ const TextArea = ({error, htmlFor, className, ...rest}) => {
   );
 };
 
+const nothing = '';
+
 TextArea.propTypes = {
   className: PropTypes.string,
   htmlFor: PropTypes.string,
