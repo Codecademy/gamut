@@ -16,6 +16,7 @@
 
 .selectInput {
   display: block;
+  -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
   outline: none;
@@ -27,10 +28,6 @@
   background-color: $item-background;
   font-size: 1rem;
   transition: background-color $transition-time;
-
-  // Firefox hack
-  color: transparent;
-  text-shadow: 0 0 0 $color-black;
 
   &:hover {
     cursor: pointer;
