@@ -17,14 +17,12 @@ const TextArea = ({error, htmlFor, className, ...rest}) => {
   );
 };
 
-const junk = '';
-
 TextArea.propTypes = {
   className: PropTypes.string,
   htmlFor: PropTypes.string,
   name: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.bool,
+  error: PropTypes.bool
 };
 
 export default TextArea;
