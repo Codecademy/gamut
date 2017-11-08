@@ -17,8 +17,7 @@
     "cacheDir": ".changelog"
   },
   "scripts": {
-    "test": "jest",
-    "bootstrap": "lerna bootstrap"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
