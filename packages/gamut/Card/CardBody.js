@@ -8,7 +8,11 @@ const propTypes = {
   padding: PropTypes.bool
 };
 
-export default function CardBody({ children, padding = true }) {
+const defaultProps = {
+  padding: true
+};
+
+export default function CardBody({ children, padding }) {
   const bodyClasses = cx({
     [s.padding]: padding
   });
@@ -21,3 +25,4 @@ export default function CardBody({ children, padding = true }) {
 }
 
 CardBody.propTypes = propTypes;
+CardBody.defaultProps = defaultProps;
