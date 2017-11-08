@@ -5,16 +5,16 @@ import s from './styles/CardBody';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  padding: PropTypes.bool
+  standardPadding: PropTypes.bool
 };
 
 const defaultProps = {
-  padding: true
+  standardPadding: true
 };
 
-export default function CardBody({ children, padding }) {
+export default function CardBody({ children, standardPadding }) {
   const bodyClasses = cx({
-    [s.padding]: padding
+    [s.standardPadding]: standardPadding
   });
 
   return (
