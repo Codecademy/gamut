@@ -1,0 +1,22 @@
+@import '~@codecademy/gamut-styles/utils';
+
+$border-radius: 2px;
+$shadow-color: rgba(0, 0, 0, 0.15);
+$shadow-light: 0 2px 8px 0 $shadow-color;
+$shadow-dark: -2px 8px 22px 0 $shadow-color;
+$transition-time: 0.25s;
+
+.shell {
+  position: relative;
+  background: $color-white;
+  width: px-rem(320px);
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  transition: box-shadow $transition-time ease-in;
+}
+
+.hoverShadow {
+  &:hover {
+    box-shadow: $shadow-dark;
+  }
+}

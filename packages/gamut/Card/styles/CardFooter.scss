@@ -1,0 +1,34 @@
+@import '~@codecademy/gamut-styles/utils';
+@import './utils';
+
+.footer {
+  border-top: 1px solid transparent;
+  height: px-rem(52px);
+  padding: 0 $side-padding;
+  position: relative; // so children can easily absolute position themselves off of the footer
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.leftAlign {
+  justify-content: flex-start;
+}
+
+.centerAlign {
+  justify-content: center;
+}
+
+.rightAlign {
+  justify-content: flex-end;
+}
+
+.solidTopBorder {
+  border-top: 1px solid $color-grey-2;
+}
+
+.dashedTopBorder {
+  border-top: 1px dashed $color-grey-2;
+}
