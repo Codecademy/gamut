@@ -14,8 +14,8 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ## Local development
 
-1. Run `npm install lerna -g` to install `lerna` globally
-1. Run `lerna bootstrap` to bootstrap the modules in the repo for development
+1. Run `yarn` in the root directory to install `lerna` and other packages
+1. Run `yarn bootstrap` to prep each package in the `packages` directory for development
 
 ### Running storybook
 

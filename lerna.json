@@ -8,7 +8,8 @@
   ],
   "commands": {
     "publish": {
-      "ignore": "gamut-storybook"
+      "ignore": "gamut-storybook",
+      "allowBranch": "master"
     }
   }
 }
