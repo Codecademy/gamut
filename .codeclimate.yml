@@ -1,8 +1,0 @@
-engines:
-  scss-lint:
-    enabled: false
-    checks:
-      SelectorFormat:
-        enabled: false
-      PropertySortOrder:
-        enabled: false
