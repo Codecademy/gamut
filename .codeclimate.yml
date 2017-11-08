@@ -1,6 +1,8 @@
 engines:
   scss-lint:
-    enabled: true
+    enabled: false
     checks:
       SelectorFormat:
+        enabled: false
+      PropertySortOrder:
         enabled: false
