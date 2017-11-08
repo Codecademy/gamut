@@ -1,8 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
-import Icon from '@codecademy/gamut/Icon';
+import { withInfo } from '@storybook/addon-info';
 import { select, boolean } from '@storybook/addon-knobs';
+import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
+import { addonInfoOptions as options } from './options';
 
 const borderStyles = [
   'dashed',
@@ -18,13 +19,16 @@ const alignStyles = [
 
 storiesOf('Component/Card', module)
   .add(
-    'Card Shell with Body & Footer',
-    () => (
+    'Editable',
+    withInfo({
+      ...options
+    })(() => (
       <CardShell
         hoverShadow={boolean('shell.hover', true)}
+        standardWidth={boolean('shell.standardWidth', true)}
       >
         <CardBody
-          padding={boolean('body.padding', true)}
+          standardPadding={boolean('body.standardPadding', true)}
         >
           <h3>Card Body</h3>
           <p>This is some body text</p>
@@ -34,6 +38,8 @@ storiesOf('Component/Card', module)
           border={select('footer.border', borderStyles)}
           align={select('footer.align', alignStyles)}
           flex={boolean('footer.flex', true)}
+          standardPadding={boolean('footer.standardPadding', true)}
+          standardHeight={boolean('footer.standardHeight', true)}
         >
           <span>&raquo;&nbsp;&nbsp;</span>
           <span>Footer Text</span>
@@ -44,4 +50,4 @@ storiesOf('Component/Card', module)
       inline: true,
       propTables: false
     }
-  );
+  ));

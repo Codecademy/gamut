@@ -7,16 +7,22 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   border: PropTypes.oneOf(['dashed', 'solid', 'none']),
   align: PropTypes.oneOf(['center', 'left', 'right']),
-  flex: PropTypes.bool
+  flex: PropTypes.bool,
+  standardPadding: PropTypes.bool,
+  standardHeight: PropTypes.bool
 };
 
 const defaultProps = {
   border: 'none',
   align: 'left',
-  flex: true
+  flex: true,
+  standardPadding: true,
+  standardHeight: true
 };
 
-export default function CardFooter({ children, border, align, flex }) {
+export default function CardFooter({
+  children, border, align, flex, standardPadding, standardHeight
+}) {
   const footerClasses = cx(s.footer, {
     [s.flex]: flex,
     [s.solidTopBorder]: border === 'solid',
@@ -24,7 +30,9 @@ export default function CardFooter({ children, border, align, flex }) {
     [s.transparentTopBorder]: border === 'none',
     [s.leftAlign]: align === 'left',
     [s.centerAlign]: align === 'center',
-    [s.rightAlign]: align === 'right'
+    [s.rightAlign]: align === 'right',
+    [s.standardPadding]: standardPadding,
+    [s.standardHeight]: standardHeight
   });
 
   return (

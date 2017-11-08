@@ -2,9 +2,15 @@
 @import './utils';
 
 .footer {
-  height: px-rem(52px);
-  padding: 0 $side-padding;
   position: relative; // so children can easily absolute position themselves off of the footer
+}
+
+.standardPadding {
+  padding: 0 $side-padding;
+}
+
+.standardHeight {
+  height: px-rem(52px);
 }
 
 .flex {
