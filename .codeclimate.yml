@@ -1,0 +1,6 @@
+engines:
+  scss-lint:
+    enabled: true
+    checks:
+      SelectorFormat:
+        enabled: false
