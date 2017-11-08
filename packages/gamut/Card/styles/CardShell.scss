@@ -9,7 +9,6 @@ $transition-time: 0.25s;
 .shell {
   position: relative;
   background: $color-white;
-  width: px-rem(320px);
   border-radius: $border-radius;
   box-shadow: $shadow-light;
   transition: box-shadow $transition-time ease-in;
@@ -19,4 +18,8 @@ $transition-time: 0.25s;
   &:hover {
     box-shadow: $shadow-dark;
   }
+}
+
+.standardWidth {
+  width: px-rem(320px);
 }

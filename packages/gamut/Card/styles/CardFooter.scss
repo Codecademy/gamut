@@ -2,7 +2,6 @@
 @import './utils';
 
 .footer {
-  border-top: 1px solid transparent;
   height: px-rem(52px);
   padding: 0 $side-padding;
   position: relative; // so children can easily absolute position themselves off of the footer
@@ -23,6 +22,10 @@
 
 .rightAlign {
   justify-content: flex-end;
+}
+
+.transparentTopBorder {
+  border-top: 1px solid transparent;
 }
 
 .solidTopBorder {
