@@ -42,6 +42,6 @@
   },
   "license": "Proprietary",
   "dependencies": {
-    "lerna": "^2.0.0-rc.5"
+    "lerna": "^2.5.1"
   }
 }
