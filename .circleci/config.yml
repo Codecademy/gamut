@@ -7,6 +7,7 @@ jobs:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
+      - run: sudo npm install -g yarn@1.3.2
       - run: yarn install --cache-folder .yarncache
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
