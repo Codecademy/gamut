@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@codecademy/identity@^1.15.4":
+  version "1.15.4"
+  resolved "https://registry.yarnpkg.com/@codecademy/identity/-/identity-1.15.4.tgz#041469850b30b25e1b632c33a746ca1915b3a7fc"
+
 asap@~2.0.3:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.6.tgz#e50347611d7e690943208bbdafebcbc2fb866d46"
