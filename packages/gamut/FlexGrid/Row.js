@@ -5,7 +5,18 @@ import omitProps from '../utils/omitProps';
 import style from './styles';
 
 const ModificatorType = PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
-const modificatorKeys = ['start', 'center', 'end', 'top', 'middle', 'bottom', 'around', 'between', 'first', 'last'];
+const modificatorKeys = [
+  'start',
+  'center',
+  'end',
+  'top',
+  'middle',
+  'bottom',
+  'around',
+  'between',
+  'first',
+  'last'
+];
 
 const propTypes = {
   reverse: PropTypes.bool,
@@ -44,7 +55,10 @@ function getClassNames(props) {
 }
 
 export default function Row(props) {
-  return React.createElement(props.tagName || 'div', omitProps(propKeys, { ...props, className: getClassNames(props) }));
+  return React.createElement(
+    props.tagName || 'div',
+    omitProps(propKeys, { ...props, className: getClassNames(props) })
+  );
 }
 
 Row.propTypes = propTypes;

@@ -23,13 +23,17 @@
     "babel-preset-codecademy": "^1.1.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
-    "eslint": "^3.5.0",
+    "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "7.3.0",
+    "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
+    "lint-staged": "^4.3.0",
+    "prettier": "^1.8.2",
     "prettier-eslint-cli": "^4.4.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -45,11 +49,12 @@
   },
   "scripts": {
     "test": "jest",
-    "prettier": "prettier-eslint --write packages/**/*.{js,json,css,scss}",
+    "eslint": "eslint ./packages/**",
+    "prettier": "prettier-eslint --log-level debug --write \"packages/**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "packages/**/*.{js,json,css,scss}": [
+    "./packages/**/*.{js,json,css,scss}": [
       "prettier-eslint --write",
       "git add"
     ]

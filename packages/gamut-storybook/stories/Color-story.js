@@ -8,7 +8,7 @@ const infoOptions = {
   propTables: false
 };
 
-const parseCamelCase = (string) => {
+const parseCamelCase = string => {
   return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 };
 
@@ -27,25 +27,31 @@ const headerStyles = {
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
-    return `$swatches-${parseCamelCase(variablePrefix)}-${parseCamelCase(variableSuffix)}`;
+    return `$swatches-${parseCamelCase(variablePrefix)}-${parseCamelCase(
+      variableSuffix
+    )}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
 const renderSwatch = (data, variablePrefix) => {
-  return Object.keys(data).map((variableSuffix) => {
+  return Object.keys(data).map(variableSuffix => {
     const swatchStyles = {
       backgroundColor: data[variableSuffix],
       height: '160px',
       margin: '10px 0',
       width: '160px'
     };
-    const sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
+    const sassVariableName = getSassVariableName(
+      variablePrefix,
+      variableSuffix
+    );
     return (
       <div style={containerStyles} key={sassVariableName}>
         <div style={swatchStyles} />
-        <span style={{fontSize: '13px'}}>
-          {sassVariableName}<br />
+        <span style={{ fontSize: '13px' }}>
+          {sassVariableName}
+          <br />
           {data[variableSuffix]}
         </span>
       </div>
@@ -53,36 +59,29 @@ const renderSwatch = (data, variablePrefix) => {
   });
 };
 
-const stories = storiesOf('Visuals/Colors', module)
-  .add(
-    'Basic',
-    () => (
+const stories = storiesOf('Visuals/Colors', module).add(
+  'Basic',
+  () => (
+    <div>
+      <div>{renderSwatch(id.color)}</div>
       <div>
-        <div>
-          {renderSwatch(id.color)}
-        </div>
-        <div>
-          {Object.keys(id.swatches).map((color) => {
-            if (['basic', 'code'].includes(color)) return null;
-            return (
-              <div>
-                <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
-                {renderSwatch(id.swatches[color], color)}
-              </div>
-            );
-          })}
-        </div>
+        {Object.keys(id.swatches).map(color => {
+          if (['basic', 'code'].includes(color)) return null;
+          return (
+            <div>
+              <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
+              {renderSwatch(id.swatches[color], color)}
+            </div>
+          );
+        })}
       </div>
-    ),
-    infoOptions
-  );
+    </div>
+  ),
+  infoOptions
+);
 
 stories.add(
   'Editor theme',
-  () => (
-    <div>
-      {renderSwatch(id.swatches.code, 'code')}
-    </div>
-  ),
+  () => <div>{renderSwatch(id.swatches.code, 'code')}</div>,
   infoOptions
 );

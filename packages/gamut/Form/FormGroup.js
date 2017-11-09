@@ -5,7 +5,14 @@ import s from './styles/FormGroup';
 import FormGroupDescription from './FormGroupDescription';
 import FormGroupLabel from './FormGroupLabel';
 
-const FormGroup = ({label, description, htmlFor, children, className, ...rest}) => {
+const FormGroup = ({
+  label,
+  description,
+  htmlFor,
+  children,
+  className,
+  ...rest
+}) => {
   const classNames = cx(s.FormGroup, className);
 
   const labelComponent = label ? (

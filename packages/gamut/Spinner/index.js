@@ -4,10 +4,15 @@ import cx from 'classnames';
 import s from './styles';
 import SpinnerIcon from './SpinnerIcon';
 
-const Spinner = ({ size, className, fill}) => {
+const Spinner = ({ size, className, fill }) => {
   const classNames = cx(s.spinner, className);
   return (
-    <SpinnerIcon className={classNames} fill={fill} height={size} width={size} />
+    <SpinnerIcon
+      className={classNames}
+      fill={fill}
+      height={size}
+      width={size}
+    />
   );
 };
 

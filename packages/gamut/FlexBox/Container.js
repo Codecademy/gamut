@@ -58,11 +58,10 @@ class Container extends React.Component {
   };
 
   render() {
-
     let classes = cx({
-      [s.flex]: (this.props.flex && !this.props.inline),
-      [s.inline]: (this.props.flex && this.props.inline),
-      [s.fld]: (isNumber(this.props.grow) || isNumber(this.props.shrink)),
+      [s.flex]: this.props.flex && !this.props.inline,
+      [s.inline]: this.props.flex && this.props.inline,
+      [s.fld]: isNumber(this.props.grow) || isNumber(this.props.shrink),
       [s[`flg-${this.props.grow}`]]: isNumber(this.props.grow),
       [s[`fls-${this.props.shrink}`]]: isNumber(this.props.shrink),
       [s.row]: this.props.row,

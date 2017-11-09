@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Container from './Container';
 
@@ -9,9 +8,7 @@ class Item extends React.Component {
   };
 
   render() {
-    return (
-      <Container {...this.props} />
-    );
+    return <Container {...this.props} />;
   }
 }
 

@@ -3,7 +3,7 @@ export const addonInfoOptions = {
   source: true,
   propTables: false,
   header: true,
-  styles: (stylesheet) => {
+  styles: stylesheet => {
     return {
       header: {
         body: {},

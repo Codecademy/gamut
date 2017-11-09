@@ -31,7 +31,7 @@ const propTypes = {
   href: PropTypes.string
 };
 
-const Button = (props) => {
+const Button = props => {
   let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {
@@ -69,7 +69,12 @@ const Button = (props) => {
   }
 
   return (
-    <button data-btn {...propsToTransfer} disabled={props.disabled} className={classes}>
+    <button
+      data-btn
+      {...propsToTransfer}
+      disabled={props.disabled}
+      className={classes}
+    >
       {props.children}
     </button>
   );

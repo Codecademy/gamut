@@ -1,7 +1,18 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Button } from '@codecademy/gamut';
-import { Checkbox, RadioGroup, Radio, Input, TextArea, Select, FormGroup, FormGroupLabel, FormGroupDescription, Form } from '@codecademy/gamut/Form';
+import {
+  Checkbox,
+  RadioGroup,
+  Radio,
+  Input,
+  TextArea,
+  Select,
+  FormGroup,
+  FormGroupLabel,
+  FormGroupDescription,
+  Form
+} from '@codecademy/gamut/Form';
 
 storiesOf('Component/Form', module)
   .add(
@@ -13,18 +24,12 @@ storiesOf('Component/Form', module)
           label="First Name"
           description="Type your first name"
         >
-          <Input
-            htmlFor="firstName"
-            placeholder="First Name"
-          />
+          <Input htmlFor="firstName" placeholder="First Name" />
         </FormGroup>
 
         <FormGroup>
           <FormGroupLabel htmlFor="lastName">Last Name</FormGroupLabel>
-          <Input
-            htmlFor="lastName"
-            placeholder="Last Name"
-          />
+          <Input htmlFor="lastName" placeholder="Last Name" />
         </FormGroup>
 
         <FormGroup
@@ -32,16 +37,14 @@ storiesOf('Component/Form', module)
           label="About"
           description="Write about your self in Haiku form."
         >
-          <TextArea
-            htmlFor="about"
-            placeholder="About you"
-            rows="8"
-          />
+          <TextArea htmlFor="about" placeholder="About you" rows="8" />
         </FormGroup>
 
         <FormGroup>
           <FormGroupLabel>Development Goal</FormGroupLabel>
-          <FormGroupDescription>Which goal do you identify with?</FormGroupDescription>
+          <FormGroupDescription>
+            Which goal do you identify with?
+          </FormGroupDescription>
           <RadioGroup
             htmlForPrefix="why-are-you-learning"
             name="why-are-you-learning"
@@ -67,30 +70,28 @@ storiesOf('Component/Form', module)
 
         <FormGroup>
           <FormGroupLabel>Terms of Service</FormGroupLabel>
-          <Checkbox
-            htmlFor="tos"
-            label="I agree"
-          />
+          <Checkbox htmlFor="tos" label="I agree" />
         </FormGroup>
-        <Button href="/" type="submit" caps>Submit</Button>
+        <Button href="/" type="submit" caps>
+          Submit
+        </Button>
       </Form>
-    ), {
+    ),
+    {
       inline: true
     }
   )
-  .add(
-    'FormGroupLabel',
-    () => (
-      <FormGroupLabel>Password</FormGroupLabel>
-    ), {
-      inline: true
-    }
-  )
+  .add('FormGroupLabel', () => <FormGroupLabel>Password</FormGroupLabel>, {
+    inline: true
+  })
   .add(
     'FormGroupDescription',
     () => (
-      <FormGroupDescription>Write about your self in Haiku form.</FormGroupDescription>
-    ), {
+      <FormGroupDescription>
+        Write about your self in Haiku form.
+      </FormGroupDescription>
+    ),
+    {
       inline: true
     }
   )
@@ -98,20 +99,12 @@ storiesOf('Component/Form', module)
     'Checkbox',
     () => (
       <div>
-        <Checkbox
-          htmlFor="html-css"
-          label="HTML & CSS"
-        />
-        <Checkbox
-          htmlFor="javascript"
-          label="JavaScript"
-        />
-        <Checkbox
-          htmlFor="ruby"
-          label="Ruby"
-        />
+        <Checkbox htmlFor="html-css" label="HTML & CSS" />
+        <Checkbox htmlFor="javascript" label="JavaScript" />
+        <Checkbox htmlFor="ruby" label="Ruby" />
       </div>
-    ), {
+    ),
+    {
       inline: true
     }
   )
@@ -131,55 +124,32 @@ storiesOf('Component/Form', module)
           value="understanding"
         />
       </RadioGroup>
-    ), {
+    ),
+    {
       inline: true
     }
   )
-  .add(
-    'Input',
-    () => (
-      <Input
-        htmlFor="name"
-        placeholder="First Name"
-      />
-    ), {
-      inline: true
-    }
-  )
+  .add('Input', () => <Input htmlFor="name" placeholder="First Name" />, {
+    inline: true
+  })
   .add(
     'Input error state',
-    () => (
-      <Input
-        htmlFor="name"
-        placeholder="First Name"
-        error
-      />
-    ), {
+    () => <Input htmlFor="name" placeholder="First Name" error />,
+    {
       inline: true
     }
   )
   .add(
     'TextArea',
-    () => (
-      <TextArea
-        htmlFor="about"
-        placeholder="About you"
-        rows="8"
-      />
-    ), {
+    () => <TextArea htmlFor="about" placeholder="About you" rows="8" />,
+    {
       inline: true
     }
   )
   .add(
     'TextArea error state',
-    () => (
-      <TextArea
-        htmlFor="about"
-        placeholder="About you"
-        rows="8"
-        error
-      />
-    ), {
+    () => <TextArea htmlFor="about" placeholder="About you" rows="8" error />,
+    {
       inline: true
     }
   )
@@ -190,7 +160,8 @@ storiesOf('Component/Form', module)
         htmlFor="select"
         options={['one', 'two', 'three', 'option four', 'five']}
       />
-    ), {
+    ),
+    {
       inline: true
     }
   );

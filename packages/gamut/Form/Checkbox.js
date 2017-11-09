@@ -28,9 +28,7 @@ const Checkbox = ({ className, label, htmlFor, ...inputProps }) => {
             <polyline points="4 11 8 15 16 6" className={s.checkVector} />
           </svg>
         </div>
-        <span>
-          {label}
-        </span>
+        <span>{label}</span>
       </label>
     </div>
   );
