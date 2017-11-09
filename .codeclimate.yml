@@ -1,8 +1,0 @@
-engines:
-  duplication:
-    enabled: false
-  eslint:
-    enabled: true
-    checks:
-      react/require-default-props:
-        enabled: false
