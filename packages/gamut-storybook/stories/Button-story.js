@@ -34,14 +34,12 @@ const btnStyle = {
 };
 
 storiesOf('Component/Button', module)
-  .add('About Buttons', () => {
-    return (
-      <div>
-        <h1>Here is some top-level button data</h1>
-        <p>Blah blah</p>
-      </div>
-    );
-  })
+  .add('About Buttons', () => (
+    <div>
+      <h1>Here is some top-level button data</h1>
+      <p>Blah blah</p>
+    </div>
+  ))
   .add(
     'Standard Button themes',
     withInfo({

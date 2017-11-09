@@ -58,7 +58,7 @@ class Container extends React.Component {
   };
 
   render() {
-    let classes = cx({
+    const classes = cx({
       [s.flex]: this.props.flex && !this.props.inline,
       [s.inline]: this.props.flex && this.props.inline,
       [s.fld]: isNumber(this.props.grow) || isNumber(this.props.shrink),
@@ -78,7 +78,7 @@ class Container extends React.Component {
       [this.props.className]: !!this.props.className,
     });
 
-    let propsToTransfer = omit(this.props, internalProps);
+    const propsToTransfer = omit(this.props, internalProps);
 
     return (
       <div {...propsToTransfer} className={classes}>

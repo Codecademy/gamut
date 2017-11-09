@@ -6,18 +6,16 @@ import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
 import { swatches } from '@codecademy/identity';
 import { addonInfoOptions as options } from './options';
 
-const Box = () => {
-  return (
-    <Item
-      style={{
-        height: 30,
-        border: '1px solid #fff',
-        marginBottom: '0.5rem',
-        backgroundColor: swatches.mint[500],
-      }}
-    />
-  );
-};
+const Box = () => (
+  <Item
+    style={{
+      height: 30,
+      border: '1px solid #fff',
+      marginBottom: '0.5rem',
+      backgroundColor: swatches.mint[500],
+    }}
+  />
+);
 
 const defaultGridProps = {
   style: {

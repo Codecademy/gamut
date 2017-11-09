@@ -73,31 +73,29 @@ export default class Tabs extends Component {
     );
   };
 
-  renderTabPanels = activeTabId => {
+  renderTabPanels = activeTabId => (
     // render all tab panels, but only active tab panel contains anything
-    return (
-      <div className={s.tabPanelContainer}>
-        {this.props.config.map((c, i) => {
-          const key = this.createId(i);
-          const isActive = key === activeTabId;
-          return (
-            <TabPanel
-              tabId={key}
-              key={key}
-              active={isActive}
-              className={s.tabPanel}
-            >
-              {isActive || this.props.renderAllChildren ? (
-                Children.toArray(this.props.children)[i]
-              ) : (
-                <div />
-              )}
-            </TabPanel>
-          );
-        })}
-      </div>
-    );
-  };
+    <div className={s.tabPanelContainer}>
+      {this.props.config.map((c, i) => {
+        const key = this.createId(i);
+        const isActive = key === activeTabId;
+        return (
+          <TabPanel
+            tabId={key}
+            key={key}
+            active={isActive}
+            className={s.tabPanel}
+          >
+            {isActive || this.props.renderAllChildren ? (
+              Children.toArray(this.props.children)[i]
+            ) : (
+              <div />
+            )}
+          </TabPanel>
+        );
+      })}
+    </div>
+  );
 
   render() {
     let activeTabId;

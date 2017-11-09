@@ -13,13 +13,11 @@ const Select = props => {
   let selectOptions = [];
 
   if (isArray(options)) {
-    selectOptions = options.map(option => {
-      return (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      );
-    });
+    selectOptions = options.map(option => (
+      <option key={option} value={option}>
+        {option}
+      </option>
+    ));
   } else if (isObject(options)) {
     each(options, (val, key) => {
       selectOptions.push(

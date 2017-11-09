@@ -25,9 +25,9 @@
     "enzyme-to-json": "^1.5.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "7.3.0",
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
@@ -49,6 +49,7 @@
   },
   "scripts": {
     "test": "jest",
+    "eslint": "eslint ./**/*.js",
     "prettier": "prettier-eslint --write \"packages/**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged"
   },
