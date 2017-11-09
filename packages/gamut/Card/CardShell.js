@@ -6,7 +6,8 @@ import s from './styles/CardShell';
 const propTypes = {
   children: PropTypes.node.isRequired,
   hoverShadow: PropTypes.bool,
-  standardWidth: PropTypes.bool
+  standardWidth: PropTypes.bool,
+  className: PropTypes.string
 };
 
 const defaultProps = {
@@ -14,11 +15,11 @@ const defaultProps = {
   standardWidth: true
 };
 
-export default function CardShell({ children, hoverShadow, standardWidth }) {
+export default function CardShell({ children, hoverShadow, standardWidth, className }) {
   const shellClasses = cx(s.shell, {
     [s.hoverShadow]: hoverShadow,
     [s.standardWidth]: standardWidth
-  });
+  }, className);
 
   return (
     <div className={shellClasses}>
