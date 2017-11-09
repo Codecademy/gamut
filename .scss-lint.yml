@@ -1,0 +1,75 @@
+scss_files: 'packages/**/*.scss'
+
+exclude:
+  - 'node_modules/**'
+  - '**/node_modules/**'
+
+severity: error
+
+linters:
+
+  IdSelector:
+    enabled: true
+
+  DeclarationOrder:
+    enabled: false
+
+  EmptyLineBetweenBlocks:
+    enabled: false
+
+  ExtendDirective:
+    enabled: true
+
+  SelectorDepth:
+    enabled: true
+
+  PlaceholderInExtend:
+    enabled: true
+
+  HexLength:
+    enabled: false
+
+  LeadingZero:
+    enabled: true
+    style: include_zero
+
+  NameFormat:
+    enabled: true
+
+  PropertySortOrder:
+    enabled: false
+
+  QualifyingElement:
+    enabled: true
+
+  SelectorFormat:
+    enabled: true
+    class_convention: ^[A-Za-z]+$
+    convention_explanation: should be written in camelCase or PascalCase
+
+  SingleLinePerProperty:
+    enabled: true
+    allow_single_line_rule_sets: false
+
+  StringQuotes:
+    enabled: true
+    style: double_quotes
+
+  VendorPrefix:
+    enabled: true
+    identifier_list: base
+
+  SpaceAfterVariableColon:
+    enabled: true
+    style: one_space
+
+  VariableForProperty:
+    enabled: true
+    properties:
+      - color
+
+  TrailingZero:
+    enabled: true
+
+  ZeroUnit:
+    enabled: true

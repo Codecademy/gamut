@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 .Radio {
   @include no-select;
@@ -22,7 +22,7 @@
 }
 
 .radioLabel::before {
-  content: '';
+  content: "";
   display: block;
   width: px-rem(24px);
   height: px-rem(24px);
