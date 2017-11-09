@@ -1,0 +1,6 @@
+engines:
+  eslint:
+    enabled: true
+    checks:
+      react/require-default-props:
+        enabled: false
