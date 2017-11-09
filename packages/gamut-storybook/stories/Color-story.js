@@ -8,9 +8,8 @@ const infoOptions = {
   propTables: false,
 };
 
-const parseCamelCase = string => {
-  return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
-};
+const parseCamelCase = string =>
+  string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 
 const containerStyles = {
   display: 'inline-block',
@@ -34,8 +33,8 @@ const getSassVariableName = (variablePrefix, variableSuffix) => {
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
-const renderSwatch = (data, variablePrefix) => {
-  return Object.keys(data).map(variableSuffix => {
+const renderSwatch = (data, variablePrefix) =>
+  Object.keys(data).map(variableSuffix => {
     const swatchStyles = {
       backgroundColor: data[variableSuffix],
       height: '160px',
@@ -57,7 +56,6 @@ const renderSwatch = (data, variablePrefix) => {
       </div>
     );
   });
-};
 
 const stories = storiesOf('Visuals/Colors', module).add(
   'Basic',

@@ -40,7 +40,7 @@ const propKeys = Object.keys(propTypes);
 function getClassNames(props) {
   const modificators = [style.row];
 
-  for (let key of modificatorKeys) {
+  for (const key of modificatorKeys) {
     const value = props[key];
     if (value) {
       modificators.push(style[`${key}-${value}`]);

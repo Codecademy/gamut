@@ -5,9 +5,9 @@ const RadioGroup = ({ children, onChange, htmlForPrefix, name }) => (
   <div>
     {React.Children.map(children, (child, index) =>
       cloneElement(child, {
-        onChange: onChange,
+        onChange,
         htmlFor: `${htmlForPrefix}-${index}`,
-        name: name,
+        name,
       })
     )}
   </div>

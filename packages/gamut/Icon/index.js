@@ -44,7 +44,7 @@ class Icon extends PureComponent {
         ? s[`ikona-${this.props.name}`]
         : `cc-symbol cc-symbol-icon-${this.props.name}`;
 
-    let classes = cx(s.i, icon, this.props.className);
+    const classes = cx(s.i, icon, this.props.className);
 
     let styles = this.props.style;
 

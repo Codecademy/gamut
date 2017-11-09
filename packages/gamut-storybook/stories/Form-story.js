@@ -77,9 +77,9 @@ storiesOf('Component/Form', module)
         </Button>
       </Form>
     ),
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add('FormGroupLabel', () => <FormGroupLabel>Password</FormGroupLabel>, {
     inline: true,
@@ -91,9 +91,9 @@ storiesOf('Component/Form', module)
         Write about your self in Haiku form.
       </FormGroupDescription>
     ),
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add(
     'Checkbox',
@@ -104,9 +104,9 @@ storiesOf('Component/Form', module)
         <Checkbox htmlFor="ruby" label="Ruby" />
       </div>
     ),
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add(
     'RadioGroup',
@@ -125,9 +125,9 @@ storiesOf('Component/Form', module)
         />
       </RadioGroup>
     ),
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add('Input', () => <Input htmlFor="name" placeholder="First Name" />, {
     inline: true,
@@ -135,23 +135,23 @@ storiesOf('Component/Form', module)
   .add(
     'Input error state',
     () => <Input htmlFor="name" placeholder="First Name" error />,
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add(
     'TextArea',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" />,
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add(
     'TextArea error state',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" error />,
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   )
   .add(
     'Select',
@@ -161,7 +161,7 @@ storiesOf('Component/Form', module)
         options={['one', 'two', 'three', 'option four', 'five']}
       />
     ),
-    {
-      inline: true,
-    }
+  {
+    inline: true,
+  }
   );
