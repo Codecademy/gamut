@@ -37,7 +37,7 @@ FormGroup.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
   description: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default FormGroup;

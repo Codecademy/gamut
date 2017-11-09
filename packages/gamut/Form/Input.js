@@ -7,7 +7,7 @@ const Input = ({ error, htmlFor, className, ...rest }) => {
   const classNames = cx(
     s.Input,
     {
-      [s.error]: error
+      [s.error]: error,
     },
     className
   );
@@ -15,7 +15,7 @@ const Input = ({ error, htmlFor, className, ...rest }) => {
 };
 
 Input.defaultProps = {
-  type: 'text'
+  type: 'text',
 };
 
 Input.propTypes = {
@@ -25,7 +25,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   required: PropTypes.bool,
   type: PropTypes.string,
-  error: PropTypes.bool
+  error: PropTypes.bool,
 };
 
 export default Input;
