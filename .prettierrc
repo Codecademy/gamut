@@ -1,0 +1,12 @@
+{
+  "singleQuote": true,
+  "printWidth": 80,
+  "overrides": [{
+    "files": "*.{scss,css}",
+    "options": {
+      "parser": "css",
+      "singleQuote": false,
+      "semi": true
+    }
+  }]
+}
