@@ -1,5 +1,5 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
 
 //
 // Base styles
@@ -65,8 +65,7 @@ fieldset[disabled] a.btn {
   } @else {
     @include button-variants($name, $color-white, $color);
   }
-};
-
+}
 
 //
 // Button Sizes
@@ -144,7 +143,6 @@ input[type="button"] {
   }
 }
 
-
 // "go" animation styles
 
 @keyframes lantern-pulse {
@@ -157,10 +155,8 @@ input[type="button"] {
 }
 
 .go {
-
   // lantern
   &.btn-darkmint {
-
     background-color: rgba($color-mint, 0.5);
     animation: lantern-pulse 2s infinite ease;
     animation-direction: alternate;

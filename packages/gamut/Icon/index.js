@@ -30,7 +30,6 @@ import s from './styles';
 const ICON_SIZE = 16;
 
 class Icon extends PureComponent {
-
   static propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.number,
@@ -40,7 +39,10 @@ class Icon extends PureComponent {
   };
 
   render() {
-    const icon: string = `ikona-${this.props.name}` in s ? s[`ikona-${this.props.name}`] : `cc-symbol cc-symbol-icon-${this.props.name}`;
+    const icon: string =
+      `ikona-${this.props.name}` in s
+        ? s[`ikona-${this.props.name}`]
+        : `cc-symbol cc-symbol-icon-${this.props.name}`;
 
     let classes = cx(s.i, icon, this.props.className);
 

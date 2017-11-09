@@ -3,17 +3,15 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Input.scss';
 
-const Input = ({error, htmlFor, className, ...rest}) => {
-  const classNames = cx(s.Input, {
-    [s.error]: error
-  }, className);
-  return (
-    <input
-      {...rest}
-      id={htmlFor}
-      className={classNames}
-    />
+const Input = ({ error, htmlFor, className, ...rest }) => {
+  const classNames = cx(
+    s.Input,
+    {
+      [s.error]: error
+    },
+    className
   );
+  return <input {...rest} id={htmlFor} className={classNames} />;
 };
 
 Input.defaultProps = {

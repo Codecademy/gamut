@@ -1,5 +1,2 @@
-/**/*.js
-/**/*.json
 node_modules
-
-!/packages/**/*
+packages/*/node_modules

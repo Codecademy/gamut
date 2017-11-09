@@ -23,19 +23,21 @@ export default class Tabs extends Component {
   componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this._idPrefix = Math.random().toString().replace('.', '');
+    this._idPrefix = Math.random()
+      .toString()
+      .replace('.', '');
   }
 
   createId(index) {
     return `${this._idPrefix}-${index}`;
   }
 
-  renderTabList = (activeTabId) => {
+  renderTabList = activeTabId => {
     // leftPercent determines where the animated underline should be positioned
     // if animatedUnderlineStyle === true
     const leftPercent =
-      (this.props.config.findIndex((c, i) => this.createId(i) === activeTabId) /
-      this.props.config.length) *
+      this.props.config.findIndex((c, i) => this.createId(i) === activeTabId) /
+      this.props.config.length *
       100;
 
     return (
@@ -46,14 +48,18 @@ export default class Tabs extends Component {
             <Tab
               id={key}
               key={key}
-              className={`${s.tab} ${this.props.animatedUnderlineStyle ? s.animatedUnderline : s.traditional}`}
+              className={`${s.tab} ${
+                this.props.animatedUnderlineStyle
+                  ? s.animatedUnderline
+                  : s.traditional
+              }`}
               active={key === activeTabId}
             >
               {c.text}
             </Tab>
           );
         })}
-        { this.props.animatedUnderlineStyle &&
+        {this.props.animatedUnderlineStyle && (
           <div
             className={s.tabIndicator}
             style={{
@@ -61,14 +67,13 @@ export default class Tabs extends Component {
               width: `${100 / this.props.config.length}%`
             }}
             aria-hidden
-        />
-        }
-
+          />
+        )}
       </TabList>
     );
   };
 
-  renderTabPanels = (activeTabId) => {
+  renderTabPanels = activeTabId => {
     // render all tab panels, but only active tab panel contains anything
     return (
       <div className={s.tabPanelContainer}>
@@ -82,11 +87,11 @@ export default class Tabs extends Component {
               active={isActive}
               className={s.tabPanel}
             >
-              {
-                isActive || this.props.renderAllChildren ?
-               Children.toArray(this.props.children)[i] :
-               <div />
-               }
+              {isActive || this.props.renderAllChildren ? (
+                Children.toArray(this.props.children)[i]
+              ) : (
+                <div />
+              )}
             </TabPanel>
           );
         })}
@@ -117,7 +122,7 @@ export default class Tabs extends Component {
     );
   }
 
-  onChange = (id) => {
+  onChange = id => {
     if (this.props.onChange) this.props.onChange(id);
     this.setState(() => ({ activeTabId: id }));
   };
