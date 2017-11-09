@@ -4,7 +4,7 @@ import Container from './Container';
 class Item extends React.Component {
   static displayName = 'Item';
   static defaultProps = {
-    flex: false
+    flex: false,
   };
 
   render() {

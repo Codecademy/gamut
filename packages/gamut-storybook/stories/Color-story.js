@@ -5,7 +5,7 @@ import id from '@codecademy/identity';
 const infoOptions = {
   inline: true,
   source: false,
-  propTables: false
+  propTables: false,
 };
 
 const parseCamelCase = string => {
@@ -15,14 +15,14 @@ const parseCamelCase = string => {
 const containerStyles = {
   display: 'inline-block',
   marginBottom: '1rem',
-  marginRight: '1rem'
+  marginRight: '1rem',
 };
 
 const headerStyles = {
   fontSize: '22px',
   fontWeight: '400',
   margin: '0 0 10px 0',
-  padding: '0'
+  padding: '0',
 };
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
@@ -40,7 +40,7 @@ const renderSwatch = (data, variablePrefix) => {
       backgroundColor: data[variableSuffix],
       height: '160px',
       margin: '10px 0',
-      width: '160px'
+      width: '160px',
     };
     const sassVariableName = getSassVariableName(
       variablePrefix,

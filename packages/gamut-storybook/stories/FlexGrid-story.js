@@ -13,7 +13,7 @@ const Box = () => {
         height: 30,
         border: '1px solid #fff',
         marginBottom: '0.5rem',
-        backgroundColor: swatches.mint[500]
+        backgroundColor: swatches.mint[500],
       }}
     />
   );
@@ -22,8 +22,8 @@ const Box = () => {
 const defaultGridProps = {
   style: {
     padding: '1rem',
-    backgroundColor: swatches.mint[100]
-  }
+    backgroundColor: swatches.mint[100],
+  },
 };
 
 storiesOf('Layout/Grid System', module)
@@ -35,7 +35,7 @@ storiesOf('Layout/Grid System', module)
 
       A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
       `,
-      ...options
+      ...options,
     })(() => (
       <Grid {...defaultGridProps}>
         <Row>
@@ -78,7 +78,7 @@ storiesOf('Layout/Grid System', module)
       text: `
       Adding the fluid prop allows the grid to grow and shrink freely inside its container.
       `,
-      ...options
+      ...options,
     })(() => (
       <Grid {...defaultGridProps} fluid>
         <Row>
@@ -121,7 +121,7 @@ storiesOf('Layout/Grid System', module)
       text: `
       A column can be offset with the <code>xs</code> property
       `,
-      ...options
+      ...options,
     })(() => (
       <Grid fluid {...defaultGridProps}>
         <Row>
@@ -168,7 +168,7 @@ storiesOf('Layout/Grid System', module)
       text: `
       Centered component
       `,
-      ...options
+      ...options,
     })(() => (
       <Grid fluid {...defaultGridProps}>
         <Row>

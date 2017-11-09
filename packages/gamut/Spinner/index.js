@@ -18,13 +18,13 @@ const Spinner = ({ size, className, fill }) => {
 
 Spinner.defaultProps = {
   size: '16px',
-  fill: '#FFFFFF'
+  fill: '#FFFFFF',
 };
 
 Spinner.propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
-  fill: PropTypes.string
+  fill: PropTypes.string,
 };
 
 export default Spinner;
