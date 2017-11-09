@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  hoverShadow: true,
+  hoverShadow: false,
   standardWidth: true
 };
 

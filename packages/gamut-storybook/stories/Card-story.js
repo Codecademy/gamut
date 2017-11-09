@@ -24,7 +24,7 @@ storiesOf('Component/Card', module)
       ...options
     })(() => (
       <CardShell
-        hoverShadow={boolean('shell.hover', true)}
+        hoverShadow={boolean('shell.hoverShadow', false)}
         standardWidth={boolean('shell.standardWidth', true)}
       >
         <CardBody
