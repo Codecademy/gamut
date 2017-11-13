@@ -9,7 +9,7 @@ plugins:
     enabled: true
   scss-lint:
     enabled: true
-exclude_paths:
+exclude_patterns:
   - "config/"
   - "db/"
   - "dist/"
