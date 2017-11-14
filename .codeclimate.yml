@@ -20,5 +20,5 @@ exclude_patterns:
   - "**/test/"
   - "**/tests/"
   - "**/vendor/"
-  - "**/*test.js*"
-  - "**/*story.js*"
+  - "**/*-test.js*"
+  - "**/*-story.js*"
