@@ -12,8 +12,6 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
-  "dependencies": {
-    "@codecademy/identity": "^1.15.4"
-  },
+  "dependencies": {},
   "license": "MIT"
 }

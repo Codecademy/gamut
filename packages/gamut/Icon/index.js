@@ -6,13 +6,13 @@ import s from './styles';
 /**
  * Icon Component
  *
- * Uses the Ikona icon-font from the identity module: https://github.com/RyzacInc/identity
+ * Uses the Ikona icon-font which is stored in ./styles/ikona
  *
  * props:
  *
  * name: The name of the icon in the ikona font,
- *       you can reference the names from
- *       this file https://github.com/RyzacInc/identity/blob/master/ikona/classes.scss
+ *       you can reference the names in
+ *       this file: ./styles/ikona/classes.scss
  *
  * size: the icons are based on a 16px grid, so if you want the icon
  *       to stay sharp, it's font-size has to be a multiple of 16px.

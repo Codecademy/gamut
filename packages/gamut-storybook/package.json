@@ -21,7 +21,6 @@
   "dependencies": {
     "@codecademy/gamut": "^1.4.0",
     "@codecademy/gamut-styles": "^1.2.5",
-    "@codecademy/identity": "^1.15.4",
     "classnames": "^2.2.5",
     "invariant": "^2.2.0",
     "lodash": "^3.10.1",
