@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
 import { select, text } from '@storybook/addon-knobs';
-import id from '@codecademy/identity';
+import gamut from '@codecademy/gamut-styles/variables';
 
 import { addonInfoOptions as options } from './options';
 
@@ -29,8 +29,7 @@ themeKeys.forEach((k) => {
 });
 
 const btnStyle = {
-  marginBottom: '0.5rem',
-  marginRight: '0.5rem'
+  margin: '0.5rem'
 };
 
 storiesOf('Component/Button', module)
@@ -98,7 +97,7 @@ storiesOf('Component/Button', module)
     })(() => (
       <div
         style={{
-          background: id.color.midnightblue,
+          background: gamut.colors.portal.midnightblue,
           padding: '0.5rem'
         }}
       >
