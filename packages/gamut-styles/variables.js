@@ -158,6 +158,10 @@ export const editorColors = {
   variable3: '#5affef'
 };
 
+// =======================================
+//        OTHER LEGACY VARIABLES
+// =======================================
+
 export const grid = {
   cols: 12,
   gutterWidth: '16px',
@@ -173,6 +177,10 @@ export const legacyBreakpoints = {
   tablet: '736px',
   desktop: '960px'
 };
+
+// =======================================
+//                EXPORT
+// =======================================
 
 export default {
   colors,
