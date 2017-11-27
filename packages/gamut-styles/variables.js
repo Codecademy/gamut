@@ -13,14 +13,14 @@ function convertSwatchStringToObject(swatchString) {
 
 export const gamutColors = {
   base: {
-    white: '#fff',
-    black: '#000',
-    purple: '#69639a',
-    royalBlue: '#4b35ef',
-    blue: '#4c7ef3',
-    red: '#fa4359',
-    yellow: '#ffad45',
-    grey: '#ccc'
+    white: scssExports.gamutWhite,
+    black: scssExports.gamutBlack,
+    purple: scssExports.gamutPurple,
+    royalBlue: scssExports.gamutRoyalBlue,
+    blue: scssExports.gamutBlue,
+    red: scssExports.gamutRed,
+    yellow: scssExports.gamutYellow,
+    grey: scssExports.gamutGrey
   },
   swatches: {
     purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),

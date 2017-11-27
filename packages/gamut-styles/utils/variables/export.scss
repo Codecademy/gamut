@@ -1,6 +1,15 @@
 @import 'index';
 
 :export {
+  gamutWhite: $gamut-white;
+  gamutBlack: $gamut-black;
+  gamutPurple: $gamut-purple;
+  gamutRoyalBlue: $gamut-royal-blue;
+  gamutBlue: $gamut-blue;
+  gamutRed: $gamut-red;
+  gamutYellow: $gamut-yellow;
+  gamutGrey: $gamut-grey;
+
   gamutPurpleSwatches:
     $gamut-purple-100
     $gamut-purple-200
