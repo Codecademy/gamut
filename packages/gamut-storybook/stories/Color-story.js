@@ -68,24 +68,18 @@ stories.add(
 );
 
 stories.add(
-  'Gamut Colors',
+  'Gamut (New Colors)',
   () => (
     <div>
-      {renderSwatch(gamutColors.base, 'gamut')}
-    </div>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Gamut Swatches',
-  () => (
-    <div>
+      <div>
+        <h2 style={headerStyles}>gamut-base</h2>
+        {renderSwatch(gamutColors.base, 'gamut')}
+      </div>
       {Object.keys(gamutColors.swatches).map((color) => {
         return (
           <div>
             <h2 style={headerStyles}>{parseCamelCase(`gamut-${color}`)}</h2>
-            {renderSwatch(gamutColors.swatches[color], `swatches-gamut-${color}`)}
+            {renderSwatch(gamutColors.swatches[color], `gamut-${color}`)}
           </div>
         );
       })}

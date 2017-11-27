@@ -11,23 +11,71 @@ $gamut-royal-blue: #4b35ef;
 $gamut-blue: #4c7ef3;
 $gamut-red: #fa4359;
 $gamut-yellow: #ffad45;
-$gamut-gray: #ccc;
+$gamut-grey: #ccc;
 
 // =======================================
 //       NEW DESIGN SYSTEM SWATCHES
 // =======================================
 
-$swatches-gamut-purple-050: lighten($gamut-purple, 90%);
-$swatches-gamut-purple-100: lighten($gamut-purple, 80%);
-$swatches-gamut-purple-150: lighten($gamut-purple, 70%);
-$swatches-gamut-purple-200: lighten($gamut-purple, 60%);
-$swatches-gamut-purple-300: lighten($gamut-purple, 40%);
-$swatches-gamut-purple-400: lighten($gamut-purple, 20%);
-$swatches-gamut-purple-500: $gamut-purple;
-$swatches-gamut-purple-600: darken($gamut-purple, 20%);
-$swatches-gamut-purple-700: darken($gamut-purple, 40%);
-$swatches-gamut-purple-850: darken($gamut-purple, 70%);
-$swatches-gamut-purple-900: darken($gamut-purple, 80%);
+$gamut-purple-100: #e1dfea;
+$gamut-purple-200: #c3c0d6;
+$gamut-purple-300: #a5a1c2;
+$gamut-purple-400: #8782ae;
+$gamut-purple-500: $gamut-purple;
+$gamut-purple-600: #544f7b;
+$gamut-purple-700: #3f3b5c;
+$gamut-purple-800: #2A273D;
+$gamut-purple-900: #15131e;
+
+$gamut-royal-blue-100: #dbd6fb;
+$gamut-royal-blue-200: #b7aef8;
+$gamut-royal-blue-300: #9385f5;
+$gamut-royal-blue-400: #6f5df2;
+$gamut-royal-blue-500: $gamut-royal-blue;
+$gamut-royal-blue-600: #3c2abf;
+$gamut-royal-blue-700: #2d1f8f;
+$gamut-royal-blue-800: #1e155f;
+$gamut-royal-blue-900: #0f0a2f;
+
+$gamut-blue-100: #dbe5fc;
+$gamut-blue-200: #b7cbfa;
+$gamut-blue-300: #93b1f7;
+$gamut-blue-400: #6f97f5;
+$gamut-blue-500: $gamut-blue;
+$gamut-blue-600: #3c64c2;
+$gamut-blue-700: #2d4b91;
+$gamut-blue-800: #1e3261;
+$gamut-blue-900: #0f1930;
+
+$gamut-red-100: #fed9dd;
+$gamut-red-200: #fdb3bc;
+$gamut-red-300: #fc8e9b;
+$gamut-red-400: #fb687a;
+$gamut-red-500: $gamut-red;
+$gamut-red-600: #c83547;
+$gamut-red-700: #962835;
+$gamut-red-800: #641a23;
+$gamut-red-900: #320d11;
+
+$gamut-yellow-100: #ffeed9;
+$gamut-yellow-200: #ffdeb4;
+$gamut-yellow-300: #ffcd8f;
+$gamut-yellow-400: #ffbd6a;
+$gamut-yellow-500: $gamut-yellow;
+$gamut-yellow-600: #cc8a37;
+$gamut-yellow-700: #996729;
+$gamut-yellow-800: #66451b;
+$gamut-yellow-900: #33220d;
+
+$gamut-grey-100: #f5f5f5;
+$gamut-grey-200: #ebebeb;
+$gamut-grey-300: #e1e1e1;
+$gamut-grey-400: #d7d7d7;
+$gamut-grey-500: $gamut-grey;
+$gamut-grey-600: #a4a4a4;
+$gamut-grey-700: #7b7b7b;
+$gamut-grey-800: #525252;
+$gamut-grey-900: #292929;
 
 // =======================================
 //            PORTAL COLORS

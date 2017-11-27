@@ -1,3 +1,12 @@
+import scssExports from './utils/variables/export.scss';
+
+function convertSwatchStringToObject(swatchString) {
+  return swatchString.split(' ').reduce((result, hexcode, index) => {
+    result[`${index +1}00`] = hexcode;
+    return result;
+  }, {});
+}
+
 // =======================================
 //       NEW DESIGN SYSTEM COLORS
 // =======================================
@@ -11,22 +20,15 @@ export const gamutColors = {
     blue: '#4c7ef3',
     red: '#fa4359',
     yellow: '#ffad45',
-    gray: '#ccc'
+    grey: '#ccc'
   },
   swatches: {
-    purple: {
-      '050': '#dceff8',
-      '100': '#bae0f1',
-      '150': '#97d0e9',
-      '200': '#75c1e2',
-      '300': '#52b1db',
-      '400': '#4292b4',
-      '500': '#32728d',
-      '600': '#215366',
-      '700': '#11333f',
-      '800': '#11333f',
-      '900': '#11333f',
-    }
+    purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
+    royalBlue: convertSwatchStringToObject(scssExports.gamutRoyalBlueSwatches),
+    blue: convertSwatchStringToObject(scssExports.gamutBlueSwatches),
+    red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
+    yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
+    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches)
   }
 }
 
