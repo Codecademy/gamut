@@ -2,7 +2,7 @@ import scssExports from './utils/variables/export.scss';
 
 function convertSwatchStringToObject(swatchString) {
   return swatchString.split(' ').reduce((result, hexcode, index) => {
-    result[`${index +1}00`] = hexcode;
+    result[`${index + 1}00`] = hexcode;
     return result;
   }, {});
 }
@@ -30,7 +30,7 @@ export const gamutColors = {
     yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
     grey: convertSwatchStringToObject(scssExports.gamutGreySwatches)
   }
-}
+};
 
 // =======================================
 //       LEGACY COLORS

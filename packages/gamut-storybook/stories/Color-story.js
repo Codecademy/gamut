@@ -72,7 +72,7 @@ stories.add(
   () => (
     <div>
       <div>
-        <h2 style={headerStyles}>gamut-base</h2>
+        <h2 style={headerStyles}>base colors</h2>
         {renderSwatch(gamutColors.base, 'gamut')}
       </div>
       {Object.keys(gamutColors.swatches).map((color) => {
