@@ -1,6 +1,35 @@
 // NOTE: When updating, make sure you also update the gamut-styles/variables.js file
 
 // =======================================
+//       NEW DESIGN SYSTEM COLORS
+// =======================================
+
+$gamut-white: #fff;
+$gamut-black: #000;
+$gamut-purple: #69639a;
+$gamut-royal-blue: #4b35ef;
+$gamut-blue: #4c7ef3;
+$gamut-red: #fa4359;
+$gamut-yellow: #ffad45;
+$gamut-gray: #ccc;
+
+// =======================================
+//       NEW DESIGN SYSTEM SWATCHES
+// =======================================
+
+$swatches-gamut-purple-050: lighten($gamut-purple, 90%);
+$swatches-gamut-purple-100: lighten($gamut-purple, 80%);
+$swatches-gamut-purple-150: lighten($gamut-purple, 70%);
+$swatches-gamut-purple-200: lighten($gamut-purple, 60%);
+$swatches-gamut-purple-300: lighten($gamut-purple, 40%);
+$swatches-gamut-purple-400: lighten($gamut-purple, 20%);
+$swatches-gamut-purple-500: $gamut-purple;
+$swatches-gamut-purple-600: darken($gamut-purple, 20%);
+$swatches-gamut-purple-700: darken($gamut-purple, 40%);
+$swatches-gamut-purple-850: darken($gamut-purple, 70%);
+$swatches-gamut-purple-900: darken($gamut-purple, 80%);
+
+// =======================================
 //            PORTAL COLORS
 // =======================================
 

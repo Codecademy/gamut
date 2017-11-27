@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { colors, editorColors } from '@codecademy/gamut-styles/variables';
+import { colors, gamutColors, editorColors } from '@codecademy/gamut-styles/variables';
 
 const infoOptions = {
   inline: true,
@@ -27,7 +27,7 @@ const headerStyles = {
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
-    return `$swatches-${parseCamelCase(variablePrefix)}-${parseCamelCase(variableSuffix)}`;
+    return `$${parseCamelCase(variablePrefix)}-${parseCamelCase(variableSuffix)}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
@@ -55,16 +55,44 @@ const renderSwatch = (data, variablePrefix) => {
   });
 };
 
-const stories = storiesOf('Visuals/Colors', module)
-  .add(
-    'Portal',
-    () => (
-      <div>
-        {renderSwatch(colors.portal)}
-      </div>
-    ),
-    infoOptions
-  );
+const stories = storiesOf('Visuals/Colors', module);
+
+stories.add(
+  'Portal',
+  () => (
+    <div>
+      {renderSwatch(colors.portal)}
+    </div>
+  ),
+  infoOptions
+);
+
+stories.add(
+  'Gamut Colors',
+  () => (
+    <div>
+      {renderSwatch(gamutColors.base, 'gamut')}
+    </div>
+  ),
+  infoOptions
+);
+
+stories.add(
+  'Gamut Swatches',
+  () => (
+    <div>
+      {Object.keys(gamutColors.swatches).map((color) => {
+        return (
+          <div>
+            <h2 style={headerStyles}>{parseCamelCase(`gamut-${color}`)}</h2>
+            {renderSwatch(gamutColors.swatches[color], `swatches-gamut-${color}`)}
+          </div>
+        );
+      })}
+    </div>
+  ),
+  infoOptions
+);
 
 stories.add(
   'Editor',
@@ -75,8 +103,8 @@ stories.add(
         {renderSwatch({
           white,
           black
-        }, 'basic')}
-        {renderSwatch(platformRest, 'code')}
+        }, 'swatches-basic')}
+        {renderSwatch(platformRest, 'swatches-code')}
       </div>
     );
   },
@@ -91,7 +119,7 @@ stories.add(
         return (
           <div>
             <h2 style={headerStyles}>{parseCamelCase(color)}</h2>
-            {renderSwatch(colors.swatches[color], color)}
+            {renderSwatch(colors.swatches[color], `swatches-${color}`)}
           </div>
         );
       })}
