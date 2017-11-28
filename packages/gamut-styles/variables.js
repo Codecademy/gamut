@@ -14,13 +14,13 @@ function convertSwatchStringToObject(swatchString) {
 export const gamutColors = {
   base: {
     white: scssExports.gamutWhite,
+    grey: scssExports.gamutGrey,
     black: scssExports.gamutBlack,
     purple: scssExports.gamutPurple,
     royalBlue: scssExports.gamutRoyalBlue,
     blue: scssExports.gamutBlue,
     red: scssExports.gamutRed,
-    yellow: scssExports.gamutYellow,
-    grey: scssExports.gamutGrey
+    yellow: scssExports.gamutYellow
   },
   swatches: {
     purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
@@ -40,16 +40,16 @@ export const colors = {
   portal: {
     white: '#fff',
     black: '#000',
-    grey1: '#e9eaea',
-    grey2: '#d4d5d6',
-    grey3: '#bebfc1',
-    grey4: '#939598',
-    grey5: '#3e3e40',
     blue: '#52b1db',
     darkblue: '#204056',
     midnightblue: '#152b39',
     mint: '#34b3a0',
-    red: '#f65a5b'
+    red: '#f65a5b',
+    grey1: '#e9eaea',
+    grey2: '#d4d5d6',
+    grey3: '#bebfc1',
+    grey4: '#939598',
+    grey5: '#3e3e40'
   },
   swatches: {
     blue: {
