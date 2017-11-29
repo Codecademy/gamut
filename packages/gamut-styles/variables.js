@@ -20,6 +20,7 @@ export const gamutColors = {
     royalBlue: scssExports.gamutRoyalBlue,
     blue: scssExports.gamutBlue,
     red: scssExports.gamutRed,
+    mint: scssExports.gamutMint,
     yellow: scssExports.gamutYellow
   },
   swatches: {
@@ -27,6 +28,7 @@ export const gamutColors = {
     royalBlue: convertSwatchStringToObject(scssExports.gamutRoyalBlueSwatches),
     blue: convertSwatchStringToObject(scssExports.gamutBlueSwatches),
     red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
+    mint: convertSwatchStringToObject(scssExports.gamutMintSwatches),
     yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
     grey: convertSwatchStringToObject(scssExports.gamutGreySwatches)
   }
