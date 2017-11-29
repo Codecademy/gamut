@@ -1,17 +1,57 @@
+import scssExports from './utils/variables/export.scss';
+
+function convertSwatchStringToObject(swatchString) {
+  return swatchString.split(' ').reduce((result, hexcode, index) => {
+    result[`${index + 1}00`] = hexcode;
+    return result;
+  }, {});
+}
+
+// =======================================
+//       NEW DESIGN SYSTEM COLORS
+// =======================================
+
+export const gamutColors = {
+  base: {
+    white: scssExports.gamutWhite,
+    grey: scssExports.gamutGrey,
+    black: scssExports.gamutBlack,
+    purple: scssExports.gamutPurple,
+    royalBlue: scssExports.gamutRoyalBlue,
+    blue: scssExports.gamutBlue,
+    red: scssExports.gamutRed,
+    mint: scssExports.gamutMint,
+    yellow: scssExports.gamutYellow
+  },
+  swatches: {
+    purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
+    royalBlue: convertSwatchStringToObject(scssExports.gamutRoyalBlueSwatches),
+    blue: convertSwatchStringToObject(scssExports.gamutBlueSwatches),
+    red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
+    mint: convertSwatchStringToObject(scssExports.gamutMintSwatches),
+    yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
+    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches)
+  }
+};
+
+// =======================================
+//       LEGACY COLORS
+// =======================================
+
 export const colors = {
   portal: {
     white: '#fff',
     black: '#000',
-    grey1: '#e9eaea',
-    grey2: '#d4d5d6',
-    grey3: '#bebfc1',
-    grey4: '#939598',
-    grey5: '#3e3e40',
     blue: '#52b1db',
     darkblue: '#204056',
     midnightblue: '#152b39',
     mint: '#34b3a0',
-    red: '#f65a5b'
+    red: '#f65a5b',
+    grey1: '#e9eaea',
+    grey2: '#d4d5d6',
+    grey3: '#bebfc1',
+    grey4: '#939598',
+    grey5: '#3e3e40'
   },
   swatches: {
     blue: {
@@ -94,6 +134,10 @@ export const colors = {
   }
 };
 
+// =======================================
+//       LEGACY-ER COLORS
+// =======================================
+
 export const editorColors = {
   black: '#000',
   white: '#fff',
@@ -118,6 +162,10 @@ export const editorColors = {
   variable3: '#5affef'
 };
 
+// =======================================
+//        OTHER LEGACY VARIABLES
+// =======================================
+
 export const grid = {
   cols: 12,
   gutterWidth: '16px',
@@ -133,6 +181,10 @@ export const legacyBreakpoints = {
   tablet: '736px',
   desktop: '960px'
 };
+
+// =======================================
+//                EXPORT
+// =======================================
 
 export default {
   colors,
