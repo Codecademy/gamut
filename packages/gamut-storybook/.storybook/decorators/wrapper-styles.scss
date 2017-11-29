@@ -1,4 +1,4 @@
-@import "~@codecademy/gamut-styles/index";
+@import "~@codecademy/gamut-styles/utils";
 
 @import url(https://fonts.googleapis.com/css?family=Oxygen:300,700);
 
@@ -54,7 +54,7 @@ h4 {
   font-size: $base-unit * 1.5;
 }
 
-h4 {
+h5 {
   font-size: $base-unit * 1;
 }
 
