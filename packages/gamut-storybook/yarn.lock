@@ -2,27 +2,6 @@
 # yarn lockfile v1
 
 
-"@codecademy/gamut-styles@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@codecademy/gamut-styles/-/gamut-styles-1.2.4.tgz#ceb0e3ac357740a45dde57a0bb986febf7d2a0a0"
-  dependencies:
-    "@codecademy/identity" "^1.15.4"
-
-"@codecademy/gamut@^1.3.7":
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/@codecademy/gamut/-/gamut-1.3.7.tgz#56219888ac16f47debb4a24cfc39c9ec9e314d07"
-  dependencies:
-    "@codecademy/gamut-styles" "^1.2.4"
-    classnames "^2.2.5"
-    invariant "^2.2.0"
-    lodash "^3.10.1"
-    prop-types "^15.5.10"
-    react-aria-tabpanel "^4.2.2"
-
-"@codecademy/identity@^1.15.4":
-  version "1.15.4"
-  resolved "https://registry.yarnpkg.com/@codecademy/identity/-/identity-1.15.4.tgz#041469850b30b25e1b632c33a746ca1915b3a7fc"
-
 "@codecademy/webpack-config@0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@codecademy/webpack-config/-/webpack-config-0.6.0.tgz#c5fadfa65a2cc9b81a6cb73267430002ad9a3a35"
@@ -2372,7 +2351,7 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-react-class@^15.5.2, create-react-class@^15.6.2:
+create-react-class@^15.5.2:
   version "15.6.2"
   resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.2.tgz#cf1ed15f12aad7f14ef5f2dfe05e6c42f91ef02a"
   dependencies:
@@ -3194,10 +3173,6 @@ find-up@^2.0.0, find-up@^2.1.0:
 flatten@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.2.tgz#dae46a9d78fbe25292258cc1e780a41d95c03782"
-
-focus-group@^0.2.2:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/focus-group/-/focus-group-0.2.3.tgz#956a1124a1495f7d0f4f2dd4c612502abf4a45f9"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -5473,14 +5448,6 @@ react-addons-create-fragment@^15.5.3:
 react-addons-test-utils@15.x.x:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/react-addons-test-utils/-/react-addons-test-utils-15.6.0.tgz#062d36117fe8d18f3ba5e06eb33383b0b85ea5b9"
-
-react-aria-tabpanel@^4.2.2:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/react-aria-tabpanel/-/react-aria-tabpanel-4.3.0.tgz#59d23f3640b74d5d170dd9109fd417d96b7c91ea"
-  dependencies:
-    create-react-class "^15.6.2"
-    focus-group "^0.2.2"
-    prop-types "^15.6.0"
 
 react-color@^2.11.4:
   version "2.13.8"
