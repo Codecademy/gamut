@@ -8,14 +8,6 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
-  "changelog": {
-    "repo": "RyzacInc/gamut",
-    "labels": {
-      "bug": "bug",
-      "enhancement": "enhancement"
-    },
-    "cacheDir": ".changelog"
-  },
   "scripts": {
     "test": "jest"
   },
