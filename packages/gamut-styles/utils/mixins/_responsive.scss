@@ -1,6 +1,33 @@
+// Try to use these simple mixins if possible for your responsive needs
 
-// Media query abstractions
+// .grid {
+//  display: flex;
+//  flex-direction: column;
+//  @include md-viewport {
+//    flex-direction: row;
+//  }
+// }
 
+@mixin sm-viewport {
+  @media only screen and (min-width: $grid-sm-min) {
+    @content;
+  }
+}
+
+@mixin md-viewport {
+  @media only screen and (min-width: $grid-md-min) {
+    @content;
+  }
+}
+
+@mixin lg-viewport {
+  @media only screen and (min-width: $grid-lg-min) {
+    @content;
+  }
+}
+
+// Media query abstractions if you need more complex responsive behavior
+// or custom breakpoints
 // variables are defined in breakpoints.json
 
 @mixin screen-size-lte($max) {
@@ -18,40 +45,5 @@
 @mixin screen-size-gte($min) {
   @media screen and (min-width: $min) {
     @content;
-  }
-}
-
-// Legacy Helper mixins
-
-// these variables should be located in ../variables
-// instead, they're co-located with their legacy functions so they can be removed more easily
-// NOTE: when removing, also remove the legacyBreakpoints JS object in gamut-styles/variables.js
-$bp-phone: 0;
-$bp-tablet: 736px;
-$bp-desktop: 960px;
-
-@mixin device-phone {
-  @include screen-size-between($bp-phone, $bp-tablet - 1) { @content; }
-}
-
-@mixin device-tablet {
-  @include screen-size-between($bp-tablet, $bp-desktop - 1) { @content; }
-}
-
-@mixin device-desktop {
-  @include screen-size-gte($bp-desktop) { @content; }
-}
-
-@mixin devices($devices...) {
-  @each $device in $devices {
-    @if $device == phone {
-      @include device-phone { @content; };
-    }
-    @if $device == tablet {
-      @include device-tablet { @content; };
-    }
-    @if $device == desktop {
-      @include device-desktop { @content; };
-    }
   }
 }
