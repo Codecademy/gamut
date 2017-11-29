@@ -4,75 +4,82 @@
 //       NEW DESIGN SYSTEM SWATCHES
 // =======================================
 
-$gamut-purple-100: #e1dfea;
-$gamut-purple-200: #c3c0d6;
-$gamut-purple-300: #a5a1c2;
-$gamut-purple-400: #8782ae;
 $gamut-purple-500: #69639a;
-$gamut-purple-600: #544f7b;
-$gamut-purple-700: #3f3b5c;
-$gamut-purple-800: #2a273d;
-$gamut-purple-900: #15131e;
 
-$gamut-royal-blue-100: #dbd6fb;
-$gamut-royal-blue-200: #b7aef8;
-$gamut-royal-blue-300: #9385f5;
-$gamut-royal-blue-400: #6f5df2;
+$gamut-purple-100: mix(#fff, $gamut-purple-500, 80%);
+$gamut-purple-200: mix(#fff, $gamut-purple-500, 60%);
+$gamut-purple-300: mix(#fff, $gamut-purple-500, 40%);
+$gamut-purple-400: mix(#fff, $gamut-purple-500, 20%);
+$gamut-purple-600: mix(#000, $gamut-purple-500, 20%);
+$gamut-purple-700: mix(#000, $gamut-purple-500, 40%);
+$gamut-purple-800: mix(#000, $gamut-purple-500, 60%);
+$gamut-purple-900: mix(#000, $gamut-purple-500, 80%);
+
 $gamut-royal-blue-500: #4b35ef;
-$gamut-royal-blue-600: #3c2abf;
-$gamut-royal-blue-700: #2d1f8f;
-$gamut-royal-blue-800: #1e155f;
-$gamut-royal-blue-900: #0f0a2f;
 
-$gamut-blue-100: #dbe5fc;
-$gamut-blue-200: #b7cbfa;
-$gamut-blue-300: #93b1f7;
-$gamut-blue-400: #6f97f5;
+$gamut-royal-blue-100: mix(#fff, $gamut-royal-blue-500, 80%);
+$gamut-royal-blue-200: mix(#fff, $gamut-royal-blue-500, 60%);
+$gamut-royal-blue-300: mix(#fff, $gamut-royal-blue-500, 40%);
+$gamut-royal-blue-400: mix(#fff, $gamut-royal-blue-500, 20%);
+$gamut-royal-blue-600: mix(#000, $gamut-royal-blue-500, 20%);
+$gamut-royal-blue-700: mix(#000, $gamut-royal-blue-500, 40%);
+$gamut-royal-blue-800: mix(#000, $gamut-royal-blue-500, 60%);
+$gamut-royal-blue-900: mix(#000, $gamut-royal-blue-500, 80%);
+
 $gamut-blue-500: #4c7ef3;
-$gamut-blue-600: #3c64c2;
-$gamut-blue-700: #2d4b91;
-$gamut-blue-800: #1e3261;
-$gamut-blue-900: #0f1930;
 
-$gamut-red-100: #fed9dd;
-$gamut-red-200: #fdb3bc;
-$gamut-red-300: #fc8e9b;
-$gamut-red-400: #fb687a;
+$gamut-blue-100: mix(#fff, $gamut-blue-500, 80%);
+$gamut-blue-200: mix(#fff, $gamut-blue-500, 60%);
+$gamut-blue-300: mix(#fff, $gamut-blue-500, 40%);
+$gamut-blue-400: mix(#fff, $gamut-blue-500, 20%);
+$gamut-blue-600: mix(#000, $gamut-blue-500, 20%);
+$gamut-blue-700: mix(#000, $gamut-blue-500, 40%);
+$gamut-blue-800: mix(#000, $gamut-blue-500, 60%);
+$gamut-blue-900: mix(#000, $gamut-blue-500, 80%);
+
 $gamut-red-500: #fa4359;
-$gamut-red-600: #c83547;
-$gamut-red-700: #962835;
-$gamut-red-800: #641a23;
-$gamut-red-900: #320d11;
 
-$gamut-mint-100: #d7f3f2;
-$gamut-mint-200: #afe7e5;
-$gamut-mint-300: #87dbd8;
-$gamut-mint-400: #5fcfcb;
+$gamut-red-100: mix(#fff, $gamut-red-500, 80%);
+$gamut-red-200: mix(#fff, $gamut-red-500, 60%);
+$gamut-red-300: mix(#fff, $gamut-red-500, 40%);
+$gamut-red-400: mix(#fff, $gamut-red-500, 20%);
+$gamut-red-600: mix(#000, $gamut-red-500, 20%);
+$gamut-red-700: mix(#000, $gamut-red-500, 40%);
+$gamut-red-800: mix(#000, $gamut-red-500, 60%);
+$gamut-red-900: mix(#000, $gamut-red-500, 80%);
+
 $gamut-mint-500: #37c3be;
-$gamut-mint-600: #2c9c98;
-$gamut-mint-700: #217572;
-$gamut-mint-800: #164e4c;
-$gamut-mint-900: #0b2726;
 
-$gamut-yellow-100: #ffeed9;
-$gamut-yellow-200: #ffdeb4;
-$gamut-yellow-300: #ffcd8f;
-$gamut-yellow-400: #ffbd6a;
+$gamut-mint-100: mix(#fff, $gamut-mint-500, 80%);
+$gamut-mint-200: mix(#fff, $gamut-mint-500, 60%);
+$gamut-mint-300: mix(#fff, $gamut-mint-500, 40%);
+$gamut-mint-400: mix(#fff, $gamut-mint-500, 20%);
+$gamut-mint-600: mix(#000, $gamut-mint-500, 20%);
+$gamut-mint-700: mix(#000, $gamut-mint-500, 40%);
+$gamut-mint-800: mix(#000, $gamut-mint-500, 60%);
+$gamut-mint-900: mix(#000, $gamut-mint-500, 80%);
+
 $gamut-yellow-500: #ffad45;
-$gamut-yellow-600: #cc8a37;
-$gamut-yellow-700: #996729;
-$gamut-yellow-800: #66451b;
-$gamut-yellow-900: #33220d;
 
-$gamut-grey-100: #f5f5f5;
-$gamut-grey-200: #ebebeb;
-$gamut-grey-300: #e1e1e1;
-$gamut-grey-400: #d7d7d7;
+$gamut-yellow-100: mix(#fff, $gamut-yellow-500, 80%);
+$gamut-yellow-200: mix(#fff, $gamut-yellow-500, 60%);
+$gamut-yellow-300: mix(#fff, $gamut-yellow-500, 40%);
+$gamut-yellow-400: mix(#fff, $gamut-yellow-500, 20%);
+$gamut-yellow-600: mix(#000, $gamut-yellow-500, 20%);
+$gamut-yellow-700: mix(#000, $gamut-yellow-500, 40%);
+$gamut-yellow-800: mix(#000, $gamut-yellow-500, 60%);
+$gamut-yellow-900: mix(#000, $gamut-yellow-500, 80%);
+
 $gamut-grey-500: #ccc;
-$gamut-grey-600: #a4a4a4;
-$gamut-grey-700: #7b7b7b;
-$gamut-grey-800: #525252;
-$gamut-grey-900: #292929;
+
+$gamut-grey-100: mix(#fff, $gamut-grey-500, 80%);
+$gamut-grey-200: mix(#fff, $gamut-grey-500, 60%);
+$gamut-grey-300: mix(#fff, $gamut-grey-500, 40%);
+$gamut-grey-400: mix(#fff, $gamut-grey-500, 20%);
+$gamut-grey-600: mix(#000, $gamut-grey-500, 20%);
+$gamut-grey-700: mix(#000, $gamut-grey-500, 40%);
+$gamut-grey-800: mix(#000, $gamut-grey-500, 60%);
+$gamut-grey-900: mix(#000, $gamut-grey-500, 80%);
 
 // =======================================
 //       NEW DESIGN SYSTEM COLORS
