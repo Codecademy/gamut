@@ -55,7 +55,7 @@ stories.add(
       </div>
       {Object.keys(colors.swatches).map((color) => {
         return (
-          <div>
+          <div key={color}>
             <h2 className={s.heading}>
               {parseCamelCase(color)}
             </h2>
@@ -80,7 +80,7 @@ stories.add(
       </div>
       {Object.keys(gamutColors.swatches).map((color) => {
         return (
-          <div>
+          <div key={color}>
             <h2 className={s.heading}>
               {parseCamelCase(`gamut-${color}`)}
             </h2>
