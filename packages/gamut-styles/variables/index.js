@@ -1,4 +1,4 @@
-import scssExports from './utils/variables/export.scss';
+import scssExports from './export.scss';
 
 function convertSwatchStringToObject(swatchString) {
   return swatchString.split(' ').reduce((result, hexcode, index) => {
