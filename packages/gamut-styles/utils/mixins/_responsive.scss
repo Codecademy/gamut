@@ -1,5 +1,7 @@
 // Try to use these simple mixins if possible for your responsive needs
 
+// Example usage:
+//
 // .grid {
 //  display: flex;
 //  flex-direction: column;
@@ -28,7 +30,6 @@
 
 // Media query abstractions if you need more complex responsive behavior
 // or custom breakpoints
-// variables are defined in breakpoints.json
 
 @mixin screen-size-lte($max) {
   @media screen and (max-width: $max) {
