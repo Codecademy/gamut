@@ -29,6 +29,8 @@ storiesOf('Component/Card', module)
       >
         <CardBody
           standardPadding={boolean('body.standardPadding', true)}
+          align={select('body.align', alignStyles)}
+          flex={boolean('body.flex', true)}
         >
           <h3>Card Body</h3>
           <p>This is some body text</p>

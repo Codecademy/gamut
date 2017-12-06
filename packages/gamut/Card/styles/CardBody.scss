@@ -4,3 +4,20 @@
 .standardPadding {
   padding: 0 $side-padding;
 }
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.leftAlign {
+  align-items: flex-start;
+}
+
+.centerAlign {
+  align-items: center;
+}
+
+.rightAlign {
+  align-items: flex-end;
+}
