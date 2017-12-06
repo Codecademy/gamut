@@ -1,6 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$anim-duration: 200ms;
+$anim-duration: 300ms;
 
 .tabList {
   display: flex;
@@ -66,7 +66,7 @@ $anim-duration: 200ms;
 // animated tab underline thing
 // only present if prop animatedUnderlineStyle === true
 .tabIndicator {
-  transition: left $anim-duration ease-in;
+  transition: left $anim-duration cubic-bezier(0.215, 0.61, 0.355, 1);
   background: $swatches-blue-800;
   height: 0.25rem;
   position: absolute;
