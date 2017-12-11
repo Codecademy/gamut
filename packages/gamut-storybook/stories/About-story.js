@@ -13,11 +13,10 @@ storiesOf('About', module).add('Welcome', () => {
       <p>While already quite useful, Gamut is currently a work in progress.</p>
       <h2>Gamut Styles (SCSS)</h2>
       <p>
-        This storybook displays components, as well as some basic style building
-        blocks in the "Visual" top-level folder, such as{' '}
-        <a href="/?selectedKind=Visuals%2FColors&selectedStory=Portal">
-          color variables
-        </a>. To instead view the core styles for Codecademy, visit the{' '}
+        This storybook displays components, as well as some basic style building blocks in the
+        "Visual" top-level folder, such as{' '}
+        <a href="/?selectedKind=Visuals%2FColors&selectedStory=Portal">color variables</a>. To
+        instead view the core styles for Codecademy, visit the{' '}
         <a href="https://github.com/RyzacInc/gamut/tree/master/packages/gamut-styles">
           Gamut Styles sub-repo
         </a>.

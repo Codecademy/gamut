@@ -132,10 +132,7 @@ storiesOf('Component/Button', module)
       text: 'Editable',
       ...options
     })(() => (
-      <Button
-        theme={select('THEME', themes, 'primary')}
-        onClick={action('clicked')}
-      >
+      <Button theme={select('THEME', themes, 'primary')} onClick={action('clicked')}>
         {text('Label', 'Submit')}
       </Button>
     ))

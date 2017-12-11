@@ -47,12 +47,7 @@ function getClassNames(props) {
   return Object.keys(props)
     .filter(key => classMap[key])
     .map(
-      key =>
-        style[
-          Number.isInteger(props[key])
-            ? classMap[key] + '-' + props[key]
-            : classMap[key]
-        ]
+      key => style[Number.isInteger(props[key]) ? classMap[key] + '-' + props[key] : classMap[key]]
     )
     .concat(extraClasses)
     .join(' ');
@@ -61,10 +56,7 @@ function getClassNames(props) {
 export default function Col(props) {
   const className = getClassNames(props);
 
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return React.createElement(props.tagName || 'div', omitProps(propKeys, { ...props, className }));
 }
 
 Col.propTypes = propTypes;

@@ -17,10 +17,7 @@ export default function Grid(props) {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return React.createElement(props.tagName || 'div', omitProps(propKeys, { ...props, className }));
 }
 
 Grid.propTypes = propTypes;
