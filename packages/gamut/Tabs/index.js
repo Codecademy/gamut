@@ -49,9 +49,7 @@ export default class Tabs extends Component {
               id={key}
               key={key}
               className={`${s.tab} ${
-                this.props.animatedUnderlineStyle
-                  ? s.animatedUnderline
-                  : s.traditional
+                this.props.animatedUnderlineStyle ? s.animatedUnderline : s.traditional
               }`}
               active={key === activeTabId}
             >
@@ -81,12 +79,7 @@ export default class Tabs extends Component {
           const key = this.createId(i);
           const isActive = key === activeTabId;
           return (
-            <TabPanel
-              tabId={key}
-              key={key}
-              active={isActive}
-              className={s.tabPanel}
-            >
+            <TabPanel tabId={key} key={key} active={isActive} className={s.tabPanel}>
               {isActive || this.props.renderAllChildren ? (
                 Children.toArray(this.props.children)[i]
               ) : (
@@ -111,11 +104,7 @@ export default class Tabs extends Component {
     }
 
     return (
-      <Wrapper
-        onChange={this.onChange}
-        activeTabId={activeTabId}
-        className={s.tabContainer}
-      >
+      <Wrapper onChange={this.onChange} activeTabId={activeTabId} className={s.tabContainer}>
         {this.renderTabList(activeTabId)}
         {this.renderTabPanels(activeTabId)}
       </Wrapper>

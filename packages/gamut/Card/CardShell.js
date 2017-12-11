@@ -15,12 +15,7 @@ const defaultProps = {
   standardWidth: true
 };
 
-export default function CardShell({
-  children,
-  hoverShadow,
-  standardWidth,
-  className
-}) {
+export default function CardShell({ children, hoverShadow, standardWidth, className }) {
   const shellClasses = cx(
     s.shell,
     {
