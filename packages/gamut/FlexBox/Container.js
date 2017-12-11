@@ -11,7 +11,7 @@ const positions = [
   'baseline',
   'stretch',
   'spaceAround',
-  'spaceBetween',
+  'spaceBetween'
 ];
 
 const internalProps = [
@@ -28,7 +28,7 @@ const internalProps = [
   'fit',
   'align',
   'justify',
-  'alignSelf',
+  'alignSelf'
 ];
 
 class Container extends React.Component {
@@ -49,12 +49,12 @@ class Container extends React.Component {
     justify: PropTypes.oneOf(positions),
     alignSelf: PropTypes.oneOf(positions),
     children: PropTypes.node,
-    className: PropTypes.string,
+    className: PropTypes.string
   };
 
   static defaultProps = {
     flex: true,
-    inline: false,
+    inline: false
   };
 
   render() {
@@ -75,7 +75,7 @@ class Container extends React.Component {
       [s[`align-${this.props.align}`]]: !!this.props.align,
       [s[`justify-${this.props.justify}`]]: !!this.props.justify,
       [s[`aself-${this.props.alignSelf}`]]: !!this.props.alignSelf,
-      [this.props.className]: !!this.props.className,
+      [this.props.className]: !!this.props.className
     });
 
     const propsToTransfer = omit(this.props, internalProps);

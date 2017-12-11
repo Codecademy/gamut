@@ -21,7 +21,7 @@ export const gamutColors = {
     blue: scssExports.gamutBlue,
     red: scssExports.gamutRed,
     mint: scssExports.gamutMint,
-    yellow: scssExports.gamutYellow,
+    yellow: scssExports.gamutYellow
   },
   swatches: {
     purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
@@ -30,8 +30,8 @@ export const gamutColors = {
     red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
     mint: convertSwatchStringToObject(scssExports.gamutMintSwatches),
     yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
-    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches),
-  },
+    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches)
+  }
 };
 
 // =======================================
@@ -51,7 +51,7 @@ export const colors = {
     grey2: '#d4d5d6',
     grey3: '#bebfc1',
     grey4: '#939598',
-    grey5: '#3e3e40',
+    grey5: '#3e3e40'
   },
   swatches: {
     blue: {
@@ -63,7 +63,7 @@ export const colors = {
       600: '#4292b4',
       700: '#32728d',
       800: '#215366',
-      900: '#11333f',
+      900: '#11333f'
     },
     ccBlue: {
       100: '#d3dde2',
@@ -74,7 +74,7 @@ export const colors = {
       600: '#214a63',
       700: '#204056',
       800: '#163142',
-      900: '#0d222d',
+      900: '#0d222d'
     },
     greyBlue: {
       100: '#eef0f1',
@@ -85,7 +85,7 @@ export const colors = {
       600: '#354551',
       700: '#253845',
       800: '#152b39',
-      900: '#0b161d',
+      900: '#0b161d'
     },
     grey: {
       100: '#e9eaea',
@@ -96,7 +96,7 @@ export const colors = {
       600: '#76787b',
       700: '#5a5b5e',
       800: '#3e3e40',
-      900: '#212123',
+      900: '#212123'
     },
     mint: {
       100: '#d7f6f0',
@@ -107,7 +107,7 @@ export const colors = {
       600: '#37c2aa',
       700: '#34b3a0',
       800: '#1a7b72',
-      900: '#044',
+      900: '#044'
     },
     red: {
       100: '#fddede',
@@ -118,7 +118,7 @@ export const colors = {
       600: '#c64748',
       700: '#963435',
       800: '#652022',
-      900: '#350d0f',
+      900: '#350d0f'
     },
     yellow: {
       100: '#ffedd6',
@@ -129,9 +129,9 @@ export const colors = {
       600: '#c88b2e',
       700: '#956721',
       800: '#634213',
-      900: '#301e06',
-    },
-  },
+      900: '#301e06'
+    }
+  }
 };
 
 // =======================================
@@ -159,7 +159,7 @@ export const editorColors = {
   tag: '#e85d7f',
   variable1: '#249cff',
   variable2: '#57ff93',
-  variable3: '#5affef',
+  variable3: '#5affef'
 };
 
 // =======================================
@@ -173,13 +173,13 @@ export const grid = {
   xsMin: '480px',
   smMin: '768px',
   mdMin: '1024px',
-  lgMin: '1200px',
+  lgMin: '1200px'
 };
 
 export const legacyBreakpoints = {
   phone: '0',
   tablet: '736px',
-  desktop: '960px',
+  desktop: '960px'
 };
 
 // =======================================
@@ -190,5 +190,5 @@ export default {
   colors,
   editorColors,
   grid,
-  legacyBreakpoints,
+  legacyBreakpoints
 };

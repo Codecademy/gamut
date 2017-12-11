@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import {
   colors,
   gamutColors,
-  editorColors,
+  editorColors
 } from '@codecademy/gamut-styles/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
@@ -11,7 +11,7 @@ import s from './Color-story.scss';
 const infoOptions = {
   inline: true,
   source: false,
-  propTables: false,
+  propTables: false
 };
 
 const parseCamelCase = string =>
@@ -20,7 +20,7 @@ const parseCamelCase = string =>
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
     return `$${parseCamelCase(variablePrefix)}-${parseCamelCase(
-      variableSuffix,
+      variableSuffix
     )}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
@@ -30,7 +30,7 @@ const renderSwatch = (data, variablePrefix) =>
   Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
-      variableSuffix,
+      variableSuffix
     );
     return (
       <Container
@@ -69,7 +69,7 @@ stories.add(
       ))}
     </Container>
   ),
-  infoOptions,
+  infoOptions
 );
 
 stories.add(
@@ -88,7 +88,7 @@ stories.add(
       ))}
     </Container>
   ),
-  infoOptions,
+  infoOptions
 );
 
 stories.add(
@@ -101,13 +101,13 @@ stories.add(
         {renderSwatch(
           {
             white,
-            black,
+            black
           },
-          'swatches-basic',
+          'swatches-basic'
         )}
         {renderSwatch(platformRest, 'swatches-code')}
       </div>
     );
   },
-  infoOptions,
+  infoOptions
 );

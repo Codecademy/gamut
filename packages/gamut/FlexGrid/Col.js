@@ -17,7 +17,7 @@ const propTypes = {
   reverse: PropTypes.bool,
   className: PropTypes.string,
   tagName: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const propKeys = Object.keys(propTypes);
@@ -30,7 +30,7 @@ const classMap = {
   xsOffset: 'col-xs-offset',
   smOffset: 'col-sm-offset',
   mdOffset: 'col-md-offset',
-  lgOffset: 'col-lg-offset',
+  lgOffset: 'col-lg-offset'
 };
 
 function getClassNames(props) {
@@ -52,7 +52,7 @@ function getClassNames(props) {
           Number.isInteger(props[key])
             ? `${classMap[key]}-${props[key]}`
             : classMap[key]
-        ],
+        ]
     )
     .concat(extraClasses)
     .join(' ');
@@ -63,7 +63,7 @@ export default function Col(props) {
 
   return React.createElement(
     props.tagName || 'div',
-    omitProps(propKeys, { ...props, className }),
+    omitProps(propKeys, { ...props, className })
   );
 }
 

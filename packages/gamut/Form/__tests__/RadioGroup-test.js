@@ -13,7 +13,7 @@ describe('<RadioGroup>', () => {
     >
       <Radio label="Sweet Green" value="sweet-green" />
       <Radio label="Chopt" value="chopt" />
-    </RadioGroup>,
+    </RadioGroup>
   );
 
   it('sets the htmlFor prop on the child', () => {
@@ -21,7 +21,7 @@ describe('<RadioGroup>', () => {
       wrapper
         .find('Radio')
         .first()
-        .prop('htmlFor'),
+        .prop('htmlFor')
     ).toEqual('what-salad-maker-do-you-prefer-0');
   });
 
@@ -30,7 +30,7 @@ describe('<RadioGroup>', () => {
       wrapper
         .find('Radio')
         .first()
-        .prop('onChange'),
+        .prop('onChange')
     ).toEqual(onChangeCallback);
   });
 
@@ -39,7 +39,7 @@ describe('<RadioGroup>', () => {
       wrapper
         .find('Radio')
         .first()
-        .prop('name'),
+        .prop('name')
     ).toEqual('what-salad-maker-do-you-prefer');
   });
 });

@@ -12,12 +12,12 @@ describe('<Radio>', () => {
     const onChangeCallback = jest.fn();
 
     const wrapper = shallow(
-      <Radio htmlFor="some-label" onChange={onChangeCallback} value="a" />,
+      <Radio htmlFor="some-label" onChange={onChangeCallback} value="a" />
     );
     wrapper.find('input[type="radio"]').simulate('change', {
       target: {
-        value: 'a',
-      },
+        value: 'a'
+      }
     });
     const firstArgument = onChangeCallback.mock.calls[0][0];
     expect(firstArgument.target.value).toBe('a');
@@ -25,7 +25,7 @@ describe('<Radio>', () => {
 
   it('accepts JSX in the label', () => {
     const wrapper = shallow(
-      <Radio htmlFor="some-label" label={<img alt="my cat" src="cat.jpg" />} />,
+      <Radio htmlFor="some-label" label={<img alt="my cat" src="cat.jpg" />} />
     );
     expect(wrapper.find('img').length).toBe(1);
   });

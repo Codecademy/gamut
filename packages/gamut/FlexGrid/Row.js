@@ -15,7 +15,7 @@ const modificatorKeys = [
   'around',
   'between',
   'first',
-  'last',
+  'last'
 ];
 
 const propTypes = {
@@ -32,7 +32,7 @@ const propTypes = {
   last: ModificatorType,
   className: PropTypes.string,
   tagName: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const propKeys = Object.keys(propTypes);
@@ -57,7 +57,7 @@ function getClassNames(props) {
 export default function Row(props) {
   return React.createElement(
     props.tagName || 'div',
-    omitProps(propKeys, { ...props, className: getClassNames(props) }),
+    omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
 }
 

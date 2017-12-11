@@ -11,7 +11,7 @@ export const presetThemes = {
   primary: 'red',
   secondary: 'mint',
   platform: 'greyblue',
-  lantern: 'darkmint',
+  lantern: 'darkmint'
 };
 
 const propTypes = {
@@ -28,7 +28,7 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
-  href: PropTypes.string,
+  href: PropTypes.string
 };
 
 const Button = props => {
@@ -53,9 +53,9 @@ const Button = props => {
       [s.disabled]: props.disabled,
       [s.outline]: props.outline,
       [s.underline]: props.underline,
-      [s.caps]: props.caps,
+      [s.caps]: props.caps
     },
-    props.className,
+    props.className
   );
 
   const propsToTransfer = omitProps(propTypes, props);
