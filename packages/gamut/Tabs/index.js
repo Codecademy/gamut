@@ -9,13 +9,13 @@ export default class Tabs extends Component {
     config: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string.isRequired,
-        default: PropTypes.bool
+        default: PropTypes.bool,
       })
     ).isRequired,
     onChange: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
     renderAllChildren: PropTypes.bool,
-    animatedUnderlineStyle: PropTypes.bool
+    animatedUnderlineStyle: PropTypes.bool,
   };
 
   state = { activeTabId: undefined };
@@ -64,7 +64,7 @@ export default class Tabs extends Component {
             className={s.tabIndicator}
             style={{
               left: `${leftPercent}%`,
-              width: `${100 / this.props.config.length}%`
+              width: `${100 / this.props.config.length}%`,
             }}
             aria-hidden
           />
