@@ -10,7 +10,7 @@ const infoOptions = {
   propTables: false
 };
 
-const parseCamelCase = (string) => {
+const parseCamelCase = string => {
   return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 };
 
@@ -22,7 +22,7 @@ const getSassVariableName = (variablePrefix, variableSuffix) => {
 };
 
 const renderSwatch = (data, variablePrefix) => {
-  return Object.keys(data).map((variableSuffix) => {
+  return Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
     return (
       <Container align="center" className={s.swatchContainer} key={sassVariableName}>
@@ -47,7 +47,7 @@ stories.add(
         <h2 className={s.heading}>portal base colors</h2>
         {renderSwatch(colors.portal)}
       </div>
-      {Object.keys(colors.swatches).map((color) => {
+      {Object.keys(colors.swatches).map(color => {
         return (
           <div key={color}>
             <h2 className={s.heading}>{parseCamelCase(color)}</h2>
@@ -68,7 +68,7 @@ stories.add(
         <h2 className={s.heading}>gamut base colors</h2>
         {renderSwatch(gamutColors.base, 'gamut')}
       </div>
-      {Object.keys(gamutColors.swatches).map((color) => {
+      {Object.keys(gamutColors.swatches).map(color => {
         return (
           <div key={color}>
             <h2 className={s.heading}>{parseCamelCase(`gamut-${color}`)}</h2>

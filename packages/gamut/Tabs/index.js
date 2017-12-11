@@ -32,7 +32,7 @@ export default class Tabs extends Component {
     return `${this._idPrefix}-${index}`;
   }
 
-  renderTabList = (activeTabId) => {
+  renderTabList = activeTabId => {
     // leftPercent determines where the animated underline should be positioned
     // if animatedUnderlineStyle === true
     const leftPercent =
@@ -71,7 +71,7 @@ export default class Tabs extends Component {
     );
   };
 
-  renderTabPanels = (activeTabId) => {
+  renderTabPanels = activeTabId => {
     // render all tab panels, but only active tab panel contains anything
     return (
       <div className={s.tabPanelContainer}>
@@ -111,7 +111,7 @@ export default class Tabs extends Component {
     );
   }
 
-  onChange = (id) => {
+  onChange = id => {
     if (this.props.onChange) this.props.onChange(id);
     this.setState(() => ({ activeTabId: id }));
   };

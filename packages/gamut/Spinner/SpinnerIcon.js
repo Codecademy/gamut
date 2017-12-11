@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SpinnerIcon = (props) => {
+const SpinnerIcon = props => {
   return (
     <svg viewBox="0 0 1600 1600" {...props}>
       <circle cx="1500" cy="800" r="100" />
