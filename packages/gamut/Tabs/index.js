@@ -9,13 +9,13 @@ export default class Tabs extends Component {
     config: PropTypes.arrayOf(
       PropTypes.shape({
         text: PropTypes.string.isRequired,
-        default: PropTypes.bool,
+        default: PropTypes.bool
       })
     ).isRequired,
     onChange: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
     renderAllChildren: PropTypes.bool,
-    animatedUnderlineStyle: PropTypes.bool,
+    animatedUnderlineStyle: PropTypes.bool
   };
 
   state = { activeTabId: undefined };
@@ -32,7 +32,7 @@ export default class Tabs extends Component {
     return `${this._idPrefix}-${index}`;
   }
 
-  renderTabList = activeTabId => {
+  renderTabList = (activeTabId) => {
     // leftPercent determines where the animated underline should be positioned
     // if animatedUnderlineStyle === true
     const leftPercent =
@@ -64,7 +64,7 @@ export default class Tabs extends Component {
             className={s.tabIndicator}
             style={{
               left: `${leftPercent}%`,
-              width: `${100 / this.props.config.length}%`,
+              width: `${100 / this.props.config.length}%`
             }}
             aria-hidden
           />
@@ -73,29 +73,31 @@ export default class Tabs extends Component {
     );
   };
 
-  renderTabPanels = activeTabId => (
+  renderTabPanels = (activeTabId) => {
     // render all tab panels, but only active tab panel contains anything
-    <div className={s.tabPanelContainer}>
-      {this.props.config.map((c, i) => {
-        const key = this.createId(i);
-        const isActive = key === activeTabId;
-        return (
-          <TabPanel
-            tabId={key}
-            key={key}
-            active={isActive}
-            className={s.tabPanel}
-          >
-            {isActive || this.props.renderAllChildren ? (
-              Children.toArray(this.props.children)[i]
-            ) : (
-              <div />
-            )}
-          </TabPanel>
-        );
-      })}
-    </div>
-  );
+    return (
+      <div className={s.tabPanelContainer}>
+        {this.props.config.map((c, i) => {
+          const key = this.createId(i);
+          const isActive = key === activeTabId;
+          return (
+            <TabPanel
+              tabId={key}
+              key={key}
+              active={isActive}
+              className={s.tabPanel}
+            >
+              {isActive || this.props.renderAllChildren ? (
+                Children.toArray(this.props.children)[i]
+              ) : (
+                <div />
+              )}
+            </TabPanel>
+          );
+        })}
+      </div>
+    );
+  };
 
   render() {
     let activeTabId;
@@ -120,7 +122,7 @@ export default class Tabs extends Component {
     );
   }
 
-  onChange = id => {
+  onChange = (id) => {
     if (this.props.onChange) this.props.onChange(id);
     this.setState(() => ({ activeTabId: id }));
   };

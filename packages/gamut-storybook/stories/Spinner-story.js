@@ -8,6 +8,6 @@ storiesOf('Component/Spinner', module).add(
   () => <Spinner fill={text('Fill', 'black')} size={text('Size', '1rem')} />,
   {
     inline: true,
-    propTables: false,
+    propTables: false
   }
 );

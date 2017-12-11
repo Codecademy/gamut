@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
 import { select, text } from '@storybook/addon-knobs';
-import id from '@codecademy/identity';
+import gamut from '@codecademy/gamut-styles/variables';
 
 import { addonInfoOptions as options } from './options';
 
@@ -20,30 +20,26 @@ const themeKeys = [
   'yellow',
   'greyblue',
   'white',
-  'ccblue',
+  'ccblue'
 ];
 
 const themes = {};
-themeKeys.forEach(k => {
+themeKeys.forEach((k) => {
   themes[k] = k;
 });
 
 const btnStyle = {
-  marginBottom: '0.5rem',
-  marginRight: '0.5rem',
+  margin: '0.5rem'
 };
 
 storiesOf('Component/Button', module)
-  .add('About Buttons', () => (
-    <div>
-      <h1>Here is some top-level button data</h1>
-      <p>Blah blah</p>
-    </div>
-  ))
+  .add('About Buttons', () => {
+    return <div>Button philosophy goes here.</div>;
+  })
   .add(
     'Standard Button themes',
     withInfo({
-      ...options,
+      ...options
     })(() => (
       <div>
         <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
@@ -68,7 +64,7 @@ storiesOf('Component/Button', module)
   .add(
     'Standard Button options',
     withInfo({
-      ...options,
+      ...options
     })(() => (
       <div>
         <Button style={btnStyle} theme="primary" outline href="#">
@@ -92,12 +88,12 @@ storiesOf('Component/Button', module)
   .add(
     'Platform Buttons',
     withInfo({
-      ...options,
+      ...options
     })(() => (
       <div
         style={{
-          background: id.color.midnightblue,
-          padding: '0.5rem',
+          background: gamut.colors.portal.midnightblue,
+          padding: '0.5rem'
         }}
       >
         <Button style={btnStyle} theme="platform">
@@ -119,7 +115,7 @@ storiesOf('Component/Button', module)
     'Link Button',
     withInfo({
       text: '',
-      ...options,
+      ...options
     })(() => (
       <p>
         This is an example of a{' '}
@@ -134,7 +130,7 @@ storiesOf('Component/Button', module)
     'Editable',
     withInfo({
       text: 'Editable',
-      ...options,
+      ...options
     })(() => (
       <Button
         theme={select('THEME', themes, 'primary')}

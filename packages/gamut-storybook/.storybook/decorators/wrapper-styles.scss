@@ -1,12 +1,12 @@
-@import '~@codecademy/gamut-styles/utils';
+@import "~@codecademy/gamut-styles/utils";
 
 @import url(https://fonts.googleapis.com/css?family=Oxygen:300,700);
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-
-$base-rhythm: 1.5;
 
 html {
   font-size: $font-size-base;
@@ -40,24 +40,28 @@ h4 {
 }
 
 h1 {
-  font-size: $base-unit * pow($base-rhythm, 4);
+  font-size: $base-unit * 3;
   margin-top: 0;
 }
 
 h2 {
-  font-size: $base-unit * pow($base-rhythm, 3);
+  font-size: $base-unit * 2.25;
 }
 
 h3 {
-  font-size: $base-unit * pow($base-rhythm, 2);
+  font-size: $base-unit * 2;
 }
 
 h4 {
-  font-size: $base-unit * $base-rhythm;
+  font-size: $base-unit * 1.5;
+}
+
+h5 {
+  font-size: $base-unit * 1;
 }
 
 small {
-  font-size: $base-unit / $base-rhythm;
+  font-size: $base-unit / 1.5;
 }
 
 th {

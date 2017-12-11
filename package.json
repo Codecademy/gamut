@@ -9,6 +9,9 @@
     "node": ">=6.0.0",
     "yarn": ">=0.24.6"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"

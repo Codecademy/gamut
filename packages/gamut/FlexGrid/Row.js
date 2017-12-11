@@ -15,7 +15,7 @@ const modificatorKeys = [
   'around',
   'between',
   'first',
-  'last',
+  'last'
 ];
 
 const propTypes = {
@@ -32,7 +32,7 @@ const propTypes = {
   last: ModificatorType,
   className: PropTypes.string,
   tagName: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const propKeys = Object.keys(propTypes);
@@ -40,7 +40,7 @@ const propKeys = Object.keys(propTypes);
 function getClassNames(props) {
   const modificators = [style.row];
 
-  for (const key of modificatorKeys) {
+  for (let key of modificatorKeys) {
     const value = props[key];
     if (value) {
       modificators.push(style[`${key}-${value}`]);

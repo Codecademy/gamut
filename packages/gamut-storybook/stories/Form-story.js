@@ -11,7 +11,7 @@ import {
   FormGroup,
   FormGroupLabel,
   FormGroupDescription,
-  Form,
+  Form
 } from '@codecademy/gamut/Form';
 
 storiesOf('Component/Form', module)
@@ -78,11 +78,11 @@ storiesOf('Component/Form', module)
       </Form>
     ),
   {
-    inline: true,
+    inline: true
   }
   )
   .add('FormGroupLabel', () => <FormGroupLabel>Password</FormGroupLabel>, {
-    inline: true,
+    inline: true
   })
   .add(
     'FormGroupDescription',
@@ -92,7 +92,7 @@ storiesOf('Component/Form', module)
       </FormGroupDescription>
     ),
   {
-    inline: true,
+    inline: true
   }
   )
   .add(
@@ -105,7 +105,7 @@ storiesOf('Component/Form', module)
       </div>
     ),
   {
-    inline: true,
+    inline: true
   }
   )
   .add(
@@ -126,31 +126,31 @@ storiesOf('Component/Form', module)
       </RadioGroup>
     ),
   {
-    inline: true,
+    inline: true
   }
   )
   .add('Input', () => <Input htmlFor="name" placeholder="First Name" />, {
-    inline: true,
+    inline: true
   })
   .add(
     'Input error state',
     () => <Input htmlFor="name" placeholder="First Name" error />,
   {
-    inline: true,
+    inline: true
   }
   )
   .add(
     'TextArea',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" />,
   {
-    inline: true,
+    inline: true
   }
   )
   .add(
     'TextArea error state',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" error />,
   {
-    inline: true,
+    inline: true
   }
   )
   .add(
@@ -162,6 +162,6 @@ storiesOf('Component/Form', module)
       />
     ),
   {
-    inline: true,
+    inline: true
   }
   );

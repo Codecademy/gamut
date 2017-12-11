@@ -8,7 +8,7 @@ import { isPlainObject, omit, without } from 'lodash';
  * leaving necessary props like children intact
  */
 export default function omitProps(initialPropsToOmit, props) {
-  const propsToOmit = isPlainObject(initialPropsToOmit)
+  let propsToOmit = isPlainObject(initialPropsToOmit)
     ? Object.keys(initialPropsToOmit)
     : initialPropsToOmit;
 
