@@ -5,7 +5,7 @@ import Checkbox from '../Checkbox';
 describe('<Checkbox>', () => {
   const defaultProps = {
     htmlFor: 'some-label',
-    label: 'Some label'
+    label: 'Some label',
   };
 
   it('sets the input checked state when the prop is passed', () => {
@@ -23,8 +23,8 @@ describe('<Checkbox>', () => {
     );
     wrapper.find('input[type="checkbox"]').simulate('change', {
       target: {
-        value: 'a'
-      }
+        value: 'a',
+      },
     });
     const firstArgument = onChangeCallback.mock.calls[0][0];
     expect(firstArgument.target.value).toBe('a');

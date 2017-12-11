@@ -3,25 +3,23 @@ export const addonInfoOptions = {
   source: true,
   propTables: false,
   header: true,
-  styles: stylesheet => {
-    return {
-      header: {
-        body: {},
-        h1: {
-          fontSize: '.9rem',
-          fontWeight: '900',
-          marginBottom: '2rem',
-          color: 'gray'
-        },
-        h2: { fontSize: '1.5rem', margin: '1rem 0' }
+  styles: stylesheet => ({
+    header: {
+      body: {},
+      h1: {
+        fontSize: '.9rem',
+        fontWeight: '900',
+        marginBottom: '2rem',
+        color: 'gray',
       },
-      source: {
-        h1: { fontSize: '1.5rem', margin: '2rem 0 1rem 0' },
-        pre: {
-          backgroundColor: 'transparent',
-          padding: 0
-        }
-      }
-    };
-  }
+      h2: { fontSize: '1.5rem', margin: '1rem 0' },
+    },
+    source: {
+      h1: { fontSize: '1.5rem', margin: '2rem 0 1rem 0' },
+      pre: {
+        backgroundColor: 'transparent',
+        padding: 0,
+      },
+    },
+  }),
 };

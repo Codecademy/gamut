@@ -10,8 +10,8 @@ describe('Accessible Tabs', () => {
       .map((x, ind) => {
         const displayInd = ind + 1;
         return {
-          text: 'Tab Number ' + displayInd,
-          default: isDefault === ind
+          text: `Tab Number ${displayInd}`,
+          default: isDefault === ind,
         };
       });
   }
@@ -141,7 +141,7 @@ describe('Accessible Tabs', () => {
     ).toBe('none');
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '0%',
-      width: '50%'
+      width: '50%',
     });
 
     // now the second tab is active
@@ -176,7 +176,7 @@ describe('Accessible Tabs', () => {
     ).toBe(undefined);
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '50%',
-      width: '50%'
+      width: '50%',
     });
   });
 

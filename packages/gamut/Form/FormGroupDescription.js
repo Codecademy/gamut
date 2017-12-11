@@ -9,7 +9,7 @@ const FormGroupDescription = props => {
 };
 
 FormGroupDescription.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default FormGroupDescription;

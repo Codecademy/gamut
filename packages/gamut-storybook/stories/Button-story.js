@@ -20,7 +20,7 @@ const themeKeys = [
   'yellow',
   'greyblue',
   'white',
-  'ccblue'
+  'ccblue',
 ];
 
 const themes = {};
@@ -29,17 +29,15 @@ themeKeys.forEach(k => {
 });
 
 const btnStyle = {
-  margin: '0.5rem'
+  margin: '0.5rem',
 };
 
 storiesOf('Component/Button', module)
-  .add('About Buttons', () => {
-    return <div>Button philosophy goes here.</div>;
-  })
+  .add('About Buttons', () => <div>Button philosophy goes here.</div>)
   .add(
     'Standard Button themes',
     withInfo({
-      ...options
+      ...options,
     })(() => (
       <div>
         <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
@@ -64,7 +62,7 @@ storiesOf('Component/Button', module)
   .add(
     'Standard Button options',
     withInfo({
-      ...options
+      ...options,
     })(() => (
       <div>
         <Button style={btnStyle} theme="primary" outline href="#">
@@ -88,12 +86,12 @@ storiesOf('Component/Button', module)
   .add(
     'Platform Buttons',
     withInfo({
-      ...options
+      ...options,
     })(() => (
       <div
         style={{
           background: gamut.colors.portal.midnightblue,
-          padding: '0.5rem'
+          padding: '0.5rem',
         }}
       >
         <Button style={btnStyle} theme="platform">
@@ -115,7 +113,7 @@ storiesOf('Component/Button', module)
     'Link Button',
     withInfo({
       text: '',
-      ...options
+      ...options,
     })(() => (
       <p>
         This is an example of a{' '}
@@ -130,7 +128,7 @@ storiesOf('Component/Button', module)
     'Editable',
     withInfo({
       text: 'Editable',
-      ...options
+      ...options,
     })(() => (
       <Button
         theme={select('THEME', themes, 'primary')}

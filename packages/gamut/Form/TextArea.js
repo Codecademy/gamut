@@ -7,7 +7,7 @@ const TextArea = ({ error, htmlFor, className, ...rest }) => {
   const classNames = cx(
     s.TextArea,
     {
-      [s.error]: error
+      [s.error]: error,
     },
     className
   );
@@ -20,7 +20,7 @@ TextArea.propTypes = {
   htmlFor: PropTypes.string,
   name: PropTypes.string,
   required: PropTypes.bool,
-  error: PropTypes.bool
+  error: PropTypes.bool,
 };
 
 export default TextArea;

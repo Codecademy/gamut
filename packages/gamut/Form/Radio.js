@@ -33,7 +33,7 @@ Radio.propTypes = {
   className: PropTypes.string,
   htmlFor: PropTypes.string,
   onChange: PropTypes.func,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 export default Radio;
