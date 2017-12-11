@@ -23,7 +23,7 @@ const Select = props => {
       selectOptions.push(
         <option key={key} value={key}>
           {val}
-        </option>,
+        </option>
       );
     });
   }
@@ -49,10 +49,10 @@ Select.propTypes = {
   className: PropTypes.string,
   options: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
-    PropTypes.object,
+    PropTypes.object
   ]),
   defaultValue: PropTypes.string,
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 };
 
 export default Select;
