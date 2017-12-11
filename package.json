@@ -42,14 +42,6 @@
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
   },
-  "changelog": {
-    "repo": "RyzacInc/gamut",
-    "labels": {
-      "bug": "bug",
-      "enhancement": "enhancement"
-    },
-    "cacheDir": ".changelog"
-  },
   "scripts": {
     "test": "jest",
     "eslint": "eslint ./**/*.js",
