@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import {
   colors,
   gamutColors,
-  editorColors
+  editorColors,
 } from '@codecademy/gamut-styles/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
@@ -11,12 +11,11 @@ import s from './Color-story.scss';
 const infoOptions = {
   inline: true,
   source: false,
-  propTables: false
+  propTables: false,
 };
 
-const parseCamelCase = string => {
-  return string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
-};
+const parseCamelCase = string =>
+  string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
@@ -27,8 +26,8 @@ const getSassVariableName = (variablePrefix, variableSuffix) => {
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
-const renderSwatch = (data, variablePrefix) => {
-  return Object.keys(data).map(variableSuffix => {
+const renderSwatch = (data, variablePrefix) =>
+  Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
       variableSuffix
@@ -51,7 +50,6 @@ const renderSwatch = (data, variablePrefix) => {
       </Container>
     );
   });
-};
 
 const stories = storiesOf('Visuals/Colors', module);
 
@@ -63,14 +61,12 @@ stories.add(
         <h2 className={s.heading}>portal base colors</h2>
         {renderSwatch(colors.portal)}
       </div>
-      {Object.keys(colors.swatches).map(color => {
-        return (
-          <div key={color}>
-            <h2 className={s.heading}>{parseCamelCase(color)}</h2>
-            {renderSwatch(colors.swatches[color], `swatches-${color}`)}
-          </div>
-        );
-      })}
+      {Object.keys(colors.swatches).map(color => (
+        <div key={color}>
+          <h2 className={s.heading}>{parseCamelCase(color)}</h2>
+          {renderSwatch(colors.swatches[color], `swatches-${color}`)}
+        </div>
+      ))}
     </Container>
   ),
   infoOptions
@@ -84,14 +80,12 @@ stories.add(
         <h2 className={s.heading}>gamut base colors</h2>
         {renderSwatch(gamutColors.base, 'gamut')}
       </div>
-      {Object.keys(gamutColors.swatches).map(color => {
-        return (
-          <div key={color}>
-            <h2 className={s.heading}>{parseCamelCase(`gamut-${color}`)}</h2>
-            {renderSwatch(gamutColors.swatches[color], `gamut-${color}`)}
-          </div>
-        );
-      })}
+      {Object.keys(gamutColors.swatches).map(color => (
+        <div key={color}>
+          <h2 className={s.heading}>{parseCamelCase(`gamut-${color}`)}</h2>
+          {renderSwatch(gamutColors.swatches[color], `gamut-${color}`)}
+        </div>
+      ))}
     </Container>
   ),
   infoOptions
@@ -107,7 +101,7 @@ stories.add(
         {renderSwatch(
           {
             white,
-            black
+            black,
           },
           'swatches-basic'
         )}

@@ -6,8 +6,8 @@ function generateTabConfig(num, isDefault) {
   return [...Array(num).keys()].map(ind => {
     const displayInd = ind + 1;
     return {
-      text: 'Tab Number ' + displayInd,
-      default: isDefault === ind
+      text: `Tab Number ${displayInd}`,
+      default: isDefault === ind,
     };
   });
 }
