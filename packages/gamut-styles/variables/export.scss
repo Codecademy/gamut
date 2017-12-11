@@ -1,0 +1,41 @@
+@import "index";
+
+:export {
+  gamutwhite: $gamut-white;
+  gamutblack: $gamut-black;
+  gamutpurple: $gamut-purple;
+  gamutroyalblue: $gamut-royal-blue;
+  gamutblue: $gamut-blue;
+  gamutred: $gamut-red;
+  gamutmint: $gamut-mint;
+  gamutyellow: $gamut-yellow;
+  gamutgrey: $gamut-grey;
+
+  gamutpurpleswatches: $gamut-purple-100 $gamut-purple-200 $gamut-purple-300
+    $gamut-purple-400 $gamut-purple-500 $gamut-purple-600 $gamut-purple-700
+    $gamut-purple-800 $gamut-purple-900;
+
+  gamutroyalblueswatches: $gamut-royal-blue-100 $gamut-royal-blue-200
+    $gamut-royal-blue-300 $gamut-royal-blue-400 $gamut-royal-blue-500
+    $gamut-royal-blue-600 $gamut-royal-blue-700 $gamut-royal-blue-800
+    $gamut-royal-blue-900;
+
+  gamutblueswatches: $gamut-blue-100 $gamut-blue-200 $gamut-blue-300
+    $gamut-blue-400 $gamut-blue-500 $gamut-blue-600 $gamut-blue-700
+    $gamut-blue-800 $gamut-blue-900;
+
+  gamutredswatches: $gamut-red-100 $gamut-red-200 $gamut-red-300 $gamut-red-400
+    $gamut-red-500 $gamut-red-600 $gamut-red-700 $gamut-red-800 $gamut-red-900;
+
+  gamutmintswatches: $gamut-mint-100 $gamut-mint-200 $gamut-mint-300
+    $gamut-mint-400 $gamut-mint-500 $gamut-mint-600 $gamut-mint-700
+    $gamut-mint-800 $gamut-mint-900;
+
+  gamutyellowswatches: $gamut-yellow-100 $gamut-yellow-200 $gamut-yellow-300
+    $gamut-yellow-400 $gamut-yellow-500 $gamut-yellow-600 $gamut-yellow-700
+    $gamut-yellow-800 $gamut-yellow-900;
+
+  gamutgreyswatches: $gamut-grey-100 $gamut-grey-200 $gamut-grey-300
+    $gamut-grey-400 $gamut-grey-500 $gamut-grey-600 $gamut-grey-700
+    $gamut-grey-800 $gamut-grey-900;
+}

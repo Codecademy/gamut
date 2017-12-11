@@ -4,7 +4,7 @@ import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
 import s from './styles/Select.scss';
 
-const Select = props => {
+const Select = (props) => {
   const className = cx(s.Select, props.className);
 
   // Generate list of options
@@ -13,11 +13,13 @@ const Select = props => {
   let selectOptions = [];
 
   if (isArray(options)) {
-    selectOptions = options.map(option => (
-      <option key={option} value={option}>
-        {option}
-      </option>
-    ));
+    selectOptions = options.map((option) => {
+      return (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      );
+    });
   } else if (isObject(options)) {
     each(options, (val, key) => {
       selectOptions.push(
@@ -49,10 +51,10 @@ Select.propTypes = {
   className: PropTypes.string,
   options: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
-    PropTypes.object,
+    PropTypes.object
   ]),
   defaultValue: PropTypes.string,
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 };
 
 export default Select;

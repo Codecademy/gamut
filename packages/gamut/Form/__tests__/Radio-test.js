@@ -16,8 +16,8 @@ describe('<Radio>', () => {
     );
     wrapper.find('input[type="radio"]').simulate('change', {
       target: {
-        value: 'a',
-      },
+        value: 'a'
+      }
     });
     const firstArgument = onChangeCallback.mock.calls[0][0];
     expect(firstArgument.target.value).toBe('a');

@@ -15,7 +15,7 @@ const FormGroupLabel = ({ htmlFor, className, ...rest }) => {
 
 FormGroupLabel.propTypes = {
   className: PropTypes.string,
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string
 };
 
 export default FormGroupLabel;

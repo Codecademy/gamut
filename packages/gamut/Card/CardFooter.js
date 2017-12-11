@@ -10,7 +10,7 @@ const propTypes = {
   flex: PropTypes.bool,
   standardPadding: PropTypes.bool,
   standardHeight: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 const defaultProps = {
@@ -18,7 +18,7 @@ const defaultProps = {
   align: 'left',
   flex: true,
   standardPadding: true,
-  standardHeight: true,
+  standardHeight: true
 };
 
 export default function CardFooter({
@@ -28,7 +28,7 @@ export default function CardFooter({
   flex,
   standardPadding,
   standardHeight,
-  className,
+  className
 }) {
   const footerClasses = cx(
     s.footer,
@@ -41,7 +41,7 @@ export default function CardFooter({
       [s.centerAlign]: align === 'center',
       [s.rightAlign]: align === 'right',
       [s.standardPadding]: standardPadding,
-      [s.standardHeight]: standardHeight,
+      [s.standardHeight]: standardHeight
     },
     className
   );

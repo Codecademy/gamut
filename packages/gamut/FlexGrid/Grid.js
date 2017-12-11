@@ -8,7 +8,7 @@ const propTypes = {
   fluid: PropTypes.bool,
   className: PropTypes.string,
   tagName: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 const propKeys = Object.keys(propTypes);
