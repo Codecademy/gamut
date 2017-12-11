@@ -14,7 +14,7 @@ export default function omitProps(initialPropsToOmit, props) {
 
   invariant(
     Array.isArray(propsToOmit),
-    'omitProps first argument should be an Array'
+    'omitProps first argument should be an Array',
   );
 
   return omit(props, without(propsToOmit, 'children', 'className'));

@@ -52,7 +52,7 @@ function getClassNames(props) {
           Number.isInteger(props[key])
             ? `${classMap[key]}-${props[key]}`
             : classMap[key]
-        ]
+        ],
     )
     .concat(extraClasses)
     .join(' ');
@@ -63,7 +63,7 @@ export default function Col(props) {
 
   return React.createElement(
     props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
+    omitProps(propKeys, { ...props, className }),
   );
 }
 

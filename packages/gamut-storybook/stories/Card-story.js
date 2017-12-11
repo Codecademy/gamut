@@ -40,6 +40,6 @@ storiesOf('Component/Card', module).add(
     {
       inline: true,
       propTables: false,
-    }
-  )
+    },
+  ),
 );

@@ -57,7 +57,7 @@ function getClassNames(props) {
 export default function Row(props) {
   return React.createElement(
     props.tagName || 'div',
-    omitProps(propKeys, { ...props, className: getClassNames(props) })
+    omitProps(propKeys, { ...props, className: getClassNames(props) }),
   );
 }
 

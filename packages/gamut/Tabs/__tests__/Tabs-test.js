@@ -21,64 +21,64 @@ describe('Accessible Tabs', () => {
       <Tabs config={generateTabConfig(2)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(
       wrapper
         .find('.tab')
         .at(0)
-        .props().active
+        .props().active,
     ).toBe(true);
     expect(
       wrapper
         .find('.tabPanel')
         .at(0)
-        .props().active
+        .props().active,
     ).toBe(true);
     expect(
       wrapper
         .find('.tab')
         .at(1)
-        .props().active
+        .props().active,
     ).toBe(false);
     expect(
       wrapper
         .find('.tabPanel')
         .at(1)
-        .props().active
+        .props().active,
     ).toBe(false);
 
     const wrapper2 = shallow(
       <Tabs config={generateTabConfig(2, 1)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(
       wrapper2
         .find('.tab')
         .at(0)
-        .props().active
+        .props().active,
     ).toBe(false);
     expect(
       wrapper2
         .find('.tabPanel')
         .at(0)
-        .props().active
+        .props().active,
     ).toBe(false);
     expect(
       wrapper2
         .find('.tab')
         .at(1)
-        .props().active
+        .props().active,
     ).toBe(true);
     expect(
       wrapper2
         .find('.tabPanel')
         .at(1)
-        .props().active
+        .props().active,
     ).toBe(true);
   });
 
@@ -87,7 +87,7 @@ describe('Accessible Tabs', () => {
       <Tabs config={generateTabConfig(2)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(
@@ -95,14 +95,14 @@ describe('Accessible Tabs', () => {
         .find('.tabPanel')
         .at(0)
         .children()
-        .html()
+        .html(),
     ).toBe('<div>Tab 1</div>');
     expect(
       wrapper
         .find('.tabPanel')
         .at(1)
         .children()
-        .html()
+        .html(),
     ).toBe('<div></div>');
   });
 
@@ -111,7 +111,7 @@ describe('Accessible Tabs', () => {
       <Tabs config={generateTabConfig(2)} animatedUnderlineStyle>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </Tabs>,
     );
 
     // highlight first tab + show first tab panel initially
@@ -119,25 +119,25 @@ describe('Accessible Tabs', () => {
       wrapper
         .find('.tab')
         .at(0)
-        .props()['aria-selected']
+        .props()['aria-selected'],
     ).toBe(true);
     expect(
       wrapper
         .find('.tabPanel')
         .at(0)
-        .props().style.display
+        .props().style.display,
     ).toBe(undefined);
     expect(
       wrapper
         .find('.tab')
         .at(1)
-        .props()['aria-selected']
+        .props()['aria-selected'],
     ).toBe(false);
     expect(
       wrapper
         .find('.tabPanel')
         .at(1)
-        .props().style.display
+        .props().style.display,
     ).toBe('none');
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '0%',
@@ -154,25 +154,25 @@ describe('Accessible Tabs', () => {
       wrapper
         .find('.tab')
         .at(0)
-        .props()['aria-selected']
+        .props()['aria-selected'],
     ).toBe(false);
     expect(
       wrapper
         .find('.tabPanel')
         .at(0)
-        .props().style.display
+        .props().style.display,
     ).toBe('none');
     expect(
       wrapper
         .find('.tab')
         .at(1)
-        .props()['aria-selected']
+        .props()['aria-selected'],
     ).toBe(true);
     expect(
       wrapper
         .find('.tabPanel')
         .at(1)
-        .props().style.display
+        .props().style.display,
     ).toBe(undefined);
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '50%',
@@ -186,7 +186,7 @@ describe('Accessible Tabs', () => {
       <Tabs config={generateTabConfig(2)} onChange={onChange}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </Tabs>,
     );
     wrapper
       .find('.tab')

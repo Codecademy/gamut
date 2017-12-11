@@ -67,7 +67,7 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    )),
   )
   .add(
     'Fluid',
@@ -110,7 +110,7 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    )),
   )
   .add(
     'Offsets',
@@ -157,7 +157,7 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    )),
   )
   .add(
     'Center',
@@ -178,5 +178,5 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    )),
   );

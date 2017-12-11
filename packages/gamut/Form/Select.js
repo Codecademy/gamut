@@ -23,7 +23,7 @@ const Select = props => {
       selectOptions.push(
         <option key={key} value={key}>
           {val}
-        </option>
+        </option>,
       );
     });
   }

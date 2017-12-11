@@ -57,7 +57,7 @@ storiesOf('Component/Button', module)
           White
         </Button>
       </div>
-    ))
+    )),
   )
   .add(
     'Standard Button options',
@@ -81,7 +81,7 @@ storiesOf('Component/Button', module)
           Caps
         </Button>
       </div>
-    ))
+    )),
   )
   .add(
     'Platform Buttons',
@@ -107,7 +107,7 @@ storiesOf('Component/Button', module)
           Disabled
         </Button>
       </div>
-    ))
+    )),
   )
   .add(
     'Link Button',
@@ -122,7 +122,7 @@ storiesOf('Component/Button', module)
         </Button>{' '}
         style button.
       </p>
-    ))
+    )),
   )
   .add(
     'Editable',
@@ -136,5 +136,5 @@ storiesOf('Component/Button', module)
       >
         {text('Label', 'Submit')}
       </Button>
-    ))
+    )),
   );

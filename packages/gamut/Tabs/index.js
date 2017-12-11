@@ -10,7 +10,7 @@ export default class Tabs extends Component {
       PropTypes.shape({
         text: PropTypes.string.isRequired,
         default: PropTypes.bool,
-      })
+      }),
     ).isRequired,
     onChange: PropTypes.func,
     children: PropTypes.arrayOf(PropTypes.node).isRequired,
