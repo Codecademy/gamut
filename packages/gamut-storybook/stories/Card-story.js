@@ -12,7 +12,7 @@ const alignStyles = ['left', 'center', 'right'];
 storiesOf('Component/Card', module).add(
   'Editable',
   withInfo({
-    ...options
+    ...options,
   })(
     () => (
       <CardShell
@@ -39,7 +39,7 @@ storiesOf('Component/Card', module).add(
     ),
     {
       inline: true,
-      propTables: false
+      propTables: false,
     }
   )
 );

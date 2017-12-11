@@ -7,7 +7,7 @@ function generateTabConfig(num, isDefault) {
     const displayInd = ind + 1;
     return {
       text: `Tab Number ${displayInd}`,
-      default: isDefault === ind
+      default: isDefault === ind,
     };
   });
 }

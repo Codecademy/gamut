@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import {
   colors,
   gamutColors,
-  editorColors
+  editorColors,
 } from '@codecademy/gamut-styles/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
@@ -11,7 +11,7 @@ import s from './Color-story.scss';
 const infoOptions = {
   inline: true,
   source: false,
-  propTables: false
+  propTables: false,
 };
 
 const parseCamelCase = string =>
@@ -101,7 +101,7 @@ stories.add(
         {renderSwatch(
           {
             white,
-            black
+            black,
           },
           'swatches-basic'
         )}

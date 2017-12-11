@@ -35,7 +35,7 @@ class Icon extends PureComponent {
     size: PropTypes.number,
     className: PropTypes.string,
     children: PropTypes.node,
-    style: PropTypes.object
+    style: PropTypes.object,
   };
 
   render() {
@@ -51,7 +51,7 @@ class Icon extends PureComponent {
     if (this.props.size) {
       styles = {
         fontSize: this.props.size * ICON_SIZE,
-        ...this.props.style
+        ...this.props.style,
       };
     }
 
