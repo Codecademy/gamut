@@ -11,7 +11,9 @@ describe('<Radio>', () => {
   it('calls the onChange callback when the input changes', () => {
     const onChangeCallback = jest.fn();
 
-    const wrapper = shallow(<Radio htmlFor="some-label" onChange={onChangeCallback} value="a" />);
+    const wrapper = shallow(
+      <Radio htmlFor="some-label" onChange={onChangeCallback} value="a" />
+    );
     wrapper.find('input[type="radio"]').simulate('change', {
       target: {
         value: 'a'

@@ -49,7 +49,10 @@ const Select = props => {
 
 Select.propTypes = {
   className: PropTypes.string,
-  options: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.object]),
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.object
+  ]),
   defaultValue: PropTypes.string,
   htmlFor: PropTypes.string
 };
