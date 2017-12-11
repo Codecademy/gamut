@@ -12,7 +12,10 @@ export default function omitProps(initialPropsToOmit, props) {
     ? Object.keys(initialPropsToOmit)
     : initialPropsToOmit;
 
-  invariant(Array.isArray(propsToOmit), 'omitProps first argument should be an Array');
+  invariant(
+    Array.isArray(propsToOmit),
+    'omitProps first argument should be an Array'
+  );
 
   return omit(props, without(propsToOmit, 'children', 'className'));
 }

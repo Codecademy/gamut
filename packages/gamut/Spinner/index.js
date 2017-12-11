@@ -6,7 +6,14 @@ import SpinnerIcon from './SpinnerIcon';
 
 const Spinner = ({ size, className, fill }) => {
   const classNames = cx(s.spinner, className);
-  return <SpinnerIcon className={classNames} fill={fill} height={size} width={size} />;
+  return (
+    <SpinnerIcon
+      className={classNames}
+      fill={fill}
+      height={size}
+      width={size}
+    />
+  );
 };
 
 Spinner.defaultProps = {

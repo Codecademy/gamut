@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
 
-const positions = ['start', 'end', 'center', 'baseline', 'stretch', 'spaceAround', 'spaceBetween'];
+const positions = [
+  'start',
+  'end',
+  'center',
+  'baseline',
+  'stretch',
+  'spaceAround',
+  'spaceBetween'
+];
 
 const internalProps = [
   'flex',

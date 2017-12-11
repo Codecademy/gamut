@@ -1,6 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { colors, gamutColors, editorColors } from '@codecademy/gamut-styles/variables';
+import {
+  colors,
+  gamutColors,
+  editorColors
+} from '@codecademy/gamut-styles/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
 
@@ -16,17 +20,29 @@ const parseCamelCase = string => {
 
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
-    return `$${parseCamelCase(variablePrefix)}-${parseCamelCase(variableSuffix)}`;
+    return `$${parseCamelCase(variablePrefix)}-${parseCamelCase(
+      variableSuffix
+    )}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
 const renderSwatch = (data, variablePrefix) => {
   return Object.keys(data).map(variableSuffix => {
-    const sassVariableName = getSassVariableName(variablePrefix, variableSuffix);
+    const sassVariableName = getSassVariableName(
+      variablePrefix,
+      variableSuffix
+    );
     return (
-      <Container align="center" className={s.swatchContainer} key={sassVariableName}>
-        <div className={s.swatch} style={{ backgroundColor: data[variableSuffix] }} />
+      <Container
+        align="center"
+        className={s.swatchContainer}
+        key={sassVariableName}
+      >
+        <div
+          className={s.swatch}
+          style={{ backgroundColor: data[variableSuffix] }}
+        />
         <div>
           <span className={s.name}>{sassVariableName}</span>
           <br />
