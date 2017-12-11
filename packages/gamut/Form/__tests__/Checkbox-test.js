@@ -11,7 +11,7 @@ describe('<Checkbox>', () => {
   it('sets the input checked state when the prop is passed', () => {
     const wrapper = shallow(<Checkbox {...defaultProps} checked />);
     expect(wrapper.find('input[type="checkbox"]').prop('checked')).toEqual(
-      true
+      true,
     );
   });
 
@@ -19,7 +19,7 @@ describe('<Checkbox>', () => {
     const onChangeCallback = jest.fn();
 
     const wrapper = shallow(
-      <Checkbox {...defaultProps} onChange={onChangeCallback} value="a" />
+      <Checkbox {...defaultProps} onChange={onChangeCallback} value="a" />,
     );
     wrapper.find('input[type="checkbox"]').simulate('change', {
       target: {
@@ -32,7 +32,7 @@ describe('<Checkbox>', () => {
 
   it('accepts JSX in the label', () => {
     const wrapper = shallow(
-      <Checkbox {...defaultProps} label={<img alt="my cat" src="cat.jpg" />} />
+      <Checkbox {...defaultProps} label={<img alt="my cat" src="cat.jpg" />} />,
     );
     expect(wrapper.find('img').length).toBe(1);
   });

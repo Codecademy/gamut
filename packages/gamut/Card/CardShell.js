@@ -27,7 +27,7 @@ export default function CardShell({
       [s.hoverShadow]: hoverShadow,
       [s.standardWidth]: standardWidth,
     },
-    className
+    className,
   );
 
   return <div className={shellClasses}>{children}</div>;

@@ -19,7 +19,7 @@ export default function Grid(props) {
 
   return React.createElement(
     props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
+    omitProps(propKeys, { ...props, className }),
   );
 }
 

@@ -20,7 +20,7 @@ const parseCamelCase = string =>
 const getSassVariableName = (variablePrefix, variableSuffix) => {
   if (variablePrefix) {
     return `$${parseCamelCase(variablePrefix)}-${parseCamelCase(
-      variableSuffix
+      variableSuffix,
     )}`;
   }
   return `$color-${parseCamelCase(variableSuffix)}`;
@@ -30,7 +30,7 @@ const renderSwatch = (data, variablePrefix) =>
   Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
-      variableSuffix
+      variableSuffix,
     );
     return (
       <Container
@@ -69,7 +69,7 @@ stories.add(
       ))}
     </Container>
   ),
-  infoOptions
+  infoOptions,
 );
 
 stories.add(
@@ -88,7 +88,7 @@ stories.add(
       ))}
     </Container>
   ),
-  infoOptions
+  infoOptions,
 );
 
 stories.add(
@@ -103,11 +103,11 @@ stories.add(
             white,
             black,
           },
-          'swatches-basic'
+          'swatches-basic',
         )}
         {renderSwatch(platformRest, 'swatches-code')}
       </div>
     );
   },
-  infoOptions
+  infoOptions,
 );

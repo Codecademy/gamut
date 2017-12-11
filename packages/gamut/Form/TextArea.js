@@ -9,7 +9,7 @@ const TextArea = ({ error, htmlFor, className, ...rest }) => {
     {
       [s.error]: error,
     },
-    className
+    className,
   );
 
   return <textarea {...rest} id={htmlFor} className={classNames} />;

@@ -55,7 +55,7 @@ const Button = props => {
       [s.underline]: props.underline,
       [s.caps]: props.caps,
     },
-    props.className
+    props.className,
   );
 
   const propsToTransfer = omitProps(propTypes, props);

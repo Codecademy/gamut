@@ -9,5 +9,5 @@ storiesOf('Component/Spinner', module).add(
   {
     inline: true,
     propTables: false,
-  }
+  },
 );

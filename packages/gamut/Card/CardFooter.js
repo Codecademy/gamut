@@ -43,7 +43,7 @@ export default function CardFooter({
       [s.standardPadding]: standardPadding,
       [s.standardHeight]: standardHeight,
     },
-    className
+    className,
   );
 
   return <div className={footerClasses}>{children}</div>;

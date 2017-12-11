@@ -79,7 +79,7 @@ storiesOf('Component/Form', module)
     ),
   {
     inline: true,
-  }
+  },
   )
   .add('FormGroupLabel', () => <FormGroupLabel>Password</FormGroupLabel>, {
     inline: true,
@@ -93,7 +93,7 @@ storiesOf('Component/Form', module)
     ),
   {
     inline: true,
-  }
+  },
   )
   .add(
     'Checkbox',
@@ -106,7 +106,7 @@ storiesOf('Component/Form', module)
     ),
   {
     inline: true,
-  }
+  },
   )
   .add(
     'RadioGroup',
@@ -127,7 +127,7 @@ storiesOf('Component/Form', module)
     ),
   {
     inline: true,
-  }
+  },
   )
   .add('Input', () => <Input htmlFor="name" placeholder="First Name" />, {
     inline: true,
@@ -137,21 +137,21 @@ storiesOf('Component/Form', module)
     () => <Input htmlFor="name" placeholder="First Name" error />,
   {
     inline: true,
-  }
+  },
   )
   .add(
     'TextArea',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" />,
   {
     inline: true,
-  }
+  },
   )
   .add(
     'TextArea error state',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" error />,
   {
     inline: true,
-  }
+  },
   )
   .add(
     'Select',
@@ -163,5 +163,5 @@ storiesOf('Component/Form', module)
     ),
   {
     inline: true,
-  }
+  },
   );

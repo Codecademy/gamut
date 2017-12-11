@@ -9,7 +9,7 @@ const Input = ({ error, htmlFor, className, ...rest }) => {
     {
       [s.error]: error,
     },
-    className
+    className,
   );
   return <input {...rest} id={htmlFor} className={classNames} />;
 };

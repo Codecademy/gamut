@@ -18,7 +18,7 @@ export default function CardBody({ children, standardPadding, className }) {
     {
       [s.standardPadding]: standardPadding,
     },
-    className
+    className,
   );
 
   return <div className={bodyClasses}>{children}</div>;
