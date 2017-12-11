@@ -31,7 +31,7 @@ const propTypes = {
   href: PropTypes.string
 };
 
-const Button = (props) => {
+const Button = props => {
   let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {

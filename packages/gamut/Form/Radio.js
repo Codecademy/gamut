@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Radio.scss';
 
-const Radio = (props) => {
+const Radio = props => {
   const className = cx(s.Radio, props.className);
   return (
     <div className={className}>

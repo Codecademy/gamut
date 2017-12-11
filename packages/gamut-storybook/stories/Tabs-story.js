@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import Tabs from '@codecademy/gamut/Tabs';
 
 function generateTabConfig(num, isDefault) {
-  return [...Array(num).keys()].map((ind) => {
+  return [...Array(num).keys()].map(ind => {
     const displayInd = ind + 1;
     return {
       text: 'Tab Number ' + displayInd,

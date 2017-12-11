@@ -24,7 +24,7 @@ const themeKeys = [
 ];
 
 const themes = {};
-themeKeys.forEach((k) => {
+themeKeys.forEach(k => {
   themes[k] = k;
 });
 
