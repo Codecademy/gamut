@@ -21,3 +21,6 @@ jobs:
       - run:
           name: Run test suite
           command: yarn test
+      - run:
+          name: Check prettier formatting
+          command: $(yarn bin)/prettier-eslint --list-different "packages/**/*.{js,json,css,scss}"
