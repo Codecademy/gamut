@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint \"packages/**/*.{js,json}\"",
-    "format-all": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
+    "format": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged"
   },
   "repository": {
