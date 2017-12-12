@@ -3376,7 +3376,7 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
-lint-staged@^4.3.0:
+lint-staged@4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-4.3.0.tgz#ed0779ad9a42c0dc62bb3244e522870b41125879"
   dependencies:
@@ -4128,7 +4128,7 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier-eslint-cli@^4.4.0:
+prettier-eslint-cli@4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-4.4.2.tgz#c72f5a3333a1022357474c36762d219378285a6a"
   dependencies:
@@ -4168,7 +4168,7 @@ prettier-eslint@^8.0.0:
     typescript "^2.5.1"
     typescript-eslint-parser "^8.0.0"
 
-prettier@^1.7.1, prettier@^1.8.2:
+prettier@1.9.1, prettier@^1.7.1:
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.9.1.tgz#41638a0d47c1efbd1b7d5a742aaa5548eab86d70"
 
