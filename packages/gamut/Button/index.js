@@ -11,7 +11,7 @@ export const presetThemes = {
   primary: 'red',
   secondary: 'mint',
   platform: 'greyblue',
-  lantern: 'darkmint'
+  lantern: 'darkmint',
 };
 
 const propTypes = {
@@ -28,18 +28,18 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
 };
 
-const Button = (props) => {
+const Button = props => {
   let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];
   }
 
-  let typeClassName = props.link ? s.link : s.btn;
-  let themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
+  const typeClassName = props.link ? s.link : s.btn;
+  const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
   const classes = cx(
     typeClassName,
@@ -53,7 +53,7 @@ const Button = (props) => {
       [s.disabled]: props.disabled,
       [s.outline]: props.outline,
       [s.underline]: props.underline,
-      [s.caps]: props.caps
+      [s.caps]: props.caps,
     },
     props.className
   );
@@ -69,7 +69,12 @@ const Button = (props) => {
   }
 
   return (
-    <button data-btn {...propsToTransfer} disabled={props.disabled} className={classes}>
+    <button
+      data-btn
+      {...propsToTransfer}
+      disabled={props.disabled}
+      className={classes}
+    >
       {props.children}
     </button>
   );

@@ -9,9 +9,9 @@ const config = {
   resolve: {
     modules: [
       path.join(__dirname, '../'),
-      path.join(__dirname, '../node_modules/@codecademy/')
+      path.join(__dirname, '../node_modules/@codecademy/'),
     ],
-    extensions: ['.js', '.json', '.scss', '.css']
+    extensions: ['.js', '.json', '.scss', '.css'],
   },
   module: {
     rules: [
@@ -21,38 +21,38 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [babelCodecademyPreset]
-          }
-        }
+            presets: [babelCodecademyPreset],
+          },
+        },
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
             loader: 'css-loader',
             query: {
               modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
-            }
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
-      }
-    ]
+            loader: 'sass-loader',
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"' + ENV + '"',
-      __DEV__: ENV !== 'production'
-    })
-  ]
+      __DEV__: ENV !== 'production',
+    }),
+  ],
 };
 
-module.exports = (defaultConfig) => {
+module.exports = defaultConfig => {
   return merge.smart(defaultConfig, config);
 };

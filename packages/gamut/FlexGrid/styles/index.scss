@@ -57,7 +57,6 @@ $container-lg: $grid-lg-min + $grid-gutter-width;
 }
 
 @mixin create-cols($v: "xs") {
-
   .col-#{$v} {
     flex-basis: 0;
     flex-grow: 1;
@@ -116,7 +115,6 @@ $container-lg: $grid-lg-min + $grid-gutter-width;
   .last-#{$v} {
     order: 1;
   }
-
 }
 
 @include create-cols("xs");
