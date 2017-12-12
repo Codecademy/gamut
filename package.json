@@ -10,7 +10,10 @@
     "yarn": ">=0.24.6"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint \"packages/**/*.{js,json}\"",
+    "format-all": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
+    "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
@@ -32,23 +35,19 @@
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.3.0",
+    "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
-    "lint-staged": "4.3.0",
+    "lint-staged": "^4.3.0",
     "prettier": "1.9.1",
     "prettier-eslint-cli": "4.4.2",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
   },
-  "scripts": {
-    "test": "jest",
-    "format-all": "prettier-eslint --write \"packages/**/*.{js,json,css,scss}\"",
-    "format-staged": "lint-staged"
-  },
   "lint-staged": {
     "packages/**/*.{js,json,css,scss}": [
-      "prettier-eslint --write",
+      "prettier-eslint --prettier-last --write",
       "git add"
     ]
   }

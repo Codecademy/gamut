@@ -18,6 +18,10 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 1. Run `yarn` in the root directory
 1. Run `lerna bootstrap` to prep each package in the `packages` directory for development
 
+## Using Prettier
+
+We use `prettier` to format
+
 ### Running storybook
 
 1. Cd into `packages/gamut-storybook` and run `npm start` to start the storybook server

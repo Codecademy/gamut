@@ -23,4 +23,4 @@ jobs:
           command: yarn test
       - run:
           name: Checking prettier formatting (run `yarn format-all` to resolve)
-          command: $(yarn bin)/prettier-eslint --list-different "packages/**/*.{js,json,css,scss}"
+          command: $(yarn bin)/prettier-eslint --prettier-last --list-different "packages/**/*.{js,json,css,scss}"
