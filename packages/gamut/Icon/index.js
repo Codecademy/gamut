@@ -30,26 +30,28 @@ import s from './styles';
 const ICON_SIZE = 16;
 
 class Icon extends PureComponent {
-
   static propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.number,
     className: PropTypes.string,
     children: PropTypes.node,
-    style: PropTypes.object
+    style: PropTypes.object,
   };
 
   render() {
-    const icon: string = `ikona-${this.props.name}` in s ? s[`ikona-${this.props.name}`] : `cc-symbol cc-symbol-icon-${this.props.name}`;
+    const icon: string =
+      `ikona-${this.props.name}` in s
+        ? s[`ikona-${this.props.name}`]
+        : `cc-symbol cc-symbol-icon-${this.props.name}`;
 
-    let classes = cx(s.i, icon, this.props.className);
+    const classes = cx(s.i, icon, this.props.className);
 
     let styles = this.props.style;
 
     if (this.props.size) {
       styles = {
         fontSize: this.props.size * ICON_SIZE,
-        ...this.props.style
+        ...this.props.style,
       };
     }
 

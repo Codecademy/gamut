@@ -5,31 +5,21 @@ import { select, boolean } from '@storybook/addon-knobs';
 import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
 import { addonInfoOptions as options } from './options';
 
-const borderStyles = [
-  'dashed',
-  'solid',
-  'none'
-];
+const borderStyles = ['dashed', 'solid', 'none'];
 
-const alignStyles = [
-  'left',
-  'center',
-  'right'
-];
+const alignStyles = ['left', 'center', 'right'];
 
-storiesOf('Component/Card', module)
-  .add(
-    'Editable',
-    withInfo({
-      ...options
-    })(() => (
+storiesOf('Component/Card', module).add(
+  'Editable',
+  withInfo({
+    ...options,
+  })(
+    () => (
       <CardShell
         hoverShadow={boolean('shell.hoverShadow', false)}
         standardWidth={boolean('shell.standardWidth', true)}
       >
-        <CardBody
-          standardPadding={boolean('body.standardPadding', true)}
-        >
+        <CardBody standardPadding={boolean('body.standardPadding', true)}>
           <h3>Card Body</h3>
           <p>This is some body text</p>
           <p>Blah blah blurgha blurgha</p>
@@ -46,8 +36,10 @@ storiesOf('Component/Card', module)
           <span>&nbsp;&nbsp;&laquo;</span>
         </CardFooter>
       </CardShell>
-    ), {
+    ),
+    {
       inline: true,
-      propTables: false
+      propTables: false,
     }
-  ));
+  )
+);

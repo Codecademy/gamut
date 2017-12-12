@@ -6,7 +6,6 @@ import { setDefaults } from '@storybook/addon-info';
 addDecorator(withKnobs);
 addDecorator(wrapper);
 
-
 // Require all files that match `stories/*-story.js`
 const req = require.context('../', true, /stories\/.*-story\.js$/);
 

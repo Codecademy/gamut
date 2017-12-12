@@ -11,32 +11,35 @@ describe('<RadioGroup>', () => {
       name="what-salad-maker-do-you-prefer"
       onChange={onChangeCallback}
     >
-      <Radio
-        label="Sweet Green"
-        value="sweet-green"
-      />
-      <Radio
-        label="Chopt"
-        value="chopt"
-      />
+      <Radio label="Sweet Green" value="sweet-green" />
+      <Radio label="Chopt" value="chopt" />
     </RadioGroup>
   );
 
   it('sets the htmlFor prop on the child', () => {
     expect(
-      wrapper.find('Radio').first().prop('htmlFor')
+      wrapper
+        .find('Radio')
+        .first()
+        .prop('htmlFor')
     ).toEqual('what-salad-maker-do-you-prefer-0');
   });
 
   it('sets the onChange prop on the child', () => {
     expect(
-      wrapper.find('Radio').first().prop('onChange')
+      wrapper
+        .find('Radio')
+        .first()
+        .prop('onChange')
     ).toEqual(onChangeCallback);
   });
 
   it('sets the name prop on the child', () => {
     expect(
-      wrapper.find('Radio').first().prop('name')
+      wrapper
+        .find('Radio')
+        .first()
+        .prop('name')
     ).toEqual('what-salad-maker-do-you-prefer');
   });
 });
