@@ -28,7 +28,7 @@ const internalProps = [
   'fit',
   'align',
   'justify',
-  'alignSelf'
+  'alignSelf',
 ];
 
 class Container extends React.Component {
