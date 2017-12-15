@@ -53,6 +53,7 @@
     "postcss-loader": ">= 2.0.5",
     "sass-loader": ">= 6.0.5",
     "style-loader": ">= 0.17.0",
+    "uglifyjs-webpack-plugin": "beta",
     "webpack": ">= 2.0 < 4.0",
     "webpack-dev-server": ">= 2.0 < 4.0"
   },

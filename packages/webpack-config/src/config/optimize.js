@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const optimizeConfig = () => {
   return {
@@ -8,7 +9,7 @@ const optimizeConfig = () => {
       new webpack.LoaderOptionsPlugin({
         minimize: true
       }),
-      new webpack.optimize.UglifyJsPlugin()
+      new UglifyJsPlugin()
     ]
   };
 };

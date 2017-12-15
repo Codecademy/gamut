@@ -15,6 +15,7 @@ const devServerConfig = (options) => {
 
     devServer: {
       port,
+      overlay: true,
       publicPath: publicPath || `http://localhost:${port}/dist/`,
       headers: { 'Access-Control-Allow-Origin': '*' },
       stats: {
@@ -29,7 +30,8 @@ const devServerConfig = (options) => {
     },
 
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.NamedModulesPlugin()
     ]
   }, babelConfig({
     options: {
