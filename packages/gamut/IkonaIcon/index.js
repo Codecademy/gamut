@@ -29,7 +29,7 @@ import s from './styles';
 
 const ICON_SIZE = 16;
 
-class Icon extends PureComponent {
+class IkonaIcon extends PureComponent {
   static propTypes = {
     name: PropTypes.string.isRequired,
     size: PropTypes.number,
@@ -63,4 +63,4 @@ class Icon extends PureComponent {
   }
 }
 
-export default Icon;
+export default IkonaIcon;
