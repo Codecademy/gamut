@@ -33,10 +33,10 @@ const propTypes = {
   name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
 };
 
-export default function InlineIcon({ name, ...props }) {
-  const Icon = iconMap[name];
+export default function Icon({ name, ...props }) {
+  const MappedIcon = iconMap[name];
 
-  return <Icon {...props} />;
+  return <MappedIcon {...props} />;
 }
 
-InlineIcon.propTypes = propTypes;
+Icon.propTypes = propTypes;
