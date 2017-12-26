@@ -1,5 +1,5 @@
 export Button from './Button';
-export Icon from './Icon';
+export IkonaIcon from './IkonaIcon';
 export * as FlexBox from './FlexBox';
 export * as FlexGrid from './FlexGrid';
 export * as Form from './Form';
