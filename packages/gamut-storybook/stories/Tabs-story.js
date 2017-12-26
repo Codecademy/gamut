@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Tabs from '@codecademy/gamut/Tabs';
+import DeprecatedTabs from '@codecademy/gamut/Tabs';
+import Tabs from '@codecademy/gamut/Tabs/NewTabs';
+import Tab from '@codecademy/gamut/Tabs/NewTabs/Tab';
 
 function generateTabConfig(num, isDefault) {
   return [...Array(num).keys()].map(ind => {
@@ -12,9 +14,9 @@ function generateTabConfig(num, isDefault) {
   });
 }
 
-storiesOf('Component/Tabs', module)
+storiesOf('Component/Deprecated Tabs', module)
   .add('Default style', () => (
-    <Tabs config={generateTabConfig(5, 2)}>
+    <DeprecatedTabs config={generateTabConfig(5, 2)}>
       <div>
         Tab 1: Illum et molestiae eum. Voluptatem molestiae iure cum placeat
         ipsum. Sunt culpa optio doloribus qui iure consequatur culpa modi.
@@ -32,10 +34,10 @@ storiesOf('Component/Tabs', module)
         Tab 5: Hic ea sunt nulla libero amet. Rerum quia vitae magni sed aut
         rerum natus consequuntur necessitatibus.
       </div>
-    </Tabs>
+    </DeprecatedTabs>
   ))
   .add('Animated underline style', () => (
-    <Tabs config={generateTabConfig(5, 0)} animatedUnderlineStyle>
+    <DeprecatedTabs config={generateTabConfig(5, 0)} animatedUnderlineStyle>
       <div>
         Tab 1: Illum et molestiae eum. Voluptatem molestiae iure cum placeat
         ipsum. Sunt culpa optio doloribus qui iure consequatur culpa modi.
@@ -53,5 +55,14 @@ storiesOf('Component/Tabs', module)
         Tab 5: Hic ea sunt nulla libero amet. Rerum quia vitae magni sed aut
         rerum natus consequuntur necessitatibus.
       </div>
-    </Tabs>
+    </DeprecatedTabs>
   ));
+
+storiesOf('Component/NewTabs/Tab', module).add('Tab Component', () => (
+  <Tab>test tab content</Tab>
+));
+
+// storiesOf('Component/NewTabs', module)
+// .add('Tab Component', ()=>(
+//   <Tab>test tab content</Tab>
+// ))
