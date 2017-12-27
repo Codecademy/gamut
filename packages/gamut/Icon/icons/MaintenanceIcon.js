@@ -1,9 +1,8 @@
 import React from 'react';
-import defaultProps from '../defaultProps.js';
 
 export default function MaintenanceIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" version="1.1" {...defaultProps(props)}>
+    <svg viewBox="0 0 24 24" {...props}>
       <title>Maintenance Icon</title>
       <g transform="translate(2 2)" fill="none" fillRule="evenodd">
         <circle fill="currentColor" cx="10" cy="10" r="10" />

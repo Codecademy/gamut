@@ -1,9 +1,8 @@
 import React from 'react';
-import defaultProps from '../defaultProps';
 
 export default function AlertIcon(props) {
   return (
-    <svg viewBox="0 0 24 24" version="1.1" {...defaultProps(props)}>
+    <svg viewBox="0 0 24 24" {...props}>
       <title>Alert Icon</title>
       <g fill="none" fillRule="evenodd">
         <path
