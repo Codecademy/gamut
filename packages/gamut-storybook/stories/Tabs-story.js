@@ -1,8 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import DeprecatedTabs from '@codecademy/gamut/Tabs';
-import Tabs from '@codecademy/gamut/Tabs/NewTabs';
-import Tab from '@codecademy/gamut/Tabs/NewTabs/Tab';
+import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs/NewTab';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 
 function generateTabConfig(num, isDefault) {
   return [...Array(num).keys()].map(ind => {
@@ -58,9 +58,20 @@ storiesOf('Component/Deprecated Tabs', module)
     </DeprecatedTabs>
   ));
 
-storiesOf('Component/NewTabs/Tab', module).add('Tab Component', () => (
-  <Tab>test tab content</Tab>
-));
+storiesOf('Component/NewTabs', module)
+  .addDecorator(withKnobs)
+  .add('Tab', () => (
+    <Tabs>
+      <TabList>
+        <Tab>1</Tab>
+        <Tab>2</Tab>
+        <Tab>3</Tab>
+      </TabList>
+      <TabPanel>hi i am tab 1</TabPanel>
+      <TabPanel>hi i am tab 2</TabPanel>
+      <TabPanel>hi i am tab 3</TabPanel>
+    </Tabs>
+  ));
 
 // storiesOf('Component/NewTabs', module)
 // .add('Tab Component', ()=>(
