@@ -33,10 +33,23 @@ const propTypes = {
   name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
 };
 
+const defaultProps = {
+  height: 24,
+  width: 24,
+};
+
 export default function Icon({ name, ...props }) {
   const MappedIcon = iconMap[name];
 
-  return <MappedIcon {...props} />;
+  return (
+    <MappedIcon
+      xmlns="http://www.w3.org/2000/svg"
+      aria-labelledby="title"
+      version="1.1"
+      {...props}
+    />
+  );
 }
 
 Icon.propTypes = propTypes;
+Icon.defaultProps = defaultProps;
