@@ -50,6 +50,9 @@ $tabBorderRadius: 0.25rem;
     background-color: $tabColor;
     color: $color-white;
   }
+  &:focus {
+    background-color: darken($tabColor, 10%);
+  }
 }
 .isDisabled {
   opacity: 0.75;
