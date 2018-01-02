@@ -21,6 +21,22 @@ export default class Tabs extends React.Component {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (!this.props.onTabIndexUpdate) return;
+    const propsIndexChanged =
+      this.props.activeTabIndex !== undefined &&
+      this.props.activeTabIndex !== prevProps.activeTabIndex;
+    if (propsIndexChanged) {
+      this.props.onTabIndexUpdate(this.props.activeTabIndex);
+      return;
+    }
+
+    const stateIndexChanged =
+      this.state.activeTabIndex !== prevState.activeTabIndex;
+    if (stateIndexChanged)
+      this.props.onTabIndexUpdate(this.state.activeTabIndex);
+  }
+
   idPrefix = Math.random()
     .toString()
     .replace('.', '');
