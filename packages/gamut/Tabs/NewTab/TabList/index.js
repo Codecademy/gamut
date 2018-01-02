@@ -7,7 +7,6 @@ const TabList = ({
   activeTabIndex,
   updateTabIndex,
   createBaseId,
-  onTabIndexUpdate,
   allCaps,
   center,
   maxWidth,
@@ -22,8 +21,6 @@ const TabList = ({
         updateTabIndex: updateTabIndex.bind(null, index),
         id: createBaseId(index),
         key: index,
-        onTabIndexUpdate:
-          onTabIndexUpdate && onTabIndexUpdate.bind(null, index),
         allCaps: allCaps,
       })
     )}
@@ -41,7 +38,6 @@ TabList.propTypes = {
     PropTypes.node,
   ]),
   allCaps: PropTypes.bool,
-  onTabIndexUpdate: PropTypes.func,
   maxWidth: PropTypes.string,
   center: PropTypes.bool,
 };

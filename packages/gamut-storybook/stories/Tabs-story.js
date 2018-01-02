@@ -90,9 +90,18 @@ storiesOf('Component/NewTabs', module)
           <Tab>{text('text_tab_2', 'Tab 2')}</Tab>
           <Tab>{text('text_tab_3', 'Tab 3')}</Tab>
         </TabList>
-        <TabPanel>hi i am tab 1</TabPanel>
-        <TabPanel>hi i am tab 2</TabPanel>
-        <TabPanel>hi i am tab 3</TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 1</h2>
+          <p>hi i am tab 1</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 2</h2>
+          <p>hi i am tab 2</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 3</h2>
+          <p>hi i am tab 3</p>
+        </TabPanel>
       </Tabs>
     ))
   )
@@ -113,9 +122,18 @@ storiesOf('Component/NewTabs', module)
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>
         </TabList>
-        <TabPanel>hi i am tab 1</TabPanel>
-        <TabPanel>hi i am tab 2</TabPanel>
-        <TabPanel>hi i am tab 3</TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 1</h2>
+          <p>hi i am tab 1</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 2</h2>
+          <p>hi i am tab 2</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>welcome to tab 3</h2>
+          <p>hi i am tab 3</p>
+        </TabPanel>
       </Tabs>
     ))
   );

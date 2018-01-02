@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles';
 
-const updateTab = updateTabIndex => onTabIndexUpdate => e => {
+const updateTab = updateTabIndex => e => {
   e.preventDefault();
   updateTabIndex();
-  if (onTabIndexUpdate) onTabIndexUpdate();
 };
 
 const Tab = ({
@@ -13,7 +12,6 @@ const Tab = ({
   isActive,
   isDisabled,
   updateTabIndex,
-  onTabIndexUpdate,
   id,
   allCaps,
 }) => (
@@ -24,8 +22,8 @@ const Tab = ({
       className={`${s.tab} ${isActive ? s.isActive : ''} ${
         isDisabled ? s.isDisabled : ''
       } ${allCaps ? s.allCaps : ''}`}
-      onClick={updateTab(updateTabIndex)(onTabIndexUpdate)}
-      onFocus={updateTab(updateTabIndex)(onTabIndexUpdate)}
+      onClick={updateTab(updateTabIndex)}
+      onFocus={updateTab(updateTabIndex)}
     >
       {children}
     </a>
@@ -39,7 +37,6 @@ Tab.propTypes = {
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
   allCaps: PropTypes.bool,
-  onTabIndexUpdate: PropTypes.func,
   updateTabIndex: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
