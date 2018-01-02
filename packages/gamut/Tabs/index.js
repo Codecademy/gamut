@@ -23,13 +23,13 @@ export default class Tabs extends Component {
   componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this._idPrefix = Math.random()
+    this.idPrefix = Math.random()
       .toString()
       .replace('.', '');
   }
 
   createId(index) {
-    return `${this._idPrefix}-${index}`;
+    return `${this.idPrefix}-${index}`;
   }
 
   renderTabList = activeTabId => {

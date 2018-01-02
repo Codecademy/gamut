@@ -2,19 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const TabPanel = ({ children, isActive, renderAllPanels, id }) => (
-  <div role="tabpanel" id={id} aria-labelledby={id.replace('-panel', '')}>
+  <div id={id} aria-labelledby={id.replace('-panel', '')} hidden={!isActive}>
     {isActive || renderAllPanels ? children : null}
   </div>
 );
 export default TabPanel;
 
-TabPanel.defaultProps = {};
+TabPanel.defaultProps = {
+  id: '',
+};
+
 TabPanel.propTypes = {
-  id: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]),
+  ]).isRequired,
+  id: PropTypes.string,
   isActive: PropTypes.bool,
   renderAllPanels: PropTypes.bool,
 };

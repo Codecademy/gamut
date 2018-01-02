@@ -1,4 +1,5 @@
 import React from 'react';
+import { isNumber } from 'lodash';
 import PropTypes from 'prop-types';
 import TabPanel from '../TabPanel';
 import TabList from '../TabList';
@@ -12,6 +13,8 @@ export default class Tabs extends React.Component {
     updateTabIndex: PropTypes.func,
     renderAllPanels: PropTypes.bool,
     defaultActiveTabIndex: PropTypes.number,
+    allCaps: PropTypes.bool,
+    onTabIndexUpdate: PropTypes.func,
   };
 
   state = {
@@ -24,14 +27,14 @@ export default class Tabs extends React.Component {
 
   createBaseId = index => `${this.idPrefix}-${index}`;
 
-  isControlled = () => this.props.activeTabIndex !== undefined;
+  isControlled = () => isNumber(this.props.activeTabIndex);
 
   updateTabIndex = index => {
     this.setState({ activeTabIndex: index });
   };
 
   render() {
-    const activeTabIndex = this.isControlled()
+    let activeTabIndex = this.isControlled()
       ? this.props.activeTabIndex
       : this.state.activeTabIndex;
 
@@ -39,24 +42,36 @@ export default class Tabs extends React.Component {
       ? this.props.updateTabIndex
       : this.updateTabIndex;
 
+    if (!updateTabIndex)
+      throw new Error(
+        'Tabs component is controlled but no tab change callback (updateTabIndex) was provided'
+      );
+
     const childrenArray = React.Children.toArray(this.props.children);
+    let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
+
+    if (activeTabIndex >= clonedTabPanels.length)
+      activeTabIndex = clonedTabPanels.length - 1;
+
     const tabListChild = childrenArray.filter(c => c.type === TabList)[0];
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
       updateTabIndex,
       createBaseId: this.createBaseId,
+      onTabIndexUpdated: this.props.onTabIndexUpdate,
+      allCaps: this.props.allCaps,
     });
-    const clonedTabPanels = childrenArray
-      .filter(c => c.type === TabPanel)
-      .map((panel, index) =>
-        React.cloneElement(panel, {
-          isActive: index === activeTabIndex,
-          renderAllPanels: this.props.renderAllPanels,
-          id: `${this.createBaseId(index)}-panel`,
-          key: this.createBaseId(index),
-          updateTabIndex,
-        })
-      );
+
+    clonedTabPanels = clonedTabPanels.map((panel, index) =>
+      React.cloneElement(panel, {
+        isActive: index === activeTabIndex,
+        renderAllPanels: this.props.renderAllPanels,
+        id: `${this.createBaseId(index)}-panel`,
+        key: this.createBaseId(index),
+        updateTabIndex,
+      })
+    );
+
     return (
       <div>
         {clonedTabList}
