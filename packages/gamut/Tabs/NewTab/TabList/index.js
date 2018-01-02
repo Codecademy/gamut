@@ -7,14 +7,24 @@ const TabList = ({
   activeTabIndex,
   updateTabIndex,
   createBaseId,
+  onTabIndexUpdate,
+  allCaps,
+  center,
+  maxWidth,
 }) => (
-  <ul role="tablist" className={s.tabList}>
+  <ul
+    className={`${s.tabList} ${center ? s.center : ''}`}
+    style={{ maxWidth: maxWidth }}
+  >
     {React.Children.map(children, (tab, index) =>
       React.cloneElement(tab, {
         isActive: activeTabIndex === index,
         updateTabIndex: updateTabIndex.bind(null, index),
         id: createBaseId(index),
         key: index,
+        onTabIndexUpdate:
+          onTabIndexUpdate && onTabIndexUpdate.bind(null, index),
+        allCaps: allCaps,
       })
     )}
   </ul>
@@ -30,4 +40,8 @@ TabList.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
+  allCaps: PropTypes.bool,
+  onTabIndexUpdate: PropTypes.func,
+  maxWidth: PropTypes.string,
+  center: PropTypes.bool,
 };

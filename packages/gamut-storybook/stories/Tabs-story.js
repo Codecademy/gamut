@@ -2,7 +2,9 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import DeprecatedTabs from '@codecademy/gamut/Tabs';
 import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs/NewTab';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
+import { withInfo } from '@storybook/addon-info';
+import { addonInfoOptions as options } from './options';
 
 function generateTabConfig(num, isDefault) {
   return [...Array(num).keys()].map(ind => {
@@ -60,20 +62,60 @@ storiesOf('Component/Deprecated Tabs', module)
 
 storiesOf('Component/NewTabs', module)
   .addDecorator(withKnobs)
-  .add('Tab', () => (
-    <Tabs>
-      <TabList>
-        <Tab>1</Tab>
-        <Tab>2</Tab>
-        <Tab>3</Tab>
-      </TabList>
-      <TabPanel>hi i am tab 1</TabPanel>
-      <TabPanel>hi i am tab 2</TabPanel>
-      <TabPanel>hi i am tab 3</TabPanel>
-    </Tabs>
-  ));
+  .add(
+    'Tabs (Controlled)',
+    withInfo({
+      text: `
+        The **activeTabIndex** prop and **updateTabIndex** callback function prop are required for controlled tabs.
 
-// storiesOf('Component/NewTabs', module)
-// .add('Tab Component', ()=>(
-//   <Tab>test tab content</Tab>
-// ))
+        For optimum accessibility, you should provide an **onTabIndexUpdate** callback function that sets focus on an appropriate element
+        (either a form element or the top-level header) for the newly-active tab panel when the active tab changes.
+
+        The accessibility implementation was taken from [this article](https://simplyaccessible.com/article/danger-aria-tabs/)
+        `,
+      ...options,
+    })(() => (
+      <Tabs
+        renderAllPanels={boolean('renderAllPanels', false)}
+        activeTabIndex={number('activeTabIndex', 0)}
+        updateTabIndex={function noop() {}}
+        onTabIndexUpdated={function noop() {}}
+        allCaps={boolean('allCaps', false)}
+      >
+        <TabList
+          center={boolean('center', false)}
+          maxWidth={text('maxWidth', undefined)}
+        >
+          <Tab>{text('text_tab_1', 'Tab 1')}</Tab>
+          <Tab>{text('text_tab_2', 'Tab 2')}</Tab>
+          <Tab>{text('text_tab_3', 'Tab 3')}</Tab>
+        </TabList>
+        <TabPanel>hi i am tab 1</TabPanel>
+        <TabPanel>hi i am tab 2</TabPanel>
+        <TabPanel>hi i am tab 3</TabPanel>
+      </Tabs>
+    ))
+  )
+  .add(
+    'Tabs (Uncontrolled)',
+    withInfo({
+      text: `When no **activeTabIndex** prop is provided, the component uses internal state.`,
+      ...options,
+    })(() => (
+      <Tabs
+        renderAllPanels={boolean('renderAllPanels', false)}
+        defaultActiveTabIndex={number('defaultActiveTabIndex', 1)}
+        allCaps={boolean('allCaps', false)}
+        onTabIndexUpdated={function noop() {}}
+      >
+        <TabList>
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanel>hi i am tab 1</TabPanel>
+        <TabPanel>hi i am tab 2</TabPanel>
+        <TabPanel>hi i am tab 3</TabPanel>
+      </Tabs>
+    ))
+  );

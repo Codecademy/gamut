@@ -5,6 +5,9 @@ $tabBorderRadius: 0.25rem;
 
 .tabListItem {
   list-style-type: none;
+  flex: 1;
+  min-width: 6rem;
+  max-width: 20rem;
   &:first-of-type a {
     border-top-left-radius: $tabBorderRadius;
     border-bottom-left-radius: $tabBorderRadius;
@@ -23,10 +26,13 @@ $tabBorderRadius: 0.25rem;
   color: $tabColor;
   text-decoration: none;
   text-align: center;
-  min-width: 6rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   transition: color 0.2s, background-color 0.2s;
   outline: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
   &:hover,
   &:focus {
     background-color: $gamut-purple-100;

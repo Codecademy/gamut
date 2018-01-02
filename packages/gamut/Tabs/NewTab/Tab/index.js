@@ -2,22 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles';
 
-const Tab = ({ children, isActive, isDisabled, updateTabIndex, id }) => (
-  <li role="presentation" className={s.tabListItem}>
+const updateTab = updateTabIndex => onTabIndexUpdate => e => {
+  e.preventDefault();
+  updateTabIndex();
+  if (onTabIndexUpdate) onTabIndexUpdate();
+};
+
+const Tab = ({
+  children,
+  isActive,
+  isDisabled,
+  updateTabIndex,
+  onTabIndexUpdate,
+  id,
+  allCaps,
+}) => (
+  <li className={s.tabListItem}>
     <a
       href={`${id}-panel`}
       id={id}
-      role="tab"
-      aria-selected={isActive}
-      tabIndex={isActive ? 0 : -1}
-      aria-controls={`${id}-panel`}
       className={`${s.tab} ${isActive ? s.isActive : ''} ${
         isDisabled ? s.isDisabled : ''
-      }`}
-      onClick={e => {
-        e.preventDefault();
-        updateTabIndex();
-      }}
+      } ${allCaps ? s.allCaps : ''}`}
+      onClick={updateTab(updateTabIndex)(onTabIndexUpdate)}
+      onFocus={updateTab(updateTabIndex)(onTabIndexUpdate)}
     >
       {children}
     </a>
@@ -28,12 +36,14 @@ export default Tab;
 
 Tab.defaultProps = {};
 Tab.propTypes = {
-  id: PropTypes.string.isRequired,
   isActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
+  allCaps: PropTypes.bool,
+  onTabIndexUpdate: PropTypes.func,
   updateTabIndex: PropTypes.func,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]),
+  ]).isRequired,
+  id: PropTypes.string,
 };
