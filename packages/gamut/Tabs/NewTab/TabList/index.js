@@ -17,7 +17,7 @@ const TabList = ({
   >
     {React.Children.map(children, (tab, index) =>
       React.cloneElement(tab, {
-        isActive: activeTabIndex === index,
+        active: activeTabIndex === index,
         updateTabIndex: updateTabIndex.bind(null, index),
         id: createBaseId(index),
         key: index,

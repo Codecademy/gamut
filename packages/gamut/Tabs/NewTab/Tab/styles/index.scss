@@ -42,7 +42,7 @@ $tab-border-radius: 0.25rem;
   text-transform: uppercase;
 }
 
-.isActive {
+.active {
   color: $color-white;
   background-color: $tab-color;
   &:hover,
@@ -53,7 +53,4 @@ $tab-border-radius: 0.25rem;
   &:focus {
     background-color: darken($tab-color, 10%);
   }
-}
-.isDisabled {
-  opacity: 0.75;
 }
