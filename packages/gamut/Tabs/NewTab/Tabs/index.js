@@ -22,7 +22,9 @@ export default class Tabs extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (!this.props.onTabIndexUpdate) return;
+    if (!this.props.onTabIndexUpdate) {
+      return;
+    }
     const propsIndexChanged =
       this.props.activeTabIndex !== undefined &&
       this.props.activeTabIndex !== prevProps.activeTabIndex;
@@ -33,8 +35,9 @@ export default class Tabs extends React.Component {
 
     const stateIndexChanged =
       this.state.activeTabIndex !== prevState.activeTabIndex;
-    if (stateIndexChanged)
+    if (stateIndexChanged) {
       this.props.onTabIndexUpdate(this.state.activeTabIndex);
+    }
   }
 
   idPrefix = Math.random()
@@ -58,16 +61,18 @@ export default class Tabs extends React.Component {
       ? this.props.updateTabIndex
       : this.updateTabIndex;
 
-    if (!updateTabIndex)
+    if (!updateTabIndex) {
       throw new Error(
         'Tabs component is controlled but no tab change callback (updateTabIndex) was provided'
       );
+    }
 
     const childrenArray = React.Children.toArray(this.props.children);
     let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
 
-    if (activeTabIndex >= clonedTabPanels.length)
+    if (activeTabIndex >= clonedTabPanels.length) {
       activeTabIndex = clonedTabPanels.length - 1;
+    }
 
     const tabListChild = childrenArray.filter(c => c.type === TabList)[0];
     const clonedTabList = React.cloneElement(tabListChild, {

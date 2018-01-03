@@ -23,11 +23,11 @@ const Tab = ({
         isDisabled ? s.isDisabled : ''
       } ${allCaps ? s.allCaps : ''}`}
       onClick={updateTab(updateTabIndex)}
-      // onFocus={updateTab(updateTabIndex)}
       onKeyDown={e => {
         // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
-        if (e.key === 'Space' || e.key === 'Enter')
+        if (e.key === ' ' || e.key === 'Enter') {
           updateTab(updateTabIndex)(e);
+        }
       }}
     >
       {children}
