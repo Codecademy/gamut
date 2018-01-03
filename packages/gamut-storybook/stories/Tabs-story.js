@@ -68,7 +68,7 @@ storiesOf('Component/NewTabs', module)
       text: `
         The **activeTabIndex** prop and **updateTabIndex** callback function prop are required for controlled tabs.
 
-        For optimum accessibility, you should provide an **onTabIndexUpdate** callback function that sets focus on an appropriate element
+        For optimum accessibility, you should provide an **onChange** callback function that sets focus on an appropriate element
         (either a form element or the top-level header) for the newly-active tab panel when the active tab changes.
 
         The accessibility implementation was taken from [this article](https://simplyaccessible.com/article/danger-aria-tabs/)
@@ -79,7 +79,7 @@ storiesOf('Component/NewTabs', module)
         renderAllPanels={boolean('renderAllPanels', false)}
         activeTabIndex={number('activeTabIndex', 0)}
         updateTabIndex={function noop() {}}
-        onTabIndexUpdated={function noop() {}}
+        onChanged={function noop() {}}
         allCaps={boolean('allCaps', false)}
       >
         <TabList
@@ -115,7 +115,7 @@ storiesOf('Component/NewTabs', module)
         renderAllPanels={boolean('renderAllPanels', false)}
         defaultActiveTabIndex={number('defaultActiveTabIndex', 1)}
         allCaps={boolean('allCaps', false)}
-        onTabIndexUpdated={function noop() {}}
+        onChanged={function noop() {}}
       >
         <TabList>
           <Tab>Tab 1</Tab>

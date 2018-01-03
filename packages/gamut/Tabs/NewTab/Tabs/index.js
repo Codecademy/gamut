@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 
-export default class Tabs extends React.Component {
+class Tabs extends React.Component {
   static defaultProps = {};
 
   static propTypes = {
@@ -14,7 +14,7 @@ export default class Tabs extends React.Component {
     renderAllPanels: PropTypes.bool,
     defaultActiveTabIndex: PropTypes.number,
     allCaps: PropTypes.bool,
-    onTabIndexUpdate: PropTypes.func,
+    onChange: PropTypes.func,
   };
 
   state = {
@@ -22,21 +22,21 @@ export default class Tabs extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (!this.props.onTabIndexUpdate) {
+    if (!this.props.onChange) {
       return;
     }
     const propsIndexChanged =
       this.props.activeTabIndex !== undefined &&
       this.props.activeTabIndex !== prevProps.activeTabIndex;
     if (propsIndexChanged) {
-      this.props.onTabIndexUpdate(this.props.activeTabIndex);
+      this.props.onChange(this.props.activeTabIndex);
       return;
     }
 
     const stateIndexChanged =
       this.state.activeTabIndex !== prevState.activeTabIndex;
     if (stateIndexChanged) {
-      this.props.onTabIndexUpdate(this.state.activeTabIndex);
+      this.props.onChange(this.state.activeTabIndex);
     }
   }
 
@@ -79,7 +79,7 @@ export default class Tabs extends React.Component {
       activeTabIndex,
       updateTabIndex,
       createBaseId: this.createBaseId,
-      onTabIndexUpdated: this.props.onTabIndexUpdate,
+      onChanged: this.props.onChange,
       allCaps: this.props.allCaps,
     });
 
@@ -89,7 +89,6 @@ export default class Tabs extends React.Component {
         renderAllPanels: this.props.renderAllPanels,
         id: `${this.createBaseId(index)}-panel`,
         key: this.createBaseId(index),
-        updateTabIndex,
       })
     );
 
@@ -101,3 +100,5 @@ export default class Tabs extends React.Component {
     );
   }
 }
+
+export default Tabs;

@@ -153,12 +153,12 @@ describe('Tabs', () => {
 
     expect(inactivePanelHasChildren(wrapper)).toBe(true);
   });
-  it('calls the onTabIndexUpdate function to notify listeners after changing tabs', () => {
-    const onTabIndexUpdateStub = jest.fn();
+  it('calls the onChange function to notify listeners after changing tabs', () => {
+    const onChangeStub = jest.fn();
     const wrapper = shallow(
       <Tabs
         activeTabIndex={0}
-        onTabIndexUpdate={onTabIndexUpdateStub}
+        onChange={onChangeStub}
         updateTabIndex={() => {}}
       >
         <TabList>
@@ -183,7 +183,7 @@ describe('Tabs', () => {
       activeTabIndex: 2,
     });
 
-    expect(onTabIndexUpdateStub.mock.calls.length).toBe(1);
-    expect(onTabIndexUpdateStub.mock.calls[0][0]).toBe(2);
+    expect(onChangeStub.mock.calls.length).toBe(1);
+    expect(onChangeStub.mock.calls[0][0]).toBe(2);
   });
 });
