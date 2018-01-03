@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles';
 
-const TabPanel = ({ children, isActive, renderAllPanels, id }) => (
+const TabPanel = ({ children, active, renderAllPanels, id }) => (
   <div
     id={id}
     aria-labelledby={id.replace('-panel', '')}
-    style={{ display: isActive ? 'block' : 'none' }}
+    style={{ display: active ? 'block' : 'none' }}
     className={s.tabPanel}
   >
-    {isActive || renderAllPanels ? children : null}
+    {active || renderAllPanels ? children : null}
   </div>
 );
 
@@ -23,7 +23,7 @@ TabPanel.propTypes = {
     PropTypes.node,
   ]).isRequired,
   id: PropTypes.string,
-  isActive: PropTypes.bool,
+  active: PropTypes.bool,
   renderAllPanels: PropTypes.bool,
 };
 

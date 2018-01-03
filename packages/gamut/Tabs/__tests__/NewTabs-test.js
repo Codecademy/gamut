@@ -28,7 +28,7 @@ describe('Tabs', () => {
       </Tabs>
     );
 
-    expect(wrapper.find('.tab.isActive').text()).toBe('Tab 1');
+    expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
     let activeTabPanelText = wrapper
       .find('.tabPanel')
@@ -55,7 +55,7 @@ describe('Tabs', () => {
       activeTabIndex: 2,
     });
 
-    expect(wrapper.find('.tab.isActive').text()).toBe('Tab 3');
+    expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
     inactiveTabPanelText = wrapper
       .find('.tabPanel')
@@ -90,7 +90,7 @@ describe('Tabs', () => {
       </Tabs>
     );
 
-    expect(wrapper.find('.tab.isActive').text()).toBe('Tab 3');
+    expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
     let activeTabPanelText = wrapper
       .find('.tabPanel')
@@ -111,7 +111,7 @@ describe('Tabs', () => {
       .props()
       .onClick({ preventDefault() {} });
 
-    expect(wrapper.find('.tab.isActive').text()).toBe('Tab 1');
+    expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
     inactiveTabPanelText = wrapper
       .find('.tabPanel')

@@ -7,21 +7,14 @@ const updateTab = updateTabIndex => e => {
   updateTabIndex();
 };
 
-const Tab = ({
-  children,
-  isActive,
-  isDisabled,
-  updateTabIndex,
-  id,
-  allCaps,
-}) => (
+const Tab = ({ children, active, onChange, updateTabIndex, id, allCaps }) => (
   <li className={s.tabListItem}>
     <a
       href={`${id}-panel`}
       id={id}
-      className={`${s.tab} ${isActive ? s.isActive : ''} ${
-        isDisabled ? s.isDisabled : ''
-      } ${allCaps ? s.allCaps : ''}`}
+      className={`${s.tab} ${active ? s.active : ''} ${
+        allCaps ? s.allCaps : ''
+      }`}
       onClick={updateTab(updateTabIndex)}
       onKeyDown={e => {
         // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
@@ -37,8 +30,7 @@ const Tab = ({
 
 Tab.defaultProps = {};
 Tab.propTypes = {
-  isActive: PropTypes.bool,
-  isDisabled: PropTypes.bool,
+  active: PropTypes.bool,
   allCaps: PropTypes.bool,
   updateTabIndex: PropTypes.func,
   children: PropTypes.oneOfType([

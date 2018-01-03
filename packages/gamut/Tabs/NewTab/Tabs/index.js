@@ -85,7 +85,7 @@ class Tabs extends React.Component {
 
     clonedTabPanels = clonedTabPanels.map((panel, index) =>
       React.cloneElement(panel, {
-        isActive: index === activeTabIndex,
+        active: index === activeTabIndex,
         renderAllPanels: this.props.renderAllPanels,
         id: `${this.createBaseId(index)}-panel`,
         key: this.createBaseId(index),
