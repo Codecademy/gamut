@@ -12,7 +12,6 @@ const TabPanel = ({ children, isActive, renderAllPanels, id }) => (
     {isActive || renderAllPanels ? children : null}
   </div>
 );
-export default TabPanel;
 
 TabPanel.defaultProps = {
   id: '',
@@ -27,3 +26,5 @@ TabPanel.propTypes = {
   isActive: PropTypes.bool,
   renderAllPanels: PropTypes.bool,
 };
+
+export default TabPanel;

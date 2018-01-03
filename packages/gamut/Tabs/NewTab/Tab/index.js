@@ -35,8 +35,6 @@ const Tab = ({
   </li>
 );
 
-export default Tab;
-
 Tab.defaultProps = {};
 Tab.propTypes = {
   isActive: PropTypes.bool,
@@ -49,3 +47,5 @@ Tab.propTypes = {
   ]).isRequired,
   id: PropTypes.string,
 };
+
+export default Tab;

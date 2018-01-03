@@ -26,7 +26,6 @@ const TabList = ({
     )}
   </ul>
 );
-export default TabList;
 
 TabList.defaultProps = {};
 TabList.propTypes = {
@@ -41,3 +40,5 @@ TabList.propTypes = {
   maxWidth: PropTypes.string,
   center: PropTypes.bool,
 };
+
+export default TabList;
