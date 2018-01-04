@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import DeprecatedTabs from '@codecademy/gamut/Tabs';
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs/NewTab';
+import DeprecatedTabs from '@codecademy/gamut/Tabs/DeprecatedTabs';
+import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs';
 import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 import { addonInfoOptions as options } from './options';
@@ -60,7 +60,7 @@ storiesOf('Component/Deprecated Tabs', module)
     </DeprecatedTabs>
   ));
 
-storiesOf('Component/NewTabs', module)
+storiesOf('Component/Tabs', module)
   .addDecorator(withKnobs)
   .add(
     'Tabs (Controlled)',

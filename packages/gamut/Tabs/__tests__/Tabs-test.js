@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import { Tab, TabList, TabPanel, Tabs } from '../NewTab';
+import { Tab, TabList, TabPanel, Tabs } from '../';
 
 describe('Tabs', () => {
   it('has a controlled variant', () => {
