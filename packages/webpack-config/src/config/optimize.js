@@ -9,6 +9,7 @@ const optimizeConfig = () => {
       new webpack.LoaderOptionsPlugin({
         minimize: true
       }),
+      new webpack.HashedModuleIdsPlugin(),
       new UglifyJsPlugin()
     ]
   };
