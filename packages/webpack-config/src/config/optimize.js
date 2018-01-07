@@ -9,7 +9,8 @@ const optimizeConfig = () => {
       new webpack.LoaderOptionsPlugin({
         minimize: true
       }),
-      new webpack.HashedModuleIdsPlugin(),
+      new webpack.NamedChunksPlugin(),
+      new webpack.NamedModulesPlugin(),
       new UglifyJsPlugin()
     ]
   };

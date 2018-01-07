@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "example": "webpack --config=./example/webpack.config.js",
+    "example": "webpack --profile --config=./example/webpack.config.js",
+    "example-prod": "NODE_ENV=production webpack --profile --config=./example/webpack.config.js",
     "example-dev": "webpack-dev-server --config=./example/webpack.dev.js"
   },
   "repository": {
