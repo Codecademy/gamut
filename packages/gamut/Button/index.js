@@ -23,6 +23,7 @@ const propTypes = {
   outline: PropTypes.bool,
   underline: PropTypes.bool,
   link: PropTypes.bool,
+  span: PropTypes.bool,
   caps: PropTypes.bool,
   go: PropTypes.bool,
   children: PropTypes.node,
@@ -68,15 +69,17 @@ const Button = props => {
     );
   }
 
+  const ElementType = props.span ? 'span' : 'button';
+
   return (
-    <button
+    <ElementType
       data-btn
       {...propsToTransfer}
       disabled={props.disabled}
       className={classes}
     >
       {props.children}
-    </button>
+    </ElementType>
   );
 };
 
