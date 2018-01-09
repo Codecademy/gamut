@@ -38,7 +38,7 @@ const defaultProps = {
   width: 24,
 };
 
-export default function Icon({ name, ...props }) {
+function Icon({ name, ...props }) {
   const MappedIcon = iconMap[name];
 
   return (
@@ -53,3 +53,5 @@ export default function Icon({ name, ...props }) {
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
+
+export default Icon;
