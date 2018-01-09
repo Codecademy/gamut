@@ -1,66 +1,57 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
-import s from './styles';
 
-/**
- * Icon Component
- *
- * Uses the Ikona icon-font which is stored in ./styles/ikona
- *
- * props:
- *
- * name: The name of the icon in the ikona font,
- *       you can reference the names in
- *       this file: ./styles/ikona/classes.scss
- *
- * size: the icons are based on a 16px grid, so if you want the icon
- *       to stay sharp, it's font-size has to be a multiple of 16px.
- *       So, if you pass in a size prop of 2, the icon will be 32x32
- *       If you need a different sized icon, just pass in a style
- *       with your custom font size.
- *
- * usage:
- *
- * <Icon name="fullscreen" />
- *
- * <Icon name="fullscreen" size={2}/>
- */
+import AdvisorIcon from './icons/AdvisorIcon';
+import AlertIcon from './icons/AlertIcon';
+import ArticleIcon from './icons/ArticleIcon';
+import CertificateIcon from './icons/CertificateIcon';
+import ClockIcon from './icons/ClockIcon';
+import CommunityIcon from './icons/CommunityIcon';
+import LearnIcon from './icons/LearnIcon';
+import MaintenanceIcon from './icons/MaintenanceIcon';
+import ProjectIcon from './icons/ProjectIcon';
+import QuizIcon from './icons/QuizIcon';
+import ResetIcon from './icons/ResetIcon';
+import SyllabusIcon from './icons/SyllabusIcon';
 
-const ICON_SIZE = 16;
+export const iconMap = {
+  advisor: AdvisorIcon,
+  alert: AlertIcon,
+  article: ArticleIcon,
+  certificate: CertificateIcon,
+  clock: ClockIcon,
+  community: CommunityIcon,
+  learn: LearnIcon,
+  maintenance: MaintenanceIcon,
+  project: ProjectIcon,
+  quiz: QuizIcon,
+  reset: ResetIcon,
+  syllabus: SyllabusIcon,
+};
 
-class Icon extends PureComponent {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    size: PropTypes.number,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    style: PropTypes.object,
-  };
+const propTypes = {
+  name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
+};
 
-  render() {
-    const icon: string =
-      `ikona-${this.props.name}` in s
-        ? s[`ikona-${this.props.name}`]
-        : `cc-symbol cc-symbol-icon-${this.props.name}`;
+const defaultProps = {
+  height: 24,
+  width: 24,
+};
 
-    const classes = cx(s.i, icon, this.props.className);
+function Icon({ name, ...props }) {
+  const MappedIcon = iconMap[name];
 
-    let styles = this.props.style;
-
-    if (this.props.size) {
-      styles = {
-        fontSize: this.props.size * ICON_SIZE,
-        ...this.props.style,
-      };
-    }
-
-    return (
-      <i {...this.props} className={classes} style={styles}>
-        {this.props.children}
-      </i>
-    );
-  }
+  return (
+    <MappedIcon
+      xmlns="http://www.w3.org/2000/svg"
+      aria-labelledby="title"
+      version="1.1"
+      {...props}
+    />
+  );
 }
+
+Icon.propTypes = propTypes;
+Icon.defaultProps = defaultProps;
 
 export default Icon;
