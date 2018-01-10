@@ -2,12 +2,6 @@
 # yarn lockfile v1
 
 
-"@codecademy/gamut-styles@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@codecademy/gamut-styles/-/gamut-styles-1.2.4.tgz#ceb0e3ac357740a45dde57a0bb986febf7d2a0a0"
-  dependencies:
-    "@codecademy/identity" "^1.15.4"
-
 "@codecademy/identity@^1.15.4":
   version "1.15.4"
   resolved "https://registry.yarnpkg.com/@codecademy/identity/-/identity-1.15.4.tgz#041469850b30b25e1b632c33a746ca1915b3a7fc"
