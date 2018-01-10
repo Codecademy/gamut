@@ -3,29 +3,33 @@ import { shallow, mount } from 'enzyme';
 
 import { Tab, TabList, TabPanel, Tabs } from '../';
 
+const getTabs = props => (
+  <Tabs {...props}>
+    <TabList>
+      <Tab>Tab 1</Tab>
+      <Tab>Tab 2</Tab>
+      <Tab>Tab 3</Tab>
+    </TabList>
+    <TabPanel>
+      <h2>welcome to tab 1</h2>
+      <p>hi i am tab 1</p>
+    </TabPanel>
+    <TabPanel>
+      <h2>welcome to tab 2</h2>
+      <p>hi i am tab 2</p>
+    </TabPanel>
+    <TabPanel>
+      <h2>welcome to tab 3</h2>
+      <p>hi i am tab 3</p>
+    </TabPanel>
+  </Tabs>
+);
+
 describe('Tabs', () => {
   it('has a controlled variant', () => {
     const updateTabIndexStub = jest.fn();
     const wrapper = mount(
-      <Tabs activeTabIndex={0} updateTabIndex={updateTabIndexStub}>
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabPanel>
-          <h2>welcome to tab 1</h2>
-          <p>hi i am tab 1</p>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 2</h2>
-          <p>hi i am tab 2</p>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 3</h2>
-          <p>hi i am tab 3</p>
-        </TabPanel>
-      </Tabs>
+      getTabs({ activeTabIndex: 0, updateTabIndex: updateTabIndexStub })
     );
 
     expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
@@ -71,24 +75,7 @@ describe('Tabs', () => {
   });
 
   it('has an uncontrolled variant', () => {
-    const wrapper = mount(
-      <Tabs defaultActiveTabIndex={2}>
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabPanel>
-          <h2>welcome to tab 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 3</h2>
-        </TabPanel>
-      </Tabs>
-    );
+    const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
 
     expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
@@ -97,7 +84,7 @@ describe('Tabs', () => {
       .last()
       .text();
 
-    expect(activeTabPanelText).toBe('welcome to tab 3');
+    expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
 
     let inactiveTabPanelText = wrapper
       .find('.tabPanel')
@@ -123,23 +110,12 @@ describe('Tabs', () => {
       .find('.tabPanel')
       .first()
       .text();
-    expect(activeTabPanelText).toBe('welcome to tab 1');
+    expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
   });
 
   it('can render inactive panels into the DOM if necessary (for interoperability with JS libraries like recaptcha', () => {
     const wrapper = shallow(
-      <Tabs activeTabIndex={0} updateTabIndex={() => {}}>
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-        </TabList>
-        <TabPanel>
-          <h2>welcome to tab 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 2</h2>
-        </TabPanel>
-      </Tabs>
+      getTabs({ activeTabIndex: 0, updateTabIndex: () => {} })
     );
 
     const inactivePanelHasChildren = wrapper =>
@@ -156,26 +132,11 @@ describe('Tabs', () => {
   it('calls the onChange function to notify listeners after changing tabs', () => {
     const onChangeStub = jest.fn();
     const wrapper = shallow(
-      <Tabs
-        activeTabIndex={0}
-        onChange={onChangeStub}
-        updateTabIndex={() => {}}
-      >
-        <TabList>
-          <Tab>Tab 1</Tab>
-          <Tab>Tab 2</Tab>
-          <Tab>Tab 3</Tab>
-        </TabList>
-        <TabPanel>
-          <h2>welcome to tab 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>welcome to tab 3</h2>
-        </TabPanel>
-      </Tabs>,
+      getTabs({
+        activeTabIndex: 0,
+        onChange: onChangeStub,
+        updateTabIndex: () => {},
+      }),
       { lifecycleExperimental: true }
     );
 
