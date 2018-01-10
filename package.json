@@ -19,6 +19,9 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
     "lerna": "^2.5.1"
   },
