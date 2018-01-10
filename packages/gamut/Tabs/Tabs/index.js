@@ -13,7 +13,6 @@ class Tabs extends React.Component {
     updateTabIndex: PropTypes.func,
     renderAllPanels: PropTypes.bool,
     defaultActiveTabIndex: PropTypes.number,
-    allCaps: PropTypes.bool,
     onChange: PropTypes.func,
   };
 
@@ -74,13 +73,11 @@ class Tabs extends React.Component {
       activeTabIndex = clonedTabPanels.length - 1;
     }
 
-    const tabListChild = childrenArray.filter(c => c.type === TabList)[0];
+    const tabListChild = childrenArray.find(c => c.type === TabList);
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
       updateTabIndex,
       createBaseId: this.createBaseId,
-      onChanged: this.props.onChange,
-      allCaps: this.props.allCaps,
     });
 
     clonedTabPanels = clonedTabPanels.map((panel, index) =>
