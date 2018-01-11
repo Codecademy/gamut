@@ -80,6 +80,9 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="primary" caps href="#">
           Caps
         </Button>
+        <Button style={btnStyle} theme="primary" span>
+          Span tag
+        </Button>
       </div>
     ))
   )
