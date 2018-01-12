@@ -47,6 +47,7 @@ function Icon({ name, ...props }) {
 
   return (
     <MappedIcon
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby="title"
       version="1.1"
