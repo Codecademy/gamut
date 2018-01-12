@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import AngularIcon from './icons/AngularIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
 import AlertIcon from './icons/AlertIcon';
 import ArticleIcon from './icons/ArticleIcon';
@@ -12,9 +13,11 @@ import MaintenanceIcon from './icons/MaintenanceIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import QuizIcon from './icons/QuizIcon';
 import ResetIcon from './icons/ResetIcon';
+import SassIcon from './icons/SassIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 
 export const iconMap = {
+  angular: AngularIcon,
   advisor: AdvisorIcon,
   alert: AlertIcon,
   article: ArticleIcon,
@@ -26,6 +29,7 @@ export const iconMap = {
   project: ProjectIcon,
   quiz: QuizIcon,
   reset: ResetIcon,
+  sass: SassIcon,
   syllabus: SyllabusIcon,
 };
 
