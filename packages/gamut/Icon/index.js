@@ -35,6 +35,8 @@ export const iconMap = {
 
 const propTypes = {
   name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
+  height: PropTypes.string,
+  width: PropTypes.string,
 };
 
 const defaultProps = {
