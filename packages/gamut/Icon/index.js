@@ -1,44 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import AccessibilityIcon from './icons/Accessibility';
+import AccessibilityIcon from './icons/AccessibilityIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
 import AlertIcon from './icons/AlertIcon';
-import AlexaIcon from './icons/Alexa';
+import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
 import CertificateIcon from './icons/CertificateIcon';
 import ClockIcon from './icons/ClockIcon';
 import CommunityIcon from './icons/CommunityIcon';
-import CSSIcon from './icons/CSS';
-import DAWIcon from './icons/DAW';
-import FullstackIcon from './icons/Fullstack';
-import GitIcon from './icons/Git';
-import HTMLIcon from './icons/HTML';
-import JavaIcon from './icons/Java';
-import JavascriptIcon from './icons/Javascript';
-import jQueryIcon from './icons/jQuery';
+import CSSIcon from './icons/CSSIcon';
+import DAWIcon from './icons/DAWIcon';
+import FullstackIcon from './icons/FullstackIcon';
+import GitIcon from './icons/GitIcon';
+import HTMLIcon from './icons/HTMLIcon';
+import JavaIcon from './icons/JavaIcon';
+import JavascriptIcon from './icons/JavascriptIcon';
+import jQueryIcon from './icons/jQueryIcon';
 import LearnIcon from './icons/LearnIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
-import MatplotLibIcon from './icons/MatplotLib';
-import MAWIcon from './icons/MAW';
-import NumPyIcon from './icons/NumPy';
-import PandaIcon from './icons/Panda';
-import PHPIcon from './icons/PHP';
+import MatplotLibIcon from './icons/MatplotLibIcon';
+import MAWIcon from './icons/MAWIcon';
+import NumPyIcon from './icons/NumPyIcon';
+import PandasIcon from './icons/PandasIcon';
+import PHPIcon from './icons/PHPIcon';
 import ProjectIcon from './icons/ProjectIcon';
-import PythonIcon from './icons/Python';
+import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
-import RailsIcon from './icons/Rails';
-import ReactIcon from './icons/React';
+import RailsIcon from './icons/RailsIcon';
+import ReactIcon from './icons/ReactIcon';
 import ResetIcon from './icons/ResetIcon';
-import ResponsiveIcon from './icons/Responsive';
-import RubyIcon from './icons/Ruby';
+import ResponsiveIcon from './icons/ResponsiveIcon';
+import RubyIcon from './icons/RubyIcon';
 import SassIcon from './icons/SassIcon';
-import SQLIcon from './icons/SQL';
+import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
-import TDDIcon from './icons/TDD';
-import TerminalIcon from './icons/Terminal';
-import WatsonIcon from './icons/Watson';
+import TDDIcon from './icons/TDDIcon';
+import TerminalIcon from './icons/TerminalIcon';
+import WatsonIcon from './icons/WatsonIcon';
 
 export const iconMap = {
   accessibility: AccessibilityIcon,
@@ -63,7 +63,7 @@ export const iconMap = {
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
   numPy: NumPyIcon,
-  panda: PandaIcon,
+  pandas: PandasIcon,
   php: PHPIcon,
   project: ProjectIcon,
   python: PythonIcon,
