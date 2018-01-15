@@ -6,6 +6,7 @@ import Icon from '@codecademy/gamut/Icon';
 import iconMap from '@codecademy/gamut/Icon/iconMap';
 import { gamutColors } from '@codecademy/gamut-styles/variables';
 import { addonInfoOptions as options } from './options';
+import s from './Icon-story.scss';
 
 function convertCamelToSpinel(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
@@ -29,23 +30,9 @@ storiesOf('Component/Icon', module)
       ...options,
       source: false,
     })(() => (
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(8, 1fr)',
-          gridAutoRows: '120px',
-          maxWidth: 1600,
-          minWidth: 700,
-        }}
-      >
+      <div className={s.grid}>
         {iconNames.map(iconName => (
-          <span
-            style={{
-              display: 'inline-flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
+          <span className={s.iconWrapper}>
             <Icon key={iconName} name={iconName} width={64} height={64} />
             <span>{iconName}</span>
           </span>
@@ -60,14 +47,7 @@ storiesOf('Component/Icon', module)
     })(
       () => (
         <div>
-          <div
-            style={{
-              display: 'inline-flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              width: number('width', 128),
-            }}
-          >
+          <span className={s.iconWrapper}>
             {select('name', iconNames, iconNames[0])}
             <Icon
               name={select('name', iconNames, iconNames[0])}
@@ -82,8 +62,8 @@ storiesOf('Component/Icon', module)
                 ),
               }}
             />
-          </div>
-          <p style={{ margin: '80px 0 -79px' }}>
+          </span>
+          <p className={s.note}>
             <em>
               Note: Both color and backgroundColor should be adjusted with CSS
               classes rather than inline styles.
