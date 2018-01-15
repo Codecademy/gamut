@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PandaIcon(props) {
+export default function PandasIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Panda Icon</title>
