@@ -32,7 +32,7 @@ import ResetIcon from './icons/ResetIcon';
 import ResponsiveIcon from './icons/ResponsiveIcon';
 import RubyIcon from './icons/RubyIcon';
 import SassIcon from './icons/SassIcon';
-import ScyPyIcon from './icons/ScyPyIcon';
+import SciPyIcon from './icons/SciPyIcon';
 import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
@@ -75,7 +75,7 @@ const iconMap = {
   responsive: ResponsiveIcon,
   ruby: RubyIcon,
   sass: SassIcon,
-  scyPy: ScyPyIcon,
+  sciPy: SciPyIcon,
   sql: SQLIcon,
   syllabus: SyllabusIcon,
   tdd: TDDIcon,
