@@ -14,3 +14,5 @@ export default function MaintenanceIcon(props) {
     </svg>
   );
 }
+
+MaintenanceIcon.iconName = 'maintenance';

@@ -8,3 +8,5 @@ export default function CommunityIcon(props) {
     </svg>
   );
 }
+
+CommunityIcon.iconName = 'community';

@@ -10,3 +10,5 @@ export default function QuizIcon(props) {
     </svg>
   );
 }
+
+QuizIcon.iconName = 'quiz';

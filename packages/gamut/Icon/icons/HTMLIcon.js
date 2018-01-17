@@ -9,3 +9,5 @@ export default function HTMLIcon(props) {
     </svg>
   );
 }
+
+HTMLIcon.iconName = 'html';

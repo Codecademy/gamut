@@ -8,3 +8,5 @@ export default function ResetIcon(props) {
     </svg>
   );
 }
+
+ResetIcon.iconName = 'reset';

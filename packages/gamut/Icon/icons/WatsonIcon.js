@@ -12,3 +12,5 @@ export default function WatsonIcon(props) {
     </svg>
   );
 }
+
+WatsonIcon.iconName = 'watson';

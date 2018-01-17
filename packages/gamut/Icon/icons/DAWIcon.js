@@ -9,3 +9,5 @@ export default function DAWIcon(props) {
     </svg>
   );
 }
+
+DAWIcon.iconName = 'daw';

@@ -10,3 +10,5 @@ export default function FullstackIcon(props) {
     </svg>
   );
 }
+
+FullstackIcon.iconName = 'fullstack';

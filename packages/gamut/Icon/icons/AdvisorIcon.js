@@ -8,3 +8,5 @@ export default function AdvisorIcon(props) {
     </svg>
   );
 }
+
+AdvisorIcon.iconName = 'advisor';

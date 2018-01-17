@@ -8,3 +8,5 @@ export default function TypeIcon(props) {
     </svg>
   );
 }
+
+TypeIcon.iconName = 'type';

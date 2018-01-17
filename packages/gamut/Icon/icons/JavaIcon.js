@@ -11,3 +11,5 @@ export default function JavaIcon(props) {
     </svg>
   );
 }
+
+JavaIcon.iconName = 'java';

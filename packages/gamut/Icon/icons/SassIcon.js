@@ -9,3 +9,5 @@ export default function SassIcon(props) {
     </svg>
   );
 }
+
+SassIcon.iconName = 'sass';
