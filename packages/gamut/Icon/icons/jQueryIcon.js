@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function JavascriptIcon(props) {
+export default function jQueryIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>jQuery Icon</title>
