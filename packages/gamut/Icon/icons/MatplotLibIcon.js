@@ -19,3 +19,5 @@ export default function MatplotLibIcon(props) {
     </svg>
   );
 }
+
+MatplotLibIcon.iconName = 'matplotLib';

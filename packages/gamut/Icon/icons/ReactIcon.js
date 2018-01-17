@@ -38,3 +38,5 @@ export default function ReactIcon(props) {
     </svg>
   );
 }
+
+ReactIcon.iconName = 'react';

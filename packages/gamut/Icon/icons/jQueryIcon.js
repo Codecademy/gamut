@@ -10,3 +10,5 @@ export default function jQueryIcon(props) {
     </svg>
   );
 }
+
+jQueryIcon.iconName = 'jQuery';

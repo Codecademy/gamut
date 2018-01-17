@@ -8,3 +8,5 @@ export default function ArticleIcon(props) {
     </svg>
   );
 }
+
+ArticleIcon.iconName = 'article';

@@ -8,3 +8,5 @@ export default function PHPIcon(props) {
     </svg>
   );
 }
+
+PHPIcon.iconName = 'php';

@@ -8,3 +8,5 @@ export default function ProjectIcon(props) {
     </svg>
   );
 }
+
+ProjectIcon.iconName = 'project';

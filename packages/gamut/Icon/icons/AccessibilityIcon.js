@@ -9,3 +9,5 @@ export default function AccessibilityIcon(props) {
     </svg>
   );
 }
+
+AccessibilityIcon.iconName = 'accessibility';
