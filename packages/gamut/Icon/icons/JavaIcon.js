@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function HTMLIcon(props) {
+export default function JavaIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Java Icon</title>
