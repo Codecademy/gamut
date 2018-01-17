@@ -6,6 +6,7 @@ import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
 import CertificateIcon from './icons/CertificateIcon';
 import ClockIcon from './icons/ClockIcon';
+import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import CSSIcon from './icons/CSSIcon';
 import DAWIcon from './icons/DAWIcon';
@@ -31,10 +32,12 @@ import ResetIcon from './icons/ResetIcon';
 import ResponsiveIcon from './icons/ResponsiveIcon';
 import RubyIcon from './icons/RubyIcon';
 import SassIcon from './icons/SassIcon';
+import ScyPyIcon from './icons/ScyPyIcon';
 import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
+import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
 
 const iconMap = {
@@ -46,6 +49,7 @@ const iconMap = {
   article: ArticleIcon,
   certificate: CertificateIcon,
   clock: ClockIcon,
+  colors: ColorsIcon,
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
@@ -71,10 +75,12 @@ const iconMap = {
   responsive: ResponsiveIcon,
   ruby: RubyIcon,
   sass: SassIcon,
+  scyPy: ScyPyIcon,
   sql: SQLIcon,
   syllabus: SyllabusIcon,
   tdd: TDDIcon,
   terminal: TerminalIcon,
+  type: TypeIcon,
   watson: WatsonIcon,
 };
 
