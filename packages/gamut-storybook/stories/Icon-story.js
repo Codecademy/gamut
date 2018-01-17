@@ -2,9 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { select, number } from '@storybook/addon-knobs';
-import Icon, { iconMap } from '@codecademy/gamut/Icon';
+import Icon from '@codecademy/gamut/Icon';
+import iconMap from '@codecademy/gamut/Icon/iconMap';
 import { gamutColors } from '@codecademy/gamut-styles/variables';
 import { addonInfoOptions as options } from './options';
+import s from './Icon-story.scss';
 
 function convertCamelToSpinel(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
@@ -26,35 +28,42 @@ storiesOf('Component/Icon', module)
     'All Icons',
     withInfo({
       ...options,
+      source: false,
     })(() => (
-      <div>
+      <div className={s.grid}>
         {iconNames.map(iconName => (
-          <Icon key={iconName} name={iconName} width={64} height={64} />
+          <span className={s.iconWrapper}>
+            <Icon key={iconName} name={iconName} width={64} height={64} />
+            <span>{iconName}</span>
+          </span>
         ))}
       </div>
     ))
   )
   .add(
-    'Editable',
+    'Editable Icon',
     withInfo({
       ...options,
     })(
       () => (
         <div>
-          <Icon
-            name={select('name', iconNames, iconNames[0])}
-            width={number('width', 128)}
-            height={number('height', 128)}
-            style={{
-              color: select('color', selectableGamutColors, '#000'),
-              backgroundColor: select(
-                'backgroundColor',
-                selectableGamutColors,
-                '#fff'
-              ),
-            }}
-          />
-          <p>
+          <span className={s.iconWrapper}>
+            {select('name', iconNames, iconNames[0])}
+            <Icon
+              name={select('name', iconNames, iconNames[0])}
+              width={number('width', 128)}
+              height={number('height', 128)}
+              style={{
+                color: select('color', selectableGamutColors, '#000'),
+                backgroundColor: select(
+                  'backgroundColor',
+                  selectableGamutColors,
+                  '#fff'
+                ),
+              }}
+            />
+          </span>
+          <p className={s.note}>
             <em>
               Note: Both color and backgroundColor should be adjusted with CSS
               classes rather than inline styles.
