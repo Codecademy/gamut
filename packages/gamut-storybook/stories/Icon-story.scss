@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-auto-rows: 100px;
+  max-width: 1600;
+  min-width: 700;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.note {
+  margin: 80px 0 -79px;
+}
