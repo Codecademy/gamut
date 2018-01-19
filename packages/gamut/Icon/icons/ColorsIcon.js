@@ -10,5 +10,3 @@ export default function ColorsIcon(props) {
     </svg>
   );
 }
-
-ColorsIcon.iconName = 'colors';

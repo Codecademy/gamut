@@ -8,5 +8,3 @@ export default function LearnIcon(props) {
     </svg>
   );
 }
-
-LearnIcon.iconName = 'learn';

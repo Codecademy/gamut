@@ -9,5 +9,3 @@ export default function CSSIcon(props) {
     </svg>
   );
 }
-
-CSSIcon.iconName = 'css';

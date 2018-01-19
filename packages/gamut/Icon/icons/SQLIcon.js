@@ -10,5 +10,3 @@ export default function SQLIcon(props) {
     </svg>
   );
 }
-
-SQLIcon.iconName = 'sql';

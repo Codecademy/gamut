@@ -11,5 +11,3 @@ export default function PandasIcon(props) {
     </svg>
   );
 }
-
-PandasIcon.iconName = 'pandas';
