@@ -9,5 +9,3 @@ export default function JavascriptIcon(props) {
     </svg>
   );
 }
-
-JavascriptIcon.iconName = 'javascript';

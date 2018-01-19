@@ -9,5 +9,3 @@ export default function AngularIcon(props) {
     </svg>
   );
 }
-
-AngularIcon.iconName = 'angular';

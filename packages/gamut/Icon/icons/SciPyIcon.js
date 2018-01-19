@@ -9,5 +9,3 @@ export default function SciPyIcon(props) {
     </svg>
   );
 }
-
-SciPyIcon.iconName = 'sciPy';

@@ -8,5 +8,3 @@ export default function NumPyIcon(props) {
     </svg>
   );
 }
-
-NumPyIcon.iconName = 'numPy';

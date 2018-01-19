@@ -9,5 +9,3 @@ export default function RailsIcon(props) {
     </svg>
   );
 }
-
-RailsIcon.iconName = 'rails';
