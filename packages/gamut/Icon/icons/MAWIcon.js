@@ -13,5 +13,3 @@ export default function MAWIcon(props) {
     </svg>
   );
 }
-
-MAWIcon.iconName = 'maw';

@@ -11,5 +11,3 @@ export default function RubyIcon(props) {
     </svg>
   );
 }
-
-RubyIcon.iconName = 'ruby';

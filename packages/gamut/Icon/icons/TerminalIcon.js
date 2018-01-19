@@ -9,5 +9,3 @@ export default function TerminalIcon(props) {
     </svg>
   );
 }
-
-TerminalIcon.iconName = 'terminal';

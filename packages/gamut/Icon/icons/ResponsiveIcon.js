@@ -22,5 +22,3 @@ export default function ResponsiveIcon(props) {
     </svg>
   );
 }
-
-ResponsiveIcon.iconName = 'responsive';

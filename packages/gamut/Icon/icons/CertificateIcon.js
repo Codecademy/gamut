@@ -8,5 +8,3 @@ export default function CertificateIcon(props) {
     </svg>
   );
 }
-
-CertificateIcon.iconName = 'certificate';

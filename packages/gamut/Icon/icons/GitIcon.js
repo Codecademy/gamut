@@ -8,5 +8,3 @@ export default function GitIcon(props) {
     </svg>
   );
 }
-
-GitIcon.iconName = 'git';
