@@ -8,5 +8,3 @@ export default function AlexaIcon(props) {
     </svg>
   );
 }
-
-AlexaIcon.iconName = 'alexa';

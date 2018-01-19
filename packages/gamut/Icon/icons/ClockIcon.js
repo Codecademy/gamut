@@ -8,5 +8,3 @@ export default function ClockIcon(props) {
     </svg>
   );
 }
-
-ClockIcon.iconName = 'clock';

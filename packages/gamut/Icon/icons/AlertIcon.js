@@ -8,5 +8,3 @@ export default function AlertIcon(props) {
     </svg>
   );
 }
-
-AlertIcon.iconName = 'alert';

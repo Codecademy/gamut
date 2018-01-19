@@ -22,5 +22,3 @@ export default function TDDIcon(props) {
     </svg>
   );
 }
-
-TDDIcon.iconName = 'tdd';

@@ -9,5 +9,3 @@ export default function PythonIcon(props) {
     </svg>
   );
 }
-
-PythonIcon.iconName = 'python';

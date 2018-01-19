@@ -8,5 +8,3 @@ export default function SyllabusIcon(props) {
     </svg>
   );
 }
-
-SyllabusIcon.iconName = 'syllabus';
