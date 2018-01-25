@@ -5,7 +5,7 @@ import { text } from '@storybook/addon-knobs';
 
 storiesOf('Component/Spinner', module).add(
   'Spinner',
-  () => <Spinner fill={text('Fill', 'black')} size={text('Size', '1rem')} />,
+  () => <Spinner fill={text('Fill', 'black')} size={text('Size', '1rem')} v2 />,
   {
     inline: true,
     propTables: false,
