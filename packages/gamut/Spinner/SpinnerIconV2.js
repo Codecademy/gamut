@@ -1,21 +1,34 @@
 import React from 'react';
 
 const SpinnerIcon = props => (
-  <svg viewBox="-1 -1 100 100" {...props}>
-    <path d="M0 0 h 10 v 10 h -10 Z" fill="none" stroke="black" />
-    <path d="M10 10 h 30 v 30 h -30 Z" fill="none" stroke="black" />
-    <path d="M40 40 h 50 v 50 h -50 Z" fill="none" stroke="black" />
+  <svg viewBox="0 0 100 100" {...props}>
+    <defs>
+      <linearGradient id="spinner-stroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="currentColor" stopOpacity="0" />
+        <stop offset="1" stopColor="currentColor" />
+      </linearGradient>
+    </defs>
+    <g fill="none">
+      <circle
+        cx="50"
+        cy="50"
+        r="40"
+        stroke="black"
+        opacity=".3"
+        strokeWidth="2"
+      />
+      <path
+        d="M50 10 a 40 40 0 0 1 40 40"
+        stroke="url(#spinner-stroke)"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+    </g>
   </svg>
 );
 
 export default SpinnerIcon;
 
-// <defs>
-//   <linearGradient id="spinner-stroke" x1="0" y1="0" x2="1" y2="1">
-//     <stop offset="0" stopColor="currentColor" />
-//     <stop offset="0.8" stopColor="currentColor" stopOpacity="0.1" />
-//   </linearGradient>
-// </defs>
 // <circle
 //   cx="50"
 //   cy="50"

@@ -1,7 +1,7 @@
 .spinner {
   animation-name: spinner;
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation-timing-function: ease;
   animation-duration: 1s;
   position: relative;
   top: 0.1rem;
@@ -9,9 +9,9 @@
 
 @keyframes spinner {
   from {
-    transform: rotate(0deg);
+    transform: rotate(20deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(380deg);
   }
 }
