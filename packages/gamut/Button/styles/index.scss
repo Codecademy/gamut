@@ -49,7 +49,6 @@
 
   &.disabled,
   &:disabled {
-    transition: opacity 0.25s ease-in;
     cursor: $btn-cursor-disabled;
     opacity: 0.65;
   }

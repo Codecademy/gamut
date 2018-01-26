@@ -3,14 +3,13 @@
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-duration: 1s;
-  top: 0.1rem;
 }
 
 @keyframes spinner {
   from {
-    transform: rotate(20deg);
+    transform: rotate(0);
   }
   to {
-    transform: rotate(380deg);
+    transform: rotate(360deg);
   }
 }
