@@ -49,6 +49,7 @@
 
   &.disabled,
   &:disabled {
+    transition: opacity 0.25s ease-in;
     cursor: $btn-cursor-disabled;
     opacity: 0.65;
   }
@@ -144,17 +145,7 @@ input[type="button"] {
   }
 }
 
-@keyframes loading {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .loadingIcon {
-  animation: loading 1s infinite linear;
   position: absolute;
   margin: auto;
   left: 0;

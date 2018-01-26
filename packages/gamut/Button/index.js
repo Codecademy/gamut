@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import Icon from '../Icon';
+import Spinner from '../Spinner';
 import omitProps from '../utils/omitProps';
 import s from './styles';
 
@@ -69,13 +69,13 @@ const Button = props => {
       <a data-btn {...propsToTransfer} href={props.href} className={classes}>
         {props.loading ? (
           <span>
-            <Icon
-              name="reset"
+            <Spinner
               className={s.loadingIcon}
               width={loadingIconSize}
               height={loadingIconSize}
+              v2
             />
-            {props.children}
+            <span>{props.children}</span>
           </span>
         ) : (
           props.children
@@ -93,13 +93,8 @@ const Button = props => {
     >
       {props.loading ? (
         <span>
-          <Icon
-            name="reset"
-            className={s.loadingIcon}
-            width={loadingIconSize}
-            height={loadingIconSize}
-          />
-          <span style={{ opacity: 0.3 }}>{props.children}</span>
+          <Spinner className={s.loadingIcon} size={loadingIconSize} v2 />
+          <span>{props.children}</span>
         </span>
       ) : (
         props.children
