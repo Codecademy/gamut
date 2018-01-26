@@ -6,7 +6,8 @@ import SpinnerIcon from './SpinnerIcon';
 import SpinnerIconV2 from './SpinnerIconV2';
 
 const Spinner = ({ size, className, fill, v2 }) => {
-  const classNames = cx(s.spinner, className);
+  // const classNames = cx(s.spinner, className);
+  const classNames = cx(className);
 
   if (v2) {
     return (

@@ -3,7 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, boolean } from '@storybook/addon-knobs';
 import gamut from '@codecademy/gamut-styles/variables';
 
 import { addonInfoOptions as options } from './options';
@@ -133,6 +133,8 @@ storiesOf('Component/Button', module)
       <Button
         theme={select('THEME', themes, 'primary')}
         onClick={action('clicked')}
+        loading={boolean('loading')}
+        size={text('size', 'large')}
       >
         {text('Label', 'Submit')}
       </Button>
