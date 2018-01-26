@@ -19,6 +19,7 @@
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
+  position: relative;
 
   &,
   &:active,
@@ -141,6 +142,25 @@ input[type="button"] {
   &.block {
     width: 100%;
   }
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingIcon {
+  animation: loading 1s infinite linear;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 // "go" animation styles

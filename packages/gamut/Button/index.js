@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import Icon from '../Icon';
 import omitProps from '../utils/omitProps';
 import s from './styles';
 
@@ -27,6 +28,7 @@ const propTypes = {
   go: PropTypes.bool,
   children: PropTypes.node,
   block: PropTypes.bool,
+  loading: PropTypes.bool,
   className: PropTypes.string,
   href: PropTypes.string,
 };
@@ -60,10 +62,24 @@ const Button = props => {
 
   const propsToTransfer = omitProps(propTypes, props);
 
+  const loadingIconSize = props.size === 'large' ? 32 : 24;
+
   if (props.href) {
     return (
       <a data-btn {...propsToTransfer} href={props.href} className={classes}>
-        {props.children}
+        {props.loading ? (
+          <span>
+            <Icon
+              name="reset"
+              className={s.loadingIcon}
+              width={loadingIconSize}
+              height={loadingIconSize}
+            />
+            {props.children}
+          </span>
+        ) : (
+          props.children
+        )}
       </a>
     );
   }
@@ -72,10 +88,22 @@ const Button = props => {
     <button
       data-btn
       {...propsToTransfer}
-      disabled={props.disabled}
+      disabled={props.disabled || props.loading}
       className={classes}
     >
-      {props.children}
+      {props.loading ? (
+        <span>
+          <Icon
+            name="reset"
+            className={s.loadingIcon}
+            width={loadingIconSize}
+            height={loadingIconSize}
+          />
+          <span style={{ opacity: 0.3 }}>{props.children}</span>
+        </span>
+      ) : (
+        props.children
+      )}
     </button>
   );
 };
