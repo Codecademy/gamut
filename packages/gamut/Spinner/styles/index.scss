@@ -1,9 +1,8 @@
 .spinner {
   animation-name: spinner;
   animation-iteration-count: infinite;
-  animation-timing-function: ease;
+  animation-timing-function: linear;
   animation-duration: 1s;
-  position: relative;
   top: 0.1rem;
 }
 
