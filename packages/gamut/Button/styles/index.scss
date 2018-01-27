@@ -18,6 +18,7 @@
   border-radius: 0;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
   transition: all 0.1s ease-in-out;
+  transition: opacity 0.4s ease-out;
   font-family: $btn-font-family;
   position: relative;
 
@@ -135,6 +136,24 @@ fieldset[disabled] a.btn {
   }
 }
 
+.loadingSpinner {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 1;
+}
+
+.children {
+  transition: opacity 0.4s ease-out;
+}
+
+.loadingText {
+  opacity: 0.3;
+}
+
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],
@@ -142,15 +161,6 @@ input[type="button"] {
   &.block {
     width: 100%;
   }
-}
-
-.loadingIcon {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
 }
 
 // "go" animation styles
