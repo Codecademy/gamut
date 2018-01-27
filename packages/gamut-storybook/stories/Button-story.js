@@ -131,10 +131,20 @@ storiesOf('Component/Button', module)
       ...options,
     })(() => (
       <Button
-        theme={select('THEME', themes, 'primary')}
         onClick={action('clicked')}
+        theme={select('theme', themes, 'primary')}
+        size={select('size', ['large', 'small'], 'small')}
         loading={boolean('loading')}
-        size={text('size', 'large')}
+        disabled={boolean('disabled')}
+        focused={boolean('focused')}
+        active={boolean('active')}
+        outline={boolean('outline')}
+        underline={boolean('underline')}
+        link={boolean('link')}
+        caps={boolean('caps')}
+        go={boolean('go')}
+        block={boolean('block')}
+        href={text('href', '#')}
       >
         {text('Label', 'Submit')}
       </Button>

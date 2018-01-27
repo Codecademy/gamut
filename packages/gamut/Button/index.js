@@ -18,6 +18,7 @@ export const presetThemes = {
 const propTypes = {
   theme: PropTypes.string,
   size: PropTypes.oneOf(['large', 'small']),
+  loading: PropTypes.bool,
   disabled: PropTypes.bool,
   focused: PropTypes.bool,
   active: PropTypes.bool,
@@ -28,7 +29,6 @@ const propTypes = {
   go: PropTypes.bool,
   children: PropTypes.node,
   block: PropTypes.bool,
-  loading: PropTypes.bool,
   className: PropTypes.string,
   href: PropTypes.string,
 };
@@ -72,10 +72,10 @@ const Button = props => {
 
   const propsToTransfer = omitProps(propTypes, props);
 
-  const CompType = props.href ? 'a' : 'button';
+  const Tag = props.href ? 'a' : 'button';
 
   return (
-    <CompType
+    <Tag
       data-btn
       {...propsToTransfer}
       href={props.href}
@@ -86,7 +86,7 @@ const Button = props => {
         <Spinner className={spinnerClasses} size={spinnerSize} />
       )}
       <span className={childrenClasses}>{props.children}</span>
-    </CompType>
+    </Tag>
   );
 };
 
