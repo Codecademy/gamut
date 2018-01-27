@@ -43,7 +43,7 @@ const Button = props => {
   const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
-  const classes = cx(
+  const buttonClasses = cx(
     typeClassName,
     themeClassName,
     s[props.size],
@@ -60,46 +60,33 @@ const Button = props => {
     props.className
   );
 
+  const childrenClasses = cx(s.children, {
+    [s.loadingText]: props.loading,
+  });
+
+  const spinnerClasses = cx(s.loadingSpinner, {
+    [s.hidden]: !props.loading,
+  });
+
+  const spinnerSize = props.size === 'large' ? '32' : '24';
+
   const propsToTransfer = omitProps(propTypes, props);
 
-  const loadingIconSize = props.size === 'large' ? 32 : 24;
-
-  if (props.href) {
-    return (
-      <a data-btn {...propsToTransfer} href={props.href} className={classes}>
-        {props.loading ? (
-          <span>
-            <Spinner
-              className={s.loadingIcon}
-              width={loadingIconSize}
-              height={loadingIconSize}
-              v2
-            />
-            <span>{props.children}</span>
-          </span>
-        ) : (
-          props.children
-        )}
-      </a>
-    );
-  }
+  const CompType = props.href ? 'a' : 'button';
 
   return (
-    <button
+    <CompType
       data-btn
       {...propsToTransfer}
+      href={props.href}
       disabled={props.disabled || props.loading}
-      className={classes}
+      className={buttonClasses}
     >
-      {props.loading ? (
-        <span>
-          <Spinner className={s.loadingIcon} size={loadingIconSize} v2 />
-          <span>{props.children}</span>
-        </span>
-      ) : (
-        props.children
+      {props.loading && (
+        <Spinner className={spinnerClasses} size={spinnerSize} />
       )}
-    </button>
+      <span className={childrenClasses}>{props.children}</span>
+    </CompType>
   );
 };
 
