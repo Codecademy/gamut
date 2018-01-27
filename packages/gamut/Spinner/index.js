@@ -37,6 +37,14 @@ function Spinner({ size, className }) {
         begin="0"
         repeatCount="indefinite"
       />
+      <animate
+        attributeType="CSS"
+        attributeName="opacity"
+        values="0;1"
+        dur=".4s"
+        repeatCount="1"
+        begin="0"
+      />
     </svg>
   );
 }
