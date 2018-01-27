@@ -32,20 +32,21 @@ const renderSwatch = (data, variablePrefix) =>
       variablePrefix,
       variableSuffix
     );
+
+    const hexcode =
+      data[variableSuffix] === 'whitesmoke' ? '#f5f5f5' : data[variableSuffix];
+
     return (
       <Container
         align="center"
         className={s.swatchContainer}
         key={sassVariableName}
       >
-        <div
-          className={s.swatch}
-          style={{ backgroundColor: data[variableSuffix] }}
-        />
+        <div className={s.swatch} style={{ backgroundColor: hexcode }} />
         <div>
           <span className={s.name}>{sassVariableName}</span>
           <br />
-          <span className={s.hexcode}>{data[variableSuffix]}</span>
+          <span className={s.hexcode}>{hexcode}</span>
         </div>
       </Container>
     );
