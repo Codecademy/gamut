@@ -74,6 +74,9 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="secondary" size="small" href="#">
           Small
         </Button>
+        <Button style={btnStyle} theme="primary" loading>
+          Loading
+        </Button>
         <Button style={btnStyle} theme="primary" disabled>
           Disabled
         </Button>
