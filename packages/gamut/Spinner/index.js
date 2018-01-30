@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 const propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
-  fill: PropTypes.string,
 };
 
 const defaultProps = {
   size: '16px',
-  fill: '#FFFFFF',
 };
 
 function Spinner({ size, className }) {
