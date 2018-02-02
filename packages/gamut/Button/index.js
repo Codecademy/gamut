@@ -15,6 +15,7 @@ export const presetThemes = {
 };
 
 const propTypes = {
+  unstyled: PropTypes.bool,
   theme: PropTypes.string,
   size: PropTypes.oneOf(['large', 'small']),
   disabled: PropTypes.bool,
@@ -38,25 +39,30 @@ const Button = props => {
     theme = presetThemes[theme];
   }
 
-  const typeClassName = props.link ? s.link : s.btn;
+  const typeClassName = props.link ? s.link : `${s.btn} ${s.btnReset}`;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
-  const classes = cx(
-    typeClassName,
-    themeClassName,
-    s[props.size],
-    {
-      [s.active]: props.active,
-      [s.focus]: props.focused,
-      [s.block]: props.block,
-      [s.go]: props.go,
-      [s.disabled]: props.disabled,
-      [s.outline]: props.outline,
-      [s.underline]: props.underline,
-      [s.caps]: props.caps,
-    },
-    props.className
-  );
+  let classes;
+  if (props.unstyled) {
+    classes = cx(props.link ? s.link : s.btnReset, props.className);
+  } else {
+    classes = cx(
+      typeClassName,
+      themeClassName,
+      s[props.size],
+      {
+        [s.active]: props.active,
+        [s.focus]: props.focused,
+        [s.block]: props.block,
+        [s.go]: props.go,
+        [s.disabled]: props.disabled,
+        [s.outline]: props.outline,
+        [s.underline]: props.underline,
+        [s.caps]: props.caps,
+      },
+      props.className
+    );
+  }
 
   const propsToTransfer = omitProps(propTypes, props);
 

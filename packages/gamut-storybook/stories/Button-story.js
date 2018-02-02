@@ -56,6 +56,9 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="white" href="#">
           White
         </Button>
+        <Button style={btnStyle} unstyled>
+          Unstyled
+        </Button>
       </div>
     ))
   )
@@ -115,13 +118,22 @@ storiesOf('Component/Button', module)
       text: '',
       ...options,
     })(() => (
-      <p>
-        This is an example of a{' '}
-        <Button theme="primary" link href="#">
-          Link
-        </Button>{' '}
-        style button.
-      </p>
+      <div>
+        <p>
+          This is an example of a{' '}
+          <Button theme="primary" link href="#">
+            Link
+          </Button>{' '}
+          style button.
+        </p>
+        <p>
+          This is an example of an unstyled{' '}
+          <Button unstyled link href="#">
+            Link
+          </Button>{' '}
+          button.
+        </p>
+      </div>
     ))
   )
   .add(

@@ -5,20 +5,14 @@
 // Base styles
 //
 
-.btn {
+.btnReset {
   display: inline-block;
-  font-weight: $btn-font-weight;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
   user-select: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
-  transition: all 0.1s ease-in-out;
-  font-family: $btn-font-family;
 
   &,
   &:active,
@@ -51,6 +45,15 @@
     cursor: $btn-cursor-disabled;
     opacity: 0.65;
   }
+}
+
+.btn {
+  font-weight: $btn-font-weight;
+  border: 1px solid transparent;
+  border-radius: 0;
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
+  transition: all 0.1s ease-in-out;
+  font-family: $btn-font-family;
 }
 
 // Future-proof disabling of clicks on `<a>` elements
