@@ -5,8 +5,6 @@ import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 
 class Tabs extends React.Component {
-  static defaultProps = {};
-
   static propTypes = {
     activeTabIndex: PropTypes.number,
     children: PropTypes.arrayOf(PropTypes.node),

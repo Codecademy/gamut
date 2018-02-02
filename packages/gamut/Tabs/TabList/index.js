@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
 
+const propTypes = {
+  createBaseId: PropTypes.func.isRequired,
+  activeTabIndex: PropTypes.number.isRequired,
+  updateTabIndex: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  maxWidth: PropTypes.string,
+  center: PropTypes.bool,
+};
+
 const TabList = ({
   children,
   activeTabIndex,
@@ -26,16 +38,6 @@ const TabList = ({
   );
 };
 
-TabList.propTypes = {
-  createBaseId: PropTypes.func,
-  activeTabIndex: PropTypes.number,
-  updateTabIndex: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
-  maxWidth: PropTypes.string,
-  center: PropTypes.bool,
-};
+TabList.propTypes = propTypes;
 
 export default TabList;

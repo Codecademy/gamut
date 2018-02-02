@@ -3,6 +3,16 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
 
+const propTypes = {
+  active: PropTypes.bool,
+  updateTabIndex: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  id: PropTypes.string.isRequired,
+};
+
 const Tab = ({ children, active, updateTabIndex, id }) => {
   const tabLinkClasses = cx(s.tab, { [s.active]: active });
 
@@ -30,14 +40,6 @@ const Tab = ({ children, active, updateTabIndex, id }) => {
   );
 };
 
-Tab.propTypes = {
-  active: PropTypes.bool,
-  updateTabIndex: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  id: PropTypes.string,
-};
+Tab.propTypes = propTypes;
 
 export default Tab;

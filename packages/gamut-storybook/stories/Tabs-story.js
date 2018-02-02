@@ -52,12 +52,13 @@ storiesOf('Component/Tabs', module)
   .add(
     'Tabs (Uncontrolled)',
     withInfo({
-      text: `When no **activeTabIndex** prop is provided, the component uses internal state.`,
+      text: `When no **activeTabIndex** prop is provided, the component uses internal state.
+        You can use the \`defaultActiveTabIndex\` property to start the active tab on a certain index.`,
       ...options,
     })(() => (
       <Tabs
         renderAllPanels={boolean('renderAllPanels', false)}
-        defaultActiveTabIndex={number('defaultActiveTabIndex', 1)}
+        defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
         onChange={function noop() {}}
       >
         <TabList>
