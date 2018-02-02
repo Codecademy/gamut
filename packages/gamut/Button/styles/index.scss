@@ -5,48 +5,6 @@
 // Base styles
 //
 
-.btnReset {
-  display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      // Default
-      // outline: thin dotted;
-      // outline-offset: -2px;
-      outline: none; // disabled
-    }
-  }
-
-  &:hover:focus {
-    text-decoration: none;
-  }
-  &.focus,
-  &:focus {
-    text-decoration: none;
-  }
-
-  &:active,
-  &.active {
-    background-image: none;
-    outline: 0;
-  }
-
-  &.disabled,
-  &:disabled {
-    cursor: $btn-cursor-disabled;
-    opacity: 0.65;
-  }
-}
-
 .btn {
   font-weight: $btn-font-weight;
   border: 1px solid transparent;
@@ -82,39 +40,6 @@ fieldset[disabled] a.btn {
 .small {
   // line-height: ensure proper height of button next to small input
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm);
-}
-
-.link {
-  text-decoration: none;
-
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-  }
-  &,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
-  &:hover,
-  &:focus {
-    opacity: 0.7;
-    text-decoration: none;
-    border-color: transparent;
-    background-color: transparent;
-  }
-  &:hover:focus {
-    opacity: 0.7;
-    background-color: transparent;
-  }
-  &:disabled {
-    &:hover:focus {
-      opacity: 0.7;
-      text-decoration: none;
-    }
-  }
 }
 
 //

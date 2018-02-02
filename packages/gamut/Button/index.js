@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-
+import BasicButton from '../BasicButton';
 import omitProps from '../utils/omitProps';
 import s from './styles';
 
@@ -15,12 +15,8 @@ export const presetThemes = {
 };
 
 const propTypes = {
-  unstyled: PropTypes.bool,
   theme: PropTypes.string,
   size: PropTypes.oneOf(['large', 'small']),
-  disabled: PropTypes.bool,
-  focused: PropTypes.bool,
-  active: PropTypes.bool,
   outline: PropTypes.bool,
   underline: PropTypes.bool,
   link: PropTypes.bool,
@@ -39,50 +35,29 @@ const Button = props => {
     theme = presetThemes[theme];
   }
 
-  const typeClassName = props.link ? s.link : `${s.btn} ${s.btnReset}`;
+  const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
-  let classes;
-  if (props.unstyled) {
-    classes = cx(props.link ? s.link : s.btnReset, props.className);
-  } else {
-    classes = cx(
-      typeClassName,
-      themeClassName,
-      s[props.size],
-      {
-        [s.active]: props.active,
-        [s.focus]: props.focused,
-        [s.block]: props.block,
-        [s.go]: props.go,
-        [s.disabled]: props.disabled,
-        [s.outline]: props.outline,
-        [s.underline]: props.underline,
-        [s.caps]: props.caps,
-      },
-      props.className
-    );
-  }
+  const classes = cx(
+    typeClassName,
+    themeClassName,
+    s[props.size],
+    {
+      [s.block]: props.block,
+      [s.go]: props.go,
+      [s.outline]: props.outline,
+      [s.underline]: props.underline,
+      [s.caps]: props.caps,
+    },
+    props.className
+  );
 
   const propsToTransfer = omitProps(propTypes, props);
 
-  if (props.href) {
-    return (
-      <a data-btn {...propsToTransfer} href={props.href} className={classes}>
-        {props.children}
-      </a>
-    );
-  }
-
   return (
-    <button
-      data-btn
-      {...propsToTransfer}
-      disabled={props.disabled}
-      className={classes}
-    >
+    <BasicButton {...propsToTransfer} className={classes}>
       {props.children}
-    </button>
+    </BasicButton>
   );
 };
 
