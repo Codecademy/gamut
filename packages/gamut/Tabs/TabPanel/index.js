@@ -2,6 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles';
 
+const propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  id: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  renderAllPanels: PropTypes.bool,
+};
+
 const TabPanel = ({ children, active, renderAllPanels, id }) => (
   <div
     id={id}
@@ -13,18 +23,6 @@ const TabPanel = ({ children, active, renderAllPanels, id }) => (
   </div>
 );
 
-TabPanel.defaultProps = {
-  id: '',
-};
-
-TabPanel.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
-  id: PropTypes.string,
-  active: PropTypes.bool,
-  renderAllPanels: PropTypes.bool,
-};
+TabPanel.propTypes = propTypes;
 
 export default TabPanel;
