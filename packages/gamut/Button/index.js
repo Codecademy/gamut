@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import Spinner from '../Spinner';
 import omitProps from '../utils/omitProps';
 import s from './styles';
 
@@ -18,7 +17,6 @@ export const presetThemes = {
 const propTypes = {
   theme: PropTypes.string,
   size: PropTypes.oneOf(['large', 'small']),
-  loading: PropTypes.bool,
   disabled: PropTypes.bool,
   focused: PropTypes.bool,
   active: PropTypes.bool,
@@ -43,7 +41,7 @@ const Button = props => {
   const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
 
-  const buttonClasses = cx(
+  const classes = cx(
     typeClassName,
     themeClassName,
     s[props.size],
@@ -60,33 +58,25 @@ const Button = props => {
     props.className
   );
 
-  const childrenClasses = cx(s.children, {
-    [s.loadingText]: props.loading,
-  });
-
-  const spinnerClasses = cx(s.loadingSpinner, {
-    [s.hidden]: !props.loading,
-  });
-
-  const spinnerSize = props.size === 'large' ? '32' : '24';
-
   const propsToTransfer = omitProps(propTypes, props);
 
-  const Tag = props.href ? 'a' : 'button';
+  if (props.href) {
+    return (
+      <a data-btn {...propsToTransfer} href={props.href} className={classes}>
+        {props.children}
+      </a>
+    );
+  }
 
   return (
-    <Tag
+    <button
       data-btn
       {...propsToTransfer}
-      href={props.href}
-      disabled={props.disabled || props.loading}
-      className={buttonClasses}
+      disabled={props.disabled}
+      className={classes}
     >
-      {props.loading && (
-        <Spinner className={spinnerClasses} size={spinnerSize} />
-      )}
-      <span className={childrenClasses}>{props.children}</span>
-    </Tag>
+      {props.children}
+    </button>
   );
 };
 

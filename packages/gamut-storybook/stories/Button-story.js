@@ -3,7 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
-import { select, text, boolean } from '@storybook/addon-knobs';
+import { select, text } from '@storybook/addon-knobs';
 import gamut from '@codecademy/gamut-styles/variables';
 
 import { addonInfoOptions as options } from './options';
@@ -74,9 +74,6 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="secondary" size="small" href="#">
           Small
         </Button>
-        <Button style={btnStyle} theme="primary" loading>
-          Loading
-        </Button>
         <Button style={btnStyle} theme="primary" disabled>
           Disabled
         </Button>
@@ -134,20 +131,8 @@ storiesOf('Component/Button', module)
       ...options,
     })(() => (
       <Button
+        theme={select('THEME', themes, 'primary')}
         onClick={action('clicked')}
-        theme={select('theme', themes, 'primary')}
-        size={select('size', ['large', 'small'], 'small')}
-        loading={boolean('loading')}
-        disabled={boolean('disabled')}
-        focused={boolean('focused')}
-        active={boolean('active')}
-        outline={boolean('outline')}
-        underline={boolean('underline')}
-        link={boolean('link')}
-        caps={boolean('caps')}
-        go={boolean('go')}
-        block={boolean('block')}
-        href={text('href', '#')}
       >
         {text('Label', 'Submit')}
       </Button>
