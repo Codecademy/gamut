@@ -17,8 +17,7 @@
   border: 1px solid transparent;
   border-radius: 0;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
-  transition: all 0.1s ease-in-out;
-  transition: opacity 0.4s ease-out;
+  transition: all 0.1s ease-in-out, opacity 0.4s ease-out;
   font-family: $btn-font-family;
   position: relative;
 
