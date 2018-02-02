@@ -17,9 +17,8 @@
   border: 1px solid transparent;
   border-radius: 0;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
-  transition: all 0.1s ease-in-out, opacity 0.4s ease-out;
+  transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
-  position: relative;
 
   &,
   &:active,
@@ -133,24 +132,6 @@ fieldset[disabled] a.btn {
   &:focus {
     text-decoration: underline;
   }
-}
-
-.loadingSpinner {
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  opacity: 1;
-}
-
-.children {
-  transition: opacity 0.4s ease-out;
-}
-
-.loadingText {
-  opacity: 0.3;
 }
 
 // Specificity overrides
