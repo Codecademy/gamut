@@ -3,6 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
+import BasicButton from '@codecademy/gamut/BasicButton';
 import { select, text } from '@storybook/addon-knobs';
 import gamut from '@codecademy/gamut-styles/variables';
 
@@ -56,6 +57,25 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="white" href="#">
           White
         </Button>
+      </div>
+    ))
+  )
+  .add(
+    'Basic Variants',
+    withInfo({
+      ...options,
+    })(() => (
+      <div>
+        <div>
+          <BasicButton style={btnStyle}>
+            {text('Label', 'I am basic')}
+          </BasicButton>
+        </div>
+        <div>
+          <BasicButton style={btnStyle} href="#">
+            {text('Label', 'a basic link')}
+          </BasicButton>
+        </div>
       </div>
     ))
   )
@@ -115,13 +135,22 @@ storiesOf('Component/Button', module)
       text: '',
       ...options,
     })(() => (
-      <p>
-        This is an example of a{' '}
-        <Button theme="primary" link href="#">
-          Link
-        </Button>{' '}
-        style button.
-      </p>
+      <div>
+        <p>
+          This is an example of a{' '}
+          <Button theme="primary" link href="#">
+            Link
+          </Button>{' '}
+          style button.
+        </p>
+        <p>
+          This is an example of an unstyled{' '}
+          <Button unstyled link href="#">
+            Link
+          </Button>{' '}
+          button.
+        </p>
+      </div>
     ))
   )
   .add(
