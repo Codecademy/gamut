@@ -6,7 +6,7 @@ import s from './styles';
 const propTypes = {
   active: PropTypes.bool,
   tabIndex: PropTypes.number.isRequired,
-  updateTabIndex: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -14,7 +14,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-const Tab = ({ children, active, tabIndex, updateTabIndex, id }) => {
+const Tab = ({ children, active, tabIndex, onChange, id }) => {
   const tabLinkClasses = cx(s.tab, { [s.active]: active });
 
   return (
@@ -25,13 +25,13 @@ const Tab = ({ children, active, tabIndex, updateTabIndex, id }) => {
         className={tabLinkClasses}
         onClick={e => {
           e.preventDefault();
-          updateTabIndex(tabIndex);
+          onChange(tabIndex);
         }}
         onKeyDown={e => {
           // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
-            updateTabIndex(tabIndex);
+            onChange(tabIndex);
           }
         }}
       >

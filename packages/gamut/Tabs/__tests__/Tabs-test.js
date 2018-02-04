@@ -26,125 +26,132 @@ const getTabs = props => (
 );
 
 describe('Tabs', () => {
-  it('has a controlled variant', () => {
+  describe('ControlledVariant', () => {
     const updateTabIndexStub = jest.fn();
     const wrapper = mount(
-      getTabs({ activeTabIndex: 0, updateTabIndex: updateTabIndexStub })
+      getTabs({ activeTabIndex: 0, onChange: updateTabIndexStub })
     );
 
-    expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+    it('shows the proper default tab view', () => {
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
-    let activeTabPanelText = wrapper
-      .find('.tabPanel')
-      .first()
-      .text();
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
 
-    expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
+      expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
 
-    let inactiveTabPanelText = wrapper
-      .find('.tabPanel')
-      .last()
-      .text();
-    expect(inactiveTabPanelText).toBe('');
-
-    wrapper
-      .find('.tab')
-      .last()
-      .props()
-      .onClick({ preventDefault() {} });
-
-    expect(updateTabIndexStub.mock.calls[0][0]).toBe(2);
-
-    wrapper.setProps({
-      activeTabIndex: 2,
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
     });
 
-    expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+    it('responds to prop update', () => {
+      wrapper
+        .find('.tab')
+        .last()
+        .props()
+        .onClick({ preventDefault() {} });
 
-    inactiveTabPanelText = wrapper
-      .find('.tabPanel')
-      .first()
-      .text();
-    expect(inactiveTabPanelText).toBe('');
+      expect(updateTabIndexStub.mock.calls[0][0]).toBe(2);
 
-    activeTabPanelText = wrapper
-      .find('.tabPanel')
-      .last()
-      .text();
-    expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
+      wrapper.setProps({
+        activeTabIndex: 2,
+      });
+
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
+
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+      expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
+    });
   });
 
-  it('has an uncontrolled variant', () => {
+  describe('Uncontrolled Variant', () => {
     const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
 
-    expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+    it('should show the proper default tab view', () => {
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
-    let activeTabPanelText = wrapper
-      .find('.tabPanel')
-      .last()
-      .text();
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
 
-    expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
+      expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
 
-    let inactiveTabPanelText = wrapper
-      .find('.tabPanel')
-      .first()
-      .text();
-    expect(inactiveTabPanelText).toBe('');
-
-    wrapper
-      .find('.tab')
-      .first()
-      .props()
-      .onClick({ preventDefault() {} });
-
-    expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
-
-    inactiveTabPanelText = wrapper
-      .find('.tabPanel')
-      .last()
-      .text();
-    expect(inactiveTabPanelText).toBe('');
-
-    activeTabPanelText = wrapper
-      .find('.tabPanel')
-      .first()
-      .text();
-    expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
-  });
-
-  it('can render inactive panels into the DOM if necessary (for interoperability with JS libraries like recaptcha', () => {
-    const wrapper = shallow(
-      getTabs({ activeTabIndex: 0, updateTabIndex: () => {} })
-    );
-
-    const inactivePanelHasChildren = wrapper =>
-      !!wrapper.html().match('welcome to tab 2');
-
-    expect(inactivePanelHasChildren(wrapper)).toBe(false);
-
-    wrapper.setProps({
-      renderAllPanels: true,
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
     });
 
-    expect(inactivePanelHasChildren(wrapper)).toBe(true);
-  });
-  it('calls the onChange function to notify listeners after changing tabs', () => {
-    const onChangeStub = jest.fn();
-    const wrapper = shallow(
-      getTabs({
-        activeTabIndex: 0,
-        onChange: onChangeStub,
-        updateTabIndex: () => {},
-      }),
-      { lifecycleExperimental: true }
-    );
+    it('updates state when tab changes', () => {
+      wrapper
+        .find('.tab')
+        .first()
+        .props()
+        .onClick({ preventDefault() {} });
 
-    wrapper.setProps({
-      activeTabIndex: 2,
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
+
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+      expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
     });
 
-    expect(onChangeStub.mock.calls.length).toBe(1);
-    expect(onChangeStub.mock.calls[0][0]).toBe(2);
+    it('if uncontrolled, calls the onChange function with the new indexg to notify listener after changing tabs', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2, onChange }));
+
+      wrapper
+        .find('.tab')
+        .first()
+        .props()
+        .onClick({ preventDefault() {} });
+
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+
+      expect(onChange.mock.calls[0][0]).toBe(0);
+    });
+  });
+
+  describe('Tabs Functionality', () => {
+    it('can render inactive panels into the DOM if necessary (for interoperability with JS libraries like recaptcha', () => {
+      const wrapper = shallow(
+        getTabs({ activeTabIndex: 0, onChange: () => {} })
+      );
+
+      const inactivePanelHasChildren = wrapper =>
+        !!wrapper.html().match('welcome to tab 2');
+
+      expect(inactivePanelHasChildren(wrapper)).toBe(false);
+
+      wrapper.setProps({
+        renderAllPanels: true,
+      });
+
+      expect(inactivePanelHasChildren(wrapper)).toBe(true);
+    });
   });
 });

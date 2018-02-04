@@ -6,7 +6,7 @@ import s from './styles';
 const propTypes = {
   createBaseId: PropTypes.func.isRequired,
   activeTabIndex: PropTypes.number.isRequired,
-  updateTabIndex: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
@@ -18,7 +18,7 @@ const propTypes = {
 const TabList = ({
   children,
   activeTabIndex,
-  updateTabIndex,
+  onChange,
   createBaseId,
   center,
   maxWidth,
@@ -30,7 +30,7 @@ const TabList = ({
         React.cloneElement(tab, {
           active: activeTabIndex === index,
           tabIndex: index,
-          updateTabIndex,
+          onChange,
           id: createBaseId(index),
           key: index,
         })
