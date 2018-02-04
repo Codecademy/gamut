@@ -10,7 +10,7 @@ const propTypes = {
   className: PropTypes.string,
 };
 
-const BasicButton = props => {
+const ButtonBase = props => {
   const { children, href, className, link } = props;
   const propsToTransfer = omitProps(propTypes, props);
 
@@ -39,6 +39,6 @@ const BasicButton = props => {
   );
 };
 
-BasicButton.propTypes = propTypes;
+ButtonBase.propTypes = propTypes;
 
-export default BasicButton;
+export default ButtonBase;

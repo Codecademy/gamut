@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import BasicButton from '../BasicButton';
+import ButtonBase from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles';
 
@@ -54,9 +54,9 @@ const Button = props => {
   const propsToTransfer = omitProps(propTypes, props);
 
   return (
-    <BasicButton {...propsToTransfer} className={classes} link={props.link}>
+    <ButtonBase {...propsToTransfer} className={classes} link={props.link}>
       {props.children}
-    </BasicButton>
+    </ButtonBase>
   );
 };
 

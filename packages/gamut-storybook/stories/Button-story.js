@@ -3,7 +3,7 @@ import { storiesOf, action } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
-import BasicButton from '@codecademy/gamut/BasicButton';
+import ButtonBase from '@codecademy/gamut/ButtonBase';
 import { select, text } from '@storybook/addon-knobs';
 import gamut from '@codecademy/gamut-styles/variables';
 
@@ -61,25 +61,25 @@ storiesOf('Component/Button', module)
     ))
   )
   .add(
-    'Basic Variants',
+    'ButtonBase Variants',
     withInfo({
       ...options,
     })(() => (
       <div>
         <div>
-          <BasicButton style={btnStyle}>
+          <ButtonBase style={btnStyle}>
             {text('Label 1', 'I am basic')}
-          </BasicButton>
+          </ButtonBase>
         </div>
         <div>
-          <BasicButton style={btnStyle} href="#">
+          <ButtonBase style={btnStyle} href="#">
             {text('Label 2', 'a basic link')}
-          </BasicButton>
+          </ButtonBase>
         </div>
         <div>
-          <BasicButton style={btnStyle} link>
+          <ButtonBase style={btnStyle} link>
             {text('Label 3', 'a basic button styled as a link')}
-          </BasicButton>
+          </ButtonBase>
         </div>
       </div>
     ))
