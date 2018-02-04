@@ -4,7 +4,7 @@ import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
 import s from './styles';
 
-export default class Tabs extends Component {
+class Tabs extends Component {
   static propTypes = {
     config: PropTypes.arrayOf(
       PropTypes.shape({
@@ -97,6 +97,11 @@ export default class Tabs extends Component {
     </div>
   );
 
+  onChange = id => {
+    if (this.props.onChange) this.props.onChange(id);
+    this.setState(() => ({ activeTabId: id }));
+  };
+
   render() {
     let activeTabId;
     // which tab should be shown right now?
@@ -119,9 +124,6 @@ export default class Tabs extends Component {
       </Wrapper>
     );
   }
-
-  onChange = id => {
-    if (this.props.onChange) this.props.onChange(id);
-    this.setState(() => ({ activeTabId: id }));
-  };
 }
+
+export default Tabs;
