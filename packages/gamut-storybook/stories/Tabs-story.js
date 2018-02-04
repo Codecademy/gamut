@@ -23,7 +23,6 @@ storiesOf('Component/Tabs', module)
       <Tabs
         renderAllPanels={boolean('renderAllPanels', false)}
         activeTabIndex={number('activeTabIndex', 0)}
-        updateTabIndex={function noop() {}}
         onChange={function noop() {}}
       >
         <TabList
