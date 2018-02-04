@@ -25,11 +25,12 @@ const TabList = ({
 }) => {
   const classes = cx(s.tabList, { [s.center]: center });
   return (
-    <ul className={classes} style={{ maxWidth: maxWidth }}>
+    <ul className={classes} style={{ maxWidth }}>
       {React.Children.map(children, (tab, index) =>
         React.cloneElement(tab, {
           active: activeTabIndex === index,
-          updateTabIndex: updateTabIndex.bind(null, index),
+          tabIndex: index,
+          updateTabIndex,
           id: createBaseId(index),
           key: index,
         })
