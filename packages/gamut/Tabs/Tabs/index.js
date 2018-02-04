@@ -8,7 +8,6 @@ class Tabs extends React.Component {
   static propTypes = {
     activeTabIndex: PropTypes.number,
     children: PropTypes.arrayOf(PropTypes.node),
-    updateTabIndex: PropTypes.func,
     renderAllPanels: PropTypes.bool,
     defaultActiveTabIndex: PropTypes.number,
     onChange: PropTypes.func,
@@ -20,13 +19,6 @@ class Tabs extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (!this.props.onChange) {
-      return;
-    }
-    const propsIndexChanged =
-      this.props.activeTabIndex !== undefined &&
-      this.props.activeTabIndex !== prevProps.activeTabIndex;
-    if (propsIndexChanged) {
-      this.props.onChange(this.props.activeTabIndex);
       return;
     }
 
@@ -45,7 +37,7 @@ class Tabs extends React.Component {
 
   isControlled = () => isNumber(this.props.activeTabIndex);
 
-  updateTabIndex = index => {
+  updateTabIndexState = index => {
     this.setState({ activeTabIndex: index });
   };
 
@@ -54,13 +46,13 @@ class Tabs extends React.Component {
       ? this.props.activeTabIndex
       : this.state.activeTabIndex;
 
-    const updateTabIndex = this.isControlled()
-      ? this.props.updateTabIndex
-      : this.updateTabIndex;
+    const onChange = this.isControlled()
+      ? this.props.onChange
+      : this.updateTabIndexState;
 
-    if (!updateTabIndex) {
+    if (!onChange) {
       throw new Error(
-        'Tabs component is controlled but no tab change callback (updateTabIndex) was provided'
+        'Tabs component is controlled but no tab change callback (onChange) was provided'
       );
     }
 
@@ -74,7 +66,7 @@ class Tabs extends React.Component {
     const tabListChild = childrenArray.find(c => c.type === TabList);
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
-      updateTabIndex,
+      onChange,
       createBaseId: this.createBaseId,
     });
 
