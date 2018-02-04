@@ -1,35 +1,35 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BasicButton from '../index';
+import ButtonBase from '../index';
 
-describe('<BasicButton>', () => {
+describe('<ButtonBase>', () => {
   it('allows passing an id through props', () => {
-    const wrapper = shallow(<BasicButton id="awesome" />);
+    const wrapper = shallow(<ButtonBase id="awesome" />);
     expect(wrapper.find('#awesome').length).toEqual(1);
   });
 
   it('uses an <a> tag when you pass in an href', () => {
-    const wrapper = shallow(<BasicButton href="/awesome" />);
+    const wrapper = shallow(<ButtonBase href="/awesome" />);
     expect(wrapper.find('a').length).toEqual(1);
   });
 
-  it('uses a <BasicButton> tag when you omit an href', () => {
-    const wrapper = shallow(<BasicButton />);
+  it('uses a <ButtonBase> tag when you omit an href', () => {
+    const wrapper = shallow(<ButtonBase />);
     expect(wrapper.find('button').length).toEqual(1);
   });
 
   it('combines a passed down className with the default button styles', () => {
-    const wrapper = shallow(<BasicButton className="myCoolStyle" />);
+    const wrapper = shallow(<ButtonBase className="myCoolStyle" />);
     expect(wrapper.prop('className')).toBe('basicBtn myCoolStyle');
   });
 
   it('combines a passed down className with the default button styles for a link element', () => {
-    const wrapper = shallow(<BasicButton href="#" className="myCoolStyle" />);
+    const wrapper = shallow(<ButtonBase href="#" className="myCoolStyle" />);
     expect(wrapper.prop('className')).toBe('basicBtn myCoolStyle');
   });
 
   it('uses basic styles for a link if you pass in a link prop', () => {
-    const wrapper = shallow(<BasicButton link className="myCoolStyle" />);
+    const wrapper = shallow(<ButtonBase link className="myCoolStyle" />);
     expect(wrapper.prop('className')).toBe('basicLink myCoolStyle');
   });
 });
