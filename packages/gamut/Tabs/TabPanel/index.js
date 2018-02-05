@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './styles';
 
 const propTypes = {
   children: PropTypes.oneOfType([
@@ -21,7 +20,7 @@ const TabPanel = ({ children, active, renderAllPanels, id }) => (
     id={id}
     aria-labelledby={id.replace('-panel', '')}
     style={{ display: active ? 'block' : 'none' }}
-    className={s.tabPanel}
+    className="tabPanel"
   >
     {active || renderAllPanels ? children : null}
   </div>
