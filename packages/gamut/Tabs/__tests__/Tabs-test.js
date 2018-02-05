@@ -27,12 +27,10 @@ const getTabs = props => (
 
 describe('Tabs', () => {
   describe('ControlledVariant', () => {
-    const updateTabIndexStub = jest.fn();
-    const wrapper = mount(
-      getTabs({ activeTabIndex: 0, onChange: updateTabIndexStub })
-    );
-
     it('shows the proper default tab view', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ activeTabIndex: 0, onChange }));
+
       expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
       const activeTabPanelText = wrapper
@@ -49,14 +47,17 @@ describe('Tabs', () => {
       expect(inactiveTabPanelText).toBe('');
     });
 
-    it('responds to prop update', () => {
+    it('responds to activeTabIndex prop update', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ activeTabIndex: 0, onChange }));
+
       wrapper
         .find('.tab')
         .last()
         .props()
         .onClick({ preventDefault() {} });
 
-      expect(updateTabIndexStub.mock.calls[0][0]).toBe(2);
+      expect(onChange.mock.calls[0][0]).toBe(2);
 
       wrapper.setProps({
         activeTabIndex: 2,
@@ -79,9 +80,9 @@ describe('Tabs', () => {
   });
 
   describe('Uncontrolled Variant', () => {
-    const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
-
     it('should show the proper default tab view', () => {
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
+
       expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
       const activeTabPanelText = wrapper
@@ -99,6 +100,8 @@ describe('Tabs', () => {
     });
 
     it('updates state when tab changes', () => {
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
+
       wrapper
         .find('.tab')
         .first()

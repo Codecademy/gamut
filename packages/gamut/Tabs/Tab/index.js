@@ -14,6 +14,12 @@ const propTypes = {
   id: PropTypes.string.isRequired,
 };
 
+const defaultProps = {
+  id: '',
+  tabIndex: 0,
+  onChange: () => {},
+};
+
 const Tab = ({ children, active, tabIndex, onChange, id }) => {
   const tabLinkClasses = cx(s.tab, { [s.active]: active });
 
@@ -42,5 +48,6 @@ const Tab = ({ children, active, tabIndex, onChange, id }) => {
 };
 
 Tab.propTypes = propTypes;
+Tab.defaultProps = defaultProps;
 
 export default Tab;

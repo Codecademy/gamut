@@ -15,6 +15,12 @@ const propTypes = {
   center: PropTypes.bool,
 };
 
+const defaultProps = {
+  createBaseId: () => {},
+  activeTabIndex: 0,
+  onChange: () => {},
+};
+
 const TabList = ({
   children,
   activeTabIndex,
@@ -40,5 +46,6 @@ const TabList = ({
 };
 
 TabList.propTypes = propTypes;
+TabList.defaultProps = defaultProps;
 
 export default TabList;
