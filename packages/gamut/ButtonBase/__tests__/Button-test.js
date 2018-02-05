@@ -13,7 +13,7 @@ describe('<ButtonBase>', () => {
     expect(wrapper.find('a').length).toEqual(1);
   });
 
-  it('uses a <ButtonBase> tag when you omit an href', () => {
+  it('uses a button tag when you omit an href', () => {
     const wrapper = shallow(<ButtonBase />);
     expect(wrapper.find('button').length).toEqual(1);
   });

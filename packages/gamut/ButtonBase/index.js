@@ -16,26 +16,16 @@ const ButtonBase = props => {
 
   const baseStyle = link ? styles.basicLink : styles.basicBtn;
 
-  if (href) {
-    return (
-      <a
-        data-btn
-        {...propsToTransfer}
-        href={href}
-        className={`${baseStyle} ${className}`}
-      >
-        {children}
-      </a>
-    );
-  }
+  const BaseTag = href ? 'a' : 'button';
+
   return (
-    <button
+    <BaseTag
       data-btn
       {...propsToTransfer}
       className={`${baseStyle} ${className}`}
     >
       {children}
-    </button>
+    </BaseTag>
   );
 };
 
