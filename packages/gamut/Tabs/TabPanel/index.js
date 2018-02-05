@@ -12,6 +12,10 @@ const propTypes = {
   renderAllPanels: PropTypes.bool,
 };
 
+const defaultProps = {
+  id: '',
+};
+
 const TabPanel = ({ children, active, renderAllPanels, id }) => (
   <div
     id={id}
@@ -24,5 +28,6 @@ const TabPanel = ({ children, active, renderAllPanels, id }) => (
 );
 
 TabPanel.propTypes = propTypes;
+TabPanel.defaultProps = defaultProps;
 
 export default TabPanel;

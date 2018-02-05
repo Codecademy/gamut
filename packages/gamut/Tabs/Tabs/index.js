@@ -18,13 +18,9 @@ class Tabs extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (!this.props.onChange) {
-      return;
-    }
-
     const stateIndexChanged =
       this.state.activeTabIndex !== prevState.activeTabIndex;
-    if (stateIndexChanged) {
+    if (stateIndexChanged && this.props.onChange) {
       this.props.onChange(this.state.activeTabIndex);
     }
   }
