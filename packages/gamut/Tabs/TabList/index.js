@@ -7,10 +7,7 @@ const propTypes = {
   createBaseId: PropTypes.func.isRequired,
   activeTabIndex: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]).isRequired,
+  children: PropTypes.node.isRequired,
   maxWidth: PropTypes.string,
   center: PropTypes.bool,
 };

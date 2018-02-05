@@ -7,7 +7,7 @@ import TabList from '../TabList';
 class Tabs extends React.Component {
   static propTypes = {
     activeTabIndex: PropTypes.number,
-    children: PropTypes.arrayOf(PropTypes.node),
+    children: PropTypes.node.isRequired,
     renderAllPanels: PropTypes.bool,
     defaultActiveTabIndex: PropTypes.number,
     onChange: PropTypes.func,
