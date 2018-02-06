@@ -11,7 +11,7 @@ storiesOf('Component/Tabs', module)
     'Tabs (Controlled)',
     withInfo({
       text: `
-        The \`activeTabIndex\` prop and \`onChange\` callback function prop are required for controlled tabs.
+        The **activeTabIndex**  prop and **onChange** callback function prop are required for controlled tabs.
         The accessibility implementation was taken from [this article](https://simplyaccessible.com/article/danger-aria-tabs/)
         `,
       ...options,
@@ -47,8 +47,8 @@ storiesOf('Component/Tabs', module)
   .add(
     'Tabs (Uncontrolled)',
     withInfo({
-      text: `When no \`activeTabIndex\` prop is provided, the component uses internal state.
-        You can use the \`defaultActiveTabIndex\` property to start the active tab on a certain index, and you can still provide an \`onChange\` callback prop to be notified of tab changes.`,
+      text: `When no **activeTabIndex** prop is provided, the component uses internal state.
+        You can use the **defaultActiveTabIndex** property to start the active tab on a certain index, and you can still provide an **onChange** callback prop to be notified of tab changes.`,
       ...options,
     })(() => (
       <Tabs
