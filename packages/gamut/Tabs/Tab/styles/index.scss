@@ -1,0 +1,52 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$tab-color: $gamut-purple;
+$tab-border-radius: 0.25rem;
+
+.tabListItem {
+  list-style-type: none;
+  flex: 1;
+  min-width: 6rem;
+  max-width: 20rem;
+  &:first-of-type a {
+    border-top-left-radius: $tab-border-radius;
+    border-bottom-left-radius: $tab-border-radius;
+    border-left: 1px solid $tab-color;
+  }
+  &:last-of-type a {
+    border-top-right-radius: $tab-border-radius;
+    border-bottom-right-radius: $tab-border-radius;
+  }
+}
+.tab {
+  display: block;
+  border: 1px solid $tab-color;
+  border-left: 0;
+  padding: 0.5rem;
+  color: $tab-color;
+  text-decoration: none;
+  text-align: center;
+  transition: color 0.2s, background-color 0.2s;
+  outline: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: $gamut-purple-100;
+  }
+}
+
+.active {
+  color: $color-white;
+  background-color: $tab-color;
+  &:hover,
+  &:focus {
+    background-color: $tab-color;
+    color: $color-white;
+  }
+  &:focus {
+    background-color: darken($tab-color, 10%);
+  }
+}
