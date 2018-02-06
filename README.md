@@ -31,6 +31,7 @@ _Follow these steps when you need to make changes to Gamut that are immediately 
 3. Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
 4. Run `yarn` in the Codecademy repo.
 5. You should be accessing your local version of Gamut.
+6. If you make an update to Gamut, you will have to run yarn in your local repo again.
 
 ### Publishing the modules
 
