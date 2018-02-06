@@ -26,32 +26,27 @@
     text-decoration: none;
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
   }
 
-  &:active,
-  &.active {
+  &:active {
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
 
     &:hover,
-    &:focus,
-    &.focus {
+    &:focus {
       color: $color;
       background-color: $active-background-hover;
       border-color: $active-border-hover;
     }
   }
 
-  &.disabled,
   &:disabled {
-    &:focus,
-    &.focus {
+    &:focus {
       background-color: $background;
       border-color: $border;
     }
@@ -69,9 +64,7 @@
   border-color: $color;
 
   &:focus,
-  &.focus,
-  &:active,
-  &.active {
+  &:active {
     color: lighten($color, $btn-outline-state-modifier);
     border-color: lighten($color, $btn-outline-state-modifier);
   }
@@ -80,10 +73,8 @@
     border-color: lighten($color, $btn-outline-state-modifier);
   }
 
-  &.disabled,
   &:disabled {
-    &:focus,
-    &.focus {
+    &:focus {
       border-color: lighten($color, $btn-outline-state-modifier);
     }
     &:hover {
