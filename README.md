@@ -28,7 +28,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 _Follow these steps when you need to make changes to Gamut that are immediately reflected in the Codecademy app (e.g. for QAing a Gamut component)._
 
 1. Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
-3. Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located)
+3. Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
 4. Run `yarn` in the Codecademy repo.
 5. You should be accessing your local version of Gamut.
 
