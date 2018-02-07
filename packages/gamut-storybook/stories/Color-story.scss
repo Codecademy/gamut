@@ -1,3 +1,5 @@
+$border-color: #333;
+
 .heading {
   font-size: 22px;
   font-weight: 400;
@@ -17,7 +19,7 @@
   &:last-of-type {
     .swatch {
       border-radius: 0 0 8px 8px;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $border-color;
     }
   }
 }
@@ -25,7 +27,7 @@
 .swatch {
   height: 64px;
   width: 104px;
-  border: 1px solid black;
+  border: 1px solid $border-color;
   border-bottom: 0;
   margin-right: 8px;
 }
