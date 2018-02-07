@@ -25,13 +25,13 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ### Cross-package development
 
-_Follow these steps when you need to make changes to Gamut that are immediately reflected in the Codecademy app._
-1. Install `npm-sync` with `yarn global add npm-sync`
-2. Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
-3. Run `npm-sync ../gamut/packages/gamut` (targeting wherever the gamut _child package_ is located)
-4. Any changes to `gamut/packages/gamut` will trigger a reinstall in the Codecademy app. Note that checking out another git branch inside of `gamut/packages/gamut` may break this flow - you'll have to re-sync starting with step 2.
-5. Commit and publish any Gamut changes as usual.
-6. Once your Gamut changes have been merged to master, submit a PR to the Codecademy app that upgrades the Gamut package version and includes any code changes for the main app.
+_Follow these steps when you need to make changes to Gamut that are immediately reflected in the Codecademy app (e.g. for QAing a Gamut component)._
+
+1. Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
+3. Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
+4. Run `yarn` in the Codecademy repo.
+5. You should be accessing your local version of Gamut.
+6. If you make an update to Gamut, you will have to run yarn in your local repo again.
 
 ### Publishing the modules
 
