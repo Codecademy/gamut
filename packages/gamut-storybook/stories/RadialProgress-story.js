@@ -8,12 +8,12 @@ const AnimationController = ({ rendering }) => (
   <div>
     {rendering ? (
       <div>
-        <RadialProgress size={'8rem'} value={[0, 25]} duration={'1s'} />
-        <RadialProgress size={'8rem'} value={[25, 66]} duration={'1s'} />
-        <RadialProgress size={'8rem'} value={[0, 90]} duration={'1s'} />
-        <RadialProgress size={'8rem'} value={[80, 100]} duration={'1s'} />
-        <RadialProgress size={'8rem'} value={[0, 100]} duration={'3s'} />
-        <RadialProgress size={'8rem'} value={[0, 100]} duration={'5s'} />
+        <RadialProgress size={'8rem'} value={[0, 25]} duration={1000} />
+        <RadialProgress size={'8rem'} value={[25, 66]} duration={1000} />
+        <RadialProgress size={'8rem'} value={[0, 90]} duration={1000} />
+        <RadialProgress size={'8rem'} value={[80, 100]} duration={1000} />
+        <RadialProgress size={'8rem'} value={[0, 100]} duration={3000} />
+        <RadialProgress size={'8rem'} value={[0, 100]} duration={5000} />
         <p>Click on the rendering checkbox, below, to reset the animations.</p>
       </div>
     ) : (

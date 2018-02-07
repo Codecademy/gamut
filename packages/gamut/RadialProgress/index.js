@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const propTypes = {
   size: PropTypes.string,
   className: PropTypes.string,
-  duration: PropTypes.string,
+  duration: PropTypes.number,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
   strokeWidth: PropTypes.string,
   strokeLinecap: PropTypes.oneOf(['round', 'butt', 'square']),
@@ -70,7 +70,7 @@ function RadialProgress({
             attributeName="stroke-dashoffset"
             from={startingValue}
             to={finalValue}
-            dur={duration}
+            dur={`${duration}ms`}
             begin="0"
             fill="freeze"
           />
