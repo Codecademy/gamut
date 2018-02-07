@@ -23,6 +23,7 @@ const ButtonBase = props => {
       data-btn
       {...propsToTransfer}
       className={`${baseStyle} ${className}`}
+      href={href}
     >
       {children}
     </BaseTag>
