@@ -2,7 +2,7 @@ export const addonInfoOptions = {
   inline: true,
   source: true,
   propTables: false,
-  header: true,
+  header: false,
   styles: stylesheet => ({
     header: {
       body: {},
