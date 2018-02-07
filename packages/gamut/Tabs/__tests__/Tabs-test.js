@@ -1,198 +1,160 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Tabs from '../index';
+import { Tab, TabList, TabPanel, Tabs } from '../';
 
-describe('Accessible Tabs', () => {
-  function generateTabConfig(num, isDefault) {
-    return Array(num)
-      .fill()
-      .map((x, ind) => {
-        const displayInd = ind + 1;
-        return {
-          text: `Tab Number ${displayInd}`,
-          default: isDefault === ind,
-        };
+const getTabs = props => (
+  <Tabs {...props}>
+    <TabList>
+      <Tab>Tab 1</Tab>
+      <Tab>Tab 2</Tab>
+      <Tab>Tab 3</Tab>
+    </TabList>
+    <TabPanel>
+      <h2>welcome to tab 1</h2>
+      <p>hi i am tab 1</p>
+    </TabPanel>
+    <TabPanel>
+      <h2>welcome to tab 2</h2>
+      <p>hi i am tab 2</p>
+    </TabPanel>
+    <TabPanel>
+      <h2>welcome to tab 3</h2>
+      <p>hi i am tab 3</p>
+    </TabPanel>
+  </Tabs>
+);
+
+describe('Tabs', () => {
+  describe('ControlledVariant', () => {
+    it('shows the proper default tab view', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ activeTabIndex: 0, onChange }));
+
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+
+      expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
+
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
+    });
+
+    it('responds to activeTabIndex prop update', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ activeTabIndex: 0, onChange }));
+
+      wrapper
+        .find('.tab')
+        .last()
+        .props()
+        .onClick({ preventDefault() {} });
+
+      expect(onChange.mock.calls[0][0]).toBe(2);
+
+      wrapper.setProps({
+        activeTabIndex: 2,
       });
-  }
 
-  it('allows prop config to specify default tab and show appropriate tab panel', () => {
-    const wrapper = shallow(
-      <Tabs config={generateTabConfig(2)}>
-        <div>Tab 1</div>
-        <div>Tab 2</div>
-      </Tabs>
-    );
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
-    expect(
-      wrapper
-        .find('.tab')
-        .at(0)
-        .props().active
-    ).toBe(true);
-    expect(
-      wrapper
+      const inactiveTabPanelText = wrapper
         .find('.tabPanel')
-        .at(0)
-        .props().active
-    ).toBe(true);
-    expect(
-      wrapper
-        .find('.tab')
-        .at(1)
-        .props().active
-    ).toBe(false);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(1)
-        .props().active
-    ).toBe(false);
+        .first()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
 
-    const wrapper2 = shallow(
-      <Tabs config={generateTabConfig(2, 1)}>
-        <div>Tab 1</div>
-        <div>Tab 2</div>
-      </Tabs>
-    );
-
-    expect(
-      wrapper2
-        .find('.tab')
-        .at(0)
-        .props().active
-    ).toBe(false);
-    expect(
-      wrapper2
+      const activeTabPanelText = wrapper
         .find('.tabPanel')
-        .at(0)
-        .props().active
-    ).toBe(false);
-    expect(
-      wrapper2
-        .find('.tab')
-        .at(1)
-        .props().active
-    ).toBe(true);
-    expect(
-      wrapper2
-        .find('.tabPanel')
-        .at(1)
-        .props().active
-    ).toBe(true);
-  });
-
-  it('does not render the contents of hidden tabs', () => {
-    const wrapper = shallow(
-      <Tabs config={generateTabConfig(2)}>
-        <div>Tab 1</div>
-        <div>Tab 2</div>
-      </Tabs>
-    );
-
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(0)
-        .children()
-        .html()
-    ).toBe('<div>Tab 1</div>');
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(1)
-        .children()
-        .html()
-    ).toBe('<div></div>');
-  });
-
-  it('Shows the correct tab panel on click, with proper tab highlighted via animated underline', () => {
-    const wrapper = mount(
-      <Tabs config={generateTabConfig(2)} animatedUnderlineStyle>
-        <div>Tab 1</div>
-        <div>Tab 2</div>
-      </Tabs>
-    );
-
-    // highlight first tab + show first tab panel initially
-    expect(
-      wrapper
-        .find('.tab')
-        .at(0)
-        .props()['aria-selected']
-    ).toBe(true);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(0)
-        .props().style.display
-    ).toBe(undefined);
-    expect(
-      wrapper
-        .find('.tab')
-        .at(1)
-        .props()['aria-selected']
-    ).toBe(false);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(1)
-        .props().style.display
-    ).toBe('none');
-    expect(wrapper.find('.tabIndicator').props().style).toEqual({
-      left: '0%',
-      width: '50%',
-    });
-
-    // now the second tab is active
-    wrapper
-      .find('.tab')
-      .at(1)
-      .simulate('focus');
-
-    expect(
-      wrapper
-        .find('.tab')
-        .at(0)
-        .props()['aria-selected']
-    ).toBe(false);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(0)
-        .props().style.display
-    ).toBe('none');
-    expect(
-      wrapper
-        .find('.tab')
-        .at(1)
-        .props()['aria-selected']
-    ).toBe(true);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(1)
-        .props().style.display
-    ).toBe(undefined);
-    expect(wrapper.find('.tabIndicator').props().style).toEqual({
-      left: '50%',
-      width: '50%',
+        .last()
+        .text();
+      expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
     });
   });
 
-  it('calls the onChange function provided in props when tabs change', () => {
-    const onChange = jest.fn();
-    const wrapper = mount(
-      <Tabs config={generateTabConfig(2)} onChange={onChange}>
-        <div>Tab 1</div>
-        <div>Tab 2</div>
-      </Tabs>
-    );
-    wrapper
-      .find('.tab')
-      .at(1)
-      .simulate('focus');
+  describe('Uncontrolled Variant', () => {
+    it('should show the proper default tab view', () => {
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
 
-    expect(onChange.mock.calls.length).toBe(1);
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+
+      expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
+
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
+    });
+
+    it('updates state when tab changes', () => {
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
+
+      wrapper
+        .find('.tab')
+        .first()
+        .props()
+        .onClick({ preventDefault() {} });
+
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+
+      const inactiveTabPanelText = wrapper
+        .find('.tabPanel')
+        .last()
+        .text();
+      expect(inactiveTabPanelText).toBe('');
+
+      const activeTabPanelText = wrapper
+        .find('.tabPanel')
+        .first()
+        .text();
+      expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
+    });
+
+    it('if uncontrolled, calls the onChange function with the new indexg to notify listener after changing tabs', () => {
+      const onChange = jest.fn();
+      const wrapper = mount(getTabs({ defaultActiveTabIndex: 2, onChange }));
+
+      wrapper
+        .find('.tab')
+        .first()
+        .props()
+        .onClick({ preventDefault() {} });
+
+      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+
+      expect(onChange.mock.calls[0][0]).toBe(0);
+    });
+  });
+
+  describe('Tabs Functionality', () => {
+    it('can render inactive panels into the DOM if necessary (for interoperability with JS libraries like recaptcha', () => {
+      const wrapper = shallow(
+        getTabs({ activeTabIndex: 0, onChange: () => {} })
+      );
+
+      const inactivePanelHasChildren = wrapper =>
+        !!wrapper.html().match('welcome to tab 2');
+
+      expect(inactivePanelHasChildren(wrapper)).toBe(false);
+
+      wrapper.setProps({
+        renderAllPanels: true,
+      });
+
+      expect(inactivePanelHasChildren(wrapper)).toBe(true);
+    });
   });
 });
