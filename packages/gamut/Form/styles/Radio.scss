@@ -8,7 +8,7 @@
 }
 
 .radioInput {
-  display: none;
+  @include sr-only();
 }
 
 .radioLabel {
