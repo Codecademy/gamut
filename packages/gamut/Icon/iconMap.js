@@ -52,6 +52,10 @@ const iconMap = {
   angular: AngularIcon,
   article: ArticleIcon,
   certificate: CertificateIcon,
+  chevronDown: ChevronDownIcon,
+  chevronLeft: ChevronLeftIcon,
+  chevronRight: ChevronRightIcon,
+  chevronUp: ChevronUpIcon,
   clock: ClockIcon,
   colors: ColorsIcon,
   community: CommunityIcon,
@@ -86,10 +90,6 @@ const iconMap = {
   terminal: TerminalIcon,
   type: TypeIcon,
   watson: WatsonIcon,
-  chevronDown: ChevronDownIcon,
-  chevronUp: ChevronUpIcon,
-  chevronRight: ChevronRightIcon,
-  chevronLeft: ChevronLeftIcon,
 };
 
 export default iconMap;
