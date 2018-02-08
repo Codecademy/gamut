@@ -28,8 +28,8 @@ describe('<ButtonBase>', () => {
     expect(wrapper.prop('className')).toBe('basicBtn myCoolStyle');
   });
 
-  it('uses basic styles for a link if you pass in a link prop', () => {
+  it('uses basic reset styles for a button + reset styles for a link if you pass in a link prop', () => {
     const wrapper = shallow(<ButtonBase link className="myCoolStyle" />);
-    expect(wrapper.prop('className')).toBe('basicLink myCoolStyle');
+    expect(wrapper.prop('className')).toBe('basicBtn myCoolStyle basicLink');
   });
 });
