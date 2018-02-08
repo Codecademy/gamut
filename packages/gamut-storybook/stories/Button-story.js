@@ -4,7 +4,9 @@ import { withInfo } from '@storybook/addon-info';
 
 import Button, { presetThemes } from '@codecademy/gamut/Button';
 import ButtonBase from '@codecademy/gamut/ButtonBase';
-import { select, text } from '@storybook/addon-knobs';
+import Spinner from '@codecademy/gamut/Spinner';
+import RadialProgress from '@codecademy/gamut/RadialProgress';
+import { select, text, boolean } from '@storybook/addon-knobs';
 import gamut from '@codecademy/gamut-styles/variables';
 
 import { addonInfoOptions as options } from './options';
@@ -102,6 +104,12 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} theme="primary" disabled>
           Disabled
         </Button>
+        <Button style={btnStyle} theme="primary">
+          <Spinner />&nbsp;&nbsp;Loading...
+        </Button>
+        <Button style={btnStyle} theme="secondary">
+          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+        </Button>
         <Button style={btnStyle} theme="primary" caps href="#">
           Caps
         </Button>
@@ -156,8 +164,15 @@ storiesOf('Component/Button', module)
       ...options,
     })(() => (
       <Button
-        theme={select('THEME', themes, 'primary')}
+        theme={select('theme', themes, 'primary')}
         onClick={action('clicked')}
+        size={select('size', ['small', 'large', 'undefined'], 'undefined')}
+        outline={boolean('outline', false)}
+        underline={boolean('underline', false)}
+        link={boolean('link', false)}
+        caps={boolean('caps', false)}
+        go={boolean('go', false)}
+        block={boolean('block', false)}
       >
         {text('Label', 'Submit')}
       </Button>
