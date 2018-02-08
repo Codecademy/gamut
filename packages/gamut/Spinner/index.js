@@ -7,7 +7,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: '16px',
+  size: '24',
 };
 
 function Spinner({ size, className }) {
