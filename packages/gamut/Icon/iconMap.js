@@ -39,6 +39,10 @@ import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import ChevronDownIcon from './icons/ChevronDownIcon';
+import ChevronLeftIcon from './icons/ChevronLeftIcon';
+import ChevronRightIcon from './icons/ChevronRightIcon';
+import ChevronUpIcon from './icons/ChevronUpIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
@@ -82,6 +86,10 @@ const iconMap = {
   terminal: TerminalIcon,
   type: TypeIcon,
   watson: WatsonIcon,
+  chevronDown: ChevronDownIcon,
+  chevronUp: ChevronUpIcon,
+  chevronRight: ChevronRightIcon,
+  chevronLeft: ChevronLeftIcon,
 };
 
 export default iconMap;
