@@ -24,7 +24,7 @@ $tab-border-radius: 0.25rem;
   border-left: 0;
   padding: 0.5rem;
   color: $tab-color;
-  text-decoration: none;
+  text-decoration: none !important;
   text-align: center;
   transition: color 0.2s, background-color 0.2s;
   outline: none;
