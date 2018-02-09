@@ -39,6 +39,10 @@ import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import ChevronDownIcon from './icons/ChevronDownIcon';
+import ChevronLeftIcon from './icons/ChevronLeftIcon';
+import ChevronRightIcon from './icons/ChevronRightIcon';
+import ChevronUpIcon from './icons/ChevronUpIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
@@ -48,6 +52,10 @@ const iconMap = {
   angular: AngularIcon,
   article: ArticleIcon,
   certificate: CertificateIcon,
+  chevronDown: ChevronDownIcon,
+  chevronLeft: ChevronLeftIcon,
+  chevronRight: ChevronRightIcon,
+  chevronUp: ChevronUpIcon,
   clock: ClockIcon,
   colors: ColorsIcon,
   community: CommunityIcon,
