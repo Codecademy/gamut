@@ -26,5 +26,5 @@ jobs:
           name: Build storybook
           command: |
             cd ./packages/gamut-storybook
-            yarn storybook
+            yarn build-storybook
       - run: aws s3 sync docs s3:://codecademy-styleguide/{{ .Branch }} --delete
