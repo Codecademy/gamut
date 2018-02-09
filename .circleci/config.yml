@@ -1,16 +1,16 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/node:6.11
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
       - run: sudo npm install -g yarn@1.3.2
       - run: yarn install --cache-folder .yarncache
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
             - .yarncache
@@ -22,3 +22,9 @@ jobs:
       - run:
           name: Run test suite
           command: yarn test
+      - run:
+          name: Build storybook
+          command: |
+            cd ./packages/gamut-storybook
+            yarn storybook
+      - run: aws s3 sync docs s3:://codecademy-styleguide/{{ .Branch }} --delete
