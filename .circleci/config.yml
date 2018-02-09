@@ -27,4 +27,8 @@ jobs:
           command: |
             cd ./packages/gamut-storybook
             yarn build-storybook
-      - run: aws s3 sync docs s3:://codecademy-styleguide/{{ .Branch }} --delete
+      - run:
+          name: Deploy branch to s3
+          command: |
+            pip install awscli --upgrade --user
+            aws s3 sync docs s3:://codecademy-styleguide/{{ .Branch }} --delete
