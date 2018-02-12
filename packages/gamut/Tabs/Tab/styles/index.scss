@@ -1,6 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$tab-color: $gamut-purple;
+$tab-color: $gamut-purple-600;
 $tab-border-radius: 0.25rem;
 
 .tabListItem {
@@ -24,7 +24,8 @@ $tab-border-radius: 0.25rem;
   border-left: 0;
   padding: 0.5rem;
   color: $tab-color;
-  text-decoration: none;
+  font-weight: bold;
+  text-decoration: none !important;
   text-align: center;
   transition: color 0.2s, background-color 0.2s;
   outline: none;
@@ -39,6 +40,7 @@ $tab-border-radius: 0.25rem;
 }
 
 .active {
+  -webkit-font-smoothing: antialiased;
   color: $color-white;
   background-color: $tab-color;
   &:hover,
@@ -47,6 +49,6 @@ $tab-border-radius: 0.25rem;
     color: $color-white;
   }
   &:focus {
-    background-color: darken($tab-color, 10%);
+    background-color: lighten($tab-color, 10%);
   }
 }
