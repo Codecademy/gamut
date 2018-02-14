@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const optimizeConfig = () => {
+const optimizeConfig = (options = {}) => {
+  const { uglify = {} } = options;
+
   return {
     devtool: false,
 
@@ -11,7 +13,7 @@ const optimizeConfig = () => {
       }),
       new webpack.NamedChunksPlugin(),
       new webpack.NamedModulesPlugin(),
-      new UglifyJsPlugin()
+      new UglifyJsPlugin(uglify)
     ]
   };
 };
