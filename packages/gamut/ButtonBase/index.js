@@ -15,10 +15,13 @@ const ButtonBase = props => {
   const { children, href, className, link } = props;
   const propsToTransfer = omitProps(propTypes, props);
 
-  const classes = cx(className, {
-    [styles.basicLink]: !!link,
-    [styles.basicBtn]: !link,
-  });
+  const classes = cx(
+    {
+      [styles.basicLink]: !!link,
+      [styles.basicBtn]: !link,
+    },
+    className
+  );
 
   const BaseTag = href ? 'a' : 'button';
 
