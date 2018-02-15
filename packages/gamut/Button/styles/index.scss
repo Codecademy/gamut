@@ -6,6 +6,7 @@
 //
 
 .btn {
+  display: inline-flex;
   font-weight: $btn-font-weight;
   border: 1px solid transparent;
   border-radius: 0;
@@ -47,7 +48,7 @@ fieldset[disabled] a.btn {
 //
 
 .block {
-  display: block;
+  display: flex;
   width: 100%;
 }
 
