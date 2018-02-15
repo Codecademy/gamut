@@ -13,6 +13,7 @@ const propTypes = {
 const defaultProps = {
   strokeLinecap: 'round',
   strokeWidth: '10',
+  size: '24',
 };
 
 const offsetForEmptyProgress = 260;
