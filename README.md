@@ -36,7 +36,7 @@ _Follow these steps when you need to make changes to Gamut that are immediately 
 ### Publishing the modules
 
 1. Make sure your changes have been reviewed and then merged into the `master` branch
-1. Run `lerna publish`
+1. From the `master` branch, run `lerna publish`
 
 ### Publishing the storybook
 
