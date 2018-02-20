@@ -85,6 +85,7 @@ workflows:
       - run_tests:
           requires:
             - install_yarn_dependencies
+          context: org-global
       - run_publish:
           requires:
             - run_tests
