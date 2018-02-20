@@ -9,9 +9,9 @@ const defaultProps = {
   size: '24',
 };
 
-function Spinner({ size, ...restProps }) {
+function Spinner({ size, ...props }) {
   return (
-    <svg viewBox="0 0 100 100" height={size} width={size} {...restProps}>
+    <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
       <defs>
         <linearGradient id="spinner-stroke" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="currentColor" stopOpacity="0" />

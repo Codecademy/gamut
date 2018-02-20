@@ -28,7 +28,7 @@ function RadialProgress({
   value,
   strokeLinecap,
   strokeWidth,
-  ...propsRest
+  ...props
 }) {
   const shouldAnimate = Array.isArray(value);
 
@@ -41,7 +41,7 @@ function RadialProgress({
     : convertPercentToOffset(value);
 
   return (
-    <svg viewBox="0 0 100 100" height={size} width={size} {...propsRest}>
+    <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
       <circle
         cx="50"
         cy="50"
