@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { text, number, boolean, select } from '@storybook/addon-knobs';
+import { selectableGamutColors } from './helpers';
 
 // eslint-disable-next-line
 const AnimationController = ({ rendering }) => (
@@ -34,14 +35,13 @@ storiesOf('Component/RadialProgress', module)
   .add(
     'Editable',
     () => (
-      <div style={{ color: text('color', 'black') }}>
-        <RadialProgress
-          size={text('size', '10rem')}
-          value={number('value', 30)}
-          strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
-          strokeWidth={text('strokeWidth', '10')}
-        />
-      </div>
+      <RadialProgress
+        style={{ color: select('color', selectableGamutColors, '#000') }}
+        size={text('size', '10rem')}
+        value={number('value', 30)}
+        strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
+        strokeWidth={text('strokeWidth', '10')}
+      />
     ),
     {
       inline: true,
