@@ -81,6 +81,7 @@ workflows:
       - install_yarn_dependencies:
           requires:
             - checkout_code
+          context: org-global
       - run_tests:
           requires:
             - install_yarn_dependencies
@@ -90,3 +91,4 @@ workflows:
           filters:
             branches:
               only: master
+          context: org-global
