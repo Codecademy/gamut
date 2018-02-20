@@ -4,22 +4,9 @@ import { withInfo } from '@storybook/addon-info';
 import { select, number } from '@storybook/addon-knobs';
 import Icon from '@codecademy/gamut/Icon';
 import iconMap from '@codecademy/gamut/Icon/iconMap';
-import { gamutColors } from '@codecademy/gamut-styles/variables';
+import { selectableGamutColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
-
-function convertCamelToSpinel(str) {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-}
-
-// remapping of gamut base colors that can be placed directly into the `select` knob function
-const selectableGamutColors = Object.entries(gamutColors.base).reduce(
-  (acc, [colorName, colorHex]) => {
-    acc[colorHex] = `gamut-${convertCamelToSpinel(colorName)}`;
-    return acc;
-  },
-  {}
-);
 
 const iconNames = Object.keys(iconMap);
 

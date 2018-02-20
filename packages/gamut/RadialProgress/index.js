@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   size: PropTypes.string,
-  className: PropTypes.string,
   duration: PropTypes.number,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
   strokeWidth: PropTypes.string,
@@ -25,11 +24,11 @@ const convertPercentToOffset = percent =>
 
 function RadialProgress({
   size,
-  className,
   duration,
   value,
   strokeLinecap,
   strokeWidth,
+  ...propsRest
 }) {
   const shouldAnimate = Array.isArray(value);
 
@@ -42,7 +41,7 @@ function RadialProgress({
     : convertPercentToOffset(value);
 
   return (
-    <svg viewBox="0 0 100 100" height={size} width={size} className={className}>
+    <svg viewBox="0 0 100 100" height={size} width={size} {...propsRest}>
       <circle
         cx="50"
         cy="50"
