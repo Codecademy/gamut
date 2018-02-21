@@ -67,8 +67,11 @@ jobs:
       - *resore_yarn_dependencies
       - run: sudo npm install -g yarn@1.3.2
       - run:
+          name: build storybook
+          command: yarn lerna run build
+      - run:
           name: lerna publish
-          command: $(yarn bin)/lerna publish --conventional-commits --yes
+          command: yarn lerna publish --conventional-commits --yes
 
 workflows:
   version: 2
