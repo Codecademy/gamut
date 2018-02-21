@@ -15,14 +15,15 @@ const defaultProps = {
   type: 'default',
 };
 
-function Logo({ type, ...props }) {
-  if (type === 'pro') {
-    return <CodecademyProLogo {...props} />;
-  } else if (type === 'program') {
-    return <CodecademyProgramLogo {...props} />;
-  }
+const logos = {
+  pro: CodecademyProLogo,
+  program: CodecademyProgramLogo,
+  default: CodecademyLogo,
+};
 
-  return <CodecademyLogo {...props} />;
+function Logo({ type, ...props }) {
+  const LogoTag = logos[type] || CodecademyLogo;
+  return <LogoTag {...props} />;
 }
 
 Logo.propTypes = propTypes;
