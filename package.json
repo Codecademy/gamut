@@ -12,6 +12,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint \"packages/**/*.{js,json}\"",
+    "lerna": "lerna",
     "format": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged"
   },
@@ -23,7 +24,7 @@
     "packages/*"
   ],
   "dependencies": {
-    "lerna": "^2.5.1"
+    "lerna": "^2.8.0"
   },
   "devDependencies": {
     "babel-eslint": "7.2.0",
