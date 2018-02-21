@@ -9,8 +9,7 @@
   "commands": {
     "publish": {
       "ignore": "gamut-storybook",
-      "allowBranch": "master",
-      "message": "chore(release): publish %s"
+      "allowBranch": "master"
     }
   }
 }
