@@ -14,9 +14,9 @@ references:
         - v1-repo
 
   yarn_cache_key_1: &yarn_cache_key_1
-    v1-node_dependencies-{ checksum "yarn.lock" }
+    v2-node_dependencies-{ checksum "yarn.lock" }
   yarn_cache_key_2: &yarn_cache_key_2
-    v1-node_dependencies-
+    v2-node_dependencies-
 
   resore_yarn_dependencies: &resore_yarn_dependencies
     restore_cache:
@@ -41,7 +41,7 @@ jobs:
       - *restore_repo
       - *resore_yarn_dependencies
       - run: sudo npm install yarn@1.3.2 -g
-      - run: yarn --cache-folder .yarncache
+      - run: yarn --production=false --cache-folder .yarncache
       - save_cache:
           key: *yarn_cache_key_1
           paths:
@@ -65,6 +65,7 @@ jobs:
     steps:
       - *restore_repo
       - *resore_yarn_dependencies
+      - run: yarn
       - run: sudo npm install -g yarn@1.3.2
       - run:
           name: build storybook
