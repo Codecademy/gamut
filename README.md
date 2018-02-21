@@ -52,17 +52,17 @@ Commits follow the [Angular format](https://github.com/angular/angular/blob/mast
 type(scope): Message
 
 Body
+
+Footer
 ```
 
-```
-feat(xxx): :sparkles: An awesome new feature
-
-The body is an extended description of the changes
-```
+feat(component): :sparkles: An awesome new component
 
 **Type**
 
-Must be one of the following:
+The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major releases are only created when the text `BREAKING CHANGE:` is included in the `Body` or `Footer` of the commit message.
+
+`type` must be one of the following:
 
 * **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 * **docs**: Documentation only changes
@@ -77,6 +77,12 @@ Must be one of the following:
 **Scope**
 
 Optional scope for your changes
+
+**Body**
+
+Optional extra description for your changes
+
+This is where you should describe any version breaking changes by including the text `BREAKING CHANGE:` with your description.
 
 ### Publishing the storybook
 
