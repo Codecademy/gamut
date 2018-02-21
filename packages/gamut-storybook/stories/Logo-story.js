@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { select, number } from '@storybook/addon-knobs';
 import Logo from '@codecademy/gamut/Logo';
-import { addonInfoOptions as options } from './options';
 import { selectableGamutColors } from './helpers';
+import { addonInfoOptions as options } from './options';
 
 storiesOf('Component/Logo', module).add(
   'Editable',
@@ -13,8 +13,13 @@ storiesOf('Component/Logo', module).add(
   })(
     () => (
       <Logo
-        width={number('width', Logo.defaultProps.width)}
+        width={number('width', undefined)}
         height={number('height', Logo.defaultProps.height)}
+        type={select(
+          'type',
+          ['pro', 'program', 'default'],
+          Logo.defaultProps.type
+        )}
         style={{ color: select('color', selectableGamutColors, '#000') }}
       />
     ),
