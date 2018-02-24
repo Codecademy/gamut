@@ -93,16 +93,16 @@ workflows:
       - run_tests:
           requires:
             - install_yarn_dependencies
-    publish-modules:
-      jobs:
-        - checkout_code:
-            context: org-globals
-        - install_yarn_dependencies:
-            requires:
-              - checkout_code
-        - run_publish:
-            requires:
-              - install_yarn_dependencies
-            filters:
-              branches:
-                only: master
+  publish-modules:
+    jobs:
+      - checkout_code:
+          context: org-globals
+      - install_yarn_dependencies:
+          requires:
+            - checkout_code
+      - run_publish:
+          requires:
+            - install_yarn_dependencies
+          filters:
+            branches:
+              only: master
