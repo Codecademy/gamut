@@ -1,6 +1,6 @@
 version: 2
-references:
 
+references:
   default_env: &default_env
     docker:
       - image: circleci/node:6.12.2
@@ -12,6 +12,11 @@ references:
         - v1-repo-{{ .Branch }}-{{ .Revision }}
         - v1-repo-{{ .Branch }}
         - v1-repo
+
+  set_npm_token: &set_npm_token
+    run:
+      name: Add NPM auth token file
+      command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
   yarn_cache_key_1: &yarn_cache_key_1
     v2-node_dependencies-{ checksum "yarn.lock" }
@@ -29,6 +34,7 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
+      - *set_npm_token
       - checkout
       - save_cache:
           key: v1-repo-{{ .Branch }}-{{ .Revision }}
@@ -77,21 +83,19 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  build-and-test:
     jobs:
-      - checkout_code
+      - checkout_code:
+          context: org-global
       - install_yarn_dependencies:
           requires:
             - checkout_code
-          context: org-global
       - run_tests:
           requires:
             - install_yarn_dependencies
-          context: org-global
       - run_publish:
           requires:
-            - run_tests
+            - install_yarn_dependencies
           filters:
             branches:
               only: master
-          context: org-global
