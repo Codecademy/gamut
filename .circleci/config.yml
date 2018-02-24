@@ -95,7 +95,7 @@ workflows:
             - install_yarn_dependencies
       - run_publish:
           requires:
-            - run_tests
+            - install_yarn_dependencies
           filters:
             branches:
               only: master
