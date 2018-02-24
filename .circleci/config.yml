@@ -14,7 +14,9 @@ references:
         - v1-repo
 
   set_npm_token: &set_npm_token
-    run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+    run:
+      name: Add NPM auth token file
+      command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
   yarn_cache_key_1: &yarn_cache_key_1
     v2-node_dependencies-{ checksum "yarn.lock" }
