@@ -86,7 +86,7 @@ workflows:
   build-and-test:
     jobs:
       - checkout_code:
-          context: org-globals
+          context: org-global
       - install_yarn_dependencies:
           requires:
             - checkout_code
@@ -96,7 +96,7 @@ workflows:
   publish-modules:
     jobs:
       - checkout_code:
-          context: org-globals
+          context: org-global
       - install_yarn_dependencies:
           requires:
             - checkout_code
