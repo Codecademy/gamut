@@ -9,7 +9,7 @@
     "access": "public"
   },
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "yarn build",
     "build": "eslint-reduce-config -v -f index.js -o ./dist/index.json"
   },
   "peerDependencies": {

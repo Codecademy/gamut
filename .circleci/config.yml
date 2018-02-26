@@ -75,6 +75,9 @@ jobs:
       - run: yarn --production=false --cache-folder .yarncache
       - run: sudo npm install -g yarn@1.3.2
       - run:
+          name: run prepublish
+          command: yarn lerna run prepublish
+      - run:
           name: build storybook
           command: yarn build-gamut-storybook
       - run:
