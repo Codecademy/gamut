@@ -76,7 +76,7 @@ jobs:
       - run: sudo npm install -g yarn@1.3.2
       - run:
           name: build storybook
-          command: yarn lerna run build
+          command: yarn build-gamut-storybook
       - run:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
