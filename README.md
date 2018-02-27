@@ -14,9 +14,11 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ## Local development
 
-1. Run `yarn global add lerna@2.5.1` in the root directory (check for the exact version number in `lerna.json`)
+1. Log into npm
+   - Run `npm login` with username `codecademy`; you can find the password in LastPass
+   - Running `npm whoami` should return `codecademy`
 1. Run `yarn` in the root directory
-1. Run `lerna bootstrap` to prep each package in the `packages` directory for development
+1. Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
 ### Running storybook
 
