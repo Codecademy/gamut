@@ -8,9 +8,16 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
+  "scripts": {
+    "develop-core" : "../../node_modules/.bin/node-sass core/index.scss test/index.css; ../../node_modules/.bin/http-server test/"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "node-sass": "^4.7.2"
+  }
 }
