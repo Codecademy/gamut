@@ -9,7 +9,7 @@
     "npm": ">=3.5.2"
   },
   "scripts": {
-    "develop-core" : "node-sass core/index.scss test/index.css; http-server test/"
+    "develop-core" : "../../node_modules/.bin/node-sass core/index.scss test/index.css; ../../node_modules/.bin/http-server test/"
   },
   "repository": {
     "type": "git",

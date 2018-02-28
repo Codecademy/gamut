@@ -71,9 +71,9 @@ body {
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  color: $body-color;
+  color: $color-body;
   text-align: left; // 3
-  background-color: $body-bg; // 2
+  background-color: $bg-body; // 2
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -112,7 +112,7 @@ h4,
 h5,
 h6 {
   margin-top: 0;
-  margin-bottom: $headings-margin-bottom;
+  margin-bottom: $margin-bottom-headings;
 }
 // stylelint-enable selector-list-comma-newline-after
 
@@ -122,7 +122,7 @@ h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
   margin-top: 0;
-  margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: $margin-bottom-paragraph;
 }
 
 // Abbreviations
@@ -162,7 +162,7 @@ ul ol {
 }
 
 dt {
-  font-weight: $dt-font-weight;
+  font-weight: $font-weight-dt;
 }
 
 dd {
@@ -186,7 +186,7 @@ strong {
 // stylelint-enable font-weight-notation
 
 small {
-  font-size: $small-font-size; // Add the correct font size in all browsers
+  font-size: $font-size-small; // Add the correct font size in all browsers
 }
 
 //
@@ -214,14 +214,14 @@ sup {
 //
 
 a {
-  color: $link-color;
-  text-decoration: $link-decoration;
+  color: $color-link;
+  text-decoration: $decoration-link;
   background-color: transparent; // Remove the gray background on active links in IE 10.
   -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   &:hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    color: $hover-color-link;
+    text-decoration: $hover-decoration-link;
   }
 }
 
@@ -323,7 +323,7 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: $label-margin-bottom;
+  margin-bottom: $margin-bottom-label;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
