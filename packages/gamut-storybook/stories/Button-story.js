@@ -185,22 +185,22 @@ storiesOf('Component/Button', module)
       ...options,
     })(() => (
       <div>
-        <Button style={btnStyle} curved color="yellow">
+        <Button style={btnStyle} curved theme="yellow">
           Super
         </Button>
-        <Button style={btnStyle} curved color="blue">
+        <Button style={btnStyle} curved theme="blue">
           Primary (new)
         </Button>
-        <Button style={btnStyle} curved color="blue" outline>
+        <Button style={btnStyle} curved theme="blue" outline>
           Seconary (new)
         </Button>
-        <Button style={btnStyle} curved color="blue" flat>
+        <Button style={btnStyle} curved theme="blue" flat>
           Flat
         </Button>
 
         <p>
           This is an example of a new{' '}
-          <Button color="grey" link href="#">
+          <Button theme="grey" link href="#">
             Link
           </Button>{' '}
           style button.

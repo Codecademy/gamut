@@ -6,9 +6,6 @@
 @mixin button-variant($color, $background, $border: transparent) {
   $active-background: darken($background, $btn-state-modifier);
 
-  $active-border: lighten($border, $btn-state-modifier-active);
-  $active-border-hover: lighten($border, $btn-state-modifier-active);
-
   @if $border == transparent {
     $active-border: transparent;
     $active-border-hover: transparent;
@@ -19,19 +16,20 @@
   border-color: $border;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     box-shadow: 0 1px 3px $gamut-grey-700;
   }
 
-  &:active {
+  &:active,
+  &:focus {
     color: $color;
     background-color: $active-background;
-    border-color: $active-border;
   }
 
   &:disabled {
     color: $gamut-grey-200;
-    background-color: $gamut-grey-800;
+    background-color: $btn-disabled-color;
 
     &:hover {
       box-shadow: none;
@@ -44,13 +42,14 @@
   background-color: $color-white;
   border: px-rem(2) solid $color;
 
-  &:active {
-    background-color: lighten($color, 30%);
+  &:active,
+  &:focus {
+    background-color: lighten($color, $btn-outline-state-modifier);
   }
 
   &:disabled {
-    border-color: $gamut-grey-800;
-    color: $gamut-grey-800;
+    border-color: $btn-disabled-color;
+    color: $btn-disabled-color;
     background-color: $color-white;
   }
 }
@@ -59,13 +58,15 @@
   color: $color;
   background-color: $color-white;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     box-shadow: none;
-    color: darken($color, 25%);
+    color: darken($color, $btn-state-modifier);
   }
 
   &:disabled {
-    color: $gamut-grey-800;
+    color: $btn-disabled-color;
     background-color: $color-white;
   }
 }
@@ -94,7 +95,7 @@
     text-decoration: underline;
 
     &:disabled {
-      color: $gamut-grey-800;
+      color: $btn-disabled-color;
     }
   }
 }

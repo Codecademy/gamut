@@ -27,28 +27,21 @@ const propTypes = {
   className: PropTypes.string,
   curved: PropTypes.bool,
   flat: PropTypes.bool,
-  color: PropTypes.string,
 };
 
 const Button = props => {
   let { theme = 'primary' } = props;
 
-  if (theme && presetThemes[theme] && !props.color) {
+  if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];
-  } else {
-    theme = props.theme;
   }
 
   const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
-  const colorClassName = props.link
-    ? s[`link-${props.color}`]
-    : s[`btn-${props.color}`];
 
   const classes = cx(
     typeClassName,
     themeClassName,
-    colorClassName,
     s[props.size],
     {
       [s.block]: props.block,

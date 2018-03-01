@@ -1,6 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$btn-padding-x: 1rem !default;
+$btn-padding-x: px-rem(16) !default;
 $btn-padding-y: 0.375rem !default;
 $btn-font-weight: bold !default;
 $btn-font-family: $font-oxygen;
@@ -20,12 +20,14 @@ $btn-padding-y-sm: 0.25rem !default;
 $btn-padding-x-lg: 1.25rem !default;
 $btn-padding-y-lg: 0.75rem !default;
 
-// we don't really have "active" styles,
-// so these are the same for now
-$btn-state-modifier: 8% !default;
-$btn-state-modifier-active: 8% !default;
+$btn-min-height: px-rem(128) !default;
 
-$btn-outline-state-modifier: 15% !default;
+$btn-border-radius: px-rem(2);
+
+$btn-state-modifier: 25% !default;
+$btn-outline-state-modifier: 30% !default;
+
+$btn-disabled-color: $gamut-grey-800;
 
 $btn-swatches: (
   "mint": $swatches-mint-700,
