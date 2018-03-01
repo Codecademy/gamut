@@ -6,13 +6,14 @@
 //
 
 .btn {
-  display: inline-flex;
+  display: inline;
   font-weight: $btn-font-weight;
   border: 1px solid transparent;
   border-radius: 0;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
+  min-width: px-rem(128);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -22,11 +23,18 @@ fieldset[disabled] a.btn {
 }
 
 @each $name, $color in $btn-swatches {
-  @if lightness($color) > 75 {
+  @if $name == "yellow" {
+    @include button-variants($name, $color-black, $color);
+  }
+  @elseif lightness($color) > 75 {
     @include button-variants($name, $swatches-cc-blue-700, $color);
   } @else {
     @include button-variants($name, $color-white, $color);
   }
+}
+
+.curved {
+  border-radius: px-rem(2);
 }
 
 //

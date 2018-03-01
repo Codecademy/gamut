@@ -25,6 +25,9 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
+  curved: PropTypes.bool,
+  flat: PropTypes.bool,
+  color: PropTypes.string,
 };
 
 const Button = props => {
@@ -36,10 +39,14 @@ const Button = props => {
 
   const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
+  const colorClassName = props.link
+    ? s[`link-${props.color}`]
+    : s[`btn-${props.color}`];
 
   const classes = cx(
     typeClassName,
     themeClassName,
+    colorClassName,
     s[props.size],
     {
       [s.block]: props.block,
@@ -47,6 +54,8 @@ const Button = props => {
       [s.outline]: props.outline,
       [s.underline]: props.underline,
       [s.caps]: props.caps,
+      [s.curved]: props.curved,
+      [s.flat]: props.flat,
     },
     props.className
   );

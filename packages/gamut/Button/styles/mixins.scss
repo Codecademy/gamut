@@ -4,8 +4,7 @@
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: lighten($background, $btn-state-modifier);
-  $active-background-hover: lighten($background, $btn-state-modifier-active);
+  $active-background: darken($background, $btn-state-modifier);
 
   $active-border: lighten($border, $btn-state-modifier-active);
   $active-border-hover: lighten($border, $btn-state-modifier-active);
@@ -19,40 +18,23 @@
   background-color: $background;
   border-color: $border;
 
-  &:hover {
-    color: $color;
-    background-color: $active-background;
-    border-color: $active-border;
-    text-decoration: none;
-  }
-
-  &:focus {
-    color: $color;
-    background-color: $active-background;
-    border-color: $active-border;
+  &:hover,
+  &:active {
+    box-shadow: 0 1px 3px $gamut-grey-700;
   }
 
   &:active {
     color: $color;
     background-color: $active-background;
     border-color: $active-border;
-
-    &:hover,
-    &:focus {
-      color: $color;
-      background-color: $active-background-hover;
-      border-color: $active-border-hover;
-    }
   }
 
   &:disabled {
-    &:focus {
-      background-color: $background;
-      border-color: $border;
-    }
+    color: $gamut-grey-200;
+    background-color: $gamut-grey-800;
+
     &:hover {
-      background-color: $background;
-      border-color: $border;
+      box-shadow: none;
     }
   }
 }
