@@ -44,19 +44,19 @@ storiesOf('Component/Button', module)
     })(() => (
       <div>
         <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
-        <Button style={btnStyle} theme="primary">
+        <Button style={btnStyle} theme="primary" href="#">
           Primary (red)
         </Button>
         <Button style={btnStyle} theme="secondary">
           Secondary (mint)
         </Button>
-        <Button style={btnStyle} theme="blue">
+        <Button style={btnStyle} theme="blue" href="#">
           Blue
         </Button>
         <Button style={btnStyle} theme="yellow">
           Yellow
         </Button>
-        <Button style={btnStyle} theme="white">
+        <Button style={btnStyle} theme="white" href="#">
           White
         </Button>
       </div>

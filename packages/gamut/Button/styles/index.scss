@@ -13,7 +13,7 @@
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
-  min-width: $btn-min-height;
+  min-width: $btn-min-width;
 }
 
 // Future-proof disabling of clicks on `<a>` elements
