@@ -1,4 +1,5 @@
 import AccessibilityIcon from './icons/AccessibilityIcon';
+import AddIcon from './icons/AddIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
 import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
@@ -10,6 +11,7 @@ import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import CSSIcon from './icons/CSSIcon';
 import DAWIcon from './icons/DAWIcon';
+import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
 import HTMLIcon from './icons/HTMLIcon';
@@ -21,6 +23,7 @@ import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
 import MAWIcon from './icons/MAWIcon';
 import NumPyIcon from './icons/NumPyIcon';
+import PaginatedIcon from './icons/PaginatedIcon';
 import PandasIcon from './icons/PandasIcon';
 import PHPIcon from './icons/PHPIcon';
 import ProjectIcon from './icons/ProjectIcon';
@@ -37,6 +40,8 @@ import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
+import TrophyIcon from './icons/TrophyIcon';
+import TrophyRedeemIcon from './icons/TrophyRedeemIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -46,6 +51,7 @@ import ChevronUpIcon from './icons/ChevronUpIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
+  add: AddIcon,
   advisor: AdvisorIcon,
   alert: AlertIcon,
   alexa: AlexaIcon,
@@ -61,6 +67,7 @@ const iconMap = {
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
   html: HTMLIcon,
@@ -72,6 +79,7 @@ const iconMap = {
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
   numPy: NumPyIcon,
+  paginated: PaginatedIcon,
   pandas: PandasIcon,
   php: PHPIcon,
   project: ProjectIcon,
@@ -88,6 +96,8 @@ const iconMap = {
   syllabus: SyllabusIcon,
   tdd: TDDIcon,
   terminal: TerminalIcon,
+  trophy: TrophyIcon,
+  trophyRedeem: TrophyRedeemIcon,
   type: TypeIcon,
   watson: WatsonIcon,
 };
