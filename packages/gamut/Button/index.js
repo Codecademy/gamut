@@ -35,6 +35,8 @@ const Button = props => {
 
   if (theme && presetThemes[theme] && !props.color) {
     theme = presetThemes[theme];
+  } else {
+    theme = props.theme;
   }
 
   const typeClassName = props.link ? s.link : s.btn;

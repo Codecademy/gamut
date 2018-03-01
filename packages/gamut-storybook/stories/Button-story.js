@@ -185,16 +185,16 @@ storiesOf('Component/Button', module)
       ...options,
     })(() => (
       <div>
-        <Button style={btnStyle} curved theme="super" color="yellow">
+        <Button style={btnStyle} curved color="yellow">
           Super
         </Button>
-        <Button style={btnStyle} curved theme="primary" color="blue">
+        <Button style={btnStyle} curved color="blue">
           Primary (new)
         </Button>
-        <Button style={btnStyle} curved theme="secondary" color="blue" outline>
+        <Button style={btnStyle} curved color="blue" outline>
           Seconary (new)
         </Button>
-        <Button style={btnStyle} curved theme="secondary" color="blue" flat>
+        <Button style={btnStyle} curved color="blue" flat>
           Flat
         </Button>
 
