@@ -41,27 +41,32 @@
 
 @mixin button-outline-variant($color) {
   color: $color;
-  background-image: none;
-  background-color: transparent;
-  border-color: $color;
+  background-color: $color-white;
+  border: px-rem(2) solid $color;
 
-  &:focus,
   &:active {
-    color: lighten($color, $btn-outline-state-modifier);
-    border-color: lighten($color, $btn-outline-state-modifier);
-  }
-  &:hover {
-    color: lighten($color, $btn-outline-state-modifier);
-    border-color: lighten($color, $btn-outline-state-modifier);
+    background-color: lighten($color, 30%);
   }
 
   &:disabled {
-    &:focus {
-      border-color: lighten($color, $btn-outline-state-modifier);
-    }
-    &:hover {
-      border-color: lighten($color, $btn-outline-state-modifier);
-    }
+    border-color: $gamut-grey-800;
+    color: $gamut-grey-800;
+    background-color: $color-white;
+  }
+}
+
+@mixin button-flat-variant($color) {
+  color: $color;
+  background-color: $color-white;
+
+  &:hover {
+    box-shadow: none;
+    color: darken($color, 25%);
+  }
+
+  &:disabled {
+    color: $gamut-grey-800;
+    background-color: $color-white;
   }
 }
 
@@ -78,9 +83,18 @@
     &.outline {
       @include button-outline-variant($background);
     }
+    &.flat {
+      @include button-flat-variant($background);
+    }
     @content;
   }
   .link-#{$name} {
+    font-weight: bold;
     color: $background;
+    text-decoration: underline;
+
+    &:disabled {
+      color: $gamut-grey-800;
+    }
   }
 }

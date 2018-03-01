@@ -14,6 +14,9 @@
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
   min-width: px-rem(128);
+  min-height: px-rem(40);
+  padding-right: px-rem(16);
+  padding-left: px-rem(16);
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -25,6 +28,9 @@ fieldset[disabled] a.btn {
 @each $name, $color in $btn-swatches {
   @if $name == "yellow" {
     @include button-variants($name, $color-black, $color);
+  }
+  @elseif $name == "white" {
+    @include button-variants($name, $gamut-blue-500, $color);
   }
   @elseif lightness($color) > 75 {
     @include button-variants($name, $swatches-cc-blue-700, $color);

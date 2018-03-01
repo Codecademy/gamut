@@ -44,19 +44,19 @@ storiesOf('Component/Button', module)
     })(() => (
       <div>
         <Button style={btnStyle}>{text('Label', 'Submit')}</Button>
-        <Button style={btnStyle} theme="primary" href="#">
+        <Button style={btnStyle} theme="primary">
           Primary (red)
         </Button>
         <Button style={btnStyle} theme="secondary">
           Secondary (mint)
         </Button>
-        <Button style={btnStyle} theme="blue" href="#">
+        <Button style={btnStyle} theme="blue">
           Blue
         </Button>
         <Button style={btnStyle} theme="yellow">
           Yellow
         </Button>
-        <Button style={btnStyle} theme="white" href="#">
+        <Button style={btnStyle} theme="white">
           White
         </Button>
       </div>
@@ -191,7 +191,7 @@ storiesOf('Component/Button', module)
         <Button style={btnStyle} curved theme="primary" color="blue">
           Primary (new)
         </Button>
-        <Button style={btnStyle} curved theme="secondary" color="blue">
+        <Button style={btnStyle} curved theme="secondary" color="blue" outline>
           Seconary (new)
         </Button>
         <Button style={btnStyle} curved theme="secondary" color="blue" flat>
@@ -200,7 +200,7 @@ storiesOf('Component/Button', module)
 
         <p>
           This is an example of a new{' '}
-          <Button theme="new-primary" link href="#">
+          <Button color="grey" link href="#">
             Link
           </Button>{' '}
           style button.

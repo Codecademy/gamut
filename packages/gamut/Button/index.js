@@ -33,7 +33,7 @@ const propTypes = {
 const Button = props => {
   let { theme = 'primary' } = props;
 
-  if (theme && presetThemes[theme]) {
+  if (theme && presetThemes[theme] && !props.color) {
     theme = presetThemes[theme];
   }
 
