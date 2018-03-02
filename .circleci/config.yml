@@ -13,6 +13,13 @@ references:
         - v1-repo-{{ .Branch }}
         - v1-repo
 
+  set_git_user: &set_git_user
+    run:
+      name: Set git user
+      command: |
+        git config --global user.email "dev@codecademy.com"
+        git config --global user.name "circleci"
+
   set_npm_token: &set_npm_token
     run:
       name: Add NPM auth token file
@@ -69,9 +76,7 @@ jobs:
   run_publish:
     <<: *default_env
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "c3:e1:06:83:f3:3e:7f:ef:93:10:3d:46:2d:17:06:1a"
+      - *set_git_user
       - *restore_repo
       - checkout
       - *resore_yarn_dependencies
