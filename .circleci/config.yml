@@ -79,6 +79,7 @@ jobs:
       - *set_git_user
       - *restore_repo
       - checkout
+      - *set_npm_token
       - *resore_yarn_dependencies
       - run: yarn --production=false --cache-folder .yarncache
       - run: sudo npm install -g yarn@1.3.2
@@ -102,6 +103,7 @@ workflows:
           requires:
             - install_yarn_dependencies
       - run_publish:
+          context: org-global
           requires:
             - install_yarn_dependencies
           filters:
