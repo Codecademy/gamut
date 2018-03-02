@@ -4,7 +4,7 @@ export default function ForumsIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Forums Icon</title>
-      <g fill="#000" fillRule="evenodd">
+      <g fillRule="evenodd">
         <path
           d="M8.522 5a3.043 3.043 0 1 1 0 6.087 3.043 3.043 0 0 1 0-6.087zm-.435 6.957c3.363 0 6.087 1.815 6.087 4.057v2.03H2v-2.03c0-2.242 2.724-4.057 6.087-4.057z"
           fillRule="nonzero"
