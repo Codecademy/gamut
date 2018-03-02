@@ -69,6 +69,9 @@ jobs:
   run_publish:
     <<: *default_env
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "c3:e1:06:83:f3:3e:7f:ef:93:10:3d:46:2d:17:06:1a"
       - *restore_repo
       - checkout
       - *resore_yarn_dependencies
