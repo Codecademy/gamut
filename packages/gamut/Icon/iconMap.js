@@ -41,7 +41,6 @@ import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
-import TrophyRedeemIcon from './icons/TrophyRedeemIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -97,7 +96,6 @@ const iconMap = {
   tdd: TDDIcon,
   terminal: TerminalIcon,
   trophy: TrophyIcon,
-  trophyRedeem: TrophyRedeemIcon,
   type: TypeIcon,
   watson: WatsonIcon,
 };
