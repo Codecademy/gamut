@@ -72,10 +72,6 @@ fieldset[disabled] a.btn {
   }
 }
 
-.link {
-  @include font-smoothing;
-}
-
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],

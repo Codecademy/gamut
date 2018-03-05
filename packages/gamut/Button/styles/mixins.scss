@@ -19,7 +19,7 @@
   &:hover,
   &:active,
   &:focus {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
   }
 
   &:active,
@@ -65,11 +65,13 @@
   color: $color;
   background-color: $color-white;
 
+  $active-color: darken($color, $btn-state-modifier);
+
   &:hover,
   &:active,
   &:focus {
     box-shadow: none;
-    color: darken($color, $btn-state-modifier);
+    color: $active-color;
   }
 
   &:disabled {
@@ -105,6 +107,7 @@
   }
   .link-#{$name} {
     font-weight: bold;
+    @include font-smoothing;
     color: $background;
     text-decoration: underline;
 
