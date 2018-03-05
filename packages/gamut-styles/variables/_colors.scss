@@ -1,92 +1,99 @@
 // NOTE: When updating, make sure you also update the gamut-styles/variables.js file
 
 // =======================================
+//       BASIC COLORS
+// =======================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+
+// =======================================
 //       NEW DESIGN SYSTEM SWATCHES
 // =======================================
 
 $gamut-purple-500: #69639a;
 
-$gamut-purple-100: mix(#fff, $gamut-purple-500, 80%);
-$gamut-purple-200: mix(#fff, $gamut-purple-500, 60%);
-$gamut-purple-300: mix(#fff, $gamut-purple-500, 40%);
-$gamut-purple-400: mix(#fff, $gamut-purple-500, 20%);
-$gamut-purple-600: mix(#000, $gamut-purple-500, 20%);
-$gamut-purple-700: mix(#000, $gamut-purple-500, 40%);
-$gamut-purple-800: mix(#000, $gamut-purple-500, 60%);
-$gamut-purple-900: mix(#000, $gamut-purple-500, 80%);
+$gamut-purple-100: mix($color-white, $gamut-purple-500, 80%);
+$gamut-purple-200: mix($color-white, $gamut-purple-500, 60%);
+$gamut-purple-300: mix($color-white, $gamut-purple-500, 40%);
+$gamut-purple-400: mix($color-white, $gamut-purple-500, 20%);
+$gamut-purple-600: mix($color-black, $gamut-purple-500, 20%);
+$gamut-purple-700: mix($color-black, $gamut-purple-500, 40%);
+$gamut-purple-800: mix($color-black, $gamut-purple-500, 60%);
+$gamut-purple-900: mix($color-black, $gamut-purple-500, 80%);
 
 $gamut-royal-blue-500: #4b35ef;
 
-$gamut-royal-blue-100: mix(#fff, $gamut-royal-blue-500, 80%);
-$gamut-royal-blue-200: mix(#fff, $gamut-royal-blue-500, 60%);
-$gamut-royal-blue-300: mix(#fff, $gamut-royal-blue-500, 40%);
-$gamut-royal-blue-400: mix(#fff, $gamut-royal-blue-500, 20%);
-$gamut-royal-blue-600: mix(#000, $gamut-royal-blue-500, 20%);
-$gamut-royal-blue-700: mix(#000, $gamut-royal-blue-500, 40%);
-$gamut-royal-blue-800: mix(#000, $gamut-royal-blue-500, 60%);
-$gamut-royal-blue-900: mix(#000, $gamut-royal-blue-500, 80%);
+$gamut-royal-blue-100: mix($color-white, $gamut-royal-blue-500, 80%);
+$gamut-royal-blue-200: mix($color-white, $gamut-royal-blue-500, 60%);
+$gamut-royal-blue-300: mix($color-white, $gamut-royal-blue-500, 40%);
+$gamut-royal-blue-400: mix($color-white, $gamut-royal-blue-500, 20%);
+$gamut-royal-blue-600: mix($color-black, $gamut-royal-blue-500, 20%);
+$gamut-royal-blue-700: mix($color-black, $gamut-royal-blue-500, 40%);
+$gamut-royal-blue-800: mix($color-black, $gamut-royal-blue-500, 60%);
+$gamut-royal-blue-900: mix($color-black, $gamut-royal-blue-500, 80%);
 
 $gamut-blue-500: #4c7ef3;
 
-$gamut-blue-100: mix(#fff, $gamut-blue-500, 80%);
-$gamut-blue-200: mix(#fff, $gamut-blue-500, 60%);
-$gamut-blue-300: mix(#fff, $gamut-blue-500, 40%);
-$gamut-blue-400: mix(#fff, $gamut-blue-500, 20%);
-$gamut-blue-600: mix(#000, $gamut-blue-500, 20%);
-$gamut-blue-700: mix(#000, $gamut-blue-500, 40%);
-$gamut-blue-800: mix(#000, $gamut-blue-500, 60%);
-$gamut-blue-900: mix(#000, $gamut-blue-500, 80%);
+$gamut-blue-100: mix($color-white, $gamut-blue-500, 80%);
+$gamut-blue-200: mix($color-white, $gamut-blue-500, 60%);
+$gamut-blue-300: mix($color-white, $gamut-blue-500, 40%);
+$gamut-blue-400: mix($color-white, $gamut-blue-500, 20%);
+$gamut-blue-600: mix($color-black, $gamut-blue-500, 20%);
+$gamut-blue-700: mix($color-black, $gamut-blue-500, 40%);
+$gamut-blue-800: mix($color-black, $gamut-blue-500, 60%);
+$gamut-blue-900: mix($color-black, $gamut-blue-500, 80%);
 
 $gamut-red-500: #fa4359;
 
-$gamut-red-100: mix(#fff, $gamut-red-500, 80%);
-$gamut-red-200: mix(#fff, $gamut-red-500, 60%);
-$gamut-red-300: mix(#fff, $gamut-red-500, 40%);
-$gamut-red-400: mix(#fff, $gamut-red-500, 20%);
-$gamut-red-600: mix(#000, $gamut-red-500, 20%);
-$gamut-red-700: mix(#000, $gamut-red-500, 40%);
-$gamut-red-800: mix(#000, $gamut-red-500, 60%);
-$gamut-red-900: mix(#000, $gamut-red-500, 80%);
+$gamut-red-100: mix($color-white, $gamut-red-500, 80%);
+$gamut-red-200: mix($color-white, $gamut-red-500, 60%);
+$gamut-red-300: mix($color-white, $gamut-red-500, 40%);
+$gamut-red-400: mix($color-white, $gamut-red-500, 20%);
+$gamut-red-600: mix($color-black, $gamut-red-500, 20%);
+$gamut-red-700: mix($color-black, $gamut-red-500, 40%);
+$gamut-red-800: mix($color-black, $gamut-red-500, 60%);
+$gamut-red-900: mix($color-black, $gamut-red-500, 80%);
 
 $gamut-mint-500: #37c3be;
 
-$gamut-mint-100: mix(#fff, $gamut-mint-500, 80%);
-$gamut-mint-200: mix(#fff, $gamut-mint-500, 60%);
-$gamut-mint-300: mix(#fff, $gamut-mint-500, 40%);
-$gamut-mint-400: mix(#fff, $gamut-mint-500, 20%);
-$gamut-mint-600: mix(#000, $gamut-mint-500, 20%);
-$gamut-mint-700: mix(#000, $gamut-mint-500, 40%);
-$gamut-mint-800: mix(#000, $gamut-mint-500, 60%);
-$gamut-mint-900: mix(#000, $gamut-mint-500, 80%);
+$gamut-mint-100: mix($color-white, $gamut-mint-500, 80%);
+$gamut-mint-200: mix($color-white, $gamut-mint-500, 60%);
+$gamut-mint-300: mix($color-white, $gamut-mint-500, 40%);
+$gamut-mint-400: mix($color-white, $gamut-mint-500, 20%);
+$gamut-mint-600: mix($color-black, $gamut-mint-500, 20%);
+$gamut-mint-700: mix($color-black, $gamut-mint-500, 40%);
+$gamut-mint-800: mix($color-black, $gamut-mint-500, 60%);
+$gamut-mint-900: mix($color-black, $gamut-mint-500, 80%);
 
 $gamut-yellow-500: #ffc107;
 
-$gamut-yellow-100: mix(#fff, $gamut-yellow-500, 80%);
-$gamut-yellow-200: mix(#fff, $gamut-yellow-500, 60%);
-$gamut-yellow-300: mix(#fff, $gamut-yellow-500, 40%);
-$gamut-yellow-400: mix(#fff, $gamut-yellow-500, 20%);
-$gamut-yellow-600: mix(#000, $gamut-yellow-500, 20%);
-$gamut-yellow-700: mix(#000, $gamut-yellow-500, 40%);
-$gamut-yellow-800: mix(#000, $gamut-yellow-500, 60%);
-$gamut-yellow-900: mix(#000, $gamut-yellow-500, 80%);
+$gamut-yellow-100: mix($color-white, $gamut-yellow-500, 80%);
+$gamut-yellow-200: mix($color-white, $gamut-yellow-500, 60%);
+$gamut-yellow-300: mix($color-white, $gamut-yellow-500, 40%);
+$gamut-yellow-400: mix($color-white, $gamut-yellow-500, 20%);
+$gamut-yellow-600: mix($color-black, $gamut-yellow-500, 20%);
+$gamut-yellow-700: mix($color-black, $gamut-yellow-500, 40%);
+$gamut-yellow-800: mix($color-black, $gamut-yellow-500, 60%);
+$gamut-yellow-900: mix($color-black, $gamut-yellow-500, 80%);
 
 $gamut-grey-500: #ccc;
 
-$gamut-grey-100: mix(#fff, $gamut-grey-500, 80%);
-$gamut-grey-200: mix(#fff, $gamut-grey-500, 60%);
-$gamut-grey-300: mix(#fff, $gamut-grey-500, 40%);
-$gamut-grey-400: mix(#fff, $gamut-grey-500, 20%);
-$gamut-grey-600: mix(#000, $gamut-grey-500, 20%);
-$gamut-grey-700: mix(#000, $gamut-grey-500, 40%);
-$gamut-grey-800: mix(#000, $gamut-grey-500, 60%);
-$gamut-grey-900: mix(#000, $gamut-grey-500, 80%);
+$gamut-grey-100: mix($color-white, $gamut-grey-500, 80%);
+$gamut-grey-200: mix($color-white, $gamut-grey-500, 60%);
+$gamut-grey-300: mix($color-white, $gamut-grey-500, 40%);
+$gamut-grey-400: mix($color-white, $gamut-grey-500, 20%);
+$gamut-grey-600: mix($color-black, $gamut-grey-500, 20%);
+$gamut-grey-700: mix($color-black, $gamut-grey-500, 40%);
+$gamut-grey-800: mix($color-black, $gamut-grey-500, 60%);
+$gamut-grey-900: mix($color-black, $gamut-grey-500, 80%);
 
 // =======================================
 //       NEW DESIGN SYSTEM COLORS
 // =======================================
 
-$gamut-white: #fff;
-$gamut-black: #000;
+$gamut-white: $color-white;
+$gamut-black: $color-black;
 $gamut-purple: $gamut-purple-500;
 $gamut-royal-blue: $gamut-royal-blue-500;
 $gamut-blue: $gamut-blue-500;
@@ -99,8 +106,6 @@ $gamut-grey: $gamut-grey-500;
 //            PORTAL COLORS
 // =======================================
 
-$color-white: #fff;
-$color-black: #000;
 $color-grey-1: #e9eaea;
 $color-grey-2: #d4d5d6;
 $color-grey-3: #bebfc1;
@@ -116,9 +121,9 @@ $color-red: #f65a5b;
 //            PLATFORM COLORS
 // =======================================
 
-$swatches-basic-black: #000;
-$swatches-basic-white: #fff;
-$swatches-code-default: #fff;
+$swatches-basic-black: $color-black;
+$swatches-basic-white: $color-white;
+$swatches-code-default: $color-white;
 $swatches-code-atom: #ff7155;
 $swatches-code-attribute: #ceff00;
 $swatches-code-builtin: #ddda6f;
