@@ -27,10 +27,11 @@ const propTypes = {
   className: PropTypes.string,
   curved: PropTypes.bool,
   flat: PropTypes.bool,
+  fitText: PropTypes.bool,
 };
 
 const Button = props => {
-  let { theme = 'primary' } = props;
+  let { theme = 'primary', curved = true } = props;
 
   if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];
@@ -49,8 +50,9 @@ const Button = props => {
       [s.outline]: props.outline,
       [s.underline]: props.underline,
       [s.caps]: props.caps,
-      [s.curved]: props.curved,
+      [s.curved]: curved,
       [s.flat]: props.flat,
+      [s.fittext]: props.fitText,
     },
     props.className
   );

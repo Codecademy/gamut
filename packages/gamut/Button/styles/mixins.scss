@@ -84,6 +84,11 @@
   line-height: $line-height;
   min-width: $min-width;
   min-height: $min-height;
+
+  &.fittext {
+    min-width: 0;
+    min-height: 0;
+  }
 }
 
 @mixin button-variants($name, $color, $background, $border: transparent) {
