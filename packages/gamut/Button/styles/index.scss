@@ -6,8 +6,10 @@
 //
 
 .btn {
-  display: inline;
+  display: inline-flex;
+  justify-content: center;
   font-weight: $btn-font-weight;
+  @include font-smoothing;
   border: 1px solid transparent;
   border-radius: 0;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height, $btn-min-width-sm, $btn-min-height-sm);
@@ -26,7 +28,7 @@ fieldset[disabled] a.btn {
     @include button-variants($name, $color-black, $color);
   }
   @elseif lightness($color) > 75 {
-    @include button-variants($name, $swatches-cc-blue-700, $color);
+    @include button-variants($name, $color-black, $color);
   } @else {
     @include button-variants($name, $color-white, $color);
   }
@@ -68,6 +70,10 @@ fieldset[disabled] a.btn {
   &:focus {
     text-decoration: underline;
   }
+}
+
+.link {
+  @include font-smoothing;
 }
 
 // Specificity overrides
