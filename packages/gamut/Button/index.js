@@ -53,7 +53,7 @@ const Button = props => {
       [s.caps]: props.caps,
       [s.curved]: curved,
       [s.flat]: props.flat,
-      [s.fittext]: props.fitText,
+      [s['fit-text']]: props.fitText,
     },
     props.className
   );
