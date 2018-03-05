@@ -25,14 +25,14 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
-  curved: PropTypes.bool,
+  rounded: PropTypes.bool,
   flat: PropTypes.bool,
   fitText: PropTypes.bool,
 };
 
 const Button = props => {
   let { theme = 'primary' } = props;
-  const { curved = true } = props;
+  const { rounded = true } = props;
 
   if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];
@@ -51,7 +51,7 @@ const Button = props => {
       [s.outline]: props.outline,
       [s.underline]: props.underline,
       [s.caps]: props.caps,
-      [s.curved]: curved,
+      [s.rounded]: rounded,
       [s.flat]: props.flat,
       [s['fit-text']]: props.fitText,
     },
