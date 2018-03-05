@@ -42,9 +42,15 @@
   background-color: $color-white;
   border: px-rem(2) solid $color;
 
+  &:hover {
+    background-color: lighten($color, $btn-outline-hover-state-modifier);
+    box-shadow: none;
+  }
+
   &:active,
   &:focus {
-    background-color: lighten($color, $btn-outline-state-modifier);
+    background-color: lighten($color, $btn-outline-active-state-modifier);
+    box-shadow: none;
   }
 
   &:disabled {
@@ -72,10 +78,12 @@
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height) {
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $min-width, $min-height) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
+  min-width: $min-width;
+  min-height: $min-height;
 }
 
 @mixin button-variants($name, $color, $background, $border: transparent) {
