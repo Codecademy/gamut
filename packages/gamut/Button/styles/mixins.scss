@@ -79,7 +79,7 @@
   }
 
   &:focus {
-    box-shadow: 0px 0px 0px 3px fade-out($color, 0.5);
+    box-shadow: 0px 0px 0px 3px fade-out($color, $btn-box-shadow-focus-modifier);
   }
 
   &:disabled {
