@@ -17,15 +17,17 @@
   border-color: $border;
 
   &:hover,
-  &:active,
-  &:focus {
+  &:active {
     box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
   }
 
-  &:active,
-  &:focus {
+  &:active {
     color: $active-color;
     background-color: $active-background;
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px fade-out($background, 0.5);
   }
 
   &:disabled {
@@ -48,10 +50,13 @@
     box-shadow: none;
   }
 
-  &:active,
-  &:focus {
+  &:active {
     background-color: fade-out($color, $btn-outline-active-state-modifier);
     box-shadow: none;
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px fade-out($color, 0.5);
   }
 
   &:disabled {
@@ -68,10 +73,13 @@
   $active-color: darken($color, $btn-state-modifier);
 
   &:hover,
-  &:active,
-  &:focus {
+  &:active {
     box-shadow: none;
     color: $active-color;
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 3px fade-out($color, 0.5);
   }
 
   &:disabled {
