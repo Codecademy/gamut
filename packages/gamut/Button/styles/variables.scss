@@ -17,19 +17,17 @@ $btn-font-size-xs: 0.75rem !default;
 $btn-padding-x-sm: 0.75rem !default;
 $btn-padding-y-sm: 0.25rem !default;
 $btn-min-width-sm: px-rem(128) !default;
-$btn-min-height-sm: px-rem(40) !default;
 
 $btn-padding-x-lg: 1.25rem !default;
 $btn-padding-y-lg: 0.75rem !default;
 $btn-min-width-lg: px-rem(160) !default;
-$btn-min-height-lg: px-rem(56) !default;
 
 $btn-border-radius: 2px;
 
 $btn-state-modifier: 20% !default;
 $btn-color-modifier: 10% !default;
-$btn-outline-hover-state-modifier: 30% !default;
-$btn-outline-active-state-modifier: 20% !default;
+$btn-outline-hover-state-modifier: 0.65 !default;
+$btn-outline-active-state-modifier: 0.45 !default;
 
 $btn-disabled-color: $gamut-grey-800;
 $btn-box-shadow-color: rgba(0, 0, 0, 0.3);

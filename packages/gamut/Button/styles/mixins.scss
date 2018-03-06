@@ -40,30 +40,30 @@
 
 @mixin button-outline-variant($color) {
   color: $color;
-  background-color: $color-white;
-  border: px-rem(2) solid $color;
+  background-color: transparent;
+  border: 1px solid $color;
 
   &:hover {
-    background-color: lighten($color, $btn-outline-hover-state-modifier);
+    background-color: fade-out($color, $btn-outline-hover-state-modifier);
     box-shadow: none;
   }
 
   &:active,
   &:focus {
-    background-color: lighten($color, $btn-outline-active-state-modifier);
+    background-color: fade-out($color, $btn-outline-active-state-modifier);
     box-shadow: none;
   }
 
   &:disabled {
     border-color: $btn-disabled-color;
     color: $btn-disabled-color;
-    background-color: $color-white;
+    background-color: transparent;
   }
 }
 
 @mixin button-flat-variant($color) {
   color: $color;
-  background-color: $color-white;
+  background-color: transparent;
 
   $active-color: darken($color, $btn-state-modifier);
 
@@ -76,17 +76,16 @@
 
   &:disabled {
     color: $btn-disabled-color;
-    background-color: $color-white;
+    background-color: transparent;
   }
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $min-width, $min-height) {
+@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $min-width) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
   min-width: $min-width;
-  min-height: $min-height;
 
   &.fit-text {
     min-width: 0;
