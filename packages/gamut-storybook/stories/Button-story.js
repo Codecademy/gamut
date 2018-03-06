@@ -177,4 +177,34 @@ storiesOf('Component/Button', module)
         {text('Label', 'Submit')}
       </Button>
     ))
+  )
+  .add(
+    'New',
+    withInfo({
+      text: 'New Styles',
+      ...options,
+    })(() => (
+      <div>
+        <Button style={btnStyle} theme="yellow">
+          Super
+        </Button>
+        <Button style={btnStyle} theme="blue">
+          Primary (new)
+        </Button>
+        <Button style={btnStyle} theme="blue" outline>
+          Seconary (new)
+        </Button>
+        <Button style={btnStyle} theme="blue" flat>
+          Flat
+        </Button>
+
+        <p>
+          This is an example of a new{' '}
+          <Button theme="grey" link href="#">
+            Link
+          </Button>{' '}
+          style button.
+        </p>
+      </div>
+    ))
   );
