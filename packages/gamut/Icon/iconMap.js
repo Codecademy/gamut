@@ -1,4 +1,5 @@
 import AccessibilityIcon from './icons/AccessibilityIcon';
+import AddIcon from './icons/AddIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
 import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
@@ -11,6 +12,7 @@ import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import CSSIcon from './icons/CSSIcon';
 import DAWIcon from './icons/DAWIcon';
+import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
 import HTMLIcon from './icons/HTMLIcon';
@@ -38,6 +40,7 @@ import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
+import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -47,6 +50,7 @@ import ChevronUpIcon from './icons/ChevronUpIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
+  add: AddIcon,
   advisor: AdvisorIcon,
   alert: AlertIcon,
   alexa: AlexaIcon,
@@ -63,6 +67,7 @@ const iconMap = {
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
   html: HTMLIcon,
@@ -90,6 +95,7 @@ const iconMap = {
   syllabus: SyllabusIcon,
   tdd: TDDIcon,
   terminal: TerminalIcon,
+  trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
 };
