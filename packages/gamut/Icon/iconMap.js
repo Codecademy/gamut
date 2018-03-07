@@ -15,6 +15,7 @@ import DAWIcon from './icons/DAWIcon';
 import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
+import GlassesIcon from './icons/GlassesIcon';
 import HTMLIcon from './icons/HTMLIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
@@ -70,6 +71,7 @@ const iconMap = {
   forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
+  glasses: GlassesIcon,
   html: HTMLIcon,
   java: JavaIcon,
   javascript: JavascriptIcon,
