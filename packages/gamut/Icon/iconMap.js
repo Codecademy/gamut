@@ -24,7 +24,6 @@ import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
 import MAWIcon from './icons/MAWIcon';
 import NumPyIcon from './icons/NumPyIcon';
-import PaginatedIcon from './icons/PaginatedIcon';
 import PandasIcon from './icons/PandasIcon';
 import PHPIcon from './icons/PHPIcon';
 import ProjectIcon from './icons/ProjectIcon';
@@ -80,7 +79,6 @@ const iconMap = {
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
   numPy: NumPyIcon,
-  paginated: PaginatedIcon,
   pandas: PandasIcon,
   php: PHPIcon,
   project: ProjectIcon,
