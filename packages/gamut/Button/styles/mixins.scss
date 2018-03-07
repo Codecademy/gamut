@@ -19,6 +19,7 @@
   &:hover,
   &:active {
     box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
+    text-decoration: none;
   }
 
   &:active {
