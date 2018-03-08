@@ -90,6 +90,23 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
+  run_publish_next:
+    <<: *default_env
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - *resore_yarn_dependencies
+      - run: yarn --production=false --cache-folder .yarncache
+      - run: sudo npm install -g yarn@1.3.2
+      - run:
+          name: build storybook
+          command: yarn lerna run build
+      - run:
+          name: lerna publish
+          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+
 workflows:
   version: 2
   build-and-test:
@@ -109,3 +126,10 @@ workflows:
           filters:
             branches:
               only: master
+      - run_publish_next:
+          context: org-global
+          requires:
+            - install_yarn_dependencies
+          filters:
+            branches:
+              only: next
