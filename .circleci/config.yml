@@ -30,7 +30,7 @@ references:
   yarn_cache_key_2: &yarn_cache_key_2
     v2-node_dependencies-
 
-  restore_yarn_dependencies: &resore_yarn_dependencies
+  restore_yarn_dependencies: &restore_yarn_dependencies
     restore_cache:
       keys:
         - *yarn_cache_key_1
