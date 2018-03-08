@@ -30,7 +30,7 @@ references:
   yarn_cache_key_2: &yarn_cache_key_2
     v2-node_dependencies-
 
-  resore_yarn_dependencies: &resore_yarn_dependencies
+  restore_yarn_dependencies: &restore_yarn_dependencies
     restore_cache:
       keys:
         - *yarn_cache_key_1
@@ -52,7 +52,7 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
-      - *resore_yarn_dependencies
+      - *restore_yarn_dependencies
       - run: sudo npm install yarn@1.3.2 -g
       - run: yarn --production=false --cache-folder .yarncache
       - save_cache:
@@ -63,24 +63,24 @@ jobs:
             - packages/*/node_modules
             - packages/**/node_modules
 
-  run_tests:
+  tests:
     <<: *default_env
     steps:
       - *restore_repo
-      - *resore_yarn_dependencies
+      - *restore_yarn_dependencies
       - run: sudo npm install -g yarn@1.3.2
       - run:
           name: Run test suite
           command: yarn test
 
-  run_publish:
+  publish:
     <<: *default_env
     steps:
       - *set_git_user
       - *restore_repo
       - checkout
       - *set_npm_token
-      - *resore_yarn_dependencies
+      - *restore_yarn_dependencies
       - run: yarn --production=false --cache-folder .yarncache
       - run: sudo npm install -g yarn@1.3.2
       - run:
@@ -90,22 +90,46 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
+  publish_next:
+    <<: *default_env
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - *restore_yarn_dependencies
+      - run: yarn --production=false --cache-folder .yarncache
+      - run: sudo npm install -g yarn@1.3.2
+      - run:
+          name: build storybook
+          command: yarn lerna run build
+      - run:
+          name: lerna publish
+          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+
 workflows:
   version: 2
-  build-and-test:
+  build-test:
     jobs:
       - checkout_code:
           context: org-global
       - install_yarn_dependencies:
           requires:
             - checkout_code
-      - run_tests:
+      - tests:
           requires:
             - install_yarn_dependencies
-      - run_publish:
+      - publish:
           context: org-global
           requires:
             - install_yarn_dependencies
           filters:
             branches:
               only: master
+      - publish_next:
+          context: org-global
+          requires:
+            - install_yarn_dependencies
+          filters:
+            branches:
+              only: next
