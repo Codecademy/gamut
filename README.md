@@ -15,8 +15,8 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ## Local development
 
 1. Log into npm
-   - Run `npm login` with username `codecademy`; you can find the password in LastPass
-   - Running `npm whoami` should return `codecademy`
+   * Run `npm login` with username `codecademy`; you can find the password in LastPass
+   * Running `npm whoami` should return `codecademy`
 1. Run `yarn` in the root directory
 1. Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
@@ -43,6 +43,13 @@ _Follow these steps when you need to make changes to Gamut that are immediately 
 1. To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
 1. Once your branch is merged into master, it will be published automatically by CircleCI.
 1. You can check the master branch for the new version number
+
+### Publishing a pre-release version of a module
+
+You can use the gamut/next branch to publish pre-release changes that require testing across applications
+
+1. Follow the instructions for normal publishing, but base your PR off of the gamut/next branch, instead of master.
+1. Once you feel like your changes are stable, you can merge the gamut/next branch into master
 
 ### Commit Message Guide
 
