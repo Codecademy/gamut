@@ -52,7 +52,7 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
-      - *resore_yarn_dependencies
+      - *restore_yarn_dependencies
       - run: sudo npm install yarn@1.3.2 -g
       - run: yarn --production=false --cache-folder .yarncache
       - save_cache:
@@ -109,7 +109,7 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  build-test:
     jobs:
       - checkout_code:
           context: org-global
