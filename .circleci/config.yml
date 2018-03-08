@@ -90,7 +90,7 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
-  run_publish_next:
+  run_publish_prerelease:
     <<: *default_env
     steps:
       - *set_git_user
@@ -105,7 +105,7 @@ jobs:
           command: yarn lerna run build
       - run:
           name: lerna publish
-          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+          command: yarn lerna publish --canary=beta --conventional-commits --yes
 
 workflows:
   version: 2
@@ -126,10 +126,10 @@ workflows:
           filters:
             branches:
               only: master
-      - run_publish_next:
+      - hold_prerelease_publish:
+          type: approval
+      - run_publish_prerelease:
           context: org-global
           requires:
+            - hold_prerelease_publish
             - install_yarn_dependencies
-          filters:
-            branches:
-              only: next
