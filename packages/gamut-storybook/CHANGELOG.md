@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.18...@codecademy/gamut-storybook@1.7.0) (2018-03-09)
+
+
+### Features
+
+* show all buttons in the main button story page ([#87](https://github.com/RyzacInc/gamut/issues/87)) ([fbe5b24](https://github.com/RyzacInc/gamut/commit/fbe5b24))
+
+
+
+
 <a name="1.6.18"></a>
 ## [1.6.18](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.17...@codecademy/gamut-storybook@1.6.18) (2018-03-07)
 
