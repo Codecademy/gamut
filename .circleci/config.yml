@@ -87,6 +87,9 @@ jobs:
           name: build storybook
           command: yarn lerna run build
       - run:
+          name: Add changes to git
+          command: git add -A
+      - run:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
@@ -103,6 +106,9 @@ jobs:
       - run:
           name: build storybook
           command: yarn lerna run build
+      - run:
+          name: Add storybook changes to git
+          command: git add -A
       - run:
           name: lerna publish
           command: yarn lerna publish --npm-tag=next --conventional-commits --yes
