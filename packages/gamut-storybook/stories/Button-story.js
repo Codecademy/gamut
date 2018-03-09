@@ -39,7 +39,7 @@ const btnStyle = {
 storiesOf('Component/Button', module)
   .add('About Buttons', () => <div>Button philosophy goes here.</div>)
   .add(
-    'All Button themes',
+    'All Button Themes',
     withInfo({
       ...options,
     })(() => (
