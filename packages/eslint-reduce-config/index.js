@@ -8,6 +8,8 @@ const {
   uniq,
 } = require('lodash');
 
+const keyBlacklist = ['version'];
+
 const shallowMerge = (a, b) =>
   mergeWith(a, b, (aValue, bValue) => {
     if (isArray(aValue) && isArray(bValue)) {
@@ -60,6 +62,12 @@ const eslintReduce = (_config, options) => {
     });
     delete config.extends;
   }
+
+  keyBlacklist.forEach(k => {
+    if (config[k]) {
+      delete config[k];
+    }
+  });
 
   return config;
 };

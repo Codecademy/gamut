@@ -40,6 +40,6 @@ if (!isEmpty(newConfig)) {
     } catch (e) {
       mkdirp.sync(directory);
     }
-    fs.writeFileSync(program.output, JSON.stringify(newConfig, null, ' '));
+    fs.writeFileSync(program.output, JSON.stringify(newConfig, null, '  '));
   }
 }

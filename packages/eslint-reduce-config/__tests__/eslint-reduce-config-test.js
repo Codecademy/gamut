@@ -1,4 +1,5 @@
 const eslintReduce = require('../index');
+const Linter = require('eslint').Linter;
 
 const fixtures = {
   basic: require('../fixtures/basic-config'),

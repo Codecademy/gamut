@@ -2,7 +2,7 @@
   "name": "@codecademy/eslint-config-codecademy",
   "version": "1.1.0",
   "description": "ESLint Config for Codecademy",
-  "main": "dist/index.json",
+  "main": "index.js",
   "author": "Jake Hiller",
   "license": "MIT",
   "publishConfig": {
