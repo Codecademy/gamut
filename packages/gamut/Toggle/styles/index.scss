@@ -24,7 +24,6 @@
 }
 
 .thumb {
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: absolute;
   top: 0.215rem;
   left: 0.204rem;
@@ -32,7 +31,7 @@
   height: 1.38rem;
   border-radius: 99rem;
   background-color: $gamut-white;
-  box-sizing: border-box;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .toggled .thumb {
