@@ -8,7 +8,7 @@ plugins:
   eslint:
     enabled: true
     config:
-      config: './generated_eslintrc.json'
+      config: './.generated_eslintrc.json'
   scss-lint:
     enabled: true
 exclude_patterns:
