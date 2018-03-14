@@ -16,7 +16,6 @@
     "build-gamut-storybook": "cd workspaces/gamut-storybook; yarn build",
     "format": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged",
-    "postinstall": "yarn build-eslintconfig",
     "build-eslintconfig": "eslint-reduce-config -v -f .eslintrc.js -o ./.generated_eslintrc.json"
   },
   "repository": {
@@ -58,6 +57,9 @@
     "packages/**/*.{js,json,css,scss}": [
       "prettier-eslint --prettier-last --write",
       "git add"
+    ],
+    "eslintrc.js": [
+      "yarn build-eslintconfig"
     ]
   }
 }
