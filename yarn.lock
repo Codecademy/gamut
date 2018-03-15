@@ -78,6 +78,14 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
+"@codecademy/eslint-reduce-config@1.0.2", "@codecademy/eslint-reduce-config@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@codecademy/eslint-reduce-config/-/eslint-reduce-config-1.0.2.tgz#d01332b1128944578a97fdda94b1d699d2d49105"
+  dependencies:
+    commander "^2.14.1"
+    lodash "^4.17.5"
+    mkdirp "^0.5.1"
+
 "@codecademy/identity@^1.15.4":
   version "1.15.4"
   resolved "https://registry.npmjs.org/@codecademy/identity/-/identity-1.15.4.tgz#041469850b30b25e1b632c33a746ca1915b3a7fc"
@@ -2262,6 +2270,10 @@ commander@^2.11.0, commander@^2.9.0:
 commander@^2.14.1:
   version "2.14.1"
   resolved "https://registry.npmjs.org/commander/-/commander-2.14.1.tgz#2235123e37af8ca3c65df45b026dbd357b01b9aa"
+
+commander@^2.15.0:
+  version "2.15.0"
+  resolved "https://registry.npmjs.org/commander/-/commander-2.15.0.tgz#ad2a23a1c3b036e392469b8012cec6b33b4c1322"
 
 common-tags@^1.4.0:
   version "1.5.1"
@@ -6005,7 +6017,7 @@ ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-mute-stream@0.0.7:
+mute-stream@0.0.7, mute-stream@~0.0.4:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
 
@@ -6966,6 +6978,13 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+promptly@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.npmjs.org/promptly/-/promptly-3.0.3.tgz#e178f722e73d82c60d019462044bccfdd9872f42"
+  dependencies:
+    pify "^3.0.0"
+    read "^1.0.4"
+
 prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
@@ -7341,6 +7360,12 @@ read-pkg@^3.0.0:
     load-json-file "^4.0.0"
     normalize-package-data "^2.3.2"
     path-type "^3.0.0"
+
+read@^1.0.4:
+  version "1.0.7"
+  resolved "https://registry.npmjs.org/read/-/read-1.0.7.tgz#b3da19bd052431a97671d44a42634adf710b40c4"
+  dependencies:
+    mute-stream "~0.0.4"
 
 readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.2.6, readable-stream@^2.3.3:
   version "2.3.3"

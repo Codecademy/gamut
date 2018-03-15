@@ -2,37 +2,39 @@
   "name": "@codecademy/eslint-config-codecademy",
   "version": "1.1.0",
   "description": "ESLint Config for Codecademy",
-  "main": "dist/index.json",
+  "main": "./index.js",
+  "bin": {
+    "eslint-config-codecademy": "bin/index.js"
+  },
   "author": "Jake Hiller",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "prepublish": "yarn build",
     "build": "eslint-reduce-config -v -f index.js -o ./dist/index.json"
   },
   "peerDependencies": {
-    "eslint": "^4.15.0",
-    "babel-eslint": "^8.2.1"
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0"
   },
   "dependencies": {
     "@codecademy/eslint-reduce-config": "^1.0.2",
+    "commander": "^2.15.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.4.0",
     "prettier": "1.9.1",
-    "prettier-eslint-cli": "4.4.2"
+    "prettier-eslint-cli": "4.4.2",
+    "promptly": "^3.0.3"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.4.0",
-    "eslint": "^4.15.0",
-    "babel-eslint": "^8.2.1"
+    "eslint-plugin-react": "^7.4.0"
   }
 }
