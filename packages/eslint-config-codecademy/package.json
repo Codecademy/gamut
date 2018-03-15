@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "@codecademy/eslint-reduce-config": "^1.0.2",
-    "eslint": "^4.15.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.3.0",
@@ -27,6 +26,8 @@
   },
   "devDependencies": {
     "eslint-config-airbnb": "15.1.0",
-    "eslint-config-prettier": "^2.7.0"
+    "eslint-config-prettier": "^2.7.0",
+    "eslint": "^4.15.0",
+    "babel-eslint": "^8.2.1"
   }
 }

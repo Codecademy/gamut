@@ -1204,7 +1204,6 @@
     ],
     "yoda": "error"
   },
-  "__debug": {},
   "plugins": ["jsx-a11y", "react", "import"],
   "parserOptions": {
     "ecmaFeatures": {

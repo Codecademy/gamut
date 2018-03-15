@@ -8,7 +8,7 @@ const {
   uniq,
 } = require('lodash');
 
-const keyBlacklist = ['version'];
+const keyBlacklist = ['version', '__debug'];
 
 const shallowMerge = (a, b) =>
   mergeWith(a, b, (aValue, bValue) => {
