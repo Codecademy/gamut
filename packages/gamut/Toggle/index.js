@@ -13,14 +13,14 @@ class Toggle extends Component {
     const { checked, onClick } = this.props;
 
     return (
-      <button
+      <div
         className={cx(s.toggleButton, { [s.toggled]: checked })}
         onClick={onClick}
       >
         <div className={s.track} />
         <div className={s.thumb} />
         <input type="checkbox" checked={checked} className={s.invisible} />
-      </button>
+      </div>
     );
   }
 }
