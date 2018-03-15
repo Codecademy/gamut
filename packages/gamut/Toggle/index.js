@@ -5,20 +5,21 @@ import s from './styles';
 
 class Toggle extends Component {
   static propTypes = {
-    isToggled: PropTypes.bool,
-    onToggle: PropTypes.func,
+    checked: PropTypes.bool,
+    onClick: PropTypes.func,
   };
 
   render() {
-    const { isToggled, onToggle } = this.props;
+    const { checked, onClick } = this.props;
 
     return (
       <button
-        className={cx(s.toggleButton, { [s.toggled]: isToggled })}
-        onClick={onToggle}
+        className={cx(s.toggleButton, { [s.toggled]: checked })}
+        onClick={onClick}
       >
         <div className={s.track} />
         <div className={s.thumb} />
+        <input type="checkbox" checked={checked} className={s.invisible} />
       </button>
     );
   }

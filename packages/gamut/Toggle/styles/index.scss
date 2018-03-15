@@ -37,3 +37,7 @@
 .toggled .thumb {
   left: 2.17rem;
 }
+
+.invisible {
+  @include sr-only;
+}
