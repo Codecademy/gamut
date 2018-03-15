@@ -5,7 +5,7 @@ import { boolean } from '@storybook/addon-knobs';
 
 storiesOf('Component/Toggle', module).add(
   'Toggle',
-  () => <Toggle isToggled={boolean('Toggled', false)} onToggle={() => {}} />,
+  () => <Toggle checked={boolean('Toggled', false)} onClick={() => {}} />,
   {
     inline: true,
     propTables: false,
