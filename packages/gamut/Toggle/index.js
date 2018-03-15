@@ -7,20 +7,28 @@ class Toggle extends Component {
   static propTypes = {
     checked: PropTypes.bool,
     onClick: PropTypes.func,
+    label: PropTypes.string,
   };
 
   render() {
-    const { checked, onClick } = this.props;
+    const { checked, onClick, label } = this.props;
 
     return (
-      <div
+      <label
         className={cx(s.toggleButton, { [s.toggled]: checked })}
         onClick={onClick}
+        htmlFor={label}
       >
+        <input
+          type="checkbox"
+          checked={checked}
+          className={s.invisible}
+          id={label}
+        />
+        <span className={s.invisible}>{label}</span>
         <div className={s.track} />
         <div className={s.thumb} />
-        <input type="checkbox" checked={checked} className={s.invisible} />
-      </div>
+      </label>
     );
   }
 }
