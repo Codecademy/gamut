@@ -7,6 +7,9 @@ checks:
 plugins:
   eslint:
     enabled: true
+    channel: "eslint-4"
+    config:
+      config: './.codeclimate_eslintrc.json'
   scss-lint:
     enabled: true
 exclude_patterns:

@@ -1,0 +1,14 @@
+{
+  "name": "@codecademy/i18n",
+  "version": "1.0.1",
+  "description": "Shim for i18n-js",
+  "main": "index.js",
+  "author": "Jake Hiller",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "i18n-js": "3.0.2"
+  }
+}
