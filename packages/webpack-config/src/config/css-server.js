@@ -1,11 +1,7 @@
 const loaders = require('../loaders');
 
-const serverConfig = () => {
+const cssServer = () => {
   return {
-    output: {
-      libraryTarget: 'umd'
-    },
-
     module: {
       rules: [
         loaders.css.server,
@@ -15,4 +11,4 @@ const serverConfig = () => {
   };
 };
 
-module.exports = serverConfig;
+module.exports = cssServer;

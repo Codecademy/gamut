@@ -3,10 +3,13 @@
 exports[`createConfig merges loaders 1`] = `
 Object {
   "context": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__",
+  "devtool": "source-map",
   "entry": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__/src/main.js",
+  "mode": "production",
   "module": Object {
     "rules": Array [
       Object {
+        "exclude": [Function],
         "include": Array [
           "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__",
         ],
@@ -41,6 +44,23 @@ Object {
       "newContentRegExp": /en/,
       "newContentResource": undefined,
       "resourceRegExp": /moment\\[\\\\/\\\\\\\\\\]locale\\$/,
+    },
+    UglifyJsPlugin {
+      "options": Object {
+        "cache": false,
+        "exclude": undefined,
+        "extractComments": false,
+        "include": undefined,
+        "parallel": false,
+        "sourceMap": true,
+        "test": /\\\\\\.\\(js\\?\\)\\(\\\\\\?\\.\\+\\)\\?\\$/i,
+        "uglifyOptions": Object {
+          "output": Object {
+            "comments": false,
+          },
+        },
+        "warningsFilter": [Function],
+      },
     },
   ],
   "resolve": Object {

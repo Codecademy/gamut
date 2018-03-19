@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require('webpack-merge');
 
 // Only use debuggable class names in dev
@@ -48,13 +48,11 @@ const css = {
   },
   extracted: {
     test: cssFilePattern,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        merge(cssLoaderDefaults),
-        merge(postCssLoaderDefaults)
-      ]
-    })
+    use: [
+      MiniCssExtractPlugin.loader,
+      merge(cssLoaderDefaults),
+      merge(postCssLoaderDefaults)
+    ]
   },
   server: {
     test: cssFilePattern,
@@ -84,18 +82,16 @@ const scss = {
   },
   extracted: {
     test: scssFilePattern,
-    use: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [
-        merge(cssLoaderDefaults, {
-          options: {
-            modules: true
-          }
-        }),
-        merge(postCssLoaderDefaults),
-        merge(scssLoaderDefaults)
-      ]
-    })
+    use: [
+      MiniCssExtractPlugin.loader,
+      merge(cssLoaderDefaults, {
+        options: {
+          modules: true
+        }
+      }),
+      merge(postCssLoaderDefaults),
+      merge(scssLoaderDefaults)
+    ]
   },
   server: {
     test: scssFilePattern,

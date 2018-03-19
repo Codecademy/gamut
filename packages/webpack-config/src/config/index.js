@@ -1,10 +1,9 @@
 const configs = {
   common: require('./common'),
-  server: require('./server'),
-  dev: require('./dev'),
   devServer: require('./dev-server'),
-  optimize: require('./optimize'),
-  extract: require('./extract'),
+  css: require('./css'),
+  cssExtracted: require('./css-extracted'),
+  cssServer: require('./css-server'),
   babel: require('./babel')
 };
 

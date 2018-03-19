@@ -55,6 +55,11 @@ class WebpackConfig {
     return this;
   }
 
+  if(condition, cb) {
+    if (condition) return cb(this);
+    return this;
+  }
+
   toConfig() {
     return this.value;
   }

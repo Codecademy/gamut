@@ -1,10 +1,12 @@
 const { css, scss } = require('./styles');
+const babel = require('./babel');
+const files = require('./files');
 
 const loaders = {
   css,
   scss,
-  babel: require('./babel'),
-  files: require('./files')
+  babel,
+  files,
 };
 
 module.exports = loaders;

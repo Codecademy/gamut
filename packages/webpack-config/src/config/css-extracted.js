@@ -1,12 +1,11 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const loaders = require('../loaders');
 const merge = require('webpack-merge');
 
-const extractConfig = (options) => {
+const cssExtracted = (options) => {
 
   const defaultExtractOptions = {
-    filename: '[name].css',
-    allChunks: false
+    filename: '[name].css'
   };
 
   return {
@@ -18,7 +17,7 @@ const extractConfig = (options) => {
     },
 
     plugins: [
-      new ExtractTextPlugin(merge(
+      new MiniCssExtractPlugin(merge(
         defaultExtractOptions,
         options
       ))
@@ -26,4 +25,4 @@ const extractConfig = (options) => {
   };
 };
 
-module.exports = extractConfig;
+module.exports = cssExtracted;

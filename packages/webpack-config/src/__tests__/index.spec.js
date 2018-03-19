@@ -18,7 +18,13 @@ describe('createConfig', () => {
   it('merges loaders', () => {
     const testConfig = createConfig()
       .common({
-        context: __dirname
+        context: __dirname,
+        env: 'production'
+      })
+      .if(false, (config) => {
+        return config.merge({
+          notInTheSnapshot: true
+        });
       })
       .mergeLoader({
         test: /\.js?$/,

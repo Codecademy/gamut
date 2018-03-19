@@ -2,7 +2,7 @@ const babel = {
   default: {
     test: /\.js?$/,
     loader: 'babel-loader',
-    exclude: function(modulePath) {
+    exclude(modulePath) {
       return /node_modules/.test(modulePath) &&
           !/node_modules\/@codecademy/.test(modulePath);
     },

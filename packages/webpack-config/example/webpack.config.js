@@ -1,18 +1,25 @@
-
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const { createConfig } = require('../src');
 
 module.exports = createConfig()
   .common({
-    context: __dirname
+    context: __dirname,
+    env: 'production'
   })
-  .optimize()
-  .extract()
+  .cssExtracted()
   .merge({
-    plugins: [
-      new CommonsChunkPlugin({
+    optimization: {
+      runtimeChunk: {
         name: 'runtime'
-      })
-    ]
+      },
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /node_modules/,
+            name: 'vendor',
+            chunks: 'initial'
+          }
+        }
+      }
+    }
   })
   .toConfig();
