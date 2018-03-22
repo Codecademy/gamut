@@ -90,7 +90,7 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
-  publish_next:
+  publish_alpha:
     <<: *default_env
     steps:
       - *set_git_user
@@ -107,7 +107,7 @@ jobs:
           command: git add ./docs
       - run:
           name: lerna publish
-          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+          command: yarn lerna publish --canary=beta --conventional-commits --yes
 
 workflows:
   version: 2
@@ -128,10 +128,13 @@ workflows:
           filters:
             branches:
               only: master
-      - publish_next:
+      - hold_alpha_publish:
+          type: approval
+          requires:
+           - tests
+      - publish_alpha:
           context: org-global
           requires:
+            - hold_alpha_publish
+            - tests
             - install_yarn_dependencies
-          filters:
-            branches:
-              only: next
