@@ -9,6 +9,7 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
@@ -17,11 +18,11 @@ const defaultProps = {
   onChange: () => {},
 };
 
-const Tab = ({ children, active, tabIndex, onChange, id }) => {
+const Tab = ({ children, active, tabIndex, onChange, id, onClick }) => {
   const tabLinkClasses = cx(s.tab, { [s.active]: active });
 
   return (
-    <li className={s.tabListItem}>
+    <li className={s.tabListItem} onClick={onClick}>
       <a
         href={`${id}-panel`}
         id={id}
