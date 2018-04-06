@@ -1,17 +1,21 @@
 import AccessibilityIcon from './icons/AccessibilityIcon';
+import AddIcon from './icons/AddIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
 import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
+import BayesIcon from './icons/BayesIcon';
 import CertificateIcon from './icons/CertificateIcon';
 import ClockIcon from './icons/ClockIcon';
 import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import CSSIcon from './icons/CSSIcon';
 import DAWIcon from './icons/DAWIcon';
+import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
+import GlassesIcon from './icons/GlassesIcon';
 import HTMLIcon from './icons/HTMLIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
@@ -37,6 +41,7 @@ import SQLIcon from './icons/SQLIcon';
 import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
+import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
 import ChevronDownIcon from './icons/ChevronDownIcon';
@@ -46,11 +51,13 @@ import ChevronUpIcon from './icons/ChevronUpIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
+  add: AddIcon,
   advisor: AdvisorIcon,
   alert: AlertIcon,
   alexa: AlexaIcon,
   angular: AngularIcon,
   article: ArticleIcon,
+  bayes: BayesIcon,
   certificate: CertificateIcon,
   chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
@@ -61,8 +68,10 @@ const iconMap = {
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
+  glasses: GlassesIcon,
   html: HTMLIcon,
   java: JavaIcon,
   javascript: JavascriptIcon,
@@ -88,6 +97,7 @@ const iconMap = {
   syllabus: SyllabusIcon,
   tdd: TDDIcon,
   terminal: TerminalIcon,
+  trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
 };
