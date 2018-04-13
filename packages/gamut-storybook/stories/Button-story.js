@@ -24,6 +24,8 @@ const themeKeys = [
   'greyblue',
   'white',
   'ccblue',
+  'royalblue',
+  'purple',
 ];
 
 const themes = {};
