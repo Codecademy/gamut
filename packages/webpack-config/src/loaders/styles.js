@@ -12,7 +12,8 @@ const cssLoaderDefaults = {
   options: {
     importLoaders: 1,
     sourceMap: SOURCEMAPS,
-    localIdentName: CSS_MODULE_IDENT
+    localIdentName: CSS_MODULE_IDENT,
+    context: __dirname
   }
 };
 
