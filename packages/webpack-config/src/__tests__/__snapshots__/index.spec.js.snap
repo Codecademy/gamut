@@ -28,6 +28,9 @@ Object {
       },
     ],
   },
+  "optimization": Object {
+    "minimize": true,
+  },
   "output": Object {
     "filename": "[name].js",
     "path": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__/dist",
@@ -44,23 +47,6 @@ Object {
       "newContentRegExp": /en/,
       "newContentResource": undefined,
       "resourceRegExp": /moment\\[\\\\/\\\\\\\\\\]locale\\$/,
-    },
-    UglifyJsPlugin {
-      "options": Object {
-        "cache": false,
-        "exclude": undefined,
-        "extractComments": false,
-        "include": undefined,
-        "parallel": false,
-        "sourceMap": true,
-        "test": /\\\\\\.\\(js\\?\\)\\(\\\\\\?\\.\\+\\)\\?\\$/i,
-        "uglifyOptions": Object {
-          "output": Object {
-            "comments": false,
-          },
-        },
-        "warningsFilter": [Function],
-      },
     },
   ],
   "resolve": Object {
