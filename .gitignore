@@ -36,3 +36,5 @@ tmp
 
 # lerna-changelog cache
 .changelog
+
+packages/gamut-styles/demo-styles
