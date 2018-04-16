@@ -48,6 +48,7 @@ import ChevronDownIcon from './icons/ChevronDownIcon';
 import ChevronLeftIcon from './icons/ChevronLeftIcon';
 import ChevronRightIcon from './icons/ChevronRightIcon';
 import ChevronUpIcon from './icons/ChevronUpIcon';
+import CheckmarkIcon from './icons/CheckmarkIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
@@ -59,6 +60,7 @@ const iconMap = {
   article: ArticleIcon,
   bayes: BayesIcon,
   certificate: CertificateIcon,
+  checkmark: CheckmarkIcon,
   chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
