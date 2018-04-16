@@ -1,0 +1,44 @@
+@import "colors";
+
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700");
+
+$font-family-base: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+$font-size-base: 16px;
+$font-weight-base: normal;
+$line-height-base: 1.5;
+$color-body: $gamut-grey-800;
+$bg-body: $gamut-white;
+
+$spacer: 1rem;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-base: $font-weight-normal;
+
+$margin-bottom-headings: $spacer;
+$font-family-headings: inherit;
+$font-weight-headings: $font-weight-bold;
+$line-height-headings: 1.2;
+$color-headings: $color-body;
+
+$font-size-h1: $font-size-base * 2.5;
+$font-size-h2: $font-size-base * 2;
+$font-size-h3: $font-size-base * 1.75;
+$font-size-h4: $font-size-base * 1.5;
+$font-size-h5: $font-size-base * 1.25;
+$font-size-h6: $font-size-base;
+
+$margin-bottom-paragraph: $spacer;
+$font-size-small: 85%;
+$font-weight-dt: $font-weight-bold;
+
+$color-link: $gamut-blue-500;
+$font-weight-link: bold;
+$hover-color-link: $gamut-blue-700;
+$decoration-link: none;
+$hover-decoration-link: underline;
+
+$margin-bottom-label: $spacer;
