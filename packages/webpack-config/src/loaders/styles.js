@@ -1,9 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require('webpack-merge');
 
-// Only use debuggable class names in dev
-const DEV_CSS_MODULE_IDENT = '[name]__[local]___[hash:base64:5]';
-const CSS_MODULE_IDENT = (process.env.NODE_ENV === 'production') ? '' : DEV_CSS_MODULE_IDENT;
+const CSS_MODULE_IDENT = '[folder]__[name]__[local]__[hash:base64:5]';
 const SOURCEMAPS = !(process.env.NODE_ENV === 'production');
 
 const cssFilePattern = /\.css?$/;
