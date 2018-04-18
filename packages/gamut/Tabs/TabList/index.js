@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles';
+import Tab from '../Tab';
 
 const propTypes = {
   createBaseId: PropTypes.func.isRequired,
@@ -29,15 +30,16 @@ const TabList = ({
   const classes = cx(s.tabList, { [s.center]: center });
   return (
     <ul className={classes} style={{ maxWidth }}>
-      {React.Children.map(children, (tab, index) =>
-        React.cloneElement(tab, {
+      {React.Children.map(children, (tab, index) => {
+        if (!tab || tab.type !== Tab) return null;
+        return React.cloneElement(tab, {
           active: activeTabIndex === index,
           tabIndex: index,
           onChange,
           id: createBaseId(index),
           key: index,
-        })
-      )}
+        });
+      })}
     </ul>
   );
 };
