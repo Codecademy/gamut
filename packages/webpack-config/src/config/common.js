@@ -3,6 +3,7 @@ const loaders = require('../loaders');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 const ENV = require('../lib/env');
 
@@ -44,7 +45,15 @@ const commonConfig = (options = {}) => {
     config = merge.smart(config, {
       devtool: productionSourcemaps ? 'source-map' : false,
       optimization: {
-        minimize: true
+        minimize: true,
+        minimizer: [
+          new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: true // set to true if you want JS source maps
+          }),
+          new OptimizeCSSAssetsPlugin({})
+        ]
       }
     });
   } else {

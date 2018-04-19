@@ -59,7 +59,8 @@
   },
   "dependencies": {
     "autoprefixer": "^8.1.0",
-    "mini-css-extract-plugin": "^0.2.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
     "uglifyjs-webpack-plugin": ">= 1.2.3",
     "webpack-cli": "^2.0.12",
     "webpack-merge": "^4.1.2"

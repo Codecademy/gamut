@@ -30,6 +30,56 @@ Object {
   },
   "optimization": Object {
     "minimize": true,
+    "minimizer": Array [
+      UglifyJsPlugin {
+        "options": Object {
+          "cache": true,
+          "exclude": undefined,
+          "extractComments": false,
+          "include": undefined,
+          "parallel": true,
+          "sourceMap": true,
+          "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
+          "uglifyOptions": Object {
+            "output": Object {
+              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/,
+            },
+          },
+          "warningsFilter": [Function],
+        },
+        "sourceMapsCache": WeakMap {},
+      },
+      OptimizeCssAssetsWebpackPlugin {
+        "deleteAssetsMap": Object {},
+        "options": Object {
+          "assetNameRegExp": /\\\\\\.css\\$/g,
+          "assetProcessors": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "canPrint": undefined,
+          "cssProcessor": [Function],
+          "cssProcessorOptions": Object {},
+        },
+        "phaseAssetProcessors": Object {
+          "compilation.optimize-assets": Array [],
+          "compilation.optimize-chunk-assets": Array [
+            Object {
+              "phase": "compilation.optimize-chunk-assets",
+              "processor": [Function],
+              "regExp": /\\\\\\.css\\$/g,
+            },
+          ],
+          "emit": Array [],
+        },
+        "pluginDescriptor": Object {
+          "name": "OptimizeCssAssetsWebpackPlugin",
+        },
+      },
+    ],
   },
   "output": Object {
     "filename": "[name].js",
