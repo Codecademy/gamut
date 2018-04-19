@@ -18,8 +18,7 @@ describe('createConfig', () => {
   it('merges loaders', () => {
     const testConfig = createConfig()
       .common({
-        context: __dirname,
-        env: 'production'
+        context: __dirname
       })
       .if(false, (config) => {
         return config.merge({

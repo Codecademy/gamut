@@ -1,7 +1,9 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
+const ENV = require('../lib/env');
 
-const CSS_MODULE_IDENT = '[folder]__[name]__[local]__[hash:base64:5]';
+const PROD = ENV === 'production';
+const CSS_MODULE_IDENT = PROD ? '[local]__[hash:base64]' : '[folder]__[local]__[hash:base64:5]';
 const SOURCEMAPS = !(process.env.NODE_ENV === 'production');
 
 const cssFilePattern = /\.css?$/;
