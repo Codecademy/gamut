@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.6.25"></a>
+## [1.6.25](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.6.24...@codecademy/gamut@1.6.25) (2018-04-24)
+
+
+
+
+**Note:** Version bump only for package @codecademy/gamut
+
 <a name="1.6.24"></a>
 ## [1.6.24](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.6.23...@codecademy/gamut@1.6.24) (2018-04-19)
 
