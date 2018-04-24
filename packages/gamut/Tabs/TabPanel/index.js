@@ -6,18 +6,19 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   active: PropTypes.bool,
   renderAllPanels: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   id: '',
 };
 
-const TabPanel = ({ children, active, renderAllPanels, id }) => (
+const TabPanel = ({ children, active, renderAllPanels, id, className }) => (
   <div
     id={id}
     aria-labelledby={id.replace('-panel', '')}
     style={{ display: active ? 'block' : 'none' }}
-    className="tabPanel"
+    className={className}
   >
     {active || renderAllPanels ? children : null}
   </div>
