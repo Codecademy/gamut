@@ -34,14 +34,14 @@ describe('Tabs', () => {
       expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
       const activeTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .first()
         .text();
 
       expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
 
       const inactiveTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .last()
         .text();
       expect(inactiveTabPanelText).toBe('');
@@ -66,13 +66,13 @@ describe('Tabs', () => {
       expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
       const inactiveTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .first()
         .text();
       expect(inactiveTabPanelText).toBe('');
 
       const activeTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .last()
         .text();
       expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
@@ -86,14 +86,14 @@ describe('Tabs', () => {
       expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
 
       const activeTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .last()
         .text();
 
       expect(activeTabPanelText).toBe('welcome to tab 3hi i am tab 3');
 
       const inactiveTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .first()
         .text();
       expect(inactiveTabPanelText).toBe('');
@@ -111,13 +111,13 @@ describe('Tabs', () => {
       expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
       const inactiveTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .last()
         .text();
       expect(inactiveTabPanelText).toBe('');
 
       const activeTabPanelText = wrapper
-        .find('.tabPanel')
+        .find('div[data-test="tabPanel"]')
         .first()
         .text();
       expect(activeTabPanelText).toBe('welcome to tab 1hi i am tab 1');
