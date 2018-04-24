@@ -24,12 +24,15 @@ storiesOf('Component/Tabs', module)
         <TabList
           center={boolean('center', false)}
           maxWidth={text('maxWidth', undefined)}
+          className="some-additional-class"
         >
-          <Tab>{text('text_tab_1', 'Tab 1')}</Tab>
+          <Tab className="some-additional-class">
+            {text('text_tab_1', 'Tab 1')}
+          </Tab>
           <Tab>{text('text_tab_2', 'Tab 2')}</Tab>
           <Tab>{text('text_tab_3', 'Tab 3')}</Tab>
         </TabList>
-        <TabPanel>
+        <TabPanel className="some-additional-class">
           <h2>welcome to tab 1</h2>
           <p>hi i am tab 1</p>
         </TabPanel>
