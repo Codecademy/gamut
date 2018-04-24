@@ -19,7 +19,6 @@ const TabPanel = ({ children, active, renderAllPanels, id, className }) => (
     aria-labelledby={id.replace('-panel', '')}
     style={{ display: active ? 'block' : 'none' }}
     className={className}
-    data-test="tabPanel"
   >
     {active || renderAllPanels ? children : null}
   </div>
