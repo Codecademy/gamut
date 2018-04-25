@@ -1,29 +1,4 @@
 @import "colors";
-
-@font-face {
-  font-family: "Nunito Sans";
-  src: url("../fonts/Nunito_Sans/NunitoSans-Regular.eot");
-  src: url("../fonts/Nunito_Sans/NunitoSans-Regular.woff") format("woff"),
-    url("../fonts/Nunito_Sans/NunitoSans-Regular.ttf") format("ttf");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "Nunito Sans";
-  src: url("../fonts/Nunito_Sans/NunitoSans-Bold.eot");
-  src: url("../fonts/Nunito_Sans/NunitoSans-Bold.woff") format("woff"),
-    url("../fonts/Nunito_Sans/NunitoSans-Bold.ttf") format("ttf");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Regular Bold";
-  src: url("../fonts/Regular_Bold/Regular-BoldWEB.eot");
-  src: url("../fonts/Regular_Bold/Regular-BoldWEB.woff2") format("woff2"),
-    url("../fonts/Regular_Bold/Regular-BoldWEB.woff") format("woff"),
-    url("../fonts/Regular_Bold/Regular-BoldWEB.svg") format("svg");
-}
-
 $font-family-base: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
   "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
