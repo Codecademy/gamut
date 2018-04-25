@@ -1,6 +1,20 @@
 @import "colors";
 
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700");
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("../fonts/Nunito_Sans/NunitoSans-Regular.eot");
+  src: url("../fonts/Nunito_Sans/NunitoSans-Regular.woff") format("woff"),
+    url("../fonts/Nunito_Sans/NunitoSans-Regular.ttf") format("ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("../fonts/Nunito_Sans/NunitoSans-Bold.eot");
+  src: url("../fonts/Nunito_Sans/NunitoSans-Bold.woff") format("woff"),
+    url("../fonts/Nunito_Sans/NunitoSans-Bold.ttf") format("ttf");
+  font-weight: bold;
+}
 
 @font-face {
   font-family: "Regular Bold";
