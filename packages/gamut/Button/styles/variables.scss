@@ -22,7 +22,9 @@ $btn-padding-x-lg: 1.25rem !default;
 $btn-padding-y-lg: 0.75rem !default;
 $btn-min-width-lg: px-rem(160) !default;
 
-$btn-border-radius: 2px;
+$btn-border-radius: 2px !default;
+
+$btn-round-border-radius: 25px !default;
 
 $btn-state-modifier: 20% !default;
 $btn-color-modifier: 10% !default;

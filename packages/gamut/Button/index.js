@@ -31,8 +31,7 @@ const propTypes = {
 };
 
 const Button = props => {
-  let { theme = 'primary' } = props;
-  const { rounded = true } = props;
+  let { theme = 'primary', rounded } = props;
 
   if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];

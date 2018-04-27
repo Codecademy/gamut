@@ -260,4 +260,40 @@ storiesOf('Component/Button', module)
         </p>
       </div>
     ))
+  )
+  .add(
+    'Rounded',
+    withInfo({
+      ...options,
+    })(() => (
+      <div>
+        <Button style={btnStyle} theme="primary" outline href="#" rounded>
+          Outline
+        </Button>
+        <Button style={btnStyle} theme="primary" size="large" rounded>
+          Large
+        </Button>
+        <Button
+          style={btnStyle}
+          theme="secondary"
+          size="small"
+          href="#"
+          rounded
+        >
+          Small
+        </Button>
+        <Button style={btnStyle} theme="primary" disabled rounded>
+          Disabled
+        </Button>
+        <Button style={btnStyle} theme="primary" rounded>
+          <Spinner />&nbsp;&nbsp;Loading...
+        </Button>
+        <Button style={btnStyle} theme="secondary" rounded>
+          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+        </Button>
+        <Button style={btnStyle} theme="primary" caps href="#" rounded>
+          Caps
+        </Button>
+      </div>
+    ))
   );
