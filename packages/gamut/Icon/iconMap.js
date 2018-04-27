@@ -39,7 +39,6 @@ import RubyIcon from './icons/RubyIcon';
 import SassIcon from './icons/SassIcon';
 import SciPyIcon from './icons/SciPyIcon';
 import SQLIcon from './icons/SQLIcon';
-import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
