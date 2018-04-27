@@ -262,36 +262,60 @@ storiesOf('Component/Button', module)
     ))
   )
   .add(
-    'Rounded',
+    'round',
     withInfo({
       ...options,
     })(() => (
       <div>
-        <Button style={btnStyle} theme="primary" outline href="#" rounded>
+        <Button style={btnStyle} theme="primary" outline href="#" round>
           Outline
         </Button>
-        <Button style={btnStyle} theme="primary" size="large" rounded>
+        <Button style={btnStyle} theme="primary" size="large" round>
           Large
         </Button>
-        <Button
-          style={btnStyle}
-          theme="secondary"
-          size="small"
-          href="#"
-          rounded
-        >
+        <Button style={btnStyle} theme="secondary" size="small" href="#" round>
           Small
         </Button>
-        <Button style={btnStyle} theme="primary" disabled rounded>
+        <Button style={btnStyle} theme="primary" disabled round>
           Disabled
         </Button>
-        <Button style={btnStyle} theme="primary" rounded>
+        <Button style={btnStyle} theme="primary" round>
           <Spinner />&nbsp;&nbsp;Loading...
         </Button>
-        <Button style={btnStyle} theme="secondary" rounded>
+        <Button style={btnStyle} theme="secondary" round>
           <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
         </Button>
-        <Button style={btnStyle} theme="primary" caps href="#" rounded>
+        <Button style={btnStyle} theme="primary" caps href="#" round>
+          Caps
+        </Button>
+      </div>
+    ))
+  )
+  .add(
+    'square',
+    withInfo({
+      ...options,
+    })(() => (
+      <div>
+        <Button style={btnStyle} theme="primary" outline href="#" square>
+          Outline
+        </Button>
+        <Button style={btnStyle} theme="primary" size="large" square>
+          Large
+        </Button>
+        <Button style={btnStyle} theme="secondary" size="small" href="#" square>
+          Small
+        </Button>
+        <Button style={btnStyle} theme="primary" disabled square>
+          Disabled
+        </Button>
+        <Button style={btnStyle} theme="primary" square>
+          <Spinner />&nbsp;&nbsp;Loading...
+        </Button>
+        <Button style={btnStyle} theme="secondary" square>
+          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+        </Button>
+        <Button style={btnStyle} theme="primary" caps href="#" square>
           Caps
         </Button>
       </div>

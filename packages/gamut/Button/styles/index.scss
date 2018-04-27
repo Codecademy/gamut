@@ -34,8 +34,12 @@ fieldset[disabled] a.btn {
   }
 }
 
-.rounded {
+.round {
   border-radius: $btn-round-border-radius;
+}
+
+.square {
+  border-radius: 0;
 }
 //
 // Button Sizes
