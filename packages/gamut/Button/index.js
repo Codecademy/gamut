@@ -31,7 +31,7 @@ const propTypes = {
 };
 
 const Button = props => {
-  let { theme = 'primary', rounded } = props;
+  let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {
     theme = presetThemes[theme];
@@ -50,7 +50,7 @@ const Button = props => {
       [s.outline]: props.outline,
       [s.underline]: props.underline,
       [s.caps]: props.caps,
-      [s.rounded]: rounded,
+      [s.rounded]: props.rounded,
       [s.flat]: props.flat,
       [s['fit-text']]: props.fitText,
     },
