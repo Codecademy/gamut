@@ -21,6 +21,7 @@ import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import jQueryIcon from './icons/jQueryIcon';
 import LearnIcon from './icons/LearnIcon';
+import LessonIcon from './icons/LessonIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
 import MAWIcon from './icons/MAWIcon';
