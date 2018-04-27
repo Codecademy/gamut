@@ -8,6 +8,7 @@ import ArticleIcon from './icons/ArticleIcon';
 import BayesIcon from './icons/BayesIcon';
 import CertificateIcon from './icons/CertificateIcon';
 import ClockIcon from './icons/ClockIcon';
+import CloseIcon from './icons/CloseIcon';
 import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import CSSIcon from './icons/CSSIcon';
@@ -66,6 +67,7 @@ const iconMap = {
   chevronRight: ChevronRightIcon,
   chevronUp: ChevronUpIcon,
   clock: ClockIcon,
+  close: CloseIcon,
   colors: ColorsIcon,
   community: CommunityIcon,
   css: CSSIcon,
