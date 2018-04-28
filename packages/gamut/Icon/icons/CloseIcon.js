@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CertificateIcon(props) {
+export default function CloseIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Close Icon</title>
