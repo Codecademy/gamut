@@ -11,7 +11,7 @@
   font-weight: $btn-font-weight;
   @include font-smoothing;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: $btn-border-radius;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height, $btn-min-width-sm);
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
@@ -34,10 +34,13 @@ fieldset[disabled] a.btn {
   }
 }
 
-.rounded {
-  border-radius: $btn-border-radius;
+.round {
+  border-radius: $btn-round-border-radius;
 }
 
+.square {
+  border-radius: 0;
+}
 //
 // Button Sizes
 //
