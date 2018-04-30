@@ -4,6 +4,7 @@ import iconMap from './iconMap';
 
 const propTypes = {
   name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
+  size: PropTypes.number,
   height: PropTypes.number,
   width: PropTypes.number,
 };
@@ -13,8 +14,13 @@ const defaultProps = {
   width: 24,
 };
 
-function Icon({ name, ...props }) {
+function Icon({ name, size, ...props }) {
   const MappedIcon = iconMap[name];
+
+  if (size) {
+    props.width = size;
+    props.height = size;
+  }
 
   return (
     <MappedIcon

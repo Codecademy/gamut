@@ -22,6 +22,7 @@ import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import jQueryIcon from './icons/jQueryIcon';
 import LearnIcon from './icons/LearnIcon';
+import LessonIcon from './icons/LessonIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
 import MAWIcon from './icons/MAWIcon';
@@ -39,7 +40,6 @@ import RubyIcon from './icons/RubyIcon';
 import SassIcon from './icons/SassIcon';
 import SciPyIcon from './icons/SciPyIcon';
 import SQLIcon from './icons/SQLIcon';
-import SyllabusIcon from './icons/SyllabusIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
@@ -81,6 +81,7 @@ const iconMap = {
   javascript: JavascriptIcon,
   jQuery: jQueryIcon,
   learn: LearnIcon,
+  lesson: LessonIcon,
   maintenance: MaintenanceIcon,
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
@@ -98,7 +99,7 @@ const iconMap = {
   sass: SassIcon,
   sciPy: SciPyIcon,
   sql: SQLIcon,
-  syllabus: SyllabusIcon,
+  syllabus: LessonIcon,
   tdd: TDDIcon,
   terminal: TerminalIcon,
   trophy: TrophyIcon,

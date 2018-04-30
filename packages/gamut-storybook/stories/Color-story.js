@@ -4,6 +4,7 @@ import {
   colors,
   gamutColors,
   editorColors,
+  brandColors,
 } from '@codecademy/gamut-styles/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
@@ -110,5 +111,16 @@ stories.add(
       </div>
     );
   },
+  infoOptions
+);
+
+stories.add(
+  'Brand colors',
+  () => (
+    <div>
+      <h2 className={s.heading}>brand colors</h2>
+      {renderSwatch(brandColors, 'Brand')}
+    </div>
+  ),
   infoOptions
 );

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.14"></a>
+## [1.7.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.13...@codecademy/gamut-storybook@1.7.14) (2018-04-30)
+
+
+
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+<a name="1.7.13"></a>
+## [1.7.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.12...@codecademy/gamut-storybook@1.7.13) (2018-04-30)
+
+
+
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+<a name="1.7.12"></a>
+## [1.7.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.11...@codecademy/gamut-storybook@1.7.12) (2018-04-30)
+
+
+
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
 <a name="1.7.11"></a>
 ## [1.7.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.10...@codecademy/gamut-storybook@1.7.11) (2018-04-27)
 
