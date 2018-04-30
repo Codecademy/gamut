@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "1.6.27",
+  "version": "1.6.28",
   "author": "Jake Hiller <jake@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
