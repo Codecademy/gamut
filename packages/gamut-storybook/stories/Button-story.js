@@ -26,6 +26,13 @@ const themeKeys = [
   'ccblue',
   'royalblue',
   'purple',
+  'brand-red',
+  'brand-yellow',
+  'brand-purple',
+  'brand-pink',
+  'brand-mint',
+  'brand-beige',
+  'brand-darkblue',
 ];
 
 const themes = {};
@@ -39,7 +46,6 @@ const btnStyle = {
 };
 
 storiesOf('Component/Button', module)
-  .add('About Buttons', () => <div>Button philosophy goes here.</div>)
   .add(
     'All Button Themes',
     withInfo({
