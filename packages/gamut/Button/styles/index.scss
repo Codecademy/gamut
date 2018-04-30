@@ -27,7 +27,7 @@ fieldset[disabled] a.btn {
   @if $name == "yellow" {
     @include button-variants($name, $color-black, $color);
   }
-  @elseif lightness($color) > 75 {
+  @elseif lightness($color) > 68 {
     @include button-variants($name, $color-black, $color);
   } @else {
     @include button-variants($name, $color-white, $color);
