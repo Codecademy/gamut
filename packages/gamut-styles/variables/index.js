@@ -8,6 +8,20 @@ function convertSwatchStringToObject(swatchString) {
 }
 
 // =======================================
+//       BRAND COLORS
+// =======================================
+
+export const brandColors = {
+  red: scssExports.brandRed,
+  yellow: scssExports.brandYellow,
+  purple: scssExports.brandPurple,
+  pink: scssExports.brandPink,
+  mint: scssExports.brandMint,
+  beige: scssExports.brandBeige,
+  black: scssExports.brandBlack,
+};
+
+// =======================================
 //       NEW DESIGN SYSTEM COLORS
 // =======================================
 
