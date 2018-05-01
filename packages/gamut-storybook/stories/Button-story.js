@@ -16,7 +16,7 @@ const themeKeys = [
   'mint',
   'darkmint',
   'blue',
-  'darkblue',
+  'dark-blue',
   'midnightblue',
   'grey',
   'red',
@@ -32,7 +32,7 @@ const themeKeys = [
   'brand-pink',
   'brand-mint',
   'brand-beige',
-  'brand-darkblue',
+  'brand-dark-blue',
 ];
 
 const themes = {};

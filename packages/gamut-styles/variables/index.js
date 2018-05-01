@@ -18,7 +18,7 @@ export const brandColors = {
   pink: scssExports.brandPink,
   mint: scssExports.brandMint,
   beige: scssExports.brandBeige,
-  darkBlue: scssExports.brandDarkBlue,
+  'dark-blue': scssExports.brandDarkBlue,
 };
 
 // =======================================
