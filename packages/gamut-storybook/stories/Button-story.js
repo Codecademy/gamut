@@ -32,7 +32,7 @@ const themeKeys = [
   'brand-pink',
   'brand-mint',
   'brand-beige',
-  'brand-darkblue',
+  'brand-dark-blue',
 ];
 
 const themes = {};
