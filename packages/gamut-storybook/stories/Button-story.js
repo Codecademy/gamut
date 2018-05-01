@@ -16,7 +16,7 @@ const themeKeys = [
   'mint',
   'darkmint',
   'blue',
-  'dark-blue',
+  'darkblue',
   'midnightblue',
   'grey',
   'red',
