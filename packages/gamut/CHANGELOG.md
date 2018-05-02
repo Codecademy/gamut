@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.6.32...@codecademy/gamut@1.7.0) (2018-05-02)
+
+
+### Features
+
+* **icons:** PathIcon ([31c1d79](https://github.com/RyzacInc/gamut/commit/31c1d79))
+
+
+
+
 <a name="1.6.32"></a>
 ## [1.6.32](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.6.31...@codecademy/gamut@1.6.32) (2018-05-01)
 
