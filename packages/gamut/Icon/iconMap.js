@@ -6,12 +6,17 @@ import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
 import BayesIcon from './icons/BayesIcon';
+import CSSIcon from './icons/CSSIcon';
 import CertificateIcon from './icons/CertificateIcon';
+import CheckmarkIcon from './icons/CheckmarkIcon';
+import ChevronDownIcon from './icons/ChevronDownIcon';
+import ChevronLeftIcon from './icons/ChevronLeftIcon';
+import ChevronRightIcon from './icons/ChevronRightIcon';
+import ChevronUpIcon from './icons/ChevronUpIcon';
 import ClockIcon from './icons/ClockIcon';
 import CloseIcon from './icons/CloseIcon';
 import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
-import CSSIcon from './icons/CSSIcon';
 import DAWIcon from './icons/DAWIcon';
 import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
@@ -20,15 +25,15 @@ import GlassesIcon from './icons/GlassesIcon';
 import HTMLIcon from './icons/HTMLIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
-import jQueryIcon from './icons/jQueryIcon';
 import LearnIcon from './icons/LearnIcon';
 import LessonIcon from './icons/LessonIcon';
+import MAWIcon from './icons/MAWIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
-import MAWIcon from './icons/MAWIcon';
 import NumPyIcon from './icons/NumPyIcon';
-import PandasIcon from './icons/PandasIcon';
 import PHPIcon from './icons/PHPIcon';
+import PandasIcon from './icons/PandasIcon';
+import PathIcon from './icons/PathIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
@@ -37,19 +42,15 @@ import ReactIcon from './icons/ReactIcon';
 import ResetIcon from './icons/ResetIcon';
 import ResponsiveIcon from './icons/ResponsiveIcon';
 import RubyIcon from './icons/RubyIcon';
+import SQLIcon from './icons/SQLIcon';
 import SassIcon from './icons/SassIcon';
 import SciPyIcon from './icons/SciPyIcon';
-import SQLIcon from './icons/SQLIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
-import ChevronDownIcon from './icons/ChevronDownIcon';
-import ChevronLeftIcon from './icons/ChevronLeftIcon';
-import ChevronRightIcon from './icons/ChevronRightIcon';
-import ChevronUpIcon from './icons/ChevronUpIcon';
-import CheckmarkIcon from './icons/CheckmarkIcon';
+import jQueryIcon from './icons/jQueryIcon';
 
 const iconMap = {
   accessibility: AccessibilityIcon,
@@ -77,9 +78,9 @@ const iconMap = {
   git: GitIcon,
   glasses: GlassesIcon,
   html: HTMLIcon,
+  jQuery: jQueryIcon,
   java: JavaIcon,
   javascript: JavascriptIcon,
-  jQuery: jQueryIcon,
   learn: LearnIcon,
   lesson: LessonIcon,
   maintenance: MaintenanceIcon,
@@ -87,6 +88,7 @@ const iconMap = {
   maw: MAWIcon,
   numPy: NumPyIcon,
   pandas: PandasIcon,
+  path: PathIcon,
   php: PHPIcon,
   project: ProjectIcon,
   python: PythonIcon,
