@@ -2,7 +2,7 @@
 
 ## Component Guidelines
 
-1. Core Gamut components should be stateless if at all possible. This increases flexibility allowing parent components and data stores like redux to control state, and also simplifies components making them easier to understand and test. 
+1. Core Gamut components should be stateless if at all possible. This increases flexibility allowing parent components and data stores like redux to control state, and also simplifies components making them easier to understand and test.
 2. Components should be broken down into their most useful and flexible parts.
 
 ## When to add a component to Gamut
@@ -21,3 +21,4 @@ Gamut components expect `box-sizing: border-box` to be applied to all elements o
   box-sizing: border-box;
 }
 ```
+
