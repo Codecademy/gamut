@@ -24,7 +24,7 @@ class Toggle extends Component {
         htmlFor={label}
       >
         <input
-          type="input"
+          type="checkbox"
           checked={checked}
           className={s.invisible}
           id={label}
