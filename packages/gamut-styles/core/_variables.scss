@@ -6,7 +6,7 @@ $font-family-base: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 $font-size-base: 16px;
 $font-weight-base: normal;
 $line-height-base: 1.5;
-$color-body: $gamut-grey-800;
+$color-body: mix($gamut-grey-800, $gamut-grey-900);
 $bg-body: $gamut-white;
 
 $spacer: 1rem;
@@ -33,8 +33,8 @@ $margin-bottom-paragraph: $spacer;
 $font-size-small: 85%;
 $font-weight-dt: $font-weight-bold;
 
-$color-link: $gamut-blue-500;
-$hover-color-link: $gamut-blue-700;
+$color-link: $gamut-royal-blue-500;
+$hover-color-link: $gamut-royal-blue-600;
 $decoration-link: none;
 $hover-decoration-link: underline;
 
