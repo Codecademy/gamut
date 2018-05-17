@@ -14,8 +14,8 @@ references:
   restore_repo: &restore_repo
     restore_cache:
       keys:
-        - v1-repo-{{ .Branch }}-{{ .Revision }}
-        - v1-repo-{{ .Branch }}
+        - *repo_cache_key_1
+        - *repo_cache_key_2
 
   set_git_user: &set_git_user
     run:
