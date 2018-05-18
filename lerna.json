@@ -1,14 +1,12 @@
 {
-  "lerna": "2.5.1",
-  "version": "1.1.2",
+  "lerna": "3.0.0-beta.21",
   "version": "independent",
   "npmClient": "yarn",
   "conventionalCommits": true,
   "useWorkspaces": true,
   "packages": ["packages/*"],
-  "commands": {
+  "command": {
     "publish": {
-      "ignore": "gamut-storybook",
       "allowBranch": "master"
     }
   }
