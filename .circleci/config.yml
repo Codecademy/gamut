@@ -48,8 +48,8 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
-      - *set_npm_token
       - checkout
+      - *set_npm_token
       - save_cache:
           key: *repo_cache_key_1
           paths:
