@@ -12,7 +12,13 @@
   @include font-smoothing;
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height, $btn-min-width-sm);
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size-base,
+    $btn-line-height,
+    $btn-min-width-sm
+  );
   transition: all 0.1s ease-in-out;
   font-family: $btn-font-family;
 }
@@ -50,12 +56,24 @@ fieldset[disabled] a.btn {
 
 .large {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-min-width-lg);
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-line-height-lg,
+    $btn-min-width-lg
+  );
 }
 
 .small {
   // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-min-width-sm);
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-line-height-sm,
+    $btn-min-width-sm
+  );
 }
 
 //

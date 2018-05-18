@@ -22,8 +22,8 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ### Running storybook
 
-1. Cd into `packages/gamut-storybook` and run `npm start` to start the storybook server
-1. Add new stories to `packages/gamut-storybook/stories`
+1. Cd into `workspaces/gamut-storybook` and run `npm start` to start the storybook server
+1. Add new stories to `workspaces/gamut-storybook/stories`
 
 ### Cross-package development
 

@@ -13,7 +13,7 @@
     "test": "jest",
     "lint": "eslint \"packages/**/*.{js,json}\"",
     "lerna": "lerna",
-    "format": "prettier-eslint --prettier-last --write \"packages/**/*.{js,json,css,scss}\"",
+    "format": "prettier-eslint --prettier-last --write \"./**/*.{js,json,css,scss}\"",
     "precommit": "lint-staged"
   },
   "repository": {
@@ -21,10 +21,11 @@
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "workspaces/*"
   ],
   "dependencies": {
-    "lerna": "^2.8.0"
+    "lerna": "^3.0.0-beta.21"
   },
   "devDependencies": {
     "babel-eslint": "7.2.0",
@@ -42,15 +43,15 @@
     "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.4",
-    "lint-staged": "^4.3.0",
-    "prettier": "1.9.1",
-    "prettier-eslint-cli": "4.4.2",
+    "lint-staged": "^7.1.0",
+    "prettier": "1.12.1",
+    "prettier-eslint-cli": "4.7.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4"
   },
   "lint-staged": {
-    "packages/**/*.{js,json,css,scss}": [
+    "**/*.{js,json,css,scss}": [
       "prettier-eslint --prettier-last --write",
       "git add"
     ]
