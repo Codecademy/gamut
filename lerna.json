@@ -4,7 +4,7 @@
   "npmClient": "yarn",
   "conventionalCommits": true,
   "useWorkspaces": true,
-  "packages": ["packages/*"],
+  "packages": ["packages/*", "utils/*"],
   "command": {
     "publish": {
       "allowBranch": "master"
