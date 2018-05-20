@@ -18,9 +18,9 @@
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RyzacInc/webpack-config"
+    "url": "https://github.com/RyzacInc/gamut/packages/webpack-config"
   },
-  "homepage": "https://github.com/RyzacInc/webpack-config",
+  "homepage": "https://github.com/RyzacInc/gamut/packages/webpack-config",
   "peerDependencies": {
     "babel-core": ">= 6.0 < 7.0",
     "babel-loader": ">= 7.1.4",
