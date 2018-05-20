@@ -9,7 +9,7 @@ const ENV = require('../lib/env');
 const DEV = ENV !== 'production';
 
 const commonConfig = (options = {}) => {
-  const { productionSourcemaps = true, env = ENV } = options;
+  const { productionSourcemaps = true, env = ENV, uglifyOptions = {}} = options;
   let config = {
     context: options.context,
 
@@ -49,7 +49,13 @@ const commonConfig = (options = {}) => {
           new UglifyJsPlugin({
             cache: true,
             parallel: true,
-            sourceMap: true // set to true if you want JS source maps
+            sourceMap: productionSourcemaps,
+            uglifyOptions: {
+              compress: {
+                inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
+              },
+              ...uglifyOptions,
+            },
           }),
         ]
       }

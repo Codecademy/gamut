@@ -3,9 +3,9 @@
 exports[`createConfig merges loaders 1`] = `
 Object {
   "context": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__",
-  "devtool": "source-map",
+  "devtool": "cheap-module-eval-source-map",
   "entry": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__/src/main.js",
-  "mode": "production",
+  "mode": "development",
   "module": Object {
     "rules": Array [
       Object {
@@ -24,64 +24,13 @@ Object {
       },
       Object {
         "loader": "file-loader",
-        "test": /\\\\\\.jpe\\?g\\$\\|\\\\\\.gif\\$\\|\\\\\\.png\\$\\|\\\\\\.svg\\$\\|\\\\\\.woff\\$\\|\\\\\\.ttf\\$\\|\\\\\\.eot\\|\\\\\\.wav\\$\\|\\\\\\.mp3\\$/,
-      },
-    ],
-  },
-  "optimization": Object {
-    "minimize": true,
-    "minimizer": Array [
-      UglifyJsPlugin {
-        "options": Object {
-          "cache": true,
-          "exclude": undefined,
-          "extractComments": false,
-          "include": undefined,
-          "parallel": true,
-          "sourceMap": true,
-          "test": /\\\\\\.js\\(\\\\\\?\\.\\*\\)\\?\\$/i,
-          "uglifyOptions": Object {
-            "output": Object {
-              "comments": /\\^\\\\\\*\\*!\\|@preserve\\|@license\\|@cc_on/,
-            },
-          },
-          "warningsFilter": [Function],
-        },
-        "sourceMapsCache": WeakMap {},
-      },
-      OptimizeCssAssetsWebpackPlugin {
-        "deleteAssetsMap": Object {},
-        "options": Object {
-          "assetNameRegExp": /\\\\\\.css\\$/g,
-          "assetProcessors": Array [
-            Object {
-              "phase": "compilation.optimize-chunk-assets",
-              "processor": [Function],
-              "regExp": /\\\\\\.css\\$/g,
-            },
-          ],
-          "canPrint": undefined,
-          "cssProcessor": [Function],
-          "cssProcessorOptions": Object {},
-        },
-        "phaseAssetProcessors": Object {
-          "compilation.optimize-assets": Array [],
-          "compilation.optimize-chunk-assets": Array [
-            Object {
-              "phase": "compilation.optimize-chunk-assets",
-              "processor": [Function],
-              "regExp": /\\\\\\.css\\$/g,
-            },
-          ],
-          "emit": Array [],
-        },
-        "pluginDescriptor": Object {
-          "name": "OptimizeCssAssetsWebpackPlugin",
-        },
+        "test": /\\\\\\.jpe\\?g\\$\\|\\\\\\.gif\\$\\|\\\\\\.png\\$\\|\\\\\\.svg\\$\\|\\\\\\.woff2\\?\\$\\|\\\\\\.ttf\\$\\|\\\\\\.eot\\|\\\\\\.wav\\$\\|\\\\\\.mp3\\$/,
       },
     ],
   },
   "output": Object {
+    "devtoolFallbackModuleFilenameTemplate": "[resourcePath]?[hash]",
+    "devtoolModuleFilenameTemplate": "[absolute-resource-path]",
     "filename": "[name].js",
     "path": "/Users/jake/Sites/Codecademy/npm/webpack-config/src/__tests__/dist",
   },
