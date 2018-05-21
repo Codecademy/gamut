@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.22"></a>
+## [1.3.22](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-styles@1.3.21...@codecademy/gamut-styles@1.3.22) (2018-05-21)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 <a name="1.3.21"></a>
 ## [1.3.21](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-styles@1.3.20...@codecademy/gamut-styles@1.3.21) (2018-05-16)
 
