@@ -1,0 +1,68 @@
+{
+  "name": "@codecademy/webpack-config",
+  "version": "3.2.0",
+  "description": "Config files for webpack",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "webpack": "webpack",
+    "example": "webpack --profile --config=./example/webpack.config.js",
+    "example-prod": "NODE_ENV=production webpack --profile --config=./example/webpack.config.js",
+    "example-dev": "webpack-dev-server --config=./example/webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyzacInc/webpack-config"
+  },
+  "author": "codecademy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyzacInc/gamut/packages/webpack-config"
+  },
+  "homepage": "https://github.com/RyzacInc/gamut/packages/webpack-config",
+  "peerDependencies": {
+    "babel-core": ">= 6.0 < 7.0",
+    "babel-loader": ">= 7.1.4",
+    "babel-plugin-react-transform": ">= 2.0",
+    "babel-preset-codecademy": ">= 1.0",
+    "css-loader": ">= 0.28.10",
+    "file-loader": ">= 1.1.11",
+    "node-sass": ">= 4.5.2",
+    "postcss-loader": ">= 2.1.1",
+    "sass-loader": ">= 6.0.7",
+    "style-loader": ">= 0.20.3",
+    "webpack": ">= 4.0 < 5.0",
+    "webpack-dev-server": ">= 3.0 < 5.0"
+  },
+  "devDependencies": {
+    "babel-core": ">= 6.0 < 7.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": ">= 7.1.4",
+    "babel-plugin-react-transform": ">= 2.0",
+    "babel-preset-codecademy": ">= 1.0",
+    "css-loader": ">= 0.28.10",
+    "eslint": "3.17.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
+    "file-loader": ">= 1.1.11",
+    "jest": "20.0.1",
+    "jquery": "^3.3.1",
+    "node-sass": ">= 4.5.2",
+    "postcss-loader": ">= 2.1.1",
+    "sass-loader": ">= 6.0.7",
+    "style-loader": ">= 0.20.3",
+    "webpack": ">= 4.0 < 5.0",
+    "webpack-dev-server": ">= 3.0 < 5.0"
+  },
+  "dependencies": {
+    "autoprefixer": "^8.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "uglifyjs-webpack-plugin": ">= 1.2.3",
+    "webpack-cli": "^2.0.12",
+    "webpack-merge": "^4.1.2"
+  }
+}
