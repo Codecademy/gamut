@@ -3,7 +3,9 @@ const merge = require('webpack-merge');
 const ENV = require('../lib/env');
 
 const PROD = ENV === 'production';
-const CSS_MODULE_IDENT = PROD ? '[local]__[hash:base64]' : '[folder]__[local]__[hash:base64:5]';
+const CSS_MODULE_IDENT = PROD
+  ? '[local]__[hash:base64]'
+  : '[folder]__[local]__[hash:base64:5]';
 const SOURCEMAPS = !(process.env.NODE_ENV === 'production');
 
 const cssFilePattern = /\.css?$/;
@@ -12,56 +14,53 @@ const cssLoaderDefaults = {
   options: {
     importLoaders: 1,
     sourceMap: SOURCEMAPS,
-    localIdentName: CSS_MODULE_IDENT
-  }
+    localIdentName: CSS_MODULE_IDENT,
+  },
 };
 
 const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
     sourceMap: SOURCEMAPS,
-    plugins: () => [
-      require('autoprefixer')()
-    ]
-  }
+    plugins: () => [require('autoprefixer')()],
+  },
 };
 
 const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
   options: {
-    sourceMap: SOURCEMAPS
-  }
+    sourceMap: SOURCEMAPS,
+  },
 };
-
 
 const css = {
   default: {
     test: cssFilePattern,
     use: [
       {
-        loader: 'style-loader'
+        loader: 'style-loader',
       },
       merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults)
-    ]
+      merge(postCssLoaderDefaults),
+    ],
   },
   extracted: {
     test: cssFilePattern,
     use: [
       MiniCssExtractPlugin.loader,
       merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults)
-    ]
+      merge(postCssLoaderDefaults),
+    ],
   },
   server: {
     test: cssFilePattern,
     use: [
       merge(cssLoaderDefaults, {
-        loader: 'css-loader/locals'
-      })
-    ]
-  }
+        loader: 'css-loader/locals',
+      }),
+    ],
+  },
 };
 
 const scss = {
@@ -69,16 +68,16 @@ const scss = {
     test: scssFilePattern,
     use: [
       {
-        loader: 'style-loader'
+        loader: 'style-loader',
       },
       merge(cssLoaderDefaults, {
         options: {
-          modules: true
-        }
+          modules: true,
+        },
       }),
       merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults)
-    ]
+      merge(scssLoaderDefaults),
+    ],
   },
   extracted: {
     test: scssFilePattern,
@@ -86,12 +85,12 @@ const scss = {
       MiniCssExtractPlugin.loader,
       merge(cssLoaderDefaults, {
         options: {
-          modules: true
-        }
+          modules: true,
+        },
       }),
       merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults)
-    ]
+      merge(scssLoaderDefaults),
+    ],
   },
   server: {
     test: scssFilePattern,
@@ -99,16 +98,16 @@ const scss = {
       merge(cssLoaderDefaults, {
         loader: 'css-loader/locals',
         options: {
-          modules: true
-        }
+          modules: true,
+        },
       }),
       merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults)
-    ]
-  }
+      merge(scssLoaderDefaults),
+    ],
+  },
 };
 
 module.exports = {
   css,
-  scss
+  scss,
 };

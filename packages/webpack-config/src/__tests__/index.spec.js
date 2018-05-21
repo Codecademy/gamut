@@ -1,14 +1,13 @@
 const { createConfig } = require('../index');
 
 describe('createConfig', () => {
-
   it('merges custom config', () => {
     const testConfig = createConfig()
       .common({
-        context: __dirname
+        context: __dirname,
       })
       .merge({
-        entry: 'my-file.js'
+        entry: 'my-file.js',
       })
       .toConfig();
 
@@ -18,21 +17,20 @@ describe('createConfig', () => {
   it('merges loaders', () => {
     const testConfig = createConfig()
       .common({
-        context: __dirname
+        context: __dirname,
       })
-      .if(false, (config) => {
-        return config.merge({
-          notInTheSnapshot: true
-        });
-      })
+      .if(false, config =>
+        config.merge({
+          notInTheSnapshot: true,
+        })
+      )
       .mergeLoader({
         test: /\.js?$/,
         loader: 'babel-loader',
-        include: [__dirname]
+        include: [__dirname],
       })
       .toConfig();
 
     expect(testConfig).toMatchSnapshot();
   });
-
 });

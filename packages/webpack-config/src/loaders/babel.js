@@ -3,14 +3,16 @@ const babel = {
     test: /\.js?$/,
     loader: 'babel-loader',
     exclude(modulePath) {
-      return /node_modules/.test(modulePath) &&
-          !/node_modules\/@codecademy/.test(modulePath);
+      return (
+        /node_modules/.test(modulePath) &&
+        !/node_modules\/@codecademy/.test(modulePath)
+      );
     },
     options: {
       cacheDirectory: true,
-      presets: ['codecademy']
-    }
-  }
+      presets: ['codecademy'],
+    },
+  },
 };
 
 module.exports = babel;

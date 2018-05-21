@@ -4,7 +4,7 @@ const configs = {
   css: require('./css'),
   cssExtracted: require('./css-extracted'),
   cssServer: require('./css-server'),
-  babel: require('./babel')
+  babel: require('./babel'),
 };
 
 module.exports = configs;

@@ -9,7 +9,11 @@ const ENV = require('../lib/env');
 const DEV = ENV !== 'production';
 
 const commonConfig = (options = {}) => {
-  const { productionSourcemaps = true, env = ENV, uglifyOptions = {}} = options;
+  const {
+    productionSourcemaps = true,
+    env = ENV,
+    uglifyOptions = {},
+  } = options;
   let config = {
     context: options.context,
 
@@ -19,25 +23,25 @@ const commonConfig = (options = {}) => {
 
     output: {
       filename: '[name].js',
-      path: path.resolve(options.context, 'dist')
+      path: path.resolve(options.context, 'dist'),
     },
 
     module: {
-      rules: [loaders.babel.default, loaders.files.default]
+      rules: [loaders.babel.default, loaders.files.default],
     },
 
     resolve: {
       extensions: ['.webpack.js', '.web.js', '.js', '.scss', '.css', '.json'],
-      modules: ['node_modules', 'node_modules/@codecademy']
+      modules: ['node_modules', 'node_modules/@codecademy'],
     },
 
     plugins: [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': `"${ENV}"`,
-        __DEV__: DEV
+        __DEV__: DEV,
       }),
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/)
-    ]
+      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+    ],
   };
 
   if (config.mode === 'production') {
@@ -57,16 +61,16 @@ const commonConfig = (options = {}) => {
               ...uglifyOptions,
             },
           }),
-        ]
-      }
+        ],
+      },
     });
   } else {
     config = merge.smart(config, {
       devtool: 'cheap-module-eval-source-map',
       output: {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-        devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
-      }
+        devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
+      },
     });
   }
 

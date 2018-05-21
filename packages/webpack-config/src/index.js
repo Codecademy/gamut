@@ -5,7 +5,7 @@ class WebpackConfig {
   constructor(initialValue = {}) {
     this._configs = Object.assign({}, configs);
     Object.keys(this._configs).forEach(c => {
-      this[c] = (opts) => {
+      this[c] = opts => {
         this.merge(this._configs[c](opts));
         return this;
       };
@@ -28,28 +28,28 @@ class WebpackConfig {
 
   mergeLoader(loaderObject = {}) {
     if (!loaderObject.test) {
-      throw new Error('mergeLoader requires the test property to match loaders');
+      throw new Error(
+        'mergeLoader requires the test property to match loaders'
+      );
     }
 
     const mergeableLoader = {
       module: {
-        rules: [
-          Object.assign({}, loaderObject)
-        ]
-      }
+        rules: [Object.assign({}, loaderObject)],
+      },
     };
 
     this.value = merge({
       customizeArray(a, b, key) {
         if (key === 'module.rules') {
-          return a.map((rule) => {
-            const match = b.find((r) => String(r.test) === String(rule.test));
+          return a.map(rule => {
+            const match = b.find(r => String(r.test) === String(rule.test));
             if (match) return merge(rule, match);
             return rule;
           });
         }
         return undefined;
-      }
+      },
     })(this.value, mergeableLoader);
 
     return this;
@@ -63,16 +63,13 @@ class WebpackConfig {
   toConfig() {
     return this.value;
   }
-
 }
 
-const createConfig = (options = {}) => {
-  return new WebpackConfig(options);
-};
+const createConfig = (options = {}) => new WebpackConfig(options);
 
 module.exports = {
   merge,
   createConfig,
   WebpackConfig,
-  configs
+  configs,
 };
