@@ -1,8 +1,9 @@
 @font-face {
   font-family: "Nunito Sans";
   src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff")
-      format("woff"),
+  src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff2")
+      format("woff2"),
+    url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff") format("woff"),
     url("../fonts/Nunito_Sans/nunitosans-regular-webfont.ttf") format("ttf");
   font-weight: normal;
 }
@@ -10,7 +11,8 @@
 @font-face {
   font-family: "Nunito Sans";
   src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
+  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
+    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
   font-weight: bold;
 }
