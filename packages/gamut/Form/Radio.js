@@ -5,6 +5,10 @@ import s from './styles/Radio.scss';
 
 const Radio = props => {
   const className = cx(s.Radio, props.className);
+  if (!props.htmlFor)
+    throw new Error(
+      'please provide an htmlFor prop or else onChange events will not be triggered'
+    );
   return (
     <div className={className}>
       <input
@@ -31,7 +35,7 @@ Radio.propTypes = {
   label: PropTypes.node,
   checked: PropTypes.bool,
   className: PropTypes.string,
-  htmlFor: PropTypes.string,
+  htmlFor: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   required: PropTypes.bool,
 };
