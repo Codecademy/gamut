@@ -1,24 +1,144 @@
 version: 2
-jobs:
-  build:
+
+references:
+  default_env: &default_env
     docker:
-      - image: circleci/node:6.11
+      - image: circleci/node:8.10.0
+    working_directory: ~/repo
+
+  repo_cache_key_1: &repo_cache_key_1
+    v2-repo-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2
+    v2-repo-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3
+    v2-repo-
+
+  restore_repo: &restore_repo
+    restore_cache:
+      keys:
+        - *repo_cache_key_1
+        - *repo_cache_key_2
+        - *repo_cache_key_3
+
+  set_git_user: &set_git_user
+    run:
+      name: Set git user
+      command: |
+        git config --global user.email "dev@codecademy.com"
+        git config --global user.name "circleci"
+
+  set_npm_token: &set_npm_token
+    run:
+      name: Add NPM auth token file
+      command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
+  yarn_cache_key_1: &yarn_cache_key_1
+    v2-node_dependencies-{ checksum "yarn.lock" }
+  yarn_cache_key_2: &yarn_cache_key_2
+    v2-node_dependencies-
+
+  restore_yarn_dependencies: &restore_yarn_dependencies
+    restore_cache:
+      keys:
+        - *yarn_cache_key_1
+        - *yarn_cache_key_2
+
+jobs:
+  checkout_code:
+    <<: *default_env
     steps:
+      - *restore_repo
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run: sudo npm install -g yarn@1.3.2
-      - run: yarn install --cache-folder .yarncache
+      - *set_npm_token
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: *repo_cache_key_1
+          paths:
+            - .
+
+  install_yarn_dependencies:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - *restore_yarn_dependencies
+      - run: yarn --production=false --cache-folder .yarncache
+      - save_cache:
+          key: *yarn_cache_key_1
           paths:
             - node_modules
             - .yarncache
             - packages/*/node_modules
             - packages/**/node_modules
-      - run:
-          name: lerna boostrap
-          command: $(npm bin)/lerna bootstrap
+
+  tests:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - *restore_yarn_dependencies
       - run:
           name: Run test suite
           command: yarn test
+
+  publish:
+    <<: *default_env
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - *restore_yarn_dependencies
+      - run: yarn --production=false --cache-folder .yarncache
+      - run:
+          name: build storybook
+          command: yarn lerna run build
+      - run:
+          name: Add changes to git
+          command: git add -A
+      - run:
+          name: lerna publish
+          command: yarn lerna publish --conventional-commits --yes
+
+  publish_next:
+    <<: *default_env
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - *restore_yarn_dependencies
+      - run: yarn --production=false --cache-folder .yarncache
+      - run:
+          name: build storybook
+          command: yarn lerna run build
+      - run:
+          name: Add storybook changes to git
+          command: git add ./docs
+      - run:
+          name: lerna publish
+          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - checkout_code:
+          context: org-global
+      - install_yarn_dependencies:
+          requires:
+            - checkout_code
+      - tests:
+          requires:
+            - install_yarn_dependencies
+      - publish:
+          context: org-global
+          requires:
+            - install_yarn_dependencies
+          filters:
+            branches:
+              only: master
+      - publish_next:
+          context: org-global
+          requires:
+            - install_yarn_dependencies
+          filters:
+            branches:
+              only: next

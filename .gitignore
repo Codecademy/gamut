@@ -29,9 +29,12 @@ node_modules
 bower_components
 coverage
 tmp
+.npmrc
 
 # Users Environment Variables
 .lock-wscript
 
 # lerna-changelog cache
 .changelog
+
+packages/gamut-styles/demo-styles

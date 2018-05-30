@@ -6,12 +6,20 @@
 //
 
 .btn {
+  display: inline-flex;
+  justify-content: center;
   font-weight: $btn-font-weight;
+  @include font-smoothing;
   border: 1px solid transparent;
-  border-radius: 0;
-  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size-base, $btn-line-height);
+  border-radius: $btn-border-radius;
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size-base,
+    $btn-line-height,
+    $btn-min-width-sm
+  );
   transition: all 0.1s ease-in-out;
-  font-family: $btn-font-family;
 }
 
 // Future-proof disabling of clicks on `<a>` elements
@@ -21,25 +29,50 @@ fieldset[disabled] a.btn {
 }
 
 @each $name, $color in $btn-swatches {
-  @if lightness($color) > 75 {
-    @include button-variants($name, $swatches-cc-blue-700, $color);
+  @if $name == "yellow" {
+    @include button-variants($name, $color-black, $color);
+  }
+  @elseif $name == "brand-yellow" {
+    @include button-variants($name, $color-black, $color);
+  }
+  @elseif lightness($color) > 68 {
+    @include button-variants($name, $color-black, $color);
   } @else {
     @include button-variants($name, $color-white, $color);
   }
 }
 
+.round {
+  border-radius: $btn-round-border-radius;
+}
+
+.square {
+  border-radius: 0;
+}
 //
 // Button Sizes
 //
 
 .large {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg);
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-line-height-lg,
+    $btn-min-width-lg
+  );
 }
 
 .small {
   // line-height: ensure proper height of button next to small input
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm);
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-line-height-sm,
+    $btn-min-width-sm
+  );
 }
 
 //
@@ -47,7 +80,7 @@ fieldset[disabled] a.btn {
 //
 
 .block {
-  display: block;
+  display: flex;
   width: 100%;
 }
 

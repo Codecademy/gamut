@@ -4,11 +4,8 @@
 // and disabled options for all buttons
 
 @mixin button-variant($color, $background, $border: transparent) {
-  $active-background: lighten($background, $btn-state-modifier);
-  $active-background-hover: lighten($background, $btn-state-modifier-active);
-
-  $active-border: lighten($border, $btn-state-modifier-active);
-  $active-border-hover: lighten($border, $btn-state-modifier-active);
+  $active-background: mix($color-black, $background, $btn-state-modifier);
+  $active-color: mix($color-black, $color, $btn-color-modifier);
 
   @if $border == transparent {
     $active-border: transparent;
@@ -19,75 +16,97 @@
   background-color: $background;
   border-color: $border;
 
-  &:hover {
-    color: $color;
-    background-color: $active-background;
-    border-color: $active-border;
+  &:hover,
+  &:active {
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
     text-decoration: none;
-  }
-
-  &:focus {
     color: $color;
-    background-color: $active-background;
-    border-color: $active-border;
   }
 
   &:active {
-    color: $color;
+    color: $active-color;
     background-color: $active-background;
-    border-color: $active-border;
+  }
 
-    &:hover,
-    &:focus {
-      color: $color;
-      background-color: $active-background-hover;
-      border-color: $active-border-hover;
-    }
+  &:focus {
+    box-shadow: 0 0 0 3px fade-out($background, 0.5);
   }
 
   &:disabled {
-    &:focus {
-      background-color: $background;
-      border-color: $border;
-    }
+    color: $gamut-grey-200;
+    background-color: $btn-disabled-color;
+
     &:hover {
-      background-color: $background;
-      border-color: $border;
+      box-shadow: none;
     }
   }
 }
 
 @mixin button-outline-variant($color) {
   color: $color;
-  background-image: none;
   background-color: transparent;
-  border-color: $color;
+  border: 1px solid $color;
 
-  &:focus,
-  &:active {
-    color: lighten($color, $btn-outline-state-modifier);
-    border-color: lighten($color, $btn-outline-state-modifier);
-  }
   &:hover {
-    color: lighten($color, $btn-outline-state-modifier);
-    border-color: lighten($color, $btn-outline-state-modifier);
+    background-color: fade-out($color, $btn-outline-hover-state-modifier);
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: fade-out($color, $btn-outline-active-state-modifier);
+    box-shadow: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px fade-out($color, 0.5);
   }
 
   &:disabled {
-    &:focus {
-      border-color: lighten($color, $btn-outline-state-modifier);
-    }
-    &:hover {
-      border-color: lighten($color, $btn-outline-state-modifier);
-    }
+    border-color: $btn-disabled-color;
+    color: $btn-disabled-color;
+    background-color: transparent;
+  }
+}
+
+@mixin button-flat-variant($color) {
+  color: $color;
+  background-color: transparent;
+
+  $active-color: darken($color, $btn-state-modifier);
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+    color: $active-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px fade-out($color, $btn-box-shadow-focus-modifier);
+  }
+
+  &:disabled {
+    color: $btn-disabled-color;
+    background-color: transparent;
   }
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height) {
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $min-width
+) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
   line-height: $line-height;
+  min-width: $min-width;
+
+  &.fit-text {
+    min-width: 0;
+    min-height: 0;
+  }
 }
 
 @mixin button-variants($name, $color, $background, $border: transparent) {
@@ -96,9 +115,19 @@
     &.outline {
       @include button-outline-variant($background);
     }
+    &.flat {
+      @include button-flat-variant($background);
+    }
     @content;
   }
   .link-#{$name} {
+    font-weight: bold;
+    @include font-smoothing;
     color: $background;
+    text-decoration: underline;
+
+    &:disabled {
+      color: $btn-disabled-color;
+    }
   }
 }

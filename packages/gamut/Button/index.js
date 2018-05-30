@@ -25,6 +25,10 @@ const propTypes = {
   children: PropTypes.node,
   block: PropTypes.bool,
   className: PropTypes.string,
+  round: PropTypes.bool,
+  square: PropTypes.bool,
+  flat: PropTypes.bool,
+  fitText: PropTypes.bool,
 };
 
 const Button = props => {
@@ -47,6 +51,10 @@ const Button = props => {
       [s.outline]: props.outline,
       [s.underline]: props.underline,
       [s.caps]: props.caps,
+      [s.round]: props.round,
+      [s.square]: props.square,
+      [s.flat]: props.flat,
+      [s['fit-text']]: props.fitText,
     },
     props.className
   );
