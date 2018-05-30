@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyzacInc/webpack-config"
+    "url": "git+https://github.com/RyzacInc/gamut/packages/webpack-config"
   },
   "author": "codecademy",
   "license": "ISC",

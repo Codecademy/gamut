@@ -131,6 +131,9 @@ workflows:
               only: master
       - publish_alpha:
           context: org-global
+          filters:
+            branches:
+              ignore: master
           requires:
             - tests
             - install_yarn_dependencies
