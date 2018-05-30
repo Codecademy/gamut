@@ -107,12 +107,6 @@ jobs:
       - *restore_yarn_dependencies
       - run: yarn --production=false --cache-folder .yarncache
       - run:
-          name: build storybook
-          command: yarn lerna run build
-      - run:
-          name: Add storybook changes to git
-          command: git add ./docs
-      - run:
           name: lerna publish
           command: yarn lerna publish --canary --conventional-commits --yes
 
