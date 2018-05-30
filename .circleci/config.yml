@@ -132,4 +132,5 @@ workflows:
       - publish_alpha:
           context: org-global
           requires:
+            - tests
             - install_yarn_dependencies
