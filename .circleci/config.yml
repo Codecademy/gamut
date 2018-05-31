@@ -34,9 +34,9 @@ references:
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
   yarn_cache_key_1: &yarn_cache_key_1
-    v2-node_dependencies-{ checksum "yarn.lock" }
+    v3-node_dependencies-{ checksum "yarn.lock" }
   yarn_cache_key_2: &yarn_cache_key_2
-    v2-node_dependencies-
+    v3-node_dependencies-
 
   restore_yarn_dependencies: &restore_yarn_dependencies
     restore_cache:
@@ -61,7 +61,7 @@ jobs:
     steps:
       - *restore_repo
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
+      - run: yarn --production=false
       - save_cache:
           key: *yarn_cache_key_1
           paths:
