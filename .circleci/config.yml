@@ -108,7 +108,7 @@ jobs:
       - run: yarn --production=false --cache-folder .yarncache
       - run:
           name: lerna publish
-          command: yarn lerna publish --canary --conventional-commits --yes
+          command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
 
 workflows:
   version: 2
