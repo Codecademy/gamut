@@ -7,6 +7,7 @@
   "packages": ["packages/*"],
   "command": {
     "publish": {
+      "message": "chore(release): publish",
       "allowBranch": "master"
     }
   }

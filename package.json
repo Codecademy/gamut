@@ -25,7 +25,9 @@
     "workspaces/*"
   ],
   "dependencies": {
-    "lerna": "^3.0.0-beta.21"
+    "github-api": "^3.0.0",
+    "lerna": "^3.0.0-beta.21",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "babel-eslint": "7.2.0",
