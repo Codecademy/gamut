@@ -26,7 +26,7 @@ references:
       command: |
         git config --global user.email "dev@codecademy.com"
         git config --global user.name "circleci"
-        git config --global push.default simple
+        git config --global push.default current
 
   set_npm_token: &set_npm_token
     run:
