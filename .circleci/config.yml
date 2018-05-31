@@ -87,7 +87,6 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
       - run:
           name: build storybook
           command: yarn lerna run build
@@ -106,13 +105,9 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
-      - run:
-          name: Add Publish Changes
-          command: git commit -am "Published alpha packages" && git push
 
 workflows:
   version: 2
