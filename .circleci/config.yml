@@ -26,6 +26,7 @@ references:
       command: |
         git config --global user.email "dev@codecademy.com"
         git config --global user.name "circleci"
+        git config --global push.default current
 
   set_npm_token: &set_npm_token
     run:
@@ -33,9 +34,9 @@ references:
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
   yarn_cache_key_1: &yarn_cache_key_1
-    v2-node_dependencies-{ checksum "yarn.lock" }
+    v3-node_dependencies-{ checksum "yarn.lock" }
   yarn_cache_key_2: &yarn_cache_key_2
-    v2-node_dependencies-
+    v3-node_dependencies-
 
   restore_yarn_dependencies: &restore_yarn_dependencies
     restore_cache:
@@ -59,8 +60,9 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
+      - *set_npm_token
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
+      - run: yarn --production=false
       - save_cache:
           key: *yarn_cache_key_1
           paths:
@@ -86,7 +88,6 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
       - run:
           name: build storybook
           command: yarn lerna run build
@@ -97,7 +98,7 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --conventional-commits --yes
 
-  publish_next:
+  publish_alpha:
     <<: *default_env
     steps:
       - *set_git_user
@@ -105,16 +106,9 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
-      - run: yarn --production=false --cache-folder .yarncache
-      - run:
-          name: build storybook
-          command: yarn lerna run build
-      - run:
-          name: Add storybook changes to git
-          command: git add ./docs
       - run:
           name: lerna publish
-          command: yarn lerna publish --npm-tag=next --conventional-commits --yes
+          command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
 
 workflows:
   version: 2
@@ -123,6 +117,7 @@ workflows:
       - checkout_code:
           context: org-global
       - install_yarn_dependencies:
+          context: org-global
           requires:
             - checkout_code
       - tests:
@@ -135,10 +130,11 @@ workflows:
           filters:
             branches:
               only: master
-      - publish_next:
+      - publish_alpha:
           context: org-global
-          requires:
-            - install_yarn_dependencies
           filters:
             branches:
-              only: next
+              ignore: master
+          requires:
+            - tests
+            - install_yarn_dependencies
