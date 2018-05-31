@@ -60,6 +60,7 @@ jobs:
     <<: *default_env
     steps:
       - *restore_repo
+      - *set_npm_token
       - *restore_yarn_dependencies
       - run: yarn --production=false
       - save_cache:
@@ -116,6 +117,7 @@ workflows:
       - checkout_code:
           context: org-global
       - install_yarn_dependencies:
+          context: org-global
           requires:
             - checkout_code
       - tests:
