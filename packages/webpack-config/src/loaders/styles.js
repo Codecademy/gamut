@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
+const autoprefixer = require('autoprefixer');
 const ENV = require('../lib/env');
 
 const PROD = ENV === 'production';
@@ -22,7 +23,12 @@ const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
     sourceMap: SOURCEMAPS,
-    plugins: () => [require('autoprefixer')()],
+    plugins: () => [
+      require('postcss-flexbugs-fixes'),
+      autoprefixer({
+        flexbox: 'no-2009',
+      }),
+    ],
   },
 };
 
