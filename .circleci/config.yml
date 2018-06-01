@@ -34,7 +34,7 @@ references:
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
   yarn_cache_key_1: &yarn_cache_key_1
-    v3-node_dependencies-{ checksum "yarn.lock" }
+    v3-node_dependencies-{{ checksum "yarn.lock" }}
   yarn_cache_key_2: &yarn_cache_key_2
     v3-node_dependencies-
 
