@@ -14,6 +14,7 @@
     "lint": "eslint \"packages/**/*.{js,json}\"",
     "lerna": "lerna",
     "format": "prettier-eslint --prettier-last --write \"./**/*.{js,json,css,scss}\"",
+    "build-all": "yarn wsrun build --exclude-missing",
     "precommit": "lint-staged"
   },
   "repository": {
@@ -25,7 +26,8 @@
     "workspaces/*"
   ],
   "dependencies": {
-    "lerna": "^3.0.0-beta.21"
+    "lerna": "^3.0.0-beta.21",
+    "wsrun": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "7.2.0",
