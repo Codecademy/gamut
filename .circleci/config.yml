@@ -68,10 +68,6 @@ jobs:
           paths:
             - node_modules
             - .yarncache
-            - workspaces/*/node_modules
-            - workspaces/**/node_modules
-            - packages/*/node_modules
-            - packages/**/node_modules
 
   tests:
     <<: *default_env
@@ -90,8 +86,9 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
+      - run: yarn --production=false
       - run:
-          name: build storybook
+          name: build packages
           command: yarn build-all
       - run:
           name: Add changes to git
@@ -108,6 +105,7 @@ jobs:
       - checkout
       - *set_npm_token
       - *restore_yarn_dependencies
+      - run: yarn --production=false
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
