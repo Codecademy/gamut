@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyzacInc/webpack-config"
+    "url": "git+https://github.com/RyzacInc/gamut/packages/webpack-config"
   },
   "author": "codecademy",
   "license": "ISC",
@@ -61,6 +61,7 @@
     "autoprefixer": "^8.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "postcss-flexbugs-fixes": "^3.3.1",
     "uglifyjs-webpack-plugin": ">= 1.2.3",
     "webpack-cli": "^2.0.12",
     "webpack-merge": "^4.1.2"
