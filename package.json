@@ -14,7 +14,7 @@
     "lint": "eslint \"packages/**/*.{js,json}\"",
     "lerna": "lerna",
     "format": "prettier-eslint --prettier-last --write \"./**/*.{js,json,css,scss}\"",
-    "ci-prepublish": "yarn wsrun build --exclude-missing",
+    "build-all": "yarn wsrun build --exclude-missing",
     "precommit": "lint-staged"
   },
   "repository": {

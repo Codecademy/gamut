@@ -92,7 +92,7 @@ jobs:
       - *restore_yarn_dependencies
       - run:
           name: build storybook
-          command: yarn ci-prepublish
+          command: yarn build-all
       - run:
           name: Add changes to git
           command: git add -A
