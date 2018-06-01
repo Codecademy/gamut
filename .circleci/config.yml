@@ -68,6 +68,8 @@ jobs:
           paths:
             - node_modules
             - .yarncache
+            - workspaces/*/node_modules
+            - workspaces/**/node_modules
             - packages/*/node_modules
             - packages/**/node_modules
 
@@ -90,7 +92,7 @@ jobs:
       - *restore_yarn_dependencies
       - run:
           name: build storybook
-          command: yarn lerna run build
+          command: yarn build-all
       - run:
           name: Add changes to git
           command: git add -A
