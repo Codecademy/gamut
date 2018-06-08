@@ -36,7 +36,7 @@ const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
   options: {
-    sourceMap: SOURCEMAPS,
+    sourceMap: true,
   },
 };
 
@@ -82,6 +82,9 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
+      {
+        loader: 'resolve-url-loader',
+      },
       merge(scssLoaderDefaults),
     ],
   },
@@ -95,6 +98,9 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
+      {
+        loader: 'resolve-url-loader',
+      },
       merge(scssLoaderDefaults),
     ],
   },
@@ -108,6 +114,9 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
+      {
+        loader: 'resolve-url-loader',
+      },
       merge(scssLoaderDefaults),
     ],
   },

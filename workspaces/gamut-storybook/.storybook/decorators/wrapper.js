@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@codecademy/gamut/FlexBox';
-import './wrapper-styles';
+import '@codecademy/gamut-styles/core';
 
 export const wrapper = story => (
   <Container
