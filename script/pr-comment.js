@@ -1,9 +1,8 @@
 const GitHub = require('github-api');
-const minimist = require('minimist');
 
-const argv = minimist(process.argv.slice(2));
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const PR_NUMBER = process.env.CIRCLE_PR_NUMBER || 115;
+const PR_NUMBER = process.env.CIRCLE_PR_NUMBER || 124;
+const codeBlock = '```';
 
 const gh = new GitHub({
   token: GITHUB_TOKEN,
@@ -11,21 +10,30 @@ const gh = new GitHub({
 
 const repoIssues = gh.getIssues('RyzacInc', 'gamut');
 
-if (!argv.comment) throw new Error('--comment argument is required');
+function parseVersionsComment() {
+  const versions = require('../.published-versions.json');
 
-const comment = `
-  PUBLISHED CANARY VERSION
-  ----------------
-  ${argv.comment}
-`;
+  if (!versions) return '';
+
+  return versions
+    .filter(v => !v.private)
+    .map(v => `${v.name}: ${v.version}`)
+    .join('\n');
+}
 
 async function createIssueComment() {
   try {
-    const createdComment = await repoIssues.createIssueComment(
-      PR_NUMBER,
-      comment
-    );
-    console.log(createdComment);
+    const versions = parseVersionsComment();
+    if (!versions) console.log('No packages published, skipping PR comment');
+
+    const comment = `
+Published:
+${codeBlock}
+${versions}
+${codeBlock}
+`;
+    await repoIssues.createIssueComment(PR_NUMBER, comment);
+    console.log('created comment:', parseVersionsComment());
   } catch (e) {
     console.error(e);
   }
