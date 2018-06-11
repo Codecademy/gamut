@@ -18,6 +18,7 @@ import CloseIcon from './icons/CloseIcon';
 import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
+import EditIcon from './icons/EditIcon';
 import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
@@ -73,6 +74,7 @@ const iconMap = {
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  edit: EditIcon,
   forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
