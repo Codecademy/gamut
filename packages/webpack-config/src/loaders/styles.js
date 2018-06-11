@@ -36,7 +36,7 @@ const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
   options: {
-    sourceMap: true,
+    sourceMap: SOURCEMAPS,
   },
 };
 
