@@ -117,7 +117,7 @@ jobs:
       - run: yarn --production=false
       - run:
           name: lerna publish
-          command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: yarn lerna publish --json --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: cache published versions
           command: $(yarn bin)/lerna changed --json > .published-versions.json
