@@ -11,7 +11,12 @@ const gh = new GitHub({
 const repoIssues = gh.getIssues('RyzacInc', 'gamut');
 
 function parseVersionsComment() {
-  const versions = require('../.published-versions.json');
+  let versions;
+  try {
+    versions = require('../.published-versions.json');
+  } catch (e) {
+    console.log(e);
+  }
 
   if (!versions) return '';
 
