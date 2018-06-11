@@ -120,7 +120,7 @@ jobs:
           command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: cache published versions
-          shell: /bin/sh
+          shell: /bin/bash
           command: $(yarn bin)/lerna changed --json > .published-versions.json
       - run:
           name: comment on PR with published versions
