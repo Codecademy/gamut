@@ -15,6 +15,7 @@
     "lerna": "lerna",
     "format": "prettier-eslint --prettier-last --write \"./**/*.{js,json,css,scss}\"",
     "build-all": "yarn wsrun build --exclude-missing",
+    "start": "yarn wsrun storybook --exclude-missing",
     "precommit": "lint-staged"
   },
   "repository": {
