@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.28...@codecademy/gamut-storybook@2.0.0) (2018-06-11)
+
+
+### Features
+
+* Merge standard & core variables ([#123](https://github.com/RyzacInc/gamut/issues/123)) ([5bf24b0](https://github.com/RyzacInc/gamut/commit/5bf24b0))
+
+
+### BREAKING CHANGES
+
+* `gamut-styles/variables` renamed to `gamut-styles/utils/variables`
+
+
+
+
+
 <a name="1.7.28"></a>
 ## [1.7.28](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.27...@codecademy/gamut-storybook@1.7.28) (2018-05-30)
 
