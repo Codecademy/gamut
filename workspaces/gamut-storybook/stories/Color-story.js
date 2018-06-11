@@ -5,7 +5,7 @@ import {
   gamutColors,
   editorColors,
   brandColors,
-} from '@codecademy/gamut-styles/variables';
+} from '@codecademy/gamut-styles/utils/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
 import s from './Color-story.scss';
 
