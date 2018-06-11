@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-storybook",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Jake Hiller <jake@codecademy.com>",
   "private": true,
   "engines": {
@@ -19,7 +19,7 @@
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "dependencies": {
-    "@codecademy/gamut": "^1.7.12",
+    "@codecademy/gamut": "^1.8.0",
     "@codecademy/gamut-styles": "^2.0.0",
     "classnames": "^2.2.5",
     "file-loader": "^1.1.11",
