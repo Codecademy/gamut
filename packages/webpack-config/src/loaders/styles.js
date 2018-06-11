@@ -82,9 +82,6 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
-      {
-        loader: 'resolve-url-loader',
-      },
       merge(scssLoaderDefaults),
     ],
   },
@@ -98,9 +95,6 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
-      {
-        loader: 'resolve-url-loader',
-      },
       merge(scssLoaderDefaults),
     ],
   },
@@ -114,9 +108,6 @@ const scss = {
         },
       }),
       merge(postCssLoaderDefaults),
-      {
-        loader: 'resolve-url-loader',
-      },
       merge(scssLoaderDefaults),
     ],
   },
