@@ -1,7 +1,7 @@
 const GitHub = require('github-api');
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const PR_NUMBER = process.env.CIRCLE_PR_NUMBER || 124;
+const PR_NUMBER = process.env.CIRCLE_PR_NUMBER;
 const codeBlock = '```';
 
 const gh = new GitHub({
