@@ -121,7 +121,7 @@ jobs:
       - run:
           name: cache published versions
           shell: /bin/sh
-          command: yarn lerna changed --json > .published-versions.json
+          command: $(yarn bin)/lerna changed --json > .published-versions.json
       - run:
           name: comment on PR with published versions
           command: node ./script/pr-comment.js
