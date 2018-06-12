@@ -10,6 +10,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   className: PropTypes.string,
+  activeClassName: PropTypes.string,
 };
 
 const defaultProps = {
@@ -18,8 +19,14 @@ const defaultProps = {
   onChange: () => {},
 };
 
-const Tab = ({ children, active, tabIndex, onChange, id, className }) => {
-  const tabLinkClasses = cx(s.tab, { [s.active]: active });
+const Tab = ({ children, active, tabIndex, onChange, id, className, activeClassName }) => {
+  const tabLinkClasses = cx(
+    s.tab,
+    {
+      [s.active]: active,
+      [activeClassName]: (active && activeClassName !== undefined),
+    },
+  );
 
   return (
     <li className={cx(s.tabListItem, className)}>
