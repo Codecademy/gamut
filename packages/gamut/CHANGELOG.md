@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.8.1...@codecademy/gamut@1.9.0) (2018-06-12)
+
+
+### Features
+
+* Allow custom Tab activeClassName ([#128](https://github.com/RyzacInc/gamut/issues/128)) ([034c9b8](https://github.com/RyzacInc/gamut/commit/034c9b8))
+
+
+
+
+
 <a name="1.8.1"></a>
 ## [1.8.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.8.0...@codecademy/gamut@1.8.1) (2018-06-12)
 
