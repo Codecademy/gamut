@@ -63,7 +63,7 @@ const iconMap = {
   angular: AngularIcon,
   article: ArticleIcon,
   bayes: BayesIcon,
-  bellIcon: BellIcon,
+  bell: BellIcon,
   certificate: CertificateIcon,
   checkmark: CheckmarkIcon,
   chevronDown: ChevronDownIcon,
