@@ -5,6 +5,7 @@ import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
+import BellIcon from './icons/BellIcon';
 import BayesIcon from './icons/BayesIcon';
 import CSSIcon from './icons/CSSIcon';
 import CertificateIcon from './icons/CertificateIcon';
@@ -62,6 +63,7 @@ const iconMap = {
   angular: AngularIcon,
   article: ArticleIcon,
   bayes: BayesIcon,
+  bellIcon: BellIcon,
   certificate: CertificateIcon,
   checkmark: CheckmarkIcon,
   chevronDown: ChevronDownIcon,
