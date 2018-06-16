@@ -28,6 +28,14 @@ references:
         git config --global user.name "circleci"
         git config --global push.default current
 
+  set_pr_number: &set_pr_number
+    run:
+      name: Set PR number
+      command: |
+          echo 'export CIRCLE_PR_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"' >> $BASH_ENV
+          source $BASH_ENV
+          echo $CIRCLE_PR_NUMBER
+
   set_npm_token: &set_npm_token
     run:
       name: Add NPM auth token file
@@ -100,6 +108,7 @@ jobs:
   publish_alpha:
     <<: *default_env
     steps:
+      - *set_pr_number
       - *set_git_user
       - *restore_repo
       - checkout
@@ -109,6 +118,12 @@ jobs:
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
+      - run:
+          name: cache published versions
+          command: $(yarn bin)/lerna changed --json > .published-versions.json
+      - run:
+          name: comment on PR with published versions
+          command: node ./script/pr-comment.js
 
 workflows:
   version: 2
