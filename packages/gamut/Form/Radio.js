@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Radio.scss';
 
-const Radio = props => {
+const Radio = React.forwardRef((props, ref) => {
   const className = cx(s.Radio, props.className);
   return (
     <div className={className}>
@@ -17,13 +17,14 @@ const Radio = props => {
         checked={props.checked}
         onChange={props.onChange}
         value={props.value}
+        ref={ref}
       />
       <label htmlFor={props.htmlFor} className={s.radioLabel}>
         {props.label}
       </label>
     </div>
   );
-};
+});
 
 Radio.propTypes = {
   name: PropTypes.string,

@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Input.scss';
 
-const Input = ({ error, htmlFor, className, ...rest }) => {
-  const classNames = cx(
-    s.Input,
-    {
-      [s.error]: error,
-    },
-    className
-  );
-  return <input {...rest} id={htmlFor} className={classNames} />;
-};
+const Input = React.forwardRef(
+  ({ error, htmlFor, className, ...rest }, ref) => {
+    const classNames = cx(
+      s.Input,
+      {
+        [s.error]: error,
+      },
+      className
+    );
+    return <input {...rest} id={htmlFor} className={classNames} ref={ref} />;
+  }
+);
 
 Input.defaultProps = {
   type: 'text',

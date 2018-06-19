@@ -4,7 +4,7 @@ import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
 import s from './styles/Select.scss';
 
-const Select = props => {
+const Select = React.forwardRef((props, ref) => {
   const className = cx(s.Select, props.className);
 
   // Generate list of options
@@ -38,12 +38,13 @@ const Select = props => {
         className={s.selectInput}
         defaultValue={props.defaultValue || ''}
         id={props.htmlFor}
+        ref={ref}
       >
         {selectOptions}
       </select>
     </div>
   );
-};
+});
 
 Select.propTypes = {
   className: PropTypes.string,
