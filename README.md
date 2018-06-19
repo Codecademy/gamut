@@ -3,8 +3,8 @@
 _Styleguide & Component library for codecademy.com_
 
 ---
-[![CircleCI](https://circleci.com/gh/RyzacInc/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/gamut)
----
+
+## [![CircleCI](https://circleci.com/gh/RyzacInc/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/gamut)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we actually publish several packages to npm from the same codebase, including:
 
@@ -16,42 +16,42 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ## Local development
 
-1. Log into npm
-   * Run `npm login` with username `codecademy`; you can find the password in LastPass
-   * Running `npm whoami` should return `codecademy`
-1. Run `yarn` in the root directory
-1. Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+1.  Log into npm
+    * Run `npm login` with username `codecademy`; you can find the password in LastPass
+    * Running `npm whoami` should return `codecademy`
+1.  Run `yarn` in the root directory
+1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
 ### Running storybook
 
-1. Cd into `workspaces/gamut-storybook` and run `npm start` to start the storybook server
-1. Add new stories to `workspaces/gamut-storybook/stories`
+1.  Run `yarn start` to start the storybook server
+1.  Add new stories to `workspaces/gamut-storybook/stories`
 
 ### Cross-package development
 
 _Follow these steps when you need to make changes to Gamut that are immediately reflected in the Codecademy app (e.g. for QAing a Gamut component)._
 
-1. Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
-2. Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
-3. Run `yarn` in the Codecademy repo.
-4. You should be accessing your local version of Gamut.
-5. If you make an update to Gamut, you will have to run yarn in your local repo again.
+1.  Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
+2.  Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
+3.  Run `yarn` in the Codecademy repo.
+4.  You should be accessing your local version of Gamut.
+5.  If you make an update to Gamut, you will have to run yarn in your local repo again.
 
 ### Publishing the modules
 
-1. Make your changes in a feature branch, and get another engineer to review your code
-1. After you've reviewed and tested your code, you can merge your branch into master.
-1. To merge, use the "squash and merge" button in github
-1. To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
-1. Once your branch is merged into master, it will be published automatically by CircleCI.
-1. You can check the master branch for the new version number
+1.  Make your changes in a feature branch, and get another engineer to review your code
+1.  After you've reviewed and tested your code, you can merge your branch into master.
+1.  To merge, use the "squash and merge" button in github
+1.  To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
+1.  Once your branch is merged into master, it will be published automatically by CircleCI.
+1.  You can check the master branch for the new version number
 
 ### Publishing a pre-release version of a module
 
 You can use the gamut/next branch to publish pre-release changes that require testing across applications
 
-1. Follow the instructions for normal publishing, but base your PR off of the gamut/next branch, instead of master.
-1. Once you feel like your changes are stable, you can merge the gamut/next branch into master
+1.  Follow the instructions for normal publishing, but base your PR off of the gamut/next branch, instead of master.
+1.  Once you feel like your changes are stable, you can merge the gamut/next branch into master
 
 ### Commit Message Guide
 
@@ -97,4 +97,4 @@ This is where you should describe any version breaking changes by including the 
 
 ### Publishing the storybook
 
-1. To build the story, book, cd into `packages/gamut-storybook` and run `npm run build`, and commit the changes to `master`. These updates will be available on [`styleguide.codecademy.com/storybook`](http://styleguide.codecademy.com/storybook).
+1.  To build the story, book, cd into `packages/gamut-storybook` and run `npm run build`, and commit the changes to `master`. These updates will be available on [`styleguide.codecademy.com/storybook`](http://styleguide.codecademy.com/storybook).
