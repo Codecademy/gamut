@@ -7,8 +7,3 @@ const Enzyme = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 
 Enzyme.configure({ adapter: new Adapter() });
-
-// make window.location.assign modify the jsdom url
-const shimLocationAssign = require('./helpers/shimLocationAssign');
-
-shimLocationAssign();
