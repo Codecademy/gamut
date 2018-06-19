@@ -49,9 +49,9 @@
     "lint-staged": "^7.1.0",
     "prettier": "1.12.1",
     "prettier-eslint-cli": "4.7.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4"
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-test-renderer": "^16.4.0"
   },
   "lint-staged": {
     "**/*.{js,json,css,scss}": [
