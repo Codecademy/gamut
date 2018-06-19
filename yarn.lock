@@ -9833,9 +9833,9 @@ react-addons-create-fragment@^15.5.3:
     loose-envify "^1.3.1"
     object-assign "^4.1.0"
 
-react-aria-tabpanel@^4.2.2:
-  version "4.3.0"
-  resolved "https://registry.npmjs.org/react-aria-tabpanel/-/react-aria-tabpanel-4.3.0.tgz#59d23f3640b74d5d170dd9109fd417d96b7c91ea"
+react-aria-tabpanel@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.npmjs.org/react-aria-tabpanel/-/react-aria-tabpanel-4.4.0.tgz#cb3799ea7e44550eb0eb3a96239ca0f677819382"
   dependencies:
     create-react-class "^15.6.2"
     focus-group "^0.2.2"
