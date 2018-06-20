@@ -8,24 +8,22 @@ import { addonInfoOptions as options } from './options';
 
 storiesOf('Component/Logo', module).add(
   'Editable',
-  withInfo({
-    ...options,
-  })(
-    () => (
-      <Logo
-        width={number('width', undefined)}
-        height={number('height', Logo.defaultProps.height)}
-        type={select(
-          'type',
-          ['pro', 'program', 'default'],
-          Logo.defaultProps.type
-        )}
-        style={{ color: select('color', selectableGamutColors, '#000') }}
-      />
-    ),
-    {
+  () => (
+    <Logo
+      width={number('width', undefined)}
+      height={number('height', Logo.defaultProps.height)}
+      type={select(
+        'type',
+        ['pro', 'program', 'default'],
+        Logo.defaultProps.type
+      )}
+      style={{ color: select('color', selectableGamutColors, '#000') }}
+    />
+  ),
+  {
+    info: {
       inline: true,
       propTables: false,
-    }
-  )
+    },
+  }
 );

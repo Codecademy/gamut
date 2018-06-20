@@ -15,10 +15,10 @@ const AnimationController = ({ rendering }) => (
         <RadialProgress size={'8rem'} value={[80, 100]} duration={1000} />
         <RadialProgress size={'8rem'} value={[0, 100]} duration={3000} />
         <RadialProgress size={'8rem'} value={[0, 100]} duration={5000} />
-        <p>Click on the rendering checkbox, below, to reset the animations.</p>
+        <p>Click on the rendering checkbox below, to reset the animations.</p>
       </div>
     ) : (
-      <p>Click on the rendering checkbox, below, to see the animations.</p>
+      <p>Click on the rendering checkbox below, to see the animations.</p>
     )}
   </div>
 );
@@ -28,8 +28,10 @@ storiesOf('Component/RadialProgress', module)
     'Example Animations',
     () => <AnimationController rendering={boolean('rendering')} />,
     {
-      inline: true,
-      propTables: false,
+      info: {
+        inline: true,
+        propTables: false,
+      },
     }
   )
   .add(
@@ -44,7 +46,9 @@ storiesOf('Component/RadialProgress', module)
       />
     ),
     {
-      inline: true,
-      propTables: false,
+      info: {
+        inline: true,
+        propTables: false,
+      },
     }
   );

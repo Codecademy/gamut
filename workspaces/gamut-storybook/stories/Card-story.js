@@ -9,11 +9,10 @@ const borderStyles = ['dashed', 'solid', 'none'];
 
 const alignStyles = ['left', 'center', 'right'];
 
-storiesOf('Component/Card', module).add(
-  'Editable',
-  withInfo({
-    ...options,
-  })(
+storiesOf('Component/Card', module)
+  .addDecorator(withInfo)
+  .add(
+    'Editable',
     () => (
       <CardShell
         hoverShadow={boolean('shell.hoverShadow', false)}
@@ -38,8 +37,8 @@ storiesOf('Component/Card', module).add(
       </CardShell>
     ),
     {
-      inline: true,
-      propTables: false,
+      info: {
+        inline: true,
+      },
     }
-  )
-);
+  );
