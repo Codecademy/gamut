@@ -26,14 +26,7 @@ const defaultGridProps = {
 storiesOf('Layout/Grid System', module)
   .add(
     'Fixed Grid (Default)',
-    withInfo({
-      text: `
-      The grid layout is composed of rows of columns.
-
-      A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
-      `,
-      ...options,
-    })(() => (
+    () => (
       <Grid {...defaultGridProps}>
         <Row>
           <Col xs={12} sm={3} md={2} lg={1}>
@@ -67,16 +60,20 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    ),
+    {
+      info: {
+        text: `
+          The grid layout is composed of rows of columns.
+
+          A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
+          `,
+      },
+    }
   )
   .add(
     'Fluid',
-    withInfo({
-      text: `
-      Adding the fluid prop allows the grid to grow and shrink freely inside its container.
-      `,
-      ...options,
-    })(() => (
+    () => (
       <Grid {...defaultGridProps} fluid>
         <Row>
           <Col xs={12} sm={3} md={2} lg={1}>
@@ -110,16 +107,18 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    ),
+    {
+      info: {
+        text: `
+        Adding the fluid prop allows the grid to grow and shrink freely inside its container.
+        `,
+      },
+    }
   )
   .add(
     'Offsets',
-    withInfo({
-      text: `
-      A column can be offset with the <code>xs</code> property
-      `,
-      ...options,
-    })(() => (
+    () => (
       <Grid fluid {...defaultGridProps}>
         <Row>
           <Col xsOffset={11} xs={1}>
@@ -157,16 +156,18 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    ),
+    {
+      info: {
+        text: `
+        A column can be offset with the <code>xs</code> property
+        `,
+      },
+    }
   )
   .add(
     'Center',
-    withInfo({
-      text: `
-      Centered component
-      `,
-      ...options,
-    })(() => (
+    () => (
       <Grid fluid {...defaultGridProps}>
         <Row>
           <Col xs={12}>
@@ -178,5 +179,12 @@ storiesOf('Layout/Grid System', module)
           </Col>
         </Row>
       </Grid>
-    ))
+    ),
+    {
+      info: {
+        text: `
+        Centered component
+        `,
+      },
+    }
   );

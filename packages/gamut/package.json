@@ -13,7 +13,8 @@
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "peerDependencies": {
-    "react": ">=15.3.2"
+    "react": ">=16.4.1",
+    "react-dom": ">=16.4.1"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^2.0.1",
@@ -22,7 +23,7 @@
     "invariant": "^2.2.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
-    "react-aria-tabpanel": "^4.2.2"
+    "react-aria-tabpanel": "^4.4.0"
   },
   "license": "MIT"
 }

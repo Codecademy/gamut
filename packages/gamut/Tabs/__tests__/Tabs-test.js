@@ -105,8 +105,7 @@ describe('Tabs', () => {
       wrapper
         .find('.tab')
         .first()
-        .props()
-        .onClick({ preventDefault() {} });
+        .simulate('click');
 
       expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
@@ -130,8 +129,7 @@ describe('Tabs', () => {
       wrapper
         .find('.tab')
         .first()
-        .props()
-        .onClick({ preventDefault() {} });
+        .simulate('click');
 
       expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
 
@@ -145,8 +143,8 @@ describe('Tabs', () => {
         getTabs({ activeTabIndex: 0, onChange: () => {} })
       );
 
-      const inactivePanelHasChildren = wrapper =>
-        !!wrapper.html().match('welcome to tab 2');
+      const inactivePanelHasChildren = wrp =>
+        !!wrp.html().match('welcome to tab 2');
 
       expect(inactivePanelHasChildren(wrapper)).toBe(false);
 
