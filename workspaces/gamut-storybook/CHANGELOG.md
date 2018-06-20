@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.6...@codecademy/gamut-storybook@2.1.0) (2018-06-20)
+
+
+### Features
+
+* Support React v16 ([#132](https://github.com/RyzacInc/gamut/issues/132)) ([fafaab2](https://github.com/RyzacInc/gamut/commit/fafaab2))
+
+
+
+
+
 <a name="2.0.6"></a>
 ## [2.0.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.5...@codecademy/gamut-storybook@2.0.6) (2018-06-20)
 
