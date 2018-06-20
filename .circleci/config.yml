@@ -1,5 +1,4 @@
 version: 2
-
 references:
   default_env: &default_env
     docker:
@@ -33,17 +32,6 @@ references:
       name: Add NPM auth token file
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
-  yarn_cache_key_1: &yarn_cache_key_1
-    v3-node_dependencies-{{ checksum "yarn.lock" }}
-  yarn_cache_key_2: &yarn_cache_key_2
-    v3-node_dependencies-
-
-  restore_yarn_dependencies: &restore_yarn_dependencies
-    restore_cache:
-      keys:
-        - *yarn_cache_key_1
-        - *yarn_cache_key_2
-
 jobs:
   checkout_code:
     <<: *default_env
@@ -51,29 +39,16 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
+      - run: yarn --production=false
       - save_cache:
           key: *repo_cache_key_1
           paths:
             - .
 
-  install_yarn_dependencies:
-    <<: *default_env
-    steps:
-      - *restore_repo
-      - *set_npm_token
-      - *restore_yarn_dependencies
-      - run: yarn --production=false
-      - save_cache:
-          key: *yarn_cache_key_1
-          paths:
-            - node_modules
-            - .yarncache
-
   tests:
     <<: *default_env
     steps:
       - *restore_repo
-      - *restore_yarn_dependencies
       - run:
           name: Run test suite
           command: yarn test
@@ -85,8 +60,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - *restore_yarn_dependencies
-      - run: yarn --production=false
+      # - run: yarn --production=false
       - run:
           name: build packages
           command: yarn build-all
@@ -104,8 +78,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - *restore_yarn_dependencies
-      - run: yarn --production=false
+      # - run: yarn --production=false
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
@@ -116,17 +89,13 @@ workflows:
     jobs:
       - checkout_code:
           context: org-global
-      - install_yarn_dependencies:
-          context: org-global
-          requires:
-            - checkout_code
       - tests:
           requires:
-            - install_yarn_dependencies
+            - checkout_code
       - publish:
           context: org-global
           requires:
-            - install_yarn_dependencies
+            - checkout_code
           filters:
             branches:
               only: master
@@ -137,4 +106,4 @@ workflows:
               ignore: master
           requires:
             - tests
-            - install_yarn_dependencies
+            - checkout_code
