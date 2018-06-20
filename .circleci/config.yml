@@ -108,7 +108,7 @@ jobs:
       - run: yarn --production=false
       - run:
           name: lerna publish
-          command: yarn lerna publish --yes --skip-git --exact --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
 
 workflows:
   version: 2
