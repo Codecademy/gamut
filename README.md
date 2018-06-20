@@ -37,7 +37,7 @@ _Follow these steps when you need to make changes to Gamut that are immediately 
 4.  You should be accessing your local version of Gamut.
 5.  If you make an update to Gamut, you will have to run yarn in your local repo again.
 
-### Publishing the modules
+### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After you've reviewed and tested your code, you can merge your branch into master.
