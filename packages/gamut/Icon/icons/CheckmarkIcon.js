@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ChevronDownIcon(props) {
+export default function CheckmarkIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Checkmark Icon</title>

@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.9.2"></a>
+## [1.9.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.9.1...@codecademy/gamut@1.9.2) (2018-06-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.9.1"></a>
+## [1.9.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.9.0...@codecademy/gamut@1.9.1) (2018-06-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.8.1...@codecademy/gamut@1.9.0) (2018-06-12)
+
+
+### Features
+
+* Allow custom Tab activeClassName ([#128](https://github.com/RyzacInc/gamut/issues/128)) ([034c9b8](https://github.com/RyzacInc/gamut/commit/034c9b8))
+
+
+
+
+
+<a name="1.8.1"></a>
+## [1.8.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.8.0...@codecademy/gamut@1.8.1) (2018-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.7.12...@codecademy/gamut@1.8.0) (2018-06-11)
+
+
+### Features
+
+* add edit icon ([#126](https://github.com/RyzacInc/gamut/issues/126)) ([4525bc2](https://github.com/RyzacInc/gamut/commit/4525bc2))
+
+
+
+
+
+<a name="1.7.12"></a>
+## [1.7.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.7.11...@codecademy/gamut@1.7.12) (2018-06-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.7.11"></a>
 ## [1.7.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.7.10...@codecademy/gamut@1.7.11) (2018-05-30)
 

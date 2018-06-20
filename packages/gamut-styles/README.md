@@ -7,6 +7,7 @@ It also contains a JavaScript file with color variables.
 
 ## Core/
 This folder contains a base stylesheet for the app.
+This should be imported **once** in your application.
 
 ## Utils/
 This folder contains Sass functions (pure utilities with no stylesheet output values) and mixins (outputs CSS)

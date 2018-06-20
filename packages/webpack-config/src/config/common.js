@@ -46,6 +46,7 @@ const commonConfig = (options = {}) => {
 
   if (config.mode === 'production') {
     config = merge.smart(config, {
+      bail: true, // Don't try to continue through any errors
       devtool: productionSourcemaps ? 'source-map' : false,
       optimization: {
         minimize: true,

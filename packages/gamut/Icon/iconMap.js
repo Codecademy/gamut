@@ -5,6 +5,7 @@ import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
+import BellIcon from './icons/BellIcon';
 import BayesIcon from './icons/BayesIcon';
 import CSSIcon from './icons/CSSIcon';
 import CertificateIcon from './icons/CertificateIcon';
@@ -18,6 +19,7 @@ import CloseIcon from './icons/CloseIcon';
 import ColorsIcon from './icons/ColorsIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
+import EditIcon from './icons/EditIcon';
 import ForumsIcon from './icons/ForumsIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
@@ -61,6 +63,7 @@ const iconMap = {
   angular: AngularIcon,
   article: ArticleIcon,
   bayes: BayesIcon,
+  bell: BellIcon,
   certificate: CertificateIcon,
   checkmark: CheckmarkIcon,
   chevronDown: ChevronDownIcon,
@@ -73,6 +76,7 @@ const iconMap = {
   community: CommunityIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  edit: EditIcon,
   forums: ForumsIcon,
   fullstack: FullstackIcon,
   git: GitIcon,

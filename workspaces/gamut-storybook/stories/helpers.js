@@ -1,4 +1,4 @@
-import { gamutColors } from '@codecademy/gamut-styles/variables';
+import { gamutColors } from '@codecademy/gamut-styles/utils/variables';
 
 function convertCamelToSpinel(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();

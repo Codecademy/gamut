@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { Item } from '@codecademy/gamut/FlexBox';
 import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
-import gamut from '@codecademy/gamut-styles/variables';
+import gamut from '@codecademy/gamut-styles/utils/variables';
 import { addonInfoOptions as options } from './options';
 
 const Box = () => (

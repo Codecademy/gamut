@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.5"></a>
+## [2.0.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.4...@codecademy/gamut-storybook@2.0.5) (2018-06-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.3...@codecademy/gamut-storybook@2.0.4) (2018-06-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.2...@codecademy/gamut-storybook@2.0.3) (2018-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.1...@codecademy/gamut-storybook@2.0.2) (2018-06-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.0...@codecademy/gamut-storybook@2.0.1) (2018-06-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.28...@codecademy/gamut-storybook@2.0.0) (2018-06-11)
+
+
+### Features
+
+* Merge standard & core variables ([#123](https://github.com/RyzacInc/gamut/issues/123)) ([5bf24b0](https://github.com/RyzacInc/gamut/commit/5bf24b0))
+
+
+### BREAKING CHANGES
+
+* `gamut-styles/variables` renamed to `gamut-styles/utils/variables`
+
+
+
+
+
 <a name="1.7.28"></a>
 ## [1.7.28](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.27...@codecademy/gamut-storybook@1.7.28) (2018-05-30)
 

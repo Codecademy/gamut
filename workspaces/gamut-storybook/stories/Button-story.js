@@ -7,7 +7,7 @@ import ButtonBase from '@codecademy/gamut/ButtonBase';
 import Spinner from '@codecademy/gamut/Spinner';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import { colors } from '@codecademy/gamut-styles/variables';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 import { addonInfoOptions as options } from './options';
 
