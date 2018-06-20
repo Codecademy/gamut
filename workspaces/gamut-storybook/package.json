@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-storybook",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "private": true,
   "engines": {
@@ -19,7 +19,7 @@
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "dependencies": {
-    "@codecademy/gamut": "^1.9.3",
+    "@codecademy/gamut": "^1.10.0",
     "@codecademy/gamut-styles": "^2.0.1",
     "classnames": "^2.2.5",
     "file-loader": "^1.1.11",
@@ -27,7 +27,7 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
-    "@codecademy/webpack-config": "3.3.0",
+    "@codecademy/webpack-config": "^3.4.0",
     "@storybook/addon-actions": "^4.0.0-alpha.9",
     "@storybook/addon-centered": "4.0.0-alpha.8",
     "@storybook/addon-info": "^4.0.0-alpha.9",
@@ -42,14 +42,14 @@
     "babel-preset-codecademy": "^1.0.0",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
-    "jsdom": "^8.3.1",
-    "mocha": "^2.4.5",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
     "css-loader": ">= 0.28.10",
     "file-loader": ">= 1.1.11",
+    "jsdom": "^8.3.1",
+    "mocha": "^2.4.5",
     "node-sass": ">= 4.5.2",
     "postcss-loader": ">= 2.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "sass-loader": ">= 6.0.7",
     "style-loader": ">= 0.20.3",
     "webpack": "4.12.0"
