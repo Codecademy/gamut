@@ -48,7 +48,6 @@
     "eslint-plugin-jsx-a11y": "2.2.3",
     "eslint-plugin-react": "6.4.1",
     "file-loader": ">= 1.1.11",
-    "jest": "20.0.1",
     "jquery": "^3.3.1",
     "node-sass": ">= 4.5.2",
     "postcss-loader": ">= 2.1.1",
@@ -63,7 +62,7 @@
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "postcss-flexbugs-fixes": "^3.3.1",
     "uglifyjs-webpack-plugin": ">= 1.2.3",
-    "webpack-cli": "^2.0.12",
+    "webpack-cli": "^3.0.8",
     "webpack-merge": "^4.1.2"
   }
 }
