@@ -31,3 +31,13 @@
   src: url("../fonts/ikona/ikona.woff") format("woff"),
     url("../fonts/ikona/ikona.ttf") format("truetype");
 }
+
+// because Regular has weird caret styles
+@font-face {
+  font-family: "Regular Patch";
+  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
+  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
+    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
+    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
+  unicode-range: U+003C, U+003E;
+}
