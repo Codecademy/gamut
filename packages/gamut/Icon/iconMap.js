@@ -36,6 +36,7 @@ import NumPyIcon from './icons/NumPyIcon';
 import PHPIcon from './icons/PHPIcon';
 import PandasIcon from './icons/PandasIcon';
 import PathIcon from './icons/PathIcon';
+import PlayIcon from './icons/PlayIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
@@ -94,6 +95,7 @@ const iconMap = {
   pandas: PandasIcon,
   path: PathIcon,
   php: PHPIcon,
+  play: PlayIcon,
   project: ProjectIcon,
   python: PythonIcon,
   quiz: QuizIcon,
