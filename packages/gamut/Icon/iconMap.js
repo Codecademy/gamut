@@ -53,6 +53,7 @@ import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import VideoIcon from './icons/VideoIcon';
 import jQueryIcon from './icons/jQueryIcon';
 
 const iconMap = {
@@ -113,6 +114,7 @@ const iconMap = {
   trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
+  video: VideoIcon,
 };
 
 export default iconMap;
