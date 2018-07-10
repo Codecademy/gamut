@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.10.4"></a>
+## [1.10.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.3...@codecademy/gamut@1.10.4) (2018-07-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.10.3"></a>
 ## [1.10.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.2...@codecademy/gamut@1.10.3) (2018-07-09)
 
