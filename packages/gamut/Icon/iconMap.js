@@ -25,6 +25,7 @@ import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
 import GlassesIcon from './icons/GlassesIcon';
 import HTMLIcon from './icons/HTMLIcon';
+import InformationalIcon from './icons/InformationalIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import LearnIcon from './icons/LearnIcon';
@@ -84,6 +85,7 @@ const iconMap = {
   git: GitIcon,
   glasses: GlassesIcon,
   html: HTMLIcon,
+  informational: InformationalIcon,
   jQuery: jQueryIcon,
   java: JavaIcon,
   javascript: JavascriptIcon,
