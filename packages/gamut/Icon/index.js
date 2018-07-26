@@ -15,7 +15,7 @@ const defaultProps = {
 };
 
 function Icon({ name, size, ...props }) {
-  const MappedIcon = iconMap[name];
+  const MappedIcon = iconMap[name] ? iconMap[name] : iconMap.lesson;
 
   if (size) {
     props.width = size;
