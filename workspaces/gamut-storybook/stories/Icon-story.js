@@ -24,15 +24,6 @@ storiesOf('Component/Icon', module)
             <span>{iconName}</span>
           </span>
         ))}
-        <span className={s.iconWrapper}>
-          <Icon
-            key="THIS ICON DOESNT EXIST"
-            name="THIS ICON DOESNT EXIST"
-            width={64}
-            height={64}
-          />
-          <span>default icon</span>
-        </span>
       </div>
     ))
   )
