@@ -16,10 +16,11 @@ const Input = ({ error, success, htmlFor, className, showIcons, ...rest }) => {
 
   let icon;
   if (success) {
-    icon = '❌';
-  } else if (error) {
     icon = '✅';
+  } else if (error) {
+    icon = '❌';
   }
+  console.log('rendering input');
 
   if (!showIcons || !icon) return input;
   return (

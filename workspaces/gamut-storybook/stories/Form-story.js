@@ -140,6 +140,13 @@ storiesOf('Component/Form', module)
     }
   )
   .add(
+    'Input success state',
+    () => <Input htmlFor="name" placeholder="First Name" success />,
+    {
+      inline: true,
+    }
+  )
+  .add(
     'TextArea',
     () => <TextArea htmlFor="about" placeholder="About you" rows="8" />,
     {
