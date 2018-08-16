@@ -27,3 +27,17 @@
     border-color: $swatches-red-200;
   }
 }
+
+.success {
+  border-color: $swatches-mint-500;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+}
