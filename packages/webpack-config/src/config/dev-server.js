@@ -34,20 +34,7 @@ const devServerConfig = options => {
     },
     babelConfig({
       options: {
-        plugins: [
-          [
-            'react-transform',
-            {
-              transforms: [
-                {
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module'],
-                },
-              ],
-            },
-          ],
-        ],
+        plugins: [['react-hot-loader/babel']],
       },
     })
   );
