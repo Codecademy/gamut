@@ -27,6 +27,7 @@ const commonConfig = (options = {}) => {
     },
 
     module: {
+      strictExportPresence: true,
       rules: [loaders.babel.default, loaders.files.default],
     },
 
