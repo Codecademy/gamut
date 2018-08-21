@@ -1,16 +1,64 @@
-module.exports = {
+const env = process.env.BABEL_ENV || process.env.NODE_ENV;
+const isEnvTest = env === "test";
+const isEnvProduction = env === "production";
+const isEnvDevelopment = !isEnvTest && !isEnvProduction;
+
+module.exports = () => ({
   presets: [
-    require('babel-preset-es2015'),
-    require('babel-preset-react'),
-    require('babel-preset-stage-0')
-  ],
+    isEnvTest && [
+      require("@babel/preset-env").default,
+      {
+        targets: {
+          node: "current"
+        }
+      }
+    ],
+    (isEnvProduction || isEnvDevelopment) && [
+      require("@babel/preset-env").default,
+      {
+        useBuiltIns: "entry",
+        modules: false
+      }
+    ],
+    require("@babel/preset-react").default,
+    require("@babel/preset-flow").default
+  ].filter(Boolean),
   plugins: [
-    require('babel-plugin-add-module-exports'),
-    require('babel-plugin-transform-decorators-legacy').default,
-    require('babel-plugin-transform-es2015-template-literals'),
-    require('babel-plugin-transform-es3-member-expression-literals'),
-    require('babel-plugin-transform-es3-property-literals'),
-    require('babel-plugin-transform-jscript'),
-    require('babel-plugin-transform-exponentiation-operator')
-  ]
-};
+    require("@babel/plugin-transform-destructuring").default,
+    [
+      require("@babel/plugin-proposal-class-properties").default,
+      {
+        loose: true
+      }
+    ],
+    [
+      require("@babel/plugin-proposal-object-rest-spread").default,
+      {
+        useBuiltIns: true
+      }
+    ],
+    [require("@babel/plugin-proposal-decorators"), { legacy: true }],
+    require("@babel/plugin-proposal-export-default-from"),
+    require("@babel/plugin-proposal-export-namespace-from"),
+    require("@babel/plugin-proposal-do-expressions"),
+    require("@babel/plugin-syntax-import-meta"),
+    [
+      require("@babel/plugin-transform-runtime").default,
+      {
+        helpers: false,
+        regenerator: true
+      }
+    ],
+    !isEnvTest && [
+      require("@babel/plugin-transform-regenerator").default,
+      {
+        // Async functions are converted to generators by @babel/preset-env
+        async: false
+      }
+    ],
+    require("@babel/plugin-syntax-dynamic-import").default,
+    isEnvTest &&
+      // Transform dynamic import to require
+      require("babel-plugin-transform-dynamic-import").default
+  ].filter(Boolean)
+});
