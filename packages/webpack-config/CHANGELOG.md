@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.5.0"></a>
+# [3.5.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.4.0...@codecademy/webpack-config@3.5.0) (2018-08-21)
+
+
+### Features
+
+* updates for babel 7 ([748b911](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/748b911))
+
+
+
+
+
 <a name="3.4.0"></a>
 # [3.4.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.3.0...@codecademy/webpack-config@3.4.0) (2018-06-20)
 
