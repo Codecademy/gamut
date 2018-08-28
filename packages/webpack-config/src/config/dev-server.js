@@ -11,19 +11,17 @@ const devServerConfig = options => {
         publicPath: publicPath || `http://localhost:${port}/dist/`,
       },
 
-      devServer: {
-        port,
-        overlay: true,
-        publicPath: publicPath || `http://localhost:${port}/dist/`,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: true,
-          chunks: false,
-          chunkModules: false,
+      serve: {
+        port: publicPath || `http://localhost:${port}/dist/`,
+        devMiddleware: {
+          publicPath: `/webpack/`,
+          headers: { 'Access-Control-Allow-Origin': '*' },
+          stats: {
+            chunkGroups: true,
+          },
+        },
+        hotClient: {
+          hot: true,
         },
       },
 
