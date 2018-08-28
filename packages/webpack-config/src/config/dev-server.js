@@ -23,6 +23,7 @@ const devServerConfig = options => {
         hotClient: {
           hot: true,
         },
+        clipboard: false,
       },
 
       plugins: [
