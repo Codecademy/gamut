@@ -22,7 +22,8 @@ const devServerConfig = options => {
             },
           },
           hotClient: {
-            hot: true,
+            hmr: true,
+            allEntries: true,
           },
           clipboard: false,
         },
