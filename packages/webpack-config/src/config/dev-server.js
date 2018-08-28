@@ -3,7 +3,7 @@ const merge = require('webpack-merge');
 const babelConfig = require('./babel');
 
 const devServerConfig = options => {
-  const { port = 3808, publicPath } = options;
+  const { port = 3808, publicPath, ...serveOptions } = options;
 
   return merge.smart(
     {
@@ -11,21 +11,24 @@ const devServerConfig = options => {
         publicPath: publicPath || `http://localhost:${port}/dist/`,
       },
 
-      devServer: {
-        port,
-        overlay: true,
-        publicPath: publicPath || `http://localhost:${port}/dist/`,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: true,
-          chunks: false,
-          chunkModules: false,
+      serve: merge(
+        {
+          port,
+          devMiddleware: {
+            publicPath: publicPath || `http://localhost:${port}/dist/`,
+            headers: { 'Access-Control-Allow-Origin': '*' },
+            stats: {
+              chunkGroups: true,
+            },
+          },
+          hotClient: {
+            hmr: true,
+            allEntries: true,
+          },
+          clipboard: false,
         },
-      },
+        serveOptions
+      ),
 
       plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
