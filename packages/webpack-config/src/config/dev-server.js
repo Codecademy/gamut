@@ -12,9 +12,9 @@ const devServerConfig = options => {
       },
 
       serve: {
-        port: publicPath || `http://localhost:${port}/dist/`,
+        port,
         devMiddleware: {
-          publicPath: `/webpack/`,
+          publicPath: publicPath || `http://localhost:${port}/dist/`,
           headers: { 'Access-Control-Allow-Origin': '*' },
           stats: {
             chunkGroups: true,
