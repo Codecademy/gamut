@@ -44,7 +44,7 @@ class WebpackConfig {
         if (key === 'module.rules') {
           return a.map(rule => {
             const match = b.find(r => String(r.test) === String(rule.test));
-            if (match) return merge(rule, match);
+            if (match) return merge.unique(rule, match);
             return rule;
           });
         }
