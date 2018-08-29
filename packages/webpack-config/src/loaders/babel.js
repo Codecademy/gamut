@@ -3,7 +3,6 @@ const babel = {
     test: /\.js?$/,
     loader: 'babel-loader',
     options: {
-      ignore: ['node_modules'],
       cacheDirectory: true,
     },
   },
