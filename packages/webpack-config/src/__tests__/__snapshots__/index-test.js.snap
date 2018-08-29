@@ -8,20 +8,7 @@ Object {
   "mode": "development",
   "module": Object {
     "rules": Array [
-      Object {
-        "exclude": [Function],
-        "include": Array [
-          "/Users/jake/Sites/Codecademy/npm/gamut/packages/webpack-config/src/__tests__",
-        ],
-        "loader": "babel-loader",
-        "options": Object {
-          "cacheDirectory": true,
-          "presets": Array [
-            "codecademy",
-          ],
-        },
-        "test": /\\\\\\.js\\?\\$/,
-      },
+      [Function],
       Object {
         "loader": "file-loader",
         "test": /\\\\\\.jpe\\?g\\$\\|\\\\\\.gif\\$\\|\\\\\\.png\\$\\|\\\\\\.svg\\$\\|\\\\\\.woff2\\?\\$\\|\\\\\\.ttf\\$\\|\\\\\\.eot\\|\\\\\\.wav\\$\\|\\\\\\.mp3\\$/,
@@ -74,12 +61,11 @@ Object {
   "module": Object {
     "rules": Array [
       Object {
-        "exclude": [Function],
         "loader": "babel-loader",
         "options": Object {
           "cacheDirectory": true,
-          "presets": Array [
-            "codecademy",
+          "ignore": Array [
+            "node_modules",
           ],
         },
         "test": /\\\\\\.js\\?\\$/,
@@ -89,7 +75,6 @@ Object {
         "test": /\\\\\\.jpe\\?g\\$\\|\\\\\\.gif\\$\\|\\\\\\.png\\$\\|\\\\\\.svg\\$\\|\\\\\\.woff2\\?\\$\\|\\\\\\.ttf\\$\\|\\\\\\.eot\\|\\\\\\.wav\\$\\|\\\\\\.mp3\\$/,
       },
       Object {
-        "exclude": /\\(node_modules\\|bower_components\\)/,
         "test": /\\\\\\.js\\$/,
         "use": Array [
           Object {
@@ -99,6 +84,7 @@ Object {
                 "@babel/plugin-transform-runtime",
               ],
               "presets": Array [
+                "codecademy",
                 "codecademy",
               ],
             },
