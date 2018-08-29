@@ -37,7 +37,7 @@
   "devDependencies": {
     "babel-core": ">= 6.0 < 7.0",
     "babel-eslint": "^7.2.3",
-    "babel-loader": "8.0.0",
+    "babel-loader": ">= 7.1.4",
     "babel-preset-codecademy": ">= 1.0",
     "css-loader": ">= 0.28.10",
     "eslint": "3.17.1",
