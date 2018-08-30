@@ -6,7 +6,7 @@ class WebpackConfig {
     this._configs = Object.assign({}, configs);
     Object.keys(this._configs).forEach(c => {
       this[c] = opts => {
-        this.merge(this._configs[c](opts));
+        this.merge(this._configs[c](opts, this));
         return this;
       };
     });
