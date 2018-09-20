@@ -6,7 +6,7 @@ class WebpackConfig {
     this._configs = Object.assign({}, configs);
     Object.keys(this._configs).forEach(c => {
       this[c] = opts => {
-        this.merge(this._configs[c](opts));
+        this.merge(this._configs[c](opts, this));
         return this;
       };
     });
@@ -44,7 +44,7 @@ class WebpackConfig {
         if (key === 'module.rules') {
           return a.map(rule => {
             const match = b.find(r => String(r.test) === String(rule.test));
-            if (match) return merge(rule, match);
+            if (match) return merge.unique(rule, match);
             return rule;
           });
         }
