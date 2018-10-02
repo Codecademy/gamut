@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.10.7"></a>
+## [1.10.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.6...@codecademy/gamut@1.10.7) (2018-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.6"></a>
+## [1.10.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.5...@codecademy/gamut@1.10.6) (2018-08-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.5"></a>
+## [1.10.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.4...@codecademy/gamut@1.10.5) (2018-07-13)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.4"></a>
+## [1.10.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.3...@codecademy/gamut@1.10.4) (2018-07-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.3"></a>
+## [1.10.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.2...@codecademy/gamut@1.10.3) (2018-07-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.2"></a>
+## [1.10.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.1...@codecademy/gamut@1.10.2) (2018-07-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.10.1"></a>
 ## [1.10.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.0...@codecademy/gamut@1.10.1) (2018-06-22)
 

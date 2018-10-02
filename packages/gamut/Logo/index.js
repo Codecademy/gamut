@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CodecademyLogo from './CodecademyLogo';
 import CodecademyProLogo from './CodecademyProLogo';
+import CodecademyProAltLogo from './CodecademyProAltLogo';
 import CodecademyProgramLogo from './CodecademyProgramLogo';
 
 const propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
-  type: PropTypes.oneOf(['pro', 'program', 'default']).isRequired,
+  type: PropTypes.oneOf(['pro', 'proAlt', 'program', 'default']).isRequired,
 };
 
 const defaultProps = {
@@ -17,6 +18,7 @@ const defaultProps = {
 
 const logos = {
   pro: CodecademyProLogo,
+  proAlt: CodecademyProAltLogo,
   program: CodecademyProgramLogo,
   default: CodecademyLogo,
 };

@@ -25,6 +25,7 @@ import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
 import GlassesIcon from './icons/GlassesIcon';
 import HTMLIcon from './icons/HTMLIcon';
+import InformationalIcon from './icons/InformationalIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import LearnIcon from './icons/LearnIcon';
@@ -36,6 +37,7 @@ import NumPyIcon from './icons/NumPyIcon';
 import PHPIcon from './icons/PHPIcon';
 import PandasIcon from './icons/PandasIcon';
 import PathIcon from './icons/PathIcon';
+import PlayIcon from './icons/PlayIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
@@ -52,6 +54,7 @@ import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import VideoIcon from './icons/VideoIcon';
 import jQueryIcon from './icons/jQueryIcon';
 
 const iconMap = {
@@ -82,6 +85,7 @@ const iconMap = {
   git: GitIcon,
   glasses: GlassesIcon,
   html: HTMLIcon,
+  informational: InformationalIcon,
   jQuery: jQueryIcon,
   java: JavaIcon,
   javascript: JavascriptIcon,
@@ -94,6 +98,7 @@ const iconMap = {
   pandas: PandasIcon,
   path: PathIcon,
   php: PHPIcon,
+  play: PlayIcon,
   project: ProjectIcon,
   python: PythonIcon,
   quiz: QuizIcon,
@@ -111,6 +116,7 @@ const iconMap = {
   trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
+  video: VideoIcon,
 };
 
 export default iconMap;
