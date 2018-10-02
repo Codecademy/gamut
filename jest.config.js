@@ -17,7 +17,7 @@ module.exports = {
     '\\.(js|jsx)$': 'babel-jest',
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
   },
-  transformIgnorePatterns: ['/node_modules/'],
+  transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
   testRegex: '\\-test\\.js$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
