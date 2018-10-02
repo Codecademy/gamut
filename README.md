@@ -12,15 +12,15 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
 
-[`gamut-storybook`: A component development sandbox for Gamut components](/packages/gamut-storybook/README.md)
+[`gamut-storybook`: A component development sandbox for Gamut components](/workspaces/gamut-storybook/README.md)
 
 ## Local development
 
 1.  Log into npm
     * Run `npm login` with username `codecademy`; you can find the password in LastPass
     * Running `npm whoami` should return `codecademy`
-1.  Run `yarn` in the root directory
-1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+2.  Run `yarn` in the root directory
+3.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
 ### Running storybook
 
