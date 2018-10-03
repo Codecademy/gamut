@@ -41,11 +41,11 @@ jobs:
           key: *repo_cache_key_1
           paths:
             - .
+
   verify_formatting:
-    <<: *defaults
+    <<: *default_env
     steps:
       - *restore_repo
-      - *restore_yarn_dependencies
       - run:
           name: Verify Prettier
           command: yarn format:verify
