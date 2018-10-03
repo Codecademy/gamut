@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.10...@codecademy/gamut-storybook@2.2.0) (2018-10-03)
+
+
+### Features
+
+* Better babel 7 support ([#145](https://github.com/RyzacInc/gamut/issues/145)) ([49a1e23](https://github.com/RyzacInc/gamut/commit/49a1e23))
+
+
+
+
+
 <a name="2.1.10"></a>
 ## [2.1.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.9...@codecademy/gamut-storybook@2.1.10) (2018-09-14)
 
