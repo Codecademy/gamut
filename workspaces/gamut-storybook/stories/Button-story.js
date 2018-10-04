@@ -165,10 +165,12 @@ storiesOf('Component/Button', module)
           Disabled
         </Button>
         <Button style={btnStyle} theme="primary">
-          <Spinner />&nbsp;&nbsp;Loading...
+          <Spinner />
+          &nbsp;&nbsp;Loading...
         </Button>
         <Button style={btnStyle} theme="secondary">
-          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+          <RadialProgress value={[0, 100]} duration={5000} />
+          &nbsp;&nbsp;Processing...
         </Button>
         <Button style={btnStyle} theme="primary" caps href="#">
           Caps
@@ -287,10 +289,12 @@ storiesOf('Component/Button', module)
           Disabled
         </Button>
         <Button style={btnStyle} theme="primary" round>
-          <Spinner />&nbsp;&nbsp;Loading...
+          <Spinner />
+          &nbsp;&nbsp;Loading...
         </Button>
         <Button style={btnStyle} theme="secondary" round>
-          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+          <RadialProgress value={[0, 100]} duration={5000} />
+          &nbsp;&nbsp;Processing...
         </Button>
         <Button style={btnStyle} theme="primary" caps href="#" round>
           Caps
@@ -317,10 +321,12 @@ storiesOf('Component/Button', module)
           Disabled
         </Button>
         <Button style={btnStyle} theme="primary" square>
-          <Spinner />&nbsp;&nbsp;Loading...
+          <Spinner />
+          &nbsp;&nbsp;Loading...
         </Button>
         <Button style={btnStyle} theme="secondary" square>
-          <RadialProgress value={[0, 100]} duration={5000} />&nbsp;&nbsp;Processing...
+          <RadialProgress value={[0, 100]} duration={5000} />
+          &nbsp;&nbsp;Processing...
         </Button>
         <Button style={btnStyle} theme="primary" caps href="#" square>
           Caps

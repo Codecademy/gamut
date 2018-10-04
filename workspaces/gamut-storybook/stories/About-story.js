@@ -16,10 +16,12 @@ storiesOf('About', module).add('Welcome', () => (
       blocks in the "Visual" top-level folder, such as{' '}
       <a href="/?selectedKind=Visuals%2FColors&selectedStory=Portal">
         color variables
-      </a>. To instead view the core styles for Codecademy, visit the{' '}
+      </a>
+      . To instead view the core styles for Codecademy, visit the{' '}
       <a href="https://github.com/RyzacInc/gamut/tree/master/packages/gamut-styles">
         Gamut Styles sub-repo
-      </a>.
+      </a>
+      .
     </p>
   </div>
 ));
