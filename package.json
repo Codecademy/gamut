@@ -13,7 +13,9 @@
     "test": "jest",
     "lint": "eslint \"packages/**/*.{js,json}\"",
     "lerna": "lerna",
-    "format": "prettier-eslint --prettier-last --write \"./**/*.{js,json,css,scss}\"",
+    "prettier": "prettier-eslint --prettier-last \"./**/*.{js,json,css,scss}\"",
+    "format": "yarn prettier --write",
+    "format:verify": "yarn prettier --list-different",
     "build-all": "yarn wsrun build --exclude-missing",
     "start": "yarn wsrun storybook --exclude-missing",
     "precommit": "lint-staged"
