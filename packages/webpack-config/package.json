@@ -32,7 +32,7 @@
     "sass-loader": ">= 6.0.7",
     "style-loader": ">= 0.20.3",
     "webpack": ">= 4.0 < 5.0",
-    "webpack-serve": ">= 2.0.0"
+    "webpack-dev-server": ">= 3.1.9"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
