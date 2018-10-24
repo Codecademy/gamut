@@ -11,7 +11,7 @@ const SOURCEMAPS = !(process.env.NODE_ENV === 'production');
 
 const cssFilePattern = /\.css?$/;
 const cssLoaderDefaults = {
-  loader: 'css-loader',
+  loader: 'typings-for-css-modules-loader',
   options: {
     importLoaders: 1,
     sourceMap: SOURCEMAPS,

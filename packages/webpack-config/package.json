@@ -51,6 +51,7 @@
     "postcss-loader": ">= 2.1.1",
     "sass-loader": ">= 6.0.7",
     "style-loader": ">= 0.20.3",
+    "typings-for-css-modules-loader": "^1.7.0",
     "webpack": ">= 4.0 < 5.0",
     "webpack-serve": ">= 2.0.0 < 3.0.0"
   },
