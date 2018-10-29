@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 
 const devServerConfig = options => {
-  const { port = 3808, publicPath } = options;
+  const { port = 3808, host = 'localhost', publicPath, ...rest } = options;
 
   return merge.smart({
     output: {
@@ -11,6 +11,7 @@ const devServerConfig = options => {
 
     devServer: {
       port,
+      host,
       overlay: true,
       publicPath: publicPath || `http://localhost:${port}/dist/`,
       headers: { 'Access-Control-Allow-Origin': '*' },
@@ -23,6 +24,7 @@ const devServerConfig = options => {
         chunks: false,
         chunkModules: false,
       },
+      ...rest,
     },
 
     plugins: [
