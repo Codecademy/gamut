@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.9.0"></a>
+# [3.9.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.8.0...@codecademy/webpack-config@3.9.0) (2018-10-25)
+
+
+### Features
+
+* switch back to dev server ([#149](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/149)) ([335377e](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/335377e))
+
+
+
+
+
 <a name="3.8.0"></a>
 # [3.8.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.7.0...@codecademy/webpack-config@3.8.0) (2018-10-03)
 
