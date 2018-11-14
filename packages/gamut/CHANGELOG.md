@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.10.9"></a>
+## [1.10.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.8...@codecademy/gamut@1.10.9) (2018-11-14)
+
+
+### Bug Fixes
+
+* **component:** Spread and render extra props for Radio components ([#152](https://github.com/RyzacInc/gamut/issues/152)) ([eb878c0](https://github.com/RyzacInc/gamut/commit/eb878c0))
+
+
+
+
+
 <a name="1.10.8"></a>
 ## [1.10.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.7...@codecademy/gamut@1.10.8) (2018-10-04)
 
