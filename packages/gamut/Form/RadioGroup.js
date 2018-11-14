@@ -1,8 +1,8 @@
 import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 
-const RadioGroup = ({ children, onChange, htmlForPrefix, name }) => (
-  <div>
+const RadioGroup = ({ children, onChange, htmlForPrefix, name, ...rest }) => (
+  <div {...rest}>
     {React.Children.map(children, (child, index) =>
       cloneElement(child, {
         onChange: onChange,

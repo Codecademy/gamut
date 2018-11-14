@@ -3,23 +3,34 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Radio.scss';
 
-const Radio = props => {
-  const className = cx(s.Radio, props.className);
+const Radio = ({
+  name,
+  value,
+  label,
+  checked,
+  className,
+  htmlFor,
+  onChange,
+  required,
+  ...rest
+}) => {
+  const classNames = cx(s.Radio, className);
   return (
-    <div className={className}>
+    <div className={classNames}>
       <input
         className={s.radioInput}
-        id={props.htmlFor}
-        name={props.name}
-        required={props.required}
+        id={htmlFor}
+        name={name}
+        required={required}
         type="radio"
-        label={props.label}
-        checked={props.checked}
-        onChange={props.onChange}
-        value={props.value}
+        label={label}
+        checked={checked}
+        onChange={onChange}
+        value={value}
+        {...rest}
       />
-      <label htmlFor={props.htmlFor} className={s.radioLabel}>
-        {props.label}
+      <label htmlFor={htmlFor} className={s.radioLabel}>
+        {label}
       </label>
     </div>
   );
