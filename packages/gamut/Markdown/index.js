@@ -16,7 +16,20 @@ const themes = {
 const renderIframe = element => {
   const { props } = element;
   if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
-    return <div className={rendererStyles.youtubeVideoWrapper}>{element}</div>;
+    const width = props.width || 16;
+    const height = props.height || 9;
+    const ratioPadding = (
+      (Math.round(height) / Math.round(width)) *
+      100
+    ).toFixed(2);
+    const wrapperStyles = {
+      paddingBottom: `${ratioPadding}%`,
+    };
+    return (
+      <div className={rendererStyles.youtubeVideoWrapper} style={wrapperStyles}>
+        {element}
+      </div>
+    );
   }
   return element;
 };
@@ -36,6 +49,7 @@ class Markdown extends PureComponent {
     escapeHtml: PropTypes.bool,
     className: PropTypes.string,
     text: PropTypes.string,
+    renderers: PropTypes.object,
   };
 
   render() {
@@ -44,22 +58,18 @@ class Markdown extends PureComponent {
       text,
       escapeHtml = false,
       className,
-      ...rest
+      renderers,
     } = this.props;
     const themeStyles = themes[theme];
     const classes = cx(themeStyles.theme, className);
-    console.log(escapeHtml);
+    const allRenderers = { ...RENDERERS, ...renderers };
     return (
-      <div>
-        <ReactMarkdown
-          className={classes}
-          source={text}
-          renderers={RENDERERS}
-          skipHtml={false}
-          escapeHtml={escapeHtml}
-          // astPlugins={[parseHtml]}
-        />
-      </div>
+      <ReactMarkdown
+        className={classes}
+        source={text}
+        renderers={allRenderers}
+        escapeHtml={escapeHtml}
+      />
     );
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
 
 const editableMarkdown = `
@@ -8,13 +8,18 @@ const editableMarkdown = `
 
 Use the knobs view below to edit
 
+# h1
+## h2
+### h3
+
 \`\`\`js
+// Code block
 const test = async function test({value}) {
   const res = await fetch('url');
 }
 \`\`\`
 
-<iframe width="1920" height="778" src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h1>html h1</h1>
 
@@ -26,7 +31,12 @@ const test = async function test({value}) {
 
 storiesOf('Component/Markdown', module).add(
   'Editable',
-  () => <Markdown text={text('markdown', editableMarkdown)} />,
+  () => (
+    <Markdown
+      text={text('markdown', editableMarkdown)}
+      theme={select('theme', ['tight', 'loose', 'none'])}
+    />
+  ),
   {
     info: {
       inline: false,
