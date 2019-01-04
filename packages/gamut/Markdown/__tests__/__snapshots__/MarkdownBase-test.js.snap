@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Markdown when specified 1`] = `
+<div
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<h1 id=\\"creep\\">Creep</h1>
+<p>The twenty second of loneliness</p>
+<p>And we&#39;ve been through so many things</p>
+",
+    }
+  }
+/>
+`;

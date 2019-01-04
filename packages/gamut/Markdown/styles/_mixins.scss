@@ -1,0 +1,119 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$gamut-purple-100: #e1e0eb;
+$gamut-purple-700: #544f7b;
+
+@mixin markdown-style(
+  $font-size: 1.1rem,
+  $line-height: 1.6,
+  $base-margin: 1rem
+) {
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    @include font-smoothing;
+  }
+
+  p {
+    line-height: $line-height;
+    font-size: $font-size;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    &:empty {
+      display: none;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul,
+  ol {
+    font-size: $font-size;
+    list-style: none;
+    padding-left: 0;
+    margin: $base-margin 0;
+    ul,
+    ol {
+      // Even out nested lists
+      margin-top: $base-unit / 2;
+      li:last-child {
+        margin-bottom: 0;
+      }
+    }
+    li {
+      position: relative;
+      margin-left: $base-unit * 2;
+      margin-bottom: $base-unit / 2;
+      line-height: $line-height;
+      &:last-child {
+        margin-bottom: $base-unit;
+      }
+    }
+  }
+
+  ul li::before {
+    content: "\25CF";
+    position: absolute;
+    transform: scale(0.6);
+    top: 0;
+    left: -$base-unit * 2;
+    width: $base-unit * 2;
+    line-height: $line-height;
+    text-align: center;
+  }
+
+  ol {
+    counter-reset: "ordered-list";
+
+    li {
+      counter-increment: ordered-list;
+
+      &::before {
+        content: counter(ordered-list) ".";
+        position: absolute;
+        top: 0;
+        left: -($base-unit * 2);
+        width: $base-unit * 2;
+        text-align: center;
+        line-height: inherit;
+      }
+    }
+  }
+
+  // Inline code style.
+
+  code {
+    padding: 0 0.25rem;
+    margin: 0 0.0625rem;
+    border-radius: 0.125rem;
+    color: $gamut-purple-900;
+    background-color: mix($swatches-grey-200, $swatches-grey-100);
+    white-space: normal;
+    vertical-align: baseline;
+    font-family: $font-monospace;
+    font-size: 0.9rem;
+  }
+
+  // CodeBlock
+  pre > code {
+    display: block;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: $base-margin auto;
+    max-width: 100%;
+  }
+
+  iframe {
+    width: 100%;
+  }
+}

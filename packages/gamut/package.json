@@ -23,7 +23,8 @@
     "invariant": "^2.2.0",
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
-    "react-aria-tabpanel": "^4.4.0"
+    "react-aria-tabpanel": "^4.4.0",
+    "react-markdown": "4.0.1"
   },
   "license": "MIT"
 }
