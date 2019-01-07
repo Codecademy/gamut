@@ -1,14 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the Markdown when specified 1`] = `
+exports[`Renders html content in markdown 1`] = `
 <div
-  dangerouslySetInnerHTML={
-    Object {
-      "__html": "<h1 id=\\"creep\\">Creep</h1>
-<p>The twenty second of loneliness</p>
-<p>And we&#39;ve been through so many things</p>
-",
-    }
-  }
-/>
+  class="theme"
+>
+  <h1>
+    Heading 1
+  </h1>
+  <h3>
+    Heading 3
+  </h3>
+  <table>
+    
+  
+    <tbody>
+      
+    
+      <tr>
+        
+    
+      </tr>
+      
+    
+      <tr>
+        <td>
+          Cool
+        </td>
+        
+  
+      </tr>
+    </tbody>
+    
+
+  </table>
+  <table />
+</div>
+`;
+
+exports[`renders standard Markdown 1`] = `
+<div
+  class="theme"
+>
+  <h1>
+    Heading 1
+  </h1>
+  <h3>
+    Heading 3
+  </h3>
+  <pre>
+    <code>
+      const jsCode = () =&gt; {
+  console.log('hello world);
+}
+    </code>
+  </pre>
+</div>
 `;

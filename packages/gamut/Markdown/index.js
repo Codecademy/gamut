@@ -26,7 +26,11 @@ const renderIframe = element => {
       paddingBottom: `${ratioPadding}%`,
     };
     return (
-      <div className={rendererStyles.youtubeVideoWrapper} style={wrapperStyles}>
+      <div
+        className={rendererStyles.youtubeVideoWrapper}
+        data-testid="yt-iframe"
+        style={wrapperStyles}
+      >
         {element}
       </div>
     );
@@ -34,14 +38,12 @@ const renderIframe = element => {
   return element;
 };
 
-const RENDERERS = {
-  parsedHtml: props => {
-    if (props.element.type === 'iframe') {
-      return renderIframe(props.element);
-    }
-    return props.element;
-  },
+const HTML_RENDERERS = {
+  iframe: props => renderIframe(props.element),
 };
+
+// Stub, there will eventually be default renderers
+const RENDERERS = {};
 
 class Markdown extends PureComponent {
   static propTypes = {
@@ -50,6 +52,7 @@ class Markdown extends PureComponent {
     className: PropTypes.string,
     text: PropTypes.string,
     renderers: PropTypes.object,
+    htmlRenderers: PropTypes.object,
   };
 
   render() {
@@ -58,16 +61,34 @@ class Markdown extends PureComponent {
       text,
       escapeHtml = false,
       className,
-      renderers,
+      renderers: renderersProp,
+      htmlRenderers: htmlRenderersProp,
     } = this.props;
+
     const themeStyles = themes[theme];
     const classes = cx(themeStyles.theme, className);
-    const allRenderers = { ...RENDERERS, ...renderers };
+
+    const htmlRenderers = {
+      ...HTML_RENDERERS,
+      htmlRenderersProp,
+    };
+
+    const renderers = {
+      parsedHtml: props => {
+        if (htmlRenderers[props.element.type]) {
+          return htmlRenderers[props.element.type](props);
+        }
+        return props.element;
+      },
+      ...RENDERERS,
+      ...renderersProp,
+    };
+
     return (
       <ReactMarkdown
         className={classes}
         source={text}
-        renderers={allRenderers}
+        renderers={renderers}
         escapeHtml={escapeHtml}
       />
     );

@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
+import mdContent from './data/md-content.json';
 
 const editableMarkdown = `
 ### Editable Markdown
@@ -29,21 +30,40 @@ const test = async function test({value}) {
 
 `;
 
-storiesOf('Component/Markdown', module).add(
-  'Editable',
-  () => (
-    <Markdown
-      text={text('markdown', editableMarkdown)}
-      theme={select('theme', ['tight', 'loose', 'none'])}
-    />
-  ),
-  {
-    info: {
-      inline: false,
-      propTables: false,
-    },
-    knobs: {
-      escapeHTML: false,
-    },
-  }
-);
+storiesOf('Component/Markdown', module)
+  .add(
+    'Editable',
+    () => (
+      <Markdown
+        text={text('markdown', editableMarkdown)}
+        theme={select('theme', ['tight', 'loose', 'none'])}
+      />
+    ),
+    {
+      info: {
+        inline: false,
+        propTables: false,
+      },
+      knobs: {
+        escapeHTML: false,
+      },
+    }
+  )
+  .add(
+    'Kitchen Sink',
+    () => (
+      <Markdown
+        text={text('markdown', mdContent.kitchenSink)}
+        theme={select('theme', ['tight', 'loose', 'none'])}
+      />
+    ),
+    {
+      info: {
+        inline: false,
+        propTables: false,
+      },
+      knobs: {
+        escapeHTML: false,
+      },
+    }
+  );
