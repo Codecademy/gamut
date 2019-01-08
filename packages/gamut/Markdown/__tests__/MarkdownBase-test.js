@@ -7,7 +7,7 @@ const basicMarkdown = `
 
 ### Heading 3
 
-\`\`\`
+\`\`\`js
 const jsCode = () => {
   console.log('hello world);
 }
@@ -23,11 +23,12 @@ const htmlMarkdown = `
 <table>
   <tbody>
     <tr>
+      <td>Cool</td>
     </tr>
-    <td>Cool</td>
   </tbody>
-<table>
+</table>
 
+<iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
 const youtubeMarkdown = `

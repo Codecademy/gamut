@@ -11,29 +11,26 @@ exports[`Renders html content in markdown 1`] = `
     Heading 3
   </h3>
   <table>
-    
-  
     <tbody>
-      
-    
-      <tr>
-        
-    
-      </tr>
-      
-    
       <tr>
         <td>
           Cool
         </td>
-        
-  
       </tr>
     </tbody>
-    
-
   </table>
-  <table />
+  <div
+    class="youtubeVideoWrapper"
+    data-testid="yt-iframe"
+    style="padding-bottom:56.25%"
+  >
+    <iframe
+      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen=""
+      frameborder="0"
+      src="https://www.youtube.com/embed/KvgrQIK1yPY"
+    />
+  </div>
 </div>
 `;
 
@@ -41,14 +38,20 @@ exports[`renders standard Markdown 1`] = `
 <div
   class="theme"
 >
-  <h1>
+  <h1
+    id="heading-1"
+  >
     Heading 1
   </h1>
-  <h3>
+  <h3
+    id="heading-3"
+  >
     Heading 3
   </h3>
   <pre>
-    <code>
+    <code
+      class="lang-js"
+    >
       const jsCode = () =&gt; {
   console.log('hello world);
 }

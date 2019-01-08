@@ -1,0 +1,37 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import s from './styles.scss';
+
+const propTypes = {
+  width: PropTypes.integer,
+  height: PropTypes.integer,
+  src: PropTypes.string,
+};
+
+const Iframe = props => {
+  if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
+    const width = props.width || 16;
+    const height = props.height || 9;
+    const ratioPadding = (
+      (Math.round(height) / Math.round(width)) *
+      100
+    ).toFixed(2);
+    const wrapperStyles = {
+      paddingBottom: `${ratioPadding}%`,
+    };
+    return (
+      <div
+        className={s.youtubeVideoWrapper}
+        data-testid="yt-iframe"
+        style={wrapperStyles}
+      >
+        <iframe {...props} />
+      </div>
+    );
+  }
+  return <iframe {...props} />;
+};
+
+Iframe.propTypes = propTypes;
+
+export default Iframe;

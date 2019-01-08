@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import ReactMarkdown from 'react-markdown/with-html';
+import MarkdownJSX from 'markdown-to-jsx';
 
 import loose from './styles/theme-loose.scss';
 import tight from './styles/theme-tight.scss';
-import rendererStyles from './styles/renderer.scss';
+
+import Iframe from './overrides/Iframe';
 
 const themes = {
   loose,
@@ -13,84 +14,36 @@ const themes = {
   none: {},
 };
 
-const renderIframe = element => {
-  const { props } = element;
-  if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
-    const width = props.width || 16;
-    const height = props.height || 9;
-    const ratioPadding = (
-      (Math.round(height) / Math.round(width)) *
-      100
-    ).toFixed(2);
-    const wrapperStyles = {
-      paddingBottom: `${ratioPadding}%`,
-    };
-    return (
-      <div
-        className={rendererStyles.youtubeVideoWrapper}
-        data-testid="yt-iframe"
-        style={wrapperStyles}
-      >
-        {element}
-      </div>
-    );
-  }
-  return element;
-};
-
-const HTML_RENDERERS = {
-  iframe: props => renderIframe(props.element),
-};
-
-// Stub, there will eventually be default renderers
-const RENDERERS = {};
-
 class Markdown extends PureComponent {
   static propTypes = {
     theme: PropTypes.oneOf(['loose', 'tight', 'none']),
-    escapeHtml: PropTypes.bool,
+    overrides: PropTypes.object,
     className: PropTypes.string,
     text: PropTypes.string,
-    renderers: PropTypes.object,
-    htmlRenderers: PropTypes.object,
   };
 
   render() {
     const {
       theme = 'tight',
       text,
-      escapeHtml = false,
       className,
-      renderers: renderersProp,
-      htmlRenderers: htmlRenderersProp,
+      overrides: userOverrides,
     } = this.props;
 
     const themeStyles = themes[theme];
     const classes = cx(themeStyles.theme, className);
 
-    const htmlRenderers = {
-      ...HTML_RENDERERS,
-      htmlRenderersProp,
-    };
-
-    const renderers = {
-      parsedHtml: props => {
-        if (htmlRenderers[props.element.type]) {
-          return htmlRenderers[props.element.type](props);
-        }
-        return props.element;
+    const options = {
+      overrides: {
+        iframe: Iframe,
+        ...userOverrides,
       },
-      ...RENDERERS,
-      ...renderersProp,
     };
 
     return (
-      <ReactMarkdown
-        className={classes}
-        source={text}
-        renderers={renderers}
-        escapeHtml={escapeHtml}
-      />
+      <MarkdownJSX className={classes} options={options}>
+        {text}
+      </MarkdownJSX>
     );
   }
 }

@@ -24,7 +24,9 @@
     "lodash": "^4.17.5",
     "prop-types": "^15.5.10",
     "react-aria-tabpanel": "^4.4.0",
-    "react-markdown": "4.0.1"
+    "remark": "10.0.1",
+    "remark-react": "5.0.1",
+    "markdown-to-jsx": "6.9.0"
   },
   "license": "MIT"
 }

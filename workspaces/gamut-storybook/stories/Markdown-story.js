@@ -30,40 +30,21 @@ const test = async function test({value}) {
 
 `;
 
-storiesOf('Component/Markdown', module)
-  .add(
-    'Editable',
-    () => (
-      <Markdown
-        text={text('markdown', editableMarkdown)}
-        theme={select('theme', ['tight', 'loose', 'none'])}
-      />
-    ),
-    {
-      info: {
-        inline: false,
-        propTables: false,
-      },
-      knobs: {
-        escapeHTML: false,
-      },
-    }
-  )
-  .add(
-    'Kitchen Sink',
-    () => (
-      <Markdown
-        text={text('markdown', mdContent.kitchenSink)}
-        theme={select('theme', ['tight', 'loose', 'none'])}
-      />
-    ),
-    {
-      info: {
-        inline: false,
-        propTables: false,
-      },
-      knobs: {
-        escapeHTML: false,
-      },
-    }
-  );
+storiesOf('Component/Markdown', module).add(
+  'Editable',
+  () => (
+    <Markdown
+      text={text('markdown', editableMarkdown)}
+      theme={select('theme', ['tight', 'loose', 'none'])}
+    />
+  ),
+  {
+    info: {
+      inline: false,
+      propTables: false,
+    },
+    knobs: {
+      escapeHTML: false,
+    },
+  }
+);
