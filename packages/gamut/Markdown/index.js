@@ -19,14 +19,16 @@ class Markdown extends PureComponent {
     theme: PropTypes.oneOf(['loose', 'tight', 'none']),
     overrides: PropTypes.object,
     className: PropTypes.string,
+    inline: PropTypes.bool,
     text: PropTypes.string,
   };
 
   render() {
     const {
       theme = 'tight',
-      text,
+      text = '',
       className,
+      inline = false,
       overrides: userOverrides,
     } = this.props;
 
@@ -38,6 +40,8 @@ class Markdown extends PureComponent {
         iframe: Iframe,
         ...userOverrides,
       },
+      forceBlock: !inline,
+      forceInline: inline,
     };
 
     return (

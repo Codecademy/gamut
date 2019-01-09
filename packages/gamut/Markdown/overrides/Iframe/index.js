@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import s from './styles.scss';
 
 const propTypes = {
-  width: PropTypes.integer,
-  height: PropTypes.integer,
+  width: PropTypes.number,
+  height: PropTypes.number,
   src: PropTypes.string,
 };
 
