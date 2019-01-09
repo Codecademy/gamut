@@ -1,6 +1,6 @@
 import React from 'react';
+import { mount, render } from 'enzyme';
 import Markdown from '../index';
-import { render } from 'enzyme';
 
 const basicMarkdown = `
 # Heading 1
@@ -46,6 +46,6 @@ it('Renders html content in markdown', () => {
 });
 
 it('Wraps youtube iframes in a flexible container', () => {
-  const markdown = render(<Markdown text={youtubeMarkdown} />);
+  const markdown = mount(<Markdown text={youtubeMarkdown} />);
   expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
 });
