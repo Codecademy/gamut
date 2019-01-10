@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
-import mdContent from './data/md-content.json';
 
 const editableMarkdown = `
 ### Editable Markdown
@@ -10,7 +9,9 @@ const editableMarkdown = `
 Use the knobs view below to edit
 
 # h1
+
 ## h2
+
 ### h3
 
 \`\`\`js

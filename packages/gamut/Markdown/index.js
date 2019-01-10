@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import MarkdownJSX from 'markdown-to-jsx';
+import SimpleMarkdown from 'simple-markdown';
 
 import loose from './styles/theme-loose.scss';
 import tight from './styles/theme-tight.scss';
 
-import Iframe from './overrides/Iframe';
+import defaultRules from './rules';
 
 const themes = {
   loose,
@@ -17,7 +17,7 @@ const themes = {
 class Markdown extends PureComponent {
   static propTypes = {
     theme: PropTypes.oneOf(['loose', 'tight', 'none']),
-    overrides: PropTypes.object,
+    rules: PropTypes.object,
     className: PropTypes.string,
     inline: PropTypes.bool,
     text: PropTypes.string,
@@ -29,26 +29,34 @@ class Markdown extends PureComponent {
       text = '',
       className,
       inline = false,
-      overrides: userOverrides,
+      rules: userRules,
     } = this.props;
 
     const themeStyles = themes[theme];
     const classes = cx(themeStyles.theme, className);
 
-    const options = {
-      overrides: {
-        iframe: Iframe,
-        ...userOverrides,
-      },
-      forceBlock: !inline,
-      forceInline: inline,
+    const rules = {
+      ...defaultRules,
+      ...userRules,
     };
 
-    return (
-      <MarkdownJSX className={classes} options={options}>
-        {text}
-      </MarkdownJSX>
+    const rawBuiltParser = SimpleMarkdown.parserFor(rules);
+    const parse = function(rawSource) {
+      const source = `${rawSource}${inline ? '' : '\n\n'}`;
+      return rawBuiltParser(source, { inline: Boolean(inline) });
+    };
+    const reactOutput = SimpleMarkdown.reactFor(
+      SimpleMarkdown.ruleOutput(rules, 'react')
     );
+    const syntaxTree = parse(text);
+    const output = reactOutput(syntaxTree);
+    console.log(output);
+    return output;
+    // return (
+    //   <MarkdownJSX className={classes} options={options}>
+    //     {text}
+    //   </MarkdownJSX>
+    // );
   }
 }
 

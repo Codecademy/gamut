@@ -8703,14 +8703,6 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
-markdown-to-jsx@6.9.0:
-  version "6.9.0"
-  resolved "https://registry.npmjs.org/markdown-to-jsx/-/markdown-to-jsx-6.9.0.tgz#ab4e60332f56ac8dbc2eeede038800875c1e39b8"
-  integrity sha512-Uj5La0fKQM1d4MD8zY40+E62JNT0OoMuRO4gHECxnLRJt4AOuZ/pqPLFuje4BbamABXwJK0JQbjoUEDQ5l+u9w==
-  dependencies:
-    prop-types "^15.6.2"
-    unquote "^1.1.0"
-
 marked@^0.3.9:
   version "0.3.12"
   resolved "https://registry.npmjs.org/marked/-/marked-0.3.12.tgz#7cf25ff2252632f3fe2406bde258e94eee927519"
@@ -11646,6 +11638,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
+simple-markdown@0.4.2:
+  version "0.4.2"
+  resolved "https://registry.npmjs.org/simple-markdown/-/simple-markdown-0.4.2.tgz#98fd72bd4f8ced9705f3e72c4cb4a00261a5eca0"
+  integrity sha512-lysF/mIJ3Trv/QsxY5Q5XWupVLtyPH6AslxOxscWhUshQNAfHRd7ayuXHlXkXVnujHfIVa0okDw3ZGnzCroO7Q==
+
 sisteransi@^0.1.1:
   version "0.1.1"
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-0.1.1.tgz#5431447d5f7d1675aac667ccd0b865a4994cb3ce"
@@ -12565,11 +12562,6 @@ universalify@^0.1.0:
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
-
-unquote@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/unquote/-/unquote-1.1.1.tgz#8fded7324ec6e88a0ff8b905e7c098cdc086d544"
-  integrity sha1-j97XMk7G6IoP+LkF58CYzcCG1UQ=
 
 unset-value@^1.0.0:
   version "1.0.0"
