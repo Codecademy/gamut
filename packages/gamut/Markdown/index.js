@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import MarkdownJSX from 'markdown-to-jsx';
+import MarkdownJSX from 'markdown-to-jsx/index.js';
 
 import loose from './styles/theme-loose.scss';
 import tight from './styles/theme-tight.scss';
 
 import Iframe from './overrides/Iframe';
+
+const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/gim;
+
+// Makes sure there is a leading newline on fenced code blocks
+const ensureCodeBlockSpacing = str => str.replace(CODE_BLOCK_FENCED, '\n$&\n');
 
 const themes = {
   loose,
@@ -46,7 +51,7 @@ class Markdown extends PureComponent {
 
     return (
       <MarkdownJSX className={classes} options={options}>
-        {text}
+        {ensureCodeBlockSpacing(text)}
       </MarkdownJSX>
     );
   }

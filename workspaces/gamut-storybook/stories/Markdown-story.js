@@ -2,7 +2,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
-import mdContent from './data/md-content.json';
 
 const editableMarkdown = `
 ### Editable Markdown
@@ -13,8 +12,18 @@ Use the knobs view below to edit
 ## h2
 ### h3
 
+cool
 \`\`\`js
-// Code block
+// Code block 1
+const test = async function test({value}) {
+  const res = await fetch('url');
+}
+\`\`\`
+
+cool
+
+\`\`\`js
+// Code block 2
 const test = async function test({value}) {
   const res = await fetch('url');
 }
