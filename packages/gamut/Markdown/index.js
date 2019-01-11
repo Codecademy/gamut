@@ -14,7 +14,6 @@ const ensureCodeBlockSpacing = str => str.replace(CODE_BLOCK_FENCED, '\n$&\n');
 class Markdown extends PureComponent {
   static propTypes = {
     spacing: PropTypes.oneOf(['loose', 'tight', 'none']),
-    theme: PropTypes.oneOf(['light', 'dark']),
     overrides: PropTypes.object,
     className: PropTypes.string,
     inline: PropTypes.bool,
