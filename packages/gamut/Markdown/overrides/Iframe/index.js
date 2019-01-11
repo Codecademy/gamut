@@ -10,8 +10,7 @@ const propTypes = {
 
 const Iframe = props => {
   if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
-    const width = props.width || 16;
-    const height = props.height || 9;
+    const { width = 16, height = 9 } = props;
     const ratioPadding = (
       (Math.round(height) / Math.round(width)) *
       100
