@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import MarkdownJSX from 'markdown-to-jsx/index.js';
+import MarkdownJSX from 'markdown-to-jsx';
 
 import loose from './styles/theme-loose.scss';
 import tight from './styles/theme-tight.scss';
