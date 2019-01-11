@@ -7,6 +7,10 @@
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "main": "./index.js",
   "repository": {
     "type": "git",
