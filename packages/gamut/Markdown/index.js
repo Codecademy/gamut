@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MarkdownJSX from 'markdown-to-jsx';
-
-import loose from './styles/theme-loose.scss';
-import tight from './styles/theme-tight.scss';
+import s from './styles';
 
 import Iframe from './overrides/Iframe';
 
@@ -13,15 +11,10 @@ const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/g
 // Makes sure there is a leading newline on fenced code blocks
 const ensureCodeBlockSpacing = str => str.replace(CODE_BLOCK_FENCED, '\n$&\n');
 
-const themes = {
-  loose,
-  tight,
-  none: {},
-};
-
 class Markdown extends PureComponent {
   static propTypes = {
-    theme: PropTypes.oneOf(['loose', 'tight', 'none']),
+    spacing: PropTypes.oneOf(['loose', 'tight', 'none']),
+    theme: PropTypes.oneOf(['light', 'dark']),
     overrides: PropTypes.object,
     className: PropTypes.string,
     inline: PropTypes.bool,
@@ -30,15 +23,15 @@ class Markdown extends PureComponent {
 
   render() {
     const {
-      theme = 'tight',
+      spacing = 'tight',
       text = '',
       className,
       inline = false,
       overrides: userOverrides,
     } = this.props;
 
-    const themeStyles = themes[theme];
-    const classes = cx(themeStyles.theme, className);
+    const spacingStyles = s[`spacing-${spacing}`];
+    const classes = cx(spacingStyles, className);
 
     const options = {
       overrides: {

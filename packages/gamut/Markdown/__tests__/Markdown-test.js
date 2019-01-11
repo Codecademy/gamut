@@ -35,6 +35,22 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
+const codeBlockBugMarkdown = `
+having this text above the codeblock breaks the codeblock in markdown-in-jsx
+\`\`\`js
+const jsCode = () => {
+  console.log('hello world);
+}
+\`\`\`
+
+\`\`\`js
+const jsCode = () => {
+  console.log('hello world);
+}
+\`\`\`
+
+`;
+
 it('renders standard Markdown', () => {
   const markdown = render(<Markdown text={basicMarkdown} />);
   expect(markdown).toMatchSnapshot();
@@ -48,4 +64,28 @@ it('Renders html content in markdown', () => {
 it('Wraps youtube iframes in a flexible container', () => {
   const markdown = mount(<Markdown text={youtubeMarkdown} />);
   expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
+});
+
+it('Fixes the newline bug with codeBlocks', () => {
+  const markdown = mount(<Markdown text={codeBlockBugMarkdown} />);
+  expect(markdown.find('code.lang-js').length).toEqual(2);
+});
+
+it('Allows passing in arbitrary react component overrides', () => {
+  const TestComponent = () => <marquee>coooool</marquee>;
+
+  const text = `
+# Heading
+
+<TestComponent />
+  `;
+
+  const overrides = {
+    TestComponent: {
+      component: TestComponent,
+    },
+  };
+  const markdown = render(<Markdown text={text} overrides={overrides} />);
+  expect(markdown).toMatchSnapshot();
+  expect(markdown.find('marquee').length).toEqual(1);
 });
