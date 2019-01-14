@@ -1,0 +1,11 @@
+@import "mixins";
+
+// Spacing
+
+.spacing-loose {
+  @include markdown-style(1.2rem, 1.7);
+}
+
+.spacing-tight {
+  @include markdown-style();
+}
