@@ -22,10 +22,11 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box; // 1
+  box-sizing: inherit; // 1
 }
 
 html {
+  box-sizing: border-box;
   font-family: sans-serif; // 2
   line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
@@ -69,7 +70,6 @@ body {
   margin: 0; // 1
   font-family: $font-family-base;
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
   color: $color-body;
   text-align: left; // 3
   background-color: $bg-body; // 2
