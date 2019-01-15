@@ -20,25 +20,19 @@
 // 6 Change the default tap highlight to be completely transparent in iOS.
 
 *,
-*::before,
-*::after {
-  box-sizing: border-box; // 1
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 html {
+  box-sizing: border-box;
   font-family: sans-serif; // 2
   line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
-}
-
-// IE10+ doesn't honor `<meta name="viewport">` in some cases.
-@at-root {
-  @-ms-viewport {
-    width: device-width;
-  }
 }
 
 // stylelint-disable selector-list-comma-newline-after
@@ -69,7 +63,6 @@ body {
   margin: 0; // 1
   font-family: $font-family-base;
   font-weight: $font-weight-base;
-  line-height: $line-height-base;
   color: $color-body;
   text-align: left; // 3
   background-color: $bg-body; // 2
@@ -99,29 +92,59 @@ hr {
 // Typography
 //
 
-// Remove top margins from headings
-//
-// By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
-// margin for easier control within type scales as it avoids margin collapsing.
-// stylelint-disable selector-list-comma-newline-after
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0;
-  margin-bottom: $margin-bottom-headings;
+  margin: 0;
+  padding: 0;
 }
-// stylelint-enable selector-list-comma-newline-after
 
-// Reset margins on paragraphs
-//
-// Similarly, the top margin on `<p>`s get reset. However, we also reset the
-// bottom margin to use `rem` units instead of `em`.
-p {
-  margin-top: 0;
-  margin-bottom: $margin-bottom-paragraph;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+img,
+embed,
+iframe,
+object,
+audio,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
 }
 
 // Abbreviations
@@ -144,13 +167,6 @@ address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
-}
-
-ol,
-ul,
-dl {
-  margin-top: 0;
-  margin-bottom: 1rem;
 }
 
 ol ol,

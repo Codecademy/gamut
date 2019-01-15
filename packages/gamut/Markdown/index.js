@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MarkdownJSX from 'markdown-to-jsx';
-import s from './styles';
+import TextBlock from '../TextBlock';
 
 import Iframe from './overrides/Iframe';
 
@@ -29,9 +29,6 @@ class Markdown extends PureComponent {
       overrides: userOverrides,
     } = this.props;
 
-    const spacingStyles = s[`spacing-${spacing}`];
-    const classes = cx(spacingStyles, className);
-
     const options = {
       overrides: {
         iframe: Iframe,
@@ -42,9 +39,11 @@ class Markdown extends PureComponent {
     };
 
     return (
-      <MarkdownJSX className={classes} options={options}>
-        {ensureCodeBlockSpacing(text)}
-      </MarkdownJSX>
+      <TextBlock className={className} spacing={spacing}>
+        <MarkdownJSX options={options}>
+          {ensureCodeBlockSpacing(text)}
+        </MarkdownJSX>
+      </TextBlock>
     );
   }
 }
