@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import Code from '../Code';
 import isValidComponent from '../../../utils/isValidComponent';
 
-const normalizeOverride = (override = {}) =>
-  isValidComponent(override)
-    ? {
-        component: override,
-        props: {},
-      }
-    : override;
+const normalizeOverride = (override = {}) => {
+  if (isValidComponent(override)) {
+    return {
+      component: override,
+      props: {},
+    };
+  }
+
+  return override;
+};
 
 const Pre = ({ overrides, ...props }) => {
   const children = React.Children.toArray(props.children);
