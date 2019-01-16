@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, render, shallow } from 'enzyme';
+import { mount, render } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -136,7 +136,7 @@ var test = true;
       expect(markdown.find(CodeBlock).props().TEST).toEqual(true);
     });
 
-    it('When specifying a <code /> elment override with a custom CodeBlock override, the CodeBlock wins', () => {
+    it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
       const text = `
 # Heading
 
