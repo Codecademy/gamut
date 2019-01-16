@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.0...@codecademy/gamut@1.11.1) (2019-01-16)
+
+
+### Bug Fixes
+
+* minor core stylesheet tweaks ([#159](https://github.com/RyzacInc/gamut/issues/159)) ([3dc76fc](https://github.com/RyzacInc/gamut/commit/3dc76fc))
+
+
+
+
+
 <a name="1.11.0"></a>
 # [1.11.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.9...@codecademy/gamut@1.11.0) (2019-01-14)
 
