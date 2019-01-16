@@ -2,6 +2,8 @@
 
 .checkboxLabel {
   @include no-select;
+  display: flex;
+  align-items: center;
   cursor: pointer;
   margin: ($form-padding / 2) 0;
   width: 100%;
@@ -9,9 +11,6 @@
   padding: $form-padding;
   border-radius: $border-radius;
   border: 1px solid $swatches-grey-100;
-  align-items: center;
-  display: flex;
-  align-items: flex-start;
 }
 
 input:checked + .checkboxLabel .checkbox {
