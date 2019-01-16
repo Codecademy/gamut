@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.9...@codecademy/gamut@1.11.0) (2019-01-14)
+
+
+### Features
+
+* Add Markdown Component ([#155](https://github.com/RyzacInc/gamut/issues/155)) ([2254b8e](https://github.com/RyzacInc/gamut/commit/2254b8e))
+
+
+
+
+
 <a name="1.10.9"></a>
 ## [1.10.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.8...@codecademy/gamut@1.10.9) (2018-11-14)
 
