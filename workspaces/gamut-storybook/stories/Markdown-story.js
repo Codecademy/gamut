@@ -29,6 +29,8 @@ const test = async function test({value}) {
 }
 \`\`\`
 
+This is some \`inline code\`
+
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h1>html h1</h1>
@@ -39,21 +41,50 @@ const test = async function test({value}) {
 
 `;
 
-storiesOf('Component/Markdown', module).add(
-  'Editable',
-  () => (
-    <Markdown
-      text={text('markdown', editableMarkdown)}
-      theme={select('theme', ['tight', 'loose', 'none'])}
-    />
-  ),
-  {
-    info: {
-      inline: false,
-      propTables: false,
-    },
-    knobs: {
-      escapeHTML: false,
-    },
-  }
-);
+storiesOf('Component/Markdown', module)
+  .add(
+    'Editable',
+    () => (
+      <Markdown
+        text={text('markdown', editableMarkdown)}
+        theme={select('theme', ['tight', 'loose', 'none'])}
+      />
+    ),
+    {
+      info: {
+        inline: false,
+        propTables: false,
+      },
+      knobs: {
+        escapeHTML: false,
+      },
+    }
+  )
+  .add(
+    'Custom Codeblock',
+    () => (
+      <Markdown
+        text={text('markdown', editableMarkdown)}
+        theme={select('theme', ['tight', 'loose', 'none'])}
+        overrides={{
+          CodeBlock: {
+            component: props => <span style={{ color: 'blue' }} {...props} />,
+            props: {
+              style: {
+                color: 'red',
+              },
+            },
+          },
+        }}
+      />
+    ),
+    {
+      info: {
+        inline: false,
+        propTables: false,
+      },
+      knobs: {
+        escapeHTML: false,
+      },
+    }
+  );

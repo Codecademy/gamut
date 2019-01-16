@@ -1,21 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Allows passing in arbitrary react component overrides 1`] = `
-<div
-  class="spacing-tight"
->
-  <h1
-    id="heading"
-  >
-    Heading
-  </h1>
-  <marquee>
-    coooool
-  </marquee>
-</div>
-`;
-
-exports[`Renders html content in markdown 1`] = `
+exports[`<Markdown /> Renders html content in markdown 1`] = `
 <div
   class="spacing-tight"
 >
@@ -49,7 +34,7 @@ exports[`Renders html content in markdown 1`] = `
 </div>
 `;
 
-exports[`renders standard Markdown 1`] = `
+exports[`<Markdown /> renders standard Markdown 1`] = `
 <div
   class="spacing-tight"
 >
