@@ -1,5 +1,5 @@
 import React from 'react';
 
-const InlineCode = props => <code {...props} />;
+const Code = props => <code {...props} />;
 
-export default InlineCode;
+export default Code;

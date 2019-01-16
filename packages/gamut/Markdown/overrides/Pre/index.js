@@ -3,32 +3,38 @@ import PropTypes from 'prop-types';
 import Code from '../Code';
 import isValidComponent from '../../../utils/isValidComponent';
 
-const getComponentFromOverride = (override = {}) =>
-  isValidComponent(override) ? override : override.component;
+const normalizeOverride = (override = {}) =>
+  isValidComponent(override)
+    ? {
+        component: override,
+        props: {},
+      }
+    : override;
 
-const PreCodeBlock = ({ overrides, ...props }) => {
+const Pre = ({ overrides, ...props }) => {
   const children = React.Children.toArray(props.children);
 
   if (!children.length || children.length > 1) return <pre {...props} />;
 
   const child = children[0];
 
-  const CodeBlock = getComponentFromOverride(overrides.CodeBlock);
-  const CodeOverride = getComponentFromOverride(overrides.code) || Code;
+  const CodeBlock = normalizeOverride(overrides.CodeBlock);
+  const CodeOverride = normalizeOverride(overrides.code || Code);
 
   const isCode =
-    child.type === 'code' || (CodeOverride && child.type === CodeOverride);
+    child.type === 'code' ||
+    (CodeOverride.component && child.type === CodeOverride.component);
 
-  if (isCode && CodeBlock) {
+  if (isCode && CodeBlock.component) {
     const language =
       child.props.className && child.props.className.replace('lang-', '');
-    console.log(overrides.CodeBlock.props);
+
     return (
       <pre {...props}>
-        <CodeBlock
+        <CodeBlock.component
           {...child.props}
           language={language}
-          {...overrides.CodeBlock.props}
+          {...CodeBlock.props}
         />
       </pre>
     );
@@ -43,7 +49,7 @@ const ComponentType = PropTypes.oneOfType([
   PropTypes.shape({ render: PropTypes.func.isRequired }),
 ]);
 
-PreCodeBlock.propTypes = {
+Pre.propTypes = {
   overrides: PropTypes.objectOf(
     PropTypes.oneOfType([
       ComponentType,
@@ -57,4 +63,4 @@ PreCodeBlock.propTypes = {
   children: PropTypes.node,
 };
 
-export default PreCodeBlock;
+export default Pre;
