@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.12.0...@codecademy/gamut@1.13.0) (2019-01-17)
+
+
+### Features
+
+* add search icon ([#161](https://github.com/RyzacInc/gamut/issues/161)) ([73b2c5e](https://github.com/RyzacInc/gamut/commit/73b2c5e))
+
+
+
+
+
 <a name="1.12.0"></a>
 # [1.12.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.2...@codecademy/gamut@1.12.0) (2019-01-17)
 
