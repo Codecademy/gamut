@@ -56,10 +56,14 @@ class Markdown extends PureComponent {
       forceInline: inline,
     };
 
+    const Wrapper = inline ? 'span' : 'div';
+
     return (
-      <MarkdownJSX className={classes} options={options}>
-        {ensureCodeBlockSpacing(text)}
-      </MarkdownJSX>
+      <Wrapper className={classes}>
+        <MarkdownJSX options={options}>
+          {ensureCodeBlockSpacing(text)}
+        </MarkdownJSX>
+      </Wrapper>
     );
   }
 }

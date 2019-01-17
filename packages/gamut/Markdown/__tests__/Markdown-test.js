@@ -53,18 +53,30 @@ const jsCode = () => {
 
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
-    const markdown = render(<Markdown text={basicMarkdown} />);
-    expect(markdown).toMatchSnapshot();
+    const markdown = mount(<Markdown text={basicMarkdown} />);
+    expect(markdown.find('h1').length).toEqual(1);
+    expect(markdown.find('h3').length).toEqual(1);
+    expect(markdown.find('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
-    const markdown = render(<Markdown text={htmlMarkdown} />);
-    expect(markdown).toMatchSnapshot();
+    const markdown = mount(<Markdown text={htmlMarkdown} />);
+    expect(markdown.find('table').length).toEqual(1);
   });
 
   it('Wraps youtube iframes in a flexible container', () => {
     const markdown = mount(<Markdown text={youtubeMarkdown} />);
     expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
+  });
+
+  it('Wraps the markdown in a div by default (block)', () => {
+    const markdown = mount(<Markdown text={basicMarkdown} />);
+    expect(markdown.find('div.spacing-tight').length).toEqual(1);
+  });
+
+  it('Wraps the markdown in a span when inline', () => {
+    const markdown = mount(<Markdown text={basicMarkdown} inline />);
+    expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
   it('Fixes the newline bug with codeBlocks', () => {
@@ -126,14 +138,14 @@ var test = true;
         CodeBlock: {
           component: CodeBlock,
           props: {
-            TEST: true,
+            'data-test': true,
           },
         },
       };
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
-      expect(markdown.find(CodeBlock).props().TEST).toEqual(true);
+      expect(markdown.find(CodeBlock).props()['data-test']).toEqual(true);
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
