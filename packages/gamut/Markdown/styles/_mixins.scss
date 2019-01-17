@@ -14,8 +14,7 @@
     @include font-smoothing;
   }
 
-  p,
-  &p {
+  p {
     line-height: $line-height;
     font-size: $font-size;
     word-wrap: break-word;
