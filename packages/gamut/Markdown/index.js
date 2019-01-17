@@ -34,13 +34,13 @@ class Markdown extends PureComponent {
     const spacingStyles = s[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 
-    // Pass CodeBlock override into <pre /> override
-    // to more consistently handle code highlighting
     const defaultOverrides = {
       iframe: Iframe,
       pre: {
         component: Pre,
         props: {
+          // User overrides are used in pre to determine
+          // how to render Code blocks
           overrides: userOverrides,
         },
       },
