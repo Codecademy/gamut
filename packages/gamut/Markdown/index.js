@@ -5,6 +5,8 @@ import MarkdownJSX from 'markdown-to-jsx';
 import s from './styles';
 
 import Iframe from './overrides/Iframe';
+import Pre from './overrides/Pre';
+import Code from './overrides/Code';
 
 const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/gim;
 
@@ -26,25 +28,42 @@ class Markdown extends PureComponent {
       text = '',
       className,
       inline = false,
-      overrides: userOverrides,
+      overrides: userOverrides = {},
     } = this.props;
 
     const spacingStyles = s[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 
+    const defaultOverrides = {
+      iframe: Iframe,
+      pre: {
+        component: Pre,
+        props: {
+          // User overrides are used in pre to determine
+          // how to render Code blocks
+          overrides: userOverrides,
+        },
+      },
+      code: Code,
+    };
+
     const options = {
       overrides: {
-        iframe: Iframe,
+        ...defaultOverrides,
         ...userOverrides,
       },
       forceBlock: !inline,
       forceInline: inline,
     };
 
+    const Wrapper = inline ? 'span' : 'div';
+
     return (
-      <MarkdownJSX className={classes} options={options}>
-        {ensureCodeBlockSpacing(text)}
-      </MarkdownJSX>
+      <Wrapper className={classes}>
+        <MarkdownJSX options={options}>
+          {ensureCodeBlockSpacing(text)}
+        </MarkdownJSX>
+      </Wrapper>
     );
   }
 }
