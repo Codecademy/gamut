@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.3...@codecademy/gamut-storybook@2.4.0) (2019-01-17)
+
+
+### Features
+
+* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
+
+
+
+
+
 <a name="2.3.3"></a>
 ## [2.3.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.2...@codecademy/gamut-storybook@2.3.3) (2019-01-16)
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.2...@codecademy/gamut@1.12.0) (2019-01-17)
+
+
+### Features
+
+* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
+
+
+
+
+
 <a name="1.11.2"></a>
 ## [1.11.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.1...@codecademy/gamut@1.11.2) (2019-01-16)
 
