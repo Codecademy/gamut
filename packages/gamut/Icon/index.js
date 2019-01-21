@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import iconMap from './iconMap';
 
 const propTypes = {
+  label: PropTypes.string,
   name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
   size: PropTypes.number,
   height: PropTypes.number,
@@ -16,6 +17,11 @@ const defaultProps = {
 
 function Icon({ name, size, ...props }) {
   const MappedIcon = iconMap[name];
+  const { label, ...childProps } = props;
+
+  if (label) {
+    childProps['aria-label'] = label;
+  }
 
   if (size) {
     props.width = size;
@@ -26,7 +32,6 @@ function Icon({ name, size, ...props }) {
     <MappedIcon
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
-      aria-labelledby="title"
       version="1.1"
       {...props}
     />
