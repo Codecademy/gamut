@@ -36,8 +36,8 @@ class Tabs extends Component {
     // leftPercent determines where the animated underline should be positioned
     // if animatedUnderlineStyle === true
     const leftPercent =
-      this.props.config.findIndex((c, i) => this.createId(i) === activeTabId) /
-      this.props.config.length *
+      (this.props.config.findIndex((c, i) => this.createId(i) === activeTabId) /
+        this.props.config.length) *
       100;
 
     return (

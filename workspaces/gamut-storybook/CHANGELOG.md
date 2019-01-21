@@ -3,6 +3,159 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.1"></a>
+## [2.4.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.0...@codecademy/gamut-storybook@2.4.1) (2019-01-17)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.3...@codecademy/gamut-storybook@2.4.0) (2019-01-17)
+
+
+### Features
+
+* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
+
+
+
+
+
+<a name="2.3.3"></a>
+## [2.3.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.2...@codecademy/gamut-storybook@2.3.3) (2019-01-16)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.3.2"></a>
+## [2.3.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.1...@codecademy/gamut-storybook@2.3.2) (2019-01-16)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.0...@codecademy/gamut-storybook@2.3.1) (2019-01-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.4...@codecademy/gamut-storybook@2.3.0) (2019-01-14)
+
+
+### Features
+
+* Add Markdown Component ([#155](https://github.com/RyzacInc/gamut/issues/155)) ([2254b8e](https://github.com/RyzacInc/gamut/commit/2254b8e))
+
+
+
+
+
+<a name="2.2.4"></a>
+## [2.2.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.3...@codecademy/gamut-storybook@2.2.4) (2018-11-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.2.3"></a>
+## [2.2.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.2...@codecademy/gamut-storybook@2.2.3) (2018-10-29)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.1...@codecademy/gamut-storybook@2.2.2) (2018-10-25)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.2.1"></a>
+## [2.2.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.0...@codecademy/gamut-storybook@2.2.1) (2018-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.10...@codecademy/gamut-storybook@2.2.0) (2018-10-03)
+
+
+### Features
+
+* Better babel 7 support ([#145](https://github.com/RyzacInc/gamut/issues/145)) ([49a1e23](https://github.com/RyzacInc/gamut/commit/49a1e23))
+
+
+
+
+
+<a name="2.1.10"></a>
+## [2.1.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.9...@codecademy/gamut-storybook@2.1.10) (2018-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.1.9"></a>
+## [2.1.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.8...@codecademy/gamut-storybook@2.1.9) (2018-08-30)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.1.8"></a>
+## [2.1.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.7...@codecademy/gamut-storybook@2.1.8) (2018-08-28)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.1.7"></a>
+## [2.1.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.6...@codecademy/gamut-storybook@2.1.7) (2018-08-21)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.5...@codecademy/gamut-storybook@2.1.6) (2018-08-02)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.4...@codecademy/gamut-storybook@2.1.5) (2018-07-13)
 

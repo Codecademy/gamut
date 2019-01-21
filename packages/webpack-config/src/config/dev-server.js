@@ -1,56 +1,43 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const babelConfig = require('./babel');
 
 const devServerConfig = options => {
-  const { port = 3808, publicPath } = options;
+  const { port = 3808, host = 'localhost', publicPath, ...rest } = options;
 
-  return merge.smart(
-    {
-      output: {
-        publicPath: publicPath || `http://localhost:${port}/dist/`,
-      },
-
-      devServer: {
-        port,
-        overlay: true,
-        publicPath: publicPath || `http://localhost:${port}/dist/`,
-        headers: { 'Access-Control-Allow-Origin': '*' },
-        stats: {
-          assets: false,
-          colors: true,
-          version: false,
-          hash: false,
-          timings: true,
-          chunks: false,
-          chunkModules: false,
-        },
-      },
-
-      plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.NamedModulesPlugin(),
-      ],
+  return merge.smart({
+    output: {
+      publicPath: publicPath || `http://localhost:${port}/dist/`,
     },
-    babelConfig({
-      options: {
-        plugins: [
-          [
-            'react-transform',
-            {
-              transforms: [
-                {
-                  transform: 'react-transform-hmr',
-                  imports: ['react'],
-                  locals: ['module'],
-                },
-              ],
-            },
-          ],
-        ],
+
+    devServer: {
+      port,
+      host,
+      overlay: true,
+      publicPath: publicPath || `http://localhost:${port}/dist/`,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods':
+          'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers':
+          'X-Requested-With, content-type, Authorization',
       },
-    })
-  );
+      stats: {
+        assets: false,
+        colors: true,
+        version: false,
+        hash: false,
+        timings: true,
+        chunks: false,
+        chunkModules: false,
+      },
+      ...rest,
+    },
+
+    plugins: [
+      new webpack.NoEmitOnErrorsPlugin(),
+      new webpack.NamedModulesPlugin(),
+    ],
+  });
 };
 
 module.exports = devServerConfig;

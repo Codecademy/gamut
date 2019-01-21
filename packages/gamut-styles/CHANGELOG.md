@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-styles@2.0.3...@codecademy/gamut-styles@2.0.4) (2019-01-16)
+
+
+### Bug Fixes
+
+* minor core stylesheet tweaks ([#159](https://github.com/RyzacInc/gamut/issues/159)) ([3dc76fc](https://github.com/RyzacInc/gamut/commit/3dc76fc))
+
+
+
+
+
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-styles@2.0.2...@codecademy/gamut-styles@2.0.3) (2018-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-styles@2.0.1...@codecademy/gamut-styles@2.0.2) (2018-06-22)
 

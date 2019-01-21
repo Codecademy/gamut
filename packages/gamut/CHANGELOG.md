@@ -3,6 +3,102 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.12.0...@codecademy/gamut@1.13.0) (2019-01-17)
+
+
+### Features
+
+* add search icon ([#161](https://github.com/RyzacInc/gamut/issues/161)) ([73b2c5e](https://github.com/RyzacInc/gamut/commit/73b2c5e))
+
+
+
+
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.2...@codecademy/gamut@1.12.0) (2019-01-17)
+
+
+### Features
+
+* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
+
+
+
+
+
+<a name="1.11.2"></a>
+## [1.11.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.1...@codecademy/gamut@1.11.2) (2019-01-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.0...@codecademy/gamut@1.11.1) (2019-01-16)
+
+
+### Bug Fixes
+
+* minor core stylesheet tweaks ([#159](https://github.com/RyzacInc/gamut/issues/159)) ([3dc76fc](https://github.com/RyzacInc/gamut/commit/3dc76fc))
+
+
+
+
+
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.9...@codecademy/gamut@1.11.0) (2019-01-14)
+
+
+### Features
+
+* Add Markdown Component ([#155](https://github.com/RyzacInc/gamut/issues/155)) ([2254b8e](https://github.com/RyzacInc/gamut/commit/2254b8e))
+
+
+
+
+
+<a name="1.10.9"></a>
+## [1.10.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.8...@codecademy/gamut@1.10.9) (2018-11-14)
+
+
+### Bug Fixes
+
+* **component:** Spread and render extra props for Radio components ([#152](https://github.com/RyzacInc/gamut/issues/152)) ([eb878c0](https://github.com/RyzacInc/gamut/commit/eb878c0))
+
+
+
+
+
+<a name="1.10.8"></a>
+## [1.10.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.7...@codecademy/gamut@1.10.8) (2018-10-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.7"></a>
+## [1.10.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.6...@codecademy/gamut@1.10.7) (2018-09-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.10.6"></a>
+## [1.10.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.5...@codecademy/gamut@1.10.6) (2018-08-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.10.5"></a>
 ## [1.10.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.4...@codecademy/gamut@1.10.5) (2018-07-13)
 
