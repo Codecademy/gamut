@@ -39,10 +39,6 @@ class Markdown extends PureComponent {
     text: PropTypes.string,
   };
 
-  state = {
-    text: '',
-  };
-
   render() {
     const {
       spacing = 'tight',
