@@ -39,6 +39,53 @@ This is some \`inline code\`
   This blockquote will change based on the HTML settings above.
 </blockquote>
 
+Our first gate is the _NAND gate_. This gate receives two inputs and only returns current if the inputs are both off.
+
+
+
+
+
+
+
+
+
+Here's the truth table:<div class="narrative-table-container">
+
+|*a*|*b*|output|
+|-|-|-|
+|0|0|1|
+|0|1|1|
+|1|0|1|
+|1|1|0|
+</div>
+
+<div class="narrative-table-container">
+|*a*|*b*|output|
+|-|-|-|
+|0|0|1|
+|0|1|1|
+|1|0|1|
+|1|1|0|
+</div>
+
+We divide the number of people completing each step by the number of people completing the _previous_ step:
+
+<div class="narrative-table-container">
+
+| <font color="#52b1db">Question Number</font> | <font color="#52b1db">Percent Completing this Question</font>
+| --- | --- |
+| 1 | 100% |
+| 2 | ? % |
+| 3 |  ? % |
+| 4 | ? % |
+| 5 | ? % |
+
+</div>
+
+<br>
+
+Make sure to elaborate on your reasonings.
+
 `;
 
 storiesOf('Component/Markdown', module)
