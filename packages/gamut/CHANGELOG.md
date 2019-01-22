@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.13.1"></a>
+## [1.13.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.0...@codecademy/gamut@1.13.1) (2019-01-22)
+
+
+### Bug Fixes
+
+* More defensive markdown formatting fixes ([#162](https://github.com/RyzacInc/gamut/issues/162)) ([038b0d6](https://github.com/RyzacInc/gamut/commit/038b0d6))
+
+
+
+
+
 <a name="1.13.0"></a>
 # [1.13.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.12.0...@codecademy/gamut@1.13.0) (2019-01-17)
 
