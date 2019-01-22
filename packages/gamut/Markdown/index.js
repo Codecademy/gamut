@@ -9,9 +9,26 @@ import Pre from './overrides/Pre';
 import Code from './overrides/Code';
 
 const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/gim;
+// Matches html tags and self closing tags
+const HTML_TAGS = /<\/?([a-z][a-z0-9:]*)(?:\s+((?:<.*?>|[^>])*))?\/?>/gi;
+const EXTRA_NEWLINES = /\n{2,}/g;
 
-// Makes sure there is a leading newline on fenced code blocks
-const ensureCodeBlockSpacing = str => str.replace(CODE_BLOCK_FENCED, '\n$&\n');
+/**
+ * 1. Add extra newlines before and after html tags
+ *    - This fixes a rendering issue where HTML starting on a line
+ *      with other text will not render correctly
+ * 2. Add newlines before and after fenced code blocks
+ *    - This fixes a rendering issue when a fenced codeblock doesn't
+ *      have the required starting and ending newlines
+ * 3. Remove excessive newlines and replaces it with 2 newlines
+ *    - This fixes a rendering issue inside of html code blocks
+ *      where markdown inside of a codeblock was treated as html
+ */
+const cleanupMarkdownFormatting = str =>
+  str
+    .replace(HTML_TAGS, '\n\n$&\n\n')
+    .replace(CODE_BLOCK_FENCED, '\n$&\n')
+    .replace(EXTRA_NEWLINES, '\n\n');
 
 class Markdown extends PureComponent {
   static propTypes = {
@@ -61,7 +78,7 @@ class Markdown extends PureComponent {
     return (
       <Wrapper className={classes}>
         <MarkdownJSX options={options}>
-          {ensureCodeBlockSpacing(text)}
+          {cleanupMarkdownFormatting(text)}
         </MarkdownJSX>
       </Wrapper>
     );
