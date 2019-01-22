@@ -51,6 +51,19 @@ const jsCode = () => {
 
 `;
 
+const htmlWrappedTableMarkdown = `
+Starting some html in the middle of a <div class="test">
+
+|*a*|*b*|output|
+|-|-|-|
+|0|0|1|
+|0|1|1|
+|1|0|1|
+|1|1|0|
+</div>
+
+`;
+
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
     const markdown = mount(<Markdown text={basicMarkdown} />);
@@ -172,5 +185,10 @@ var test = true;
       // There should only be one <code /> override because the codeblock override overwrote it
       expect(markdown.find(overrides.code).length).toEqual(1);
     });
+  });
+
+  it('Renders markdown inside of an html element', () => {
+    const markdown = mount(<Markdown text={htmlWrappedTableMarkdown} />);
+    expect(markdown.find('div.test').find('table').length).toEqual(1);
   });
 });
