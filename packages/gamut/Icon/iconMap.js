@@ -49,6 +49,7 @@ import RubyIcon from './icons/RubyIcon';
 import SQLIcon from './icons/SQLIcon';
 import SassIcon from './icons/SassIcon';
 import SciPyIcon from './icons/SciPyIcon';
+import SearchIcon from './icons/SearchIcon';
 import TDDIcon from './icons/TDDIcon';
 import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
@@ -109,6 +110,7 @@ const iconMap = {
   ruby: RubyIcon,
   sass: SassIcon,
   sciPy: SciPyIcon,
+  search: SearchIcon,
   sql: SQLIcon,
   syllabus: LessonIcon,
   tdd: TDDIcon,
