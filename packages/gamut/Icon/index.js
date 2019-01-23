@@ -24,8 +24,8 @@ function Icon({ name, size, ...props }) {
   }
 
   if (size) {
-    props.width = size;
-    props.height = size;
+    childProps.width = size;
+    childProps.height = size;
   }
 
   return (
@@ -33,7 +33,7 @@ function Icon({ name, size, ...props }) {
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
-      {...props}
+      {...childProps}
     />
   );
 }
