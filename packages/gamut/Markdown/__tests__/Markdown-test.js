@@ -43,6 +43,7 @@ const jsCode = () => {
 
 `;
 
+// test for working MIXED_INLINE_HTML_TAGS regex
 const htmlWrappedMarkdown = `
 Starting some html in the middle of a <div class="test">
 
