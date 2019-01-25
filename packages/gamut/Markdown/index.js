@@ -77,7 +77,10 @@ class Markdown extends PureComponent {
     const Wrapper = inline ? 'span' : 'div';
 
     return (
-      <Wrapper {...omitProps(this.props, this.props)} className={classes}>
+      <Wrapper
+        {...omitProps(Object.keys(this.props), this.props)}
+        className={classes}
+      >
         <MarkdownJSX options={options}>
           {cleanupMarkdownFormatting(text)}
         </MarkdownJSX>

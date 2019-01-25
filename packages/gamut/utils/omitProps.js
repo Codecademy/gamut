@@ -14,7 +14,7 @@ export default function omitProps(initialPropsToOmit, props) {
 
   invariant(
     Array.isArray(propsToOmit),
-    `omitProps expected an Object or Array, received: ${initialPropsToOmit}`
+    'omitProps first argument should be an Array'
   );
 
   // allow all data-* props, mainly used for testing libraries
