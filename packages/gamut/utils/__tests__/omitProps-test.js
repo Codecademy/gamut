@@ -36,4 +36,19 @@ describe('omitProps', () => {
       children: 'Submit',
     });
   });
+
+  it('allows data attributes to pass through', () => {
+    const props = {
+      one: true,
+      two: 'button',
+      'data-testid': 'submit',
+      data: {},
+      'not-a-data-attribute': 'cool',
+      'Data-stuff': 'cool',
+    };
+
+    expect(omitProps(props, props)).toEqual({
+      'data-testid': 'submit',
+    });
+  });
 });

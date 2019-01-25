@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import MarkdownJSX from 'markdown-to-jsx';
+import omitProps from '../utils/omitProps';
 import s from './styles';
 
 import Iframe from './overrides/Iframe';
@@ -76,7 +77,7 @@ class Markdown extends PureComponent {
     const Wrapper = inline ? 'span' : 'div';
 
     return (
-      <Wrapper className={classes}>
+      <Wrapper {...omitProps(this.props, this.props)} className={classes}>
         <MarkdownJSX options={options}>
           {cleanupMarkdownFormatting(text)}
         </MarkdownJSX>
