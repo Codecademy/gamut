@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.13.2"></a>
+## [1.13.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.1...@codecademy/gamut@1.13.2) (2019-01-25)
+
+
+### Bug Fixes
+
+* pass data-attributes through omitProps util & use on markdown component ([#165](https://github.com/RyzacInc/gamut/issues/165)) ([2d1a27d](https://github.com/RyzacInc/gamut/commit/2d1a27d))
+
+
+
+
+
 <a name="1.13.1"></a>
 ## [1.13.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.0...@codecademy/gamut@1.13.1) (2019-01-22)
 
