@@ -17,5 +17,11 @@ export default function omitProps(initialPropsToOmit, props) {
     'omitProps first argument should be an Array'
   );
 
-  return omit(props, without(propsToOmit, 'children', 'className'));
+  // allow all data-* props, mainly used for testing libraries
+  const dataProps = propsToOmit.filter(p => p.match(/^data-.*/));
+
+  return omit(
+    props,
+    without(propsToOmit, 'children', 'className', ...dataProps)
+  );
 }
