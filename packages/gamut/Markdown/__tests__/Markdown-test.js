@@ -191,4 +191,11 @@ var test = true;
     const markdown = mount(<Markdown text={htmlWrappedTableMarkdown} />);
     expect(markdown.find('div.test').find('table').length).toEqual(1);
   });
+
+  it('Renders data attributes on the markdown wrapper', () => {
+    const markdown = mount(
+      <Markdown text={htmlWrappedTableMarkdown} data-testid="cool" />
+    );
+    expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
+  });
 });
