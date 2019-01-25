@@ -11,8 +11,10 @@ import Code from './overrides/Code';
 
 const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/gim;
 // Matches html tags and self closing tags that aren't inline
+// Adapted from https://github.com/probablyup/markdown-to-jsx/blob/a1fb781bc51445f5a226bf3944bed0436d0d69d2/index.js#L154
 const BLOCK_HTML_TAGS = /(?<=\n)<\/?([a-z][a-z0-9:]*)?(?:\s+((?:<.*?>|[^>])*))?\/?>/gi;
 // Matches html tags and self closing tags that start inline but have significant whitespace (newlines)
+// Adapted from https://github.com/probablyup/markdown-to-jsx/blob/a1fb781bc51445f5a226bf3944bed0436d0d69d2/index.js#L143
 const MIXED_INLINE_HTML_TAGS = /(?<!\n)<([A-Za-z][^ >/]*) ?([^>]*)\/{0}>\n+(\s*(?:<\1[^>]*?>[\s\S]*?<\/\1>|(?!<\1)[\s\S])*?)<\/\1>\n*/gi;
 const EXTRA_NEWLINES = /\n{2,}/g;
 
