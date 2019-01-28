@@ -20,14 +20,6 @@ const htmlMarkdown = `
 
 <h3>Heading 3</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>Cool</td>
-    </tr>
-  </tbody>
-</table>
-
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
@@ -51,15 +43,11 @@ const jsCode = () => {
 
 `;
 
-const htmlWrappedTableMarkdown = `
+// test for working MIXED_INLINE_HTML_TAGS regex
+const htmlWrappedMarkdown = `
 Starting some html in the middle of a <div class="test">
 
-|*a*|*b*|output|
-|-|-|-|
-|0|0|1|
-|0|1|1|
-|1|0|1|
-|1|1|0|
+# Heading one
 </div>
 
 `;
@@ -74,7 +62,9 @@ describe('<Markdown />', () => {
 
   it('Renders html content in markdown', () => {
     const markdown = mount(<Markdown text={htmlMarkdown} />);
-    expect(markdown.find('table').length).toEqual(1);
+    expect(markdown.find('h1').length).toEqual(1);
+    expect(markdown.find('h3').length).toEqual(1);
+    expect(markdown.find('iframe').length).toEqual(1);
   });
 
   it('Wraps youtube iframes in a flexible container', () => {
@@ -188,7 +178,14 @@ var test = true;
   });
 
   it('Renders markdown inside of an html element', () => {
-    const markdown = mount(<Markdown text={htmlWrappedTableMarkdown} />);
-    expect(markdown.find('div.test').find('table').length).toEqual(1);
+    const markdown = mount(<Markdown text={htmlWrappedMarkdown} />);
+    expect(markdown.find('div.test').find('h1').length).toEqual(1);
+  });
+
+  it('Renders data attributes on the markdown wrapper', () => {
+    const markdown = mount(
+      <Markdown text={htmlWrappedMarkdown} data-testid="cool" />
+    );
+    expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
   });
 });
