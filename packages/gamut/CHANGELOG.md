@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.3...@codecademy/gamut@1.14.0) (2019-01-28)
+
+
+### Features
+
+* Added optional (aria-)label to Icon component ([64778f5](https://github.com/RyzacInc/gamut/commit/64778f5))
+
+
+
+
+
 <a name="1.13.3"></a>
 ## [1.13.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.2...@codecademy/gamut@1.13.3) (2019-01-25)
 
