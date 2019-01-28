@@ -5,12 +5,9 @@ references:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
 
-  repo_cache_key_1: &repo_cache_key_1
-    v2-repo-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2
-    v2-repo-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3
-    v2-repo-
+  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v2-repo-
 
   restore_repo: &restore_repo
     restore_cache:
@@ -44,6 +41,14 @@ jobs:
           key: *repo_cache_key_1
           paths:
             - .
+
+  verify_formatting:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: Verify Prettier
+          command: yarn format:verify
 
   tests:
     <<: *default_env
@@ -88,6 +93,9 @@ workflows:
       - checkout_code:
           context: org-global
       - tests:
+          requires:
+            - checkout_code
+      - verify_formatting:
           requires:
             - checkout_code
       - publish:

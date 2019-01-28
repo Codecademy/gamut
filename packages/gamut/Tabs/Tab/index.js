@@ -19,14 +19,19 @@ const defaultProps = {
   onChange: () => {},
 };
 
-const Tab = ({ children, active, tabIndex, onChange, id, className, activeClassName }) => {
-  const tabLinkClasses = cx(
-    s.tab,
-    {
-      [s.active]: active,
-      [activeClassName]: (active && activeClassName !== undefined),
-    },
-  );
+const Tab = ({
+  children,
+  active,
+  tabIndex,
+  onChange,
+  id,
+  className,
+  activeClassName,
+}) => {
+  const tabLinkClasses = cx(s.tab, {
+    [s.active]: active,
+    [activeClassName]: active && activeClassName !== undefined,
+  });
 
   return (
     <li className={cx(s.tabListItem, className)}>

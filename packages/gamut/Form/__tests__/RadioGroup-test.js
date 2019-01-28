@@ -10,6 +10,7 @@ describe('<RadioGroup>', () => {
       htmlForPrefix="what-salad-maker-do-you-prefer"
       name="what-salad-maker-do-you-prefer"
       onChange={onChangeCallback}
+      data-testid="my-test-id"
     >
       <Radio label="Sweet Green" value="sweet-green" />
       <Radio label="Chopt" value="chopt" />
@@ -41,5 +42,11 @@ describe('<RadioGroup>', () => {
         .first()
         .prop('name')
     ).toEqual('what-salad-maker-do-you-prefer');
+  });
+
+  it('sets any additional props on the outer div', () => {
+    const getByTestId = wrapper.find('div[data-testid="my-test-id"]');
+    expect(getByTestId.exists()).toBe(true);
+    expect(getByTestId.isEmptyRender()).toBe(false);
   });
 });

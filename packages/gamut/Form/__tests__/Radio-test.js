@@ -29,4 +29,14 @@ describe('<Radio>', () => {
     );
     expect(wrapper.find('img').length).toBe(1);
   });
+
+  it('accepts additional props not specified by the component', () => {
+    const testid = 'my-test-id';
+    const wrapper = shallow(
+      <Radio htmlFor="some-label" data-testid={testid} />
+    );
+    const getByTestId = wrapper.find(`input[data-testid="${testid}"]`);
+    expect(getByTestId.exists()).toBe(true);
+    expect(getByTestId.isEmptyRender()).toBe(false);
+  });
 });
