@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.14.2"></a>
+## [1.14.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.1...@codecademy/gamut@1.14.2) (2019-01-29)
+
+
+### Bug Fixes
+
+* Fix malformed image tags in Markdown Component ([#172](https://github.com/RyzacInc/gamut/issues/172)) ([18f5b0b](https://github.com/RyzacInc/gamut/commit/18f5b0b))
+
+
+
+
+
 <a name="1.14.1"></a>
 ## [1.14.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.0...@codecademy/gamut@1.14.1) (2019-01-28)
 
