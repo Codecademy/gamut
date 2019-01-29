@@ -188,4 +188,11 @@ var test = true;
     );
     expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
   });
+
+  it('Prevents errors on malformed image tags', () => {
+    const markdown = mount(
+      <Markdown text={`<img src="http://google.com/"></img>`} />
+    );
+    expect(markdown.find('img').length).toEqual(1);
+  });
 });

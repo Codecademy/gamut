@@ -8,6 +8,7 @@ import s from './styles';
 import Iframe from './overrides/Iframe';
 import Pre from './overrides/Pre';
 import Code from './overrides/Code';
+import Img from './overrides/Img';
 
 const CODE_BLOCK_FENCED = /(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n *)*/gim;
 // Matches html tags and self closing tags that aren't inline
@@ -70,6 +71,9 @@ class Markdown extends PureComponent {
           // how to render Code blocks
           overrides: userOverrides,
         },
+      },
+      img: {
+        component: Img,
       },
       code: Code,
     };
