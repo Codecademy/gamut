@@ -20,6 +20,7 @@ import ChevronUpIcon from './icons/ChevronUpIcon';
 import ClockIcon from './icons/ClockIcon';
 import CloseIcon from './icons/CloseIcon';
 import ColorsIcon from './icons/ColorsIcon';
+import CopyIcon from './icons/CopyIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
 import EditIcon from './icons/EditIcon';
@@ -87,6 +88,7 @@ const iconMap = {
   close: CloseIcon,
   colors: ColorsIcon,
   community: CommunityIcon,
+  copy: CopyIcon,
   css: CSSIcon,
   daw: DAWIcon,
   edit: EditIcon,
