@@ -1,15 +1,18 @@
 import AccessibilityIcon from './icons/AccessibilityIcon';
 import AddIcon from './icons/AddIcon';
 import AdvisorIcon from './icons/AdvisorIcon';
+import AdvisorChatIcon from './icons/AdvisorChatIcon';
 import AlertIcon from './icons/AlertIcon';
 import AlexaIcon from './icons/AlexaIcon';
 import AngularIcon from './icons/AngularIcon';
 import ArticleIcon from './icons/ArticleIcon';
 import BellIcon from './icons/BellIcon';
 import BayesIcon from './icons/BayesIcon';
+import BulbIcon from './icons/BulbIcon';
 import CSSIcon from './icons/CSSIcon';
 import CertificateIcon from './icons/CertificateIcon';
 import CheckmarkIcon from './icons/CheckmarkIcon';
+import CheckFilledIcon from './icons/CheckFilledIcon';
 import ChevronDownIcon from './icons/ChevronDownIcon';
 import ChevronLeftIcon from './icons/ChevronLeftIcon';
 import ChevronRightIcon from './icons/ChevronRightIcon';
@@ -21,7 +24,9 @@ import CopyIcon from './icons/CopyIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
 import EditIcon from './icons/EditIcon';
+import FloatIcon from './icons/FloatIcon';
 import ForumsIcon from './icons/ForumsIcon';
+import ForumsChatIcon from './icons/ForumsChatIcon';
 import FullstackIcon from './icons/FullstackIcon';
 import GitIcon from './icons/GitIcon';
 import GlassesIcon from './icons/GlassesIcon';
@@ -34,6 +39,7 @@ import LessonIcon from './icons/LessonIcon';
 import MAWIcon from './icons/MAWIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
+import NewPageIcon from './icons/NewPageIcon';
 import NumPyIcon from './icons/NumPyIcon';
 import PHPIcon from './icons/PHPIcon';
 import PandasIcon from './icons/PandasIcon';
@@ -63,14 +69,17 @@ const iconMap = {
   accessibility: AccessibilityIcon,
   add: AddIcon,
   advisor: AdvisorIcon,
+  advisorChat: AdvisorChatIcon,
   alert: AlertIcon,
   alexa: AlexaIcon,
   angular: AngularIcon,
   article: ArticleIcon,
   bayes: BayesIcon,
   bell: BellIcon,
+  bulbIcon: BulbIcon,
   certificate: CertificateIcon,
   checkmark: CheckmarkIcon,
+  checkFilledIcon: CheckFilledIcon,
   chevronDown: ChevronDownIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
@@ -83,7 +92,9 @@ const iconMap = {
   css: CSSIcon,
   daw: DAWIcon,
   edit: EditIcon,
+  floatIcon: FloatIcon,
   forums: ForumsIcon,
+  forumsChat: ForumsChatIcon,
   fullstack: FullstackIcon,
   git: GitIcon,
   glasses: GlassesIcon,
@@ -97,6 +108,7 @@ const iconMap = {
   maintenance: MaintenanceIcon,
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
+  newPageIcon: NewPageIcon,
   numPy: NumPyIcon,
   pandas: PandasIcon,
   path: PathIcon,
