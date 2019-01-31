@@ -5,6 +5,8 @@
   $line-height: 1.6,
   $base-margin: 1rem
 ) {
+  font-size: $font-size;
+
   h1,
   h2,
   h3,
@@ -16,7 +18,6 @@
 
   p {
     line-height: $line-height;
-    font-size: $font-size;
     word-wrap: break-word;
     overflow-wrap: break-word;
     &:empty {
@@ -29,7 +30,6 @@
 
   ul,
   ol {
-    font-size: $font-size;
     list-style: none;
     padding-left: 0;
     margin: $base-margin 0;

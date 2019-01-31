@@ -177,11 +177,6 @@ var test = true;
     });
   });
 
-  it('Renders markdown inside of an html element', () => {
-    const markdown = mount(<Markdown text={htmlWrappedMarkdown} />);
-    expect(markdown.find('div.test').find('h1').length).toEqual(1);
-  });
-
   it('Renders data attributes on the markdown wrapper', () => {
     const markdown = mount(
       <Markdown text={htmlWrappedMarkdown} data-testid="cool" />
