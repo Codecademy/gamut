@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.2"></a>
+## [1.15.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.1...@codecademy/gamut@1.15.2) (2019-01-31)
+
+
+### Bug Fixes
+
+* remove markdown lookbehind regex for firefox compatibility ([#175](https://github.com/RyzacInc/gamut/issues/175)) ([690b561](https://github.com/RyzacInc/gamut/commit/690b561))
+
+
+
+
+
 <a name="1.15.1"></a>
 ## [1.15.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.0...@codecademy/gamut@1.15.1) (2019-01-30)
 
