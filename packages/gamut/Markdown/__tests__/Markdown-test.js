@@ -82,11 +82,6 @@ describe('<Markdown />', () => {
     expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
-  it('Fixes the newline bug with codeBlocks', () => {
-    const markdown = mount(<Markdown text={codeBlockBugMarkdown} />);
-    expect(markdown.find('code.lang-js').length).toEqual(2);
-  });
-
   it('Allows passing in arbitrary react component overrides', () => {
     const TestComponent = () => <marquee>coooool</marquee>;
 
@@ -101,8 +96,7 @@ describe('<Markdown />', () => {
         component: TestComponent,
       },
     };
-    const markdown = render(<Markdown text={text} overrides={overrides} />);
-
+    const markdown = mount(<Markdown text={text} overrides={overrides} />);
     expect(markdown.find('marquee').length).toEqual(1);
   });
 
