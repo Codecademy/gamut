@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import marked from 'marked';
 import HtmlToReact from 'html-to-react';
+import insane from 'insane';
 import omitProps from '../utils/omitProps';
 import { createTagOverride, createCodeBlockOverride } from './libs/overrides';
 import s from './styles';
@@ -12,6 +13,35 @@ import Iframe from './overrides/Iframe';
 const htmlToReactParser = new HtmlToReact.Parser();
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
+const sanitizationConfig = {
+  allowedAttributes: {
+    source: ['src', 'type'],
+    video: ['width', 'height', 'align', 'style', 'controls'],
+    span: ['class'],
+    code: ['class'],
+    pre: ['class'],
+    iframe: [
+      'src',
+      'width',
+      'height',
+      'frameborder',
+      'gesture',
+      'allow',
+      'allowfullscreen',
+    ],
+  },
+  allowedTags: [
+    ...insane.defaults.allowedTags,
+    'video',
+    'source',
+    'pre',
+    'code',
+    'br',
+    'iframe',
+    'codeblock',
+  ],
+};
+
 const isValidNode = function() {
   return true;
 };
@@ -19,8 +49,19 @@ const isValidNode = function() {
 class Markdown extends PureComponent {
   static propTypes = {
     spacing: PropTypes.oneOf(['loose', 'tight', 'none']),
-    overrides: PropTypes.object,
-    instructions: PropTypes.array,
+    overrides: PropTypes.objectOf(
+      PropTypes.shape({
+        component: PropTypes.oneOfType([
+          PropTypes.func,
+          PropTypes.shape({
+            render: PropTypes.func.isRequired,
+          }),
+        ]),
+        props: PropTypes.object,
+        shouldProcessNode: PropTypes.func,
+        processNode: PropTypes.func,
+      })
+    ),
     className: PropTypes.string,
     inline: PropTypes.bool,
     text: PropTypes.string,
@@ -32,7 +73,6 @@ class Markdown extends PureComponent {
       text = '',
       className,
       overrides: userOverrides = {},
-      instructions = [],
       inline = false,
     } = this.props;
 
@@ -49,9 +89,10 @@ class Markdown extends PureComponent {
     });
 
     const processingInstructions = [
-      createTagOverride('iframe', Iframe),
+      createTagOverride('iframe', {
+        component: Iframe,
+      }),
       ...overrides,
-      ...instructions,
       {
         shouldProcessNode() {
           return true;
@@ -61,7 +102,15 @@ class Markdown extends PureComponent {
     ];
 
     // Render markdown to html
-    const html = marked(text);
+    const rawHtml = inline ? marked.inlineLexer(text, []) : marked(text);
+
+    const html = insane(rawHtml, {
+      ...sanitizationConfig,
+      allowedTags: [
+        ...sanitizationConfig.allowedTags,
+        ...Object.keys(userOverrides).map(key => key.toLowerCase()),
+      ],
+    });
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
