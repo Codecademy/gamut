@@ -13,16 +13,9 @@ const attributeMap = {
 export const processAttributes = (attributes = {}) =>
   Object.keys(attributes).reduce((acc, attr) => {
     const key = attributeMap[attr.replace(/[-:]/, '')];
-    if (!key) {
-      return {
-        ...acc,
-        [attr]: attributes[attr],
-      };
-    }
-
     return {
       ...acc,
-      [key]: attributes[attr],
+      [key || attr]: attributes[attr],
     };
   }, {});
 
