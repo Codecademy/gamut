@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.3"></a>
+## [1.15.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.2...@codecademy/gamut@1.15.3) (2019-02-01)
+
+
+### Bug Fixes
+
+* Markdown version 2.0 ([#176](https://github.com/RyzacInc/gamut/issues/176)) ([5162872](https://github.com/RyzacInc/gamut/commit/5162872))
+
+
+
+
+
 <a name="1.15.2"></a>
 ## [1.15.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.1...@codecademy/gamut@1.15.2) (2019-01-31)
 
