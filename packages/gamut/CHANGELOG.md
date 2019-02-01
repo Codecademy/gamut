@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.2"></a>
+## [1.15.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.1...@codecademy/gamut@1.15.2) (2019-01-31)
+
+
+### Bug Fixes
+
+* remove markdown lookbehind regex for firefox compatibility ([#175](https://github.com/RyzacInc/gamut/issues/175)) ([690b561](https://github.com/RyzacInc/gamut/commit/690b561))
+
+
+
+
+
+<a name="1.15.1"></a>
+## [1.15.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.0...@codecademy/gamut@1.15.1) (2019-01-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.0"></a>
+# [1.15.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.2...@codecademy/gamut@1.15.0) (2019-01-29)
+
+
+### Features
+
+* Add clipboard icon ([a3cc4e6](https://github.com/RyzacInc/gamut/commit/a3cc4e6))
+
+
+
+
+
 <a name="1.14.2"></a>
 ## [1.14.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.1...@codecademy/gamut@1.14.2) (2019-01-29)
 

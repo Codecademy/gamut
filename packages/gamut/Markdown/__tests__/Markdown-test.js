@@ -82,18 +82,13 @@ describe('<Markdown />', () => {
     expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
-  it('Fixes the newline bug with codeBlocks', () => {
-    const markdown = mount(<Markdown text={codeBlockBugMarkdown} />);
-    expect(markdown.find('code.lang-js').length).toEqual(2);
-  });
-
   it('Allows passing in arbitrary react component overrides', () => {
-    const TestComponent = () => <marquee>coooool</marquee>;
+    const TestComponent = () => <strong>coooool</strong>;
 
     const text = `
 # Heading
 
-<TestComponent />
+<TestComponent/>
     `;
 
     const overrides = {
@@ -101,9 +96,8 @@ describe('<Markdown />', () => {
         component: TestComponent,
       },
     };
-    const markdown = render(<Markdown text={text} overrides={overrides} />);
-
-    expect(markdown.find('marquee').length).toEqual(1);
+    const markdown = mount(<Markdown text={text} overrides={overrides} />);
+    expect(markdown.find('strong').length).toEqual(1);
   });
 
   describe('Allows passing in a custom CodeBlock override', () => {
@@ -116,10 +110,12 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = props => <marquee {...props} />;
+      const CodeBlock = props => <strong {...props} />;
 
       const overrides = {
-        CodeBlock: CodeBlock,
+        CodeBlock: {
+          component: CodeBlock,
+        },
       };
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
@@ -165,21 +161,20 @@ var test = true;
       const CodeBlock = props => <marquee {...props} />;
 
       const overrides = {
-        CodeBlock,
-        code: props => <strong {...props} />,
+        CodeBlock: {
+          component: CodeBlock,
+        },
+        code: {
+          component: props => <strong {...props} />,
+        },
       };
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
 
-      expect(markdown.find(overrides.CodeBlock).length).toEqual(1);
+      expect(markdown.find(overrides.CodeBlock.component).length).toEqual(1);
       // There should only be one <code /> override because the codeblock override overwrote it
-      expect(markdown.find(overrides.code).length).toEqual(1);
+      expect(markdown.find(overrides.code.component).length).toEqual(1);
     });
-  });
-
-  it('Renders markdown inside of an html element', () => {
-    const markdown = mount(<Markdown text={htmlWrappedMarkdown} />);
-    expect(markdown.find('div.test').find('h1').length).toEqual(1);
   });
 
   it('Renders data attributes on the markdown wrapper', () => {
