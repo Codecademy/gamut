@@ -34,15 +34,17 @@ const TabList = ({
     <ul className={classes} style={{ maxWidth }}>
       {React.Children.toArray(children)
         .filter(c => c && c.type === Tab)
-        .map((tab, index) =>
-          React.cloneElement(tab, {
+        .map((tab, index) => {
+          const baseId = createBaseId(index);
+
+          return React.cloneElement(tab, {
             active: activeTabIndex === index,
             tabIndex: index,
             onChange,
-            id: createBaseId(index),
-            key: index,
-          })
-        )}
+            id: baseId,
+            key: baseId,
+          });
+        })}
     </ul>
   );
 };

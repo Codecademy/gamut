@@ -1,3 +1,5 @@
+/* eslint-disable global-require */
+
 const configs = {
   common: require('./common'),
   devServer: require('./dev-server'),

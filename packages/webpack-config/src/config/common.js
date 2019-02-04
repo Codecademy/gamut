@@ -41,7 +41,7 @@ const commonConfig = (options = {}) => {
         'process.env.NODE_ENV': `"${ENV}"`,
         __DEV__: DEV,
       }),
-      new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     ],
   };
 
