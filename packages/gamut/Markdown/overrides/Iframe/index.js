@@ -1,11 +1,13 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from 'react';
 import PropTypes from 'prop-types';
 import s from './styles.scss';
 
 const propTypes = {
-  width: PropTypes.number,
   height: PropTypes.number,
   src: PropTypes.string,
+  title: PropTypes.string,
+  width: PropTypes.number,
 };
 
 const Iframe = props => {

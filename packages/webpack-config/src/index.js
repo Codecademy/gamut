@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const merge = require('webpack-merge');
 const configs = require('./config');
 
