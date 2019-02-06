@@ -105,6 +105,9 @@ workflows:
       - tests:
           requires:
             - checkout_code
+      - verify_linting:
+          requires:
+            - checkout_code
       - verify_formatting:
           requires:
             - checkout_code
