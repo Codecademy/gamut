@@ -1,5 +1,7 @@
+/* eslint-disable jsx-a11y/no-distracting-elements */
+
 import React from 'react';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -25,22 +27,6 @@ const htmlMarkdown = `
 
 const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-`;
-
-const codeBlockBugMarkdown = `
-having this text above the codeblock breaks the codeblock in markdown-in-jsx
-\`\`\`js
-const jsCode = () => {
-  console.log('hello world);
-}
-\`\`\`
-
-\`\`\`js
-const jsCode = () => {
-  console.log('hello world);
-}
-\`\`\`
-
 `;
 
 // test for working MIXED_INLINE_HTML_TAGS regex

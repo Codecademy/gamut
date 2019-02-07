@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
