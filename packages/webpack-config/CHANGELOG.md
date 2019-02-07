@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.10.2"></a>
+## [3.10.2](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.10.1...@codecademy/webpack-config@3.10.2) (2019-02-07)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 <a name="3.10.1"></a>
 ## [3.10.1](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.10.0...@codecademy/webpack-config@3.10.1) (2019-01-14)
 
