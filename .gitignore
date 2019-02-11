@@ -41,6 +41,7 @@ packages/gamut-styles/demo-styles
 
 # Compiled .js files from their .tsx source
 **/*.js
+**/*.js.map
 !./*.js
 !docs/**/*.js
 !script/**/*.js
