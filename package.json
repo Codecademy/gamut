@@ -65,6 +65,7 @@
     "prettier": "1.14.3",
     "prettier-eslint-cli": "4.7.1",
     "react": "^16.4.1",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-dom": "^16.4.1",
     "react-test-renderer": "^16.4.0",
     "ts-jest": "^23.10.5",
