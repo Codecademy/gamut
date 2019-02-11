@@ -113,6 +113,9 @@ workflows:
       - tests:
           requires:
             - checkout_code
+      - verify_compile:
+          requires:
+            - checkout_code
       - verify_linting:
           requires:
             - checkout_code
@@ -134,3 +137,4 @@ workflows:
           requires:
             - tests
             - checkout_code
+            - verify_compile
