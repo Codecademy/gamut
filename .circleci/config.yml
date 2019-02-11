@@ -42,6 +42,14 @@ jobs:
           paths:
             - .
 
+  verify_compile:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: TypeScript Compile
+          command: yarn run compile
+
   verify_formatting:
     <<: *default_env
     steps:

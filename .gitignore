@@ -38,3 +38,8 @@ tmp
 .changelog
 
 packages/gamut-styles/demo-styles
+
+# Compiled .js files from their .tsx source
+.js
+!*.js
+!script/**/*.js
