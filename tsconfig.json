@@ -10,5 +10,10 @@
   },
   "exclude": [
     "**/node_modules"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelCore": "@babel/core",
+    "useCache": true
+  }
 }
