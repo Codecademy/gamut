@@ -2,7 +2,7 @@ import React, { HTMLProps, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const propTypes = {
   children: PropTypes.node.isRequired,

@@ -2,7 +2,7 @@ import React, { Component, Children, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
-import s from './styles.css';
+import s from './styles/index.scss';
 
 export interface TabsProps {
   config: {

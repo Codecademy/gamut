@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from "react";
 import cx from "classnames";
-import s from "./styles.css";
+import s from "./styles/index.scss";
 
 type ToggleProps = {
   checked?: boolean,

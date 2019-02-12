@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ButtonBase from '../ButtonBase';
 import omitProps from '../utils/omitProps';
-import s from './styles.css';
+import s from './styles/index.scss';
 
 // themes can be an alias to a color
 // or a unique button type

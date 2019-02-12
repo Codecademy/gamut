@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import omitProps from '../utils/omitProps';
-import style from './styles.css';
+import style from './styles/index.scss';
 
 const ModificatorType = PropTypes.oneOfType([PropTypes.number, PropTypes.bool]);
 
