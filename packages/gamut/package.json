@@ -28,5 +28,8 @@
     "prop-types": "^15.5.10",
     "react-aria-tabpanel": "^4.4.0"
   },
+  "scripts": {
+    "build": "tsc"
+  },
   "license": "MIT"
 }
