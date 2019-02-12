@@ -21,7 +21,7 @@ export type IconProps = {
   name: keyof typeof iconMap;
   size?: number;
   width?: number;
-}
+};
 
 function Icon({ name, size, ...props }: IconProps) {
   const MappedIcon = iconMap[name];

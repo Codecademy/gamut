@@ -12,7 +12,7 @@ export type FormGroupProps = {
   description?: string;
   children: ReactNode | ReactNode[];
   [i: string]: any;
-}
+};
 
 const FormGroup = ({
   label,

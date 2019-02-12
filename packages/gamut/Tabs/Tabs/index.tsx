@@ -60,7 +60,9 @@ class Tabs extends React.Component<TabsProps> {
       );
     }
 
-    const childrenArray = React.Children.toArray<ReactElement<any, any>>(this.props.children);
+    const childrenArray = React.Children.toArray<ReactElement<any, any>>(
+      this.props.children
+    );
     let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
 
     if (activeTabIndex >= clonedTabPanels.length) {

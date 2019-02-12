@@ -11,12 +11,14 @@ const propTypes = {
   link: PropTypes.bool,
 };
 
-export type ButtonBaseProps = (HTMLProps<HTMLLinkElement> | HTMLProps<HTMLButtonElement>) & {
-  children?: ReactNode
+export type ButtonBaseProps = (
+  | HTMLProps<HTMLLinkElement>
+  | HTMLProps<HTMLButtonElement>) & {
+  children?: ReactNode;
   className?: string;
   href?: string;
   link?: boolean;
-}
+};
 
 const ButtonBase = (props: ButtonBaseProps) => {
   const { children, href, className, link } = props;

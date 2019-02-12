@@ -28,7 +28,10 @@ export interface OverrideSettings {
 }
 
 // generic html tag override
-export const createTagOverride = (tagName: string, Override: OverrideSettings = {}) => ({
+export const createTagOverride = (
+  tagName: string,
+  Override: OverrideSettings = {}
+) => ({
   shouldProcessNode(node) {
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
@@ -50,7 +53,10 @@ export const createTagOverride = (tagName: string, Override: OverrideSettings = 
 });
 
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
-export const createCodeBlockOverride = (tagName, Override: OverrideSettings = {}) =>
+export const createCodeBlockOverride = (
+  tagName,
+  Override: OverrideSettings = {}
+) =>
   createTagOverride(tagName, {
     shouldProcessNode(node) {
       return (

@@ -9,7 +9,11 @@ export type FormGroupLabelProps = {
   [i: string]: any;
 };
 
-const FormGroupLabel = ({ htmlFor, className, ...rest }: FormGroupLabelProps) => {
+const FormGroupLabel = ({
+  htmlFor,
+  className,
+  ...rest
+}: FormGroupLabelProps) => {
   const classNames = cx(s.FormGroupLabel, className);
 
   if (htmlFor) {

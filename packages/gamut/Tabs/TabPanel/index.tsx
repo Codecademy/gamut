@@ -19,9 +19,15 @@ export type TabPanelProps = {
   className?: string;
   id: string;
   renderAllPanels?: boolean;
-}
+};
 
-const TabPanel = ({ children, active, renderAllPanels, id, className }: TabPanelProps) => (
+const TabPanel = ({
+  children,
+  active,
+  renderAllPanels,
+  id,
+  className,
+}: TabPanelProps) => (
   <div
     id={id}
     aria-labelledby={id.replace('-panel', '')}

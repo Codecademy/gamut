@@ -17,9 +17,13 @@ export type CardBodyProps = {
   children: ReactNode | ReactNode[];
   className?: string;
   standardPadding?: boolean;
-}
+};
 
-export default function CardBody({ children, standardPadding, className }: CardBodyProps) {
+export default function CardBody({
+  children,
+  standardPadding,
+  className,
+}: CardBodyProps) {
   const bodyClasses = cx(
     {
       [s.standardPadding]: standardPadding,

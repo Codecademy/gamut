@@ -11,9 +11,14 @@ export type CheckboxProps = {
   onChange?: () => void;
   required?: boolean;
   value?: string;
-}
+};
 
-const Checkbox = ({ className, label, htmlFor, ...inputProps }: CheckboxProps) => (
+const Checkbox = ({
+  className,
+  label,
+  htmlFor,
+  ...inputProps
+}: CheckboxProps) => (
   <div className={className}>
     <input
       id={htmlFor}

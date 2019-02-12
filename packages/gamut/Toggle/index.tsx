@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { Component } from "react";
-import cx from "classnames";
-import s from "./styles/index.scss";
+import React, { Component } from 'react';
+import cx from 'classnames';
+import s from './styles/index.scss';
 
 type ToggleProps = {
-  checked?: boolean,
-  onClick?: (...args: any[]) => any,
-  label?: string,
-  disabled?: boolean
+  checked?: boolean;
+  onClick?: (...args: any[]) => any;
+  label?: string;
+  disabled?: boolean;
 };
 
 class Toggle extends Component<ToggleProps, {}> {
@@ -17,7 +17,7 @@ class Toggle extends Component<ToggleProps, {}> {
       <label
         className={cx(s.toggleButton, {
           [s.toggled]: checked,
-          [s.disabled]: disabled
+          [s.disabled]: disabled,
         })}
         onClick={onClick}
         htmlFor={label}

@@ -28,7 +28,7 @@ export type TabProps = {
   id: string;
   onChange: (newTabIndex: number) => void;
   tabIndex: number;
-}
+};
 
 const Tab = ({
   children,

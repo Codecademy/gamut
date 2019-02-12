@@ -28,7 +28,7 @@ export type TabListProps = {
   createBaseId: (index: number) => string;
   maxWidth?: string;
   onChange: () => void;
-}
+};
 
 const TabList = ({
   activeTabIndex,
