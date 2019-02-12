@@ -5,8 +5,12 @@ import marked from 'marked';
 import HtmlToReact from 'html-to-react';
 import insane from 'insane';
 import omitProps from '../utils/omitProps';
-import { createTagOverride, createCodeBlockOverride, OverrideSettings } from './libs/overrides';
-import s from './styles.css';
+import {
+  createTagOverride,
+  createCodeBlockOverride,
+  OverrideSettings,
+} from './libs/overrides';
+import s from './styles/index.scss';
 
 import Iframe from './overrides/Iframe';
 

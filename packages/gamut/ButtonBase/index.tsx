@@ -2,7 +2,7 @@ import React, { HTMLProps, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
-import styles from './styles.css';
+import styles from './styles.scss';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -11,12 +11,14 @@ const propTypes = {
   link: PropTypes.bool,
 };
 
-export type ButtonBaseProps = (HTMLProps<HTMLLinkElement> | HTMLProps<HTMLButtonElement>) & {
-  children?: ReactNode
+export type ButtonBaseProps = (
+  | HTMLProps<HTMLLinkElement>
+  | HTMLProps<HTMLButtonElement>) & {
+  children?: ReactNode;
   className?: string;
   href?: string;
   link?: boolean;
-}
+};
 
 const ButtonBase = (props: ButtonBaseProps) => {
   const { children, href, className, link } = props;

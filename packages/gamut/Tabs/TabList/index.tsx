@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles.css';
+import s from './styles/index.scss';
 import Tab from '../Tab';
 
 const propTypes = {
@@ -28,7 +28,7 @@ export type TabListProps = {
   createBaseId: (index: number) => string;
   maxWidth?: string;
   onChange: () => void;
-}
+};
 
 const TabList = ({
   activeTabIndex,

@@ -2,7 +2,7 @@ import cx from 'classnames';
 import PropTypes from 'prop-types';
 import React, { ReactNode } from 'react';
 
-import s from './styles.css';
+import s from './styles/index.scss';
 
 const propTypes = {
   active: PropTypes.bool,
@@ -28,7 +28,7 @@ export type TabProps = {
   id: string;
   onChange: (newTabIndex: number) => void;
   tabIndex: number;
-}
+};
 
 const Tab = ({
   children,

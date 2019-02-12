@@ -1,4 +1,4 @@
 module.exports = {
-  presets: ['codecademy'],
+  presets: ['codecademy', '@babel/preset-typescript'],
   ignore: [],
 };

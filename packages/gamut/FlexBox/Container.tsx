@@ -2,7 +2,7 @@ import { isNumber, omit } from 'lodash';
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import s from './styles.css';
+import s from './styles/index.scss';
 
 const positions = [
   'start',
