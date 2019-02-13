@@ -1,5 +1,4 @@
 import React from 'react';
-import { get } from 'lodash';
 import { shallow, mount } from 'enzyme';
 import { Tab, TabPanel } from 'react-aria-tabpanel';
 import Tabs from '../index';

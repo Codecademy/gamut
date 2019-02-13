@@ -1,5 +1,4 @@
 const { createConfig } = require('../index');
-const webpack = require('webpack');
 
 describe('createConfig', () => {
   it('merges custom config', () => {

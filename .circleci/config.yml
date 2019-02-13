@@ -50,6 +50,16 @@ jobs:
           name: Verify Prettier
           command: yarn format:verify
 
+  verify_linting:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: Verify ESLint
+          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
+      - store_test_results:
+          path: /tmp/test-results
+
   tests:
     <<: *default_env
     steps:
@@ -93,6 +103,9 @@ workflows:
       - checkout_code:
           context: org-global
       - tests:
+          requires:
+            - checkout_code
+      - verify_linting:
           requires:
             - checkout_code
       - verify_formatting:

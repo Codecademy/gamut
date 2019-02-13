@@ -14,7 +14,13 @@ const devServerConfig = options => {
       host,
       overlay: true,
       publicPath: publicPath || `http://localhost:${port}/dist/`,
-      headers: { 'Access-Control-Allow-Origin': '*' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods':
+          'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers':
+          'X-Requested-With, content-type, Authorization',
+      },
       stats: {
         assets: false,
         colors: true,

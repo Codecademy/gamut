@@ -3,6 +3,198 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.5"></a>
+## [1.15.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.4...@codecademy/gamut@1.15.5) (2019-02-12)
+
+
+### Bug Fixes
+
+* Fix issue where markdown CodeBlock consumers receive an array instead of a string ([#182](https://github.com/RyzacInc/gamut/issues/182)) ([bb5c3c5](https://github.com/RyzacInc/gamut/commit/bb5c3c5))
+
+
+
+
+
+<a name="1.15.4"></a>
+## [1.15.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.3...@codecademy/gamut@1.15.4) (2019-02-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.3"></a>
+## [1.15.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.2...@codecademy/gamut@1.15.3) (2019-02-01)
+
+
+### Bug Fixes
+
+* Markdown version 2.0 ([#176](https://github.com/RyzacInc/gamut/issues/176)) ([5162872](https://github.com/RyzacInc/gamut/commit/5162872))
+
+
+
+
+
+<a name="1.15.2"></a>
+## [1.15.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.1...@codecademy/gamut@1.15.2) (2019-01-31)
+
+
+### Bug Fixes
+
+* remove markdown lookbehind regex for firefox compatibility ([#175](https://github.com/RyzacInc/gamut/issues/175)) ([690b561](https://github.com/RyzacInc/gamut/commit/690b561))
+
+
+
+
+
+<a name="1.15.1"></a>
+## [1.15.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.0...@codecademy/gamut@1.15.1) (2019-01-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.0"></a>
+# [1.15.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.2...@codecademy/gamut@1.15.0) (2019-01-29)
+
+
+### Features
+
+* Add clipboard icon ([a3cc4e6](https://github.com/RyzacInc/gamut/commit/a3cc4e6))
+
+
+
+
+
+<a name="1.14.2"></a>
+## [1.14.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.1...@codecademy/gamut@1.14.2) (2019-01-29)
+
+
+### Bug Fixes
+
+* Fix malformed image tags in Markdown Component ([#172](https://github.com/RyzacInc/gamut/issues/172)) ([18f5b0b](https://github.com/RyzacInc/gamut/commit/18f5b0b))
+
+
+
+
+
+<a name="1.14.1"></a>
+## [1.14.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.0...@codecademy/gamut@1.14.1) (2019-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.3...@codecademy/gamut@1.14.0) (2019-01-28)
+
+
+### Features
+
+* Added optional (aria-)label to Icon component ([64778f5](https://github.com/RyzacInc/gamut/commit/64778f5))
+
+
+
+
+
+<a name="1.13.3"></a>
+## [1.13.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.2...@codecademy/gamut@1.13.3) (2019-01-25)
+
+
+### Bug Fixes
+
+* Fix more inline html weirdness in the Markdown component ([#167](https://github.com/RyzacInc/gamut/issues/167)) ([fd8e61c](https://github.com/RyzacInc/gamut/commit/fd8e61c))
+
+
+
+
+
+<a name="1.13.2"></a>
+## [1.13.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.1...@codecademy/gamut@1.13.2) (2019-01-25)
+
+
+### Bug Fixes
+
+* pass data-attributes through omitProps util & use on markdown component ([#165](https://github.com/RyzacInc/gamut/issues/165)) ([2d1a27d](https://github.com/RyzacInc/gamut/commit/2d1a27d))
+
+
+
+
+
+<a name="1.13.1"></a>
+## [1.13.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.0...@codecademy/gamut@1.13.1) (2019-01-22)
+
+
+### Bug Fixes
+
+* More defensive markdown formatting fixes ([#162](https://github.com/RyzacInc/gamut/issues/162)) ([038b0d6](https://github.com/RyzacInc/gamut/commit/038b0d6))
+
+
+
+
+
+<a name="1.13.0"></a>
+# [1.13.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.12.0...@codecademy/gamut@1.13.0) (2019-01-17)
+
+
+### Features
+
+* add search icon ([#161](https://github.com/RyzacInc/gamut/issues/161)) ([73b2c5e](https://github.com/RyzacInc/gamut/commit/73b2c5e))
+
+
+
+
+
+<a name="1.12.0"></a>
+# [1.12.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.2...@codecademy/gamut@1.12.0) (2019-01-17)
+
+
+### Features
+
+* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
+
+
+
+
+
+<a name="1.11.2"></a>
+## [1.11.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.1...@codecademy/gamut@1.11.2) (2019-01-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.11.1"></a>
+## [1.11.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.11.0...@codecademy/gamut@1.11.1) (2019-01-16)
+
+
+### Bug Fixes
+
+* minor core stylesheet tweaks ([#159](https://github.com/RyzacInc/gamut/issues/159)) ([3dc76fc](https://github.com/RyzacInc/gamut/commit/3dc76fc))
+
+
+
+
+
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.9...@codecademy/gamut@1.11.0) (2019-01-14)
+
+
+### Features
+
+* Add Markdown Component ([#155](https://github.com/RyzacInc/gamut/issues/155)) ([2254b8e](https://github.com/RyzacInc/gamut/commit/2254b8e))
+
+
+
+
+
 <a name="1.10.9"></a>
 ## [1.10.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.10.8...@codecademy/gamut@1.10.9) (2018-11-14)
 
