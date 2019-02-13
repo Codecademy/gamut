@@ -1,3 +1,4 @@
 node_modules
-.ts
-.tsx
+*.ts
+*.tsx
+!*.d.ts
