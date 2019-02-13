@@ -49,12 +49,6 @@ jobs:
       - run:
           name: TypeScript Compile
           command: yarn run compile
-    persist_to_workspace:
-      root: "."
-      paths:
-        - ./**/*.d.ts
-        - ./**/*.js
-        - ./**/*.js.map
 
   verify_formatting:
     <<: *default_env
@@ -106,8 +100,9 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - attach_workspace:
-          at: "."
+      - run:
+          name: build packages
+          command: yarn build-all
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
