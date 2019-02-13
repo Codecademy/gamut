@@ -49,12 +49,6 @@ jobs:
       - run:
           name: TypeScript Compile
           command: yarn run compile
-    persist_to_workspace:
-      root: "."
-      paths:
-        - ./**/*.d.ts
-        - ./**/*.js
-        - ./**/*.js.map
 
   verify_formatting:
     <<: *default_env
@@ -88,6 +82,7 @@ jobs:
       - *set_git_user
       - *restore_repo
       - checkout
+      - run: tsc
       - *set_npm_token
       - run:
           name: build packages
@@ -105,6 +100,7 @@ jobs:
       - *set_git_user
       - *restore_repo
       - checkout
+      - run: tsc
       - *set_npm_token
       - run:
           name: lerna publish
