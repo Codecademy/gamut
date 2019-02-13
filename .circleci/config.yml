@@ -49,6 +49,12 @@ jobs:
       - run:
           name: TypeScript Compile
           command: yarn run compile
+    persist_to_workspace:
+      root: "."
+      paths:
+        - packages/**/*.d.ts
+        - packages/**/*.js
+        - packages/**/*.js.map
 
   verify_formatting:
     <<: *default_env
@@ -126,6 +132,7 @@ workflows:
           context: org-global
           requires:
             - checkout_code
+            - verify_compile
           filters:
             branches:
               only: master
