@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.5"></a>
+## [1.15.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.4...@codecademy/gamut@1.15.5) (2019-02-12)
+
+
+### Bug Fixes
+
+* Fix issue where markdown CodeBlock consumers receive an array instead of a string ([#182](https://github.com/RyzacInc/gamut/issues/182)) ([bb5c3c5](https://github.com/RyzacInc/gamut/commit/bb5c3c5))
+
+
+
+
+
 <a name="1.15.4"></a>
 ## [1.15.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.3...@codecademy/gamut@1.15.4) (2019-02-07)
 

@@ -88,6 +88,8 @@ class Markdown extends PureComponent<MarkdownProps> {
       inline = false,
     } = this.props;
 
+    if (!text) return null;
+
     const spacingStyles = s[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 

@@ -68,7 +68,12 @@ export const createCodeBlockOverride = (
     processNode(node, props) {
       const language =
         props.className && props.className.replace('language-', ''); // eslint-disable-line react/prop-types
-      return <Override.component {...props} language={language} />;
+
+      return (
+        <Override.component {...props} language={language}>
+          {props.children && props.children[0]}
+        </Override.component>
+      );
     },
     ...Override,
   });
