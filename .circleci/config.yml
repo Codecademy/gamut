@@ -129,7 +129,6 @@ workflows:
           context: org-global
           requires:
             - checkout_code
-            - verify_compile
           filters:
             branches:
               only: master
@@ -141,4 +140,3 @@ workflows:
           requires:
             - tests
             - checkout_code
-            - verify_compile
