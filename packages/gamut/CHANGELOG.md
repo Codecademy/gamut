@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.7"></a>
+## [1.15.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.6...@codecademy/gamut@1.15.7) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow certain class names in Markdown component  ([#183](https://github.com/RyzacInc/gamut/issues/183)) ([a38d144](https://github.com/RyzacInc/gamut/commit/a38d144))
+
+
+
+
+
 <a name="1.15.6"></a>
 ## [1.15.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.5...@codecademy/gamut@1.15.6) (2019-02-14)
 
