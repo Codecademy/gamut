@@ -20,6 +20,9 @@ const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 const sanitizationConfig = {
   allowedAttributes: {
     ...insane.defaults.allowedAttributes,
+    span: ['class'],
+    code: ['class'],
+    pre: ['class'],
     source: ['src', 'type'],
     video: ['width', 'height', 'align', 'style', 'controls'],
     iframe: [
@@ -41,6 +44,7 @@ const sanitizationConfig = {
     'source',
     'pre',
     'code',
+    'kbd',
     'br',
     'iframe',
     'codeblock',
