@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -175,5 +175,14 @@ var test = true;
       <Markdown text={`<img src="http://google.com/"></img>`} />
     );
     expect(markdown.find('img').length).toEqual(1);
+  });
+
+  it('Allows passing in class names', () => {
+    const markdown = shallow(
+      <Markdown
+        text={`<div class="narrative-table-container"> # Cool </div>`}
+      />
+    );
+    expect(markdown.find('div.narrative-table-container').length).toEqual(1);
   });
 });
