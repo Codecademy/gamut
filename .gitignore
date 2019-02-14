@@ -30,6 +30,7 @@ bower_components
 coverage
 tmp
 .npmrc
+.awcache
 
 # Users Environment Variables
 .lock-wscript
