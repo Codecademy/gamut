@@ -20,7 +20,6 @@ const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 const sanitizationConfig = {
   allowedAttributes: {
     ...insane.defaults.allowedAttributes,
-    '*': ['class', 'title', 'accesskey'],
     source: ['src', 'type'],
     video: ['width', 'height', 'align', 'style', 'controls'],
     iframe: [
@@ -33,7 +32,9 @@ const sanitizationConfig = {
       'allowfullscreen',
     ],
   },
-  allowedClasses: ['narrative-table-container'],
+  allowedClasses: {
+    div: 'narrative-table-container',
+  },
   allowedTags: [
     ...insane.defaults.allowedTags,
     'video',
