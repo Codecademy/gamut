@@ -42,6 +42,14 @@ jobs:
           paths:
             - .
 
+  verify_compile:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: TypeScript Compile
+          command: yarn run compile
+
   verify_formatting:
     <<: *default_env
     steps:
@@ -79,6 +87,9 @@ jobs:
           name: build packages
           command: yarn build-all
       - run:
+          name: build storybook
+          command: yarn build-all-storybook
+      - run:
           name: Add changes to git
           command: git add -A
       - run:
@@ -93,6 +104,9 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
+          name: build packages
+          command: yarn build-all
+      - run:
           name: lerna publish
           command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
 
@@ -103,6 +117,9 @@ workflows:
       - checkout_code:
           context: org-global
       - tests:
+          requires:
+            - checkout_code
+      - verify_compile:
           requires:
             - checkout_code
       - verify_linting:

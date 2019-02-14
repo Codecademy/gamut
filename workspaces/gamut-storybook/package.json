@@ -11,7 +11,6 @@
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "build": "yarn build-storybook",
     "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
   },
   "repository": {
@@ -31,6 +30,8 @@
     "@storybook/addon-info": "^4.0.0-alpha.17",
     "@storybook/addon-knobs": "4.0.0-alpha.17",
     "@storybook/react": "4.0.0-alpha.17",
+    "@types/storybook__react": "^4.0.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "7.1.5",
@@ -44,6 +45,7 @@
     "lodash": "^4.17.10",
     "node-sass": ">= 4.5.2",
     "postcss-loader": ">= 2.1.1",
+    "react-docgen-typescript-loader": "^3.0.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "sass-loader": ">= 6.0.7",

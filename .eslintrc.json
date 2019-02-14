@@ -1,7 +1,14 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
 
   "extends": ["airbnb", "prettier", "prettier/react"],
+
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "parser": "json"
+    }
+  ],
 
   "plugins": ["react"],
 
@@ -9,8 +16,7 @@
     "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true,
-      "experimentalObjectRestSpread": true
+      "jsx": true
     }
   },
 
@@ -35,10 +41,12 @@
     "max-len": 0,
     "import/extensions": 0,
     "jsx-quotes": 0,
+    "lines-between-class-members": 0,
+    "prefer-destructuring": 0,
     "quote-props": 0,
     "no-debugger": 0,
     "no-param-reassign": 0,
-    "no-restricted-syntax": 0,
+    "no-unused-vars": 0,
     "object-shorthand": 0,
     "no-return-assign": ["error", "except-parens"],
     "no-restricted-syntax": 0,
@@ -48,6 +56,7 @@
         "allowTaggedTemplates": true
       }
     ],
+    "react/default-props-match-prop-types": 0,
     "react/destructuring-assignment": 0,
     "react/sort-comp": 0,
     "react/no-did-update-set-state": 0,
@@ -65,8 +74,11 @@
     ],
     "react/no-unused-prop-types": 0,
     "react/require-default-props": 0,
-    "import/extensions": 0,
+    "import/export": 0,
+    "import/first": 0,
+    "import/named": 0,
     "import/no-unresolved": 0,
+    "import/no-useless-path-segments": 0,
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
     "jsx-a11y/anchor-is-valid": [
@@ -76,6 +88,7 @@
         "specialLink": ["to"]
       }
     ],
+    "jsx-a11y/label-has-associated-control": 0,
     "jsx-a11y/label-has-for": 0
   }
 }

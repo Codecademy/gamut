@@ -23,5 +23,21 @@ const config = createConfig()
 module.exports = defaultConfig => {
   delete config.entry;
   delete config.output;
-  return merge.smart(defaultConfig, config);
+
+  const mergedConfig = merge.smart(defaultConfig, config);
+
+  mergedConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: [
+      {
+        loader: require.resolve('awesome-typescript-loader'),
+      },
+      {
+        loader: require.resolve('react-docgen-typescript-loader'),
+      },
+    ],
+  });
+  mergedConfig.resolve.extensions.push('.ts', '.tsx');
+
+  return mergedConfig;
 };
