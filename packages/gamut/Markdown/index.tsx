@@ -42,6 +42,7 @@ const sanitizationConfig = {
     ...insane.defaults.allowedTags,
     'video',
     'source',
+    'font',
     'pre',
     'code',
     'kbd',
