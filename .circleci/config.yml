@@ -87,6 +87,9 @@ jobs:
           name: build packages
           command: yarn build-all
       - run:
+          name: build storybook
+          command: yarn build-all-storybook
+      - run:
           name: Add changes to git
           command: git add -A
       - run:
