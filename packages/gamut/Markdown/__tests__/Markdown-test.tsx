@@ -176,4 +176,14 @@ var test = true;
     );
     expect(markdown.find('img').length).toEqual(1);
   });
+
+  it('Allows passing in class names', () => {
+    const markdown = mount(
+      <Markdown
+        text={`<div class="narrative-table-container"> # Cool </div>`}
+      />
+    );
+
+    expect(markdown.find('div.narrative-table-container').length).toEqual(1);
+  });
 });
