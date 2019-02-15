@@ -23,7 +23,13 @@ const logos = {
   default: CodecademyLogo,
 };
 
-function Logo({ type, ...props }) {
+export type LogoProps = {
+  height?: number;
+  width?: number;
+  type: 'default' | 'pro' | 'proAlt' | 'program';
+};
+
+function Logo({ type, ...props }: LogoProps) {
   const LogoTag = logos[type] || CodecademyLogo;
   return <LogoTag {...props} />;
 }

@@ -1,17 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/FormGroup.scss';
 import FormGroupDescription from './FormGroupDescription';
 import FormGroupLabel from './FormGroupLabel';
 
-export type FormGroupProps = {
+export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;
   htmlFor?: string;
   className?: string;
   description?: string;
   children: ReactNode | ReactNode[];
-  [i: string]: any;
 };
 
 const FormGroup = ({

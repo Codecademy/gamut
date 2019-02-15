@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/FormGroupLabel.scss';
 
-export type FormGroupLabelProps = {
-  htmlFor?: string;
+export type FormGroupLabelProps = FormGroupLabelPropsWithFor & FormGroupLabelPropsPlain;
+
+export type FormGroupLabelPropsWithFor = HTMLAttributes<HTMLLabelElement> & {
   className?: string;
-  [i: string]: any;
-};
+  htmlFor: string;
+}
+
+export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
+  className?: string;
+}
 
 const FormGroupLabel = ({
   htmlFor,

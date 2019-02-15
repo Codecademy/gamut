@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Input.scss';
 
-const Input = ({ error, htmlFor, className, ...rest }) => {
+export type InputProps = HTMLAttributes<HTMLInputElement> & {
+  className?: string;
+  error?: boolean;
+  htmlFor?: string;
+  name?: string;
+  placeholder?: string;
+  required?: boolean;
+  type?: string;
+}
+
+const Input = ({ error, htmlFor, className, ...rest }: InputProps) => {
   const classNames = cx(
     s.Input,
     {

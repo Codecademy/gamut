@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
@@ -13,7 +13,14 @@ const propTypes = {
 
 const propKeys = Object.keys(propTypes);
 
-export default function Grid(props) {
+export type GridProps = {
+  children?: ReactNode | ReactNode[];
+  className?: string;
+  fluid?: boolean;
+  tagName?: string;
+}
+
+export default function Grid(props: GridProps) {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 

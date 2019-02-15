@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
 import s from './styles/Select.scss';
 
-const Select = props => {
+export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
+  className?: string,
+  defaultValue?: string;
+  htmlFor?: string;
+  options?: string[] | {};
+};
+
+const Select = (props: SelectProps) => {
   const className = cx(s.Select, props.className);
 
   // Generate list of options
   const { options, ...propsToTransfer } = props;
 
-  let selectOptions = [];
+  let selectOptions: ReactNode[] = [];
 
   if (isArray(options)) {
     selectOptions = options.map(option => (

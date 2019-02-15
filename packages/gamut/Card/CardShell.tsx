@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/CardShell.scss';
@@ -13,7 +13,13 @@ const defaultProps = {
   hoverShadow: false,
 };
 
-export default function CardShell({ children, hoverShadow, className }) {
+export type CardShellProps = {
+  children: ReactNode;
+  className?: string;
+  hoverShadow?: boolean;
+}
+
+export default function CardShell({ children, hoverShadow, className }: CardShellProps) {
   const shellClasses = cx(
     s.shell,
     {

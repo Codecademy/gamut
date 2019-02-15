@@ -1,5 +1,5 @@
 import { isNumber, omit } from 'lodash';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/index.scss';
@@ -31,7 +31,7 @@ const internalProps = [
   'alignSelf',
 ];
 
-export interface ContainerProps {
+export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   align?: string;
   alignSelf?: string;
   center?: boolean;
@@ -48,8 +48,6 @@ export interface ContainerProps {
   row?: boolean;
   shrink?: number;
   wrap?: boolean;
-
-  [i: string]: any;
 }
 
 class Container extends React.Component<ContainerProps> {

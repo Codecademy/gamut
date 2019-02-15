@@ -4,7 +4,7 @@ import { Tab, TabPanel } from 'react-aria-tabpanel';
 import Tabs from '../index';
 
 describe('Accessible Tabs', () => {
-  function generateTabConfig(num, isDefault = 0) {
+  function generateTabConfig(num: number, isDefault = 0) {
     return Array(num)
       .fill(undefined)
       .map((x, ind) => {
@@ -25,28 +25,28 @@ describe('Accessible Tabs', () => {
     );
 
     expect(
-      wrapper
+      (wrapper
         .find(Tab)
         .at(0)
-        .props().active
+        .props() as any).active
     ).toBe(true);
     expect(
-      wrapper
+      (wrapper
         .find('.tabPanel')
         .at(0)
-        .props().active
+        .props() as any).active
     ).toBe(true);
     expect(
-      wrapper
+      (wrapper
         .find(Tab)
         .at(1)
-        .props().active
+        .props() as any).active
     ).toBe(false);
     expect(
-      wrapper
+      (wrapper
         .find('.tabPanel')
         .at(1)
-        .props().active
+        .props() as any).active
     ).toBe(false);
 
     const wrapper2 = shallow(
@@ -57,28 +57,28 @@ describe('Accessible Tabs', () => {
     );
 
     expect(
-      wrapper2
+      (wrapper2
         .find(Tab)
         .at(0)
-        .props().active
+        .props() as any).active
     ).toBe(false);
     expect(
-      wrapper2
+      (wrapper2
         .find('.tabPanel')
         .at(0)
-        .props().active
+        .props() as any).active
     ).toBe(false);
     expect(
-      wrapper2
+      (wrapper2
         .find(Tab)
         .at(1)
-        .props().active
+        .props() as any).active
     ).toBe(true);
     expect(
-      wrapper2
+      (wrapper2
         .find('.tabPanel')
         .at(1)
-        .props().active
+        .props() as any).active
     ).toBe(true);
   });
 
