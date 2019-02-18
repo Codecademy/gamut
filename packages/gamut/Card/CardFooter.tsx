@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/CardFooter.scss';
@@ -21,6 +21,16 @@ const defaultProps = {
   standardHeight: true,
 };
 
+export type CardFooterProps = {
+  align?: 'center' | 'left' | 'right';
+  border?: 'dashed' | 'none' | 'solid';
+  children: ReactNode;
+  className?: string;
+  flex?: boolean;
+  standardHeight?: boolean;
+  standardPadding?: boolean;
+};
+
 export default function CardFooter({
   children,
   border,
@@ -29,7 +39,7 @@ export default function CardFooter({
   standardPadding,
   standardHeight,
   className,
-}) {
+}: CardFooterProps) {
   const footerClasses = cx(
     s.footer,
     {

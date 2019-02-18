@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-export default function NumPyIcon(props) {
+export default function NumPyIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>NumPy Icon</title>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -9,7 +9,11 @@ const defaultProps = {
   size: '24',
 };
 
-function Spinner({ size, ...props }) {
+export type SpinnerProps = SVGProps<SVGSVGElement> & {
+  size?: string;
+};
+
+function Spinner({ size, ...props }: SpinnerProps) {
   return (
     <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
       <defs>

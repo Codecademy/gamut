@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-export default function PathIcon(props) {
+export default function PathIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Path Icon</title>

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-export default function CertificateIcon(props) {
+export default function CertificateIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Certificate Icon</title>

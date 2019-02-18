@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-export default function TerminalIcon(props) {
+export default function TerminalIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Terminal Icon</title>
