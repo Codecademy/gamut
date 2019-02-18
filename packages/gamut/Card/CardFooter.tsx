@@ -29,7 +29,7 @@ export type CardFooterProps = {
   flex?: boolean;
   standardHeight?: boolean;
   standardPadding?: boolean;
-}
+};
 
 export default function CardFooter({
   children,

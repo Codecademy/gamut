@@ -5,7 +5,7 @@ import cx from 'classnames';
 import s from './styles/Select.scss';
 
 export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
-  className?: string,
+  className?: string;
   defaultValue?: string;
   htmlFor?: string;
   options?: string[] | {};

@@ -47,7 +47,7 @@ function getClassNames(props: ColProps) {
   return (Object.keys(props) as (keyof typeof classMap & keyof typeof props)[])
     .filter(key => classMap[key])
     .map(
-      (key: keyof typeof classMap) => 
+      (key: keyof typeof classMap) =>
         style[
           Number.isInteger(props[key] as number)
             ? `${classMap[key]}-${props[key]}`
@@ -71,7 +71,7 @@ export type ColProps = {
   className?: string;
   reverse?: boolean;
   children?: ReactNode[];
-}
+};
 
 export default function Col(props: ColProps) {
   const className = getClassNames(props);

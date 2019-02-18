@@ -17,9 +17,13 @@ export type CardShellProps = {
   children: ReactNode;
   className?: string;
   hoverShadow?: boolean;
-}
+};
 
-export default function CardShell({ children, hoverShadow, className }: CardShellProps) {
+export default function CardShell({
+  children,
+  hoverShadow,
+  className,
+}: CardShellProps) {
   const shellClasses = cx(
     s.shell,
     {

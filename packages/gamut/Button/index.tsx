@@ -34,7 +34,7 @@ const propTypes = {
 export type ButtonProps = {
   block?: boolean;
   caps?: boolean;
-  children: ReactNode | ReactNode[],
+  children: ReactNode | ReactNode[];
   className?: string;
   fitText?: boolean;
   flat?: boolean;
@@ -46,7 +46,7 @@ export type ButtonProps = {
   square?: boolean;
   theme?: string;
   underline?: boolean;
-}
+};
 
 const Button = (props: ButtonProps) => {
   let { theme = 'primary' } = props;

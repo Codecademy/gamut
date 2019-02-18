@@ -11,7 +11,7 @@ const defaultProps = {
 
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: string;
-}
+};
 
 function Spinner({ size, ...props }: SpinnerProps) {
   return (

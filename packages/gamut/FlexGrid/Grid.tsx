@@ -18,7 +18,7 @@ export type GridProps = {
   className?: string;
   fluid?: boolean;
   tagName?: string;
-}
+};
 
 export default function Grid(props: GridProps) {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];

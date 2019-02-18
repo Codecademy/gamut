@@ -9,7 +9,7 @@ export type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
   htmlFor?: string;
   name?: string;
   required?: boolean;
-}
+};
 
 const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
   const classNames = cx(

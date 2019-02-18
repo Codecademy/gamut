@@ -11,7 +11,7 @@ export type InputProps = HTMLAttributes<HTMLInputElement> & {
   placeholder?: string;
   required?: boolean;
   type?: string;
-}
+};
 
 const Input = ({ error, htmlFor, className, ...rest }: InputProps) => {
   const classNames = cx(
