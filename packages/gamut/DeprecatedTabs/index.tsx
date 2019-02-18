@@ -12,11 +12,15 @@ export interface TabsProps {
 
   animatedUnderlineStyle?: boolean;
   children: ReactNode[];
-  onChange?: (id: number) => void;
+  onChange?: (id: string) => void;
   renderAllChildren?: boolean;
 }
 
-class Tabs extends Component<TabsProps> {
+interface TabsState {
+  activeTabId?: string;
+}
+
+class Tabs extends Component<TabsProps, TabsState> {
   static propTypes = {
     config: PropTypes.arrayOf(
       PropTypes.shape({
@@ -30,7 +34,7 @@ class Tabs extends Component<TabsProps> {
     animatedUnderlineStyle: PropTypes.bool,
   };
 
-  state = { activeTabId: undefined };
+  state = { activeTabId: undefined } as TabsState;
 
   private idPrefix!: string;
 
@@ -42,11 +46,11 @@ class Tabs extends Component<TabsProps> {
       .replace('.', '');
   }
 
-  createId(index) {
+  createId(index: number) {
     return `${this.idPrefix}-${index}`;
   }
 
-  renderTabList = activeTabId => {
+  renderTabList = (activeTabId: string) => {
     // leftPercent determines where the animated underline should be positioned
     // if animatedUnderlineStyle === true
     const leftPercent =
@@ -87,7 +91,7 @@ class Tabs extends Component<TabsProps> {
     );
   };
 
-  renderTabPanels = activeTabId => (
+  renderTabPanels = (activeTabId: string) => (
     // render all tab panels, but only active tab panel contains anything
     <div className={s.tabPanelContainer}>
       {this.props.config.map((c, i) => {
@@ -111,7 +115,7 @@ class Tabs extends Component<TabsProps> {
     </div>
   );
 
-  onChange = id => {
+  onChange = (id: string) => {
     if (this.props.onChange) this.props.onChange(id);
     this.setState(() => ({ activeTabId: id }));
   };

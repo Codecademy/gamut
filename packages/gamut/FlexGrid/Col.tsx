@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import omitProps from '../utils/omitProps';
 import style from './styles/index.scss';
@@ -33,7 +33,7 @@ const classMap = {
   lgOffset: 'col-lg-offset',
 };
 
-function getClassNames(props) {
+function getClassNames(props: ColProps) {
   const extraClasses = [style.col];
 
   if (props.className) {
@@ -44,12 +44,12 @@ function getClassNames(props) {
     extraClasses.push(style.reverse);
   }
 
-  return Object.keys(props)
+  return (Object.keys(props) as (keyof typeof classMap & keyof typeof props)[])
     .filter(key => classMap[key])
     .map(
-      key =>
+      (key: keyof typeof classMap) =>
         style[
-          Number.isInteger(props[key])
+          Number.isInteger(props[key] as number)
             ? `${classMap[key]}-${props[key]}`
             : classMap[key]
         ]
@@ -58,7 +58,22 @@ function getClassNames(props) {
     .join(' ');
 }
 
-export default function Col(props) {
+export type ColProps = {
+  xs?: boolean | number;
+  sm?: boolean | number;
+  md: boolean | number;
+  lg: boolean | number;
+  xsOffset?: number;
+  smOffset?: number;
+  mdOffset?: number;
+  lgOffset?: number;
+  tagName?: string;
+  className?: string;
+  reverse?: boolean;
+  children?: ReactNode[];
+};
+
+export default function Col(props: ColProps) {
   const className = getClassNames(props);
 
   return React.createElement(
