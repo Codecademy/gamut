@@ -3,3 +3,4 @@ node_modules
 *.json
 **/*.json
 docs
+**/*.d.ts
