@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.8"></a>
+## [1.15.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.7...@codecademy/gamut@1.15.8) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/gamut/issues/184)) ([79c11eb](https://github.com/RyzacInc/gamut/commit/79c11eb))
+
+
+
+
+
 <a name="1.15.7"></a>
 ## [1.15.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.6...@codecademy/gamut@1.15.7) (2019-02-14)
 

@@ -93,7 +93,7 @@ addDecorator(wrapper);
 
 function loadStories() {
   // Require all files that match `stories/*-story.js`
-  const req = require.context('../', true, /stories\/.*-story\.tsx?$/);
+  const req = require.context('../', true, /stories\/.*-story\.jsx?$/);
   // And load them
   req.keys().forEach(req);
 }
