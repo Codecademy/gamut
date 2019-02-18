@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/TextArea.scss';
 
-const TextArea = ({ error, htmlFor, className, ...rest }) => {
+export type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
+  className?: string;
+  error?: boolean;
+  htmlFor?: string;
+  name?: string;
+  required?: boolean;
+};
+
+const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
   const classNames = cx(
     s.TextArea,
     {

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-export default function CodecademyProLogo(props) {
+export default function CodecademyProLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} viewBox="0 0 381 60" xmlns="http://www.w3.org/2000/svg">
       <title>Codecademy Pro Logo</title>

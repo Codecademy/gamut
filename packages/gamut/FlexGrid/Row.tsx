@@ -37,11 +37,11 @@ const propTypes = {
 
 const propKeys = Object.keys(propTypes);
 
-function getClassNames(props) {
+function getClassNames(props: RowProps) {
   const modificators = [style.row];
 
   for (const key of modificatorKeys) {
-    const value = props[key];
+    const value = props[key as keyof typeof props];
     if (value) {
       modificators.push(style[`${key}-${value}`]);
     }
@@ -54,7 +54,15 @@ function getClassNames(props) {
   return cx(props.className, modificators);
 }
 
-export default function Row(props) {
+export type RowProps<TElement extends HTMLElement = HTMLElement> = {
+  className?: string;
+  reverse?: boolean;
+  tagName?: TElement['tagName'];
+};
+
+export default function Row<TElement extends HTMLElement = HTMLDivElement>(
+  props: RowProps<TElement>
+) {
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })

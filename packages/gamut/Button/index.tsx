@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ButtonBase from '../ButtonBase';
@@ -7,7 +7,7 @@ import s from './styles/index.scss';
 
 // themes can be an alias to a color
 // or a unique button type
-export const presetThemes = {
+export const presetThemes: { [i: string]: string } = {
   primary: 'red',
   secondary: 'mint',
   platform: 'greyblue',
@@ -31,7 +31,24 @@ const propTypes = {
   fitText: PropTypes.bool,
 };
 
-const Button = props => {
+export type ButtonProps = {
+  block?: boolean;
+  caps?: boolean;
+  children: ReactNode | ReactNode[];
+  className?: string;
+  fitText?: boolean;
+  flat?: boolean;
+  go?: boolean;
+  link?: boolean;
+  outline?: boolean;
+  round?: boolean;
+  size?: 'small' | 'large';
+  square?: boolean;
+  theme?: string;
+  underline?: boolean;
+};
+
+const Button = (props: ButtonProps) => {
   let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {

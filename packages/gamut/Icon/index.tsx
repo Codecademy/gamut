@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import iconMap from './iconMap';
 
@@ -15,13 +15,14 @@ const defaultProps = {
   width: 24,
 };
 
-export type IconProps = {
-  height?: number;
-  label?: string;
-  name: keyof typeof iconMap;
-  size?: number;
-  width?: number;
-};
+export type IconProps = HTMLAttributes<SVGElement> &
+  SVGProps<SVGSVGElement> & {
+    height?: number;
+    label?: string;
+    name: keyof typeof iconMap;
+    size?: number;
+    width?: number;
+  };
 
 function Icon({ name, size, ...props }: IconProps) {
   const MappedIcon = iconMap[name];
