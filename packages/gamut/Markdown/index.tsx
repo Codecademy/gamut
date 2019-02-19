@@ -65,26 +65,6 @@ export interface MarkdownProps {
 }
 
 class Markdown extends PureComponent<MarkdownProps> {
-  static propTypes = {
-    spacing: PropTypes.oneOf(['loose', 'tight', 'none']),
-    overrides: PropTypes.objectOf(
-      PropTypes.shape({
-        component: PropTypes.oneOfType([
-          PropTypes.func,
-          PropTypes.shape({
-            render: PropTypes.func.isRequired,
-          }),
-        ]),
-        props: PropTypes.object,
-        shouldProcessNode: PropTypes.func,
-        processNode: PropTypes.func,
-      })
-    ),
-    className: PropTypes.string,
-    inline: PropTypes.bool,
-    text: PropTypes.string,
-  };
-
   render() {
     const {
       spacing = 'tight',

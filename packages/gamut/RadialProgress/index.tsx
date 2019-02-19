@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { SVGProps, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  size: PropTypes.string,
-  duration: PropTypes.number,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
-  strokeWidth: PropTypes.string,
-  strokeLinecap: PropTypes.oneOf(['round', 'butt', 'square']),
-};
+export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+  duration?: number;
+  value?: number | number[];
+  strokeWidth?: number;
+  strokeLinecap?: 'round' | 'butt' | 'square';
+}
 
-const defaultProps = {
+const defaultProps: RadialProgressProps = {
   strokeLinecap: 'round',
-  strokeWidth: '10',
-  size: '24',
+  strokeWidth: 10,
+  size: 24,
 };
 
 const offsetForEmptyProgress = 260;
@@ -22,14 +22,14 @@ const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 const convertPercentToOffset = percent =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
-function RadialProgress({
+const RadialProgress: FunctionComponent<RadialProgressProps> = ({
   size,
   duration,
   value,
   strokeLinecap,
   strokeWidth,
   ...props
-}) {
+}) => {
   const shouldAnimate = Array.isArray(value);
 
   const startingValue = shouldAnimate
@@ -78,8 +78,7 @@ function RadialProgress({
       </circle>
     </svg>
   );
-}
+};
 
-RadialProgress.propTypes = propTypes;
 RadialProgress.defaultProps = defaultProps;
 export default RadialProgress;

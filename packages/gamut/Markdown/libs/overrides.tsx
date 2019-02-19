@@ -33,6 +33,8 @@ export const createTagOverride = (
   Override: OverrideSettings = {}
 ) => ({
   shouldProcessNode(node) {
+    const { next, prev, ...propz } = node;
+    window.__node = node;
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }
