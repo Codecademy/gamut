@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.17"></a>
+## [2.4.17](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.16...@codecademy/gamut-storybook@2.4.17) (2019-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.4.16"></a>
+## [2.4.16](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.15...@codecademy/gamut-storybook@2.4.16) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/gamut/issues/184)) ([79c11eb](https://github.com/RyzacInc/gamut/commit/79c11eb))
+
+
+
+
+
+<a name="2.4.15"></a>
+## [2.4.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.14...@codecademy/gamut-storybook@2.4.15) (2019-02-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+<a name="2.4.14"></a>
+## [2.4.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.13...@codecademy/gamut-storybook@2.4.14) (2019-02-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
 <a name="2.4.13"></a>
 ## [2.4.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.12...@codecademy/gamut-storybook@2.4.13) (2019-02-12)
 

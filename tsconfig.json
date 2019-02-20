@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "esnext",
+  },
+  "exclude": [
+    "**/node_modules"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelCore": "@babel/core",
+    "useCache": true
+  }
+}

@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.9"></a>
+## [1.15.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.8...@codecademy/gamut@1.15.9) (2019-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.8"></a>
+## [1.15.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.7...@codecademy/gamut@1.15.8) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/gamut/issues/184)) ([79c11eb](https://github.com/RyzacInc/gamut/commit/79c11eb))
+
+
+
+
+
+<a name="1.15.7"></a>
+## [1.15.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.6...@codecademy/gamut@1.15.7) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow certain class names in Markdown component  ([#183](https://github.com/RyzacInc/gamut/issues/183)) ([a38d144](https://github.com/RyzacInc/gamut/commit/a38d144))
+
+
+
+
+
+<a name="1.15.6"></a>
+## [1.15.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.5...@codecademy/gamut@1.15.6) (2019-02-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.15.5"></a>
 ## [1.15.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.4...@codecademy/gamut@1.15.5) (2019-02-12)
 
