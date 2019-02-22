@@ -1,6 +1,6 @@
 ---
 name: Design Systems Component
-about: A new Design Systems Component
+about: A New Design Systems Component
 title: Component Name
 labels: new component
 assignees: ''
