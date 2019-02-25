@@ -23,6 +23,7 @@ const Anchor: FunctionComponent<AnchorProps> = props => {
     // remove noopener/noreferrer on same origin urls
     if (url.origin === window.location.origin) {
       anchorProps.rel = '';
+      anchorProps.target = '';
     }
   }
 

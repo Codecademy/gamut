@@ -188,14 +188,14 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
-    it('Adds target _blank to links', () => {
+    it('Adds target _blank to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
       expect(markdown.find('a[target="_blank"]').length).toEqual(1);
     });
 
-    it('Adds rel="noopener noreferrer" to links', () => {
+    it('Adds rel="noopener noreferrer" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
