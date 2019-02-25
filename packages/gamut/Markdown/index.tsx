@@ -13,6 +13,7 @@ import {
 import s from './styles/index.scss';
 
 import Iframe from './overrides/Iframe';
+import Anchor from './overrides/Anchor';
 
 const htmlToReactParser = new HtmlToReact.Parser();
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
@@ -112,6 +113,9 @@ class Markdown extends PureComponent<MarkdownProps> {
     const processingInstructions = [
       createTagOverride('iframe', {
         component: Iframe,
+      }),
+      createTagOverride('a', {
+        component: Anchor,
       }),
       ...overrides,
       {
