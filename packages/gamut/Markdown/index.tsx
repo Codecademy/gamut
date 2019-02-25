@@ -24,6 +24,7 @@ const sanitizationConfig = {
     code: ['class'],
     pre: ['class'],
     source: ['src', 'type'],
+    img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
     video: ['width', 'height', 'align', 'style', 'controls'],
     iframe: [
       'src',
