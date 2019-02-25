@@ -44,6 +44,7 @@ import NumPyIcon from './icons/NumPyIcon';
 import PHPIcon from './icons/PHPIcon';
 import PandasIcon from './icons/PandasIcon';
 import PathIcon from './icons/PathIcon';
+import PhoneIcon from './icons/PhoneIcon';
 import PlayIcon from './icons/PlayIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
@@ -112,6 +113,7 @@ const iconMap = {
   numPy: NumPyIcon,
   pandas: PandasIcon,
   path: PathIcon,
+  phone: PhoneIcon,
   php: PHPIcon,
   play: PlayIcon,
   project: ProjectIcon,
