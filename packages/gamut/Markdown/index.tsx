@@ -13,6 +13,7 @@ import {
 import s from './styles/index.scss';
 
 import Iframe from './overrides/Iframe';
+import Anchor from './overrides/Anchor';
 
 const htmlToReactParser = new HtmlToReact.Parser();
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
@@ -24,6 +25,7 @@ const sanitizationConfig = {
     code: ['class'],
     pre: ['class'],
     source: ['src', 'type'],
+    img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
     video: ['width', 'height', 'align', 'style', 'controls'],
     iframe: [
       'src',
@@ -91,6 +93,9 @@ class Markdown extends PureComponent<MarkdownProps> {
     const processingInstructions = [
       createTagOverride('iframe', {
         component: Iframe,
+      }),
+      createTagOverride('a', {
+        component: Anchor,
       }),
       ...overrides,
       {

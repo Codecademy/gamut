@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.13"></a>
+## [1.15.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.12...@codecademy/gamut@1.15.13) (2019-02-25)
+
+
+### Bug Fixes
+
+* more defensive url ([a328533](https://github.com/RyzacInc/gamut/commit/a328533))
+
+
+
+
+
+<a name="1.15.12"></a>
+## [1.15.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.11...@codecademy/gamut@1.15.12) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown component  - Fix url access for server rendering ([#194](https://github.com/RyzacInc/gamut/issues/194)) ([c741c30](https://github.com/RyzacInc/gamut/commit/c741c30))
+
+
+
+
+
+<a name="1.15.11"></a>
+## [1.15.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.10...@codecademy/gamut@1.15.11) (2019-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.10"></a>
+## [1.15.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.9...@codecademy/gamut@1.15.10) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown Component - Add anchor override, fix image spacing ([#192](https://github.com/RyzacInc/gamut/issues/192)) ([b9e5411](https://github.com/RyzacInc/gamut/commit/b9e5411))
+
+
+
+
+
 <a name="1.15.9"></a>
 ## [1.15.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.8...@codecademy/gamut@1.15.9) (2019-02-18)
 

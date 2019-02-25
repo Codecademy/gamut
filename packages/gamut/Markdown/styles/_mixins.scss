@@ -105,10 +105,12 @@
 
   img {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: $base-margin auto;
     max-width: 100%;
+    margin: $base-margin auto 0;
+  }
+
+  p img {
+    margin: 0 auto;
   }
 
   iframe {
