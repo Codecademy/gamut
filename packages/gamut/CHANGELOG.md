@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.13"></a>
+## [1.15.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.12...@codecademy/gamut@1.15.13) (2019-02-25)
+
+
+### Bug Fixes
+
+* more defensive url ([a328533](https://github.com/RyzacInc/gamut/commit/a328533))
+
+
+
+
+
 <a name="1.15.12"></a>
 ## [1.15.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.11...@codecademy/gamut@1.15.12) (2019-02-25)
 
