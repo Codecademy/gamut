@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.12"></a>
+## [1.15.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.11...@codecademy/gamut@1.15.12) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown component  - Fix url access for server rendering ([#194](https://github.com/RyzacInc/gamut/issues/194)) ([c741c30](https://github.com/RyzacInc/gamut/commit/c741c30))
+
+
+
+
+
 <a name="1.15.11"></a>
 ## [1.15.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.10...@codecademy/gamut@1.15.11) (2019-02-25)
 
