@@ -19,11 +19,15 @@ const Anchor: FunctionComponent<AnchorProps> = props => {
   };
 
   if (typeof window !== 'undefined' && window.URL) {
-    const url = new window.URL(props.href, window.location.href);
-    // remove noopener/noreferrer on same origin urls
-    if (url.origin === window.location.origin) {
-      anchorProps.rel = '';
-      anchorProps.target = '';
+    try {
+      const url = new window.URL(props.href, window.location.href);
+      // remove noopener/noreferrer on same origin urls
+      if (url.origin === window.location.origin) {
+        anchorProps.rel = '';
+        anchorProps.target = '';
+      }
+    } catch (e) {
+      // Failed to parse url, fall through to default
     }
   }
 
