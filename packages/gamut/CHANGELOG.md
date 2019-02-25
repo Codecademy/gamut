@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.15.11"></a>
+## [1.15.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.10...@codecademy/gamut@1.15.11) (2019-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.10"></a>
+## [1.15.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.9...@codecademy/gamut@1.15.10) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown Component - Add anchor override, fix image spacing ([#192](https://github.com/RyzacInc/gamut/issues/192)) ([b9e5411](https://github.com/RyzacInc/gamut/commit/b9e5411))
+
+
+
+
+
 <a name="1.15.9"></a>
 ## [1.15.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.8...@codecademy/gamut@1.15.9) (2019-02-18)
 
