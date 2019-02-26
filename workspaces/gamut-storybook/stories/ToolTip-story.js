@@ -48,7 +48,7 @@ storiesOf('Component/ToolTip', module).add(
           'top-right'
         )}
       >
-        Like the term <em>fortnight</em>, a term for a two week period,
+        Like the term <em>fortnight</em>, a term for a two week period,{' '}
         <em>antantwig</em> refers to a three week period.
       </ToolTip>
     </div>

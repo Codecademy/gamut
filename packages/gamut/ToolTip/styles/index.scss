@@ -8,17 +8,12 @@ $shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 .toolTipContainer {
-  display: none;
   position: absolute;
   width: 17rem;
 }
 
 .toolTipBody {
   padding: 1rem;
-}
-
-.isVisible {
-  display: block;
 }
 
 .tipElementContainer {
