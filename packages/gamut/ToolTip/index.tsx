@@ -7,6 +7,7 @@ type ToolTipProps = {
   tipElement?: ReactNode;
   children?: ReactNode | string;
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  id: string;
 };
 
 const defaultProps = {
@@ -24,7 +25,6 @@ class ToolTip extends Component<ToolTipProps> {
   static defaultProps = defaultProps;
 
   state = {
-    isVisible: false,
     tipElementHeight: 0,
   };
 
@@ -37,15 +37,6 @@ class ToolTip extends Component<ToolTipProps> {
       tipElementHeight: tipElementDimensions.height,
     });
   }
-
-  onHover = () => this.setState({ isVisible: true });
-
-  onLeave = () => this.setState({ isVisible: false });
-
-  toggleToolTip = () =>
-    this.setState((prev: { isVisible: boolean }) => ({
-      isVisible: !prev.isVisible,
-    }));
 
   getToolTipPosition = position => {
     const { tipElementHeight } = this.state;
@@ -76,29 +67,22 @@ class ToolTip extends Component<ToolTipProps> {
   };
 
   render() {
-    const { children, tipElement, position } = this.props;
-    const { isVisible } = this.state;
+    const { children, tipElement, position, id } = this.props;
     return (
       <div className={s.toolTipWrapper}>
         <button
-          aria-labelledby="tooltip"
+          aria-labelledby={id}
           type="button"
           ref={this.tipElementRef}
           className={s.tipElementContainer}
-          onMouseEnter={this.onHover}
-          onMouseLeave={this.onLeave}
-          onClick={this.toggleToolTip}
         >
           {tipElement}
         </button>
         <CardShell
           className={s.toolTipContainer}
-          style={{
-            ...this.getToolTipPosition(position),
-            display: isVisible ? 'block' : 'none',
-          }}
+          style={this.getToolTipPosition(position)}
           role="tooltip"
-          id="tooltip"
+          id={id}
         >
           <CardBody className={s.toolTipBody}>{children}</CardBody>
         </CardShell>

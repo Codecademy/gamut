@@ -7,18 +7,30 @@ $shadow-color: rgba(0, 0, 0, 0.15);
   display: inline-block;
 }
 
+.tipElementContainer {
+  cursor: pointer;
+  // display: inline-block;
+  border: 0;
+  background: none;
+  padding: 0;
+
+  display: inline-block;
+  position: relative;
+  height: 0;
+  width: 0;
+
+  &:hover + .toolTipContainer,
+  &:focus + .toolTipContainer {
+    display: block;
+  }
+}
+
 .toolTipContainer {
+  display: none;
   position: absolute;
   width: 17rem;
 }
 
 .toolTipBody {
   padding: 1rem;
-}
-
-.tipElementContainer {
-  display: inline-block;
-  border: 0;
-  background: none;
-  padding: 0;
 }

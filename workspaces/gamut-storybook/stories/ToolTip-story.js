@@ -32,6 +32,7 @@ storiesOf('Component/ToolTip', module).add(
       <p>Hover the icon at the end of the sentence below to view a tooltip.</p>
       Your billing cycle is each antantwig.
       <ToolTip
+        id="tooltip"
         tipElement={
           <div
             style={{
