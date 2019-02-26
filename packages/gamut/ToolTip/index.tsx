@@ -1,5 +1,4 @@
 import React, { ReactNode, Component } from 'react';
-import cx from 'classnames';
 import { CardShell, CardBody } from '../Card';
 import s from './styles/index.scss';
 
