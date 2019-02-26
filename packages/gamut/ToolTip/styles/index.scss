@@ -1,21 +1,29 @@
 @import "~@codecademy/gamut-styles/utils";
 
+$shadow-color: rgba(0, 0, 0, 0.15);
+
 .toolTipWrapper {
   position: relative;
-  border: none;
-  background: none;
-  padding: 0;
+  display: inline-block;
 }
 
 .toolTipContainer {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  border-radius: 2px;
+  display: none;
   position: absolute;
   width: 17rem;
-  background-color: $gamut-white;
+}
+
+.toolTipBody {
+  padding: 1rem;
+}
+
+.isVisible {
+  display: block;
 }
 
 .tipElementContainer {
   display: inline-block;
+  border: 0;
+  background: none;
+  padding: 0;
 }

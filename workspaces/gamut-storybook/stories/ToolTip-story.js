@@ -45,7 +45,7 @@ storiesOf('Component/ToolTip', module).add(
         position={select(
           'position',
           ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
-          'bottom-right'
+          'top-right'
         )}
       >
         Like the term <em>fortnight</em>, a term for a two week period,
