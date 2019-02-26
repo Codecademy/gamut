@@ -1,0 +1,21 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.toolTipWrapper {
+  position: relative;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.toolTipContainer {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  border-radius: 2px;
+  position: absolute;
+  width: 17rem;
+  background-color: $gamut-white;
+}
+
+.tipElementContainer {
+  display: inline-block;
+}

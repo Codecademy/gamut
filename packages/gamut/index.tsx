@@ -3,6 +3,7 @@ export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
 export { default as Spinner } from './Spinner';
 export { default as RadialProgress } from './RadialProgress';
+export { default as ToolTip } from './ToolTip';
 
 import * as FlexBox$ from './FlexBox';
 import * as FlexGrid$ from './FlexGrid';
