@@ -1,7 +1,3 @@
-@import "~@codecademy/gamut-styles/utils";
-
-$shadow-color: rgba(0, 0, 0, 0.15);
-
 .toolTipWrapper {
   position: relative;
   display: inline-block;
@@ -27,4 +23,24 @@ $shadow-color: rgba(0, 0, 0, 0.15);
 
 .toolTipBody {
   padding: 1rem;
+}
+
+.top-left {
+  bottom: 100%;
+  right: 100%;
+}
+
+.top-right {
+  bottom: 100%;
+  left: 100%;
+}
+
+.bottom-left {
+  top: 100%;
+  right: 100%;
+}
+
+.bottom-right {
+  top: 100%;
+  left: 100%;
 }
