@@ -3,24 +3,24 @@ import { shallow } from 'enzyme';
 
 import Tab from '../';
 
-const shallowTab = ({ isDisabled }) => {
+const shallowTab = ({ disabled }) => {
   const onChange = jest.fn();
-  const tab = shallow(
-    <Tab isDisabled={isDisabled} onChange={onChange}>
+  const component = shallow(
+    <Tab disabled={disabled} onChange={onChange}>
       <span />
     </Tab>
   );
 
-  return { onChange, tab };
+  return { onChange, component };
 };
 
 describe('Tab', () => {
   it('does nothing when clicked while disabled', () => {
-    const { onChange, tab } = shallowTab({
-      isDisabled: true,
+    const { onChange, component } = shallowTab({
+      disabled: true,
     });
 
-    tab.find('a').simulate('click', {
+    component.find('a').simulate('click', {
       preventDefault: jest.fn(),
     });
 
@@ -28,11 +28,11 @@ describe('Tab', () => {
   });
 
   it('does nothing when the enter key is pressed while disabled', () => {
-    const { onChange, tab } = shallowTab({
-      isDisabled: true,
+    const { onChange, component } = shallowTab({
+      disabled: true,
     });
 
-    tab.find('a').simulate('keydown', {
+    component.find('a').simulate('keydown', {
       key: 'Enter',
       preventDefault: jest.fn(),
     });
@@ -41,21 +41,21 @@ describe('Tab', () => {
   });
 
   it('has a tabIndex of -1 when disabled', () => {
-    const { tab } = shallowTab({
-      isDisabled: true,
+    const { component } = shallowTab({
+      disabled: true,
     });
 
-    const tabIndex = tab.find('a').prop('tabIndex');
+    const tabIndex = component.find('a').prop('tabIndex');
 
     expect(tabIndex).toBe(-1);
   });
 
   it('calls onChange when clicked while enabled', () => {
-    const { onChange, tab } = shallowTab({
-      isDisabled: false,
+    const { onChange, component } = shallowTab({
+      disabled: false,
     });
 
-    tab.find('a').simulate('click', {
+    component.find('a').simulate('click', {
       preventDefault: jest.fn(),
     });
 
@@ -63,11 +63,11 @@ describe('Tab', () => {
   });
 
   it('calls onChange when the enter key is pressed while enabled', () => {
-    const { onChange, tab } = shallowTab({
-      isDisabled: false,
+    const { onChange, component } = shallowTab({
+      disabled: false,
     });
 
-    tab.find('a').simulate('keydown', {
+    component.find('a').simulate('keydown', {
       key: 'Enter',
       preventDefault: jest.fn(),
     });
@@ -76,11 +76,11 @@ describe('Tab', () => {
   });
 
   it('has a tabIndex of 0 when enabled', () => {
-    const { tab } = shallowTab({
-      isDisabled: false,
+    const { component } = shallowTab({
+      disabled: false,
     });
 
-    const tabIndex = tab.find('a').prop('tabIndex');
+    const tabIndex = component.find('a').prop('tabIndex');
 
     expect(tabIndex).toBe(0);
   });

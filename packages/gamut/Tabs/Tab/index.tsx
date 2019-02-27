@@ -9,8 +9,8 @@ const propTypes = {
   activeClassName: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   id: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
   tabIndex: PropTypes.number.isRequired,
 };
@@ -27,7 +27,7 @@ export type TabProps = {
   children: ReactNode | ReactNode[];
   className?: string;
   id: string;
-  isDisabled?: boolean;
+  disabled?: boolean;
   onChange: (newTabIndex: number) => void;
   tabIndex: number;
 };
@@ -37,8 +37,8 @@ const Tab = ({
   activeClassName,
   children,
   className,
+  disabled,
   id,
-  isDisabled,
   onChange,
   tabIndex,
 }: TabProps) => {
@@ -55,14 +55,14 @@ const Tab = ({
         onClick={e => {
           e.preventDefault();
 
-          if (isDisabled) {
+          if (disabled) {
             return;
           }
 
           onChange(tabIndex);
         }}
         onKeyDown={e => {
-          if (isDisabled) {
+          if (disabled) {
             return;
           }
 
@@ -72,7 +72,7 @@ const Tab = ({
             onChange(tabIndex);
           }
         }}
-        tabIndex={isDisabled ? -1 : 0}
+        tabIndex={disabled ? -1 : 0}
       >
         {children}
       </a>
