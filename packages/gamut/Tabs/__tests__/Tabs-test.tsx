@@ -5,15 +5,15 @@ import { Tab, TabList, TabPanel, Tabs } from '../';
 
 const createTab = (i: number) => {
   return (
-    // @ts-ignore: props are passed to cloned Tab
-    <Tab>Tab {i}</Tab>
+    <Tab tabIndex={i} onChange={() => {}} id={`tab-${i}`} key={`${i}`}>
+      Tab {i}
+    </Tab>
   );
 };
 
 const createTabPanel = (i: number) => {
   return (
-    // @ts-ignore: props are passed to cloned TabPanel
-    <TabPanel>
+    <TabPanel id={`${i}`}>
       <h2>welcome to tab {i}</h2>
       <p>hi i am tab {i}</p>
     </TabPanel>
@@ -22,8 +22,7 @@ const createTabPanel = (i: number) => {
 
 const getTabs = (props: any) => {
   const tabList = (
-    // @ts-ignore: props are passed to cloned TabList
-    <TabList>
+    <TabList onChange={() => {}} activeTabIndex={1} createBaseId={i => `${i}`}>
       {createTab(1)}
       {createTab(2)}
       {createTab(3)}
