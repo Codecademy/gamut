@@ -17,8 +17,8 @@ const Anchor: FunctionComponent<AnchorProps> = props => {
     rel: 'noopener noreferrer',
   };
 
-  if (typeof window !== 'undefined' && window.URL) {
-    const url = new window.URL(props.href, window.location.href);
+  if (typeof URL !== 'undefined') {
+    const url = new URL(props.href, window.location.href);
     // remove noopener/noreferrer on same origin urls
     if (url.origin === window.location.origin) {
       anchorProps.rel = '';
