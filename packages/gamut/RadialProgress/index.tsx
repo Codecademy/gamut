@@ -5,7 +5,7 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number;
   duration?: number;
   value?: number | number[];
-  strokeWidth?: number;
+  strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
 }
 
