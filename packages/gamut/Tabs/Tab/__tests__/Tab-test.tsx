@@ -20,7 +20,9 @@ describe('Tab', () => {
       isDisabled: true,
     });
 
-    tab.find('a').simulate('click');
+    tab.find('a').simulate('click', {
+      preventDefault: jest.fn(),
+    });
 
     expect(onChange).not.toHaveBeenCalled();
   });
@@ -32,6 +34,7 @@ describe('Tab', () => {
 
     tab.find('a').simulate('keydown', {
       key: 'Enter',
+      preventDefault: jest.fn(),
     });
 
     expect(onChange).not.toHaveBeenCalled();
@@ -52,7 +55,9 @@ describe('Tab', () => {
       isDisabled: false,
     });
 
-    tab.find('a').simulate('click');
+    tab.find('a').simulate('click', {
+      preventDefault: jest.fn(),
+    });
 
     expect(onChange).toHaveBeenCalledTimes(1);
   });
@@ -64,6 +69,7 @@ describe('Tab', () => {
 
     tab.find('a').simulate('keydown', {
       key: 'Enter',
+      preventDefault: jest.fn(),
     });
 
     expect(onChange).toHaveBeenCalledTimes(1);
