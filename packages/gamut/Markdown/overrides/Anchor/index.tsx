@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { FunctionComponent, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 
 export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;

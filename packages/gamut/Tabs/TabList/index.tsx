@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/index.scss';
@@ -14,12 +14,6 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-const defaultProps = {
-  createBaseId: () => {},
-  activeTabIndex: 0,
-  onChange: () => {},
-};
-
 export type TabListProps = {
   activeTabIndex: number;
   center?: boolean;
@@ -30,7 +24,13 @@ export type TabListProps = {
   onChange: () => void;
 };
 
-const TabList = ({
+const defaultProps = {
+  createBaseId: (i: number) => `${i}`,
+  activeTabIndex: 0,
+  onChange: () => {},
+};
+
+const TabList: FunctionComponent<TabListProps> = ({
   activeTabIndex,
   center,
   children,
@@ -38,15 +38,16 @@ const TabList = ({
   createBaseId,
   maxWidth,
   onChange,
-}: TabListProps) => {
+}) => {
   const classes = cx(s.tabList, className, { [s.center]: center });
   return (
     <ul className={classes} style={{ maxWidth }}>
       {React.Children.toArray(children)
+        // @ts-ignore
         .filter(c => c && c.type === Tab)
         .map((tab, index) => {
-          const baseId = createBaseId(index);
-
+          const baseId = createBaseId ? createBaseId(index) : index;
+          // @ts-ignore
           return React.cloneElement(tab, {
             active: activeTabIndex === index,
             tabIndex: index,
@@ -59,7 +60,6 @@ const TabList = ({
   );
 };
 
-TabList.propTypes = propTypes;
 TabList.defaultProps = defaultProps;
 
 export default TabList;

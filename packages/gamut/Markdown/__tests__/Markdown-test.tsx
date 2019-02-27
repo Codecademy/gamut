@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { mount } from 'enzyme';
 import Markdown from '../index';
 
@@ -69,7 +69,7 @@ describe('<Markdown />', () => {
   });
 
   it('Allows passing in arbitrary react component overrides', () => {
-    const TestComponent = () => <strong>coooool</strong>;
+    const TestComponent: FunctionComponent = () => <strong>coooool</strong>;
 
     const text = `
 # Heading
@@ -96,7 +96,7 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = props => <strong {...props} />;
+      const CodeBlock = (props: any) => <strong {...props} />;
 
       const overrides = {
         CodeBlock: {
@@ -117,7 +117,7 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = props => <div {...props} />;
+      const CodeBlock = (props: any) => <div {...props} />;
 
       const overrides = {
         CodeBlock: {
@@ -144,14 +144,14 @@ var test = true;
 \`var test = false;\`
       `;
 
-      const CodeBlock = props => <div {...props} />;
+      const CodeBlock = (props: any) => <div {...props} />;
 
       const overrides = {
         CodeBlock: {
           component: CodeBlock,
         },
         code: {
-          component: props => <strong {...props} />,
+          component: (props: any) => <strong {...props} />,
         },
       };
 

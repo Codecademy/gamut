@@ -1,29 +1,44 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 import { Tab, TabList, TabPanel, Tabs } from '../';
 
-const getTabs = props => (
-  <Tabs {...props}>
+const createTab = (i: number) => {
+  return (
+    // @ts-ignore: props are passed to cloned Tab
+    <Tab>Tab {i}</Tab>
+  );
+};
+
+const createTabPanel = (i: number) => {
+  return (
+    // @ts-ignore: props are passed to cloned TabPanel
+    <TabPanel>
+      <h2>welcome to tab {i}</h2>
+      <p>hi i am tab {i}</p>
+    </TabPanel>
+  );
+};
+
+const getTabs = (props: any) => {
+  const tabList = (
+    // @ts-ignore: props are passed to cloned TabList
     <TabList>
-      <Tab>Tab 1</Tab>
-      <Tab>Tab 2</Tab>
-      <Tab>Tab 3</Tab>
+      {createTab(1)}
+      {createTab(2)}
+      {createTab(3)}
     </TabList>
-    <TabPanel>
-      <h2>welcome to tab 1</h2>
-      <p>hi i am tab 1</p>
-    </TabPanel>
-    <TabPanel>
-      <h2>welcome to tab 2</h2>
-      <p>hi i am tab 2</p>
-    </TabPanel>
-    <TabPanel>
-      <h2>welcome to tab 3</h2>
-      <p>hi i am tab 3</p>
-    </TabPanel>
-  </Tabs>
-);
+  );
+
+  return (
+    <Tabs {...props}>
+      {tabList}
+      {createTabPanel(1)}
+      {createTabPanel(2)}
+      {createTabPanel(3)}
+    </Tabs>
+  );
+};
 
 describe('Tabs', () => {
   describe('ControlledVariant', () => {
@@ -55,6 +70,8 @@ describe('Tabs', () => {
         .find('.tab')
         .last()
         .props()
+        // @ts-ignore
+        // Not sure how to get typescript to pretend this is a valid mouse event
         .onClick({ preventDefault() {} });
 
       expect(onChange.mock.calls[0][0]).toBe(2);
@@ -143,7 +160,7 @@ describe('Tabs', () => {
         getTabs({ activeTabIndex: 0, onChange: () => {} })
       );
 
-      const inactivePanelHasChildren = wrp =>
+      const inactivePanelHasChildren = (wrp: ShallowWrapper) =>
         !!wrp.html().match('welcome to tab 2');
 
       expect(inactivePanelHasChildren(wrapper)).toBe(false);

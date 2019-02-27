@@ -19,7 +19,7 @@ const offsetForEmptyProgress = 260;
 const offsetForFullProgress = 8;
 const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 
-const convertPercentToOffset = percent =>
+const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
 const RadialProgress: FunctionComponent<RadialProgressProps> = ({
@@ -30,15 +30,16 @@ const RadialProgress: FunctionComponent<RadialProgressProps> = ({
   strokeWidth,
   ...props
 }) => {
-  const shouldAnimate = Array.isArray(value);
+  let startingValue;
+  let finalValue;
 
-  const startingValue = shouldAnimate
-    ? convertPercentToOffset(value[0])
-    : offsetForEmptyProgress;
-
-  const finalValue = shouldAnimate
-    ? convertPercentToOffset(value[1])
-    : convertPercentToOffset(value);
+  if (Array.isArray(value)) {
+    startingValue = value[0];
+    finalValue = value[1];
+  } else {
+    startingValue = value;
+    finalValue = value;
+  }
 
   return (
     <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
@@ -64,7 +65,7 @@ const RadialProgress: FunctionComponent<RadialProgressProps> = ({
         strokeDasharray="260"
         transform="rotate(-90 50 50)"
       >
-        {shouldAnimate && (
+        {startingValue !== finalValue && (
           <animate
             attributeType="CSS"
             attributeName="stroke-dashoffset"
@@ -81,4 +82,5 @@ const RadialProgress: FunctionComponent<RadialProgressProps> = ({
 };
 
 RadialProgress.defaultProps = defaultProps;
+
 export default RadialProgress;
