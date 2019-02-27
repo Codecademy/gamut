@@ -43,11 +43,9 @@ const TabList: FunctionComponent<TabListProps> = ({
   return (
     <ul className={classes} style={{ maxWidth }}>
       {React.Children.toArray(children)
-        // @ts-ignore
-        .filter(c => c && c.type === Tab)
-        .map((tab, index) => {
+        .filter((c: ReactElement) => c && c.type === Tab)
+        .map((tab: ReactElement, index) => {
           const baseId = createBaseId ? createBaseId(index) : index;
-          // @ts-ignore
           return React.cloneElement(tab, {
             active: activeTabIndex === index,
             tabIndex: index,
