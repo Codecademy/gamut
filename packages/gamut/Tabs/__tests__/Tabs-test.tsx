@@ -70,8 +70,7 @@ describe('Tabs', () => {
         .find('.tab')
         .last()
         .props()
-        // @ts-ignore
-        // Not sure how to get typescript to pretend this is a valid mouse event
+        // @ts-ignore: Not sure how to get typescript to pretend this is a valid mouse event
         .onClick({ preventDefault() {} });
 
       expect(onChange.mock.calls[0][0]).toBe(2);
