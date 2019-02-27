@@ -6,15 +6,15 @@ export interface AttributesMap {
   [key: string]: string;
 }
 
-export interface Node {
+export interface HTMLToReactNode {
   data: string;
   type: string;
   name?: string;
-  children?: Node[];
+  children?: HTMLToReactNode[];
   attribs?: any;
-  next: Node;
-  prev: Node;
-  parent: Node;
+  next: HTMLToReactNode;
+  prev: HTMLToReactNode;
+  parent: HTMLToReactNode;
 }
 
 // Mapping of html attributes to their camelCase variants
@@ -24,13 +24,19 @@ const attributeMap: AttributesMap = {
   class: 'className',
 };
 
-export interface OverrideSettings {
-  component?: any;
-  props?: any;
-  processNode?: (node: Node, props: object) => any;
-  shouldProcessNode?: (node: Node) => boolean;
-  [i: string]: any;
-}
+export type OverrideSettings<
+  TProps extends {} = {},
+  TComponent extends React.ComponentType<TProps> = React.ComponentType<TProps>
+> = {
+  component: TComponent;
+  props?: TProps;
+  processNode?: (node: HTMLToReactNode, props: object) => any;
+  shouldProcessNode?: (node: HTMLToReactNode) => boolean;
+};
+
+export type ManyOverrideSettings = {
+  [i: string]: OverrideSettings;
+};
 
 // Convert html attributes to valid react props
 export const processAttributes = (attributes: AttributesMap = {}) =>
@@ -45,16 +51,20 @@ export const processAttributes = (attributes: AttributesMap = {}) =>
 // generic html tag override
 export const createTagOverride = (
   tagName: string,
-  Override: OverrideSettings = {}
+  Override: OverrideSettings
 ) => ({
-  shouldProcessNode(node: Node) {
-    const { next, prev, ...propz } = node;
+  shouldProcessNode(node: HTMLToReactNode) {
+    if (!Override) return false;
+
+    const { next, prev } = node;
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }
     return node.name === tagName.toLowerCase();
   },
-  processNode(node: Node, children: Node[], key: any) {
+  processNode(node: HTMLToReactNode, children: HTMLToReactNode[], key: any) {
+    if (!Override) return null;
+
     const props = {
       ...processAttributes(node.attribs),
       children,
@@ -71,17 +81,17 @@ export const createTagOverride = (
 // Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
 export const createCodeBlockOverride = (
   tagName: string,
-  Override: OverrideSettings = {}
+  Override: OverrideSettings
 ) =>
   createTagOverride(tagName, {
-    shouldProcessNode(node: Node) {
+    shouldProcessNode(node: HTMLToReactNode) {
       return (
         (node.name === 'code' && get(node, 'parent.name') === 'pre') ||
         node.name === tagName.toLowerCase()
       );
     },
 
-    processNode(node: Node, props: any) {
+    processNode(node: HTMLToReactNode, props: any) {
       const language =
         props.className && props.className.replace('language-', '');
 

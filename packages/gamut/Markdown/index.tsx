@@ -8,7 +8,7 @@ import omitProps from '../utils/omitProps';
 import {
   createTagOverride,
   createCodeBlockOverride,
-  OverrideSettings,
+  ManyOverrideSettings,
 } from './libs/overrides';
 import s from './styles/index.scss';
 
@@ -61,7 +61,7 @@ const isValidNode = function() {
 export interface MarkdownProps {
   className?: string;
   inline?: boolean;
-  overrides?: OverrideSettings;
+  overrides?: ManyOverrideSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
 }
@@ -72,7 +72,7 @@ class Markdown extends PureComponent<MarkdownProps> {
       spacing = 'tight',
       text = '',
       className,
-      overrides: userOverrides = {},
+      overrides: userOverrides,
       inline = false,
     } = this.props;
 
