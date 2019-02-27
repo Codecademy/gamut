@@ -24,13 +24,9 @@ const attributeMap: AttributesMap = {
   class: 'className',
 };
 
-export type OverrideSettings<
-  TProps extends {} = {},
-  TComponent extends React.ComponentType<TProps> = React.ComponentType<TProps>
-> = {
-  component: TComponent;
-  props?: TProps;
-  processNode?: (node: HTMLToReactNode, props: object) => any;
+export type OverrideSettings = {
+  component: React.ComponentType;
+  processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
 
@@ -72,7 +68,6 @@ export const createTagOverride = (
     const props = {
       ...processAttributes(node.attribs),
       children,
-      ...Override.props,
       key,
     };
     if (Override.processNode) {

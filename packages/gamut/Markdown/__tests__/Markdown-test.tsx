@@ -96,7 +96,7 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = (props: React.HTMLAttributes<HTMLElement>) => (
+      const CodeBlock = (props: React.HTMLProps<HTMLElement>) => (
         <strong {...props} />
       );
 
@@ -109,32 +109,6 @@ var test = true;
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
     });
-
-    it('Accepts a CodeBlock override object including custom props', () => {
-      const text = `
-# Heading
-
-\`\`\`
-var test = true;
-\`\`\`
-      `;
-
-      const CodeBlock = (props: any) => <div {...props} />;
-
-      const overrides = {
-        CodeBlock: {
-          component: CodeBlock,
-          props: {
-            'data-test': true,
-          },
-        },
-      };
-
-      const markdown = mount(<Markdown text={text} overrides={overrides} />);
-      expect(markdown.find(CodeBlock).length).toEqual(1);
-      expect(markdown.find(CodeBlock).props()['data-test']).toEqual(true);
-    });
-
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
       const text = `
 # Heading
@@ -146,14 +120,18 @@ var test = true;
 \`var test = false;\`
       `;
 
-      const CodeBlock = (props: any) => <div {...props} />;
+      const CodeBlock = (props: React.HTMLProps<HTMLDivElement>) => (
+        <div {...props} />
+      );
 
       const overrides = {
         CodeBlock: {
           component: CodeBlock,
         },
         code: {
-          component: (props: any) => <strong {...props} />,
+          component: (props: React.HTMLProps<HTMLElement>) => (
+            <strong {...props} />
+          ),
         },
       };
 
