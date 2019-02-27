@@ -96,7 +96,7 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = (props: any) => <strong {...props} />;
+      const CodeBlock = (props: React.HTMLAttributes<HTMLElement>) => <strong {...props} />;
 
       const overrides = {
         CodeBlock: {
