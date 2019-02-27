@@ -62,7 +62,11 @@ export const createTagOverride = (
     }
     return node.name === tagName.toLowerCase();
   },
-  processNode(node: HTMLToReactNode, children: HTMLToReactNode[], key: any) {
+  processNode(
+    node: HTMLToReactNode,
+    children: HTMLToReactNode[],
+    key: React.Key
+  ) {
     if (!Override) return null;
 
     const props = {
