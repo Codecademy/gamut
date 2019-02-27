@@ -72,7 +72,7 @@ class Markdown extends PureComponent<MarkdownProps> {
       spacing = 'tight',
       text = '',
       className,
-      overrides: userOverrides,
+      overrides: userOverrides = {},
       inline = false,
     } = this.props;
 
