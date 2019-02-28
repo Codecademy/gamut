@@ -8267,7 +8267,7 @@ left-pad@^1.3.0:
   version "1.3.0"
   resolved "https://registry.npmjs.org/left-pad/-/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
 
-lerna@^3.0.0-beta.21:
+lerna@^3.13.1:
   version "3.13.1"
   resolved "https://registry.npmjs.org/lerna/-/lerna-3.13.1.tgz#feaff562176f304bd82329ca29ce46ab6c033463"
   dependencies:
