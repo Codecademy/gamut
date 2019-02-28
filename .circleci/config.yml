@@ -93,8 +93,11 @@ jobs:
           name: Add changes to git
           command: git add -A
       - run:
+          name: lerna version
+          command: yarn lerna version --conventional-commits --yes --github-release
+      - run:
           name: lerna publish
-          command: yarn lerna publish --conventional-commits --yes
+          command: yarn lerna publish --yes
 
   publish_alpha:
     <<: *default_env
@@ -107,8 +110,11 @@ jobs:
           name: build packages
           command: yarn build-all
       - run:
-          name: lerna publish
-          command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
+          name: lerna version (alpha)
+          command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+      - run:
+          name: lerna publish (alpha)
+          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
 workflows:
   version: 2

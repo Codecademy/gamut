@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { FunctionComponent, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 
 export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -22,8 +21,7 @@ const Anchor: FunctionComponent<AnchorProps> = props => {
     const url = new URL(props.href, window.location.href);
     // remove noopener/noreferrer on same origin urls
     if (url.origin === window.location.origin) {
-      anchorProps.rel = '';
-      anchorProps.target = '';
+      delete anchorProps.rel;
     }
   }
 
