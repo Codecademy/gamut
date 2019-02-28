@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.15...@codecademy/gamut@1.16.0) (2019-02-28)
+
+
+### Features
+
+* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
+
+
+
+
+
 <a name="1.15.15"></a>
 ## [1.15.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.14...@codecademy/gamut@1.15.15) (2019-02-27)
 
