@@ -29,6 +29,11 @@ references:
       name: Add NPM auth token file
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
+  set_gh_token: &set_gh_token
+    run:
+      name: Add GH_TOKEN for lerna commands
+      command: GH_TOKEN=${GITHUB_TOKEN}
+
 jobs:
   checkout_code:
     <<: *default_env
@@ -83,6 +88,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
+      - *set_gh_token
       - run:
           name: lerna version
           command: yarn lerna version --conventional-commits --yes --github-release
@@ -97,6 +103,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
+      - *set_gh_token
       - run:
           name: lerna version (alpha)
           command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
