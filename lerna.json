@@ -3,10 +3,5 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "packages": ["packages/*"],
-  "command": {
-    "publish": {
-      "allowBranch": "master"
-    }
-  }
+  "packages": ["packages/*"]
 }
