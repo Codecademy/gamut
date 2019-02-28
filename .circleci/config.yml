@@ -114,7 +114,7 @@ jobs:
           command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: lerna publish (alpha)
-          command: yarn lerna publish --yes --exact --no-git-reset --dist-tag=prerelease
+          command: yarn lerna publish --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
 workflows:
   version: 2
