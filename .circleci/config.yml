@@ -84,20 +84,11 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: build packages
-          command: yarn build-all
-      - run:
-          name: build storybook
-          command: yarn build-all-storybook
-      - run:
-          name: Add changes to git
-          command: git add -A
-      - run:
           name: lerna version
           command: yarn lerna version --conventional-commits --yes --github-release
       - run:
           name: lerna publish
-          command: yarn lerna publish --yes
+          command: yarn lerna publish from-git --yes
 
   publish_alpha:
     <<: *default_env
@@ -106,9 +97,6 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - run:
-          name: build packages
-          command: yarn build-all
       - run:
           name: lerna version (alpha)
           command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
