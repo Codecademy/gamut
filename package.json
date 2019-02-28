@@ -18,9 +18,9 @@
     "format": "yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "build-all": "yarn wsrun build --exclude-missing",
-    "build-all-storybook": "yarn wsrun build-storybook --exclude-missing",
     "start": "yarn wsrun storybook --exclude-missing",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublishOnly": "yarn build-all"
   },
   "repository": {
     "type": "git",

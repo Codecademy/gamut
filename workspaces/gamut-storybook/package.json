@@ -11,7 +11,7 @@
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
+    "build": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
   },
   "repository": {
     "type": "git",
