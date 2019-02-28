@@ -1,13 +1,4 @@
-import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-
-const propTypes = {
-  active: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  renderAllPanels: PropTypes.bool,
-};
+import React, { ReactNode, FunctionComponent } from 'react';
 
 const defaultProps = {
   id: '',
@@ -15,19 +6,19 @@ const defaultProps = {
 
 export type TabPanelProps = {
   active?: boolean;
-  children?: ReactNode | ReactNode[];
+  children?: ReactNode;
   className?: string;
   id: string;
   renderAllPanels?: boolean;
 };
 
-const TabPanel = ({
+const TabPanel: FunctionComponent<TabPanelProps> = ({
   children,
   active,
   renderAllPanels,
   id,
   className,
-}: TabPanelProps) => (
+}) => (
   <div
     id={id}
     aria-labelledby={id.replace('-panel', '')}
@@ -38,7 +29,6 @@ const TabPanel = ({
   </div>
 );
 
-TabPanel.propTypes = propTypes;
 TabPanel.defaultProps = defaultProps;
 
 export default TabPanel;

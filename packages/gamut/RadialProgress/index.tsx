@@ -1,44 +1,45 @@
-import React from 'react';
+import React, { SVGProps, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 
-const propTypes = {
-  size: PropTypes.string,
-  duration: PropTypes.number,
-  value: PropTypes.oneOfType([PropTypes.number, PropTypes.array]),
-  strokeWidth: PropTypes.string,
-  strokeLinecap: PropTypes.oneOf(['round', 'butt', 'square']),
-};
+export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
+  size?: number;
+  duration?: number;
+  value?: number | number[];
+  strokeWidth?: number | string;
+  strokeLinecap?: 'round' | 'butt' | 'square';
+}
 
-const defaultProps = {
+const defaultProps: RadialProgressProps = {
   strokeLinecap: 'round',
-  strokeWidth: '10',
-  size: '24',
+  strokeWidth: 10,
+  size: 24,
 };
 
 const offsetForEmptyProgress = 260;
 const offsetForFullProgress = 8;
 const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 
-const convertPercentToOffset = percent =>
+const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
-function RadialProgress({
+const RadialProgress: FunctionComponent<RadialProgressProps> = ({
   size,
   duration,
   value,
   strokeLinecap,
   strokeWidth,
   ...props
-}) {
-  const shouldAnimate = Array.isArray(value);
+}) => {
+  let startingValue;
+  let finalValue;
 
-  const startingValue = shouldAnimate
-    ? convertPercentToOffset(value[0])
-    : offsetForEmptyProgress;
-
-  const finalValue = shouldAnimate
-    ? convertPercentToOffset(value[1])
-    : convertPercentToOffset(value);
+  if (Array.isArray(value)) {
+    startingValue = value[0];
+    finalValue = value[1];
+  } else {
+    startingValue = value;
+    finalValue = value;
+  }
 
   return (
     <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
@@ -64,7 +65,7 @@ function RadialProgress({
         strokeDasharray="260"
         transform="rotate(-90 50 50)"
       >
-        {shouldAnimate && (
+        {startingValue !== finalValue && (
           <animate
             attributeType="CSS"
             attributeName="stroke-dashoffset"
@@ -78,8 +79,8 @@ function RadialProgress({
       </circle>
     </svg>
   );
-}
+};
 
-RadialProgress.propTypes = propTypes;
 RadialProgress.defaultProps = defaultProps;
+
 export default RadialProgress;

@@ -1,29 +1,43 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 import { Tab, TabList, TabPanel, Tabs } from '../';
 
-const getTabs = props => (
-  <Tabs {...props}>
-    <TabList>
-      <Tab>Tab 1</Tab>
-      <Tab>Tab 2</Tab>
-      <Tab>Tab 3</Tab>
+const createTab = (i: number) => {
+  return (
+    <Tab tabIndex={i} onChange={() => {}} id={`tab-${i}`} key={`${i}`}>
+      Tab {i}
+    </Tab>
+  );
+};
+
+const createTabPanel = (i: number) => {
+  return (
+    <TabPanel id={`${i}`}>
+      <h2>welcome to tab {i}</h2>
+      <p>hi i am tab {i}</p>
+    </TabPanel>
+  );
+};
+
+const getTabs = (props: any) => {
+  const tabList = (
+    <TabList onChange={() => {}} activeTabIndex={1} createBaseId={i => `${i}`}>
+      {createTab(1)}
+      {createTab(2)}
+      {createTab(3)}
     </TabList>
-    <TabPanel>
-      <h2>welcome to tab 1</h2>
-      <p>hi i am tab 1</p>
-    </TabPanel>
-    <TabPanel>
-      <h2>welcome to tab 2</h2>
-      <p>hi i am tab 2</p>
-    </TabPanel>
-    <TabPanel>
-      <h2>welcome to tab 3</h2>
-      <p>hi i am tab 3</p>
-    </TabPanel>
-  </Tabs>
-);
+  );
+
+  return (
+    <Tabs {...props}>
+      {tabList}
+      {createTabPanel(1)}
+      {createTabPanel(2)}
+      {createTabPanel(3)}
+    </Tabs>
+  );
+};
 
 describe('Tabs', () => {
   describe('ControlledVariant', () => {
@@ -54,8 +68,7 @@ describe('Tabs', () => {
       wrapper
         .find('.tab')
         .last()
-        .props()
-        .onClick({ preventDefault() {} });
+        .simulate('click');
 
       expect(onChange.mock.calls[0][0]).toBe(2);
 
@@ -143,7 +156,7 @@ describe('Tabs', () => {
         getTabs({ activeTabIndex: 0, onChange: () => {} })
       );
 
-      const inactivePanelHasChildren = wrp =>
+      const inactivePanelHasChildren = (wrp: ShallowWrapper) =>
         !!wrp.html().match('welcome to tab 2');
 
       expect(inactivePanelHasChildren(wrapper)).toBe(false);

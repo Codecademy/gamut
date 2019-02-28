@@ -1,18 +1,8 @@
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, FunctionComponent } from 'react';
 
 import s from './styles/index.scss';
-
-const propTypes = {
-  active: PropTypes.bool,
-  tabIndex: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  activeClassName: PropTypes.string,
-};
 
 const defaultProps = {
   id: '',
@@ -23,14 +13,14 @@ const defaultProps = {
 export type TabProps = {
   active?: boolean;
   activeClassName?: string;
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
   className?: string;
   id: string;
   onChange: (newTabIndex: number) => void;
   tabIndex: number;
 };
 
-const Tab = ({
+const Tab: FunctionComponent<TabProps> = ({
   children,
   active,
   tabIndex,
@@ -38,7 +28,7 @@ const Tab = ({
   id,
   className,
   activeClassName,
-}: TabProps) => {
+}) => {
   const tabLinkClasses = cx(s.tab, {
     [s.active]: active,
     [activeClassName]: active && activeClassName !== undefined,
@@ -68,6 +58,5 @@ const Tab = ({
 };
 
 Tab.defaultProps = defaultProps;
-Tab.propTypes = propTypes;
 
 export default Tab;
