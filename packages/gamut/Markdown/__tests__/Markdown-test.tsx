@@ -96,7 +96,9 @@ var test = true;
 \`\`\`
       `;
 
-      const CodeBlock = props => <strong {...props} />;
+      const CodeBlock = (props: React.HTMLProps<HTMLElement>) => (
+        <strong {...props} />
+      );
 
       const overrides = {
         CodeBlock: {
@@ -107,32 +109,6 @@ var test = true;
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
     });
-
-    it('Accepts a CodeBlock override object including custom props', () => {
-      const text = `
-# Heading
-
-\`\`\`
-var test = true;
-\`\`\`
-      `;
-
-      const CodeBlock = props => <div {...props} />;
-
-      const overrides = {
-        CodeBlock: {
-          component: CodeBlock,
-          props: {
-            'data-test': true,
-          },
-        },
-      };
-
-      const markdown = mount(<Markdown text={text} overrides={overrides} />);
-      expect(markdown.find(CodeBlock).length).toEqual(1);
-      expect(markdown.find(CodeBlock).props()['data-test']).toEqual(true);
-    });
-
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
       const text = `
 # Heading
@@ -144,14 +120,18 @@ var test = true;
 \`var test = false;\`
       `;
 
-      const CodeBlock = props => <div {...props} />;
+      const CodeBlock = (props: React.HTMLProps<HTMLDivElement>) => (
+        <div {...props} />
+      );
 
       const overrides = {
         CodeBlock: {
           component: CodeBlock,
         },
         code: {
-          component: props => <strong {...props} />,
+          component: (props: React.HTMLProps<HTMLElement>) => (
+            <strong {...props} />
+          ),
         },
       };
 
@@ -195,6 +175,15 @@ var test = true;
       expect(markdown.find('a[target="_blank"]').length).toEqual(1);
     });
 
+    it('Adds target _blank to same-origin links', () => {
+      const markdown = mount(
+        <Markdown
+          text={`<a href="${window.location.origin}/search">google</a>`}
+        />
+      );
+      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
+    });
+
     it('Adds rel="noopener noreferrer" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
@@ -206,7 +195,7 @@ var test = true;
       const markdown = mount(
         <Markdown text={`<a href="/search">google</a>`} />
       );
-      expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(0);
+      expect(markdown.find('a[rel]').length).toEqual(0);
     });
 
     it('Doesn\'t add rel="noopener noreferrer" to same-origin links', () => {
@@ -215,7 +204,7 @@ var test = true;
           text={`<a href="${window.location.origin}/search">google</a>`}
         />
       );
-      expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(0);
+      expect(markdown.find('a[rel]').length).toEqual(0);
     });
   });
 });
