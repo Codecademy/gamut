@@ -175,6 +175,15 @@ var test = true;
       expect(markdown.find('a[target="_blank"]').length).toEqual(1);
     });
 
+    it('Adds target _blank to same-origin links', () => {
+      const markdown = mount(
+        <Markdown
+          text={`<a href="${window.location.origin}/search">google</a>`}
+        />
+      );
+      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
+    });
+
     it('Adds rel="noopener noreferrer" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
@@ -186,7 +195,7 @@ var test = true;
       const markdown = mount(
         <Markdown text={`<a href="/search">google</a>`} />
       );
-      expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(0);
+      expect(markdown.find('a[rel]').length).toEqual(0);
     });
 
     it('Doesn\'t add rel="noopener noreferrer" to same-origin links', () => {
@@ -195,7 +204,7 @@ var test = true;
           text={`<a href="${window.location.origin}/search">google</a>`}
         />
       );
-      expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(0);
+      expect(markdown.find('a[rel]').length).toEqual(0);
     });
   });
 });
