@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut",
-  "description": "Styleguide & Component library for Codecademy",
+  "description": "Styleguide & Component library for codecademy.com",
   "version": "1.15.15",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "engines": {
@@ -29,8 +29,7 @@
     "react-aria-tabpanel": "^4.4.0"
   },
   "scripts": {
-    "build": "tsc",
-    "preversion": "yarn build"
+    "build": "tsc"
   },
   "license": "MIT"
 }

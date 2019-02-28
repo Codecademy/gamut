@@ -17,8 +17,10 @@
     "prettier": "prettier-eslint --prettier-last \"./**/*.{ts,tsx,json,css,scss}\"",
     "format": "yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
+    "build-all": "yarn wsrun build --exclude-missing",
     "start": "yarn wsrun storybook --exclude-missing",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepublishOnly": "yarn build-all"
   },
   "repository": {
     "type": "git",
