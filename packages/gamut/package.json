@@ -29,7 +29,8 @@
     "react-aria-tabpanel": "^4.4.0"
   },
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "preversion": "yarn build"
   },
   "license": "MIT"
 }
