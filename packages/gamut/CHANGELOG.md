@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.1...@codecademy/gamut@1.16.2) (2019-03-01)
+
+
+### Bug Fixes
+
+* **RadialProgress:** convert value to percent ([#207](https://github.com/RyzacInc/gamut/issues/207)) ([4d738c6](https://github.com/RyzacInc/gamut/commit/4d738c6))
+
+
+
+
+
 ## [1.16.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.0...@codecademy/gamut@1.16.1) (2019-02-28)
 
 **Note:** Version bump only for package @codecademy/gamut
