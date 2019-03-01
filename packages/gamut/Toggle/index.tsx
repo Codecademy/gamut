@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import s from './styles/index.scss';
 
-type ToggleProps = {
+export type ToggleProps = {
   checked?: boolean;
   onClick?: (...args: any[]) => any;
   label?: string;

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
 import PropTypes, { any } from 'prop-types';
 import TabPanel from '../TabPanel';
@@ -12,7 +12,11 @@ export interface TabsProps {
   renderAllPanels?: boolean;
 }
 
-class Tabs extends React.Component<TabsProps> {
+export interface TabsState {
+  activeTabIndex: number;
+}
+
+class Tabs extends Component<TabsProps> {
   static propTypes = {
     activeTabIndex: PropTypes.number,
     children: PropTypes.node.isRequired,
@@ -21,11 +25,11 @@ class Tabs extends React.Component<TabsProps> {
     onChange: PropTypes.func,
   };
 
-  state = {
+  state: TabsState = {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: TabsProps, prevState: TabsState) {
     const stateIndexChanged =
       this.state.activeTabIndex !== prevState.activeTabIndex;
     if (stateIndexChanged && this.props.onChange) {
@@ -37,11 +41,11 @@ class Tabs extends React.Component<TabsProps> {
     .toString()
     .replace('.', '');
 
-  createBaseId = index => `${this.idPrefix}-${index}`;
+  createBaseId = (index: number) => `${this.idPrefix}-${index}`;
 
   isControlled = () => isNumber(this.props.activeTabIndex);
 
-  updateTabIndexState = index => {
+  updateTabIndexState = (index: number) => {
     this.setState({ activeTabIndex: index });
   };
 

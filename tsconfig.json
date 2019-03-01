@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "module": "esnext",
     "moduleResolution": "node",
+    "noImplicitAny": true,
     "sourceMap": true,
-    "target": "esnext",
+    "target": "esnext"
   },
   "exclude": [
     "**/node_modules"
