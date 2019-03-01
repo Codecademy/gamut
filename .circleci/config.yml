@@ -29,11 +29,6 @@ references:
       name: Add NPM auth token file
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
-  set_gh_token: &set_gh_token
-    run:
-      name: Add GH_TOKEN for lerna commands
-      command: GH_TOKEN=${GITHUB_TOKEN}
-
 jobs:
   checkout_code:
     <<: *default_env
@@ -88,13 +83,12 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - *set_gh_token
       - run:
           name: lerna version
-          command: yarn lerna version --conventional-commits --yes --github-release
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version --conventional-commits --yes --github-release
       - run:
           name: lerna publish
-          command: yarn lerna publish from-git --yes
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --yes
 
   publish_alpha:
     <<: *default_env
@@ -103,13 +97,12 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - *set_gh_token
       - run:
           name: lerna version (alpha)
-          command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: lerna publish (alpha)
-          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
 workflows:
   version: 2
