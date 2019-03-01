@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
+  colors2019,
   colors,
   gamutColors,
   editorColors,
@@ -56,7 +57,24 @@ const renderSwatch = (data, variablePrefix) =>
 const stories = storiesOf('Visuals/Colors', module);
 
 stories.add(
-  'Portal (Current)',
+  'Colors (Mar 2019)',
+  () => {
+    return (
+      <Container>
+        {Object.keys(colors2019).map(color => (
+          <div key={color}>
+            <h2 className={s.heading}>{parseCamelCase(color)}</h2>
+            {renderSwatch(colors2019[color], color)}
+          </div>
+        ))}
+      </Container>
+    );
+  },
+  infoOptions
+);
+
+stories.add(
+  'Portal (Nov 2017)',
   () => (
     <Container>
       <div>
@@ -75,7 +93,7 @@ stories.add(
 );
 
 stories.add(
-  'Gamut (New)',
+  'Gamut (Nov 2017)',
   () => (
     <Container>
       <div>

@@ -8,6 +8,20 @@ function convertSwatchStringToObject(swatchString) {
 }
 
 // =======================================
+//      03-01-2019 COLORS
+// =======================================
+
+export const colors2019 = {
+  blue: convertSwatchStringToObject(scssExports.blue),
+  pink: convertSwatchStringToObject(scssExports.pink),
+  purple: convertSwatchStringToObject(scssExports.purple),
+  red: convertSwatchStringToObject(scssExports.red),
+  green: convertSwatchStringToObject(scssExports.green),
+  yellow: convertSwatchStringToObject(scssExports.yellow),
+  gray: convertSwatchStringToObject(scssExports.gray),
+};
+
+// =======================================
 //       BRAND COLORS
 // =======================================
 
@@ -22,7 +36,7 @@ export const brandColors = {
 };
 
 // =======================================
-//       NEW DESIGN SYSTEM COLORS
+//     11-27-2017 DESIGN SYSTEM COLORS
 // =======================================
 
 export const gamutColors = {
@@ -201,6 +215,7 @@ export const legacyBreakpoints = {
 // =======================================
 
 export default {
+  colors2019,
   colors,
   editorColors,
   grid,

@@ -1,14 +1,95 @@
-// NOTE: When updating, make sure you also update the gamut-styles/variables.js file
+// NOTE: When updating, make sure you also update the gamut-styles/variables/index.js file
 
 // =======================================
-//       BASIC COLORS
+//     03-01-2019 COLORS
+// =======================================
+
+$blue-100: #c8d7fa;
+$blue-200: #a5befa;
+$blue-300: #7da2fa;
+$blue-400: #5788fa;
+$blue-500: #3069f0;
+$blue-600: #2d5dcc;
+$blue-700: #2e4a99;
+$blue-800: #233466;
+$blue-900: #141e3b;
+$blue-1000: #10162f;
+$blue-1100: #0a0e1d;
+
+$pink-100: #ffd9fc;
+$pink-200: #ffbffa;
+$pink-300: #ffa6f8;
+$pink-400: #f288e9;
+$pink-500: #d957d9;
+$pink-600: #b035c9;
+$pink-700: #9129a6;
+$pink-800: #702080;
+$pink-900: #43134d;
+
+$purple-100: #d5ccff;
+$purple-200: #c0b6f2;
+$purple-300: #ac9df2;
+$purple-400: #917ef2;
+$purple-500: #7c5ce6;
+$purple-600: #6437cc;
+$purple-700: #4b2999;
+$purple-800: #381f73;
+$purple-900: #231347;
+
+$red-100: #ffd3cc;
+$red-200: #ffb8ad;
+$red-300: #ff988c;
+$red-400: #ff7566;
+$red-500: #fd4d3f;
+$red-600: #e53935;
+$red-700: #bf2e2c;
+$red-800: #992523;
+$red-900: #661917;
+
+$green-100: #bbfae5;
+$green-200: #91f2d2;
+$green-300: #6aebc0;
+$green-400: #4fe0b0;
+$green-500: #47cca0;
+$green-600: #3eb38c;
+$green-700: #318c6e;
+$green-800: #246650;
+$green-900: #164032;
+
+$yellow-100: #fff7cc;
+$yellow-200: #fff2b3;
+$yellow-300: #ffec8c;
+$yellow-400: #ffe359;
+$yellow-500: #ffd500;
+$yellow-600: #ffb92e;
+$yellow-700: #e69729;
+$yellow-800: #b37620;
+$yellow-900: #805417;
+
+$gray-100: #f6f5fa;
+$gray-200: #dddce0;
+$gray-300: #c4c3c7;
+$gray-400: #a2a2a6;
+$gray-500: #828285;
+$gray-600: #646466;
+$gray-700: #4b4b4d;
+$gray-800: #323233;
+$gray-900: #19191a;
+
+$white: #ffffff;
+$black: #000000;
+$beige: #efd9ca;
+$royalBlue: #6400e4;
+
+// =======================================
+//     03-02-2018 BASIC COLORS
 // =======================================
 
 $color-white: #ffffff;
 $color-black: #000000;
 
 // =======================================
-//       BRAND COLORS
+//      04-30-2018 BRAND COLORS
 // =======================================
 
 $brand-red: #fd4d3f;
@@ -20,7 +101,7 @@ $brand-beige: #efd9ca;
 $brand-dark-blue: #141c3a;
 
 // =======================================
-//       NEW DESIGN SYSTEM SWATCHES
+//    11-27-2017 DESIGN SYSTEM SWATCHES
 // =======================================
 
 $gamut-purple-500: #69639a;
@@ -101,7 +182,7 @@ $gamut-grey-800: mix($color-black, $gamut-grey-500, 60%);
 $gamut-grey-900: mix($color-black, $gamut-grey-500, 80%);
 
 // =======================================
-//       NEW DESIGN SYSTEM COLORS
+//     11-28-2017 DESIGN SYSTEM COLORS
 // =======================================
 
 $gamut-white: $color-white;
@@ -115,7 +196,7 @@ $gamut-yellow: $gamut-yellow-500;
 $gamut-grey: $gamut-grey-500;
 
 // =======================================
-//            PORTAL COLORS
+//      11-03-2017 PORTAL COLORS
 // =======================================
 
 $color-grey-1: #e9eaea;
@@ -130,7 +211,7 @@ $color-mint: #34b3a0;
 $color-red: #f65a5b;
 
 // =======================================
-//            PLATFORM COLORS
+//      11-03-2017 PLATFORM COLORS
 // =======================================
 
 $swatches-basic-black: $color-black;
@@ -156,7 +237,7 @@ $swatches-code-variable-2: #57ff93;
 $swatches-code-variable-3: #5affef;
 
 // =======================================
-//            COLOR SWATCHES
+//       11-03-2017 COLOR SWATCHES
 // =======================================
 
 $swatches-blue-100: #dceff8;
