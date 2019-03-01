@@ -52,7 +52,6 @@ export const createTagOverride = (
   shouldProcessNode(node: HTMLToReactNode) {
     if (!Override) return false;
 
-    const { next, prev } = node;
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }

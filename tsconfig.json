@@ -8,6 +8,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
+    "noUnusedLocals": true,
     "sourceMap": true,
     "target": "esnext"
   },
