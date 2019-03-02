@@ -19,6 +19,10 @@ export const colors2019 = {
   green: convertSwatchStringToObject(scssExports.green),
   yellow: convertSwatchStringToObject(scssExports.yellow),
   gray: convertSwatchStringToObject(scssExports.gray),
+  black: scssExports.black,
+  white: scssExports.white,
+  beige: scssExports.beige,
+  royalBlue: scssExports['royal-blue'],
 };
 
 // =======================================
