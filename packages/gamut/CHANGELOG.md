@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.2...@codecademy/gamut@1.16.3) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.1...@codecademy/gamut@1.16.2) (2019-03-01)
+
+
+### Bug Fixes
+
+* **RadialProgress:** convert value to percent ([#207](https://github.com/RyzacInc/gamut/issues/207)) ([4d738c6](https://github.com/RyzacInc/gamut/commit/4d738c6))
+
+
+
+
+
+## [1.16.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.0...@codecademy/gamut@1.16.1) (2019-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.16.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.15...@codecademy/gamut@1.16.0) (2019-02-28)
+
+
+### Features
+
+* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
+
+
+
+
+
+<a name="1.15.15"></a>
+## [1.15.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.14...@codecademy/gamut@1.15.15) (2019-02-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 <a name="1.15.14"></a>
 ## [1.15.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.13...@codecademy/gamut@1.15.14) (2019-02-26)
 

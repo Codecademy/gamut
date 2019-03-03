@@ -64,9 +64,9 @@ class IkonaIcon extends PureComponent<IkonaIconProps> {
     }
 
     return (
-      <i {...this.props} className={classes} style={styles}>
+      <em {...this.props} className={classes} style={styles}>
         {this.props.children}
-      </i>
+      </em>
     );
   }
 }
