@@ -27,8 +27,7 @@ type ContainerPosition =
   | 'baseline'
   | 'stretch'
   | 'spaceAround'
-  | 'spaceBetween'
-;
+  | 'spaceBetween';
 
 export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   align?: ContainerPosition;

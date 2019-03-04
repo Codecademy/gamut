@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/CardFooter.scss';
 
