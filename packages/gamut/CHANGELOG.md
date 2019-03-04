@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.5...@codecademy/gamut@1.16.6) (2019-03-04)
+
+
+### Bug Fixes
+
+* remove all unused local variables ([#208](https://github.com/RyzacInc/gamut/issues/208)) ([ccc044a](https://github.com/RyzacInc/gamut/commit/ccc044a))
+
+
+
+
+
 ## [1.16.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.4...@codecademy/gamut@1.16.5) (2019-03-04)
 
 
