@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.4...@codecademy/gamut@1.16.5) (2019-03-04)
+
+
+### Bug Fixes
+
+* fixes phone icon size ([4d2e0de](https://github.com/RyzacInc/gamut/commit/4d2e0de))
+
+
+
+
+
+## [1.16.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.3...@codecademy/gamut@1.16.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [1.16.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.2...@codecademy/gamut@1.16.3) (2019-03-01)
 
 **Note:** Version bump only for package @codecademy/gamut
