@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import PropTypes from 'prop-types';
 import React, { ReactNode, FunctionComponent } from 'react';
 
 import s from './styles/index.scss';
