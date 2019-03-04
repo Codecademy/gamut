@@ -1,5 +1,4 @@
 import React, { Component, Children, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
 import s from './styles/index.scss';
@@ -21,19 +20,6 @@ interface TabsState {
 }
 
 class Tabs extends Component<TabsProps, TabsState> {
-  static propTypes = {
-    config: PropTypes.arrayOf(
-      PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        default: PropTypes.bool,
-      })
-    ).isRequired,
-    onChange: PropTypes.func,
-    children: PropTypes.arrayOf(PropTypes.node).isRequired,
-    renderAllChildren: PropTypes.bool,
-    animatedUnderlineStyle: PropTypes.bool,
-  };
-
   state = { activeTabId: undefined } as TabsState;
 
   private idPrefix!: string;

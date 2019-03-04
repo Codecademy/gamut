@@ -1,14 +1,5 @@
 import React, { SVGProps, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import iconMap from './iconMap';
-
-const propTypes = {
-  height: PropTypes.number,
-  label: PropTypes.string,
-  name: PropTypes.oneOf(Object.keys(iconMap)).isRequired,
-  size: PropTypes.number,
-  width: PropTypes.number,
-};
 
 const defaultProps = {
   height: 24,
@@ -47,7 +38,6 @@ function Icon({ name, size, ...props }: IconProps) {
   );
 }
 
-Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
 
 export default Icon;

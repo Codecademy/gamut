@@ -3,16 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/CardFooter.scss';
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  border: PropTypes.oneOf(['dashed', 'solid', 'none']),
-  align: PropTypes.oneOf(['center', 'left', 'right']),
-  flex: PropTypes.bool,
-  standardPadding: PropTypes.bool,
-  standardHeight: PropTypes.bool,
-  className: PropTypes.string,
-};
-
 const defaultProps = {
   border: 'none',
   align: 'left',
@@ -59,5 +49,4 @@ export default function CardFooter({
   return <div className={footerClasses}>{children}</div>;
 }
 
-CardFooter.propTypes = propTypes;
 CardFooter.defaultProps = defaultProps;
