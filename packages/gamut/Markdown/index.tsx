@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import marked from 'marked';
 import HtmlToReact from 'html-to-react';
@@ -8,7 +7,7 @@ import omitProps from '../utils/omitProps';
 import {
   createTagOverride,
   createCodeBlockOverride,
-  OverrideSettings,
+  ManyOverrideSettings,
 } from './libs/overrides';
 import s from './styles/index.scss';
 
@@ -61,32 +60,12 @@ const isValidNode = function() {
 export interface MarkdownProps {
   className?: string;
   inline?: boolean;
-  overrides?: OverrideSettings;
+  overrides?: ManyOverrideSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
 }
 
 class Markdown extends PureComponent<MarkdownProps> {
-  static propTypes = {
-    spacing: PropTypes.oneOf(['loose', 'tight', 'none']),
-    overrides: PropTypes.objectOf(
-      PropTypes.shape({
-        component: PropTypes.oneOfType([
-          PropTypes.func,
-          PropTypes.shape({
-            render: PropTypes.func.isRequired,
-          }),
-        ]),
-        props: PropTypes.object,
-        shouldProcessNode: PropTypes.func,
-        processNode: PropTypes.func,
-      })
-    ),
-    className: PropTypes.string,
-    inline: PropTypes.bool,
-    text: PropTypes.string,
-  };
-
   render() {
     const {
       spacing = 'tight',

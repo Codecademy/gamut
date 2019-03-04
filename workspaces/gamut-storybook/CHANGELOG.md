@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.5...@codecademy/gamut-storybook@2.5.6) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.5.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.4...@codecademy/gamut-storybook@2.5.5) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.5.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.3...@codecademy/gamut-storybook@2.5.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.5.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.2...@codecademy/gamut-storybook@2.5.3) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.5.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.1...@codecademy/gamut-storybook@2.5.2) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.5.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.0...@codecademy/gamut-storybook@2.5.1) (2019-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+# [2.5.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.23...@codecademy/gamut-storybook@2.5.0) (2019-02-28)
+
+
+### Features
+
+* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
+
+
+
+
+
 <a name="2.4.23"></a>
 ## [2.4.23](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.22...@codecademy/gamut-storybook@2.4.23) (2019-02-27)
 

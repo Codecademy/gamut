@@ -1,19 +1,14 @@
-import React, { SVGProps } from 'react';
-import PropTypes from 'prop-types';
-
-const propTypes = {
-  size: PropTypes.string,
-};
-
-const defaultProps = {
-  size: '24',
-};
+import React, { SVGProps, FunctionComponent } from 'react';
 
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
-  size?: string;
+  size?: number | string;
 };
 
-function Spinner({ size, ...props }: SpinnerProps) {
+const defaultProps: SpinnerProps = {
+  size: 24,
+};
+
+const Spinner: FunctionComponent<SpinnerProps> = ({ size, ...props }) => {
   return (
     <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
       <defs>
@@ -40,8 +35,8 @@ function Spinner({ size, ...props }: SpinnerProps) {
       />
     </svg>
   );
-}
+};
 
 Spinner.defaultProps = defaultProps;
-Spinner.propTypes = propTypes;
+
 export default Spinner;

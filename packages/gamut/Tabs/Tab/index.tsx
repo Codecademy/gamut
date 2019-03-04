@@ -1,19 +1,7 @@
 import cx from 'classnames';
-import PropTypes from 'prop-types';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, FunctionComponent } from 'react';
 
 import s from './styles/index.scss';
-
-const propTypes = {
-  active: PropTypes.bool,
-  activeClassName: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  id: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  tabIndex: PropTypes.number.isRequired,
-};
 
 const defaultProps = {
   id: '',
@@ -24,7 +12,7 @@ const defaultProps = {
 export type TabProps = {
   active?: boolean;
   activeClassName?: string;
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
   className?: string;
   id: string;
   disabled?: boolean;
@@ -32,7 +20,7 @@ export type TabProps = {
   tabIndex: number;
 };
 
-const Tab = ({
+const Tab: FunctionComponent<TabProps> = ({
   active,
   activeClassName,
   children,
@@ -81,6 +69,5 @@ const Tab = ({
 };
 
 Tab.defaultProps = defaultProps;
-Tab.propTypes = propTypes;
 
 export default Tab;

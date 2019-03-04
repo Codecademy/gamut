@@ -1,16 +1,15 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { HTMLAttributes, FunctionComponent } from 'react';
 import s from './styles.scss';
 
-const propTypes = {
-  height: PropTypes.number,
-  src: PropTypes.string,
-  title: PropTypes.string,
-  width: PropTypes.number,
-};
+export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
+  src?: string;
+  title?: string;
+  width?: number;
+  height?: number;
+}
 
-const Iframe = props => {
+const Iframe: FunctionComponent<IframeProps> = props => {
   if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
     const { width = 16, height = 9 } = props;
     const ratioPadding = (
@@ -32,7 +31,5 @@ const Iframe = props => {
   }
   return <iframe {...props} />;
 };
-
-Iframe.propTypes = propTypes;
 
 export default Iframe;
