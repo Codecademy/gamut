@@ -26,7 +26,8 @@
     "lodash": "^4.17.5",
     "marked": "^0.6.0",
     "prop-types": "^15.5.10",
-    "react-aria-tabpanel": "^4.4.0"
+    "react-aria-tabpanel": "^4.4.0",
+    "react-lines-ellipsis": "^0.14.0"
   },
   "scripts": {
     "build": "tsc"
