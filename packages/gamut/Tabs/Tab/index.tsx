@@ -15,19 +15,21 @@ export type TabProps = {
   children: ReactNode;
   className?: string;
   id: string;
+  disabled?: boolean;
   onChange: (newTabIndex: number) => void;
   tabIndex: number;
 };
 
 const Tab: FunctionComponent<TabProps> = ({
-  children,
   active,
-  tabIndex,
-  onChange,
-  id,
-  className,
   activeClassName,
-}) => {
+  children,
+  className,
+  disabled,
+  id,
+  onChange,
+  tabIndex,
+}: TabProps) => {
   const tabLinkClasses = cx(s.tab, {
     [s.active]: active,
     [activeClassName]: active && activeClassName !== undefined,
@@ -40,15 +42,25 @@ const Tab: FunctionComponent<TabProps> = ({
         className={tabLinkClasses}
         onClick={e => {
           e.preventDefault();
+
+          if (disabled) {
+            return;
+          }
+
           onChange(tabIndex);
         }}
         onKeyDown={e => {
+          if (disabled) {
+            return;
+          }
+
           // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
           if (e.key === ' ' || e.key === 'Enter') {
             e.preventDefault();
             onChange(tabIndex);
           }
         }}
+        tabIndex={disabled ? -1 : 0}
       >
         {children}
       </a>
