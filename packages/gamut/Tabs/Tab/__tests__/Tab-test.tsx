@@ -1,12 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Tab from '../';
+import Tab, { TabProps } from '../';
 
-const shallowTab = ({ disabled }) => {
+const shallowTab = (customProps: Partial<TabProps>) => {
+  const props = {
+    id: "0",
+    tabIndex: 0,
+    ...customProps,
+  };
   const onChange = jest.fn();
   const component = shallow(
-    <Tab disabled={disabled} onChange={onChange}>
+    <Tab onChange={onChange} {...props}>
       <span />
     </Tab>
   );
