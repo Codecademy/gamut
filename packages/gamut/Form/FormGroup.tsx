@@ -1,5 +1,4 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/FormGroup.scss';
 import FormGroupDescription from './FormGroupDescription';
@@ -38,14 +37,6 @@ const FormGroup = ({
       {children}
     </div>
   );
-};
-
-FormGroup.propTypes = {
-  htmlFor: PropTypes.string,
-  className: PropTypes.string,
-  label: PropTypes.string,
-  description: PropTypes.string,
-  children: PropTypes.node,
 };
 
 export default FormGroup;

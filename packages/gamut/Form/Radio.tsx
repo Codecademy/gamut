@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/Radio.scss';
 
@@ -44,17 +43,6 @@ const Radio = ({
       </label>
     </div>
   );
-};
-
-Radio.propTypes = {
-  name: PropTypes.string,
-  value: PropTypes.string,
-  label: PropTypes.node,
-  checked: PropTypes.bool,
-  className: PropTypes.string,
-  htmlFor: PropTypes.string,
-  onChange: PropTypes.func,
-  required: PropTypes.bool,
 };
 
 export default Radio;

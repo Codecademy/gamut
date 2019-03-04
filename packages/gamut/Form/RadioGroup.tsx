@@ -1,5 +1,4 @@
 import React, { cloneElement, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 
 export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
   children: any;
@@ -25,12 +24,5 @@ const RadioGroup = ({
     )}
   </div>
 );
-
-RadioGroup.propTypes = {
-  name: PropTypes.string,
-  htmlForPrefix: PropTypes.string,
-  onChange: PropTypes.func,
-  children: PropTypes.node,
-};
 
 export default RadioGroup;
