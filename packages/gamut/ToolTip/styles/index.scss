@@ -1,9 +1,9 @@
 .toolTipWrapper {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 }
 
-.tipElementContainer {
+.targetContainer {
   cursor: pointer;
   border: 0;
   background: none;
