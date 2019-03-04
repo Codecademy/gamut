@@ -44,24 +44,21 @@ const Notification = (props: Notification) => {
   );
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer" className={notificationClasses}>
-      {/* <div > */}
-        <div>
-          <img src={imageUrl} className={s.icon}/>
+    <a href={link} target='_blank' rel='noopener noreferrer' className={notificationClasses}>
+      <div>
+        <img src={imageUrl} className={s.icon}/>
+      </div>
+      <div className={s.body}>
+        <div className={s.text}>
+          <LinesEllipsis
+            text={text}
+            maxLine={3}
+            ellipsis='...'
+            basedOn='letters'
+          /> 
         </div>
-        <div className={s.body}>
-          <div className={s.text}>
-            <LinesEllipsis
-              text={text}
-              maxLine={3}
-              ellipsis='...'
-              trimRight
-              basedOn='letters'
-            /> 
-          </div>
-          <div className={timeClasses}>{hoursSince(date)} hours ago</div>
-        </div>
-      {/* </div> */}
+        <div className={timeClasses}>{hoursSince(date)} hours ago</div>
+      </div>
     </a>
   );
 };

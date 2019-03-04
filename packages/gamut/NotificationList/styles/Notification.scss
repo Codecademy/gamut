@@ -10,12 +10,12 @@
   border-bottom: 1px solid $gamut-grey-300;
 }
 
-.notification:hover {
-  text-decoration: none;
-}
-
 .notification:last-of-type {
   border-bottom: none;
+}
+
+.notification:hover {
+  text-decoration: none;
 }
 
 .notification.unread {
@@ -32,7 +32,6 @@
 .text {
   max-height: 4rem;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .time {
