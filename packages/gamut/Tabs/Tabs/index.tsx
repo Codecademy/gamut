@@ -1,6 +1,5 @@
 import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
-import PropTypes, { any } from 'prop-types';
 import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 
@@ -17,14 +16,6 @@ export interface TabsState {
 }
 
 class Tabs extends Component<TabsProps> {
-  static propTypes = {
-    activeTabIndex: PropTypes.number,
-    children: PropTypes.node.isRequired,
-    renderAllPanels: PropTypes.bool,
-    defaultActiveTabIndex: PropTypes.number,
-    onChange: PropTypes.func,
-  };
-
   state: TabsState = {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,
   };
