@@ -33,16 +33,7 @@ storiesOf('Component/ToolTip', module).add(
       Your billing cycle is each antantwig.
       <ToolTip
         id="tooltip"
-        tipElement={
-          <div
-            style={{
-              position: 'relative',
-              top: 5,
-            }}
-          >
-            <Icon name="informational" size={19} />
-          </div>
-        }
+        target={<Icon name="informational" size={24} />}
         position={select(
           'position',
           ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
