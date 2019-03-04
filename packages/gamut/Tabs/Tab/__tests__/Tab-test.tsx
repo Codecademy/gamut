@@ -5,7 +5,7 @@ import Tab, { TabProps } from '../';
 
 const shallowTab = (customProps: Partial<TabProps>) => {
   const props = {
-    id: "0",
+    id: '0',
     tabIndex: 0,
     ...customProps,
   };
