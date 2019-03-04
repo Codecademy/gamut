@@ -42,6 +42,14 @@ jobs:
           paths:
             - .
 
+  verify_compile:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: TypeScript Compile
+          command: yarn run compile
+
   verify_formatting:
     <<: *default_env
     steps:
@@ -49,6 +57,16 @@ jobs:
       - run:
           name: Verify Prettier
           command: yarn format:verify
+
+  verify_linting:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: Verify ESLint
+          command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
+      - store_test_results:
+          path: /tmp/test-results
 
   tests:
     <<: *default_env
@@ -66,14 +84,11 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: build packages
-          command: yarn build-all
-      - run:
-          name: Add changes to git
-          command: git add -A
+          name: lerna version
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version --conventional-commits --yes --github-release
       - run:
           name: lerna publish
-          command: yarn lerna publish --conventional-commits --yes
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --yes
 
   publish_alpha:
     <<: *default_env
@@ -83,8 +98,11 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna publish
-          command: yarn lerna publish --yes --skip-git --exact --npm-tag=prerelease --cd-version=prerelease --preid=alpha.${CIRCLE_SHA1:0:6}
+          name: lerna version (alpha)
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+      - run:
+          name: lerna publish (alpha)
+          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
 workflows:
   version: 2
@@ -93,6 +111,12 @@ workflows:
       - checkout_code:
           context: org-global
       - tests:
+          requires:
+            - checkout_code
+      - verify_compile:
+          requires:
+            - checkout_code
+      - verify_linting:
           requires:
             - checkout_code
       - verify_formatting:

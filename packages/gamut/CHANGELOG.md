@@ -3,6 +3,293 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.5...@codecademy/gamut@1.16.6) (2019-03-04)
+
+
+### Bug Fixes
+
+* remove all unused local variables ([#208](https://github.com/RyzacInc/gamut/issues/208)) ([ccc044a](https://github.com/RyzacInc/gamut/commit/ccc044a))
+
+
+
+
+
+## [1.16.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.4...@codecademy/gamut@1.16.5) (2019-03-04)
+
+
+### Bug Fixes
+
+* fixes phone icon size ([4d2e0de](https://github.com/RyzacInc/gamut/commit/4d2e0de))
+
+
+
+
+
+## [1.16.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.3...@codecademy/gamut@1.16.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.2...@codecademy/gamut@1.16.3) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.1...@codecademy/gamut@1.16.2) (2019-03-01)
+
+
+### Bug Fixes
+
+* **RadialProgress:** convert value to percent ([#207](https://github.com/RyzacInc/gamut/issues/207)) ([4d738c6](https://github.com/RyzacInc/gamut/commit/4d738c6))
+
+
+
+
+
+## [1.16.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.0...@codecademy/gamut@1.16.1) (2019-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.16.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.15...@codecademy/gamut@1.16.0) (2019-02-28)
+
+
+### Features
+
+* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
+
+
+
+
+
+<a name="1.15.15"></a>
+## [1.15.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.14...@codecademy/gamut@1.15.15) (2019-02-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.14"></a>
+## [1.15.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.13...@codecademy/gamut@1.15.14) (2019-02-26)
+
+
+### Bug Fixes
+
+* Markdown component - fix Invalid URL errors  ([#195](https://github.com/RyzacInc/gamut/issues/195)) ([c130166](https://github.com/RyzacInc/gamut/commit/c130166))
+
+
+
+
+
+<a name="1.15.13"></a>
+## [1.15.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.12...@codecademy/gamut@1.15.13) (2019-02-25)
+
+
+### Bug Fixes
+
+* more defensive url ([a328533](https://github.com/RyzacInc/gamut/commit/a328533))
+
+
+
+
+
+<a name="1.15.12"></a>
+## [1.15.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.11...@codecademy/gamut@1.15.12) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown component  - Fix url access for server rendering ([#194](https://github.com/RyzacInc/gamut/issues/194)) ([c741c30](https://github.com/RyzacInc/gamut/commit/c741c30))
+
+
+
+
+
+<a name="1.15.11"></a>
+## [1.15.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.10...@codecademy/gamut@1.15.11) (2019-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.10"></a>
+## [1.15.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.9...@codecademy/gamut@1.15.10) (2019-02-25)
+
+
+### Bug Fixes
+
+* Markdown Component - Add anchor override, fix image spacing ([#192](https://github.com/RyzacInc/gamut/issues/192)) ([b9e5411](https://github.com/RyzacInc/gamut/commit/b9e5411))
+
+
+
+
+
+<a name="1.15.9"></a>
+## [1.15.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.8...@codecademy/gamut@1.15.9) (2019-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.8"></a>
+## [1.15.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.7...@codecademy/gamut@1.15.8) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/gamut/issues/184)) ([79c11eb](https://github.com/RyzacInc/gamut/commit/79c11eb))
+
+
+
+
+
+<a name="1.15.7"></a>
+## [1.15.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.6...@codecademy/gamut@1.15.7) (2019-02-14)
+
+
+### Bug Fixes
+
+* allow certain class names in Markdown component  ([#183](https://github.com/RyzacInc/gamut/issues/183)) ([a38d144](https://github.com/RyzacInc/gamut/commit/a38d144))
+
+
+
+
+
+<a name="1.15.6"></a>
+## [1.15.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.5...@codecademy/gamut@1.15.6) (2019-02-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.5"></a>
+## [1.15.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.4...@codecademy/gamut@1.15.5) (2019-02-12)
+
+
+### Bug Fixes
+
+* Fix issue where markdown CodeBlock consumers receive an array instead of a string ([#182](https://github.com/RyzacInc/gamut/issues/182)) ([bb5c3c5](https://github.com/RyzacInc/gamut/commit/bb5c3c5))
+
+
+
+
+
+<a name="1.15.4"></a>
+## [1.15.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.3...@codecademy/gamut@1.15.4) (2019-02-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.3"></a>
+## [1.15.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.2...@codecademy/gamut@1.15.3) (2019-02-01)
+
+
+### Bug Fixes
+
+* Markdown version 2.0 ([#176](https://github.com/RyzacInc/gamut/issues/176)) ([5162872](https://github.com/RyzacInc/gamut/commit/5162872))
+
+
+
+
+
+<a name="1.15.2"></a>
+## [1.15.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.1...@codecademy/gamut@1.15.2) (2019-01-31)
+
+
+### Bug Fixes
+
+* remove markdown lookbehind regex for firefox compatibility ([#175](https://github.com/RyzacInc/gamut/issues/175)) ([690b561](https://github.com/RyzacInc/gamut/commit/690b561))
+
+
+
+
+
+<a name="1.15.1"></a>
+## [1.15.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.0...@codecademy/gamut@1.15.1) (2019-01-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.15.0"></a>
+# [1.15.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.2...@codecademy/gamut@1.15.0) (2019-01-29)
+
+
+### Features
+
+* Add clipboard icon ([a3cc4e6](https://github.com/RyzacInc/gamut/commit/a3cc4e6))
+
+
+
+
+
+<a name="1.14.2"></a>
+## [1.14.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.1...@codecademy/gamut@1.14.2) (2019-01-29)
+
+
+### Bug Fixes
+
+* Fix malformed image tags in Markdown Component ([#172](https://github.com/RyzacInc/gamut/issues/172)) ([18f5b0b](https://github.com/RyzacInc/gamut/commit/18f5b0b))
+
+
+
+
+
+<a name="1.14.1"></a>
+## [1.14.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.14.0...@codecademy/gamut@1.14.1) (2019-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+<a name="1.14.0"></a>
+# [1.14.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.3...@codecademy/gamut@1.14.0) (2019-01-28)
+
+
+### Features
+
+* Added optional (aria-)label to Icon component ([64778f5](https://github.com/RyzacInc/gamut/commit/64778f5))
+
+
+
+
+
+<a name="1.13.3"></a>
+## [1.13.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.2...@codecademy/gamut@1.13.3) (2019-01-25)
+
+
+### Bug Fixes
+
+* Fix more inline html weirdness in the Markdown component ([#167](https://github.com/RyzacInc/gamut/issues/167)) ([fd8e61c](https://github.com/RyzacInc/gamut/commit/fd8e61c))
+
+
+
+
+
 <a name="1.13.2"></a>
 ## [1.13.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.13.1...@codecademy/gamut@1.13.2) (2019-01-25)
 

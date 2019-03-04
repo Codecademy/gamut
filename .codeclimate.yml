@@ -7,6 +7,7 @@ checks:
 plugins:
   eslint:
     enabled: true
+    channel: "eslint-4"
   scss-lint:
     enabled: true
 exclude_patterns:
