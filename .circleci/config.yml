@@ -84,11 +84,19 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
+          name: build storybook
+          command: yarn build-storybook
+      - run:
+          name: commit storybook changes
+          command: |
+            git add -A
+            git commit -am "build storybook"
+      - run:
           name: lerna version
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version --conventional-commits --yes --github-release
+          command: yarn lerna version --conventional-commits --yes --github-release
       - run:
           name: lerna publish
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --yes
+          command: yarn lerna publish from-git --yes
 
   publish_alpha:
     <<: *default_env
@@ -99,10 +107,10 @@ jobs:
       - *set_npm_token
       - run:
           name: lerna version (alpha)
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: lerna publish (alpha)
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
 workflows:
   version: 2
