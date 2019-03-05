@@ -90,7 +90,7 @@ jobs:
           name: commit storybook changes
           command: |
             git add -A
-            git commit -am "build storybook"
+            git commit -am "chore: build storybook [ci skip]"
       - run:
           name: lerna version
           command: yarn lerna version --conventional-commits --yes --github-release
