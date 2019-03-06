@@ -93,6 +93,7 @@ jobs:
   publish:
     <<: *default_env
     steps:
+      - *validate_commit_author
       - *set_git_user
       - *restore_repo
       - checkout
@@ -117,6 +118,7 @@ jobs:
   publish_alpha:
     <<: *default_env
     steps:
+      - *validate_commit_author
       - *set_git_user
       - *restore_repo
       - checkout
@@ -132,7 +134,6 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - validate_commit_author
       - checkout_code:
           context: org-global
       - tests:
@@ -150,7 +151,6 @@ workflows:
       - publish:
           context: org-global
           requires:
-            - validate_commit_author
             - checkout_code
           filters:
             branches:
@@ -161,6 +161,5 @@ workflows:
             branches:
               ignore: master
           requires:
-            - validate_commit_author
             - tests
             - checkout_code
