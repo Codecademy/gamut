@@ -109,7 +109,7 @@ jobs:
             fi
       - run:
           name: lerna version
-          command: yarn lerna version --conventional-commits --yes --github-release
+          command: yarn lerna version --include-merged-tags --conventional-commits --yes --github-release
       - run:
           name: lerna publish
           command: yarn lerna publish from-git --yes
@@ -123,7 +123,7 @@ jobs:
       - *set_npm_token
       - run:
           name: lerna version (alpha)
-          command: yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: yarn lerna version prerelease --include-merged-tags --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
