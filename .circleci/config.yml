@@ -33,6 +33,7 @@ references:
     run:
       name: Skip build from automated commit
       command: |
+        echo "Commit started by $CIRCLE_USERNAME"
         if [ $CIRCLE_USERNAME = "circleci" ] ; then circleci step halt ; fi
 
 
