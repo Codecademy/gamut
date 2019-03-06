@@ -181,4 +181,6 @@ workflows:
           context: org-global
       - run_renovate:
           context: org-global
+          requires:
+            - checkout_code
 
