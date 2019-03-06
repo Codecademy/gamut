@@ -137,7 +137,6 @@ jobs:
           command: |
             npx renovate \
               --token="${GH_TOKEN}" \
-              --autodiscover \
               --pr-footer="" \
               --dry-run \
               ${CIRCLE_PROJECT_REPONAME}
