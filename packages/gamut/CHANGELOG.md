@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.8...@codecademy/gamut@1.16.9) (2019-03-06)
+
+
+### Bug Fixes
+
+* Fully reset BaseButton styles ([#166](https://github.com/RyzacInc/gamut/issues/166)) ([6a9ec72](https://github.com/RyzacInc/gamut/commit/6a9ec72))
+
+
+
+
+
 ## [1.16.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.7...@codecademy/gamut@1.16.8) (2019-03-06)
 
 
