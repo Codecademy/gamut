@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.7...@codecademy/gamut@1.16.8) (2019-03-06)
+
+
+### Bug Fixes
+
+* add sideeffects for css and scss ([#157](https://github.com/RyzacInc/gamut/issues/157)) ([c4e06d3](https://github.com/RyzacInc/gamut/commit/c4e06d3))
+
+
+
+
+
 ## [1.16.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.6...@codecademy/gamut@1.16.7) (2019-03-04)
 
 **Note:** Version bump only for package @codecademy/gamut
