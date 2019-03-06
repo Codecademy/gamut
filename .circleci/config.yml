@@ -39,11 +39,6 @@ references:
         if [ $CIRCLE_USERNAME = $GIT_USERNAME ] ; then circleci step halt ; fi
 
 jobs:
-  validate_commit_author:
-    <<: *default_env
-    steps:
-      - *skip_on_automated_commit
-
   checkout_code:
     <<: *default_env
     steps:
@@ -93,7 +88,7 @@ jobs:
   publish:
     <<: *default_env
     steps:
-      - *validate_commit_author
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
@@ -118,7 +113,7 @@ jobs:
   publish_alpha:
     <<: *default_env
     steps:
-      - *validate_commit_author
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
