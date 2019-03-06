@@ -140,6 +140,7 @@ jobs:
               --autodiscover \
               --pr-footer="" \
               --dry-run \
+              ${CIRCLE_PROJECT_REPONAME}
 
 
 workflows:
