@@ -33,9 +33,8 @@ references:
     run:
       name: Skip build from automated commit
       command: |
-        echo "Commit started by $CIRCLE_USERNAME"
+        echo "Build started due to commit by $CIRCLE_USERNAME"
         if [ $CIRCLE_USERNAME = "circleci" ] ; then circleci step halt ; fi
-
 
 jobs:
   validate_commit_author:
