@@ -4,6 +4,8 @@ references:
     docker:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
+    environment:
+      GIT_USERNAME: codecademy-dev
 
   repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ .Branch }}-{{ .Revision }}
   repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ .Branch }}
@@ -29,7 +31,19 @@ references:
       name: Add NPM auth token file
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
+  skip_on_automated_commit: &skip_on_automated_commit
+    run:
+      name: Skip build from automated commit
+      command: |
+        echo "Build started due to commit by $CIRCLE_USERNAME"
+        if [ $CIRCLE_USERNAME = $GIT_USERNAME ] ; then circleci step halt ; fi
+
 jobs:
+  validate_commit_author:
+    <<: *default_env
+    steps:
+      - *skip_on_automated_commit
+
   checkout_code:
     <<: *default_env
     steps:
@@ -89,8 +103,10 @@ jobs:
       - run:
           name: commit storybook changes
           command: |
-            git add -A
-            git commit -am "chore: build storybook [ci skip]"
+            if [ -n "$(git status --porcelain)" ]; then
+              git add -A
+              git commit -am "chore: build storybook"
+            fi
       - run:
           name: lerna version
           command: yarn lerna version --conventional-commits --yes --github-release
@@ -116,6 +132,7 @@ workflows:
   version: 2
   build-test:
     jobs:
+      - validate_commit_author
       - checkout_code:
           context: org-global
       - tests:
@@ -133,6 +150,7 @@ workflows:
       - publish:
           context: org-global
           requires:
+            - validate_commit_author
             - checkout_code
           filters:
             branches:
@@ -143,5 +161,6 @@ workflows:
             branches:
               ignore: master
           requires:
+            - validate_commit_author
             - tests
             - checkout_code
