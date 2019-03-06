@@ -1,18 +1,7 @@
 import React, { ReactElement, FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/index.scss';
 import Tab from '../Tab';
-
-const propTypes = {
-  activeTabIndex: PropTypes.number.isRequired,
-  center: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  createBaseId: PropTypes.func.isRequired,
-  maxWidth: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-};
 
 export type TabListProps = {
   activeTabIndex: number;
