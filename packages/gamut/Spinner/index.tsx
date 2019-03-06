@@ -1,5 +1,4 @@
 import React, { SVGProps, FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
