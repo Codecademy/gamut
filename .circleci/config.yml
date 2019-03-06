@@ -136,9 +136,9 @@ jobs:
           name: renovate
           command: |
             npx renovate \
-              --token="$GH_TOKEN" \
+              --token="${GH_TOKEN}" \
               --pr-footer="" \
-              --dryRun \
+              --dry-run \
 
 
 workflows:
