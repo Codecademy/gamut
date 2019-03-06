@@ -38,6 +38,7 @@ references:
 
 jobs:
   check_valid_commit_author:
+    <<: *default_env
     steps:
       - *skip_on_automated_commit
 
