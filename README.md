@@ -59,15 +59,29 @@ Commits follow the [Angular format](https://github.com/angular/angular/blob/mast
 
 ### Commit Format
 
+The squash and merge commit should follow a convention:
+
 ```
-type(scope): Message
-
-Body
-
-Footer
+type(scope): message
 ```
 
+Examples:
+
+```
+fix: fixes some component
+```
+
+```
+test: adds test to component
+```
+
+```
 feat(component): :sparkles: An awesome new component
+```
+
+This message should go inside the title field of the message:
+
+![screen shot 2019-03-04 at 10 41 07 am](https://user-images.githubusercontent.com/6455018/53745157-79101d00-3e6c-11e9-9b5f-e35582106b31.png)
 
 **Type**
 
