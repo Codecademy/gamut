@@ -132,13 +132,13 @@ jobs:
     steps:
       - *set_git_user
       - *restore_repo
-      run:
-        name: renovate
-        command: |
-          npx renovate \
-            --token="$GH_TOKEN" \
-            --pr-footer="" \
-            --dryRun \
+      - run:
+          name: renovate
+          command: |
+            npx renovate \
+              --token="$GH_TOKEN" \
+              --pr-footer="" \
+              --dryRun \
 
 
 workflows:
