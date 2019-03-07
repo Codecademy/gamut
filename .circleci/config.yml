@@ -131,15 +131,14 @@ jobs:
     working_directory: ~/repo
     environment:
       RENOVATE_CONFIG_FILE: './.circleci/renovate.js'
+      RENOVATE_TOKEN: ${GH_TOKEN}
     steps:
       - *set_git_user
       - *restore_repo
       - run:
           name: renovate
           command: |
-            npx renovate \
-              --token="${GH_TOKEN}" \
-              --dry-run
+            npx renovate --dry-run
 
 workflows:
   version: 2
