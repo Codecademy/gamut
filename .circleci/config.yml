@@ -137,8 +137,7 @@ jobs:
       - run:
           name: renovate
           command: |
-            RENOVATE_TOKEN="${GH_TOKEN}"
-            npx renovate --dry-run
+            RENOVATE_TOKEN="${GH_TOKEN}" npx renovate --dry-run
 
 workflows:
   version: 2
