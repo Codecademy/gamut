@@ -130,7 +130,7 @@ jobs:
       - image: circleci/node:10.13.0
     working_directory: ~/repo
     environment:
-      RENOVATE_CONFIG_FILE: './renovate.js'
+      RENOVATE_CONFIG_FILE: './.circleci/renovate.js'
     steps:
       - *set_git_user
       - *restore_repo
