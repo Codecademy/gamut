@@ -5,8 +5,12 @@
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  user-select: none;
   font-family: inherit;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0 0.3rem;
+  margin: 0;
 
   &,
   &:active {
@@ -37,6 +41,7 @@
   text-decoration: none;
   vertical-align: baseline;
   cursor: pointer;
+
   &,
   &:active,
   &:disabled {

@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.8...@codecademy/gamut@1.16.9) (2019-03-06)
+
+
+### Bug Fixes
+
+* Fully reset BaseButton styles ([#166](https://github.com/RyzacInc/gamut/issues/166)) ([6a9ec72](https://github.com/RyzacInc/gamut/commit/6a9ec72))
+
+
+
+
+
+## [1.16.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.7...@codecademy/gamut@1.16.8) (2019-03-06)
+
+
+### Bug Fixes
+
+* add sideeffects for css and scss ([#157](https://github.com/RyzacInc/gamut/issues/157)) ([c4e06d3](https://github.com/RyzacInc/gamut/commit/c4e06d3))
+
+
+
+
+
+## [1.16.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.6...@codecademy/gamut@1.16.7) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.5...@codecademy/gamut@1.16.6) (2019-03-04)
+
+
+### Bug Fixes
+
+* remove all unused local variables ([#208](https://github.com/RyzacInc/gamut/issues/208)) ([ccc044a](https://github.com/RyzacInc/gamut/commit/ccc044a))
+
+
+
+
+
+## [1.16.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.4...@codecademy/gamut@1.16.5) (2019-03-04)
+
+
+### Bug Fixes
+
+* fixes phone icon size ([4d2e0de](https://github.com/RyzacInc/gamut/commit/4d2e0de))
+
+
+
+
+
+## [1.16.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.3...@codecademy/gamut@1.16.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [1.16.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.2...@codecademy/gamut@1.16.3) (2019-03-01)
 
 **Note:** Version bump only for package @codecademy/gamut
