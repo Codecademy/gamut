@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
-  colors2019,
   colors,
-  gamutColors,
-  editorColors,
+  deprecatedColors,
+  deprecatedGamutColors,
+  deprecatedEditorColors,
   brandColors,
 } from '@codecademy/gamut-styles/utils/variables';
 import { Container } from '@codecademy/gamut/FlexBox';
@@ -61,91 +61,32 @@ const renderSwatches = (data, variablePrefix) =>
 const stories = storiesOf('Visuals/Colors', module);
 
 stories.add(
-  'Colors (Mar 2019)',
+  'Colors',
   () => {
     const base = {
-      black: colors2019.black,
-      white: colors2019.white,
-      beige: colors2019.beige,
-      royalBlue: colors2019.royalBlue,
+      black: colors.black,
+      white: colors.white,
+      beige: colors.beige,
+      royalBlue: colors.royalBlue,
     };
 
     return (
       <Container>
-        {Object.keys(colors2019)
+        {Object.keys(colors)
           .filter(color => !Object.keys(base).includes(color))
           .map(color => (
             <div key={color}>
-              <h2 className={s.heading}>{parseCamelCase(color)}</h2>
-              {renderSwatches(colors2019[color], color)}
+              <h2 className={s.heading}>{parseCamelCase(`color-${color}`)}</h2>
+              {renderSwatches(colors[color], `color-${color}`)}
             </div>
           ))}
         {Object.keys(base).map(color => (
           <div key={color}>
-            <h2 className={s.heading}>{parseCamelCase(color)}</h2>
-            {renderSwatch(color, base[color])}
+            <h2 className={s.heading}>{parseCamelCase(`color-${color}`)}</h2>
+            {renderSwatch(`color-${parseCamelCase(color)}`, base[color])}
           </div>
         ))}
       </Container>
-    );
-  },
-  infoOptions
-);
-
-stories.add(
-  'Portal (Nov 2017)',
-  () => (
-    <Container>
-      <div>
-        <h2 className={s.heading}>portal base colors</h2>
-        {renderSwatches(colors.portal)}
-      </div>
-      {Object.keys(colors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={s.heading}>{parseCamelCase(color)}</h2>
-          {renderSwatches(colors.swatches[color], `swatches-${color}`)}
-        </div>
-      ))}
-    </Container>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Gamut (Nov 2017)',
-  () => (
-    <Container>
-      <div>
-        <h2 className={s.heading}>gamut base colors</h2>
-        {renderSwatches(gamutColors.base, 'gamut')}
-      </div>
-      {Object.keys(gamutColors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={s.heading}>{parseCamelCase(`gamut-${color}`)}</h2>
-          {renderSwatches(gamutColors.swatches[color], `gamut-${color}`)}
-        </div>
-      ))}
-    </Container>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Editor (Not in Use)',
-  () => {
-    const { white, black, ...platformRest } = editorColors;
-    return (
-      <div>
-        <h2 className={s.heading}>editor colors</h2>
-        {renderSwatches(
-          {
-            white,
-            black,
-          },
-          'swatches-basic'
-        )}
-        {renderSwatches(platformRest, 'swatches-code')}
-      </div>
     );
   },
   infoOptions
@@ -159,5 +100,72 @@ stories.add(
       {renderSwatches(brandColors, 'Brand')}
     </div>
   ),
+  infoOptions
+);
+
+stories.add(
+  'Gamut (deprecated)',
+  () => (
+    <Container>
+      <div>
+        <h2 className={s.heading}>deprecated gamut base colors</h2>
+        {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
+      </div>
+      {Object.keys(deprecatedGamutColors.swatches).map(color => (
+        <div key={color}>
+          <h2 className={s.heading}>
+            {parseCamelCase(`deprecated-gamut-${color}`)}
+          </h2>
+          {renderSwatches(
+            deprecatedGamutColors.swatches[color],
+            `deprecated-gamut-${color}`
+          )}
+        </div>
+      ))}
+    </Container>
+  ),
+  infoOptions
+);
+
+stories.add(
+  'Portal (deprecated)',
+  () => (
+    <Container>
+      <div>
+        <h2 className={s.heading}>deprecated portal base colors</h2>
+        {renderSwatches(deprecatedColors.portal)}
+      </div>
+      {Object.keys(deprecatedColors.swatches).map(color => (
+        <div key={color}>
+          <h2 className={s.heading}>{parseCamelCase(color)}</h2>
+          {renderSwatches(
+            deprecatedColors.swatches[color],
+            `swatches-${color}`
+          )}
+        </div>
+      ))}
+    </Container>
+  ),
+  infoOptions
+);
+
+stories.add(
+  'Editor (deprecated)',
+  () => {
+    const { white, black, ...platformRest } = deprecatedEditorColors;
+    return (
+      <div>
+        <h2 className={s.heading}>deprecated editor colors</h2>
+        {renderSwatches(
+          {
+            white,
+            black,
+          },
+          'swatches-basic'
+        )}
+        {renderSwatches(platformRest, 'swatches-code')}
+      </div>
+    );
+  },
   infoOptions
 );

@@ -108,17 +108,17 @@ input[type="button"] {
 
 @keyframes lantern-pulse {
   0% {
-    background-color: rgba($color-mint, 0.2);
+    background-color: rgba($deprecated-color-mint, 0.2);
   }
   100% {
-    background-color: rgba($color-mint, 0.5);
+    background-color: rgba($deprecated-color-mint, 0.5);
   }
 }
 
 .go {
   // lantern
   &.btn-darkmint {
-    background-color: rgba($color-mint, 0.5);
+    background-color: rgba($deprecated-color-mint, 0.5);
     animation: lantern-pulse 2s infinite ease;
     animation-direction: alternate;
 

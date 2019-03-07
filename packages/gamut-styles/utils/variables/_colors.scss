@@ -1,95 +1,88 @@
 // NOTE: When updating, make sure you also update the gamut-styles/variables/index.js file
 
 // =======================================
-//     03-01-2019 COLORS
+//      COLORS
 // =======================================
 
-$blue-100: #c8d7fa;
-$blue-200: #a5befa;
-$blue-300: #7da2fa;
-$blue-400: #5788fa;
-$blue-500: #3069f0;
-$blue-600: #2d5dcc;
-$blue-700: #2e4a99;
-$blue-800: #233466;
-$blue-900: #141e3b;
-$blue-1000: #10162f;
-$blue-1100: #0a0e1d;
+$color-blue-100: #c8d7fa;
+$color-blue-200: #a5befa;
+$color-blue-300: #7da2fa;
+$color-blue-400: #5788fa;
+$color-blue-500: #3069f0;
+$color-blue-600: #2d5dcc;
+$color-blue-700: #2e4a99;
+$color-blue-800: #233466;
+$color-blue-900: #141e3b;
+$color-blue-1000: #10162f;
+$color-blue-1100: #0a0e1d;
 
-$pink-100: #ffd9fc;
-$pink-200: #ffbffa;
-$pink-300: #ffa6f8;
-$pink-400: #f288e9;
-$pink-500: #d957d9;
-$pink-600: #b035c9;
-$pink-700: #9129a6;
-$pink-800: #702080;
-$pink-900: #43134d;
+$color-pink-100: #ffd9fc;
+$color-pink-200: #ffbffa;
+$color-pink-300: #ffa6f8;
+$color-pink-400: #f288e9;
+$color-pink-500: #d957d9;
+$color-pink-600: #b035c9;
+$color-pink-700: #9129a6;
+$color-pink-800: #702080;
+$color-pink-900: #43134d;
 
-$purple-100: #d5ccff;
-$purple-200: #c0b6f2;
-$purple-300: #ac9df2;
-$purple-400: #917ef2;
-$purple-500: #7c5ce6;
-$purple-600: #6437cc;
-$purple-700: #4b2999;
-$purple-800: #381f73;
-$purple-900: #231347;
+$color-purple-100: #d5ccff;
+$color-purple-200: #c0b6f2;
+$color-purple-300: #ac9df2;
+$color-purple-400: #917ef2;
+$color-purple-500: #7c5ce6;
+$color-purple-600: #6437cc;
+$color-purple-700: #4b2999;
+$color-purple-800: #381f73;
+$color-purple-900: #231347;
 
-$red-100: #ffd3cc;
-$red-200: #ffb8ad;
-$red-300: #ff988c;
-$red-400: #ff7566;
-$red-500: #fd4d3f;
-$red-600: #e53935;
-$red-700: #bf2e2c;
-$red-800: #992523;
-$red-900: #661917;
+$color-red-100: #ffd3cc;
+$color-red-200: #ffb8ad;
+$color-red-300: #ff988c;
+$color-red-400: #ff7566;
+$color-red-500: #fd4d3f;
+$color-red-600: #e53935;
+$color-red-700: #bf2e2c;
+$color-red-800: #992523;
+$color-red-900: #661917;
 
-$green-100: #bbfae5;
-$green-200: #91f2d2;
-$green-300: #6aebc0;
-$green-400: #4fe0b0;
-$green-500: #47cca0;
-$green-600: #3eb38c;
-$green-700: #318c6e;
-$green-800: #246650;
-$green-900: #164032;
+$color-green-100: #bbfae5;
+$color-green-200: #91f2d2;
+$color-green-300: #6aebc0;
+$color-green-400: #4fe0b0;
+$color-green-500: #47cca0;
+$color-green-600: #3eb38c;
+$color-green-700: #318c6e;
+$color-green-800: #246650;
+$color-green-900: #164032;
 
-$yellow-100: #fff7cc;
-$yellow-200: #fff2b3;
-$yellow-300: #ffec8c;
-$yellow-400: #ffe359;
-$yellow-500: #ffd500;
-$yellow-600: #ffb92e;
-$yellow-700: #e69729;
-$yellow-800: #b37620;
-$yellow-900: #805417;
+$color-yellow-100: #fff7cc;
+$color-yellow-200: #fff2b3;
+$color-yellow-300: #ffec8c;
+$color-yellow-400: #ffe359;
+$color-yellow-500: #ffd500;
+$color-yellow-600: #ffb92e;
+$color-yellow-700: #e69729;
+$color-yellow-800: #b37620;
+$color-yellow-900: #805417;
 
-$gray-100: #f6f5fa;
-$gray-200: #dddce0;
-$gray-300: #c4c3c7;
-$gray-400: #a2a2a6;
-$gray-500: #828285;
-$gray-600: #646466;
-$gray-700: #4b4b4d;
-$gray-800: #323233;
-$gray-900: #19191a;
-
-$white: #ffffff;
-$black: #000000;
-$beige: #efd9ca;
-$royal-blue: #6400e4;
-
-// =======================================
-//     03-02-2018 BASIC COLORS
-// =======================================
+$color-gray-100: #f6f5fa;
+$color-gray-200: #dddce0;
+$color-gray-300: #c4c3c7;
+$color-gray-400: #a2a2a6;
+$color-gray-500: #828285;
+$color-gray-600: #646466;
+$color-gray-700: #4b4b4d;
+$color-gray-800: #323233;
+$color-gray-900: #19191a;
 
 $color-white: #ffffff;
 $color-black: #000000;
+$color-beige: #efd9ca;
+$color-royal-blue: #6400e4;
 
 // =======================================
-//      04-30-2018 BRAND COLORS
+//      BRAND COLORS
 // =======================================
 
 $brand-red: #fd4d3f;
@@ -101,211 +94,313 @@ $brand-beige: #efd9ca;
 $brand-dark-blue: #141c3a;
 
 // =======================================
-//    11-27-2017 DESIGN SYSTEM SWATCHES
+//    Nov 2017 DESIGN SYSTEM SWATCHES
 // =======================================
 
-$gamut-purple-500: #69639a;
+$deprecated-color-white: #ffffff;
+$deprecated-color-black: #000000;
 
-$gamut-purple-100: mix($color-white, $gamut-purple-500, 80%);
-$gamut-purple-200: mix($color-white, $gamut-purple-500, 60%);
-$gamut-purple-300: mix($color-white, $gamut-purple-500, 40%);
-$gamut-purple-400: mix($color-white, $gamut-purple-500, 20%);
-$gamut-purple-600: mix($color-black, $gamut-purple-500, 20%);
-$gamut-purple-700: mix($color-black, $gamut-purple-500, 40%);
-$gamut-purple-800: mix($color-black, $gamut-purple-500, 60%);
-$gamut-purple-900: mix($color-black, $gamut-purple-500, 80%);
+$deprecated-gamut-purple-500: #69639a;
 
-$gamut-royal-blue-500: #4b35ef;
+$deprecated-gamut-purple-100: mix(
+  $color-white,
+  $deprecated-gamut-purple-500,
+  80%
+);
+$deprecated-gamut-purple-200: mix(
+  $color-white,
+  $deprecated-gamut-purple-500,
+  60%
+);
+$deprecated-gamut-purple-300: mix(
+  $color-white,
+  $deprecated-gamut-purple-500,
+  40%
+);
+$deprecated-gamut-purple-400: mix(
+  $color-white,
+  $deprecated-gamut-purple-500,
+  20%
+);
+$deprecated-gamut-purple-600: mix(
+  $color-black,
+  $deprecated-gamut-purple-500,
+  20%
+);
+$deprecated-gamut-purple-700: mix(
+  $color-black,
+  $deprecated-gamut-purple-500,
+  40%
+);
+$deprecated-gamut-purple-800: mix(
+  $color-black,
+  $deprecated-gamut-purple-500,
+  60%
+);
+$deprecated-gamut-purple-900: mix(
+  $color-black,
+  $deprecated-gamut-purple-500,
+  80%
+);
 
-$gamut-royal-blue-100: mix($color-white, $gamut-royal-blue-500, 80%);
-$gamut-royal-blue-200: mix($color-white, $gamut-royal-blue-500, 60%);
-$gamut-royal-blue-300: mix($color-white, $gamut-royal-blue-500, 40%);
-$gamut-royal-blue-400: mix($color-white, $gamut-royal-blue-500, 20%);
-$gamut-royal-blue-600: mix($color-black, $gamut-royal-blue-500, 20%);
-$gamut-royal-blue-700: mix($color-black, $gamut-royal-blue-500, 40%);
-$gamut-royal-blue-800: mix($color-black, $gamut-royal-blue-500, 60%);
-$gamut-royal-blue-900: mix($color-black, $gamut-royal-blue-500, 80%);
+$deprecated-gamut-royal-blue-500: #4b35ef;
 
-$gamut-blue-500: #4c7ef3;
+$deprecated-gamut-royal-blue-100: mix(
+  $color-white,
+  $deprecated-gamut-royal-blue-500,
+  80%
+);
+$deprecated-gamut-royal-blue-200: mix(
+  $color-white,
+  $deprecated-gamut-royal-blue-500,
+  60%
+);
+$deprecated-gamut-royal-blue-300: mix(
+  $color-white,
+  $deprecated-gamut-royal-blue-500,
+  40%
+);
+$deprecated-gamut-royal-blue-400: mix(
+  $color-white,
+  $deprecated-gamut-royal-blue-500,
+  20%
+);
+$deprecated-gamut-royal-blue-600: mix(
+  $color-black,
+  $deprecated-gamut-royal-blue-500,
+  20%
+);
+$deprecated-gamut-royal-blue-700: mix(
+  $color-black,
+  $deprecated-gamut-royal-blue-500,
+  40%
+);
+$deprecated-gamut-royal-blue-800: mix(
+  $color-black,
+  $deprecated-gamut-royal-blue-500,
+  60%
+);
+$deprecated-gamut-royal-blue-900: mix(
+  $color-black,
+  $deprecated-gamut-royal-blue-500,
+  80%
+);
 
-$gamut-blue-100: mix($color-white, $gamut-blue-500, 80%);
-$gamut-blue-200: mix($color-white, $gamut-blue-500, 60%);
-$gamut-blue-300: mix($color-white, $gamut-blue-500, 40%);
-$gamut-blue-400: mix($color-white, $gamut-blue-500, 20%);
-$gamut-blue-600: mix($color-black, $gamut-blue-500, 20%);
-$gamut-blue-700: mix($color-black, $gamut-blue-500, 40%);
-$gamut-blue-800: mix($color-black, $gamut-blue-500, 60%);
-$gamut-blue-900: mix($color-black, $gamut-blue-500, 80%);
+$deprecated-gamut-blue-500: #4c7ef3;
 
-$gamut-red-500: #fa4359;
+$deprecated-gamut-blue-100: mix($color-white, $deprecated-gamut-blue-500, 80%);
+$deprecated-gamut-blue-200: mix($color-white, $deprecated-gamut-blue-500, 60%);
+$deprecated-gamut-blue-300: mix($color-white, $deprecated-gamut-blue-500, 40%);
+$deprecated-gamut-blue-400: mix($color-white, $deprecated-gamut-blue-500, 20%);
+$deprecated-gamut-blue-600: mix($color-black, $deprecated-gamut-blue-500, 20%);
+$deprecated-gamut-blue-700: mix($color-black, $deprecated-gamut-blue-500, 40%);
+$deprecated-gamut-blue-800: mix($color-black, $deprecated-gamut-blue-500, 60%);
+$deprecated-gamut-blue-900: mix($color-black, $deprecated-gamut-blue-500, 80%);
 
-$gamut-red-100: mix($color-white, $gamut-red-500, 80%);
-$gamut-red-200: mix($color-white, $gamut-red-500, 60%);
-$gamut-red-300: mix($color-white, $gamut-red-500, 40%);
-$gamut-red-400: mix($color-white, $gamut-red-500, 20%);
-$gamut-red-600: mix($color-black, $gamut-red-500, 20%);
-$gamut-red-700: mix($color-black, $gamut-red-500, 40%);
-$gamut-red-800: mix($color-black, $gamut-red-500, 60%);
-$gamut-red-900: mix($color-black, $gamut-red-500, 80%);
+$deprecated-gamut-red-500: #fa4359;
 
-$gamut-mint-500: #37c3be;
+$deprecated-gamut-red-100: mix($color-white, $deprecated-gamut-red-500, 80%);
+$deprecated-gamut-red-200: mix($color-white, $deprecated-gamut-red-500, 60%);
+$deprecated-gamut-red-300: mix($color-white, $deprecated-gamut-red-500, 40%);
+$deprecated-gamut-red-400: mix($color-white, $deprecated-gamut-red-500, 20%);
+$deprecated-gamut-red-600: mix($color-black, $deprecated-gamut-red-500, 20%);
+$deprecated-gamut-red-700: mix($color-black, $deprecated-gamut-red-500, 40%);
+$deprecated-gamut-red-800: mix($color-black, $deprecated-gamut-red-500, 60%);
+$deprecated-gamut-red-900: mix($color-black, $deprecated-gamut-red-500, 80%);
 
-$gamut-mint-100: mix($color-white, $gamut-mint-500, 80%);
-$gamut-mint-200: mix($color-white, $gamut-mint-500, 60%);
-$gamut-mint-300: mix($color-white, $gamut-mint-500, 40%);
-$gamut-mint-400: mix($color-white, $gamut-mint-500, 20%);
-$gamut-mint-600: mix($color-black, $gamut-mint-500, 20%);
-$gamut-mint-700: mix($color-black, $gamut-mint-500, 40%);
-$gamut-mint-800: mix($color-black, $gamut-mint-500, 60%);
-$gamut-mint-900: mix($color-black, $gamut-mint-500, 80%);
+$deprecated-gamut-mint-500: #37c3be;
 
-$gamut-yellow-500: #ffc107;
+$deprecated-gamut-mint-100: mix($color-white, $deprecated-gamut-mint-500, 80%);
+$deprecated-gamut-mint-200: mix($color-white, $deprecated-gamut-mint-500, 60%);
+$deprecated-gamut-mint-300: mix($color-white, $deprecated-gamut-mint-500, 40%);
+$deprecated-gamut-mint-400: mix($color-white, $deprecated-gamut-mint-500, 20%);
+$deprecated-gamut-mint-600: mix($color-black, $deprecated-gamut-mint-500, 20%);
+$deprecated-gamut-mint-700: mix($color-black, $deprecated-gamut-mint-500, 40%);
+$deprecated-gamut-mint-800: mix($color-black, $deprecated-gamut-mint-500, 60%);
+$deprecated-gamut-mint-900: mix($color-black, $deprecated-gamut-mint-500, 80%);
 
-$gamut-yellow-100: mix($color-white, $gamut-yellow-500, 80%);
-$gamut-yellow-200: mix($color-white, $gamut-yellow-500, 60%);
-$gamut-yellow-300: mix($color-white, $gamut-yellow-500, 40%);
-$gamut-yellow-400: mix($color-white, $gamut-yellow-500, 20%);
-$gamut-yellow-600: mix($color-black, $gamut-yellow-500, 20%);
-$gamut-yellow-700: mix($color-black, $gamut-yellow-500, 40%);
-$gamut-yellow-800: mix($color-black, $gamut-yellow-500, 60%);
-$gamut-yellow-900: mix($color-black, $gamut-yellow-500, 80%);
+$deprecated-gamut-yellow-500: #ffc107;
 
-$gamut-grey-500: #ccc;
+$deprecated-gamut-yellow-100: mix(
+  $color-white,
+  $deprecated-gamut-yellow-500,
+  80%
+);
+$deprecated-gamut-yellow-200: mix(
+  $color-white,
+  $deprecated-gamut-yellow-500,
+  60%
+);
+$deprecated-gamut-yellow-300: mix(
+  $color-white,
+  $deprecated-gamut-yellow-500,
+  40%
+);
+$deprecated-gamut-yellow-400: mix(
+  $color-white,
+  $deprecated-gamut-yellow-500,
+  20%
+);
+$deprecated-gamut-yellow-600: mix(
+  $color-black,
+  $deprecated-gamut-yellow-500,
+  20%
+);
+$deprecated-gamut-yellow-700: mix(
+  $color-black,
+  $deprecated-gamut-yellow-500,
+  40%
+);
+$deprecated-gamut-yellow-800: mix(
+  $color-black,
+  $deprecated-gamut-yellow-500,
+  60%
+);
+$deprecated-gamut-yellow-900: mix(
+  $color-black,
+  $deprecated-gamut-yellow-500,
+  80%
+);
 
-$gamut-grey-100: mix($color-white, $gamut-grey-500, 80%);
-$gamut-grey-200: mix($color-white, $gamut-grey-500, 60%);
-$gamut-grey-300: mix($color-white, $gamut-grey-500, 40%);
-$gamut-grey-400: mix($color-white, $gamut-grey-500, 20%);
-$gamut-grey-600: mix($color-black, $gamut-grey-500, 20%);
-$gamut-grey-700: mix($color-black, $gamut-grey-500, 40%);
-$gamut-grey-800: mix($color-black, $gamut-grey-500, 60%);
-$gamut-grey-900: mix($color-black, $gamut-grey-500, 80%);
+$deprecated-gamut-grey-500: #ccc;
+
+$deprecated-gamut-grey-100: mix($color-white, $deprecated-gamut-grey-500, 80%);
+$deprecated-gamut-grey-200: mix($color-white, $deprecated-gamut-grey-500, 60%);
+$deprecated-gamut-grey-300: mix($color-white, $deprecated-gamut-grey-500, 40%);
+$deprecated-gamut-grey-400: mix($color-white, $deprecated-gamut-grey-500, 20%);
+$deprecated-gamut-grey-600: mix($color-black, $deprecated-gamut-grey-500, 20%);
+$deprecated-gamut-grey-700: mix($color-black, $deprecated-gamut-grey-500, 40%);
+$deprecated-gamut-grey-800: mix($color-black, $deprecated-gamut-grey-500, 60%);
+$deprecated-gamut-grey-900: mix($color-black, $deprecated-gamut-grey-500, 80%);
+
+$deprecated-gamut-black: #000;
+$deprecated-gamut-white: #fff;
 
 // =======================================
 //     11-28-2017 DESIGN SYSTEM COLORS
 // =======================================
 
-$gamut-white: $color-white;
-$gamut-black: $color-black;
-$gamut-purple: $gamut-purple-500;
-$gamut-royal-blue: $gamut-royal-blue-500;
-$gamut-blue: $gamut-blue-500;
-$gamut-red: $gamut-red-500;
-$gamut-mint: $gamut-mint-500;
-$gamut-yellow: $gamut-yellow-500;
-$gamut-grey: $gamut-grey-500;
+$deprecated-gamut-white: $color-white;
+$deprecated-gamut-black: $color-black;
+$deprecated-gamut-purple: $deprecated-gamut-purple-500;
+$deprecated-gamut-royal-blue: $deprecated-gamut-royal-blue-500;
+$deprecated-gamut-blue: $deprecated-gamut-blue-500;
+$deprecated-gamut-red: $deprecated-gamut-red-500;
+$deprecated-gamut-mint: $deprecated-gamut-mint-500;
+$deprecated-gamut-yellow: $deprecated-gamut-yellow-500;
+$deprecated-gamut-grey: $deprecated-gamut-grey-500;
 
 // =======================================
 //      11-03-2017 PORTAL COLORS
 // =======================================
 
-$color-grey-1: #e9eaea;
-$color-grey-2: #d4d5d6;
-$color-grey-3: #bebfc1;
-$color-grey-4: #939598;
-$color-grey-5: #3e3e40;
-$color-blue: #52b1db;
-$color-darkblue: #204056;
-$color-midnightblue: #152b39;
-$color-mint: #34b3a0;
-$color-red: #f65a5b;
+$deprecated-color-grey-1: #e9eaea;
+$deprecated-color-grey-2: #d4d5d6;
+$deprecated-color-grey-3: #bebfc1;
+$deprecated-color-grey-4: #939598;
+$deprecated-color-grey-5: #3e3e40;
+$deprecated-color-blue: #52b1db;
+$deprecated-color-darkblue: #204056;
+$deprecated-color-midnightblue: #152b39;
+$deprecated-color-mint: #34b3a0;
+$deprecated-color-red: #f65a5b;
 
 // =======================================
 //      11-03-2017 PLATFORM COLORS
 // =======================================
 
-$swatches-basic-black: $color-black;
-$swatches-basic-white: $color-white;
-$swatches-code-default: $color-white;
-$swatches-code-atom: #ff7155;
-$swatches-code-attribute: #ceff00;
-$swatches-code-builtin: #ddda6f;
-$swatches-code-comment: #737887;
-$swatches-code-def: #b5a1a1;
-$swatches-code-error: #e83131;
-$swatches-code-keyword: #64ffe1;
-$swatches-code-meta: #d478ea;
-$swatches-code-number: #ef9eb4;
-$swatches-code-operator: #b5a1a1;
-$swatches-code-property: #9771ff;
-$swatches-code-qualifier: #fff543;
-$swatches-code-string-1: #ffde52;
-$swatches-code-string-2: #ac99bf;
-$swatches-code-tag: #e85d7f;
-$swatches-code-variable-1: #249cff;
-$swatches-code-variable-2: #57ff93;
-$swatches-code-variable-3: #5affef;
+$deprecated-swatches-basic-black: $color-black;
+$deprecated-swatches-basic-white: $color-white;
+$deprecated-swatches-code-default: $color-white;
+$deprecated-swatches-code-atom: #ff7155;
+$deprecated-swatches-code-attribute: #ceff00;
+$deprecated-swatches-code-builtin: #ddda6f;
+$deprecated-swatches-code-comment: #737887;
+$deprecated-swatches-code-def: #b5a1a1;
+$deprecated-swatches-code-error: #e83131;
+$deprecated-swatches-code-keyword: #64ffe1;
+$deprecated-swatches-code-meta: #d478ea;
+$deprecated-swatches-code-number: #ef9eb4;
+$deprecated-swatches-code-operator: #b5a1a1;
+$deprecated-swatches-code-property: #9771ff;
+$deprecated-swatches-code-qualifier: #fff543;
+$deprecated-swatches-code-string-1: #ffde52;
+$deprecated-swatches-code-string-2: #ac99bf;
+$deprecated-swatches-code-tag: #e85d7f;
+$deprecated-swatches-code-variable-1: #249cff;
+$deprecated-swatches-code-variable-2: #57ff93;
+$deprecated-swatches-code-variable-3: #5affef;
 
 // =======================================
 //       11-03-2017 COLOR SWATCHES
 // =======================================
 
-$swatches-blue-100: #dceff8;
-$swatches-blue-200: #bae0f1;
-$swatches-blue-300: #97d0e9;
-$swatches-blue-400: #75c1e2;
-$swatches-blue-500: #52b1db;
-$swatches-blue-600: #4292b4;
-$swatches-blue-700: #32728d;
-$swatches-blue-800: #215366;
-$swatches-blue-900: #11333f;
+$deprecated-swatches-blue-100: #dceff8;
+$deprecated-swatches-blue-200: #bae0f1;
+$deprecated-swatches-blue-300: #97d0e9;
+$deprecated-swatches-blue-400: #75c1e2;
+$deprecated-swatches-blue-500: #52b1db;
+$deprecated-swatches-blue-600: #4292b4;
+$deprecated-swatches-blue-700: #32728d;
+$deprecated-swatches-blue-800: #215366;
+$deprecated-swatches-blue-900: #11333f;
 
-$swatches-cc-blue-100: #d3dde2;
-$swatches-cc-blue-200: #a7bbc6;
-$swatches-cc-blue-300: #7a98a9;
-$swatches-cc-blue-400: #4e768d;
-$swatches-cc-blue-500: #225470;
-$swatches-cc-blue-600: #214a63;
-$swatches-cc-blue-700: #204056;
-$swatches-cc-blue-800: #163142;
-$swatches-cc-blue-900: #0d222d;
+$deprecated-swatches-cc-blue-100: #d3dde2;
+$deprecated-swatches-cc-blue-200: #a7bbc6;
+$deprecated-swatches-cc-blue-300: #7a98a9;
+$deprecated-swatches-cc-blue-400: #4e768d;
+$deprecated-swatches-cc-blue-500: #225470;
+$deprecated-swatches-cc-blue-600: #214a63;
+$deprecated-swatches-cc-blue-700: #204056;
+$deprecated-swatches-cc-blue-800: #163142;
+$deprecated-swatches-cc-blue-900: #0d222d;
 
-$swatches-grey-blue-100: #eef0f1;
-$swatches-grey-blue-200: #bcc1c5;
-$swatches-grey-blue-300: #9aa2a8;
-$swatches-grey-blue-400: #78838b;
-$swatches-grey-blue-500: #57646e;
-$swatches-grey-blue-600: #354551;
-$swatches-grey-blue-700: #253845;
-$swatches-grey-blue-800: #152b39;
-$swatches-grey-blue-900: #0b161d;
+$deprecated-swatches-grey-blue-100: #eef0f1;
+$deprecated-swatches-grey-blue-200: #bcc1c5;
+$deprecated-swatches-grey-blue-300: #9aa2a8;
+$deprecated-swatches-grey-blue-400: #78838b;
+$deprecated-swatches-grey-blue-500: #57646e;
+$deprecated-swatches-grey-blue-600: #354551;
+$deprecated-swatches-grey-blue-700: #253845;
+$deprecated-swatches-grey-blue-800: #152b39;
+$deprecated-swatches-grey-blue-900: #0b161d;
 
-$swatches-grey-100: #e9eaea;
-$swatches-grey-200: #d4d5d6;
-$swatches-grey-300: #bebfc1;
-$swatches-grey-400: #a9aaad;
-$swatches-grey-500: #939598;
-$swatches-grey-600: #76787b;
-$swatches-grey-700: #5a5b5e;
-$swatches-grey-800: #3e3e40;
-$swatches-grey-900: #212123;
+$deprecated-swatches-grey-100: #e9eaea;
+$deprecated-swatches-grey-200: #d4d5d6;
+$deprecated-swatches-grey-300: #bebfc1;
+$deprecated-swatches-grey-400: #a9aaad;
+$deprecated-swatches-grey-500: #939598;
+$deprecated-swatches-grey-600: #76787b;
+$deprecated-swatches-grey-700: #5a5b5e;
+$deprecated-swatches-grey-800: #3e3e40;
+$deprecated-swatches-grey-900: #212123;
 
-$swatches-mint-100: #d7f6f0;
-$swatches-mint-200: #b0ede1;
-$swatches-mint-300: #88e3d2;
-$swatches-mint-400: #61dac3;
-$swatches-mint-500: #39d1b4;
-$swatches-mint-600: #37c2aa;
-$swatches-mint-700: #34b3a0;
-$swatches-mint-800: #1a7b72;
-$swatches-mint-900: #044;
+$deprecated-swatches-mint-100: #d7f6f0;
+$deprecated-swatches-mint-200: #b0ede1;
+$deprecated-swatches-mint-300: #88e3d2;
+$deprecated-swatches-mint-400: #61dac3;
+$deprecated-swatches-mint-500: #39d1b4;
+$deprecated-swatches-mint-600: #37c2aa;
+$deprecated-swatches-mint-700: #34b3a0;
+$deprecated-swatches-mint-800: #1a7b72;
+$deprecated-swatches-mint-900: #044;
 
-$swatches-red-100: #fddede;
-$swatches-red-200: #fbbdbd;
-$swatches-red-300: #fa9c9d;
-$swatches-red-400: #f87b7c;
-$swatches-red-500: #f65a5b;
-$swatches-red-600: #c64748;
-$swatches-red-700: #963435;
-$swatches-red-800: #652022;
-$swatches-red-900: #350d0f;
+$deprecated-swatches-red-100: #fddede;
+$deprecated-swatches-red-200: #fbbdbd;
+$deprecated-swatches-red-300: #fa9c9d;
+$deprecated-swatches-red-400: #f87b7c;
+$deprecated-swatches-red-500: #f65a5b;
+$deprecated-swatches-red-600: #c64748;
+$deprecated-swatches-red-700: #963435;
+$deprecated-swatches-red-800: #652022;
+$deprecated-swatches-red-900: #350d0f;
 
-$swatches-yellow-100: #ffedd6;
-$swatches-yellow-200: #ffdbac;
-$swatches-yellow-300: #ffca83;
-$swatches-yellow-400: #ffb85a;
-$swatches-yellow-500: #fbb03b;
-$swatches-yellow-600: #c88b2e;
-$swatches-yellow-700: #956721;
-$swatches-yellow-800: #634213;
-$swatches-yellow-900: #301e06;
+$deprecated-swatches-yellow-100: #ffedd6;
+$deprecated-swatches-yellow-200: #ffdbac;
+$deprecated-swatches-yellow-300: #ffca83;
+$deprecated-swatches-yellow-400: #ffb85a;
+$deprecated-swatches-yellow-500: #fbb03b;
+$deprecated-swatches-yellow-600: #c88b2e;
+$deprecated-swatches-yellow-700: #956721;
+$deprecated-swatches-yellow-800: #634213;
+$deprecated-swatches-yellow-900: #301e06;

@@ -28,10 +28,10 @@ $font-weight-dt: $font-weight-bold;
 // Font colors
 
 $color-body: #484848;
-$color-headings: $gamut-grey-900;
-$bg-body: $gamut-white;
-$color-link: $gamut-royal-blue-500;
-$hover-color-link: $gamut-royal-blue-600;
+$color-headings: $color-gray-900;
+$bg-body: $color-white;
+$color-link: $color-royal-blue;
+$hover-color-link: darken($color-royal-blue, 15%);
 $decoration-link: none;
 $hover-decoration-link: underline;
 

@@ -8,21 +8,21 @@ function convertSwatchStringToObject(swatchString) {
 }
 
 // =======================================
-//      03-01-2019 COLORS
+//      COLORS
 // =======================================
 
-export const colors2019 = {
-  blue: convertSwatchStringToObject(scssExports.blue),
-  pink: convertSwatchStringToObject(scssExports.pink),
-  purple: convertSwatchStringToObject(scssExports.purple),
-  red: convertSwatchStringToObject(scssExports.red),
-  green: convertSwatchStringToObject(scssExports.green),
-  yellow: convertSwatchStringToObject(scssExports.yellow),
-  gray: convertSwatchStringToObject(scssExports.gray),
-  black: scssExports.black,
-  white: scssExports.white,
-  beige: scssExports.beige,
-  royalBlue: scssExports['royal-blue'],
+export const colors = {
+  blue: convertSwatchStringToObject(scssExports.colorBlue),
+  pink: convertSwatchStringToObject(scssExports.colorPink),
+  purple: convertSwatchStringToObject(scssExports.colorPurple),
+  red: convertSwatchStringToObject(scssExports.colorRed),
+  green: convertSwatchStringToObject(scssExports.colorGreen),
+  yellow: convertSwatchStringToObject(scssExports.colorYellow),
+  gray: convertSwatchStringToObject(scssExports.colorGray),
+  black: scssExports.colorBlack,
+  white: scssExports.colorWhite,
+  beige: scssExports.colorBeige,
+  royalBlue: scssExports.colorRoyalBlue,
 };
 
 // =======================================
@@ -40,29 +40,35 @@ export const brandColors = {
 };
 
 // =======================================
-//     11-27-2017 DESIGN SYSTEM COLORS
+//     Nov 2017 DESIGN SYSTEM COLORS
 // =======================================
 
-export const gamutColors = {
+export const deprecatedGamutColors = {
   base: {
-    white: scssExports.gamutWhite,
-    grey: scssExports.gamutGrey,
-    black: scssExports.gamutBlack,
-    purple: scssExports.gamutPurple,
-    royalBlue: scssExports.gamutRoyalBlue,
-    blue: scssExports.gamutBlue,
-    red: scssExports.gamutRed,
-    mint: scssExports.gamutMint,
-    yellow: scssExports.gamutYellow,
+    white: scssExports.deprecatedGamutWhite,
+    grey: scssExports.deprecatedGamutGrey,
+    black: scssExports.deprecatedGamutBlack,
+    purple: scssExports.deprecatedGamutPurple,
+    royalBlue: scssExports.deprecatedGamutRoyalBlue,
+    blue: scssExports.deprecatedGamutBlue,
+    red: scssExports.deprecatedGamutRed,
+    mint: scssExports.deprecatedGamutMint,
+    yellow: scssExports.deprecatedGamutYellow,
   },
   swatches: {
-    purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
-    royalBlue: convertSwatchStringToObject(scssExports.gamutRoyalBlueSwatches),
-    blue: convertSwatchStringToObject(scssExports.gamutBlueSwatches),
-    red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
-    mint: convertSwatchStringToObject(scssExports.gamutMintSwatches),
-    yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
-    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches),
+    purple: convertSwatchStringToObject(
+      scssExports.deprecatedGamutPurpleSwatches
+    ),
+    royalBlue: convertSwatchStringToObject(
+      scssExports.deprecatedGamutRoyalBlueSwatches
+    ),
+    blue: convertSwatchStringToObject(scssExports.deprecatedGamutBlueSwatches),
+    red: convertSwatchStringToObject(scssExports.deprecatedGamutRedSwatches),
+    mint: convertSwatchStringToObject(scssExports.deprecatedGamutMintSwatches),
+    yellow: convertSwatchStringToObject(
+      scssExports.deprecatedGamutYellowSwatches
+    ),
+    grey: convertSwatchStringToObject(scssExports.deprecatedGamutGreySwatches),
   },
 };
 
@@ -70,7 +76,7 @@ export const gamutColors = {
 //       LEGACY COLORS
 // =======================================
 
-export const colors = {
+export const deprecatedColors = {
   portal: {
     white: '#fff',
     black: '#000',
@@ -170,7 +176,7 @@ export const colors = {
 //       LEGACY-ER COLORS
 // =======================================
 
-export const editorColors = {
+export const deprecatedEditorColors = {
   black: '#000',
   white: '#fff',
   default: '#fff',
@@ -219,9 +225,10 @@ export const legacyBreakpoints = {
 // =======================================
 
 export default {
-  colors2019,
   colors,
-  editorColors,
+  deprecatedColors,
+  deprecatedEditorColors,
+  deprecatedGamutColors,
   grid,
   legacyBreakpoints,
 };

@@ -10,174 +10,175 @@
   brandBeige: $brand-beige;
   brandDarkBlue: $brand-dark-blue;
 
-  gamutWhite: $gamut-white;
-  gamutBlack: $gamut-black;
-  gamutPurple: $gamut-purple;
-  gamutRoyalBlue: $gamut-royal-blue;
-  gamutBlue: $gamut-blue;
-  gamutRed: $gamut-red;
-  gamutMint: $gamut-mint;
-  gamutYellow: $gamut-yellow;
-  gamutGrey: $gamut-grey;
+  colorWhite: $color-white;
+  colorBlack: $color-black;
+  colorBeige: $color-beige;
+  colorRoyalBlue: $color-royal-blue;
 
-  white: $white;
-  black: $black;
-  beige: $beige;
-  royal-blue: $royal-blue;
+  colorBlue:
+    $color-blue-100
+    $color-blue-200
+    $color-blue-300
+    $color-blue-400
+    $color-blue-500
+    $color-blue-600
+    $color-blue-700
+    $color-blue-800
+    $color-blue-900
+    $color-blue-1000
+    $color-blue-1100;
 
-  blue:
-    $blue-100
-    $blue-200
-    $blue-300
-    $blue-400
-    $blue-500
-    $blue-600
-    $blue-700
-    $blue-800
-    $blue-900
-    $blue-1000
-    $blue-1100;
+  colorPink:
+    $color-pink-100
+    $color-pink-200
+    $color-pink-300
+    $color-pink-400
+    $color-pink-500
+    $color-pink-600
+    $color-pink-700
+    $color-pink-800
+    $color-pink-900;
 
-  pink:
-    $pink-100
-    $pink-200
-    $pink-300
-    $pink-400
-    $pink-500
-    $pink-600
-    $pink-700
-    $pink-800
-    $pink-900;
+  colorPurple:
+    $color-purple-100
+    $color-purple-200
+    $color-purple-300
+    $color-purple-400
+    $color-purple-500
+    $color-purple-600
+    $color-purple-700
+    $color-purple-800
+    $color-purple-900;
 
-  purple:
-    $purple-100
-    $purple-200
-    $purple-300
-    $purple-400
-    $purple-500
-    $purple-600
-    $purple-700
-    $purple-800
-    $purple-900;
+  colorRed:
+    $color-red-100
+    $color-red-200
+    $color-red-300
+    $color-red-400
+    $color-red-500
+    $color-red-600
+    $color-red-700
+    $color-red-800
+    $color-red-900;
 
-  red:
-    $red-100
-    $red-200
-    $red-300
-    $red-400
-    $red-500
-    $red-600
-    $red-700
-    $red-800
-    $red-900;
+  colorGreen:
+    $color-green-100
+    $color-green-200
+    $color-green-300
+    $color-green-400
+    $color-green-500
+    $color-green-600
+    $color-green-700
+    $color-green-800
+    $color-green-900;
 
-  green:
-    $green-100
-    $green-200
-    $green-300
-    $green-400
-    $green-500
-    $green-600
-    $green-700
-    $green-800
-    $green-900;
+  colorYellow:
+    $color-yellow-100
+    $color-yellow-200
+    $color-yellow-300
+    $color-yellow-400
+    $color-yellow-500
+    $color-yellow-600
+    $color-yellow-700
+    $color-yellow-800
+    $color-yellow-900;
 
-  yellow:
-    $yellow-100
-    $yellow-200
-    $yellow-300
-    $yellow-400
-    $yellow-500
-    $yellow-600
-    $yellow-700
-    $yellow-800
-    $yellow-900;
+  colorGray:
+    $color-gray-100
+    $color-gray-200
+    $color-gray-300
+    $color-gray-400
+    $color-gray-500
+    $color-gray-600
+    $color-gray-700
+    $color-gray-800
+    $color-gray-900;
 
-  gray:
-    $gray-100
-    $gray-200
-    $gray-300
-    $gray-400
-    $gray-500
-    $gray-600
-    $gray-700
-    $gray-800
-    $gray-900;
 
-  gamutPurpleSwatches:
-    $gamut-purple-100
-    $gamut-purple-200
-    $gamut-purple-300
-    $gamut-purple-400
-    $gamut-purple-500
-    $gamut-purple-600
-    $gamut-purple-700
-    $gamut-purple-800
-    $gamut-purple-900;
+  deprecatedGamutWhite: $deprecated-gamut-white;
+  deprecatedGamutBlack: $deprecated-gamut-black;
+  deprecatedGamutPurple: $deprecated-gamut-purple;
+  deprecatedGamutRoyalBlue: $deprecated-gamut-royal-blue;
+  deprecatedGamutBlue: $deprecated-gamut-blue;
+  deprecatedGamutRed: $deprecated-gamut-red;
+  deprecatedGamutMint: $deprecated-gamut-mint;
+  deprecatedGamutYellow: $deprecated-gamut-yellow;
+  deprecatedGamutGrey: $deprecated-gamut-grey;
 
-  gamutRoyalBlueSwatches:
-    $gamut-royal-blue-100
-    $gamut-royal-blue-200
-    $gamut-royal-blue-300
-    $gamut-royal-blue-400
-    $gamut-royal-blue-500
-    $gamut-royal-blue-600
-    $gamut-royal-blue-700
-    $gamut-royal-blue-800
-    $gamut-royal-blue-900;
+  deprecatedGamutPurpleSwatches:
+    $deprecated-gamut-purple-100
+    $deprecated-gamut-purple-200
+    $deprecated-gamut-purple-300
+    $deprecated-gamut-purple-400
+    $deprecated-gamut-purple-500
+    $deprecated-gamut-purple-600
+    $deprecated-gamut-purple-700
+    $deprecated-gamut-purple-800
+    $deprecated-gamut-purple-900;
 
-  gamutBlueSwatches:
-    $gamut-blue-100
-    $gamut-blue-200
-    $gamut-blue-300
-    $gamut-blue-400
-    $gamut-blue-500
-    $gamut-blue-600
-    $gamut-blue-700
-    $gamut-blue-800
-    $gamut-blue-900;
+  deprecatedGamutRoyalBlueSwatches:
+    $deprecated-gamut-royal-blue-100
+    $deprecated-gamut-royal-blue-200
+    $deprecated-gamut-royal-blue-300
+    $deprecated-gamut-royal-blue-400
+    $deprecated-gamut-royal-blue-500
+    $deprecated-gamut-royal-blue-600
+    $deprecated-gamut-royal-blue-700
+    $deprecated-gamut-royal-blue-800
+    $deprecated-gamut-royal-blue-900;
 
-  gamutRedSwatches:
-    $gamut-red-100
-    $gamut-red-200
-    $gamut-red-300
-    $gamut-red-400
-    $gamut-red-500
-    $gamut-red-600
-    $gamut-red-700
-    $gamut-red-800
-    $gamut-red-900;
+  deprecatedGamutBlueSwatches:
+    $deprecated-gamut-blue-100
+    $deprecated-gamut-blue-200
+    $deprecated-gamut-blue-300
+    $deprecated-gamut-blue-400
+    $deprecated-gamut-blue-500
+    $deprecated-gamut-blue-600
+    $deprecated-gamut-blue-700
+    $deprecated-gamut-blue-800
+    $deprecated-gamut-blue-900;
 
-  gamutMintSwatches:
-    $gamut-mint-100
-    $gamut-mint-200
-    $gamut-mint-300
-    $gamut-mint-400
-    $gamut-mint-500
-    $gamut-mint-600
-    $gamut-mint-700
-    $gamut-mint-800
-    $gamut-mint-900;
+  deprecatedGamutRedSwatches:
+    $deprecated-gamut-red-100
+    $deprecated-gamut-red-200
+    $deprecated-gamut-red-300
+    $deprecated-gamut-red-400
+    $deprecated-gamut-red-500
+    $deprecated-gamut-red-600
+    $deprecated-gamut-red-700
+    $deprecated-gamut-red-800
+    $deprecated-gamut-red-900;
 
-  gamutYellowSwatches:
-    $gamut-yellow-100
-    $gamut-yellow-200
-    $gamut-yellow-300
-    $gamut-yellow-400
-    $gamut-yellow-500
-    $gamut-yellow-600
-    $gamut-yellow-700
-    $gamut-yellow-800
-    $gamut-yellow-900;
+  deprecatedGamutMintSwatches:
+    $deprecated-gamut-mint-100
+    $deprecated-gamut-mint-200
+    $deprecated-gamut-mint-300
+    $deprecated-gamut-mint-400
+    $deprecated-gamut-mint-500
+    $deprecated-gamut-mint-600
+    $deprecated-gamut-mint-700
+    $deprecated-gamut-mint-800
+    $deprecated-gamut-mint-900;
 
-  gamutGreySwatches:
-    $gamut-grey-100
-    $gamut-grey-200
-    $gamut-grey-300
-    $gamut-grey-400
-    $gamut-grey-500
-    $gamut-grey-600
-    $gamut-grey-700
-    $gamut-grey-800
-    $gamut-grey-900;
+  deprecatedGamutYellowSwatches:
+    $deprecated-gamut-yellow-100
+    $deprecated-gamut-yellow-200
+    $deprecated-gamut-yellow-300
+    $deprecated-gamut-yellow-400
+    $deprecated-gamut-yellow-500
+    $deprecated-gamut-yellow-600
+    $deprecated-gamut-yellow-700
+    $deprecated-gamut-yellow-800
+    $deprecated-gamut-yellow-900;
+
+  deprecatedGamutGreySwatches:
+    $deprecated-gamut-grey-100
+    $deprecated-gamut-grey-200
+    $deprecated-gamut-grey-300
+    $deprecated-gamut-grey-400
+    $deprecated-gamut-grey-500
+    $deprecated-gamut-grey-600
+    $deprecated-gamut-grey-700
+    $deprecated-gamut-grey-800
+    $deprecated-gamut-grey-900;
 }
