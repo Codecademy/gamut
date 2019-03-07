@@ -138,7 +138,9 @@ jobs:
             npx renovate \
               --token="${GH_TOKEN}" \
               --pr-footer="" \
-              --dry-run
+              --dry-run \
+              "${CIRCLE_PROJECT_REPONAME}"
+
 
 workflows:
   version: 2
