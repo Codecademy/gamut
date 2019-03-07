@@ -139,7 +139,7 @@ jobs:
               --token="${GH_TOKEN}" \
               --pr-footer="" \
               --dry-run \
-              ${CIRCLE_PROJECT_REPONAME}
+              "${CIRCLE_PROJECT_REPONAME}"
 
 
 workflows:
