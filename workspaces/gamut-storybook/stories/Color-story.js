@@ -133,14 +133,14 @@ stories.add(
     <Container>
       <div>
         <h2 className={s.heading}>deprecated portal base colors</h2>
-        {renderSwatches(deprecatedColors.portal)}
+        {renderSwatches(deprecatedColors.portal, 'deprecated')}
       </div>
       {Object.keys(deprecatedColors.swatches).map(color => (
         <div key={color}>
           <h2 className={s.heading}>{parseCamelCase(color)}</h2>
           {renderSwatches(
             deprecatedColors.swatches[color],
-            `swatches-${color}`
+            `deprecated-swatches-${color}`
           )}
         </div>
       ))}
@@ -161,9 +161,9 @@ stories.add(
             white,
             black,
           },
-          'swatches-basic'
+          'deprecated-swatches-basic'
         )}
-        {renderSwatches(platformRest, 'swatches-code')}
+        {renderSwatches(platformRest, 'deprecated-swatches-code')}
       </div>
     );
   },
