@@ -1,14 +1,4 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "commitMessagePrefix": "chore(update):",
-  "prFooter": "",
-  "assignees": [
-    "jakemhiller"
-  ],
-  "repositories": [
-    "RyzacInc/gamut"
-  ],
-  "dryRun": true
+  "assignees": ["jakemhiller"],
+ "commitMessagePrefix": "chore(update):"
 }

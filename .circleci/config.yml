@@ -129,6 +129,8 @@ jobs:
     docker:
       - image: circleci/node:10.13.0
     working_directory: ~/repo
+    environment:
+      RENOVATE_CONFIG_FILE: './renovate.js'
     steps:
       - *set_git_user
       - *restore_repo
@@ -137,9 +139,6 @@ jobs:
           command: |
             npx renovate \
               --token="${GH_TOKEN}" \
-              --pr-footer="" \
-              --require-config=true \
-              --autodiscover \
               --dry-run
 
 workflows:
