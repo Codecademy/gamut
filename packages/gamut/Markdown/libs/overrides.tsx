@@ -26,6 +26,7 @@ const attributeMap: AttributesMap = {
 
 export type OverrideSettings = {
   component: React.ComponentType;
+  allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };

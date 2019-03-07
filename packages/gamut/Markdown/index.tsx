@@ -57,6 +57,11 @@ const isValidNode = function() {
   return true;
 };
 
+type UserSanitizationConfig = {
+  allowedTags?: string[];
+  allowedAttributes?: { [i: string]: string[] };
+};
+
 export interface MarkdownProps {
   className?: string;
   inline?: boolean;
@@ -108,12 +113,32 @@ class Markdown extends PureComponent<MarkdownProps> {
     // Render markdown to html
     const rawHtml = inline ? marked.inlineLexer(text, []) : marked(text);
 
+    const userSanitizationConfig: UserSanitizationConfig = Object.keys(
+      userOverrides
+    ).reduce(
+      (acc: UserSanitizationConfig, tagName) => {
+        const normalizedTag = tagName.toLowerCase();
+        return {
+          allowedAttributes: {
+            ...acc.allowedAttributes,
+            [normalizedTag]: userOverrides[tagName].allowedAttributes || [],
+          },
+          allowedTags: [...acc.allowedTags, normalizedTag],
+        };
+      },
+      { allowedAttributes: {}, allowedTags: [] }
+    );
+
     const html = insane(rawHtml, {
       ...sanitizationConfig,
       allowedTags: [
         ...sanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(key => key.toLowerCase()),
+        ...userSanitizationConfig.allowedTags,
       ],
+      allowedAttributes: {
+        ...sanitizationConfig.allowedAttributes,
+        ...userSanitizationConfig.allowedAttributes,
+      },
     });
 
     // Render html to a react tree
