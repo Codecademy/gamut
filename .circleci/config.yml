@@ -138,6 +138,8 @@ jobs:
             npx renovate \
               --token="${GH_TOKEN}" \
               --pr-footer="" \
+              --require-config=true \
+              --autodiscover \
               --dry-run
 
 workflows:
