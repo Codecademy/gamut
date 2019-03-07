@@ -28,6 +28,7 @@ class Toggle extends Component<ToggleProps, {}> {
           className={s.invisible}
           id={label}
           disabled={disabled}
+          readOnly
         />
         <span className={s.invisible}>{label}</span>
         <div className={s.track} />
