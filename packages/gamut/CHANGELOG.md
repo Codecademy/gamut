@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.16.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.9...@codecademy/gamut@1.16.10) (2019-03-07)
+
+
+### Bug Fixes
+
+* revert changes to ButtonBase ([#218](https://github.com/RyzacInc/gamut/issues/218)) ([454cfc6](https://github.com/RyzacInc/gamut/commit/454cfc6))
+
+
+
+
+
 ## [1.16.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.8...@codecademy/gamut@1.16.9) (2019-03-06)
 
 
