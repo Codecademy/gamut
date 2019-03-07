@@ -40,7 +40,7 @@ export const brandColors = {
 };
 
 // =======================================
-//     Nov 2017 DESIGN SYSTEM COLORS
+//     DEPRECATED COLORS
 // =======================================
 
 export const deprecatedGamutColors = {
@@ -71,10 +71,6 @@ export const deprecatedGamutColors = {
     grey: convertSwatchStringToObject(scssExports.deprecatedGamutGreySwatches),
   },
 };
-
-// =======================================
-//       LEGACY COLORS
-// =======================================
 
 export const deprecatedColors = {
   portal: {
@@ -172,10 +168,6 @@ export const deprecatedColors = {
   },
 };
 
-// =======================================
-//       LEGACY-ER COLORS
-// =======================================
-
 export const deprecatedEditorColors = {
   black: '#000',
   white: '#fff',
@@ -200,10 +192,6 @@ export const deprecatedEditorColors = {
   variable3: '#5affef',
 };
 
-// =======================================
-//        OTHER LEGACY VARIABLES
-// =======================================
-
 export const grid = {
   cols: 12,
   gutterWidth: '16px',
@@ -221,7 +209,7 @@ export const legacyBreakpoints = {
 };
 
 // =======================================
-//                EXPORT
+//             DEFAULT EXPORT
 // =======================================
 
 export default {
