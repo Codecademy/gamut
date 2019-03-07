@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "commitMessagePrefix": "chore(update):",
+  "prFooter": "",
+  "assignees": [
+    "jakemhiller"
+  ],
+  "dryRun": true
+}
