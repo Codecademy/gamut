@@ -39,12 +39,16 @@ export type ManyOverrideSettings = {
 export const processAttributes = (attributes: AttributesMap = {}) =>
   Object.keys(attributes).reduce((acc, attr) => {
     const key = attributeMap[attr.replace(/[-:]/, '')];
-    const value =
-      attributes[attr] === 'true'
-        ? true
-        : attributes[attr] === 'false'
-        ? false
-        : attributes[attr] || true;
+
+    let value;
+    if (value === 'true') {
+      value = true;
+    } else if (value === 'false') {
+      value = false;
+    } else {
+      value = attributes[attr] || true;
+    }
+
     return {
       ...acc,
       [key || attr]: value,
