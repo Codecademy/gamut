@@ -14,10 +14,12 @@ import s from './styles/index.scss';
 import Iframe from './overrides/Iframe';
 import Anchor from './overrides/Anchor';
 
-const htmlToReactParser = new HtmlToReact.Parser();
+const htmlToReactParser = new HtmlToReact.Parser({
+  xmlMode: true,
+});
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
-const sanitizationConfig = {
+const defaultSanitizationConfig = {
   allowedAttributes: {
     ...insane.defaults.allowedAttributes,
     span: ['class'],
@@ -55,11 +57,6 @@ const sanitizationConfig = {
 
 const isValidNode = function() {
   return true;
-};
-
-type UserSanitizationConfig = {
-  allowedTags?: string[];
-  allowedAttributes?: { [i: string]: string[] };
 };
 
 export interface MarkdownProps {
@@ -103,7 +100,7 @@ class Markdown extends PureComponent<MarkdownProps> {
       }),
       ...overrides,
       {
-        shouldProcessNode() {
+        shouldProcessNode(node: any) {
           return true;
         },
         processNode: processNodeDefinitions.processDefaultNode,
@@ -112,34 +109,24 @@ class Markdown extends PureComponent<MarkdownProps> {
 
     // Render markdown to html
     const rawHtml = inline ? marked.inlineLexer(text, []) : marked(text);
-
-    const userSanitizationConfig: UserSanitizationConfig = Object.keys(
-      userOverrides
-    ).reduce(
-      (acc: UserSanitizationConfig, tagName) => {
-        const normalizedTag = tagName.toLowerCase();
-        return {
-          allowedAttributes: {
-            ...acc.allowedAttributes,
-            [normalizedTag]: userOverrides[tagName].allowedAttributes || [],
-          },
-          allowedTags: [...acc.allowedTags, normalizedTag],
-        };
-      },
-      { allowedAttributes: {}, allowedTags: [] }
-    );
-
-    const html = insane(rawHtml, {
-      ...sanitizationConfig,
+    const sanitizationConfig = {
+      ...defaultSanitizationConfig,
       allowedTags: [
-        ...sanitizationConfig.allowedTags,
-        ...userSanitizationConfig.allowedTags,
+        ...defaultSanitizationConfig.allowedTags,
+        ...Object.keys(userOverrides).map(tagName => tagName),
       ],
       allowedAttributes: {
-        ...sanitizationConfig.allowedAttributes,
-        ...userSanitizationConfig.allowedAttributes,
+        ...defaultSanitizationConfig.allowedAttributes,
+        ...Object.keys(userOverrides).reduce((acc, tagName) => {
+          return {
+            ...acc,
+            [tagName]: userOverrides[tagName].allowedAttributes || [],
+          };
+        }, {}),
       },
-    });
+    };
+    console.log(sanitizationConfig);
+    const html = rawHtml; //insane(rawHtml, sanitizationConfig);
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(

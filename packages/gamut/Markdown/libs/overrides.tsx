@@ -1,6 +1,7 @@
 import React from 'react';
 import { get } from 'lodash';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
+// import utils from 'html-to-react/lib/utils';
 
 export interface AttributesMap {
   [key: string]: string;
@@ -39,9 +40,15 @@ export type ManyOverrideSettings = {
 export const processAttributes = (attributes: AttributesMap = {}) =>
   Object.keys(attributes).reduce((acc, attr) => {
     const key = attributeMap[attr.replace(/[-:]/, '')];
+    const value =
+      attributes[attr] === 'true'
+        ? true
+        : attributes[attr] === 'false'
+        ? false
+        : attributes[attr] || true;
     return {
       ...acc,
-      [key || attr]: attributes[attr],
+      [key || attr]: value,
     };
   }, {});
 
@@ -56,7 +63,7 @@ export const createTagOverride = (
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }
-    return node.name === tagName.toLowerCase();
+    return node.name === tagName;
   },
   processNode(
     node: HTMLToReactNode,
@@ -70,9 +77,11 @@ export const createTagOverride = (
       children,
       key,
     };
+
     if (Override.processNode) {
       return Override.processNode(node, props);
     }
+
     return <Override.component {...props} />;
   },
 });
@@ -86,7 +95,7 @@ export const createCodeBlockOverride = (
     shouldProcessNode(node: HTMLToReactNode) {
       return (
         (node.name === 'code' && get(node, 'parent.name') === 'pre') ||
-        node.name === tagName.toLowerCase()
+        node.name === tagName
       );
     },
 

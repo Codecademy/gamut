@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -68,24 +68,6 @@ describe('<Markdown />', () => {
     expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
-  it('Allows passing in arbitrary react component overrides', () => {
-    const TestComponent = () => <strong>coooool</strong>;
-
-    const text = `
-# Heading
-
-<TestComponent/>
-    `;
-
-    const overrides = {
-      TestComponent: {
-        component: TestComponent,
-      },
-    };
-    const markdown = mount(<Markdown text={text} overrides={overrides} />);
-    expect(markdown.find('strong').length).toEqual(1);
-  });
-
   describe('Allows passing in a custom CodeBlock override', () => {
     it('Accepts a CodeBlock component directly', () => {
       const text = `
@@ -109,6 +91,7 @@ var test = true;
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
     });
+
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
       const text = `
 # Heading
@@ -205,6 +188,67 @@ var test = true;
         />
       );
       expect(markdown.find('a[rel]').length).toEqual(0);
+    });
+  });
+
+  describe('Allows passing in a custom tag overrides', () => {
+    it('Allows passing in custom tag overrides', () => {
+      const TestComponent = () => <strong>coooool</strong>;
+
+      const text = `
+  # Heading
+
+  <TestComponent/>
+      `;
+
+      const overrides = {
+        TestComponent: {
+          component: TestComponent,
+        },
+      };
+      const markdown = mount(<Markdown text={text} overrides={overrides} />);
+      expect(markdown.find('strong').length).toEqual(1);
+    });
+
+    describe('Properties on overrides are handled', () => {
+      let markdown: ReactWrapper;
+
+      beforeAll(() => {
+        const text = `
+# Heading
+
+<TestComponent name="my name" isCodeBlock="true" isWebBrowser />
+        `;
+        const TestComponent = () => <strong>coooool</strong>;
+
+        const overrides = {
+          TestComponent: {
+            component: TestComponent,
+            allowedAttributes: ['name', 'hotbeans'],
+          },
+        };
+        markdown = mount(<Markdown text={text} overrides={overrides} />);
+      });
+
+      it('Allows passing in allowed attributes to overrides', () => {
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          name: 'my name',
+        });
+      });
+
+      it('coerces the string "true" into a boolean', () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          isCodeBlock: true,
+        });
+      });
+
+      it('defaults attributes without a value to true', () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          isWebBrowser: true,
+        });
+      });
     });
   });
 });

@@ -31,6 +31,8 @@ const test = async function test({value}) {
 
 This is some \`inline code\`
 
+<CustomElement name="my name" />
+
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <h1>html h1</h1>
@@ -39,7 +41,7 @@ This is some \`inline code\`
   This blockquote will change based on the HTML settings above.
 </blockquote>
 
-<CustomElement title="I'm a custom element!"></CustomElement>
+
 
 `;
 
@@ -78,8 +80,8 @@ storiesOf('Component/Markdown', module)
             },
           },
           CustomElement: {
-            component: ({ title }) => <h3>CustomElement: {title}</h3>,
-            allowedAttributes: ['title'],
+            component: ({ name }) => <h3>name: {name}</h3>,
+            allowedAttributes: ['name'],
           },
         }}
       />
