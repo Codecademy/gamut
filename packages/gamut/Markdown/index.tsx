@@ -100,7 +100,7 @@ class Markdown extends PureComponent<MarkdownProps> {
       }),
       ...overrides,
       {
-        shouldProcessNode(node: any) {
+        shouldProcessNode() {
           return true;
         },
         processNode: processNodeDefinitions.processDefaultNode,
@@ -125,8 +125,8 @@ class Markdown extends PureComponent<MarkdownProps> {
         }, {}),
       },
     };
-    console.log(sanitizationConfig);
-    const html = rawHtml; //insane(rawHtml, sanitizationConfig);
+
+    const html = insane(rawHtml, sanitizationConfig);
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
