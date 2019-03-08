@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { Component } from 'react';
 import cx from 'classnames';
 import s from './styles/index.scss';
@@ -19,7 +18,7 @@ class Toggle extends Component<ToggleProps, {}> {
           [s.toggled]: checked,
           [s.disabled]: disabled,
         })}
-        onClick={onClick}
+        onChange={onClick}
         htmlFor={label}
       >
         <input
@@ -28,7 +27,8 @@ class Toggle extends Component<ToggleProps, {}> {
           className={s.invisible}
           id={label}
           disabled={disabled}
-          readOnly
+          onChange={onClick}
+          readOnly={!onClick}
         />
         <span className={s.invisible}>{label}</span>
         <div className={s.track} />
