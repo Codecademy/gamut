@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 
 export interface AttributesMap {
-  [key: string]: string;
+  [key: string]: string | boolean;
 }
 
 export interface HTMLToReactNode {
@@ -18,7 +18,7 @@ export interface HTMLToReactNode {
 }
 
 // Mapping of html attributes to their camelCase variants
-const attributeMap: AttributesMap = {
+const attributeMap: { [key: string]: string } = {
   ...camelCaseMap,
   for: 'htmlFor',
   class: 'className',
@@ -35,23 +35,26 @@ export type ManyOverrideSettings = {
   [i: string]: OverrideSettings;
 };
 
+const processAttributeValue = (value: string | boolean) => {
+  if (value === 'true') {
+    return true;
+  }
+
+  if (value === 'false') {
+    return false;
+  }
+
+  return value || true;
+};
+
 // Convert html attributes to valid react props
 export const processAttributes = (attributes: AttributesMap = {}) =>
   Object.keys(attributes).reduce((acc, attr) => {
-    const key = attributeMap[attr.replace(/[-:]/, '')];
-
-    let value;
-    if (value === 'true') {
-      value = true;
-    } else if (value === 'false') {
-      value = false;
-    } else {
-      value = attributes[attr] || true;
-    }
+    const reactAttr = attributeMap[attr.replace(/[-:]/, '')] || attr;
 
     return {
       ...acc,
-      [key || attr]: value,
+      [reactAttr]: processAttributeValue(attributes[attr]),
     };
   }, {});
 
