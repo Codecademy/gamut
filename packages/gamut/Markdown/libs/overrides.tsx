@@ -1,7 +1,6 @@
 import React from 'react';
 import { get } from 'lodash';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
-// import utils from 'html-to-react/lib/utils';
 
 export interface AttributesMap {
   [key: string]: string;
