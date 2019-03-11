@@ -196,9 +196,9 @@ var test = true;
       const TestComponent = () => <strong>coooool</strong>;
 
       const text = `
-  # Heading
+# Heading
 
-  <TestComponent/>
+<TestComponent/>
       `;
 
       const overrides = {
@@ -248,6 +248,11 @@ var test = true;
         expect(markdown.find('TestComponent').props()).toMatchObject({
           isWebBrowser: true,
         });
+      });
+
+      it("doesn't wrap self closing elements in p tags", () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('p > strong').length).toEqual(0);
       });
     });
   });
