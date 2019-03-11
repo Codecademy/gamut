@@ -224,7 +224,7 @@ var test = true;
         const overrides = {
           TestComponent: {
             component: TestComponent,
-            allowedAttributes: ['name', 'hotbeans'],
+            allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
           },
         };
         markdown = mount(<Markdown text={text} overrides={overrides} />);

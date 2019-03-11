@@ -113,14 +113,16 @@ class Markdown extends PureComponent<MarkdownProps> {
       ...defaultSanitizationConfig,
       allowedTags: [
         ...defaultSanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(tagName => tagName),
+        ...Object.keys(userOverrides).map(tagName => tagName.toLowerCase()),
       ],
       allowedAttributes: {
         ...defaultSanitizationConfig.allowedAttributes,
         ...Object.keys(userOverrides).reduce((acc, tagName) => {
           return {
             ...acc,
-            [tagName]: userOverrides[tagName].allowedAttributes || [],
+            [tagName.toLowerCase()]: (
+              userOverrides[tagName].allowedAttributes || []
+            ).map(attr => attr.toLowerCase()),
           };
         }, {}),
       },

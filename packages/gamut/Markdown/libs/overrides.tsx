@@ -69,7 +69,7 @@ export const createTagOverride = (
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }
-    return node.name === tagName;
+    return node.name === tagName.toLowerCase();
   },
   processNode(
     node: HTMLToReactNode,
@@ -101,7 +101,7 @@ export const createCodeBlockOverride = (
     shouldProcessNode(node: HTMLToReactNode) {
       return (
         (node.name === 'code' && get(node, 'parent.name') === 'pre') ||
-        node.name === tagName
+        node.name === tagName.toLowerCase()
       );
     },
 
