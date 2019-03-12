@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.11...@codecademy/gamut@1.17.0) (2019-03-12)
+
+
+### Features
+
+* **icons:** add menu icon, adjust close icon ([#222](https://github.com/RyzacInc/gamut/issues/222)) ([56b868d](https://github.com/RyzacInc/gamut/commit/56b868d))
+
+
+
+
+
 ## [1.16.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.10...@codecademy/gamut@1.16.11) (2019-03-11)
 
 **Note:** Version bump only for package @codecademy/gamut
