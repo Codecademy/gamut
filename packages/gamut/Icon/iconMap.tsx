@@ -39,6 +39,7 @@ import LessonIcon from './icons/LessonIcon';
 import MAWIcon from './icons/MAWIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
 import MatplotLibIcon from './icons/MatplotLibIcon';
+import MenuIcon from './icons/MenuIcon';
 import NewPageIcon from './icons/NewPageIcon';
 import NumPyIcon from './icons/NumPyIcon';
 import PHPIcon from './icons/PHPIcon';
@@ -109,6 +110,7 @@ const iconMap = {
   maintenance: MaintenanceIcon,
   matplotLib: MatplotLibIcon,
   maw: MAWIcon,
+  menu: MenuIcon,
   newPageIcon: NewPageIcon,
   numPy: NumPyIcon,
   pandas: PandasIcon,

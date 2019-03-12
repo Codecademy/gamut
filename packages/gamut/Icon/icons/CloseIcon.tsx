@@ -3,11 +3,10 @@ import React, { SVGProps } from 'react';
 export default function CloseIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
-      <title>Close Icon</title>
-      <path
-        d="M21 4.813L19.187 3 12 10.187 4.813 3 3 4.813 10.187 12 3 19.187 4.813 21 12 13.813 19.187 21 21 19.187 13.813 12z"
-        fillRule="nonzero"
-      />
+      <g fillRule="nonzero">
+        <path d="M19.778 18.364l-1.414 1.414L4.222 5.636l1.414-1.414z" />
+        <path d="M5.636 19.778l-1.414-1.414L18.364 4.222l1.414 1.414z" />
+      </g>
     </svg>
   );
 }
