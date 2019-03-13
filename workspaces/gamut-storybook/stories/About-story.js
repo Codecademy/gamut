@@ -8,12 +8,10 @@ storiesOf('About', module).add('Welcome', () => (
     <p>
       This storybook represents components found in the{' '}
       <a href="https://github.com/RyzacInc/client-modules">
-        Codecademy Gamut Repo
+        Codecademy Client Modules Repo
       </a>
       .
     </p>
-    <h2>Disclaimer</h2>
-    <p>While already quite useful, Gamut is currently a work in progress.</p>
     <h2>Gamut Styles (SCSS)</h2>
     <p>
       This storybook displays components, as well as some basic style building
