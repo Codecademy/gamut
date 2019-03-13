@@ -15,7 +15,7 @@
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
-    "format": "yarn prettier --write",
+    "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "build-all": "yarn wsrun build --exclude-missing",
     "build-storybook": "yarn wsrun build-storybook --exclude-missing",

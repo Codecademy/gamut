@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { storiesOf, action } from '@storybook/react';
 import React from 'react';
 
