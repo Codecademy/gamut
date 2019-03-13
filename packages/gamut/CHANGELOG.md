@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.19.0...@codecademy/gamut@1.20.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac6))
+
+
+
+
+
 # [1.19.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.18.0...@codecademy/gamut@1.19.0) (2019-03-13)
 
 

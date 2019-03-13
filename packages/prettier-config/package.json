@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/prettier-config",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Shared Prettier config for codecademy",
   "main": "index.js",
   "repository": {
