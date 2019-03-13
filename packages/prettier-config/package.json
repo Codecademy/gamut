@@ -13,8 +13,7 @@
     "url": "https://github.com/RyzacInc/client-modules/packages/prettier-config"
   },
   "homepage": "https://github.com/RyzacInc/client-modules/client-modules/packages/prettier-config",
-  "dependencies": {
+  "peerDependencies": {
     "prettier": "^1.16.4"
-
   }
 }

@@ -1,5 +1,6 @@
 {
-  "extends": ["@codecademy/eslint-config/ts"],
+  "extends": ["@codecademy/eslint-config"],
+  "parser": "@typescript-eslint/parser",
 
   "rules": {
     "prefer-destructuring": 0,
