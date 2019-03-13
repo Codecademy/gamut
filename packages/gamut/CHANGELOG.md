@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.19.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.18.0...@codecademy/gamut@1.19.0) (2019-03-13)
+
+
+### Features
+
+* Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/gamut/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/gamut/commit/c5c1e7f))
+
+
+
+
+
 # [1.18.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.1...@codecademy/gamut@1.18.0) (2019-03-13)
 
 
