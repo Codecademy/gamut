@@ -11,7 +11,7 @@ const Box = () => (
     style={{
       height: 30,
       marginBottom: '0.5rem',
-      backgroundColor: gamut.colors.swatches.ccBlue[500],
+      backgroundColor: gamut.deprecatedColors.swatches.ccBlue[500],
     }}
   />
 );
@@ -19,7 +19,7 @@ const Box = () => (
 const defaultGridProps = {
   style: {
     padding: '1rem',
-    backgroundColor: gamut.colors.swatches.ccBlue[100],
+    backgroundColor: gamut.deprecatedColors.swatches.ccBlue[100],
   },
 };
 

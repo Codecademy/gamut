@@ -8,6 +8,24 @@ function convertSwatchStringToObject(swatchString) {
 }
 
 // =======================================
+//      COLORS
+// =======================================
+
+export const colors = {
+  blue: convertSwatchStringToObject(scssExports.colorBlue),
+  pink: convertSwatchStringToObject(scssExports.colorPink),
+  purple: convertSwatchStringToObject(scssExports.colorPurple),
+  red: convertSwatchStringToObject(scssExports.colorRed),
+  green: convertSwatchStringToObject(scssExports.colorGreen),
+  yellow: convertSwatchStringToObject(scssExports.colorYellow),
+  gray: convertSwatchStringToObject(scssExports.colorGray),
+  black: scssExports.colorBlack,
+  white: scssExports.colorWhite,
+  beige: scssExports.colorBeige,
+  royalBlue: scssExports.colorRoyalBlue,
+};
+
+// =======================================
 //       BRAND COLORS
 // =======================================
 
@@ -22,37 +40,39 @@ export const brandColors = {
 };
 
 // =======================================
-//       NEW DESIGN SYSTEM COLORS
+//     DEPRECATED COLORS
 // =======================================
 
-export const gamutColors = {
+export const deprecatedGamutColors = {
   base: {
-    white: scssExports.gamutWhite,
-    grey: scssExports.gamutGrey,
-    black: scssExports.gamutBlack,
-    purple: scssExports.gamutPurple,
-    royalBlue: scssExports.gamutRoyalBlue,
-    blue: scssExports.gamutBlue,
-    red: scssExports.gamutRed,
-    mint: scssExports.gamutMint,
-    yellow: scssExports.gamutYellow,
+    white: scssExports.deprecatedGamutWhite,
+    grey: scssExports.deprecatedGamutGrey,
+    black: scssExports.deprecatedGamutBlack,
+    purple: scssExports.deprecatedGamutPurple,
+    royalBlue: scssExports.deprecatedGamutRoyalBlue,
+    blue: scssExports.deprecatedGamutBlue,
+    red: scssExports.deprecatedGamutRed,
+    mint: scssExports.deprecatedGamutMint,
+    yellow: scssExports.deprecatedGamutYellow,
   },
   swatches: {
-    purple: convertSwatchStringToObject(scssExports.gamutPurpleSwatches),
-    royalBlue: convertSwatchStringToObject(scssExports.gamutRoyalBlueSwatches),
-    blue: convertSwatchStringToObject(scssExports.gamutBlueSwatches),
-    red: convertSwatchStringToObject(scssExports.gamutRedSwatches),
-    mint: convertSwatchStringToObject(scssExports.gamutMintSwatches),
-    yellow: convertSwatchStringToObject(scssExports.gamutYellowSwatches),
-    grey: convertSwatchStringToObject(scssExports.gamutGreySwatches),
+    purple: convertSwatchStringToObject(
+      scssExports.deprecatedGamutPurpleSwatches
+    ),
+    royalBlue: convertSwatchStringToObject(
+      scssExports.deprecatedGamutRoyalBlueSwatches
+    ),
+    blue: convertSwatchStringToObject(scssExports.deprecatedGamutBlueSwatches),
+    red: convertSwatchStringToObject(scssExports.deprecatedGamutRedSwatches),
+    mint: convertSwatchStringToObject(scssExports.deprecatedGamutMintSwatches),
+    yellow: convertSwatchStringToObject(
+      scssExports.deprecatedGamutYellowSwatches
+    ),
+    grey: convertSwatchStringToObject(scssExports.deprecatedGamutGreySwatches),
   },
 };
 
-// =======================================
-//       LEGACY COLORS
-// =======================================
-
-export const colors = {
+export const deprecatedColors = {
   portal: {
     white: '#fff',
     black: '#000',
@@ -148,11 +168,7 @@ export const colors = {
   },
 };
 
-// =======================================
-//       LEGACY-ER COLORS
-// =======================================
-
-export const editorColors = {
+export const deprecatedEditorColors = {
   black: '#000',
   white: '#fff',
   default: '#fff',
@@ -176,10 +192,6 @@ export const editorColors = {
   variable3: '#5affef',
 };
 
-// =======================================
-//        OTHER LEGACY VARIABLES
-// =======================================
-
 export const grid = {
   cols: 12,
   gutterWidth: '16px',
@@ -197,12 +209,14 @@ export const legacyBreakpoints = {
 };
 
 // =======================================
-//                EXPORT
+//             DEFAULT EXPORT
 // =======================================
 
 export default {
   colors,
-  editorColors,
+  deprecatedColors,
+  deprecatedEditorColors,
+  deprecatedGamutColors,
   grid,
   legacyBreakpoints,
 };
