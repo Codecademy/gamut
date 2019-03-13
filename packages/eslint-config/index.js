@@ -22,11 +22,13 @@ module.exports = {
     node: true,
     jest: true,
   },
+
   globals: {
     // testcafe
     fixture: false,
     test: false,
   },
+
   rules: {
     'default-case': 0,
     'func-names': 0,
