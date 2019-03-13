@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.1...@codecademy/gamut@1.18.0) (2019-03-13)
+
+
+### Features
+
+* **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/gamut/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/gamut/commit/f3c9cf2))
+
+
+
+
+
 ## [1.17.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.0...@codecademy/gamut@1.17.1) (2019-03-12)
 
 **Note:** Version bump only for package @codecademy/gamut

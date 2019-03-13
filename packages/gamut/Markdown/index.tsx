@@ -14,10 +14,12 @@ import s from './styles/index.scss';
 import Iframe from './overrides/Iframe';
 import Anchor from './overrides/Anchor';
 
-const htmlToReactParser = new HtmlToReact.Parser();
+const htmlToReactParser = new HtmlToReact.Parser({
+  xmlMode: true,
+});
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
-const sanitizationConfig = {
+const defaultSanitizationConfig = {
   allowedAttributes: {
     ...insane.defaults.allowedAttributes,
     span: ['class'],
@@ -107,14 +109,26 @@ class Markdown extends PureComponent<MarkdownProps> {
 
     // Render markdown to html
     const rawHtml = inline ? marked.inlineLexer(text, []) : marked(text);
-
-    const html = insane(rawHtml, {
-      ...sanitizationConfig,
+    const sanitizationConfig = {
+      ...defaultSanitizationConfig,
       allowedTags: [
-        ...sanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(key => key.toLowerCase()),
+        ...defaultSanitizationConfig.allowedTags,
+        ...Object.keys(userOverrides).map(tagName => tagName.toLowerCase()),
       ],
-    });
+      allowedAttributes: {
+        ...defaultSanitizationConfig.allowedAttributes,
+        ...Object.keys(userOverrides).reduce((acc, tagName) => {
+          return {
+            ...acc,
+            [tagName.toLowerCase()]: (
+              userOverrides[tagName].allowedAttributes || []
+            ).map(attr => attr.toLowerCase()),
+          };
+        }, {}),
+      },
+    };
+
+    const html = insane(rawHtml, sanitizationConfig);
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
