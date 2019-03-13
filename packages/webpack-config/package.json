@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyzacInc/gamut/packages/webpack-config"
+    "url": "git+https://github.com/RyzacInc/client-modules/packages/webpack-config"
   },
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RyzacInc/gamut/packages/webpack-config"
+    "url": "https://github.com/RyzacInc/client-modules/packages/webpack-config"
   },
-  "homepage": "https://github.com/RyzacInc/gamut/packages/webpack-config",
+  "homepage": "https://github.com/RyzacInc/client-modules/packages/webpack-config",
   "peerDependencies": {
     "@babel/core": "^7.0.0 || ^7.0.0-rc.1",
     "babel-loader": ">= 7.1.4",
@@ -36,15 +36,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
-    "babel-eslint": "^7.2.3",
     "babel-loader": "8.0.4",
     "babel-preset-codecademy": "2.1.0",
     "css-loader": ">= 0.28.10",
-    "eslint": "3.17.1",
-    "eslint-config-airbnb": "12.0.0",
-    "eslint-plugin-import": "1.16.0",
-    "eslint-plugin-jsx-a11y": "2.2.3",
-    "eslint-plugin-react": "6.4.1",
     "file-loader": ">= 1.1.11",
     "jquery": "^3.3.1",
     "node-sass": ">= 4.5.2",

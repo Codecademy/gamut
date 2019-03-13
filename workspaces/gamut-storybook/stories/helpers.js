@@ -7,6 +7,7 @@ function convertCamelToSpinel(str) {
 // remapping of gamut base colors that can be placed directly into the `select` knob function
 const selectableGamutColors = {};
 
+// eslint-disable-next-line guard-for-in
 for (const color in deprecatedGamutColors.base) {
   selectableGamutColors[
     deprecatedGamutColors.base[color]

@@ -1,5 +1,5 @@
-const loaders = require('../loaders');
 const merge = require('webpack-merge');
+const loaders = require('../loaders');
 
 const babelConfig = options => ({
   module: {

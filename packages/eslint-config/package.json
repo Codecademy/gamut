@@ -1,0 +1,27 @@
+{
+  "name": "@codecademy/eslint-config",
+  "version": "0.0.1",
+  "description": "Shared ESLint config for codecademy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyzacInc/client-modules/packages/eslint-config"
+  },
+  "author": "codecademy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyzacInc/client-modules/packages/eslint-config"
+  },
+  "homepage": "https://github.com/RyzacInc/client-modules/client-modules/packages/eslint-config",
+  "peerDependencies": {
+    "eslint": "^5.15.1"
+  },
+  "dependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4"
+  }
+}

@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/gamut.git"
+    "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-rc.1",
@@ -33,7 +33,6 @@
     "@types/storybook__react": "^4.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^6.1.2",
     "babel-loader": "7.1.5",
     "babel-preset-codecademy": "2.1.0",
     "chai": "^3.5.0",
