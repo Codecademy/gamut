@@ -7,7 +7,7 @@
   align-items: flex-start;
   font-size: 0.875rem;
   color: $color-black;
-  border-bottom: 1px solid $gamut-grey-300;
+  border-bottom: 1px solid $color-gray-200;
 }
 
 .notification:last-of-type {
@@ -19,7 +19,7 @@
 }
 
 .notification.unread {
-  background-color: $gamut-blue-100;
+  background-color: rgba($color-blue-500, 0.1);
 }
 
 .icon {
@@ -35,9 +35,9 @@
 }
 
 .time {
-  color: $gamut-grey-600;
+  color: $color-gray-500;
 }
 
 .time.unread {
-  color: $gamut-grey-800;
+  color: $color-gray-600;
 }
