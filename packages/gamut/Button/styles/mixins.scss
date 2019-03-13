@@ -33,7 +33,7 @@
   }
 
   &:disabled {
-    color: $gamut-grey-200;
+    color: $deprecated-gamut-grey-200;
     background-color: $btn-disabled-color;
 
     &:hover {

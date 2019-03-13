@@ -13,17 +13,17 @@
   box-sizing: border-box;
 
   &::placeholder {
-    color: $swatches-grey-500;
+    color: $deprecated-swatches-grey-500;
   }
 
   &:focus {
-    border-color: $gamut-blue;
+    border-color: $deprecated-gamut-blue;
   }
 }
 
 .error {
-  border-color: $swatches-red-400;
+  border-color: $deprecated-swatches-red-400;
   &:focus {
-    border-color: $swatches-red-200;
+    border-color: $deprecated-swatches-red-200;
   }
 }
