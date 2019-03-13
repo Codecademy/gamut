@@ -7,8 +7,6 @@ module.exports = {
     'eslint-config-prettier/react',
   ].map(require.resolve),
 
-  plugins: ['react'],
-
   parserOptions: {
     ecmaVersion: 7,
     sourceType: 'module',
@@ -24,7 +22,11 @@ module.exports = {
     node: true,
     jest: true,
   },
-
+  globals: {
+    // testcafe
+    fixture: false,
+    test: false,
+  },
   rules: {
     'default-case': 0,
     'func-names': 0,
