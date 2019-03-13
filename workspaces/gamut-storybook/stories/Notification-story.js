@@ -12,6 +12,7 @@ storiesOf('Component/NotificationList', module).add(
     ...options,
   })(() => (
     <div>
+      <NotificationList notifications={[]} />
       <NotificationList
         notifications={[
           {

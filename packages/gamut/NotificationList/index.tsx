@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import { isEmpty } from 'lodash';
 import NotificationItem from './Notification';
 import s from './styles/index.scss';
@@ -28,20 +29,24 @@ const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
 }
 
-const numNotifications = 5;
-
 const NotificationList = (props: NotificationListProps) => {
-  const notifications = sortedNotifications(props.notifications).slice(0, numNotifications);
+  const numNotifications = 5;
 
-  if(isEmpty(notifications)) {
-    return(<p>No notifications!</p>);
-  }
+  const notifications = sortedNotifications(props.notifications).slice(0, numNotifications);
+  const notificationClasses = cx(
+    s.notificationsContainer,
+    { [s.emptyContainer]: isEmpty(notifications) },
+  )
 
   return (
-    <div className={s.notificationsContainer}>
-      {notifications.map((notification: Notification) => {
-        return <NotificationItem {...notification} date={new Date(notification.date)} />
-      })}
+    <div className={notificationClasses}>
+      {isEmpty(notifications) ? (
+        <div className={s.emptyText}>No new notifications. <br/> You're all caught up!</div>
+      ) : (
+        notifications.map((notification: Notification) => {
+          return <NotificationItem {...notification} date={new Date(notification.date)} />
+        })
+      )}
     </div>
   );
 };
