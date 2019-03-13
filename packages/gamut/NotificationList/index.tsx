@@ -6,19 +6,24 @@ import NotificationItem from './Notification';
 import s from './styles/index.scss';
 
 const propTypes = {
+  className: PropTypes.string,
   notifications: PropTypes.arrayOf(PropTypes.object),
+  onNotificationClick: PropTypes.func,
 };
 
 interface Notification {
+  date: string,
+  id: string,
+  imageUrl: string,
+  link: string,
   text: string,
   unread?: boolean,
-  imageUrl: string,
-  date: string,
-  link: string,
 };
 
 export type NotificationListProps = {
+  className?: string;
   notifications?: Notification[];
+  onNotificationClick?: (_: string) => void;
 };
 
 const byDate = (notification1: Notification, notification2: Notification) => {
@@ -31,11 +36,13 @@ const sortedNotifications = (notifications: Notification[]) => {
 
 const NotificationList = (props: NotificationListProps) => {
   const numNotifications = 5;
+  const { className, notifications, onNotificationClick } = props;
 
-  const notifications = sortedNotifications(props.notifications).slice(0, numNotifications);
+  const visibleNotifications = sortedNotifications(notifications).slice(0, numNotifications);
   const notificationClasses = cx(
     s.notificationsContainer,
     { [s.emptyContainer]: isEmpty(notifications) },
+    className,
   )
 
   return (
@@ -43,8 +50,8 @@ const NotificationList = (props: NotificationListProps) => {
       {isEmpty(notifications) ? (
         <div className={s.emptyText}>No new notifications. <br/> You're all caught up!</div>
       ) : (
-        notifications.map((notification: Notification) => {
-          return <NotificationItem {...notification} date={new Date(notification.date)} />
+        visibleNotifications.map((notification: Notification) => {
+          return <NotificationItem key={notification.id} {...notification} date={new Date(notification.date)} onClick={() => onNotificationClick(notification.id)} />
         })
       )}
     </div>

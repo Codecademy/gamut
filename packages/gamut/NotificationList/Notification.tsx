@@ -5,19 +5,21 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import s from './styles/Notification.scss';
 
 const propTypes = {
-  unread: PropTypes.bool,
-  link: PropTypes.string,
-  text: PropTypes.string,
   date: PropTypes.instanceOf(Date),
   imageUrl: PropTypes.string,
+  link: PropTypes.string,
+  onClick: PropTypes.func,
+  text: PropTypes.string,
+  unread: PropTypes.bool,
 };
 
 export type NotificationProps = {
-  unread?: boolean;
-  link?: string;
-  text?: string;
   date?: Date;
   imageUrl?: string;
+  link?: string;
+  onClick: Function;
+  text?: string;
+  unread?: boolean;
 };
 
 const formatTime = (notificationDate: Date) => {
@@ -40,7 +42,7 @@ const formatTime = (notificationDate: Date) => {
 }
 
 const Notification = (props: Notification) => {
-  const { unread, link, date, text, imageUrl } = props;
+  const { date, imageUrl, link, onClick, text, unread } = props;
 
   const notificationClasses = cx(
     s.notification,
@@ -57,7 +59,7 @@ const Notification = (props: Notification) => {
   );
 
   return (
-    <a href={link} target='_blank' rel='noopener noreferrer' className={notificationClasses}>
+    <a href={link} target='_blank' rel='noopener noreferrer' className={notificationClasses} onClick={onClick}>
       <div>
         <img src={imageUrl} className={s.icon}/>
       </div>

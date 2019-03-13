@@ -14,6 +14,7 @@ storiesOf('Component/NotificationList', module).add(
     <div>
       <NotificationList notifications={[]} />
       <NotificationList
+        onNotificationClick={id => alert(id)}
         notifications={[
           {
             text: 'This cat is coming to your house.',
@@ -22,6 +23,7 @@ storiesOf('Component/NotificationList', module).add(
             date: '13 Mar, 2019 10:45',
             link: 'https://google.com',
             unread: true,
+            id: 'abc',
           },
           {
             text:
