@@ -18,15 +18,16 @@ storiesOf('Component/NotificationList', module).add(
             text: 'This cat is coming to your house.',
             imageUrl:
               'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 10:45',
+            date: '13 Mar, 2019 10:45',
             link: 'https://google.com',
+            unread: true,
           },
           {
             text:
               'Here is some longer text. I want to make sure it cuts off after a certain number of lines. Here is a cat. I love this cat. It is the best cat. Boop boop boop',
             imageUrl:
               'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 11:45',
+            date: '12 Mar, 2019 11:45',
             link: 'https://google.com',
           },
           {
@@ -49,7 +50,6 @@ storiesOf('Component/NotificationList', module).add(
               'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
             date: '4 Mar, 2019 14:45',
             link: 'https://google.com',
-            unread: true,
           },
           {
             text: 'The cat came to your house.',

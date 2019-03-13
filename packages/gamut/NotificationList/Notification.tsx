@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import LinesEllipsis from 'react-lines-ellipsis';
@@ -20,10 +20,23 @@ export type NotificationProps = {
   imageUrl?: string;
 };
 
-const hoursSince = (notificationDate: Date) => {
+const formatTime = (notificationDate: Date) => {
+  let num, unit;
+
   const now = new Date();
-  const diff = Math.abs(now.getTime() - notificationDate.getTime()) / 36e5;
-  return Math.round(diff);
+  const hours_since_notification = Math.abs(now.getTime() - notificationDate.getTime()) / 36e5;
+
+  const HOURS_IN_DAY = 24;
+
+  if(hours_since_notification >= 24) {
+    num = Math.round(hours_since_notification/HOURS_IN_DAY);
+    unit = num == 1 ? 'day' : 'days';
+  } else {
+    num = Math.round(hours_since_notification);
+    unit = num == 1 ? 'hour' : 'hours';
+  }
+
+  return `${num} ${unit}`;
 }
 
 const Notification = (props: Notification) => {
@@ -57,7 +70,7 @@ const Notification = (props: Notification) => {
             basedOn='letters'
           /> 
         </div>
-        <div className={timeClasses}>{hoursSince(date)} hours ago</div>
+        <div className={timeClasses}>{formatTime(date)} ago</div>
       </div>
     </a>
   );
