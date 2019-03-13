@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.7.0...@codecademy/gamut-storybook@2.8.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac6))
+
+
+
+
+
 # [2.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.6.0...@codecademy/gamut-storybook@2.7.0) (2019-03-13)
 
 
