@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { HTMLAttributes, FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 import s from './styles.scss';
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {

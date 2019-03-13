@@ -17,12 +17,18 @@ export type CardShellProps = {
   children: ReactNode;
   className?: string;
   hoverShadow?: boolean;
+  style?: object;
+  id?: string;
+  role?: string;
 };
 
 export default function CardShell({
   children,
   hoverShadow,
   className,
+  style,
+  role,
+  id,
 }: CardShellProps) {
   const shellClasses = cx(
     s.shell,
@@ -32,7 +38,11 @@ export default function CardShell({
     className
   );
 
-  return <div className={shellClasses}>{children}</div>;
+  return (
+    <div className={shellClasses} {...{ style, role, id }}>
+      {children}
+    </div>
+  );
 }
 
 CardShell.propTypes = propTypes;

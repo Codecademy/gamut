@@ -1,5 +1,4 @@
 import React, { SVGProps, FunctionComponent } from 'react';
-import PropTypes from 'prop-types';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -34,11 +33,11 @@ const RadialProgress: FunctionComponent<RadialProgressProps> = ({
   let finalValue;
 
   if (Array.isArray(value)) {
-    startingValue = value[0];
-    finalValue = value[1];
+    startingValue = convertPercentToOffset(value[0]);
+    finalValue = convertPercentToOffset(value[1]);
   } else {
-    startingValue = value;
-    finalValue = value;
+    startingValue = convertPercentToOffset(value);
+    finalValue = convertPercentToOffset(value);
   }
 
   return (

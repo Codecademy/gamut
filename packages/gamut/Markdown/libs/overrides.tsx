@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 
 export interface AttributesMap {
-  [key: string]: string;
+  [key: string]: string | boolean;
 }
 
 export interface HTMLToReactNode {
@@ -18,7 +18,7 @@ export interface HTMLToReactNode {
 }
 
 // Mapping of html attributes to their camelCase variants
-const attributeMap: AttributesMap = {
+const attributeMap: { [key: string]: string } = {
   ...camelCaseMap,
   for: 'htmlFor',
   class: 'className',
@@ -26,6 +26,7 @@ const attributeMap: AttributesMap = {
 
 export type OverrideSettings = {
   component: React.ComponentType;
+  allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
@@ -34,13 +35,26 @@ export type ManyOverrideSettings = {
   [i: string]: OverrideSettings;
 };
 
+const processAttributeValue = (value: string | boolean) => {
+  if (value === 'true') {
+    return true;
+  }
+
+  if (value === 'false') {
+    return false;
+  }
+
+  return value || true;
+};
+
 // Convert html attributes to valid react props
 export const processAttributes = (attributes: AttributesMap = {}) =>
   Object.keys(attributes).reduce((acc, attr) => {
-    const key = attributeMap[attr.replace(/[-:]/, '')];
+    const reactAttr = attributeMap[attr.replace(/[-:]/, '')] || attr;
+
     return {
       ...acc,
-      [key || attr]: attributes[attr],
+      [reactAttr]: processAttributeValue(attributes[attr]),
     };
   }, {});
 
@@ -52,7 +66,6 @@ export const createTagOverride = (
   shouldProcessNode(node: HTMLToReactNode) {
     if (!Override) return false;
 
-    const { next, prev } = node;
     if (Override.shouldProcessNode) {
       return Override.shouldProcessNode(node);
     }
@@ -70,9 +83,11 @@ export const createTagOverride = (
       children,
       key,
     };
+
     if (Override.processNode) {
       return Override.processNode(node, props);
     }
+
     return <Override.component {...props} />;
   },
 });

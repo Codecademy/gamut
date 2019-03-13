@@ -12,6 +12,7 @@
   @include font-smoothing;
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
+  user-select: none;
   @include button-size(
     $btn-padding-y,
     $btn-padding-x,

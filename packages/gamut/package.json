@@ -1,20 +1,24 @@
 {
   "name": "@codecademy/gamut",
-  "description": "Styleguide & Component library for codecademy.com",
-  "version": "1.15.15",
+  "description": "Styleguide & Component library for Codecademy",
+  "version": "1.18.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
   "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/gamut.git"
   },
   "peerDependencies": {
-    "react": ">=16.4.1",
-    "react-dom": ">=16.4.1"
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^2.0.4",

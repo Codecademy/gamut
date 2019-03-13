@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.1...@codecademy/gamut@1.18.0) (2019-03-13)
+
+
+### Features
+
+* **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/gamut/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/gamut/commit/f3c9cf2))
+
+
+
+
+
+## [1.17.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.0...@codecademy/gamut@1.17.1) (2019-03-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.17.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.11...@codecademy/gamut@1.17.0) (2019-03-12)
+
+
+### Features
+
+* **icons:** add menu icon, adjust close icon ([#222](https://github.com/RyzacInc/gamut/issues/222)) ([56b868d](https://github.com/RyzacInc/gamut/commit/56b868d))
+
+
+
+
+
+## [1.16.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.10...@codecademy/gamut@1.16.11) (2019-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.9...@codecademy/gamut@1.16.10) (2019-03-07)
+
+
+### Bug Fixes
+
+* revert changes to ButtonBase ([#218](https://github.com/RyzacInc/gamut/issues/218)) ([454cfc6](https://github.com/RyzacInc/gamut/commit/454cfc6))
+
+
+
+
+
+## [1.16.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.8...@codecademy/gamut@1.16.9) (2019-03-06)
+
+
+### Bug Fixes
+
+* Fully reset BaseButton styles ([#166](https://github.com/RyzacInc/gamut/issues/166)) ([6a9ec72](https://github.com/RyzacInc/gamut/commit/6a9ec72))
+
+
+
+
+
+## [1.16.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.7...@codecademy/gamut@1.16.8) (2019-03-06)
+
+
+### Bug Fixes
+
+* add sideeffects for css and scss ([#157](https://github.com/RyzacInc/gamut/issues/157)) ([c4e06d3](https://github.com/RyzacInc/gamut/commit/c4e06d3))
+
+
+
+
+
+## [1.16.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.6...@codecademy/gamut@1.16.7) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.5...@codecademy/gamut@1.16.6) (2019-03-04)
+
+
+### Bug Fixes
+
+* remove all unused local variables ([#208](https://github.com/RyzacInc/gamut/issues/208)) ([ccc044a](https://github.com/RyzacInc/gamut/commit/ccc044a))
+
+
+
+
+
+## [1.16.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.4...@codecademy/gamut@1.16.5) (2019-03-04)
+
+
+### Bug Fixes
+
+* fixes phone icon size ([4d2e0de](https://github.com/RyzacInc/gamut/commit/4d2e0de))
+
+
+
+
+
+## [1.16.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.3...@codecademy/gamut@1.16.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.2...@codecademy/gamut@1.16.3) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.16.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.1...@codecademy/gamut@1.16.2) (2019-03-01)
+
+
+### Bug Fixes
+
+* **RadialProgress:** convert value to percent ([#207](https://github.com/RyzacInc/gamut/issues/207)) ([4d738c6](https://github.com/RyzacInc/gamut/commit/4d738c6))
+
+
+
+
+
+## [1.16.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.0...@codecademy/gamut@1.16.1) (2019-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.16.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.15...@codecademy/gamut@1.16.0) (2019-02-28)
+
+
+### Features
+
+* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
+
+
+
+
+
 <a name="1.15.15"></a>
 ## [1.15.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.15.14...@codecademy/gamut@1.15.15) (2019-02-27)
 
