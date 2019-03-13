@@ -12,14 +12,14 @@
   box-sizing: border-box;
 
   &::placeholder {
-    color: $swatches-grey-500;
+    color: $deprecated-swatches-grey-500;
   }
 
   &:focus {
-    border-color: $swatches-mint-600;
+    border-color: $deprecated-swatches-mint-600;
   }
 }
 
 .error {
-  border-color: $swatches-red-400;
+  border-color: $deprecated-swatches-red-400;
 }
