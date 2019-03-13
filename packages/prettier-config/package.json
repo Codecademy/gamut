@@ -1,0 +1,20 @@
+{
+  "name": "@codecademy/prettier-config",
+  "version": "0.0.1",
+  "description": "Shared Prettier config for codecademy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyzacInc/client-modules/packages/prettier-config"
+  },
+  "author": "codecademy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RyzacInc/client-modules/packages/prettier-config"
+  },
+  "homepage": "https://github.com/RyzacInc/gamut/client-modules/packages/prettier-config",
+  "dependencies": {
+    "prettier": "^1.16.4"
+
+  }
+}
