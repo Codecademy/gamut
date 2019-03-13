@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/gamut.git"
+    "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-rc.1",

@@ -14,7 +14,7 @@
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/gamut.git"
+    "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
