@@ -1,6 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$tab-color: $gamut-purple-600;
+$tab-color: $deprecated-gamut-purple-600;
 $tab-border-radius: 0.25rem;
 
 .tabListItem {
@@ -35,7 +35,7 @@ $tab-border-radius: 0.25rem;
 
   &:hover,
   &:focus {
-    background-color: $gamut-purple-100;
+    background-color: $deprecated-gamut-purple-100;
   }
 }
 
