@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/eslint-config",
   "version": "0.1.0",
-  "description": "Shared ESLint config for codecademy",
+  "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "repository": {
     "type": "git",
