@@ -1,10 +1,10 @@
 {
-  "name": "gamut",
+  "name": "client-modules",
   "private": true,
-  "description": "Styleguide & Component libraryy for codecademy.com",
+  "description": "Modules and components for Codecademy",
   "version": "1.2.0",
   "license": "Proprietary",
-  "author": "Jake Hiller <jake@codecademy.com>",
+  "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
     "node": "^8.10.0",
     "yarn": "^1.3.2"
