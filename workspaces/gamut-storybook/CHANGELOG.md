@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.14...@codecademy/gamut-storybook@2.6.0) (2019-03-13)
+
+
+### Features
+
+* **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/gamut/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/gamut/commit/f3c9cf2))
+
+
+
+
+
 ## [2.5.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.13...@codecademy/gamut-storybook@2.5.14) (2019-03-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
