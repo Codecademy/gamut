@@ -253,9 +253,9 @@ var test = true;
   });
 
   describe('Replaces certain characters in the raw markdown before parsing', () => {
-    it('replaces `&mdash;` with `--`', () => {
+    it('replaces `&mdash;` with `---`', () => {
       const text = `This is some text with a &mdash; in the middle`;
-      const expectedText = `This is some text with a \u2013 in the middle`;
+      const expectedText = `This is some text with a \u2014 in the middle`;
       expect(text).not.toEqual(expectedText);
       const markdown = mount(<Markdown inline text={text} />);
       expect(markdown.text().trim()).toEqual(expectedText);

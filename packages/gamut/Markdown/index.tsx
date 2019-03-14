@@ -57,7 +57,7 @@ const defaultSanitizationConfig = {
 
 const processText = (text: string) => {
   // Replace &mdash; due to legacy markdown that didn't use smart dashes
-  return text.replace('&mdash;', '--');
+  return text.replace('&mdash;', '---');
 };
 
 const isValidNode = function() {
