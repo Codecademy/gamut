@@ -8,16 +8,15 @@ import {
   createTagOverride,
   createCodeBlockOverride,
   ManyOverrideSettings,
+  standardOverrides,
 } from './libs/overrides';
 import s from './styles/index.scss';
-
 import Iframe from './overrides/Iframe';
 import Anchor from './overrides/Anchor';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
-const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
 const defaultSanitizationConfig = {
   allowedAttributes: {
@@ -53,11 +52,6 @@ const defaultSanitizationConfig = {
     'iframe',
     'codeblock',
   ],
-};
-
-const processText = (text: string) => {
-  // Replace &mdash; due to legacy markdown that didn't use smart dashes
-  return text.replace('&mdash;', '---');
 };
 
 const isValidNode = function() {
@@ -104,24 +98,17 @@ class Markdown extends PureComponent<MarkdownProps> {
         component: Anchor,
       }),
       ...overrides,
-      {
-        shouldProcessNode() {
-          return true;
-        },
-        processNode: processNodeDefinitions.processDefaultNode,
-      },
+      ...standardOverrides,
     ];
 
     const markedOptions = {
       smartypants: true,
     };
 
-    const processedText = processText(text);
-
     // Render markdown to html
     const rawHtml = inline
-      ? marked.inlineLexer(processedText, [], markedOptions)
-      : marked(processedText, markedOptions);
+      ? marked.inlineLexer(text, [], markedOptions)
+      : marked(text, markedOptions);
 
     const sanitizationConfig = {
       ...defaultSanitizationConfig,

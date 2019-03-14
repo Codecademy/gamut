@@ -260,5 +260,14 @@ var test = true;
       const markdown = mount(<Markdown inline text={text} />);
       expect(markdown.text().trim()).toEqual(expectedText);
     });
+
+    it('does not replace `&mdash;` with `---`', () => {
+      const text =
+        'This is `some code with a &mdash; in` the middle and this is a &mdash;';
+      const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown inline text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
   });
 });
