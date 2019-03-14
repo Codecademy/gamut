@@ -5,6 +5,19 @@ import { withInfo } from '@storybook/addon-info';
 import NotificationList from '@codecademy/gamut/NotificationList';
 
 import { addonInfoOptions as options } from './options';
+import s from './Notification-story.scss';
+
+const HOUR = 60 * 60 * 1000;
+const DAY = HOUR * 24;
+const timeOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric',
+};
 
 storiesOf('Component/NotificationList', module).add(
   'Notification Menu',
@@ -12,54 +25,36 @@ storiesOf('Component/NotificationList', module).add(
     ...options,
   })(() => (
     <div>
-      <NotificationList notifications={[]} />
       <NotificationList
-        onNotificationClick={id => alert(id)}
+        notifications={[]}
+        className={s.notificationContainer}
+      />
+      <NotificationList
+        className={s.notificationContainer}
         notifications={[
           {
-            text: 'This cat is coming to your house.',
+            text: 'Check out our Python livestream!',
             imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '13 Mar, 2019 10:45',
-            link: 'https://google.com',
+              'https://s3.amazonaws.com/codecademy-content/programs/livestream_icons/live_logo_1.svg',
+            date: new Date(Date.now() - HOUR).toLocaleString(
+              'en-GB',
+              timeOptions
+            ),
+            link:
+              'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
             unread: true,
             id: 'abc',
           },
           {
             text:
-              'Here is some longer text. I want to make sure it cuts off after a certain number of lines. Here is a cat. I love this cat. It is the best cat. Boop boop boop',
-            imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '12 Mar, 2019 11:45',
-            link: 'https://google.com',
-          },
-          {
-            text: 'Random text 1.',
-            imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 13:45',
-            link: 'https://google.com',
-          },
-          {
-            text: 'Random text 2.',
-            imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 9:45',
-            link: 'https://google.com',
-          },
-          {
-            text: 'Random text 3.',
-            imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 14:45',
-            link: 'https://google.com',
-          },
-          {
-            text: 'The cat came to your house.',
-            imageUrl:
-              'http://r.ddmcdn.com/s_f/o_1/cx_462/cy_245/cw_1349/ch_1349/w_720/APL/uploads/2015/06/caturday-shutterstock_149320799.jpg',
-            date: '4 Mar, 2019 12:45',
-            link: 'https://google.com',
+              "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+            imageUrl: 'https://bit.ly/2Ckp4eW',
+            date: new Date(Date.now() - 2 * DAY).toLocaleString(
+              'en-GB',
+              timeOptions
+            ),
+            link:
+              'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
           },
         ]}
       />

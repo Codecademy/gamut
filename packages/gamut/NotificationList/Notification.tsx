@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
-import LinesEllipsis from 'react-lines-ellipsis';
+import Truncate from 'react-truncate';
 import s from './styles/Notification.scss';
 
 const propTypes = {
@@ -65,12 +65,12 @@ const Notification = (props: Notification) => {
       </div>
       <div className={s.body}>
         <div className={s.text}>
-          <LinesEllipsis
-            text={text}
-            maxLine={3}
+          <Truncate
+            lines={3}
             ellipsis='...'
-            basedOn='letters'
-          /> 
+          > 
+            {text}
+          </Truncate>
         </div>
         <div className={timeClasses}>{formatTime(date)} ago</div>
       </div>

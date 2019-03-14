@@ -10884,10 +10884,6 @@ react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-lines-ellipsis@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.npmjs.org/react-lines-ellipsis/-/react-lines-ellipsis-0.14.0.tgz#954459e68d8f9fc5a40498cabc5f47d63cbefd21"
-
 react-modal@^3.6.1:
   version "3.8.1"
   resolved "https://registry.npmjs.org/react-modal/-/react-modal-3.8.1.tgz#7300f94a6f92a2e17994de0be6ccb61734464c9e"
@@ -10949,6 +10945,10 @@ react-treebeard@^3.1.0:
     prop-types "^15.6.2"
     shallowequal "^1.1.0"
     velocity-react "^1.4.1"
+
+react-truncate@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.npmjs.org/react-truncate/-/react-truncate-2.4.0.tgz#3cf5ff09ab86f93e3c078d359f4de6d75aa60510"
 
 react@^16.6.3, react@^16.7.0, react@^16.8.3:
   version "16.8.3"
