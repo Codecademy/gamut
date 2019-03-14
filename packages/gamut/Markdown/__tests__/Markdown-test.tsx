@@ -18,24 +18,19 @@ const jsCode = () => {
 `;
 
 const htmlMarkdown = `
-<h1>Heading 1</h1>
+<h1>
+  Heading 1
+</h1>
 
-<h3>Heading 3</h3>
+<h3>
+  Heading 3
+</h3>
 
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
 const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-`;
-
-// test for working MIXED_INLINE_HTML_TAGS regex
-const htmlWrappedMarkdown = `
-Starting some html in the middle of a <div class="test">
-
-# Heading one
-</div>
-
 `;
 
 describe('<Markdown />', () => {
@@ -128,7 +123,7 @@ var test = true;
 
   it('Renders data attributes on the markdown wrapper', () => {
     const markdown = mount(
-      <Markdown text={htmlWrappedMarkdown} data-testid="cool" />
+      <Markdown text={basicMarkdown} data-testid="cool" />
     );
     expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
   });
@@ -254,6 +249,25 @@ var test = true;
         expect(markdown).toBeDefined();
         expect(markdown.find('p > strong').length).toEqual(0);
       });
+    });
+  });
+
+  describe('Replaces certain characters in the raw markdown before parsing', () => {
+    it('replaces `&mdash;` with `---`', () => {
+      const text = `This is some text with a &mdash; in the middle`;
+      const expectedText = `This is some text with a \u2014 in the middle`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown inline text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+
+    it('does not replace `&mdash;` with `---`', () => {
+      const text =
+        'This is `some code with a &mdash; in` the middle and this is a &mdash;';
+      const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown inline text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
     });
   });
 });
