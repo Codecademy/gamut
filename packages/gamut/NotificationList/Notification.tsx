@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import moment from 'moment';
 import Truncate from 'react-truncate';
 import s from './styles/Notification.scss';
 
 const propTypes = {
-  date: PropTypes.instanceOf(Date),
+  date: PropTypes.string,
   imageUrl: PropTypes.string,
   link: PropTypes.string,
   onClick: PropTypes.func,
@@ -14,7 +15,7 @@ const propTypes = {
 };
 
 export type NotificationProps = {
-  date?: Date;
+  date?: string;
   imageUrl?: string;
   link?: string;
   onClick: Function;
@@ -22,23 +23,8 @@ export type NotificationProps = {
   unread?: boolean;
 };
 
-const formatTime = (notificationDate: Date) => {
-  let num, unit;
-
-  const now = new Date();
-  const hours_since_notification = Math.abs(now.getTime() - notificationDate.getTime()) / 36e5;
-
-  const HOURS_IN_DAY = 24;
-
-  if(hours_since_notification >= 24) {
-    num = Math.round(hours_since_notification/HOURS_IN_DAY);
-    unit = num == 1 ? 'day' : 'days';
-  } else {
-    num = Math.round(hours_since_notification);
-    unit = num == 1 ? 'hour' : 'hours';
-  }
-
-  return `${num} ${unit}`;
+const formatTime = (notificationDate: string): string => {
+  return moment(notificationDate).fromNow();
 }
 
 const Notification = (props: Notification) => {
@@ -72,7 +58,7 @@ const Notification = (props: Notification) => {
             {text}
           </Truncate>
         </div>
-        <div className={timeClasses}>{formatTime(date)} ago</div>
+        <div className={timeClasses}>{formatTime(date)}</div>
       </div>
     </a>
   );

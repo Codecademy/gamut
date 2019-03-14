@@ -51,7 +51,7 @@ const NotificationList = (props: NotificationListProps) => {
         <div className={s.emptyText}>No new notifications.<br/>You're all caught up!</div>
       ) : (
         visibleNotifications.map((notification: Notification) => {
-          return <NotificationItem key={notification.id} {...notification} date={new Date(notification.date)} onClick={() => onNotificationClick(notification.id)} />
+          return <NotificationItem key={notification.id} {...notification} onClick={() => onNotificationClick(notification.id)} />
         })
       )}
     </div>
