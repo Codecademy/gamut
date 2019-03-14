@@ -1,6 +1,9 @@
 import React from 'react';
 import { get } from 'lodash';
+import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
+
+const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
 export interface AttributesMap {
   [key: string]: string | boolean;
@@ -117,3 +120,30 @@ export const createCodeBlockOverride = (
     },
     ...Override,
   });
+
+const processText = (text: string) => {
+  // Replace &mdash; due to legacy markdown that didn't use smart dashes
+  return text.replace('&mdash;', '\u2014');
+};
+
+export const standardOverrides = [
+  {
+    shouldProcessNode(node: HTMLToReactNode) {
+      // Parse text outside of code blocks
+      if (node.parent && ['code', 'pre'].indexOf(node.parent.name) >= 0) {
+        return false;
+      }
+      if (node.type === 'text') return true;
+      return false;
+    },
+    processNode(node: HTMLToReactNode, ...args: any[]) {
+      return processText(node.data);
+    },
+  },
+  {
+    shouldProcessNode() {
+      return true;
+    },
+    processNode: processNodeDefinitions.processDefaultNode,
+  },
+];
