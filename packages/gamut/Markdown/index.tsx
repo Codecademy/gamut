@@ -55,6 +55,11 @@ const defaultSanitizationConfig = {
   ],
 };
 
+const processText = (text: string) => {
+  // Replace &mdash; due to legacy markdown that didn't use smart dashes
+  return text.replace('&mdash;', '--');
+};
+
 const isValidNode = function() {
   return true;
 };
@@ -111,10 +116,13 @@ class Markdown extends PureComponent<MarkdownProps> {
       smartypants: true,
     };
 
+    const processedText = processText(text);
+
     // Render markdown to html
     const rawHtml = inline
-      ? marked.inlineLexer(text, [], markedOptions)
-      : marked(text, markedOptions);
+      ? marked.inlineLexer(processedText, [], markedOptions)
+      : marked(processedText, markedOptions);
+
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
       allowedTags: [
