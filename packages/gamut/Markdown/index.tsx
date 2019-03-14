@@ -107,8 +107,14 @@ class Markdown extends PureComponent<MarkdownProps> {
       },
     ];
 
+    const markedOptions = {
+      smartypants: true,
+    };
+
     // Render markdown to html
-    const rawHtml = inline ? marked.inlineLexer(text, []) : marked(text);
+    const rawHtml = inline
+      ? marked.inlineLexer(text, [], markedOptions)
+      : marked(text, markedOptions);
     const sanitizationConfig = {
       ...defaultSanitizationConfig,
       allowedTags: [
