@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.20.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.0...@codecademy/gamut@1.20.1) (2019-03-14)
+
+
+### Bug Fixes
+
+* **Markdown:** Add smart dash support, fix &mdash; showing up in text. ([#226](https://github.com/RyzacInc/client-modules/issues/226)) ([8deeb79](https://github.com/RyzacInc/client-modules/commit/8deeb79))
+
+
+
+
+
 # [1.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.19.0...@codecademy/gamut@1.20.0) (2019-03-13)
 
 
