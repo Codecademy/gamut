@@ -30,7 +30,7 @@ const renderIcon = (props: NotificationImage) => {
   };
 
   if(imageUrl) {
-    return <img src={imageUrl} className={s.icon}/>;
+    return <img src={imageUrl} className={s.icon} alt=''/>;
 }
 
   return null;

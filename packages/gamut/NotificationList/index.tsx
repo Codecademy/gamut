@@ -41,7 +41,7 @@ const NotificationList = (props: NotificationListProps) => {
   return (
     <div className={notificationClasses}>
       {isEmpty(notifications) ? (
-        <div className={s.emptyText}>No new notifications.<br/>You're all caught up!</div>
+        <div className={s.emptyText}>{'No new notifications.'}<br/>{'You\'re all caught up!'}</div>
       ) : (
         visibleNotifications.map((notification: Notification) => {
           return <NotificationItem key={notification.id} {...notification} onClick={() => onNotificationClick(notification.id)} />
