@@ -8,21 +8,21 @@
   font-size: 0.875rem;
   color: $color-black;
   border-bottom: 1px solid $color-gray-200;
-}
 
-.notification:last-of-type {
-  border-bottom: none;
-}
+  &.unread {
+    background-color: rgba($color-blue-500, 0.1);
 
-.notification:hover {
-  text-decoration: none;
-}
+    .time {
+      color: $color-gray-700;
+    }
+  }
 
-.notification.unread {
-  background-color: rgba($color-blue-500, 0.1);
+  &:last-of-type {
+    border-bottom: 0;
+  }
 
-  .time {
-    color: $color-gray-700;
+  &:hover {
+    text-decoration: none;
   }
 }
 
