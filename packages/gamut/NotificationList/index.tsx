@@ -1,16 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
 import { Notification } from './typings';
 import NotificationItem from './NotificationItem';
 import s from './styles/index.scss';
-
-const propTypes = {
-  className: PropTypes.string,
-  notifications: PropTypes.arrayOf(PropTypes.object),
-  onNotificationClick: PropTypes.func,
-};
 
 const byDate = (notification1: Notification, notification2: Notification) => {
   return (

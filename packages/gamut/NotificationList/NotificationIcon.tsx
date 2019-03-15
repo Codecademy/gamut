@@ -1,15 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import Icon from '../Icon';
 import { NotificationImage } from './typings';
 import s from './styles/NotificationIcon.scss';
-
-const propTypes = {
-  iconSettings: PropTypes.object,
-  iconSlug: PropTypes.string,
-  imageUrl: PropTypes.string,
-};
 
 const renderIcon = (props: NotificationImage) => {
   const { iconSettings, iconSlug, imageUrl } = props;

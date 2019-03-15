@@ -1,22 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import moment from 'moment';
 import Truncate from 'react-truncate';
 import { Notification } from './typings';
 import NotificationIcon from './NotificationIcon';
 import s from './styles/Notification.scss';
-
-const propTypes = {
-  date: PropTypes.string,
-  iconSettings: PropTypes.object,
-  iconSlug: PropTypes.string,
-  imageUrl: PropTypes.string,
-  link: PropTypes.string,
-  onClick: PropTypes.func,
-  text: PropTypes.string,
-  unread: PropTypes.bool,
-};
 
 export type NotificationProps = {
   onClick?: (event: object) => void;
