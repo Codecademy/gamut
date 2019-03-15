@@ -22,25 +22,36 @@ export type IconProps = {
   imageUrl?: string;
 };
 
-const NotificationIcon = (props: IconProps) => {
+const renderIcon = (props: IconProps) => {
   const { iconSettings, iconSlug, imageUrl } = props;
-  const fillColor = get(iconSettings, 'fillColor');
-  const backgroundColor = get(iconSettings, 'backgroundColor');
 
-  const iconStyle = {
-    backgroundColor
-  };
+  if(iconSlug) {
+    const fillColor = get(iconSettings, 'fillColor');
+    const backgroundColor = get(iconSettings, 'backgroundColor');
 
-  return (
-    iconSlug ? (
-      <div className={s.iconContainer} style={iconStyle}>
+    const iconStyle = {
+      backgroundColor
+    };
+
+    return (
+      <div className={s.iconComponentContainer} style={iconStyle}>
         <Icon name={iconSlug} className={s.iconImage} fill={fillColor}/>
       </div>
-    ) : (
-      <img src={imageUrl} className={s.icon}/>
-    )    
-  );
+    )
+  };
+
+  if(imageUrl) {
+    return <img src={imageUrl} className={s.icon}/>;
+  }
+
+  return null;
 }
+
+const NotificationIcon = (props: IconProps) => (
+  <div className={s.iconContainer}>
+    {renderIcon(props)}
+  </div>
+);
 
 NotificationIcon.propTypes = propTypes;
 

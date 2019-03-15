@@ -34,8 +34,6 @@ storiesOf('Component/NotificationList', module).add(
         notifications={[
           {
             text: 'Check out our Python livestream!',
-            // imageUrl:
-            //   'https://s3.amazonaws.com/codecademy-content/programs/livestream_icons/live_logo_1.svg',
             iconSlug: 'python',
             iconSettings: {
               fillColor: '#3069f0',
