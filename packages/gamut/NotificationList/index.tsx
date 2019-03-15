@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
+import omitProps from '../utils/omitProps';
 import { Notification } from './typings';
 import NotificationItem from './NotificationItem';
 import s from './styles/index.scss';
@@ -16,8 +17,6 @@ const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
 };
 
-const MAX_NOTIFICATIONS = 5;
-
 type NotificationListProps = {
   className?: string;
   notifications?: Notification[];
@@ -26,10 +25,11 @@ type NotificationListProps = {
 
 const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
+  const maxNotifications = 5;
 
   const visibleNotifications = sortedNotifications(notifications).slice(
     0,
-    MAX_NOTIFICATIONS
+    maxNotifications
   );
   const notificationClasses = cx(
     s.notificationsContainer,
@@ -38,7 +38,7 @@ const NotificationList = (props: NotificationListProps) => {
   );
 
   return (
-    <div className={notificationClasses}>
+    <div className={notificationClasses} {...omitProps(Object.keys(this.props), this.props)}>
       {isEmpty(notifications) ? (
         <div className={s.emptyText}>
           {'No new notifications.'}
@@ -50,7 +50,7 @@ const NotificationList = (props: NotificationListProps) => {
           return (
             <NotificationItem
               key={notification.id}
-              {...notification}
+              notification={notification}
               onClick={() => onNotificationClick(notification.id)}
             />
           );

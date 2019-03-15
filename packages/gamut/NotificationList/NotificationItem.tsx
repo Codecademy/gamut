@@ -6,25 +6,26 @@ import { Notification } from './typings';
 import NotificationIcon from './NotificationIcon';
 import s from './styles/Notification.scss';
 
-export type NotificationProps = {
+export type NotificationItemProps = {
   onClick?: (event: object) => void;
+  notification: Notification;
 };
 
 const formatTime = (notificationDate: string): string => {
   return moment(notificationDate).fromNow();
 };
 
-const NotificationItem = (props: NotificationProps & Notification) => {
+const NotificationItem = (props: NotificationItemProps) => {
+  const { notification, onClick } = props;
   const {
     date,
     iconSettings,
     iconSlug,
     imageUrl,
     link,
-    onClick,
     text,
     unread,
-  } = props;
+  } = notification;
 
   const notificationClasses = cx(s.notification, {
     [s.unread]: unread,
