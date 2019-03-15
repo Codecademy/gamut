@@ -55,6 +55,4 @@ const NotificationItem = (props: NotificationProps & Notification) => {
   );
 };
 
-NotificationItem.propTypes = propTypes;
-
 export default NotificationItem;

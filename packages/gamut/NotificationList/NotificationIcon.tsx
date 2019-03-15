@@ -8,16 +8,17 @@ const renderIcon = (props: NotificationImage) => {
   const { iconSettings, iconSlug, imageUrl } = props;
 
   if (iconSlug) {
-    const fillColor = get(iconSettings, 'fillColor');
+    const color = get(iconSettings, 'color');
     const backgroundColor = get(iconSettings, 'backgroundColor');
 
     const iconStyle = {
       backgroundColor,
+      color,
     };
 
     return (
       <div className={s.iconComponentContainer} style={iconStyle}>
-        <Icon name={iconSlug} className={s.iconImage} fill={fillColor} />
+        <Icon name={iconSlug} className={s.iconImage} />
       </div>
     );
   }
@@ -32,7 +33,5 @@ const renderIcon = (props: NotificationImage) => {
 const NotificationIcon = (props: NotificationImage) => (
   <div className={s.iconContainer}>{renderIcon(props)}</div>
 );
-
-NotificationIcon.propTypes = propTypes;
 
 export default NotificationIcon;

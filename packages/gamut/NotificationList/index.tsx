@@ -60,6 +60,4 @@ const NotificationList = (props: NotificationListProps) => {
   );
 };
 
-NotificationList.propTypes = propTypes;
-
-export default NotificationList;
+  export default NotificationList;

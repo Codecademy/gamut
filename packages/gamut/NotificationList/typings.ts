@@ -2,7 +2,7 @@ import iconMap from '../Icon/iconMap';
 
 export type NotificationIconSettings = {
   backgroundColor?: string;
-  fillColor?: string;
+  color?: string;
 };
 
 export type Notification = {

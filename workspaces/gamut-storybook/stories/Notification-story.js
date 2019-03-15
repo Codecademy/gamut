@@ -36,7 +36,7 @@ storiesOf('Component/NotificationList', module).add(
             text: 'Check out our Python livestream!',
             iconSlug: 'python',
             iconSettings: {
-              fillColor: '#3069f0',
+              color: '#3069f0',
               backgroundColor: '#ffd500',
             },
             date: new Date(Date.now() - HOUR).toLocaleString(

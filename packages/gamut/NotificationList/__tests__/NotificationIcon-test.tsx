@@ -23,18 +23,10 @@ describe('NotificationIcon', () => {
 
   it('can render a gamut icon', () => {
     const iconSlug = 'python' as keyof typeof iconMap;
-    const fillColor = '#FFF';
-    const backgroundColor = '#000';
 
-    const props = { iconSlug, iconSettings: { fillColor, backgroundColor } };
+    const props = { iconSlug };
     const wrapper = shallow(<NotificationIcon {...props} />);
 
     expect(wrapper.find(Icon).length).toEqual(1);
-    expect(
-      wrapper
-        .find(Icon)
-        .first()
-        .prop('fill')
-    ).toEqual(fillColor);
   });
 });
