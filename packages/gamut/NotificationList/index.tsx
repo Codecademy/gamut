@@ -2,36 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
-import iconMap from '../Icon/iconMap';
-import NotificationItem from './Notification';
+import { Notification } from './typings';
+import NotificationItem from './NotificationItem';
 import s from './styles/index.scss';
 
 const propTypes = {
   className: PropTypes.string,
   notifications: PropTypes.arrayOf(PropTypes.object),
   onNotificationClick: PropTypes.func,
-};
-
-interface iconSettings {
-  fillColor: string;
-  backgroundColor: string;
-}
-
-interface Notification {
-  date: string,
-  id: string,
-  imageUrl?: string,
-  iconSettings?: iconSettings,
-  iconSlug?: keyof typeof iconMap;
-  link?: string,
-  text: string,
-  unread?: boolean,
-};
-
-export type NotificationListProps = {
-  className?: string;
-  notifications?: Notification[];
-  onNotificationClick?: (_: string) => void;
 };
 
 const byDate = (notification1: Notification, notification2: Notification) => {
@@ -42,11 +20,18 @@ const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
 }
 
+const MAX_NOTIFICATIONS = 5; 
+
+type NotificationListProps = {
+  className?: string;
+  notifications?: Notification[];
+  onNotificationClick?: (_: string) => void;
+};
+
 const NotificationList = (props: NotificationListProps) => {
-  const numNotifications = 5;
   const { className, notifications, onNotificationClick } = props;
 
-  const visibleNotifications = sortedNotifications(notifications).slice(0, numNotifications);
+  const visibleNotifications = sortedNotifications(notifications).slice(0, MAX_NOTIFICATIONS);
   const notificationClasses = cx(
     s.notificationsContainer,
     { [s.emptyContainer]: isEmpty(notifications) },

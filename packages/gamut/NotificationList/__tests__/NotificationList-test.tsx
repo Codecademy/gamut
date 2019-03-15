@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import NotificationList from '../';
-import Notification from '../Notification';
+import Notification from '../NotificationItem';
 
 const notifications = [
   {
