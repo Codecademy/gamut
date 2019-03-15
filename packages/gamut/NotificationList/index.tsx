@@ -23,7 +23,7 @@ interface Notification {
   imageUrl?: string,
   iconSettings?: iconSettings,
   iconSlug?: keyof typeof iconMap;
-  link: string,
+  link?: string,
   text: string,
   unread?: boolean,
 };

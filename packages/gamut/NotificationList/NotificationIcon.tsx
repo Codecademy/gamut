@@ -6,8 +6,8 @@ import iconMap from '../Icon/iconMap';
 import s from './styles/NotificationIcon.scss';
 
 interface iconSettings {
-  fillColor: string;
-  backgroundColor: string;
+  fillColor?: string;
+  backgroundColor?: string;
 }
 
 const propTypes = {
