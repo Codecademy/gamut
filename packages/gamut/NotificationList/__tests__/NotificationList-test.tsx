@@ -67,7 +67,7 @@ describe ('NotificationList', () => {
     };
 
     const wrapper = shallow(<NotificationList notifications={[unreadNotification]} />);
-    expect(wrapper.find(Notification).first().prop('unread')).toBeTruthy
+    expect(wrapper.find(Notification).first().prop('unread')).toBeTruthy;
   });
 
   it('passes down the onNotificationClick function', () => {
