@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.10.2...@codecademy/webpack-config@3.11.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/224)) ([7fbeac6](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/7fbeac6))
+
+
+
+
+
 <a name="3.10.2"></a>
 ## [3.10.2](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.10.1...@codecademy/webpack-config@3.10.2) (2019-02-07)
 
