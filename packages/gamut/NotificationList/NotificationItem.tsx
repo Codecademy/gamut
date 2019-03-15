@@ -24,27 +24,40 @@ export type NotificationProps = {
 
 const formatTime = (notificationDate: string): string => {
   return moment(notificationDate).fromNow();
-}
+};
 
 const NotificationItem = (props: NotificationProps & Notification) => {
-  const { date, iconSettings, iconSlug, imageUrl, link, onClick, text, unread } = props;
+  const {
+    date,
+    iconSettings,
+    iconSlug,
+    imageUrl,
+    link,
+    onClick,
+    text,
+    unread,
+  } = props;
 
-  const notificationClasses = cx(
-    s.notification,
-    {
-      [s.unread]: unread
-    }
-  );
+  const notificationClasses = cx(s.notification, {
+    [s.unread]: unread,
+  });
 
   return (
-    <a href={link} target='_blank' rel='noopener noreferrer' className={notificationClasses} onClick={onClick}>
-      <NotificationIcon iconSettings={iconSettings} iconSlug={iconSlug} imageUrl={imageUrl} />
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={notificationClasses}
+      onClick={onClick}
+    >
+      <NotificationIcon
+        iconSettings={iconSettings}
+        iconSlug={iconSlug}
+        imageUrl={imageUrl}
+      />
       <div className={s.body}>
         <div className={s.text}>
-          <Truncate
-            lines={3}
-            ellipsis='...'
-          > 
+          <Truncate lines={3} ellipsis="...">
             {text}
           </Truncate>
         </div>

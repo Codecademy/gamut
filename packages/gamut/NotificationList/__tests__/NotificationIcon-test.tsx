@@ -5,15 +5,20 @@ import NotificationIcon from '../NotificationIcon';
 import Icon from '../../Icon';
 import iconMap from '../../Icon/iconMap';
 
-describe ('NotificationIcon', () => {
+describe('NotificationIcon', () => {
   it('can render a picture icon', () => {
     const imageUrl = 'https://bit.ly/2lYjODX';
     const props = {
-      imageUrl, 
+      imageUrl,
     };
 
     const wrapper = shallow(<NotificationIcon {...props} />);
-    expect(wrapper.find('img').first().prop('src')).toEqual(imageUrl);
+    expect(
+      wrapper
+        .find('img')
+        .first()
+        .prop('src')
+    ).toEqual(imageUrl);
   });
 
   it('can render a gamut icon', () => {
@@ -25,6 +30,11 @@ describe ('NotificationIcon', () => {
     const wrapper = shallow(<NotificationIcon {...props} />);
 
     expect(wrapper.find(Icon).length).toEqual(1);
-    expect(wrapper.find(Icon).first().prop('fill')).toEqual(fillColor);
+    expect(
+      wrapper
+        .find(Icon)
+        .first()
+        .prop('fill')
+    ).toEqual(fillColor);
   });
 });

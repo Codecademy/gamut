@@ -13,14 +13,17 @@ const propTypes = {
 };
 
 const byDate = (notification1: Notification, notification2: Notification) => {
-  return new Date(notification2.date).getTime() - new Date(notification1.date).getTime();
-}
+  return (
+    new Date(notification2.date).getTime() -
+    new Date(notification1.date).getTime()
+  );
+};
 
 const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
-}
+};
 
-const MAX_NOTIFICATIONS = 5; 
+const MAX_NOTIFICATIONS = 5;
 
 type NotificationListProps = {
   className?: string;
@@ -31,20 +34,33 @@ type NotificationListProps = {
 const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
 
-  const visibleNotifications = sortedNotifications(notifications).slice(0, MAX_NOTIFICATIONS);
+  const visibleNotifications = sortedNotifications(notifications).slice(
+    0,
+    MAX_NOTIFICATIONS
+  );
   const notificationClasses = cx(
     s.notificationsContainer,
     { [s.emptyContainer]: isEmpty(notifications) },
-    className,
-  )
+    className
+  );
 
   return (
     <div className={notificationClasses}>
       {isEmpty(notifications) ? (
-        <div className={s.emptyText}>{'No new notifications.'}<br/>{'You\'re all caught up!'}</div>
+        <div className={s.emptyText}>
+          {'No new notifications.'}
+          <br />
+          {"You're all caught up!"}
+        </div>
       ) : (
         visibleNotifications.map((notification: Notification) => {
-          return <NotificationItem key={notification.id} {...notification} onClick={() => onNotificationClick(notification.id)} />
+          return (
+            <NotificationItem
+              key={notification.id}
+              {...notification}
+              onClick={() => onNotificationClick(notification.id)}
+            />
+          );
         })
       )}
     </div>

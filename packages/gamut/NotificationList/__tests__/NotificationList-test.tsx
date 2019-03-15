@@ -37,10 +37,12 @@ const notifications = [
   },
 ];
 
-describe ('NotificationList', () => {
+describe('NotificationList', () => {
   it('renders a message when no notifications are passed in', () => {
     const wrapper = shallow(<NotificationList notifications={[]} />);
-    expect(wrapper.text()).toEqual('No new notifications.You\'re all caught up!');
+    expect(wrapper.text()).toEqual(
+      "No new notifications.You're all caught up!"
+    );
   });
 
   it('renders up to five notifications', () => {
@@ -53,7 +55,9 @@ describe ('NotificationList', () => {
     const renderedNotifications = wrapper.find(Notification);
 
     const expectedIds = ['6', '5', '4', '3', '2'];
-    const receivedIds = renderedNotifications.map((notifComponent) => notifComponent.prop('id'));
+    const receivedIds = renderedNotifications.map(notifComponent =>
+      notifComponent.prop('id')
+    );
 
     expect(receivedIds).toEqual(expectedIds);
   });
@@ -66,15 +70,30 @@ describe ('NotificationList', () => {
       unread: true,
     };
 
-    const wrapper = shallow(<NotificationList notifications={[unreadNotification]} />);
-    expect(wrapper.find(Notification).first().prop('unread')).toEqual(true);
+    const wrapper = shallow(
+      <NotificationList notifications={[unreadNotification]} />
+    );
+    expect(
+      wrapper
+        .find(Notification)
+        .first()
+        .prop('unread')
+    ).toEqual(true);
   });
 
   it('passes down the onNotificationClick function', () => {
     const mockCallBack = jest.fn();
-    const wrapper = shallow(<NotificationList notifications={notifications} onNotificationClick={mockCallBack} />);
+    const wrapper = shallow(
+      <NotificationList
+        notifications={notifications}
+        onNotificationClick={mockCallBack}
+      />
+    );
 
-    wrapper.find(Notification).first().simulate('click');
+    wrapper
+      .find(Notification)
+      .first()
+      .simulate('click');
     expect(mockCallBack.mock.calls.length).toEqual(1);
     expect(mockCallBack.mock.calls[0][0]).toBe('6');
   });
