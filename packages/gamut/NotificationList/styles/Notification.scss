@@ -1,7 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .notification {
-  min-height: 5rem;
   width: 100%;
   padding: 1rem 1.5rem;
   display: flex;
@@ -21,6 +20,10 @@
 
 .notification.unread {
   background-color: rgba($color-blue-500, 0.1);
+
+  .time {
+    color: $color-gray-700;
+  }
 }
 
 .text {
@@ -30,8 +33,4 @@
 
 .time {
   color: $color-gray-500;
-}
-
-.time.unread {
-  color: $color-gray-600;
 }

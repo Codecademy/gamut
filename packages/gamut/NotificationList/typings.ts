@@ -1,16 +1,16 @@
 import iconMap from '../Icon/iconMap';
 
-export interface NotificationIconSettings {
+export type NotificationIconSettings = {
   fillColor: string;
   backgroundColor: string;
 }
 
-export interface Notification {
+export type Notification = {
   date: string,
   id: string,
-  imageUrl?: string,
   iconSettings?: NotificationIconSettings,
   iconSlug?: keyof typeof iconMap;
+  imageUrl?: string,
   link?: string,
   text: string,
   unread?: boolean,

@@ -70,7 +70,12 @@ describe ('NotificationList', () => {
     expect(wrapper.find(Notification).first().prop('unread')).toBeTruthy
   });
 
-  it('can render a gamut icon', () => {
+  it('passes down the onNotificationClick function', () => {
+    const mockCallBack = jest.fn();
+    const wrapper = shallow(<NotificationList notifications={notifications} onNotificationClick={mockCallBack} />);
 
+    wrapper.find(Notification).first().simulate('click');
+    expect(mockCallBack.mock.calls.length).toEqual(1);
+    expect(mockCallBack.mock.calls[0][0]).toBe('6');
   });
 });
