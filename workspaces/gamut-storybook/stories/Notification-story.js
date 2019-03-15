@@ -34,8 +34,13 @@ storiesOf('Component/NotificationList', module).add(
         notifications={[
           {
             text: 'Check out our Python livestream!',
-            imageUrl:
-              'https://s3.amazonaws.com/codecademy-content/programs/livestream_icons/live_logo_1.svg',
+            // imageUrl:
+            //   'https://s3.amazonaws.com/codecademy-content/programs/livestream_icons/live_logo_1.svg',
+            iconSlug: 'pandas',
+            iconSettings: {
+              fillColor: '#963435',
+              backgroundColor: '#39d1b4',
+            },
             date: new Date(Date.now() - HOUR).toLocaleString(
               'en-GB',
               timeOptions

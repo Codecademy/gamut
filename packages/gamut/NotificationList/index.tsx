@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
+import iconMap from '../Icon/iconMap';
 import NotificationItem from './Notification';
 import s from './styles/index.scss';
 
@@ -11,10 +12,17 @@ const propTypes = {
   onNotificationClick: PropTypes.func,
 };
 
+interface iconSettings {
+  fillColor: string;
+  backgroundColor: string;
+}
+
 interface Notification {
   date: string,
   id: string,
-  imageUrl: string,
+  imageUrl?: string,
+  iconSettings?: iconSettings,
+  iconSlug?: keyof typeof iconMap;
   link: string,
   text: string,
   unread?: boolean,
