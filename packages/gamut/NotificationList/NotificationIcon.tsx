@@ -2,27 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import Icon from '../Icon';
-import iconMap from '../Icon/iconMap';
+import { NotificationImage } from './typings';
 import s from './styles/NotificationIcon.scss';
-
-interface iconSettings {
-  fillColor?: string;
-  backgroundColor?: string;
-}
 
 const propTypes = {
   iconSettings: PropTypes.object,
-  iconSlug: PropTypes.oneOf(Object.keys(iconMap)),
+  iconSlug: PropTypes.string,
   imageUrl: PropTypes.string,
 };
 
-export type IconProps = {
-  iconSettings?: iconSettings;
-  iconSlug?: keyof typeof iconMap;
-  imageUrl?: string;
-};
-
-const renderIcon = (props: IconProps) => {
+const renderIcon = (props: NotificationImage) => {
   const { iconSettings, iconSlug, imageUrl } = props;
 
   if(iconSlug) {
@@ -47,7 +36,7 @@ const renderIcon = (props: IconProps) => {
   return null;
 }
 
-const NotificationIcon = (props: IconProps) => (
+const NotificationIcon = (props: NotificationImage) => (
   <div className={s.iconContainer}>
     {renderIcon(props)}
   </div>
