@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.8.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.8.0...@codecademy/gamut-storybook@2.8.1) (2019-03-14)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+# [2.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.7.0...@codecademy/gamut-storybook@2.8.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac6))
+
+
+
+
+
+# [2.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.6.0...@codecademy/gamut-storybook@2.7.0) (2019-03-13)
+
+
+### Features
+
+* Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/gamut/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/gamut/commit/c5c1e7f))
+
+
+
+
+
 # [2.6.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.14...@codecademy/gamut-storybook@2.6.0) (2019-03-13)
 
 

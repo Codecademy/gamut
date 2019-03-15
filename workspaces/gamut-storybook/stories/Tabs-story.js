@@ -19,6 +19,7 @@ storiesOf('Component/Tabs', module)
       <Tabs
         renderAllPanels={boolean('renderAllPanels', false)}
         activeTabIndex={number('activeTabIndex', 0)}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={function noop() {}}
       >
         <TabList
@@ -57,6 +58,7 @@ storiesOf('Component/Tabs', module)
       <Tabs
         renderAllPanels={boolean('renderAllPanels', false)}
         defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
+        // eslint-disable-next-line react/jsx-no-bind
         onChange={function noop() {}}
       >
         <TabList>
