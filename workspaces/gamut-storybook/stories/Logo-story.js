@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { select, number } from '@storybook/addon-knobs';
 import Logo from '@codecademy/gamut/Logo';
-import { selectableGamutColors } from './helpers';
+import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 
 storiesOf('Component/Logo', module).add(
@@ -17,7 +17,7 @@ storiesOf('Component/Logo', module).add(
         ['pro', 'proAlt', 'program', 'default'],
         Logo.defaultProps.type
       )}
-      style={{ color: select('color', selectableGamutColors, '#000') }}
+      style={{ color: select('color', selectableColors, 'black') }}
     />
   ),
   {
