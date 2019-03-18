@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.20.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.1...@codecademy/gamut@1.20.2) (2019-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.20.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.0...@codecademy/gamut@1.20.1) (2019-03-14)
+
+
+### Bug Fixes
+
+* **Markdown:** Add smart dash support, fix &mdash; showing up in text. ([#226](https://github.com/RyzacInc/client-modules/issues/226)) ([8deeb79](https://github.com/RyzacInc/client-modules/commit/8deeb79))
+
+
+
+
+
+# [1.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.19.0...@codecademy/gamut@1.20.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac6))
+
+
+
+
+
+# [1.19.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.18.0...@codecademy/gamut@1.19.0) (2019-03-13)
+
+
+### Features
+
+* Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/gamut/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/gamut/commit/c5c1e7f))
+
+
+
+
+
+# [1.18.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.1...@codecademy/gamut@1.18.0) (2019-03-13)
+
+
+### Features
+
+* **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/gamut/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/gamut/commit/f3c9cf2))
+
+
+
+
+
+## [1.17.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.17.0...@codecademy/gamut@1.17.1) (2019-03-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.17.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.11...@codecademy/gamut@1.17.0) (2019-03-12)
+
+
+### Features
+
+* **icons:** add menu icon, adjust close icon ([#222](https://github.com/RyzacInc/gamut/issues/222)) ([56b868d](https://github.com/RyzacInc/gamut/commit/56b868d))
+
+
+
+
+
+## [1.16.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.10...@codecademy/gamut@1.16.11) (2019-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [1.16.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut@1.16.9...@codecademy/gamut@1.16.10) (2019-03-07)
 
 
