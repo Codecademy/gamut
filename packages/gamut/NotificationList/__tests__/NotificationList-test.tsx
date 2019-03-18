@@ -55,8 +55,8 @@ describe('NotificationList', () => {
     const renderedNotifications = wrapper.find(Notification);
 
     const expectedIds = ['6', '5', '4', '3', '2'];
-    const receivedIds = renderedNotifications.map(notifComponent =>
-      notifComponent.prop('notification').id
+    const receivedIds = renderedNotifications.map(
+      notifComponent => notifComponent.prop('notification').id
     );
 
     expect(receivedIds).toEqual(expectedIds);
@@ -77,8 +77,7 @@ describe('NotificationList', () => {
       wrapper
         .find(Notification)
         .first()
-        .prop('notification')
-        .unread
+        .prop('notification').unread
     ).toEqual(true);
   });
 

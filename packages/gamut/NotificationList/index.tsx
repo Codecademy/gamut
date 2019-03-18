@@ -38,7 +38,10 @@ const NotificationList = (props: NotificationListProps) => {
   );
 
   return (
-    <div {...omitProps(Object.keys(props), props)} className={notificationClasses}>
+    <div
+      {...omitProps(Object.keys(props), props)}
+      className={notificationClasses}
+    >
       {isEmpty(notifications) ? (
         <div className={s.emptyText}>
           {'No new notifications.'}
@@ -60,4 +63,4 @@ const NotificationList = (props: NotificationListProps) => {
   );
 };
 
-  export default NotificationList;
+export default NotificationList;
