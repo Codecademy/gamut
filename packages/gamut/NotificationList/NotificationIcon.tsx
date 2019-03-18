@@ -1,7 +1,8 @@
 import React from 'react';
 import { get } from 'lodash';
 import Icon from '../Icon';
-import { NotificationImage } from './typings';
+import { NotificationIconSettings } from './typings';
+import iconMap from '../Icon/iconMap';
 import s from './styles/NotificationIcon.scss';
 
 const renderIcon = (props: NotificationImage) => {
@@ -28,6 +29,12 @@ const renderIcon = (props: NotificationImage) => {
   }
 
   return null;
+};
+
+type NotificationImage = {
+  iconSettings?: NotificationIconSettings;
+  iconSlug?: keyof typeof iconMap;
+  imageUrl?: string;
 };
 
 const NotificationIcon = (props: NotificationImage) => (

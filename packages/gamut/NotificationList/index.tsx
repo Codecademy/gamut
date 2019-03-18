@@ -38,7 +38,7 @@ const NotificationList = (props: NotificationListProps) => {
   );
 
   return (
-    <div className={notificationClasses} {...omitProps(Object.keys(this.props), this.props)}>
+    <div {...omitProps(Object.keys(props), props)} className={notificationClasses}>
       {isEmpty(notifications) ? (
         <div className={s.emptyText}>
           {'No new notifications.'}

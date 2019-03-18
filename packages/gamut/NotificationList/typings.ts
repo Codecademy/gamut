@@ -15,9 +15,3 @@ export type Notification = {
   text: string;
   unread?: boolean;
 };
-
-export type NotificationImage = {
-  iconSettings?: NotificationIconSettings;
-  iconSlug?: keyof typeof iconMap;
-  imageUrl?: string;
-};
