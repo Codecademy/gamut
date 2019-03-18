@@ -1,6 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const loaders = require('../loaders');
 const merge = require('webpack-merge');
+const loaders = require('../loaders');
 
 const cssExtracted = options => {
   const defaultExtractOptions = {

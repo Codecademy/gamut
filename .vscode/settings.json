@@ -5,5 +5,8 @@
         "**/*.js": { "when": "$(basename).ts" },
         "**/*?.js": { "when": "$(basename).tsx" }
     },
+    "search.exclude": {
+      "docs": true,
+    },
     "typescript.tsdk": "node_modules/typescript/lib"
 }

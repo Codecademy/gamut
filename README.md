@@ -4,7 +4,7 @@ _Styleguide & Component library for codecademy.com_
 
 ---
 
-## [![CircleCI](https://circleci.com/gh/RyzacInc/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/gamut)
+## [![CircleCI](https://circleci.com/gh/RyzacInc/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we actually publish several packages to npm from the same codebase, including:
 

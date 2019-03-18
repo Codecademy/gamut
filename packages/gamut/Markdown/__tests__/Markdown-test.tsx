@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -18,24 +18,19 @@ const jsCode = () => {
 `;
 
 const htmlMarkdown = `
-<h1>Heading 1</h1>
+<h1>
+  Heading 1
+</h1>
 
-<h3>Heading 3</h3>
+<h3>
+  Heading 3
+</h3>
 
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
 const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-`;
-
-// test for working MIXED_INLINE_HTML_TAGS regex
-const htmlWrappedMarkdown = `
-Starting some html in the middle of a <div class="test">
-
-# Heading one
-</div>
-
 `;
 
 describe('<Markdown />', () => {
@@ -68,24 +63,6 @@ describe('<Markdown />', () => {
     expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
-  it('Allows passing in arbitrary react component overrides', () => {
-    const TestComponent = () => <strong>coooool</strong>;
-
-    const text = `
-# Heading
-
-<TestComponent/>
-    `;
-
-    const overrides = {
-      TestComponent: {
-        component: TestComponent,
-      },
-    };
-    const markdown = mount(<Markdown text={text} overrides={overrides} />);
-    expect(markdown.find('strong').length).toEqual(1);
-  });
-
   describe('Allows passing in a custom CodeBlock override', () => {
     it('Accepts a CodeBlock component directly', () => {
       const text = `
@@ -109,6 +86,7 @@ var test = true;
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
     });
+
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
       const text = `
 # Heading
@@ -145,7 +123,7 @@ var test = true;
 
   it('Renders data attributes on the markdown wrapper', () => {
     const markdown = mount(
-      <Markdown text={htmlWrappedMarkdown} data-testid="cool" />
+      <Markdown text={basicMarkdown} data-testid="cool" />
     );
     expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
   });
@@ -205,6 +183,91 @@ var test = true;
         />
       );
       expect(markdown.find('a[rel]').length).toEqual(0);
+    });
+  });
+
+  describe('Allows passing in a custom tag overrides', () => {
+    it('Allows passing in custom tag overrides', () => {
+      const TestComponent = () => <strong>coooool</strong>;
+
+      const text = `
+# Heading
+
+<TestComponent/>
+      `;
+
+      const overrides = {
+        TestComponent: {
+          component: TestComponent,
+        },
+      };
+      const markdown = mount(<Markdown text={text} overrides={overrides} />);
+      expect(markdown.find('strong').length).toEqual(1);
+    });
+
+    describe('Properties on overrides are handled', () => {
+      let markdown: ReactWrapper;
+
+      beforeAll(() => {
+        const text = `
+# Heading
+
+<TestComponent name="my name" isCodeBlock="true" isWebBrowser />
+        `;
+        const TestComponent = () => <strong>coooool</strong>;
+
+        const overrides = {
+          TestComponent: {
+            component: TestComponent,
+            allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
+          },
+        };
+        markdown = mount(<Markdown text={text} overrides={overrides} />);
+      });
+
+      it('Allows passing in allowed attributes to overrides', () => {
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          name: 'my name',
+        });
+      });
+
+      it('coerces the string "true" into a boolean', () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          isCodeBlock: true,
+        });
+      });
+
+      it('defaults attributes without a value to true', () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('TestComponent').props()).toMatchObject({
+          isWebBrowser: true,
+        });
+      });
+
+      it("doesn't wrap self closing elements in p tags", () => {
+        expect(markdown).toBeDefined();
+        expect(markdown.find('p > strong').length).toEqual(0);
+      });
+    });
+  });
+
+  describe('Replaces certain characters in the raw markdown before parsing', () => {
+    it('replaces `&mdash;` with `---`', () => {
+      const text = `This is some text with a &mdash; in the middle`;
+      const expectedText = `This is some text with a \u2014 in the middle`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown inline text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+
+    it('does not replace `&mdash;` with `---`', () => {
+      const text =
+        'This is `some code with a &mdash; in` the middle and this is a &mdash;';
+      const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown inline text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
     });
   });
 });
