@@ -1,3 +1,4 @@
 {
-  "assignees": ["jakemhiller"]
+  "assignees": ["jakemhiller"],
+  "commitMessagePrefix": "chore(update):"
 }
