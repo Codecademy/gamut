@@ -24,8 +24,7 @@
     "prepublishOnly": "yarn build-all"
   },
   "lint-staged": {
-    "**/*.{js,ts,json,css,scss}": [
-      "eslint --ignore-path .eslintignore --fix",
+    "**/*.{js,ts,tsx,json,css,scss}": [
       "prettier --ignore-path .eslintignore --write",
       "git add"
     ]
