@@ -123,7 +123,7 @@ export const createCodeBlockOverride = (
 
 const processText = (text: string) => {
   // Replace &mdash; due to legacy markdown that didn't use smart dashes
-  return text.replace('&mdash;', '\u2014');
+  return text.replace(/&mdash;/g, '\u2014');
 };
 
 export const standardOverrides = [
