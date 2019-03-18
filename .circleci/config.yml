@@ -184,7 +184,7 @@ workflows:
     triggers:
       - schedule:
           # Runs every monday
-          cron: "0 0 * * MON"
+          cron: "0 0 * * 1"
           filters:
             branches:
               only:
