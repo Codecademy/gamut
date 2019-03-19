@@ -21,7 +21,7 @@ export type ButtonBaseProps = (
 };
 
 const ButtonBase = (props: ButtonBaseProps) => {
-  const { children, href, className, link } = props;
+  const { href, className, link } = props;
   const propsToTransfer = omitProps(propTypes, props);
 
   const BaseTag = href ? 'a' : 'button';
@@ -30,9 +30,7 @@ const ButtonBase = (props: ButtonBaseProps) => {
   });
 
   return (
-    <BaseTag data-btn {...propsToTransfer} className={classes} href={href}>
-      {children}
-    </BaseTag>
+    <BaseTag data-btn {...propsToTransfer} className={classes} href={href} />
   );
 };
 

@@ -4,7 +4,7 @@ _Styleguide & Component library for codecademy.com_
 
 ---
 
-## [![CircleCI](https://circleci.com/gh/RyzacInc/gamut.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/gamut)
+## [![CircleCI](https://circleci.com/gh/RyzacInc/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we actually publish several packages to npm from the same codebase, including:
 
@@ -59,15 +59,29 @@ Commits follow the [Angular format](https://github.com/angular/angular/blob/mast
 
 ### Commit Format
 
+The squash and merge commit should follow a convention:
+
 ```
-type(scope): Message
-
-Body
-
-Footer
+type(scope): message
 ```
 
+Examples:
+
+```
+fix: fixes some component
+```
+
+```
+test: adds test to component
+```
+
+```
 feat(component): :sparkles: An awesome new component
+```
+
+This message should go inside the title field of the message:
+
+![screen shot 2019-03-04 at 10 41 07 am](https://user-images.githubusercontent.com/6455018/53745157-79101d00-3e6c-11e9-9b5f-e35582106b31.png)
 
 **Type**
 

@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-storybook",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "2.5.6",
+  "version": "2.9.0",
   "author": "Jake Hiller <jake@codecademy.com>",
   "private": true,
   "engines": {
@@ -11,20 +11,20 @@
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
-    "build": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
+    "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/gamut.git"
+    "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0-rc.1",
     "@babel/core": "^7.0.0-rc.1",
     "@babel/polyfill": "^7.0.0-rc.1",
     "@babel/register": "^7.0.0-rc.1",
-    "@codecademy/gamut": "^1.16.6",
-    "@codecademy/gamut-styles": "^2.0.4",
-    "@codecademy/webpack-config": "^3.10.2",
+    "@codecademy/gamut": "^1.21.0",
+    "@codecademy/gamut-styles": "^2.2.0",
+    "@codecademy/webpack-config": "^3.11.0",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-centered": "^4.1.13",
     "@storybook/addon-info": "^4.1.13",
@@ -33,7 +33,6 @@
     "@types/storybook__react": "^4.0.1",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^6.1.2",
     "babel-loader": "7.1.5",
     "babel-preset-codecademy": "2.1.0",
     "chai": "^3.5.0",
@@ -43,6 +42,7 @@
     "invariant": "^2.2.0",
     "jsdom": "^8.3.1",
     "lodash": "^4.17.10",
+    "moment": "^2.24.0",
     "node-sass": ">= 4.5.2",
     "postcss-loader": ">= 2.1.1",
     "react": "^16.8.3",

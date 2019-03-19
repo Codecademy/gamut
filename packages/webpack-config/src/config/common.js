@@ -1,9 +1,8 @@
 const path = require('path');
-const loaders = require('../loaders');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
+const loaders = require('../loaders');
 const ENV = require('../lib/env');
 
 const DEV = ENV !== 'production';

@@ -39,6 +39,8 @@ This is some \`inline code\`
   This blockquote will change based on the HTML settings above.
 </blockquote>
 
+<CustomElement title="A Custom Component" />
+
 `;
 
 storiesOf('Component/Markdown', module)
@@ -74,6 +76,23 @@ storiesOf('Component/Markdown', module)
                 color: 'red',
               },
             },
+          },
+          CustomElement: {
+            component: ({ title, ...props }) => {
+              return (
+                <h3
+                  style={{
+                    padding: 10,
+                    background: 'rebeccapurple',
+                    color: 'white',
+                    borderRadius: 5,
+                  }}
+                >
+                  {title}
+                </h3>
+              );
+            },
+            allowedAttributes: ['title'],
           },
         }}
       />

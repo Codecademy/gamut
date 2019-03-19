@@ -4,6 +4,8 @@ references:
     docker:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
+    environment:
+      GIT_USERNAME: codecademy-dev
 
   repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ .Branch }}-{{ .Revision }}
   repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ .Branch }}
@@ -28,6 +30,13 @@ references:
     run:
       name: Add NPM auth token file
       command: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
+
+  skip_on_automated_commit: &skip_on_automated_commit
+    run:
+      name: Skip build from automated commit
+      command: |
+        echo "Build started due to commit by $CIRCLE_USERNAME"
+        if [ $CIRCLE_USERNAME = $GIT_USERNAME ] ; then circleci step halt ; fi
 
 jobs:
   checkout_code:
@@ -79,30 +88,56 @@ jobs:
   publish:
     <<: *default_env
     steps:
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
       - *set_npm_token
       - run:
+          name: build storybook
+          command: yarn build-storybook
+      - run:
+          name: commit storybook changes
+          command: |
+            if [ -n "$(git status --porcelain)" ]; then
+              git add -A
+              git commit -am "chore: build storybook"
+            fi
+      - run:
           name: lerna version
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version --conventional-commits --yes --github-release
+          command: yarn lerna version --include-merged-tags --conventional-commits --yes --github-release
       - run:
           name: lerna publish
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --yes
+          command: yarn lerna publish from-git --yes
 
   publish_alpha:
     <<: *default_env
     steps:
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
       - *set_npm_token
       - run:
           name: lerna version (alpha)
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna version prerelease --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
+          command: yarn lerna version prerelease --include-merged-tags --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
       - run:
           name: lerna publish (alpha)
-          command: GH_TOKEN=${GITHUB_TOKEN} yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+
+  run_renovate:
+    docker:
+      - image: circleci/node:10.13.0
+    working_directory: ~/repo
+    environment:
+      RENOVATE_CONFIG_FILE: './.circleci/renovate.js'
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - run:
+          name: renovate
+          command: |
+            RENOVATE_TOKEN="${GH_TOKEN}" npx renovate
 
 workflows:
   version: 2
@@ -137,3 +172,21 @@ workflows:
           requires:
             - tests
             - checkout_code
+
+  update-packages:
+    jobs:
+      - checkout_code:
+          context: org-global
+      - run_renovate:
+          context: org-global
+          requires:
+            - checkout_code
+    triggers:
+      - schedule:
+          # Runs every monday
+          cron: "0 0 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+
