@@ -183,8 +183,8 @@ workflows:
             - checkout_code
     triggers:
       - schedule:
-          # Runs every monday
-          cron: "0 0 * * 1"
+          # Runs every day
+          cron: "0 8 * * *"
           filters:
             branches:
               only:
