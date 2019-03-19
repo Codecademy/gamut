@@ -125,6 +125,20 @@ jobs:
           name: lerna publish (alpha)
           command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
 
+  run_renovate:
+    docker:
+      - image: circleci/node:10.13.0
+    working_directory: ~/repo
+    environment:
+      RENOVATE_CONFIG_FILE: './.circleci/renovate.js'
+    steps:
+      - *set_git_user
+      - *restore_repo
+      - run:
+          name: renovate
+          command: |
+            RENOVATE_TOKEN="${GH_TOKEN}" npx renovate
+
 workflows:
   version: 2
   build-test:
@@ -158,3 +172,21 @@ workflows:
           requires:
             - tests
             - checkout_code
+
+  update-packages:
+    jobs:
+      - checkout_code:
+          context: org-global
+      - run_renovate:
+          context: org-global
+          requires:
+            - checkout_code
+    triggers:
+      - schedule:
+          # Runs every monday
+          cron: "0 0 * * 1"
+          filters:
+            branches:
+              only:
+                - master
+
