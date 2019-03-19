@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.0...@codecademy/webpack-config@3.11.1) (2019-03-19)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#231](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/231)) ([c185ac8](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/c185ac8))
+
+
+
+
+
 # [3.11.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.10.2...@codecademy/webpack-config@3.11.0) (2019-03-13)
 
 
