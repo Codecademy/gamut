@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.0...@codecademy/gamut-storybook@2.9.1) (2019-03-19)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#231](https://github.com/RyzacInc/client-modules/issues/231)) ([c185ac8](https://github.com/RyzacInc/client-modules/commit/c185ac8))
+
+
+
+
+
+# [2.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.8.2...@codecademy/gamut-storybook@2.9.0) (2019-03-18)
+
+
+### Features
+
+* **component:** New notification menu component ([4918516](https://github.com/RyzacInc/client-modules/commit/4918516))
+
+
+
+
+
+## [2.8.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.8.1...@codecademy/gamut-storybook@2.8.2) (2019-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
 ## [2.8.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.8.0...@codecademy/gamut-storybook@2.8.1) (2019-03-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
