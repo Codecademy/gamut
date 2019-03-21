@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.2...@codecademy/gamut-storybook@2.9.3) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency css-loader to v2.1.1 ([#245](https://github.com/RyzacInc/client-modules/issues/245)) ([a033a4b](https://github.com/RyzacInc/client-modules/commit/a033a4b))
+* **deps:** update dependency webpack to v4.29.6 ([#247](https://github.com/RyzacInc/client-modules/issues/247)) ([dd6a897](https://github.com/RyzacInc/client-modules/commit/dd6a897))
+
+
+
+
+
 ## [2.9.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.1...@codecademy/gamut-storybook@2.9.2) (2019-03-21)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.1...@codecademy/webpack-config@3.11.2) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency css-loader to v2.1.1 ([#245](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/245)) ([a033a4b](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/a033a4b))
+
+
+
+
+
 ## [3.11.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.0...@codecademy/webpack-config@3.11.1) (2019-03-19)
 
 
