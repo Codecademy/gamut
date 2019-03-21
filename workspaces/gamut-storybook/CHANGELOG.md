@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.5...@codecademy/gamut-storybook@2.9.6) (2019-03-21)
+
+
+### Bug Fixes
+
+* updates story colors ([#229](https://github.com/RyzacInc/client-modules/issues/229)) ([ecf01c3](https://github.com/RyzacInc/client-modules/commit/ecf01c3))
+
+
+
+
+
 ## [2.9.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.4...@codecademy/gamut-storybook@2.9.5) (2019-03-21)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
