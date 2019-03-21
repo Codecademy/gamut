@@ -1,17 +1,11 @@
-import { deprecatedGamutColors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
-function convertCamelToSpinel(str) {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-}
+const selectableColors = Object.keys(colors).reduce(
+  (acc, colorKey) => ({
+    ...acc,
+    [colorKey]: colors[colorKey][500] || colors[colorKey],
+  }),
+  {}
+);
 
-// remapping of gamut base colors that can be placed directly into the `select` knob function
-const selectableGamutColors = {};
-
-// eslint-disable-next-line guard-for-in
-for (const color in deprecatedGamutColors.base) {
-  selectableGamutColors[
-    deprecatedGamutColors.base[color]
-  ] = `gamut-${convertCamelToSpinel(color)}`;
-}
-
-export { selectableGamutColors };
+export { selectableColors };
