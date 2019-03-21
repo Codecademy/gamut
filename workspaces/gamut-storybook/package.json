@@ -45,9 +45,9 @@
     "moment": "2.24.0",
     "node-sass": "4.11.0",
     "postcss-loader": "3.0.0",
-    "react": "16.8.3",
+    "react": "16.8.4",
     "react-docgen-typescript-loader": "3.0.1",
-    "react-dom": "16.8.3",
+    "react-dom": "16.8.4",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "webpack": "4.17.1"

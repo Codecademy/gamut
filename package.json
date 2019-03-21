@@ -69,10 +69,10 @@
     "jest-environment-jsdom-global": "1.1.0",
     "lint-staged": "8.1.5",
     "prettier": "1.16.4",
-    "react": "16.8.3",
+    "react": "16.8.4",
     "react-docgen-typescript-webpack-plugin": "1.1.0",
-    "react-dom": "16.8.3",
-    "react-test-renderer": "16.8.3",
+    "react-dom": "16.8.4",
+    "react-test-renderer": "16.8.4",
     "ts-jest": "23.10.5",
     "typescript": "3.3.3"
   }
