@@ -2549,10 +2549,10 @@
   dependencies:
     "@types/jest-diff" "*"
 
-"@types/lodash@4.14.121":
-  version "4.14.121"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.121.tgz#9327e20d49b95fc2bf983fc2f045b2c6effc80b9"
-  integrity sha512-ORj7IBWj13iYufXt/VXrCNMbUuCTJfhzme5kx9U/UtcIPdJYuvPDUAlHlbNhz/8lKCLy9XGIZnGrqXOtQbPGoQ==
+"@types/lodash@4.14.123":
+  version "4.14.123"
+  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.123.tgz#39be5d211478c8dd3bdae98ee75bb7efe4abfe4d"
+  integrity sha512-pQvPkc4Nltyx7G1Ww45OjVqUsJP4UsZm+GWJpigXgkikZqJgRm4c48g027o6tdgubWHwFRF15iFd+Y4Pmqv6+Q==
 
 "@types/marked@^0.6.1":
   version "0.6.1"
