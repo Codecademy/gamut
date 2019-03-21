@@ -197,7 +197,7 @@ workflows:
           filters:
             branches:
                 only:
-                  - /renovate\/.*/
+                  - master
       - run_renovate:
           context: org-global
           requires:
