@@ -37,7 +37,7 @@
     "babel-preset-codecademy": "2.1.0",
     "chai": "3.5.0",
     "classnames": "2.2.6",
-    "css-loader": "2.1.0",
+    "css-loader": "2.1.1",
     "file-loader": "3.0.1",
     "invariant": "2.2.4",
     "jsdom": "8.5.0",
