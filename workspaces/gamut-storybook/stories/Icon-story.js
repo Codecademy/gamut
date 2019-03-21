@@ -4,7 +4,7 @@ import { withInfo } from '@storybook/addon-info';
 import { select, number } from '@storybook/addon-knobs';
 import Icon from '@codecademy/gamut/Icon';
 import iconMap from '@codecademy/gamut/Icon/iconMap';
-import { selectableGamutColors } from './helpers';
+import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
 
@@ -42,11 +42,11 @@ storiesOf('Component/Icon', module)
             width={number('width', 128)}
             height={number('height', 128)}
             style={{
-              color: select('color', selectableGamutColors, '#000'),
+              color: select('color', selectableColors, 'black'),
               backgroundColor: select(
                 'backgroundColor',
-                selectableGamutColors,
-                '#fff'
+                selectableColors,
+                'white'
               ),
             }}
           />
