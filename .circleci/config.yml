@@ -127,7 +127,7 @@ jobs:
 
   run_renovate:
     docker:
-      - image: circleci/node:10.13.0
+      - image: circleci/node:10.15.3
     working_directory: ~/repo
     environment:
       RENOVATE_CONFIG_FILE: './.circleci/renovate.js'
