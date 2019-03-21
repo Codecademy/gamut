@@ -66,7 +66,7 @@
     "identity-obj-proxy": "3.0.0",
     "jest": "24.5.0",
     "jest-environment-jsdom": "24.5.0",
-    "jest-environment-jsdom-global": "1.1.0",
+    "jest-environment-jsdom-global": "1.2.0",
     "lint-staged": "8.1.5",
     "prettier": "1.16.4",
     "react": "16.8.4",
