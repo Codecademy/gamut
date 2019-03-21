@@ -1,5 +1,4 @@
 import React, { HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/FormGroupLabel.scss';
 
@@ -27,11 +26,6 @@ const FormGroupLabel = ({
   }
 
   return <div {...rest} className={classNames} />;
-};
-
-FormGroupLabel.propTypes = {
-  className: PropTypes.string,
-  htmlFor: PropTypes.string,
 };
 
 export default FormGroupLabel;
