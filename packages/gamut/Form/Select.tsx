@@ -1,5 +1,4 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
 import s from './styles/Select.scss';
@@ -50,16 +49,6 @@ const Select = (props: SelectProps) => {
       </select>
     </div>
   );
-};
-
-Select.propTypes = {
-  className: PropTypes.string,
-  options: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.object,
-  ]),
-  defaultValue: PropTypes.string,
-  htmlFor: PropTypes.string,
 };
 
 export default Select;

@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import s from './styles/Checkbox.scss';
 
 export type CheckboxProps = {
@@ -46,16 +45,5 @@ const Checkbox = ({
     </label>
   </div>
 );
-
-Checkbox.propTypes = {
-  className: PropTypes.string,
-  htmlFor: PropTypes.string.isRequired,
-  name: PropTypes.string,
-  required: PropTypes.bool,
-  label: PropTypes.node,
-  onChange: PropTypes.func,
-  value: PropTypes.string,
-  checked: PropTypes.bool,
-};
 
 export default Checkbox;

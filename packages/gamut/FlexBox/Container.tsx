@@ -1,18 +1,7 @@
 import { isNumber, omit } from 'lodash';
 import React, { ReactNode, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/index.scss';
-
-const positions = [
-  'start',
-  'end',
-  'center',
-  'baseline',
-  'stretch',
-  'spaceAround',
-  'spaceBetween',
-];
 
 const internalProps = [
   'flex',
@@ -31,9 +20,18 @@ const internalProps = [
   'alignSelf',
 ];
 
+type ContainerPosition =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'baseline'
+  | 'stretch'
+  | 'spaceAround'
+  | 'spaceBetween';
+
 export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  align?: string;
-  alignSelf?: string;
+  align?: ContainerPosition;
+  alignSelf?: ContainerPosition;
   center?: boolean;
   children?: ReactNode | ReactNode[];
   className?: string;
@@ -42,7 +40,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   flex?: boolean;
   grow?: number;
   inline?: boolean;
-  justify?: string;
+  justify?: ContainerPosition;
   nowrap?: boolean;
   reverse?: boolean;
   row?: boolean;
@@ -52,24 +50,6 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 
 class Container extends React.Component<ContainerProps> {
   static displayName = 'Container';
-  static propTypes = {
-    align: PropTypes.oneOf(positions),
-    alignSelf: PropTypes.oneOf(positions),
-    center: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    column: PropTypes.bool,
-    fit: PropTypes.bool,
-    flex: PropTypes.bool,
-    grow: PropTypes.number,
-    inline: PropTypes.bool,
-    justify: PropTypes.oneOf(positions),
-    nowrap: PropTypes.bool,
-    reverse: PropTypes.bool,
-    row: PropTypes.bool,
-    shrink: PropTypes.number,
-    wrap: PropTypes.bool,
-  };
 
   static defaultProps = {
     flex: true,

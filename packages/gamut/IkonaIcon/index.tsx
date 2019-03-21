@@ -1,5 +1,4 @@
 import React, { PureComponent, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import s from './styles/index.scss';
 
@@ -32,20 +31,12 @@ const ICON_SIZE = 16;
 export interface IkonaIconProps {
   children?: ReactNode | ReactNode[];
   className?: string;
-  name?: string;
+  name: string;
   size?: number;
   style: {};
 }
 
 class IkonaIcon extends PureComponent<IkonaIconProps> {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    size: PropTypes.number,
-    className: PropTypes.string,
-    children: PropTypes.node,
-    style: PropTypes.object,
-  };
-
   render() {
     const icon: string =
       `ikona-${this.props.name}` in s
