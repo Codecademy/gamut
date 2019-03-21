@@ -8251,10 +8251,10 @@ jest-each@^24.5.0:
     jest-util "^24.5.0"
     pretty-format "^24.5.0"
 
-jest-environment-jsdom-global@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/jest-environment-jsdom-global/-/jest-environment-jsdom-global-1.1.0.tgz#dea8a3991aa9a6e638dce8933957fdbc42c97bf6"
-  integrity sha512-K6nm2Lm0ZFTCSQR7P9B5f6pD6Jid/VvhWrSiymODEfjA5Jd9PkX/3hfSaEHZ8NLzu6Uy7HimlZjjwrK7+YQHQA==
+jest-environment-jsdom-global@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/jest-environment-jsdom-global/-/jest-environment-jsdom-global-1.2.0.tgz#dd5b16fe0a0566ee40010d8632be5adf5a5ccb65"
+  integrity sha512-41cDl0OxzmFY/cnW0COUN+lnt2N2ks1r3V4fAKOnlZ9xIrGy0PNPan+Bz8HP+uQy/8bGV6T7J4Oi7X+h43It6g==
 
 jest-environment-jsdom@24.5.0, jest-environment-jsdom@^24.5.0:
   version "24.5.0"
