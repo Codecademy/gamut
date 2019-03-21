@@ -173,7 +173,7 @@ workflows:
             - tests
             - checkout_code
 
-  update-packages:
+  scheduled-update-packages:
     jobs:
       - checkout_code:
           context: org-global
@@ -190,3 +190,14 @@ workflows:
               only:
                 - master
 
+  update-packages:
+    jobs:
+      - checkout_code:
+          context: org-global
+           branches:
+              only:
+                - /renovate\/.*/
+      - run_renovate:
+          context: org-global
+          requires:
+            - checkout_code
