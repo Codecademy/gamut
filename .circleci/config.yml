@@ -194,9 +194,10 @@ workflows:
     jobs:
       - checkout_code:
           context: org-global
-           branches:
-              only:
-                - /renovate\/.*/
+          filters:
+            branches:
+                only:
+                  - /renovate\/.*/
       - run_renovate:
           context: org-global
           requires:
