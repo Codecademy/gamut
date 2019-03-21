@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.2...@codecademy/webpack-config@3.11.3) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.4.0 ([#244](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/244)) ([1b4932e](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/1b4932e))
+
+
+
+
+
 ## [3.11.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.1...@codecademy/webpack-config@3.11.2) (2019-03-21)
 
 

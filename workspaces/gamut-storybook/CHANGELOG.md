@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.3...@codecademy/gamut-storybook@2.9.4) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.4.0 ([#244](https://github.com/RyzacInc/client-modules/issues/244)) ([1b4932e](https://github.com/RyzacInc/client-modules/commit/1b4932e))
+
+
+
+
+
 ## [2.9.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.2...@codecademy/gamut-storybook@2.9.3) (2019-03-21)
 
 
