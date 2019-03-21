@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.1...@codecademy/gamut-storybook@2.9.2) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update react monorepo to v16.8.4 ([#248](https://github.com/RyzacInc/client-modules/issues/248)) ([a3dc657](https://github.com/RyzacInc/client-modules/commit/a3dc657))
+* **deps:** update storybook monorepo to v4.1.14 ([#249](https://github.com/RyzacInc/client-modules/issues/249)) ([dd2a796](https://github.com/RyzacInc/client-modules/commit/dd2a796))
+
+
+
+
+
 ## [2.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.0...@codecademy/gamut-storybook@2.9.1) (2019-03-19)
 
 
