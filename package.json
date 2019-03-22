@@ -20,7 +20,6 @@
     "build-all": "yarn wsrun build --exclude-missing",
     "build-storybook": "yarn wsrun build-storybook --exclude-missing",
     "start": "yarn wsrun storybook --exclude-missing",
-    "precommit": "lint-staged",
     "prepublishOnly": "yarn build-all"
   },
   "lint-staged": {
@@ -75,5 +74,10 @@
     "react-test-renderer": "16.8.4",
     "ts-jest": "24.0.0",
     "typescript": "3.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
