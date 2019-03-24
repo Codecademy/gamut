@@ -8,7 +8,7 @@ import ButtonBase from '@codecademy/gamut/ButtonBase';
 import Spinner from '@codecademy/gamut/Spinner';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { deprecatedColors } from '@codecademy/gamut-styles/utils/variables';
 
 import { addonInfoOptions as options } from './options';
 
@@ -86,7 +86,7 @@ storiesOf('Component/Button', module)
         <div
           style={{
             padding: '0.5rem',
-            background: colors.swatches.grey[900],
+            background: deprecatedColors.swatches.grey[900],
             color: 'white',
           }}
         >
@@ -185,7 +185,7 @@ storiesOf('Component/Button', module)
     })(() => (
       <div
         style={{
-          background: colors.portal.midnightblue,
+          background: deprecatedColors.portal.midnightblue,
           padding: '0.5rem',
         }}
       >
