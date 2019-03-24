@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.7...@codecademy/gamut-storybook@2.9.8) (2019-03-24)
+
+
+### Bug Fixes
+
+* fix button story with correct import ([7e33767](https://github.com/RyzacInc/client-modules/commit/7e33767))
+
+
+
+
+
 ## [2.9.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.6...@codecademy/gamut-storybook@2.9.7) (2019-03-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
