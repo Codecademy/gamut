@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.4](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.3...@codecademy/webpack-config@3.11.4) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-loader to v8.0.5 ([#256](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/256)) ([b774959](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/b774959))
+
+
+
+
+
 ## [3.11.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.2...@codecademy/webpack-config@3.11.3) (2019-03-21)
 
 
