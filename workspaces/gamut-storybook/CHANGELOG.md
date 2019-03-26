@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.8...@codecademy/gamut-storybook@2.9.9) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-loader to v8.0.5 ([#256](https://github.com/RyzacInc/client-modules/issues/256)) ([b774959](https://github.com/RyzacInc/client-modules/commit/b774959))
+* **deps:** update dependency chai to v4 ([#257](https://github.com/RyzacInc/client-modules/issues/257)) ([86c439f](https://github.com/RyzacInc/client-modules/commit/86c439f))
+
+
+
+
+
 ## [2.9.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.7...@codecademy/gamut-storybook@2.9.8) (2019-03-24)
 
 
