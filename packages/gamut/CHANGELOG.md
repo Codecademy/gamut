@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.21.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.3...@codecademy/gamut@1.21.4) (2019-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [1.21.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.2...@codecademy/gamut@1.21.3) (2019-03-22)
 
 
