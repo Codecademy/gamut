@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.1...@codecademy/gamut-styles@2.2.2) (2019-03-27)
+
+
+### Bug Fixes
+
+* export JS colors object, removes scss exports ([854ae75](https://github.com/RyzacInc/client-modules/commit/854ae75))
+
+
+
+
+
 ## [2.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.0...@codecademy/gamut-styles@2.2.1) (2019-03-19)
 
 
