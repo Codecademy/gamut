@@ -6,7 +6,7 @@ import s from '../styles.scss';
 
 describe('MenuItem', () => {
   test.each([[false, false], [true, true]])(
-    'selected class is %i when selected is %i',
+    'selected class is %d when selected is %d',
     (selected, hasClass) => {
       const component = mount(<MenuItem selected={selected} />);
 

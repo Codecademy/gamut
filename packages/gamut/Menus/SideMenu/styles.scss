@@ -1,9 +1,11 @@
 @import "~@codecademy/gamut-styles/utils";
 
+$shadow-color: rgba(0, 0, 0, 0.15);
+
 .sideMenu {
   background: $color-white;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 2px 4px 0 $shadow-color;
   list-style-type: none;
   margin: 0 px-rem(12px);
   padding: px-rem(6px) 0;
@@ -12,7 +14,7 @@
 
 @include md-viewport {
   .sideMenu {
-    margin-right: 32px;
-    width: 263px;
+    margin-right: px-rem(32px);
+    width: px-rem(263px);
   }
 }
