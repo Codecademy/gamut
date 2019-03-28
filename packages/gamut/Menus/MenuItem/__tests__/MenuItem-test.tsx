@@ -10,7 +10,7 @@ describe('MenuItem', () => {
     (selected, hasClass) => {
       const component = mount(<MenuItem selected={selected} />);
 
-      expect(component.hasClass(s.selected)).toBe(hasClass);
+      expect(component.find('li').hasClass(s.selected)).toBe(hasClass);
     }
   );
 });

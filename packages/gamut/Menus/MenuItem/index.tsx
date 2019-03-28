@@ -9,9 +9,7 @@ type MenuItemProps = {
 
 const MenuItem: React.FC<MenuItemProps> = ({ selected, children }) => {
   return (
-    <li className={cx(s.menuItem, { [s.selected]: selected })}>
-      {children}
-    </li>
+    <li className={cx(s.menuItem, { [s.selected]: selected })}>{children}</li>
   );
 };
 
