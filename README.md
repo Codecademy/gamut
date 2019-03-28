@@ -21,6 +21,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
     * Running `npm whoami` should return `codecademy`
 2.  Run `yarn` in the root directory
 3.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+    * `for package in ./packages/*/ ; do (cd "$package" && yarn lerna bootstrap); done`
 
 ### Running storybook
 
