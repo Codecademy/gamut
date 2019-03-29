@@ -26,6 +26,14 @@ export const colors = {
 };
 
 // =======================================
+//       EFFECTS COLORS
+// =======================================
+
+export const effectsColors = {
+  slightShadow: scssExports.slightShadow,
+};
+
+// =======================================
 //       BRAND COLORS
 // =======================================
 

@@ -1,11 +1,11 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .menuItem {
-  font-size: 20px;
+  font-size: px-rem(20px);
   font-weight: 300;
   line-height: 1.6;
   margin: 25px 0;
-  padding-left: 40px;
+  padding-left: px-rem(40px);
 
   a {
     color: $color-gray-800;
@@ -22,7 +22,7 @@
 .selected {
   border-left: 4px solid $color-blue-500;
   font-weight: bold;
-  padding-left: 36px;
+  padding-left: px-rem(36px);
 
   a {
     color: $color-blue-500;

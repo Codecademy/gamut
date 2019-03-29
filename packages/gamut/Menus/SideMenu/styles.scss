@@ -1,11 +1,9 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$shadow-color: rgba(0, 0, 0, 0.15);
-
 .sideMenu {
   background: $color-white;
   border-radius: 4px;
-  box-shadow: 0 2px 4px 0 $shadow-color;
+  box-shadow: 0 2px 4px 0 $color-slight-shadow;
   list-style-type: none;
   margin: 0 px-rem(12px);
   padding: px-rem(6px) 0;
