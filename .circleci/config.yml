@@ -109,6 +109,11 @@ jobs:
       - run:
           name: lerna publish
           command: yarn lerna publish from-git --yes
+      - run:
+          name: publish on failure
+          command: yarn lerna publish from-git --yes
+          when: on_fail
+
 
   publish_alpha:
     <<: *default_env
@@ -183,8 +188,8 @@ workflows:
             - checkout_code
     triggers:
       - schedule:
-          # Runs every hour
-          cron: "0 * * * *"
+          # Runs every day
+          cron: "0 0 * * *"
           filters:
             branches:
               only:
