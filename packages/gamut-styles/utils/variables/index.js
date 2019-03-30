@@ -94,7 +94,7 @@ export const brandColors = {
   darkBlue: '#141c3a',
 };
 
-export const effectsColors = {
+export const effectColors = {
   slightShadow: 'rgba(0, 0, 0, 0.15)',
 };
 
@@ -333,6 +333,7 @@ export default {
   deprecatedColors,
   deprecatedEditorColors,
   deprecatedGamutColors,
+  effectColors,
   grid,
   legacyBreakpoints,
 };
