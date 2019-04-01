@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.10...@codecademy/gamut-storybook@2.9.11) (2019-04-01)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
 ## [2.9.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.9...@codecademy/gamut-storybook@2.9.10) (2019-03-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
