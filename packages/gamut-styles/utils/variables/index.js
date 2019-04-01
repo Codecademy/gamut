@@ -94,6 +94,10 @@ export const brandColors = {
   darkBlue: '#141c3a',
 };
 
+export const effectColors = {
+  slightShadow: 'rgba(0, 0, 0, 0.15)',
+};
+
 export const deprecatedColors = {
   portal: {
     white: '#fff',
@@ -329,6 +333,7 @@ export default {
   deprecatedColors,
   deprecatedEditorColors,
   deprecatedGamutColors,
+  effectColors,
   grid,
   legacyBreakpoints,
 };

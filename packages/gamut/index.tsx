@@ -1,6 +1,8 @@
 export { default as Button } from './Button';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
+export { default as MenuItem } from './Menus/MenuItem';
+export { default as SideMenu } from './Menus/SideMenu';
 export { default as Spinner } from './Spinner';
 export { default as RadialProgress } from './RadialProgress';
 export { default as ToolTip } from './ToolTip';
