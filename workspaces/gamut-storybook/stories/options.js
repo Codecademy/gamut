@@ -1,6 +1,6 @@
 export const addonInfoOptions = {
   inline: true,
-  source: true,
+  source: false,
   propTables: false,
   header: false,
   styles: stylesheet => ({
@@ -13,13 +13,6 @@ export const addonInfoOptions = {
         color: 'gray',
       },
       h2: { fontSize: '1.5rem', margin: '1rem 0' },
-    },
-    source: {
-      h1: { fontSize: '1.5rem', margin: '2rem 0 1rem 0' },
-      pre: {
-        backgroundColor: 'transparent',
-        padding: 0,
-      },
     },
   }),
 };
