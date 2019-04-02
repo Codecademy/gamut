@@ -28,7 +28,7 @@ const Grid = (props: GridProps) => {
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className })
   );
-}
+};
 
 Grid.propTypes = propTypes;
 

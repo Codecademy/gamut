@@ -46,7 +46,7 @@ const CardFooter = ({
   );
 
   return <div className={footerClasses}>{children}</div>;
-}
+};
 
 CardFooter.defaultProps = defaultProps;
 

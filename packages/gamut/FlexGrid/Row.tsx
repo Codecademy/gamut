@@ -67,7 +67,7 @@ const Row = <TElement extends HTMLElement = HTMLDivElement>(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
-}
+};
 
 Row.propTypes = propTypes;
 

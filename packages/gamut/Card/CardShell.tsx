@@ -36,7 +36,7 @@ const CardShell = ({
       {children}
     </div>
   );
-}
+};
 
 CardShell.defaultProps = defaultProps;
 
