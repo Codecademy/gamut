@@ -4,7 +4,7 @@ import gamutTheme from './gamutTheme';
 
 // automatically import all files ending in *-story.js
 function loadStories() {
-  const req = require.context('../stories', true, /\-story\.jsx?$/);
+  const req = require.context('../stories', true, /\.*-story\.jsx?$/);
 
   req.keys().forEach(filename => req(filename));
 }
