@@ -29,6 +29,9 @@ const defaultConfig = createConfig()
   .toConfig();
 
 module.exports = ({ config, mode }) => {
+  delete defaultConfig.entry;
+  delete defaultConfig.output;
+
   const mergedConfig = merge.smart(defaultConfig, config);
 
   mergedConfig.module.rules.push({
