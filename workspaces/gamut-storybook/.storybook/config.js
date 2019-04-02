@@ -3,10 +3,12 @@ import wrapper from './decorators/wrapper';
 import gamutTheme from './gamutTheme';
 
 // automatically import all files ending in *-story.js
-const req = require.context('../stories', true, /\-story\.jsx?$/);
 function loadStories() {
+  const req = require.context('../stories', true, /\-story\.jsx?$/);
+
   req.keys().forEach(filename => req(filename));
 }
+
 addDecorator(wrapper);
 addParameters({
   options: {

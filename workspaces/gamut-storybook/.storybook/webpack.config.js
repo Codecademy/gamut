@@ -21,34 +21,28 @@ const STATS = process.env.WEBPACK_STATS;
  * This is the config that all others are based on
  */
 
-const baseConfig = createConfig()
+const defaultConfig = createConfig()
   .common({
     context: path.join(__dirname, '../'),
   })
-  .css();
+  .css()
+  .toConfig();
 
 module.exports = ({ config, mode }) => {
-  return baseConfig
-    .merge(config)
-    .merge({
-      resolve: {
-        extensions: ['.ts', '.tsx'],
+  const mergedConfig = merge.smart(defaultConfig, config);
+
+  mergedConfig.module.rules.push({
+    test: /\.(ts|tsx)$/,
+    use: [
+      {
+        loader: require.resolve('awesome-typescript-loader'),
       },
-      module: {
-        rules: [
-          {
-            test: /\.(ts|tsx)$/,
-            use: [
-              {
-                loader: require.resolve('awesome-typescript-loader'),
-              },
-              {
-                loader: require.resolve('react-docgen-typescript-loader'),
-              },
-            ],
-          },
-        ],
+      {
+        loader: require.resolve('react-docgen-typescript-loader'),
       },
-    })
-    .toConfig();
+    ],
+  });
+  mergedConfig.resolve.extensions.push('.ts', '.tsx');
+
+  return mergedConfig;
 };
