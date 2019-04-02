@@ -73,13 +73,15 @@ export type ColProps = {
   children?: ReactNode[];
 };
 
-export default function Col(props: ColProps) {
+const Col = (props: ColProps) => {
   const className = getClassNames(props);
 
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className })
   );
-}
+};
 
 Col.propTypes = propTypes;
+
+export default Col;

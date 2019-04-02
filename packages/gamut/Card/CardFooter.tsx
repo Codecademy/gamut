@@ -20,7 +20,7 @@ export type CardFooterProps = {
   standardPadding?: boolean;
 };
 
-export default function CardFooter({
+const CardFooter = ({
   children,
   border,
   align,
@@ -28,7 +28,7 @@ export default function CardFooter({
   standardPadding,
   standardHeight,
   className,
-}: CardFooterProps) {
+}: CardFooterProps) => {
   const footerClasses = cx(
     s.footer,
     {
@@ -49,3 +49,5 @@ export default function CardFooter({
 }
 
 CardFooter.defaultProps = defaultProps;
+
+export default CardFooter;
