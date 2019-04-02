@@ -12,11 +12,7 @@ export type CardBodyProps = {
   standardPadding?: boolean;
 };
 
-export default function CardBody({
-  children,
-  standardPadding,
-  className,
-}: CardBodyProps) {
+const CardBody = ({ children, standardPadding, className }: CardBodyProps) => {
   const bodyClasses = cx(
     {
       [s.standardPadding]: standardPadding,
@@ -25,6 +21,8 @@ export default function CardBody({
   );
 
   return <div className={bodyClasses}>{children}</div>;
-}
+};
 
 CardBody.defaultProps = defaultProps;
+
+export default CardBody;

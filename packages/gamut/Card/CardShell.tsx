@@ -15,14 +15,14 @@ export type CardShellProps = {
   role?: string;
 };
 
-export default function CardShell({
+const CardShell = ({
   children,
   hoverShadow,
   className,
   style,
   role,
   id,
-}: CardShellProps) {
+}: CardShellProps) => {
   const shellClasses = cx(
     s.shell,
     {
@@ -36,6 +36,8 @@ export default function CardShell({
       {children}
     </div>
   );
-}
+};
 
 CardShell.defaultProps = defaultProps;
+
+export default CardShell;
