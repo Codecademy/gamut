@@ -31,7 +31,16 @@ const commonConfig = (options = {}) => {
     },
 
     resolve: {
-      extensions: ['.webpack.js', '.web.js', '.js', '.scss', '.css', '.json'],
+      extensions: [
+        '.webpack.js',
+        '.web.js',
+        '.js',
+        '.scss',
+        '.css',
+        '.json',
+        '.ts',
+        '.tsx',
+      ],
       modules: ['node_modules', 'node_modules/@codecademy'],
     },
 

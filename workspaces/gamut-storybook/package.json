@@ -48,12 +48,17 @@
     "node-sass": "4.11.0",
     "postcss-loader": "3.0.0",
     "prop-types": "^15.7.2",
-    "react": "16.8.4",
-    "react-docgen-typescript-loader": "3.0.1",
-    "react-dom": "16.8.4",
+    "react": "16.8.6",
+    "react-docgen-typescript-loader": "3.1.0",
+    "react-dom": "16.8.6",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
+    "typescript": "*",
+
     "webpack": "4.29.6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "fork-ts-checker-webpack-plugin": "^1.0.1"
+  }
 }

@@ -1,6 +1,6 @@
 const babel = {
   default: {
-    test: /\.js?$/,
+    test: /\.(j|t)sx?$/,
     loader: 'babel-loader',
     options: {
       cacheDirectory: true,
