@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.13](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.12...@codecademy/gamut-storybook@2.9.13) (2019-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update storybook monorepo to v5 (major) ([#268](https://github.com/RyzacInc/client-modules/issues/268)) ([dc85ea8](https://github.com/RyzacInc/client-modules/commit/dc85ea8))
+* add babel config back to storybook ([cdf77e4](https://github.com/RyzacInc/client-modules/commit/cdf77e4))
+
+
+
+
+
 ## [2.9.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.11...@codecademy/gamut-storybook@2.9.12) (2019-04-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
