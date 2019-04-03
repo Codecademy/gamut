@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.10.0...@codecademy/gamut-storybook@2.10.1) (2019-04-03)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#280](https://github.com/RyzacInc/client-modules/issues/280)) ([3b1bc1b](https://github.com/RyzacInc/client-modules/commit/3b1bc1b))
+* **deps:** update dependency react-docgen-typescript-loader to v3.1.0 ([#279](https://github.com/RyzacInc/client-modules/issues/279)) ([e01540d](https://github.com/RyzacInc/client-modules/commit/e01540d))
+
+
+
+
+
 # [2.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.13...@codecademy/gamut-storybook@2.10.0) (2019-04-03)
 
 
