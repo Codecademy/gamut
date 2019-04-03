@@ -8,14 +8,13 @@ const PROD = ENV === 'production';
 const CSS_MODULE_IDENT = PROD
   ? '[local]__[hash:base64]'
   : '[folder]__[local]__[hash:base64:5]';
-const SOURCEMAPS = !(process.env.NODE_ENV === 'production');
 
 const cssFilePattern = /\.css?$/;
 const cssLoaderDefaults = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
-    sourceMap: SOURCEMAPS,
+    sourceMap: true,
     localIdentName: CSS_MODULE_IDENT,
   },
 };
@@ -23,7 +22,7 @@ const cssLoaderDefaults = {
 const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
-    sourceMap: SOURCEMAPS,
+    sourceMap: true,
     plugins: () => [
       require('postcss-flexbugs-fixes'),
       autoprefixer({
@@ -37,7 +36,7 @@ const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
   options: {
-    sourceMap: SOURCEMAPS,
+    sourceMap: true,
   },
 };
 

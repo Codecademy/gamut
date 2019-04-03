@@ -60,13 +60,15 @@ export type RowProps<TElement extends HTMLElement = HTMLElement> = {
   tagName?: TElement['tagName'];
 };
 
-export default function Row<TElement extends HTMLElement = HTMLDivElement>(
+const Row = <TElement extends HTMLElement = HTMLDivElement>(
   props: RowProps<TElement>
-) {
+) => {
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
-}
+};
 
 Row.propTypes = propTypes;
+
+export default Row;

@@ -5,14 +5,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const loaders = require('../loaders');
 const ENV = require('../lib/env');
 
-const DEV = ENV !== 'production';
-
 const commonConfig = (options = {}) => {
-  const {
-    productionSourcemaps = true,
-    env = ENV,
-    uglifyOptions = {},
-  } = options;
+  const { env = ENV, uglifyOptions = {} } = options;
+  const DEV = env !== 'production';
+
   let config = {
     context: options.context,
 
@@ -21,13 +17,14 @@ const commonConfig = (options = {}) => {
     entry: path.resolve(options.context, 'src/main.js'),
 
     output: {
-      filename: '[name].js',
+      filename: DEV ? '[name].js' : '[name].[contenthash].js',
+      chunkFilename: DEV ? '[name].chunk.js' : '[name].[contenthash].chunk.js',
       path: path.resolve(options.context, 'dist'),
     },
 
     module: {
       strictExportPresence: true,
-      rules: [loaders.babel.default, loaders.files.default],
+      rules: [loaders.files.default],
     },
 
     resolve: {
@@ -35,6 +32,7 @@ const commonConfig = (options = {}) => {
         '.webpack.js',
         '.web.js',
         '.js',
+        '.jsx',
         '.scss',
         '.css',
         '.json',
@@ -53,17 +51,25 @@ const commonConfig = (options = {}) => {
     ],
   };
 
-  if (config.mode === 'production') {
+  if (DEV) {
+    config = merge.smart(config, {
+      devtool: 'source-map',
+      output: {
+        devtoolModuleFilenameTemplate: '[absolute-resource-path]',
+        devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
+      },
+    });
+  } else {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
-      devtool: productionSourcemaps ? 'source-map' : false,
+      devtool: 'source-map',
       optimization: {
         minimize: true,
         minimizer: [
           new UglifyJsPlugin({
             cache: true,
             parallel: true,
-            sourceMap: productionSourcemaps,
+            sourceMap: true,
             uglifyOptions: {
               compress: {
                 inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
@@ -73,14 +79,7 @@ const commonConfig = (options = {}) => {
           }),
         ],
       },
-    });
-  } else {
-    config = merge.smart(config, {
-      devtool: 'cheap-module-eval-source-map',
-      output: {
-        devtoolModuleFilenameTemplate: '[absolute-resource-path]',
-        devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
-      },
+      plugins: [new webpack.HashedModuleIdsPlugin()],
     });
   }
 
