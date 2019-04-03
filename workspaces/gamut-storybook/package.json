@@ -18,9 +18,9 @@
     "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "dependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.4.0",
-    "@babel/polyfill": "7.4.0",
+    "@babel/cli": "7.4.3",
+    "@babel/core": "7.4.3",
+    "@babel/polyfill": "7.4.3",
     "@babel/register": "7.4.0",
     "@codecademy/gamut": "^1.21.6",
     "@codecademy/gamut-styles": "^2.2.3",
