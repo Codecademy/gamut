@@ -19,7 +19,7 @@
     "format:verify": "yarn prettier --list-different",
     "build-all": "yarn wsrun build --exclude-missing",
     "build-storybook": "yarn wsrun build-storybook --exclude-missing",
-    "start": "yarn wsrun storybook --exclude-missing",
+    "start": "yarn && yarn wsrun storybook --exclude-missing",
     "prepublishOnly": "yarn build-all"
   },
   "lint-staged": {
