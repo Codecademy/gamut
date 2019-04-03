@@ -3,7 +3,18 @@ const loaders = require('../loaders');
 
 const babelConfig = options => ({
   module: {
-    rules: [merge(loaders.babel.default, options)],
+    rules: [
+      merge(
+        {
+          test: /\.(j|t)sx?$/,
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+          },
+        },
+        options
+      ),
+    ],
   },
 });
 
