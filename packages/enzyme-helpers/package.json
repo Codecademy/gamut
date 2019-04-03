@@ -8,7 +8,8 @@
   "author": "codecademy",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "develop": "rollup -c -w"
   },
   "private": false,
   "peerDependencies": {

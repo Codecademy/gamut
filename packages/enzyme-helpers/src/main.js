@@ -38,7 +38,6 @@ export class EnzymeHelpers {
 
   expectTestIdCount = (selector, n = 1) =>
     this.expectCount(EnzymeHelpers.testId(selector), n);
-  ka;
 
   expectAllTestIds = ids => ids.forEach(id => this.expectTestIdCount(id, 1));
 }
