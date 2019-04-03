@@ -2226,9 +2226,10 @@
     react-select "^2.3.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-links@^5.0.6":
+"@storybook/addon-links@5.0.6":
   version "5.0.6"
   resolved "https://registry.npmjs.org/@storybook/addon-links/-/addon-links-5.0.6.tgz#8c6dae2d31df8dc0f1988b6f3fd0ffaf7ad0e482"
+  integrity sha512-cOlW+T10u+KBWRD3i+vJBgta2P/0V69vdAbGqK56j5Okr3kqS3ZJsM5avNhjmysvuQIlw0mAMC2Q9SK3Kn1P2Q==
   dependencies:
     "@storybook/addons" "5.0.6"
     "@storybook/core-events" "5.0.6"
@@ -2238,7 +2239,7 @@
     prop-types "^15.6.2"
     qs "^6.5.2"
 
-"@storybook/addons@5.0.6", "@storybook/addons@^5.0.6":
+"@storybook/addons@5.0.6":
   version "5.0.6"
   resolved "https://registry.npmjs.org/@storybook/addons/-/addons-5.0.6.tgz#3ecb7fd8421e6557b1abc71ebede905e8decfebc"
   dependencies:
@@ -10568,7 +10569,7 @@ promzard@^0.3.0:
   dependencies:
     read "1"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
