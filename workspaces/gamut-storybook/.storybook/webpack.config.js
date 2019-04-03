@@ -25,6 +25,7 @@ const defaultConfig = createConfig()
   .common({
     context: path.join(__dirname, '../'),
   })
+  .babel()
   .css()
   .toConfig();
 

@@ -24,7 +24,7 @@ const commonConfig = (options = {}) => {
 
     module: {
       strictExportPresence: true,
-      rules: [loaders.babel.default, loaders.files.default],
+      rules: [loaders.files.default],
     },
 
     resolve: {
@@ -32,6 +32,7 @@ const commonConfig = (options = {}) => {
         '.webpack.js',
         '.web.js',
         '.js',
+        '.jsx',
         '.scss',
         '.css',
         '.json',
