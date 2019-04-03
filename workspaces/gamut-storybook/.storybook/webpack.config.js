@@ -8,7 +8,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
-var ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
 
