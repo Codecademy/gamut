@@ -27,26 +27,26 @@ const defaultConfig = createConfig()
   })
   .babel()
   .css()
+  .merge({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: require.resolve('react-docgen-typescript-loader'),
+            },
+          ],
+        },
+      ],
+    },
+    plugins: [new ForkTsCheckerWebpackPlugin()],
+  })
   .toConfig();
 
 module.exports = ({ config, mode }) => {
   delete defaultConfig.entry;
   delete defaultConfig.output;
 
-  const mergedConfig = merge.smart(defaultConfig, config);
-
-  // mergedConfig.module.rules.push({
-  //   test: /\.(ts|tsx)$/,
-  //   use: [
-  //     {
-  //       loader: require.resolve('awesome-typescript-loader'),
-  //     },
-  //     {
-  //       loader: require.resolve('react-docgen-typescript-loader'),
-  //     },
-  //   ],
-  // });
-  mergedConfig.plugins.push(new ForkTsCheckerWebpackPlugin());
-  mergedConfig.resolve.extensions.push('.ts', '.tsx');
-  return mergedConfig;
+  return merge.smart(defaultConfig, config);
 };
