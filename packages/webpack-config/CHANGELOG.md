@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.4...@codecademy/webpack-config@3.12.0) (2019-04-03)
+
+
+### Features
+
+* webpack-config, add support for ts/tsx extensions in babel, other cleanup  ([#282](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/282)) ([d213899](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/d213899))
+
+
+
+
+
 ## [3.11.4](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.3...@codecademy/webpack-config@3.11.4) (2019-03-26)
 
 

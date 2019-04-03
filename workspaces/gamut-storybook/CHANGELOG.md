@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.13...@codecademy/gamut-storybook@2.10.0) (2019-04-03)
+
+
+### Features
+
+* webpack-config, add support for ts/tsx extensions in babel, other cleanup  ([#282](https://github.com/RyzacInc/client-modules/issues/282)) ([d213899](https://github.com/RyzacInc/client-modules/commit/d213899))
+
+
+
+
+
 ## [2.9.13](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.9.12...@codecademy/gamut-storybook@2.9.13) (2019-04-02)
 
 
