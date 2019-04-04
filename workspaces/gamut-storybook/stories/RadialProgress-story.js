@@ -1,7 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
-import { text, number, boolean, select } from '@storybook/addon-knobs';
+import {
+  withKnobs,
+  text,
+  number,
+  boolean,
+  select,
+} from '@storybook/addon-knobs';
 import { selectableColors } from './helpers';
 
 // eslint-disable-next-line
@@ -24,6 +30,7 @@ const AnimationController = ({ rendering }) => (
 );
 
 storiesOf('Component/RadialProgress', module)
+  .addDecorator(withKnobs)
   .add(
     'Example Animations',
     () => <AnimationController rendering={boolean('rendering')} />,

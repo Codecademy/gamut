@@ -6,7 +6,7 @@ const loaders = require('../loaders');
 const ENV = require('../lib/env');
 
 const commonConfig = (options = {}) => {
-  const { env = ENV, uglifyOptions = {} } = options;
+  const { env = ENV, uglifyOptions = {}, includeDefaults = true } = options;
   const DEV = env !== 'production';
 
   let config = {
@@ -24,7 +24,16 @@ const commonConfig = (options = {}) => {
 
     module: {
       strictExportPresence: true,
-      rules: [loaders.files.default],
+      rules: includeDefaults
+        ? [
+            {
+              ...loaders.files.default,
+              options: {
+                name: DEV ? '[name]-[hash].[ext]' : '[hash].[ext]',
+              },
+            },
+          ]
+        : [],
     },
 
     resolve: {

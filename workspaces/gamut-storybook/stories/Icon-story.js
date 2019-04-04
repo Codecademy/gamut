@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { select, number } from '@storybook/addon-knobs';
+import { withKnobs, select, number } from '@storybook/addon-knobs';
 import Icon from '@codecademy/gamut/Icon';
 import iconMap from '@codecademy/gamut/Icon/iconMap';
 import { selectableColors } from './helpers';
@@ -11,6 +11,7 @@ import s from './Icon-story.scss';
 const iconNames = Object.keys(iconMap);
 
 storiesOf('Component/Icon', module)
+  .addDecorator(withKnobs)
   .add(
     'All Icons',
     withInfo({

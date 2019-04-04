@@ -46,7 +46,9 @@ storiesOf('Component/ToolTip', module).add(
     </div>
   )),
   {
-    inline: true,
-    propTables: false,
+    info: {
+      inline: true,
+      propTables: false,
+    },
   }
 );

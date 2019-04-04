@@ -4,5 +4,5 @@ export default create({
   base: 'light',
   brandTitle: 'Gamut',
   brandUrl: 'https://codecademy.com',
-  brandImage: 'https://placehold.it/350x150',
+  // brandImage: 'https://placehold.it/350x150',
 });
