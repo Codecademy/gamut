@@ -54,10 +54,6 @@ storiesOf('Component/Markdown', module)
       />
     ),
     {
-      info: {
-        inline: false,
-        propTables: false,
-      },
       knobs: {
         escapeHTML: false,
       },
@@ -99,10 +95,6 @@ storiesOf('Component/Markdown', module)
       />
     ),
     {
-      info: {
-        inline: false,
-        propTables: false,
-      },
       knobs: {
         escapeHTML: false,
       },

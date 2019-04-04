@@ -30,34 +30,21 @@ storiesOf('Component/Icon', module)
   )
   .add(
     'Editable Icon',
-    withInfo({
-      ...options,
-      inline: true,
-      propTables: false,
-    })(() => (
-      <div>
-        <span className={s.iconWrapper}>
-          {select('name', iconNames, iconNames[0])}
-          <Icon
-            name={select('name', iconNames, iconNames[0])}
-            width={number('width', 128)}
-            height={number('height', 128)}
-            style={{
-              color: select('color', selectableColors, 'black'),
-              backgroundColor: select(
-                'backgroundColor',
-                selectableColors,
-                'white'
-              ),
-            }}
-          />
-        </span>
-        <p className={s.note}>
-          <em>
-            Note: Both color and backgroundColor should be adjusted with CSS
-            classes rather than inline styles.
-          </em>
-        </p>
-      </div>
-    ))
+    () => (
+      <Icon
+        name={select('name', iconNames, iconNames[0])}
+        width={number('width', 128)}
+        height={number('height', 128)}
+        style={{
+          color: select('color', selectableColors, 'black'),
+          backgroundColor: select('backgroundColor', selectableColors, 'white'),
+        }}
+      />
+    ),
+    {
+      info: {
+        text: `Note: Both color and backgroundColor should be adjusted with CSS
+    classes rather than inline styles.`,
+      },
+    }
   );

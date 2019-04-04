@@ -30,10 +30,6 @@ module.exports = ({ config, mode }) => {
     .babel()
     .css()
     .merge({
-      output: {
-        path: '/stories/',
-        publicPath: DEV ? 'http://localhost:6006/' : '/',
-      },
       module: {
         rules: [
           {
