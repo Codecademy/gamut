@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.10.3...@codecademy/gamut-storybook@2.11.0) (2019-04-04)
+
+
+### Features
+
+* Use babel to compile typescript in storybook ([#285](https://github.com/RyzacInc/client-modules/issues/285)) ([5622985](https://github.com/RyzacInc/client-modules/commit/5622985))
+
+
+
+
+
 ## [2.10.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.10.2...@codecademy/gamut-storybook@2.10.3) (2019-04-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
