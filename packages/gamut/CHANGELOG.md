@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.7...@codecademy/gamut@1.22.0) (2019-04-04)
+
+
+### Features
+
+* export all components ([#284](https://github.com/RyzacInc/client-modules/issues/284)) ([92bcf8e](https://github.com/RyzacInc/client-modules/commit/92bcf8e))
+
+
+
+
+
 ## [1.21.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.6...@codecademy/gamut@1.21.7) (2019-04-03)
 
 
