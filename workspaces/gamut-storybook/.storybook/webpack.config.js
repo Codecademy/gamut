@@ -22,7 +22,6 @@ const { createConfig, merge } = require('@codecademy/webpack-config');
 
 module.exports = ({ config, mode }) => {
   const DEV = mode === 'DEVELOPMENT';
-  console.log(config);
   const defaultConfig = createConfig()
     .common({
       context: path.resolve(__dirname, '../'),
