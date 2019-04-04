@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "declaration": false,
+  },
+  "include": [
+    "./**/*.js",
+    "./**/*.jsx",
+    "../../**/*.ts",
+    "../../**/*.tsx"
+  ],
+  "exclude": []
+}
