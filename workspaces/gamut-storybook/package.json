@@ -33,7 +33,6 @@
     "@storybook/addons": "5.0.6",
     "@storybook/react": "5.0.6",
     "@types/storybook__react": "4.0.1",
-    "awesome-typescript-loader": "5.2.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.5",
     "babel-preset-codecademy": "2.1.0",
@@ -41,6 +40,7 @@
     "classnames": "2.2.6",
     "css-loader": "2.1.1",
     "file-loader": "3.0.1",
+    "fork-ts-checker-webpack-plugin": "^1.0.1",
     "invariant": "2.2.4",
     "jsdom": "8.5.0",
     "lodash": "4.17.11",
@@ -53,6 +53,7 @@
     "react-dom": "16.8.6",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
+    "typescript": "*",
     "webpack": "4.29.6"
   },
   "license": "MIT"

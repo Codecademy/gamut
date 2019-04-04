@@ -8,7 +8,7 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const babelCodecademyPreset = require('babel-preset-codecademy');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
 
@@ -23,30 +23,30 @@ const STATS = process.env.WEBPACK_STATS;
 
 const defaultConfig = createConfig()
   .common({
-    context: path.join(__dirname, '../'),
+    context: path.resolve(__dirname, '../'),
   })
   .babel()
   .css()
+  .merge({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          use: [
+            {
+              loader: require.resolve('react-docgen-typescript-loader'),
+            },
+          ],
+        },
+      ],
+    },
+    plugins: [new ForkTsCheckerWebpackPlugin()],
+  })
   .toConfig();
 
 module.exports = ({ config, mode }) => {
   delete defaultConfig.entry;
   delete defaultConfig.output;
 
-  const mergedConfig = merge.smart(defaultConfig, config);
-
-  mergedConfig.module.rules.push({
-    test: /\.(ts|tsx)$/,
-    use: [
-      {
-        loader: require.resolve('awesome-typescript-loader'),
-      },
-      {
-        loader: require.resolve('react-docgen-typescript-loader'),
-      },
-    ],
-  });
-  mergedConfig.resolve.extensions.push('.ts', '.tsx');
-
-  return mergedConfig;
+  return merge.smart(defaultConfig, config);
 };
