@@ -2870,6 +2870,10 @@
     "@types/cheerio" "*"
     "@types/react" "*"
 
+"@types/estree@0.0.39":
+  version "0.0.39"
+  resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
+
 "@types/invariant@2.2.29":
   version "2.2.29"
   resolved "https://registry.npmjs.org/@types/invariant/-/invariant-2.2.29.tgz#aa845204cd0a289f65d47e0de63a6a815e30cc66"
@@ -2899,6 +2903,10 @@
 "@types/node@*":
   version "11.9.6"
   resolved "https://registry.npmjs.org/@types/node/-/node-11.9.6.tgz#c632bbcc780a1349673a6e2e9b9dfa8c369d3c74"
+
+"@types/node@^11.13.0":
+  version "11.13.0"
+  resolved "https://registry.npmjs.org/@types/node/-/node-11.13.0.tgz#b0df8d6ef9b5001b2be3a94d909ce3c29a80f9e1"
 
 "@types/prop-types@*":
   version "15.7.0"
@@ -3222,7 +3230,7 @@ acorn@^5.5.3:
   version "5.7.3"
   resolved "https://registry.npmjs.org/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
 
-acorn@^6.0.1, acorn@^6.0.5, acorn@^6.0.7:
+acorn@^6.0.1, acorn@^6.0.5, acorn@^6.0.7, acorn@^6.1.1:
   version "6.1.1"
   resolved "https://registry.npmjs.org/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
 
@@ -12107,6 +12115,14 @@ rollup-pluginutils@^2.3.0:
   dependencies:
     estree-walker "^0.6.0"
     micromatch "^3.1.10"
+
+rollup@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.npmjs.org/rollup/-/rollup-1.9.0.tgz#65f7db8d312a07d4e9702316025f91df56ce9f9c"
+  dependencies:
+    "@types/estree" "0.0.39"
+    "@types/node" "^11.13.0"
+    acorn "^6.1.1"
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"
