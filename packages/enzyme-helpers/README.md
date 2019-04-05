@@ -11,14 +11,14 @@ yarn add -D @codecademy/enzyme-helpers
 ## Usage
 ```
 import { shallow } from 'enzyme';
-import { EnzymeHelpers } from '@codecademy/enzyme-helpers';
+import { createEnzymeHelpers } from '@codecademy/enzyme-helpers';
 import MyComponent from 'components/MyComponent';
 
-const { expectCount, setup } = new EnzymeHelpers(
-  MyComponent,
-  { render: shallow },
-  { baseProp: 'a-base-prop' },
-);
+const { expectCount, setup } = createEnzymeHelpers({
+  Component: MyComponent,
+  render: shallow,
+  baseProps: { baseProp: 'a-base-prop' },
+});
 
 describe('MyComponent', () => {
   test('it renders the component', () => {
@@ -40,7 +40,7 @@ describe('MyComponent', () => {
 ## Usage with Redux
 ```
 import { shallow } from 'enzyme';
-import { EnzymeHelpers, mockStore } from '@codecademy/enzyme-helpers';
+import { createEnzymeHelpers, mockStore } from '@codecademy/enzyme-helpers';
 import MyConnectedComponent from 'components/MyConnectedComponent';
 
 // mock redux store data 
@@ -48,11 +48,11 @@ const storeData = {
   storeKey: 'storeValue',
 };
 
-const { setup } = new EnzymeHelpers(
-  MyConnectedComponent,
-  { render: shallow },
-  { store: mockStore(storeData) },
-);
+const { setup } = createEnzymeHelpers({
+  Component: MyConnectedComponent,
+  render: shallow,
+  baseProps: { store: mockStore(storeData) },
+});
 
 describe('MyConnectedComponent', () => {
   test('it receives store data', () => {
@@ -64,22 +64,25 @@ describe('MyConnectedComponent', () => {
 ```
 
 ## Configuration
-`EnzymeHelpers` takes three parameters:
+`createEnzymeHelpers` takes an object of options
 ```
-new EnzymeHelpers(Component, options, baseProps = {});
+createEnzymeHelpers({ Component, render, baseProps = {} });
 ```
 
 | Name | Type | Required? | Description|
 | - | - | - | - |
 | Component | `ReactComponent` | Yes | The component to render and test
-| options | `object` | | An object containing configuration options
-| options.render | `function` | Yes | One of Enzyme's three render methods: `shallow`, `render`, `mount`
+| render | `function` | Yes | One of Enzyme's three render methods: `shallow`, `render`, `mount`
 | baseProps | `object` | No | Props passed to every component created by `setup()`
 
 ## API 
-Functions returned from `EnzymeHelpers`. See `test/main.test.js` for example usage.
+Functions returned from `createEnzymeHelpers`. See `test/main.test.js` for example usage.
 ```
-const { expectCount, setup, ...other functions } = new EnzymeHelpers(Component, options, baseProps);
+const {
+  expectCount,
+  setup,
+  ...other functions
+} = createEnzymeHelpers({ Component, render, baseProps });
 ```
 | Function | Description |
 | - | - |
@@ -93,7 +96,7 @@ const { expectCount, setup, ...other functions } = new EnzymeHelpers(Component, 
 | `expectAllTestIds(ids)` | Expect an array of test ids |
 
 ### A Note on Test Ids
-`EnzymeHelpers` expects test ids like so (note, you only need to pass the value to test id functions):
+`enzyme-helpers` expects test ids like so (note, you only need to pass the value to test id functions):
 ```
 <div data-testid="my-test-id" />
 

@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import { EnzymeHelpers } from '../dist/bundle';
+import { createEnzymeHelpers } from '../dist/bundle';
 import TestComponent from './TestComponent';
 
 describe('Enzyme Helpers', () => {
@@ -14,11 +14,11 @@ describe('Enzyme Helpers', () => {
       expectTestId,
       expectTestIdCount,
       setup,
-    } = new EnzymeHelpers(
-      TestComponent,
-      { render: shallow },
-      { baseProp: 'this is a base prop', onClick }
-    );
+    } = createEnzymeHelpers({
+      Component: TestComponent,
+      render: shallow,
+      baseProps: { baseProp: 'this is a base prop', onClick },
+    });
 
     test('It creates a component with props', () => {
       const { wrapper } = setup({ componentProp: 'this is a component prop' });
@@ -79,7 +79,10 @@ describe('Enzyme Helpers', () => {
   });
 
   describe('Empty Render', () => {
-    const { setup } = new EnzymeHelpers(() => null, { render: shallow });
+    const { setup } = createEnzymeHelpers({
+      Component: () => null,
+      render: shallow,
+    });
 
     test('It fails on empty components', () => {
       expect(() => setup()).toThrow();
