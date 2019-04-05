@@ -36,6 +36,9 @@ export class EnzymeHelpers {
   expectCount = (selector, n = 1) =>
     expect(this.wrapper.find(selector).length).toBe(n);
 
+  expectTestId = id =>
+    expect(this.wrapper.find(EnzymeHelpers.testId(id))).toExist();
+
   expectTestIdCount = (selector, n = 1) =>
     this.expectCount(EnzymeHelpers.testId(selector), n);
 

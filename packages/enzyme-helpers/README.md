@@ -77,7 +77,7 @@ new EnzymeHelpers(Component, options, baseProps = {});
 | baseProps | `object` | No | Props passed to every component created by `setup()`
 
 ## API 
-Functions returned from `EnzymeHelpers`:
+Functions returned from `EnzymeHelpers`. See `test/main.test.js` for example usage.
 ```
 const { expectCount, setup, ...other functions } = new EnzymeHelpers(Component, options, baseProps);
 ```
@@ -88,6 +88,7 @@ const { expectCount, setup, ...other functions } = new EnzymeHelpers(Component, 
 | `click(selector)` | Simulate a click on the specified selector |
 | `clickTestId(testId)` | Simulate a click on the specified test id |
 | `expectCount(selector, count = 1)` | Expect a number of the specified selector |
+| `expectTestId(testId)` | Expect that a given test id exists in the wrapper |	
 | `expectTestIdCount(testId, count = 1)` | Expect a number of the specified test id |
 | `expectAllTestIds(ids)` | Expect an array of test ids |
 
@@ -102,7 +103,7 @@ expectTestId(div, 'my-test-id') // true
 ## Development
 ```
 yarn link
-yarn development
+yarn develop
 
 # in your project's repo
 yarn link @codecademy/enzyme-helpers
