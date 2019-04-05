@@ -1,25 +1,3 @@
-{	
-  "env": {	
-    "development": {	
-      "presets": [	
-        ["@babel/env", { "modules": false }],	
-        ["@babel/preset-react"]	
-      ],	
-      "plugins": ["@babel/plugin-proposal-class-properties"]	
-    },	
-    "production": {	
-      "presets": [	
-        ["@babel/env", { "modules": false }],	
-        ["@babel/preset-react"]	
-      ],	
-      "plugins": ["@babel/plugin-proposal-class-properties"]	
-    },	
-    "test": {	
-      "presets": [	
-        ["@babel/env"],	
-        ["@babel/preset-react"]	
-      ],	
-      "plugins": ["@babel/plugin-proposal-class-properties"]	
-    }	
-  }	
+{
+  "presets": ["codecademy"]
 }

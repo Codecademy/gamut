@@ -13,6 +13,6 @@ export default {
       format: 'esm',
     },
   ],
-  external: ['react', 'enzyme'],
+  external: ['react', 'react-dom', 'enzyme', 'enzyme-adapter-react-16'],
   plugins: [resolve(), babel({ exclude: 'node_modules/** ' })],
 };
