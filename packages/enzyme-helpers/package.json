@@ -8,8 +8,8 @@
   "author": "codecademy",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
-    "develop": "rollup -c -w",
+    "build": "rollup --config --sourcemap",
+    "develop": "yarn build --watch",
     "prepublishOnly": "yarn test && yarn build",
     "test": "jest"
   },
