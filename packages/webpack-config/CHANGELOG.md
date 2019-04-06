@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.1...@codecademy/webpack-config@3.12.2) (2019-04-06)
+
+
+### Bug Fixes
+
+* storybook cleanup, add defaults opt-out to webpack-config ([#290](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/290)) ([16b2fb0](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/16b2fb0))
+
+
+
+
+
 ## [3.12.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.0...@codecademy/webpack-config@3.12.1) (2019-04-03)
 
 
