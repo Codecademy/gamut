@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, select } from '@storybook/addon-knobs';
+import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
 
 const editableMarkdown = `
@@ -44,6 +44,7 @@ This is some \`inline code\`
 `;
 
 storiesOf('Component/Markdown', module)
+  .addDecorator(withKnobs)
   .add(
     'Editable',
     () => (
@@ -53,10 +54,6 @@ storiesOf('Component/Markdown', module)
       />
     ),
     {
-      info: {
-        inline: false,
-        propTables: false,
-      },
       knobs: {
         escapeHTML: false,
       },
@@ -98,10 +95,6 @@ storiesOf('Component/Markdown', module)
       />
     ),
     {
-      info: {
-        inline: false,
-        propTables: false,
-      },
       knobs: {
         escapeHTML: false,
       },

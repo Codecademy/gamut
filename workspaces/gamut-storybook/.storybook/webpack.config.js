@@ -12,7 +12,6 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
 
-const STATS = process.env.WEBPACK_STATS;
 /**
  * Base Webpack Build Config
  *
@@ -21,32 +20,32 @@ const STATS = process.env.WEBPACK_STATS;
  * This is the config that all others are based on
  */
 
-const defaultConfig = createConfig()
-  .common({
-    context: path.resolve(__dirname, '../'),
-  })
-  .babel()
-  .css()
-  .merge({
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: [
-            {
-              loader: require.resolve('react-docgen-typescript-loader'),
-            },
-          ],
-        },
-      ],
-    },
-    plugins: [new ForkTsCheckerWebpackPlugin()],
-  })
-  .toConfig();
-
 module.exports = ({ config, mode }) => {
+  const DEV = mode === 'DEVELOPMENT';
+  const defaultConfig = createConfig()
+    .common({
+      context: path.resolve(__dirname, '../'),
+      includeDefaults: false,
+    })
+    .babel()
+    .css()
+    .merge({
+      module: {
+        rules: [
+          {
+            test: /\.tsx?$/,
+            use: [
+              {
+                loader: require.resolve('react-docgen-typescript-loader'),
+              },
+            ],
+          },
+        ],
+      },
+      plugins: [new ForkTsCheckerWebpackPlugin()],
+    })
+    .toConfig();
   delete defaultConfig.entry;
   delete defaultConfig.output;
-
   return merge.smart(defaultConfig, config);
 };

@@ -1,13 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Spinner from '@codecademy/gamut/Spinner';
-import { text } from '@storybook/addon-knobs';
+import { Spinner } from '@codecademy/gamut';
+import { withInfo } from '@storybook/addon-info';
+import { withKnobs, text } from '@storybook/addon-knobs';
+import { addonInfoOptions } from './options';
 
-storiesOf('Component/Spinner', module).add(
-  'Spinner',
-  () => <Spinner size={text('size', '10rem')} />,
-  {
-    inline: true,
-    propTables: false,
-  }
-);
+storiesOf('Component/Spinner', module)
+  .addDecorator(withKnobs)
+  .add('Spinner', () => <Spinner size={text('size', '10rem')} />);
