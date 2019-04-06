@@ -45,6 +45,7 @@ storiesOf('Component/NotificationList', module).add(
               .format('MMMM DD YYYY h:mm:ss'),
             link:
               'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
+            id: '123',
           },
         ]}
       />

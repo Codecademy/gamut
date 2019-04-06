@@ -1,14 +1,8 @@
 module.exports = {
   verbose: true,
-  testURL: 'https://test.codecademy.com',
   globals: {
     __DEV__: true,
-    'ts-jest': {
-      tsConfig: 'tsconfig.jest.json',
-    },
   },
-  roots: ['<rootDir>/packages'],
-  projects: ['<rootDir>/packages'],
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
   moduleFileExtensions: [
     'js',
@@ -27,7 +21,7 @@ module.exports = {
   },
   transform: {
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
-    '\\.(ts|tsx)$': 'ts-jest',
+    '\\.(j|t)sx?$': 'babel-jest',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
   testRegex: '\\-test\\.tsx?$',
