@@ -12754,9 +12754,10 @@ trough@^1.0.0:
   dependencies:
     glob "^7.1.2"
 
-ts-jest@24.0.1:
-  version "24.0.1"
-  resolved "https://registry.npmjs.org/ts-jest/-/ts-jest-24.0.1.tgz#77258061cc354c3fa8616b8ac03baa0f8580f854"
+ts-jest@24.0.2:
+  version "24.0.2"
+  resolved "https://registry.npmjs.org/ts-jest/-/ts-jest-24.0.2.tgz#8dde6cece97c31c03e80e474c749753ffd27194d"
+  integrity sha512-h6ZCZiA1EQgjczxq+uGLXQlNgeg02WWJBbeT8j6nyIBRQdglqbvzDoHahTEIiS6Eor6x8mK6PfZ7brQ9Q6tzHw==
   dependencies:
     bs-logger "0.x"
     buffer-from "1.x"
