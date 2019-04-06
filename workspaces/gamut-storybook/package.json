@@ -30,6 +30,7 @@
     "@storybook/addon-info": "5.0.6",
     "@storybook/addon-knobs": "5.0.6",
     "@storybook/addon-links": "5.0.6",
+    "@storybook/addon-storyshots": "^5.0.6",
     "@storybook/addons": "5.0.6",
     "@storybook/react": "5.0.6",
     "@types/storybook__react": "4.0.1",
@@ -56,8 +57,5 @@
     "typescript": "*",
     "webpack": "4.29.6"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "@storybook/addon-storyshots": "^5.0.6"
-  }
+  "license": "MIT"
 }
