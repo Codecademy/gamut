@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme';
-import { createEnzymeHelpers } from '../dist/bundle';
+import { createEnzymeHelpers } from '../src/main';
 import TestComponent from './TestComponent';
 
 describe('Enzyme Helpers', () => {
