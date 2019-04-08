@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.2...@codecademy/webpack-config@3.12.3) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency postcss-flexbugs-fixes to v4 ([#260](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/260)) ([41b6201](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/41b6201))
+
+
+
+
+
 ## [3.12.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.1...@codecademy/webpack-config@3.12.2) (2019-04-06)
 
 

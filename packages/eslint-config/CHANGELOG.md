@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.1.2...@codecademy/eslint-config@0.1.3) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#288](http://github.com/RyzacInc/client-modules/packages/eslint-config/issues/288)) ([273e99a](http://github.com/RyzacInc/client-modules/packages/eslint-config/commit/273e99a))
+
+
+
+
+
 ## [0.1.2](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.1.1...@codecademy/eslint-config@0.1.2) (2019-04-08)
 
 **Note:** Version bump only for package @codecademy/eslint-config
