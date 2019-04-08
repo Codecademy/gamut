@@ -52,7 +52,7 @@
     "autoprefixer": "^8.1.0",
     "mini-css-extract-plugin": "^0.4.2",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
-    "postcss-flexbugs-fixes": "^3.3.1",
+    "postcss-flexbugs-fixes": "^4.0.0",
     "uglifyjs-webpack-plugin": ">= 1.2.3",
     "webpack-cli": "^3.0.8",
     "webpack-merge": "^4.1.2"
