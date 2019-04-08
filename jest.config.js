@@ -4,6 +4,7 @@ module.exports = {
     __DEV__: true,
   },
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],
   moduleFileExtensions: [
     'js',
     'json',
@@ -24,7 +25,7 @@ module.exports = {
     '\\.(j|t)sx?$': 'babel-jest',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
-  testRegex: '\\-test\\.tsx?$',
+  testRegex: '\\-test\\.(j|t)sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
 };
