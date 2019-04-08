@@ -28,6 +28,6 @@
     "eslint-plugin-react": "^7.12.4"
   },
   "devDependencies": {
-    "eslint": "^5.15.1"
+    "eslint": "5.16.0"
   }
 }
