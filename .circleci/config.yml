@@ -77,6 +77,14 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
 
+  verify_packages:
+    <<: *default_env
+    steps:
+      - *restore_repo
+      - run:
+          name: Verify Packages
+          command: yarn verify-all
+
   tests:
     <<: *default_env
     steps:
@@ -160,6 +168,9 @@ workflows:
           requires:
             - checkout_code
       - verify_formatting:
+          requires:
+            - checkout_code
+      - verify_packages:
           requires:
             - checkout_code
       - publish:

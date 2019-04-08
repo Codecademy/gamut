@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/RyzacInc/client-modules/packages/eslint-config"
   },
+  "scripts": {
+    "verify": "eslint --config ./index.js --print-config ./index.js"
+  },
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
@@ -23,5 +26,8 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1"
   }
 }

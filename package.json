@@ -17,9 +17,10 @@
     "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
-    "build-all": "yarn wsrun build --exclude-missing",
-    "build-storybook": "yarn wsrun build-storybook --exclude-missing",
-    "start": "yarn && yarn wsrun storybook --exclude-missing",
+    "verify-all": "yarn wsrun --exclude-missing verify",
+    "build-all": "yarn wsrun --exclude-missing build",
+    "build-storybook": "yarn wsrun --exclude-missing build-storybook ",
+    "start": "yarn && yarn wsrun --exclude-missing storybook",
     "prepublishOnly": "yarn build-all"
   },
   "lint-staged": {
@@ -38,7 +39,7 @@
   ],
   "dependencies": {
     "lerna": "3.13.1",
-    "wsrun": "2.2.1"
+    "wsrun": "3.6.4"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
@@ -53,9 +54,12 @@
     "@types/jest": "24.0.11",
     "@types/lodash": "4.14.123",
     "@types/react": "16.8.6",
+    "@types/storybook__addon-storyshots": "^3.4.8",
+
     "@typescript-eslint/parser": "1.6.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.7.0",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "babel-preset-codecademy": "2.1.0",
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.11.2",
@@ -72,7 +76,6 @@
     "react-docgen-typescript-webpack-plugin": "1.1.0",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
-    "ts-jest": "24.0.1",
     "typescript": "3.3.3"
   },
   "husky": {
