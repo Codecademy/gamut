@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.11.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.3...@codecademy/gamut-storybook@2.11.4) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#288](https://github.com/RyzacInc/client-modules/issues/288)) ([273e99a](https://github.com/RyzacInc/client-modules/commit/273e99a))
+
+
+
+
+
 ## [2.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.2...@codecademy/gamut-storybook@2.11.3) (2019-04-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
