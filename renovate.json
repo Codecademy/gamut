@@ -2,7 +2,7 @@
   "assignees": ["jakemhiller"],
   "packageRules": [
     {
-      "packagePatterns": [ "enzyme", "jest", "eslint", "prettier"],
+      "packagePatterns": [ "enzyme", "jest", "eslint", "prettier", "@types", "typescript"],
       "automerge": true,
       "automergeType": "branch"
     }
