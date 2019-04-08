@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.4](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.3...@codecademy/webpack-config@3.12.4) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency optimize-css-assets-webpack-plugin to v5 ([#259](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/259)) ([13b185c](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/13b185c))
+
+
+
+
+
 ## [3.12.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.2...@codecademy/webpack-config@3.12.3) (2019-04-08)
 
 
