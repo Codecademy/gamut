@@ -10,4 +10,4 @@ Enzyme.configure({ adapter: new Adapter() });
 registerRequireContextHook();
 
 // Set fixed date
-Date.now = jest.fn(() => new Date(Date.UTC(2019, 3, 24)).valueOf());
+Date.now = jest.fn(() => new Date(2011, 6, 1).valueOf());
