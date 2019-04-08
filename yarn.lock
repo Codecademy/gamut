@@ -3838,7 +3838,7 @@ babel-plugin-transform-undefined-to-void@^6.9.4:
   version "6.9.4"
   resolved "https://registry.npmjs.org/babel-plugin-transform-undefined-to-void/-/babel-plugin-transform-undefined-to-void-6.9.4.tgz#be241ca81404030678b748717322b89d0c8fe280"
 
-babel-preset-codecademy@2.1.0, babel-preset-codecademy@^2.1.0:
+babel-preset-codecademy@2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/babel-preset-codecademy/-/babel-preset-codecademy-2.1.0.tgz#1e7fd4fed64d1b584938a2ead3dc1a3642c9d124"
   dependencies:
@@ -8030,7 +8030,7 @@ jest-changed-files@^24.7.0:
     execa "^1.0.0"
     throat "^4.0.0"
 
-jest-cli@^24.7.0, jest-cli@^24.7.1:
+jest-cli@^24.7.0:
   version "24.7.1"
   resolved "https://registry.npmjs.org/jest-cli/-/jest-cli-24.7.1.tgz#6093a539073b6f4953145abeeb9709cd621044f1"
   dependencies:
@@ -8482,13 +8482,6 @@ jest@24.7.0:
   dependencies:
     import-local "^2.0.0"
     jest-cli "^24.7.0"
-
-jest@^24.7.1:
-  version "24.7.1"
-  resolved "https://registry.npmjs.org/jest/-/jest-24.7.1.tgz#0d94331cf510c75893ee32f87d7321d5bf8f2501"
-  dependencies:
-    import-local "^2.0.0"
-    jest-cli "^24.7.1"
 
 joi@^14.3.1:
   version "14.3.1"

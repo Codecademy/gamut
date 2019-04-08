@@ -9,10 +9,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup --config --sourcemap",
-    "develop": "yarn build --watch",
-    "prepublishOnly": "yarn test && yarn build",
-    "test": "jest"
-  },
+    "develop": "yarn build --watch"
+    },
   "private": false,
   "peerDependencies": {
     "enzyme": "^3.9.0",
@@ -21,11 +19,8 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "rollup": "^1.9.0",
-    "babel-jest": "^24.7.1",
-    "babel-preset-codecademy": "^2.1.0",
-    "jest": "^24.7.1",
     "jest-enzyme": "^7.0.2",
+    "rollup": "^1.9.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^4.0.1"
   }
