@@ -16,6 +16,7 @@ const cssLoaderDefaults = {
     importLoaders: 1,
     sourceMap: true,
     localIdentName: CSS_MODULE_IDENT,
+    modules: false,
   },
 };
 
@@ -63,7 +64,9 @@ const css = {
     test: cssFilePattern,
     use: [
       merge(cssLoaderDefaults, {
-        loader: 'css-loader/locals',
+        options: {
+          exportOnlyLocals: true,
+        },
       }),
     ],
   },
@@ -102,9 +105,9 @@ const scss = {
     test: scssFilePattern,
     use: [
       merge(cssLoaderDefaults, {
-        loader: 'css-loader/locals',
         options: {
           modules: true,
+          exportOnlyLocals: true,
         },
       }),
       merge(postCssLoaderDefaults),
