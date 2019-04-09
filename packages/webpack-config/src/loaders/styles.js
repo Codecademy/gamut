@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
 const ENV = require('../lib/env');
 
 const PROD = ENV === 'production';
@@ -25,8 +24,11 @@ const postCssLoaderDefaults = {
   options: {
     sourceMap: true,
     plugins: () => [
+      require('cssnano')({
+        preset: 'default',
+      }),
       require('postcss-flexbugs-fixes'),
-      autoprefixer({
+      require('autoprefixer')({
         flexbox: 'no-2009',
       }),
     ],
