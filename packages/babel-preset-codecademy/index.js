@@ -25,6 +25,7 @@ module.exports = () => ({
   ].filter(Boolean),
   plugins: [
     require("@babel/plugin-transform-destructuring").default,
+    [require("@babel/plugin-proposal-decorators"), { legacy: true }],
     [
       require("@babel/plugin-proposal-class-properties").default,
       {
@@ -37,7 +38,6 @@ module.exports = () => ({
         useBuiltIns: true
       }
     ],
-    [require("@babel/plugin-proposal-decorators"), { legacy: true }],
     require("@babel/plugin-proposal-export-default-from"),
     require("@babel/plugin-proposal-export-namespace-from"),
     require("@babel/plugin-proposal-do-expressions"),
