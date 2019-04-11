@@ -13,11 +13,7 @@ export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
     className: cx(s.className, rootProps.className),
   };
 
-  return (
-    <span {...combinedProps}>
-      {children}
-    </span>
-  );
+  return <span {...combinedProps}>{children}</span>;
 };
 
 export default Badge;
