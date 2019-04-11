@@ -10,6 +10,6 @@ describe('Badge', () => {
 
     const rootClassName = wrapped.childAt(0).prop('className');
 
-    expect(rootClassName).toMatch(new RegExp(` ${className}`));
+    expect(rootClassName).toMatch(new RegExp(`(.+) ${className}`));
   });
 });

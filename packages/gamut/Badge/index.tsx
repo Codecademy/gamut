@@ -10,7 +10,7 @@ export type BadgeProps = {
 export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
   const combinedProps = {
     ...rootProps,
-    className: cx(s.className, rootProps.className),
+    className: cx(s.badge, rootProps.className),
   };
 
   return <span {...combinedProps}>{children}</span>;
