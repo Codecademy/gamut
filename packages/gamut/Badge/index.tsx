@@ -4,17 +4,17 @@ import React, { HTMLAttributes } from 'react';
 import s from './styles.scss';
 
 export type BadgeProps = {
-  spanProps?: HTMLAttributes<HTMLSpanElement>;
+  rootProps?: HTMLAttributes<HTMLSpanElement>;
 };
 
-export const Badge: React.FC<BadgeProps> = ({ children, spanProps = {} }) => {
+export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
   const combinedProps = {
-    ...spanProps,
-    className: cx(s.className, spanProps.className),
+    ...rootProps,
+    className: cx(s.className, rootProps.className),
   };
 
   return (
-    <span className={s.badge} {...combinedProps}>
+    <span {...combinedProps}>
       {children}
     </span>
   );
