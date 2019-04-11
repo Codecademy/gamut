@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-storybook",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "2.11.10",
+  "version": "2.11.11",
   "author": "Jake Hiller <jake@codecademy.com>",
   "private": true,
   "engines": {
@@ -24,7 +24,7 @@
     "@babel/register": "7.4.0",
     "@codecademy/gamut": "^1.22.3",
     "@codecademy/gamut-styles": "^2.2.4",
-    "@codecademy/webpack-config": "^3.12.6",
+    "@codecademy/webpack-config": "^3.13.0",
     "@storybook/addon-actions": "5.0.6",
     "@storybook/addon-centered": "5.0.6",
     "@storybook/addon-info": "5.0.6",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.13.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.6...@codecademy/webpack-config@3.13.0) (2019-04-11)
+
+
+### Features
+
+* **webpack-config:** add case sensitive paths plugin in dev mode ([#302](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/302)) ([66c0632](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/66c0632))
+
+
+
+
+
 ## [3.12.6](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.5...@codecademy/webpack-config@3.12.6) (2019-04-10)
 
 **Note:** Version bump only for package @codecademy/webpack-config
