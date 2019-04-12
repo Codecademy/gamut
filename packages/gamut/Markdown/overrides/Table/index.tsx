@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
 import React, { HTMLAttributes } from 'react';
 import s from './styles.scss';
 
