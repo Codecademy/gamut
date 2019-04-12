@@ -48,6 +48,21 @@ describe('<Markdown />', () => {
     expect(markdown.find('iframe').length).toEqual(1);
   });
 
+  it('Renders custom tables in markdown', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
+    const markdown = mount(<Markdown text={table} />);
+    expect(markdown.find('div.tableWrapper table').length).toEqual(1);
+    expect(markdown.find('div.tableWrapper').prop('style')).toEqual({
+      maxHeight: 180,
+    });
+  });
+
   it('Wraps youtube iframes in a flexible container', () => {
     const markdown = mount(<Markdown text={youtubeMarkdown} />);
     expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
