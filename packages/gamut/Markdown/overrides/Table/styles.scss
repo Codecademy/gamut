@@ -14,10 +14,6 @@
 
     thead {
       position: relative;
-      th {
-        position: sticky;
-        top: 0;
-      }
     }
 
     tr {
@@ -35,6 +31,11 @@
       text-align: inherit;
       vertical-align: middle;
       color: $color-black;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
     }
 
     tr:nth-child(even),
