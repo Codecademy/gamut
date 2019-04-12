@@ -2,7 +2,7 @@
 
 .tableWrapper {
   overflow: scroll;
-  border: px-rem(2px) solid $color-gray-400;
+  border: px-rem(1px) solid $color-gray-300;
 
   table {
     font-family: $font-monospace;
@@ -22,7 +22,7 @@
     }
 
     tr:nth-child(odd) {
-      background-color: $color-gray-200;
+      background-color: $color-gray-100;
     }
 
     td,
