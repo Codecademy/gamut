@@ -1,0 +1,46 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.tableWrapper {
+  overflow: scroll;
+  border: px-rem(1px) solid $color-gray-300;
+
+  table {
+    font-family: $font-monospace;
+    white-space: nowrap;
+    padding: px-rem(10px);
+    width: 100%;
+    color: $color-black;
+    position: relative;
+
+    thead {
+      position: relative;
+    }
+
+    tr {
+      height: px-rem(30px);
+      font-size: px-rem(13px);
+    }
+
+    tr:nth-child(odd) {
+      background-color: $color-gray-100;
+    }
+
+    td,
+    th {
+      padding-left: 0.5rem;
+      text-align: inherit;
+      vertical-align: middle;
+      color: $color-black;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+    }
+
+    tr:nth-child(even),
+    th {
+      background-color: $color-white;
+    }
+  }
+}

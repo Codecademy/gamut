@@ -2,54 +2,23 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import Markdown from '@codecademy/gamut/Markdown';
-
-const editableMarkdown = `
-### Editable Markdown
-
-Use the knobs view below to edit
-
-# h1
-## h2
-### h3
-
-cool
-\`\`\`js
-// Code block 1
-const test = async function test({value}) {
-  const res = await fetch('url');
-}
-\`\`\`
-
-cool
-
-\`\`\`js
-// Code block 2
-const test = async function test({value}) {
-  const res = await fetch('url');
-}
-\`\`\`
-
-This is some \`inline code\`
-
-<iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<h1>html h1</h1>
-
-<blockquote>
-  This blockquote will change based on the HTML settings above.
-</blockquote>
-
-<CustomElement title="A Custom Component" />
-
-`;
+import exampleMarkdown from './markdown-example.md';
 
 storiesOf('Component/Markdown', module)
   .addDecorator(withKnobs)
   .add(
-    'Editable',
+    'Basics',
     () => (
       <Markdown
-        text={text('markdown', editableMarkdown)}
+        text={text(
+          'markdown',
+          `
+## Hello World
+
+This is markdown
+
+        `
+        )}
         theme={select('theme', ['tight', 'loose', 'none'])}
       />
     ),
@@ -60,10 +29,33 @@ storiesOf('Component/Markdown', module)
     }
   )
   .add(
-    'Custom Codeblock',
+    'Full Example',
     () => (
       <Markdown
-        text={text('markdown', editableMarkdown)}
+        text={text('markdown', exampleMarkdown)}
+        theme={select('theme', ['tight', 'loose', 'none'])}
+      />
+    ),
+    {
+      knobs: {
+        escapeHTML: false,
+      },
+    }
+  )
+  .add(
+    'Custom Element Overrides',
+    () => (
+      <Markdown
+        text={text(
+          'markdown',
+          `
+## Hello World
+
+This is a custom markdown component
+
+<CustomElement title="A Custom Component" />
+        `
+        )}
         theme={select('theme', ['tight', 'loose', 'none'])}
         overrides={{
           CodeBlock: {
