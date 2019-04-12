@@ -33,7 +33,7 @@ export interface IkonaIconProps {
   className?: string;
   name: string;
   size?: number;
-  style: {};
+  style?: {};
 }
 
 class IkonaIcon extends PureComponent<IkonaIconProps> {
