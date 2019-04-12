@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.23.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.4...@codecademy/gamut@1.23.0) (2019-04-12)
+
+
+### Features
+
+* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cb))
+
+
+
+
+
 ## [1.22.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.3...@codecademy/gamut@1.22.4) (2019-04-12)
 
 **Note:** Version bump only for package @codecademy/gamut
