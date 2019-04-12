@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.12...@codecademy/gamut-storybook@2.12.0) (2019-04-12)
+
+
+### Features
+
+* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cb))
+
+
+
+
+
 ## [2.11.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.11...@codecademy/gamut-storybook@2.11.12) (2019-04-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
