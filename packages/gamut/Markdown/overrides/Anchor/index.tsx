@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -10,7 +10,7 @@ export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   rel?: string;
 }
 
-const Anchor: FunctionComponent<AnchorProps> = props => {
+const Anchor: React.FC<AnchorProps> = props => {
   const anchorProps = {
     ...props,
     target: '_blank',
@@ -18,10 +18,15 @@ const Anchor: FunctionComponent<AnchorProps> = props => {
   };
 
   if (typeof URL !== 'undefined') {
-    const url = new URL(props.href, window.location.href);
-    // remove noopener/noreferrer on same origin urls
-    if (url.origin === window.location.origin) {
-      delete anchorProps.rel;
+    try {
+      const url = new URL(props.href, window.location.href);
+      // remove noopener/noreferrer on same origin urls
+      if (url.origin === window.location.origin) {
+        delete anchorProps.rel;
+      }
+    } catch (e) {
+      // Standard markdown behavior is to just render the bad url,
+      // So we don't need to handle this error
     }
   }
 
