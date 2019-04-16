@@ -17,7 +17,6 @@ const matchesOrigin = (href: string) => {
 
   try {
     const url = new URL(href);
-    // remove noopener/noreferrer on same origin urls
     if (url.origin === window.location.origin) {
       return true;
     }
