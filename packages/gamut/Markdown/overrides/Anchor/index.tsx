@@ -10,6 +10,24 @@ export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   rel?: string;
 }
 
+const absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
+
+const matchesOrigin = (href: string) => {
+  if (typeof window === 'undefined' || typeof URL === 'undefined') return false;
+
+  try {
+    const url = new URL(href);
+    // remove noopener/noreferrer on same origin urls
+    if (url.origin === window.location.origin) {
+      return true;
+    }
+  } catch (e) {
+    // Standard markdown behavior is to just render the bad url,
+    // So we don't need to handle this error
+  }
+  return false;
+};
+
 const Anchor: React.FC<AnchorProps> = props => {
   const anchorProps = {
     ...props,
@@ -17,17 +35,9 @@ const Anchor: React.FC<AnchorProps> = props => {
     rel: 'noopener noreferrer',
   };
 
-  if (typeof URL !== 'undefined') {
-    try {
-      const url = new URL(props.href, window.location.href);
-      // remove noopener/noreferrer on same origin urls
-      if (url.origin === window.location.origin) {
-        delete anchorProps.rel;
-      }
-    } catch (e) {
-      // Standard markdown behavior is to just render the bad url,
-      // So we don't need to handle this error
-    }
+  // remove noopener/noreferrer on relative & same origin urls
+  if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
+    delete anchorProps.rel;
   }
 
   return <a {...anchorProps} />;
