@@ -45,7 +45,7 @@
     "@babel/core": "7.4.3",
     "@babel/polyfill": "7.4.3",
     "@babel/preset-typescript": "7.3.3",
-    "@codecademy/eslint-config": "0.1.2",
+    "@codecademy/eslint-config": "0.1.3",
     "@codecademy/prettier-config": "0.1.1",
     "@types/chai": "4.1.7",
     "@types/classnames": "2.2.7",
