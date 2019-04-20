@@ -38,7 +38,7 @@
     "workspaces/*"
   ],
   "dependencies": {
-    "lerna": "3.13.1",
+    "lerna": "3.13.3",
     "wsrun": "3.6.4"
   },
   "devDependencies": {
