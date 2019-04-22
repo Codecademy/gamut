@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.12.0...@codecademy/gamut-storybook@2.12.1) (2019-04-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](https://github.com/RyzacInc/client-modules/issues/311)) ([064e950](https://github.com/RyzacInc/client-modules/commit/064e950))
+* **deps:** update dependency fork-ts-checker-webpack-plugin to v1.1.0 ([#312](https://github.com/RyzacInc/client-modules/issues/312)) ([13e155c](https://github.com/RyzacInc/client-modules/commit/13e155c))
+* **deps:** update dependency jsdom to v15 ([#318](https://github.com/RyzacInc/client-modules/issues/318)) ([837d5a4](https://github.com/RyzacInc/client-modules/commit/837d5a4))
+* **deps:** update storybook monorepo to v5.0.10 ([#316](https://github.com/RyzacInc/client-modules/issues/316)) ([a5a520e](https://github.com/RyzacInc/client-modules/commit/a5a520e))
+
+
+
+
+
 # [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.12...@codecademy/gamut-storybook@2.12.0) (2019-04-12)
 
 
