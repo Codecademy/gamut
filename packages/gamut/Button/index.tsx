@@ -41,7 +41,7 @@ export type ButtonProps = {
   flat?: boolean;
   go?: boolean;
   link?: boolean;
-  onClick?: (event: object) => void;
+  onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
   round?: boolean;
   size?: 'small' | 'large';
