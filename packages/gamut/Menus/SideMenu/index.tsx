@@ -1,9 +1,14 @@
+import cx from 'classnames';
 import React from 'react';
 
 import s from './styles.scss';
 
-const SideMenu: React.FC = ({ children }) => {
-  return <ul className={s.sideMenu}>{children}</ul>;
+export type SideMenuProps = {
+  className?: string;
+};
+
+const SideMenu: React.FC<SideMenuProps> = ({ children, className }) => {
+  return <ul className={cx(s.sideMenu, className)}>{children}</ul>;
 };
 
 export default SideMenu;
