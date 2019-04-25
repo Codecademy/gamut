@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.0...@codecademy/webpack-config@3.13.1) (2019-04-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/311)) ([064e950](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/064e950))
+
+
+
+
+
 # [3.13.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.6...@codecademy/webpack-config@3.13.0) (2019-04-11)
 
 
