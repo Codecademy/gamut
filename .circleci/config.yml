@@ -2,7 +2,7 @@ version: 2
 references:
   default_env: &default_env
     docker:
-      - image: 151096212661.dkr.ecr.us-east-1.amazonaws.com/codecademy:64d9f27
+      - image: circleci/node:8.10.0
     working_directory: ~/repo
     environment:
       GIT_USERNAME: codecademy-dev
