@@ -4,8 +4,6 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import Anchor from '../index';
 
-global['URL'] = window.URL;
-
 describe('<Anchor />', () => {
   it('Adds target _blank to external links', () => {
     const anchor = mount(<Anchor href="http://google.com" />);
