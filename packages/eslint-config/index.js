@@ -1,3 +1,4 @@
+console.log(require.resolve('eslint-plugin-react-hooks'));
 module.exports = {
   parser: require.resolve('babel-eslint'),
 
@@ -7,7 +8,7 @@ module.exports = {
     'eslint-config-prettier/react',
   ].map(require.resolve),
 
-  plugins: ['eslint-plugin-react-hooks'].map(require.resolve),
+  plugins: ['react-hooks'],
 
   parserOptions: {
     ecmaVersion: 7,
