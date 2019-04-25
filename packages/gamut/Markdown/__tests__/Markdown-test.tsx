@@ -4,8 +4,6 @@ import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import Markdown from '../index';
 
-global['URL'] = window.URL;
-
 const basicMarkdown = `
 # Heading 1
 

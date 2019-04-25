@@ -16,7 +16,7 @@ const matchesOrigin = (href: string) => {
   if (typeof window === 'undefined' || typeof URL === 'undefined') return false;
 
   try {
-    const url = new URL(href);
+    const url = new window.URL(href);
     if (url.origin === window.location.origin) {
       return true;
     }
