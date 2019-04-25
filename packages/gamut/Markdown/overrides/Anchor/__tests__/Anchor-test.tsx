@@ -21,7 +21,7 @@ describe('<Anchor />', () => {
   });
 
   it('Doesn\'t add rel="noopener noreferrer" to relative links', () => {
-    const anchor = mount(<Anchor href={`/search`} />);
+    const anchor = mount(<Anchor href="/search" />);
     expect(anchor.find('a[rel]').length).toEqual(0);
   });
 
@@ -31,7 +31,7 @@ describe('<Anchor />', () => {
   });
 
   it("Doesn't throw an error on an invalid URL", () => {
-    const anchor = shallow(<Anchor href={`www.codecademy.com"`} />);
+    const anchor = shallow(<Anchor href="www.codecademy.com" />);
     expect(anchor.find(`a[href='www.codecademy.com"']`).length).toEqual(1);
   });
 });
