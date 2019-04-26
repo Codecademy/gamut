@@ -161,43 +161,11 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
-    it('Adds target _blank to external links', () => {
-      const markdown = mount(
-        <Markdown text={`<a href="http://google.com">google</a>`} />
-      );
-      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
-    });
-
-    it('Adds target _blank to same-origin links', () => {
-      const markdown = mount(
-        <Markdown
-          text={`<a href="${window.location.origin}/search">google</a>`}
-        />
-      );
-      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
-    });
-
     it('Adds rel="noopener noreferrer" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
       expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(1);
-    });
-
-    it('Doesn\'t add rel="noopener noreferrer" to relative links', () => {
-      const markdown = mount(
-        <Markdown text={`<a href="/search">google</a>`} />
-      );
-      expect(markdown.find('a[rel]').length).toEqual(0);
-    });
-
-    it('Doesn\'t add rel="noopener noreferrer" to same-origin links', () => {
-      const markdown = mount(
-        <Markdown
-          text={`<a href="${window.location.origin}/search">google</a>`}
-        />
-      );
-      expect(markdown.find('a[rel]').length).toEqual(0);
     });
   });
 
