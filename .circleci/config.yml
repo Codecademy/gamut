@@ -45,7 +45,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - run: yarn --production=false
+      - run: npx yarn@1.15.2 --production=false --frozen-lockfile
       - save_cache:
           key: *repo_cache_key_1
           paths:
@@ -87,11 +87,14 @@ jobs:
 
   tests:
     <<: *default_env
+    parallelism: 4
     steps:
       - *restore_repo
       - run:
           name: Run test suite
-          command: yarn test
+          command: |
+            TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
+            yarn test ${TESTFILES}
 
   publish:
     <<: *default_env
