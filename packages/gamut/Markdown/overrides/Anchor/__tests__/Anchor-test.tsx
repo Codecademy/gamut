@@ -32,6 +32,7 @@ describe('<Anchor />', () => {
 
   it("Doesn't throw an error on an invalid URL", () => {
     const anchor = shallow(<Anchor href="www.codecademy.com" />);
+    expect(anchor.html()).toEqual('');
     expect(anchor.find(`a[href='www.codecademy.com"']`).length).toEqual(1);
   });
 });
