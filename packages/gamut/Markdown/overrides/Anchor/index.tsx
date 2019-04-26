@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { FunctionComponent, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 
 export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -10,19 +10,33 @@ export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   rel?: string;
 }
 
-const Anchor: FunctionComponent<AnchorProps> = props => {
+const absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
+
+const matchesOrigin = (href: string) => {
+  if (typeof window === 'undefined' || typeof URL === 'undefined') return false;
+
+  try {
+    const url = new window.URL(href);
+    if (url.origin === window.location.origin) {
+      return true;
+    }
+  } catch (e) {
+    // Standard markdown behavior is to just render the bad url,
+    // So we don't need to handle this error
+  }
+  return false;
+};
+
+const Anchor: React.FC<AnchorProps> = props => {
   const anchorProps = {
     ...props,
     target: '_blank',
     rel: 'noopener noreferrer',
   };
 
-  if (typeof URL !== 'undefined') {
-    const url = new URL(props.href, window.location.href);
-    // remove noopener/noreferrer on same origin urls
-    if (url.origin === window.location.origin) {
-      delete anchorProps.rel;
-    }
+  // remove noopener/noreferrer on relative & same origin urls
+  if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
+    delete anchorProps.rel;
   }
 
   return <a {...anchorProps} />;
