@@ -92,5 +92,11 @@ module.exports = {
       files: ['*.json'],
       parser: 'json',
     },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-unused-vars': 0,
+      },
+    },
   ],
 };
