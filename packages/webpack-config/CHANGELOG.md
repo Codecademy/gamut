@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.1...@codecademy/webpack-config@3.13.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Markdown:** catch invalid url errors ([#315](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/315)) ([792056c](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/792056c))
+
+
+
+
+
 ## [3.13.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.0...@codecademy/webpack-config@3.13.1) (2019-04-22)
 
 
