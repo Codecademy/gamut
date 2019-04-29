@@ -136,7 +136,7 @@ export const standardOverrides = [
       if (node.type === 'text') return true;
       return false;
     },
-    processNode(node: HTMLToReactNode, ...args: any[]) {
+    processNode(node: HTMLToReactNode) {
       return processText(node.data);
     },
   },
