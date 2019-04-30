@@ -1,7 +1,6 @@
 /* eslint-disable global-require */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
 const ENV = require('../lib/env');
 
 const PROD = ENV === 'production';
@@ -16,6 +15,7 @@ const cssLoaderDefaults = {
     importLoaders: 1,
     sourceMap: true,
     localIdentName: CSS_MODULE_IDENT,
+    modules: false,
   },
 };
 
@@ -24,8 +24,11 @@ const postCssLoaderDefaults = {
   options: {
     sourceMap: true,
     plugins: () => [
+      require('cssnano')({
+        preset: 'default',
+      }),
       require('postcss-flexbugs-fixes'),
-      autoprefixer({
+      require('autoprefixer')({
         flexbox: 'no-2009',
       }),
     ],
@@ -63,7 +66,9 @@ const css = {
     test: cssFilePattern,
     use: [
       merge(cssLoaderDefaults, {
-        loader: 'css-loader/locals',
+        options: {
+          exportOnlyLocals: true,
+        },
       }),
     ],
   },
@@ -102,9 +107,9 @@ const scss = {
     test: scssFilePattern,
     use: [
       merge(cssLoaderDefaults, {
-        loader: 'css-loader/locals',
         options: {
           modules: true,
+          exportOnlyLocals: true,
         },
       }),
       merge(postCssLoaderDefaults),

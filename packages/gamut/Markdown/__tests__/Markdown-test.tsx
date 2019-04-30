@@ -48,6 +48,21 @@ describe('<Markdown />', () => {
     expect(markdown.find('iframe').length).toEqual(1);
   });
 
+  it('Renders custom tables in markdown', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
+    const markdown = mount(<Markdown text={table} />);
+    expect(markdown.find('div.tableWrapper table').length).toEqual(1);
+    expect(markdown.find('div.tableWrapper').prop('style')).toEqual({
+      maxHeight: 180,
+    });
+  });
+
   it('Wraps youtube iframes in a flexible container', () => {
     const markdown = mount(<Markdown text={youtubeMarkdown} />);
     expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
@@ -146,43 +161,11 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
-    it('Adds target _blank to external links', () => {
-      const markdown = mount(
-        <Markdown text={`<a href="http://google.com">google</a>`} />
-      );
-      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
-    });
-
-    it('Adds target _blank to same-origin links', () => {
-      const markdown = mount(
-        <Markdown
-          text={`<a href="${window.location.origin}/search">google</a>`}
-        />
-      );
-      expect(markdown.find('a[target="_blank"]').length).toEqual(1);
-    });
-
     it('Adds rel="noopener noreferrer" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
       expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(1);
-    });
-
-    it('Doesn\'t add rel="noopener noreferrer" to relative links', () => {
-      const markdown = mount(
-        <Markdown text={`<a href="/search">google</a>`} />
-      );
-      expect(markdown.find('a[rel]').length).toEqual(0);
-    });
-
-    it('Doesn\'t add rel="noopener noreferrer" to same-origin links', () => {
-      const markdown = mount(
-        <Markdown
-          text={`<a href="${window.location.origin}/search">google</a>`}
-        />
-      );
-      expect(markdown.find('a[rel]').length).toEqual(0);
     });
   });
 

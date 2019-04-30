@@ -96,8 +96,8 @@ The `type` determines what kind of version bump is needed. A `fix` will create a
 * **perf**: A code change that improves performance
 * **refactor**: A code change that neither fixes a bug nor adds a feature
 * **test**: Adding missing tests or correcting existing tests
-* **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-* **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+* **ci**: Changes to our CI configuration files and scripts
+* **build**: Changes that affect the build system or external dependencies
 
 **Scope**
 
@@ -111,4 +111,4 @@ This is where you should describe any version breaking changes by including the 
 
 ### Publishing the storybook
 
-1.  To build the story, book, cd into `packages/gamut-storybook` and run `npm run build`, and commit the changes to `master`. These updates will be available on [`styleguide.codecademy.com/storybook`](http://styleguide.codecademy.com/storybook).
+1.  Storybook is built and published automatically when there are merges into the master branch

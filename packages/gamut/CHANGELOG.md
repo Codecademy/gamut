@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.23.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.2...@codecademy/gamut@1.23.3) (2019-04-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.23.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.1...@codecademy/gamut@1.23.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Markdown:** catch invalid url errors ([#315](https://github.com/RyzacInc/client-modules/issues/315)) ([792056c](https://github.com/RyzacInc/client-modules/commit/792056c))
+
+
+
+
+
+## [1.23.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.0...@codecademy/gamut@1.23.1) (2019-04-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.23.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.4...@codecademy/gamut@1.23.0) (2019-04-12)
+
+
+### Features
+
+* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cb))
+
+
+
+
+
+## [1.22.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.3...@codecademy/gamut@1.22.4) (2019-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.22.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.2...@codecademy/gamut@1.22.3) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.22.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.1...@codecademy/gamut@1.22.2) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.22.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.0...@codecademy/gamut@1.22.1) (2019-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 # [1.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.7...@codecademy/gamut@1.22.0) (2019-04-04)
 
 

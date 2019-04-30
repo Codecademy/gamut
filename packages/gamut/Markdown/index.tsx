@@ -13,6 +13,7 @@ import {
 import s from './styles/index.scss';
 import Iframe from './overrides/Iframe';
 import Anchor from './overrides/Anchor';
+import Table from './overrides/Table';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
@@ -96,6 +97,12 @@ class Markdown extends PureComponent<MarkdownProps> {
       }),
       createTagOverride('a', {
         component: Anchor,
+      }),
+      createTagOverride('table', {
+        component: props => (
+          <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
+        ),
+        allowedAttributes: ['style'],
       }),
       ...overrides,
       ...standardOverrides,

@@ -3,6 +3,133 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.12.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.12.3...@codecademy/gamut-storybook@2.12.4) (2019-04-30)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.12.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.12.2...@codecademy/gamut-storybook@2.12.3) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Markdown:** catch invalid url errors ([#315](https://github.com/RyzacInc/client-modules/issues/315)) ([792056c](https://github.com/RyzacInc/client-modules/commit/792056c))
+
+
+
+
+
+## [2.12.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.12.1...@codecademy/gamut-storybook@2.12.2) (2019-04-24)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.12.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.12.0...@codecademy/gamut-storybook@2.12.1) (2019-04-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](https://github.com/RyzacInc/client-modules/issues/311)) ([064e950](https://github.com/RyzacInc/client-modules/commit/064e950))
+* **deps:** update dependency fork-ts-checker-webpack-plugin to v1.1.0 ([#312](https://github.com/RyzacInc/client-modules/issues/312)) ([13e155c](https://github.com/RyzacInc/client-modules/commit/13e155c))
+* **deps:** update dependency jsdom to v15 ([#318](https://github.com/RyzacInc/client-modules/issues/318)) ([837d5a4](https://github.com/RyzacInc/client-modules/commit/837d5a4))
+* **deps:** update storybook monorepo to v5.0.10 ([#316](https://github.com/RyzacInc/client-modules/issues/316)) ([a5a520e](https://github.com/RyzacInc/client-modules/commit/a5a520e))
+
+
+
+
+
+# [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.12...@codecademy/gamut-storybook@2.12.0) (2019-04-12)
+
+
+### Features
+
+* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cb))
+
+
+
+
+
+## [2.11.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.11...@codecademy/gamut-storybook@2.11.12) (2019-04-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.10...@codecademy/gamut-storybook@2.11.11) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.9...@codecademy/gamut-storybook@2.11.10) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.8...@codecademy/gamut-storybook@2.11.9) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.7...@codecademy/gamut-storybook@2.11.8) (2019-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.6...@codecademy/gamut-storybook@2.11.7) (2019-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.5...@codecademy/gamut-storybook@2.11.6) (2019-04-09)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.4...@codecademy/gamut-storybook@2.11.5) (2019-04-08)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [2.11.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.3...@codecademy/gamut-storybook@2.11.4) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#288](https://github.com/RyzacInc/client-modules/issues/288)) ([273e99a](https://github.com/RyzacInc/client-modules/commit/273e99a))
+
+
+
+
+
 ## [2.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.11.2...@codecademy/gamut-storybook@2.11.3) (2019-04-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
