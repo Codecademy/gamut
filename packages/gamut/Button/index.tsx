@@ -29,6 +29,7 @@ const propTypes = {
   square: PropTypes.bool,
   flat: PropTypes.bool,
   fitText: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export type ButtonProps = {
@@ -40,6 +41,7 @@ export type ButtonProps = {
   flat?: boolean;
   go?: boolean;
   link?: boolean;
+  onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
   round?: boolean;
   size?: 'small' | 'large';
