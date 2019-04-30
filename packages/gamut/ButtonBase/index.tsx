@@ -9,6 +9,7 @@ const propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   link: PropTypes.bool,
+  onClicl: PropTypes.func,
 };
 
 export type ButtonBaseProps = (
@@ -18,10 +19,11 @@ export type ButtonBaseProps = (
   className?: string;
   href?: string;
   link?: boolean;
+  onClick?: (event: object) => void;
 };
 
 const ButtonBase = (props: ButtonBaseProps) => {
-  const { href, className, link } = props;
+  const { href, className, link, onClick } = props;
   const propsToTransfer = omitProps(propTypes, props);
 
   const BaseTag = href ? 'a' : 'button';
@@ -30,7 +32,13 @@ const ButtonBase = (props: ButtonBaseProps) => {
   });
 
   return (
-    <BaseTag data-btn {...propsToTransfer} className={classes} href={href} />
+    <BaseTag
+      data-btn
+      {...propsToTransfer}
+      className={classes}
+      href={href}
+      onClick={onClick}
+    />
   );
 };
 
