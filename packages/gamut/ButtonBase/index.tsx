@@ -9,7 +9,7 @@ const propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   link: PropTypes.bool,
-  onClicl: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export type ButtonBaseProps = (
