@@ -1,4 +1,3 @@
-console.log(require.resolve('eslint-plugin-react-hooks'));
 module.exports = {
   parser: require.resolve('babel-eslint'),
 
