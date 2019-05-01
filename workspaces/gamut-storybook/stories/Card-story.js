@@ -8,6 +8,7 @@ import {
   CardFooter,
   IconCard,
 } from '@codecademy/gamut/Card';
+import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 import { addonInfoOptions as options } from './options';
 
@@ -44,30 +45,24 @@ stories.add('Editable', () => (
 ));
 
 stories.add('IconCard', () => (
-  <IconCard
-    eyebrow={{ iconName: 'lesson', leftText: 'Lesson', rightText: '30 min' }}
-    header={{
-      backgroundColor: colors.blue[500],
-      iconName: 'javascript',
-      iconColor: colors.blue[300],
-      withWave: false,
-    }}
-    title="Two-way data binding in accessible forms"
-    description="In this lesson, you will learn the syntax for iterator methods, their return values"
-    primaryButton={{
-      icon: (
-        <div
-          style={{
-            width: 16,
-            height: 16,
-            borderRadius: '100%',
-            border: '3px solid #ccc',
-          }}
-        />
-      ),
-      title: 'Resume',
-      action: () => {},
-      withArrow: true,
-    }}
-  />
+  <div style={{ maxWidth: '21rem' }}>
+    <IconCard
+      eyebrow={{ iconName: 'lesson', leftText: 'Lesson', rightText: '30 min' }}
+      header={{
+        backgroundColor: colors.blue[500],
+        iconName: 'javascript',
+        iconColor: colors.blue[300],
+        withWave: false,
+      }}
+      title="Two-way data binding in accessible forms"
+      description="In this lesson, you will learn the syntax for iterator methods, their return values"
+      primaryButton={{
+        icon: <RadialProgress size={20} value={20} />,
+        title: 'Resume',
+        action: () => {},
+        withArrow: true,
+      }}
+      withStack
+    />
+  </div>
 ));

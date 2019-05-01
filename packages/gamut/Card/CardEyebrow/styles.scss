@@ -1,5 +1,4 @@
 @import "~@codecademy/gamut-styles/utils";
-@import "./utils";
 
 .displayHorizontal {
   display: flex;
@@ -28,4 +27,5 @@
 .eyebrowText {
   font-size: 1rem;
   font-weight: bold;
+  white-space: nowrap;
 }
