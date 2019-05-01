@@ -17,7 +17,7 @@ function CardEyebrow(props: CardEyebrowProps) {
       <div className={styles.displayHorizontal}>
         {props.iconName && (
           <div className={styles.eyebrowIconContainer}>
-            <Icon name={props.iconName} size={16} color={props.iconColor} />
+            <Icon name={props.iconName} size={20} color={props.iconColor} />
           </div>
         )}
         <div className={styles.eyebrowText}>{props.leftText}</div>

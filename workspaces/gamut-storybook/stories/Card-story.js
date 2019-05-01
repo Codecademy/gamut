@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import {
   CardShell,
   CardBody,
@@ -50,9 +50,9 @@ stories.add('IconCard', () => (
       eyebrow={{ iconName: 'lesson', leftText: 'Lesson', rightText: '30 min' }}
       header={{
         backgroundColor: colors.blue[500],
-        iconName: 'javascript',
+        iconName: text('header-iconName', 'javascript'),
         iconColor: colors.blue[300],
-        withWave: false,
+        withWave: boolean('header-withWave', false),
       }}
       title="Two-way data binding in accessible forms"
       description="In this lesson, you will learn the syntax for iterator methods, their return values"
@@ -62,7 +62,7 @@ stories.add('IconCard', () => (
         action: () => {},
         withArrow: true,
       }}
-      withStack
+      withStack={boolean('withStack', false)}
     />
   </div>
 ));

@@ -11,7 +11,7 @@ function CardButton(props: CardButtonType) {
         <div className={styles.buttonTitle}>{props.title}</div>
         {props.withArrow && (
           <div className={styles.buttonArrow}>
-            <Icon name="chevronRight" size={22} />
+            <Icon name="rightArrow" size={22} />
           </div>
         )}
       </div>

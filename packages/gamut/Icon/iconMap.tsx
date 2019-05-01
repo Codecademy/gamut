@@ -47,6 +47,7 @@ import PandasIcon from './icons/PandasIcon';
 import PathIcon from './icons/PathIcon';
 import PhoneIcon from './icons/PhoneIcon';
 import PlayIcon from './icons/PlayIcon';
+import PracticeIcon from './icons/PracticeIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
@@ -54,6 +55,7 @@ import RailsIcon from './icons/RailsIcon';
 import ReactIcon from './icons/ReactIcon';
 import ResetIcon from './icons/ResetIcon';
 import ResponsiveIcon from './icons/ResponsiveIcon';
+import RightArrowIcon from './icons/RightArrowIcon';
 import RubyIcon from './icons/RubyIcon';
 import SQLIcon from './icons/SQLIcon';
 import SassIcon from './icons/SassIcon';
@@ -118,6 +120,7 @@ const iconMap = {
   phone: PhoneIcon,
   php: PHPIcon,
   play: PlayIcon,
+  practice: PracticeIcon,
   project: ProjectIcon,
   python: PythonIcon,
   quiz: QuizIcon,
@@ -125,6 +128,7 @@ const iconMap = {
   react: ReactIcon,
   reset: ResetIcon,
   responsive: ResponsiveIcon,
+  rightArrow: RightArrowIcon,
   ruby: RubyIcon,
   sass: SassIcon,
   sciPy: SciPyIcon,
