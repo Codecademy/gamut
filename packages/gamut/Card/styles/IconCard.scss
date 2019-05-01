@@ -1,0 +1,73 @@
+@import "~@codecademy/gamut-styles/utils";
+@import "./utils";
+
+.container {
+  border-radius: 0.75rem;
+  width: 21.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 5px 0 rgba($color-black, 0.2);
+}
+
+.displayHorizontal {
+  display: flex;
+  align-items: center;
+}
+
+.header {
+  position: relative;
+  height: 6.5rem;
+  overflow: hidden;
+}
+
+.headerIcon {
+  position: absolute;
+  right: 1.5rem;
+  bottom: -15%;
+}
+
+.waveContainer {
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+}
+
+.contentContainer {
+  padding: 1.5rem 1rem 2rem 1rem;
+}
+
+.title {
+  font-family: "Regular Bold";
+  font-size: px-rem(26px);
+  line-height: px-rem(34px);
+}
+
+.description {
+  color: $color-gray-700;
+}
+
+.buttonContainer {
+  outline: 0;
+  background: none;
+  padding: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  border-top: 1px solid $color-gray-200;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.buttonTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.025rem;
+  font-weight: bold;
+  font-size: px-rem(18px);
+}
+
+.buttonArrow {
+  margin-left: 0.5rem;
+  position: relative;
+  top: 0.2rem;
+}

@@ -1,0 +1,31 @@
+@import "~@codecademy/gamut-styles/utils";
+@import "./utils";
+
+.displayHorizontal {
+  display: flex;
+  align-items: center;
+}
+
+.eyebrow {
+  position: relative;
+  z-index: 1;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  color: $color-white;
+}
+
+.eyebrowIconContainer {
+  background-color: $color-white;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.75rem;
+  margin-right: 0.5rem;
+}
+
+.eyebrowText {
+  font-size: 1rem;
+  font-weight: bold;
+}

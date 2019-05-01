@@ -2,7 +2,13 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
+import {
+  CardShell,
+  CardBody,
+  CardFooter,
+  IconCard,
+} from '@codecademy/gamut/Card';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 import { addonInfoOptions as options } from './options';
 
 const borderStyles = ['dashed', 'solid', 'none'];
@@ -35,4 +41,33 @@ stories.add('Editable', () => (
       <span>&nbsp;&nbsp;&laquo;</span>
     </CardFooter>
   </CardShell>
+));
+
+stories.add('IconCard', () => (
+  <IconCard
+    eyebrow={{ iconName: 'lesson', leftText: 'Lesson', rightText: '30 min' }}
+    header={{
+      backgroundColor: colors.blue[500],
+      iconName: 'javascript',
+      iconColor: colors.blue[300],
+      withWave: false,
+    }}
+    title="Two-way data binding in accessible forms"
+    description="In this lesson, you will learn the syntax for iterator methods, their return values"
+    primaryButton={{
+      icon: (
+        <div
+          style={{
+            width: 16,
+            height: 16,
+            borderRadius: '100%',
+            border: '3px solid #ccc',
+          }}
+        />
+      ),
+      title: 'Resume',
+      action: () => {},
+      withArrow: true,
+    }}
+  />
 ));
