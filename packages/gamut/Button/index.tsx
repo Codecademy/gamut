@@ -29,6 +29,7 @@ const propTypes = {
   square: PropTypes.bool,
   flat: PropTypes.bool,
   fitText: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 export type ButtonProps = {
@@ -40,6 +41,7 @@ export type ButtonProps = {
   flat?: boolean;
   go?: boolean;
   link?: boolean;
+  onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
   round?: boolean;
   size?: 'small' | 'large';
@@ -79,7 +81,12 @@ const Button = (props: ButtonProps) => {
   const propsToTransfer = omitProps(propTypes, props);
 
   return (
-    <ButtonBase {...propsToTransfer} className={classes} link={props.link}>
+    <ButtonBase
+      {...propsToTransfer}
+      className={classes}
+      link={props.link}
+      onClick={props.onClick}
+    >
       {props.children}
     </ButtonBase>
   );
