@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { storiesOf, action } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import React from 'react';
 
 storiesOf('About', module).add(

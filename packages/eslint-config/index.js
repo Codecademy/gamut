@@ -1,13 +1,11 @@
 module.exports = {
-  parser: require.resolve('@typescript-eslint/parser'),
+  parser: require.resolve('babel-eslint'),
 
   extends: [
     'eslint-config-airbnb',
     'eslint-config-prettier',
     'eslint-config-prettier/react',
   ].map(require.resolve),
-
-  plugins: ['@typescript-eslint'],
 
   parserOptions: {
     ecmaVersion: 7,
@@ -88,13 +86,18 @@ module.exports = {
     ],
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-a11y/label-has-for': 0,
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
   },
   overrides: [
     {
       files: ['*.json'],
       parser: 'json',
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      parser: require.resolve('@typescript-eslint/parser'),
+      rules: {
+        'no-unused-vars': 'off',
+      },
     },
   ],
 };

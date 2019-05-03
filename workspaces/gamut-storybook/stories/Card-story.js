@@ -1,9 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
-import { addonInfoOptions as options } from './options';
 
 const borderStyles = ['dashed', 'solid', 'none'];
 
