@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
+// @ts-ignore
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 import styles from './styles.scss';
 
