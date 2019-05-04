@@ -1,31 +1,10 @@
-.displayHorizontal {
-  display: flex;
-  align-items: center;
-}
+@import "~@codecademy/gamut-styles/utils";
 
 .headerContainer {
   position: relative;
-  height: 6.5rem;
   overflow: hidden;
-}
-
-.tallerHeader {
-  height: 7.5rem;
-}
-
-.headerIcon {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: -15%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 7.5%;
-}
-
-.iconLeft {
-  right: 3.5rem;
-  padding-right: 15%;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }
 
 .waveContainer {

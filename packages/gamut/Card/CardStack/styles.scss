@@ -13,12 +13,15 @@
   border-bottom-right-radius: 1.5rem;
   box-shadow: 0 2px 5px rgba($color-black, 0.2);
   height: 0.5rem;
-  position: relative;
+  position: absolute;
+  bottom: -0.45rem;
   z-index: -1;
+  padding-bottom: 1rem;
 }
 
 .lower {
   width: calc(100% - 3rem);
-  position: relative;
+  position: absolute;
+  bottom: -0.9rem;
   z-index: -2;
 }

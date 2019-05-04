@@ -1,47 +1,35 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
-import Icon from '../../Icon';
-import iconMap from '../../Icon/iconMap';
 import styles from './styles.scss';
 
 interface CardHeaderProps {
   backgroundColor?: string;
-  backgroundGradient?: {
-    start: string;
-    end: string;
-  };
-  iconName: keyof typeof iconMap;
-  iconColor: string;
+  backgroundImage?: string;
   withWave?: boolean;
   children?: ReactNode;
+  className?: string;
 }
 
 function CardHeader(props: CardHeaderProps) {
+  let backgroundStyles = {
+    backgroundColor: props.backgroundColor || colors.gray[200],
+    backgroundImage: '',
+  };
+
+  if (props.backgroundImage) {
+    backgroundStyles = {
+      backgroundColor: props.backgroundColor,
+      backgroundImage: `url(${props.backgroundImage})`,
+    };
+  }
+
   return (
     <div
-      className={cx(styles.headerContainer, {
-        [styles.tallerHeader]: props.withWave,
-      })}
-      style={{
-        ...(props.backgroundColor && {
-          background: props.backgroundColor,
-        }),
-        ...(props.backgroundGradient && {
-          background: `linear-gradient(0deg, ${
-            props.backgroundGradient.start
-          } 0%, ${props.backgroundGradient.end} 100%)`,
-        }),
-      }}
+      className={cx(styles.headerContainer, props.className)}
+      style={backgroundStyles}
     >
       {props.children}
-      <div
-        className={cx(styles.headerIcon, {
-          [styles.iconLeft]: props.withWave,
-        })}
-      >
-        <Icon name={props.iconName} size={72} color={props.iconColor} />
-      </div>
       {props.withWave && (
         <div className={styles.waveContainer}>
           <svg

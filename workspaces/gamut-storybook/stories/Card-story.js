@@ -6,11 +6,17 @@ import {
   CardShell,
   CardBody,
   CardFooter,
-  IconCard,
+  CardHeader,
+  CardEyebrow,
+  CardButton,
+  CardContent,
+  CardStack,
 } from '@codecademy/gamut/Card';
+import Icon from '@codecademy/gamut/Icon';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 import { addonInfoOptions as options } from './options';
+import styles from './Card-story.scss';
 
 const borderStyles = ['dashed', 'solid', 'none'];
 
@@ -44,25 +50,74 @@ stories.add('Editable', () => (
   </CardShell>
 ));
 
-stories.add('IconCard', () => (
-  <div style={{ maxWidth: '21rem' }}>
-    <IconCard
-      eyebrow={{ iconName: 'lesson', leftText: 'Lesson', rightText: '30 min' }}
-      header={{
-        backgroundColor: colors.blue[500],
-        iconName: text('header-iconName', 'javascript'),
-        iconColor: colors.blue[300],
-        withWave: boolean('header-withWave', false),
-      }}
-      title="Two-way data binding in accessible forms"
-      description="In this lesson, you will learn the syntax for iterator methods, their return values"
-      primaryButton={{
-        icon: <RadialProgress size={20} value={20} />,
-        title: 'Resume',
-        action: () => {},
-        withArrow: true,
-      }}
-      withStack={boolean('withStack', false)}
-    />
+stories.add('BannerCard', () => (
+  <div style={{ maxWidth: '22rem' }}>
+    <CardShell className={styles.bannerCardContainer}>
+      <CardEyebrow
+        iconName="lesson"
+        leftText="Lesson"
+        rightText="30 min"
+        iconColor="salmon"
+        isDarkTheme={boolean('CardEyebrow-isDarkTheme', false)}
+        className={styles.eyebrow}
+      />
+      <CardHeader
+        className={styles.bannerCardHeader}
+        withWave={boolean('CardHeader-withWave', false)}
+      >
+        <Icon
+          name="react"
+          size={90}
+          color="white"
+          style={{ position: 'absolute', bottom: '-20%', right: '12%' }}
+        />
+      </CardHeader>
+      <CardContent
+        title={text('CardContent-title', 'Inconceivable!')}
+        description={text(
+          'CardContent-description',
+          'You keep using that word. I do not think it means what you think it means.'
+        )}
+        className={styles.bannerCardContent}
+      />
+      <CardButton
+        icon={<RadialProgress size={20} value={20} />}
+        title={text('CardButton-title', 'Start')}
+        action={() => {}}
+        withArrow={boolean('CardButton-withArrow', true)}
+      />
+      {boolean('CardStack', true) && <CardStack />}
+    </CardShell>
+  </div>
+));
+
+stories.add('CoverCard', () => (
+  <div style={{ maxWidth: '22rem' }}>
+    <CardShell className={styles.coverCardContainer}>
+      <CardHeader className={styles.coverCardHeader}>
+        <CardEyebrow
+          iconName="lesson"
+          leftText="Project"
+          rightText="1.5 hours"
+          iconColor={colors.white}
+          isDarkTheme={boolean('CardEyebrow-isDarkTheme', true)}
+          className={styles.eyebrow}
+        />
+        <CardContent
+          title={text('CardContent-title', 'Inconceivable!')}
+          description={text(
+            'CardContent-description',
+            'You keep using that word. I do not think it means what you think it means.'
+          )}
+          textClassName={styles.coverCardText}
+        />
+      </CardHeader>
+      <CardButton
+        icon={<RadialProgress size={20} value={20} />}
+        title={text('CardButton-title', 'Start')}
+        action={() => {}}
+        withArrow={boolean('CardButton-withArrow', true)}
+      />
+    </CardShell>
   </div>
 ));

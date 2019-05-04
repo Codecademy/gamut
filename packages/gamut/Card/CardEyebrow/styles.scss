@@ -6,20 +6,17 @@
 }
 
 .eyebrow {
-  position: relative;
-  z-index: 1;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
   color: $color-white;
 }
 
 .eyebrowIconContainer {
-  background-color: $color-white;
-  height: 1.5rem;
-  width: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $color-white;
+  height: 1.5rem;
+  width: 1.5rem;
   border-radius: 0.75rem;
   margin-right: 0.5rem;
 }
@@ -28,4 +25,12 @@
   font-size: 1rem;
   font-weight: bold;
   white-space: nowrap;
+}
+
+.darkTheme {
+  color: $color-black;
+}
+
+.darkThemeIcon {
+  background-color: $color-black;
 }

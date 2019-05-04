@@ -1,11 +1,15 @@
 import React from 'react';
+import cx from 'classnames';
 import Icon from '../../Icon';
 import styles from './styles.scss';
 import { CardButton as CardButtonType } from '../types';
 
 function CardButton(props: CardButtonType) {
   return (
-    <button className={styles.buttonContainer} onClick={props.action}>
+    <button
+      className={cx(styles.buttonContainer, props.className)}
+      onClick={props.action}
+    >
       {props.icon ? props.icon : <div />}
       <div className={styles.displayHorizontal}>
         <div className={styles.buttonTitle}>{props.title}</div>

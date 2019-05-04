@@ -6,13 +6,16 @@ interface CardContentProps {
   title: string;
   description?: string;
   className?: string;
+  textClassName?: string;
 }
 
 function CardContent(props: CardContentProps) {
   return (
     <div className={cx(styles.contentContainer, props.className)}>
-      <h3 className={styles.title}>{props.title}</h3>
-      <p className={styles.description}>{props.description}</p>
+      <h3 className={cx(styles.title, props.textClassName)}>{props.title}</h3>
+      <p className={cx(styles.description, props.textClassName)}>
+        {props.description}
+      </p>
     </div>
   );
 }
