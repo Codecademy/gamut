@@ -9,6 +9,7 @@ function CardButton(props: CardButtonType) {
     <button
       className={cx(styles.buttonContainer, props.className)}
       onClick={props.action}
+      type="button"
     >
       {props.icon ? props.icon : <div />}
       <div className={styles.displayHorizontal}>
