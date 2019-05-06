@@ -1,7 +1,5 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-// @ts-ignore
-import { colors } from '@codecademy/gamut-styles/utils/variables';
 import styles from './styles.scss';
 
 interface CardHeaderProps {
@@ -41,7 +39,7 @@ function CardHeader(props: CardHeaderProps) {
           >
             <path
               d="M0 .373c40.453 0 52.457 15.594 89.16 15.594 36.704 0 34.442-15.594 70.973-15.594 36.53 0 34.588 15.594 73.442 15.594C272.43 15.967 272.43.373 312 .373V29.21H0V.373z"
-              fill={colors.white}
+              fill="#fff"
               fillRule="evenodd"
             />
           </svg>

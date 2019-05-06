@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import Icon from '../../Icon';
 import styles from './styles.scss';
-import { CardButton as CardButtonType } from '../types';
 
-function CardButton(props: CardButtonType) {
+interface CardButtonProps {
+  icon?: ReactNode;
+  title: string;
+  action?: () => void;
+  withArrow?: boolean;
+  className?: string;
+}
+
+function CardButton(props: CardButtonProps) {
   return (
     <button
       className={cx(styles.buttonContainer, props.className)}

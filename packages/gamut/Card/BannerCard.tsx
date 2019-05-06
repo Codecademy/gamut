@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { CardShell, CardHeader, CardStack } from './index';
 import styles from './styles/BannerCard.scss';
 
 interface BannerCardProps {
   withWave?: boolean;
   withStack?: boolean;
-  eyebrow?: JSX.Element;
+  eyebrow?: ReactNode;
   headerClassName?: string;
-  headerChildren?: JSX.Element;
-  contentChildren?: JSX.Element;
-  footerChildren?: JSX.Element;
+  headerChildren?: ReactNode;
+  contentChildren?: ReactNode;
+  footerChildren?: ReactNode;
 }
 
 function BannerCard(props: BannerCardProps) {

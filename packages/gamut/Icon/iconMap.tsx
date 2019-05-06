@@ -23,6 +23,7 @@ import ColorsIcon from './icons/ColorsIcon';
 import CopyIcon from './icons/CopyIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
+import DownArrowIcon from './icons/DownArrowIcon';
 import EditIcon from './icons/EditIcon';
 import FloatIcon from './icons/FloatIcon';
 import ForumsIcon from './icons/ForumsIcon';
@@ -35,6 +36,7 @@ import InformationalIcon from './icons/InformationalIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import LearnIcon from './icons/LearnIcon';
+import LeftArrowIcon from './icons/LeftArrowIcon';
 import LessonIcon from './icons/LessonIcon';
 import MAWIcon from './icons/MAWIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
@@ -66,6 +68,7 @@ import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import UpArrowIcon from './icons/UpArrowIcon';
 import VideoIcon from './icons/VideoIcon';
 import jQueryIcon from './icons/jQueryIcon';
 
@@ -95,6 +98,7 @@ const iconMap = {
   copy: CopyIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  downArrow: DownArrowIcon,
   edit: EditIcon,
   floatIcon: FloatIcon,
   forums: ForumsIcon,
@@ -108,6 +112,7 @@ const iconMap = {
   java: JavaIcon,
   javascript: JavascriptIcon,
   learn: LearnIcon,
+  leftArrow: LeftArrowIcon,
   lesson: LessonIcon,
   maintenance: MaintenanceIcon,
   matplotLib: MatplotLibIcon,
@@ -140,6 +145,7 @@ const iconMap = {
   trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
+  upArrow: UpArrowIcon,
   video: VideoIcon,
 };
 

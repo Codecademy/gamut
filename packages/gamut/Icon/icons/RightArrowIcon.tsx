@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-export default function RightArrow(props: SVGProps<SVGSVGElement>) {
+export default function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
       <title>Right Arrow Icon</title>
