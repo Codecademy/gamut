@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function PhoneIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function PhoneIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Phone Icon</title>
@@ -13,4 +15,4 @@ export default function PhoneIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

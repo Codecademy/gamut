@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function QuizIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function QuizIcon(props) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
       <title>Quiz Icon</title>
@@ -13,4 +15,4 @@ export default function QuizIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

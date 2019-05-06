@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function SciPyIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function SciPyIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>SciPy Icon</title>
@@ -8,4 +10,4 @@ export default function SciPyIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M22.89 5.06L20.2 8.24l-1.304-2.12z" />
     </svg>
   );
-}
+});

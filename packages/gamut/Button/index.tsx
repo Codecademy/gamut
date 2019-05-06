@@ -81,7 +81,12 @@ const Button = (props: ButtonProps) => {
   const propsToTransfer = omitProps(propTypes, props);
 
   return (
-    <ButtonBase {...propsToTransfer} className={classes} link={props.link}>
+    <ButtonBase
+      {...propsToTransfer}
+      className={classes}
+      link={props.link}
+      onClick={props.onClick}
+    >
       {props.children}
     </ButtonBase>
   );

@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function AngularIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function AngularIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>AngularJS Icon</title>
@@ -8,4 +10,4 @@ export default function AngularIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M9.906 12.096l2.33-5.61 2.328 5.61H9.906zm-3.123 4.046h1.444l1.196-2.882h5.625l1.196 2.882h1.444L12.235 4.09 6.783 16.142z" />
     </svg>
   );
-}
+});

@@ -1,10 +1,8 @@
 {
   "extends": ["@codecademy/eslint-config"],
-  "parser": "@typescript-eslint/parser",
 
   "rules": {
     "prefer-destructuring": 0,
-    "no-unused-vars": 0,
     "react/default-props-match-prop-types": 0
   }
 }

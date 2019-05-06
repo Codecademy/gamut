@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.24.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.0...@codecademy/gamut@1.24.1) (2019-05-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.24.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.4...@codecademy/gamut@1.24.0) (2019-05-06)
+
+
+### Features
+
+* use correct parser for eslint files by default ([#336](https://github.com/RyzacInc/client-modules/issues/336)) ([38ef491](https://github.com/RyzacInc/client-modules/commit/38ef491))
+
+
+
+
+
+## [1.23.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.3...@codecademy/gamut@1.23.4) (2019-04-30)
+
+
+### Bug Fixes
+
+* pass onClick through to base button element ([b16ed8f](https://github.com/RyzacInc/client-modules/commit/b16ed8f))
+
+
+
+
+
 ## [1.23.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.2...@codecademy/gamut@1.23.3) (2019-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut
