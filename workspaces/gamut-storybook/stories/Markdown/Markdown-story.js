@@ -67,7 +67,7 @@ This is a custom markdown component
             },
           },
           CustomElement: {
-            component: ({ title, ...props }) => {
+            component: ({ title }) => {
               return (
                 <h3
                   style={{

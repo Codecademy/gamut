@@ -93,11 +93,12 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.json'],
+      files: ['**/*.json'],
       parser: 'json',
     },
     {
-      files: ['*.ts', '*.tsx'],
+      parser: require.resolve('@typescript-eslint/parser'),
+      files: ['**/*.ts', '**/*.tsx'],
       rules: {
         'no-unused-vars': 0,
       },

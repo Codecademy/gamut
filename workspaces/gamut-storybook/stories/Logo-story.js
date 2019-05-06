@@ -1,10 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
 import Logo from '@codecademy/gamut/Logo';
 import { selectableColors } from './helpers';
-import { addonInfoOptions as options } from './options';
 
 storiesOf('Component/Logo', module)
   .addDecorator(withKnobs)
