@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function RailsIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function RailsIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Rails Icon</title>
@@ -8,4 +10,4 @@ export default function RailsIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M2 19.174h2.581v2.609H2zM3.108 12.16l2.022.736-.744 2.042-2.021-.735zM6.09 7.223l1.49.86-.87 1.506-1.489-.86zM10.865 4.397l.645 1.117-1.129.652-.645-1.117zM15.5 2.874l.343.94-.94.341-.342-.94zM20 3v1h-1V3z" />
     </svg>
   );
-}
+});

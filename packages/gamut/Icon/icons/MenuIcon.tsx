@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function MenuIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function MenuIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <g fillRule="nonzero">
@@ -8,4 +10,4 @@ export default function MenuIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

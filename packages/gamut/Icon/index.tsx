@@ -6,7 +6,10 @@ const defaultProps = {
   width: 24,
 };
 
-export type IconProps = HTMLAttributes<SVGElement> &
+/**
+ * @deprecated Directly import icons from @codecademy/gamut instead.
+ */
+export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
   SVGProps<SVGSVGElement> & {
     height?: number;
     label?: string;
@@ -15,7 +18,10 @@ export type IconProps = HTMLAttributes<SVGElement> &
     width?: number;
   };
 
-function Icon({ name, size, ...props }: IconProps) {
+/**
+ * @deprecated Directly import icons from @codecademy/gamut instead.
+ */
+function Icon({ name, size, ...props }: IconPropsDeprecated) {
   const MappedIcon = iconMap[name];
   const { label, ...childProps } = props;
 
@@ -30,10 +36,9 @@ function Icon({ name, size, ...props }: IconProps) {
 
   return (
     <MappedIcon
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-      {...childProps}
+      height={childProps.height}
+      svgProps={childProps}
+      width={childProps.width}
     />
   );
 }

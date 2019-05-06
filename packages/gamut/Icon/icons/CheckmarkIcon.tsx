@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function CheckmarkIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Checkmark Icon</title>
@@ -10,4 +12,4 @@ export default function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+});
