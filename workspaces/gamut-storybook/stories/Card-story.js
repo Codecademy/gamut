@@ -53,7 +53,6 @@ stories.add('Editable', () => (
 stories.add('BannerCard', () => (
   <div style={{ maxWidth: '22rem' }}>
     <BannerCard
-      withWave={boolean('withWave', false)}
       withStack={boolean('withStack', true)}
       eyebrow={
         <CardEyebrow

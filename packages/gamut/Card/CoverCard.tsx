@@ -15,7 +15,7 @@ interface CoverCardProps {
 function CoverCard(props: CoverCardProps) {
   return (
     <CardShell className={styles.coverCardContainer}>
-      <CardHeader withWave={props.withWave} className={props.headerClassName}>
+      <CardHeader className={props.headerClassName}>
         {props.eyebrow}
         {props.contentChildren}
       </CardHeader>

@@ -3,7 +3,6 @@ import { CardShell, CardHeader, CardStack } from './index';
 import styles from './styles/BannerCard.scss';
 
 interface BannerCardProps {
-  withWave?: boolean;
   withStack?: boolean;
   eyebrow?: ReactNode;
   headerClassName?: string;
@@ -15,7 +14,7 @@ interface BannerCardProps {
 function BannerCard(props: BannerCardProps) {
   return (
     <CardShell className={styles.bannerCardContainer}>
-      <CardHeader withWave={props.withWave} className={props.headerClassName}>
+      <CardHeader className={props.headerClassName}>
         {props.eyebrow}
         {props.headerChildren}
       </CardHeader>
