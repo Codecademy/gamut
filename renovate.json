@@ -4,7 +4,7 @@
     {
       "packagePatterns": [ "enzyme", "jest", "eslint", "prettier", "@types", "typescript"],
       "automerge": true,
-      "automergeType": "branch"
+      "automergeType": "pr"
     }
   ]
 }
