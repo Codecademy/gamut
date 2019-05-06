@@ -7,6 +7,8 @@ module.exports = {
     'eslint-config-prettier/react',
   ].map(require.resolve),
 
+  plugins: ['react-hooks'],
+
   parserOptions: {
     ecmaVersion: 7,
     sourceType: 'module',
@@ -86,6 +88,8 @@ module.exports = {
     ],
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-a11y/label-has-for': 0,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
   overrides: [
     {
