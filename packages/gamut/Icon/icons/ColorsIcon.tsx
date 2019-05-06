@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function ColorsIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function ColorsIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Colors Icon</title>
@@ -9,4 +11,4 @@ export default function ColorsIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M12 20a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 1a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" />
     </svg>
   );
-}
+});

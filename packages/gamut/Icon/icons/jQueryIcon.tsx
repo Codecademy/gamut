@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function jQueryIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function jQueryIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>jQuery Icon</title>
@@ -9,4 +11,4 @@ export default function jQueryIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M14.025 2.062a3.64 3.64 0 0 0-.167.206c-1.3 1.723-.926 4.376.952 5.791 1.878 1.415 4.55 1.058 5.849-.666.068-.09.131-.183.19-.277-1.934 1.148-3.693 1.101-5.277-.141s-2.1-2.88-1.547-4.913z" />
     </svg>
   );
-}
+});

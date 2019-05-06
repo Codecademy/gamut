@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function FloatIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function FloatIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Float Icon</title>
@@ -17,4 +19,4 @@ export default function FloatIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

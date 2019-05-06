@@ -1,6 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
-export default function HTMLIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function HTMLIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>HTML Icon</title>
@@ -8,4 +10,4 @@ export default function HTMLIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M7.503 11.87h7.88l-.35 4.076-3.011.856-.173-.045-2.882-.81-.15-1.732h-1.11l.223 2.61L11.996 18l4.071-1.175.526-6.105H8.517L8.21 7.15h8.688L17 6H7z" />
     </svg>
   );
-}
+});
