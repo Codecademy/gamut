@@ -32,7 +32,8 @@ export const wrapIcon = (Component: React.FC<SVGProps<SVGSVGElement>>) => {
     };
 
     if ('size' in props) {
-      svgProps.height = svgProps.width = props.size;
+      svgProps.height = props.size;
+      svgProps.width = props.size;
     }
 
     return <Component {...svgProps} />;
