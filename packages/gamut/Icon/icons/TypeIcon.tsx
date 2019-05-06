@@ -1,8 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
 import { wrapIcon } from '../wrapIcon';
 
-export default wrapIcon(function TypeIcon(props: SVGProps<SVGSVGElement>) {
+export default wrapIcon(function TypeIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Type Icon</title>

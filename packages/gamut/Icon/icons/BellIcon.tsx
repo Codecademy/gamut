@@ -1,8 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
 import { wrapIcon } from '../wrapIcon';
 
-export default wrapIcon(function BellIcon(props: SVGProps<SVGSVGElement>) {
+export default wrapIcon(function BellIcon(props) {
   return (
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
       <title>Bell Icon</title>

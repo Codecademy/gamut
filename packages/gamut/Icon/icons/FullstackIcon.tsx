@@ -1,8 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
 import { wrapIcon } from '../wrapIcon';
 
-export default wrapIcon(function FullstackIcon(props: SVGProps<SVGSVGElement>) {
+export default wrapIcon(function FullstackIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Fullstack Icon</title>

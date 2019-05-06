@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 import { wrapIcon } from '@codecademy/gamut/Icon/wrapIcon';
 
 export default wrapIcon(function Search(props: SVGProps<SVGSVGElement>) {

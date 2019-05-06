@@ -1,8 +1,8 @@
-import React, { SVGProps } from 'react';
+import React from 'react';
 
 import { wrapIcon } from '../wrapIcon';
 
-export default wrapIcon(function ResetIcon(props: SVGProps<SVGSVGElement>) {
+export default wrapIcon(function ResetIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Reset Icon</title>
