@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.1.4...@codecademy/eslint-config@0.2.0) (2019-05-06)
+
+
+### Features
+
+* add react hooks linting ([#325](http://github.com/RyzacInc/client-modules/packages/eslint-config/issues/325)) ([017a0cf](http://github.com/RyzacInc/client-modules/packages/eslint-config/commit/017a0cf))
+* use correct parser for eslint files by default ([#336](http://github.com/RyzacInc/client-modules/packages/eslint-config/issues/336)) ([38ef491](http://github.com/RyzacInc/client-modules/packages/eslint-config/commit/38ef491))
+
+
+
+
+
 ## [0.1.4](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.1.3...@codecademy/eslint-config@0.1.4) (2019-05-03)
 
 

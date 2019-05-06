@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/eslint-config",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "repository": {
@@ -20,7 +20,7 @@
     "eslint": "^5.15.1"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "1.7.0",    
+    "@typescript-eslint/parser": "1.7.0",
     "babel-eslint": "^10.0.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.2.0",

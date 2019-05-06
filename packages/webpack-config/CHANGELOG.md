@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.14.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.2...@codecademy/webpack-config@3.14.0) (2019-05-06)
+
+
+### Features
+
+* use correct parser for eslint files by default ([#336](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/336)) ([38ef491](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/38ef491))
+
+
+
+
+
 ## [3.13.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.1...@codecademy/webpack-config@3.13.2) (2019-04-26)
 
 
