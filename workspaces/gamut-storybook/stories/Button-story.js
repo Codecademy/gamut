@@ -1,15 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { withInfo } from '@storybook/addon-info';
 import Button, { presetThemes } from '@codecademy/gamut/Button';
 import ButtonBase from '@codecademy/gamut/ButtonBase';
 import Spinner from '@codecademy/gamut/Spinner';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
 import { deprecatedColors } from '@codecademy/gamut-styles/utils/variables';
-
-import { addonInfoOptions as options } from './options';
 
 const themeKeys = [
   ...Object.keys(presetThemes),
