@@ -14,14 +14,14 @@ interface CardHeaderProps {
 
 function CardHeader(props: CardHeaderProps) {
   let backgroundStyles = {
-    backgroundColor: props.backgroundColor || colors.gray[200],
-    backgroundImage: '',
+    background: props.backgroundColor,
   };
 
   if (props.backgroundImage) {
     backgroundStyles = {
-      backgroundColor: props.backgroundColor,
-      backgroundImage: `url(${props.backgroundImage})`,
+      background: `url(${
+        props.backgroundImage
+      }) center center / cover no-repeat`,
     };
   }
 

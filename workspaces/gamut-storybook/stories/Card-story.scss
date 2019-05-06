@@ -1,37 +1,21 @@
 @import "~@codecademy/gamut-styles/utils";
-.bannerCardContainer,
-.coverCardContainer {
-  display: grid;
-  grid-template-rows: 1fr 1fr auto;
-  border-radius: 0.75rem;
-  position: relative;
-  box-shadow: 0 2px 5px 0 rgba($color-black, 0.2);
-  min-height: 25rem;
-}
-
-.coverCardContainer {
-  grid-template-rows: 1fr;
-}
 
 .bannerCardHeader {
   background: linear-gradient(0deg, rebeccapurple 0%, salmon 100%);
 }
 
 .eyebrow {
-  position: absolute;
   padding: 0.75rem 1rem;
-  top: 0;
-  z-index: 1;
-  width: 100%;
 }
 
 .coverCardHeader {
   background: linear-gradient(rgba($color-black, 0) 50%, rgba($color-black, 1)),
     url("https://s3.amazonaws.com/codecademy-content/projects/project_thumbnails/html/img_HTML_wineFestival.jpg")
-      center center;
+      center center / cover;
+  min-height: 20rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .coverCardText {

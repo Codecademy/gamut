@@ -6,11 +6,11 @@ import {
   CardShell,
   CardBody,
   CardFooter,
-  CardHeader,
   CardEyebrow,
   CardButton,
   CardContent,
-  CardStack,
+  BannerCard,
+  CoverCard,
 } from '@codecademy/gamut/Card';
 import Icon from '@codecademy/gamut/Icon';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
@@ -52,49 +52,55 @@ stories.add('Editable', () => (
 
 stories.add('BannerCard', () => (
   <div style={{ maxWidth: '22rem' }}>
-    <CardShell className={styles.bannerCardContainer}>
-      <CardEyebrow
-        iconName="lesson"
-        leftText="Lesson"
-        rightText="30 min"
-        iconColor="salmon"
-        isDarkTheme={boolean('CardEyebrow-isDarkTheme', false)}
-        className={styles.eyebrow}
-      />
-      <CardHeader
-        className={styles.bannerCardHeader}
-        withWave={boolean('CardHeader-withWave', false)}
-      >
+    <BannerCard
+      withWave={boolean('withWave', false)}
+      withStack={boolean('withStack', true)}
+      eyebrow={
+        <CardEyebrow
+          iconName="lesson"
+          leftText="Lesson"
+          rightText="30 min"
+          iconColor="salmon"
+          isDarkTheme={boolean('CardEyebrow-isDarkTheme', false)}
+          className={styles.eyebrow}
+        />
+      }
+      headerClassName={styles.bannerCardHeader}
+      headerChildren={
         <Icon
           name="react"
           size={90}
           color="white"
           style={{ position: 'absolute', bottom: '-20%', right: '12%' }}
         />
-      </CardHeader>
-      <CardContent
-        title={text('CardContent-title', 'Inconceivable!')}
-        description={text(
-          'CardContent-description',
-          'You keep using that word. I do not think it means what you think it means.'
-        )}
-        className={styles.bannerCardContent}
-      />
-      <CardButton
-        icon={<RadialProgress size={20} value={20} />}
-        title={text('CardButton-title', 'Start')}
-        action={() => {}}
-        withArrow={boolean('CardButton-withArrow', true)}
-      />
-      {boolean('CardStack', true) && <CardStack />}
-    </CardShell>
+      }
+      contentChildren={
+        <CardContent
+          title={text('CardContent-title', 'Inconceivable!')}
+          description={text(
+            'CardContent-description',
+            'You keep using that word. I do not think it means what you think it means.'
+          )}
+          className={styles.bannerCardContent}
+        />
+      }
+      footerChildren={
+        <CardButton
+          icon={<RadialProgress size={20} value={20} />}
+          title={text('CardButton-title', 'Start')}
+          action={() => {}}
+          withArrow={boolean('CardButton-withArrow', true)}
+        />
+      }
+    />
   </div>
 ));
 
 stories.add('CoverCard', () => (
   <div style={{ maxWidth: '22rem' }}>
-    <CardShell className={styles.coverCardContainer}>
-      <CardHeader className={styles.coverCardHeader}>
+    <CoverCard
+      headerClassName={styles.coverCardHeader}
+      eyebrow={
         <CardEyebrow
           iconName="lesson"
           leftText="Project"
@@ -103,6 +109,8 @@ stories.add('CoverCard', () => (
           isDarkTheme={boolean('CardEyebrow-isDarkTheme', true)}
           className={styles.eyebrow}
         />
+      }
+      contentChildren={
         <CardContent
           title={text('CardContent-title', 'Inconceivable!')}
           description={text(
@@ -111,13 +119,15 @@ stories.add('CoverCard', () => (
           )}
           textClassName={styles.coverCardText}
         />
-      </CardHeader>
-      <CardButton
-        icon={<RadialProgress size={20} value={20} />}
-        title={text('CardButton-title', 'Start')}
-        action={() => {}}
-        withArrow={boolean('CardButton-withArrow', true)}
-      />
-    </CardShell>
+      }
+      footerChildren={
+        <CardButton
+          icon={<RadialProgress size={20} value={20} />}
+          title={text('CardButton-title', 'Start')}
+          action={() => {}}
+          withArrow={boolean('CardButton-withArrow', true)}
+        />
+      }
+    />
   </div>
 ));
