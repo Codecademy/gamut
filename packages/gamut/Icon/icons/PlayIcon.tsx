@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function PlayIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function PlayIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Play Icon</title>
@@ -14,4 +16,4 @@ export default function PlayIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

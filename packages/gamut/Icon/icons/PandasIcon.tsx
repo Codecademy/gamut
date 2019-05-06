@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function PandasIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function PandasIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Panda Icon</title>
@@ -10,4 +12,4 @@ export default function PandasIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M11.783 16.2c0 .875-.238 1.482-.705 1.84-.425.326-.978.157-1.7-.581a.193.193 0 0 0-.277 0 .203.203 0 0 0 0 .282c.843.862 1.594 1.093 2.212.619.577-.442.86-1.169.86-2.16 0-.11-.087-.2-.195-.2a.198.198 0 0 0-.195.2z" />
     </svg>
   );
-}
+});

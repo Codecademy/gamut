@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function PathIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function PathIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Path Icon</title>
@@ -12,4 +14,4 @@ export default function PathIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

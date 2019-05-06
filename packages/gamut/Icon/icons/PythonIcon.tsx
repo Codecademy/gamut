@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function PythonIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function PythonIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Python Icon</title>
@@ -8,4 +10,4 @@ export default function PythonIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M9.547 4.453h1.133V5.71H9.548V4.453zM13.32 18.29h1.133v1.258H13.32V18.29z" />
     </svg>
   );
-}
+});

@@ -67,6 +67,9 @@ import WatsonIcon from './icons/WatsonIcon';
 import VideoIcon from './icons/VideoIcon';
 import jQueryIcon from './icons/jQueryIcon';
 
+/**
+ * @deprecated Directly import icons from @codecademy/gamut instead.
+ */
 const iconMap = {
   accessibility: AccessibilityIcon,
   add: AddIcon,
@@ -139,4 +142,7 @@ const iconMap = {
   video: VideoIcon,
 };
 
+/**
+ * @deprecated Directly import icons from @codecademy/gamut instead.
+ */
 export default iconMap;

@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function TerminalIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function TerminalIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Terminal Icon</title>
@@ -8,4 +10,4 @@ export default function TerminalIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M4 8h1v2H4z" />
     </svg>
   );
-}
+});

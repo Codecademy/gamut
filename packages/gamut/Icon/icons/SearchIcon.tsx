@@ -1,6 +1,7 @@
 import React, { SVGProps } from 'react';
+import { wrapIcon } from '@codecademy/gamut/Icon/wrapIcon';
 
-export default function Search(props: SVGProps<SVGSVGElement>) {
+export default wrapIcon(function Search(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Search Icon</title>
@@ -10,4 +11,4 @@ export default function Search(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+});

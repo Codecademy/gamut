@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function CopyIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Copy Icon</title>
@@ -20,4 +22,4 @@ export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});

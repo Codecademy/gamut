@@ -1,6 +1,8 @@
 import React, { SVGProps } from 'react';
 
-export default function JavaIcon(props: SVGProps<SVGSVGElement>) {
+import { wrapIcon } from '../wrapIcon';
+
+export default wrapIcon(function JavaIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Java Icon</title>
@@ -10,4 +12,4 @@ export default function JavaIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+});
