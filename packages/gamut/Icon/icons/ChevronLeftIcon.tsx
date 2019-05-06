@@ -2,9 +2,7 @@ import React from 'react';
 
 import { wrapIcon } from '../wrapIcon';
 
-export default wrapIcon(function ChevronLeftIcon(
-  props: SVGProps<SVGSVGElement>
-) {
+export default wrapIcon(function ChevronLeftIcon(props) {
   return (
     <svg viewBox="0 0 24 24" {...props}>
       <title>Chevron Left Icon</title>
