@@ -1397,18 +1397,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/eslint-config@0.1.4":
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-0.1.4.tgz#ed744f37f11282c7e171c59423fbf885b2f8c234"
-  integrity sha512-M6RYfu6LqvvjodjzSLxKrmyockpCE6p6G2Bo2fnxtiBrKw1IrQux3lsMCLJeXYcZEOJqU43T5D1HrIP7MQKmGg==
-  dependencies:
-    babel-eslint "^10.0.1"
-    eslint-config-airbnb "^17.1.0"
-    eslint-config-prettier "^4.1.0"
-    eslint-plugin-import "^2.16.0"
-    eslint-plugin-jsx-a11y "^6.2.1"
-    eslint-plugin-react "^7.12.4"
-
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.npmjs.org/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
@@ -6078,7 +6066,7 @@ eslint-config-airbnb@^17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-prettier@^4.1.0, eslint-config-prettier@^4.2.0:
+eslint-config-prettier@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-4.2.0.tgz#70b946b629cd0e3e98233fd9ecde4cb9778de96c"
   integrity sha512-y0uWc/FRfrHhpPZCYflWC8aE0KRJRY04rdZVfl8cL3sEZmOYyaBdhdlQPjKZBnuRMyLVK+JUZr7HaZFClQiH4w==
