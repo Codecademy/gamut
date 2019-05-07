@@ -1,12 +1,12 @@
-# GAMUT
+# CLIENT MODULES
 
-_Styleguide & Component library for codecademy.com_
+_Shared node modules for codecademy.com & co_
 
 ---
 
 ## [![CircleCI](https://circleci.com/gh/RyzacInc/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
 
-This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we actually publish several packages to npm from the same codebase, including:
+This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
@@ -27,16 +27,6 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 1.  Run `yarn start` to start the storybook server
 1.  Add new stories to `workspaces/gamut-storybook/stories`
 
-### Cross-package development
-
-_Follow these steps when you need to make changes to Gamut that are immediately reflected in the Codecademy app (e.g. for QAing a Gamut component)._
-
-1.  Cd into `../Codecademy` (targeting wherever your Codecademy app is located)
-2.  Run `npm link ~/desktop/work/gamut/packages/gamut` (targeting wherever your gamut _child package_ is located) [npm-link documentation](https://docs.npmjs.com/cli/link)
-3.  Run `yarn` in the Codecademy repo.
-4.  You should be accessing your local version of Gamut.
-5.  If you make an update to Gamut, you will have to run yarn in your local repo again.
-
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
@@ -44,14 +34,16 @@ _Follow these steps when you need to make changes to Gamut that are immediately 
 1.  To merge, use the "squash and merge" button in github
 1.  To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
 1.  Once your branch is merged into master, it will be published automatically by CircleCI.
-1.  You can check the master branch for the new version number
+1.  You can check the master branch or CircleCI for the new version number
 
-### Publishing a pre-release version of a module
+### Publishing an alpha version of a module
 
-You can use the gamut/next branch to publish pre-release changes that require testing across applications
+Every PR that changes files in a package publishes alpha releases that you can use to test your changes across applications
 
-1.  Follow the instructions for normal publishing, but base your PR off of the gamut/next branch, instead of master.
-1.  Once you feel like your changes are stable, you can merge the gamut/next branch into master
+1.  Create a PR
+1.  In the github "checks" UI, find the "Publish Alpha" task
+1.  Once this check has passed, click on it, and look through the output for the alpha version number
+1.  Use this version in the other application you want to test your changes on
 
 ### Commit Message Guide
 
