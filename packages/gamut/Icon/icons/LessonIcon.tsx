@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function LessonIcon(props) {
+export default function LessonIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Lesson Icon</title>
       <path d="M19.977 4.941c-.984-.309-2.065-.441-3.102-.441-1.728 0-3.59.353-4.875 1.324C10.715 4.853 8.853 4.5 7.125 4.5c-1.728 0-3.59.353-4.875 1.324V18.75c0 .22.222.441.443.441.089 0 .133-.044.222-.044 1.196-.573 2.925-.97 4.21-.97 1.728 0 3.59.352 4.875 1.323 1.197-.75 3.368-1.324 4.875-1.324 1.462 0 2.97.265 4.21.927.089.044.133.044.222.044.221 0 .443-.22.443-.441V5.824c-.532-.398-1.108-.662-1.773-.883zm0 11.912c-.975-.309-2.038-.441-3.102-.441-1.507 0-3.678.573-4.875 1.323V7.588c1.197-.75 3.368-1.323 4.875-1.323 1.064 0 2.127.132 3.102.44v10.148z" />
     </svg>
   );
-});
+}
+
+LessonIcon.defaultProps = defaultIconProps;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function FloatIcon(props) {
+export default function FloatIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Float Icon</title>
       <g fillRule="evenodd">
         <path d="M5.227 8.631L8.18 10.44a4.134 4.134 0 0 0 .268 3.66L5.51 15.886a7.578 7.578 0 0 1-.284-7.256zm2.886-3.12a7.575 7.575 0 0 1 7.774 0l-1.788 2.937a4.132 4.132 0 0 0-4.198 0L8.113 5.511zm7.259 13.26a7.582 7.582 0 0 1-6.741.002l1.808-2.953a4.14 4.14 0 0 0 3.133-.005l1.8 2.957zm3.119-2.886l-2.933-1.796a4.134 4.134 0 0 0 .261-3.65l2.954-1.808a7.578 7.578 0 0 1-.282 7.254z" />
@@ -19,4 +19,6 @@ export default wrapIcon(function FloatIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+FloatIcon.defaultProps = defaultIconProps;

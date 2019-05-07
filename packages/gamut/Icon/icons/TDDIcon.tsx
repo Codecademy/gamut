@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function TDDIcon(props) {
+export default function TDDIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>TDD Icon</title>
       <g transform="translate(7 3)">
         <rect
@@ -23,4 +23,6 @@ export default wrapIcon(function TDDIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+TDDIcon.defaultProps = defaultIconProps;

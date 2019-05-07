@@ -22,7 +22,7 @@ describe('Icon', () => {
 
     const iconProps = wrapper.find(iconMap.bell).props();
 
-    expect(iconProps.svgProps).toMatchObject(extraProps);
+    expect(iconProps).toMatchObject(extraProps);
   });
 
   it('adds an aria-label when a label prop is provided', () => {
@@ -31,7 +31,7 @@ describe('Icon', () => {
 
     const iconProps = wrapper.find(iconMap.bell).props();
 
-    expect(iconProps.svgProps).toMatchObject({
+    expect(iconProps).toMatchObject({
       'aria-label': label,
     });
   });

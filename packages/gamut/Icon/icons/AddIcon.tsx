@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function AddIcon(props) {
+export default function AddIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Add Icon</title>
       <g fillRule="evenodd">
         <path d="M11 4h2v16h-2z" />
@@ -12,4 +12,6 @@ export default wrapIcon(function AddIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+AddIcon.defaultProps = defaultIconProps;
