@@ -4,23 +4,23 @@
 // instead, they're co-located with their legacy functions so they can be removed more easily
 // NOTE: when removing, also remove the legacyBreakpoints JS object in gamut-styles/variables.js
 $bp-phone: 0;
-$bp-tablet: 736px;
-$bp-desktop: 960px;
+$bp-tablet: $grid-md-min;
+$bp-desktop: $grid-lg-min;
 
 @mixin device-phone {
-  @include screen-size-between($bp-phone, $bp-tablet - 1) {
+  @include screen-size-between(0, $grid-md-min - 1) {
     @content;
   }
 }
 
 @mixin device-tablet {
-  @include screen-size-between($bp-tablet, $bp-desktop - 1) {
+  @include screen-size-between($grid-md-min, $grid-lg-min - 1) {
     @content;
   }
 }
 
 @mixin device-desktop {
-  @include screen-size-gte($bp-desktop) {
+  @include screen-size-gte($grid-lg-min) {
     @content;
   }
 }
