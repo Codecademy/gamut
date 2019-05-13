@@ -100,7 +100,9 @@ module.exports = {
       parser: require.resolve('@typescript-eslint/parser'),
       files: ['**/*.ts', '**/*.tsx'],
       rules: {
+        'no-undef': 0,
         'no-unused-vars': 0,
+        'no-use-before-define': 0,
       },
     },
   ],
