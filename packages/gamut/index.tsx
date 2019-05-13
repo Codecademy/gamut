@@ -1,9 +1,9 @@
-export { default as Badge, BadgeProps } from './Badge';
-export { default as Button, ButtonProps } from './Button';
-export { default as ButtonBase, ButtonBaseProps } from './ButtonBase';
-export { default as CardShell, CardShellProps } from './Card/CardShell';
-export { default as CardBody, CardBodyProps } from './Card/CardBody';
-export { default as CardFooter, CardFooterProps } from './Card/CardFooter';
+export { default as Badge } from './Badge';
+export { default as Button } from './Button';
+export { default as ButtonBase } from './ButtonBase';
+export { default as CardShell } from './Card/CardShell';
+export { default as CardBody } from './Card/CardBody';
+export { default as CardFooter } from './Card/CardFooter';
 export {
   Form,
   FormGroup,
@@ -18,10 +18,10 @@ export {
 } from './Form';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
-export { default as Logo, LogoProps } from './Logo';
-export { default as Markdown, MarkdownProps } from './Markdown';
-export { default as MenuItem, MenuItemProps } from './Menus/MenuItem';
-export { default as SideMenu, SideMenuProps } from './Menus/SideMenu';
+export { default as Logo } from './Logo';
+export { default as Markdown } from './Markdown';
+export { default as MenuItem } from './Menus/MenuItem';
+export { default as SideMenu } from './Menus/SideMenu';
 export { default as NotificationList } from './NotificationList';
 export {
   default as NotificationIcon,
@@ -29,13 +29,10 @@ export {
 export {
   default as NotificationItem,
 } from './NotificationList/NotificationItem';
-export {
-  default as RadialProgress,
-  RadialProgressProps,
-} from './RadialProgress';
-export { default as Spinner, SpinnerProps } from './Spinner';
+export { default as RadialProgress } from './RadialProgress';
+export { default as Spinner } from './Spinner';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
-export { default as Toggle, ToggleProps } from './Toggle';
+export { default as Toggle } from './Toggle';
 export { default as ToolTip } from './ToolTip';
 
 import * as FlexBox$ from './FlexBox';
