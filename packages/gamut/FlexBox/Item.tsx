@@ -1,7 +1,7 @@
 import React from 'react';
-import Container from './Container';
+import Container, { ContainerProps } from './Container';
 
-class Item extends React.Component {
+class Item extends React.Component<ContainerProps> {
   static displayName = 'Item';
   static defaultProps = {
     flex: false,

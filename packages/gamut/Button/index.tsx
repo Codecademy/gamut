@@ -40,6 +40,7 @@ export type ButtonProps = {
   fitText?: boolean;
   flat?: boolean;
   go?: boolean;
+  href?: string;
   link?: boolean;
   onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
