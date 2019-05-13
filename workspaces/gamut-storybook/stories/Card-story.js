@@ -1,6 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import {
   CardShell,
@@ -15,7 +14,6 @@ import {
 import Icon from '@codecademy/gamut/Icon';
 import RadialProgress from '@codecademy/gamut/RadialProgress';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
-import { addonInfoOptions as options } from './options';
 import styles from './Card-story.scss';
 
 const borderStyles = ['dashed', 'solid', 'none'];
