@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/Input.scss';
 
-export type InputProps = HTMLAttributes<HTMLInputElement> & {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   error?: boolean;
   htmlFor?: string;
