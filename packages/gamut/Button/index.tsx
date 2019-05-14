@@ -37,17 +37,22 @@ export type ButtonProps = {
   caps?: boolean;
   children: ReactNode | ReactNode[];
   className?: string;
+  disabled?: boolean;
   fitText?: boolean;
   flat?: boolean;
   go?: boolean;
   href?: string;
+  id?: string;
   link?: boolean;
   onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
+  rel?: string;
   round?: boolean;
   size?: 'small' | 'large';
   square?: boolean;
+  target?: string;
   theme?: string;
+  type?: string;
   underline?: boolean;
 };
 
