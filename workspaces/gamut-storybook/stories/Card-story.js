@@ -1,7 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/Card';
+import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
+import {
+  CardShell,
+  CardBody,
+  CardFooter,
+  CardEyebrow,
+  CardButton,
+  CardContent,
+  BannerCard,
+  CoverCard,
+} from '@codecademy/gamut/Card';
+import Icon from '@codecademy/gamut/Icon';
+import RadialProgress from '@codecademy/gamut/RadialProgress';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
+import styles from './Card-story.scss';
 
 const borderStyles = ['dashed', 'solid', 'none'];
 
@@ -33,4 +46,85 @@ stories.add('Editable', () => (
       <span>&nbsp;&nbsp;&laquo;</span>
     </CardFooter>
   </CardShell>
+));
+
+stories.add('BannerCard', () => (
+  <div style={{ maxWidth: '22rem' }}>
+    <BannerCard
+      withStack={boolean('withStack', true)}
+      eyebrow={
+        <CardEyebrow
+          iconName="lesson"
+          leftText="Lesson"
+          rightText="30 min"
+          iconColor="salmon"
+          isDarkTheme={boolean('CardEyebrow-isDarkTheme', false)}
+          className={styles.eyebrow}
+        />
+      }
+      headerClassName={styles.bannerCardHeader}
+      headerChildren={
+        <Icon
+          name="react"
+          size={90}
+          color="white"
+          style={{ position: 'absolute', bottom: '-20%', right: '12%' }}
+        />
+      }
+      contentChildren={
+        <CardContent
+          title={text('CardContent-title', 'Inconceivable!')}
+          description={text(
+            'CardContent-description',
+            'You keep using that word. I do not think it means what you think it means.'
+          )}
+          className={styles.bannerCardContent}
+        />
+      }
+      footerChildren={
+        <CardButton
+          icon={<RadialProgress size={20} value={20} />}
+          title={text('CardButton-title', 'Start')}
+          action={() => {}}
+          withArrow={boolean('CardButton-withArrow', true)}
+        />
+      }
+    />
+  </div>
+));
+
+stories.add('CoverCard', () => (
+  <div style={{ maxWidth: '22rem' }}>
+    <CoverCard
+      headerClassName={styles.coverCardHeader}
+      eyebrow={
+        <CardEyebrow
+          iconName="lesson"
+          leftText="Project"
+          rightText="1.5 hours"
+          iconColor={colors.white}
+          isDarkTheme={boolean('CardEyebrow-isDarkTheme', true)}
+          className={styles.eyebrow}
+        />
+      }
+      contentChildren={
+        <CardContent
+          title={text('CardContent-title', 'Inconceivable!')}
+          description={text(
+            'CardContent-description',
+            'You keep using that word. I do not think it means what you think it means.'
+          )}
+          textClassName={styles.coverCardText}
+        />
+      }
+      footerChildren={
+        <CardButton
+          icon={<RadialProgress size={20} value={20} />}
+          title={text('CardButton-title', 'Start')}
+          action={() => {}}
+          withArrow={boolean('CardButton-withArrow', true)}
+        />
+      }
+    />
+  </div>
 ));
