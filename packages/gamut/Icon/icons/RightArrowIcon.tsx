@@ -1,5 +1,7 @@
 import React, { SVGProps } from 'react';
 
+import { defaultIconProps } from '../defaultIconProps';
+
 export default function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props}>
@@ -11,3 +13,5 @@ export default function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+RightArrowIcon.defaultProps = defaultIconProps;

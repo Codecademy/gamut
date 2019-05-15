@@ -1,5 +1,7 @@
 import React, { SVGProps } from 'react';
 
+import { defaultIconProps } from '../defaultIconProps';
+
 export default function PracticeIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props}>
@@ -14,3 +16,5 @@ export default function PracticeIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+PracticeIcon.defaultProps = defaultIconProps;

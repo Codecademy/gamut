@@ -1,5 +1,7 @@
 import React, { SVGProps } from 'react';
 
+import { defaultIconProps } from '../defaultIconProps';
+
 export default function DownArrowIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg transform="rotate(90)" {...props}>
@@ -11,3 +13,5 @@ export default function DownArrowIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+DownArrowIcon.defaultProps = defaultIconProps;
