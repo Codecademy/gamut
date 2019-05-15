@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function TerminalIcon(props: SVGProps<SVGSVGElement>) {
+const TerminalIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Terminal Icon</title>
@@ -10,6 +10,8 @@ export default function TerminalIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M4 8h1v2H4z" />
     </svg>
   );
-}
+};
 
 TerminalIcon.defaultProps = defaultIconProps;
+
+export default TerminalIcon;

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function QuizIcon(props: SVGProps<SVGSVGElement>) {
+const QuizIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Quiz Icon</title>
@@ -15,6 +15,8 @@ export default function QuizIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 QuizIcon.defaultProps = defaultIconProps;
+
+export default QuizIcon;

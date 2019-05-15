@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function NewPageIcon(props: SVGProps<SVGSVGElement>) {
+const NewPageIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>NewPageIcon</title>
@@ -12,6 +12,8 @@ export default function NewPageIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 NewPageIcon.defaultProps = defaultIconProps;
+
+export default NewPageIcon;

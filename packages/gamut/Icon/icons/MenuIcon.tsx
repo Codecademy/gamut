@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function MenuIcon(props: SVGProps<SVGSVGElement>) {
+const MenuIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <g fillRule="nonzero">
@@ -10,6 +10,8 @@ export default function MenuIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 MenuIcon.defaultProps = defaultIconProps;
+
+export default MenuIcon;

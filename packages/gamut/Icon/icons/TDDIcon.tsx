@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function TDDIcon(props: SVGProps<SVGSVGElement>) {
+const TDDIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>TDD Icon</title>
@@ -23,6 +23,8 @@ export default function TDDIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 TDDIcon.defaultProps = defaultIconProps;
+
+export default TDDIcon;
