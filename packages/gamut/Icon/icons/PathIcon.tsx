@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function PathIcon(props) {
+export default function PathIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Path Icon</title>
       <g fill="none" fillRule="evenodd">
         <path stroke="currentColor" d="M5 21h7v-6M12 9V3h7" />
@@ -14,4 +14,6 @@ export default wrapIcon(function PathIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+PathIcon.defaultProps = defaultIconProps;

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function ChevronUpIcon(props) {
+export default function ChevronUpIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Chevron Up Icon</title>
       <path d="M20.293 18.414L21.707 17 12 7.293 2.293 17l1.414 1.414L12 10.121z" />
     </svg>
   );
-});
+}
+
+ChevronUpIcon.defaultProps = defaultIconProps;

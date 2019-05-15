@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function CheckFilledIcon(props) {
+export default function CheckFilledIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>CheckFilled Icon</title>
       <g fillRule="evenodd">
         <path
@@ -14,4 +14,6 @@ export default wrapIcon(function CheckFilledIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+CheckFilledIcon.defaultProps = defaultIconProps;

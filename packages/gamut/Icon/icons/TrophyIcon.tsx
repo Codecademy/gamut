@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function TrophyIcon(props) {
+export default function TrophyIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Trophy Icon</title>
       <g fillRule="nonzero">
         <path d="M6.503 3.801v5.404a5.404 5.404 0 1 0 10.808 0V3.801H6.503zm6.305 12.554V19h2.894v1h-8v-1h3.304v-2.645a7.206 7.206 0 0 1-6.304-7.15V2h14.41v7.205a7.206 7.206 0 0 1-6.304 7.15zm-7.205 4.559h12v1h-12v-1z" />
@@ -12,4 +12,6 @@ export default wrapIcon(function TrophyIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+TrophyIcon.defaultProps = defaultIconProps;

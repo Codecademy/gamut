@@ -1,11 +1,6 @@
 import React, { SVGProps, HTMLAttributes } from 'react';
 import iconMap from './iconMap';
 
-const defaultProps = {
-  height: 24,
-  width: 24,
-};
-
 /**
  * @deprecated Directly import icons from @codecademy/gamut instead.
  */
@@ -23,26 +18,18 @@ export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
  */
 function Icon({ name, size, ...props }: IconPropsDeprecated) {
   const MappedIcon = iconMap[name];
-  const { label, ...childProps } = props;
+  const { label, ...iconProps } = props;
 
   if (label) {
-    childProps['aria-label'] = label;
+    iconProps['aria-label'] = label;
   }
 
   if (size) {
-    childProps.width = size;
-    childProps.height = size;
+    iconProps.width = size;
+    iconProps.height = size;
   }
 
-  return (
-    <MappedIcon
-      height={childProps.height}
-      svgProps={childProps}
-      width={childProps.width}
-    />
-  );
+  return <MappedIcon {...iconProps} />;
 }
-
-Icon.defaultProps = defaultProps;
 
 export default Icon;

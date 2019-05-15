@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function ResponsiveIcon(props) {
+export default function ResponsiveIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Responsive Icon</title>
       <g fill="none" stroke="currentColor">
         <rect
@@ -23,4 +23,6 @@ export default wrapIcon(function ResponsiveIcon(props) {
       <path d="M7.044 9.457h4.384l-.159 1.522H8.48l.053.456h2.693l-.185 1.728-1.443.342-.08.023-.096-.023-1.461-.342-.08-.723h-.528l.115 1.073L9.5 14l2.033-.487L12 9H7z" />
     </svg>
   );
-});
+}
+
+ResponsiveIcon.defaultProps = defaultIconProps;

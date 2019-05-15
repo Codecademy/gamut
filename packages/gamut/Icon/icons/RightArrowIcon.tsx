@@ -1,8 +1,10 @@
 import React, { SVGProps } from 'react';
 
+import { defaultIconProps } from '../defaultIconProps';
+
 export default function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Right Arrow Icon</title>
       <path
         d="M4 10.92v2h12l-5.5 5.5 1.42 1.42 7.92-7.92L11.92 4 10.5 5.42l5.5 5.5z"
@@ -11,3 +13,5 @@ export default function RightArrowIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+RightArrowIcon.defaultProps = defaultIconProps;

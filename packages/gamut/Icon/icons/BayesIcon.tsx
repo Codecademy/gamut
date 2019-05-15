@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function BayesIcon(props) {
+export default function BayesIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Bayes Icon</title>
       <g transform="translate(3 2)" fillRule="evenodd">
         <circle cx="1.5" cy="9.5" r="1.5" />
@@ -29,4 +29,6 @@ export default wrapIcon(function BayesIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+BayesIcon.defaultProps = defaultIconProps;
