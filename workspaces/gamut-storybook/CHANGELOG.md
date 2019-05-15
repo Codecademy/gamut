@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.13.3...@codecademy/gamut-storybook@2.14.0) (2019-05-15)
+
+
+### Features
+
+* **Card:** Add card components ([a907a41](https://github.com/RyzacInc/client-modules/commit/a907a41))
+
+
+
+
+
 ## [2.13.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.13.2...@codecademy/gamut-storybook@2.13.3) (2019-05-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
