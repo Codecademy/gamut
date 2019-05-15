@@ -23,6 +23,7 @@ import ColorsIcon from './icons/ColorsIcon';
 import CopyIcon from './icons/CopyIcon';
 import CommunityIcon from './icons/CommunityIcon';
 import DAWIcon from './icons/DAWIcon';
+import DownArrowIcon from './icons/DownArrowIcon';
 import EditIcon from './icons/EditIcon';
 import FloatIcon from './icons/FloatIcon';
 import ForumsIcon from './icons/ForumsIcon';
@@ -35,6 +36,7 @@ import InformationalIcon from './icons/InformationalIcon';
 import JavaIcon from './icons/JavaIcon';
 import JavascriptIcon from './icons/JavascriptIcon';
 import LearnIcon from './icons/LearnIcon';
+import LeftArrowIcon from './icons/LeftArrowIcon';
 import LessonIcon from './icons/LessonIcon';
 import MAWIcon from './icons/MAWIcon';
 import MaintenanceIcon from './icons/MaintenanceIcon';
@@ -47,6 +49,7 @@ import PandasIcon from './icons/PandasIcon';
 import PathIcon from './icons/PathIcon';
 import PhoneIcon from './icons/PhoneIcon';
 import PlayIcon from './icons/PlayIcon';
+import PracticeIcon from './icons/PracticeIcon';
 import ProjectIcon from './icons/ProjectIcon';
 import PythonIcon from './icons/PythonIcon';
 import QuizIcon from './icons/QuizIcon';
@@ -54,6 +57,7 @@ import RailsIcon from './icons/RailsIcon';
 import ReactIcon from './icons/ReactIcon';
 import ResetIcon from './icons/ResetIcon';
 import ResponsiveIcon from './icons/ResponsiveIcon';
+import RightArrowIcon from './icons/RightArrowIcon';
 import RubyIcon from './icons/RubyIcon';
 import SQLIcon from './icons/SQLIcon';
 import SassIcon from './icons/SassIcon';
@@ -64,6 +68,7 @@ import TerminalIcon from './icons/TerminalIcon';
 import TrophyIcon from './icons/TrophyIcon';
 import TypeIcon from './icons/TypeIcon';
 import WatsonIcon from './icons/WatsonIcon';
+import UpArrowIcon from './icons/UpArrowIcon';
 import VideoIcon from './icons/VideoIcon';
 import jQueryIcon from './icons/jQueryIcon';
 
@@ -96,6 +101,7 @@ const iconMap = {
   copy: CopyIcon,
   css: CSSIcon,
   daw: DAWIcon,
+  downArrow: DownArrowIcon,
   edit: EditIcon,
   floatIcon: FloatIcon,
   forums: ForumsIcon,
@@ -109,6 +115,7 @@ const iconMap = {
   java: JavaIcon,
   javascript: JavascriptIcon,
   learn: LearnIcon,
+  leftArrow: LeftArrowIcon,
   lesson: LessonIcon,
   maintenance: MaintenanceIcon,
   matplotLib: MatplotLibIcon,
@@ -121,6 +128,7 @@ const iconMap = {
   phone: PhoneIcon,
   php: PHPIcon,
   play: PlayIcon,
+  practice: PracticeIcon,
   project: ProjectIcon,
   python: PythonIcon,
   quiz: QuizIcon,
@@ -128,6 +136,7 @@ const iconMap = {
   react: ReactIcon,
   reset: ResetIcon,
   responsive: ResponsiveIcon,
+  rightArrow: RightArrowIcon,
   ruby: RubyIcon,
   sass: SassIcon,
   sciPy: SciPyIcon,
@@ -139,6 +148,7 @@ const iconMap = {
   trophy: TrophyIcon,
   type: TypeIcon,
   watson: WatsonIcon,
+  upArrow: UpArrowIcon,
   video: VideoIcon,
 };
 

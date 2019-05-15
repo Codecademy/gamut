@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import React, { FormHTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/Form.scss';
 
-export type FormProps = HTMLAttributes<HTMLFormElement> & {
+export type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   className?: string;
 };
 

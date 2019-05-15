@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.25.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.3...@codecademy/gamut@1.25.0) (2019-05-15)
+
+
+### Features
+
+* **Card:** Add card components ([a907a41](https://github.com/RyzacInc/client-modules/commit/a907a41))
+
+
+
+
+
+## [1.24.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.2...@codecademy/gamut@1.24.3) (2019-05-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [1.24.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.1...@codecademy/gamut@1.24.2) (2019-05-13)
 
 **Note:** Version bump only for package @codecademy/gamut

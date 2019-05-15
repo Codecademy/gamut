@@ -109,3 +109,8 @@ export { default as TypeIcon } from './Icon/icons/TypeIcon';
 export { default as WatsonIcon } from './Icon/icons/WatsonIcon';
 export { default as VideoIcon } from './Icon/icons/VideoIcon';
 export { default as jQueryIcon } from './Icon/icons/jQueryIcon';
+export { default as PracticeIcon } from './Icon/icons/PracticeIcon';
+export { default as DownArrowIcon } from './Icon/icons/DownArrowIcon';
+export { default as UpArrowIcon } from './Icon/icons/UpArrowIcon';
+export { default as RightArrowIcon } from './Icon/icons/RightArrowIcon';
+export { default as LeftArrowIcon } from './Icon/icons/LeftArrowIcon';
