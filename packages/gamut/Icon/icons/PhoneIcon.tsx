@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function PhoneIcon(props) {
+export default function PhoneIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Phone Icon</title>
       <g fillRule="evenodd">
         <path
@@ -15,4 +15,6 @@ export default wrapIcon(function PhoneIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+PhoneIcon.defaultProps = defaultIconProps;

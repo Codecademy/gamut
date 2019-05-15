@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function VideoIcon(props) {
+export default function VideoIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Video Icon</title>
       <path d="M18 12L6 20V4z" fill="currentColor" fillRule="evenodd" />
     </svg>
   );
-});
+}
+
+VideoIcon.defaultProps = defaultIconProps;

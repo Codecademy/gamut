@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function MaintenanceIcon(props) {
+export default function MaintenanceIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Maintenance Icon</title>
       <g transform="translate(2 2)">
         <circle cx="10" cy="10" r="10" />
@@ -15,4 +15,6 @@ export default wrapIcon(function MaintenanceIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+MaintenanceIcon.defaultProps = defaultIconProps;

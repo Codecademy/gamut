@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function QuizIcon(props) {
+export default function QuizIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Quiz Icon</title>
       <g fillRule="evenodd">
         <path d="M2.053 7h10.105v1.263H2.053zM2.053 9.526h7.579v1.263h-7.58zM2.053 12.053h5.052v1.263H2.053zM2.053 14.579h2.526v1.263H2.053z" />
@@ -15,4 +15,6 @@ export default wrapIcon(function QuizIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+QuizIcon.defaultProps = defaultIconProps;

@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function RubyIcon(props) {
+export default function RubyIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Ruby Icon</title>
       <path d="M1.5 9.5v-1h21v1z" />
       <path d="M12 19.52l9.733-10.618L18.465 4H5.535L2.267 8.902 12 19.52zM5 3h14l4 6-11 12L1 9l4-6z" />
@@ -12,4 +12,6 @@ export default wrapIcon(function RubyIcon(props) {
       <path d="M7.354 9.354l-.708-.708L12 3.293l5.354 5.353-.708.708L12 4.707z" />
     </svg>
   );
-});
+}
+
+RubyIcon.defaultProps = defaultIconProps;

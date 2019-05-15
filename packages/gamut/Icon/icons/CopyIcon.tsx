@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function CopyIcon(props) {
+export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Copy Icon</title>
       <g
         id="Artboard"
@@ -22,4 +22,6 @@ export default wrapIcon(function CopyIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+CopyIcon.defaultProps = defaultIconProps;

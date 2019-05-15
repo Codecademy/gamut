@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function ReactIcon(props) {
+export default function ReactIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>React Icon</title>
       <g transform="translate(2 2)" fill="none" stroke="currentColor">
         <ellipse
@@ -39,4 +39,6 @@ export default wrapIcon(function ReactIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+ReactIcon.defaultProps = defaultIconProps;

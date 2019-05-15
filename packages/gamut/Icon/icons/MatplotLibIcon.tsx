@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 
-import { wrapIcon } from '../wrapIcon';
+import { defaultIconProps } from '../defaultIconProps';
 
-export default wrapIcon(function MatplotLibIcon(props) {
+export default function MatplotLibIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>MatplotLib Icon</title>
       <g transform="translate(2 2)" fill="none">
         <g fill="currentColor">
@@ -20,4 +20,6 @@ export default wrapIcon(function MatplotLibIcon(props) {
       </g>
     </svg>
   );
-});
+}
+
+MatplotLibIcon.defaultProps = defaultIconProps;

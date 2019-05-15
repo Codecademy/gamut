@@ -1,8 +1,10 @@
 import React, { SVGProps } from 'react';
 
+import { defaultIconProps } from '../defaultIconProps';
+
 export default function PracticeIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" {...props}>
+    <svg {...props}>
       <title>Practice Icon</title>
       <g transform="rotate(-45 19.071 9.485)" fillRule="evenodd">
         <path d="M9 4.667h7.111v3.556H9z" />
@@ -14,3 +16,5 @@ export default function PracticeIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+PracticeIcon.defaultProps = defaultIconProps;
