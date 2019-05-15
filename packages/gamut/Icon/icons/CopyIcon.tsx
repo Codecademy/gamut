@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
+const CopyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Copy Icon</title>
@@ -22,6 +22,8 @@ export default function CopyIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 CopyIcon.defaultProps = defaultIconProps;
+
+export default CopyIcon;

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function LeftArrowIcon(props: SVGProps<SVGSVGElement>) {
+const LeftArrowIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg transform="rotate(180)" {...props}>
       <title>Left Arrow Icon</title>
@@ -12,6 +12,8 @@ export default function LeftArrowIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 LeftArrowIcon.defaultProps = defaultIconProps;
+
+export default LeftArrowIcon;

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function AdvisorChatIcon(props: SVGProps<SVGSVGElement>) {
+const AdvisorChatIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>AdvisorChat Icon</title>
@@ -12,6 +12,8 @@ export default function AdvisorChatIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 AdvisorChatIcon.defaultProps = defaultIconProps;
+
+export default AdvisorChatIcon;

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function SearchIcon(props: SVGProps<SVGSVGElement>) {
+const SearchIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Search Icon</title>
@@ -12,6 +12,8 @@ export default function SearchIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 SearchIcon.defaultProps = defaultIconProps;
+
+export default SearchIcon;

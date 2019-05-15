@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function InformationalIcon(props: SVGProps<SVGSVGElement>) {
+const InformationalIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Informational Icon</title>
@@ -13,6 +13,8 @@ export default function InformationalIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 InformationalIcon.defaultProps = defaultIconProps;
+
+export default InformationalIcon;

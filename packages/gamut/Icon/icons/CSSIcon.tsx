@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function CSSIcon(props: SVGProps<SVGSVGElement>) {
+const CSSIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>CSS Icon</title>
@@ -10,6 +10,8 @@ export default function CSSIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M7.02 7.239h8.768l-.317 3.653h-5.58l.105 1.095h5.387l-.37 4.147-2.887.822-.158.054-.194-.054-2.922-.822-.159-1.736H7.637l.229 2.576 4.067 1.169L16 16.973l.933-10.83h-10z" />
     </svg>
   );
-}
+};
 
 CSSIcon.defaultProps = defaultIconProps;
+
+export default CSSIcon;

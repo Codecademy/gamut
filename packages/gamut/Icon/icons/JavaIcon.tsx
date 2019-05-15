@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function JavaIcon(props: SVGProps<SVGSVGElement>) {
+const JavaIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Java Icon</title>
@@ -12,6 +12,8 @@ export default function JavaIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 JavaIcon.defaultProps = defaultIconProps;
+
+export default JavaIcon;

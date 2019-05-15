@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function BayesIcon(props: SVGProps<SVGSVGElement>) {
+const BayesIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Bayes Icon</title>
@@ -29,6 +29,8 @@ export default function BayesIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 BayesIcon.defaultProps = defaultIconProps;
+
+export default BayesIcon;

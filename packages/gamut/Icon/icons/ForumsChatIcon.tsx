@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function ForumsChatIcon(props: SVGProps<SVGSVGElement>) {
+const ForumsChatIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>ForumsChat Icon</title>
@@ -12,6 +12,8 @@ export default function ForumsChatIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 ForumsChatIcon.defaultProps = defaultIconProps;
+
+export default ForumsChatIcon;
