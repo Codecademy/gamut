@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function CloseIcon(props: SVGProps<SVGSVGElement>) {
+const CloseIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <g fillRule="nonzero">
@@ -11,6 +11,8 @@ export default function CloseIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 CloseIcon.defaultProps = defaultIconProps;
+
+export default CloseIcon;

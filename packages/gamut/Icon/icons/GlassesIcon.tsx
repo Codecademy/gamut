@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function GlassesIcon(props: SVGProps<SVGSVGElement>) {
+const GlassesIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Glasses Icon</title>
@@ -12,6 +12,8 @@ export default function GlassesIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 GlassesIcon.defaultProps = defaultIconProps;
+
+export default GlassesIcon;

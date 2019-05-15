@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function CheckFilledIcon(props: SVGProps<SVGSVGElement>) {
+const CheckFilledIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>CheckFilled Icon</title>
@@ -14,6 +14,8 @@ export default function CheckFilledIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 CheckFilledIcon.defaultProps = defaultIconProps;
+
+export default CheckFilledIcon;

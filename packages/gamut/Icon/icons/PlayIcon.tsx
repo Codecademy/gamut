@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function PlayIcon(props: SVGProps<SVGSVGElement>) {
+const PlayIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Play Icon</title>
@@ -16,6 +16,8 @@ export default function PlayIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 PlayIcon.defaultProps = defaultIconProps;
+
+export default PlayIcon;

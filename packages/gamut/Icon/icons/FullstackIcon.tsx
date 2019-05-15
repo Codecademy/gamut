@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function FullstackIcon(props: SVGProps<SVGSVGElement>) {
+const FullstackIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Fullstack Icon</title>
@@ -11,6 +11,8 @@ export default function FullstackIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M19.303 15.157l.922.45-8.292 4.157-8.315-4.157.921-.45-1.348-.674L2 15.067v1.08l9.663 4.83h.54l9.64-4.83v-1.08l-1.191-.584" />
     </svg>
   );
-}
+};
 
 FullstackIcon.defaultProps = defaultIconProps;
+
+export default FullstackIcon;

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function SQLIcon(props: SVGProps<SVGSVGElement>) {
+const SQLIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>SQL Icon</title>
@@ -11,6 +11,8 @@ export default function SQLIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M18.835 18.694l-.01.002-3.809 1.222H8.962L5.15 18.694v-2.698L4 15.629v3.839L8.774 21h6.436l4.77-1.532v-3.839l-1.145.367z" />
     </svg>
   );
-}
+};
 
 SQLIcon.defaultProps = defaultIconProps;
+
+export default SQLIcon;

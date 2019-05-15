@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function MatplotLibIcon(props: SVGProps<SVGSVGElement>) {
+const MatplotLibIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>MatplotLib Icon</title>
@@ -20,6 +20,8 @@ export default function MatplotLibIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 MatplotLibIcon.defaultProps = defaultIconProps;
+
+export default MatplotLibIcon;

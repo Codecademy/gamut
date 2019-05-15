@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function RailsIcon(props: SVGProps<SVGSVGElement>) {
+const RailsIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Rails Icon</title>
@@ -10,6 +10,8 @@ export default function RailsIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M2 19.174h2.581v2.609H2zM3.108 12.16l2.022.736-.744 2.042-2.021-.735zM6.09 7.223l1.49.86-.87 1.506-1.489-.86zM10.865 4.397l.645 1.117-1.129.652-.645-1.117zM15.5 2.874l.343.94-.94.341-.342-.94zM20 3v1h-1V3z" />
     </svg>
   );
-}
+};
 
 RailsIcon.defaultProps = defaultIconProps;
+
+export default RailsIcon;

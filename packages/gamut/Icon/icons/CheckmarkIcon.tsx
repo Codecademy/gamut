@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
+const CheckmarkIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Checkmark Icon</title>
@@ -12,6 +12,8 @@ export default function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
       />
     </svg>
   );
-}
+};
 
 CheckmarkIcon.defaultProps = defaultIconProps;
+
+export default CheckmarkIcon;

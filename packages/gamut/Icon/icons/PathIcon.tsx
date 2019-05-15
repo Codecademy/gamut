@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function PathIcon(props: SVGProps<SVGSVGElement>) {
+const PathIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Path Icon</title>
@@ -14,6 +14,8 @@ export default function PathIcon(props: SVGProps<SVGSVGElement>) {
       </g>
     </svg>
   );
-}
+};
 
 PathIcon.defaultProps = defaultIconProps;
+
+export default PathIcon;

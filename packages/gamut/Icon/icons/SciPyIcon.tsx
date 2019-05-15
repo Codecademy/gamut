@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export default function SciPyIcon(props: SVGProps<SVGSVGElement>) {
+const SciPyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>SciPy Icon</title>
@@ -10,6 +10,8 @@ export default function SciPyIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M22.89 5.06L20.2 8.24l-1.304-2.12z" />
     </svg>
   );
-}
+};
 
 SciPyIcon.defaultProps = defaultIconProps;
+
+export default SciPyIcon;
