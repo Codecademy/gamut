@@ -1,0 +1,14 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.standard,
+.underlineTransition,
+.colorTransition:hover,
+.colorTransition:focus {
+  color: $brand-purple;
+}
+
+.standard,
+.underlineTransition:hover,
+.underlineTransition:focus {
+  text-decoration: underline;
+}

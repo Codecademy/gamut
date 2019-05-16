@@ -18,6 +18,7 @@ export {
 } from './Form';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
+export { linkClassNames } from './TextLink';
 export { default as Logo } from './Logo';
 export { default as Markdown } from './Markdown';
 export { default as MenuItem } from './Menus/MenuItem';
