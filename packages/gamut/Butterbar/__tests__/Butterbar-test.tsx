@@ -4,11 +4,11 @@ import React from 'react';
 import Butterbar from '..';
 import Button from '../../Button';
 
-const createStubStorage = (key = 'stub-key') => {
+const createStubStorage = (storageKey = 'stub-key') => {
   const items = new Map<string, string | null>();
 
   return {
-    key,
+    key: storageKey,
     local: {
       getItem(key: string) {
         return items.get(key);
