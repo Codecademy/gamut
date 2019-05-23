@@ -27,7 +27,9 @@ const FormGroup = ({
   ) : null;
 
   const descriptionComponent = description ? (
-    <FormGroupDescription>{description}</FormGroupDescription>
+    <FormGroupDescription aria-live="assertive">
+      {description}
+    </FormGroupDescription>
   ) : null;
 
   return (
