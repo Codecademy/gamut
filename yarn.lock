@@ -14251,9 +14251,10 @@ ws@^6.1.2:
   dependencies:
     async-limiter "~1.0.0"
 
-wsrun@3.6.4:
-  version "3.6.4"
-  resolved "https://registry.npmjs.org/wsrun/-/wsrun-3.6.4.tgz#05cfcc5bfaf3056c3eecb0762fdc1038cb3db0bc"
+wsrun@3.6.6:
+  version "3.6.6"
+  resolved "https://registry.npmjs.org/wsrun/-/wsrun-3.6.6.tgz#b4a9235f175fb4a8e0e3747fc0e09d093fa84d9c"
+  integrity sha512-XGSx5bNjdLNUF8wMg6R3FZ5H07Rj46DW7LU6fCuf75V75STIm6vyb/f1wXVc5wK8BSHBDqmrZAzxMgOegI3Opw==
   dependencies:
     bluebird "^3.5.1"
     chalk "^2.3.0"

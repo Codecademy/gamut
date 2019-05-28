@@ -39,7 +39,7 @@
   ],
   "dependencies": {
     "lerna": "3.13.3",
-    "wsrun": "3.6.4"
+    "wsrun": "3.6.6"
   },
   "devDependencies": {
     "@babel/core": "7.4.3",
