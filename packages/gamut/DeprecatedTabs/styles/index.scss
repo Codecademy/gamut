@@ -18,10 +18,6 @@ $anim-duration: 300ms;
   padding: 1rem;
   cursor: pointer;
   transition: background-color $anim-duration;
-
-  &:focus {
-    outline: none;
-  }
 }
 
 // regular style tabs

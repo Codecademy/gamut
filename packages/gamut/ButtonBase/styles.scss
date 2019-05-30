@@ -7,13 +7,6 @@
   cursor: pointer;
   font-family: inherit;
 
-  &,
-  &:active {
-    &:focus {
-      outline: none;
-    }
-  }
-
   &:hover:focus {
     text-decoration: none;
   }
@@ -23,7 +16,6 @@
 
   &:active {
     background-image: none;
-    outline: 0;
   }
 
   &:disabled {

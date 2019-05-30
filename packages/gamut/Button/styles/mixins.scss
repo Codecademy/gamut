@@ -28,10 +28,6 @@
     background-color: $active-background;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 3px fade-out($background, 0.5);
-  }
-
   &:disabled {
     color: $deprecated-gamut-grey-200;
     background-color: $btn-disabled-color;
@@ -57,10 +53,6 @@
     box-shadow: none;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 3px fade-out($color, 0.5);
-  }
-
   &:disabled {
     border-color: $btn-disabled-color;
     color: $btn-disabled-color;
@@ -78,10 +70,6 @@
   &:active {
     box-shadow: none;
     color: $active-color;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 3px fade-out($color, $btn-box-shadow-focus-modifier);
   }
 
   &:disabled {
