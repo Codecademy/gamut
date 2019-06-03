@@ -4,13 +4,13 @@ import s from './styles/index.scss';
 import Tab from '../Tab';
 
 export type TabListProps = {
-  activeTabIndex: number;
+  activeTabIndex?: number;
   center?: boolean;
-  children: ReactElement<any, any> | ReactElement<any, any>[];
+  children: React.ReactNode;
   className?: string;
-  createBaseId: (index: number) => string;
+  createBaseId?: (index: number) => string;
   maxWidth?: string;
-  onChange: () => void;
+  onChange?: () => void;
 };
 
 const defaultProps = {
