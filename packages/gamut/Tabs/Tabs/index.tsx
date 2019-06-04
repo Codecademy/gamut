@@ -5,7 +5,7 @@ import TabList from '../TabList';
 
 export interface TabsProps {
   activeTabIndex?: number;
-  children: React.ReactNode;
+  children: ReactElement<any, any>;
   className?: string;
   defaultActiveTabIndex?: number;
   onChange?: (activeTabIndex: number) => void;
