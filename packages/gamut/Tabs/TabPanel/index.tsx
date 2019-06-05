@@ -8,7 +8,7 @@ export type TabPanelProps = {
   active?: boolean;
   children?: ReactNode;
   className?: string;
-  id: string;
+  id?: string;
   renderAllPanels?: boolean;
 };
 

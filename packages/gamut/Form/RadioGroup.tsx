@@ -4,7 +4,6 @@ export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
   children: any;
   htmlForPrefix: string;
   name?: string;
-  onChange: () => void;
 };
 
 const RadioGroup = ({
