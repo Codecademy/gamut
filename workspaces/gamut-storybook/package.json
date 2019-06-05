@@ -55,7 +55,7 @@
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
     "typescript": "*",
-    "webpack": "4.29.6"
+    "webpack": "4.33.0"
   },
   "license": "MIT"
 }
