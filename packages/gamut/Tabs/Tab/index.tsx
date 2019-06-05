@@ -12,12 +12,12 @@ const defaultProps = {
 export type TabProps = {
   active?: boolean;
   activeClassName?: string;
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
-  id: string;
+  id?: string;
   disabled?: boolean;
-  onChange: (newTabIndex: number) => void;
-  tabIndex: number;
+  onChange?: (newTabIndex: number) => void;
+  tabIndex?: number;
 };
 
 const Tab: FunctionComponent<TabProps> = ({
