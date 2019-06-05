@@ -85,8 +85,9 @@ const commonConfig = (options = {}) => {
               compress: {
                 inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
               },
-              ...uglifyOptions,
+              ...uglifyOptions.uglifyOptions,
             },
+            ...uglifyOptions,
           }),
         ],
       },
