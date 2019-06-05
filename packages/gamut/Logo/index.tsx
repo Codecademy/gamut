@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import CodecademyLogo from './CodecademyLogo';
 import CodecademyProLogo from './CodecademyProLogo';
 import CodecademyProAltLogo from './CodecademyProAltLogo';
@@ -16,7 +16,7 @@ const logos = {
   default: CodecademyLogo,
 };
 
-export type LogoProps = {
+export type LogoProps = SVGProps<SVGSVGElement> & {
   height?: number;
   width?: number;
   type: 'default' | 'pro' | 'proAlt' | 'program';
