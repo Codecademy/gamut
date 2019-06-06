@@ -3011,9 +3011,10 @@
   version "1.0.1"
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
 
-"@types/storybook__addon-storyshots@3.4.8":
-  version "3.4.8"
-  resolved "https://registry.npmjs.org/@types/storybook__addon-storyshots/-/storybook__addon-storyshots-3.4.8.tgz#c0a30629efd10b1632f2f0283910e3c49a0f6505"
+"@types/storybook__addon-storyshots@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/@types/storybook__addon-storyshots/-/storybook__addon-storyshots-4.0.1.tgz#5bd520cd5a0386428f211453386f1b0af9596431"
+  integrity sha512-ruCKO/gX3F/8RtwngxgLk0JQ/HNzAshNAR4XC67DEg/X3O349KmEbc3C2OSC5UL8dZILLGCsncoeHihebbJ/Qw==
   dependencies:
     "@types/puppeteer" "*"
     "@types/react" "*"
