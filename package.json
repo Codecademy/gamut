@@ -42,8 +42,8 @@
     "wsrun": "3.6.4"
   },
   "devDependencies": {
-    "@babel/core": "7.4.3",
-    "@babel/polyfill": "7.4.3",
+    "@babel/core": "7.4.5",
+    "@babel/polyfill": "7.4.4",
     "@babel/preset-typescript": "7.3.3",
     "@codecademy/eslint-config": "0.2.0",
     "@codecademy/prettier-config": "0.1.1",
