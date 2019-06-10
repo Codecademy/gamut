@@ -23,8 +23,22 @@ const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
     sourceMap: true,
+    plugins: () => [
+      require('postcss-flexbugs-fixes'),
+      require('autoprefixer')({
+        flexbox: 'no-2009',
+      }),
+    ],
   },
 };
+
+if (PROD) {
+  postCssLoaderDefaults.options.plugins.push(
+    require('cssnano')({
+      preset: 'default',
+    })
+  );
+}
 
 const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
