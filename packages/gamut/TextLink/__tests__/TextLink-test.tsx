@@ -7,7 +7,7 @@ describe('TextLink', () => {
   it('renders with the standard class name when type is not provided', () => {
     const wrapped = mount(<TextLink>Hi</TextLink>);
 
-    expect(wrapped.find('button').prop('className')).toMatch(/^(.+) standard$/);
+    expect(wrapped.find('button').prop('className')).toContain('standard');
   });
 
   it('renders with an underline class name when type is underline', () => {
@@ -15,8 +15,8 @@ describe('TextLink', () => {
       <TextLink type={TextLinkType.UnderlineTransition}>Hi</TextLink>
     );
 
-    expect(wrapped.find('button').prop('className')).toMatch(
-      /^(.+) underlineTransition$/
+    expect(wrapped.find('button').prop('className')).toContain(
+      'underlineTransition'
     );
   });
 });
