@@ -47,7 +47,7 @@ const TextLink: React.FC<TextLinkProps> = ({
   );
 
   return (
-    <ButtonBase {...buttonProps} className={className}>
+    <ButtonBase link {...buttonProps} className={className}>
       {children}
     </ButtonBase>
   );
