@@ -89,7 +89,7 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 0,
     'jsx-a11y/label-has-for': 0,
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    'react-hooks/exhaustive-deps': 'error',
   },
   overrides: [
     {
