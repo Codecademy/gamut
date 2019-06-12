@@ -6,10 +6,12 @@ export type RadioProps = {
   checked?: boolean;
   className?: string;
   htmlFor?: string;
+  id?: string;
   label?: ReactNode;
   name?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
+  tabIndex?: number;
   value?: string;
 };
 

@@ -1,6 +1,7 @@
 export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export { default as ButtonBase } from './ButtonBase';
+export { default as Butterbar } from './Butterbar';
 export { default as CardShell } from './Card/CardShell';
 export { default as CardBody } from './Card/CardBody';
 export { default as CardFooter } from './Card/CardFooter';

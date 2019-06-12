@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.2.0...@codecademy/eslint-config@0.2.1) (2019-06-07)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
 # [0.2.0](http://github.com/RyzacInc/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.1.4...@codecademy/eslint-config@0.2.0) (2019-05-06)
 
 
