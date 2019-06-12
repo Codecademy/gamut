@@ -1,5 +1,10 @@
 @import "~@codecademy/gamut-styles/utils";
 
+.textLink {
+  background: none;
+  border: 0;
+}
+
 .standard,
 .underlineTransition,
 .colorTransition:hover,
