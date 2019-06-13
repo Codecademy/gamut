@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.0...@codecademy/webpack-config@3.14.1) (2019-06-13)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 # [3.14.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.2...@codecademy/webpack-config@3.14.0) (2019-05-06)
 
 
