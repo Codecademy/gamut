@@ -26,13 +26,8 @@ const postCssLoaderDefaults = {
     plugins: () =>
       [
         require('postcss-flexbugs-fixes'),
-        require('autoprefixer')({
-          flexbox: 'no-2009',
-        }),
-        PROD &&
-          require('cssnano')({
-            preset: 'default',
-          }),
+        require('autoprefixer')({ flexbox: 'no-2009' }),
+        PROD && require('cssnano')({ preset: 'default' }),
       ].filter(Boolean),
   },
 };
