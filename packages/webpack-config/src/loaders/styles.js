@@ -24,9 +24,6 @@ const postCssLoaderDefaults = {
   options: {
     sourceMap: true,
     plugins: () => [
-      require('cssnano')({
-        preset: 'default',
-      }),
       require('postcss-flexbugs-fixes'),
       require('autoprefixer')({
         flexbox: 'no-2009',
@@ -34,6 +31,14 @@ const postCssLoaderDefaults = {
     ],
   },
 };
+
+if (PROD) {
+  postCssLoaderDefaults.options.plugins.push(
+    require('cssnano')({
+      preset: 'default',
+    })
+  );
+}
 
 const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
