@@ -7,7 +7,7 @@ module.exports = {
     'eslint-config-prettier/react',
   ].map(require.resolve),
 
-  plugins: ['react-hooks'],
+  plugins: ['no-only-tests', 'react-hooks'],
 
   parserOptions: {
     ecmaVersion: 7,
@@ -44,6 +44,7 @@ module.exports = {
     'no-debugger': 0,
     'no-param-reassign': 0,
     'object-shorthand': 0,
+    'no-only-tests/no-only-tests': 2,
     'no-return-assign': ['error', 'except-parens'],
     'no-restricted-syntax': 0,
     'no-unused-expressions': [
