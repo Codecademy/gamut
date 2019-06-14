@@ -121,9 +121,13 @@ jobs:
           name: lerna publish
           command: yarn lerna publish from-git --yes
       - run:
-          name: publish on failure
-          command: yarn lerna publish from-git --yes
-          when: on_fail
+          name: update lockfile
+          command: |
+            npx yarn@1.15.2 --production=false
+            git add -A
+            git commit -am "ci: updated yarn.lock"
+            git push
+
 
 
   publish_alpha:
