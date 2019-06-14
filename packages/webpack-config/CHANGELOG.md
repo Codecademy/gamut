@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.1...@codecademy/webpack-config@3.14.2) (2019-06-13)
+
+
+### Bug Fixes
+
+* postcss plugins syntax ([#373](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/373)) ([2d5f0e0](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/2d5f0e0))
+
+
+
+
+
+## [3.14.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.0...@codecademy/webpack-config@3.14.1) (2019-06-13)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 # [3.14.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.2...@codecademy/webpack-config@3.14.0) (2019-05-06)
 
 

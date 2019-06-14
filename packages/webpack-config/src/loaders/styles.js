@@ -23,15 +23,12 @@ const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
     sourceMap: true,
-    plugins: () => [
-      require('cssnano')({
-        preset: 'default',
-      }),
-      require('postcss-flexbugs-fixes'),
-      require('autoprefixer')({
-        flexbox: 'no-2009',
-      }),
-    ],
+    plugins: () =>
+      [
+        require('postcss-flexbugs-fixes'),
+        require('autoprefixer')({ flexbox: 'no-2009' }),
+        PROD && require('cssnano')({ preset: 'default' }),
+      ].filter(Boolean),
   },
 };
 
