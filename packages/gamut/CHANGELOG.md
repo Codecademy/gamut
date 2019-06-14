@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.25.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.6...@codecademy/gamut@1.25.7) (2019-06-14)
+
+
+### Bug Fixes
+
+* update tabs colors ([#374](https://github.com/RyzacInc/client-modules/issues/374)) ([a4e1b34](https://github.com/RyzacInc/client-modules/commit/a4e1b34))
+
+
+
+
+
 ## [1.25.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.5...@codecademy/gamut@1.25.6) (2019-06-13)
 
 **Note:** Version bump only for package @codecademy/gamut
