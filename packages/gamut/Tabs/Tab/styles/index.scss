@@ -1,7 +1,7 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$tab-color: $deprecated-gamut-purple-600;
-$tab-border-radius: 0.25rem;
+$tab-color: $color-blue-500;
+$tab-border-radius: 2px;
 
 .tabListItem {
   list-style-type: none;
@@ -23,7 +23,7 @@ $tab-border-radius: 0.25rem;
   border: 1px solid $tab-color;
   border-left: 0;
   padding: 0.5rem;
-  color: $tab-color;
+  color: $color-black;
   font-weight: bold;
   text-decoration: none !important;
   text-align: center;
@@ -35,7 +35,7 @@ $tab-border-radius: 0.25rem;
 
   &:hover,
   &:focus {
-    background-color: $deprecated-gamut-purple-100;
+    background-color: $color-blue-100;
   }
 }
 
@@ -47,8 +47,5 @@ $tab-border-radius: 0.25rem;
   &:focus {
     background-color: $tab-color;
     color: $color-white;
-  }
-  &:focus {
-    background-color: lighten($tab-color, 10%);
   }
 }
