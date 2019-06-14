@@ -175,5 +175,4 @@ workflows:
             branches:
               ignore: master
           requires:
-            - tests
             - checkout_code
