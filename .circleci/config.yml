@@ -124,9 +124,11 @@ jobs:
           name: update lockfile
           command: |
             npx yarn@1.15.2 --production=false
-            git add -A
-            git commit -am "ci: updated yarn.lock"
-            git push
+            if [ -n "$(git status --porcelain)" ]; then
+              git add -A
+              git commit -am "chore: updated yarn.lock"
+              git push
+            fi
 
 
 
