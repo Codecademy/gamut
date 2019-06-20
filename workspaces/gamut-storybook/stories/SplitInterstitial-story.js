@@ -8,18 +8,18 @@ storiesOf('Component/SplitInterstitial', module).add(
     <SplitInterstitial
       left={{
         children: (
-          <>
-            <h1>Important content on the left</h1>
+          <div>
+            <h1>Important stuff!</h1>
             <p>Some sort of information here, perhaps?</p>
-          </>
+          </div>
         ),
       }}
       right={{
         children: (
-          <>
-            <h2>Alternate content on the right</h2>
+          <div>
+            <h2>Less important...</h2>
             <p>Some more information here, maybe?</p>
-          </>
+          </div>
         ),
       }}
     />
