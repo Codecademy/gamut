@@ -1,0 +1,45 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.splitInterstitial {
+  background: $color-gray-100;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.side {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.left {
+  background: $color-white;
+  box-shadow: 0 2px 4px 0 $effect-slight-shadow;
+}
+
+.sideImage {
+  position: absolute;
+  user-select: none;
+}
+
+.purpleCurveTopLeft {
+  left: 0;
+  top: 0;
+}
+
+.blueCurve,
+.purpleCurveBottomRight {
+  bottom: 0;
+  right: 0;
+}
+
+@include md-viewport {
+  .splitInterstitial {
+    flex-direction: row;
+  }
+}

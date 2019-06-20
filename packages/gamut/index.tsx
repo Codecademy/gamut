@@ -32,6 +32,7 @@ export {
 } from './NotificationList/NotificationItem';
 export { default as RadialProgress } from './RadialProgress';
 export { default as Spinner } from './Spinner';
+export { default as SplitInterstitial } from './SplitInterstitial';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
 export { default as Toggle } from './Toggle';
 export { default as ToolTip } from './ToolTip';
