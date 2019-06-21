@@ -22,6 +22,7 @@ export const HighlightedText: React.FC<HighlightedTextProps> = ({
     .split(/(\s+)(\S+)/g)
     .filter(Boolean)
     .map((word, i) => (
+      // eslint-disable-next-line react/no-array-index-key
       <span className={styles.word} key={i}>
         {word}
       </span>
