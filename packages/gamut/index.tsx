@@ -17,6 +17,7 @@ export {
   Radio,
   RadioGroup,
 } from './Form';
+export { default as HighlightedText } from './HighlightedText';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
 export { default as Logo } from './Logo';
