@@ -24,7 +24,8 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
 }) => {
   return (
     <div className={cx(styles.splitInterstitial, className)}>
-      <div className={cx(styles.side, styles.left, className)}>
+      <div className={cx(styles.side)}>{right.children}</div>
+      <div className={cx(styles.side, styles.left)}>
         <img
           alt=""
           className={cx(styles.sideImage, styles.purpleCurveTopLeft)}
@@ -40,9 +41,8 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
           className={cx(styles.sideImage, styles.purpleCurveBottomRight)}
           src={purpleCurveBottomRight}
         />
-        {left.children}
+        <div className={styles.children}>{left.children}</div>
       </div>
-      <div className={cx(styles.side, className)}>{right.children}</div>
     </div>
   );
 };
