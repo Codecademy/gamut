@@ -14,6 +14,6 @@ describe('SplitInterstitial', () => {
       />
     );
 
-    expect(wrapped.text()).toEqual('onetwo');
+    expect(wrapped.text()).toEqual('twoone');
   });
 });
