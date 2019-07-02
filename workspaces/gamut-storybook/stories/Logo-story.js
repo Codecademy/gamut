@@ -14,7 +14,7 @@ storiesOf('Component/Logo', module)
         height={number('height', Logo.defaultProps.height)}
         type={select(
           'type',
-          ['pro', 'proAlt', 'program', 'default'],
+          ['pro', 'proAlt', 'proLockup', 'program', 'default'],
           Logo.defaultProps.type
         )}
         style={{ color: select('color', selectableColors, 'black') }}
