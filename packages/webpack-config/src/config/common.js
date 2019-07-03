@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const loaders = require('../loaders');
 const ENV = require('../lib/env');
@@ -77,11 +77,11 @@ const commonConfig = (options = {}) => {
       optimization: {
         minimize: true,
         minimizer: [
-          new UglifyJsPlugin({
+          new TerserPlugin({
             cache: true,
             parallel: true,
             sourceMap: true,
-            uglifyOptions: {
+            terserOptions: {
               compress: {
                 inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
               },
