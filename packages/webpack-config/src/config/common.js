@@ -7,7 +7,12 @@ const loaders = require('../loaders');
 const ENV = require('../lib/env');
 
 const commonConfig = (options = {}) => {
-  const { env = ENV, uglifyOptions = {}, includeDefaults = true } = options;
+  const {
+    env = ENV,
+    minimizer,
+    minimizerOptions = {},
+    includeDefaults = true,
+  } = options;
   const DEV = env !== 'production';
 
   let config = {
@@ -77,17 +82,20 @@ const commonConfig = (options = {}) => {
       optimization: {
         minimize: true,
         minimizer: [
-          new TerserPlugin({
-            cache: true,
-            parallel: true,
-            sourceMap: true,
-            terserOptions: {
-              compress: {
-                inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
+          minimizer ||
+            new TerserPlugin({
+              cache: true,
+              parallel: true,
+              sourceMap: true,
+              terserOptions: {
+                compress: {
+                  inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
+                },
+                keep_fnames: true,
+                ...minimizerOptions.terserOptions,
               },
-              ...uglifyOptions,
-            },
-          }),
+              ...minimizerOptions,
+            }),
         ],
       },
       plugins: [new webpack.HashedModuleIdsPlugin()],
