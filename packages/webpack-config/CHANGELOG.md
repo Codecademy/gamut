@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.15.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.2...@codecademy/webpack-config@3.15.0) (2019-07-10)
+
+
+### Features
+
+* Switch to terser plugin from uglify ([#382](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/382)) ([c347d2f](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/c347d2f))
+
+
+
+
+
 ## [3.14.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.1...@codecademy/webpack-config@3.14.2) (2019-06-13)
 
 

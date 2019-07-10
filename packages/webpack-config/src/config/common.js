@@ -1,19 +1,26 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const loaders = require('../loaders');
 const ENV = require('../lib/env');
 
 const commonConfig = (options = {}) => {
-  const { env = ENV, uglifyOptions = {}, includeDefaults = true } = options;
+  const {
+    env = ENV,
+    minimizer,
+    minimizerOptions = {},
+    includeDefaults = true,
+  } = options;
   const DEV = env !== 'production';
 
   let config = {
     context: options.context,
 
     mode: env,
+
+    devtool: 'source-map',
 
     entry: path.resolve(options.context, 'src/main.js'),
 
@@ -63,7 +70,6 @@ const commonConfig = (options = {}) => {
 
   if (DEV) {
     config = merge.smart(config, {
-      devtool: 'source-map',
       output: {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
@@ -73,20 +79,21 @@ const commonConfig = (options = {}) => {
   } else {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
-      devtool: 'source-map',
       optimization: {
         minimize: true,
-        minimizer: [
-          new UglifyJsPlugin({
+        minimizer: minimizer || [
+          new TerserPlugin({
             cache: true,
             parallel: true,
             sourceMap: true,
-            uglifyOptions: {
+            terserOptions: {
               compress: {
                 inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
               },
-              ...uglifyOptions,
+              keep_fnames: true,
+              ...minimizerOptions.terserOptions,
             },
+            ...minimizerOptions,
           }),
         ],
       },
