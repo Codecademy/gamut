@@ -1,8 +1,8 @@
 @import "~@codecademy/gamut-styles/utils";
 
 $border-radius: 2px;
-$shadow-light: 0 2px 8px 0 $effect-slight-shadow;
-$shadow-dark: -2px 8px 22px 0 $effect-slight-shadow;
+$shadow-light: 0 2px 8px 0 $color-shadow;
+$shadow-dark: -2px 8px 22px 0 $color-shadow;
 $transition-time: 0.25s;
 
 .shell {
