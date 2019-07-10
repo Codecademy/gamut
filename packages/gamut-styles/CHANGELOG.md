@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.4...@codecademy/gamut-styles@2.2.5) (2019-07-10)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
 ## [2.2.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.3...@codecademy/gamut-styles@2.2.4) (2019-04-10)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
