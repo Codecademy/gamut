@@ -20,6 +20,8 @@ const commonConfig = (options = {}) => {
 
     mode: env,
 
+    devtool: 'source-map',
+
     entry: path.resolve(options.context, 'src/main.js'),
 
     output: {
@@ -68,7 +70,6 @@ const commonConfig = (options = {}) => {
 
   if (DEV) {
     config = merge.smart(config, {
-      devtool: 'source-map',
       output: {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
@@ -78,24 +79,22 @@ const commonConfig = (options = {}) => {
   } else {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
-      devtool: 'source-map',
       optimization: {
         minimize: true,
-        minimizer: [
-          minimizer ||
-            new TerserPlugin({
-              cache: true,
-              parallel: true,
-              sourceMap: true,
-              terserOptions: {
-                compress: {
-                  inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
-                },
-                keep_fnames: true,
-                ...minimizerOptions.terserOptions,
+        minimizer: minimizer || [
+          new TerserPlugin({
+            cache: true,
+            parallel: true,
+            sourceMap: true,
+            terserOptions: {
+              compress: {
+                inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
               },
-              ...minimizerOptions,
-            }),
+              keep_fnames: true,
+              ...minimizerOptions.terserOptions,
+            },
+            ...minimizerOptions,
+          }),
         ],
       },
       plugins: [new webpack.HashedModuleIdsPlugin()],
