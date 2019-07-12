@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.14.18...@codecademy/gamut-storybook@2.15.0) (2019-07-12)
+
+
+### Features
+
+* add preview for IkonaIcon icons ([#390](https://github.com/RyzacInc/client-modules/issues/390)) ([42ce2cc](https://github.com/RyzacInc/client-modules/commit/42ce2cc))
+
+
+
+
+
 ## [2.14.18](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.14.17...@codecademy/gamut-storybook@2.14.18) (2019-07-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
