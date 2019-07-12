@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@babel/cli": "7.4.3",
-    "@babel/core": "7.4.3",
+    "@babel/core": "7.5.4",
     "@babel/polyfill": "7.4.3",
     "@babel/register": "7.4.0",
     "@codecademy/gamut": "^1.25.12",
