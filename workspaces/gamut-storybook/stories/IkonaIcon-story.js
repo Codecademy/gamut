@@ -14,7 +14,7 @@ const iconNames = Object.keys(classNames)
   .filter(cn => cn.match('ikona-'))
   .map(cn => cn.replace('ikona-', ''));
 
-storiesOf('Component/Icon/IkonaIcon (deprecated)', module)
+storiesOf('Component/IkonaIcon (deprecated)', module)
   .addDecorator(withKnobs)
   .add(
     'All Icons',
