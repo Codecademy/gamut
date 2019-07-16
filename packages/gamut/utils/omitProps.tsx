@@ -2,7 +2,7 @@ import invariant from 'invariant';
 import { isPlainObject, omit, without, AnyKindOfDictionary } from 'lodash';
 
 export type RemoveFrom<TContainer, TRemoved> = {
-  [P in keyof TContainer]: P extends keyof TRemoved ? never : TContainer[P]
+  [P in keyof TContainer]: P extends keyof TRemoved ? never : TContainer[P];
 };
 
 /**
