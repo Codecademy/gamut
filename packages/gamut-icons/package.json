@@ -3,18 +3,20 @@
   "description": "Icon library for codecademy.com",
   "version": "1.0.0",
   "author": "Codecademy <dev@codecademy.com>",
-  "main": "dist/index.ts",
+  "main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "sideEffects": false,
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=3.5.2"
   },
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build:icons": "svgr -d dist --ext 'tsx' ./src",
-    "build:index": "create-index ./dist -r -x tsx js",
+    "build:icons": "svgr -d dist/ts --ext 'tsx' ./src",
+    "build:index": "create-index ./dist/ts -r -x tsx js",
     "build:ts": "tsc",
-    "rename-index": "mv dist/index.js dist/index.ts",
-    "build": "yarn clean; yarn build:icons; yarn build:index; yarn rename-index"
+    "clean-index": "mv dist/ts/index.js dist/ts/index.ts; sed -i '' 's/\\.tsx//g' dist/ts/index.ts",
+    "build": "yarn clean; yarn build:icons; yarn build:index; yarn clean-index; yarn build:ts"
   },
   "repository": {
     "type": "git",
