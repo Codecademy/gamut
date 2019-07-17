@@ -1,0 +1,29 @@
+{
+  "name": "@codecademy/gamut-icons",
+  "description": "Icon library for codecademy.com",
+  "version": "1.0.0",
+  "author": "Codecademy <dev@codecademy.com>",
+  "main": "dist/index.ts",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.5.2"
+  },
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build:icons": "svgr -d dist --ext 'tsx' ./src",
+    "build:index": "create-index ./dist -r -x tsx js",
+    "build:ts": "tsc",
+    "rename-index": "mv dist/index.js dist/index.ts",
+    "build": "yarn clean; yarn build:icons; yarn build:index; yarn rename-index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:RyzacInc/client-modules.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@svgr/cli": "4.3.2",
+    "create-index": "^2.4.0",
+    "typescript": "*"
+  }
+}
