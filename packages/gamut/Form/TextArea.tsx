@@ -8,6 +8,8 @@ export type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
   htmlFor?: string;
   name?: string;
   required?: boolean;
+  rows?: number | string;
+  value?: string;
 };
 
 const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
@@ -19,7 +21,13 @@ const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
     className
   );
 
-  return <textarea {...rest} id={htmlFor} className={classNames} />;
+  return (
+    <textarea
+      {...rest as HTMLAttributes<HTMLTextAreaElement>}
+      id={htmlFor}
+      className={classNames}
+    />
+  );
 };
 
 export default TextArea;
