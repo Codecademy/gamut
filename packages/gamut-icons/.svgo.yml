@@ -2,5 +2,7 @@
 multipass: true
 
 plugins:
-  - removeDimensions: false
-  - removeViewBox: true
+  - removeDimensions: true
+  - removeViewBox: false
+  - removeTitle: false
+  - removeDesc: false

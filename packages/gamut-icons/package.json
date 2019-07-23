@@ -11,7 +11,7 @@
     "npm": ">=3.5.2"
   },
   "scripts": {
-    "format": "svgo -f ./src --pretty --config=svgo.yml",
+    "format": "svgo -f ./src --pretty --config=.svgo.yml",
     "clean": "rm -rf ./dist",
     "build:icons": "svgr -d dist/ts --ext 'tsx' ./src",
     "build:index": "create-index ./dist/ts -r -x tsx js",

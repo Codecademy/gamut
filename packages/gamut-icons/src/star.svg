@@ -1,12 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
-    <title>Star</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Star" sketch:type="MSArtboardGroup" fill="#000000">
-            <polygon id="Star-1-Copy-7" sketch:type="MSShapeGroup" points="24 38.5254031 9.37455012 46.2144571 12.1677625 29.9287793 0.335524989 18.3951983 16.6872751 16.0191499 24 1.20195077 31.3127249 16.0191499 47.664475 18.3951983 35.8322375 29.9287793 38.6254499 46.2144571 "></polygon>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+    <path d="M24 38.525l-14.625 7.69 2.793-16.286L.336 18.395l16.351-2.376L24 1.202l7.313 14.817 16.351 2.376L35.832 29.93l2.793 16.285z" fill-rule="evenodd"/>
 </svg>

@@ -4,12 +4,15 @@ function template(
   { imports, componentName, props, jsx, exports }
 ) {
   const typeScriptTpl = template.smart({ plugins: ['typescript'] });
+
   return typeScriptTpl.ast`
     import * as React from 'react';
     export interface GamutIconProps extends React.SVGProps<SVGSVGElement> {
-      size: number;
+      size?: number;
+      title?: string;
+      color?: string;
     }
-    const ${componentName} = (props: GamutIconProps) => ${jsx};
+    const ${componentName} = ({title, size, color, width, height, ...props}: GamutIconProps) => ${jsx};
     export default ${componentName};
   `;
 }
