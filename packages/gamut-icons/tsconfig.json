@@ -5,7 +5,7 @@
     "outDir": "dist/esm/"
   },
   "include": [
-      "./**/*.ts",
-      "./**/*.tsx"
+      "./dist/ts/**/*.ts",
+      "./dist/ts/**/*.tsx"
   ]
 }

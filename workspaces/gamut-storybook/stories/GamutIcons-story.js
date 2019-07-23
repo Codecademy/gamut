@@ -18,8 +18,12 @@ storiesOf('Visuals/Icons', module)
       <div className={s.grid}>
         {Object.entries(icons).map(([iconName, Icon], i) => (
           <span className={s.iconWrapper}>
-            <Icon key={i} size={32} />
-            <span>{iconName}</span>
+            <Icon
+              key={i}
+              size={number('size', 64)}
+              color={select('color', selectableColors, selectableColors.black)}
+            />
+            <span className={s.iconLabel}>{iconName}</span>
           </span>
         ))}
       </div>
