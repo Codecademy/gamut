@@ -16,7 +16,7 @@
     "build:icons": "svgr -d ./dist/ts --ext 'tsx' ./src",
     "build:index": "create-index ./dist/ts -r -x tsx js",
     "build:ts": "tsc",
-    "clean-index": "mv ./dist/ts/index.js dist/ts/index.ts; sed -i '' 's/\\.tsx//g' ./dist/ts/index.ts",
+    "clean-index": "mv ./dist/ts/index.js ./dist/ts/index.ts; replace-in-file '.tsx' '' ./dist/ts/index.ts",
     "build": "yarn clean && yarn build:icons && yarn build:index && yarn clean-index && yarn build:ts"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@svgr/cli": "4.3.2",
     "create-index": "^2.4.0",
+    "replace-in-file": "^4.1.1",
     "svgo": "^1.3.0",
     "typescript": "*"
   }
