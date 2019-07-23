@@ -17,7 +17,7 @@
     "build:index": "create-index ./dist/ts -r -x tsx js",
     "build:ts": "tsc",
     "clean-index": "mv dist/ts/index.js dist/ts/index.ts; sed -i '' 's/\\.tsx//g' dist/ts/index.ts",
-    "build": "yarn build:icons; yarn build:index; yarn clean-index; yarn build:ts"
+    "build": "yarn clean; yarn build:icons; yarn build:index; yarn clean-index; yarn build:ts"
   },
   "repository": {
     "type": "git",

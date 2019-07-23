@@ -1,0 +1,6 @@
+
+multipass: true
+
+plugins:
+  - removeDimensions: false
+  - removeViewBox: true

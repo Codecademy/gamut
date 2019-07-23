@@ -3,6 +3,7 @@ const template = require('./icon-template');
 module.exports = {
   icon: true,
   dimensions: false,
+  expandProps: false,
   svgProps: {
     width: '{props.size || props.width || "1em"}',
     height: '{props.size || props.height || "1em"}',
