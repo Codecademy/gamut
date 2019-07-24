@@ -1,7 +1,7 @@
-function template(
+function iconTemplate(
   { template },
   opts,
-  { imports, componentName, props, jsx, exports }
+  { componentName, jsx /* imports, props, exports */ }
 ) {
   const typeScriptTpl = template.smart({ plugins: ['typescript'] });
 
@@ -16,4 +16,5 @@ function template(
     export default ${componentName};
   `;
 }
-module.exports = template;
+
+module.exports = iconTemplate;
