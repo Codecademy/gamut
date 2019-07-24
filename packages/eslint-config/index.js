@@ -79,6 +79,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     // See https://github.com/faceyspacey/babel-plugin-universal-import#caveat
     'import/no-useless-path-segments': 0,
+    'import/order': ['error', { groups: [['builtin', 'external']] }],
     'import/prefer-default-export': 0,
     'jsx-a11y/anchor-is-valid': [
       'error',
