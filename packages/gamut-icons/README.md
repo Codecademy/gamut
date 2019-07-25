@@ -1,9 +1,12 @@
 # Gamut Icons
 
+*UI Icons for the gamut component library*
+
 ## Icon Guidelines
 
-1. All Icons regardless of intended final size have a base size of 16px, this means they should look crispiest at 8px, 16px, 32px, 64px, etc.
-2. Standard UI icons need no prefix. Example: a `close` icon that shows a standard `X` glyph, would be called `CloseIcon`. Icons that don't fit that description should use a common prefix with other like-icons. Example: Icons for social media sites should start with `social`, like `SocialTwitterIcon`.
+1. All icons should be set in a square viewbox
+2. All Icons should ideally be designed inside of a 16x16 pixel grid
+3. Standard UI icons need no prefix. Example: a `close` icon that shows a standard `X` glyph, would be called `CloseIcon`. Icons that don't fit that description should use a common prefix with other like-icons. Example: Icons for social media sites should start with `social`, like `SocialTwitterIcon`.
 
 
 ## Adding an icon
