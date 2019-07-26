@@ -16,7 +16,7 @@ storiesOf('Visuals/Icons', module)
       source: false,
     })(() => (
       <div className={s.grid}>
-        {Object.entries(icons).map(([iconName, Icon], i) => (
+        {Object.entries(icons).map(([iconName, Icon]) => (
           <span className={s.iconWrapper}>
             <Icon
               key={iconName}
