@@ -3,8 +3,8 @@
   "description": "Icon library for codecademy.com",
   "version": "1.0.0",
   "author": "Codecademy <dev@codecademy.com>",
-  "main": "dist/esm/index.js",
-  "module": "dist/esm/index.js",
+  "main": "icons/index.js",
+  "module": "icons/index.js",
   "sideEffects": false,
   "engines": {
     "node": ">=6.0.0",
@@ -12,11 +12,12 @@
   },
   "scripts": {
     "format": "svgo -f ./src --pretty --config=.svgo.yml",
-    "clean": "rm -rf ./dist",
-    "build:icons": "svgr -d ./dist/ts --ext 'tsx' ./src",
-    "build:index": "create-index ./dist/ts -r -x tsx js",
+    "clean": "rm -rf ./icons; rm -rf ./tmp; mkdir ./tmp",
+    "build:icons": "svgr -d ./tmp/ts --ext 'tsx' ./src",
+    "build:index": "create-index ./tmp/ts -r -x tsx js",
     "build:ts": "tsc",
-    "clean-index": "mv ./dist/ts/index.js ./dist/ts/index.ts; replace-in-file '/\\.tsx/g' '' ./dist/ts/index.ts --isRegex" ,
+    "rename-index": "find ./tmp/ts -depth -name \"*.js\" -exec sh -c 'mv \"$1\" \"${1%.js}.ts\"' _ {} \\;",
+    "clean-index": "yarn rename-index; replace-in-file '/\\.tsx/g' '' tmp/**/index.ts tmp/**/*/index.ts --isRegex --verbose" ,
     "build": "yarn clean && yarn build:icons && yarn build:index && yarn clean-index && yarn build:ts"
   },
   "repository": {

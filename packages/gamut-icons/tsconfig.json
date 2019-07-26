@@ -1,11 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "dist/ts",
-    "outDir": "dist/esm/"
+    "rootDir": "tmp/ts",
+    "outDir": "icons/"
   },
   "include": [
-      "./dist/ts/**/*.ts",
-      "./dist/ts/**/*.tsx"
+      "./tmp/ts/**/*.ts",
+      "./tmp/ts/**/*.tsx"
   ]
 }
