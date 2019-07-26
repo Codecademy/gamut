@@ -19,7 +19,7 @@ storiesOf('Visuals/Icons', module)
         {Object.entries(icons).map(([iconName, Icon], i) => (
           <span className={s.iconWrapper}>
             <Icon
-              key={i}
+              key={iconName}
               size={number('size', 64)}
               color={select('color', selectableColors, selectableColors.black)}
             />
