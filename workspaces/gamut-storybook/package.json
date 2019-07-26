@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook --ci",
     "build-storybook": "NODE_ENV=production build-storybook -c .storybook -o ../../docs/storybook"
   },
   "repository": {
@@ -36,6 +36,7 @@
     "@types/storybook__react": "4.0.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.5",
+    "babel-plugin-react-docgen-typescript": "^1.2.0",
     "babel-preset-codecademy": "2.2.2",
     "chai": "4.2.0",
     "classnames": "2.2.6",
@@ -50,7 +51,6 @@
     "postcss-loader": "3.0.0",
     "prop-types": "15.7.2",
     "react": "16.8.6",
-    "react-docgen-typescript-loader": "3.1.0",
     "react-dom": "16.8.6",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
