@@ -30,22 +30,23 @@ module.exports = ({ config, mode }) => {
     .babel()
     .css()
     .merge({
-      module: {
-        rules: [
-          {
-            test: /\.tsx?$/,
-            use: [
-              {
-                loader: require.resolve('react-docgen-typescript-loader'),
-              },
-            ],
-          },
-        ],
-      },
       plugins: [new ForkTsCheckerWebpackPlugin()],
     })
     .toConfig();
+
+  // Remove webpack-config defaults that interfere with storybook
   delete defaultConfig.entry;
   delete defaultConfig.output;
+
+  // let webpack-config handle optimization
+  delete config.optimization;
+
+  // Remove default storybook babel-loader
+  const babelIndex = config.module.rules.findIndex(r => r.test.test('test.js'));
+  if (babelIndex > -1) {
+    config.module.rules[babelIndex] = null;
+    config.module.rules = config.module.rules.filter(Boolean);
+  }
+
   return merge.smart(defaultConfig, config);
 };
