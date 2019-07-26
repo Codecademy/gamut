@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.15.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.15.4...@codecademy/gamut-storybook@2.15.5) (2019-07-26)
+
+
+### Bug Fixes
+
+* **storybook:** Filter docgen types ([#406](https://github.com/RyzacInc/client-modules/issues/406)) ([0c522c5](https://github.com/RyzacInc/client-modules/commit/0c522c5))
+
+
+
+
+
 ## [2.15.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.15.3...@codecademy/gamut-storybook@2.15.4) (2019-07-26)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
