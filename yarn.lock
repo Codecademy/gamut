@@ -1614,6 +1614,11 @@
     eslint-plugin-react "^7.12.4"
     eslint-plugin-react-hooks "1.6.0"
 
+"@codecademy/gamut-icons@latest":
+  version "1.0.1-alpha.137e1a.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-icons/-/gamut-icons-1.0.1-alpha.137e1a.0.tgz#5f640da8849dfdea0961d2a1291fb7b623cc322f"
+  integrity sha512-oBujxagHQ0CGztXQyOysVTd+U5/vt4ocImwrFKhWby2VfEg3pP15Dj7R2tHJbN3+fL1dDsCEUVArjQU37t8I/A==
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.npmjs.org/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
