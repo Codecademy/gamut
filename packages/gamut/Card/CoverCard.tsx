@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { CardShell, CardHeader } from './index';
 import styles from './styles/CoverCard.scss';
 
-interface CoverCardProps {
+type CoverCardProps = {
   withWave?: boolean;
   withStack?: boolean;
   eyebrow?: ReactNode;
@@ -10,7 +10,7 @@ interface CoverCardProps {
   headerChildren?: ReactNode;
   contentChildren?: ReactNode;
   footerChildren?: ReactNode;
-}
+};
 
 function CoverCard(props: CoverCardProps) {
   return (

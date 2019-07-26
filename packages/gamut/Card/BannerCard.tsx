@@ -2,14 +2,14 @@ import React, { ReactNode } from 'react';
 import { CardShell, CardHeader, CardStack } from './index';
 import styles from './styles/BannerCard.scss';
 
-interface BannerCardProps {
+type BannerCardProps = {
   withStack?: boolean;
   eyebrow?: ReactNode;
   headerClassName?: string;
   headerChildren?: ReactNode;
   contentChildren?: ReactNode;
   footerChildren?: ReactNode;
-}
+};
 
 function BannerCard(props: BannerCardProps) {
   return (

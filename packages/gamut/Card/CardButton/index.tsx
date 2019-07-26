@@ -3,13 +3,13 @@ import cx from 'classnames';
 import Icon from '../../Icon';
 import styles from './styles.scss';
 
-interface CardButtonProps {
+type CardButtonProps = {
   icon?: ReactNode;
   title: string;
   action?: () => void;
   withArrow?: boolean;
   className?: string;
-}
+};
 
 function CardButton(props: CardButtonProps) {
   return (

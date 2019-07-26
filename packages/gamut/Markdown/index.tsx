@@ -59,13 +59,13 @@ const isValidNode = function() {
   return true;
 };
 
-export interface MarkdownProps {
+export type MarkdownProps = {
   className?: string;
   inline?: boolean;
   overrides?: ManyOverrideSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
-}
+};
 
 class Markdown extends PureComponent<MarkdownProps> {
   render() {

@@ -28,13 +28,13 @@ import s from './styles/index.scss';
 
 const ICON_SIZE = 16;
 
-export interface IkonaIconProps {
+export type IkonaIconProps = {
   children?: ReactNode | ReactNode[];
   className?: string;
   name: string;
   size?: number;
   style?: {};
-}
+};
 
 class IkonaIcon extends PureComponent<IkonaIconProps> {
   render() {

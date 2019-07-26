@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { HTMLAttributes } from 'react';
 
-export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
+export type AnchorProps = HTMLAttributes<HTMLAnchorElement> & {
   href: string;
   title?: string;
   height?: number;
   width?: number;
   target?: string;
   rel?: string;
-}
+};
 
 const absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
 

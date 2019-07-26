@@ -2,12 +2,12 @@
 import React, { HTMLAttributes, FunctionComponent } from 'react';
 import s from './styles.scss';
 
-export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
+export type IframeProps = HTMLAttributes<HTMLIFrameElement> & {
   src?: string;
   title?: string;
   width?: number;
   height?: number;
-}
+};
 
 const Iframe: FunctionComponent<IframeProps> = props => {
   if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {

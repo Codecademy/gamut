@@ -2,12 +2,12 @@ import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import styles from './styles.scss';
 
-interface CardHeaderProps {
+type CardHeaderProps = {
   backgroundColor?: string;
   backgroundImage?: string;
   children?: ReactNode;
   className?: string;
-}
+};
 
 function CardHeader(props: CardHeaderProps) {
   let backgroundStyles = {

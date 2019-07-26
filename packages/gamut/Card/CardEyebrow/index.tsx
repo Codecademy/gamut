@@ -4,14 +4,14 @@ import Icon from '../../Icon';
 import iconMap from '../../Icon/iconMap';
 import styles from './styles.scss';
 
-interface CardEyebrowProps {
+type CardEyebrowProps = {
   iconName?: keyof typeof iconMap;
   iconColor?: string;
   leftText?: string;
   rightText?: string;
   className?: string;
   isDarkTheme?: boolean;
-}
+};
 
 function CardEyebrow(props: CardEyebrowProps) {
   const textStyle = cx(styles.eyebrowText, {

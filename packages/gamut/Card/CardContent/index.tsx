@@ -2,12 +2,12 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './styles.scss';
 
-interface CardContentProps {
+type CardContentProps = {
   title: string;
   description?: string;
   className?: string;
   textClassName?: string;
-}
+};
 
 function CardContent(props: CardContentProps) {
   return (

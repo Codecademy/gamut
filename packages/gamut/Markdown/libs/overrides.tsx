@@ -5,11 +5,11 @@ import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
-export interface AttributesMap {
+export type AttributesMap = {
   [key: string]: string | boolean;
-}
+};
 
-export interface HTMLToReactNode {
+export type HTMLToReactNode = {
   data: string;
   type: string;
   name?: string;
@@ -18,7 +18,7 @@ export interface HTMLToReactNode {
   next: HTMLToReactNode;
   prev: HTMLToReactNode;
   parent: HTMLToReactNode;
-}
+};
 
 // Mapping of html attributes to their camelCase variants
 const attributeMap: { [key: string]: string } = {

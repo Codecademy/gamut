@@ -3,18 +3,18 @@ import { isNumber } from 'lodash';
 import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 
-export interface TabsProps {
+export type TabsProps = {
   activeTabIndex?: number;
   children: ReactElement<any, any>[];
   className?: string;
   defaultActiveTabIndex?: number;
   onChange?: (activeTabIndex: number) => void;
   renderAllPanels?: boolean;
-}
+};
 
-export interface TabsState {
+export type TabsState = {
   activeTabIndex: number;
-}
+};
 
 class Tabs extends Component<TabsProps> {
   state: TabsState = {

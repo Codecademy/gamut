@@ -29,7 +29,7 @@ type ContainerPosition =
   | 'spaceAround'
   | 'spaceBetween';
 
-export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+export type ContainerProps = HTMLAttributes<HTMLDivElement> & {
   align?: ContainerPosition;
   alignSelf?: ContainerPosition;
   center?: boolean;
@@ -46,7 +46,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   row?: boolean;
   shrink?: number;
   wrap?: boolean;
-}
+};
 
 class Container extends React.Component<ContainerProps> {
   static displayName = 'Container';

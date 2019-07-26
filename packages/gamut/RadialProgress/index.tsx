@@ -1,12 +1,12 @@
 import React, { SVGProps, FunctionComponent } from 'react';
 
-export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
+export type RadialProgressProps = SVGProps<SVGSVGElement> & {
   size?: number;
   duration?: number;
   value?: number | number[];
   strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
-}
+};
 
 const defaultProps: RadialProgressProps = {
   strokeLinecap: 'round',

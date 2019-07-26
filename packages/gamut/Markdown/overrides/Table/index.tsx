@@ -1,9 +1,9 @@
 import React, { HTMLAttributes } from 'react';
 import s from './styles.scss';
 
-export interface TableProps extends HTMLAttributes<HTMLTableElement> {
+export type TableProps = HTMLAttributes<HTMLTableElement> & {
   maxHeight?: number | string;
-}
+};
 
 const Table: React.FC<TableProps> = ({ maxHeight, ...props }) => {
   return (
