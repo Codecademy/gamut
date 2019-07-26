@@ -23,7 +23,7 @@ const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
 
   return (
     <textarea
-      {...rest as HTMLAttributes<HTMLTextAreaElement>}
+      {...(rest as HTMLAttributes<HTMLTextAreaElement>)}
       id={htmlFor}
       className={classNames}
     />
