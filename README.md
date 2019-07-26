@@ -12,7 +12,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
 
-[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/workspaces/gamut-icons/README.md)
+[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
 [`gamut-storybook`: A component development sandbox for Gamut components](/workspaces/gamut-storybook/README.md)
 
