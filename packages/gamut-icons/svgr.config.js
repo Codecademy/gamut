@@ -12,6 +12,7 @@ module.exports = {
   },
   replaceAttrValues: {
     '#000': '{color || "currentColor"}',
+    '#111': '{color || "currentColor"}',
     '#444': '{color || "currentColor"}',
   },
   template,
