@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "icons/index.js",
   "module": "icons/index.js",
@@ -18,7 +18,7 @@
     "build:ts": "tsc",
     "rename-icons": "find ./tmp/ts -depth -name \"*.tsx\" -exec sh -c 'mv \"$1\" \"${1%.tsx}Icon.tsx\"' _ {} \\;",
     "rename-index": "find ./tmp/ts -depth -name \"*.js\" -exec sh -c 'mv \"$1\" \"${1%.js}.ts\"' _ {} \\;",
-    "clean-index": "yarn rename-index; replace-in-file '/\\.tsx/g' '' tmp/**/index.ts tmp/**/*/index.ts --isRegex --verbose" ,
+    "clean-index": "yarn rename-index; replace-in-file '/\\.tsx/g' '' tmp/**/index.ts tmp/**/*/index.ts --isRegex --verbose",
     "build": "yarn clean && yarn build:icons && yarn rename-icons && yarn build:index && yarn clean-index && yarn build:ts"
   },
   "repository": {

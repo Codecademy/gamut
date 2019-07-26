@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.15.5...@codecademy/gamut-storybook@2.16.0) (2019-07-26)
+
+
+### Features
+
+* New Gamut Icons Package ([#402](https://github.com/RyzacInc/client-modules/issues/402)) ([6e0fcfc](https://github.com/RyzacInc/client-modules/commit/6e0fcfc))
+
+
+
+
+
 ## [2.15.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.15.4...@codecademy/gamut-storybook@2.15.5) (2019-07-26)
 
 
