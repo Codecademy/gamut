@@ -14,7 +14,7 @@ const RadioGroup = ({
   name,
   ...rest
 }: RadioGroupProps) => (
-  <div {...rest as HTMLAttributes<HTMLDivElement>}>
+  <div {...(rest as HTMLAttributes<HTMLDivElement>)}>
     {React.Children.map(children, (child, index) =>
       cloneElement(child, {
         onChange: onChange,
