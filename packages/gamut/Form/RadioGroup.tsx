@@ -2,7 +2,7 @@ import React, { cloneElement, HTMLAttributes } from 'react';
 
 export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
   children: any;
-  htmlForPrefix: string;
+  htmlForPrefix?: string;
   name?: string;
   selected?: string;
 };

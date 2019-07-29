@@ -1,4 +1,4 @@
-import React, { PureComponent, ReactNode } from 'react';
+import React, { PureComponent, ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/index.scss';
 
@@ -28,7 +28,7 @@ import s from './styles/index.scss';
 
 const ICON_SIZE = 16;
 
-export interface IkonaIconProps {
+export interface IkonaIconProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode | ReactNode[];
   className?: string;
   name: string;
