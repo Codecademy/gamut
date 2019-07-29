@@ -1,7 +1,7 @@
 import React, { ReactElement, FunctionComponent, ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/index.scss';
 import Tab from '../Tab';
+import s from './styles.scss';
 
 export type TabListProps = {
   activeTabIndex?: number;
@@ -30,7 +30,7 @@ const TabList: FunctionComponent<TabListProps> = ({
 }) => {
   const classes = cx(s.tabList, className, { [s.center]: center });
   return (
-    <ul className={classes} style={{ maxWidth }}>
+    <div className={classes} role="tablist" style={{ maxWidth }}>
       {React.Children.toArray(children)
         .filter((c: ReactElement) => c && c.type === Tab)
         .map((tab: ReactElement, index) => {
@@ -43,7 +43,7 @@ const TabList: FunctionComponent<TabListProps> = ({
             key: baseId,
           });
         })}
-    </ul>
+    </div>
   );
 };
 
