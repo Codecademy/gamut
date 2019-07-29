@@ -1,13 +1,7 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
-import s from './styles/index.scss';
-
-const defaultProps = {
-  id: '',
-  tabIndex: 0,
-  onChange: () => {},
-};
+import s from './styles.scss';
 
 export type TabProps = {
   active?: boolean;
@@ -27,15 +21,15 @@ const Tab: FunctionComponent<TabProps> = ({
   className,
   disabled,
   id,
-  onChange,
-  tabIndex,
+  onChange = () => {},
+  tabIndex = 0,
 }: TabProps) => {
   const tabLinkClasses = cx(s.tab, {
     [s.active]: active,
     [activeClassName]: active && activeClassName !== undefined,
   });
   return (
-    <li className={cx(s.tabListItem, className)}>
+    <div className={cx(s.tabListItem, className)} role="tab">
       <a
         href={`${id}-panel`}
         id={id}
@@ -64,10 +58,8 @@ const Tab: FunctionComponent<TabProps> = ({
       >
         {children}
       </a>
-    </li>
+    </div>
   );
 };
-
-Tab.defaultProps = defaultProps;
 
 export default Tab;
