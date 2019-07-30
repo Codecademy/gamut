@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.26.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.17...@codecademy/gamut@1.26.0) (2019-07-30)
+
+
+### Features
+
+* **ToolTip:** add optional 'tipClassName' override prop ([329772d](https://github.com/RyzacInc/client-modules/commit/329772d))
+
+
+
+
+
 ## [1.25.17](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.16...@codecademy/gamut@1.25.17) (2019-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut
