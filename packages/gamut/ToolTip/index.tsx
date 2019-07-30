@@ -19,6 +19,8 @@ class ToolTip extends Component<ToolTipProps> {
   render() {
     const { children, target, position, id, tipClassName } = this.props;
 
+    const positionClass = tipClassName || s[position];
+
     return (
       <div className={s.toolTipWrapper}>
         <button
@@ -29,7 +31,7 @@ class ToolTip extends Component<ToolTipProps> {
           {target}
         </button>
         <CardShell
-          className={cx(s.toolTipContainer, s[position], tipClassName)}
+          className={cx(s.toolTipContainer, positionClass)}
           role="tooltip"
           id={id}
         >
