@@ -7,6 +7,7 @@ type ToolTipProps = {
   target?: ReactNode;
   children?: ReactNode;
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+  tipClassName?: string;
   id: string;
 };
 
@@ -16,7 +17,7 @@ class ToolTip extends Component<ToolTipProps> {
   };
 
   render() {
-    const { children, target, position, id } = this.props;
+    const { children, target, position, id, tipClassName } = this.props;
 
     return (
       <div className={s.toolTipWrapper}>
@@ -28,7 +29,7 @@ class ToolTip extends Component<ToolTipProps> {
           {target}
         </button>
         <CardShell
-          className={cx(s.toolTipContainer, s[position])}
+          className={cx(s.toolTipContainer, s[position], tipClassName)}
           role="tooltip"
           id={id}
         >
