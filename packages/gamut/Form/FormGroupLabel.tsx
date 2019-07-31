@@ -7,7 +7,7 @@ export type FormGroupLabelProps = FormGroupLabelPropsWithFor &
 
 export type FormGroupLabelPropsWithFor = HTMLAttributes<HTMLLabelElement> & {
   className?: string;
-  htmlFor: string;
+  htmlFor?: string;
 };
 
 export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
