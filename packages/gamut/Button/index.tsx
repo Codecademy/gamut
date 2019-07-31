@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ButtonBase from '../ButtonBase';
@@ -32,11 +32,10 @@ const propTypes = {
   onClick: PropTypes.func,
 };
 
-export type ButtonProps = {
+export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   block?: boolean;
   caps?: boolean;
-  children: ReactNode | ReactNode[];
-  className?: string;
+  children: ReactNode;
   disabled?: boolean;
   fitText?: boolean;
   flat?: boolean;
@@ -44,7 +43,6 @@ export type ButtonProps = {
   href?: string;
   id?: string;
   link?: boolean;
-  onClick?: (event: React.MouseEvent) => void;
   outline?: boolean;
   rel?: string;
   round?: boolean;
