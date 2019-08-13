@@ -35,7 +35,7 @@ references:
     run:
       name: Skip build from automated commit
       command: |
-        echo "Build started due to commit by $CIRCLE_USERNAME"
+        echo "Build started due to commit by ${CIRCLE_USERNAME}"
         if [ $CIRCLE_USERNAME = $GIT_USERNAME ] ; then circleci step halt ; fi
 
 jobs:
