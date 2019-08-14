@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "yarn storybook",
-    "storybook": "start-storybook -p 6006 -c .storybook --ci",
-    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../docs/storybook"
+    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
+    "build-storybook": "NODE_ENV=production build-storybook -c --quiet .storybook -o ../../docs/storybook"
   },
   "repository": {
     "type": "git",
