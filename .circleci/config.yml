@@ -92,6 +92,9 @@ jobs:
     steps:
       - *restore_repo
       - run:
+          name: Run any builds needed for tests
+          command: yarn test:build
+      - run:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
