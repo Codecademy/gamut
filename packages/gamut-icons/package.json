@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "icons/index.js",
   "module": "icons/index.js",
