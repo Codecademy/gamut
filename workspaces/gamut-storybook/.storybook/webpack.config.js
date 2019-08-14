@@ -42,11 +42,21 @@ module.exports = ({ config, mode }) => {
   delete config.optimization;
 
   // Remove default storybook babel-loader
-  const babelIndex = config.module.rules.findIndex(r => r.test.test('test.js'));
+  const babelIndex = config.module.rules.findIndex(
+    r => r && r.test.test('test.js')
+  );
   if (babelIndex > -1) {
     config.module.rules[babelIndex] = null;
-    config.module.rules = config.module.rules.filter(Boolean);
   }
+  // remove default storybook css loader
+  const cssIndex = config.module.rules.findIndex(
+    r => r && r.test.test('test.css')
+  );
+  if (cssIndex > -1) {
+    config.module.rules[cssIndex] = null;
+  }
+
+  config.module.rules = config.module.rules.filter(Boolean);
 
   return merge.smart(defaultConfig, config);
 };
