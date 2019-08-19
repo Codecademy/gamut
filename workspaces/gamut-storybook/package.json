@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-storybook",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "2.16.6",
+  "version": "2.16.7",
   "author": "Jake Hiller <jake@codecademy.com>",
   "private": true,
   "engines": {
