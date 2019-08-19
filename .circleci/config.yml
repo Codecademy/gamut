@@ -109,6 +109,12 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
+          name: lerna version
+          command: yarn lerna version --include-merged-tags --conventional-commits --yes --github-release
+      - run:
+          name: lerna publish
+          command: yarn lerna publish from-git --yes
+      - run:
           name: build storybook
           command: yarn build-storybook
       - run:
@@ -119,12 +125,6 @@ jobs:
               git commit -am "chore: build storybook"
             fi
       - run:
-          name: lerna version
-          command: yarn lerna version --include-merged-tags --conventional-commits --yes --github-release
-      - run:
-          name: lerna publish
-          command: yarn lerna publish from-git --yes
-      - run:
           name: update lockfile
           command: |
             npx yarn@1.15.2 --production=false
@@ -133,8 +133,6 @@ jobs:
               git commit -am "chore: updated yarn.lock"
               git push
             fi
-
-
 
   publish_alpha:
     <<: *default_env
