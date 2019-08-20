@@ -20,7 +20,7 @@
   "dependencies": {
     "@babel/cli": "7.4.3",
     "@babel/core": "7.5.4",
-    "@babel/polyfill": "7.4.3",
+    "@babel/polyfill": "7.4.4",
     "@babel/register": "7.4.0",
     "@codecademy/gamut": "^1.26.2",
     "@codecademy/gamut-icons": "^1.1.1",
