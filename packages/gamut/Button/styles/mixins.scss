@@ -40,18 +40,25 @@
 }
 
 @mixin button-outline-variant($color) {
+  $active-background: mix($color-black, $color, $btn-state-modifier);
   color: $color;
   background-color: transparent;
   border: 1px solid $color;
 
+  &:focus,
   &:hover {
-    background-color: fade-out($color, $btn-outline-hover-state-modifier);
+    background-color: $color;
     box-shadow: none;
+    color: white;
+
+    &:active {
+      background-color: $active-background;
+      box-shadow: none;
+    }
   }
 
-  &:active {
-    background-color: fade-out($color, $btn-outline-active-state-modifier);
-    box-shadow: none;
+  &:hover {
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
   }
 
   &:focus {
