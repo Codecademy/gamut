@@ -1,14 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React, { TextareaHTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/TextArea.scss';
 
-export type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
+export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
   error?: boolean;
   htmlFor?: string;
   name?: string;
   required?: boolean;
-  rows?: number | string;
   value?: string;
 };
 
@@ -23,7 +22,7 @@ const TextArea = ({ error, htmlFor, className, ...rest }: TextAreaProps) => {
 
   return (
     <textarea
-      {...(rest as HTMLAttributes<HTMLTextAreaElement>)}
+      {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
       id={htmlFor}
       className={classNames}
     />
