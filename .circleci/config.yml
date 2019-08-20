@@ -38,6 +38,11 @@ references:
         echo "Build started due to commit by ${CIRCLE_USERNAME}, blocking builds started by ${GITHUB_BOT_USERNAME}"
         if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci step halt ; fi
 
+  add_github_ssh_key: &add_github_ssh_key
+      add_ssh_keys:
+        fingerprints:
+          - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
+
 jobs:
   checkout_code:
     <<: *default_env
@@ -103,6 +108,7 @@ jobs:
     <<: *default_env
     steps:
       - *skip_on_automated_commit
+      - *add_github_ssh_key
       - *set_git_user
       - *restore_repo
       - checkout
@@ -137,6 +143,7 @@ jobs:
     <<: *default_env
     steps:
       - *skip_on_automated_commit
+      - *add_github_ssh_key
       - *set_git_user
       - *restore_repo
       - checkout
