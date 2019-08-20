@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyzacInc/client-modules/packages/eslint-config"
+    "url": "git+https://github.com/codecademy-engineering/client-modules/packages/eslint-config"
   },
   "scripts": {
     "verify": "eslint --config ./index.js --print-config ./index.js"
@@ -13,9 +13,9 @@
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RyzacInc/client-modules/packages/eslint-config"
+    "url": "https://github.com/codecademy-engineering/client-modules/packages/eslint-config"
   },
-  "homepage": "https://github.com/RyzacInc/client-modules/client-modules/packages/eslint-config",
+  "homepage": "https://github.com/codecademy-engineering/client-modules/client-modules/packages/eslint-config",
   "peerDependencies": {
     "eslint": "^5.15.1"
   },
