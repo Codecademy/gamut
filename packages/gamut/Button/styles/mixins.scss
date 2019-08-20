@@ -27,7 +27,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px $background;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
   }
 
   &:disabled {
@@ -55,7 +55,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px $color;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
@@ -75,7 +75,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px $color;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
