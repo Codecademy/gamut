@@ -9,7 +9,7 @@ storiesOf('About', module).add(
       <h1> Welcome to Gamut </h1>
       <p>
         This storybook represents components found in the{' '}
-        <a href="https://github.com/RyzacInc/client-modules">
+        <a href="https://github.com/codecademy-engineering/client-modules">
           Codecademy Client Modules Repo
         </a>
         .
@@ -22,7 +22,7 @@ storiesOf('About', module).add(
           color variables
         </a>
         . To instead view the core styles for Codecademy, visit the{' '}
-        <a href="https://github.com/RyzacInc/client-modules/tree/master/packages/gamut-styles">
+        <a href="https://github.com/codecademy-engineering/client-modules/tree/master/packages/gamut-styles">
           Gamut Styles sub-repo
         </a>
         .

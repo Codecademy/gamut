@@ -4,7 +4,7 @@
   "description": "Helpers for writing Enzyme tests",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
-  "repository": "https://github.com/RyzacInc/client-modules.git",
+  "repository": "https://github.com/codecademy-engineering/client-modules.git",
   "author": "codecademy",
   "license": "MIT",
   "scripts": {
