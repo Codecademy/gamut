@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [3.15.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.1...@codecademy/webpack-config@3.15.2) (2019-07-12)
+## [3.15.4](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.3...@codecademy/webpack-config@3.15.4) (2019-08-20)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
@@ -11,7 +11,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [3.15.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.0...@codecademy/webpack-config@3.15.1) (2019-07-12)
+## [3.15.3](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.2...@codecademy/webpack-config@3.15.3) (2019-08-15)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
@@ -19,29 +19,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [3.15.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.2...@codecademy/webpack-config@3.15.0) (2019-07-10)
-
-
-### Features
-
-* Switch to terser plugin from uglify ([#382](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/382)) ([c347d2f](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/c347d2f))
-
-
-
-
-
-## [3.14.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.1...@codecademy/webpack-config@3.14.2) (2019-06-13)
-
-
-### Bug Fixes
-
-* postcss plugins syntax ([#373](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/373)) ([2d5f0e0](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/2d5f0e0))
-
-
-
-
-
-## [3.14.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.0...@codecademy/webpack-config@3.14.1) (2019-06-13)
+## [3.15.2](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.1...@codecademy/webpack-config@3.15.2) (2019-07-12)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
@@ -49,51 +27,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [3.14.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.2...@codecademy/webpack-config@3.14.0) (2019-05-06)
-
-
-### Features
-
-* use correct parser for eslint files by default ([#336](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/336)) ([38ef491](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/38ef491))
-
-
-
-
-
-## [3.13.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.1...@codecademy/webpack-config@3.13.2) (2019-04-26)
-
-
-### Bug Fixes
-
-* **Markdown:** catch invalid url errors ([#315](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/315)) ([792056c](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/792056c))
-
-
-
-
-
-## [3.13.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.0...@codecademy/webpack-config@3.13.1) (2019-04-22)
-
-
-### Bug Fixes
-
-* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/311)) ([064e950](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/064e950))
-
-
-
-
-
-# [3.13.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.6...@codecademy/webpack-config@3.13.0) (2019-04-11)
-
-
-### Features
-
-* **webpack-config:** add case sensitive paths plugin in dev mode ([#302](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/302)) ([66c0632](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/66c0632))
-
-
-
-
-
-## [3.12.6](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.5...@codecademy/webpack-config@3.12.6) (2019-04-10)
+## [3.15.1](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.0...@codecademy/webpack-config@3.15.1) (2019-07-12)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
@@ -101,7 +35,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [3.12.5](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.4...@codecademy/webpack-config@3.12.5) (2019-04-09)
+# [3.15.0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.2...@codecademy/webpack-config@3.15.0) (2019-07-10)
+
+
+### Features
+
+* Switch to terser plugin from uglify ([#382](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/382)) ([c347d2f](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/c347d2f))
+
+
+
+
+
+## [3.14.2](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.1...@codecademy/webpack-config@3.14.2) (2019-06-13)
+
+
+### Bug Fixes
+
+* postcss plugins syntax ([#373](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/373)) ([2d5f0e0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/2d5f0e0))
+
+
+
+
+
+## [3.14.1](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.14.0...@codecademy/webpack-config@3.14.1) (2019-06-13)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
@@ -109,111 +65,171 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [3.12.4](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.3...@codecademy/webpack-config@3.12.4) (2019-04-08)
-
-
-### Bug Fixes
-
-* **deps:** update dependency optimize-css-assets-webpack-plugin to v5 ([#259](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/259)) ([13b185c](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/13b185c))
-
-
-
-
-
-## [3.12.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.2...@codecademy/webpack-config@3.12.3) (2019-04-08)
-
-
-### Bug Fixes
-
-* **deps:** update dependency postcss-flexbugs-fixes to v4 ([#260](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/260)) ([41b6201](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/41b6201))
-
-
-
-
-
-## [3.12.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.1...@codecademy/webpack-config@3.12.2) (2019-04-06)
-
-
-### Bug Fixes
-
-* storybook cleanup, add defaults opt-out to webpack-config ([#290](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/290)) ([16b2fb0](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/16b2fb0))
-
-
-
-
-
-## [3.12.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.0...@codecademy/webpack-config@3.12.1) (2019-04-03)
-
-
-### Bug Fixes
-
-* **deps:** update babel monorepo to v7.4.3 ([#281](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/281)) ([412a36a](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/412a36a))
-
-
-
-
-
-# [3.12.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.4...@codecademy/webpack-config@3.12.0) (2019-04-03)
+# [3.14.0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.2...@codecademy/webpack-config@3.14.0) (2019-05-06)
 
 
 ### Features
 
-* webpack-config, add support for ts/tsx extensions in babel, other cleanup  ([#282](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/282)) ([d213899](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/d213899))
+* use correct parser for eslint files by default ([#336](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/336)) ([38ef491](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/38ef491))
 
 
 
 
 
-## [3.11.4](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.3...@codecademy/webpack-config@3.11.4) (2019-03-26)
-
-
-### Bug Fixes
-
-* **deps:** update dependency babel-loader to v8.0.5 ([#256](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/256)) ([b774959](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/b774959))
-
-
-
-
-
-## [3.11.3](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.2...@codecademy/webpack-config@3.11.3) (2019-03-21)
+## [3.13.2](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.1...@codecademy/webpack-config@3.13.2) (2019-04-26)
 
 
 ### Bug Fixes
 
-* **deps:** update babel monorepo to v7.4.0 ([#244](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/244)) ([1b4932e](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/1b4932e))
+* **Markdown:** catch invalid url errors ([#315](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/315)) ([792056c](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/792056c))
 
 
 
 
 
-## [3.11.2](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.1...@codecademy/webpack-config@3.11.2) (2019-03-21)
-
-
-### Bug Fixes
-
-* **deps:** update dependency css-loader to v2.1.1 ([#245](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/245)) ([a033a4b](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/a033a4b))
-
-
-
-
-
-## [3.11.1](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.0...@codecademy/webpack-config@3.11.1) (2019-03-19)
+## [3.13.1](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.13.0...@codecademy/webpack-config@3.13.1) (2019-04-22)
 
 
 ### Bug Fixes
 
-* **deps:** pin dependencies ([#231](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/231)) ([c185ac8](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/c185ac8))
+* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/311)) ([064e950](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/064e950))
 
 
 
 
 
-# [3.11.0](http://github.com/RyzacInc/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.10.2...@codecademy/webpack-config@3.11.0) (2019-03-13)
+# [3.13.0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.6...@codecademy/webpack-config@3.13.0) (2019-04-11)
 
 
 ### Features
 
-* Add shared config modules for eslint & prettier ([#224](http://github.com/RyzacInc/client-modules/packages/webpack-config/issues/224)) ([7fbeac6](http://github.com/RyzacInc/client-modules/packages/webpack-config/commit/7fbeac6))
+* **webpack-config:** add case sensitive paths plugin in dev mode ([#302](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/302)) ([66c0632](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/66c0632))
+
+
+
+
+
+## [3.12.6](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.5...@codecademy/webpack-config@3.12.6) (2019-04-10)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
+## [3.12.5](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.4...@codecademy/webpack-config@3.12.5) (2019-04-09)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
+## [3.12.4](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.3...@codecademy/webpack-config@3.12.4) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency optimize-css-assets-webpack-plugin to v5 ([#259](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/259)) ([13b185c](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/13b185c))
+
+
+
+
+
+## [3.12.3](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.2...@codecademy/webpack-config@3.12.3) (2019-04-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency postcss-flexbugs-fixes to v4 ([#260](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/260)) ([41b6201](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/41b6201))
+
+
+
+
+
+## [3.12.2](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.1...@codecademy/webpack-config@3.12.2) (2019-04-06)
+
+
+### Bug Fixes
+
+* storybook cleanup, add defaults opt-out to webpack-config ([#290](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/290)) ([16b2fb0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/16b2fb0))
+
+
+
+
+
+## [3.12.1](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.12.0...@codecademy/webpack-config@3.12.1) (2019-04-03)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.4.3 ([#281](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/281)) ([412a36a](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/412a36a))
+
+
+
+
+
+# [3.12.0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.4...@codecademy/webpack-config@3.12.0) (2019-04-03)
+
+
+### Features
+
+* webpack-config, add support for ts/tsx extensions in babel, other cleanup  ([#282](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/282)) ([d213899](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/d213899))
+
+
+
+
+
+## [3.11.4](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.3...@codecademy/webpack-config@3.11.4) (2019-03-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency babel-loader to v8.0.5 ([#256](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/256)) ([b774959](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/b774959))
+
+
+
+
+
+## [3.11.3](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.2...@codecademy/webpack-config@3.11.3) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.4.0 ([#244](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/244)) ([1b4932e](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/1b4932e))
+
+
+
+
+
+## [3.11.2](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.1...@codecademy/webpack-config@3.11.2) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency css-loader to v2.1.1 ([#245](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/245)) ([a033a4b](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/a033a4b))
+
+
+
+
+
+## [3.11.1](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.11.0...@codecademy/webpack-config@3.11.1) (2019-03-19)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([#231](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/231)) ([c185ac8](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/c185ac8))
+
+
+
+
+
+# [3.11.0](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.10.2...@codecademy/webpack-config@3.11.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/issues/224)) ([7fbeac6](http://github.com/codecademy-engineering/client-modules/packages/webpack-config/commit/7fbeac6))
 
 
 

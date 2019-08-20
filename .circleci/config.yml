@@ -5,11 +5,11 @@ references:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
     environment:
-      GIT_USERNAME: codecademy-dev
+      GITHUB_BOT_USERNAME: codecademy-circleci
 
-  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v2-repo-
+  repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v3-repo-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v3-repo-
 
   restore_repo: &restore_repo
     restore_cache:
@@ -23,7 +23,7 @@ references:
       name: Set git user
       command: |
         git config --global user.email "dev@codecademy.com"
-        git config --global user.name "circleci"
+        git config --global user.name "codecademy-circleci"
         git config --global push.default current
 
   set_npm_token: &set_npm_token
@@ -35,8 +35,13 @@ references:
     run:
       name: Skip build from automated commit
       command: |
-        echo "Build started due to commit by $CIRCLE_USERNAME"
-        if [ $CIRCLE_USERNAME = $GIT_USERNAME ] ; then circleci step halt ; fi
+        echo "Build started due to commit by ${CIRCLE_USERNAME}, blocking builds started by ${GITHUB_BOT_USERNAME}"
+        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci step halt ; fi
+
+  add_github_ssh_key: &add_github_ssh_key
+      add_ssh_keys:
+        fingerprints:
+          - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
 
 jobs:
   checkout_code:
@@ -91,6 +96,9 @@ jobs:
     steps:
       - *restore_repo
       - run:
+          name: Run any builds needed for tests
+          command: yarn test:build
+      - run:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
@@ -100,10 +108,17 @@ jobs:
     <<: *default_env
     steps:
       - *skip_on_automated_commit
+      - *add_github_ssh_key
       - *set_git_user
       - *restore_repo
       - checkout
       - *set_npm_token
+      - run:
+          name: lerna version
+          command: yarn lerna version --include-merged-tags --conventional-commits --yes --create-release=github
+      - run:
+          name: lerna publish
+          command: yarn lerna publish from-git --yes
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -115,12 +130,6 @@ jobs:
               git commit -am "chore: build storybook"
             fi
       - run:
-          name: lerna version
-          command: yarn lerna version --include-merged-tags --conventional-commits --yes --github-release
-      - run:
-          name: lerna publish
-          command: yarn lerna publish from-git --yes
-      - run:
           name: update lockfile
           command: |
             npx yarn@1.15.2 --production=false
@@ -130,12 +139,11 @@ jobs:
               git push
             fi
 
-
-
   publish_alpha:
     <<: *default_env
     steps:
       - *skip_on_automated_commit
+      - *add_github_ssh_key
       - *set_git_user
       - *restore_repo
       - checkout
@@ -151,8 +159,7 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - checkout_code:
-          context: org-global
+      - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -169,14 +176,12 @@ workflows:
           requires:
             - checkout_code
       - publish:
-          context: org-global
           requires:
             - checkout_code
           filters:
             branches:
               only: master
       - publish_alpha:
-          context: org-global
           filters:
             branches:
               ignore: master

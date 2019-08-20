@@ -1,10 +1,10 @@
 {
   "name": "@codecademy/enzyme-helpers",
-  "version": "1.1.1",
+  "version": "1.1.4",
   "description": "Helpers for writing Enzyme tests",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
-  "repository": "https://github.com/RyzacInc/client-modules.git",
+  "repository": "https://github.com/codecademy-engineering/client-modules.git",
   "author": "codecademy",
   "license": "MIT",
   "scripts": {
@@ -19,8 +19,8 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "jest-enzyme": "7.0.2",
-    "rollup": "1.9.0",
+    "jest-enzyme": "7.1.0",
+    "rollup": "1.19.4",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-node-resolve": "4.2.1"
   }

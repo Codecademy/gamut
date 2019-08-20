@@ -3,18 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [1.26.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.17...@codecademy/gamut@1.26.0) (2019-07-30)
-
-
-### Features
-
-* **ToolTip:** add optional 'tipClassName' override prop ([329772d](https://github.com/RyzacInc/client-modules/commit/329772d))
-
-
-
-
-
-## [1.25.17](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.16...@codecademy/gamut@1.25.17) (2019-07-29)
+## [1.26.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.26.2...@codecademy/gamut@1.26.3) (2019-08-20)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -22,98 +11,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.25.16](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.15...@codecademy/gamut@1.25.16) (2019-07-26)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.15](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.14...@codecademy/gamut@1.25.15) (2019-07-25)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.14](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.13...@codecademy/gamut@1.25.14) (2019-07-22)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.13](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.12...@codecademy/gamut@1.25.13) (2019-07-16)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.11...@codecademy/gamut@1.25.12) (2019-07-10)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.10...@codecademy/gamut@1.25.11) (2019-07-02)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.9...@codecademy/gamut@1.25.10) (2019-06-27)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.8...@codecademy/gamut@1.25.9) (2019-06-26)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.7...@codecademy/gamut@1.25.8) (2019-06-24)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.6...@codecademy/gamut@1.25.7) (2019-06-14)
+## [1.26.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.26.1...@codecademy/gamut@1.26.2) (2019-08-20)
 
 
 ### Bug Fixes
 
-* update tabs colors ([#374](https://github.com/RyzacInc/client-modules/issues/374)) ([a4e1b34](https://github.com/RyzacInc/client-modules/commit/a4e1b34))
+* allow all textarea React props on TextArea form component ([4e24308](https://github.com/codecademy-engineering/client-modules/commit/4e24308))
 
 
 
 
 
-## [1.25.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.5...@codecademy/gamut@1.25.6) (2019-06-13)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.4...@codecademy/gamut@1.25.5) (2019-06-05)
+## [1.26.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.26.0...@codecademy/gamut@1.26.1) (2019-07-31)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -121,58 +30,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.25.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.3...@codecademy/gamut@1.25.4) (2019-06-05)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.2...@codecademy/gamut@1.25.3) (2019-05-23)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.1...@codecademy/gamut@1.25.2) (2019-05-15)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.25.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.25.0...@codecademy/gamut@1.25.1) (2019-05-15)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-# [1.25.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.3...@codecademy/gamut@1.25.0) (2019-05-15)
+# [1.26.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.17...@codecademy/gamut@1.26.0) (2019-07-30)
 
 
 ### Features
 
-* **Card:** Add card components ([a907a41](https://github.com/RyzacInc/client-modules/commit/a907a41))
+* **ToolTip:** add optional 'tipClassName' override prop ([329772d](https://github.com/codecademy-engineering/client-modules/commit/329772d))
 
 
 
 
 
-## [1.24.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.2...@codecademy/gamut@1.24.3) (2019-05-14)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.24.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.1...@codecademy/gamut@1.24.2) (2019-05-13)
+## [1.25.17](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.16...@codecademy/gamut@1.25.17) (2019-07-29)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -180,7 +49,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.24.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.24.0...@codecademy/gamut@1.24.1) (2019-05-06)
+## [1.25.16](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.15...@codecademy/gamut@1.25.16) (2019-07-26)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -188,48 +57,82 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.24.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.4...@codecademy/gamut@1.24.0) (2019-05-06)
+## [1.25.15](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.14...@codecademy/gamut@1.25.15) (2019-07-25)
 
-
-### Features
-
-* use correct parser for eslint files by default ([#336](https://github.com/RyzacInc/client-modules/issues/336)) ([38ef491](https://github.com/RyzacInc/client-modules/commit/38ef491))
+**Note:** Version bump only for package @codecademy/gamut
 
 
 
 
 
-## [1.23.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.3...@codecademy/gamut@1.23.4) (2019-04-30)
+## [1.25.14](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.13...@codecademy/gamut@1.25.14) (2019-07-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.13](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.12...@codecademy/gamut@1.25.13) (2019-07-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.12](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.11...@codecademy/gamut@1.25.12) (2019-07-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.11](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.10...@codecademy/gamut@1.25.11) (2019-07-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.10](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.9...@codecademy/gamut@1.25.10) (2019-06-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.9](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.8...@codecademy/gamut@1.25.9) (2019-06-26)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.8](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.7...@codecademy/gamut@1.25.8) (2019-06-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.7](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.6...@codecademy/gamut@1.25.7) (2019-06-14)
 
 
 ### Bug Fixes
 
-* pass onClick through to base button element ([b16ed8f](https://github.com/RyzacInc/client-modules/commit/b16ed8f))
+* update tabs colors ([#374](https://github.com/codecademy-engineering/client-modules/issues/374)) ([a4e1b34](https://github.com/codecademy-engineering/client-modules/commit/a4e1b34))
 
 
 
 
 
-## [1.23.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.2...@codecademy/gamut@1.23.3) (2019-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.23.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.1...@codecademy/gamut@1.23.2) (2019-04-26)
-
-
-### Bug Fixes
-
-* **Markdown:** catch invalid url errors ([#315](https://github.com/RyzacInc/client-modules/issues/315)) ([792056c](https://github.com/RyzacInc/client-modules/commit/792056c))
-
-
-
-
-
-## [1.23.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.23.0...@codecademy/gamut@1.23.1) (2019-04-24)
+## [1.25.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.5...@codecademy/gamut@1.25.6) (2019-06-13)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -237,26 +140,58 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.23.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.4...@codecademy/gamut@1.23.0) (2019-04-12)
+## [1.25.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.4...@codecademy/gamut@1.25.5) (2019-06-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.3...@codecademy/gamut@1.25.4) (2019-06-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.2...@codecademy/gamut@1.25.3) (2019-05-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.1...@codecademy/gamut@1.25.2) (2019-05-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.25.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.25.0...@codecademy/gamut@1.25.1) (2019-05-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.25.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.24.3...@codecademy/gamut@1.25.0) (2019-05-15)
 
 
 ### Features
 
-* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cb))
+* **Card:** Add card components ([a907a41](https://github.com/codecademy-engineering/client-modules/commit/a907a41))
 
 
 
 
 
-## [1.22.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.3...@codecademy/gamut@1.22.4) (2019-04-12)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.22.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.2...@codecademy/gamut@1.22.3) (2019-04-11)
+## [1.24.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.24.2...@codecademy/gamut@1.24.3) (2019-05-14)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -264,7 +199,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.22.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.1...@codecademy/gamut@1.22.2) (2019-04-11)
+## [1.24.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.24.1...@codecademy/gamut@1.24.2) (2019-05-13)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -272,7 +207,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.22.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.22.0...@codecademy/gamut@1.22.1) (2019-04-10)
+## [1.24.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.24.0...@codecademy/gamut@1.24.1) (2019-05-06)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -280,72 +215,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.7...@codecademy/gamut@1.22.0) (2019-04-04)
+# [1.24.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.23.4...@codecademy/gamut@1.24.0) (2019-05-06)
 
 
 ### Features
 
-* export all components ([#284](https://github.com/RyzacInc/client-modules/issues/284)) ([92bcf8e](https://github.com/RyzacInc/client-modules/commit/92bcf8e))
+* use correct parser for eslint files by default ([#336](https://github.com/codecademy-engineering/client-modules/issues/336)) ([38ef491](https://github.com/codecademy-engineering/client-modules/commit/38ef491))
 
 
 
 
 
-## [1.21.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.6...@codecademy/gamut@1.21.7) (2019-04-03)
-
-
-### Bug Fixes
-
-* updates loading icon ([6719276](https://github.com/RyzacInc/client-modules/commit/6719276))
-
-
-
-
-
-## [1.21.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.5...@codecademy/gamut@1.21.6) (2019-04-02)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.21.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.4...@codecademy/gamut@1.21.5) (2019-04-01)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.21.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.3...@codecademy/gamut@1.21.4) (2019-03-27)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.21.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.2...@codecademy/gamut@1.21.3) (2019-03-22)
+## [1.23.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.23.3...@codecademy/gamut@1.23.4) (2019-04-30)
 
 
 ### Bug Fixes
 
-* Fix notification styles ([f7674f8](https://github.com/RyzacInc/client-modules/commit/f7674f8))
+* pass onClick through to base button element ([b16ed8f](https://github.com/codecademy-engineering/client-modules/commit/b16ed8f))
 
 
 
 
 
-## [1.21.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.1...@codecademy/gamut@1.21.2) (2019-03-21)
-
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## [1.21.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.21.0...@codecademy/gamut@1.21.1) (2019-03-19)
+## [1.23.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.23.2...@codecademy/gamut@1.23.3) (2019-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -353,18 +245,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [1.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.2...@codecademy/gamut@1.21.0) (2019-03-18)
+## [1.23.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.23.1...@codecademy/gamut@1.23.2) (2019-04-26)
+
+
+### Bug Fixes
+
+* **Markdown:** catch invalid url errors ([#315](https://github.com/codecademy-engineering/client-modules/issues/315)) ([792056c](https://github.com/codecademy-engineering/client-modules/commit/792056c))
+
+
+
+
+
+## [1.23.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.23.0...@codecademy/gamut@1.23.1) (2019-04-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.23.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.22.4...@codecademy/gamut@1.23.0) (2019-04-12)
 
 
 ### Features
 
-* **component:** New notification menu component ([4918516](https://github.com/RyzacInc/client-modules/commit/4918516))
+* **Markdown:** add default table override component ([#307](https://github.com/codecademy-engineering/client-modules/issues/307)) ([22ef5cb](https://github.com/codecademy-engineering/client-modules/commit/22ef5cb))
 
 
 
 
 
-## [1.20.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.1...@codecademy/gamut@1.20.2) (2019-03-18)
+## [1.22.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.22.3...@codecademy/gamut@1.22.4) (2019-04-12)
 
 **Note:** Version bump only for package @codecademy/gamut
 
@@ -372,23 +283,139 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [1.20.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.20.0...@codecademy/gamut@1.20.1) (2019-03-14)
+## [1.22.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.22.2...@codecademy/gamut@1.22.3) (2019-04-11)
 
-
-### Bug Fixes
-
-* **Markdown:** Add smart dash support, fix &mdash; showing up in text. ([#226](https://github.com/RyzacInc/client-modules/issues/226)) ([8deeb79](https://github.com/RyzacInc/client-modules/commit/8deeb79))
+**Note:** Version bump only for package @codecademy/gamut
 
 
 
 
 
-# [1.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.19.0...@codecademy/gamut@1.20.0) (2019-03-13)
+## [1.22.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.22.1...@codecademy/gamut@1.22.2) (2019-04-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.22.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.22.0...@codecademy/gamut@1.22.1) (2019-04-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.22.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.7...@codecademy/gamut@1.22.0) (2019-04-04)
 
 
 ### Features
 
-* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac6))
+* export all components ([#284](https://github.com/codecademy-engineering/client-modules/issues/284)) ([92bcf8e](https://github.com/codecademy-engineering/client-modules/commit/92bcf8e))
+
+
+
+
+
+## [1.21.7](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.6...@codecademy/gamut@1.21.7) (2019-04-03)
+
+
+### Bug Fixes
+
+* updates loading icon ([6719276](https://github.com/codecademy-engineering/client-modules/commit/6719276))
+
+
+
+
+
+## [1.21.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.5...@codecademy/gamut@1.21.6) (2019-04-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.21.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.4...@codecademy/gamut@1.21.5) (2019-04-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.21.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.3...@codecademy/gamut@1.21.4) (2019-03-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.21.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.2...@codecademy/gamut@1.21.3) (2019-03-22)
+
+
+### Bug Fixes
+
+* Fix notification styles ([f7674f8](https://github.com/codecademy-engineering/client-modules/commit/f7674f8))
+
+
+
+
+
+## [1.21.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.1...@codecademy/gamut@1.21.2) (2019-03-21)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.21.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.21.0...@codecademy/gamut@1.21.1) (2019-03-19)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [1.21.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.20.2...@codecademy/gamut@1.21.0) (2019-03-18)
+
+
+### Features
+
+* **component:** New notification menu component ([4918516](https://github.com/codecademy-engineering/client-modules/commit/4918516))
+
+
+
+
+
+## [1.20.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.20.1...@codecademy/gamut@1.20.2) (2019-03-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.20.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.20.0...@codecademy/gamut@1.20.1) (2019-03-14)
+
+
+### Bug Fixes
+
+* **Markdown:** Add smart dash support, fix &mdash; showing up in text. ([#226](https://github.com/codecademy-engineering/client-modules/issues/226)) ([8deeb79](https://github.com/codecademy-engineering/client-modules/commit/8deeb79))
+
+
+
+
+
+# [1.20.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut@1.19.0...@codecademy/gamut@1.20.0) (2019-03-13)
+
+
+### Features
+
+* Add shared config modules for eslint & prettier ([#224](https://github.com/codecademy-engineering/client-modules/issues/224)) ([7fbeac6](https://github.com/codecademy-engineering/client-modules/commit/7fbeac6))
 
 
 
