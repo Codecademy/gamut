@@ -53,7 +53,7 @@
     "prop-types": "15.7.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "sass-loader": "7.1.0",
+    "sass-loader": "7.3.1",
     "style-loader": "0.23.1",
     "typescript": "*",
     "webpack": "4.29.6"
