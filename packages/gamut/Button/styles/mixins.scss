@@ -15,19 +15,26 @@
   background-color: $background;
   border-color: $border;
 
-  &:hover,
-  &:active {
-    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
-    text-decoration: none;
-    color: $color;
-  }
-
-  &:active {
-    background-color: $active-background;
+  &:hover {
+    box-shadow: 0 2px 4px $btn-box-shadow-color;
   }
 
   &:focus {
     box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
+  }
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: $color;
+
+    &:active {
+      box-shadow: 0 2px 4px $btn-box-shadow-color;
+    }
+  }
+
+  &:active {
+    background-color: $active-background;
   }
 
   &:disabled {
@@ -40,7 +47,8 @@
 }
 
 @mixin button-outline-variant($color) {
-  $active-background: mix($color-black, $color, $btn-state-modifier);
+  $active-contrast-base: text-contrast-color($color);
+  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
   color: $color;
   background-color: transparent;
   border: 1px solid $color;
@@ -49,7 +57,7 @@
   &:hover {
     background-color: $color;
     box-shadow: none;
-    color: white;
+    color: $active-contrast-base;
 
     &:active {
       background-color: $active-background;
