@@ -140,3 +140,24 @@
     }
   }
 }
+
+// Shamelessly copied from https://codepen.io/davidhalford/pen/wlDxL
+// Adds text color to an element based on what has more contrast with its background
+
+@function color-brightness($color) {
+  @return round(
+    (red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000
+  );
+}
+
+$white-brightness: color-brightness($color-white) / 2;
+
+@function text-contrast-color($background) {
+  $brightness: color-brightness($background);
+
+  @if abs($brightness) < $white-brightness {
+    @return #fff;
+  }
+
+  @return #000;
+}
