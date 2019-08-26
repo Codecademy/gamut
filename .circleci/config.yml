@@ -6,6 +6,7 @@ references:
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademy-circleci
+      NODE_OPTIONS: "--max_old_space_size=4096"
 
   repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
   repo_cache_key_2: &repo_cache_key_2 v3-repo-{{ .Branch }}
@@ -39,9 +40,9 @@ references:
         if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci step halt ; fi
 
   add_github_ssh_key: &add_github_ssh_key
-      add_ssh_keys:
-        fingerprints:
-          - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
+    add_ssh_keys:
+      fingerprints:
+        - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
 
 jobs:
   checkout_code:
