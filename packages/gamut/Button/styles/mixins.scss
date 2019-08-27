@@ -150,12 +150,12 @@
   );
 }
 
-$white-brightness: color-brightness($color-white) / 2;
+$brightness-threshold: color-brightness($color-white) / 2;
 
 @function text-contrast-color($background) {
   $brightness: color-brightness($background);
 
-  @if abs($brightness) < $white-brightness {
+  @if abs($brightness) < $brightness-threshold {
     @return #fff;
   }
 
