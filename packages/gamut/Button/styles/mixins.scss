@@ -5,7 +5,6 @@
 
 @mixin button-variant($color, $background, $border: transparent) {
   $active-background: mix($color-black, $background, $btn-state-modifier);
-  $active-color: mix($color-black, $color, $btn-color-modifier);
 
   @if $border == transparent {
     $active-border: transparent;
@@ -16,24 +15,29 @@
   background-color: $background;
   border-color: $border;
 
-  &:hover,
-  &:active {
-    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
-    text-decoration: none;
-    color: $color;
-  }
-
-  &:active {
-    color: $active-color;
-    background-color: $active-background;
+  &:hover {
+    box-shadow: 0 2px 4px $btn-box-shadow-color;
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px fade-out($background, 0.5);
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
+  }
+
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    color: $color;
+
+    &:active {
+      box-shadow: 0 2px 4px $btn-box-shadow-color;
+    }
+  }
+
+  &:active {
+    background-color: $active-background;
   }
 
   &:disabled {
-    color: $deprecated-gamut-grey-200;
     background-color: $btn-disabled-color;
 
     &:hover {
@@ -43,22 +47,30 @@
 }
 
 @mixin button-outline-variant($color) {
+  $active-contrast-base: text-contrast-color($color);
+  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
   color: $color;
   background-color: transparent;
   border: 1px solid $color;
 
+  &:focus,
   &:hover {
-    background-color: fade-out($color, $btn-outline-hover-state-modifier);
+    background-color: $color;
     box-shadow: none;
+    color: $active-contrast-base;
+
+    &:active {
+      background-color: $active-background;
+      box-shadow: none;
+    }
   }
 
-  &:active {
-    background-color: fade-out($color, $btn-outline-active-state-modifier);
-    box-shadow: none;
+  &:hover {
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px fade-out($color, 0.5);
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
@@ -72,16 +84,13 @@
   color: $color;
   background-color: transparent;
 
-  $active-color: darken($color, $btn-state-modifier);
-
   &:hover,
   &:active {
     box-shadow: none;
-    color: $active-color;
   }
 
   &:focus {
-    box-shadow: 0 0 0 3px fade-out($color, $btn-box-shadow-focus-modifier);
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
@@ -130,4 +139,25 @@
       color: $btn-disabled-color;
     }
   }
+}
+
+// Shamelessly copied from https://codepen.io/davidhalford/pen/wlDxL
+// Adds text color to an element based on what has more contrast with its background
+
+@function color-brightness($color) {
+  @return round(
+    (red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000
+  );
+}
+
+$brightness-threshold: color-brightness($color-white) / 2;
+
+@function text-contrast-color($background) {
+  $brightness: color-brightness($background);
+
+  @if abs($brightness) < $brightness-threshold {
+    @return #fff;
+  }
+
+  @return #000;
 }
