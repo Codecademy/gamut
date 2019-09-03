@@ -121,25 +121,7 @@ jobs:
           name: lerna publish
           command: yarn lerna publish from-git --yes
       - run:
-          name: update lockfile
-          command: |
-            npx yarn@1.15.2 --production=false
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: updated yarn.lock"
-              git push
-            fi
-
-  build_storybook:
-    <<: *default_env
-    steps:
-      - *skip_on_automated_commit
-      - *add_github_ssh_key
-      - *set_git_user
-      - *restore_repo
-      - checkout
-      - *set_npm_token
-      - run:
+          # Storybook build will fail if there were no changed packages, but we still want to build
           name: build packages
           command: yarn build-all
       - run:
@@ -151,6 +133,15 @@ jobs:
             if [ -n "$(git status --porcelain)" ]; then
               git add -A
               git commit -am "chore: build storybook"
+              git push
+            fi
+      - run:
+          name: update lockfile
+          command: |
+            npx yarn@1.15.2 --production=false
+            if [ -n "$(git status --porcelain)" ]; then
+              git add -A
+              git commit -am "chore: updated yarn.lock"
               git push
             fi
 
@@ -191,12 +182,6 @@ workflows:
           requires:
             - checkout_code
       - publish:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: master
-      - build_storybook:
           requires:
             - checkout_code
           filters:
