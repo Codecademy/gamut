@@ -9,7 +9,6 @@ import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
 
-console.log(classNames);
 const iconNames = Object.keys(classNames)
   .filter(cn => cn.match('ikona-'))
   .map(cn => cn.replace('ikona-', ''));

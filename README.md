@@ -4,13 +4,15 @@ _Shared node modules for codecademy.com & co_
 
 ---
 
-## [![CircleCI](https://circleci.com/gh/RyzacInc/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
+## [![CircleCI](https://circleci.com/gh/codecademy-engineering/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
 [`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
+
+[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
 [`gamut-storybook`: A component development sandbox for Gamut components](/workspaces/gamut-storybook/README.md)
 

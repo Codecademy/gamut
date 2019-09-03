@@ -16,9 +16,7 @@ function CardHeader(props: CardHeaderProps) {
 
   if (props.backgroundImage) {
     backgroundStyles = {
-      background: `url(${
-        props.backgroundImage
-      }) center center / cover no-repeat`,
+      background: `url(${props.backgroundImage}) center center / cover no-repeat`,
     };
   }
 

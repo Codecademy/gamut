@@ -12,6 +12,7 @@
   "scripts": {
     "compile": "tsc",
     "test": "jest",
+    "test:build": "yarn wsrun --exclude-missing test:build",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
@@ -38,7 +39,7 @@
     "workspaces/*"
   ],
   "dependencies": {
-    "lerna": "3.13.3",
+    "lerna": "3.16.4",
     "wsrun": "3.6.4"
   },
   "devDependencies": {
@@ -48,13 +49,13 @@
     "@codecademy/eslint-config": "0.2.0",
     "@codecademy/prettier-config": "0.1.1",
     "@types/chai": "4.1.7",
-    "@types/classnames": "2.2.7",
+    "@types/classnames": "2.2.9",
     "@types/enzyme": "3.9.1",
     "@types/invariant": "2.2.29",
     "@types/jest": "24.0.11",
     "@types/lodash": "4.14.123",
     "@types/react": "16.8.6",
-    "@types/storybook__addon-storyshots": "3.4.8",
+    "@types/storybook__addon-storyshots": "^5.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.8.0",
     "babel-plugin-require-context-hook": "1.0.0",
@@ -69,12 +70,12 @@
     "jest-environment-jsdom": "24.8.0",
     "jest-environment-jsdom-global": "1.2.0",
     "lint-staged": "8.1.5",
-    "prettier": "1.16.4",
+    "prettier": "1.18.2",
     "react": "16.8.6",
     "react-docgen-typescript-webpack-plugin": "1.1.0",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
-    "typescript": "3.4.2"
+    "typescript": "3.5.3"
   },
   "husky": {
     "hooks": {

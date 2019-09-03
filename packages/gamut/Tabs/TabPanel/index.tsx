@@ -1,9 +1,5 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 
-const defaultProps = {
-  id: '',
-};
-
 export type TabPanelProps = {
   active?: boolean;
   children?: ReactNode;
@@ -22,13 +18,12 @@ const TabPanel: FunctionComponent<TabPanelProps> = ({
   <div
     id={id}
     aria-labelledby={id.replace('-panel', '')}
+    role="tabpanel"
     style={{ display: active ? 'block' : 'none' }}
     className={className}
   >
     {active || renderAllPanels ? children : null}
   </div>
 );
-
-TabPanel.defaultProps = defaultProps;
 
 export default TabPanel;

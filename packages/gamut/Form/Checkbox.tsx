@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import s from './styles/Checkbox.scss';
 
-export type CheckboxProps = {
+export type CheckboxProps = HTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
   className?: string;
   htmlFor: string;

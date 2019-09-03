@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "3.15.2",
+  "version": "3.15.6",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RyzacInc/client-modules/packages/webpack-config"
+    "url": "git+https://github.com/codecademy-engineering/client-modules/packages/webpack-config"
   },
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RyzacInc/client-modules/packages/webpack-config"
+    "url": "https://github.com/codecademy-engineering/client-modules/packages/webpack-config"
   },
-  "homepage": "https://github.com/RyzacInc/client-modules/packages/webpack-config",
+  "homepage": "https://github.com/codecademy-engineering/client-modules/packages/webpack-config",
   "peerDependencies": {
     "@babel/core": "^7.0.0 || ^7.0.0-rc.1",
     "babel-loader": ">= 7.1.4",
@@ -52,7 +52,7 @@
     "autoprefixer": "^8.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "cssnano": "^4.1.10",
-    "mini-css-extract-plugin": "^0.7.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "postcss-flexbugs-fixes": "^4.1.0",
     "terser-webpack-plugin": "^1.3.0",
     "webpack-cli": "^3.3.5",
