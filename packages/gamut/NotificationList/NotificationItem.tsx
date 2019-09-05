@@ -9,6 +9,7 @@ import s from './styles/Notification.scss';
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
+  hideBorder: boolean;
 };
 
 const formatTime = (notificationDate: string): string => {
@@ -16,7 +17,7 @@ const formatTime = (notificationDate: string): string => {
 };
 
 const NotificationItem = (props: NotificationItemProps) => {
-  const { notification, onClick } = props;
+  const { notification, onClick, hideBorder } = props;
   const {
     date,
     iconSettings,
@@ -38,7 +39,9 @@ const NotificationItem = (props: NotificationItemProps) => {
     <TagName
       href={link}
       rel="noopener noreferrer"
-      className={notificationClasses}
+      className={cx(notificationClasses, {
+        [s.notificationHideBorder]: hideBorder,
+      })}
       onClick={onClick}
       {...tagProps}
     >

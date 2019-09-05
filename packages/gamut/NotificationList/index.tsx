@@ -49,11 +49,13 @@ const NotificationList = (props: NotificationListProps) => {
           {"You're all caught up!"}
         </div>
       ) : (
-        visibleNotifications.map((notification: Notification) => {
+        visibleNotifications.map((notification: Notification, i) => {
+          const isLastItem = i === visibleNotifications.length - 1;
           return (
             <NotificationItem
               key={notification.id}
               notification={notification}
+              hideBorder={isLastItem}
               onClick={() => onNotificationClick(notification.id)}
             />
           );

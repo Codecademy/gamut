@@ -17,13 +17,13 @@
     }
   }
 
-  &:last-of-type {
-    border-bottom: 0;
-  }
-
   &:hover {
     text-decoration: none;
   }
+}
+
+.notificationHideBorder {
+  border-bottom: 0;
 }
 
 .body {
