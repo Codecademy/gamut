@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import * as icons from '@codecademy/gamut-icons';
+// import * as icons from '@codecademy/gamut-icons';
 import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
@@ -16,7 +16,7 @@ storiesOf('Visuals/Icons', module)
       source: false,
     })(() => (
       <div className={s.grid}>
-        {Object.entries(icons).map(([iconName, Icon]) => (
+        {/* {Object.entries(icons).map(([iconName, Icon]) => (
           <span className={s.iconWrapper}>
             <Icon
               key={iconName}
@@ -25,7 +25,7 @@ storiesOf('Visuals/Icons', module)
             />
             <span className={s.iconLabel}>{iconName}</span>
           </span>
-        ))}
+        ))} */}
       </div>
     ))
   );
