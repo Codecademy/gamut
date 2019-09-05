@@ -121,6 +121,10 @@ jobs:
           name: lerna publish
           command: yarn lerna publish from-git --yes
       - run:
+          # Storybook build will fail if there were no changed packages, but we still want to build
+          name: build packages
+          command: yarn build-all
+      - run:
           name: build storybook
           command: yarn build-storybook
       - run:
@@ -129,6 +133,7 @@ jobs:
             if [ -n "$(git status --porcelain)" ]; then
               git add -A
               git commit -am "chore: build storybook"
+              git push
             fi
       - run:
           name: update lockfile
