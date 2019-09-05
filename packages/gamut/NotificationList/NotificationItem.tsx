@@ -9,7 +9,7 @@ import s from './styles/Notification.scss';
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
-  hideBorder: boolean;
+  hideBorder?: boolean;
 };
 
 const formatTime = (notificationDate: string): string => {
