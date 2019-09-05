@@ -31,13 +31,16 @@ const NotificationItem = (props: NotificationItemProps) => {
     [s.unread]: unread,
   });
 
+  const TagName = link ? 'a' : 'div';
+  const tagProps = link ? { target: '_blank' } : { role: 'presentation' };
+
   return (
-    <a
+    <TagName
       href={link}
-      target="_blank"
       rel="noopener noreferrer"
-      className={notificationClasses}
+      className={cx(notificationClasses)}
       onClick={onClick}
+      {...tagProps}
     >
       <NotificationIcon
         iconSettings={iconSettings}
@@ -52,7 +55,7 @@ const NotificationItem = (props: NotificationItemProps) => {
         </div>
         <div className={s.time}>{formatTime(date)}</div>
       </div>
-    </a>
+    </TagName>
   );
 };
 
