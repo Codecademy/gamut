@@ -5,7 +5,7 @@ import omitProps from '../utils/omitProps';
 import { Notification } from './typings';
 import NotificationItem from './NotificationItem';
 import s from './styles/index.scss';
-
+// Cool
 const byDate = (notification1: Notification, notification2: Notification) => {
   return (
     new Date(notification2.date).getTime() -
