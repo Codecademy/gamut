@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.27.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.0...@codecademy/gamut@1.27.1) (2019-09-11)
+
+
+### Bug Fixes
+
+* **Markdown:** remove noreferrer from external links ([#466](https://github.com/RyzacInc/client-modules/issues/466)) ([6cfb9a2](https://github.com/RyzacInc/client-modules/commit/6cfb9a2))
+
+
+
+
+
 # [1.27.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.26.5...@codecademy/gamut@1.27.0) (2019-09-05)
 
 
