@@ -161,11 +161,11 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
-    it('Adds rel="noopener noreferrer" to external links', () => {
+    it('Adds rel="noopener" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
-      expect(markdown.find('a[rel="noopener noreferrer"]').length).toEqual(1);
+      expect(markdown.find('a[rel="noopener"]').length).toEqual(1);
     });
   });
 
