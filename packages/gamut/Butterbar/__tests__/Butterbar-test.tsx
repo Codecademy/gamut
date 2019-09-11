@@ -3,6 +3,7 @@ import React from 'react';
 
 import Butterbar from '..';
 import Button from '../../Button';
+import CloseIcon from '../../Icon/icons/CloseIcon';
 
 const createStubStorage = (storageKey = 'stub-key') => {
   const items = new Map<string, string | null>();
@@ -40,6 +41,20 @@ describe('Butterbar', () => {
     component.update();
 
     expect(component.find(Button)).toHaveLength(1);
+  });
+
+  it('does not render an icon when an no icon is provided', () => {
+    const component = mount(<Butterbar />);
+    component.update();
+
+    expect(component.find(CloseIcon)).toHaveLength(0);
+  });
+
+  it('renders an icon when an icon is provided', () => {
+    const component = mount(<Butterbar icon={<CloseIcon />} />);
+    component.update();
+
+    expect(component.find(CloseIcon)).toHaveLength(1);
   });
 
   it('re-renders as null when the button is clicked', () => {

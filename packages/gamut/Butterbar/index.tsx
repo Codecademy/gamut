@@ -18,6 +18,8 @@ export type ButterbarProps = {
   };
   displayStyle?: ButterbarStyle;
   storage?: ButterbarStorage;
+  icon?: any;
+  iconProps?: any;
 };
 
 export type ButterbarStorage = {
@@ -56,6 +58,8 @@ class Butterbar extends Component<ButterbarProps, ButterbarState> {
       classNames = {},
       displayStyle = ButterbarStyle.FullWidth,
       storage,
+      icon: Icon,
+      iconProps,
     } = this.props;
 
     return (
@@ -68,6 +72,7 @@ class Butterbar extends Component<ButterbarProps, ButterbarState> {
             : styles.containerBordered
         )}
       >
+        <div>{Icon && <Icon {...iconProps} />}</div>
         <div className={cx(styles.content, classNames.content)}>{children}</div>
         {storage && (
           <Button
