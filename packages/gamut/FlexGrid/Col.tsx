@@ -70,7 +70,7 @@ export type ColProps = {
   tagName?: string;
   className?: string;
   reverse?: boolean;
-  children?: ReactNode[];
+  children?: ReactNode;
 };
 
 const Col = (props: ColProps) => {
