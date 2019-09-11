@@ -31,7 +31,7 @@ const Anchor: React.FC<AnchorProps> = props => {
   const anchorProps = {
     ...props,
     target: '_blank',
-    rel: 'noopener noreferrer',
+    rel: 'noopener',
   };
 
   // remove noopener/noreferrer on relative & same origin urls
