@@ -3,13 +3,14 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { ButterbarStyle } from '@codecademy/gamut/Butterbar';
 import AlertIcon from '@codecademy/gamut/Icon/icons/AlertIcon.tsx';
+import styles from './Butterbar-story.scss';
 
 storiesOf('Component/Butterbar', module)
   .add('Default Butterbar (Full Width)', () => (
-    <Butterbar
-      icon={AlertIcon}
-      iconProps={{ style: { color: 'turquoise', backgroundColor: 'white' } }}
-    >
+    <Butterbar>Some butterbar content!</Butterbar>
+  ))
+  .add('Default Butterbar with Icon (Full Width)', () => (
+    <Butterbar icon={<AlertIcon className={styles.icon} />}>
       Some butterbar content!
     </Butterbar>
   ))

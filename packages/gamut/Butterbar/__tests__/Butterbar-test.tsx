@@ -47,7 +47,7 @@ describe('Butterbar', () => {
     const component = mount(<Butterbar />);
     component.update();
 
-    expect(component.find(CloseIcon)).toHaveLength(0);
+    expect(component.find("div[data-testid='icon-id']")).toHaveLength(0);
   });
 
   it('renders an icon when an icon is provided', () => {
@@ -55,6 +55,7 @@ describe('Butterbar', () => {
     component.update();
 
     expect(component.find(CloseIcon)).toHaveLength(1);
+    expect(component.find("div[data-testid='icon-id']")).toHaveLength(1);
   });
 
   it('re-renders as null when the button is clicked', () => {
