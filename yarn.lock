@@ -2815,13 +2815,13 @@
     react-select "^2.2.0"
 
 "@storybook/addon-links@^5.0.11":
-  version "5.1.11"
-  resolved "https://registry.npmjs.org/@storybook/addon-links/-/addon-links-5.1.11.tgz#3a245f30480d586094bdda8f4658c5d328ac39b9"
-  integrity sha512-NV4gRduMNm0dchKCWAZ4YQSYOdj5acoztGIz3w+xs9e+MAXOHXs7iL8sBbqAFlfz4elPGHWW+8NGn9UYxQFK+Q==
+  version "5.2.0"
+  resolved "https://registry.npmjs.org/@storybook/addon-links/-/addon-links-5.2.0.tgz#0e747319e0e48f1082cbd7ccee32d4c7ad4aa02a"
+  integrity sha512-eWq9XLmu4Nssd6Lkb1gndOo2frGf6bRK1RGRL8SP7RRced9jARY9UvkipRA9/UTWFttraDMHeDIzxt4eqK7qEQ==
   dependencies:
-    "@storybook/addons" "5.1.11"
-    "@storybook/core-events" "5.1.11"
-    "@storybook/router" "5.1.11"
+    "@storybook/addons" "5.2.0"
+    "@storybook/core-events" "5.2.0"
+    "@storybook/router" "5.2.0"
     common-tags "^1.8.0"
     core-js "^3.0.1"
     global "^4.3.2"
