@@ -2829,11 +2829,11 @@
     qs "^6.6.0"
 
 "@storybook/addon-storyshots@^5.1.9":
-  version "5.2.0"
-  resolved "https://registry.npmjs.org/@storybook/addon-storyshots/-/addon-storyshots-5.2.0.tgz#71e4f25fdffc9c39e10ce10fc79aaee3ccefd99e"
-  integrity sha512-x8gUFXaZmTpn08yyOcXwd9ZjDCiiKX+mAaE6eTY5zw3UBatKbyXnLqv4Ks6b/uOARojuNSdJhG2i7ZEPe9rAqQ==
+  version "5.2.1"
+  resolved "https://registry.npmjs.org/@storybook/addon-storyshots/-/addon-storyshots-5.2.1.tgz#6485490b3c0fef81fcee312aa77d2414adb44dec"
+  integrity sha512-+LLjzu5zfzIfiLubV9OLjFY71yZxbbXTiLJTFynRpDZE5er00HXnxwsEqM8N2vYhkJRv0SXYGunNQkPU48Kbyw==
   dependencies:
-    "@storybook/addons" "5.2.0"
+    "@storybook/addons" "5.2.1"
     core-js "^3.0.1"
     glob "^7.1.3"
     global "^4.3.2"
