@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 import marked from 'marked';
-import HtmlToReact from 'html-to-react';
 import insane from 'insane';
+import HtmlToReact from 'html-to-react';
 import omitProps from '../utils/omitProps';
 import {
   createTagOverride,
@@ -10,50 +10,16 @@ import {
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
+import defaultSanitizationConfig from './libs/sanitizationConfig';
+import { preprocessingInstructions } from './libs/htmlProcessing';
 import s from './styles/index.scss';
-import Iframe from './overrides/Iframe';
-import Anchor from './overrides/Anchor';
-import Table from './overrides/Table';
+import Iframe from './libs/overrides/Iframe';
+import Anchor from './libs/overrides/Anchor';
+import Table from './libs/overrides/Table';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
-
-const defaultSanitizationConfig = {
-  allowedAttributes: {
-    ...insane.defaults.allowedAttributes,
-    span: ['class'],
-    code: ['class'],
-    pre: ['class'],
-    source: ['src', 'type'],
-    img: ['src', 'alt', 'height', 'width', 'title', 'aria-label', 'style'],
-    video: ['width', 'height', 'align', 'style', 'controls'],
-    iframe: [
-      'src',
-      'width',
-      'height',
-      'frameborder',
-      'gesture',
-      'allow',
-      'allowfullscreen',
-    ],
-  },
-  allowedClasses: {
-    div: 'narrative-table-container',
-  },
-  allowedTags: [
-    ...insane.defaults.allowedTags,
-    'video',
-    'source',
-    'font',
-    'pre',
-    'code',
-    'kbd',
-    'br',
-    'iframe',
-    'codeblock',
-  ],
-};
 
 const isValidNode = function() {
   return true;
@@ -142,7 +108,8 @@ class Markdown extends PureComponent<MarkdownProps> {
     const react = htmlToReactParser.parseWithInstructions(
       html,
       isValidNode,
-      processingInstructions
+      processingInstructions,
+      preprocessingInstructions
     );
 
     return (
