@@ -1,7 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 import SplitInterstitial from '..';
-import Stairs from '../assets/Stairs.svg';
 
 describe('SplitInterstitial', () => {
   it('renders left and right children in that order', () => {

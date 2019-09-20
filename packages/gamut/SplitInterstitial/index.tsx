@@ -15,8 +15,14 @@ export type SplitInterstitialProps = {
   className?: string;
   left?: SplitInterstitialSide;
   right?: SplitInterstitialSide;
-  topLeftImage?: string;
-  bottomRightImage?: string;
+  topLeftImage?: {
+    src?: string;
+    className?: string;
+  };
+  bottomRightImage?: {
+    src?: string;
+    className?: string;
+  };
 };
 
 export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
