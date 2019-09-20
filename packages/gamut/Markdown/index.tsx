@@ -11,7 +11,7 @@ import {
   standardOverrides,
 } from './libs/overrides';
 import defaultSanitizationConfig from './libs/sanitizationConfig';
-import { preprocessingInstructions } from './libs/htmlProcessing';
+import { createPreprocessingInstructions } from './libs/preprocessing';
 import s from './styles/index.scss';
 import Iframe from './libs/overrides/Iframe';
 import Anchor from './libs/overrides/Anchor';
@@ -20,6 +20,8 @@ import Table from './libs/overrides/Table';
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
+
+export const preprocessingInstructions = createPreprocessingInstructions(s);
 
 const isValidNode = function() {
   return true;
