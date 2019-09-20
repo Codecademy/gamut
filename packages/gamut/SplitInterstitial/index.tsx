@@ -15,12 +15,16 @@ export type SplitInterstitialProps = {
   className?: string;
   left?: SplitInterstitialSide;
   right?: SplitInterstitialSide;
+  topLeftImage?: string;
+  bottomRightImage?: string;
 };
 
 export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
   className,
   left = {},
   right = {},
+  topLeftImage = {},
+  bottomRightImage = {},
 }) => {
   return (
     <div className={cx(styles.splitInterstitial, className)}>
@@ -28,19 +32,37 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
       <div className={cx(styles.side, styles.left)}>
         <img
           alt=""
-          className={cx(styles.sideImage, styles.purpleCurveTopLeft)}
-          src={purpleCurveTopLeft}
+          className={cx(
+            styles.sideImage,
+            styles.purpleCurveTopLeft,
+            topLeftImage.className
+          )}
+          src={topLeftImage.src || purpleCurveTopLeft}
         />
-        <img
-          alt=""
-          className={cx(styles.sideImage, styles.blueCurve)}
-          src={blueCurve}
-        />
-        <img
-          alt=""
-          className={cx(styles.sideImage, styles.purpleCurveBottomRight)}
-          src={purpleCurveBottomRight}
-        />
+        {bottomRightImage.src ? (
+          <img
+            alt=""
+            className={cx(
+              styles.sideImage,
+              styles.blueCurve,
+              bottomRightImage.className
+            )}
+            src={bottomRightImage.src}
+          />
+        ) : (
+          <>
+            <img
+              alt=""
+              className={cx(styles.sideImage, styles.blueCurve)}
+              src={blueCurve}
+            />
+            <img
+              alt=""
+              className={cx(styles.sideImage, styles.purpleCurveBottomRight)}
+              src={purpleCurveBottomRight}
+            />
+          </>
+        )}
         <div className={styles.children}>{left.children}</div>
       </div>
     </div>

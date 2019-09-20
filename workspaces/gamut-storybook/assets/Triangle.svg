@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="121px" height="104px" viewBox="0 0 121 104" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Triangle Illo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <pattern id="pattern-1" width="6" height="6" x="1" y="10" patternUnits="userSpaceOnUse">
+            <use xlink:href="#image-2"></use>
+        </pattern>
+        <image id="image-2" width="6" height="6" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAABGdBTUEAALGN5fIAKQAAACxJREFUCB1jYAACg8wP/0E0MmBEFrwwXYARWRKrDhQFIA7MBBStMEEM1cg6ACPKEKv7aET3AAAAAElFTkSuQmCC"></image>
+    </defs>
+    <g id="V14---Path-Variation-of-Checkout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Revised" transform="translate(-41.000000, -514.000000)">
+            <g id="Triangle-Illo" transform="translate(40.000000, 506.000000)">
+                <polygon id="Triangle-Halftone-Bgnd" fill="url(#pattern-1)" transform="translate(60.000000, 60.000000) rotate(9.000000) translate(-60.000000, -60.000000) " points="60.5327257 16 113 104 7 104"></polygon>
+                <polygon id="Triangle" fill="#5788FA" transform="translate(76.000000, 52.000000) rotate(9.000000) translate(-76.000000, -52.000000) " points="76.5327257 8 129 96 23 96"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

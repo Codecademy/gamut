@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="314px" viewBox="0 0 300 314" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Stairs Illo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Stairs-Illo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M200,115 L200,15 L300,15 L300,115 L300,315 L0,315 L0,215 L100,215 L100,115 L200,115 Z" id="Combined-Shape" fill="#141C3A"></path>
+        <circle id="Oval" fill="#FFB764" cx="116" cy="56" r="56"></circle>
+    </g>
+</svg>
