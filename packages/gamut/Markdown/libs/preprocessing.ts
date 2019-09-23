@@ -31,6 +31,7 @@ export const createPreprocessingInstructions = (styles: StylesObject) => {
           node.attribs && node.attribs.class
         );
         node.attribs = { class: classname, ...node.attribs };
+        console.log(node.attribs);
       },
     },
   ];

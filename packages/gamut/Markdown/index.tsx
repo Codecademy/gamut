@@ -106,7 +106,8 @@ class Markdown extends PureComponent<MarkdownProps> {
 
     const html = insane(rawHtml, sanitizationConfig);
 
-    console.log(preprocessingInstructions);
+    console.log(s);
+    debugger;
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(
