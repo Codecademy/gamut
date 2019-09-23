@@ -21,8 +21,6 @@ const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
 
-export const preprocessingInstructions = createPreprocessingInstructions(s);
-
 const isValidNode = function() {
   return true;
 };
@@ -46,6 +44,8 @@ class Markdown extends PureComponent<MarkdownProps> {
     } = this.props;
 
     if (!text) return null;
+
+    const preprocessingInstructions = createPreprocessingInstructions(s);
 
     const spacingStyles = s[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
@@ -105,6 +105,8 @@ class Markdown extends PureComponent<MarkdownProps> {
     };
 
     const html = insane(rawHtml, sanitizationConfig);
+
+    console.log(preprocessingInstructions);
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(

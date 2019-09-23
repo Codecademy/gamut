@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount, render, ReactWrapper } from 'enzyme';
 import Markdown from '../index';
 
 const basicMarkdown = `
@@ -251,6 +251,20 @@ var test = true;
       expect(text).not.toEqual(expectedText);
       const markdown = mount(<Markdown inline text={text} />);
       expect(markdown.text().trim()).toEqual(expectedText);
+    });
+  });
+
+  describe('Adds classnames to styled elements', () => {
+    it('like headings', () => {
+      const text = `
+# Heading
+
+[Cool](http://google.com)
+`;
+      const markdown = render(<Markdown text={text} />);
+      expect(markdown.html()).toEqual('');
+      expect(markdown.find('h1.h1').length).toEqual(1);
+      expect(markdown.find('a.a').length).toEqual(1);
     });
   });
 });
