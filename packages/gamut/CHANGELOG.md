@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.0...@codecademy/gamut@1.28.1) (2019-09-23)
+
+
+### Bug Fixes
+
+* bump html-to-react ([e5c5dc7](https://github.com/RyzacInc/client-modules/commit/e5c5dc7))
+
+
+
+
+
 # [1.28.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.3...@codecademy/gamut@1.28.0) (2019-09-23)
 
 
