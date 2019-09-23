@@ -24,15 +24,18 @@
   user-select: none;
 }
 
-.purpleCurveTopLeft {
+.topLeftImage {
   left: 0;
   top: 0;
+
+  @extend .sideImage;
 }
 
-.blueCurve,
-.purpleCurveBottomRight {
+.bottomRightImage {
   bottom: 0;
   right: 0;
+
+  @extend .sideImage;
 }
 
 .children {
