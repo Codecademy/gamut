@@ -7,16 +7,16 @@
 ) {
   font-size: $font-size;
 
-  h1,
-  h2,
-  h3,
-  h4 {
+  .h1,
+  .h2,
+  .h3,
+  .h4 {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     @include font-smoothing;
   }
 
-  p {
+  .p {
     line-height: $line-height;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -28,20 +28,20 @@
     }
   }
 
-  ul,
-  ol {
+  .ul,
+  .ol {
     list-style: none;
     padding-left: 0;
     margin: $base-margin 0;
-    ul,
-    ol {
+    .ul,
+    .ol {
       // Even out nested lists
       margin-top: $base-unit / 2;
       li:last-child {
         margin-bottom: 0;
       }
     }
-    li {
+    .li {
       position: relative;
       margin-left: $base-unit * 2;
       margin-bottom: $base-unit / 2;
@@ -52,7 +52,7 @@
     }
   }
 
-  ul li::before {
+  .ul .li::before {
     content: "\25CF";
     position: absolute;
     transform: scale(0.6);
@@ -63,10 +63,10 @@
     text-align: center;
   }
 
-  ol {
+  .ol {
     counter-reset: "ordered-list";
 
-    li {
+    .li {
       counter-increment: ordered-list;
 
       &::before {
@@ -83,7 +83,7 @@
 
   // Inline code style.
 
-  code {
+  .code {
     padding: 0 0.25rem;
     margin: 0 0.0625rem;
     border-radius: 0.125rem;
@@ -99,24 +99,24 @@
   }
 
   // CodeBlock
-  pre > code {
+  .pre > .code {
     display: block;
     padding: 0;
     margin: 0;
     background-color: transparent;
   }
 
-  img {
+  .img {
     display: flex;
     max-width: 100%;
     margin: $base-margin auto 0;
   }
 
-  p img {
+  .p .img {
     margin: 0 auto;
   }
 
-  iframe {
+  .iframe {
     width: 100%;
   }
 }
