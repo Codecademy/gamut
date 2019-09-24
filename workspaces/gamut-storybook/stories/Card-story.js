@@ -1,5 +1,4 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { withKnobs, select, boolean, text } from '@storybook/addon-knobs';
 import {
   CardShell,
@@ -20,11 +19,12 @@ const borderStyles = ['dashed', 'solid', 'none'];
 
 const alignStyles = ['left', 'center', 'right'];
 
-const stories = storiesOf('Component/Card', module);
+export default {
+  title: 'Component/Card',
+  decorators: [withKnobs],
+};
 
-stories.addDecorator(withKnobs);
-
-stories.add('Editable', () => (
+export const editable = () => (
   <CardShell
     hoverShadow={boolean('shell.hoverShadow', false)}
     standardWidth={boolean('shell.standardWidth', true)}
@@ -46,9 +46,9 @@ stories.add('Editable', () => (
       <span>&nbsp;&nbsp;&laquo;</span>
     </CardFooter>
   </CardShell>
-));
+);
 
-stories.add('BannerCard', () => (
+export const bannerCard = () => (
   <div style={{ maxWidth: '22rem' }}>
     <BannerCard
       withStack={boolean('withStack', true)}
@@ -91,9 +91,9 @@ stories.add('BannerCard', () => (
       }
     />
   </div>
-));
+);
 
-stories.add('CoverCard', () => (
+export const coverCard = () => (
   <div style={{ maxWidth: '22rem' }}>
     <CoverCard
       headerClassName={styles.coverCardHeader}
@@ -127,4 +127,4 @@ stories.add('CoverCard', () => (
       }
     />
   </div>
-));
+);

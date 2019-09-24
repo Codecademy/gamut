@@ -41,13 +41,13 @@ module.exports = ({ config, mode }) => {
   // let webpack-config handle optimization
   delete config.optimization;
 
-  // Remove default storybook babel-loader
-  const babelIndex = config.module.rules.findIndex(
-    r => r && r.test.test('test.js')
-  );
-  if (babelIndex > -1) {
-    config.module.rules[babelIndex] = null;
-  }
+  // // Remove default storybook babel-loader
+  // const babelIndex = config.module.rules.findIndex(
+  //   r => r && r.test.test('test.js')
+  // );
+  // if (babelIndex > -1) {
+  //   config.module.rules[babelIndex] = null;
+  // }
   // remove default storybook css loader
   const cssIndex = config.module.rules.findIndex(
     r => r && r.test.test('test.css')
@@ -57,6 +57,6 @@ module.exports = ({ config, mode }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-
+  console.log(config.module.rules[0].use[0].options.plugins);
   return merge.smart(defaultConfig, config);
 };

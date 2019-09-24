@@ -26,15 +26,16 @@
     "@codecademy/gamut-icons": "^1.2.0",
     "@codecademy/gamut-styles": "^2.2.8",
     "@codecademy/webpack-config": "^3.15.6",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-centered": "^5.0.11",
-    "@storybook/addon-info": "^5.0.11",
-    "@storybook/addon-knobs": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addon-storyshots": "^5.1.9",
-    "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
-    "@types/storybook__react": "^4.0.1",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-centered": "^5.2.1",
+    "@storybook/addon-docs": "^5.3.0-alpha.2",
+    "@storybook/addon-info": "^5.2.1",
+    "@storybook/addon-knobs": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addon-storyshots": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
+    "@types/storybook__react": "^4.0.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.5",
     "babel-plugin-react-docgen-typescript": "^1.2.0",
@@ -58,5 +59,8 @@
     "typescript": "*",
     "webpack": "4.29.6"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react-color": "^3.0.1"
+  }
 }

@@ -60,112 +60,96 @@ const renderSwatches = (data, variablePrefix) =>
 
 const stories = storiesOf('Visuals/Colors', module);
 
-stories.add(
-  'Colors',
-  () => {
-    const base = {
-      black: colors.black,
-      white: colors.white,
-      beige: colors.beige,
-      royalBlue: colors.royalBlue,
-    };
+export default {
+  title: 'Visuals/Colors',
+};
 
-    return (
-      <Container>
-        {Object.keys(colors)
-          .filter(color => !Object.keys(base).includes(color))
-          .map(color => (
-            <div key={color}>
-              <h2 className={s.heading}>{parseCamelCase(`color-${color}`)}</h2>
-              {renderSwatches(colors[color], `color-${color}`)}
-            </div>
-          ))}
-        {Object.keys(base).map(color => (
+export const Colors = () => {
+  const base = {
+    black: colors.black,
+    white: colors.white,
+    beige: colors.beige,
+    royalBlue: colors.royalBlue,
+  };
+
+  return (
+    <Container>
+      {Object.keys(colors)
+        .filter(color => !Object.keys(base).includes(color))
+        .map(color => (
           <div key={color}>
             <h2 className={s.heading}>{parseCamelCase(`color-${color}`)}</h2>
-            {renderSwatch(`color-${parseCamelCase(color)}`, base[color])}
+            {renderSwatches(colors[color], `color-${color}`)}
           </div>
         ))}
-      </Container>
-    );
-  },
-  infoOptions
+      {Object.keys(base).map(color => (
+        <div key={color}>
+          <h2 className={s.heading}>{parseCamelCase(`color-${color}`)}</h2>
+          {renderSwatch(`color-${parseCamelCase(color)}`, base[color])}
+        </div>
+      ))}
+    </Container>
+  );
+};
+
+export const BrandColors = () => (
+  <div>
+    <h2 className={s.heading}>brand colors</h2>
+    {renderSwatches(brandColors, 'Brand')}
+  </div>
 );
 
-stories.add(
-  'Brand colors',
-  () => (
+export const GamutDeprecated = () => (
+  <Container>
     <div>
-      <h2 className={s.heading}>brand colors</h2>
-      {renderSwatches(brandColors, 'Brand')}
+      <h2 className={s.heading}>deprecated gamut base colors</h2>
+      {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
     </div>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Gamut (deprecated)',
-  () => (
-    <Container>
-      <div>
-        <h2 className={s.heading}>deprecated gamut base colors</h2>
-        {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
-      </div>
-      {Object.keys(deprecatedGamutColors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={s.heading}>
-            {parseCamelCase(`deprecated-gamut-${color}`)}
-          </h2>
-          {renderSwatches(
-            deprecatedGamutColors.swatches[color],
-            `deprecated-gamut-${color}`
-          )}
-        </div>
-      ))}
-    </Container>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Portal (deprecated)',
-  () => (
-    <Container>
-      <div>
-        <h2 className={s.heading}>deprecated portal base colors</h2>
-        {renderSwatches(deprecatedColors.portal, 'deprecated')}
-      </div>
-      {Object.keys(deprecatedColors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={s.heading}>{parseCamelCase(color)}</h2>
-          {renderSwatches(
-            deprecatedColors.swatches[color],
-            `deprecated-swatches-${color}`
-          )}
-        </div>
-      ))}
-    </Container>
-  ),
-  infoOptions
-);
-
-stories.add(
-  'Editor (deprecated)',
-  () => {
-    const { white, black, ...platformRest } = deprecatedEditorColors;
-    return (
-      <div>
-        <h2 className={s.heading}>deprecated editor colors</h2>
+    {Object.keys(deprecatedGamutColors.swatches).map(color => (
+      <div key={color}>
+        <h2 className={s.heading}>
+          {parseCamelCase(`deprecated-gamut-${color}`)}
+        </h2>
         {renderSwatches(
-          {
-            white,
-            black,
-          },
-          'deprecated-swatches-basic'
+          deprecatedGamutColors.swatches[color],
+          `deprecated-gamut-${color}`
         )}
-        {renderSwatches(platformRest, 'deprecated-swatches-code')}
       </div>
-    );
-  },
-  infoOptions
+    ))}
+  </Container>
 );
+
+export const PortalDeprecated = () => (
+  <Container>
+    <div>
+      <h2 className={s.heading}>deprecated portal base colors</h2>
+      {renderSwatches(deprecatedColors.portal, 'deprecated')}
+    </div>
+    {Object.keys(deprecatedColors.swatches).map(color => (
+      <div key={color}>
+        <h2 className={s.heading}>{parseCamelCase(color)}</h2>
+        {renderSwatches(
+          deprecatedColors.swatches[color],
+          `deprecated-swatches-${color}`
+        )}
+      </div>
+    ))}
+  </Container>
+);
+
+export const EditorDeprecated = () => {
+  const { white, black, ...platformRest } = deprecatedEditorColors;
+  return (
+    <div>
+      <h2 className={s.heading}>deprecated editor colors</h2>
+      {renderSwatches(
+        {
+          white,
+          black,
+        },
+        'deprecated-swatches-basic'
+      )}
+      {renderSwatches(platformRest, 'deprecated-swatches-code')}
+    </div>
+  );
+};
