@@ -18,5 +18,11 @@ module.exports = {
         parser: 'json',
       },
     },
+    {
+      files: '*.{ts,tsx}',
+      options: {
+        parser: 'typescript',
+      },
+    },
   ],
 };
