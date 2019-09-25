@@ -3,6 +3,7 @@ module.exports = {
   trailingComma: 'es5',
   tabWidth: 2,
   useTabs: false,
+  semi: true,
   overrides: [
     {
       files: '*.{scss,css}',
@@ -16,6 +17,12 @@ module.exports = {
       files: '*.{json}',
       options: {
         parser: 'json',
+      },
+    },
+    {
+      files: '*.{ts,tsx}',
+      options: {
+        parser: 'typescript',
       },
     },
   ],
