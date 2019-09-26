@@ -1456,25 +1456,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@codecademy/eslint-config@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@codecademy/eslint-config/-/eslint-config-0.2.0.tgz#f83a5d64ade96946ea4cf894b6f298ead4991286"
-  integrity sha512-qtN5k6NdNJFWMppQyIexnIdAwyAUrn4XGHB3vIzDNG8dklREOBNZGf1nm7vBE8Lqf3S+icGJWL1lBgn19XQuRQ==
-  dependencies:
-    "@typescript-eslint/parser" "1.7.0"
-    babel-eslint "^10.0.1"
-    eslint-config-airbnb "^17.1.0"
-    eslint-config-prettier "^4.2.0"
-    eslint-plugin-import "^2.16.0"
-    eslint-plugin-jsx-a11y "^6.2.1"
-    eslint-plugin-react "^7.12.4"
-    eslint-plugin-react-hooks "1.6.0"
-
-"@codecademy/prettier-config@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.npmjs.org/@codecademy/prettier-config/-/prettier-config-0.1.1.tgz#1a43999c2cb5582e82cf4145d61e5133e8bd0cc3"
-  integrity sha512-0Vx6mNwytiTX77KJRI31XITJpK2jBF8UF/+o38Ou5SfldN8uRiGF3pcsRQkDokhXUFgw//mciiMpcWRj8xa0xA==
-
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.npmjs.org/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
