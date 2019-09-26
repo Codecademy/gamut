@@ -98,12 +98,16 @@
     font-size: 0.9rem;
   }
 
-  // CodeBlock
-  .pre > .code {
-    display: block;
-    padding: 0;
-    margin: 0;
-    background-color: transparent;
+  .pre {
+    white-space: pre;
+    > .code {
+      display: block;
+      white-space: inherit;
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+      font-family: $font-monospace;
+    }
   }
 
   .img {
