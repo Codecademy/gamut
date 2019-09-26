@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.1...@codecademy/gamut@1.28.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* **Markdown:** Update code tag specificity to prevent incorrect white-space ([#490](https://github.com/RyzacInc/client-modules/issues/490)) ([af46e2e](https://github.com/RyzacInc/client-modules/commit/af46e2e))
+
+
+
+
+
 ## [1.28.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.0...@codecademy/gamut@1.28.1) (2019-09-23)
 
 
