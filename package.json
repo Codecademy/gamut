@@ -46,8 +46,6 @@
     "@babel/core": "7.5.4",
     "@babel/polyfill": "7.4.3",
     "@babel/preset-typescript": "7.3.3",
-    "@codecademy/eslint-config": "0.2.0",
-    "@codecademy/prettier-config": "0.1.1",
     "@types/chai": "4.1.7",
     "@types/classnames": "2.2.9",
     "@types/enzyme": "3.9.1",
