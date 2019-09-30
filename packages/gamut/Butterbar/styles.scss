@@ -3,10 +3,9 @@
 $close-button-color: fade-out($color-gray-900, 0.4);
 
 .container {
-  align-items: center;
+  align-items: flex-start;
   background-color: $color-white;
   display: flex;
-  justify-content: space-between;
   margin-bottom: 4rem;
   margin-top: 1rem;
 }
@@ -32,8 +31,7 @@ $close-button-color: fade-out($color-gray-900, 0.4);
   align-items: center;
   display: flex;
   font-size: 1.1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding-left: 2rem;
 }
 
 .closeButton {

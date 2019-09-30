@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.1...@codecademy/gamut@1.28.2) (2019-09-26)
+
+
+### Bug Fixes
+
+* **Markdown:** Update code tag specificity to prevent incorrect white-space ([#490](https://github.com/RyzacInc/client-modules/issues/490)) ([af46e2e](https://github.com/RyzacInc/client-modules/commit/af46e2e))
+
+
+
+
+
+## [1.28.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.0...@codecademy/gamut@1.28.1) (2019-09-23)
+
+
+### Bug Fixes
+
+* bump html-to-react ([e5c5dc7](https://github.com/RyzacInc/client-modules/commit/e5c5dc7))
+
+
+
+
+
+# [1.28.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.3...@codecademy/gamut@1.28.0) (2019-09-23)
+
+
+### Features
+
+* **Markdown:** Modify styles in markdown to be classname-based to prevent leaking into custom overrides ([#486](https://github.com/RyzacInc/client-modules/issues/486)) ([f54e53f](https://github.com/RyzacInc/client-modules/commit/f54e53f))
+
+
+
+
+
+## [1.27.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.2...@codecademy/gamut@1.27.3) (2019-09-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.27.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.1...@codecademy/gamut@1.27.2) (2019-09-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [1.27.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.27.0...@codecademy/gamut@1.27.1) (2019-09-11)
+
+
+### Bug Fixes
+
+* **Markdown:** remove noreferrer from external links ([#466](https://github.com/RyzacInc/client-modules/issues/466)) ([6cfb9a2](https://github.com/RyzacInc/client-modules/commit/6cfb9a2))
+
+
+
+
+
 # [1.27.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.26.5...@codecademy/gamut@1.27.0) (2019-09-05)
 
 
