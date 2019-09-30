@@ -1,4 +1,4 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/FormGroup.scss';
 import FormGroupDescription from './FormGroupDescription';
