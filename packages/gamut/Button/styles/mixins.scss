@@ -15,22 +15,10 @@
   background-color: $background;
   border-color: $border;
 
-  &:hover {
-    box-shadow: 0 2px 4px $btn-box-shadow-color;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
-  }
-
   &:focus,
   &:hover {
     text-decoration: none;
     color: $color;
-
-    &:active {
-      box-shadow: 0 2px 4px $btn-box-shadow-color;
-    }
   }
 
   &:active {
@@ -65,14 +53,6 @@
     }
   }
 
-  &:hover {
-    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
-  }
-
   &:disabled {
     border-color: $btn-disabled-color;
     color: $btn-disabled-color;
@@ -87,10 +67,6 @@
   &:hover,
   &:active {
     box-shadow: none;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
   }
 
   &:disabled {
