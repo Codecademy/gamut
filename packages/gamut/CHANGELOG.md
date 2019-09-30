@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.2...@codecademy/gamut@1.28.3) (2019-09-30)
+
+
+### Bug Fixes
+
+* a Col should be able to accept just one element ([1333927](https://github.com/RyzacInc/client-modules/commit/1333927))
+
+
+
+
+
 ## [1.28.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.1...@codecademy/gamut@1.28.2) (2019-09-26)
 
 
