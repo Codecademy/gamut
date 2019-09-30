@@ -10,7 +10,7 @@ export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
   options?: string[] | {};
 };
 
-const Select = (props: SelectProps) => {
+const Select: React.FC<SelectProps> = props => {
   const className = cx(s.Select, props.className);
 
   // Generate list of options

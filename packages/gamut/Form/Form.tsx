@@ -6,7 +6,7 @@ export type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   className?: string;
 };
 
-const Form = (props: FormProps) => {
+const Form: React.FC<FormProps> = props => {
   const className = cx(s.Form, props.className);
 
   return <form {...props} className={className} />;
