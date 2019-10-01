@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Item } from '@codecademy/gamut/FlexBox';
-import { Grid, Row, Col } from '@codecademy/gamut/FlexGrid';
+import { Item } from '@codecademy/gamut/dist/FlexBox';
+import { Grid, Row, Col } from '@codecademy/gamut/dist/FlexGrid';
 import gamut from '@codecademy/gamut-styles/utils/variables';
 
 const Box = () => (

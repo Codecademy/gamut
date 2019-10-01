@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ToolTip from '@codecademy/gamut/ToolTip';
+import ToolTip from '@codecademy/gamut/dist/ToolTip';
 import { withInfo } from '@storybook/addon-info';
 import { select } from '@storybook/addon-knobs';
-import Icon from '@codecademy/gamut/Icon';
+import Icon from '@codecademy/gamut/dist/Icon';
 import { addonInfoOptions as options } from './options';
 
 storiesOf('Component/ToolTip', module).add(

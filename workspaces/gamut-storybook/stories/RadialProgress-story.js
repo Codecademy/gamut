@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import RadialProgress from '@codecademy/gamut/RadialProgress';
+import RadialProgress from '@codecademy/gamut/dist/RadialProgress';
 import {
   withKnobs,
   text,

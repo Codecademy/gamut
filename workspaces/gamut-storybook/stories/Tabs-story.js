@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs';
+import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/dist/Tabs';
 import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 import { withInfo } from '@storybook/addon-info';
 import { addonInfoOptions as options } from './options';
