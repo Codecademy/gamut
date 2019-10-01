@@ -11,7 +11,8 @@
     "*.css",
     "*.scss"
   ],
-  "main": "./index.js",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/client-modules.git"
@@ -36,7 +37,10 @@
     "react-truncate": "^2.4.0"
   },
   "scripts": {
-    "build": "tsc"
+    "type-check": "tsc --noEmit",
+    "build:clean": "rm -rf dist",
+    "build:copy": "cp -r src/ dist/",
+    "build": "yarn build:clean && yarn build:copy && tsc"
   },
   "license": "MIT"
 }

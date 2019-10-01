@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Tab, { TabProps } from '../';
+import Tab, { TabProps } from '..';
 
 const shallowTab = (customProps: Partial<TabProps>) => {
   const props = {
