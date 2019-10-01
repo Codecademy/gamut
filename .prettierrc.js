@@ -1,1 +1,1 @@
-module.exports = require('@codecademy/prettier-config/ts');
+module.exports = require('./packages/prettier-config');
