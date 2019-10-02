@@ -14,11 +14,11 @@ export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
   className?: string;
 };
 
-const FormGroupLabel = ({
+const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   htmlFor,
   className,
   ...rest
-}: FormGroupLabelProps) => {
+}) => {
   const classNames = cx(s.FormGroupLabel, className);
 
   if (htmlFor) {

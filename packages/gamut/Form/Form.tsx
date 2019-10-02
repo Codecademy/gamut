@@ -6,10 +6,10 @@ export type FormProps = FormHTMLAttributes<HTMLFormElement> & {
   className?: string;
 };
 
-const Form = (props: FormProps) => {
+const Form: React.FC<FormProps> = ({ method = 'post', ...props }) => {
   const className = cx(s.Form, props.className);
 
-  return <form {...props} className={className} />;
+  return <form {...props} method={method} className={className} />;
 };
 
 export default Form;
