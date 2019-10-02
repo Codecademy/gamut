@@ -1,4 +1,4 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/FormGroup.scss';
 import FormGroupDescription from './FormGroupDescription';
@@ -9,17 +9,16 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   htmlFor?: string;
   className?: string;
   description?: string;
-  children: ReactNode | ReactNode[];
 };
 
-const FormGroup = ({
+const FormGroup: React.FC<FormGroupProps> = ({
   label,
   description,
   htmlFor,
   children,
   className,
   ...rest
-}: FormGroupProps) => {
+}) => {
   const classNames = cx(s.FormGroup, className);
 
   const labelComponent = label ? (

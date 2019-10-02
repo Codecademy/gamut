@@ -7,13 +7,13 @@ export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
   selected?: string;
 };
 
-const RadioGroup = ({
+const RadioGroup: React.FC<RadioGroupProps> = ({
   children,
   onChange,
   htmlForPrefix,
   name,
   ...rest
-}: RadioGroupProps) => (
+}) => (
   <div {...(rest as HTMLAttributes<HTMLDivElement>)}>
     {React.Children.map(children, (child, index) =>
       cloneElement(child, {
