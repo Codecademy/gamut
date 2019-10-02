@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
+
+
+### Code Refactoring
+
+* move gamut out of root folder ([#494](https://github.com/RyzacInc/client-modules/issues/494)) ([c475cdf](https://github.com/RyzacInc/client-modules/commit/c475cdf))
+
+
+### BREAKING CHANGES
+
+* Changes the path of all files in gamut from the root to a `dist` folder.
+
+This means all imports that formerly pointed to the root:
+
+```
+import Button from '@codecademy/gamut/Button'
+```
+
+now need to include the dist folder:
+
+```
+import Button from '@codecademy/gamut/dist/Button'
+```
+
+or, preferably, import the named export instead:
+
+```
+import { Button } from '@codecademy/gamut'
+```
+
+
+
+
+
 ## [2.17.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.8...@codecademy/gamut-storybook@2.17.9) (2019-10-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
