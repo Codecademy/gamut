@@ -37,7 +37,7 @@
     "react-truncate": "^2.4.0"
   },
   "scripts": {
-    "type-check": "tsc --noEmit",
+    "verify": "tsc --noEmit",
     "build:clean": "rm -rf dist",
     "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
     "build": "yarn build:clean && yarn build:copy && tsc"
