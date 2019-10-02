@@ -57,14 +57,6 @@ jobs:
           paths:
             - .
 
-  verify_compile:
-    <<: *default_env
-    steps:
-      - *restore_repo
-      - run:
-          name: TypeScript Compile
-          command: yarn run compile
-
   verify_formatting:
     <<: *default_env
     steps:
@@ -98,7 +90,7 @@ jobs:
       - *restore_repo
       - run:
           name: Run any builds needed for tests
-          command: yarn test:build
+          command: yarn build-all
       - run:
           name: Run test suite
           command: |
@@ -167,9 +159,6 @@ workflows:
     jobs:
       - checkout_code
       - tests:
-          requires:
-            - checkout_code
-      - verify_compile:
           requires:
             - checkout_code
       - verify_linting:

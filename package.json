@@ -10,9 +10,7 @@
     "yarn": "~1.15.2"
   },
   "scripts": {
-    "compile": "tsc",
     "test": "jest",
-    "test:build": "yarn wsrun --exclude-missing test:build",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",

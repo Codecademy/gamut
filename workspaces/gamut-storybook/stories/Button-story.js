@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Button, { presetThemes } from '@codecademy/gamut/Button';
-import ButtonBase from '@codecademy/gamut/ButtonBase';
-import Spinner from '@codecademy/gamut/Spinner';
-import RadialProgress from '@codecademy/gamut/RadialProgress';
+import Button, { presetThemes } from '@codecademy/gamut/dist/Button';
+import ButtonBase from '@codecademy/gamut/dist/ButtonBase';
+import Spinner from '@codecademy/gamut/dist/Spinner';
+import RadialProgress from '@codecademy/gamut/dist/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
 import { deprecatedColors } from '@codecademy/gamut-styles/utils/variables';
 

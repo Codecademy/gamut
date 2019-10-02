@@ -37,13 +37,8 @@ export { default as SplitInterstitial } from './SplitInterstitial';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
 export { default as Toggle } from './Toggle';
 export { default as ToolTip } from './ToolTip';
-
-import * as FlexBox$ from './FlexBox';
-import * as FlexGrid$ from './FlexGrid';
-
-export const FlexBox = FlexBox$;
-export const FlexGrid = FlexGrid$;
-
+export { Grid, Col, Row } from './FlexGrid';
+export { Container, Item } from './FlexBox';
 export { default as AccessibilityIcon } from './Icon/icons/AccessibilityIcon';
 export { default as AddIcon } from './Icon/icons/AddIcon';
 export { default as AdvisorIcon } from './Icon/icons/AdvisorIcon';

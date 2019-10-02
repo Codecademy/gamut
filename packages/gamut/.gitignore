@@ -1,4 +1,1 @@
-# Compiled files from their .tsx source
-**/*.d.ts
-**/*.js
-**/*.js.map
+dist

@@ -7,7 +7,7 @@ import {
   deprecatedEditorColors,
   brandColors,
 } from '@codecademy/gamut-styles/utils/variables';
-import { Container } from '@codecademy/gamut/FlexBox';
+import { Container } from '@codecademy/gamut';
 import s from './Color-story.scss';
 
 const infoOptions = {

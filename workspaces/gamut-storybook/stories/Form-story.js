@@ -12,7 +12,7 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from '@codecademy/gamut/Form';
+} from '@codecademy/gamut/dist/Form';
 
 storiesOf('Component/Form', module)
   .addParameters({
