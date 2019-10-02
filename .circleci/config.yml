@@ -90,7 +90,7 @@ jobs:
       - *restore_repo
       - run:
           name: Run any builds needed for tests
-          command: yarn test:build
+          command: yarn build-all
       - run:
           name: Run test suite
           command: |
