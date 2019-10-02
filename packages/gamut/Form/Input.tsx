@@ -12,7 +12,12 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
 };
 
-const Input = ({ error, htmlFor, className, ...rest }: InputProps) => {
+const Input: React.FC<InputProps> = ({
+  error,
+  htmlFor,
+  className,
+  ...rest
+}) => {
   const classNames = cx(
     s.Input,
     {
