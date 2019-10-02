@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import IkonaIcon from '@codecademy/gamut/IkonaIcon';
-import classNames from '@codecademy/gamut/IkonaIcon/styles';
+import IkonaIcon from '@codecademy/gamut/dist/IkonaIcon';
+import classNames from '@codecademy/gamut/dist/IkonaIcon/styles';
 
 import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';

@@ -1,8 +1,8 @@
 import { Butterbar } from '@codecademy/gamut';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import { ButterbarStyle } from '@codecademy/gamut/Butterbar';
-import AlertIcon from '@codecademy/gamut/Icon/icons/AlertIcon.tsx';
+import { ButterbarStyle } from '@codecademy/gamut/dist/Butterbar';
+import { AlertIcon } from '@codecademy/gamut-icons';
 import styles from './Butterbar-story.scss';
 
 storiesOf('Component/Butterbar', module)
