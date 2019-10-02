@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.28.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.3...@codecademy/gamut@1.28.4) (2019-10-02)
+
+
+### Bug Fixes
+
+* Default Form component to POST & Form Typescript cleanup  ([#492](https://github.com/RyzacInc/client-modules/issues/492)) ([6f44ca2](https://github.com/RyzacInc/client-modules/commit/6f44ca2))
+
+
+
+
+
 ## [1.28.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@1.28.2...@codecademy/gamut@1.28.3) (2019-09-30)
 
 
