@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@1.2.0...@codecademy/gamut-icons@2.0.0) (2019-10-02)
+
+
+### Code Refactoring
+
+* move gamut out of root folder ([#494](https://github.com/RyzacInc/client-modules/issues/494)) ([c475cdf](https://github.com/RyzacInc/client-modules/commit/c475cdf))
+
+
+### BREAKING CHANGES
+
+* Changes the path of all files in gamut from the root to a `dist` folder.
+
+This means all imports that formerly pointed to the root:
+
+```
+import Button from '@codecademy/gamut/Button'
+```
+
+now need to include the dist folder:
+
+```
+import Button from '@codecademy/gamut/dist/Button'
+```
+
+or, preferably, import the named export instead:
+
+```
+import { Button } from '@codecademy/gamut'
+```
+
+
+
+
+
 # [1.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@1.1.4...@codecademy/gamut-icons@1.2.0) (2019-09-04)
 
 
