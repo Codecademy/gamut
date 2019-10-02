@@ -11,7 +11,7 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from '@codecademy/gamut/Form';
+} from '@codecademy/gamut/dist/Form';
 
 export default {
   title: 'Component/Form',

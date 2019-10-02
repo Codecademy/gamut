@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NotificationList from '@codecademy/gamut/NotificationList';
+import NotificationList from '@codecademy/gamut/dist/NotificationList';
 
 import moment from 'moment';
 import { addonInfoOptions as options } from './options';

@@ -1,5 +1,5 @@
 import React from 'react';
-import ToolTip from '@codecademy/gamut/ToolTip';
+import { ToolTip } from '@codecademy/gamut';
 import { select } from '@storybook/addon-knobs';
 import Icon from '@codecademy/gamut/Icon';
 

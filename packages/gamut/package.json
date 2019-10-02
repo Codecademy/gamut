@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "1.28.3",
+  "version": "2.0.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
@@ -11,7 +11,8 @@
     "*.css",
     "*.scss"
   ],
-  "main": "./index.js",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:RyzacInc/client-modules.git"
@@ -36,7 +37,13 @@
     "react-truncate": "^2.4.0"
   },
   "scripts": {
-    "build": "tsc"
+    "verify": "tsc --noEmit",
+    "build:clean": "rm -rf dist",
+    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
+    "build": "yarn build:clean && yarn build:copy && tsc"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "copyfiles": "^2.1.1"
+  }
 }

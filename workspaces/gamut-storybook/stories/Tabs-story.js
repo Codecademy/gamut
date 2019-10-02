@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/Tabs';
+import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/dist/Tabs';
 import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 
 export default {

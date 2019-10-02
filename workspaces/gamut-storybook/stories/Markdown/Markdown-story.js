@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
-import Markdown from '@codecademy/gamut/Markdown';
+import Markdown from '@codecademy/gamut/dist/Markdown';
 import exampleMarkdown from './markdown-example.md';
 
 export default {

@@ -15,7 +15,7 @@ export type RadioProps = {
   value?: string;
 };
 
-const Radio = ({
+const Radio: React.FC<RadioProps> = ({
   name,
   value,
   label,
@@ -25,7 +25,7 @@ const Radio = ({
   onChange,
   required,
   ...rest
-}: RadioProps) => {
+}) => {
   const classNames = cx(s.Radio, className);
   return (
     <div className={classNames}>

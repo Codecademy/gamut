@@ -1,7 +1,7 @@
 import { Butterbar } from '@codecademy/gamut';
 import React from 'react';
-import { ButterbarStyle } from '@codecademy/gamut/Butterbar';
-import AlertIcon from '@codecademy/gamut/Icon/icons/AlertIcon.tsx';
+import { ButterbarStyle } from '@codecademy/gamut/dist/Butterbar';
+import { AlertIcon } from '@codecademy/gamut-icons';
 import styles from './Butterbar-story.scss';
 
 export default {

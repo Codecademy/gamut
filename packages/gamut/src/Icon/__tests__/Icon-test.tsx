@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Icon from '../';
+import Icon from '..';
 import iconMap from '../iconMap';
 
 describe('Icon', () => {

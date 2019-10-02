@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount, ShallowWrapper } from 'enzyme';
 
-import { Tab, TabList, TabPanel, Tabs } from '../';
+import { Tab, TabList, TabPanel, Tabs } from '..';
 
 const createTab = (i: number) => {
   return (
