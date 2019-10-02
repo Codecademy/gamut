@@ -39,7 +39,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "build:clean": "rm -rf dist",
-    "build:copy": "copyfiles -u 1 -a -e './**/*.ts' -e './**/*.tsx' './src/**/*' ./dist",
+    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
     "build": "yarn build:clean && yarn build:copy && tsc"
   },
   "license": "MIT",
