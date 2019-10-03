@@ -1,7 +1,7 @@
 import React from 'react';
-import { ToolTip } from '@codecademy/gamut';
+import { ToolTip } from 'gamut';
 import { select } from '@storybook/addon-knobs';
-import Icon from '@codecademy/gamut/Icon';
+import Icon from 'gamut/Icon';
 
 export default {
   title: 'Component/ToolTip',

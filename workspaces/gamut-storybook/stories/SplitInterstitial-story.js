@@ -1,5 +1,5 @@
 import React from 'react';
-import { SplitInterstitial } from '@codecademy/gamut';
+import { SplitInterstitial } from 'gamut';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 import styles from './SplitInterstitial-story.scss';

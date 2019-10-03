@@ -1,4 +1,4 @@
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from 'gamut-styles/utils/variables';
 
 const selectableColors = Object.keys(colors).reduce(
   (acc, colorKey) => ({

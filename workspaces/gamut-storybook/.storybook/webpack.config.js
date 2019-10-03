@@ -27,28 +27,60 @@ module.exports = ({ config, mode }) => {
       context: path.resolve(__dirname, '../'),
       includeDefaults: false,
     })
-    .babel()
     .css()
     .merge({
       plugins: [new ForkTsCheckerWebpackPlugin()],
     })
     .toConfig();
 
-  // Remove webpack-config defaults that interfere with storybook
-  delete defaultConfig.entry;
-  delete defaultConfig.output;
+  const configToExtend = {
+    devtool: 'source-map',
+    module: defaultConfig.module,
+    plugins: defaultConfig.plugins,
+    resolve: {
+      extensions: defaultConfig.resolve.extensions,
+      alias: {
+        gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
+        'gamut-styles': path.resolve(
+          __dirname,
+          '../../../packages/gamut-styles'
+        ),
+      },
+    },
+  };
 
-  // let webpack-config handle optimization
-  delete config.optimization;
+  const jsIndex = config.module.rules.findIndex(
+    r => r && r.test.test('test.js')
+  );
+  if (jsIndex > -1) {
+    config.module.rules[jsIndex].test = /\.(mjs|(j|t)sx?)$/;
+    config.module.rules[jsIndex].include.push(
+      path.resolve(__dirname, '../../../packages')
+    );
+    config.module.rules[jsIndex].exclude.push(/node_modules/);
+    config.module.rules[jsIndex].use[0].options.babelrc = false;
+    config.module.rules[jsIndex].use[0].options.presets.push(
+      '@babel/preset-typescript'
+    );
+    config.module.rules[jsIndex].use[0].options.plugins.concat([
+      [
+        'babel-plugin-react-docgen',
+        {
+          DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES',
+        },
+      ],
+      [
+        'babel-plugin-react-docgen-typescript',
+        {
+          docgenCollectionName: 'STORYBOOK_REACT_CLASSES',
+          // include: 'gamut.*\\.tsx$',
+          // exclude: 'stories\\.tsx$',
+        },
+      ],
+    ]);
+    // config.module.rules[jsIndex].use.push('react-docgen-typescript-loader');
+  }
 
-  // // Remove default storybook babel-loader
-  // const babelIndex = config.module.rules.findIndex(
-  //   r => r && r.test.test('test.js')
-  // );
-  // if (babelIndex > -1) {
-  //   config.module.rules[babelIndex] = null;
-  // }
-  // remove default storybook css loader
   const cssIndex = config.module.rules.findIndex(
     r => r && r.test.test('test.css')
   );
@@ -57,6 +89,6 @@ module.exports = ({ config, mode }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-  console.log(config.module.rules[0].use[0].options.plugins);
-  return merge.smart(defaultConfig, config);
+  // console.log(config.module.rules[0].use[0].options.plugins);
+  return merge.smart(config, configToExtend);
 };

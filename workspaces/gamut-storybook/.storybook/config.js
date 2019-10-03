@@ -1,20 +1,28 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
+import { create } from '@storybook/theming';
+import { withA11y } from '@storybook/addon-a11y';
 import wrapper from './decorators/wrapper';
-import gamutTheme from './gamutTheme';
 
-// automatically import all files ending in *-story.js
-function loadStories() {
-  const req = require.context('../stories', true, /\.*-story\.jsx?$/);
-  req.keys().forEach(filename => req(filename));
-}
-
+addDecorator(withA11y);
 addDecorator(wrapper);
+
+const gamutTheme = create({
+  base: 'light',
+  brandTitle: 'Gamut',
+  brandUrl: 'https://codecademy.com',
+});
 
 addParameters({
   options: {
-    panelPosition: 'right',
     theme: gamutTheme,
     showPanel: true,
   },
 });
-configure(loadStories, module);
+
+configure(
+  [
+    require.context('../stories', true, /\.*-story\.mdx$/),
+    require.context('../stories', true, /\.*-story\.(j|t)sx?$/),
+  ],
+  module
+);

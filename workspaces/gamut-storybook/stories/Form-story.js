@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@codecademy/gamut';
+import { Button } from 'gamut';
 import {
   Checkbox,
   RadioGroup,
@@ -11,16 +11,10 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from '@codecademy/gamut/dist/Form';
+} from 'gamut/Form';
 
 export default {
   title: 'Component/Form',
-
-  parameters: {
-    info: {
-      inline: true,
-    },
-  },
 };
 
 export const form = () => (

@@ -1,8 +1,6 @@
-import { Butterbar } from 'gamut';
-import React from 'react';
-import { ButterbarStyle } from 'gamut/Butterbar';
 import { AlertIcon } from '@codecademy/gamut-icons';
-import styles from './Butterbar-story.scss';
+import React from 'react';
+import { Butterbar, ButterbarStyle } from './';
 
 export default {
   title: 'Component/Butterbar',

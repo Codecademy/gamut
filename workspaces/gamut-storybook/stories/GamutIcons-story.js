@@ -2,7 +2,6 @@ import React from 'react';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
 import * as icons from '@codecademy/gamut-icons';
 import { selectableColors } from './helpers';
-import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
 
 export default {

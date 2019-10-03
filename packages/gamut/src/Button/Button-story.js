@@ -1,11 +1,11 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import Button, { presetThemes } from 'gamut/Button';
-import ButtonBase from 'gamut/ButtonBase';
-import Spinner from 'gamut/Spinner';
-import RadialProgress from 'gamut/RadialProgress';
+import Button, { presetThemes } from '@codecademy/gamut/dist/Button';
+import ButtonBase from '@codecademy/gamut/dist/ButtonBase';
+import Spinner from '@codecademy/gamut/dist/Spinner';
+import RadialProgress from '@codecademy/gamut/dist/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
-import { deprecatedColors } from 'gamut-styles/utils/variables';
+import { deprecatedColors } from '@codecademy/gamut-styles/utils/variables';
 
 const themeKeys = [
   ...Object.keys(presetThemes),

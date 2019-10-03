@@ -1,7 +1,7 @@
 import React from 'react';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import Icon from '@codecademy/gamut/dist/Icon';
-import iconMap from '@codecademy/gamut/dist/Icon/iconMap';
+import Icon from 'gamut/Icon';
+import iconMap from 'gamut/Icon/iconMap';
 import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';

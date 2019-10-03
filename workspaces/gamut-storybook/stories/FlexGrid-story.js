@@ -1,6 +1,6 @@
 import React from 'react';
-import { Item, Grid, Row, Col } from '@codecademy/gamut';
-import gamut from '@codecademy/gamut-styles/utils/variables';
+import { Item, Grid, Row, Col } from 'gamut';
+import gamut from 'gamut-styles/utils/variables';
 
 const Box = () => (
   <Item
@@ -62,15 +62,11 @@ export const fixedGridDefault = () => (
 fixedGridDefault.story = {
   name: 'Fixed Grid (Default)',
 
-  parameters: {
-    info: {
-      text: `
-        The grid layout is composed of rows of columns.
+  description: `
+  The grid layout is composed of rows of columns.
 
-        A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
-        `,
-    },
-  },
+  A row is 12 units wide. A column specifies its width in units at various breakpoints via props: xs 480px+, sm 768px+, md 1024px+, lg 1200px+
+  `,
 };
 
 export const fluid = () => (
@@ -112,13 +108,9 @@ export const fluid = () => (
 fluid.story = {
   name: 'Fluid',
 
-  parameters: {
-    info: {
-      text: `
-      Adding the fluid prop allows the grid to grow and shrink freely inside its container.
-      `,
-    },
-  },
+  description: `
+  Adding the fluid prop allows the grid to grow and shrink freely inside its container.
+  `,
 };
 
 export const offsets = () => (
@@ -164,13 +156,7 @@ export const offsets = () => (
 offsets.story = {
   name: 'Offsets',
 
-  parameters: {
-    info: {
-      text: `
-      A column can be offset with the <code>xs</code> property
-      `,
-    },
-  },
+  description: `A column can be offset with the <code>xs</code> property`,
 };
 
 export const center = () => (
@@ -189,12 +175,4 @@ export const center = () => (
 
 center.story = {
   name: 'Center',
-
-  parameters: {
-    info: {
-      text: `
-      Centered component
-      `,
-    },
-  },
 };

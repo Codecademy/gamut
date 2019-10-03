@@ -1,20 +1,13 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import {
   colors,
   deprecatedColors,
   deprecatedGamutColors,
   deprecatedEditorColors,
   brandColors,
-} from '@codecademy/gamut-styles/utils/variables';
-import { Container } from '@codecademy/gamut';
+} from 'gamut-styles/utils/variables';
+import { Container } from 'gamut';
 import s from './Color-story.scss';
-
-const infoOptions = {
-  inline: true,
-  source: false,
-  propTables: false,
-};
 
 const parseCamelCase = string =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
@@ -57,8 +50,6 @@ const renderSwatches = (data, variablePrefix) =>
 
     return renderSwatch(sassVariableName, hexcode);
   });
-
-const stories = storiesOf('Visuals/Colors', module);
 
 export default {
   title: 'Visuals/Colors',
