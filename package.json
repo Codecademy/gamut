@@ -19,7 +19,7 @@
     "verify-all": "yarn wsrun --exclude-missing verify",
     "build-all": "yarn wsrun --exclude-missing build",
     "build-storybook": "yarn wsrun --exclude-missing build-storybook ",
-    "start": "yarn && yarn build-all; yarn start:storybook",
+    "start": "yarn && yarn start:storybook",
     "start:storybook": "yarn wsrun --exclude-missing storybook",
     "prepublishOnly": "yarn build-all"
   },
