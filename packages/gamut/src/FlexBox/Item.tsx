@@ -2,7 +2,6 @@ import React from 'react';
 import Container, { ContainerProps } from './Container';
 
 class Item extends React.Component<ContainerProps> {
-  static displayName = 'Item';
   static defaultProps = {
     flex: false,
   };
