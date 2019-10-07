@@ -1,8 +1,10 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
 import { create } from '@storybook/theming';
 import { withA11y } from '@storybook/addon-a11y';
+import centered from '@storybook/addon-centered/react';
 import wrapper from './decorators/wrapper';
 
+// addDecorator(centered);
 addDecorator(withA11y);
 addDecorator(wrapper);
 
@@ -21,8 +23,8 @@ addParameters({
 
 configure(
   [
-    require.context('../stories', true, /\.*-story\.mdx$/),
-    require.context('../stories', true, /\.*-story\.(j|t)sx?$/),
+    require.context('../stories', true, /\.stories\.mdx$/),
+    require.context('../stories', true, /\.stories\.(j|t)sx?$/),
   ],
   module
 );
