@@ -1,44 +1,29 @@
 @import "~gamut-styles/utils";
 
-// m
-// mt
-// mr
-// mb
-// ml
-// mx
-// my
-// p
-// pt
-// pr
-// pb
-// pl
-// px
-// py
-
 @mixin spacing($property) {
-  $prefix: slice($property, 1);
-  @for $i from 1 through 6 {
-    $value: ($i - 0.5) * $base-unit;
-    .#{$prefix}_#{i} {
+  $prefix: str-slice($property, 1, 1);
+  @for $i from 0 through 6 {
+    $value: $i * ($base-unit / 2);
+    .#{$prefix}_#{$i} {
       #{$property}: $value;
     }
-    .#{$prefix}t_#{i} {
+    .#{$prefix}t_#{$i} {
       #{$property}-top: $value;
     }
-    .#{$prefix}b_#{i} {
+    .#{$prefix}b_#{$i} {
       #{$property}-bottom: $value;
     }
-    .#{$prefix}l_#{i} {
+    .#{$prefix}l_#{$i} {
       #{$property}-left: $value;
     }
-    .#{$prefix}r_#{i} {
+    .#{$prefix}r_#{$i} {
       #{$property}-right: $value;
     }
-    .#{$prefix}x_#{i} {
+    .#{$prefix}x_#{$i} {
       #{$property}-right: $value;
       #{$property}-left: $value;
     }
-    .#{$prefix}y_#{i} {
+    .#{$prefix}y_#{$i} {
       #{$property}-top: $value;
       #{$property}-bottom: $value;
     }

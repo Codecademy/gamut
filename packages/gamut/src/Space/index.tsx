@@ -1,10 +1,12 @@
 import React from 'react';
 import cx from 'classnames';
+import styles from './styles.scss';
 
 export type GamutSpacing = 1 | 2 | 3 | 4 | 5 | 6;
 
 export type SpaceProps = {
   as?: React.ReactType;
+  asProps?: any;
   p?: GamutSpacing;
   pt?: GamutSpacing;
   pb?: GamutSpacing;
@@ -41,14 +43,26 @@ const spacingProps = [
 
 const spacingClasses = (props: Partial<SpaceProps>) => {
   return spacingProps
-    .map((prop: string) => (props[prop] ? `${prop}_${props[prop]}` : null))
+    .map((prop: keyof SpaceProps) =>
+      props[prop] ? styles[`${prop}_${props[prop]}`] : null
+    )
     .filter(Boolean);
 };
 
-const Space: React.FC<SpaceProps> = ({ as, className, children, ...rest }) => {
+const Space: React.FC<SpaceProps> = ({
+  as,
+  asProps = {},
+  className,
+  children,
+  ...rest
+}) => {
   const El = as || 'div';
   const classes = cx(...spacingClasses(rest), className);
-  return <El className={classes}>{children}</El>;
+  return (
+    <El className={classes} {...asProps}>
+      {children}
+    </El>
+  );
 };
 
 export default Space;

@@ -39,6 +39,7 @@ export { default as Toggle } from './Toggle';
 export { default as ToolTip } from './ToolTip';
 export { Grid, Col, Row } from './FlexGrid';
 export { Container, Item } from './FlexBox';
+export { default as Space } from './Space';
 export { default as AccessibilityIcon } from './Icon/icons/AccessibilityIcon';
 export { default as AddIcon } from './Icon/icons/AddIcon';
 export { default as AdvisorIcon } from './Icon/icons/AdvisorIcon';
