@@ -9,7 +9,9 @@ const babelConfig = options => ({
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
+            plugins: ['transform-class-properties'],
           },
+          exclude: /node_modules/,
         },
         options
       ),
