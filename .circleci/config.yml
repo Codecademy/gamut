@@ -160,8 +160,7 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - checkout_code:
-          context: org-global
+      - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -175,14 +174,12 @@ workflows:
           requires:
             - checkout_code
       - publish:
-          context: org-global
           requires:
             - checkout_code
           filters:
             branches:
               only: master
       - publish_alpha:
-          context: org-global
           filters:
             branches:
               ignore: master
