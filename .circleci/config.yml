@@ -42,7 +42,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
+        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
 
 jobs:
   checkout_code:
