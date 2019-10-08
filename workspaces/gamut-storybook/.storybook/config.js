@@ -1,10 +1,8 @@
 import { addParameters, configure, addDecorator } from '@storybook/react';
 import { create } from '@storybook/theming';
 import { withA11y } from '@storybook/addon-a11y';
-import centered from '@storybook/addon-centered/react';
 import wrapper from './decorators/wrapper';
 
-// addDecorator(centered);
 addDecorator(withA11y);
 addDecorator(wrapper);
 
