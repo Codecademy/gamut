@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.6...@codecademy/enzyme-helpers@1.1.7) (2019-10-08)
+
+**Note:** Version bump only for package @codecademy/enzyme-helpers
+
+
+
+
+
 ## [1.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.3...@codecademy/enzyme-helpers@1.1.6) (2019-09-03)
 
 **Note:** Version bump only for package @codecademy/enzyme-helpers

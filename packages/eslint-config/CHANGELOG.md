@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.7](http://github.com/Codecademy/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.2.6...@codecademy/eslint-config@0.2.7) (2019-10-08)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
 ## [0.2.6](http://github.com/Codecademy/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.2.3...@codecademy/eslint-config@0.2.6) (2019-09-03)
 
 **Note:** Version bump only for package @codecademy/eslint-config
