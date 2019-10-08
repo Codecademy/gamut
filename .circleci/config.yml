@@ -86,6 +86,7 @@ jobs:
   tests:
     <<: *default_env
     parallelism: 4
+    resource_class: large
     steps:
       - *restore_repo
       - run:
@@ -99,6 +100,7 @@ jobs:
 
   publish:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
@@ -139,6 +141,7 @@ jobs:
 
   publish_alpha:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
