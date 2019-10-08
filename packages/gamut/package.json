@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
@@ -22,7 +22,7 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^2.2.8",
+    "@codecademy/gamut-styles": "^2.2.9",
     "@types/marked": "^0.6.1",
     "@types/react-truncate": "^2.3.3",
     "classnames": "^2.2.5",
