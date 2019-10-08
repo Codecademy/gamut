@@ -5,7 +5,7 @@ references:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
     environment:
-      GITHUB_BOT_USERNAME: codecademy-circleci
+      GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
 
   repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
@@ -24,7 +24,7 @@ references:
       name: Set git user
       command: |
         git config --global user.email "dev@codecademy.com"
-        git config --global user.name "codecademy-circleci"
+        git config --global user.name "codecademydev"
         git config --global push.default current
 
   set_npm_token: &set_npm_token
