@@ -8,37 +8,37 @@ const notifications = [
     text: 'notification 1',
     id: '1',
     date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 1',
   },
   {
     text: 'notification 2',
     id: '2',
     date: 'Fri Mar 15 2019 09:10:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 2',
   },
   {
     text: 'notification 3',
     id: '3',
     date: 'Fri Mar 15 2019 09:20:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 3',
   },
   {
     text: 'notification 4',
     id: '4',
     date: 'Fri Mar 15 2019 09:30:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 4',
   },
   {
     text: 'notification 5',
     id: '5',
     date: 'Fri Mar 15 2019 09:40:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 5',
   },
   {
     text: 'notification 6',
     id: '6',
     date: 'Fri Mar 15 2019 09:50:00 GMT-0400',
-    campaign: 'new campaign',
+    campaign: 'new campaign 6',
   },
 ];
 describe('NotificationList', () => {
@@ -73,7 +73,7 @@ describe('NotificationList', () => {
       id: '1',
       date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
       unread: true,
-      campaign: 'new campaign',
+      campaign: 'new campaign 1',
     };
     const wrapper = shallow(
       React.createElement(NotificationList, {
@@ -108,4 +108,3 @@ describe('NotificationList', () => {
 });
 
 //# sourceMappingURL=NotificationList-test.js.map
-// some other comment
