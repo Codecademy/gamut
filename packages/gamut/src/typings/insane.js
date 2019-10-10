@@ -1,0 +1,1 @@
+//# sourceMappingURL=insane.js.map

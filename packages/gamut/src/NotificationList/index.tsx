@@ -20,7 +20,7 @@ const sortedNotifications = (notifications: Notification[]) => {
 type NotificationListProps = {
   className?: string;
   notifications?: Notification[];
-  onNotificationClick?: (_: string) => void;
+  onNotificationClick?: ({ _: string, _: string }) => void;
 };
 
 const NotificationList = (props: NotificationListProps) => {
@@ -54,7 +54,12 @@ const NotificationList = (props: NotificationListProps) => {
             <NotificationItem
               key={notification.id}
               notification={notification}
-              onClick={() => onNotificationClick(notification.id)}
+              onClick={() =>
+                onNotificationClick({
+                  eventId: notification.id,
+                  context: notification.campaignName,
+                })
+              }
             />
           );
         })

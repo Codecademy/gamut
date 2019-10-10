@@ -1,0 +1,97 @@
+import React from 'react';
+import { get } from 'lodash';
+import HtmlToReact from 'html-to-react';
+import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
+const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
+// Mapping of html attributes to their camelCase variants
+const attributeMap = {
+  ...camelCaseMap,
+  for: 'htmlFor',
+  class: 'className',
+};
+const processAttributeValue = value => {
+  if (value === 'true') {
+    return true;
+  }
+  if (value === 'false') {
+    return false;
+  }
+  return value || true;
+};
+// Convert html attributes to valid react props
+export const processAttributes = (attributes = {}) =>
+  Object.keys(attributes).reduce((acc, attr) => {
+    const reactAttr = attributeMap[attr.replace(/[-:]/, '')] || attr;
+    return {
+      ...acc,
+      [reactAttr]: processAttributeValue(attributes[attr]),
+    };
+  }, {});
+// generic html tag override
+export const createTagOverride = (tagName, Override) => ({
+  shouldProcessNode(node) {
+    if (!Override) return false;
+    if (Override.shouldProcessNode) {
+      return Override.shouldProcessNode(node);
+    }
+    return node.name === tagName.toLowerCase();
+  },
+  processNode(node, children, key) {
+    if (!Override) return null;
+    const props = {
+      ...processAttributes(node.attribs),
+      children,
+      key,
+    };
+    if (Override.processNode) {
+      return Override.processNode(node, props);
+    }
+    return React.createElement(Override.component, Object.assign({}, props));
+  },
+});
+// Allows <CodeBlock></CodeBlock> override and overrides of standard fenced codeblocks
+export const createCodeBlockOverride = (tagName, Override) =>
+  createTagOverride(tagName, {
+    shouldProcessNode(node) {
+      return (
+        (node.name === 'code' && get(node, 'parent.name') === 'pre') ||
+        node.name === tagName.toLowerCase()
+      );
+    },
+    processNode(node, props) {
+      const language =
+        props.className && props.className.replace('language-', '');
+      return React.createElement(
+        Override.component,
+        Object.assign({}, props, { language: language }),
+        props.children && props.children[0]
+      );
+    },
+    ...Override,
+  });
+const processText = text => {
+  // Replace &mdash; due to legacy markdown that didn't use smart dashes
+  return text.replace(/&mdash;/g, '\u2014');
+};
+export const standardOverrides = [
+  {
+    shouldProcessNode(node) {
+      // Parse text outside of code blocks
+      if (node.parent && ['code', 'pre'].indexOf(node.parent.name) >= 0) {
+        return false;
+      }
+      if (node.type === 'text') return true;
+      return false;
+    },
+    processNode(node) {
+      return processText(node.data);
+    },
+  },
+  {
+    shouldProcessNode() {
+      return true;
+    },
+    processNode: processNodeDefinitions.processDefaultNode,
+  },
+];
+//# sourceMappingURL=index.js.map
