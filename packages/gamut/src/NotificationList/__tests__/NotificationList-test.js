@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import NotificationList from '..';
 import Notification from '../NotificationItem';
+
 const notifications = [
   {
     text: 'notification 1',
@@ -105,4 +106,5 @@ describe('NotificationList', () => {
     });
   });
 });
+
 //# sourceMappingURL=NotificationList-test.js.map
