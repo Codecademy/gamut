@@ -8,37 +8,37 @@ const notifications = [
     text: 'notification 1',
     id: '1',
     date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
-    campaign: 'new campaign 1',
+    campaign: 'new campaign',
   },
   {
     text: 'notification 2',
     id: '2',
     date: 'Fri Mar 15 2019 09:10:00 GMT-0400',
-    campaign: 'new campaign 2',
+    campaign: 'new campaign',
   },
   {
     text: 'notification 3',
     id: '3',
     date: 'Fri Mar 15 2019 09:20:00 GMT-0400',
-    campaign: 'new campaign 3',
+    campaign: 'new campaign',
   },
   {
     text: 'notification 4',
     id: '4',
     date: 'Fri Mar 15 2019 09:30:00 GMT-0400',
-    campaign: 'new campaign 4',
+    campaign: 'new campaign',
   },
   {
     text: 'notification 5',
     id: '5',
     date: 'Fri Mar 15 2019 09:40:00 GMT-0400',
-    campaign: 'new campaign 5',
+    campaign: 'new campaign',
   },
   {
     text: 'notification 6',
     id: '6',
     date: 'Fri Mar 15 2019 09:50:00 GMT-0400',
-    campaign: 'new campaign 6',
+    campaign: 'new campaign',
   },
 ];
 describe('NotificationList', () => {
