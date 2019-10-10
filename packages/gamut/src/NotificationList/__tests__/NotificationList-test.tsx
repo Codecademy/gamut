@@ -102,6 +102,9 @@ describe('NotificationList', () => {
       .first()
       .simulate('click');
     expect(mockCallBack.mock.calls.length).toEqual(1);
-    expect(mockCallBack.mock.calls[0][0]).toStrictEqual('6');
+    expect(mockCallBack.mock.calls[0][0]).toStrictEqual({
+      context: 'new campaign',
+      eventId: '6',
+    });
   });
 });
