@@ -9,31 +9,37 @@ const notifications = [
     text: 'notification 1',
     id: '1',
     date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
+    campaign: 'New campaign',
   },
   {
     text: 'notification 2',
     id: '2',
     date: 'Fri Mar 15 2019 09:10:00 GMT-0400',
+    campaign: 'New campaign',
   },
   {
     text: 'notification 3',
     id: '3',
     date: 'Fri Mar 15 2019 09:20:00 GMT-0400',
+    campaign: 'New campaign',
   },
   {
     text: 'notification 4',
     id: '4',
     date: 'Fri Mar 15 2019 09:30:00 GMT-0400',
+    campaign: 'New campaign',
   },
   {
     text: 'notification 5',
     id: '5',
     date: 'Fri Mar 15 2019 09:40:00 GMT-0400',
+    campaign: 'New campaign',
   },
   {
     text: 'notification 6',
     id: '6',
     date: 'Fri Mar 15 2019 09:50:00 GMT-0400',
+    campaign: 'New campaign',
   },
 ];
 
@@ -68,6 +74,7 @@ describe('NotificationList', () => {
       id: '1',
       date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
       unread: true,
+      campaign: 'New campaign',
     };
 
     const wrapper = shallow(
@@ -95,6 +102,9 @@ describe('NotificationList', () => {
       .first()
       .simulate('click');
     expect(mockCallBack.mock.calls.length).toEqual(1);
-    expect(mockCallBack.mock.calls[0][0]).toBe('6');
+    expect(mockCallBack.mock.calls[0][0]).toStrictEqual({
+      context: 'New campaign',
+      eventId: '6',
+    });
   });
 });

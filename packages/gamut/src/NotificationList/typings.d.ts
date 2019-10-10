@@ -12,4 +12,5 @@ export declare type Notification = {
     link?: string;
     text: string;
     unread?: boolean;
+    campaign: string;
 };

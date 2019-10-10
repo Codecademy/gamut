@@ -45,7 +45,7 @@ const NotificationList = props => {
             onClick: () =>
               onNotificationClick({
                 eventId: notification.id,
-                context: notification.campaignName,
+                context: notification.campaign,
               }),
           });
         })

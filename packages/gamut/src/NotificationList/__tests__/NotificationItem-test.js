@@ -6,11 +6,13 @@ const linkedNotification = {
   id: '2',
   date: '2019-08-29T15:27:22Z',
   link: '/#',
+  campaign: 'new campaign',
 };
 const noLinkNotification = {
   text: 'notification 1',
   id: '1',
   date: '2019-08-29T15:27:22Z',
+  campaign: 'new campaign',
 };
 describe('NotificationItem', () => {
   it('renders an anchor tag if href is specified', () => {
