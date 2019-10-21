@@ -28,4 +28,5 @@ module.exports = {
   testRegex: '\\-test\\.(j|t)sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
+  coverageDirectory: './coverage',
 };

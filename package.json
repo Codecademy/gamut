@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:ci": "jest --coverage --reporters='default' --reporters='jest-junit'",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
