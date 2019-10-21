@@ -73,12 +73,19 @@ module.exports = ({ config, mode }) => {
         'babel-plugin-react-docgen-typescript',
         {
           docgenCollectionName: 'STORYBOOK_REACT_CLASSES',
-          // include: 'gamut.*\\.tsx$',
-          // exclude: 'stories\\.tsx$',
+          exclude: 'stories\\.tsx$',
         },
       ],
     ]);
-    // config.module.rules[jsIndex].use.push('react-docgen-typescript-loader');
+    // config.module.rules[jsIndex].use.push({
+    //   loader: 'react-docgen-typescript-loader',
+    //   options: {
+    //     tsconfigPath: path.resolve(
+    //       __dirname,
+    //       '../../../packages/gamut/tsconfig.json'
+    //     ),
+    //   },
+    // });
   }
 
   const cssIndex = config.module.rules.findIndex(

@@ -10,7 +10,11 @@
     "./**/*.js",
     "./**/*.jsx",
     "./**/*.ts",
-    "./**/*.tsx"
+    "./**/*.tsx",
+    "../../packages/**/src/**/*.js",
+    "../../packages/**/src/**/*.jsx",
+    "../../packages/**/src/**/*.ts",
+    "../../packages/**/src/**/*.tsx"
   ],
   "exclude": []
 }

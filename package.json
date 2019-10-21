@@ -37,6 +37,9 @@
     "packages/*",
     "workspaces/*"
   ],
+  "resolutions": {
+    "**/react-docgen": "5.0.0-beta.1"
+  },
   "dependencies": {
     "lerna": "3.16.4",
     "wsrun": "3.6.4"
