@@ -41,8 +41,8 @@ module.exports = {
         skipUndeclared: true,
       },
     ],
-    'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
 
     // These rules could be useful, but we haven't gotten around to trying them out
     '@typescript-eslint/array-type': 'off',
@@ -51,6 +51,7 @@ module.exports = {
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
     '@typescript-eslint/member-ordering': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
