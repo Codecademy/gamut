@@ -7,13 +7,4 @@
  * move to a shared private module instead of having this in the
  * project root
  */
-const defaultConfig = require('./packages/eslint-config');
-
-module.exports = {
-  ...defaultConfig,
-  rules: {
-    ...defaultConfig.rules,
-    'prefer-destructuring': 0,
-    'react/default-props-match-prop-types': 0,
-  },
-};
+module.exports = require('./packages/eslint-config');
