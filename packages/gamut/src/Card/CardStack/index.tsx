@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './styles.scss';
 
-function CardStack() {
+export function CardStack() {
   return (
     <div className={styles.container}>
       <div className={styles.cardStack} />

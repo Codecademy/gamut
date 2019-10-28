@@ -5,7 +5,7 @@ export default {
 };
 
 export const welcome = () => (
-  <div>
+  <div style={{ minHeight: '100vh', padding: '1rem' }}>
     <h1> Welcome to Gamut </h1>
     <p>
       This storybook represents components found in the{' '}

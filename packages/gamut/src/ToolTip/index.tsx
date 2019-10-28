@@ -11,7 +11,7 @@ type ToolTipProps = {
   id: string;
 };
 
-class ToolTip extends Component<ToolTipProps> {
+export class ToolTip extends Component<ToolTipProps> {
   static defaultProps = {
     position: 'top-right',
   };

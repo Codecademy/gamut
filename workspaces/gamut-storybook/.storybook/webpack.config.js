@@ -6,7 +6,6 @@
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
 
-const webpack = require('webpack');
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -21,7 +20,6 @@ const { createConfig, merge } = require('@codecademy/webpack-config');
  */
 
 module.exports = ({ config, mode }) => {
-  const DEV = mode === 'DEVELOPMENT';
   const defaultConfig = createConfig()
     .common({
       context: path.resolve(__dirname, '../'),
@@ -62,30 +60,12 @@ module.exports = ({ config, mode }) => {
     config.module.rules[jsIndex].use[0].options.presets.push(
       '@babel/preset-typescript'
     );
-    config.module.rules[jsIndex].use[0].options.plugins.concat([
-      [
-        'babel-plugin-react-docgen',
-        {
-          DOC_GEN_COLLECTION_NAME: 'STORYBOOK_REACT_CLASSES',
-        },
-      ],
-      [
-        'babel-plugin-react-docgen-typescript',
-        {
-          docgenCollectionName: 'STORYBOOK_REACT_CLASSES',
-          exclude: 'stories\\.tsx$',
-        },
-      ],
-    ]);
-    // config.module.rules[jsIndex].use.push({
-    //   loader: 'react-docgen-typescript-loader',
-    //   options: {
-    //     tsconfigPath: path.resolve(
-    //       __dirname,
-    //       '../../../packages/gamut/tsconfig.json'
-    //     ),
-    //   },
-    // });
+    config.module.rules[jsIndex].use.push({
+      loader: 'react-docgen-typescript-loader',
+      options: {
+        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+      },
+    });
   }
 
   const cssIndex = config.module.rules.findIndex(

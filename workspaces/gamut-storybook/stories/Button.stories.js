@@ -42,6 +42,7 @@ const btnStyle = {
 };
 
 export default {
+  component: Button,
   title: 'Component/Button',
   decorators: [withKnobs],
 };

@@ -20,6 +20,7 @@ const borderStyles = ['dashed', 'solid', 'none'];
 const alignStyles = ['left', 'center', 'right'];
 
 export default {
+  component: CardShell,
   title: 'Component/Card',
   decorators: [withKnobs],
 };

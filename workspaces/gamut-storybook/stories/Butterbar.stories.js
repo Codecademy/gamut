@@ -5,6 +5,7 @@ import { AlertIcon } from '@codecademy/gamut-icons';
 import styles from './Butterbar-story.scss';
 
 export default {
+  component: Butterbar,
   title: 'Component/Butterbar',
 };
 

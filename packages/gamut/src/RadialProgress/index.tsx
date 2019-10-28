@@ -21,7 +21,7 @@ const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
-const RadialProgress: FunctionComponent<RadialProgressProps> = ({
+export const RadialProgress: FunctionComponent<RadialProgressProps> = ({
   size,
   duration,
   value,
