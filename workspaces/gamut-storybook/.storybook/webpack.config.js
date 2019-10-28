@@ -55,7 +55,7 @@ module.exports = ({ config, mode }) => {
     config.module.rules[jsIndex].include.push(
       path.resolve(__dirname, '../../../packages')
     );
-    config.module.rules[jsIndex].exclude.push(/node_modules/);
+    config.module.rules[jsIndex].exclude.push(/.*node_modules.*/);
     config.module.rules[jsIndex].use[0].options.babelrc = false;
     config.module.rules[jsIndex].use[0].options.presets.push(
       '@babel/preset-typescript'
@@ -64,6 +64,12 @@ module.exports = ({ config, mode }) => {
       loader: 'react-docgen-typescript-loader',
       options: {
         tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+        propFilter(p) {
+          if (p.parent && p.parent.fileName.match('node_modules')) {
+            return false;
+          }
+          return true;
+        },
       },
     });
   }
