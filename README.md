@@ -4,7 +4,7 @@ _Shared node modules for codecademy.com & co_
 
 ---
 
-## [![CircleCI](https://circleci.com/gh/codecademy-engineering/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
+## [![CircleCI](https://circleci.com/gh/Codecademy/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
@@ -18,11 +18,8 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 ## Local development
 
-1.  Log into npm
-    * Run `npm login` with username `codecademy`; you can find the password in LastPass
-    * Running `npm whoami` should return `codecademy`
-2.  Run `yarn` in the root directory
-3.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+1.  Run `yarn` in the root directory
+1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
 ### Running storybook
 
@@ -83,15 +80,15 @@ The `type` determines what kind of version bump is needed. A `fix` will create a
 
 `type` must be one of the following:
 
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **docs**: Documentation only changes
-* **feat**: A new feature
-* **fix**: A bug fix
-* **perf**: A code change that improves performance
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **test**: Adding missing tests or correcting existing tests
-* **ci**: Changes to our CI configuration files and scripts
-* **build**: Changes that affect the build system or external dependencies
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **docs**: Documentation only changes
+- **feat**: A new feature
+- **fix**: A bug fix
+- **perf**: A code change that improves performance
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+- **test**: Adding missing tests or correcting existing tests
+- **ci**: Changes to our CI configuration files and scripts
+- **build**: Changes that affect the build system or external dependencies
 
 **Scope**
 

@@ -3822,6 +3822,14 @@
     "@types/react" "*"
     "@types/webpack-env" "*"
 
+"@types/storybook__react@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/@types/storybook__react/-/storybook__react-4.0.2.tgz#f36fb399574c662e79c1a0cf6e429b6ff730da40"
+  integrity sha512-U/+J5qccRdKFryvHkk1a0IeZaSIZLCmTwAQhTSDGeC3SPNIYPus+EtunBqP49r870l8czbfxtjeC3IL9P66ngQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/webpack-env" "*"
+
 "@types/unist@*", "@types/unist@^2.0.0", "@types/unist@^2.0.2", "@types/unist@^2.0.3":
   version "2.0.3"
   resolved "https://registry.npmjs.org/@types/unist/-/unist-2.0.3.tgz#9c088679876f374eb5983f150d4787aa6fb32d7e"

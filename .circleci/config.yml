@@ -5,7 +5,7 @@ references:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
     environment:
-      GITHUB_BOT_USERNAME: codecademy-circleci
+      GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
 
   repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
@@ -24,7 +24,7 @@ references:
       name: Set git user
       command: |
         git config --global user.email "dev@codecademy.com"
-        git config --global user.name "codecademy-circleci"
+        git config --global user.name "codecademydev"
         git config --global push.default current
 
   set_npm_token: &set_npm_token
@@ -42,7 +42,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
+        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
 
 jobs:
   checkout_code:
@@ -86,6 +86,7 @@ jobs:
   tests:
     <<: *default_env
     parallelism: 4
+    resource_class: large
     steps:
       - *restore_repo
       - run:
@@ -99,6 +100,7 @@ jobs:
 
   publish:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
@@ -139,6 +141,7 @@ jobs:
 
   publish_alpha:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
