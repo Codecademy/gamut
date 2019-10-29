@@ -7,4 +7,23 @@
  * move to a shared private module instead of having this in the
  * project root
  */
-module.exports = require('./packages/eslint-config');
+const defaultConfig = require('./packages/eslint-config');
+
+module.exports = {
+  ...defaultConfig,
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        'import/default': 'off',
+        'import/named': 'off',
+      },
+    },
+    {
+      files: ['**/typings/*', '*.d.ts'],
+      rules: {
+        '@typescript-eslint/no-namespace': 'off',
+      },
+    },
+  ],
+};

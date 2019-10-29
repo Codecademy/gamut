@@ -20,7 +20,7 @@ storiesOf('Component/Icon', module)
     })(() => (
       <div className={s.grid}>
         {iconNames.map(iconName => (
-          <span className={s.iconWrapper}>
+          <span className={s.iconWrapper} key={iconName}>
             <Icon key={iconName} name={iconName} />
             <span>{iconName}</span>
           </span>

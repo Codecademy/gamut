@@ -9,7 +9,7 @@ export type ToggleProps = {
   disabled?: boolean;
 };
 
-class Toggle extends Component<ToggleProps, {}> {
+class Toggle extends Component<ToggleProps> {
   render() {
     const { checked, onChange, label, disabled } = this.props;
     return (
