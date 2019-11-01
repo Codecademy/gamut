@@ -91,6 +91,5 @@ module.exports = ({ config, mode }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-  // console.log(config.module.rules[0].use[0].options.plugins);
   return merge.smart(config, configToExtend);
 };
