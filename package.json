@@ -33,12 +33,12 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/client-modules.git"
   },
-  "workspaces": [
-    "packages/*",
-    "workspaces/*"
-  ],
-  "resolutions": {
-    "**/react-docgen": "5.0.0-beta.1"
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "workspaces/*"
+    ],
+    "nohoist": ["**/@storybook/**"]
   },
   "dependencies": {
     "lerna": "3.16.4",

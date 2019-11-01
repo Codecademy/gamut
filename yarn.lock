@@ -13666,7 +13666,7 @@ react-docgen-typescript@^1.2.3:
   version "1.12.3"
   resolved "https://registry.npmjs.org/react-docgen-typescript/-/react-docgen-typescript-1.12.3.tgz#fe62a5ce82e93573e316366e53adfe8273121c70"
 
-react-docgen@5.0.0-beta.1, react-docgen@^5.0.0-beta.1:
+react-docgen@^5.0.0-beta.1:
   version "5.0.0-beta.1"
   resolved "https://registry.npmjs.org/react-docgen/-/react-docgen-5.0.0-beta.1.tgz#3654ab8f5cb7abacbfc122c1950c45d8e77048da"
   integrity sha512-CbbHF5jXrgyXuP3gQcN1zG4YpNj5QQuxTsEhKH3UXQN01V4cho/eL926ya6ecCWryUtlK97QGRxtK48KbCtXEQ==

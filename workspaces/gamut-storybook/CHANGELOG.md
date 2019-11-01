@@ -31,9 +31,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.0...@codecademy/gamut-storybook@3.0.1) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 # [3.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
 
@@ -54,7 +62,7 @@ import Button from '@codecademy/gamut/Button'
 now need to include the dist folder:
 
 ```
-import Button from 'gamut/Button'
+import Button from '@codecademy/gamut/dist/Button'
 ```
 
 or, preferably, import the named export instead:
@@ -350,7 +358,7 @@ import { Button } from '@codecademy/gamut'
 
 ## [2.11.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.3...@codecademy/gamut-storybook@2.11.4) (2019-04-08)
 
-## [2.11.9](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.11.8...@codecademy/gamut-storybook@2.11.9) (2019-04-11)
+### Bug Fixes
 
 - **deps:** pin dependencies ([#288](https://github.com/Codecademy/client-modules/issues/288)) ([273e99a](https://github.com/Codecademy/client-modules/commit/273e99a))
 
@@ -442,7 +450,7 @@ import { Button } from '@codecademy/gamut'
 
 ## [2.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.4...@codecademy/gamut-storybook@2.9.5) (2019-03-21)
 
-### Bug Fixes
+**Note:** Version bump only for package @codecademy/gamut-storybook
 
 ## [2.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.3...@codecademy/gamut-storybook@2.9.4) (2019-03-21)
 
@@ -482,8 +490,7 @@ import { Button } from '@codecademy/gamut'
 
 ## [2.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.8.0...@codecademy/gamut-storybook@2.8.1) (2019-03-14)
 
-- **deps:** update dependency css-loader to v2.1.1 ([#245](https://github.com/codecademy-engineering/client-modules/issues/245)) ([a033a4b](https://github.com/codecademy-engineering/client-modules/commit/a033a4b))
-- **deps:** update dependency webpack to v4.29.6 ([#247](https://github.com/codecademy-engineering/client-modules/issues/247)) ([dd6a897](https://github.com/codecademy-engineering/client-modules/commit/dd6a897))
+**Note:** Version bump only for package @codecademy/gamut-storybook
 
 # [2.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.7.0...@codecademy/gamut-storybook@2.8.0) (2019-03-13)
 
@@ -521,7 +528,7 @@ import { Button } from '@codecademy/gamut'
 
 ## [2.5.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.9...@codecademy/gamut-storybook@2.5.10) (2019-03-06)
 
-- Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/gamut/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/gamut/commit/c5c1e7f))
+**Note:** Version bump only for package @codecademy/gamut-storybook
 
 ## [2.5.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.8...@codecademy/gamut-storybook@2.5.9) (2019-03-06)
 
