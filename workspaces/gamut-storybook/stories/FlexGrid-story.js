@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Item, Grid, Row, Col } from '@codecademy/gamut';
+import { Item, Grid, Row, Col } from 'gamut';
 import gamut from '@codecademy/gamut-styles/utils/variables';
 
 const Box = () => (

@@ -1,4 +1,4 @@
-import { Badge } from '@codecademy/gamut';
+import { Badge } from 'gamut';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 

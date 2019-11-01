@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@codecademy/gamut';
+import { Spinner } from 'gamut';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 storiesOf('Component/Spinner', module)
