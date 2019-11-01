@@ -43,13 +43,15 @@ const ButtonBase = (props: ButtonBaseProps) => {
   });
 
   if (As) {
-    <As
-      {...asProps}
-      data-btn
-      {...propsToTransfer}
-      className={classes}
-      onClick={onClick}
-    />;
+    return (
+      <As
+        {...asProps}
+        data-btn
+        {...propsToTransfer}
+        className={classes}
+        onClick={onClick}
+      />
+    );
   }
 
   const BaseTag = href ? 'a' : 'button';
