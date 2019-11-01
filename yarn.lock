@@ -5795,9 +5795,9 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     sha.js "^2.4.8"
 
 create-index@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/create-index/-/create-index-2.4.0.tgz#3da44d208ec9da8e929de10edb7f5738d13577c4"
-  integrity sha512-OKjQ48eb9rRF8EhLfqQQsQLlMFpVMdsIXwsmOzvDB5AvfGK+wQ5WDCeGnIyCZ8YCaoTK70wS/pbP49lvHiGHRw==
+  version "2.5.0"
+  resolved "https://registry.npmjs.org/create-index/-/create-index-2.5.0.tgz#06f5a74a658738d2c5ce225738de3f1b418259ee"
+  integrity sha512-V9UaQCqxq8R40He737+MPS8dJhEv2PaoSExKEjwM8t3cSnSMBGId2tDp5wFhHxgjEJSgCcIYgWyHi889rufobA==
   dependencies:
     chalk "^1.1.3"
     glob "^7.1.1"
