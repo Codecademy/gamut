@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import styles from './styles.scss';
+import { ChildComponentDescriptor } from '../typings/react';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -15,6 +16,16 @@ const propTypes = {
 export type ButtonBaseProps = (
   | HTMLProps<HTMLLinkElement>
   | HTMLProps<HTMLButtonElement>) & {
+  /**
+   * Component type to wrap children with.
+   */
+  as?: ChildComponentDescriptor;
+  /**
+   * @remarks We would love to properly type this with generics, but cannot yet.
+   * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
+   * @see https://github.com/Microsoft/TypeScript/issues/21048
+   */
+  asProps?: any;
   children?: ReactNode;
   className?: string;
   href?: string;
@@ -24,13 +35,24 @@ export type ButtonBaseProps = (
 
 const ButtonBase = (props: ButtonBaseProps) => {
   const { href, className, link, onClick } = props;
-  const propsToTransfer = omitProps(propTypes, props);
+  const { as: As, asProps = {}, ...restOfProps } = props;
+  const propsToTransfer = omitProps(propTypes, restOfProps);
 
-  const BaseTag = href ? 'a' : 'button';
   const classes = cx(styles.basicBtn, className, {
     [styles.basicLink]: link,
   });
 
+  if (As) {
+    <As
+      {...asProps}
+      data-btn
+      {...propsToTransfer}
+      className={classes}
+      onClick={onClick}
+    />;
+  }
+
+  const BaseTag = href ? 'a' : 'button';
   return (
     <BaseTag
       data-btn
