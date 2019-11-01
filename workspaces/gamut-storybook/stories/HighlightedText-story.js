@@ -1,4 +1,4 @@
-import { HighlightedText } from '@codecademy/gamut';
+import { HighlightedText } from 'gamut';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
