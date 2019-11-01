@@ -112,6 +112,10 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
       - run:
+          # if lerna publish has no changed packages, it won't build, so we need to run the build again :/
+          name: build packages
+          command: yarn build-all
+      - run:
           name: build storybook
           command: yarn build-storybook
       - run:
