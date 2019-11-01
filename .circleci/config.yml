@@ -96,7 +96,7 @@ jobs:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
-            yarn test ${TESTFILES}
+            yarn test --ci --runInBand ${TESTFILES}
 
   publish:
     <<: *default_env
