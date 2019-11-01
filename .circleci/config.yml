@@ -127,7 +127,7 @@ jobs:
               git push
             fi
       - run:
-          name: update lockfile
+          name: update lockfile versions for published packages
           command: |
             npx yarn@1.15.2 --production=false
             if [ -n "$(git status --porcelain)" ]; then
