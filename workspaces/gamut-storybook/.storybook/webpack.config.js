@@ -31,6 +31,15 @@ module.exports = ({ config, mode }) => {
     .css()
     .merge({
       plugins: [new ForkTsCheckerWebpackPlugin()],
+      resolve: {
+        alias: {
+          gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
+          'gamut-styles': path.resolve(
+            __dirname,
+            '../../../packages/gamut-styles'
+          ),
+        },
+      },
     })
     .toConfig();
 
