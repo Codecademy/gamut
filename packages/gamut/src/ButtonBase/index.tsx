@@ -42,28 +42,21 @@ const ButtonBase = (props: ButtonBaseProps) => {
     [styles.basicLink]: link,
   });
 
+  const defaultProps = {
+    ...propsToTransfer,
+    className: classes,
+    onClick: onClick,
+  };
+
   if (As) {
-    return (
-      <As
-        {...asProps}
-        data-btn
-        {...propsToTransfer}
-        className={classes}
-        onClick={onClick}
-      />
-    );
+    return <As {...defaultProps} {...asProps} />;
   }
 
-  const BaseTag = href ? 'a' : 'button';
-  return (
-    <BaseTag
-      data-btn
-      {...propsToTransfer}
-      className={classes}
-      href={href}
-      onClick={onClick}
-    />
-  );
+  if (href) {
+    return <a {...defaultProps} href={href} />;
+  }
+
+  return <button {...defaultProps} />;
 };
 
 ButtonBase.propTypes = propTypes;
