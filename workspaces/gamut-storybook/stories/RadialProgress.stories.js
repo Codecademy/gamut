@@ -1,5 +1,5 @@
 import React from 'react';
-import RadialProgress from 'gamut/RadialProgress';
+import { RadialProgress } from 'gamut';
 import {
   withKnobs,
   text,
@@ -29,6 +29,7 @@ const AnimationController = ({ rendering }) => (
 );
 
 export default {
+  component: RadialProgress,
   title: 'Component/RadialProgress',
   decorators: [withKnobs],
 };

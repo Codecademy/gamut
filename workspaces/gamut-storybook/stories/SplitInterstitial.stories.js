@@ -5,6 +5,7 @@ import Stairs from '../assets/Stairs.svg';
 import styles from './SplitInterstitial-story.scss';
 
 export default {
+  component: 'SplitInterstitial',
   title: 'Component/SplitInterstitial',
 };
 

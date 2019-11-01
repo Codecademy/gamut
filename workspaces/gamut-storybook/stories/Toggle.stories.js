@@ -1,8 +1,9 @@
 import React from 'react';
-import Toggle from 'gamut/Toggle';
+import { Toggle } from 'gamut';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {
+  component: Toggle,
   title: 'Component/Toggle',
 };
 

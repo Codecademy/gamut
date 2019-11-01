@@ -4,6 +4,7 @@ import { select } from '@storybook/addon-knobs';
 import Icon from 'gamut/Icon';
 
 export default {
+  component: ToolTip,
   title: 'Component/ToolTip',
 };
 

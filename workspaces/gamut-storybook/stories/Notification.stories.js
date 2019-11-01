@@ -3,10 +3,10 @@ import React from 'react';
 import NotificationList from 'gamut/NotificationList';
 
 import moment from 'moment';
-import { addonInfoOptions as options } from './options';
 import s from './Notification-story.scss';
 
 export default {
+  component: NotificationList,
   title: 'Component/NotificationList',
 };
 

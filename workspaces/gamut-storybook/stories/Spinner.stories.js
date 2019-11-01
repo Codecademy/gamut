@@ -3,6 +3,7 @@ import { Spinner } from 'gamut';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {
+  component: Spinner,
   title: 'Component/Spinner',
   decorators: [withKnobs],
 };

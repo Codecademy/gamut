@@ -20,6 +20,7 @@ const defaultGridProps = {
 };
 
 export default {
+  component: Grid,
   title: 'Layout/Grid System',
 };
 

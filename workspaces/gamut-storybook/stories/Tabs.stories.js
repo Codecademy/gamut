@@ -1,8 +1,9 @@
 import React from 'react';
-import { Tabs, TabList, Tab, TabPanel } from 'gamut/Tabs';
+import { Tabs, TabList, Tab, TabPanel } from 'gamut';
 import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 
 export default {
+  component: Tabs,
   title: 'Component/Tabs',
   decorators: [withKnobs],
 };

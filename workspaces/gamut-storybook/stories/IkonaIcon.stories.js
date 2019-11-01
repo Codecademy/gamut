@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import IkonaIcon from 'gamut/IkonaIcon';
+import { IkonaIcon } from 'gamut';
 import classNames from 'gamut/IkonaIcon/styles';
 
 import { selectableColors } from './helpers';
@@ -11,6 +11,7 @@ const iconNames = Object.keys(classNames)
   .map(cn => cn.replace('ikona-', ''));
 
 export default {
+  component: IkonaIcon,
   title: 'Component/IkonaIcon (deprecated)',
   decorators: [withKnobs],
 };

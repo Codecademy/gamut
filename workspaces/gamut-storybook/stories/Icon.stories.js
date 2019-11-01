@@ -1,14 +1,14 @@
 import React from 'react';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import Icon from 'gamut/Icon';
+import { Icon } from 'gamut';
 import iconMap from 'gamut/Icon/iconMap';
 import { selectableColors } from './helpers';
-import { addonInfoOptions as options } from './options';
 import s from './Icon-story.scss';
 
 const iconNames = Object.keys(iconMap);
 
 export default {
+  component: Icon,
   title: 'Component/Icon (deprecated)',
   decorators: [withKnobs],
 };

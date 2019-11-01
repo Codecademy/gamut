@@ -3,6 +3,7 @@ import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 export default {
+  component: HighlightedText,
   title: 'Component/HighlightedText',
   decorators: [withKnobs],
 };
