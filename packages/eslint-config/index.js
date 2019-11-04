@@ -11,7 +11,8 @@ module.exports = {
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/all',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
@@ -81,6 +82,9 @@ module.exports = {
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/typedef': 'off',
+
+    // These rules have been deprecated in their plugins but not yet removed from presets
+    'jsx-a11y/label-has-for': 'off',
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',

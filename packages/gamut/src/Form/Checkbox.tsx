@@ -25,7 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
       className={s.invisible}
       {...inputProps}
     />
-    <label htmlFor={htmlFor} className={s.checkboxLabel}>
+    <label className={s.checkboxLabel} htmlFor={htmlFor}>
       <div className={s.checkbox}>
         <svg
           width="24px"
