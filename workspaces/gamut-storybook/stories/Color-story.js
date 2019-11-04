@@ -7,7 +7,7 @@ import {
   deprecatedEditorColors,
   brandColors,
 } from '@codecademy/gamut-styles/utils/variables';
-import { Container } from '@codecademy/gamut';
+import { Container } from 'gamut';
 import s from './Color-story.scss';
 
 const infoOptions = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import DeprecatedTabs from '@codecademy/gamut/dist/DeprecatedTabs';
+import DeprecatedTabs from 'gamut/DeprecatedTabs';
 
 function generateTabConfig(num, isDefault) {
   return [...Array(num).keys()].map(ind => {

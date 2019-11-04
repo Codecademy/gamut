@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@codecademy/gamut';
+import { Button } from 'gamut';
 import {
   Checkbox,
   RadioGroup,
@@ -12,7 +12,7 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from '@codecademy/gamut/dist/Form';
+} from 'gamut/Form';
 
 storiesOf('Component/Form', module)
   .addParameters({

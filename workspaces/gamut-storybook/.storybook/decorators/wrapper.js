@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@codecademy/gamut';
+import { Container } from 'gamut';
 import '@codecademy/gamut-styles/core/index';
 import './styles';
 
