@@ -48,7 +48,7 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   wrap?: boolean;
 }
 
-class Container extends React.Component<ContainerProps> {
+export class Container extends React.Component<ContainerProps> {
   static displayName = 'Container';
 
   static defaultProps = {

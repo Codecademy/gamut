@@ -16,7 +16,7 @@ export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
 /**
  * @deprecated Directly import icons from @codecademy/gamut instead.
  */
-function Icon({ name, size, ...props }: IconPropsDeprecated) {
+export function Icon({ name, size, ...props }: IconPropsDeprecated) {
   const MappedIcon = iconMap[name];
   const { label, ...iconProps } = props;
 

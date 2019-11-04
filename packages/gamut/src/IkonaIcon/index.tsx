@@ -36,7 +36,7 @@ export interface IkonaIconProps extends HTMLAttributes<HTMLElement> {
   style?: {};
 }
 
-class IkonaIcon extends PureComponent<IkonaIconProps> {
+export class IkonaIcon extends PureComponent<IkonaIconProps> {
   render() {
     const icon: string =
       `ikona-${this.props.name}` in s

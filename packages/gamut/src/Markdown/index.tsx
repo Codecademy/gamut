@@ -35,7 +35,7 @@ export interface MarkdownProps {
   text?: string;
 }
 
-class Markdown extends PureComponent<MarkdownProps> {
+export class Markdown extends PureComponent<MarkdownProps> {
   render() {
     const {
       spacing = 'tight',

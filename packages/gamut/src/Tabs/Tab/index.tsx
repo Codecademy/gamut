@@ -14,7 +14,7 @@ export type TabProps = {
   tabIndex?: number;
 };
 
-const Tab: FunctionComponent<TabProps> = ({
+export const Tab: FunctionComponent<TabProps> = ({
   active,
   activeClassName,
   children,
