@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import styles from './styles.scss';
-import { ChildComponentDescriptor } from '../typings/react';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -19,7 +18,7 @@ export type ButtonBaseProps = (
   /**
    * Component type to wrap children with.
    */
-  as?: ChildComponentDescriptor;
+  as?: React.ComponentType;
   /**
    * @remarks We would love to properly type this with generics, but cannot yet.
    * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
@@ -49,14 +48,14 @@ const ButtonBase = (props: ButtonBaseProps) => {
   };
 
   if (As) {
-    return <As {...defaultProps} {...asProps} />;
+    return <As data-btn {...defaultProps} {...asProps} />;
   }
 
   if (href) {
-    return <a {...defaultProps} href={href} />;
+    return <a data-btn {...defaultProps} href={href} />;
   }
 
-  return <button {...defaultProps} />;
+  return <button data-btn {...defaultProps} />;
 };
 
 ButtonBase.propTypes = propTypes;
