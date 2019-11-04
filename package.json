@@ -18,9 +18,9 @@
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn wsrun --exclude-missing verify",
     "build-all": "yarn wsrun --exclude-missing build",
-    "build-storybook": "yarn wsrun --exclude-missing build-storybook ",
     "start": "yarn && yarn start:storybook",
-    "start:storybook": "yarn wsrun --exclude-missing storybook",
+    "start:storybook": "cd ./workspaces/gamut-storybook && yarn start",
+    "build-storybook": "cd ./workspaces/gamut-storybook && yarn build-storybook",
     "prepublishOnly": "yarn build-all"
   },
   "lint-staged": {
