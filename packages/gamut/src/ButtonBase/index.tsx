@@ -50,6 +50,8 @@ const ButtonBase = (props: ButtonBaseProps) => {
   };
 
   if (href) {
+    // Anchor tag receives children content from propsToTransfer
+    // eslint-disable-next-line jsx-a11y/anchor-has-content
     return <a {...defaultProps} href={href} />;
   }
 
