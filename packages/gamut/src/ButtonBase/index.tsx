@@ -22,7 +22,7 @@ export type ButtonBaseProps = (
   onClick?: (event: object) => void;
 };
 
-const ButtonBase = (props: ButtonBaseProps) => {
+export const ButtonBase = (props: ButtonBaseProps) => {
   const { href, className, link, onClick } = props;
   const propsToTransfer = omitProps(propTypes, props);
 

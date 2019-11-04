@@ -12,7 +12,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
 };
 
-const Input: React.FC<InputProps> = ({
+export const Input: React.FC<InputProps> = ({
   error,
   htmlFor,
   className,

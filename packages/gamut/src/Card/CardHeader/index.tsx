@@ -9,7 +9,7 @@ interface CardHeaderProps {
   className?: string;
 }
 
-function CardHeader(props: CardHeaderProps) {
+export function CardHeader(props: CardHeaderProps) {
   let backgroundStyles = {
     background: props.backgroundColor,
   };

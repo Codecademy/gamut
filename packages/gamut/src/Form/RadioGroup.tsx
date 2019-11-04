@@ -7,7 +7,7 @@ export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
   selected?: string;
 };
 
-const RadioGroup: React.FC<RadioGroupProps> = ({
+export const RadioGroup: React.FC<RadioGroupProps> = ({
   children,
   onChange,
   htmlForPrefix,

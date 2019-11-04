@@ -24,7 +24,7 @@ export type LogoProps = SVGProps<SVGSVGElement> & {
   type: 'default' | 'pro' | 'proAlt' | 'proLockup' | 'program';
 };
 
-function Logo({ type, ...props }: LogoProps) {
+export function Logo({ type, ...props }: LogoProps) {
   const LogoTag = logos[type] || CodecademyLogo;
   return <LogoTag {...props} />;
 }

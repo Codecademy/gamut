@@ -1,6 +1,5 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import RadialProgress from 'gamut/RadialProgress';
+import { RadialProgress } from 'gamut';
 import {
   withKnobs,
   text,
@@ -29,33 +28,44 @@ const AnimationController = ({ rendering }) => (
   </div>
 );
 
-storiesOf('Component/RadialProgress', module)
-  .addDecorator(withKnobs)
-  .add(
-    'Example Animations',
-    () => <AnimationController rendering={boolean('rendering')} />,
-    {
-      info: {
-        inline: true,
-        propTables: false,
-      },
-    }
-  )
-  .add(
-    'Editable',
-    () => (
-      <RadialProgress
-        style={{ color: select('color', selectableColors, 'black') }}
-        size={text('size', '10rem')}
-        value={number('value', 30)}
-        strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
-        strokeWidth={text('strokeWidth', '10')}
-      />
-    ),
-    {
-      info: {
-        inline: true,
-        propTables: false,
-      },
-    }
-  );
+export default {
+  component: RadialProgress,
+  title: 'Component/RadialProgress',
+  decorators: [withKnobs],
+};
+
+export const exampleAnimations = () => (
+  <AnimationController rendering={boolean('rendering')} />
+);
+
+exampleAnimations.story = {
+  name: 'Example Animations',
+
+  parameters: {
+    info: {
+      inline: true,
+      propTables: false,
+    },
+  },
+};
+
+export const editable = () => (
+  <RadialProgress
+    style={{ color: select('color', selectableColors, 'black') }}
+    size={text('size', '10rem')}
+    value={number('value', 30)}
+    strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
+    strokeWidth={text('strokeWidth', '10')}
+  />
+);
+
+editable.story = {
+  name: 'Editable',
+
+  parameters: {
+    info: {
+      inline: true,
+      propTables: false,
+    },
+  },
+};

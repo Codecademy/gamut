@@ -19,7 +19,7 @@ const defaultProps = {
   onChange: () => {},
 };
 
-const TabList: FunctionComponent<TabListProps> = ({
+export const TabList: FunctionComponent<TabListProps> = ({
   activeTabIndex,
   center,
   children,

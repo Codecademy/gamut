@@ -60,7 +60,7 @@ export type RowProps<TElement extends HTMLElement = HTMLElement> = {
   tagName?: TElement['tagName'];
 };
 
-const Row = <TElement extends HTMLElement = HTMLDivElement>(
+export const Row = <TElement extends HTMLElement = HTMLDivElement>(
   props: RowProps<TElement>
 ) => {
   return React.createElement(

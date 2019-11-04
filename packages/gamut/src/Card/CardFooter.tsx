@@ -20,7 +20,7 @@ export type CardFooterProps = {
   standardPadding?: boolean;
 };
 
-const CardFooter = ({
+export const CardFooter = ({
   children,
   border,
   align,

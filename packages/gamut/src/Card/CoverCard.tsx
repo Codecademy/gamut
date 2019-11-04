@@ -12,7 +12,7 @@ interface CoverCardProps {
   footerChildren?: ReactNode;
 }
 
-function CoverCard(props: CoverCardProps) {
+export function CoverCard(props: CoverCardProps) {
   return (
     <CardShell className={styles.coverCardContainer}>
       <CardHeader className={props.headerClassName}>

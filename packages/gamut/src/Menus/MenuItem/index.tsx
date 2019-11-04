@@ -27,7 +27,7 @@ export type MenuItemProps = {
   selected?: boolean;
 };
 
-const MenuItem: React.FC<MenuItemProps> = ({
+export const MenuItem: React.FC<MenuItemProps> = ({
   as: As = 'a',
   asProps = {},
   selected,

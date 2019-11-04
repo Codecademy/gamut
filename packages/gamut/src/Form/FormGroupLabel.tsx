@@ -14,7 +14,7 @@ export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
   className?: string;
 };
 
-const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
+export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   htmlFor,
   className,
   ...rest

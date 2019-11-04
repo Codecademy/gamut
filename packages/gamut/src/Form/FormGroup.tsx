@@ -11,7 +11,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   description?: string;
 };
 
-const FormGroup: React.FC<FormGroupProps> = ({
+export const FormGroup: React.FC<FormGroupProps> = ({
   label,
   description,
   htmlFor,

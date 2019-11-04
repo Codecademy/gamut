@@ -19,7 +19,7 @@ interface TabsState {
   activeTabId?: string;
 }
 
-class Tabs extends Component<TabsProps, TabsState> {
+export class Tabs extends Component<TabsProps, TabsState> {
   state = { activeTabId: undefined } as TabsState;
 
   private idPrefix!: string;
