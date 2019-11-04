@@ -3,7 +3,7 @@ import 'gamut-styles/core/index';
 import './styles';
 
 export const wrapper = story => {
-  return story()
+  return story();
 };
 
 export default wrapper;
