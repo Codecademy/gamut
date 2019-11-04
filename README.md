@@ -25,6 +25,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 1.  Run `yarn start` to start the storybook server
 1.  Add new stories to `workspaces/gamut-storybook/stories`
+1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
 
 ### Publishing Modules
 
