@@ -46,17 +46,18 @@ const ButtonBase = (props: ButtonBaseProps) => {
     ...propsToTransfer,
     className: classes,
     onClick: onClick,
+    'data-btn': true,
   };
 
   if (href) {
-    return <a data-btn {...defaultProps} href={href} />;
+    return <a {...defaultProps} href={href} />;
   }
 
   if (As) {
-    return <As data-btn {...defaultProps} {...asProps} />;
+    return <As {...defaultProps} {...asProps} />;
   }
 
-  return <button data-btn {...defaultProps} />;
+  return <button type="button" {...defaultProps} />;
 };
 
 ButtonBase.propTypes = propTypes;
