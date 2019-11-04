@@ -18,6 +18,11 @@ describe('<ButtonBase>', () => {
     expect(wrapper.find('button').length).toEqual(1);
   });
 
+  it('allows a component override when passed through the As prop', () => {
+    const wrapper = shallow(<ButtonBase as="div" />);
+    expect(wrapper.find('button').length).toEqual(1);
+  });
+
   it('combines a passed down className with the default button styles', () => {
     const wrapper = shallow(<ButtonBase className="myCoolStyle" />);
     expect(wrapper.prop('className')).toBe('basicBtn myCoolStyle');
