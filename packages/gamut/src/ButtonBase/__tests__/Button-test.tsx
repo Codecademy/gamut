@@ -8,19 +8,19 @@ describe('<ButtonBase>', () => {
     expect(wrapper.find('#awesome').length).toEqual(1);
   });
 
-  it('uses an <a> tag when you pass in an href', () => {
+  it('allows a component override when passed through the As prop', () => {
+    const wrapper = shallow(<ButtonBase as="div" />);
+    expect(wrapper.find('div').length).toEqual(1);
+  });
+
+  it('uses an <a> tag when you pass in an href and the As prop is omitted', () => {
     const wrapper = shallow(<ButtonBase href="/awesome" />);
     expect(wrapper.find('a').length).toEqual(1);
   });
 
-  it('uses a button tag when you omit an href', () => {
+  it('uses a button tag when you omit an href and the As prop', () => {
     const wrapper = shallow(<ButtonBase />);
     expect(wrapper.find('button').length).toEqual(1);
-  });
-
-  it('allows a component override when passed through the As prop', () => {
-    const wrapper = shallow(<ButtonBase as="div" />);
-    expect(wrapper.find('div').length).toEqual(1);
   });
 
   it('combines a passed down className with the default button styles', () => {
