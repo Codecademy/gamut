@@ -31,7 +31,7 @@ type ButterbarState = {
   rendered: boolean;
 };
 
-class Butterbar extends Component<ButterbarProps, ButterbarState> {
+export class Butterbar extends Component<ButterbarProps, ButterbarState> {
   state = { closed: false, rendered: false };
 
   closeButterbar = (event: React.SyntheticEvent, storage: ButterbarStorage) => {

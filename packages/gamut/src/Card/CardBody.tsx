@@ -12,7 +12,11 @@ export type CardBodyProps = {
   standardPadding?: boolean;
 };
 
-const CardBody = ({ children, standardPadding, className }: CardBodyProps) => {
+export const CardBody = ({
+  children,
+  standardPadding,
+  className,
+}: CardBodyProps) => {
   const bodyClasses = cx(
     {
       [s.standardPadding]: standardPadding,

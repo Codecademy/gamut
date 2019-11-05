@@ -9,7 +9,7 @@ interface CardContentProps {
   textClassName?: string;
 }
 
-function CardContent(props: CardContentProps) {
+export function CardContent(props: CardContentProps) {
   return (
     <div className={cx(styles.contentContainer, props.className)}>
       <h3 className={cx(styles.title, props.textClassName)}>{props.title}</h3>

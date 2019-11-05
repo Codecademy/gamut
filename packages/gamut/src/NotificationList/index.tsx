@@ -23,7 +23,7 @@ type NotificationListProps = {
   onNotificationClick?: (notification: Notification) => void;
 };
 
-const NotificationList = (props: NotificationListProps) => {
+export const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
   const maxNotifications = 5;
 

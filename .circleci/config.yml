@@ -8,9 +8,9 @@ references:
       GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
 
-  repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v3-repo-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v3-repo-
+  repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}
 
   restore_repo: &restore_repo
     restore_cache:

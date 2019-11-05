@@ -11,7 +11,7 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-const TextArea: React.FC<TextAreaProps> = ({
+export const TextArea: React.FC<TextAreaProps> = ({
   error,
   htmlFor,
   className,

@@ -6,7 +6,6 @@
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
 
-const webpack = require('webpack');
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -21,13 +20,11 @@ const { createConfig, merge } = require('@codecademy/webpack-config');
  */
 
 module.exports = ({ config, mode }) => {
-  const DEV = mode === 'DEVELOPMENT';
   const defaultConfig = createConfig()
     .common({
       context: path.resolve(__dirname, '../'),
       includeDefaults: false,
     })
-    .babel()
     .css()
     .merge({
       plugins: [new ForkTsCheckerWebpackPlugin()],
@@ -43,21 +40,49 @@ module.exports = ({ config, mode }) => {
     })
     .toConfig();
 
-  // Remove webpack-config defaults that interfere with storybook
-  delete defaultConfig.entry;
-  delete defaultConfig.output;
+  const configToExtend = {
+    devtool: 'source-map',
+    module: defaultConfig.module,
+    plugins: defaultConfig.plugins,
+    resolve: {
+      extensions: defaultConfig.resolve.extensions,
+      alias: {
+        gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
+        'gamut-styles': path.resolve(
+          __dirname,
+          '../../../packages/gamut-styles'
+        ),
+      },
+    },
+  };
 
-  // let webpack-config handle optimization
-  delete config.optimization;
-
-  // Remove default storybook babel-loader
-  const babelIndex = config.module.rules.findIndex(
+  const jsIndex = config.module.rules.findIndex(
     r => r && r.test.test('test.js')
   );
-  if (babelIndex > -1) {
-    config.module.rules[babelIndex] = null;
+  if (jsIndex > -1) {
+    config.module.rules[jsIndex].test = /\.(mjs|(j|t)sx?)$/;
+    config.module.rules[jsIndex].include.push(
+      path.resolve(__dirname, '../../../packages')
+    );
+    config.module.rules[jsIndex].exclude.push(/.*node_modules.*/);
+    config.module.rules[jsIndex].use[0].options.babelrc = false;
+    config.module.rules[jsIndex].use[0].options.presets.push(
+      '@babel/preset-typescript'
+    );
+    config.module.rules[jsIndex].use.push({
+      loader: 'react-docgen-typescript-loader',
+      options: {
+        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+        propFilter(p) {
+          if (p.parent && p.parent.fileName.match('node_modules')) {
+            return false;
+          }
+          return true;
+        },
+      },
+    });
   }
-  // remove default storybook css loader
+
   const cssIndex = config.module.rules.findIndex(
     r => r && r.test.test('test.css')
   );
@@ -66,6 +91,5 @@ module.exports = ({ config, mode }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-
-  return merge.smart(defaultConfig, config);
+  return merge.smart(config, configToExtend);
 };

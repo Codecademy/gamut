@@ -16,7 +16,7 @@ export interface TabsState {
   activeTabIndex: number;
 }
 
-class Tabs extends Component<TabsProps> {
+export class Tabs extends Component<TabsProps> {
   state: TabsState = {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,
   };
