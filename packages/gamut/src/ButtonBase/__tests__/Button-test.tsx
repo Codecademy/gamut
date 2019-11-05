@@ -18,7 +18,7 @@ describe('<ButtonBase>', () => {
     expect(wrapper.find('a').length).toEqual(1);
   });
 
-  it('uses a button tag when you omit an href and the As prop', () => {
+  it('uses a <button> tag when you omit an href and the As prop', () => {
     const wrapper = shallow(<ButtonBase />);
     expect(wrapper.find('button').length).toEqual(1);
   });
