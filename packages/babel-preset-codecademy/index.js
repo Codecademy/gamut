@@ -20,8 +20,7 @@ module.exports = () => ({
         modules: false
       }
     ],
-    require("@babel/preset-react").default,
-    require("@babel/preset-flow").default
+    require("@babel/preset-react").default
   ].filter(Boolean),
   plugins: [
     require("@babel/plugin-transform-destructuring").default,
