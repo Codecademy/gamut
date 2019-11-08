@@ -11,9 +11,9 @@ references:
       NODE_OPTIONS: "--max_old_space_size=4096"
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v3-repo-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v3-repo-
+  repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}
 
   restore_repo: &restore_repo
     restore_cache:
@@ -102,6 +102,7 @@ jobs:
             JEST_JUNIT_OUTPUT_DIR="${CIRCLE_TEST_REPORTS}/jest" yarn test:ci ${TESTFILES}
       - codecov/upload:
           file: ${CIRCLE_TEST_REPORTS}/jest/
+
   publish:
     <<: *default_env
     resource_class: large
@@ -113,13 +114,10 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna version
-          command: yarn lerna version --include-merged-tags --conventional-commits --yes --create-release=github
-      - run:
           name: lerna publish
-          command: yarn lerna publish from-git --yes
+          command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
       - run:
-          # Storybook build will fail if there were no changed packages, but we still want to build
+          # if lerna publish has no changed packages, it won't build, so we need to run the build again :/
           name: build packages
           command: yarn build-all
       - run:
@@ -134,7 +132,7 @@ jobs:
               git push
             fi
       - run:
-          name: update lockfile
+          name: update lockfile versions for published packages
           command: |
             npx yarn@1.15.2 --production=false
             if [ -n "$(git status --porcelain)" ]; then
@@ -154,11 +152,8 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna version (alpha)
-          command: yarn lerna version prerelease --include-merged-tags --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
-      - run:
           name: lerna publish (alpha)
-          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+          command: yarn lerna publish --yes --include-merged-tags --conventional-commits --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
 
 workflows:
   version: 2

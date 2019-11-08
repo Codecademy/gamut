@@ -20,7 +20,7 @@ export type GridProps = {
   tagName?: string;
 };
 
-const Grid = (props: GridProps) => {
+export const Grid = (props: GridProps) => {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 

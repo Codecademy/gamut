@@ -1,4 +1,0 @@
-{
-  "presets": ["codecademy", "@babel/preset-typescript"],
-  "ignore": [],
-}

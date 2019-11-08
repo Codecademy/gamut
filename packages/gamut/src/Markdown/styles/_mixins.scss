@@ -20,6 +20,7 @@
     line-height: $line-height;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    word-break: break-word;
     &:empty {
       display: none;
     }
@@ -99,10 +100,10 @@
   }
 
   .pre {
-    white-space: pre;
+    white-space: pre-wrap;
     > .code {
       display: block;
-      white-space: inherit;
+      white-space: pre-wrap;
       padding: 0;
       margin: 0;
       background-color: transparent;

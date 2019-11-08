@@ -37,7 +37,7 @@ type NotificationImage = {
   imageUrl?: string;
 };
 
-const NotificationIcon = (props: NotificationImage) => (
+export const NotificationIcon = (props: NotificationImage) => (
   <div className={s.iconContainer}>{renderIcon(props)}</div>
 );
 
