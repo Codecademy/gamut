@@ -34,5 +34,13 @@ module.exports = {
   testRegex: '\\-test\\.(j|t)sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
+  collectCoverageFrom: ['packages/**/*.{js,jsx,ts,tsx}'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/stories/',
+    '/vendor/',
+    '/dist/',
+    '/gamut-icons/icons/',
+  ],
   coverageDirectory: './coverage',
 };
