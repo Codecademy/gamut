@@ -9,16 +9,14 @@
   width: 100%;
   font-weight: normal;
   padding: $form-padding;
-  border-radius: $border-radius;
-  border: 1px solid $deprecated-swatches-grey-100;
 }
 
 input:checked + .checkboxLabel .checkbox {
-  border-color: $deprecated-color-mint;
+  border-color: $color-blue-500;
 
   .checkboxVector {
     .squareVector {
-      fill: $deprecated-color-mint;
+      fill: $color-blue-500;
     }
 
     .checkVector {
@@ -26,10 +24,6 @@ input:checked + .checkboxLabel .checkbox {
       transition: stroke-dashoffset $transition-time;
     }
   }
-}
-
-input:checked + .checkboxLabel {
-  background-color: $deprecated-swatches-grey-100;
 }
 
 .checkbox {
