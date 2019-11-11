@@ -26,6 +26,19 @@ input:checked + .checkboxLabel .checkbox {
   }
 }
 
+input:disabled:checked + .checkboxLabel .checkbox {
+  border-color: $deprecated-swatches-grey-200;
+  .checkboxVector {
+    .squareVector {
+      fill: $deprecated-swatches-grey-200;
+    }
+  }
+}
+
+input:disabled + .checkboxLabel {
+  color: $deprecated-swatches-grey-200;
+}
+
 .checkbox {
   position: relative;
   margin-right: 0.5rem;
