@@ -48,3 +48,7 @@
   border: 0.25rem solid $color-white;
   box-shadow: 0 0 0 2px $deprecated-swatches-grey-200;
 }
+
+.radioInput:disabled + .radioLabel {
+  color: $deprecated-swatches-grey-200;
+}
