@@ -54,7 +54,7 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   underline?: boolean;
 };
 
-const Button = (props: ButtonProps) => {
+export const Button = (props: ButtonProps) => {
   let { theme = 'primary' } = props;
 
   if (theme && presetThemes[theme]) {

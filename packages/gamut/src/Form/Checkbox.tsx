@@ -12,7 +12,7 @@ export type CheckboxProps = HTMLAttributes<HTMLInputElement> & {
   value?: string;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   className,
   label,
   htmlFor,

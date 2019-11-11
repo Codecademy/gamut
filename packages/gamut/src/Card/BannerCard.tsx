@@ -11,7 +11,7 @@ interface BannerCardProps {
   footerChildren?: ReactNode;
 }
 
-function BannerCard(props: BannerCardProps) {
+export function BannerCard(props: BannerCardProps) {
   return (
     <CardShell className={styles.bannerCardContainer}>
       <CardHeader className={props.headerClassName}>

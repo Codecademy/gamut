@@ -15,7 +15,7 @@ export type CardShellProps = {
   role?: string;
 };
 
-const CardShell = ({
+export const CardShell = ({
   children,
   hoverShadow,
   className,

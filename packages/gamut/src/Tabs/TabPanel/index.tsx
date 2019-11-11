@@ -8,7 +8,7 @@ export type TabPanelProps = {
   renderAllPanels?: boolean;
 };
 
-const TabPanel: FunctionComponent<TabPanelProps> = ({
+export const TabPanel: FunctionComponent<TabPanelProps> = ({
   children,
   active,
   renderAllPanels,

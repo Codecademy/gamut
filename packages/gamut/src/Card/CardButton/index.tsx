@@ -11,7 +11,7 @@ interface CardButtonProps {
   className?: string;
 }
 
-function CardButton(props: CardButtonProps) {
+export function CardButton(props: CardButtonProps) {
   return (
     <button
       className={cx(styles.buttonContainer, props.className)}

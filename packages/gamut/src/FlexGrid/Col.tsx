@@ -73,7 +73,7 @@ export type ColProps = {
   children?: ReactNode;
 };
 
-const Col = (props: ColProps) => {
+export const Col = (props: ColProps) => {
   const className = getClassNames(props);
 
   return React.createElement(
