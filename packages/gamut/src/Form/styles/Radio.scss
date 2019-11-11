@@ -42,3 +42,9 @@
   min-width: px-rem(24px);
   min-height: px-rem(24px);
 }
+
+.radioInput:disabled:checked + .radioLabel::before {
+  background-color: $deprecated-swatches-grey-200;
+  border: 0.25rem solid $color-white;
+  box-shadow: 0 0 0 2px $deprecated-swatches-grey-200;
+}
