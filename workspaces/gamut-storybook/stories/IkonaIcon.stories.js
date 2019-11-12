@@ -19,7 +19,7 @@ export default {
 export const allIcons = () => (
   <div className={s.grid}>
     {iconNames.map(iconName => (
-      <span className={s.iconWrapper}>
+      <span className={s.iconWrapper} key={iconName}>
         <IkonaIcon key={iconName} name={iconName} size={2} />
         <span>{iconName}</span>
       </span>
