@@ -4,6 +4,7 @@ import s from './styles/Radio.scss';
 
 export type RadioProps = {
   checked?: boolean;
+  disabled?: boolean;
   className?: string;
   htmlFor?: string;
   id?: string;
@@ -21,6 +22,7 @@ export const Radio: React.FC<RadioProps> = ({
   label,
   checked,
   className,
+  disabled,
   htmlFor,
   onChange,
   required,
@@ -36,6 +38,7 @@ export const Radio: React.FC<RadioProps> = ({
         required={required}
         type="radio"
         checked={checked}
+        disabled={disabled}
         onChange={onChange}
         value={value}
         {...rest}

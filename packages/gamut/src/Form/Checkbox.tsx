@@ -4,6 +4,7 @@ import s from './styles/Checkbox.scss';
 export type CheckboxProps = HTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
   className?: string;
+  disabled?: boolean;
   htmlFor: string;
   label: ReactNode;
   name?: string;
