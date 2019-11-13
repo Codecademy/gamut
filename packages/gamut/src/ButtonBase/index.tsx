@@ -59,7 +59,7 @@ export const ButtonBase = (props: ButtonBaseProps) => {
     return <a {...defaultProps} href={href} />;
   }
 
-  return <button type="button" {...defaultProps} />;
+  return <button {...defaultProps} />;
 };
 
 ButtonBase.propTypes = propTypes;
