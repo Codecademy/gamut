@@ -3,7 +3,7 @@
   "private": true,
   "description": "Modules and components for Codecademy",
   "version": "1.2.0",
-  "license": "Proprietary",
+  "license": "MIT",
   "author": "Codecademy Engineers <dev@codecademy.com>",
   "engines": {
     "node": "^8.10.0",
@@ -38,7 +38,10 @@
       "packages/*",
       "workspaces/*"
     ],
-    "nohoist": ["**/@storybook/react", "**/@storybook/addon-storyshots"]
+    "nohoist": [
+      "**/@storybook/react",
+      "**/@storybook/addon-storyshots"
+    ]
   },
   "dependencies": {
     "lerna": "3.16.4",
