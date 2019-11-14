@@ -1,17 +1,10 @@
 import React, { HTMLProps, ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import styles from './styles.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  href: PropTypes.string,
-  link: PropTypes.bool,
-  onClick: PropTypes.func,
-};
+const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
 
 export type ButtonBaseProps = (
   | HTMLProps<HTMLLinkElement>
@@ -36,7 +29,7 @@ export type ButtonBaseProps = (
 export const ButtonBase = (props: ButtonBaseProps) => {
   const { href, className, link, onClick } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
-  const propsToTransfer = omitProps(propTypes, restOfProps);
+  const propsToTransfer = omitProps(propKeys, restOfProps);
 
   const classes = cx(styles.basicBtn, className, {
     [styles.basicLink]: link,
@@ -61,7 +54,5 @@ export const ButtonBase = (props: ButtonBaseProps) => {
 
   return <button {...defaultProps} />;
 };
-
-ButtonBase.propTypes = propTypes;
 
 export default ButtonBase;
