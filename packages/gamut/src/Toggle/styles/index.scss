@@ -20,12 +20,12 @@
   height: 1.8rem;
   padding: 0;
   border-radius: 99rem;
-  background-color: $deprecated-gamut-grey-800;
+  background-color: $deprecated-swatches-grey-200;
   transition: all 0.2s ease;
 }
 
 .toggled .track {
-  background-color: $deprecated-gamut-mint;
+  background-color: $color-blue-500;
 }
 
 .thumb {

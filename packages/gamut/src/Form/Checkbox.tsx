@@ -4,6 +4,7 @@ import s from './styles/Checkbox.scss';
 export type CheckboxProps = HTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
   className?: string;
+  disabled?: boolean;
   htmlFor: string;
   label: ReactNode;
   name?: string;
@@ -25,7 +26,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
       className={s.invisible}
       {...inputProps}
     />
-    <label htmlFor={htmlFor} className={s.checkboxLabel}>
+    <label className={s.checkboxLabel} htmlFor={htmlFor}>
       <div className={s.checkbox}>
         <svg
           width="24px"

@@ -11,9 +11,19 @@ const defaultConfig = require('./packages/eslint-config');
 
 module.exports = {
   ...defaultConfig,
-  rules: {
-    ...defaultConfig.rules,
-    'prefer-destructuring': 0,
-    'react/default-props-match-prop-types': 0,
-  },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        'import/default': 'off',
+        'import/named': 'off',
+      },
+    },
+    {
+      files: ['**/typings/*', '*.d.ts'],
+      rules: {
+        '@typescript-eslint/no-namespace': 'off',
+      },
+    },
+  ],
 };
