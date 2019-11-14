@@ -36,6 +36,13 @@ module.exports = {
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
     'no-only-tests/no-only-tests': 'error',
+    'react/prop-types': [
+      'error',
+      {
+        ignore: ['children'],
+        skipUndeclared: true,
+      },
+    ],
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
 
