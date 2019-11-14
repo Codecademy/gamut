@@ -26,6 +26,7 @@ module.exports = {
     '^gamut-styles$': '<rootDir>/packages/gamut-styles',
     '^gamut-styles/(.*)$': '<rootDir>/packages/gamut-styles/$1',
   },
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
     '\\.(j|t)sx?$': 'babel-jest',
@@ -41,6 +42,8 @@ module.exports = {
     '/vendor/',
     '/dist/',
     '/gamut-icons/icons/',
+    '/tmp/',
+    '/example/',
   ],
   coverageDirectory: './coverage',
 };
