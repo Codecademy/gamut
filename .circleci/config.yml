@@ -102,18 +102,9 @@ jobs:
             JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
       - store_test_results:
           path: /tmp/test-results
-      - persist_to_workspace:
-          root: /tmp/test-results
-          paths:
-            - jest/*
-
-  upload_coverage:
-    <<: *default_env
-    steps:
-      - attach_workspace:
-          at: /tmp/test-results
       - codecov/upload:
-          file: ${CIRCLE_TEST_REPORTS}/jest/
+          file: /tmp/test-results/jest/*.xml
+          flags: frontend
 
   publish:
     <<: *default_env
@@ -175,9 +166,6 @@ workflows:
       - tests:
           requires:
             - checkout_code
-      - upload_coverage:
-          requires:
-            - tests
       - verify_linting:
           requires:
             - checkout_code
