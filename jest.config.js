@@ -44,6 +44,7 @@ module.exports = {
     '/gamut-icons/icons/',
     '/tmp/',
     '/example/',
+    '/typings/',
   ],
   coverageDirectory: './coverage',
 };
