@@ -26,6 +26,7 @@ module.exports = {
     '^gamut-styles$': '<rootDir>/packages/gamut-styles',
     '^gamut-styles/(.*)$': '<rootDir>/packages/gamut-styles/$1',
   },
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
     '\\.(j|t)sx?$': 'babel-jest',
@@ -34,4 +35,16 @@ module.exports = {
   testRegex: '\\-test\\.(j|t)sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
+  collectCoverageFrom: ['packages/**/*.{js,jsx,ts,tsx}'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '/stories/',
+    '/vendor/',
+    '/dist/',
+    '/gamut-icons/icons/',
+    '/tmp/',
+    '/example/',
+    '/typings/',
+  ],
+  coverageDirectory: './coverage',
 };
