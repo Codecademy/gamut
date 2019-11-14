@@ -13,6 +13,12 @@ describe('Banner', () => {
     expect(component.find('span.test')).toHaveLength(1);
   });
 
+  it('does not render anything if it is closed', () => {
+    const component = shallow(<Banner onClose={() => {}} isClosed />);
+
+    expect(component.children().length).toBe(0);
+  });
+
   it('renders a button always', () => {
     const component = shallow(<Banner onClose={() => {}} />);
 
