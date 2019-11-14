@@ -99,11 +99,11 @@ jobs:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
-            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
+            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
       - store_test_results:
           path: /tmp/test-results
       - codecov/upload:
-          file: /tmp/test-results/jest/*.xml
+          file: /tmp/test-results/jest/*
           flags: frontend
 
   publish:
