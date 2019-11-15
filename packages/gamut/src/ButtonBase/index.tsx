@@ -59,6 +59,7 @@ export const ButtonBase = (props: ButtonBaseProps) => {
     return <a {...defaultProps} href={href} />;
   }
 
+  // eslint-disable-next-line react/button-has-type
   return <button {...defaultProps} />;
 };
 
