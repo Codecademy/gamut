@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.1.3...@codecademy/gamut@2.2.0) (2019-11-15)
+
+
+### Features
+
+* Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e5))
+
+
+
+
+
 ## [2.1.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.1.2...@codecademy/gamut@2.1.3) (2019-11-15)
 
 **Note:** Version bump only for package @codecademy/gamut

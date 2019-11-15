@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.8...@codecademy/gamut-storybook@3.1.0) (2019-11-15)
+
+
+### Features
+
+* Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e5))
+
+
+
+
+
 ## [3.0.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.7...@codecademy/gamut-storybook@3.0.8) (2019-11-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
