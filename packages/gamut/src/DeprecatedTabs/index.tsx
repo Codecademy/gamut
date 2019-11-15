@@ -110,6 +110,7 @@ export class Tabs extends Component<TabsProps, TabsState> {
     let activeTabId;
     // which tab should be shown right now?
     if (this.state.activeTabId) {
+      // eslint-disable-next-line prefer-destructuring
       activeTabId = this.state.activeTabId;
     } else if (this.props.config.findIndex(c => c.default) !== -1) {
       activeTabId = this.createId(this.props.config.findIndex(c => c.default));
