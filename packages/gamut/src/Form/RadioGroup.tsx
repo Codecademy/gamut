@@ -1,11 +1,15 @@
 import React, { cloneElement, HTMLAttributes } from 'react';
 
-export type RadioGroupProps = HTMLAttributes<HTMLDivElement> & {
-  children: any;
-  htmlForPrefix?: string;
-  name?: string;
-  selected?: string;
-};
+export type RadioGroupProps = Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> &
+  Pick<HTMLAttributes<HTMLInputElement>, 'onChange'> & {
+    /**
+     * @remarks This is meant to be `Radio`s.
+     */
+    children: any[];
+    htmlForPrefix?: string;
+    name?: string;
+    selected?: string;
+  };
 
 export const RadioGroup: React.FC<RadioGroupProps> = ({
   children,
