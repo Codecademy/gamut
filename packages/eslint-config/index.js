@@ -35,7 +35,27 @@ module.exports = {
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
+    eqeqeq: 'error',
+    'no-console': 'error',
+    'no-eval': 'error',
+    'no-global-assign': 'error',
+    'no-underscore-dangle': 'error',
     'no-only-tests/no-only-tests': 'error',
+    'prefer-destructuring': [
+      'error',
+      {
+        object: true,
+        array: false,
+      },
+    ],
+    'prefer-promise-reject-errors': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react/button-has-type': 'error',
+    'react/no-access-state-in-setstate': 'error',
+    'react/no-array-index-key': 'error',
+    'react/no-danger': 'error',
+    'react/no-unused-state': 'error',
     'react/prop-types': [
       'error',
       {
@@ -43,8 +63,6 @@ module.exports = {
         skipUndeclared: true,
       },
     ],
-    'react-hooks/exhaustive-deps': 'error',
-    'react-hooks/rules-of-hooks': 'error',
 
     // These rules could be useful, but we haven't gotten around to trying them out
     '@typescript-eslint/array-type': 'off',
