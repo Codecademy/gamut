@@ -1,5 +1,4 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import ButtonBase from '../ButtonBase';
 import omitProps from '../utils/omitProps';
@@ -15,23 +14,23 @@ export const presetThemes: { [i: string]: string } = {
   lantern: 'darkmint',
 };
 
-const propTypes = {
-  theme: PropTypes.string,
-  size: PropTypes.oneOf(['large', 'small']),
-  outline: PropTypes.bool,
-  underline: PropTypes.bool,
-  link: PropTypes.bool,
-  caps: PropTypes.bool,
-  go: PropTypes.bool,
-  children: PropTypes.node,
-  block: PropTypes.bool,
-  className: PropTypes.string,
-  round: PropTypes.bool,
-  square: PropTypes.bool,
-  flat: PropTypes.bool,
-  fitText: PropTypes.bool,
-  onClick: PropTypes.func,
-};
+const propKeys = [
+  'theme',
+  'size',
+  'outline',
+  'underline',
+  'link',
+  'caps',
+  'go',
+  'children',
+  'block',
+  'className',
+  'round',
+  'square',
+  'flat',
+  'fitText',
+  'onClick',
+];
 
 export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   /**
@@ -93,7 +92,7 @@ export const Button = (props: ButtonProps) => {
     props.className
   );
 
-  const propsToTransfer = omitProps(propTypes, props);
+  const propsToTransfer = omitProps(propKeys, props);
 
   return (
     <ButtonBase
@@ -106,7 +105,5 @@ export const Button = (props: ButtonProps) => {
     </ButtonBase>
   );
 };
-
-Button.propTypes = propTypes;
 
 export default Button;

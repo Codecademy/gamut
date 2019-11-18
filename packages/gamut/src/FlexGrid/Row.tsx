@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import style from './styles/index.scss';
 
-const ModificatorType = PropTypes.oneOf(['xs', 'sm', 'md', 'lg']);
-const modificatorKeys = [
+const propKeys = [
+  'reverse',
   'start',
   'center',
   'end',
@@ -16,26 +15,10 @@ const modificatorKeys = [
   'between',
   'first',
   'last',
+  'className',
+  'tagName',
+  'children',
 ];
-
-const propTypes = {
-  reverse: PropTypes.bool,
-  start: ModificatorType,
-  center: ModificatorType,
-  end: ModificatorType,
-  top: ModificatorType,
-  middle: ModificatorType,
-  bottom: ModificatorType,
-  around: ModificatorType,
-  between: ModificatorType,
-  first: ModificatorType,
-  last: ModificatorType,
-  className: PropTypes.string,
-  tagName: PropTypes.string,
-  children: PropTypes.node,
-};
-
-const propKeys = Object.keys(propTypes);
 
 function getClassNames(props: RowProps) {
   const modificators = [style.row];
@@ -54,10 +37,35 @@ function getClassNames(props: RowProps) {
   return cx(props.className, modificators);
 }
 
+const modificatorKeys = [
+  'start',
+  'center',
+  'end',
+  'top',
+  'middle',
+  'bottom',
+  'around',
+  'between',
+  'first',
+  'last',
+];
+
+type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
+
 export type RowProps<TElement extends HTMLElement = HTMLElement> = {
+  around: ModificatorType;
+  between: ModificatorType;
+  bottom: ModificatorType;
+  center: ModificatorType;
   className?: string;
+  end: ModificatorType;
+  first: ModificatorType;
+  last: ModificatorType;
+  middle: ModificatorType;
   reverse?: boolean;
+  start: ModificatorType;
   tagName?: TElement['tagName'];
+  top: ModificatorType;
 };
 
 export const Row = <TElement extends HTMLElement = HTMLDivElement>(
@@ -68,7 +76,5 @@ export const Row = <TElement extends HTMLElement = HTMLDivElement>(
     omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
 };
-
-Row.propTypes = propTypes;
 
 export default Row;
