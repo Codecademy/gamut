@@ -1,26 +1,21 @@
-import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import omitProps from '../utils/omitProps';
 import style from './styles/index.scss';
 
-const ModificatorType = PropTypes.oneOfType([PropTypes.number, PropTypes.bool]);
-
-const propTypes = {
-  xs: ModificatorType,
-  sm: ModificatorType,
-  md: ModificatorType,
-  lg: ModificatorType,
-  xsOffset: PropTypes.number,
-  smOffset: PropTypes.number,
-  mdOffset: PropTypes.number,
-  lgOffset: PropTypes.number,
-  reverse: PropTypes.bool,
-  className: PropTypes.string,
-  tagName: PropTypes.string,
-  children: PropTypes.node,
-};
-
-const propKeys = Object.keys(propTypes);
+const propKeys = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xsOffset',
+  'smOffset',
+  'mdOffset',
+  'lgOffset',
+  'reverse',
+  'className',
+  'tagName',
+  'children',
+];
 
 const classMap = {
   xs: 'col-xs',
@@ -70,7 +65,6 @@ export type ColProps = {
   tagName?: string;
   className?: string;
   reverse?: boolean;
-  children?: ReactNode;
 };
 
 export const Col = (props: ColProps) => {
@@ -81,7 +75,5 @@ export const Col = (props: ColProps) => {
     omitProps(propKeys, { ...props, className })
   );
 };
-
-Col.propTypes = propTypes;
 
 export default Col;

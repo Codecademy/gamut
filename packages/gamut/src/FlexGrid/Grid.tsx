@@ -1,17 +1,9 @@
 import React, { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import style from './styles/index.scss';
 
-const propTypes = {
-  fluid: PropTypes.bool,
-  className: PropTypes.string,
-  tagName: PropTypes.string,
-  children: PropTypes.node,
-};
-
-const propKeys = Object.keys(propTypes);
+const propKeys = ['fluid', 'className', 'tagName', 'children'];
 
 export type GridProps = {
   children?: ReactNode | ReactNode[];
@@ -29,7 +21,5 @@ export const Grid = (props: GridProps) => {
     omitProps(propKeys, { ...props, className })
   );
 };
-
-Grid.propTypes = propTypes;
 
 export default Grid;
