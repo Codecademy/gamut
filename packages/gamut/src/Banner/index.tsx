@@ -48,7 +48,7 @@ const Banner: React.FC<BannerProps> = ({
       {icon && <div data-testid="icon-id">{icon}</div>}
       <div className={cx(styles.content, classNames.content)}>{children}</div>
       <Button onClick={onClose} className={styles.closeButton}>
-        <CloseIcon />
+        <CloseIcon aria-label="dismiss" />
       </Button>
     </div>
   );
