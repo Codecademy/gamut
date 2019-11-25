@@ -4,7 +4,7 @@ import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
 import s from './styles.scss';
 
-export enum TooltipPosition {
+export enum ToolTipPosition {
   BottomLeft = 'bottom-left',
   BottomRight = 'bottom-right',
   TopLeft = 'top-left',
@@ -15,7 +15,7 @@ export type ToolTipProps = {
   children?: ReactNode;
   className?: string;
   id: string;
-  position?: TooltipPosition;
+  position?: ToolTipPosition;
   target?: ReactNode;
   theme?: VisualTheme;
 };
@@ -24,7 +24,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   children,
   className,
   target,
-  position = TooltipPosition.TopRight,
+  position = ToolTipPosition.TopRight,
   id,
   theme = VisualTheme.LightMode,
 }) => {
