@@ -1,0 +1,118 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$arrow-width: 1rem;
+$arrow-height: 0.5rem;
+$arrow-size-raw: #{($arrow-width + $arrow-height) / 2};
+$arrow-padding-horizontal: 1.5rem;
+$arrow-padding-vertical: 0.25rem;
+
+.toolTipWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.targetContainer {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+
+  &:hover + .toolTipContainer,
+  &:focus + .toolTipContainer {
+    display: block;
+  }
+}
+
+.toolTipContainer {
+  @include font-smoothing;
+
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  display: none;
+  position: absolute;
+  width: 17rem;
+
+  // Both before and after psuedo-elements are used...
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    height: $arrow-height;
+    position: absolute;
+    transform: rotate(45deg);
+    width: $arrow-height;
+  }
+
+  // The before pseudoelement is used to extend the box-shadow
+  &::before {
+    box-shadow: 3px 2px 4px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  // The after pseudo-element is used for the foreground visualization of the background color
+  &::after {
+    background: $color-white;
+  }
+}
+
+.toolTipContainerDark,
+.toolTipContainerDark::after {
+  background: $color-black;
+  color: $color-white;
+}
+
+$container-offset-horizontal: calc(
+  100% - #{($arrow-width / 2) + $arrow-padding-horizontal}
+);
+$container-offset-vertical: calc(
+  100% + #{$arrow-height + $arrow-padding-vertical}
+);
+
+$arrow-offset-horizontal: #{$arrow-padding-horizontal - ($arrow-width / 2)};
+$arrow-offset-vertical: -#{$arrow-height / 2};
+
+.top-left {
+  bottom: $container-offset-vertical;
+  right: $container-offset-horizontal;
+
+  &::after,
+  &::before {
+    right: $arrow-offset-horizontal;
+    bottom: $arrow-offset-vertical;
+  }
+}
+
+.top-right {
+  bottom: $container-offset-vertical;
+  left: $container-offset-horizontal;
+
+  &::after,
+  &::before {
+    left: $arrow-offset-horizontal;
+    bottom: $arrow-offset-vertical;
+  }
+}
+
+.bottom-left {
+  top: $container-offset-vertical;
+  right: $container-offset-horizontal;
+
+  &::after,
+  &::before {
+    right: $arrow-offset-horizontal;
+    top: $arrow-offset-vertical;
+  }
+}
+
+.bottom-right {
+  top: $container-offset-vertical;
+  left: $container-offset-horizontal;
+
+  &::after,
+  &::before {
+    left: $arrow-offset-horizontal;
+    top: $arrow-offset-vertical;
+  }
+}
+
+.toolTipBody {
+  padding: 0.75rem;
+}
