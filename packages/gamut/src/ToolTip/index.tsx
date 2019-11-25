@@ -4,25 +4,32 @@ import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
 import s from './styles.scss';
 
+export enum TooltipPosition {
+  BottomLeft = 'bottom-left',
+  BottomRight = 'bottom-right',
+  TopLeft = 'top-left',
+  TopRight = 'top-right',
+}
+
 export type ToolTipProps = {
-  target?: ReactNode;
   children?: ReactNode;
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  tipClassName?: string;
-  theme?: VisualTheme;
+  className?: string;
   id: string;
+  position?: TooltipPosition;
+  target?: ReactNode;
+  theme?: VisualTheme;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   children,
+  className,
   target,
-  position = 'top-right',
+  position = TooltipPosition.TopRight,
   id,
   theme = VisualTheme.LightMode,
-  tipClassName,
 }) => {
   return (
-    <div className={cx(s.toolTipWrapper)}>
+    <div className={cx(s.toolTipWrapper, className)}>
       <button aria-labelledby={id} type="button" className={s.targetContainer}>
         {target}
       </button>
@@ -30,7 +37,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         className={cx(
           s.toolTipContainer,
           s[position],
-          tipClassName,
           theme === VisualTheme.DarkMode
             ? s.toolTipContainerDark
             : s.toolTipContainerLight

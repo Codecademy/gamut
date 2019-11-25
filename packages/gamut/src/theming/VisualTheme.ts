@@ -1,4 +1,4 @@
 export enum VisualTheme {
-  DarkMode = 'DarkMode',
-  LightMode = 'LightMode',
+  DarkMode = 'dark-mode',
+  LightMode = 'light-mode',
 }

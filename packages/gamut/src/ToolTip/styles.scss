@@ -16,6 +16,8 @@ $container-offset-vertical: calc(
 $arrow-offset-horizontal: #{$arrow-padding-horizontal - ($arrow-width / 2)};
 $arrow-offset-vertical: -#{$arrow-height / 2};
 
+$slight-shadow: rgba(0, 0, 0, 0.15);
+
 .toolTipWrapper {
   position: relative;
   display: inline-flex;
@@ -29,7 +31,7 @@ $arrow-offset-vertical: -#{$arrow-height / 2};
 
   &:hover + .toolTipContainer,
   &:focus + .toolTipContainer {
-    display: block;
+    display: flex;
   }
 }
 
@@ -40,7 +42,8 @@ $arrow-offset-vertical: -#{$arrow-height / 2};
   position: absolute;
   width: 16rem;
 
-  // Both before and after psuedo-elements are used...
+  // Both before and after psuedo-elements are used because ::after's background should go over the container's
+  // and ::before's box-shadow should be behind the container itself
   &::after,
   &::before {
     content: "";
@@ -51,12 +54,6 @@ $arrow-offset-vertical: -#{$arrow-height / 2};
     width: $arrow-height;
   }
 
-  // The before pseudoelement is used to extend the box-shadow
-  &::before {
-    box-shadow: 3px 2px 4px 0 rgba(0, 0, 0, 0.15);
-  }
-
-  // The after pseudo-element is used for the foreground visualization of the background color
   &::after {
     background: $color-white;
   }
@@ -66,52 +63,64 @@ $arrow-offset-vertical: -#{$arrow-height / 2};
   background: $color-black;
 }
 
-.top-left {
-  bottom: $container-offset-vertical;
-  right: $container-offset-horizontal;
-
-  &::after,
-  &::before {
-    right: $arrow-offset-horizontal;
-    bottom: $arrow-offset-vertical;
-  }
-}
-
+.top-left,
 .top-right {
   bottom: $container-offset-vertical;
-  left: $container-offset-horizontal;
 
   &::after,
   &::before {
-    left: $arrow-offset-horizontal;
     bottom: $arrow-offset-vertical;
+  }
+
+  &::before {
+    box-shadow: 2px 2px 4px 0 $slight-shadow;
+  }
+
+  .toolTipBody {
+    box-shadow: 0 2px 4px 0 $slight-shadow;
   }
 }
 
-.bottom-left {
+.bottom-left,
+.bottom-right {
   top: $container-offset-vertical;
+
+  &::after,
+  &::before {
+    top: $arrow-offset-vertical;
+  }
+
+  &::before {
+    box-shadow: -2px -2px 4px 0 $slight-shadow;
+  }
+
+  .toolTipBody {
+    box-shadow: 0 -2px 4px 0 $slight-shadow;
+  }
+}
+
+.bottom-left,
+.top-left {
+  justify-content: flex-end;
   right: $container-offset-horizontal;
 
   &::after,
   &::before {
     right: $arrow-offset-horizontal;
-    top: $arrow-offset-vertical;
   }
 }
 
-.bottom-right {
-  top: $container-offset-vertical;
+.bottom-right,
+.top-right {
   left: $container-offset-horizontal;
 
   &::after,
   &::before {
     left: $arrow-offset-horizontal;
-    top: $arrow-offset-vertical;
   }
 }
 
 .toolTipBody {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
   display: inline-block;
   font-size: px-rem(14px);
   line-height: px-rem(18px);

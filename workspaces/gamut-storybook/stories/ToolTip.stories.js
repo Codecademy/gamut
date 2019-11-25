@@ -29,7 +29,7 @@ export const toolTip = () => (
         <em>antantwig</em> refers to a three week period.
       </ToolTip>
     </div>
-    <div style={{ margin: '2rem 0 7rem' }}>
+    <div style={{ margin: '2rem 0' }}>
       <div>
         It even supports a fancy dark mode too!
         <ToolTip
@@ -45,32 +45,44 @@ export const toolTip = () => (
           Dark mode has black background and white text.
         </ToolTip>
       </div>
+    </div>
+    <div style={{ marginBottom: '7rem ' }}>
       <div>
-        Small content
+        Top left
         <ToolTip
-          id="tooltip-small"
+          id="tooltip-top-left"
           target={<Icon name="informational" size={24} />}
-          theme={VisualTheme.DarkMode}
-          position={select(
-            'position',
-            ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
-            'bottom-left'
-          )}
+          position="top-left"
         >
           One fish...
         </ToolTip>
       </div>
       <div>
-        Medium content amounts
+        Top right
         <ToolTip
-          id="tooltip-medium"
+          id="tooltip-top-right"
           target={<Icon name="informational" size={24} />}
-          theme={VisualTheme.DarkMode}
-          position={select(
-            'position',
-            ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
-            'bottom-left'
-          )}
+          position="top-right"
+        >
+          Two fish; red fish; blue fish...
+        </ToolTip>
+      </div>
+      <div>
+        Bottom left
+        <ToolTip
+          id="tooltip-bottom-left"
+          target={<Icon name="informational" size={24} />}
+          position="bottom-left"
+        >
+          One fish...
+        </ToolTip>
+      </div>
+      <div>
+        Bottom right
+        <ToolTip
+          id="tooltip-bottom-right"
+          target={<Icon name="informational" size={24} />}
+          position="bottom-right"
         >
           Two fish; red fish; blue fish...
         </ToolTip>
