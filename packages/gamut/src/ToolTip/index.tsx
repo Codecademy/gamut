@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { CardShell, CardBody } from '../Card';
+import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
 import s from './styles.scss';
 
@@ -26,7 +26,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       <button aria-labelledby={id} type="button" className={s.targetContainer}>
         {target}
       </button>
-      <CardShell
+      <div
         className={cx(
           s.toolTipContainer,
           s[position],
@@ -39,7 +39,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         id={id}
       >
         <CardBody className={s.toolTipBody}>{children}</CardBody>
-      </CardShell>
+      </div>
     </div>
   );
 };

@@ -45,6 +45,36 @@ export const toolTip = () => (
           Dark mode has black background and white text.
         </ToolTip>
       </div>
+      <div>
+        Small content
+        <ToolTip
+          id="tooltip-small"
+          target={<Icon name="informational" size={24} />}
+          theme={VisualTheme.DarkMode}
+          position={select(
+            'position',
+            ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
+            'bottom-left'
+          )}
+        >
+          One fish...
+        </ToolTip>
+      </div>
+      <div>
+        Medium content amounts
+        <ToolTip
+          id="tooltip-medium"
+          target={<Icon name="informational" size={24} />}
+          theme={VisualTheme.DarkMode}
+          position={select(
+            'position',
+            ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
+            'bottom-left'
+          )}
+        >
+          Two fish; red fish; blue fish...
+        </ToolTip>
+      </div>
     </div>
   </div>
 );

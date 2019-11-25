@@ -6,6 +6,16 @@ $arrow-size-raw: #{($arrow-width + $arrow-height) / 2};
 $arrow-padding-horizontal: 1.5rem;
 $arrow-padding-vertical: 0.25rem;
 
+$container-offset-horizontal: calc(
+  100% - #{($arrow-width / 2) + $arrow-padding-horizontal}
+);
+$container-offset-vertical: calc(
+  100% + #{$arrow-height + $arrow-padding-vertical}
+);
+
+$arrow-offset-horizontal: #{$arrow-padding-horizontal - ($arrow-width / 2)};
+$arrow-offset-vertical: -#{$arrow-height / 2};
+
 .toolTipWrapper {
   position: relative;
   display: inline-flex;
@@ -26,10 +36,9 @@ $arrow-padding-vertical: 0.25rem;
 .toolTipContainer {
   @include font-smoothing;
 
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
   display: none;
   position: absolute;
-  width: 17rem;
+  width: 16rem;
 
   // Both before and after psuedo-elements are used...
   &::after,
@@ -53,21 +62,9 @@ $arrow-padding-vertical: 0.25rem;
   }
 }
 
-.toolTipContainerDark,
 .toolTipContainerDark::after {
   background: $color-black;
-  color: $color-white;
 }
-
-$container-offset-horizontal: calc(
-  100% - #{($arrow-width / 2) + $arrow-padding-horizontal}
-);
-$container-offset-vertical: calc(
-  100% + #{$arrow-height + $arrow-padding-vertical}
-);
-
-$arrow-offset-horizontal: #{$arrow-padding-horizontal - ($arrow-width / 2)};
-$arrow-offset-vertical: -#{$arrow-height / 2};
 
 .top-left {
   bottom: $container-offset-vertical;
@@ -114,5 +111,19 @@ $arrow-offset-vertical: -#{$arrow-height / 2};
 }
 
 .toolTipBody {
-  padding: 0.75rem;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  font-size: px-rem(14px);
+  line-height: px-rem(18px);
+  padding: 0.6rem 0.75rem;
+
+  .toolTipContainerLight & {
+    background: $color-white;
+    color: $color-black;
+  }
+
+  .toolTipContainerDark & {
+    background: $color-black;
+    color: $color-white;
+  }
 }
