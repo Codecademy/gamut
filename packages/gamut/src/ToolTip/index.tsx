@@ -13,23 +13,25 @@ export enum ToolTipPosition {
 
 export type ToolTipProps = {
   children?: ReactNode;
-  className?: string;
   id: string;
   position?: ToolTipPosition;
   target?: ReactNode;
   theme?: VisualTheme;
+  tipClassName?: string;
+  wrapperClassName?: string;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   children,
-  className,
-  target,
-  position = ToolTipPosition.TopRight,
   id,
+  position = ToolTipPosition.TopRight,
+  target,
   theme = VisualTheme.LightMode,
+  tipClassName,
+  wrapperClassName,
 }) => {
   return (
-    <div className={cx(s.toolTipWrapper, className)}>
+    <div className={cx(s.toolTipWrapper, wrapperClassName)}>
       <button aria-labelledby={id} type="button" className={s.targetContainer}>
         {target}
       </button>
@@ -39,7 +41,8 @@ export const ToolTip: React.FC<ToolTipProps> = ({
           s[position],
           theme === VisualTheme.DarkMode
             ? s.toolTipContainerDark
-            : s.toolTipContainerLight
+            : s.toolTipContainerLight,
+          tipClassName
         )}
         role="tooltip"
         id={id}
