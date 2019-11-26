@@ -8,7 +8,7 @@ import styles from '../styles.scss';
 describe('ToolTip', () => {
   it('adds the dark class to the container name when its theme is dark', () => {
     const wrapper = mount(
-      <ToolTip children="" id="test-id" theme={VisualTheme.DarkMode} />
+      <ToolTip id="test-id" theme={VisualTheme.DarkMode}></ToolTip>
     );
 
     const containerClassName = wrapper
@@ -20,7 +20,7 @@ describe('ToolTip', () => {
 
   it('adds the light class to the container name when its theme is light', () => {
     const wrapper = mount(
-      <ToolTip children="" id="test-id" theme={VisualTheme.LightMode} />
+      <ToolTip id="test-id" theme={VisualTheme.LightMode}></ToolTip>
     );
 
     const containerClassName = wrapper
