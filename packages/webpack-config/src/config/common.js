@@ -37,7 +37,9 @@ const commonConfig = (options = {}) => {
             {
               ...loaders.files.default,
               options: {
-                name: DEV ? '[name]-[hash].[ext]' : '[hash].[ext]',
+                name: DEV
+                  ? '[name]-[contenthash].[ext]'
+                  : '[contenthash].[ext]',
               },
             },
           ]
@@ -80,6 +82,7 @@ const commonConfig = (options = {}) => {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
       optimization: {
+        moduleIds: 'hashed',
         minimize: true,
         minimizer: minimizer || [
           new TerserPlugin({
@@ -97,7 +100,6 @@ const commonConfig = (options = {}) => {
           }),
         ],
       },
-      plugins: [new webpack.HashedModuleIdsPlugin()],
     });
   }
 
