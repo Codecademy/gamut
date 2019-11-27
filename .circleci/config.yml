@@ -1,16 +1,19 @@
-version: 2
+version: 2.1
+orbs:
+  codecov: codecov/codecov@1.0.2
 references:
   default_env: &default_env
     docker:
       - image: circleci/node:8.10.0
     working_directory: ~/repo
     environment:
-      GITHUB_BOT_USERNAME: codecademy-circleci
+      GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
+      CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v3-repo-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v3-repo-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v3-repo-
+  repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}
 
   restore_repo: &restore_repo
     restore_cache:
@@ -24,7 +27,7 @@ references:
       name: Set git user
       command: |
         git config --global user.email "dev@codecademy.com"
-        git config --global user.name "codecademy-circleci"
+        git config --global user.name "codecademydev"
         git config --global push.default current
 
   set_npm_token: &set_npm_token
@@ -42,7 +45,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - "a5:44:32:aa:f4:81:ad:6e:6b:cf:32:77:f0:a9:4f:93"
+        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
 
 jobs:
   checkout_code:
@@ -86,6 +89,7 @@ jobs:
   tests:
     <<: *default_env
     parallelism: 4
+    resource_class: large
     steps:
       - *restore_repo
       - run:
@@ -95,10 +99,16 @@ jobs:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
-            yarn test ${TESTFILES}
+            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
+      - store_test_results:
+          path: /tmp/test-results
+      - codecov/upload:
+          file: /tmp/test-results/jest/*
+          flags: frontend
 
   publish:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
@@ -107,13 +117,10 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna version
-          command: yarn lerna version --include-merged-tags --conventional-commits --yes --create-release=github
-      - run:
           name: lerna publish
-          command: yarn lerna publish from-git --yes
+          command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
       - run:
-          # Storybook build will fail if there were no changed packages, but we still want to build
+          # if lerna publish has no changed packages, it won't build, so we need to run the build again :/
           name: build packages
           command: yarn build-all
       - run:
@@ -128,7 +135,7 @@ jobs:
               git push
             fi
       - run:
-          name: update lockfile
+          name: update lockfile versions for published packages
           command: |
             npx yarn@1.15.2 --production=false
             if [ -n "$(git status --porcelain)" ]; then
@@ -139,6 +146,7 @@ jobs:
 
   publish_alpha:
     <<: *default_env
+    resource_class: large
     steps:
       - *skip_on_automated_commit
       - *add_github_ssh_key
@@ -147,11 +155,8 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna version (alpha)
-          command: yarn lerna version prerelease --include-merged-tags --conventional-commits --yes --no-push --preid=alpha.${CIRCLE_SHA1:0:6}
-      - run:
           name: lerna publish (alpha)
-          command: yarn lerna publish from-git --canary --yes --no-git-reset --preid=prerelease --dist-tag=prerelease
+          command: yarn lerna publish --yes --include-merged-tags --conventional-commits --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
 
 workflows:
   version: 2

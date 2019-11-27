@@ -2,8 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import IkonaIcon from '@codecademy/gamut/dist/IkonaIcon';
-import classNames from '@codecademy/gamut/dist/IkonaIcon/styles';
+import IkonaIcon from 'gamut/IkonaIcon';
+import classNames from 'gamut/IkonaIcon/styles';
 
 import { selectableColors } from './helpers';
 import { addonInfoOptions as options } from './options';
@@ -23,7 +23,7 @@ storiesOf('Component/IkonaIcon (deprecated)', module)
     })(() => (
       <div className={s.grid}>
         {iconNames.map(iconName => (
-          <span className={s.iconWrapper}>
+          <span className={s.iconWrapper} key={iconName}>
             <IkonaIcon key={iconName} name={iconName} size={2} />
             <span>{iconName}</span>
           </span>

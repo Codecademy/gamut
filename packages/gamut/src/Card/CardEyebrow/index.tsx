@@ -13,7 +13,7 @@ interface CardEyebrowProps {
   isDarkTheme?: boolean;
 }
 
-function CardEyebrow(props: CardEyebrowProps) {
+export function CardEyebrow(props: CardEyebrowProps) {
   const textStyle = cx(styles.eyebrowText, {
     [styles.darkTheme]: props.isDarkTheme,
   });
