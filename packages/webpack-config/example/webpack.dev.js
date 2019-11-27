@@ -9,4 +9,5 @@ module.exports = createConfig()
   .devServer({
     port: 4102,
   })
+  .merge({})
   .toConfig();

@@ -80,7 +80,6 @@ const commonConfig = (options = {}) => {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
       optimization: {
-        moduleIds: 'hashed',
         minimize: true,
         minimizer: minimizer || [
           new TerserPlugin({
