@@ -4,7 +4,7 @@ orbs:
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:8.10.0
+      - image: circleci/node:11.11.0
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
