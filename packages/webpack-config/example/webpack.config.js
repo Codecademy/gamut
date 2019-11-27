@@ -5,6 +5,7 @@ module.exports = createConfig()
     context: __dirname,
     env: 'production',
   })
+  .babel()
   .cssExtracted()
   .merge({
     optimization: {
