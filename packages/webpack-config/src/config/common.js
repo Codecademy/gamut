@@ -36,7 +36,9 @@ const commonConfig = (options = {}) => {
             {
               ...loaders.files.default,
               options: {
-                name: DEV ? '[name]-[hash].[ext]' : '[hash].[ext]',
+                name: DEV
+                  ? '[name]-[contenthash].[ext]'
+                  : '[contenthash].[ext]',
               },
             },
           ]
@@ -95,7 +97,6 @@ const commonConfig = (options = {}) => {
           }),
         ],
       },
-      plugins: [new webpack.HashedModuleIdsPlugin()],
     });
   }
 

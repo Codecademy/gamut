@@ -14,8 +14,9 @@ const cssLoaderDefaults = {
   options: {
     importLoaders: 1,
     sourceMap: true,
-    localIdentName: CSS_MODULE_IDENT,
-    modules: false,
+    modules: {
+      localIdentName: CSS_MODULE_IDENT,
+    },
   },
 };
 
@@ -64,7 +65,7 @@ const css = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          exportOnlyLocals: true,
+          onlyLocals: true,
         },
       }),
     ],
@@ -106,7 +107,7 @@ const scss = {
       merge(cssLoaderDefaults, {
         options: {
           modules: true,
-          exportOnlyLocals: true,
+          onlyLocals: true,
         },
       }),
       merge(postCssLoaderDefaults),
