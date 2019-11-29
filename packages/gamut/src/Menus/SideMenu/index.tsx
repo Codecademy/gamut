@@ -7,7 +7,7 @@ export type SideMenuProps = {
   className?: string;
 };
 
-const SideMenu: React.FC<SideMenuProps> = ({ children, className }) => {
+export const SideMenu: React.FC<SideMenuProps> = ({ children, className }) => {
   return <ul className={cx(s.sideMenu, className)}>{children}</ul>;
 };
 

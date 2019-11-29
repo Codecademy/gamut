@@ -8,7 +8,10 @@ const defaultProps: SpinnerProps = {
   size: 24,
 };
 
-const Spinner: FunctionComponent<SpinnerProps> = ({ size, ...props }) => {
+export const Spinner: FunctionComponent<SpinnerProps> = ({
+  size,
+  ...props
+}) => {
   return (
     <svg viewBox="0 0 1000 1000" height={size} width={size} {...props}>
       <circle fill="currentColor" cx="937.5" cy="500" r="62.5" />
