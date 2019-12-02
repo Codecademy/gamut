@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToolTip } from 'gamut';
+import { ToolTip, Button } from 'gamut';
 import { select } from '@storybook/addon-knobs';
 import Icon from 'gamut/Icon';
 import { VisualTheme } from 'gamut/theming/VisualTheme';
@@ -11,12 +11,13 @@ export default {
 
 export const toolTip = () => (
   <div>
-    <div style={{ marginTop: '7rem' }}>
+    <div style={{ marginTop: '3rem' }}>
       <div>
         Hover the icon at the end of the sentence below to view a tooltip.
       </div>
       Your billing cycle is each antantwig.
       <ToolTip
+        focusable
         id="tooltip"
         target={<Icon name="informational" size={24} />}
         position={select(
@@ -33,6 +34,7 @@ export const toolTip = () => (
       <div>
         It even supports a fancy dark mode too!
         <ToolTip
+          focusable
           id="tooltip-dark"
           target={<Icon name="informational" size={24} />}
           theme={VisualTheme.DarkMode}
@@ -50,6 +52,7 @@ export const toolTip = () => (
       <div>
         Top left
         <ToolTip
+          focusable
           id="tooltip-top-left"
           target={<Icon name="informational" size={24} />}
           position="top-left"
@@ -60,6 +63,7 @@ export const toolTip = () => (
       <div>
         Top right
         <ToolTip
+          focusable
           id="tooltip-top-right"
           target={<Icon name="informational" size={24} />}
           position="top-right"
@@ -70,6 +74,7 @@ export const toolTip = () => (
       <div>
         Bottom left
         <ToolTip
+          focusable
           id="tooltip-bottom-left"
           target={<Icon name="informational" size={24} />}
           position="bottom-left"
@@ -80,6 +85,7 @@ export const toolTip = () => (
       <div>
         Bottom right
         <ToolTip
+          focusable
           id="tooltip-bottom-right"
           target={<Icon name="informational" size={24} />}
           position="bottom-right"
@@ -88,10 +94,22 @@ export const toolTip = () => (
         </ToolTip>
       </div>
     </div>
-    <div style={{ marginBottom: '7rem' }}>
+    <div style={{ padding: '1rem 0 7rem' }}>
+      <div>
+        Non-Focusable
+        <ToolTip
+          id="tooltip-overlapping"
+          target={<Button>Hi!</Button>}
+          position="top-right"
+        >
+          If the contents of the tooltip are themselves focusable, such as with
+          buttons, do not pass the <code>focusable</code> prop.
+        </ToolTip>
+      </div>
       <div>
         Overlapping content
         <ToolTip
+          focusable
           id="tooltip-overlapping"
           target={
             <Icon
