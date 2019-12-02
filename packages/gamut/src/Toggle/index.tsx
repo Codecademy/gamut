@@ -18,6 +18,7 @@ export class Toggle extends Component<ToggleProps, {}> {
           [s.toggled]: checked,
           [s.disabled]: disabled,
         })}
+        arial-label={label}
         htmlFor={label}
       >
         <input
