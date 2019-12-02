@@ -46,7 +46,7 @@ export const toolTip = () => (
         </ToolTip>
       </div>
     </div>
-    <div style={{ marginBottom: '7rem ' }}>
+    <div>
       <div>
         Top left
         <ToolTip
@@ -85,6 +85,26 @@ export const toolTip = () => (
           position="bottom-right"
         >
           Two fish; red fish; blue fish...
+        </ToolTip>
+      </div>
+    </div>
+    <div style={{ marginBottom: '7rem' }}>
+      <div>
+        Overlapping content
+        <ToolTip
+          id="tooltip-overlapping"
+          target={
+            <Icon
+              name="informational"
+              size={30}
+              style={{ margin: '1.5rem 0 -1.5rem' }}
+            />
+          }
+          position="bottom-right"
+        >
+          Hovering the mouse over a tooltip keeps it visible even if focus is
+          moved away from its target. That is particularly necessary for
+          tooltips that overlap content.
         </ToolTip>
       </div>
     </div>

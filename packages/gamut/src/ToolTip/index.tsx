@@ -32,9 +32,14 @@ export const ToolTip: React.FC<ToolTipProps> = ({
 }) => {
   return (
     <div className={cx(s.toolTipWrapper, wrapperClassName)}>
-      <button aria-labelledby={id} type="button" className={s.targetContainer}>
+      {/*
+      ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
+      This element still needs tab focus so we must use the `tabIndex=0` hack. Sigh.
+      */}
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+      <div aria-labelledby={id} className={s.targetContainer} tabIndex={0}>
         {target}
-      </button>
+      </div>
       <div
         className={cx(
           s.toolTipContainer,
