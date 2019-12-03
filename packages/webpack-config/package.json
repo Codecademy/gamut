@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "3.15.7",
+  "version": "3.16.0",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
