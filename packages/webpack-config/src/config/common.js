@@ -25,8 +25,8 @@ const commonConfig = (options = {}) => {
     entry: path.resolve(options.context, 'src/main.js'),
 
     output: {
-      filename: DEV ? '[name].js' : '[name].[contenthash].js',
-      chunkFilename: DEV ? '[name].chunk.js' : '[name].[contenthash].chunk.js',
+      filename: DEV ? '[name].js' : '[contenthash].js',
+      chunkFilename: DEV ? '[name].chunk.js' : '[contenthash].chunk.js',
       path: path.resolve(options.context, 'dist'),
     },
 
