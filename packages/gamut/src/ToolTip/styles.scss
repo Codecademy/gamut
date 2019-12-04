@@ -28,23 +28,18 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   border: 0;
   background: none;
   padding: 0;
-
-  &:hover + .toolTipContainer,
-  &:focus + .toolTipContainer {
-    display: flex;
-  }
 }
 
 .toolTipContainer {
   @include font-smoothing;
 
-  display: none;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0ms;
+  transition-delay: 750ms;
   position: absolute;
   width: 16rem;
-
-  &:hover {
-    display: flex;
-  }
+  visibility: hidden;
 
   // Both before and after psuedo-elements are used because ::after's background should go over the container's
   // and ::before's box-shadow should be behind the container itself
@@ -61,6 +56,13 @@ $slight-shadow: rgba(0, 0, 0, 0.15);
   &::after {
     background: $color-white;
   }
+}
+
+.targetContainer:hover + .toolTipContainer,
+.targetContainer:focus + .toolTipContainer,
+.toolTipContainer:hover {
+  opacity: 1;
+  visibility: visible;
 }
 
 .toolTipContainerDark::after {
