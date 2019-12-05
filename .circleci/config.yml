@@ -103,7 +103,7 @@ jobs:
       - run:
           name: Copy coverage files
           command: |
-            mkdir /tmp/test-results/jest
+            mkdir -p /tmp/test-results/jest
             cp ./coverage/clover.xml /tmp/test-results/jest/clover-${CIRCLE_NODE_INDEX}.xml
       - store_artifacts:
           path: /tmp/test-results
