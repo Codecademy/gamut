@@ -119,7 +119,7 @@ jobs:
     steps:
       - *restore_repo
       - attach_workspace:
-          at: /tmp/test-results
+          at: /tmp
       - codecov/upload:
           file: /tmp/test-results/jest/*
           flags: frontend
