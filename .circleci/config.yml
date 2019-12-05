@@ -102,7 +102,7 @@ jobs:
           name: Copy coverage files
           command: |
             mkdir -p /tmp/test-results/jest
-            cp ./coverage/* /tmp/test-results/jest
+            mv ./coverage/* /tmp/test-results/jest
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
