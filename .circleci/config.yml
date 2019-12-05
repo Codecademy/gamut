@@ -100,6 +100,8 @@ jobs:
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
             yarn test --ci --runInBand ${TESTFILES} --coverage
+      - attach_workspace:
+          at: /tmp
       - run:
           name: Copy coverage files
           command: |
@@ -121,7 +123,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - codecov/upload:
-          file: /tmp/test-results/jest/*
+          file: /tmp/test-results/jest/*.xml
           flags: frontend
 
   publish:
