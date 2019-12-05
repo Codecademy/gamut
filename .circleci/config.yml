@@ -103,7 +103,7 @@ jobs:
       - run:
           name: Copy coverage files
           command: |
-            mkdir -p /tmp/test-results/jest/${CIRCLE_NODE_INDEX}
+            mkdir -p /tmp/test-results/jest
             cp ./coverage/coverage-final.json /tmp/test-results/jest/coverage-${CIRCLE_NODE_INDEX}.json
       - store_artifacts:
           path: /tmp/test-results
