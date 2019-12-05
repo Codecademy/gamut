@@ -100,13 +100,11 @@ jobs:
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
             yarn test --ci --runInBand ${TESTFILES} --coverage
-      - attach_workspace:
-          at: /tmp
       - run:
           name: Copy coverage files
           command: |
             mkdir -p /tmp/test-results/jest
-            cp ./coverage/clover.xml /tmp/test-results/jest/clover-${CIRCLE_NODE_INDEX}.xml
+            cp ./coverage/clover.xml /tmp/test-results/jest/${CIRCLE_NODE_INDEX}/clover.xml
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
@@ -123,7 +121,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - codecov/upload:
-          file: /tmp/test-results/jest/*.xml
+          file: /tmp/test-results/jest
           flags: frontend
 
   publish:
