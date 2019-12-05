@@ -120,7 +120,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - codecov/upload:
-          file: /tmp/test-results/jest
+          file: /tmp/test-results/jest/**/*
           flags: frontend
 
   publish:
