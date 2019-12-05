@@ -104,7 +104,7 @@ jobs:
           name: Copy coverage files
           command: |
             mkdir -p /tmp/test-results/jest
-            cp ./coverage/coverage-final.json /tmp/test-results/jest/coverage-${CIRCLE_NODE_INDEX}.json
+            cp ./coverage/clover.xml /tmp/test-results/jest/clover.${CIRCLE_NODE_INDEX}.xml
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
@@ -123,13 +123,13 @@ jobs:
       # so the number of codecov upload steps should match the
       # parallelism # of the tests job
       - codecov/upload:
-          file: /tmp/test-results/jest/coverage-0.json
+          file: /tmp/test-results/jest/clover.0.xml
       - codecov/upload:
-          file: /tmp/test-results/jest/coverage-1.json
+          file: /tmp/test-results/jest/clover.1.xml
       - codecov/upload:
-          file: /tmp/test-results/jest/coverage-2.json
+          file: /tmp/test-results/jest/clover.2.xml
       - codecov/upload:
-          file: /tmp/test-results/jest/coverage-3.json
+          file: /tmp/test-results/jest/clover.3.xml
 
   publish:
     <<: *default_env
