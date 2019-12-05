@@ -119,8 +119,12 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp
+      - run:
+          name: Merge coverage
+          command: |
+            npx istanbul-merge --out /tmp/test-results/jest/coverage.all.json /tmp/test-results/jest/*
       - codecov/upload:
-          file: /tmp/test-results/jest/*
+          file: /tmp/test-results/jest/coverage.all.json
           flags: frontend
 
   publish:
