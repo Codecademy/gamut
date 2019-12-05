@@ -88,6 +88,7 @@ jobs:
 
   tests:
     <<: *default_env
+    parallelism: 4
     resource_class: large
     steps:
       - *restore_repo
@@ -97,16 +98,42 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            yarn test --ci --runInBand --coverage
+            TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
+            yarn test --ci --runInBand ${TESTFILES} --coverage
       - run:
           name: Copy coverage files
           command: |
             mkdir -p /tmp/test-results/jest
-            mv ./coverage/* /tmp/test-results/jest
+            cp ./coverage/coverage-final.json /tmp/test-results/jest/coverage-${CIRCLE_NODE_INDEX}.json
+      - store_artifacts:
+          path: /tmp/test-results
       - store_test_results:
           path: /tmp/test-results
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - test-results
+
+  upload_test_coverage:
+    <<: *default_env
+    steps:
+      - attach_workspace:
+          at: /tmp
+      # The codecov orb does not handle merging multiple files
+      # so the number of codecov upload steps should match the
+      # parallelism # of the tests job
       - codecov/upload:
-          file: /tmp/test-results/jest/*
+          file: /tmp/test-results/jest/coverage-0.json
+          upload_name: ${CIRCLE_BUILD_NUM}-0
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-1.json
+          upload_name: ${CIRCLE_BUILD_NUM}-1
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-2.json
+          upload_name: ${CIRCLE_BUILD_NUM}-2
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-3.json
+          upload_name: ${CIRCLE_BUILD_NUM}-3
 
   publish:
     <<: *default_env
@@ -168,6 +195,9 @@ workflows:
       - tests:
           requires:
             - checkout_code
+      - upload_test_coverage:
+          requires:
+            - tests
       - verify_linting:
           requires:
             - checkout_code
