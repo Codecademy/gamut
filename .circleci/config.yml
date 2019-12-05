@@ -119,13 +119,17 @@ jobs:
     steps:
       - attach_workspace:
           at: /tmp
-      - run:
-          name: Merge coverage
-          command: |
-            npx istanbul-merge --out /tmp/test-results/jest/coverage.all.json /tmp/test-results/jest/*
+      # The codecov orb does not handle merging multiple files
+      # so the number of codecov upload steps should match the
+      # parallelism # of the tests job
       - codecov/upload:
-          file: /tmp/test-results/jest/coverage.all.json
-          flags: frontend
+          file: /tmp/test-results/jest/coverage-0.json
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-1.json
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-2.json
+      - codecov/upload:
+          file: /tmp/test-results/jest/coverage-3.json
 
   publish:
     <<: *default_env
