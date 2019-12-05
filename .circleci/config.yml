@@ -103,7 +103,7 @@ jobs:
       - run:
           name: Copy coverage files
           command: |
-            mkdir -p /tmp/test-results/jest
+            mkdir -p /tmp/test-results/jest/${CIRCLE_NODE_INDEX}
             cp ./coverage/clover.xml /tmp/test-results/jest/${CIRCLE_NODE_INDEX}/clover.xml
       - store_artifacts:
           path: /tmp/test-results
@@ -117,7 +117,6 @@ jobs:
   upload_test_coverage:
     <<: *default_env
     steps:
-      - *restore_repo
       - attach_workspace:
           at: /tmp
       - codecov/upload:
