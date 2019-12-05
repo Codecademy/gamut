@@ -88,7 +88,6 @@ jobs:
 
   tests:
     <<: *default_env
-    parallelism: 4
     resource_class: large
     steps:
       - *restore_repo
@@ -98,38 +97,18 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
-            yarn test --ci --runInBand ${TESTFILES} --coverage
+            yarn test --ci --runInBand --coverage
       - run:
           name: Copy coverage files
           command: |
             mkdir -p /tmp/test-results/jest
-            cp ./coverage/clover.xml /tmp/test-results/jest/clover.${CIRCLE_NODE_INDEX}.xml
+            cp ./coverage/* /tmp/test-results/jest
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
           path: /tmp/test-results
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - test-results
-
-  upload_test_coverage:
-    <<: *default_env
-    steps:
-      - attach_workspace:
-          at: /tmp
-      # The codecov orb does not handle merging multiple files
-      # so the number of codecov upload steps should match the
-      # parallelism # of the tests job
       - codecov/upload:
-          file: /tmp/test-results/jest/clover.0.xml
-      - codecov/upload:
-          file: /tmp/test-results/jest/clover.1.xml
-      - codecov/upload:
-          file: /tmp/test-results/jest/clover.2.xml
-      - codecov/upload:
-          file: /tmp/test-results/jest/clover.3.xml
+          file: /tmp/test-results/*
 
   publish:
     <<: *default_env
@@ -191,9 +170,6 @@ workflows:
       - tests:
           requires:
             - checkout_code
-      - upload_test_coverage:
-          requires:
-            - tests
       - verify_linting:
           requires:
             - checkout_code
