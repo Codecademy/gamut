@@ -105,7 +105,7 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
       - persist_to_workspace:
-          root: .
+          root: repo
           paths:
             - /tmp/test-results
 
