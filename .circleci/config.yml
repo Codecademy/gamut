@@ -108,7 +108,7 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
       - codecov/upload:
-          file: /tmp/test-results/*
+          file: /tmp/test-results/jest/*
 
   publish:
     <<: *default_env
