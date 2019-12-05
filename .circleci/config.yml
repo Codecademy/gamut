@@ -104,7 +104,6 @@ jobs:
           path: /tmp/test-results
       - codecov/upload:
           file: /tmp/test-results/jest/*
-          flags: frontend
 
   publish:
     <<: *default_env
