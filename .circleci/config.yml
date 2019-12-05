@@ -9,7 +9,7 @@ references:
     environment:
       GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
-      JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/jest
+
 
   repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
   repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
@@ -100,6 +100,11 @@ jobs:
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
             yarn test --ci --runInBand ${TESTFILES} --coverage
+      - run:
+          name: Copy coverage files
+          command: |
+            mkdir /tmp/test-results/jest
+            cp ./coverage/clover.xml /tmp/test-results/jest/clover-${CIRCLE_NODE_INDEX}.xml
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
