@@ -105,9 +105,9 @@ jobs:
       - store_test_results:
           path: /tmp/test-results
       - persist_to_workspace:
-          root: repo
+          root: /tmp
           paths:
-            - /tmp/test-results
+            - test-results
 
   upload_test_coverage:
     <<: *default_env
