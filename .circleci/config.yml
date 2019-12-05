@@ -9,7 +9,7 @@ references:
     environment:
       GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: "--max_old_space_size=4096"
-      CIRCLE_TEST_REPORTS: /tmp/test-results
+      JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/jest
 
   repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
   repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
@@ -99,7 +99,7 @@ jobs:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
-            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
+            yarn test --ci --runInBand ${TESTFILES} --coverage
       - store_artifacts:
           path: /tmp/test-results
       - store_test_results:
