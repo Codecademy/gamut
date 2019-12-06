@@ -72,7 +72,7 @@ describe('<Markdown />', () => {
 | col 3 is | right-aligned |    $1 |
     `;
     const markdown = mount(
-      <Markdown skipProcessing={{ table: true }} text={table} />
+      <Markdown skipDefaultOverrides={{ table: true }} text={table} />
     );
     expect(markdown.find('table').length).toEqual(1);
     expect(markdown.find('div.tableWrapper table').length).toEqual(0);

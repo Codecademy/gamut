@@ -27,7 +27,7 @@ const isValidNode = function() {
   return true;
 };
 
-export type SkipProcessingSettings = {
+export type SkipDefaultOverridesSettings = {
   a?: boolean;
   iframe?: boolean;
   table?: boolean;
@@ -37,7 +37,7 @@ export type MarkdownProps = {
   className?: string;
   inline?: boolean;
   overrides?: ManyOverrideSettings;
-  skipProcessing?: SkipProcessingSettings;
+  skipDefaultOverrides?: SkipDefaultOverridesSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
 };
@@ -49,7 +49,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       text = '',
       className,
       overrides: userOverrides = {},
-      skipProcessing = {},
+      skipDefaultOverrides = {},
       inline = false,
     } = this.props;
 
@@ -68,15 +68,15 @@ export class Markdown extends PureComponent<MarkdownProps> {
     });
 
     const processingInstructions = [
-      !skipProcessing.iframe &&
+      !skipDefaultOverrides.iframe &&
         createTagOverride('iframe', {
           component: Iframe,
         }),
-      !skipProcessing.a &&
+      !skipDefaultOverrides.a &&
         createTagOverride('a', {
           component: Anchor,
         }),
-      !skipProcessing.table &&
+      !skipDefaultOverrides.table &&
         createTagOverride('table', {
           component: props => (
             <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
