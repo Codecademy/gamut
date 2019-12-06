@@ -14,6 +14,8 @@ export const toolTip = () => (
     <div style={{ marginTop: '3rem' }}>
       <div>
         Hover the icon at the end of the sentence below to view a tooltip.
+        <br />
+        When the tooltip is hidden, it&apos;s as if it doesn&apos;t exist.
       </div>
       Your billing cycle is each antantwig.
       <ToolTip
