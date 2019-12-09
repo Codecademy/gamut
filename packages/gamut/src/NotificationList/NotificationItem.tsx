@@ -15,7 +15,7 @@ const formatTime = (notificationDate: string): string => {
   return moment(notificationDate).fromNow();
 };
 
-export const NotificationItem = (props: NotificationItemProps) => {
+export const NotificationItem: React.FC<NotificationItemProps> = props => {
   const { notification, onClick } = props;
   const {
     date,

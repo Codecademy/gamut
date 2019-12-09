@@ -67,7 +67,7 @@ export type ColProps = {
   reverse?: boolean;
 };
 
-export const Col = (props: ColProps) => {
+export const Col: React.FC<ColProps> = props => {
   const className = getClassNames(props);
 
   return React.createElement(
