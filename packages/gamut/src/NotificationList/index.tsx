@@ -17,7 +17,7 @@ const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
 };
 
-type NotificationListProps = {
+export type NotificationListProps = {
   className?: string;
   notifications?: Notification[];
   onNotificationClick?: (notification: Notification) => void;
