@@ -5,7 +5,7 @@ import { NotificationIconSettings } from './typings';
 import iconMap from '../Icon/iconMap';
 import s from './styles/NotificationIcon.scss';
 
-const renderIcon = (props: NotificationImage) => {
+const renderIcon = (props: NotificationIconProps) => {
   const { iconSettings, iconSlug, imageUrl } = props;
 
   if (iconSlug) {
@@ -31,13 +31,13 @@ const renderIcon = (props: NotificationImage) => {
   return null;
 };
 
-type NotificationImage = {
+export type NotificationIconProps = {
   iconSettings?: NotificationIconSettings;
   iconSlug?: keyof typeof iconMap;
   imageUrl?: string;
 };
 
-export const NotificationIcon = (props: NotificationImage) => (
+export const NotificationIcon: React.FC<NotificationIconProps> = props => (
   <div className={s.iconContainer}>{renderIcon(props)}</div>
 );
 
