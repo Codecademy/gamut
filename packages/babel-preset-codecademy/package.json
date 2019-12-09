@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-codecademy",
-  "version": "2.2.5-beta",
+  "version": "2.2.5",
   "description": "A collection of babel plugins and presets used at codecademy.com",
   "main": "index.js",
   "keywords": [
