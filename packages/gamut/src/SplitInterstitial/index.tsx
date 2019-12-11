@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import blueCurve from './assets/blueCurve.svg';
 import purpleCurveBottomRight from './assets/purpleCurveBottomRight.svg';
 import purpleCurveTopLeft from './assets/purpleCurveTopLeft.svg';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type SplitInterstitialSide = {
   children?: ReactNode;

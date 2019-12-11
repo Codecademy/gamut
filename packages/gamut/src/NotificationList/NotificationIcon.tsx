@@ -3,7 +3,7 @@ import { get } from 'lodash';
 import Icon from '../Icon';
 import { NotificationIconSettings } from './typings';
 import iconMap from '../Icon/iconMap';
-import s from './styles/NotificationIcon.scss';
+import s from './styles/NotificationIcon.module.scss';
 
 const renderIcon = (props: NotificationIconProps) => {
   const { iconSettings, iconSlug, imageUrl } = props;

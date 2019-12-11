@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardBody.scss';
+import s from './styles/CardBody.module.scss';
 
 const defaultProps = {
   standardPadding: true,

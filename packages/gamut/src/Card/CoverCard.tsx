@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { CardShell, CardHeader } from './index';
-import styles from './styles/CoverCard.scss';
+import styles from './styles/CoverCard.module.scss';
 
 interface CoverCardProps {
   withWave?: boolean;

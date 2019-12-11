@@ -1,7 +1,7 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
-import s from './styles/Select.scss';
+import s from './styles/Select.module.scss';
 
 export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
   className?: string;
