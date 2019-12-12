@@ -1,7 +1,7 @@
 import React, { Component, Children, ReactNode } from 'react';
 import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
-import s from './styles/index.scss';
+import s from './styles/index.module.scss';
 
 export interface TabsProps {
   config: {

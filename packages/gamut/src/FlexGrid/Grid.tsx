@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
-import style from './styles/index.scss';
+import style from './styles/index.module.scss';
 
 const propKeys = ['fluid', 'className', 'tagName', 'children'];
 

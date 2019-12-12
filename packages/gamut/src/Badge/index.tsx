@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
 
-import s from './styles.scss';
+import s from './styles.module.scss';
 
 export type BadgeProps = {
   rootProps?: HTMLAttributes<HTMLSpanElement>;

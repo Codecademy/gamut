@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import s from './styles/FormGroupDescription.scss';
+import s from './styles/FormGroupDescription.module.scss';
 
 export type FormGroupDescriptionProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;

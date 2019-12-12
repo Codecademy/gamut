@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardFooter.scss';
+import s from './styles/CardFooter.module.scss';
 
 const defaultProps = {
   border: 'none',
