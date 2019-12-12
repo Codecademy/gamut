@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import Icon from '../../Icon';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 interface CardButtonProps {
   icon?: ReactNode;

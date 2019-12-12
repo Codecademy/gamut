@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { HTMLAttributes } from 'react';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export type HighlightedTextProps = {
   children?: string;

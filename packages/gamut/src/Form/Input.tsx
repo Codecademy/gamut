@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/Input.scss';
+import s from './styles/Input.module.scss';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;

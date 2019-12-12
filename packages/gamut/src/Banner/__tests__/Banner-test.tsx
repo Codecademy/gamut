@@ -3,7 +3,7 @@ import React from 'react';
 
 import Banner from '..';
 import Button from '../../Button';
-import styles from ' ../styles.scss';
+import styles from ' ../styles.module.scss';
 
 describe('Banner', () => {
   it('renders children when closing has not been requested', () => {
@@ -45,7 +45,7 @@ describe('Banner', () => {
   });
 
   it('renders an icon when an icon is provided', () => {
-    const TestIcon = () => <div></div>;
+    const TestIcon = () => <div />;
     const component = shallow(
       <Banner onClose={() => {}} icon={<TestIcon />} />
     );
