@@ -97,6 +97,7 @@ export const colors = {
 
 export const brandColors = {
   red: '#fd4d3f',
+  orange: '#ff9b2a',
   yellow: '#ffc740',
   purple: '#6400e4',
   pink: '#ff8ef5',
