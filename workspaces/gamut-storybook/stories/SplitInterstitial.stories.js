@@ -6,7 +6,7 @@ import styles from './SplitInterstitial-story.scss';
 
 export default {
   component: 'SplitInterstitial',
-  title: 'Component/SplitInterstitial',
+  title: 'Templates/SplitInterstitial',
 };
 
 export const splitInterstitial = () => (
