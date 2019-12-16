@@ -20,6 +20,7 @@ export {
 export { default as HighlightedText } from './HighlightedText';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
+export { default as LearningInterstitial } from './LearningInterstitial';
 export { default as Logo } from './Logo';
 export { default as Markdown } from './Markdown';
 export { default as MenuItem } from './Menus/MenuItem';
