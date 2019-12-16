@@ -28,7 +28,7 @@ const packageAliases = {
   ),
 };
 
-module.exports = ({ config, mode }) => {
+module.exports = ({ config }) => {
   const defaultConfig = createConfig()
     .common({
       context: path.resolve(__dirname, '../'),
