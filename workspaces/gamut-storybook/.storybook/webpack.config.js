@@ -19,6 +19,15 @@ const { createConfig, merge } = require('@codecademy/webpack-config');
  * This is the config that all others are based on
  */
 
+const packageAliases = {
+  gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
+  'gamut-styles': path.resolve(__dirname, '../../../packages/gamut-styles'),
+  'gamut-templates': path.resolve(
+    __dirname,
+    '../../../packages/gamut-templates/src'
+  ),
+};
+
 module.exports = ({ config, mode }) => {
   const defaultConfig = createConfig()
     .common({
@@ -29,13 +38,7 @@ module.exports = ({ config, mode }) => {
     .merge({
       plugins: [new ForkTsCheckerWebpackPlugin()],
       resolve: {
-        alias: {
-          gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
-          'gamut-styles': path.resolve(
-            __dirname,
-            '../../../packages/gamut-styles'
-          ),
-        },
+        alias: packageAliases,
       },
     })
     .toConfig();
@@ -46,13 +49,7 @@ module.exports = ({ config, mode }) => {
     plugins: defaultConfig.plugins,
     resolve: {
       extensions: defaultConfig.resolve.extensions,
-      alias: {
-        gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
-        'gamut-styles': path.resolve(
-          __dirname,
-          '../../../packages/gamut-styles'
-        ),
-      },
+      alias: packageAliases,
     },
   };
 
