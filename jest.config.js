@@ -25,6 +25,8 @@ module.exports = {
     '^gamut/(.*)$': '<rootDir>/packages/gamut/src/$1',
     '^gamut-styles$': '<rootDir>/packages/gamut-styles',
     '^gamut-styles/(.*)$': '<rootDir>/packages/gamut-styles/$1',
+    '^gamut-templates$': '<rootDir>/packages/gamut-templates/src',
+    '^gamut-templates/(.*)$': '<rootDir>/packages/gamut-templates/src/$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
