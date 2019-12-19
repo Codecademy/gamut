@@ -47,7 +47,7 @@ const processAttributeValue = (value: string | boolean) => {
     return false;
   }
 
-  return value;
+  return value || true;
 };
 
 // Convert html attributes to valid react props
