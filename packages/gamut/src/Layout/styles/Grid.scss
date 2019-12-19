@@ -1,0 +1,23 @@
+$gaps: (
+  "s": 0.5rem,
+  "m": 1rem,
+  "l": 2rem,
+  "xl": 3rem,
+);
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@each $key, $value in $gaps {
+  .gridGap_row_#{$key} {
+    grid-row-gap: $value;
+  }
+}
+
+@each $key, $value in $gaps {
+  .gridGap_column_#{$key} {
+    grid-column-gap: $value;
+  }
+}

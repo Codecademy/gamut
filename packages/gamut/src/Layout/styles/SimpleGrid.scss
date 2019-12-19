@@ -1,0 +1,23 @@
+.container {
+  display: grid;
+}
+
+.row {
+  grid-auto-flow: row;
+}
+
+.column {
+  grid-auto-flow: column;
+}
+
+$gaps: (
+  "s": 0.5rem,
+  "m": 1rem,
+  "l": 2rem,
+);
+
+@each $key, $value in $gaps {
+  .gap_#{$key} {
+    grid-gap: $value;
+  }
+}
