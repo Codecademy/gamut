@@ -20,7 +20,6 @@ export {
 export { default as HighlightedText } from './HighlightedText';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
-export { default as LearningInterstitial } from './LearningInterstitial';
 export { default as Logo } from './Logo';
 export { default as Markdown } from './Markdown';
 export { default as MenuItem } from './Menus/MenuItem';
@@ -34,7 +33,6 @@ export {
 } from './NotificationList/NotificationItem';
 export { default as RadialProgress } from './RadialProgress';
 export { default as Spinner } from './Spinner';
-export { default as SplitInterstitial } from './SplitInterstitial';
 export { VisualTheme } from './theming/VisualTheme';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
 export { default as Toggle } from './Toggle';

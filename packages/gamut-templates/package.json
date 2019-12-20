@@ -1,12 +1,8 @@
 {
-  "name": "@codecademy/gamut",
-  "description": "Styleguide & Component library for Codecademy",
+  "name": "@codecademy/gamut-templates",
+  "description": "Templates library for Gamut",
   "version": "2.2.9",
   "author": "Codecademy Engineering <dev@codecademy.com>",
-  "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.5.2"
-  },
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -15,25 +11,16 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
+    "@codecademy/gamut": "^2.2.9",
     "@codecademy/gamut-styles": "^2.2.10",
-    "@types/marked": "^0.6.1",
-    "@types/react-truncate": "^2.3.3",
-    "classnames": "^2.2.5",
-    "html-to-react": "^1.4.2",
-    "insane": "^2.6.2",
-    "invariant": "^2.2.0",
-    "lodash": "^4.17.5",
-    "marked": "^0.6.0",
-    "moment": "^2.24.0",
-    "react-aria-tabpanel": "^4.4.0",
-    "react-truncate": "^2.4.0"
+    "classnames": "^2.2.5"
   },
   "scripts": {
     "verify": "tsc --noEmit",

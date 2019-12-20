@@ -1,12 +1,12 @@
 import React from 'react';
-import { SplitInterstitial } from 'gamut';
+import { SplitInterstitial } from 'gamut-templates';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 import styles from './SplitInterstitial-story.scss';
 
 export default {
   component: 'SplitInterstitial',
-  title: 'Component/SplitInterstitial',
+  title: 'Templates/SplitInterstitial',
 };
 
 export const splitInterstitial = () => (

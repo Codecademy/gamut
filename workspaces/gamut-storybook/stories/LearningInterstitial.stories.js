@@ -5,7 +5,7 @@ import Stairs from '../assets/Stairs.svg';
 
 export default {
   component: 'LearningInterstitial',
-  title: 'Component/LearningInterstitial',
+  title: 'Templates/LearningInterstitial',
 };
 
 export const learningInterstitial = () => (

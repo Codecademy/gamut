@@ -1,8 +1,8 @@
+import { Button } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
 
 import LearningInterstitial from '..';
-import Button from '../../Button';
 
 describe('LearningInterstitial', () => {
   it('renders a decoration before the title when a decoration is provided', () => {

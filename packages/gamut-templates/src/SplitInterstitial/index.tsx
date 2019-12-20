@@ -36,13 +36,11 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
     <div className={cx(styles.splitInterstitial, className)}>
       <div className={cx(styles.side)}>{right.children}</div>
       <div className={cx(styles.side, styles.left)}>
-        {
-          <img
-            alt=""
-            className={cx(styles.topLeftImage, topLeftImage.className)}
-            src={topLeftImage.src || purpleCurveTopLeft}
-          />
-        }
+        <img
+          alt=""
+          className={cx(styles.topLeftImage, topLeftImage.className)}
+          src={topLeftImage.src || purpleCurveTopLeft}
+        />
         {bottomRightImage.src ? (
           <img
             alt=""
