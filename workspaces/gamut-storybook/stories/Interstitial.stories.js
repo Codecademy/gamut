@@ -1,5 +1,6 @@
 import React from 'react';
-import { Interstitial, Button } from 'gamut';
+import { Button } from 'gamut';
+import { Interstitial } from 'gamut-templates';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 
@@ -8,7 +9,7 @@ export default {
   title: 'Templates/Interstitial',
 };
 
-export const Interstitial = () => (
+export const interstitial = () => (
   <Interstitial
     buttons={[
       <Button key="1" theme="yellow">
@@ -26,11 +27,11 @@ export const Interstitial = () => (
   </Interstitial>
 );
 
-Interstitial.story = {
+interstitial.story = {
   name: 'Interstitial',
 };
 
-export const InterstitialWithDecoration = () => (
+export const interstitialWithDecoration = () => (
   <Interstitial
     buttons={[
       <Button key="1" theme="brand-red">
@@ -47,6 +48,6 @@ export const InterstitialWithDecoration = () => (
   </Interstitial>
 );
 
-InterstitialWithDecoration.story = {
+interstitialWithDecoration.story = {
   name: 'Interstitial With Decoration',
 };
