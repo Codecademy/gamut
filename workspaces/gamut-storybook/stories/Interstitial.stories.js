@@ -1,15 +1,15 @@
 import React from 'react';
-import { LearningInterstitial, Button } from 'gamut';
+import { Interstitial, Button } from 'gamut';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 
 export default {
-  component: 'LearningInterstitial',
-  title: 'Templates/LearningInterstitial',
+  component: 'Interstitial',
+  title: 'Templates/Interstitial',
 };
 
-export const learningInterstitial = () => (
-  <LearningInterstitial
+export const Interstitial = () => (
+  <Interstitial
     buttons={[
       <Button key="1" theme="yellow">
         One Button
@@ -23,15 +23,15 @@ export const learningInterstitial = () => (
     Place some happy text as the content of this interstitial for the learner to
     feel good about themselves. Note that the max-width for this content is
     large but not <em>too</em> large. We want some amount of vertical centering!
-  </LearningInterstitial>
+  </Interstitial>
 );
 
-learningInterstitial.story = {
-  name: 'LearningInterstitial',
+Interstitial.story = {
+  name: 'Interstitial',
 };
 
-export const learningInterstitialWithDecoration = () => (
-  <LearningInterstitial
+export const InterstitialWithDecoration = () => (
+  <Interstitial
     buttons={[
       <Button key="1" theme="brand-red">
         Red Button
@@ -44,9 +44,9 @@ export const learningInterstitialWithDecoration = () => (
     title="Decorations, Too!"
   >
     Decorations are added on top of the <code>h1</code> as part of it.
-  </LearningInterstitial>
+  </Interstitial>
 );
 
-learningInterstitialWithDecoration.story = {
-  name: 'LearningInterstitial With Decoration',
+InterstitialWithDecoration.story = {
+  name: 'Interstitial With Decoration',
 };

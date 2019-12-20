@@ -2,14 +2,14 @@ import { Button } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
 
-import LearningInterstitial from '..';
+import Interstitial from '..';
 
-describe('LearningInterstitial', () => {
+describe('Interstitial', () => {
   it('renders a decoration before the title when a decoration is provided', () => {
     const title = 'Hello, World!';
 
     const wrapped = mount(
-      <LearningInterstitial
+      <Interstitial
         decoration={
           <span role="img" aria-label="Heart eyes">
             😍
@@ -28,12 +28,9 @@ describe('LearningInterstitial', () => {
     const children = 'Hi!';
 
     const wrapped = mount(
-      <LearningInterstitial
-        buttons={[<Button key="1">{button}</Button>]}
-        title={title}
-      >
+      <Interstitial buttons={[<Button key="1">{button}</Button>]} title={title}>
         {children}
-      </LearningInterstitial>
+      </Interstitial>
     );
 
     expect(wrapped.text()).toEqual(`${title}${children}${button}`);

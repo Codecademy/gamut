@@ -3,14 +3,14 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
-export type LearningInterstitialProps = {
+export type InterstitialProps = {
   buttons?: React.ReactNode[];
   className?: string;
   decoration?: React.ReactNode;
   title: string;
 };
 
-export const LearningInterstitial: React.FC<LearningInterstitialProps> = ({
+export const Interstitial: React.FC<InterstitialProps> = ({
   buttons,
   children,
   className,
@@ -18,7 +18,7 @@ export const LearningInterstitial: React.FC<LearningInterstitialProps> = ({
   title,
 }) => {
   return (
-    <div className={cx(styles.learningInterstitial, className)}>
+    <div className={cx(styles.Interstitial, className)}>
       <div className={styles.content}>
         <h1 className={styles.title}>
           {decoration && <div className={styles.decoration}>{decoration}</div>}
@@ -31,4 +31,4 @@ export const LearningInterstitial: React.FC<LearningInterstitialProps> = ({
   );
 };
 
-export default LearningInterstitial;
+export default Interstitial;
