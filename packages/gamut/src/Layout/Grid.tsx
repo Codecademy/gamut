@@ -16,9 +16,9 @@ const Grid: React.FC<GridProps & ContainerElementProps> = ({
   columnGap,
   rowGap,
 }) => {
-  const classes = cx(s.gridContainer, className, {
-    [s[`gridGap_row_${rowGap}`]]: rowGap,
-    [s[`gridGap_column_${columnGap}`]]: columnGap,
+  const classes = cx(s.container, className, {
+    [s[`rowGap_${rowGap}`]]: rowGap,
+    [s[`columnGap_${columnGap}`]]: columnGap,
   });
 
   return (

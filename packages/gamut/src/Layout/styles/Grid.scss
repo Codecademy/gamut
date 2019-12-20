@@ -5,19 +5,19 @@ $gaps: (
   "xl": 3rem,
 );
 
-.gridContainer {
+.container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
 
 @each $key, $value in $gaps {
-  .gridGap_row_#{$key} {
+  .rowGap_#{$key} {
     grid-row-gap: $value;
   }
 }
 
 @each $key, $value in $gaps {
-  .gridGap_column_#{$key} {
+  .columnGap_#{$key} {
     grid-column-gap: $value;
   }
 }
