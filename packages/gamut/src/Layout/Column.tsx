@@ -10,6 +10,7 @@ type ColumnProps = {
   sm: ColumnSize;
   md?: ColumnSize;
   lg?: ColumnSize;
+  fill?: boolean;
 };
 
 /**
@@ -21,8 +22,10 @@ const Column: React.FC<ColumnProps & ContainerElementProps> = ({
   sm,
   lg,
   testId,
+  fill = true,
 }) => {
   const classNames = cx({
+    [s.container]: fill,
     [s[`column_lgScreen__${lg}`]]: lg,
     [s[`column_mdScreen__${md}`]]: md,
     [s[`column_smScreen__${sm}`]]: sm,
