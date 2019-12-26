@@ -13,7 +13,9 @@ type GapProps = {
   columnGap?: GapSizes;
 };
 
-type GridProps = Record<string | MediaSizes, GapProps>;
+type GridConfig = Record<string | MediaSizes, GapProps>;
+
+type LayoutGridProps = GridConfig & ContainerElementProps;
 
 const computeClasses = (medias: Record<string | MediaSizes, GapProps>) =>
   compose(
@@ -35,7 +37,7 @@ const computeClasses = (medias: Record<string | MediaSizes, GapProps>) =>
     keys
   )(medias);
 
-const Grid: React.FC<GridProps & ContainerElementProps> = ({
+const Grid: React.FC<LayoutGridProps> = ({
   children,
   testId,
   className,
