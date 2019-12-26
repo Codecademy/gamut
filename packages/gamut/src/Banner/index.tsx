@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { MouseEvent } from 'react';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 import Button from '../Button';
 import CloseIcon from '../Icon/icons/CloseIcon';
 

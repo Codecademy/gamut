@@ -1,0 +1,35 @@
+{
+  "name": "@codecademy/gamut-templates",
+  "description": "Templates library for Gamut",
+  "version": "2.2.11",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "sideEffects": [
+    "*.css",
+    "*.scss"
+  ],
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@codecademy/gamut": "^2.2.10",
+    "@codecademy/gamut-styles": "^2.2.10",
+    "classnames": "^2.2.5"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "build:clean": "rm -rf dist",
+    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
+    "build": "yarn build:clean && yarn build:copy && tsc"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "copyfiles": "^2.1.1"
+  }
+}

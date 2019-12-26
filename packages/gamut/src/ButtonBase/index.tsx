@@ -1,7 +1,7 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
 const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
@@ -26,7 +26,7 @@ export type ButtonBaseProps = (
   onClick?: (event: object) => void;
 };
 
-export const ButtonBase = (props: ButtonBaseProps) => {
+export const ButtonBase: React.FC<ButtonBaseProps> = props => {
   const { href, className, link, onClick } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
   const propsToTransfer = omitProps(propKeys, restOfProps);

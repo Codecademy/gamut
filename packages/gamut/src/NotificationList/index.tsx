@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import omitProps from '../utils/omitProps';
 import { Notification } from './typings';
 import NotificationItem from './NotificationItem';
-import s from './styles/index.scss';
+import s from './styles/index.module.scss';
 
 const byDate = (notification1: Notification, notification2: Notification) => {
   return (
@@ -17,7 +17,7 @@ const sortedNotifications = (notifications: Notification[]) => {
   return notifications.sort(byDate);
 };
 
-type NotificationListProps = {
+export type NotificationListProps = {
   className?: string;
   notifications?: Notification[];
   onNotificationClick?: (notification: Notification) => void;

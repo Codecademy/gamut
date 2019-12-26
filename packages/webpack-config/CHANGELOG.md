@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.0...@codecademy/webpack-config@3.16.1) (2019-12-05)
+
+
+### Bug Fixes
+
+* **webpack-config:** Revert removal of id from default hashes ([#560](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/560)) ([3cd175d](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/3cd175d))
+
+
+
+
+
+# [3.16.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.7...@codecademy/webpack-config@3.16.0) (2019-12-03)
+
+
+### Features
+
+* **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/557)) ([4b4c36f](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4b4c36f))
+
+
+
+
+
 ## [3.15.7](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.6...@codecademy/webpack-config@3.15.7) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/webpack-config
