@@ -17,7 +17,7 @@ const Test = ({ color, children }) => {
 
 export const gridTown = () => {
   return (
-    <SimpleGrid ratio="1fr:2fr" repeat={false}>
+    <SimpleGrid ratio="1fr:2fr">
       <Test color="grey" />
       <Test color="lightgrey" />
       <Test color="lightgrey" />
@@ -31,7 +31,7 @@ gridTown.story = {
 };
 
 export const hardValues = () => (
-  <SimpleGrid ratio="200px:1fr" repeat={false}>
+  <SimpleGrid ratio="200px:1fr">
     <Test color="grey" />
     <Test color="lightgrey" />
   </SimpleGrid>
@@ -42,7 +42,7 @@ hardValues.story = {
 };
 
 export const simpleCard = () => (
-  <SimpleGrid ratio="1fr:2fr" repeat={false} direction="row">
+  <SimpleGrid ratio="1fr:2fr" direction="row">
     <Test color="grey" />
     <Test color="lightgrey" />
   </SimpleGrid>
@@ -53,9 +53,9 @@ simpleCard.story = {
 };
 
 export const complexCard = () => (
-  <SimpleGrid ratio="2rem:auto:2rem" repeat={false}>
+  <SimpleGrid ratio="2rem:auto:2rem">
     <Test color="grey" />
-    <SimpleGrid ratio="1fr:2fr:1fr" repeat={false} direction="row">
+    <SimpleGrid ratio="1fr:2fr:1fr" direction="row">
       <Test color="grey" />
       <Test color="lightgrey" />
       <Test color="grey" />
@@ -69,16 +69,11 @@ complexCard.story = {
 };
 
 export const cardGrid = () => (
-  <SimpleGrid ratio="1fr:1fr:1fr:1fr" gap="lg" repeat={false}>
+  <SimpleGrid ratio="1fr:1fr:1fr:1fr" gap="lg">
     {new Array(10).fill('').map((x, i) => {
       const blahKey = i + 'key';
       return (
-        <SimpleGrid
-          key={blahKey}
-          direction="row"
-          ratio="2rem:10rem"
-          repeat={false}
-        >
+        <SimpleGrid key={blahKey} direction="row" ratio="2rem:10rem">
           <Test color="grey" />
           <Test color="lightgrey" />
         </SimpleGrid>
