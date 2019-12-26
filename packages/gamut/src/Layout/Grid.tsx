@@ -23,6 +23,9 @@ const computeClasses = (medias: Record<string | MediaSizes, GapProps>) =>
   compose(
     reduce(
       (carry: Record<string, string>, mediaSize) => {
+        if (!medias[mediaSize]) {
+          return carry;
+        }
         const { columnGap, rowGap } = medias[mediaSize];
         const classes = {
           [s[`columnGap_${mediaSize}Screen__${columnGap}`]]: columnGap,
