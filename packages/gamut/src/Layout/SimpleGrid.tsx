@@ -26,7 +26,7 @@ const SimpleGrid: React.FC<GridProps> = ({
 }) => {
   const base = 'grid';
   const interval = repeat ? 'Auto' : 'Template';
-  const type = direction === 'row' ? 'Columns' : 'Rows';
+  const type = direction === 'row' ? 'Rows' : 'Columns';
   const key = `${base}${interval}${type}`;
 
   const style = {

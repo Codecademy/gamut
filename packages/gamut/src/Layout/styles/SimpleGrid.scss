@@ -11,9 +11,9 @@
 }
 
 $gaps: (
-  "s": 0.5rem,
-  "m": 1rem,
-  "l": 2rem,
+  "sm": 0.5rem,
+  "md": 1rem,
+  "lg": 2rem,
 );
 
 @each $key, $value in $gaps {
