@@ -1,6 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "include": [
+    "../../packages/gamut/src/typings/*.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,

@@ -24,8 +24,8 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:clean": "rm -rf dist",
-    "build:copy": "copyfiles -u 1 -a './lib/gamut-templates/src/**/*' ./dist",
+    "build:clean": "rm -rf dist lib",
+    "build:copy": "copyfiles -u 3 './lib/gamut-templates/src/**/*' ./dist",
     "build": "yarn build:clean && yarn tsc && yarn build:copy"
   },
   "license": "MIT",
