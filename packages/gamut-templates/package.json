@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-templates",
   "description": "Templates library for Gamut",
-  "version": "2.2.9",
+  "version": "2.2.11",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -18,14 +18,15 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^2.2.9",
+    "@codecademy/gamut": "^2.2.10",
     "@codecademy/gamut-styles": "^2.2.10",
     "classnames": "^2.2.5"
   },
   "scripts": {
     "verify": "tsc --noEmit",
     "build:clean": "rm -rf dist",
-    "build": "yarn build:clean && tsc"
+    "build:copy": "copyfiles -u 1 -a './lib/gamut-templates/src/**/*' ./dist",
+    "build": "yarn build:clean && yarn tsc && yarn build:copy"
   },
   "license": "MIT",
   "devDependencies": {
