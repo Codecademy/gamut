@@ -1,15 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { ContainerElementProps } from './types';
+import { ContainerElementProps, ColumnSizes } from './types';
 import s from './styles/Column.scss';
 
-type ColumnSize = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-
 type ColumnProps = {
-  sm: ColumnSize;
-  md?: ColumnSize;
-  lg?: ColumnSize;
+  sm: ColumnSizes;
+  md?: ColumnSizes;
+  lg?: ColumnSizes;
   fill?: boolean;
 };
 

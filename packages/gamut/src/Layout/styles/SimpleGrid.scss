@@ -1,3 +1,5 @@
+@import "./shared.scss";
+
 .container {
   display: grid;
 }
@@ -10,14 +12,8 @@
   grid-auto-flow: column;
 }
 
-$gaps: (
-  "sm": 0.5rem,
-  "md": 1rem,
-  "lg": 2rem,
-);
-
-@each $key, $value in $gaps {
-  .gap_#{$key} {
-    grid-gap: $value;
+@each $sizeName, $gapSize in $gapSizes {
+  .gap_#{$sizeName} {
+    grid-gap: $gapSize;
   }
 }

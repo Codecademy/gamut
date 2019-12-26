@@ -2,10 +2,11 @@ import React from 'react';
 import cx from 'classnames';
 
 import s from './styles/SimpleGrid.scss';
+import { GapSizes } from './types';
 
 type GridProps = {
   direction?: 'row' | 'column';
-  gap?: 'sm' | 'md' | 'lg';
+  gap?: GapSizes;
   repeat?: boolean;
   ratio?: string;
 };
@@ -19,7 +20,7 @@ const getRatio = (ratio: string) => {
 
 const SimpleGrid: React.FC<GridProps> = ({
   children,
-  direction = 'row',
+  direction = 'column',
   gap = 'sm',
   ratio = '1fr',
   repeat = true,
@@ -34,8 +35,7 @@ const SimpleGrid: React.FC<GridProps> = ({
   };
   return (
     <div
-      className={cx(s.container, {
-        [s[direction]]: direction,
+      className={cx(s.container, s.row, {
         [s[`gap_${gap}`]]: gap,
       })}
       style={style}

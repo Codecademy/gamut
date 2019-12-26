@@ -2,11 +2,8 @@ import React, { useMemo } from 'react';
 import { keys, reduce, compose } from 'lodash/fp';
 import cx from 'classnames';
 
-import { ContainerElementProps } from './types';
+import { ContainerElementProps, GapSizes } from './types';
 import s from './styles/Grid.scss';
-
-type GapSizes = 'sm' | 'md' | 'lg' | 'xl';
-type MediaSizes = 'sm' | 'md' | 'lg';
 
 type GapProps = {
   rowGap?: GapSizes;
@@ -19,7 +16,7 @@ type LayoutGridProps = {
   lg?: GapProps;
 } & ContainerElementProps;
 
-const computeClasses = (medias: Record<string | MediaSizes, GapProps>) =>
+const computeClasses = (medias: Record<string, GapProps>) =>
   compose(
     reduce(
       (carry: Record<string, string>, mediaSize) => {

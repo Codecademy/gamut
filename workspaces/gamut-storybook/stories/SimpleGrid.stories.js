@@ -4,7 +4,7 @@ import gamut from 'gamut-styles/utils/variables';
 
 export default {
   component: SimpleGrid,
-  title: 'Components/SimpleGrid',
+  title: 'Component/SimpleGrid',
 };
 
 const Test = ({ color, children }) => {
@@ -42,7 +42,7 @@ hardValues.story = {
 };
 
 export const simpleCard = () => (
-  <SimpleGrid ratio="1fr:2fr" repeat={false} direction="column">
+  <SimpleGrid ratio="1fr:2fr" repeat={false} direction="row">
     <Test color="grey" />
     <Test color="lightgrey" />
   </SimpleGrid>
@@ -53,9 +53,9 @@ simpleCard.story = {
 };
 
 export const complexCard = () => (
-  <SimpleGrid ratio="2rem:5rem:2rem" repeat={false} direction="column">
+  <SimpleGrid ratio="2rem:auto:2rem" repeat={false}>
     <Test color="grey" />
-    <SimpleGrid ratio="1fr:2fr:1fr" repeat={false}>
+    <SimpleGrid ratio="1fr:2fr:1fr" repeat={false} direction="row">
       <Test color="grey" />
       <Test color="lightgrey" />
       <Test color="grey" />
@@ -69,15 +69,15 @@ complexCard.story = {
 };
 
 export const cardGrid = () => (
-  <SimpleGrid ratio="1fr:1fr:1fr:1fr" gap="l" repeat={false}>
+  <SimpleGrid ratio="1fr:1fr:1fr:1fr" gap="lg" repeat={false}>
     {new Array(10).fill('').map((x, i) => {
       const blahKey = i + 'key';
       return (
         <SimpleGrid
           key={blahKey}
+          direction="row"
           ratio="2rem:10rem"
           repeat={false}
-          direction="column"
         >
           <Test color="grey" />
           <Test color="lightgrey" />
