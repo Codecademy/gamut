@@ -105,7 +105,7 @@ const KitchenSinkColumns = ({ alt }) => (
 
 export const smallGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 's', rowGap: 's' }}>
+    <LayoutGrid sm={{ columnGap: 'sm', rowGap: 'sm' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -117,7 +117,7 @@ smallGap.story = {
 
 export const mediumGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'm', rowGap: 'm' }}>
+    <LayoutGrid sm={{ columnGap: 'md', rowGap: 'md' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -129,7 +129,7 @@ mediumGap.story = {
 
 export const largeGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'l', rowGap: 'l' }}>
+    <LayoutGrid sm={{ columnGap: 'lg', rowGap: 'lg' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -166,9 +166,9 @@ noGap.story = {
 export const responsiveGridGap = () => {
   return (
     <LayoutGrid
-      sm={{ columnGap: 's', rowGap: 's' }}
-      md={{ columnGap: 'm', rowGap: 'm' }}
-      lg={{ columnGap: 'l', rowGap: 'l' }}
+      sm={{ columnGap: 'sm', rowGap: 'sm' }}
+      md={{ columnGap: 'md', rowGap: 'md' }}
+      lg={{ columnGap: 'lg', rowGap: 'lg' }}
     >
       <KitchenSinkColumns />
     </LayoutGrid>

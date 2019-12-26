@@ -5,7 +5,7 @@ import s from './styles/SimpleGrid.scss';
 
 type GridProps = {
   direction?: 'row' | 'column';
-  gap?: 's' | 'm' | 'l';
+  gap?: 'sm' | 'md' | 'lg';
   repeat?: boolean;
   ratio?: string;
 };
@@ -20,7 +20,7 @@ const getRatio = (ratio: string) => {
 const SimpleGrid: React.FC<GridProps> = ({
   children,
   direction = 'row',
-  gap = 's',
+  gap = 'sm',
   ratio = '1fr',
   repeat = true,
 }) => {

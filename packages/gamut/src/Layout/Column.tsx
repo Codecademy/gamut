@@ -23,9 +23,9 @@ const Column: React.FC<ColumnProps & ContainerElementProps> = ({
   testId,
 }) => {
   const classNames = cx({
-    [s[`column_lg__${lg}`]]: lg,
-    [s[`column_md__${md}`]]: md,
-    [s[`column_sm__${sm}`]]: sm,
+    [s[`column_lgScreen__${lg}`]]: lg,
+    [s[`column_mdScreen__${md}`]]: md,
+    [s[`column_smScreen__${sm}`]]: sm,
   });
   return (
     <div className={classNames} data-testid={testId}>

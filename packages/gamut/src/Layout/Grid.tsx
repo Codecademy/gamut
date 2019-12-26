@@ -5,12 +5,13 @@ import cx from 'classnames';
 import { ContainerElementProps } from './types';
 import s from './styles/Grid.scss';
 
-type GapProps = {
-  rowGap?: string;
-  columnGap?: string;
-};
-
+type GapSizes = 'sm' | 'md' | 'lg' | 'xl';
 type MediaSizes = 'sm' | 'md' | 'lg';
+
+type GapProps = {
+  rowGap?: GapSizes;
+  columnGap?: GapSizes;
+};
 
 type GridProps = Record<string | MediaSizes, GapProps>;
 
