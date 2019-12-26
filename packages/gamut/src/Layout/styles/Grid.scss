@@ -1,3 +1,5 @@
+@import "~@codecademy/gamut-styles/utils";
+
 $gaps: (
   "s": 0.5rem,
   "m": 1rem,
@@ -5,19 +7,42 @@ $gaps: (
   "xl": 3rem,
 );
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-}
+$screenSizes: ("sm", "md", "lg");
 
-@each $key, $value in $gaps {
-  .rowGap_#{$key} {
-    grid-row-gap: $value;
+@mixin getViewport($viewport) {
+  @if $viewport == "lg" {
+    @include lg-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "md" {
+    @include md-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "sm" {
+    @content;
   }
 }
 
-@each $key, $value in $gaps {
-  .columnGap_#{$key} {
-    grid-column-gap: $value;
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+@each $screenSize in $screenSizes {
+  @each $key, $value in $gaps {
+    .rowGap_#{$screenSize}Screen__#{$key} {
+      @include getViewport($screenSize) {
+        grid-row-gap: $value;
+      }
+    }
+  }
+  @each $key, $value in $gaps {
+    .columnGap_#{$screenSize}Screen__#{$key} {
+      @include getViewport($screenSize) {
+        grid-column-gap: $value;
+      }
+    }
   }
 }

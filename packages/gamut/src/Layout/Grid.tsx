@@ -1,25 +1,49 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { keys, reduce, compose } from 'lodash/fp';
 import cx from 'classnames';
 
-import { ContainerElementProps, GapSizes } from './types';
+import { ContainerElementProps } from './types';
 import s from './styles/Grid.scss';
 
-type GridProps = {
-  rowGap?: GapSizes;
-  columnGap?: GapSizes;
+type GapProps = {
+  rowGap?: string;
+  columnGap?: string;
 };
+
+type MediaSizes = 'sm' | 'md' | 'lg';
+
+type GridProps = Record<string | MediaSizes, GapProps>;
+
+const computeClasses = (medias: Record<string | MediaSizes, GapProps>) =>
+  compose(
+    reduce(
+      (carry: Record<string, string>, mediaSize) => {
+        const { columnGap, rowGap } = medias[mediaSize];
+        const classes = {
+          [s[`columnGap_${mediaSize}Screen__${columnGap}`]]: columnGap,
+          [s[`rowGap_${mediaSize}Screen__${rowGap}`]]: rowGap,
+        };
+
+        return {
+          ...carry,
+          ...classes,
+        };
+      },
+      {} as Record<string, string>
+    ),
+    keys
+  )(medias);
 
 const Grid: React.FC<GridProps & ContainerElementProps> = ({
   children,
   testId,
   className,
-  columnGap,
-  rowGap,
+  ...rest
 }) => {
-  const classes = cx(s.container, className, {
-    [s[`rowGap_${rowGap}`]]: rowGap,
-    [s[`columnGap_${columnGap}`]]: columnGap,
-  });
+  const gapClasses = useMemo(() => {
+    return computeClasses(rest);
+  }, [rest]);
+  const classes = cx(s.container, className, gapClasses);
 
   return (
     <div className={classes} data-testid={testId}>
