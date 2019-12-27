@@ -25,79 +25,79 @@ const Test = ({ color, children }) => {
 
 const KitchenSinkColumns = ({ alt }) => (
   <>
-    <Column sm={12}>
+    <Column size={{ sm: 12 }}>
       <Test color="grey">12</Test>
     </Column>
-    <Column sm={6}>
+    <Column size={{ sm: 6 }}>
       <Test color="grey">6</Test>
     </Column>
-    <Column sm={6}>
+    <Column size={{ sm: 6 }}>
       <Test color="grey">6</Test>
     </Column>
-    <Column sm={3}>
+    <Column size={{ sm: 3 }}>
       <Test color="grey">3</Test>
     </Column>
-    <Column sm={3}>
+    <Column size={{ sm: 3 }}>
       <Test color="grey">3</Test>
     </Column>
-    <Column sm={3}>
+    <Column size={{ sm: 3 }}>
       <Test color="grey">3</Test>
     </Column>
-    <Column sm={3}>
+    <Column size={{ sm: 3 }}>
       <Test color="grey">3</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={2}>
+    <Column size={{ sm: 2 }}>
       <Test color="grey">2</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
-    <Column sm={1}>
+    <Column size={{ sm: 1 }}>
       <Test color="grey">1</Test>
     </Column>
   </>
@@ -106,9 +106,8 @@ const KitchenSinkColumns = ({ alt }) => (
 export const responsiveGridGap = () => {
   return (
     <LayoutGrid
-      sm={{ columnGap: 'sm', rowGap: 'sm' }}
-      md={{ columnGap: 'md', rowGap: 'md' }}
-      lg={{ columnGap: 'lg', rowGap: 'lg' }}
+      columnGap={{ sm: 'sm', md: 'md', lg: 'lg' }}
+      rowGap={{ sm: 'sm', md: 'md', lg: 'lg' }}
     >
       <KitchenSinkColumns />
     </LayoutGrid>
@@ -121,7 +120,7 @@ responsiveGridGap.story = {
 
 export const smallGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'sm', rowGap: 'sm' }}>
+    <LayoutGrid columnGap={{ sm: 'sm' }} rowGap={{ sm: 'sm' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -133,7 +132,7 @@ smallGap.story = {
 
 export const mediumGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'md', rowGap: 'md' }}>
+    <LayoutGrid columnGap={{ sm: 'md' }} rowGap={{ sm: 'md' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -145,7 +144,7 @@ mediumGap.story = {
 
 export const largeGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'lg', rowGap: 'lg' }}>
+    <LayoutGrid columnGap={{ sm: 'lg' }} rowGap={{ sm: 'lg' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
@@ -157,7 +156,7 @@ largeGap.story = {
 
 export const extraLargeGap = () => {
   return (
-    <LayoutGrid sm={{ columnGap: 'xl', rowGap: 'xl' }}>
+    <LayoutGrid columnGap={{ sm: 'xl' }} rowGap={{ sm: 'xl' }}>
       <KitchenSinkColumns />
     </LayoutGrid>
   );
