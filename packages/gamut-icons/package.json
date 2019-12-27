@@ -13,13 +13,11 @@
   "scripts": {
     "format": "svgo -f ./src --pretty --config=.svgo.yml",
     "clean": "rm -rf ./icons; rm -rf ./tmp; mkdir ./tmp",
-    "build:icons": "svgr -d ./tmp/ts --ext 'tsx' ./src",
-    "build:index": "create-index ./tmp/ts -r -x tsx js",
-    "build:ts": "tsc",
+    "build:icons": "svgr --out-dir ./tmp/ts --ext 'tsx' ./src",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:compile": "babel ./tmp/ts --out-dir ./icons --copy-files --extensions \".ts,.tsx\"",
     "rename-icons": "find ./tmp/ts -depth -name \"*.tsx\" -exec sh -c 'mv \"$1\" \"${1%.tsx}Icon.tsx\"' _ {} \\;",
-    "rename-index": "find ./tmp/ts -depth -name \"*.js\" -exec sh -c 'mv \"$1\" \"${1%.js}.ts\"' _ {} \\;",
-    "clean-index": "yarn rename-index; replace-in-file '/\\.tsx/g' '' tmp/**/index.ts tmp/**/*/index.ts --isRegex --verbose",
-    "build": "yarn clean && yarn build:icons && yarn rename-icons && yarn build:index && yarn clean-index && yarn build:ts"
+    "build": "yarn clean && yarn build:icons && yarn rename-icons && yarn build:compile && yarn build:types"
   },
   "repository": {
     "type": "git",
@@ -27,10 +25,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@svgr/cli": "4.3.2",
-    "create-index": "^2.4.0",
-    "replace-in-file": "^4.1.1",
-    "svgo": "^1.3.0",
+    "@svgr/cli": "5.0.0",
+    "create-index": "^2.5.0",
+    "replace-in-file": "^5.0.2",
+    "svgo": "^1.3.2",
     "typescript": "*"
   }
 }

@@ -1,9 +1,9 @@
 const template = require('./icon-template');
 
 module.exports = {
-  icon: true,
   dimensions: false,
   titleProp: true,
+  ref: true,
   svgProps: {
     width: '{size || width || "1em"}',
     height: '{size || height || "1em"}',
