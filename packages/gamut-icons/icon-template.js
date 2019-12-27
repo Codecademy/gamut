@@ -8,7 +8,7 @@ function iconTemplate(
   return typeScriptTpl.ast`
     import * as React from 'react';
     export interface GamutIconProps extends React.SVGProps<SVGSVGElement> {
-      size?: number;
+      size?: number | string;
       title?: string;
       color?: string;
     }
