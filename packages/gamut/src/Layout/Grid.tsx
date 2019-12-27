@@ -25,7 +25,7 @@ const computeClasses = (gaps: GridProps) => {
           ...classes,
           [s[`${gap}_smScreen__${gapConfig}`]]: gapConfig,
         };
-      } else {
+      } else if (typeof gapConfig === 'object') {
         classes = {
           ...classes,
           ...Object.keys(gapConfig).reduce((carry, mediaSize: MediaSizes) => {
