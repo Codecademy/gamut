@@ -6,7 +6,7 @@ import s from './styles/Grid.scss';
 
 type GapConfig = Record<MediaSizes, GapSizes>;
 
-type GridProps = Record<GapTypes, GapConfig>;
+type GridProps = Record<GapTypes, GapConfig | GapSizes>;
 
 type LayoutGridProps = GridProps & ContainerElementProps;
 
@@ -18,19 +18,28 @@ const computeClasses = (gaps: GridProps) => {
         return carry;
       }
 
-      const classes = Object.keys(gapConfig).reduce(
-        (carry, mediaSize: MediaSizes) => {
-          const gapSize = gapConfig[mediaSize];
-          if (!gapSize) {
-            return carry;
-          }
-          return {
-            ...carry,
-            [s[`${gap}_${mediaSize}Screen__${gapSize}`]]: gapSize,
-          };
-        },
-        {}
-      );
+      let classes = {};
+
+      if (typeof gapConfig === 'string') {
+        classes = {
+          ...classes,
+          [s[`${gap}_smScreen__${gapConfig}`]]: gapConfig,
+        };
+      } else {
+        classes = {
+          ...classes,
+          ...Object.keys(gapConfig).reduce((carry, mediaSize: MediaSizes) => {
+            const gapSize = gapConfig[mediaSize];
+            if (!gapSize) {
+              return carry;
+            }
+            return {
+              ...carry,
+              [s[`${gap}_${mediaSize}Screen__${gapSize}`]]: gapSize,
+            };
+          }, {}),
+        };
+      }
 
       return {
         ...carry,

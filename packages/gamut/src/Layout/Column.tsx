@@ -7,13 +7,17 @@ import s from './styles/Column.scss';
 type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
 
 type ColumnProps = {
-  size: ColumnSizeConfig;
+  size: ColumnSizeConfig | ColumnSizes;
   fill?: boolean;
 };
 
-const computeClasses = (sizes: ColumnSizeConfig) => {
-  return Object.keys(sizes).reduce((carry, mediaSize: MediaSizes) => {
-    const columnSize = sizes[mediaSize];
+const computeClasses = (size: ColumnSizeConfig) => {
+  if (typeof size === 'string') {
+    return { [s[`column_smScreen__${size}`]]: size };
+  }
+
+  return Object.keys(size).reduce((carry, mediaSize: MediaSizes) => {
+    const columnSize = size[mediaSize];
     if (!columnSize) {
       return carry;
     }
