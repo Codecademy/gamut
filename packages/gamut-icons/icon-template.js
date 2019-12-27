@@ -1,9 +1,9 @@
 function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
-  const typeScriptTpl = api.template.smart({ plugins: ['typescript'] });
+  const template = api.template.smart({ plugins: ['typescript'] });
   const { componentName } = opts.state;
   const TypeIdentifier = `${componentName}Props`;
   const ComponentIdentifier = `${componentName}: React.FC<${TypeIdentifier}>`;
-  return typeScriptTpl.ast`
+  return template.ast`
     import * as React from 'react';
     type ${TypeIdentifier} = React.SVGProps<SVGSVGElement> & {
       titleId?: string;
