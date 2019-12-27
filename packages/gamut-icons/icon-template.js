@@ -4,11 +4,11 @@ function iconTemplate(
   { componentName, jsx /* imports, props, exports */ }
 ) {
   const typeScriptTpl = template.smart({ plugins: ['typescript'] });
-  console.log(componentName);
+
   return typeScriptTpl.ast`
     import * as React from 'react';
-    export type ${componentName}Props = React.SVGProps<SVGSVGElement> & {
-      size?: number;
+    export interface GamutIconProps extends React.SVGProps<SVGSVGElement> {
+      size?: number | string;
       title?: string;
       color?: string;
     }
