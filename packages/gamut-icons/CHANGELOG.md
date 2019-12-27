@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.0.1...@codecademy/gamut-icons@2.0.2) (2019-12-27)
+
+
+### Bug Fixes
+
+* Set default size on icons, fix colors on some icons ([#577](https://github.com/RyzacInc/client-modules/issues/577)) ([049d1dd](https://github.com/RyzacInc/client-modules/commit/049d1dd))
+
+
+
+
+
 ## [2.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.0.0...@codecademy/gamut-icons@2.0.1) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
