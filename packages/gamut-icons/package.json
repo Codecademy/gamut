@@ -16,7 +16,7 @@
     "build:icons": "svgr --out-dir ./tmp/ts --ext 'tsx' ./src",
     "build:types": "tsc --emitDeclarationOnly",
     "build:compile": "babel ./tmp/ts --out-dir ./icons --copy-files --extensions \".ts,.tsx\"",
-    "rename-icons": "find ./tmp/ts -depth -name \"*.tsx\" -exec sh -c 'mv \"$1\" \"${1%.tsx}Icon.tsx\"' _ {} \\;",
+    "rename-icons": "find ./src -depth -name '*.svg -not *-icon.svg' -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
     "build": "yarn clean && yarn build:icons && yarn rename-icons && yarn build:compile && yarn build:types"
   },
   "repository": {

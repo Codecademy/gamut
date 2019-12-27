@@ -1,18 +1,17 @@
-function iconTemplate(
-  { template },
-  opts,
-  { componentName, jsx /* imports, props, exports */ }
-) {
-  const typeScriptTpl = template.smart({ plugins: ['typescript'] });
-
+function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
+  const typeScriptTpl = api.template.smart({ plugins: ['typescript'] });
+  const { componentName } = opts.state;
+  const TypeIdentifier = `${componentName}Props`;
+  const ComponentIdentifier = `${componentName}: React.FC<${TypeIdentifier}>`;
   return typeScriptTpl.ast`
     import * as React from 'react';
-    export interface GamutIconProps extends React.SVGProps<SVGSVGElement> {
+    type ${TypeIdentifier} = React.SVGProps<SVGSVGElement> & {
+      titleId?: string;
       size?: number | string;
       title?: string;
       color?: string;
-    }
-    const ${componentName} = ({title, size, color, width, height, ...props}: GamutIconProps) => ${jsx};
+    };
+    const ${ComponentIdentifier} = React.forwardRef(({ref: svgRef, title, titleId, size, color, width, height, ...props}) => ${jsx});
     export default ${componentName};
   `;
 }
