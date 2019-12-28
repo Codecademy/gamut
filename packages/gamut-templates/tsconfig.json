@@ -4,12 +4,6 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
-    "outDir": "./lib",
-    "paths": {
-      "gamut": ["../gamut/src"],
-      "gamut/*": ["../gamut/src/*"],
-      "gamut-styles": ["../gamut-styles"],
-      "gamut-styles/*": ["../gamut-styles/*"]
-    }
+    "outDir": "./lib"
   }
 }
