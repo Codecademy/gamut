@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
+import { computeClasses } from './utilities';
 import { ContainerElementProps, ColumnSizes, MediaSizes } from './types';
 import s from './styles/Column.scss';
 
@@ -11,33 +12,15 @@ type ColumnProps = {
   fill?: boolean;
 };
 
-const computeClasses = (size: ColumnSizeConfig | ColumnSizes) => {
-  if (typeof size === 'string') {
-    return { [s[`column_smScreen__${size}`]]: size };
-  } else if (typeof size === 'object') {
-    return Object.keys(size).reduce((carry, mediaSize: MediaSizes) => {
-      const columnSize = size[mediaSize];
-      if (!columnSize) {
-        return carry;
-      }
-      return {
-        ...carry,
-        [s[`column_${mediaSize}Screen__${columnSize}`]]: columnSize,
-      };
-    }, {});
-  }
-};
-
 const Column: React.FC<ColumnProps & ContainerElementProps> = ({
   children,
   size,
   testId,
   fill = true,
 }) => {
-  const sizeClasses = computeClasses(size);
-  const classNames = cx({
+  const sizeClasses = computeClasses(size, 'column', s);
+  const classNames = cx(...sizeClasses, {
     [s.container]: fill,
-    ...sizeClasses,
   });
   return (
     <div className={classNames} data-testid={testId}>
