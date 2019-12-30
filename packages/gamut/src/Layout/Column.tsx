@@ -18,8 +18,7 @@ const Column: React.FC<ColumnProps & ContainerElementProps> = ({
   testId,
   fill = true,
 }) => {
-  const sizeClasses = computeClasses(size, 'column', s);
-  const classNames = cx(...sizeClasses, {
+  const classNames = cx(...computeClasses(size, 'size', s), {
     [s.container]: fill,
   });
   return (

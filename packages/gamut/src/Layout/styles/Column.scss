@@ -6,7 +6,7 @@
 
 @each $screenSize in $screenSizes {
   @each $columnSize in $columnSizes {
-    .column_#{$screenSize}Screen__#{$columnSize} {
+    .size_#{$screenSize}Screen__#{$columnSize} {
       @include getViewport($screenSize) {
         grid-column: span #{$columnSize};
       }
