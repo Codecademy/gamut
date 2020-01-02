@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup --config --sourcemap",
-    "develop": "yarn build --watch"
+    "develop": "yarn build --watch",
+    "prepublishOnly": "yarn build"
   },
   "private": false,
   "peerDependencies": {
