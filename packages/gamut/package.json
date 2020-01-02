@@ -28,7 +28,7 @@
     "classnames": "^2.2.5",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
-    "invariant": "^2.2.0",
+    "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.6.0",
     "moment": "^2.24.0",
