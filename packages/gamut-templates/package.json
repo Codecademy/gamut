@@ -24,9 +24,10 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:clean": "rm -rf dist lib",
-    "build:copy": "copyfiles -u 3 './lib/gamut-templates/src/**/*' ./dist",
-    "build": "yarn build:clean && tsc && yarn build:copy"
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types"
   },
   "license": "MIT",
   "devDependencies": {
