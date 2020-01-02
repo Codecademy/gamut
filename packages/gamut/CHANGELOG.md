@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.10...@codecademy/gamut@2.3.0) (2020-01-02)
+
+
+### Features
+
+* compile gamut using babel ([#583](https://github.com/RyzacInc/client-modules/issues/583)) ([2de0b9c](https://github.com/RyzacInc/client-modules/commit/2de0b9c))
+
+
+
+
+
 ## [2.2.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.9...@codecademy/gamut@2.2.10) (2019-12-20)
 
 **Note:** Version bump only for package @codecademy/gamut

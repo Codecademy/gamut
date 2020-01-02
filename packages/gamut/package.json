@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "2.2.10",
+  "version": "2.3.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "engines": {
     "node": ">=6.0.0",
@@ -28,7 +28,7 @@
     "classnames": "^2.2.5",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
-    "invariant": "^2.2.0",
+    "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.6.0",
     "moment": "^2.24.0",
@@ -37,9 +37,10 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
-    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
-    "build": "yarn build:clean && yarn build:copy && tsc"
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types"
   },
   "license": "MIT",
   "devDependencies": {
