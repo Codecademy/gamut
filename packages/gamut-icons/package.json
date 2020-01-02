@@ -3,8 +3,8 @@
   "description": "Icon library for codecademy.com",
   "version": "2.0.2",
   "author": "Codecademy <dev@codecademy.com>",
-  "main": "icons/index.js",
-  "module": "icons/index.js",
+  "main": "index.js",
+  "module": "index.js",
   "sideEffects": false,
   "engines": {
     "node": ">=6.0.0",
@@ -13,7 +13,7 @@
   "scripts": {
     "format": "svgo -f ./src --pretty --config=.svgo.yml",
     "clean": "rm -rf ./icons; rm -rf ./tmp; mkdir ./tmp",
-    "build:icons": "svgr --out-dir ./tmp/ts --ext 'tsx' ./src",
+    "build:icons": "svgr --out-dir ./tmp/ts --ext 'tsx' ./src && cp ./typings.d.ts ./tmp/ts",
     "build:types": "tsc --emitDeclarationOnly",
     "build:compile": "babel ./tmp/ts --out-dir ./icons --copy-files --extensions \".ts,.tsx\"",
     "rename-icons": "find ./src -depth -type f \\( -name '*.svg' ! -name '*-icon.svg' \\) -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
