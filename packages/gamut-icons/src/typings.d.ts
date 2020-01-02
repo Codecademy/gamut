@@ -5,4 +5,5 @@ export type GamutIconProps = React.SVGProps<SVGSVGElement> & {
   size?: number | string;
   title?: string;
   color?: string;
+  svgRef?: React.Ref<any>
 };

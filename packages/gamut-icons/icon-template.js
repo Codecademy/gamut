@@ -7,12 +7,14 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
   const title = startCase(path.basename(filePath, '.svg'));
   const titleId = `gamut-icon-${Buffer.from(componentName).toString('base64')}`;
   const ComponentIdentifier = `${componentName}: React.FC<GamutIconProps>`;
+  const componentNameWithRef = `${componentName}Ref`;
+  const RefComponent = `<${componentName} svgRef={ref} {...props} />`;
   return template.ast`
     import * as React from 'react';
-    import { GamutIconProps } from './typings';
-    const ${ComponentIdentifier} = React.forwardRef(({ref: svgRef, title = "${title}", titleId = "${titleId}", size, color, width, height, ...props}) => ${jsx});
-    export default ${componentName};
+    import { GamutIconProps } from '../typings';
+    const ${ComponentIdentifier} = ({ title = "${title}", titleId = "${titleId}", svgRef, size, color, width, height, ...props}) => ${jsx};
+    const ${componentNameWithRef} = React.forwardRef((props, ref) => ${RefComponent});
+    export default ${componentNameWithRef};
   `;
 }
-
 module.exports = iconTemplate;
