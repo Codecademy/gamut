@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.1...@codecademy/gamut@2.3.2) (2020-01-02)
+
+
+### Bug Fixes
+
+* fix broken compiled typings in gamut ([#586](https://github.com/RyzacInc/client-modules/issues/586)) ([57612f8](https://github.com/RyzacInc/client-modules/commit/57612f8))
+
+
+
+
+
 ## [2.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.0...@codecademy/gamut@2.3.1) (2020-01-02)
 
 **Note:** Version bump only for package @codecademy/gamut
