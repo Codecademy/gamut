@@ -30,7 +30,10 @@ export const createPreprocessingInstructions = (styles: StylesObject) => {
           },
           node.attribs && node.attribs.class
         );
-        node.attribs = { class: classname, ...node.attribs };
+
+        const attrs = { ...node.attribs };
+        if (classname) attrs.class = classname;
+        node.attribs = attrs;
       },
     },
   ];
