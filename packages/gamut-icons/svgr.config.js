@@ -1,16 +1,17 @@
 const template = require('./icon-template');
 
 module.exports = {
-  icon: true,
   dimensions: false,
   titleProp: true,
+  ref: true,
   svgProps: {
-    width: '{size || width || "1em"}',
-    height: '{size || height || "1em"}',
+    width: '{size || width || "16px"}',
+    height: '{size || height || "16px"}',
     fill: '{color || "currentColor"}',
     role: 'img',
   },
   replaceAttrValues: {
+    currentColor: '{color || "currentColor"}',
     '#000': '{color || "currentColor"}',
     '#111': '{color || "currentColor"}',
     '#444': '{color || "currentColor"}',

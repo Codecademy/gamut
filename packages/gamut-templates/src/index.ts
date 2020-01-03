@@ -1,1 +1,1 @@
-export { default as SplitInterstitial } from './SplitInterstitial';
+export { default as Interstitial } from './Interstitial';
