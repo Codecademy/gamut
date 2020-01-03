@@ -5,7 +5,7 @@
   "author": "Codecademy <dev@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "dist/typings.d.ts",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "engines": {
     "node": ">=6.0.0",
