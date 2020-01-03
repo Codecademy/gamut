@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export type GamutIconProps = React.SVGProps<SVGSVGElement> & {
+export interface GamutIconProps extends React.SVGProps<SVGSVGElement> {
   titleId?: string;
   size?: number | string;
   title?: string;
   color?: string;
-  svgRef?: React.Ref<any>;
-};
+  svgRef?: React.Ref<SVGSVGElement>;
+}
