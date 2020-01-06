@@ -25,8 +25,7 @@
   "scripts": {
     "verify": "tsc --noEmit",
     "build:clean": "rm -rf dist",
-    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist",
-    "prepublishOnly": "yarn build"
+    "build:copy": "copyfiles -u 1 -a -e './**/*[!.d].ts' -e './**/*.tsx' './src/**/*' ./dist"
   },
   "license": "MIT",
   "devDependencies": {
