@@ -1,9 +1,9 @@
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 
 import { AccessibilityIcon, GamutIconProps } from '../dist/index';
 
-describe('<Icons/>', () => {
+describe('Compiled gamut-icons:', () => {
   it('Converts size to equal width and height', () => {
     const expectedSize = 76;
     const iconProps: GamutIconProps = {
