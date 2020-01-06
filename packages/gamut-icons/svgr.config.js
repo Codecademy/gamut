@@ -10,6 +10,9 @@ module.exports = {
     fill: '{color || "currentColor"}',
     role: 'img',
   },
+  prettierConfig: {
+    parser: 'typescript',
+  },
   replaceAttrValues: {
     currentColor: '{color || "currentColor"}',
     '#000': '{color || "currentColor"}',
