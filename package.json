@@ -20,8 +20,7 @@
     "build-all": "yarn wsrun --exclude-missing build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./workspaces/gamut-storybook && yarn start",
-    "build-storybook": "cd ./workspaces/gamut-storybook && yarn build-storybook",
-    "prepublishOnly": "yarn build-all"
+    "build-storybook": "cd ./workspaces/gamut-storybook && yarn build-storybook"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss}": [
