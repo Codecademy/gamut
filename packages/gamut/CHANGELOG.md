@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.3.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.3...@codecademy/gamut@2.3.4) (2020-01-06)
+
+
+### Bug Fixes
+
+* use safer method to pull out markdown language prop ([#588](https://github.com/RyzacInc/client-modules/issues/588)) ([9f13a94](https://github.com/RyzacInc/client-modules/commit/9f13a94))
+
+
+
+
+
 ## [2.3.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.2...@codecademy/gamut@2.3.3) (2020-01-03)
 
 
