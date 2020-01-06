@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-templates@2.2.17...@codecademy/gamut-templates@2.2.18) (2020-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-templates
+
+
+
+
+
 ## [2.2.17](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-templates@2.2.16...@codecademy/gamut-templates@2.2.17) (2020-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut-templates
