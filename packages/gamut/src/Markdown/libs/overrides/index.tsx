@@ -109,8 +109,8 @@ export const createCodeBlockOverride = (
     },
 
     processNode(node: HTMLToReactNode, props: any) {
-      const language =
-        props.className && props.className.replace('language-', '');
+      const [, language = undefined] =
+        (props.className && props.className.match(/language-([^\s]+)/)) || [];
 
       return (
         <Override.component {...props} language={language}>
