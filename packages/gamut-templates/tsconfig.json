@@ -1,14 +1,10 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["../gamut/src/typings/*.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "include": [
+      "./src/**/*.ts",
+      "./src/**/*.tsx"
+  ],
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist",
-    "paths": {
-      "gamut": ["../../packages/gamut/src"],
-      "gamut/*": ["../../packages/gamut/src/*"],
-      "gamut-styles": ["../../packages/gamut-styles"],
-      "gamut-styles/*": ["../../packages/gamut-styles/*"]
-    }
+    "outDir": "./dist"
   }
 }
