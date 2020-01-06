@@ -98,7 +98,7 @@ describe('<Markdown />', () => {
       const text = `
 # Heading
 
-\`\`\`
+\`\`\`js
 var test = true;
 \`\`\`
       `;
@@ -115,6 +115,7 @@ var test = true;
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
+      expect((markdown.find(CodeBlock).props() as any).language).toEqual('js');
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
