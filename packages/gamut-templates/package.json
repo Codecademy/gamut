@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-templates",
   "description": "Templates library for Gamut",
-  "version": "2.2.17",
+  "version": "2.2.18",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
