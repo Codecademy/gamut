@@ -22,6 +22,7 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
+    "@codecademy/gamut-icons": "^2.1.2",
     "@codecademy/gamut-styles": "^2.2.10",
     "@types/marked": "^0.6.1",
     "@types/react-truncate": "^2.3.3",
