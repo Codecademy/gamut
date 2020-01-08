@@ -52,7 +52,7 @@ const modificatorKeys = [
 
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
-export type RowProps<TElement extends HTMLElement = HTMLElement> = {
+export type RowProps = {
   around?: ModificatorType;
   between?: ModificatorType;
   bottom?: ModificatorType;
@@ -64,7 +64,7 @@ export type RowProps<TElement extends HTMLElement = HTMLElement> = {
   middle?: ModificatorType;
   reverse?: boolean;
   start?: ModificatorType;
-  tagName?: TElement['tagName'];
+  tagName?: string;
   top?: ModificatorType;
 };
 
