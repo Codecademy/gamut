@@ -56,8 +56,8 @@ function getClassNames(props: ColProps) {
 export type ColProps = {
   xs?: boolean | number;
   sm?: boolean | number;
-  md: boolean | number;
-  lg: boolean | number;
+  md?: boolean | number;
+  lg?: boolean | number;
   xsOffset?: number;
   smOffset?: number;
   mdOffset?: number;
