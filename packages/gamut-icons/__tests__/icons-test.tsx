@@ -17,23 +17,6 @@ describe('Compiled gamut-icons:', () => {
     expect(svgEl.props().height).toEqual(expectedSize);
   });
 
-  it('Sets a title and id automatically and uses the appropriate aria label', () => {
-    const wrapper = mount(<AccessibilityIcon size={1} />);
-
-    const svgEl = wrapper.find('svg');
-    const titleEl = wrapper.find('title');
-    expect(svgEl.props()['aria-labelledby']).toEqual(titleEl.props().id);
-    expect(titleEl.text()).toEqual('Accessibility Icon');
-  });
-
-  it('Allows passing a custom title', () => {
-    const wrapper = mount(<AccessibilityIcon title="Accessible" />);
-
-    const svgEl = wrapper.find('svg');
-    const titleEl = wrapper.find('title');
-    expect(titleEl.text()).toEqual('Accessible');
-  });
-
   it('Sets a default fill of currentColor', () => {
     const wrapper = mount(<AccessibilityIcon />);
 
