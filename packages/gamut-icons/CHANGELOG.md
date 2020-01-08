@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.3...@codecademy/gamut-icons@2.1.4) (2020-01-08)
+
+
+### Bug Fixes
+
+* re-enable icon title props ([#594](https://github.com/RyzacInc/client-modules/issues/594)) ([670a7f2](https://github.com/RyzacInc/client-modules/commit/670a7f2))
+
+
+
+
+
 ## [2.1.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.2...@codecademy/gamut-icons@2.1.3) (2020-01-08)
 
 
