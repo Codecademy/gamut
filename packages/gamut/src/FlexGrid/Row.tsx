@@ -53,24 +53,22 @@ const modificatorKeys = [
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
 export type RowProps<TElement extends HTMLElement = HTMLElement> = {
-  around: ModificatorType;
-  between: ModificatorType;
-  bottom: ModificatorType;
-  center: ModificatorType;
+  around?: ModificatorType;
+  between?: ModificatorType;
+  bottom?: ModificatorType;
+  center?: ModificatorType;
   className?: string;
-  end: ModificatorType;
-  first: ModificatorType;
-  last: ModificatorType;
-  middle: ModificatorType;
+  end?: ModificatorType;
+  first?: ModificatorType;
+  last?: ModificatorType;
+  middle?: ModificatorType;
   reverse?: boolean;
-  start: ModificatorType;
+  start?: ModificatorType;
   tagName?: TElement['tagName'];
-  top: ModificatorType;
+  top?: ModificatorType;
 };
 
-export const Row = <TElement extends HTMLElement = HTMLDivElement>(
-  props: RowProps<TElement>
-) => {
+export const Row: React.FC<RowProps> = props => {
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })
