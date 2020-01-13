@@ -1,6 +1,5 @@
-/**
- * @jest-environment node
- */
+/* eslint-disable no-underscore-dangle */
+// @jest-environment node
 
 import { isServer } from '../src/util';
 
