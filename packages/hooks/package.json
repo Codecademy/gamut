@@ -1,0 +1,37 @@
+{
+  "name": "@codecademy/hooks",
+  "description": "Library of Various Reusable React Hooks",
+  "version": "1.0.0",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.5.2"
+  },
+  "sideEffects": false,
+  "module": "./dist/hooks.esm.js",
+  "main": "./dist/hooks.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "start": "yarn build:compile --watch",
+    "build": "yarn build:clean && yarn build:compile",
+    "build:compile": "rollup --config --sourcemap",
+    "build:clean": "rm -rf dist/*",
+    "prepublishOnly": "yarn build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "7.0.0",
+    "rollup": "1.29.0",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-ts": "^1.2.12",
+    "typescript": "*"
+  }
+}

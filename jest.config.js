@@ -3,7 +3,7 @@ module.exports = {
   globals: {
     __DEV__: true,
   },
-  setupFiles: ['<rootDir>/script/jest/base-setup.js'],
+  setupFiles: ['<rootDir>/script/jest/base-setup.js', 'jest-localstorage-mock'],
   setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],
   modulePaths: ['<rootDir>', '<rootDir>/workspaces/gamut-storybook'],
   moduleFileExtensions: [
