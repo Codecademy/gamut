@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { computeClasses } from './utilities';
+import { createClassnames } from './utilities';
 import { ContainerElementProps, ColumnSizes, MediaSizes } from './types';
 import s from './styles/Column.scss';
 
@@ -18,7 +18,7 @@ const Column: React.FC<ColumnProps & ContainerElementProps> = ({
   testId,
   fill = true,
 }) => {
-  const classNames = cx(...computeClasses(size, 'size', s), {
+  const classNames = cx(createClassnames({ size }, s), {
     [s.container]: fill,
   });
   return (

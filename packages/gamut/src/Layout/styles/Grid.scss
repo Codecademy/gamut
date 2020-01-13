@@ -7,14 +7,14 @@
 
 @each $screenSize in $screenSizes {
   @each $sizeName, $gapSize in $gapSizes {
-    .rowGap_#{$screenSize}Screen__#{$sizeName} {
+    .rowGap_#{$sizeName}__#{$screenSize}Screen {
       @include getViewport($screenSize) {
         grid-row-gap: $gapSize;
       }
     }
   }
   @each $sizeName, $gapSize in $gapSizes {
-    .columnGap_#{$screenSize}Screen__#{$sizeName} {
+    .columnGap_#{$sizeName}__#{$screenSize}Screen {
       @include getViewport($screenSize) {
         grid-column-gap: $gapSize;
       }

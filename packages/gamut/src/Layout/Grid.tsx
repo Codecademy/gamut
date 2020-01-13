@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { computeClasses } from './utilities';
+import { createClassnames } from './utilities';
 import { ContainerElementProps, MediaSizes, GapSizes, GapTypes } from './types';
 import s from './styles/Grid.scss';
 
@@ -21,8 +21,7 @@ const Grid: React.FC<LayoutGridProps> = ({
   const classes = cx(
     s.container,
     className,
-    ...computeClasses(rowGap, 'rowGap', s),
-    ...computeClasses(columnGap, 'columnGap', s)
+    createClassnames({ rowGap, columnGap }, s)
   );
 
   return (
