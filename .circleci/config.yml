@@ -55,6 +55,9 @@ jobs:
       - checkout
       - *set_npm_token
       - run: npx yarn@1.15.2 --production=false --frozen-lockfile
+      - run:
+          name: Run all builds
+          command: yarn build-all
       - save_cache:
           key: *repo_cache_key_1
           paths:
@@ -93,9 +96,6 @@ jobs:
     steps:
       - *restore_repo
       - run:
-          name: Run any builds needed for tests
-          command: yarn build-all
-      - run:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
@@ -105,6 +105,7 @@ jobs:
       - codecov/upload:
           file: /tmp/test-results/jest/*
           flags: frontend
+          conf: codecov.yml
 
   publish:
     <<: *default_env
@@ -119,10 +120,6 @@ jobs:
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
-      - run:
-          # if lerna publish has no changed packages, it won't build, so we need to run the build again :/
-          name: build packages
-          command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook

@@ -1,11 +1,10 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/Radio.module.scss';
 
-export type RadioProps = {
+export type RadioProps = HTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
   disabled?: boolean;
-  className?: string;
   htmlFor?: string;
   id?: string;
   label?: ReactNode;

@@ -32,8 +32,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After you've reviewed and tested your code, you can merge your branch into master.
-1.  To merge, use the "squash and merge" button in github
-1.  To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
+1.  To merge your changes, use the "squash and merge" button in github. Make sure you update the title/description of the merge to match the [commit message guide](#commit-message-guide), otherwise it will not generate a detailed changelog entry.
 1.  Once your branch is merged into master, it will be published automatically by CircleCI.
 1.  You can check the master branch or CircleCI for the new version number
 
