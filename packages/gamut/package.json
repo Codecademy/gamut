@@ -1,12 +1,8 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "2.3.8",
+  "version": "2.3.9",
   "author": "Codecademy Engineering <dev@codecademy.com>",
-  "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.5.2"
-  },
   "sideEffects": [
     "*.css",
     "*.scss"
@@ -22,7 +18,7 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-styles": "^2.2.10",
+    "@codecademy/gamut-styles": "^2.2.11",
     "@types/marked": "^0.6.1",
     "@types/react-truncate": "^2.3.3",
     "classnames": "^2.2.5",
@@ -37,7 +33,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
