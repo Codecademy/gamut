@@ -1,10 +1,11 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:8.10.0
+      - image: circleci/node:12.14.0
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
@@ -54,7 +55,7 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - run: npx yarn@1.15.2 --production=false --frozen-lockfile
+      - run: yarn --production=false --frozen-lockfile
       - run:
           name: Run all builds
           command: yarn build-all
