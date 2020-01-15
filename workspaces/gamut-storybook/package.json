@@ -14,10 +14,10 @@
     "url": "git@github.com:RyzacInc/client-modules.git"
   },
   "dependencies": {
-    "@babel/cli": "7.4.3",
-    "@babel/core": "7.5.4",
-    "@babel/polyfill": "7.4.3",
-    "@babel/register": "7.4.0",
+    "@babel/cli": "7.8.3",
+    "@babel/core": "7.8.3",
+    "@babel/polyfill": "7.8.3",
+    "@babel/register": "7.8.3",
     "@codecademy/gamut-icons": "^2.1.4",
     "@codecademy/webpack-config": "^3.16.1",
     "@storybook/addon-a11y": "5.3.0-alpha.38",
@@ -36,7 +36,7 @@
     "@types/storybook__react": "^4.0.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.6",
-    "babel-preset-codecademy": "2.2.2",
+    "babel-preset-codecademy": "2.2.5",
     "classnames": "2.2.6",
     "css-loader": "2.1.1",
     "file-loader": "3.0.1",
