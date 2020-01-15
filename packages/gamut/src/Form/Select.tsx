@@ -5,7 +5,7 @@ import s from './styles/Select.module.scss';
 
 export type SelectProps = FormHTMLAttributes<HTMLSelectElement> & {
   htmlFor?: string;
-  options?: string[] | Record<string, string>;
+  options?: string[] | Record<string, number | string>;
 };
 
 export const Select: React.FC<SelectProps> = props => {
