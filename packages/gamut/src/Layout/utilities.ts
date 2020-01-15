@@ -10,28 +10,18 @@ export const createClassnames = (
 ): ClassList => {
   const classNames: ClassList = [];
 
-  Object.keys(config).forEach(propName => {
-    const propConfig = config[propName];
-
-    switch (typeof propConfig) {
+  Object.entries(config).map(([propName, propValue]) => {
+    switch (typeof propValue) {
       case 'number':
       case 'string': {
-        const className = styleMap[`${propName}_${propConfig}__smScreen`];
-        className && classNames.push(className);
-        break;
+        return styleMap[`${propName}_${propValue}__smScreen`];
       }
       case 'object': {
-        const className = Object.keys(propConfig).reduce(
-          (carry, screenSize) => ({
-            ...carry,
-            [styleMap[
-              `${propName}_${propConfig[screenSize]}__${screenSize}Screen`
-            ]]: screenSize,
-          }),
+        return Object.entries(propValue).map(
+          ([mediaSize, mediaPropValue]) =>
+            styleMap[`${propName}_${mediaPropValue}__${mediaSize}Screen`],
           {} as Record<string, string>
         );
-        classNames.push(className);
-        break;
       }
       default:
     }
