@@ -5,11 +5,11 @@ import { createClassnames } from './utilities';
 import { ContainerElementProps, MediaSizes, GapSizes, GapTypes } from './types';
 import s from './styles/Grid.scss';
 
-type GapConfig = Record<MediaSizes, GapSizes>;
+export type GapConfig = Record<MediaSizes, GapSizes>;
 
-type GridProps = Record<GapTypes, GapConfig | GapSizes>;
+export type GridProps = Record<GapTypes, GapConfig | GapSizes>;
 
-type LayoutGridProps = GridProps & ContainerElementProps;
+export type LayoutGridProps = GridProps & ContainerElementProps;
 
 const Grid: React.FC<LayoutGridProps> = ({
   children,

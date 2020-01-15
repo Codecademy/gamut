@@ -5,14 +5,14 @@ import { createClassnames } from './utilities';
 import { ContainerElementProps, ColumnSizes, MediaSizes } from './types';
 import s from './styles/Column.scss';
 
-type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
+export type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
 
-type ColumnProps = {
+export type ColumnProps = {
   size: ColumnSizeConfig | ColumnSizes;
   fill?: boolean;
-};
+} & ContainerElementProps;
 
-const Column: React.FC<ColumnProps & ContainerElementProps> = ({
+const Column: React.FC<ColumnProps> = ({
   children,
   size,
   testId,

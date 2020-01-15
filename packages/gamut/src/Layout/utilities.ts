@@ -20,6 +20,7 @@ export const createClassnames = (
         );
       }
       default:
+        return;
     }
   });
 };
