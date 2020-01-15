@@ -10,6 +10,7 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
+const DEV = process.env.NODE_ENV !== 'production';
 
 /**
  * Base Webpack Build Config
@@ -36,10 +37,14 @@ module.exports = ({ config }) => {
     })
     .css()
     .merge({
-      plugins: [new ForkTsCheckerWebpackPlugin()],
       resolve: {
         alias: packageAliases,
       },
+    })
+    .if(DEV, config => {
+      return config.merge({
+        plugins: [new ForkTsCheckerWebpackPlugin()],
+      });
     })
     .toConfig();
 
