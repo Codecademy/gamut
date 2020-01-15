@@ -3,10 +3,6 @@
   "description": "Styleguide & Component library for Codecademy",
   "version": "2.3.8",
   "author": "Codecademy Engineering <dev@codecademy.com>",
-  "engines": {
-    "node": ">=6.0.0",
-    "npm": ">=3.5.2"
-  },
   "sideEffects": [
     "*.css",
     "*.scss"
