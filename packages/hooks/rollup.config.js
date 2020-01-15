@@ -13,6 +13,6 @@ export default {
       format: 'esm',
     },
   ],
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'react-use'],
   plugins: [resolve(), typescript()],
 };
