@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.2](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.1...@codecademy/webpack-config@3.16.2) (2020-01-15)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 ## [3.16.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.0...@codecademy/webpack-config@3.16.1) (2019-12-05)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-templates",
   "description": "Templates library for Gamut",
-  "version": "2.2.21",
+  "version": "2.2.22",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -18,8 +18,8 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^2.3.8",
-    "@codecademy/gamut-styles": "^2.2.10",
+    "@codecademy/gamut": "^2.3.9",
+    "@codecademy/gamut-styles": "^2.2.11",
     "classnames": "^2.2.5"
   },
   "scripts": {
