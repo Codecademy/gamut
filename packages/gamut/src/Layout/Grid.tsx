@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { createClassnames } from './utilities';
 import { ContainerElementProps, MediaSizes, GapSizes, GapTypes } from './types';
-import s from './styles/Grid.scss';
+import s from './styles/Grid.module.scss';
 
 export type GapConfig = Record<MediaSizes, GapSizes>;
 

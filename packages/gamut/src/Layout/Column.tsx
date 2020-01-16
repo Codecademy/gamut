@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { createClassnames } from './utilities';
 import { ContainerElementProps, ColumnSizes, MediaSizes } from './types';
-import s from './styles/Column.scss';
+import s from './styles/Column.module.scss';
 
 export type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
 

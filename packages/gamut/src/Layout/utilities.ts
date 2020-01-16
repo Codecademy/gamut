@@ -19,8 +19,6 @@ export const createClassnames = (
             styleMap[`${propName}_${mediaPropValue}__${mediaSize}Screen`]
         );
       }
-      default:
-        return;
     }
   });
 };
