@@ -1,6 +1,5 @@
 import React from 'react';
 import { LayoutGrid, Column } from 'gamut';
-import gamut, { grid } from 'gamut-styles/utils/variables';
 
 export default {
   component: LayoutGrid,
