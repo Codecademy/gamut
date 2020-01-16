@@ -9,18 +9,15 @@ export type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
 
 export type ColumnProps = {
   size: ColumnSizeConfig | ColumnSizes;
-  fill?: boolean;
 } & ContainerElementProps;
 
-const Column: React.FC<ColumnProps> = ({
+export const Column: React.FC<ColumnProps> = ({
   children,
+  className,
   size,
   testId,
-  fill = true,
 }) => {
-  const classNames = cx(createClassnames({ size }, s), {
-    [s.container]: fill,
-  });
+  const classNames = cx(s.container, className, createClassnames({ size }, s));
   return (
     <div className={classNames} data-testid={testId}>
       {children}

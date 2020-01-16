@@ -11,7 +11,7 @@ export type GridProps = Record<GapTypes, GapConfig | GapSizes>;
 
 export type LayoutGridProps = GridProps & ContainerElementProps;
 
-const Grid: React.FC<LayoutGridProps> = ({
+export const Grid: React.FC<LayoutGridProps> = ({
   children,
   testId,
   className,
