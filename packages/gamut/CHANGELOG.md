@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.10...@codecademy/gamut@2.4.0) (2020-01-16)
+
+
+### Features
+
+* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+
+
+
+
+
 ## [2.3.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.9...@codecademy/gamut@2.3.10) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut

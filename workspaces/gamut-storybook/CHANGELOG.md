@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
+
+
+### Features
+
+* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+
+
+
+
+
 ## [3.2.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
