@@ -1,0 +1,23 @@
+@import "./shared.scss";
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+@each $screenSize in $screenSizes {
+  @each $sizeName, $gapSize in $gapSizes {
+    .rowGap_#{$sizeName}__#{$screenSize}Screen {
+      @include getViewport($screenSize) {
+        grid-row-gap: $gapSize;
+      }
+    }
+  }
+  @each $sizeName, $gapSize in $gapSizes {
+    .columnGap_#{$sizeName}__#{$screenSize}Screen {
+      @include getViewport($screenSize) {
+        grid-column-gap: $gapSize;
+      }
+    }
+  }
+}
