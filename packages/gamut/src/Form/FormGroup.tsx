@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/FormGroup.scss';
+import s from './styles/FormGroup.module.scss';
 import FormGroupDescription from './FormGroupDescription';
 import FormGroupLabel from './FormGroupLabel';
 

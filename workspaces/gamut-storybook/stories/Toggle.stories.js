@@ -8,5 +8,9 @@ export default {
 };
 
 export const toggle = () => (
-  <Toggle checked={boolean('checked', false)} onChange={() => {}} />
+  <Toggle
+    checked={boolean('checked', false)}
+    label={'toggle'}
+    onChange={() => {}}
+  />
 );

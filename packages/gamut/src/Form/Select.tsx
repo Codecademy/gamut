@@ -1,13 +1,11 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { ReactNode, FormHTMLAttributes } from 'react';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
-import s from './styles/Select.scss';
+import s from './styles/Select.module.scss';
 
-export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
-  className?: string;
-  defaultValue?: string;
+export type SelectProps = FormHTMLAttributes<HTMLSelectElement> & {
   htmlFor?: string;
-  options?: string[] | {};
+  options?: string[] | Record<string, number | string>;
 };
 
 export const Select: React.FC<SelectProps> = props => {

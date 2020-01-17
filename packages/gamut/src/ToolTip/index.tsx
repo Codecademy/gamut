@@ -1,43 +1,65 @@
-import React, { ReactNode, Component } from 'react';
+import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { CardShell, CardBody } from '../Card';
-import s from './styles/index.scss';
+import { CardBody } from '../Card';
+import { VisualTheme } from '../theming/VisualTheme';
+import s from './styles.module.scss';
 
-type ToolTipProps = {
-  target?: ReactNode;
+export enum ToolTipPosition {
+  BottomLeft = 'bottom-left',
+  BottomRight = 'bottom-right',
+  TopLeft = 'top-left',
+  TopRight = 'top-right',
+}
+
+export type ToolTipProps = {
   children?: ReactNode;
-  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-  tipClassName?: string;
+  focusable?: boolean;
   id: string;
+  position?: ToolTipPosition;
+  target?: ReactNode;
+  theme?: VisualTheme;
+  tipClassName?: string;
+  wrapperClassName?: string;
 };
 
-export class ToolTip extends Component<ToolTipProps> {
-  static defaultProps = {
-    position: 'top-right',
-  };
-
-  render() {
-    const { children, target, position, id, tipClassName } = this.props;
-
-    return (
-      <div className={s.toolTipWrapper}>
-        <button
-          aria-labelledby={id}
-          type="button"
-          className={s.targetContainer}
-        >
-          {target}
-        </button>
-        <CardShell
-          className={cx(s.toolTipContainer, s[position], tipClassName)}
-          role="tooltip"
-          id={id}
-        >
-          <CardBody className={s.toolTipBody}>{children}</CardBody>
-        </CardShell>
+export const ToolTip: React.FC<ToolTipProps> = ({
+  children,
+  focusable,
+  id,
+  position = ToolTipPosition.TopRight,
+  target,
+  theme = VisualTheme.LightMode,
+  tipClassName,
+  wrapperClassName,
+}) => {
+  return (
+    <div className={cx(s.toolTipWrapper, wrapperClassName)}>
+      <div
+        aria-labelledby={id}
+        className={s.targetContainer}
+        // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
+        // This element still needs tab focus so we must use the `tabIndex=0` hack. Sigh.
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={focusable ? 0 : undefined}
+      >
+        {target}
       </div>
-    );
-  }
-}
+      <div
+        className={cx(
+          s.toolTipContainer,
+          s[position],
+          theme === VisualTheme.DarkMode
+            ? s.toolTipContainerDark
+            : s.toolTipContainerLight,
+          tipClassName
+        )}
+        role="tooltip"
+        id={id}
+      >
+        <CardBody className={s.toolTipBody}>{children}</CardBody>
+      </div>
+    </div>
+  );
+};
 
 export default ToolTip;

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
-import s from './styles.scss';
+import s from './styles.module.scss';
 
 export type TabProps = {
   active?: boolean;

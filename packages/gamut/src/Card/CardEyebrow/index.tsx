@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import Icon from '../../Icon';
 import iconMap from '../../Icon/iconMap';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 interface CardEyebrowProps {
   iconName?: keyof typeof iconMap;

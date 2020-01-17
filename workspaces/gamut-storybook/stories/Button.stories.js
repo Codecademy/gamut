@@ -23,6 +23,7 @@ const themeKeys = [
   'royalblue',
   'purple',
   'brand-red',
+  'brand-orange',
   'brand-yellow',
   'brand-purple',
   'brand-pink',

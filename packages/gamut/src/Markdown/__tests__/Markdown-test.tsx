@@ -63,6 +63,21 @@ describe('<Markdown />', () => {
     });
   });
 
+  it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
+    const markdown = mount(
+      <Markdown skipDefaultOverrides={{ table: true }} text={table} />
+    );
+    expect(markdown.find('table').length).toEqual(1);
+    expect(markdown.find('div.tableWrapper table').length).toEqual(0);
+  });
+
   it('Wraps youtube iframes in a flexible container', () => {
     const markdown = mount(<Markdown text={youtubeMarkdown} />);
     expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
@@ -83,7 +98,7 @@ describe('<Markdown />', () => {
       const text = `
 # Heading
 
-\`\`\`
+\`\`\`js
 var test = true;
 \`\`\`
       `;
@@ -100,6 +115,7 @@ var test = true;
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
+      expect((markdown.find(CodeBlock).props() as any).language).toEqual('js');
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {

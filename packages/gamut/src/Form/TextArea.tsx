@@ -1,6 +1,6 @@
 import React, { TextareaHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/TextArea.scss';
+import s from './styles/TextArea.module.scss';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { CardShell, CardHeader, CardStack } from './index';
-import styles from './styles/BannerCard.scss';
+import styles from './styles/BannerCard.module.scss';
 
 interface BannerCardProps {
   withStack?: boolean;

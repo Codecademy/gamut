@@ -3,6 +3,192 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.10...@codecademy/gamut@2.4.0) (2020-01-16)
+
+
+### Features
+
+* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+
+
+
+
+
+## [2.3.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.9...@codecademy/gamut@2.3.10) (2020-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.8...@codecademy/gamut@2.3.9) (2020-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.7...@codecademy/gamut@2.3.8) (2020-01-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.6...@codecademy/gamut@2.3.7) (2020-01-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.5...@codecademy/gamut@2.3.6) (2020-01-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.4...@codecademy/gamut@2.3.5) (2020-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.3.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.3...@codecademy/gamut@2.3.4) (2020-01-06)
+
+
+### Bug Fixes
+
+* use safer method to pull out markdown language prop ([#588](https://github.com/RyzacInc/client-modules/issues/588)) ([9f13a94](https://github.com/RyzacInc/client-modules/commit/9f13a94))
+
+
+
+
+
+## [2.3.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.2...@codecademy/gamut@2.3.3) (2020-01-03)
+
+
+### Bug Fixes
+
+* don't pass undefined classname to elements ([#575](https://github.com/RyzacInc/client-modules/issues/575)) ([d60fef4](https://github.com/RyzacInc/client-modules/commit/d60fef4))
+
+
+
+
+
+## [2.3.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.1...@codecademy/gamut@2.3.2) (2020-01-02)
+
+
+### Bug Fixes
+
+* fix broken compiled typings in gamut ([#586](https://github.com/RyzacInc/client-modules/issues/586)) ([57612f8](https://github.com/RyzacInc/client-modules/commit/57612f8))
+
+
+
+
+
+## [2.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.0...@codecademy/gamut@2.3.1) (2020-01-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [2.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.10...@codecademy/gamut@2.3.0) (2020-01-02)
+
+
+### Features
+
+* compile gamut using babel ([#583](https://github.com/RyzacInc/client-modules/issues/583)) ([2de0b9c](https://github.com/RyzacInc/client-modules/commit/2de0b9c))
+
+
+
+
+
+## [2.2.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.9...@codecademy/gamut@2.2.10) (2019-12-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.8...@codecademy/gamut@2.2.9) (2019-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.7...@codecademy/gamut@2.2.8) (2019-12-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.6...@codecademy/gamut@2.2.7) (2019-12-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.5...@codecademy/gamut@2.2.6) (2019-12-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.4...@codecademy/gamut@2.2.5) (2019-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.3...@codecademy/gamut@2.2.4) (2019-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.2...@codecademy/gamut@2.2.3) (2019-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.1...@codecademy/gamut@2.2.2) (2019-12-02)
+
+
+### Bug Fixes
+
+* FormGroupDescription and Toggle accessibility ([#558](https://github.com/RyzacInc/client-modules/issues/558)) ([0d12c99](https://github.com/RyzacInc/client-modules/commit/0d12c99))
+
+
+
+
+
 ## [2.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.2.0...@codecademy/gamut@2.2.1) (2019-11-18)
 
 **Note:** Version bump only for package @codecademy/gamut

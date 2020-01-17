@@ -17,6 +17,7 @@ export {
   Radio,
   RadioGroup,
 } from './Form';
+export { LayoutGrid, Column } from './Layout';
 export { default as HighlightedText } from './HighlightedText';
 export { default as Icon } from './Icon';
 export { default as IkonaIcon } from './IkonaIcon';
@@ -33,10 +34,10 @@ export {
 } from './NotificationList/NotificationItem';
 export { default as RadialProgress } from './RadialProgress';
 export { default as Spinner } from './Spinner';
-export { default as SplitInterstitial } from './SplitInterstitial';
+export { VisualTheme } from './theming/VisualTheme';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
 export { default as Toggle } from './Toggle';
-export { default as ToolTip } from './ToolTip';
+export { default as ToolTip, ToolTipPosition } from './ToolTip';
 export { Grid, Col, Row } from './FlexGrid';
 export { Container, Item } from './FlexBox';
 export { default as AccessibilityIcon } from './Icon/icons/AccessibilityIcon';

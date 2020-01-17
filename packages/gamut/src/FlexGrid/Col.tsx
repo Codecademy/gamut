@@ -1,6 +1,6 @@
 import React from 'react';
 import omitProps from '../utils/omitProps';
-import style from './styles/index.scss';
+import style from './styles/index.module.scss';
 
 const propKeys = [
   'xs',
@@ -56,8 +56,8 @@ function getClassNames(props: ColProps) {
 export type ColProps = {
   xs?: boolean | number;
   sm?: boolean | number;
-  md: boolean | number;
-  lg: boolean | number;
+  md?: boolean | number;
+  lg?: boolean | number;
   xsOffset?: number;
   smOffset?: number;
   mdOffset?: number;
@@ -67,7 +67,7 @@ export type ColProps = {
   reverse?: boolean;
 };
 
-export const Col = (props: ColProps) => {
+export const Col: React.FC<ColProps> = props => {
   const className = getClassNames(props);
 
   return React.createElement(
