@@ -6,10 +6,10 @@ export default {
   title: 'Templates/GridForm',
 };
 
-export const GridForm = () => (
+export const gridForm = () => (
   <GridForm fields={[{ label: 'hi', field: 'text' }]} submit={() => null} />
 );
 
-GridForm.story = {
+gridForm.story = {
   name: 'GridForm',
 };
