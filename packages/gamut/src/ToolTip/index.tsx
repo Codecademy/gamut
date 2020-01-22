@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
-import s from './styles.scss';
+import s from './styles.module.scss';
 
 export enum ToolTipPosition {
   BottomLeft = 'bottom-left',

@@ -1,7 +1,7 @@
 import { isNumber, omit } from 'lodash';
 import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/index.module.scss';
 
 const internalProps = [
   'flex',

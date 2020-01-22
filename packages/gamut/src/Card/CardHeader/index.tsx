@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 interface CardHeaderProps {
   backgroundColor?: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
-import style from './styles/index.scss';
+import style from './styles/index.module.scss';
 
 const propKeys = [
   'reverse',
@@ -52,25 +52,23 @@ const modificatorKeys = [
 
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
-export type RowProps<TElement extends HTMLElement = HTMLElement> = {
-  around: ModificatorType;
-  between: ModificatorType;
-  bottom: ModificatorType;
-  center: ModificatorType;
+export type RowProps = {
+  around?: ModificatorType;
+  between?: ModificatorType;
+  bottom?: ModificatorType;
+  center?: ModificatorType;
   className?: string;
-  end: ModificatorType;
-  first: ModificatorType;
-  last: ModificatorType;
-  middle: ModificatorType;
+  end?: ModificatorType;
+  first?: ModificatorType;
+  last?: ModificatorType;
+  middle?: ModificatorType;
   reverse?: boolean;
-  start: ModificatorType;
-  tagName?: TElement['tagName'];
-  top: ModificatorType;
+  start?: ModificatorType;
+  tagName?: string;
+  top?: ModificatorType;
 };
 
-export const Row = <TElement extends HTMLElement = HTMLDivElement>(
-  props: RowProps<TElement>
-) => {
+export const Row: React.FC<RowProps> = props => {
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })

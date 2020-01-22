@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardShell.scss';
+import s from './styles/CardShell.module.scss';
 
 const defaultProps = {
   hoverShadow: false,

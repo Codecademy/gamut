@@ -10,6 +10,7 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
+const DEV = process.env.NODE_ENV !== 'production';
 
 /**
  * Base Webpack Build Config
@@ -19,7 +20,16 @@ const { createConfig, merge } = require('@codecademy/webpack-config');
  * This is the config that all others are based on
  */
 
-module.exports = ({ config, mode }) => {
+const packageAliases = {
+  gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
+  'gamut-styles': path.resolve(__dirname, '../../../packages/gamut-styles'),
+  'gamut-templates': path.resolve(
+    __dirname,
+    '../../../packages/gamut-templates/src'
+  ),
+};
+
+module.exports = ({ config }) => {
   const defaultConfig = createConfig()
     .common({
       context: path.resolve(__dirname, '../'),
@@ -27,16 +37,14 @@ module.exports = ({ config, mode }) => {
     })
     .css()
     .merge({
-      plugins: [new ForkTsCheckerWebpackPlugin()],
       resolve: {
-        alias: {
-          gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
-          'gamut-styles': path.resolve(
-            __dirname,
-            '../../../packages/gamut-styles'
-          ),
-        },
+        alias: packageAliases,
       },
+    })
+    .if(DEV, config => {
+      return config.merge({
+        plugins: [new ForkTsCheckerWebpackPlugin()],
+      });
     })
     .toConfig();
 
@@ -46,13 +54,7 @@ module.exports = ({ config, mode }) => {
     plugins: defaultConfig.plugins,
     resolve: {
       extensions: defaultConfig.resolve.extensions,
-      alias: {
-        gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
-        'gamut-styles': path.resolve(
-          __dirname,
-          '../../../packages/gamut-styles'
-        ),
-      },
+      alias: packageAliases,
     },
   };
 

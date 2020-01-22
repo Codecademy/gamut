@@ -1,7 +1,7 @@
 import React, { ReactElement, FunctionComponent, ReactNode } from 'react';
 import cx from 'classnames';
 import Tab from '../Tab';
-import s from './styles.scss';
+import s from './styles.module.scss';
 
 export type TabListProps = {
   activeTabIndex?: number;

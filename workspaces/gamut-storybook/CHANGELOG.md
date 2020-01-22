@@ -3,6 +3,140 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
+
+
+### Features
+
+* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+
+
+
+
+
+## [3.2.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.2.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.4...@codecademy/gamut-storybook@3.2.5) (2020-01-10)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.2.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.3...@codecademy/gamut-storybook@3.2.4) (2020-01-08)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.2.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.2...@codecademy/gamut-storybook@3.2.3) (2020-01-08)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.1...@codecademy/gamut-storybook@3.2.2) (2020-01-07)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.0...@codecademy/gamut-storybook@3.2.1) (2020-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+# [3.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.12...@codecademy/gamut-storybook@3.2.0) (2020-01-03)
+
+
+### Features
+
+* various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
+
+
+
+
+
+## [3.1.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.11...@codecademy/gamut-storybook@3.1.12) (2020-01-02)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.10...@codecademy/gamut-storybook@3.1.11) (2019-12-27)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.9...@codecademy/gamut-storybook@3.1.10) (2019-12-23)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.8...@codecademy/gamut-storybook@3.1.9) (2019-12-17)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.7...@codecademy/gamut-storybook@3.1.8) (2019-12-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.6...@codecademy/gamut-storybook@3.1.7) (2019-12-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.5...@codecademy/gamut-storybook@3.1.6) (2019-12-06)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
+## [3.1.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.4...@codecademy/gamut-storybook@3.1.5) (2019-12-05)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
+
 ## [3.1.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.3...@codecademy/gamut-storybook@3.1.4) (2019-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook

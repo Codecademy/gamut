@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import s from './styles/index.scss';
+import s from './styles/index.module.scss';
 
 export type ToggleProps = {
   checked?: boolean;
