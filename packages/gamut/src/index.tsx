@@ -7,6 +7,7 @@ export { default as CardBody } from './Card/CardBody';
 export { default as CardFooter } from './Card/CardFooter';
 export {
   Form,
+  FormError,
   FormGroup,
   FormGroupLabel,
   FormGroupDescription,

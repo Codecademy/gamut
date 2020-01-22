@@ -1,27 +1,22 @@
-export type Option = unknown;
-export type Size = unknown;
+import { ColSizing } from '@codecademy/gamut/dist/FlexGrid/Col';
+
 export type Validate = (value: string) => boolean;
-export type BaseField = {
+
+export type BaseFormField = {
+  defaultValue?: string;
   label: string;
-  field: string;
-  size?: Size;
+  name: string;
+  sizing?: ColSizing;
 };
-export type TextField = BaseField & {
+
+export type GridFormTextField = BaseFormField & {
   validate?: Validate;
   type: 'text' | 'email';
 };
-export type SelectField = BaseField & {
-  options: Option[];
+
+export type GridFormSelectField = BaseFormField & {
+  options: string[];
   type: 'select';
 };
-export type Field = TextField | SelectField;
-export type Submit<T extends {}> = {
-  text: React.ReactNode;
-  onSubmit: (values: T) => Promise<void>;
-  size?: Size;
-};
 
-export type FancyFormProps<T extends {}> = {
-  fields: Field[];
-  submit: Submit<T>;
-};
+export type GridFormField = GridFormTextField | GridFormSelectField;
