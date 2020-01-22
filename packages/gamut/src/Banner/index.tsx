@@ -18,6 +18,7 @@ export type BannerProps = {
   isClosed?: boolean;
   onClose: (event: MouseEvent<HTMLButtonElement>) => void;
   icon?: React.ReactNode;
+  href?: string;
 };
 
 const BANNER_CLASSES = {
@@ -32,10 +33,17 @@ const Banner: React.FC<BannerProps> = ({
   isClosed = false,
   onClose,
   icon,
+  href,
 }) => {
   if (isClosed) {
     return null;
   }
+
+  const onClick = () => {
+    if (href) {
+      window.location.assign(href);
+    }
+  };
 
   return (
     <div
@@ -46,7 +54,9 @@ const Banner: React.FC<BannerProps> = ({
       )}
     >
       {icon && <div data-testid="icon-id">{icon}</div>}
-      <div className={cx(styles.content, classNames.content)}>{children}</div>
+      <div className={cx(styles.content, classNames.content)} onClick={onClick}>
+        {children}
+      </div>
       <Button onClick={onClose} className={styles.closeButton}>
         <CloseIcon aria-label="dismiss" />
       </Button>
