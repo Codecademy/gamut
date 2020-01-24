@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import Button, { presetThemes } from 'gamut/Button';
-import ButtonBase from 'gamut/ButtonBase';
+import { presetThemes } from 'gamut/Button';
+import { Button, ButtonBase } from 'gamut';
 import Spinner from 'gamut/Spinner';
 import RadialProgress from 'gamut/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
@@ -47,6 +47,7 @@ export default {
   component: Button,
   title: 'Component/Button',
   decorators: [withKnobs],
+  subcomponents: { ButtonBase },
 };
 
 export const allButtonThemes = () => (

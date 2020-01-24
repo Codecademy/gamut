@@ -74,9 +74,9 @@ module.exports = ({ config }) => {
     config.module.rules[jsIndex].use.push({
       loader: 'react-docgen-typescript-loader',
       options: {
-        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
         propFilter(p) {
           if (p.parent && p.parent.fileName.match('node_modules')) {
+            console.log(p);
             return false;
           }
           return true;

@@ -14,7 +14,7 @@ export const defaultBannerFullWidth = () => (
 );
 
 defaultBannerFullWidth.story = {
-  name: 'Default Banner (Full Width)',
+  name: 'Banner',
 };
 
 export const defaultBannerWithIconFullWidth = () => (
@@ -24,7 +24,7 @@ export const defaultBannerWithIconFullWidth = () => (
 );
 
 defaultBannerWithIconFullWidth.story = {
-  name: 'Default Banner with Icon (Full Width)',
+  name: 'With Icon (Full Width)',
 };
 
 export const BannerWithBottomBorder = () => (
@@ -32,5 +32,5 @@ export const BannerWithBottomBorder = () => (
 );
 
 BannerWithBottomBorder.story = {
-  name: 'Banner with Bottom Border',
+  name: 'With Bottom Border',
 };
