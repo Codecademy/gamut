@@ -1,6 +1,6 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
-import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
+import ButtonBase from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles/index.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
@@ -32,18 +32,35 @@ const propKeys = [
   'onClick',
 ];
 
-export type ButtonProps = ButtonBaseProps & {
+export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
+  /**
+   * Component type to wrap children with.
+   */
+  as?: ChildComponentDescriptor;
+  /**
+   * @remarks We would love to properly type this with generics, but cannot yet.
+   * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
+   * @see https://github.com/Microsoft/TypeScript/issues/21048
+   */
+  asProps?: any;
   block?: boolean;
   caps?: boolean;
+  children: ReactNode;
+  disabled?: boolean;
   fitText?: boolean;
   flat?: boolean;
   go?: boolean;
+  href?: string;
+  id?: string;
   link?: boolean;
   outline?: boolean;
+  rel?: string;
   round?: boolean;
   size?: 'small' | 'large';
   square?: boolean;
+  target?: string;
   theme?: string;
+  type?: string;
   underline?: boolean;
 };
 
