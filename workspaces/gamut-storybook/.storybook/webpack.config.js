@@ -72,11 +72,12 @@ module.exports = ({ config }) => {
       '@babel/preset-typescript'
     );
     config.module.rules[jsIndex].use.push({
-      loader: 'react-docgen-typescript-loader',
+      loader: 'webpack-react-docgen-typescript',
       options: {
         propFilter(p) {
+          console.log(p);
+
           if (p.parent && p.parent.fileName.match('node_modules')) {
-            console.log(p);
             return false;
           }
           return true;
