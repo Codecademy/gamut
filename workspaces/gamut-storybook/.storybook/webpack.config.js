@@ -74,9 +74,8 @@ module.exports = ({ config }) => {
     config.module.rules[jsIndex].use.push({
       loader: 'webpack-react-docgen-typescript',
       options: {
+        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
         propFilter(p) {
-          console.log(p);
-
           if (p.parent && p.parent.fileName.match('node_modules')) {
             return false;
           }
@@ -94,5 +93,6 @@ module.exports = ({ config }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-  return merge.smart(config, configToExtend);
+  const finalConfig = merge.smart(config, configToExtend);
+  return finalConfig;
 };
