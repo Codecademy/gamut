@@ -132,6 +132,9 @@ jobs:
       - *restore_repo
       - checkout
       - run:
+          name: build packages
+          command: yarn build-all
+      - run:
           name: build storybook
           command: yarn build-storybook
       - run:
