@@ -39,6 +39,6 @@ tmp
 .changelog
 
 # Storybook build
-docs
+docs/storybook
 
 packages/gamut-styles/demo-styles
