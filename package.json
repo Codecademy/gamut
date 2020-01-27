@@ -18,10 +18,11 @@
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn lerna run verify",
     "clear-modules": "yarn lerna clean -y && rm -rf node_modules",
-    "build-all": "yarn lerna run build",
+    "build-all": "yarn lerna run prepublishOnly",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "cd ./packages/styleguide && yarn build-storybook"
+    "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
+    "deploy": "gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss}": [
@@ -43,6 +44,7 @@
     ]
   },
   "dependencies": {
+    "gh-pages": "^2.2.0",
     "lerna": "3.16.4"
   },
   "devDependencies": {
