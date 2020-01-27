@@ -15,17 +15,17 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
-[`gamut-storybook`: A component development sandbox for Gamut components](/workspaces/gamut-storybook/README.md)
+[`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
 ## Local development
 
 1.  Run `yarn` in the root directory
 1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
 
-### Running storybook
+### Running the storybook styleguide
 
 1.  Run `yarn start` to start the storybook server
-1.  Add new stories to `workspaces/gamut-storybook/stories`
+1.  Add new stories to `packages/styleguide/stories`
 1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
 
 ### Publishing Modules

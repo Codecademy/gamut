@@ -20,8 +20,8 @@
     "clear-modules": "yarn lerna clean -y && rm -rf node_modules",
     "build-all": "yarn lerna run build",
     "start": "yarn && yarn start:storybook",
-    "start:storybook": "cd ./workspaces/gamut-storybook && yarn start",
-    "build-storybook": "cd ./workspaces/gamut-storybook && yarn build-storybook"
+    "start:storybook": "cd ./packages/styleguide && yarn start",
+    "build-storybook": "cd ./packages/styleguide && yarn build-storybook"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss}": [
@@ -35,8 +35,7 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*",
-      "workspaces/*"
+      "packages/*"
     ],
     "nohoist": [
       "**/@storybook/react",
