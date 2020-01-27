@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 3.4.0 (2020-01-27)
+
+
+### Features
+
+* Remove storybook package aliases ([#610](https://github.com/RyzacInc/client-modules/issues/610)) ([317f7f7](https://github.com/RyzacInc/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
+
+
+
+
+
 ## [3.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.3.0...@codecademy/gamut-storybook@3.3.1) (2020-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
