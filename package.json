@@ -21,7 +21,8 @@
     "build-all": "yarn lerna run build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
-    "build-storybook": "cd ./packages/styleguide && yarn build-storybook"
+    "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
+    "deploy": "gh-pages --branch=gh-pages --src=./docs/**/*"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss}": [
@@ -43,6 +44,7 @@
     ]
   },
   "dependencies": {
+    "gh-pages": "^2.2.0",
     "lerna": "3.16.4"
   },
   "devDependencies": {
