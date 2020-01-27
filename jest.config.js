@@ -32,6 +32,7 @@ module.exports = {
   transform: {
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
     '\\.(j|t)sx?$': 'babel-jest',
+    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
   testRegex: '\\-test\\.(j|t)sx?$',
