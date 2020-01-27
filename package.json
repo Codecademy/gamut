@@ -17,6 +17,7 @@
     "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn lerna run verify",
+    "clear-modules": "yarn lerna clean -y && rm -rf node_modules",
     "build-all": "yarn lerna run build",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./workspaces/gamut-storybook && yarn start",
@@ -72,7 +73,7 @@
     "lint-staged": "8.1.5",
     "prettier": "1.18.2",
     "react": "16.8.6",
-    "react-docgen-typescript-webpack-plugin": "1.1.0",
+    "react-docgen-typescript-loader": "3.6.0",
     "react-dom": "16.8.6",
     "react-test-renderer": "16.8.6",
     "typescript": "3.5.3"
