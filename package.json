@@ -22,7 +22,7 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
-    "deploy": "gh-pages --branch='gh-pages' --dist='./docs'"
+    "deploy": "gh-pages -b gh-pages -d docs"
   },
   "lint-staged": {
     "**/*.{js,ts,tsx,json,css,scss}": [
