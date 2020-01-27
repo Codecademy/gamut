@@ -77,6 +77,9 @@ module.exports = ({ config }) => {
         tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
         propFilter(p) {
           if (p.parent && p.parent.fileName.match('node_modules')) {
+            if (p.required) {
+              return true;
+            }
             return false;
           }
           return true;
@@ -93,5 +96,6 @@ module.exports = ({ config }) => {
   }
 
   config.module.rules = config.module.rules.filter(Boolean);
-  return merge.smart(config, configToExtend);
+  const finalConfig = merge.smart(config, configToExtend);
+  return finalConfig;
 };

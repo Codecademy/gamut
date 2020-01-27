@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'gamut';
 import {
+  Button,
   Checkbox,
   RadioGroup,
   Radio,
@@ -11,10 +11,22 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from 'gamut/Form';
+} from 'gamut';
 
 export default {
   title: 'Component/Form',
+  component: Form,
+  subcomponents: {
+    FormGroup,
+    FormGroupLabel,
+    FormGroupDescription,
+    Checkbox,
+    RadioGroup,
+    Radio,
+    Input,
+    TextArea,
+    Select,
+  },
 };
 
 export const form = () => (
