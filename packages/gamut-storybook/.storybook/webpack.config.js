@@ -20,15 +20,6 @@ const DEV = process.env.NODE_ENV !== 'production';
  * This is the config that all others are based on
  */
 
-const packageAliases = {
-  gamut: path.resolve(__dirname, '../../../packages/gamut/src'),
-  'gamut-styles': path.resolve(__dirname, '../../../packages/gamut-styles'),
-  'gamut-templates': path.resolve(
-    __dirname,
-    '../../../packages/gamut-templates/src'
-  ),
-};
-
 module.exports = ({ config }) => {
   const defaultConfig = createConfig()
     .common({
@@ -36,11 +27,6 @@ module.exports = ({ config }) => {
       includeDefaults: false,
     })
     .css()
-    .merge({
-      resolve: {
-        alias: packageAliases,
-      },
-    })
     .if(DEV, config => {
       return config.merge({
         plugins: [new ForkTsCheckerWebpackPlugin()],
@@ -54,7 +40,6 @@ module.exports = ({ config }) => {
     plugins: defaultConfig.plugins,
     resolve: {
       extensions: defaultConfig.resolve.extensions,
-      alias: packageAliases,
     },
   };
 

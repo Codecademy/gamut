@@ -1,6 +1,6 @@
-import { Banner } from 'gamut';
+import { Banner } from '../../gamut/src';
 import React from 'react';
-import { BannerStyle } from 'gamut/Banner';
+import { BannerStyle } from '../../gamut/src/Banner';
 import { AlertIcon } from '@codecademy/gamut-icons';
 import styles from './Banner-story.scss';
 

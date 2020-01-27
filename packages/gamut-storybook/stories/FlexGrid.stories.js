@@ -1,6 +1,6 @@
 import React from 'react';
-import { Item, Grid, Row, Col } from 'gamut';
-import gamut from 'gamut-styles/utils/variables';
+import { Item, Grid, Row, Col } from '../../gamut/src';
+import gamut from '../../gamut-styles/utils/variables';
 
 const Box = () => (
   <Item

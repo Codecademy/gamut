@@ -1,4 +1,4 @@
-import { HighlightedText } from 'gamut';
+import { HighlightedText } from '../../gamut/src';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 

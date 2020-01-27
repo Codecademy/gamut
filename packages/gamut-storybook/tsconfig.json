@@ -6,18 +6,10 @@
     "noEmit": true,
     "isolatedModules": true,
     "declaration": false,
-    "paths": {
-      "gamut": ["../packages/gamut/src"],
-      "gamut-styles": ["../packages/gamut-styles"],
-      "gamut-templates": ["../packages/gamut-templates/src"],
-      "gamut/*": ["../packages/gamut/src/*"],
-      "gamut-styles/*": ["../packages/gamut-styles/*"],
-      "gamut-templates/*": ["../packages/gamut-templates/src/*"]
-    }
   },
   "include": [
     "./**/*",
-    "../../packages/**/src/**/*",
+    "../**/src/**/*",
   ],
   "exclude": []
 }

@@ -11,7 +11,7 @@ import {
   FormGroupLabel,
   FormGroupDescription,
   Form,
-} from 'gamut';
+} from '../../gamut/src';
 
 export default {
   title: 'Component/Form',

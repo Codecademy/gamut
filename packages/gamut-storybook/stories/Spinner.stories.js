@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spinner } from 'gamut';
+import { Spinner } from '../../gamut/src';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 export default {

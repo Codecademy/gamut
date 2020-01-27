@@ -5,8 +5,8 @@ import {
   deprecatedGamutColors,
   deprecatedEditorColors,
   brandColors,
-} from 'gamut-styles/utils/variables';
-import { Container } from 'gamut';
+} from '../../gamut-styles/utils/variables';
+import { Container } from '../../gamut/src';
 import s from './Color-story.scss';
 
 const parseCamelCase = string =>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button } from 'gamut';
-import { Interstitial } from 'gamut-templates';
+import { Button } from '../../gamut/src';
+import { Interstitial } from '../../gamut-templates/src';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 

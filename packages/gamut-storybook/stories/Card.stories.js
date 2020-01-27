@@ -9,10 +9,10 @@ import {
   CardContent,
   BannerCard,
   CoverCard,
-} from 'gamut/Card';
-import Icon from 'gamut/Icon';
-import RadialProgress from 'gamut/RadialProgress';
-import { colors } from 'gamut-styles/utils/variables';
+} from '../../gamut/src/Card';
+import Icon from '../../gamut/src/Icon';
+import RadialProgress from '../../gamut/src/RadialProgress';
+import { colors } from '../../gamut-styles/utils/variables';
 import styles from './Card-story.scss';
 
 const borderStyles = ['dashed', 'solid', 'none'];
