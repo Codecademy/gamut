@@ -156,10 +156,7 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - checkout_code:
-          filters:
-            branches:
-              ignore: gh-pages
+      - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -183,7 +180,7 @@ workflows:
             - checkout_code
           filters:
             branches:
-              only: jh-ghpages-simple
+              only: master
       - publish_alpha:
           filters:
             branches:
