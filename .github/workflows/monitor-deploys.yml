@@ -1,4 +1,4 @@
-name: CI
+name: Monitor Deploys
 
 on:
   push:
