@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: start deployment
-        uses: bobheadxi/deployments@0.2.0
+        uses: bobheadxi/deployments@v0.2.0
         id: deployment
         with:
           step: start
@@ -19,14 +19,14 @@ jobs:
           env: production
         
       - name: Wait for deploy
-        uses: fountainhead/action-wait-for-check@1.0.0
+        uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-deploy
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: build-test
   
       - name: Update deployment status
-        uses: bobheadxi/deployments@0.2.0
+        uses: bobheadxi/deployments@v0.2.0
         if: always()
         with:
           step: finish
