@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: start deployment
+        uses: bobheadxi/deployments@0.2.0
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: production
+        
+      - name: Wait for deploy
+        uses: fountainhead/action-wait-for-check@1.0.0
+        id: wait-for-deploy
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build-test
+  
+      - name: Update deployment status
+        uses: bobheadxi/deployments@0.2.0
+        if: always()
+        with:
+          step: finish
+          env_url: https://styleguide.codecademy.com
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          env: ${{ steps.deployment.outputs.env }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
