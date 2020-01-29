@@ -38,4 +38,7 @@ tmp
 # lerna-changelog cache
 .changelog
 
+# Storybook build
+dist/storybook
+
 packages/gamut-styles/demo-styles

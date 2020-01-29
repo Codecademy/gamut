@@ -121,26 +121,25 @@ jobs:
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
+
+  deploy:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - run:
+          name: build packages
+          command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
       - run:
-          name: commit storybook changes
-          command: |
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: build storybook"
-              git push
-            fi
-      - run:
-          name: update lockfile versions for published packages
-          command: |
-            yarn --production=false
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: updated yarn.lock"
-              git push
-            fi
+          name: deploy
+          command: yarn deploy
 
   publish_alpha:
     <<: *default_env
@@ -174,6 +173,12 @@ workflows:
           requires:
             - checkout_code
       - publish:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: master
+      - deploy:
           requires:
             - checkout_code
           filters:
