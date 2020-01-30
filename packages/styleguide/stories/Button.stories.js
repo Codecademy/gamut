@@ -128,7 +128,9 @@ allButtonThemes.story = {
 export const buttonBaseVariants = () => (
   <div>
     <div>
-      <ButtonBase style={btnStyle}>{text('Label 1', 'I am basic')}</ButtonBase>
+      <ButtonBase style={btnStyle}>
+        {text('Label 1', 'a basic button')}
+      </ButtonBase>
     </div>
     <div>
       <ButtonBase style={btnStyle} href="#">
