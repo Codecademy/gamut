@@ -21,6 +21,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 1.  Run `yarn` in the root directory
 1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+1.  Run `yarn build-all`
 
 ### Running the storybook styleguide
 
