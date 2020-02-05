@@ -16,4 +16,8 @@
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],
+  rules: {
+    // Allow empty subject for now
+    'subject-empty': [0],
+  },
 };
