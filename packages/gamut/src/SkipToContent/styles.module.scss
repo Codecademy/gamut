@@ -3,22 +3,22 @@
 $button-width: 11.25rem;
 
 .skipToContent {
+  color: $color-black;
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
   opacity: 0;
+  padding: 1.5rem 0;
   position: absolute;
+  text-decoration: none;
   top: 100vh;
+  width: $button-width;
 
   &:focus {
-    color: $color-black;
-    cursor: pointer;
-    display: flex;
-    font-weight: bold;
-    justify-content: center;
     left: calc(50% - #{$button-width / 2});
     opacity: 1;
-    padding: 1.5rem 0;
-    text-decoration: none;
     top: 1rem;
-    width: $button-width;
   }
 }
 
