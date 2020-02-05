@@ -1,4 +1,4 @@
-name: pr-name-linter
+name: lint-pr-name
 on:
   pull_request:
     types: ['opened', 'edited', 'reopened', 'synchronize']
