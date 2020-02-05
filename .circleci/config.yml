@@ -105,7 +105,6 @@ jobs:
           path: /tmp/test-results
       - codecov/upload:
           file: /tmp/test-results/jest/*
-          flags: frontend
           conf: codecov.yml
 
   publish:
