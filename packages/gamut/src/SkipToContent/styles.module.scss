@@ -1,0 +1,22 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$button-width: 12rem;
+
+.skipToContent {
+  opacity: 0;
+  position: absolute;
+  top: 100vh;
+
+  &:focus {
+    background: none;
+    color: $color-black;
+    cursor: pointer;
+    font-weight: bold;
+    left: calc(50% - #{$button-width / 2});
+    opacity: 1;
+    padding: 1rem 0;
+    top: 1rem;
+    opacity: 1;
+    width: $button-width;
+  }
+}
