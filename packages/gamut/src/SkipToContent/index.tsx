@@ -1,20 +1,22 @@
 import React from 'react';
 
 import styles from './styles.module.scss';
+import DownArrowIcon from '../Icon/icons/DownArrowIcon';
 
 export type SkipToContentProps = {
-  selector: string;
+  contentId: string;
 };
 
-export const SkipToContent: React.FC<SkipToContentProps> = ({ selector }) => {
+export const SkipToContent: React.FC<SkipToContentProps> = ({ contentId }) => {
   return (
-    <button
+    <a
       className={styles.skipToContent}
-      onClick={() => document.querySelector(selector).scrollIntoView()}
+      href={`#${contentId}`}
+      onClick={() => document.getElementById(contentId).scrollIntoView()}
       type="button"
     >
-      Skip to Content
-    </button>
+      Skip to Content <DownArrowIcon className={styles.downArrowIcon} />
+    </a>
   );
 };
 
