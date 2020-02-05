@@ -4,3 +4,5 @@ codecov:
 comment:
   # Must be the # of parallel test builds in CircleCI
   after_n_builds: 4
+  layout: "diff, files"
+  require_changes: yes
