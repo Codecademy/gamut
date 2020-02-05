@@ -1,12 +1,14 @@
 name: lint-pr-name
 on:
+  repository_dispatch:
   pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize', 'repository_dispatch']
+    types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
   trigger_lint:
     runs-on: ubuntu-latest
     steps:
+      - if: github.event != 'repository_dispatch'
       - uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
