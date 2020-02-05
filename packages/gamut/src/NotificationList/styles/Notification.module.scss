@@ -1,12 +1,14 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .notification {
+  background: none;
   width: 100%;
   padding: 1rem 1.5rem;
   display: flex;
   align-items: flex-start;
   font-size: 0.875rem;
   color: $color-black;
+  border: none;
   border-bottom: 1px solid $color-gray-200;
 
   &.unread {
