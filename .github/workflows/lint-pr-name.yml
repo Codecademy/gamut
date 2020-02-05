@@ -8,8 +8,8 @@ jobs:
   trigger_lint:
     runs-on: ubuntu-latest
     steps:
-      - if: github.event != 'repository_dispatch'
       - uses: peter-evans/repository-dispatch@v1
+        if: github.event != 'repository_dispatch'
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: trigger-pr-name-lint
@@ -17,8 +17,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - if: github.event_name == 'trigger-pr-name-lint'
     - uses: actions/checkout@v1
+      if: github.event_name == 'trigger-pr-name-lint'
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
