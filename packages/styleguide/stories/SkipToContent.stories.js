@@ -6,4 +6,4 @@ export default {
   title: 'Component/SkipToContent',
 };
 
-export const skipToContent = () => <SkipToContent />;
+export const skipToContent = () => <SkipToContent contentId="example" />;

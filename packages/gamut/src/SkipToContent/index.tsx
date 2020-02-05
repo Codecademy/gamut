@@ -9,12 +9,7 @@ export type SkipToContentProps = {
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({ contentId }) => {
   return (
-    <a
-      className={styles.skipToContent}
-      href={`#${contentId}`}
-      onClick={() => document.getElementById(contentId).scrollIntoView()}
-      type="button"
-    >
+    <a className={styles.skipToContent} href={`#${contentId}`} type="button">
       Skip to Content <DownArrowIcon className={styles.downArrowIcon} />
     </a>
   );
