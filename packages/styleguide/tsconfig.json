@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../",
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "declaration": false,
+  },
+  "include": [
+    "./**/*",
+    "../**/src/**/*",
+  ],
+  "exclude": []
+}

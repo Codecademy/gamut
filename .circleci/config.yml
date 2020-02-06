@@ -1,10 +1,11 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:8.10.0
+      - image: circleci/node:12.14.0
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
@@ -54,7 +55,10 @@ jobs:
       - *restore_repo
       - checkout
       - *set_npm_token
-      - run: npx yarn@1.15.2 --production=false --frozen-lockfile
+      - run: yarn --production=false --frozen-lockfile
+      - run:
+          name: Run all builds
+          command: yarn build-all
       - save_cache:
           key: *repo_cache_key_1
           paths:
@@ -93,9 +97,6 @@ jobs:
     steps:
       - *restore_repo
       - run:
-          name: Run any builds needed for tests
-          command: yarn build-all
-      - run:
           name: Run test suite
           command: |
             TESTFILES=$(circleci tests glob "**/*-test.{jsx,tsx,js,ts}" | circleci tests split)
@@ -104,7 +105,7 @@ jobs:
           path: /tmp/test-results
       - codecov/upload:
           file: /tmp/test-results/jest/*
-          flags: frontend
+          conf: codecov.yml
 
   publish:
     <<: *default_env
@@ -119,30 +120,25 @@ jobs:
       - run:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
+
+  deploy:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
       - run:
-          # if lerna publish has no changed packages, it won't build, so we need to run the build again :/
           name: build packages
           command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
       - run:
-          name: commit storybook changes
-          command: |
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: build storybook"
-              git push
-            fi
-      - run:
-          name: update lockfile versions for published packages
-          command: |
-            npx yarn@1.15.2 --production=false
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: updated yarn.lock"
-              git push
-            fi
+          name: deploy
+          command: yarn deploy
 
   publish_alpha:
     <<: *default_env
@@ -176,6 +172,12 @@ workflows:
           requires:
             - checkout_code
       - publish:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: master
+      - deploy:
           requires:
             - checkout_code
           filters:

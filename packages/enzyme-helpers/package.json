@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/enzyme-helpers",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Helpers for writing Enzyme tests",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
@@ -9,7 +9,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup --config --sourcemap",
-    "develop": "yarn build --watch"
+    "develop": "yarn build --watch",
+    "prepublishOnly": "yarn build"
   },
   "private": false,
   "peerDependencies": {

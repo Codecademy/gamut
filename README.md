@@ -15,25 +15,25 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
 
-[`gamut-storybook`: A component development sandbox for Gamut components](/workspaces/gamut-storybook/README.md)
+[`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
 ## Local development
 
 1.  Run `yarn` in the root directory
 1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
+1.  Run `yarn build-all`
 
-### Running storybook
+### Running the storybook styleguide
 
 1.  Run `yarn start` to start the storybook server
-1.  Add new stories to `workspaces/gamut-storybook/stories`
+1.  Add new stories to `packages/styleguide/stories`
 1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
 
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
 1.  After you've reviewed and tested your code, you can merge your branch into master.
-1.  To merge, use the "squash and merge" button in github
-1.  To generate an entry in the changelog for the module you changed, follow the [commit message guide](#commit-message-guide)
+1.  To merge your changes, use the "squash and merge" button in github. Make sure you update the title/description of the merge to match the [commit message guide](#commit-message-guide), otherwise it will not generate a detailed changelog entry.
 1.  Once your branch is merged into master, it will be published automatically by CircleCI.
 1.  You can check the master branch or CircleCI for the new version number
 

@@ -11,6 +11,7 @@ const commonConfig = (options = {}) => {
     env = ENV,
     minimizer,
     minimizerOptions = {},
+    fileLoaderOptions = {},
     includeDefaults = true,
   } = options;
   const DEV = env !== 'production';
@@ -40,6 +41,7 @@ const commonConfig = (options = {}) => {
                 name: DEV
                   ? '[name].[contenthash].[ext]'
                   : '[contenthash].[ext]',
+                ...fileLoaderOptions,
               },
             },
           ]

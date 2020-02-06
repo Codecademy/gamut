@@ -1,11 +1,10 @@
 {
-    "extends": "../../tsconfig.json",
-    "include": [
-      "../gamut/src/typings/*.ts",
+  "extends": "../../tsconfig.json",
+  "include": [
       "./src/**/*.ts",
       "./src/**/*.tsx"
-    ],
-    "compilerOptions": {
-      "outDir": "./dist"
-    }
+  ],
+  "compilerOptions": {
+    "outDir": "./dist"
+  }
 }
