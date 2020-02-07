@@ -88,7 +88,7 @@
     padding: 0 0.25rem;
     margin: 0 0.0625rem;
     border-radius: 0.125rem;
-    color: inherit;
+    color: $deprecated-gamut-purple-900;
     background-color: mix(
       $deprecated-swatches-grey-200,
       $deprecated-swatches-grey-100
@@ -106,6 +106,7 @@
       white-space: pre-wrap;
       padding: 0;
       margin: 0;
+      color: inherit;
       background-color: transparent;
       font-family: $font-monospace;
     }
