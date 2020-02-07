@@ -49,7 +49,7 @@
     "webpack-serve": "2.0.3"
   },
   "dependencies": {
-    "autoprefixer": "^8.1.0",
+    "autoprefixer": "^9.7.4",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "cssnano": "^4.1.10",
     "mini-css-extract-plugin": "^0.8.0",
