@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.17.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.2...@codecademy/webpack-config@3.17.0) (2020-01-28)
+
+
+### Features
+
+* add file loader options override ([#607](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/607)) ([4fe61f0](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
+
+
+
+
+
 ## [3.16.2](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.1...@codecademy/webpack-config@3.16.2) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/webpack-config

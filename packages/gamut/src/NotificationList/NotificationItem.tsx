@@ -31,13 +31,15 @@ export const NotificationItem: React.FC<NotificationItemProps> = props => {
     [s.unread]: unread,
   });
 
-  const TagName = link ? 'a' : 'div';
-  const tagProps = link ? { target: '_blank' } : { role: 'presentation' };
+  const [TagName, tagProps] = link
+    ? ([
+        'a',
+        { href: link, rel: 'noopener noreferrer', target: '_blank' },
+      ] as const)
+    : (['button', { type: 'button' }] as const);
 
   return (
     <TagName
-      href={link}
-      rel="noopener noreferrer"
       className={cx(notificationClasses)}
       onClick={onClick}
       {...tagProps}
