@@ -1,4 +1,4 @@
-import { Form, Grid, Row, Item } from '@codecademy/gamut';
+import { Form, Grid, Row } from '@codecademy/gamut';
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
