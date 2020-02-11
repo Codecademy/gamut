@@ -1,0 +1,36 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+import * as React from 'react';
+var SvgAccessibilityIcon = React.forwardRef(function (_ref, svgRef) {
+  var _ref$title = _ref.title,
+      title = _ref$title === void 0 ? 'Accessibility Icon' : _ref$title,
+      _ref$titleId = _ref.titleId,
+      titleId = _ref$titleId === void 0 ? '' : _ref$titleId,
+      size = _ref.size,
+      color = _ref.color,
+      width = _ref.width,
+      height = _ref.height,
+      props = _objectWithoutProperties(_ref, ["title", "titleId", "size", "color", "width", "height"]);
+
+  titleId = 'gamut-icon-U3ZnQWNjZXNzaWJpbGl0eUljb24=' + titleId;
+  return React.createElement("svg", _extends({
+    fill: color || 'currentColor',
+    viewBox: "0 0 24 24",
+    width: size || width || '16px',
+    height: size || height || '16px',
+    role: "img",
+    ref: svgRef,
+    "aria-labelledby": titleId
+  }, props), title ? React.createElement("title", {
+    id: titleId
+  }, title) : null, React.createElement("path", {
+    d: "M12 21a9 9 0 100-18 9 9 0 000 18zm0 1C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+  }), React.createElement("path", {
+    d: "M11.966 5.81c-.841 0-1.527.68-1.527 1.515 0 .834.686 1.515 1.527 1.515.842 0 1.527-.68 1.527-1.515 0-.835-.685-1.515-1.527-1.515zm4.224 3.232c.266 0 .509.238.554.561.049.347-.146.663-.436.703l-3.398.473v2.113l1.833 4.36a.643.643 0 01-.594.88.649.649 0 01-.6-.394l-1.684-4.006-1.685 4.006a.649.649 0 01-.843.344.637.637 0 01-.35-.83l1.833-4.36V10.78l-3.399-.47c-.289-.04-.486-.357-.435-.704.045-.323.29-.561.554-.561.02 0 .04.002.06.004l3.282.456h1.965l3.282-.456a.282.282 0 01.06-.006z"
+  }));
+});
+export default SvgAccessibilityIcon;
