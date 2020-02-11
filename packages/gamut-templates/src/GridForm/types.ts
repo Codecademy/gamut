@@ -1,6 +1,5 @@
 import { ColSizing } from '@codecademy/gamut/dist/FlexGrid/Col';
-
-export type Validate = (value: string) => boolean;
+import { ValidationOptions } from 'react-hook-form';
 
 export type BaseFormField = {
   defaultValue?: string;
@@ -10,7 +9,7 @@ export type BaseFormField = {
 };
 
 export type GridFormTextField = BaseFormField & {
-  validate?: Validate;
+  validation?: ValidationOptions;
   type: 'text' | 'email';
 };
 

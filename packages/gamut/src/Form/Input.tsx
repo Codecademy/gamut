@@ -12,21 +12,18 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
-  error,
-  htmlFor,
-  className,
-  ...rest
-}) => {
-  const classNames = cx(
-    s.Input,
-    {
-      [s.error]: error,
-    },
-    className
-  );
-  return <input {...rest} id={htmlFor} className={classNames} />;
-};
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ error, htmlFor, className, ...rest }, ref) => {
+    const classNames = cx(
+      s.Input,
+      {
+        [s.error]: error,
+      },
+      className
+    );
+    return <input {...rest} id={htmlFor} ref={ref} className={classNames} />;
+  }
+);
 
 Input.defaultProps = {
   type: 'text',

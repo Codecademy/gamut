@@ -1,34 +1,59 @@
-import { FormError, FormGroup, FormGroupLabel } from '@codecademy/gamut';
+import {
+  Col,
+  FormError,
+  FormGroup,
+  FormGroupLabel,
+  Item,
+} from '@codecademy/gamut';
 import React from 'react';
+import { FormContextValues } from 'react-hook-form';
 
 import { GridFormField } from '../types';
 import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
+import styles from './styles.module.scss';
 
 export type GridFormInputGroupProps = {
   error?: string;
   field: GridFormField;
+  register: FormContextValues['register'];
   setValue: (value: string) => void;
 };
 
 const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
   field,
+  register,
   setValue,
 }) => {
   const input =
     field.type === 'select' ? (
-      <GridFormSelectInput field={field} setValue={setValue} />
+      <GridFormSelectInput
+        className={styles.gridFormInput}
+        field={field}
+        setValue={setValue}
+      />
     ) : (
-      <GridFormTextInput field={field} setValue={setValue} />
+      <GridFormTextInput
+        className={styles.gridFormInput}
+        field={field}
+        register={register}
+        setValue={setValue}
+      />
     );
 
   return (
-    <FormGroup>
-      {error && <FormError>{error}</FormError>}
-      <FormGroupLabel>{field.label}</FormGroupLabel>
-      {input}
-    </FormGroup>
+    <Col {...field.sizing}>
+      <Item>
+        <FormGroup>
+          <FormGroupLabel className={styles.formGroupLabel}>
+            {field.label}
+          </FormGroupLabel>
+          {error && <FormError>{error}</FormError>}
+          {input}
+        </FormGroup>
+      </Item>
+    </Col>
   );
 };
 

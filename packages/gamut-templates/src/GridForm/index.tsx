@@ -1,6 +1,6 @@
-import { Form, Grid } from '@codecademy/gamut';
+import { Form, Grid, Row, Item } from '@codecademy/gamut';
 import React, { useEffect } from 'react';
-import useForm from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import GridFormInputGroup from './GridFormInputGroup';
 import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
@@ -17,7 +17,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
   submit,
   onSubmit,
 }: GridFormProps<Values>) {
-  const { register, handleSubmit, errors, setValue, getValues } = useForm<
+  const { getValues, errors, handleSubmit, register, setValue } = useForm<
     Values
   >({
     defaultValues: fields.reduce(
@@ -38,15 +38,24 @@ export function GridForm<Values extends Record<string, string | undefined>>({
   return (
     <Form onSubmit={handleSubmit(() => onSubmit(getValues()))}>
       <Grid>
-        {fields.map(field => (
-          <GridFormInputGroup
-            error={errors[field.name]}
-            field={field}
-            key={field.name}
-            setValue={value => setValue(field.name, value)}
-          />
-        ))}
-        <GridFormSubmit>{submit.children}</GridFormSubmit>
+        <Row>
+          {fields.map(field => {
+            const errorMessage =
+              errors[field.name] && (errors[field.name] as any).message;
+            return (
+              <GridFormInputGroup
+                error={errorMessage}
+                field={field}
+                key={field.name}
+                register={register}
+                setValue={value =>
+                  setValue(field.name, value as Values[string])
+                }
+              />
+            );
+          })}
+          <GridFormSubmit>{submit.children}</GridFormSubmit>
+        </Row>
       </Grid>
     </Form>
   );

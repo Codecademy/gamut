@@ -1,9 +1,9 @@
-import React, { ReactNode, FormHTMLAttributes } from 'react';
+import React, { ReactNode, SelectHTMLAttributes } from 'react';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
 import s from './styles/Select.module.scss';
 
-export type SelectProps = FormHTMLAttributes<HTMLSelectElement> & {
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
 };
