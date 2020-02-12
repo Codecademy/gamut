@@ -154,9 +154,6 @@ jobs:
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
-      - run:
-          name: Show alpha versions
-          command: yarn lerna ls -l | grep alpha
       - pr-comment/pr-comment:
           comment: $(yarn lerna ls -l | grep alpha)
 
