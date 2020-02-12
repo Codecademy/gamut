@@ -157,7 +157,7 @@ jobs:
       - run:
           name: Show alpha versions
           command: yarn lerna ls -l | grep alpha
-      - pr-comment:
+      - pr-comment/pr-comment:
           comment: $(yarn lerna ls -l | grep alpha)
 
 workflows:
