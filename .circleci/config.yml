@@ -157,19 +157,15 @@ jobs:
       - run:
           name: Comment
           command: |
-            export GITHUB_COMMENT="$(yarn lerna ll | grep alpha || true) <!--LERNA_VERSION_COMMENT-->"
-            export GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT"
-            export GITHUB_OWNER=$CIRCLE_PROJECT_USERNAME
-            export GITHUB_REPO=$CIRCLE_PROJECT_REPO
-            export GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"
+            export COMMENT="$(yarn lerna ll | grep alpha || true) <!--LERNA_VERSION_COMMENT-->"
+
             docker run -i --rm \
                     -e GITHUB_TOKEN \
-                    -e GITHUB_OWNER \
-                    -e GITHUB_REPO \
-                    -e GITHUB_COMMENT_TYPE \
-                    -e GITHUB_PR_ISSUE_NUMBER \
-                    -e GITHUB_COMMENT_FORMAT \
-                    -e GITHUB_COMMENT \
+                    -e GITHUB_OWNER=$CIRCLE_PROJECT_USERNAME \
+                    -e GITHUB_REPO=$CIRCLE_PROJECT_REPO \
+                    -e GITHUB_COMMENT_TYPE=pr \
+                    -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
+                    -e GITHUB_COMMENT=$COMMENT \
                     cloudposse/github-commenter:0.5.0-58
 workflows:
   version: 2
