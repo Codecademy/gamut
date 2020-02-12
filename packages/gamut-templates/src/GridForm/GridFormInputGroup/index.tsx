@@ -31,6 +31,7 @@ const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
       <GridFormSelectInput
         className={styles.gridFormInput}
         field={field}
+        register={register}
         setValue={setValue}
       />
     ) : (
