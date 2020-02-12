@@ -134,7 +134,6 @@
     margin: 0;
     margin-bottom: $base-margin;
     font-style: italic;
-    color: red !important; // remove me
     // The Markdown processor combines multiple lines
     // into a single tag if the same tag repeats line to line
     // this is mainly for `<p>` tags since that's the default
