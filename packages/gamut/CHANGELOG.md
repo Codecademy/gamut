@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.4...@codecademy/gamut@2.4.5) (2020-02-12)
+
+
+### Bug Fixes
+
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+
+
+
 ## [2.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.3...@codecademy/gamut@2.4.4) (2020-02-07)
 
 
