@@ -157,7 +157,7 @@ jobs:
       - run:
           name: Set token
           command: |
-            export GHI_TOKEN=$GHI_TOKEN
+            echo "export GHI_TOKEN=$GITHUB_TOKEN" >> $BASH_ENV
       - pr-comment/pr-comment:
           comment: $(yarn lerna ls -l | grep alpha)
 
