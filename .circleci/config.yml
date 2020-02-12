@@ -1,15 +1,11 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
-  pr-comment: benjlevesque/pr-comment@0.1.4
 
 references:
   default_env: &default_env
     docker:
       - image: circleci/node:12.14.0
-      - image: cloudposse/github-commenter:0.5.0-58
-        entrypoint: ''
-        command: 'ls -la'
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
@@ -160,9 +156,17 @@ jobs:
       - run:
           name: Comment
           command: |
-            echo "export GHI_TOKEN=$GITHUB_TOKEN" >> $BASH_ENV
-            $(yarn lerna ll | grep alpha || true) | github-commenter
-
+            export GITHUB_COMMENT="$(yarn lerna ll | grep alpha || true) <!--LERNA_VERSION_COMMENT-->"
+            export GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT"
+            docker run -i --rm \
+                    -e GITHUB_TOKEN \
+                    -e GITHUB_OWNER \
+                    -e GITHUB_REPO \
+                    -e GITHUB_COMMENT_TYPE \
+                    -e GITHUB_PR_ISSUE_NUMBER \
+                    -e GITHUB_COMMENT_FORMAT \
+                    -e GITHUB_COMMENT \
+                    cloudposse/github-commenter:0.5.0-58
 workflows:
   version: 2
   build-test:
