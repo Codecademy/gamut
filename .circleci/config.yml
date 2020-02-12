@@ -161,11 +161,11 @@ jobs:
 
             docker run -i --rm \
                     -e GITHUB_TOKEN \
-                    -e GITHUB_OWNER=${CIRCLE_PROJECT_USERNAME} \
-                    -e GITHUB_REPO=${CIRCLE_PROJECT_REPONAME} \
+                    -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
+                    -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
                     -e GITHUB_COMMENT_TYPE=pr \
                     -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                    -e GITHUB_COMMENT=${COMMENT} \
+                    -e GITHUB_COMMENT="${COMMENT}" \
                     cloudposse/github-commenter:0.5.0-58
 workflows:
   version: 2
