@@ -162,7 +162,6 @@ jobs:
             then
               echo "No alpha published packages found, will not add PR comment"
             else
-              COMMENT="$ALPHA_PACKAGES <!--LERNA_VERSION_COMMENT-->"
               docker run -i --rm \
                       -e GITHUB_TOKEN \
                       -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
@@ -170,7 +169,7 @@ jobs:
                       -e GITHUB_COMMENT_TYPE=pr \
                       -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
                       -e GITHUB_COMMENT_TEMPLATE_FILE=".circleci/pr-comment-template.gohtml"
-                      -e GITHUB_COMMENT="${COMMENT}" \
+                      -e GITHUB_COMMENT="${ALPHA_PACKAGES}" \
                       cloudposse/github-commenter:0.5.0-58
             fi
 
