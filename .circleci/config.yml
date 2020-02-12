@@ -159,7 +159,7 @@ jobs:
           command: |
             echo "export GHI_TOKEN=$GITHUB_TOKEN" >> $BASH_ENV
       - pr-comment/pr-comment:
-          comment: $(yarn lerna ls -l | grep alpha)
+          comment: $(yarn lerna ll)
 
 workflows:
   version: 2
