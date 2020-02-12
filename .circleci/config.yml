@@ -7,6 +7,7 @@ references:
   default_env: &default_env
     docker:
       - image: circleci/node:12.14.0
+      - image: cloudposse/github-commenter:0.5.0-58
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
@@ -155,11 +156,10 @@ jobs:
           name: lerna publish (alpha)
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
       - run:
-          name: Set token
+          name: Comment
           command: |
             echo "export GHI_TOKEN=$GITHUB_TOKEN" >> $BASH_ENV
-      - pr-comment/pr-comment:
-          comment: $(yarn lerna ll)
+            $(yarn lerna ll | grep alpha || true) | github-commenter
 
 workflows:
   version: 2
