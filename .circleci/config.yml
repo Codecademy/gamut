@@ -162,7 +162,7 @@ jobs:
             docker run -i --rm \
                     -e GITHUB_TOKEN \
                     -e GITHUB_OWNER=${CIRCLE_PROJECT_USERNAME} \
-                    -e GITHUB_REPO=${CIRCLE_PROJECT_REPO} \
+                    -e GITHUB_REPO=${CIRCLE_PROJECT_REPONAME} \
                     -e GITHUB_COMMENT_TYPE=pr \
                     -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
                     -e GITHUB_COMMENT=${COMMENT} \
