@@ -159,6 +159,9 @@ jobs:
           command: |
             export GITHUB_COMMENT="$(yarn lerna ll | grep alpha || true) <!--LERNA_VERSION_COMMENT-->"
             export GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT"
+            export GITHUB_OWNER=$CIRCLE_PROJECT_USERNAME
+            export GITHUB_REPO=$CIRCLE_PROJECT_REPO
+            export GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"
             docker run -i --rm \
                     -e GITHUB_TOKEN \
                     -e GITHUB_OWNER \
