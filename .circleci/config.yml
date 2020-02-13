@@ -153,6 +153,27 @@ jobs:
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
+      - setup_remote_docker
+      - run: docker pull cloudposse/github-commenter:0.5.0-58
+      - run:
+          name: Comment
+          command: |
+            ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep gamut || true)"
+            if [ -z "$ALPHA_PACKAGES" ]
+            then
+              echo "No alpha published packages found, will not add PR comment"
+            else
+              docker run --rm \
+                      -e GITHUB_TOKEN \
+                      -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
+                      -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
+                      -e GITHUB_COMMENT_TYPE=pr \
+                      -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
+                      -e GITHUB_COMMENT_TEMPLATE='<h3>📬Published Alpha Packages:</h3><pre>{{$x := splitList "\n" .}}{{range $x}}{{$y := split ":" .}}{{printf "%s@%v<br/>" $y._1 $y._2}}{{end}}</pre><!--LERNA_VERSION_COMMENT-->' \
+                      -e GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT" \
+                      -e GITHUB_COMMENT="${ALPHA_PACKAGES}" \
+                      cloudposse/github-commenter:0.5.0-58
+            fi
 
 workflows:
   version: 2
