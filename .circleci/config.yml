@@ -169,7 +169,7 @@ jobs:
                       -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
                       -e GITHUB_COMMENT_TYPE=pr \
                       -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='Published Alpha Packages:<br/><pre>{{$x := splitList "\n" .}}{{range $x}}{{$y := split ":" .}}{{printf "%s:%v<br/>" $y._1 $y._2}}{{end}}</pre><br/><!--LERNA_VERSION_COMMENT-->' \
+                      -e GITHUB_COMMENT_TEMPLATE='<h2>Published Alpha Packages:</h2><br/><pre>{{$x := splitList "\n" .}}{{range $x}}{{$y := split ":" .}}{{printf "%s:%v<br/>" $y._1 $y._2}}{{end}}</pre><!--LERNA_VERSION_COMMENT-->' \
                       -e GITHUB_DELETE_COMMENT_REGEX="LERNA_VERSION_COMMENT" \
                       -e GITHUB_COMMENT="${ALPHA_PACKAGES}" \
                       cloudposse/github-commenter:0.5.0-58
