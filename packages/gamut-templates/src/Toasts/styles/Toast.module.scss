@@ -1,0 +1,53 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.container {
+  display: grid;
+  align-items: center;
+  color: $color-black;
+  width: px-rem(400px);
+  height: px-rem(100px);
+  padding: 0 2rem 0 1rem;
+}
+
+.body {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-gap: 1rem;
+}
+
+.body__noIcon {
+  grid-template-columns: 1fr;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-height: 4.5rem;
+}
+
+.icon {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  width: 4.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+
+  > * {
+    user-select: none;
+    height: auto;
+    width: 4.5rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: px-rem(5);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
