@@ -158,7 +158,7 @@ jobs:
       - run:
           name: Comment
           command: |
-            ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep gamut || true)"
+            ALPHA_PACKAGES="$(yarn lerna ll --parseable | grep alpha || true)"
             if [ -z "$ALPHA_PACKAGES" ]
             then
               echo "No alpha published packages found, will not add PR comment"
