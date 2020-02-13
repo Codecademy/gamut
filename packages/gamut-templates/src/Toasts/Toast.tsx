@@ -7,10 +7,8 @@ import { ContainerElementProps } from '../../../gamut/src/Layout/types';
 import { ButtonBase, CardShell } from '@codecademy/gamut';
 
 type ToastProps = {
-  id: string;
   icon?: React.ReactElement;
-  showClose: boolean;
-  autoClose?: number;
+  onClick?: () => void;
   onClose: () => void;
 } & ContainerElementProps;
 

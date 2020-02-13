@@ -20,7 +20,8 @@
   "dependencies": {
     "@codecademy/gamut": "^2.4.4",
     "@codecademy/gamut-styles": "^2.2.11",
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "framer-motion": "1.8.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
