@@ -8,7 +8,7 @@
 
 When considering whether to add a component to Gamut, answer these questions:
 
-1. Is this component more tied to brand representation/marketing purposes than say a [Button in the Gamut package](https://github.com/Codecademy/client-modules/tree/master/packages/gamut/src/Button).
+1. Is this component more tied to brand representation/marketing purposes than say a [Button in the Gamut package](../gamut/src/Button).
 2. Is this component or some version of it used across all or most new React based applications at Codecademy?
 
 ## box-sizing
