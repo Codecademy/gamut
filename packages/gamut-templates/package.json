@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-templates",
   "description": "Templates library for Gamut",
-  "version": "2.2.30",
+  "version": "2.2.28",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -19,9 +19,10 @@
     "framer-motion": "1.8.4"
   },
   "dependencies": {
-    "@codecademy/gamut": "^2.4.6",
+    "@codecademy/gamut": "^2.4.4",
     "@codecademy/gamut-styles": "^2.2.11",
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "framer-motion": "1.8.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
