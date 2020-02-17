@@ -10,6 +10,7 @@
   color: $color-black;
   border: none;
   border-bottom: 1px solid $color-gray-200;
+  text-align: left;
 
   &.unread {
     background-color: rgba($color-blue-500, 0.1);
