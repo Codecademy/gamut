@@ -15,13 +15,13 @@
   },
   "peerDependencies": {
     "react": ">=16.8.1",
-    "react-dom": ">=16.8.1"
+    "react-dom": ">=16.8.1",
+    "framer-motion": "1.8.4"
   },
   "dependencies": {
     "@codecademy/gamut": "^2.4.4",
     "@codecademy/gamut-styles": "^2.2.11",
-    "classnames": "^2.2.5",
-    "framer-motion": "1.8.4"
+    "classnames": "^2.2.5"
   },
   "scripts": {
     "verify": "tsc --noEmit",
