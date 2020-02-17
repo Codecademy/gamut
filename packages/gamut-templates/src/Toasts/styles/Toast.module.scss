@@ -6,7 +6,7 @@
   color: $color-black;
   width: px-rem(400);
   height: px-rem(100);
-  padding: 0 2rem 0 1rem;
+  padding: 1rem 2rem 1rem 1rem;
 }
 
 .body {
@@ -43,6 +43,7 @@
 }
 
 .contentButton {
+  height: 100%;
   background: transparent;
   padding: 0;
 }

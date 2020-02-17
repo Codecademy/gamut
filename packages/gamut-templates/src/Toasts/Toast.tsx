@@ -23,9 +23,6 @@ const Toast: React.FC<ToastProps> = ({
 }) => {
   return (
     <CardShell className={cx(s.container, className)} data-test-id={testId}>
-      <Button flat theme="platform" className={s.closeButton} onClick={onClose}>
-        <CloseIcon />
-      </Button>
       <Button
         flat
         theme="platform"
@@ -40,6 +37,9 @@ const Toast: React.FC<ToastProps> = ({
           {icon && <div className={s.icon}>{icon}</div>}
           <div className={s.content}>{children}</div>
         </div>
+      </Button>
+      <Button flat theme="platform" className={s.closeButton} onClick={onClose}>
+        <CloseIcon />
       </Button>
     </CardShell>
   );
