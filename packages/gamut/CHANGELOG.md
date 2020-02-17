@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.5...@codecademy/gamut@2.4.6) (2020-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.4...@codecademy/gamut@2.4.5) (2020-02-12)
+
+
+### Bug Fixes
+
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+
+
+
+## [2.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.3...@codecademy/gamut@2.4.4) (2020-02-07)
+
+
+### Bug Fixes
+
+* markdown styling: do not override code color ([#621](https://github.com/RyzacInc/client-modules/issues/621)) ([9a0014a](https://github.com/RyzacInc/client-modules/commit/9a0014ae3d9c3ee192442589510dab730ffe41c8))
+
+
+
+
+
+## [2.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.2...@codecademy/gamut@2.4.3) (2020-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.1...@codecademy/gamut@2.4.2) (2020-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.0...@codecademy/gamut@2.4.1) (2020-01-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 # [2.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.10...@codecademy/gamut@2.4.0) (2020-01-16)
 
 
