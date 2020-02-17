@@ -1,10 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
-import s from './styles/Toast.module.scss';
 import CloseIcon from '../../../gamut/src/Icon/icons/CloseIcon';
 import { ContainerElementProps } from '../../../gamut/src/Layout/types';
 import { Button, CardShell } from '@codecademy/gamut';
+
+import s from './styles/Toast.module.scss';
 
 type ToastProps = {
   icon?: React.ReactElement;
