@@ -27,13 +27,13 @@ const Toaster: React.FC<ToasterProps> = ({ toasts }) => {
               key={id}
               style={{ zIndex: toasts.length - i }}
               className={s.animate}
-              transition={{ delay: 0.5 * i }}
               animate={{
-                y: -110 * i,
+                y: (toasts.length - (i + 1)) * -110,
                 opacity: 1,
               }}
               exit={{
                 x: '115%',
+                y: (toasts.length - (i + 1)) * -110,
               }}
               positionTransition
             >

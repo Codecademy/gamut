@@ -4,7 +4,7 @@ import cx from 'classnames';
 import s from './styles/Toast.module.scss';
 import CloseIcon from '../../../gamut/src/Icon/icons/CloseIcon';
 import { ContainerElementProps } from '../../../gamut/src/Layout/types';
-import { ButtonBase, CardShell } from '@codecademy/gamut';
+import { Button, CardShell } from '@codecademy/gamut';
 
 type ToastProps = {
   icon?: React.ReactElement;
@@ -16,22 +16,30 @@ const Toast: React.FC<ToastProps> = ({
   children,
   icon,
   onClose,
+  onClick,
   testId,
   className,
 }) => {
   return (
     <CardShell className={cx(s.container, className)} data-test-id={testId}>
-      <ButtonBase className={s.closeButton} onClick={onClose}>
+      <Button flat theme="platform" className={s.closeButton} onClick={onClose}>
         <CloseIcon />
-      </ButtonBase>
-      <div
-        className={cx(s.body, {
-          [s.body__noIcon]: !icon,
-        })}
+      </Button>
+      <Button
+        flat
+        theme="platform"
+        className={s.contentButton}
+        onClick={onClick}
       >
-        {icon && <div className={s.icon}>{icon}</div>}
-        <div className={s.content}>{children}</div>
-      </div>
+        <div
+          className={cx(s.body, {
+            [s.body__noIcon]: !icon,
+          })}
+        >
+          {icon && <div className={s.icon}>{icon}</div>}
+          <div className={s.content}>{children}</div>
+        </div>
+      </Button>
     </CardShell>
   );
 };

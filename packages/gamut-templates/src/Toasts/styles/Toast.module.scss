@@ -7,47 +7,54 @@
   width: px-rem(400);
   height: px-rem(100);
   padding: 0 2rem 0 1rem;
-}
 
-.body {
-  display: grid;
-  grid-template-columns: min-content 1fr;
-  grid-gap: 1rem;
-}
-
-.body__noIcon {
-  grid-template-columns: 1fr;
-}
-
-.content {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  max-height: 4.5rem;
-}
-
-.icon {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  width: 4.5rem;
-  flex-shrink: 0;
-  overflow: hidden;
-
-  > * {
-    user-select: none;
-    height: auto;
-    width: 4.5rem;
+  .body {
+    width: 100%;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-gap: 1rem;
   }
-}
 
-.closeButton {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: px-rem(5);
-  background: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
+  .body__noIcon {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-height: 4.5rem;
+  }
+
+  .icon {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    width: 4.5rem;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    > * {
+      user-select: none;
+      height: auto;
+      width: 4.5rem;
+    }
+  }
+
+  .contentButton {
+    background: transparent;
+    padding: 0;
+  }
+
+  .closeButton {
+    border-radius: 50%;
+    min-width: 0;
+    width: px-rem(30);
+    height: px-rem(30);
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: px-rem(2);
+    background: transparent;
+  }
 }
