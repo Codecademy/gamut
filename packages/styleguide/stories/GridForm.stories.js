@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridForm } from 'gamut-templates';
+import { GridForm } from '../../gamut-templates';
 
 export default {
   component: 'GridForm',
