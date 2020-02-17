@@ -21,6 +21,7 @@ const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
     <Select
       className={className}
       htmlFor={field.name}
+      name={field.name}
       onChange={event => setValue(event.target.value)}
       ref={register()}
       options={field.options}

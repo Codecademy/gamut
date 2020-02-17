@@ -1,6 +1,6 @@
 import { Form, Grid, Row } from '@codecademy/gamut';
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, FieldError } from 'react-hook-form';
 
 import GridFormInputGroup from './GridFormInputGroup';
 import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
@@ -40,8 +40,8 @@ export function GridForm<Values extends Record<string, string | undefined>>({
       <Grid>
         <Row>
           {fields.map(field => {
-            const errorMessage =
-              errors[field.name] && (errors[field.name] as any).message;
+            const errorMessage = (errors[field.name] as FieldError)?.message;
+
             return (
               <GridFormInputGroup
                 error={errorMessage}
