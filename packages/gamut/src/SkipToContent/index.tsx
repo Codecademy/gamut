@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 import DownArrowIcon from '../Icon/icons/DownArrowIcon';
@@ -9,9 +9,7 @@ export type SkipToContentProps = {
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({ contentId }) => {
   const href = `#${contentId}`;
-  const onClick = useCallback(() => {
-    document.querySelector<HTMLElement>(href)!.focus();
-  }, []);
+  const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
 
   return (
     <a
