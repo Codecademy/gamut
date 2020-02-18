@@ -3,15 +3,17 @@ import s from './styles.module.scss';
 import cx from 'classnames';
 import { VisualTheme } from '../../../gamut/src/theming/VisualTheme';
 
-export type AvatarProps = HTMLAttributes<HTMLImageElement> & {
+export type AvatarProps = {
   src: string;
-  alt: string;
+  label: string;
   size?: 'regular' | 'large';
-  theme: VisualTheme;
+  theme?: VisualTheme;
+  imageProps?: HTMLAttributes<HTMLImageElement>;
 };
+
 export const Avatar: React.FC<AvatarProps> = ({
   size = 'regular',
-  alt,
+  label,
   theme = VisualTheme.LightMode,
   ...imageProps
 }) => (
@@ -21,8 +23,13 @@ export const Avatar: React.FC<AvatarProps> = ({
       s[`${size}Container`],
       theme === VisualTheme.DarkMode ? s.darkContainer : s.lightContainer
     )}
+    aria-labelledby={label}
   >
-    <img className={cx(s.image, s[`${size}Image`])} {...imageProps} alt={alt} />
+    <img
+      className={cx(s.image, s[`${size}Image`])}
+      {...imageProps}
+      alt={label}
+    />
   </div>
 );
 
