@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar } from '../../brand-components/src/Avatar/';
+import { VisualTheme } from '../../gamut/src/theming/VisualTheme';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 export default {
@@ -11,9 +12,13 @@ export default {
 export const avatar = () => (
   <Avatar
     src="https://content.codecademy.com/courses/free/boba.svg"
-    alt="testy"
+    aria-labelledby="testy"
     size={select('size', ['regular', 'large'], 'regular')}
-    theme={select('theme', ['light-mode', 'dark-mode'], 'light-mode')}
+    theme={select(
+      'theme',
+      [VisualTheme.LightMode, VisualTheme.DarkMode],
+      VisualTheme.LightMode
+    )}
   />
 );
 
