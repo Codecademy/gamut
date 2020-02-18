@@ -9,28 +9,21 @@ export type AvatarProps = HTMLAttributes<HTMLImageElement> & {
   size?: 'regular' | 'large';
   theme: VisualTheme;
 };
-
-export function Avatar({
+export const Avatar: React.FC<AvatarProps> = ({
   size = 'regular',
   alt,
   theme = VisualTheme.LightMode,
   ...imageProps
-}: AvatarProps) {
-  return (
-    <div
-      className={cx(
-        s.container,
-        s[`${size}Container`],
-        theme === VisualTheme.DarkMode ? s.darkContainer : s.lightContainer
-      )}
-    >
-      <img
-        className={cx(s.image, s[`${size}Image`])}
-        {...imageProps}
-        alt={alt}
-      />
-    </div>
-  );
-}
+}) => (
+  <div
+    className={cx(
+      s.container,
+      s[`${size}Container`],
+      theme === VisualTheme.DarkMode ? s.darkContainer : s.lightContainer
+    )}
+  >
+    <img className={cx(s.image, s[`${size}Image`])} {...imageProps} alt={alt} />
+  </div>
+);
 
 export default Avatar;

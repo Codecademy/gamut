@@ -7,20 +7,22 @@ $large-offset: 8px;
 
 .container {
   position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 50%;
+  }
 }
 
 .regularContainer {
   width: $regular-size + $regular-offset;
   height: $regular-size + $regular-offset;
   &:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
     height: $regular-size;
     width: $regular-size;
-    z-index: -1;
-    border-radius: 50%;
   }
 }
 
@@ -28,14 +30,8 @@ $large-offset: 8px;
   width: $large-size + $large-offset;
   height: $large-size + $large-offset;
   &:before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
     height: $large-size;
     width: $large-size;
-    z-index: -1;
-    border-radius: 50%;
   }
 }
 
