@@ -1,5 +1,5 @@
 @import "~@codecademy/gamut-styles/utils";
-
+$hello: "50%";
 .container {
   display: grid;
   align-items: center;
@@ -7,6 +7,7 @@
   width: px-rem(400);
   height: px-rem(100);
   padding: 1rem 2rem 1rem 1rem;
+  width: calc(500px - #{$hello});
 }
 
 .body {

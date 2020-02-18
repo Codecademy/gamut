@@ -14,34 +14,23 @@ const TOASTS = {
     id: 'blah',
     icon: <AlertIcon />,
     message: 'Hello world',
+    onClose: () => {},
   },
   blah2: {
     id: 'blah2',
     icon: <AlertIcon />,
     message: 'Hello world',
+    onClose: () => {},
   },
   blah3: {
     id: 'blah3',
     icon: <AlertIcon />,
     message: 'Hello world',
+    onClose: () => {},
   },
 };
 const ToastWrapper = () => {
-  const [toasts, setToasts] = useState(Object.keys(TOASTS));
-  const renderedToasts = useMemo(
-    () =>
-      toasts.map(toast => {
-        return {
-          ...TOASTS[toast],
-          onClose: () => {
-            const nextToasts = toasts.filter(id => id !== toast);
-            setToasts(nextToasts);
-          },
-        };
-      }),
-    [toasts]
-  );
-  return <Toaster toasts={renderedToasts} />;
+  return <Toaster toasts={Object.values(TOASTS)} />;
 };
 
 export const genericToaster = ToastWrapper;
