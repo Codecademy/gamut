@@ -12,11 +12,10 @@ export type AvatarProps = HTMLAttributes<HTMLImageElement> & {
 
 export function Avatar({
   size = 'regular',
+  alt,
   theme = VisualTheme.LightMode,
-  ...props
+  ...imageProps
 }: AvatarProps) {
-  const { ...imageProps } = props;
-
   return (
     <div
       className={cx(
@@ -25,7 +24,11 @@ export function Avatar({
         theme === VisualTheme.DarkMode ? s.darkContainer : s.lightContainer
       )}
     >
-      <img className={cx(s.image, s[`${size}Image`])} {...imageProps} />
+      <img
+        className={cx(s.image, s[`${size}Image`])}
+        {...imageProps}
+        alt={alt}
+      />
     </div>
   );
 }
