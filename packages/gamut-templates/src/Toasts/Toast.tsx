@@ -25,7 +25,7 @@ const Toast: React.FC<ToastProps> = ({
     <CardShell className={cx(s.container, className)} data-test-id={testId}>
       <Button
         flat
-        theme="platform"
+        theme="brand-dark-blue"
         className={s.contentButton}
         onClick={onClick}
       >
@@ -38,7 +38,12 @@ const Toast: React.FC<ToastProps> = ({
           <div className={s.content}>{children}</div>
         </div>
       </Button>
-      <Button flat theme="platform" className={s.closeButton} onClick={onClose}>
+      <Button
+        flat
+        theme="brand-dark-blue"
+        className={s.closeButton}
+        onClick={onClose}
+      >
         <CloseIcon />
       </Button>
     </CardShell>

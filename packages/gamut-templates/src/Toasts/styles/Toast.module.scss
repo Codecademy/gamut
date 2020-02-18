@@ -1,5 +1,8 @@
 @import "~@codecademy/gamut-styles/utils";
-$hello: "50%";
+
+$toastHeight: px-rem(100);
+$iconDiameter: px-rem(100) - 2rem;
+
 .container {
   display: grid;
   align-items: center;
@@ -7,7 +10,6 @@ $hello: "50%";
   width: px-rem(400);
   height: px-rem(100);
   padding: 1rem 2rem 1rem 1rem;
-  width: calc(500px - #{$hello});
 }
 
 .body {
@@ -25,21 +27,21 @@ $hello: "50%";
   display: flex;
   align-items: center;
   overflow: hidden;
-  max-height: 4.5rem;
 }
 
 .icon {
   display: grid;
   align-content: center;
   justify-content: center;
-  width: 4.5rem;
+  height: $iconDiameter;
+  width: $iconDiameter;
   flex-shrink: 0;
   overflow: hidden;
 
   > * {
     user-select: none;
-    height: auto;
-    width: 4.5rem;
+    height: $iconDiameter;
+    width: $iconDiameter;
   }
 }
 
