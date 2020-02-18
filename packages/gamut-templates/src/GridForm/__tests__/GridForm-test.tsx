@@ -1,13 +1,16 @@
 import { mount } from 'enzyme';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 
+import { createPromise } from '../../utils/createPromise';
 import GridForm from '..';
 import { stubSelectField, stubTextField } from './stubs';
 
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const fields = [stubSelectField, stubTextField];
-    const onSubmit = jest.fn();
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
     const selectValue = stubSelectField.options[1];
     const textValue = 'Hooray!';
 
@@ -27,15 +30,16 @@ describe('GridForm', () => {
       .find('input[type="text"]')
       .simulate('change', { target: { value: textValue } });
 
-    wrapped.find('button[type="submit"]').simulate('click');
-
-    // Todo: why is this not working...?
-    wrapped.update();
-    wrapped.setProps(wrapped.props());
-    wrapped.update();
     wrapped.setProps(wrapped.props());
 
-    expect(onSubmit).toHaveBeenLastCalledWith({
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+      await api.innerPromise;
+    });
+
+    const result = await api.innerPromise;
+
+    expect(result).toEqual({
       [stubSelectField.name]: selectValue,
       [stubTextField.name]: textValue,
     });

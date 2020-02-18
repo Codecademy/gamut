@@ -17,12 +17,15 @@ const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   register,
   setValue,
 }) => {
+  const onChange = (event: any) => {
+    setValue(event.target.value);
+  };
   return (
     <Input
       className={className}
       htmlFor={field.name}
       name={field.name}
-      onChange={event => setValue(event.target.value)}
+      onChange={onChange}
       ref={register(field.validation)}
       type={field.type}
     />
