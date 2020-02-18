@@ -17,9 +17,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
   submit,
   onSubmit,
 }: GridFormProps<Values>) {
-  const { getValues, errors, handleSubmit, register, setValue } = useForm<
-    Values
-  >({
+  const { errors, handleSubmit, register, setValue } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -36,7 +34,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
   }, [fields, register]);
 
   return (
-    <Form onSubmit={handleSubmit(() => onSubmit(getValues()))}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <Grid>
         <Row>
           {fields.map(field => {
