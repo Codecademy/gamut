@@ -1,7 +1,9 @@
 import { mount } from 'enzyme';
 import React from 'react';
+import { VisualTheme } from '../../../../gamut/src/theming/VisualTheme';
 
 import { Avatar } from '..';
+import styles from '../../styles.module.scss';
 
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
@@ -18,5 +20,33 @@ describe('Avatar', () => {
       </>
     );
     expect(wrapper.find('img[aria-labelledby="label"]').length).toEqual(1);
+  });
+
+  it('adds the light class to the container name as a default', () => {
+    const wrapper = mount(<Avatar src="" alt="" />);
+
+    const containerClassName = wrapper.find(`div`).prop('className');
+
+    expect(containerClassName).toContain(styles.lightContainer);
+  });
+
+  it('adds the light class to the container name when its theme is light', () => {
+    const wrapper = mount(
+      <Avatar src="" theme={VisualTheme.LightMode} alt="" />
+    );
+
+    const containerClassName = wrapper.find(`div`).prop('className');
+
+    expect(containerClassName).toContain(styles.lightContainer);
+  });
+
+  it('adds the dark class to the container name when its theme is dark', () => {
+    const wrapper = mount(
+      <Avatar src="" theme={VisualTheme.DarkMode} alt="" />
+    );
+
+    const containerClassName = wrapper.find(`div`).prop('className');
+
+    expect(containerClassName).toContain(styles.darkContainer);
   });
 });
