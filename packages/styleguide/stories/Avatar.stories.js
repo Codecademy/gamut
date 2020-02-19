@@ -12,7 +12,7 @@ export default {
 export const avatar = () => (
   <Avatar
     src="https://content.codecademy.com/courses/free/boba.svg"
-    aria-labelledby="testy"
+    alt="testy"
     size={select('size', ['regular', 'large'], 'regular')}
     theme={select(
       'theme',
