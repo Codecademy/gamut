@@ -1,0 +1,62 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$regular-size: 70px;
+$regular-offset: 6px;
+$large-size: 110px;
+$large-offset: 8px;
+
+.container {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    border-radius: 50%;
+  }
+}
+
+.regularContainer {
+  width: $regular-size + $regular-offset;
+  height: $regular-size + $regular-offset;
+  &:before {
+    height: $regular-size;
+    width: $regular-size;
+  }
+}
+
+.largeContainer {
+  width: $large-size + $large-offset;
+  height: $large-size + $large-offset;
+  &:before {
+    height: $large-size;
+    width: $large-size;
+  }
+}
+
+.lightContainer {
+  &:before {
+    background: $color-orange-400;
+  }
+}
+
+.darkContainer {
+  &:before {
+    background: $color-pink-700;
+  }
+}
+
+.regularImage {
+  width: $regular-size;
+  height: $regular-size;
+}
+
+.largeImage {
+  width: $large-size;
+  height: $large-size;
+}
+
+.image {
+  border-radius: 50%;
+}
