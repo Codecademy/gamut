@@ -31,10 +31,12 @@ export const Byline: React.FC<BylineProps> = ({
     </span>
     {location && (
       <div className={s.locationContainer}>
-        <img alt="" className={s.networkPin} src={networkPin} />
-        <span aria-label="Location" className={classNames.location}>
-          {location}
-        </span>
+        <img
+          alt="Location pin icon"
+          className={s.networkPin}
+          src={networkPin}
+        />
+        <span className={classNames.location}>{location}</span>
       </div>
     )}
   </div>
