@@ -14,11 +14,7 @@ const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   return (
     <Col {...sizing}>
       <Item>
-        <Button
-          onClick={() => console.log('Clicking submit button')}
-          theme="brand-purple"
-          type="submit"
-        >
+        <Button theme="brand-purple" type="submit">
           {children}
         </Button>
       </Item>
