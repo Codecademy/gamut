@@ -6,7 +6,7 @@ import { Quote } from '..';
 import styles from '../../styles.module.scss';
 
 describe('Quote', () => {
-  it('adds the light class to the container name as a default', () => {
+  it('adds the light class to the container as a default', () => {
     const wrapper = mount(<Quote text="Timshel!" />);
 
     const containerClassName = wrapper.find(`div`).prop('className');
@@ -14,7 +14,7 @@ describe('Quote', () => {
     expect(containerClassName).toContain(styles.lightContainer);
   });
 
-  it('adds the light class to the container name when its theme is light', () => {
+  it('adds the light class to the container when its theme is light', () => {
     const wrapper = mount(
       <Quote
         text="The reason I will not exhibit this picture is that I am afraid that I have shown in it the secret of my own soul."
@@ -27,7 +27,7 @@ describe('Quote', () => {
     expect(containerClassName).toContain(styles.lightContainer);
   });
 
-  it('adds the dark class to the container name when its theme is dark', () => {
+  it('adds the dark class to the container when its theme is dark', () => {
     const wrapper = mount(
       <Quote
         text="One fish, two fish, red fish, blue fish"
