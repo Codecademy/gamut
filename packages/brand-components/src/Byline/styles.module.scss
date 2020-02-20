@@ -1,0 +1,23 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.bylineContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 18px;
+  font-family: $font-family-headings;
+  font-weight: bold;
+}
+
+.networkPin {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.locationContainer {
+  display: flex;
+  align-items: center;
+}
