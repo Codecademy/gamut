@@ -30,8 +30,5 @@
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "copyfiles": "^2.1.1"
-  }
+  "license": "MIT"
 }
