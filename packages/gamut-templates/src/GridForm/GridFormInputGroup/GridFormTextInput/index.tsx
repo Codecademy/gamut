@@ -11,7 +11,7 @@ export type GridFormTextInputProps = {
   register: FormContextValues['register'];
 };
 
-const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
+export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   className,
   field,
   register,

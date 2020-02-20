@@ -20,7 +20,7 @@ export type GridFormInputGroupProps = {
   setValue: (value: string) => void;
 };
 
-const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
+export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   error,
   field,
   register,

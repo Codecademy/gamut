@@ -11,7 +11,7 @@ export type GridFormSelectInputProps = {
   setValue: (value: string) => void;
 };
 
-const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
+export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   className,
   field,
   register,

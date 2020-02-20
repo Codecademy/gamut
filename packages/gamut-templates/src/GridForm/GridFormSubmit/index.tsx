@@ -7,7 +7,7 @@ export type GridFormSubmitProps = {
   sizing?: ColumnSizes;
 };
 
-const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
+export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   children,
   sizing,
 }) => {
