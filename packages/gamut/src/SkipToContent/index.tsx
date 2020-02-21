@@ -5,7 +5,7 @@ import styles from './styles.module.scss';
 import DownArrowIcon from '../Icon/icons/DownArrowIcon';
 
 export type SkipToContentProps = {
-  className: string;
+  className?: string;
   contentId: string;
 };
 
