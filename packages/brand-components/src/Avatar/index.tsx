@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './styles.module.scss';
 import cx from 'classnames';
-import { VisualTheme } from '../../../gamut/src/theming/VisualTheme';
+import { VisualTheme } from '@codecademy/gamut';
 
 type AvatarImageProps =
   | {
