@@ -1,9 +1,9 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { VisualTheme } from '../../../../gamut/src/theming/VisualTheme';
+import { VisualTheme } from '@codecademy/gamut';
 
 import { Quote } from '..';
-import styles from '../../styles.module.scss';
+import styles from '../styles.module.scss';
 
 describe('Quote', () => {
   it('adds the light class to the container as a default', () => {
