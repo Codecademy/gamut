@@ -16,6 +16,6 @@
 .text {
   quotes: none;
   font-family: $font-family-headings;
-  font-size: 30px;
-  line-height: 42px;
+  font-size: px-rem(30px);
+  line-height: px-rem(42px);
 }
