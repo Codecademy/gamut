@@ -1,9 +1,9 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$regular-size: 70px;
-$regular-offset: 6px;
-$large-size: 110px;
-$large-offset: 8px;
+$regular-size: px-rem(70px);
+$regular-offset: px-rem(6px);
+$large-size: px-rem(110px);
+$large-offset: px-rem(8px);
 
 .container {
   position: relative;
