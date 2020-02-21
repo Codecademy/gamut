@@ -12,8 +12,7 @@ describe('Byline', () => {
         location="Los Angeles, CA"
       />
     );
-
-    expect(wrapper.find('span[aria-label="Location"]')).toHaveLength(1);
+    expect(wrapper.text()).toContain('Los Angeles, CA');
   });
 
   it('passes a location className for the location span element', () => {
@@ -26,9 +25,7 @@ describe('Byline', () => {
       />
     );
 
-    const location = wrapper.find('span[aria-label="Location"]');
-
-    expect(location.prop('className')).toBe('coolStyleDawg');
+    expect(wrapper.find('span[className="coolStyleDawg"]')).toHaveLength(1);
   });
 
   it('passes an occupation className for the occupation span element', () => {
