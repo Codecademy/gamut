@@ -1,0 +1,62 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.contentContainer {
+  display: grid;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    background-image: url("./assets/dots.svg");
+    background-repeat: repeat;
+    height: calc(100% - 1rem);
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+.smallContainer {
+  padding: 1.75rem 1.5rem 2rem;
+  width: calc(100% - 1rem);
+  max-width: px-rem(396px);
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  grid-template-areas:
+    "avatar byline"
+    "quote quote";
+}
+
+.darkContainer {
+  background-color: $brand-dark-blue;
+  color: $color-white;
+  &::before {
+    filter: invert(72%) sepia(58%) saturate(2004%) hue-rotate(266deg)
+      brightness(99%) contrast(103%);
+  }
+}
+
+.lightContainer {
+  background-color: $color-white;
+  color: $brand-dark-blue;
+  &::before {
+    filter: invert(49%) sepia(85%) saturate(1427%) hue-rotate(-20deg)
+      brightness(100%) contrast(233%);
+  }
+}
+
+.avatarContainer {
+  grid-area: avatar;
+}
+
+.bylineContainer {
+  grid-area: byline;
+}
+
+.smallByline {
+  max-width: px-rem(200px);
+}
+
+.quoteContainer {
+  grid-area: quote;
+}
