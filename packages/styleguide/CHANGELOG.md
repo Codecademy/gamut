@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
+
+
+### Features
+
+* create Byline  brand component  ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+
+
+
+
+
 ## [3.5.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
 
 **Note:** Version bump only for package @codecademy/styleguide
