@@ -10,7 +10,7 @@ type AvatarImageProps =
     }
   | { alt?: never; 'aria-labelledby': string };
 
-export type AvatarBaseProps = {
+type AvatarBaseProps = {
   src: string;
   size?: 'regular' | 'large';
   theme?: VisualTheme;

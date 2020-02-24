@@ -3,17 +3,18 @@ import s from './styles.module.scss';
 import cx from 'classnames';
 import networkPin from './assets/networkPin.svg';
 
+type BylineClassNamesProps = {
+  bylineContainer?: string;
+  name?: string;
+  occupation?: string;
+  location?: string;
+};
+
 export type BylineProps = {
   name: string;
   occupation: string;
   location?: string;
-
-  classNames?: {
-    bylineContainer?: string;
-    name?: string;
-    occupation?: string;
-    location?: string;
-  };
+  classNames?: BylineClassNamesProps;
 };
 
 export const Byline: React.FC<BylineProps> = ({
