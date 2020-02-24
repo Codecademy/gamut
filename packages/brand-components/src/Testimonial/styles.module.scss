@@ -53,6 +53,10 @@
   grid-area: byline;
 }
 
+.smallByline {
+  max-width: px-rem(200px);
+}
+
 .quoteContainer {
   grid-area: quote;
 }

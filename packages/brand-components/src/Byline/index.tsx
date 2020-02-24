@@ -3,7 +3,7 @@ import s from './styles.module.scss';
 import cx from 'classnames';
 import networkPin from './assets/networkPin.svg';
 
-export type BylineClassNamesProps = {
+type BylineClassNamesProps = {
   bylineContainer?: string;
   name?: string;
   occupation?: string;
