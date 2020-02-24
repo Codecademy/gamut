@@ -1,22 +1,11 @@
 name: lint-pr-name
 on:
-  repository_dispatch:
-  pull_request:
-    types: ['opened', 'edited', 'reopened', 'synchronize']
+  check_run:
+    types: ['completed']
 
 jobs:
-  trigger_lint:
-    runs-on: ubuntu-latest
-    if: github.event != 'repository_dispatch'    
-    steps:
-      - uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          event-type: trigger-pr-name-lint
-
   lint:
     runs-on: ubuntu-latest
-    if: github.event_name == 'trigger-pr-name-lint'    
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-node@v1
