@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
