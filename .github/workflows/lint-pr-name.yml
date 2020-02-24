@@ -1,7 +1,7 @@
 name: lint-pr-name
 on:
-  check_run:
-    types: ['completed']
+  pull_request:
+    types: [edited]
 
 jobs:
   lint:
