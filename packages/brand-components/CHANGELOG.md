@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.2.4...@codecademy/brand-components@0.3.0) (2020-02-24)
+
+
+### Features
+
+* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/Codecademy/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+
+
+
+
+
 ## [0.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.2.3...@codecademy/brand-components@0.2.4) (2020-02-24)
 
 **Note:** Version bump only for package @codecademy/brand-components
