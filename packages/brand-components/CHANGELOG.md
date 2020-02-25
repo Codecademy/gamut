@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.3.0...@codecademy/brand-components@0.3.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* testimonial component background pattern ([1a08cd2](https://github.com/Codecademy/client-modules/commit/1a08cd2ddc84c59cc1088dfdd62e37afff452a36))
+
+
+
+
+
 # [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.2.4...@codecademy/brand-components@0.3.0) (2020-02-24)
 
 
