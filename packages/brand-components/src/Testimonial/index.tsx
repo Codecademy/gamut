@@ -25,23 +25,35 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 }) => {
   return (
     <div
-      className={cx(s.contentContainer, s[`${size}Container`], {
-        [s.darkContainer]: theme === VisualTheme.DarkMode,
-        [s.lightContainer]: theme === VisualTheme.LightMode,
+      className={cx(s.testimonialWrapper, {
+        [s.darkWrapper]: theme === VisualTheme.DarkMode,
+        [s.lightWrapper]: theme === VisualTheme.LightMode,
       })}
     >
-      <div className={s.avatarContainer}>
-        <Avatar
-          src={testimonial.imageUrl}
-          alt={`Photo of ${testimonial.name}`}
-          theme={theme}
-        />
-      </div>
-      <div className={cx(s.bylineContainer, s[`${size}Byline`])}>
-        <Byline name={testimonial.name} occupation={testimonial.occupation} />
-      </div>
-      <div className={s.quoteContainer}>
-        <Quote text={testimonial.quote} theme={theme} />
+      <div className={s.testimonialCardContainer}>
+        <div
+          className={cx(s.contentContainer, s[`${size}Container`], {
+            [s.darkContainer]: theme === VisualTheme.DarkMode,
+            [s.lightContainer]: theme === VisualTheme.LightMode,
+          })}
+        >
+          <div className={s.avatarContainer}>
+            <Avatar
+              src={testimonial.imageUrl}
+              alt={`Photo of ${testimonial.name}`}
+              theme={theme}
+            />
+          </div>
+          <div className={cx(s.bylineContainer, s[`${size}Byline`])}>
+            <Byline
+              name={testimonial.name}
+              occupation={testimonial.occupation}
+            />
+          </div>
+          <div className={s.quoteContainer}>
+            <Quote text={testimonial.quote} theme={theme} />
+          </div>
+        </div>
       </div>
     </div>
   );

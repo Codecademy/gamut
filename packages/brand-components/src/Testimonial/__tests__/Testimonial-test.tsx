@@ -28,7 +28,7 @@ describe('Testimonial', () => {
       .first()
       .prop('className');
 
-    expect(containerClassName).toContain(styles.lightContainer);
+    expect(containerClassName).toContain(styles.lightWrapper);
   });
 
   it('adds the dark class to the container name when its theme is dark', () => {
@@ -45,6 +45,6 @@ describe('Testimonial', () => {
       .first()
       .prop('className');
 
-    expect(containerClassName).toContain(styles.darkContainer);
+    expect(containerClassName).toContain(styles.darkWrapper);
   });
 });

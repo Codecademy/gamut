@@ -1,24 +1,48 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.contentContainer {
-  display: grid;
+$background-pattern-offset: px-rem(16px);
+
+.testimonialWrapper {
   position: relative;
+  width: fit-content;
   &::before {
     content: "";
     position: absolute;
-    left: 1rem;
-    top: 2rem;
+    right: 0;
+    bottom: 0;
     background-image: url("./assets/dots.svg");
     background-repeat: repeat;
-    height: calc(100% - 1rem);
-    width: 100%;
-    z-index: -1;
+    height: calc(100% - #{$background-pattern-offset});
+    width: calc(100% - #{$background-pattern-offset});
   }
+}
+
+.darkWrapper {
+  &::before {
+    filter: invert(72%) sepia(58%) saturate(2004%) hue-rotate(266deg)
+      brightness(99%) contrast(103%);
+  }
+}
+
+.lightWrapper {
+  &::before {
+    filter: invert(49%) sepia(85%) saturate(1427%) hue-rotate(-20deg)
+      brightness(100%) contrast(233%);
+  }
+}
+
+.testimonialCardContainer {
+  display: grid;
+  grid-template: max-content #{$background-pattern-offset} / max-content #{$background-pattern-offset};
+}
+
+.contentContainer {
+  display: grid;
+  position: relative;
 }
 
 .smallContainer {
   padding: 1.75rem 1.5rem 2rem;
-  width: calc(100% - 1rem);
   max-width: px-rem(396px);
   grid-template-columns: auto 1fr;
   grid-gap: 1rem;
@@ -30,19 +54,11 @@
 .darkContainer {
   background-color: $brand-dark-blue;
   color: $color-white;
-  &::before {
-    filter: invert(72%) sepia(58%) saturate(2004%) hue-rotate(266deg)
-      brightness(99%) contrast(103%);
-  }
 }
 
 .lightContainer {
   background-color: $color-white;
   color: $brand-dark-blue;
-  &::before {
-    filter: invert(49%) sepia(85%) saturate(1427%) hue-rotate(-20deg)
-      brightness(100%) contrast(233%);
-  }
 }
 
 .avatarContainer {
