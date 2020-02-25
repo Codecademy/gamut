@@ -1,5 +1,7 @@
 @import "~@codecademy/gamut-styles/utils";
 
+$background-pattern-offset: px-rem(16px);
+
 .testimonialWrapper {
   position: relative;
   width: fit-content;
@@ -10,8 +12,8 @@
     bottom: 0;
     background-image: url("./assets/dots.svg");
     background-repeat: repeat;
-    height: calc(100% - 1rem);
-    width: calc(100% - 1rem);
+    height: calc(100% - #{$background-pattern-offset});
+    width: calc(100% - #{$background-pattern-offset});
   }
 }
 
@@ -31,8 +33,7 @@
 
 .testimonialCardContainer {
   display: grid;
-  grid-template-columns: max-content 1rem;
-  grid-template-rows: max-content 1rem;
+  grid-template: max-content #{$background-pattern-offset} / max-content #{$background-pattern-offset};
 }
 
 .contentContainer {
