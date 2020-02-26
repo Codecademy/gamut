@@ -52,7 +52,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
               />
             );
           })}
-          <GridFormSubmit>{submit.children}</GridFormSubmit>
+          <GridFormSubmit contents={submit.contents} />
         </Row>
       </Grid>
     </Form>
