@@ -5,21 +5,20 @@ import cx from 'classnames';
 
 import s from './styles.module.scss';
 
-type TestimonialContent = {
+type TestimonialProps = {
   name: string;
   occupation: string;
-  imageUrl?: string;
   quote: string;
-};
-
-type TestimonialProps = {
-  testimonial?: TestimonialContent;
-  size: 'small'; // TODO: 'medium' and 'large'
+  imageUrl?: string;
+  size: 'small' | 'medium'; // TODO: 'large'
   theme: VisualTheme;
 };
 
 export const Testimonial: React.FC<TestimonialProps> = ({
-  testimonial,
+  name,
+  occupation,
+  imageUrl,
+  quote,
   size,
   theme,
 }) => {
@@ -37,21 +36,16 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             [s.lightContainer]: theme === VisualTheme.LightMode,
           })}
         >
-          <div className={s.avatarContainer}>
-            <Avatar
-              src={testimonial.imageUrl}
-              alt={`Photo of ${testimonial.name}`}
-              theme={theme}
-            />
-          </div>
-          <div className={cx(s.bylineContainer, s[`${size}Byline`])}>
-            <Byline
-              name={testimonial.name}
-              occupation={testimonial.occupation}
-            />
+          {imageUrl && (
+            <div className={s.avatarContainer}>
+              <Avatar src={imageUrl} alt={`Photo of ${name}`} theme={theme} />
+            </div>
+          )}
+          <div className={s.bylineContainer}>
+            <Byline name={name} occupation={occupation} />
           </div>
           <div className={s.quoteContainer}>
-            <Quote text={testimonial.quote} theme={theme} />
+            <Quote text={quote} theme={theme} />
           </div>
         </div>
       </div>

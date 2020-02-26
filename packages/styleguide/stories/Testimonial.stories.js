@@ -9,16 +9,16 @@ export default {
   decorators: [withKnobs],
 };
 
-const testimonial = {
+const testimonialBaseProps = {
   name: 'Lacey Bathala',
   occupation: 'Data Analyst',
-  imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
   quote: "Coding isn't rocket science, it’s just falsely intimidating.",
 };
 
-export const testimonialSmall = () => (
+export const testimonialSmallWithAvatar = () => (
   <Testimonial
-    testimonial={testimonial}
+    {...testimonialBaseProps}
+    imageUrl="https://content.codecademy.com/courses/free/boba.svg"
     size={select('size', ['small'], 'small')}
     theme={select(
       'theme',
@@ -28,6 +28,22 @@ export const testimonialSmall = () => (
   />
 );
 
-testimonialSmall.story = {
-  name: 'Testimonial',
+testimonialSmallWithAvatar.story = {
+  name: 'Testimonial in size small (with Avatar)',
+};
+
+export const testimonialSmallWithoutAvatar = () => (
+  <Testimonial
+    {...testimonialBaseProps}
+    size={select('size', ['small'], 'small')}
+    theme={select(
+      'theme',
+      [VisualTheme.DarkMode, VisualTheme.LightMode],
+      VisualTheme.DarkMode
+    )}
+  />
+);
+
+testimonialSmallWithoutAvatar.story = {
+  name: 'Testimonial in size small (without Avatar)',
 };

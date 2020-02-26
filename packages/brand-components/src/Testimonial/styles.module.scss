@@ -46,9 +46,6 @@ $background-pattern-offset: px-rem(16px);
   max-width: px-rem(396px);
   grid-template-columns: auto 1fr;
   grid-gap: 1rem;
-  grid-template-areas:
-    "avatar byline"
-    "quote quote";
 }
 
 .darkContainer {
@@ -61,18 +58,10 @@ $background-pattern-offset: px-rem(16px);
   color: $brand-dark-blue;
 }
 
-.avatarContainer {
-  grid-area: avatar;
-}
-
-.bylineContainer {
-  grid-area: byline;
-}
-
-.smallByline {
+.smallContainer .bylineContainer {
   max-width: px-rem(200px);
 }
 
-.quoteContainer {
-  grid-area: quote;
+.smallContainer .quoteContainer {
+  grid-area: 2 / span 2;
 }
