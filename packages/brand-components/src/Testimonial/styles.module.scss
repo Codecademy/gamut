@@ -33,7 +33,7 @@ $background-pattern-offset: px-rem(16px);
 
 .testimonialCardContainer {
   display: grid;
-  grid-template: max-content #{$background-pattern-offset} / max-content #{$background-pattern-offset};
+  grid-template: auto #{$background-pattern-offset} / auto #{$background-pattern-offset};
 }
 
 .contentContainer {
