@@ -18,7 +18,7 @@ describe('GridForm', () => {
       <GridForm
         fields={fields}
         onSubmit={onSubmit}
-        submit={{ children: <>Submit</> }}
+        submit={{ contents: <>Submit</> }}
       />
     );
 

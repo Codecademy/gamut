@@ -81,7 +81,7 @@ export const gridForm = () => (
         alert(`Submitted: ${JSON.stringify(values)}`);
       }}
       submit={{
-        children: 'Submit Me!?',
+        contents: 'Submit Me!?',
       }}
     />
   </>

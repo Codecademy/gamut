@@ -3,19 +3,19 @@ import { ColumnSizes } from '@codecademy/gamut/dist/Layout/types';
 import React from 'react';
 
 export type GridFormSubmitProps = {
-  children: React.ReactNode;
+  contents: React.ReactNode;
   sizing?: ColumnSizes;
 };
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
-  children,
+  contents,
   sizing,
 }) => {
   return (
     <Col {...sizing}>
       <Item>
         <Button theme="brand-purple" type="submit">
-          {children}
+          {contents}
         </Button>
       </Item>
     </Col>
