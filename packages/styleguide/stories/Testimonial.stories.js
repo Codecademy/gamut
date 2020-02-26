@@ -10,11 +10,10 @@ export default {
 };
 
 const testimonial = {
-  name: 'Angela Davis',
-  occupation: 'Activist, Scholar, Writer',
+  name: 'Lacey Bathala',
+  occupation: 'Data Analyst',
   imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
-  quote:
-    'I am no longer accepting the things I cannot change. I am changing the things I cannot accept.',
+  quote: "Coding isn't rocket science, it’s just falsely intimidating.",
 };
 
 export const testimonialSmall = () => (
