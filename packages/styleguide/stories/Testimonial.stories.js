@@ -91,3 +91,40 @@ export const testimonialMediumWithoutAvatar = () => (
 testimonialMediumWithoutAvatar.story = {
   name: 'Testimonial in size medium (without Avatar)',
 };
+
+export const testimonialLargeWithAvatar = () => (
+  <Testimonial
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.long_quote}
+    imageUrl={testimonialProps.imageUrl}
+    size="large"
+    theme={select(
+      'theme',
+      [VisualTheme.DarkMode, VisualTheme.LightMode],
+      VisualTheme.DarkMode
+    )}
+  />
+);
+
+testimonialLargeWithAvatar.story = {
+  name: 'Testimonial in size large (with Avatar)',
+};
+
+export const testimonialLargeWithoutAvatar = () => (
+  <Testimonial
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.long_quote}
+    size="large"
+    theme={select(
+      'theme',
+      [VisualTheme.DarkMode, VisualTheme.LightMode],
+      VisualTheme.DarkMode
+    )}
+  />
+);
+
+testimonialLargeWithoutAvatar.story = {
+  name: 'Testimonial in size large (without Avatar)',
+};

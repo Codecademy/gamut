@@ -10,7 +10,7 @@ type TestimonialProps = {
   occupation: string;
   quote: string;
   imageUrl?: string;
-  size: 'small' | 'medium'; // TODO: 'large'
+  size: 'small' | 'medium' | 'large';
   theme: VisualTheme;
 };
 
@@ -33,7 +33,12 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         <div className={cx(s.contentContainer, s[`${size}Container`])}>
           {imageUrl && (
             <div className={s.avatarContainer}>
-              <Avatar src={imageUrl} alt={`Photo of ${name}`} theme={theme} />
+              <Avatar
+                src={imageUrl}
+                alt={`Photo of ${name}`}
+                theme={theme}
+                size={size === 'large' ? size : 'regular'}
+              />
             </div>
           )}
           <div className={s.bylineContainer}>

@@ -129,3 +129,32 @@ $background-pattern-offset: px-rem(16px);
     }
   }
 }
+
+.largeContainer {
+  grid-template-columns: auto 1fr;
+  padding: 3rem 6rem 4rem 3rem;
+
+  > .avatarContainer {
+    margin-right: 0;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+  }
+
+  > .bylineContainer {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    text-align: center;
+    align-self: center;
+  }
+
+  > .avatarContainer + .bylineContainer {
+    align-self: auto;
+    padding-top: 8rem;
+  }
+
+  > .quoteContainer {
+    grid-column: 2;
+    padding-left: 3rem;
+  }
+}
