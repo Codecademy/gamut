@@ -9,17 +9,22 @@ export default {
   decorators: [withKnobs],
 };
 
-const testimonialBaseProps = {
+const testimonialProps = {
   name: 'Lacey Bathala',
   occupation: 'Data Analyst',
-  quote: "Coding isn't rocket science, it’s just falsely intimidating.",
+  short_quote: "Coding isn't rocket science, it’s just falsely intimidating.",
+  long_quote:
+    'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.',
+  imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
 };
 
 export const testimonialSmallWithAvatar = () => (
   <Testimonial
-    {...testimonialBaseProps}
-    imageUrl="https://content.codecademy.com/courses/free/boba.svg"
-    size={select('size', ['small'], 'small')}
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.short_quote}
+    imageUrl={testimonialProps.imageUrl}
+    size="small"
     theme={select(
       'theme',
       [VisualTheme.DarkMode, VisualTheme.LightMode],
@@ -34,8 +39,10 @@ testimonialSmallWithAvatar.story = {
 
 export const testimonialSmallWithoutAvatar = () => (
   <Testimonial
-    {...testimonialBaseProps}
-    size={select('size', ['small'], 'small')}
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.short_quote}
+    size="small"
     theme={select(
       'theme',
       [VisualTheme.DarkMode, VisualTheme.LightMode],
@@ -46,4 +53,41 @@ export const testimonialSmallWithoutAvatar = () => (
 
 testimonialSmallWithoutAvatar.story = {
   name: 'Testimonial in size small (without Avatar)',
+};
+
+export const testimonialMediumWithAvatar = () => (
+  <Testimonial
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.long_quote}
+    imageUrl={testimonialProps.imageUrl}
+    size="medium"
+    theme={select(
+      'theme',
+      [VisualTheme.DarkMode, VisualTheme.LightMode],
+      VisualTheme.DarkMode
+    )}
+  />
+);
+
+testimonialMediumWithAvatar.story = {
+  name: 'Testimonial in size medium (with Avatar)',
+};
+
+export const testimonialMediumWithoutAvatar = () => (
+  <Testimonial
+    name={testimonialProps.name}
+    occupation={testimonialProps.occupation}
+    quote={testimonialProps.long_quote}
+    size="medium"
+    theme={select(
+      'theme',
+      [VisualTheme.DarkMode, VisualTheme.LightMode],
+      VisualTheme.DarkMode
+    )}
+  />
+);
+
+testimonialMediumWithoutAvatar.story = {
+  name: 'Testimonial in size medium (without Avatar)',
 };

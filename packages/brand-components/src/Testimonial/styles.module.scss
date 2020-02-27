@@ -22,12 +22,49 @@ $background-pattern-offset: px-rem(16px);
     filter: invert(72%) sepia(58%) saturate(2004%) hue-rotate(266deg)
       brightness(99%) contrast(103%);
   }
+  .contentContainer {
+    background-color: $brand-dark-blue;
+    color: $color-white;
+  }
+
+  @include screen-size-gte($grid-xs-min) {
+    .mediumContainer {
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: px-rem(-1px);
+        background-image: url("./assets/purple_squiggle.svg");
+        height: 121px;
+        width: 186px;
+      }
+    }
+  }
 }
 
 .lightWrapper {
   &::before {
     filter: invert(49%) sepia(85%) saturate(1427%) hue-rotate(-20deg)
       brightness(100%) contrast(233%);
+  }
+
+  .contentContainer {
+    background-color: $color-white;
+    color: $brand-dark-blue;
+  }
+
+  @include screen-size-gte($grid-xs-min) {
+    .mediumContainer {
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: px-rem(-1px);
+        background-image: url("./assets/orange_squiggle.svg");
+        height: 121px;
+        width: 186px;
+      }
+    }
   }
 }
 
@@ -41,27 +78,54 @@ $background-pattern-offset: px-rem(16px);
   position: relative;
 }
 
+.avatarContainer {
+  margin-right: 1rem;
+}
+
 .smallContainer {
   padding: 1.75rem 1.5rem 2rem;
   max-width: px-rem(396px);
   grid-template-columns: auto 1fr;
-  grid-gap: 1rem;
+  grid-row-gap: 1rem;
+
+  > .bylineContainer {
+    max-width: px-rem(200px);
+  }
+
+  > .avatarContainer + .bylineContainer {
+    grid-area: 1 / 2;
+  }
+
+  > .quoteContainer {
+    grid-area: 2 / span 2;
+  }
 }
 
-.darkContainer {
-  background-color: $brand-dark-blue;
-  color: $color-white;
-}
+.mediumContainer {
+  max-width: px-rem(708px);
+  grid-template-columns: auto 1fr;
+  grid-row-gap: 2.5rem;
+  padding: 2rem 1.5rem 1.5rem;
+  @include screen-size-gte($grid-xs-min) {
+    padding: 5rem 3rem 7rem 4rem;
+  }
 
-.lightContainer {
-  background-color: $color-white;
-  color: $brand-dark-blue;
-}
+  > .bylineContainer {
+    max-width: auto;
+  }
 
-.smallContainer .bylineContainer {
-  max-width: px-rem(200px);
-}
+  > .quoteContainer {
+    grid-row-start: 2;
+    @include screen-size-gte($grid-xs-min) {
+      max-width: 28rem;
+      padding-right: 2rem;
+    }
+  }
 
-.smallContainer .quoteContainer {
-  grid-area: 2 / span 2;
+  > .avatarContainer ~ .quoteContainer {
+    grid-area: 2 / span 2;
+    @include screen-size-gte($grid-xs-min) {
+      grid-area: 2 / 2;
+    }
+  }
 }

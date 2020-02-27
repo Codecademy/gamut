@@ -30,12 +30,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       })}
     >
       <div className={s.testimonialCardContainer}>
-        <div
-          className={cx(s.contentContainer, s[`${size}Container`], {
-            [s.darkContainer]: theme === VisualTheme.DarkMode,
-            [s.lightContainer]: theme === VisualTheme.LightMode,
-          })}
-        >
+        <div className={cx(s.contentContainer, s[`${size}Container`])}>
           {imageUrl && (
             <div className={s.avatarContainer}>
               <Avatar src={imageUrl} alt={`Photo of ${name}`} theme={theme} />
