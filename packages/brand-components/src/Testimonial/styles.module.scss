@@ -28,7 +28,8 @@ $background-pattern-offset: px-rem(16px);
   }
 
   @include screen-size-gte($grid-xs-min) {
-    .mediumContainer {
+    .mediumContainer,
+    .largeContainer {
       &::before {
         content: "";
         position: absolute;
@@ -54,7 +55,8 @@ $background-pattern-offset: px-rem(16px);
   }
 
   @include screen-size-gte($grid-xs-min) {
-    .mediumContainer {
+    .mediumContainer,
+    .largeContainer {
       &::before {
         content: "";
         position: absolute;
@@ -133,6 +135,7 @@ $background-pattern-offset: px-rem(16px);
 .largeContainer {
   grid-template-columns: auto 1fr;
   padding: 3rem 6rem 4rem 3rem;
+  max-width: $grid-lg-min;
 
   > .avatarContainer {
     margin-right: 0;
