@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import Modal from '..';
 
-describe('Icon', () => {
+describe('Modal', () => {
   it('renders null when isOpen is not true', () => {
     const wrapper = mount(
       <Modal>
