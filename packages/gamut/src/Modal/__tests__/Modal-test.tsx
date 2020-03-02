@@ -8,7 +8,7 @@ describe('Icon', () => {
     const wrapper = mount(
       <Modal>
         Howdy!
-        <button />
+        <button type="button" />
       </Modal>
     );
 
@@ -20,7 +20,7 @@ describe('Icon', () => {
     const wrapper = mount(
       <Modal isOpen>
         {children}
-        <button />
+        <button type="button" />
       </Modal>
     );
 
