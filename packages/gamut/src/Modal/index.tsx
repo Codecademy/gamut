@@ -3,7 +3,7 @@ import FocusTrap from 'focus-trap-react';
 import React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
-import styles from './index.module.scss';
+import styles from './styles.module.scss';
 
 export type ModalClassNames = {
   container?: string;

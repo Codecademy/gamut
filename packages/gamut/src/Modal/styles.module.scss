@@ -1,18 +1,15 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .container {
+  align-items: center;
+  background: rgba($color-black, 0.85);
   bottom: 0;
+  display: flex;
+  justify-content: center;
   left: 0;
   position: fixed;
   right: 0;
   top: 0;
-}
-
-.container {
-  background: rgba($color-black, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 // Todo: are these correct?
