@@ -25,6 +25,7 @@ export { default as Logo } from './Logo';
 export { default as Markdown } from './Markdown';
 export { default as MenuItem } from './Menus/MenuItem';
 export { default as SideMenu } from './Menus/SideMenu';
+export { default as Modal } from './Modal';
 export { default as NotificationList } from './NotificationList';
 export {
   default as NotificationIcon,

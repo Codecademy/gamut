@@ -1,0 +1,22 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.container {
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.container {
+  background: rgba($color-black, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Todo: are these correct?
+.inside {
+  background: $color-gray-100;
+  border-radius: 5px;
+}
