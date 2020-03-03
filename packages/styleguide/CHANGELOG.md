@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
+
+
+### Features
+
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
+
 # [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
 
 
