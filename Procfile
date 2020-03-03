@@ -1,2 +1,2 @@
-release: yarn build-all
+release: yarn && yarn build-all
 web: yarn start
