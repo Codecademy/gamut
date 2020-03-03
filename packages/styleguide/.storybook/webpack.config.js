@@ -10,7 +10,9 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const { createConfig, merge } = require('@codecademy/webpack-config');
-const DEV = process.env.NODE_ENV !== 'production';
+
+const HEROKU = Boolean(process.env.HEROKU_APP_NAME);
+const DEV = !HEROKU && process.env.NODE_ENV !== 'production';
 
 /**
  * Base Webpack Build Config
