@@ -1,6 +1,8 @@
 @import "~@codecademy/gamut-styles/utils";
 
 $background-pattern-offset: px-rem(16px);
+$large-size: px-rem(110px);
+$large-offset: px-rem(8px);
 
 .testimonialWrapper {
   position: relative;
@@ -15,6 +17,19 @@ $background-pattern-offset: px-rem(16px);
     height: calc(100% - #{$background-pattern-offset});
     width: calc(100% - #{$background-pattern-offset});
   }
+  @include screen-size-gte($grid-xs-min) {
+    .mediumContainer,
+    .largeContainer {
+      &::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: px-rem(-1px);
+        height: 121px;
+        width: 186px;
+      }
+    }
+  }
 }
 
 .darkWrapper {
@@ -26,18 +41,11 @@ $background-pattern-offset: px-rem(16px);
     background-color: $brand-dark-blue;
     color: $color-white;
   }
-
   @include screen-size-gte($grid-xs-min) {
     .mediumContainer,
     .largeContainer {
       &::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: px-rem(-1px);
         background-image: url("./assets/purple_squiggle.svg");
-        height: 121px;
-        width: 186px;
       }
     }
   }
@@ -48,23 +56,15 @@ $background-pattern-offset: px-rem(16px);
     filter: invert(49%) sepia(85%) saturate(1427%) hue-rotate(-20deg)
       brightness(100%) contrast(233%);
   }
-
   .contentContainer {
     background-color: $color-white;
     color: $brand-dark-blue;
   }
-
   @include screen-size-gte($grid-xs-min) {
     .mediumContainer,
     .largeContainer {
       &::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: px-rem(-1px);
         background-image: url("./assets/orange_squiggle.svg");
-        height: 121px;
-        width: 186px;
       }
     }
   }
@@ -89,15 +89,12 @@ $background-pattern-offset: px-rem(16px);
   max-width: px-rem(396px);
   grid-template-columns: auto 1fr;
   grid-row-gap: 1rem;
-
   > .bylineContainer {
     max-width: px-rem(200px);
   }
-
   > .avatarContainer + .bylineContainer {
     grid-area: 1 / 2;
   }
-
   > .quoteContainer {
     grid-area: 2 / span 2;
   }
@@ -111,11 +108,9 @@ $background-pattern-offset: px-rem(16px);
   @include screen-size-gte($grid-xs-min) {
     padding: 4rem 3rem 6rem 4rem;
   }
-
   > .bylineContainer {
     max-width: auto;
   }
-
   > .quoteContainer {
     grid-row-start: 2;
     @include screen-size-gte($grid-xs-min) {
@@ -123,7 +118,6 @@ $background-pattern-offset: px-rem(16px);
       padding-right: 2rem;
     }
   }
-
   > .avatarContainer ~ .quoteContainer {
     grid-area: 2 / span 2;
     @include screen-size-gte($grid-xs-min) {
@@ -133,34 +127,29 @@ $background-pattern-offset: px-rem(16px);
 }
 
 .largeContainer {
-  @include md-viewport {
+  @include sm-viewport {
     max-width: $grid-lg-min;
     grid-template-columns: auto 1fr;
     grid-row-gap: 0;
     padding: 3rem 6rem 4rem 3rem;
-
     > .avatarContainer {
       margin-right: 0;
       grid-column: 1;
       grid-row: 1;
       justify-self: center;
-
       > div {
-        width: px-rem(118px);
-        height: px-rem(118px);
-
+        width: $large-size + $large-offset;
+        height: $large-size + $large-offset;
         &::before {
-          height: px-rem(110px);
-          width: px-rem(110px);
+          height: $large-size;
+          width: $large-size;
         }
-
         > img {
-          width: px-rem(110px);
-          height: px-rem(110px);
+          width: $large-size;
+          height: $large-size;
         }
       }
     }
-
     > .bylineContainer {
       grid-column: 1;
       grid-row: 1 / span 2;
@@ -168,12 +157,10 @@ $background-pattern-offset: px-rem(16px);
       align-self: center;
       max-width: 14rem;
     }
-
     > .avatarContainer + .bylineContainer {
       align-self: auto;
       padding-top: 8rem;
     }
-
     > .quoteContainer {
       grid-column: 2;
       grid-row: 1;
@@ -181,7 +168,6 @@ $background-pattern-offset: px-rem(16px);
       max-width: 100%;
       padding-right: 0;
     }
-
     > .avatarContainer ~ .quoteContainer {
       grid-area: 1;
     }
