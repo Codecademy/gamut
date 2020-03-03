@@ -6,9 +6,7 @@ export type FormGroupDescriptionProps = React.HTMLAttributes<HTMLDivElement> & {
   className?: string;
 };
 
-export const FormGroupDescription: React.FC<
-  FormGroupDescriptionProps
-> = props => {
+export const FormGroupDescription: React.FC<FormGroupDescriptionProps> = props => {
   const className = cx(s.FormGroupDescription, props.className);
   return <div {...props} className={className} />;
 };
