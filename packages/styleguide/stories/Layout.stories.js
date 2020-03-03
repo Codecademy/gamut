@@ -199,10 +199,16 @@ export const offsets = () => {
     <Container>
       <LayoutGrid rowGap="sm" columnGap="sm">
         <Column offset={2} size={4}>
-          <Test color="grey">2</Test>
+          <Test color="grey">2 Column offset</Test>
+        </Column>
+        <Column size={2}>
+          <Test color="grey">Sibling</Test>
+        </Column>
+        <Column offset={2} size={2}>
+          <Test color="grey">Sibling</Test>
         </Column>
         <Column size={4}>
-          <Test color="grey">1</Test>
+          <Test color="grey">4 Column offset</Test>
         </Column>
       </LayoutGrid>
     </Container>
@@ -211,23 +217,4 @@ export const offsets = () => {
 
 offsets.story = {
   name: 'Column offsets',
-};
-
-export const alignments = () => {
-  return (
-    <Container>
-      <LayoutGrid rowGap="sm" columnGap="sm">
-        <Column size={4}>
-          <Test color="grey">2</Test>
-        </Column>
-        <Column size={4}>
-          <Test color="grey">1</Test>
-        </Column>
-      </LayoutGrid>
-    </Container>
-  );
-};
-
-alignments.story = {
-  name: 'Alignment',
 };
