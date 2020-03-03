@@ -9,7 +9,7 @@ export default {
   decorators: [withKnobs],
 };
 
-const testimonialProps = {
+const laceyTestimonialProps = {
   name: 'Lacey Bathala',
   occupation: 'Data Analyst',
   short_quote: "Coding isn't rocket science, it’s just falsely intimidating.",
@@ -18,12 +18,22 @@ const testimonialProps = {
   imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
 };
 
+const josephineTestimonialProps = {
+  name: 'Josephine Anderson-Weber',
+  occupation: 'Junior Back-End Developer',
+  short_quote:
+    'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.',
+  long_quote:
+    'The Codecademy quizzes and projects were so helpful. The quizzes test your knowledge and the projects reinforce what you learned by making you apply that knowledge to real world situations.',
+  imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+};
+
 export const testimonialSmallWithAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.short_quote}
-    imageUrl={testimonialProps.imageUrl}
+    name={laceyTestimonialProps.name}
+    occupation={laceyTestimonialProps.occupation}
+    quote={laceyTestimonialProps.short_quote}
+    imageUrl={laceyTestimonialProps.imageUrl}
     size="small"
     theme={select(
       'theme',
@@ -39,9 +49,9 @@ testimonialSmallWithAvatar.story = {
 
 export const testimonialSmallWithoutAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.short_quote}
+    name={laceyTestimonialProps.name}
+    occupation={laceyTestimonialProps.occupation}
+    quote={laceyTestimonialProps.short_quote}
     size="small"
     theme={select(
       'theme',
@@ -57,10 +67,10 @@ testimonialSmallWithoutAvatar.story = {
 
 export const testimonialMediumWithAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.long_quote}
-    imageUrl={testimonialProps.imageUrl}
+    name={laceyTestimonialProps.name}
+    occupation={laceyTestimonialProps.occupation}
+    quote={laceyTestimonialProps.long_quote}
+    imageUrl={laceyTestimonialProps.imageUrl}
     size="medium"
     theme={select(
       'theme',
@@ -76,9 +86,9 @@ testimonialMediumWithAvatar.story = {
 
 export const testimonialMediumWithoutAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.long_quote}
+    name={laceyTestimonialProps.name}
+    occupation={laceyTestimonialProps.occupation}
+    quote={laceyTestimonialProps.long_quote}
     size="medium"
     theme={select(
       'theme',
@@ -94,10 +104,10 @@ testimonialMediumWithoutAvatar.story = {
 
 export const testimonialLargeWithAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.long_quote}
-    imageUrl={testimonialProps.imageUrl}
+    name={josephineTestimonialProps.name}
+    occupation={josephineTestimonialProps.occupation}
+    quote={josephineTestimonialProps.long_quote}
+    imageUrl={josephineTestimonialProps.imageUrl}
     size="large"
     theme={select(
       'theme',
@@ -113,9 +123,9 @@ testimonialLargeWithAvatar.story = {
 
 export const testimonialLargeWithoutAvatar = () => (
   <Testimonial
-    name={testimonialProps.name}
-    occupation={testimonialProps.occupation}
-    quote={testimonialProps.long_quote}
+    name={josephineTestimonialProps.name}
+    occupation={josephineTestimonialProps.occupation}
+    quote={josephineTestimonialProps.long_quote}
     size="large"
     theme={select(
       'theme',

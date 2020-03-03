@@ -106,10 +106,10 @@ $background-pattern-offset: px-rem(16px);
 .mediumContainer {
   max-width: px-rem(708px);
   grid-template-columns: auto 1fr;
-  grid-row-gap: 2.5rem;
+  grid-row-gap: 2rem;
   padding: 2rem 1.5rem 1.5rem;
   @include screen-size-gte($grid-xs-min) {
-    padding: 5rem 3rem 7rem 4rem;
+    padding: 4rem 3rem 6rem 4rem;
   }
 
   > .bylineContainer {
@@ -133,31 +133,42 @@ $background-pattern-offset: px-rem(16px);
 }
 
 .largeContainer {
-  grid-template-columns: auto 1fr;
-  padding: 3rem 6rem 4rem 3rem;
-  max-width: $grid-lg-min;
+  @include md-viewport {
+    max-width: $grid-lg-min;
+    grid-template-columns: auto 1fr;
+    grid-row-gap: 0;
+    padding: 3rem 6rem 4rem 3rem;
 
-  > .avatarContainer {
-    margin-right: 0;
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: center;
-  }
+    > .avatarContainer {
+      margin-right: 0;
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: center;
+    }
 
-  > .bylineContainer {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    text-align: center;
-    align-self: center;
-  }
+    > .bylineContainer {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      text-align: center;
+      align-self: center;
+      max-width: 14rem;
+    }
 
-  > .avatarContainer + .bylineContainer {
-    align-self: auto;
-    padding-top: 8rem;
-  }
+    > .avatarContainer + .bylineContainer {
+      align-self: auto;
+      padding-top: 8rem;
+    }
 
-  > .quoteContainer {
-    grid-column: 2;
-    padding-left: 3rem;
+    > .quoteContainer {
+      grid-column: 2;
+      grid-row: 1;
+      padding-left: 3rem;
+      max-width: 100%;
+      padding-right: 0;
+    }
+
+    > .avatarContainer ~ .quoteContainer {
+      grid-area: 1;
+    }
   }
 }
