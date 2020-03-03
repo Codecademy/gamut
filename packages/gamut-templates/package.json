@@ -20,7 +20,8 @@
   "dependencies": {
     "@codecademy/gamut": "^2.4.11",
     "@codecademy/gamut-styles": "^2.2.11",
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "react-hook-form": "^4.9.3"
   },
   "scripts": {
     "verify": "tsc --noEmit",
@@ -32,6 +33,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "copyfiles": "^2.1.1"
+    "copyfiles": "^2.1.1",
+    "mutationobserver-shim": "^0.3.3"
   }
 }
