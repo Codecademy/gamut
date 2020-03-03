@@ -144,6 +144,21 @@ $background-pattern-offset: px-rem(16px);
       grid-column: 1;
       grid-row: 1;
       justify-self: center;
+
+      > div {
+        width: px-rem(118px);
+        height: px-rem(118px);
+
+        &::before {
+          height: px-rem(110px);
+          width: px-rem(110px);
+        }
+
+        > img {
+          width: px-rem(110px);
+          height: px-rem(110px);
+        }
+      }
     }
 
     > .bylineContainer {

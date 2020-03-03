@@ -37,12 +37,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         >
           {imageUrl && (
             <div className={s.avatarContainer}>
-              <Avatar
-                src={imageUrl}
-                alt={`Photo of ${name}`}
-                theme={theme}
-                size={size === 'large' ? size : 'regular'}
-              />
+              <Avatar src={imageUrl} alt={`Photo of ${name}`} theme={theme} />
             </div>
           )}
           <div className={s.bylineContainer}>
