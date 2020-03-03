@@ -33,6 +33,7 @@ export { default as RadialProgress } from './RadialProgress';
 export { default as Spinner } from './Spinner';
 export { VisualTheme } from './theming/VisualTheme';
 export { Tabs, TabList, TabPanel, Tab } from './Tabs';
+export { default as SkipToContent } from './SkipToContent';
 export { default as Toggle } from './Toggle';
 export { default as ToolTip, ToolTipPosition } from './ToolTip';
 export { Grid, Col, Row } from './FlexGrid';

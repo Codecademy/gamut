@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.10...@codecademy/gamut@2.4.11) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.9...@codecademy/gamut@2.4.10) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.8...@codecademy/gamut@2.4.9) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.7...@codecademy/gamut@2.4.8) (2020-02-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [2.4.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.6...@codecademy/gamut@2.4.7) (2020-02-17)
 
 **Note:** Version bump only for package @codecademy/gamut

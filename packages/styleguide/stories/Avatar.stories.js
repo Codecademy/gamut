@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '../../brand-components/src/Avatar/';
-import { VisualTheme } from '../../gamut/src/theming/VisualTheme';
+import { VisualTheme } from '@codecademy/gamut';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 export default {
