@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+
+
+
+
+
 # [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
 
 
