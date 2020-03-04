@@ -7,8 +7,10 @@ describe('Modal', () => {
   it('renders null when isOpen is not true', () => {
     const wrapper = mount(
       <Modal>
-        Howdy!
-        <button type="button" />
+        <div>
+          Howdy!
+          <button type="button" />
+        </div>
       </Modal>
     );
 
@@ -19,8 +21,11 @@ describe('Modal', () => {
     const children = 'Howdy!';
     const wrapper = mount(
       <Modal isOpen>
-        {children}
-        <button type="button" />
+        <div>
+          {' '}
+          {children}
+          <button type="button" />
+        </div>
       </Modal>
     );
 
