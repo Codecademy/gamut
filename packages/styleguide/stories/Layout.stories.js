@@ -26,7 +26,7 @@ const Test = ({ color, children }) => {
   );
 };
 
-const KitchenSinkColumns = ({ alt }) => (
+const KitchenSinkColumns = () => (
   <>
     <Column size={12}>
       <Test color="grey">12</Test>
