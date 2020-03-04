@@ -6,9 +6,7 @@ import { ContainerElementProps, MediaSizes, GapSizes, GapTypes } from './types';
 import s from './styles/Grid.module.scss';
 
 export type GapConfig = Record<MediaSizes, GapSizes>;
-
 export type GridProps = Record<GapTypes, GapConfig | GapSizes>;
-
 export type LayoutGridProps = GridProps & ContainerElementProps;
 
 export const Grid: React.FC<LayoutGridProps> = ({
