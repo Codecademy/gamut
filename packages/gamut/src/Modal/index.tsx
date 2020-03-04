@@ -5,19 +5,15 @@ import React from 'react';
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
 
-export type ModalClassNames = {
-  container?: string;
-  inside?: string;
-};
-
 export type ModalProps = {
-  classNames?: ModalClassNames;
+  children: React.ReactElement<any>;
+  className?: string;
   clickOutsideDeactivates?: boolean;
   isOpen?: boolean;
 };
 
 const Modal: React.FC<ModalProps> = ({
-  classNames = {},
+  className,
   children,
   clickOutsideDeactivates,
   isOpen,
@@ -28,9 +24,9 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <BodyPortal>
-      <div className={cx(styles.container, classNames.container)}>
+      <div className={cx(styles.container, className)}>
         <FocusTrap focusTrapOptions={{ clickOutsideDeactivates }}>
-          <div className={cx(styles.inside, classNames.inside)}>{children}</div>
+          {children}
         </FocusTrap>
       </div>
     </BodyPortal>

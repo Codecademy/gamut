@@ -20,7 +20,7 @@ const ModalStory = () => {
         Open modal
       </button>
       <Modal onOutsideClick={() => alert('Outside clicked.')} isOpen={open}>
-        <div>
+        <div style={{ background: 'white', padding: '1rem' }}>
           <h1>Hooray!</h1>
           <button type="button" onClick={() => setOpen(false)}>
             Close modal
@@ -36,7 +36,6 @@ const ModalStory = () => {
           <code>position: fixed</code>
         </li>
         <li>cannot override contentProps, animation, or shouldFocusOnMount</li>
-        <li>needs to always have focusable content</li>
       </ul>
       <br />
       <br />
