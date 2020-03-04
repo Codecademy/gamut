@@ -26,7 +26,7 @@ const Test = ({ color, children }) => {
   );
 };
 
-const KitchenSinkColumns = ({ alt }) => (
+const KitchenSinkColumns = () => (
   <>
     <Column size={12}>
       <Test color="grey">12</Test>
@@ -126,7 +126,7 @@ responsiveGridGap.story = {
 export const smallGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'sm' }} rowGap={{ sm: 'sm' }}>
+      <LayoutGrid columnGap="sm" rowGap="sm">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -140,7 +140,7 @@ smallGap.story = {
 export const mediumGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'md' }} rowGap={{ sm: 'md' }}>
+      <LayoutGrid columnGap="md" rowGap="md">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -154,7 +154,7 @@ mediumGap.story = {
 export const largeGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'lg' }} rowGap={{ sm: 'lg' }}>
+      <LayoutGrid columnGap="lg" rowGap="lg">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -168,9 +168,8 @@ largeGap.story = {
 export const extraLargeGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'xl' }} rowGap={{ sm: 'xl' }}>
+      <LayoutGrid columnGap="xl" rowGap="xl">
         <KitchenSinkColumns />
-        <Column offset={2} size={5} />
       </LayoutGrid>
     </Container>
   );
@@ -184,7 +183,7 @@ export const noGap = () => {
   return (
     <Container>
       <LayoutGrid>
-        <KitchenSinkColumns alt />
+        <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
   );
@@ -202,13 +201,16 @@ export const offsets = () => {
           <Test color="grey">2 Column offset</Test>
         </Column>
         <Column size={2}>
-          <Test color="grey">Sibling</Test>
+          <Test color="grey" />
         </Column>
-        <Column offset={2} size={2}>
-          <Test color="grey">Sibling</Test>
+        <Column size={2}>
+          <Test color="grey" />
         </Column>
         <Column size={4}>
-          <Test color="grey">4 Column offset</Test>
+          <Test color="grey">No offset</Test>
+        </Column>
+        <Column size={4}>
+          <Test color="grey" />
         </Column>
       </LayoutGrid>
     </Container>
