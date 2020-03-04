@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "3.7.0",
+  "version": "3.9.0",
   "author": "Codecademy Engineering",
   "private": true,
   "scripts": {
@@ -24,7 +24,6 @@
     "@storybook/addon-a11y": "5.3.9",
     "@storybook/addon-actions": "5.3.9",
     "@storybook/addon-centered": "5.3.9",
-    "@storybook/addon-docs": "5.3.9",
     "@storybook/addon-essentials": "5.3.9",
     "@storybook/addon-info": "5.3.9",
     "@storybook/addon-knobs": "5.3.9",

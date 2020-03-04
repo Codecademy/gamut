@@ -24,7 +24,7 @@ export class Tabs extends Component<TabsProps, TabsState> {
 
   private idPrefix!: string;
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
     this.idPrefix = Math.random()

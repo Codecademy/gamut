@@ -9,15 +9,21 @@ export type ColumnSizeConfig = Record<MediaSizes, ColumnSizes>;
 
 export type ColumnProps = {
   size: ColumnSizeConfig | ColumnSizes;
+  offset: ColumnSizeConfig | ColumnSizes;
 } & ContainerElementProps;
 
 export const Column: React.FC<ColumnProps> = ({
   children,
   className,
   size,
+  offset,
   testId,
 }) => {
-  const classNames = cx(s.container, className, createClassnames({ size }, s));
+  const classNames = cx(
+    s.container,
+    className,
+    createClassnames({ size, offset }, s)
+  );
   return (
     <div className={classNames} data-testid={testId}>
       {children}

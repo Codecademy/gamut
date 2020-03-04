@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.5.0...@codecademy/gamut@2.6.0) (2020-03-04)
+
+
+### Features
+
+* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+
+
+
+# [2.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.11...@codecademy/gamut@2.5.0) (2020-03-03)
+
+
+### Features
+
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
+
 ## [2.4.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.10...@codecademy/gamut@2.4.11) (2020-02-24)
 
 **Note:** Version bump only for package @codecademy/gamut

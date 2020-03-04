@@ -26,81 +26,81 @@ const Test = ({ color, children }) => {
   );
 };
 
-const KitchenSinkColumns = ({ alt }) => (
+const KitchenSinkColumns = () => (
   <>
-    <Column size={{ sm: 12 }}>
+    <Column size={12}>
       <Test color="grey">12</Test>
     </Column>
-    <Column size={{ sm: 6 }}>
+    <Column size={6}>
       <Test color="grey">6</Test>
     </Column>
-    <Column size={{ sm: 6 }}>
+    <Column size={6}>
       <Test color="grey">6</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
   </>
@@ -170,7 +170,8 @@ export const extraLargeGap = () => {
     <Container>
       <LayoutGrid columnGap={{ sm: 'xl' }} rowGap={{ sm: 'xl' }}>
         <KitchenSinkColumns />
-      </LayoutGrid>{' '}
+        <Column offset={2} size={5} />
+      </LayoutGrid>
     </Container>
   );
 };
@@ -191,4 +192,29 @@ export const noGap = () => {
 
 noGap.story = {
   name: 'No Gap',
+};
+
+export const offsets = () => {
+  return (
+    <Container>
+      <LayoutGrid rowGap="sm" columnGap="sm">
+        <Column offset={2} size={4}>
+          <Test color="grey">2 Column offset</Test>
+        </Column>
+        <Column size={2}>
+          <Test color="grey">Sibling</Test>
+        </Column>
+        <Column offset={2} size={2}>
+          <Test color="grey">Sibling</Test>
+        </Column>
+        <Column size={4}>
+          <Test color="grey">4 Column offset</Test>
+        </Column>
+      </LayoutGrid>
+    </Container>
+  );
+};
+
+offsets.story = {
+  name: 'Column offsets',
 };
