@@ -7,6 +7,7 @@ export { default as CardBody } from './Card/CardBody';
 export { default as CardFooter } from './Card/CardFooter';
 export {
   Form,
+  FormError,
   FormGroup,
   FormGroupLabel,
   FormGroupDescription,
@@ -27,12 +28,8 @@ export { default as MenuItem } from './Menus/MenuItem';
 export { default as SideMenu } from './Menus/SideMenu';
 export { default as Modal } from './Modal';
 export { default as NotificationList } from './NotificationList';
-export {
-  default as NotificationIcon,
-} from './NotificationList/NotificationIcon';
-export {
-  default as NotificationItem,
-} from './NotificationList/NotificationItem';
+export { default as NotificationIcon } from './NotificationList/NotificationIcon';
+export { default as NotificationItem } from './NotificationList/NotificationItem';
 export { default as RadialProgress } from './RadialProgress';
 export { default as Spinner } from './Spinner';
 export { VisualTheme } from './theming/VisualTheme';
