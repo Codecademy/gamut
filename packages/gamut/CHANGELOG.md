@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.1...@codecademy/gamut@2.7.0) (2020-03-05)
+
+
+### Features
+
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
+
 ## [2.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.0...@codecademy/gamut@2.6.1) (2020-03-04)
 
 
