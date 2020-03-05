@@ -1,36 +1,28 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$regular-size: px-rem(70px);
-$regular-offset: px-rem(6px);
-$large-size: px-rem(110px);
-$large-offset: px-rem(8px);
+$default-size: px-rem(70px);
+$default-offset: px-rem(6px);
 
 .container {
   position: relative;
+  width: $default-size + $default-offset;
+  height: $default-size + $default-offset;
+
   &::before {
     content: "";
     position: absolute;
     bottom: 0;
     right: 0;
     border-radius: 50%;
+    height: $default-size;
+    width: $default-size;
   }
-}
 
-.regularContainer {
-  width: $regular-size + $regular-offset;
-  height: $regular-size + $regular-offset;
-  &:before {
-    height: $regular-size;
-    width: $regular-size;
-  }
-}
-
-.largeContainer {
-  width: $large-size + $large-offset;
-  height: $large-size + $large-offset;
-  &:before {
-    height: $large-size;
-    width: $large-size;
+  img {
+    border-radius: 50%;
+    position: absolute;
+    width: $default-size;
+    height: $default-size;
   }
 }
 
@@ -44,19 +36,4 @@ $large-offset: px-rem(8px);
   &:before {
     background: $color-pink-700;
   }
-}
-
-.regularImage {
-  width: $regular-size;
-  height: $regular-size;
-}
-
-.largeImage {
-  width: $large-size;
-  height: $large-size;
-}
-
-.image {
-  border-radius: 50%;
-  position: absolute;
 }
