@@ -22,7 +22,6 @@ describe('Modal', () => {
     const wrapper = mount(
       <Modal isOpen>
         <div>
-          {' '}
           {children}
           <button type="button" />
         </div>
