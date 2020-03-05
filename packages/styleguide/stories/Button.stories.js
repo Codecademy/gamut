@@ -216,6 +216,9 @@ linkButton.story = {
 
 export const standardButtonOptions = () => (
   <div style={storyStyle.lightMode.containerStyle}>
+    <Button style={btnStyle} theme="blue" flat href="#">
+      Flat
+    </Button>
     <Button style={btnStyle} theme="blue" outline href="#">
       Outline
     </Button>
@@ -248,6 +251,9 @@ standardButtonOptions.story = {
 
 export const round = () => (
   <div style={storyStyle.lightMode.containerStyle}>
+    <Button style={btnStyle} theme="blue" flat round href="#">
+      Flat
+    </Button>
     <Button style={btnStyle} theme="blue" outline href="#" round>
       Outline
     </Button>
