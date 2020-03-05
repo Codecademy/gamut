@@ -19,6 +19,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
 }) => {
   return (
     <Select
+      defaultValue={field.defaultValue}
       className={className}
       htmlFor={field.name}
       name={field.name}
