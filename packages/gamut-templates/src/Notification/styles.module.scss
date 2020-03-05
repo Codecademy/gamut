@@ -1,0 +1,28 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$themeColors: (
+  "error": $color-red-200,
+  "success": $color-green-200,
+  "alert": $color-yellow-200,
+  "announcement": $color-purple-200,
+  "informational": $color-white
+);
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  grid-gap: 1rem;
+}
+
+.container__icon {
+  grid-template-columns: max-content 1fr max-content;
+}
+
+.icon {
+}
+
+.cta {
+}
+
+.closeButton {
+}

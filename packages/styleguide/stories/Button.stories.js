@@ -33,6 +33,14 @@ const themeKeys = [
   'brand-blue',
 ];
 
+const statusThemeKeys = [
+  'success',
+  'alert',
+  'error',
+  'announcement',
+  'informational',
+];
+
 const themes = {};
 themeKeys.forEach(k => {
   themes[k] = k;
@@ -265,7 +273,7 @@ export const newStory = () => (
 );
 
 newStory.story = {
-  name: 'New',
+  name: 'New Link Style',
 };
 
 export const round = () => (
@@ -323,3 +331,17 @@ export const square = () => (
     </Button>
   </div>
 );
+
+export const status = () => (
+  <div>
+    {statusThemeKeys.map(theme => (
+      <Button key={`${theme}-onlight`} style={btnStyle} theme={theme}>
+        {theme}
+      </Button>
+    ))}
+  </div>
+);
+
+status.story = {
+  name: 'Status Themes',
+};
