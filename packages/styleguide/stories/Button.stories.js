@@ -61,21 +61,27 @@ const headingStyle = {
 const storyStyle = {
   darkMode: {
     containerStyle: {
-      padding: '1rem 2rem',
+      padding: '0 2rem',
       background: deprecatedColors.swatches.grey[900],
       color: 'white',
     },
+    groupStyle: {
+      margin: '1rem 0',
+    },
     headingStyle: {
       color: 'white',
-      margin: '2rem 0',
+      margin: '1rem 0',
     },
   },
   lightMode: {
     containerStyle: {
-      padding: '1rem 2rem',
+      padding: '0 2rem',
+    },
+    groupStyle: {
+      margin: '1rem 0',
     },
     headingStyle: {
-      margin: '2rem 0',
+      margin: '1rem 0',
     },
   },
 };
@@ -88,54 +94,53 @@ export default {
 };
 
 export const allButtonThemes = () => {
-  const outline = boolean('Outline', false);
-  const flat = boolean('Flat', false);
+  const variant = select('Variant', ['default', 'outline', 'flat'], 'default');
   const contrastMode = select(
-    'Contrast Mode',
-    ['lightMode', 'darkMode'],
+    'Contrast',
+    { Light: 'lightMode', Dark: 'darkMode' },
     'lightMode'
   );
 
-  const { containerStyle, headingStyle } = storyStyle[contrastMode];
+  const { containerStyle, groupStyle, headingStyle } = storyStyle[contrastMode];
   return (
     <div style={containerStyle}>
       <h3 style={headingStyle}>Preset</h3>
-      <div>
+      <div style={groupStyle}>
         {themeKeys.map(theme => (
           <Button
             key={`${theme}`}
             style={btnStyle}
             theme={theme}
-            outline={outline}
-            flat={flat}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
           >
             {theme}
           </Button>
         ))}
       </div>
       <h3 style={headingStyle}>Brand</h3>
-      <div>
+      <div style={groupStyle}>
         {brandThemeKeys.map(theme => (
           <Button
             key={`${theme}`}
             style={btnStyle}
             theme={theme}
-            outline={outline}
-            flat={flat}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
           >
             {theme}
           </Button>
         ))}
       </div>
       <h3 style={headingStyle}>Deprecated</h3>
-      <div>
+      <div style={groupStyle}>
         {deprecatedThemeKeys.map(theme => (
           <Button
             key={`${theme}`}
             style={btnStyle}
             theme={theme}
-            outline={outline}
-            flat={flat}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
           >
             {theme}
           </Button>
@@ -172,19 +177,21 @@ buttonBaseVariants.story = {
 };
 
 export const editable = () => (
-  <Button
-    theme={select('theme', themes, 'blue')}
-    onClick={action('clicked')}
-    size={select('size', ['small', 'large', 'undefined'], 'undefined')}
-    outline={boolean('outline', false)}
-    underline={boolean('underline', false)}
-    link={boolean('link', false)}
-    caps={boolean('caps', false)}
-    go={boolean('go', false)}
-    block={boolean('block', false)}
-  >
-    {text('Label', 'Submit')}
-  </Button>
+  <div style={storyStyle.lightMode.containerStyle}>
+    <Button
+      theme={select('theme', themes, 'blue')}
+      onClick={action('clicked')}
+      size={select('size', ['small', 'large', 'undefined'], 'undefined')}
+      outline={boolean('outline', false)}
+      underline={boolean('underline', false)}
+      link={boolean('link', false)}
+      caps={boolean('caps', false)}
+      go={boolean('go', false)}
+      block={boolean('block', false)}
+    >
+      {text('Label', 'Submit')}
+    </Button>
+  </div>
 );
 
 editable.story = {
