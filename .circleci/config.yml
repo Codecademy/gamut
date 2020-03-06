@@ -16,12 +16,28 @@ references:
   repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
   repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}
 
+  webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
+  webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
+
   restore_repo: &restore_repo
     restore_cache:
       keys:
         - *repo_cache_key_1
         - *repo_cache_key_2
         - *repo_cache_key_3
+
+  restore_webpack_cache: &restore_webpack_cache
+    restore_cache:
+      keys:
+        - *webpack_cache_key_1
+        - *webpack_cache_key_2
+
+  save_webpack_cache: &save_webpack_cache
+    save_cache:
+      key: *webpack_cache_key_1
+      paths:
+        - node_modules/.cache
+        - packages/styleguide/node_modules/.cache
 
   set_git_user: &set_git_user
     run:
@@ -130,12 +146,14 @@ jobs:
       - *set_git_user
       - *restore_repo
       - checkout
+      - *restore_webpack_cache
       - run:
           name: build packages
           command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
+      - *save_webpack_cache
       - run:
           name: deploy
           command: yarn deploy
@@ -149,12 +167,14 @@ jobs:
       - *set_git_user
       - *restore_repo
       - checkout
+      - *restore_webpack_cache
       - run:
           name: build packages
           command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
+      - *save_webpack_cache
       - run:
           name: deploy
           command: npx netlify-cli@2.37.0 deploy --dir=dist --json > .deploy-output
@@ -163,8 +183,10 @@ jobs:
       - run:
           name: comment
           command: |
-            DEPLOY_OUTPUT="$(cat .deploy-output)"
-            DEPLOY_URL=$(echo "JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url" | node -)
+            export DEPLOY_OUTPUT="$(cat .deploy-output)"
+            echo $DEPLOY_OUTPUT
+            DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
+            echo $DEPLOY_URL
             if [ -z "$DEPLOY_OUTPUT" ]
             then
               echo "No deploy output found, will not add PR comment"
