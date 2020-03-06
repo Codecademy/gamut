@@ -1,3 +1,4 @@
+export { default as FormError } from './FormError';
 export { default as FormGroup } from './FormGroup';
 export { default as FormGroupLabel } from './FormGroupLabel';
 export { default as FormGroupDescription } from './FormGroupDescription';

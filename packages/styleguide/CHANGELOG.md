@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
+
+
+### Features
+
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
+
+## [3.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
+
+
+### Features
+
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+
+
+
+
+
+## [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+
+
+
+
+
+# [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
+
+
+### Features
+
+* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+
+
+
+# [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
+
+
+### Features
+
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
+
 # [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
 
 

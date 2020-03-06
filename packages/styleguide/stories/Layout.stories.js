@@ -26,81 +26,81 @@ const Test = ({ color, children }) => {
   );
 };
 
-const KitchenSinkColumns = ({ alt }) => (
+const KitchenSinkColumns = () => (
   <>
-    <Column size={{ sm: 12 }}>
+    <Column size={12}>
       <Test color="grey">12</Test>
     </Column>
-    <Column size={{ sm: 6 }}>
+    <Column size={6}>
       <Test color="grey">6</Test>
     </Column>
-    <Column size={{ sm: 6 }}>
+    <Column size={6}>
       <Test color="grey">6</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 3 }}>
+    <Column size={3}>
       <Test color="grey">3</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 2 }}>
+    <Column size={2}>
       <Test color="grey">2</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
-    <Column size={{ sm: 1 }}>
+    <Column size={1}>
       <Test color="grey">1</Test>
     </Column>
   </>
@@ -126,7 +126,7 @@ responsiveGridGap.story = {
 export const smallGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'sm' }} rowGap={{ sm: 'sm' }}>
+      <LayoutGrid columnGap="sm" rowGap="sm">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -140,7 +140,7 @@ smallGap.story = {
 export const mediumGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'md' }} rowGap={{ sm: 'md' }}>
+      <LayoutGrid columnGap="md" rowGap="md">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -154,7 +154,7 @@ mediumGap.story = {
 export const largeGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'lg' }} rowGap={{ sm: 'lg' }}>
+      <LayoutGrid columnGap="lg" rowGap="lg">
         <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
@@ -168,9 +168,9 @@ largeGap.story = {
 export const extraLargeGap = () => {
   return (
     <Container>
-      <LayoutGrid columnGap={{ sm: 'xl' }} rowGap={{ sm: 'xl' }}>
+      <LayoutGrid columnGap="xl" rowGap="xl">
         <KitchenSinkColumns />
-      </LayoutGrid>{' '}
+      </LayoutGrid>
     </Container>
   );
 };
@@ -183,7 +183,7 @@ export const noGap = () => {
   return (
     <Container>
       <LayoutGrid>
-        <KitchenSinkColumns alt />
+        <KitchenSinkColumns />
       </LayoutGrid>
     </Container>
   );
@@ -191,4 +191,32 @@ export const noGap = () => {
 
 noGap.story = {
   name: 'No Gap',
+};
+
+export const offsets = () => {
+  return (
+    <Container>
+      <LayoutGrid rowGap="sm" columnGap="sm">
+        <Column offset={2} size={4}>
+          <Test color="grey">2 Column offset</Test>
+        </Column>
+        <Column size={2}>
+          <Test color="grey" />
+        </Column>
+        <Column size={2}>
+          <Test color="grey" />
+        </Column>
+        <Column size={4}>
+          <Test color="grey">No offset</Test>
+        </Column>
+        <Column size={4}>
+          <Test color="grey" />
+        </Column>
+      </LayoutGrid>
+    </Container>
+  );
+};
+
+offsets.story = {
+  name: 'Column offsets',
 };
