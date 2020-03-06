@@ -177,7 +177,9 @@ jobs:
       - *save_webpack_cache
       - run:
           name: deploy
-          command: npx netlify-cli@2.37.0 deploy --dir=dist --json > .deploy-output
+          command: |
+            DEPLOY_MESSAGE="User: ${CIRCLE_USERNAME} Project: ${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME} Pull Request: ${CIRCLE_PULL_REQUEST}"
+            npx netlify-cli@2.37.0 deploy --message=${DEPLOY_MESSAGE} --dir=dist --json > .deploy-output
       - setup_remote_docker
       - run: docker pull cloudposse/github-commenter:0.5.0-58
       - run:
@@ -186,7 +188,8 @@ jobs:
             export DEPLOY_OUTPUT="$(cat .deploy-output)"
             echo $DEPLOY_OUTPUT
             DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
-            echo $DEPLOY_URL
+            LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
+            COMMENT_MSG="<p>PREVIEW: <a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">DEPLOY LOGS</a></p>"
             if [ -z "$DEPLOY_OUTPUT" ]
             then
               echo "No deploy output found, will not add PR comment"
@@ -197,9 +200,9 @@ jobs:
                       -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
                       -e GITHUB_COMMENT_TYPE=pr \
                       -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀Styleguide deploy preview ready!</p><p><a href="{{.}}">{{.}}</a></p><!--ALPHA_DEPLOY_COMMENT-->' \
+                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
                       -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
-                      -e GITHUB_COMMENT="${DEPLOY_URL}" \
+                      -e GITHUB_COMMENT="${COMMENT_MSG}" \
                       cloudposse/github-commenter:0.5.0-58
             fi
 
