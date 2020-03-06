@@ -189,7 +189,7 @@ jobs:
             echo $DEPLOY_OUTPUT
             DEPLOY_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url)" | node -)
             LOGS_URL=$(echo "console.log(JSON.parse(process.env.DEPLOY_OUTPUT).logs)" | node -)
-            COMMENT_MSG="<p>PREVIEW: <a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">DEPLOY LOGS</a></p>"
+            COMMENT_MSG="<p><a href="${DEPLOY_URL}">${DEPLOY_URL}</a></p><p><a href="${LOGS_URL}">Deploy Logs</a></p>"
             if [ -z "$DEPLOY_OUTPUT" ]
             then
               echo "No deploy output found, will not add PR comment"
