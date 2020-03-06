@@ -121,25 +121,6 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
 
-  deploy_alpha:
-    <<: *default_env
-    resource_class: large
-    steps:
-      - *skip_on_automated_commit
-      - *add_github_ssh_key
-      - *set_git_user
-      - *restore_repo
-      - checkout
-      - run:
-          name: build packages
-          command: yarn build-all
-      - run:
-          name: build storybook
-          command: yarn build-storybook
-      - run:
-          name: deploy
-          command: npx netlify-cli@2.37.0 deploy --dir=dist
-
   deploy:
     <<: *default_env
     resource_class: large
@@ -158,6 +139,44 @@ jobs:
       - run:
           name: deploy
           command: yarn deploy
+
+  deploy_alpha:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - run:
+          name: build packages
+          command: yarn build-all
+      - run:
+          name: build storybook
+          command: yarn build-storybook
+      - run:
+          name: deploy
+          command: npx netlify-cli@2.37.0 deploy --dir=dist > .deploy-output
+      - run:
+          name: comment
+          command: |
+            DEPLOY_OUTPUT="$(cat .deploy-output)"
+            if [ -z "$DEPLOY_OUTPUT" ]
+            then
+              echo "No deploy output found, will not add PR comment"
+            else
+              docker run --rm \
+                      -e GITHUB_TOKEN \
+                      -e GITHUB_OWNER="${CIRCLE_PROJECT_USERNAME}" \
+                      -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
+                      -e GITHUB_COMMENT_TYPE=pr \
+                      -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
+                      -e GITHUB_COMMENT_TEMPLATE='<h3>📬Alpha Deploy URL:</h3><pre>{ . }</pre><!--ALPHA_DEPLOY_COMMENT-->' \
+                      -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
+                      -e GITHUB_COMMENT="${DEPLOY_OUTPUT}" \
+                      cloudposse/github-commenter:0.5.0-58
+            fi
 
   publish_alpha:
     <<: *default_env
