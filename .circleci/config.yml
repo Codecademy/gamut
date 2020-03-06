@@ -164,7 +164,7 @@ jobs:
           name: comment
           command: |
             DEPLOY_OUTPUT="$(cat .deploy-output)"
-            DEPLOY_REGEX='(?:\"deploy_url\":.*?\")(?:\K.*)(?=\")'
+            DEPLOY_REGEX='(?:"deploy_url":.*?")(?:\K.*)(?=")'
             if [ -z "$DEPLOY_OUTPUT" ]
             then
               echo "No deploy output found, will not add PR comment"
