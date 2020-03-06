@@ -164,7 +164,7 @@ jobs:
           name: comment
           command: |
             DEPLOY_OUTPUT="$(cat .deploy-output)"
-            DEPLOY_URL=$(echo "JSON.parse(process.env.DEPLOY_OUTPUT}).deploy_url" | node -)
+            DEPLOY_URL=$(echo "JSON.parse(process.env.DEPLOY_OUTPUT).deploy_url" | node -)
             if [ -z "$DEPLOY_OUTPUT" ]
             then
               echo "No deploy output found, will not add PR comment"
