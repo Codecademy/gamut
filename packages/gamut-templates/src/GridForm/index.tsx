@@ -37,7 +37,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
-      <LayoutGrid columnGap="sm" rowGap="sm">
+      <LayoutGrid columnGap="lg" rowGap="sm">
         {fields.map(field => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
 
