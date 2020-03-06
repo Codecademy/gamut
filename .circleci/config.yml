@@ -138,6 +138,25 @@ jobs:
           command: yarn build-storybook
       - run:
           name: deploy
+          command: npx netlify-cli@2.37.0 deploy --dir=dist
+
+  deploy_alpha:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - run:
+          name: build packages
+          command: yarn build-all
+      - run:
+          name: build storybook
+          command: yarn build-storybook
+      - run:
+          name: deploy
           command: yarn deploy
 
   publish_alpha:
