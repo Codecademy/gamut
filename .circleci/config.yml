@@ -121,7 +121,7 @@ jobs:
           name: lerna publish
           command: yarn lerna publish --yes --include-merged-tags --conventional-commits --create-release=github
 
-  deploy:
+  deploy_alpha:
     <<: *default_env
     resource_class: large
     steps:
@@ -140,7 +140,7 @@ jobs:
           name: deploy
           command: npx netlify-cli@2.37.0 deploy --dir=dist
 
-  deploy_alpha:
+  deploy:
     <<: *default_env
     resource_class: large
     steps:
@@ -226,12 +226,16 @@ workflows:
       - publish_alpha:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - gh-pages
           requires:
             - checkout_code
       - deploy_alpha:
           filters:
             branches:
-              ignore: master
+              ignore:
+                - master
+                - gh-pages
           requires:
             - checkout_code
