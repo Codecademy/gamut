@@ -229,3 +229,9 @@ workflows:
               ignore: master
           requires:
             - checkout_code
+      - deploy_alpha:
+          filters:
+            branches:
+              ignore: master
+          requires:
+            - checkout_code
