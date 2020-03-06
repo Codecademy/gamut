@@ -1,9 +1,8 @@
 import {
-  Col,
   FormError,
   FormGroup,
   FormGroupLabel,
-  Item,
+  Column,
 } from '@codecademy/gamut';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
@@ -44,17 +43,15 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     );
 
   return (
-    <Col {...field.sizing}>
-      <Item>
-        <FormGroup>
-          <FormGroupLabel className={styles.formGroupLabel}>
-            {field.label}
-          </FormGroupLabel>
-          {error && <FormError>{error}</FormError>}
-          {input}
-        </FormGroup>
-      </Item>
-    </Col>
+    <Column size={field.size}>
+      <FormGroup>
+        <FormGroupLabel className={styles.formGroupLabel}>
+          {field.label}
+        </FormGroupLabel>
+        {error && <FormError>{error}</FormError>}
+        {input}
+      </FormGroup>
+    </Column>
   );
 };
 
