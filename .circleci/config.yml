@@ -57,7 +57,18 @@ references:
       name: Skip build from automated commit
       command: |
         echo "Build started due to commit by ${CIRCLE_USERNAME}, blocking builds started by ${GITHUB_BOT_USERNAME}"
-        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci step halt ; fi
+        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci-agent step halt ; fi
+
+  skip_if_not_pr: &skip_if_not_pr
+    run:
+      name: Ensure workflow is associated with a pull request
+      command: |
+        prNumber="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}"
+
+        if [[ -z "${prNumber}" ]]; then
+          echo "This workflow is not associated with a pull request; halting"
+          circleci-agent step halt
+        fi
 
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
@@ -162,6 +173,7 @@ jobs:
     <<: *default_env
     resource_class: large
     steps:
+      - *skip_if_not_pr
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
@@ -210,6 +222,7 @@ jobs:
     <<: *default_env
     resource_class: large
     steps:
+      - *skip_if_not_pr
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
