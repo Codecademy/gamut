@@ -1,10 +1,12 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.formGroupLabel {
-  display: inline-block;
-  margin-right: 0.5rem;
-}
+.formGroup {
+  .formGroupLabel {
+    display: inline-block;
+    margin-right: 0.5rem;
+  }
 
-.gridFormInput {
-  width: 100%;
+  .gridFormInput {
+    width: 100%;
+  }
 }
