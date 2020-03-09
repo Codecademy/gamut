@@ -57,7 +57,7 @@ references:
       name: Skip build from automated commit
       command: |
         echo "Build started due to commit by ${CIRCLE_USERNAME}, blocking builds started by ${GITHUB_BOT_USERNAME}"
-        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci step halt ; fi
+        if [ $CIRCLE_USERNAME == $GITHUB_BOT_USERNAME ] ; then circleci-agent step halt ; fi
 
   skip_if_not_pr: &skip_if_not_pr
     run:
