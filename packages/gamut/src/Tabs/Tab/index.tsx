@@ -26,6 +26,7 @@ export const Tab: FunctionComponent<TabProps> = ({
 }: TabProps) => {
   const tabLinkClasses = cx(s.tab, {
     [s.active]: active,
+    [className]: className !== undefined,
     [activeClassName]: active && activeClassName !== undefined,
   });
   return (
