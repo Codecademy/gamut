@@ -24,9 +24,8 @@ export const Tab: FunctionComponent<TabProps> = ({
   onChange = () => {},
   tabIndex = 0,
 }: TabProps) => {
-  const tabLinkClasses = cx(s.tab, {
+  const tabLinkClasses = cx(s.tab, className, {
     [s.active]: active,
-    [className]: className !== undefined,
     [activeClassName]: active && activeClassName !== undefined,
   });
   return (
