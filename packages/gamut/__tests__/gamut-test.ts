@@ -1,11 +1,8 @@
-import { shallow } from 'enzyme';
-import React from 'react';
-
 import * as gamut from '../src/index';
 
-describe('<Gamut/>', () => {
-  it('Renders', () => {
-    const exportedNames = Object.keys(gamut).sort();
-    expect(exportedNames).toMatchSnapshot();
-  });
+test('Gamut Exported Keys', () => {
+  const exportedNames = Object.keys(gamut).sort((a, b) =>
+    a.toLowerCase().localeCompare(b.toLowerCase())
+  );
+  expect(exportedNames).toMatchSnapshot();
 });
