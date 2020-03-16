@@ -4,22 +4,33 @@ $tab-color: $color-blue-500;
 $tab-border-radius: 2px;
 
 .tab {
-  display: block;
-  min-width: 6rem;
-  max-width: 20rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.active {
+  -webkit-font-smoothing: antialiased;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.tab_default {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: $color-black;
   border: 1px solid $tab-color;
   padding: 0.5rem;
   border-left: 0;
-  color: $color-black;
+  display: block;
+  min-width: 6rem;
+  max-width: 20rem;
   font-weight: bold;
   text-decoration: none !important;
   text-align: center;
   transition: color 0.2s, background-color 0.2s;
-  outline: none;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -37,17 +48,13 @@ $tab-border-radius: 2px;
   }
 }
 
-.active {
-  -webkit-font-smoothing: antialiased;
+.tab_default__active {
   color: $color-white;
   background-color: $tab-color;
+
   &:hover,
   &:focus {
     background-color: $tab-color;
     color: $color-white;
   }
-}
-
-.disabled {
-  cursor: not-allowed;
 }

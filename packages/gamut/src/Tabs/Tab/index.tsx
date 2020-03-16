@@ -12,21 +12,25 @@ export type TabProps = {
   disabled?: boolean;
   onChange?: (newTabIndex: number) => void;
   tabIndex?: number;
+  defaultTheme?: boolean;
 };
 
 export const Tab: FunctionComponent<TabProps> = ({
   active,
-  activeClassName,
   children,
+  activeClassName,
   className,
   disabled,
   id,
+  defaultTheme = true,
   onChange = () => {},
   tabIndex = 0,
 }: TabProps) => {
   const tabClasses = cx(s.tab, className, {
-    [activeClassName]: active && activeClassName,
+    [s.tab_default]: defaultTheme,
     [s.active]: active,
+    [s.tab_default__active]: defaultTheme && active,
+    [activeClassName]: active && activeClassName,
     [s.disabled]: disabled,
   });
   return (
