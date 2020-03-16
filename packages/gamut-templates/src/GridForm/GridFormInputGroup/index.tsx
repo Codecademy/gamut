@@ -45,7 +45,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
   return (
     <Column size={field.size}>
       <FormGroup className={styles.formGroup}>
-        <FormGroupLabel className={styles.formGroupLabel}>
+        <FormGroupLabel className={styles.formGroupLabel} htmlFor={field.name}>
           {field.label}
         </FormGroupLabel>
         {error && <FormError>{error}</FormError>}
