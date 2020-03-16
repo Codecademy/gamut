@@ -25,7 +25,7 @@ describe('Tab', () => {
       disabled: true,
     });
 
-    component.find('a').simulate('click', {
+    component.find('div').simulate('click', {
       preventDefault: jest.fn(),
     });
 
@@ -37,7 +37,7 @@ describe('Tab', () => {
       disabled: true,
     });
 
-    component.find('a').simulate('keydown', {
+    component.find('div').simulate('keydown', {
       key: 'Enter',
       preventDefault: jest.fn(),
     });
@@ -50,7 +50,7 @@ describe('Tab', () => {
       disabled: true,
     });
 
-    const tabIndex = component.find('a').prop('tabIndex');
+    const tabIndex = component.find('div').prop('tabIndex');
 
     expect(tabIndex).toBe(-1);
   });
@@ -60,7 +60,7 @@ describe('Tab', () => {
       disabled: false,
     });
 
-    component.find('a').simulate('click', {
+    component.find('div').simulate('click', {
       preventDefault: jest.fn(),
     });
 
@@ -72,7 +72,7 @@ describe('Tab', () => {
       disabled: false,
     });
 
-    component.find('a').simulate('keydown', {
+    component.find('div').simulate('keydown', {
       key: 'Enter',
       preventDefault: jest.fn(),
     });
@@ -85,7 +85,7 @@ describe('Tab', () => {
       disabled: false,
     });
 
-    const tabIndex = component.find('a').prop('tabIndex');
+    const tabIndex = component.find('div').prop('tabIndex');
 
     expect(tabIndex).toBe(0);
   });
