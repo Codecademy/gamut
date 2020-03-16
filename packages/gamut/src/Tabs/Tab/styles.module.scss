@@ -10,7 +10,7 @@ $tab-border-radius: 2px;
 }
 
 .active {
-  -webkit-font-smoothing: antialiased;
+  @include font-smoothing;
 }
 
 .disabled {
