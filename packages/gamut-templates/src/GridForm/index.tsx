@@ -8,12 +8,14 @@ import { GridFormField } from './types';
 
 export type GridFormProps<Values extends {}> = {
   className?: string;
+  children?: React.ReactNode;
   fields: GridFormField[];
   onSubmit: (values: Values) => Promise<void>;
   submit: GridFormSubmitProps;
 };
 
 export function GridForm<Values extends Record<string, string | undefined>>({
+  children,
   className,
   fields,
   submit,
@@ -52,6 +54,7 @@ export function GridForm<Values extends Record<string, string | undefined>>({
           );
         })}
         <GridFormSubmit {...submit} />
+        {children}
       </LayoutGrid>
     </Form>
   );
