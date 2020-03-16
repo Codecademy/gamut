@@ -5,7 +5,6 @@ import s from './styles.module.scss';
 
 export type TabProps = {
   active?: boolean;
-  tabLinkClassName?: string;
   activeClassName?: string;
   children?: ReactNode;
   className?: string;
