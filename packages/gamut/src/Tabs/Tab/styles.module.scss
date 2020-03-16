@@ -4,6 +4,7 @@ $tab-color: $color-blue-500;
 $tab-border-radius: 2px;
 
 .tab {
+  flex: 1 1;
   outline: none;
   cursor: pointer;
 }
