@@ -4,6 +4,7 @@ $tab-color: $color-blue-500;
 $tab-border-radius: 2px;
 
 .tab {
+  flex: 1 1;
   outline: none;
   cursor: pointer;
 }
@@ -17,7 +18,6 @@ $tab-border-radius: 2px;
 }
 
 .tab_default {
-  flex: 1 1;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
