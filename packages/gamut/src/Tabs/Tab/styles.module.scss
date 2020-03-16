@@ -5,8 +5,8 @@ $tab-border-radius: 2px;
 
 .tab {
   display: block;
-  width: 100%;
   min-width: 6rem;
+  max-width: 20rem;
   border: 1px solid $tab-color;
   padding: 0.5rem;
   border-left: 0;
