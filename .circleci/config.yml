@@ -212,7 +212,7 @@ jobs:
                       -e GITHUB_REPO="${CIRCLE_PROJECT_REPONAME}" \
                       -e GITHUB_COMMENT_TYPE=pr \
                       -e GITHUB_PR_ISSUE_NUMBER="${CIRCLE_PR_NUMBER:-${CIRCLE_PULL_REQUEST##*/}}" \
-                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
+                      -e GITHUB_COMMENT_TEMPLATE='<p>🚀 Styleguide deploy preview ready!</p>{{.}}<!--ALPHA_DEPLOY_COMMENT-->' \
                       -e GITHUB_DELETE_COMMENT_REGEX="ALPHA_DEPLOY_COMMENT" \
                       -e GITHUB_COMMENT="${COMMENT_MSG}" \
                       cloudposse/github-commenter:0.5.0-58
