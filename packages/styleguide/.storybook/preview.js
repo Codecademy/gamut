@@ -17,6 +17,7 @@ addParameters({
     theme: gamutTheme,
     showPanel: true,
   },
+  viewMode: 'docs',
 });
 
 configure(
