@@ -1,24 +1,25 @@
-import { Button, Col, Item } from '@codecademy/gamut';
-import { ColumnSizes } from '@codecademy/gamut/dist/Layout/types';
+import { Button, Column } from '@codecademy/gamut';
+import {
+  ColumnSizes,
+  ResponsiveProperty,
+} from '@codecademy/gamut/dist/Layout/types';
 import React from 'react';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  sizing?: ColumnSizes;
+  size?: ResponsiveProperty<ColumnSizes>;
 };
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
-  sizing,
+  size,
 }) => {
   return (
-    <Col {...sizing}>
-      <Item>
-        <Button theme="brand-purple" type="submit">
-          {contents}
-        </Button>
-      </Item>
-    </Col>
+    <Column size={size}>
+      <Button theme="brand-purple" type="submit">
+        {contents}
+      </Button>
+    </Column>
   );
 };
 
