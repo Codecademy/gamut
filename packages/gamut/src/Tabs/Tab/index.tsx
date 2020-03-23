@@ -1,6 +1,8 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
+import ButtonBase from '../../ButtonBase';
+
 import s from './styles.module.scss';
 
 export type TabProps = {
@@ -34,7 +36,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     [s.disabled]: disabled,
   });
   return (
-    <div
+    <ButtonBase
       id={id}
       className={tabClasses}
       aria-selected={active}
@@ -63,7 +65,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       tabIndex={disabled ? -1 : 0}
     >
       {children}
-    </div>
+    </ButtonBase>
   );
 };
 
