@@ -1,6 +1,8 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
+import ButtonBase from '../../ButtonBase';
+
 import s from './styles.module.scss';
 
 export type TabProps = {
@@ -12,53 +14,58 @@ export type TabProps = {
   disabled?: boolean;
   onChange?: (newTabIndex: number) => void;
   tabIndex?: number;
+  defaultTheme?: boolean;
 };
 
 export const Tab: FunctionComponent<TabProps> = ({
   active,
-  activeClassName,
   children,
+  activeClassName,
   className,
   disabled,
   id,
+  defaultTheme = true,
   onChange = () => {},
   tabIndex = 0,
 }: TabProps) => {
-  const tabLinkClasses = cx(s.tab, {
+  const tabClasses = cx(s.tab, className, {
+    [s.tab_default]: defaultTheme,
     [s.active]: active,
-    [activeClassName]: active && activeClassName !== undefined,
+    [s.tab_default__active]: defaultTheme && active,
+    [activeClassName]: active && activeClassName,
+    [s.disabled]: disabled,
   });
   return (
-    <div className={cx(s.tabListItem, className)} role="tab">
-      <a
-        href={`${id}-panel`}
-        id={id}
-        className={tabLinkClasses}
-        onClick={e => {
+    <ButtonBase
+      id={id}
+      className={tabClasses}
+      aria-selected={active}
+      aria-controls={`${id}-panel`}
+      onClick={(e: React.MouseEvent) => {
+        e.preventDefault();
+
+        if (disabled) {
+          return;
+        }
+
+        onChange(tabIndex);
+      }}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        if (disabled) {
+          return;
+        }
+
+        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
+        if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
-
-          if (disabled) {
-            return;
-          }
-
           onChange(tabIndex);
-        }}
-        onKeyDown={e => {
-          if (disabled) {
-            return;
-          }
-
-          // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            onChange(tabIndex);
-          }
-        }}
-        tabIndex={disabled ? -1 : 0}
-      >
-        {children}
-      </a>
-    </div>
+        }
+      }}
+      role="tab"
+      tabIndex={disabled ? -1 : 0}
+    >
+      {children}
+    </ButtonBase>
   );
 };
 
