@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.1...@codecademy/gamut@2.8.0) (2020-03-23)
+
+
+### Features
+
+* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+
+
+
+
+
 ## [2.7.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.0...@codecademy/gamut@2.7.1) (2020-03-10)
 
 **Note:** Version bump only for package @codecademy/gamut

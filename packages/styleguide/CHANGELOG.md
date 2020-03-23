@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-23)
+
+
+### Features
+
+* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
+
 ## [3.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
 
 **Note:** Version bump only for package @codecademy/styleguide

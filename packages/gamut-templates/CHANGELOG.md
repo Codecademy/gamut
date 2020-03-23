@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-templates@2.3.4...@codecademy/gamut-templates@2.4.0) (2020-03-23)
+
+
+### Features
+
+* gridform touchups ([#653](https://github.com/Codecademy/client-modules/issues/653)) ([50b72e0](https://github.com/Codecademy/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
+
 ## [2.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-templates@2.3.3...@codecademy/gamut-templates@2.3.4) (2020-03-10)
 
 **Note:** Version bump only for package @codecademy/gamut-templates
