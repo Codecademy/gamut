@@ -86,7 +86,7 @@ describe('Testimonial', () => {
     expect(containerClassName).toContain(styles.mediumContainer);
   });
 
-  it('adds the large and medium class to the content container when its size is large', () => {
+  it('adds the large class to the content container when its size is large', () => {
     const wrapper = mount(
       <Testimonial
         name={exampleTestmonial.name}
@@ -101,9 +101,7 @@ describe('Testimonial', () => {
       .find('div.largeContainer')
       .prop('className');
 
-    expect(containerClassName).toContain(
-      `${styles.largeContainer} ${styles.mediumContainer}`
-    );
+    expect(containerClassName).toContain(styles.largeContainer);
   });
 
   it('renders the Avatar component when an imageUrl prop is present', () => {
