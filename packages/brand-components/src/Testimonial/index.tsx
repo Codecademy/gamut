@@ -5,21 +5,20 @@ import cx from 'classnames';
 
 import s from './styles.module.scss';
 
-type TestimonialContent = {
+type TestimonialProps = {
   name: string;
   occupation: string;
-  imageUrl?: string;
   quote: string;
-};
-
-type TestimonialProps = {
-  testimonial?: TestimonialContent;
-  size: 'small'; // TODO: 'medium' and 'large'
+  imageUrl?: string;
+  size: 'small' | 'medium' | 'large';
   theme: VisualTheme;
 };
 
 export const Testimonial: React.FC<TestimonialProps> = ({
-  testimonial,
+  name,
+  occupation,
+  imageUrl,
+  quote,
   size,
   theme,
 }) => {
@@ -31,27 +30,22 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       })}
     >
       <div className={s.testimonialCardContainer}>
-        <div
-          className={cx(s.contentContainer, s[`${size}Container`], {
-            [s.darkContainer]: theme === VisualTheme.DarkMode,
-            [s.lightContainer]: theme === VisualTheme.LightMode,
-          })}
-        >
-          <div className={s.avatarContainer}>
-            <Avatar
-              src={testimonial.imageUrl}
-              alt={`Photo of ${testimonial.name}`}
-              theme={theme}
-            />
-          </div>
-          <div className={cx(s.bylineContainer, s[`${size}Byline`])}>
-            <Byline
-              name={testimonial.name}
-              occupation={testimonial.occupation}
-            />
+        <div className={cx(s.contentContainer, s[`${size}Container`])}>
+          {imageUrl && (
+            <div className={s.avatarContainer}>
+              <Avatar
+                src={imageUrl}
+                alt={`Photo of ${name}`}
+                theme={theme}
+                className={cx({ [s.largeContainerAvatar]: size === 'large' })}
+              />
+            </div>
+          )}
+          <div className={s.bylineContainer}>
+            <Byline name={name} occupation={occupation} />
           </div>
           <div className={s.quoteContainer}>
-            <Quote text={testimonial.quote} theme={theme} />
+            <Quote text={quote} theme={theme} />
           </div>
         </div>
       </div>
