@@ -84,9 +84,11 @@ $background-pattern-offset: px-rem(16px);
 
 .smallContainer {
   padding: 1.75rem 1.5rem 2rem;
-  max-width: px-rem(396px);
+  max-width: px-rem(364px);
   grid-template-columns: auto 1fr;
   grid-row-gap: 1rem;
+  grid-template-rows: 76px auto;
+
   .bylineContainer {
     max-width: px-rem(200px);
   }
@@ -101,14 +103,18 @@ $background-pattern-offset: px-rem(16px);
 .mediumContainer,
 .largeContainer {
   max-width: px-rem(708px);
-  grid-template-columns: auto 1fr;
-  grid-row-gap: 2rem;
+  grid-template-columns: px-rem(100px) 1fr;
+  grid-row-gap: 1.75rem;
   padding: 2rem 1.5rem 1.5rem;
+  grid-template-rows: 76px auto;
   @include screen-size-gte($grid-xs-min) {
-    padding: 4rem 3rem 6rem 4rem;
+    padding: 3rem 3rem 1.5rem;
   }
   .bylineContainer {
     max-width: auto;
+    @include screen-size-gte($grid-xs-min) {
+      grid-column-start: 2;
+    }
   }
   .quoteContainer {
     grid-row-start: 2;
@@ -117,10 +123,11 @@ $background-pattern-offset: px-rem(16px);
       padding-right: 2rem;
     }
   }
-  .avatarContainer ~ .quoteContainer {
+  .quoteContainer {
     grid-area: 2 / span 2;
     @include screen-size-gte($grid-xs-min) {
       grid-area: 2 / 2;
+      padding-bottom: 3rem;
     }
   }
 }
@@ -128,7 +135,8 @@ $background-pattern-offset: px-rem(16px);
 .largeContainer {
   @include sm-viewport {
     max-width: $grid-lg-min;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: px-rem(118px) 1fr;
+    grid-template-rows: minmax(px-rem(180px), auto);
     grid-row-gap: 0;
     padding: 3rem 6rem 4rem 3rem;
     .avatarContainer {
@@ -154,6 +162,7 @@ $background-pattern-offset: px-rem(16px);
       padding-left: 3rem;
       max-width: 100%;
       padding-right: 0;
+      padding-bottom: 0;
     }
     .avatarContainer ~ .quoteContainer {
       grid-area: 1;
