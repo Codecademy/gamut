@@ -33,7 +33,12 @@ export const Testimonial: React.FC<TestimonialProps> = ({
         <div className={cx(s.contentContainer, s[`${size}Container`])}>
           {imageUrl && (
             <div className={s.avatarContainer}>
-              <Avatar src={imageUrl} alt={`Photo of ${name}`} theme={theme} />
+              <Avatar
+                src={imageUrl}
+                alt={`Photo of ${name}`}
+                theme={theme}
+                className={cx({ [s.largeContainerAvatar]: size === 'large' })}
+              />
             </div>
           )}
           <div className={s.bylineContainer}>

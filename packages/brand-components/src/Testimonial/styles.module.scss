@@ -1,8 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
 $background-pattern-offset: px-rem(16px);
-$large-size: px-rem(110px);
-$large-offset: px-rem(8px);
 
 .testimonialWrapper {
   position: relative;
@@ -138,18 +136,6 @@ $large-offset: px-rem(8px);
       grid-column: 1;
       grid-row: 1;
       justify-self: center;
-      > div {
-        width: $large-size + $large-offset;
-        height: $large-size + $large-offset;
-        &::before {
-          height: $large-size;
-          width: $large-size;
-        }
-        > img {
-          width: $large-size;
-          height: $large-size;
-        }
-      }
     }
     .bylineContainer {
       grid-column: 1;
@@ -171,6 +157,26 @@ $large-offset: px-rem(8px);
     }
     .avatarContainer ~ .quoteContainer {
       grid-area: 1;
+    }
+  }
+}
+
+$large-avatar-size: px-rem(110px);
+$large-avatar-offset: px-rem(8px);
+
+.largeContainerAvatar {
+  @include sm-viewport {
+    width: $large-avatar-size + $large-avatar-offset;
+    height: $large-avatar-size + $large-avatar-offset;
+
+    &::before {
+      height: $large-avatar-size;
+      width: $large-avatar-size;
+    }
+
+    img {
+      width: $large-avatar-size;
+      height: $large-avatar-size;
     }
   }
 }
