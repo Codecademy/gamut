@@ -2,7 +2,7 @@ import React, { SVGProps, HTMLAttributes } from 'react';
 import iconMap from './iconMap';
 
 /**
- * @deprecated Directly import icons from @codecademy/gamut instead.
+ * @deprecated Directly import icons from @codecademy/gamut-icons instead.
  */
 export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
   SVGProps<SVGSVGElement> & {
@@ -14,7 +14,7 @@ export type IconPropsDeprecated = HTMLAttributes<SVGElement> &
   };
 
 /**
- * @deprecated Directly import icons from @codecademy/gamut instead.
+ * @deprecated Directly import icons from @codecademy/gamut-icons instead.
  */
 export function Icon({ name, size, ...props }: IconPropsDeprecated) {
   const MappedIcon = iconMap[name];

@@ -1,11 +1,14 @@
-import { ColSizing } from '@codecademy/gamut/dist/FlexGrid/Col';
+import {
+  ColumnSizes,
+  ResponsiveProperty,
+} from '@codecademy/gamut/dist/Layout/types';
 import { ValidationOptions } from 'react-hook-form';
 
 export type BaseFormField = {
   defaultValue?: string;
   label: string;
   name: string;
-  sizing?: ColSizing;
+  size?: ResponsiveProperty<ColumnSizes>;
 };
 
 export type GridFormTextField = BaseFormField & {

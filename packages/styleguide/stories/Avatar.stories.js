@@ -1,7 +1,8 @@
 import React from 'react';
 import { Avatar } from '../../brand-components/src/Avatar/';
-import { VisualTheme } from '@codecademy/gamut';
+import { VisualTheme } from '../../gamut/src';
 import { withKnobs, select } from '@storybook/addon-knobs';
+import styles from './Avatar-story.scss';
 
 export default {
   component: Avatar,
@@ -13,7 +14,7 @@ export const avatar = () => (
   <Avatar
     src="https://content.codecademy.com/courses/free/boba.svg"
     alt="testy"
-    size={select('size', ['regular', 'large'], 'regular')}
+    className={select('className', ['', styles.largeContainerOverride], '')}
     theme={select(
       'theme',
       [VisualTheme.LightMode, VisualTheme.DarkMode],

@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.4...@codecademy/brand-components@0.4.6) (2020-03-24)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.4...@codecademy/brand-components@0.4.5) (2020-03-24)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.3...@codecademy/brand-components@0.4.4) (2020-03-12)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.2...@codecademy/brand-components@0.4.3) (2020-03-10)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.1...@codecademy/brand-components@0.4.2) (2020-03-06)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.0...@codecademy/brand-components@0.4.1) (2020-03-05)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+# [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.3.4...@codecademy/brand-components@0.4.0) (2020-03-05)
+
+
+### Features
+
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/Codecademy/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+
+
+
+
+
+## [0.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.3.3...@codecademy/brand-components@0.3.4) (2020-03-04)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.3.2...@codecademy/brand-components@0.3.3) (2020-03-04)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## [0.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.3.1...@codecademy/brand-components@0.3.2) (2020-03-03)
 
 **Note:** Version bump only for package @codecademy/brand-components
