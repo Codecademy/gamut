@@ -135,7 +135,8 @@ $background-pattern-offset: px-rem(16px);
 .largeContainer {
   @include sm-viewport {
     max-width: $grid-lg-min;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: px-rem(118px) 1fr;
+    grid-template-rows: minmax(px-rem(180px), auto);
     grid-row-gap: 0;
     padding: 3rem 6rem 4rem 3rem;
     .avatarContainer {
@@ -161,6 +162,7 @@ $background-pattern-offset: px-rem(16px);
       padding-left: 3rem;
       max-width: 100%;
       padding-right: 0;
+      padding-bottom: 0;
     }
     .avatarContainer ~ .quoteContainer {
       grid-area: 1;
