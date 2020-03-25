@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
+
+
+### Features
+
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
+
 # [3.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
 
 
