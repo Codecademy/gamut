@@ -100,7 +100,8 @@ $large-offset: px-rem(8px);
   }
 }
 
-.mediumContainer {
+.mediumContainer,
+.largeContainer {
   max-width: px-rem(708px);
   grid-template-columns: auto 1fr;
   grid-row-gap: 2rem;
