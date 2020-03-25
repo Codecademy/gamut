@@ -25,14 +25,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   size,
   theme,
 }) => {
-  const {
-    firstName,
-    lastName,
-    occupation,
-    quote,
-    company,
-    imageUrl,
-  } = testimonial;
+  const { firstName, lastName, occupation, quote, imageUrl } = testimonial;
   return (
     <div
       className={cx(s.testimonialWrapper, {
