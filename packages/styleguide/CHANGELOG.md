@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
+
+
+### Features
+
+* add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+
+
+
+
+
 # [3.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
 
