@@ -21,3 +21,10 @@
   display: flex;
   align-items: center;
 }
+
+.company {
+  display: none;
+  @include screen-size-gte(px-rem(382px)) {
+    display: contents;
+  }
+}

@@ -6,7 +6,7 @@ import networkPin from './assets/networkPin.svg';
 type BylineClassNamesProps = {
   bylineContainer?: string;
   name?: string;
-  occupation?: string;
+  jobContainer?: string;
   location?: string;
 };
 
@@ -15,6 +15,7 @@ export type BylineProps = {
   occupation: string;
   location?: string;
   classNames?: BylineClassNamesProps;
+  company?: string;
 };
 
 export const Byline: React.FC<BylineProps> = ({
@@ -22,14 +23,18 @@ export const Byline: React.FC<BylineProps> = ({
   occupation,
   location,
   classNames = {},
+  company,
 }) => (
   <div className={cx(s.bylineContainer, classNames.bylineContainer)}>
     <span aria-label="Name" className={cx(s.name, classNames.name)}>
       {name}
     </span>
-    <span aria-label="Occupation" className={classNames.occupation}>
-      {occupation}
-    </span>
+    <div data-testid="job-container" className={classNames.jobContainer}>
+      <span aria-label="Occupation">{occupation}</span>
+      <span aria-label="Company" className={s.company}>
+        {` @ ${company}`}
+      </span>
+    </div>
     {location && (
       <div className={s.locationContainer}>
         <img

@@ -25,7 +25,17 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   size,
   theme,
 }) => {
-  const { firstName, lastName, occupation, quote, imageUrl } = testimonial;
+  const {
+    firstName,
+    lastName,
+    occupation,
+    quote,
+    imageUrl,
+    company,
+  } = testimonial;
+  const fullName = `${firstName} ${lastName}`;
+  const fullNameOverLimit = fullName.length > 22;
+
   return (
     <div
       className={cx(s.testimonialWrapper, {
@@ -46,7 +56,11 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             </div>
           )}
           <div className={s.bylineContainer}>
-            <Byline name={`${firstName} ${lastName}`} occupation={occupation} />
+            <Byline
+              name={fullNameOverLimit ? firstName : fullName}
+              occupation={occupation}
+              company={company}
+            />
           </div>
           <div className={s.quoteContainer}>
             <Quote text={quote} theme={theme} />

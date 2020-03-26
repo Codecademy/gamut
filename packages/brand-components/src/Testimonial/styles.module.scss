@@ -89,9 +89,6 @@ $background-pattern-offset: px-rem(16px);
   grid-row-gap: 1rem;
   grid-template-rows: 76px auto;
 
-  .bylineContainer {
-    max-width: px-rem(200px);
-  }
   .avatarContainer + .bylineContainer {
     grid-area: 1 / 2;
   }
@@ -111,10 +108,13 @@ $background-pattern-offset: px-rem(16px);
     padding: 3rem 3rem 1.5rem;
   }
   .bylineContainer {
-    max-width: auto;
+    grid-column: span 2;
     @include screen-size-gte($grid-xs-min) {
       grid-column-start: 2;
     }
+  }
+  .avatarContainer + .bylineContainer {
+    grid-column: span 1;
   }
   .quoteContainer {
     grid-row-start: 2;
@@ -135,8 +135,8 @@ $background-pattern-offset: px-rem(16px);
 .largeContainer {
   @include sm-viewport {
     max-width: $grid-lg-min;
-    grid-template-columns: px-rem(118px) 1fr;
-    grid-template-rows: minmax(px-rem(180px), auto);
+    grid-template-columns: 13rem 1fr;
+    grid-template-rows: minmax(13rem, auto);
     grid-row-gap: 0;
     padding: 3rem 6rem 4rem 3rem;
     .avatarContainer {
@@ -155,6 +155,7 @@ $background-pattern-offset: px-rem(16px);
     .avatarContainer + .bylineContainer {
       align-self: auto;
       padding-top: 8rem;
+      grid-column: 1;
     }
     .quoteContainer {
       grid-column: 2;

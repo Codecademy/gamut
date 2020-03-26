@@ -33,13 +33,13 @@ describe('Byline', () => {
       <Byline
         name="César Milan"
         occupation="Dog Whisperer"
-        classNames={{ occupation: 'evenCoolerStyleDawg' }}
+        classNames={{ jobContainer: 'evenCoolerStyleDawg' }}
       />
     );
 
-    const occupation = wrapper.find('span[aria-label="Occupation"]');
+    const jobContainer = wrapper.find('div[data-testid="job-container"]');
 
-    expect(occupation.prop('className')).toBe('evenCoolerStyleDawg');
+    expect(jobContainer.prop('className')).toBe('evenCoolerStyleDawg');
   });
 
   it('combines a passed down className with the default styles for the author span element', () => {
