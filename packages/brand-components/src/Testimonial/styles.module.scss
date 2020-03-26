@@ -76,6 +76,10 @@ $background-pattern-offset: px-rem(16px);
 .contentContainer {
   display: grid;
   position: relative;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
 .avatarContainer {
