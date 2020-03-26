@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.7.0...@codecademy/brand-components@0.8.0) (2020-03-26)
+
+
+### Features
+
+* transform Testimonial content container on hover ([#668](https://github.com/Codecademy/client-modules/issues/668)) ([5a06ede](https://github.com/Codecademy/client-modules/commit/5a06edea753eff18a5e58b245d60c32edef93e1e))
+
+
+
+
+
 # [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.6.0...@codecademy/brand-components@0.7.0) (2020-03-26)
 
 
