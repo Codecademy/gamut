@@ -25,7 +25,15 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   size,
   theme,
 }) => {
-  const { firstName, lastName, occupation, quote, imageUrl } = testimonial;
+  const {
+    firstName,
+    lastName,
+    occupation,
+    quote,
+    imageUrl,
+    company,
+  } = testimonial;
+
   return (
     <div
       className={cx(s.testimonialWrapper, {
@@ -46,7 +54,12 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             </div>
           )}
           <div className={s.bylineContainer}>
-            <Byline name={`${firstName} ${lastName}`} occupation={occupation} />
+            <Byline
+              firstName={firstName}
+              occupation={occupation}
+              company={company}
+              lastName={lastName}
+            />
           </div>
           <div className={s.quoteContainer}>
             <Quote text={quote} theme={theme} />
