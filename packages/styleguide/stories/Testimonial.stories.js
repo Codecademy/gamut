@@ -18,7 +18,8 @@ const imageUrl = 'https://content.codecademy.com/courses/free/boba.svg';
 const laceyTestimonial = {
   firstName: 'Lacey',
   lastName: 'Bathala',
-  occupation: 'Data Analyst',
+  occupation: 'Jr. Back-End Developer',
+  company: 'Microsoft',
 };
 
 const josephineTestimonial = {

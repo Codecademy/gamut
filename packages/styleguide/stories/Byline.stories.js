@@ -11,7 +11,8 @@ export default {
 
 export const byline = () => (
   <Byline
-    name={text('Name', 'Bill Murray')}
+    firstName={text('First Name', 'Bill')}
+    lastName={text('Last Name', 'Murray')}
     occupation={text('Occupation', 'Ghostbuster @ Ghostcademy')}
     location={text('Location', 'New York, NY', '')}
   />
@@ -23,7 +24,7 @@ byline.story = {
 
 export const bylineWithCustomClassNames = () => (
   <Byline
-    name={text('Name', 'Rihanna')}
+    firstName={text('First Name', 'Murray')}
     occupation={text('Occupation', 'CEO of Umbrella Corporation')}
     classNames={{
       bylineContainer: styles.bylineContainer,
