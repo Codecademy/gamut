@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, TabList, Tab, TabPanel } from '../../gamut/src';
+import { Tabs, TabList, Tab, TabPanel } from '../../gamut-elements/src';
 import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 
 export default {

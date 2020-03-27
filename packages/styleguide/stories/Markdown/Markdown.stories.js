@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
-import { Markdown } from '../../../gamut/src';
+import { Markdown } from '../../../gamut-elements/src';
 import exampleMarkdown from './markdown-example.md';
 
 export default {

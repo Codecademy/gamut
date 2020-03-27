@@ -1,4 +1,4 @@
-import { Modal } from '../../gamut/src';
+import { Modal } from '../../gamut-elements/src';
 import React, { useState } from 'react';
 
 export default {

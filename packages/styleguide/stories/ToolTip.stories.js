@@ -1,8 +1,8 @@
 import React from 'react';
-import { ToolTip, Button } from '../../gamut/src';
+import { ToolTip, Button } from '../../gamut-elements/src';
 import { select } from '@storybook/addon-knobs';
-import Icon from '../../gamut/src/Icon';
-import { VisualTheme } from '../../gamut/src/theming/VisualTheme';
+import Icon from '../../gamut-elements/src/Icon';
+import { VisualTheme } from '../../gamut-elements/src/theming/VisualTheme';
 
 export default {
   component: ToolTip,

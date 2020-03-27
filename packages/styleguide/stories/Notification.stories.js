@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NotificationList from '../../gamut/src/NotificationList';
+import NotificationList from '../../gamut-elements/src/NotificationList';
 
 import moment from 'moment';
 import s from './Notification-story.scss';

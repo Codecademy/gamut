@@ -11,7 +11,8 @@ module.exports = {
             paths: [
               {
                 name: '@codecademy/gamut-elements',
-                message: 'Please import directly from the `gamut/src` folder',
+                message:
+                  'Please import directly from the `gamut-elements/src` folder',
               },
             ],
             patterns: [

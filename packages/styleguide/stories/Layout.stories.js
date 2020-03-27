@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, Column } from '../../gamut/src';
+import { LayoutGrid, Column } from '../../gamut-elements/src';
 
 export default {
   component: LayoutGrid,

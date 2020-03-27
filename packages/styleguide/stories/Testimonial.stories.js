@@ -1,6 +1,6 @@
 import React from 'react';
 import { Testimonial } from '../../brand-components/src/Testimonial/';
-import { VisualTheme } from '../../gamut/src';
+import { VisualTheme } from '../../gamut-elements/src';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 export default {

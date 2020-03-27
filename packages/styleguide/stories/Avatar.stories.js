@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar } from '../../brand-components/src/Avatar/';
-import { VisualTheme } from '../../gamut/src';
+import { VisualTheme } from '../../gamut-elements/src';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import styles from './Avatar-story.scss';
 

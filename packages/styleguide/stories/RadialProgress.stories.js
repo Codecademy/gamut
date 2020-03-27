@@ -1,5 +1,5 @@
 import React from 'react';
-import { RadialProgress } from '../../gamut/src';
+import { RadialProgress } from '../../gamut-elements/src';
 import {
   withKnobs,
   text,

@@ -9,9 +9,9 @@ import {
   CardContent,
   BannerCard,
   CoverCard,
-} from '../../gamut/src/Card';
-import Icon from '../../gamut/src/Icon';
-import RadialProgress from '../../gamut/src/RadialProgress';
+} from '../../gamut-elements/src/Card';
+import Icon from '../../gamut-elements/src/Icon';
+import RadialProgress from '../../gamut-elements/src/RadialProgress';
 import { colors } from '../../gamut-styles/utils/variables';
 import styles from './Card-story.scss';
 

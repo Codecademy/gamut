@@ -1,6 +1,6 @@
 import React from 'react';
 import { Quote } from '../../brand-components/src/Quote/';
-import { VisualTheme } from '../../gamut/src';
+import { VisualTheme } from '../../gamut-elements/src';
 import styles from './Quote-story.scss';
 
 export default {

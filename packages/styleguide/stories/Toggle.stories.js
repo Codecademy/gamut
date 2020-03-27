@@ -1,5 +1,5 @@
 import React from 'react';
-import { Toggle } from '../../gamut/src';
+import { Toggle } from '../../gamut-elements/src';
 import { boolean } from '@storybook/addon-knobs';
 
 export default {

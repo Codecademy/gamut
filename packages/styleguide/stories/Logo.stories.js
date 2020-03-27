@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select, number } from '@storybook/addon-knobs';
-import { Logo } from '../../gamut/src';
+import { Logo } from '../../gamut-elements/src';
 import { selectableColors } from './helpers';
 
 export default {

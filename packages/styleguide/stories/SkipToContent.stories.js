@@ -1,4 +1,4 @@
-import { SkipToContent } from '../../gamut/src';
+import { SkipToContent } from '../../gamut-elements/src';
 import React from 'react';
 
 export default {

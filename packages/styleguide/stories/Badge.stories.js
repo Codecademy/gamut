@@ -1,4 +1,4 @@
-import { Badge } from '../../gamut/src';
+import { Badge } from '../../gamut-elements/src';
 import React from 'react';
 
 export default {

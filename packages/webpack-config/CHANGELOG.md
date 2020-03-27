@@ -5,68 +5,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [4.0.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.17.0...@codecademy/webpack-config@4.0.0) (2020-03-06)
 
-
 ### chore
 
-* updated and consolidated autoprefixer to ^9.7.4 ([#629](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/629)) ([0fb90dd](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
-
+- updated and consolidated autoprefixer to ^9.7.4 ([#629](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/629)) ([0fb90dd](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
 
 ### BREAKING CHANGES
 
-* Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
-
-
-
-
+- Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
 
 # [3.17.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.2...@codecademy/webpack-config@3.17.0) (2020-01-28)
 
-
 ### Features
 
-* add file loader options override ([#607](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/607)) ([4fe61f0](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
-
-
-
-
+- add file loader options override ([#607](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/607)) ([4fe61f0](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
 
 ## [3.16.2](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.1...@codecademy/webpack-config@3.16.2) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
-
-
-
-
 ## [3.16.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.0...@codecademy/webpack-config@3.16.1) (2019-12-05)
-
 
 ### Bug Fixes
 
-* **webpack-config:** Revert removal of id from default hashes ([#560](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/560)) ([3cd175d](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/3cd175d))
-
-
-
-
+- **webpack-config:** Revert removal of id from default hashes ([#560](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/560)) ([3cd175d](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/3cd175d))
 
 # [3.16.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.7...@codecademy/webpack-config@3.16.0) (2019-12-03)
 
-
 ### Features
 
-* **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/557)) ([4b4c36f](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4b4c36f))
-
-
-
-
+- **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/557)) ([4b4c36f](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4b4c36f))
 
 ## [3.15.7](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.6...@codecademy/webpack-config@3.15.7) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/webpack-config
-
-
-
-
 
 ## [3.15.6](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.3...@codecademy/webpack-config@3.15.6) (2019-09-03)
 
@@ -202,81 +173,81 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 <a name="3.10.2"></a>
 
-## [3.10.2](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.10.1...@codecademy/webpack-config@3.10.2) (2019-02-07)
+## [3.10.2](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.10.1...@codecademy/webpack-config@3.10.2) (2019-02-07)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
 <a name="3.10.1"></a>
 
-## [3.10.1](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.10.0...@codecademy/webpack-config@3.10.1) (2019-01-14)
+## [3.10.1](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.10.0...@codecademy/webpack-config@3.10.1) (2019-01-14)
 
 ### Bug Fixes
 
-- add more dev server headers to avoid local errors ([#156](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/156)) ([51ff9fd](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/51ff9fd))
+- add more dev server headers to avoid local errors ([#156](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/156)) ([51ff9fd](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/51ff9fd))
 
 <a name="3.10.0"></a>
 
-# [3.10.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.9.0...@codecademy/webpack-config@3.10.0) (2018-10-29)
+# [3.10.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.9.0...@codecademy/webpack-config@3.10.0) (2018-10-29)
 
 ### Features
 
-- More dev server options ([#151](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/151)) ([d181f5a](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/d181f5a))
+- More dev server options ([#151](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/151)) ([d181f5a](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/d181f5a))
 
 <a name="3.9.0"></a>
 
-# [3.9.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.8.0...@codecademy/webpack-config@3.9.0) (2018-10-25)
+# [3.9.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.8.0...@codecademy/webpack-config@3.9.0) (2018-10-25)
 
 ### Features
 
-- switch back to dev server ([#149](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/149)) ([335377e](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/335377e))
+- switch back to dev server ([#149](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/149)) ([335377e](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/335377e))
 
 <a name="3.8.0"></a>
 
-# [3.8.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.7.0...@codecademy/webpack-config@3.8.0) (2018-10-03)
+# [3.8.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.7.0...@codecademy/webpack-config@3.8.0) (2018-10-03)
 
 ### Features
 
-- Better babel 7 support ([#145](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/145)) ([49a1e23](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/49a1e23))
+- Better babel 7 support ([#145](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/145)) ([49a1e23](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/49a1e23))
 
 <a name="3.7.0"></a>
 
-# [3.7.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.6.0...@codecademy/webpack-config@3.7.0) (2018-08-30)
+# [3.7.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.6.0...@codecademy/webpack-config@3.7.0) (2018-08-30)
 
 ### Features
 
-- remove hot-loader as a dependency ([#146](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/146)) ([b3b29b0](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/b3b29b0))
+- remove hot-loader as a dependency ([#146](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/146)) ([b3b29b0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/b3b29b0))
 
 <a name="3.6.0"></a>
 
-# [3.6.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.5.0...@codecademy/webpack-config@3.6.0) (2018-08-28)
+# [3.6.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.5.0...@codecademy/webpack-config@3.6.0) (2018-08-28)
 
 ### Features
 
-- switch to webpack-serve ([#144](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/144)) ([d5389b0](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/d5389b0))
+- switch to webpack-serve ([#144](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/144)) ([d5389b0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/d5389b0))
 
 <a name="3.5.0"></a>
 
-# [3.5.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.4.0...@codecademy/webpack-config@3.5.0) (2018-08-21)
+# [3.5.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.4.0...@codecademy/webpack-config@3.5.0) (2018-08-21)
 
 ### Features
 
-- updates for babel 7 ([748b911](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/748b911))
+- updates for babel 7 ([748b911](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/748b911))
 
 <a name="3.4.0"></a>
 
-# [3.4.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.3.0...@codecademy/webpack-config@3.4.0) (2018-06-20)
+# [3.4.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.3.0...@codecademy/webpack-config@3.4.0) (2018-06-20)
 
 ### Features
 
-- Support React v16 ([#132](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/132)) ([fafaab2](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/fafaab2))
+- Support React v16 ([#132](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/132)) ([fafaab2](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/fafaab2))
 
 <a name="3.3.0"></a>
 
-# [3.3.0](http://github.com/RyzacInc/gamut/packages/webpack-config/compare/@codecademy/webpack-config@3.2.1...@codecademy/webpack-config@3.3.0) (2018-06-01)
+# [3.3.0](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/compare/@codecademy/webpack-config@3.2.1...@codecademy/webpack-config@3.3.0) (2018-06-01)
 
 ### Features
 
-- add flexbugs postcss plugin to normalize cross-browser flex-box properties ([#115](http://github.com/RyzacInc/gamut/packages/webpack-config/issues/115)) ([21e8b94](http://github.com/RyzacInc/gamut/packages/webpack-config/commit/21e8b94))
+- add flexbugs postcss plugin to normalize cross-browser flex-box properties ([#115](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/issues/115)) ([21e8b94](http://github.com/codecademy-engineering/gamut-elements/packages/webpack-config/commit/21e8b94))
 
 <a name="3.2.1"></a>
 
