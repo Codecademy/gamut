@@ -10,7 +10,7 @@ module.exports = {
           {
             paths: [
               {
-                name: '@codecademy/gamut',
+                name: '@codecademy/gamut-elements',
                 message: 'Please import directly from the `gamut/src` folder',
               },
             ],

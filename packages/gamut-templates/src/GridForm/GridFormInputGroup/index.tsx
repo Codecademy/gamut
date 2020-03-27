@@ -3,7 +3,7 @@ import {
   FormGroup,
   FormGroupLabel,
   Column,
-} from '@codecademy/gamut';
+} from '@codecademy/gamut-elements';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 

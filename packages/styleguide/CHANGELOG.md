@@ -518,19 +518,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 This means all imports that formerly pointed to the root:
 
 ```
-import Button from '@codecademy/gamut/Button'
+import Button from '@codecademy/gamut-elements/Button'
 ```
 
 now need to include the dist folder:
 
 ```
-import Button from '@codecademy/gamut/dist/Button'
+import Button from '@codecademy/gamut-elements/dist/Button'
 ```
 
 or, preferably, import the named export instead:
 
 ```
-import { Button } from '@codecademy/gamut'
+import { Button } from '@codecademy/gamut-elements'
 ```
 
 ## [2.17.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.8...@codecademy/gamut-storybook@2.17.9) (2019-10-02)

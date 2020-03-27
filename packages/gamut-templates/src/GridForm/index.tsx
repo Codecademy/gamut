@@ -1,4 +1,4 @@
-import { Form, LayoutGrid } from '@codecademy/gamut';
+import { Form, LayoutGrid } from '@codecademy/gamut-elements';
 import React, { useEffect } from 'react';
 import { useForm, FieldError } from 'react-hook-form';
 

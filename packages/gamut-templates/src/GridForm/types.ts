@@ -1,7 +1,7 @@
 import {
   ColumnSizes,
   ResponsiveProperty,
-} from '@codecademy/gamut/dist/Layout/types';
+} from '@codecademy/gamut-elements/dist/Layout/types';
 import { ValidationOptions } from 'react-hook-form';
 
 export type BaseFormField = {

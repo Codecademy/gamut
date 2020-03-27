@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { VisualTheme } from '@codecademy/gamut';
+import { VisualTheme } from '@codecademy/gamut-elements';
 
 import { Quote } from '..';
 import styles from '../styles.module.scss';

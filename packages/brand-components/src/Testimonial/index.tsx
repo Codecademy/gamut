@@ -1,6 +1,6 @@
 import React from 'react';
 import { Avatar, Byline, Quote } from '../index';
-import { VisualTheme } from '@codecademy/gamut';
+import { VisualTheme } from '@codecademy/gamut-elements';
 import cx from 'classnames';
 
 import s from './styles.module.scss';

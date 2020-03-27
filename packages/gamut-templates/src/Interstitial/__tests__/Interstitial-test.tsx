@@ -1,4 +1,4 @@
-import { Button } from '@codecademy/gamut';
+import { Button } from '@codecademy/gamut-elements';
 import { mount } from 'enzyme';
 import React from 'react';
 
