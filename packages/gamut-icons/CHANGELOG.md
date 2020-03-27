@@ -3,51 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [2.1.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.1.4...@codecademy/gamut-icons@2.1.5) (2020-01-15)
+## [2.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.1.4...@codecademy/gamut-icons@2.1.5) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-## [2.1.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.1.3...@codecademy/gamut-icons@2.1.4) (2020-01-08)
+## [2.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.1.3...@codecademy/gamut-icons@2.1.4) (2020-01-08)
 
 ### Bug Fixes
 
-- re-enable icon title props ([#594](https://github.com/codecademy-engineering/client-modules/issues/594)) ([670a7f2](https://github.com/codecademy-engineering/client-modules/commit/670a7f2))
+- re-enable icon title props ([#594](https://github.com/Codecademy/client-modules/issues/594)) ([670a7f2](https://github.com/Codecademy/client-modules/commit/670a7f2))
 
-## [2.1.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.1.2...@codecademy/gamut-icons@2.1.3) (2020-01-08)
+## [2.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.1.2...@codecademy/gamut-icons@2.1.3) (2020-01-08)
 
 ### Bug Fixes
 
-- add missing narrative icon ([#593](https://github.com/codecademy-engineering/client-modules/issues/593)) ([4d039d0](https://github.com/codecademy-engineering/client-modules/commit/4d039d0))
+- add missing narrative icon ([#593](https://github.com/Codecademy/client-modules/issues/593)) ([4d039d0](https://github.com/Codecademy/client-modules/commit/4d039d0))
 
-## [2.1.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.1.1...@codecademy/gamut-icons@2.1.2) (2020-01-07)
-
-**Note:** Version bump only for package @codecademy/gamut-icons
-
-## [2.1.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.1.0...@codecademy/gamut-icons@2.1.1) (2020-01-06)
+## [2.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.1.1...@codecademy/gamut-icons@2.1.2) (2020-01-07)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-# [2.1.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.0.2...@codecademy/gamut-icons@2.1.0) (2020-01-03)
+## [2.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.1.0...@codecademy/gamut-icons@2.1.1) (2020-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+# [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.0.2...@codecademy/gamut-icons@2.1.0) (2020-01-03)
 
 ### Features
 
-- various icon build updates([#584](https://github.com/codecademy-engineering/client-modules/issues/584)) ([47a1283](https://github.com/codecademy-engineering/client-modules/commit/47a1283))
+- various icon build updates([#584](https://github.com/Codecademy/client-modules/issues/584)) ([47a1283](https://github.com/Codecademy/client-modules/commit/47a1283))
 
-## [2.0.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.0.1...@codecademy/gamut-icons@2.0.2) (2019-12-27)
+## [2.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.0.1...@codecademy/gamut-icons@2.0.2) (2019-12-27)
 
 ### Bug Fixes
 
-- Set default size on icons, fix colors on some icons ([#577](https://github.com/codecademy-engineering/client-modules/issues/577)) ([049d1dd](https://github.com/codecademy-engineering/client-modules/commit/049d1dd))
+- Set default size on icons, fix colors on some icons ([#577](https://github.com/Codecademy/client-modules/issues/577)) ([049d1dd](https://github.com/Codecademy/client-modules/commit/049d1dd))
 
-## [2.0.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@2.0.0...@codecademy/gamut-icons@2.0.1) (2019-10-08)
+## [2.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.0.0...@codecademy/gamut-icons@2.0.1) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-# [2.0.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@1.2.0...@codecademy/gamut-icons@2.0.0) (2019-10-02)
+# [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@1.2.0...@codecademy/gamut-icons@2.0.0) (2019-10-02)
 
 ### Code Refactoring
 
-- move gamut out of root folder ([#494](https://github.com/codecademy-engineering/client-modules/issues/494)) ([c475cdf](https://github.com/codecademy-engineering/client-modules/commit/c475cdf))
+- move gamut out of root folder ([#494](https://github.com/Codecademy/client-modules/issues/494)) ([c475cdf](https://github.com/Codecademy/client-modules/commit/c475cdf))
 
 ### BREAKING CHANGES
 
@@ -71,21 +71,21 @@ or, preferably, import the named export instead:
 import { Button } from '@codecademy/gamut-elements'
 ```
 
-# [1.2.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@1.1.4...@codecademy/gamut-icons@1.2.0) (2019-09-04)
+# [1.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@1.1.4...@codecademy/gamut-icons@1.2.0) (2019-09-04)
 
 ### Features
 
-- **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/codecademy-engineering/client-modules/commit/2dd0f36))
+- **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/Codecademy/client-modules/commit/2dd0f36))
 
-## [1.1.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.4) (2019-09-03)
-
-**Note:** Version bump only for package @codecademy/gamut-icons
-
-## [1.1.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.3) (2019-08-28)
+## [1.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.4) (2019-09-03)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-## [1.1.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.2) (2019-08-20)
+## [1.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.3) (2019-08-28)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+## [1.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@1.1.1...@codecademy/gamut-icons@1.1.2) (2019-08-20)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 

@@ -11,7 +11,7 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:codecademy-engineering/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",

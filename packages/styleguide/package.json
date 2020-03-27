@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:codecademy-engineering/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "7.8.3",

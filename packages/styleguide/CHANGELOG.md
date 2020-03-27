@@ -3,129 +3,129 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [3.16.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
+# [3.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
 ### Features
 
-- add company and full name info to Testimonial ([aa150cd](https://github.com/codecademy-engineering/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+- add company and full name info to Testimonial ([aa150cd](https://github.com/Codecademy/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
 
-# [3.15.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
-
-### Features
-
-- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/codecademy-engineering/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-- add medium and large sizes to testimonial ([9bcffc4](https://github.com/codecademy-engineering/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
-
-# [3.14.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
+# [3.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
 ### Features
 
-- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/codecademy-engineering/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-- add medium and large sizes to testimonial ([9bcffc4](https://github.com/codecademy-engineering/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+- add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
 
-# [3.13.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
-
-### Features
-
-- gridform touchups ([#653](https://github.com/codecademy-engineering/client-modules/issues/653)) ([50b72e0](https://github.com/codecademy-engineering/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
-
-# [3.12.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-24)
+# [3.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
 
 ### Features
 
-- gridform touchups ([#653](https://github.com/codecademy-engineering/client-modules/issues/653)) ([50b72e0](https://github.com/codecademy-engineering/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+- add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
 
-## [3.11.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
+# [3.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
+
+### Features
+
+- gridform touchups ([#653](https://github.com/Codecademy/client-modules/issues/653)) ([50b72e0](https://github.com/Codecademy/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+# [3.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-24)
+
+### Features
+
+- gridform touchups ([#653](https://github.com/Codecademy/client-modules/issues/653)) ([50b72e0](https://github.com/Codecademy/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+## [3.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-## [3.11.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
+## [3.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-## [3.11.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
+## [3.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-# [3.11.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
+# [3.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
 
 ### Features
 
-- added basic Modal primitive to Gamut ([#641](https://github.com/codecademy-engineering/client-modules/issues/641)) ([df9fa1f](https://github.com/codecademy-engineering/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+- added basic Modal primitive to Gamut ([#641](https://github.com/Codecademy/client-modules/issues/641)) ([df9fa1f](https://github.com/Codecademy/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
 
-## [3.10.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
+## [3.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-# [3.10.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
+# [3.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
 
 ### Features
 
-- allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/codecademy-engineering/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+- allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/Codecademy/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
 
-## [3.9.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
+## [3.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
 
 ### Bug Fixes
 
-- fixes responsive prop configs for layout grid ([#648](https://github.com/codecademy-engineering/client-modules/issues/648)) ([6cd2d23](https://github.com/codecademy-engineering/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+- fixes responsive prop configs for layout grid ([#648](https://github.com/Codecademy/client-modules/issues/648)) ([6cd2d23](https://github.com/Codecademy/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
 
-# [3.9.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
-
-### Features
-
-- add column offsets to layoutgrid ([#644](https://github.com/codecademy-engineering/client-modules/issues/644)) ([43e7042](https://github.com/codecademy-engineering/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
-
-# [3.8.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
+# [3.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
 
 ### Features
 
-- added GridForm component ([#605](https://github.com/codecademy-engineering/client-modules/issues/605)) ([253acad](https://github.com/codecademy-engineering/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+- add column offsets to layoutgrid ([#644](https://github.com/Codecademy/client-modules/issues/644)) ([43e7042](https://github.com/Codecademy/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
 
-# [3.7.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
+# [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
 
 ### Features
 
-- **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/codecademy-engineering/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+- added GridForm component ([#605](https://github.com/Codecademy/client-modules/issues/605)) ([253acad](https://github.com/Codecademy/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
 
-## [3.6.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
+# [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
+
+### Features
+
+- **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/Codecademy/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+
+## [3.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-## [3.6.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
+## [3.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-# [3.6.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
+# [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
 
 ### Features
 
-- create Byline brand component ([e330622](https://github.com/codecademy-engineering/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+- create Byline brand component ([e330622](https://github.com/Codecademy/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
 
-## [3.5.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
+## [3.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-# [3.5.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
+# [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
 
 ### Features
 
-- initialize Brand Components package with Avatar component ([7d7c667](https://github.com/codecademy-engineering/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+- initialize Brand Components package with Avatar component ([7d7c667](https://github.com/Codecademy/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
 
-## [3.4.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
+## [3.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
 
 ### Bug Fixes
 
-- **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/codecademy-engineering/client-modules/issues/624)) ([5aa8800](https://github.com/codecademy-engineering/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+- **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/Codecademy/client-modules/issues/624)) ([5aa8800](https://github.com/Codecademy/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
 
-## [3.4.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-## [3.4.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
+## [3.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
-## [3.4.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
+## [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+## [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
@@ -133,143 +133,143 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- Remove storybook package aliases ([#610](https://github.com/codecademy-engineering/client-modules/issues/610)) ([317f7f7](https://github.com/codecademy-engineering/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
+- Remove storybook package aliases ([#610](https://github.com/Codecademy/client-modules/issues/610)) ([317f7f7](https://github.com/Codecademy/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
 
-## [3.3.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.3.0...@codecademy/gamut-storybook@3.3.1) (2020-01-27)
+## [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.3.0...@codecademy/gamut-storybook@3.3.1) (2020-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-# [3.3.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
+# [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
 
 ### Features
 
-- Add Grid Primitive Components ([f58ef3d](https://github.com/codecademy-engineering/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+- Add Grid Primitive Components ([f58ef3d](https://github.com/Codecademy/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
 
-## [3.2.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [3.2.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.4...@codecademy/gamut-storybook@3.2.5) (2020-01-10)
+## [3.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.2.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.3...@codecademy/gamut-storybook@3.2.4) (2020-01-08)
+## [3.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.4...@codecademy/gamut-storybook@3.2.5) (2020-01-10)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.2.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.2...@codecademy/gamut-storybook@3.2.3) (2020-01-08)
+## [3.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.3...@codecademy/gamut-storybook@3.2.4) (2020-01-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.2.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.1...@codecademy/gamut-storybook@3.2.2) (2020-01-07)
+## [3.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.2...@codecademy/gamut-storybook@3.2.3) (2020-01-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.2.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.2.0...@codecademy/gamut-storybook@3.2.1) (2020-01-06)
+## [3.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.1...@codecademy/gamut-storybook@3.2.2) (2020-01-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-# [3.2.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.12...@codecademy/gamut-storybook@3.2.0) (2020-01-03)
+## [3.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.2.0...@codecademy/gamut-storybook@3.2.1) (2020-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+# [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.12...@codecademy/gamut-storybook@3.2.0) (2020-01-03)
 
 ### Features
 
-- various icon build updates([#584](https://github.com/codecademy-engineering/client-modules/issues/584)) ([47a1283](https://github.com/codecademy-engineering/client-modules/commit/47a1283))
+- various icon build updates([#584](https://github.com/Codecademy/client-modules/issues/584)) ([47a1283](https://github.com/Codecademy/client-modules/commit/47a1283))
 
-## [3.1.12](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.11...@codecademy/gamut-storybook@3.1.12) (2020-01-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [3.1.11](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.10...@codecademy/gamut-storybook@3.1.11) (2019-12-27)
+## [3.1.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.11...@codecademy/gamut-storybook@3.1.12) (2020-01-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.10](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.9...@codecademy/gamut-storybook@3.1.10) (2019-12-23)
+## [3.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.10...@codecademy/gamut-storybook@3.1.11) (2019-12-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.9](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.8...@codecademy/gamut-storybook@3.1.9) (2019-12-17)
+## [3.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.9...@codecademy/gamut-storybook@3.1.10) (2019-12-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.8](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.7...@codecademy/gamut-storybook@3.1.8) (2019-12-12)
+## [3.1.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.8...@codecademy/gamut-storybook@3.1.9) (2019-12-17)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.7](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.6...@codecademy/gamut-storybook@3.1.7) (2019-12-12)
+## [3.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.7...@codecademy/gamut-storybook@3.1.8) (2019-12-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.5...@codecademy/gamut-storybook@3.1.6) (2019-12-06)
+## [3.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.6...@codecademy/gamut-storybook@3.1.7) (2019-12-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.4...@codecademy/gamut-storybook@3.1.5) (2019-12-05)
+## [3.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.5...@codecademy/gamut-storybook@3.1.6) (2019-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.3...@codecademy/gamut-storybook@3.1.4) (2019-12-03)
+## [3.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.4...@codecademy/gamut-storybook@3.1.5) (2019-12-05)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.2...@codecademy/gamut-storybook@3.1.3) (2019-12-03)
+## [3.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.3...@codecademy/gamut-storybook@3.1.4) (2019-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.1.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.1...@codecademy/gamut-storybook@3.1.2) (2019-12-02)
+## [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.2...@codecademy/gamut-storybook@3.1.3) (2019-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [3.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.1...@codecademy/gamut-storybook@3.1.2) (2019-12-02)
 
 ### Bug Fixes
 
-- FormGroupDescription and Toggle accessibility ([#558](https://github.com/codecademy-engineering/client-modules/issues/558)) ([0d12c99](https://github.com/codecademy-engineering/client-modules/commit/0d12c99))
+- FormGroupDescription and Toggle accessibility ([#558](https://github.com/Codecademy/client-modules/issues/558)) ([0d12c99](https://github.com/Codecademy/client-modules/commit/0d12c99))
 
-## [3.1.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.1.0...@codecademy/gamut-storybook@3.1.1) (2019-11-18)
+## [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.1.0...@codecademy/gamut-storybook@3.1.1) (2019-11-18)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-# [3.1.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.8...@codecademy/gamut-storybook@3.1.0) (2019-11-15)
+# [3.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.8...@codecademy/gamut-storybook@3.1.0) (2019-11-15)
 
 ### Features
 
-- Banner Simplification ([1b6f6e5](https://github.com/codecademy-engineering/client-modules/commit/1b6f6e5))
+- Banner Simplification ([1b6f6e5](https://github.com/Codecademy/client-modules/commit/1b6f6e5))
 
-## [3.0.8](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.7...@codecademy/gamut-storybook@3.0.8) (2019-11-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [3.0.7](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.6...@codecademy/gamut-storybook@3.0.7) (2019-11-11)
+## [3.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.7...@codecademy/gamut-storybook@3.0.8) (2019-11-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.0.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.5...@codecademy/gamut-storybook@3.0.6) (2019-11-04)
+## [3.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.6...@codecademy/gamut-storybook@3.0.7) (2019-11-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [3.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.5...@codecademy/gamut-storybook@3.0.6) (2019-11-04)
 
 ### Bug Fixes
 
-- Update storybook & Gamut component exports ([#496](https://github.com/codecademy-engineering/client-modules/issues/496)) ([5bed74c](https://github.com/codecademy-engineering/client-modules/commit/5bed74c))
+- Update storybook & Gamut component exports ([#496](https://github.com/Codecademy/client-modules/issues/496)) ([5bed74c](https://github.com/Codecademy/client-modules/commit/5bed74c))
 
-## [3.0.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.4...@codecademy/gamut-storybook@3.0.5) (2019-11-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [3.0.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.3...@codecademy/gamut-storybook@3.0.4) (2019-10-31)
+## [3.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.4...@codecademy/gamut-storybook@3.0.5) (2019-11-01)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.0.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.2...@codecademy/gamut-storybook@3.0.3) (2019-10-31)
+## [3.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.3...@codecademy/gamut-storybook@3.0.4) (2019-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.0.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.1...@codecademy/gamut-storybook@3.0.2) (2019-10-14)
+## [3.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.2...@codecademy/gamut-storybook@3.0.3) (2019-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [3.0.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@3.0.0...@codecademy/gamut-storybook@3.0.1) (2019-10-08)
+## [3.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.1...@codecademy/gamut-storybook@3.0.2) (2019-10-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-# [3.0.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
+## [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@3.0.0...@codecademy/gamut-storybook@3.0.1) (2019-10-08)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+# [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
 
 ### Code Refactoring
 
-- move gamut out of root folder ([#494](https://github.com/codecademy-engineering/client-modules/issues/494)) ([c475cdf](https://github.com/codecademy-engineering/client-modules/commit/c475cdf))
+- move gamut out of root folder ([#494](https://github.com/Codecademy/client-modules/issues/494)) ([c475cdf](https://github.com/Codecademy/client-modules/commit/c475cdf))
 
 ### BREAKING CHANGES
 
@@ -293,57 +293,57 @@ or, preferably, import the named export instead:
 import { Button } from '@codecademy/gamut-elements'
 ```
 
-## [2.17.9](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.8...@codecademy/gamut-storybook@2.17.9) (2019-10-02)
+## [2.17.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.8...@codecademy/gamut-storybook@2.17.9) (2019-10-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.8](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.7...@codecademy/gamut-storybook@2.17.8) (2019-09-30)
+## [2.17.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.7...@codecademy/gamut-storybook@2.17.8) (2019-09-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.7](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.6...@codecademy/gamut-storybook@2.17.7) (2019-09-26)
+## [2.17.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.6...@codecademy/gamut-storybook@2.17.7) (2019-09-26)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.6](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.5...@codecademy/gamut-storybook@2.17.6) (2019-09-23)
+## [2.17.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.5...@codecademy/gamut-storybook@2.17.6) (2019-09-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.5](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.4...@codecademy/gamut-storybook@2.17.5) (2019-09-23)
+## [2.17.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.4...@codecademy/gamut-storybook@2.17.5) (2019-09-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.4](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.3...@codecademy/gamut-storybook@2.17.4) (2019-09-23)
+## [2.17.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.3...@codecademy/gamut-storybook@2.17.4) (2019-09-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.3](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.2...@codecademy/gamut-storybook@2.17.3) (2019-09-12)
+## [2.17.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.2...@codecademy/gamut-storybook@2.17.3) (2019-09-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.2](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.1...@codecademy/gamut-storybook@2.17.2) (2019-09-11)
+## [2.17.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.1...@codecademy/gamut-storybook@2.17.2) (2019-09-11)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.17.1](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.17.0...@codecademy/gamut-storybook@2.17.1) (2019-09-05)
+## [2.17.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.17.0...@codecademy/gamut-storybook@2.17.1) (2019-09-05)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-# [2.17.0](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.16.11...@codecademy/gamut-storybook@2.17.0) (2019-09-04)
+# [2.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.11...@codecademy/gamut-storybook@2.17.0) (2019-09-04)
 
 ### Features
 
-- **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/codecademy-engineering/client-modules/commit/2dd0f36))
+- **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/Codecademy/client-modules/commit/2dd0f36))
 
-## [2.16.11](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.11) (2019-09-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.10](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.10) (2019-08-28)
+## [2.16.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.11) (2019-09-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
-## [2.16.9](https://github.com/codecademy-engineering/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.9) (2019-08-20)
+## [2.16.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.10) (2019-08-28)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.16.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.9) (2019-08-20)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
@@ -720,397 +720,397 @@ import { Button } from '@codecademy/gamut-elements'
 
 - Add shared config modules for eslint & prettier ([#224](https://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](https://github.com/Codecademy/client-modules/commit/7fbeac6))
 
-# [2.7.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.6.0...@codecademy/gamut-storybook@2.7.0) (2019-03-13)
+# [2.7.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.6.0...@codecademy/gamut-storybook@2.7.0) (2019-03-13)
 
 ### Features
 
-- Adds mar 2019 colors, deprecates colors ([#211](https://github.com/codecademy-engineering/gamut-elements/issues/211)) ([c5c1e7f](https://github.com/codecademy-engineering/gamut-elements/commit/c5c1e7f))
+- Adds mar 2019 colors, deprecates colors ([#211](https://github.com/Codecademy/gamut-elements/issues/211)) ([c5c1e7f](https://github.com/Codecademy/gamut-elements/commit/c5c1e7f))
 
-# [2.6.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.14...@codecademy/gamut-storybook@2.6.0) (2019-03-13)
-
-### Features
-
-- **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/codecademy-engineering/gamut-elements/issues/221)) ([f3c9cf2](https://github.com/codecademy-engineering/gamut-elements/commit/f3c9cf2))
-
-## [2.5.14](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.13...@codecademy/gamut-storybook@2.5.14) (2019-03-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.13](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.12...@codecademy/gamut-storybook@2.5.13) (2019-03-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.12](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.11...@codecademy/gamut-storybook@2.5.12) (2019-03-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.11](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.10...@codecademy/gamut-storybook@2.5.11) (2019-03-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.10](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.9...@codecademy/gamut-storybook@2.5.10) (2019-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.9](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.8...@codecademy/gamut-storybook@2.5.9) (2019-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.8](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.7...@codecademy/gamut-storybook@2.5.8) (2019-03-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.7](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.6...@codecademy/gamut-storybook@2.5.7) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.6](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.5...@codecademy/gamut-storybook@2.5.6) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.5](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.4...@codecademy/gamut-storybook@2.5.5) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.3...@codecademy/gamut-storybook@2.5.4) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.2...@codecademy/gamut-storybook@2.5.3) (2019-03-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.1...@codecademy/gamut-storybook@2.5.2) (2019-03-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.5.0...@codecademy/gamut-storybook@2.5.1) (2019-02-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.5.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.23...@codecademy/gamut-storybook@2.5.0) (2019-02-28)
+# [2.6.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.14...@codecademy/gamut-storybook@2.6.0) (2019-03-13)
 
 ### Features
 
-- Enabled noImplicitAny globally ([#188](https://github.com/codecademy-engineering/gamut-elements/issues/188)) ([2520733](https://github.com/codecademy-engineering/gamut-elements/commit/2520733))
+- **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/Codecademy/gamut-elements/issues/221)) ([f3c9cf2](https://github.com/Codecademy/gamut-elements/commit/f3c9cf2))
+
+## [2.5.14](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.13...@codecademy/gamut-storybook@2.5.14) (2019-03-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.13](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.12...@codecademy/gamut-storybook@2.5.13) (2019-03-12)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.12](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.11...@codecademy/gamut-storybook@2.5.12) (2019-03-11)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.11](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.10...@codecademy/gamut-storybook@2.5.11) (2019-03-07)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.10](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.9...@codecademy/gamut-storybook@2.5.10) (2019-03-06)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.9](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.8...@codecademy/gamut-storybook@2.5.9) (2019-03-06)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.8](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.7...@codecademy/gamut-storybook@2.5.8) (2019-03-05)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.7](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.6...@codecademy/gamut-storybook@2.5.7) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.6](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.5...@codecademy/gamut-storybook@2.5.6) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.5](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.4...@codecademy/gamut-storybook@2.5.5) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.3...@codecademy/gamut-storybook@2.5.4) (2019-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.2...@codecademy/gamut-storybook@2.5.3) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.1...@codecademy/gamut-storybook@2.5.2) (2019-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+## [2.5.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.5.0...@codecademy/gamut-storybook@2.5.1) (2019-02-28)
+
+**Note:** Version bump only for package @codecademy/gamut-storybook
+
+# [2.5.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.23...@codecademy/gamut-storybook@2.5.0) (2019-02-28)
+
+### Features
+
+- Enabled noImplicitAny globally ([#188](https://github.com/Codecademy/gamut-elements/issues/188)) ([2520733](https://github.com/Codecademy/gamut-elements/commit/2520733))
 
 <a name="2.4.23"></a>
 
-## [2.4.23](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.22...@codecademy/gamut-storybook@2.4.23) (2019-02-27)
+## [2.4.23](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.22...@codecademy/gamut-storybook@2.4.23) (2019-02-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.22"></a>
 
-## [2.4.22](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.21...@codecademy/gamut-storybook@2.4.22) (2019-02-26)
+## [2.4.22](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.21...@codecademy/gamut-storybook@2.4.22) (2019-02-26)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.21"></a>
 
-## [2.4.21](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.20...@codecademy/gamut-storybook@2.4.21) (2019-02-25)
+## [2.4.21](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.20...@codecademy/gamut-storybook@2.4.21) (2019-02-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.20"></a>
 
-## [2.4.20](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.19...@codecademy/gamut-storybook@2.4.20) (2019-02-25)
+## [2.4.20](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.19...@codecademy/gamut-storybook@2.4.20) (2019-02-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.19"></a>
 
-## [2.4.19](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.18...@codecademy/gamut-storybook@2.4.19) (2019-02-25)
+## [2.4.19](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.18...@codecademy/gamut-storybook@2.4.19) (2019-02-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.18"></a>
 
-## [2.4.18](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.17...@codecademy/gamut-storybook@2.4.18) (2019-02-25)
+## [2.4.18](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.17...@codecademy/gamut-storybook@2.4.18) (2019-02-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.17"></a>
 
-## [2.4.17](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.16...@codecademy/gamut-storybook@2.4.17) (2019-02-18)
+## [2.4.17](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.16...@codecademy/gamut-storybook@2.4.17) (2019-02-18)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.16"></a>
 
-## [2.4.16](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.15...@codecademy/gamut-storybook@2.4.16) (2019-02-14)
+## [2.4.16](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.15...@codecademy/gamut-storybook@2.4.16) (2019-02-14)
 
 ### Bug Fixes
 
-- allow font element in markdown, fix storybook build ([#184](https://github.com/codecademy-engineering/gamut-elements/issues/184)) ([79c11eb](https://github.com/codecademy-engineering/gamut-elements/commit/79c11eb))
+- allow font element in markdown, fix storybook build ([#184](https://github.com/Codecademy/gamut-elements/issues/184)) ([79c11eb](https://github.com/Codecademy/gamut-elements/commit/79c11eb))
 
 <a name="2.4.15"></a>
 
-## [2.4.15](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.14...@codecademy/gamut-storybook@2.4.15) (2019-02-14)
+## [2.4.15](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.14...@codecademy/gamut-storybook@2.4.15) (2019-02-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.14"></a>
 
-## [2.4.14](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.13...@codecademy/gamut-storybook@2.4.14) (2019-02-14)
+## [2.4.14](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.13...@codecademy/gamut-storybook@2.4.14) (2019-02-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.13"></a>
 
-## [2.4.13](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.12...@codecademy/gamut-storybook@2.4.13) (2019-02-12)
+## [2.4.13](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.12...@codecademy/gamut-storybook@2.4.13) (2019-02-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.12"></a>
 
-## [2.4.12](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.11...@codecademy/gamut-storybook@2.4.12) (2019-02-07)
+## [2.4.12](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.11...@codecademy/gamut-storybook@2.4.12) (2019-02-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.11"></a>
 
-## [2.4.11](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.10...@codecademy/gamut-storybook@2.4.11) (2019-02-01)
+## [2.4.11](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.10...@codecademy/gamut-storybook@2.4.11) (2019-02-01)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.10"></a>
 
-## [2.4.10](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.9...@codecademy/gamut-storybook@2.4.10) (2019-01-31)
+## [2.4.10](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.9...@codecademy/gamut-storybook@2.4.10) (2019-01-31)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.9"></a>
 
-## [2.4.9](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.8...@codecademy/gamut-storybook@2.4.9) (2019-01-30)
+## [2.4.9](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.8...@codecademy/gamut-storybook@2.4.9) (2019-01-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.8"></a>
 
-## [2.4.8](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.7...@codecademy/gamut-storybook@2.4.8) (2019-01-29)
+## [2.4.8](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.7...@codecademy/gamut-storybook@2.4.8) (2019-01-29)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.7"></a>
 
-## [2.4.7](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.6...@codecademy/gamut-storybook@2.4.7) (2019-01-29)
+## [2.4.7](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.6...@codecademy/gamut-storybook@2.4.7) (2019-01-29)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.6"></a>
 
-## [2.4.6](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.5...@codecademy/gamut-storybook@2.4.6) (2019-01-28)
+## [2.4.6](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.5...@codecademy/gamut-storybook@2.4.6) (2019-01-28)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.5"></a>
 
-## [2.4.5](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.4...@codecademy/gamut-storybook@2.4.5) (2019-01-28)
+## [2.4.5](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.4...@codecademy/gamut-storybook@2.4.5) (2019-01-28)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.4"></a>
 
-## [2.4.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.3...@codecademy/gamut-storybook@2.4.4) (2019-01-25)
+## [2.4.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.3...@codecademy/gamut-storybook@2.4.4) (2019-01-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.3"></a>
 
-## [2.4.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.2...@codecademy/gamut-storybook@2.4.3) (2019-01-25)
+## [2.4.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.2...@codecademy/gamut-storybook@2.4.3) (2019-01-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.2"></a>
 
-## [2.4.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.1...@codecademy/gamut-storybook@2.4.2) (2019-01-22)
+## [2.4.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.1...@codecademy/gamut-storybook@2.4.2) (2019-01-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.1"></a>
 
-## [2.4.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.4.0...@codecademy/gamut-storybook@2.4.1) (2019-01-17)
+## [2.4.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.4.0...@codecademy/gamut-storybook@2.4.1) (2019-01-17)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.4.0"></a>
 
-# [2.4.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.3.3...@codecademy/gamut-storybook@2.4.0) (2019-01-17)
+# [2.4.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.3.3...@codecademy/gamut-storybook@2.4.0) (2019-01-17)
 
 ### Features
 
-- update markdown component to include an explicit codeblock override ([daec408](https://github.com/codecademy-engineering/gamut-elements/commit/daec408))
+- update markdown component to include an explicit codeblock override ([daec408](https://github.com/Codecademy/gamut-elements/commit/daec408))
 
 <a name="2.3.3"></a>
 
-## [2.3.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.3.2...@codecademy/gamut-storybook@2.3.3) (2019-01-16)
+## [2.3.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.3.2...@codecademy/gamut-storybook@2.3.3) (2019-01-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.3.2"></a>
 
-## [2.3.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.3.1...@codecademy/gamut-storybook@2.3.2) (2019-01-16)
+## [2.3.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.3.1...@codecademy/gamut-storybook@2.3.2) (2019-01-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.3.1"></a>
 
-## [2.3.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.3.0...@codecademy/gamut-storybook@2.3.1) (2019-01-14)
+## [2.3.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.3.0...@codecademy/gamut-storybook@2.3.1) (2019-01-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.3.0"></a>
 
-# [2.3.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.2.4...@codecademy/gamut-storybook@2.3.0) (2019-01-14)
+# [2.3.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.2.4...@codecademy/gamut-storybook@2.3.0) (2019-01-14)
 
 ### Features
 
-- Add Markdown Component ([#155](https://github.com/codecademy-engineering/gamut-elements/issues/155)) ([2254b8e](https://github.com/codecademy-engineering/gamut-elements/commit/2254b8e))
+- Add Markdown Component ([#155](https://github.com/Codecademy/gamut-elements/issues/155)) ([2254b8e](https://github.com/Codecademy/gamut-elements/commit/2254b8e))
 
 <a name="2.2.4"></a>
 
-## [2.2.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.2.3...@codecademy/gamut-storybook@2.2.4) (2018-11-14)
+## [2.2.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.2.3...@codecademy/gamut-storybook@2.2.4) (2018-11-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.2.3"></a>
 
-## [2.2.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.2.2...@codecademy/gamut-storybook@2.2.3) (2018-10-29)
+## [2.2.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.2.2...@codecademy/gamut-storybook@2.2.3) (2018-10-29)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.2.2"></a>
 
-## [2.2.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.2.1...@codecademy/gamut-storybook@2.2.2) (2018-10-25)
+## [2.2.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.2.1...@codecademy/gamut-storybook@2.2.2) (2018-10-25)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.2.1"></a>
 
-## [2.2.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.2.0...@codecademy/gamut-storybook@2.2.1) (2018-10-04)
+## [2.2.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.2.0...@codecademy/gamut-storybook@2.2.1) (2018-10-04)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.2.0"></a>
 
-# [2.2.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.10...@codecademy/gamut-storybook@2.2.0) (2018-10-03)
+# [2.2.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.10...@codecademy/gamut-storybook@2.2.0) (2018-10-03)
 
 ### Features
 
-- Better babel 7 support ([#145](https://github.com/codecademy-engineering/gamut-elements/issues/145)) ([49a1e23](https://github.com/codecademy-engineering/gamut-elements/commit/49a1e23))
+- Better babel 7 support ([#145](https://github.com/Codecademy/gamut-elements/issues/145)) ([49a1e23](https://github.com/Codecademy/gamut-elements/commit/49a1e23))
 
 <a name="2.1.10"></a>
 
-## [2.1.10](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.9...@codecademy/gamut-storybook@2.1.10) (2018-09-14)
+## [2.1.10](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.9...@codecademy/gamut-storybook@2.1.10) (2018-09-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.9"></a>
 
-## [2.1.9](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.8...@codecademy/gamut-storybook@2.1.9) (2018-08-30)
+## [2.1.9](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.8...@codecademy/gamut-storybook@2.1.9) (2018-08-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.8"></a>
 
-## [2.1.8](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.7...@codecademy/gamut-storybook@2.1.8) (2018-08-28)
+## [2.1.8](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.7...@codecademy/gamut-storybook@2.1.8) (2018-08-28)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.7"></a>
 
-## [2.1.7](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.6...@codecademy/gamut-storybook@2.1.7) (2018-08-21)
+## [2.1.7](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.6...@codecademy/gamut-storybook@2.1.7) (2018-08-21)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.6"></a>
 
-## [2.1.6](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.5...@codecademy/gamut-storybook@2.1.6) (2018-08-02)
+## [2.1.6](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.5...@codecademy/gamut-storybook@2.1.6) (2018-08-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.5"></a>
 
-## [2.1.5](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.4...@codecademy/gamut-storybook@2.1.5) (2018-07-13)
+## [2.1.5](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.4...@codecademy/gamut-storybook@2.1.5) (2018-07-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.4"></a>
 
-## [2.1.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.3...@codecademy/gamut-storybook@2.1.4) (2018-07-10)
+## [2.1.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.3...@codecademy/gamut-storybook@2.1.4) (2018-07-10)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.3"></a>
 
-## [2.1.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.2...@codecademy/gamut-storybook@2.1.3) (2018-07-09)
+## [2.1.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.2...@codecademy/gamut-storybook@2.1.3) (2018-07-09)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.2"></a>
 
-## [2.1.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.1...@codecademy/gamut-storybook@2.1.2) (2018-07-03)
+## [2.1.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.1...@codecademy/gamut-storybook@2.1.2) (2018-07-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.1"></a>
 
-## [2.1.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.1.0...@codecademy/gamut-storybook@2.1.1) (2018-06-22)
+## [2.1.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.1.0...@codecademy/gamut-storybook@2.1.1) (2018-06-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.1.0"></a>
 
-# [2.1.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.6...@codecademy/gamut-storybook@2.1.0) (2018-06-20)
+# [2.1.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.6...@codecademy/gamut-storybook@2.1.0) (2018-06-20)
 
 ### Features
 
-- Support React v16 ([#132](https://github.com/codecademy-engineering/gamut-elements/issues/132)) ([fafaab2](https://github.com/codecademy-engineering/gamut-elements/commit/fafaab2))
+- Support React v16 ([#132](https://github.com/Codecademy/gamut-elements/issues/132)) ([fafaab2](https://github.com/Codecademy/gamut-elements/commit/fafaab2))
 
 <a name="2.0.6"></a>
 
-## [2.0.6](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.5...@codecademy/gamut-storybook@2.0.6) (2018-06-20)
+## [2.0.6](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.5...@codecademy/gamut-storybook@2.0.6) (2018-06-20)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.5"></a>
 
-## [2.0.5](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.4...@codecademy/gamut-storybook@2.0.5) (2018-06-14)
+## [2.0.5](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.4...@codecademy/gamut-storybook@2.0.5) (2018-06-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.4"></a>
 
-## [2.0.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.3...@codecademy/gamut-storybook@2.0.4) (2018-06-14)
+## [2.0.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.3...@codecademy/gamut-storybook@2.0.4) (2018-06-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.3"></a>
 
-## [2.0.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.2...@codecademy/gamut-storybook@2.0.3) (2018-06-12)
+## [2.0.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.2...@codecademy/gamut-storybook@2.0.3) (2018-06-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.2"></a>
 
-## [2.0.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.1...@codecademy/gamut-storybook@2.0.2) (2018-06-12)
+## [2.0.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.1...@codecademy/gamut-storybook@2.0.2) (2018-06-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.1"></a>
 
-## [2.0.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@2.0.0...@codecademy/gamut-storybook@2.0.1) (2018-06-11)
+## [2.0.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@2.0.0...@codecademy/gamut-storybook@2.0.1) (2018-06-11)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="2.0.0"></a>
 
-# [2.0.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.28...@codecademy/gamut-storybook@2.0.0) (2018-06-11)
+# [2.0.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.28...@codecademy/gamut-storybook@2.0.0) (2018-06-11)
 
 ### Features
 
-- Merge standard & core variables ([#123](https://github.com/codecademy-engineering/gamut-elements/issues/123)) ([5bf24b0](https://github.com/codecademy-engineering/gamut-elements/commit/5bf24b0))
+- Merge standard & core variables ([#123](https://github.com/Codecademy/gamut-elements/issues/123)) ([5bf24b0](https://github.com/Codecademy/gamut-elements/commit/5bf24b0))
 
 ### BREAKING CHANGES
 
@@ -1118,230 +1118,230 @@ import { Button } from '@codecademy/gamut-elements'
 
 <a name="1.7.28"></a>
 
-## [1.7.28](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.27...@codecademy/gamut-storybook@1.7.28) (2018-05-30)
+## [1.7.28](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.27...@codecademy/gamut-storybook@1.7.28) (2018-05-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.27"></a>
 
-## [1.7.27](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.26...@codecademy/gamut-storybook@1.7.27) (2018-05-23)
+## [1.7.27](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.26...@codecademy/gamut-storybook@1.7.27) (2018-05-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.26"></a>
 
-## [1.7.26](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.25...@codecademy/gamut-storybook@1.7.26) (2018-05-22)
+## [1.7.26](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.25...@codecademy/gamut-storybook@1.7.26) (2018-05-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.25"></a>
 
-## [1.7.25](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.24...@codecademy/gamut-storybook@1.7.25) (2018-05-22)
+## [1.7.25](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.24...@codecademy/gamut-storybook@1.7.25) (2018-05-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.24"></a>
 
-## [1.7.24](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.23...@codecademy/gamut-storybook@1.7.24) (2018-05-21)
+## [1.7.24](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.23...@codecademy/gamut-storybook@1.7.24) (2018-05-21)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.23"></a>
 
-## [1.7.23](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.22...@codecademy/gamut-storybook@1.7.23) (2018-05-18)
+## [1.7.23](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.22...@codecademy/gamut-storybook@1.7.23) (2018-05-18)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.22"></a>
 
-## [1.7.22](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.21...@codecademy/gamut-storybook@1.7.22) (2018-05-16)
+## [1.7.22](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.21...@codecademy/gamut-storybook@1.7.22) (2018-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.21"></a>
 
-## [1.7.21](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.20...@codecademy/gamut-storybook@1.7.21) (2018-05-16)
+## [1.7.21](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.20...@codecademy/gamut-storybook@1.7.21) (2018-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.20"></a>
 
-## [1.7.20](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.19...@codecademy/gamut-storybook@1.7.20) (2018-05-16)
+## [1.7.20](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.19...@codecademy/gamut-storybook@1.7.20) (2018-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.19"></a>
 
-## [1.7.19](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.18...@codecademy/gamut-storybook@1.7.19) (2018-05-16)
+## [1.7.19](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.18...@codecademy/gamut-storybook@1.7.19) (2018-05-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.18"></a>
 
-## [1.7.18](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.17...@codecademy/gamut-storybook@1.7.18) (2018-05-10)
+## [1.7.18](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.17...@codecademy/gamut-storybook@1.7.18) (2018-05-10)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.17"></a>
 
-## [1.7.17](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.16...@codecademy/gamut-storybook@1.7.17) (2018-05-02)
+## [1.7.17](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.16...@codecademy/gamut-storybook@1.7.17) (2018-05-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.16"></a>
 
-## [1.7.16](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.15...@codecademy/gamut-storybook@1.7.16) (2018-05-01)
+## [1.7.16](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.15...@codecademy/gamut-storybook@1.7.16) (2018-05-01)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.15"></a>
 
-## [1.7.15](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.14...@codecademy/gamut-storybook@1.7.15) (2018-04-30)
+## [1.7.15](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.14...@codecademy/gamut-storybook@1.7.15) (2018-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.14"></a>
 
-## [1.7.14](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.13...@codecademy/gamut-storybook@1.7.14) (2018-04-30)
+## [1.7.14](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.13...@codecademy/gamut-storybook@1.7.14) (2018-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.13"></a>
 
-## [1.7.13](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.12...@codecademy/gamut-storybook@1.7.13) (2018-04-30)
+## [1.7.13](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.12...@codecademy/gamut-storybook@1.7.13) (2018-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.12"></a>
 
-## [1.7.12](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.11...@codecademy/gamut-storybook@1.7.12) (2018-04-30)
+## [1.7.12](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.11...@codecademy/gamut-storybook@1.7.12) (2018-04-30)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.11"></a>
 
-## [1.7.11](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.10...@codecademy/gamut-storybook@1.7.11) (2018-04-27)
+## [1.7.11](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.10...@codecademy/gamut-storybook@1.7.11) (2018-04-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.10"></a>
 
-## [1.7.10](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.9...@codecademy/gamut-storybook@1.7.10) (2018-04-26)
+## [1.7.10](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.9...@codecademy/gamut-storybook@1.7.10) (2018-04-26)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.9"></a>
 
-## [1.7.9](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.8...@codecademy/gamut-storybook@1.7.9) (2018-04-24)
+## [1.7.9](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.8...@codecademy/gamut-storybook@1.7.9) (2018-04-24)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.8"></a>
 
-## [1.7.8](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.7...@codecademy/gamut-storybook@1.7.8) (2018-04-19)
+## [1.7.8](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.7...@codecademy/gamut-storybook@1.7.8) (2018-04-19)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.7"></a>
 
-## [1.7.7](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.6...@codecademy/gamut-storybook@1.7.7) (2018-04-16)
+## [1.7.7](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.6...@codecademy/gamut-storybook@1.7.7) (2018-04-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.6"></a>
 
-## [1.7.6](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.5...@codecademy/gamut-storybook@1.7.6) (2018-04-16)
+## [1.7.6](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.5...@codecademy/gamut-storybook@1.7.6) (2018-04-16)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.5"></a>
 
-## [1.7.5](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.4...@codecademy/gamut-storybook@1.7.5) (2018-04-13)
+## [1.7.5](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.4...@codecademy/gamut-storybook@1.7.5) (2018-04-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.4"></a>
 
-## [1.7.4](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.3...@codecademy/gamut-storybook@1.7.4) (2018-03-22)
+## [1.7.4](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.3...@codecademy/gamut-storybook@1.7.4) (2018-03-22)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.3"></a>
 
-## [1.7.3](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.2...@codecademy/gamut-storybook@1.7.3) (2018-03-20)
+## [1.7.3](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.2...@codecademy/gamut-storybook@1.7.3) (2018-03-20)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.2"></a>
 
-## [1.7.2](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.1...@codecademy/gamut-storybook@1.7.2) (2018-03-13)
+## [1.7.2](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.1...@codecademy/gamut-storybook@1.7.2) (2018-03-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.1"></a>
 
-## [1.7.1](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.7.0...@codecademy/gamut-storybook@1.7.1) (2018-03-09)
+## [1.7.1](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.7.0...@codecademy/gamut-storybook@1.7.1) (2018-03-09)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.7.0"></a>
 
-# [1.7.0](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.18...@codecademy/gamut-storybook@1.7.0) (2018-03-09)
+# [1.7.0](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.18...@codecademy/gamut-storybook@1.7.0) (2018-03-09)
 
 ### Features
 
-- show all buttons in the main button story page ([#87](https://github.com/codecademy-engineering/gamut-elements/issues/87)) ([fbe5b24](https://github.com/codecademy-engineering/gamut-elements/commit/fbe5b24))
+- show all buttons in the main button story page ([#87](https://github.com/Codecademy/gamut-elements/issues/87)) ([fbe5b24](https://github.com/Codecademy/gamut-elements/commit/fbe5b24))
 
 <a name="1.6.18"></a>
 
-## [1.6.18](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.17...@codecademy/gamut-storybook@1.6.18) (2018-03-07)
+## [1.6.18](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.17...@codecademy/gamut-storybook@1.6.18) (2018-03-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.17"></a>
 
-## [1.6.17](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.16...@codecademy/gamut-storybook@1.6.17) (2018-03-07)
+## [1.6.17](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.16...@codecademy/gamut-storybook@1.6.17) (2018-03-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.16"></a>
 
-## [1.6.16](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.15...@codecademy/gamut-storybook@1.6.16) (2018-03-07)
+## [1.6.16](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.15...@codecademy/gamut-storybook@1.6.16) (2018-03-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.15"></a>
 
-## [1.6.15](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.14...@codecademy/gamut-storybook@1.6.15) (2018-03-06)
+## [1.6.15](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.14...@codecademy/gamut-storybook@1.6.15) (2018-03-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.14"></a>
 
-## [1.6.14](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.13...@codecademy/gamut-storybook@1.6.14) (2018-03-06)
+## [1.6.14](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.13...@codecademy/gamut-storybook@1.6.14) (2018-03-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.13"></a>
 
-## [1.6.13](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.12...@codecademy/gamut-storybook@1.6.13) (2018-03-06)
+## [1.6.13](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.12...@codecademy/gamut-storybook@1.6.13) (2018-03-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.12"></a>
 
-## [1.6.12](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.11...@codecademy/gamut-storybook@1.6.12) (2018-03-02)
+## [1.6.12](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.11...@codecademy/gamut-storybook@1.6.12) (2018-03-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.11"></a>
 
-## [1.6.11](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.10...@codecademy/gamut-storybook@1.6.11) (2018-02-21)
+## [1.6.11](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.10...@codecademy/gamut-storybook@1.6.11) (2018-02-21)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
 <a name="1.6.10"></a>
 
-## [1.6.10](https://github.com/codecademy-engineering/gamut-elements/compare/@codecademy/gamut-storybook@1.6.9...@codecademy/gamut-storybook@1.6.10) (2018-02-21)
+## [1.6.10](https://github.com/Codecademy/gamut-elements/compare/@codecademy/gamut-storybook@1.6.9...@codecademy/gamut-storybook@1.6.10) (2018-02-21)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
