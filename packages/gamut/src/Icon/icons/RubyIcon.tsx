@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const RubyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const RubyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Ruby Icon</title>

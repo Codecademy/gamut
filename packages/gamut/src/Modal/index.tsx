@@ -12,7 +12,7 @@ export type ModalProps = {
   isOpen?: boolean;
 };
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
   className,
   children,
   clickOutsideDeactivates,

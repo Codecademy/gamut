@@ -1,13 +1,13 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { presetThemes } from '../../gamut/src/Button';
+import { buttonPresetThemes } from '../../gamut/src/Button';
 import { Button, ButtonBase } from '../../gamut/src';
 import Spinner from '../../gamut/src/Spinner';
 import RadialProgress from '../../gamut/src/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
 import { deprecatedColors } from '../../gamut-styles/utils/variables';
 
-const themeKeys = [...Object.keys(presetThemes)];
+const themeKeys = [...Object.keys(buttonPresetThemes)];
 
 const brandThemeKeys = [
   'brand-red',
