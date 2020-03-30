@@ -7,7 +7,8 @@ describe('Byline', () => {
   it('displays a location when the "location" prop is passed', () => {
     const wrapper = mount(
       <Byline
-        name="César Milan"
+        firstName="César"
+        lastName="Milan"
         occupation="Dog Whisperer"
         location="Los Angeles, CA"
       />
@@ -18,7 +19,8 @@ describe('Byline', () => {
   it('passes a location className for the location span element', () => {
     const wrapper = mount(
       <Byline
-        name="César Milan"
+        firstName="César"
+        lastName="Milan"
         occupation="Dog Whisperer"
         location="Los Angeles, CA"
         classNames={{ location: 'coolStyleDawg' }}
@@ -31,28 +33,30 @@ describe('Byline', () => {
   it('passes an occupation className for the occupation span element', () => {
     const wrapper = mount(
       <Byline
-        name="César Milan"
+        firstName="César"
+        lastName="Milan"
         occupation="Dog Whisperer"
-        classNames={{ occupation: 'evenCoolerStyleDawg' }}
+        classNames={{ jobContainer: 'evenCoolerStyleDawg' }}
       />
     );
 
-    const occupation = wrapper.find('span[aria-label="Occupation"]');
+    const jobContainer = wrapper.find('div[data-testid="job-container"]');
 
-    expect(occupation.prop('className')).toBe('evenCoolerStyleDawg');
+    expect(jobContainer.prop('className')).toBe('evenCoolerStyleDawg');
   });
 
   it('combines a passed down className with the default styles for the author span element', () => {
     const wrapper = mount(
       <Byline
-        name="César Milan"
+        firstName="César"
+        lastName="Milan"
         occupation="Dog Whisperer"
-        classNames={{ name: 'boldNameText' }}
+        classNames={{ author: 'boldNameText' }}
       />
     );
 
-    const name = wrapper.find('span[aria-label="Name"]');
+    const name = wrapper.find('span[data-testid="author-container"]');
 
-    expect(name.prop('className')).toBe('name boldNameText');
+    expect(name.prop('className')).toBe('author boldNameText');
   });
 });

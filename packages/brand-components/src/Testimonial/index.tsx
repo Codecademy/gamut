@@ -5,16 +5,18 @@ import cx from 'classnames';
 
 import s from './styles.module.scss';
 
-type TestimonialContent = {
-  name: string;
+export type Testimonial = {
+  firstName: string;
+  lastName: string;
   occupation: string;
-  imageUrl?: string;
   quote: string;
+  company?: string;
+  imageUrl?: string;
 };
 
 type TestimonialProps = {
-  testimonial?: TestimonialContent;
-  size: 'small'; // TODO: 'medium' and 'large'
+  testimonial: Testimonial;
+  size: 'small' | 'medium' | 'large';
   theme: VisualTheme;
 };
 
@@ -23,6 +25,15 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   size,
   theme,
 }) => {
+  const {
+    firstName,
+    lastName,
+    occupation,
+    quote,
+    imageUrl,
+    company,
+  } = testimonial;
+
   return (
     <div
       className={cx(s.testimonialWrapper, {
@@ -31,27 +42,27 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       })}
     >
       <div className={s.testimonialCardContainer}>
-        <div
-          className={cx(s.contentContainer, s[`${size}Container`], {
-            [s.darkContainer]: theme === VisualTheme.DarkMode,
-            [s.lightContainer]: theme === VisualTheme.LightMode,
-          })}
-        >
-          <div className={s.avatarContainer}>
-            <Avatar
-              src={testimonial.imageUrl}
-              alt={`Photo of ${testimonial.name}`}
-              theme={theme}
-            />
-          </div>
-          <div className={cx(s.bylineContainer, s[`${size}Byline`])}>
+        <div className={cx(s.contentContainer, s[`${size}Container`])}>
+          {imageUrl && (
+            <div className={s.avatarContainer}>
+              <Avatar
+                src={imageUrl}
+                alt={`Photo of ${firstName} ${lastName}`}
+                theme={theme}
+                className={cx({ [s.largeContainerAvatar]: size === 'large' })}
+              />
+            </div>
+          )}
+          <div className={s.bylineContainer}>
             <Byline
-              name={testimonial.name}
-              occupation={testimonial.occupation}
+              firstName={firstName}
+              occupation={occupation}
+              company={company}
+              lastName={lastName}
             />
           </div>
           <div className={s.quoteContainer}>
-            <Quote text={testimonial.quote} theme={theme} />
+            <Quote text={quote} theme={theme} />
           </div>
         </div>
       </div>

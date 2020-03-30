@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.9.0...@codecademy/gamut@2.10.0) (2020-03-30)
+
+
+### Features
+
+* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+
+
+
+
+
+# [2.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.1...@codecademy/gamut@2.9.0) (2020-03-24)
+
+
+### Features
+
+* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+
+
+
+
+
+# [2.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.1...@codecademy/gamut@2.8.0) (2020-03-24)
+
+
+### Features
+
+* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+
+
+
+
+
+## [2.7.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.0...@codecademy/gamut@2.7.1) (2020-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [2.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.1...@codecademy/gamut@2.7.0) (2020-03-05)
+
+
+### Features
+
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
+
 ## [2.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.0...@codecademy/gamut@2.6.1) (2020-03-04)
 
 

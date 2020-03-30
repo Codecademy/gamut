@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from '../../gamut/src';
-import { Interstitial } from '../../gamut-templates/src';
+import { Interstitial } from '../../gamut-templates/src/Interstitial';
 import Triangle from '../assets/Triangle.svg';
 import Stairs from '../assets/Stairs.svg';
 
 export default {
-  component: 'Interstitial',
+  component: Interstitial,
   title: 'Templates/Interstitial',
 };
 

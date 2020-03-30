@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "2.6.1",
+  "version": "2.10.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -22,6 +22,7 @@
     "@types/marked": "^0.6.1",
     "@types/react-truncate": "^2.3.3",
     "classnames": "^2.2.5",
+    "focus-trap-react": "^6.0.0",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
     "invariant": "^2.2.4",
