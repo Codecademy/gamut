@@ -5,10 +5,17 @@
   flex-direction: column;
 }
 
-.name {
+.author {
   font-size: px-rem(18px);
   font-family: $font-family-headings;
   font-weight: bold;
+}
+
+.lastName {
+  display: none;
+  @include screen-size-gte(px-rem(320px)) {
+    display: contents;
+  }
 }
 
 .networkPin {
@@ -20,4 +27,11 @@
 .locationContainer {
   display: flex;
   align-items: center;
+}
+
+.company {
+  display: none;
+  @include screen-size-gte(px-rem(382px)) {
+    display: contents;
+  }
 }

@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.7.0...@codecademy/brand-components@0.8.0) (2020-03-26)
+
+
+### Features
+
+* transform Testimonial content container on hover ([#668](https://github.com/Codecademy/client-modules/issues/668)) ([5a06ede](https://github.com/Codecademy/client-modules/commit/5a06edea753eff18a5e58b245d60c32edef93e1e))
+
+
+
+
+
+# [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.6.0...@codecademy/brand-components@0.7.0) (2020-03-26)
+
+
+### Features
+
+* add company and full name info to Testimonial ([aa150cd](https://github.com/Codecademy/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+
+
+
+
+
+# [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.6...@codecademy/brand-components@0.6.0) (2020-03-25)
+
+
+### Bug Fixes
+
+* height and width fixes on testimonial grid ([d436195](https://github.com/Codecademy/client-modules/commit/d436195ffb4c45472abeb1e9d568a4f55811abb7))
+
+
+### Features
+
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
+
+# [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.6...@codecademy/brand-components@0.5.0) (2020-03-25)
+
+
+### Features
+
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
+
+## [0.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.4...@codecademy/brand-components@0.4.6) (2020-03-24)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.4...@codecademy/brand-components@0.4.5) (2020-03-24)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## [0.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.4.3...@codecademy/brand-components@0.4.4) (2020-03-12)
 
 **Note:** Version bump only for package @codecademy/brand-components
