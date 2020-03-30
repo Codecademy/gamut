@@ -5,6 +5,11 @@ import { withKnobs, boolean, text, number } from '@storybook/addon-knobs';
 export default {
   component: Tabs,
   title: 'Component/Tabs',
+  subcomponents: {
+    TabList,
+    Tab,
+    TabPanel,
+  },
   decorators: [withKnobs],
 };
 

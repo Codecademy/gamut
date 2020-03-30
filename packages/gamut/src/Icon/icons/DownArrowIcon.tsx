@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const DownArrowIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const DownArrowIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg transform="rotate(90)" {...props}>
       <title>Down Arrow Icon</title>

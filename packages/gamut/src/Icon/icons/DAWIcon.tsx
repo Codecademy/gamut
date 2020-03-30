@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const DAWIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const DAWIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>DAW Icon</title>
