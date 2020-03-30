@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
+
+
+### Features
+
+* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+
+
+
+
+
 # [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
 
