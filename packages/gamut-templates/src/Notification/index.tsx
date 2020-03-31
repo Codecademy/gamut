@@ -1,37 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
-import {
-  CardShell,
-  CloseIcon,
-  ButtonBase,
-  AlertIcon,
-  InformationalIcon,
-  CheckmarkIcon,
-  Button,
-} from '@codecademy/gamut';
+import { CardShell, CloseIcon, ButtonBase, Button } from '@codecademy/gamut';
+
+import { BANNER_CONFIG } from './contstants';
+import { BannerTypes, BannerCTA } from './types';
 
 import s from './styles.module.scss';
-
-export type BannerCTA = {
-  href?: string;
-  text: string;
-  onClick: () => void;
-};
-
-export type BannerTypes =
-  | 'alert'
-  | 'announcement'
-  | 'error'
-  | 'info'
-  | 'success';
-
-const BANNER_CONFIG = {
-  alert: AlertIcon,
-  error: CloseIcon,
-  info: InformationalIcon,
-  announcement: AlertIcon,
-  success: CheckmarkIcon,
-};
 
 export type NotificationProps = {
   type: BannerTypes;

@@ -59,6 +59,6 @@ $themeColors: (
 
   &:focus,
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #e9eaea;
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color-gray-200;
   }
 }
