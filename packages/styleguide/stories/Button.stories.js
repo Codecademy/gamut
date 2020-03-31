@@ -50,6 +50,9 @@ brandThemeKeys.forEach(k => {
 deprecatedThemeKeys.forEach(k => {
   themes[k] = k;
 });
+statusThemeKeys.forEach(k => {
+  themes[k] = k;
+});
 
 const btnStyle = {
   marginRight: '1rem',
@@ -109,6 +112,20 @@ export const allButtonThemes = () => {
       <h3 style={headingStyle}>Preset</h3>
       <div style={groupStyle}>
         {themeKeys.map(theme => (
+          <Button
+            key={`${theme}`}
+            style={btnStyle}
+            theme={theme}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
+          >
+            {theme}
+          </Button>
+        ))}
+      </div>
+      <h3 style={headingStyle}>Status</h3>
+      <div style={groupStyle}>
+        {statusThemeKeys.map(theme => (
           <Button
             key={`${theme}`}
             style={btnStyle}

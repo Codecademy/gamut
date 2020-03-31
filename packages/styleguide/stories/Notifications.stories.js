@@ -58,5 +58,5 @@ export const notification = () => (
 );
 
 notification.story = {
-  name: 'Quote with light theme',
+  name: 'General status notifications',
 };
