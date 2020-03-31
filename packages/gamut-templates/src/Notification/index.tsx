@@ -8,9 +8,13 @@ import { BannerTypes, BannerCTA } from './types';
 import s from './styles.module.scss';
 
 export type NotificationProps = {
+  /** Banner theme string: info, alert, success, announcement, error */
   type: BannerTypes;
+  /** Toggle the display of the theme's icon */
   showIcon: boolean;
+  /** On close callback */
   onClose: () => void;
+  /** Call to action configuration { text, href, onClick } */
   cta?: BannerCTA;
 };
 
