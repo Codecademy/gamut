@@ -229,7 +229,7 @@ export const optionalOffsetColumns = () => {
           <Column offset={{ sm: 6, md: 4, lg: 2 }} size={6}>
             <Test color="grey">sm: 6, md: 4, lg: 2</Test>
           </Column>
-          <Column offset={{ md: 4 }} size={4}>
+          <Column offset={{ sm: 0, md: 4 }} size={4}>
             <Test color="grey">no offset sm, md: 4</Test>
           </Column>
         </LayoutGrid>
