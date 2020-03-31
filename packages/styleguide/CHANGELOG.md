@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
+
+
+
+
+
 # [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
 
 
