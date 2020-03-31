@@ -60,3 +60,15 @@ export const notification = () => (
 notification.story = {
   name: 'General status notifications',
 };
+
+export const baseNotification = () => {
+  return (
+    <Notification showIcon={false} type="success">
+      You can now do this new thing with this new feature we just added!
+    </Notification>
+  );
+};
+
+baseNotification.story = {
+  name: 'Basic Notification',
+};

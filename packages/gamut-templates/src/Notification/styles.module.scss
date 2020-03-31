@@ -6,7 +6,7 @@ $themeColors: (
     "color": $color-red-800,
   ),
   "success": (
-    "background": $color-green-200,
+    "background": $color-green-100,
     "color": $color-green-800,
   ),
   "alert": (
@@ -34,7 +34,7 @@ $themeColors: (
   display: grid;
   font-size: 1rem;
   padding: px-rem(15);
-  grid-template-columns: 1fr max-content max-content;
+  grid-template-columns: 1fr max-content;
   align-items: center;
   grid-gap: 1rem;
 
@@ -85,7 +85,7 @@ $themeColors: (
     color: map-get($map, "color");
 
     &:hover {
-      color: darken(map-get($map, "color"), 10%);
+      color: darken(map-get($map, "color"), 20%);
     }
 
     &:focus,

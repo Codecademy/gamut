@@ -11,7 +11,7 @@ export type NotificationProps = {
   /** Banner theme string: info, alert, success, announcement, error */
   type?: BannerTypes;
   /** Toggle the display of the theme's icon */
-  showIcon: boolean;
+  showIcon?: boolean;
   /** On close callback */
   onClose: () => void;
   /** Call to action configuration { text, href, onClick } */
@@ -21,7 +21,7 @@ export type NotificationProps = {
 export const Notification: React.FC<NotificationProps> = ({
   children,
   type = 'info',
-  showIcon,
+  showIcon = true,
   cta,
   onClose,
 }) => {
