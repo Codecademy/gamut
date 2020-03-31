@@ -3306,9 +3306,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.9":
-  version "16.9.21"
-  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.21.tgz#99e274e2ecfab6bb93920e918341daa3198b348d"
-  integrity sha512-xpmenCMeBwJRct8vmIfczlgdOXWIWASoOM857kxKfHlVQvDltRh7IFRVfGws79iO2jkNPXOeWREyKoClzhBaQA==
+  version "16.9.29"
+  resolved "https://registry.npmjs.org/@types/react/-/react-16.9.29.tgz#41c0353b5ea916cdb7a7e89b80b09b268c87a2f8"
+  integrity sha512-aE5sV9XVqKvIR8Lqa73hXvlqBzz5hBG0jtV9jZ1uuEWRmW8KN/mdQQmsYlPx6z/b2xa8zR3jtk7WoT+2/m4suA==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
