@@ -7,8 +7,8 @@ import {
   AlertIcon,
   InformationalIcon,
   CheckmarkIcon,
+  Button,
 } from '@codecademy/gamut';
-import Button from '../../../gamut/src/Button';
 
 import s from './styles.module.scss';
 

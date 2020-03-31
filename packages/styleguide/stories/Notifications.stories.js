@@ -1,6 +1,6 @@
 import React from 'react';
 import Notification from '../../gamut-templates/src/Notification';
-import { LayoutGrid, Column } from '@codecademy/gamut';
+import { LayoutGrid, Column } from '../../gamut/src/Layout';
 
 export default {
   component: Notification,
