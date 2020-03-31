@@ -32,7 +32,7 @@ export const Notification: React.FC<NotificationProps> = ({
       {showIcon && <TypeIcon />}
       <div>{children}</div>
       {cta && (
-        <div>
+        <div className={s.ctaContainer}>
           <Button
             theme={type}
             className={s.cta}

@@ -37,10 +37,32 @@ $themeColors: (
   grid-template-columns: 1fr max-content max-content;
   align-items: center;
   grid-gap: 1rem;
+
+  @include screen-size-lte($grid-sm-min) {
+    align-items: start;
+    grid-template-columns: max-content 1fr max-content;
+    grid-template-rows: auto auto;
+  }
 }
 
 .container__icon {
   grid-template-columns: max-content 1fr max-content max-content;
+
+  @include screen-size-lte($grid-sm-min) {
+    grid-template-columns: max-content 1fr max-content;
+    grid-template-rows: auto auto;
+  }
+}
+
+.ctaContainer {
+  display: grid;
+  justify-content: end;
+  grid-template-columns: min-content;
+
+  @include screen-size-lte($grid-sm-min) {
+    grid-row-start: 2;
+    grid-column-start: 2;
+  }
 }
 
 .cta {
@@ -50,7 +72,7 @@ $themeColors: (
 
 .closeButton {
   display: flex;
-  padding: px-rem(4);
+  padding: 0 px-rem(4);
   border: none;
   border-radius: 5px;
   min-width: px-rem(24);
