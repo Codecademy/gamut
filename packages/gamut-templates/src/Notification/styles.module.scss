@@ -1,28 +1,64 @@
 @import "~@codecademy/gamut-styles/utils";
 
 $themeColors: (
-  "error": $color-red-200,
-  "success": $color-green-200,
-  "alert": $color-yellow-200,
-  "announcement": $color-purple-200,
-  "informational": $color-white
+  "error": (
+    "background": $color-red-200,
+    "color": $color-red-800,
+  ),
+  "success": (
+    "background": $color-green-200,
+    "color": $color-green-800,
+  ),
+  "alert": (
+    "background": $color-yellow-200,
+    "color": $color-yellow-800,
+  ),
+  "announcement": (
+    "background": $color-purple-200,
+    "color": $color-purple-800,
+  ),
+  "info": (
+    "background": $color-white,
+    "color": $color-gray-800,
+  ),
 );
+
+@each $theme, $map in $themeColors {
+  .container__#{$theme} {
+    background-color: map-get($map, "background");
+    color: map-get($map, "color");
+  }
+}
 
 .container {
   display: grid;
-  grid-template-columns: 1fr max-content;
+  font-size: 1rem;
+  padding: px-rem(15);
+  grid-template-columns: 1fr max-content max-content;
+  align-items: center;
   grid-gap: 1rem;
 }
 
 .container__icon {
-  grid-template-columns: max-content 1fr max-content;
-}
-
-.icon {
+  grid-template-columns: max-content 1fr max-content max-content;
 }
 
 .cta {
+  font-size: px-rem(12);
+  text-transform: uppercase;
 }
 
 .closeButton {
+  display: flex;
+  padding: px-rem(4);
+  border: none;
+  border-radius: 5px;
+  min-width: px-rem(24);
+  color: $color-gray-600;
+  background-color: transparent;
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #e9eaea;
+  }
 }

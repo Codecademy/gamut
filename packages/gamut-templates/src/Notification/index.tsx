@@ -1,6 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
-import { CardShell, Button, CloseIcon } from '@codecademy/gamut';
+import {
+  CardShell,
+  CloseIcon,
+  ButtonBase,
+  AlertIcon,
+  InformationalIcon,
+  CheckmarkIcon,
+} from '@codecademy/gamut';
+import Button from '../../../gamut/src/Button';
 
 import s from './styles.module.scss';
 
@@ -10,16 +18,23 @@ export type BannerCTA = {
   onClick: () => void;
 };
 
-export enum BannerType {
-  alert,
-  announcement,
-  error,
-  informational,
-  success,
-}
+export type BannerTypes =
+  | 'alert'
+  | 'announcement'
+  | 'error'
+  | 'info'
+  | 'success';
+
+const BANNER_CONFIG = {
+  alert: AlertIcon,
+  error: CloseIcon,
+  info: InformationalIcon,
+  announcement: AlertIcon,
+  success: CheckmarkIcon,
+};
 
 export type NotificationProps = {
-  type: BannerType;
+  type: BannerTypes;
   showIcon: boolean;
   onClose: () => void;
   cta?: BannerCTA;
@@ -27,11 +42,12 @@ export type NotificationProps = {
 
 export const Notification: React.FC<NotificationProps> = ({
   children,
-  type = BannerType.informational,
+  type = 'info',
   showIcon,
   cta,
   onClose,
 }) => {
+  const TypeIcon = BANNER_CONFIG[type];
   return (
     <CardShell
       className={cx(s.container, {
@@ -39,12 +55,13 @@ export const Notification: React.FC<NotificationProps> = ({
         [s.container__icon]: showIcon,
       })}
     >
-      {showIcon && <span />}
+      {showIcon && <TypeIcon />}
       <div>{children}</div>
       {cta && (
         <div>
           <Button
-            theme={}
+            theme={type}
+            className={s.cta}
             onClick={cta.onClick}
             link={!!cta.href}
             href={cta.href}
@@ -53,14 +70,9 @@ export const Notification: React.FC<NotificationProps> = ({
           </Button>
         </div>
       )}
-      <Button
-        flat
-        theme="brand-dark-blue"
-        className={s.closeButton}
-        onClick={onClose}
-      >
+      <ButtonBase className={s.closeButton} onClick={onClose}>
         <CloseIcon />
-      </Button>
+      </ButtonBase>
     </CardShell>
   );
 };
