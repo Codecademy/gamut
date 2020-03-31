@@ -56,7 +56,7 @@ $themeColors: (
 
 .ctaContainer {
   display: grid;
-  justify-content: end;
+  justify-content: start;
   grid-template-columns: min-content;
 
   @include screen-size-lte($grid-sm-min) {
