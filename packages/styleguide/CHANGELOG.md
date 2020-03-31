@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
+
+
+### Features
+
+* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+
+
+
+
+
 # [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
 
 
