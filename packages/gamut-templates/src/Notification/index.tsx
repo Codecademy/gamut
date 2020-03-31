@@ -9,7 +9,7 @@ import s from './styles.module.scss';
 
 export type NotificationProps = {
   /** Banner theme string: info, alert, success, announcement, error */
-  type: BannerTypes;
+  type?: BannerTypes;
   /** Toggle the display of the theme's icon */
   showIcon: boolean;
   /** On close callback */
@@ -48,7 +48,10 @@ export const Notification: React.FC<NotificationProps> = ({
           </Button>
         </div>
       )}
-      <ButtonBase className={s.closeButton} onClick={onClose}>
+      <ButtonBase
+        className={cx(s.closeButton, { [s[`closeButton__${type}`]]: type })}
+        onClick={onClose}
+      >
         <CloseIcon />
       </ButtonBase>
     </CardShell>

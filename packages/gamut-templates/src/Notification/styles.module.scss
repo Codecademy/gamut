@@ -77,11 +77,20 @@ $themeColors: (
   border: none;
   border-radius: 5px;
   min-width: px-rem(24);
-  color: $color-gray-600;
   background-color: transparent;
+}
 
-  &:focus,
-  &:active {
-    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color-gray-200;
+@each $theme, $map in $themeColors {
+  .closeButton__#{$theme} {
+    color: map-get($map, "color");
+
+    &:hover {
+      color: darken(map-get($map, "color"), 10%);
+    }
+
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 2px map-get($map, "color");
+    }
   }
 }
