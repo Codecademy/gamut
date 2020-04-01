@@ -7,12 +7,13 @@ import {
   ColumnSizes,
   ResponsiveProperty,
   OffsetColumnSizes,
+  OptionalResponsiveProperty,
 } from './types';
 import s from './styles/Column.module.scss';
 
 export type ColumnProps = {
   size: ResponsiveProperty<ColumnSizes>;
-  offset?: ResponsiveProperty<OffsetColumnSizes>;
+  offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
 } & ContainerElementProps;
 
 export const Column: React.FC<ColumnProps> = ({
