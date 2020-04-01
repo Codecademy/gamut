@@ -18,7 +18,7 @@ export * from './Menus/SideMenu';
 // Temporarily exporting under two names to ease any breaking changes
 // eslint-disable-next-line import/export
 export * from './Overlay';
-export { Overlay as Modal, OverlayProps as ModalProps } from './Overlay';
+export { Overlay as Modal } from './Overlay';
 
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
