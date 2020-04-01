@@ -91,7 +91,7 @@ $background-pattern-offset: px-rem(16px);
   max-width: px-rem(364px);
   grid-template-columns: auto 1fr;
   grid-row-gap: 1rem;
-  grid-template-rows: 76px auto;
+  grid-template-rows: minmax(px-rem(76px), auto) auto;
 
   .avatarContainer + .bylineContainer {
     grid-area: 1 / 2;
@@ -107,7 +107,7 @@ $background-pattern-offset: px-rem(16px);
   grid-template-columns: px-rem(100px) 1fr;
   grid-row-gap: 1.75rem;
   padding: 2rem 1.5rem 1.5rem;
-  grid-template-rows: 76px auto;
+  grid-template-rows: minmax(px-rem(76px), auto) auto;
   @include screen-size-gte($grid-xs-min) {
     padding: 3rem 3rem 1.5rem;
   }

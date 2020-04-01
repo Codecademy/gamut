@@ -5,14 +5,14 @@ import React from 'react';
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
 
-export type ModalProps = {
+export type OverlayProps = {
   children: React.ReactElement<any>;
   className?: string;
   clickOutsideDeactivates?: boolean;
   isOpen?: boolean;
 };
 
-export const Modal: React.FC<ModalProps> = ({
+export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideDeactivates,
@@ -33,4 +33,4 @@ export const Modal: React.FC<ModalProps> = ({
   );
 };
 
-export default Modal;
+export default Overlay;
