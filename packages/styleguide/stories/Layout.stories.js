@@ -1,5 +1,6 @@
 import React from 'react';
 import { LayoutGrid, Column } from '../../gamut/src';
+import gamut from '../../gamut-styles/utils/variables';
 
 export default {
   component: LayoutGrid,
@@ -7,16 +8,28 @@ export default {
 };
 
 const Container = ({ children }) => {
-  return <div style={{ width: '800px', maxWidth: '100%' }}>{children}</div>;
-};
-
-const Test = ({ color, children }) => {
   return (
     <div
       style={{
-        backgroundColor: color,
+        width: '100%',
+        maxWidth: '1440px',
+        padding: '25px',
+        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[100],
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Content = ({ children }) => {
+  return (
+    <div
+      style={{
+        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[500],
         color: 'white',
         display: 'grid',
+        padding: '5px 0',
         justifyContent: 'center',
         alignContent: 'center',
       }}
@@ -29,79 +42,25 @@ const Test = ({ color, children }) => {
 const KitchenSinkColumns = () => (
   <>
     <Column size={12}>
-      <Test color="grey">12</Test>
+      <Content>12</Content>
     </Column>
     <Column size={6}>
-      <Test color="grey">6</Test>
+      <Content>6</Content>
     </Column>
     <Column size={6}>
-      <Test color="grey">6</Test>
+      <Content>6</Content>
     </Column>
     <Column size={3}>
-      <Test color="grey">3</Test>
+      <Content>3</Content>
     </Column>
     <Column size={3}>
-      <Test color="grey">3</Test>
+      <Content>3</Content>
     </Column>
     <Column size={3}>
-      <Test color="grey">3</Test>
+      <Content>3</Content>
     </Column>
     <Column size={3}>
-      <Test color="grey">3</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={2}>
-      <Test color="grey">2</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
-    </Column>
-    <Column size={1}>
-      <Test color="grey">1</Test>
+      <Content>3</Content>
     </Column>
   </>
 );
@@ -110,10 +69,84 @@ export const responsiveGridGap = () => {
   return (
     <Container>
       <LayoutGrid
-        columnGap={{ sm: 'sm', md: 'md', lg: 'lg' }}
-        rowGap={{ sm: 'sm', md: 'md', lg: 'lg' }}
+        columnGap={{ xs: 'sm', lg: 'lg' }}
+        rowGap={{ xs: 'sm', lg: 'lg' }}
       >
-        <KitchenSinkColumns />
+        <Column size={12}>
+          <Content>12</Content>
+        </Column>
+        <Column size={6}>
+          <Content>6</Content>
+        </Column>
+        <Column size={6}>
+          <Content>6</Content>
+        </Column>
+        <Column size={3}>
+          <Content>3</Content>
+        </Column>
+        <Column size={3}>
+          <Content>3</Content>
+        </Column>
+        <Column size={3}>
+          <Content>3</Content>
+        </Column>
+        <Column size={3}>
+          <Content>3</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={2}>
+          <Content>2</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
+        <Column size={1}>
+          <Content>1</Content>
+        </Column>
       </LayoutGrid>
     </Container>
   );
@@ -198,19 +231,19 @@ export const offsets = () => {
     <Container>
       <LayoutGrid rowGap="sm" columnGap="sm">
         <Column offset={2} size={4}>
-          <Test color="grey">2 Column offset</Test>
+          <Content>2 Column offset</Content>
         </Column>
         <Column size={2}>
-          <Test color="grey" />
+          <Content />
         </Column>
         <Column size={2}>
-          <Test color="grey" />
+          <Content />
         </Column>
         <Column size={4}>
-          <Test color="grey">No offset</Test>
+          <Content>No offset</Content>
         </Column>
         <Column size={4}>
-          <Test color="grey" />
+          <Content />
         </Column>
       </LayoutGrid>
     </Container>
@@ -226,11 +259,11 @@ export const optionalOffsetColumns = () => {
     <>
       <Container>
         <LayoutGrid rowGap="sm" columnGap="sm">
-          <Column offset={{ sm: 6, md: 4, lg: 2 }} size={6}>
-            <Test color="grey">sm: 6, md: 4, lg: 2</Test>
+          <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
+            <Content>sm: 6, md: 4, lg: 2</Content>
           </Column>
-          <Column offset={{ sm: 0, md: 4 }} size={4}>
-            <Test color="grey">no offset sm, md: 4</Test>
+          <Column offset={{ xs: 0, md: 4 }} size={4}>
+            <Content>no offset sm, md: 4</Content>
           </Column>
         </LayoutGrid>
       </Container>
