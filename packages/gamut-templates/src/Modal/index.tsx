@@ -9,6 +9,7 @@ export type ModalProps = {
   className?: string;
   onClose?: () => void;
   open?: boolean;
+  manuallyControlClose?: boolean;
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -16,6 +17,7 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   onClose,
   open,
+  manuallyControlClose,
 }) => {
   const [isOpen, setIsOpen] = useState(open);
   const closeModal = () => {
@@ -27,16 +29,18 @@ export const Modal: React.FC<ModalProps> = ({
     <Overlay isOpen={isOpen} className={cx(styles.modal, className)}>
       <div className={styles.modalContainer}>
         <CardShell className={styles.modalBody}>
-          <div className={styles.closeButtonContainer}>
-            <ButtonBase onClick={closeModal} className={styles.closeButton}>
-              <CloseIcon
-                color="#323233"
-                width={22}
-                height={22}
-                className={styles.closeIcon}
-              />
-            </ButtonBase>
-          </div>
+          {!manuallyControlClose && (
+            <div className={styles.closeButtonContainer}>
+              <ButtonBase onClick={closeModal} className={styles.closeButton}>
+                <CloseIcon
+                  color="#323233"
+                  width={22}
+                  height={22}
+                  className={styles.closeIcon}
+                />
+              </ButtonBase>
+            </div>
+          )}
           {children}
         </CardShell>
       </div>
