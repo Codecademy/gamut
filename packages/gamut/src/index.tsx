@@ -2,6 +2,7 @@ export * from './Badge';
 export * from './Button';
 export * from './ButtonBase';
 export * from './Banner';
+export * from './ContentContainer';
 export * from './Card/CardShell';
 export * from './Card/CardBody';
 export * from './Card/CardFooter';
