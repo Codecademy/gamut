@@ -8,7 +8,7 @@ export type ContentContainerProps = HTMLAttributes<HTMLElement> & {
   wide?: boolean;
 };
 
-const ContentContainer: React.FC<ContentContainerProps> = ({
+export const ContentContainer: React.FC<ContentContainerProps> = ({
   children,
   className,
   el,
