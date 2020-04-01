@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.11.0...@codecademy/gamut@2.12.0) (2020-04-01)
+
+
+### Features
+
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
+
 # [2.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.10.0...@codecademy/gamut@2.11.0) (2020-03-31)
 
 
