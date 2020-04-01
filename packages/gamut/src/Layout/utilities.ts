@@ -11,7 +11,7 @@ export const createClassnames = (
     switch (typeof propValue) {
       case 'number':
       case 'string': {
-        return styleMap[`${propName}_${propValue}__smScreen`];
+        return styleMap[`${propName}_${propValue}__xsScreen`];
       }
       case 'object': {
         return Object.entries(propValue).map(
