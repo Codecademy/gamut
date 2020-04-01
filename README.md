@@ -46,13 +46,17 @@ Every PR that changes files in a package publishes alpha releases that you can u
 1.  Once this check has passed, click on it, and look through the output for the alpha version number
 1.  Use this version in the other application you want to test your changes on
 
-### Commit Message Guide
+### PR Title Guide
 
 Commits follow the [Angular format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
 
-### Commit Format
+Since we use squash merges, you'll need to format your PR title to match these guidelines.
 
-The squash and merge commit should follow a convention:
+This Title format will be linted in the `probot/conventional-pr-title` status check and prevent merging.
+
+### PR Title Format
+
+When you click squash and merge, the title should follow this format:
 
 ```
 type(scope): message
@@ -69,10 +73,10 @@ test: adds test to component
 ```
 
 ```
-feat(component): :sparkles: An awesome new component
+feat(Button): :sparkles: An awesome feature for the Button component
 ```
 
-This message should go inside the title field of the message:
+Here's an example of how the squash and merge form should look:
 
 ![screen shot 2019-03-04 at 10 41 07 am](https://user-images.githubusercontent.com/6455018/53745157-79101d00-3e6c-11e9-9b5f-e35582106b31.png)
 
@@ -98,9 +102,11 @@ Optional scope for your changes
 
 **Body**
 
-Optional extra description for your changes
+Optional extra description for your changes.
 
-This is where you should describe any version breaking changes by including the text `BREAKING CHANGE:` with your description.
+This goes in the description field of the squash and merge form.
+
+**IMPORTANT:** Including the text `BREAKING CHANGE:` in your description will trigger a full version bump. If you are making changes that are incompatible with previous versions of any package, make sure you do this!
 
 ### Publishing the storybook
 
