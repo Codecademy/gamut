@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.12.0...@codecademy/gamut@2.13.0) (2020-04-01)
+
+
+### Features
+
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+* map column offset 0 to grid-column-start: auto ([#678](https://github.com/RyzacInc/client-modules/issues/678)) ([415b8c1](https://github.com/RyzacInc/client-modules/commit/415b8c1bae4067a1062cc19371526dca48e30c04))
+
+
+
+
+
 # [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.11.0...@codecademy/gamut@2.12.0) (2020-04-01)
 
 
