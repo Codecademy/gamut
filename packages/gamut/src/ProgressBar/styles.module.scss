@@ -1,0 +1,18 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.progressBar {
+  overflow: hidden;
+}
+
+.bar {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.displayedPercent {
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: right;
+  width: 100%;
+}
