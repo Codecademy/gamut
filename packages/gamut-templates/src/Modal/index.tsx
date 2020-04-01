@@ -8,7 +8,7 @@ export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
   isOpen?: boolean;
-  closeModal?: (open: boolean) => void;
+  closeModal?: () => void;
   manuallyControlClose?: boolean;
 };
 
