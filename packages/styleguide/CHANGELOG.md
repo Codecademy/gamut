@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.19.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
+
+
+### Features
+
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
+
 ## [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
 
 
