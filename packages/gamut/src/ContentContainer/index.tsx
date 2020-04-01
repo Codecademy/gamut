@@ -5,6 +5,7 @@ import s from './styles.module.scss';
 
 export type ContentContainerProps = HTMLAttributes<HTMLElement> & {
   el?: keyof ReactHTML;
+  /** Toggle a containerWide className to be applied with no max-width and smaller padding */
   wide?: boolean;
 };
 
