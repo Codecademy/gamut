@@ -26,6 +26,14 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toContain(error);
   });
 
+  it('renders a checkbox input when the field type is checkbox', () => {
+    const { wrapped } = renderComponent({
+      field: stubSelectField,
+    });
+
+    expect(wrapped.find('input[type=checkbox]')).toHaveLength(1);
+  });
+
   it('renders a select when the field type is select', () => {
     const { wrapped } = renderComponent({
       field: stubSelectField,
