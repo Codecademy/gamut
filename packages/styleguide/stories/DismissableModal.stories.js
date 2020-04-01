@@ -1,17 +1,26 @@
 import React from 'react';
-import { DismissableModal } from '../../gamut-templates';
+import { Modal } from '../../gamut-templates';
+import { Button } from '../../gamut/src';
 
 export default {
-  component: DismissableModal,
-  title: 'Templates/DismissableModal',
+  component: Modal,
+  title: 'Templates/Modal',
 };
 
-export const dismissableModal = () => (
+export const Modal = () => (
   <>
-    <DismissableModal>Dismiss me!</DismissableModal>
+    <Modal
+      modalOpener={
+        <Button link href="#">
+          Click this to open the modal!
+        </Button>
+      }
+    >
+      Close the modal!
+    </Modal>
   </>
 );
 
-dismissableModal.story = {
-  name: 'DismissableModal',
+Modal.story = {
+  name: 'Modal',
 };
