@@ -14,7 +14,12 @@ export * from './Logo';
 export * from './Markdown';
 export * from './Menus/MenuItem';
 export * from './Menus/SideMenu';
-export * from './Modal';
+
+// Temporarily exporting under two names to ease any breaking changes
+// eslint-disable-next-line import/export
+export * from './Overlay';
+export { Overlay as Modal } from './Overlay';
+
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
 export * from './NotificationList/NotificationItem';

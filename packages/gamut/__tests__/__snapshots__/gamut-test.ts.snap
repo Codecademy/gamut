@@ -81,6 +81,7 @@ Array [
   "NotificationItem",
   "NotificationList",
   "NumPyIcon",
+  "Overlay",
   "PandasIcon",
   "PathIcon",
   "PhoneIcon",
