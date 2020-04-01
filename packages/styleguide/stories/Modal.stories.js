@@ -7,7 +7,7 @@ export default {
   title: 'Templates/Modal',
 };
 
-export const Modal = () => (
+export const modal = () => (
   <>
     <Modal
       modalOpener={
