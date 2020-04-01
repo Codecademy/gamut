@@ -1,4 +1,15 @@
-import { GridFormSelectField, GridFormTextField } from '../types';
+import {
+  GridFormCheckboxField,
+  GridFormSelectField,
+  GridFormTextField,
+} from '../types';
+
+export const stubCheckboxField: GridFormCheckboxField = {
+  description: 'Check me!',
+  label: 'Stub Checkbox',
+  name: 'stub-select',
+  type: 'checkbox',
+};
 
 export const stubSelectField: GridFormSelectField = {
   label: 'Stub Select',
