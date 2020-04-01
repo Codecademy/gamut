@@ -75,7 +75,7 @@ Array [
   "MAWIcon",
   "MenuIcon",
   "MenuItem",
-  "Modal",
+  "Overlay",
   "NewPageIcon",
   "NotificationIcon",
   "NotificationItem",

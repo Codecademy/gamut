@@ -1,17 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Modal from '..';
+import Overlay from '..';
 
-describe('Modal', () => {
+describe('Overlay', () => {
   it('renders null when isOpen is not true', () => {
     const wrapper = mount(
-      <Modal>
+      <Overlay>
         <div>
           Howdy!
           <button type="button" />
         </div>
-      </Modal>
+      </Overlay>
     );
 
     expect(wrapper.isEmptyRender()).toBe(true);
@@ -20,12 +20,12 @@ describe('Modal', () => {
   it('renders children when isOpen is true', () => {
     const children = 'Howdy!';
     const wrapper = mount(
-      <Modal isOpen>
+      <Overlay isOpen>
         <div>
           {children}
           <button type="button" />
         </div>
-      </Modal>
+      </Overlay>
     );
 
     expect(wrapper.text()).toEqual(children);
