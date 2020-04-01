@@ -13,14 +13,15 @@ const ModalStory = () => {
     setIsOpen(false);
   };
 
-  <Button link href="#" onClick={setIsOpen(true)}>
-    Click to open the modal!
-  </Button>;
-
   return (
-    <Modal open={isOpen} setIsOpen={closeModal}>
-      Close the modal!
-    </Modal>
+    <>
+      <Button link href="#" onClick={setIsOpen(true)}>
+        Click to open the modal!
+      </Button>
+      <Modal open={isOpen} setIsOpen={closeModal}>
+        Close the modal!
+      </Modal>
+    </>
   );
 };
 
