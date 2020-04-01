@@ -29,14 +29,14 @@ export const progressbar = () => (
         }}
       />
       <ProgressBar
-        percent={0.5}
+        percent={50}
         style={{
           backgroundColor: colors.green['200'],
           barColor: colors.green['800'],
         }}
       />
       <ProgressBar
-        percent={0.95}
+        percent={95}
         style={{
           backgroundColor: colors.gray['100'],
           barColor: colors.yellow['500'],
@@ -58,7 +58,7 @@ export const progressbar = () => (
       />
       <ProgressBar
         displayPercent
-        percent={0.5}
+        percent={50}
         style={{
           backgroundColor: colors.green['200'],
           barColor: colors.green['500'],
@@ -67,7 +67,7 @@ export const progressbar = () => (
       />
       <ProgressBar
         displayPercent
-        percent={0.95}
+        percent={95}
         style={{
           backgroundColor: colors.gray['100'],
           barColor: colors.yellow['500'],

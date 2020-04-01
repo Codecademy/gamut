@@ -5,33 +5,36 @@ import styles from './styles.module.scss';
 
 export type ProgressBarProps = {
   className?: string;
+
+  /**
+   * Whether to increase size and display the percentage as text.
+   */
   displayPercent?: boolean;
-  hiddenLabel?: string;
+
+  /**
+   * How much of the bar to fill in, as a number in [0, 100].
+   */
   percent: number;
-  style?: ProgressBarStyle;
+
+  style: ProgressBarStyle;
 };
 
 export type ProgressBarStyle = {
-  backgroundColor?: string;
-  barColor?: string;
-  fontColor?: string;
+  backgroundColor: string;
+  barColor: string;
+  fontColor: string;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   displayPercent,
-  hiddenLabel,
   percent,
-  style = {},
+  style,
 }) => {
-  const {
-    backgroundColor = 'black',
-    barColor = 'gray',
-    fontColor = 'white',
-  } = style;
+  const { backgroundColor, barColor, fontColor } = style;
   const height = displayPercent ? 36 : 6;
   const radius = `${height / 2}px`;
-  const visualPercent = `${percent * 100}%`;
+  const visualPercent = `${percent}%`;
 
   return (
     <div
@@ -45,7 +48,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         height: `${height}px`,
       }}
     >
-      {hiddenLabel && <div className={styles.hiddenLabel}>{hiddenLabel}</div>}
       <div
         className={styles.bar}
         style={{
