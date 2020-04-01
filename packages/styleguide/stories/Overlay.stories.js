@@ -29,7 +29,7 @@ const OverlayStory = () => {
       </Overlay>
       <br />
       <br />
-      Unlike the existing, legacy Overlay implementations in the monolith, this:
+      Unlike the existing, legacy Modal implementations in the monolith, this:
       <ul>
         <li>
           always assumes viewport is locked, by making content{' '}
