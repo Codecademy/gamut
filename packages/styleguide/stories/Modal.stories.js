@@ -7,19 +7,7 @@ export default {
   title: 'Templates/Modal',
 };
 
-export const modal = () => (
-  <>
-    <Modal
-      modalOpener={
-        <Button link href="#">
-          Click this to open the modal!
-        </Button>
-      }
-    >
-      Close the modal!
-    </Modal>
-  </>
-);
+export const modal = () => <Modal open={true}>Close the modal!</Modal>;
 
 Modal.story = {
   name: 'Modal',
