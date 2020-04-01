@@ -1,6 +1,10 @@
 codecov:
   require_ci_to_pass: yes
+  notify:
+    after_n_builds: 4 # Must be the # of parallel test builds in CircleCI
+    wait_for_ci: yes
 
 comment:
-  # Must be the # of parallel test builds in CircleCI
-  after_n_builds: 4
+  after_n_builds: 4 # Must be the # of parallel test builds in CircleCI
+  layout: "diff, files"
+  require_changes: true
