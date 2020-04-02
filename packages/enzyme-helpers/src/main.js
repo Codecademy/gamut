@@ -15,9 +15,7 @@ export const createEnzymeHelpers = ({
 
       // sanity checks
       expect(wrapper).toExist();
-      expect(wrapper).toExist();
-      expect(wrapper).toExist();
-      expect(wrapper).toExist();
+      wrapper.find(selector).simulate('click');
       expect(wrapper.isEmptyRender()).toBeFalsy();
 
       return { wrapper };
