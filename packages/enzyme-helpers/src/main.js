@@ -15,6 +15,7 @@ export const createEnzymeHelpers = ({
 
       // sanity checks
       expect(wrapper).toExist();
+      expect(wrapper).toExist();
       expect(wrapper.isEmptyRender()).toBeFalsy();
 
       return { wrapper };
