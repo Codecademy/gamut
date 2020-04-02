@@ -24,6 +24,7 @@ export { Overlay as Modal } from './Overlay';
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
 export * from './NotificationList/NotificationItem';
+export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './Spinner';
 export * from './theming/VisualTheme';
