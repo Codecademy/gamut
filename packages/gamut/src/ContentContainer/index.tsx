@@ -15,7 +15,6 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
   className,
   el,
   wide = false,
-  ...rest
 }) => {
   const Element = el || 'div';
   const classes = cx(
@@ -26,11 +25,7 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
     className
   );
 
-  return (
-    <Element className={classes} {...rest}>
-      {children}
-    </Element>
-  );
+  return <Element className={classes}>{children}</Element>;
 };
 
 export default ContentContainer;
