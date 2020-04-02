@@ -2,7 +2,7 @@
 
 $columnSizes: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
 
-$screenSizes: ("sm", "md", "lg");
+$screenSizes: ("xs", "sm", "md", "lg");
 
 $gapSizes: (
   "sm": $base-unit / 2,
@@ -23,6 +23,11 @@ $gapSizes: (
     }
   }
   @if $viewport == "sm" {
+    @include sm-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "xs" {
     @content;
   }
 }
