@@ -10,6 +10,7 @@ export type ModalProps = {
   isOpen?: boolean;
   closeModal?: () => void;
   manuallyControlClose?: boolean;
+  clickOutsideDeactivates?: boolean;
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -18,9 +19,14 @@ export const Modal: React.FC<ModalProps> = ({
   closeModal,
   isOpen,
   manuallyControlClose,
+  clickOutsideDeactivates,
 }) => {
   return (
-    <Overlay isOpen={isOpen} className={cx(styles.modal, className)}>
+    <Overlay
+      isOpen={isOpen}
+      className={cx(styles.modal, className)}
+      clickOutsideDeactivates={clickOutsideDeactivates}
+    >
       <div className={styles.modalContainer}>
         <CardShell className={styles.modalBody}>
           {!manuallyControlClose && (

@@ -18,7 +18,7 @@ const ModalStory = () => {
       <Button link onClick={() => setIsOpen(true)}>
         Click to open the modal!
       </Button>
-      <Modal isOpen={isOpen} closeModal={closeModal}>
+      <Modal isOpen={isOpen} closeModal={closeModal} clickOutsideDeactivates>
         Close the modal!
       </Modal>
     </div>
