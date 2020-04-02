@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { HTMLAttributes, ReactHTML } from 'react';
+import React, { ReactHTML } from 'react';
 
 import s from './styles.module.scss';
 
