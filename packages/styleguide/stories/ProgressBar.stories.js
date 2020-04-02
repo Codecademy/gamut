@@ -12,7 +12,7 @@ export default {
 
 export const progressbar = () => (
   <div className={styles.sections}>
-    ProgressBars are to be used when you'd like to indicate a known or
+    ProgressBars are to be used when you would like to indicate a known or
     somewhat-known amount of progress along a fixed course. For example, you
     might show one on a quiz page indicated how many questions have been
     completed.
