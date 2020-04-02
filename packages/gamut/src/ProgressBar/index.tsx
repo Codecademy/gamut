@@ -9,7 +9,7 @@ export type ProgressBarProps = {
   /**
    * Whether to increase size and display the percentage as text.
    */
-  displayPercent?: boolean;
+  displayLabel?: boolean;
 
   /**
    * How much of the bar to fill in, as a number in [0, 100].
@@ -27,12 +27,12 @@ export type ProgressBarStyle = {
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
-  displayPercent,
+  displayLabel,
   percent,
   style,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
-  const height = displayPercent ? 36 : 6;
+  const height = displayLabel ? 36 : 6;
   const radius = `${height / 2}px`;
   const visualPercent = `${percent}%`;
 
@@ -53,13 +53,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         style={{
           background: barColor,
           width: visualPercent,
-          ...(displayPercent && {
+          ...(displayLabel && {
             borderTopRightRadius: radius,
             borderBottomRightRadius: radius,
           }),
         }}
       >
-        {displayPercent && (
+        {displayLabel && (
           <span className={styles.displayedPercent}>{visualPercent}</span>
         )}
       </div>

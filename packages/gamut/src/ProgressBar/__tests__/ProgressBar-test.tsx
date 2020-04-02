@@ -10,15 +10,15 @@ const stubStyle = {
 };
 
 describe('ProgressBar', () => {
-  it('does not include percentage visually when displayPercent is false', () => {
+  it('does not include percentage visually when displayLabel is false', () => {
     const wrapped = mount(<ProgressBar percent={0.5} style={stubStyle} />);
 
     expect(wrapped.text()).toEqual('');
   });
 
-  it('includes percentage visually when displayPercent is true', () => {
+  it('includes percentage visually when displayLabel is true', () => {
     const wrapped = mount(
-      <ProgressBar displayPercent percent={0.5} style={stubStyle} />
+      <ProgressBar displayLabel percent={0.5} style={stubStyle} />
     );
 
     expect(wrapped.text()).toEqual('50%');

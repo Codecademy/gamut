@@ -48,7 +48,7 @@ export const progressbar = () => (
       You can opt to have them display their percentage progress as a number.
       This increases the height of the bar.
       <ProgressBar
-        displayPercent
+        displayLabel
         percent={0}
         style={{
           backgroundColor: colors.blue['100'],
@@ -57,7 +57,7 @@ export const progressbar = () => (
         }}
       />
       <ProgressBar
-        displayPercent
+        displayLabel
         percent={50}
         style={{
           backgroundColor: colors.green['200'],
@@ -66,7 +66,7 @@ export const progressbar = () => (
         }}
       />
       <ProgressBar
-        displayPercent
+        displayLabel
         percent={95}
         style={{
           backgroundColor: colors.gray['100'],
