@@ -15,7 +15,7 @@ const ModalStory = () => {
 
   return (
     <div>
-      <Button link href="#" onClick={setIsOpen(true)}>
+      <Button link onClick={() => setIsOpen(true)}>
         Click to open the modal!
       </Button>
       <Modal isOpen={isOpen} closeModal={closeModal}>
