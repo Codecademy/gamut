@@ -231,7 +231,7 @@ jobs:
       - *set_npm_token
       - run:
           name: lerna publish (alpha)
-          command: yarn lerna publish --yes --include-merged-tags --no-push --canary --preid=alpha.${CIRCLE_SHA1:0:6} --no-git-reset --dist-tag=prerelease
+          command: yarn lerna publish --yes --include-merged-tags --no-push --no-git-reset --canary --conventional-prerelease --preid=alpha --dist-tag=alpha
       - setup_remote_docker
       - run: docker pull cloudposse/github-commenter:0.5.0-58
       - run:
