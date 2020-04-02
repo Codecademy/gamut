@@ -3,7 +3,8 @@ import React, { HTMLAttributes, ReactHTML } from 'react';
 
 import s from './styles.module.scss';
 
-export type ContentContainerProps = HTMLAttributes<HTMLElement> & {
+export type ContentContainerProps = {
+  className?: string;
   el?: keyof ReactHTML;
   /** Toggle a containerWide className to be applied with no max-width and smaller padding */
   wide?: boolean;
