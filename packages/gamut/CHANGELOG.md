@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.13.0...@codecademy/gamut@2.14.0) (2020-04-02)
+
+
+### Features
+
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
+
 # [2.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.12.0...@codecademy/gamut@2.13.0) (2020-04-01)
 
 
