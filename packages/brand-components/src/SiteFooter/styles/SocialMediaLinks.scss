@@ -1,0 +1,20 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.wrapper {
+  padding-top: px-rem(3px);
+}
+
+.icon {
+  color: $color-black;
+  font-size: px-rem(20px);
+  transition: color 250ms ease-out;
+
+  &:not(:first-of-type) {
+    margin-left: 0.5rem;
+  }
+
+  &:hover {
+    color: $deprecated-gamut-blue;
+    text-decoration: none;
+  }
+}

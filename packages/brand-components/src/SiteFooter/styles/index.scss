@@ -1,0 +1,145 @@
+@import "./utils";
+
+.footerContainer {
+  background: $color-white; // protect the footer background from parent background colors
+  border-top: 1px solid $deprecated-color-grey-1;
+}
+
+.footerLinkContainer,
+.legalLocalContainer {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: $deprecated-swatches-grey-800;
+  line-height: px-rem(28px);
+}
+
+.logoContainer {
+  padding-bottom: 0;
+  a {
+    margin: 0;
+  }
+}
+
+.logoCol {
+  padding-right: 3rem;
+}
+
+.linkArea {
+  min-width: 8rem;
+  margin-bottom: 1rem;
+  a {
+    color: $deprecated-swatches-grey-800;
+  }
+}
+
+.linkHeader {
+  margin-bottom: px-rem(13px);
+  font-size: px-rem(16px);
+  color: $color-black;
+  text-transform: uppercase;
+}
+
+.footerLinkContainer {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-column-gap: 1.875rem;
+  width: inherit;
+  padding-top: 1.5rem;
+
+  @include screen-size-lte($first-responsive-breakpoint) {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 0.8125rem;
+    grid-column-gap: 1.5rem;
+  }
+}
+
+.footerReference {
+  display: block;
+  transition: color 250ms ease-out;
+  &:hover {
+    color: $deprecated-gamut-blue;
+    text-decoration: none;
+  }
+}
+
+.courses {
+  min-width: 20rem;
+  margin-bottom: 1rem;
+  @include screen-size-lte($first-responsive-breakpoint) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+  }
+}
+
+.legalLocalDivider {
+  border-top: 1px solid $deprecated-color-grey-1;
+}
+
+.legalLocalContainer {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem;
+  width: 100%;
+}
+
+.legalLinks {
+  text-align: left;
+}
+
+.madeIn {
+  color: $deprecated-color-grey-5;
+  text-align: right;
+  max-width: 49%;
+}
+
+.locale {
+  text-align: center;
+
+  @include sm-viewport {
+    text-align: right;
+  }
+}
+
+.legalLinks,
+.madeIn {
+  display: inline-block;
+  flex-grow: 1;
+  font-size: 0.875rem;
+}
+
+.keepTogether {
+  display: inline-block;
+}
+
+.helloFellowKids {
+  display: inline-block;
+  filter: saturate(0.7);
+  min-width: 1.75em;
+  text-align: center;
+}
+
+.legalLink,
+.divider {
+  margin-right: 6px;
+}
+
+.legalLink {
+  &:hover {
+    color: $deprecated-gamut-blue;
+    text-decoration: none;
+  }
+}
+
+.divider {
+  &::after {
+    content: "|";
+    font-size: 1rem;
+  }
+  &:last-of-type {
+    display: none;
+  }
+}
