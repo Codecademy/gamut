@@ -17,7 +17,7 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   closeModal,
   isOpen,
-  manuallyControlClose,
+  manuallyControlClose = false,
 }) => {
   return (
     <Overlay isOpen={isOpen} className={cx(styles.modal, className)}>

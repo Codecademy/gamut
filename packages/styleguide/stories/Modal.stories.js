@@ -14,19 +14,15 @@ const ModalStory = () => {
   };
 
   return (
-    <>
+    <p>
       <Button link href="#" onClick={setIsOpen(true)}>
         Click to open the modal!
       </Button>
-      <Modal open={isOpen} setIsOpen={closeModal}>
+      <Modal isOpen={isOpen} closeModal={closeModal}>
         Close the modal!
       </Modal>
-    </>
+    </p>
   );
 };
 
-Modal.story = {
-  name: 'Modal',
-};
-
-export const modal = () => <Modal />;
+export const modal = () => <ModalStory />;
