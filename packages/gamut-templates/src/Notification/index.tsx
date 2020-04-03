@@ -35,14 +35,14 @@ export const Notification: React.FC<NotificationProps> = ({
       })}
     >
       {showIcon && (
-        <Container className={s.content} justify="center" align="center">
+        <Container className={s.column} justify="center" align="center">
           <TypeIcon size={24} />
         </Container>
       )}
-      <Container className={s.content}>{children}</Container>
+      <Container className={s.column}>{children}</Container>
       {cta && (
         <Container
-          className={cx(s.content, s.content__noPadding, s.column__action)}
+          className={cx(s.column, s.column__noPadding, s.column__action)}
         >
           <Button
             caps
@@ -57,7 +57,7 @@ export const Notification: React.FC<NotificationProps> = ({
         </Container>
       )}
       <Container
-        className={cx(s.content, s.content__noPadding)}
+        className={cx(s.column, s.column__noPadding)}
         justify="center"
         align="stretch"
       >
