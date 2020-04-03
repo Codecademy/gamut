@@ -49,7 +49,7 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Because we use squash merges through the Github UI, you'll need to format your PR title to match these guidelines.
+Because we use squash merges through the Github UI, you'll need to format your PR title to match these guidelines. Your individual commits will affect the `alpha` version number, but not the final version once you merge to master.
 
 This Title format will be linted in the `probot/conventional-pr-title` status check and prevent merging if you do not follow the correct format.
 
@@ -71,8 +71,16 @@ fix: fixes a bug in some component
 test: adds test to component
 ```
 
+With a scope:
+
 ```
 feat(Button): :sparkles: An awesome feature for the Button component
+```
+
+Breaking change:
+
+```
+feat(Button)!: :fire: Deleted the Button component
 ```
 
 Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
