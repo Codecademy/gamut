@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import { CardShell, CloseIcon, ButtonBase, Button } from '@codecademy/gamut';
+import { CardShell, Container, ButtonBase, Button } from '@codecademy/gamut';
+import { CloseIcon } from '@codecademy/gamut-icons';
 
 import { BANNER_CONFIG } from './contstants';
 import { BannerTypes, BannerCTA } from './types';
@@ -33,27 +34,42 @@ export const Notification: React.FC<NotificationProps> = ({
         [s.container__icon]: showIcon,
       })}
     >
-      {showIcon && <TypeIcon />}
-      <div>{children}</div>
+      {showIcon && (
+        <Container className={s.content} justify="center" align="center">
+          <TypeIcon size={24} />
+        </Container>
+      )}
+      <Container className={s.content}>{children}</Container>
       {cta && (
-        <div className={s.ctaContainer}>
+        <Container
+          className={cx(s.content, s.content__noPadding, s.actionContainer)}
+        >
           <Button
+            caps
             theme={type}
-            className={s.cta}
+            className={s.actionButton}
             onClick={cta.onClick}
             link={!!cta.href}
             href={cta.href}
           >
             {cta.text}
           </Button>
-        </div>
+        </Container>
       )}
-      <ButtonBase
-        className={cx(s.closeButton, { [s[`closeButton__${type}`]]: type })}
-        onClick={onClose}
+      <Container
+        className={cx(s.content, s.content__noPadding)}
+        justify="center"
+        align="stretch"
       >
-        <CloseIcon />
-      </ButtonBase>
+        <ButtonBase
+          className={cx(s.contentContainer, s.closeButton, s.iconContainer, {
+            [s[`closeButton__${type}`]]: type,
+          })}
+          onClick={onClose}
+        >
+          <CloseIcon size={12} />
+        </ButtonBase>
+      </Container>
     </CardShell>
   );
 };

@@ -23,20 +23,14 @@ $themeColors: (
   ),
 );
 
-@each $theme, $map in $themeColors {
-  .container__#{$theme} {
-    background-color: map-get($map, "background");
-    color: map-get($map, "color");
-  }
-}
-
 .container {
   display: grid;
-  font-size: 1rem;
-  padding: px-rem(15);
+  padding: px-rem(16) px-rem(20);
   grid-template-columns: 1fr max-content;
-  align-items: center;
-  grid-gap: 1rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 0.5rem;
+  grid-template-rows: minmax(1.5rem, max-content);
+  align-items: start;
 
   @include screen-size-lte($grid-sm-min) {
     align-items: start;
@@ -54,8 +48,25 @@ $themeColors: (
   }
 }
 
-.ctaContainer {
+@each $theme, $map in $themeColors {
+  .container__#{$theme} {
+    background-color: map-get($map, "background");
+    color: map-get($map, "color");
+  }
+}
+
+.content {
+  padding: px-rem(6);
+  min-height: px-rem(32);
+}
+
+.content__noPadding {
+  padding: px-rem(2);
+}
+
+.actionContainer {
   display: grid;
+  align-items: start;
   justify-content: start;
   grid-template-columns: min-content;
 
@@ -65,18 +76,18 @@ $themeColors: (
   }
 }
 
-.cta {
+.actionButton {
   font-weight: 700;
   font-size: px-rem(12);
-  text-transform: uppercase;
 }
 
 .closeButton {
-  display: flex;
-  padding: 0 px-rem(4);
+  display: grid;
+  align-items: center;
+  justify-content: center;
   border: none;
-  border-radius: 5px;
-  min-width: px-rem(24);
+  border-radius: px-rem(6);
+  margin-right: px-rem(-4);
   background-color: transparent;
 }
 
