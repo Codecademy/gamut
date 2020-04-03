@@ -8,7 +8,6 @@
       "message": "chore(release): publish"
     },
     "version": {
-      "conventionalCommits": true,
       "changelogPreset": "conventionalcommits",
       "exact": true
     }
