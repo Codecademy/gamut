@@ -91,7 +91,7 @@ Here's an example of how the squash and merge form should look:
 
 **Type**
 
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major releases are only created when the text `BREAKING CHANGE:` is included in the `Body` or `Footer` of the commit message.
+The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
 
 `type` must be one of the following options:
 
