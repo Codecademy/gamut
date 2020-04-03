@@ -21,7 +21,7 @@ export type NotificationProps = {
 
 export const Notification: React.FC<NotificationProps> = ({
   children,
-  type = 'info',
+  type = BannerTypes.Info,
   showIcon = true,
   cta,
   onClose,
@@ -42,7 +42,7 @@ export const Notification: React.FC<NotificationProps> = ({
       <Container className={s.content}>{children}</Container>
       {cta && (
         <Container
-          className={cx(s.content, s.content__noPadding, s.actionContainer)}
+          className={cx(s.content, s.content__noPadding, s.column__action)}
         >
           <Button
             caps
@@ -62,7 +62,7 @@ export const Notification: React.FC<NotificationProps> = ({
         align="stretch"
       >
         <ButtonBase
-          className={cx(s.contentContainer, s.closeButton, s.iconContainer, {
+          className={cx(s.closeButton, {
             [s[`closeButton__${type}`]]: type,
           })}
           onClick={onClose}

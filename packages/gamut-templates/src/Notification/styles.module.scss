@@ -55,16 +55,16 @@ $themeColors: (
   }
 }
 
-.content {
+.column {
   padding: px-rem(6);
   min-height: px-rem(32);
 }
 
-.content__noPadding {
+.column__noPadding {
   padding: px-rem(2);
 }
 
-.actionContainer {
+.column__action {
   display: grid;
   align-items: start;
   justify-content: start;

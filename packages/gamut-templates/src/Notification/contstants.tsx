@@ -1,15 +1,15 @@
 import {
-  AlertCircleIcon,
-  RemoveCircleIcon,
-  InformationCircleIcon,
+  AlertIcon,
+  CloseCircleIcon,
+  InfoCircleIcon,
   RatingStarCircleIcon,
-  CheckCircle1Icon,
+  CheckCircledIcon,
 } from '@codecademy/gamut-icons';
 
 export const BANNER_CONFIG = {
-  alert: AlertCircleIcon,
-  error: RemoveCircleIcon,
-  info: InformationCircleIcon,
+  alert: AlertIcon,
+  error: CloseCircleIcon,
+  info: InfoCircleIcon,
   announcement: RatingStarCircleIcon,
-  success: CheckCircle1Icon,
+  success: CheckCircledIcon,
 };
