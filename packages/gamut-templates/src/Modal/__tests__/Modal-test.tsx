@@ -11,14 +11,14 @@ describe('Modal', () => {
   });
 
   it('does not render when isOpen is false', () => {
-    const wrapper = mount(<Modal>Hey</Modal>);
+    const wrapper = mount(<Modal isOpen={false}>Hey</Modal>);
 
     expect(wrapper.isEmptyRender()).toBe(true);
   });
 
-  it('does not render its close button if manuallyControlClose is true', () => {
+  it('does not render its close button if hideDefaultCloseButton is true', () => {
     const wrapper = mount(
-      <Modal isOpen manuallyControlClose>
+      <Modal isOpen hideDefaultCloseButton>
         I got my own close button
         <button type="button" />
       </Modal>
@@ -29,7 +29,7 @@ describe('Modal', () => {
     ).toHaveLength(0);
   });
 
-  it('renders its close button if manuallyControlClose is false', () => {
+  it('renders its close button if hideDefaultCloseButton is false', () => {
     const wrapper = mount(<Modal isOpen>I use the default close button</Modal>);
 
     expect(

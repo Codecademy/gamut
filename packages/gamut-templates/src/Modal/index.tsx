@@ -7,9 +7,18 @@ import styles from './styles.module.scss';
 export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
-  isOpen?: boolean;
+  /**
+   * Whether the modal is open or closed
+   */
+  isOpen: boolean;
+  /**
+   * A function that, at minimum, sets the state to close the modal
+   */
   closeModal?: () => void;
-  manuallyControlClose?: boolean;
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideDefaultCloseButton?: boolean;
 };
 
 export const Modal: React.FC<ModalProps> = ({
@@ -17,7 +26,7 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   closeModal,
   isOpen,
-  manuallyControlClose,
+  hideDefaultCloseButton,
 }) => {
   return (
     <Overlay
@@ -27,13 +36,15 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <div className={styles.modalContainer}>
         <CardShell className={styles.modalBody}>
-          {!manuallyControlClose && (
-            <div className={styles.closeButtonContainer}>
+          {!hideDefaultCloseButton && (
+            <div
+              className={styles.closeButtonContainer}
+              data-testid="modal-default-close-button"
+            >
               <Button
                 flat
                 fitText
-                data-testid="modal-default-close-button"
-                onClick={closeModal}
+                onClick={closeModal && closeModal}
                 className={styles.closeButton}
               >
                 <CloseIcon
