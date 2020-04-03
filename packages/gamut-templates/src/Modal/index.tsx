@@ -20,12 +20,20 @@ export const Modal: React.FC<ModalProps> = ({
   manuallyControlClose,
 }) => {
   return (
-    <Overlay isOpen={isOpen} className={cx(styles.modal, className)}>
+    <Overlay
+      isOpen={isOpen}
+      className={cx(styles.modal, className)}
+      data-testid="modal"
+    >
       <div className={styles.modalContainer}>
         <CardShell className={styles.modalBody}>
           {!manuallyControlClose && (
             <div className={styles.closeButtonContainer}>
-              <ButtonBase onClick={closeModal} className={styles.closeButton}>
+              <ButtonBase
+                data-testid="modal-default-close-button"
+                onClick={closeModal}
+                className={styles.closeButton}
+              >
                 <CloseIcon
                   color="#323233"
                   width={22}
