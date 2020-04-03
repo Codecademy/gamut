@@ -9,16 +9,13 @@ export default {
 
 const ModalStory = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return (
     <div>
       <Button link onClick={() => setIsOpen(true)}>
         Click to open the modal!
       </Button>
-      <Modal isOpen={isOpen} closeModal={closeModal} clickOutsideDeactivates>
+      <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
         Close the modal!
       </Modal>
     </div>

@@ -28,4 +28,12 @@ describe('Modal', () => {
       wrapper.find(`[data-testid="modal-default-close-button"]`)
     ).toHaveLength(0);
   });
+
+  it('renders its close button if manuallyControlClose is false', () => {
+    const wrapper = mount(<Modal isOpen>I use the default close button</Modal>);
+
+    expect(
+      wrapper.find(`[data-testid="modal-default-close-button"]`)
+    ).toHaveLength(1);
+  });
 });

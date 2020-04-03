@@ -20,10 +20,10 @@
 }
 
 .closeButton {
-  background-color: transparent;
-  border: 0;
-  display: flex;
-  align-items: center;
-  justify-content: middle;
-  padding: 0;
+  padding: 0.75rem;
+  margin-right: -0.75rem;
+}
+
+.closeIcon {
+  color: $color-gray-800;
 }

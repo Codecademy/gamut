@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import { Overlay, ButtonBase, CardShell } from '@codecademy/gamut';
+import { Overlay, Button, CardShell } from '@codecademy/gamut';
 import { CloseIcon } from '@codecademy/gamut-icons';
 import styles from './styles.module.scss';
 
@@ -29,18 +29,19 @@ export const Modal: React.FC<ModalProps> = ({
         <CardShell className={styles.modalBody}>
           {!manuallyControlClose && (
             <div className={styles.closeButtonContainer}>
-              <ButtonBase
+              <Button
+                flat
+                fitText
                 data-testid="modal-default-close-button"
                 onClick={closeModal}
                 className={styles.closeButton}
               >
                 <CloseIcon
-                  color="#323233"
                   width={22}
                   height={22}
                   className={styles.closeIcon}
                 />
-              </ButtonBase>
+              </Button>
             </div>
           )}
           {children}
