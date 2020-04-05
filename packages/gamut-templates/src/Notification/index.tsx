@@ -73,7 +73,7 @@ export const Notification: React.FC<NotificationProps> = ({
   useLayoutEffect(() => {
     if (truncate && truncate > 0) {
       getContainerWidth();
-      window.addEventListener(`resize`, getContainerWidth);
+      window.addEventListener('resize', getContainerWidth);
 
       return () => window.removeEventListener('resize', getContainerWidth);
     }
@@ -88,9 +88,11 @@ export const Notification: React.FC<NotificationProps> = ({
       })}
     >
       <Container align="start" justify="spaceBetween">
-        <Container className={s.column} justify="center" align="center">
-          <TypeIcon size={24} />
-        </Container>
+        {showIcon && (
+          <Container className={s.column} justify="center" align="center">
+            <TypeIcon size={24} />
+          </Container>
+        )}
         <Container
           align="start"
           className={cx(s.column__fill, s.column__action)}
@@ -138,7 +140,6 @@ export const Notification: React.FC<NotificationProps> = ({
                 theme={type}
                 className={s.actionButton}
                 onClick={cta.onClick}
-                link={!!cta.href}
                 href={cta.href}
                 disabled={cta.disabled}
               >

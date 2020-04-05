@@ -63,12 +63,83 @@ notification.story = {
 
 export const baseNotification = () => {
   return (
-    <Notification showIcon={false} type="success">
-      You can now do this new thing with this new feature we just added!
+    <Notification showIcon={false} type="alert">
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
     </Notification>
   );
 };
 
 baseNotification.story = {
   name: 'Basic Notification',
+};
+
+export const iconNotification = () => {
+  return (
+    <Notification type="alert">
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
+    </Notification>
+  );
+};
+
+iconNotification.story = {
+  name: 'Status Icon',
+};
+
+export const ctaNotification = () => {
+  return (
+    <Notification
+      showIcon={false}
+      type="alert"
+      cta={{
+        href: 'https://google.com',
+        onClick: () => alert('You clicked me, thank you'),
+        text: 'Click Me',
+      }}
+    >
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
+    </Notification>
+  );
+};
+
+ctaNotification.story = {
+  name: 'Call to Action',
+};
+
+export const expandableNotification = () => {
+  return (
+    <Notification showIcon={false} type="alert" truncate={1}>
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
+      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+    </Notification>
+  );
+};
+
+expandableNotification.story = {
+  name: 'Expandable',
+};
+
+export const everythingNotification = () => {
+  return (
+    <Notification
+      type="alert"
+      truncate={2}
+      cta={{
+        href: 'https://google.com',
+        onClick: () => alert('You clicked me, thank you'),
+        text: 'Click Me',
+      }}
+    >
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
+      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+    </Notification>
+  );
+};
+
+everythingNotification.story = {
+  name: 'Everthying',
 };

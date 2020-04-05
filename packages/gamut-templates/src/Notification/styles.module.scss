@@ -61,9 +61,6 @@ $themeColors: (
 }
 
 .content {
-  text-overflow: ellipsis;
-  max-width: 800px;
-
   @include screen-size-lte($grid-sm-min) {
     display: block;
     width: 100%;
@@ -73,6 +70,7 @@ $themeColors: (
 .text {
   display: inline-block;
   width: 100%;
+  text-overflow: ellipsis;
   margin-right: px-rem(6);
 
   @include screen-size-lte($grid-sm-min) {
