@@ -27,7 +27,7 @@ export type NotificationProps = {
   /** Remove the max-width on the notification container */
   fluid?: boolean;
   /** Number of lines to truncate body text to */
-  truncate?: number | false;
+  truncate?: number;
   children: string;
 };
 
@@ -36,7 +36,7 @@ export const Notification: React.FC<NotificationProps> = ({
   fluid = false,
   type = BannerTypes.Info,
   showIcon = true,
-  truncate = false,
+  truncate,
   cta,
   onClose,
 }) => {
@@ -48,7 +48,7 @@ export const Notification: React.FC<NotificationProps> = ({
   const charsPerLine = width / CHAR_WIDTH - CHARACTER_BUFFER;
 
   const text = useMemo(() => {
-    if (!truncate || expanded) {
+    if (truncate > 0 || expanded) {
       return children;
     }
     return truncateText(children, charsPerLine, truncate);
