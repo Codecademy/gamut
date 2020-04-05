@@ -13,3 +13,7 @@ export const BANNER_CONFIG = {
   announcement: RatingStarCircleIcon,
   success: CheckCircledIcon,
 };
+export const CHAR_WIDTH = 7.15;
+export const ELLIPSIS_OFFSET = CHAR_WIDTH * 3;
+export const ICON_OFFSET = 40;
+export const CHARACTER_BUFFER = (ICON_OFFSET + ELLIPSIS_OFFSET) / CHAR_WIDTH;

@@ -29,7 +29,7 @@ export const notification = () => (
     <Column size="12">
       <h6>
         Error communicating an issue or showing that a user’s action can’t be
-        completed
+        completed.
       </h6>
       <Notification showIcon type="error" cta={{ text: 'retry' }}>
         Couldn’t save your account changes because a connection to the server

@@ -25,27 +25,13 @@ $themeColors: (
 
 .container {
   display: grid;
+  width: 100%;
+  max-width: 980px;
   padding: px-rem(16) px-rem(20);
-  grid-template-columns: 1fr max-content;
-  grid-column-gap: 1rem;
-  grid-row-gap: 0.5rem;
-  grid-template-rows: minmax(1.5rem, max-content);
-  align-items: start;
-
-  @include screen-size-lte($grid-sm-min) {
-    align-items: start;
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: auto auto;
-  }
 }
 
-.container__icon {
-  grid-template-columns: max-content 1fr max-content max-content;
-
-  @include screen-size-lte($grid-sm-min) {
-    grid-template-columns: max-content 1fr max-content;
-    grid-template-rows: auto auto;
-  }
+.container__fluid {
+  max-width: 100%;
 }
 
 @each $theme, $map in $themeColors {
@@ -57,7 +43,11 @@ $themeColors: (
 
 .column {
   padding: px-rem(6);
-  min-height: px-rem(32);
+  flex-shrink: 1;
+}
+
+.column__fill {
+  flex: 1;
 }
 
 .column__noPadding {
@@ -65,15 +55,33 @@ $themeColors: (
 }
 
 .column__action {
-  display: grid;
-  align-items: start;
-  justify-content: start;
-  grid-template-columns: min-content;
+  @include screen-size-lte($grid-sm-min) {
+    flex-direction: column;
+  }
+}
+
+.content {
+  text-overflow: ellipsis;
+  max-width: 800px;
 
   @include screen-size-lte($grid-sm-min) {
-    grid-row-start: 2;
-    grid-column-start: 2;
+    display: block;
+    width: 100%;
   }
+}
+
+.text {
+  display: inline-block;
+  width: 100%;
+  margin-right: px-rem(6);
+
+  @include screen-size-lte($grid-sm-min) {
+    display: inline;
+  }
+}
+
+.text__truncated {
+  overflow: hidden;
 }
 
 .actionButton {
@@ -81,18 +89,21 @@ $themeColors: (
   font-size: px-rem(12);
 }
 
-.closeButton {
-  display: grid;
-  align-items: center;
+.iconButton {
+  min-width: px-rem(24);
+  padding: px-rem(4);
+  min-height: px-rem(24);
+  display: inline-flex;
   justify-content: center;
+  align-items: center;
   border: none;
+  background: none;
   border-radius: px-rem(6);
-  margin-right: px-rem(-4);
   background-color: transparent;
 }
 
 @each $theme, $map in $themeColors {
-  .closeButton__#{$theme} {
+  .iconButton__#{$theme} {
     color: map-get($map, "color");
 
     &:hover {
