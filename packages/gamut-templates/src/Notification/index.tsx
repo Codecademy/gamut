@@ -48,7 +48,7 @@ export const Notification: React.FC<NotificationProps> = ({
   const charsPerLine = width / CHAR_WIDTH - CHARACTER_BUFFER;
 
   const text = useMemo(() => {
-    if (truncate > 0 || expanded) {
+    if (!(truncate > 0) || expanded) {
       return children;
     }
     return truncateText(children, charsPerLine, truncate);
