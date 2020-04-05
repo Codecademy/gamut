@@ -25,6 +25,7 @@ export * from './Tabs';
 export * from './SkipToContent';
 export * from './Toggle';
 export * from './ToolTip';
+export * from './Truncate';
 export * from './FlexGrid';
 export * from './FlexBox';
 export * from './Icon/icons/AccessibilityIcon';

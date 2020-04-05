@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import moment from 'moment';
-import Truncate from 'react-truncate';
+import Truncate from 'react-truncate-markup';
 import { Notification } from './typings';
 import NotificationIcon from './NotificationIcon';
 import s from './styles/Notification.module.scss';

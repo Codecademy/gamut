@@ -1,16 +1,20 @@
-import React, { useState, useCallback, useLayoutEffect, useMemo } from 'react';
-import { debounce } from 'lodash';
+import React, { useState, useCallback } from 'react';
 import cx from 'classnames';
-import { CardShell, Container, ButtonBase, Button } from '@codecademy/gamut';
+import {
+  CardShell,
+  Container,
+  ButtonBase,
+  Button,
+  Truncate,
+} from '@codecademy/gamut';
+
 import {
   CloseIcon,
   ArrowChevronDownIcon,
   ArrowChevronUpIcon,
 } from '@codecademy/gamut-icons';
 
-import { truncateText, generateContainerId } from './utilities';
-
-import { BANNER_CONFIG, CHAR_WIDTH, CHARACTER_BUFFER } from './contstants';
+import { BANNER_CONFIG } from './contstants';
 import { BannerTypes, BannerCTA } from './types';
 
 import s from './styles.module.scss';
@@ -26,9 +30,6 @@ export type NotificationProps = {
   cta?: BannerCTA;
   /** Remove the max-width on the notification container */
   fluid?: boolean;
-  /** Number of lines to truncate body text to */
-  truncate?: number;
-  children: string;
 };
 
 export const Notification: React.FC<NotificationProps> = ({
@@ -41,43 +42,15 @@ export const Notification: React.FC<NotificationProps> = ({
   onClose,
 }) => {
   const TypeIcon = BANNER_CONFIG[type];
-  const [expanded, setExpanded] = useState(false);
-  const [width, setWidth] = useState(0);
-  const identifier = useMemo(() => generateContainerId(), []);
-
-  const charsPerLine = width / CHAR_WIDTH - CHARACTER_BUFFER;
-
-  const text = useMemo(() => {
-    if (!(truncate > 0) || expanded) {
-      return children;
-    }
-    return truncateText(children, charsPerLine, truncate);
-  }, [charsPerLine, children, expanded, truncate]);
-
-  const isTruncated = text !== children;
+  const [expanded, setExpanded] = useState<boolean>(false);
+  const [isTruncated, setIsTruncated] = useState<boolean>(false);
   const showExpandToggle = isTruncated || expanded;
+  const ToggleIcon = expanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
 
   const toggleExpand = useCallback(() => setExpanded(!expanded), [
     expanded,
     setExpanded,
   ]);
-
-  const getContainerWidth = useCallback(
-    debounce(
-      () => setWidth(document.getElementById(identifier).offsetWidth),
-      50
-    ),
-    [setWidth, identifier]
-  );
-
-  useLayoutEffect(() => {
-    if (truncate && truncate > 0) {
-      getContainerWidth();
-      window.addEventListener('resize', getContainerWidth);
-
-      return () => window.removeEventListener('resize', getContainerWidth);
-    }
-  }, [getContainerWidth, truncate]);
 
   return (
     <CardShell
@@ -87,35 +60,22 @@ export const Notification: React.FC<NotificationProps> = ({
         [s.container__icon]: showIcon,
       })}
     >
-      <Container align="start" justify="spaceBetween">
+      <Container align="start" shrink={1}>
         {showIcon && (
-          <Container className={s.column} justify="center" align="center">
+          <Container className={s.section} justify="center" align="center">
             <TypeIcon size={24} />
           </Container>
         )}
         <Container
+          className={s.section__main}
           align="start"
-          className={cx(s.column__fill, s.column__action)}
+          grow={1}
+          shrink={1}
         >
-          <Container
-            id={identifier}
-            align="start"
-            className={cx(s.column, s.column__fill, s.content, {
-              [s.content__expanded]: expanded,
-            })}
-          >
-            <span
-              style={{
-                maxHeight:
-                  isTruncated && !expanded && `${1.5 * (truncate || 1)}rem`,
-              }}
-              className={cx(s.text, {
-                [s.text__truncated]: isTruncated,
-              })}
-            >
-              {text}
-              {isTruncated && <span>...</span>}
-            </span>
+          <Container grow={1} align="start" className={cx(s.section)}>
+            <Truncate lines={expanded ? 100 : 2} onTruncate={setIsTruncated}>
+              {children}
+            </Truncate>
             {showExpandToggle && (
               <Container inline>
                 <ButtonBase
@@ -124,17 +84,16 @@ export const Notification: React.FC<NotificationProps> = ({
                   })}
                   onClick={toggleExpand}
                 >
-                  {expanded ? (
-                    <ArrowChevronUpIcon size={12} />
-                  ) : (
-                    <ArrowChevronDownIcon size={12} />
-                  )}
+                  <ToggleIcon size={16} />
                 </ButtonBase>
               </Container>
             )}
           </Container>
           {cta && (
-            <Container className={cx(s.column, s.column__noPadding)}>
+            <Container
+              shrink={1}
+              className={cx(s.section, s.section__smPadding)}
+            >
               <Button
                 caps
                 theme={type}
@@ -148,7 +107,7 @@ export const Notification: React.FC<NotificationProps> = ({
             </Container>
           )}
         </Container>
-        <Container center className={s.column}>
+        <Container shrink={1} center className={s.section}>
           <ButtonBase
             className={cx(s.iconButton, {
               [s[`iconButton__${type}`]]: type,

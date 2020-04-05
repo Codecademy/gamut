@@ -26,7 +26,7 @@ $themeColors: (
 .container {
   display: grid;
   width: 100%;
-  max-width: 980px;
+  max-width: $grid-md-min;
   padding: px-rem(16) px-rem(20);
 }
 
@@ -41,45 +41,21 @@ $themeColors: (
   }
 }
 
-.column {
+.section {
   padding: px-rem(6);
   flex-shrink: 1;
 }
 
-.column__fill {
-  flex: 1;
-}
-
-.column__noPadding {
-  padding: px-rem(2);
-}
-
-.column__action {
+.section__main {
   @include screen-size-lte($grid-sm-min) {
+    display: block;
+    width: 100%;
     flex-direction: column;
   }
 }
 
-.content {
-  @include screen-size-lte($grid-sm-min) {
-    display: block;
-    width: 100%;
-  }
-}
-
-.text {
-  display: inline-block;
-  width: 100%;
-  text-overflow: ellipsis;
-  margin-right: px-rem(6);
-
-  @include screen-size-lte($grid-sm-min) {
-    display: inline;
-  }
-}
-
-.text__truncated {
-  overflow: hidden;
+.section__smPadding {
+  padding: px-rem(2);
 }
 
 .actionButton {
