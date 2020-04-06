@@ -28,7 +28,7 @@ export const allIcons = () => {
       </StoryDescription>
       <LayoutGrid columnGap="sm" rowGap="sm">
         {iconEntries.map(([iconName, Icon]) => (
-          <Column size={1} className={styles.iconWrapper} key={iconName}>
+          <Column size={2} className={styles.iconWrapper} key={iconName}>
             <Icon key={iconName} size={size} color={color} />
             <span className={styles.iconLabel}>{iconName}</span>
           </Column>
