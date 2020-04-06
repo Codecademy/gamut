@@ -21,19 +21,21 @@ export const allIcons = () => {
   const color = select('Color', selectableColors, selectableColors.black);
   const size = number('Size', 64);
 
-  <StoryTemplate heading="Icons" status={StoryStatus.Ready} wide>
-    <StoryDescription>
-      Icons as defined in the <code>@codecademy/gamut-icons</code> package.
-    </StoryDescription>
-    <LayoutGrid columnGap="sm" rowGap="sm">
-      {iconEntries.map(([iconName, Icon]) => (
-        <Column size={1} className={styles.iconWrapper} key={iconName}>
-          <Icon key={iconName} size={size} color={color} />
-          <span className={styles.iconLabel}>{iconName}</span>
-        </Column>
-      ))}
-    </LayoutGrid>
-  </StoryTemplate>;
+  return (
+    <StoryTemplate heading="Icons" status={StoryStatus.Ready} wide>
+      <StoryDescription>
+        Icons as defined in the <code>@codecademy/gamut-icons</code> package.
+      </StoryDescription>
+      <LayoutGrid columnGap="sm" rowGap="sm">
+        {iconEntries.map(([iconName, Icon]) => (
+          <Column size={1} className={styles.iconWrapper} key={iconName}>
+            <Icon key={iconName} size={size} color={color} />
+            <span className={styles.iconLabel}>{iconName}</span>
+          </Column>
+        ))}
+      </LayoutGrid>
+    </StoryTemplate>
+  );
 };
 
 export const iconPlayground = () => {
