@@ -11,20 +11,17 @@ export type AppBarProps = {
   wide?: boolean;
 };
 
-export class AppBar extends React.Component<AppBarProps> {
-  render() {
-    const { wide, children, className } = this.props;
-    const classes = cx(styles.wrapper, className);
+const AppBar: React.FC<AppBarProps> = ({ wide, children, className }) => {
+  const classes = cx(styles.wrapper, className);
 
-    return (
-      <div className={classes}>
-        <ContentContainer className={styles.contentWrapper} wide={wide}>
-          {children}
-        </ContentContainer>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classes}>
+      <ContentContainer className={styles.contentWrapper} wide={wide}>
+        {children}
+      </ContentContainer>
+    </div>
+  );
+};
 
 export default AppBar;
 

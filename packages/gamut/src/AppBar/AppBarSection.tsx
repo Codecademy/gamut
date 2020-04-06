@@ -7,17 +7,21 @@ export type AppBarSectionProps = {
   className?: string;
 };
 
-class AppBarSection extends React.Component<AppBarSectionProps> {
-  render() {
-    const classes = cx({
+const AppBarSection: React.FC<AppBarSectionProps> = ({
+  position,
+  className,
+  children,
+}) => {
+  const classes = cx(
+    {
       [styles.section]: true,
-      [styles.sectionRight]: this.props.position === 'right',
-      [styles.sectionLeft]: this.props.position === 'left',
-      [styles.sectionCenter]: this.props.position === 'center',
-      [`${this.props.className}`]: !!this.props.className,
-    });
-    return <div className={classes}>{this.props.children}</div>;
-  }
-}
+      [styles.sectionRight]: position === 'right',
+      [styles.sectionLeft]: position === 'left',
+      [styles.sectionCenter]: position === 'center',
+    },
+    className
+  );
+  return <div className={classes}>{children}</div>;
+};
 
 export default AppBarSection;
