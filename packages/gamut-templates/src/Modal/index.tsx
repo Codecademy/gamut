@@ -42,6 +42,9 @@ export const Modal: React.FC<ModalProps> = ({
               data-testid="modal-default-close-button"
             >
               <Button
+                flat
+                outline
+                theme="white"
                 fitText
                 onClick={closeModal && closeModal}
                 className={styles.closeButton}

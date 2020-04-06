@@ -22,17 +22,6 @@
 .closeButton {
   padding: 0.5rem;
   margin: -0.5rem -0.5rem 0.5rem 0;
-  color: $brand-dark-blue;
-  background-color: transparent;
-
-  &:focus {
-    color: $brand-dark-blue;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px $brand-dark-blue;
-  }
-
-  &:hover {
-    box-shadow: none;
-  }
 }
 
 .closeIcon {
