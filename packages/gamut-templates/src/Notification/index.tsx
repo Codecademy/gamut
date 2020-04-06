@@ -71,11 +71,7 @@ export const Notification: React.FC<NotificationProps> = ({
           shrink={1}
         >
           <Container className={s.section} grow={1} shrink={1} align="start">
-            <Truncate
-              truncateStyle="fade"
-              lines={expanded && MAX_LINES}
-              onTruncate={setIsTruncated}
-            >
+            <Truncate lines={expanded && MAX_LINES} onTruncate={setIsTruncated}>
               {children}
             </Truncate>
             {showExpandToggle && (

@@ -4,7 +4,7 @@ import { CircleHeavyIcon } from '../../gamut-icons/src';
 
 export default {
   component: TruncateText,
-  title: 'Component/TruncateText',
+  title: 'Component/Truncate',
 };
 
 const placeholderText = `
