@@ -8,7 +8,7 @@ import {
   StoryTemplate,
   StoryDescription,
 } from '../../Templating';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Atoms', HighlightedText);
 

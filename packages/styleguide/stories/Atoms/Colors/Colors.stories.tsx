@@ -14,7 +14,7 @@ import {
   StoryDescription,
   decoratedStory,
 } from '../../Templating';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Atoms', 'Colors');
 

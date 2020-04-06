@@ -8,7 +8,7 @@ import {
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
-import s from './styles.scss';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Molecules', NotificationList);
 
@@ -18,9 +18,12 @@ export const notificationList = () => (
       List of time-sensitive user notifications, such as in a top-right dropdown
       menu from a header.
     </StoryDescription>
-    <NotificationList notifications={[]} className={s.notificationContainer} />
     <NotificationList
-      className={s.notificationContainer}
+      notifications={[]}
+      className={styles.notificationContainer}
+    />
+    <NotificationList
+      className={styles.notificationContainer}
       notifications={[
         {
           campaign: 'python-livestream',

@@ -2,7 +2,7 @@ import { Byline } from '@codecademy/brand-components/src/Byline';
 import { text } from '@storybook/addon-knobs';
 import React from 'react';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 import {
   decoratedStory,
   StoryDescription,

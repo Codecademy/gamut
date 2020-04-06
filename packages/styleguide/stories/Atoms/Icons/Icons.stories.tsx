@@ -10,7 +10,7 @@ import {
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Atoms', 'Icons');
 

@@ -9,7 +9,7 @@ import {
 } from '../../Templating';
 import Triangle from './assets/Triangle.svg';
 import Stairs from './assets/Stairs.svg';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Molecules', SplitInterstitial);
 

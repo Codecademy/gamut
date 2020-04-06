@@ -3,7 +3,7 @@ import React from 'react';
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 import {
   StoryTemplate,
   StoryStatus,
