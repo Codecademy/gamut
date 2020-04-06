@@ -10,10 +10,9 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "resolveJsonModule": true,
     "sourceMap": true,
     "target": "esnext"
   },
-  "exclude": [
-    "**/node_modules"
-  ]
+  "exclude": ["**/node_modules"]
 }

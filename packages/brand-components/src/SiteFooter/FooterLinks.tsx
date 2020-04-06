@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import footerStrings from './localized.json';
 import { Container, Item } from '@codecademy/gamut/dist/FlexBox';
-import { trackUserClick } from 'libs/eventTracking';
 import CatalogLinks from './CatalogLinks';
 import SocialMediaLinks from './SocialMediaLinks';
 import s from './styles/index.scss';
@@ -12,20 +11,22 @@ type FooterKey = keyof typeof footerStrings;
 
 const content = (key: FooterKey) => footerStrings[key];
 
-const handleLinkClick = (key: string) => {
-  trackUserClick({
-    target: key,
-    context: 'footer',
-    page_name: key,
-  });
-};
-
-const buildLink = (key: FooterKey, url: string) => (
+const buildLink = (
+  key: FooterKey,
+  url: string,
+  callback: (payload: any) => void
+) => (
   <a
     className={s.footerReference}
     href={url}
     key={key}
-    onClick={() => handleLinkClick(key)}
+    onClick={() =>
+      callback({
+        target: key,
+        context: 'footer',
+        page_name: key,
+      })
+    }
   >
     {content(key)}
   </a>
@@ -35,13 +36,15 @@ export type FooterLinksProps = {
   filters: FooterCatalogLinkFilters;
   urls: FooterLinksUrls;
   onClickCatalogLink: (payload: any) => void;
+  onClickFooterLink: (payload: any) => void;
 };
 
 class FooterLinks extends Component<FooterLinksProps> {
   buildLinkArea(type: keyof FooterLinksUrls) {
+    const { onClickFooterLink } = this.props;
     const linkData = this.props.urls[type];
     const links = _.map(Object.keys(linkData), key =>
-      buildLink(key as FooterKey, linkData[key])
+      buildLink(key as FooterKey, linkData[key], onClickFooterLink)
     );
 
     return (

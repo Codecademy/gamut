@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContentContainer from '../ContentContainer';
+import { ContentContainer } from '@codecademy/gamut';
 
 import { footerData } from './FooterData';
 import FooterLinks from './FooterLinks';
@@ -9,10 +9,12 @@ import s from './styles/index.scss';
 
 export type SiteFooterProps = {
   onClickCatalogLink: (payload: any) => void;
+  onClickFooterLink: (payload: any) => void;
 };
 
 export const SiteFooter: React.FC<SiteFooterProps> = ({
   onClickCatalogLink,
+  onClickFooterLink,
 }) => {
   const {
     urls: { legal, nav },
@@ -26,6 +28,7 @@ export const SiteFooter: React.FC<SiteFooterProps> = ({
           urls={nav}
           filters={filters}
           onClickCatalogLink={onClickCatalogLink}
+          onClickFooterLink={onClickFooterLink}
         />
       </ContentContainer>
       <div className={s.legalLocalDivider} />

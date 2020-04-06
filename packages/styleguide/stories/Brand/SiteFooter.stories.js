@@ -3,8 +3,8 @@ import { SiteFooter } from '../../../brand-components';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 export default {
-  component: Avatar,
-  title: 'Brand/Avatar',
+  component: SiteFooter,
+  title: 'Brand/SiteFooter',
   decorators: [withKnobs],
 };
 

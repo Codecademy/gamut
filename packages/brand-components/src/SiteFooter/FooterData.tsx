@@ -1,43 +1,27 @@
-import {
-  aboutCareersPath,
-  aboutPath,
-  articlesPath,
-  betaCatalogPathDirect,
-  blogPath,
-  businessPath,
-  forumsUrl,
-  helpPath,
-  roadmapUrl,
-  shopUrl,
-  storiesPath,
-  termsPath,
-  policyPath,
-  dataPrivacyUrl,
-} from 'libs/urlHelpers';
-
 export const footerData = {
   urls: {
     nav: {
       company: {
         about: '/about',
         codecademy_for_business: '/business',
-        shop: shopUrl,
-        stories: storiesPath,
-        jobs: aboutCareersPath,
+        shop: 'https://shop.codecademy.com',
+        stories: '/stories',
+        jobs: '/about/careers',
       },
       resources: {
-        beta_catalog: betaCatalogPathDirect,
-        articles: articlesPath,
-        forums: forumsUrl,
-        help: helpPath,
-        blog: blogPath,
-        roadmap: roadmapUrl,
+        beta_catalog: '/beta-catalog/subject/beta',
+        articles: '/articles',
+        forums: 'https://discuss.codecademy.com/',
+        help: '/help',
+        blog: '/blog',
+        roadmap: 'https://trello.com/b/vAgDXtT6/codecademy-releases-roadmap',
       },
     },
     legal: {
-      policy: policyPath,
-      data_privacy: dataPrivacyUrl,
-      terms: termsPath,
+      policy: '/policy',
+      data_privacy:
+        'https://help.codecademy.com/hc/en-us/requests/new?ticket_form_id=360002689273',
+      terms: '/terms',
     },
   },
   filters: {
