@@ -10,7 +10,7 @@ import {
   StoryTemplate,
 } from '../../Templating';
 
-export default decoratedStory('Atoms', Byline);
+export default decoratedStory('Brand', Byline);
 
 export const byline = () => (
   <StoryTemplate heading="Byline" status={StoryStatus.Ready}>

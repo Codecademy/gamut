@@ -7,7 +7,7 @@ import {
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Quote);
+export default decoratedStory('Brand', Quote);
 
 export const quote = () => (
   <StoryTemplate status={StoryStatus.Ready}>

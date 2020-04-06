@@ -10,7 +10,7 @@ import {
 } from '../../Templating';
 import styles from './styles.scss';
 
-export default decoratedStory('Atoms', Avatar);
+export default decoratedStory('Brand', Avatar);
 
 export const avatar = () => (
   <StoryTemplate heading="Avatar" status={StoryStatus.Ready}>

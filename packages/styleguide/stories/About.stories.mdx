@@ -49,26 +49,34 @@ Its organization adheres to <a href="https://bradfrost.com/blog/post/atomic-web-
   </Column>
 </LayoutGrid>
 
-For convenience, we've split the following fundamental atoms into their own sections:
+For convenience, we've split the following into their own sections:
 
 <LayoutGrid 
   className={styles.grid} 
   columnGap={{ xs: 'sm', lg: 'lg' }}
   rowGap={{ xs: 'sm', lg: 'lg' }}
 >
-  <Column size={6}>
+  <Column size={4}>
     <div>
-      <h2><LinkTo kind="Atoms/Colors" story="Colors">🎨 Colors</LinkTo></h2>
+      <h2><LinkTo kind="Atoms/Brand" story="About">💸 Brand</LinkTo></h2>
       <p>
-        Brand colors we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
+       Components across the design spectrum that are more tied to brand representation and/or marketing purposes.
       </p>
     </div>
   </Column>
-  <Column size={6}>
+  <Column size={4}>
+    <div>
+      <h2><LinkTo kind="Atoms/Colors" story="Colors">🎨 Colors</LinkTo></h2>
+      <p>
+        Brand color atoms we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
+      </p>
+    </div>
+  </Column>
+  <Column size={4}>
     <div>
       <h2><LinkTo kind="Atoms/Layouts" story="About">🗺️ Layouts</LinkTo></h2>
       <p>
-        Pure sizing and padding containers.
+        Sizing and padding container atoms.
         These position our elements on pages in standard responsive layouts.
       </p>
     </div>

@@ -5,7 +5,7 @@ import React from 'react';
 
 import { decoratedStory } from '../Templating';
 
-export default decoratedStory('Molecules', Testimonial);
+export default decoratedStory('Brand', Testimonial);
 
 const short_quote =
   "Coding isn't rocket science, it’s just falsely intimidating.";
