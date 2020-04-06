@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notification } from '..';
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('Notification', () => {
   const onClose = jest.fn();
