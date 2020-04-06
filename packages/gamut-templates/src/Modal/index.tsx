@@ -43,8 +43,7 @@ export const Modal: React.FC<ModalProps> = ({
             >
               <Button
                 flat
-                outline
-                theme="white"
+                theme="brand-dark-blue"
                 fitText
                 onClick={closeModal && closeModal}
                 className={styles.closeButton}
