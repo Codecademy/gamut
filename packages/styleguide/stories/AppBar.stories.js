@@ -32,7 +32,7 @@ export const anotherAppBar = () => (
     <p>
       This is an example of how our headers use the AppBar component to format
       various sections in a bar (left, center, and right). The AppBar can hold
-      as many AppBarSections as you'd like.
+      as many AppBarSections as you&apos;d like.
     </p>
     <AppBar className={styles.container}>
       <AppBarSection position="left">
