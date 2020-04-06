@@ -13,8 +13,8 @@ export const AppBarSection: React.FC<AppBarSectionProps> = ({
   children,
 }) => {
   const classes = cx(
+    styles.section,
     {
-      [styles.section]: true,
       [styles.sectionRight]: position === 'right',
       [styles.sectionLeft]: position === 'left',
       [styles.sectionCenter]: position === 'center',

@@ -28,5 +28,3 @@ export const AppBar: React.FC<AppBarProps> = ({
 };
 
 export default AppBar;
-
-export { AppBarSection, AppBarTab };
