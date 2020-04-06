@@ -6,6 +6,13 @@
   font-weight: normal;
 }
 
+.error {
+  border-color: $deprecated-swatches-red-400;
+  &:focus {
+    border-color: $deprecated-swatches-red-200;
+  }
+}
+
 .selectIcon {
   pointer-events: none;
   position: absolute;

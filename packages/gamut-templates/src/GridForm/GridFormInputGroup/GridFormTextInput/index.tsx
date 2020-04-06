@@ -6,6 +6,7 @@ import { GridFormTextField } from '../../types';
 
 export type GridFormTextInputProps = {
   className?: string;
+  error?: boolean;
   field: Omit<GridFormTextField, 'label'>;
   setValue: (value: string) => void;
   register: FormContextValues['register'];
@@ -13,6 +14,7 @@ export type GridFormTextInputProps = {
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   className,
+  error,
   field,
   register,
   setValue,
@@ -23,6 +25,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   return (
     <Input
       className={className}
+      error={error}
       htmlFor={field.name}
       name={field.name}
       onChange={onChange}

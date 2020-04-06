@@ -29,6 +29,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     field.type === 'select' ? (
       <GridFormSelectInput
         className={styles.gridFormInput}
+        error={!!error}
         field={field}
         register={register}
         setValue={setValue}
@@ -36,6 +37,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     ) : (
       <GridFormTextInput
         className={styles.gridFormInput}
+        error={!!error}
         field={field}
         register={register}
         setValue={setValue}
