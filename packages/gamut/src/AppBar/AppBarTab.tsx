@@ -13,8 +13,8 @@ export const AppBarTab: React.FC<AppBarTabProps> = ({
   children,
 }) => {
   const classes = cx(
+    styles.tab,
     {
-      [styles.tab]: true,
       [styles.tabButton]: button,
     },
     className
