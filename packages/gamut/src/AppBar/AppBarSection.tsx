@@ -7,7 +7,7 @@ export type AppBarSectionProps = {
   className?: string;
 };
 
-const AppBarSection: React.FC<AppBarSectionProps> = ({
+export const AppBarSection: React.FC<AppBarSectionProps> = ({
   position,
   className,
   children,

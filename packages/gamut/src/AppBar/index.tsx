@@ -11,7 +11,11 @@ export type AppBarProps = {
   wide?: boolean;
 };
 
-const AppBar: React.FC<AppBarProps> = ({ wide, children, className }) => {
+export const AppBar: React.FC<AppBarProps> = ({
+  wide,
+  children,
+  className,
+}) => {
   const classes = cx(styles.wrapper, className);
 
   return (

@@ -7,7 +7,7 @@ export type AppBarTabProps = {
   className?: string;
 };
 
-const AppBarTab: React.FC<AppBarTabProps> = ({
+export const AppBarTab: React.FC<AppBarTabProps> = ({
   button,
   className,
   children,
