@@ -110,7 +110,7 @@ ctaNotification.story = {
 
 export const expandableNotification = () => {
   return (
-    <Notification showIcon={false} type="alert" truncate={1}>
+    <Notification showIcon={false} type="alert">
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
@@ -126,7 +126,6 @@ export const everythingNotification = () => {
   return (
     <Notification
       type="alert"
-      truncate={2}
       cta={{
         href: 'https://google.com',
         onClick: () => alert('You clicked me, thank you'),

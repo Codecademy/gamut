@@ -14,7 +14,7 @@ import {
   ArrowChevronUpIcon,
 } from '@codecademy/gamut-icons';
 
-import { BANNER_CONFIG } from './contstants';
+import { BANNER_CONFIG, MAX_LINES } from './contstants';
 import { BannerTypes, BannerCTA } from './types';
 
 import s from './styles.module.scss';
@@ -73,7 +73,7 @@ export const Notification: React.FC<NotificationProps> = ({
           <Container className={s.section} grow={1} shrink={1} align="start">
             <Truncate
               truncateStyle="fade"
-              lines={expanded ? 100 : 2}
+              lines={expanded && MAX_LINES}
               onTruncate={setIsTruncated}
             >
               {children}
