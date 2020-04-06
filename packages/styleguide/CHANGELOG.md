@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.22.2 (2020-04-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>3.22.1 (2020-04-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
+
+
+### Features
+
+* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+
+
+
+
+
+# [3.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
+
+
+### Features
+
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
+
 # [3.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
 
 

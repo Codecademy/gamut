@@ -20,8 +20,7 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ## Local development
 
 1.  Run `yarn` in the root directory
-1.  Run `yarn lerna bootstrap` to prep each package in the `packages` directory for development
-1.  Run `yarn build-all`
+1.  Run `yarn build-all` (certain packages like `gamut-icons` need to be built to function in storybook)
 
 ### Running the storybook styleguide
 
@@ -48,11 +47,11 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### PR Title Guide
 
-Commits follow the [Angular format](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit)
+Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Since we use squash merges, you'll need to format your PR title to match these guidelines.
+Because we use squash merges through the Github UI, you'll need to format your PR title to match these guidelines. Your individual commits will affect the `alpha` version number, but not the final version once you merge to master.
 
-This Title format will be linted in the `probot/conventional-pr-title` status check and prevent merging.
+This Title format will be linted in the `probot/conventional-pr-title` status check and prevent merging if you do not follow the correct format.
 
 ### PR Title Format
 
@@ -65,16 +64,26 @@ type(scope): message
 Examples:
 
 ```
-fix: fixes some component
+fix: fixes a bug in some component
 ```
 
 ```
 test: adds test to component
 ```
 
+With a scope:
+
 ```
 feat(Button): :sparkles: An awesome feature for the Button component
 ```
+
+Breaking change:
+
+```
+feat(Button)!: :fire: Deleted the Button component
+```
+
+Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
 
 Here's an example of how the squash and merge form should look:
 
@@ -82,14 +91,16 @@ Here's an example of how the squash and merge form should look:
 
 **Type**
 
-The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major releases are only created when the text `BREAKING CHANGE:` is included in the `Body` or `Footer` of the commit message.
+The `type` determines what kind of version bump is needed. A `fix` will create a `patch` release, while a `feat` will create a `minor` release. Major version updates require a special syntax that is described below.
 
-`type` must be one of the following:
+`type` must be one of the following options:
 
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **docs**: Documentation only changes
+Standard types:
+
 - **feat**: A new feature
 - **fix**: A bug fix
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+- **docs**: Documentation only changes
 - **perf**: A code change that improves performance
 - **refactor**: A code change that neither fixes a bug nor adds a feature
 - **test**: Adding missing tests or correcting existing tests
@@ -98,7 +109,21 @@ The `type` determines what kind of version bump is needed. A `fix` will create a
 
 **Scope**
 
-Optional scope for your changes
+A scope is optional and consists of a noun describing a section of the codebase surrounded by parenthesis, e.g., feat(Button):
+
+**Breaking Changes**
+
+Adding an exclamation point after your type, before the colon, will indicate that your PR contains a breaking change, and increment the major version number of the modules you changed.
+
+Examples:
+
+`feat!: made a breaking change in the Button component`
+
+`feat(Button)!: made a breaking change in the Button component`
+
+You should do this if your changes introduce any incompatibilities with previous versions of the module.
+
+This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
 
 **Body**
 
@@ -106,7 +131,9 @@ Optional extra description for your changes.
 
 This goes in the description field of the squash and merge form.
 
-**IMPORTANT:** Including the text `BREAKING CHANGE:` in your description will trigger a full version bump. If you are making changes that are incompatible with previous versions of any package, make sure you do this!
+Make sure to clean up the default content if your listed commit messages are not adequate to describe your changes.
+
+If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
 
 ### Publishing the storybook
 
