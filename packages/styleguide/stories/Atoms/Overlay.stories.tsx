@@ -10,9 +10,10 @@ import {
 
 export default decoratedStory('Atoms', Overlay);
 
-export const overlay = () => {
-  const [open, setOpen] = useState(false);
+export const overlay = () => <OverlayStory />;
 
+const OverlayStory = () => {
+  const [open, setOpen] = useState(false);
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
