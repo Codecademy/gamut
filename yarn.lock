@@ -2925,10 +2925,10 @@
   resolved "https://registry.npmjs.org/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-4.2.0.tgz#5f1e2f886b2c85c67e76da42f0f6be1b1767b697"
   integrity sha512-hYfYuZhQPCBVotABsXKSCfel2slf/yvJY8heTVX1PCTaq/IgASq1IyxPPKJ0chWREEKewIU/JMSsIGBtK1KKxw==
 
-"@svgr/babel-plugin-transform-svg-component@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-5.0.1.tgz#31c7c7ad82f12ae09df14bbf9e3ac42a694b0f98"
-  integrity sha512-TYJ5L0QJgWqeMnuc8GEVy2jorwj/jp7y/mGLPwJhNrvrtAuVN7wEvc/Dzi1o1krsKKN7h6WpW/w3AQ6Na7qYEw==
+"@svgr/babel-plugin-transform-svg-component@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/babel-plugin-transform-svg-component/-/babel-plugin-transform-svg-component-5.3.1.tgz#1c512bc3d1b595cc7c5edcb3ac992f655d2dd6bc"
+  integrity sha512-LY5MTWhOBjOeKhZDL+vp/CBLz8ZJQmV1C/WBgGC2ex8qiiCKOs04sqUbmHqEw+ReisEAZVpPHXBFp3RdsB+1qQ==
 
 "@svgr/babel-preset@^4.3.3":
   version "4.3.3"
@@ -2944,10 +2944,10 @@
     "@svgr/babel-plugin-transform-react-native-svg" "^4.2.0"
     "@svgr/babel-plugin-transform-svg-component" "^4.2.0"
 
-"@svgr/babel-preset@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@svgr/babel-preset/-/babel-preset-5.0.1.tgz#16aff48213b83573c2b438457c60a79dc4522e6b"
-  integrity sha512-V2u6rAHLD//0xu+p/Il6laOLfuU5ySpaU1t2HBBXsRp6G9GTTNpAjxUw0iRulfd56AoWcr2j+Fap/J1yz/cx0w==
+"@svgr/babel-preset@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/babel-preset/-/babel-preset-5.3.1.tgz#e7e678e38cd74c2074b810da7a90582d6dbc6898"
+  integrity sha512-9h7bIUXgSZ9N1Ocxxd8yk4Vgl0wL9cdzkYTTgjU+B0ccewBJg4OwZnWdqKuu/kzfqUfwfICUMygKQM/WWYd9lQ==
   dependencies:
     "@svgr/babel-plugin-add-jsx-attribute" "^5.0.1"
     "@svgr/babel-plugin-remove-jsx-attribute" "^5.0.1"
@@ -2956,20 +2956,20 @@
     "@svgr/babel-plugin-svg-dynamic-title" "^5.0.1"
     "@svgr/babel-plugin-svg-em-dimensions" "^5.0.1"
     "@svgr/babel-plugin-transform-react-native-svg" "^5.0.1"
-    "@svgr/babel-plugin-transform-svg-component" "^5.0.1"
+    "@svgr/babel-plugin-transform-svg-component" "^5.3.1"
 
-"@svgr/cli@5.0.0":
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/@svgr/cli/-/cli-5.0.0.tgz#91329457fc4011d76e3bd514dbbb86fec9d6f247"
-  integrity sha512-rySLngKFA6KIpx3yDxsW/qQyclUnIRw2fzivS5ajloC4orL7Tm7QY3FsZ76co+kUNKrXOxu2ebZsXzcG1ZkcfA==
+"@svgr/cli@5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/cli/-/cli-5.3.1.tgz#3762b4db805eb2dfcb396abff084c770fb2619d9"
+  integrity sha512-r9RESI4pgz17C8MQNNGSFDHrBkmEXWM2M1Ibg+jwts6rKOl+5UxPKz2cAy4Q9gqbL5vs6tPUggAdx2u9wRYkng==
   dependencies:
-    "@svgr/core" "^5.0.0"
-    "@svgr/plugin-jsx" "^5.0.0"
-    "@svgr/plugin-prettier" "^5.0.0"
-    "@svgr/plugin-svgo" "^5.0.0"
+    "@svgr/core" "^5.3.1"
+    "@svgr/plugin-jsx" "^5.3.1"
+    "@svgr/plugin-prettier" "^5.3.1"
+    "@svgr/plugin-svgo" "^5.3.0"
     camelcase "^5.3.1"
-    chalk "^3.0.0"
-    commander "^4.0.1"
+    chalk "^4.0.0"
+    commander "^5.0.0"
     dashify "^2.0.0"
     glob "^7.1.4"
     output-file-sync "^2.0.1"
@@ -2983,12 +2983,12 @@
     camelcase "^5.3.1"
     cosmiconfig "^5.2.1"
 
-"@svgr/core@^5.0.0":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@svgr/core/-/core-5.0.1.tgz#b7ec46665de21248b650fe94a2325a30b25569a9"
-  integrity sha512-F/HXJpKbN6Cab31ngiSFiUXYV9y+yiJaDaOZuc7Yqzc19+ncIrM+wSKoytjwcwc+Haj8gvEHsPqRX9L4yM1ftA==
+"@svgr/core@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/core/-/core-5.3.1.tgz#32c2d5146beeb0ca0fadb0549108d0b2512a7b8e"
+  integrity sha512-ZmEEkYrOoylo40Sgl5HlNULu+zF1zqcZ87iglJR1r+id6+TL2tRs53HPiaKUkaPMd3x5C6ErNPlTwMLShaeMSw==
   dependencies:
-    "@svgr/plugin-jsx" "^5.0.1"
+    "@svgr/plugin-jsx" "^5.3.1"
     camelcase "^5.3.1"
     cosmiconfig "^6.0.0"
 
@@ -3016,23 +3016,23 @@
     "@svgr/hast-util-to-babel-ast" "^4.3.2"
     svg-parser "^2.0.0"
 
-"@svgr/plugin-jsx@^5.0.0", "@svgr/plugin-jsx@^5.0.1":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@svgr/plugin-jsx/-/plugin-jsx-5.0.1.tgz#a60b20983bef86fc021554f365b88d88c45300ea"
-  integrity sha512-9mEinzosJshc/VdLqVkoBZQgs2d+ASbL61sX/2XCxcJ+/81KXdZcxmxSycJN37BvlM7F5fuj2ZF7IZwZ7ZOKaQ==
+"@svgr/plugin-jsx@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/plugin-jsx/-/plugin-jsx-5.3.1.tgz#8e0c9501ff6a807f5aae5538c7bd2afa818a4b0c"
+  integrity sha512-M4HQis1bJd10H1gLCYRKBulgOnxPj2Cxhx1rjMHhj+1BdGoKbFSeKLWA6uLsTm59Db6510f5ltE+N8UX0muEYg==
   dependencies:
     "@babel/core" "^7.7.5"
-    "@svgr/babel-preset" "^5.0.1"
+    "@svgr/babel-preset" "^5.3.1"
     "@svgr/hast-util-to-babel-ast" "^5.0.1"
     svg-parser "^2.0.2"
 
-"@svgr/plugin-prettier@^5.0.0":
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/@svgr/plugin-prettier/-/plugin-prettier-5.0.1.tgz#4522e5d457c1b893b6ed19094ce9c95c7506b737"
-  integrity sha512-d74rQ7RQZ8bFsbgF9fGaWdMYkQtZK6NBbTqNfHTtqpvjjDG4+GKLFiXr0o8axwUcMoP2koTntCA7kxI4M6MvKg==
+"@svgr/plugin-prettier@^5.3.1":
+  version "5.3.1"
+  resolved "https://registry.npmjs.org/@svgr/plugin-prettier/-/plugin-prettier-5.3.1.tgz#91b378874682c4cd938d8c64943424e565cd055d"
+  integrity sha512-SMAXcbseXWjyJ8ZnLy8Rw9zM3OQsXdXVw0cW5IiqfDk/3vjBWy7iZDiAyIdXhOWuFQKl7k8WUVRboIHFtTX2iA==
   dependencies:
     merge-deep "^3.0.2"
-    prettier "^1.17.1"
+    prettier "^2.0.2 || ^1.19.1"
 
 "@svgr/plugin-svgo@^4.3.1":
   version "4.3.1"
@@ -3043,10 +3043,10 @@
     merge-deep "^3.0.2"
     svgo "^1.2.2"
 
-"@svgr/plugin-svgo@^5.0.0":
-  version "5.1.0"
-  resolved "https://registry.npmjs.org/@svgr/plugin-svgo/-/plugin-svgo-5.1.0.tgz#6939223f90581cd503b42893e795d659dbd7f7c4"
-  integrity sha512-yj7e6F6nlMZyKe/uezrwS8ZJ6a/NRbQkuJV5yNdnottd9FiWQKG4mkLmb3YHas3rzfv5WBJHf1NU2p58/v01MA==
+"@svgr/plugin-svgo@^5.3.0":
+  version "5.3.0"
+  resolved "https://registry.npmjs.org/@svgr/plugin-svgo/-/plugin-svgo-5.3.0.tgz#a33d45ecd64cb2c1adaab9196faddc10022552a7"
+  integrity sha512-rQw558t/pPPA/aWrazLDt3xIuxh9zDuUcQUeR8EO6yiYftkjT7My1MLPz1pha1LhkJCR1ug83fp+TPRYkV9EIQ==
   dependencies:
     cosmiconfig "^6.0.0"
     merge-deep "^3.0.2"
@@ -5198,6 +5198,14 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+chalk@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/chalk/-/chalk-4.0.0.tgz#6e98081ed2d17faab615eb52ac66ec1fe6209e72"
+  integrity sha512-N9oWFcegS0sFr9oh1oz2d7Npos6vNoWW9HvtCg5N1KRFpUhaAhvTv5Y58g880fZaEYSNm3qDz8SU1UrGvp+n7A==
+  dependencies:
+    ansi-styles "^4.1.0"
+    supports-color "^7.1.0"
+
 character-entities-legacy@^1.0.0:
   version "1.1.3"
   resolved "https://registry.npmjs.org/character-entities-legacy/-/character-entities-legacy-1.1.3.tgz#3c729991d9293da0ede6dddcaf1f2ce1009ee8b4"
@@ -5560,6 +5568,11 @@ commander@^4.0.0, commander@^4.0.1:
   version "4.1.0"
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.0.tgz#545983a0603fe425bc672d66c9e3c89c42121a83"
   integrity sha512-NIQrwvv9V39FHgGFm36+U9SMQzbiHvU79k+iADraJTpmrFFfx7Ds0IvDoAdZsDrknlkRk14OYoWXb57uTh7/sw==
+
+commander@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/commander/-/commander-5.0.0.tgz#dbf1909b49e5044f8fdaf0adc809f0c0722bdfd0"
+  integrity sha512-JrDGPAKjMGSP1G0DUoaceEJ3DZgAfr/q6X7FVk4+U5KxUSKviYGM2k6zWkfyyBHy5rAtzgYJFa1ro2O9PtoxwQ==
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -13226,10 +13239,15 @@ prepend-http@^1.0.0, prepend-http@^1.0.1:
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@1.19.1, prettier@^1.16.4, prettier@^1.17.1:
+prettier@1.19.1, prettier@^1.16.4:
   version "1.19.1"
   resolved "https://registry.npmjs.org/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
+
+"prettier@^2.0.2 || ^1.19.1":
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.0.4.tgz#2d1bae173e355996ee355ec9830a7a1ee05457ef"
+  integrity sha512-SVJIQ51spzFDvh4fIbCLvciiDMCrRhlN3mbZvv/+ycjvmF5E73bKdGfU8QDLNmjYJf+lsGnDBC4UUnvTe5OO0w==
 
 pretty-error@^2.1.1:
   version "2.1.1"

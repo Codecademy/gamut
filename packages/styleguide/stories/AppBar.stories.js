@@ -1,6 +1,5 @@
-import { AppBar, AppBarSection, AppBarTab } from '../../gamut/src';
+import { AppBar, AppBarSection, AppBarTab, Logo } from '../../gamut/src';
 import React from 'react';
-import { Logo } from '@codecademy/gamut';
 import styles from './AppBar-story.scss';
 
 export default {
