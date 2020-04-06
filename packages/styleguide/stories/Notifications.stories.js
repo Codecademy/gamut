@@ -110,7 +110,7 @@ ctaNotification.story = {
 
 export const expandableNotification = () => {
   return (
-    <Notification showIcon={false} type="alert">
+    <Notification showIcon={false} type="alert" lines={1}>
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
@@ -131,6 +131,7 @@ export const everythingNotification = () => {
         onClick: () => alert('You clicked me, thank you'),
         text: 'Click Me',
       }}
+      lines={1}
     >
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum

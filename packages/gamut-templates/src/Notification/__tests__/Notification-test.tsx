@@ -1,6 +1,6 @@
 import React from 'react';
 import { Notification } from '..';
-import { mount } from 'enzyme';
+import { mount, render } from 'enzyme';
 
 describe('Notification', () => {
   const onClose = jest.fn();
@@ -24,7 +24,7 @@ describe('Notification', () => {
       <Notification onClose={onClose}>Hello</Notification>
     );
 
-    const close = renderedNotification.find('button');
+    const close = renderedNotification.find('button').at(0);
     close.simulate('click');
 
     expect(onClose).toHaveBeenCalled();
@@ -57,7 +57,7 @@ describe('Notification', () => {
       </Notification>
     );
 
-    const cta = renderedNotification.find('button').at(0);
+    const cta = renderedNotification.find('button').at(1);
     cta.simulate('click');
 
     expect(onCtaClick).not.toHaveBeenCalled();
@@ -78,5 +78,53 @@ describe('Notification', () => {
 
     expect(cta.prop('href')).toEqual('/hello');
     expect(onCtaClick).toHaveBeenCalled();
+  });
+
+  it('truncates any children to a limited number of lines', () => {
+    const renderedNotification = mount(
+      <Notification
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick, href: '/hello' }}
+        lines={2}
+      >
+        Hello
+      </Notification>
+    );
+
+    const renderedTruncated = renderedNotification.find('Truncate');
+
+    expect(renderedTruncated.prop('lines')).toEqual(2);
+  });
+
+  it('renders an expandable button for any truncated text', () => {
+    const renderedNotification = mount(
+      <Notification
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick }}
+        lines={2}
+      >
+        Hello
+      </Notification>
+    );
+
+    const buttons = renderedNotification.find('button');
+
+    expect(buttons.length).toEqual(3);
+    buttons.at(0).simulate('click');
+
+    renderedNotification.update();
+
+    expect(renderedNotification.find('Truncate').prop('lines')).toEqual(
+      undefined
+    );
+
+    renderedNotification
+      .find('button')
+      .at(0)
+      .simulate('click');
+
+    renderedNotification.update();
+
+    expect(renderedNotification.find('Truncate').prop('lines')).toEqual(2);
   });
 });

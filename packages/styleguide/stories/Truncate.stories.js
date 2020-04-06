@@ -32,9 +32,9 @@ export const basicTruncate = () => {
       <p>This also works with markup</p>
       <p>
         <TruncateText lines={2}>
-          <button>I am a button</button>
+          <strong>I am a strong</strong>
           {placeholderText}
-          <button>I am another button</button>
+          <em>I am another em</em>
         </TruncateText>
       </p>
     </div>

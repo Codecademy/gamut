@@ -14,7 +14,7 @@ import {
   ArrowChevronUpIcon,
 } from '@codecademy/gamut-icons';
 
-import { BANNER_CONFIG, MAX_LINES } from './contstants';
+import { BANNER_CONFIG } from './contstants';
 import { BannerTypes, BannerCTA } from './types';
 
 import s from './styles.module.scss';
@@ -30,6 +30,8 @@ export type NotificationProps = {
   cta?: BannerCTA;
   /** Remove the max-width on the notification container */
   fluid?: boolean;
+  /** Number of lines to limit the message to */
+  lines?: number;
 };
 
 export const Notification: React.FC<NotificationProps> = ({
@@ -37,19 +39,15 @@ export const Notification: React.FC<NotificationProps> = ({
   fluid = false,
   type = BannerTypes.Info,
   showIcon = true,
+  lines,
   cta,
   onClose,
 }) => {
   const TypeIcon = BANNER_CONFIG[type];
-  const [expanded, setExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isTruncated, setIsTruncated] = useState<boolean>(false);
-  const showExpandToggle = isTruncated || expanded;
-  const ToggleIcon = expanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
-
-  const toggleExpand = useCallback(() => setExpanded(!expanded), [
-    expanded,
-    setExpanded,
-  ]);
+  const showExpandToggle = isTruncated || isExpanded;
+  const ToggleIcon = isExpanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
 
   return (
     <CardShell
@@ -71,7 +69,10 @@ export const Notification: React.FC<NotificationProps> = ({
           shrink={1}
         >
           <Container className={s.section} grow={1} shrink={1} align="start">
-            <Truncate lines={expanded && MAX_LINES} onTruncate={setIsTruncated}>
+            <Truncate
+              lines={isExpanded ? undefined : lines}
+              onTruncate={setIsTruncated}
+            >
               {children}
             </Truncate>
             {showExpandToggle && (
@@ -80,7 +81,7 @@ export const Notification: React.FC<NotificationProps> = ({
                   className={cx(s.iconButton, {
                     [s[`iconButton__${type}`]]: type,
                   })}
-                  onClick={toggleExpand}
+                  onClick={() => setIsExpanded(!isExpanded)}
                 >
                   <ToggleIcon size={16} />
                 </ButtonBase>

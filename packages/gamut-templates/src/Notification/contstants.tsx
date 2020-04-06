@@ -13,5 +13,3 @@ export const BANNER_CONFIG = {
   announcement: RatingStarCircleIcon,
   success: CheckCircledIcon,
 };
-
-export const MAX_LINES = 2;

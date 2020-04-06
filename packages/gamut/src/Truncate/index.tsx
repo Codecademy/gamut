@@ -7,7 +7,7 @@ type TruncateTextProps = {
   /** element for the component */
   as?: 'div' | 'span' | 'p';
   /** the maximum number of lines to display */
-  lines: number;
+  lines?: number;
   /** Callback indicating if truncation was necessary */
   onTruncate?: (truncated: boolean) => void;
 };
