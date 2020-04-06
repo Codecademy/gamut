@@ -21,6 +21,6 @@ addParameters({
 });
 
 configure(
-  [require.context('../stories', true, /\.stories\.(md|t)sx$/)],
+  [require.context('../stories', true, /\.stories\.(md|ts)x$/)],
   module
 );
