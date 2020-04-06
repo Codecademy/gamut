@@ -37,7 +37,6 @@ export const Notification: React.FC<NotificationProps> = ({
   fluid = false,
   type = BannerTypes.Info,
   showIcon = true,
-  truncate,
   cta,
   onClose,
 }) => {
@@ -57,10 +56,9 @@ export const Notification: React.FC<NotificationProps> = ({
       className={cx(s.container, {
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
-        [s.container__icon]: showIcon,
       })}
     >
-      <Container align="start" shrink={1}>
+      <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
           <Container className={s.section} justify="center" align="center">
             <TypeIcon size={24} />
@@ -72,8 +70,12 @@ export const Notification: React.FC<NotificationProps> = ({
           grow={1}
           shrink={1}
         >
-          <Container grow={1} align="start" className={cx(s.section)}>
-            <Truncate lines={expanded ? 100 : 2} onTruncate={setIsTruncated}>
+          <Container className={s.section} grow={1} shrink={1} align="start">
+            <Truncate
+              truncateStyle="fade"
+              lines={expanded ? 100 : 2}
+              onTruncate={setIsTruncated}
+            >
               {children}
             </Truncate>
             {showExpandToggle && (
@@ -90,10 +92,7 @@ export const Notification: React.FC<NotificationProps> = ({
             )}
           </Container>
           {cta && (
-            <Container
-              shrink={1}
-              className={cx(s.section, s.section__smPadding)}
-            >
+            <Container className={s.section} shrink={1}>
               <Button
                 caps
                 theme={type}
@@ -107,7 +106,7 @@ export const Notification: React.FC<NotificationProps> = ({
             </Container>
           )}
         </Container>
-        <Container shrink={1} center className={s.section}>
+        <Container className={s.section} shrink={1} center>
           <ButtonBase
             className={cx(s.iconButton, {
               [s[`iconButton__${type}`]]: type,

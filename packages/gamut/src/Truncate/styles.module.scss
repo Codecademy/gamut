@@ -1,23 +1,7 @@
-@import "~@codecademy/gamut-styles/utils";
-
 .wrapper {
   position: relative;
   display: inline-block;
   overflow: hidden;
   visibility: visible;
-}
-
-.fade {
-  bottom: 0;
-  right: 0;
-  text-align: right;
-  position: absolute;
-  right: 0;
-  width: 20%;
-
-  background: linear-gradient(
-    to right,
-    rgba($color-white, 0),
-    rgba($color-white, 1) 75%
-  );
+  background-color: inherit;
 }

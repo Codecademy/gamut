@@ -43,7 +43,6 @@ $themeColors: (
 
 .section {
   padding: px-rem(6);
-  flex-shrink: 1;
 }
 
 .section__main {
@@ -54,13 +53,10 @@ $themeColors: (
   }
 }
 
-.section__smPadding {
-  padding: px-rem(2);
-}
-
 .actionButton {
   font-weight: 700;
   font-size: px-rem(12);
+  margin-top: px-rem(-4);
 }
 
 .iconButton {

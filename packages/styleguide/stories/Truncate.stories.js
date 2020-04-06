@@ -18,28 +18,23 @@ velit esse cillum dolore eu fugiat nulla pariatur.
 export const basicTruncate = () => {
   return (
     <div style={{ width: '100%', maxWidth: '600px' }}>
-      <h2>Default (nothing)</h2>
+      <h4>Default (nothing)</h4>
       <p>
         <TruncateText>{placeholderText}</TruncateText>
       </p>
 
-      <h2>2 Line Container</h2>
+      <h4>With text</h4>
       <p>
         <TruncateText lines={2}>{placeholderText}</TruncateText>
       </p>
 
-      <h3>Fade</h3>
+      <h4>With Components</h4>
+      <p>This also works with markup</p>
       <p>
-        <TruncateText lines={2} truncateStyle="fade">
+        <TruncateText lines={2}>
+          <button>I am a button</button>
           {placeholderText}
-        </TruncateText>
-      </p>
-
-      <h3>With Components</h3>
-      <p>
-        <TruncateText lines={2} truncateStyle="fade">
-          hello world this is dude guy. <CircleHeavyIcon /> I put something in
-          here
+          <button>I am another button</button>
         </TruncateText>
       </p>
     </div>
@@ -47,5 +42,5 @@ export const basicTruncate = () => {
 };
 
 basicTruncate.story = {
-  name: 'TruncateText',
+  name: 'Truncate',
 };
