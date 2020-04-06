@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.7...@codecademy/brand-components@0.8.8) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.7](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.6...@codecademy/brand-components@0.8.7) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.6](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.5...@codecademy/brand-components@0.8.6) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.5](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.4...@codecademy/brand-components@0.8.5) (2020-04-01)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.3...@codecademy/brand-components@0.8.4) (2020-04-01)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.2...@codecademy/brand-components@0.8.3) (2020-03-31)
+
+
+### Bug Fixes
+
+* update `grid-template-row` on small and medium testimonials ([89a6ea1](https://github.com/Codecademy/client-modules/commit/89a6ea18df41bba89c0fa94629fab6de791ea9aa))
+
+
+
+
+
 ## [0.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.1...@codecademy/brand-components@0.8.2) (2020-03-31)
 
 **Note:** Version bump only for package @codecademy/brand-components

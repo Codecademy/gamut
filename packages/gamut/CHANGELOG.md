@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.14.0...@codecademy/gamut@2.15.0) (2020-04-02)
+
+
+### Features
+
+* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+
+
+
+
+
+# [2.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.13.0...@codecademy/gamut@2.14.0) (2020-04-02)
+
+
+### Features
+
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
+
+# [2.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.12.0...@codecademy/gamut@2.13.0) (2020-04-01)
+
+
+### Features
+
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+* map column offset 0 to grid-column-start: auto ([#678](https://github.com/RyzacInc/client-modules/issues/678)) ([415b8c1](https://github.com/RyzacInc/client-modules/commit/415b8c1bae4067a1062cc19371526dca48e30c04))
+
+
+
+
+
+# [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.11.0...@codecademy/gamut@2.12.0) (2020-04-01)
+
+
+### Features
+
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
+
 # [2.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.10.0...@codecademy/gamut@2.11.0) (2020-03-31)
 
 

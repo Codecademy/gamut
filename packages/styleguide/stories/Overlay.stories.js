@@ -1,32 +1,32 @@
-import { Modal } from '../../gamut/src';
+import { Overlay } from '../../gamut/src';
 import React, { useState } from 'react';
 
 export default {
-  component: Modal,
-  title: 'Component/Modal',
+  component: Overlay,
+  title: 'Component/Overlay',
 };
 
-const ModalStory = () => {
+const OverlayStory = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <p>
-      Modal primitives are controlled components that are told whether
+      Overlay primitives are controlled components that are told whether
       they&apos;re open by their parent. They&apos;re very basic and don&apos;t
       (yet!) have animations defined.
       <br />
       <br />
       <button onClick={() => setOpen(true)} type="button">
-        Open modal
+        Open overlay
       </button>
-      <Modal onOutsideClick={() => alert('Outside clicked.')} isOpen={open}>
+      <Overlay onOutsideClick={() => alert('Outside clicked.')} isOpen={open}>
         <div style={{ background: 'white', padding: '1rem' }}>
           <h1>Hooray!</h1>
           <button type="button" onClick={() => setOpen(false)}>
-            Close modal
+            Close overlay
           </button>
         </div>
-      </Modal>
+      </Overlay>
       <br />
       <br />
       Unlike the existing, legacy Modal implementations in the monolith, this:
@@ -39,10 +39,11 @@ const ModalStory = () => {
       </ul>
       <br />
       <br />
-      Use this modal only for actual &apos;modal&apos; content that takes up the
-      full screen. Do not use it for dropdowns or other small interactive items.
+      Use this overlay only for actual &apos;overlay&apos; content that takes up
+      the full screen. Do not use it for dropdowns or other small interactive
+      items.
     </p>
   );
 };
 
-export const modal = () => <ModalStory />;
+export const overlay = () => <OverlayStory />;

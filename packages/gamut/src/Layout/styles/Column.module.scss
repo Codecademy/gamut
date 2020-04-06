@@ -18,7 +18,11 @@
   @each $columnSize in $columnSizes {
     .offset_#{$columnSize}__#{$screenSize}Screen {
       @include getViewport($screenSize) {
-        grid-column-start: #{$columnSize + 1};
+        @if $columnSize == 0 {
+          grid-column-start: auto;
+        } @else {
+          grid-column-start: #{$columnSize + 1};
+        }
       }
     }
   }
