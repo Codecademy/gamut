@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.22.2 (2020-04-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>3.22.1 (2020-04-06)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
