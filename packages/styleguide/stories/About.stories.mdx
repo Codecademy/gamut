@@ -1,11 +1,76 @@
+import { Column, LayoutGrid } from '@codecademy/gamut';
+import LinkTo from '@storybook/addon-links/react';
+
+import styles from './styles.scss';
+
 <Meta title="About" />
 
 # Gamut
 
+<strong>The design system for Codecademy <span aria-label="sparkles" role="img">✨</span></strong>
+
+Gamut components, styles, and utilities are the core of the Codecademy brand shared across its websites.
+They're most notably used on <a href="https://codecademy.com">codecademy.com</a> but are also found on our internal websites and tools, as well as on our mobile application.
+
 This storybook represents components found in the Codecademy [Client Modules](https://github.com/Codecademy/client-modules) repo.
+Its organization adheres to <a href="https://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>.
 
-## Gamut Styles
+<LayoutGrid 
+  className={styles.grid} 
+  columnGap={{ xs: 'sm', lg: 'lg' }}
+  rowGap={{ xs: 'sm', lg: 'lg' }}
+>
+  <Column size={4}>
+    <div>
+      <h2><LinkTo kind="Atoms" story="About">⚛️ Atoms</LinkTo></h2>
+      <p>
+        Atoms are the basic building blocks of matter. Applied to web interfaces,
+        atoms are our HTML tags, such as a form label, an input or a button.
+      </p>
+    </div>
+  </Column>
+  <Column size={4}>
+    <div>
+      <h2><LinkTo kind="Molecules" story="About">🧬 Molecules</LinkTo></h2>
+      <p>
+        Molecules are groups of atoms bonded together and are the smallest
+        fundamental units of a compound.
+      </p>
+    </div>
+  </Column>
+  <Column size={4}>
+    <div>
+      <h2><LinkTo kind="Organisms" story="About">🦠 Organisms</LinkTo></h2>
+      <p>
+        Organisms are groups of molecules joined together to form a relatively
+        complex, distinct section of an interface.
+      </p>
+    </div>
+  </Column>
+</LayoutGrid>
 
-This storybook displays components, as well as some basic style building blocks in the "Visual" top-level folder, such as [color variables](/?selectedKind=Visuals%2FColors&selectedStory=Portal).
+For convenience, we've split the following fundamental atoms into their own sections:
 
-To instead view the core styles for Codecademy, visit the [Gamut Styles sub-repo](https://github.com/Codecademy/client-modules/tree/master/packages/gamut-styles)
+<LayoutGrid 
+  className={styles.grid} 
+  columnGap={{ xs: 'sm', lg: 'lg' }}
+  rowGap={{ xs: 'sm', lg: 'lg' }}
+>
+  <Column size={6}>
+    <div>
+      <h2><LinkTo kind="Atoms/Colors" story="Colors">🎨 Colors</LinkTo></h2>
+      <p>
+        Brand colors we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
+      </p>
+    </div>
+  </Column>
+  <Column size={6}>
+    <div>
+      <h2><LinkTo kind="Atoms/Layouts" story="About">🗺️ Layouts</LinkTo></h2>
+      <p>
+        Pure sizing and padding containers.
+        These position our elements on pages in standard responsive layouts.
+      </p>
+    </div>
+  </Column>
+</LayoutGrid>

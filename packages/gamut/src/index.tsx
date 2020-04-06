@@ -7,26 +7,24 @@ export * from './Card/CardShell';
 export * from './Card/CardBody';
 export * from './Card/CardFooter';
 export * from './Form';
+export * from './GridForm';
 export * from './Layout';
 export * from './HighlightedText';
 export * from './Icon';
 export * from './IkonaIcon';
+export * from './Interstitial';
 export * from './Logo';
 export * from './Markdown';
 export * from './Menus/MenuItem';
 export * from './Menus/SideMenu';
-
-// Temporarily exporting under two names to ease any breaking changes
-// eslint-disable-next-line import/export
 export * from './Overlay';
-export { Overlay as Modal } from './Overlay';
-
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
 export * from './NotificationList/NotificationItem';
 export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './Spinner';
+export * from './SplitInterstitial';
 export * from './theming/VisualTheme';
 export * from './Tabs';
 export * from './SkipToContent';

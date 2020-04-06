@@ -1,4 +1,4 @@
-@import "../../../gamut-styles/utils";
+@import "~@codecademy/gamut-styles/utils";
 
 // Needed to avoid overriding story styles
 :global {
@@ -7,6 +7,9 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 1rem;
+  }
+
+  .docblock-emptyblock {
+    display: none;
   }
 }

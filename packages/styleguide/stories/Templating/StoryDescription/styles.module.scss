@@ -1,0 +1,13 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.description {
+  border-bottom: 1px solid $color-gray-300;
+  margin-bottom: 2rem;
+
+  &::after {
+    content: " ";
+    clear: right;
+    display: block;
+    width: 100%;
+  }
+}

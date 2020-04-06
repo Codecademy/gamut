@@ -1,0 +1,31 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.template {
+  max-width: $grid-md-min;
+  padding: 1rem;
+  width: 100%;
+}
+
+.templateDark {
+  color: $color-gray-100;
+  background: $color-gray-900;
+
+  .heading {
+    color: $color-gray-100;
+  }
+}
+
+.templateWide {
+  max-width: $max-content-width;
+}
+
+.heading {
+  margin: 0;
+  min-width: 50%;
+  padding-right: 1rem;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+}

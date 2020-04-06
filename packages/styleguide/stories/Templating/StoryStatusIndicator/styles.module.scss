@@ -1,0 +1,17 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.indicator {
+  align-items: center;
+  border-radius: 3px;
+  border: 1px solid $color-gray-300;
+  display: inline-flex;
+  float: right;
+  font-style: italic;
+  margin: 0 0 1rem 1rem;
+  padding: 0.5rem;
+}
+
+.emoji {
+  font-style: initial;
+  margin-left: 0.5rem;
+}

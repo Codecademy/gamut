@@ -11,13 +11,8 @@ module.exports = {
             paths: [
               {
                 name: '@codecademy/gamut',
-                message: 'Please import directly from the `gamut/src` folder',
+                message: 'Import from `@codecademy/gamut/src` instead.',
               },
-            ],
-            patterns: [
-              '@codecademy/*',
-              '!@codecademy/gamut-icons',
-              '../**/dist',
             ],
           },
         ],

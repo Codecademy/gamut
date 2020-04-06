@@ -5,11 +5,8 @@
     "allowJs": true,
     "noEmit": true,
     "isolatedModules": true,
-    "declaration": false,
+    "declaration": false
   },
-  "include": [
-    "./**/*",
-    "../**/src/**/*",
-  ],
+  "include": ["../../typings/*.d.ts", "./**/*", "../**/src/**/*"],
   "exclude": []
 }

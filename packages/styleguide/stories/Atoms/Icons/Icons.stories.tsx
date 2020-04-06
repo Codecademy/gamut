@@ -1,0 +1,54 @@
+import { LayoutGrid, Column } from '@codecademy/gamut/src';
+import * as icons from '@codecademy/gamut-icons';
+import { number, select } from '@storybook/addon-knobs';
+import React from 'react';
+
+import { selectableColors } from '../../helpers';
+import {
+  decoratedStory,
+  StoryDescription,
+  StoryStatus,
+  StoryTemplate,
+} from '../../Templating';
+import styles from './styles.scss';
+
+export default decoratedStory('Atoms', 'Icons');
+
+const iconKeys = Object.keys(icons) as (keyof typeof icons)[];
+const iconEntries = Object.entries(icons);
+
+export const allIcons = () => {
+  const color = select('Color', selectableColors, selectableColors.black);
+  const size = number('Size', 64);
+
+  <StoryTemplate heading="Icons" status={StoryStatus.Ready} wide>
+    <StoryDescription>
+      Icons as defined in the <code>@codecademy/gamut-icons</code> package.
+    </StoryDescription>
+    <LayoutGrid columnGap="sm" rowGap="sm">
+      {iconEntries.map(([iconName, Icon]) => (
+        <Column size={1} className={styles.iconWrapper} key={iconName}>
+          <Icon key={iconName} size={size} color={color} />
+          <span className={styles.iconLabel}>{iconName}</span>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </StoryTemplate>;
+};
+
+export const iconPlayground = () => {
+  const iconName = select('Icon Name', iconKeys, iconKeys[0]);
+  const IconComponent = icons[iconName];
+
+  return (
+    <StoryTemplate heading="Icon Playground" status={StoryStatus.Ready}>
+      <IconComponent
+        size={number('size', 40)}
+        style={{
+          color: select('color', selectableColors, 'black'),
+          backgroundColor: select('backgroundColor', selectableColors, 'white'),
+        }}
+      />
+    </StoryTemplate>
+  );
+};

@@ -1,0 +1,34 @@
+.iconWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.iconLabel {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.iconGrid {
+  outline: 1px solid red;
+  position: relative;
+  display: inline-flex;
+  &:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    height: 100%;
+    width: 1px;
+    background: red;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: red;
+  }
+}

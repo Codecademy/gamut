@@ -1,2 +1,3 @@
-export { default as LayoutGrid } from './Grid';
-export { default as Column } from './Column';
+export * from './Column';
+export * from './LayoutGrid';
+export * from './types';

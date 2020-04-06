@@ -1,13 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import cx from 'classnames';
 import s from './styles/CardShell.module.scss';
 
-const defaultProps = {
-  hoverShadow: false,
-};
-
 export type CardShellProps = {
-  children: ReactNode;
   className?: string;
   hoverShadow?: boolean;
   style?: object;
@@ -15,14 +10,14 @@ export type CardShellProps = {
   role?: string;
 };
 
-export const CardShell = ({
+export const CardShell: React.FC<CardShellProps> = ({
   children,
   hoverShadow,
   className,
   style,
   role,
   id,
-}: CardShellProps) => {
+}) => {
   const shellClasses = cx(
     s.shell,
     {
@@ -37,7 +32,5 @@ export const CardShell = ({
     </div>
   );
 };
-
-CardShell.defaultProps = defaultProps;
 
 export default CardShell;
