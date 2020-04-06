@@ -1,9 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
 import ContentContainer from '../ContentContainer';
-
-import AppBarSection from './AppBarSection';
-import AppBarTab from './AppBarTab';
 import styles from './styles/index.scss';
 
 export type AppBarProps = {
