@@ -19,6 +19,7 @@
     "verify-all": "yarn lerna run verify",
     "clear-modules": "yarn lerna clean -y && rm -rf node_modules",
     "build-all": "yarn lerna run prepublishOnly",
+    "watch-all": "yarn lerna run watch --parallel",
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",

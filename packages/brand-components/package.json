@@ -24,6 +24,7 @@
   },
   "scripts": {
     "verify": "tsc --noEmit",
+    "watch": "yarn build:compile --watch",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
