@@ -6,7 +6,7 @@ import { decoratedStory, StoryStatus, StoryTemplate } from '../../Templating';
 export default decoratedStory('Atoms', 'Layouts', ContentContainer);
 
 export const contentContainer = () => (
-  <StoryTemplate heading="Content Container" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <ContentContainer>
       <p>
         ContentContainer can used when creating page layouts to contain content

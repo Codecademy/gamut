@@ -13,7 +13,7 @@ import {
 export default decoratedStory('Brand', Byline);
 
 export const byline = () => (
-  <StoryTemplate heading="Byline" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Marketing display of a person's information, such as for a testimonial.
       Commonly paired with an <code>Avatar</code>.
@@ -28,7 +28,7 @@ export const byline = () => (
 );
 
 export const bylineWithCustomClassNames = () => (
-  <StoryTemplate heading="Byline (Custom)" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       In a pinch, we can add custom class names to the byline contents.
     </StoryDescription>

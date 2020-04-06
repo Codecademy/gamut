@@ -13,7 +13,7 @@ import styles from './styles.scss';
 export default decoratedStory('Brand', Avatar);
 
 export const avatar = () => (
-  <StoryTemplate heading="Avatar" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     {theme => (
       <>
         <StoryDescription>

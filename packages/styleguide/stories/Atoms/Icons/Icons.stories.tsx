@@ -22,7 +22,7 @@ export const allIcons = () => {
   const size = number('Size', 64);
 
   return (
-    <StoryTemplate heading="Icons" status={StoryStatus.Ready} wide>
+    <StoryTemplate status={StoryStatus.Ready} wide>
       <StoryDescription>
         Icons as defined in the <code>@codecademy/gamut-icons</code> package.
       </StoryDescription>
@@ -43,7 +43,7 @@ export const iconPlayground = () => {
   const IconComponent = icons[iconName];
 
   return (
-    <StoryTemplate heading="Icon Playground" status={StoryStatus.Ready}>
+    <StoryTemplate status={StoryStatus.Ready}>
       <IconComponent
         size={number('size', 40)}
         style={{

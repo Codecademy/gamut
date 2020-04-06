@@ -55,5 +55,9 @@
     "webpack": "4.41.5",
     "webpack-react-docgen-typescript": "0.9.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/storybook__addon-knobs": "^5.2.1",
+    "@types/storybook__addon-links": "^5.2.1"
+  }
 }

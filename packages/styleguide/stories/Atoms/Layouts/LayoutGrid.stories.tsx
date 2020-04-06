@@ -72,7 +72,7 @@ const KitchenSinkColumns = () => (
 
 export const layoutGrid = () => {
   return (
-    <StoryTemplate heading="LayoutGrid" status={StoryStatus.Ready}>
+    <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
         A flexible grid that can support arbitrary rows of content, each of
         which snaps to assuming 12 "units" of width. Cells in the rows are

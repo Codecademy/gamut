@@ -11,7 +11,7 @@ import {
 export default decoratedStory('Atoms', 'Form Decorations');
 
 export const formInputs = () => (
-  <StoryTemplate heading="Form Inputs" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Ancillary descriptions for input atoms tied 1:1 with values to be
       submitted in a form.
@@ -23,7 +23,7 @@ export const formInputs = () => (
 );
 
 export const formGroupDescription = () => (
-  <StoryTemplate heading="FormGroupDescription" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Longer form label visually associated with any form input atom.
     </StoryDescription>
@@ -34,7 +34,7 @@ export const formGroupDescription = () => (
 );
 
 export const formGroupLabel = () => (
-  <StoryTemplate heading="FormGroupLabel" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Primary label visually associated with any form input atom.
     </StoryDescription>

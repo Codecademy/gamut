@@ -19,11 +19,7 @@ const iconNames = Object.keys(iconMap) as IconPropsDeprecated['name'][];
 export default decoratedStory('Atoms', 'Icons (Deprecated)');
 
 export const iconsDeprecated = () => (
-  <StoryTemplate
-    heading="Icons (Deprecated)"
-    status={StoryStatus.Deprecated}
-    wide
-  >
+  <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       Legacy icons as defined in the <code>@codecademy/gamut</code> package's{' '}
       <code>Icon</code> export.

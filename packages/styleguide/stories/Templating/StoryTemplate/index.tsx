@@ -3,18 +3,12 @@ import { select } from '@storybook/addon-knobs';
 import cx from 'classnames';
 import React from 'react';
 
-import StorySection, { Section } from '../StorySection';
 import { StoryStatus } from '../StoryStatus';
 import StoryStatusIndicator from '../StoryStatusIndicator';
 import styles from './styles.module.scss';
 
 export type StoryTemplateProps = {
   children?: React.ReactNode | ((theme: VisualTheme) => React.ReactNode);
-
-  // TODO STOP USING / JUST USE NATIVE STORIES
-  heading?: string;
-  sections?: Section[];
-
   status: StoryStatus;
   theme?: VisualTheme;
   wide?: boolean;
@@ -22,7 +16,6 @@ export type StoryTemplateProps = {
 
 export const StoryTemplate: React.FC<StoryTemplateProps> = ({
   children,
-  sections,
   status,
   wide,
 }) => {
@@ -43,17 +36,6 @@ export const StoryTemplate: React.FC<StoryTemplateProps> = ({
       <StoryStatusIndicator status={status} />
       {children instanceof Function ? children(theme) : children}
       <div className={styles.divider} />
-      {sections && (
-        <div className={styles.sections}>
-          {sections.map(section => (
-            <StorySection
-              section={section}
-              theme={theme}
-              key={section.heading}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };

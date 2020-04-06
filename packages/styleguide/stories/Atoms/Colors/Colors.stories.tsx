@@ -68,19 +68,14 @@ const renderSwatches = (data: any, variablePrefix: string) =>
   });
 
 export const Colors = () => (
-  <StoryTemplate heading="Colors" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       All colors in our products should be one of the colors here. Remember your
       accessibility contrast requirements too!
-    </StoryDescription>
-  </StoryTemplate>
-);
-
-export const BrandColors = () => (
-  <StoryTemplate heading="Brand Colors" status={StoryStatus.Ready}>
-    <StoryDescription>
-      The most visually distinct colors associated with our brand. Commonly used
-      on buttons and vibrant background colors.
+      <br />
+      The most visually distinct colors associated with our brand are
+      unsurprisingly referred to as "brand" colors. These are commonly used on
+      buttons and as vibrant background colors.
     </StoryDescription>
 
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
@@ -102,10 +97,11 @@ export const AllColors = () => {
   };
 
   return (
-    <StoryTemplate heading="All Colors" status={StoryStatus.Ready} wide>
+    <StoryTemplate status={StoryStatus.Ready} wide>
       <StoryDescription>
-        Complete spectrum <em>("Gamut"!)</em> of colors we use other than the
-        brand colors.
+        Outside of the brand colors, we maintain a complete spectrum{' '}
+        <em>("Gamut"!)</em> of colors we use for more nuanced purposes. All
+        designs should use colors exclusively from brand colors or these ones.
       </StoryDescription>
       <Container className={styles.swatchesContainer}>
         {objectKeys(base).map(color => (
@@ -134,11 +130,7 @@ export const AllColors = () => {
 };
 
 export const GamutDeprecated = () => (
-  <StoryTemplate
-    heading="Gamut Deprecated"
-    status={StoryStatus.Deprecated}
-    wide
-  >
+  <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       We used to have a very different color palette. Please do not use these
       anymore.
@@ -170,11 +162,7 @@ export const GamutDeprecated = () => (
 );
 
 export const PortalDeprecated = () => (
-  <StoryTemplate
-    heading="Portal Deprecated"
-    status={StoryStatus.Deprecated}
-    wide
-  >
+  <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       Similar to the deprecated Gamut colors, these ones are an old palette from
       the Portal.
@@ -203,11 +191,7 @@ export const EditorDeprecated = () => {
   const { white, black, ...platformRest } = deprecatedEditorColors;
 
   return (
-    <StoryTemplate
-      heading="Portal Deprecated"
-      status={StoryStatus.Deprecated}
-      wide
-    >
+    <StoryTemplate status={StoryStatus.Deprecated} wide>
       <StoryDescription>
         Similar to the deprecated Gamut colors, these ones are an old palette
         from the Portal.

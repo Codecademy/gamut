@@ -13,7 +13,7 @@ import styles from './styles.scss';
 export default decoratedStory('Molecules', Banner);
 
 export const defaultBannerFullWidth = () => (
-  <StoryTemplate heading="Banner" status={StoryStatus.NotReady}>
+  <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       Full-width banner to indicate important messaging at the top of a page or
       section.
@@ -23,7 +23,7 @@ export const defaultBannerFullWidth = () => (
 );
 
 export const defaultBannerWithIconFullWidth = () => (
-  <StoryTemplate heading="Banner With Icon" status={StoryStatus.NotReady}>
+  <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       An informative icon can be added to the left of the banner.
     </StoryDescription>
@@ -34,7 +34,7 @@ export const defaultBannerWithIconFullWidth = () => (
 );
 
 export const BannerWithBottomBorder = () => (
-  <StoryTemplate heading="Banner With Icon" status={StoryStatus.NotReady}>
+  <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       If your banner is on above similar content (?), add a BannerStyle to it.
     </StoryDescription>

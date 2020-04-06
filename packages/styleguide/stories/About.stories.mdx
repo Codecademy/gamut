@@ -1,11 +1,12 @@
-import { Column, LayoutGrid } from '@codecademy/gamut';
+import {  Column, LayoutGrid} from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
 import styles from './styles.scss';
+import { AboutCell, AboutHeading } from './Abouts';
 
 <Meta title="About" />
 
-# Gamut
+<AboutHeading>Gamut</AboutHeading>
 
 <strong>The design system for Codecademy <span aria-label="sparkles" role="img">✨</span></strong>
 
@@ -20,33 +21,30 @@ Its organization adheres to <a href="https://bradfrost.com/blog/post/atomic-web-
   columnGap={{ xs: 'sm', lg: 'lg' }}
   rowGap={{ xs: 'sm', lg: 'lg' }}
 >
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Atoms" story="About">⚛️ Atoms</LinkTo></h2>
-      <p>
-        Atoms are the basic building blocks of matter. Applied to web interfaces,
-        atoms are our HTML tags, such as a form label, an input or a button.
-      </p>
-    </div>
-  </Column>
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Molecules" story="About">🧬 Molecules</LinkTo></h2>
-      <p>
-        Molecules are groups of atoms bonded together and are the smallest
-        fundamental units of a compound.
-      </p>
-    </div>
-  </Column>
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Organisms" story="About">🦠 Organisms</LinkTo></h2>
-      <p>
-        Organisms are groups of molecules joined together to form a relatively
-        complex, distinct section of an interface.
-      </p>
-    </div>
-  </Column>
+  <AboutCell
+    emoji="⚛️"
+    examples={["Button", "Logo", "Spinner", "Toggle"]}
+    kind="Atoms"
+  >
+    Atoms are the basic building blocks of matter. 
+    They are the most granular, low-level building blocks in our system.
+  </AboutCell>
+  <AboutCell
+    emoji="🧬"
+    examples={["Banner", "Card", "Interstitial", "Tabs"]}
+    kind="Molecules"
+  >
+    Molecules are groups of atoms together.
+    These consist of a few atoms combined for a small, self-contained design.
+  </AboutCell>
+  <AboutCell
+    emoji="🦠"
+    examples={["GridForm"]}
+    kind="Organisms"
+  >
+    Organisms are groups of molecules joined together to form a relatively
+    complex, distinct section of an interface.
+  </AboutCell>
 </LayoutGrid>
 
 For convenience, we've split the following into their own sections:
@@ -56,29 +54,29 @@ For convenience, we've split the following into their own sections:
   columnGap={{ xs: 'sm', lg: 'lg' }}
   rowGap={{ xs: 'sm', lg: 'lg' }}
 >
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Atoms/Brand" story="About">💸 Brand</LinkTo></h2>
-      <p>
-       Components across the design spectrum that are more tied to brand representation and/or marketing purposes.
-      </p>
-    </div>
-  </Column>
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Atoms/Colors" story="Colors">🎨 Colors</LinkTo></h2>
-      <p>
-        Brand color atoms we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
-      </p>
-    </div>
-  </Column>
-  <Column size={4}>
-    <div>
-      <h2><LinkTo kind="Atoms/Layouts" story="About">🗺️ Layouts</LinkTo></h2>
-      <p>
-        Sizing and padding container atoms.
-        These position our elements on pages in standard responsive layouts.
-      </p>
-    </div>
-  </Column>
+  <AboutCell
+    emoji="💸"
+    examples={["Avatar", "Quote", "Testimonial"]}
+    kind="Brand"
+  >
+    Components across the design spectrum that are more tied to brand representation and/or marketing purposes.
+  </AboutCell>
+  <AboutCell
+    emoji="🎨"
+    story="Colors"
+    kind="Atoms"
+    title="Colors"
+  >
+    Brand color atoms we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
+  </AboutCell>
+  <AboutCell
+    emoji="🗺"
+    examples={["ContentContainer", "LayoutGrid"]}
+    kind="Atoms/Layouts/About"
+    story="Page"
+    title="Layouts"
+  >
+    Sizing and padding container atoms.
+    These position our elements on pages in standard responsive layouts.
+  </AboutCell>
 </LayoutGrid>

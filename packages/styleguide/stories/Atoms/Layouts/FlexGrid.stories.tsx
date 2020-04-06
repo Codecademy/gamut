@@ -29,7 +29,7 @@ const defaultGridProps = {
 };
 
 export const fixedGridDefault = () => (
-  <StoryTemplate heading="Fixed Grid" status={StoryStatus.InProgress} wide>
+  <StoryTemplate status={StoryStatus.InProgress} wide>
     <StoryDescription>
       The grid layout is composed of rows of columns. A row is 12 units wide. A
       column specifies its width in units at various breakpoints via props: xs
@@ -79,7 +79,7 @@ fixedGridDefault.story = {
 };
 
 export const fluid = () => (
-  <StoryTemplate heading="Fluid Grid" status={StoryStatus.InProgress}>
+  <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       Adding the fluid prop allows the grid to grow and shrink freely inside its
       container.
@@ -121,7 +121,7 @@ export const fluid = () => (
 );
 
 export const offsets = () => (
-  <StoryTemplate heading="Grid Offsets" status={StoryStatus.InProgress}>
+  <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       A column can be offset with the <code>xs</code> property.
     </StoryDescription>
@@ -166,7 +166,7 @@ export const offsets = () => (
 );
 
 export const centered = () => (
-  <StoryTemplate heading="Centered" status={StoryStatus.InProgress}>
+  <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       You can center the content of a row by passing it <code>center</code>.
     </StoryDescription>

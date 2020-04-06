@@ -20,7 +20,7 @@ import styles from './styles.scss';
 export default decoratedStory('Atoms', 'Form Inputs');
 
 export const formInputs = () => (
-  <StoryTemplate heading="Form Inputs" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Input atoms tied 1:1 with values to be submitted in a form.
       <br />
@@ -31,7 +31,7 @@ export const formInputs = () => (
 );
 
 export const checkbox = () => (
-  <StoryTemplate heading="Checkbox" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>Toggles a named boolean input value.</StoryDescription>
     <div>
       <Checkbox htmlFor="html-css" label="HTML & CSS" />
@@ -42,7 +42,7 @@ export const checkbox = () => (
 );
 
 export const input = () => (
-  <StoryTemplate heading="Input" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a short-form text-based value. It can be configured as a native HTML{' '}
       <code>&lt;input/&gt;</code>, such as limiting to numbers.
@@ -61,7 +61,7 @@ export const input = () => (
 );
 
 export const radioGroup = () => (
-  <StoryTemplate heading="RadioGroup" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a value to one of a finite set of known values.
     </StoryDescription>
@@ -82,7 +82,7 @@ export const radioGroup = () => (
 );
 
 export const select = () => (
-  <StoryTemplate heading="TextArea" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Chooses a single value from multiple predefined values.
     </StoryDescription>
@@ -96,7 +96,7 @@ export const select = () => (
 );
 
 export const textArea = () => (
-  <StoryTemplate heading="TextArea" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a long-form text-based value. It can be configured as a native HTML{' '}
       <code>&lt;textarea/&gt;</code>, such as adjusting number of rows.

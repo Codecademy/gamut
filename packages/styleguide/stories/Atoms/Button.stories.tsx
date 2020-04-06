@@ -99,7 +99,7 @@ export const allButtonThemes = () => {
 };
 
 export const buttonBaseVariants = () => (
-  <StoryTemplate heading="ButtonBase Variants" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Use <code>ButtonBase</code> when you need something that acts as a link or
       button, but don&apos;t need the default button styles.
@@ -125,7 +125,7 @@ export const buttonBaseVariants = () => (
 );
 
 export const linkButton = () => (
-  <StoryTemplate heading="Link Button" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <p>
       This is an example of a{' '}
       <Button theme={select('theme', themes, 'brand-blue')} link href="#">
@@ -141,10 +141,7 @@ export const standardButtonOptions = () => {
   const round = boolean('Round', false);
 
   return (
-    <StoryTemplate
-      heading="Standard Button Options"
-      status={StoryStatus.InProgress}
-    >
+    <StoryTemplate status={StoryStatus.InProgress}>
       <StoryDescription>
         Common variants of buttons you might come across.
         <br />
@@ -198,7 +195,7 @@ export const standardButtonOptions = () => {
 };
 
 export const editablePlayground = () => (
-  <StoryTemplate heading="Editable Playground" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Play with this button, if you&apos;d like!
     </StoryDescription>

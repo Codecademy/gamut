@@ -11,7 +11,7 @@ import {
 export default decoratedStory('Atoms', Badge);
 
 export const badge = () => (
-  <StoryTemplate heading="Badge" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Small blue indicator of some unusual text.
     </StoryDescription>

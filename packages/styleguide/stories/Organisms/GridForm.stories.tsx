@@ -13,13 +13,12 @@ import {
 export default decoratedStory('Organisms', GridForm);
 
 export const gridForm = () => (
-  <StoryTemplate heading="GridForm" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       This organism takes in plain JSON-like props and uses them to string
       together a validated form composed of:
       <ul>
         <li>
-          {' '}
           <a href="https://react-hook-form.com">
             <code>react-hook-form</code>
           </a>

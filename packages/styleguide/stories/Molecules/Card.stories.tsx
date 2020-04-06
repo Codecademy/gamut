@@ -14,7 +14,7 @@ const borderStyles = ['dashed', 'solid', 'none'] as const;
 export default decoratedStory('Molecules', 'Card');
 
 export const card = () => (
-  <StoryTemplate heading="Card" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Default shell with white background that can include some subtly
       emphasized content.

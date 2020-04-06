@@ -13,7 +13,7 @@ import styles from './styles.scss';
 export default decoratedStory('Atoms', HighlightedText);
 
 export const highlightedText = () => (
-  <StoryTemplate heading="HighlightedText" status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Emphasized (bold) text with a light background color behind it. Use to
       showcase important words in a sentence.
