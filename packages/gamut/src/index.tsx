@@ -1,3 +1,4 @@
+export * from './AppBar';
 export * from './Badge';
 export * from './Button';
 export * from './ButtonBase';
