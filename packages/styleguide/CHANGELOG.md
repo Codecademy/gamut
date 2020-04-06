@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.23.0 (2020-04-06)
+
+* feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0a)), closes [#679](https://github.com/RyzacInc/client-modules/issues/679)
+
+
+
+
+
 ## <small>3.22.2 (2020-04-06)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
