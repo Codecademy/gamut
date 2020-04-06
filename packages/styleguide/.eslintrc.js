@@ -16,6 +16,8 @@ module.exports = {
             ],
           },
         ],
+        'react/no-unescaped-entities': 'off',
+        'react-hooks/rules-of-hooks': 'off',
       },
     },
   ],
