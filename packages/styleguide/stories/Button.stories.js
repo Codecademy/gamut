@@ -37,6 +37,8 @@ const deprecatedThemeKeys = [
   'purple',
 ];
 
+const statusThemeKeys = ['success', 'alert', 'error', 'announcement', 'info'];
+
 const themes = {};
 
 themeKeys.forEach(k => {
@@ -46,6 +48,9 @@ brandThemeKeys.forEach(k => {
   themes[k] = k;
 });
 deprecatedThemeKeys.forEach(k => {
+  themes[k] = k;
+});
+statusThemeKeys.forEach(k => {
   themes[k] = k;
 });
 
@@ -107,6 +112,20 @@ export const allButtonThemes = () => {
       <h3 style={headingStyle}>Preset</h3>
       <div style={groupStyle}>
         {themeKeys.map(theme => (
+          <Button
+            key={`${theme}`}
+            style={btnStyle}
+            theme={theme}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
+          >
+            {theme}
+          </Button>
+        ))}
+      </div>
+      <h3 style={headingStyle}>Status</h3>
+      <div style={groupStyle}>
+        {statusThemeKeys.map(theme => (
           <Button
             key={`${theme}`}
             style={btnStyle}
@@ -279,3 +298,17 @@ export const round = () => (
     </Button>
   </div>
 );
+
+export const status = () => (
+  <div>
+    {statusThemeKeys.map(theme => (
+      <Button key={`${theme}-onlight`} style={btnStyle} theme={theme}>
+        {theme}
+      </Button>
+    ))}
+  </div>
+);
+
+status.story = {
+  name: 'Status Themes',
+};
