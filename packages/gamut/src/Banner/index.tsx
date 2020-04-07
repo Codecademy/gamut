@@ -16,7 +16,7 @@ export type BannerProps = {
   };
   displayStyle?: BannerStyle;
   isClosed?: boolean;
-  onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClose: (event: MouseEvent<HTMLButtonElement>) => void;
   icon?: React.ReactNode;
 };
 

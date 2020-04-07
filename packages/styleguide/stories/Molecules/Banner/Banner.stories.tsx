@@ -9,8 +9,11 @@ import {
   StoryTemplate,
 } from '../../Templating';
 import styles from './styles.module.scss';
+import { action } from '@storybook/addon-actions';
 
 export default decoratedStory('Molecules', Banner);
+
+const onClose = action('Banner closed.');
 
 export const defaultBannerFullWidth = () => (
   <StoryTemplate status={StoryStatus.NotReady}>
@@ -18,7 +21,7 @@ export const defaultBannerFullWidth = () => (
       Full-width banner to indicate important messaging at the top of a page or
       section.
     </StoryDescription>
-    <Banner>Some Banner content!</Banner>
+    <Banner onClose={onClose}>Some Banner content!</Banner>
   </StoryTemplate>
 );
 
@@ -27,7 +30,7 @@ export const defaultBannerWithIconFullWidth = () => (
     <StoryDescription>
       An informative icon can be added to the left of the banner.
     </StoryDescription>
-    <Banner icon={<AlertIcon className={styles.icon} />}>
+    <Banner icon={<AlertIcon className={styles.icon} />} onClose={onClose}>
       Some Banner content!
     </Banner>
   </StoryTemplate>
@@ -38,7 +41,7 @@ export const BannerWithBottomBorder = () => (
     <StoryDescription>
       If your banner is on above similar content (?), add a BannerStyle to it.
     </StoryDescription>
-    <Banner displayStyle={BannerStyle.BorderBottom}>
+    <Banner displayStyle={BannerStyle.BorderBottom} onClose={onClose}>
       Some Banner content!
     </Banner>
   </StoryTemplate>
