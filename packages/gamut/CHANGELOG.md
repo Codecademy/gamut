@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.17.2 (2020-04-07)</small>
+
+* Removed legacy Modal alias for Overlay (#687) ([29d6724](https://github.com/RyzacInc/client-modules/commit/29d6724)), closes [#687](https://github.com/RyzacInc/client-modules/issues/687)
+
+
+
+
+
 ## <small>2.17.1 (2020-04-07)</small>
 
 * Added half second transition to ProgressBar (#694) ([ccbc69a](https://github.com/RyzacInc/client-modules/commit/ccbc69a)), closes [#694](https://github.com/RyzacInc/client-modules/issues/694)
