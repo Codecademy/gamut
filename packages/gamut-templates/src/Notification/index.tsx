@@ -68,7 +68,13 @@ export const Notification: React.FC<NotificationProps> = ({
           grow={1}
           shrink={1}
         >
-          <Container className={s.section} grow={1} shrink={1} align="start">
+          <Container
+            className={s.section}
+            grow={1}
+            shrink={1}
+            align="start"
+            justify="spaceBetween"
+          >
             <Truncate
               lines={isExpanded ? undefined : lines}
               onTruncate={setIsTruncated}

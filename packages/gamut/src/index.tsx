@@ -32,6 +32,7 @@ export * from './RadialProgress';
 export * from './Spinner';
 export * from './theming/VisualTheme';
 export * from './Tabs';
+export * from './Truncate';
 export * from './SkipToContent';
 export * from './Toggle';
 export * from './ToolTip';

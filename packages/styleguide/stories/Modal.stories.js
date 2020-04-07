@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal } from '../../gamut-templates';
+import { Modal } from '../../gamut-templates/src';
 import { Button } from '../../gamut/src';
 
 export default {
