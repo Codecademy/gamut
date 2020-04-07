@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "2.15.0",
+  "version": "2.17.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -20,7 +20,6 @@
   "dependencies": {
     "@codecademy/gamut-styles": "^2.2.11",
     "@types/marked": "^0.6.1",
-    "@types/react-truncate": "^2.3.3",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
     "html-to-react": "^1.4.2",
@@ -30,7 +29,7 @@
     "marked": "^0.6.0",
     "moment": "^2.24.0",
     "react-aria-tabpanel": "^4.4.0",
-    "react-truncate": "^2.4.0"
+    "react-truncate-markup": "^4.1.1"
   },
   "scripts": {
     "verify": "tsc --noEmit",

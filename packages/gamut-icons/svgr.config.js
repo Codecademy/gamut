@@ -1,4 +1,5 @@
 const template = require('./icon-template');
+const indexTemplate = require('./index-template');
 
 module.exports = {
   dimensions: false,
@@ -20,4 +21,5 @@ module.exports = {
     '#444': '{color || "currentColor"}',
   },
   template,
+  indexTemplate,
 };

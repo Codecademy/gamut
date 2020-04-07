@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.17.0 (2020-04-07)
+
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
+
+## 2.16.0 (2020-04-07)
+
+* feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
+
+
+
+
+
 # [2.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.14.0...@codecademy/gamut@2.15.0) (2020-04-02)
 
 

@@ -1,3 +1,6 @@
+export * from './AppBar';
+export * from './AppBar/AppBarSection';
+export * from './AppBar/AppBarTab';
 export * from './Badge';
 export * from './Button';
 export * from './ButtonBase';
