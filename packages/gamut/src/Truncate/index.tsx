@@ -18,8 +18,10 @@ export const Truncate: React.FC<TruncateTextProps> = ({
   children,
   onTruncate,
 }) => {
+  /** Truncate markup expects a single child element */
   const content = <Element className={s.wrapper}>{children}</Element>;
 
+  /** If lines is false do not attempt to truncate */
   if (!lines) {
     return content;
   }
