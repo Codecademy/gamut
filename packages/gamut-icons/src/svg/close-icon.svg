@@ -1,4 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M19.778 18.364l-1.414 1.414L4.222 5.636l1.414-1.414z"/>
-    <path d="M5.636 19.778l-1.414-1.414L18.364 4.222l1.414 1.414z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>close</title><line class="a" x1="0.75" y1="23.249" x2="23.25" y2="0.749"/><line class="a" x1="23.25" y1="23.249" x2="0.75" y2="0.749"/></svg>
