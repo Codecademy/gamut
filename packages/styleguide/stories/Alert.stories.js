@@ -1,13 +1,13 @@
 import React from 'react';
 import Alert from '../../gamut-templates/src/Alert';
-import { LayoutGrid, Column } from '../../gamut/src/Layout';
+import { LayoutGrid, Column } from '@codecademy/gamut/src/Layout';
 
 export default {
   component: Alert,
   title: 'Templates/Alert',
 };
 
-export const Alert = () => (
+export const alert = () => (
   <LayoutGrid rowGap="xl">
     <Column size="12">
       <h3>Feedback Alert</h3>
@@ -57,7 +57,7 @@ export const Alert = () => (
   </LayoutGrid>
 );
 
-Alert.story = {
+alert.story = {
   name: 'General status Alerts',
 };
 
