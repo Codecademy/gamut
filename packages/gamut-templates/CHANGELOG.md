@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.6.1 (2020-04-07)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-templates
+
+
+
+
+
 ## 2.6.0 (2020-04-06)
 
 * feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/Codecademy/client-modules/commit/5404f0a)), closes [#679](https://github.com/Codecademy/client-modules/issues/679)
