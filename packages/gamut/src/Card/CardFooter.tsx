@@ -2,6 +2,14 @@ import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import s from './styles/CardFooter.module.scss';
 
+const defaultProps = {
+  border: 'none',
+  align: 'left',
+  flex: true,
+  standardPadding: true,
+  standardHeight: true,
+};
+
 export type CardFooterProps = {
   align?: 'center' | 'left' | 'right';
   border?: 'dashed' | 'none' | 'solid';
@@ -14,11 +22,11 @@ export type CardFooterProps = {
 
 export const CardFooter = ({
   children,
-  border = 'none',
-  align = 'left',
-  flex = true,
-  standardPadding = true,
-  standardHeight = true,
+  border,
+  align,
+  flex,
+  standardPadding,
+  standardHeight,
   className,
 }: CardFooterProps) => {
   const footerClasses = cx(
@@ -39,5 +47,7 @@ export const CardFooter = ({
 
   return <div className={footerClasses}>{children}</div>;
 };
+
+CardFooter.defaultProps = defaultProps;
 
 export default CardFooter;
