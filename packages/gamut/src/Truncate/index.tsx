@@ -6,8 +6,8 @@ import s from './styles.module.scss';
 type TruncateTextProps = {
   /** element for the component */
   as?: 'div' | 'span' | 'p';
-  /** the maximum number of lines to display */
-  lines?: number;
+  /** number of the maximum lines to display, pass false to disable truncation */
+  lines: number | false;
   /** Callback indicating if truncation was necessary */
   onTruncate?: (truncated: boolean) => void;
 };
