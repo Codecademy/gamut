@@ -9,7 +9,7 @@ import {
   StoryDescription,
 } from '../../Templating';
 
-export default decoratedStory('Atoms', 'Layouts', 'FlexGrid');
+export default decoratedStory('Foundations', 'Layouts', 'FlexGrid');
 
 const Box = () => (
   <Item

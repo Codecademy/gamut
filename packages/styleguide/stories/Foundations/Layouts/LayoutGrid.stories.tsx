@@ -10,7 +10,7 @@ import {
   StoryDescription,
 } from '../../Templating';
 
-export default decoratedStory('Atoms', 'Layouts', LayoutGrid);
+export default decoratedStory('Foundations', 'Layouts', LayoutGrid);
 
 const Container: React.FC = ({ children }) => {
   return (

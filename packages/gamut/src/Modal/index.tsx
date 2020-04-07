@@ -1,7 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
-import { Overlay, Button, CardShell } from '@codecademy/gamut';
 import { CloseIcon } from '@codecademy/gamut-icons';
+
+import Button from '../Button';
+import { CardShell } from '../Card';
+import Overlay from '../Overlay';
 import styles from './styles.module.scss';
 
 export type ModalProps = {

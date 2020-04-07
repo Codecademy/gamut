@@ -3,7 +3,7 @@ import React from 'react';
 
 import { decoratedStory, StoryStatus, StoryTemplate } from '../../Templating';
 
-export default decoratedStory('Atoms', 'Layouts', ContentContainer);
+export default decoratedStory('Foundations', 'Layouts', ContentContainer);
 
 export const contentContainer = () => (
   <StoryTemplate status={StoryStatus.Ready}>

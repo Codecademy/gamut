@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.17.4 (2020-04-07)</small>
+
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
+
 ## <small>2.17.3 (2020-04-07)</small>
 
 * fix: rename scss files (#704) ([c4ea130](https://github.com/RyzacInc/client-modules/commit/c4ea130)), closes [#704](https://github.com/RyzacInc/client-modules/issues/704)

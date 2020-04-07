@@ -1,11 +1,8 @@
 import React from 'react';
-import TruncateText from '../../gamut/src/Truncate';
-import { CircleHeavyIcon } from '../../gamut-icons/src';
+import { Truncate } from '@codecademy/gamut/src';
+import { decoratedStory } from './Templating';
 
-export default {
-  component: TruncateText,
-  title: 'Component/Truncate',
-};
+export default decoratedStory('Atoms', Truncate);
 
 const placeholderText = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -15,32 +12,28 @@ commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
 velit esse cillum dolore eu fugiat nulla pariatur.
 `;
 
-export const basicTruncate = () => {
+export const truncate = () => {
   return (
     <div style={{ width: '100%', maxWidth: '600px' }}>
       <h4>Default (nothing)</h4>
       <p>
-        <TruncateText>{placeholderText}</TruncateText>
+        <Truncate>{placeholderText}</Truncate>
       </p>
 
       <h4>With text</h4>
       <p>
-        <TruncateText lines={2}>{placeholderText}</TruncateText>
+        <Truncate lines={2}>{placeholderText}</Truncate>
       </p>
 
       <h4>With Components</h4>
       <p>This also works with markup</p>
       <p>
-        <TruncateText lines={2}>
+        <Truncate lines={2}>
           <strong>I am a strong</strong>
           {placeholderText}
           <em>I am another em</em>
-        </TruncateText>
+        </Truncate>
       </p>
     </div>
   );
-};
-
-basicTruncate.story = {
-  name: 'Truncate',
 };

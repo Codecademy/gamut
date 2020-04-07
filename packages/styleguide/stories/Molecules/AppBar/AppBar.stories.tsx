@@ -1,13 +1,12 @@
-import { AppBar, AppBarSection, AppBarTab, Logo } from '../../gamut/src';
+import { AppBar, AppBarSection, AppBarTab, Logo } from '@codecademy/gamut/src';
 import React from 'react';
-import styles from './AppBar-story.scss';
 
-export default {
-  component: AppBar,
-  title: 'Component/AppBar',
-};
+import { decoratedStory } from '../../Templating';
+import styles from './styles.module.scss';
 
-export const defaultAppBarFullWidth = () => (
+export default decoratedStory('Molecules', AppBar);
+
+export const appBar = () => (
   <div>
     <p>
       This is an example of an AppBar component that contains one left-oriented
@@ -23,11 +22,7 @@ export const defaultAppBarFullWidth = () => (
   </div>
 );
 
-defaultAppBarFullWidth.story = {
-  name: 'AppBar',
-};
-
-export const anotherAppBar = () => (
+export const headerAppBar = () => (
   <div>
     <p>
       This is an example of how our headers use the AppBar component to format
@@ -47,7 +42,3 @@ export const anotherAppBar = () => (
     </AppBar>
   </div>
 );
-
-anotherAppBar.story = {
-  name: 'Header AppBar',
-};
