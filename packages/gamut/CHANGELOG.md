@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.17.1 (2020-04-07)</small>
+
+* Added half second transition to ProgressBar (#694) ([ccbc69a](https://github.com/RyzacInc/client-modules/commit/ccbc69a)), closes [#694](https://github.com/RyzacInc/client-modules/issues/694)
+
+
+
+
+
 ## 2.17.0 (2020-04-07)
 
 * feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
