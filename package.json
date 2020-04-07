@@ -44,8 +44,9 @@
     ]
   },
   "dependencies": {
+    "conventional-changelog-conventionalcommits": "^4.2.3",
     "gh-pages": "^2.2.0",
-    "lerna": "3.16.4"
+    "lerna": "3.20.2"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",

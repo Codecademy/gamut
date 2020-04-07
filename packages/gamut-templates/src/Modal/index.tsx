@@ -1,0 +1,66 @@
+import React from 'react';
+import cx from 'classnames';
+import { Overlay, Button, CardShell } from '@codecademy/gamut';
+import { CloseIcon } from '@codecademy/gamut-icons';
+import styles from './styles.module.scss';
+
+export type ModalProps = {
+  children?: React.ReactNode;
+  className?: string;
+  /**
+   * Whether the modal is open or closed
+   */
+  isOpen: boolean;
+  /**
+   * A function that, at minimum, sets the state to close the modal
+   */
+  closeModal?: () => void;
+  /**
+   * Whether to hide the default close button and pass your own through children
+   */
+  hideDefaultCloseButton?: boolean;
+};
+
+export const Modal: React.FC<ModalProps> = ({
+  children,
+  className,
+  closeModal,
+  isOpen,
+  hideDefaultCloseButton,
+}) => {
+  return (
+    <Overlay
+      isOpen={isOpen}
+      className={cx(styles.modal, className)}
+      data-testid="modal"
+    >
+      <div className={styles.modalContainer}>
+        <CardShell className={styles.modalBody}>
+          {!hideDefaultCloseButton && (
+            <div
+              className={styles.closeButtonContainer}
+              data-testid="modal-default-close-button"
+            >
+              <Button
+                flat
+                theme="brand-dark-blue"
+                fitText
+                onClick={closeModal && closeModal}
+                className={styles.closeButton}
+              >
+                <CloseIcon
+                  width={22}
+                  height={22}
+                  className={styles.closeIcon}
+                />
+              </Button>
+            </div>
+          )}
+          {children}
+        </CardShell>
+      </div>
+    </Overlay>
+  );
+};
+
+export default Modal;

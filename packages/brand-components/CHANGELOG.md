@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.8.10 (2020-04-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.9 (2020-04-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.8](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.7...@codecademy/brand-components@0.8.8) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.7](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.6...@codecademy/brand-components@0.8.7) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## [0.8.6](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.5...@codecademy/brand-components@0.8.6) (2020-04-02)
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## [0.8.5](https://github.com/Codecademy/client-modules/compare/@codecademy/brand-components@0.8.4...@codecademy/brand-components@0.8.5) (2020-04-01)
 
 **Note:** Version bump only for package @codecademy/brand-components

@@ -1,3 +1,4 @@
-export { default as Interstitial } from './Interstitial';
-export { default as GridForm } from './GridForm';
-export { default as SplitInterstitial } from './SplitInterstitial';
+export * from './GridForm';
+export * from './Interstitial';
+export * from './Modal';
+export * from './SplitInterstitial';
