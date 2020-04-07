@@ -1,6 +1,6 @@
 import React from 'react';
 import Alert from '../../gamut-templates/src/Alert';
-import { LayoutGrid, Column } from '@codecademy/gamut/src/Layout';
+import { LayoutGrid, Column } from '../../gamut/src/Layout';
 
 export default {
   component: Alert,
