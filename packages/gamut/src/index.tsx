@@ -11,6 +11,8 @@ export * from './Card/CardBody';
 export * from './Card/CardFooter';
 export * from './Form';
 export * from './Layout';
+export * from './Header/AppHeaderContainer';
+export * from './Header/HeaderTab';
 export * from './HighlightedText';
 export * from './Icon';
 export * from './IkonaIcon';
