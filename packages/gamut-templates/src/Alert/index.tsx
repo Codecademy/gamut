@@ -19,7 +19,7 @@ import { BannerTypes, BannerCTA } from './types';
 
 import s from './styles.module.scss';
 
-export type NotificationProps = {
+export type AlertProps = {
   /** Banner theme string: info, alert, success, announcement, error */
   type?: BannerTypes;
   /** Toggle the display of the theme's icon */
@@ -28,13 +28,13 @@ export type NotificationProps = {
   onClose: () => void;
   /** Call to action configuration { text, href, onClick } */
   cta?: BannerCTA;
-  /** Remove the max-width on the notification container */
+  /** Remove the max-width on the Alert container */
   fluid?: boolean;
   /** Number of lines to limit the message to */
   lines?: number;
 };
 
-export const Notification: React.FC<NotificationProps> = ({
+export const Alert: React.FC<AlertProps> = ({
   children,
   fluid = false,
   type = BannerTypes.Info,
@@ -84,7 +84,7 @@ export const Notification: React.FC<NotificationProps> = ({
             {showExpandToggle && (
               <Container inline>
                 <ButtonBase
-                  className={cx(s.iconButton, {
+                  className={cx(s.iconButton, s.iconButton__pushRight, {
                     [s[`iconButton__${type}`]]: type,
                   })}
                   onClick={() => setIsExpanded(!isExpanded)}
@@ -124,4 +124,4 @@ export const Notification: React.FC<NotificationProps> = ({
   );
 };
 
-export default Notification;
+export default Alert;

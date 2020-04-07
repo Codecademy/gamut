@@ -11,7 +11,7 @@ $themeColors: (
   ),
   "alert": (
     "background": $color-yellow-200,
-    "color": $color-yellow-800,
+    "color": $color-yellow-900,
   ),
   "announcement": (
     "background": $color-purple-200,
@@ -70,6 +70,10 @@ $themeColors: (
   background: none;
   border-radius: px-rem(6);
   background-color: transparent;
+}
+
+.iconButton__pushRight {
+  margin-left: px-rem(6);
 }
 
 @each $theme, $map in $themeColors {

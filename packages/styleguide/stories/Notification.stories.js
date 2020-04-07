@@ -1,97 +1,97 @@
 import React from 'react';
-import Notification from '../../gamut-templates/src/Notification';
+import Alert from '../../gamut-templates/src/Alert';
 import { LayoutGrid, Column } from '../../gamut/src/Layout';
 
 export default {
-  component: Notification,
-  title: 'Templates/Notification',
+  component: Alert,
+  title: 'Templates/Alert',
 };
 
-export const notification = () => (
+export const Alert = () => (
   <LayoutGrid rowGap="xl">
     <Column size="12">
-      <h3>Feedback Notification</h3>
+      <h3>Feedback Alert</h3>
       <p>
         Serves as <strong>feedback</strong> and confirmation that requires an
         action.
       </p>
       <h6>Informational/general feedback</h6>
-      <Notification showIcon type="info" cta={{ text: 'Login' }}>
+      <Alert showIcon type="info" cta={{ text: 'Login' }}>
         You have been logged out due to inactivity.
-      </Notification>
+      </Alert>
     </Column>
     <Column size="12">
       <h6>Successful actions</h6>
-      <Notification showIcon type="success" cta={{ text: 'view account' }}>
+      <Alert showIcon type="success" cta={{ text: 'view account' }}>
         Your account changes were saved successfully.
-      </Notification>
+      </Alert>
     </Column>
     <Column size="12">
       <h6>
         Error communicating an issue or showing that a user’s action can’t be
         completed.
       </h6>
-      <Notification showIcon type="error" cta={{ text: 'retry' }}>
+      <Alert showIcon type="error" cta={{ text: 'retry' }}>
         Couldn’t save your account changes because a connection to the server
         can’t be made.
-      </Notification>
+      </Alert>
     </Column>
     <Column size="12">
-      <h3>Alert Notification</h3>
+      <h3>Alert Alert</h3>
       <p>
         Only shown when it affects the entire system. It appears on all pages
         without user initiating the action.
       </p>
-      <Notification showIcon type="alert" cta={{ text: 'Learn More' }}>
+      <Alert showIcon type="notice" cta={{ text: 'Learn More' }}>
         Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM
         EST for system updates.
-      </Notification>
+      </Alert>
     </Column>
     <Column size="12">
-      <h3>Announcement Notification</h3>
+      <h3>Announcement Alert</h3>
       <p>For feature announcements/changes on a specific page.</p>
-      <Notification showIcon type="announcement" cta={{ text: 'Learn More' }}>
+      <Alert showIcon type="announcement" cta={{ text: 'Learn More' }}>
         You can now do this new thing with this new feature we just added!
-      </Notification>
+      </Alert>
     </Column>
   </LayoutGrid>
 );
 
-notification.story = {
-  name: 'General status notifications',
+Alert.story = {
+  name: 'General status Alerts',
 };
 
-export const baseNotification = () => {
+export const baseAlert = () => {
   return (
-    <Notification showIcon={false} type="alert">
+    <Alert showIcon={false} type="notice">
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut.
-    </Notification>
+    </Alert>
   );
 };
 
-baseNotification.story = {
-  name: 'Basic Notification',
+baseAlert.story = {
+  name: 'Basic Alert',
 };
 
-export const iconNotification = () => {
+export const iconAlert = () => {
   return (
-    <Notification type="alert">
+    <Alert type="notice">
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut.
-    </Notification>
+    </Alert>
   );
 };
 
-iconNotification.story = {
+iconAlert.story = {
   name: 'Status Icon',
 };
 
-export const ctaNotification = () => {
+export const ctaAlert = () => {
   return (
-    <Notification
+    <Alert
       showIcon={false}
-      type="alert"
+      type="notice"
       cta={{
         href: 'https://google.com',
         onClick: () => alert('You clicked me, thank you'),
@@ -100,32 +100,32 @@ export const ctaNotification = () => {
     >
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut.
-    </Notification>
+    </Alert>
   );
 };
 
-ctaNotification.story = {
+ctaAlert.story = {
   name: 'Call to Action',
 };
 
-export const expandableNotification = () => {
+export const expandableAlert = () => {
   return (
-    <Notification showIcon={false} type="alert" lines={1}>
+    <Alert showIcon={false} type="notice" lines={1}>
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-    </Notification>
+    </Alert>
   );
 };
 
-expandableNotification.story = {
+expandableAlert.story = {
   name: 'Expandable',
 };
 
-export const everythingNotification = () => {
+export const everythingAlert = () => {
   return (
-    <Notification
-      type="alert"
+    <Alert
+      type="notice"
       cta={{
         href: 'https://google.com',
         onClick: () => alert('You clicked me, thank you'),
@@ -136,10 +136,10 @@ export const everythingNotification = () => {
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-    </Notification>
+    </Alert>
   );
 };
 
-everythingNotification.story = {
+everythingAlert.story = {
   name: 'Everthying',
 };

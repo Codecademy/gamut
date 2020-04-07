@@ -6,7 +6,7 @@ export type BannerCTA = {
 };
 
 export enum BannerTypes {
-  Alert = 'alert',
+  Notice = 'notice',
   Announcement = 'announcement',
   Error = 'error',
   Info = 'info',

@@ -1,5 +1,5 @@
 export * from './Interstitial';
 export * from './GridForm';
 export * from './SplitInterstitial';
-export * from './Notification';
+export * from './Alert';
 export * from './Modal';

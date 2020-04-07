@@ -37,7 +37,7 @@ const deprecatedThemeKeys = [
   'purple',
 ];
 
-const statusThemeKeys = ['success', 'alert', 'error', 'announcement', 'info'];
+const statusThemeKeys = ['success', 'notice', 'error', 'announcement', 'info'];
 
 const themes = {};
 
