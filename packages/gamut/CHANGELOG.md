@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.17.3 (2020-04-07)</small>
+
+* fix: rename scss files (#704) ([c4ea130](https://github.com/RyzacInc/client-modules/commit/c4ea130)), closes [#704](https://github.com/RyzacInc/client-modules/issues/704)
+
+
+
+
+
 ## <small>2.17.2 (2020-04-07)</small>
 
 * Removed legacy Modal alias for Overlay (#687) ([29d6724](https://github.com/RyzacInc/client-modules/commit/29d6724)), closes [#687](https://github.com/RyzacInc/client-modules/issues/687)
