@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.2.1 (2020-04-06)</small>
+
+* fix(Build): Update lockfile and config file to include new template (#699) ([9060cd2](https://github.com/RyzacInc/client-modules/commit/9060cd2)), closes [#699](https://github.com/RyzacInc/client-modules/issues/699)
+
+
+
+
+
+## 2.2.0 (2020-04-06)
+
+* feat(Icons): Add named export to gamut icons and update SVGR (#697) ([9f783da](https://github.com/RyzacInc/client-modules/commit/9f783da)), closes [#697](https://github.com/RyzacInc/client-modules/issues/697)
+
+
+
+
+
 ## [2.1.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.4...@codecademy/gamut-icons@2.1.5) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
