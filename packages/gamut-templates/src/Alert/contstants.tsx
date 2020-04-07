@@ -7,7 +7,7 @@ import {
 } from '@codecademy/gamut-icons';
 
 export const BANNER_CONFIG = {
-  alert: AlertIcon,
+  notice: AlertIcon,
   error: CloseCircleIcon,
   info: InfoCircleIcon,
   announcement: RatingStarCircleIcon,
