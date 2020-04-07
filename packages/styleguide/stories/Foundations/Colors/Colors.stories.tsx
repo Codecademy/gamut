@@ -6,6 +6,7 @@ import {
   deprecatedGamutColors,
 } from '@codecademy/gamut-styles/utils/variables';
 import { Container, LayoutGrid, Column } from '@codecademy/gamut/src';
+import { startCase } from 'lodash';
 import React from 'react';
 
 import {
@@ -16,7 +17,7 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Atoms', 'Colors');
+export default decoratedStory('Foundations', 'Colors');
 
 const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
@@ -67,67 +68,54 @@ const renderSwatches = (data: any, variablePrefix: string) =>
     return renderSwatch(sassVariableName, hexcode);
   });
 
+const baseColors = {
+  black: colors.black,
+  white: colors.white,
+};
+
+const excludedColors = ['black', 'white', 'beige', 'royalBlue'];
+
 export const Colors = () => (
-  <StoryTemplate status={StoryStatus.Ready}>
+  <StoryTemplate status={StoryStatus.Ready} wide>
     <StoryDescription>
-      All colors in our products should be one of the colors here. Remember your
-      accessibility contrast requirements too!
+      Brand color atoms we select from in creating designs. All colors seen on
+      Codecademy properties should adhere to these. Remember your accessibility
+      contrast requirements too!
       <br />
       The most visually distinct colors associated with our brand are
       unsurprisingly referred to as "brand" colors. These are commonly used on
       buttons and as vibrant background colors.
     </StoryDescription>
-
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
       {objectKeys(brandColors).map(color => (
         <Column key={color} size={3}>
+          <h2 className={styles.heading}>Brand {startCase(color)}</h2>
           {renderSwatch(`color-${parseCamelCase(color)}`, brandColors[color])}
         </Column>
       ))}
     </LayoutGrid>
-  </StoryTemplate>
-);
-
-export const AllColors = () => {
-  const base = {
-    black: colors.black,
-    white: colors.white,
-    beige: colors.beige,
-    royalBlue: colors.royalBlue,
-  };
-
-  return (
-    <StoryTemplate status={StoryStatus.Ready} wide>
-      <StoryDescription>
-        Outside of the brand colors, we maintain a complete spectrum{' '}
-        <em>("Gamut"!)</em> of colors we use for more nuanced purposes. All
-        designs should use colors exclusively from brand colors or these ones.
-      </StoryDescription>
-      <Container className={styles.swatchesContainer}>
-        {objectKeys(base).map(color => (
+    <Container className={styles.swatchesContainer}>
+      {objectKeys(baseColors).map(color => (
+        <div key={color}>
+          <h2 className={styles.heading}>{parseCamelCase(`color-${color}`)}</h2>
+          {renderSwatch(`color-${parseCamelCase(color)}`, baseColors[color])}
+        </div>
+      ))}
+    </Container>
+    <Container>
+      {objectKeys(colors)
+        .filter(color => !excludedColors.includes(color))
+        .map(color => (
           <div key={color}>
             <h2 className={styles.heading}>
               {parseCamelCase(`color-${color}`)}
             </h2>
-            {renderSwatch(`color-${parseCamelCase(color)}`, base[color])}
+            {renderSwatches(colors[color], `color-${color}`)}
           </div>
         ))}
-      </Container>
-      <Container>
-        {objectKeys(colors)
-          .filter(color => !Object.keys(base).includes(color))
-          .map(color => (
-            <div key={color}>
-              <h2 className={styles.heading}>
-                {parseCamelCase(`color-${color}`)}
-              </h2>
-              {renderSwatches(colors[color], `color-${color}`)}
-            </div>
-          ))}
-      </Container>
-    </StoryTemplate>
-  );
-};
+    </Container>
+  </StoryTemplate>
+);
 
 export const GamutDeprecated = () => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
@@ -198,13 +186,7 @@ export const EditorDeprecated = () => {
       </StoryDescription>
       <div>
         <h2 className={styles.heading}>deprecated editor colors</h2>
-        {renderSwatches(
-          {
-            white,
-            black,
-          },
-          'deprecated-swatches-basic'
-        )}
+        {renderSwatches({ white, black }, 'deprecated-swatches-basic')}
         {renderSwatches(platformRest, 'deprecated-swatches-code')}
       </div>
     </StoryTemplate>

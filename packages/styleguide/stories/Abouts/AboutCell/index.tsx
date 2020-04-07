@@ -22,7 +22,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   title = kind,
 }) => {
   return (
-    <Column className={styles.aboutCell} size={4}>
+    <Column className={styles.aboutCell} size={{ xs: 12, sm: 6, md: 4 }}>
       <h2 className={styles.heading}>
         <LinkTo kind={kind} story={story}>
           <span role="presentation">{emoji}</span> {title}

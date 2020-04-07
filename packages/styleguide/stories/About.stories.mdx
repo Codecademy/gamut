@@ -14,20 +14,23 @@ Gamut components, styles, and utilities are the core of the Codecademy brand sha
 They're most notably used on <a href="https://codecademy.com">codecademy.com</a> but are also found on our internal websites and tools, as well as on our mobile application.
 
 This storybook represents components found in the Codecademy [Client Modules](https://github.com/Codecademy/client-modules) repo.
-Its organization adheres to <a href="https://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>.
+Its organization roughly aligns with variations of <a href="https://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>.
 
-<LayoutGrid 
-  className={styles.grid} 
-  columnGap={{ xs: 'sm', lg: 'lg' }}
-  rowGap={{ xs: 'sm', lg: 'lg' }}
->
+<LayoutGrid className={styles.grid} columnGap="lg" rowGap="lg">
+  <AboutCell
+    emoji="☀️"
+    examples={["Colors", "Layouts"]}
+    kind="Foundations"
+  >
+    Foundations are the abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.
+  </AboutCell>
   <AboutCell
     emoji="⚛️"
     examples={["Button", "Logo", "Spinner", "Toggle"]}
     kind="Atoms"
   >
-    Atoms are the basic building blocks of matter. 
-    They are the most granular, low-level building blocks in our system.
+    Atoms are our basic building block components. 
+    They are the most granular, low-level visuals in our system.
   </AboutCell>
   <AboutCell
     emoji="🧬"
@@ -45,15 +48,6 @@ Its organization adheres to <a href="https://bradfrost.com/blog/post/atomic-web-
     Organisms are groups of molecules joined together to form a relatively
     complex, distinct section of an interface.
   </AboutCell>
-</LayoutGrid>
-
-For convenience, we've split the following into their own sections:
-
-<LayoutGrid 
-  className={styles.grid} 
-  columnGap={{ xs: 'sm', lg: 'lg' }}
-  rowGap={{ xs: 'sm', lg: 'lg' }}
->
   <AboutCell
     emoji="💸"
     examples={["Avatar", "Quote", "Testimonial"]}
@@ -62,21 +56,10 @@ For convenience, we've split the following into their own sections:
     Components across the design spectrum that are more tied to brand representation and/or marketing purposes.
   </AboutCell>
   <AboutCell
-    emoji="🎨"
-    story="Colors"
-    kind="Atoms"
-    title="Colors"
+    emoji="🧠"
+    examples={["FAQs", "Writing a Story"]}
+    kind="Meta"
   >
-    Brand color atoms we select from in creating designs. All colors seen on Codecademy properties should adhere to these.
-  </AboutCell>
-  <AboutCell
-    emoji="🗺"
-    examples={["ContentContainer", "LayoutGrid"]}
-    kind="Atoms/Layouts/About"
-    story="Page"
-    title="Layouts"
-  >
-    Sizing and padding container atoms.
-    These position our elements on pages in standard responsive layouts.
+    Documentation and associated links explaining our in-progress approach to a design system.
   </AboutCell>
 </LayoutGrid>

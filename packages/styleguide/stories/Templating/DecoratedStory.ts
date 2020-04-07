@@ -3,10 +3,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 export type Section =
   | 'Atoms'
   | 'Brand'
-  | 'Colors'
-  | 'Layouts'
-  | 'Organisms'
-  | 'Molecules';
+  | 'Foundations'
+  | 'Molecules'
+  | 'Organisms';
 
 const stringify = (component: string | Function) =>
   component instanceof Function ? component.name : component;
