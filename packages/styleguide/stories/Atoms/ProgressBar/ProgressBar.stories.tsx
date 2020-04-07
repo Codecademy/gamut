@@ -15,14 +15,14 @@ export default decoratedStory('Atoms', ProgressBar);
 
 const bars = [
   {
-    large: false,
+    displayLabel: false,
     style: {
       backgroundColor: colors.blue[100],
       barColor: colors.blue[700],
     },
   },
   {
-    large: true,
+    displayLabel: true,
     style: {
       backgroundColor: colors.gray[100],
       barColor: colors.yellow[500],
@@ -39,14 +39,18 @@ export const progressBar = () => (
       might show one on a quiz page indicating how many questions have been
       completed.
       <br />
-      Bars that are <code>large</code> are thicker, and will display a
+      Bars that <code>displayLabel</code> are thicker, and will display a
       percentage label if a font color is specified.
     </StoryDescription>
     <LayoutGrid className={styles.progressBarGrid} columnGap="sm" rowGap="sm">
       {[0, 25, 50, 75, 100].map(percent =>
-        bars.map(({ large, style }) => (
-          <Column key={[percent, large, style].join()} size={6}>
-            <ProgressBar large={large} percent={percent} style={style} />
+        bars.map(({ displayLabel, style }) => (
+          <Column key={[percent, displayLabel, style].join()} size={6}>
+            <ProgressBar
+              displayLabel={displayLabel}
+              percent={percent}
+              style={style}
+            />
           </Column>
         ))
       )}
