@@ -37,7 +37,7 @@ export const alert = () => (
       </Alert>
     </Column>
     <Column size="12">
-      <h3>Alert Alert</h3>
+      <h3>Notice Alert</h3>
       <p>
         Only shown when it affects the entire system. It appears on all pages
         without user initiating the action.
