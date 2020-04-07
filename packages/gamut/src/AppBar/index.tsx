@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import ContentContainer from '../ContentContainer';
-import styles from './styles/index.scss';
+import styles from './styles/index.module.scss';
 
 export type AppBarProps = {
   className?: string;
