@@ -20,6 +20,14 @@ const cssLoaderDefaults = {
   },
 };
 
+const ExtractedCSSLoader = {
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    hmr: !PROD,
+    esModule: true,
+  },
+};
+
 const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
@@ -55,7 +63,7 @@ const css = {
   extracted: {
     test: cssFilePattern,
     use: [
-      MiniCssExtractPlugin.loader,
+      ExtractedCSSLoader,
       merge(cssLoaderDefaults),
       merge(postCssLoaderDefaults),
     ],
@@ -91,7 +99,7 @@ const scss = {
   extracted: {
     test: scssFilePattern,
     use: [
-      MiniCssExtractPlugin.loader,
+      ExtractedCSSLoader,
       merge(cssLoaderDefaults, {
         options: {
           modules: true,

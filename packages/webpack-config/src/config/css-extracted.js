@@ -4,7 +4,8 @@ const loaders = require('../loaders');
 
 const cssExtracted = options => {
   const defaultExtractOptions = {
-    filename: '[name].css',
+    filename: '[name].[contenthash].css',
+    chunkFilename: '[id].[contenthash].css',
     ignoreOrder: true,
   };
 
