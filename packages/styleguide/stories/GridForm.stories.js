@@ -78,6 +78,12 @@ export const gridForm = () => (
           },
         },
         {
+          label: 'Write a paragraph about penguins',
+          name: 'textarea-input',
+          size: 12,
+          type: 'textarea',
+        },
+        {
           label:
             "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',

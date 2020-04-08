@@ -36,8 +36,15 @@ export type GridFormFileField = BaseFormField & {
   type: 'file';
 };
 
+export type GridFormTextAreaField = BaseFormField & {
+  label: string;
+  validation?: ValidationOptions;
+  type: 'textarea';
+};
+
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormTextField
   | GridFormSelectField
-  | GridFormFileField;
+  | GridFormFileField
+  | GridFormTextAreaField;

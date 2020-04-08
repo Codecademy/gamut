@@ -12,6 +12,7 @@ import GridFormCheckboxInput from './GridFormCheckboxInput';
 import GridFormFileInput from './GridFormFileInput';
 import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
+import GridFormTextArea from './GridFormTextArea';
 import styles from './styles.module.scss';
 
 export type GridFormInputGroupProps = {
@@ -57,6 +58,16 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
       case 'file':
         return (
           <GridFormFileInput
+            className={styles.gridFormInput}
+            field={props.field}
+            register={props.register}
+            setValue={props.setValue}
+          />
+        );
+
+      case 'textarea':
+        return (
+          <GridFormTextArea
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
