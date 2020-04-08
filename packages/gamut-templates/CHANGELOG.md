@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.7.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/Codecademy/client-modules/commit/1d8028a)), closes [#686](https://github.com/Codecademy/client-modules/issues/686)
+
+
+
+
+
 ## <small>2.6.6 (2020-04-07)</small>
 
 **Note:** Version bump only for package @codecademy/gamut-templates
