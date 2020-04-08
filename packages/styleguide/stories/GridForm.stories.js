@@ -1,15 +1,17 @@
 import React from 'react';
 import { GridForm } from '../../gamut-templates';
 
+import styles from './GridForm-story.scss';
+
 export default {
   component: GridForm,
   title: 'Templates/GridForm',
 };
 
 export const gridForm = () => (
-  <>
+  <div className={styles.gridFormStory}>
     <p>
-      This <code>GridForm</code> component takes in plain JSON-like props and
+      The <code>GridForm</code> component takes in plain JSON-like props and
       usess them to automatically formulate a magical combination of:
       <ul>
         <li>
@@ -58,7 +60,7 @@ export const gridForm = () => (
           label:
             "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',
-          size: 12,
+          size: 9,
           type: 'text',
           validation: {
             required: true,
@@ -68,6 +70,13 @@ export const gridForm = () => (
             },
           },
         },
+        {
+          description: 'I have swag',
+          label: 'Swag levels',
+          name: 'enough-swag',
+          size: 3,
+          type: 'checkbox',
+        },
       ]}
       onSubmit={async values => {
         alert(`Submitted: ${JSON.stringify(values)}`);
@@ -76,7 +85,7 @@ export const gridForm = () => (
         contents: 'Submit Me!?',
       }}
     />
-  </>
+  </div>
 );
 
 gridForm.story = {
