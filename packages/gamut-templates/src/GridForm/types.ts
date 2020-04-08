@@ -31,12 +31,14 @@ export type GridFormSelectField = BaseFormField & {
 };
 
 export type GridFormFileField = BaseFormField & {
+  defaultValue?: FileList;
   label: string;
   validation?: ValidationOptions;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField & {
+  defaultValue?: string;
   label: string;
   validation?: ValidationOptions;
   type: 'textarea';
