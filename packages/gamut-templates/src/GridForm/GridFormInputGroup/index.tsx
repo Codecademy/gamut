@@ -9,6 +9,7 @@ import { FormContextValues } from 'react-hook-form';
 
 import { GridFormField } from '../types';
 import GridFormCheckboxInput from './GridFormCheckboxInput';
+import GridFormFileInput from './GridFormFileInput';
 import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
 import styles from './styles.module.scss';
@@ -46,6 +47,16 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
       case 'select':
         return (
           <GridFormSelectInput
+            className={styles.gridFormInput}
+            field={props.field}
+            register={props.register}
+            setValue={props.setValue}
+          />
+        );
+
+      case 'file':
+        return (
+          <GridFormFileInput
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
