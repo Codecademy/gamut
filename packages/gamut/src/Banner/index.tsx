@@ -25,7 +25,7 @@ const BANNER_CLASSES = {
   [BannerStyle.FullWidth]: styles.containerFullWidth,
 };
 
-const Banner: React.FC<BannerProps> = ({
+export const Banner: React.FC<BannerProps> = ({
   children,
   classNames = {},
   displayStyle = BannerStyle.FullWidth,

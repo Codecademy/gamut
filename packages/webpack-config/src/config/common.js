@@ -10,6 +10,7 @@ const commonConfig = (options = {}) => {
     env = ENV,
     minimizer,
     minimizerOptions = {},
+    fileLoaderOptions = {},
     includeDefaults = true,
   } = options;
   const DEV = env !== 'production';
@@ -39,6 +40,7 @@ const commonConfig = (options = {}) => {
                 name: DEV
                   ? '[name].[contenthash].[ext]'
                   : '[contenthash].[ext]',
+                ...fileLoaderOptions,
               },
             },
           ]
@@ -57,7 +59,7 @@ const commonConfig = (options = {}) => {
         '.ts',
         '.tsx',
       ],
-      modules: ['node_modules', 'node_modules/@codecademy'],
+      modules: ['node_modules'],
     },
 
     plugins: [

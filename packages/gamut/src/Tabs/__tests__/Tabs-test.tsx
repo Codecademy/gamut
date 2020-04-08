@@ -45,7 +45,7 @@ describe('Tabs', () => {
       const onChange = jest.fn();
       const wrapper = mount(getTabs({ activeTabIndex: 0, onChange }));
 
-      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+      expect(wrapper.find('button.tab.active').text()).toBe('Tab 1');
 
       const activeTabPanelText = wrapper
         .find(TabPanel)
@@ -76,7 +76,7 @@ describe('Tabs', () => {
         activeTabIndex: 2,
       });
 
-      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+      expect(wrapper.find('button.tab.active').text()).toBe('Tab 3');
 
       const inactiveTabPanelText = wrapper
         .find(TabPanel)
@@ -96,7 +96,7 @@ describe('Tabs', () => {
     it('should show the proper default tab view', () => {
       const wrapper = mount(getTabs({ defaultActiveTabIndex: 2 }));
 
-      expect(wrapper.find('.tab.active').text()).toBe('Tab 3');
+      expect(wrapper.find('button.tab.active').text()).toBe('Tab 3');
 
       const activeTabPanelText = wrapper
         .find(TabPanel)
@@ -120,7 +120,7 @@ describe('Tabs', () => {
         .first()
         .simulate('click');
 
-      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+      expect(wrapper.find('button.tab.active').text()).toBe('Tab 1');
 
       const inactiveTabPanelText = wrapper
         .find(TabPanel)
@@ -144,7 +144,7 @@ describe('Tabs', () => {
         .first()
         .simulate('click');
 
-      expect(wrapper.find('.tab.active').text()).toBe('Tab 1');
+      expect(wrapper.find('button.tab.active').text()).toBe('Tab 1');
 
       expect(onChange.mock.calls[0][0]).toBe(0);
     });

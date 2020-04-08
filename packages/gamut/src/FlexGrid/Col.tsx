@@ -53,7 +53,7 @@ function getClassNames(props: ColProps) {
     .join(' ');
 }
 
-export type ColProps = {
+export type ColSizing = {
   xs?: boolean | number;
   sm?: boolean | number;
   md?: boolean | number;
@@ -62,6 +62,9 @@ export type ColProps = {
   smOffset?: number;
   mdOffset?: number;
   lgOffset?: number;
+};
+
+export type ColProps = ColSizing & {
   tagName?: string;
   className?: string;
   reverse?: boolean;

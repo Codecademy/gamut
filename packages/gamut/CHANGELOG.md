@@ -3,6 +3,289 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.17.4 (2020-04-07)</small>
+
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
+
+## <small>2.17.3 (2020-04-07)</small>
+
+* fix: rename scss files (#704) ([c4ea130](https://github.com/RyzacInc/client-modules/commit/c4ea130)), closes [#704](https://github.com/RyzacInc/client-modules/issues/704)
+
+
+
+
+
+## <small>2.17.2 (2020-04-07)</small>
+
+* Removed legacy Modal alias for Overlay (#687) ([29d6724](https://github.com/RyzacInc/client-modules/commit/29d6724)), closes [#687](https://github.com/RyzacInc/client-modules/issues/687)
+
+
+
+
+
+## <small>2.17.1 (2020-04-07)</small>
+
+* Added half second transition to ProgressBar (#694) ([ccbc69a](https://github.com/RyzacInc/client-modules/commit/ccbc69a)), closes [#694](https://github.com/RyzacInc/client-modules/issues/694)
+
+
+
+
+
+## 2.17.0 (2020-04-07)
+
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
+
+## 2.16.0 (2020-04-07)
+
+* feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
+
+
+
+
+
+# [2.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.14.0...@codecademy/gamut@2.15.0) (2020-04-02)
+
+
+### Features
+
+* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+
+
+
+
+
+# [2.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.13.0...@codecademy/gamut@2.14.0) (2020-04-02)
+
+
+### Features
+
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
+
+# [2.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.12.0...@codecademy/gamut@2.13.0) (2020-04-01)
+
+
+### Features
+
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+* map column offset 0 to grid-column-start: auto ([#678](https://github.com/RyzacInc/client-modules/issues/678)) ([415b8c1](https://github.com/RyzacInc/client-modules/commit/415b8c1bae4067a1062cc19371526dca48e30c04))
+
+
+
+
+
+# [2.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.11.0...@codecademy/gamut@2.12.0) (2020-04-01)
+
+
+### Features
+
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
+
+# [2.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.10.0...@codecademy/gamut@2.11.0) (2020-03-31)
+
+
+### Features
+
+* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+
+
+
+
+
+# [2.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.9.0...@codecademy/gamut@2.10.0) (2020-03-30)
+
+
+### Features
+
+* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+
+
+
+
+
+# [2.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.1...@codecademy/gamut@2.9.0) (2020-03-24)
+
+
+### Features
+
+* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+
+
+
+
+
+# [2.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.1...@codecademy/gamut@2.8.0) (2020-03-24)
+
+
+### Features
+
+* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+
+
+
+
+
+## [2.7.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.7.0...@codecademy/gamut@2.7.1) (2020-03-10)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+# [2.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.1...@codecademy/gamut@2.7.0) (2020-03-05)
+
+
+### Features
+
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
+
+## [2.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.6.0...@codecademy/gamut@2.6.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+
+
+
+
+
+# [2.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.5.0...@codecademy/gamut@2.6.0) (2020-03-04)
+
+
+### Features
+
+* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+
+
+
+# [2.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.11...@codecademy/gamut@2.5.0) (2020-03-03)
+
+
+### Features
+
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
+
+## [2.4.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.10...@codecademy/gamut@2.4.11) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.9...@codecademy/gamut@2.4.10) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.8...@codecademy/gamut@2.4.9) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.7...@codecademy/gamut@2.4.8) (2020-02-20)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.6...@codecademy/gamut@2.4.7) (2020-02-17)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.5...@codecademy/gamut@2.4.6) (2020-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.4...@codecademy/gamut@2.4.5) (2020-02-12)
+
+
+### Bug Fixes
+
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+
+
+
+## [2.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.3...@codecademy/gamut@2.4.4) (2020-02-07)
+
+
+### Bug Fixes
+
+* markdown styling: do not override code color ([#621](https://github.com/RyzacInc/client-modules/issues/621)) ([9a0014a](https://github.com/RyzacInc/client-modules/commit/9a0014ae3d9c3ee192442589510dab730ffe41c8))
+
+
+
+
+
+## [2.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.2...@codecademy/gamut@2.4.3) (2020-02-06)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.1...@codecademy/gamut@2.4.2) (2020-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [2.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.4.0...@codecademy/gamut@2.4.1) (2020-01-30)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 # [2.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut@2.3.10...@codecademy/gamut@2.4.0) (2020-01-16)
 
 

@@ -1,0 +1,12 @@
+@import "../../../gamut-styles/utils";
+
+// Needed to avoid overriding story styles
+:global {
+  .sb-show-main #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+  }
+}

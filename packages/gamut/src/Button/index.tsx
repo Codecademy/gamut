@@ -7,7 +7,7 @@ import { ChildComponentDescriptor } from '../typings/react';
 
 // themes can be an alias to a color
 // or a unique button type
-export const presetThemes: { [i: string]: string } = {
+export const buttonPresetThemes: { [i: string]: string } = {
   primary: 'red',
   secondary: 'mint',
   platform: 'greyblue',
@@ -67,8 +67,8 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
 export const Button: React.FC<ButtonProps> = props => {
   let { theme = 'primary' } = props;
 
-  if (theme && presetThemes[theme]) {
-    theme = presetThemes[theme];
+  if (theme && buttonPresetThemes[theme]) {
+    theme = buttonPresetThemes[theme];
   }
 
   const typeClassName = props.link ? s.link : s.btn;

@@ -43,11 +43,11 @@ export const NotificationList = (props: NotificationListProps) => {
       className={notificationClasses}
     >
       {isEmpty(notifications) ? (
-        <div className={s.emptyText}>
+        <button className={s.emptyText} type="button">
           {'No new notifications.'}
           <br />
           {"You're all caught up!"}
-        </div>
+        </button>
       ) : (
         visibleNotifications.map((notification: Notification) => {
           return (

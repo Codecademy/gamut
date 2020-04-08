@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const PracticeIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const PracticeIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Practice Icon</title>

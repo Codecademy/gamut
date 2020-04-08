@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "3.16.2",
+  "version": "4.0.1",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Codecademy/client-modules/packages/webpack-config",
   "peerDependencies": {
     "@babel/core": "^7.0.0 || ^7.0.0-rc.1",
+    "autoprefixer": "^9.7.4",
     "babel-loader": ">= 7.1.4",
     "babel-preset-codecademy": ">= 2.0",
     "css-loader": ">= 2.0.0",
@@ -32,7 +33,7 @@
     "webpack-dev-server": ">= 3.8.2"
   },
   "dependencies": {
-    "autoprefixer": "^8.1.0",
+    "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "cssnano": "^4.1.10",
     "mini-css-extract-plugin": "0.9.0",
     "postcss-flexbugs-fixes": "^4.1.0",
