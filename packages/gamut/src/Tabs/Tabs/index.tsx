@@ -56,9 +56,9 @@ export class Tabs extends Component<TabsProps> {
       );
     }
 
-    const childrenArray = React.Children.toArray<ReactElement<any, any>>(
+    const childrenArray = React.Children.toArray(
       this.props.children
-    );
+    ) as ReactElement[];
     let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
 
     if (activeTabIndex >= clonedTabPanels.length) {

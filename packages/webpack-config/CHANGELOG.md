@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@4.0.0...@codecademy/webpack-config@4.0.1) (2020-04-01)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
+# [4.0.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.17.0...@codecademy/webpack-config@4.0.0) (2020-03-06)
+
+
+### chore
+
+* updated and consolidated autoprefixer to ^9.7.4 ([#629](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/629)) ([0fb90dd](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
+
+
+### BREAKING CHANGES
+
+* Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
+
+
+
+
+
 # [3.17.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.2...@codecademy/webpack-config@3.17.0) (2020-01-28)
 
 

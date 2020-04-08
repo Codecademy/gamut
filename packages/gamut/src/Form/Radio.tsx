@@ -13,6 +13,7 @@ export type RadioProps = HTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   tabIndex?: number;
   value?: string;
+  readOnly?: boolean;
 };
 
 export const Radio: React.FC<RadioProps> = ({

@@ -60,7 +60,7 @@ const commonConfig = (options = {}) => {
         '.ts',
         '.tsx',
       ],
-      modules: ['node_modules', 'node_modules/@codecademy'],
+      modules: ['node_modules'],
     },
 
     plugins: [

@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const NumPyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const NumPyIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>NumPy Icon</title>

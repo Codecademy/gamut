@@ -8,7 +8,8 @@ const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
 
 export type ButtonBaseProps = (
   | HTMLProps<HTMLLinkElement>
-  | HTMLProps<HTMLButtonElement>) & {
+  | HTMLProps<HTMLButtonElement>
+) & {
   /**
    * Component type to wrap children with.
    */

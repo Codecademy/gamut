@@ -20,7 +20,7 @@ This is markdown
 
     `
     )}
-    theme={select('theme', ['tight', 'loose', 'none'])}
+    spacing={select('spacing', ['tight', 'loose'])}
   />
 );
 
@@ -37,7 +37,7 @@ basics.story = {
 export const fullExample = () => (
   <Markdown
     text={text('markdown', exampleMarkdown)}
-    theme={select('theme', ['tight', 'loose', 'none'])}
+    spacing={select('spacing', ['tight', 'loose'])}
   />
 );
 
@@ -63,7 +63,7 @@ This is a custom markdown component
 <CustomElement title="A Custom Component" />
     `
     )}
-    theme={select('theme', ['tight', 'loose', 'none'])}
+    spacing={select('spacing', ['tight', 'loose'])}
     overrides={{
       CodeBlock: {
         component: props => <span style={{ color: 'blue' }} {...props} />,
@@ -110,7 +110,7 @@ export const inlineMarkdown = () => (
     tempor incididunt ut labore et dolore magna aliqua.
     <Markdown
       text={text('markdown', '`this is an inline markdown component`')}
-      theme={select('theme', ['tight', 'loose', 'none'])}
+      spacing={select('spacing', ['tight', 'loose'])}
       inline
     />
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

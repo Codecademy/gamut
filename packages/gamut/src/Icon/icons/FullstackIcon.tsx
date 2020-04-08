@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-const FullstackIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const FullstackIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
   return (
     <svg {...props}>
       <title>Fullstack Icon</title>

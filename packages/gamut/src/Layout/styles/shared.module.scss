@@ -1,0 +1,33 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$columnSizes: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12);
+
+$screenSizes: ("xs", "sm", "md", "lg");
+
+$gapSizes: (
+  "sm": $base-unit / 2,
+  "md": $base-unit,
+  "lg": $base-unit * 2,
+  "xl": $base-unit * 3
+);
+
+@mixin getViewport($viewport) {
+  @if $viewport == "lg" {
+    @include lg-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "md" {
+    @include md-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "sm" {
+    @include sm-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "xs" {
+    @content;
+  }
+}

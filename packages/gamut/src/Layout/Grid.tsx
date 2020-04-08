@@ -2,13 +2,15 @@ import React from 'react';
 import cx from 'classnames';
 
 import { createClassnames } from './utilities';
-import { ContainerElementProps, MediaSizes, GapSizes, GapTypes } from './types';
+import {
+  ContainerElementProps,
+  GapSizes,
+  GapTypes,
+  ResponsiveProperty,
+} from './types';
 import s from './styles/Grid.module.scss';
 
-export type GapConfig = Record<MediaSizes, GapSizes>;
-
-export type GridProps = Record<GapTypes, GapConfig | GapSizes>;
-
+export type GridProps = Record<GapTypes, ResponsiveProperty<GapSizes>>;
 export type LayoutGridProps = GridProps & ContainerElementProps;
 
 export const Grid: React.FC<LayoutGridProps> = ({

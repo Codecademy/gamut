@@ -3,45 +3,55 @@
 $tab-color: $color-blue-500;
 $tab-border-radius: 2px;
 
-.tabListItem {
-  flex: 1;
-  min-width: 6rem;
-  max-width: 20rem;
-  &:first-of-type a {
-    border-top-left-radius: $tab-border-radius;
-    border-bottom-left-radius: $tab-border-radius;
-    border-left: 1px solid $tab-color;
-  }
-  &:last-of-type a {
-    border-top-right-radius: $tab-border-radius;
-    border-bottom-right-radius: $tab-border-radius;
-  }
-}
 .tab {
-  display: block;
-  border: 1px solid $tab-color;
-  border-left: 0;
-  padding: 0.5rem;
-  color: $color-black;
-  font-weight: bold;
-  text-decoration: none !important;
-  text-align: center;
-  transition: color 0.2s, background-color 0.2s;
+  flex: 1 1;
   outline: none;
+  cursor: pointer;
+}
+
+.active {
+  @include font-smoothing;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.tab_default {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  color: $color-black;
+  border: 1px solid $tab-color;
+  padding: 0.5rem;
+  border-left: 0;
+  display: block;
+  min-width: 6rem;
+  max-width: 20rem;
+  font-weight: bold;
+  text-align: center;
+  transition: color 0.2s, background-color 0.2s;
 
   &:hover,
   &:focus {
     background-color: $color-blue-100;
   }
+
+  &:first-of-type {
+    border-top-left-radius: $tab-border-radius;
+    border-bottom-left-radius: $tab-border-radius;
+    border-left: 1px solid $tab-color;
+  }
+  &:last-of-type {
+    border-top-right-radius: $tab-border-radius;
+    border-bottom-right-radius: $tab-border-radius;
+  }
 }
 
-.active {
-  -webkit-font-smoothing: antialiased;
+.tab_default__active {
   color: $color-white;
   background-color: $tab-color;
+
   &:hover,
   &:focus {
     background-color: $tab-color;

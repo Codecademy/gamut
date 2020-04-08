@@ -3,6 +3,359 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.25.1 (2020-04-07)</small>
+
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
+
+## 3.25.0 (2020-04-07)
+
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
+
+## 3.24.0 (2020-04-07)
+
+* feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
+
+
+
+
+
+## 3.23.0 (2020-04-06)
+
+* feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0a)), closes [#679](https://github.com/RyzacInc/client-modules/issues/679)
+
+
+
+
+
+## <small>3.22.2 (2020-04-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>3.22.1 (2020-04-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
+
+
+### Features
+
+* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+
+
+
+
+
+# [3.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
+
+
+### Features
+
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
+
+# [3.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
+
+
+### Features
+
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+
+
+
+
+
+## [3.19.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.0...@codecademy/styleguide@3.19.1) (2020-04-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.19.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
+
+
+### Features
+
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
+
+## [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
+
+
+
+
+
+# [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
+
+
+### Features
+
+* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+
+
+
+
+
+# [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
+
+
+### Features
+
+* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+
+
+
+
+
+# [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
+
+
+### Features
+
+* add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+
+
+
+
+
+# [3.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
+
+
+### Features
+
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
+
+# [3.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
+
+
+### Features
+
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
+
+# [3.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
+
+
+### Features
+
+* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
+
+# [3.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-24)
+
+
+### Features
+
+* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
+
+## [3.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [3.11.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [3.11.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
+
+
+### Features
+
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
+
+## [3.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
+
+
+### Features
+
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+
+
+
+
+
+## [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
+
+
+### Bug Fixes
+
+* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+
+
+
+
+
+# [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
+
+
+### Features
+
+* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+
+
+
+# [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
+
+
+### Features
+
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
+
+# [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
+
+
+### Features
+
+* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/RyzacInc/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+
+
+
+
+
+## [3.6.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
+
+
+### Features
+
+* create Byline  brand component  ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+
+
+
+
+
+## [3.5.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+# [3.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
+
+
+### Features
+
+* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/RyzacInc/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+
+
+
+
+
+## [3.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
+
+
+### Bug Fixes
+
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+
+
+
+## [3.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [3.4.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
 
 **Note:** Version bump only for package @codecademy/styleguide

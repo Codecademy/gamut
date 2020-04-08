@@ -1,4 +1,4 @@
-import React, { SVGProps, FunctionComponent } from 'react';
+import React, { SVGProps } from 'react';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number;
@@ -8,12 +8,6 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   strokeLinecap?: 'round' | 'butt' | 'square';
 }
 
-const defaultProps: RadialProgressProps = {
-  strokeLinecap: 'round',
-  strokeWidth: 10,
-  size: 24,
-};
-
 const offsetForEmptyProgress = 260;
 const offsetForFullProgress = 8;
 const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
@@ -21,12 +15,12 @@ const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
-export const RadialProgress: FunctionComponent<RadialProgressProps> = ({
-  size,
+export const RadialProgress: React.FC<RadialProgressProps> = ({
+  size = 24,
   duration,
   value,
-  strokeLinecap,
-  strokeWidth,
+  strokeLinecap = 'round',
+  strokeWidth = 10,
   ...props
 }) => {
   let startingValue;
@@ -36,12 +30,17 @@ export const RadialProgress: FunctionComponent<RadialProgressProps> = ({
     startingValue = convertPercentToOffset(value[0]);
     finalValue = convertPercentToOffset(value[1]);
   } else {
-    startingValue = convertPercentToOffset(value);
-    finalValue = convertPercentToOffset(value);
+    finalValue = startingValue = convertPercentToOffset(value);
   }
 
   return (
-    <svg viewBox="0 0 100 100" height={size} width={size} {...props}>
+    <svg
+      aria-label={`${finalValue}% progress`}
+      viewBox="0 0 100 100"
+      height={size}
+      width={size}
+      {...props}
+    >
       <circle
         cx="50"
         cy="50"
@@ -79,7 +78,5 @@ export const RadialProgress: FunctionComponent<RadialProgressProps> = ({
     </svg>
   );
 };
-
-RadialProgress.defaultProps = defaultProps;
 
 export default RadialProgress;

@@ -15,7 +15,15 @@ export const editable = () => (
     height={number('height', Logo.defaultProps.height)}
     type={select(
       'type',
-      ['pro', 'proAlt', 'proLockup', 'program', 'default'],
+      [
+        'pro',
+        'proAlt',
+        'proLockup',
+        'proMono',
+        'premium',
+        'program',
+        'default',
+      ],
       Logo.defaultProps.type
     )}
     style={{ color: select('color', selectableColors, 'black') }}

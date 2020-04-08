@@ -1,14 +1,27 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { presetThemes } from '../../gamut/src/Button';
+import { buttonPresetThemes } from '../../gamut/src/Button';
 import { Button, ButtonBase } from '../../gamut/src';
 import Spinner from '../../gamut/src/Spinner';
 import RadialProgress from '../../gamut/src/RadialProgress';
 import { withKnobs, select, text, boolean } from '@storybook/addon-knobs';
 import { deprecatedColors } from '../../gamut-styles/utils/variables';
 
-const themeKeys = [
-  ...Object.keys(presetThemes),
+const themeKeys = [...Object.keys(buttonPresetThemes)];
+
+const brandThemeKeys = [
+  'brand-red',
+  'brand-orange',
+  'brand-yellow',
+  'brand-purple',
+  'brand-pink',
+  'brand-mint',
+  'brand-beige',
+  'brand-dark-blue',
+  'brand-blue',
+];
+
+const deprecatedThemeKeys = [
   'mint',
   'darkmint',
   'blue',
@@ -22,25 +35,55 @@ const themeKeys = [
   'ccblue',
   'royalblue',
   'purple',
-  'brand-red',
-  'brand-orange',
-  'brand-yellow',
-  'brand-purple',
-  'brand-pink',
-  'brand-mint',
-  'brand-beige',
-  'brand-dark-blue',
-  'brand-blue',
 ];
 
 const themes = {};
+
 themeKeys.forEach(k => {
+  themes[k] = k;
+});
+brandThemeKeys.forEach(k => {
+  themes[k] = k;
+});
+deprecatedThemeKeys.forEach(k => {
   themes[k] = k;
 });
 
 const btnStyle = {
   marginRight: '1rem',
   marginBottom: '1rem',
+};
+
+const headingStyle = {
+  color: 'white',
+};
+
+const storyStyle = {
+  darkMode: {
+    containerStyle: {
+      padding: '0 2rem',
+      background: deprecatedColors.swatches.grey[900],
+      color: 'white',
+    },
+    groupStyle: {
+      margin: '1rem 0',
+    },
+    headingStyle: {
+      color: 'white',
+      margin: '1rem 0',
+    },
+  },
+  lightMode: {
+    containerStyle: {
+      padding: '0 2rem',
+    },
+    groupStyle: {
+      margin: '1rem 0',
+    },
+    headingStyle: {
+      margin: '1rem 0',
+    },
+  },
 };
 
 export default {
@@ -50,83 +93,69 @@ export default {
   subcomponents: { ButtonBase },
 };
 
-export const allButtonThemes = () => (
-  <div>
-    <div style={{ padding: '0.5rem' }}>
-      <h3>Standard Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button key={`${theme}-onlight`} style={btnStyle} theme={theme}>
-          {theme}
-        </Button>
-      ))}
-      <h3>Outline Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button
-          key={`${theme}-onlight-outline`}
-          style={btnStyle}
-          theme={theme}
-          outline
-        >
-          {theme}
-        </Button>
-      ))}
-      <h3>Flat Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button
-          key={`${theme}-onlight-flat`}
-          style={btnStyle}
-          theme={theme}
-          flat
-        >
-          {theme}
-        </Button>
-      ))}
+export const allButtonThemes = () => {
+  const variant = select('Variant', ['default', 'outline', 'flat'], 'default');
+  const contrastMode = select(
+    'Contrast',
+    { Light: 'lightMode', Dark: 'darkMode' },
+    'lightMode'
+  );
+
+  const { containerStyle, groupStyle, headingStyle } = storyStyle[contrastMode];
+  return (
+    <div style={containerStyle}>
+      <h3 style={headingStyle}>Preset</h3>
+      <div style={groupStyle}>
+        {themeKeys.map(theme => (
+          <Button
+            key={`${theme}`}
+            style={btnStyle}
+            theme={theme}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
+          >
+            {theme}
+          </Button>
+        ))}
+      </div>
+      <h3 style={headingStyle}>Brand</h3>
+      <div style={groupStyle}>
+        {brandThemeKeys.map(theme => (
+          <Button
+            key={`${theme}`}
+            style={btnStyle}
+            theme={theme}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
+          >
+            {theme}
+          </Button>
+        ))}
+      </div>
+      <h3 style={headingStyle}>Deprecated</h3>
+      <div style={groupStyle}>
+        {deprecatedThemeKeys.map(theme => (
+          <Button
+            key={`${theme}`}
+            style={btnStyle}
+            theme={theme}
+            outline={variant === 'outline'}
+            flat={variant === 'flat'}
+          >
+            {theme}
+          </Button>
+        ))}
+      </div>
     </div>
-    <div
-      style={{
-        padding: '0.5rem',
-        background: deprecatedColors.swatches.grey[900],
-        color: 'white',
-      }}
-    >
-      <h3>Standard Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button key={`${theme}-ondark`} style={btnStyle} theme={theme}>
-          {theme}
-        </Button>
-      ))}
-      <h3>Outline Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button
-          key={`${theme}-ondark-outline`}
-          style={btnStyle}
-          theme={theme}
-          outline
-        >
-          {theme}
-        </Button>
-      ))}
-      <h3>Flat Buttons</h3>
-      {themeKeys.map(theme => (
-        <Button
-          key={`${theme}-ondark-flat`}
-          style={btnStyle}
-          theme={theme}
-          flat
-        >
-          {theme}
-        </Button>
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 allButtonThemes.story = {
-  name: 'All Button Themes',
+  name: 'Button Themes',
 };
 
 export const buttonBaseVariants = () => (
-  <div>
+  <div style={storyStyle.lightMode.containerStyle}>
     <div>
       <ButtonBase style={btnStyle}>
         {text('Label 1', 'a basic button')}
@@ -149,29 +178,70 @@ buttonBaseVariants.story = {
   name: 'ButtonBase Variants',
 };
 
+export const editable = () => (
+  <div style={storyStyle.lightMode.containerStyle}>
+    <Button
+      theme={select('theme', themes, 'blue')}
+      onClick={action('clicked')}
+      size={select('size', ['small', 'large', 'undefined'], 'undefined')}
+      outline={boolean('outline', false)}
+      underline={boolean('underline', false)}
+      link={boolean('link', false)}
+      caps={boolean('caps', false)}
+      go={boolean('go', false)}
+      block={boolean('block', false)}
+    >
+      {text('Label', 'Submit')}
+    </Button>
+  </div>
+);
+
+editable.story = {
+  name: 'Editable',
+};
+
+export const linkButton = () => (
+  <div style={storyStyle.lightMode.containerStyle}>
+    <p>
+      This is an example of a{' '}
+      <Button theme={select('theme', themes, 'blue')} link href="#">
+        Link
+      </Button>{' '}
+      style button.
+    </p>
+  </div>
+);
+
+linkButton.story = {
+  name: 'Link Button',
+};
+
 export const standardButtonOptions = () => (
-  <div>
-    <Button style={btnStyle} theme="primary" outline href="#">
+  <div style={storyStyle.lightMode.containerStyle}>
+    <Button style={btnStyle} theme="blue" flat href="#">
+      Flat
+    </Button>
+    <Button style={btnStyle} theme="blue" outline href="#">
       Outline
     </Button>
-    <Button style={btnStyle} theme="primary" size="large">
+    <Button style={btnStyle} theme="blue" size="large">
       Large
     </Button>
-    <Button style={btnStyle} theme="secondary" size="small" href="#">
+    <Button style={btnStyle} theme="blue" size="small" href="#">
       Small
     </Button>
-    <Button style={btnStyle} theme="primary" disabled>
+    <Button style={btnStyle} theme="blue" disabled>
       Disabled
     </Button>
-    <Button style={btnStyle} theme="primary">
+    <Button style={btnStyle} theme="blue">
       <Spinner />
       &nbsp;&nbsp;Loading...
     </Button>
-    <Button style={btnStyle} theme="secondary">
+    <Button style={btnStyle} theme="blue">
       <RadialProgress value={[0, 100]} duration={5000} />
       &nbsp;&nbsp;Processing...
     </Button>
-    <Button style={btnStyle} theme="primary" caps href="#">
+    <Button style={btnStyle} theme="blue" caps href="#">
       Caps
     </Button>
   </div>
@@ -181,146 +251,32 @@ standardButtonOptions.story = {
   name: 'Standard Button options',
 };
 
-export const platformButtons = () => (
-  <div
-    style={{
-      background: deprecatedColors.portal.midnightblue,
-      padding: '0.5rem',
-    }}
-  >
-    <Button style={btnStyle} theme="platform">
-      Platform
-    </Button>
-    <Button style={btnStyle} theme="lantern">
-      Lantern
-    </Button>
-    <Button style={btnStyle} theme="lantern" go>
-      Lantern: go
-    </Button>
-    <Button style={btnStyle} theme="platform" disabled>
-      Disabled
-    </Button>
-  </div>
-);
-
-platformButtons.story = {
-  name: 'Platform Buttons',
-};
-
-export const linkButton = () => (
-  <p>
-    This is an example of a{' '}
-    <Button theme="primary" link href="#">
-      Link
-    </Button>{' '}
-    style button.
-  </p>
-);
-
-linkButton.story = {
-  name: 'Link Button',
-};
-
-export const editable = () => (
-  <Button
-    theme={select('theme', themes, 'primary')}
-    onClick={action('clicked')}
-    size={select('size', ['small', 'large', 'undefined'], 'undefined')}
-    outline={boolean('outline', false)}
-    underline={boolean('underline', false)}
-    link={boolean('link', false)}
-    caps={boolean('caps', false)}
-    go={boolean('go', false)}
-    block={boolean('block', false)}
-  >
-    {text('Label', 'Submit')}
-  </Button>
-);
-
-editable.story = {
-  name: 'Editable',
-};
-
-export const newStory = () => (
-  <div>
-    <Button style={btnStyle} theme="yellow">
-      Super
-    </Button>
-    <Button style={btnStyle} theme="blue">
-      Primary (new)
-    </Button>
-    <Button style={btnStyle} theme="blue" outline>
-      Seconary (new)
-    </Button>
-    <Button style={btnStyle} theme="blue" flat>
+export const round = () => (
+  <div style={storyStyle.lightMode.containerStyle}>
+    <Button style={btnStyle} theme="blue" flat round href="#">
       Flat
     </Button>
-
-    <p>
-      This is an example of a new{' '}
-      <Button theme="grey" link href="#">
-        Link
-      </Button>{' '}
-      style button.
-    </p>
-  </div>
-);
-
-newStory.story = {
-  name: 'New',
-};
-
-export const round = () => (
-  <div>
-    <Button style={btnStyle} theme="primary" outline href="#" round>
+    <Button style={btnStyle} theme="blue" outline href="#" round>
       Outline
     </Button>
-    <Button style={btnStyle} theme="primary" size="large" round>
+    <Button style={btnStyle} theme="blue" size="large" round>
       Large
     </Button>
-    <Button style={btnStyle} theme="secondary" size="small" href="#" round>
+    <Button style={btnStyle} theme="blue" size="small" href="#" round>
       Small
     </Button>
-    <Button style={btnStyle} theme="primary" disabled round>
+    <Button style={btnStyle} theme="blue" disabled round>
       Disabled
     </Button>
-    <Button style={btnStyle} theme="primary" round>
+    <Button style={btnStyle} theme="blue" round>
       <Spinner />
       &nbsp;&nbsp;Loading...
     </Button>
-    <Button style={btnStyle} theme="secondary" round>
+    <Button style={btnStyle} theme="blue" round>
       <RadialProgress value={[0, 100]} duration={5000} />
       &nbsp;&nbsp;Processing...
     </Button>
-    <Button style={btnStyle} theme="primary" caps href="#" round>
-      Caps
-    </Button>
-  </div>
-);
-
-export const square = () => (
-  <div>
-    <Button style={btnStyle} theme="primary" outline href="#" square>
-      Outline
-    </Button>
-    <Button style={btnStyle} theme="primary" size="large" square>
-      Large
-    </Button>
-    <Button style={btnStyle} theme="secondary" size="small" href="#" square>
-      Small
-    </Button>
-    <Button style={btnStyle} theme="primary" disabled square>
-      Disabled
-    </Button>
-    <Button style={btnStyle} theme="primary" square>
-      <Spinner />
-      &nbsp;&nbsp;Loading...
-    </Button>
-    <Button style={btnStyle} theme="secondary" square>
-      <RadialProgress value={[0, 100]} duration={5000} />
-      &nbsp;&nbsp;Processing...
-    </Button>
-    <Button style={btnStyle} theme="primary" caps href="#" square>
+    <Button style={btnStyle} theme="blue" caps href="#" round>
       Caps
     </Button>
   </div>

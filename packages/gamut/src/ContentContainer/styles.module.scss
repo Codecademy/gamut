@@ -1,0 +1,37 @@
+@import "~@codecademy/gamut-styles/utils";
+.contentContainer {
+  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @include sm-viewport {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @include md-viewport {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  @include lg-viewport {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  max-width: calc(#{$max-content-width} + 12rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contentContainerWide {
+  @include sm-viewport {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @include md-viewport {
+    padding-left: 1.9rem;
+    padding-right: 1.9rem;
+  }
+  @include lg-viewport {
+    padding-left: 1.9rem;
+    padding-right: 1.9rem;
+  }
+  max-width: none;
+}

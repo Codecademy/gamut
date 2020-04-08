@@ -11,6 +11,11 @@ const defaultConfig = require('./packages/eslint-config');
 
 module.exports = {
   ...defaultConfig,
+  root: true,
+  parserOptions: {
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+  },
   overrides: [
     {
       files: ['*.js'],

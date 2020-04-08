@@ -2,9 +2,9 @@ import { createClassnames } from '../utilities';
 
 describe('createClassnames', () => {
   const styleMap = {
-    coolProp_sm__smScreen: 'coolClass',
+    coolProp_sm__xsScreen: 'coolClass',
     coolProp_md__mdScreen: 'coolClassMedium',
-    lessCoolProp_1__smScreen: 'lessCoolClass',
+    lessCoolProp_1__xsScreen: 'lessCoolClass',
   };
 
   it('handles string configurations', () => {
@@ -20,14 +20,14 @@ describe('createClassnames', () => {
   });
 
   it('handles screen size configurations', () => {
-    const classList = createClassnames({ lessCoolProp: { sm: 1 } }, styleMap);
+    const classList = createClassnames({ lessCoolProp: { xs: 1 } }, styleMap);
 
     expect(classList).toEqual([['lessCoolClass']]);
   });
 
   it('handles multiple configurations for different screen sizes', () => {
     const classList = createClassnames(
-      { coolProp: { sm: 'sm', md: 'md' } },
+      { coolProp: { xs: 'sm', md: 'md' } },
       styleMap
     );
 
@@ -55,7 +55,7 @@ describe('createClassnames', () => {
     const classList = createClassnames(
       {
         coolProp: { lg: 'sm', md: 'md' },
-        lessCoolProp: { lg: 'sm', sm: 1 },
+        lessCoolProp: { lg: 'sm', xs: 1 },
       },
       styleMap
     );
