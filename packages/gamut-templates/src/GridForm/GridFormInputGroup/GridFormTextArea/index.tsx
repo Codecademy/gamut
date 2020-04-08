@@ -27,7 +27,6 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       name={field.name}
       onChange={onChange}
       ref={register(field.validation)}
-      type={field.type}
     />
   );
 };
