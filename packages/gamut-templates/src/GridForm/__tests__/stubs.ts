@@ -11,13 +11,14 @@ export const stubCheckboxField: GridFormCheckboxField = {
   type: 'checkbox',
 };
 
+export const stubSelectOptions: string[] = ['aaa', 'bbb'];
+
 export const stubSelectField: GridFormSelectField = {
   label: 'Stub Select',
-  options: ['aaa', 'bbb'],
+  options: stubSelectOptions,
   name: 'stub-select',
   type: 'select',
 };
-
 export const stubTextField: GridFormTextField = {
   label: 'Stub Text',
   name: 'stub-text',
