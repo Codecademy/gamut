@@ -1,7 +1,7 @@
-import { Input } from '@codecademy/gamut';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
+import { Input } from '../../../Form';
 import { GridFormFileField } from '../../types';
 
 export type GridFormFileInputProps = {
