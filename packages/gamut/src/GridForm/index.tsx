@@ -18,7 +18,7 @@ export type GridFormProps<Values extends {}> = {
 export function GridForm<
   Values extends Record<string, boolean | string | undefined>
 >({ children, className, fields, submit, onSubmit }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue } = useForm<Values>({
+  const { errors, handleSubmit, register } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -46,7 +46,6 @@ export function GridForm<
               field={field}
               key={field.name}
               register={register}
-              setValue={value => setValue(field.name, value as Values[string])}
             />
           );
         })}
