@@ -36,8 +36,6 @@ const deprecatedThemeKeys = [
   'darkblue',
   'midnightblue',
   'grey',
-  'red',
-  'yellow',
   'greyblue',
   'white',
   'ccblue',
