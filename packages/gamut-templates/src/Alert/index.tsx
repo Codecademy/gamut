@@ -14,14 +14,14 @@ import {
   ArrowChevronUpIcon,
 } from '@codecademy/gamut-icons';
 
-import { BANNER_CONFIG } from './contstants';
-import { BannerTypes, BannerCTA } from './types';
+import { BannerType, BANNER_CONFIG } from './constants';
+import { BannerCTA } from './types';
 
 import s from './styles.module.scss';
 
 export type AlertProps = {
   /** Banner theme string: info, alert, success, announcement, error */
-  type?: BannerTypes;
+  type?: BannerType;
   /** Toggle the display of the theme's icon */
   showIcon?: boolean;
   /** On close callback */
@@ -37,7 +37,7 @@ export type AlertProps = {
 export const Alert: React.FC<AlertProps> = ({
   children,
   fluid = false,
-  type = BannerTypes.Info,
+  type = BannerType.Info,
   showIcon = true,
   lines,
   cta,
