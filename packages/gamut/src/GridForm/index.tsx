@@ -2,22 +2,32 @@ import React, { useEffect } from 'react';
 import { useForm, FieldError } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { LayoutGrid } from '../Layout';
+import { LayoutGrid, LayoutGridProps } from '../Layout';
 import GridFormInputGroup from './GridFormInputGroup';
 import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
 export type GridFormProps<Values extends {}> = {
-  className?: string;
   children?: React.ReactNode;
+  className?: string;
+  columnGap?: LayoutGridProps['columnGap'];
   fields: GridFormField[];
   onSubmit: (values: Values) => Promise<void>;
+  rowGap?: LayoutGridProps['rowGap'];
   submit: GridFormSubmitProps;
 };
 
 export function GridForm<
   Values extends Record<string, boolean | string | undefined>
->({ children, className, fields, submit, onSubmit }: GridFormProps<Values>) {
+>({
+  children,
+  className,
+  columnGap = 'lg',
+  fields,
+  onSubmit,
+  rowGap = 'md',
+  submit,
+}: GridFormProps<Values>) {
   const { errors, handleSubmit, register, setValue } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
@@ -36,7 +46,7 @@ export function GridForm<
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
-      <LayoutGrid columnGap="lg" rowGap="md">
+      <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map(field => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
 
