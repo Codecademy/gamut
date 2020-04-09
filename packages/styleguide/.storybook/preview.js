@@ -15,12 +15,16 @@ const gamutTheme = create({
 addParameters({
   options: {
     theme: gamutTheme,
-    showPanel: true,
+    storySort: {
+      order: [
+        'About',
+        'Foundations',
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Brand',
+        'Meta',
+      ],
+    },
   },
-  viewMode: 'docs',
 });
-
-configure(
-  [require.context('../stories', true, /\.stories\.(md|ts)x$/)],
-  module
-);
