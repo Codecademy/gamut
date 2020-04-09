@@ -22,7 +22,7 @@ export type ProgressBarProps = {
 export type ProgressBarStyle = {
   backgroundColor: string;
   barColor: string;
-  fontColor: string;
+  fontColor?: string;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
