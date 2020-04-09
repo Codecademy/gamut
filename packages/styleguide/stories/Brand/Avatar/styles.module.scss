@@ -1,0 +1,19 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$large-size: px-rem(110px);
+$large-offset: px-rem(8px);
+
+.largeContainerOverride {
+  width: $large-size + $large-offset;
+  height: $large-size + $large-offset;
+
+  &::before {
+    height: $large-size;
+    width: $large-size;
+  }
+
+  img {
+    width: $large-size;
+    height: $large-size;
+  }
+}
