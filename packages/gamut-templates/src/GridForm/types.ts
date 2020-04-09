@@ -26,7 +26,7 @@ export type GridFormTextField = BaseFormField & {
 export type GridFormSelectField = BaseFormField & {
   defaultValue?: string;
   label: string;
-  options: string[];
+  options: string[] | Record<string, number | string>;
   type: 'select';
 };
 
