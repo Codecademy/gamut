@@ -29,6 +29,7 @@
     "marked": "^0.6.0",
     "moment": "^2.24.0",
     "react-aria-tabpanel": "^4.4.0",
+    "react-hook-form": "^5.2.0",
     "react-truncate-markup": "^4.1.1"
   },
   "scripts": {

@@ -4,11 +4,27 @@ import TabPanel from '../TabPanel';
 import TabList from '../TabList';
 
 export interface TabsProps {
+  /**
+   * Changes this to a controlled component by only forcing this index to be active.
+   */
   activeTabIndex?: number;
+
   children: ReactElement<any, any>[];
+
   className?: string;
+
+  /**
+   * Index to start the active tab on, if not provided by `activeTabIndex`.
+   */
   defaultActiveTabIndex?: number;
+
+  /**
+   * Callback for when a tab index is requested to be active.
+   *
+   * @param activeTabIndex  New active tab index.
+   */
   onChange?: (activeTabIndex: number) => void;
+
   renderAllPanels?: boolean;
 }
 
