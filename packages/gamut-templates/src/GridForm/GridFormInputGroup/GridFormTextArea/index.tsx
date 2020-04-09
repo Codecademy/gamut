@@ -1,4 +1,4 @@
-import { TextArea } from '@codecademy/gamut/src';
+import { TextArea } from '@codecademy/gamut';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 

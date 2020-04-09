@@ -1,4 +1,4 @@
-import { Input } from '@codecademy/gamut/src';
+import { Input } from '@codecademy/gamut';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
