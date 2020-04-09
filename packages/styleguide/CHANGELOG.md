@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.1.0 (2020-04-09)
+
+* feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
+
+
+
+
+
 ## 4.0.0 (2020-04-09)
 
 * chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
