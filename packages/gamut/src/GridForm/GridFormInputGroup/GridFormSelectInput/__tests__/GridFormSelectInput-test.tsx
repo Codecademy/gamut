@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import GridFormSelectInput from '../../GridFormSelectInput';
+import GridFormSelectInput from '..';
 
 describe('GridFormSelectInput', () => {
   it('calls setValue when changed', () => {
