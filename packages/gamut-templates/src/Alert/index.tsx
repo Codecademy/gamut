@@ -44,8 +44,8 @@ export const Alert: React.FC<AlertProps> = ({
   onClose,
 }) => {
   const TypeIcon = BANNER_CONFIG[type];
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [isTruncated, setIsTruncated] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
   const showExpandToggle = isTruncated || isExpanded;
   const ToggleIcon = isExpanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
 

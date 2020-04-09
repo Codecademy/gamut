@@ -141,5 +141,5 @@ export const everythingAlert = () => {
 };
 
 everythingAlert.story = {
-  name: 'Everthying',
+  name: 'Everything',
 };
