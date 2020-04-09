@@ -1,7 +1,7 @@
-import { TextArea } from '@codecademy/gamut';
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
+import { TextArea } from '../../../Form';
 import { GridFormTextAreaField } from '../../types';
 
 export type GridFormTextAreaProps = {
