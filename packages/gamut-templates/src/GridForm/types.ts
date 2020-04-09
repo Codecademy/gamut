@@ -27,6 +27,7 @@ export type GridFormSelectField = BaseFormField & {
   defaultValue?: string;
   label: string;
   options: string[] | Record<string, number | string>;
+  validation?: Pick<ValidationOptions, 'required'>;
   type: 'select';
 };
 
