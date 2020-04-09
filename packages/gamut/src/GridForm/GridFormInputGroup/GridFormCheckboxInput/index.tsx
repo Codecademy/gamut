@@ -1,6 +1,6 @@
-import { Checkbox } from '@codecademy/gamut';
 import React from 'react';
 
+import { Checkbox } from '../../../Form';
 import { GridFormCheckboxField } from '../../types';
 
 export type GridFormCheckboxInputProps = {
