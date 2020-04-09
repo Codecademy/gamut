@@ -64,7 +64,7 @@ export const gridForm = () => (
           label:
             "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',
-          size: 12,
+          size: 9,
           type: 'text',
           validation: {
             required: true,
@@ -73,6 +73,13 @@ export const gridForm = () => (
               message: 'Not enough swag',
             },
           },
+        },
+        {
+          description: 'I have swag',
+          label: 'Swag levels',
+          name: 'enough-swag',
+          size: 3,
+          type: 'checkbox',
         },
       ]}
       onSubmit={async values => {

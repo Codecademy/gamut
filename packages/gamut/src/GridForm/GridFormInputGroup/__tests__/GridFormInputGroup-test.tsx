@@ -1,10 +1,12 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { stubSelectField, stubTextField } from '../../__tests__/stubs';
-import GridFormInputGroup, {
-  GridFormInputGroupProps,
-} from '../../GridFormInputGroup';
+import {
+  stubSelectField,
+  stubTextField,
+  stubCheckboxField,
+} from '../../__tests__/stubs';
+import GridFormInputGroup, { GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props = {
@@ -26,6 +28,14 @@ describe('GridFormInputGroup', () => {
     const { wrapped } = renderComponent({ error });
 
     expect(wrapped.text()).toContain(error);
+  });
+
+  it('renders a checkbox input when the field type is checkbox', () => {
+    const { wrapped } = renderComponent({
+      field: stubCheckboxField,
+    });
+
+    expect(wrapped.find('input[type="checkbox"]')).toHaveLength(1);
   });
 
   it('renders a select when the field type is select', () => {

@@ -15,13 +15,9 @@ export type GridFormProps<Values extends {}> = {
   submit: GridFormSubmitProps;
 };
 
-export function GridForm<Values extends Record<string, string | undefined>>({
-  children,
-  className,
-  fields,
-  submit,
-  onSubmit,
-}: GridFormProps<Values>) {
+export function GridForm<
+  Values extends Record<string, boolean | string | undefined>
+>({ children, className, fields, submit, onSubmit }: GridFormProps<Values>) {
   const { errors, handleSubmit, register, setValue } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
