@@ -4,11 +4,3 @@ export type BannerCTA = {
   onClick: () => void;
   disabled?: boolean;
 };
-
-export enum BannerTypes {
-  Notice = 'notice',
-  Announcement = 'announcement',
-  Error = 'error',
-  Info = 'info',
-  Success = 'success',
-}

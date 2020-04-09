@@ -89,7 +89,7 @@ describe('Alert', () => {
     expect(renderedTruncated.prop('lines')).toEqual(2);
   });
 
-  it('renders an expandable button for any truncated text', () => {
+  it('renders a clickable button to expand the truncated section', () => {
     const renderedAlert = mount(
       <Alert
         onClose={onClose}
@@ -108,11 +108,26 @@ describe('Alert', () => {
     renderedAlert.update();
 
     expect(renderedAlert.find('Truncate').prop('lines')).toEqual(undefined);
+  });
 
-    renderedAlert
-      .find('button')
-      .at(0)
-      .simulate('click');
+  it('renders a clickable button to collapse the truncated section when clicked twice', () => {
+    const renderedAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick }}
+        lines={2}
+      >
+        Hello
+      </Alert>
+    );
+
+    const buttons = renderedAlert.find('button');
+
+    buttons.at(0).simulate('click');
+
+    renderedAlert.update();
+
+    buttons.at(0).simulate('click');
 
     renderedAlert.update();
 
