@@ -10,10 +10,30 @@ import { GridFormField } from './types';
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
   className?: string;
+
+  /**
+   * Layout grid column gap override.
+   */
   columnGap?: LayoutGridProps['columnGap'];
+
+  /**
+   * Descriptions of the fields comprising the form.
+   */
   fields: GridFormField[];
+
+  /**
+   * Function called with field values on submit, if all validations have passed.
+   */
   onSubmit: (values: Values) => Promise<void>;
+
+  /**
+   * Layout grid row gap override.
+   */
   rowGap?: LayoutGridProps['rowGap'];
+
+  /**
+   * Description of the submit button at the end of the form.
+   */
   submit: GridFormSubmitProps;
 };
 
