@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.0 (2020-04-10)
+
+* feat(GridForm): drilled error states through GridForm to inputs (#698) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8)), closes [#698](https://github.com/RyzacInc/client-modules/issues/698)
+* Switched ProgressBar's displayLabel prop name to be large (#706) ([89f7346](https://github.com/RyzacInc/client-modules/commit/89f7346)), closes [#706](https://github.com/RyzacInc/client-modules/issues/706)
+
+
+
+
+
 ## 3.1.0 (2020-04-10)
 
 * feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
