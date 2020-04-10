@@ -59,7 +59,7 @@
     "@types/invariant": "2.2.29",
     "@types/jest": "24.9.0",
     "@types/lodash": "4.14.123",
-    "@types/react": "^16.9",
+    "@types/react": "16.9.19",
     "@types/react-dom": "^16.9",
     "babel-jest": "24.9.0",
     "babel-plugin-require-context-hook": "1.0.0",
