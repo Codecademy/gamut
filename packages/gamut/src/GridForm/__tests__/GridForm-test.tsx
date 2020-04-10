@@ -4,14 +4,14 @@ import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
 import GridForm from '..';
-import { stubSelectField, stubTextField } from './stubs';
+import { stubSelectField, stubSelectOptions, stubTextField } from './stubs';
 
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const fields = [stubSelectField, stubTextField];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    const selectValue = stubSelectField.options[1];
+    const selectValue = stubSelectOptions[1];
     const textValue = 'Hooray!';
 
     const wrapped = mount(

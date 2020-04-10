@@ -1,6 +1,5 @@
 import { GridForm } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
-
 import React from 'react';
 
 import {
@@ -59,6 +58,36 @@ export const gridForm = () => (
           options: ['One fish', 'Two fish', 'Red fish', 'Blue fish'],
           size: 5,
           type: 'select',
+        },
+        {
+          label: 'Upload a cat image (we support pdf, jpeg, or png files)',
+          name: 'file-input',
+          size: 6,
+          type: 'file',
+          validation: {
+            required: true,
+            validate: files => {
+              const { type } = files.item(0);
+              const allowedTypes = [
+                'application/pdf',
+                'image/jpeg',
+                'image/png',
+              ];
+              if (!allowedTypes.includes(type))
+                return 'Please upload a pdf, jpeg, or png file.';
+
+              return true;
+            },
+          },
+        },
+        {
+          label: 'Write a paragraph about penguins',
+          name: 'textarea-input',
+          size: 12,
+          type: 'textarea',
+          validation: {
+            required: 'Please write something about penguins!',
+          },
         },
         {
           label:
