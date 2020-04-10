@@ -119,7 +119,6 @@ export const Colors = () => (
   </StoryTemplate>
 );
 
-console.log({ deprecatedColors }, objectKeys(deprecatedGamutColors.swatches));
 export const GamutDeprecated = () => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
