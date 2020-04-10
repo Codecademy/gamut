@@ -4,14 +4,19 @@ import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
 import GridForm from '..';
-import { stubCheckboxField, stubSelectField, stubTextField } from './stubs';
+import {
+  stubCheckboxField,
+  stubSelectField,
+  stubSelectOptions,
+  stubTextField,
+} from './stubs';
 
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
     const fields = [stubCheckboxField, stubSelectField, stubTextField];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    const selectValue = stubSelectField.options[1];
+    const selectValue = stubSelectOptions[1];
     const textValue = 'Hooray!';
 
     const wrapped = mount(

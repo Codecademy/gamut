@@ -2,8 +2,10 @@ import { mount } from 'enzyme';
 import React from 'react';
 
 import {
+  stubFileField,
   stubSelectField,
   stubTextField,
+  stubTextareaField,
   stubCheckboxField,
 } from '../../__tests__/stubs';
 import GridFormInputGroup, { GridFormInputGroupProps } from '..';
@@ -52,5 +54,21 @@ describe('GridFormInputGroup', () => {
     });
 
     expect(wrapped.find('input[type="text"]')).toHaveLength(1);
+  });
+
+  it('renders a file input when the field type is file', () => {
+    const { wrapped } = renderComponent({
+      field: stubFileField,
+    });
+
+    expect(wrapped.find('input[type="file"]')).toHaveLength(1);
+  });
+
+  it('renders a textarea when the field type is textarea', () => {
+    const { wrapped } = renderComponent({
+      field: stubTextareaField,
+    });
+
+    expect(wrapped.find('textarea')).toHaveLength(1);
   });
 });
