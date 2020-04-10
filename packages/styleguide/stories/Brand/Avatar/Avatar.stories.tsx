@@ -37,3 +37,11 @@ export const avatar = () => (
     )}
   </StoryTemplate>
 );
+
+avatar.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};

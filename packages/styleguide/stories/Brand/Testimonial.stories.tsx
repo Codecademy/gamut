@@ -51,6 +51,11 @@ export const testimonialSmallWithAvatar = () => (
 
 testimonialSmallWithAvatar.story = {
   name: 'Testimonial in size small (with Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const testimonialSmallWithoutAvatar = () => (
@@ -70,6 +75,11 @@ export const testimonialSmallWithoutAvatar = () => (
 
 testimonialSmallWithoutAvatar.story = {
   name: 'Testimonial in size small (without Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const testimonialMediumWithAvatar = () => (
@@ -90,6 +100,11 @@ export const testimonialMediumWithAvatar = () => (
 
 testimonialMediumWithAvatar.story = {
   name: 'Testimonial in size medium (with Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const testimonialMediumWithoutAvatar = () => (
@@ -109,6 +124,11 @@ export const testimonialMediumWithoutAvatar = () => (
 
 testimonialMediumWithoutAvatar.story = {
   name: 'Testimonial in size medium (without Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const testimonialLargeWithAvatar = () => (
@@ -129,6 +149,11 @@ export const testimonialLargeWithAvatar = () => (
 
 testimonialLargeWithAvatar.story = {
   name: 'Testimonial in size large (with Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };
 
 export const testimonialLargeWithoutAvatar = () => (
@@ -148,4 +173,9 @@ export const testimonialLargeWithoutAvatar = () => (
 
 testimonialLargeWithoutAvatar.story = {
   name: 'Testimonial in size large (without Avatar)',
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
 };

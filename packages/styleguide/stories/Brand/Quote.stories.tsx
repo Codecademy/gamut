@@ -30,3 +30,11 @@ export const quote = () => (
     )}
   </StoryTemplate>
 );
+
+quote.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};
