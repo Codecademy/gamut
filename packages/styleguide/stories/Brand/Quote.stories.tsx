@@ -1,5 +1,7 @@
-import React from 'react';
 import { Quote } from '@codecademy/brand-components/src/Quote';
+import { text } from '@storybook/addon-knobs';
+import React from 'react';
+
 import {
   decoratedStory,
   StoryDescription,
@@ -18,7 +20,10 @@ export const quote = () => (
           Often with an <code>Avatar</code> or <code>Testimonial</code>.
         </StoryDescription>
         <Quote
-          text="Codecademy’s small lessons really help a person who has trouble focusing on long lessons."
+          text={text(
+            'Text',
+            'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
+          )}
           theme={theme}
         />
       </>

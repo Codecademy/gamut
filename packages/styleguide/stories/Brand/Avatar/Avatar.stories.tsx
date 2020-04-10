@@ -1,5 +1,5 @@
 import { Avatar } from '@codecademy/brand-components/src/Avatar';
-import { select } from '@storybook/addon-knobs';
+import { select, text } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
@@ -21,12 +21,15 @@ export const avatar = () => (
           Commonly paired with a <code>Byline</code>.
         </StoryDescription>
         <Avatar
-          src="https://content.codecademy.com/courses/free/boba.svg"
-          alt="The Codey character drinking Boba tea"
+          alt={text('Image Alt', 'The Codey character drinking Boba tea')}
           className={select(
             'className',
             ['', styles.largeContainerOverride],
             ''
+          )}
+          src={text(
+            'Source URL',
+            'https://content.codecademy.com/courses/free/boba.svg'
           )}
           theme={theme}
         />

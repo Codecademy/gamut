@@ -1,28 +1,45 @@
 import { Testimonial } from '@codecademy/brand-components/src';
 import { VisualTheme } from '@codecademy/gamut/src';
-import { select } from '@storybook/addon-knobs';
+import { select, text } from '@storybook/addon-knobs';
 import React from 'react';
 
 import { decoratedStory } from '../Templating';
 
 export default decoratedStory('Brand', Testimonial);
 
-const short_quote =
-  "Coding isn't rocket science, it’s just falsely intimidating.";
-const long_quote =
-  'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.';
-const imageUrl = 'https://content.codecademy.com/courses/free/boba.svg';
+const knobs = {
+  company: text('Company', 'Microsoft'),
+  firstName: text('First Name', 'Lacey'),
+  imageUrl: text(
+    'Image URL',
+    'https://content.codecademy.com/courses/free/boba.svg'
+  ),
+  lastName: text('Last Name', 'Bathala'),
+  longQuote: text(
+    'Long Quote',
+    'If it weren’t for Codecademy, I’d probably be in my old job. Codecademy enabled me to learn quick lessons between calls, on my lunch break, while multitasking. It was fun and easy and I went from 0 coding skills to a promotion within 6 months.'
+  ),
+  occupation: text('Occupation', 'Jr. Back-End Developer'),
+  shortQuote: text(
+    'Short Quote',
+    "Coding isn't rocket science, it’s just falsely intimidating."
+  ),
+};
 
 const laceyTestimonial = {
-  firstName: 'Lacey',
-  lastName: 'Bathala',
-  occupation: 'Jr. Back-End Developer',
-  company: 'Microsoft',
+  company: knobs.company,
+  firstName: knobs.firstName,
+  lastName: knobs.lastName,
+  occupation: knobs.occupation,
 };
 
 export const testimonialSmallWithAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: short_quote, imageUrl }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.shortQuote,
+      imageUrl: knobs.imageUrl,
+    }}
     size="small"
     theme={select(
       'theme',
@@ -38,7 +55,10 @@ testimonialSmallWithAvatar.story = {
 
 export const testimonialSmallWithoutAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: short_quote }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.shortQuote,
+    }}
     size="small"
     theme={select(
       'theme',
@@ -54,7 +74,11 @@ testimonialSmallWithoutAvatar.story = {
 
 export const testimonialMediumWithAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: long_quote, imageUrl }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.longQuote,
+      imageUrl: knobs.imageUrl,
+    }}
     size="medium"
     theme={select(
       'theme',
@@ -70,7 +94,10 @@ testimonialMediumWithAvatar.story = {
 
 export const testimonialMediumWithoutAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: long_quote }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.shortQuote,
+    }}
     size="medium"
     theme={select(
       'theme',
@@ -86,7 +113,11 @@ testimonialMediumWithoutAvatar.story = {
 
 export const testimonialLargeWithAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: long_quote, imageUrl }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.longQuote,
+      imageUrl: knobs.imageUrl,
+    }}
     size="large"
     theme={select(
       'theme',
@@ -102,7 +133,10 @@ testimonialLargeWithAvatar.story = {
 
 export const testimonialLargeWithoutAvatar = () => (
   <Testimonial
-    testimonial={{ ...laceyTestimonial, quote: long_quote }}
+    testimonial={{
+      ...laceyTestimonial,
+      quote: knobs.longQuote,
+    }}
     size="large"
     theme={select(
       'theme',
