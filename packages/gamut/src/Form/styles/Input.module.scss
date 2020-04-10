@@ -27,3 +27,9 @@
     border-color: $color-red-200;
   }
 }
+
+// text-indent causes the file input controls to cover the uploaded file name
+.fileInput {
+  text-indent: 0;
+  padding-left: $form-padding;
+}

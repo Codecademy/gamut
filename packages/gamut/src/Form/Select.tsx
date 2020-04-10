@@ -12,8 +12,6 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const className = cx(s.Select, props.className, props.error && s.error);
-
-    // Generate list of options
     const { options, ...propsToTransfer } = props;
 
     let selectOptions: ReactNode[] = [];
