@@ -7,11 +7,12 @@ import styles from './styles.module.scss';
 import {
   StoryTemplate,
   StoryStatus,
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
+  decoratedStory,
 } from '../../Templating';
 
-export default decoratedStory('Atoms', ProgressBar);
+export default decoratedStories('Atoms', ProgressBar);
 
 const bars = [
   {
@@ -31,7 +32,7 @@ const bars = [
   },
 ];
 
-export const progressBar = () => (
+export const progressBar = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       ProgressBars are to be used when you would like to indicate a known or
@@ -56,4 +57,4 @@ export const progressBar = () => (
       )}
     </LayoutGrid>
   </StoryTemplate>
-);
+));

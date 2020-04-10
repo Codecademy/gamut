@@ -3,9 +3,9 @@ import { VisualTheme } from '@codecademy/gamut/src';
 import { select } from '@storybook/addon-knobs';
 import React from 'react';
 
-import { decoratedStory } from '../Templating';
+import { decoratedStories, decoratedStory } from '../Templating';
 
-export default decoratedStory('Brand', Testimonial);
+export default decoratedStories('Brand', Testimonial);
 
 const short_quote =
   "Coding isn't rocket science, it’s just falsely intimidating.";
@@ -20,7 +20,7 @@ const laceyTestimonial = {
   company: 'Microsoft',
 };
 
-export const testimonialSmallWithAvatar = () => (
+export const testimonialSmallWithAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: short_quote, imageUrl }}
     size="small"
@@ -30,13 +30,13 @@ export const testimonialSmallWithAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialSmallWithAvatar.story = {
   name: 'Testimonial in size small (with Avatar)',
 };
 
-export const testimonialSmallWithoutAvatar = () => (
+export const testimonialSmallWithoutAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: short_quote }}
     size="small"
@@ -46,13 +46,13 @@ export const testimonialSmallWithoutAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialSmallWithoutAvatar.story = {
   name: 'Testimonial in size small (without Avatar)',
 };
 
-export const testimonialMediumWithAvatar = () => (
+export const testimonialMediumWithAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: long_quote, imageUrl }}
     size="medium"
@@ -62,13 +62,13 @@ export const testimonialMediumWithAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialMediumWithAvatar.story = {
   name: 'Testimonial in size medium (with Avatar)',
 };
 
-export const testimonialMediumWithoutAvatar = () => (
+export const testimonialMediumWithoutAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: long_quote }}
     size="medium"
@@ -78,13 +78,13 @@ export const testimonialMediumWithoutAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialMediumWithoutAvatar.story = {
   name: 'Testimonial in size medium (without Avatar)',
 };
 
-export const testimonialLargeWithAvatar = () => (
+export const testimonialLargeWithAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: long_quote, imageUrl }}
     size="large"
@@ -94,13 +94,13 @@ export const testimonialLargeWithAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialLargeWithAvatar.story = {
   name: 'Testimonial in size large (with Avatar)',
 };
 
-export const testimonialLargeWithoutAvatar = () => (
+export const testimonialLargeWithoutAvatar = decoratedStory(() => (
   <Testimonial
     testimonial={{ ...laceyTestimonial, quote: long_quote }}
     size="large"
@@ -110,7 +110,7 @@ export const testimonialLargeWithoutAvatar = () => (
       VisualTheme.DarkMode
     )}
   />
-);
+));
 
 testimonialLargeWithoutAvatar.story = {
   name: 'Testimonial in size large (without Avatar)',

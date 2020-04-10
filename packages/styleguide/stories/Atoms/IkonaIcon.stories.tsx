@@ -3,7 +3,7 @@ import iconStyles from '@codecademy/gamut/src/IkonaIcon/styles/index.module.scss
 import React from 'react';
 
 import {
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
@@ -13,7 +13,7 @@ const iconNames = Object.keys(iconStyles)
   .filter(cn => cn.match('ikona-'))
   .map(cn => cn.replace('ikona-', ''));
 
-export default decoratedStory('Atoms', 'IkonaIcons (Deprecated)');
+export default decoratedStories('Atoms', 'IkonaIcons (Deprecated)');
 
 export const ikonaIcons = () => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>

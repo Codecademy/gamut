@@ -3,11 +3,11 @@ import { text, select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import exampleMarkdown from './markdown-example.md';
-import { decoratedStory } from '../../Templating';
+import { decoratedStories, decoratedStory } from '../../Templating';
 
-export default decoratedStory('Atoms', Markdown);
+export default decoratedStories('Atoms', Markdown);
 
-export const basics = () => (
+export const basics = decoratedStory(() => (
   <Markdown
     text={text(
       'markdown',
@@ -20,7 +20,7 @@ This is markdown
     )}
     spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
   />
-);
+));
 
 basics.story = {
   name: 'Basics',
@@ -32,12 +32,12 @@ basics.story = {
   },
 };
 
-export const fullExample = () => (
+export const fullExample = decoratedStory(() => (
   <Markdown
     text={text('markdown', exampleMarkdown)}
     spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
   />
-);
+));
 
 fullExample.story = {
   name: 'Full Example',
@@ -49,7 +49,7 @@ fullExample.story = {
   },
 };
 
-export const customElementOverrides = () => (
+export const customElementOverrides = decoratedStory(() => (
   <Markdown
     text={text(
       'markdown',
@@ -87,7 +87,7 @@ This is a custom markdown component
       },
     }}
   />
-);
+));
 
 customElementOverrides.story = {
   name: 'Custom Element Overrides',
@@ -99,7 +99,7 @@ customElementOverrides.story = {
   },
 };
 
-export const inlineMarkdown = () => (
+export const inlineMarkdown = decoratedStory(() => (
   <div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua.
@@ -114,7 +114,7 @@ export const inlineMarkdown = () => (
     occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
     anim id est laborum.
   </div>
-);
+));
 
 inlineMarkdown.story = {
   name: 'Inline Markdown',

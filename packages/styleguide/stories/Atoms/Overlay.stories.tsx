@@ -2,17 +2,18 @@ import { Overlay } from '@codecademy/gamut/src';
 import React, { useState } from 'react';
 
 import {
+  decoratedStories,
+  decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-  decoratedStory,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Overlay);
+export default decoratedStories('Atoms', Overlay);
 
 export const overlay = () => <OverlayStory />;
 
-const OverlayStory = () => {
+const OverlayStory = decoratedStory(() => {
   const [open, setOpen] = useState(false);
   return (
     <StoryTemplate status={StoryStatus.Ready}>
@@ -53,4 +54,4 @@ const OverlayStory = () => {
       </Overlay>
     </StoryTemplate>
   );
-};
+});

@@ -3,15 +3,16 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Organisms', GridForm);
+export default decoratedStories('Organisms', GridForm);
 
-export const gridForm = () => (
+export const gridForm = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       This organism takes in plain JSON-like props and uses them to string
@@ -119,4 +120,4 @@ export const gridForm = () => (
       }}
     />
   </StoryTemplate>
-);
+));

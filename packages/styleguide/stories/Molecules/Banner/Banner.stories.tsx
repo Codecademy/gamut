@@ -3,6 +3,7 @@ import { AlertIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -11,11 +12,11 @@ import {
 import styles from './styles.module.scss';
 import { action } from '@storybook/addon-actions';
 
-export default decoratedStory('Molecules', Banner);
+export default decoratedStories('Molecules', Banner);
 
 const onClose = action('Banner closed.');
 
-export const defaultBannerFullWidth = () => (
+export const defaultBannerFullWidth = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       Full-width banner to indicate important messaging at the top of a page or
@@ -23,9 +24,9 @@ export const defaultBannerFullWidth = () => (
     </StoryDescription>
     <Banner onClose={onClose}>Some Banner content!</Banner>
   </StoryTemplate>
-);
+));
 
-export const defaultBannerWithIconFullWidth = () => (
+export const defaultBannerWithIconFullWidth = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       An informative icon can be added to the left of the banner.
@@ -34,9 +35,9 @@ export const defaultBannerWithIconFullWidth = () => (
       Some Banner content!
     </Banner>
   </StoryTemplate>
-);
+));
 
-export const BannerWithBottomBorder = () => (
+export const BannerWithBottomBorder = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       If your banner is on above similar content (?), add a BannerStyle to it.
@@ -45,4 +46,4 @@ export const BannerWithBottomBorder = () => (
       Some Banner content!
     </Banner>
   </StoryTemplate>
-);
+));

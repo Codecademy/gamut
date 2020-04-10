@@ -3,13 +3,14 @@ import gamut from '@codecademy/gamut-styles/utils/variables';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
 
-export default decoratedStory('Foundations', 'Layouts', 'FlexGrid');
+export default decoratedStories('Foundations', 'Layouts', 'FlexGrid');
 
 const Box = () => (
   <Item
@@ -28,7 +29,7 @@ const defaultGridProps = {
   },
 };
 
-export const fixedGridDefault = () => (
+export const fixedGridDefault = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress} wide>
     <StoryDescription>
       The grid layout is composed of rows of columns. A row is 12 units wide. A
@@ -72,13 +73,13 @@ export const fixedGridDefault = () => (
       </Row>
     </Grid>
   </StoryTemplate>
-);
+));
 
 fixedGridDefault.story = {
   name: 'Fixed Grid (Default)',
 };
 
-export const fluid = () => (
+export const fluid = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       Adding the fluid prop allows the grid to grow and shrink freely inside its
@@ -118,9 +119,9 @@ export const fluid = () => (
       </Row>
     </Grid>
   </StoryTemplate>
-);
+));
 
-export const offsets = () => (
+export const offsets = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       A column can be offset with the <code>xs</code> property.
@@ -163,9 +164,9 @@ export const offsets = () => (
       </Row>
     </Grid>
   </StoryTemplate>
-);
+));
 
-export const centered = () => (
+export const centered = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       You can center the content of a row by passing it <code>center</code>.
@@ -182,4 +183,4 @@ export const centered = () => (
       </Row>
     </Grid>
   </StoryTemplate>
-);
+));

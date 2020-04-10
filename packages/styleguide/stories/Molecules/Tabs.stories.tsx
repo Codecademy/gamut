@@ -3,15 +3,16 @@ import { boolean, text, number } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStory,
 } from '../Templating';
 
-export default decoratedStory('Molecules', Tabs);
+export default decoratedStories('Molecules', Tabs);
 
-export const tabsUncontrolled = () => (
+export const tabsUncontrolled = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Use a series of tabbed areas for when you have multiple potential sections
@@ -44,9 +45,9 @@ export const tabsUncontrolled = () => (
       </TabPanel>
     </Tabs>
   </StoryTemplate>
-);
+));
 
-export const tabsControlled = () => (
+export const tabsControlled = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       When <code>activeTabIndex</code> is specified, the component switches to
@@ -80,7 +81,7 @@ export const tabsControlled = () => (
       </TabPanel>
     </Tabs>
   </StoryTemplate>
-);
+));
 
 tabsControlled.story = {
   name: 'Tabs (Controlled)',

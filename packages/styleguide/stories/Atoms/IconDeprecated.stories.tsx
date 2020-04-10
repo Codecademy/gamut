@@ -8,6 +8,7 @@ import iconMap from '@codecademy/gamut/src/Icon/iconMap';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -16,9 +17,9 @@ import {
 
 const iconNames = Object.keys(iconMap) as IconPropsDeprecated['name'][];
 
-export default decoratedStory('Atoms', 'Icons (Deprecated)');
+export default decoratedStories('Atoms', 'Icons (Deprecated)');
 
-export const iconsDeprecated = () => (
+export const iconsDeprecated = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       Legacy icons as defined in the <code>@codecademy/gamut</code> package's{' '}
@@ -36,7 +37,7 @@ export const iconsDeprecated = () => (
       ))}
     </LayoutGrid>
   </StoryTemplate>
-);
+));
 
 iconsDeprecated.story = {
   name: 'Icons (Deprecated)',

@@ -13,6 +13,7 @@ import {
   StoryTemplate,
   StoryStatus,
   StoryDescription,
+  decoratedStories,
   decoratedStory,
 } from '../Templating';
 
@@ -70,9 +71,9 @@ const renderInlineButton = (theme: string, variant: string) => (
   </Button>
 );
 
-export default decoratedStory('Atoms', Button);
+export default decoratedStories('Atoms', Button);
 
-export const allButtonThemes = () => {
+export const allButtonThemes = decoratedStory(() => {
   const variant = select('Variant', ['default', 'outline', 'flat'], 'default');
 
   return (
@@ -96,9 +97,9 @@ export const allButtonThemes = () => {
       </div>
     </StoryTemplate>
   );
-};
+});
 
-export const buttonBaseVariants = () => (
+export const buttonBaseVariants = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Use <code>ButtonBase</code> when you need something that acts as a link or
@@ -122,9 +123,9 @@ export const buttonBaseVariants = () => (
       </ButtonBase>
     </div>
   </StoryTemplate>
-);
+));
 
-export const linkButton = () => (
+export const linkButton = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <p>
       This is an example of a{' '}
@@ -135,9 +136,9 @@ export const linkButton = () => (
       button, it will functionally behave as a link.
     </p>
   </StoryTemplate>
-);
+));
 
-export const standardButtonOptions = () => {
+export const standardButtonOptions = decoratedStory(() => {
   const round = boolean('Round', false);
 
   return (
@@ -192,9 +193,9 @@ export const standardButtonOptions = () => {
       </div>
     </StoryTemplate>
   );
-};
+});
 
-export const editablePlayground = () => (
+export const editablePlayground = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Play with this button, if you&apos;d like!
@@ -213,4 +214,4 @@ export const editablePlayground = () => (
       {text('Label', 'Submit')}
     </Button>
   </StoryTemplate>
-);
+));

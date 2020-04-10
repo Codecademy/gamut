@@ -1,15 +1,16 @@
 import React from 'react';
 import { Quote } from '@codecademy/brand-components/src/Quote';
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Brand', Quote);
+export default decoratedStories('Brand', Quote);
 
-export const quote = () => (
+export const quote = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     {theme => (
       <>
@@ -24,4 +25,4 @@ export const quote = () => (
       </>
     )}
   </StoryTemplate>
-);
+));
