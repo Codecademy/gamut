@@ -55,8 +55,9 @@ const renderSwatch = (sassVariableName: string, hexcode: string) => {
   );
 };
 
-const renderSwatches = (data: any, variablePrefix: string) =>
-  Object.keys(data).map(variableSuffix => {
+const renderSwatches = (data: any, variablePrefix: string) => {
+  if (!data) debugger;
+  return Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
       variableSuffix
@@ -67,6 +68,7 @@ const renderSwatches = (data: any, variablePrefix: string) =>
 
     return renderSwatch(sassVariableName, hexcode);
   });
+};
 
 const baseColors = {
   black: colors.black,
@@ -117,6 +119,7 @@ export const Colors = () => (
   </StoryTemplate>
 );
 
+console.log({ deprecatedColors }, objectKeys(deprecatedGamutColors.swatches));
 export const GamutDeprecated = () => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
