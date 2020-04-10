@@ -1,7 +1,9 @@
 import {
   GridFormCheckboxField,
+  GridFormFileField,
   GridFormSelectField,
   GridFormTextField,
+  GridFormTextAreaField,
 } from '../types';
 
 export const stubCheckboxField: GridFormCheckboxField = {
@@ -23,4 +25,16 @@ export const stubTextField: GridFormTextField = {
   label: 'Stub Text',
   name: 'stub-text',
   type: 'text',
+};
+
+export const stubFileField: GridFormFileField = {
+  label: 'Stub File',
+  name: 'stub-file',
+  type: 'file',
+};
+
+export const stubTextareaField: GridFormTextAreaField = {
+  label: 'Stub Textarea',
+  name: 'stub-textarea',
+  type: 'textarea',
 };

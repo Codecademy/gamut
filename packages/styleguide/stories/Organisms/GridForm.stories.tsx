@@ -85,6 +85,9 @@ export const gridForm = () => (
           name: 'textarea-input',
           size: 12,
           type: 'textarea',
+          validation: {
+            required: 'Please write something about penguins!',
+          },
         },
         {
           label:
