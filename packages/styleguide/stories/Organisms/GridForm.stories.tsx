@@ -36,6 +36,10 @@ export const gridForm = () => (
       You should only ever directly use <code>GridForm</code> to create your
       form. <code>Form</code> atoms compose the structure of these forms but
       should not be used directly.
+      <br />
+      `GridForm`s are laid out with `LayoutGrid`, so you can override its{' '}
+      <code>columnGap</code> and <code>rowGap</code> with the normal string or
+      responsive layouts.
     </StoryDescription>
     <GridForm
       fields={[
