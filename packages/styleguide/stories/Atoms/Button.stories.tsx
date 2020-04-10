@@ -56,13 +56,11 @@ const btnStyle = {
   marginBottom: '1rem',
 };
 
-const onClick = action('Clicked Button');
-
 const renderInlineButton = (theme: string, variant: string) => (
   <Button
     flat={variant === 'flat'}
     key={`${theme}`}
-    onClick={onClick}
+    onClick={action('Clicked Button')}
     outline={variant === 'outline'}
     style={btnStyle}
     theme={theme}
