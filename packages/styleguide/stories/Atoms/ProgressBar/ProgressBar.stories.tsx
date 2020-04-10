@@ -46,11 +46,7 @@ export const progressBar = () => (
       {[0, 25, 50, 75, 100].map(percent =>
         bars.map(({ displayLabel, style }) => (
           <Column key={[percent, displayLabel, style].join()} size={6}>
-            <ProgressBar
-              displayLabel={displayLabel}
-              percent={percent}
-              style={style}
-            />
+            <ProgressBar percent={percent} style={style} />
           </Column>
         ))
       )}

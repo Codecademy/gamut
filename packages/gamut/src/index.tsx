@@ -13,6 +13,7 @@ export * from './FlexBox';
 export * from './FlexGrid';
 export * from './Form';
 export * from './GridForm';
+export * from './Typography/Heading';
 export * from './HighlightedText';
 export * from './Icon';
 export * from './IkonaIcon';

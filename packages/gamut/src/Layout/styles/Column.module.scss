@@ -1,23 +1,19 @@
-@import "./shared.module.scss";
+@import "./variables.scss";
 
 .container {
   display: grid;
 }
 
 @each $screenSize in $screenSizes {
-  @each $columnSize in $columnSizes {
-    .size_#{$columnSize}__#{$screenSize}Screen {
-      @include getViewport($screenSize) {
+  @include getViewport($screenSize) {
+    @each $columnSize in $columnSizes {
+      .size_#{$columnSize}__#{$screenSize} {
         grid-column-end: span #{$columnSize};
       }
     }
-  }
-}
 
-@each $screenSize in $screenSizes {
-  @each $columnSize in $columnSizes {
-    .offset_#{$columnSize}__#{$screenSize}Screen {
-      @include getViewport($screenSize) {
+    @each $columnSize in $columnSizes {
+      .offset_#{$columnSize}__#{$screenSize} {
         @if $columnSize == 0 {
           grid-column-start: auto;
         } @else {

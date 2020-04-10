@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Button } from '../../Button';
-import { Column, ColumnSizes, ResponsiveProperty } from '../../Layout';
+import { Column, ColumnSizes } from '../../Layout';
+import { ResponsiveProperty } from '../../typings/responsive-properties';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;

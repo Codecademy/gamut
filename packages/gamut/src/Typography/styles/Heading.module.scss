@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+.heading {
+  font-weight: $font-weight-headings;
+  line-height: 1.5;
+}
+
+@each $screenSize in $screenSizes {
+  @include getViewport($screenSize) {
+    @each $size, $map in $fontSizes {
+      .fontSize_#{$size}__#{$screenSize} {
+        font-size: px-rem(map-get($map, size));
+        font-family: map-get($map, font);
+      }
+    }
+  }
+}
+
+.hideMargin {
+  margin: 0;
+}

@@ -1,13 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { createClassnames } from './utilities';
-import {
-  ContainerElementProps,
-  GapSizes,
-  GapTypes,
-  ResponsiveProperty,
-} from './types';
+import { generateClassnames } from '../utils/generateClassnames';
+import { ContainerElementProps, GapSizes, GapTypes } from './types';
+import { ResponsiveProperty } from '../typings/responsive-properties';
+
 import s from './styles/Grid.module.scss';
 
 export type GridProps = Record<GapTypes, ResponsiveProperty<GapSizes>>;
@@ -23,7 +20,7 @@ export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
   const classes = cx(
     s.container,
     className,
-    createClassnames({ rowGap, columnGap }, s)
+    generateClassnames({ rowGap, columnGap }, s)
   );
 
   return (

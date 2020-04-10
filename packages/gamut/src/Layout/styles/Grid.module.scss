@@ -1,4 +1,4 @@
-@import "./shared.module.scss";
+@import "./variables.scss";
 
 .container {
   display: grid;
@@ -6,16 +6,14 @@
 }
 
 @each $screenSize in $screenSizes {
-  @each $sizeName, $gapSize in $gapSizes {
-    .rowGap_#{$sizeName}__#{$screenSize}Screen {
-      @include getViewport($screenSize) {
+  @include getViewport($screenSize) {
+    @each $sizeName, $gapSize in $gapSizes {
+      .rowGap_#{$sizeName}__#{$screenSize} {
         grid-row-gap: $gapSize;
       }
     }
-  }
-  @each $sizeName, $gapSize in $gapSizes {
-    .columnGap_#{$sizeName}__#{$screenSize}Screen {
-      @include getViewport($screenSize) {
+    @each $sizeName, $gapSize in $gapSizes {
+      .columnGap_#{$sizeName}__#{$screenSize} {
         grid-column-gap: $gapSize;
       }
     }
