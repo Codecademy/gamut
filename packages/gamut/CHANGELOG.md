@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
 ## 3.2.0 (2020-04-10)
 
 * feat(GridForm): drilled error states through GridForm to inputs (#698) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8)), closes [#698](https://github.com/RyzacInc/client-modules/issues/698)

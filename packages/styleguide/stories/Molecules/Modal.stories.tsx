@@ -37,10 +37,6 @@ const ModalWithoutDefaultCloseButton = decoratedStory(() => {
   );
 });
 
-ModalWithoutDefaultCloseButton.story = {
-  name: 'Modal Without Default Close Button',
-};
-
 export const modal = decoratedStory(() => <ModalStory />);
 export const modalWithoutDefaultCloseButton = decoratedStory(() => (
   <ModalWithoutDefaultCloseButton />

@@ -29,7 +29,7 @@ const defaultGridProps = {
   },
 };
 
-export const fixedGridDefault = decoratedStory(() => (
+export const fixedGridDefault = decoratedStory('Fixed Grid (Default)', () => (
   <StoryTemplate status={StoryStatus.InProgress} wide>
     <StoryDescription>
       The grid layout is composed of rows of columns. A row is 12 units wide. A
@@ -74,10 +74,6 @@ export const fixedGridDefault = decoratedStory(() => (
     </Grid>
   </StoryTemplate>
 ));
-
-fixedGridDefault.story = {
-  name: 'Fixed Grid (Default)',
-};
 
 export const fluid = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>

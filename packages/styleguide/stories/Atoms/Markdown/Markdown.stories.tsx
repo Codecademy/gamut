@@ -22,32 +22,12 @@ This is markdown
   />
 ));
 
-basics.story = {
-  name: 'Basics',
-
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
-
 export const fullExample = decoratedStory(() => (
   <Markdown
     text={text('markdown', exampleMarkdown)}
     spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
   />
 ));
-
-fullExample.story = {
-  name: 'Full Example',
-
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
 
 export const customElementOverrides = decoratedStory(() => (
   <Markdown
@@ -89,16 +69,6 @@ This is a custom markdown component
   />
 ));
 
-customElementOverrides.story = {
-  name: 'Custom Element Overrides',
-
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
-
 export const inlineMarkdown = decoratedStory(() => (
   <div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -115,13 +85,3 @@ export const inlineMarkdown = decoratedStory(() => (
     anim id est laborum.
   </div>
 ));
-
-inlineMarkdown.story = {
-  name: 'Inline Markdown',
-
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
