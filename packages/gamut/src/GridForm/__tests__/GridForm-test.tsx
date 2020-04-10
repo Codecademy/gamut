@@ -31,8 +31,8 @@ describe('GridForm', () => {
     await act(async () => {
       for (const [selector, key, value] of newValues) {
         // https://github.com/react-hook-form/react-hook-form/issues/1382
-        const node = wrapped.find(selector).getDOMNode() as any;
-        node[key] = value;
+        const node = wrapped.find(selector).getDOMNode();
+        (node as any)[key] = value;
         node.dispatchEvent(new Event('input'));
       }
     });
