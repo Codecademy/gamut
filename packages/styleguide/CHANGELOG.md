@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
 ## <small>4.2.1 (2020-04-10)</small>
 
 * chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
