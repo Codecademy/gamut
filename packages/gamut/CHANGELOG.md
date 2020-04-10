@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.1.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
 ## 3.0.0 (2020-04-09)
 
 * chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
