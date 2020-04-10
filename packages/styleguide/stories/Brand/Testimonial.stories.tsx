@@ -33,95 +33,113 @@ const laceyTestimonial = () => ({
   occupation: knobs.occupation(),
 });
 
-export const testimonialSmallWithAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.shortQuote(),
-      imageUrl: knobs.imageUrl(),
-    }}
-    size="small"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialSmallWithAvatar = decoratedStory(
+  'Testimonial in size small (with Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.shortQuote(),
+        imageUrl: knobs.imageUrl(),
+      }}
+      size="small"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
 
-export const testimonialSmallWithoutAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.shortQuote(),
-    }}
-    size="small"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialSmallWithoutAvatar = decoratedStory(
+  'Testimonial in size small (without Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.shortQuote(),
+      }}
+      size="small"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
 
-export const testimonialMediumWithAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.longQuote(),
-      imageUrl: knobs.imageUrl(),
-    }}
-    size="medium"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialMediumWithAvatar = decoratedStory(
+  'Testimonial in size medium (with Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.longQuote(),
+        imageUrl: knobs.imageUrl(),
+      }}
+      size="medium"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
 
-export const testimonialMediumWithoutAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.shortQuote(),
-    }}
-    size="medium"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialMediumWithoutAvatar = decoratedStory(
+  'Testimonial in size medium (without Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.shortQuote(),
+      }}
+      size="medium"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
 
-export const testimonialLargeWithAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.longQuote(),
-      imageUrl: knobs.imageUrl(),
-    }}
-    size="large"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialLargeWithAvatar = decoratedStory(
+  'Testimonial in size large (with Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.longQuote(),
+        imageUrl: knobs.imageUrl(),
+      }}
+      size="large"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
 
-export const testimonialLargeWithoutAvatar = decoratedStory(() => (
-  <Testimonial
-    testimonial={{
-      ...laceyTestimonial(),
-      quote: knobs.longQuote(),
-    }}
-    size="large"
-    theme={select(
-      'theme',
-      [VisualTheme.DarkMode, VisualTheme.LightMode],
-      VisualTheme.DarkMode
-    )}
-  />
-));
+export const testimonialLargeWithoutAvatar = decoratedStory(
+  'Testimonial in size large (without Avatar)',
+  () => (
+    <Testimonial
+      testimonial={{
+        ...laceyTestimonial(),
+        quote: knobs.longQuote(),
+      }}
+      size="large"
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  )
+);
