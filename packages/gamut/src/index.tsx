@@ -11,6 +11,7 @@ export * from './Card/CardShell';
 export * from './ContentContainer';
 export * from './FlexBox';
 export * from './FlexGrid';
+export * from './FlexList';
 export * from './Form';
 export * from './GridForm';
 export * from './Typography/Heading';

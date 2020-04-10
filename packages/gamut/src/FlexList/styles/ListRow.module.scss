@@ -1,0 +1,40 @@
+@import "./variables.scss";
+
+.listRow {
+  display: flex;
+  align-items: stretch;
+}
+
+.listRow__vAlign {
+  & > * {
+    align-items: center;
+  }
+}
+
+/**
+  This creates all the all the responsive classes to be configured.
+  The format is: prop_propValue__screenSize
+
+  This is meant to be used with the createClassnames utility
+*/
+
+@each $screenSize in $screenSizes {
+  @include getViewport($screenSize) {
+    // Flex direct
+    @each $wrap in $wraps {
+      .wrap_#{$wrap}__#{$screenSize} {
+        flex-wrap: $wrap;
+      }
+    }
+
+    // Alignments & Justifications
+    @each $alignment, $rule in $alignments {
+      .align_#{$alignment}__#{$screenSize} {
+        align-items: $rule;
+      }
+      .justify_#{$alignment}__#{$screenSize} {
+        justify-content: $rule;
+      }
+    }
+  }
+}
