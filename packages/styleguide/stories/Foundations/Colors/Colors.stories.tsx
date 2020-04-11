@@ -159,7 +159,7 @@ export const PortalDeprecated = () => (
     </StoryDescription>
     <Container>
       <div>
-        <h2 className={styles.heading}>deprecated portal base colors</h2>
+        <h2 className={styles.heading}>Deprecated portal base colors</h2>
         {renderSwatches(deprecatedColors.portal, 'deprecated')}
       </div>
       {Object.keys(deprecatedColors.swatches).map(color => (

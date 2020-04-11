@@ -118,12 +118,10 @@ export const deprecatedColors = {
     mint: '#34b3a0',
   },
   swatches: {
-    greyBlue: {
-      '600': '#354551',
-    },
-    mint: {
-      '700': '#34b3a0',
-      '800': '#1a7b72',
+    ccblue: {
+      '500': '#225470',
+      '700': '#204056',
+      '900': '#0d222d',
     },
   },
 };
