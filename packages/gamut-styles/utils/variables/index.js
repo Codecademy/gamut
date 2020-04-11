@@ -206,28 +206,16 @@ export const deprecatedColors = {
   },
 };
 
-export const deprecatedEditorColors = {
-  black: '#000',
-  white: '#fff',
-  default: '#fff',
-  atom: '#ff7155',
-  attribute: '#ceff00',
-  builtin: '#ddda6f',
-  comment: '#737887',
-  def: '#b5a1a1',
-  error: '#e83131',
-  keyword: '#64ffe1',
-  meta: '#d478ea',
-  number: '#ef9eb4',
-  operator: '#b5a1a1',
-  property: '#9771ff',
-  qualifier: '#fff543',
-  string1: '#ffde52',
-  string2: '#ac99bf',
-  tag: '#e85d7f',
-  variable1: '#249cff',
-  variable2: '#57ff93',
-  variable3: '#5affef',
+export const editorColors = {
+  blue: '#83fff5',
+  comment: '#939598',
+  deepPurple: '#cc7bc2',
+  gray: '#939598',
+  green: '#b4d353',
+  orange: '#ff8973',
+  purple: '#b3ccff',
+  red: '#e85d7f',
+  yellow: '#ffe083',
 };
 
 export const deprecatedGamutColors = {
@@ -343,8 +331,8 @@ export default {
   colors,
   brandColors,
   deprecatedColors,
-  deprecatedEditorColors,
   deprecatedGamutColors,
+  editorColors,
   effectColors,
   grid,
   legacyBreakpoints,
