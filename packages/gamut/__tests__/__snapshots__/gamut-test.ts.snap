@@ -45,6 +45,7 @@ Array [
   "createPromise",
   "CSSIcon",
   "DAWIcon",
+  "DeprecatedTabs",
   "DownArrowIcon",
   "EditIcon",
   "FlexGrid",
