@@ -32,7 +32,6 @@ const deprecatedThemeKeys = [
   ...Object.keys(buttonPresetThemes),
   'mint',
   'darkmint',
-  'blue',
   'darkblue',
   'midnightblue',
   'grey',
