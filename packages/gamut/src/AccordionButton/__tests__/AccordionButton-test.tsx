@@ -1,13 +1,15 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import AccordionTop from '..';
+import AccordionButton from '..';
 
-describe('AccordionTop', () => {
+describe('AccordionButton', () => {
   it('fires onClick when clicked', () => {
     const onClick = jest.fn();
     const wrapped = mount(
-      <AccordionTop onClick={onClick} theme="yellow"></AccordionTop>
+      <AccordionButton onClick={onClick} theme="yellow">
+        Hi there!
+      </AccordionButton>
     );
 
     wrapped.find('button').simulate('click');
@@ -17,7 +19,9 @@ describe('AccordionTop', () => {
 
   it('renders a blue button when the theme is blue', () => {
     const wrapped = mount(
-      <AccordionTop onClick={jest.fn()} theme="blue"></AccordionTop>
+      <AccordionButton onClick={jest.fn()} theme="blue">
+        Hi there!
+      </AccordionButton>
     );
 
     const rootClassName = wrapped.childAt(0).prop('className');
@@ -27,7 +31,9 @@ describe('AccordionTop', () => {
 
   it('renders a plain button when the theme is plain', () => {
     const wrapped = mount(
-      <AccordionTop onClick={jest.fn()} theme="plain"></AccordionTop>
+      <AccordionButton onClick={jest.fn()} theme="plain">
+        Hi there!
+      </AccordionButton>
     );
 
     const rootClassName = wrapped.childAt(0).prop('className');
@@ -37,7 +43,9 @@ describe('AccordionTop', () => {
 
   it('renders a yellow button when the theme is yellow', () => {
     const wrapped = mount(
-      <AccordionTop onClick={jest.fn()} theme="yellow"></AccordionTop>
+      <AccordionButton onClick={jest.fn()} theme="yellow">
+        Hi there!
+      </AccordionButton>
     );
 
     const rootClassName = wrapped.childAt(0).prop('className');

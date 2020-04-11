@@ -6,7 +6,7 @@ import ChevronDownIcon from '../Icon/icons/ChevronDownIcon';
 import styles from './styles.module.scss';
 import ButtonBase from '../ButtonBase';
 
-export type AccordionTopProps = {
+export type AccordionButtonProps = {
   className?: string;
   expanded?: boolean;
   onClick: () => void;
@@ -35,7 +35,7 @@ const buttonThemes = {
   },
 };
 
-export const AccordionTop: React.FC<AccordionTopProps> = ({
+export const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
   className,
   expanded,
@@ -47,7 +47,7 @@ export const AccordionTop: React.FC<AccordionTopProps> = ({
   return (
     <ButtonComponent
       aria-expanded={expanded}
-      className={cx(styles.accordionTop, styles[theme], className)}
+      className={cx(styles.accordionButton, styles[theme], className)}
       onClick={onClick}
       {...props}
     >
@@ -62,4 +62,4 @@ export const AccordionTop: React.FC<AccordionTopProps> = ({
   );
 };
 
-export default AccordionTop;
+export default AccordionButton;
