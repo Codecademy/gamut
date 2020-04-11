@@ -37,6 +37,7 @@ export * from './theming/VisualTheme';
 export * from './Toggle';
 export * from './ToolTip';
 export * from './Truncate';
+export * from './utils';
 export * from './Icon/icons/AccessibilityIcon';
 export * from './Icon/icons/AddIcon';
 export * from './Icon/icons/AdvisorIcon';
