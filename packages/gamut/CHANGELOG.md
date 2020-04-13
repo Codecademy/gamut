@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.4.2 (2020-04-13)</small>
+
+* chore(GridForm): removed unnecessary setValue calls from GridForm (#712) ([863d73d](https://github.com/RyzacInc/client-modules/commit/863d73d)), closes [#712](https://github.com/RyzacInc/client-modules/issues/712)
+
+
+
+
+
 ## <small>3.4.1 (2020-04-13)</small>
 
 * chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
