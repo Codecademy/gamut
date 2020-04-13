@@ -3,7 +3,7 @@ import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
 import s from './styles/index.module.scss';
 
-export interface TabsProps {
+export interface DeprecatedTabsProps {
   config: {
     default?: boolean;
     text: string;
@@ -15,12 +15,15 @@ export interface TabsProps {
   renderAllChildren?: boolean;
 }
 
-interface TabsState {
+type DeprecatedTabsState = {
   activeTabId?: string;
-}
+};
 
-export class Tabs extends Component<TabsProps, TabsState> {
-  state = { activeTabId: undefined } as TabsState;
+export class DeprecatedTabs extends Component<
+  DeprecatedTabsProps,
+  DeprecatedTabsState
+> {
+  state: DeprecatedTabsState = { activeTabId: undefined };
 
   private idPrefix!: string;
 
@@ -131,4 +134,4 @@ export class Tabs extends Component<TabsProps, TabsState> {
   }
 }
 
-export default Tabs;
+export default DeprecatedTabs;
