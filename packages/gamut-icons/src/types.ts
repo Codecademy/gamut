@@ -9,4 +9,9 @@ export type GamutIconProps = {
   title?: string;
   color?: string;
   ref?: React.Ref<SVGSVGElement>;
+  /**
+   * See:  https://github.com/DefinitelyTyped/DefinitelyTyped/pull/42404
+   * Generated definitions may not match with other vesions @types/react in ^16.9 this ensures that the type exists and is optional as it would in >16.9.21
+   */
+  path?: string;
 } & React.SVGProps<SVGSVGElement>;
