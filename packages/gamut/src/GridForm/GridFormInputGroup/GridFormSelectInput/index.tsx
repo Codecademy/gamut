@@ -6,12 +6,14 @@ import { GridFormSelectField } from '../../types';
 
 export type GridFormSelectInputProps = {
   className?: string;
+  error?: boolean;
   field: Omit<GridFormSelectField, 'label'>;
   register: FormContextValues['register'];
 };
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   className,
+  error,
   field,
   register,
 }) => {
@@ -19,6 +21,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
     <Select
       defaultValue={field.defaultValue}
       className={className}
+      error={error}
       htmlFor={field.name}
       name={field.name}
       ref={register()}

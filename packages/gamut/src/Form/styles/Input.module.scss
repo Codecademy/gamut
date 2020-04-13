@@ -22,9 +22,9 @@
 }
 
 .error {
-  border-color: $deprecated-swatches-red-400;
+  border-color: $color-red-500;
   &:focus {
-    border-color: $deprecated-swatches-red-200;
+    border-color: $color-red-200;
   }
 }
 

@@ -34,6 +34,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
         return (
           <GridFormTextInput
             className={styles.gridFormInput}
+            error={!!props.error}
             field={props.field}
             register={props.register}
           />
@@ -43,6 +44,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
         return (
           <GridFormSelectInput
             className={styles.gridFormInput}
+            error={!!props.error}
             field={props.field}
             register={props.register}
           />
@@ -52,6 +54,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
         return (
           <GridFormFileInput
             className={styles.gridFormInput}
+            error={!!props.error}
             field={props.field}
             register={props.register}
           />
@@ -61,6 +64,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
         return (
           <GridFormTextArea
             className={styles.gridFormInput}
+            error={!!props.error}
             field={props.field}
             register={props.register}
           />
