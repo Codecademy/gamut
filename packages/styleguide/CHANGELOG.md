@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## <small>4.3.1 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## 4.3.0 (2020-04-10)
 
 * feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
