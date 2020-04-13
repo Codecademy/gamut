@@ -1,15 +1,13 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { createClassnames } from './utilities';
-import {
-  ContainerElementProps,
-  ColumnSizes,
-  ResponsiveProperty,
-  OffsetColumnSizes,
-  OptionalResponsiveProperty,
-} from './types';
+import { generateClassnames } from '../utils/generateClassnames';
+import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
 import s from './styles/Column.module.scss';
+import {
+  ResponsiveProperty,
+  OptionalResponsiveProperty,
+} from '../typings/responsive-properties';
 
 export type ColumnProps = {
   size: ResponsiveProperty<ColumnSizes>;
@@ -26,7 +24,7 @@ export const Column: React.FC<ColumnProps> = ({
   const classNames = cx(
     s.container,
     className,
-    createClassnames({ size, offset }, s)
+    generateClassnames({ size, offset }, s)
   );
   return (
     <div className={classNames} data-testid={testId}>
