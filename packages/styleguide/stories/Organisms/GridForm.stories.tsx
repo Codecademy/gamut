@@ -57,11 +57,14 @@ export const gridForm = () => (
           type: 'text',
         },
         {
-          label: 'Simple select',
+          label: 'Simple select (required)',
           name: 'simple-select',
-          options: ['One fish', 'Two fish', 'Red fish', 'Blue fish'],
+          options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
           size: 5,
           type: 'select',
+          validation: {
+            required: 'Please select an option',
+          },
         },
         {
           label: 'Upload a cat image (we support pdf, jpeg, or png files)',
@@ -113,6 +116,17 @@ export const gridForm = () => (
           name: 'enough-swag',
           size: 3,
           type: 'checkbox',
+        },
+        {
+          label: 'End User License Agreement',
+          description:
+            'I accept the terms and conditions (required or else!!!)',
+          name: 'eula-checkbox-required',
+          size: 12,
+          type: 'checkbox',
+          validation: {
+            required: 'Please check the box to agree to the terms.',
+          },
         },
       ]}
       onSubmit={async values => {

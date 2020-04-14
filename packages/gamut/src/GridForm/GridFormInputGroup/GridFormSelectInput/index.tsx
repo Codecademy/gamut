@@ -24,7 +24,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       error={error}
       htmlFor={field.name}
       name={field.name}
-      ref={register()}
+      ref={register(field.validation)}
       options={field.options}
     />
   );

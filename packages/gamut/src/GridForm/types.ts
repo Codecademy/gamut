@@ -11,6 +11,7 @@ export type GridFormCheckboxField = BaseFormField & {
   description: string;
   defaultValue?: boolean;
   label?: string;
+  validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
 };
 
