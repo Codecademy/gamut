@@ -3,6 +3,111 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.4.2 (2020-04-13)</small>
+
+* chore(GridForm): removed unnecessary setValue calls from GridForm (#712) ([863d73d](https://github.com/RyzacInc/client-modules/commit/863d73d)), closes [#712](https://github.com/RyzacInc/client-modules/issues/712)
+
+
+
+
+
+## <small>3.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 3.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## 3.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
+## 3.2.0 (2020-04-10)
+
+* feat(GridForm): drilled error states through GridForm to inputs (#698) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8)), closes [#698](https://github.com/RyzacInc/client-modules/issues/698)
+* Switched ProgressBar's displayLabel prop name to be large (#706) ([89f7346](https://github.com/RyzacInc/client-modules/commit/89f7346)), closes [#706](https://github.com/RyzacInc/client-modules/issues/706)
+
+
+
+
+
+## 3.1.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
+## 3.0.0 (2020-04-09)
+
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
+
+## 2.18.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
+
+## <small>2.17.4 (2020-04-07)</small>
+
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
+
+## <small>2.17.3 (2020-04-07)</small>
+
+* fix: rename scss files (#704) ([c4ea130](https://github.com/RyzacInc/client-modules/commit/c4ea130)), closes [#704](https://github.com/RyzacInc/client-modules/issues/704)
+
+
+
+
+
+## <small>2.17.2 (2020-04-07)</small>
+
+* Removed legacy Modal alias for Overlay (#687) ([29d6724](https://github.com/RyzacInc/client-modules/commit/29d6724)), closes [#687](https://github.com/RyzacInc/client-modules/issues/687)
+
+
+
+
+
+## <small>2.17.1 (2020-04-07)</small>
+
+* Added half second transition to ProgressBar (#694) ([ccbc69a](https://github.com/RyzacInc/client-modules/commit/ccbc69a)), closes [#694](https://github.com/RyzacInc/client-modules/issues/694)
+
+
+
+
+
+## 2.17.0 (2020-04-07)
+
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
+
 ## 2.16.0 (2020-04-07)
 
 * feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)

@@ -11,27 +11,18 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-export const TextArea: React.FC<TextAreaProps> = ({
-  error,
-  htmlFor,
-  className,
-  ...rest
-}) => {
-  const classNames = cx(
-    s.TextArea,
-    {
-      [s.error]: error,
-    },
-    className
-  );
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+  ({ error, htmlFor, className, ...rest }, ref) => {
+    const classNames = cx(
+      s.TextArea,
+      {
+        [s.error]: error,
+      },
+      className
+    );
 
-  return (
-    <textarea
-      {...(rest as TextareaHTMLAttributes<HTMLTextAreaElement>)}
-      id={htmlFor}
-      className={classNames}
-    />
-  );
-};
+    return <textarea {...rest} id={htmlFor} className={classNames} ref={ref} />;
+  }
+);
 
 export default TextArea;

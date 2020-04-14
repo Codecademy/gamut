@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>4.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 4.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## <small>4.3.1 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 4.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
+## <small>4.2.1 (2020-04-10)</small>
+
+* chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
+
+
+
+
+
+## 4.2.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
+## 4.1.0 (2020-04-09)
+
+* feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
+
+
+
+
+
+## 4.0.0 (2020-04-09)
+
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
+
+## 3.26.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
+
+## <small>3.25.1 (2020-04-07)</small>
+
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
+
+## 3.25.0 (2020-04-07)
+
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
+
 ## 3.24.0 (2020-04-07)
 
 * feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)

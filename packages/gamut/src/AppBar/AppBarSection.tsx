@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import styles from './styles/index.scss';
+import styles from './styles/index.module.scss';
 
 export type AppBarSectionProps = {
   position?: 'left' | 'center' | 'right';
