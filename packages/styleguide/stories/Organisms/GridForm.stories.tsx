@@ -57,11 +57,14 @@ export const gridForm = () => (
           type: 'text',
         },
         {
-          label: 'Simple select',
+          label: 'Simple select (required)',
           name: 'simple-select',
-          options: ['One fish', 'Two fish', 'Red fish', 'Blue fish'],
+          options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
           size: 5,
           type: 'select',
+          validation: {
+            required: 'Please select an option',
+          },
         },
         {
           label: 'Upload a cat image (we support pdf, jpeg, or png files)',
