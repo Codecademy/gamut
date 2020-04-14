@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.5.0 (2020-04-14)
+
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
+
 ## <small>3.4.2 (2020-04-13)</small>
 
 * chore(GridForm): removed unnecessary setValue calls from GridForm (#712) ([863d73d](https://github.com/RyzacInc/client-modules/commit/863d73d)), closes [#712](https://github.com/RyzacInc/client-modules/issues/712)
