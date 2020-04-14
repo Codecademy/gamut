@@ -114,6 +114,17 @@ export const gridForm = () => (
           size: 3,
           type: 'checkbox',
         },
+        {
+          label: 'End User License Agreement',
+          description:
+            'I accept the terms and conditions (required or else!!!)',
+          name: 'eula-checkbox-required',
+          size: 12,
+          type: 'checkbox',
+          validation: {
+            required: 'Please check the box to agree to the terms.',
+          },
+        },
       ]}
       onSubmit={async values => {
         action('Form Submitted')(values);
