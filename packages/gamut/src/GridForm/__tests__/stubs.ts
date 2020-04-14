@@ -9,7 +9,7 @@ import {
 export const stubCheckboxField: GridFormCheckboxField = {
   description: 'Check me!',
   label: 'Stub Checkbox',
-  name: 'stub-select',
+  name: 'stub-checkbox',
   type: 'checkbox',
 };
 

@@ -15,7 +15,6 @@ export type GridFormInputGroupProps = {
   error?: string;
   field: GridFormField;
   register: FormContextValues['register'];
-  setValue: (value: Required<GridFormField['defaultValue']>) => void;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
@@ -26,7 +25,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
           <GridFormCheckboxInput
             className={styles.gridFormInput}
             field={props.field}
-            setValue={props.setValue}
+            register={props.register}
           />
         );
 
@@ -38,7 +37,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
-            setValue={props.setValue}
           />
         );
 
@@ -49,7 +47,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
-            setValue={props.setValue}
           />
         );
 
@@ -60,7 +57,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
-            setValue={props.setValue}
           />
         );
 
@@ -71,7 +67,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
-            setValue={props.setValue}
           />
         );
     }
