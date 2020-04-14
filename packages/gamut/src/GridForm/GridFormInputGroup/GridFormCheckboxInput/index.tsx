@@ -22,7 +22,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       htmlFor={field.name}
       name={field.name}
       label={field.description}
-      ref={register()}
+      ref={register(field.validation)}
     />
   );
 };

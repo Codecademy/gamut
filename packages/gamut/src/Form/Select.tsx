@@ -12,7 +12,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const className = cx(s.Select, props.className, props.error && s.error);
-    const { options, ...propsToTransfer } = props;
+    const { options, error, ...propsToTransfer } = props;
 
     let selectOptions: ReactNode[] = [];
 
