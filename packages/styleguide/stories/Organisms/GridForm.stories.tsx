@@ -157,8 +157,8 @@ export const gridFormWithCustomInput = () => (
     <GridForm
       fields={[
         {
-          render: ({ error, setValue }) => (
-            <>
+          render: ({ className, error, setValue }) => (
+            <div className={className}>
               <Input
                 error={!!error}
                 id="custom-text-input"
@@ -168,7 +168,7 @@ export const gridFormWithCustomInput = () => (
               <span aria-label="Dancing person" role="img">
                 🕺
               </span>
-            </>
+            </div>
           ),
           label: 'Gimme two more swags',
           name: 'custom-input',
