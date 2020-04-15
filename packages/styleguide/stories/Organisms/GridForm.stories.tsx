@@ -134,6 +134,9 @@ export const gridForm = () => (
       }}
       submit={{
         contents: 'Submit Me!?',
+        position: 'right',
+        size: 12,
+        theme: 'brand-blue',
       }}
     />
   </StoryTemplate>
