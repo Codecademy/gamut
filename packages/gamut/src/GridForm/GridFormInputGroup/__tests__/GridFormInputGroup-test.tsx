@@ -14,7 +14,6 @@ const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props = {
     field: stubSelectField,
     register: jest.fn(),
-    setValue: jest.fn(),
     ...overrides,
   };
 
