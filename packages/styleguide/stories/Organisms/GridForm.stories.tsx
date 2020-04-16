@@ -1,4 +1,4 @@
-import { GridForm } from '@codecademy/gamut/src';
+import { GridForm, Input } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -127,6 +127,60 @@ export const gridForm = () => (
           validation: {
             required: 'Please check the box to agree to the terms.',
           },
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+      }}
+    />
+  </StoryTemplate>
+);
+
+export const gridFormWithCustomInput = () => (
+  <StoryTemplate status={StoryStatus.Ready}>
+    <StoryDescription>
+      Some forms, such as the checkout flows that use Recurly, need to define
+      their own inputs. We can specify a 'custom' field type to with a{' '}
+      <a
+        href="https://reactjs.org/docs/render-props.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        render prop
+      </a>
+      .
+    </StoryDescription>
+
+    <GridForm
+      fields={[
+        {
+          render: ({ className, error, setValue }) => (
+            <div className={className}>
+              <Input
+                error={!!error}
+                id="custom-text-input"
+                type="text"
+                onChange={event => setValue(event.target.value)}
+              />
+              <span aria-label="Dancing person" role="img">
+                🕺
+              </span>
+            </div>
+          ),
+          label: 'Gimme two more swags',
+          name: 'custom-input',
+          validation: {
+            required: true,
+            pattern: {
+              value: /swag(.*)swag/,
+              message: 'Still not enough swag, what are you doing... 💢',
+            },
+          },
+          size: 12,
+          type: 'custom',
         },
       ]}
       onSubmit={async values => {
