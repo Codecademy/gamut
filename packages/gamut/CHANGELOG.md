@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.6.0 (2020-04-16)
+
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
+
 ## <small>3.5.1 (2020-04-16)</small>
 
 **Note:** Version bump only for package @codecademy/gamut
