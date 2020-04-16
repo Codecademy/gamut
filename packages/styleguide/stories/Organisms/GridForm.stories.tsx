@@ -134,6 +134,172 @@ export const gridForm = () => (
       }}
       submit={{
         contents: 'Submit Me!?',
+        size: 12,
+      }}
+    />
+  </StoryTemplate>
+);
+
+export const gridFormWithSubmitButtonPosition = () => (
+  <StoryTemplate status={StoryStatus.Ready}>
+    <StoryDescription>
+      We can position the submit button by passing the position prop with a
+      value of left, center or right.
+    </StoryDescription>
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Right Submit!?',
+        position: 'right',
+        size: 12,
+      }}
+    />
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Center Submit!?',
+        position: 'center',
+        size: 12,
+      }}
+    />
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Left Submit!?',
+        position: 'left',
+        size: 12,
+      }}
+    />
+  </StoryTemplate>
+);
+
+export const gridFormWithSubmitButtonColor = () => (
+  <StoryTemplate status={StoryStatus.Ready}>
+    <StoryDescription>
+      We can specify the color of our button by passing the theme prop with a
+      button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
+      default value is 'brand-purple'.
+    </StoryDescription>
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Default Purple Submit!?',
+        size: 12,
+      }}
+    />
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Blue Submit!?',
+        size: 12,
+        theme: 'brand-blue',
+      }}
+    />
+  </StoryTemplate>
+);
+
+export const gridFormWithInlineSubmitButton = () => (
+  <StoryTemplate status={StoryStatus.NotReady}>
+    <StoryDescription>
+      We can make the Submit button inline with an input by setting the column
+      sizes so they fit on the same row. e.g size 8 for an input and size 4 for
+      the submit.
+      <br />
+      Caveats: We need to adjust params to allow us to properly align elements
+      for the following use cases.
+    </StoryDescription>
+    <h4>
+      Submit with no label text (but label still rendered) does not align
+      properly with the checkbox
+    </h4>
+    <GridForm
+      fields={[
+        {
+          description: 'I approve of inline swag',
+          name: 'enough-swag',
+          size: 8,
+          type: 'checkbox',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
+      }}
+    />
+    <hr />
+    <h4>
+      Submit even when the lable has visible text, is still not aligned right
+    </h4>
+    <GridForm
+      fields={[
+        {
+          label: 'Label',
+          name: 'email',
+          size: 8,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
       }}
     />
   </StoryTemplate>
