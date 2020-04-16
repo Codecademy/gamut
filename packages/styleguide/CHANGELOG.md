@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
 ## 4.6.0 (2020-04-16)
 
 * feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
