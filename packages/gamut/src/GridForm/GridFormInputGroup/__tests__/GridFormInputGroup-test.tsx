@@ -13,6 +13,7 @@ import GridFormInputGroup, { GridFormInputGroupProps } from '..';
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props = {
     field: stubSelectField,
+    setValue: jest.fn(),
     register: jest.fn(),
     ...overrides,
   };
@@ -37,6 +38,19 @@ describe('GridFormInputGroup', () => {
     });
 
     expect(wrapped.find('input[type="checkbox"]')).toHaveLength(1);
+  });
+
+  it('renders a custom input when the field type is custom', () => {
+    const text = 'Hello, world!';
+    const { wrapped } = renderComponent({
+      field: {
+        render: () => text,
+        name: 'stub-custom',
+        type: 'custom',
+      },
+    });
+
+    expect(wrapped.text()).toEqual(text);
   });
 
   it('renders a select when the field type is select', () => {

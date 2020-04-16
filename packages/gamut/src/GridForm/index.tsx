@@ -50,7 +50,7 @@ export function GridForm<
   rowGap = 'md',
   submit,
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register } = useForm<Values>({
+  const { errors, handleSubmit, register, setValue } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -78,6 +78,7 @@ export function GridForm<
               field={field}
               key={field.name}
               register={register}
+              setValue={setValue}
             />
           );
         })}
