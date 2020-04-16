@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.7.1 (2020-04-16)</small>
+
+* Tweaked AccordionButton to look more like the nice LE yellow ones (#730) ([b54771e](https://github.com/RyzacInc/client-modules/commit/b54771e)), closes [#730](https://github.com/RyzacInc/client-modules/issues/730)
+
+
+
+
+
 ## 3.7.0 (2020-04-16)
 
 * feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
