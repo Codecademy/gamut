@@ -1,6 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$fontSizes: (
+$headingSizes: (
   "xxs": (
     "size": 16,
     "font": $font-family-base
@@ -28,5 +28,16 @@ $fontSizes: (
   "xxl": (
     "size": 64,
     "font": $font-family-headings
+  )
+);
+
+$textSizes: (
+  "sm": (
+    "size": 14,
+    "font": $font-family-base
+  ),
+  "lg": (
+    "size": 18,
+    "font": $font-family-base
   )
 );
