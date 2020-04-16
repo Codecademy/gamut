@@ -40,7 +40,7 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.find('input[type="checkbox"]')).toHaveLength(1);
   });
 
-  it('renders a custom input when the field type is checkbox', () => {
+  it('renders a custom input when the field type is custom', () => {
     const text = 'Hello, world!';
     const { wrapped } = renderComponent({
       field: {
