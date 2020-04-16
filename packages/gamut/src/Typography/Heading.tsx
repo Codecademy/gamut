@@ -5,10 +5,10 @@ import s from './styles/Heading.module.scss';
 import { ContainerElementProps } from '../Layout/types';
 import { generateClassnames } from '../utils/generateClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
+import { AllowedStyles } from './types';
 
 export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
-export type AllowedStyles = { color?: string };
 
 export type HeadingProps = {
   /** Heading tags h1 - h6 */

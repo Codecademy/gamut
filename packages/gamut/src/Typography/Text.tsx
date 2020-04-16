@@ -5,13 +5,18 @@ import s from './styles/Text.module.scss';
 import { ContainerElementProps } from '../Layout/types';
 import { generateClassnames } from '../utils/generateClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
+import { AllowedStyles } from './types';
 
 type TextTags = 'p' | 'span';
 type FontSizes = 'sm' | 'lg';
 
 type TextProps = {
+  /** Text based tags */
   as?: TextTags;
+  /** A font-size/font-family pair */
   fontSize?: ResponsiveProperty<FontSizes>;
+  /** Allows you to pass color attributes directly to the tag */
+  style?: AllowedStyles;
 } & ContainerElementProps;
 
 export const Text: React.FC<TextProps> = ({
@@ -20,11 +25,13 @@ export const Text: React.FC<TextProps> = ({
   fontSize = 'lg',
   className,
   testId,
+  style,
 }) => {
   return (
     <Element
       className={cx(s.text, className, generateClassnames({ fontSize }, s))}
       data-testid={testId}
+      style={style}
     >
       {children}
     </Element>
