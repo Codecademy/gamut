@@ -5,9 +5,10 @@ import {
   HeadingTags,
   LayoutGrid,
   Column,
+  Text,
+  Heading,
 } from '@codecademy/gamut/src';
 
-import { Heading } from '../../../gamut/src/Typography/Heading';
 import {
   decoratedStory,
   StoryDescription,
@@ -15,7 +16,7 @@ import {
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Heading);
+export default decoratedStory('Atoms', 'Typography');
 
 const tags: HeadingTags[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 const sizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
@@ -55,3 +56,46 @@ export const heading = () => (
     </Column>
   </LayoutGrid>
 );
+
+heading.story = {
+  name: 'Heading',
+};
+
+const textTags: ('p' | 'span')[] = ['p', 'span'];
+const textSizes: ('sm' | 'lg')[] = ['lg', 'sm'];
+export const text = () => (
+  <LayoutGrid>
+    <Column size={12}>
+      <StoryTemplate status={StoryStatus.InProgress}>
+        <StoryDescription>
+          <p>Generic Text Primitve</p>
+        </StoryDescription>
+      </StoryTemplate>
+    </Column>
+    <Column size={12}>
+      {textSizes.map(size => {
+        return (
+          <>
+            <Heading fontSize="md" as="h3">
+              Size: {size}
+            </Heading>
+            <Text key={size} fontSize={size} as={textTags[0]}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Text>
+            <br />
+          </>
+        );
+      })}
+    </Column>
+  </LayoutGrid>
+);
+
+text.story = {
+  name: 'Text',
+};
