@@ -24,10 +24,12 @@ const textTags: ('p' | 'span')[] = ['p', 'span'];
 const textSizes: ('sm' | 'lg')[] = ['lg', 'sm'];
 
 export const baseTypography = () => (
-  <LayoutGrid>
+  <LayoutGrid rowGap="lg">
     <Column size={12}>
       <StoryTemplate status={StoryStatus.InProgress}>
-        <StoryDescription></StoryDescription>
+        <StoryDescription>
+          Responsive Typography primitives for all your textual needs.
+        </StoryDescription>
       </StoryTemplate>
     </Column>
     <Column size={12}>
@@ -62,6 +64,10 @@ export const baseTypography = () => (
       <Heading as="h2" fontSize="lg">
         Text
       </Heading>
+      <p>
+        This is a single primitive to handle all <strong>{'<p>'}</strong> and{' '}
+        <strong>{'<span>'}</strong> tags with defined size intervals
+      </p>
       {textSizes.map(size => {
         return (
           <>
