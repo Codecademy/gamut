@@ -208,7 +208,6 @@ export const deprecatedColors = {
 
 export const editorColors = {
   blue: '#83fff5',
-  comment: '#939598',
   deepPurple: '#cc7bc2',
   gray: '#939598',
   green: '#b4d353',
