@@ -36,7 +36,6 @@ const extractPluginDefaults = {
   loader: MiniCssExtractPlugin.loader,
   options: {
     hmr: !PROD,
-    reloadAll: true,
   },
 };
 
