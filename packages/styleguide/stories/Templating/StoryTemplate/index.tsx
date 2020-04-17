@@ -17,14 +17,13 @@ export type StoryTemplateProps = {
 export const StoryTemplate: React.FC<StoryTemplateProps> = ({
   children,
   status,
-  wide,
-}) => {
-  const theme = select(
+  theme = select(
     'Visual Theme',
     { Light: VisualTheme.LightMode, Dark: VisualTheme.DarkMode },
     VisualTheme.LightMode
-  );
-
+  ),
+  wide,
+}) => {
   return (
     <div
       className={cx(

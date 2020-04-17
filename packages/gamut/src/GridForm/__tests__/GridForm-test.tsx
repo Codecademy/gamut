@@ -4,14 +4,19 @@ import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
 import GridForm from '..';
-import { stubSelectField, stubTextField } from './stubs';
+import {
+  stubCheckboxField,
+  stubSelectField,
+  stubSelectOptions,
+  stubTextField,
+} from './stubs';
 
 describe('GridForm', () => {
   it('submits the form when all inputs are filled out', async () => {
-    const fields = [stubSelectField, stubTextField];
+    const fields = [stubCheckboxField, stubSelectField, stubTextField];
     const api = createPromise<{}>();
     const onSubmit = async (values: {}) => api.resolve(values);
-    const selectValue = stubSelectField.options[1];
+    const selectValue = stubSelectOptions[1];
     const textValue = 'Hooray!';
 
     const wrapped = mount(
@@ -22,13 +27,20 @@ describe('GridForm', () => {
       />
     );
 
-    wrapped
-      .find('select')
-      .simulate('change', { target: { value: selectValue } });
+    const newValues = [
+      ['input[type="checkbox"]', 'checked', true],
+      ['select', 'value', selectValue],
+      ['input[type="text"]', 'value', textValue],
+    ] as const;
 
-    wrapped
-      .find('input[type="text"]')
-      .simulate('change', { target: { value: textValue } });
+    await act(async () => {
+      for (const [selector, key, value] of newValues) {
+        // https://github.com/react-hook-form/react-hook-form/issues/1382
+        const node = wrapped.find(selector).getDOMNode();
+        (node as any)[key] = value;
+        node.dispatchEvent(new Event('input'));
+      }
+    });
 
     wrapped.setProps(wrapped.props());
 
@@ -40,6 +52,7 @@ describe('GridForm', () => {
     const result = await api.innerPromise;
 
     expect(result).toEqual({
+      [stubCheckboxField.name]: true,
       [stubSelectField.name]: selectValue,
       [stubTextField.name]: textValue,
     });

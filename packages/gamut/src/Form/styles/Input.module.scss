@@ -17,13 +17,19 @@
   }
 
   &:focus {
-    border-color: $deprecated-gamut-blue;
+    border-color: $color-blue-400;
   }
 }
 
 .error {
-  border-color: $deprecated-swatches-red-400;
+  border-color: $color-red-500;
   &:focus {
-    border-color: $deprecated-swatches-red-200;
+    border-color: $color-red-200;
   }
+}
+
+// text-indent causes the file input controls to cover the uploaded file name
+.fileInput {
+  text-indent: 0;
+  padding-left: $form-padding;
 }

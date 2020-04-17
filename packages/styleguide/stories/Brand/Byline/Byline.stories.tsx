@@ -27,6 +27,14 @@ export const byline = () => (
   </StoryTemplate>
 );
 
+byline.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};
+
 export const bylineWithCustomClassNames = () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
@@ -43,3 +51,11 @@ export const bylineWithCustomClassNames = () => (
     />
   </StoryTemplate>
 );
+
+bylineWithCustomClassNames.story = {
+  parameters: {
+    knobs: {
+      escapeHTML: false,
+    },
+  },
+};
