@@ -6,6 +6,13 @@
   font-weight: normal;
 }
 
+.error {
+  border-color: $color-red-500;
+  &:focus {
+    border-color: $color-red-200;
+  }
+}
+
 .selectIcon {
   pointer-events: none;
   position: absolute;

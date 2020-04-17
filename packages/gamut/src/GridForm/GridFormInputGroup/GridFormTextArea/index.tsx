@@ -1,33 +1,31 @@
 import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
-import { Select } from '../../../Form';
-import { GridFormSelectField } from '../../types';
+import { TextArea } from '../../../Form';
+import { GridFormTextAreaField } from '../../types';
 
-export type GridFormSelectInputProps = {
+export type GridFormTextAreaProps = {
   className?: string;
   error?: boolean;
-  field: Omit<GridFormSelectField, 'label'>;
+  field: Omit<GridFormTextAreaField, 'label'>;
   register: FormContextValues['register'];
 };
 
-export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
+export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   className,
   error,
   field,
   register,
 }) => {
   return (
-    <Select
-      defaultValue={field.defaultValue}
+    <TextArea
       className={className}
       error={error}
       htmlFor={field.name}
       name={field.name}
       ref={register(field.validation)}
-      options={field.options}
     />
   );
 };
 
-export default GridFormSelectInput;
+export default GridFormTextArea;

@@ -1,5 +1,7 @@
 import { Column } from '@codecademy/gamut/src';
-import LinkTo from '@storybook/addon-links/react';
+// The normal import would be '@storybook/addon-links/react'
+// but it is throwing a typescript error in the current alpha
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import React from 'react';
 
 import { Section } from '../../Templating';

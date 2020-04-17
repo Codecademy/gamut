@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.8.27 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.26 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.25 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.24 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.23 (2020-04-14)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.22 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.21 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.20 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.19 (2020-04-10)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.18 (2020-04-10)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>0.8.17 (2020-04-10)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>0.8.16 (2020-04-09)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components
