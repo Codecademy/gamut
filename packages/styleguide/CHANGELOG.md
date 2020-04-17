@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>6.0.1 (2020-04-17)</small>
+
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
+
 ## 6.0.0 (2020-04-17)
 
 * chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
