@@ -8,11 +8,25 @@
 .btn {
   display: inline-flex;
   justify-content: center;
+  font: inherit;
+  font-family: inherit;
   font-weight: $btn-font-weight;
   @include font-smoothing;
   border: 1px solid transparent;
   border-radius: $btn-border-radius;
   user-select: none;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  background: none;
+  color: inherit;
+  line-height: normal;
+
   @include button-size(
     $btn-padding-y,
     $btn-padding-x,

@@ -4,7 +4,14 @@ import omitProps from '../utils/omitProps';
 import styles from './styles.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
-const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
+const propKeys = [
+  'children',
+  'className',
+  'href',
+  'link',
+  'onClick',
+  'resetStyles',
+];
 
 export type ButtonBaseProps = (
   | HTMLProps<HTMLLinkElement>
@@ -24,17 +31,25 @@ export type ButtonBaseProps = (
   className?: string;
   href?: string;
   link?: boolean;
+  /**
+   * Whether or not to include default styles that reset the button to a neutral state that can be styled
+   */
+  resetStyles?: boolean;
   onClick?: (event: object) => void;
 };
 
 export const ButtonBase: React.FC<ButtonBaseProps> = props => {
-  const { href, className, link, onClick } = props;
+  const { href, className, link, onClick, resetStyles = true } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
   const propsToTransfer = omitProps(propKeys, restOfProps);
 
-  const classes = cx(styles.basicBtn, className, {
-    [styles.basicLink]: link,
-  });
+  const classes = cx(
+    {
+      [styles.basicBtn]: resetStyles,
+      [styles.basicLink]: link,
+    },
+    className
+  );
 
   const defaultProps = {
     ...propsToTransfer,

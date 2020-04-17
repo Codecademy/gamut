@@ -96,6 +96,7 @@ export const Button: React.FC<ButtonProps> = props => {
   return (
     <ButtonBase
       {...propsToTransfer}
+      resetStyles={false}
       className={classes}
       link={props.link}
       onClick={props.onClick}
