@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## 2.3.0 (2020-04-17)
+
+* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+
+
+
+
+
+## <small>2.2.13 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
 ## <small>2.2.12 (2020-04-16)</small>
 
 * Adds screen size variables and mixins (#731) ([512743d](https://github.com/RyzacInc/client-modules/commit/512743d)), closes [#731](https://github.com/RyzacInc/client-modules/issues/731)

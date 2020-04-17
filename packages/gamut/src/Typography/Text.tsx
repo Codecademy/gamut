@@ -7,7 +7,7 @@ import { generateClassnames } from '../utils/generateClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { AllowedStyles } from './types';
 
-type TextTags = 'p' | 'span';
+type TextTags = 'p' | 'span' | 'div';
 type FontSizes = 'sm' | 'lg';
 
 type TextProps = {

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 4.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## <small>3.7.3 (2020-04-17)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>3.7.2 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
+## <small>3.7.1 (2020-04-16)</small>
+
+* Tweaked AccordionButton to look more like the nice LE yellow ones (#730) ([b54771e](https://github.com/RyzacInc/client-modules/commit/b54771e)), closes [#730](https://github.com/RyzacInc/client-modules/issues/730)
+
+
+
+
+
+## 3.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
 ## 3.6.0 (2020-04-16)
 
 * feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
