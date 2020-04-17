@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.2.13 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
 ## <small>2.2.12 (2020-04-16)</small>
 
 * Adds screen size variables and mixins (#731) ([512743d](https://github.com/RyzacInc/client-modules/commit/512743d)), closes [#731](https://github.com/RyzacInc/client-modules/issues/731)
