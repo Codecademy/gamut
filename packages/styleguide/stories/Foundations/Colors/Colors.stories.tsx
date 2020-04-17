@@ -61,8 +61,9 @@ const renderSwatch = (sassVariableName: string, hexcode: string) => {
   );
 };
 
-const renderSwatches = (data: any, variablePrefix: string) =>
-  Object.keys(data).map(variableSuffix => {
+const renderSwatches = (data: any, variablePrefix: string) => {
+  if (!data) debugger;
+  return Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
       variableSuffix
@@ -73,6 +74,7 @@ const renderSwatches = (data: any, variablePrefix: string) =>
 
     return renderSwatch(sassVariableName, hexcode);
   });
+};
 
 const baseColors = {
   black: colors.black,
@@ -186,7 +188,7 @@ export const PortalDeprecated = () => (
     </StoryDescription>
     <Container>
       <div>
-        <h2 className={styles.heading}>deprecated portal base colors</h2>
+        <h2 className={styles.heading}>Deprecated portal base colors</h2>
         {renderSwatches(deprecatedColors.portal, 'deprecated')}
       </div>
       {Object.keys(deprecatedColors.swatches).map(color => (
