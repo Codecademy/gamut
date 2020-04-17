@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.7.3 (2020-04-17)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## <small>3.7.2 (2020-04-17)</small>
 
 * Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
