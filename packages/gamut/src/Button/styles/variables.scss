@@ -30,20 +30,17 @@ $btn-outline-hover-state-modifier: 0.9 !default;
 $btn-outline-active-state-modifier: 0.6 !default;
 $btn-box-shadow-focus-modifier: 0.5 !default;
 
-$btn-disabled-color: $deprecated-gamut-grey-800;
+$btn-disabled-color: $color-gray-600;
 $btn-box-shadow-color: rgba(0, 0, 0, 0.3);
 
 $btn-swatches: (
   "mint": $deprecated-swatches-mint-700,
   "darkmint": $deprecated-swatches-mint-800,
-  "blue": $deprecated-gamut-blue-500,
   "darkblue": $deprecated-swatches-cc-blue-500,
   "midnightblue": $deprecated-swatches-grey-blue-500,
   "grey": $color-gray-300,
-  "red": $color-red-500,
-  "yellow": $deprecated-gamut-yellow-500,
   "greyblue": $deprecated-swatches-grey-blue-600,
-  "white": $deprecated-color-white,
+  "white": $color-white,
   "ccblue": $deprecated-swatches-cc-blue-700,
   "royalblue": $deprecated-gamut-royal-blue,
   "purple": $deprecated-gamut-purple,
