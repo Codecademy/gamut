@@ -32,6 +32,14 @@ const postCssLoaderDefaults = {
   },
 };
 
+const extractPluginDefaults = {
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    hmr: !PROD,
+    reloadAll: true,
+  },
+};
+
 const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
@@ -54,7 +62,7 @@ const css = {
   extracted: {
     test: cssFilePattern,
     use: [
-      MiniCssExtractPlugin.loader,
+      extractPluginDefaults,
       merge(cssLoaderDefaults),
       merge(postCssLoaderDefaults),
     ],
@@ -90,7 +98,7 @@ const scss = {
   extracted: {
     test: scssFilePattern,
     use: [
-      MiniCssExtractPlugin.loader,
+      extractPluginDefaults,
       merge(cssLoaderDefaults, {
         options: {
           modules: true,
