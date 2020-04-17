@@ -1,3 +1,3 @@
 ## Codecademy Styleguide
 
-[Styleguide](http://styleguide.codecademy.com)
+[Styleguide](https://styleguide.codecademy.com)

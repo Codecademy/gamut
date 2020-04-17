@@ -13,17 +13,23 @@ const gamutTheme = create({
 });
 
 addParameters({
+  // viewMode is currently broken, waiting for https://github.com/storybookjs/storybook/pull/10292
+  viewMode: 'docs',
   options: {
     theme: gamutTheme,
-    showPanel: true,
+    storySort: {
+      order: [
+        'About',
+        'Foundations',
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Brand',
+        'Meta',
+      ],
+      // Fallback ordering
+      method: 'alphabetical',
+      locales: 'en-US',
+    },
   },
-  viewMode: 'docs',
 });
-
-configure(
-  [
-    require.context('../stories', true, /\.stories\.mdx$/),
-    require.context('../stories', true, /\.stories\.(j|t)sx?$/),
-  ],
-  module
-);

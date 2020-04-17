@@ -27,16 +27,16 @@ input:checked + .checkboxLabel .checkbox {
 }
 
 input:disabled:checked + .checkboxLabel .checkbox {
-  border-color: $deprecated-swatches-grey-200;
+  border-color: $color-gray-200;
   .checkboxVector {
     .squareVector {
-      fill: $deprecated-swatches-grey-200;
+      fill: $color-gray-200;
     }
   }
 }
 
 input:disabled + .checkboxLabel {
-  color: $deprecated-swatches-grey-200;
+  color: $color-gray-200;
 }
 
 .checkbox {
@@ -44,7 +44,7 @@ input:disabled + .checkboxLabel {
   margin-right: 0.5rem;
   min-width: 1.5rem;
   height: 1.5rem;
-  border: 2px solid $deprecated-swatches-grey-200;
+  border: 2px solid $color-gray-200;
   border-radius: $border-radius;
 
   .checkboxVector {
@@ -54,7 +54,7 @@ input:disabled + .checkboxLabel {
 
     .checkVector {
       fill: none;
-      stroke: $deprecated-swatches-grey-100;
+      stroke: $color-gray-100;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;

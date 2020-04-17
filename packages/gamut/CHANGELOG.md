@@ -3,6 +3,143 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 4.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## <small>3.7.3 (2020-04-17)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>3.7.2 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
+## <small>3.7.1 (2020-04-16)</small>
+
+* Tweaked AccordionButton to look more like the nice LE yellow ones (#730) ([b54771e](https://github.com/RyzacInc/client-modules/commit/b54771e)), closes [#730](https://github.com/RyzacInc/client-modules/issues/730)
+
+
+
+
+
+## 3.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
+## 3.6.0 (2020-04-16)
+
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
+
+## <small>3.5.1 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## 3.5.0 (2020-04-14)
+
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
+
+## <small>3.4.2 (2020-04-13)</small>
+
+* chore(GridForm): removed unnecessary setValue calls from GridForm (#712) ([863d73d](https://github.com/RyzacInc/client-modules/commit/863d73d)), closes [#712](https://github.com/RyzacInc/client-modules/issues/712)
+
+
+
+
+
+## <small>3.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 3.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## 3.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
+## 3.2.0 (2020-04-10)
+
+* feat(GridForm): drilled error states through GridForm to inputs (#698) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8)), closes [#698](https://github.com/RyzacInc/client-modules/issues/698)
+* Switched ProgressBar's displayLabel prop name to be large (#706) ([89f7346](https://github.com/RyzacInc/client-modules/commit/89f7346)), closes [#706](https://github.com/RyzacInc/client-modules/issues/706)
+
+
+
+
+
+## 3.1.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
+## 3.0.0 (2020-04-09)
+
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
+
+## 2.18.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
+
 ## <small>2.17.4 (2020-04-07)</small>
 
 * Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
