@@ -19,7 +19,7 @@ const Container: React.FC = ({ children }) => {
         width: '100%',
         maxWidth: '1440px',
         padding: '25px',
-        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[100],
+        backgroundColor: gamut.colors.blue[100],
       }}
     >
       {children}
@@ -31,7 +31,7 @@ const Content: React.FC = ({ children }) => {
   return (
     <div
       style={{
-        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[500],
+        backgroundColor: gamut.colors.blue[500],
         color: 'white',
         display: 'grid',
         padding: '5px 0',

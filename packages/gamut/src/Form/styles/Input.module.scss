@@ -13,7 +13,7 @@
   box-sizing: border-box;
 
   &::placeholder {
-    color: $deprecated-swatches-grey-500;
+    color: $color-gray-500;
   }
 
   &:focus {

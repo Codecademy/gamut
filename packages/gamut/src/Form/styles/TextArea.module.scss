@@ -12,11 +12,11 @@
   box-sizing: border-box;
 
   &::placeholder {
-    color: $deprecated-swatches-grey-500;
+    color: $color-gray-500;
   }
 
   &:focus {
-    border-color: $deprecated-swatches-mint-600;
+    border-color: $color-green-600;
   }
 }
 
