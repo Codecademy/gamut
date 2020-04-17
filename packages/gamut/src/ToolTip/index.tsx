@@ -13,6 +13,10 @@ export enum ToolTipPosition {
 
 export type ToolTipProps = {
   children?: ReactNode;
+
+  /**
+   * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
+   */
   focusable?: boolean;
   id: string;
   position?: ToolTipPosition;
