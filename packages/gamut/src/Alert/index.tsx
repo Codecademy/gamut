@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import cx from 'classnames';
-import {
-  CardShell,
-  Container,
-  ButtonBase,
-  Button,
-  Truncate,
-} from '@codecademy/gamut';
 
 import {
   CloseIcon,
   ArrowChevronDownIcon,
   ArrowChevronUpIcon,
 } from '@codecademy/gamut-icons';
+
+import { CardShell } from '../Card';
+import { Container } from '../FlexBox';
+import Truncate from '../Truncate';
+import ButtonBase from '../ButtonBase';
+import Button from '../Button';
 
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
