@@ -2,22 +2,54 @@ import React, { useEffect } from 'react';
 import { useForm, FieldError } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { LayoutGrid } from '../Layout';
+import { LayoutGrid, LayoutGridProps } from '../Layout';
 import GridFormInputGroup from './GridFormInputGroup';
 import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
+export * from './types';
+
 export type GridFormProps<Values extends {}> = {
-  className?: string;
   children?: React.ReactNode;
+  className?: string;
+
+  /**
+   * Layout grid column gap override.
+   */
+  columnGap?: LayoutGridProps['columnGap'];
+
+  /**
+   * Descriptions of the fields comprising the form.
+   */
   fields: GridFormField[];
+
+  /**
+   * Function called with field values on submit, if all validations have passed.
+   */
   onSubmit: (values: Values) => Promise<void>;
+
+  /**
+   * Layout grid row gap override.
+   */
+  rowGap?: LayoutGridProps['rowGap'];
+
+  /**
+   * Description of the submit button at the end of the form.
+   */
   submit: GridFormSubmitProps;
 };
 
 export function GridForm<
   Values extends Record<string, boolean | string | undefined>
->({ children, className, fields, submit, onSubmit }: GridFormProps<Values>) {
+>({
+  children,
+  className,
+  columnGap = 'lg',
+  fields,
+  onSubmit,
+  rowGap = 'md',
+  submit,
+}: GridFormProps<Values>) {
   const { errors, handleSubmit, register, setValue } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
@@ -36,7 +68,7 @@ export function GridForm<
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
-      <LayoutGrid columnGap="lg" rowGap="md">
+      <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map(field => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
 
@@ -46,7 +78,7 @@ export function GridForm<
               field={field}
               key={field.name}
               register={register}
-              setValue={value => setValue(field.name, value as Values[string])}
+              setValue={setValue}
             />
           );
         })}

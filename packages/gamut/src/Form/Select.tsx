@@ -4,16 +4,15 @@ import cx from 'classnames';
 import s from './styles/Select.module.scss';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+  error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
 };
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
-    const className = cx(s.Select, props.className);
-
-    // Generate list of options
-    const { options, ...propsToTransfer } = props;
+    const className = cx(s.Select, props.className, props.error && s.error);
+    const { options, error, ...propsToTransfer } = props;
 
     let selectOptions: ReactNode[] = [];
 

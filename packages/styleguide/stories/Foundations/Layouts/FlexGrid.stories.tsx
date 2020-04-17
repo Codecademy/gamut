@@ -1,4 +1,4 @@
-import { Item, Grid, Row, Col } from '@codecademy/gamut/src';
+import { Item, FlexGrid, Row, Col } from '@codecademy/gamut/src';
 import gamut from '@codecademy/gamut-styles/utils/variables';
 import React from 'react';
 
@@ -16,7 +16,7 @@ const Box = () => (
     style={{
       height: 30,
       marginBottom: '0.5rem',
-      backgroundColor: gamut.deprecatedColors.swatches.ccBlue[500],
+      backgroundColor: gamut.colors.blue[500],
     }}
   />
 );
@@ -24,7 +24,7 @@ const Box = () => (
 const defaultGridProps = {
   style: {
     padding: '1rem',
-    backgroundColor: gamut.deprecatedColors.swatches.ccBlue[100],
+    backgroundColor: gamut.colors.blue[100],
   },
 };
 
@@ -38,7 +38,7 @@ export const fixedGridDefault = () => (
       This grid is <em>"fixed"</em> meaning that its width is constant: it will
       not shrink to the size of its container.
     </StoryDescription>
-    <Grid {...defaultGridProps}>
+    <FlexGrid {...defaultGridProps}>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
           <Box />
@@ -70,7 +70,7 @@ export const fixedGridDefault = () => (
           <Box />
         </Col>
       </Row>
-    </Grid>
+    </FlexGrid>
   </StoryTemplate>
 );
 
@@ -84,7 +84,7 @@ export const fluid = () => (
       Adding the fluid prop allows the grid to grow and shrink freely inside its
       container.
     </StoryDescription>
-    <Grid {...defaultGridProps} fluid>
+    <FlexGrid {...defaultGridProps} fluid>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
           <Box />
@@ -116,7 +116,7 @@ export const fluid = () => (
           <Box />
         </Col>
       </Row>
-    </Grid>
+    </FlexGrid>
   </StoryTemplate>
 );
 
@@ -125,7 +125,7 @@ export const offsets = () => (
     <StoryDescription>
       A column can be offset with the <code>xs</code> property.
     </StoryDescription>
-    <Grid fluid {...defaultGridProps}>
+    <FlexGrid fluid {...defaultGridProps}>
       <Row>
         <Col xsOffset={11} xs={1}>
           <Box />
@@ -161,7 +161,7 @@ export const offsets = () => (
           <Box />
         </Col>
       </Row>
-    </Grid>
+    </FlexGrid>
   </StoryTemplate>
 );
 
@@ -170,7 +170,7 @@ export const centered = () => (
     <StoryDescription>
       You can center the content of a row by passing it <code>center</code>.
     </StoryDescription>
-    <Grid fluid {...defaultGridProps}>
+    <FlexGrid fluid {...defaultGridProps}>
       <Row>
         <Col xs={12}>
           <Row center="xs">
@@ -180,6 +180,6 @@ export const centered = () => (
           </Row>
         </Col>
       </Row>
-    </Grid>
+    </FlexGrid>
   </StoryTemplate>
 );

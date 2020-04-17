@@ -17,6 +17,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const classNames = cx(
       s.Input,
       {
+        [s.fileInput]: rest.type === 'file',
+      },
+      {
         [s.error]: error,
       },
       className
