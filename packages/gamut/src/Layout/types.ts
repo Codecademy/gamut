@@ -6,6 +6,8 @@ export type GapTypes = 'rowGap' | 'columnGap';
 export type GapSizes = 'sm' | 'md' | 'lg' | 'xl';
 
 export type ContainerElementProps = {
+  /** Class name to add the to root node */
   className?: string;
+  /** test id prop to be placed as `data-testid` */
   testId?: string;
 };

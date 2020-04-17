@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { generateClassnames } from '../utils/generateClassnames';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ContainerElementProps, GapSizes, GapTypes } from './types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 
@@ -20,7 +20,7 @@ export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
   const classes = cx(
     s.container,
     className,
-    generateClassnames({ rowGap, columnGap }, s)
+    generateResponsiveClassnames({ rowGap, columnGap }, s)
   );
 
   return (

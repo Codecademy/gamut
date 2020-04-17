@@ -8,11 +8,12 @@ import {
   OptionalResponsiveProperty,
 } from '../typings/responsive-properties';
 
-export const generateClassnames = (
+export const generateResponsiveClassnames = (
   config: ResponsiveProperty<unknown> | OptionalResponsiveProperty<unknown>,
   styleMap: Record<string, string>
 ): string[] => {
   const styleList: string[] = [];
+
   Object.entries(config).forEach(([propName, propValue]) => {
     switch (typeof propValue) {
       case 'number':
@@ -39,4 +40,4 @@ export const generateClassnames = (
   return styleList;
 };
 
-export default generateClassnames;
+export default generateResponsiveClassnames;

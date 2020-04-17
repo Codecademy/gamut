@@ -5,14 +5,14 @@ import style from './styles/index.module.scss';
 
 const propKeys = ['fluid', 'className', 'tagName', 'children'];
 
-export type GridProps = {
+export type FlexGridProps = {
   children?: ReactNode | ReactNode[];
   className?: string;
   fluid?: boolean;
   tagName?: string;
 };
 
-export const Grid: React.FC<GridProps> = props => {
+export const FlexGrid: React.FC<FlexGridProps> = props => {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 
@@ -22,4 +22,4 @@ export const Grid: React.FC<GridProps> = props => {
   );
 };
 
-export default Grid;
+export default FlexGrid;

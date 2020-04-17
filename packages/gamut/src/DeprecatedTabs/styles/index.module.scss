@@ -27,9 +27,9 @@ $anim-duration: 300ms;
 // regular style tabs
 .tab.traditional {
   &[aria-selected="false"] {
-    background-color: $deprecated-swatches-grey-100;
+    background-color: $color-gray-100;
     &:hover {
-      background-color: lighten($deprecated-swatches-grey-100, 2%);
+      background-color: lighten($color-gray-100, 2%);
     }
   }
   &[aria-selected="true"] {
@@ -43,7 +43,7 @@ $anim-duration: 300ms;
   // add an underline hover style
   &::after {
     height: 0.25rem;
-    background-color: fade-out($deprecated-swatches-blue-800, 0.85);
+    background-color: fade-out($color-blue-800, 0.85);
     position: absolute;
     left: 0;
     bottom: 0;
@@ -67,7 +67,7 @@ $anim-duration: 300ms;
 // only present if prop animatedUnderlineStyle === true
 .tabIndicator {
   transition: left $anim-duration cubic-bezier(0.215, 0.61, 0.355, 1);
-  background: $deprecated-swatches-blue-800;
+  background: $color-blue-700;
   height: 0.25rem;
   position: absolute;
   bottom: 0;
