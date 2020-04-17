@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import s from './styles/Text.module.scss';
 import { ContainerElementProps } from '../Layout/types';
-import { generateClassnames } from '../utils/generateClassnames';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { AllowedStyles } from './types';
 
@@ -29,7 +29,11 @@ export const Text: React.FC<TextProps> = ({
 }) => {
   return (
     <Element
-      className={cx(s.text, className, generateClassnames({ fontSize }, s))}
+      className={cx(
+        s.text,
+        className,
+        generateResponsiveClassnames({ fontSize }, s)
+      )}
       data-testid={testId}
       style={style}
     >

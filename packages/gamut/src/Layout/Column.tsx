@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { generateClassnames } from '../utils/generateClassnames';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
 import s from './styles/Column.module.scss';
 import {
@@ -24,7 +24,7 @@ export const Column: React.FC<ColumnProps> = ({
   const classNames = cx(
     s.container,
     className,
-    generateClassnames({ size, offset }, s)
+    generateResponsiveClassnames({ size, offset }, s)
   );
   return (
     <div className={classNames} data-testid={testId}>
