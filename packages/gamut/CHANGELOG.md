@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.7.2 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
 ## <small>3.7.1 (2020-04-16)</small>
 
 * Tweaked AccordionButton to look more like the nice LE yellow ones (#730) ([b54771e](https://github.com/RyzacInc/client-modules/commit/b54771e)), closes [#730](https://github.com/RyzacInc/client-modules/issues/730)
