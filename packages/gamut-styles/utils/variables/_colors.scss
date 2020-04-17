@@ -106,6 +106,19 @@ $brand-beige: #efd9ca;
 $brand-dark-blue: #141c3a;
 
 // =======================================
+//      EDITOR COLORS
+// =======================================
+
+$color-editor-blue: #83fff5;
+$color-editor-deep-purple: #cc7bc2;
+$color-editor-gray: #939598;
+$color-editor-green: #b4d353;
+$color-editor-orange: #ff8973;
+$color-editor-purple: #b3ccff;
+$color-editor-red: #e85d7f;
+$color-editor-yellow: #ffe083;
+
+// =======================================
 //      DEPRECATED COLORS
 // =======================================
 
@@ -198,28 +211,6 @@ $deprecated-color-darkblue: #204056;
 $deprecated-color-midnightblue: #152b39;
 $deprecated-color-mint: #34b3a0;
 $deprecated-color-red: #f65a5b;
-
-$deprecated-swatches-basic-black: $color-black;
-$deprecated-swatches-basic-white: $color-white;
-$deprecated-swatches-code-default: $color-white;
-$deprecated-swatches-code-atom: #ff7155;
-$deprecated-swatches-code-attribute: #ceff00;
-$deprecated-swatches-code-builtin: #ddda6f;
-$deprecated-swatches-code-comment: #737887;
-$deprecated-swatches-code-def: #b5a1a1;
-$deprecated-swatches-code-error: #e83131;
-$deprecated-swatches-code-keyword: #64ffe1;
-$deprecated-swatches-code-meta: #d478ea;
-$deprecated-swatches-code-number: #ef9eb4;
-$deprecated-swatches-code-operator: #b5a1a1;
-$deprecated-swatches-code-property: #9771ff;
-$deprecated-swatches-code-qualifier: #fff543;
-$deprecated-swatches-code-string-1: #ffde52;
-$deprecated-swatches-code-string-2: #ac99bf;
-$deprecated-swatches-code-tag: #e85d7f;
-$deprecated-swatches-code-variable-1: #249cff;
-$deprecated-swatches-code-variable-2: #57ff93;
-$deprecated-swatches-code-variable-3: #5affef;
 
 $deprecated-swatches-blue-100: #dceff8;
 $deprecated-swatches-blue-200: #bae0f1;
