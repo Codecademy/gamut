@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## 4.8.0 (2020-04-17)
+
+* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+
+
+
+
+
 ## 4.7.0 (2020-04-16)
 
 * feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
