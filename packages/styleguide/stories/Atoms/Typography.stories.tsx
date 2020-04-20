@@ -10,13 +10,13 @@ import {
 } from '@codecademy/gamut/src';
 
 import {
-  decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStories,
 } from '../Templating';
 
-export default decoratedStory('Atoms', 'Typography');
+export default decoratedStories('Atoms', 'Typography');
 
 const headingTags: HeadingTags[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 const headingSizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];

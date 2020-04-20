@@ -7,11 +7,12 @@ import {
   StoryStatus,
   StoryTemplate,
   StoryDescription,
+  decoratedStories,
 } from '../../Templating';
 
-export default decoratedStory('Foundations', 'Layouts', 'List');
+export default decoratedStories('Foundations', 'Layouts', 'FlexList');
 
-export const listBasics = () => {
+export const listBasics = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -24,7 +25,7 @@ export const listBasics = () => {
         you might have a particular set of gaps at small viewports and bigger
         ones on large viewports.
       </StoryDescription>
-      <List boredered>
+      <List bordered gap>
         <ListRow>
           <ListColumn size="xs">xs</ListColumn>
         </ListRow>
@@ -55,4 +56,4 @@ export const listBasics = () => {
       </List>
     </StoryTemplate>
   );
-};
+});

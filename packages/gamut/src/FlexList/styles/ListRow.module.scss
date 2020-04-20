@@ -5,10 +5,10 @@
   align-items: stretch;
 }
 
-.listRow__vAlign {
-  & > * {
-    align-items: center;
-  }
+.bordered {
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: -1px;
 }
 
 /**

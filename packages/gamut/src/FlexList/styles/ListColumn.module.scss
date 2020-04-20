@@ -1,8 +1,21 @@
 @import "./variables.scss";
 
-.listColumn {
+.container {
   position: relative;
   display: flex;
+}
+
+.bordered {
+  border-width: 0 1px 0 0;
+  border-style: solid;
+
+  & ~ .bordered {
+    margin-left: -1px;
+  }
+
+  &:last-child {
+    margin-right: -1px;
+  }
 }
 
 /**
@@ -26,6 +39,7 @@
     // Max
     .size_max__#{$screenSize} {
       flex-basis: 100%;
+      border: none;
     }
 
     // Padding all directions

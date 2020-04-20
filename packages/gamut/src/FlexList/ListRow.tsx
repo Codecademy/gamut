@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cx from 'classnames';
 
 import { generateResponsiveClassnames } from '../utils';
 import { ResponsiveProperty } from '../typings/responsive-properties';
+import { ListContext } from './ListContext';
 
 import s from './styles/ListRow.module.scss';
 
@@ -18,17 +19,24 @@ export type ListRow = {
   wrap?: ResponsiveProperty<Wrap>;
 };
 
-export const ListRow: React.FC<ListRow> = React.memo(
-  ({ children, align = 'start', wrap = 'nowrap' }) => (
+export const ListRow: React.FC<ListRow> = ({
+  children,
+  align = 'start',
+  wrap = 'nowrap',
+}) => {
+  const { bordered } = useContext(ListContext);
+
+  return (
     <div
       className={cx(
         s.listRow,
-        generateResponsiveClassnames({ wrap, align }, s)
+        generateResponsiveClassnames({ wrap, align }, s),
+        { [s.bordered]: bordered }
       )}
     >
       {children}
     </div>
-  )
-);
+  );
+};
 
 export default ListRow;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cx from 'classnames';
 
 import { generateResponsiveClassnames } from '../utils';
@@ -6,6 +6,7 @@ import {
   ResponsiveProperty,
   OptionalResponsiveProperty,
 } from '../typings/responsive-properties';
+import { ListContext } from './ListContext';
 
 import s from './styles/ListColumn.module.scss';
 
@@ -40,19 +41,26 @@ export type ListColumnProps = {
   padding?: OptionalResponsiveProperty<PaddingSizes>;
 };
 
-export const ListColumn: React.FC<ListColumnProps> = React.memo(
-  ({ padding = 'sm', flush, size = 'content', align, children }) => {
-    return (
-      <div
-        className={cx(
-          s.listColumn,
-          generateResponsiveClassnames({ padding, flush, size, align }, s)
-        )}
-      >
-        {children}
-      </div>
-    );
-  }
-);
+export const ListColumn: React.FC<ListColumnProps> = ({
+  padding = 'sm',
+  flush,
+  size = 'content',
+  align,
+  children,
+}) => {
+  const { bordered } = useContext(ListContext);
+
+  return (
+    <div
+      className={cx(
+        s.listColumn,
+        generateResponsiveClassnames({ padding, flush, size, align }, s),
+        { [s.bordered]: bordered }
+      )}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default ListColumn;
