@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
+
+## 6.1.0 (2020-04-20)
+
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
+
+## <small>6.0.2 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>6.0.1 (2020-04-17)</small>
+
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
+
 ## 6.0.0 (2020-04-17)
 
 * chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
