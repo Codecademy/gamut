@@ -20,7 +20,6 @@ export * from './Icon';
 export * from './IkonaIcon';
 export * from './Interstitial';
 export * from './Layout';
-export * from './Logo';
 export * from './Markdown';
 export * from './Menus/MenuItem';
 export * from './Menus/SideMenu';
