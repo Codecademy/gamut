@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { AppBar, AppBarSection } from '../../../dist';
+import { AppBar, AppBarSection } from '../../';
 
 import styles from './styles.module.scss';
 

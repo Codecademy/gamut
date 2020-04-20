@@ -1,4 +1,4 @@
-import React, { Component, HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import omitProps from '../../utils/omitProps';
 import cx from 'classnames';
 import s from './styles.module.scss';
