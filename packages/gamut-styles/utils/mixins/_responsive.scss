@@ -48,3 +48,26 @@
     @content;
   }
 }
+
+// Named view port mixin
+
+@mixin getViewport($viewport) {
+  @if $viewport == "lg" {
+    @include lg-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "md" {
+    @include md-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "sm" {
+    @include sm-viewport {
+      @content;
+    }
+  }
+  @if $viewport == "xs" {
+    @content;
+  }
+}

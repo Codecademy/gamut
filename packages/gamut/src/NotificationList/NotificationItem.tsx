@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import moment from 'moment';
-import Truncate from 'react-truncate';
+import Truncate from '../Truncate';
 import { Notification } from './typings';
 import NotificationIcon from './NotificationIcon';
 import s from './styles/Notification.module.scss';
@@ -51,9 +51,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = props => {
       />
       <div className={s.body}>
         <div className={s.text}>
-          <Truncate lines={3} ellipsis="...">
-            {text}
-          </Truncate>
+          <Truncate lines={3}>{text}</Truncate>
         </div>
         <div className={s.time}>{formatTime(date)}</div>
       </div>

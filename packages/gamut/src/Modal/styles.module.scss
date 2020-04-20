@@ -1,0 +1,29 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.modal {
+  background-color: rgba(25, 25, 26, 0.7);
+  z-index: 15;
+}
+
+.modalContainer {
+  max-width: 100%;
+}
+
+.modalBody {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.closeButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.closeButton {
+  padding: 0.5rem;
+  margin: -0.5rem -0.5rem 0.5rem 0;
+}
+
+.closeIcon {
+  color: $color-gray-800;
+}
