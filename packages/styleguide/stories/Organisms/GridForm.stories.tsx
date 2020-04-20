@@ -1,4 +1,4 @@
-import { GridForm, Input } from '@codecademy/gamut/src';
+import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -144,62 +144,91 @@ export const gridFormWithSubmitButtonPosition = () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       We can position the submit button by passing the position prop with a
-      value of left, center or right.
+      value of left, center, right, or stretch.
     </StoryDescription>
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Right Submit!?',
-        position: 'right',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Center Submit!?',
-        position: 'center',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Left Submit!?',
-        position: 'left',
-        size: 12,
-      }}
-    />
+    <LayoutGrid>
+      <Column size={6}>
+        {' '}
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Right Submit!?',
+            position: 'right',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Center Submit!?',
+            position: 'center',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Left Submit!?',
+            position: 'left',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Stretch Submit!?',
+            position: 'stretch',
+            size: 12,
+          }}
+        />
+      </Column>
+    </LayoutGrid>
   </StoryTemplate>
 );
 
@@ -347,6 +376,44 @@ export const gridFormWithCustomInput = () => (
           },
           size: 12,
           type: 'custom',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+      }}
+    />
+  </StoryTemplate>
+);
+
+export const gridFormWithPlaceholderText = () => (
+  <StoryTemplate status={StoryStatus.Ready}>
+    <StoryDescription>
+      Text inputs are allowed to have traditional <code>placeholder</code> text.
+      This is a somewhat dangerous behavior for accessibility, as browsers
+      generally don't render placeholder text with high enough color contrast
+      for AA standards. If you do need to use placeholder text, such as on
+      landing page forms that have been shown to have higher completion rates
+      with the text, please make sure the placeholder text doesn't add any new
+      information to the form -- it should really only rephrase the text label.
+      <br />
+      See{' '}
+      <a href="https://www.nngroup.com/articles/form-design-placeholders/">
+        this article
+      </a>{' '}
+      for more details on why using placeholders is often bad.
+    </StoryDescription>
+
+    <GridForm
+      fields={[
+        {
+          label: 'Email',
+          placeholder: 'Your email',
+          name: 'custom-input',
+          size: 12,
+          type: 'email',
         },
       ]}
       onSubmit={async values => {
