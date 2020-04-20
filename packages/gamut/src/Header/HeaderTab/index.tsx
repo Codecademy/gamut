@@ -8,37 +8,36 @@ export type HeaderTabProps = HTMLAttributes<HTMLElement> & {
   href?: string;
   onClick?: (event: React.MouseEvent, params?: {}) => void;
   params?: {};
+  className?: string;
 };
 
-class HeaderTab extends Component<HeaderTabProps> {
-  handleClick: React.MouseEventHandler = e => {
-    if (this.props.onClick) {
-      this.props.onClick(e, this.props.params);
+const HeaderTab: React.FC<HeaderTabProps> = props => {
+  const handleClick: React.MouseEventHandler = (e: any) => {
+    if (props.onClick) {
+      props.onClick(e, props.params);
     }
   };
 
-  render() {
-    let { component } = this.props;
-    const { className, children, ...propsToTransfer } = this.props;
+  let { component } = props;
+  const { className, children, ...propsToTransfer } = props;
 
-    if (!component) {
-      component = this.props.href ? 'a' : 'div';
-    }
-
-    const classes = cx(s.headerTab, className);
-
-    const TabComponent = React.createElement(
-      component,
-      {
-        ...omitProps(['component'], propsToTransfer),
-        onClick: this.handleClick,
-        className: classes,
-      },
-      children
-    );
-
-    return <div key={this.props.id}>{TabComponent}</div>;
+  if (!component) {
+    component = props.href ? 'a' : 'div';
   }
-}
+
+  const classes = cx(s.headerTab, className);
+
+  const TabComponent = React.createElement(
+    component,
+    {
+      ...omitProps(['component'], propsToTransfer),
+      onClick: handleClick,
+      className: classes,
+    },
+    children
+  );
+
+  return <div key={props.id}>{TabComponent}</div>;
+};
 
 export default HeaderTab;
