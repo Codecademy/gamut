@@ -2,12 +2,12 @@ import { Logo } from '@codecademy/brand-components/src';
 import { AppBar, AppBarSection, AppBarTab } from '@codecademy/gamut/src';
 import React from 'react';
 
-import { decoratedStory } from '../../Templating';
+import { decoratedStories, decoratedStory } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Molecules', AppBar);
+export default decoratedStories('Molecules', AppBar);
 
-export const appBar = () => (
+export const appBar = decoratedStory(() => (
   <div>
     <p>
       This is an example of an AppBar component that contains one left-oriented
@@ -21,9 +21,9 @@ export const appBar = () => (
       </AppBarSection>
     </AppBar>
   </div>
-);
+));
 
-export const headerAppBar = () => (
+export const headerAppBar = decoratedStory(() => (
   <div>
     <p>
       This is an example of how our headers use the AppBar component to format
@@ -42,4 +42,4 @@ export const headerAppBar = () => (
       <AppBarSection position="right">Sign In</AppBarSection>
     </AppBar>
   </div>
-);
+));

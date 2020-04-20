@@ -3,15 +3,16 @@ import { select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryDescription,
   StoryStatus,
 } from '../Templating';
 
-export default decoratedStory('Atoms', ToolTip);
+export default decoratedStories('Atoms', ToolTip);
 
-export const toolTip = () => {
+export const toolTip = decoratedStory(() => {
   const position = select(
     'Position',
     [
@@ -58,4 +59,4 @@ export const toolTip = () => {
       )}
     </StoryTemplate>
   );
-};
+});

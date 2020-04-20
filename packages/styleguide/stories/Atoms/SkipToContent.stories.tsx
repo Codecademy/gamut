@@ -2,15 +2,16 @@ import React from 'react';
 
 import { SkipToContent } from '@codecademy/gamut/src';
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Atoms', SkipToContent);
+export default decoratedStories('Atoms', SkipToContent);
 
-export const skipToContent = () => (
+export const skipToContent = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       A hidden-by-default link that becomes visible when the user <kbd>Tab</kbd>
@@ -27,4 +28,4 @@ export const skipToContent = () => (
     </StoryDescription>
     <SkipToContent contentId="example" />
   </StoryTemplate>
-);
+));

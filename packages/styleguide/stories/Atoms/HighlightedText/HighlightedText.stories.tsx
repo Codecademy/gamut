@@ -3,6 +3,7 @@ import { text } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -10,9 +11,9 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Atoms', HighlightedText);
+export default decoratedStories('Atoms', HighlightedText);
 
-export const highlightedText = () => (
+export const highlightedText = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Emphasized (bold) text with a light background color behind it. Use to
@@ -23,4 +24,4 @@ export const highlightedText = () => (
       <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
     </p>
   </StoryTemplate>
-);
+));

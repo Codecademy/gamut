@@ -16,14 +16,15 @@ import { startCase } from 'lodash';
 import React from 'react';
 
 import {
+  decoratedStories,
+  decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
-  decoratedStory,
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Foundations', 'Colors');
+export default decoratedStories('Foundations', 'Colors');
 
 const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
@@ -83,7 +84,7 @@ const baseColors = {
 
 const excludedColors = ['black', 'white', 'beige', 'royalBlue'];
 
-export const Colors = () => (
+export const Colors = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready} wide>
     <StoryDescription>
       Brand color atoms we select from in creating designs. All colors seen on
@@ -123,9 +124,9 @@ export const Colors = () => (
         ))}
     </Container>
   </StoryTemplate>
-);
+));
 
-export const Editor = () => {
+export const Editor = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready} theme={VisualTheme.DarkMode} wide>
       <StoryDescription>
@@ -146,9 +147,9 @@ export const Editor = () => {
       </LayoutGrid>
     </StoryTemplate>
   );
-};
+});
 
-export const GamutDeprecated = () => (
+export const GamutDeprecated = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       We used to have a very different color palette. Please do not use these
@@ -178,9 +179,9 @@ export const GamutDeprecated = () => (
       ))}
     </Container>
   </StoryTemplate>
-);
+));
 
-export const PortalDeprecated = () => (
+export const PortalDeprecated = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       Similar to the deprecated Gamut colors, these ones are an old palette from
@@ -204,4 +205,4 @@ export const PortalDeprecated = () => (
       ))}
     </Container>
   </StoryTemplate>
-);
+));
