@@ -42,6 +42,8 @@ const deprecatedThemeKeys = [
   'purple',
 ];
 
+const statusThemeKeys = ['success', 'notice', 'error', 'announcement', 'info'];
+
 const themes = brandThemeKeys.reduce<Record<string, string>>(
   (previous, key) => ({ ...previous, [key]: key }),
   {}
@@ -85,6 +87,11 @@ export const allButtonThemes = () => {
       </StoryDescription>
       <div>
         {brandThemeKeys.map(theme => renderInlineButton(theme, variant))}
+      </div>
+      <br />
+      Alert status themes
+      <div>
+        {statusThemeKeys.map(theme => renderInlineButton(theme, variant))}
       </div>
       <br />
       We also have legacy button colors floating around. Do not use these.
