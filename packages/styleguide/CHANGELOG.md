@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>6.0.2 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>6.0.1 (2020-04-17)</small>
+
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
+
+## 6.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## 4.8.0 (2020-04-17)
+
+* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+
+
+
+
+
+## 4.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
+## 4.6.0 (2020-04-16)
+
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
+
+## 4.5.0 (2020-04-14)
+
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
+
+## <small>4.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 4.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## <small>4.3.1 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## 4.3.0 (2020-04-10)
 
 * feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)

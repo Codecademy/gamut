@@ -33,12 +33,9 @@ const deprecatedThemeKeys = [
   ...Object.keys(buttonPresetThemes),
   'mint',
   'darkmint',
-  'blue',
   'darkblue',
   'midnightblue',
   'grey',
-  'red',
-  'yellow',
   'greyblue',
   'white',
   'ccblue',
@@ -153,7 +150,7 @@ export const standardButtonOptions = decoratedStory(() => {
         </Button>
         <Button
           href="#"
-          onClick={onClick}
+          onClick={action('Clicked Button')}
           outline
           round={round}
           style={btnStyle}
@@ -166,7 +163,7 @@ export const standardButtonOptions = decoratedStory(() => {
         </Button>
         <Button
           href="#"
-          onClick={onClick}
+          onClick={action('Clicked Button')}
           round={round}
           size="small"
           style={btnStyle}
@@ -203,7 +200,7 @@ export const editablePlayground = decoratedStory(() => (
       caps={boolean('caps', false)}
       go={boolean('go', false)}
       link={boolean('link', false)}
-      onClick={onClick}
+      onClick={action('Clicked Button')}
       outline={boolean('outline', false)}
       size={select('size', ['small', 'large', undefined], undefined)}
       theme={select('theme', themes, 'brand-blue')}

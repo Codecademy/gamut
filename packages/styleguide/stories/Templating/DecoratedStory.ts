@@ -1,6 +1,6 @@
 type DecoratedStory = {
-  (name: string, context: any): any;
-  (context: any): any;
+  (name: string, context: () => void): any;
+  (context: () => void): any;
 };
 
 export const decoratedStory: DecoratedStory = (...args: any[]) => {

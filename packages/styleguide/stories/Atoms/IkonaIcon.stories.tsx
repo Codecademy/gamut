@@ -4,6 +4,7 @@ import React from 'react';
 
 import {
   decoratedStories,
+  decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
@@ -15,7 +16,7 @@ const iconNames = Object.keys(iconStyles)
 
 export default decoratedStories('Atoms', 'IkonaIcons (Deprecated)');
 
-export const ikonaIcons = () => (
+export const ikonaIcons = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
       Very old legacy icons as defined in the <code>@codecademy/gamut</code>{' '}
@@ -33,4 +34,4 @@ export const ikonaIcons = () => (
       ))}
     </LayoutGrid>
   </StoryTemplate>
-);
+));

@@ -19,7 +19,7 @@ export const interstitial = decoratedStory(() => (
     </StoryDescription>
     <Interstitial
       buttons={[
-        <Button key="1" theme="yellow">
+        <Button key="1" theme="brand-yellow">
           One Button
         </Button>,
         <Button key="1" theme="white" outline>
@@ -47,7 +47,7 @@ export const interstitialWithDecoration = decoratedStory(() => (
         <Button key="1" theme="brand-red">
           Red Button
         </Button>,
-        <Button key="2" theme="royalblue">
+        <Button key="2" theme="brand-blue">
           Blue Button
         </Button>,
       ]}

@@ -11,7 +11,7 @@ import {
 
 export default decoratedStories('Atoms', Overlay);
 
-export const overlay = () => <OverlayStory />;
+export const overlay = decoratedStory(() => <OverlayStory />);
 
 const OverlayStory = decoratedStory(() => {
   const [open, setOpen] = useState(false);

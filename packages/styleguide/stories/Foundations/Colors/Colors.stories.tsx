@@ -2,10 +2,16 @@ import {
   brandColors,
   colors,
   deprecatedColors,
-  deprecatedEditorColors,
+  editorColors,
   deprecatedGamutColors,
 } from '@codecademy/gamut-styles/utils/variables';
-import { Container, LayoutGrid, Column } from '@codecademy/gamut/src';
+import {
+  Container,
+  LayoutGrid,
+  Column,
+  VisualTheme,
+} from '@codecademy/gamut/src';
+import cx from 'classnames';
 import { startCase } from 'lodash';
 import React from 'react';
 
@@ -56,8 +62,9 @@ const renderSwatch = (sassVariableName: string, hexcode: string) => {
   );
 };
 
-const renderSwatches = (data: any, variablePrefix: string) =>
-  Object.keys(data).map(variableSuffix => {
+const renderSwatches = (data: any, variablePrefix: string) => {
+  if (!data) debugger;
+  return Object.keys(data).map(variableSuffix => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
       variableSuffix
@@ -68,6 +75,7 @@ const renderSwatches = (data: any, variablePrefix: string) =>
 
     return renderSwatch(sassVariableName, hexcode);
   });
+};
 
 const baseColors = {
   black: colors.black,
@@ -118,6 +126,29 @@ export const Colors = decoratedStory(() => (
   </StoryTemplate>
 ));
 
+export const Editor = decoratedStory(() => {
+  return (
+    <StoryTemplate status={StoryStatus.Ready} theme={VisualTheme.DarkMode} wide>
+      <StoryDescription>
+        The LE's code editor uses its own colors for text.
+      </StoryDescription>
+      <LayoutGrid className={styles.swatchesContainer} rowGap="md">
+        {objectKeys(editorColors).map(color => (
+          <Column key={color} size={3}>
+            <h2 className={cx(styles.heading, styles.headingDark)}>
+              Editor {startCase(color)}
+            </h2>
+            {renderSwatch(
+              `color-editor-${parseCamelCase(color)}`,
+              editorColors[color]
+            )}
+          </Column>
+        ))}
+      </LayoutGrid>
+    </StoryTemplate>
+  );
+});
+
 export const GamutDeprecated = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>
     <StoryDescription>
@@ -158,7 +189,7 @@ export const PortalDeprecated = decoratedStory(() => (
     </StoryDescription>
     <Container>
       <div>
-        <h2 className={styles.heading}>deprecated portal base colors</h2>
+        <h2 className={styles.heading}>Deprecated portal base colors</h2>
         {renderSwatches(deprecatedColors.portal, 'deprecated')}
       </div>
       {Object.keys(deprecatedColors.swatches).map(color => (
@@ -175,21 +206,3 @@ export const PortalDeprecated = decoratedStory(() => (
     </Container>
   </StoryTemplate>
 ));
-
-export const EditorDeprecated = decoratedStory(() => {
-  const { white, black, ...platformRest } = deprecatedEditorColors;
-
-  return (
-    <StoryTemplate status={StoryStatus.Deprecated} wide>
-      <StoryDescription>
-        Similar to the deprecated Gamut colors, these ones are an old palette
-        from the Portal.
-      </StoryDescription>
-      <div>
-        <h2 className={styles.heading}>deprecated editor colors</h2>
-        {renderSwatches({ white, black }, 'deprecated-swatches-basic')}
-        {renderSwatches(platformRest, 'deprecated-swatches-code')}
-      </div>
-    </StoryTemplate>
-  );
-});

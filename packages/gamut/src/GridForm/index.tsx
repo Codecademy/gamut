@@ -7,6 +7,8 @@ import GridFormInputGroup from './GridFormInputGroup';
 import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
+export * from './types';
+
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
   className?: string;
@@ -76,7 +78,7 @@ export function GridForm<
               field={field}
               key={field.name}
               register={register}
-              setValue={value => setValue(field.name, value as Values[string])}
+              setValue={setValue}
             />
           );
         })}
