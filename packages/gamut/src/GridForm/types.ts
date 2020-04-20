@@ -34,6 +34,7 @@ export type GridFormCustomField = BaseFormField & {
 export type GridFormTextField = BaseFormField & {
   defaultValue?: string;
   label: string;
+  placeholder?: string;
   validation?: ValidationOptions;
   type: 'text' | 'email';
 };
