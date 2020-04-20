@@ -1,5 +1,6 @@
 import { select, number } from '@storybook/addon-knobs';
-import { Column, LayoutGrid, Logo } from '@codecademy/gamut/src';
+import { Logo } from '@codecademy/brand-components/src';
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import React from 'react';
 
 import { selectableColors } from '../helpers';
@@ -11,7 +12,7 @@ import {
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStories('Atoms', Logo);
+export default decoratedStories('Brand', Logo);
 
 const types = [
   'pro',

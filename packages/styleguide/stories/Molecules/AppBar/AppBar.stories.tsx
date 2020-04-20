@@ -1,4 +1,5 @@
-import { AppBar, AppBarSection, AppBarTab, Logo } from '@codecademy/gamut/src';
+import { Logo } from '@codecademy/brand-components/src';
+import { AppBar, AppBarSection, AppBarTab } from '@codecademy/gamut/src';
 import React from 'react';
 
 import { decoratedStories, decoratedStory } from '../../Templating';

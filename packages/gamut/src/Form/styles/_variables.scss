@@ -1,9 +1,7 @@
 @import "~@codecademy/gamut-styles/utils";
-$color-border: $color-gray-100;
+$color-border: $color-gray-200;
 $item-background: $color-white;
-$item-background-hover: $color-gray-100;
-$item-background-selected: $color-green-600;
-$item-background-selected-hover: rgba($item-background-selected, 0.7);
+$item-background-hover: $color-gray-200;
 $border-radius: 2px;
 $transition-time: 0.15s;
 $form-padding: 0.8rem;
