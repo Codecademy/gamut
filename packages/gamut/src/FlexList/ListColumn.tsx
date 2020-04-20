@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import generateClassnames from '../utils/generateClassnames';
+import { generateResponsiveClassnames } from '../utils';
 import {
   ResponsiveProperty,
   OptionalResponsiveProperty,
@@ -46,7 +46,7 @@ export const ListColumn: React.FC<ListColumnProps> = React.memo(
       <div
         className={cx(
           s.listColumn,
-          generateClassnames({ padding, flush, size, align }, s)
+          generateResponsiveClassnames({ padding, flush, size, align }, s)
         )}
       >
         {children}

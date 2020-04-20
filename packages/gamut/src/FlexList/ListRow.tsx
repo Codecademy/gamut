@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import generateClassnames from '../utils/generateClassnames';
+import { generateResponsiveClassnames } from '../utils';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 
 import s from './styles/ListRow.module.scss';
@@ -20,7 +20,12 @@ export type ListRow = {
 
 export const ListRow: React.FC<ListRow> = React.memo(
   ({ children, align = 'start', wrap = 'nowrap' }) => (
-    <div className={cx(s.listRow, generateClassnames({ wrap, align }, s))}>
+    <div
+      className={cx(
+        s.listRow,
+        generateResponsiveClassnames({ wrap, align }, s)
+      )}
+    >
       {children}
     </div>
   )
