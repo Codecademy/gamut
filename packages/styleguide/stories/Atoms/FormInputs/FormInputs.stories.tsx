@@ -10,16 +10,17 @@ import { select as selectKnob, boolean, number } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStory,
+  decoratedStories,
   StoryStatus,
   StoryTemplate,
   StoryDescription,
+  decoratedStory,
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Atoms', 'Form Inputs');
+export default decoratedStories('Atoms', 'Form Inputs');
 
-export const formInputs = () => (
+export const formInputs = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Input atoms tied 1:1 with values to be submitted in a form.
@@ -28,9 +29,9 @@ export const formInputs = () => (
       instead, use <code>GridForm</code> to auto-generate these for you.
     </StoryDescription>
   </StoryTemplate>
-);
+));
 
-export const checkbox = () => (
+export const checkbox = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>Toggles a named boolean input value.</StoryDescription>
     <div>
@@ -39,9 +40,9 @@ export const checkbox = () => (
       <Checkbox htmlFor="ruby" label="Ruby" />
     </div>
   </StoryTemplate>
-);
+));
 
-export const input = () => (
+export const input = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a short-form text-based value. It can be configured as a native HTML{' '}
@@ -58,9 +59,9 @@ export const input = () => (
       />
     </div>
   </StoryTemplate>
-);
+));
 
-export const radioGroup = () => (
+export const radioGroup = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a value to one of a finite set of known values.
@@ -79,9 +80,9 @@ export const radioGroup = () => (
       />
     </RadioGroup>
   </StoryTemplate>
-);
+));
 
-export const select = () => (
+export const select = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Chooses a single value from multiple predefined values.
@@ -93,9 +94,9 @@ export const select = () => (
       />
     </div>
   </StoryTemplate>
-);
+));
 
-export const textArea = () => (
+export const textArea = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Sets a long-form text-based value. It can be configured as a native HTML{' '}
@@ -111,4 +112,4 @@ export const textArea = () => (
       />
     </div>
   </StoryTemplate>
-);
+));

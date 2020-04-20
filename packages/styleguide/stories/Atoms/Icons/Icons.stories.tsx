@@ -5,6 +5,7 @@ import React from 'react';
 
 import { selectableColors } from '../../helpers';
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -12,12 +13,12 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Atoms', 'Icons');
+export default decoratedStories('Atoms', 'Icons');
 
 const iconKeys = Object.keys(icons) as (keyof typeof icons)[];
 const iconEntries = Object.entries(icons);
 
-export const allIcons = () => {
+export const allIcons = decoratedStory(() => {
   const color = select('Color', selectableColors, selectableColors.black);
   const size = number('Size', 64);
 
@@ -36,9 +37,9 @@ export const allIcons = () => {
       </LayoutGrid>
     </StoryTemplate>
   );
-};
+});
 
-export const iconPlayground = () => {
+export const iconPlayground = decoratedStory(() => {
   const iconName = select('Icon Name', iconKeys, iconKeys[0]);
   const IconComponent = icons[iconName];
 
@@ -53,4 +54,4 @@ export const iconPlayground = () => {
       />
     </StoryTemplate>
   );
-};
+});

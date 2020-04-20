@@ -6,7 +6,7 @@ import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
 import styles from './styles.module.scss';
 
-export type GridFormSubmitPosition = 'left' | 'center' | 'right';
+export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;

@@ -4,15 +4,16 @@ import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Molecules', AccordionButton);
+export default decoratedStories('Molecules', AccordionButton);
 
-export const accordionButton = () => (
+export const accordionButton = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       A very simple, stateless molecule consisting of a single button and icon.
@@ -31,9 +32,9 @@ export const accordionButton = () => (
       Click 'Expanded' To Toggle Me
     </AccordionButton>
   </StoryTemplate>
-);
+));
 
-export const blue = () => (
+export const blue = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready} theme={VisualTheme.DarkMode}>
     <StoryDescription>
       Blue accordion tops are only usable in dark contexts, such as the LE's
@@ -47,9 +48,9 @@ export const blue = () => (
       Click 'Expanded' To Toggle Me
     </AccordionButton>
   </StoryTemplate>
-);
+));
 
-export const plain = () => (
+export const plain = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress} theme={VisualTheme.LightMode}>
     <StoryDescription>
       Plain accordion tops are best applied in plain pages such as marketing
@@ -63,9 +64,9 @@ export const plain = () => (
       Click 'Expanded' To Toggle Me
     </AccordionButton>
   </StoryTemplate>
-);
+));
 
-export const yellow = () => (
+export const yellow = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       Yellow accordion tops are our favorite: they look the most professional on
@@ -80,4 +81,4 @@ export const yellow = () => (
       Click 'Expanded' To Toggle Me
     </AccordionButton>
   </StoryTemplate>
-);
+));

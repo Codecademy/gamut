@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.1.0 (2020-04-20)
+
+* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+
+
+
+
+
+## 6.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
+
+## 5.1.0 (2020-04-20)
+
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
+
 ## 5.0.0 (2020-04-17)
 
 * chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
