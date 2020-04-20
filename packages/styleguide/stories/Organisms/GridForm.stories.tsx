@@ -1,11 +1,4 @@
-import {
-  GridForm,
-  Input,
-  LayoutGrid,
-  Column,
-  GridFormField,
-  CardShell,
-} from '@codecademy/gamut/src';
+import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -15,7 +8,6 @@ import {
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
-import styles from './styles.module.scss';
 
 export default decoratedStory('Organisms', GridForm);
 
@@ -396,122 +388,34 @@ export const gridFormWithCustomInput = () => (
   </StoryTemplate>
 );
 
-// temp for business
-
-const FIRST_NAME = 'firstname';
-const LAST_NAME = 'lastname';
-const EMAIL = 'email';
-const PHONE = 'phone';
-const COMPANY = 'company';
-const NUMBER_OF_LICENCES = 'number_of_licences';
-
-const ERROR_MESSAGES = {
-  REQUIRED_FIELD: 'Required',
-  INVALID_EMAIL: 'Invalid Email',
-  INVALID_NUMBER: 'Invalid Number',
-};
-
-const SUBMIT_BUTTON_TEXT = 'Request a Quote';
-
-export const gridFormSubmit = {
-  contents: SUBMIT_BUTTON_TEXT,
-  position: 'stretch',
-  size: 12,
-} as const;
-
-const createSize = (md: 6 | 12) =>
-  ({
-    md,
-    sm: 12,
-    xs: 12,
-  } as const);
-
-const gridFormFields: GridFormField[] = [
-  {
-    name: FIRST_NAME,
-    label: 'First Name',
-    size: createSize(6),
-    type: 'text',
-    validation: {
-      required: ERROR_MESSAGES.REQUIRED_FIELD,
-    },
-  },
-  {
-    name: LAST_NAME,
-    label: 'Last Name',
-    size: createSize(6),
-    type: 'text',
-    validation: {
-      required: ERROR_MESSAGES.REQUIRED_FIELD,
-    },
-  },
-  {
-    label: 'Email',
-    name: EMAIL,
-    placeholder: 'Your email',
-    size: createSize(12),
-    type: 'text',
-    validation: {
-      pattern: {
-        value: /[^@]+@[^@]+\.[^@]+/,
-        message: ERROR_MESSAGES.INVALID_EMAIL,
-      },
-      required: ERROR_MESSAGES.REQUIRED_FIELD,
-    },
-  },
-  {
-    label: 'Phone Number (optional)',
-    name: PHONE,
-    placeholder: 'Your phone number',
-    size: createSize(12),
-    type: 'text',
-    validation: {
-      pattern: {
-        value: /^[0-9 +\-().xX]*$/,
-        message: ERROR_MESSAGES.INVALID_NUMBER,
-      },
-    },
-  },
-  {
-    label: 'Company',
-    name: COMPANY,
-    placeholder: 'Your company',
-    size: createSize(6),
-    type: 'text',
-    validation: {
-      required: ERROR_MESSAGES.REQUIRED_FIELD,
-    },
-  },
-  {
-    defaultValue: '5',
-    label: 'Number of licenses',
-    name: NUMBER_OF_LICENCES,
-    options: ['5', '6-15', '16-25', '26-35', '36-45', '46-55', '55 or more'],
-    size: createSize(6),
-    type: 'select',
-  },
-];
-
-export const gridFormBusinessLanding = () => (
+export const gridFormWithPlaceholderText = () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
-      Demonstration page for the business landing form
+      Text inputs are allowed to have traditional <code>placeholder</code> text.
+      This is a somewhat dangerous behavior for accessibility, as browsers
+      generally don't render placeholder text with high enough color contrast
+      for AA standards. If you do need to use placeholder text, such as on
+      landing page forms that have been shown to have higher completion rates
+      with the text, please make sure the placeholder text doesn't add any new
+      information to the form -- it should really only rephrase the text label.
     </StoryDescription>
 
-    <div className={styles.businessContainer}>
-      <CardShell className={styles.cardShell}>
-        <GridForm
-          fields={gridFormFields}
-          onSubmit={async values => {
-            action('Form Submitted')(values);
-          }}
-          columnGap={{
-            xs: 'sm',
-            md: 'md',
-          }}
-          submit={gridFormSubmit}
-        />
-      </CardShell>
-    </div>
+    <GridForm
+      fields={[
+        {
+          label: 'Email',
+          placeholder: 'Your email',
+          name: 'custom-input',
+          size: 12,
+          type: 'email',
+        },
+      ]}
+      onSubmit={async values => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Submit Me!?',
+      }}
+    />
   </StoryTemplate>
 );
