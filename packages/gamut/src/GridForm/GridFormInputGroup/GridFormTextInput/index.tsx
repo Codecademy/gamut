@@ -22,6 +22,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       className={className}
       error={error}
       htmlFor={field.name}
+      placeholder={field.placeholder}
       name={field.name}
       ref={register(field.validation)}
       type={field.type}
