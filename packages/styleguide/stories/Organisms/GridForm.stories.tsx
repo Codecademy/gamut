@@ -398,6 +398,12 @@ export const gridFormWithPlaceholderText = () => (
       landing page forms that have been shown to have higher completion rates
       with the text, please make sure the placeholder text doesn't add any new
       information to the form -- it should really only rephrase the text label.
+      <br />
+      See{' '}
+      <a href="https://www.nngroup.com/articles/form-design-placeholders/">
+        this article
+      </a>{' '}
+      for more details on why using placeholders is often bad.
     </StoryDescription>
 
     <GridForm
