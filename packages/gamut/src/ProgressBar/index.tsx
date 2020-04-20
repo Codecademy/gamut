@@ -3,6 +3,8 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
+export type ProgressBarTheme = 'blue' | 'yellow';
+
 export type ProgressBarProps = {
   className?: string;
 
@@ -16,22 +18,15 @@ export type ProgressBarProps = {
    */
   percent: number;
 
-  style: ProgressBarStyle;
-};
-
-export type ProgressBarStyle = {
-  backgroundColor: string;
-  barColor: string;
-  fontColor?: string;
+  theme: ProgressBarTheme;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   large,
   percent,
-  style,
+  theme,
 }) => {
-  const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
   const visualPercent = `${percent}%`;
@@ -40,18 +35,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div
       aria-label={`Progress: ${visualPercent}`}
       aria-live="polite"
-      className={cx(styles.progressBar, className)}
+      className={cx(styles.progressBar, styles[theme], className)}
       style={{
-        background: backgroundColor,
         borderRadius: radius,
-        color: fontColor,
         height: `${height}px`,
       }}
     >
       <div
         className={styles.bar}
         style={{
-          background: barColor,
           width: visualPercent,
           ...(large && {
             borderTopRightRadius: radius,

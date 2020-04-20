@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 import styles from './styles.module.scss';
 import {
@@ -17,20 +16,13 @@ export default decoratedStories('Atoms', ProgressBar);
 const bars = [
   {
     large: false,
-    style: {
-      backgroundColor: colors.blue[100],
-      barColor: colors.blue[700],
-    },
+    theme: 'blue',
   },
   {
     large: true,
-    style: {
-      backgroundColor: colors.gray[100],
-      barColor: colors.yellow[500],
-      fontColor: colors.black,
-    },
+    theme: 'yellow',
   },
-];
+] as const;
 
 export const progressBar = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
@@ -45,9 +37,9 @@ export const progressBar = decoratedStory(() => (
     </StoryDescription>
     <LayoutGrid className={styles.progressBarGrid} columnGap="sm" rowGap="sm">
       {[0, 25, 50, 75, 100].map(percent =>
-        bars.map(({ large, style }) => (
-          <Column key={[percent, large, style].join()} size={6}>
-            <ProgressBar large={large} percent={percent} style={style} />
+        bars.map(({ large, theme }) => (
+          <Column key={[percent, large, theme].join()} size={6}>
+            <ProgressBar large={large} percent={percent} theme={theme} />
           </Column>
         ))
       )}
