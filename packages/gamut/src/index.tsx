@@ -1,3 +1,4 @@
+export * from './Alert';
 export * from './AccordionButton';
 export * from './AppBar';
 export * from './AppBar/AppBarSection';
