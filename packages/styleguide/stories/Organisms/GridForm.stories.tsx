@@ -1,4 +1,11 @@
-import { GridForm, Input } from '@codecademy/gamut/src';
+import {
+  GridForm,
+  Input,
+  LayoutGrid,
+  Column,
+  GridFormField,
+  CardShell,
+} from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -8,6 +15,7 @@ import {
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
+import styles from './styles.module.scss';
 
 export default decoratedStory('Organisms', GridForm);
 
@@ -144,62 +152,91 @@ export const gridFormWithSubmitButtonPosition = () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       We can position the submit button by passing the position prop with a
-      value of left, center or right.
+      value of left, center, right, or stretch.
     </StoryDescription>
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Right Submit!?',
-        position: 'right',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Center Submit!?',
-        position: 'center',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async values => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Left Submit!?',
-        position: 'left',
-        size: 12,
-      }}
-    />
+    <LayoutGrid>
+      <Column size={6}>
+        {' '}
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Right Submit!?',
+            position: 'right',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Center Submit!?',
+            position: 'center',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Left Submit!?',
+            position: 'left',
+            size: 12,
+          }}
+        />
+      </Column>
+      <Column size={6}>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Stretch Submit!?',
+            position: 'stretch',
+            size: 12,
+          }}
+        />
+      </Column>
+    </LayoutGrid>
   </StoryTemplate>
 );
 
@@ -356,5 +393,125 @@ export const gridFormWithCustomInput = () => (
         contents: 'Submit Me!?',
       }}
     />
+  </StoryTemplate>
+);
+
+// temp for business
+
+const FIRST_NAME = 'firstname';
+const LAST_NAME = 'lastname';
+const EMAIL = 'email';
+const PHONE = 'phone';
+const COMPANY = 'company';
+const NUMBER_OF_LICENCES = 'number_of_licences';
+
+const ERROR_MESSAGES = {
+  REQUIRED_FIELD: 'Required',
+  INVALID_EMAIL: 'Invalid Email',
+  INVALID_NUMBER: 'Invalid Number',
+};
+
+const SUBMIT_BUTTON_TEXT = 'Request a Quote';
+
+export const gridFormSubmit = {
+  contents: SUBMIT_BUTTON_TEXT,
+  position: 'stretch',
+  size: 12,
+} as const;
+
+const createSize = (md: 6 | 12) =>
+  ({
+    md,
+    sm: 12,
+    xs: 12,
+  } as const);
+
+const gridFormFields: GridFormField[] = [
+  {
+    name: FIRST_NAME,
+    label: 'First Name',
+    size: createSize(6),
+    type: 'text',
+    validation: {
+      required: ERROR_MESSAGES.REQUIRED_FIELD,
+    },
+  },
+  {
+    name: LAST_NAME,
+    label: 'Last Name',
+    size: createSize(6),
+    type: 'text',
+    validation: {
+      required: ERROR_MESSAGES.REQUIRED_FIELD,
+    },
+  },
+  {
+    label: 'Email',
+    name: EMAIL,
+    placeholder: 'Your email',
+    size: createSize(12),
+    type: 'text',
+    validation: {
+      pattern: {
+        value: /[^@]+@[^@]+\.[^@]+/,
+        message: ERROR_MESSAGES.INVALID_EMAIL,
+      },
+      required: ERROR_MESSAGES.REQUIRED_FIELD,
+    },
+  },
+  {
+    label: 'Phone Number (optional)',
+    name: PHONE,
+    placeholder: 'Your phone number',
+    size: createSize(12),
+    type: 'text',
+    validation: {
+      pattern: {
+        value: /^[0-9 +\-().xX]*$/,
+        message: ERROR_MESSAGES.INVALID_NUMBER,
+      },
+    },
+  },
+  {
+    label: 'Company',
+    name: COMPANY,
+    placeholder: 'Your company',
+    size: createSize(6),
+    type: 'text',
+    validation: {
+      required: ERROR_MESSAGES.REQUIRED_FIELD,
+    },
+  },
+  {
+    defaultValue: '5',
+    label: 'Number of licenses',
+    name: NUMBER_OF_LICENCES,
+    options: ['5', '6-15', '16-25', '26-35', '36-45', '46-55', '55 or more'],
+    size: createSize(6),
+    type: 'select',
+  },
+];
+
+export const gridFormBusinessLanding = () => (
+  <StoryTemplate status={StoryStatus.Ready}>
+    <StoryDescription>
+      Demonstration page for the business landing form
+    </StoryDescription>
+
+    <div className={styles.businessContainer}>
+      <CardShell className={styles.cardShell}>
+        <GridForm
+          fields={gridFormFields}
+          onSubmit={async values => {
+            action('Form Submitted')(values);
+          }}
+          columnGap={{
+            xs: 'sm',
+            md: 'md',
+          }}
+          submit={gridFormSubmit}
+        />
+      </CardShell>
+    </div>
   </StoryTemplate>
 );

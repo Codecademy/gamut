@@ -1,0 +1,16 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.businessContainer {
+  background: $color-blue-800;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 2rem;
+}
+
+.cardShell {
+  border-radius: px-rem(8px);
+  background-color: $color-white;
+  max-width: px-rem(432px);
+  padding: 1.5rem;
+}
