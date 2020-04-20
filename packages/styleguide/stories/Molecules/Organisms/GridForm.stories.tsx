@@ -7,7 +7,7 @@ import {
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../Templating';
+} from '../../Templating';
 
 export default decoratedStory('Organisms', GridForm);
 
