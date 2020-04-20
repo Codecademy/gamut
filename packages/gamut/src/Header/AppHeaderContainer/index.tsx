@@ -14,7 +14,7 @@ export type AppHeaderContainerProps = {
   };
 };
 
-const AppHeaderContainer: React.FC<AppHeaderContainerProps> = ({
+export const AppHeaderContainer: React.FC<AppHeaderContainerProps> = ({
   className,
   sections: { after, left, right } = {},
 }) => {

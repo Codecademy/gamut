@@ -11,7 +11,7 @@ export type HeaderTabProps = HTMLAttributes<HTMLElement> & {
   className?: string;
 };
 
-const HeaderTab: React.FC<HeaderTabProps> = props => {
+export const HeaderTab: React.FC<HeaderTabProps> = props => {
   const handleClick: React.MouseEventHandler = (e: any) => {
     if (props.onClick) {
       props.onClick(e, props.params);
