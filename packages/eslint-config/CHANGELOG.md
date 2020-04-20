@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>0.3.3 (2020-04-17)</small>
+
+* Bumped typescript-eslint version for TS 3.8 (#734) ([50ac983](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/50ac983)), closes [#734](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/734)
+
+
+
+
+
 ## [0.3.2](http://github.com/Codecademy/client-modules/packages/eslint-config/compare/@codecademy/eslint-config@0.3.1...@codecademy/eslint-config@0.3.2) (2019-11-15)
 
 **Note:** Version bump only for package @codecademy/eslint-config
