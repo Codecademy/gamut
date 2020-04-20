@@ -3,16 +3,17 @@ import moment from 'moment';
 import React from 'react';
 
 import {
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStory,
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Molecules', NotificationList);
+export default decoratedStories('Molecules', NotificationList);
 
-export const notificationList = () => (
+export const notificationList = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       List of time-sensitive user notifications, such as in a top-right dropdown
@@ -56,4 +57,4 @@ export const notificationList = () => (
       ]}
     />
   </StoryTemplate>
-);
+));

@@ -1,23 +1,21 @@
-import { withKnobs } from '@storybook/addon-knobs';
+type DecoratedStory = {
+  (name: string, context: () => void): any;
+  (context: () => void): any;
+};
 
-export type Section =
-  | 'Atoms'
-  | 'Brand'
-  | 'Foundations'
-  | 'Molecules'
-  | 'Organisms';
+export const decoratedStory: DecoratedStory = (...args: any[]) => {
+  const [name, context] = args.length === 2 ? args : [args[0].name, args[0]];
 
-const stringify = (component: string | Function) =>
-  component instanceof Function ? component.name : component;
-
-export const decoratedStory = (
-  title: Section,
-  component: string | Function,
-  ...nesting: (string | Function)[]
-) => {
-  return {
-    component,
-    decorators: [withKnobs],
-    title: [title, component, ...nesting].map(stringify).join('/'),
+  context.story = {
+    options: {
+      name,
+      parameters: {
+        knobs: {
+          escapeHTML: false,
+        },
+      },
+    },
   };
+
+  return context;
 };

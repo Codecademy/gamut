@@ -2,6 +2,7 @@ import React from 'react';
 import { select, boolean } from '@storybook/addon-knobs';
 import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/src';
 import {
+  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -11,9 +12,9 @@ import {
 const alignStyles = ['left', 'center', 'right'] as const;
 const borderStyles = ['dashed', 'solid', 'none'] as const;
 
-export default decoratedStory('Molecules', 'Card');
+export default decoratedStories('Molecules', 'Card');
 
-export const card = () => (
+export const card = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Default shell with white background that can include some subtly
@@ -26,11 +27,11 @@ export const card = () => (
         <p>Blah blah blurgha blurgha</p>
       </CardBody>
       <CardFooter
-        border={select('footer.border', borderStyles, 'none')}
-        align={select('footer.align', alignStyles, 'left')}
-        flex={boolean('footer.flex', true)}
-        standardPadding={boolean('footer.standardPadding', true)}
-        standardHeight={boolean('footer.standardHeight', true)}
+        align={select('Align', alignStyles, 'left')}
+        border={select('Border', borderStyles, 'none')}
+        flex={boolean('Flex', true)}
+        standardPadding={boolean('Standard Padding', true)}
+        standardHeight={boolean('Standard Height', true)}
       >
         <span>&raquo;&nbsp;&nbsp;</span>
         <span>Footer Text</span>
@@ -38,4 +39,4 @@ export const card = () => (
       </CardFooter>
     </CardShell>
   </StoryTemplate>
-);
+));

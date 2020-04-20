@@ -2,6 +2,7 @@ import React from 'react';
 import Alert from '../../../../gamut/src/Alert';
 import { LayoutGrid, Column } from '../../../../gamut/src/Layout';
 import {
+  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
@@ -9,9 +10,9 @@ import {
 } from '../../Templating';
 import { BannerType } from '@codecademy/gamut/src/Alert/constants';
 
-export default decoratedStory('Molecules', Alert);
+export default decoratedStories('Molecules', Alert);
 
-export const alert = () => (
+export const alert = decoratedStory(() => (
   <LayoutGrid rowGap="xl">
     <Column size={12}>
       <StoryTemplate status={StoryStatus.Ready}>
@@ -94,39 +95,27 @@ export const alert = () => (
       </Alert>
     </Column>
   </LayoutGrid>
-);
+));
 
-alert.story = {
-  name: 'General status Alerts',
-};
-
-export const baseAlert = () => {
+export const basicAlert = decoratedStory(() => {
   return (
     <Alert showIcon={false} type={BannerType.Notice} onClose={() => {}}>
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut.
     </Alert>
   );
-};
+});
 
-baseAlert.story = {
-  name: 'Basic Alert',
-};
-
-export const iconAlert = () => {
+export const iconAlert = decoratedStory('Status Icon', () => {
   return (
     <Alert type={BannerType.Notice} onClose={() => {}}>
       Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
       torquatos eam ut.
     </Alert>
   );
-};
+});
 
-iconAlert.story = {
-  name: 'Status Icon',
-};
-
-export const ctaAlert = () => {
+export const ctaAlert = decoratedStory('Call to Action', () => {
   return (
     <Alert
       showIcon={false}
@@ -142,13 +131,9 @@ export const ctaAlert = () => {
       torquatos eam ut.
     </Alert>
   );
-};
+});
 
-ctaAlert.story = {
-  name: 'Call to Action',
-};
-
-export const expandableAlert = () => {
+export const expandableAlert = decoratedStory('Expandable', () => {
   return (
     <Alert
       showIcon={false}
@@ -161,13 +146,9 @@ export const expandableAlert = () => {
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
     </Alert>
   );
-};
+});
 
-expandableAlert.story = {
-  name: 'Expandable',
-};
-
-export const everythingAlert = () => {
+export const everythingAlert = decoratedStory('Everything', () => {
   return (
     <Alert
       type={BannerType.Notice}
@@ -184,8 +165,4 @@ export const everythingAlert = () => {
       consequat. Amet intellegam in nec. Pro duis novum ludus ad.
     </Alert>
   );
-};
-
-everythingAlert.story = {
-  name: 'Everything',
-};
+});
