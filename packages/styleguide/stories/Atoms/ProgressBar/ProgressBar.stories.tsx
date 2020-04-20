@@ -10,6 +10,7 @@ import {
   StoryDescription,
   decoratedStory,
 } from '../../Templating';
+import { number } from '@storybook/addon-knobs';
 
 export default decoratedStories('Atoms', ProgressBar);
 
@@ -46,3 +47,21 @@ export const progressBar = decoratedStory(() => (
     </LayoutGrid>
   </StoryTemplate>
 ));
+
+export const progressBarMinimumPercent = decoratedStory(
+  'Minimum Percentage',
+  () => (
+    <StoryTemplate status={StoryStatus.InProgress}>
+      <StoryDescription>
+        Some bars (generally small ones) should display at least a little bit of
+        progress, even if the technical progress number is zero. You can use the
+        <code>minimumPercent</code> prop for a minimum visual width percentage.
+      </StoryDescription>
+      <ProgressBar
+        minimumPercent={number('Minimum Percent', 5)}
+        percent={number('Percent', 0)}
+        theme="blue"
+      />
+    </StoryTemplate>
+  )
+);

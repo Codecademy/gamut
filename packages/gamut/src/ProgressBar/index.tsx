@@ -14,6 +14,11 @@ export type ProgressBarProps = {
   large?: boolean;
 
   /**
+   * Minimum amount of the bar to fill in visually.
+   */
+  minimumPercent?: number;
+
+  /**
    * How much of the bar to fill in, as a number in [0, 100].
    */
   percent: number;
@@ -24,16 +29,16 @@ export type ProgressBarProps = {
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   large,
+  minimumPercent = 0,
   percent,
   theme,
 }) => {
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
-  const visualPercent = `${percent}%`;
 
   return (
     <div
-      aria-label={`Progress: ${visualPercent}`}
+      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
       className={cx(styles.progressBar, styles[theme], className)}
       style={{
@@ -43,17 +48,16 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     >
       <div
         className={styles.bar}
+        data-testid="progress-bar-bar"
         style={{
-          width: visualPercent,
+          width: `${Math.max(minimumPercent, percent)}%`,
           ...(large && {
             borderTopRightRadius: radius,
             borderBottomRightRadius: radius,
           }),
         }}
       >
-        {large && (
-          <span className={styles.displayedPercent}>{visualPercent}</span>
-        )}
+        {large && <span className={styles.displayedPercent}>{percent}%</span>}
       </div>
     </div>
   );
