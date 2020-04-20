@@ -1,11 +1,16 @@
 import { ContentContainer } from '@codecademy/gamut/src';
 import React from 'react';
 
-import { decoratedStory, StoryStatus, StoryTemplate } from '../../Templating';
+import {
+  decoratedStories,
+  StoryStatus,
+  StoryTemplate,
+  decoratedStory,
+} from '../../Templating';
 
-export default decoratedStory('Foundations', 'Layouts', ContentContainer);
+export default decoratedStories('Foundations', 'Layouts', ContentContainer);
 
-export const contentContainer = () => (
+export const contentContainer = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <ContentContainer>
       <p>
@@ -15,4 +20,4 @@ export const contentContainer = () => (
       </p>
     </ContentContainer>
   </StoryTemplate>
-);
+));

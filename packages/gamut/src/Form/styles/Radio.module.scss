@@ -27,7 +27,7 @@
   min-width: px-rem(24px);
   min-height: px-rem(24px);
   border-radius: 100%;
-  border: 2px solid $deprecated-swatches-grey-200;
+  border: 2px solid $color-gray-200;
   margin-right: $form-padding;
   transition: $transition-time;
 }
@@ -44,11 +44,11 @@
 }
 
 .radioInput:disabled:checked + .radioLabel::before {
-  background-color: $deprecated-swatches-grey-200;
+  background-color: $color-gray-200;
   border: 0.25rem solid $color-white;
-  box-shadow: 0 0 0 2px $deprecated-swatches-grey-200;
+  box-shadow: 0 0 0 2px $color-gray-200;
 }
 
 .radioInput:disabled + .radioLabel {
-  color: $deprecated-swatches-grey-200;
+  color: $color-gray-200;
 }

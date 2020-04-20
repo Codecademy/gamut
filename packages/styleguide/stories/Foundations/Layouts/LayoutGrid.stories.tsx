@@ -4,13 +4,14 @@ import { select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
   StoryDescription,
 } from '../../Templating';
 
-export default decoratedStory('Foundations', 'Layouts', LayoutGrid);
+export default decoratedStories('Foundations', 'Layouts', LayoutGrid);
 
 const Container: React.FC = ({ children }) => {
   return (
@@ -19,7 +20,7 @@ const Container: React.FC = ({ children }) => {
         width: '100%',
         maxWidth: '1440px',
         padding: '25px',
-        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[100],
+        backgroundColor: gamut.colors.blue[100],
       }}
     >
       {children}
@@ -31,7 +32,7 @@ const Content: React.FC = ({ children }) => {
   return (
     <div
       style={{
-        backgroundColor: gamut.deprecatedColors.swatches.ccBlue[500],
+        backgroundColor: gamut.colors.blue[500],
         color: 'white',
         display: 'grid',
         padding: '5px 0',
@@ -70,7 +71,7 @@ const KitchenSinkColumns = () => (
   </>
 );
 
-export const layoutGrid = () => {
+export const layoutGrid = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -167,9 +168,9 @@ export const layoutGrid = () => {
       </Container>
     </StoryTemplate>
   );
-};
+});
 
-export const gaps = () => {
+export const gaps = decoratedStory(() => {
   const columnGap = select(
     'Column Gap',
     [undefined, 'sm', 'md', 'lg', 'xl'],
@@ -191,9 +192,9 @@ export const gaps = () => {
       </Container>
     </StoryTemplate>
   );
-};
+});
 
-export const offsets = () => {
+export const offsets = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -227,4 +228,4 @@ export const offsets = () => {
       </Container>
     </StoryTemplate>
   );
-};
+});

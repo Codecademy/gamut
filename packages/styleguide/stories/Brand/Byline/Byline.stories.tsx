@@ -4,15 +4,16 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 import {
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStory,
 } from '../../Templating';
 
-export default decoratedStory('Brand', Byline);
+export default decoratedStories('Brand', Byline);
 
-export const byline = () => (
+export const byline = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Marketing display of a person's information, such as for a testimonial.
@@ -25,17 +26,9 @@ export const byline = () => (
       location={text('Location', 'New York, NY', '')}
     />
   </StoryTemplate>
-);
+));
 
-byline.story = {
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
-
-export const bylineWithCustomClassNames = () => (
+export const bylineWithCustomClassNames = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       In a pinch, we can add custom class names to the byline contents.
@@ -50,12 +43,4 @@ export const bylineWithCustomClassNames = () => (
       }}
     />
   </StoryTemplate>
-);
-
-bylineWithCustomClassNames.story = {
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
+));

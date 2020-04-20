@@ -106,6 +106,19 @@ $brand-beige: #efd9ca;
 $brand-dark-blue: #141c3a;
 
 // =======================================
+//      EDITOR COLORS
+// =======================================
+
+$color-editor-blue: #83fff5;
+$color-editor-deep-purple: #cc7bc2;
+$color-editor-gray: #939598;
+$color-editor-green: #b4d353;
+$color-editor-orange: #ff8973;
+$color-editor-purple: #b3ccff;
+$color-editor-red: #e85d7f;
+$color-editor-yellow: #ffe083;
+
+// =======================================
 //      DEPRECATED COLORS
 // =======================================
 
@@ -157,26 +170,6 @@ $deprecated-gamut-purple-900: mix(
 
 $deprecated-gamut-royal-blue-500: #4b35ef;
 
-$deprecated-gamut-royal-blue-100: mix(
-  $color-white,
-  $deprecated-gamut-royal-blue-500,
-  80%
-);
-$deprecated-gamut-royal-blue-200: mix(
-  $color-white,
-  $deprecated-gamut-royal-blue-500,
-  60%
-);
-$deprecated-gamut-royal-blue-300: mix(
-  $color-white,
-  $deprecated-gamut-royal-blue-500,
-  40%
-);
-$deprecated-gamut-royal-blue-400: mix(
-  $color-white,
-  $deprecated-gamut-royal-blue-500,
-  20%
-);
 $deprecated-gamut-royal-blue-600: mix(
   $color-black,
   $deprecated-gamut-royal-blue-500,
@@ -192,33 +185,6 @@ $deprecated-gamut-royal-blue-800: mix(
   $deprecated-gamut-royal-blue-500,
   60%
 );
-$deprecated-gamut-royal-blue-900: mix(
-  $color-black,
-  $deprecated-gamut-royal-blue-500,
-  80%
-);
-
-$deprecated-gamut-blue-500: #4c7ef3;
-
-$deprecated-gamut-blue-100: mix($color-white, $deprecated-gamut-blue-500, 80%);
-$deprecated-gamut-blue-200: mix($color-white, $deprecated-gamut-blue-500, 60%);
-$deprecated-gamut-blue-300: mix($color-white, $deprecated-gamut-blue-500, 40%);
-$deprecated-gamut-blue-400: mix($color-white, $deprecated-gamut-blue-500, 20%);
-$deprecated-gamut-blue-600: mix($color-black, $deprecated-gamut-blue-500, 20%);
-$deprecated-gamut-blue-700: mix($color-black, $deprecated-gamut-blue-500, 40%);
-$deprecated-gamut-blue-800: mix($color-black, $deprecated-gamut-blue-500, 60%);
-$deprecated-gamut-blue-900: mix($color-black, $deprecated-gamut-blue-500, 80%);
-
-$deprecated-gamut-red-500: #fa4359;
-
-$deprecated-gamut-red-100: mix($color-white, $deprecated-gamut-red-500, 80%);
-$deprecated-gamut-red-200: mix($color-white, $deprecated-gamut-red-500, 60%);
-$deprecated-gamut-red-300: mix($color-white, $deprecated-gamut-red-500, 40%);
-$deprecated-gamut-red-400: mix($color-white, $deprecated-gamut-red-500, 20%);
-$deprecated-gamut-red-600: mix($color-black, $deprecated-gamut-red-500, 20%);
-$deprecated-gamut-red-700: mix($color-black, $deprecated-gamut-red-500, 40%);
-$deprecated-gamut-red-800: mix($color-black, $deprecated-gamut-red-500, 60%);
-$deprecated-gamut-red-900: mix($color-black, $deprecated-gamut-red-500, 80%);
 
 $deprecated-gamut-mint-500: #37c3be;
 
@@ -231,72 +197,9 @@ $deprecated-gamut-mint-700: mix($color-black, $deprecated-gamut-mint-500, 40%);
 $deprecated-gamut-mint-800: mix($color-black, $deprecated-gamut-mint-500, 60%);
 $deprecated-gamut-mint-900: mix($color-black, $deprecated-gamut-mint-500, 80%);
 
-$deprecated-gamut-yellow-500: #ffc107;
-
-$deprecated-gamut-yellow-100: mix(
-  $color-white,
-  $deprecated-gamut-yellow-500,
-  80%
-);
-$deprecated-gamut-yellow-200: mix(
-  $color-white,
-  $deprecated-gamut-yellow-500,
-  60%
-);
-$deprecated-gamut-yellow-300: mix(
-  $color-white,
-  $deprecated-gamut-yellow-500,
-  40%
-);
-$deprecated-gamut-yellow-400: mix(
-  $color-white,
-  $deprecated-gamut-yellow-500,
-  20%
-);
-$deprecated-gamut-yellow-600: mix(
-  $color-black,
-  $deprecated-gamut-yellow-500,
-  20%
-);
-$deprecated-gamut-yellow-700: mix(
-  $color-black,
-  $deprecated-gamut-yellow-500,
-  40%
-);
-$deprecated-gamut-yellow-800: mix(
-  $color-black,
-  $deprecated-gamut-yellow-500,
-  60%
-);
-$deprecated-gamut-yellow-900: mix(
-  $color-black,
-  $deprecated-gamut-yellow-500,
-  80%
-);
-
-$deprecated-gamut-grey-500: #ccc;
-
-$deprecated-gamut-grey-100: mix($color-white, $deprecated-gamut-grey-500, 80%);
-$deprecated-gamut-grey-200: mix($color-white, $deprecated-gamut-grey-500, 60%);
-$deprecated-gamut-grey-300: mix($color-white, $deprecated-gamut-grey-500, 40%);
-$deprecated-gamut-grey-400: mix($color-white, $deprecated-gamut-grey-500, 20%);
-$deprecated-gamut-grey-600: mix($color-black, $deprecated-gamut-grey-500, 20%);
-$deprecated-gamut-grey-700: mix($color-black, $deprecated-gamut-grey-500, 40%);
-$deprecated-gamut-grey-800: mix($color-black, $deprecated-gamut-grey-500, 60%);
-$deprecated-gamut-grey-900: mix($color-black, $deprecated-gamut-grey-500, 80%);
-
-$deprecated-gamut-black: #000;
-$deprecated-gamut-white: #fff;
-
-$deprecated-gamut-white: $color-white;
-$deprecated-gamut-black: $color-black;
 $deprecated-gamut-purple: $deprecated-gamut-purple-500;
 $deprecated-gamut-royal-blue: $deprecated-gamut-royal-blue-500;
-$deprecated-gamut-blue: $deprecated-gamut-blue-500;
-$deprecated-gamut-red: $deprecated-gamut-red-500;
 $deprecated-gamut-mint: $deprecated-gamut-mint-500;
-$deprecated-gamut-yellow: $deprecated-gamut-yellow-500;
-$deprecated-gamut-grey: $deprecated-gamut-grey-500;
 
 $deprecated-color-grey-1: #e9eaea;
 $deprecated-color-grey-2: #d4d5d6;
@@ -309,94 +212,11 @@ $deprecated-color-midnightblue: #152b39;
 $deprecated-color-mint: #34b3a0;
 $deprecated-color-red: #f65a5b;
 
-$deprecated-swatches-basic-black: $color-black;
-$deprecated-swatches-basic-white: $color-white;
-$deprecated-swatches-code-default: $color-white;
-$deprecated-swatches-code-atom: #ff7155;
-$deprecated-swatches-code-attribute: #ceff00;
-$deprecated-swatches-code-builtin: #ddda6f;
-$deprecated-swatches-code-comment: #737887;
-$deprecated-swatches-code-def: #b5a1a1;
-$deprecated-swatches-code-error: #e83131;
-$deprecated-swatches-code-keyword: #64ffe1;
-$deprecated-swatches-code-meta: #d478ea;
-$deprecated-swatches-code-number: #ef9eb4;
-$deprecated-swatches-code-operator: #b5a1a1;
-$deprecated-swatches-code-property: #9771ff;
-$deprecated-swatches-code-qualifier: #fff543;
-$deprecated-swatches-code-string-1: #ffde52;
-$deprecated-swatches-code-string-2: #ac99bf;
-$deprecated-swatches-code-tag: #e85d7f;
-$deprecated-swatches-code-variable-1: #249cff;
-$deprecated-swatches-code-variable-2: #57ff93;
-$deprecated-swatches-code-variable-3: #5affef;
-
-$deprecated-swatches-blue-100: #dceff8;
-$deprecated-swatches-blue-200: #bae0f1;
-$deprecated-swatches-blue-300: #97d0e9;
-$deprecated-swatches-blue-400: #75c1e2;
-$deprecated-swatches-blue-500: #52b1db;
-$deprecated-swatches-blue-600: #4292b4;
-$deprecated-swatches-blue-700: #32728d;
-$deprecated-swatches-blue-800: #215366;
-$deprecated-swatches-blue-900: #11333f;
-
-$deprecated-swatches-cc-blue-100: #d3dde2;
-$deprecated-swatches-cc-blue-200: #a7bbc6;
-$deprecated-swatches-cc-blue-300: #7a98a9;
-$deprecated-swatches-cc-blue-400: #4e768d;
 $deprecated-swatches-cc-blue-500: #225470;
-$deprecated-swatches-cc-blue-600: #214a63;
 $deprecated-swatches-cc-blue-700: #204056;
-$deprecated-swatches-cc-blue-800: #163142;
-$deprecated-swatches-cc-blue-900: #0d222d;
 
-$deprecated-swatches-grey-blue-100: #eef0f1;
-$deprecated-swatches-grey-blue-200: #bcc1c5;
-$deprecated-swatches-grey-blue-300: #9aa2a8;
-$deprecated-swatches-grey-blue-400: #78838b;
 $deprecated-swatches-grey-blue-500: #57646e;
 $deprecated-swatches-grey-blue-600: #354551;
-$deprecated-swatches-grey-blue-700: #253845;
-$deprecated-swatches-grey-blue-800: #152b39;
-$deprecated-swatches-grey-blue-900: #0b161d;
 
-$deprecated-swatches-grey-100: #e9eaea;
-$deprecated-swatches-grey-200: #d4d5d6;
-$deprecated-swatches-grey-300: #bebfc1;
-$deprecated-swatches-grey-400: #a9aaad;
-$deprecated-swatches-grey-500: #939598;
-$deprecated-swatches-grey-600: #76787b;
-$deprecated-swatches-grey-700: #5a5b5e;
-$deprecated-swatches-grey-800: #3e3e40;
-$deprecated-swatches-grey-900: #212123;
-
-$deprecated-swatches-mint-100: #d7f6f0;
-$deprecated-swatches-mint-200: #b0ede1;
-$deprecated-swatches-mint-300: #88e3d2;
-$deprecated-swatches-mint-400: #61dac3;
-$deprecated-swatches-mint-500: #39d1b4;
-$deprecated-swatches-mint-600: #37c2aa;
 $deprecated-swatches-mint-700: #34b3a0;
 $deprecated-swatches-mint-800: #1a7b72;
-$deprecated-swatches-mint-900: #044;
-
-$deprecated-swatches-red-100: #fddede;
-$deprecated-swatches-red-200: #fbbdbd;
-$deprecated-swatches-red-300: #fa9c9d;
-$deprecated-swatches-red-400: #f87b7c;
-$deprecated-swatches-red-500: #f65a5b;
-$deprecated-swatches-red-600: #c64748;
-$deprecated-swatches-red-700: #963435;
-$deprecated-swatches-red-800: #652022;
-$deprecated-swatches-red-900: #350d0f;
-
-$deprecated-swatches-yellow-100: #ffedd6;
-$deprecated-swatches-yellow-200: #ffdbac;
-$deprecated-swatches-yellow-300: #ffca83;
-$deprecated-swatches-yellow-400: #ffb85a;
-$deprecated-swatches-yellow-500: #fbb03b;
-$deprecated-swatches-yellow-600: #c88b2e;
-$deprecated-swatches-yellow-700: #956721;
-$deprecated-swatches-yellow-800: #634213;
-$deprecated-swatches-yellow-900: #301e06;
