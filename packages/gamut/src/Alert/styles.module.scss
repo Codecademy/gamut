@@ -1,0 +1,92 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$themeColors: (
+  "error": (
+    "background": $color-red-200,
+    "color": $color-red-800,
+  ),
+  "success": (
+    "background": $color-green-100,
+    "color": $color-green-800,
+  ),
+  "notice": (
+    "background": $color-yellow-200,
+    "color": $color-yellow-900,
+  ),
+  "announcement": (
+    "background": $color-purple-200,
+    "color": $color-purple-800,
+  ),
+  "info": (
+    "background": $color-white,
+    "color": $color-gray-800,
+  ),
+);
+
+.container {
+  display: grid;
+  width: 100%;
+  max-width: $grid-md-min;
+  padding: px-rem(16) px-rem(20);
+}
+
+.container__fluid {
+  max-width: 100%;
+}
+
+@each $theme, $map in $themeColors {
+  .container__#{$theme} {
+    background-color: map-get($map, "background");
+    color: map-get($map, "color");
+  }
+}
+
+.section {
+  padding: px-rem(6);
+}
+
+.section__main {
+  @include screen-size-lte($grid-sm-min) {
+    display: block;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.actionButton {
+  font-weight: 700;
+  font-size: px-rem(12);
+  margin-top: px-rem(-4);
+}
+
+.iconButton {
+  min-width: px-rem(24);
+  padding: px-rem(4);
+  min-height: px-rem(24);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: none;
+  border-radius: px-rem(6);
+  background-color: transparent;
+}
+
+.iconButton__pushRight {
+  margin-left: px-rem(6);
+}
+
+@each $theme, $map in $themeColors {
+  .iconButton__#{$theme} {
+    color: map-get($map, "color");
+
+    &:hover {
+      color: darken(map-get($map, "color"), 20%);
+    }
+
+    &:focus,
+    &:active {
+      box-shadow: 0 0 0 2px map-get($map, "color");
+    }
+  }
+}

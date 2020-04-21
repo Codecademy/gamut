@@ -3,15 +3,16 @@ import { boolean, text, number } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStory,
+  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStory,
 } from '../Templating';
 
-export default decoratedStory('Molecules', Tabs);
+export default decoratedStories('Molecules', Tabs);
 
-export const tabsUncontrolled = () => (
+export const tabsUncontrolled = decoratedStory('Tabs (Uncontrolled)', () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Use a series of tabbed areas for when you have multiple potential sections
@@ -44,9 +45,9 @@ export const tabsUncontrolled = () => (
       </TabPanel>
     </Tabs>
   </StoryTemplate>
-);
+));
 
-export const tabsControlled = () => (
+export const tabsControlled = decoratedStory('Tabs (Controlled)', () => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       When <code>activeTabIndex</code> is specified, the component switches to
@@ -80,11 +81,4 @@ export const tabsControlled = () => (
       </TabPanel>
     </Tabs>
   </StoryTemplate>
-);
-
-tabsControlled.story = {
-  name: 'Tabs (Controlled)',
-  description: `
-  The **activeTabIndex**  prop and **onChange** callback function prop are required for controlled tabs.
-  The accessibility implementation was taken from [this article](https://simplyaccessible.com/article/danger-aria-tabs/)`,
-};
+));

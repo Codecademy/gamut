@@ -2,15 +2,16 @@ import { Badge } from '@codecademy/gamut/src';
 import React from 'react';
 
 import {
+  decoratedStories,
+  decoratedStory,
   StoryDescription,
   StoryTemplate,
   StoryStatus,
-  decoratedStory,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Badge);
+export default decoratedStories('Atoms', Badge);
 
-export const badge = () => (
+export const badge = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Small blue indicator of some unusual text.
@@ -19,4 +20,4 @@ export const badge = () => (
       Use it inline with the text to be decorated. <Badge>New</Badge>
     </p>
   </StoryTemplate>
-);
+));
