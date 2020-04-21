@@ -14,9 +14,10 @@ import {
   StoryDescription,
   StoryStatus,
   StoryTemplate,
+  decoratedStories,
 } from '../Templating';
 
-export default decoratedStory('Atoms', 'Typography');
+export default decoratedStories('Foundations', 'Typography');
 
 const headingTags: HeadingTags[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 const headingSizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
@@ -85,7 +86,7 @@ export const baseTypography = () => (
   </StoryTemplate>
 );
 
-export const colorCustomize = () => (
+export const colorCustomization = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>
       Pass custom colors via a limited style prop
@@ -101,13 +102,9 @@ export const colorCustomize = () => (
       </Column>
     </LayoutGrid>
   </StoryTemplate>
-);
+));
 
-colorCustomize.story = {
-  name: 'Color customization',
-};
-
-export const hideMargin = () => (
+export const collapsableMargin = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
     <StoryDescription>Toggle margins</StoryDescription>
     <LayoutGrid rowGap="md">
@@ -125,8 +122,4 @@ export const hideMargin = () => (
       </Column>
     </LayoutGrid>
   </StoryTemplate>
-);
-
-hideMargin.story = {
-  name: 'Collapsable Margins',
-};
+));
