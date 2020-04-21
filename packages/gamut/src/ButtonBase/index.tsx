@@ -33,6 +33,7 @@ export type ButtonBaseProps = (
   link?: boolean;
   /**
    * Whether or not to include default styles that reset the button to a neutral state that can be styled
+   * @default true
    */
   resetStyles?: boolean;
   onClick?: (event: object) => void;
