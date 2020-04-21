@@ -2,15 +2,16 @@ import { Button, Interstitial } from '@codecademy/gamut/src';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../Templating';
 
-export default decoratedStory('Molecules', Interstitial);
+export default decoratedStories('Molecules', Interstitial);
 
-export const interstitial = () => (
+export const interstitial = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Large content area used as a break between focused content, such as within
@@ -33,9 +34,9 @@ export const interstitial = () => (
       centering!
     </Interstitial>
   </StoryTemplate>
-);
+));
 
-export const interstitialWithDecoration = () => (
+export const interstitialWithDecoration = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Decorations are added on top of the heading and are narrated as part of
@@ -56,4 +57,4 @@ export const interstitialWithDecoration = () => (
       I really love emojis. Please confirm you love emojis too!
     </Interstitial>
   </StoryTemplate>
-);
+));

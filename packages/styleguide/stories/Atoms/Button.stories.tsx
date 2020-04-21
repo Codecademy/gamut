@@ -13,6 +13,7 @@ import {
   StoryTemplate,
   StoryStatus,
   StoryDescription,
+  decoratedStories,
   decoratedStory,
 } from '../Templating';
 
@@ -54,13 +55,11 @@ const btnStyle = {
   marginBottom: '1rem',
 };
 
-const onClick = action('Clicked Button');
-
 const renderInlineButton = (theme: string, variant: string) => (
   <Button
     flat={variant === 'flat'}
     key={`${theme}`}
-    onClick={onClick}
+    onClick={action('Clicked Button')}
     outline={variant === 'outline'}
     style={btnStyle}
     theme={theme}
@@ -69,9 +68,9 @@ const renderInlineButton = (theme: string, variant: string) => (
   </Button>
 );
 
-export default decoratedStory('Atoms', Button);
+export default decoratedStories('Atoms', Button);
 
-export const allButtonThemes = () => {
+export const allButtonThemes = decoratedStory(() => {
   const variant = select('Variant', ['default', 'outline', 'flat'], 'default');
 
   return (
@@ -100,9 +99,9 @@ export const allButtonThemes = () => {
       </div>
     </StoryTemplate>
   );
-};
+});
 
-export const buttonBaseVariants = () => (
+export const buttonBaseVariants = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Use <code>ButtonBase</code> when you need something that acts as a link or
@@ -126,9 +125,9 @@ export const buttonBaseVariants = () => (
       </ButtonBase>
     </div>
   </StoryTemplate>
-);
+));
 
-export const linkButton = () => (
+export const linkButton = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <p>
       This is an example of a{' '}
@@ -139,9 +138,9 @@ export const linkButton = () => (
       button, it will functionally behave as a link.
     </p>
   </StoryTemplate>
-);
+));
 
-export const standardButtonOptions = () => {
+export const standardButtonOptions = decoratedStory(() => {
   const round = boolean('Round', false);
 
   return (
@@ -158,7 +157,7 @@ export const standardButtonOptions = () => {
         </Button>
         <Button
           href="#"
-          onClick={onClick}
+          onClick={action('Clicked Button')}
           outline
           round={round}
           style={btnStyle}
@@ -171,7 +170,7 @@ export const standardButtonOptions = () => {
         </Button>
         <Button
           href="#"
-          onClick={onClick}
+          onClick={action('Clicked Button')}
           round={round}
           size="small"
           style={btnStyle}
@@ -196,9 +195,9 @@ export const standardButtonOptions = () => {
       </div>
     </StoryTemplate>
   );
-};
+});
 
-export const editablePlayground = () => (
+export const editablePlayground = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Play with this button, if you&apos;d like!
@@ -208,7 +207,7 @@ export const editablePlayground = () => (
       caps={boolean('caps', false)}
       go={boolean('go', false)}
       link={boolean('link', false)}
-      onClick={onClick}
+      onClick={action('Clicked Button')}
       outline={boolean('outline', false)}
       size={select('size', ['small', 'large', undefined], undefined)}
       theme={select('theme', themes, 'brand-blue')}
@@ -217,4 +216,4 @@ export const editablePlayground = () => (
       {text('Label', 'Submit')}
     </Button>
   </StoryTemplate>
-);
+));

@@ -2,15 +2,16 @@ import React from 'react';
 import { Toggle } from '@codecademy/gamut/src';
 import { boolean } from '@storybook/addon-knobs';
 import {
+  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Toggle);
+export default decoratedStories('Atoms', Toggle);
 
-export const toggle = () => {
+export const toggle = decoratedStory(() => {
   const checked = boolean('Checked', false);
 
   return (
@@ -22,4 +23,4 @@ export const toggle = () => {
       <Toggle checked={checked} label="Toggle" onChange={() => {}} />
     </StoryTemplate>
   );
-};
+});

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Button, Modal } from '@codecademy/gamut/src';
-import { decoratedStory } from '../Templating';
+import { decoratedStories, decoratedStory } from '../Templating';
 
-export default decoratedStory('Molecules', Modal);
+export default decoratedStories('Molecules', Modal);
 
-const ModalStory = () => {
+const ModalStory = decoratedStory(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,9 +17,9 @@ const ModalStory = () => {
       </Modal>
     </div>
   );
-};
+});
 
-const ModalWithoutDefaultCloseButton = () => {
+const ModalWithoutDefaultCloseButton = decoratedStory(() => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -35,13 +35,9 @@ const ModalWithoutDefaultCloseButton = () => {
       </Modal>
     </div>
   );
-};
+});
 
-ModalWithoutDefaultCloseButton.story = {
-  name: 'Modal Without Default Close Button',
-};
-
-export const modal = () => <ModalStory />;
-export const modalWithoutDefaultCloseButton = () => (
+export const modal = decoratedStory(() => <ModalStory />);
+export const modalWithoutDefaultCloseButton = decoratedStory(() => (
   <ModalWithoutDefaultCloseButton />
-);
+));

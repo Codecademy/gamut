@@ -4,15 +4,16 @@ import React from 'react';
 
 import { selectableColors } from '../helpers';
 import {
-  decoratedStory,
+  decoratedStories,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
+  decoratedStory,
 } from '../Templating';
 
-export default decoratedStory('Atoms', RadialProgress);
+export default decoratedStories('Atoms', RadialProgress);
 
-export const radialProgress = () => (
+export const radialProgress = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       A circular display of progress without a number inside, meant to convey a
@@ -26,9 +27,9 @@ export const radialProgress = () => (
       strokeWidth={text('strokeWidth', '10')}
     />
   </StoryTemplate>
-);
+));
 
-export const animating = () => {
+export const animating = decoratedStory(() => {
   const rendering = boolean('Animating', false);
   const action = rendering ? 'reset the animations' : 'see the animations';
 
@@ -55,4 +56,4 @@ export const animating = () => {
       </div>
     </StoryTemplate>
   );
-};
+});

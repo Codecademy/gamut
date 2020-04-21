@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.1.2 (2020-04-20)</small>
+
+* Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+
+
+
+
+
+## <small>7.1.1 (2020-04-20)</small>
+
+* chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
+
+
+
+
+
 ## 7.1.0 (2020-04-20)
 
 * feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
