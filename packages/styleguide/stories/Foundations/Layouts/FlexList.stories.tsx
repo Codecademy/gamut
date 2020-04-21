@@ -57,3 +57,57 @@ export const listBasics = decoratedStory(() => {
     </StoryTemplate>
   );
 });
+
+export const borderedList = decoratedStory(() => {
+  return (
+    <StoryTemplate status={StoryStatus.Ready}>
+      <StoryDescription></StoryDescription>
+      <List bordered>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+      </List>
+    </StoryTemplate>
+  );
+});
+
+export const alternatingList = decoratedStory(() => {
+  return (
+    <StoryTemplate status={StoryStatus.Ready}>
+      <StoryDescription></StoryDescription>
+      <List alternating>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+      </List>
+    </StoryTemplate>
+  );
+});
+
+export const gapList = decoratedStory(() => {
+  return (
+    <StoryTemplate status={StoryStatus.Ready}>
+      <StoryDescription></StoryDescription>
+      <List gap>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+        <ListRow>
+          <ListColumn size="md">Col</ListColumn>
+          <ListColumn size="fill">Col</ListColumn>
+        </ListRow>
+      </List>
+    </StoryTemplate>
+  );
+});
