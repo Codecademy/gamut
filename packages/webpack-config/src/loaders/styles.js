@@ -13,6 +13,7 @@ const cssLoaderDefaults = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
+    esModule: true,
     sourceMap: true,
     localIdentName: CSS_MODULE_IDENT,
     modules: false,
