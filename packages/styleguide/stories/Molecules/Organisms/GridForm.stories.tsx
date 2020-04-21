@@ -3,15 +3,16 @@ import { action } from '@storybook/addon-actions';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../Templating';
+} from '../../Templating';
 
-export default decoratedStory('Organisms', GridForm);
+export default decoratedStories('Organisms', GridForm);
 
-export const gridForm = () => (
+export const gridForm = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       This organism takes in plain JSON-like props and uses them to string
@@ -138,9 +139,9 @@ export const gridForm = () => (
       }}
     />
   </StoryTemplate>
-);
+));
 
-export const gridFormWithSubmitButtonPosition = () => (
+export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       We can position the submit button by passing the position prop with a
@@ -230,9 +231,9 @@ export const gridFormWithSubmitButtonPosition = () => (
       </Column>
     </LayoutGrid>
   </StoryTemplate>
-);
+));
 
-export const gridFormWithSubmitButtonColor = () => (
+export const gridFormWithSubmitButtonColor = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       We can specify the color of our button by passing the theme prop with a
@@ -275,9 +276,9 @@ export const gridFormWithSubmitButtonColor = () => (
       }}
     />
   </StoryTemplate>
-);
+));
 
-export const gridFormWithInlineSubmitButton = () => (
+export const gridFormWithInlineSubmitButton = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.NotReady}>
     <StoryDescription>
       We can make the Submit button inline with an input by setting the column
@@ -332,9 +333,9 @@ export const gridFormWithInlineSubmitButton = () => (
       }}
     />
   </StoryTemplate>
-);
+));
 
-export const gridFormWithCustomInput = () => (
+export const gridFormWithCustomInput = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Some forms, such as the checkout flows that use Recurly, need to define
@@ -386,9 +387,9 @@ export const gridFormWithCustomInput = () => (
       }}
     />
   </StoryTemplate>
-);
+));
 
-export const gridFormWithPlaceholderText = () => (
+export const gridFormWithPlaceholderText = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Text inputs are allowed to have traditional <code>placeholder</code> text.
@@ -424,4 +425,4 @@ export const gridFormWithPlaceholderText = () => (
       }}
     />
   </StoryTemplate>
-);
+));
