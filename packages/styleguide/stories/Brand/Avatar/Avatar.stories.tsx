@@ -3,6 +3,7 @@ import { select, text } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -10,9 +11,9 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Brand', Avatar);
+export default decoratedStories('Brand', Avatar);
 
-export const avatar = () => (
+export const avatar = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     {theme => (
       <>
@@ -36,12 +37,4 @@ export const avatar = () => (
       </>
     )}
   </StoryTemplate>
-);
-
-avatar.story = {
-  parameters: {
-    knobs: {
-      escapeHTML: false,
-    },
-  },
-};
+));

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.0.4 (2020-04-21)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.0.3 (2020-04-21)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.0.2 (2020-04-21)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.0.1 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/Codecademy/client-modules/commit/55c4fcc)), closes [#718](https://github.com/Codecademy/client-modules/issues/718)
+
+
+
+
+
+## <small>0.8.32 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>0.8.31 (2020-04-17)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components

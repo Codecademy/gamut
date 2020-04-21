@@ -2,18 +2,19 @@ import { SplitInterstitial } from '@codecademy/gamut/src';
 import React from 'react';
 
 import {
+  decoratedStories,
   decoratedStory,
-  StoryTemplate,
-  StoryStatus,
   StoryDescription,
+  StoryStatus,
+  StoryTemplate,
 } from '../../Templating';
 import Triangle from './assets/Triangle.svg';
 import Stairs from './assets/Stairs.svg';
 import styles from './styles.module.scss';
 
-export default decoratedStory('Molecules', SplitInterstitial);
+export default decoratedStories('Molecules', SplitInterstitial);
 
-export const splitInterstitial = () => (
+export const splitInterstitial = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Large, 50% split content area used for information that has two facets,
@@ -39,9 +40,9 @@ export const splitInterstitial = () => (
       }}
     />
   </StoryTemplate>
-);
+));
 
-export const splitInterstitialWithCustomImages = () => (
+export const splitInterstitialWithCustomImages = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       You can override the built-in images with your own on a per-design basis.
@@ -72,4 +73,4 @@ export const splitInterstitialWithCustomImages = () => (
       }}
     />
   </StoryTemplate>
-);
+));

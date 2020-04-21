@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2.3.0 (2020-04-20)
+
+* feat(Icons): Add initial streamline icons (#702) ([52d529e](https://github.com/RyzacInc/client-modules/commit/52d529e)), closes [#702](https://github.com/RyzacInc/client-modules/issues/702)
+
+
+
+
+
 ## <small>2.2.2 (2020-04-13)</small>
 
 * fix(Icon): Fixes type incongruence from compiled definitions  (#720) ([d09e758](https://github.com/RyzacInc/client-modules/commit/d09e758)), closes [#720](https://github.com/RyzacInc/client-modules/issues/720)

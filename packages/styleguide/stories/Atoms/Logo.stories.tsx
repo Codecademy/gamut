@@ -1,16 +1,18 @@
 import { select, number } from '@storybook/addon-knobs';
-import { Column, LayoutGrid, Logo } from '@codecademy/gamut/src';
+import { Logo } from '@codecademy/brand-components/src';
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import React from 'react';
 
 import { selectableColors } from '../helpers';
 import {
+  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStory('Atoms', Logo);
+export default decoratedStories('Brand', Logo);
 
 const types = [
   'pro',
@@ -22,7 +24,7 @@ const types = [
   'default',
 ] as const;
 
-export const logo = () => (
+export const logo = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Our proud logo. There is no &apos;a&apos; in the middle.
@@ -38,9 +40,9 @@ export const logo = () => (
       ))}
     </LayoutGrid>
   </StoryTemplate>
-);
+));
 
-export const logoPlayground = () => (
+export const logoPlayground = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <StoryDescription>
       Variants of the Codecademy logo you can play around with. For now, use{' '}
@@ -55,4 +57,4 @@ export const logoPlayground = () => (
       }}
     />
   </StoryTemplate>
-);
+));
