@@ -12,12 +12,13 @@ const stringify = (component: string | Function) =>
 
 export const decoratedStories = (
   title: Section,
-  component: string | Function,
   ...nesting: (string | Function)[]
 ) => {
+  const component = nesting.find(component => component instanceof Function);
+
   return {
     component,
     decorators: [withKnobs],
-    title: [title, component, ...nesting].map(stringify).join('/'),
+    title: [title, ...nesting].map(stringify).join('/'),
   };
 };
