@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.0.2 (2020-04-21)</small>
+
+* Do not use definition files for exports (#743) ([9eb8dab](https://github.com/RyzacInc/client-modules/commit/9eb8dab)), closes [#743](https://github.com/RyzacInc/client-modules/issues/743)
+
+
+
+
+
+## <small>7.0.1 (2020-04-21)</small>
+
+* Exports responsive types from the root (#742) ([6b0f2a8](https://github.com/RyzacInc/client-modules/commit/6b0f2a8)), closes [#742](https://github.com/RyzacInc/client-modules/issues/742)
+
+
+
+
+
+## 7.0.0 (2020-04-21)
+
+* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+
+
+
+
+
 ## 6.1.0 (2020-04-20)
 
 * feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
