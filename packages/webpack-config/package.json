@@ -39,7 +39,7 @@
     "@babel/core": "7.5.4",
     "babel-loader": "8.0.5",
     "babel-preset-codecademy": "2.2.2",
-    "css-loader": "2.1.1",
+    "css-loader": "3.5.2",
     "file-loader": "3.0.1",
     "jquery": "3.4.0",
     "node-sass": "4.13.0",
