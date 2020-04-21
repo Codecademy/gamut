@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@codecademy/gamut-styles": "^3.0.0",
+    "@codecademy/gamut-icons": "^2.3.0",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
