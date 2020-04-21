@@ -1,0 +1,34 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$wraps: (wrap, nowrap);
+
+$alignments: (
+  "start": flex-start,
+  "end": flex-end,
+  "center": center,
+  "spaceBetween": space-between,
+  "spaceAround": space-around
+);
+
+$columnSizes: (
+  "xs": 3,
+  "sm": 5,
+  "md": 8,
+  "lg": 12,
+  "xl": 18,
+  "xxl": 20
+);
+
+$paddingSizes: (
+  "none": 0,
+  "sm": 0.5,
+  "md": 1
+);
+
+$alignments: (
+  "left": flex-start,
+  "right": flex-end,
+  "center": center
+);
+
+$flush: "left", "right";

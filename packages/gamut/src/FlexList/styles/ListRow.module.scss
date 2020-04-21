@@ -1,0 +1,46 @@
+@import "variables";
+
+.listRow {
+  display: flex;
+  align-items: stretch;
+}
+
+.bordered {
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: -1px;
+}
+
+.alternating {
+  &:nth-child(2n) {
+    background-color: $color-gray-200;
+  }
+}
+
+/**
+  This creates all the all the responsive classes to be configured.
+  The format is: prop_propValue__screenSize
+
+  This is meant to be used with the createClassnames utility
+*/
+
+@each $screenSize in $screenSizes {
+  @include getViewport($screenSize) {
+    // Flex direct
+    @each $wrap in $wraps {
+      .wrap_#{$wrap}__#{$screenSize} {
+        flex-wrap: $wrap;
+      }
+    }
+
+    // Alignments & Justifications
+    @each $alignment, $rule in $alignments {
+      .align_#{$alignment}__#{$screenSize} {
+        align-items: $rule;
+      }
+      .justify_#{$alignment}__#{$screenSize} {
+        justify-content: $rule;
+      }
+    }
+  }
+}

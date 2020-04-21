@@ -1,0 +1,23 @@
+@import "variables";
+
+.list {
+  display: grid;
+  padding-left: 0;
+  width: 100%;
+}
+
+.list__gap {
+  grid-row-gap: 2rem;
+}
+
+.list__bordered {
+  border: 1px solid $color-gray-600;
+
+  > * {
+    border-bottom: 1px solid $color-gray-600;
+  }
+
+  > *:last-child {
+    border: none;
+  }
+}

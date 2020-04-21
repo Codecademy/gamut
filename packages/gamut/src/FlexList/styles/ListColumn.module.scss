@@ -1,0 +1,66 @@
+@import "variables";
+
+.container {
+  position: relative;
+  display: flex;
+}
+
+.bordered {
+  border-width: 0 1px 0 0;
+  border-style: solid;
+
+  & ~ .bordered {
+    margin-left: -1px;
+  }
+
+  &:last-child {
+    margin-right: -1px;
+  }
+}
+
+/**
+  This creates all the all the responsive classes to be configured.
+  The format is: prop_propValue__screenSize
+
+  This is meant to be used with the generateClassnames utility
+*/
+@each $screenSize in $screenSizes {
+  @include getViewport($screenSize) {
+    // Column Sizes:
+    @each $modifier, $size in $columnSizes {
+      .size_#{$modifier}__#{$screenSize} {
+        flex-basis: #{$size}rem;
+      }
+    }
+    // Fill
+    .size_fill__#{$screenSize} {
+      flex: 1;
+    }
+    // Max
+    .size_max__#{$screenSize} {
+      flex-basis: 100%;
+      border: none;
+    }
+
+    // Padding all directions
+    @each $modifier, $size in $paddingSizes {
+      .padding_#{$modifier}__#{$screenSize} {
+        padding: #{$size}rem;
+      }
+    }
+
+    // Pull padding from each direction
+    @each $flushSide in $flush {
+      .flush_#{$flushSide}__#{$screenSize} {
+        padding-#{$flushSide}: 0;
+      }
+    }
+
+    // Justify Alignment
+    @each $modifier, $direction in $alignments {
+      .align_#{$modifier}__#{$screenSize} {
+        justify-content: $direction;
+      }
+    }
+  }
+}
