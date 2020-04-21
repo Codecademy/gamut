@@ -24,14 +24,14 @@ export const ListRow: React.FC<ListRow> = ({
   align = 'start',
   wrap = 'nowrap',
 }) => {
-  const { bordered } = useContext(ListContext);
+  const { bordered, alternating } = useContext(ListContext);
 
   return (
     <div
       className={cx(
         s.listRow,
         generateResponsiveClassnames({ wrap, align }, s),
-        { [s.bordered]: bordered }
+        { [s.bordered]: bordered, [s.alternating]: alternating }
       )}
     >
       {children}

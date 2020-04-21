@@ -11,6 +11,12 @@
   margin-bottom: -1px;
 }
 
+.alternating {
+  &:nth-child(2n) {
+    background-color: $color-gray-200;
+  }
+}
+
 /**
   This creates all the all the responsive classes to be configured.
   The format is: prop_propValue__screenSize

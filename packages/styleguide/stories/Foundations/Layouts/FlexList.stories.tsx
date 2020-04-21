@@ -25,7 +25,7 @@ export const listBasics = decoratedStory(() => {
         you might have a particular set of gaps at small viewports and bigger
         ones on large viewports.
       </StoryDescription>
-      <List bordered gap>
+      <List bordered alternating>
         <ListRow>
           <ListColumn size="xs">xs</ListColumn>
         </ListRow>
