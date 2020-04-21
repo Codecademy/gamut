@@ -50,6 +50,7 @@ const scssLoaderDefaults = {
 const css = {
   default: {
     test: cssFilePattern,
+    sideEffects: true,
     use: [
       {
         loader: 'style-loader',
@@ -60,6 +61,7 @@ const css = {
   },
   extracted: {
     test: cssFilePattern,
+    sideEffects: true,
     use: [
       extractPluginDefaults,
       merge(cssLoaderDefaults),
@@ -68,6 +70,7 @@ const css = {
   },
   server: {
     test: cssFilePattern,
+    sideEffects: true,
     use: [
       merge(cssLoaderDefaults, {
         options: {
@@ -81,6 +84,7 @@ const css = {
 const scss = {
   default: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
       {
         loader: 'style-loader',
@@ -88,6 +92,7 @@ const scss = {
       merge(cssLoaderDefaults, {
         options: {
           modules: true,
+          importLoaders: 2,
         },
       }),
       merge(postCssLoaderDefaults),
@@ -96,11 +101,13 @@ const scss = {
   },
   extracted: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
       extractPluginDefaults,
       merge(cssLoaderDefaults, {
         options: {
           modules: true,
+          importLoaders: 2,
         },
       }),
       merge(postCssLoaderDefaults),
@@ -109,11 +116,13 @@ const scss = {
   },
   server: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
       merge(cssLoaderDefaults, {
         options: {
           modules: true,
           exportOnlyLocals: true,
+          importLoaders: 2,
         },
       }),
       merge(postCssLoaderDefaults),
