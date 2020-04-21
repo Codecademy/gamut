@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.1.0 (2020-04-21)
+
+* feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+
+
+
+
+
+## 8.0.0 (2020-04-21)
+
+* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+
+
+
+
+
+## <small>7.1.2 (2020-04-20)</small>
+
+* Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+
+
+
+
+
+## <small>7.1.1 (2020-04-20)</small>
+
+* chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
+
+
+
+
+
+## 7.1.0 (2020-04-20)
+
+* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+
+
+
+
+
+## 7.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
+
+## 6.1.0 (2020-04-20)
+
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
+
+## <small>6.0.2 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>6.0.1 (2020-04-17)</small>
+
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
+
 ## 6.0.0 (2020-04-17)
 
 * chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)

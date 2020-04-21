@@ -1,8 +1,8 @@
 import React from 'react';
 import { Truncate } from '@codecademy/gamut/src';
-import { decoratedStory } from './Templating';
+import { decoratedStories, decoratedStory } from './Templating';
 
-export default decoratedStory('Atoms', Truncate);
+export default decoratedStories('Atoms', Truncate);
 
 const placeholderText = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -12,7 +12,7 @@ commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
 velit esse cillum dolore eu fugiat nulla pariatur.
 `;
 
-export const truncate = () => {
+export const truncate = decoratedStory(() => {
   return (
     <div style={{ width: '100%', maxWidth: '600px' }}>
       <h4>Default (nothing)</h4>
@@ -36,4 +36,4 @@ export const truncate = () => {
       </p>
     </div>
   );
-};
+});

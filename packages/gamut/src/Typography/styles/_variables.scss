@@ -1,0 +1,43 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$headingSizes: (
+  "xxs": (
+    "size": 16,
+    "font": $font-family-base
+  ),
+  "xs": (
+    "size": 20,
+    "font": $font-family-base
+  ),
+  "sm": (
+    "size": 22,
+    "font": $font-family-base
+  ),
+  "md": (
+    "size": 26,
+    "font": $font-family-base
+  ),
+  "lg": (
+    "size": 34,
+    "font": $font-family-base
+  ),
+  "xl": (
+    "size": 44,
+    "font": $font-family-headings
+  ),
+  "xxl": (
+    "size": 64,
+    "font": $font-family-headings
+  )
+);
+
+$textSizes: (
+  "sm": (
+    "size": 14,
+    "font": $font-family-base
+  ),
+  "lg": (
+    "size": 18,
+    "font": $font-family-base
+  )
+);
