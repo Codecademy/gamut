@@ -1,10 +1,10 @@
 import { FormContextValues, ValidationOptions } from 'react-hook-form';
 
-import { ColumnSizes, ResponsiveProperty } from '../Layout';
+import { ColumnProps } from '../Layout/Column';
 
 export type BaseFormField = {
   name: string;
-  size?: ResponsiveProperty<ColumnSizes>;
+  size?: ColumnProps['size'];
 };
 
 export type GridFormCheckboxField = BaseFormField & {
