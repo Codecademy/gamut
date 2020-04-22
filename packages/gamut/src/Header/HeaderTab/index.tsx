@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import ButtonBase from '../../ButtonBase';
 import s from './styles.module.scss';
 
 export type HeaderTabProps = HTMLAttributes<HTMLElement> & {
@@ -15,14 +14,29 @@ export const HeaderTab: React.FC<HeaderTabProps> = ({
   children,
   id,
 }) => {
+  const handleClick = (e: any) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick(e);
+    }
+  };
+
   const classes = cx(s.headerTab, className);
 
-  return onClick ? (
-    <ButtonBase key={id} onClick={onClick} className={classes}>
-      {children}
-    </ButtonBase>
-  ) : (
-    <div key={id} className={classes}>
+  return (
+    <div
+      role="tab"
+      tabIndex={0}
+      key={id}
+      onClick={handleClick}
+      className={classes}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
+        if (e.key === ' ' || e.key === 'Enter') {
+          handleClick(e);
+        }
+      }}
+    >
       {children}
     </div>
   );
