@@ -15,7 +15,7 @@ export * from './DeprecatedTabs';
 export * from './FlexBox';
 export * from './FlexGrid';
 export * from './Form';
-export * from './Header/AppHeaderContainer';
+export * from './Header/HeaderContainer';
 export * from './Header/HeaderTab';
 export * from './GridForm';
 export * from './Typography/Heading';
