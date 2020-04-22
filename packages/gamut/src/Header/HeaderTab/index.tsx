@@ -1,43 +1,35 @@
 import React, { HTMLAttributes } from 'react';
-import omitProps from '../../utils/omitProps';
 import cx from 'classnames';
+import ButtonBase from '../../ButtonBase';
 import s from './styles.module.scss';
 
 export type HeaderTabProps = HTMLAttributes<HTMLElement> & {
-  component?: any;
-  href?: string;
-  onClick?: (event: React.MouseEvent, params?: {}) => void;
-  params?: {};
+  onClick?: (event: React.MouseEvent) => void;
   className?: string;
+  id?: string;
 };
 
-export const HeaderTab: React.FC<HeaderTabProps> = props => {
+export const HeaderTab: React.FC<HeaderTabProps> = ({
+  onClick,
+  className,
+  children,
+  id,
+}) => {
   const handleClick: React.MouseEventHandler = (e: any) => {
-    if (props.onClick) {
-      props.onClick(e, props.params);
-    }
+    onClick(e);
   };
-
-  let { component } = props;
-  const { className, children, ...propsToTransfer } = props;
-
-  if (!component) {
-    component = props.href ? 'a' : 'div';
-  }
 
   const classes = cx(s.headerTab, className);
 
-  const TabComponent = React.createElement(
-    component,
-    {
-      ...omitProps(['component'], propsToTransfer),
-      onClick: handleClick,
-      className: classes,
-    },
-    children
+  return onClick ? (
+    <ButtonBase key={id} onClick={handleClick} className={classes}>
+      {children}
+    </ButtonBase>
+  ) : (
+    <div key={id} className={classes}>
+      {children}
+    </div>
   );
-
-  return <div key={props.id}>{TabComponent}</div>;
 };
 
 export default HeaderTab;
