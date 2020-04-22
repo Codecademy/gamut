@@ -15,14 +15,10 @@ export const HeaderTab: React.FC<HeaderTabProps> = ({
   children,
   id,
 }) => {
-  const handleClick: React.MouseEventHandler = (e: any) => {
-    onClick(e);
-  };
-
   const classes = cx(s.headerTab, className);
 
   return onClick ? (
-    <ButtonBase key={id} onClick={handleClick} className={classes}>
+    <ButtonBase key={id} onClick={onClick} className={classes}>
       {children}
     </ButtonBase>
   ) : (
