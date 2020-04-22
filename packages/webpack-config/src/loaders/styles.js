@@ -15,9 +15,12 @@ const cssLoaderDefaults = {
     importLoaders: 1,
     esModule: true,
     sourceMap: true,
-    localIdentName: CSS_MODULE_IDENT,
     modules: false,
   },
+};
+const cssModulesDefaults = {
+  exportGlobals: true,
+  localIdentName: CSS_MODULE_IDENT,
 };
 
 const postCssLoaderDefaults = {
@@ -56,18 +59,14 @@ const css = {
       {
         loader: 'style-loader',
       },
-      merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults),
+      cssLoaderDefaults,
+      postCssLoaderDefaults,
     ],
   },
   extracted: {
     test: cssFilePattern,
     sideEffects: true,
-    use: [
-      extractPluginDefaults,
-      merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults),
-    ],
+    use: [extractPluginDefaults, cssLoaderDefaults, postCssLoaderDefaults],
   },
   server: {
     test: cssFilePattern,
@@ -75,7 +74,7 @@ const css = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          exportOnlyLocals: true,
+          onlyLocals: true,
         },
       }),
     ],
@@ -92,12 +91,12 @@ const scss = {
       },
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
           importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
   extracted: {
@@ -107,12 +106,12 @@ const scss = {
       extractPluginDefaults,
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
           importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
   server: {
@@ -121,13 +120,13 @@ const scss = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
           exportOnlyLocals: true,
           importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
 };
