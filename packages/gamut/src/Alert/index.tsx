@@ -123,4 +123,6 @@ export const Alert: React.FC<AlertProps> = ({
   );
 };
 
+export { BannerType } from './constants';
+
 export default Alert;
