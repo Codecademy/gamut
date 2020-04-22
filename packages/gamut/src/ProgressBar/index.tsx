@@ -3,6 +3,8 @@ import React from 'react';
 
 import styles from './styles.module.scss';
 
+export type ProgressBarTheme = 'blue' | 'yellow';
+
 export type ProgressBarProps = {
   className?: string;
 
@@ -12,56 +14,50 @@ export type ProgressBarProps = {
   large?: boolean;
 
   /**
+   * Minimum amount of the bar to fill in visually.
+   */
+  minimumPercent?: number;
+
+  /**
    * How much of the bar to fill in, as a number in [0, 100].
    */
   percent: number;
 
-  style: ProgressBarStyle;
-};
-
-export type ProgressBarStyle = {
-  backgroundColor: string;
-  barColor: string;
-  fontColor?: string;
+  theme: ProgressBarTheme;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   large,
+  minimumPercent = 0,
   percent,
-  style,
+  theme,
 }) => {
-  const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
-  const visualPercent = `${percent}%`;
 
   return (
     <div
-      aria-label={`Progress: ${visualPercent}`}
+      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      className={cx(styles.progressBar, className)}
+      className={cx(styles.progressBar, styles[theme], className)}
       style={{
-        background: backgroundColor,
         borderRadius: radius,
-        color: fontColor,
         height: `${height}px`,
       }}
     >
       <div
         className={styles.bar}
+        data-testid="progress-bar-bar"
         style={{
-          background: barColor,
-          width: visualPercent,
+          width: `${Math.max(minimumPercent, percent)}%`,
           ...(large && {
             borderTopRightRadius: radius,
             borderBottomRightRadius: radius,
           }),
         }}
       >
-        {large && (
-          <span className={styles.displayedPercent}>{visualPercent}</span>
-        )}
+        {large && <span className={styles.displayedPercent}>{percent}%</span>}
       </div>
     </div>
   );

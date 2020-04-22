@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.1.0 (2020-04-22)
+
+* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+
+
+
+
+
+## <small>7.0.3 (2020-04-21)</small>
+
+* build(Gamut): add gamut-icons to gamut dependencies (#747) ([99a204d](https://github.com/RyzacInc/client-modules/commit/99a204d)), closes [#747](https://github.com/RyzacInc/client-modules/issues/747)
+
+
+
+
+
 ## <small>7.0.2 (2020-04-21)</small>
 
 * Do not use definition files for exports (#743) ([9eb8dab](https://github.com/RyzacInc/client-modules/commit/9eb8dab)), closes [#743](https://github.com/RyzacInc/client-modules/issues/743)

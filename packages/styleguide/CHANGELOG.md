@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.2.0 (2020-04-22)
+
+* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+
+
+
+
+
+## 8.1.0 (2020-04-21)
+
+* feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+
+
+
+
+
 ## 8.0.0 (2020-04-21)
 
 * feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
