@@ -121,7 +121,6 @@ const scss = {
       merge(cssLoaderDefaults, {
         options: {
           modules: cssModulesDefaults,
-          exportOnlyLocals: true,
           importLoaders: 2,
         },
       }),
