@@ -4,8 +4,8 @@
   "version": "7.1.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
-    "**/*.css",
-    "**/*.scss"
+    "*.css",
+    "*.scss"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
