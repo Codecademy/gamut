@@ -5,7 +5,8 @@
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
-    "*.scss"
+    "*.scss",
+    "./dist/ButtonBase/index.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
