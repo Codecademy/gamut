@@ -1,6 +1,6 @@
 import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
-import { ButtonBase } from '../ButtonBase';
+import ButtonBase from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles/index.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
