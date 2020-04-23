@@ -10,7 +10,7 @@ import {
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
 import Truncate from '../Truncate';
-import ButtonBase from '../ButtonBase';
+import { ButtonBase } from '../ButtonBase';
 import Button from '../Button';
 
 import { BannerType, BANNER_CONFIG } from './constants';

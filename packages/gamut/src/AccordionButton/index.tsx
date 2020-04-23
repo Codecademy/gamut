@@ -4,7 +4,7 @@ import React from 'react';
 import Button from '../Button';
 import ChevronDownIcon from '../Icon/icons/ChevronDownIcon';
 import styles from './styles.module.scss';
-import ButtonBase from '../ButtonBase';
+import { ButtonBase } from '../ButtonBase';
 
 export type AccordionButtonProps = {
   className?: string;

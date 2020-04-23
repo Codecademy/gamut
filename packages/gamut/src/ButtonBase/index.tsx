@@ -56,5 +56,3 @@ export const ButtonBase: React.FC<ButtonBaseProps> = props => {
   // eslint-disable-next-line react/button-has-type
   return <button {...defaultProps} />;
 };
-
-export default ButtonBase;
