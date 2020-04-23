@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
-import { ButtonBase } from '../../ButtonBase';
+import ButtonBase from '../../ButtonBase';
 
 import s from './styles.module.scss';
 
