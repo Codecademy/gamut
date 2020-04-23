@@ -6,7 +6,8 @@
   "sideEffects": [
     "*.css",
     "*.scss",
-    "./dist/ButtonBase/index.js"
+    "dist/**/*.js",
+    "!dist/index.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
