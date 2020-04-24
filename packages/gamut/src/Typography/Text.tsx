@@ -7,14 +7,14 @@ import { generateResponsiveClassnames } from '../utils/generateResponsiveClassna
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { AllowedStyles } from './types';
 
-type TextTags = 'p' | 'span' | 'div';
-type FontSizes = 'sm' | 'lg';
+export type TextTags = 'p' | 'span' | 'div';
+export type TextSizes = 'sm' | 'md' | 'lg';
 
 type TextProps = {
   /** Text based tags */
   as?: TextTags;
   /** A font-size/font-family pair */
-  fontSize?: ResponsiveProperty<FontSizes>;
+  fontSize?: ResponsiveProperty<TextSizes>;
   /** Allows you to pass color attributes directly to the tag */
   style?: AllowedStyles;
 } & ContainerElementProps;

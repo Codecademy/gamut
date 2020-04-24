@@ -2,7 +2,7 @@
 
 .heading {
   font-weight: $font-weight-headings;
-  line-height: 1.5;
+  line-height: 1.25;
 }
 
 @each $screenSize in $screenSizes {
@@ -11,6 +11,7 @@
       .fontSize_#{$size}__#{$screenSize} {
         font-size: px-rem(map-get($map, size));
         font-family: map-get($map, font);
+        margin-bottom: px-rem(map-get($map, margin));
       }
     }
   }
