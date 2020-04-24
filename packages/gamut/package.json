@@ -4,8 +4,9 @@
   "version": "7.1.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
-    "*.css",
-    "*.scss"
+    "**/*.css",
+    "**/*.scss",
+    "dist/ButtonBase/index.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
