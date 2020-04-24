@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.1.3 (2020-04-24)</small>
+
+* fix: reset gamut ButtonBase styles to default (#614) ([a902ba7](https://github.com/RyzacInc/client-modules/commit/a902ba7)), closes [#614](https://github.com/RyzacInc/client-modules/issues/614)
+
+
+
+
+
 ## <small>7.1.2 (2020-04-23)</small>
 
 * Added a comment ([7c2a27a](https://github.com/RyzacInc/client-modules/commit/7c2a27a))
