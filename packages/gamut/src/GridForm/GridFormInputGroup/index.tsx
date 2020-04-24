@@ -24,7 +24,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
   const inputValue = props.watch(props.field.name);
   const { onUpdate } = props.field;
   useEffect(() => {
-    if (onUpdate) onUpdate(inputValue);
+    onUpdate?.(inputValue);
   }, [inputValue, onUpdate]);
 
   const getInput = () => {
