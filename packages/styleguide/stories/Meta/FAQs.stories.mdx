@@ -12,27 +12,29 @@ Neither our internal processes nor the design system are stabilized enough for n
 
 ## To Gamut or Not To Gamut?
 
+> When should we create a general component in Gamut instead of a specific one in another application?
+
 In general, we prefer Gamut components to be those that are commonly shared across multiple experiences in the monolith.
-If something can be easily built from the existing primitives _without_ adding logic, such as a layout+button, we generally wouldn't make a special component for it.
+If something can be easily built from the existing primitives _without_ adding logic, we generally wouldn't make a special component for it.
 
-Some examples of things we'd generally include would be:
+Some examples of things we'd generally include in Gamut are:
 
-- Common visually identifiable atoms, such as buttons
+- Common visually identifiable atoms, such as buttons or form inputs
 - Atoms linked together with client logic, such as an Alert bar
 
 Some examples of things we generally wouldn't include are:
 
 - Customized atoms specially designed for a particular use case
 - Groups of components that could be recreated easily
-- Jawns
 
-Consider referencing other design systems to see what they choose to turn into generic components.
+Consider referencing other design systems such as [Fluent](https://www.microsoft.com/design/fluent) and [Material Design](https://material.io/design) to see what they choose to turn into generic components.
 
 ### Brand or Core?
 
-The "Brand" section of components is an eqivalent to the Fluent "Experimental" or Material UI "Labs" sections.
-_(links pending)_
-They're still shared across the site, such as with the marketing-style Learner Testimonials, but are too specific to include in the core design system.
+The "Brand" section of components houses two sections of components:
+
+- Brand-specific ones that we want shared but are too specific for the general design system, such as logos or headers
+- "Experimental" components that are already shared across our site but are new and relatively use-case-specific, such as marketing-style testimonials
 
 Components in this system might "graduate" to the core design system over time.
 They might also be discarded if our design team moves away from using them.
@@ -40,12 +42,13 @@ Until either, they're treated as experimental and don't always respect semver.
 
 ## `style` or `theme`?
 
-proposal: in general, start off with very open style intentionally
-open up / enable for ease of use
+Most components that have configurable colors use one of two APIs:
 
-later on, once the component is more solidified, consider restricting with prescriptive themes
+- `style`: Allowing one or more colors to be passed as values from their parent, such as `ProgressBar`
+- `theme`: A pre-configured list of allowed colors, such as `Button`
 
-eventual goal will be locked
+We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
+As we learn more and restrict component usage over time, we might switch to `theme`.
 
 ## What's Going On With Accessibility?
 
