@@ -57,4 +57,28 @@ describe('GridForm', () => {
       [stubTextField.name]: textValue,
     });
   });
+
+  it('invokes onUpdate when a field with onUpdate is changed', async () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = 'foo';
+
+    const fields = [{ ...stubTextField, onUpdate: onUpdateSpy }];
+    const wrapped = mount(
+      <GridForm
+        fields={fields}
+        onSubmit={jest.fn()}
+        submit={{ contents: <>Submit</> }}
+      />
+    );
+
+    await act(async () => {
+      const node = wrapped.find('input[type="text"]').getDOMNode();
+      (node as any).value = newVal;
+      node.dispatchEvent(new Event('input'));
+    });
+
+    wrapped.setProps(wrapped.props());
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
 });

@@ -5,6 +5,7 @@ import { ColumnProps } from '../Layout/Column';
 export type BaseFormField = {
   name: string;
   size?: ColumnProps['size'];
+  onUpdate?: (value: any) => void;
 };
 
 export type GridFormCheckboxField = BaseFormField & {

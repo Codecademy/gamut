@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormContextValues } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
@@ -17,9 +17,16 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
+  watch: FormContextValues['watch'];
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
+  const inputValue = props.watch(props.field.name);
+  const { onUpdate } = props.field;
+  useEffect(() => {
+    if (onUpdate) onUpdate(inputValue);
+  }, [inputValue, onUpdate]);
+
   const getInput = () => {
     switch (props.field.type) {
       case 'checkbox':
