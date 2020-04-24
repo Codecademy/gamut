@@ -29,6 +29,20 @@ Some examples of things we generally wouldn't include are:
 
 Consider referencing other design systems such as [Fluent](https://www.microsoft.com/design/fluent) and [Material Design](https://material.io/design) to see what they choose to turn into generic components.
 
+### Implementation Strategy?
+
+> Should we implement components in separate repositories or in client-modules?
+
+As general rules of thumb:
+
+1. If a component is being written for the first time or used for a second time:
+
+   - If the designer thinks it might belong in Gamut, feel free to implement it in the separate repository
+     - Consider making its API simple and flexible _(e.g. passing props to it instead of hooking it up to Redux)_
+   - If the designer doesn't intend for it to be in the design system, never mind Gamut
+
+2. If a component is being used for a third time or more, please discuss moving it to Gamut
+
 ### Brand or Core?
 
 The "Brand" section of components houses two sections of components:
