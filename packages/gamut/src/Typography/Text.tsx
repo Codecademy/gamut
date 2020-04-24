@@ -22,7 +22,7 @@ type TextProps = {
 export const Text: React.FC<TextProps> = ({
   children,
   as: Element = 'p',
-  fontSize = 'lg',
+  fontSize = 'md',
   className,
   testId,
   style,
