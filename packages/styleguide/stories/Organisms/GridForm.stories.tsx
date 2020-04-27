@@ -427,8 +427,9 @@ export const gridFormWithPlaceholderText = decoratedStory(() => (
   </StoryTemplate>
 ));
 
-export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
+const GridFormWithFieldWithOnUpdate: React.FC = () => {
   const [text, setText] = useState('');
+
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -457,4 +458,8 @@ export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
       />
     </StoryTemplate>
   );
-});
+};
+
+export const gridFormWithFieldWithOnUpdate = decoratedStory(() => (
+  <GridFormWithFieldWithOnUpdate />
+));
