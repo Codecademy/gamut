@@ -18,6 +18,7 @@ const cssLoaderDefaults = {
     modules: false,
   },
 };
+
 const cssModulesDefaults = {
   exportGlobals: true,
   localIdentName: CSS_MODULE_IDENT,
@@ -54,17 +55,18 @@ const scssLoaderDefaults = {
   },
 };
 
+const styleLoaderDefaults = {
+  loader: 'style-loader',
+  options: {
+    esModule: true,
+  },
+};
+
 const css = {
   default: {
     test: cssFilePattern,
     sideEffects: true,
-    use: [
-      {
-        loader: 'style-loader',
-      },
-      cssLoaderDefaults,
-      postCssLoaderDefaults,
-    ],
+    use: [styleLoaderDefaults, cssLoaderDefaults, postCssLoaderDefaults],
   },
   extracted: {
     test: cssFilePattern,
@@ -89,9 +91,7 @@ const scss = {
     test: scssFilePattern,
     sideEffects: true,
     use: [
-      {
-        loader: 'style-loader',
-      },
+      styleLoaderDefaults,
       merge(cssLoaderDefaults, {
         options: {
           modules: cssModulesDefaults,
