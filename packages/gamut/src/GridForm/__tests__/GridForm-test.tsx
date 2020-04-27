@@ -57,24 +57,4 @@ describe('GridForm', () => {
       [stubTextField.name]: textValue,
     });
   });
-
-  it('invokes onUpdate when a field with onUpdate is changed', async () => {
-    const onUpdateSpy = jest.fn();
-    const newVal = 'foo';
-
-    const fields = [{ ...stubTextField, onUpdate: onUpdateSpy }];
-    const wrapped = mount(
-      <GridForm
-        fields={fields}
-        onSubmit={jest.fn()}
-        submit={{ contents: <>Submit</> }}
-      />
-    );
-
-    wrapped
-      .find('input[type="text"]')
-      .simulate('change', { target: { value: newVal } });
-
-    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
-  });
 });
