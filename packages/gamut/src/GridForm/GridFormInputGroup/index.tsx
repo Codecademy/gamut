@@ -17,7 +17,6 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
-  watch: FormContextValues['watch'];
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
