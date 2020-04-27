@@ -20,6 +20,7 @@ export * from './Typography/Text';
 export * from './HighlightedText';
 export * from './Icon';
 export * from './IkonaIcon';
+export * from './InputStepper';
 export * from './Interstitial';
 export * from './Layout';
 export * from './Markdown';
