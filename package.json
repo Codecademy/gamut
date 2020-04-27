@@ -39,8 +39,7 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/@storybook/react",
-      "**/@storybook/addon-storyshots"
+      "**/@storybook/**"
     ]
   },
   "dependencies": {
