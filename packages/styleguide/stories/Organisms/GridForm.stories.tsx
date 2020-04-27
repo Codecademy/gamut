@@ -1,6 +1,7 @@
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
+import { useState } from '@storybook/addons';
 import { action } from '@storybook/addon-actions';
-import React, { useState } from 'react';
+import React from 'react';
 
 import {
   decoratedStories,
@@ -427,7 +428,7 @@ export const gridFormWithPlaceholderText = decoratedStory(() => (
   </StoryTemplate>
 ));
 
-const GridFormWithFieldWithOnUpdate: React.FC = () => {
+export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
   const [text, setText] = useState('');
 
   return (
@@ -458,8 +459,4 @@ const GridFormWithFieldWithOnUpdate: React.FC = () => {
       />
     </StoryTemplate>
   );
-};
-
-export const gridFormWithFieldWithOnUpdate = decoratedStory(() => (
-  <GridFormWithFieldWithOnUpdate />
-));
+});
