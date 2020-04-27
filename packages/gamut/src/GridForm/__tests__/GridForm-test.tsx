@@ -71,13 +71,9 @@ describe('GridForm', () => {
       />
     );
 
-    await act(async () => {
-      const node = wrapped.find('input[type="text"]').getDOMNode();
-      (node as any).value = newVal;
-      node.dispatchEvent(new Event('input'));
-    });
-
-    wrapped.setProps(wrapped.props());
+    wrapped
+      .find('input[type="text"]')
+      .simulate('change', { target: { value: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
