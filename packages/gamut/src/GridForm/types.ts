@@ -2,15 +2,15 @@ import { FormContextValues, ValidationOptions } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
-export type BaseFormField<T> = {
+export type BaseFormField<Value> = {
+  defaultValue?: Value;
   name: string;
-  onUpdate?: (value: T) => void;
+  onUpdate?: (value: Value) => void;
   size?: ColumnProps['size'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: string;
-  defaultValue?: boolean;
   label?: string;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
@@ -25,7 +25,6 @@ export type GridFormCustomFieldProps = {
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
-  defaultValue?: any;
   label?: string;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationOptions;
@@ -33,7 +32,6 @@ export type GridFormCustomField = BaseFormField<any> & {
 };
 
 export type GridFormTextField = BaseFormField<string> & {
-  defaultValue?: string;
   label: string;
   placeholder?: string;
   validation?: ValidationOptions;
@@ -41,7 +39,6 @@ export type GridFormTextField = BaseFormField<string> & {
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
-  defaultValue?: string;
   label: string;
   options: string[] | Record<string, number | string>;
   validation?: Pick<ValidationOptions, 'required'>;
@@ -49,14 +46,12 @@ export type GridFormSelectField = BaseFormField<string> & {
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  defaultValue?: FileList;
   label: string;
   validation?: ValidationOptions;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
-  defaultValue?: string;
   label: string;
   validation?: ValidationOptions;
   type: 'textarea';
