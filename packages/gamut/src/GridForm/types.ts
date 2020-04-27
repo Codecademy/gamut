@@ -5,13 +5,13 @@ import { ColumnProps } from '../Layout/Column';
 export type BaseFormField = {
   name: string;
   size?: ColumnProps['size'];
-  onUpdate?: (value: any) => void;
 };
 
 export type GridFormCheckboxField = BaseFormField & {
   description: string;
   defaultValue?: boolean;
   label?: string;
+  onUpdate?: (value: boolean) => void;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
 };
@@ -35,6 +35,7 @@ export type GridFormCustomField = BaseFormField & {
 export type GridFormTextField = BaseFormField & {
   defaultValue?: string;
   label: string;
+  onUpdate?: (value: string) => void;
   placeholder?: string;
   validation?: ValidationOptions;
   type: 'text' | 'email';
@@ -43,6 +44,7 @@ export type GridFormTextField = BaseFormField & {
 export type GridFormSelectField = BaseFormField & {
   defaultValue?: string;
   label: string;
+  onUpdate?: (value: string) => void;
   options: string[] | Record<string, number | string>;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'select';
@@ -51,6 +53,7 @@ export type GridFormSelectField = BaseFormField & {
 export type GridFormFileField = BaseFormField & {
   defaultValue?: FileList;
   label: string;
+  onUpdate?: (value: FileList) => void;
   validation?: ValidationOptions;
   type: 'file';
 };
@@ -58,6 +61,7 @@ export type GridFormFileField = BaseFormField & {
 export type GridFormTextAreaField = BaseFormField & {
   defaultValue?: string;
   label: string;
+  onUpdate?: (value: string) => void;
   validation?: ValidationOptions;
   type: 'textarea';
 };
