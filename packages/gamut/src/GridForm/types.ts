@@ -2,16 +2,16 @@ import { FormContextValues, ValidationOptions } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
-export type BaseFormField = {
+export type BaseFormField<T> = {
   name: string;
+  onUpdate?: (value: T) => void;
   size?: ColumnProps['size'];
 };
 
-export type GridFormCheckboxField = BaseFormField & {
+export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: string;
   defaultValue?: boolean;
   label?: string;
-  onUpdate?: (value: boolean) => void;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
 };
@@ -24,7 +24,7 @@ export type GridFormCustomFieldProps = {
   setValue: (value: any) => void;
 };
 
-export type GridFormCustomField = BaseFormField & {
+export type GridFormCustomField = BaseFormField<any> & {
   defaultValue?: any;
   label?: string;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
@@ -32,36 +32,32 @@ export type GridFormCustomField = BaseFormField & {
   type: 'custom';
 };
 
-export type GridFormTextField = BaseFormField & {
+export type GridFormTextField = BaseFormField<string> & {
   defaultValue?: string;
   label: string;
-  onUpdate?: (value: string) => void;
   placeholder?: string;
   validation?: ValidationOptions;
   type: 'text' | 'email';
 };
 
-export type GridFormSelectField = BaseFormField & {
+export type GridFormSelectField = BaseFormField<string> & {
   defaultValue?: string;
   label: string;
-  onUpdate?: (value: string) => void;
   options: string[] | Record<string, number | string>;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'select';
 };
 
-export type GridFormFileField = BaseFormField & {
+export type GridFormFileField = BaseFormField<FileList> & {
   defaultValue?: FileList;
   label: string;
-  onUpdate?: (value: FileList) => void;
   validation?: ValidationOptions;
   type: 'file';
 };
 
-export type GridFormTextAreaField = BaseFormField & {
+export type GridFormTextAreaField = BaseFormField<string> & {
   defaultValue?: string;
   label: string;
-  onUpdate?: (value: string) => void;
   validation?: ValidationOptions;
   type: 'textarea';
 };

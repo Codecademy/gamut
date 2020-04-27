@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
@@ -21,12 +21,6 @@ export type GridFormInputGroupProps = {
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
-  const inputValue = props.watch(props.field.name);
-  const { onUpdate } = props.field;
-  useEffect(() => {
-    onUpdate?.(inputValue);
-  }, [inputValue, onUpdate]);
-
   const getInput = () => {
     switch (props.field.type) {
       case 'checkbox':
