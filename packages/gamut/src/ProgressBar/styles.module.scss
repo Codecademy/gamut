@@ -2,14 +2,6 @@
 
 .progressBar {
   overflow: hidden;
-
-  &.blue {
-    background: $color-blue-100;
-  }
-
-  &.yellow {
-    background: $color-gray-800;
-  }
 }
 
 .bar {
@@ -17,14 +9,6 @@
   display: flex;
   height: 100%;
   transition: width 0.5s;
-
-  .blue & {
-    background: $color-blue-700;
-  }
-
-  .yellow & {
-    background: $color-yellow-500;
-  }
 }
 
 .displayedPercent {
@@ -32,8 +16,4 @@
   padding: 0.5rem;
   text-align: right;
   width: 100%;
-
-  .yellow & {
-    color: $color-black;
-  }
 }

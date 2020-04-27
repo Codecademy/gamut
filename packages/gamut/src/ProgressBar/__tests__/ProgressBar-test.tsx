@@ -3,8 +3,13 @@ import React from 'react';
 
 import ProgressBar, { ProgressBarProps } from '..';
 
+const stubStyle = {
+  backgroundColor: 'pink',
+  barColor: 'magenta',
+};
+
 const renderComponent = (overrides: Partial<ProgressBarProps> = {}) => {
-  return mount(<ProgressBar percent={50} theme="blue" {...overrides} />);
+  return mount(<ProgressBar percent={50} style={stubStyle} {...overrides} />);
 };
 
 describe('ProgressBar', () => {
