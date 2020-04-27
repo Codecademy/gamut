@@ -31,7 +31,8 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "babel-preset-codecademy": "latest"
+    "babel-preset-codecademy": "latest",
+    "webpack": "^4.43.0"
   },
   "dependencies": {
     "babel-loader": "^8.0.5",

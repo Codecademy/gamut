@@ -5,7 +5,6 @@ type DecoratedStory = {
 
 export const decoratedStory: DecoratedStory = (...args: any[]) => {
   const [name, context] = args.length === 2 ? args : [args[0].name, args[0]];
-
   context.story = {
     name,
     options: {
