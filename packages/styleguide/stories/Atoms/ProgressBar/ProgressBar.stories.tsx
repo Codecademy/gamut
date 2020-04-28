@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 import styles from './styles.module.scss';
 import {
@@ -12,24 +11,18 @@ import {
   decoratedStory,
 } from '../../Templating';
 import { number } from '@storybook/addon-knobs';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 export default decoratedStories('Atoms', ProgressBar);
 
 const bars = [
   {
     large: false,
-    style: {
-      backgroundColor: colors.blue[100],
-      barColor: colors.blue[700],
-    },
+    theme: 'blue',
   },
   {
     large: true,
-    style: {
-      backgroundColor: colors.gray[100],
-      barColor: colors.yellow[500],
-      fontColor: colors.black,
-    },
+    theme: 'yellow',
   },
 ] as const;
 
@@ -41,14 +34,14 @@ export const progressBar = decoratedStory(() => (
       might show one on a quiz page indicating how many questions have been
       completed.
       <br />
-      Bars with <code>large</code> specified are thicker and will display a
-      percentage label.
+      Bars with <code>large</code> specified are thicker, and will display a
+      percentage label if a font color is specified.
     </StoryDescription>
     <LayoutGrid className={styles.progressBarGrid} columnGap="sm" rowGap="sm">
       {[0, 25, 50, 75, 100].map(percent =>
-        bars.map(({ large, style }) => (
-          <Column key={[percent, large].join()} size={6}>
-            <ProgressBar large={large} percent={percent} style={style} />
+        bars.map(({ large, theme }) => (
+          <Column key={[percent, large, theme].join()} size={6}>
+            <ProgressBar large={large} percent={percent} theme={theme} />
           </Column>
         ))
       )}
@@ -68,7 +61,30 @@ export const progressBarMinimumPercent = decoratedStory(
       <ProgressBar
         minimumPercent={number('Minimum Percent', 5)}
         percent={number('Percent', 0)}
-        style={bars[0].style}
+        theme="blue"
+      />
+    </StoryTemplate>
+  )
+);
+
+export const progressBarStyleOverrides = decoratedStory(
+  'Style Overrides',
+  () => (
+    <StoryTemplate status={StoryStatus.InProgress}>
+      <StoryDescription>
+        For the sake of rapid iteration, you can pass in custom style colors via
+        the <code>style</code> prop.
+      </StoryDescription>
+      <ProgressBar
+        minimumPercent={number('Minimum Percent', 5)}
+        large
+        percent={number('Percent', 0)}
+        style={{
+          backgroundColor: colors.red[900],
+          barColor: colors.red[600],
+          fontColor: colors.white,
+        }}
+        theme="blue"
       />
     </StoryTemplate>
   )

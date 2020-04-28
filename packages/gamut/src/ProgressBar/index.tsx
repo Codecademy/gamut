@@ -21,12 +21,20 @@ export type ProgressBarProps = {
    */
   percent: number;
 
-  style: ProgressBarStyle;
+  /**
+   * Style overrides to apply on top of the theme, if any.
+   */
+  style?: ProgressBarStyle;
+
+  /**
+   * Base color theme to extend from.
+   */
+  theme: 'blue' | 'yellow';
 };
 
 export type ProgressBarStyle = {
-  backgroundColor: string;
-  barColor: string;
+  backgroundColor?: string;
+  barColor?: string;
   fontColor?: string;
 };
 
@@ -35,7 +43,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   large,
   minimumPercent = 0,
   percent,
-  style,
+  style = {},
+  theme,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
@@ -45,7 +54,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      className={cx(styles.progressBar, className)}
+      className={cx(styles.progressBar, styles[theme], className)}
       style={{
         background: backgroundColor,
         borderRadius: radius,
