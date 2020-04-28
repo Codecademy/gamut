@@ -16,13 +16,16 @@ export const decoratedStory: DecoratedStory = (...args: any[]) => {
 
   (context as StoryContext).story = {
     name,
-    ...merge(storyConfig, {
-      parameters: {
-        knobs: {
-          escapeHTML: false,
+    ...merge(
+      {
+        parameters: {
+          knobs: {
+            escapeHTML: false,
+          },
         },
       },
-    }),
+      storyConfig
+    ),
   };
 
   return context;
