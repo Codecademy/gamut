@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.3.0 (2020-04-28)
+
+* feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+
+
+
+
+
 ## 7.2.0 (2020-04-27)
 
 * feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
