@@ -1,3 +1,4 @@
+import { merge } from 'lodash';
 import { StoryContext, WrapperSettings } from '@storybook/addons';
 
 type DecoratedStory = {
@@ -15,7 +16,13 @@ export const decoratedStory: DecoratedStory = (...args: any[]) => {
 
   (context as StoryContext).story = {
     name,
-    ...storyConfig,
+    ...merge(storyConfig, {
+      parameters: {
+        knobs: {
+          escapeHTML: false,
+        },
+      },
+    }),
   };
 
   return context;
