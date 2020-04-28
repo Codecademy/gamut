@@ -24,8 +24,8 @@ Some examples of things we'd generally include in Gamut are:
 
 Some examples of things we generally wouldn't include are:
 
-- Customized atoms specially designed for a particular use case
-- Groups of components that could be recreated easily
+- Customized atoms specially designed for a particular use case, such as promotional "cards"
+- Groups of components that could be recreated easily, such as a particular button and grid combination
 
 Consider referencing other design systems such as [Fluent](https://www.microsoft.com/design/fluent) and [Material Design](https://material.io/design) to see what they choose to turn into generic components.
 
@@ -56,7 +56,7 @@ Until either, they're treated as experimental and don't always respect semver.
 
 ## `style` or `theme`?
 
-Most components that have configurable colors use one of two APIs:
+Most components that have configurable themes use one of two APIs:
 
 - `style`: Allowing one or more colors to be passed as values from their parent, such as `ProgressBar`
 - `theme`: A pre-configured list of allowed colors, such as `Button`
