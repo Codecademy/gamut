@@ -11,7 +11,13 @@ import {
 
 export default decoratedStories('Atoms', Overlay);
 
-export const overlay = decoratedStory(() => <OverlayStory />);
+export const overlay = decoratedStory(() => <OverlayStory />, {
+  parameters: {
+    storyshots: {
+      disable: true,
+    },
+  },
+});
 
 const OverlayStory: React.FC = () => {
   const [open, setOpen] = useState(false);

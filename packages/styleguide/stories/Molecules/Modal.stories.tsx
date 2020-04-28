@@ -37,8 +37,21 @@ const ModalWithoutDefaultCloseButton: React.FC = () => {
   );
 };
 
-export const modal = decoratedStory(() => <ModalStory />);
+export const modal = decoratedStory(() => <ModalStory />, {
+  parameters: {
+    storyshots: {
+      disable: true,
+    },
+  },
+});
 
-export const modalWithoutDefaultCloseButton = decoratedStory(() => (
-  <ModalWithoutDefaultCloseButton />
-));
+export const modalWithoutDefaultCloseButton = decoratedStory(
+  () => <ModalWithoutDefaultCloseButton />,
+  {
+    parameters: {
+      storyshots: {
+        disable: true,
+      },
+    },
+  }
+);

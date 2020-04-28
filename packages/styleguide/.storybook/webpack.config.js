@@ -56,21 +56,6 @@ module.exports = ({ config }) => {
     config.module.rules[jsIndex].use[0].options.presets.push(
       '@babel/preset-typescript'
     );
-    config.module.rules[jsIndex].use.push({
-      loader: 'react-docgen-typescript-loader',
-      options: {
-        tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
-        propFilter(p) {
-          if (p.parent && p.parent.fileName.match('node_modules')) {
-            if (p.required) {
-              return true;
-            }
-            return false;
-          }
-          return true;
-        },
-      },
-    });
   }
 
   const cssIndex = config.module.rules.findIndex(

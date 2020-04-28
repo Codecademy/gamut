@@ -1,19 +1,21 @@
+import { StoryContext, WrapperSettings } from '@storybook/addons';
+
 type DecoratedStory = {
-  (name: string, context: () => void): any;
-  (context: () => void): any;
+  (
+    name: string,
+    context: () => void,
+    storyConfig?: Partial<WrapperSettings>
+  ): StoryContext;
+  (context: () => void, storyConfig?: Partial<WrapperSettings>): StoryContext;
 };
 
 export const decoratedStory: DecoratedStory = (...args: any[]) => {
-  const [name, context] = args.length === 2 ? args : [args[0].name, args[0]];
-  context.story = {
+  const [name, context, storyConfig] =
+    typeof args[0] === 'string' ? args : [args[0].name, args[0], args[1]];
+
+  (context as StoryContext).story = {
     name,
-    options: {
-      parameters: {
-        knobs: {
-          escapeHTML: false,
-        },
-      },
-    },
+    ...storyConfig,
   };
 
   return context;
