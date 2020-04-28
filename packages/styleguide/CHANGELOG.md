@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.3.0 (2020-04-27)
+
+* feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+
+
+
+
+
 ## 8.2.0 (2020-04-22)
 
 * feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
