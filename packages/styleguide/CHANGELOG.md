@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.0.0 (2020-04-28)
+
+* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5)), closes [#736](https://github.com/RyzacInc/client-modules/issues/736)
+
+
+
+
+
 ## 8.5.0 (2020-04-28)
 
 * feat(styleguide): added inclusion guidelines to FAQs (#749) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40)), closes [#749](https://github.com/RyzacInc/client-modules/issues/749)
