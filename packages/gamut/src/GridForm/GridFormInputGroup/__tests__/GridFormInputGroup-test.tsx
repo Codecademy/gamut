@@ -84,4 +84,75 @@ describe('GridFormInputGroup', () => {
 
     expect(wrapped.find('textarea')).toHaveLength(1);
   });
+
+  it('invokes onUpdate when the field type is text and it gets changed', () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = 'foo';
+
+    const { wrapped } = renderComponent({
+      field: { ...stubTextField, onUpdate: onUpdateSpy },
+    });
+
+    wrapped
+      .find('input[type="text"]')
+      .simulate('change', { target: { value: newVal } });
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('invokes onUpdate when the field type is textera and it gets changed', () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = 'foo';
+
+    const { wrapped } = renderComponent({
+      field: { ...stubTextareaField, onUpdate: onUpdateSpy },
+    });
+
+    wrapped.find('textarea').simulate('change', { target: { value: newVal } });
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('invokes onUpdate when the field type is select and it gets changed', () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = 'foo';
+
+    const { wrapped } = renderComponent({
+      field: { ...stubSelectField, onUpdate: onUpdateSpy },
+    });
+
+    wrapped.find('select').simulate('change', { target: { value: newVal } });
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('invokes onUpdate when the field type is checkbox and it gets changed', () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = true;
+
+    const { wrapped } = renderComponent({
+      field: { ...stubCheckboxField, onUpdate: onUpdateSpy },
+    });
+
+    wrapped
+      .find('input[type="checkbox"]')
+      .simulate('change', { target: { checked: newVal } });
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('invokes onUpdate when the field type is file and it gets changed', () => {
+    const onUpdateSpy = jest.fn();
+    const newVal = ['I swear this is a file'];
+
+    const { wrapped } = renderComponent({
+      field: { ...stubFileField, onUpdate: onUpdateSpy },
+    });
+
+    wrapped
+      .find('input[type="file"]')
+      .simulate('change', { target: { files: newVal } });
+
+    expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
 });

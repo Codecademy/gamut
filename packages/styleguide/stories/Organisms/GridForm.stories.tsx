@@ -1,4 +1,5 @@
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
+import { useState } from '@storybook/addons';
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -426,3 +427,36 @@ export const gridFormWithPlaceholderText = decoratedStory(() => (
     />
   </StoryTemplate>
 ));
+
+export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
+  const [text, setText] = useState('');
+
+  return (
+    <StoryTemplate status={StoryStatus.Ready}>
+      <StoryDescription>
+        A field can take an onUpdate callback. This callback will fire when the
+        field's value changes. This could be useful if you need to use the
+        field's value in a parent component before onSubmit gets triggered.
+      </StoryDescription>
+
+      <p>The text value is: {text}</p>
+      <GridForm
+        fields={[
+          {
+            label: 'Text with onUpdate',
+            name: 'simple-text',
+            size: 3,
+            type: 'text',
+            onUpdate: setText,
+          },
+        ]}
+        onSubmit={async values => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit Me!?',
+        }}
+      />
+    </StoryTemplate>
+  );
+});

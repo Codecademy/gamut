@@ -2,14 +2,15 @@ import { FormContextValues, ValidationOptions } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
-export type BaseFormField = {
+export type BaseFormField<Value> = {
+  defaultValue?: Value;
   name: string;
+  onUpdate?: (value: Value) => void;
   size?: ColumnProps['size'];
 };
 
-export type GridFormCheckboxField = BaseFormField & {
+export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: string;
-  defaultValue?: boolean;
   label?: string;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
@@ -23,39 +24,34 @@ export type GridFormCustomFieldProps = {
   setValue: (value: any) => void;
 };
 
-export type GridFormCustomField = BaseFormField & {
-  defaultValue?: any;
+export type GridFormCustomField = BaseFormField<any> & {
   label?: string;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationOptions;
   type: 'custom';
 };
 
-export type GridFormTextField = BaseFormField & {
-  defaultValue?: string;
+export type GridFormTextField = BaseFormField<string> & {
   label: string;
   placeholder?: string;
   validation?: ValidationOptions;
   type: 'text' | 'email';
 };
 
-export type GridFormSelectField = BaseFormField & {
-  defaultValue?: string;
+export type GridFormSelectField = BaseFormField<string> & {
   label: string;
   options: string[] | Record<string, number | string>;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'select';
 };
 
-export type GridFormFileField = BaseFormField & {
-  defaultValue?: FileList;
+export type GridFormFileField = BaseFormField<FileList> & {
   label: string;
   validation?: ValidationOptions;
   type: 'file';
 };
 
-export type GridFormTextAreaField = BaseFormField & {
-  defaultValue?: string;
+export type GridFormTextAreaField = BaseFormField<string> & {
   label: string;
   validation?: ValidationOptions;
   type: 'textarea';
