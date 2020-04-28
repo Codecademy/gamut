@@ -12,4 +12,4 @@ registerRequireContextHook();
 // Set fixed date
 Date.now = jest.fn(() => new Date(2011, 6, 1).valueOf());
 
-import 'mutationobserver-shim';
+require('mutationobserver-shim');
