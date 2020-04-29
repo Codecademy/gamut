@@ -1,0 +1,28 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.heading {
+  text-align: center;
+  max-width: px-rem(431px);
+  color: $color-white;
+  font-size: 28px;
+  line-height: 32px;
+  margin: 5rem auto 1rem;
+
+  @include screen-size-gte($grid-xs-min) {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.description {
+  text-align: center;
+  color: $color-white;
+  margin-bottom: 1.75rem;
+}
+
+.button {
+  text-align: center;
+  width: px-rem(254px);
+  margin: 0 auto;
+  height: px-rem(56px);
+}
