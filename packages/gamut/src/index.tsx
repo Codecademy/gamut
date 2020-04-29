@@ -15,8 +15,6 @@ export * from './DeprecatedTabs';
 export * from './FlexBox';
 export * from './FlexGrid';
 export * from './Form';
-export * from './Header/HeaderContainer';
-export * from './Header/HeaderTab';
 export * from './GridForm';
 export * from './Typography/Heading';
 export * from './Typography/Text';
