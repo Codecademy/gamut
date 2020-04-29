@@ -13,7 +13,25 @@ export const stubCheckboxField: GridFormCheckboxField = {
   type: 'checkbox',
 };
 
-export const stubSelectOptions: string[] = ['aaa', 'bbb'];
+export const stubRadioGroupOptions = [
+  {
+    name: 'Blue Team',
+    value: 'blue',
+  },
+  {
+    name: 'Red Team',
+    value: 'red',
+  },
+];
+
+export const stubRadioGroup = {
+  label: 'Stub Radio Group',
+  options: stubRadioGroupOptions,
+  name: 'stub-radio-group',
+  type: 'radio',
+};
+
+export const stubSelectOptions = ['aaa', 'bbb'];
 
 export const stubSelectField: GridFormSelectField = {
   label: 'Stub Select',
@@ -21,6 +39,7 @@ export const stubSelectField: GridFormSelectField = {
   name: 'stub-select',
   type: 'select',
 };
+
 export const stubTextField: GridFormTextField = {
   label: 'Stub Text',
   name: 'stub-text',

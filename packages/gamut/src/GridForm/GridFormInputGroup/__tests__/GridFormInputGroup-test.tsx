@@ -53,6 +53,14 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toEqual(text);
   });
 
+  it('renders a radio group when the field type is radio-group', () => {
+    const { wrapped } = renderComponent({
+      field: stubSelectField,
+    });
+
+    expect(wrapped.find('input[type=radio]')).toHaveLength(2);
+  });
+
   it('renders a select when the field type is select', () => {
     const { wrapped } = renderComponent({
       field: stubSelectField,
