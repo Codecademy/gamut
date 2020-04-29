@@ -58,7 +58,7 @@ describe('GridFormInputGroup', () => {
       field: stubSelectField,
     });
 
-    expect(wrapped.find('input[type=radio]')).toHaveLength(2);
+    expect(wrapped.find('input[type="radio"]')).toHaveLength(2);
   });
 
   it('renders a select when the field type is select', () => {
