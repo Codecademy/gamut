@@ -2,8 +2,8 @@ import React from 'react';
 import s from './styles.module.scss';
 import cx from 'classnames';
 import { VisualTheme } from '@codecademy/gamut';
-import orangeQuotes from './assets/orangeQuotes.svg';
-import purpleQuotes from './assets/purpleQuotes.svg';
+import orangeQuotes from '../assets/orangeQuotes.svg';
+import purpleQuotes from '../assets/purpleQuotes.svg';
 
 type QuoteProps = {
   text: string;
