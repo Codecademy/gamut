@@ -1,6 +1,14 @@
 import React from 'react';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
-import { LayoutGrid, Column, Text, Heading } from '@codecademy/gamut/src';
+import {
+  LayoutGrid,
+  Column,
+  Text,
+  Heading,
+  TextTags,
+  TextSizes,
+  Container,
+} from '@codecademy/gamut/src';
 
 import {
   decoratedStories,
@@ -12,8 +20,8 @@ import {
 
 export default decoratedStories('Foundations', 'Typography', Text);
 
-const textTags: ('p' | 'span')[] = ['p', 'span'];
-const textSizes: ('sm' | 'lg')[] = ['lg', 'sm'];
+const textTags: TextTags[] = ['p', 'span'];
+const textSizes: TextSizes[] = ['lg', 'md', 'sm'];
 
 export const baseTypography = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
@@ -29,11 +37,22 @@ export const baseTypography = decoratedStory(() => (
           This is a single primitive to handle all <strong>{'<p>'}</strong> and{' '}
           <strong>{'<span>'}</strong> tags with defined size intervals
         </p>
-        {textSizes.map(size => (
-          <React.Fragment key={size}>
-            <Heading fontSize="md" as="h3">
-              Size: {size}
-            </Heading>
+      </Column>
+      {textSizes.map(size => (
+        <React.Fragment key={size}>
+          <Column size={1}>
+            <Container align="start">
+              <Heading
+                fontSize="sm"
+                as="h2"
+                hideMargin
+                style={{ color: colors.gray[400] }}
+              >
+                {size}
+              </Heading>
+            </Container>
+          </Column>
+          <Column size={11}>
             <Text key={size} fontSize={size} as={textTags[0]}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -43,10 +62,9 @@ export const baseTypography = decoratedStory(() => (
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </Text>
-            <br />
-          </React.Fragment>
-        ))}
-      </Column>
+          </Column>
+        </React.Fragment>
+      ))}
     </LayoutGrid>
   </StoryTemplate>
 ));
