@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.2.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## 1.2.0 (2020-04-29)
 
 * feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/Codecademy/client-modules/commit/16e7ad7))

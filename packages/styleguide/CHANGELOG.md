@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.2.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
 ## 9.1.0 (2020-04-29)
 
 * feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))
