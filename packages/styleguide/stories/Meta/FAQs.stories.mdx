@@ -1,6 +1,3 @@
-import { Column, LayoutGrid } from '@codecademy/gamut';
-import LinkTo from '@storybook/addon-links/react';
-
 <Meta title="Meta/FAQs" />
 
 # FAQs
@@ -12,6 +9,60 @@ Please let us know if there are questions you'd like answered here!
 Thanks for your interest! 🙌
 We are not prepared to accept external contributions at this time.
 Neither our internal processes nor the design system are stabilized enough for non-team-members.
+
+## To Gamut or Not To Gamut?
+
+> When should we create a general component in Gamut instead of a specific one in another application?
+
+In general, we prefer Gamut components to be those that are commonly shared across multiple experiences in the monolith.
+If something can be easily built from the existing primitives _without_ adding logic, we generally wouldn't make a special component for it.
+
+Some examples of things we'd generally include in Gamut are:
+
+- Common visually identifiable atoms, such as buttons or form inputs
+- Atoms linked together with client logic, such as an Alert bar
+
+Some examples of things we generally wouldn't include are:
+
+- Customized atoms specially designed for a particular use case, such as promotional "cards"
+- Groups of components that could be recreated easily, such as a particular button and grid combination
+
+Consider referencing other design systems such as [Fluent](https://www.microsoft.com/design/fluent) and [Material Design](https://material.io/design) to see what they choose to turn into generic components.
+
+### Implementation Strategy?
+
+> Should we implement components in separate repositories or in client-modules?
+
+As general rules of thumb:
+
+1. If a component is being written for the first time or used for a second time:
+
+   - If the designer thinks it might belong in Gamut, feel free to implement it in the separate repository
+     - Consider making its API simple and flexible _(e.g. passing props to it instead of hooking it up to Redux)_
+   - If the designer doesn't intend for it to be in the design system, never mind Gamut
+
+2. If a component is being used for a third time or more, please discuss moving it to Gamut
+
+### Brand or Core?
+
+The "Brand" components section contains two types of components:
+
+- Brand-specific ones that we want shared but are too specific for the general design system, such as logos or headers
+- "Experimental" components that are already shared across our site but are new and relatively use-case-specific, such as marketing-style testimonials
+
+Components in this system might "graduate" to the core design system over time.
+They might also be discarded if our design team moves away from using them.
+Until either, they're treated as experimental and don't always respect semver.
+
+## `style` or `theme`?
+
+Most components that have configurable themes use one of two APIs:
+
+- `style`: Allowing one or more colors to be passed as values from their parent, such as `ProgressBar`
+- `theme`: A pre-configured list of allowed colors, such as `Button`
+
+We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
+As we learn more and restrict component usage over time, we might switch to `theme`.
 
 ## What's Going On With Accessibility?
 

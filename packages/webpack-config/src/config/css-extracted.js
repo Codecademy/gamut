@@ -5,6 +5,7 @@ const loaders = require('../loaders');
 const cssExtracted = options => {
   const defaultExtractOptions = {
     filename: '[name].css',
+    esModule: true,
     ignoreOrder: true,
   };
 

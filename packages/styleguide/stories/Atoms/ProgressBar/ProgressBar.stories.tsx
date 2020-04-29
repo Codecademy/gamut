@@ -11,6 +11,7 @@ import {
   decoratedStory,
 } from '../../Templating';
 import { number } from '@storybook/addon-knobs';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 export default decoratedStories('Atoms', ProgressBar);
 
@@ -60,6 +61,29 @@ export const progressBarMinimumPercent = decoratedStory(
       <ProgressBar
         minimumPercent={number('Minimum Percent', 5)}
         percent={number('Percent', 0)}
+        theme="blue"
+      />
+    </StoryTemplate>
+  )
+);
+
+export const progressBarStyleOverrides = decoratedStory(
+  'Style Overrides',
+  () => (
+    <StoryTemplate status={StoryStatus.InProgress}>
+      <StoryDescription>
+        For the sake of rapid iteration, you can pass in custom style colors via
+        the <code>style</code> prop.
+      </StoryDescription>
+      <ProgressBar
+        minimumPercent={number('Minimum Percent', 5)}
+        large
+        percent={number('Percent', 0)}
+        style={{
+          backgroundColor: colors.red[900],
+          barColor: colors.red[600],
+          fontColor: colors.white,
+        }}
         theme="blue"
       />
     </StoryTemplate>
