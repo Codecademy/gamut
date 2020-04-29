@@ -5,6 +5,7 @@ import {
   Column,
 } from '@codecademy/gamut/src';
 import { EditorialCTA } from '@codecademy/brand-components/src';
+import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import React from 'react';
 
@@ -31,7 +32,7 @@ export const editorialQuote = decoratedStory('Editorial CTA', () => (
             description={text('Description', 'Something about that thing')}
             callToAction={text('CTA Text', 'Click the button')}
             href=""
-            onCTAClick={() => null}
+            onCTAClick={action('Clicked the CTA Button')}
           />
         </Column>
       </LayoutGrid>
