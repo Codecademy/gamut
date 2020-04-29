@@ -1,4 +1,4 @@
-import { Byline } from '@codecademy/brand-components/src/Byline';
+import { Byline } from '@codecademy/brand-components/src';
 import { text } from '@storybook/addon-knobs';
 import React from 'react';
 
