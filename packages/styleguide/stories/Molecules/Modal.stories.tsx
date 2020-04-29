@@ -4,7 +4,7 @@ import { decoratedStories, decoratedStory } from '../Templating';
 
 export default decoratedStories('Molecules', Modal);
 
-const ModalStory = decoratedStory(() => {
+const ModalStory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,9 +17,9 @@ const ModalStory = decoratedStory(() => {
       </Modal>
     </div>
   );
-});
+};
 
-const ModalWithoutDefaultCloseButton = decoratedStory(() => {
+const ModalWithoutDefaultCloseButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -35,9 +35,23 @@ const ModalWithoutDefaultCloseButton = decoratedStory(() => {
       </Modal>
     </div>
   );
+};
+
+export const modal = decoratedStory(() => <ModalStory />, {
+  parameters: {
+    storyshots: {
+      disable: true,
+    },
+  },
 });
 
-export const modal = decoratedStory(() => <ModalStory />);
-export const modalWithoutDefaultCloseButton = decoratedStory(() => (
-  <ModalWithoutDefaultCloseButton />
-));
+export const modalWithoutDefaultCloseButton = decoratedStory(
+  () => <ModalWithoutDefaultCloseButton />,
+  {
+    parameters: {
+      storyshots: {
+        disable: true,
+      },
+    },
+  }
+);
