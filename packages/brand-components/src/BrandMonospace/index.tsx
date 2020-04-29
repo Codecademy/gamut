@@ -1,14 +1,14 @@
 import React from 'react';
 import s from './styles.module.scss';
 
-type RobotoMonoProps = {
+type BrandMonospaceProps = {
   /** Element to render as (span is the default) */
   as?: 'span' | 'tspan';
 };
 
-export const RobotoMono: React.FC<RobotoMonoProps> = ({
+export const BrandMonospace: React.FC<BrandMonospaceProps> = ({
   as: Element = 'span',
   children,
 }) => <Element className={s.font}>{children}</Element>;
 
-export default RobotoMono;
+export default BrandMonospace;
