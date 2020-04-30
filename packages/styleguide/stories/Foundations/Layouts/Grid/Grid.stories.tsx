@@ -11,12 +11,7 @@ import {
 } from '../../../Templating';
 import { Content, Container } from './Elements';
 
-export default decoratedStories(
-  'Foundations',
-  'Layouts',
-  'LayoutGrid',
-  LayoutGrid
-);
+export default decoratedStories('Foundations', 'Layouts', 'Grid', LayoutGrid);
 
 const KitchenSinkColumns = () => (
   <>
@@ -44,7 +39,7 @@ const KitchenSinkColumns = () => (
   </>
 );
 
-export const layoutGrid = decoratedStory(() => {
+export const basics = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -143,7 +138,7 @@ export const layoutGrid = decoratedStory(() => {
   );
 });
 
-export const gaps = decoratedStory(() => {
+export const editable = decoratedStory(() => {
   const columnGap = select(
     'Column Gap',
     [undefined, 'sm', 'md', 'lg', 'xl'],
@@ -161,42 +156,6 @@ export const gaps = decoratedStory(() => {
       <Container>
         <LayoutGrid {...{ columnGap, rowGap }}>
           <KitchenSinkColumns />
-        </LayoutGrid>
-      </Container>
-    </StoryTemplate>
-  );
-});
-
-export const offsets = decoratedStory(() => {
-  return (
-    <StoryTemplate status={StoryStatus.Ready}>
-      <StoryDescription>
-        Columns may be offset from the left by numbers within the [0-12] scale.
-        As with column and row gaps, those numbers may be static or responsive.
-      </StoryDescription>
-      <Container>
-        <LayoutGrid rowGap="sm" columnGap="sm">
-          <Column offset={2} size={4}>
-            <Content>2 Column offset</Content>
-          </Column>
-          <Column size={2}>
-            <Content />
-          </Column>
-          <Column size={2}>
-            <Content />
-          </Column>
-          <Column size={4}>
-            <Content>No offset</Content>
-          </Column>
-          <Column size={8}>
-            <Content />
-          </Column>
-          <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
-            <Content>sm: 6, md: 4, lg: 2</Content>
-          </Column>
-          <Column offset={{ xs: 0, md: 4 }} size={6}>
-            <Content>no offset sm, md: 4</Content>
-          </Column>
         </LayoutGrid>
       </Container>
     </StoryTemplate>

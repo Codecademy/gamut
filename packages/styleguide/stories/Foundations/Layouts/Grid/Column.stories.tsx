@@ -1,6 +1,11 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
-import { LayoutGrid, Column } from '@codecademy/gamut/src';
+import {
+  LayoutGrid,
+  Column,
+  ColumnSizes,
+  OffsetColumnSizes,
+} from '@codecademy/gamut/src';
 
 import {
   decoratedStories,
@@ -11,35 +16,9 @@ import {
 } from '../../../Templating';
 import { Content, Container } from './Elements';
 
-export default decoratedStories('Foundations', 'Layouts', 'LayoutGrid', Column);
+export default decoratedStories('Foundations', 'Layouts', 'Grid', Column);
 
-const KitchenSinkColumns = () => (
-  <>
-    <Column size={12}>
-      <Content>12</Content>
-    </Column>
-    <Column size={6}>
-      <Content>6</Content>
-    </Column>
-    <Column size={6}>
-      <Content>6</Content>
-    </Column>
-    <Column size={3}>
-      <Content>3</Content>
-    </Column>
-    <Column size={3}>
-      <Content>3</Content>
-    </Column>
-    <Column size={3}>
-      <Content>3</Content>
-    </Column>
-    <Column size={3}>
-      <Content>3</Content>
-    </Column>
-  </>
-);
-
-export const layoutGrid = decoratedStory(() => {
+export const basics = decoratedStory(() => {
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
@@ -53,10 +32,7 @@ export const layoutGrid = decoratedStory(() => {
         ones on large viewports.
       </StoryDescription>
       <Container>
-        <LayoutGrid
-          columnGap={{ xs: 'sm', lg: 'lg' }}
-          rowGap={{ xs: 'sm', lg: 'lg' }}
-        >
+        <LayoutGrid columnGap="sm" rowGap="sm">
           <Column size={12}>
             <Content>12</Content>
           </Column>
@@ -138,24 +114,26 @@ export const layoutGrid = decoratedStory(() => {
   );
 });
 
-export const gaps = decoratedStory(() => {
-  const columnGap = select(
-    'Column Gap',
-    [undefined, 'sm', 'md', 'lg', 'xl'],
-    'sm'
-  );
-  const rowGap = select('Row Gap', [undefined, 'sm', 'md', 'lg', 'xl'], 'sm');
+export const editable = decoratedStory(() => {
+  const sizes = new Array(12).fill('').map((x, i) => i + 1);
+
+  const columnSizes = sizes as ColumnSizes[];
+  const offsetColumnSizes = [0, ...sizes] as OffsetColumnSizes[];
+
+  const size = select('Size', columnSizes, columnSizes[1]);
+  const offset = select('Row Gap', offsetColumnSizes, offsetColumnSizes[0]);
 
   return (
     <StoryTemplate status={StoryStatus.Ready}>
       <StoryDescription>
-        You can specify both the <em>column</em> and <em>row</em> gap amounts
-        manually to override the default responsive layout. They both default to
-        0 if not specified.
+        Columns may be offset from the left by numbers within the [0-12] scale.
+        As with column and row gaps, those numbers may be static or responsive.
       </StoryDescription>
       <Container>
-        <LayoutGrid {...{ columnGap, rowGap }}>
-          <KitchenSinkColumns />
+        <LayoutGrid rowGap="sm" columnGap="sm">
+          <Column offset={offset} size={size}>
+            <Content>I am a column</Content>
+          </Column>
         </LayoutGrid>
       </Container>
     </StoryTemplate>

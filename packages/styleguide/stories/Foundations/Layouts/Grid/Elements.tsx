@@ -1,5 +1,6 @@
 import React from 'react';
 import gamut from '@codecademy/gamut-styles/utils/variables';
+import { Column } from '@codecademy/gamut/src';
 
 export const Container: React.FC = ({ children }) => {
   return (
@@ -32,3 +33,29 @@ export const Content: React.FC = ({ children }) => {
     </div>
   );
 };
+
+export const KitchenSinkColumns = () => (
+  <>
+    <Column size={12}>
+      <Content>12</Content>
+    </Column>
+    <Column size={6}>
+      <Content>6</Content>
+    </Column>
+    <Column size={6}>
+      <Content>6</Content>
+    </Column>
+    <Column size={3}>
+      <Content>3</Content>
+    </Column>
+    <Column size={3}>
+      <Content>3</Content>
+    </Column>
+    <Column size={3}>
+      <Content>3</Content>
+    </Column>
+    <Column size={3}>
+      <Content>3</Content>
+    </Column>
+  </>
+);
