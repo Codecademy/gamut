@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
 ## <small>9.2.1 (2020-04-30)</small>
 
 * Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
