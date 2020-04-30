@@ -10,6 +10,7 @@ import {
   LayoutGrid,
   Column,
   VisualTheme,
+  Button,
 } from '@codecademy/gamut/src';
 import cx from 'classnames';
 import { startCase } from 'lodash';
@@ -52,12 +53,33 @@ const renderSwatch = (sassVariableName: string, hexcode: string) => {
       className={styles.swatchContainer}
       key={sassVariableName}
     >
-      <div className={styles.swatch} style={{ backgroundColor: hexcode }} />
-      <div>
-        <span className={styles.name}>{sassVariableName}</span>
-        <br />
-        <span className={styles.hexcode}>{hexcode}</span>
-      </div>
+      <Container
+        className={styles.swatch}
+        style={{ backgroundColor: hexcode }}
+        align="center"
+        justify="center"
+      >
+        <Container
+          column
+          className={styles.swatchDetail}
+          align="center"
+          justify="spaceAround"
+        >
+          <span className={styles.name}>{sassVariableName}</span>
+
+          <Button
+            className={styles.swatchButton}
+            flat
+            theme="white"
+            caps
+            outline
+            onClick={() => navigator.clipboard.writeText(sassVariableName)}
+          >
+            Copy Name
+          </Button>
+          <span className={styles.hexcode}>{hexcode}</span>
+        </Container>
+      </Container>
     </Container>
   );
 };
@@ -97,7 +119,7 @@ export const Colors = decoratedStory(() => (
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
       {objectKeys(brandColors).map(color => (
-        <Column key={color} size={4}>
+        <Column key={color} size={3}>
           <div>
             <h2 className={styles.heading}>Brand {startCase(color)}</h2>
             {renderSwatch(`color-${parseCamelCase(color)}`, brandColors[color])}
@@ -107,7 +129,7 @@ export const Colors = decoratedStory(() => (
     </LayoutGrid>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
       {objectKeys(baseColors).map(color => (
-        <Column key={color} size={4}>
+        <Column key={color} size={3}>
           <div>
             <h2 className={styles.heading}>
               {parseCamelCase(`color-${color}`)}
@@ -121,7 +143,7 @@ export const Colors = decoratedStory(() => (
       {objectKeys(colors)
         .filter(color => !excludedColors.includes(color))
         .map(color => (
-          <Column key={color} size={4}>
+          <Column key={color} size={3}>
             <div>
               <h2 className={styles.heading}>
                 {parseCamelCase(`color-${color}`)}
@@ -142,7 +164,7 @@ export const Editor = decoratedStory(() => {
       </StoryDescription>
       <LayoutGrid className={styles.swatchesContainer} rowGap="md">
         {objectKeys(editorColors).map(color => (
-          <Column key={color} size={4}>
+          <Column key={color} size={3}>
             <div>
               <h2 className={cx(styles.heading, styles.headingDark)}>
                 Editor {startCase(color)}
@@ -172,14 +194,14 @@ export const GamutDeprecated = decoratedStory(() => (
       We may delete these as we find that consumers do not use them.
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} columnGap="md" rowGap="md">
-      <Column size={4}>
+      <Column size={3}>
         <div>
           <h2 className={styles.heading}>Deprecated Gamut Base Colors</h2>
           {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
         </div>
       </Column>
       {objectKeys(deprecatedGamutColors.swatches).map(color => (
-        <Column key={color} size={4}>
+        <Column key={color} size={3}>
           <div>
             <h2 className={styles.heading}>
               {parseCamelCase(`deprecated-gamut-${color}`)}
@@ -202,14 +224,14 @@ export const PortalDeprecated = decoratedStory(() => (
       the Portal.
     </StoryDescription>
     <LayoutGrid columnGap="md" rowGap="md">
-      <Column size={4}>
+      <Column size={3}>
         <div>
           <h2 className={styles.heading}>Deprecated portal base colors</h2>
           {renderSwatches(deprecatedColors.portal, 'deprecated')}
         </div>
       </Column>
       {Object.keys(deprecatedColors.swatches).map(color => (
-        <Column key={color} size={4}>
+        <Column key={color} size={3}>
           <div>
             <h2 className={styles.heading}>{parseCamelCase(color)}</h2>
             {renderSwatches(
