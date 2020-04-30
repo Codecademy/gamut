@@ -4,7 +4,7 @@
   overflow: hidden;
 
   &.blue {
-    background: $color-blue-100;
+    background: $color-blue-800;
   }
 
   &.yellow {
@@ -19,7 +19,7 @@
   transition: width 0.5s;
 
   .blue & {
-    background: $color-blue-700;
+    background: $color-blue-500;
   }
 
   .yellow & {
