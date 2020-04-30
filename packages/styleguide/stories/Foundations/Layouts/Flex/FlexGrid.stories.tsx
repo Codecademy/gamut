@@ -23,7 +23,7 @@ export const fixedGridDefault = decoratedStory('Fixed Grid (Default)', () => (
       not shrink to the size of its container.
     </StoryDescription>
     <Container>
-      <FlexGrid>
+      <FlexGrid fluid>
         <Row>
           <Col xs={12} sm={3} md={2} lg={1}>
             <Box />

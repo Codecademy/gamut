@@ -1,5 +1,6 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
+
 import {
   LayoutGrid,
   Column,
@@ -14,6 +15,7 @@ import {
   StoryTemplate,
   StoryDescription,
 } from '../../../Templating';
+
 import { Box, Container } from '../Elements';
 
 export default decoratedStories('Foundations', 'Layouts', 'Grid', Column);
@@ -34,79 +36,7 @@ export const basics = decoratedStory(() => {
       <Container>
         <LayoutGrid columnGap="sm" rowGap="sm">
           <Column size={12}>
-            <Box>12</Box>
-          </Column>
-          <Column size={6}>
-            <Box>6</Box>
-          </Column>
-          <Column size={6}>
-            <Box>6</Box>
-          </Column>
-          <Column size={3}>
-            <Box>3</Box>
-          </Column>
-          <Column size={3}>
-            <Box>3</Box>
-          </Column>
-          <Column size={3}>
-            <Box>3</Box>
-          </Column>
-          <Column size={3}>
-            <Box>3</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={2}>
-            <Box>2</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
-          </Column>
-          <Column size={1}>
-            <Box>1</Box>
+            <Box>Default</Box>
           </Column>
         </LayoutGrid>
       </Container>
@@ -120,7 +50,7 @@ export const editable = decoratedStory(() => {
   const columnSizes = sizes as ColumnSizes[];
   const offsetColumnSizes = [0, ...sizes] as OffsetColumnSizes[];
 
-  const size = select('Size', columnSizes, columnSizes[1]);
+  const size = select('Size', columnSizes, 12);
   const offset = select('Offset', offsetColumnSizes, offsetColumnSizes[0]);
 
   return (
