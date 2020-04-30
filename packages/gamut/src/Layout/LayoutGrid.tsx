@@ -2,13 +2,17 @@ import React from 'react';
 import cx from 'classnames';
 
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import { ContainerElementProps, GapSizes, GapTypes } from './types';
+import { ContainerElementProps, GapSizes } from './types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 
 import s from './styles/Grid.module.scss';
 
-export type GridProps = Record<GapTypes, ResponsiveProperty<GapSizes>>;
-export type LayoutGridProps = GridProps & ContainerElementProps;
+export type LayoutGridProps = {
+  /** The grid-gap size that should be present between rows */
+  rowGap?: ResponsiveProperty<GapSizes>;
+  /** The grid-gap size that should be present between columns */
+  columnGap?: ResponsiveProperty<GapSizes>;
+} & ContainerElementProps;
 
 export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
   children,
