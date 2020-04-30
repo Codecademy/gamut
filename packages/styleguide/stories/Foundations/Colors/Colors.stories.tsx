@@ -97,32 +97,40 @@ export const Colors = decoratedStory(() => (
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
       {objectKeys(brandColors).map(color => (
-        <Column key={color} size={3}>
-          <h2 className={styles.heading}>Brand {startCase(color)}</h2>
-          {renderSwatch(`color-${parseCamelCase(color)}`, brandColors[color])}
+        <Column key={color} size={4}>
+          <div>
+            <h2 className={styles.heading}>Brand {startCase(color)}</h2>
+            {renderSwatch(`color-${parseCamelCase(color)}`, brandColors[color])}
+          </div>
         </Column>
       ))}
     </LayoutGrid>
-    <Container className={styles.swatchesContainer}>
+    <LayoutGrid className={styles.swatchesContainer} rowGap="md">
       {objectKeys(baseColors).map(color => (
-        <div key={color}>
-          <h2 className={styles.heading}>{parseCamelCase(`color-${color}`)}</h2>
-          {renderSwatch(`color-${parseCamelCase(color)}`, baseColors[color])}
-        </div>
-      ))}
-    </Container>
-    <Container>
-      {objectKeys(colors)
-        .filter(color => !excludedColors.includes(color))
-        .map(color => (
-          <div key={color}>
+        <Column key={color} size={4}>
+          <div>
             <h2 className={styles.heading}>
               {parseCamelCase(`color-${color}`)}
             </h2>
-            {renderSwatches(colors[color], `color-${color}`)}
+            {renderSwatch(`color-${parseCamelCase(color)}`, baseColors[color])}
           </div>
+        </Column>
+      ))}
+    </LayoutGrid>
+    <LayoutGrid className={styles.swatchesContainer} rowGap="md">
+      {objectKeys(colors)
+        .filter(color => !excludedColors.includes(color))
+        .map(color => (
+          <Column key={color} size={4}>
+            <div>
+              <h2 className={styles.heading}>
+                {parseCamelCase(`color-${color}`)}
+              </h2>
+              {renderSwatches(colors[color], `color-${color}`)}
+            </div>
+          </Column>
         ))}
-    </Container>
+    </LayoutGrid>
   </StoryTemplate>
 ));
 
@@ -134,14 +142,16 @@ export const Editor = decoratedStory(() => {
       </StoryDescription>
       <LayoutGrid className={styles.swatchesContainer} rowGap="md">
         {objectKeys(editorColors).map(color => (
-          <Column key={color} size={3}>
-            <h2 className={cx(styles.heading, styles.headingDark)}>
-              Editor {startCase(color)}
-            </h2>
-            {renderSwatch(
-              `color-editor-${parseCamelCase(color)}`,
-              editorColors[color]
-            )}
+          <Column key={color} size={4}>
+            <div>
+              <h2 className={cx(styles.heading, styles.headingDark)}>
+                Editor {startCase(color)}
+              </h2>
+              {renderSwatch(
+                `color-editor-${parseCamelCase(color)}`,
+                editorColors[color]
+              )}
+            </div>
           </Column>
         ))}
       </LayoutGrid>
@@ -161,23 +171,27 @@ export const GamutDeprecated = decoratedStory(() => (
       <br />
       We may delete these as we find that consumers do not use them.
     </StoryDescription>
-    <Container>
-      <div>
-        <h2 className={styles.heading}>Deprecated Gamut Base Colors</h2>
-        {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
-      </div>
-      {objectKeys(deprecatedGamutColors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={styles.heading}>
-            {parseCamelCase(`deprecated-gamut-${color}`)}
-          </h2>
-          {renderSwatches(
-            deprecatedGamutColors.swatches[color],
-            `deprecated-gamut-${color}`
-          )}
+    <LayoutGrid className={styles.swatchesContainer} columnGap="md" rowGap="md">
+      <Column size={4}>
+        <div>
+          <h2 className={styles.heading}>Deprecated Gamut Base Colors</h2>
+          {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
         </div>
+      </Column>
+      {objectKeys(deprecatedGamutColors.swatches).map(color => (
+        <Column key={color} size={4}>
+          <div>
+            <h2 className={styles.heading}>
+              {parseCamelCase(`deprecated-gamut-${color}`)}
+            </h2>
+            {renderSwatches(
+              deprecatedGamutColors.swatches[color],
+              `deprecated-gamut-${color}`
+            )}
+          </div>
+        </Column>
       ))}
-    </Container>
+    </LayoutGrid>
   </StoryTemplate>
 ));
 
@@ -187,22 +201,26 @@ export const PortalDeprecated = decoratedStory(() => (
       Similar to the deprecated Gamut colors, these ones are an old palette from
       the Portal.
     </StoryDescription>
-    <Container>
-      <div>
-        <h2 className={styles.heading}>Deprecated portal base colors</h2>
-        {renderSwatches(deprecatedColors.portal, 'deprecated')}
-      </div>
-      {Object.keys(deprecatedColors.swatches).map(color => (
-        <div key={color}>
-          <h2 className={styles.heading}>{parseCamelCase(color)}</h2>
-          {renderSwatches(
-            deprecatedColors.swatches[
-              color as keyof typeof deprecatedColors.swatches
-            ],
-            `deprecated-swatches-${color}`
-          )}
+    <LayoutGrid columnGap="md" rowGap="md">
+      <Column size={4}>
+        <div>
+          <h2 className={styles.heading}>Deprecated portal base colors</h2>
+          {renderSwatches(deprecatedColors.portal, 'deprecated')}
         </div>
+      </Column>
+      {Object.keys(deprecatedColors.swatches).map(color => (
+        <Column key={color} size={4}>
+          <div>
+            <h2 className={styles.heading}>{parseCamelCase(color)}</h2>
+            {renderSwatches(
+              deprecatedColors.swatches[
+                color as keyof typeof deprecatedColors.swatches
+              ],
+              `deprecated-swatches-${color}`
+            )}
+          </div>
+        </Column>
       ))}
-    </Container>
+    </LayoutGrid>
   </StoryTemplate>
 ));
