@@ -1,7 +1,6 @@
-import { LayoutGrid, Column } from '@codecademy/gamut/src';
-import gamut from '@codecademy/gamut-styles/utils/variables';
-import { select } from '@storybook/addon-knobs';
 import React from 'react';
+import { select } from '@storybook/addon-knobs';
+import { LayoutGrid, Column } from '@codecademy/gamut/src';
 
 import {
   decoratedStories,
@@ -9,41 +8,15 @@ import {
   StoryStatus,
   StoryTemplate,
   StoryDescription,
-} from '../../Templating';
+} from '../../../Templating';
+import { Content, Container } from './Elements';
 
-export default decoratedStories('Foundations', 'Layouts', LayoutGrid);
-
-const Container: React.FC = ({ children }) => {
-  return (
-    <div
-      style={{
-        width: '100%',
-        maxWidth: '1440px',
-        padding: '25px',
-        backgroundColor: gamut.colors.blue[100],
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
-const Content: React.FC = ({ children }) => {
-  return (
-    <div
-      style={{
-        backgroundColor: gamut.colors.blue[500],
-        color: 'white',
-        display: 'grid',
-        padding: '5px 0',
-        justifyContent: 'center',
-        alignContent: 'center',
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+export default decoratedStories(
+  'Foundations',
+  'Layouts',
+  'LayoutGrid',
+  LayoutGrid
+);
 
 const KitchenSinkColumns = () => (
   <>
