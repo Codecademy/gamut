@@ -14,7 +14,7 @@ import {
   StoryTemplate,
   StoryDescription,
 } from '../../../Templating';
-import { Content, Container } from './Elements';
+import { Box, Container } from '../Elements';
 
 export default decoratedStories('Foundations', 'Layouts', 'Grid', Column);
 
@@ -34,79 +34,79 @@ export const basics = decoratedStory(() => {
       <Container>
         <LayoutGrid columnGap="sm" rowGap="sm">
           <Column size={12}>
-            <Content>12</Content>
+            <Box>12</Box>
           </Column>
           <Column size={6}>
-            <Content>6</Content>
+            <Box>6</Box>
           </Column>
           <Column size={6}>
-            <Content>6</Content>
+            <Box>6</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
         </LayoutGrid>
       </Container>
@@ -121,7 +121,7 @@ export const editable = decoratedStory(() => {
   const offsetColumnSizes = [0, ...sizes] as OffsetColumnSizes[];
 
   const size = select('Size', columnSizes, columnSizes[1]);
-  const offset = select('Row Gap', offsetColumnSizes, offsetColumnSizes[0]);
+  const offset = select('Offset', offsetColumnSizes, offsetColumnSizes[0]);
 
   return (
     <StoryTemplate status={StoryStatus.Ready}>
@@ -132,7 +132,7 @@ export const editable = decoratedStory(() => {
       <Container>
         <LayoutGrid rowGap="sm" columnGap="sm">
           <Column offset={offset} size={size}>
-            <Content>I am a column</Content>
+            <Box>I am a column</Box>
           </Column>
         </LayoutGrid>
       </Container>
@@ -150,25 +150,25 @@ export const offsets = decoratedStory(() => {
       <Container>
         <LayoutGrid rowGap="sm" columnGap="sm">
           <Column offset={2} size={4}>
-            <Content>2 Column offset</Content>
+            <Box>2 Column offset</Box>
           </Column>
           <Column size={2}>
-            <Content />
+            <Box />
           </Column>
           <Column size={2}>
-            <Content />
+            <Box />
           </Column>
           <Column size={4}>
-            <Content>No offset</Content>
+            <Box>No offset</Box>
           </Column>
           <Column size={8}>
-            <Content />
+            <Box />
           </Column>
           <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
-            <Content>sm: 6, md: 4, lg: 2</Content>
+            <Box>sm: 6, md: 4, lg: 2</Box>
           </Column>
           <Column offset={{ xs: 0, md: 4 }} size={6}>
-            <Content>no offset sm, md: 4</Content>
+            <Box>no offset sm, md: 4</Box>
           </Column>
         </LayoutGrid>
       </Container>

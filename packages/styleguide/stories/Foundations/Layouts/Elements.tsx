@@ -1,6 +1,6 @@
 import React from 'react';
 import gamut from '@codecademy/gamut-styles/utils/variables';
-import { Column } from '@codecademy/gamut/src';
+import { Column, Text, Item } from '@codecademy/gamut/src';
 
 export const Container: React.FC = ({ children }) => {
   return (
@@ -17,45 +17,45 @@ export const Container: React.FC = ({ children }) => {
   );
 };
 
-export const Content: React.FC = ({ children }) => {
+export const Box: React.FC = ({ children }) => {
   return (
-    <div
+    <Item
+      flex
+      align="center"
+      justify="center"
       style={{
+        height: 30,
+        marginBottom: '0.5rem',
         backgroundColor: gamut.colors.blue[500],
-        color: 'white',
-        display: 'grid',
-        padding: '5px 0',
-        justifyContent: 'center',
-        alignContent: 'center',
       }}
     >
-      {children}
-    </div>
+      <Text style={{ color: gamut.colors.white }}>{children}</Text>
+    </Item>
   );
 };
 
 export const KitchenSinkColumns = () => (
   <>
     <Column size={12}>
-      <Content>12</Content>
+      <Box>12</Box>
     </Column>
     <Column size={6}>
-      <Content>6</Content>
+      <Box>6</Box>
     </Column>
     <Column size={6}>
-      <Content>6</Content>
+      <Box>6</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
   </>
 );

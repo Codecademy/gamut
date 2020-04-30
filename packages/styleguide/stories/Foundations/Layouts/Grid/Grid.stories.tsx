@@ -9,32 +9,32 @@ import {
   StoryTemplate,
   StoryDescription,
 } from '../../../Templating';
-import { Content, Container } from './Elements';
+import { Box, Container } from '../Elements';
 
 export default decoratedStories('Foundations', 'Layouts', 'Grid', LayoutGrid);
 
 const KitchenSinkColumns = () => (
   <>
     <Column size={12}>
-      <Content>12</Content>
+      <Box>12</Box>
     </Column>
     <Column size={6}>
-      <Content>6</Content>
+      <Box>6</Box>
     </Column>
     <Column size={6}>
-      <Content>6</Content>
+      <Box>6</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
     <Column size={3}>
-      <Content>3</Content>
+      <Box>3</Box>
     </Column>
   </>
 );
@@ -58,79 +58,79 @@ export const basics = decoratedStory(() => {
           rowGap={{ xs: 'sm', lg: 'lg' }}
         >
           <Column size={12}>
-            <Content>12</Content>
+            <Box>12</Box>
           </Column>
           <Column size={6}>
-            <Content>6</Content>
+            <Box>6</Box>
           </Column>
           <Column size={6}>
-            <Content>6</Content>
+            <Box>6</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={3}>
-            <Content>3</Content>
+            <Box>3</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={2}>
-            <Content>2</Content>
+            <Box>2</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
           <Column size={1}>
-            <Content>1</Content>
+            <Box>1</Box>
           </Column>
         </LayoutGrid>
       </Container>
