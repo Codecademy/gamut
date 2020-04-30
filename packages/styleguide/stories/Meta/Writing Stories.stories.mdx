@@ -1,0 +1,105 @@
+<Meta title="Meta/Writing Stories" />
+
+# Writing Stories
+
+> 🏗 We're still building these opinions out, so don't expect all stories to adhere just yet!
+
+## Story Structure
+
+In our fledgling collective opinion, a good component story page consists of:
+
+1. A single "flagship" demonstration story of the component's commonly used props
+2. Stories for each of the props or prop groups that modify the component's behavior
+
+### Flagship Demonstrations
+
+The first story for a component should be intended to give the reader a broad overview of its high-level functionality.
+Try to include the major behaviors for the component that most readers would need to understand its uses.
+
+Give this story the same name as its component in camelCase.
+Its description should describe at least:
+
+- What the component does
+- What it would typically be used for
+
+```tsx
+export const progressBar = decoratedStory(() => (
+  <StoryTemplate status={StoryStatus.InProgress}>
+    <StoryDescription>
+      <code>ProgressBar</code>s are to be used when you would like to indicate a
+      known or somewhat-known amount of progress along a fixed course. For
+      example, you might show one on a quiz page indicating how many questions
+      have been completed.
+    </StoryDescription>
+    {/* ... */}
+  </StoryTemplate>
+));
+```
+
+If your component has several possible variations and is small enough to fit many of them on the screen at once,
+use a `LayoutGrid` with `"sm"` gaps to showcase them all neatly.
+
+```tsx
+<LayoutGrid columnGap="sm" rowGap="sm">
+  {['blue', 'yellow'].map(theme => (
+    <Column key={theme} size={6}>
+      <ProgressBar percent={50} theme={theme} />
+    </Column>
+  )}
+</LayoutGrid>
+```
+
+Otherwise, show a single reasonable default for the component, and allow configuring its props using knobs.
+
+```tsx
+<ProgressBar percent={number('Percent', 50)} />
+```
+
+### Granular Stories
+
+Each subsequent story should elaborate on an important behavioral feature of the component.
+Try to show a single use of the behavior configurable with knobs.
+
+```tsx
+export const minimumPercent = decoratedStory(() => (
+  <StoryTemplate status={StoryStatus.InProgress}>
+    <StoryDescription>
+      Some bars (generally small ones) should display at least a little bit of
+      progress, even if the technical progress number is zero. You can use the
+      <code>minimumPercent</code> prop for a minimum visual width percentage.
+    </StoryDescription>
+    <ProgressBar
+      minimumPercent={number('Minimum Percent', 5)}
+      percent={number('Percent', 0)}
+      theme="blue"
+    />
+  </StoryTemplate>
+));
+```
+
+## Knobs
+
+Storybook knobs are great!
+Give them names in Title Case and use them directly in your story JSX.
+
+```tsx
+<ProgressBar minimumPercent={number('Minimum Percent', 5)} />
+```
+
+## Inline Prop Docs
+
+React props on the component will be picked up by docgen (todo explain).
+We prefer these be full sentences.
+
+```ts
+/**
+ * Number of lines to limit the message to.
+ */
+limit: number;
+```
+
+### Good Prop Docs
+
+- If your comment purely restartes the name and type of variable, please either elaborate on it or remove the comment altogether.
+- Consider starting comments for booleans with _"Whether "_.
+- Props such as `className` that are common to many components generally don't need to be documented.
