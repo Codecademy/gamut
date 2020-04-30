@@ -1,6 +1,6 @@
 import React from 'react';
 import { select, boolean } from '@storybook/addon-knobs';
-import { FlexGrid, Row, Col, modificators } from '@codecademy/gamut/src';
+import { FlexGrid, Row, Col } from '@codecademy/gamut/src';
 
 import {
   decoratedStories,
@@ -37,6 +37,8 @@ export const rowDefault = decoratedStory(() => (
 ));
 
 export const editable = decoratedStory(() => {
+  const modificators: ('xs' | 'sm' | 'md' | 'lg')[] = ['xs', 'sm', 'md', 'lg'];
+
   const around = select('around', modificators, undefined);
   const between = select('between', modificators, undefined);
   const bottom = select('bottom', modificators, undefined);

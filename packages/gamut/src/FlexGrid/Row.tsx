@@ -39,9 +39,7 @@ function getClassNames(props: RowProps) {
 
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
-export const modificators: ModificatorType[] = ['xs', 'sm', 'md', 'lg'];
-
-export const modificatorKeys = [
+const modificatorKeys = [
   'start',
   'center',
   'end',
