@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.1 (2020-04-30)</small>
+
+* Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
+
+
+
+
+
 ## 9.2.0 (2020-04-29)
 
 * feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
