@@ -60,12 +60,6 @@ export function GridForm<
     ),
   });
 
-  useEffect(() => {
-    for (const field of fields) {
-      register({ name: field.name });
-    }
-  }, [fields, register]);
-
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
