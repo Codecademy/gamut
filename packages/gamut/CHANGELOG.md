@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.3 (2020-05-01)</small>
+
+* fix(Gamut): Removed unnecessary useEffect registers in GridForm (#767) ([529878e](https://github.com/RyzacInc/client-modules/commit/529878e)), closes [#767](https://github.com/RyzacInc/client-modules/issues/767)
+
+
+
+
+
 ## <small>7.4.2 (2020-04-30)</small>
 
 * fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
