@@ -37,8 +37,6 @@ function getClassNames(props: RowProps) {
   return cx(props.className, modificators);
 }
 
-type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
-
 const modificatorKeys = [
   'start',
   'center',
@@ -51,6 +49,8 @@ const modificatorKeys = [
   'first',
   'last',
 ];
+
+type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
 export type RowProps = {
   around?: ModificatorType;
