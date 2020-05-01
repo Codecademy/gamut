@@ -1,17 +1,5 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.quoteContainer {
-  padding-top: 2rem;
-
-  @include screen-size-gte($grid-xs-min) {
-    padding: 6rem 0 2rem;
-  }
-
-  @include sm-viewport {
-    padding: 5rem 0 3rem;
-  }
-}
-
 .quote {
   font-family: $font-family-headings;
   position: relative;
