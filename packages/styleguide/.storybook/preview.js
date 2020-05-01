@@ -1,10 +1,6 @@
-import { addParameters, configure, addDecorator } from '@storybook/react';
+import { addParameters } from '@storybook/react';
 import { create } from '@storybook/theming';
-import { withA11y } from '@storybook/addon-a11y';
-import wrapper from './decorators/wrapper';
-
-addDecorator(withA11y);
-addDecorator(wrapper);
+import './decorators/wrapper';
 
 const gamutTheme = create({
   base: 'light',
@@ -13,17 +9,29 @@ const gamutTheme = create({
 });
 
 addParameters({
+  // viewMode is currently broken, waiting for https://github.com/storybookjs/storybook/pull/10292
+  viewMode: 'docs',
   options: {
     theme: gamutTheme,
-    showPanel: true,
+    storySort: {
+      order: [
+        'About',
+        'Foundations',
+        'Atoms',
+        'Molecules',
+        'Organisms',
+        'Brand',
+        'Meta',
+      ],
+      // Fallback ordering
+      method: 'alphabetical',
+      locales: 'en-US',
+    },
   },
-  viewMode: 'docs',
+  a11y: {
+    element: '#root',
+    config: {},
+    options: {},
+    manual: true,
+  },
 });
-
-configure(
-  [
-    require.context('../stories', true, /\.stories\.mdx$/),
-    require.context('../stories', true, /\.stories\.(j|t)sx?$/),
-  ],
-  module
-);

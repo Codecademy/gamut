@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.0.0 (2020-04-28)
+
+* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/2e6c1c5)), closes [#736](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/736)
+
+
+
+
+
 ## [4.0.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@4.0.0...@codecademy/webpack-config@4.0.1) (2020-04-01)
 
 **Note:** Version bump only for package @codecademy/webpack-config

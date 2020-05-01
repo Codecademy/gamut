@@ -3,6 +3,279 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
+## <small>7.4.1 (2020-04-30)</small>
+
+* Corrected ProgressBar blues (#754) ([b112594](https://github.com/RyzacInc/client-modules/commit/b112594)), closes [#754](https://github.com/RyzacInc/client-modules/issues/754)
+
+
+
+
+
+## 7.4.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
+## <small>7.3.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## 7.3.0 (2020-04-28)
+
+* feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+
+
+
+
+
+## 7.2.0 (2020-04-27)
+
+* feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+
+
+
+
+
+## <small>7.1.3 (2020-04-24)</small>
+
+* fix: reset gamut ButtonBase styles to default (#614) ([a902ba7](https://github.com/RyzacInc/client-modules/commit/a902ba7)), closes [#614](https://github.com/RyzacInc/client-modules/issues/614)
+
+
+
+
+
+## <small>7.1.2 (2020-04-23)</small>
+
+* Added a comment ([7c2a27a](https://github.com/RyzacInc/client-modules/commit/7c2a27a))
+
+
+
+
+
+## <small>7.1.1 (2020-04-22)</small>
+
+* fix(Alert): Export BannerType enum to be used from root (#748) ([28449c3](https://github.com/RyzacInc/client-modules/commit/28449c3)), closes [#748](https://github.com/RyzacInc/client-modules/issues/748)
+
+
+
+
+
+## 7.1.0 (2020-04-22)
+
+* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+
+
+
+
+
+## <small>7.0.3 (2020-04-21)</small>
+
+* build(Gamut): add gamut-icons to gamut dependencies (#747) ([99a204d](https://github.com/RyzacInc/client-modules/commit/99a204d)), closes [#747](https://github.com/RyzacInc/client-modules/issues/747)
+
+
+
+
+
+## <small>7.0.2 (2020-04-21)</small>
+
+* Do not use definition files for exports (#743) ([9eb8dab](https://github.com/RyzacInc/client-modules/commit/9eb8dab)), closes [#743](https://github.com/RyzacInc/client-modules/issues/743)
+
+
+
+
+
+## <small>7.0.1 (2020-04-21)</small>
+
+* Exports responsive types from the root (#742) ([6b0f2a8](https://github.com/RyzacInc/client-modules/commit/6b0f2a8)), closes [#742](https://github.com/RyzacInc/client-modules/issues/742)
+
+
+
+
+
+## 7.0.0 (2020-04-21)
+
+* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+
+
+
+
+
+## 6.1.0 (2020-04-20)
+
+* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+
+
+
+
+
+## 6.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
+
+## 5.1.0 (2020-04-20)
+
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
+
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 4.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## <small>3.7.3 (2020-04-17)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>3.7.2 (2020-04-17)</small>
+
+* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
+
+
+
+
+
+## <small>3.7.1 (2020-04-16)</small>
+
+* Tweaked AccordionButton to look more like the nice LE yellow ones (#730) ([b54771e](https://github.com/RyzacInc/client-modules/commit/b54771e)), closes [#730](https://github.com/RyzacInc/client-modules/issues/730)
+
+
+
+
+
+## 3.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
+## 3.6.0 (2020-04-16)
+
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
+
+## <small>3.5.1 (2020-04-16)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## 3.5.0 (2020-04-14)
+
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
+
+## <small>3.4.2 (2020-04-13)</small>
+
+* chore(GridForm): removed unnecessary setValue calls from GridForm (#712) ([863d73d](https://github.com/RyzacInc/client-modules/commit/863d73d)), closes [#712](https://github.com/RyzacInc/client-modules/issues/712)
+
+
+
+
+
+## <small>3.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 3.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## 3.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
+## 3.2.0 (2020-04-10)
+
+* feat(GridForm): drilled error states through GridForm to inputs (#698) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8)), closes [#698](https://github.com/RyzacInc/client-modules/issues/698)
+* Switched ProgressBar's displayLabel prop name to be large (#706) ([89f7346](https://github.com/RyzacInc/client-modules/commit/89f7346)), closes [#706](https://github.com/RyzacInc/client-modules/issues/706)
+
+
+
+
+
+## 3.1.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
+## 3.0.0 (2020-04-09)
+
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
+
+## 2.18.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
+
 ## <small>2.17.4 (2020-04-07)</small>
 
 * Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)

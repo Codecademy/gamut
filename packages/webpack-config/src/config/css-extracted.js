@@ -4,8 +4,9 @@ const loaders = require('../loaders');
 
 const cssExtracted = options => {
   const defaultExtractOptions = {
-    filename: '[name].[contenthash].css',
-    chunkFilename: '[id].[contenthash].css',
+    filename: PROD ? '[name].[contenthash].css' : '[name].css',
+    chunkFilename: PROD ? '[id].[contenthash].chunk.css' : '[id].chunk.css',
+    esModule: true,
     ignoreOrder: true,
   };
 

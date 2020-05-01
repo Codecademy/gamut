@@ -1,18 +1,18 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { createClassnames } from './utilities';
-import {
-  ContainerElementProps,
-  ColumnSizes,
-  ResponsiveProperty,
-  OffsetColumnSizes,
-  OptionalResponsiveProperty,
-} from './types';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
+import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
 import s from './styles/Column.module.scss';
+import {
+  ResponsiveProperty,
+  OptionalResponsiveProperty,
+} from '../typings/responsive-properties';
 
 export type ColumnProps = {
+  /** The number of columns this element should span out of 12 */
   size: ResponsiveProperty<ColumnSizes>;
+  /** The column that this element should start at */
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
 } & ContainerElementProps;
 
@@ -26,7 +26,7 @@ export const Column: React.FC<ColumnProps> = ({
   const classNames = cx(
     s.container,
     className,
-    createClassnames({ size, offset }, s)
+    generateResponsiveClassnames({ size, offset }, s)
   );
   return (
     <div className={classNames} data-testid={testId}>

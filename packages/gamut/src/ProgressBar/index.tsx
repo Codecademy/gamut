@@ -9,38 +9,52 @@ export type ProgressBarProps = {
   /**
    * Whether to increase size and display the percentage as text.
    */
-  displayLabel?: boolean;
+  large?: boolean;
+
+  /**
+   * Minimum amount of the bar to fill in visually.
+   */
+  minimumPercent?: number;
 
   /**
    * How much of the bar to fill in, as a number in [0, 100].
    */
   percent: number;
 
-  style: ProgressBarStyle;
+  /**
+   * Style overrides to apply on top of the theme, if any.
+   */
+  style?: ProgressBarStyle;
+
+  /**
+   * Base color theme to extend from.
+   */
+  theme: 'blue' | 'yellow';
 };
 
 export type ProgressBarStyle = {
-  backgroundColor: string;
-  barColor: string;
-  fontColor: string;
+  backgroundColor?: string;
+  barColor?: string;
+  fontColor?: string;
 };
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
-  displayLabel,
+  large,
+  minimumPercent = 0,
   percent,
-  style,
+  style = {},
+  theme,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
-  const height = displayLabel ? 36 : 6;
+  const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
-  const visualPercent = `${percent}%`;
 
   return (
     <div
-      aria-label={`Progress: ${visualPercent}`}
+      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      className={cx(styles.progressBar, className)}
+      className={cx(styles.progressBar, styles[theme], className)}
       style={{
         background: backgroundColor,
         borderRadius: radius,
@@ -50,18 +64,17 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     >
       <div
         className={styles.bar}
+        data-testid="progress-bar-bar"
         style={{
           background: barColor,
-          width: visualPercent,
-          ...(displayLabel && {
+          width: `${Math.max(minimumPercent, percent)}%`,
+          ...(large && {
             borderTopRightRadius: radius,
             borderBottomRightRadius: radius,
           }),
         }}
       >
-        {displayLabel && (
-          <span className={styles.displayedPercent}>{visualPercent}</span>
-        )}
+        {large && <span className={styles.displayedPercent}>{percent}%</span>}
       </div>
     </div>
   );

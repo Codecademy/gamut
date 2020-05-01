@@ -5,7 +5,6 @@ module.exports = {
   },
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
   setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],
-  modulePaths: ['<rootDir>'],
   moduleFileExtensions: [
     'js',
     'json',
@@ -15,6 +14,7 @@ module.exports = {
     'scss',
     'ts',
     'tsx',
+    'd.ts',
   ],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
@@ -25,7 +25,8 @@ module.exports = {
   transform: {
     '\\.(css|scss)$': '<rootDir>/script/jest/css-module-transformer',
     '\\.(j|t)sx?$': 'babel-jest',
-    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
+    '^.+\\.mdx$':
+      '<rootDir>/packages/styleguide/node_modules/@storybook/addon-docs/jest-transform-mdx',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
   testRegex: '\\-test\\.(j|t)sx?$',

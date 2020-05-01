@@ -3,6 +3,287 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.4.0 (2020-05-01)
+
+* feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))
+
+
+
+
+
+## 9.3.0 (2020-04-30)
+
+* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a6)), closes [#764](https://github.com/RyzacInc/client-modules/issues/764)
+* Added docs for writing stories (#762) ([775d3a8](https://github.com/RyzacInc/client-modules/commit/775d3a8)), closes [#762](https://github.com/RyzacInc/client-modules/issues/762)
+
+
+
+
+
+## <small>9.2.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
+## <small>9.2.1 (2020-04-30)</small>
+
+* Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
+
+
+
+
+
+## 9.2.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
+## 9.1.0 (2020-04-29)
+
+* feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))
+
+
+
+
+
+## 9.0.0 (2020-04-28)
+
+* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5)), closes [#736](https://github.com/RyzacInc/client-modules/issues/736)
+
+
+
+
+
+## 8.5.0 (2020-04-28)
+
+* feat(styleguide): added inclusion guidelines to FAQs (#749) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40)), closes [#749](https://github.com/RyzacInc/client-modules/issues/749)
+
+
+
+
+
+## 8.4.0 (2020-04-28)
+
+* feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+
+
+
+
+
+## 8.3.0 (2020-04-27)
+
+* feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+
+
+
+
+
+## 8.2.0 (2020-04-22)
+
+* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+
+
+
+
+
+## 8.1.0 (2020-04-21)
+
+* feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+
+
+
+
+
+## 8.0.0 (2020-04-21)
+
+* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+
+
+
+
+
+## <small>7.1.2 (2020-04-20)</small>
+
+* Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+
+
+
+
+
+## <small>7.1.1 (2020-04-20)</small>
+
+* chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
+
+
+
+
+
+## 7.1.0 (2020-04-20)
+
+* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+
+
+
+
+
+## 7.0.0 (2020-04-20)
+
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
+
+## 6.1.0 (2020-04-20)
+
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
+
+## <small>6.0.2 (2020-04-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>6.0.1 (2020-04-17)</small>
+
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
+
+## 6.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
+
+## 5.0.0 (2020-04-17)
+
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
+
+## 4.8.0 (2020-04-17)
+
+* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+
+
+
+
+
+## 4.7.0 (2020-04-16)
+
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
+
+## 4.6.0 (2020-04-16)
+
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
+
+## 4.5.0 (2020-04-14)
+
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
+
+## <small>4.4.1 (2020-04-13)</small>
+
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
+
+## 4.4.0 (2020-04-13)
+
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
+
+## <small>4.3.1 (2020-04-13)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 4.3.0 (2020-04-10)
+
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
+
+## <small>4.2.1 (2020-04-10)</small>
+
+* chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
+
+
+
+
+
+## 4.2.0 (2020-04-10)
+
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
+
+## 4.1.0 (2020-04-09)
+
+* feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
+
+
+
+
+
+## 4.0.0 (2020-04-09)
+
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
+
+## 3.26.0 (2020-04-08)
+
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
+
 ## <small>3.25.1 (2020-04-07)</small>
 
 * Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
