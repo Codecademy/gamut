@@ -1,4 +1,4 @@
-import { Avatar } from '@codecademy/brand-components/src/Avatar';
+import { Avatar } from '@codecademy/brand-components/src';
 import { select, text } from '@storybook/addon-knobs';
 import React from 'react';
 
