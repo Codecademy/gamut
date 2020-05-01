@@ -51,7 +51,7 @@ export const Colors = decoratedStory(() => (
       {objectKeys(brandColors).map(color => (
         <Column key={color} size={3}>
           <Container flex={false}>
-            <Heading as="h2" fontSize="sm">
+            <Heading as="h2" fontSize="xs">
               Brand {startCase(color)}
             </Heading>
             <Swatch
@@ -66,7 +66,7 @@ export const Colors = decoratedStory(() => (
       {objectKeys(baseColors).map(color => (
         <Column key={color} size={3}>
           <Container flex={false}>
-            <Heading as="h2" fontSize="sm">
+            <Heading as="h2" fontSize="xs">
               {parseCamelCase(`color-${color}`)}
             </Heading>
             <Swatch
@@ -83,7 +83,7 @@ export const Colors = decoratedStory(() => (
         .map(color => (
           <Column key={color} size={3}>
             <Container flex={false}>
-              <Heading as="h2" fontSize="sm">
+              <Heading as="h2" fontSize="xs">
                 {parseCamelCase(`color-${color}`)}
               </Heading>
               <SwatchPalette
@@ -113,7 +113,7 @@ export const Editor = decoratedStory(() => {
             <Container flex={false}>
               <Heading
                 as="h2"
-                fontSize="sm"
+                fontSize="xs"
                 className={cx(styles.heading, styles.headingDark)}
               >
                 Editor {startCase(color)}
@@ -145,7 +145,7 @@ export const GamutDeprecated = decoratedStory(() => (
     <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
       <Column size={3}>
         <Container flex={false}>
-          <Heading as="h2" fontSize="sm">
+          <Heading as="h2" fontSize="xs">
             Deprecated Gamut Base Colors
           </Heading>
           <SwatchPalette
@@ -157,7 +157,7 @@ export const GamutDeprecated = decoratedStory(() => (
       {objectKeys(deprecatedGamutColors.swatches).map(color => (
         <Column key={color} size={3}>
           <Container flex={false}>
-            <Heading as="h2" fontSize="sm">
+            <Heading as="h2" fontSize="xs">
               {parseCamelCase(`deprecated-gamut-${color}`)}
             </Heading>
             <SwatchPalette
@@ -180,7 +180,7 @@ export const PortalDeprecated = decoratedStory(() => (
     <LayoutGrid columnGap="md" rowGap="md">
       <Column size={3}>
         <Container flex={false}>
-          <Heading as="h2" fontSize="sm">
+          <Heading as="h2" fontSize="xs">
             Deprecated portal base colors
           </Heading>
           <SwatchPalette
@@ -192,7 +192,7 @@ export const PortalDeprecated = decoratedStory(() => (
       {objectKeys(deprecatedColors.swatches).map(color => (
         <Column key={color} size={3}>
           <Container flex={false}>
-            <Heading as="h2" fontSize="sm">
+            <Heading as="h2" fontSize="xs">
               {parseCamelCase(color)}
             </Heading>
             <SwatchPalette

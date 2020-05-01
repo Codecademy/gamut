@@ -6,11 +6,16 @@ import {
   StoryStatus,
   StoryTemplate,
   decoratedStory,
-} from '../../Templating';
+} from '../../../Templating';
 
-export default decoratedStories('Foundations', 'Layouts', ContentContainer);
+export default decoratedStories(
+  'Foundations',
+  'Layouts',
+  'Containers',
+  ContentContainer
+);
 
-export const contentContainer = decoratedStory(() => (
+export const Default = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
     <ContentContainer>
       <p>

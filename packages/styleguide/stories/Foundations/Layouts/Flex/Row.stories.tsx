@@ -19,7 +19,7 @@ export const rowDefault = decoratedStory(() => (
       Row is a flex row to contain and manage the flow of columns
     </StoryDescription>
     <Container>
-      <FlexGrid>
+      <FlexGrid fluid>
         <Row>
           <Col xs={12} sm={3} md={2} lg={1}>
             <Box />

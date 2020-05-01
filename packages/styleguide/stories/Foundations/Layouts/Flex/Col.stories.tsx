@@ -48,13 +48,15 @@ export const editable = decoratedStory(() => {
       <StoryDescription>
         A column can be offset with the <code>xs</code> property.
       </StoryDescription>
-      <FlexGrid fluid>
-        <Row>
-          <Col xs={xs} xsOffset={xsOffset} reverse={reverse}>
-            <Box>Edited</Box>
-          </Col>
-        </Row>
-      </FlexGrid>
+      <Container>
+        <FlexGrid fluid>
+          <Row>
+            <Col xs={xs} xsOffset={xsOffset} reverse={reverse}>
+              <Box>Edited</Box>
+            </Col>
+          </Row>
+        </FlexGrid>
+      </Container>
     </StoryTemplate>
   );
 });
