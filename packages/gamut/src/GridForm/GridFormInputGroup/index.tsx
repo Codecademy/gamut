@@ -28,6 +28,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
+            setValue={props.setValue}
           />
         );
 
@@ -49,6 +50,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
+            setValue={props.setValue}
           />
         );
 
@@ -59,6 +61,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
+            setValue={props.setValue}
           />
         );
 
@@ -69,6 +72,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
+            setValue={props.setValue}
           />
         );
 
@@ -79,6 +83,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
             error={!!props.error}
             field={props.field}
             register={props.register}
+            setValue={props.setValue}
           />
         );
     }

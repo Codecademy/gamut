@@ -9,6 +9,7 @@ export type GridFormTextInputProps = {
   error?: boolean;
   field: Omit<GridFormTextField, 'label'>;
   register: FormContextValues['register'];
+  setValue: (value: string) => void;
 };
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -16,13 +17,17 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   error,
   field,
   register,
+  setValue,
 }) => {
   return (
     <Input
       className={className}
       error={error}
       htmlFor={field.name}
-      onChange={event => field.onUpdate?.(event.target.value)}
+      onChange={event => {
+        setValue(event.target.value);
+        field.onUpdate?.(event.target.value);
+      }}
       placeholder={field.placeholder}
       name={field.name}
       ref={register(field.validation)}

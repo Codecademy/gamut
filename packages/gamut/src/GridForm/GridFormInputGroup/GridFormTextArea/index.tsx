@@ -9,6 +9,7 @@ export type GridFormTextAreaProps = {
   error?: boolean;
   field: Omit<GridFormTextAreaField, 'label'>;
   register: FormContextValues['register'];
+  setValue: (value: string) => void;
 };
 
 export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
@@ -16,6 +17,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   error,
   field,
   register,
+  setValue,
 }) => {
   return (
     <TextArea
@@ -23,7 +25,10 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       error={error}
       htmlFor={field.name}
       name={field.name}
-      onChange={event => field.onUpdate?.(event.target.value)}
+      onChange={event => {
+        setValue(event.target.value);
+        field.onUpdate?.(event.target.value);
+      }}
       ref={register(field.validation)}
     />
   );
