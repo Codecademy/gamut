@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.4.0 (2020-05-01)
+
+* feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d))
+
+
+
+
+
 ## 1.3.0 (2020-04-30)
 
 * feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/Codecademy/client-modules/commit/85188a6)), closes [#764](https://github.com/Codecademy/client-modules/issues/764)
