@@ -16,7 +16,7 @@ h2.headingDark {
 }
 
 .swatchContainer {
-  width: max-content;
+  width: 100%;
 
   &:first-of-type {
     .swatch {
@@ -38,7 +38,7 @@ h2.headingDark {
   position: relative;
   display: flex;
   height: 125px;
-  width: 200px;
+  width: 100%;
   max-width: 100%;
   border: 1px solid $color-gray-800;
   border-bottom: 0;

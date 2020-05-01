@@ -1,12 +1,7 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
 
-import {
-  LayoutGrid,
-  Column,
-  ColumnSizes,
-  OffsetColumnSizes,
-} from '@codecademy/gamut/src';
+import { LayoutGrid, Column } from '@codecademy/gamut/src';
 
 import {
   decoratedStories,
