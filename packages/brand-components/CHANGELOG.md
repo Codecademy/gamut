@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.3.0 (2020-04-30)
+
+* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/Codecademy/client-modules/commit/85188a6)), closes [#764](https://github.com/Codecademy/client-modules/issues/764)
+
+
+
+
+
+## <small>1.2.3 (2020-04-30)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.2.2 (2020-04-30)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.2.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.2.0 (2020-04-29)
+
+* feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/Codecademy/client-modules/commit/16e7ad7))
+
+
+
+
+
+## 1.1.0 (2020-04-29)
+
+* feat(headertab): move more header components into gamut (#740) ([9c555ef](https://github.com/Codecademy/client-modules/commit/9c555ef)), closes [#740](https://github.com/Codecademy/client-modules/issues/740)
+
+
+
+
+
 ## <small>1.0.11 (2020-04-28)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components

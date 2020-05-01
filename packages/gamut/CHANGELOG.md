@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
+## <small>7.4.1 (2020-04-30)</small>
+
+* Corrected ProgressBar blues (#754) ([b112594](https://github.com/RyzacInc/client-modules/commit/b112594)), closes [#754](https://github.com/RyzacInc/client-modules/issues/754)
+
+
+
+
+
+## 7.4.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
+## <small>7.3.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## 7.3.0 (2020-04-28)
 
 * feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
