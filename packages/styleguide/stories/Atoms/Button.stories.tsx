@@ -18,7 +18,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/Button',
+  title: 'Core|Atoms/Button',
   component: Button,
   decorators: [withKnobs],
 };

@@ -11,7 +11,7 @@ import { BannerType } from '@codecademy/gamut/src/Alert/constants';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/Alert',
+  title: 'Core|Molecules/Alert',
   component: Alert,
   decorators: [withKnobs],
 };

@@ -11,7 +11,7 @@ import {
 import { Content, Container } from './Elements';
 
 export default {
-  title: 'Gamut|Foundations/Layouts/Grid/LayoutGrid',
+  title: 'Core|Foundations/Layouts/Grid/LayoutGrid',
   component: LayoutGrid,
   decorators: [withKnobs],
 };

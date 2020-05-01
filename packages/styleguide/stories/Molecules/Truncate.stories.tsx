@@ -4,7 +4,7 @@ import { decoratedStory } from '../Templating';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/Truncate',
+  title: 'Core|Molecules/Truncate',
   component: Truncate,
   decorators: [withKnobs],
 };

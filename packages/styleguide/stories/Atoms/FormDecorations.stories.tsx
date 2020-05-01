@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/Form Decorations',
+  title: 'Core|Atoms/Form Decorations',
   component: 'Form Decorations',
   decorators: [withKnobs],
 };

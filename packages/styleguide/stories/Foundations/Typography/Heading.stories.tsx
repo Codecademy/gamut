@@ -19,7 +19,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 const headingSizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
 
 export default {
-  title: 'Gamut|Foundations/Typograph/Heading',
+  title: 'Core|Foundations/Typograph/Heading',
   component: Heading,
   decorators: [withKnobs],
 };

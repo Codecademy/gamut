@@ -12,7 +12,7 @@ const alignStyles = ['left', 'center', 'right'] as const;
 const borderStyles = ['dashed', 'solid', 'none'] as const;
 
 export default {
-  title: 'Gamut|Molecules/Card',
+  title: 'Core|Molecules/Card',
   component: 'Card',
   decorators: [withKnobs],
 };

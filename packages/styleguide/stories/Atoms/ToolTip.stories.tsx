@@ -11,7 +11,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/ToolTip',
+  title: 'Core|Atoms/ToolTip',
   component: ToolTip,
   decorators: [withKnobs],
 };

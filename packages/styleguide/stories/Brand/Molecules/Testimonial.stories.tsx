@@ -3,10 +3,10 @@ import { VisualTheme } from '@codecademy/gamut/src';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
-import { decoratedStory } from '../Templating';
+import { decoratedStory } from '../../Templating';
 
 export default {
-  title: 'Brand|Testimonial',
+  title: 'Labs|Molecules/Testimonial',
   component: Testimonial,
   decorators: [withKnobs],
 };

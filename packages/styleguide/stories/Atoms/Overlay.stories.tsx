@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/Overlay',
+  title: 'Core|Atoms/Overlay',
   component: Overlay,
   decorators: [withKnobs],
 };

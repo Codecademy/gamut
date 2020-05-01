@@ -11,7 +11,7 @@ import {
 import styles from './styles.module.scss';
 
 export default {
-  title: 'Gamut|Atoms/HighlightedText',
+  title: 'Core|Atoms/HighlightedText',
   component: HighlightedText,
   decorators: [withKnobs],
 };

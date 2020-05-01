@@ -5,7 +5,7 @@ import { StoryStatus, StoryTemplate, decoratedStory } from '../../Templating';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Foundations/Layouts/ContentContainer',
+  title: 'Core|Foundations/Layouts/ContentContainer',
   component: ContentContainer,
   decorators: [withKnobs],
 };

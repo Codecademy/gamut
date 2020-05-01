@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/SkipToContent',
+  title: 'Core|Atoms/SkipToContent',
   component: SkipToContent,
   decorators: [withKnobs],
 };

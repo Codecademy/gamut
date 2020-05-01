@@ -26,7 +26,7 @@ import {
 import styles from './styles.module.scss';
 
 export default {
-  title: 'Gamut|Foundations/Colors',
+  title: 'Core|Foundations/Colors',
   component: 'Colors',
   decorators: [withKnobs],
 };

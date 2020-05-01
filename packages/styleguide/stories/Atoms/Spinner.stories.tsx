@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/Spinner',
+  title: 'Core|Atoms/Spinner',
   component: Spinner,
   decorators: [withKnobs],
 };

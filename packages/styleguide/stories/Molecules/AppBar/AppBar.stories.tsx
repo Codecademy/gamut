@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/AppBar',
+  title: 'Core|Molecules/AppBar',
   component: AppBar,
   decorators: [withKnobs],
 };

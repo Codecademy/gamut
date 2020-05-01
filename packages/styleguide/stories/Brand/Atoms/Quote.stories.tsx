@@ -7,10 +7,10 @@ import {
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../Templating';
+} from '../../Templating';
 
 export default {
-  title: 'Brand|Quote',
+  title: 'Labs|Atoms/Quote',
   component: Quote,
   decorators: [withKnobs],
 };

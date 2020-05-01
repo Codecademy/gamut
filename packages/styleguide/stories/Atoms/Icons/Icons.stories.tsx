@@ -14,7 +14,7 @@ import {
 import styles from './styles.module.scss';
 
 export default {
-  title: 'Gamut|Atoms/Icons',
+  title: 'Core|Atoms/Icons',
   decorators: [withKnobs],
 };
 

@@ -10,7 +10,7 @@ import {
 } from '../Templating';
 
 export default {
-  title: 'Gamut|Atoms/Badge',
+  title: 'Core|Atoms/Badge',
   component: Badge,
   decorators: [withKnobs],
 };

@@ -15,7 +15,7 @@ import {
 } from '../../Templating';
 
 export default {
-  title: 'Gamut|Atoms/ProgressBar',
+  title: 'Core|Atoms/ProgressBar',
   component: ProgressBar,
   decorators: [withKnobs],
 };

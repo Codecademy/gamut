@@ -7,7 +7,7 @@ import exampleMarkdown from './markdown-example.md';
 import { decoratedStory } from '../../Templating';
 
 export default {
-  title: 'Gamut|Atoms/Markdown',
+  title: 'Core|Atoms/Markdown',
   component: Markdown,
   decorators: [withKnobs],
 };

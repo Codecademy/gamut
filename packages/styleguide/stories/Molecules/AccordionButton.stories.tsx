@@ -12,7 +12,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/AccordionButton',
+  title: 'Core|Molecules/AccordionButton',
   component: AccordionButton,
   decorators: [withKnobs],
 };

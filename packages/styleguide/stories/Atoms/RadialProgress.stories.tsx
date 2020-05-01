@@ -12,7 +12,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/RadialProgress',
+  title: 'Core|Atoms/RadialProgress',
   component: RadialProgress,
   decorators: [withKnobs],
 };

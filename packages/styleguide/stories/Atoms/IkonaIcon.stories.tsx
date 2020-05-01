@@ -11,7 +11,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/IkonaIcon (Deprecated)',
+  title: 'Core|Atoms/IkonaIcon (Deprecated)',
   component: IkonaIcon,
   decorators: [withKnobs],
 };

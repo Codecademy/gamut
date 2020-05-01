@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/Interstitial',
+  title: 'Core|Molecules/Interstitial',
   component: Interstitial,
   decorators: [withKnobs],
 };

@@ -10,7 +10,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Atoms/Toggle',
+  title: 'Core|Atoms/Toggle',
   component: Toggle,
   decorators: [withKnobs],
 };

@@ -11,7 +11,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Foundations/Layouts/FlexGrid',
+  title: 'Core|Foundations/Layouts/FlexGrid',
   component: FlexGrid,
   decorators: [withKnobs],
 };

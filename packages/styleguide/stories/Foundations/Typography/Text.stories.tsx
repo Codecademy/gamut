@@ -19,7 +19,7 @@ import {
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Foundations/Typograph/Text',
+  title: 'Core|Foundations/Typograph/Text',
   component: Text,
   decorators: [withKnobs],
 };

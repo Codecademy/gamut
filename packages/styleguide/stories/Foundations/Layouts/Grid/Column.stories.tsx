@@ -16,7 +16,7 @@ import {
 import { Content, Container } from './Elements';
 
 export default {
-  title: 'Gamut|Foundations/Layouts/Grid/Column',
+  title: 'Core|Foundations/Layouts/Grid/Column',
   component: Column,
   decorators: [withKnobs],
 };

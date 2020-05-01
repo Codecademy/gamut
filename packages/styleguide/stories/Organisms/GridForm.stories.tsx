@@ -13,7 +13,7 @@ import {
 } from '../Templating';
 
 export default {
-  title: 'Gamut|Organisms/GridForm',
+  title: 'Core|Organisms/GridForm',
   component: GridForm,
   decorators: [withKnobs],
 };

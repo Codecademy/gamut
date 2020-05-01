@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/SplitInterstitial',
+  title: 'Core|Molecules/SplitInterstitial',
   component: SplitInterstitial,
   decorators: [withKnobs],
 };

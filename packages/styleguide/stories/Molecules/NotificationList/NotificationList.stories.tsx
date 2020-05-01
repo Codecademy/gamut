@@ -12,7 +12,7 @@ import styles from './styles.module.scss';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/NotificationList',
+  title: 'Core|Molecules/NotificationList',
   component: NotificationList,
   decorators: [withKnobs],
 };

@@ -10,7 +10,7 @@ import {
 } from '../Templating';
 
 export default {
-  title: 'Gamut|Molecules/Tabs',
+  title: 'Core|Molecules/Tabs',
   component: Tabs,
   decorators: [withKnobs],
 };

@@ -8,10 +8,10 @@ import {
   StoryStatus,
   StoryTemplate,
   StoryDescription,
-} from '../../Templating';
+} from '../../../Templating';
 
 export default {
-  title: 'Brand|Atoms/Avatar',
+  title: 'Labs|Atoms/Avatar',
   component: Avatar,
   decorators: [withKnobs],
 };

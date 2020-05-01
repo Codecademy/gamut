@@ -3,13 +3,13 @@ import { Logo } from '@codecademy/brand-components/src';
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import React from 'react';
 
-import { selectableColors } from '../helpers';
+import { selectableColors } from '../../helpers';
 import {
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../Templating';
+} from '../../Templating';
 import { withKnobs } from '@storybook/addon-knobs';
 
 const types = [
@@ -23,7 +23,7 @@ const types = [
 ] as const;
 
 export default {
-  title: 'Brand|Logo',
+  title: 'Labs|Atoms/Logo',
   component: Logo,
   decorators: [withKnobs],
 };

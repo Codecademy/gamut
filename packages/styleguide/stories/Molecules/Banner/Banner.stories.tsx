@@ -13,7 +13,7 @@ import { action } from '@storybook/addon-actions';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/Banner',
+  title: 'Core|Molecules/Banner',
   component: Banner,
   decorators: [withKnobs],
 };

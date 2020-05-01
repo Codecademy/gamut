@@ -8,10 +8,10 @@ import {
   StoryStatus,
   StoryTemplate,
   decoratedStory,
-} from '../../Templating';
+} from '../../../Templating';
 
 export default {
-  title: 'Brand|ByLine',
+  title: 'Labs|Molecules/ByLine',
   component: Byline,
   decorators: [withKnobs],
 };

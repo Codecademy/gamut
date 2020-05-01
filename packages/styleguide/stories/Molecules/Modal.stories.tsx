@@ -4,7 +4,7 @@ import { decoratedStory } from '../Templating';
 import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
-  title: 'Gamut|Molecules/Modal',
+  title: 'Core|Molecules/Modal',
   component: Modal,
   decorators: [withKnobs],
 };

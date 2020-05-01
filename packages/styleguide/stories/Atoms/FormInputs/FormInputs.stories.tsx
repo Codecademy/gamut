@@ -23,7 +23,7 @@ import {
 import styles from './styles.module.scss';
 
 export default {
-  title: 'Gamut|Atoms/Form Inputs',
+  title: 'Core|Atoms/Form Inputs',
   component: 'Form Inputs',
   decorators: [withKnobs],
 };
