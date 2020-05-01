@@ -26,21 +26,9 @@ export const CopyButton: React.FC<ButtonProps & { copyValue: string }> = ({
   copyValue,
   ...props
 }) => {
-  const [recentlyCopied, setRecentlyCopied] = React.useState(false);
-  const onCopy = React.useCallback(() => {
-    navigator.clipboard.writeText(copyValue);
-    setRecentlyCopied(true);
-  }, [copyValue, setRecentlyCopied]);
-
-  React.useEffect(() => {
-    if (recentlyCopied) {
-      setTimeout(() => setRecentlyCopied(false), 2000);
-    }
-  }, [recentlyCopied]);
-
   return (
-    <Button {...props} onClick={onCopy}>
-      {recentlyCopied ? 'Copied!' : children}
+    <Button {...props} onClick={() => navigator.clipboard.writeText(copyValue)}>
+      {children}
     </Button>
   );
 };
