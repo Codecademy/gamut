@@ -10,7 +10,7 @@ $background-pattern-offset: px-rem(16px);
     position: absolute;
     right: 0;
     bottom: 0;
-    background-image: url("./assets/dots.svg");
+    background-image: url("../assets/dots.svg");
     background-repeat: repeat;
     height: calc(100% - #{$background-pattern-offset});
     width: calc(100% - #{$background-pattern-offset});

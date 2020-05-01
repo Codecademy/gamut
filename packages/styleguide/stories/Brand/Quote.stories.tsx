@@ -1,4 +1,4 @@
-import { Quote } from '@codecademy/brand-components/src/Quote';
+import { Quote } from '@codecademy/brand-components/src';
 import { text } from '@storybook/addon-knobs';
 import React from 'react';
 
