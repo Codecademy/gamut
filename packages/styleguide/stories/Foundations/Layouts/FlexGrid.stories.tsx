@@ -3,14 +3,18 @@ import gamut from '@codecademy/gamut-styles/utils/variables';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Foundations', 'Layouts', 'FlexGrid');
+export default {
+  title: 'Gamut|Foundations/Layouts/FlexGrid',
+  component: FlexGrid,
+  decorators: [withKnobs],
+};
 
 const Box = () => (
   <Item

@@ -1,14 +1,14 @@
 import { ContentContainer } from '@codecademy/gamut/src';
 import React from 'react';
 
-import {
-  decoratedStories,
-  StoryStatus,
-  StoryTemplate,
-  decoratedStory,
-} from '../../Templating';
+import { StoryStatus, StoryTemplate, decoratedStory } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Foundations', 'Layouts', ContentContainer);
+export default {
+  title: 'Gamut|Foundations/Layouts/ContentContainer',
+  component: ContentContainer,
+  decorators: [withKnobs],
+};
 
 export const contentContainer = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

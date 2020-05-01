@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Modal } from '@codecademy/gamut/src';
-import { decoratedStories, decoratedStory } from '../Templating';
+import { decoratedStory } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', Modal);
+export default {
+  title: 'Gamut|Molecules/Modal',
+  component: Modal,
+  decorators: [withKnobs],
+};
 
 const ModalStory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

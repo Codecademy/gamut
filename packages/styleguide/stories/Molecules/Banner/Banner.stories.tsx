@@ -3,7 +3,6 @@ import { AlertIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -11,8 +10,13 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 import { action } from '@storybook/addon-actions';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', Banner);
+export default {
+  title: 'Gamut|Molecules/Banner',
+  component: Banner,
+  decorators: [withKnobs],
+};
 
 export const defaultBannerFullWidth = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.NotReady}>

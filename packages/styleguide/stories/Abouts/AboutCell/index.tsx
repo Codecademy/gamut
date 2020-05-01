@@ -13,6 +13,7 @@ export type AboutCellProps = {
   kind: Section;
   story?: string;
   title?: string;
+  parent?: string;
 };
 
 export const AboutCell: React.FC<AboutCellProps> = ({
@@ -20,13 +21,15 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   emoji,
   examples,
   kind,
+  parent,
   story = 'About',
   title = kind,
 }) => {
+  const kindLink = [parent, kind].join('|');
   return (
     <Column className={styles.aboutCell} size={{ xs: 12, sm: 6, md: 4 }}>
       <h2 className={styles.heading}>
-        <LinkTo kind={kind} story={story}>
+        <LinkTo kind={kindLink} story={story}>
           <span role="presentation">{emoji}</span> {title}
         </LinkTo>
       </h2>

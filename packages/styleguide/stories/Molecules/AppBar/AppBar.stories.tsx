@@ -2,10 +2,15 @@ import { Logo } from '@codecademy/brand-components/src';
 import { AppBar, AppBarSection, AppBarTab } from '@codecademy/gamut/src';
 import React from 'react';
 
-import { decoratedStories, decoratedStory } from '../../Templating';
+import { decoratedStory } from '../../Templating';
 import styles from './styles.module.scss';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', AppBar);
+export default {
+  title: 'Gamut|Molecules/AppBar',
+  component: AppBar,
+  decorators: [withKnobs],
+};
 
 export const appBar = decoratedStory(() => (
   <div>

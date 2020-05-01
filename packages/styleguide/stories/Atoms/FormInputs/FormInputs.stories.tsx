@@ -6,11 +6,15 @@ import {
   Select,
   TextArea,
 } from '@codecademy/gamut/src';
-import { select as selectKnob, boolean, number } from '@storybook/addon-knobs';
+import {
+  select as selectKnob,
+  boolean,
+  number,
+  withKnobs,
+} from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   StoryStatus,
   StoryTemplate,
   StoryDescription,
@@ -18,7 +22,11 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStories('Atoms', 'Form Inputs');
+export default {
+  title: 'Gamut|Atoms/Form Inputs',
+  component: 'Form Inputs',
+  decorators: [withKnobs],
+};
 
 export const formInputs = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

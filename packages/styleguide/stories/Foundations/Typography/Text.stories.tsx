@@ -11,14 +11,18 @@ import {
 } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Foundations', 'Typography', Text);
+export default {
+  title: 'Gamut|Foundations/Typograph/Text',
+  component: Text,
+  decorators: [withKnobs],
+};
 
 const textTags: TextTags[] = ['p', 'span'];
 const textSizes: TextSizes[] = ['lg', 'md', 'sm'];

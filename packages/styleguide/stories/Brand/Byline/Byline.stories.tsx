@@ -1,17 +1,20 @@
 import { Byline } from '@codecademy/brand-components/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import styles from './styles.module.scss';
 import {
-  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
   decoratedStory,
 } from '../../Templating';
 
-export default decoratedStories('Brand', Byline);
+export default {
+  title: 'Brand|ByLine',
+  component: Byline,
+  decorators: [withKnobs],
+};
 
 export const byline = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

@@ -1,16 +1,19 @@
 import { Quote } from '@codecademy/brand-components/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStories('Brand', Quote);
+export default {
+  title: 'Brand|Quote',
+  component: Quote,
+  decorators: [withKnobs],
+};
 
 export const quote = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Column,
   Icon,
@@ -5,19 +6,22 @@ import {
   LayoutGrid,
 } from '@codecademy/gamut/src';
 import iconMap from '@codecademy/gamut/src/Icon/iconMap';
-import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
-  StoryDescription,
   StoryStatus,
   StoryTemplate,
+  StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
+
+export default {
+  title: 'Gamut|Atoms/Icon (Deprecated)',
+  component: Icon,
+  decorators: [withKnobs],
+};
 
 const iconNames = Object.keys(iconMap) as IconPropsDeprecated['name'][];
-
-export default decoratedStories('Atoms', 'Icons (Deprecated)');
 
 export const iconsDeprecated = decoratedStory('Icons (Deprecated)', () => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>

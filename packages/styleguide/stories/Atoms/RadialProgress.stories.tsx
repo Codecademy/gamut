@@ -4,14 +4,18 @@ import React from 'react';
 
 import { selectableColors } from '../helpers';
 import {
-  decoratedStories,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
   decoratedStory,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', RadialProgress);
+export default {
+  title: 'Gamut|Atoms/RadialProgress',
+  component: RadialProgress,
+  decorators: [withKnobs],
+};
 
 export const radialProgress = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

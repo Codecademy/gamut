@@ -1,19 +1,22 @@
 import { BrandMonospace } from '@codecademy/brand-components/src/BrandMonospace';
 import { Heading } from '@codecademy/gamut/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
 
-export default decoratedStories('Brand', BrandMonospace);
+export default {
+  title: 'Brand|Atoms/BrandMonospace',
+  component: BrandMonospace,
+  decorators: [withKnobs],
+};
 
 export const robotoMono = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

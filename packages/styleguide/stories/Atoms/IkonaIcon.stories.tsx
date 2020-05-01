@@ -3,18 +3,22 @@ import iconStyles from '@codecademy/gamut/src/IkonaIcon/styles/index.module.scss
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
-  StoryDescription,
   StoryStatus,
   StoryTemplate,
+  StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
+
+export default {
+  title: 'Gamut|Atoms/IkonaIcon (Deprecated)',
+  component: IkonaIcon,
+  decorators: [withKnobs],
+};
 
 const iconNames = Object.keys(iconStyles)
   .filter(cn => cn.match('ikona-'))
   .map(cn => cn.replace('ikona-', ''));
-
-export default decoratedStories('Atoms', 'IkonaIcons (Deprecated)');
 
 export const ikonaIcons = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Deprecated} wide>

@@ -5,14 +5,12 @@ import React from 'react';
 
 import { selectableColors } from '../helpers';
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
-
-export default decoratedStories('Brand', Logo);
+import { withKnobs } from '@storybook/addon-knobs';
 
 const types = [
   'pro',
@@ -23,6 +21,12 @@ const types = [
   'program',
   'default',
 ] as const;
+
+export default {
+  title: 'Brand|Logo',
+  component: Logo,
+  decorators: [withKnobs],
+};
 
 export const logo = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

@@ -1,9 +1,13 @@
 import React from 'react';
 import { Truncate } from '@codecademy/gamut/src';
-import { decoratedStories, decoratedStory } from './Templating';
+import { decoratedStory } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', Truncate);
-
+export default {
+  title: 'Gamut|Molecules/Truncate',
+  component: Truncate,
+  decorators: [withKnobs],
+};
 const placeholderText = `
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

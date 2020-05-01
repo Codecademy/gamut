@@ -2,14 +2,18 @@ import React from 'react';
 import { Spinner } from '@codecademy/gamut/src';
 import { text } from '@storybook/addon-knobs';
 import {
-  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
   StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', Spinner);
+export default {
+  title: 'Gamut|Atoms/Spinner',
+  component: Spinner,
+  decorators: [withKnobs],
+};
 
 export const spinner = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

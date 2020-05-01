@@ -1,11 +1,15 @@
 import { Testimonial } from '@codecademy/brand-components/src';
 import { VisualTheme } from '@codecademy/gamut/src';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
-import { decoratedStories, decoratedStory } from '../Templating';
+import { decoratedStory } from '../Templating';
 
-export default decoratedStories('Brand', Testimonial);
+export default {
+  title: 'Brand|Testimonial',
+  component: Testimonial,
+  decorators: [withKnobs],
+};
 
 const knobs = {
   company: () => text('Company', 'Microsoft'),

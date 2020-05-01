@@ -2,7 +2,6 @@ import { SplitInterstitial } from '@codecademy/gamut/src';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
@@ -11,8 +10,13 @@ import {
 import Triangle from './assets/Triangle.svg';
 import Stairs from './assets/Stairs.svg';
 import styles from './styles.module.scss';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', SplitInterstitial);
+export default {
+  title: 'Gamut|Molecules/SplitInterstitial',
+  component: SplitInterstitial,
+  decorators: [withKnobs],
+};
 
 export const splitInterstitial = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

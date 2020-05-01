@@ -1,3 +1,8 @@
+import React from 'react';
+import cx from 'classnames';
+import { withKnobs } from '@storybook/addon-knobs';
+import { startCase } from 'lodash';
+
 import {
   brandColors,
   colors,
@@ -11,12 +16,8 @@ import {
   Column,
   VisualTheme,
 } from '@codecademy/gamut/src';
-import cx from 'classnames';
-import { startCase } from 'lodash';
-import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
@@ -24,7 +25,11 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStories('Foundations', 'Colors');
+export default {
+  title: 'Gamut|Foundations/Colors',
+  component: 'Colors',
+  decorators: [withKnobs],
+};
 
 const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
