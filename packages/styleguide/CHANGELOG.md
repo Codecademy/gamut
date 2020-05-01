@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.3.0 (2020-04-30)
+
+* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a6)), closes [#764](https://github.com/RyzacInc/client-modules/issues/764)
+* Added docs for writing stories (#762) ([775d3a8](https://github.com/RyzacInc/client-modules/commit/775d3a8)), closes [#762](https://github.com/RyzacInc/client-modules/issues/762)
+
+
+
+
+
+## <small>9.2.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
+## <small>9.2.1 (2020-04-30)</small>
+
+* Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
+
+
+
+
+
+## 9.2.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
 ## 9.1.0 (2020-04-29)
 
 * feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))

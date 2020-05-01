@@ -6,6 +6,7 @@ import {
   LayoutGrid,
   Column,
   Heading,
+  Container,
 } from '@codecademy/gamut/src';
 import {
   decoratedStories,
@@ -25,7 +26,7 @@ export const headingSizePairings = decoratedStory(() => (
     <StoryDescription>
       Responsive Typography primitives for all your textual needs.
     </StoryDescription>
-    <LayoutGrid rowGap="lg">
+    <LayoutGrid rowGap="md">
       <Column size={12}>
         <Heading as="h2" fontSize="lg">
           Headings
@@ -46,12 +47,31 @@ export const headingSizePairings = decoratedStory(() => (
           </a>{' '}
           (and picking the appropriate size to match the design).
         </p>
-        {headingSizes.map(size => (
-          <Heading key={size} fontSize={size} as={headingTags[0]}>
-            Heading {size}
-          </Heading>
-        ))}
       </Column>
+
+      {headingSizes.map(size => (
+        <React.Fragment key={size}>
+          <Column size={1}>
+            <Container align="center">
+              <Heading
+                fontSize="sm"
+                as="h2"
+                hideMargin
+                style={{ color: colors.gray[400] }}
+              >
+                {size}
+              </Heading>
+            </Container>
+          </Column>
+          <Column size={11}>
+            <Container key={size} align="center">
+              <Heading fontSize={size} as="h3" hideMargin>
+                Heading
+              </Heading>
+            </Container>
+          </Column>
+        </React.Fragment>
+      ))}
     </LayoutGrid>
   </StoryTemplate>
 ));
