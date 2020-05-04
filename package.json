@@ -26,8 +26,7 @@
   },
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json,css,scss}": [
-      "prettier --ignore-path .prettierignore --write",
-      "git add"
+      "prettier --ignore-path .prettierignore --write"
     ]
   },
   "repository": {
@@ -67,12 +66,12 @@
     "enzyme-adapter-react-16": "1.15.2",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.16.0",
-    "husky": "4.0.10",
+    "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom": "24.9.0",
     "jest-environment-jsdom-global": "1.2.0",
-    "lint-staged": "8.1.5",
+    "lint-staged": "10.2.2",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "2.0.5",
     "react": "16.12.0",
