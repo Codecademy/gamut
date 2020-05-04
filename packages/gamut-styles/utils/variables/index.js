@@ -96,14 +96,15 @@ export const colors = {
 };
 
 export const brandColors = {
-  red: '#fd4d3f',
-  orange: '#ff9b2a',
-  yellow: '#ffc740',
-  purple: '#6400e4',
-  pink: '#ff8ef5',
-  mint: '#6df0c2',
+  red: colors.red[500],
+  orange: colors.orange[500],
+  yellow: colors.yellow[500],
+  purple: colors.royalBlue,
+  pink: colors.pink[400],
+  mint: colors.green[300],
   beige: '#efd9ca',
-  darkBlue: '#141c3a',
+  blue: colors.blue[500],
+  darkBlue: colors.blue[900],
 };
 
 export const effectColors = {

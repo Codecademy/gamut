@@ -96,14 +96,15 @@ $color-shadow: rgba($color-black, 0.15);
 //      BRAND COLORS
 // =======================================
 
-$brand-red: #fd4d3f;
-$brand-yellow: #ffc740;
-$brand-orange: #ff9b2a;
-$brand-purple: #6400e4;
-$brand-pink: #ff8ef5;
-$brand-mint: #6df0c2;
+$brand-red: $color-red-500;
+$brand-yellow: $color-yellow-500;
+$brand-orange: $color-orange-500;
+$brand-purple: $color-royal-blue;
+$brand-pink: $color-pink-400;
+$brand-mint: $color-green-300;
 $brand-beige: #efd9ca;
-$brand-dark-blue: #141c3a;
+$brand-blue: $color-blue-500;
+$brand-dark-blue: $color-blue-900;
 
 // =======================================
 //      EDITOR COLORS
