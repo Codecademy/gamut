@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.4.1 (2020-05-01)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## 1.4.0 (2020-05-01)
 
 * feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d))
