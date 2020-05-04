@@ -25,11 +25,5 @@ module.exports = {
         parser: 'typescript',
       },
     },
-    {
-      files: '*.{mdx}',
-      options: {
-        parser: 'mdx',
-      },
-    },
   ],
 };

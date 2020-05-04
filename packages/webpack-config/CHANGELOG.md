@@ -5,47 +5,84 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 5.0.0 (2020-04-28)
 
-- feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/2e6c1c5)), closes [#736](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/736)
+* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/2e6c1c5)), closes [#736](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/736)
+
+
+
+
 
 ## [4.0.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@4.0.0...@codecademy/webpack-config@4.0.1) (2020-04-01)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
+
+
+
+
 # [4.0.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.17.0...@codecademy/webpack-config@4.0.0) (2020-03-06)
+
 
 ### chore
 
-- updated and consolidated autoprefixer to ^9.7.4 ([#629](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/629)) ([0fb90dd](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
+* updated and consolidated autoprefixer to ^9.7.4 ([#629](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/629)) ([0fb90dd](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
+
 
 ### BREAKING CHANGES
 
-- Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
+* Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
+
+
+
+
 
 # [3.17.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.2...@codecademy/webpack-config@3.17.0) (2020-01-28)
 
+
 ### Features
 
-- add file loader options override ([#607](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/607)) ([4fe61f0](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
+* add file loader options override ([#607](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/607)) ([4fe61f0](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
+
+
+
+
 
 ## [3.16.2](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.1...@codecademy/webpack-config@3.16.2) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/webpack-config
 
+
+
+
+
 ## [3.16.1](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.16.0...@codecademy/webpack-config@3.16.1) (2019-12-05)
+
 
 ### Bug Fixes
 
-- **webpack-config:** Revert removal of id from default hashes ([#560](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/560)) ([3cd175d](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/3cd175d))
+* **webpack-config:** Revert removal of id from default hashes ([#560](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/560)) ([3cd175d](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/3cd175d))
+
+
+
+
 
 # [3.16.0](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.7...@codecademy/webpack-config@3.16.0) (2019-12-03)
 
+
 ### Features
 
-- **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/557)) ([4b4c36f](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4b4c36f))
+* **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/557)) ([4b4c36f](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4b4c36f))
+
+
+
+
 
 ## [3.15.7](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.6...@codecademy/webpack-config@3.15.7) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
 
 ## [3.15.6](http://github.com/Codecademy/client-modules/packages/webpack-config/compare/@codecademy/webpack-config@3.15.3...@codecademy/webpack-config@3.15.6) (2019-09-03)
 

@@ -13,7 +13,7 @@
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
-    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{md,mdx,js,ts,tsx,json,css,scss}\"",
+    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn lerna run verify",
@@ -25,7 +25,7 @@
     "deploy": "gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
-    "**/*.{md,mdx,js,ts,tsx,json,css,scss}": [
+    "**/*.{mdx,js,ts,tsx,json,css,scss}": [
       "prettier --ignore-path .prettierignore --write",
       "git add"
     ]

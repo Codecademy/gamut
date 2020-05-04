@@ -7,6 +7,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @codecademy/prettier-config
 
+
+
+
+
 ## [0.1.5](http://github.com/Codecademy/client-modules/packages/prettier-config/compare/@codecademy/prettier-config@0.1.4...@codecademy/prettier-config@0.1.5) (2019-09-25)
 
 ### Bug Fixes

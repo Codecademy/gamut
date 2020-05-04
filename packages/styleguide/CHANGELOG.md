@@ -5,480 +5,927 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 9.5.0 (2020-05-04)
 
-- feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d))
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d))
+
+
+
+
 
 ## 9.4.0 (2020-05-01)
 
-- feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))
+* feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))
+
+
+
+
 
 ## 9.3.0 (2020-04-30)
 
-- feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a6)), closes [#764](https://github.com/RyzacInc/client-modules/issues/764)
-- Added docs for writing stories (#762) ([775d3a8](https://github.com/RyzacInc/client-modules/commit/775d3a8)), closes [#762](https://github.com/RyzacInc/client-modules/issues/762)
+* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a6)), closes [#764](https://github.com/RyzacInc/client-modules/issues/764)
+* Added docs for writing stories (#762) ([775d3a8](https://github.com/RyzacInc/client-modules/commit/775d3a8)), closes [#762](https://github.com/RyzacInc/client-modules/issues/762)
+
+
+
+
 
 ## <small>9.2.2 (2020-04-30)</small>
 
-- fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
 
 ## <small>9.2.1 (2020-04-30)</small>
 
-- Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
+* Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
+
+
+
+
 
 ## 9.2.0 (2020-04-29)
 
-- feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
 
 ## 9.1.0 (2020-04-29)
 
-- feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))
+* feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))
+
+
+
+
 
 ## 9.0.0 (2020-04-28)
 
-- feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5)), closes [#736](https://github.com/RyzacInc/client-modules/issues/736)
+* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5)), closes [#736](https://github.com/RyzacInc/client-modules/issues/736)
+
+
+
+
 
 ## 8.5.0 (2020-04-28)
 
-- feat(styleguide): added inclusion guidelines to FAQs (#749) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40)), closes [#749](https://github.com/RyzacInc/client-modules/issues/749)
+* feat(styleguide): added inclusion guidelines to FAQs (#749) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40)), closes [#749](https://github.com/RyzacInc/client-modules/issues/749)
+
+
+
+
 
 ## 8.4.0 (2020-04-28)
 
-- feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+* feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+
+
+
+
 
 ## 8.3.0 (2020-04-27)
 
-- feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+* feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+
+
+
+
 
 ## 8.2.0 (2020-04-22)
 
-- feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+
+
+
+
 
 ## 8.1.0 (2020-04-21)
 
-- feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+* feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+
+
+
+
 
 ## 8.0.0 (2020-04-21)
 
-- feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
+
+
+
+
 
 ## <small>7.1.2 (2020-04-20)</small>
 
-- Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+* Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+
+
+
+
 
 ## <small>7.1.1 (2020-04-20)</small>
 
-- chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
+* chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
+
+
+
+
 
 ## 7.1.0 (2020-04-20)
 
-- feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+
+
+
+
 
 ## 7.0.0 (2020-04-20)
 
-- feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+
+
+
+
 
 ## 6.1.0 (2020-04-20)
 
-- feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
+
+
+
+
 
 ## <small>6.0.2 (2020-04-20)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## <small>6.0.1 (2020-04-17)</small>
 
-- Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
+
+
+
+
 
 ## 6.0.0 (2020-04-17)
 
-- chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+
+
+
+
 
 ## 5.0.0 (2020-04-17)
 
-- chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+
+
+
+
 
 ## 4.8.0 (2020-04-17)
 
-- feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
+
+
+
+
 
 ## 4.7.0 (2020-04-16)
 
-- feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+
+
+
+
 
 ## 4.6.0 (2020-04-16)
 
-- feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+
+
+
+
 
 ## 4.5.0 (2020-04-14)
 
-- feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+
+
+
+
 
 ## <small>4.4.1 (2020-04-13)</small>
 
-- chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+
+
+
+
 
 ## 4.4.0 (2020-04-13)
 
-- feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+
+
+
+
 
 ## <small>4.3.1 (2020-04-13)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## 4.3.0 (2020-04-10)
 
-- feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+
+
+
+
 
 ## <small>4.2.1 (2020-04-10)</small>
 
-- chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
+* chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
+
+
+
+
 
 ## 4.2.0 (2020-04-10)
 
-- feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+
+
+
+
 
 ## 4.1.0 (2020-04-09)
 
-- feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
+* feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
+
+
+
+
 
 ## 4.0.0 (2020-04-09)
 
-- chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+
+
+
+
 
 ## 3.26.0 (2020-04-08)
 
-- feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
+
+
+
+
 
 ## <small>3.25.1 (2020-04-07)</small>
 
-- Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
+
+
+
+
 
 ## 3.25.0 (2020-04-07)
 
-- feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+
+
+
+
 
 ## 3.24.0 (2020-04-07)
 
-- feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
+* feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
+
+
+
+
 
 ## 3.23.0 (2020-04-06)
 
-- feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0a)), closes [#679](https://github.com/RyzacInc/client-modules/issues/679)
+* feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0a)), closes [#679](https://github.com/RyzacInc/client-modules/issues/679)
+
+
+
+
 
 ## <small>3.22.2 (2020-04-06)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## <small>3.22.1 (2020-04-06)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
+
 
 ### Features
 
-- created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+
+
+
+
 
 # [3.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
 
+
 ### Features
 
-- create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+
+
+
+
 
 # [3.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
 
+
 ### Features
 
-- **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+
+
+
+
 
 ## [3.19.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.0...@codecademy/styleguide@3.19.1) (2020-04-01)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.19.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
+
 
 ### Features
 
-- renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+
+
+
+
 
 ## [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
 
+
 ### Bug Fixes
 
-- correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
+* correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
+
+
+
+
 
 # [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
 
+
 ### Features
 
-- allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+
+
+
+
 
 # [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
 
+
 ### Features
 
-- use export \* on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+
+
+
+
 
 # [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
+
 ### Features
 
-- add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+* add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+
+
+
+
 
 # [3.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
+
 ### Features
 
-- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-- add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
 
 # [3.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
 
+
 ### Features
 
-- add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-- add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+
+
+
+
 
 # [3.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
 
+
 ### Features
 
-- gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
 
 # [3.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-24)
 
+
 ### Features
 
-- gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
+
+
+
+
 
 ## [3.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## [3.11.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
 
 **Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
 
 ## [3.11.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
+
 
 ### Features
 
-- added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+
+
+
+
 
 ## [3.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
+
 
 ### Features
 
-- allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+
+
+
+
 
 ## [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
 
+
 ### Bug Fixes
 
-- fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+
+
+
+
 
 # [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
 
+
 ### Features
 
-- add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+
+
 
 # [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
 
+
 ### Features
 
-- added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+
+
 
 # [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
 
+
 ### Features
 
-- **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/RyzacInc/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/RyzacInc/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+
+
+
+
 
 ## [3.6.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
+
 
 ### Features
 
-- create Byline brand component ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+* create Byline  brand component  ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+
+
+
+
 
 ## [3.5.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # [3.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
+
 
 ### Features
 
-- initialize Brand Components package with Avatar component ([7d7c667](https://github.com/RyzacInc/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/RyzacInc/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+
+
+
+
 
 ## [3.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
 
+
 ### Bug Fixes
 
-- **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+
+
 
 ## [3.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 ## [3.4.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
 
 **Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
 
 ## [3.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
 
 **Note:** Version bump only for package @codecademy/styleguide
 
+
+
+
+
 # 3.4.0 (2020-01-27)
+
 
 ### Features
 
-- Remove storybook package aliases ([#610](https://github.com/RyzacInc/client-modules/issues/610)) ([317f7f7](https://github.com/RyzacInc/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
+* Remove storybook package aliases ([#610](https://github.com/RyzacInc/client-modules/issues/610)) ([317f7f7](https://github.com/RyzacInc/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
+
+
+
+
 
 ## [3.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.3.0...@codecademy/gamut-storybook@3.3.1) (2020-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 # [3.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
+
 
 ### Features
 
-- Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
+
+
+
+
 
 ## [3.2.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.2.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.4...@codecademy/gamut-storybook@3.2.5) (2020-01-10)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.2.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.3...@codecademy/gamut-storybook@3.2.4) (2020-01-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.2.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.2...@codecademy/gamut-storybook@3.2.3) (2020-01-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.1...@codecademy/gamut-storybook@3.2.2) (2020-01-07)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.0...@codecademy/gamut-storybook@3.2.1) (2020-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 # [3.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.12...@codecademy/gamut-storybook@3.2.0) (2020-01-03)
+
 
 ### Features
 
-- various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
+* various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
+
+
+
+
 
 ## [3.1.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.11...@codecademy/gamut-storybook@3.1.12) (2020-01-02)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.10...@codecademy/gamut-storybook@3.1.11) (2019-12-27)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.1.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.9...@codecademy/gamut-storybook@3.1.10) (2019-12-23)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.8...@codecademy/gamut-storybook@3.1.9) (2019-12-17)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.1.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.7...@codecademy/gamut-storybook@3.1.8) (2019-12-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.6...@codecademy/gamut-storybook@3.1.7) (2019-12-12)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.1.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.5...@codecademy/gamut-storybook@3.1.6) (2019-12-06)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.4...@codecademy/gamut-storybook@3.1.5) (2019-12-05)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.1.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.3...@codecademy/gamut-storybook@3.1.4) (2019-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.2...@codecademy/gamut-storybook@3.1.3) (2019-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.1.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.1...@codecademy/gamut-storybook@3.1.2) (2019-12-02)
+
 
 ### Bug Fixes
 
-- FormGroupDescription and Toggle accessibility ([#558](https://github.com/RyzacInc/client-modules/issues/558)) ([0d12c99](https://github.com/RyzacInc/client-modules/commit/0d12c99))
+* FormGroupDescription and Toggle accessibility ([#558](https://github.com/RyzacInc/client-modules/issues/558)) ([0d12c99](https://github.com/RyzacInc/client-modules/commit/0d12c99))
+
+
+
+
 
 ## [3.1.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.0...@codecademy/gamut-storybook@3.1.1) (2019-11-18)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 # [3.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.8...@codecademy/gamut-storybook@3.1.0) (2019-11-15)
+
 
 ### Features
 
-- Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e5))
+* Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e5))
+
+
+
+
 
 ## [3.0.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.7...@codecademy/gamut-storybook@3.0.8) (2019-11-13)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.6...@codecademy/gamut-storybook@3.0.7) (2019-11-11)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.5...@codecademy/gamut-storybook@3.0.6) (2019-11-04)
+
 
 ### Bug Fixes
 
-- Update storybook & Gamut component exports ([#496](https://github.com/RyzacInc/client-modules/issues/496)) ([5bed74c](https://github.com/RyzacInc/client-modules/commit/5bed74c))
+* Update storybook & Gamut component exports ([#496](https://github.com/RyzacInc/client-modules/issues/496)) ([5bed74c](https://github.com/RyzacInc/client-modules/commit/5bed74c))
+
+
+
+
 
 ## [3.0.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.4...@codecademy/gamut-storybook@3.0.5) (2019-11-01)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.3...@codecademy/gamut-storybook@3.0.4) (2019-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 ## [3.0.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.2...@codecademy/gamut-storybook@3.0.3) (2019-10-31)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.1...@codecademy/gamut-storybook@3.0.2) (2019-10-14)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
 
+
+
+
+
 ## [3.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.0...@codecademy/gamut-storybook@3.0.1) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-storybook
+
+
+
+
 
 # [3.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
 
