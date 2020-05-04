@@ -114,7 +114,6 @@ export const deprecatedColors = {
   portal: {
     blue: '#52b1db',
     darkblue: '#204056',
-    midnightblue: '#152b39',
     mint: '#34b3a0',
   },
   swatches: {
