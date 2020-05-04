@@ -16,7 +16,7 @@ h2.headingDark {
 }
 
 .swatchContainer {
-  width: max-content;
+  width: 100%;
 
   &:first-of-type {
     .swatch {
@@ -35,19 +35,32 @@ h2.headingDark {
 }
 
 .swatch {
-  height: 64px;
-  width: 104px;
+  position: relative;
+  display: flex;
+  height: 125px;
+  width: 100%;
+  max-width: 100%;
   border: 1px solid $color-gray-800;
   border-bottom: 0;
-  margin-right: 8px;
 }
 
-.name {
-  font-family: monospace;
-  margin-right: 16px;
+.swatchDetail {
+  height: 100%;
 }
 
-.hexcode {
+.swatch_meta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: $color-white;
+  padding: 5px 10px;
   font-weight: bold;
   font-size: 13px;
+  text-shadow: 1px 1px 2px $color-black;
+
+  @for $i from 0 to 3 {
+    &:nth-child(#{$i + 1}) {
+      transform: translate(0, percentage((-100 * $i)/ 100));
+    }
+  }
 }
