@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.5.0 (2020-05-04)
+
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d))
+
+
+
+
+
 ## 9.4.0 (2020-05-01)
 
 * feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))
