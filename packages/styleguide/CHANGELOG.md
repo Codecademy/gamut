@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.5.3 (2020-05-04)</small>
+
+* chore(Documentation): Foundation Documentation (#765) ([cdbbffa](https://github.com/RyzacInc/client-modules/commit/cdbbffa)), closes [#765](https://github.com/RyzacInc/client-modules/issues/765)
+
+
+
+
+
 ## <small>9.5.2 (2020-05-04)</small>
 
 * add mdx to ts loader (#772) ([dd55d66](https://github.com/RyzacInc/client-modules/commit/dd55d66)), closes [#772](https://github.com/RyzacInc/client-modules/issues/772)
