@@ -1,19 +1,22 @@
 import { LayoutGrid, Column } from '@codecademy/gamut/src';
 import * as icons from '@codecademy/gamut-icons';
-import { number, select } from '@storybook/addon-knobs';
+import { number, select, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import { selectableColors } from '../../helpers';
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
+
 import styles from './styles.module.scss';
 
-export default decoratedStories('Atoms', 'Icons');
+export default {
+  title: 'Core|Atoms/Icons',
+  decorators: [withKnobs],
+};
 
 const iconKeys = Object.keys(icons) as (keyof typeof icons)[];
 const iconEntries = Object.entries(icons);

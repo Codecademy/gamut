@@ -3,17 +3,22 @@ import React from 'react';
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 
 import styles from './styles.module.scss';
-import {
-  StoryTemplate,
-  StoryStatus,
-  decoratedStories,
-  StoryDescription,
-  decoratedStory,
-} from '../../Templating';
-import { number } from '@storybook/addon-knobs';
+
+import { number, withKnobs } from '@storybook/addon-knobs';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 
-export default decoratedStories('Atoms', ProgressBar);
+import {
+  decoratedStory,
+  StoryStatus,
+  StoryTemplate,
+  StoryDescription,
+} from '../../Templating';
+
+export default {
+  title: 'Core|Atoms/ProgressBar',
+  component: ProgressBar,
+  decorators: [withKnobs],
+};
 
 const bars = [
   {

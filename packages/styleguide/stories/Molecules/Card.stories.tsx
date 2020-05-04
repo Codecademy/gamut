@@ -1,8 +1,7 @@
 import React from 'react';
-import { select, boolean } from '@storybook/addon-knobs';
+import { select, boolean, withKnobs } from '@storybook/addon-knobs';
 import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/src';
 import {
-  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -12,7 +11,11 @@ import {
 const alignStyles = ['left', 'center', 'right'] as const;
 const borderStyles = ['dashed', 'solid', 'none'] as const;
 
-export default decoratedStories('Molecules', 'Card');
+export default {
+  title: 'Core|Molecules/Card',
+  component: 'Card',
+  decorators: [withKnobs],
+};
 
 export const card = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

@@ -8,16 +8,20 @@ import {
   Container,
 } from '@codecademy/gamut/src';
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
 const headingSizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
 
-export default decoratedStories('Foundations', 'Typography', Heading);
+export default {
+  title: 'Core|Foundations/Typograph/Heading',
+  component: Heading,
+  decorators: [withKnobs],
+};
 
 export const headingSizePairings = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
