@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.1.1 (2020-05-04)</small>
+
+* Add XL size to class templating and types (#768) ([8c2c717](https://github.com/RyzacInc/client-modules/commit/8c2c717)), closes [#768](https://github.com/RyzacInc/client-modules/issues/768)
+
+
+
+
+
 ## 3.1.0 (2020-04-29)
 
 * feat(headertab): move more header components into gamut (#740) ([9c555ef](https://github.com/RyzacInc/client-modules/commit/9c555ef)), closes [#740](https://github.com/RyzacInc/client-modules/issues/740)

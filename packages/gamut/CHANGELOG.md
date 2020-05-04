@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.4 (2020-05-04)</small>
+
+* Add XL size to class templating and types (#768) ([8c2c717](https://github.com/RyzacInc/client-modules/commit/8c2c717)), closes [#768](https://github.com/RyzacInc/client-modules/issues/768)
+
+
+
+
+
 ## <small>7.4.3 (2020-05-01)</small>
 
 * fix(Gamut): Removed unnecessary useEffect registers in GridForm (#767) ([529878e](https://github.com/RyzacInc/client-modules/commit/529878e)), closes [#767](https://github.com/RyzacInc/client-modules/issues/767)
