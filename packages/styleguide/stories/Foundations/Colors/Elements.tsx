@@ -21,18 +21,6 @@ export const getSassVariableName = (
   return `$color-${parseCamelCase(variableSuffix)}`;
 };
 
-export const CopyButton: React.FC<ButtonProps & { copyValue: string }> = ({
-  children,
-  copyValue,
-  ...props
-}) => {
-  return (
-    <Button {...props} onClick={() => navigator.clipboard.writeText(copyValue)}>
-      {children}
-    </Button>
-  );
-};
-
 export const Swatch: React.FC<{ name: string; hex: string }> = ({
   name,
   hex,
@@ -51,18 +39,8 @@ export const Swatch: React.FC<{ name: string; hex: string }> = ({
           align="center"
           justify="spaceAround"
         >
-          <span className={styles.name}>{name}</span>
-          <CopyButton
-            className={styles.swatchButton}
-            flat
-            theme="white"
-            caps
-            outline
-            copyValue={name}
-          >
-            Copy Name
-          </CopyButton>
-          <span className={styles.hexcode}>{hex}</span>
+          <span className={styles.swatch_meta}>{name}</span>
+          <span className={styles.swatch_meta}>{hex}</span>
         </Container>
       </Container>
     </Container>

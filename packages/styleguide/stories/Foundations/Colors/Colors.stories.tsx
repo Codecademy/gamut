@@ -55,7 +55,7 @@ export const Colors = decoratedStory(() => (
               Brand {startCase(color)}
             </Heading>
             <Swatch
-              name={`color-${parseCamelCase(color)}`}
+              name={`$color-${parseCamelCase(color)}`}
               hex={brandColors[color]}
             />
           </Container>
@@ -70,7 +70,7 @@ export const Colors = decoratedStory(() => (
               {parseCamelCase(`color-${color}`)}
             </Heading>
             <Swatch
-              name={`color-${parseCamelCase(color)}`}
+              name={`$color-${parseCamelCase(color)}`}
               hex={baseColors[color]}
             />
           </Container>
