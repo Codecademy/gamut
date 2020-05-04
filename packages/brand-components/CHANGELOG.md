@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.5.0 (2020-05-04)
+
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/Codecademy/client-modules/commit/20ee79d))
+
+
+
+
+
 ## <small>1.4.1 (2020-05-01)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components
