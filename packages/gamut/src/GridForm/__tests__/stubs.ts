@@ -4,6 +4,8 @@ import {
   GridFormSelectField,
   GridFormTextField,
   GridFormTextAreaField,
+  GridFormRadioGroupField,
+  GridFormRadioOption,
 } from '../types';
 
 export const stubCheckboxField: GridFormCheckboxField = {
@@ -13,22 +15,22 @@ export const stubCheckboxField: GridFormCheckboxField = {
   type: 'checkbox',
 };
 
-export const stubRadioGroupOptions = [
+export const stubRadioGroupOptions: GridFormRadioOption[] = [
   {
-    name: 'Blue Team',
+    label: 'Blue Team',
     value: 'blue',
   },
   {
-    name: 'Red Team',
+    label: 'Red Team',
     value: 'red',
   },
 ];
 
-export const stubRadioGroup = {
+export const stubRadioGroupField: GridFormRadioGroupField = {
   label: 'Stub Radio Group',
   options: stubRadioGroupOptions,
   name: 'stub-radio-group',
-  type: 'radio',
+  type: 'radio-group',
 };
 
 export const stubSelectOptions = ['aaa', 'bbb'];

@@ -3,6 +3,7 @@ import React from 'react';
 
 import {
   stubFileField,
+  stubRadioGroupField,
   stubSelectField,
   stubTextField,
   stubTextareaField,
@@ -55,7 +56,7 @@ describe('GridFormInputGroup', () => {
 
   it('renders a radio group when the field type is radio-group', () => {
     const { wrapped } = renderComponent({
-      field: stubSelectField,
+      field: stubRadioGroupField,
     });
 
     expect(wrapped.find('input[type="radio"]')).toHaveLength(2);
