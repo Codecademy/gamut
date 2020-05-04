@@ -5,6 +5,7 @@ export type ResponsiveProperty<T> =
       sm?: T;
       md?: T;
       lg?: T;
+      xl?: T;
     };
 
 export type OptionalResponsiveProperty<T> =
@@ -14,4 +15,5 @@ export type OptionalResponsiveProperty<T> =
       sm?: T;
       md?: T;
       lg?: T;
+      xl?: T;
     };
