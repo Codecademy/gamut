@@ -23,7 +23,7 @@ const types = [
 ] as const;
 
 export default {
-  title: 'Brand|Atoms/Logo',
+  title: 'Labs + Brand|Atoms/Logo',
   component: Logo,
   decorators: [withKnobs],
 };

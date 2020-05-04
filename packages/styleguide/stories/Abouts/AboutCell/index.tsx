@@ -23,9 +23,9 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   kind,
   parent,
   story = 'About',
-  title = kind,
+  title = kind || parent,
 }) => {
-  const kindLink = [parent, kind].join('|');
+  const kindLink = [parent, kind].filter(Boolean).join('|');
   return (
     <Column className={styles.aboutCell} size={{ xs: 12, sm: 6, md: 4 }}>
       <h2 className={styles.heading}>

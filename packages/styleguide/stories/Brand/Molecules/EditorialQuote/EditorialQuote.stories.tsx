@@ -5,21 +5,23 @@ import {
   Column,
 } from '@codecademy/gamut/src';
 import { EditorialQuote } from '@codecademy/brand-components/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import styles from './styles.module.scss';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../../../Templating';
 
-export default decoratedStories('Brand', 'Editorial Molecules', EditorialQuote);
-
+export default {
+  title: 'Labs + Brand|Molecules/EditorialImage',
+  component: EditorialQuote,
+  decorators: [withKnobs],
+};
 export const editorialQuote = decoratedStory('Editorial Quote', () => (
   <StoryTemplate status={StoryStatus.Ready} theme={VisualTheme.DarkMode} wide>
     <StoryDescription>

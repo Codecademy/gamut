@@ -10,7 +10,7 @@ import {
 } from '../../Templating';
 
 export default {
-  title: 'Brand|Atoms/Quote',
+  title: 'Labs + Brand|Atoms/Quote',
   component: Quote,
   decorators: [withKnobs],
 };
