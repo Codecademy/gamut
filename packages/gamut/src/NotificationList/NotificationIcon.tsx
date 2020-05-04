@@ -37,7 +37,7 @@ export type NotificationIconProps = {
   imageUrl?: string;
 };
 
-export const NotificationIcon: React.FC<NotificationIconProps> = props => (
+export const NotificationIcon: React.FC<NotificationIconProps> = (props) => (
   <div className={s.iconContainer}>{renderIcon(props)}</div>
 );
 

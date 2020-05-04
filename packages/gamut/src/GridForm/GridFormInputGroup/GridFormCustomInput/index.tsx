@@ -29,7 +29,7 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
         error,
         field,
         register,
-        setValue: value => setValue(field.name, value),
+        setValue: (value) => setValue(field.name, value),
       })}
     </>
   );

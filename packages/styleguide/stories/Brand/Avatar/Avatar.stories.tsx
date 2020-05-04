@@ -15,7 +15,7 @@ export default decoratedStories('Brand', Avatar);
 
 export const avatar = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
-    {theme => (
+    {(theme) => (
       <>
         <StoryDescription>
           Small, circular profile photo that includes a colored drop shadow.
