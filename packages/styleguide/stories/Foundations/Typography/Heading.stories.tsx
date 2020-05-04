@@ -2,7 +2,6 @@ import React from 'react';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 import {
   FontSizes,
-  HeadingTags,
   LayoutGrid,
   Column,
   Heading,
