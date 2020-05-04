@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/brand-components",
   "description": "Brand component library for Codecademy",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
