@@ -27,7 +27,7 @@ const matchesOrigin = (href: string) => {
   return false;
 };
 
-const Anchor: React.FC<AnchorProps> = props => {
+const Anchor: React.FC<AnchorProps> = (props) => {
   const anchorProps = {
     ...props,
     target: '_blank',

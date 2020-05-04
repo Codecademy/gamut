@@ -18,30 +18,21 @@ describe('<RadioGroup>', () => {
   );
 
   it('sets the htmlFor prop on the child', () => {
-    expect(
-      wrapper
-        .find('Radio')
-        .first()
-        .prop('htmlFor')
-    ).toEqual('what-salad-maker-do-you-prefer-0');
+    expect(wrapper.find('Radio').first().prop('htmlFor')).toEqual(
+      'what-salad-maker-do-you-prefer-0'
+    );
   });
 
   it('sets the onChange prop on the child', () => {
-    expect(
-      wrapper
-        .find('Radio')
-        .first()
-        .prop('onChange')
-    ).toEqual(onChangeCallback);
+    expect(wrapper.find('Radio').first().prop('onChange')).toEqual(
+      onChangeCallback
+    );
   });
 
   it('sets the name prop on the child', () => {
-    expect(
-      wrapper
-        .find('Radio')
-        .first()
-        .prop('name')
-    ).toEqual('what-salad-maker-do-you-prefer');
+    expect(wrapper.find('Radio').first().prop('name')).toEqual(
+      'what-salad-maker-do-you-prefer'
+    );
   });
 
   it('sets any additional props on the outer div', () => {

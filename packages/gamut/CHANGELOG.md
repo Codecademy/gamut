@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.5 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
+
+
+
+
+
 ## <small>7.4.4 (2020-05-04)</small>
 
 * Add XL size to class templating and types (#768) ([8c2c717](https://github.com/RyzacInc/client-modules/commit/8c2c717)), closes [#768](https://github.com/RyzacInc/client-modules/issues/768)

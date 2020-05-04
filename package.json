@@ -13,7 +13,7 @@
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
-    "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
+    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn lerna run verify",
@@ -25,9 +25,8 @@
     "deploy": "gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx,json,css,scss}": [
-      "prettier --ignore-path .eslintignore --write",
-      "git add"
+    "**/*.{mdx,js,ts,tsx,json,css,scss}": [
+      "prettier --ignore-path .prettierignore --write"
     ]
   },
   "repository": {
@@ -67,14 +66,14 @@
     "enzyme-adapter-react-16": "1.15.2",
     "enzyme-to-json": "3.3.5",
     "eslint": "5.16.0",
-    "husky": "4.0.10",
+    "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom": "24.9.0",
     "jest-environment-jsdom-global": "1.2.0",
-    "lint-staged": "8.1.5",
+    "lint-staged": "10.2.2",
     "mutationobserver-shim": "^0.3.3",
-    "prettier": "1.19.1",
+    "prettier": "2.0.5",
     "react": "16.12.0",
     "react-docgen-typescript-loader": "3.6.0",
     "react-dom": "16.12.0",

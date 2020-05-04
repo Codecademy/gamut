@@ -24,30 +24,10 @@ describe('Accessible Tabs', () => {
       </Tabs>
     );
 
-    expect(
-      (wrapper
-        .find(Tab)
-        .at(0)
-        .props() as any).active
-    ).toBe(true);
-    expect(
-      (wrapper
-        .find('.tabPanel')
-        .at(0)
-        .props() as any).active
-    ).toBe(true);
-    expect(
-      (wrapper
-        .find(Tab)
-        .at(1)
-        .props() as any).active
-    ).toBe(false);
-    expect(
-      (wrapper
-        .find('.tabPanel')
-        .at(1)
-        .props() as any).active
-    ).toBe(false);
+    expect((wrapper.find(Tab).at(0).props() as any).active).toBe(true);
+    expect((wrapper.find('.tabPanel').at(0).props() as any).active).toBe(true);
+    expect((wrapper.find(Tab).at(1).props() as any).active).toBe(false);
+    expect((wrapper.find('.tabPanel').at(1).props() as any).active).toBe(false);
 
     const wrapper2 = shallow(
       <Tabs config={generateTabConfig(2, 1)}>
@@ -56,30 +36,12 @@ describe('Accessible Tabs', () => {
       </Tabs>
     );
 
-    expect(
-      (wrapper2
-        .find(Tab)
-        .at(0)
-        .props() as any).active
-    ).toBe(false);
-    expect(
-      (wrapper2
-        .find('.tabPanel')
-        .at(0)
-        .props() as any).active
-    ).toBe(false);
-    expect(
-      (wrapper2
-        .find(Tab)
-        .at(1)
-        .props() as any).active
-    ).toBe(true);
-    expect(
-      (wrapper2
-        .find('.tabPanel')
-        .at(1)
-        .props() as any).active
-    ).toBe(true);
+    expect((wrapper2.find(Tab).at(0).props() as any).active).toBe(false);
+    expect((wrapper2.find('.tabPanel').at(0).props() as any).active).toBe(
+      false
+    );
+    expect((wrapper2.find(Tab).at(1).props() as any).active).toBe(true);
+    expect((wrapper2.find('.tabPanel').at(1).props() as any).active).toBe(true);
   });
 
   it('does not render the contents of hidden tabs', () => {
@@ -90,20 +52,12 @@ describe('Accessible Tabs', () => {
       </Tabs>
     );
 
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(0)
-        .children()
-        .html()
-    ).toBe('<div>Tab 1</div>');
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .at(1)
-        .children()
-        .html()
-    ).toBe('<div></div>');
+    expect(wrapper.find('.tabPanel').at(0).children().html()).toBe(
+      '<div>Tab 1</div>'
+    );
+    expect(wrapper.find('.tabPanel').at(1).children().html()).toBe(
+      '<div></div>'
+    );
   });
 
   it('Shows the correct tab panel on click, with proper tab highlighted via animated underline', () => {
@@ -116,34 +70,16 @@ describe('Accessible Tabs', () => {
 
     // highlight first tab + show first tab panel initially
     expect(
-      wrapper
-        .find(Tab)
-        .first()
-        .find('[aria-selected]')
-        .props()['aria-selected']
+      wrapper.find(Tab).first().find('[aria-selected]').props()['aria-selected']
     ).toBe(true);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .first()
-        .props().style
-    ).toBe(undefined);
+    expect(wrapper.find('.tabPanel').first().props().style).toBe(undefined);
 
     expect(
-      wrapper
-        .find(Tab)
-        .last()
-        .find('[aria-selected]')
-        .props()['aria-selected']
+      wrapper.find(Tab).last().find('[aria-selected]').props()['aria-selected']
     ).toBe(false);
 
     expect(
-      wrapper
-        .find(TabPanel)
-        .last()
-        .children()
-        .at(0)
-        .props().style.display
+      wrapper.find(TabPanel).last().children().at(0).props().style.display
     ).toBe('none');
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '0%',
@@ -151,39 +87,20 @@ describe('Accessible Tabs', () => {
     });
 
     // now the second tab is active
-    wrapper
-      .find(Tab)
-      .last()
-      .simulate('focus');
+    wrapper.find(Tab).last().simulate('focus');
 
     expect(
-      wrapper
-        .find(Tab)
-        .first()
-        .find('[aria-selected]')
-        .props()['aria-selected']
+      wrapper.find(Tab).first().find('[aria-selected]').props()['aria-selected']
     ).toBe(false);
     expect(
-      wrapper
-        .find(TabPanel)
-        .first()
-        .children()
-        .at(0)
-        .props().style.display
+      wrapper.find(TabPanel).first().children().at(0).props().style.display
     ).toBe('none');
     expect(
-      wrapper
-        .find(Tab)
-        .last()
-        .find('[aria-selected]')
-        .props()['aria-selected']
+      wrapper.find(Tab).last().find('[aria-selected]').props()['aria-selected']
     ).toBe(true);
-    expect(
-      wrapper
-        .find('.tabPanel')
-        .last()
-        .props().style.display
-    ).toBe(undefined);
+    expect(wrapper.find('.tabPanel').last().props().style.display).toBe(
+      undefined
+    );
     expect(wrapper.find('.tabIndicator').props().style).toEqual({
       left: '50%',
       width: '50%',
@@ -198,10 +115,7 @@ describe('Accessible Tabs', () => {
         <div>Tab 2</div>
       </Tabs>
     );
-    wrapper
-      .find(Tab)
-      .last()
-      .simulate('focus');
+    wrapper.find(Tab).last().simulate('focus');
 
     expect(onChange.mock.calls.length).toBe(1);
   });
