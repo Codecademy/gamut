@@ -1,0 +1,58 @@
+@import "~styles/cc";
+
+ol {
+  display: none;
+
+  li {
+    display: inline;
+  }
+
+  button {
+    border: 0;
+
+    &:disabled {
+      color: $color-gray-900;
+    }
+  }
+
+  .chevron {
+    color: $color-gray-400;
+    margin: 0 18px -6px;
+  }
+}
+
+.visited {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.current {
+  font-weight: bold;
+  font-color: $color-gray-900;
+}
+
+.remaining {
+  &:disabled {
+    color: $color-gray-400;
+  }
+}
+
+@include md-viewport {
+  ol {
+    display: block;
+    margin: 0;
+  }
+}
+
+.wrapper {
+  display: none;
+}
+
+@include md-viewport {
+  .wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
