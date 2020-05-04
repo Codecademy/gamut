@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.5.2 (2020-05-04)</small>
+
+* add mdx to ts loader (#772) ([dd55d66](https://github.com/RyzacInc/client-modules/commit/dd55d66)), closes [#772](https://github.com/RyzacInc/client-modules/issues/772)
+
+
+
+
+
 ## <small>9.5.1 (2020-05-04)</small>
 
 * chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
