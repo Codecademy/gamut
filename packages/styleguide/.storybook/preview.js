@@ -1,5 +1,9 @@
 import { addParameters } from '@storybook/react';
 import { create } from '@storybook/theming';
+import prettier from 'prettier/standalone';
+import prettierConfig from '@codecademy/prettier-config';
+import parserTypescript from 'prettier/parser-typescript';
+
 import './decorators/wrapper';
 
 const gamutTheme = create({
@@ -33,5 +37,14 @@ addParameters({
     config: {},
     options: {},
     manual: true,
+  },
+  docs: {
+    transformSource: (src, storyId) => {
+      return prettier.format(src, {
+        ...prettierConfig,
+        parser: 'typescript',
+        plugins: [parserTypescript],
+      });
+    },
   },
 });

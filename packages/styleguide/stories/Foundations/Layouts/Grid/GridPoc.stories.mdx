@@ -1,0 +1,74 @@
+import { Meta, Preview, Story, Props } from '@storybook/addon-docs/blocks';
+import { select, withKnobs } from '@storybook/addon-knobs';
+import { LayoutGrid, Column } from '@codecademy/gamut/src';
+import { Container, Content } from './Elements';
+
+<Meta
+  title="Test|Grid"
+  component={LayoutGrid}
+  decorators={[withKnobs]}
+  options={{
+    argTypes: {
+      columnGap: { type: 'string', default: 'md' },
+    },
+    knobs: {
+      escapeHTML: false,
+    },
+  }}
+/>
+
+# LayoutGrid
+
+A flexible grid that can support arbitrary rows of content, each of
+which snaps to assuming 12 "units" of width. Cells in the rows are
+stored as `<Column>`s that have a grid-specified gap
+between them.
+
+Row and column gaps can be configured in a responsive way. For example, you might
+have a particular set of gaps at small viewports and bigger ones on large viewports.
+
+<Preview withSource="open">
+  <Story name="LayoutGrid">
+    {(args) => (
+      <Container>
+        <LayoutGrid {...args}>
+          <Column size={12}>
+            <Content />
+          </Column>
+          <Column size={3}>
+            <Content />
+          </Column>
+          <Column size={6}>
+            <Content />
+          </Column>
+          <Column size={3}>
+            <Content />
+          </Column>
+        </LayoutGrid>
+      </Container>
+    )}
+  </Story>
+</Preview>
+
+<Props story="LayoutGrid" of={LayoutGrid} />
+
+# Column
+
+Columns are the basic layout providers of LayoutGrid. Where `<LayoutGrid>` defines the space,
+individual `<Column>`s determine how that space is allocated.
+
+<Preview withSource="open">
+  <Story name="Column">
+    {(args) => (
+      <Container>
+        <LayoutGrid>
+          <Column {...args}>
+            <Content />
+          </Column>
+        </LayoutGrid>
+      </Container>
+    )}
+  </Story>
+</Preview>
+
+<Props of={Column} />
