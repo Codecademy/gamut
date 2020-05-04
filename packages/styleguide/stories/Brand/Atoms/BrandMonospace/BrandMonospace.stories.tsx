@@ -13,7 +13,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs|Atoms/BrandMonospace',
+  title: 'Brand|Atoms/BrandMonospace',
   component: BrandMonospace,
   decorators: [withKnobs],
 };

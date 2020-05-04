@@ -11,7 +11,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs|Atoms/Avatar',
+  title: 'Brand|Atoms/Avatar',
   component: Avatar,
   decorators: [withKnobs],
 };

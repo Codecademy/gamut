@@ -16,7 +16,7 @@ import {
 } from '../../Templating';
 
 export default {
-  title: 'Labs|Molecules/EditorialImage',
+  title: 'Brand|Molecules/EditorialImage',
   component: EditorialImage,
   decorators: [withKnobs],
 };

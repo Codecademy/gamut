@@ -6,7 +6,7 @@ import React from 'react';
 import { decoratedStory } from '../../Templating';
 
 export default {
-  title: 'Labs|Molecules/Testimonial',
+  title: 'Brand|Molecules/Testimonial',
   component: Testimonial,
   decorators: [withKnobs],
 };

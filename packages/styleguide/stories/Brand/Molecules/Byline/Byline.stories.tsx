@@ -11,7 +11,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs|Molecules/ByLine',
+  title: 'Brand|Molecules/ByLine',
   component: Byline,
   decorators: [withKnobs],
 };
