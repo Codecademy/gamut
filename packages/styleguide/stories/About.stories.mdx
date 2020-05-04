@@ -24,8 +24,17 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
 <LayoutGrid className={styles.grid} columnGap="lg" rowGap="lg">
   <AboutCell
     emoji="☀️"
-    examples={['Colors', 'Layouts']}
-    parent="Core"
+    examples={[
+      {
+        name: 'Colors',
+        kind: 'Foundations',
+      },
+      {
+        name: 'Layouts',
+        kind: 'Foundations',
+      },
+    ]}
+    category="Core"
     kind="Foundations"
   >
     Foundations are the abstract concepts our system is built on: colors,
@@ -33,8 +42,17 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
   </AboutCell>
   <AboutCell
     emoji="⚛️"
-    examples={['Button', 'Toggle']}
-    parent="Core"
+    examples={[
+      {
+        name: 'Button',
+        kind: 'Atoms',
+      },
+      {
+        name: 'Toggle',
+        kind: 'Atoms',
+      },
+    ]}
+    category="Core"
     kind="Atoms"
   >
     Atoms are our basic building block components. They are the most granular,
@@ -42,26 +60,67 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
   </AboutCell>
   <AboutCell
     emoji="🧬"
-    examples={['Alert', 'NotificationList']}
-    parent="Core"
+    examples={[
+      {
+        name: 'Alert',
+        kind: 'Molecules',
+      },
+      {
+        name: 'NotificationList',
+        kind: 'Molecules',
+      },
+    ]}
+    category="Core"
     kind="Molecules"
   >
     Molecules are groups of atoms together. These consist of a few atoms
     combined for a small, self-contained design.
   </AboutCell>
-  <AboutCell emoji="🦠" examples={['GridForm']} parent="Core" kind="Organisms">
+  <AboutCell
+    emoji="🦠"
+    examples={[
+      {
+        name: 'GridForm',
+        kind: 'Organisms',
+      },
+    ]}
+    category="Core"
+    kind="Organisms"
+  >
     Organisms are groups of molecules joined together to form a relatively
     complex, distinct section of an interface.
   </AboutCell>
   <AboutCell
     emoji="💸"
-    examples={['Logo', 'Testimonial']}
-    parent="Labs + Brand"
+    examples={[
+      {
+        name: 'Logo',
+        kind: 'Atoms',
+      },
+      {
+        name: 'Testimonial',
+        kind: 'Molecules',
+      },
+    ]}
+    category="Labs + Brand"
   >
     Components across the design spectrum that are more experimental or tied to
     brand representation.
   </AboutCell>
-  <AboutCell emoji="🧠" examples={['FAQs', 'Writing Stories']} kind="Meta">
+  <AboutCell
+    emoji="🧠"
+    examples={[
+      {
+        name: 'FAQs',
+        kind: 'Meta',
+      },
+      {
+        name: 'Writing Stories',
+        kind: 'Meta',
+      },
+    ]}
+    kind="Meta"
+  >
     Documentation and associated links explaining our in-progress approach to a
     design system.
   </AboutCell>
