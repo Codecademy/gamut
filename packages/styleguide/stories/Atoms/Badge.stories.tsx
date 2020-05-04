@@ -1,15 +1,19 @@
-import { Badge } from '@codecademy/gamut/src';
 import React from 'react';
+import { withKnobs } from '@storybook/addon-knobs';
+import { Badge } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
-  StoryDescription,
-  StoryTemplate,
   StoryStatus,
+  StoryTemplate,
+  StoryDescription,
 } from '../Templating';
 
-export default decoratedStories('Atoms', Badge);
+export default {
+  title: 'Core|Atoms/Badge',
+  component: Badge,
+  decorators: [withKnobs],
+};
 
 export const badge = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

@@ -1,17 +1,22 @@
+import React from 'react';
+import { withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
-import { action } from '@storybook/addon-actions';
-import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStories('Organisms', GridForm);
+export default {
+  title: 'Core|Organisms/GridForm',
+  component: GridForm,
+  decorators: [withKnobs],
+};
 
 export const gridForm = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

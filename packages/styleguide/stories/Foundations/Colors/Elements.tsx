@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps, Container } from '@codecademy/gamut/src';
+import { Container } from '@codecademy/gamut/src';
 import styles from './styles.module.scss';
 
 export const parseCamelCase = (string: string) =>

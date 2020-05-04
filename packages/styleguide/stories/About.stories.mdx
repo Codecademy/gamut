@@ -22,27 +22,42 @@ This storybook represents components found in the Codecademy [Client Modules](ht
 Its organization roughly aligns with variations of <a href="https://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>.
 
 <LayoutGrid className={styles.grid} columnGap="lg" rowGap="lg">
-  <AboutCell emoji="☀️" examples={['Colors', 'Layouts']} kind="Foundations">
+  <AboutCell
+    emoji="☀️"
+    examples={['Colors', 'Layouts']}
+    parent="Core"
+    kind="Foundations"
+  >
     Foundations are the abstract concepts our system is built on: colors,
     spacing, responsive layouts, and the like.
   </AboutCell>
-  <AboutCell emoji="⚛️" examples={['Button', 'Toggle']} kind="Atoms">
+  <AboutCell
+    emoji="⚛️"
+    examples={['Button', 'Toggle']}
+    parent="Core"
+    kind="Atoms"
+  >
     Atoms are our basic building block components. They are the most granular,
     low-level visuals in our system.
   </AboutCell>
   <AboutCell
     emoji="🧬"
     examples={['Alert', 'NotificationList']}
+    parent="Core"
     kind="Molecules"
   >
     Molecules are groups of atoms together. These consist of a few atoms
     combined for a small, self-contained design.
   </AboutCell>
-  <AboutCell emoji="🦠" examples={['GridForm']} kind="Organisms">
+  <AboutCell emoji="🦠" examples={['GridForm']} parent="Core" kind="Organisms">
     Organisms are groups of molecules joined together to form a relatively
     complex, distinct section of an interface.
   </AboutCell>
-  <AboutCell emoji="💸" examples={['Logo', 'Testimonial']} kind="Brand">
+  <AboutCell
+    emoji="💸"
+    examples={['Logo', 'Testimonial']}
+    parent="Labs + Brand"
+  >
     Components across the design spectrum that are more experimental or tied to
     brand representation.
   </AboutCell>

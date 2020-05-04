@@ -2,14 +2,18 @@ import React from 'react';
 import { FormGroupDescription, FormGroupLabel } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
+  decoratedStory,
   StoryStatus,
   StoryTemplate,
   StoryDescription,
-  decoratedStory,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', 'Form Decorations');
+export default {
+  title: 'Core|Atoms/Form Decorations',
+  component: 'Form Decorations',
+  decorators: [withKnobs],
+};
 
 export const formInputs = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

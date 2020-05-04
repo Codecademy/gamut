@@ -1,5 +1,5 @@
 import React from 'react';
-import { select } from '@storybook/addon-knobs';
+import { select, withKnobs } from '@storybook/addon-knobs';
 import {
   LayoutGrid,
   Column,
@@ -8,7 +8,6 @@ import {
 } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -16,7 +15,11 @@ import {
 } from '../../../Templating';
 import { Content, Container } from './Elements';
 
-export default decoratedStories('Foundations', 'Layouts', 'Grid', Column);
+export default {
+  title: 'Core|Foundations/Layouts/Grid/Column',
+  component: Column,
+  decorators: [withKnobs],
+};
 
 export const basics = decoratedStory(() => {
   return (

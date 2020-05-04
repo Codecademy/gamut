@@ -2,15 +2,19 @@ import React from 'react';
 import Alert from '../../../../gamut/src/Alert';
 import { LayoutGrid, Column } from '../../../../gamut/src/Layout';
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
 import { BannerType } from '@codecademy/gamut/src/Alert/constants';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', Alert);
+export default {
+  title: 'Core|Molecules/Alert',
+  component: Alert,
+  decorators: [withKnobs],
+};
 
 export const alert = decoratedStory(() => (
   <LayoutGrid rowGap="xl">

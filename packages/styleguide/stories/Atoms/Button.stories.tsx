@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Button,
   ButtonBase,
@@ -7,15 +8,20 @@ import {
 } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import React from 'react';
 
 import {
-  StoryTemplate,
-  StoryStatus,
-  StoryDescription,
-  decoratedStories,
   decoratedStory,
+  StoryStatus,
+  StoryTemplate,
+  StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
+
+export default {
+  title: 'Core|Atoms/Button',
+  component: Button,
+  decorators: [withKnobs],
+};
 
 const brandThemeKeys = [
   'brand-red',
@@ -67,8 +73,6 @@ const renderInlineButton = (theme: string, variant: string) => (
     {theme}
   </Button>
 );
-
-export default decoratedStories('Atoms', Button);
 
 export const allButtonThemes = decoratedStory(() => {
   const variant = select('Variant', ['default', 'outline', 'flat'], 'default');

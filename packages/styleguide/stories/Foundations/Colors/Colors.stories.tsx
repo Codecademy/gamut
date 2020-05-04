@@ -1,5 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
+import { withKnobs } from '@storybook/addon-knobs';
 import { startCase } from 'lodash';
 
 import {
@@ -18,7 +19,6 @@ import {
 } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
@@ -27,7 +27,11 @@ import {
 import styles from './styles.module.scss';
 import { Swatch, SwatchPalette, parseCamelCase, objectKeys } from './Elements';
 
-export default decoratedStories('Foundations', 'Colors');
+export default {
+  title: 'Core|Foundations/Colors',
+  component: 'Colors',
+  decorators: [withKnobs],
+};
 
 const baseColors = {
   black: colors.black,

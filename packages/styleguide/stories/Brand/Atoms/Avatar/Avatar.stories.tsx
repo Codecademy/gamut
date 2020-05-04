@@ -1,17 +1,20 @@
 import { Avatar } from '@codecademy/brand-components/src';
-import { select, text } from '@storybook/addon-knobs';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
+import styles from './styles.module.scss';
 import {
-  decoratedStories,
   decoratedStory,
-  StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../../Templating';
-import styles from './styles.module.scss';
+  StoryDescription,
+} from '../../../Templating';
 
-export default decoratedStories('Brand', Avatar);
+export default {
+  title: 'Labs + Brand|Atoms/Avatar',
+  component: Avatar,
+  decorators: [withKnobs],
+};
 
 export const avatar = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

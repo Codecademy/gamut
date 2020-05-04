@@ -2,14 +2,18 @@ import React from 'react';
 import { Toggle } from '@codecademy/gamut/src';
 import { boolean } from '@storybook/addon-knobs';
 import {
-  decoratedStories,
   decoratedStory,
-  StoryTemplate,
   StoryStatus,
+  StoryTemplate,
   StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', Toggle);
+export default {
+  title: 'Core|Atoms/Toggle',
+  component: Toggle,
+  decorators: [withKnobs],
+};
 
 export const toggle = decoratedStory(() => {
   const checked = boolean('Checked', false);

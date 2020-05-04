@@ -3,15 +3,19 @@ import moment from 'moment';
 import React from 'react';
 
 import {
-  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
   decoratedStory,
 } from '../../Templating';
 import styles from './styles.module.scss';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', NotificationList);
+export default {
+  title: 'Core|Molecules/NotificationList',
+  component: NotificationList,
+  decorators: [withKnobs],
+};
 
 export const notificationList = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
