@@ -40,7 +40,7 @@ function getClassNames(props: ColProps) {
   }
 
   return (Object.keys(props) as (keyof typeof classMap & keyof typeof props)[])
-    .filter(key => classMap[key])
+    .filter((key) => classMap[key])
     .map(
       (key: keyof typeof classMap) =>
         style[
@@ -70,7 +70,7 @@ export type ColProps = ColSizing & {
   reverse?: boolean;
 };
 
-export const Col: React.FC<ColProps> = props => {
+export const Col: React.FC<ColProps> = (props) => {
   const className = getClassNames(props);
 
   return React.createElement(

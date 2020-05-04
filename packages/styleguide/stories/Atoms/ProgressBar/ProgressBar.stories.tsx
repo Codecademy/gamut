@@ -38,7 +38,7 @@ export const progressBar = decoratedStory(() => (
       percentage label if a font color is specified.
     </StoryDescription>
     <LayoutGrid className={styles.progressBarGrid} columnGap="sm" rowGap="sm">
-      {[0, 25, 50, 75, 100].map(percent =>
+      {[0, 25, 50, 75, 100].map((percent) =>
         bars.map(({ large, theme }) => (
           <Column key={[percent, large, theme].join()} size={6}>
             <ProgressBar large={large} percent={percent} theme={theme} />

@@ -11,8 +11,8 @@ import {
 } from '../Templating';
 
 const iconNames = Object.keys(iconStyles)
-  .filter(cn => cn.match('ikona-'))
-  .map(cn => cn.replace('ikona-', ''));
+  .filter((cn) => cn.match('ikona-'))
+  .map((cn) => cn.replace('ikona-', ''));
 
 export default decoratedStories('Atoms', 'IkonaIcons (Deprecated)');
 
@@ -26,7 +26,7 @@ export const ikonaIcons = decoratedStory(() => (
       <code>@codecademy/gamut-icons</code> package instead.
     </StoryDescription>
     <LayoutGrid columnGap="sm" rowGap="sm">
-      {iconNames.map(iconName => (
+      {iconNames.map((iconName) => (
         <Column size={1} key={iconName}>
           <IkonaIcon key={iconName} name={iconName} size={2} />
           <span>{iconName}</span>

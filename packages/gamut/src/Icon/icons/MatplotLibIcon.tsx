@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export const MatplotLibIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const MatplotLibIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg {...props}>
       <title>MatplotLib Icon</title>

@@ -14,7 +14,7 @@ export default decoratedStories('Brand', Quote);
 
 export const quote = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
-    {theme => (
+    {(theme) => (
       <>
         <StoryDescription>
           Emphasized text intended to be a direct quote, such as from a learner.
