@@ -48,7 +48,7 @@ export const Colors = decoratedStory(() => (
       buttons and as vibrant background colors.
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
-      {objectKeys(brandColors).map(color => (
+      {objectKeys(brandColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
@@ -63,7 +63,7 @@ export const Colors = decoratedStory(() => (
       ))}
     </LayoutGrid>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
-      {objectKeys(baseColors).map(color => (
+      {objectKeys(baseColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
@@ -79,8 +79,8 @@ export const Colors = decoratedStory(() => (
     </LayoutGrid>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
       {objectKeys(colors)
-        .filter(color => !excludedColors.includes(color))
-        .map(color => (
+        .filter((color) => !excludedColors.includes(color))
+        .map((color) => (
           <Column key={color} size={{ xs: 6, sm: 3 }}>
             <Container flex={false}>
               <Heading as="h2" fontSize="xs">
@@ -108,7 +108,7 @@ export const Editor = decoratedStory(() => {
         rowGap="md"
         columnGap="md"
       >
-        {objectKeys(editorColors).map(color => (
+        {objectKeys(editorColors).map((color) => (
           <Column key={color} size={{ xs: 6, sm: 3 }}>
             <Container flex={false}>
               <Heading
@@ -154,7 +154,7 @@ export const GamutDeprecated = decoratedStory(() => (
           />
         </Container>
       </Column>
-      {objectKeys(deprecatedGamutColors.swatches).map(color => (
+      {objectKeys(deprecatedGamutColors.swatches).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
@@ -189,7 +189,7 @@ export const PortalDeprecated = decoratedStory(() => (
           />
         </Container>
       </Column>
-      {objectKeys(deprecatedColors.swatches).map(color => (
+      {objectKeys(deprecatedColors.swatches).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">

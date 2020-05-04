@@ -13,12 +13,7 @@ describe('NotificationIcon', () => {
     };
 
     const wrapper = shallow(<NotificationIcon {...props} />);
-    expect(
-      wrapper
-        .find('img')
-        .first()
-        .prop('src')
-    ).toEqual(imageUrl);
+    expect(wrapper.find('img').first().prop('src')).toEqual(imageUrl);
   });
 
   it('can render a gamut icon', () => {

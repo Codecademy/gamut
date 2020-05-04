@@ -68,7 +68,7 @@ export type RowProps = {
   top?: ModificatorType;
 };
 
-export const Row: React.FC<RowProps> = props => {
+export const Row: React.FC<RowProps> = (props) => {
   return React.createElement(
     props.tagName || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })

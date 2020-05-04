@@ -15,7 +15,7 @@ export const decoratedStories = (
   ...nesting: (string | Function)[]
 ) => {
   const component =
-    nesting.find(component => component instanceof Function) || nesting[0];
+    nesting.find((component) => component instanceof Function) || nesting[0];
 
   return {
     component,

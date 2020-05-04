@@ -29,7 +29,7 @@ export const iconsDeprecated = decoratedStory('Icons (Deprecated)', () => (
       <code>@codecademy/gamut-icons</code> package instead.
     </StoryDescription>
     <LayoutGrid columnGap="sm" rowGap="lg">
-      {iconNames.map(iconName => (
+      {iconNames.map((iconName) => (
         <Column key={iconName} size={2}>
           <Icon key={iconName} name={iconName} />
           <span>{iconName}</span>

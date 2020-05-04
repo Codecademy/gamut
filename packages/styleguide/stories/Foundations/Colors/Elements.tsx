@@ -75,7 +75,7 @@ export const SwatchPalette: React.FC<{
 }> = ({ data, variablePrefix }) => {
   return (
     <>
-      {Object.keys(data).map(variableSuffix => {
+      {Object.keys(data).map((variableSuffix) => {
         const sassVariableName = getSassVariableName(
           variablePrefix,
           variableSuffix

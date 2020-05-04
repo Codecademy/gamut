@@ -2,7 +2,7 @@ import React, { SVGProps } from 'react';
 
 import { defaultIconProps } from '../defaultIconProps';
 
-export const AlexaIcon: React.FC<SVGProps<SVGSVGElement>> = props => {
+export const AlexaIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg {...props}>
       <title>Alexa Icon</title>

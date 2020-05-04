@@ -23,7 +23,7 @@ const htmlToReactParser = new HtmlToReact.Parser({
 
 const preprocessingInstructions = createPreprocessingInstructions(s);
 
-const isValidNode = function() {
+const isValidNode = function () {
   return true;
 };
 
@@ -60,7 +60,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     const Wrapper = inline ? 'span' : 'div';
 
-    const overrides = Object.keys(userOverrides).map(tagName => {
+    const overrides = Object.keys(userOverrides).map((tagName) => {
       if (tagName === 'CodeBlock') {
         return createCodeBlockOverride(tagName, userOverrides[tagName]);
       }
@@ -78,7 +78,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
-          component: props => (
+          component: (props) => (
             <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
           ),
           allowedAttributes: ['style'],
@@ -100,7 +100,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       ...defaultSanitizationConfig,
       allowedTags: [
         ...defaultSanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(tagName => tagName.toLowerCase()),
+        ...Object.keys(userOverrides).map((tagName) => tagName.toLowerCase()),
       ],
       allowedAttributes: {
         ...defaultSanitizationConfig.allowedAttributes,
@@ -109,7 +109,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
             ...acc,
             [tagName.toLowerCase()]: (
               userOverrides[tagName].allowedAttributes || []
-            ).map(attr => attr.toLowerCase()),
+            ).map((attr) => attr.toLowerCase()),
           };
         }, {}),
       },

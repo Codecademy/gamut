@@ -62,7 +62,7 @@ describe('NotificationList', () => {
 
     const expectedIds = ['6', '5', '4', '3', '2'];
     const receivedIds = renderedNotifications.map(
-      notifComponent => notifComponent.prop('notification').id
+      (notifComponent) => notifComponent.prop('notification').id
     );
 
     expect(receivedIds).toEqual(expectedIds);
@@ -81,10 +81,7 @@ describe('NotificationList', () => {
       <NotificationList notifications={[unreadNotification]} />
     );
     expect(
-      wrapper
-        .find(Notification)
-        .first()
-        .prop('notification').unread
+      wrapper.find(Notification).first().prop('notification').unread
     ).toEqual(true);
   });
 
@@ -97,10 +94,7 @@ describe('NotificationList', () => {
       />
     );
 
-    wrapper
-      .find(Notification)
-      .first()
-      .simulate('click');
+    wrapper.find(Notification).first().simulate('click');
     expect(mockCallBack.mock.calls.length).toEqual(1);
     expect(mockCallBack.mock.calls[0][0]).toStrictEqual(notifications[0]);
   });

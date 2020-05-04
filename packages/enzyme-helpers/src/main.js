@@ -1,6 +1,6 @@
 import React from 'react';
 
-const testId = id => `[data-testid="${id}"]`;
+const testId = (id) => `[data-testid="${id}"]`;
 
 export const createEnzymeHelpers = ({
   Component,
@@ -48,14 +48,14 @@ export const createEnzymeHelpers = ({
     },
 
     expectAllTestIds(ids) {
-      ids.forEach(id => helpers.expectTestIdCount(id, 1));
+      ids.forEach((id) => helpers.expectTestIdCount(id, 1));
     },
   };
 
   return helpers;
 };
 
-export const mockStore = data => ({
+export const mockStore = (data) => ({
   getState: () => data,
   dispatch: jest.fn(),
   subscribe: jest.fn(),
