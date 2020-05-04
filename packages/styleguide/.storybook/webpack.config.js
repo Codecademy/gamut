@@ -47,7 +47,7 @@ module.exports = ({ config }) => {
     (r) => r && r.test.test('test.js')
   );
   if (jsIndex > -1) {
-    config.module.rules[jsIndex].test = /\.(mjs|(j|t)sx?)$/;
+    config.module.rules[jsIndex].test = /\.(mdx|mjs|(j|t)sx?)$/;
     config.module.rules[jsIndex].include.push(
       path.resolve(__dirname, '../../../packages')
     );
@@ -60,6 +60,7 @@ module.exports = ({ config }) => {
       loader: 'react-docgen-typescript-loader',
       options: {
         tsconfigPath: path.resolve(__dirname, '../tsconfig.json'),
+        shouldExtractLiteralValuesFromEnum: true,
         propFilter(p) {
           if (p.parent && p.parent.fileName.match('node_modules')) {
             if (p.required) {
