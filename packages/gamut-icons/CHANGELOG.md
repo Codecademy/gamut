@@ -5,111 +5,59 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 2.3.0 (2020-04-20)
 
-* feat(Icons): Add initial streamline icons (#702) ([52d529e](https://github.com/RyzacInc/client-modules/commit/52d529e)), closes [#702](https://github.com/RyzacInc/client-modules/issues/702)
-
-
-
-
+- feat(Icons): Add initial streamline icons (#702) ([52d529e](https://github.com/RyzacInc/client-modules/commit/52d529e)), closes [#702](https://github.com/RyzacInc/client-modules/issues/702)
 
 ## <small>2.2.2 (2020-04-13)</small>
 
-* fix(Icon): Fixes type incongruence from compiled definitions  (#720) ([d09e758](https://github.com/RyzacInc/client-modules/commit/d09e758)), closes [#720](https://github.com/RyzacInc/client-modules/issues/720)
-
-
-
-
+- fix(Icon): Fixes type incongruence from compiled definitions (#720) ([d09e758](https://github.com/RyzacInc/client-modules/commit/d09e758)), closes [#720](https://github.com/RyzacInc/client-modules/issues/720)
 
 ## <small>2.2.1 (2020-04-06)</small>
 
-* fix(Build): Update lockfile and config file to include new template (#699) ([9060cd2](https://github.com/RyzacInc/client-modules/commit/9060cd2)), closes [#699](https://github.com/RyzacInc/client-modules/issues/699)
-
-
-
-
+- fix(Build): Update lockfile and config file to include new template (#699) ([9060cd2](https://github.com/RyzacInc/client-modules/commit/9060cd2)), closes [#699](https://github.com/RyzacInc/client-modules/issues/699)
 
 ## 2.2.0 (2020-04-06)
 
-* feat(Icons): Add named export to gamut icons and update SVGR (#697) ([9f783da](https://github.com/RyzacInc/client-modules/commit/9f783da)), closes [#697](https://github.com/RyzacInc/client-modules/issues/697)
-
-
-
-
+- feat(Icons): Add named export to gamut icons and update SVGR (#697) ([9f783da](https://github.com/RyzacInc/client-modules/commit/9f783da)), closes [#697](https://github.com/RyzacInc/client-modules/issues/697)
 
 ## [2.1.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.4...@codecademy/gamut-icons@2.1.5) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-
-
-
-
 ## [2.1.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.3...@codecademy/gamut-icons@2.1.4) (2020-01-08)
-
 
 ### Bug Fixes
 
-* re-enable icon title props ([#594](https://github.com/RyzacInc/client-modules/issues/594)) ([670a7f2](https://github.com/RyzacInc/client-modules/commit/670a7f2))
-
-
-
-
+- re-enable icon title props ([#594](https://github.com/RyzacInc/client-modules/issues/594)) ([670a7f2](https://github.com/RyzacInc/client-modules/commit/670a7f2))
 
 ## [2.1.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.2...@codecademy/gamut-icons@2.1.3) (2020-01-08)
 
-
 ### Bug Fixes
 
-* add missing narrative icon ([#593](https://github.com/RyzacInc/client-modules/issues/593)) ([4d039d0](https://github.com/RyzacInc/client-modules/commit/4d039d0))
-
-
-
-
+- add missing narrative icon ([#593](https://github.com/RyzacInc/client-modules/issues/593)) ([4d039d0](https://github.com/RyzacInc/client-modules/commit/4d039d0))
 
 ## [2.1.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.1...@codecademy/gamut-icons@2.1.2) (2020-01-07)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-
-
-
-
 ## [2.1.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.1.0...@codecademy/gamut-icons@2.1.1) (2020-01-06)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
 
-
-
-
-
 # [2.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.0.2...@codecademy/gamut-icons@2.1.0) (2020-01-03)
-
 
 ### Features
 
-* various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
-
-
-
-
+- various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
 
 ## [2.0.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.0.1...@codecademy/gamut-icons@2.0.2) (2019-12-27)
 
-
 ### Bug Fixes
 
-* Set default size on icons, fix colors on some icons ([#577](https://github.com/RyzacInc/client-modules/issues/577)) ([049d1dd](https://github.com/RyzacInc/client-modules/commit/049d1dd))
-
-
-
-
+- Set default size on icons, fix colors on some icons ([#577](https://github.com/RyzacInc/client-modules/issues/577)) ([049d1dd](https://github.com/RyzacInc/client-modules/commit/049d1dd))
 
 ## [2.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@2.0.0...@codecademy/gamut-icons@2.0.1) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
-
-
-
-
 
 # [2.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-icons@1.2.0...@codecademy/gamut-icons@2.0.0) (2019-10-02)
 

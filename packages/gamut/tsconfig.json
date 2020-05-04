@@ -1,11 +1,7 @@
 {
-    "extends": "../../tsconfig.json",
-    "include": [
-        "../../typings/*.d.ts",
-        "./src/**/*.ts",
-        "./src/**/*.tsx"
-    ],
-    "compilerOptions": {
-      "outDir": "./dist"
-    }
+  "extends": "../../tsconfig.json",
+  "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
+  "compilerOptions": {
+    "outDir": "./dist"
+  }
 }

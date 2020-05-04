@@ -5,67 +5,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 3.1.0 (2020-04-29)
 
-* feat(headertab): move more header components into gamut (#740) ([9c555ef](https://github.com/RyzacInc/client-modules/commit/9c555ef)), closes [#740](https://github.com/RyzacInc/client-modules/issues/740)
-
-
-
-
+- feat(headertab): move more header components into gamut (#740) ([9c555ef](https://github.com/RyzacInc/client-modules/commit/9c555ef)), closes [#740](https://github.com/RyzacInc/client-modules/issues/740)
 
 ## 3.0.0 (2020-04-17)
 
-* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
-
-
-
-
+- chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
 
 ## 2.3.0 (2020-04-17)
 
-* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
-
-
-
-
+- feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
 
 ## <small>2.2.13 (2020-04-17)</small>
 
-* Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
-
-
-
-
+- Removed easily replaceable deprecated gamut- colors (#716) ([9d52423](https://github.com/RyzacInc/client-modules/commit/9d52423)), closes [#716](https://github.com/RyzacInc/client-modules/issues/716)
 
 ## <small>2.2.12 (2020-04-16)</small>
 
-* Adds screen size variables and mixins (#731) ([512743d](https://github.com/RyzacInc/client-modules/commit/512743d)), closes [#731](https://github.com/RyzacInc/client-modules/issues/731)
-
-
-
-
+- Adds screen size variables and mixins (#731) ([512743d](https://github.com/RyzacInc/client-modules/commit/512743d)), closes [#731](https://github.com/RyzacInc/client-modules/issues/731)
 
 ## [2.2.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.10...@codecademy/gamut-styles@2.2.11) (2020-01-15)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ## [2.2.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.9...@codecademy/gamut-styles@2.2.10) (2019-12-12)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
 
-
-
-
-
 ## [2.2.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.8...@codecademy/gamut-styles@2.2.9) (2019-10-08)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
-
-
-
-
 
 ## [2.2.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-styles@2.2.5...@codecademy/gamut-styles@2.2.8) (2019-09-03)
 

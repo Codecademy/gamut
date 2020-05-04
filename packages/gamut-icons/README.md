@@ -1,6 +1,6 @@
 # Gamut Icons
 
-*UI Icons for the gamut component library*
+_UI Icons for the gamut component library_
 
 ## Adding an icon
 
@@ -14,5 +14,3 @@
 
 1. All icons must be square
 2. All Icons should ideally be designed inside of a 16x16 pixel grid
-
-

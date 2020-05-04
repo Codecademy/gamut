@@ -27,7 +27,7 @@ export type ButtonBaseProps = (
   onClick?: (event: object) => void;
 };
 
-export const ButtonBase: React.FC<ButtonBaseProps> = props => {
+export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
   const { href, className, link, onClick } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
   const propsToTransfer = omitProps(propKeys, restOfProps);

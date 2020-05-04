@@ -17,7 +17,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
-      selectOptions = options.map(option => (
+      selectOptions = options.map((option) => (
         <option key={option} value={option}>
           {option}
         </option>
