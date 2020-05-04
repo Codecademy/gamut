@@ -89,17 +89,17 @@ export const allButtonThemes = decoratedStory(() => {
         signups. Prefer <code>brand-blue</code> for generic actions.
       </StoryDescription>
       <div>
-        {brandThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {brandThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
       <br />
       Alert status themes
       <div>
-        {statusThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {statusThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
       <br />
       We also have legacy button colors floating around. Do not use these.
       <div>
-        {deprecatedThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {deprecatedThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
     </StoryTemplate>
   );

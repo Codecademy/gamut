@@ -51,7 +51,7 @@ This is a custom markdown component
     spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
     overrides={{
       CodeBlock: {
-        component: props => <code style={{ color: 'darkblue' }} {...props} />,
+        component: (props) => <code style={{ color: 'darkblue' }} {...props} />,
       },
       CustomElement: {
         component: ({ title }) => {

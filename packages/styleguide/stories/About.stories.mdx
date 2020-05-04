@@ -1,4 +1,4 @@
-import {  Column, LayoutGrid} from '@codecademy/gamut/src';
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
 import styles from './styles.module.scss';
@@ -8,7 +8,12 @@ import { AboutCell, AboutHeading } from './Abouts';
 
 <AboutHeading>Gamut</AboutHeading>
 
-<strong>The design system for Codecademy <span aria-label="sparkles" role="img">✨</span></strong>
+<strong>
+  The design system for Codecademy{' '}
+  <span aria-label="sparkles" role="img">
+    ✨
+  </span>
+</strong>
 
 Gamut components, styles, and utilities are the core of the Codecademy brand shared across its websites.
 They're most notably used on <a href="https://codecademy.com">codecademy.com</a> but are also found on our internal websites and tools, as well as on our mobile application.
@@ -19,51 +24,41 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
 <LayoutGrid className={styles.grid} columnGap="lg" rowGap="lg">
   <AboutCell
     emoji="☀️"
-    examples={["Colors", "Layouts"]}
+    examples={['Colors', 'Layouts']}
     parent="Core"
     kind="Foundations"
   >
-    Foundations are the abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.
+    Foundations are the abstract concepts our system is built on: colors,
+    spacing, responsive layouts, and the like.
   </AboutCell>
   <AboutCell
     emoji="⚛️"
-    examples={["Button", "Toggle"]}
+    examples={['Button', 'Toggle']}
     parent="Core"
     kind="Atoms"
   >
-    Atoms are our basic building block components.
-    They are the most granular, low-level visuals in our system.
+    Atoms are our basic building block components. They are the most granular,
+    low-level visuals in our system.
   </AboutCell>
   <AboutCell
     emoji="🧬"
-    examples={["Alert", "NotificationList"]}
+    examples={['Alert', 'NotificationList']}
     parent="Core"
     kind="Molecules"
   >
-    Molecules are groups of atoms together.
-    These consist of a few atoms combined for a small, self-contained design.
+    Molecules are groups of atoms together. These consist of a few atoms
+    combined for a small, self-contained design.
   </AboutCell>
-  <AboutCell
-    emoji="🦠"
-    examples={["GridForm"]}
-    parent="Core"
-    kind="Organisms"
-  >
+  <AboutCell emoji="🦠" examples={['GridForm']} parent="Core" kind="Organisms">
     Organisms are groups of molecules joined together to form a relatively
     complex, distinct section of an interface.
   </AboutCell>
-  <AboutCell
-    emoji="💸"
-    examples={["Logo", "Testimonial"]}
-    kind="Brand"
-  >
-    Components across the design spectrum that are more experimental or tied to brand representation.
+  <AboutCell emoji="💸" examples={['Logo', 'Testimonial']} kind="Brand">
+    Components across the design spectrum that are more experimental or tied to
+    brand representation.
   </AboutCell>
-  <AboutCell
-    emoji="🧠"
-    examples={["FAQs", "Writing Stories"]}
-    kind="Meta"
-  >
-    Documentation and associated links explaining our in-progress approach to a design system.
+  <AboutCell emoji="🧠" examples={['FAQs', 'Writing Stories']} kind="Meta">
+    Documentation and associated links explaining our in-progress approach to a
+    design system.
   </AboutCell>
 </LayoutGrid>

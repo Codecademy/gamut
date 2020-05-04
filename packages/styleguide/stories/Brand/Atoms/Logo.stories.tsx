@@ -37,7 +37,7 @@ export const logo = decoratedStory(() => (
       out appropriately.
     </StoryDescription>
     <LayoutGrid columnGap="sm" rowGap="sm">
-      {types.map(type => (
+      {types.map((type) => (
         <Column size={4} key={type}>
           <Logo height={256} type={type} width={256} />
         </Column>

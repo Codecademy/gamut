@@ -30,7 +30,7 @@ export const toolTip = decoratedStory(() => {
 
   return (
     <StoryTemplate status={StoryStatus.Ready}>
-      {theme => (
+      {(theme) => (
         <>
           <StoryDescription>
             Small piece of extra information triggered on the focus or hover of

@@ -12,7 +12,7 @@ export type FlexGridProps = {
   tagName?: string;
 };
 
-export const FlexGrid: React.FC<FlexGridProps> = props => {
+export const FlexGrid: React.FC<FlexGridProps> = (props) => {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 

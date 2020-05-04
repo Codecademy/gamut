@@ -52,7 +52,7 @@ export const headingSizePairings = decoratedStory(() => (
         </p>
       </Column>
 
-      {headingSizes.map(size => (
+      {headingSizes.map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="center">

@@ -80,7 +80,7 @@ export const gridForm = decoratedStory(() => (
           type: 'file',
           validation: {
             required: true,
-            validate: files => {
+            validate: (files) => {
               const { type } = files.item(0);
               const allowedTypes = [
                 'application/pdf',
@@ -136,7 +136,7 @@ export const gridForm = decoratedStory(() => (
           },
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -165,7 +165,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -185,7 +185,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -205,7 +205,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -225,7 +225,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -255,7 +255,7 @@ export const gridFormWithSubmitButtonColor = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -272,7 +272,7 @@ export const gridFormWithSubmitButtonColor = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -307,7 +307,7 @@ export const gridFormWithInlineSubmitButton = decoratedStory(() => (
           type: 'checkbox',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -329,7 +329,7 @@ export const gridFormWithInlineSubmitButton = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -365,7 +365,7 @@ export const gridFormWithCustomInput = decoratedStory(() => (
                 error={!!error}
                 id="custom-text-input"
                 type="text"
-                onChange={event => setValue(event.target.value)}
+                onChange={(event) => setValue(event.target.value)}
               />
               <span aria-label="Dancing person" role="img">
                 🕺
@@ -385,7 +385,7 @@ export const gridFormWithCustomInput = decoratedStory(() => (
           type: 'custom',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -423,7 +423,7 @@ export const gridFormWithPlaceholderText = decoratedStory(() => (
           type: 'email',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -455,7 +455,7 @@ export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
             onUpdate: setText,
           },
         ]}
-        onSubmit={async values => {
+        onSubmit={async (values) => {
           action('Form Submitted')(values);
         }}
         submit={{

@@ -42,7 +42,7 @@ export const baseTypography = decoratedStory(() => (
           <strong>{'<span>'}</strong> tags with defined size intervals
         </p>
       </Column>
-      {textSizes.map(size => (
+      {textSizes.map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="start">

@@ -69,7 +69,7 @@ const renderSwatch = (sassVariableName: string, hexcode: string) => {
 
 const renderSwatches = (data: any, variablePrefix: string) => {
   if (!data) debugger;
-  return Object.keys(data).map(variableSuffix => {
+  return Object.keys(data).map((variableSuffix) => {
     const sassVariableName = getSassVariableName(
       variablePrefix,
       variableSuffix
@@ -101,7 +101,7 @@ export const Colors = decoratedStory(() => (
       buttons and as vibrant background colors.
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md">
-      {objectKeys(brandColors).map(color => (
+      {objectKeys(brandColors).map((color) => (
         <Column key={color} size={3}>
           <h2 className={styles.heading}>Brand {startCase(color)}</h2>
           {renderSwatch(`color-${parseCamelCase(color)}`, brandColors[color])}
@@ -109,7 +109,7 @@ export const Colors = decoratedStory(() => (
       ))}
     </LayoutGrid>
     <Container className={styles.swatchesContainer}>
-      {objectKeys(baseColors).map(color => (
+      {objectKeys(baseColors).map((color) => (
         <div key={color}>
           <h2 className={styles.heading}>{parseCamelCase(`color-${color}`)}</h2>
           {renderSwatch(`color-${parseCamelCase(color)}`, baseColors[color])}
@@ -118,8 +118,8 @@ export const Colors = decoratedStory(() => (
     </Container>
     <Container>
       {objectKeys(colors)
-        .filter(color => !excludedColors.includes(color))
-        .map(color => (
+        .filter((color) => !excludedColors.includes(color))
+        .map((color) => (
           <div key={color}>
             <h2 className={styles.heading}>
               {parseCamelCase(`color-${color}`)}
@@ -138,7 +138,7 @@ export const Editor = decoratedStory(() => {
         The LE's code editor uses its own colors for text.
       </StoryDescription>
       <LayoutGrid className={styles.swatchesContainer} rowGap="md">
-        {objectKeys(editorColors).map(color => (
+        {objectKeys(editorColors).map((color) => (
           <Column key={color} size={3}>
             <h2 className={cx(styles.heading, styles.headingDark)}>
               Editor {startCase(color)}
@@ -171,7 +171,7 @@ export const GamutDeprecated = decoratedStory(() => (
         <h2 className={styles.heading}>Deprecated Gamut Base Colors</h2>
         {renderSwatches(deprecatedGamutColors.base, 'deprecated-gamut')}
       </div>
-      {objectKeys(deprecatedGamutColors.swatches).map(color => (
+      {objectKeys(deprecatedGamutColors.swatches).map((color) => (
         <div key={color}>
           <h2 className={styles.heading}>
             {parseCamelCase(`deprecated-gamut-${color}`)}
@@ -197,7 +197,7 @@ export const PortalDeprecated = decoratedStory(() => (
         <h2 className={styles.heading}>Deprecated portal base colors</h2>
         {renderSwatches(deprecatedColors.portal, 'deprecated')}
       </div>
-      {Object.keys(deprecatedColors.swatches).map(color => (
+      {Object.keys(deprecatedColors.swatches).map((color) => (
         <div key={color}>
           <h2 className={styles.heading}>{parseCamelCase(color)}</h2>
           {renderSwatches(
