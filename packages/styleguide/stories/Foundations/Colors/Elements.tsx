@@ -80,11 +80,7 @@ export const SwatchPalette: React.FC<{
           variablePrefix,
           variableSuffix
         );
-
-        const hexcode =
-          data[variableSuffix] === 'whitesmoke'
-            ? '#f5f5f5'
-            : data[variableSuffix];
+        const hexcode = data[variableSuffix];
 
         return (
           <Swatch

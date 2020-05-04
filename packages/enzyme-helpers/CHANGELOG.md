@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.1.10 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/Codecademy/client-modules/commit/2f012a1)), closes [#773](https://github.com/Codecademy/client-modules/issues/773)
+
+
+
+
+
 ## [1.1.9](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.8...@codecademy/enzyme-helpers@1.1.9) (2020-03-05)
 
 **Note:** Version bump only for package @codecademy/enzyme-helpers

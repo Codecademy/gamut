@@ -55,6 +55,8 @@ h2.headingDark {
 
 .swatchDetail {
   height: 100%;
+
+  &:focus,
   &:hover {
     .swatchButton {
       opacity: 1;
@@ -78,4 +80,5 @@ h2.headingDark {
   padding: 5px 10px;
   font-weight: bold;
   font-size: 13px;
+  text-shadow: 1px 1px 2px $color-black;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, FieldError } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -59,12 +59,6 @@ export function GridForm<
       {}
     ),
   });
-
-  useEffect(() => {
-    for (const field of fields) {
-      register({ name: field.name });
-    }
-  }, [fields, register]);
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
