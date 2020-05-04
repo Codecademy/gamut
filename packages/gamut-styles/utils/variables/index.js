@@ -181,16 +181,26 @@ export const grid = {
   cols: 12,
   gutterWidth: '16px',
   outerMargin: '16px',
+  maxContentWidth: '1440px',
   xsMin: '480px',
   smMin: '768px',
   mdMin: '1024px',
   lgMin: '1200px',
+  xlMin: '1440px',
 };
 
 export const legacyBreakpoints = {
   phone: '0',
   tablet: '736px',
   desktop: '960px',
+};
+
+export const breakpoints = {
+  xs: '480px',
+  sm: '768px',
+  md: '1024px',
+  lg: '1200px',
+  xl: '1440px',
 };
 
 export default {
@@ -201,5 +211,6 @@ export default {
   editorColors,
   effectColors,
   grid,
+  breakpoints,
   legacyBreakpoints,
 };
