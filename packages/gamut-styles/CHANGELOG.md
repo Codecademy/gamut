@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.3.0 (2020-05-05)
+
+* feat(Gamut): Created separate bucket for "Platform" colors (#778) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75)), closes [#778](https://github.com/RyzacInc/client-modules/issues/778)
+
+
+
+
+
 ## 3.2.0 (2020-05-05)
 
 * feat(gamut-styles): Added TypeScript .d.ts generation to gamut-styles (#775) ([39a64ec](https://github.com/RyzacInc/client-modules/commit/39a64ec)), closes [#775](https://github.com/RyzacInc/client-modules/issues/775)
