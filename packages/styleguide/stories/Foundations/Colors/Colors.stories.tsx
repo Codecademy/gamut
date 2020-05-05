@@ -9,6 +9,7 @@ import {
   deprecatedColors,
   editorColors,
   deprecatedGamutColors,
+  platformColors,
 } from '@codecademy/gamut-styles/utils/variables';
 import {
   LayoutGrid,
@@ -97,6 +98,31 @@ export const Colors = decoratedStory(() => (
             </Container>
           </Column>
         ))}
+    </LayoutGrid>
+  </StoryTemplate>
+));
+
+export const Platform = decoratedStory(() => (
+  <StoryTemplate status={StoryStatus.Ready} wide>
+    <StoryDescription>
+      Our Learning Environment ("LE") is, for now, an exception to the rule
+      about containing only brand and grid colors. It uses a selection of muted
+      grayish purples and a couple of mid-range minty greens.
+    </StoryDescription>
+    <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
+      {objectKeys(platformColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Platform {startCase(color)}
+            </Heading>
+            <SwatchPalette
+              variablePrefix={`platform-${color}`}
+              data={platformColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
     </LayoutGrid>
   </StoryTemplate>
 ));

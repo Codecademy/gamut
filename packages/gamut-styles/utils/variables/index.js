@@ -138,6 +138,24 @@ export const editorColors = {
   yellow: '#ffe083',
 };
 
+export const platformColors = {
+  mint: {
+    '500': '#37c3be',
+    '600': '#2c9c98',
+    '700': '#217572',
+  },
+  purple: {
+    '200': '#c3c1d7',
+    '300': '#a5a1c2',
+    '400': '#8782ae',
+    '500': '#69639a',
+    '600': '#544f7b',
+    '700': '#3f3b5c',
+    '800': '#2a283e',
+    '900': '#15141f',
+  },
+};
+
 export const deprecatedGamutColors = {
   base: {
     purple: '#69639a',
@@ -214,4 +232,5 @@ export default {
   grid,
   breakpoints,
   legacyBreakpoints,
+  platformColors,
 };

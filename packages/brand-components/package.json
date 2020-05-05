@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/brand-components",
   "description": "Brand component library for Codecademy",
-  "version": "1.5.2",
+  "version": "1.5.4",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -18,8 +18,8 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^7.4.5",
-    "@codecademy/gamut-styles": "^3.1.1",
+    "@codecademy/gamut": "^7.4.7",
+    "@codecademy/gamut-styles": "^3.3.0",
     "classnames": "^2.2.5"
   },
   "scripts": {
