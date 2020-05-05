@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.5.6 (2020-05-05)</small>
+
+* Fix Text Story directory (#779) ([d575e09](https://github.com/RyzacInc/client-modules/commit/d575e09)), closes [#779](https://github.com/RyzacInc/client-modules/issues/779)
+
+
+
+
+
 ## <small>9.5.5 (2020-05-05)</small>
 
 * Fix about links to allow nested linking (#776) ([e378fcb](https://github.com/RyzacInc/client-modules/commit/e378fcb)), closes [#776](https://github.com/RyzacInc/client-modules/issues/776)
