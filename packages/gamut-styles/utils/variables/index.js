@@ -230,4 +230,5 @@ export default {
   grid,
   breakpoints,
   legacyBreakpoints,
+  platformColors,
 };
