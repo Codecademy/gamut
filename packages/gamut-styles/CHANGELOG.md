@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 3.2.0 (2020-05-05)
+
+* feat(gamut-styles): Added TypeScript .d.ts generation to gamut-styles (#775) ([39a64ec](https://github.com/RyzacInc/client-modules/commit/39a64ec)), closes [#775](https://github.com/RyzacInc/client-modules/issues/775)
+
+
+
+
+
 ## <small>3.1.1 (2020-05-04)</small>
 
 * Add XL size to class templating and types (#768) ([8c2c717](https://github.com/RyzacInc/client-modules/commit/8c2c717)), closes [#768](https://github.com/RyzacInc/client-modules/issues/768)
