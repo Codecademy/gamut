@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.7 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## <small>7.4.6 (2020-05-05)</small>
 
 **Note:** Version bump only for package @codecademy/gamut
