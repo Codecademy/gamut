@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.5.5 (2020-05-05)</small>
+
+* Fix about links to allow nested linking (#776) ([e378fcb](https://github.com/RyzacInc/client-modules/commit/e378fcb)), closes [#776](https://github.com/RyzacInc/client-modules/issues/776)
+
+
+
+
+
 ## <small>9.5.4 (2020-05-04)</small>
 
 * fix(Documentation): Re-enable story source and use top level organization (#769) ([cce7845](https://github.com/RyzacInc/client-modules/commit/cce7845)), closes [#769](https://github.com/RyzacInc/client-modules/issues/769)
