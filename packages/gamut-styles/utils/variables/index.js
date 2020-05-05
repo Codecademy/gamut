@@ -141,6 +141,7 @@ export const platformColors = {
   mint: {
     '500': '#37c3be',
     '600': '#2c9c98',
+    '700': '#217572',
   },
   purple: {
     '200': '#c3c1d7',
