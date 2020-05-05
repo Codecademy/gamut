@@ -106,6 +106,25 @@ $brand-beige: #efd9ca;
 $brand-dark-blue: #141c3a;
 
 // =======================================
+//      PLATFORM COLORS
+// =======================================
+
+$platform-mint-500: #37c3be;
+
+$platform-mint-600: mix($color-black, $platform-mint-500, 20%);
+$platform-mint-700: mix($color-black, $platform-mint-500, 40%);
+
+$platform-purple-500: #69639a;
+
+$platform-purple-200: mix($color-white, $platform-purple-500, 60%);
+$platform-purple-300: mix($color-white, $platform-purple-500, 40%);
+$platform-purple-400: mix($color-white, $platform-purple-500, 20%);
+$platform-purple-600: mix($color-black, $platform-purple-500, 20%);
+$platform-purple-700: mix($color-black, $platform-purple-500, 40%);
+$platform-purple-800: mix($color-black, $platform-purple-500, 60%);
+$platform-purple-900: mix($color-black, $platform-purple-500, 80%);
+
+// =======================================
 //      EDITOR COLORS
 // =======================================
 
