@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.6.1 (2020-05-06)</small>
+
+* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+
+
+
+
+
 ## 9.6.0 (2020-05-05)
 
 * feat(Gamut): Created separate bucket for "Platform" colors (#778) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75)), closes [#778](https://github.com/RyzacInc/client-modules/issues/778)
