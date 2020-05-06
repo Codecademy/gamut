@@ -35,7 +35,7 @@ export type GridFormTextField = BaseFormField<string> & {
   label: string;
   placeholder?: string;
   validation?: ValidationOptions;
-  type: 'text' | 'email';
+  type: 'date' | 'email' | 'text';
 };
 
 export type GridFormRadioOption = {
