@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.5.0 (2020-05-06)
+
+* feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
+
+
+
+
+
 ## <small>7.4.8 (2020-05-06)</small>
 
 * Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
