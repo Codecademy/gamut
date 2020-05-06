@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.4.8 (2020-05-06)</small>
+
+* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+
+
+
+
+
 ## <small>7.4.7 (2020-05-05)</small>
 
 **Note:** Version bump only for package @codecademy/gamut
