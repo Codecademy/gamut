@@ -7,6 +7,7 @@ import { GridFormField } from '../types';
 import GridFormCheckboxInput from './GridFormCheckboxInput';
 import GridFormCustomInput from './GridFormCustomInput';
 import GridFormFileInput from './GridFormFileInput';
+import GridFormRadioGroupInput from './GridFormRadioGroupInput';
 import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
@@ -51,6 +52,16 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
+          />
+        );
+
+      case 'radio-group':
+        return (
+          <GridFormRadioGroupInput
+            className={styles.gridFormInput}
+            field={props.field}
+            register={props.register}
+            setValue={props.setValue}
           />
         );
 
