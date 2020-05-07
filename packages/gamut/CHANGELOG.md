@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.5.3 (2020-05-07)</small>
+
+* Allowed GridForm to not take in any fields (#787) ([a9bf324](https://github.com/RyzacInc/client-modules/commit/a9bf324)), closes [#787](https://github.com/RyzacInc/client-modules/issues/787)
+
+
+
+
+
 ## <small>7.5.2 (2020-05-07)</small>
 
 * Allow GridFormCheckboxInput to take in a ReactNode as its label (#785) ([63ecaa1](https://github.com/RyzacInc/client-modules/commit/63ecaa1)), closes [#785](https://github.com/RyzacInc/client-modules/issues/785)
