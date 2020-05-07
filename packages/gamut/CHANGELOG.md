@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.5.1 (2020-05-07)</small>
+
+* Fixed prettier issue on master (#786) ([f012068](https://github.com/RyzacInc/client-modules/commit/f012068)), closes [#786](https://github.com/RyzacInc/client-modules/issues/786)
+
+
+
+
+
 ## 7.5.0 (2020-05-06)
 
 * feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
