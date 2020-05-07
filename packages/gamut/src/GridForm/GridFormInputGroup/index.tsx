@@ -20,7 +20,9 @@ export type GridFormInputGroupProps = {
   setValue: (value: any) => void;
 };
 
-export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = props => {
+export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
+  props
+) => {
   const getInput = () => {
     switch (props.field.type) {
       case 'checkbox':
