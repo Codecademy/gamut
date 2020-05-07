@@ -9,14 +9,22 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 
 Small blue indicator of some unusual text
 
-<Preview>
+<Preview withSource="open">
   <Story name="Badge">
-    {() => (
-      <p>
-        Use it inline with the text to be decorated. <Badge>New</Badge>
-      </p>
-    )}
+    <Badge>New</Badge>
   </Story>
 </Preview>
 
 <Props of={Badge} />
+
+Badges can be used within inline text.
+
+<Preview>
+  <Story name="Inline Badge">
+    <p>
+      Languages: <Badge>javascript</Badge> <Badge>python</Badge>{' '}
+      <Badge>css</Badge>
+      <Badge>ruby</Badge>
+    </p>
+  </Story>
+</Preview>
