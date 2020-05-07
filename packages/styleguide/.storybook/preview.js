@@ -9,7 +9,6 @@ const gamutTheme = create({
 });
 
 addParameters({
-  // viewMode is currently broken, waiting for https://github.com/storybookjs/storybook/pull/10292
   viewMode: 'docs',
   options: {
     theme: gamutTheme,
