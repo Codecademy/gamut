@@ -2,14 +2,18 @@ import { Overlay } from '@codecademy/gamut/src';
 import React, { useState } from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', Overlay);
+export default {
+  title: 'Core|Atoms/Overlay',
+  component: Overlay,
+  decorators: [withKnobs],
+};
 
 export const overlay = decoratedStory(() => <OverlayStory />, {
   parameters: {

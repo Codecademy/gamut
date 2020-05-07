@@ -3,17 +3,22 @@ import React from 'react';
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 
 import styles from './styles.module.scss';
-import {
-  StoryTemplate,
-  StoryStatus,
-  decoratedStories,
-  StoryDescription,
-  decoratedStory,
-} from '../../Templating';
-import { number } from '@storybook/addon-knobs';
+
+import { number, withKnobs } from '@storybook/addon-knobs';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 
-export default decoratedStories('Atoms', ProgressBar);
+import {
+  decoratedStory,
+  StoryStatus,
+  StoryTemplate,
+  StoryDescription,
+} from '../../Templating';
+
+export default {
+  title: 'Core|Atoms/ProgressBar',
+  component: ProgressBar,
+  decorators: [withKnobs],
+};
 
 const bars = [
   {
@@ -38,7 +43,7 @@ export const progressBar = decoratedStory(() => (
       percentage label if a font color is specified.
     </StoryDescription>
     <LayoutGrid className={styles.progressBarGrid} columnGap="sm" rowGap="sm">
-      {[0, 25, 50, 75, 100].map(percent =>
+      {[0, 25, 50, 75, 100].map((percent) =>
         bars.map(({ large, theme }) => (
           <Column key={[percent, large, theme].join()} size={6}>
             <ProgressBar large={large} percent={percent} theme={theme} />

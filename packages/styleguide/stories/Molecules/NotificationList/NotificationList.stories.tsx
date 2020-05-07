@@ -3,15 +3,19 @@ import moment from 'moment';
 import React from 'react';
 
 import {
-  decoratedStories,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
   decoratedStory,
 } from '../../Templating';
 import styles from './styles.module.scss';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', NotificationList);
+export default {
+  title: 'Core|Molecules/NotificationList',
+  component: NotificationList,
+  decorators: [withKnobs],
+};
 
 export const notificationList = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
@@ -28,9 +32,7 @@ export const notificationList = decoratedStory(() => (
       notifications={[
         {
           campaign: 'python-livestream',
-          date: moment()
-            .subtract(1, 'hours')
-            .format('MMMM DD YYYY h:mm:ss'),
+          date: moment().subtract(1, 'hours').format('MMMM DD YYYY h:mm:ss'),
           iconSettings: {
             color: '#3069f0',
             backgroundColor: '#ffd500',
@@ -44,9 +46,7 @@ export const notificationList = decoratedStory(() => (
         },
         {
           campaign: 'pro-trial',
-          date: moment()
-            .subtract(3, 'days')
-            .format('MMMM DD YYYY h:mm:ss'),
+          date: moment().subtract(3, 'days').format('MMMM DD YYYY h:mm:ss'),
           id: '123',
           imageUrl: 'https://bit.ly/2Ckp4eW',
           link:

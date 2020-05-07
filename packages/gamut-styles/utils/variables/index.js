@@ -114,7 +114,6 @@ export const deprecatedColors = {
   portal: {
     blue: '#52b1db',
     darkblue: '#204056',
-    midnightblue: '#152b39',
     mint: '#34b3a0',
   },
   swatches: {
@@ -135,6 +134,24 @@ export const editorColors = {
   purple: '#b3ccff',
   red: '#e85d7f',
   yellow: '#ffe083',
+};
+
+export const platformColors = {
+  mint: {
+    '500': '#37c3be',
+    '600': '#2c9c98',
+    '700': '#217572',
+  },
+  purple: {
+    '200': '#c3c1d7',
+    '300': '#a5a1c2',
+    '400': '#8782ae',
+    '500': '#69639a',
+    '600': '#544f7b',
+    '700': '#3f3b5c',
+    '800': '#2a283e',
+    '900': '#15141f',
+  },
 };
 
 export const deprecatedGamutColors = {
@@ -181,16 +198,26 @@ export const grid = {
   cols: 12,
   gutterWidth: '16px',
   outerMargin: '16px',
+  maxContentWidth: '1440px',
   xsMin: '480px',
   smMin: '768px',
   mdMin: '1024px',
   lgMin: '1200px',
+  xlMin: '1440px',
 };
 
 export const legacyBreakpoints = {
   phone: '0',
   tablet: '736px',
   desktop: '960px',
+};
+
+export const breakpoints = {
+  xs: '480px',
+  sm: '768px',
+  md: '1024px',
+  lg: '1200px',
+  xl: '1440px',
 };
 
 export default {
@@ -201,5 +228,7 @@ export default {
   editorColors,
   effectColors,
   grid,
+  breakpoints,
   legacyBreakpoints,
+  platformColors,
 };

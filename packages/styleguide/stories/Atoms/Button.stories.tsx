@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Button,
   ButtonBase,
@@ -7,15 +8,20 @@ import {
 } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import React from 'react';
 
 import {
-  StoryTemplate,
-  StoryStatus,
-  StoryDescription,
-  decoratedStories,
   decoratedStory,
+  StoryStatus,
+  StoryTemplate,
+  StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
+
+export default {
+  title: 'Core|Atoms/Button',
+  component: Button,
+  decorators: [withKnobs],
+};
 
 const brandThemeKeys = [
   'brand-red',
@@ -33,12 +39,9 @@ const deprecatedThemeKeys = [
   ...Object.keys(buttonPresetThemes),
   'mint',
   'darkmint',
-  'darkblue',
-  'midnightblue',
   'grey',
   'greyblue',
   'white',
-  'ccblue',
   'royalblue',
   'purple',
 ];
@@ -68,8 +71,6 @@ const renderInlineButton = (theme: string, variant: string) => (
   </Button>
 );
 
-export default decoratedStories('Atoms', Button);
-
 export const allButtonThemes = decoratedStory(() => {
   const variant = select('Variant', ['default', 'outline', 'flat'], 'default');
 
@@ -85,17 +86,17 @@ export const allButtonThemes = decoratedStory(() => {
         signups. Prefer <code>brand-blue</code> for generic actions.
       </StoryDescription>
       <div>
-        {brandThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {brandThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
       <br />
       Alert status themes
       <div>
-        {statusThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {statusThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
       <br />
       We also have legacy button colors floating around. Do not use these.
       <div>
-        {deprecatedThemeKeys.map(theme => renderInlineButton(theme, variant))}
+        {deprecatedThemeKeys.map((theme) => renderInlineButton(theme, variant))}
       </div>
     </StoryTemplate>
   );

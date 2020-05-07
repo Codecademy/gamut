@@ -1,9 +1,8 @@
 import { HighlightedText } from '@codecademy/gamut/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -11,7 +10,11 @@ import {
 } from '../../Templating';
 import styles from './styles.module.scss';
 
-export default decoratedStories('Atoms', HighlightedText);
+export default {
+  title: 'Core|Atoms/HighlightedText',
+  component: HighlightedText,
+  decorators: [withKnobs],
+};
 
 export const highlightedText = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

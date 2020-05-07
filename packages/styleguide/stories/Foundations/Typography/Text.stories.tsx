@@ -11,14 +11,18 @@ import {
 } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Foundations', 'Typography', Text);
+export default {
+  title: 'Core|Foundations/Typography/Text',
+  component: Text,
+  decorators: [withKnobs],
+};
 
 const textTags: TextTags[] = ['p', 'span'];
 const textSizes: TextSizes[] = ['lg', 'md', 'sm'];
@@ -38,7 +42,7 @@ export const baseTypography = decoratedStory(() => (
           <strong>{'<span>'}</strong> tags with defined size intervals
         </p>
       </Column>
-      {textSizes.map(size => (
+      {textSizes.map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="start">

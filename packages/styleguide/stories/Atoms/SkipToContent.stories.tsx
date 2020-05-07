@@ -2,14 +2,18 @@ import React from 'react';
 
 import { SkipToContent } from '@codecademy/gamut/src';
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', SkipToContent);
+export default {
+  title: 'Core|Atoms/SkipToContent',
+  component: SkipToContent,
+  decorators: [withKnobs],
+};
 
 export const skipToContent = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

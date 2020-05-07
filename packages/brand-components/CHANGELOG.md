@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.5.9 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.8 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.7 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.6 (2020-05-06)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.5 (2020-05-06)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.4 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.3 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.2 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/Codecademy/client-modules/commit/2f012a1)), closes [#773](https://github.com/Codecademy/client-modules/issues/773)
+
+
+
+
+
+## <small>1.5.1 (2020-05-04)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.5.0 (2020-05-04)
+
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/Codecademy/client-modules/commit/20ee79d))
+
+
+
+
+
+## <small>1.4.1 (2020-05-01)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## 1.4.0 (2020-05-01)
 
 * feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d))

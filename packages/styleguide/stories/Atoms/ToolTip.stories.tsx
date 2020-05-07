@@ -3,14 +3,18 @@ import { select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
+  StoryStatus,
   StoryTemplate,
   StoryDescription,
-  StoryStatus,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Atoms', ToolTip);
+export default {
+  title: 'Core|Atoms/ToolTip',
+  component: ToolTip,
+  decorators: [withKnobs],
+};
 
 export const toolTip = decoratedStory(() => {
   const position = select(
@@ -26,7 +30,7 @@ export const toolTip = decoratedStory(() => {
 
   return (
     <StoryTemplate status={StoryStatus.Ready}>
-      {theme => (
+      {(theme) => (
         <>
           <StoryDescription>
             Small piece of extra information triggered on the focus or hover of

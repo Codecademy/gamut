@@ -10,7 +10,7 @@ export type BaseFormField<Value> = {
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
+  description: React.ReactNode;
   label?: string;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
@@ -38,6 +38,18 @@ export type GridFormTextField = BaseFormField<string> & {
   type: 'text' | 'email';
 };
 
+export type GridFormRadioOption = {
+  label: string;
+  value: string;
+};
+
+export type GridFormRadioGroupField = BaseFormField<string> & {
+  label: string;
+  options: GridFormRadioOption[];
+  validation?: Pick<ValidationOptions, 'required'>;
+  type: 'radio-group';
+};
+
 export type GridFormSelectField = BaseFormField<string> & {
   label: string;
   options: string[] | Record<string, number | string>;
@@ -60,6 +72,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>5.0.1 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/2f012a1)), closes [#773](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/773)
+
+
+
+
+
 ## 5.0.0 (2020-04-28)
 
 * feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/2e6c1c5)), closes [#736](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/736)

@@ -2,24 +2,26 @@ import React from 'react';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 import {
   FontSizes,
-  HeadingTags,
   LayoutGrid,
   Column,
   Heading,
   Container,
 } from '@codecademy/gamut/src';
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-const headingTags: HeadingTags[] = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 const headingSizes: FontSizes[] = ['xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs'];
 
-export default decoratedStories('Foundations', 'Typography', Heading);
+export default {
+  title: 'Core|Foundations/Typograph/Heading',
+  component: Heading,
+  decorators: [withKnobs],
+};
 
 export const headingSizePairings = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.InProgress}>
@@ -49,7 +51,7 @@ export const headingSizePairings = decoratedStory(() => (
         </p>
       </Column>
 
-      {headingSizes.map(size => (
+      {headingSizes.map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="center">

@@ -2,14 +2,18 @@ import { Button, Interstitial } from '@codecademy/gamut/src';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryTemplate,
   StoryStatus,
   StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', Interstitial);
+export default {
+  title: 'Core|Molecules/Interstitial',
+  component: Interstitial,
+  decorators: [withKnobs],
+};
 
 export const interstitial = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>

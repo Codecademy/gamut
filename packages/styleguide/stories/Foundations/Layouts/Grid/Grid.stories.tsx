@@ -1,9 +1,8 @@
 import React from 'react';
-import { select } from '@storybook/addon-knobs';
+import { select, withKnobs } from '@storybook/addon-knobs';
 import { LayoutGrid, Column } from '@codecademy/gamut/src';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryStatus,
   StoryTemplate,
@@ -11,7 +10,11 @@ import {
 } from '../../../Templating';
 import { Content, Container } from './Elements';
 
-export default decoratedStories('Foundations', 'Layouts', 'Grid', LayoutGrid);
+export default {
+  title: 'Core|Foundations/Layouts/Grid/LayoutGrid',
+  component: LayoutGrid,
+  decorators: [withKnobs],
+};
 
 const KitchenSinkColumns = () => (
   <>

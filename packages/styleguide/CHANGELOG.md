@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.7.0 (2020-05-06)
+
+* feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
+* Corrected terrible couple/few typo in Platform colors (#780) ([007f371](https://github.com/RyzacInc/client-modules/commit/007f371)), closes [#780](https://github.com/RyzacInc/client-modules/issues/780)
+
+
+
+
+
+## <small>9.6.1 (2020-05-06)</small>
+
+* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+
+
+
+
+
+## 9.6.0 (2020-05-05)
+
+* feat(Gamut): Created separate bucket for "Platform" colors (#778) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75)), closes [#778](https://github.com/RyzacInc/client-modules/issues/778)
+
+
+
+
+
+## <small>9.5.6 (2020-05-05)</small>
+
+* Fix Text Story directory (#779) ([d575e09](https://github.com/RyzacInc/client-modules/commit/d575e09)), closes [#779](https://github.com/RyzacInc/client-modules/issues/779)
+
+
+
+
+
+## <small>9.5.5 (2020-05-05)</small>
+
+* Fix about links to allow nested linking (#776) ([e378fcb](https://github.com/RyzacInc/client-modules/commit/e378fcb)), closes [#776](https://github.com/RyzacInc/client-modules/issues/776)
+
+
+
+
+
+## <small>9.5.4 (2020-05-04)</small>
+
+* fix(Documentation): Re-enable story source and use top level organization (#769) ([cce7845](https://github.com/RyzacInc/client-modules/commit/cce7845)), closes [#769](https://github.com/RyzacInc/client-modules/issues/769)
+
+
+
+
+
+## <small>9.5.3 (2020-05-04)</small>
+
+* chore(Documentation): Foundation Documentation (#765) ([cdbbffa](https://github.com/RyzacInc/client-modules/commit/cdbbffa)), closes [#765](https://github.com/RyzacInc/client-modules/issues/765)
+
+
+
+
+
+## <small>9.5.2 (2020-05-04)</small>
+
+* add mdx to ts loader (#772) ([dd55d66](https://github.com/RyzacInc/client-modules/commit/dd55d66)), closes [#772](https://github.com/RyzacInc/client-modules/issues/772)
+
+
+
+
+
+## <small>9.5.1 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
+
+
+
+
+
+## 9.5.0 (2020-05-04)
+
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d))
+
+
+
+
+
 ## 9.4.0 (2020-05-01)
 
 * feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))

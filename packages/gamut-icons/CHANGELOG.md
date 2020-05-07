@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>2.3.1 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
+
+
+
+
+
 ## 2.3.0 (2020-04-20)
 
 * feat(Icons): Add initial streamline icons (#702) ([52d529e](https://github.com/RyzacInc/client-modules/commit/52d529e)), closes [#702](https://github.com/RyzacInc/client-modules/issues/702)

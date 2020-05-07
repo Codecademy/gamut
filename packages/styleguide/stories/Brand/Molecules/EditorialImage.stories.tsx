@@ -5,18 +5,21 @@ import {
   Column,
 } from '@codecademy/gamut/src';
 import { EditorialImage } from '@codecademy/brand-components/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
 
-export default decoratedStories('Brand', 'Editorial Molecules', EditorialImage);
+export default {
+  title: 'Labs + Brand|Molecules/EditorialImage',
+  component: EditorialImage,
+  decorators: [withKnobs],
+};
 
 const knobs = {
   imageUrl: () =>

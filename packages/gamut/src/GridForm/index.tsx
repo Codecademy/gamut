@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useForm, FieldError } from 'react-hook-form';
 
 import { Form } from '../Form';
@@ -19,9 +19,9 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of the fields comprising the form.
+   * Descriptions of any fields comprising the form.
    */
-  fields: GridFormField[];
+  fields?: GridFormField[];
 
   /**
    * Function called with field values on submit, if all validations have passed.
@@ -45,7 +45,7 @@ export function GridForm<
   children,
   className,
   columnGap = 'lg',
-  fields,
+  fields = [],
   onSubmit,
   rowGap = 'md',
   submit,
@@ -60,16 +60,10 @@ export function GridForm<
     ),
   });
 
-  useEffect(() => {
-    for (const field of fields) {
-      register({ name: field.name });
-    }
-  }, [fields, register]);
-
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)}>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-        {fields.map(field => {
+        {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
 
           return (

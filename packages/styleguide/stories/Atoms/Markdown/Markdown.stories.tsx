@@ -1,11 +1,16 @@
 import { Markdown } from '@codecademy/gamut/src';
-import { text, select } from '@storybook/addon-knobs';
+import { text, select, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import exampleMarkdown from './markdown-example.md';
-import { decoratedStories, decoratedStory } from '../../Templating';
 
-export default decoratedStories('Atoms', Markdown);
+import { decoratedStory } from '../../Templating';
+
+export default {
+  title: 'Core|Atoms/Markdown',
+  component: Markdown,
+  decorators: [withKnobs],
+};
 
 export const basics = decoratedStory(() => (
   <Markdown
@@ -46,7 +51,7 @@ This is a custom markdown component
     spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
     overrides={{
       CodeBlock: {
-        component: props => <code style={{ color: 'darkblue' }} {...props} />,
+        component: (props) => <code style={{ color: 'darkblue' }} {...props} />,
       },
       CustomElement: {
         component: ({ title }) => {

@@ -30,9 +30,7 @@ export class DeprecatedTabs extends Component<
   UNSAFE_componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this.idPrefix = Math.random()
-      .toString()
-      .replace('.', '');
+    this.idPrefix = Math.random().toString().replace('.', '');
   }
 
   createId(index: number) {
@@ -115,8 +113,10 @@ export class DeprecatedTabs extends Component<
     if (this.state.activeTabId) {
       // eslint-disable-next-line prefer-destructuring
       activeTabId = this.state.activeTabId;
-    } else if (this.props.config.findIndex(c => c.default) !== -1) {
-      activeTabId = this.createId(this.props.config.findIndex(c => c.default));
+    } else if (this.props.config.findIndex((c) => c.default) !== -1) {
+      activeTabId = this.createId(
+        this.props.config.findIndex((c) => c.default)
+      );
     } else {
       activeTabId = this.createId(0);
     }

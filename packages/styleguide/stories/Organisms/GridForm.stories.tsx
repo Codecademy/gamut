@@ -1,17 +1,22 @@
+import React from 'react';
+import { withKnobs } from '@storybook/addon-knobs';
+import { action } from '@storybook/addon-actions';
+
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
-import { action } from '@storybook/addon-actions';
-import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
 } from '../Templating';
 
-export default decoratedStories('Organisms', GridForm);
+export default {
+  title: 'Core|Organisms/GridForm',
+  component: GridForm,
+  decorators: [withKnobs],
+};
 
 export const gridForm = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
@@ -75,7 +80,7 @@ export const gridForm = decoratedStory(() => (
           type: 'file',
           validation: {
             required: true,
-            validate: files => {
+            validate: (files) => {
               const { type } = files.item(0);
               const allowedTypes = [
                 'application/pdf',
@@ -102,7 +107,7 @@ export const gridForm = decoratedStory(() => (
           label:
             "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',
-          size: 9,
+          size: 5,
           type: 'text',
           validation: {
             required: true,
@@ -120,6 +125,22 @@ export const gridForm = decoratedStory(() => (
           type: 'checkbox',
         },
         {
+          label: 'Preferred Modern Artist',
+          name: 'artist',
+          options: [
+            {
+              label: 'Cardi B',
+              value: 'cardi',
+            },
+            {
+              label: 'Nicki Minaj',
+              value: 'nicki',
+            },
+          ],
+          size: 4,
+          type: 'radio-group',
+        },
+        {
           label: 'End User License Agreement',
           description:
             'I accept the terms and conditions (required or else!!!)',
@@ -131,7 +152,7 @@ export const gridForm = decoratedStory(() => (
           },
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -160,7 +181,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -180,7 +201,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -200,7 +221,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -220,7 +241,7 @@ export const gridFormWithSubmitButtonPosition = decoratedStory(() => (
               type: 'text',
             },
           ]}
-          onSubmit={async values => {
+          onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
@@ -250,7 +271,7 @@ export const gridFormWithSubmitButtonColor = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -267,7 +288,7 @@ export const gridFormWithSubmitButtonColor = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -302,7 +323,7 @@ export const gridFormWithInlineSubmitButton = decoratedStory(() => (
           type: 'checkbox',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -324,7 +345,7 @@ export const gridFormWithInlineSubmitButton = decoratedStory(() => (
           type: 'text',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -360,7 +381,7 @@ export const gridFormWithCustomInput = decoratedStory(() => (
                 error={!!error}
                 id="custom-text-input"
                 type="text"
-                onChange={event => setValue(event.target.value)}
+                onChange={(event) => setValue(event.target.value)}
               />
               <span aria-label="Dancing person" role="img">
                 🕺
@@ -380,7 +401,7 @@ export const gridFormWithCustomInput = decoratedStory(() => (
           type: 'custom',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -418,7 +439,7 @@ export const gridFormWithPlaceholderText = decoratedStory(() => (
           type: 'email',
         },
       ]}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         action('Form Submitted')(values);
       }}
       submit={{
@@ -450,7 +471,7 @@ export const gridFormWithFieldWithOnUpdate = decoratedStory(() => {
             onUpdate: setText,
           },
         ]}
-        onSubmit={async values => {
+        onSubmit={async (values) => {
           action('Form Submitted')(values);
         }}
         submit={{

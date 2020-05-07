@@ -1,20 +1,23 @@
 import { Quote } from '@codecademy/brand-components/src';
-import { text } from '@storybook/addon-knobs';
+import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
   StoryDescription,
   StoryStatus,
   StoryTemplate,
-} from '../Templating';
+} from '../../Templating';
 
-export default decoratedStories('Brand', Quote);
+export default {
+  title: 'Labs + Brand|Atoms/Quote',
+  component: Quote,
+  decorators: [withKnobs],
+};
 
 export const quote = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
-    {theme => (
+    {(theme) => (
       <>
         <StoryDescription>
           Emphasized text intended to be a direct quote, such as from a learner.

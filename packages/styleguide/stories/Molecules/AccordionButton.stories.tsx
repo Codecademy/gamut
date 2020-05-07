@@ -4,14 +4,18 @@ import { boolean, select } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
-  decoratedStories,
   decoratedStory,
-  StoryDescription,
   StoryStatus,
   StoryTemplate,
+  StoryDescription,
 } from '../Templating';
+import { withKnobs } from '@storybook/addon-knobs';
 
-export default decoratedStories('Molecules', AccordionButton);
+export default {
+  title: 'Core|Molecules/AccordionButton',
+  component: AccordionButton,
+  decorators: [withKnobs],
+};
 
 export const accordionButton = decoratedStory(() => (
   <StoryTemplate status={StoryStatus.Ready}>
