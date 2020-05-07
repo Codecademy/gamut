@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.5.9 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.8 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.7 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>1.5.6 (2020-05-06)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components

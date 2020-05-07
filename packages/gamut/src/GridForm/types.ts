@@ -10,7 +10,7 @@ export type BaseFormField<Value> = {
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
+  description: React.ReactNode;
   label?: string;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
