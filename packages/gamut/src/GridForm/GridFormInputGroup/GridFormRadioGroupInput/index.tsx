@@ -26,7 +26,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
-      onChange={event => {
+      onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
         field.onUpdate?.(value);
