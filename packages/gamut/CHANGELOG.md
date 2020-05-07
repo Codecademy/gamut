@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.5.2 (2020-05-07)</small>
+
+* Allow GridFormCheckboxInput to take in a ReactNode as its label (#785) ([63ecaa1](https://github.com/RyzacInc/client-modules/commit/63ecaa1)), closes [#785](https://github.com/RyzacInc/client-modules/issues/785)
+
+
+
+
+
 ## <small>7.5.1 (2020-05-07)</small>
 
 * Fixed prettier issue on master (#786) ([f012068](https://github.com/RyzacInc/client-modules/commit/f012068)), closes [#786](https://github.com/RyzacInc/client-modules/issues/786)
