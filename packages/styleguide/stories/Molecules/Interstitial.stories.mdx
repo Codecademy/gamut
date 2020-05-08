@@ -1,26 +1,19 @@
 import { Button, Interstitial } from '@codecademy/gamut/src';
-import React from 'react';
+import { Meta, Props, Preview } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../Templating/Blocks';
+import { Truncate } from '@codecademy/gamut/src';
 
-import {
-  decoratedStory,
-  StoryTemplate,
-  StoryStatus,
-  StoryDescription,
-} from '../Templating';
-import { withKnobs } from '@storybook/addon-knobs';
+<Meta title="Core|Molecules/Interstitial" component={Interstitial} />
 
-export default {
-  title: 'Core|Molecules/Interstitial',
-  component: Interstitial,
-  decorators: [withKnobs],
-};
+# Interstitial
 
-export const interstitial = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      Large content area used as a break between focused content, such as within
-      a full-screen <code>Overlay</code> in the LE between lessons.
-    </StoryDescription>
+<StoryStatus status="ready" />
+
+Large content area used as a break between focused content, such as within
+a full-screen <code>Overlay</code> in the LE between lessons.
+
+<Preview>
+  <Story name="Interstitial">
     <Interstitial
       buttons={[
         <Button key="1" theme="brand-yellow">
@@ -37,15 +30,18 @@ export const interstitial = decoratedStory(() => (
       large but not <em>too</em> large. We want some amount of vertical
       centering!
     </Interstitial>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
 
-export const interstitialWithDecoration = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      Decorations are added on top of the heading and are narrated as part of
-      it. Put emojis or promotional images here to really emphasize them.
-    </StoryDescription>
+<Props of={Interstitial} />
+
+## Decorations
+
+Decorations are added on top of the heading and are narrated as part of
+it. Put emojis or promotional images here to really emphasize them.
+
+<Preview>
+  <Story name="Decorated Interstitial">
     <Interstitial
       buttons={[
         <Button key="1" theme="brand-red">
@@ -60,5 +56,5 @@ export const interstitialWithDecoration = decoratedStory(() => (
     >
       I really love emojis. Please confirm you love emojis too!
     </Interstitial>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>

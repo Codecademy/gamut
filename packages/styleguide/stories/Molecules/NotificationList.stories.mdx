@@ -1,0 +1,65 @@
+import {
+  NotificationList,
+  NotificationItem,
+  NotificationIcon,
+} from '@codecademy/gamut/src';
+import { Meta, Props, Preview } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../Templating/Blocks';
+
+<Meta
+  title="Core|Molecules/NotificationList"
+  component={NotificationList}
+  subcomponents={{ NotificationItem, NotificationIcon }}
+/>
+
+# NotificationList
+
+<StoryStatus status="ready" />
+
+List of time-sensitive user notifications, such as in a top-right dropdown
+menu from a header.
+
+<Preview>
+  <Story name="NotificationsList">
+    <NotificationList
+      notifications={[
+        {
+          campaign: 'python-livestream',
+          date: 1,
+          iconSettings: {
+            color: '#3069f0',
+            backgroundColor: '#ffd500',
+          },
+          iconSlug: 'python',
+          id: 'abc',
+          link:
+            'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
+          text: 'Check out our Python livestream!',
+          unread: true,
+        },
+        {
+          campaign: 'pro-trial',
+          date: 2,
+          id: '123',
+          imageUrl: 'https://bit.ly/2Ckp4eW',
+          link:
+            'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
+          text:
+            "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+        },
+      ]}
+    />
+  </Story>
+</Preview>
+
+<Props of={NotificationList} />
+
+## Empty
+
+Notifications are not always present, so this has an empty state.
+
+<Preview>
+  <Story name="Empty">
+    <NotificationList notifications={[]} />
+  </Story>
+</Preview>

@@ -13,7 +13,7 @@ const StatusMessage = styled.span`
 
 const Statuses = {
   ready: { message: 'Production Ready', icon: '✅' },
-  inProgress: { message: 'Not Prodcution Ready', icon: '❌' },
+  inProgress: { message: 'Not Production Ready', icon: '❌' },
   deprecated: { message: 'Deprecated, do not use', icon: '💀' },
 };
 

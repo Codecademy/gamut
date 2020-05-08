@@ -1,28 +1,23 @@
-import React from 'react';
+import { Meta, Props, Preview } from '@storybook/addon-docs/dist/blocks';
 import { select, boolean, withKnobs } from '@storybook/addon-knobs';
 import { CardShell, CardBody, CardFooter } from '@codecademy/gamut/src';
-import {
-  decoratedStory,
-  StoryStatus,
-  StoryTemplate,
-  StoryDescription,
-} from '../Templating';
+import { StoryStatus } from '../Templating/Blocks';
 
-const alignStyles = ['left', 'center', 'right'] as const;
-const borderStyles = ['dashed', 'solid', 'none'] as const;
+<Meta
+  title="Core|Molecules/Card"
+  component={CardShell}
+  subcomponents={{ CardBody, CardFooter }}
+/>
 
-export default {
-  title: 'Core|Molecules/Card',
-  component: 'Card',
-  decorators: [withKnobs],
-};
+# Card
 
-export const card = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      Default shell with white background that can include some subtly
-      emphasized content.
-    </StoryDescription>
+<StoryStatus status="ready" />
+
+Default shell with white background that can include some subtly
+emphasized content.
+
+<Preview>
+  <Story name="Card">
     <CardShell hoverShadow={boolean('shell.hoverShadow', false)}>
       <CardBody standardPadding={boolean('body.standardPadding', true)}>
         <h3>Card Body</h3>
@@ -30,8 +25,8 @@ export const card = decoratedStory(() => (
         <p>Blah blah blurgha blurgha</p>
       </CardBody>
       <CardFooter
-        align={select('Align', alignStyles, 'left')}
-        border={select('Border', borderStyles, 'none')}
+        align={select('Align', ['left', 'center', 'right'], 'left')}
+        border={select('Border', ['dashed', 'solid', 'none'], 'none')}
         flex={boolean('Flex', true)}
         standardPadding={boolean('Standard Padding', true)}
         standardHeight={boolean('Standard Height', true)}
@@ -41,5 +36,7 @@ export const card = decoratedStory(() => (
         <span>&nbsp;&nbsp;&laquo;</span>
       </CardFooter>
     </CardShell>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
+
+<Props of={CardShell} />

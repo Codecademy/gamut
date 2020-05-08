@@ -10,8 +10,7 @@ import {
 } from '../Templating';
 
 export default {
-  title: 'Core|Molecules/Tabs',
-  component: Tabs,
+  title: 'Core|Molecules/Tabsasdad',
   decorators: [withKnobs],
 };
 
