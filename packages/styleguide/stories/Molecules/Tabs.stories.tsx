@@ -10,7 +10,7 @@ import {
 } from '../Templating';
 
 export default {
-  title: 'Core|Molecules/Tabsasdad',
+  title: 'Core|Molecules/Tabs',
   decorators: [withKnobs],
 };
 

@@ -1,0 +1,228 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import {
+  Button,
+  ButtonBase,
+  RadialProgress,
+  Spinner,
+} from '@codecademy/gamut/src';
+import { action } from '@storybook/addon-actions';
+import { select, text, boolean, withKnobs } from '@storybook/addon-knobs';
+import {
+  themes,
+  brandThemeKeys,
+  statusThemeKeys,
+  deprecatedThemeKeys,
+} from './helpers';
+
+<Meta
+  title="Core|Atoms/Button"
+  component={Button}
+  decorators={[withKnobs]}
+  subcomponents={{ ButtonBase }}
+/>
+
+# Buttons
+
+<StoryStatus status="ready" />
+
+Primary versions of buttons and links. Approximately all focusable,
+interactive elements should use some form of a `Button` (if
+they look like this) or `ButtonBase` (if they have custom
+styles).
+
+Prefer `brand-purple` for significant actions such as Pro signups. Prefer `brand-blue` for generic actions.
+
+Play with this button, if you&apos;d like!
+
+<Preview>
+  <Story name="Button">
+    <Button
+      block={boolean('block', false)}
+      caps={boolean('caps', false)}
+      go={boolean('go', false)}
+      link={boolean('link', false)}
+      onClick={action('Clicked Button')}
+      outline={boolean('outline', false)}
+      size={select('size', ['small', 'large', undefined], undefined)}
+      theme={select('theme', themes, 'brand-blue')}
+      underline={boolean('underline', false)}
+    >
+      {text('Label', 'Submit')}
+    </Button>
+  </Story>
+</Preview>
+
+<Props of={Button} />
+
+## Themes
+
+There are several theme sets you can use with `Button`
+
+### Brand
+
+<Preview columns={1}>
+  <Story name="Brand Buttons">
+    {brandThemeKeys.map((theme) => (
+      <Button
+        key={`${theme}`}
+        onClick={action('Clicked Button')}
+        style={{ margin: '1rem' }}
+        theme={theme}
+      >
+        {theme}
+      </Button>
+    ))}
+  </Story>
+</Preview>
+
+### Status
+
+We also have feedback specific button themes best paired with `Alert`
+
+<Preview>
+  <Story name="Status Buttons">
+    {statusThemeKeys.map((theme) => (
+      <Button
+        key={`${theme}`}
+        onClick={action('Clicked Button')}
+        style={{ margin: '1rem' }}
+        theme={theme}
+      >
+        {theme}
+      </Button>
+    ))}
+  </Story>
+</Preview>
+
+### Deprecated
+
+We also have legacy button colors floating around. Do not use these.
+
+<Preview>
+  <Story name="Deprecated">
+    {deprecatedThemeKeys.map((theme) => (
+      <Button
+        key={`${theme}`}
+        onClick={action('Clicked Button')}
+        style={{ margin: '1rem' }}
+        theme={theme}
+      >
+        {theme}
+      </Button>
+    ))}
+  </Story>
+</Preview>
+
+## ButtonBase Variants
+
+Use `ButtonBase` when you need something that acts as a link or
+button, but don&apos;t need the default button styles.
+
+_Note:_ keep in mind that buttons generally need focus and hover
+indicators for accessibility. If you use `ButtonBase`, be sure you&apos;re
+adding in your own.
+
+<Preview>
+  <Story name="ButtonBase">
+    <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>
+  </Story>
+  <Story name="ButtonBase Link">
+    <ButtonBase href="#">{text('Label 2', 'a basic link')}</ButtonBase>
+  </Story>
+  <Story name="ButtonBase Link Style">
+    <ButtonBase link>
+      {text('Label 3', 'a basic button styled as a link')}
+    </ButtonBase>
+  </Story>
+</Preview>
+
+## Link Button
+
+You may also configure a button to behave purely like a link
+
+<Preview>
+  <Story name="Link Button">
+    <p>
+      This is an example of a{' '}
+      <Button theme={select('theme', themes, 'brand-blue')} link href="#">
+        Link
+      </Button>{' '}
+      style button. When the `link` attribute is specified for a button, it will
+      functionally behave as a link.
+    </p>
+  </Story>
+</Preview>
+
+## Button options
+
+Common variants of buttons you might come across.
+
+<Preview columns={1}>
+  <Story name="Flat">
+    <Button theme="brand-blue" flat href="#">
+      Flat
+    </Button>
+  </Story>
+  <Story name="Outline">
+    <Button
+      href="#"
+      onClick={action('Clicked Button')}
+      outline
+      theme="brand-blue"
+    >
+      Outline
+    </Button>
+  </Story>
+  <Story name="Large">
+    <Button theme="brand-blue" size="large">
+      Large
+    </Button>
+  </Story>
+  <Story name="Small">
+    <Button
+      href="#"
+      onClick={action('Clicked Button')}
+      size="small"
+      theme="brand-blue"
+    >
+      Small
+    </Button>
+  </Story>
+  <Story name="Disabled ">
+    <Button theme="brand-blue" disabled>
+      Disabled
+    </Button>
+    >
+  </Story>
+  <Story name="Loading">
+    <Button theme="brand-blue">
+      <Spinner />
+      &nbsp;&nbsp;Loading...
+    </Button>
+  </Story>
+  <Story name="Processing">
+    <Button theme="brand-blue">
+      <RadialProgress value={[0, 100]} duration={5000} />
+      &nbsp;&nbsp;Processing...
+    </Button>
+  </Story>
+  <Story name="Caps">
+    <Button theme="brand-blue" caps href="#">
+      Caps
+    </Button>
+  </Story>
+</Preview>
+
+## Round
+
+Buttons might also be `round` to indicate rounded corners. These tend to
+be larger, advertise-y placements.
+
+<Preview>
+  <Story name="Round">
+    <Button theme="brand-blue" size="large" round>
+      Large
+    </Button>
+  </Story>
+</Preview>

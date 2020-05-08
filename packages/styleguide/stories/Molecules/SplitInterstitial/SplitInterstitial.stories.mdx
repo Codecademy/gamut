@@ -1,30 +1,26 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
 import { SplitInterstitial } from '@codecademy/gamut/src';
-import React from 'react';
-
-import {
-  decoratedStory,
-  StoryDescription,
-  StoryStatus,
-  StoryTemplate,
-} from '../../Templating';
 import Triangle from './assets/Triangle.svg';
 import Stairs from './assets/Stairs.svg';
-import styles from './styles.module.scss';
 import { withKnobs } from '@storybook/addon-knobs';
 
-export default {
-  title: 'Core|Molecules/SplitInterstitial',
-  component: SplitInterstitial,
-  decorators: [withKnobs],
-};
+<Meta
+  title="Core|Molecules/SplitInterstitial"
+  component={SplitInterstitial}
+  decorators={[withKnobs]}
+/>
 
-export const splitInterstitial = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      Large, 50% split content area used for information that has two facets,
-      such as for a payment page with an advertisement on one side and payment
-      form on another.
-    </StoryDescription>
+# SplitInterstitial
+
+<StoryStatus status="ready" />
+
+Large, 50% split content area used for information that has two facets,
+such as for a payment page with an advertisement on one side and payment
+form on another.
+
+<Preview>
+  <Story name="SplitInterstitial">
     <SplitInterstitial
       left={{
         children: (
@@ -43,14 +39,17 @@ export const splitInterstitial = decoratedStory(() => (
         ),
       }}
     />
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
 
-export const splitInterstitialWithCustomImages = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      You can override the built-in images with your own on a per-design basis.
-    </StoryDescription>
+<Props of={SplitInterstitial} />
+
+## Custom Images
+
+You can override the built-in images with your own on a per-design basis.
+
+<Preview>
+  <Story name="Custom Images">
     <SplitInterstitial
       left={{
         children: (
@@ -73,8 +72,7 @@ export const splitInterstitialWithCustomImages = decoratedStory(() => (
       }}
       bottomRightImage={{
         src: Stairs,
-        className: styles.bottomRightImgStyles,
       }}
     />
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
