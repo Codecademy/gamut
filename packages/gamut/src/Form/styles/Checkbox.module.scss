@@ -11,6 +11,10 @@
   padding: $form-padding;
 }
 
+.checkboxText {
+  align-self: center;
+}
+
 input:checked + .checkboxLabel .checkbox {
   border-color: $color-blue-500;
 

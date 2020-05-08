@@ -38,7 +38,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             <polyline points="4 11 8 15 16 6" className={s.checkVector} />
           </svg>
         </div>
-        <span>{label}</span>
+        <span className={s.checkboxText}>{label}</span>
       </label>
     </div>
   )
