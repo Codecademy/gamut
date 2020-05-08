@@ -3,7 +3,7 @@
 .checkboxLabel {
   @include no-select;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
   margin: ($form-padding / 2) 0;
   width: 100%;
