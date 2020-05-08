@@ -1,5 +1,5 @@
 import { Logo } from '@codecademy/brand-components/src';
-import { AppBar, AppBarSection, AppBarTab } from '@codecademy/gamut/src';
+import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 import React from 'react';
 
 import { decoratedStory } from '../../Templating';
@@ -16,14 +16,11 @@ export const appBar = decoratedStory(() => (
   <div>
     <p>
       This is an example of an AppBar component that contains one left-oriented
-      AppBarSection that holds one AppBar Tab. These components mostly provide
-      spacing and layout help that you can use for something like a footer or
-      header
+      AppBarSection. These components mostly provide spacing and layout help
+      that you can use for something like a footer or header
     </p>
     <AppBar className={styles.container}>
-      <AppBarSection position="left">
-        <AppBarTab button>This is an AppBar Tab</AppBarTab>
-      </AppBarSection>
+      <AppBarSection position="left">This is an AppBar Section</AppBarSection>
     </AppBar>
   </div>
 ));

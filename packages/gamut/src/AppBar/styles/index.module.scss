@@ -43,16 +43,3 @@ $appbar-z: 14;
   justify-content: center;
   text-align: center;
 }
-
-.tab {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.tabButton {
-  width: $appbar-tab-width;
-  min-width: $appbar-tab-width;
-}
