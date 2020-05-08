@@ -1,0 +1,30 @@
+import { Meta, Props, Preview } from '@storybook/addon-docs/dist/blocks';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../Templating/Blocks';
+import { Quote } from '@codecademy/brand-components/src';
+
+<Meta
+  title="Labs + Brand|Atoms/Quote"
+  component={Quote}
+  decorators={[withKnobs]}
+/>
+
+# Quote
+
+<StoryStatus status="ready" />
+
+Emphasized text intended to be a direct quote, such as from a learner.
+Often with an `Avatar` or `Testimonial`.
+
+<Preview withSource="open">
+  <Story name="Quote">
+    <Quote
+      text={text(
+        'Text',
+        'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
+      )}
+    />
+  </Story>
+</Preview>
+
+<Props story="Quote" of={Quote} />

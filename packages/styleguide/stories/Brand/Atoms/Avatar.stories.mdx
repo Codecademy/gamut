@@ -1,0 +1,32 @@
+import { Meta, Props, Preview } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../Templating/Blocks';
+import { Avatar } from '@codecademy/brand-components/src';
+
+<Meta
+  title="Labs + Brand|Atoms/Avatar"
+  component={Avatar}
+  decorators={[withKnobs]}
+/>
+
+# Avatar
+
+<StoryStatus status="ready" />
+
+Small, circular profile photo that includes a colored drop shadow.
+Commonly paired with a `Byline`.with the user with various connotations.
+
+<Preview withSource="open">
+  <Story name="Avatar">
+    <Avatar
+      alt={text('Image Alt', 'The Codey character drinking Boba tea')}
+      src={text(
+        'Source URL',
+        'https://content.codecademy.com/courses/free/boba.svg'
+      )}
+    />
+  </Story>
+</Preview>
+
+<Props story="Avatar" of={Avatar} />
