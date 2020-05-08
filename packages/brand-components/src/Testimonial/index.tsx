@@ -17,6 +17,7 @@ export type Testimonial = {
 type TestimonialProps = {
   testimonial: Testimonial;
   size: 'small' | 'medium' | 'large';
+  fullWidth?: boolean;
   theme: VisualTheme;
 };
 
@@ -24,6 +25,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   testimonial,
   size,
   theme,
+  fullWidth,
 }) => {
   const {
     firstName,
@@ -42,7 +44,11 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       })}
     >
       <div className={s.testimonialCardContainer}>
-        <div className={cx(s.contentContainer, s[`${size}Container`])}>
+        <div
+          className={cx(s.contentContainer, s[`${size}Container`], {
+            [s.fullWidth]: fullWidth,
+          })}
+        >
           {imageUrl && (
             <div className={s.avatarContainer}>
               <Avatar

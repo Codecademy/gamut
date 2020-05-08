@@ -137,6 +137,9 @@ $background-pattern-offset: px-rem(16px);
 }
 
 .largeContainer {
+  &.fullWidth {
+    max-width: 100%;
+  }
   @include sm-viewport {
     max-width: $grid-lg-min;
     grid-template-columns: 13rem 1fr;
