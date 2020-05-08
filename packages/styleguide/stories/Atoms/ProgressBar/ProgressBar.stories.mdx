@@ -1,0 +1,77 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
+import { number, withKnobs } from '@storybook/addon-knobs';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { bars } from './constants';
+
+<Meta
+  title="Core|Atoms/ProgressBar"
+  component={ProgressBar}
+  decorators={[withKnobs]}
+/>
+
+# ProgressBar
+
+<StoryStatus status="inProgress" />
+
+ProgressBars are to be used when you would like to indicate a known or
+somewhat-known amount of progress along a fixed course. For example, you
+might show one on a quiz page indicating how many questions have been
+completed.
+
+Bars with `large` specified are thicker, and will display a
+percentage label if a font color is specified.
+
+<Preview>
+  <Story name="ProgressBar">
+    <LayoutGrid columnGap="sm" rowGap="sm">
+      {[0, 25, 50, 75, 100].map((percent) =>
+        bars.map(({ large, theme }) => (
+          <Column key={[percent, large, theme].join()} size={6}>
+            <ProgressBar large={large} percent={percent} theme={theme} />
+          </Column>
+        ))
+      )}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+<Props of={ProgressBar} />
+
+## Minimum Percent
+
+Some bars (generally small ones) should display at least a little bit of
+progress, even if the technical progress number is zero. You can use the
+`minimumPercent` prop for a minimum visual width percentage.
+
+<Preview>
+  <Story name="Minimum Percentage">
+    <ProgressBar
+      minimumPercent={number('Minimum Percent', 5)}
+      percent={number('Percent', 0)}
+      theme="blue"
+    />
+  </Story>
+</Preview>
+
+## Style Overrides
+
+For the sake of rapid iteration, you can pass in custom style colors via the
+`style` prop.
+
+<Preview>
+  <Story name="Style Overrides">
+    <ProgressBar
+      minimumPercent={number('Minimum Percent', 5)}
+      large
+      percent={number('Percent', 0)}
+      style={{
+        backgroundColor: colors.red[900],
+        barColor: colors.red[600],
+        fontColor: colors.white,
+      }}
+      theme="blue"
+    />
+  </Story>
+</Preview>

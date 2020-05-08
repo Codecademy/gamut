@@ -1,0 +1,100 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import { Markdown } from '@codecademy/gamut/src';
+import { text, select, withKnobs } from '@storybook/addon-knobs';
+import exampleMarkdown from './markdown-example.md';
+import { customText } from './helpers';
+
+<Meta
+  title="Core|Atoms/Markdown"
+  component={Markdown}
+  decorators={[withKnobs]}
+/>
+
+# Markdown
+
+Markdown renderer for all your markdown needs.
+
+<Preview>
+  <Story name="Basics">
+    <Markdown
+      text={text(
+        'markdown',
+        `
+## Hello World
+This is markdown
+    `
+      )}
+      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+    />
+  </Story>
+</Preview>
+
+<Props of={Markdown} />
+
+## Full example
+
+<Preview>
+  <Story name="Full Example">
+    <Markdown
+      text={text('markdown', exampleMarkdown)}
+      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+    />
+  </Story>
+</Preview>
+
+## Element Overrides
+
+<Preview>
+  <Story name="Element Overrides">
+    <Markdown
+      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+      overrides={{
+        CodeBlock: {
+          component: (props) => (
+            <code style={{ color: 'darkblue' }} {...props} />
+          ),
+        },
+        CustomElement: {
+          component: ({ title }) => {
+            return (
+              <h3
+                style={{
+                  padding: 10,
+                  background: 'rebeccapurple',
+                  color: 'white',
+                  borderRadius: 5,
+                }}
+              >
+                {title}
+              </h3>
+            );
+          },
+          allowedAttributes: ['title'],
+        },
+      }}
+      text={customText}
+    />
+  </Story>
+</Preview>
+
+## Inline Markdown
+
+<Preview>
+  <Story name="Inline Markdown">
+    <div>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
+      <Markdown
+        text={text('markdown', '`this is an inline markdown component`')}
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+        inline
+      />
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      mollit anim id est laborum.
+    </div>
+  </Story>
+</Preview>
