@@ -107,7 +107,7 @@ export const Platform = decoratedStory(() => (
     <StoryDescription>
       Our Learning Environment ("LE") is, for now, an exception to the rule
       about containing only brand and grid colors. It uses a selection of muted
-      grayish purples and a couple of mid-range minty greens.
+      grayish purples and a few mid-range minty greens.
     </StoryDescription>
     <LayoutGrid className={styles.swatchesContainer} rowGap="md" columnGap="md">
       {objectKeys(platformColors).map((color) => (

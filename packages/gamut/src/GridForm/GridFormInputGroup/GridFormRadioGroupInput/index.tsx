@@ -1,0 +1,42 @@
+import React, { useEffect } from 'react';
+import { FormContextValues } from 'react-hook-form';
+
+import { RadioGroup, Radio } from '../../../Form';
+import { GridFormRadioGroupField } from '../../types';
+
+export type GridFormRadioGroupInputProps = {
+  className?: string;
+  field: Omit<GridFormRadioGroupField, 'label'>;
+  register: FormContextValues['register'];
+  setValue: (name: string, value: string) => void;
+};
+
+export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
+  className,
+  field,
+  register,
+  setValue,
+}) => {
+  useEffect(() => {
+    register(field.name, field.validation);
+  }, [field.name, field.validation, register]);
+
+  return (
+    <RadioGroup
+      className={className}
+      htmlForPrefix={field.name}
+      name={field.name}
+      onChange={(event) => {
+        const { value } = event.target;
+        setValue(field.name, value);
+        field.onUpdate?.(value);
+      }}
+    >
+      {field.options.map(({ label, value }) => (
+        <Radio key={value} label={label} value={value} />
+      ))}
+    </RadioGroup>
+  );
+};
+
+export default GridFormRadioGroupInput;

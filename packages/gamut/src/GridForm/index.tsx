@@ -19,9 +19,9 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of the fields comprising the form.
+   * Descriptions of any fields comprising the form.
    */
-  fields: GridFormField[];
+  fields?: GridFormField[];
 
   /**
    * Function called with field values on submit, if all validations have passed.
@@ -45,7 +45,7 @@ export function GridForm<
   children,
   className,
   columnGap = 'lg',
-  fields,
+  fields = [],
   onSubmit,
   rowGap = 'md',
   submit,
