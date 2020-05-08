@@ -17,7 +17,8 @@ $background-pattern-offset: px-rem(16px);
   }
   @include screen-size-gte($grid-xs-min) {
     .mediumContainer,
-    .largeContainer {
+    .largeContainer,
+    .fullContainer {
       &::before {
         content: "";
         position: absolute;
@@ -41,7 +42,8 @@ $background-pattern-offset: px-rem(16px);
   }
   @include screen-size-gte($grid-xs-min) {
     .mediumContainer,
-    .largeContainer {
+    .largeContainer,
+    .fullContainer {
       &::before {
         background-image: url("./assets/purple_squiggle.svg");
       }
@@ -60,7 +62,8 @@ $background-pattern-offset: px-rem(16px);
   }
   @include screen-size-gte($grid-xs-min) {
     .mediumContainer,
-    .largeContainer {
+    .largeContainer,
+    .fullContainer {
       &::before {
         background-image: url("./assets/orange_squiggle.svg");
       }
@@ -102,7 +105,8 @@ $background-pattern-offset: px-rem(16px);
 }
 
 .mediumContainer,
-.largeContainer {
+.largeContainer,
+.fullContainer {
   max-width: px-rem(708px);
   grid-template-columns: px-rem(100px) 1fr;
   grid-row-gap: 1.75rem;
@@ -136,10 +140,8 @@ $background-pattern-offset: px-rem(16px);
   }
 }
 
-.largeContainer {
-  &.fullWidth {
-    max-width: 100%;
-  }
+.largeContainer,
+.fullContainer {
   @include sm-viewport {
     max-width: $grid-lg-min;
     grid-template-columns: 13rem 1fr;
@@ -196,4 +198,8 @@ $large-avatar-offset: px-rem(8px);
       height: $large-avatar-size;
     }
   }
+}
+
+.fullContainer {
+  max-width: 100%;
 }

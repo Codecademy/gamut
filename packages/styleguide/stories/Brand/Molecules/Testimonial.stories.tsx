@@ -120,7 +120,7 @@ export const testimonialLargeWithAvatar = decoratedStory(
         quote: knobs.longQuote(),
         imageUrl: knobs.imageUrl(),
       }}
-      size="large"
+      size="full"
       theme={select(
         'theme',
         [VisualTheme.DarkMode, VisualTheme.LightMode],
