@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.6.0 (2020-05-08)
+
+* feat(Gamut): Allowed Alert to receive a class name (#784) ([fd29141](https://github.com/RyzacInc/client-modules/commit/fd29141)), closes [#784](https://github.com/RyzacInc/client-modules/issues/784)
+
+
+
+
+
 ## <small>7.5.3 (2020-05-07)</small>
 
 * Allowed GridForm to not take in any fields (#787) ([a9bf324](https://github.com/RyzacInc/client-modules/commit/a9bf324)), closes [#787](https://github.com/RyzacInc/client-modules/issues/787)
