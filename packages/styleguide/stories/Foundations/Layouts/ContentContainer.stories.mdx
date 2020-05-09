@@ -1,0 +1,28 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import { ContentContainer } from '@codecademy/gamut/src';
+import { withKnobs } from '@storybook/addon-knobs';
+
+<Meta
+  title="Core|Foundations/Layouts/ContentContainer"
+  component={ContentContainer}
+  decorators={[withKnobs]}
+/>
+
+# Content Container
+
+<StoryStatus status="ready" />
+
+ContentContainer can used when creating page layouts to contain content
+within a maximum width, as well as centering that content and providing
+responsive padding at our different breakpoints.
+
+<Preview>
+  <Story name="Content Container">
+    <ContentContainer>
+      <p>Some random content yo</p>
+    </ContentContainer>
+  </Story>
+</Preview>
+
+<Props of={ContentContainer} />

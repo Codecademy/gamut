@@ -1,0 +1,125 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import { Text, Heading, Column, LayoutGrid } from '@codecademy/gamut';
+import { headingSizes, textSizes } from './constants';
+import { withKnobs } from '@storybook/addon-knobs';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
+
+<Meta
+  title="Core|Foundations/Typography"
+  component={Heading}
+  subcomponents={{ Heading, Text }}
+  decorators={[withKnobs]}
+/>
+
+# 📝 Typography
+
+<StoryStatus status="ready" />
+
+Responsive Typography primitives for all your textual needs.
+
+<Props of={Heading} />
+
+## Heading
+
+This is a single primitive to handle all `h1-h6` tags
+with defined size intervals to allow for semantic html that also
+matches the designs.
+
+Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
+(and picking the appropriate size to match the design).
+
+<Preview>
+  <Story name="Headings">
+    <LayoutGrid columnGap="md" rowGap="md">
+      {headingSizes.map((size) => (
+        <React.Fragment key={size}>
+          <Column size={1}>
+            <Container align="center">
+              <Heading
+                fontSize="sm"
+                as="h2"
+                hideMargin
+                style={{ color: colors.gray[400] }}
+              >
+                {size}
+              </Heading>
+            </Container>
+          </Column>
+          <Column size={11}>
+            <Container key={size} align="center">
+              <Heading fontSize={size} as="h3" hideMargin>
+                Heading
+              </Heading>
+            </Container>
+          </Column>
+        </React.Fragment>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+## Body Text
+
+This is a single primitive to handle all `<p>` and
+`<span>` tags with defined size intervals
+
+<Preview>
+  <Story name="Body Text">
+    <LayoutGrid columnGap="md" rowGap="md">
+      {textSizes.map((size) => (
+        <React.Fragment key={size}>
+          <Column size={1}>
+            <Container align="start">
+              <Heading
+                fontSize="sm"
+                as="h2"
+                hideMargin
+                style={{ color: colors.gray[400] }}
+              >
+                {size}
+              </Heading>
+            </Container>
+          </Column>
+          <Column size={11}>
+            <Text key={size} fontSize={size} as="p">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Text>
+          </Column>
+        </React.Fragment>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+## Custom colors
+
+<Preview>
+  <Story name="Custom Colors">
+    <Heading fontSize="md" as="h3" style={{ color: colors.royalBlue }}>
+      Royal Blue
+    </Heading>
+    <Text fontSize="md" style={{ color: colors.royalBlue }}>
+      Royal Blue
+    </Text>
+  </Story>
+</Preview>
+
+## No Margin
+
+<Preview>
+  <Story name="No Margin">
+    <>
+      <Heading fontSize="md" as="h3" hideMargin>
+        Without Margin
+      </Heading>
+      <Text fontSize="md">Text Flow</Text>
+    </>
+  </Story>
+</Preview>

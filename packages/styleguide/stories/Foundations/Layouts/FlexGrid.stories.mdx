@@ -1,48 +1,29 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
 import { Item, FlexGrid, Row, Col } from '@codecademy/gamut/src';
-import gamut from '@codecademy/gamut-styles/utils/variables';
-import React from 'react';
-
-import {
-  decoratedStory,
-  StoryTemplate,
-  StoryStatus,
-  StoryDescription,
-} from '../../Templating';
+import { Box, defaultGridProps } from './Elements';
 import { withKnobs } from '@storybook/addon-knobs';
 
-export default {
-  title: 'Core|Foundations/Layouts/FlexGrid',
-  component: FlexGrid,
-  decorators: [withKnobs],
-};
+<Meta
+  title="Core|Foundations/Layouts/FlexGrid"
+  component={FlexGrid}
+  subcomponents={{ FlexGrid, Row, Col }}
+  decorators={[withKnobs]}
+/>
 
-const Box = () => (
-  <Item
-    style={{
-      height: 30,
-      marginBottom: '0.5rem',
-      backgroundColor: gamut.colors.blue[500],
-    }}
-  />
-);
+# FlexGrid
 
-const defaultGridProps = {
-  style: {
-    padding: '1rem',
-    backgroundColor: gamut.colors.blue[100],
-  },
-};
+<StoryStatus status="inProgress" />
 
-export const fixedGridDefault = decoratedStory('Fixed Grid (Default)', () => (
-  <StoryTemplate status={StoryStatus.InProgress} wide>
-    <StoryDescription>
-      The grid layout is composed of rows of columns. A row is 12 units wide. A
-      column specifies its width in units at various breakpoints via props: xs
-      480px+, sm 768px+, md 1024px+, lg 1200px+.
-      <br />
-      This grid is <em>"fixed"</em> meaning that its width is constant: it will
-      not shrink to the size of its container.
-    </StoryDescription>
+The grid layout is composed of rows of columns. A row is 12 units wide. A
+column specifies its width in units at various breakpoints via props: xs
+480px+, sm 768px+, md 1024px+, lg 1200px+.
+
+This grid is _"fixed"_ meaning that its width is constant: it will
+not shrink to the size of its container.
+
+<Preview>
+  <Story name="Fixed Grid Default">
     <FlexGrid {...defaultGridProps}>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
@@ -76,15 +57,18 @@ export const fixedGridDefault = decoratedStory('Fixed Grid (Default)', () => (
         </Col>
       </Row>
     </FlexGrid>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
 
-export const fluid = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.InProgress}>
-    <StoryDescription>
-      Adding the fluid prop allows the grid to grow and shrink freely inside its
-      container.
-    </StoryDescription>
+<Props of={FlexGrid} />
+
+## Fluid container
+
+Adding the fluid prop allows the grid to grow and shrink freely inside its
+container.
+
+<Preview>
+  <Story name="Fluid Container">
     <FlexGrid {...defaultGridProps} fluid>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
@@ -118,14 +102,15 @@ export const fluid = decoratedStory(() => (
         </Col>
       </Row>
     </FlexGrid>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
 
-export const offsets = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.InProgress}>
-    <StoryDescription>
-      A column can be offset with the <code>xs</code> property.
-    </StoryDescription>
+## Column Offsets
+
+A column can be offset with the `xs` property.
+
+<Preview>
+  <Story name="Column Offsets">
     <FlexGrid fluid {...defaultGridProps}>
       <Row>
         <Col xsOffset={11} xs={1}>
@@ -163,14 +148,15 @@ export const offsets = decoratedStory(() => (
         </Col>
       </Row>
     </FlexGrid>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
 
-export const centered = decoratedStory(() => (
-  <StoryTemplate status={StoryStatus.InProgress}>
-    <StoryDescription>
-      You can center the content of a row by passing it <code>center</code>.
-    </StoryDescription>
+## Centered
+
+You can center the content of a row by passing it `center`.
+
+<Preview>
+  <Story name="Centered">
     <FlexGrid fluid {...defaultGridProps}>
       <Row>
         <Col xs={12}>
@@ -182,5 +168,5 @@ export const centered = decoratedStory(() => (
         </Col>
       </Row>
     </FlexGrid>
-  </StoryTemplate>
-));
+  </Story>
+</Preview>
