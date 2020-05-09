@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.7.0 (2020-05-09)
+
+* feat(Gamut): Allowed GridForm text fields to be of type 'date' (#783) ([418b32b](https://github.com/RyzacInc/client-modules/commit/418b32b)), closes [#783](https://github.com/RyzacInc/client-modules/issues/783)
+
+
+
+
+
 ## 7.6.0 (2020-05-08)
 
 * feat(Gamut): Allowed Alert to receive a class name (#784) ([fd29141](https://github.com/RyzacInc/client-modules/commit/fd29141)), closes [#784](https://github.com/RyzacInc/client-modules/issues/784)
