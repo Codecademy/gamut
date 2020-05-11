@@ -6,7 +6,7 @@ import {
   Column,
   LayoutGrid,
   Container,
-} from '@codecademy/gamut';
+} from '@codecademy/gamut/src';
 import { headingSizes, textSizes } from './constants';
 import { withKnobs } from '@storybook/addon-knobs';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
@@ -36,7 +36,7 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 (and picking the appropriate size to match the design).
 
 <Preview>
-  <Story name="Headings">
+  <Story name="Heading">
     <LayoutGrid columnGap="md" rowGap="md">
       {headingSizes.map((size) => (
         <React.Fragment key={size}>
@@ -71,7 +71,7 @@ This is a single primitive to handle all `<p>` and
 `<span>` tags with defined size intervals
 
 <Preview>
-  <Story name="Body Text">
+  <Story name="Text">
     <LayoutGrid columnGap="md" rowGap="md">
       {textSizes.map((size) => (
         <React.Fragment key={size}>
