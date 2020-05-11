@@ -1,13 +1,13 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../Templating/Blocks';
 import { Logo } from '@codecademy/brand-components/src';
-import { AppBar, AppBarSection, AppBarTab } from '@codecademy/gamut/src';
+import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 import { withKnobs } from '@storybook/addon-knobs';
 
 <Meta
   title="Core|Molecules/AppBar"
   component={AppBar}
-  subcomponents={{ AppBarSection, AppBarTab }}
+  subcomponents={{ AppBarSection }}
   decorators={[withKnobs]}
 />
 
@@ -21,9 +21,7 @@ header
 <Preview>
   <Story name="AppBar">
     <AppBar>
-      <AppBarSection position="left">
-        <AppBarTab button>This is an AppBar Tab</AppBarTab>
-      </AppBarSection>
+      <AppBarSection position="left"></AppBarSection>
     </AppBar>
   </Story>
 </Preview>
