@@ -1,0 +1,52 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../Templating/Blocks';
+import { useState } from '@storybook/addons';
+import { Button, Modal } from '@codecademy/gamut/src';
+import { withKnobs } from '@storybook/addon-knobs';
+
+<Meta title="Core|Molecules/Modal" component={Modal} decorators={[withKnobs]} />
+
+# Modal
+
+Simple Modal portal to escape current DOM Context.
+
+<Preview>
+  <Story name="Modal">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <div>
+          <Button link onClick={() => setIsOpen(true)}>
+            Click to open the modal!
+          </Button>
+          <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
+            Close the modal!
+          </Modal>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
+
+<Props of={Modal} />
+
+<Preview>
+  <Story name="Without Close Default">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <div>
+          <Button link onClick={() => setIsOpen(true)}>
+            Click to open the modal!
+          </Button>
+          <Modal isOpen={isOpen} hideDefaultCloseButton>
+            Close the modal...
+            <button type="button" onClick={() => setIsOpen(false)}>
+              with this button instead
+            </button>
+          </Modal>
+        </div>
+      );
+    }}
+  </Story>
+</Preview>
