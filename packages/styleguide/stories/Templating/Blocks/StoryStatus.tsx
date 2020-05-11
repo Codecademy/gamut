@@ -5,7 +5,7 @@ import { colors } from '@codecademy/gamut-styles/utils/variables';
 const Statuses = {
   ready: { message: 'Production Ready', color: colors.green[500] },
   inProgress: { message: 'Use with Caution (WIP)', color: colors.yellow[500] },
-  deprecated: { message: 'Do Not Use (Deprecated)', color: colors.red[500] },
+  deprecated: { message: 'Do not use (Deprecated)', color: colors.red[500] },
 };
 
 const StatusWrapper = styled.div`
