@@ -22,10 +22,13 @@ describe('<RadioGroup>', () => {
     return { firstInput, onChange, wrapper };
   };
 
-  it('sets the name prop on the child', () => {
+  it('sets the id and name props on the child', () => {
     const { firstInput } = createComponent();
 
-    expect(firstInput.prop('name')).toEqual('what-salad-maker-do-you-prefer');
+    expect(firstInput.props()).toMatchObject({
+      id: 'what-salad-maker-do-you-prefer-0',
+      name: 'what-salad-maker-do-you-prefer',
+    });
   });
 
   it('sets the onChange prop on the child', () => {
