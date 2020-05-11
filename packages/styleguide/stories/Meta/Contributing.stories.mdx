@@ -1,8 +1,8 @@
-<Meta title="Meta/Contributing Components" />
+<Meta title="Meta/Contributing" />
 
-# Contributing Components
+# Contributing
 
-Thanks so much for being interested in contributing components!
+Thanks so much for being interested in contributing to Gamut!
 We love working with Codecademy employees across all our teams.
 
 > 🏗 We're still building these opinions out; some of this information might still be in flux!
@@ -37,6 +37,23 @@ export const MyComponent: React.FC<MyComponentProps> = ({ /* ... */ }) => {
 export default MyComponent;
 ```
 
+#### Props Documentation
+
+With the exception of widespread, self-documenting props such as `className`, please include a sentence cased description of the prop's intent.
+React props on the component will be picked up by Storybook and added to the component's documentation story.
+We prefer these be full sentences.
+
+```ts
+/**
+ * Number of lines to limit the message to.
+ */
+limit: number;
+```
+
+- If your comment purely restartes the name and type of variable, please either elaborate on it or remove the comment altogether.
+- Consider starting comments for booleans with _"Whether "_.
+- Props such as `className` that are common to many components generally don't need to be documented.
+
 #### Class Names
 
 Most components are fairly simple, and consist of one container element with some children.
@@ -65,7 +82,7 @@ We generally try to unit test all component logic, with the exception of class n
 ### Stories
 
 All components should have Storybook stories showing their use.
-See [./Writing Stories](Writing Stories) for documentation.
+See [./Stories](Stories) for documentation.
 
 ## Pull Requests
 

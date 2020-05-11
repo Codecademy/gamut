@@ -1,6 +1,6 @@
-<Meta title="Meta/Writing Stories" />
+<Meta title="Meta/Stories" />
 
-# Writing Stories
+# Stories
 
 > 🏗 We're still building these opinions out, so don't expect all stories to adhere just yet!
 
@@ -85,21 +85,3 @@ Give them names in Title Case and use them directly in your story JSX.
 ```tsx
 <ProgressBar minimumPercent={number('Minimum Percent', 5)} />
 ```
-
-## Inline Prop Docs
-
-React props on the component will be picked up by docgen (todo explain).
-We prefer these be full sentences.
-
-```ts
-/**
- * Number of lines to limit the message to.
- */
-limit: number;
-```
-
-### Good Prop Docs
-
-- If your comment purely restartes the name and type of variable, please either elaborate on it or remove the comment altogether.
-- Consider starting comments for booleans with _"Whether "_.
-- Props such as `className` that are common to many components generally don't need to be documented.
