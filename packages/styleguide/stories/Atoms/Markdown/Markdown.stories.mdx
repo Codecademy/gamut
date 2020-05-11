@@ -1,6 +1,6 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
-import { Markdown } from '@codecademy/gamut/src';
+import { Markdown, Heading, Text } from '@codecademy/gamut/src';
 import { text, select, withKnobs } from '@storybook/addon-knobs';
 import exampleMarkdown from './markdown-example.md';
 import { customText } from './helpers';
@@ -12,6 +12,8 @@ import { customText } from './helpers';
 />
 
 # Markdown
+
+<StoryStatus status="ready" />
 
 Markdown renderer for all your markdown needs.
 
@@ -52,22 +54,21 @@ This is markdown
       overrides={{
         CodeBlock: {
           component: (props) => (
-            <code style={{ color: 'darkblue' }} {...props} />
+            <Text style={{ color: 'darkblue' }} {...props} />
           ),
         },
         CustomElement: {
           component: ({ title }) => {
             return (
-              <h3
+              <Heading
+                as="h3"
+                fontSize="md"
                 style={{
-                  padding: 10,
-                  background: 'rebeccapurple',
-                  color: 'white',
-                  borderRadius: 5,
+                  color: 'rebeccapurple',
                 }}
               >
                 {title}
-              </h3>
+              </Heading>
             );
           },
           allowedAttributes: ['title'],
@@ -82,7 +83,7 @@ This is markdown
 
 <Preview>
   <Story name="Inline Markdown">
-    <div>
+    <>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
       <Markdown
@@ -95,6 +96,6 @@ This is markdown
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
       sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
       mollit anim id est laborum.
-    </div>
+    </>
   </Story>
 </Preview>

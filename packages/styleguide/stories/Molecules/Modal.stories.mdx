@@ -15,14 +15,14 @@ Simple Modal portal to escape current DOM Context.
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       return (
-        <div>
+        <React.Fragment>
           <Button link onClick={() => setIsOpen(true)}>
             Click to open the modal!
           </Button>
           <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
             Close the modal!
           </Modal>
-        </div>
+        </React.Fragment>
       );
     }}
   </Story>
@@ -35,17 +35,17 @@ Simple Modal portal to escape current DOM Context.
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       return (
-        <div>
+        <React.Fragment>
           <Button link onClick={() => setIsOpen(true)}>
             Click to open the modal!
           </Button>
           <Modal isOpen={isOpen} hideDefaultCloseButton>
             Close the modal...
-            <button type="button" onClick={() => setIsOpen(false)}>
+            <Button onClick={() => setIsOpen(false)}>
               with this button instead
-            </button>
+            </Button>
           </Modal>
-        </div>
+        </React.Fragment>
       );
     }}
   </Story>

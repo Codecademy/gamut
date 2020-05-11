@@ -15,8 +15,6 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 
-import styles from './styles.module.scss';
-
 <Meta
   title="Core|atoms/Form Inputs"
   subcomponents={{ Checkbox, Input, Radio, RadioGroup, Select, TextArea }}
@@ -54,14 +52,12 @@ such as limiting to numbers. If the `error` prop is passed, it has a red outline
 
 <Preview>
   <Story name="Input">
-    <div className={styles.inputArea}>
-      <Input
-        htmlFor="name"
-        defaultValue="Default value"
-        error={boolean('error', false)}
-        type={selectKnob('type', ['number', 'text'], 'text')}
-      />
-    </div>
+    <Input
+      htmlFor="name"
+      defaultValue="Default value"
+      error={boolean('error', false)}
+      type={selectKnob('type', ['number', 'text'], 'text')}
+    />
   </Story>
 </Preview>
 
@@ -91,12 +87,10 @@ Sets a value to one of a finite set of known values.
 
 <Preview>
   <Story name="Select">
-    <div className={styles.inputArea}>
-      <Select
-        htmlFor="select"
-        options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
-      />
-    </div>
+    <Select
+      htmlFor="select"
+      options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
+    />
   </Story>
 </Preview>
 
@@ -109,12 +103,10 @@ If the `error` prop is passed, it has a red outline.
 
 <Preview>
   <Story name="TextArea">
-    <div className={styles.inputArea}>
-      <TextArea
-        htmlFor="about"
-        error={boolean('error', false)}
-        rows={number('rows', 8)}
-      />
-    </div>
+    <TextArea
+      htmlFor="about"
+      error={boolean('error', false)}
+      rows={number('rows', 8)}
+    />
   </Story>
 </Preview>

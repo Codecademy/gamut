@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
 import {
   Button,
@@ -143,14 +143,12 @@ You may also configure a button to behave purely like a link
 
 <Preview>
   <Story name="Link Button">
-    <p>
+    <>
       This is an example of a{' '}
       <Button theme={select('theme', themes, 'brand-blue')} link href="#">
         Link
       </Button>{' '}
-      style button. When the `link` attribute is specified for a button, it will
-      functionally behave as a link.
-    </p>
+    </>
   </Story>
 </Preview>
 

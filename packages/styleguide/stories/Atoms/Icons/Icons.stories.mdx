@@ -1,6 +1,6 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
-import { LayoutGrid, Column } from '@codecademy/gamut/src';
+import { LayoutGrid, Column, Text } from '@codecademy/gamut/src';
 import * as icons from '@codecademy/gamut-icons';
 import { number, select, withKnobs } from '@storybook/addon-knobs';
 import { selectableColors } from '../../helpers';
@@ -23,7 +23,7 @@ import styles from './styles.module.scss';
             size={number('Size', 64)}
             color={select('Color', selectableColors, selectableColors.black)}
           />
-          <span className={styles.iconLabel}>{iconName}</span>
+          <Text className={styles.iconLabel}>{iconName}</Text>
         </Column>
       ))}
     </LayoutGrid>

@@ -356,17 +356,15 @@ their own inputs. We can specify a 'custom' field type to with a [render prop](h
       fields={[
         {
           render: ({ className, error, setValue }) => (
-            <div className={className}>
+            <React.Fragment>
               <Input
                 error={!!error}
                 id="custom-text-input"
                 type="text"
                 onChange={(event) => setValue(event.target.value)}
               />
-              <span aria-label="Dancing person" role="img">
-                🕺
-              </span>
-            </div>
+              🕺
+            </React.Fragment>
           ),
           label: 'Gimme two more swags',
           name: 'custom-input',
@@ -437,8 +435,8 @@ field's value in a parent component before onSubmit gets triggered.
     {() => {
       const [text, setText] = useState('');
       return (
-        <>
-          <p>The text value is: {text}</p>
+        <React.Fragment>
+          <React.Fragment>The text value is: {text}</React.Fragment>
           <GridForm
             fields={[
               {
@@ -456,7 +454,7 @@ field's value in a parent component before onSubmit gets triggered.
               contents: 'Submit Me!?',
             }}
           />
-        </>
+        </React.Fragment>
       );
     }}
   </Story>

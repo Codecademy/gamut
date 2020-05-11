@@ -1,6 +1,6 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
-import { SplitInterstitial } from '@codecademy/gamut/src';
+import { SplitInterstitial, Heading, Text } from '@codecademy/gamut/src';
 import Triangle from './assets/Triangle.svg';
 import Stairs from './assets/Stairs.svg';
 import { withKnobs } from '@storybook/addon-knobs';
@@ -24,18 +24,18 @@ form on another.
     <SplitInterstitial
       left={{
         children: (
-          <div>
-            <h1>Important stuff!</h1>
-            <p>Some sort of information here, perhaps?</p>
-          </div>
+          <React.Fragment>
+            <Heading as="h1">Important stuff!</Heading>
+            <Text>Some sort of information here, perhaps?</Text>
+          </React.Fragment>
         ),
       }}
       right={{
         children: (
-          <div>
-            <h2>Less important...</h2>
-            <p>Some more information here, maybe?</p>
-          </div>
+          <React.Fragment>
+            <Heading as="h2">Less important...</Heading>
+            <Text>Some more information here, maybe?</Text>
+          </React.Fragment>
         ),
       }}
     />
@@ -53,18 +53,18 @@ You can override the built-in images with your own on a per-design basis.
     <SplitInterstitial
       left={{
         children: (
-          <div>
-            <h1>Important stuff!</h1>
-            <p>Some sort of information here, perhaps?</p>
-          </div>
+          <React.Fragment>
+            <Heading as="h1">Important stuff!</Heading>
+            <Text>Some sort of information here, perhaps?</Text>
+          </React.Fragment>
         ),
       }}
       right={{
         children: (
-          <div>
-            <h2>Less important...</h2>
-            <p>Some more information here, maybe?</p>
-          </div>
+          <React.Fragment>
+            <Heading as="h2">Less important...</Heading>
+            <Text>Some more information here, maybe?</Text>
+          </React.Fragment>
         ),
       }}
       topLeftImage={{
