@@ -15,6 +15,10 @@
   align-self: center;
 }
 
+.checkboxTextMultiline {
+  font-size: 0.75rem;
+}
+
 input:checked + .checkboxLabel .checkbox {
   border-color: $color-blue-500;
 
