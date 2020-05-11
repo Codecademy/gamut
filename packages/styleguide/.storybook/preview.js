@@ -41,7 +41,7 @@ addParameters({
     /** Currently this is the way to do this with MDX
      * https://github.com/storybookjs/storybook/issues/8078#issuecomment-605430645
      */
-    transformSource: (src, storyId) => {
+    transformSource: (src) => {
       return prettier.format(src, {
         ...prettierConfig,
         parser: 'typescript',
