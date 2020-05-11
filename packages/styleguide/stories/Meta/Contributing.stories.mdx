@@ -1,3 +1,8 @@
+<!-- The normal import would be '@storybook/addon-links/react' -->
+<!-- but it is throwing a typescript error in the current alpha  -->
+
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
+
 <Meta title="Meta/Contributing" />
 
 # Contributing
@@ -82,7 +87,7 @@ We generally try to unit test all component logic, with the exception of class n
 ### Stories
 
 All components should have Storybook stories showing their use.
-See [./Stories](Stories) for documentation.
+See <LinkTo kind="Meta" story="Stories">Stories</LinkTo> for documentation.
 
 ## Pull Requests
 
