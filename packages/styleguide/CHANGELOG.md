@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.7.1 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
+
+
+
+
+
+## 9.7.0 (2020-05-06)
+
+* feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
+* Corrected terrible couple/few typo in Platform colors (#780) ([007f371](https://github.com/RyzacInc/client-modules/commit/007f371)), closes [#780](https://github.com/RyzacInc/client-modules/issues/780)
+
+
+
+
+
+## <small>9.6.1 (2020-05-06)</small>
+
+* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+
+
+
+
+
 ## 9.6.0 (2020-05-05)
 
 * feat(Gamut): Created separate bucket for "Platform" colors (#778) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75)), closes [#778](https://github.com/RyzacInc/client-modules/issues/778)

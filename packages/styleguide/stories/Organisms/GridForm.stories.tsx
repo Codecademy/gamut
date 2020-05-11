@@ -107,7 +107,7 @@ export const gridForm = decoratedStory(() => (
           label:
             "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',
-          size: 9,
+          size: 5,
           type: 'text',
           validation: {
             required: true,
@@ -123,6 +123,22 @@ export const gridForm = decoratedStory(() => (
           name: 'enough-swag',
           size: 3,
           type: 'checkbox',
+        },
+        {
+          label: 'Preferred Modern Artist',
+          name: 'artist',
+          options: [
+            {
+              label: 'Cardi B',
+              value: 'cardi',
+            },
+            {
+              label: 'Nicki Minaj',
+              value: 'nicki',
+            },
+          ],
+          size: 4,
+          type: 'radio-group',
         },
         {
           label: 'End User License Agreement',

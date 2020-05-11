@@ -19,6 +19,7 @@ import { BannerCTA } from './types';
 import s from './styles.module.scss';
 
 export type AlertProps = {
+  className?: string;
   /** Banner theme string: info, alert, success, announcement, error */
   type?: BannerType;
   /** Toggle the display of the theme's icon */
@@ -34,6 +35,7 @@ export type AlertProps = {
 };
 
 export const Alert: React.FC<AlertProps> = ({
+  className,
   children,
   fluid = false,
   type = BannerType.Info,
@@ -50,7 +52,7 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <CardShell
-      className={cx(s.container, {
+      className={cx(s.container, className, {
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
       })}
