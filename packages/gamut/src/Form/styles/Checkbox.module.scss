@@ -68,6 +68,10 @@ input:disabled + .checkboxLabel {
   }
 }
 
+.checkboxMultiline {
+  margin-top: 3px;
+}
+
 .invisible {
   @include sr-only;
 }
