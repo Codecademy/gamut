@@ -46,6 +46,11 @@ export const checkbox = decoratedStory(() => (
       <Checkbox htmlFor="html-css" label="HTML & CSS" />
       <Checkbox htmlFor="javascript" label="JavaScript" />
       <Checkbox htmlFor="ruby" label="Ruby" />
+      <Checkbox
+        htmlFor="multiline"
+        label="I am a really long input that takes multiple lines. To make the checkbox better aligned with the text we can add the multiline prop which will add some margin-top to it and reduce the fontsize to be much smaller. Yay to a better looking block of text and checkbox! Now I am sort of grasping at straws in my attempt to fill this up. Look at that though; another sentence."
+        multiline
+      />
     </div>
   </StoryTemplate>
 ));
