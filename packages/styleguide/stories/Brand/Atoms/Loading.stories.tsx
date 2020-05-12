@@ -7,7 +7,7 @@ import {
   StoryStatus,
   StoryTemplate,
 } from '../../Templating';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { withKnobs } from '@storybook/addon-knobs';
 
 export default {
   title: 'Labs + Brand|Atoms/Loading',
@@ -21,6 +21,6 @@ export const loading = decoratedStory(() => (
       Our standard-use loading icon. Use this to indicate part of the page is
       still coming.
     </StoryDescription>
-    <Loading inline={boolean('Inline', false)} />
+    <Loading />
   </StoryTemplate>
 ));
