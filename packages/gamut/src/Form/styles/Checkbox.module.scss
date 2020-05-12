@@ -3,12 +3,20 @@
 .checkboxLabel {
   @include no-select;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   cursor: pointer;
   margin: ($form-padding / 2) 0;
   width: 100%;
   font-weight: normal;
   padding: $form-padding;
+}
+
+.checkboxText {
+  align-self: center;
+}
+
+.checkboxTextMultiline {
+  font-size: 0.75rem;
 }
 
 input:checked + .checkboxLabel .checkbox {
@@ -62,6 +70,10 @@ input:disabled + .checkboxLabel {
       stroke-dashoffset: 18px;
     }
   }
+}
+
+.checkboxMultiline {
+  margin-top: 3px;
 }
 
 .invisible {
