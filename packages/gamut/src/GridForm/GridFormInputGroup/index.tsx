@@ -44,6 +44,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
           />
         );
 
+      case 'date':
       case 'email':
       case 'text':
         return (

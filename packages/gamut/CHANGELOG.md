@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.8.0 (2020-05-12)
+
+* feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
+
+
+
+
+
+## <small>7.7.1 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
+
+
+
+
+
+## 7.7.0 (2020-05-09)
+
+* feat(Gamut): Allowed GridForm text fields to be of type 'date' (#783) ([418b32b](https://github.com/RyzacInc/client-modules/commit/418b32b)), closes [#783](https://github.com/RyzacInc/client-modules/issues/783)
+
+
+
+
+
+## 7.6.0 (2020-05-08)
+
+* feat(Gamut): Allowed Alert to receive a class name (#784) ([fd29141](https://github.com/RyzacInc/client-modules/commit/fd29141)), closes [#784](https://github.com/RyzacInc/client-modules/issues/784)
+
+
+
+
+
 ## <small>7.5.3 (2020-05-07)</small>
 
 * Allowed GridForm to not take in any fields (#787) ([a9bf324](https://github.com/RyzacInc/client-modules/commit/a9bf324)), closes [#787](https://github.com/RyzacInc/client-modules/issues/787)

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.5.13 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.12 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/Codecademy/client-modules/commit/2db0e54)), closes [#792](https://github.com/Codecademy/client-modules/issues/792)
+
+
+
+
+
+## <small>1.5.11 (2020-05-09)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.10 (2020-05-08)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>1.5.9 (2020-05-07)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components

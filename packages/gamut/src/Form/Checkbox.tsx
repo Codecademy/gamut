@@ -1,5 +1,6 @@
 import React, { ReactNode, InputHTMLAttributes } from 'react';
 import s from './styles/Checkbox.module.scss';
+import cx from 'classnames';
 
 export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
@@ -7,13 +8,14 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   disabled?: boolean;
   htmlFor: string;
   label: ReactNode;
+  multiline?: boolean;
   name?: string;
   required?: boolean;
   value?: string;
 };
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, htmlFor, ...inputProps }, ref) => (
+  ({ className, label, htmlFor, multiline, ...inputProps }, ref) => (
     <div className={className}>
       <input
         id={htmlFor}
@@ -23,7 +25,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         ref={ref}
       />
       <label className={s.checkboxLabel} htmlFor={htmlFor}>
-        <div className={s.checkbox}>
+        <div className={cx(s.checkbox, multiline && s.checkboxMultiline)}>
           <svg
             width="24px"
             height="24px"
@@ -38,7 +40,11 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             <polyline points="4 11 8 15 16 6" className={s.checkVector} />
           </svg>
         </div>
-        <span>{label}</span>
+        <span
+          className={cx(s.checkboxText, multiline && s.checkboxTextMultiline)}
+        >
+          {label}
+        </span>
       </label>
     </div>
   )

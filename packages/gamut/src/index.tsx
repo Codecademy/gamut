@@ -2,7 +2,6 @@ export * from './Alert';
 export * from './AccordionButton';
 export * from './AppBar';
 export * from './AppBar/AppBarSection';
-export * from './AppBar/AppBarTab';
 export * from './Badge';
 export * from './Banner';
 export * from './Button';
