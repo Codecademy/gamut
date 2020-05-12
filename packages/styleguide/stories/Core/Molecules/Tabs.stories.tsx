@@ -11,6 +11,8 @@ import {
 
 export default {
   title: 'Core|Molecules/Tabs',
+  component: Tabs,
+  subcomponents: { TabList, Tab, TabPanel },
 };
 
 export const tabsUncontrolled = decoratedStory('Tabs (Uncontrolled)', () => (
