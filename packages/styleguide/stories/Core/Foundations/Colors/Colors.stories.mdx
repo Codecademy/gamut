@@ -1,0 +1,151 @@
+import cx from 'classnames';
+
+import { startCase } from 'lodash';
+import {
+  StoryStatus,
+  Swatch,
+  SwatchPalette,
+  parseCamelCase,
+  objectKeys,
+} from '../../../../Templating/Blocks';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  LayoutGrid,
+  Column,
+  VisualTheme,
+  Container,
+  Heading,
+} from '@codecademy/gamut/src';
+import {
+  brandColors,
+  colors,
+  deprecatedColors,
+  editorColors,
+  deprecatedGamutColors,
+  platformColors,
+} from '@codecademy/gamut-styles/utils/variables';
+import { excludedColors, baseColors } from './constants';
+
+<Meta title="Core|Foundations/Colors" component="Colors" />
+
+# Colors
+
+<StoryStatus status="ready" />
+
+These are the color palettes used by both design and engineering.
+
+## Brand Colors
+
+Brand color atoms we select from in creating designs. All colors seen on
+Codecademy properties should adhere to these. Remember your accessibility
+contrast requirements too!
+
+The most visually distinct colors associated with our brand are
+unsurprisingly referred to as "brand" colors. These are commonly used on
+buttons and as vibrant background colors.
+
+<Preview withSource="none" columns={1}>
+  <Story name="Brand">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(brandColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Brand {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`$color-${parseCamelCase(color)}`}
+              hex={brandColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+  <Story name="Base">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(baseColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {parseCamelCase(`color-${color}`)}
+            </Heading>
+            <Swatch
+              name={`$color-${parseCamelCase(color)}`}
+              hex={baseColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+  <Story name="Rest">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(colors)
+        .filter((color) => !excludedColors.includes(color))
+        .map((color) => (
+          <Column key={color} size={{ xs: 6, sm: 3 }}>
+            <Container flex={false}>
+              <Heading as="h2" fontSize="xs">
+                {parseCamelCase(`color-${color}`)}
+              </Heading>
+              <SwatchPalette
+                variablePrefix={`color-${color}`}
+                data={colors[color]}
+              />
+            </Container>
+          </Column>
+        ))}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+## Platform Colors (Learning Environment)
+
+Our Learning Environment ("LE") is, for now, an exception to the rule
+about containing only brand and grid colors. It uses a selection of muted
+grayish purples and a few mid-range minty greens.
+
+<Preview withSource="none" columns={1}>
+  <Story name="Platform ">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(platformColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Platform {startCase(color)}
+            </Heading>
+            <SwatchPalette
+              variablePrefix={`platform-${color}`}
+              data={platformColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+## Editor Colors
+
+The LE's code editor uses its own colors for text.
+
+<Preview className="dark">
+  <Story name="Editor">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(editorColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Editor {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`color-editor-${parseCamelCase(color)}`}
+              hex={editorColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>

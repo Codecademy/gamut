@@ -1,0 +1,112 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../../Templating/Blocks';
+import {
+  Checkbox,
+  Input,
+  Radio,
+  RadioGroup,
+  Select,
+  TextArea,
+} from '@codecademy/gamut/src';
+import {
+  select as selectKnob,
+  boolean,
+  number,
+  withKnobs,
+} from '@storybook/addon-knobs';
+
+<Meta
+  title="Core|Atoms/Form Inputs"
+  subcomponents={{ Checkbox, Input, Radio, RadioGroup, Select, TextArea }}
+/>
+
+# Form Inputs
+
+<StoryStatus status="ready" />
+
+Input atoms tied 1:1 with values to be submitted in a form.
+
+You should generally never use these directly as a Gamut consumer;
+instead, use `GridForm` to auto-generate these for you.
+
+<Props of={Checkbox} />
+
+## Elements
+
+### Checkbox
+
+Toggles a named boolean input value.
+
+<Preview>
+  <Story name="Checkbox">
+    <Checkbox htmlFor="html-css" label="HTML & CSS" />
+    <Checkbox htmlFor="javascript" label="JavaScript" />
+    <Checkbox htmlFor="ruby" label="Ruby" />
+  </Story>
+</Preview>
+
+### Input
+
+Sets a short-form text-based value. It can be configured as a native HTML `<input/>`,
+such as limiting to numbers. If the `error` prop is passed, it has a red outline.
+
+<Preview>
+  <Story name="Input">
+    <Input
+      htmlFor="name"
+      defaultValue="Default value"
+      error={boolean('error', false)}
+      type={selectKnob('type', ['number', 'text'], 'text')}
+    />
+  </Story>
+</Preview>
+
+### RadioGroup
+
+Sets a value to one of a finite set of known values.
+
+<Preview>
+  <Story name="RadioGroup">
+    <RadioGroup
+      htmlForPrefix="why-are-you-learning"
+      name="why-are-you-learning"
+    >
+      <Radio
+        label="Skills to communicate with developers and other technical people"
+        value="skills"
+      />
+      <Radio
+        label="A better understanding of web development in general"
+        value="understanding"
+      />
+    </RadioGroup>
+  </Story>
+</Preview>
+
+### Select
+
+<Preview>
+  <Story name="Select">
+    <Select
+      htmlFor="select"
+      options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
+    />
+  </Story>
+</Preview>
+
+### TextArea
+
+Sets a long-form text-based value. It can be configured as a native HTML
+`&lt;textarea/&gt;`, such as adjusting number of rows.
+
+If the `error` prop is passed, it has a red outline.
+
+<Preview>
+  <Story name="TextArea">
+    <TextArea
+      htmlFor="about"
+      error={boolean('error', false)}
+      rows={number('rows', 8)}
+    />
+  </Story>
+</Preview>

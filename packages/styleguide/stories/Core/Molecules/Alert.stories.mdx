@@ -1,0 +1,210 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { StoryStatus } from '../../../Templating/Blocks';
+import { Alert, BannerType } from '@codecademy/gamut/src';
+
+<Meta title="Core|Molecules/Alert" component={Alert} />
+
+# Alert
+
+<StoryStatus status="ready" />
+
+Alerts can be used to asynchronously display feedback or interactions
+with the user with various connotations.
+
+<Preview withSource="open">
+  <Story name="Alert">
+    <Alert
+      showIcon
+      type={BannerType.Info}
+      cta={{ text: 'Login', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      You have been logged out due to inactivity.
+    </Alert>
+  </Story>
+</Preview>
+
+<Props story="Alert" of={Alert} />
+
+## Types of Alerts
+
+### Feedback Alert
+
+Serves as _feedback_ and confirmation that requires an
+action.
+
+#### Informational
+
+<Preview>
+  <Story name="Information">
+    <Alert
+      showIcon
+      type={BannerType.Info}
+      cta={{ text: 'Login', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      You have been logged out due to inactivity.
+    </Alert>
+  </Story>
+</Preview>
+
+#### Successful actions
+
+<Preview>
+  <Story name="Success">
+    <Alert
+      showIcon
+      type={BannerType.Success}
+      cta={{ text: 'view account', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      Your account changes were saved successfully.
+    </Alert>
+  </Story>
+</Preview>
+
+#### Error communicating an issue or showing that a user’s action can’t be completed.
+
+<Preview>
+  <Story name="Error">
+    <Alert
+      showIcon
+      type={BannerType.Error}
+      cta={{ text: 'retry', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      Couldn’t save your account changes because a connection to the server
+      can’t be made.
+    </Alert>
+  </Story>
+</Preview>
+
+### Notice Alert
+
+Only shown when it affects the entire system. It appears on all pages without user initiating the action.
+
+<Preview>
+  <Story name="Notice">
+    <Alert
+      showIcon
+      type={BannerType.Notice}
+      cta={{ text: 'retry', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      Couldn’t save your account changes because a connection to the server
+      can’t be made.
+    </Alert>
+  </Story>
+</Preview>
+
+### Announcement Alert
+
+For feature announcements/changes on a specific page.
+
+<Preview>
+  <Story name="Announcement">
+    <Alert
+      showIcon
+      type={BannerType.Announcement}
+      cta={{ text: 'Learn More', onClick: action('CTA Click') }}
+      onClose={action('Close')}
+    >
+      You can now do this new thing with this new feature we just added!
+    </Alert>
+  </Story>
+</Preview>
+
+## Customization
+
+Alerts can be customized in various ways to fit usages. Here are a few out of the box options you have available.
+
+### Skeletal Alert
+
+You can disable most options for an `Alert` to make it mostly informational with no interaction.
+
+<Preview>
+  <Story name="Skeletal">
+    <Alert showIcon={false} type={BannerType.Notice} onClose={action('Close')}>
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
+    </Alert>
+  </Story>
+</Preview>
+
+### Icon
+
+You can optionally display an icon that matches the type of the alert you are showing.
+
+<Preview>
+  <Story name="Icon">
+    <Alert type={BannerType.Notice} onClose={action('Close')}>
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
+    </Alert>
+  </Story>
+</Preview>
+
+### Call to action
+
+You can add a call to action if specific feedback prompts user action. This is not requried as some
+feedback may not have an activity associated with it.
+
+<Preview>
+  <Story name="Call to Action">
+    <Alert
+      showIcon={false}
+      type={BannerType.Notice}
+      cta={{
+        href: 'https://google.com',
+        onClick: action('Close'),
+        text: 'Click Me',
+      }}
+      onClose={action('Close')}
+    >
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut.
+    </Alert>
+  </Story>
+</Preview>
+
+### Expandable Alert
+
+You can truncate the message of the alert for dynamic messaging that may be too long to display
+without restriction. This will automatically truncate and add a toggle button.
+
+<Preview>
+  <Story name="Expandable">
+    <Alert
+      showIcon={false}
+      type={BannerType.Notice}
+      lines={1}
+      onClose={action('Close')}
+    >
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
+      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+    </Alert>
+  </Story>
+</Preview>
+
+### All Options
+
+<Preview>
+  <Story name="All Options">
+    <Alert
+      type={BannerType.Notice}
+      cta={{
+        href: 'https://google.com',
+        onClick: action('Close'),
+        text: 'Click Me',
+      }}
+      lines={1}
+      onClose={action('Close')}
+    >
+      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
+      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+    </Alert>
+  </Story>
+</Preview>
