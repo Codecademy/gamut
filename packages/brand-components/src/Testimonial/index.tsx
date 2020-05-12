@@ -16,7 +16,7 @@ export type Testimonial = {
 
 type TestimonialProps = {
   testimonial: Testimonial;
-  size: 'small' | 'medium' | 'large' | 'full';
+  size: 'small' | 'medium' | 'large';
   theme: VisualTheme;
 };
 
@@ -49,9 +49,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
                 src={imageUrl}
                 alt={`Photo of ${firstName} ${lastName}`}
                 theme={theme}
-                className={cx({
-                  [s.largeContainerAvatar]: size === 'large' || size === 'full',
-                })}
+                className={cx({ [s.largeContainerAvatar]: size === 'large' })}
               />
             </div>
           )}
