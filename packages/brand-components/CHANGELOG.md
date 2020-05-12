@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.5.15 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>1.5.14 (2020-05-12)</small>
 
 * style(Testimonial): allow Testimonial card to be full width (#791) ([e4bb981](https://github.com/Codecademy/client-modules/commit/e4bb981)), closes [#791](https://github.com/Codecademy/client-modules/issues/791)
