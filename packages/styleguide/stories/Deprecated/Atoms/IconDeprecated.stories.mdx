@@ -1,11 +1,11 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../Templating/Blocks';
 import {
-  Column,
-  Icon,
-  IconPropsDeprecated,
-  LayoutGrid,
-} from '@codecademy/gamut/src';
+  Meta,
+  Props,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../Templating/Blocks';
+import { Icon } from '@codecademy/gamut/src';
 import iconMap from '@codecademy/gamut/src/Icon/iconMap';
 import { withKnobs } from '@storybook/addon-knobs';
 
@@ -19,17 +19,14 @@ Legacy icons as defined in the `@codecademy/gamut`package's `Icon` export.
 
 Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package instead.
 
-<Preview>
-  <Story name="Icon (Deprecated)">
-    <LayoutGrid columnGap="sm" rowGap="lg">
-      {Object.keys(iconMap).map((iconName) => (
-        <Column key={iconName} size={2}>
-          <Icon key={iconName} name={iconName} />
-          <>{iconName}</>
-        </Column>
-      ))}
-    </LayoutGrid>
-  </Story>
-</Preview>
-
 <Props of={Icon} />
+
+## All Icons
+
+<IconGallery>
+  {Object.keys(iconMap).map((iconName) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon key={iconName} name={iconName} />
+    </IconItem>
+  ))}
+</IconGallery>

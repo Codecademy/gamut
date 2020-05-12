@@ -1,6 +1,11 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  Meta,
+  Props,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
-import { LayoutGrid, Column, IkonaIcon } from '@codecademy/gamut/src';
+import { IkonaIcon } from '@codecademy/gamut/src';
 import iconStyles from '@codecademy/gamut/src/IkonaIcon/styles/index.module.scss';
 import { withKnobs } from '@storybook/addon-knobs';
 
@@ -18,21 +23,17 @@ Very old legacy icons as defined in the `@codecademy/gamut` package&apos;s `Ikon
 
 Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package instead.
 
-<Preview>
-  <Story name="Ikona Icons">
-    <LayoutGrid rowGap="md" columnGap="md">
-      {Object.keys(iconStyles)
-        .filter((cn) => cn.match('ikona-'))
-        .map((cn) => cn.replace('ikona-', ''))
-        .map((iconName) => (
-          <Column size={2}>
-            <IkonaIcon key={iconName} name={iconName} size={2} />
-            <br />
-            <span>{iconName}</span>
-          </Column>
-        ))}
-    </LayoutGrid>
-  </Story>
-</Preview>
-
 <Props of={IkonaIcon} />
+
+## All Icons
+
+<IconGallery>
+  {Object.keys(iconStyles)
+    .filter((cn) => cn.match('ikona-'))
+    .map((cn) => cn.replace('ikona-', ''))
+    .map((iconName) => (
+      <IconItem key={iconName} name={iconName}>
+        <IkonaIcon key={iconName} name={iconName} size={2} />
+      </IconItem>
+    ))}
+</IconGallery>

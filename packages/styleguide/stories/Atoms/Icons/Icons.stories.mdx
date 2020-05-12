@@ -1,36 +1,26 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  Meta,
+  Props,
+  Preview,
+  Story,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../Templating/Blocks';
 import { LayoutGrid, Column, Text } from '@codecademy/gamut/src';
-import * as icons from '@codecademy/gamut-icons';
+import * as icons from '@codecademy/gamut-icons/src';
+import { AlertIcon } from '@codecademy/gamut-icons/src';
+
 import { number, select, withKnobs } from '@storybook/addon-knobs';
 import { selectableColors } from '../../helpers';
 
 import styles from './styles.module.scss';
 
-<Meta title="Core|Atoms/Icons" decorators={[withKnobs]} />
+<Meta title="Core|Atoms/Icons" component={AlertIcon} decorators={[withKnobs]} />
 
 # Icons
 
 <StoryStatus status="ready" />
-
-<Preview>
-  <Story name="All Icons">
-    <LayoutGrid columnGap="sm" rowGap="sm">
-      {Object.entries(icons).map(([iconName, Icon]) => (
-        <Column size={2} className={styles.iconWrapper} key={iconName}>
-          <Icon
-            key={iconName}
-            size={number('Size', 64)}
-            color={select('Color', selectableColors, selectableColors.black)}
-          />
-          <Text className={styles.iconLabel}>{iconName}</Text>
-        </Column>
-      ))}
-    </LayoutGrid>
-  </Story>
-</Preview>
-
-## Editable Icon
 
 <Preview>
   <Story name="Editable Icon">
@@ -57,3 +47,15 @@ import styles from './styles.module.scss';
     }}
   </Story>
 </Preview>
+
+<Props of={AlertIcon} />
+
+## All Icons
+
+<IconGallery>
+  {Object.entries(icons).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color={selectableColors.black} />
+    </IconItem>
+  ))}
+</IconGallery>
