@@ -1,4 +1,4 @@
-import { Testimonial } from '@codecademy/brand-components/src';
+import { Testimonial } from '@codecademy/gamut-labs/src';
 import { VisualTheme } from '@codecademy/gamut/src';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
@@ -6,7 +6,7 @@ import React from 'react';
 import { decoratedStory } from '../../Templating';
 
 export default {
-  title: 'Labs + Brand|Molecules/Testimonial',
+  title: 'Labs|Brand/Molecules/Testimonial',
   component: Testimonial,
   decorators: [withKnobs],
 };

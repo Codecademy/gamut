@@ -1,4 +1,4 @@
-import { Byline } from '@codecademy/brand-components/src';
+import { Byline } from '@codecademy/gamut-labs/src';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
@@ -11,7 +11,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs + Brand|Molecules/ByLine',
+  title: 'Labs|Brand/Molecules/ByLine',
   component: Byline,
   decorators: [withKnobs],
 };

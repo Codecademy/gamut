@@ -1,4 +1,4 @@
-import { Quote } from '@codecademy/brand-components/src';
+import { Quote } from '@codecademy/gamut-labs/src';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
@@ -10,7 +10,7 @@ import {
 } from '../../Templating';
 
 export default {
-  title: 'Labs + Brand|Atoms/Quote',
+  title: 'Labs|Brand/Atoms/Quote',
   component: Quote,
   decorators: [withKnobs],
 };

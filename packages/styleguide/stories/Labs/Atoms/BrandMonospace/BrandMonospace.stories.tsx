@@ -1,4 +1,4 @@
-import { BrandMonospace } from '@codecademy/brand-components/src/BrandMonospace';
+import { BrandMonospace } from '@codecademy/gamut-labs/src/BrandMonospace';
 import { Heading } from '@codecademy/gamut/src';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
@@ -13,7 +13,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs + Brand|Atoms/BrandMonospace',
+  title: 'Labs|Brand/Atoms/BrandMonospace',
   component: BrandMonospace,
   decorators: [withKnobs],
 };

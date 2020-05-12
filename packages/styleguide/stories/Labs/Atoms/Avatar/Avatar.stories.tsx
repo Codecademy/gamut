@@ -1,4 +1,4 @@
-import { Avatar } from '@codecademy/brand-components/src';
+import { Avatar } from '@codecademy/gamut-labs/src';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
@@ -11,7 +11,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs + Brand|Atoms/Avatar',
+  title: 'Labs|Brand/Atoms/Avatar',
   component: Avatar,
   decorators: [withKnobs],
 };

@@ -2,9 +2,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 export type Section =
   | 'Atoms'
-  | 'Brand'
   | 'Foundations'
   | 'Molecules'
+  | 'Labs'
   | 'Organisms';
 
 const stringify = (component: string | Function) =>

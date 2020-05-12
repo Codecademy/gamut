@@ -4,7 +4,7 @@ import {
   LayoutGrid,
   Column,
 } from '@codecademy/gamut/src';
-import { EditorialQuote } from '@codecademy/brand-components/src';
+import { EditorialQuote } from '@codecademy/gamut-labs/src';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
 
@@ -18,7 +18,7 @@ import {
 } from '../../../Templating';
 
 export default {
-  title: 'Labs + Brand|Molecules/EditorialImage',
+  title: 'Labs|Brand/Molecules/EditorialImage',
   component: EditorialQuote,
   decorators: [withKnobs],
 };

@@ -15,6 +15,7 @@ export type ExampleShape = {
 export type AboutCellProps = {
   emoji: string;
   examples?: ExampleShape[];
+  label?: string;
   kind: Section;
   story?: string;
   title?: string;
@@ -27,6 +28,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   examples,
   kind,
   category,
+  label = 'Examples',
   story = 'About',
   title = kind || category,
 }) => {
@@ -41,7 +43,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
       <p className={styles.children}>{children}</p>
       {examples && (
         <div className={styles.examples}>
-          Examples:{' '}
+          {label}:{' '}
           {examples.map((example, i) => {
             const exampleLink = [category, example.kind]
               .filter(Boolean)

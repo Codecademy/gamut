@@ -1,4 +1,4 @@
-import { Logo } from '@codecademy/brand-components/src';
+import { Logo } from '@codecademy/gamut-labs/src';
 import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 import React from 'react';
 

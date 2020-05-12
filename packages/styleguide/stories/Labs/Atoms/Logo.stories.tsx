@@ -1,5 +1,5 @@
 import { select, number } from '@storybook/addon-knobs';
-import { Logo } from '@codecademy/brand-components/src';
+import { Logo } from '@codecademy/gamut-labs/src';
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import React from 'react';
 
@@ -23,7 +23,7 @@ const types = [
 ] as const;
 
 export default {
-  title: 'Labs + Brand|Atoms/Logo',
+  title: 'Labs|Brand/Atoms/Logo',
   component: Logo,
   decorators: [withKnobs],
 };
