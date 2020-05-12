@@ -36,7 +36,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Description of the submit button at the end of the form.
    */
-  submit: GridFormSubmitProps;
+  submit: Omit<GridFormSubmitProps, 'disabled'>;
 };
 
 export function GridForm<
@@ -50,7 +50,9 @@ export function GridForm<
   rowGap = 'md',
   submit,
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue } = useForm<Values>({
+  const { errors, handleSubmit, register, setValue, formState } = useForm<
+    Values
+  >({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -58,6 +60,7 @@ export function GridForm<
       }),
       {}
     ),
+    mode: 'onChange',
   });
 
   return (
@@ -76,7 +79,7 @@ export function GridForm<
             />
           );
         })}
-        <GridFormSubmit {...submit} />
+        <GridFormSubmit disabled={!formState.isValid} {...submit} />
         {children}
       </LayoutGrid>
     </Form>

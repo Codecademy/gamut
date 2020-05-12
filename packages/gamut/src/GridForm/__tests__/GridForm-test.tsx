@@ -57,4 +57,35 @@ describe('GridForm', () => {
       [stubTextField.name]: textValue,
     });
   });
+
+  it('only enables the submit button when the required fields are completed', async () => {
+    const fields = [
+      { ...stubTextField, validation: { required: 'Please enter text' } },
+    ];
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+
+    const wrapped = mount(
+      <GridForm
+        fields={fields}
+        onSubmit={onSubmit}
+        submit={{ contents: <>Submit</> }}
+      />
+    );
+
+    wrapped.setProps(wrapped.props());
+
+    expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+
+    await act(async () => {
+      // https://github.com/react-hook-form/react-hook-form/issues/1382
+      const node = wrapped.find('input[type="text"]').getDOMNode();
+      (node as HTMLInputElement).value = 'Hooray!';
+      node.dispatchEvent(new Event('input'));
+    });
+
+    wrapped.setProps(wrapped.props());
+
+    expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(false);
+  });
 });
