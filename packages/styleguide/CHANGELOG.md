@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.9.1 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## 9.9.0 (2020-05-12)
 
 * feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
