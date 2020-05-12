@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.8.0 (2020-05-11)
+
+* feat(styleguide): Added Components documentation (#781) ([d7039e5](https://github.com/RyzacInc/client-modules/commit/d7039e5)), closes [#781](https://github.com/RyzacInc/client-modules/issues/781)
+
+
+
+
+
 ## <small>9.7.1 (2020-05-11)</small>
 
 * remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
