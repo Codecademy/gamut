@@ -139,6 +139,9 @@ export const gridForm = decoratedStory(() => (
           ],
           size: 4,
           type: 'radio-group',
+          validation: {
+            required: 'You gotta pick one!',
+          },
         },
         {
           label: 'End User License Agreement',
