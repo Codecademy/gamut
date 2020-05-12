@@ -1,4 +1,5 @@
-import { addParameters } from '@storybook/react';
+import { addParameters, addDecorator } from '@storybook/react';
+import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 import prettier from 'prettier/standalone';
 import prettierConfig from '@codecademy/prettier-config';
@@ -38,3 +39,5 @@ addParameters({
     },
   },
 });
+
+addDecorator(withKnobs);

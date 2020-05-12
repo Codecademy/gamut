@@ -1,5 +1,3 @@
-import { withKnobs } from '@storybook/addon-knobs';
-
 export type Section =
   | 'Atoms'
   | 'Brand'
@@ -19,7 +17,6 @@ export const decoratedStories = (
 
   return {
     component,
-    decorators: [withKnobs],
     title: [title, ...nesting].map(stringify).join('/'),
   };
 };

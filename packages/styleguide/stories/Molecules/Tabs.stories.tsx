@@ -1,5 +1,5 @@
 import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
-import { boolean, text, number, withKnobs } from '@storybook/addon-knobs';
+import { boolean, text, number } from '@storybook/addon-knobs';
 import React from 'react';
 
 import {
@@ -11,7 +11,6 @@ import {
 
 export default {
   title: 'Core|Molecules/Tabs',
-  decorators: [withKnobs],
 };
 
 export const tabsUncontrolled = decoratedStory('Tabs (Uncontrolled)', () => (
