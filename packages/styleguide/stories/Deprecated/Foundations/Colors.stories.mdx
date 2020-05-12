@@ -8,7 +8,6 @@ import {
   parseCamelCase,
   objectKeys,
 } from '../../Templating/Blocks';
-
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import {
   LayoutGrid,
@@ -28,9 +27,11 @@ import {
 
 <Meta title="Deprecated|Foundations/Colors" component="Colors" />
 
-## Deprecated
+# Deprecated Colors
 
-### Gamut
+<StoryStatus status="deprecated" />
+
+## Gamut
 
 We used to have a very different color palette. Please do not use these
 anymore.
@@ -76,7 +77,7 @@ We may delete these as we find that consumers do not use them.
   </Story>
 </Preview>
 
-### Portal
+## Portal
 
 Similar to the deprecated Gamut colors, these ones are an old palette from
 the Portal.
