@@ -22,7 +22,7 @@ export const EditorialCTA: React.FC<EditorialCTAProps> = ({
   href,
   onCTAClick,
 }) => (
-  <>
+  <div className={s.container}>
     <h2 className={s.heading}>{heading}</h2>
     <p className={s.description}>{description}</p>
     <Button
@@ -35,7 +35,7 @@ export const EditorialCTA: React.FC<EditorialCTAProps> = ({
     >
       {callToAction}
     </Button>
-  </>
+  </div>
 );
 
 export default EditorialCTA;

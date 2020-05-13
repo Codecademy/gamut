@@ -1,0 +1,27 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../../Templating/Blocks';
+import { EditorialCTA } from '@codecademy/brand-components/src';
+
+<Meta title="Labs|Molecules/EditorialCTA" component={EditorialCTA} />
+
+# EditorialCTA
+
+<StoryStatus status="ready" />
+
+A CTA section typically used for the bottom of an editorial page.
+
+<Preview withSource="open" className="dark">
+  <Story name="EditorialCTA">
+    <EditorialCTA
+      heading={text('Heading', 'Do this thing!')}
+      description={text('Description', 'Something about that thing')}
+      callToAction={text('CTA Text', 'Click the button')}
+      href=""
+      onCTAClick={action('Clicked the CTA Button')}
+    />
+  </Story>
+</Preview>
+
+<Props story="EditorialCTA" of={EditorialCTA} />
