@@ -53,3 +53,56 @@ $font-size-h4: 1.4rem;
 $font-size-h5: 1.25rem;
 $font-size-h6: 1rem;
 $font-size-small: 85%;
+
+$headingSizes: (
+  "xxs": (
+    "size": 16,
+    "margin": 16,
+    "font": $font-family-base
+  ),
+  "xs": (
+    "size": 20,
+    "margin": 16,
+    "font": $font-family-base
+  ),
+  "sm": (
+    "size": 22,
+    "margin": 16,
+    "font": $font-family-base
+  ),
+  "md": (
+    "size": 26,
+    "margin": 20,
+    "font": $font-family-base
+  ),
+  "lg": (
+    "size": 34,
+    "margin": 24,
+    "font": $font-family-base
+  ),
+  "xl": (
+    "size": 44,
+    "margin": 24,
+    "font": $font-family-headings
+  ),
+  "xxl": (
+    "size": 64,
+    "margin": 32,
+    "font": $font-family-headings
+  )
+);
+
+$textSizes: (
+  "sm": (
+    "size": 14,
+    "font": $font-family-base
+  ),
+  "md": (
+    "size": 18,
+    "font": $font-family-base
+  ),
+  "lg": (
+    "size": 20,
+    "font": $font-family-base
+  )
+);

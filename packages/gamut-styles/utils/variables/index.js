@@ -107,7 +107,7 @@ export const brandColors = {
 };
 
 export const effectColors = {
-  slightShadow: 'rgba(0, 0, 0, 0.15)',
+  slightShadow: 'rgba{0, 0, 0, 0.15)',
 };
 
 export const deprecatedColors = {
@@ -220,6 +220,92 @@ export const breakpoints = {
   xl: '1440px',
 };
 
+export const fontBase = `"Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
+
+export const fontHeadings = `"Regular Patch", "Regular Bold", "Nunito Sans",
+-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell",
+"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
+
+export const fontMonospace = `Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas,
+monospace`;
+
+export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
+"Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
+
+const fontSizes = [
+  { size: 14, margin: 16 },
+  { size: 16, margin: 16 },
+  { size: 18, margin: 16 },
+  { size: 20, margin: 16 },
+  { size: 22, margin: 16 },
+  { size: 26, margin: 20 },
+  { size: 34, margin: 24 },
+  { size: 44, margin: 24 },
+  { size: 64, margin: 32 },
+];
+
+const headingSizes = {
+  xxs: {
+    ...fontSizes[1],
+    font: fontBase,
+  },
+  xs: {
+    ...fontSizes[3],
+    font: fontBase,
+  },
+  sm: {
+    ...fontSizes[4],
+    font: fontBase,
+  },
+  md: {
+    ...fontSizes[5],
+    font: fontBase,
+  },
+  lg: {
+    ...fontSizes[6],
+    font: fontBase,
+  },
+  xl: {
+    ...fontSizes[7],
+    font: fontHeadings,
+  },
+  xxl: {
+    ...fontSizes[8],
+    font: fontHeadings,
+  },
+};
+
+const bodySizes = {
+  xxs: {
+    ...fontSizes[0],
+    font: fontBase,
+  },
+  xs: {
+    ...fontSizes[2],
+    font: fontBase,
+  },
+  sm: {
+    ...fontSizes[3],
+    font: fontBase,
+  },
+};
+
+export const typography = {
+  families: {
+    fontBase,
+    fontHeadings,
+    fontMonospace,
+    fontSystem,
+  },
+  sizes: {
+    fontSizes,
+    headingSizes,
+    bodySizes,
+  },
+};
+
 export default {
   colors,
   brandColors,
@@ -231,4 +317,5 @@ export default {
   breakpoints,
   legacyBreakpoints,
   platformColors,
+  typography,
 };

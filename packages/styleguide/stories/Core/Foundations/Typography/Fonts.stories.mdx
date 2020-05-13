@@ -1,0 +1,55 @@
+import { Meta, Typeset } from '@storybook/addon-docs/dist/blocks';
+import { typography } from '@codecademy/gamut-styles/utils/variables';
+
+<Meta title="Core|Foundations/Typography/Font Families" />
+
+# Font Families
+
+These are the basic font families that we use across the site.
+
+## Base
+
+`Nunito Sans` is our base font, this is used for all copy and some headings at various weights.
+
+### Regular
+
+<Typeset
+  fontSizes={typography.sizes.fontSizes.map(({ size }) => `${size}px`)}
+  fontFamily={typography.families.fontBase}
+  sampleText="Nunito Sans Regular"
+/>
+
+### Bold
+
+<Typeset
+  fontSizes={typography.sizes.fontSizes.map(({ size }) => `${size}px`)}
+  fontFamily={typography.families.fontBase}
+  fontWeight={700}
+  sampleText="Nunito Sans Bold"
+/>
+
+## Headings
+
+We use `Regular Bold` for many larger headings.
+
+<Typeset
+  fontSizes={typography.sizes.fontSizes.map(({ size }) => `${size}px`)}
+  fontFamily={typography.families.fontHeadings}
+  sampleText="Regular Bold"
+/>
+
+## Monospace
+
+<Typeset
+  fontSizes={typography.sizes.fontSizes.map(({ size }) => `${size}px`)}
+  fontFamily={typography.families.fontMonospace}
+  sampleText="Monaco"
+/>
+
+## System
+
+<Typeset
+  fontSizes={typography.sizes.fontSizes.map(({ size }) => `${size}px`)}
+  fontFamily={typography.families.fontSystem}
+  sampleText="System"
+/>

@@ -1,4 +1,10 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  Meta,
+  Props,
+  Preview,
+  Story,
+  Typeset,
+} from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../../../Templating/Blocks';
 import {
   Text,
@@ -9,7 +15,7 @@ import {
 } from '@codecademy/gamut/src';
 import { headingSizes, textSizes } from './constants';
 
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors, typography } from '@codecademy/gamut-styles/utils/variables';
 
 <Meta
   title="Core|Foundations/Typography"
@@ -17,7 +23,7 @@ import { colors } from '@codecademy/gamut-styles/utils/variables';
   subcomponents={{ Heading, Text }}
 />
 
-# 📝 Typography
+# 📝 Typography Components
 
 <StoryStatus status="ready" />
 
@@ -37,7 +43,7 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 <Preview>
   <Story name="Heading">
     <LayoutGrid columnGap="md" rowGap="md">
-      {headingSizes.map((size) => (
+      {Object.keys(typography.sizes.headingSizes).map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="center">
@@ -72,7 +78,7 @@ This is a single primitive to handle all `<p>` and
 <Preview>
   <Story name="Text">
     <LayoutGrid columnGap="md" rowGap="md">
-      {textSizes.map((size) => (
+      {Object.keys(typography.sizes.bodySizes).map((size) => (
         <React.Fragment key={size}>
           <Column size={1}>
             <Container align="start">
