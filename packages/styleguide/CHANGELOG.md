@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.10.0 (2020-05-13)
+
+* feat(Styleguide): Convert All Stories to MDX (#788) ([96255a0](https://github.com/RyzacInc/client-modules/commit/96255a0)), closes [#788](https://github.com/RyzacInc/client-modules/issues/788)
+
+
+
+
+
 ## <small>9.9.2 (2020-05-12)</small>
 
 * fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)
