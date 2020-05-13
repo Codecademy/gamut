@@ -3,6 +3,198 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.5.15 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.14 (2020-05-12)</small>
+
+* style(Testimonial): allow Testimonial card to be full width (#791) ([e4bb981](https://github.com/Codecademy/client-modules/commit/e4bb981)), closes [#791](https://github.com/Codecademy/client-modules/issues/791)
+
+
+
+
+
+## <small>1.5.13 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.12 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/Codecademy/client-modules/commit/2db0e54)), closes [#792](https://github.com/Codecademy/client-modules/issues/792)
+
+
+
+
+
+## <small>1.5.11 (2020-05-09)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.10 (2020-05-08)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.9 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.8 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.7 (2020-05-07)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.6 (2020-05-06)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.5 (2020-05-06)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.4 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.3 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.2 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/Codecademy/client-modules/commit/2f012a1)), closes [#773](https://github.com/Codecademy/client-modules/issues/773)
+
+
+
+
+
+## <small>1.5.1 (2020-05-04)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.5.0 (2020-05-04)
+
+* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/Codecademy/client-modules/commit/20ee79d))
+
+
+
+
+
+## <small>1.4.1 (2020-05-01)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.4.0 (2020-05-01)
+
+* feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d))
+
+
+
+
+
+## 1.3.0 (2020-04-30)
+
+* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/Codecademy/client-modules/commit/85188a6)), closes [#764](https://github.com/Codecademy/client-modules/issues/764)
+
+
+
+
+
+## <small>1.2.3 (2020-04-30)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.2.2 (2020-04-30)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.2.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## 1.2.0 (2020-04-29)
+
+* feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/Codecademy/client-modules/commit/16e7ad7))
+
+
+
+
+
+## 1.1.0 (2020-04-29)
+
+* feat(headertab): move more header components into gamut (#740) ([9c555ef](https://github.com/Codecademy/client-modules/commit/9c555ef)), closes [#740](https://github.com/Codecademy/client-modules/issues/740)
+
+
+
+
+
 ## <small>1.0.11 (2020-04-28)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components

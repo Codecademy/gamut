@@ -3,4 +3,7 @@ export * from './Byline';
 export * from './EditorialMolecules';
 export * from './Logo';
 export * from './Quote';
+export * from './BrandMonospace';
 export * from './Testimonial';
+export * from './Header/HeaderContainer';
+export * from './Header/HeaderTab';

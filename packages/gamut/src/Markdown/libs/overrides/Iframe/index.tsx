@@ -9,7 +9,7 @@ export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   height?: number;
 }
 
-const Iframe: FunctionComponent<IframeProps> = props => {
+const Iframe: FunctionComponent<IframeProps> = (props) => {
   if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
     const { width = 16, height = 9 } = props;
     const ratioPadding = (

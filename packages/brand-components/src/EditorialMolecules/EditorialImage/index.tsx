@@ -15,12 +15,12 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
   alt,
   caption,
 }) => (
-  <>
+  <div>
     <div className={s.imageContainer}>
       <img className={s.image} alt={alt} src={image} />
     </div>
     {caption && <span className={s.caption}>{caption}</span>}
-  </>
+  </div>
 );
 
 export default EditorialImage;

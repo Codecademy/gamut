@@ -10,7 +10,9 @@ import {
 } from '../typings/responsive-properties';
 
 export type ColumnProps = {
+  /** The number of columns this element should span out of 12 */
   size: ResponsiveProperty<ColumnSizes>;
+  /** The column that this element should start at */
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
 } & ContainerElementProps;
 

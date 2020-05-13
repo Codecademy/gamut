@@ -3,6 +3,158 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.8.1 (2020-05-12)</small>
+
+* fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)
+
+
+
+
+
+## 7.8.0 (2020-05-12)
+
+* feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
+
+
+
+
+
+## <small>7.7.1 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
+
+
+
+
+
+## 7.7.0 (2020-05-09)
+
+* feat(Gamut): Allowed GridForm text fields to be of type 'date' (#783) ([418b32b](https://github.com/RyzacInc/client-modules/commit/418b32b)), closes [#783](https://github.com/RyzacInc/client-modules/issues/783)
+
+
+
+
+
+## 7.6.0 (2020-05-08)
+
+* feat(Gamut): Allowed Alert to receive a class name (#784) ([fd29141](https://github.com/RyzacInc/client-modules/commit/fd29141)), closes [#784](https://github.com/RyzacInc/client-modules/issues/784)
+
+
+
+
+
+## <small>7.5.3 (2020-05-07)</small>
+
+* Allowed GridForm to not take in any fields (#787) ([a9bf324](https://github.com/RyzacInc/client-modules/commit/a9bf324)), closes [#787](https://github.com/RyzacInc/client-modules/issues/787)
+
+
+
+
+
+## <small>7.5.2 (2020-05-07)</small>
+
+* Allow GridFormCheckboxInput to take in a ReactNode as its label (#785) ([63ecaa1](https://github.com/RyzacInc/client-modules/commit/63ecaa1)), closes [#785](https://github.com/RyzacInc/client-modules/issues/785)
+
+
+
+
+
+## <small>7.5.1 (2020-05-07)</small>
+
+* Fixed prettier issue on master (#786) ([f012068](https://github.com/RyzacInc/client-modules/commit/f012068)), closes [#786](https://github.com/RyzacInc/client-modules/issues/786)
+
+
+
+
+
+## 7.5.0 (2020-05-06)
+
+* feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
+
+
+
+
+
+## <small>7.4.8 (2020-05-06)</small>
+
+* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+
+
+
+
+
+## <small>7.4.7 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>7.4.6 (2020-05-05)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>7.4.5 (2020-05-04)</small>
+
+* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
+
+
+
+
+
+## <small>7.4.4 (2020-05-04)</small>
+
+* Add XL size to class templating and types (#768) ([8c2c717](https://github.com/RyzacInc/client-modules/commit/8c2c717)), closes [#768](https://github.com/RyzacInc/client-modules/issues/768)
+
+
+
+
+
+## <small>7.4.3 (2020-05-01)</small>
+
+* fix(Gamut): Removed unnecessary useEffect registers in GridForm (#767) ([529878e](https://github.com/RyzacInc/client-modules/commit/529878e)), closes [#767](https://github.com/RyzacInc/client-modules/issues/767)
+
+
+
+
+
+## <small>7.4.2 (2020-04-30)</small>
+
+* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+
+
+
+
+
+## <small>7.4.1 (2020-04-30)</small>
+
+* Corrected ProgressBar blues (#754) ([b112594](https://github.com/RyzacInc/client-modules/commit/b112594)), closes [#754](https://github.com/RyzacInc/client-modules/issues/754)
+
+
+
+
+
+## 7.4.0 (2020-04-29)
+
+* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+
+
+
+
+
+## <small>7.3.1 (2020-04-29)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## 7.3.0 (2020-04-28)
 
 * feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
