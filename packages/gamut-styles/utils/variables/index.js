@@ -107,7 +107,7 @@ export const brandColors = {
 };
 
 export const effectColors = {
-  slightShadow: 'rgba{0, 0, 0, 0.15)',
+  slightShadow: 'rgba(0, 0, 0, 0.15)',
 };
 
 export const deprecatedColors = {
