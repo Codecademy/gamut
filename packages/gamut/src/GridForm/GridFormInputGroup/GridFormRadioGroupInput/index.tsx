@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FormContextValues } from 'react-hook-form';
 
 import { RadioGroup, Radio } from '../../../Form';
@@ -17,10 +17,6 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   register,
   setValue,
 }) => {
-  useEffect(() => {
-    register(field.name, field.validation);
-  }, [field.name, field.validation, register]);
-
   return (
     <RadioGroup
       className={className}
@@ -33,7 +29,12 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
       }}
     >
       {field.options.map(({ label, value }) => (
-        <Radio key={value} label={label} value={value} />
+        <Radio
+          key={value}
+          label={label}
+          ref={register(field.validation)}
+          value={value}
+        />
       ))}
     </RadioGroup>
   );
