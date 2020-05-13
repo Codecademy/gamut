@@ -28,8 +28,8 @@ const StatusIndicator = styled.div<{ color: string }>`
   margin-top: 0.2rem;
   background-color: ${({ color }) => color};
 
-  &:focus
-  &:hover, {
+  &:focus,
+  &:hover {
     & + * {
       opacity: 1;
     }
