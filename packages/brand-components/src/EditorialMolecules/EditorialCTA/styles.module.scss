@@ -4,13 +4,13 @@
   text-align: center;
   max-width: px-rem(431px);
   color: $color-white;
-  font-size: 28px;
-  line-height: 32px;
+  font-size: px-rem(28px);
+  line-height: px-rem(32px);
   margin: 5rem auto 1rem;
 
   @include screen-size-gte($grid-xs-min) {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: px-rem(48px);
+    line-height: px-rem(56px);
   }
 }
 
