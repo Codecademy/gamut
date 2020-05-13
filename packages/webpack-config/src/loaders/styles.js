@@ -40,8 +40,6 @@ const postCssLoaderDefaults = {
 const extractPluginDefaults = {
   loader: MiniCssExtractPlugin.loader,
   options: {
-    filename: PROD ? '[name].[contenthash].css' : '[name].css',
-    chunkFilename: PROD ? '[id].[contenthash].chunk.css' : '[id].chunk.css',
     hmr: !PROD,
     esModule: true,
   },

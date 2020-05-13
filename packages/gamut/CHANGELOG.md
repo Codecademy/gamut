@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.8.1 (2020-05-12)</small>
+
+* fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)
+
+
+
+
+
+## 7.8.0 (2020-05-12)
+
+* feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
+
+
+
+
+
+## <small>7.7.1 (2020-05-11)</small>
+
+* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
+
+
+
+
+
 ## 7.7.0 (2020-05-09)
 
 * feat(Gamut): Allowed GridForm text fields to be of type 'date' (#783) ([418b32b](https://github.com/RyzacInc/client-modules/commit/418b32b)), closes [#783](https://github.com/RyzacInc/client-modules/issues/783)
