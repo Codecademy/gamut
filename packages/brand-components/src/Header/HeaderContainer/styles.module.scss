@@ -8,6 +8,10 @@
   z-index: 4;
 }
 
+@media print {
+  display: none;
+}
+
 .appBar {
   min-height: $height-header;
   padding: 0.65rem 0;
