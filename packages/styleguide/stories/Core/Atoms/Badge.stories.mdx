@@ -1,0 +1,30 @@
+import { Badge } from '@codecademy/gamut/src';
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { VisualTheme } from '@codecademy/gamut/src';
+import { withKnobs, select } from '@storybook/addon-knobs';
+
+<Meta title="Core|Atoms/Badge" component={Badge} />
+
+# Badges
+
+Small blue indicator of some unusual text
+
+<Preview withSource="open">
+  <Story name="Badge">
+    <Badge>New</Badge>
+  </Story>
+</Preview>
+
+<Props of={Badge} />
+
+Badges can be used within inline text.
+
+<Preview>
+  <Story name="Inline Badge">
+    <>
+      <Badge>css</Badge>
+      <Badge>css</Badge>
+      <Badge>css</Badge>
+    </>
+  </Story>
+</Preview>

@@ -1,0 +1,28 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../../Templating/Blocks';
+import { EditorialImage } from '@codecademy/brand-components/src';
+
+<Meta title="Labs|Molecules/EditorialImage" component={EditorialImage} />
+
+# EditorialImage
+
+<StoryStatus status="ready" />
+
+An image used for editorial pages with an optional caption.
+
+<Preview withSource="open" className="dark">
+  <Story name="EditorialImage">
+    <EditorialImage
+      image={text(
+        'Image URL',
+        'https://images.ctfassets.net/go6kr6r0ykrq/4NI4czS6Y3DeaBBlVAoPTL/5a95deb01518e0cbb27bac8c6e00eaf6/broadway_2_70.jpg'
+      )}
+      alt={text('Alt text', 'A picture of two Codecademy employees.')}
+      caption={text('Optional caption', 'You can remove this caption.')}
+    />
+  </Story>
+</Preview>
+
+<Props story="EditorialImage" of={EditorialImage} />
