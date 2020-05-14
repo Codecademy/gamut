@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.6.0 (2020-05-13)
+
+* feat(Header): Hide header on print views ([2a338f9](https://github.com/Codecademy/client-modules/commit/2a338f9))
+
+
+
+
+
 ## <small>1.5.15 (2020-05-12)</small>
 
 **Note:** Version bump only for package @codecademy/brand-components
