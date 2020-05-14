@@ -1,26 +1,9 @@
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
-import { boolean, text, number } from '@storybook/addon-knobs';
 import React from 'react';
+import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
+import { number, boolean, text } from '@storybook/addon-knobs';
 
-import {
-  StoryDescription,
-  StoryStatus,
-  StoryTemplate,
-  decoratedStory,
-} from '../../../Templating';
-
-export default {
-  title: 'Core|Molecules/Tabs',
-  component: Tabs,
-  subcomponents: { TabList, Tab, TabPanel },
-};
-
-export const tabsUncontrolled = decoratedStory('Tabs (Uncontrolled)', () => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      Use a series of tabbed areas for when you have multiple potential sections
-      to show, but only one should be visible at a time.
-    </StoryDescription>
+export const Uncontrolled = () => {
+  return (
     <Tabs
       defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
       onChange={() => {}}
@@ -47,16 +30,11 @@ export const tabsUncontrolled = decoratedStory('Tabs (Uncontrolled)', () => (
         <p>Hi there! I'm the contents inside Tab 3. Yippee!</p>
       </TabPanel>
     </Tabs>
-  </StoryTemplate>
-));
+  );
+};
 
-export const tabsControlled = decoratedStory('Tabs (Controlled)', () => (
-  <StoryTemplate status={StoryStatus.Ready}>
-    <StoryDescription>
-      When <code>activeTabIndex</code> is specified, the component switches to
-      being a controlled component. It won't change its own tab state, but will
-      instead notify of a request to change using <code>onChange</code>.
-    </StoryDescription>
+export const Controlled = () => {
+  return (
     <Tabs
       activeTabIndex={number('Active Tab Index', 0)}
       onChange={() => {}}
@@ -83,5 +61,5 @@ export const tabsControlled = decoratedStory('Tabs (Controlled)', () => (
         <p>Hi there! I'm the contents inside Tab 3. Yippee!</p>
       </TabPanel>
     </Tabs>
-  </StoryTemplate>
-));
+  );
+};
