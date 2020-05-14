@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.0 (2020-05-14)
+
+* feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/Codecademy/client-modules/commit/b7950c9)), closes [#794](https://github.com/Codecademy/client-modules/issues/794)
+
+
+
+
+
 ## 1.6.0 (2020-05-13)
 
 * feat(Header): Hide header on print views ([2a338f9](https://github.com/Codecademy/client-modules/commit/2a338f9))
