@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.11.0 (2020-05-14)
+
+* feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/RyzacInc/client-modules/commit/b7950c9)), closes [#794](https://github.com/RyzacInc/client-modules/issues/794)
+
+
+
+
+
 ## 9.10.0 (2020-05-13)
 
 * feat(Styleguide): Convert All Stories to MDX (#788) ([96255a0](https://github.com/RyzacInc/client-modules/commit/96255a0)), closes [#788](https://github.com/RyzacInc/client-modules/issues/788)
