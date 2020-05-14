@@ -10,6 +10,7 @@ import styles from './styles.module.scss';
 export type ExampleShape = {
   name: string;
   kind: string;
+  text?: string;
 };
 
 export type AboutCellProps = {
@@ -28,8 +29,8 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   examples,
   kind,
   category,
-  label = 'Examples',
   story = 'About',
+  label = 'Examples',
   title = kind || category,
 }) => {
   const kindLink = [category, kind].filter(Boolean).join('|');
@@ -51,7 +52,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
             return (
               <React.Fragment key={example.name}>
                 <LinkTo kind={exampleLink} story={example.name}>
-                  {example.name || example}
+                  {example.text || example.name}
                 </LinkTo>
                 {i !== examples.length - 1 && ', '}
               </React.Fragment>
