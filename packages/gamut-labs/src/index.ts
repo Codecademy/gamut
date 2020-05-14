@@ -1,6 +1,7 @@
 export * from './Avatar';
 export * from './Byline';
 export * from './EditorialMolecules';
+export * from './Loading';
 export * from './Logo';
 export * from './Quote';
 export * from './BrandMonospace';

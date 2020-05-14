@@ -1,0 +1,73 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../../Templating/Blocks';
+import { SplitInterstitial, Heading, Text } from '@codecademy/gamut/src';
+import Triangle from './assets/Triangle.svg';
+import Stairs from './assets/Stairs.svg';
+
+<Meta title="Core|Molecules/SplitInterstitial" component={SplitInterstitial} />
+
+# SplitInterstitial
+
+<StoryStatus status="ready" />
+
+Large, 50% split content area used for information that has two facets,
+such as for a payment page with an advertisement on one side and payment
+form on another.
+
+<Preview>
+  <Story name="SplitInterstitial">
+    <SplitInterstitial
+      left={{
+        children: (
+          <React.Fragment>
+            <Heading as="h1">Important stuff!</Heading>
+            <Text>Some sort of information here, perhaps?</Text>
+          </React.Fragment>
+        ),
+      }}
+      right={{
+        children: (
+          <React.Fragment>
+            <Heading as="h2">Less important...</Heading>
+            <Text>Some more information here, maybe?</Text>
+          </React.Fragment>
+        ),
+      }}
+    />
+  </Story>
+</Preview>
+
+<Props of={SplitInterstitial} />
+
+## Custom Images
+
+You can override the built-in images with your own on a per-design basis.
+
+<Preview>
+  <Story name="Custom Images">
+    <SplitInterstitial
+      left={{
+        children: (
+          <React.Fragment>
+            <Heading as="h1">Important stuff!</Heading>
+            <Text>Some sort of information here, perhaps?</Text>
+          </React.Fragment>
+        ),
+      }}
+      right={{
+        children: (
+          <React.Fragment>
+            <Heading as="h2">Less important...</Heading>
+            <Text>Some more information here, maybe?</Text>
+          </React.Fragment>
+        ),
+      }}
+      topLeftImage={{
+        src: Triangle,
+      }}
+      bottomRightImage={{
+        src: Stairs,
+      }}
+    />
+  </Story>
+</Preview>

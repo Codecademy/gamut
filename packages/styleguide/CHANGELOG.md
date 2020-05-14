@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.11.1 (2020-05-14)</small>
+
+* Update tabs stories to MDX (#803) ([79c41eb](https://github.com/RyzacInc/client-modules/commit/79c41eb)), closes [#803](https://github.com/RyzacInc/client-modules/issues/803)
+
+
+
+
+
+## 9.11.0 (2020-05-14)
+
+* feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/RyzacInc/client-modules/commit/b7950c9)), closes [#794](https://github.com/RyzacInc/client-modules/issues/794)
+
+
+
+
+
+## 9.10.0 (2020-05-13)
+
+* feat(Styleguide): Convert All Stories to MDX (#788) ([96255a0](https://github.com/RyzacInc/client-modules/commit/96255a0)), closes [#788](https://github.com/RyzacInc/client-modules/issues/788)
+
+
+
+
+
+## <small>9.9.2 (2020-05-12)</small>
+
+* fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)
+
+
+
+
+
+## <small>9.9.1 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 9.9.0 (2020-05-12)
+
+* feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
+
+
+
+
+
 ## 9.8.0 (2020-05-11)
 
 * feat(styleguide): Added Components documentation (#781) ([d7039e5](https://github.com/RyzacInc/client-modules/commit/d7039e5)), closes [#781](https://github.com/RyzacInc/client-modules/issues/781)

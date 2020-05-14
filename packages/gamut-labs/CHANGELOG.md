@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.7.0 (2020-05-14)
+
+* feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/Codecademy/client-modules/commit/b7950c9)), closes [#794](https://github.com/Codecademy/client-modules/issues/794)
+
+
+
+
+
+## 1.6.0 (2020-05-13)
+
+* feat(Header): Hide header on print views ([2a338f9](https://github.com/Codecademy/client-modules/commit/2a338f9))
+
+
+
+
+
+## <small>1.5.15 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
+## <small>1.5.14 (2020-05-12)</small>
+
+* style(Testimonial): allow Testimonial card to be full width (#791) ([e4bb981](https://github.com/Codecademy/client-modules/commit/e4bb981)), closes [#791](https://github.com/Codecademy/client-modules/issues/791)
+
+
+
+
+
+## <small>1.5.13 (2020-05-12)</small>
+
+**Note:** Version bump only for package @codecademy/brand-components
+
+
+
+
+
 ## <small>1.5.12 (2020-05-11)</small>
 
 * remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/Codecademy/client-modules/commit/2db0e54)), closes [#792](https://github.com/Codecademy/client-modules/issues/792)
