@@ -19,7 +19,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
 
 export type GridFormCustomFieldProps = {
   className: string;
-  error?: string;
+  error?: boolean;
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
