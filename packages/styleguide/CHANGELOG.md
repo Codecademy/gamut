@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.11.1 (2020-05-14)</small>
+
+* Update tabs stories to MDX (#803) ([79c41eb](https://github.com/RyzacInc/client-modules/commit/79c41eb)), closes [#803](https://github.com/RyzacInc/client-modules/issues/803)
+
+
+
+
+
 ## 9.11.0 (2020-05-14)
 
 * feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/RyzacInc/client-modules/commit/b7950c9)), closes [#794](https://github.com/RyzacInc/client-modules/issues/794)
