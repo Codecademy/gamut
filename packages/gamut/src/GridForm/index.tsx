@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, FieldError } from 'react-hook-form';
+import { useForm, FieldError, Mode } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
@@ -37,6 +37,14 @@ export type GridFormProps<Values extends {}> = {
    * Description of the submit button at the end of the form.
    */
   submit: Omit<GridFormSubmitProps, 'disabled'>;
+
+  /**
+   * Which react hook form mode we are going to use for validation.
+   * By default this value is onSubmit.
+   * If you use the onChange mode the submit button will be disabled until all
+   * required fields are completed.
+   */
+  validation?: Exclude<Mode, 'onBlur'>;
 };
 
 export function GridForm<
@@ -49,6 +57,7 @@ export function GridForm<
   onSubmit,
   rowGap = 'md',
   submit,
+  validation = 'onSubmit',
 }: GridFormProps<Values>) {
   const { errors, handleSubmit, register, setValue, formState } = useForm<
     Values
@@ -60,7 +69,7 @@ export function GridForm<
       }),
       {}
     ),
-    mode: 'onChange',
+    mode: validation,
   });
 
   return (
@@ -79,7 +88,10 @@ export function GridForm<
             />
           );
         })}
-        <GridFormSubmit disabled={!formState.isValid} {...submit} />
+        <GridFormSubmit
+          disabled={validation === 'onChange' ? !formState.isValid : false}
+          {...submit}
+        />
         {children}
       </LayoutGrid>
     </Form>
