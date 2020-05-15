@@ -10,11 +10,13 @@ import styles from './styles.module.scss';
 export type ExampleShape = {
   name: string;
   kind: string;
+  text?: string;
 };
 
 export type AboutCellProps = {
   emoji: string;
   examples?: ExampleShape[];
+  label?: string;
   kind: Section;
   story?: string;
   title?: string;
@@ -28,6 +30,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   kind,
   category,
   story = 'About',
+  label = 'Examples',
   title = kind || category,
 }) => {
   const kindLink = [category, kind].filter(Boolean).join('|');
@@ -41,7 +44,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
       <p className={styles.children}>{children}</p>
       {examples && (
         <div className={styles.examples}>
-          Examples:{' '}
+          {label}:{' '}
           {examples.map((example, i) => {
             const exampleLink = [category, example.kind]
               .filter(Boolean)
@@ -49,7 +52,7 @@ export const AboutCell: React.FC<AboutCellProps> = ({
             return (
               <React.Fragment key={example.name}>
                 <LinkTo kind={exampleLink} story={example.name}>
-                  {example.name || example}
+                  {example.text || example.name}
                 </LinkTo>
                 {i !== examples.length - 1 && ', '}
               </React.Fragment>
