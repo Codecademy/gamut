@@ -57,4 +57,82 @@ describe('GridForm', () => {
       [stubTextField.name]: textValue,
     });
   });
+
+  describe('when "onSubmit" validation is selected', () => {
+    it('never disables the submit button', () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</> }}
+          validation={'onSubmit'}
+        />
+      );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
+        false
+      );
+    });
+  });
+
+  describe('when "onChange" validation is selected', () => {
+    it('disables the submit button when required fields are incomplete', async () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</> }}
+          validation={'onChange'}
+        />
+      );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+    });
+
+    it('enables the submit button after the required fields are completed', async () => {
+      const fields = [
+        { ...stubTextField, validation: { required: 'Please enter text' } },
+      ];
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={fields}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</> }}
+          validation={'onChange'}
+        />
+      );
+
+      await act(async () => {
+        // https://github.com/react-hook-form/react-hook-form/issues/1382
+        const node = wrapped.find('input[type="text"]').getDOMNode();
+        (node as HTMLInputElement).value = 'Hooray!';
+        node.dispatchEvent(new Event('input'));
+      });
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
+        false
+      );
+    });
+  });
 });

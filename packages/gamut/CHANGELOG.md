@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.9.0 (2020-05-15)
+
+* feat(Gamut): Disable GridForm submit until required field are complete (#798) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f)), closes [#798](https://github.com/RyzacInc/client-modules/issues/798)
+
+
+
+
+
+## <small>7.8.2 (2020-05-15)</small>
+
+* fix(Gamut): Pass down error to GridFormCustomInput (#804) ([de90e1c](https://github.com/RyzacInc/client-modules/commit/de90e1c)), closes [#804](https://github.com/RyzacInc/client-modules/issues/804)
+
+
+
+
+
 ## <small>7.8.1 (2020-05-12)</small>
 
 * fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)

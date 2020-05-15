@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.12.0 (2020-05-15)
+
+* feat(Gamut): Disable GridForm submit until required field are complete (#798) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f)), closes [#798](https://github.com/RyzacInc/client-modules/issues/798)
+
+
+
+
+
+## <small>9.11.3 (2020-05-15)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>9.11.2 (2020-05-15)</small>
+
+* chore: Repurposed and renamed brand-components into gamut-labs ⚗️ (#797) ([d1aaabf](https://github.com/RyzacInc/client-modules/commit/d1aaabf)), closes [#797](https://github.com/RyzacInc/client-modules/issues/797)
+
+
+
+
+
 ## <small>9.11.1 (2020-05-14)</small>
 
 * Update tabs stories to MDX (#803) ([79c41eb](https://github.com/RyzacInc/client-modules/commit/79c41eb)), closes [#803](https://github.com/RyzacInc/client-modules/issues/803)
