@@ -4,10 +4,10 @@ import { CloseIcon } from '@codecademy/gamut-icons';
 
 import Button from '../Button';
 import { CardShell } from '../Card';
-import Overlay from '../Overlay';
+import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
-export type ModalProps = {
+export type ModalProps = Pick<OverlayProps, 'clickOutsideDeactivates'> & {
   children?: React.ReactNode;
   className?: string;
   /**
@@ -29,12 +29,14 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   closeModal,
   isOpen,
+  clickOutsideDeactivates,
   hideDefaultCloseButton,
 }) => {
   return (
     <Overlay
       isOpen={isOpen}
       className={cx(styles.modal, className)}
+      clickOutsideDeactivates={clickOutsideDeactivates}
       data-testid="modal"
     >
       <div className={styles.modalContainer}>

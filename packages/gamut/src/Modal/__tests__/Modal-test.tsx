@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { Overlay } from '../../Overlay';
 import Modal from '..';
 
 describe('Modal', () => {
@@ -35,5 +36,25 @@ describe('Modal', () => {
     expect(
       wrapper.find(`[data-testid="modal-default-close-button"]`)
     ).toHaveLength(1);
+  });
+
+  it('passes truthy clickOutsideDeactivates option to Overlay', () => {
+    const wrapper = mount(
+      <Modal clickOutsideDeactivates isOpen>
+        When you click the overlay I will close!
+      </Modal>
+    );
+
+    expect(wrapper.find(Overlay).props().clickOutsideDeactivates).toBeTruthy();
+  });
+
+  it('passes falsy clickOutsideDeactivates option to Overlay', () => {
+    const wrapper = mount(
+      <Modal clickOutsideDeactivates={false} isOpen>
+        When you click the overlay I will not close!
+      </Modal>
+    );
+
+    expect(wrapper.find(Overlay).props().clickOutsideDeactivates).toBeFalsy();
   });
 });
