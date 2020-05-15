@@ -88,7 +88,7 @@ export function GridForm<
           );
         })}
         <GridFormSubmit
-          disabled={validation === 'onChange' ? !formState.isValid : false}
+          disabled={validation === 'onChange' && !formState.isValid}
           {...submit}
         />
         {children}
