@@ -1,0 +1,46 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, boolean } from '@storybook/addon-knobs';
+import {
+  CardShell,
+  CardBody,
+  CardFooter,
+  Heading,
+  Text,
+} from '@codecademy/gamut/src';
+import { StoryStatus } from '../../../Templating/Blocks';
+
+<Meta
+  title="Core|Molecules/Card"
+  component={CardShell}
+  subcomponents={{ CardBody, CardFooter }}
+/>
+
+# Card
+
+<StoryStatus status="ready" />
+
+Default shell with white background that can include some subtly
+emphasized content.
+
+<Preview>
+  <Story name="Card">
+    <CardShell hoverShadow={boolean('shell.hoverShadow', false)}>
+      <CardBody standardPadding={boolean('body.standardPadding', true)}>
+        <Heading as="h3">Card Body</Heading>
+        <Text>This is some body text</Text>
+        <Text>Blah blah blurgha blurgha</Text>
+      </CardBody>
+      <CardFooter
+        align={select('Align', ['left', 'center', 'right'], 'left')}
+        border={select('Border', ['dashed', 'solid', 'none'], 'none')}
+        flex={boolean('Flex', true)}
+        standardPadding={boolean('Standard Padding', true)}
+        standardHeight={boolean('Standard Height', true)}
+      >
+        <React.Fragment>Footer Text</React.Fragment>
+      </CardFooter>
+    </CardShell>
+  </Story>
+</Preview>
+
+<Props of={CardShell} />

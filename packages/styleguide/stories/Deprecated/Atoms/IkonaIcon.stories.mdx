@@ -1,0 +1,34 @@
+import {
+  Meta,
+  Props,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../Templating/Blocks';
+import { IkonaIcon } from '@codecademy/gamut/src';
+import iconStyles from '@codecademy/gamut/src/IkonaIcon/styles/index.module.scss';
+
+<Meta title="Deprecated|Atoms/IkonaIcon" component={IkonaIcon} />
+
+# IkonaIcon
+
+<StoryStatus status="deprecated" />
+
+Very old legacy icons as defined in the `@codecademy/gamut` package&apos;s `IkonaIcon` export.
+
+Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package instead.
+
+<Props of={IkonaIcon} />
+
+## All Icons
+
+<IconGallery>
+  {Object.keys(iconStyles)
+    .filter((cn) => cn.match('ikona-'))
+    .map((cn) => cn.replace('ikona-', ''))
+    .map((iconName) => (
+      <IconItem key={iconName} name={iconName}>
+        <IkonaIcon key={iconName} name={iconName} size={2} />
+      </IconItem>
+    ))}
+</IconGallery>
