@@ -10,6 +10,7 @@ export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
+  disabled: boolean;
   position?: GridFormSubmitPosition;
   size?: ResponsiveProperty<ColumnSizes>;
   theme?: string;
@@ -17,6 +18,7 @@ export type GridFormSubmitProps = {
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
+  disabled,
   position = 'left',
   size,
   theme = 'brand-purple',
@@ -25,7 +27,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
 
   return (
     <Column className={cx(styles.base, positionStyle)} size={size}>
-      <Button theme={theme} type="submit">
+      <Button disabled={disabled} theme={theme} type="submit">
         {contents}
       </Button>
     </Column>
