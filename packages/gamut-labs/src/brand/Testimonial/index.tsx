@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Byline, Quote } from '../index';
+import { Avatar, Byline, Quote } from '../../index';
 import { VisualTheme } from '@codecademy/gamut';
 import cx from 'classnames';
 

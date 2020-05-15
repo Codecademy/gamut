@@ -1,6 +1,6 @@
 {
-  "name": "@codecademy/brand-components",
-  "description": "Brand component library for Codecademy",
+  "name": "@codecademy/gamut-labs",
+  "description": "Brand and experimental component library for Codecademy",
   "version": "1.7.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
