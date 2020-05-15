@@ -5,7 +5,7 @@ import { GridFormCustomField } from '../../types';
 
 export type GridFormCustomInputProps = {
   className?: string;
-  error?: boolean;
+  error?: string;
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (name: string, value: any) => void;
