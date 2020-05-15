@@ -40,7 +40,6 @@ export type GridFormProps<Values extends {}> = {
 
   /**
    * Which react hook form mode we are going to use for validation.
-   * By default this value is onSubmit.
    * If you use the onChange mode the submit button will be disabled until all
    * required fields are completed.
    */
