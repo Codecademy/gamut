@@ -7,17 +7,19 @@ import { CardShell } from '../Card';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
-export type ModalProps = Pick<OverlayProps, 'clickOutsideDeactivates'> & {
+export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
   /**
-   * Whether the modal is open or closed
+   * Whether the Modal is open or closed
    */
   isOpen: boolean;
   /**
    * A function that, at minimum, sets the state to close the modal
    */
   closeModal?: () => void;
+  clickOutsideDeactivates?: OverlayProps['clickOutsideDeactivates'];
+  escapeDeactivates?: OverlayProps['escapeDeactivates'];
   /**
    * Whether to hide the default close button and pass your own through children
    */
@@ -37,6 +39,7 @@ export const Modal: React.FC<ModalProps> = ({
       isOpen={isOpen}
       className={cx(styles.modal, className)}
       clickOutsideDeactivates={clickOutsideDeactivates}
+      onRequestDeactivate={closeModal}
       data-testid="modal"
     >
       <div className={styles.modalContainer}>

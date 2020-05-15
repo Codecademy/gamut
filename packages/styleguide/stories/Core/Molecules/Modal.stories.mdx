@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../../Templating/Blocks';
 import { useState } from '@storybook/addons';
-import { Button, Modal } from '@codecademy/gamut/src';
+import { Button, Modal, Text } from '@codecademy/gamut/src';
 
 <Meta title="Core|Molecules/Modal" component={Modal} />
 
@@ -39,9 +39,48 @@ Simple Modal portal to escape current DOM Context.
             Click to open the modal!
           </Button>
           <Modal isOpen={isOpen} hideDefaultCloseButton>
-            Close the modal...
-            <Button onClick={() => setIsOpen(false)}>
+            <p>Close the modal...</p>
+            <Button block onClick={() => setIsOpen(false)}>
               with this button instead
+            </Button>
+          </Modal>
+        </React.Fragment>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Alternative closing methods
+
+Other than creating buttons that can close the modal, there are other ways a Modal can close depending on what experience you want for the user.
+
+All of these methods rely on setting the `closeModal` prop and making sure it toggles the `isOpen` prop on the modal.
+
+If you enable the `clickOutsideDeactivates` prop, your Modal will close whenever the user clicks outside of the content of the modal.
+
+By default, clicking the escape key on your keyboard will close an active Modal. You can deactivate this by setting the `escapeDeactivates` prop to false.
+
+<Preview>
+  <Story name="Clicking Outside">
+    {() => {
+      const [isOpen, setIsOpen] = useState(false);
+      return (
+        <React.Fragment>
+          <Button link onClick={() => setIsOpen(true)}>
+            Click to open the modal!
+          </Button>
+          <Modal
+            isOpen={isOpen}
+            hideDefaultCloseButton
+            clickOutsideDeactivates
+            closeModal={() => setIsOpen(false)}
+          >
+            <p>
+              Close this modal by clicking the page outside of the Modal
+              content, or by clicking the escape key.
+            </p>
+            <Button block onClick={() => setIsOpen(false)}>
+              or with this button
             </Button>
           </Modal>
         </React.Fragment>
