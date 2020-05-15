@@ -41,6 +41,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
+            error={props.error}
           />
         );
 
