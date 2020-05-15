@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.2 (2020-05-15)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>1.7.1 (2020-05-15)</small>
 
 * chore: Repurposed and renamed brand-components into gamut-labs ⚗️ (#797) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf)), closes [#797](https://github.com/Codecademy/client-modules/issues/797)
