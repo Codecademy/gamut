@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.11.3 (2020-05-15)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>9.11.2 (2020-05-15)</small>
 
 * chore: Repurposed and renamed brand-components into gamut-labs ⚗️ (#797) ([d1aaabf](https://github.com/RyzacInc/client-modules/commit/d1aaabf)), closes [#797](https://github.com/RyzacInc/client-modules/issues/797)
