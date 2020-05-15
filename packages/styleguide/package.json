@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "9.11.1",
+  "version": "9.11.2",
   "author": "Codecademy Engineering",
   "private": true,
   "scripts": {
@@ -20,8 +20,8 @@
     "@babel/polyfill": "7.8.3",
     "@babel/register": "7.8.3",
     "@codecademy/gamut": "^7.8.1",
-    "@codecademy/gamut-styles": "^3.3.1",
     "@codecademy/gamut-icons": "^2.3.1",
+    "@codecademy/gamut-styles": "^3.3.1",
     "@codecademy/webpack-config": "^5.0.2",
     "@storybook/addon-a11y": "6.0.0-alpha.44",
     "@storybook/addon-actions": "6.0.0-alpha.44",
