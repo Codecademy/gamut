@@ -31,21 +31,23 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ### Working with pre-published changes
 
 For quicker development cycles, it's possible to run a pre-published version of Gamut in the monolith. We do that using
-symlinks. The following instructions assume your client_modules and Codecademy repo are in your home folder:
+symlinks. The following instructions assume you have set up client_modules and Codecademy, and the repos are in your home folder:
 
-1. `cd ~/client_modules/packages/gamut`
+1. `cd ~/client-modules/packages/gamut`
 1. `yarn link`
 1. `cd ~/Codecademy`
 1. `yarn link @codecademy/gamut`
 1. `cd node_modules/react`
 1. `yarn link`
-1. `cd ~/client_modules`
+1. `yarn install`
+1. `cd ~/client-modules`
 1. `yarn link react`
+1. `yarn install`
 
 You must link the monolith's copy of React in Gamut. [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why we have to do this.
 
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build-all && yarn build:watch`
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
 
 #### Troubleshooting
 

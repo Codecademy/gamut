@@ -40,7 +40,7 @@
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "build:watch": "onchange ./src -- yarn build:compile && yarn build:types",
+    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
   },
   "license": "MIT",
