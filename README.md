@@ -45,11 +45,12 @@ symlinks. The following instructions assume your client_modules and Codecademy r
 You must link the monolith's copy of React in Gamut. [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why we have to do this.
 
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build-all && build:watch`
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build-all && yarn build:watch`
 
 #### Troubleshooting
 
-If you run into compilation issues, try restarting your monolith dev server or running `yarn build-all` in this repo.
+If you run into compilation issues after linking, try `yarn install` in the monolith and restarting its dev server
+or running `yarn build-all` in this repo.
 
 ### Publishing Modules
 
