@@ -11,25 +11,25 @@ export type OverlayProps = {
   /**
    * Whether clicking on the screen outside of the container should close the Overlay
    */
-  clickOutsideDeactivates?: boolean;
+  clickOutsideCloses?: boolean;
   /**
    * Whether clicking the escape key should close the Overlay
    */
-  escapeDeactivates?: boolean;
+  escapeCloses?: boolean;
   /**
    * Called when the Overlay automatically requests to be closed,
    * this could be due to clicking outside of the overlay with the `clickOutsideDeactivates` option enabled, or by clicking the escape key
    */
-  onRequestDeactivate?: () => void;
+  onRequestClose?: () => void;
   isOpen?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
-  clickOutsideDeactivates,
-  escapeDeactivates = true,
-  onRequestDeactivate,
+  clickOutsideCloses,
+  escapeCloses = true,
+  onRequestClose,
   isOpen,
 }) => {
   if (!isOpen) {
@@ -41,9 +41,9 @@ export const Overlay: React.FC<OverlayProps> = ({
       <div className={cx(styles.container, className)}>
         <FocusTrap
           focusTrapOptions={{
-            clickOutsideDeactivates,
-            escapeDeactivates,
-            onDeactivate: onRequestDeactivate,
+            clickOutsideDeactivates: clickOutsideCloses,
+            escapeDeactivates: escapeCloses,
+            onDeactivate: onRequestClose,
           }}
         >
           {children}

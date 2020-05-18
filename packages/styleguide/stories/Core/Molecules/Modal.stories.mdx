@@ -15,9 +15,7 @@ Simple Modal portal to escape current DOM Context.
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button link onClick={() => setIsOpen(true)}>
-            Click to open the modal!
-          </Button>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
           <Modal isOpen={isOpen} closeModal={() => setIsOpen(false)}>
             Close the modal!
           </Modal>
@@ -29,15 +27,21 @@ Simple Modal portal to escape current DOM Context.
 
 <Props of={Modal} />
 
+### Creating a custom close button
+
+By default, the modal will render a close button.
+
+You can disable the default close button with the `hideDefaultCloseButton` prop.
+
+You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
+
 <Preview>
   <Story name="Without Close Default">
     {() => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button link onClick={() => setIsOpen(true)}>
-            Click to open the modal!
-          </Button>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
           <Modal isOpen={isOpen} hideDefaultCloseButton>
             <p>Close the modal...</p>
             <Button block onClick={() => setIsOpen(false)}>
@@ -56,9 +60,9 @@ Other than creating buttons that can close the modal, there are other ways a Mod
 
 All of these methods rely on setting the `closeModal` prop and making sure it toggles the `isOpen` prop on the modal.
 
-If you enable the `clickOutsideDeactivates` prop, your Modal will close whenever the user clicks outside of the content of the modal.
+If you enable the `clickOutsideCloses` prop, your Modal will close whenever the user clicks outside of the content of the modal.
 
-By default, clicking the escape key on your keyboard will close an active Modal. You can deactivate this by setting the `escapeDeactivates` prop to false.
+By default, clicking the escape key on your keyboard will also close an active Modal.
 
 <Preview>
   <Story name="Clicking Outside">
@@ -66,9 +70,7 @@ By default, clicking the escape key on your keyboard will close an active Modal.
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button link onClick={() => setIsOpen(true)}>
-            Click to open the modal!
-          </Button>
+          <Button onClick={() => setIsOpen(true)}>Open</Button>
           <Modal
             isOpen={isOpen}
             hideDefaultCloseButton

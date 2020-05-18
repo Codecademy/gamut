@@ -18,8 +18,8 @@ export type ModalProps = {
    * A function that, at minimum, sets the state to close the modal
    */
   closeModal?: () => void;
-  clickOutsideDeactivates?: OverlayProps['clickOutsideDeactivates'];
-  escapeDeactivates?: OverlayProps['escapeDeactivates'];
+  clickOutsideCloses?: OverlayProps['clickOutsideCloses'];
+  escapeCloses?: OverlayProps['escapeCloses'];
   /**
    * Whether to hide the default close button and pass your own through children
    */
@@ -31,15 +31,15 @@ export const Modal: React.FC<ModalProps> = ({
   className,
   closeModal,
   isOpen,
-  clickOutsideDeactivates,
+  clickOutsideCloses,
   hideDefaultCloseButton,
 }) => {
   return (
     <Overlay
       isOpen={isOpen}
       className={cx(styles.modal, className)}
-      clickOutsideDeactivates={clickOutsideDeactivates}
-      onRequestDeactivate={closeModal}
+      clickOutsideCloses={clickOutsideCloses}
+      onRequestClose={closeModal}
       data-testid="modal"
     >
       <div className={styles.modalContainer}>

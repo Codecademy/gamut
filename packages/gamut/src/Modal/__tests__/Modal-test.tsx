@@ -38,23 +38,23 @@ describe('Modal', () => {
     ).toHaveLength(1);
   });
 
-  it('passes truthy clickOutsideDeactivates option to Overlay', () => {
+  it('passes truthy clickOutsideCloses option to Overlay', () => {
     const wrapper = mount(
-      <Modal clickOutsideDeactivates isOpen>
+      <Modal clickOutsideCloses isOpen>
         When you click the overlay I will close!
       </Modal>
     );
 
-    expect(wrapper.find(Overlay).props().clickOutsideDeactivates).toBeTruthy();
+    expect(wrapper.find(Overlay).props().clickOutsideCloses).toBeTruthy();
   });
 
-  it('passes falsy clickOutsideDeactivates option to Overlay', () => {
+  it('passes falsy clickOutsideCloses option to Overlay', () => {
     const wrapper = mount(
-      <Modal clickOutsideDeactivates={false} isOpen>
+      <Modal clickOutsideCloses={false} isOpen>
         When you click the overlay I will not close!
       </Modal>
     );
 
-    expect(wrapper.find(Overlay).props().clickOutsideDeactivates).toBeFalsy();
+    expect(wrapper.find(Overlay).props().clickOutsideCloses).toBeFalsy();
   });
 });
