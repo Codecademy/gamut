@@ -5,7 +5,7 @@ import Overlay, { OverlayProps } from '..';
 
 const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(
-    <Overlay {...props}>
+    <Overlay onRequestClose={() => {}} {...props}>
       <div data-testid="overlay-content">
         Howdy!
         <button type="button" />
