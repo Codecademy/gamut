@@ -59,7 +59,7 @@ export type GridFormSelectField = BaseFormField<string> & {
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  label: React.ReactNode;
+  label: string;
   validation?: ValidationOptions;
   type: 'file';
 };
