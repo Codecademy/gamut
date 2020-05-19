@@ -4,7 +4,7 @@ import Modal, { ModalProps } from '..';
 
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(
-    <Modal isOpen {...props}>
+    <Modal isOpen onRequestClose={() => {}} {...props}>
       <div data-testid="modal-content">{props?.children}</div>
     </Modal>
   );
@@ -42,36 +42,34 @@ describe('Modal', () => {
     ).toBeInTheDocument();
   });
 
-  it('triggers closeModal callback when escape key is triggered', () => {
-    const closeModal = jest.fn();
+  it('triggers onRequestClose callback when escape key is triggered', () => {
+    const onRequestClose = jest.fn();
     const { baseElement } = renderModal({
       isOpen: true,
-      closeModal,
+      onRequestClose,
     });
     fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
-    expect(closeModal.mock.calls.length).toBe(1);
+    expect(onRequestClose.mock.calls.length).toBe(1);
   });
 
-  it('triggers closeModal callback when clicking outside when clickOutsideCloses is true', () => {
-    const closeModal = jest.fn();
+  it('triggers onRequestClose callback when clicking outside when clickOutsideCloses is true', () => {
+    const onRequestClose = jest.fn();
     const { baseElement } = renderModal({
       isOpen: true,
-      clickOutsideCloses: true,
-      closeModal,
+      onRequestClose,
     });
     // focus-trap listens to mouseDown, not click
     fireEvent.mouseDown(baseElement);
-    expect(closeModal.mock.calls.length).toBe(1);
+    expect(onRequestClose.mock.calls.length).toBe(1);
   });
 
-  it('does not trigger closeModal callback when clicking inside', () => {
-    const closeModal = jest.fn();
+  it('does not trigger onRequestClose callback when clicking inside', () => {
+    const onRequestClose = jest.fn();
     renderModal({
       isOpen: true,
-      clickOutsideCloses: true,
-      closeModal,
+      onRequestClose,
     });
     fireEvent.mouseDown(screen.queryByTestId('modal-content'));
-    expect(closeModal.mock.calls.length).toBe(0);
+    expect(onRequestClose.mock.calls.length).toBe(0);
   });
 });
