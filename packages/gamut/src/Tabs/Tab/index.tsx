@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { pickDataProps } from '../../utils/pickDataProps';
 
