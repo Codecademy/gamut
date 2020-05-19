@@ -14,12 +14,18 @@ export type ModalProps = {
    * Whether the Modal is open or closed
    */
   isOpen: boolean;
+
   /**
-   * A function that, at minimum, sets the state to close the modal
+   * A function that is called when the Modal expects to be closed
+   * Triggered automatically by the Overlay component in certain situations
    */
-  closeModal?: () => void;
-  clickOutsideCloses?: OverlayProps['clickOutsideCloses'];
-  escapeCloses?: OverlayProps['escapeCloses'];
+  onRequestClose: () => void;
+
+  /**
+   * See Overlay component for prop definitions
+   */
+  overlayProps?: Partial<Omit<OverlayProps, 'onRequestClose' | 'className'>>;
+
   /**
    * Whether to hide the default close button and pass your own through children
    */
@@ -29,44 +35,44 @@ export type ModalProps = {
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
-  closeModal,
+  onRequestClose,
+  overlayProps,
   isOpen,
-  clickOutsideCloses,
   hideDefaultCloseButton,
 }) => {
   return (
     <Overlay
       isOpen={isOpen}
       className={cx(styles.modal, className)}
-      clickOutsideCloses={clickOutsideCloses}
-      onRequestClose={closeModal}
+      {...overlayProps}
+      onRequestClose={onRequestClose}
       data-testid="modal"
     >
-      <div className={styles.modalContainer}>
-        <CardShell className={styles.modalBody}>
-          {!hideDefaultCloseButton && (
-            <div
-              className={styles.closeButtonContainer}
-              data-testid="modal-default-close-button"
+      <CardShell
+        className={styles.modalBody}
+        aria-hidden="false"
+        aria-label="Dialog Window - Close (Press escape to close)"
+        role="dialog"
+        tabIndex={-1}
+      >
+        {!hideDefaultCloseButton && (
+          <div
+            className={styles.closeButtonContainer}
+            data-testid="modal-default-close-button"
+          >
+            <Button
+              flat
+              theme="brand-dark-blue"
+              fitText
+              onClick={onRequestClose}
+              className={styles.closeButton}
             >
-              <Button
-                flat
-                theme="brand-dark-blue"
-                fitText
-                onClick={closeModal && closeModal}
-                className={styles.closeButton}
-              >
-                <CloseIcon
-                  width={22}
-                  height={22}
-                  className={styles.closeIcon}
-                />
-              </Button>
-            </div>
-          )}
-          {children}
-        </CardShell>
-      </div>
+              <CloseIcon width={22} height={22} className={styles.closeIcon} />
+            </Button>
+          </div>
+        )}
+        {children}
+      </CardShell>
     </Overlay>
   );
 };
