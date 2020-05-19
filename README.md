@@ -28,32 +28,6 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 1.  Add new stories to `packages/styleguide/stories`
 1.  Stories are written using storybook's [Component Story Format](https://storybook.js.org/docs/formats/component-story-format/)
 
-### Working with pre-published changes
-
-For quicker development cycles, it's possible to run a pre-published version of Gamut in the monolith. We do that using
-symlinks. The following instructions assume you have set up client_modules and Codecademy, and the repos are in your home folder:
-
-1. `cd ~/client-modules/packages/gamut`
-1. `yarn link`
-1. `cd ~/Codecademy`
-1. `yarn link @codecademy/gamut`
-1. `cd node_modules/react`
-1. `yarn link`
-1. `yarn install`
-1. `cd ~/client-modules`
-1. `yarn link react`
-1. `yarn install`
-
-You must link the monolith's copy of React in Gamut. [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
-for more information for why we have to do this.
-
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
-
-#### Troubleshooting
-
-If you run into compilation issues after linking, try `yarn install` in the monolith and restarting its dev server
-or running `yarn build-all` in this repo.
-
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
@@ -70,6 +44,38 @@ Every PR that changes files in a package publishes alpha releases that you can u
 1.  In the github "checks" UI, find the "Publish Alpha" task
 1.  Once this check has passed, click on it, and look through the output for the alpha version number
 1.  Use this version in the other application you want to test your changes on
+
+### Working with pre-published changes
+
+For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
+symlinks. The following instructions assume you have set up and built client-modules, and the repos are in your home folder:
+
+1. `cd ~/client-modules/packages/gamut`
+1. `yarn link`
+1. `cd ~/${yourOtherProject}`
+1. `yarn link @codecademy/gamut`
+1. `yarn install`
+
+If your other project uses React, you must link that copy of React in Gamut:
+
+```
+1. `cd ~/${yourOtherProject}`
+1. `cd node_modules/react`
+1. `yarn link`
+1. `cd ~/client-modules`
+1. `yarn link react`
+1. `yarn build-all`
+```
+
+[See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
+for more information for why you have to do this.
+
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
+
+#### Troubleshooting
+
+If you run into compilation issues after linking, try `yarn install` in the monolith and restarting its dev server
+or running `yarn build-all` in this repo.
 
 ### PR Title Guide
 
