@@ -7,8 +7,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * feat!: Refactor Modal and Overlay components [GM-24] (#806) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc)), closes [#806](https://github.com/RyzacInc/client-modules/issues/806)
 
+🚨 = breaking change
 
+### Overlay
+1. 🚨Added the `onRequestClose` callback, so the parent component can respond to close events from inside the component, and made it required.
+1. Hooked up `focus-trap` close callbacks, so clicking outside and clicking the escape key trigger `onRequestClose`
+1. Added logic for finding a fallback focus element if none exists
 
+### Modal
+1. Moved props passed down to overlay* to `overlayProps` prop
+1. 🚨Renamed `closeModal` to `onRequestClose` to match overlay and better explain the purpose of the function
+1. Allowed the `CardShell` to be focused initially on all modals
+
+* Except for required props like `onRequestClose`
+
+### CardShell
+
+Changes necessary for `Modal`'s usage of `CardShell` 
+
+1. Allowed forwarding other `<div>` compatible pros
+1. Added ref forwarding
+1. Cleaned up types
 
 
 ## 7.11.0 (2020-05-20)
