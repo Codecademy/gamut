@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>8.0.1 (2020-05-20)</small>
+
+* chore: update changelog manually ([95e7838](https://github.com/RyzacInc/client-modules/commit/95e7838))
+* fix: preserve display name on card shell (#812) ([ca1d3c0](https://github.com/RyzacInc/client-modules/commit/ca1d3c0)), closes [#812](https://github.com/RyzacInc/client-modules/issues/812)
+
+
+
+
+
+## 8.0.0 (2020-05-20)
+
+* feat!: Refactor Modal and Overlay components [GM-24] (#806) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc)), closes [#806](https://github.com/RyzacInc/client-modules/issues/806)
+
+🚨 = breaking change
+
+### Overlay
+1. 🚨Added the `onRequestClose` callback, so the parent component can respond to close events from inside the component, and made it required.
+1. Hooked up `focus-trap` close callbacks, so clicking outside and clicking the escape key trigger `onRequestClose`
+1. Added logic for finding a fallback focus element if none exists
+
+### Modal
+1. Moved props passed down to overlay* to `overlayProps` prop
+1. 🚨Renamed `closeModal` to `onRequestClose` to match overlay and better explain the purpose of the function
+1. Allowed the `CardShell` to be focused initially on all modals
+
+* Except for required props like `onRequestClose`
+
+### CardShell
+
+Changes necessary for `Modal`'s usage of `CardShell` 
+
+1. Allowed forwarding other `<div>` compatible pros
+1. Added ref forwarding
+1. Cleaned up types
+
+
+## 7.11.0 (2020-05-20)
+
+* feat(Gamut): Add Input Stepper (#753) ([1d110a0](https://github.com/RyzacInc/client-modules/commit/1d110a0)), closes [#753](https://github.com/RyzacInc/client-modules/issues/753)
+
+
+
+
+
+## <small>7.10.1 (2020-05-20)</small>
+
+* Allowed general text inputs for GridForm (#811) ([f8e5c3b](https://github.com/RyzacInc/client-modules/commit/f8e5c3b)), closes [#811](https://github.com/RyzacInc/client-modules/issues/811)
+
+
+
+
+
+## 7.10.0 (2020-05-19)
+
+* feat(GridForm): Update GridFormField label type to accept ReactNodes. (#809) ([72d829d](https://github.com/RyzacInc/client-modules/commit/72d829d)), closes [#809](https://github.com/RyzacInc/client-modules/issues/809)
+
+
+
+
+
+## 7.9.0 (2020-05-15)
+
+* feat(Gamut): Disable GridForm submit until required field are complete (#798) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f)), closes [#798](https://github.com/RyzacInc/client-modules/issues/798)
+
+
+
+
+
+## <small>7.8.2 (2020-05-15)</small>
+
+* fix(Gamut): Pass down error to GridFormCustomInput (#804) ([de90e1c](https://github.com/RyzacInc/client-modules/commit/de90e1c)), closes [#804](https://github.com/RyzacInc/client-modules/issues/804)
+
+
+
+
+
 ## <small>7.8.1 (2020-05-12)</small>
 
 * fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)

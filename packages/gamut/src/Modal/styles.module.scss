@@ -12,6 +12,10 @@
 .modalBody {
   padding: 1rem;
   margin: 1rem;
+  // We don't need focus styles for the overlay
+  // it is non-interactive and just meant to steal focus from
+  // whatever had it previously
+  outline: none;
 }
 
 .closeButtonContainer {
