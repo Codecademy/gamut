@@ -8,7 +8,7 @@ import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
 export type ModalOverlayProps = Partial<
-  Omit<OverlayProps, 'onRequestClose' | 'isOpen' | 'children'>
+  Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
 
 export type ModalProps = {
@@ -57,7 +57,6 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         role="dialog"
-        tabIndex={-1}
       >
         {!hideDefaultCloseButton && (
           <div

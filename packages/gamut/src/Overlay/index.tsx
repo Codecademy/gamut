@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React, { useRef, useEffect, useState } from 'react';
+import { uniqueId } from 'lodash';
+import React, { useMemo } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -32,50 +33,32 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  const [trapActive, setTrapActive] = useState(false);
-  const containerEl = useRef<HTMLDivElement>(null);
-
-  const findFallbackFocusElement = () => {
-    const fallbackFocusEl = containerEl.current?.querySelector(
-      '[tabindex^="-"]'
-    );
-
-    if (!fallbackFocusEl) {
-      throw new Error(
-        'Expected at least one focusable element. Add an element with a negative tabindex to set a fallback.'
-      );
-    }
-
-    return fallbackFocusEl as HTMLElement;
-  };
-
   /**
-   * Wait until the initial render is done to activate the focus trap
-   * This ensures the children are rendered when we try to find the fallback focus element
+   * focus-trap doesn't ensure fallback focus selector
+   * is a child of the focus container, so we need a unique selector for each modal
    */
-  useEffect(() => {
-    if (isOpen) {
-      setTrapActive(true);
-    }
-  }, [isOpen]);
+  const modalId = useMemo(() => uniqueId('gamut-overlay-'), []);
 
   if (!isOpen) return null;
 
   return (
     <BodyPortal>
-      <div className={cx(styles.container, className)} ref={containerEl}>
-        <FocusTrap
-          active={trapActive}
-          focusTrapOptions={{
-            clickOutsideDeactivates: clickOutsideCloses,
-            escapeDeactivates: escapeCloses,
-            onDeactivate: onRequestClose,
-            fallbackFocus: findFallbackFocusElement,
-          }}
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: clickOutsideCloses,
+          escapeDeactivates: escapeCloses,
+          onDeactivate: onRequestClose,
+          fallbackFocus: `[data-gamut-overlay=${modalId}]`,
+        }}
+      >
+        <div
+          className={cx(styles.container, className)}
+          data-gamut-overlay={modalId}
+          tabIndex={-1}
         >
           {children}
-        </FocusTrap>
-      </div>
+        </div>
+      </FocusTrap>
     </BodyPortal>
   );
 };
