@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, RefForwardingComponent } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/CardShell.module.scss';
 
@@ -10,26 +10,23 @@ export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
   hoverShadow?: boolean;
 };
 
-const CardShellRef: RefForwardingComponent<HTMLDivElement, CardShellProps> = (
-  { children, hoverShadow, className, ...props },
-  ref
-) => {
-  const shellClasses = cx(
-    s.shell,
-    {
-      [s.hoverShadow]: hoverShadow,
-    },
-    className
-  );
+export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
+  ({ children, hoverShadow, className, ...props }, ref) => {
+    const shellClasses = cx(
+      s.shell,
+      {
+        [s.hoverShadow]: hoverShadow,
+      },
+      className
+    );
 
-  return (
-    <div ref={ref} className={shellClasses} {...props}>
-      {children}
-    </div>
-  );
-};
-
-export const CardShell = React.forwardRef(CardShellRef);
+    return (
+      <div ref={ref} className={shellClasses} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
 
 CardShell.defaultProps = defaultProps;
 CardShell.displayName = 'CardShell';
