@@ -2,6 +2,10 @@
 
 .text {
   margin: 0;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 @each $screenSize in $screenSizes {
