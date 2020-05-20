@@ -34,8 +34,8 @@ export const Overlay: React.FC<OverlayProps> = ({
   isOpen,
 }) => {
   /**
-   * focus-trap doesn't ensure fallback focus selector
-   * is a child of the focus container, so we need a unique selector for each modal
+   * focus-trap doesn't ensure fallback focus selector is a child of the focus container,
+   * so we need a unique selector for each modal
    */
   const modalId = useMemo(() => uniqueId('gamut-overlay-'), []);
 

@@ -57,6 +57,7 @@ export const Modal: React.FC<ModalProps> = ({
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
         role="dialog"
+        tabIndex={0}
       >
         {!hideDefaultCloseButton && (
           <div
