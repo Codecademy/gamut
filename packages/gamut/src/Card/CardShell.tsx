@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/CardShell.module.scss';
 
@@ -6,37 +6,27 @@ const defaultProps = {
   hoverShadow: false,
 };
 
-export type CardShellProps = {
-  children: ReactNode;
-  className?: string;
+export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
   hoverShadow?: boolean;
-  style?: object;
-  id?: string;
-  role?: string;
 };
 
-export const CardShell = ({
-  children,
-  hoverShadow,
-  className,
-  style,
-  role,
-  id,
-}: CardShellProps) => {
-  const shellClasses = cx(
-    s.shell,
-    {
-      [s.hoverShadow]: hoverShadow,
-    },
-    className
-  );
+export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
+  ({ children, hoverShadow, className, ...props }, ref) => {
+    const shellClasses = cx(
+      s.shell,
+      {
+        [s.hoverShadow]: hoverShadow,
+      },
+      className
+    );
 
-  return (
-    <div className={shellClasses} {...{ style, role, id }}>
-      {children}
-    </div>
-  );
-};
+    return (
+      <div ref={ref} className={shellClasses} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
 
 CardShell.defaultProps = defaultProps;
 
