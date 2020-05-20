@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import { uniqueId } from 'lodash';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -33,12 +32,6 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  /**
-   * focus-trap doesn't ensure fallback focus selector is a child of the focus container,
-   * so we need a unique selector for each modal
-   */
-  const modalId = useMemo(() => uniqueId('gamut-overlay-'), []);
-
   if (!isOpen) return null;
 
   return (
@@ -48,16 +41,9 @@ export const Overlay: React.FC<OverlayProps> = ({
           clickOutsideDeactivates: clickOutsideCloses,
           escapeDeactivates: escapeCloses,
           onDeactivate: onRequestClose,
-          fallbackFocus: `[data-gamut-overlay=${modalId}]`,
         }}
       >
-        <div
-          className={cx(styles.container, className)}
-          data-gamut-overlay={modalId}
-          tabIndex={-1}
-        >
-          {children}
-        </div>
+        <div className={cx(styles.container, className)}>{children}</div>
       </FocusTrap>
     </BodyPortal>
   );
