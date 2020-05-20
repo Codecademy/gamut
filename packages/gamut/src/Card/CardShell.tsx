@@ -29,5 +29,6 @@ export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
 );
 
 CardShell.defaultProps = defaultProps;
+CardShell.displayName = 'CardShell';
 
 export default CardShell;
