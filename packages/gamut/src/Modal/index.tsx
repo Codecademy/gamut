@@ -7,6 +7,10 @@ import { CardShell } from '../Card';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
+export type ModalOverlayProps = Partial<
+  Omit<OverlayProps, 'onRequestClose' | 'isOpen' | 'children'>
+>;
+
 export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
@@ -23,8 +27,9 @@ export type ModalProps = {
 
   /**
    * See Overlay component for prop definitions
+   * @description ModalOverlayProps
    */
-  overlayProps?: Partial<Omit<OverlayProps, 'onRequestClose' | 'className'>>;
+  overlayProps?: ModalOverlayProps;
 
   /**
    * Whether to hide the default close button and pass your own through children
@@ -43,15 +48,14 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <Overlay
       isOpen={isOpen}
-      className={cx(styles.modal, className)}
+      className={styles.modal}
       {...overlayProps}
       onRequestClose={onRequestClose}
       data-testid="modal"
     >
       <CardShell
-        className={styles.modalBody}
+        className={cx(styles.modalBody, className)}
         aria-hidden="false"
-        aria-label="Dialog Window - Close (Press escape to close)"
         role="dialog"
         tabIndex={-1}
       >
