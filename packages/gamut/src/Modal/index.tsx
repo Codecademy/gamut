@@ -48,8 +48,8 @@ export const Modal: React.FC<ModalProps> = ({
   return (
     <Overlay
       isOpen={isOpen}
-      className={styles.modal}
       {...overlayProps}
+      className={cx(styles.modal, overlayProps?.className)}
       onRequestClose={onRequestClose}
       data-testid="modal"
     >
