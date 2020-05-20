@@ -1,8 +1,8 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../../Templating/Blocks';
 
-import { Overlay } from '@codecademy/gamut/src';
-import { useState } from 'react';
+import { Overlay, Button, Container } from '@codecademy/gamut/src';
+import { useState } from '@storybook/addons';
 
 <Meta title="Core|Atoms/Overlay" component={Overlay} />
 
@@ -30,19 +30,20 @@ a background behind content, see `Modal`.
     {() => {
       const [open, setOpen] = useState(false);
       return (
-        <>
-          <button onClick={() => setOpen(true)} type="button">
-            Open overlay
-          </button>
-          <OverlayEnhanced clickOutsideDeactivates isOpen={open}>
-            <div>
-              <h1>Hooray!</h1>
-              <button type="button" onClick={() => setOpen(false)}>
-                Close overlay
-              </button>
-            </div>
-          </OverlayEnhanced>
-        </>
+        <React.Fragment>
+          <Button onClick={() => setOpen(true)}>Open Overlay</Button>
+          <Container>
+            <Overlay
+              clickOutsideCloses
+              isOpen={open}
+              onRequestClose={() => setOpen(false)}
+            >
+              <Container>
+                <h1>Hooray!</h1>
+              </Container>
+            </Overlay>
+          </Container>
+        </React.Fragment>
       );
     }}
   </Story>
