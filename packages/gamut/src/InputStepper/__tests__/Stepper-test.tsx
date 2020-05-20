@@ -10,7 +10,7 @@ const renderStepper = (optOverrides?: Partial<InputStepperProps>) => {
     ...optOverrides,
   };
   const wrapper = mount(
-    <InputStepper {...opts} onChange={v => onChange(v, wrapper)} />
+    <InputStepper {...opts} onChange={(v) => onChange(v, wrapper)} />
   );
 
   return wrapper;
