@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.10.0 (2020-05-19)
+
+* feat(GridForm): Update GridFormField label type to accept ReactNodes. (#809) ([72d829d](https://github.com/RyzacInc/client-modules/commit/72d829d)), closes [#809](https://github.com/RyzacInc/client-modules/issues/809)
+
+
+
+
+
 ## 7.9.0 (2020-05-15)
 
 * feat(Gamut): Disable GridForm submit until required field are complete (#798) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f)), closes [#798](https://github.com/RyzacInc/client-modules/issues/798)
