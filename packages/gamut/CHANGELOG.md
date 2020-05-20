@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>7.10.1 (2020-05-20)</small>
+
+* Allowed general text inputs for GridForm (#811) ([f8e5c3b](https://github.com/RyzacInc/client-modules/commit/f8e5c3b)), closes [#811](https://github.com/RyzacInc/client-modules/issues/811)
+
+
+
+
+
 ## 7.10.0 (2020-05-19)
 
 * feat(GridForm): Update GridFormField label type to accept ReactNodes. (#809) ([72d829d](https://github.com/RyzacInc/client-modules/commit/72d829d)), closes [#809](https://github.com/RyzacInc/client-modules/issues/809)
