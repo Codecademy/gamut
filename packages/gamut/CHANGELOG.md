@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>8.0.1 (2020-05-20)</small>
+
+* chore: update changelog manually ([95e7838](https://github.com/RyzacInc/client-modules/commit/95e7838))
+* fix: preserve display name on card shell (#812) ([ca1d3c0](https://github.com/RyzacInc/client-modules/commit/ca1d3c0)), closes [#812](https://github.com/RyzacInc/client-modules/issues/812)
+
+
+
+
+
 ## 8.0.0 (2020-05-20)
 
 * feat!: Refactor Modal and Overlay components [GM-24] (#806) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc)), closes [#806](https://github.com/RyzacInc/client-modules/issues/806)
