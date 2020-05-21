@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>10.0.1 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 10.0.0 (2020-05-20)
+
+* feat!: Refactor Modal and Overlay components [GM-24] (#806) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc)), closes [#806](https://github.com/RyzacInc/client-modules/issues/806)
+
+
+
+
+
+## 9.13.0 (2020-05-20)
+
+* feat(Gamut): Add Input Stepper (#753) ([1d110a0](https://github.com/RyzacInc/client-modules/commit/1d110a0)), closes [#753](https://github.com/RyzacInc/client-modules/issues/753)
+
+
+
+
+
+## <small>9.12.2 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>9.12.1 (2020-05-19)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 9.12.0 (2020-05-15)
+
+* feat(Gamut): Disable GridForm submit until required field are complete (#798) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f)), closes [#798](https://github.com/RyzacInc/client-modules/issues/798)
+
+
+
+
+
+## <small>9.11.3 (2020-05-15)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>9.11.2 (2020-05-15)</small>
 
 * chore: Repurposed and renamed brand-components into gamut-labs ⚗️ (#797) ([d1aaabf](https://github.com/RyzacInc/client-modules/commit/d1aaabf)), closes [#797](https://github.com/RyzacInc/client-modules/issues/797)
