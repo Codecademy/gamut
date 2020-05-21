@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -40,10 +40,11 @@
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
   },
   "license": "MIT",
   "devDependencies": {
-    "copyfiles": "^2.1.1"
+    "onchange": "^7.0.2"
   }
 }

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.1.0 (2020-05-21)
+
+* feat(Gamut): Add docs/command for working with Gamut pre-publish (#807) ([e142dae](https://github.com/RyzacInc/client-modules/commit/e142dae)), closes [#807](https://github.com/RyzacInc/client-modules/issues/807)
+
+
+
+
+
 ## <small>8.0.1 (2020-05-20)</small>
 
 * chore: update changelog manually ([95e7838](https://github.com/RyzacInc/client-modules/commit/95e7838))
