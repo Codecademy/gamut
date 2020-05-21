@@ -9,7 +9,3 @@
 .spacing-tight {
   @include markdown-style();
 }
-
-.markdown a {
-  text-decoration: underline;
-}
