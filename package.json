@@ -23,7 +23,8 @@
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
     "deploy": "gh-pages -b gh-pages -d dist",
-    "regenerate-changelog": "yarn lerna exec --concurrency 1 --stream -- 'node $LERNA_ROOT_PATH/script/update-changelog'"
+    "regenerate-changelog": "yarn lerna exec --concurrency 1 --stream -- 'node $LERNA_ROOT_PATH/script/update-changelog'",
+    "postpublish": "yarn regenerate-changelog"
   },
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json,css,scss}": [
