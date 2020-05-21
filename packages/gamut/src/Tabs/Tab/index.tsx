@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
-import { pickDataProps } from '../../utils/pickDataProps';
+import omitProps from '../../utils/omitProps';
 
 import ButtonBase from '../../ButtonBase';
 
@@ -38,7 +38,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     [activeClassName]: active && activeClassName,
     [s.disabled]: disabled,
   });
-  const dataPropsToTransfer = pickDataProps(rest);
+  const dataPropsToTransfer = omitProps([], rest);
 
   return (
     <ButtonBase
