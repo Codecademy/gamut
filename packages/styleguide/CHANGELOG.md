@@ -1,814 +1,1050 @@
-### [10.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@10.0.1...@codecademy/styleguide@10.0.1) (2020-05-21)
-
-### [10.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@10.0.0...@codecademy/styleguide@10.0.1) (2020-05-20 22:10:39 +0000)
+### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.1...@codecademy/styleguide@10.0.1) (2020-05-21)
 
 
-### Bug Fixes
+### 👽Other (Chores)
 
-* preserve display name on card shell ([#812](https://github.com/RyzacInc/client-modules/issues/812)) ([ca1d3c0](https://github.com/RyzacInc/client-modules/commit/ca1d3c0bcb46c5220e76854a2572691943456c93))
+* **🤔:** add task to rebuild changelogs ([7e820aa](https://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
 
-## [10.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.13.0...@codecademy/styleguide@10.0.0) (2020-05-20 20:58:04 +0000)
+### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.0...@codecademy/styleguide@10.0.1) (2020-05-20)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([d059d5d](https://github.com/Codecademy/client-modules/commit/d059d5d5d182145be7ed51fd9a4ee47134252414))
+
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.13.0...@codecademy/styleguide@10.0.0) (2020-05-20)
 
 
 ### ⚠ BREAKING CHANGES
 
 * Refactor Modal and Overlay components [GM-24] (#806)
 
-### Features
+### ✨Features
 
-* Refactor Modal and Overlay components [GM-24] ([#806](https://github.com/RyzacInc/client-modules/issues/806)) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc607fd122d6b07c4244224907cfa3b0ea1))
+* Refactor Modal and Overlay components [GM-24] ([#806](https://github.com/Codecademy/client-modules/issues/806)) ([01367fc](https://github.com/Codecademy/client-modules/commit/01367fc607fd122d6b07c4244224907cfa3b0ea1))
 
-## [9.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.12.2...@codecademy/styleguide@9.13.0) (2020-05-20 20:27:32 +0000)
 
+### 👽Other (Chores)
 
-### Features
+* **release:** publish ([1b95041](https://github.com/Codecademy/client-modules/commit/1b95041e670a7f195cfda25ab99188985b7c066a))
 
-* **Gamut:** Add Input Stepper ([#753](https://github.com/RyzacInc/client-modules/issues/753)) ([1d110a0](https://github.com/RyzacInc/client-modules/commit/1d110a0bddc73141ba0d12b5d766c47b740a923f))
+## [9.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.2...@codecademy/styleguide@9.13.0) (2020-05-20)
 
-### [9.12.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.12.1...@codecademy/styleguide@9.12.2) (2020-05-20 16:06:30 +0000)
 
-### [9.12.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.12.0...@codecademy/styleguide@9.12.1) (2020-05-19 15:30:22 +0000)
+### ✨Features
 
+* **Gamut:** Add Input Stepper ([#753](https://github.com/Codecademy/client-modules/issues/753)) ([1d110a0](https://github.com/Codecademy/client-modules/commit/1d110a0bddc73141ba0d12b5d766c47b740a923f))
 
-### Features
 
-* **GridForm:** Update GridFormField label type to accept ReactNodes. ([#809](https://github.com/RyzacInc/client-modules/issues/809)) ([72d829d](https://github.com/RyzacInc/client-modules/commit/72d829d628097df290d794e35a79a09f14e2e382))
+### 👽Other (Chores)
 
-## [9.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.11.3...@codecademy/styleguide@9.12.0) (2020-05-15 18:22:20 +0000)
+* **release:** publish ([3afe776](https://github.com/Codecademy/client-modules/commit/3afe776038abfa03751abb0ee566b6b1418567db))
 
+### [9.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.1...@codecademy/styleguide@9.12.2) (2020-05-20)
 
-### Features
 
-* **Gamut:** Disable GridForm submit until required field are complete ([#798](https://github.com/RyzacInc/client-modules/issues/798)) ([cec230f](https://github.com/RyzacInc/client-modules/commit/cec230f92d33102d6e2e999513117f58f71e11e0))
+### 👽Other (Chores)
 
-### [9.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.11.2...@codecademy/styleguide@9.11.3) (2020-05-15 17:29:34 +0000)
+* **release:** publish ([3ca59bd](https://github.com/Codecademy/client-modules/commit/3ca59bd3051ef66f1d0e16a1ee6e85b8cff2fa0a))
 
+### [9.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.0...@codecademy/styleguide@9.12.1) (2020-05-19)
 
-### Bug Fixes
 
-* **Gamut:** Pass down error to GridFormCustomInput ([#804](https://github.com/RyzacInc/client-modules/issues/804)) ([de90e1c](https://github.com/RyzacInc/client-modules/commit/de90e1ce35f675796f1c83f1af1225d80ba3b2c0))
+### 👽Other (Chores)
 
-### [9.11.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.11.1...@codecademy/styleguide@9.11.2) (2020-05-15 16:09:18 +0000)
+* **release:** publish ([20a892f](https://github.com/Codecademy/client-modules/commit/20a892fa388a477e5fcbc312a7c9fa3118819a75))
 
-### [9.11.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.11.0...@codecademy/styleguide@9.11.1) (2020-05-14 17:45:14 +0000)
+## [9.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.3...@codecademy/styleguide@9.12.0) (2020-05-15)
 
-## [9.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.10.0...@codecademy/styleguide@9.11.0) (2020-05-14 15:22:31 +0000)
 
+### ✨Features
 
-### Features
+* **Gamut:** Disable GridForm submit until required field are complete ([#798](https://github.com/Codecademy/client-modules/issues/798)) ([cec230f](https://github.com/Codecademy/client-modules/commit/cec230f92d33102d6e2e999513117f58f71e11e0))
 
-* **Brand:** Ported common Loading icon to Brand/Labs ([#794](https://github.com/RyzacInc/client-modules/issues/794)) ([b7950c9](https://github.com/RyzacInc/client-modules/commit/b7950c9d3f8fe04a4347797a41452a88cd63bef8))
-* **Header:** Hide header on print views ([2a338f9](https://github.com/RyzacInc/client-modules/commit/2a338f934d83ed66f7978c6fae7e6846f343a0c3))
 
-## [9.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.9.2...@codecademy/styleguide@9.10.0) (2020-05-13 15:35:30 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([ba22d70](https://github.com/Codecademy/client-modules/commit/ba22d7005641a0c7cdf1ed59dcc7b92ce5978fea))
 
-### Features
+### [9.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.2...@codecademy/styleguide@9.11.3) (2020-05-15)
 
-* **Styleguide:** Convert All Stories to MDX ([#788](https://github.com/RyzacInc/client-modules/issues/788)) ([96255a0](https://github.com/RyzacInc/client-modules/commit/96255a03e53550b48e36d8049c728825a716d4b7))
 
-### [9.9.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.9.1...@codecademy/styleguide@9.9.2) (2020-05-12 23:51:10 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([fb098b7](https://github.com/Codecademy/client-modules/commit/fb098b7e461c7a3f05305c3c27cf76b58af5cfbc))
 
-### Bug Fixes
+### [9.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.1...@codecademy/styleguide@9.11.2) (2020-05-15)
 
-* **Gamut:** Correctly hooked up GridForm's radio-group inputs for validation updates ([#795](https://github.com/RyzacInc/client-modules/issues/795)) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a99e582fedf021b9cc3fb8ee8587c509fe))
 
-### 9.9.1 (2020-05-12 15:16:19 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([9486865](https://github.com/Codecademy/client-modules/commit/9486865bf00d00e44e7a04f39e07a17c7f5e7c59))
+* Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
 
-### Bug Fixes
+### [9.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.0...@codecademy/styleguide@9.11.1) (2020-05-14)
 
-* **webpack-config:** Fix misplaced filename config in extracted CSS ([#789](https://github.com/RyzacInc/client-modules/issues/789)) ([1ef2f96](https://github.com/RyzacInc/client-modules/commit/1ef2f96723fc3928aa0fdb3d9ddee18611d80667))
 
-## [9.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.8.0...@codecademy/styleguide@9.9.0) (2020-05-12 13:25:52 +0000)
+### 👽Other (Chores)
 
+* **🤔:** Update tabs stories to MDX ([#803](https://github.com/Codecademy/client-modules/issues/803)) ([79c41eb](https://github.com/Codecademy/client-modules/commit/79c41eb98821a59dcad7f2ff18883dadc8387b62))
+* **release:** publish ([a5b0ea7](https://github.com/Codecademy/client-modules/commit/a5b0ea7e72daf3dcd86ac22c8226ed76374c8719))
 
-### Features
+## [9.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.10.0...@codecademy/styleguide@9.11.0) (2020-05-14)
 
-* **Gamut:** Checkbox default style changes and add multiline prop ([#796](https://github.com/RyzacInc/client-modules/issues/796)) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362dbcb9e9a49f052e03284cd9e6f1bd814c))
 
-## [9.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.7.1...@codecademy/styleguide@9.8.0) (2020-05-11 23:29:01 +0000)
+### ✨Features
 
+* **Brand:** Ported common Loading icon to Brand/Labs ([#794](https://github.com/Codecademy/client-modules/issues/794)) ([b7950c9](https://github.com/Codecademy/client-modules/commit/b7950c9d3f8fe04a4347797a41452a88cd63bef8))
 
-### Features
 
-* **styleguide:** Added Components documentation ([#781](https://github.com/RyzacInc/client-modules/issues/781)) ([d7039e5](https://github.com/RyzacInc/client-modules/commit/d7039e50f1afd79d284ef3e51f28ebfee4745e22))
+### 👽Other (Chores)
 
-### [9.7.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.7.0...@codecademy/styleguide@9.7.1) (2020-05-11 13:52:52 +0000)
+* **release:** publish ([e80b94b](https://github.com/Codecademy/client-modules/commit/e80b94bbf1571a383a52e797f47a2d1a5a7890f5))
 
+## [9.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.2...@codecademy/styleguide@9.10.0) (2020-05-13)
 
-### Features
 
-* **Gamut:** Allowed Alert to receive a class name ([#784](https://github.com/RyzacInc/client-modules/issues/784)) ([fd29141](https://github.com/RyzacInc/client-modules/commit/fd2914183d603bd03dafa06b16953f9d937e07ae))
-* **Gamut:** Allowed GridForm text fields to be of type 'date' ([#783](https://github.com/RyzacInc/client-modules/issues/783)) ([418b32b](https://github.com/RyzacInc/client-modules/commit/418b32b19c0db071a2bed4f004da0370fa610043))
+### ✨Features
 
-## [9.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.6.1...@codecademy/styleguide@9.7.0) (2020-05-06 16:53:04 +0000)
+* **Styleguide:** Convert All Stories to MDX ([#788](https://github.com/Codecademy/client-modules/issues/788)) ([96255a0](https://github.com/Codecademy/client-modules/commit/96255a03e53550b48e36d8049c728825a716d4b7))
 
 
-### Features
+### 👽Other (Chores)
 
-* **Gamut:** added RadioGroup inputs for GridForm ([#759](https://github.com/RyzacInc/client-modules/issues/759)) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8b02aa200ae47dd61a05911c4070a74d7a))
+* **release:** publish ([f256a8f](https://github.com/Codecademy/client-modules/commit/f256a8fd012df429032e7c5ea1be25f028ed1221))
 
-### [9.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.6.0...@codecademy/styleguide@9.6.1) (2020-05-06 16:33:41 +0000)
+### [9.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.1...@codecademy/styleguide@9.9.2) (2020-05-12)
 
-## [9.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.6...@codecademy/styleguide@9.6.0) (2020-05-05 16:43:45 +0000)
 
+### 🐛Bug Fixes
 
-### Features
+* **Gamut:** Correctly hooked up GridForm's radio-group inputs for validation updates ([#795](https://github.com/Codecademy/client-modules/issues/795)) ([2cd6d7a](https://github.com/Codecademy/client-modules/commit/2cd6d7a99e582fedf021b9cc3fb8ee8587c509fe))
 
-* **Gamut:** Created separate bucket for "Platform" colors ([#778](https://github.com/RyzacInc/client-modules/issues/778)) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75e7e488f1a7b268ca6d3a0700284d5e95e))
 
-### [9.5.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.5...@codecademy/styleguide@9.5.6) (2020-05-05 16:09:21 +0000)
+### 👽Other (Chores)
 
-### [9.5.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.4...@codecademy/styleguide@9.5.5) (2020-05-05 15:48:13 +0000)
+* **release:** publish ([1b63e8b](https://github.com/Codecademy/client-modules/commit/1b63e8b6c1e16438fd3bfcb28b29d4dee3eb24db))
 
+### [9.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.0...@codecademy/styleguide@9.9.1) (2020-05-12)
 
-### Features
 
-* **gamut-styles:** Added TypeScript .d.ts generation to gamut-styles ([#775](https://github.com/RyzacInc/client-modules/issues/775)) ([39a64ec](https://github.com/RyzacInc/client-modules/commit/39a64ec114484c6fff6423ba09784483b12d0b76))
+### 👽Other (Chores)
 
-### [9.5.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.3...@codecademy/styleguide@9.5.4) (2020-05-04 21:33:12 +0000)
+* **release:** publish ([9dca82c](https://github.com/Codecademy/client-modules/commit/9dca82c77936846670829a14d54a4af580269dfa))
 
+## [9.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.8.0...@codecademy/styleguide@9.9.0) (2020-05-12)
 
-### Bug Fixes
 
-* **Documentation:** Re-enable story source and use top level organization ([#769](https://github.com/RyzacInc/client-modules/issues/769)) ([cce7845](https://github.com/RyzacInc/client-modules/commit/cce784584a8e0d7f26283cbdc0f8793be4487926))
+### ✨Features
 
-### [9.5.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.2...@codecademy/styleguide@9.5.3) (2020-05-04 20:45:31 +0000)
+* **Gamut:** Checkbox default style changes and add multiline prop ([#796](https://github.com/Codecademy/client-modules/issues/796)) ([f83b362](https://github.com/Codecademy/client-modules/commit/f83b362dbcb9e9a49f052e03284cd9e6f1bd814c))
 
-### [9.5.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.5.1...@codecademy/styleguide@9.5.2) (2020-05-04 19:24:38 +0000)
 
-### 9.5.1 (2020-05-04 18:12:24 +0000)
+### 👽Other (Chores)
 
-## [9.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.4.0...@codecademy/styleguide@9.5.0) (2020-05-04 14:44:57 +0000)
+* **release:** publish ([2b76df4](https://github.com/Codecademy/client-modules/commit/2b76df4dd0a54ac8bf23adc59f5c944dd8cdd817))
 
+## [9.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.7.1...@codecademy/styleguide@9.8.0) (2020-05-11)
 
-### Features
 
-* **EditorialQuote:** Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d3add9ea1a663b0b610f091db7ce7a85b8))
+### ✨Features
 
+* **styleguide:** Added Components documentation ([#781](https://github.com/Codecademy/client-modules/issues/781)) ([d7039e5](https://github.com/Codecademy/client-modules/commit/d7039e50f1afd79d284ef3e51f28ebfee4745e22))
 
-### Bug Fixes
 
-* **Gamut:** Removed unnecessary useEffect registers in GridForm ([#767](https://github.com/RyzacInc/client-modules/issues/767)) ([529878e](https://github.com/RyzacInc/client-modules/commit/529878e17a3447dda65ffae069856f7883e24f47))
+### 👽Other (Chores)
 
-## [9.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.3.0...@codecademy/styleguide@9.4.0) (2020-05-01 11:47:40 +0000)
+* **release:** publish ([3822f2e](https://github.com/Codecademy/client-modules/commit/3822f2e0d10f92ed9a132f5970bb07e321b8a2bf))
 
+### [9.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.7.0...@codecademy/styleguide@9.7.1) (2020-05-11)
 
-### Features
 
-* **EditorialImage:** Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d41a0275466b474d157c5204f838956a0e))
+### 👽Other (Chores)
 
-## [9.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.2.2...@codecademy/styleguide@9.3.0) (2020-04-30 19:18:04 +0000)
+* **🤔:** remove appbartab and make headertab simpler ([#792](https://github.com/Codecademy/client-modules/issues/792)) ([2db0e54](https://github.com/Codecademy/client-modules/commit/2db0e5487d3e488e28145249311f6f64118b4ed6))
+* **release:** publish ([661457c](https://github.com/Codecademy/client-modules/commit/661457cf7ae7bd2ca4e39ffff46f1649cb1111b3))
 
+## [9.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.6.1...@codecademy/styleguide@9.7.0) (2020-05-06)
 
-### Features
 
-* **Styleguide:** updated About examples and Brand description ([#764](https://github.com/RyzacInc/client-modules/issues/764)) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a69c03628dc0581887118ed4bb10225dc84))
+### ✨Features
 
-### [9.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.2.1...@codecademy/styleguide@9.2.2) (2020-04-30 19:02:45 +0000)
+* **Gamut:** added RadioGroup inputs for GridForm ([#759](https://github.com/Codecademy/client-modules/issues/759)) ([6d969b8](https://github.com/Codecademy/client-modules/commit/6d969b8b02aa200ae47dd61a05911c4070a74d7a))
 
 
-### Bug Fixes
+### 👽Other (Chores)
 
-* **Documentation:** Rework Foundation Documentation ([#763](https://github.com/RyzacInc/client-modules/issues/763)) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d6d9d28aec8d50f1a62da21755b0f653c9))
+* **🤔:** Corrected terrible couple/few typo in Platform colors ([#780](https://github.com/Codecademy/client-modules/issues/780)) ([007f371](https://github.com/Codecademy/client-modules/commit/007f371ea91a562802c0e4107f1b3169cc8ce077))
+* **release:** publish ([2db9219](https://github.com/Codecademy/client-modules/commit/2db9219d8eef1f64752ab9388353b49b6030c3ed))
 
-### [9.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.2.0...@codecademy/styleguide@9.2.1) (2020-04-30 02:01:55 +0000)
+### [9.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.6.0...@codecademy/styleguide@9.6.1) (2020-05-06)
 
-## [9.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.1.0...@codecademy/styleguide@9.2.0) (2020-04-29 20:53:52 +0000)
 
+### 👽Other (Chores)
 
-### Features
+* **🤔:** Removed unused deprecated button themes ([#774](https://github.com/Codecademy/client-modules/issues/774)) ([013e403](https://github.com/Codecademy/client-modules/commit/013e40398ad3cd9adcaf3cfb5e7bd4cf39b63659))
+* **release:** publish ([5276a91](https://github.com/Codecademy/client-modules/commit/5276a919385d3465cc1dc7ade44b6f37fd7ed45a))
 
-* **Typography:** Typography tweaks and format documentation ([#750](https://github.com/RyzacInc/client-modules/issues/750)) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a9e1b35b59f135371b3fe7dca3bf1d9ee4))
+## [9.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.6...@codecademy/styleguide@9.6.0) (2020-05-05)
 
-## [9.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@9.0.0...@codecademy/styleguide@9.1.0) (2020-04-29 18:32:01 +0000)
 
+### ✨Features
 
-### Features
+* **Gamut:** Created separate bucket for "Platform" colors ([#778](https://github.com/Codecademy/client-modules/issues/778)) ([26daf75](https://github.com/Codecademy/client-modules/commit/26daf75e7e488f1a7b268ca6d3a0700284d5e95e))
 
-* **BrandMono:** Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad75fc182da5417b27add93956dfa020b1b9))
-* **headertab:** move more header components into gamut ([#740](https://github.com/RyzacInc/client-modules/issues/740)) ([9c555ef](https://github.com/RyzacInc/client-modules/commit/9c555efecc6eecbac0b354d408e7da12431b52af))
 
-## 9.0.0 (2020-04-28 23:01:54 +0000)
+### 👽Other (Chores)
+
+* **release:** publish ([f8b6cd2](https://github.com/Codecademy/client-modules/commit/f8b6cd2c7367970e3e5e0660e1ee4e8677af0397))
+
+### [9.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.5...@codecademy/styleguide@9.5.6) (2020-05-05)
+
+
+### 👽Other (Chores)
+
+* **🤔:** Fix Text Story directory ([#779](https://github.com/Codecademy/client-modules/issues/779)) ([d575e09](https://github.com/Codecademy/client-modules/commit/d575e0926574f1c1b2d8439eb99a1e809bd9fba3))
+* **release:** publish ([2abcfb5](https://github.com/Codecademy/client-modules/commit/2abcfb5cac6be32ce46a288c560e2256550f5fc1))
+
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.4...@codecademy/styleguide@9.5.5) (2020-05-05)
+
+
+### 👽Other (Chores)
+
+* **🤔:** Fix about links to allow nested linking ([#776](https://github.com/Codecademy/client-modules/issues/776)) ([e378fcb](https://github.com/Codecademy/client-modules/commit/e378fcb9f3422447469aa258ab2f2de58375c076))
+* **release:** publish ([b9b103b](https://github.com/Codecademy/client-modules/commit/b9b103b7c9f1021822e5b2b198444d5cd1dc6f74))
+
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.3...@codecademy/styleguide@9.5.4) (2020-05-04)
+
+
+### 🐛Bug Fixes
+
+* **Documentation:** Re-enable story source and use top level organization ([#769](https://github.com/Codecademy/client-modules/issues/769)) ([cce7845](https://github.com/Codecademy/client-modules/commit/cce784584a8e0d7f26283cbdc0f8793be4487926))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([be1f628](https://github.com/Codecademy/client-modules/commit/be1f628b9dc301ec03b61aa856747d830df2465a))
+
+### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.2...@codecademy/styleguide@9.5.3) (2020-05-04)
+
+
+### 👽Other (Chores)
+
+* **Documentation:** Foundation Documentation ([#765](https://github.com/Codecademy/client-modules/issues/765)) ([cdbbffa](https://github.com/Codecademy/client-modules/commit/cdbbffa0c6865e7aec7d898126957b187807e691))
+* **release:** publish ([a6201e3](https://github.com/Codecademy/client-modules/commit/a6201e39ef5f20c4575ade70aa1f1208d32e6c88))
+
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.1...@codecademy/styleguide@9.5.2) (2020-05-04)
+
+
+### 👽Other (Chores)
+
+* **🤔:** add mdx to ts loader ([#772](https://github.com/Codecademy/client-modules/issues/772)) ([dd55d66](https://github.com/Codecademy/client-modules/commit/dd55d66a1f65554b825706499378def4b1c587ab))
+* **release:** publish ([ee90c6c](https://github.com/Codecademy/client-modules/commit/ee90c6c52a24a00536ad7e408c54a18ba6e259f7))
+
+### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.0...@codecademy/styleguide@9.5.1) (2020-05-04)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([751b62b](https://github.com/Codecademy/client-modules/commit/751b62b83faefe5a5943885aa71c153111caae31))
+* Update prettier & Run prettier on packages ([#773](https://github.com/Codecademy/client-modules/issues/773)) ([2f012a1](https://github.com/Codecademy/client-modules/commit/2f012a122a6ff75b58274cf6060087d5b86d4200))
+
+## [9.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.4.0...@codecademy/styleguide@9.5.0) (2020-05-04)
+
+
+### ✨Features
+
+* **EditorialQuote:** Port EditorialQuote from monolith ([20ee79d](https://github.com/Codecademy/client-modules/commit/20ee79d3add9ea1a663b0b610f091db7ce7a85b8))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([b4e9f11](https://github.com/Codecademy/client-modules/commit/b4e9f11eb7a953eda8287ccbc672465cfefd4c81))
+
+## [9.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.3.0...@codecademy/styleguide@9.4.0) (2020-05-01)
+
+
+### ✨Features
+
+* **EditorialImage:** Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d41a0275466b474d157c5204f838956a0e))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([b9cbe75](https://github.com/Codecademy/client-modules/commit/b9cbe75a0d9a6f7160ec842e84c421e7c716707d))
+
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.2...@codecademy/styleguide@9.3.0) (2020-04-30)
+
+
+### ✨Features
+
+* **Styleguide:** updated About examples and Brand description ([#764](https://github.com/Codecademy/client-modules/issues/764)) ([85188a6](https://github.com/Codecademy/client-modules/commit/85188a69c03628dc0581887118ed4bb10225dc84))
+
+
+### 👽Other (Chores)
+
+* **🤔:** Added docs for writing stories ([#762](https://github.com/Codecademy/client-modules/issues/762)) ([775d3a8](https://github.com/Codecademy/client-modules/commit/775d3a833b07b297080d410399d154e27ea6fbee))
+* **release:** publish ([6cbf7c4](https://github.com/Codecademy/client-modules/commit/6cbf7c405e48cd522c9fbb9c3e5d523955a60285))
+
+### [9.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.1...@codecademy/styleguide@9.2.2) (2020-04-30)
+
+
+### 🐛Bug Fixes
+
+* **Documentation:** Rework Foundation Documentation ([#763](https://github.com/Codecademy/client-modules/issues/763)) ([d0f3f9d](https://github.com/Codecademy/client-modules/commit/d0f3f9d6d9d28aec8d50f1a62da21755b0f653c9))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([bbd7f3f](https://github.com/Codecademy/client-modules/commit/bbd7f3f2ead0ace298a5b615c97e8477d65eed71))
+
+### [9.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.0...@codecademy/styleguide@9.2.1) (2020-04-30)
+
+
+### 👽Other (Chores)
+
+* **🤔:** Corrected emoji on Organisms About page ([#761](https://github.com/Codecademy/client-modules/issues/761)) ([f8bfe16](https://github.com/Codecademy/client-modules/commit/f8bfe1608c6735da771e0ed67e248fa426c4716c))
+* **release:** publish ([85fb456](https://github.com/Codecademy/client-modules/commit/85fb456bc705f60f23f454f3e43baedf4f0fd450))
+
+## [9.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.1.0...@codecademy/styleguide@9.2.0) (2020-04-29)
+
+
+### ✨Features
+
+* **Typography:** Typography tweaks and format documentation ([#750](https://github.com/Codecademy/client-modules/issues/750)) ([3a12f2a](https://github.com/Codecademy/client-modules/commit/3a12f2a9e1b35b59f135371b3fe7dca3bf1d9ee4))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ad2500f](https://github.com/Codecademy/client-modules/commit/ad2500fa72eb475ca1f9486a2396d21e1291d764))
+
+## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.0.0...@codecademy/styleguide@9.1.0) (2020-04-29)
+
+
+### ✨Features
+
+* **BrandMono:** Port component into Brand package ([16e7ad7](https://github.com/Codecademy/client-modules/commit/16e7ad75fc182da5417b27add93956dfa020b1b9))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([c755e05](https://github.com/Codecademy/client-modules/commit/c755e05c57d5ccde91c10aeac85f5301d4f83d59))
+
+## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.5.0...@codecademy/styleguide@9.0.0) (2020-04-28)
 
 
 ### ⚠ BREAKING CHANGES
 
 * **webpack-config:** Update CSS Loader and move loaders into dependencies (#736)
 
-### Features
+### ✨Features
 
-* **webpack-config:** Update CSS Loader and move loaders into dependencies ([#736](https://github.com/RyzacInc/client-modules/issues/736)) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5435ebb3588babd31a574f20db2b2c85b0))
-
-## [8.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@8.4.0...@codecademy/styleguide@8.5.0) (2020-04-28 20:55:28 +0000)
+* **webpack-config:** Update CSS Loader and move loaders into dependencies ([#736](https://github.com/Codecademy/client-modules/issues/736)) ([2e6c1c5](https://github.com/Codecademy/client-modules/commit/2e6c1c5435ebb3588babd31a574f20db2b2c85b0))
 
 
-### Features
+### 👽Other (Chores)
 
-* **styleguide:** added inclusion guidelines to FAQs ([#749](https://github.com/RyzacInc/client-modules/issues/749)) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40a578add347df04462861d004b89b84fd4))
+* **release:** publish ([60dcf2d](https://github.com/Codecademy/client-modules/commit/60dcf2d30fb821cf3cc985b54402d79f3f004cfa))
 
-## [8.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@8.3.0...@codecademy/styleguide@8.4.0) (2020-04-28 17:36:46 +0000)
-
-
-### Features
-
-* **Gamut:** switched ProgressBar back to taking in a 'style' prop ([#752](https://github.com/RyzacInc/client-modules/issues/752)) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640d0c146f878435295021d31d82571c656a))
-
-## [8.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@8.2.0...@codecademy/styleguide@8.3.0) (2020-04-27 21:21:33 +0000)
+## [8.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.4.0...@codecademy/styleguide@8.5.0) (2020-04-28)
 
 
-### Features
+### ✨Features
 
-* **grid-form:** add onUpdate to GridForm fields ([#751](https://github.com/RyzacInc/client-modules/issues/751)) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604bbabd237b33a38332cee2814042ec94fe))
-
-
-### Bug Fixes
-
-* reset gamut ButtonBase styles to default ([#614](https://github.com/RyzacInc/client-modules/issues/614)) ([a902ba7](https://github.com/RyzacInc/client-modules/commit/a902ba71b98f444569a2398c2ae05964c95b726b))
-* **Alert:** Export BannerType enum to be used from root ([#748](https://github.com/RyzacInc/client-modules/issues/748)) ([28449c3](https://github.com/RyzacInc/client-modules/commit/28449c39ebcddce23ab0efa40179790b7718f0e1))
-
-## [8.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@8.1.0...@codecademy/styleguide@8.2.0) (2020-04-22 00:08:19 +0000)
+* **styleguide:** added inclusion guidelines to FAQs ([#749](https://github.com/Codecademy/client-modules/issues/749)) ([69d2a40](https://github.com/Codecademy/client-modules/commit/69d2a40a578add347df04462861d004b89b84fd4))
 
 
-### Features
+### 👽Other (Chores)
 
-* **Gamut:** added ProgressBar minimumPercent and theme props ([#739](https://github.com/RyzacInc/client-modules/issues/739)) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc263fdb7d1b08c6c942bbe3849ef867496))
+* **release:** publish ([eec6eae](https://github.com/Codecademy/client-modules/commit/eec6eaecb5f85d32649e93764121099c8c8fcec1))
 
-## [8.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@8.0.0...@codecademy/styleguide@8.1.0) (2020-04-21 21:50:32 +0000)
+## [8.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.3.0...@codecademy/styleguide@8.4.0) (2020-04-28)
 
 
-### Features
+### ✨Features
 
-* **Styleguide:** DecoratedStories Props and better Typography Docs ([#746](https://github.com/RyzacInc/client-modules/issues/746)) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc1a87430642b6effbe2f82c598d0421c9e))
+* **Gamut:** switched ProgressBar back to taking in a 'style' prop ([#752](https://github.com/Codecademy/client-modules/issues/752)) ([eb4f640](https://github.com/Codecademy/client-modules/commit/eb4f640d0c146f878435295021d31d82571c656a))
 
-## [8.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@7.1.2...@codecademy/styleguide@8.0.0) (2020-04-21 13:30:13 +0000)
+
+### 👽Other (Chores)
+
+* **release:** publish ([29c23ec](https://github.com/Codecademy/client-modules/commit/29c23ec88e14eef1a2f42d8b217f0a4a5687059e))
+
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.2.0...@codecademy/styleguide@8.3.0) (2020-04-27)
+
+
+### ✨Features
+
+* **grid-form:** add onUpdate to GridForm fields ([#751](https://github.com/Codecademy/client-modules/issues/751)) ([b465604](https://github.com/Codecademy/client-modules/commit/b465604bbabd237b33a38332cee2814042ec94fe))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([61af0a3](https://github.com/Codecademy/client-modules/commit/61af0a3bffb4d1cbe2f65f2ea1d4fbd08eaa1005))
+
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.1.0...@codecademy/styleguide@8.2.0) (2020-04-22)
+
+
+### ✨Features
+
+* **Gamut:** added ProgressBar minimumPercent and theme props ([#739](https://github.com/Codecademy/client-modules/issues/739)) ([b17a7bc](https://github.com/Codecademy/client-modules/commit/b17a7bc263fdb7d1b08c6c942bbe3849ef867496))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([a98506b](https://github.com/Codecademy/client-modules/commit/a98506bc3d62ad10bf9dc3e42b87eaca74ee0d0f))
+
+## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.0.0...@codecademy/styleguide@8.1.0) (2020-04-21)
+
+
+### ✨Features
+
+* **Styleguide:** DecoratedStories Props and better Typography Docs ([#746](https://github.com/Codecademy/client-modules/issues/746)) ([d6efbbc](https://github.com/Codecademy/client-modules/commit/d6efbbc1a87430642b6effbe2f82c598d0421c9e))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([140b4c4](https://github.com/Codecademy/client-modules/commit/140b4c417e90144fd127542ec1a396ef5620cf8a))
+
+## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.2...@codecademy/styleguide@8.0.0) (2020-04-21)
 
 
 ### ⚠ BREAKING CHANGES
 
 * **Typography:** Heading Primitives and reconfigured responsive styles (#722)
 
-### Features
+### ✨Features
 
-* **Typography:** Heading Primitives and reconfigured responsive styles ([#722](https://github.com/RyzacInc/client-modules/issues/722)) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7cacd51be872cf30401343d6ed20106ec77b))
-
-### [7.1.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@7.1.1...@codecademy/styleguide@7.1.2) (2020-04-20 18:18:29 +0000)
-
-### [7.1.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@7.1.0...@codecademy/styleguide@7.1.1) (2020-04-20 18:08:27 +0000)
-
-## [7.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@7.0.0...@codecademy/styleguide@7.1.0) (2020-04-20 17:55:18 +0000)
+* **Typography:** Heading Primitives and reconfigured responsive styles ([#722](https://github.com/Codecademy/client-modules/issues/722)) ([63da7ca](https://github.com/Codecademy/client-modules/commit/63da7cacd51be872cf30401343d6ed20106ec77b))
 
 
-### Features
+### 👽Other (Chores)
 
-* **Alert:** Adds alert banner and new status themes ([#703](https://github.com/RyzacInc/client-modules/issues/703)) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f496647855b8d0f938dc12b231036a79100))
+* **release:** publish ([79c9519](https://github.com/Codecademy/client-modules/commit/79c9519e725e1cc962abd4f736495c2fca9c328d))
 
-## [7.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@6.1.0...@codecademy/styleguide@7.0.0) (2020-04-20 17:33:27 +0000)
+### [7.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.1...@codecademy/styleguide@7.1.2) (2020-04-20)
+
+
+### 👽Other (Chores)
+
+* **🤔:** Made name a sibling of options ([#738](https://github.com/Codecademy/client-modules/issues/738)) ([aafd2b8](https://github.com/Codecademy/client-modules/commit/aafd2b89674865651fc5c1cb07fd35ac56e51d9d))
+* **release:** publish ([b3bf407](https://github.com/Codecademy/client-modules/commit/b3bf4074aabf07b2872e5e613445074d5a34efea))
+
+### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.0...@codecademy/styleguide@7.1.1) (2020-04-20)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([9b4d862](https://github.com/Codecademy/client-modules/commit/9b4d862416b3511e6b534dfaeb597bf9e4034279))
+* **styleguide:** used decoratedStory for knobs.escapeHTML in Storybook ([#721](https://github.com/Codecademy/client-modules/issues/721)) ([cfade7a](https://github.com/Codecademy/client-modules/commit/cfade7a59bcbca7fca877a03bd2fd6c4cbe5c917))
+
+## [7.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.0.0...@codecademy/styleguide@7.1.0) (2020-04-20)
+
+
+### ✨Features
+
+* **Alert:** Adds alert banner and new status themes ([#703](https://github.com/Codecademy/client-modules/issues/703)) ([b9b97f4](https://github.com/Codecademy/client-modules/commit/b9b97f496647855b8d0f938dc12b231036a79100))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ee32ff3](https://github.com/Codecademy/client-modules/commit/ee32ff3d663767e6184b621ad77b741b9b1923d3))
+
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.1.0...@codecademy/styleguide@7.0.0) (2020-04-20)
 
 
 ### ⚠ BREAKING CHANGES
 
 * moved Logo atom to brand-components (#718)
 
-### Features
+### ✨Features
 
-* moved Logo atom to brand-components ([#718](https://github.com/RyzacInc/client-modules/issues/718)) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fccb578241abc6cb07d302e563100f8f18a9))
-
-## [6.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@6.0.2...@codecademy/styleguide@6.1.0) (2020-04-20 15:45:30 +0000)
+* moved Logo atom to brand-components ([#718](https://github.com/Codecademy/client-modules/issues/718)) ([55c4fcc](https://github.com/Codecademy/client-modules/commit/55c4fccb578241abc6cb07d302e563100f8f18a9))
 
 
-### Features
+### 👽Other (Chores)
 
-* **GridForm:** added placeholder, stretch submit options ([#737](https://github.com/RyzacInc/client-modules/issues/737)) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b254cd62f4a9bc68b5e4a72b18b9c34a7b58))
+* **release:** publish ([4d01722](https://github.com/Codecademy/client-modules/commit/4d01722b40876926b67ca785cecfac9e0e74972b))
 
-### [6.0.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@6.0.1...@codecademy/styleguide@6.0.2) (2020-04-20 13:55:05 +0000)
+## [6.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.2...@codecademy/styleguide@6.1.0) (2020-04-20)
 
 
-### Features
+### ✨Features
 
-* **Icons:** Add initial streamline icons ([#702](https://github.com/RyzacInc/client-modules/issues/702)) ([52d529e](https://github.com/RyzacInc/client-modules/commit/52d529e76074e4ccb382fd27107fcff51ede718c))
+* **GridForm:** added placeholder, stretch submit options ([#737](https://github.com/Codecademy/client-modules/issues/737)) ([c110b25](https://github.com/Codecademy/client-modules/commit/c110b254cd62f4a9bc68b5e4a72b18b9c34a7b58))
 
-### [6.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@6.0.0...@codecademy/styleguide@6.0.1) (2020-04-17 19:53:10 +0000)
 
-## [6.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@5.0.0...@codecademy/styleguide@6.0.0) (2020-04-17 14:05:08 +0000)
+### 👽Other (Chores)
+
+* **release:** publish ([10645b9](https://github.com/Codecademy/client-modules/commit/10645b9de5045b07ba08041e93398e711d821157))
+
+### [6.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.1...@codecademy/styleguide@6.0.2) (2020-04-20)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ed02082](https://github.com/Codecademy/client-modules/commit/ed020826db9741e0f11e67850225feee0a96a589))
+
+### [6.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.0...@codecademy/styleguide@6.0.1) (2020-04-17)
+
+
+### 👽Other (Chores)
+
+* **🤔:** Corrected displayLabel/large prop name for ProgressBar story ([#735](https://github.com/Codecademy/client-modules/issues/735)) ([7fd6461](https://github.com/Codecademy/client-modules/commit/7fd6461ed0882a08be7125fe5543e529baa7ccac))
+* **release:** publish ([e547c13](https://github.com/Codecademy/client-modules/commit/e547c1375441dc255e0c19c579e41a7d8dd6b8f0))
+
+## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@5.0.0...@codecademy/styleguide@6.0.0) (2020-04-17)
 
 
 ### ⚠ BREAKING CHANGES
 
 * **Gamut:** removed deprecated primary, blue, red, and yellow button colors (#714)
 
-### Miscellaneous Chores
+### 👽Other (Chores)
 
-* **Gamut:** removed deprecated primary, blue, red, and yellow button colors ([#714](https://github.com/RyzacInc/client-modules/issues/714)) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44a4193b1eb4a291633e26e27d1b9971634))
+* **Gamut:** removed deprecated primary, blue, red, and yellow button colors ([#714](https://github.com/Codecademy/client-modules/issues/714)) ([7f4df44](https://github.com/Codecademy/client-modules/commit/7f4df44a4193b1eb4a291633e26e27d1b9971634))
+* **release:** publish ([9b7cba0](https://github.com/Codecademy/client-modules/commit/9b7cba0354b95979eb7297e2ac320b17946dd0b8))
 
-## [5.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.8.0...@codecademy/styleguide@5.0.0) (2020-04-17 13:50:17 +0000)
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.8.0...@codecademy/styleguide@5.0.0) (2020-04-17)
 
 
 ### ⚠ BREAKING CHANGES
 
 * **Gamut:** removed easily replaceable deprecated swatches- colors (#717)
 
-### Miscellaneous Chores
+### 👽Other (Chores)
 
-* **Gamut:** removed easily replaceable deprecated swatches- colors ([#717](https://github.com/RyzacInc/client-modules/issues/717)) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd55640e0fcb6c061c4f71b83fb7f2d04130))
+* **Gamut:** removed easily replaceable deprecated swatches- colors ([#717](https://github.com/Codecademy/client-modules/issues/717)) ([9b17bd5](https://github.com/Codecademy/client-modules/commit/9b17bd55640e0fcb6c061c4f71b83fb7f2d04130))
+* **release:** publish ([0ddf043](https://github.com/Codecademy/client-modules/commit/0ddf043d8bfb1bd14be902156b8559b7900a5e8b))
 
-## [4.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.7.0...@codecademy/styleguide@4.8.0) (2020-04-17 13:41:15 +0000)
-
-
-### Features
-
-* **gamut-styles:** formalized Editor colors in gamut-styles ([#726](https://github.com/RyzacInc/client-modules/issues/726)) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94821a1123aeb274595db8c9e18ff9716d6))
-
-## [4.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.6.0...@codecademy/styleguide@4.7.0) (2020-04-16 18:57:50 +0000)
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.7.0...@codecademy/styleguide@4.8.0) (2020-04-17)
 
 
-### Features
+### ✨Features
 
-* **gamut:** Add GridForm Submit Button functionality ([#732](https://github.com/RyzacInc/client-modules/issues/732)) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3b536a260bf0e3135926af76bcc7412212))
-
-## [4.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.5.0...@codecademy/styleguide@4.6.0) (2020-04-16 14:26:06 +0000)
+* **gamut-styles:** formalized Editor colors in gamut-styles ([#726](https://github.com/Codecademy/client-modules/issues/726)) ([92e9e94](https://github.com/Codecademy/client-modules/commit/92e9e94821a1123aeb274595db8c9e18ff9716d6))
 
 
-### Features
+### 👽Other (Chores)
 
-* **Gamut:** added 'custom' field type to GridForm ([#733](https://github.com/RyzacInc/client-modules/issues/733)) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826ba2e439eeeb8b5f0ef4e6dbbef0f768afc))
+* **release:** publish ([d460b58](https://github.com/Codecademy/client-modules/commit/d460b58f38c48e4f529d5b796adb5947dd522107))
 
-## [4.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.4.1...@codecademy/styleguide@4.5.0) (2020-04-14 18:35:34 +0000)
-
-
-### Features
-
-* GridForm checkbox and select required validation ([#729](https://github.com/RyzacInc/client-modules/issues/729)) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fde22dc48462557869e56a5c020994ddd4c))
-
-### [4.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.4.0...@codecademy/styleguide@4.4.1) (2020-04-13 19:58:04 +0000)
-
-## [4.4.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.3.1...@codecademy/styleguide@4.4.0) (2020-04-13 18:19:04 +0000)
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.6.0...@codecademy/styleguide@4.7.0) (2020-04-16)
 
 
-### Features
+### ✨Features
 
-* **Gamut:** added AccordionTop molecule ([#725](https://github.com/RyzacInc/client-modules/issues/725)) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a101f380b88e8855d83fe71f77f490e1c0))
-
-### [4.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.3.0...@codecademy/styleguide@4.3.1) (2020-04-13 14:29:26 +0000)
+* **gamut:** Add GridForm Submit Button functionality ([#732](https://github.com/Codecademy/client-modules/issues/732)) ([08ef6c3](https://github.com/Codecademy/client-modules/commit/08ef6c3b536a260bf0e3135926af76bcc7412212))
 
 
-### Bug Fixes
+### 👽Other (Chores)
 
-* **Icon:** Fixes type incongruence from compiled definitions  ([#720](https://github.com/RyzacInc/client-modules/issues/720)) ([d09e758](https://github.com/RyzacInc/client-modules/commit/d09e758f0ae6b754a8c0c5275a5f3fa31cdb6005))
+* **release:** publish ([5253444](https://github.com/Codecademy/client-modules/commit/52534443267cdc2e0b22c1b43549b7347cbdfc5c))
 
-## [4.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.2.1...@codecademy/styleguide@4.3.0) (2020-04-10 20:39:05 +0000)
-
-
-### Features
-
-* **GridForm:** added columnGap and rowGap as props to GridForm ([#713](https://github.com/RyzacInc/client-modules/issues/713)) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef5d2661518a49a5285794f270d54bc9dce))
-
-### [4.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.2.0...@codecademy/styleguide@4.2.1) (2020-04-10 16:15:09 +0000)
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.5.0...@codecademy/styleguide@4.6.0) (2020-04-16)
 
 
-### Features
+### ✨Features
 
-* **GridForm:** drilled error states through GridForm to inputs ([#698](https://github.com/RyzacInc/client-modules/issues/698)) ([ff6fcc8](https://github.com/RyzacInc/client-modules/commit/ff6fcc8820b0d277a61ead41924fa5df2c131c9c))
-
-## [4.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.1.0...@codecademy/styleguide@4.2.0) (2020-04-10 02:47:15 +0000)
+* **Gamut:** added 'custom' field type to GridForm ([#733](https://github.com/Codecademy/client-modules/issues/733)) ([d67826b](https://github.com/Codecademy/client-modules/commit/d67826ba2e439eeeb8b5f0ef4e6dbbef0f768afc))
 
 
-### Features
+### 👽Other (Chores)
 
-* Add file input and text area to GridForm ([#709](https://github.com/RyzacInc/client-modules/issues/709)) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25ebfb4b2ab0859245daf11caf00005da96))
+* **release:** publish ([0dcf925](https://github.com/Codecademy/client-modules/commit/0dcf925c8ba4aee46eda7e362624372bd0a8f082))
 
-## [4.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@4.0.0...@codecademy/styleguide@4.1.0) (2020-04-09 22:40:21 +0000)
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.4.1...@codecademy/styleguide@4.5.0) (2020-04-14)
 
 
-### Features
+### ✨Features
 
-* **Styleguide:** Storybook 6 alpha upgrade + Story ordering ([#715](https://github.com/RyzacInc/client-modules/issues/715)) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad474826a3ade2b023c5ff5238e059c2994dc979))
+* GridForm checkbox and select required validation ([#729](https://github.com/Codecademy/client-modules/issues/729)) ([3dc28fd](https://github.com/Codecademy/client-modules/commit/3dc28fde22dc48462557869e56a5c020994ddd4c))
 
-## [4.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.26.0...@codecademy/styleguide@4.0.0) (2020-04-09 19:29:17 +0000)
+
+### 👽Other (Chores)
+
+* **release:** publish ([85cd25f](https://github.com/Codecademy/client-modules/commit/85cd25f7953052936a9bf411b005b939f06ec247))
+
+### [4.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.4.0...@codecademy/styleguide@4.4.1) (2020-04-13)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ff74560](https://github.com/Codecademy/client-modules/commit/ff74560565dbace230f08b3220f8d30b44f983c2))
+* finished moving to more permissive exports ([#724](https://github.com/Codecademy/client-modules/issues/724)) ([20a8d99](https://github.com/Codecademy/client-modules/commit/20a8d995e9604fd88edaf69fbf8a19cbf4518000))
+
+## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.3.1...@codecademy/styleguide@4.4.0) (2020-04-13)
+
+
+### ✨Features
+
+* **Gamut:** added AccordionTop molecule ([#725](https://github.com/Codecademy/client-modules/issues/725)) ([ae47f3a](https://github.com/Codecademy/client-modules/commit/ae47f3a101f380b88e8855d83fe71f77f490e1c0))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([8c9acff](https://github.com/Codecademy/client-modules/commit/8c9acff82bca3836c5779ec5626cbc8f286a2993))
+
+### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.3.0...@codecademy/styleguide@4.3.1) (2020-04-13)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([6e6e8ea](https://github.com/Codecademy/client-modules/commit/6e6e8ea4ffdc1d069e43fcfdf7b647bab8ab6805))
+
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.2.1...@codecademy/styleguide@4.3.0) (2020-04-10)
+
+
+### ✨Features
+
+* **GridForm:** added columnGap and rowGap as props to GridForm ([#713](https://github.com/Codecademy/client-modules/issues/713)) ([3870cef](https://github.com/Codecademy/client-modules/commit/3870cef5d2661518a49a5285794f270d54bc9dce))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ac4e055](https://github.com/Codecademy/client-modules/commit/ac4e0557c24dea54c76b4f64fb32116efd79b136))
+
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.2.0...@codecademy/styleguide@4.2.1) (2020-04-10)
+
+
+### 👽Other (Chores)
+
+* **brand-components:** filled out knobs for other Brand stories ([#719](https://github.com/Codecademy/client-modules/issues/719)) ([5d4dbb3](https://github.com/Codecademy/client-modules/commit/5d4dbb35452aa9e553b16a8d34c0ffcdba45fdc6))
+* **release:** publish ([c85a65b](https://github.com/Codecademy/client-modules/commit/c85a65bfdb1524a436d792b5024c3a7ca529214d))
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.1.0...@codecademy/styleguide@4.2.0) (2020-04-10)
+
+
+### ✨Features
+
+* Add file input and text area to GridForm ([#709](https://github.com/Codecademy/client-modules/issues/709)) ([78eef25](https://github.com/Codecademy/client-modules/commit/78eef25ebfb4b2ab0859245daf11caf00005da96))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([11b8c81](https://github.com/Codecademy/client-modules/commit/11b8c81f5aadab11c2018c87bf039c51cfbee190))
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.0.0...@codecademy/styleguide@4.1.0) (2020-04-09)
+
+
+### ✨Features
+
+* **Styleguide:** Storybook 6 alpha upgrade + Story ordering ([#715](https://github.com/Codecademy/client-modules/issues/715)) ([ad47482](https://github.com/Codecademy/client-modules/commit/ad474826a3ade2b023c5ff5238e059c2994dc979))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([0326be4](https://github.com/Codecademy/client-modules/commit/0326be4e76275c3a0f1b40fafa4e10b4ddf3b633))
+
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.26.0...@codecademy/styleguide@4.0.0) (2020-04-09)
 
 
 ### ⚠ BREAKING CHANGES
 
 * reorganized stories into Atomic Design and TypeScript (#695)
 
-### Miscellaneous Chores
+### 👽Other (Chores)
 
-* reorganized stories into Atomic Design and TypeScript ([#695](https://github.com/RyzacInc/client-modules/issues/695)) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c92f1af5d0eb8f98cfcd0745d75844397c1))
+* **release:** publish ([6e1d2ab](https://github.com/Codecademy/client-modules/commit/6e1d2ab7487a84e2a9899a5c6e92344bbe58db90))
+* reorganized stories into Atomic Design and TypeScript ([#695](https://github.com/Codecademy/client-modules/issues/695)) ([ffe77c9](https://github.com/Codecademy/client-modules/commit/ffe77c92f1af5d0eb8f98cfcd0745d75844397c1))
 
-## [3.26.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.25.1...@codecademy/styleguide@3.26.0) (2020-04-08 14:52:58 +0000)
+## [3.26.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.25.1...@codecademy/styleguide@3.26.0) (2020-04-08)
 
 
-### Features
+### ✨Features
 
-* allowed for checkbox inputs in GridForm ([#686](https://github.com/RyzacInc/client-modules/issues/686)) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a0733e3b9765e3aae314a979ec88e2f4ec))
+* allowed for checkbox inputs in GridForm ([#686](https://github.com/Codecademy/client-modules/issues/686)) ([1d8028a](https://github.com/Codecademy/client-modules/commit/1d8028a0733e3b9765e3aae314a979ec88e2f4ec))
 
-### [3.25.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.25.0...@codecademy/styleguide@3.25.1) (2020-04-07 23:27:24 +0000)
 
+### 👽Other (Chores)
 
-### Bug Fixes
+* **release:** publish ([99cc947](https://github.com/Codecademy/client-modules/commit/99cc9470a3bcc9bc06671d0b82265d6f08a549fe))
 
-* rename scss files ([#704](https://github.com/RyzacInc/client-modules/issues/704)) ([c4ea130](https://github.com/RyzacInc/client-modules/commit/c4ea130aeee1e9d600da53daad6312d17813cd61))
+### [3.25.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.25.0...@codecademy/styleguide@3.25.1) (2020-04-07)
 
-## [3.25.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.24.0...@codecademy/styleguide@3.25.0) (2020-04-07 16:01:07 +0000)
 
+### 👽Other (Chores)
 
-### Features
+* **🤔:** Removed unused Banner and Cover cards ([#705](https://github.com/Codecademy/client-modules/issues/705)) ([a6c4c0a](https://github.com/Codecademy/client-modules/commit/a6c4c0af1e5dce176dcf970b4cb867d51cf7ea8e))
+* **release:** publish ([7a2c13e](https://github.com/Codecademy/client-modules/commit/7a2c13eac756a91ae8cc06d3be1c36d3614665f9))
 
-* **Truncate:** Add truncate wrapper ([#700](https://github.com/RyzacInc/client-modules/issues/700)) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06182a79b74a1e3e543320f970017f246a6))
+## [3.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.24.0...@codecademy/styleguide@3.25.0) (2020-04-07)
 
-## [3.24.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.23.0...@codecademy/styleguide@3.24.0) (2020-04-07 13:31:05 +0000)
 
+### ✨Features
 
-### Features
+* **Truncate:** Add truncate wrapper ([#700](https://github.com/Codecademy/client-modules/issues/700)) ([fd0bf06](https://github.com/Codecademy/client-modules/commit/fd0bf06182a79b74a1e3e543320f970017f246a6))
 
-* **AppBar:** Move AppBar into gamut ([#696](https://github.com/RyzacInc/client-modules/issues/696)) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b19f47d42621f2815b6e4ffca04ef1a921c))
 
-## [3.23.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.22.2...@codecademy/styleguide@3.23.0) (2020-04-06 20:32:20 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([d9ea8a8](https://github.com/Codecademy/client-modules/commit/d9ea8a8f77085f04b2698d10803780425adefa7c))
 
-### Features
+## [3.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.23.0...@codecademy/styleguide@3.24.0) (2020-04-07)
 
-* **Modal:** An implementation of the Modal primitive ([#679](https://github.com/RyzacInc/client-modules/issues/679)) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0adc53a21e1fc944422a7dd0c0d0da70ea1))
 
-### [3.22.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.22.1...@codecademy/styleguide@3.22.2) (2020-04-06 18:50:31 +0000)
+### ✨Features
 
+* **AppBar:** Move AppBar into gamut ([#696](https://github.com/Codecademy/client-modules/issues/696)) ([ffdc5b1](https://github.com/Codecademy/client-modules/commit/ffdc5b19f47d42621f2815b6e4ffca04ef1a921c))
 
-### Bug Fixes
 
-* **Build:** Update lockfile and config file to include new template ([#699](https://github.com/RyzacInc/client-modules/issues/699)) ([9060cd2](https://github.com/RyzacInc/client-modules/commit/9060cd219bac749acc5fcf162d85dc73131ce4b5))
+### 👽Other (Chores)
 
-### [3.22.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.22.0...@codecademy/styleguide@3.22.1) (2020-04-06 18:02:45 +0000)
+* **release:** publish ([48013fc](https://github.com/Codecademy/client-modules/commit/48013fc09c2b3b33f79e2389b07cc101271f4659))
 
+## [3.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.2...@codecademy/styleguide@3.23.0) (2020-04-06)
 
-### Features
 
-* **Icons:** Add named export to gamut icons and update SVGR ([#697](https://github.com/RyzacInc/client-modules/issues/697)) ([9f783da](https://github.com/RyzacInc/client-modules/commit/9f783daacfc327a6d304b223d51a1a56cce129d9))
+### ✨Features
 
-## [3.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02 16:16:06 +0000)
+* **Modal:** An implementation of the Modal primitive ([#679](https://github.com/Codecademy/client-modules/issues/679)) ([5404f0a](https://github.com/Codecademy/client-modules/commit/5404f0adc53a21e1fc944422a7dd0c0d0da70ea1))
 
 
-### Features
+### 👽Other (Chores)
 
-* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+* **release:** publish ([2565088](https://github.com/Codecademy/client-modules/commit/25650884b6d18b887a19260df27498b156b905c1))
 
-## [3.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02 14:45:46 +0000)
+### [3.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.1...@codecademy/styleguide@3.22.2) (2020-04-06)
 
 
-### Features
+### 👽Other (Chores)
 
-* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+* **release:** publish ([b411043](https://github.com/Codecademy/client-modules/commit/b411043d0308e4c695d3967ffd386f814abb32a8))
 
-## [3.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01 18:15:34 +0000)
+### [3.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.0...@codecademy/styleguide@3.22.1) (2020-04-06)
 
 
-### Features
+### 👽Other (Chores)
 
-* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
-* map column offset 0 to grid-column-start: auto ([#678](https://github.com/RyzacInc/client-modules/issues/678)) ([415b8c1](https://github.com/RyzacInc/client-modules/commit/415b8c1bae4067a1062cc19371526dca48e30c04))
+* **release:** publish ([a61fa61](https://github.com/Codecademy/client-modules/commit/a61fa61210b181d3ce1d87e76ca1f39f0e485540))
 
-### 3.19.1 (2020-04-01 14:39:10 +0000)
+## [3.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
 
-## [3.19.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01 13:54:01 +0000)
 
+### ✨Features
 
-### Features
+* created ProgressBar primitive for Gamut ([#685](https://github.com/Codecademy/client-modules/issues/685)) ([93bd747](https://github.com/Codecademy/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
 
-* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
 
+### 👽Other (Chores)
 
-### Bug Fixes
+* **release:** publish ([2904d7c](https://github.com/Codecademy/client-modules/commit/2904d7c2d312d549d29379fcc373ef756989298a))
 
-* update `grid-template-row` on small and medium testimonials ([89a6ea1](https://github.com/RyzacInc/client-modules/commit/89a6ea18df41bba89c0fa94629fab6de791ea9aa))
+## [3.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
 
-### [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31 15:42:43 +0000)
 
+### ✨Features
 
-### Bug Fixes
+* create contentContainer component ([b5b89f3](https://github.com/Codecademy/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
 
-* correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
 
-## [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31 13:37:02 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([915cdc3](https://github.com/Codecademy/client-modules/commit/915cdc3d7c74d2f983a54dd75deeabf3e254f9dd))
 
-### Features
+## [3.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
 
-* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
 
-## [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30 16:14:52 +0000)
+### ✨Features
 
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/Codecademy/client-modules/issues/684)) ([b4daf36](https://github.com/Codecademy/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
 
-### Features
 
-* transform Testimonial content container on hover ([#668](https://github.com/RyzacInc/client-modules/issues/668)) ([5a06ede](https://github.com/RyzacInc/client-modules/commit/5a06edea753eff18a5e58b245d60c32edef93e1e))
-* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+### 👽Other (Chores)
 
-## [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26 16:44:46 +0000)
+* **release:** publish ([9698fff](https://github.com/Codecademy/client-modules/commit/9698fff566dd23f474a3747e1eb02a3e71a7d194))
 
+### [3.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.19.0...@codecademy/styleguide@3.19.1) (2020-04-01)
 
-### Features
 
-* add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+### 👽Other (Chores)
 
-## [3.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25 20:52:27 +0000)
+* **release:** publish ([f335abd](https://github.com/Codecademy/client-modules/commit/f335abd7b1febfda74fe47f61e9b815f26c390b5))
 
+## [3.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
 
-### Features
 
-* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+### ✨Features
 
+* renamed Modal element to Overlay ([#683](https://github.com/Codecademy/client-modules/issues/683)) ([3bb0ffb](https://github.com/Codecademy/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
 
-### Bug Fixes
 
-* height and width fixes on testimonial grid ([d436195](https://github.com/RyzacInc/client-modules/commit/d436195ffb4c45472abeb1e9d568a4f55811abb7))
+### 👽Other (Chores)
 
-## [3.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24 17:00:00 -0400)
+* **release:** publish ([6d97f0c](https://github.com/Codecademy/client-modules/commit/6d97f0c0bc5adcfee16a7451f59fe0d76d1ca262))
 
+### [3.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
 
-### Features
 
-* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
-* removes link generation from tabs and adds aria attributes ([#661](https://github.com/RyzacInc/client-modules/issues/661)) ([d95e018](https://github.com/RyzacInc/client-modules/commit/d95e018eb941bd2e9e8cf7a72110895ea2cf1f55))
+### 🐛Bug Fixes
 
-### [3.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11 17:24:06 +0000)
+* correct implementation of column offset in layout story ([#676](https://github.com/Codecademy/client-modules/issues/676)) ([c4f0ad8](https://github.com/Codecademy/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
 
-### [3.11.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09 18:05:13 +0000)
 
-### 3.11.1 (2020-03-06 16:20:45 +0000)
+### 👽Other (Chores)
 
+* **release:** publish ([1663862](https://github.com/Codecademy/client-modules/commit/16638621cfa0ea99a6aa45da2bb77ce08fde7147))
 
-### ⚠ BREAKING CHANGES
+## [3.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
 
-* Now there'll only be one version of autoprefixer and, well, two of browserslist. Hopefully that'll stop unnecessary CSS rules such as -webkit-flex from getting included in our CSS?
 
-### Miscellaneous Chores
+### ✨Features
 
-* updated and consolidated autoprefixer to ^9.7.4 ([#629](https://github.com/RyzacInc/client-modules/issues/629)) ([0fb90dd](https://github.com/RyzacInc/client-modules/commit/0fb90dd34f3058982194b11b3787ba7b6ea871a0))
+* allows 0 width column size for column offset ([#671](https://github.com/Codecademy/client-modules/issues/671)) ([681a461](https://github.com/Codecademy/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
 
-## [3.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05 18:13:39 +0000)
 
+### 👽Other (Chores)
 
-### Features
+* **release:** publish ([bce7735](https://github.com/Codecademy/client-modules/commit/bce77353b79d0316a7a5f1dc6fec92de14f3c33e))
 
-* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
+## [3.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
 
-### [3.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05 18:03:32 +0000)
 
-## [3.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05 16:30:00 +0000)
+### ✨Features
 
+* use export * on all exported modules ([#658](https://github.com/Codecademy/client-modules/issues/658)) ([67ba71b](https://github.com/Codecademy/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
 
-### Features
 
-* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
+### 👽Other (Chores)
 
-### [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04 17:57:28 +0000)
+* **release:** publish ([60b50d5](https://github.com/Codecademy/client-modules/commit/60b50d5b7d343338fd1c5c639592586db4351ab7))
 
+## [3.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
-### Bug Fixes
 
-* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
+### ✨Features
 
-## [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04 16:42:56 +0000)
+* add company and full name info to Testimonial ([aa150cd](https://github.com/Codecademy/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
 
 
-### Features
+### 👽Other (Chores)
 
-* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+* **release:** publish ([6f4e10a](https://github.com/Codecademy/client-modules/commit/6f4e10ac610f3e13d1fbe2b2a6865e372f1bcc0b))
 
-## [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03 18:18:11 +0000)
+## [3.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
 
-### Features
+### ✨Features
 
-* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
 
 
-### Bug Fixes
+### 👽Other (Chores)
 
-* testimonial component background pattern ([1a08cd2](https://github.com/RyzacInc/client-modules/commit/1a08cd2ddc84c59cc1088dfdd62e37afff452a36))
+* **release:** publish ([c66522a](https://github.com/Codecademy/client-modules/commit/c66522a5cb5619da91fe34fa5f2a679c61f99e4e))
+* **release:** publish ([7707a3a](https://github.com/Codecademy/client-modules/commit/7707a3a81edef0f73dbcae2667e309cec18f09b7))
 
-## [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24 20:47:50 +0000)
+## [3.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
 
 
-### Features
+### ✨Features
 
-* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/RyzacInc/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+* gridform touchups ([#653](https://github.com/Codecademy/client-modules/issues/653)) ([50b72e0](https://github.com/Codecademy/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
 
-### [3.6.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24 20:04:02 +0000)
 
-### [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21 15:43:17 +0000)
+### 👽Other (Chores)
 
-## [3.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21 14:49:12 +0000)
+* **release:** publish ([c767e7c](https://github.com/Codecademy/client-modules/commit/c767e7cb4e369aaf73693cda208e49a8ee232d12))
+* **release:** publish ([fdc003b](https://github.com/Codecademy/client-modules/commit/fdc003bc3dd6360b25679a19964cf7017e69d3d2))
 
+### [3.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
 
-### Features
 
-* create Byline  brand component  ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+### 📝Documentation
 
-### [3.5.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20 19:55:18 +0000)
+* reorganized and pruned button stories ([#650](https://github.com/Codecademy/client-modules/issues/650)) ([a72318e](https://github.com/Codecademy/client-modules/commit/a72318e97a7a9499442d6bee8d671efbd1fa7138))
 
-## [3.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20 16:47:18 +0000)
 
+### 👽Other (Chores)
 
-### Features
+* **release:** publish ([caa7ba9](https://github.com/Codecademy/client-modules/commit/caa7ba9a7d16f8ebca86d50338c347edd4c62b63))
 
-* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/RyzacInc/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+### [3.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
 
-### [3.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12 15:51:17 +0000)
 
+### 👽Other (Chores)
 
-### Bug Fixes
+* **release:** publish ([2c2d29f](https://github.com/Codecademy/client-modules/commit/2c2d29fae5c7b5f55f6917f48183101f5099ef3e))
 
-* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+### [3.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
 
-### [3.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12 03:19:34 +0000)
 
+### 👽Other (Chores)
 
-### Bug Fixes
+* **release:** publish ([004fa42](https://github.com/Codecademy/client-modules/commit/004fa42d0e95ed0137e4b38ed730faf92476b19c))
 
-* markdown styling: do not override code color ([#621](https://github.com/RyzacInc/client-modules/issues/621)) ([9a0014a](https://github.com/RyzacInc/client-modules/commit/9a0014ae3d9c3ee192442589510dab730ffe41c8))
+## [3.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
 
-### 3.4.2 (2020-01-28 15:56:22 +0000)
 
+### ✨Features
 
-### Features
+* added basic Modal primitive to Gamut ([#641](https://github.com/Codecademy/client-modules/issues/641)) ([df9fa1f](https://github.com/Codecademy/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
 
-* add file loader options override ([#607](https://github.com/RyzacInc/client-modules/issues/607)) ([4fe61f0](https://github.com/RyzacInc/client-modules/commit/4fe61f0451998cff878b9dc67b6568a8a5c3583e))
 
-### [3.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27 22:59:32 +0000)
+### 👽Other (Chores)
 
-## [3.4.0](https://github.com/RyzacInc/client-modules/compare/edcdebfcc7c943fa1086122dac34dbd7b289ee81...@codecademy/styleguide@3.4.0) (2020-01-27 20:45:41 +0000)
+* **release:** publish ([ab5f7e0](https://github.com/Codecademy/client-modules/commit/ab5f7e05fab8e5e27dd31a607596b1e697708322))
 
+### [3.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
 
-### ⚠ BREAKING CHANGES
 
-* Changes the path of all files in gamut from the root to a `dist` folder.
+### 👽Other (Chores)
 
-This means all imports that formerly pointed to the root:
+* **release:** publish ([69804c2](https://github.com/Codecademy/client-modules/commit/69804c2b427efe6a31614d960e06282ff547ada3))
+* bumped remaining React versions to 16.12 ([#649](https://github.com/Codecademy/client-modules/issues/649)) ([fcada3e](https://github.com/Codecademy/client-modules/commit/fcada3ea2a4b67de98b1e3d0f422166882621131))
 
-```
-import Button from '@codecademy/gamut/Button'
-```
+## [3.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
 
-now need to include the dist folder:
 
-```
-import Button from '@codecademy/gamut/dist/Button'
-```
+### ✨Features
 
-or, preferably, import the named export instead:
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/Codecademy/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
 
-```
-import { Button } from '@codecademy/gamut'
-```
-* `gamut-styles/variables` renamed to `gamut-styles/utils/variables`
 
-### Features
+### 👽Other (Chores)
 
-* Add clipboard icon ([a3cc4e6](https://github.com/RyzacInc/client-modules/commit/a3cc4e6b14e48f990adb95bd5a954e6c6803e9f9))
-* add edit icon ([#126](https://github.com/RyzacInc/client-modules/issues/126)) ([4525bc2](https://github.com/RyzacInc/client-modules/commit/4525bc2efcc4232936e59fe20560141b7716414b))
-* add flexbugs postcss plugin to normalize cross-browser flex-box properties ([#115](https://github.com/RyzacInc/client-modules/issues/115)) ([21e8b94](https://github.com/RyzacInc/client-modules/commit/21e8b943f7bbca09e15d4777e3f0ec45b256e0b3))
-* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
-* Add Markdown Component ([#155](https://github.com/RyzacInc/client-modules/issues/155)) ([2254b8e](https://github.com/RyzacInc/client-modules/commit/2254b8e24c42f2b5bbf455cb48ba116d260711bb))
-* add preview for IkonaIcon icons ([#390](https://github.com/RyzacInc/client-modules/issues/390)) ([42ce2cc](https://github.com/RyzacInc/client-modules/commit/42ce2cc9911738860f909d28016582a9913bacb4))
-* add react hooks linting ([#325](https://github.com/RyzacInc/client-modules/issues/325)) ([017a0cf](https://github.com/RyzacInc/client-modules/commit/017a0cf9743a462b3e493637cf8893252268acad))
-* add search icon ([#161](https://github.com/RyzacInc/client-modules/issues/161)) ([73b2c5e](https://github.com/RyzacInc/client-modules/commit/73b2c5e3879012ba6f1c497fd089ab81a4d566c5))
-* Add shared config modules for eslint & prettier ([#224](https://github.com/RyzacInc/client-modules/issues/224)) ([7fbeac6](https://github.com/RyzacInc/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-* Added optional (aria-)label to Icon component ([64778f5](https://github.com/RyzacInc/client-modules/commit/64778f568da39abd02df3b283b73f2e6bd6f9747))
-* Adds dynamic tag name for NotificationItem ([57154b2](https://github.com/RyzacInc/client-modules/commit/57154b2646bbaa742932e880311578af71f9c492))
-* Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/client-modules/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/client-modules/commit/c5c1e7fce406fddd5687d4e20644f7e778cb767f))
-* Allow custom Tab activeClassName ([#128](https://github.com/RyzacInc/client-modules/issues/128)) ([034c9b8](https://github.com/RyzacInc/client-modules/commit/034c9b87d70bde900ca19865f7456a3d7a90fff7))
-* Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e542a80a0e1a1a88076b648e248b3724eaf))
-* Better babel 7 support ([#145](https://github.com/RyzacInc/client-modules/issues/145)) ([49a1e23](https://github.com/RyzacInc/client-modules/commit/49a1e23cd455b51f318e8a92888fddeb325f9d21))
-* compile gamut using babel ([#583](https://github.com/RyzacInc/client-modules/issues/583)) ([2de0b9c](https://github.com/RyzacInc/client-modules/commit/2de0b9cbe9b053db351a95e5ad86cb304c1693d6))
-* create enzyme-helpers package ([b70b7b4](https://github.com/RyzacInc/client-modules/commit/b70b7b454aa600a8822636e37adc435c15ecb8da))
-* Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/client-modules/issues/188)) ([2520733](https://github.com/RyzacInc/client-modules/commit/2520733b0fccf4b01c5a1e1715260f4354c34477))
-* export all components ([#284](https://github.com/RyzacInc/client-modules/issues/284)) ([92bcf8e](https://github.com/RyzacInc/client-modules/commit/92bcf8ea71333e5c97aff24d557043e67be97b36))
-* Merge standard & core variables ([#123](https://github.com/RyzacInc/client-modules/issues/123)) ([5bf24b0](https://github.com/RyzacInc/client-modules/commit/5bf24b018a24b4fddbb06b21c14fedb3ad9d7dd8))
-* More dev server options ([#151](https://github.com/RyzacInc/client-modules/issues/151)) ([d181f5a](https://github.com/RyzacInc/client-modules/commit/d181f5a16273a6b7f483ef4692e7ba081f0d7b12))
-* New Gamut Icons Package ([#402](https://github.com/RyzacInc/client-modules/issues/402)) ([6e0fcfc](https://github.com/RyzacInc/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-* remove hot-loader as a dependency ([#146](https://github.com/RyzacInc/client-modules/issues/146)) ([b3b29b0](https://github.com/RyzacInc/client-modules/commit/b3b29b0858bab1a80ee02b0d035e1773c073a8fd))
-* Remove storybook package aliases ([#610](https://github.com/RyzacInc/client-modules/issues/610)) ([317f7f7](https://github.com/RyzacInc/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
-* Support React v16 ([#132](https://github.com/RyzacInc/client-modules/issues/132)) ([fafaab2](https://github.com/RyzacInc/client-modules/commit/fafaab24a09f3fe0d6f94c96046ae1b876ffaf3b))
-* update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/client-modules/commit/daec408f1245b7191525232815a7826bd2ba33a6))
-* Use babel to compile typescript in storybook ([#285](https://github.com/RyzacInc/client-modules/issues/285)) ([5622985](https://github.com/RyzacInc/client-modules/commit/56229859b8383ee0759afe7aaf642bb2a34d7d00))
-* use correct parser for eslint files by default ([#336](https://github.com/RyzacInc/client-modules/issues/336)) ([38ef491](https://github.com/RyzacInc/client-modules/commit/38ef4919fc6934c8c02ffbb4a4341eec66d2ef49))
-* various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283901a591726c5bc579a8e94e02008a85e6))
-* **Button:** allow component override ([cfd66ff](https://github.com/RyzacInc/client-modules/commit/cfd66ff2f1b8cf1f85c77688923f2608f422e63e))
-* **Card:** Add card components ([a907a41](https://github.com/RyzacInc/client-modules/commit/a907a419ae83fa12b643bad98c80006d6f33f414))
-* **component:** New notification menu component ([4918516](https://github.com/RyzacInc/client-modules/commit/49185166e4feb52b5ce8e35acd4609a236c5ffbe))
-* **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/RyzacInc/client-modules/commit/2dd0f36635864ee67d8c9d6da084b08dd53f5bff))
-* **icons:** add menu icon, adjust close icon ([#222](https://github.com/RyzacInc/client-modules/issues/222)) ([56b868d](https://github.com/RyzacInc/client-modules/commit/56b868d644fda9a7e071384cc948020f6013d293))
-* **icons:** PathIcon ([31c1d79](https://github.com/RyzacInc/client-modules/commit/31c1d79b711c4895ebb14748d8ad74152fcaaa0b))
-* **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/client-modules/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/client-modules/commit/f3c9cf244746a630fca6f07a831c77329130d4e6))
-* **Markdown:** add default table override component ([#307](https://github.com/RyzacInc/client-modules/issues/307)) ([22ef5cb](https://github.com/RyzacInc/client-modules/commit/22ef5cbce7d5a2452a800374788379580f8e6c6a))
-* **Markdown:** Modify styles in markdown to be classname-based to prevent leaking into custom overrides ([#486](https://github.com/RyzacInc/client-modules/issues/486)) ([f54e53f](https://github.com/RyzacInc/client-modules/commit/f54e53f18501b8ab1a83e6cff10f92622ff18585))
-* **ToolTip:** add optional 'tipClassName' override prop ([329772d](https://github.com/RyzacInc/client-modules/commit/329772d9c52b05dd216cd53a18ad38eca5b47fe9))
-* **webpack-config:** add case sensitive paths plugin in dev mode ([#302](https://github.com/RyzacInc/client-modules/issues/302)) ([66c0632](https://github.com/RyzacInc/client-modules/commit/66c06328363c05aa30291979155ae9fb64c586a8))
-* **webpack-config:** use built in module id hashing, fix file loader hashes ([#557](https://github.com/RyzacInc/client-modules/issues/557)) ([4b4c36f](https://github.com/RyzacInc/client-modules/commit/4b4c36fc7eb068156f191e50971bba40cf9cc9cb))
-* show all buttons in the main button story page ([#87](https://github.com/RyzacInc/client-modules/issues/87)) ([fbe5b24](https://github.com/RyzacInc/client-modules/commit/fbe5b24691834bbbb615a04432c3f34420fe7cba))
-* switch back to dev server ([#149](https://github.com/RyzacInc/client-modules/issues/149)) ([335377e](https://github.com/RyzacInc/client-modules/commit/335377ecd124880669253c2f1a92a4b9e0e46be9))
-* Switch to terser plugin from uglify ([#382](https://github.com/RyzacInc/client-modules/issues/382)) ([c347d2f](https://github.com/RyzacInc/client-modules/commit/c347d2f19d0001bed9b98f4937d2de2bb0d410b8))
-* switch to webpack-serve ([#144](https://github.com/RyzacInc/client-modules/issues/144)) ([d5389b0](https://github.com/RyzacInc/client-modules/commit/d5389b0c39e7d9937509c66960ec5d23f01a0429))
-* updates for babel 7 ([748b911](https://github.com/RyzacInc/client-modules/commit/748b91130629d8a41d8dbe294837af9b0c20247b))
-* webpack-config, add support for ts/tsx extensions in babel, other cleanup  ([#282](https://github.com/RyzacInc/client-modules/issues/282)) ([d213899](https://github.com/RyzacInc/client-modules/commit/d213899ad4e430a60dd4f98f2ebb7294e2518974))
+* **release:** publish ([acee05d](https://github.com/Codecademy/client-modules/commit/acee05da8c19b724e4be6ef8ac54144c310d9848))
 
+### [3.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
 
-### Bug Fixes
 
-* a Col should be able to accept just one element ([1333927](https://github.com/RyzacInc/client-modules/commit/1333927dea6924deaa58fa59546fbc6084e949d6))
-* add missing narrative icon ([#593](https://github.com/RyzacInc/client-modules/issues/593)) ([4d039d0](https://github.com/RyzacInc/client-modules/commit/4d039d0e95def5dfc7e130f0f34fb70f783d62fd))
-* allow all textarea React props on TextArea form component ([4e24308](https://github.com/RyzacInc/client-modules/commit/4e24308ebed8ea30f0bbe53fbf5fb198faa23e09))
-* bump html-to-react ([e5c5dc7](https://github.com/RyzacInc/client-modules/commit/e5c5dc72e34bbf16545488979ca1fc9be1260b88))
-* Default Form component to POST & Form Typescript cleanup  ([#492](https://github.com/RyzacInc/client-modules/issues/492)) ([6f44ca2](https://github.com/RyzacInc/client-modules/commit/6f44ca23e3e5533b62e5cf33a3ee32e95a75588c))
-* Disabled no-unused-vars for TypeScript ([#329](https://github.com/RyzacInc/client-modules/issues/329)) ([8980296](https://github.com/RyzacInc/client-modules/commit/89802963cb41307dedaf1f9d5a18fda2ba5e3cc9))
-* don't pass undefined classname to elements ([#575](https://github.com/RyzacInc/client-modules/issues/575)) ([d60fef4](https://github.com/RyzacInc/client-modules/commit/d60fef41041da334781064222d57f7c7a07641db))
-* fix broken compiled typings in gamut ([#586](https://github.com/RyzacInc/client-modules/issues/586)) ([57612f8](https://github.com/RyzacInc/client-modules/commit/57612f86080a093782ac1f18c0716736bf4d029d))
-* fix overflowing words and code in markdown ([#529](https://github.com/RyzacInc/client-modules/issues/529)) ([0b09a89](https://github.com/RyzacInc/client-modules/commit/0b09a894d40590ffb10114860a0eb532b62cb964))
-* FormGroupDescription and Toggle accessibility ([#558](https://github.com/RyzacInc/client-modules/issues/558)) ([0d12c99](https://github.com/RyzacInc/client-modules/commit/0d12c999c603620f2b29452e7975b50967197426))
-* pass onClick through to base button element ([b16ed8f](https://github.com/RyzacInc/client-modules/commit/b16ed8f0395412c1ae63f93ccc2b7a3009ee6707))
-* postcss plugins syntax ([#373](https://github.com/RyzacInc/client-modules/issues/373)) ([2d5f0e0](https://github.com/RyzacInc/client-modules/commit/2d5f0e090ca42b9c73a0c8b10c30d43313b5c412))
-* re-enable icon title props ([#594](https://github.com/RyzacInc/client-modules/issues/594)) ([670a7f2](https://github.com/RyzacInc/client-modules/commit/670a7f2a1e37a06d62577ca7f92183aa177dfcc5))
-* Set default size on icons, fix colors on some icons ([#577](https://github.com/RyzacInc/client-modules/issues/577)) ([049d1dd](https://github.com/RyzacInc/client-modules/commit/049d1ddef2e4ff519362ff0cc31123214f3cdaf4))
-* Update storybook & Gamut component exports ([#496](https://github.com/RyzacInc/client-modules/issues/496)) ([5bed74c](https://github.com/RyzacInc/client-modules/commit/5bed74caf5f6ab3f72f8b5c758e990cd1bfbde09))
-* use safer method to pull out markdown language prop ([#588](https://github.com/RyzacInc/client-modules/issues/588)) ([9f13a94](https://github.com/RyzacInc/client-modules/commit/9f13a94fe19d72eb645e1559be05c4403bd98429))
-* **deps:** bump base react version ([5957f0e](https://github.com/RyzacInc/client-modules/commit/5957f0e0a27eee4bd302979daab7145a43d63889))
-* **deps:** pin dependencies ([#280](https://github.com/RyzacInc/client-modules/issues/280)) ([3b1bc1b](https://github.com/RyzacInc/client-modules/commit/3b1bc1b86d7ad1976d8883d1bce3c976fe47457c))
-* **deps:** pin dependencies ([#288](https://github.com/RyzacInc/client-modules/issues/288)) ([273e99a](https://github.com/RyzacInc/client-modules/commit/273e99a6d677ce70185b318deb30e82d3b7b44ba))
-* **deps:** update babel monorepo to v7.4.3 ([#281](https://github.com/RyzacInc/client-modules/issues/281)) ([412a36a](https://github.com/RyzacInc/client-modules/commit/412a36a55ca7f866ef62d08ba24cc39b9250ab63))
-* **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](https://github.com/RyzacInc/client-modules/issues/311)) ([064e950](https://github.com/RyzacInc/client-modules/commit/064e950fb2ee7b7349bd9ddf369c7f5629a7ea6f))
-* **deps:** update dependency fork-ts-checker-webpack-plugin to v1.1.0 ([#312](https://github.com/RyzacInc/client-modules/issues/312)) ([13e155c](https://github.com/RyzacInc/client-modules/commit/13e155c4b452892f4faae7763ed94e867e342195))
-* **deps:** update dependency jsdom to v15 ([#318](https://github.com/RyzacInc/client-modules/issues/318)) ([837d5a4](https://github.com/RyzacInc/client-modules/commit/837d5a45fe9c4a91dd4bdd04b9abd3a34a7be609))
-* **deps:** update dependency lerna to v3.13.3 ([#313](https://github.com/RyzacInc/client-modules/issues/313)) ([f73a4ca](https://github.com/RyzacInc/client-modules/commit/f73a4ca553f58be42669820ef91ad50188c90ee3))
-* **deps:** update dependency optimize-css-assets-webpack-plugin to v5 ([#259](https://github.com/RyzacInc/client-modules/issues/259)) ([13b185c](https://github.com/RyzacInc/client-modules/commit/13b185ca673446b3a533377b6f095a1190bd8611))
-* **deps:** update dependency postcss-flexbugs-fixes to v4 ([#260](https://github.com/RyzacInc/client-modules/issues/260)) ([41b6201](https://github.com/RyzacInc/client-modules/commit/41b62013eb88c060a8f00b56d89c8017dcec1281))
-* **deps:** update dependency react-docgen-typescript-loader to v3.1.0 ([#279](https://github.com/RyzacInc/client-modules/issues/279)) ([e01540d](https://github.com/RyzacInc/client-modules/commit/e01540d76351860cd238a908d5d384eb77f7b45d))
-* **deps:** update react monorepo to v16.8.6 ([#263](https://github.com/RyzacInc/client-modules/issues/263)) ([b4f7494](https://github.com/RyzacInc/client-modules/commit/b4f749448c31f2df1c70bfac6b8d120f34520684))
-* **deps:** update storybook monorepo to v5 (major) ([#268](https://github.com/RyzacInc/client-modules/issues/268)) ([dc85ea8](https://github.com/RyzacInc/client-modules/commit/dc85ea8a31ecd3e6e03efa2c4ecb6c7b43aa6e16))
-* **deps:** update storybook monorepo to v5.0.10 ([#316](https://github.com/RyzacInc/client-modules/issues/316)) ([a5a520e](https://github.com/RyzacInc/client-modules/commit/a5a520ea61963994446c895fe4e0fadef335f19c))
-* **deps:** update storybook monorepo to v5.0.11 ([#332](https://github.com/RyzacInc/client-modules/issues/332)) ([a883ad7](https://github.com/RyzacInc/client-modules/commit/a883ad7ffb288b9afd18363994612960e4bd2f9c))
-* **Markdown:** catch invalid url errors ([#315](https://github.com/RyzacInc/client-modules/issues/315)) ([792056c](https://github.com/RyzacInc/client-modules/commit/792056ccd1bd019ac24bfc64a93d38272ab7dbba))
-* **Markdown:** remove noreferrer from external links ([#466](https://github.com/RyzacInc/client-modules/issues/466)) ([6cfb9a2](https://github.com/RyzacInc/client-modules/commit/6cfb9a2d280a4ad0282ad52477f476cd7e2e5de1))
-* **Markdown:** Update code tag specificity to prevent incorrect white-space ([#490](https://github.com/RyzacInc/client-modules/issues/490)) ([af46e2e](https://github.com/RyzacInc/client-modules/commit/af46e2e22d57d152f0ee2f54bdf5a7a6725a7552))
-* **prettier-config:** don't apply typescript parser to all files ([#488](https://github.com/RyzacInc/client-modules/issues/488)) ([195df03](https://github.com/RyzacInc/client-modules/commit/195df030731be09d1b09aa4eac8b7b679f1185b0))
-* **storybook:** Filter docgen types ([#406](https://github.com/RyzacInc/client-modules/issues/406)) ([0c522c5](https://github.com/RyzacInc/client-modules/commit/0c522c52ee335ce56b63f98d9f838309249345ff))
-* **webpack-config:** Revert removal of id from default hashes ([#560](https://github.com/RyzacInc/client-modules/issues/560)) ([3cd175d](https://github.com/RyzacInc/client-modules/commit/3cd175d670ffe23648660d319dd6f8558976c731))
-* add babel config back to storybook ([cdf77e4](https://github.com/RyzacInc/client-modules/commit/cdf77e4a806a46bf947d79009eaf38f55db28c3a))
-* export JS colors object, removes scss exports ([854ae75](https://github.com/RyzacInc/client-modules/commit/854ae7562bd64520ff989925c5139cc36971df4a))
-* storybook cleanup, add defaults opt-out to webpack-config ([#290](https://github.com/RyzacInc/client-modules/issues/290)) ([16b2fb0](https://github.com/RyzacInc/client-modules/commit/16b2fb003838c1f6e21c468511b8b1c23b50cad7))
-* switch hooks exhaustive deps rule to error ([#371](https://github.com/RyzacInc/client-modules/issues/371)) ([7b44130](https://github.com/RyzacInc/client-modules/commit/7b44130d23863ba812c5e99a1942a9aed88cdd23))
-* update tabs colors ([#374](https://github.com/RyzacInc/client-modules/issues/374)) ([a4e1b34](https://github.com/RyzacInc/client-modules/commit/a4e1b34e788cd160671aa36ad3426470f93d47d4))
-* **deps:** update babel monorepo to v7.4.0 ([#244](https://github.com/RyzacInc/client-modules/issues/244)) ([1b4932e](https://github.com/RyzacInc/client-modules/commit/1b4932e39da271a387352901b1c3e2971bb1fc1a))
-* **deps:** update dependency babel-loader to v8.0.5 ([#256](https://github.com/RyzacInc/client-modules/issues/256)) ([b774959](https://github.com/RyzacInc/client-modules/commit/b77495902aecdce6de730355f211f8785cb44694))
-* **deps:** update dependency chai to v4 ([#257](https://github.com/RyzacInc/client-modules/issues/257)) ([86c439f](https://github.com/RyzacInc/client-modules/commit/86c439fcc0efd94be7ca18c69254492cdac6996f))
-* add more dev server headers to avoid local errors ([#156](https://github.com/RyzacInc/client-modules/issues/156)) ([51ff9fd](https://github.com/RyzacInc/client-modules/commit/51ff9fd10d9a6bb2a07b025baf6f0a69067339a9))
-* add sideeffects for css and scss ([#157](https://github.com/RyzacInc/client-modules/issues/157)) ([c4e06d3](https://github.com/RyzacInc/client-modules/commit/c4e06d3d377d0eb638dfee9e3bf111852caa407a))
-* allow certain class names in Markdown component  ([#183](https://github.com/RyzacInc/client-modules/issues/183)) ([a38d144](https://github.com/RyzacInc/client-modules/commit/a38d144dc0f5fbfe7bb1af01b9fe9db671fcb9b2))
-* allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/client-modules/issues/184)) ([79c11eb](https://github.com/RyzacInc/client-modules/commit/79c11ebefe86668540a415ad3c794d423158ced1))
-* fix button story with correct import ([7e33767](https://github.com/RyzacInc/client-modules/commit/7e33767b9d6ad5f9c591fc65888238a247c11d1c))
-* Fix issue where markdown CodeBlock consumers receive an array instead of a string ([#182](https://github.com/RyzacInc/client-modules/issues/182)) ([bb5c3c5](https://github.com/RyzacInc/client-modules/commit/bb5c3c58a59732c48e59a3e4d7aba4b69ce982c5))
-* Fix malformed image tags in Markdown Component ([#172](https://github.com/RyzacInc/client-modules/issues/172)) ([18f5b0b](https://github.com/RyzacInc/client-modules/commit/18f5b0b88a302326cda2c5617831333f98dad1c5))
-* Fix more inline html weirdness in the Markdown component ([#167](https://github.com/RyzacInc/client-modules/issues/167)) ([fd8e61c](https://github.com/RyzacInc/client-modules/commit/fd8e61c99e49be8a97f04d8caf9ea8bd5098b968))
-* Fix notification styles ([f7674f8](https://github.com/RyzacInc/client-modules/commit/f7674f898868ddfe9377df42159bec952776298b))
-* fixes phone icon size ([4d2e0de](https://github.com/RyzacInc/client-modules/commit/4d2e0de49c1696685aab4632ba16d24bfe8a065e))
-* Fully reset BaseButton styles ([#166](https://github.com/RyzacInc/client-modules/issues/166)) ([6a9ec72](https://github.com/RyzacInc/client-modules/commit/6a9ec727c549cbaca8e21f898a1470d58ab34b33))
-* Markdown component  - Fix url access for server rendering ([#194](https://github.com/RyzacInc/client-modules/issues/194)) ([c741c30](https://github.com/RyzacInc/client-modules/commit/c741c306c7e5768efe237674fa4ad30083e5bb5d))
-* Markdown Component - Add anchor override, fix image spacing ([#192](https://github.com/RyzacInc/client-modules/issues/192)) ([b9e5411](https://github.com/RyzacInc/client-modules/commit/b9e5411dbcfd5d16c49fb2596e2ed5bee1f57914))
-* Markdown component - fix Invalid URL errors  ([#195](https://github.com/RyzacInc/client-modules/issues/195)) ([c130166](https://github.com/RyzacInc/client-modules/commit/c1301668fca7c3868fd4f27e74f9c1d55f154f8d))
-* updates story colors ([#229](https://github.com/RyzacInc/client-modules/issues/229)) ([ecf01c3](https://github.com/RyzacInc/client-modules/commit/ecf01c396b5692ef77555082cac8ab1e807f0257))
-* **deps:** pin dependencies ([#231](https://github.com/RyzacInc/client-modules/issues/231)) ([c185ac8](https://github.com/RyzacInc/client-modules/commit/c185ac8013565cc103717b7b2b961177bff4125c))
-* **deps:** update dependency css-loader to v2.1.1 ([#245](https://github.com/RyzacInc/client-modules/issues/245)) ([a033a4b](https://github.com/RyzacInc/client-modules/commit/a033a4b380686ae11bc5d8de27a414388947853d))
-* **deps:** update dependency webpack to v4.29.6 ([#247](https://github.com/RyzacInc/client-modules/issues/247)) ([dd6a897](https://github.com/RyzacInc/client-modules/commit/dd6a897dc82bad987ee806f18a2a38dd396977c6))
-* **deps:** update react monorepo to v16.8.4 ([#248](https://github.com/RyzacInc/client-modules/issues/248)) ([a3dc657](https://github.com/RyzacInc/client-modules/commit/a3dc657997cf814209cc0af39dfdbbcea3690271))
-* **deps:** update storybook monorepo to v4.1.14 ([#249](https://github.com/RyzacInc/client-modules/issues/249)) ([dd2a796](https://github.com/RyzacInc/client-modules/commit/dd2a79691a960b4ef7246847fda543de0c2393ac))
-* **Markdown:** Add smart dash support, fix &mdash; showing up in text. ([#226](https://github.com/RyzacInc/client-modules/issues/226)) ([8deeb79](https://github.com/RyzacInc/client-modules/commit/8deeb79d1714e199f2ad7c425c877df90852b16c))
-* Markdown version 2.0 ([#176](https://github.com/RyzacInc/client-modules/issues/176)) ([5162872](https://github.com/RyzacInc/client-modules/commit/5162872b2c0367e8dee768585b3432e612dd4906))
-* minor core stylesheet tweaks ([#159](https://github.com/RyzacInc/client-modules/issues/159)) ([3dc76fc](https://github.com/RyzacInc/client-modules/commit/3dc76fca4a94f30a455889b7df0a6eeb4da5bfc6))
-* More defensive markdown formatting fixes ([#162](https://github.com/RyzacInc/client-modules/issues/162)) ([038b0d6](https://github.com/RyzacInc/client-modules/commit/038b0d65592165394db313f591acd9dbf0085478))
-* more defensive url ([a328533](https://github.com/RyzacInc/client-modules/commit/a3285334405123efb9276ec44378dd3c8d114b3b))
-* pass data-attributes through omitProps util & use on markdown component ([#165](https://github.com/RyzacInc/client-modules/issues/165)) ([2d1a27d](https://github.com/RyzacInc/client-modules/commit/2d1a27d1e8b82103c77bc7dcaf50fe092b9323f3))
-* remove all unused local variables ([#208](https://github.com/RyzacInc/client-modules/issues/208)) ([ccc044a](https://github.com/RyzacInc/client-modules/commit/ccc044aeb941a0589e55ea73e9be66656f91c52f))
-* remove markdown lookbehind regex for firefox compatibility ([#175](https://github.com/RyzacInc/client-modules/issues/175)) ([690b561](https://github.com/RyzacInc/client-modules/commit/690b561c79e0c2076bc3a80b07987d898fb07d34))
-* revert changes to ButtonBase ([#218](https://github.com/RyzacInc/client-modules/issues/218)) ([454cfc6](https://github.com/RyzacInc/client-modules/commit/454cfc6d17f4a65c06fb7235f0bed8ca4404036b))
-* updates loading icon ([6719276](https://github.com/RyzacInc/client-modules/commit/6719276dc6c52fff3083fa64e32bef7e64e9bf7a))
-* updates readme ([#213](https://github.com/RyzacInc/client-modules/issues/213)) ([7078f36](https://github.com/RyzacInc/client-modules/commit/7078f36990cba5f845f04f60663dff6b9f01680b))
-* **component:** Spread and render extra props for Radio components ([#152](https://github.com/RyzacInc/client-modules/issues/152)) ([eb878c0](https://github.com/RyzacInc/client-modules/commit/eb878c0af8bdd94fe58669662faa935353f42ee7))
-* **gamut:** remove button underline on hover ([bccd7d8](https://github.com/RyzacInc/client-modules/commit/bccd7d8c6febec3ab56cd22ed47adb081b691fed))
-* **RadialProgress:** convert value to percent ([#207](https://github.com/RyzacInc/client-modules/issues/207)) ([4d738c6](https://github.com/RyzacInc/client-modules/commit/4d738c663bb757f226c0c7e018ce05e1b6ae309e))
+### 🐛Bug Fixes
 
+* fixes responsive prop configs for layout grid ([#648](https://github.com/Codecademy/client-modules/issues/648)) ([6cd2d23](https://github.com/Codecademy/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
 
-### Reverts
 
-* **unknown:** Revert "add module generator script" ([0ed23eb](https://github.com/RyzacInc/client-modules/commit/0ed23ebcc9d2a0d9afed5b72b7b390e89ba0679a))
-* **unknown:** Revert "Adds form elements to gamut" ([5401391](https://github.com/RyzacInc/client-modules/commit/540139179896bf2758107cae4e9eb0cba706e607))
-* **unknown:** Revert "Adds identity styles"" ([2f476fb](https://github.com/RyzacInc/client-modules/commit/2f476fba33b49b963c7b6de5d0c4326ae47ab237))
-* **unknown:** Revert "Replace manual import & naming with contextual require & localized naming" ([a78d42f](https://github.com/RyzacInc/client-modules/commit/a78d42fc1dc13143e563f88e468e57f8784e5fe5))
-* **unknown:** Revert "testing issue with rails-sass" ([edcdebf](https://github.com/RyzacInc/client-modules/commit/edcdebfcc7c943fa1086122dac34dbd7b289ee81))
+### 👽Other (Chores)
 
+* **release:** publish ([e7cbff2](https://github.com/Codecademy/client-modules/commit/e7cbff2d4b2212ade8b6e09d33b5119fb40fef63))
 
-### Code Refactoring
+## [3.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
 
-* move gamut out of root folder ([#494](https://github.com/RyzacInc/client-modules/issues/494)) ([c475cdf](https://github.com/RyzacInc/client-modules/commit/c475cdfdb708edd783a9e1f18769a895016bf5e7))
+
+### ✨Features
+
+* add column offsets to layoutgrid ([#644](https://github.com/Codecademy/client-modules/issues/644)) ([43e7042](https://github.com/Codecademy/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([2987d18](https://github.com/Codecademy/client-modules/commit/2987d18bf2d2faafd7277e54f7af9cb477b40382))
+
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
+
+
+### ✨Features
+
+* added GridForm component ([#605](https://github.com/Codecademy/client-modules/issues/605)) ([253acad](https://github.com/Codecademy/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([de86d13](https://github.com/Codecademy/client-modules/commit/de86d13a022b89d98e98584666ced4e08ab512a6))
+
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
+
+
+### ✨Features
+
+* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/Codecademy/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([9d65086](https://github.com/Codecademy/client-modules/commit/9d650869c1396563783e4b99d1ffcb74492cda90))
+
+### [3.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
+
+
+### 👽Other (Chores)
+
+* **🤔:** [PREM-38] Update nav bar logos in gamut ([#638](https://github.com/Codecademy/client-modules/issues/638)) ([ed566e1](https://github.com/Codecademy/client-modules/commit/ed566e1a1d0d19eb1c4ffb931e5b4a81ea987102))
+* **release:** publish ([3fb869f](https://github.com/Codecademy/client-modules/commit/3fb869fad5015070b8db6b893a122e6350620e82))
+
+### [3.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
+
+
+### 👽Other (Chores)
+
+* **🤔:** create quote brand component ([#635](https://github.com/Codecademy/client-modules/issues/635)) ([fed821c](https://github.com/Codecademy/client-modules/commit/fed821c676536e6eb5ac9c393e99316efde2f035))
+* **release:** publish ([e786e17](https://github.com/Codecademy/client-modules/commit/e786e1747de1f306fac6243bef41c438b11d6cb2))
+
+## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
+
+
+### ✨Features
+
+* create Byline  brand component  ([e330622](https://github.com/Codecademy/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([f9a9895](https://github.com/Codecademy/client-modules/commit/f9a9895474a77f3e9b62a702f1024d298cfbd388))
+
+### [3.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
+
+
+### 👽Other (Chores)
+
+* **🤔:** SkipToContent control ([#618](https://github.com/Codecademy/client-modules/issues/618)) ([b6985ee](https://github.com/Codecademy/client-modules/commit/b6985ee2d8f5d74ee935e7a14a085ce5c522f113))
+* **release:** publish ([1c679ed](https://github.com/Codecademy/client-modules/commit/1c679ed0df44acb8fb526c8c5aa753ada12e4926))
+
+## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
+
+
+### ✨Features
+
+* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/Codecademy/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([2f3bea9](https://github.com/Codecademy/client-modules/commit/2f3bea90d18819a83b93508d9541aa0d6b8652f3))
+
+### [3.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
+
+
+### 🐛Bug Fixes
+
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/Codecademy/client-modules/issues/624)) ([5aa8800](https://github.com/Codecademy/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ea28d62](https://github.com/Codecademy/client-modules/commit/ea28d626a3046e54f682f8cebeeea64f4c78a95a))
+
+### [3.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([ae466aa](https://github.com/Codecademy/client-modules/commit/ae466aa14a24dc4929a9b34e414389fd09f5eb9e))
+
+### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([412a459](https://github.com/Codecademy/client-modules/commit/412a45934333ede13a22acc47e22771408134f74))
+
+### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
+
+
+### 👽Other (Chores)
+
+* **release:** publish ([0f76598](https://github.com/Codecademy/client-modules/commit/0f76598c33d043707306dca7058f8e9014e2eba7))
+
+## [3.4.0](https://github.com/Codecademy/client-modules/compare/317f7f7c9255966472d5171990c3773b6cc0576d...@codecademy/styleguide@3.4.0) (2020-01-27)
+
+
+### ✨Features
+
+* Remove storybook package aliases ([#610](https://github.com/Codecademy/client-modules/issues/610)) ([317f7f7](https://github.com/Codecademy/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
+
+
+### 👽Other (Chores)
+
+* **🤔:** Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+* **release:** publish ([e96d733](https://github.com/Codecademy/client-modules/commit/e96d7332f209262c6e4801d2c60219e64d24138c))
 
