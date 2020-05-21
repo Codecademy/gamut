@@ -48,9 +48,9 @@ Every PR that changes files in a package publishes alpha releases that you can u
 ### Working with pre-published changes
 
 For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
-symlinks. The following instructions assume you have set up and built client-modules, and it's in your home folder:
+symlinks (the following instructions assume you have set up and built client-modules):
 
-1. `cd ~/client-modules/packages/gamut`
+1. `cd /path/to/client-modules/packages/gamut`
 1. `yarn link`
 1. `cd path/to/other/repo`
 1. `yarn link @codecademy/gamut`
@@ -62,7 +62,7 @@ If your other project uses React, you must link that copy of React in Gamut:
 1. `cd path/to/other/repo`
 1. `cd node_modules/react`
 1. `yarn link`
-1. `cd ~/client-modules`
+1. `cd /path/to/client-modules/packages/gamut`
 1. `yarn link react`
 1. `yarn build-all`
 ```

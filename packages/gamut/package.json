@@ -45,7 +45,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "copyfiles": "^2.1.1",
     "onchange": "^7.0.2"
   }
 }
