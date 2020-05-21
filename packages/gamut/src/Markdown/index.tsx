@@ -56,7 +56,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
     if (!text) return null;
 
     const spacingStyles = s[`spacing-${spacing}`];
-    const classes = cx(spacingStyles, className);
+    const classes = cx(s.markdown, spacingStyles, className);
 
     const Wrapper = inline ? 'span' : 'div';
 
