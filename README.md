@@ -74,7 +74,7 @@ To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` 
 
 #### Troubleshooting
 
-If you run into compilation issues after linking, try `yarn install` in the monolith and restarting its dev server
+If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
 or running `yarn build-all` in this repo.
 
 ### PR Title Guide
