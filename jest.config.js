@@ -4,7 +4,10 @@ module.exports = {
     __DEV__: true,
   },
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/script/jest/rtl-setup.ts',
+    '<rootDir>/node_modules/jest-enzyme/lib/index.js',
+  ],
   moduleFileExtensions: [
     'js',
     'json',

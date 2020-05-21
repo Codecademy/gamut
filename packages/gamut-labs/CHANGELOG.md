@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.9 (2020-05-21)</small>
+
+* style(Testimonial): fix full width styling (#814) ([5bccc21](https://github.com/Codecademy/client-modules/commit/5bccc21)), closes [#814](https://github.com/Codecademy/client-modules/issues/814)
+
+
+
+
+
+## <small>1.7.8 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## <small>1.7.7 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## <small>1.7.6 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## <small>1.7.5 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## <small>1.7.4 (2020-05-19)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>1.7.3 (2020-05-15)</small>
 
 **Note:** Version bump only for package @codecademy/gamut-labs

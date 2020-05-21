@@ -32,11 +32,26 @@ export type GridFormCustomField = BaseFormField<any> & {
   type: 'custom';
 };
 
+export type BasicInputType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 export type GridFormTextField = BaseFormField<string> & {
   label: string;
   placeholder?: string;
   validation?: ValidationOptions;
-  type: 'date' | 'email' | 'text';
+  type: BasicInputType;
 };
 
 export type GridFormRadioOption = {
@@ -59,7 +74,7 @@ export type GridFormSelectField = BaseFormField<string> & {
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  label: string;
+  label: React.ReactNode;
   validation?: ValidationOptions;
   type: 'file';
 };
