@@ -1,9 +1,10 @@
-### [8.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.0.1...@codecademy/gamut@8.0.1) (2020-05-21)
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.0.1...@codecademy/gamut@8.2.0) (2020-05-21)
 
 
 ### 👽Other (Chores)
 
 * **🤔:** add task to rebuild changelogs ([7e820aa](https://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
+* **🤔:** finally finshed w/ this script ([ba614c3](https://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
 
 ### [8.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.0.0...@codecademy/gamut@8.0.1) (2020-05-20)
 

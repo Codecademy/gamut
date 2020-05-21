@@ -4,6 +4,7 @@
 ### 👽Other (Chores)
 
 * **🤔:** add task to rebuild changelogs ([7e820aa](http://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
+* **🤔:** finally finshed w/ this script ([ba614c3](http://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
 
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
 

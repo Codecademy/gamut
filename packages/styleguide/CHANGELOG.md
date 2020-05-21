@@ -1,9 +1,10 @@
-### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.1...@codecademy/styleguide@10.0.1) (2020-05-21)
+### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.1...@codecademy/styleguide@10.0.3) (2020-05-21)
 
 
 ### 👽Other (Chores)
 
 * **🤔:** add task to rebuild changelogs ([7e820aa](https://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
+* **🤔:** finally finshed w/ this script ([ba614c3](https://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
 
 ### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.0...@codecademy/styleguide@10.0.1) (2020-05-20)
 

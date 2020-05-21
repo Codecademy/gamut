@@ -4,6 +4,7 @@
 ### 👽Other (Chores)
 
 * **🤔:** add task to rebuild changelogs ([7e820aa](http://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
+* **🤔:** finally finshed w/ this script ([ba614c3](http://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
 
 ### [0.1.7](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.6...@codecademy/prettier-config@0.1.7) (2020-05-04)
 
