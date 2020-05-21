@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>10.0.1 (2020-05-20)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 10.0.0 (2020-05-20)
+
+* feat!: Refactor Modal and Overlay components [GM-24] (#806) ([01367fc](https://github.com/RyzacInc/client-modules/commit/01367fc)), closes [#806](https://github.com/RyzacInc/client-modules/issues/806)
+
+
+
+
+
+## 9.13.0 (2020-05-20)
+
+* feat(Gamut): Add Input Stepper (#753) ([1d110a0](https://github.com/RyzacInc/client-modules/commit/1d110a0)), closes [#753](https://github.com/RyzacInc/client-modules/issues/753)
+
+
+
+
+
 ## <small>9.12.2 (2020-05-20)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide

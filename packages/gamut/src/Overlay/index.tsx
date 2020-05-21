@@ -8,27 +8,43 @@ import styles from './styles.module.scss';
 export type OverlayProps = {
   children: React.ReactElement<any>;
   className?: string;
-  clickOutsideDeactivates?: boolean;
+  /**
+   * Whether clicking on the screen outside of the container should close the Overlay
+   */
+  clickOutsideCloses?: boolean;
+  /**
+   * Whether clicking the escape key should close the Overlay
+   */
+  escapeCloses?: boolean;
+  /**
+   * Called when the Overlay requests to be closed,
+   * this could be due to clicking outside of the overlay, or by clicking the escape key
+   */
+  onRequestClose: () => void;
   isOpen?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
-  clickOutsideDeactivates,
+  clickOutsideCloses = true,
+  escapeCloses = true,
+  onRequestClose,
   isOpen,
 }) => {
-  if (!isOpen) {
-    return null;
-  }
+  if (!isOpen) return null;
 
   return (
     <BodyPortal>
-      <div className={cx(styles.container, className)}>
-        <FocusTrap focusTrapOptions={{ clickOutsideDeactivates }}>
-          {children}
-        </FocusTrap>
-      </div>
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: clickOutsideCloses,
+          escapeDeactivates: escapeCloses,
+          onDeactivate: onRequestClose,
+        }}
+      >
+        <div className={cx(styles.container, className)}>{children}</div>
+      </FocusTrap>
     </BodyPortal>
   );
 };
