@@ -18,13 +18,13 @@ conventionalChangelog(
       name: 'conventionalcommits',
       types: [
         { type: 'feat', section: '✨ Features' },
-        { type: 'feature', section: '💫 Features' },
+        { type: 'feature', section: '✨ Features' },
         { type: 'fix', section: '🐛 Bug Fixes' },
         { type: 'perf', section: '🏎 Performance Improvements' },
         { type: 'revert', section: '🗑 Reverts' },
         { type: 'docs', section: '📝 Documentation' },
         { type: 'style', section: '💅 Styles' },
-        { type: 'chore', section: '👽 Other (Chores)' },
+        { type: 'chore', section: 'Other Changes' },
         { type: 'refactor', section: '🧹 Code Refactoring' },
         { type: 'test', section: '🧪 Tests' },
         { type: 'build', section: '🏗 Build System' },
@@ -41,11 +41,10 @@ conventionalChangelog(
     },
     transform(commit, cb) {
       if (!commit.type) {
-        // Mark misconfigured commits as chores
+        // Mark misconfigured commits as chore
         commit.type = 'chore';
         commit.subject = commit.header;
-        commit.scope = '🤔';
-        commit.header = `chore(🤔): ${commit.header}`;
+        commit.header = `chore: ${commit.header}`;
       }
 
       // Fix lerna versions
