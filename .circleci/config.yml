@@ -86,7 +86,9 @@ jobs:
       - run:
           name: Run all builds
           command: yarn build-all
-      - run: git gc
+      - run:
+          name: Clean up garbage
+          command: git gc
       - save_cache:
           key: *repo_cache_key_1
           paths:
