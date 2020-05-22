@@ -1,3 +1,18 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.7.12 (2020-05-22)</small>
+
+* ci: cleanup changelogs ([a64dcfc](https://github.com/Codecademy/client-modules/commit/a64dcfc))
+* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/Codecademy/client-modules/commit/acb1f18)), closes [#815](https://github.com/Codecademy/client-modules/issues/815)
+* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/Codecademy/client-modules/commit/b258dc4))
+
+
+
+
+
 ### [1.7.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.10...@codecademy/gamut-labs@1.7.11) (2020-05-21)
 
 ### [1.7.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.9...@codecademy/gamut-labs@1.7.10) (2020-05-21)
@@ -29,4 +44,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
