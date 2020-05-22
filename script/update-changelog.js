@@ -13,6 +13,7 @@ const outputStream = fs.createWriteStream(packageChangelogPath);
 const packageRegex = new RegExp(`${LERNA_PACKAGE_NAME}@(?<version>.*?)(,|\\))`);
 
 conventionalChangelog(
+  // General options
   {
     preset: {
       name: 'conventionalcommits',
@@ -71,6 +72,7 @@ conventionalChangelog(
     repository: 'client-modules',
     repoUrl: 'https://github.com/Codecademy/client-modules',
   },
+  // gitRawCommit options
   {
     // ensure we're only looking at commits for this package
     path: process.cwd(),
@@ -118,14 +120,7 @@ conventionalChangelog(
         if (context.version === 'Unreleased') {
           context.currentTag = context.currentTag || firstCommitHash;
         } else if (!context.currentTag) {
-          if (LERNA_PACKAGE_NAME) {
-            context.currentTag = LERNA_PACKAGE_NAME + '@' + context.version;
-          } else {
-            context.currentTag = guessNextTag(
-              gitSemverTags[0],
-              context.version
-            );
-          }
+          context.currentTag = LERNA_PACKAGE_NAME + '@' + context.version;
         }
       }
 
