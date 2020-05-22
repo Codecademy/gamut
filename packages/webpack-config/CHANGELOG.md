@@ -1,15 +1,5 @@
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.2) (2020-05-22)
 
-
-### Other Changes
-
-* add task to rebuild changelogs ([7e820aa](http://github.com/Codecademy/client-modules/commit/7e820aa2c12dc772cb693d35f726ddc95abfe591))
-* cleanup ([470459c](http://github.com/Codecademy/client-modules/commit/470459c03dbeab59c5b1598e27a73384ecea1c8e))
-* finally finshed w/ this script ([ba614c3](http://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
-* Merge remote-tracking branch 'origin/master' into jh-fix-changelogs ([76f56fd](http://github.com/Codecademy/client-modules/commit/76f56fd6ccbf3396b5ad86e6adb94d26cfb14c24)), closes [#810](http://github.com/Codecademy/client-modules/issues/810) [#807](http://github.com/Codecademy/client-modules/issues/807) [#814](http://github.com/Codecademy/client-modules/issues/814) [#805](http://github.com/Codecademy/client-modules/issues/805)
-* update changelog script ([4634523](http://github.com/Codecademy/client-modules/commit/4634523684cf12fc7dcd21bd4c0d7ecbbc8c1bc1))
-* updates ([a232436](http://github.com/Codecademy/client-modules/commit/a23243626136c4492b4f1e01a4d8d17ffd85f7be))
-
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
 
 
