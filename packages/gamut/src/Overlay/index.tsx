@@ -36,15 +36,17 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   return (
     <BodyPortal>
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: clickOutsideCloses,
-          escapeDeactivates: escapeCloses,
-          onDeactivate: onRequestClose,
-        }}
-      >
-        <div className={cx(styles.container, className)}>{children}</div>
-      </FocusTrap>
+      <div className={cx(styles.container, className)}>
+        <FocusTrap
+          focusTrapOptions={{
+            clickOutsideDeactivates: clickOutsideCloses,
+            escapeDeactivates: escapeCloses,
+            onDeactivate: onRequestClose,
+          }}
+        >
+          {children}
+        </FocusTrap>
+      </div>
     </BodyPortal>
   );
 };
