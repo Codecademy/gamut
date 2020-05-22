@@ -51,15 +51,16 @@ describe('Overlay', () => {
     expect(onRequestClose.mock.calls.length).toBe(0);
   });
 
-  it('triggers onRequestClose callback when clicking outside', () => {
+  it('triggers onRequestClose callback when clicking the container', () => {
     const onRequestClose = jest.fn();
-    const { baseElement } = renderOverlay({
+    renderOverlay({
       isOpen: true,
       clickOutsideCloses: true,
       onRequestClose,
     });
+
     // focus-trap listens to mouseDown, not click
-    fireEvent.mouseDown(baseElement);
+    fireEvent.mouseDown(screen.queryByTestId('overlay-content').parentElement);
     expect(onRequestClose.mock.calls.length).toBe(1);
   });
 
