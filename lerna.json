@@ -5,7 +5,8 @@
   "packages": ["packages/*"],
   "command": {
     "publish": {
-      "message": "chore(release): publish"
+      "message": "chore(release): publish",
+      "ignore": ["**/CHANGELOG.md"]
     },
     "version": {
       "changelogPreset": "conventionalcommits"

@@ -149,7 +149,7 @@ jobs:
       - *set_npm_token
       - run:
           name: lerna publish
-          command: yarn lerna publish --yes --conventional-commits --include-merged-tags --create-release=github
+          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
 
   deploy:
     <<: *default_env
