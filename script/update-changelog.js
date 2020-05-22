@@ -30,6 +30,8 @@ conventionalChangelog(
         { type: 'test', section: '🧪 Tests' },
         { type: 'build', section: '🏗 Build System' },
         { type: 'ci', section: 'Continuous Integration', hidden: true },
+        // Fake category to hide releases
+        { type: 'release', section: 'Releases', hidden: true },
       ],
     },
     // debug: console.debug.bind(console),
@@ -61,6 +63,10 @@ conventionalChangelog(
           'yyyy-mm-dd',
           true
         );
+      }
+
+      if (commit.scope === 'release' && commit.type === 'chore') {
+        commit.type = 'release';
       }
 
       cb(null, commit);

@@ -1,11 +1,8 @@
-### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.1...@codecademy/gamut-styles@3.3.1) (2020-05-22)
-
 ### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.0...@codecademy/gamut-styles@3.3.1) (2020-05-06)
 
 
 ### Other Changes
 
-* **release:** publish ([5276a91](https://github.com/Codecademy/client-modules/commit/5276a919385d3465cc1dc7ade44b6f37fd7ed45a))
 * Removed unused deprecated button themes ([#774](https://github.com/Codecademy/client-modules/issues/774)) ([013e403](https://github.com/Codecademy/client-modules/commit/013e40398ad3cd9adcaf3cfb5e7bd4cf39b63659))
 
 ## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.2.0...@codecademy/gamut-styles@3.3.0) (2020-05-05)
@@ -15,11 +12,6 @@
 
 * **Gamut:** Created separate bucket for "Platform" colors ([#778](https://github.com/Codecademy/client-modules/issues/778)) ([26daf75](https://github.com/Codecademy/client-modules/commit/26daf75e7e488f1a7b268ca6d3a0700284d5e95e))
 
-
-### Other Changes
-
-* **release:** publish ([f8b6cd2](https://github.com/Codecademy/client-modules/commit/f8b6cd2c7367970e3e5e0660e1ee4e8677af0397))
-
 ## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.1.1...@codecademy/gamut-styles@3.2.0) (2020-05-05)
 
 
@@ -27,17 +19,11 @@
 
 * **gamut-styles:** Added TypeScript .d.ts generation to gamut-styles ([#775](https://github.com/Codecademy/client-modules/issues/775)) ([39a64ec](https://github.com/Codecademy/client-modules/commit/39a64ec114484c6fff6423ba09784483b12d0b76))
 
-
-### Other Changes
-
-* **release:** publish ([0c703b2](https://github.com/Codecademy/client-modules/commit/0c703b299135fe890f3c61a69363558e9eb3e73f))
-
 ### [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.1.0...@codecademy/gamut-styles@3.1.1) (2020-05-04)
 
 
 ### Other Changes
 
-* **release:** publish ([2f36157](https://github.com/Codecademy/client-modules/commit/2f36157ceb44cfaf42325e10dd3fa14b5122fc95))
 * Add XL size to class templating and types ([#768](https://github.com/Codecademy/client-modules/issues/768)) ([8c2c717](https://github.com/Codecademy/client-modules/commit/8c2c7179e6c819fda93297503d2ed1c3ace9a8cf))
 
 ## [3.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.0.0...@codecademy/gamut-styles@3.1.0) (2020-04-29)
@@ -46,11 +32,6 @@
 ### ✨ Features
 
 * **headertab:** move more header components into gamut ([#740](https://github.com/Codecademy/client-modules/issues/740)) ([9c555ef](https://github.com/Codecademy/client-modules/commit/9c555efecc6eecbac0b354d408e7da12431b52af))
-
-
-### Other Changes
-
-* **release:** publish ([1663d3d](https://github.com/Codecademy/client-modules/commit/1663d3db8b15b6c1a7dd28ec8a0b5666fdbf1d79))
 
 ## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.3.0...@codecademy/gamut-styles@3.0.0) (2020-04-17)
 
@@ -62,7 +43,6 @@
 ### Other Changes
 
 * **Gamut:** removed easily replaceable deprecated swatches- colors ([#717](https://github.com/Codecademy/client-modules/issues/717)) ([9b17bd5](https://github.com/Codecademy/client-modules/commit/9b17bd55640e0fcb6c061c4f71b83fb7f2d04130))
-* **release:** publish ([0ddf043](https://github.com/Codecademy/client-modules/commit/0ddf043d8bfb1bd14be902156b8559b7900a5e8b))
 
 ## [2.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.13...@codecademy/gamut-styles@2.3.0) (2020-04-17)
 
@@ -71,17 +51,11 @@
 
 * **gamut-styles:** formalized Editor colors in gamut-styles ([#726](https://github.com/Codecademy/client-modules/issues/726)) ([92e9e94](https://github.com/Codecademy/client-modules/commit/92e9e94821a1123aeb274595db8c9e18ff9716d6))
 
-
-### Other Changes
-
-* **release:** publish ([d460b58](https://github.com/Codecademy/client-modules/commit/d460b58f38c48e4f529d5b796adb5947dd522107))
-
 ### [2.2.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.12...@codecademy/gamut-styles@2.2.13) (2020-04-17)
 
 
 ### Other Changes
 
-* **release:** publish ([b6f24ab](https://github.com/Codecademy/client-modules/commit/b6f24ab5daeaab0a666590cddaf4252af026e463))
 * Removed easily replaceable deprecated gamut- colors ([#716](https://github.com/Codecademy/client-modules/issues/716)) ([9d52423](https://github.com/Codecademy/client-modules/commit/9d52423927793284cd8404f15623fcfe03aa79b6))
 
 ### [2.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.11...@codecademy/gamut-styles@2.2.12) (2020-04-16)
@@ -89,7 +63,6 @@
 
 ### Other Changes
 
-* **release:** publish ([11ca8de](https://github.com/Codecademy/client-modules/commit/11ca8de26c5358d06e00c55f539fa1f76c330688))
 * Adds screen size variables and mixins ([#731](https://github.com/Codecademy/client-modules/issues/731)) ([512743d](https://github.com/Codecademy/client-modules/commit/512743d5d4ff8d9f72358fc928e2f31d76fd1588))
 
 ### [2.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.10...@codecademy/gamut-styles@2.2.11) (2020-01-15)
@@ -97,7 +70,6 @@
 
 ### Other Changes
 
-* **release:** publish ([e6544b7](https://github.com/Codecademy/client-modules/commit/e6544b71e4d1f975a1fb559ea3b35b241f533274))
 * Node 12 upgrade ([#601](https://github.com/Codecademy/client-modules/issues/601)) ([3a2e0ad](https://github.com/Codecademy/client-modules/commit/3a2e0ad90cc119d6eded005c1fcd341bca6273f5))
 
 ### [2.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.9...@codecademy/gamut-styles@2.2.10) (2019-12-12)
@@ -105,7 +77,6 @@
 
 ### Other Changes
 
-* **release:** publish ([7282daf](https://github.com/Codecademy/client-modules/commit/7282daf0d4fbb457fa2c59bfa50382d6ea980bea))
 * Added brand-orange to colors, button variables, storybook, and gamut-styles ([#569](https://github.com/Codecademy/client-modules/issues/569)) ([d206040](https://github.com/Codecademy/client-modules/commit/d2060402fa64e04dcc3a9a0d16b39de772b1df03))
 
 ### [2.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.8...@codecademy/gamut-styles@2.2.9) (2019-10-08)
@@ -113,7 +84,6 @@
 
 ### Other Changes
 
-* **release:** publish ([1e06443](https://github.com/Codecademy/client-modules/commit/1e0644312a5732da1da567b1514f6ce4f528c0e6))
 * Renamed organization path to Codecademy ([#509](https://github.com/Codecademy/client-modules/issues/509)) ([a111f16](https://github.com/Codecademy/client-modules/commit/a111f166629a7a15b957e9eded87fedfeb9736f1))
 
 ### [2.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.5...@codecademy/gamut-styles@2.2.8) (2019-09-03)
@@ -121,9 +91,6 @@
 
 ### Other Changes
 
-* **release:** publish ([e349c5b](https://github.com/Codecademy/client-modules/commit/e349c5bafc64c86a86c982e24b37287faa1e9c2a))
-* **release:** publish ([918dbd8](https://github.com/Codecademy/client-modules/commit/918dbd83203c30cf2adefa2fa08250a0b6ae2ca0))
-* **release:** publish ([0f3ecc0](https://github.com/Codecademy/client-modules/commit/0f3ecc0d3df7cc4a0614ffa4c299207233f2f317))
 * change urls to go to codecademy-engineering ([1a9ead6](https://github.com/Codecademy/client-modules/commit/1a9ead6aaff2e0ad6af39f64ecb87b5dd510991b))
 
 ### [2.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.4...@codecademy/gamut-styles@2.2.5) (2019-07-10)
@@ -131,7 +98,6 @@
 
 ### Other Changes
 
-* **release:** publish ([4833696](https://github.com/Codecademy/client-modules/commit/4833696a13ab10e2d21b11d6338c9f494b080d54))
 * [fix]: adds shadow color ([#383](https://github.com/Codecademy/client-modules/issues/383)) ([daa43c1](https://github.com/Codecademy/client-modules/commit/daa43c16b4f52960e5a802658ef2d6de08320298))
 
 ### [2.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.3...@codecademy/gamut-styles@2.2.4) (2019-04-10)
@@ -139,7 +105,6 @@
 
 ### Other Changes
 
-* **release:** publish ([69da2b8](https://github.com/Codecademy/client-modules/commit/69da2b8a2927e8fc5cf987effcc399cd4808880a))
 * Added orange colors in .scss ([#299](https://github.com/Codecademy/client-modules/issues/299)) ([0c77467](https://github.com/Codecademy/client-modules/commit/0c77467a28a33dfd64f8c180b6c1bcf54b1ab93f))
 
 ### [2.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.2...@codecademy/gamut-styles@2.2.3) (2019-04-01)
@@ -147,7 +112,6 @@
 
 ### Other Changes
 
-* **release:** publish ([a915062](https://github.com/Codecademy/client-modules/commit/a915062ccc2cb9bc83abd994c1947ea4fcf5b167))
 * Added SideMenu and MenuItem components ([#270](https://github.com/Codecademy/client-modules/issues/270)) ([3bb7c85](https://github.com/Codecademy/client-modules/commit/3bb7c85669ad1fb92c959b133e75f03f648cce89))
 
 ### [2.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.1...@codecademy/gamut-styles@2.2.2) (2019-03-27)
@@ -157,22 +121,12 @@
 
 * export JS colors object, removes scss exports ([854ae75](https://github.com/Codecademy/client-modules/commit/854ae7562bd64520ff989925c5139cc36971df4a))
 
-
-### Other Changes
-
-* **release:** publish ([29d78c9](https://github.com/Codecademy/client-modules/commit/29d78c9af2db41db383202cc52ed05743edc56e2))
-
 ### [2.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.2.0...@codecademy/gamut-styles@2.2.1) (2019-03-19)
 
 
 ### 🐛 Bug Fixes
 
 * **deps:** pin dependencies ([#231](https://github.com/Codecademy/client-modules/issues/231)) ([c185ac8](https://github.com/Codecademy/client-modules/commit/c185ac8013565cc103717b7b2b961177bff4125c))
-
-
-### Other Changes
-
-* **release:** publish ([cc2c4b2](https://github.com/Codecademy/client-modules/commit/cc2c4b2649d1f1071b93472bfe4450cb01ae080e))
 
 ## [2.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.1.0...@codecademy/gamut-styles@2.2.0) (2019-03-13)
 
@@ -181,22 +135,12 @@
 
 * Add shared config modules for eslint & prettier ([#224](https://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](https://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
 
-
-### Other Changes
-
-* **release:** publish ([9b34a87](https://github.com/Codecademy/client-modules/commit/9b34a87f75a963d7a360f5826354bc72f62bde7e))
-
 ## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.0.4...@codecademy/gamut-styles@2.1.0) (2019-03-13)
 
 
 ### ✨ Features
 
 * Adds mar 2019 colors, deprecates colors ([#211](https://github.com/Codecademy/client-modules/issues/211)) ([c5c1e7f](https://github.com/Codecademy/client-modules/commit/c5c1e7fce406fddd5687d4e20644f7e778cb767f))
-
-
-### Other Changes
-
-* **release:** publish ([925c1e7](https://github.com/Codecademy/client-modules/commit/925c1e72a92c773e8185bef898e775d5178d22a9))
 
 ### [2.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@2.0.3...@codecademy/gamut-styles@2.0.4) (2019-01-16)
 
