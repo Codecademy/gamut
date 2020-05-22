@@ -8,6 +8,7 @@
 * finally finshed w/ this script ([ba614c3](http://github.com/Codecademy/client-modules/commit/ba614c3f8a64386dc427fdd047bdb9d31dcfbbda))
 * Merge remote-tracking branch 'origin/master' into jh-fix-changelogs ([76f56fd](http://github.com/Codecademy/client-modules/commit/76f56fd6ccbf3396b5ad86e6adb94d26cfb14c24)), closes [#810](http://github.com/Codecademy/client-modules/issues/810) [#807](http://github.com/Codecademy/client-modules/issues/807) [#814](http://github.com/Codecademy/client-modules/issues/814) [#805](http://github.com/Codecademy/client-modules/issues/805)
 * update changelog script ([4634523](http://github.com/Codecademy/client-modules/commit/4634523684cf12fc7dcd21bd4c0d7ecbbc8c1bc1))
+* updates ([a232436](http://github.com/Codecademy/client-modules/commit/a23243626136c4492b4f1e01a4d8d17ffd85f7be))
 
 ### [0.1.7](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.6...@codecademy/prettier-config@0.1.7) (2020-05-04)
 
