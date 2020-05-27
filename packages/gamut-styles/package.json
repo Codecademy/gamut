@@ -3,8 +3,8 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "3.3.1",
   "author": "Jake Hiller <jake@codecademy.com>",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "yarn build"
