@@ -3,7 +3,9 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "3.3.1",
   "author": "Jake Hiller <jake@codecademy.com>",
-  "main": "utils.scss",
+  "main": "index.js",
+  "module": "index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "yarn build"
