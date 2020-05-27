@@ -17,7 +17,8 @@ module.exports = () => ({
       require("@babel/preset-env").default,
       {
         useBuiltIns: "entry",
-        modules: false
+        modules: false,
+        corejs: 3
       }
     ],
     require("@babel/preset-react").default
