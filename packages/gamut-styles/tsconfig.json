@@ -3,8 +3,7 @@
     "allowJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "outDir": "dist"
+    "skipLibCheck": true
   },
   "include": ["./**/*.js", "index.js"]
 }

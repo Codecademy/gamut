@@ -5,7 +5,6 @@
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "index.js",
   "module": "index.js",
-  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "yarn build"
