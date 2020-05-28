@@ -1,0 +1,31 @@
+import {
+  Meta,
+  Props,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../Templating/Blocks';
+import { Icon } from '@codecademy/gamut/src';
+import iconMap from '@codecademy/gamut/src/Icon/iconMap';
+
+<Meta title="Deprecated|Atoms/Icon" componet={Icon} />
+
+# Icon
+
+<StoryStatus status="deprecated" />
+
+Legacy icons as defined in the `@codecademy/gamut/src`package's `Icon` export.
+
+Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package instead.
+
+<Props of={Icon} />
+
+## All Icons
+
+<IconGallery>
+  {Object.keys(iconMap).map((iconName) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon key={iconName} name={iconName} />
+    </IconItem>
+  ))}
+</IconGallery>

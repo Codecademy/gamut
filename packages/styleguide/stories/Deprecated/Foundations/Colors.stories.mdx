@@ -1,0 +1,118 @@
+import cx from 'classnames';
+
+import { startCase } from 'lodash';
+import {
+  StoryStatus,
+  Swatch,
+  SwatchPalette,
+  parseCamelCase,
+  objectKeys,
+} from '../../../Templating/Blocks';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  LayoutGrid,
+  Column,
+  VisualTheme,
+  Container,
+  Heading,
+} from '@codecademy/gamut/src';
+import {
+  brandColors,
+  colors,
+  deprecatedColors,
+  editorColors,
+  deprecatedGamutColors,
+  platformColors,
+} from '@codecademy/gamut-styles/utils/variables';
+
+<Meta title="Deprecated|Foundations/Colors" component="Colors" />
+
+# Deprecated Colors
+
+<StoryStatus status="deprecated" />
+
+## Gamut
+
+We used to have a very different color palette. Please do not use these
+anymore.
+
+If you come across a color on the site while updating an older area and see
+that it uses one of these, try to replace it with the closest color from or
+new palette.
+
+We may delete these as we find that consumers do not use them.
+
+<Preview withSource="none" columns={1}>
+  <Story name="Gamut Deprecated Base">
+    <LayoutGrid rowGap="md" columnGap="md">
+      <Column size={{ xs: 6, sm: 3 }}>
+        <Container flex={false}>
+          <Heading as="h2" fontSize="xs">
+            Deprecated Gamut Base Colors
+          </Heading>
+          <SwatchPalette
+            data={deprecatedGamutColors.base}
+            variablePrefix="deprecated-gamut"
+          />
+        </Container>
+      </Column>
+    </LayoutGrid>
+  </Story>
+  <Story name="Gamut Deprecated All">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(deprecatedGamutColors.swatches).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {parseCamelCase(`deprecated-gamut-${color}`)}
+            </Heading>
+            <SwatchPalette
+              data={deprecatedGamutColors.swatches[color]}
+              variablePrefix={`deprecated-gamut-${color}`}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>
+
+## Portal
+
+Similar to the deprecated Gamut colors, these ones are an old palette from
+the Portal.
+
+<Preview withSource="none" columns={1}>
+  <Story name="Portal Deprecated Base">
+    <LayoutGrid rowGap="md" columnGap="md">
+      <Column size={{ xs: 6, sm: 3 }}>
+        <Container flex={false}>
+          <Heading as="h2" fontSize="xs">
+            Deprecated portal base colors
+          </Heading>
+          <SwatchPalette
+            data={deprecatedColors.portal}
+            variablePrefix="deprecated"
+          />
+        </Container>
+      </Column>
+    </LayoutGrid>
+  </Story>
+  <Story name="Portal Deprecated All">
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(deprecatedColors.swatches).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {parseCamelCase(color)}
+            </Heading>
+            <SwatchPalette
+              data={deprecatedColors.swatches[color]}
+              variablePrefix={`deprecated-swatches-${color}`}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  </Story>
+</Preview>

@@ -45,6 +45,38 @@ Every PR that changes files in a package publishes alpha releases that you can u
 1.  Once this check has passed, click on it, and look through the output for the alpha version number
 1.  Use this version in the other application you want to test your changes on
 
+### Working with pre-published changes
+
+For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
+symlinks (the following instructions assume you have set up and built client-modules):
+
+1. `cd /path/to/client-modules/packages/gamut`
+1. `yarn link`
+1. `cd path/to/other/repo`
+1. `yarn link @codecademy/gamut`
+1. `yarn install`
+
+If your other project uses React, you must link that copy of React in Gamut:
+
+```
+1. `cd path/to/other/repo`
+1. `cd node_modules/react`
+1. `yarn link`
+1. `cd /path/to/client-modules/packages/gamut`
+1. `yarn link react`
+1. `yarn build-all`
+```
+
+[See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
+for more information for why you have to do this.
+
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
+
+#### Troubleshooting
+
+If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
+or running `yarn build-all` in this repo.
+
 ### PR Title Guide
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.

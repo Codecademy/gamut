@@ -23,6 +23,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       name={field.name}
       onChange={(event) => field.onUpdate?.(event.target.checked)}
       label={field.description}
+      multiline={field.multiline}
       ref={register(field.validation)}
     />
   );

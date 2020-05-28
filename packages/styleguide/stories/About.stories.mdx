@@ -2,14 +2,14 @@ import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
 import styles from './styles.module.scss';
-import { AboutCell, AboutHeading } from './Abouts';
+import { AboutCell, AboutHeading } from '../Templating/Blocks';
 
 <Meta title="About" />
 
 <AboutHeading>Gamut</AboutHeading>
 
 <strong>
-  The design system for Codecademy{' '}
+  The design system for Codecademy
   <span aria-label="sparkles" role="img">
     ✨
   </span>
@@ -91,18 +91,21 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
     complex, distinct section of an interface.
   </AboutCell>
   <AboutCell
-    emoji="💸"
+    emoji="⚗️"
     examples={[
       {
-        name: 'Logo',
-        kind: 'Atoms',
+        name: 'About',
+        kind: 'Brand',
+        text: 'Brand',
       },
       {
-        name: 'Testimonial',
-        kind: 'Molecules',
+        name: 'About',
+        kind: 'Experimental',
+        text: 'Experimental',
       },
     ]}
-    category="Labs + Brand"
+    category="Labs"
+    label="See"
   >
     Components across the design spectrum that are more experimental or tied to
     brand representation.
@@ -111,11 +114,15 @@ Its organization roughly aligns with variations of <a href="https://bradfrost.co
     emoji="🧠"
     examples={[
       {
+        name: 'Contributing',
+        kind: 'Meta',
+      },
+      {
         name: 'FAQs',
         kind: 'Meta',
       },
       {
-        name: 'Writing Stories',
+        name: 'Stories',
         kind: 'Meta',
       },
     ]}

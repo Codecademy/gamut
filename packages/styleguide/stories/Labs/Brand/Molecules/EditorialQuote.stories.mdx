@@ -1,0 +1,26 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../../../Templating/Blocks';
+import { EditorialQuote } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs|Brand/Molecules/EditorialQuote" component={EditorialQuote} />
+
+# EditorialQuote
+
+<StoryStatus status="ready" />
+
+A pull quote for use in an editorial page.
+
+<Preview withSource="open" className="dark">
+  <Story name="EditorialQuote">
+    <EditorialQuote
+      quote={text(
+        'Quote',
+        'In an interstellar burst, I am back to save the universe.'
+      )}
+    />
+  </Story>
+</Preview>
+
+<Props story="EditorialQuote" of={EditorialQuote} />

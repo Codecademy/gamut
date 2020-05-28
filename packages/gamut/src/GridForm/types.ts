@@ -12,6 +12,7 @@ export type BaseFormField<Value> = {
 export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: string;
   label?: string;
+  multiline?: boolean;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
 };
@@ -31,11 +32,38 @@ export type GridFormCustomField = BaseFormField<any> & {
   type: 'custom';
 };
 
+export type BasicInputType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 export type GridFormTextField = BaseFormField<string> & {
   label: string;
   placeholder?: string;
   validation?: ValidationOptions;
-  type: 'text' | 'email';
+  type: BasicInputType;
+};
+
+export type GridFormRadioOption = {
+  label: string;
+  value: string;
+};
+
+export type GridFormRadioGroupField = BaseFormField<string> & {
+  label: string;
+  options: GridFormRadioOption[];
+  validation?: Pick<ValidationOptions, 'required'>;
+  type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
@@ -46,7 +74,7 @@ export type GridFormSelectField = BaseFormField<string> & {
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  label: string;
+  label: React.ReactNode;
   validation?: ValidationOptions;
   type: 'file';
 };
@@ -60,6 +88,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField

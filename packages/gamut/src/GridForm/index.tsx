@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, FieldError } from 'react-hook-form';
+import { useForm, FieldError, Mode } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
@@ -19,9 +19,9 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of the fields comprising the form.
+   * Descriptions of any fields comprising the form.
    */
-  fields: GridFormField[];
+  fields?: GridFormField[];
 
   /**
    * Function called with field values on submit, if all validations have passed.
@@ -36,7 +36,14 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Description of the submit button at the end of the form.
    */
-  submit: GridFormSubmitProps;
+  submit: Omit<GridFormSubmitProps, 'disabled'>;
+
+  /**
+   * Which react hook form mode we are going to use for validation.
+   * If you use the onChange mode the submit button will be disabled until all
+   * required fields are completed.
+   */
+  validation?: Exclude<Mode, 'onBlur'>;
 };
 
 export function GridForm<
@@ -45,12 +52,15 @@ export function GridForm<
   children,
   className,
   columnGap = 'lg',
-  fields,
+  fields = [],
   onSubmit,
   rowGap = 'md',
   submit,
+  validation = 'onSubmit',
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue } = useForm<Values>({
+  const { errors, handleSubmit, register, setValue, formState } = useForm<
+    Values
+  >({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -58,6 +68,7 @@ export function GridForm<
       }),
       {}
     ),
+    mode: validation,
   });
 
   return (
@@ -76,7 +87,10 @@ export function GridForm<
             />
           );
         })}
-        <GridFormSubmit {...submit} />
+        <GridFormSubmit
+          disabled={validation === 'onChange' && !formState.isValid}
+          {...submit}
+        />
         {children}
       </LayoutGrid>
     </Form>
