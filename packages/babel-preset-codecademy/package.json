@@ -34,8 +34,7 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-plugin-transform-dynamic-import": "^2.1.0",
-    "core-js": "3"
+    "babel-plugin-transform-dynamic-import": "^2.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",
