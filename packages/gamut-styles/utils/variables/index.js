@@ -97,7 +97,7 @@ export const colors = {
 
 export const brandColors = {
   red: colors.red[500],
-  orange: colors.orange[500],
+  orange: colors.orange[400],
   yellow: colors.yellow[500],
   purple: colors.royalBlue,
   pink: colors.pink[400],
