@@ -102,7 +102,7 @@ export const brandColors = {
   purple: colors.royalBlue,
   pink: colors.pink[400],
   mint: colors.green[300],
-  beige: '#efd9ca',
+  beige: colors.beige,
   blue: colors.blue[500],
   darkBlue: colors.blue[900],
 };
