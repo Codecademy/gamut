@@ -101,10 +101,12 @@ export const brandColors = {
   yellow: colors.yellow[500],
   purple: colors.royalBlue,
   pink: colors.pink[400],
+  magenta: colors.pink[700],
   mint: colors.green[300],
   beige: colors.beige,
   blue: colors.blue[500],
   darkBlue: colors.blue[900],
+  lavender: colors.purple[500],
 };
 
 export const effectColors = {
