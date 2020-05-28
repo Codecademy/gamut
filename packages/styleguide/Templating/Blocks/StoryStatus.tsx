@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles';
 
 const Statuses = {
   ready: { message: 'Production Ready', color: colors.green[500] },
