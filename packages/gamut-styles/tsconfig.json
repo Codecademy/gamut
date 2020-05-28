@@ -6,5 +6,5 @@
     "module": "esnext",
     "outDir": "dist"
   },
-  "include": ["**/*.js", "index.js"]
+  "include": ["src/**/*.ts"]
 }
