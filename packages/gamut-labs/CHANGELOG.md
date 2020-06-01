@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.13 (2020-06-01)</small>
+
+* fix: Remove alt text on Testimonial avatars. (#822) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2)), closes [#822](https://github.com/Codecademy/client-modules/issues/822)
+
+
+
+
+
 ## <small>1.7.12 (2020-05-22)</small>
 
 * ci: cleanup changelogs ([a64dcfc](https://github.com/Codecademy/client-modules/commit/a64dcfc))
