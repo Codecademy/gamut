@@ -9,6 +9,7 @@ export type GridFormSelectInputProps = {
   error?: boolean;
   field: Omit<GridFormSelectField, 'label'>;
   register: FormContextValues['register'];
+  id?: string;
 };
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
@@ -16,6 +17,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   error,
   field,
   register,
+  id,
 }) => {
   return (
     <Select
@@ -27,6 +29,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       ref={register(field.validation)}
       options={field.options}
+      id={id}
     />
   );
 };
