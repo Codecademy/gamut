@@ -111,7 +111,7 @@ describe('GridFormInputGroup', () => {
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
 
-  it('invokes onUpdate when the field type is textera and it gets changed', () => {
+  it('invokes onUpdate when the field type is textarea and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
 

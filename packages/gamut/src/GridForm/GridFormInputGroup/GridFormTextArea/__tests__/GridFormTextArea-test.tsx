@@ -1,22 +1,16 @@
 import GridFormTextArea from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
+import { stubTextareaField } from '../../../__tests__/stubs';
 
 describe('GridFormTextArea', () => {
-  const name = 'name';
-
   describe('when an id is passed as a prop', () => {
     it('renders an textarea with the same id', () => {
-      const id = 'mycoolid';
-
       const textarea = mount(
         <GridFormTextArea
-          field={{
-            name: name,
-            type: 'textarea',
-          }}
+          field={stubTextareaField}
           register={jest.fn()}
-          id={id}
+          id={'mycoolid'}
         />
       );
 
@@ -28,10 +22,7 @@ describe('GridFormTextArea', () => {
     it('renders a textarea with the id equal to the field name', () => {
       const textarea = mount(
         <GridFormTextArea
-          field={{
-            type: 'textarea',
-            name: name,
-          }}
+          field={{ ...stubTextareaField, name: 'name' }}
           register={jest.fn()}
         />
       );

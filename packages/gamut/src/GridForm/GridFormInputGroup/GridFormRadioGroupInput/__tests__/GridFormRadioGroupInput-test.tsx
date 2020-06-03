@@ -1,30 +1,17 @@
 import GridFormRadioGroupInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
+import { stubRadioGroupField } from '../../../__tests__/stubs';
 
 describe('GridFormRadioGroupInput', () => {
-  const type = 'radio-group';
-  const name = 'name';
-
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const id = 'mycoolid';
-
       const textInput = mount(
         <GridFormRadioGroupInput
-          field={{
-            type: type,
-            name: name,
-            options: [
-              {
-                label: 'label',
-                value: 'value',
-              },
-            ],
-          }}
+          field={{ ...stubRadioGroupField, name: 'name' }}
           setValue={jest.fn()}
           register={jest.fn()}
-          id={id}
+          id={'mycoolid'}
         />
       );
 
@@ -36,16 +23,7 @@ describe('GridFormRadioGroupInput', () => {
     it('renders an input with the id equal to the field option value', () => {
       const textInput = mount(
         <GridFormRadioGroupInput
-          field={{
-            type: type,
-            name: name,
-            options: [
-              {
-                label: 'label',
-                value: 'value',
-              },
-            ],
-          }}
+          field={{ ...stubRadioGroupField, name: 'name' }}
           setValue={jest.fn()}
           register={jest.fn()}
         />

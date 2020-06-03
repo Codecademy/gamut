@@ -1,23 +1,16 @@
 import GridFormFileInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
+import { stubFileField } from '../../../__tests__/stubs';
 
 describe('GridFormFileInput', () => {
-  const type = 'file';
-  const name = 'name';
-
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const id = 'mycoolid';
-
       const textInput = mount(
         <GridFormFileInput
-          field={{
-            type: type,
-            name: name,
-          }}
+          field={stubFileField}
           register={jest.fn()}
-          id={id}
+          id={'mycoolid'}
         />
       );
 
@@ -29,10 +22,7 @@ describe('GridFormFileInput', () => {
     it('renders an input with the id equal to the field name', () => {
       const textInput = mount(
         <GridFormFileInput
-          field={{
-            type: type,
-            name: name,
-          }}
+          field={{ ...stubFileField, name: 'name' }}
           register={jest.fn()}
         />
       );

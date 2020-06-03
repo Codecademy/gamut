@@ -1,25 +1,16 @@
 import GridFormCheckboxInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
+import { stubCheckboxField } from '../../../__tests__/stubs';
 
 describe('GridFormCheckboxInput', () => {
-  const type = 'checkbox';
-  const name = 'name';
-  const description = 'description';
-
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const id = 'mycoolid';
-
       const textInput = mount(
         <GridFormCheckboxInput
-          field={{
-            type: type,
-            name: name,
-            description: description,
-          }}
+          field={stubCheckboxField}
           register={jest.fn()}
-          id={id}
+          id={'mycoolid'}
         />
       );
 
@@ -31,11 +22,7 @@ describe('GridFormCheckboxInput', () => {
     it('renders an input with the id equal to the field name', () => {
       const textInput = mount(
         <GridFormCheckboxInput
-          field={{
-            type: type,
-            name: name,
-            description: description,
-          }}
+          field={{ ...stubCheckboxField, name: 'name' }}
           register={jest.fn()}
         />
       );
