@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>10.0.5 (2020-06-03)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>10.0.4 (2020-05-22)</small>
 
 * ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.14 (2020-06-03)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>1.7.13 (2020-06-01)</small>
 
 * fix: Remove alt text on Testimonial avatars. (#822) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2)), closes [#822](https://github.com/Codecademy/client-modules/issues/822)
