@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.4.0 (2020-06-03)
+
+* feat(Gamut): Add focus state to Checkbox [GM-28] (#825) ([b1f512d](https://github.com/RyzacInc/client-modules/commit/b1f512d)), closes [#825](https://github.com/RyzacInc/client-modules/issues/825)
+
+
+
+
+
 ## 8.3.0 (2020-06-03)
 
 * feat: add Id props for GridFormInputGroups (#824) ([5d4ba4f](https://github.com/RyzacInc/client-modules/commit/5d4ba4f)), closes [#824](https://github.com/RyzacInc/client-modules/issues/824)
