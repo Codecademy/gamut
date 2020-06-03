@@ -72,6 +72,11 @@ input:disabled + .checkboxLabel {
   }
 }
 
+.invisible:focus + .checkboxLabel > .checkbox {
+  outline: px-rem(2) solid $color-blue-500;
+  outline-offset: px-rem(2);
+}
+
 .checkboxMultiline {
   margin-top: 3px;
 }
