@@ -54,6 +54,7 @@ input:disabled + .checkboxLabel {
   height: 1.5rem;
   border: 2px solid $color-gray-200;
   border-radius: $border-radius;
+  transition: all 0.1s ease-in-out;
 
   .checkboxVector {
     position: absolute;
