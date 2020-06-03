@@ -54,6 +54,7 @@ input:disabled + .checkboxLabel {
   height: 1.5rem;
   border: 2px solid $color-gray-200;
   border-radius: $border-radius;
+  transition: all 0.1s ease-in-out;
 
   .checkboxVector {
     position: absolute;
@@ -70,6 +71,11 @@ input:disabled + .checkboxLabel {
       stroke-dashoffset: 18px;
     }
   }
+}
+
+.invisible:focus + .checkboxLabel > .checkbox {
+  outline: px-rem(2) solid $color-blue-500;
+  outline-offset: px-rem(2);
 }
 
 .checkboxMultiline {
