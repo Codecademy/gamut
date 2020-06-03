@@ -9,6 +9,7 @@ export type GridFormCustomInputProps = {
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (name: string, value: any) => void;
+  id?: string;
 };
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
@@ -17,6 +18,7 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
   field,
   register,
   setValue,
+  id,
 }) => {
   useEffect(() => {
     register(field.name, field.validation);
