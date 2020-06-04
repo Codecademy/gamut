@@ -5,7 +5,11 @@ import React, { useLayoutEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import AccordionButton from '../AccordionButton';
 
+export type AccordionChildrenRender = (expanded: boolean) => React.ReactNode;
+
 export type AccordionProps = {
+  children: React.ReactNode | AccordionChildrenRender;
+
   className?: string;
 
   /**
@@ -74,7 +78,8 @@ export const Accordion: React.FC<AccordionProps> = ({
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         className={styles.expando}
       >
-        {(expanded || delayExpanded) && children}
+        {(expanded || delayExpanded) &&
+          (children instanceof Function ? children(expanded) : children)}
       </motion.div>
     </div>
   );

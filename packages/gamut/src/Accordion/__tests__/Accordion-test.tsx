@@ -53,4 +53,16 @@ describe('Accordion', () => {
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
+
+  it('renders children with the expanded prop when children is a functino', () => {
+    const {
+      props: { header },
+      wrapper,
+    } = renderComponent({
+      children: (value) => `${value}`,
+      initiallyExpanded: true,
+    });
+
+    expect(wrapper.text()).toEqual(`${header}Chevron Down Icon${true}`);
+  });
 });
