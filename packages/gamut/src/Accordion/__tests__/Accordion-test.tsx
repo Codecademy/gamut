@@ -55,14 +55,14 @@ describe('Accordion', () => {
   });
 
   it('renders children with the expanded prop when children is a functino', () => {
-    const {
-      props: { header },
-      wrapper,
-    } = renderComponent({
-      children: (value) => `${value}`,
+    const { wrapper } = renderComponent({
+      children: (expanded) => `children-${expanded}`,
       initiallyExpanded: true,
+      header: (expanded) => `header-${expanded}`,
     });
 
-    expect(wrapper.text()).toEqual(`${header}Chevron Down Icon${true}`);
+    expect(wrapper.text()).toEqual(
+      `header-${true}Chevron Down Iconchildren-${true}`
+    );
   });
 });

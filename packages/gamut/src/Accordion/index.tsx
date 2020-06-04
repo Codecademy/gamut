@@ -5,17 +5,17 @@ import React, { useLayoutEffect, useState } from 'react';
 import styles from './styles.module.scss';
 import AccordionButton from '../AccordionButton';
 
-export type AccordionChildrenRender = (expanded: boolean) => React.ReactNode;
+export type RenderWithExpanded = (expanded: boolean) => React.ReactNode;
 
 export type AccordionProps = {
-  children: React.ReactNode | AccordionChildrenRender;
+  children: React.ReactNode | RenderWithExpanded;
 
   className?: string;
 
   /**
    * Contents of the clickable header button.
    */
-  header: React.ReactNode;
+  header: React.ReactNode | RenderWithExpanded;
 
   /**
    * Whether the accordion starts off expanded, instead of the default collapsed.
@@ -68,15 +68,15 @@ export const Accordion: React.FC<AccordionProps> = ({
   return (
     <div className={cx(styles.accordion, className)}>
       <AccordionButton expanded={expanded} onClick={onClick} theme={theme}>
-        {header}
+        {header instanceof Function ? header(expanded) : header}
       </AccordionButton>
       <motion.div
         aria-expanded={expanded}
+        className={styles.expando}
         initial={false}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
-        className={styles.expando}
       >
         {(expanded || delayExpanded) &&
           (children instanceof Function ? children(expanded) : children)}
