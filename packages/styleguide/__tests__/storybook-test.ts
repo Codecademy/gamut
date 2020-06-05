@@ -1,10 +1,11 @@
+import { mount } from 'enzyme';
 import path from 'path';
-import initStoryshots, { renderOnly } from '@storybook/addon-storyshots';
+import initStoryshots from '@storybook/addon-storyshots';
 
 jest.mock('react-truncate-markup', () => (props: any) => props.children);
 
 initStoryshots({
   framework: 'react',
-  test: renderOnly,
+  renderer: mount,
   configPath: path.join(__dirname, '../.storybook'),
 });
