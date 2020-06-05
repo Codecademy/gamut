@@ -20,7 +20,8 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
 }) => {
   useEffect(() => {
     register(field.name, field.validation);
-  }, [field.name, field.validation, register]);
+    setValue(field.name, field.defaultValue);
+  }, [field.name, field.validation, register, field.defaultValue, setValue]);
 
   return (
     <>
