@@ -9,6 +9,7 @@ export type GridFormCustomInputProps = {
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (name: string, value: any) => void;
+  getValues: (key: string) => any;
 };
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
@@ -17,10 +18,10 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
   field,
   register,
   setValue,
+  getValues,
 }) => {
   useEffect(() => {
     register(field.name, field.validation);
-    setValue(field.name, field.defaultValue);
   }, [field.name, field.validation, register, field.defaultValue, setValue]);
 
   return (
@@ -31,6 +32,7 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
         field,
         register,
         setValue: (value) => setValue(field.name, value),
+        value: getValues(field.name),
       })}
     </>
   );

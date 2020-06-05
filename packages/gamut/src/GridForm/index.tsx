@@ -58,9 +58,14 @@ export function GridForm<
   submit,
   validation = 'onSubmit',
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue, formState } = useForm<
-    Values
-  >({
+  const {
+    errors,
+    handleSubmit,
+    register,
+    setValue,
+    formState,
+    getValues,
+  } = useForm<Values>({
     defaultValues: fields.reduce(
       (defaultValues, field) => ({
         ...defaultValues,
@@ -84,6 +89,7 @@ export function GridForm<
               key={field.name}
               register={register}
               setValue={setValue}
+              getValues={getValues}
             />
           );
         })}

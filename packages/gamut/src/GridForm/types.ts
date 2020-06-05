@@ -23,6 +23,7 @@ export type GridFormCustomFieldProps = {
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
+  value: any;
 };
 
 export type GridFormCustomField = BaseFormField<any> & {

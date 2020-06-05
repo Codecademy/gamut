@@ -18,6 +18,7 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
+  getValues: (key: string) => any;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
@@ -41,6 +42,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
+            getValues={props.getValues}
             error={props.error}
           />
         );
