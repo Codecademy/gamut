@@ -9,7 +9,9 @@ export type GridFormCustomInputProps = {
   field: GridFormCustomField;
   register: FormContextValues['register'];
   setValue: (name: string, value: any) => void;
-  getValues: (key: string) => any;
+  getValues: (payload?: {
+    nest: boolean;
+  }) => Record<string, boolean | string | undefined>;
 };
 
 export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
@@ -32,7 +34,7 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
         field,
         register,
         setValue: (value) => setValue(field.name, value),
-        value: getValues(field.name),
+        value: getValues()[field.name],
       })}
     </>
   );

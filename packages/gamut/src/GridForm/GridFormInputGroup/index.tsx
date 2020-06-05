@@ -18,7 +18,9 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
-  getValues: (key: string) => any;
+  getValues: (payload?: {
+    nest: boolean;
+  }) => Record<string, boolean | string | undefined>;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
