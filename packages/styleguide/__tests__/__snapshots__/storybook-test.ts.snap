@@ -14467,27 +14467,27 @@ exports[`Storyshots Core|Molecules/Tabs Controlled 1`] = `
         >
           <Tab
             active={true}
-            id="0353256241577111-0"
-            key="0353256241577111-0"
+            id="1-0"
+            key="1-0"
             onChange={[Function]}
             tabIndex={0}
           >
             <ButtonBase
-              aria-controls="0353256241577111-0-panel"
+              aria-controls="1-0-panel"
               aria-selected={true}
               className="tab tab_default active tab_default__active"
-              id="0353256241577111-0"
+              id="1-0"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="0353256241577111-0-panel"
+                aria-controls="1-0-panel"
                 aria-selected={true}
                 className="basicBtn tab tab_default active tab_default__active"
                 data-btn={true}
-                id="0353256241577111-0"
+                id="1-0"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14499,27 +14499,27 @@ exports[`Storyshots Core|Molecules/Tabs Controlled 1`] = `
           </Tab>
           <Tab
             active={false}
-            id="0353256241577111-1"
-            key="0353256241577111-1"
+            id="1-1"
+            key="1-1"
             onChange={[Function]}
             tabIndex={1}
           >
             <ButtonBase
-              aria-controls="0353256241577111-1-panel"
+              aria-controls="1-1-panel"
               aria-selected={false}
               className="tab tab_default"
-              id="0353256241577111-1"
+              id="1-1"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="0353256241577111-1-panel"
+                aria-controls="1-1-panel"
                 aria-selected={false}
                 className="basicBtn tab tab_default"
                 data-btn={true}
-                id="0353256241577111-1"
+                id="1-1"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14531,27 +14531,27 @@ exports[`Storyshots Core|Molecules/Tabs Controlled 1`] = `
           </Tab>
           <Tab
             active={false}
-            id="0353256241577111-2"
-            key="0353256241577111-2"
+            id="1-2"
+            key="1-2"
             onChange={[Function]}
             tabIndex={2}
           >
             <ButtonBase
-              aria-controls="0353256241577111-2-panel"
+              aria-controls="1-2-panel"
               aria-selected={false}
               className="tab tab_default"
-              id="0353256241577111-2"
+              id="1-2"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="0353256241577111-2-panel"
+                aria-controls="1-2-panel"
                 aria-selected={false}
                 className="basicBtn tab tab_default"
                 data-btn={true}
-                id="0353256241577111-2"
+                id="1-2"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14565,15 +14565,15 @@ exports[`Storyshots Core|Molecules/Tabs Controlled 1`] = `
       </TabList>
       <TabPanel
         active={true}
-        id="0353256241577111-0-panel"
-        key="0353256241577111-0"
+        id="1-0-panel"
+        key="1-0"
         renderAllPanels={false}
       >
         <div
           aria-hidden={false}
-          aria-labelledby="0353256241577111-0"
+          aria-labelledby="1-0"
           className="active"
-          id="0353256241577111-0-panel"
+          id="1-0-panel"
           role="tabpanel"
         >
           <h2>
@@ -14586,29 +14586,29 @@ exports[`Storyshots Core|Molecules/Tabs Controlled 1`] = `
       </TabPanel>
       <TabPanel
         active={false}
-        id="0353256241577111-1-panel"
-        key="0353256241577111-1"
+        id="1-1-panel"
+        key="1-1"
         renderAllPanels={false}
       >
         <div
           aria-hidden={true}
-          aria-labelledby="0353256241577111-1"
+          aria-labelledby="1-1"
           className="hidden"
-          id="0353256241577111-1-panel"
+          id="1-1-panel"
           role="tabpanel"
         />
       </TabPanel>
       <TabPanel
         active={false}
-        id="0353256241577111-2-panel"
-        key="0353256241577111-2"
+        id="1-2-panel"
+        key="1-2"
         renderAllPanels={false}
       >
         <div
           aria-hidden={true}
-          aria-labelledby="0353256241577111-2"
+          aria-labelledby="1-2"
           className="hidden"
-          id="0353256241577111-2-panel"
+          id="1-2-panel"
           role="tabpanel"
         />
       </TabPanel>
@@ -14643,27 +14643,27 @@ exports[`Storyshots Core|Molecules/Tabs Tabs 1`] = `
         >
           <Tab
             active={false}
-            id="05279674752213963-0"
-            key="05279674752213963-0"
+            id="0-0"
+            key="0-0"
             onChange={[Function]}
             tabIndex={0}
           >
             <ButtonBase
-              aria-controls="05279674752213963-0-panel"
+              aria-controls="0-0-panel"
               aria-selected={false}
               className="tab tab_default"
-              id="05279674752213963-0"
+              id="0-0"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="05279674752213963-0-panel"
+                aria-controls="0-0-panel"
                 aria-selected={false}
                 className="basicBtn tab tab_default"
                 data-btn={true}
-                id="05279674752213963-0"
+                id="0-0"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14675,27 +14675,27 @@ exports[`Storyshots Core|Molecules/Tabs Tabs 1`] = `
           </Tab>
           <Tab
             active={false}
-            id="05279674752213963-1"
-            key="05279674752213963-1"
+            id="0-1"
+            key="0-1"
             onChange={[Function]}
             tabIndex={1}
           >
             <ButtonBase
-              aria-controls="05279674752213963-1-panel"
+              aria-controls="0-1-panel"
               aria-selected={false}
               className="tab tab_default"
-              id="05279674752213963-1"
+              id="0-1"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="05279674752213963-1-panel"
+                aria-controls="0-1-panel"
                 aria-selected={false}
                 className="basicBtn tab tab_default"
                 data-btn={true}
-                id="05279674752213963-1"
+                id="0-1"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14707,27 +14707,27 @@ exports[`Storyshots Core|Molecules/Tabs Tabs 1`] = `
           </Tab>
           <Tab
             active={true}
-            id="05279674752213963-2"
-            key="05279674752213963-2"
+            id="0-2"
+            key="0-2"
             onChange={[Function]}
             tabIndex={2}
           >
             <ButtonBase
-              aria-controls="05279674752213963-2-panel"
+              aria-controls="0-2-panel"
               aria-selected={true}
               className="tab tab_default active tab_default__active"
-              id="05279674752213963-2"
+              id="0-2"
               onClick={[Function]}
               onKeyDown={[Function]}
               role="tab"
               tabIndex={0}
             >
               <button
-                aria-controls="05279674752213963-2-panel"
+                aria-controls="0-2-panel"
                 aria-selected={true}
                 className="basicBtn tab tab_default active tab_default__active"
                 data-btn={true}
-                id="05279674752213963-2"
+                id="0-2"
                 onClick={[Function]}
                 onKeyDown={[Function]}
                 role="tab"
@@ -14741,43 +14741,43 @@ exports[`Storyshots Core|Molecules/Tabs Tabs 1`] = `
       </TabList>
       <TabPanel
         active={false}
-        id="05279674752213963-0-panel"
-        key="05279674752213963-0"
+        id="0-0-panel"
+        key="0-0"
         renderAllPanels={false}
       >
         <div
           aria-hidden={true}
-          aria-labelledby="05279674752213963-0"
+          aria-labelledby="0-0"
           className="hidden"
-          id="05279674752213963-0-panel"
+          id="0-0-panel"
           role="tabpanel"
         />
       </TabPanel>
       <TabPanel
         active={false}
-        id="05279674752213963-1-panel"
-        key="05279674752213963-1"
+        id="0-1-panel"
+        key="0-1"
         renderAllPanels={false}
       >
         <div
           aria-hidden={true}
-          aria-labelledby="05279674752213963-1"
+          aria-labelledby="0-1"
           className="hidden"
-          id="05279674752213963-1-panel"
+          id="0-1-panel"
           role="tabpanel"
         />
       </TabPanel>
       <TabPanel
         active={true}
-        id="05279674752213963-2-panel"
-        key="05279674752213963-2"
+        id="0-2-panel"
+        key="0-2"
         renderAllPanels={false}
       >
         <div
           aria-hidden={false}
-          aria-labelledby="05279674752213963-2"
+          aria-labelledby="0-2"
           className="active"
-          id="05279674752213963-2-panel"
+          id="0-2-panel"
           role="tabpanel"
         >
           <h2>
