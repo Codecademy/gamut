@@ -1,10 +1,3 @@
-### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.1...@codecademy/gamut-styles@3.3.1) (2020-06-09)
-
-
-### Other Changes
-
-* **Gamut:** Removed deprecated color variables ([710487f](https://github.com/Codecademy/client-modules/commit/710487fc7ca4c6b081225c5d34c648380f8ac494))
-
 ### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.0...@codecademy/gamut-styles@3.3.1) (2020-05-06)
 
 
