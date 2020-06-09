@@ -9,6 +9,7 @@ export type GridFormRadioGroupInputProps = {
   field: Omit<GridFormRadioGroupField, 'label'>;
   register: FormContextValues['register'];
   setValue: (name: string, value: string) => void;
+  id?: string;
 };
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
@@ -16,6 +17,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   field,
   register,
   setValue,
+  id,
 }) => {
   return (
     <RadioGroup
@@ -34,6 +36,7 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
           label={label}
           ref={register(field.validation)}
           value={value}
+          id={id}
         />
       ))}
     </RadioGroup>

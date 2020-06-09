@@ -6,8 +6,11 @@ import { createPromise } from '../../utils/createPromise';
 import GridForm from '..';
 import {
   stubCheckboxField,
+  stubFileField,
+  stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
+  stubTextareaField,
   stubTextField,
 } from './stubs';
 
@@ -134,5 +137,50 @@ describe('GridForm', () => {
         false
       );
     });
+  });
+
+  it('passes custom ids to the fields', () => {
+    const form = mount(
+      <GridForm
+        fields={[
+          {
+            ...stubTextField,
+            id: 'mycoolid',
+          },
+          {
+            ...stubSelectField,
+            id: 'swaggy-id',
+          },
+          {
+            ...stubCheckboxField,
+            id: 'another-dank-id',
+          },
+          {
+            ...stubRadioGroupField,
+            id: 'and-another-one',
+            name: 'name',
+          },
+          {
+            ...stubTextareaField,
+            id: 'id-2-the-ego',
+          },
+          {
+            ...stubFileField,
+            id: 'fire-file',
+          },
+        ]}
+        onSubmit={jest.fn()}
+        submit={{ contents: <>Submit</> }}
+      />
+    );
+
+    expect(form.find('input#mycoolid').length).toBe(1);
+    expect(form.find('select#swaggy-id').length).toBe(1);
+    expect(form.find('input#another-dank-id').length).toBe(1);
+    expect(form.find('input#name-0-and-another-one').length).toBe(1);
+    expect(form.find('input#name-1-and-another-one').length).toBe(1);
+    expect(form.find('input#another-dank-id').length).toBe(1);
+    expect(form.find('textarea#id-2-the-ego').length).toBe(1);
+    expect(form.find('input#fire-file').length).toBe(1);
   });
 });
