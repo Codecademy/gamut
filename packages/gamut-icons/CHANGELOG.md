@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 2.4.0 (2020-06-09)
+
+* feat(Icons): Add Rocket and Users icons ([2aafc28](https://github.com/RyzacInc/client-modules/commit/2aafc28))
+* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
+* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
+* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
+
+
+
+
+
 ### [2.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.0...@codecademy/gamut-icons@2.3.1) (2020-05-04)
 
 
@@ -135,4 +151,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
