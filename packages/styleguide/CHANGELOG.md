@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>10.0.11 (2020-06-09)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>10.0.10 (2020-06-09)</small>
 
 * Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.0.1 (2020-06-09)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## 9.0.0 (2020-06-09)
 
 * Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
