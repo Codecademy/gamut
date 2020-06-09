@@ -18,6 +18,7 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
+  id?: string;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
@@ -31,6 +32,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
+            id={props.id}
           />
         );
 
@@ -41,18 +43,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
-          />
-        );
-
-      case 'date':
-      case 'email':
-      case 'text':
-        return (
-          <GridFormTextInput
-            className={styles.gridFormInput}
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={props.error}
           />
         );
 
@@ -63,6 +54,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
+            id={props.id}
           />
         );
 
@@ -73,6 +65,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
+            id={props.id}
           />
         );
 
@@ -83,6 +76,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
+            id={props.id}
           />
         );
 
@@ -93,6 +87,18 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
+            id={props.id}
+          />
+        );
+
+      default:
+        return (
+          <GridFormTextInput
+            className={styles.gridFormInput}
+            error={!!props.error}
+            field={props.field}
+            register={props.register}
+            id={props.id}
           />
         );
     }
