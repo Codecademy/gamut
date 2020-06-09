@@ -1,3 +1,11 @@
+### [1.7.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.18...@codecademy/gamut-labs@1.7.18) (2020-06-09)
+
+
+### Other Changes
+
+* Merge branch 'master' ([136a4a9](https://github.com/Codecademy/client-modules/commit/136a4a953046494c6fd0a45ebb2792b6959b2e45))
+* Merge branch 'master' into jg-remove-deprecated-color-vars ([f18a8b0](https://github.com/Codecademy/client-modules/commit/f18a8b0b50d31d5f4d2147705a4c2b7de3830cc7))
+
 ### [1.7.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.17...@codecademy/gamut-labs@1.7.18) (2020-06-09)
 
 ### [1.7.17](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.16...@codecademy/gamut-labs@1.7.17) (2020-06-08)
