@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>10.0.10 (2020-06-09)</small>
+
+* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
+
+
+
+
+
 ## <small>10.0.9 (2020-06-09)</small>
 
 * Remove Unused Blocks / Helpers (#831) ([8b8e077](https://github.com/RyzacInc/client-modules/commit/8b8e077)), closes [#831](https://github.com/RyzacInc/client-modules/issues/831)

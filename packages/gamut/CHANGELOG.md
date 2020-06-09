@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.0.0 (2020-06-09)
+
+* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
+* feat(Gamut)!: Added text-decoration: underline to Markdown links (#793) ([1f3c0ac](https://github.com/RyzacInc/client-modules/commit/1f3c0ac)), closes [#793](https://github.com/RyzacInc/client-modules/issues/793)
+* Hid SkipToContent's down arrow from narration (#802) ([cdfd8da](https://github.com/RyzacInc/client-modules/commit/cdfd8da)), closes [#802](https://github.com/RyzacInc/client-modules/issues/802)
+
+
+
+
+
 ## <small>8.5.1 (2020-06-08)</small>
 
 * remove register from custom input (#830) ([3dd7b94](https://github.com/RyzacInc/client-modules/commit/3dd7b94)), closes [#830](https://github.com/RyzacInc/client-modules/issues/830)
