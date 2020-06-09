@@ -22,11 +22,15 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
-    "deploy": "gh-pages -b gh-pages -d dist"
+    "deploy": "gh-pages -b gh-pages -d dist",
+    "regenerate-changelog": "yarn lerna exec --concurrency 1 --stream -- 'node $LERNA_ROOT_PATH/script/update-changelog'"
   },
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json,css,scss}": [
       "prettier --ignore-path .prettierignore --write"
+    ],
+    "**/CHANGELOG.md": [
+      "yarn regenerate-changelog"
     ]
   },
   "repository": {
@@ -42,6 +46,7 @@
     ]
   },
   "dependencies": {
+    "conventional-changelog-cli": "^2.0.34",
     "conventional-changelog-conventionalcommits": "^4.2.3",
     "gh-pages": "^2.2.0",
     "lerna": "3.20.2"

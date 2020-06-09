@@ -1,6 +1,8 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
+import omitProps from '../../utils/omitProps';
+
 import ButtonBase from '../../ButtonBase';
 
 import s from './styles.module.scss';
@@ -27,6 +29,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   defaultTheme = true,
   onChange = () => {},
   tabIndex = 0,
+  ...rest
 }: TabProps) => {
   const tabClasses = cx(s.tab, className, {
     [s.tab_default]: defaultTheme,
@@ -35,6 +38,8 @@ export const Tab: FunctionComponent<TabProps> = ({
     [activeClassName]: active && activeClassName,
     [s.disabled]: disabled,
   });
+  const dataPropsToTransfer = omitProps([], rest);
+
   return (
     <ButtonBase
       id={id}
@@ -63,6 +68,7 @@ export const Tab: FunctionComponent<TabProps> = ({
       }}
       role="tab"
       tabIndex={disabled ? -1 : 0}
+      {...dataPropsToTransfer}
     >
       {children}
     </ButtonBase>
