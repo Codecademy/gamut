@@ -25,7 +25,7 @@ export type AlertProps = {
   /** Toggle the display of the theme's icon */
   showIcon?: boolean;
   /** On close callback */
-  onClose: () => void;
+  onClose?: () => void;
   /** Call to action configuration { text, href, onClick } */
   cta?: BannerCTA;
   /** Remove the max-width on the Alert container */
@@ -110,16 +110,18 @@ export const Alert: React.FC<AlertProps> = ({
             </Container>
           )}
         </Container>
-        <Container className={s.section} shrink={1} center>
-          <ButtonBase
-            className={cx(s.iconButton, {
-              [s[`iconButton__${type}`]]: type,
-            })}
-            onClick={onClose}
-          >
-            <CloseIcon size={12} />
-          </ButtonBase>
-        </Container>
+        {onClose && (
+          <Container className={s.section} shrink={1} center>
+            <ButtonBase
+              className={cx(s.iconButton, {
+                [s[`iconButton__${type}`]]: type,
+              })}
+              onClick={onClose}
+            >
+              <CloseIcon size={12} />
+            </ButtonBase>
+          </Container>
+        )}
       </Container>
     </CardShell>
   );

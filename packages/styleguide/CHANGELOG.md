@@ -1,49 +1,20 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>10.0.8 (2020-06-08)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
+### [10.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.8...@codecademy/styleguide@10.0.10) (2020-06-09)
 
 
+### Other Changes
 
+* Merge branch 'master' into jg-remove-deprecated-color-vars ([f18a8b0](https://github.com/Codecademy/client-modules/commit/f18a8b0b50d31d5f4d2147705a4c2b7de3830cc7))
+* **Gamut:** Removed deprecated color variables ([710487f](https://github.com/Codecademy/client-modules/commit/710487fc7ca4c6b081225c5d34c648380f8ac494))
 
+### [10.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.7...@codecademy/styleguide@10.0.8) (2020-06-08)
 
-## <small>10.0.7 (2020-06-05)</small>
+### [10.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.6...@codecademy/styleguide@10.0.7) (2020-06-05)
 
-**Note:** Version bump only for package @codecademy/styleguide
+### [10.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.5...@codecademy/styleguide@10.0.6) (2020-06-03)
 
+### [10.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.4...@codecademy/styleguide@10.0.5) (2020-06-03)
 
-
-
-
-## <small>10.0.6 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## <small>10.0.5 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## <small>10.0.4 (2020-05-22)</small>
-
-* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
-* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
-* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
-
-
-
-
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.3...@codecademy/styleguide@10.0.4) (2020-05-22)
 
 ### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.2...@codecademy/styleguide@10.0.3) (2020-05-21)
 
@@ -703,3 +674,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
