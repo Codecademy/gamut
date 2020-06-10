@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.0.3 (2020-06-10)</small>
+
+* fix: set Input border color for accessibility (#832) ([f7394a7](https://github.com/RyzacInc/client-modules/commit/f7394a7)), closes [#832](https://github.com/RyzacInc/client-modules/issues/832)
+
+
+
+
+
 ## <small>9.0.2 (2020-06-09)</small>
 
 **Note:** Version bump only for package @codecademy/gamut
