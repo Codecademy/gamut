@@ -11,7 +11,7 @@ import './decorators/wrapper';
 const gamutTheme = create({
   base: 'light',
   brandTitle: 'Gamut',
-  brandUrl: 'https://codecademy.com',
+  brandUrl: 'https://gamut.codecademy.com',
 });
 
 addParameters({

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.0.1 (2020-06-10)</small>
+
+* Switched storyshot test renderer to Enzyme mounting (#834) ([4d2b10f](https://github.com/RyzacInc/client-modules/commit/4d2b10f)), closes [#834](https://github.com/RyzacInc/client-modules/issues/834)
+
+
+
+
+
+## 11.0.0 (2020-06-09)
+
+* chore(Gamut)!: Removed deprecated color variables (#819) ([1dcce36](https://github.com/RyzacInc/client-modules/commit/1dcce36)), closes [#819](https://github.com/RyzacInc/client-modules/issues/819)
+
+
+
+
+
+## <small>10.0.11 (2020-06-09)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>10.0.10 (2020-06-09)</small>
+
+* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
+
+
+
+
+
+## <small>10.0.9 (2020-06-09)</small>
+
+* Remove Unused Blocks / Helpers (#831) ([8b8e077](https://github.com/RyzacInc/client-modules/commit/8b8e077)), closes [#831](https://github.com/RyzacInc/client-modules/issues/831)
+
+
+
+
+
 ## <small>10.0.8 (2020-06-08)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
