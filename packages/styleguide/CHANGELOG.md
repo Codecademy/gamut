@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.0.1 (2020-06-10)</small>
+
+* Switched storyshot test renderer to Enzyme mounting (#834) ([4d2b10f](https://github.com/RyzacInc/client-modules/commit/4d2b10f)), closes [#834](https://github.com/RyzacInc/client-modules/issues/834)
+
+
+
+
+
 ## 11.0.0 (2020-06-09)
 
 * chore(Gamut)!: Removed deprecated color variables (#819) ([1dcce36](https://github.com/RyzacInc/client-modules/commit/1dcce36)), closes [#819](https://github.com/RyzacInc/client-modules/issues/819)
