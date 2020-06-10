@@ -42,7 +42,7 @@ describe('GridFormInputGroup', () => {
       expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
     });
 
-    it('renders the label text when a label is passed', () => {
+    it('renders both the label text and description when both are passed', () => {
       const { wrapped } = renderComponent({
         field: {
           ...stubCheckboxField,
@@ -53,9 +53,10 @@ describe('GridFormInputGroup', () => {
 
       expect(wrapped.text()).toContain('test-description');
       expect(wrapped.text()).toContain('test-label');
+      expect(wrapped.find('label')).toHaveLength(2);
     });
 
-    it('renders only the description text when no label is passed', () => {
+    it('renders only the description text as a label when no label prop is passed', () => {
       const { wrapped } = renderComponent({
         field: {
           ...stubCheckboxField,
