@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.21 (2020-06-10)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>1.7.20 (2020-06-09)</small>
 
 **Note:** Version bump only for package @codecademy/gamut-labs
