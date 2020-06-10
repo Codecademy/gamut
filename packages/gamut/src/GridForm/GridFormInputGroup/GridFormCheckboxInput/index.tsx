@@ -27,7 +27,6 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       label={field.description}
       multiline={field.multiline}
       ref={register(field.validation)}
-      showLabel={!!field.label}
       id={id}
     />
   );

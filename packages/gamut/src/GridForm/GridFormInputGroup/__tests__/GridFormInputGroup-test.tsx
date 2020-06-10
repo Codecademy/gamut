@@ -41,33 +41,6 @@ describe('GridFormInputGroup', () => {
 
       expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
     });
-
-    it('renders both the label text and description when both are passed', () => {
-      const { wrapped } = renderComponent({
-        field: {
-          ...stubCheckboxField,
-          description: 'test-description',
-          label: 'test-label',
-        },
-      });
-
-      expect(wrapped.text()).toContain('test-description');
-      expect(wrapped.text()).toContain('test-label');
-      expect(wrapped.find('label')).toHaveLength(2);
-    });
-
-    it('renders only the description text as a label when no label prop is passed', () => {
-      const { wrapped } = renderComponent({
-        field: {
-          ...stubCheckboxField,
-          description: 'test-description',
-          label: '',
-        },
-      });
-
-      expect(wrapped.text()).toContain('test-description');
-      expect(wrapped.find('label')).toHaveLength(1);
-    });
   });
 
   it('renders a custom input when the field type is custom', () => {

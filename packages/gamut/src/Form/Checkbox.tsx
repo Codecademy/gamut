@@ -13,11 +13,10 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   value?: string;
   id?: string;
-  showLabel?: boolean;
 };
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, label, htmlFor, multiline, id, showLabel, ...rest }, ref) => (
+  ({ className, label, htmlFor, multiline, id, ...rest }, ref) => (
     <div className={className}>
       <input
         id={id || htmlFor}
@@ -26,10 +25,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         {...rest}
         ref={ref}
       />
-      <label
-        className={cx(s.checkboxLabel, !showLabel && s.noLabelText)}
-        htmlFor={id || htmlFor}
-      >
+      <label className={s.checkboxLabel} htmlFor={id || htmlFor}>
         <div className={cx(s.checkbox, multiline && s.checkboxMultiline)}>
           <svg
             width="24px"
