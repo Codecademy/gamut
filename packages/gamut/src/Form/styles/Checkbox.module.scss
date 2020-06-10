@@ -9,6 +9,10 @@
   width: 100%;
   font-weight: normal;
   padding: $form-padding;
+
+  &.noLabelText {
+    margin-top: 1rem;
+  }
 }
 
 .checkboxText {
