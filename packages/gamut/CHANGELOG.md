@@ -1,23 +1,68 @@
-### [9.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.3.0...@codecademy/gamut@9.0.2) (2020-06-10)
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>9.0.2 (2020-06-09)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
 
 
-### ✨ Features
-
-* **Gamut:** Added Accordion header ([ef8dc40](https://github.com/Codecademy/client-modules/commit/ef8dc40452f480596866a00c72bcaf3abc1fe441))
 
 
-### Other Changes
 
-* Header too ([02cf129](https://github.com/Codecademy/client-modules/commit/02cf129ea83d93a9627beeb6db3d5f51fb3cac2a))
-* Removed random number generation for tests ([ec2c045](https://github.com/Codecademy/client-modules/commit/ec2c0452c3237bbed6f176f96e29cb48c78b8029))
-* Updated snapshot and allowed rendering with updated ([7b2c94b](https://github.com/Codecademy/client-modules/commit/7b2c94b992de60aac990537b9c93cbbd086b3a3b))
+## <small>9.0.1 (2020-06-09)</small>
 
-## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.1...@codecademy/gamut@8.3.0) (2020-06-03)
+**Note:** Version bump only for package @codecademy/gamut
 
 
-### ✨ Features
 
-* add Id props for GridFormInputGroups ([#824](https://github.com/Codecademy/client-modules/issues/824)) ([5d4ba4f](https://github.com/Codecademy/client-modules/commit/5d4ba4ff3c256f99c517276eec120402857b7f26))
+
+
+## 9.0.0 (2020-06-09)
+
+* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
+* feat(Gamut)!: Added text-decoration: underline to Markdown links (#793) ([1f3c0ac](https://github.com/RyzacInc/client-modules/commit/1f3c0ac)), closes [#793](https://github.com/RyzacInc/client-modules/issues/793)
+* Hid SkipToContent's down arrow from narration (#802) ([cdfd8da](https://github.com/RyzacInc/client-modules/commit/cdfd8da)), closes [#802](https://github.com/RyzacInc/client-modules/issues/802)
+
+
+
+
+
+## <small>8.5.1 (2020-06-08)</small>
+
+* remove register from custom input (#830) ([3dd7b94](https://github.com/RyzacInc/client-modules/commit/3dd7b94)), closes [#830](https://github.com/RyzacInc/client-modules/issues/830)
+
+
+
+
+
+## 8.5.0 (2020-06-05)
+
+* feat: add ID prop to BaseFormField and test that GridForm renders them ([da6ac24](https://github.com/RyzacInc/client-modules/commit/da6ac24))
+
+
+
+
+
+## 8.4.0 (2020-06-03)
+
+* feat(Gamut): Add focus state to Checkbox [GM-28] (#825) ([b1f512d](https://github.com/RyzacInc/client-modules/commit/b1f512d)), closes [#825](https://github.com/RyzacInc/client-modules/issues/825)
+
+
+
+
+
+## 8.3.0 (2020-06-03)
+
+* feat: add Id props for GridFormInputGroups (#824) ([5d4ba4f](https://github.com/RyzacInc/client-modules/commit/5d4ba4f)), closes [#824](https://github.com/RyzacInc/client-modules/issues/824)
+* ci: move changelog generation to commit hook (#818) ([767cc69](https://github.com/RyzacInc/client-modules/commit/767cc69)), closes [#818](https://github.com/RyzacInc/client-modules/issues/818)
+
+
+
+
+
+### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.1...@codecademy/gamut@8.2.1) (2020-05-22)
 
 ### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.0...@codecademy/gamut@8.2.1) (2020-05-22)
 
@@ -2522,4 +2567,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-

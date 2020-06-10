@@ -1,4 +1,18 @@
-## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.1...@codecademy/gamut-styles@4.0.0) (2020-06-10)
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 4.0.0 (2020-06-09)
+
+* chore(Gamut)!: Removed deprecated color variables (#819) ([1dcce36](https://github.com/RyzacInc/client-modules/commit/1dcce36)), closes [#819](https://github.com/RyzacInc/client-modules/issues/819)
+* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
+* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
+* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
+
+
+
+
 
 ### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.0...@codecademy/gamut-styles@3.3.1) (2020-05-06)
 
@@ -470,4 +484,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
