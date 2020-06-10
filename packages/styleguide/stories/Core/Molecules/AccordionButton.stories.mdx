@@ -1,0 +1,87 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { AccordionButton, VisualTheme } from '@codecademy/gamut/src';
+import { action } from '@storybook/addon-actions';
+import { StoryStatus } from '../../../Blocks';
+import { boolean, select } from '@storybook/addon-knobs';
+
+<Meta title="Core|Molecules/AccordionButton" component={AccordionButton} />
+
+# AccordionButton
+
+<StoryStatus status="inProgress" />
+
+A very simple, stateless molecule consisting of a single button and icon.
+It serves as the top of any collapsible/expandable content, such as a
+"hint" section in the LE or a list of department jobs on a careers page.
+
+It's likely we'll eventually create an `Accordion`, which might
+replace usage of this `AccordionButton`. Until then the body of
+the accordion is managed separately in consuming locations.
+
+<Preview>
+  <Story name="Accordion">
+    <AccordionButton
+      expanded={boolean('Expanded', false)}
+      onClick={action('Clicked')}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+    >
+      Click 'Expanded' To Toggle Me
+    </AccordionButton>
+  </Story>
+</Preview>
+
+<Props of={AccordionButton} />
+
+### Themes
+
+#### Blue
+
+Blue accordion tops are only usable in dark contexts, such as the LE's
+Help Menu.
+
+<Preview className="dark">
+  <Story name="Blue">
+    <AccordionButton
+      expanded={boolean('Expanded', false)}
+      onClick={action('Clicked')}
+      theme="blue"
+    >
+      Click 'Expanded' To Toggle Me
+    </AccordionButton>
+  </Story>
+</Preview>
+
+#### Plain
+
+Plain accordion tops are best applied in plain pages such as marketing pages
+where we haven't been able to invest yet in a more solid theme.
+
+<Preview>
+  <Story name="Plain">
+    <AccordionButton
+      expanded={boolean('Expanded', false)}
+      onClick={action('Clicked')}
+      theme="plain"
+    >
+      Click 'Expanded' To Toggle Me
+    </AccordionButton>
+  </Story>
+</Preview>
+
+#### Yellow
+
+Yellow accordion tops are our favorite: they look the most professional on
+their own. They're only used in the "Get a Hint" sections of the LE's
+narrative pane.
+
+<Preview>
+  <Story name="Yellow">
+    <AccordionButton
+      expanded={boolean('Expanded', false)}
+      onClick={action('Clicked')}
+      theme="yellow"
+    >
+      Click 'Expanded' To Toggle Me
+    </AccordionButton>
+  </Story>
+</Preview>

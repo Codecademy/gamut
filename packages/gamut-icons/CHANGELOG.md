@@ -1,3 +1,5 @@
+## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.1...@codecademy/gamut-icons@2.4.0) (2020-06-10)
+
 ### [2.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.0...@codecademy/gamut-icons@2.3.1) (2020-05-04)
 
 

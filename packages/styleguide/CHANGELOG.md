@@ -1,25 +1,21 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>10.0.5 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.5...@codecademy/styleguide@11.0.0) (2020-06-10)
 
 
+### ✨ Features
+
+* **Gamut:** Added Accordion header ([ef8dc40](https://github.com/Codecademy/client-modules/commit/ef8dc40452f480596866a00c72bcaf3abc1fe441))
 
 
+### Other Changes
 
-## <small>10.0.4 (2020-05-22)</small>
+* Header too ([02cf129](https://github.com/Codecademy/client-modules/commit/02cf129ea83d93a9627beeb6db3d5f51fb3cac2a))
+* Removed random number generation for tests ([ec2c045](https://github.com/Codecademy/client-modules/commit/ec2c0452c3237bbed6f176f96e29cb48c78b8029))
+* Test only, without a snapshot ([90fa747](https://github.com/Codecademy/client-modules/commit/90fa74775f7cf5bd7d7dcd74de40506e75bd8019))
+* Used full Enzyme mount in renderer ([9eda436](https://github.com/Codecademy/client-modules/commit/9eda4364d3fc70981845f733424688b87a7ce957))
 
-* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
-* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
-* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
+### [10.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.4...@codecademy/styleguide@10.0.5) (2020-06-03)
 
-
-
-
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.3...@codecademy/styleguide@10.0.4) (2020-05-22)
 
 ### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.2...@codecademy/styleguide@10.0.3) (2020-05-21)
 
@@ -679,3 +675,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
