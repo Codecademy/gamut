@@ -1,10 +1,5 @@
 ## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.0) (2020-06-11)
 
-
-### Other Changes
-
-* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](https://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
-
 ## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.1...@codecademy/gamut-icons@2.4.0) (2020-06-09)
 
 
