@@ -8,7 +8,7 @@ export const colors = {
     '600': '#2d5dcc',
     '700': '#2e4a99',
     '800': '#233466',
-    '900': '#141e3b',
+    '900': '#141c3a',
     '1000': '#10162f',
     '1100': '#0a0e1d',
   },
@@ -96,14 +96,17 @@ export const colors = {
 };
 
 export const brandColors = {
-  red: '#fd4d3f',
-  orange: '#ff9b2a',
-  yellow: '#ffc740',
-  purple: '#6400e4',
-  pink: '#ff8ef5',
-  mint: '#6df0c2',
-  beige: '#efd9ca',
-  darkBlue: '#141c3a',
+  red: colors.red[500],
+  orange: colors.orange[400],
+  yellow: colors.yellow[500],
+  purple: colors['royalBlue'],
+  pink: colors.pink[400],
+  magenta: colors.pink[700],
+  mint: colors.green[300],
+  beige: colors['beige'],
+  blue: colors.blue[500],
+  darkBlue: colors.blue[900],
+  lavender: colors.purple[500],
 };
 
 export const effectColors = {
