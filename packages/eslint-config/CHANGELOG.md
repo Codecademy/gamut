@@ -1,5 +1,10 @@
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@0.3.3) (2020-06-11)
 
+
+### Other Changes
+
+* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](http://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
+
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.2...@codecademy/eslint-config@0.3.3) (2020-04-17)
 
 

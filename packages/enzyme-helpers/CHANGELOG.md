@@ -1,5 +1,10 @@
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.10) (2020-06-11)
 
+
+### Other Changes
+
+* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](https://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
+
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.9...@codecademy/enzyme-helpers@1.1.10) (2020-05-04)
 
 

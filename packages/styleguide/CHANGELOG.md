@@ -1,5 +1,10 @@
 ### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.3) (2020-06-11)
 
+
+### Other Changes
+
+* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](https://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
+
 ### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
 
 ### [11.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.1...@codecademy/styleguide@11.0.2) (2020-06-10)
