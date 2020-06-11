@@ -88,6 +88,7 @@
     "typescript": "3.8.3"
   },
   "husky": {
+    "skipCI": false,
     "hooks": {
       "pre-commit": "lint-staged"
     }
