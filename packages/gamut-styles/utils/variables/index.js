@@ -113,21 +113,6 @@ export const effectColors = {
   slightShadow: 'rgba(0, 0, 0, 0.15)',
 };
 
-export const deprecatedColors = {
-  portal: {
-    blue: '#52b1db',
-    darkblue: '#204056',
-    mint: '#34b3a0',
-  },
-  swatches: {
-    ccblue: {
-      '500': '#225470',
-      '700': '#204056',
-      '900': '#0d222d',
-    },
-  },
-};
-
 export const editorColors = {
   blue: '#83fff5',
   deepPurple: '#cc7bc2',
@@ -154,46 +139,6 @@ export const platformColors = {
     '700': '#3f3b5c',
     '800': '#2a283e',
     '900': '#15141f',
-  },
-};
-
-export const deprecatedGamutColors = {
-  base: {
-    purple: '#69639a',
-    royalBlue: '#4b35ef',
-    red: '#fa4359',
-    mint: '#37c3be',
-    yellow: '#ffc107',
-  },
-  swatches: {
-    purple: {
-      '100': '#e1e0eb',
-      '200': '#c3c1d7',
-      '300': '#a5a1c2',
-      '400': '#8782ae',
-      '500': '#69639a',
-      '600': '#544f7b',
-      '700': '#3f3b5c',
-      '800': '#2a283e',
-      '900': '#15141f',
-    },
-    royalBlue: {
-      '500': '#4b35ef',
-      '600': '#3c2abf',
-      '700': '#2d208f',
-      '800': '#1e1560',
-    },
-    mint: {
-      '100': '#d7f3f2',
-      '200': '#afe7e5',
-      '300': '#87dbd8',
-      '400': '#5fcfcb',
-      '500': '#37c3be',
-      '600': '#2c9c98',
-      '700': '#217572',
-      '800': '#164e4c',
-      '900': '#0b2726',
-    },
   },
 };
 
@@ -226,8 +171,6 @@ export const breakpoints = {
 export default {
   colors,
   brandColors,
-  deprecatedColors,
-  deprecatedGamutColors,
   editorColors,
   effectColors,
   grid,
