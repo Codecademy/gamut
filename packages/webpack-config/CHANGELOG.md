@@ -1,10 +1,5 @@
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.2) (2020-06-11)
 
-
-### Other Changes
-
-* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](http://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
-
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
 
 

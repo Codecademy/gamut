@@ -1,10 +1,5 @@
 ### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.4...@codecademy/gamut@9.0.4) (2020-06-11)
 
-
-### Other Changes
-
-* changelogs weren't generating in CI b/c husky wasnt installed ([d452067](https://github.com/Codecademy/client-modules/commit/d452067e953fd076b604d2b29fca61eeee7fbbf6))
-
 ### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.3...@codecademy/gamut@9.0.4) (2020-06-11)
 
 ### [9.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.2...@codecademy/gamut@9.0.3) (2020-06-10)
