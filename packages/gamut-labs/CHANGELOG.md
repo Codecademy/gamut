@@ -1,97 +1,31 @@
-# Change Log
+### [1.7.22](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.22...@codecademy/gamut-labs@1.7.22) (2020-06-11)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### [1.7.22](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.21...@codecademy/gamut-labs@1.7.22) (2020-06-11)
 
-## <small>1.7.22 (2020-06-11)</small>
+### [1.7.21](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.20...@codecademy/gamut-labs@1.7.21) (2020-06-10)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+### [1.7.20](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.19...@codecademy/gamut-labs@1.7.20) (2020-06-09)
 
+### [1.7.19](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.18...@codecademy/gamut-labs@1.7.19) (2020-06-09)
 
+### [1.7.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.17...@codecademy/gamut-labs@1.7.18) (2020-06-09)
 
+### [1.7.17](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.16...@codecademy/gamut-labs@1.7.17) (2020-06-08)
 
+### [1.7.16](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.15...@codecademy/gamut-labs@1.7.16) (2020-06-05)
 
-## <small>1.7.21 (2020-06-10)</small>
+### [1.7.15](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.14...@codecademy/gamut-labs@1.7.15) (2020-06-03)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+### [1.7.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.13...@codecademy/gamut-labs@1.7.14) (2020-06-03)
 
+### [1.7.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.12...@codecademy/gamut-labs@1.7.13) (2020-06-01)
 
 
+### 🐛 Bug Fixes
 
+* Remove alt text on Testimonial avatars. ([#822](https://github.com/Codecademy/client-modules/issues/822)) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2fdaf9409efd1021cf57e6edb53fc83c42))
 
-## <small>1.7.20 (2020-06-09)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.19 (2020-06-09)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.18 (2020-06-09)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.17 (2020-06-08)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.16 (2020-06-05)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.15 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.14 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.13 (2020-06-01)</small>
-
-* fix: Remove alt text on Testimonial avatars. (#822) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2)), closes [#822](https://github.com/Codecademy/client-modules/issues/822)
-
-
-
-
-
-## <small>1.7.12 (2020-05-22)</small>
-
-* ci: cleanup changelogs ([a64dcfc](https://github.com/Codecademy/client-modules/commit/a64dcfc))
-* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/Codecademy/client-modules/commit/acb1f18)), closes [#815](https://github.com/Codecademy/client-modules/issues/815)
-* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/Codecademy/client-modules/commit/b258dc4))
-
-
-
-
+### [1.7.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.11...@codecademy/gamut-labs@1.7.12) (2020-05-22)
 
 ### [1.7.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.10...@codecademy/gamut-labs@1.7.11) (2020-05-21)
 
@@ -124,3 +58,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
