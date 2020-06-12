@@ -84,7 +84,6 @@ export function GridForm<
               key={field.name}
               register={register}
               setValue={setValue}
-              id={field.id}
             />
           );
         })}

@@ -18,7 +18,6 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: FormContextValues['register'];
   setValue: (value: any) => void;
-  id?: string;
 };
 
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
@@ -32,7 +31,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
-            id={props.id}
+            id={props.field.id}
           />
         );
 
@@ -54,7 +53,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
-            id={props.id}
+            id={props.field.id}
           />
         );
 
@@ -65,7 +64,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.id}
+            id={props.field.id}
           />
         );
 
@@ -76,7 +75,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.id}
+            id={props.field.id}
           />
         );
 
@@ -87,7 +86,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.id}
+            id={props.field.id}
           />
         );
 
@@ -98,7 +97,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.id}
+            id={props.field.id}
           />
         );
     }
@@ -109,7 +108,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       <FormGroup className={styles.formGroup}>
         <FormGroupLabel
           className={styles.formGroupLabel}
-          htmlFor={props.field.name}
+          htmlFor={props.field.id || props.field.name}
         >
           {props.field.label}
         </FormGroupLabel>
