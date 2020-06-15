@@ -31,7 +31,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -53,7 +52,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
-            id={props.field.id}
           />
         );
 
@@ -64,7 +62,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -75,7 +72,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -86,7 +82,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -97,7 +92,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
     }
@@ -106,12 +100,20 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   return (
     <Column size={props.field.size}>
       <FormGroup className={styles.formGroup}>
-        <FormGroupLabel
-          className={styles.formGroupLabel}
-          htmlFor={props.field.id || props.field.name}
-        >
-          {props.field.label}
-        </FormGroupLabel>
+        {!!props.field.label ? (
+          <FormGroupLabel
+            className={styles.formGroupLabel}
+            htmlFor={props.field.name}
+          >
+            {props.field.label}
+          </FormGroupLabel>
+        ) : (
+          <label
+            aria-label={props.field.name}
+            htmlFor={props.field.id || props.field.name}
+            className={styles.invisible}
+          />
+        )}
         {props.error && <FormError>{props.error}</FormError>}
         {getInput()}
       </FormGroup>

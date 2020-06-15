@@ -8,9 +8,8 @@ describe('GridFormFileInput', () => {
     it('renders an input with the same id', () => {
       const textInput = mount(
         <GridFormFileInput
-          field={stubFileField}
+          field={{ ...stubFileField, id: 'mycoolid' }}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 

@@ -8,9 +8,8 @@ describe('GridFormCheckboxInput', () => {
     it('renders an input with the same id', () => {
       const textInput = mount(
         <GridFormCheckboxInput
-          field={stubCheckboxField}
+          field={{ ...stubCheckboxField, id: 'mycoolid' }}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 

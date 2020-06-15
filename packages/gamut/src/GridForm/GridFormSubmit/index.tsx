@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { Button } from '../../Button';
+import { Button, ButtonAlignment } from '../../Button';
 import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
 import styles from './styles.module.scss';
@@ -14,6 +14,7 @@ export type GridFormSubmitProps = {
   position?: GridFormSubmitPosition;
   size?: ResponsiveProperty<ColumnSizes>;
   theme?: string;
+  alignment?: ButtonAlignment;
 };
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
@@ -22,12 +23,18 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   position = 'left',
   size,
   theme = 'brand-purple',
+  alignment,
 }) => {
   const positionStyle = styles[position];
 
   return (
     <Column className={cx(styles.base, positionStyle)} size={size}>
-      <Button disabled={disabled} theme={theme} type="submit">
+      <Button
+        disabled={disabled}
+        theme={theme}
+        alignment={alignment}
+        type="submit"
+      >
         {contents}
       </Button>
     </Column>
