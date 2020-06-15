@@ -103,7 +103,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
         {!!props.field.label ? (
           <FormGroupLabel
             className={styles.formGroupLabel}
-            htmlFor={props.field.name}
+            htmlFor={props.field.id || props.field.name}
           >
             {props.field.label}
           </FormGroupLabel>
