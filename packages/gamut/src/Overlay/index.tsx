@@ -8,6 +8,7 @@ import styles from './styles.module.scss';
 export type OverlayProps = {
   children: React.ReactElement<any>;
   className?: string;
+
   /**
    * Whether clicking on the screen outside of the container should close the Overlay
    */
@@ -21,7 +22,14 @@ export type OverlayProps = {
    * this could be due to clicking outside of the overlay, or by clicking the escape key
    */
   onRequestClose: () => void;
+  /**
+   * Whether the overlay is rendered
+   */
   isOpen?: boolean;
+  /**
+   * Whether to use fixed positioning on the overlay. Defaults to true.
+   */
+  fixedPositioning?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
@@ -29,6 +37,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   children,
   clickOutsideCloses = true,
   escapeCloses = true,
+  fixedPositioning = true,
   onRequestClose,
   isOpen,
 }) => {
@@ -36,7 +45,13 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   return (
     <BodyPortal>
-      <div className={cx(styles.container, className)}>
+      <div
+        className={cx(
+          { [styles.fixedPositioning]: fixedPositioning },
+          styles.container,
+          className
+        )}
+      >
         <FocusTrap
           focusTrapOptions={{
             clickOutsideDeactivates: clickOutsideCloses,
