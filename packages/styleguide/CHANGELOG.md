@@ -3,87 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## <small>11.0.1 (2020-06-10)</small>
+## <small>11.0.4 (2020-06-12)</small>
 
-* Switched storyshot test renderer to Enzyme mounting (#834) ([4d2b10f](https://github.com/RyzacInc/client-modules/commit/4d2b10f)), closes [#834](https://github.com/RyzacInc/client-modules/issues/834)
-
-
-
-
-
-## 11.0.0 (2020-06-09)
-
-* chore(Gamut)!: Removed deprecated color variables (#819) ([1dcce36](https://github.com/RyzacInc/client-modules/commit/1dcce36)), closes [#819](https://github.com/RyzacInc/client-modules/issues/819)
+* fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)
+* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
+* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
 
 
 
 
 
-## <small>10.0.11 (2020-06-09)</small>
+### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.3) (2020-06-11)
 
-**Note:** Version bump only for package @codecademy/styleguide
+### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
 
+### [11.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.1...@codecademy/styleguide@11.0.2) (2020-06-10)
 
-
-
-
-## <small>10.0.10 (2020-06-09)</small>
-
-* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
+### [11.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.0...@codecademy/styleguide@11.0.1) (2020-06-10)
 
 
+### Other Changes
+
+* Switched storyshot test renderer to Enzyme mounting ([#834](https://github.com/Codecademy/client-modules/issues/834)) ([4d2b10f](https://github.com/Codecademy/client-modules/commit/4d2b10fbbe8de798f8628066fd3135491931ce68))
+
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.11...@codecademy/styleguide@11.0.0) (2020-06-09)
 
 
+### ⚠ BREAKING CHANGES
 
-## <small>10.0.9 (2020-06-09)</small>
+* **Gamut:** Removed deprecated color variables (#819)
 
-* Remove Unused Blocks / Helpers (#831) ([8b8e077](https://github.com/RyzacInc/client-modules/commit/8b8e077)), closes [#831](https://github.com/RyzacInc/client-modules/issues/831)
+### Other Changes
 
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/client-modules/issues/819)) ([1dcce36](https://github.com/Codecademy/client-modules/commit/1dcce363a7fc9f4a37e71b667fa0de984671bd3c))
 
+### [10.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.10...@codecademy/styleguide@10.0.11) (2020-06-09)
 
-
-
-## <small>10.0.8 (2020-06-08)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
+### [10.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.9...@codecademy/styleguide@10.0.10) (2020-06-09)
 
 
+### Other Changes
+
+* Allowed Alerts to not be passed an onClose callback ([#829](https://github.com/Codecademy/client-modules/issues/829)) ([c461eaf](https://github.com/Codecademy/client-modules/commit/c461eaf72330b6ccf1928f1f7f94d624e430b4ea))
+
+### [10.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.8...@codecademy/styleguide@10.0.9) (2020-06-09)
 
 
-## <small>10.0.7 (2020-06-05)</small>
+### Other Changes
 
-**Note:** Version bump only for package @codecademy/styleguide
+* Remove Unused Blocks / Helpers ([#831](https://github.com/Codecademy/client-modules/issues/831)) ([8b8e077](https://github.com/Codecademy/client-modules/commit/8b8e0771ff33728cb795bbe2acc1d6a11d5f726b))
 
+### [10.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.7...@codecademy/styleguide@10.0.8) (2020-06-08)
 
+### [10.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.6...@codecademy/styleguide@10.0.7) (2020-06-05)
 
+### [10.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.5...@codecademy/styleguide@10.0.6) (2020-06-03)
 
+### [10.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.4...@codecademy/styleguide@10.0.5) (2020-06-03)
 
-## <small>10.0.6 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## <small>10.0.5 (2020-06-03)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## <small>10.0.4 (2020-05-22)</small>
-
-* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
-* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
-* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
-
-
-
-
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.3...@codecademy/styleguide@10.0.4) (2020-05-22)
 
 ### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.2...@codecademy/styleguide@10.0.3) (2020-05-21)
 

@@ -25,7 +25,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         {...rest}
         ref={ref}
       />
-      <label className={s.checkboxLabel} htmlFor={htmlFor}>
+      <label className={s.checkboxLabel} htmlFor={id || htmlFor}>
         <div className={cx(s.checkbox, multiline && s.checkboxMultiline)}>
           <svg
             width="24px"

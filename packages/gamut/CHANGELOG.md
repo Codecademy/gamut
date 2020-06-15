@@ -3,66 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## <small>9.0.2 (2020-06-09)</small>
+## <small>9.0.5 (2020-06-12)</small>
 
-**Note:** Version bump only for package @codecademy/gamut
-
-
-
-
-
-## <small>9.0.1 (2020-06-09)</small>
-
-**Note:** Version bump only for package @codecademy/gamut
+* fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)
+* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
+* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
 
 
 
 
 
-## 9.0.0 (2020-06-09)
+### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.4...@codecademy/gamut@9.0.4) (2020-06-11)
 
-* Allowed Alerts to not be passed an onClose callback (#829) ([c461eaf](https://github.com/RyzacInc/client-modules/commit/c461eaf)), closes [#829](https://github.com/RyzacInc/client-modules/issues/829)
-* feat(Gamut)!: Added text-decoration: underline to Markdown links (#793) ([1f3c0ac](https://github.com/RyzacInc/client-modules/commit/1f3c0ac)), closes [#793](https://github.com/RyzacInc/client-modules/issues/793)
-* Hid SkipToContent's down arrow from narration (#802) ([cdfd8da](https://github.com/RyzacInc/client-modules/commit/cdfd8da)), closes [#802](https://github.com/RyzacInc/client-modules/issues/802)
+### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.3...@codecademy/gamut@9.0.4) (2020-06-11)
 
-
+### [9.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.2...@codecademy/gamut@9.0.3) (2020-06-10)
 
 
+### 🐛 Bug Fixes
 
-## <small>8.5.1 (2020-06-08)</small>
+* set Input border color for accessibility ([#832](https://github.com/Codecademy/client-modules/issues/832)) ([f7394a7](https://github.com/Codecademy/client-modules/commit/f7394a755b5ba49abd78998a6a679fb355275db1))
 
-* remove register from custom input (#830) ([3dd7b94](https://github.com/RyzacInc/client-modules/commit/3dd7b94)), closes [#830](https://github.com/RyzacInc/client-modules/issues/830)
+### [9.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.1...@codecademy/gamut@9.0.2) (2020-06-09)
 
+### [9.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.0...@codecademy/gamut@9.0.1) (2020-06-09)
 
-
-
-
-## 8.5.0 (2020-06-05)
-
-* feat: add ID prop to BaseFormField and test that GridForm renders them ([da6ac24](https://github.com/RyzacInc/client-modules/commit/da6ac24))
+## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.5.1...@codecademy/gamut@9.0.0) (2020-06-09)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Added text-decoration: underline to Markdown links (#793)
+
+### ✨ Features
+
+* **Gamut:** Added text-decoration: underline to Markdown links ([#793](https://github.com/Codecademy/client-modules/issues/793)) ([1f3c0ac](https://github.com/Codecademy/client-modules/commit/1f3c0aced800ea2d00815654343433061890b608))
 
 
+### Other Changes
 
-## 8.4.0 (2020-06-03)
+* Allowed Alerts to not be passed an onClose callback ([#829](https://github.com/Codecademy/client-modules/issues/829)) ([c461eaf](https://github.com/Codecademy/client-modules/commit/c461eaf72330b6ccf1928f1f7f94d624e430b4ea))
+* Hid SkipToContent's down arrow from narration ([#802](https://github.com/Codecademy/client-modules/issues/802)) ([cdfd8da](https://github.com/Codecademy/client-modules/commit/cdfd8dace9e609f79c776b89c501ff81163dd7e9))
 
-* feat(Gamut): Add focus state to Checkbox [GM-28] (#825) ([b1f512d](https://github.com/RyzacInc/client-modules/commit/b1f512d)), closes [#825](https://github.com/RyzacInc/client-modules/issues/825)
-
-
-
-
-
-## 8.3.0 (2020-06-03)
-
-* feat: add Id props for GridFormInputGroups (#824) ([5d4ba4f](https://github.com/RyzacInc/client-modules/commit/5d4ba4f)), closes [#824](https://github.com/RyzacInc/client-modules/issues/824)
-* ci: move changelog generation to commit hook (#818) ([767cc69](https://github.com/RyzacInc/client-modules/commit/767cc69)), closes [#818](https://github.com/RyzacInc/client-modules/issues/818)
+### [8.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.5.0...@codecademy/gamut@8.5.1) (2020-06-08)
 
 
+### Other Changes
+
+* remove register from custom input ([#830](https://github.com/Codecademy/client-modules/issues/830)) ([3dd7b94](https://github.com/Codecademy/client-modules/commit/3dd7b94e97548dc5820cd6e4728294399fefccf4))
+
+## [8.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.4.0...@codecademy/gamut@8.5.0) (2020-06-05)
 
 
+### ✨ Features
 
-### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.1...@codecademy/gamut@8.2.1) (2020-05-22)
+* add ID prop to BaseFormField and test that GridForm renders them ([da6ac24](https://github.com/Codecademy/client-modules/commit/da6ac249c27b025782a019fd6329771d00a60f23))
+
+## [8.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.3.0...@codecademy/gamut@8.4.0) (2020-06-03)
+
+
+### ✨ Features
+
+* **Gamut:** Add focus state to Checkbox [GM-28] ([#825](https://github.com/Codecademy/client-modules/issues/825)) ([b1f512d](https://github.com/Codecademy/client-modules/commit/b1f512d751d746e9b05e8b77775e0566a1159c78))
+
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.1...@codecademy/gamut@8.3.0) (2020-06-03)
+
+
+### ✨ Features
+
+* add Id props for GridFormInputGroups ([#824](https://github.com/Codecademy/client-modules/issues/824)) ([5d4ba4f](https://github.com/Codecademy/client-modules/commit/5d4ba4ff3c256f99c517276eec120402857b7f26))
 
 ### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@8.2.0...@codecademy/gamut@8.2.1) (2020-05-22)
 
