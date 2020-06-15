@@ -33,8 +33,6 @@ export interface TabsState {
 }
 
 export class Tabs extends Component<TabsProps> {
-  static uniqueId = 0;
-
   state: TabsState = {
     activeTabIndex: this.props.defaultActiveTabIndex || 0,
   };
@@ -47,7 +45,7 @@ export class Tabs extends Component<TabsProps> {
     }
   }
 
-  idPrefix = (Tabs.uniqueId++).toString();
+  idPrefix = Math.random().toString().replace('.', '');
 
   createBaseId = (index: number) => `${this.idPrefix}-${index}`;
 

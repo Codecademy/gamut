@@ -23,8 +23,6 @@ export class DeprecatedTabs extends Component<
   DeprecatedTabsProps,
   DeprecatedTabsState
 > {
-  static uniqueId = 0;
-
   state: DeprecatedTabsState = { activeTabId: undefined };
 
   private idPrefix!: string;
@@ -32,7 +30,7 @@ export class DeprecatedTabs extends Component<
   UNSAFE_componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this.idPrefix = (DeprecatedTabs.uniqueId++).toString();
+    this.idPrefix = Math.random().toString().replace('.', '');
   }
 
   createId(index: number) {
