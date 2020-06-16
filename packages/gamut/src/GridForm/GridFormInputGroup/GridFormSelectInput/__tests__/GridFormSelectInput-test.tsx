@@ -8,9 +8,8 @@ describe('GridFormSelectInput', () => {
     it('renders a select with the same id', () => {
       const textInput = mount(
         <GridFormSelectInput
-          field={stubSelectField}
+          field={{ ...stubSelectField, id: 'mycoolid' }}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 

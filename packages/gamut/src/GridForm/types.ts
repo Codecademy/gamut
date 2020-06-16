@@ -49,7 +49,7 @@ export type BasicInputType =
   | 'week';
 
 export type GridFormTextField = BaseFormField<string> & {
-  label: string;
+  label?: string;
   placeholder?: string;
   validation?: ValidationOptions;
   type: BasicInputType;

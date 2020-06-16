@@ -9,7 +9,6 @@ export type GridFormTextInputProps = {
   error?: boolean;
   field: Omit<GridFormTextField, 'label'>;
   register: FormContextValues['register'];
-  id?: string;
 };
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
@@ -17,7 +16,6 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
   error,
   field,
   register,
-  id,
 }) => {
   return (
     <Input
@@ -29,7 +27,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       name={field.name}
       ref={register(field.validation)}
       type={field.type}
-      id={id}
+      id={field.id}
     />
   );
 };

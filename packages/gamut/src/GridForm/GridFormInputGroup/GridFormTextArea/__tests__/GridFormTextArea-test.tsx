@@ -8,9 +8,8 @@ describe('GridFormTextArea', () => {
     it('renders an textarea with the same id', () => {
       const textarea = mount(
         <GridFormTextArea
-          field={stubTextareaField}
+          field={{ ...stubTextareaField, id: 'mycoolid' }}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 
