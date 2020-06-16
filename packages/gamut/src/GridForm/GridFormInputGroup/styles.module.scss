@@ -11,14 +11,13 @@
   .gridFormInput {
     width: 100%;
   }
-}
 
-.invisible {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
+  .invisible {
+    display: block;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+  }
 }
