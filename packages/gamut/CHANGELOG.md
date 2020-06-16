@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.1.2 (2020-06-16)</small>
+
+* Change FormGroupLabel styles for accessibility (#839) ([dcb12ca](https://github.com/RyzacInc/client-modules/commit/dcb12ca)), closes [#839](https://github.com/RyzacInc/client-modules/issues/839)
+
+
+
+
+
 ## <small>9.1.1 (2020-06-16)</small>
 
 * fix(CheckboxField): allow react nodes for checkbox description (#840) ([9758f9f](https://github.com/RyzacInc/client-modules/commit/9758f9f)), closes [#840](https://github.com/RyzacInc/client-modules/issues/840)
