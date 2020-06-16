@@ -93,18 +93,6 @@ fieldset[disabled] a.btn {
   }
 }
 
-.align-top {
-  align-self: flex-start;
-}
-.align-bottom {
-  align-self: flex-end;
-
-  //Padding values should match Form input element padding
-  //packages/gamut/src/Form/styles/_variables.scss
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
-}
-
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],

@@ -12,6 +12,7 @@ import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
 import styles from './styles.module.scss';
+import cx from 'classnames';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -100,20 +101,15 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   return (
     <Column size={props.field.size}>
       <FormGroup className={styles.formGroup}>
-        {!!props.field.label ? (
-          <FormGroupLabel
-            className={styles.formGroupLabel}
-            htmlFor={props.field.id || props.field.name}
-          >
-            {props.field.label}
-          </FormGroupLabel>
-        ) : (
-          <label
-            aria-label={props.field.name}
-            htmlFor={props.field.id || props.field.name}
-            className={styles.invisible}
-          />
-        )}
+        <FormGroupLabel
+          className={cx(
+            styles.formGroupLabel,
+            !props.field.label && styles.invisible
+          )}
+          htmlFor={props.field.id || props.field.name}
+        >
+          {props.field.label}
+        </FormGroupLabel>
         {props.error && <FormError>{props.error}</FormError>}
         {getInput()}
       </FormGroup>

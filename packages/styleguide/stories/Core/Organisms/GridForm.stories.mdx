@@ -86,7 +86,8 @@ responsive layouts.
           },
         },
         {
-          label: 'Validated',
+          label:
+            "Validated, required text that must contain the word 'swag' twice",
           name: 'validated-required-text',
           size: 5,
           type: 'text',
@@ -241,7 +242,7 @@ value of left, center, right, or stretch.
   </Story>
 </Preview>
 
-## Submit Button Color
+## Submit Button color
 
 We can specify the color of our button by passing the theme prop with a
 button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
@@ -289,67 +290,14 @@ default value is 'brand-purple'.
 
 ## Inline Submit Button
 
-We can make the submit button inline with an input by setting the column sizes so they
-fit on the same row (e.g. input `size: 8` and submit `size: 4`).
+We can make the Submit button inline with an input by setting the column
+sizes so they fit on the same row (e.g size 8 for an input and size 4 for
+the submit).
 
-Additionally, we can set the alignment of the button relative to the input container:
+We can additionally remove the label from text inputs and checkbox inputs (though this
+causes alignment issues in checkboxes, as you can see below).
 
-`alignment: top` will align the button to the top of the field, or any labels above
-the field.
-
-`alignment: 'bottom'` will align the button with the bottom of the field, and will
-additionally increase the button padding to match standard text input height. For
-this reason, you may wish to set `alignment: bottom` even when working with a text
-input with no label.
-
-<Preview>
-  <Story name="Inline Submit Button With Label">
-    <GridForm
-      fields={[
-        {
-          label: 'Label',
-          name: 'email',
-          size: 8,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-        alignment: 'bottom',
-      }}
-    />
-  </Story>
-</Preview>
-
-<Preview>
-  <Story name="Inline Submit Button With No Label">
-    <GridForm
-      fields={[
-        {
-          name: 'email',
-          size: 8,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-        alignment: 'bottom',
-      }}
-    />
-  </Story>
-</Preview>
-
-##### Caveat: We need to adjust params to allow us to properly align submit buttons with checkbox inputs
+#### Submit button is not aligned correctly when there is no checkbox input label
 
 <Preview>
   <Story name="Inline Submit Button">
@@ -374,7 +322,56 @@ input with no label.
   </Story>
 </Preview>
 
-## Custom Inputs
+#### Submit button is not aligned correctly when there is a text input label
+
+<Preview>
+  <Story name="Inline Text Input With Label">
+    <GridForm
+      fields={[
+        {
+          label: 'Label',
+          name: 'email',
+          size: 8,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async (values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
+      }}
+    />
+  </Story>
+</Preview>
+
+#### Submit button is aligned correctly when there is no text input label
+
+<Preview>
+  <Story name="Inline Text Input With No Label">
+    <GridForm
+      fields={[
+        {
+          name: 'email',
+          size: 8,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async (values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
+      }}
+    />
+  </Story>
+</Preview>
+
+## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
 their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html)

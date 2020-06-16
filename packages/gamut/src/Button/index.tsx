@@ -31,8 +31,6 @@ const propKeys = [
   'onClick',
 ];
 
-export type ButtonAlignment = 'top' | 'bottom';
-
 export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   /**
    * Component type to wrap children with.
@@ -63,7 +61,6 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   theme?: string;
   type?: string;
   underline?: boolean;
-  alignment?: ButtonAlignment;
 };
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -75,14 +72,10 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
   const typeClassName = props.link ? s.link : s.btn;
   const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
-  const alignmentClassName = props.alignment
-    ? s[`align-${props.alignment}`]
-    : undefined;
 
   const classes = cx(
     typeClassName,
     themeClassName,
-    alignmentClassName,
     s[props.size],
     {
       [s.block]: props.block,
