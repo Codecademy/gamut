@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path fill="#444" d="M26 4c1.2 0 2 .8 2 2v20c0 1.2-.8 2-2 2H6c-1.2 0-2-.8-2-2V6c0-1.2.8-2 2-2h20zm0-2H6C3.8 2 2 3.8 2 6v20c0 2.2 1.8 4 4 4h20c2.2 0 4-1.8 4-4V6c0-2.2-1.8-4-4-4z"/>
-    <path fill="#444" d="M12.6 24l-5.4-5.2 1.6-1.6 3.8 4 10.6-10.6 1.6 1.4z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>check-2</title><path class="a" d="M6,13.223,8.45,16.7a1.049,1.049,0,0,0,1.707.051L18,6.828"/><rect class="a" x="0.75" y="0.749" width="22.5" height="22.5" rx="1.5" ry="1.5"/></svg>

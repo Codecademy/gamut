@@ -1,3 +1,14 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M15 16.6l4.351-4.6L15 7.4 16.324 6 22 12l-5.676 6L15 16.6zm-6 0L4.649 12 9 7.4 7.676 6 2 12l5.676 6L9 16.6z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="10px" viewBox="0 0 14 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>file-code</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Artboard" transform="translate(-309.000000, -756.000000)" stroke="#000000" stroke-width="1.5">
+            <g id="file-code" transform="translate(310.000000, 757.000000)">
+                <polyline id="Path" points="8.295 0.003 12.045 3.753 8.295 7.503"></polyline>
+                <polyline id="Path" points="3.795 0.003 0.045 3.753 3.795 7.503"></polyline>
+            </g>
+        </g>
+    </g>
 </svg>

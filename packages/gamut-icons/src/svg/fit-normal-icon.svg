@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path fill="#444" d="M28 0H4C1.8 0 0 1.8 0 4v24c0 2.2 1.8 4 4 4h24c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm2 28c0 1.2-.8 2-2 2H4c-1.2 0-2-.8-2-2V4c0-1.2.8-2 2-2h24c1.2 0 2 .8 2 2v24z"/>
-    <path fill="#444" d="M21 9.4c-.2 0-.6 0-.8.2-.4.4-.4 1 0 1.4l4 4H7.8l4-4c.4-.4.4-1 0-1.4s-1-.4-1.4 0L4 16l6.4 6.4c.2.2.4.2.8.2s.6 0 .8-.2c.4-.4.4-1 0-1.4l-4-4h16.4l-4 4c-.4.4-.4 1 0 1.4s1 .4 1.4 0L28 16l-6.4-6.4c-.2-.2-.4-.2-.6-.2z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>expand-horizontal-4</title><line class="a" x1="3.751" y1="11.998" x2="20.251" y2="11.998"/><polyline class="a" points="7.501 8.248 3.751 11.998 7.501 15.748"/><polyline class="a" points="16.501 8.248 20.251 11.998 16.501 15.748"/><line class="a" x1="0.751" y1="0.748" x2="0.751" y2="23.248"/><line class="a" x1="23.251" y1="0.748" x2="23.251" y2="23.248"/></svg>

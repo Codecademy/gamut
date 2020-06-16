@@ -1,3 +1,1 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-<path fill="#444" d="M15 7c0 0-5-4-15-4v22c11.4 0 15 4 15 4s3.6-4 15-4v-22c-10 0-15 4-15 4zM2 5c6.8 0 10.4 3 12 4.8v16c-2.2-1.2-6-2.4-12-2.8v-18zM28 23c-6.2 0.2-9.8 1.6-12 2.8v-16c1.6-1.8 5.2-4.8 12-4.8v18z"></path>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><title>book-open</title><path class="a" d="M12,5.492c0-1.819,4.556-3.313,9.968-3.484a1,1,0,0,1,1.032,1v14.5a1,1,0,0,1-.97,1C16.591,18.668,12,20.166,12,21.992c0-1.826-4.591-3.324-10.03-3.486a1,1,0,0,1-.97-1V3.008a1,1,0,0,1,1.032-1C7.443,2.179,12,3.673,12,5.492Z"/><line class="a" x1="12" y1="5.492" x2="12" y2="21.867"/></svg>

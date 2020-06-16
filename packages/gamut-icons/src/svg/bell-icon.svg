@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M16 17H8v-6.5C8 8 9.778 6 12 6s4 2 4 4.5V17zm2.118-1v-5.5c0-3.07-2.014-5.64-4.706-6.32V3.5c0-.828-.632-1.5-1.412-1.5-.78 0-1.412.672-1.412 1.5v.68c-2.7.68-4.706 3.25-4.706 6.32V16L4 18v1h16v-1l-1.882-2zM12 22a2 2 0 002-2h-4a2 2 0 002 2z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>alarm-bell</title><path class="a" d="M10,21.75a2.087,2.087,0,0,0,4.005,0"/><line class="a" x1="12" y1="3" x2="12" y2="0.75"/><path class="a" d="M12,3a7.5,7.5,0,0,1,7.5,7.5c0,7.046,1.5,8.25,1.5,8.25H3s1.5-1.916,1.5-8.25A7.5,7.5,0,0,1,12,3Z"/></svg>

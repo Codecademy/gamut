@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path fill="#444" d="M24 12v18H8V12h16zm2-2H6v20c0 1.2.8 2 2 2h16c1.2 0 2-.8 2-2V10zM4.2 6h24v2h-24V6zm2-2h20v2h-20V4zm8-2h4v2h-4V2z"/>
-    <path fill="#444" d="M10 14h2v14h-2V14zm5 0h2v14h-2V14zm5 0h2v14h-2V14z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>bin-1</title><line class="a" x1="1.5" y1="4.5" x2="22.5" y2="4.5"/><path class="a" d="M14.25,1.5H9.75A1.5,1.5,0,0,0,8.25,3V4.5h7.5V3A1.5,1.5,0,0,0,14.25,1.5Z"/><line class="a" x1="9.75" y1="17.25" x2="9.75" y2="9.75"/><line class="a" x1="14.25" y1="17.25" x2="14.25" y2="9.75"/><path class="a" d="M18.865,21.124A1.5,1.5,0,0,1,17.37,22.5H6.631a1.5,1.5,0,0,1-1.495-1.376L3.75,4.5h16.5Z"/></svg>

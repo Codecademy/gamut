@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M19 11.111H4.778V8.444H19v2.667zm0 3.556h-6.222v-1.778H19v1.778zm0 3.555h-6.222v-1.778H19v1.778zm-8 0H4.778V12.89H11v5.333zm8.293-12.738L17.818 4l-1.485 1.484L14.85 4l-1.476 1.484L11.89 4l-1.485 1.484L8.93 4 7.444 5.484 5.96 4 4.484 5.484 3 4v14.222C3 19.204 3.796 20 4.778 20H19c.982 0 1.778-.796 1.778-1.778V4l-1.485 1.484z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>layout-5</title><rect class="a" x="1.5" y="1.497" width="21" height="21" rx="1.5" ry="1.5"/><line class="a" x1="1.5" y1="7.497" x2="22.5" y2="7.497"/><line class="a" x1="7.5" y1="7.497" x2="7.5" y2="22.497"/><line class="a" x1="22.5" y1="14.997" x2="7.5" y2="14.997"/></svg>

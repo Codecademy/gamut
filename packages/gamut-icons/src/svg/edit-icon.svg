@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M16.84 2.73c-.39 0-.77.15-1.07.44l-2.12 2.12 5.3 5.31 2.12-2.1c.6-.61.6-1.56 0-2.14L17.9 3.17c-.3-.29-.68-.44-1.06-.44M12.94 6l-8.1 8.11 2.56.28.18 2.29 2.28.17.29 2.56 8.1-8.11m-14 3.74L2.5 21.73l6.7-1.79-.24-2.16-2.31-.17-.18-2.32"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>pencil-2</title><path class="a" d="M22.192,1.814a3.631,3.631,0,0,0-5.157.035L2.57,16.31.75,23.25l6.942-1.819L22.157,6.97A3.628,3.628,0,0,0,22.192,1.814Z"/><line class="a" x1="16.621" y1="2.263" x2="21.743" y2="7.383"/><line class="a" x1="14.532" y1="4.351" x2="19.654" y2="9.471"/><polyline class="a" points="2.57 16.31 6.16 17.842 7.696 21.426"/><line class="a" x1="17.093" y1="6.911" x2="6.16" y2="17.841"/></svg>

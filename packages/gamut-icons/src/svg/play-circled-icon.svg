@@ -1,6 +1,14 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g fill="none" fill-rule="evenodd">
-        <path d="M17 12l-8 5V7z" fill="currentColor"/>
-        <circle cx="12" cy="12" r="9.5" stroke="currentColor"/>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<g>
+	<title>button-play-1</title>
+	<path d="M12,23.999c-6.617,0-12-5.383-12-12c0-6.617,5.383-12,12-12c6.617,0,12,5.383,12,12C24,18.616,18.617,23.999,12,23.999z
+		 M12,0.999c-6.065,0-11,4.935-11,11s4.935,11,11,11s11-4.935,11-11S18.065,0.999,12,0.999z"/>
+	<path d="M9.001,16.69c-0.106,0-0.213-0.017-0.315-0.051c-0.254-0.085-0.459-0.262-0.579-0.501C8.037,16,8,15.844,8,15.69V8.308
+		c0-0.551,0.449-1,1-1c0.154,0,0.309,0.036,0.448,0.106l7.382,3.691c0.239,0.12,0.417,0.325,0.501,0.579
+		c0.084,0.254,0.065,0.525-0.055,0.763c-0.095,0.191-0.254,0.349-0.446,0.446l-7.382,3.691C9.307,16.655,9.156,16.69,9.001,16.69z
+		 M9,15.69l7.382-3.691L9,8.308L9,15.69z"/>
+</g>
 </svg>

@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M5.338 10.91A6.752 6.752 0 0112 5.25c1.868 0 3.533.776 4.748 2.003l-3.623 3.622H21V3l-2.644 2.644A8.953 8.953 0 0012 3c-4.621 0-8.488 3.426-9 7.91m15.724 2.265a6.752 6.752 0 01-6.648 5.575c-1.867 0-3.532-.776-4.747-2.003l3.622-3.622H3.076V21l2.644-2.644A8.953 8.953 0 0012.076 21 9.002 9.002 0 0021 13.177"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}</style></defs><title>button-refresh-arrows</title><path class="a" d="M5.5,18.928A9.5,9.5,0,0,1,17.061,3.956"/><polyline class="a" points="18.5 9.498 18.5 4.998 23 4.998"/><polyline class="a" points="5.5 14.498 5.5 18.998 1 18.998"/><path class="a" d="M18.5,5.071A9.5,9.5,0,0,1,6.883,20.006"/></svg>

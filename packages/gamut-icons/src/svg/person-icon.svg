@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M12 3a4 4 0 110 8 4 4 0 010-8zm0 9c4.42 0 8 2.387 8 5.333V20H4v-2.667C4 14.387 7.58 12 12 12z"/>
-</svg>
+<svg id="Bold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>single-neutral</title><circle cx="12" cy="6.25" r="5.5"/><path d="M12,13.25a9.511,9.511,0,0,0-9.5,9.5.5.5,0,0,0,.5.5H21a.5.5,0,0,0,.5-.5A9.511,9.511,0,0,0,12,13.25Z"/></svg>

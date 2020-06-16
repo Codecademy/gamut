@@ -1,6 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g fill-rule="evenodd">
-        <path d="M2.053 7h10.105v1.263H2.053zm0 2.526h7.579v1.263h-7.58zm0 2.527h5.052v1.263H2.053zm0 2.526h2.526v1.263H2.053z"/>
-        <path d="M18.616 5.343a1.16 1.16 0 00-.811.333l-1.607 1.607 4.017 4.024 1.606-1.591c.455-.463.455-1.183 0-1.622L19.42 5.676a1.157 1.157 0 00-.803-.333M15.66 7.82l-6.14 6.147 1.941.212.136 1.735 1.728.13.22 1.94 6.14-6.147M9.073 14.672l-1.327 5.07 5.078-1.356-.182-1.637-1.75-.129-.137-1.758" fill-rule="nonzero"/>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>file-code-question-1</title><circle class="a" cx="17.238" cy="17.254" r="6"/><path class="a" d="M15.363,16.129A1.875,1.875,0,1,1,17.238,18"/><path class="a" d="M17.238,20.254a.375.375,0,1,1-.375.375.374.374,0,0,1,.375-.375"/><path class="a" d="M8.238,20.254h-6a1.5,1.5,0,0,1-1.5-1.5V2.254a1.5,1.5,0,0,1,1.5-1.5H12.866a1.5,1.5,0,0,1,1.061.439L16.8,4.064a1.5,1.5,0,0,1,.44,1.061V8.254"/><polyline class="a" points="8.988 6.004 11.238 8.254 8.988 10.504"/><polyline class="a" points="5.988 6.004 3.738 8.254 5.988 10.504"/></svg>

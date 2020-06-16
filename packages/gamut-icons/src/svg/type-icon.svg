@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M5.026 7.026a2 2 0 100-4 2 2 0 000 4zm14 0a2 2 0 100-4 2 2 0 000 4zm-14 1a3 3 0 110-6 3 3 0 010 6zm14 0a3 3 0 110-6 3 3 0 010 6zm-14.03-5v-1h14v1h-14zm3.03 19v-1h8v1h-8zm0-1h8v1h-8v-1zm1.886-.005h4.202V2.966H9.912v18.055zm5.114-18.995v20h-6v-20h6z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-type</title><rect class="a" x="1.51" y="2.254" width="21" height="19.5" rx="1.5" ry="1.5"/><line class="a" x1="1.51" y1="6.754" x2="22.51" y2="6.754"/><line class="a" x1="12.01" y1="18.707" x2="12.01" y2="10.48"/><path class="a" d="M16.51,11.98v-.75a.75.75,0,0,0-.75-.75H8.26a.75.75,0,0,0-.75.75v.75"/></svg>

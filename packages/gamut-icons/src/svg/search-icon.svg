@@ -1,3 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M9.583 2a7.583 7.583 0 017.584 7.583 7.601 7.601 0 01-1.82 4.935l.315.315h.921l5.834 5.834-1.75 1.75-5.834-5.834v-.921l-.315-.315a7.601 7.601 0 01-4.935 1.82A7.583 7.583 0 019.583 2zm0 2.333a5.228 5.228 0 00-5.25 5.25 5.228 5.228 0 005.25 5.25 5.228 5.228 0 005.25-5.25 5.228 5.228 0 00-5.25-5.25z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>search</title><circle class="a" cx="9.813" cy="9.812" r="9.063" transform="translate(-3.056 4.62) rotate(-23.025)"/><line class="a" x1="16.221" y1="16.22" x2="23.25" y2="23.25"/></svg>

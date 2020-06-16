@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-    <path fill="#444" d="M14.7 4v10.7H4V4h10.7zM16 2.7H2.7V16H16V2.7zM0 0v13.3h1.3v-12h12V0H0z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>paginate-filter-text</title><rect class="a" x="3.75" y="0.746" width="19.5" height="19.5" rx="1.5" ry="1.5"/><path class="a" d="M20.25,23.246h-18a1.5,1.5,0,0,1-1.5-1.5v-18"/><line class="a" x1="8.25" y1="6.746" x2="18.75" y2="6.746"/><line class="a" x1="8.25" y1="9.746" x2="18.75" y2="9.746"/><line class="a" x1="8.25" y1="12.746" x2="15.75" y2="12.746"/></svg>

@@ -1,9 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g fill="none" stroke="currentColor">
-        <rect x=".5" y=".5" width="11" height="14" rx="1" transform="rotate(90 6 11)"/>
-        <path d="M18.5 11.5h3" stroke-linecap="square"/>
-        <rect x="18.5" y="10.5" width="3" height="6" rx="1"/>
-    </g>
-    <path d="M3 5h13v2H3zm3 3l.636 6.3 2.86.7 2.868-.7L13 8H6zm5.967 6l-2.463.605-2.457-.598-.57-5.625h6.06L11.968 14z"/>
-    <path d="M7.044 9.457h4.384l-.159 1.522H8.48l.053.456h2.693l-.185 1.728-1.443.342-.08.023-.096-.023-1.461-.342-.08-.723h-.528l.115 1.073L9.5 14l2.033-.487L12 9H7z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>responsive-design-1</title><line class="a" x1="15.75" y1="14.25" x2="16.5" y2="18.75"/><line class="a" x1="15" y1="18.75" x2="18.75" y2="18.75"/><line class="a" x1="15.75" y1="11.25" x2="23.25" y2="11.25"/><path class="a" d="M15.75,14.25h6a1.5,1.5,0,0,0,1.5-1.5V2.25a1.5,1.5,0,0,0-1.5-1.5H5.25a1.5,1.5,0,0,0-1.5,1.5"/><rect class="a" x="0.75" y="11.25" width="7.5" height="12" rx="1.5" ry="1.5"/><line class="a" x1="0.75" y1="20.25" x2="8.25" y2="20.25"/><path class="a" d="M3.75,8.25V6.75a1.5,1.5,0,0,1,1.5-1.5h6a1.5,1.5,0,0,1,1.5,1.5v9a1.5,1.5,0,0,1-1.5,1.5"/><line class="a" x1="11.25" y1="14.25" x2="12.75" y2="14.25"/><line class="a" x1="3.75" y1="8.25" x2="12.75" y2="8.25"/></svg>

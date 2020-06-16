@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path fill="#444" d="M30 4v18H13.2L8 27.2V22H2V4h28zm0-2H2C.8 2 0 2.8 0 4v18c0 1.2.8 2 2 2h4v8l8-8h16c1.2 0 2-.8 2-2V4c0-1.2-.8-2-2-2z"/>
-    <path fill="#444" d="M8 12h16v2H8v-2zm0-4h16v2H8V8zm0 8h16v2H8v-2z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>messages-bubble-square-text</title><path class="a" d="M21.75,18.75H11.25l-6,4.5v-4.5h-3a1.5,1.5,0,0,1-1.5-1.5v-15A1.5,1.5,0,0,1,2.25.75h19.5a1.5,1.5,0,0,1,1.5,1.5v15A1.5,1.5,0,0,1,21.75,18.75Z"/><line class="a" x1="5.25" y1="7.5" x2="18.75" y2="7.5"/><line class="a" x1="5.25" y1="12" x2="15.75" y2="12"/></svg>
