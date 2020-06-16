@@ -8,10 +8,13 @@ describe('GridFormRadioGroupInput', () => {
     it('renders an input with the same id', () => {
       const textInput = mount(
         <GridFormRadioGroupInput
-          field={{ ...stubRadioGroupField, name: 'name' }}
+          field={{
+            ...stubRadioGroupField,
+            id: 'mycoolid',
+            name: 'name',
+          }}
           setValue={jest.fn()}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 

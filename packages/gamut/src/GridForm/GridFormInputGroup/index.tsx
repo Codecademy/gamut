@@ -12,6 +12,7 @@ import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
 import styles from './styles.module.scss';
+import cx from 'classnames';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -31,7 +32,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             className={styles.gridFormInput}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -53,7 +53,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
-            id={props.field.id}
           />
         );
 
@@ -64,7 +63,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -75,7 +73,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -86,7 +83,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
 
@@ -97,7 +93,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             error={!!props.error}
             field={props.field}
             register={props.register}
-            id={props.field.id}
           />
         );
     }
@@ -107,7 +102,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     <Column size={props.field.size}>
       <FormGroup className={styles.formGroup}>
         <FormGroupLabel
-          className={styles.formGroupLabel}
+          className={cx(
+            styles.formGroupLabel,
+            !props.field.label && styles.invisible
+          )}
           htmlFor={props.field.id || props.field.name}
         >
           {props.field.label}
