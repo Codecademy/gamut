@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import ReactPlayer from 'react-player';
-import { PlayIcon } from '@codecademy/gamut/src';
+import PlayIcon from '../Icon/icons/PlayIcon';
 import cx from 'classnames';
 import styles from './styles/index.module.scss';
 
