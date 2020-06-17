@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../../Blocks';
 import { HighlightedText, Text } from '@codecademy/gamut/src';
-import { text } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 <Meta title="Core|Atoms/HighlightedText" component={HighlightedText} />
 
@@ -16,7 +16,22 @@ showcase important words in a sentence.
   <Story name="HighlightedText">
     <Text fontSize="md">
       Would you like to have{' '}
-      <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
+      <HighlightedText
+        color={select('color', [
+          'red',
+          'orange',
+          'yellow',
+          'green',
+          'blue',
+          'purple',
+          'pink',
+          'beige',
+          'gray',
+        ])}
+      >
+        {text('text', 'superpowers')}
+      </HighlightedText>
+      ?
     </Text>
   </Story>
 </Preview>

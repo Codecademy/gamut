@@ -10,7 +10,6 @@
 }
 
 .word::after {
-  background: $color-yellow-400;
   content: " ";
   display: block;
   height: 32.5%;
@@ -20,4 +19,40 @@
   top: 50%;
   width: calc(100% + 0.4rem);
   z-index: -1;
+}
+
+.red .word::after {
+  background: $color-red-300;
+}
+
+.orange .word::after {
+  background: $color-orange-400;
+}
+
+.yellow .word::after {
+  background: $color-yellow-400;
+}
+
+.purple .word::after {
+  background: $color-purple-300;
+}
+
+.pink .word::after {
+  background: $color-pink-400;
+}
+
+.green .word::after {
+  background: $color-green-300;
+}
+
+.beige .word::after {
+  background: $color-beige;
+}
+
+.blue .word::after {
+  background: $color-blue-300;
+}
+
+.gray .word::after {
+  background: $color-gray-300;
 }
