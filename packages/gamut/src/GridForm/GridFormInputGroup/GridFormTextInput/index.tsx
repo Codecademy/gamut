@@ -7,7 +7,7 @@ import { GridFormTextField } from '../../types';
 export type GridFormTextInputProps = {
   className?: string;
   error?: boolean;
-  field: Omit<GridFormTextField, 'label'>;
+  field: GridFormTextField;
   register: FormContextValues['register'];
 };
 

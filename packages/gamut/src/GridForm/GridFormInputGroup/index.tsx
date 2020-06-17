@@ -107,7 +107,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             !props.field.label && styles.invisible
           )}
           htmlFor={props.field.id || props.field.name}
-          aria-label={props.field.id || props.field.name}
+          aria-label={props.field.label || props.field.id || props.field.name}
         >
           {props.field.label}
         </FormGroupLabel>
