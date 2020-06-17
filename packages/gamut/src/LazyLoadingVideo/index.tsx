@@ -46,7 +46,6 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
    * when the video loads and we remove the loading BG
    **/
   const clearBackground = () => {
-    console.log('clear background!');
     const el = videoWrapper.current;
     if (!el) {
       return;
@@ -69,10 +68,8 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
         muted={muted}
         playIcon={<OverlayPlayButton />}
         onReady={() => {
-          console.log('on ready!');
           window.setTimeout(() => clearBackground(), 500);
         }}
-        onStart={() => console.log('on start!')}
       />
     </div>
   );
