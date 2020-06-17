@@ -13,24 +13,18 @@ const OverlayPlayButton = () => {
   );
 };
 
-type ContentfulAsset = {
-  id: string;
-  content_type?: string;
-  title: string;
-  url: string;
-};
-export type VideoProps = {
+export type LazyLoadingVideoProps = {
   videoUrl: string;
   videoTitle: string;
-  placeholderImage?: ContentfulAsset;
+  placeholderImage?: string;
   autoplay?: boolean;
   controls?: boolean;
   loop?: boolean;
   muted?: boolean;
-  componentStyle?: string;
+  className?: string;
 };
 
-export const Video: React.FC<VideoProps> = ({
+export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
   videoUrl,
   videoTitle,
   placeholderImage,
@@ -38,7 +32,7 @@ export const Video: React.FC<VideoProps> = ({
   controls,
   loop,
   muted,
-  componentStyle,
+  className,
 }) => {
   const videoWrapper = useRef<HTMLDivElement>(null);
   const checkUrl = (url: string) => {
@@ -52,20 +46,21 @@ export const Video: React.FC<VideoProps> = ({
    * when the video loads and we remove the loading BG
    **/
   const clearBackground = () => {
+    console.log('clear background!');
     const el = videoWrapper.current;
     if (!el) {
       return;
     }
-    el.className = cx([styles.videoWrapper, componentStyle]);
+    el.className = cx([styles.videoWrapper, className]);
   };
   return (
     <div
       ref={videoWrapper}
-      className={cx([styles.videoWrapper, styles.loading, componentStyle])}
+      className={cx([styles.videoWrapper, styles.loading, className])}
     >
       <ReactPlayer
         url={checkUrl(videoUrl)}
-        light={placeholderImage?.url}
+        light={placeholderImage}
         title={videoTitle}
         playing={autoplay}
         className={styles.iframe}
@@ -73,14 +68,18 @@ export const Video: React.FC<VideoProps> = ({
         loop={loop}
         muted={muted}
         playIcon={<OverlayPlayButton />}
-        onReady={() => window.setTimeout(() => clearBackground(), 500)}
+        onReady={() => {
+          console.log('on ready!');
+          window.setTimeout(() => clearBackground(), 500);
+        }}
+        onStart={() => console.log('on start!')}
       />
     </div>
   );
 };
 
-Video.defaultProps = {
+LazyLoadingVideo.defaultProps = {
   controls: true,
 };
 
-export default Video;
+export default LazyLoadingVideo;
