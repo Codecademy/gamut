@@ -35,12 +35,6 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
   className,
 }) => {
   const videoWrapper = useRef<HTMLDivElement>(null);
-  const checkUrl = (url: string) => {
-    if (url.length === 11) {
-      url = `https://www.youtube.com/watch?v=${url}`;
-    }
-    return url;
-  };
   /**
    * handle when the video loads; do it this way so we don't have a white flash
    * when the video loads and we remove the loading BG
@@ -58,7 +52,7 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
       className={cx([styles.videoWrapper, styles.loading, className])}
     >
       <ReactPlayer
-        url={checkUrl(videoUrl)}
+        url={videoUrl}
         light={placeholderImage}
         title={videoTitle}
         playing={autoplay}
