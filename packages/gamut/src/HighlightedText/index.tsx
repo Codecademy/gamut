@@ -15,7 +15,7 @@ export type HighlightColors =
   | 'gray';
 
 export type HighlightedTextProps = {
-  /** String to transform into the contents of the highlighted text; cannot nest other elements */
+  /** String to transform into the contents of the highlighted text */
   children?: string;
 
   /** Standard element properties that should be applied to the indivudual words that are being highlighted */
