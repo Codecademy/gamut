@@ -13,7 +13,7 @@ const OverlayPlayButton = () => {
   );
 };
 
-export type LazyLoadingVideoProps = {
+export type VideoProps = {
   videoUrl: string;
   videoTitle: string;
   placeholderImage?: string;
@@ -24,7 +24,7 @@ export type LazyLoadingVideoProps = {
   className?: string;
 };
 
-export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
+export const Video: React.FC<VideoProps> = ({
   videoUrl,
   videoTitle,
   placeholderImage,
@@ -59,8 +59,8 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
   );
 };
 
-LazyLoadingVideo.defaultProps = {
+Video.defaultProps = {
   controls: true,
 };
 
-export default LazyLoadingVideo;
+export default Video;
