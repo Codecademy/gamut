@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import PlayIcon from '../Icon/icons/PlayIcon';
 import cx from 'classnames';
@@ -34,22 +34,14 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
   muted,
   className,
 }) => {
-  const videoWrapper = useRef<HTMLDivElement>(null);
-  /**
-   * handle when the video loads; do it this way so we don't have a white flash
-   * when the video loads and we remove the loading BG
-   **/
-  const clearBackground = () => {
-    const el = videoWrapper.current;
-    if (!el) {
-      return;
-    }
-    el.className = cx([styles.videoWrapper, className]);
-  };
+  const [loading, setLoading] = useState(true);
   return (
     <div
-      ref={videoWrapper}
-      className={cx([styles.videoWrapper, styles.loading, className])}
+      className={cx([
+        styles.videoWrapper,
+        { [styles.loading]: loading },
+        className,
+      ])}
     >
       <ReactPlayer
         url={videoUrl}
@@ -61,9 +53,7 @@ export const LazyLoadingVideo: React.FC<LazyLoadingVideoProps> = ({
         loop={loop}
         muted={muted}
         playIcon={<OverlayPlayButton />}
-        onReady={() => {
-          window.setTimeout(() => clearBackground(), 500);
-        }}
+        onReady={() => setLoading(false)}
       />
     </div>
   );
