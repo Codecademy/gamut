@@ -18,7 +18,7 @@ export type HighlightedTextProps = {
   /** String to transform into the contents of the highlighted text */
   children?: string;
 
-  /** Standard element properties that should be applied to the indivudual words that are being highlighted */
+  /** Standard element properties that should be applied to the individual words that are being highlighted */
   wordProps?: HTMLAttributes<HTMLSpanElement>;
 
   /** Standard element properties that should be applied to the entire set of words */
