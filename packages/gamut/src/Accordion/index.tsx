@@ -1,8 +1,6 @@
-import cx from 'classnames';
 import { motion } from 'framer-motion';
 import React, { useLayoutEffect, useState } from 'react';
 
-import styles from './styles.module.scss';
 import AccordionButton from '../AccordionButton';
 
 export type RenderWithExpanded = (expanded: boolean) => React.ReactNode;
@@ -66,13 +64,12 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div className={cx(styles.accordion, className)}>
+    <div className={className}>
       <AccordionButton expanded={expanded} onClick={onClick} theme={theme}>
         {header instanceof Function ? header(expanded) : header}
       </AccordionButton>
       <motion.div
         aria-expanded={expanded}
-        className={styles.expando}
         initial={false}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
