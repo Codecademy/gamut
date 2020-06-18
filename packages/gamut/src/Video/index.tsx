@@ -4,7 +4,6 @@ import PlayIcon from '../Icon/icons/PlayIcon';
 import cx from 'classnames';
 import styles from './styles/index.module.scss';
 
-/** render the play button with an overlay */
 const OverlayPlayButton = () => {
   return (
     <div className={styles.overlay}>
@@ -37,11 +36,7 @@ export const Video: React.FC<VideoProps> = ({
   const [loading, setLoading] = useState(true);
   return (
     <div
-      className={cx([
-        styles.videoWrapper,
-        { [styles.loading]: loading },
-        className,
-      ])}
+      className={cx(styles.videoWrapper, loading && styles.loading, className)}
     >
       <ReactPlayer
         url={videoUrl}
@@ -49,7 +44,7 @@ export const Video: React.FC<VideoProps> = ({
         title={videoTitle}
         playing={autoplay}
         className={styles.iframe}
-        controls={controls}
+        controls={controls === undefined ? true : controls}
         loop={loop}
         muted={muted}
         playIcon={<OverlayPlayButton />}
@@ -57,10 +52,6 @@ export const Video: React.FC<VideoProps> = ({
       />
     </div>
   );
-};
-
-Video.defaultProps = {
-  controls: true,
 };
 
 export default Video;
