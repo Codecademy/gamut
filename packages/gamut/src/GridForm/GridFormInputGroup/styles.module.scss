@@ -12,12 +12,14 @@
     width: 100%;
   }
 
+  // See https://wdn.unl.edu/page-title-h1-best-practices
+  // We can't use display: none, because it needs to still be narrated
   .invisible {
-    display: block;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    margin: 0;
-    padding: 0;
+    display: inline-block;
+    font-size: 0;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
   }
 }

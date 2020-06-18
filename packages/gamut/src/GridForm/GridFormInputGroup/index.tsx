@@ -104,7 +104,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
         <FormGroupLabel
           className={cx(
             styles.formGroupLabel,
-            !props.field.label && styles.invisible
+            props.field.hideLabel && styles.invisible
           )}
           htmlFor={props.field.id || props.field.name}
         >
