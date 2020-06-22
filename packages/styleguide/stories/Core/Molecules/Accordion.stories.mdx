@@ -24,6 +24,7 @@ conditionally rendered based on whether the accordion is expanded.
   <Story name="Accordion">
     <Accordion
       header="Click to Toggle Me!"
+      initiallyExpanded={boolean('Initially Expanded')}
       onChange={action('Changed')}
       theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
     >
