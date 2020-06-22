@@ -1,0 +1,23 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../../Blocks';
+
+import { Popover, Button, Container } from '@codecademy/gamut/src';
+import { useState } from '@storybook/addons';
+import { PopoverExample } from './Popover.examples';
+
+<Meta title="Core|Atoms/Popover" component={Popover} />
+
+# Popover
+
+<StoryStatus status="ready" />
+
+Popover is a surface which takes a target element and shows an overlay
+positioned around that element.
+
+<Preview>
+  <Story name="Popover">
+    <PopoverExample />
+  </Story>
+</Preview>
+
+<Props of={Popover} />

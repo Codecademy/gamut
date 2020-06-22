@@ -12,14 +12,11 @@ $below: translateY(0%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  // z-index: 20;
+  z-index: 20;
+  background-color: white;
 }
 
-.overlay1 {
-  position: absolute;
-}
-
-.overlay {
+.screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,10 +45,10 @@ $below: translateY(0%);
 .beak {
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
 
-  border-bottom: 20px solid white;
+  border-bottom: 15px solid white;
 }
 
 .below-beak {

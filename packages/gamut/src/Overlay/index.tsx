@@ -28,6 +28,7 @@ export type OverlayProps = {
   isOpen?: boolean;
   /**
    * Whether to use fixed positioning on the overlay. Defaults to true.
+   * @default true
    */
   fixedPositioning?: boolean;
 };

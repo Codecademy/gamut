@@ -1,11 +1,10 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
-
+import { render, screen } from '@testing-library/react';
 import Popover, { PopoverProps } from '..';
 
-const renderPopover = (props?: any | Partial<PopoverProps>) => {
+const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
-    <Popover onRequestClose={() => {}} {...props}>
+    <Popover isOpen={true} offset={20} position="below" {...props}>
       <div data-testid="popover-content">
         Howdy!
         <button type="button" />
@@ -20,7 +19,7 @@ const popoverIsRendered = () => {
 
 describe('Popover', () => {
   it('renders null when isOpen is not true', () => {
-    renderPopover();
+    renderPopover({ isOpen: false });
 
     expect(popoverIsRendered()).toBeFalsy();
   });
@@ -30,48 +29,48 @@ describe('Popover', () => {
     expect(popoverIsRendered()).toBeTruthy();
   });
 
-  it('triggers onRequestClose callback when escape key is triggered and escapeCloses is true', () => {
-    const onRequestClose = jest.fn();
-    const { baseElement } = renderPopover({
-      isOpen: true,
-      onRequestClose,
-    });
-    fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
-    expect(onRequestClose.mock.calls.length).toBe(1);
-  });
-
-  it('does not trigger onRequestClose callback when escape key is triggered and escapeCloses is false', () => {
-    const onRequestClose = jest.fn();
-    const { baseElement } = renderPopover({
-      isOpen: true,
-      escapeCloses: false,
-      onRequestClose,
-    });
-    fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
-    expect(onRequestClose.mock.calls.length).toBe(0);
-  });
-
-  it('triggers onRequestClose callback when clicking the container', () => {
-    const onRequestClose = jest.fn();
+  it('does not show a screen overlay if the prop is false', () => {
     renderPopover({
       isOpen: true,
-      clickOutsideCloses: true,
-      onRequestClose,
+      showScreen: false,
     });
 
-    // focus-trap listens to mouseDown, not click
-    fireEvent.mouseDown(screen.queryByTestId('popover-content').parentElement);
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    expect(screen.queryByTestId('popover-screen')).toBeInTheDocument();
   });
 
-  it('does not trigger onRequestClose callback when clicking inside', () => {
-    const onRequestClose = jest.fn();
+  it('shows a screen overlay if the prop is true', () => {
     renderPopover({
       isOpen: true,
-      clickOutsideCloses: true,
-      onRequestClose,
+      showScreen: true,
     });
-    fireEvent.mouseDown(screen.queryByTestId('popover-content'));
-    expect(onRequestClose.mock.calls.length).toBe(0);
+
+    expect(screen.queryByTestId('popover-screen')).toBeInTheDocument();
+  });
+
+  it('does not show a beak if the prop is false', () => {
+    renderPopover({
+      isOpen: true,
+      showBeak: false,
+    });
+
+    expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
+  });
+
+  it('shows a beak if the prop is true', () => {
+    renderPopover({
+      isOpen: true,
+      showBeak: true,
+    });
+
+    expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
+  });
+
+  it('shows a beak if the prop is true', () => {
+    renderPopover({
+      isOpen: true,
+      showBeak: true,
+    });
+
+    expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
   });
 });

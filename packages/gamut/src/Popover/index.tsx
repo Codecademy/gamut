@@ -1,89 +1,144 @@
 import cx from 'classnames';
-import React from 'react';
+import React, { forwardRef, useState, useCallback, useEffect } from 'react';
 
 import styles from './styles.module.scss';
-import { Overlay } from '../Overlay';
+import { Overlay, OverlayProps } from '../Overlay';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
   className?: string;
   /**
-   * Whether clicking on the screen outside of the container should close the Popover
+   * Whether the popover is rendered
    */
-  clickOutsideCloses?: boolean;
-  /**
-   * Whether clicking the escape key should close the Popover
-   */
-  escapeCloses?: boolean;
-  /**
-   * Called when the Popover requests to be closed,
-   * this could be due to clicking outside of the Popover, or by clicking the escape key
-   */
-  onRequestClose: () => void;
-  isOpen?: boolean;
+  isOpen: boolean;
 
+  /**
+   * Which vertical edge of the source component to align against
+   * @default right
+   */
   align?: 'left' | 'right';
-  fixed?: boolean;
-  offset: number;
-  onOutsideClick?: () => void;
-  position: 'above' | 'below';
-  targetRect?: DOMRect;
+
+  /**
+   * Number of pixels to offset the popover from the source component
+   * @default 20
+   */
+  offset?: number;
+
+  /**
+   * Which horizontal edge of the source componet to align against
+   * @default below
+   */
+  position?: 'above' | 'below';
+
+  /**
+   * Necessary?
+   */
+  defaultTargetRect?: DOMRect;
+
+  /**
+   * Whether to show a beak on the popover. Needs showScreen=true
+   */
   showBeak?: boolean;
+
+  /**
+   * Whether to show a screen behind the popover to mask the background contents
+   * If enabled, the overlay clickOutsideToDeactivate no longer works
+   */
+  showScreen?: boolean;
+
+  /**
+   * Props to pass to the containing Overlay component
+   */
+  overlayProps?: Omit<OverlayProps, 'isOpen' | 'children'>;
+
+  targetRef: React.RefObject<HTMLDivElement>;
 };
 
-export const Popover: React.FC<PopoverProps> = ({
-  className,
-  children,
-  clickOutsideCloses = true,
-  escapeCloses = true,
-  onRequestClose,
-  isOpen,
-  onOutsideClick,
-  showBeak,
-  position,
-  targetRect,
-  offset,
-  align,
-}) => {
-  if (!isOpen) return null;
+export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
+  (
+    {
+      className,
+      children,
+      isOpen,
+      showBeak,
+      showScreen,
+      position = 'below',
+      offset = 20,
+      align = 'left',
+      overlayProps,
+      targetRef,
+    },
+    targetRef1: React.RefObject<HTMLDivElement>
+  ) => {
+    const [targetRect, setTargetRect] = useState<DOMRect>();
 
-  const style = () => {
-    if (!targetRect) return {};
+    const setRect = useCallback(() => {
+      const rect = targetRef?.current?.getBoundingClientRect();
 
-    const positions = {
-      above: Math.round(targetRect.top - offset),
-      below: Math.round(targetRect.top + targetRect.height + offset),
-    };
-    return {
-      top: positions[position],
-      left:
-        align === 'right'
-          ? Math.round(targetRect.right)
-          : Math.round(targetRect.left),
-    };
-  };
+      setTargetRect(rect);
+    }, [targetRef]);
 
-  const classes = cx(styles.popover, styles[`${position}-${align}`], className);
+    useEffect(() => {
+      setRect();
+      window.addEventListener('resize', setRect);
 
-  return (
-    <Overlay
-      isOpen={!!isOpen}
-      onRequestClose={onOutsideClick}
-      escapeCloses
-      className={styles.overlay1}
-      fixedPositioning={false}
-    >
-      <div>
-        {isOpen && <div className={styles.overlay} />}
-        <div className={classes} style={style()}>
-          {children}
-          {showBeak && (
-            <div className={cx(styles.beak, styles[`${position}-beak`])} />
+      return function cleanup() {
+        window.removeEventListener('resize', setRect);
+      };
+    }, [setRect, isOpen]);
+
+    const getPopoverPosition = useCallback(() => {
+      if (!targetRect) return {};
+
+      const positions = {
+        above: Math.round(window.scrollY + targetRect.top - offset),
+        below: Math.round(
+          window.scrollY + targetRect.top + targetRect.height + offset
+        ),
+      };
+      return {
+        top: positions[position],
+        left:
+          align === 'right'
+            ? Math.round(window.scrollX + targetRect.right)
+            : Math.round(window.scrollX + targetRect.left),
+      };
+    }, [targetRect, offset, align, position]);
+
+    if (!isOpen || !targetRef) return null;
+
+    return (
+      <Overlay
+        fixedPositioning={false}
+        {...overlayProps}
+        isOpen={!!isOpen}
+        data-testid={'popover-container'}
+      >
+        <div>
+          {showScreen && (
+            <div className={styles.screen} data-testid={'popover-screen'} />
           )}
+          <div
+            className={cx(
+              styles.popover,
+              styles[`${position}-${align}`],
+              className
+            )}
+            style={getPopoverPosition()}
+            data-testid={'popover-content'}
+          >
+            {showBeak && (
+              <div
+                className={cx(styles.beak, styles[`${position}-beak`])}
+                data-testid={'popover-beak'}
+              />
+            )}
+            {children}
+          </div>
         </div>
-      </div>
-    </Overlay>
-  );
-};
+      </Overlay>
+    );
+  }
+);
 
 export default Popover;

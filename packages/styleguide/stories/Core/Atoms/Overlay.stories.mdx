@@ -3,7 +3,8 @@ import { StoryStatus } from '../../../Blocks';
 
 import { Overlay, Button, Container } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
-<Meta title="Core|Atoms/Overlay" component={Overlay} />;
+
+<Meta title="Core|Atoms/Overlay" component={Overlay} />
 
 # Overlay
 
@@ -13,13 +14,8 @@ Overlay primitives are controlled components that are told whether
 they're open by their parent. They're very basic and
 don't have animations defined.
 
-Unlike the legacy `Modal` implementations in the monolith, this: - always
-assumes viewport is locked, by making content `position: fixed` - cannot override
+Unlike the legacy `Modal` implementations in the monolith, this: - cannot override
 contentProps, animation, or shouldFocusOnMount
-
-Use this overlay only for actual 'overlay' content that takes
-up the full screen. Do not use it for dropdowns or other small
-interactive items.
 
 Note that this atom does not come with styles defined. If you need styles such as
 a background behind content, see `Modal`.
@@ -39,6 +35,7 @@ a background behind content, see `Modal`.
             >
               <Container>
                 <h1>Hooray!</h1>
+                <Button onClick={() => setOpen(false)}>Close Overlay</Button>
               </Container>
             </Overlay>
           </Container>
