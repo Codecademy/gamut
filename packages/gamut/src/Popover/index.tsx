@@ -13,6 +13,11 @@ export type PopoverProps = {
   isOpen: boolean;
 
   /**
+   * The target element around which the popover will be positioned
+   */
+  targetRef: React.RefObject<HTMLDivElement>;
+
+  /**
    * Which vertical edge of the source component to align against
    * @default right
    */
@@ -50,8 +55,6 @@ export type PopoverProps = {
    * Props to pass to the containing Overlay component
    */
   overlayProps?: Omit<OverlayProps, 'isOpen' | 'children'>;
-
-  targetRef: React.RefObject<HTMLDivElement>;
 };
 
 export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
