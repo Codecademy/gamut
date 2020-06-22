@@ -12,7 +12,7 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     import { GamutIconProps } from '../types';
     export const ${exportName} = React.forwardRef<SVGSVGElement, GamutIconProps>(({
       title = "${title}",
-      titleId = '',
+      titleId,
       size,
       color,
       width,
