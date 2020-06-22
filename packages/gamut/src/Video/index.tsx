@@ -21,6 +21,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   className?: string;
+  onPlay?: () => void;
 };
 
 export const Video: React.FC<VideoProps> = ({
@@ -32,6 +33,7 @@ export const Video: React.FC<VideoProps> = ({
   loop,
   muted,
   className,
+  onPlay,
 }) => {
   const [loading, setLoading] = useState(true);
   return (
@@ -49,6 +51,7 @@ export const Video: React.FC<VideoProps> = ({
         muted={muted}
         playIcon={<OverlayPlayButton />}
         onReady={() => setLoading(false)}
+        onPlay={onPlay}
       />
     </div>
   );
