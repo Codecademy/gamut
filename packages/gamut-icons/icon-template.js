@@ -6,9 +6,6 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
   const { componentName, filePath } = opts.state;
   const exportName = componentName.replace('Svg', '');
   const title = startCase(path.basename(filePath, '.svg'));
-  const baseTitleId = `gamut-icon-${Buffer.from(componentName).toString(
-    'base64'
-  )}`;
 
   return template.ast`
     import * as React from 'react';
@@ -24,10 +21,6 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     },
       svgRef
     ) => {
-      titleId = React.useMemo(() => {
-        const uniqId = titleId.length ? titleId : Math.floor(Math.random() * 10000);
-        return "${baseTitleId}" + uniqId
-      }, [titleId]);
       return ${jsx};
     });
 
