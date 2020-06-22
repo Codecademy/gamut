@@ -24,7 +24,6 @@ conditionally rendered based on whether the accordion is expanded.
   <Story name="Accordion">
     <Accordion
       header="Click to Toggle Me!"
-      initiallyExpanded={boolean('Initially Expanded')}
       onChange={action('Changed')}
       theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
     >
@@ -35,9 +34,26 @@ conditionally rendered based on whether the accordion is expanded.
 
 <Props of={Accordion} />
 
-### Themes
+## Initial Expansion
 
-#### Blue
+If you want the accordion to start off expanded, use the `initiallyExpanded` prop:
+
+<Preview>
+  <Story name="Accordion">
+    <Accordion
+      header="Click to Toggle Me!"
+      initiallyExpanded
+      onChange={action('Changed')}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+    >
+      Wow, not-so-hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+## Themes
+
+### Blue
 
 Blue accordion tops are only usable in dark contexts, such as the LE's
 Help Menu.
@@ -54,7 +70,7 @@ Help Menu.
   </Story>
 </Preview>
 
-#### Plain
+### Plain
 
 Plain accordion tops are best applied in plain pages such as marketing pages
 where we haven't been able to invest yet in a more solid theme.
@@ -71,7 +87,7 @@ where we haven't been able to invest yet in a more solid theme.
   </Story>
 </Preview>
 
-#### Yellow
+### Yellow
 
 Yellow accordion tops are our favorite: they look the most professional on
 their own. They're only used in the "Get a Hint" sections of the LE's
