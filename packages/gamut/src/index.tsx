@@ -42,6 +42,7 @@ export * from './Toggle';
 export * from './ToolTip';
 export * from './Truncate';
 export * from './utils';
+export * from './Video';
 export * from './typings/responsive-properties';
 export * from './Icon/icons/AccessibilityIcon';
 export * from './Icon/icons/AddIcon';

@@ -11,7 +11,7 @@ export type BaseFormField<Value> = {
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
+  description: React.ReactNode;
   label?: string;
   multiline?: boolean;
   validation?: Pick<ValidationOptions, 'required'>;
@@ -49,7 +49,7 @@ export type BasicInputType =
   | 'week';
 
 export type GridFormTextField = BaseFormField<string> & {
-  label: string;
+  label?: string;
   placeholder?: string;
   validation?: ValidationOptions;
   type: BasicInputType;

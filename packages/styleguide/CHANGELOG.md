@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.1 (2020-06-22)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 11.2.0 (2020-06-18)
+
+* feat(Video): a new video component (#842) ([afdd0d3](https://github.com/RyzacInc/client-modules/commit/afdd0d3)), closes [#842](https://github.com/RyzacInc/client-modules/issues/842)
+
+
+
+
+
+## <small>11.1.2 (2020-06-16)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>11.1.1 (2020-06-16)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## 11.1.0 (2020-06-16)
+
+* feat: make text field labels optional  (#837) ([d9ca277](https://github.com/RyzacInc/client-modules/commit/d9ca277)), closes [#837](https://github.com/RyzacInc/client-modules/issues/837)
+
+
+
+
+
 ## <small>11.0.4 (2020-06-12)</small>
 
 * fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)

@@ -1,0 +1,43 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.videoWrapper {
+  width: 75vw;
+  height: 43vw;
+  max-width: 958px;
+  max-height: 545px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+
+  &.loading {
+    background-color: $color-blue-1100;
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  color: $color-white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: 0;
+  padding: 0;
+}
+
+.hoverButton {
+  width: 15%;
+  height: 26.7%;
+  min-width: px-rem(75px);
+  min-height: px-rem(75px);
+  color: $color-white;
+}
