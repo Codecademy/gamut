@@ -25,7 +25,7 @@ Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package ins
 <IconGallery>
   {Object.keys(iconMap).map((iconName) => (
     <IconItem key={iconName} name={iconName}>
-      <Icon key={iconName} name={iconName} />
+      <Icon key={iconName} name={iconName} label={iconName} />
     </IconItem>
   ))}
 </IconGallery>
