@@ -24,7 +24,10 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     },
       svgRef
     ) => {
-      titleId = "${baseTitleId}" + titleId;
+      titleId = React.useMemo(() => {
+        const uniqId = titleId.length ? titleId : Math.floor(Math.random() * 10000);
+        return "${baseTitleId}" + uniqId
+      }, [titleId]);
       return ${jsx};
     });
 
