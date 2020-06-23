@@ -21,7 +21,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   className?: string;
-  modal?: boolean;
+  onReady?: () => void;
   onPlay?: () => void;
 };
 
@@ -34,7 +34,7 @@ export const Video: React.FC<VideoProps> = ({
   loop,
   muted,
   className,
-  modal,
+  onReady,
   onPlay,
 }) => {
   const [loading, setLoading] = useState(true);
@@ -53,9 +53,7 @@ export const Video: React.FC<VideoProps> = ({
         muted={muted}
         playIcon={<OverlayPlayButton />}
         onReady={() => {
-          if (modal) {
-            document.getElementsByTagName('iframe')[0].tabIndex = 0;
-          }
+          onReady();
           setLoading(false);
         }}
         onPlay={onPlay}
