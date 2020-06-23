@@ -1,8 +1,9 @@
-
 multipass: true
 
 plugins:
+  - inlineStyles:
+      onlyMatchedOnce: false
   - removeDimensions: true
   - removeViewBox: false
   - removeTitle: false
-  - removeDesc: false
+  - removeDesc: true
