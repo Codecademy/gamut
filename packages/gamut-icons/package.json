@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "format": "svgo -f ./src --pretty --config=.svgo.yml",
+    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
     "build:icons": "rm -rf ./src/icons && svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
     "build:types": "tsc --emitDeclarationOnly",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
