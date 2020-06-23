@@ -21,6 +21,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   className?: string;
+  id?: string;
   onReady?: () => void;
   onPlay?: () => void;
 };
@@ -34,6 +35,7 @@ export const Video: React.FC<VideoProps> = ({
   loop,
   muted,
   className,
+  id,
   onReady,
   onPlay,
 }) => {
@@ -50,6 +52,7 @@ export const Video: React.FC<VideoProps> = ({
         className={styles.iframe}
         controls={controls === undefined ? true : controls}
         loop={loop}
+        id={id}
         muted={muted}
         playIcon={<OverlayPlayButton />}
         onReady={() => {
