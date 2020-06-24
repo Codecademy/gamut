@@ -13,6 +13,9 @@ given a video URL
     <Video
       videoUrl="https://vimeo.com/145702525"
       videoTitle="Super Science Friends"
+      onReady={(player) => {
+        player.wrapper.querySelector('iframe').tabIndex = 0;
+      }}
     />
   </Story>
 </Preview>
