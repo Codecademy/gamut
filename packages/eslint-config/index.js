@@ -111,14 +111,8 @@ module.exports = {
       'error',
       {
         patterns: [
-          {
-            name: '@codecademy/gamut/src/*',
-            message: 'Please import from root index or directly from /dist',
-          },
-          {
-            name: '@codecademy/gamut/dist/deprecated/*',
-            message: 'Please do not use deprecated components intentionally',
-          },
+          '@codecademy/gamut/src/*',
+          '@codecademy/gamut/dist/deprecated/*',
         ],
       },
     ],
