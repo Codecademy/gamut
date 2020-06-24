@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.2 (2020-06-23)</small>
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## <small>9.2.1 (2020-06-22)</small>
+
+* fix(Video): add onPlay prop to Video for tracking purposes (#845) ([70c6ff9](https://github.com/RyzacInc/client-modules/commit/70c6ff9)), closes [#845](https://github.com/RyzacInc/client-modules/issues/845)
+
+
+
+
+
+## 9.2.0 (2020-06-18)
+
+* feat(Video): a new video component (#842) ([afdd0d3](https://github.com/RyzacInc/client-modules/commit/afdd0d3)), closes [#842](https://github.com/RyzacInc/client-modules/issues/842)
+
+
+
+
+
+## <small>9.1.2 (2020-06-16)</small>
+
+* Change FormGroupLabel styles for accessibility (#839) ([dcb12ca](https://github.com/RyzacInc/client-modules/commit/dcb12ca)), closes [#839](https://github.com/RyzacInc/client-modules/issues/839)
+
+
+
+
+
+## <small>9.1.1 (2020-06-16)</small>
+
+* fix(CheckboxField): allow react nodes for checkbox description (#840) ([9758f9f](https://github.com/RyzacInc/client-modules/commit/9758f9f)), closes [#840](https://github.com/RyzacInc/client-modules/issues/840)
+
+
+
+
+
+## 9.1.0 (2020-06-16)
+
+* feat: make text field labels optional  (#837) ([d9ca277](https://github.com/RyzacInc/client-modules/commit/d9ca277)), closes [#837](https://github.com/RyzacInc/client-modules/issues/837)
+
+
+
+
+
 ## <small>9.0.5 (2020-06-12)</small>
 
 * fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)

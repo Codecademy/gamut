@@ -8,9 +8,8 @@ describe('GridFormTextInput', () => {
     it('renders an input with the same id', () => {
       const textInput = mount(
         <GridFormTextInput
-          field={stubTextField}
+          field={{ ...stubTextField, id: 'mycoolid' }}
           register={jest.fn()}
-          id={'mycoolid'}
         />
       );
 

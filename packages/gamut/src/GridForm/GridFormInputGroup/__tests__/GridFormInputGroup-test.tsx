@@ -33,14 +33,12 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toContain(error);
   });
 
-  describe('checkbox input', () => {
-    it('renders a checkbox input when the field type is checkbox', () => {
-      const { wrapped } = renderComponent({
-        field: { ...stubCheckboxField, id: 'mycoolid' },
-      });
-
-      expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
+  it('renders a checkbox input when the field type is checkbox', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubCheckboxField, id: 'mycoolid' },
     });
+
+    expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a custom input when the field type is custom', () => {

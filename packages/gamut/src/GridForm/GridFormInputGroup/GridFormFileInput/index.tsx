@@ -9,7 +9,6 @@ export type GridFormFileInputProps = {
   error?: boolean;
   field: Omit<GridFormFileField, 'label'>;
   register: FormContextValues['register'];
-  id?: string;
 };
 
 export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
@@ -17,7 +16,6 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   error,
   field,
   register,
-  id,
 }) => {
   return (
     <Input
@@ -28,7 +26,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.files)}
       ref={register(field.validation)}
       type="file"
-      id={id}
+      id={field.id}
     />
   );
 };
