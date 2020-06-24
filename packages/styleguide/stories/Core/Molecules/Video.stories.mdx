@@ -13,8 +13,8 @@ given a video URL
     <Video
       videoUrl="https://vimeo.com/145702525"
       videoTitle="Super Science Friends"
-      onReady={(e) => {
-        e.tabIndex = 0;
+      onReady={(player) => {
+        player.wrapper.querySelector('iframe').tabIndex = 0;
       }}
     />
   </Story>
