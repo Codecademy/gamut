@@ -1,4 +1,4 @@
-import * as packageExports from '../../index';
+import * as packageExports from '../../../index';
 import iconMap from '../iconMap';
 
 const allExportedItems = new Set(Object.values(packageExports));

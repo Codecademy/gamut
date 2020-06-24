@@ -106,6 +106,22 @@ module.exports = {
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
+
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            name: '@codecademy/gamut/src/*',
+            message: 'Please import from root index or directly from /dist',
+          },
+          {
+            name: '@codecademy/gamut/dist/deprecated/*',
+            message: 'Please do not use deprecated components intentionally',
+          },
+        ],
+      },
+    ],
   },
 
   settings: {
