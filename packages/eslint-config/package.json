@@ -23,6 +23,7 @@
     "@typescript-eslint/eslint-plugin": "2.28.0",
     "@typescript-eslint/parser": "2.28.0",
     "eslint-config-prettier": "6.4.0",
+    "eslint-plugin-deprecation": "1.1.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-no-only-tests": "2.3.1",

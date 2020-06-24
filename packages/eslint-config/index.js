@@ -31,7 +31,14 @@ module.exports = {
     sourceType: 'module',
   },
 
-  plugins: ['import', 'jsx-a11y', 'no-only-tests', 'react', 'react-hooks'],
+  plugins: [
+    'import',
+    'jsx-a11y',
+    'no-only-tests',
+    'react',
+    'react-hooks',
+    'deprecation',
+  ],
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
@@ -106,6 +113,8 @@ module.exports = {
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
+
+    'deprecation/deprecation': 'error',
   },
 
   settings: {
