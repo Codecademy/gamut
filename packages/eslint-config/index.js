@@ -110,10 +110,8 @@ module.exports = {
     'no-restricted-imports': [
       'error',
       {
-        patterns: [
-          '@codecademy/gamut/src/*',
-          '@codecademy/gamut/dist/deprecated/*',
-        ],
+        paths: ['@codecademy/gamut/dist/deprecated'],
+        patterns: ['@codecademy/gamut/dist/deprecated/*'],
       },
     ],
   },
