@@ -130,7 +130,7 @@ export const standardOverrides = [
   {
     shouldProcessNode(node: HTMLToReactNode) {
       // Parse text outside of code blocks
-      if (node.parent && ['code', 'pre'].indexOf(node.parent.name) >= 0) {
+      if (node.parent && ['code', 'pre'].indexOf(node.parent.name!) >= 0) {
         return false;
       }
       if (node.type === 'text') return true;

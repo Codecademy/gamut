@@ -1,6 +1,6 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import ButtonBase from '../ButtonBase';
+import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles/index.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
@@ -31,7 +31,7 @@ const propKeys = [
   'onClick',
 ];
 
-export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ButtonBaseProps & {
   /**
    * Component type to wrap children with.
    */
@@ -76,7 +76,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const classes = cx(
     typeClassName,
     themeClassName,
-    s[props.size],
+    s[props.size!],
     {
       [s.block]: props.block,
       [s.go]: props.go,

@@ -47,6 +47,7 @@ describe('GridFormInputGroup', () => {
       field: {
         render: () => text,
         name: 'stub-custom',
+        size: 6,
         type: 'custom',
       },
     });
