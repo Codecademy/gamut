@@ -53,7 +53,7 @@ export const Video: React.FC<VideoProps> = ({
         muted={muted}
         playIcon={<OverlayPlayButton />}
         onReady={(player: ReactPlayer) => {
-          onReady && onReady(player);
+          onReady?.(player);
           setLoading(false);
         }}
         onPlay={onPlay}
