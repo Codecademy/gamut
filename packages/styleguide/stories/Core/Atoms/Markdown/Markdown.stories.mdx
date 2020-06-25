@@ -5,7 +5,11 @@ import { text, select } from '@storybook/addon-knobs';
 import exampleMarkdown from './markdown-example.md';
 import { customText } from './helpers';
 
-<Meta title="Core|Atoms/Markdown" component={Markdown} />
+<Meta
+  title="Core|Atoms/Markdown"
+  component={Markdown}
+  parameters={{ knobs: { escapeHTML: false } }}
+/>
 
 # Markdown
 
