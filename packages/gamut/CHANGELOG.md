@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.4 (2020-06-25)</small>
+
+* fix(Video): check if onReady exists (#851) ([059d346](https://github.com/RyzacInc/client-modules/commit/059d346)), closes [#851](https://github.com/RyzacInc/client-modules/issues/851)
+
+
+
+
+
 ## <small>9.2.3 (2020-06-24)</small>
 
 * fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)

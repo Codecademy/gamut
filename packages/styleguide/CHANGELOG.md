@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.4 (2020-06-25)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>11.2.3 (2020-06-24)</small>
 
 * fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)
