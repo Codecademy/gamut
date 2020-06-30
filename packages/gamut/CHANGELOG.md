@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.7 (2020-06-30)</small>
+
+* style: set default red color for form errors (#855) ([ede31dd](https://github.com/RyzacInc/client-modules/commit/ede31dd)), closes [#855](https://github.com/RyzacInc/client-modules/issues/855)
+
+
+
+
+
 ## <small>9.2.6 (2020-06-30)</small>
 
 * fix(Markdown): allow flexible vimeo videos in markdown (#853) ([829002d](https://github.com/RyzacInc/client-modules/commit/829002d)), closes [#853](https://github.com/RyzacInc/client-modules/issues/853)
