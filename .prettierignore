@@ -4,3 +4,4 @@ node_modules
 **/tmp
 packages/gamut-icons/src/icons
 packages/gamut-styles/**/*.d.ts
+packages/styleguide/stories/Core/Atoms/Markdown/*.md
