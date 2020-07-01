@@ -14,7 +14,7 @@ export const BodyPortal: React.FC<BodyPortalProps> = ({
   useEffect(() => {
     onMount();
     return onDismount;
-    // We only want this to run
+    // We only want this to run once.  Ideally these wouldn't rerun.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
