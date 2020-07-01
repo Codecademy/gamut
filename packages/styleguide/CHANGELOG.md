@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.8 (2020-07-01)</small>
+
+* chore(Styleguide): Add status indicator to the Badge story (#850) ([1aaa448](https://github.com/RyzacInc/client-modules/commit/1aaa448)), closes [#850](https://github.com/RyzacInc/client-modules/issues/850)
+
+
+
+
+
 ## <small>11.2.7 (2020-06-30)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
