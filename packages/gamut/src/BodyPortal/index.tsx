@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-export const BodyPortal: React.FC = ({ children }) => {
+type BodyPortalProps = {
+  onMount?: () => void;
+  onDismount?: () => void;
+};
+
+export const BodyPortal: React.FC<BodyPortalProps> = ({
+  children,
+  onMount = () => {},
+  onDismount = () => {},
+}) => {
+  useEffect(() => {
+    onMount();
+    return onDismount;
+    // We only want this to run
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return ReactDOM.createPortal(children, document.body);
 };
 

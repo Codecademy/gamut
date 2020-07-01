@@ -34,8 +34,12 @@ export const Overlay: React.FC<OverlayProps> = ({
 }) => {
   if (!isOpen) return null;
 
+  const body = document.querySelector('body');
+  const onOpen = () => body.classList.add(styles.modalOpen);
+  const onClose = () => body.classList.remove(styles.modalOpen);
+
   return (
-    <BodyPortal>
+    <BodyPortal onMount={onOpen} onDismount={onClose}>
       <div className={cx(styles.container, className)}>
         <FocusTrap
           focusTrapOptions={{
