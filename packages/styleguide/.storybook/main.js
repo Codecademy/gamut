@@ -7,7 +7,6 @@ module.exports = {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
-    console.log(config.module.rules);
     return config;
   },
 
