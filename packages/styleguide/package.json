@@ -38,7 +38,6 @@
     "autoprefixer": "^9.7.4",
     "babel-preset-codecademy": "2.2.5",
     "classnames": "2.2.6",
-    "core-js": "3.0.1",
     "fork-ts-checker-webpack-plugin": "4.0.2",
     "invariant": "2.2.4",
     "jsdom": "15.0.0",
