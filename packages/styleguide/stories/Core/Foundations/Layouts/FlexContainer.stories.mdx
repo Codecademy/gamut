@@ -14,7 +14,7 @@ import { select, boolean, number } from '@storybook/addon-knobs';
 
 <StoryStatus status="ready" />
 
-A flex box primitive that allows you
+A flex box primitive that allows you create markup configurable flex containers
 
 <Preview>
   <Story name="Flex Container ">
@@ -36,8 +36,8 @@ A flex box primitive that allows you
           center={boolean('center', false)}
           column={boolean('column', false)}
           row={boolean('row', false)}
-          fit={boolean('fit', false)}
-          flex={boolean('flex', true)}
+          fit={boolean('fit', true)}
+          flex={boolean('flex', false)}
           grow={number('grow', undefined)}
           shrink={number('shrink', undefined)}
           inline={boolean('inline', false)}
