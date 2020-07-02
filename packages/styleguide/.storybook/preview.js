@@ -24,6 +24,8 @@ addParameters({
     options: {},
     manual: true,
   },
+  actions: { argTypesRegex: '^on.*' },
+  controls: { expanded: true },
 });
 
 addDecorator(withKnobs);
