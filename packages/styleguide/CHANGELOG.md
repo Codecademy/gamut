@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.9 (2020-07-02)</small>
+
+* chore(Styleguide): Upgrade to latest storybook beta (#859) ([7b98753](https://github.com/RyzacInc/client-modules/commit/7b98753)), closes [#859](https://github.com/RyzacInc/client-modules/issues/859)
+
+
+
+
+
 ## <small>11.2.8 (2020-07-01)</small>
 
 * chore(Styleguide): Add status indicator to the Badge story (#850) ([1aaa448](https://github.com/RyzacInc/client-modules/commit/1aaa448)), closes [#850](https://github.com/RyzacInc/client-modules/issues/850)
