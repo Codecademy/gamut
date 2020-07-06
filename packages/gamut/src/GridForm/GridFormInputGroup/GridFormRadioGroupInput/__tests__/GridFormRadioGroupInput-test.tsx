@@ -2,6 +2,7 @@ import GridFormRadioGroupInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
 import { stubRadioGroupField } from '../../../__tests__/stubs';
+import { itHandlesRequiredProps } from '../../TestHelper';
 
 describe('GridFormRadioGroupInput', () => {
   describe('when an id is passed as a prop', () => {
@@ -35,4 +36,7 @@ describe('GridFormRadioGroupInput', () => {
       expect(textInput.find('input#name-0').length).toBe(1);
     });
   });
+
+  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-0');
+  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-1');
 });

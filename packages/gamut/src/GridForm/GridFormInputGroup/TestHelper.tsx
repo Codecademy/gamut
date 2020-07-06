@@ -1,13 +1,15 @@
-import { mount } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import GridFormTextInput from './GridFormTextInput';
 import {
+  stubRadioGroupField,
   stubSelectField,
   stubTextareaField,
   stubTextField,
 } from '../__tests__/stubs';
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
+import GridFormRadioGroupInput from './GridFormRadioGroupInput';
 
 export const itHandlesRequiredProps = (
   componentName: string,
@@ -33,17 +35,8 @@ export const isMarkedRequiredWithBoolean = (
   componentName: string,
   inputType: string
 ): void => {
-  let component;
   const requiredTrue = { validation: { required: true } };
-
-  switch (componentName) {
-    case 'GridFormTextInput':
-      component = renderGridFormTextInput(requiredTrue);
-    case 'GridFormSelectInput':
-      component = renderGridFormSelectInput(requiredTrue);
-    case 'GridFormTextArea':
-      component = renderGridFormTextArea(requiredTrue);
-  }
+  const component = getComponent(componentName, requiredTrue);
 
   expect(component.find(inputType).props().required).toBeTruthy();
 };
@@ -52,17 +45,8 @@ export const isMarkedRequiredWithMessage = (
   componentName: string,
   inputType: string
 ): void => {
-  let component;
   const requiredMessage = { validation: { required: 'Required' } };
-
-  switch (componentName) {
-    case 'GridFormTextInput':
-      component = renderGridFormTextInput(requiredMessage);
-    case 'GridFormSelectInput':
-      component = renderGridFormSelectInput(requiredMessage);
-    case 'GridFormTextArea':
-      component = renderGridFormTextArea(requiredMessage);
-  }
+  const component = getComponent(componentName, requiredMessage);
 
   expect(component.find(inputType).props().required).toBeTruthy();
 };
@@ -71,17 +55,8 @@ export const isMarkedNotRequiredWithBoolean = (
   componentName: string,
   inputType: string
 ): void => {
-  let component;
   const requiredFalse = { validation: { required: false } };
-
-  switch (componentName) {
-    case 'GridFormTextInput':
-      component = renderGridFormTextInput(requiredFalse);
-    case 'GridFormSelectInput':
-      component = renderGridFormSelectInput(requiredFalse);
-    case 'GridFormTextArea':
-      component = renderGridFormTextArea(requiredFalse);
-  }
+  const component = getComponent(componentName, requiredFalse);
 
   expect(component.find(inputType).props().required).toBeFalsy();
 };
@@ -90,19 +65,12 @@ export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
   componentName: string,
   inputType: string
 ): void => {
-  let component;
-
-  switch (componentName) {
-    case 'GridFormTextInput':
-      component = renderGridFormTextInput({});
-    case 'GridFormSelectInput':
-      component = renderGridFormSelectInput({});
-    case 'GridFormTextArea':
-      component = renderGridFormTextArea({});
-  }
+  const component = getComponent(componentName, {});
 
   expect(component.find(inputType).props().required).toBeFalsy();
 };
+
+/* === renderers === */
 
 const renderGridFormTextInput = (extraProps: any = {}) => {
   return mount(
@@ -113,7 +81,7 @@ const renderGridFormTextInput = (extraProps: any = {}) => {
   );
 };
 
-const renderGridFormSelectInput = (extraProps: any = {}) => {
+const renderGridFormSelectInput = (extraProps: any = {}): ReactWrapper => {
   return mount(
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
@@ -129,4 +97,31 @@ const renderGridFormTextArea = (extraProps: any = {}) => {
       register={jest.fn()}
     />
   );
+};
+
+const renderGridFormRadioGroupInput = (extraProps: any = {}) => {
+  return mount(
+    <GridFormRadioGroupInput
+      field={{ ...stubRadioGroupField, ...extraProps }}
+      setValue={jest.fn()}
+      register={jest.fn()}
+    />
+  );
+};
+
+const getComponent = (
+  componentName: string,
+  validationProps: any
+): ReactWrapper => {
+  switch (componentName) {
+    case 'GridFormTextInput':
+      return renderGridFormTextInput(validationProps);
+    case 'GridFormSelectInput':
+      return renderGridFormSelectInput(validationProps);
+    case 'GridFormTextArea':
+      return renderGridFormTextArea(validationProps);
+    case 'GridFormRadioGroupInput':
+      return renderGridFormRadioGroupInput(validationProps);
+    default:
+  }
 };
