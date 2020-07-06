@@ -1,8 +1,13 @@
 import { mount } from 'enzyme';
 import React from 'react';
 import GridFormTextInput from './GridFormTextInput';
-import { stubSelectField, stubTextField } from '../__tests__/stubs';
+import {
+  stubSelectField,
+  stubTextareaField,
+  stubTextField,
+} from '../__tests__/stubs';
 import GridFormSelectInput from './GridFormSelectInput';
+import GridFormTextArea from './GridFormTextArea';
 
 export const itHandlesRequiredProps = (
   componentName: string,
@@ -29,12 +34,15 @@ export const isMarkedRequiredWithBoolean = (
   inputType: string
 ): void => {
   let component;
+  const requiredTrue = { validation: { required: true } };
 
   switch (componentName) {
     case 'GridFormTextInput':
-      component = renderGridFormTextInput({ validation: { required: true } });
+      component = renderGridFormTextInput(requiredTrue);
     case 'GridFormSelectInput':
-      component = renderGridFormSelectInput({ validation: { required: true } });
+      component = renderGridFormSelectInput(requiredTrue);
+    case 'GridFormTextArea':
+      component = renderGridFormTextArea(requiredTrue);
   }
 
   expect(component.find(inputType).props().required).toBeTruthy();
@@ -45,16 +53,15 @@ export const isMarkedRequiredWithMessage = (
   inputType: string
 ): void => {
   let component;
+  const requiredMessage = { validation: { required: 'Required' } };
 
   switch (componentName) {
     case 'GridFormTextInput':
-      component = renderGridFormTextInput({
-        validation: { required: 'Required' },
-      });
+      component = renderGridFormTextInput(requiredMessage);
     case 'GridFormSelectInput':
-      component = renderGridFormSelectInput({
-        validation: { required: 'Required' },
-      });
+      component = renderGridFormSelectInput(requiredMessage);
+    case 'GridFormTextArea':
+      component = renderGridFormTextArea(requiredMessage);
   }
 
   expect(component.find(inputType).props().required).toBeTruthy();
@@ -65,14 +72,15 @@ export const isMarkedNotRequiredWithBoolean = (
   inputType: string
 ): void => {
   let component;
+  const requiredFalse = { validation: { required: false } };
 
   switch (componentName) {
     case 'GridFormTextInput':
-      component = renderGridFormTextInput({ validation: { required: false } });
+      component = renderGridFormTextInput(requiredFalse);
     case 'GridFormSelectInput':
-      component = renderGridFormSelectInput({
-        validation: { required: false },
-      });
+      component = renderGridFormSelectInput(requiredFalse);
+    case 'GridFormTextArea':
+      component = renderGridFormTextArea(requiredFalse);
   }
 
   expect(component.find(inputType).props().required).toBeFalsy();
@@ -89,6 +97,8 @@ export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
       component = renderGridFormTextInput({});
     case 'GridFormSelectInput':
       component = renderGridFormSelectInput({});
+    case 'GridFormTextArea':
+      component = renderGridFormTextArea({});
   }
 
   expect(component.find(inputType).props().required).toBeFalsy();
@@ -107,6 +117,15 @@ const renderGridFormSelectInput = (extraProps: any = {}) => {
   return mount(
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
+      register={jest.fn()}
+    />
+  );
+};
+
+const renderGridFormTextArea = (extraProps: any = {}) => {
+  return mount(
+    <GridFormTextArea
+      field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
     />
   );
