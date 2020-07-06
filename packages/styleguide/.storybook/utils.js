@@ -9,23 +9,20 @@ const folders = ['Foundations', 'Atoms', 'Molecules', 'Organisms'];
 export const storySort = (a, b) => {
   // a[1].kind is something like: Components|Accordion. Using "Components" for the headers array.
   // Using Components from ^^^
-  const [aHeader, aKind] = a[1].kind.split('|');
-  const [bHeader, bKind] = b[1].kind.split('|');
+  const aKinds = a[1].kind.split('/');
+  const bKinds = b[1].kind.split('/');
 
-  if (aHeader !== bHeader) {
+  if (aKinds[0] !== bKinds[0]) {
     // Comparing something like "components-accordion--main" to "getting-started-app--main".
-    const aHeaderIndex = headers.findIndex((h) => h === aHeader);
-    const bHeaderIndex = headers.findIndex((h) => h === bHeader);
+    const aHeaderIndex = headers.findIndex((h) => h === aKinds[0]);
+    const bHeaderIndex = headers.findIndex((h) => h === bKinds[0]);
     return aHeaderIndex - bHeaderIndex;
   }
 
-  const aFolder = aKind.split('/')[0];
-  const bFolder = bKind.split('/')[0];
-
-  if (aFolder !== bFolder) {
+  if (aKinds[1] !== bKinds[1]) {
     // Comparing something like "components-accordion--main" to "getting-started-app--main".
-    const aFolderIndex = folders.findIndex((h) => h === aFolder);
-    const bFolderIndex = folders.findIndex((h) => h === bFolder);
+    const aFolderIndex = folders.findIndex((h) => h === aKinds[1]);
+    const bFolderIndex = folders.findIndex((h) => h === bKinds[1]);
 
     return aFolderIndex - bFolderIndex;
   }
