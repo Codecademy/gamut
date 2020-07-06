@@ -2,6 +2,7 @@ import GridFormSelectInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
 import { stubSelectField } from '../../../__tests__/stubs';
+import { itHandlesRequiredProps } from '../../TestHelper';
 
 describe('GridFormSelectInput', () => {
   describe('when an id is passed as a prop', () => {
@@ -29,4 +30,6 @@ describe('GridFormSelectInput', () => {
       expect(textInput.find('select#name').length).toBe(1);
     });
   });
+
+  itHandlesRequiredProps('GridFormSelectInput', 'select');
 });

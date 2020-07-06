@@ -32,18 +32,18 @@ describe('GridFormTextArea', () => {
 
   describe('required fields', () => {
     it('marks a field as required when a required validation boolean is passed', () => {
-      const textInput = mount(
+      const textarea = mount(
         <GridFormTextArea
           field={{ ...stubTextareaField, validation: { required: true } }}
           register={jest.fn()}
         />
       );
 
-      expect(textInput.find('textarea').props().required).toBeTruthy();
+      expect(textarea.find('textarea').props().required).toBeTruthy();
     });
 
     it('marks a field as required when a required message is passed', () => {
-      const textInput = mount(
+      const textarea = mount(
         <GridFormTextArea
           field={{
             ...stubTextareaField,
@@ -53,29 +53,29 @@ describe('GridFormTextArea', () => {
         />
       );
 
-      expect(textInput.find('textarea').props().required).toBeTruthy();
+      expect(textarea.find('textarea').props().required).toBeTruthy();
     });
 
     it('does __not__ mark a field as required when `required: false` is passed', () => {
-      const textInput = mount(
+      const textarea = mount(
         <GridFormTextArea
           field={{ ...stubTextareaField, validation: { required: false } }}
           register={jest.fn()}
         />
       );
 
-      expect(textInput.find('textarea').props().required).toBeFalsy();
+      expect(textarea.find('textarea').props().required).toBeFalsy();
     });
 
     it('does __not__ mark a field as required when required is not passed', () => {
-      const textInput = mount(
+      const textarea = mount(
         <GridFormTextArea
           field={{ ...stubTextareaField }}
           register={jest.fn()}
         />
       );
 
-      expect(textInput.find('textarea').props().required).toBeFalsy();
+      expect(textarea.find('textarea').props().required).toBeFalsy();
     });
   });
 });
