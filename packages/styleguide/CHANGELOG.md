@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.9 (2020-07-02)</small>
+
+* chore(Styleguide): Upgrade to latest storybook beta (#859) ([7b98753](https://github.com/RyzacInc/client-modules/commit/7b98753)), closes [#859](https://github.com/RyzacInc/client-modules/issues/859)
+
+
+
+
+
+## <small>11.2.8 (2020-07-01)</small>
+
+* chore(Styleguide): Add status indicator to the Badge story (#850) ([1aaa448](https://github.com/RyzacInc/client-modules/commit/1aaa448)), closes [#850](https://github.com/RyzacInc/client-modules/issues/850)
+
+
+
+
+
+## <small>11.2.7 (2020-06-30)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## <small>11.2.6 (2020-06-30)</small>
+
+* fix(Markdown): allow flexible vimeo videos in markdown (#853) ([829002d](https://github.com/RyzacInc/client-modules/commit/829002d)), closes [#853](https://github.com/RyzacInc/client-modules/issues/853)
+
+
+
+
+
 ## <small>11.2.5 (2020-06-29)</small>
 
 **Note:** Version bump only for package @codecademy/styleguide
