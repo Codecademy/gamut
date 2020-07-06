@@ -29,4 +29,53 @@ describe('GridFormTextArea', () => {
       expect(textarea.find('textarea#name').length).toBe(1);
     });
   });
+
+  describe('required fields', () => {
+    it('marks a field as required when a required validation boolean is passed', () => {
+      const textInput = mount(
+        <GridFormTextArea
+          field={{ ...stubTextareaField, validation: { required: true } }}
+          register={jest.fn()}
+        />
+      );
+
+      expect(textInput.find('textarea').props().required).toBeTruthy();
+    });
+
+    it('marks a field as required when a required message is passed', () => {
+      const textInput = mount(
+        <GridFormTextArea
+          field={{
+            ...stubTextareaField,
+            validation: { required: 'you _MUST_ fill me out' },
+          }}
+          register={jest.fn()}
+        />
+      );
+
+      expect(textInput.find('textarea').props().required).toBeTruthy();
+    });
+
+    it('does __not__ mark a field as required when `required: false` is passed', () => {
+      const textInput = mount(
+        <GridFormTextArea
+          field={{ ...stubTextareaField, validation: { required: false } }}
+          register={jest.fn()}
+        />
+      );
+
+      expect(textInput.find('textarea').props().required).toBeFalsy();
+    });
+
+    it('does __not__ mark a field as required when required is not passed', () => {
+      const textInput = mount(
+        <GridFormTextArea
+          field={{ ...stubTextareaField }}
+          register={jest.fn()}
+        />
+      );
+
+      expect(textInput.find('textarea').props().required).toBeFalsy();
+    });
+  });
 });
