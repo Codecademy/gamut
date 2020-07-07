@@ -2,8 +2,6 @@ import { addParameters, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 import prettier from 'prettier/standalone';
-import prettierConfig from '@codecademy/prettier-config';
-import parserTypescript from 'prettier/parser-typescript';
 import { storySort } from './utils';
 
 import './decorators/wrapper';
@@ -25,18 +23,6 @@ addParameters({
     config: {},
     options: {},
     manual: true,
-  },
-  docs: {
-    /** Currently this is the way to do this with MDX
-     * https://github.com/storybookjs/storybook/issues/8078#issuecomment-605430645
-     */
-    transformSource: (src) => {
-      return prettier.format(src, {
-        ...prettierConfig,
-        parser: 'typescript',
-        plugins: [parserTypescript],
-      });
-    },
   },
 });
 
