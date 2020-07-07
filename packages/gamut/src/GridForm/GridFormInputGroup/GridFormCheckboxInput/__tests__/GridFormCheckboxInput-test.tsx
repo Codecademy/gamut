@@ -2,6 +2,7 @@ import GridFormCheckboxInput from '../index';
 import { mount } from 'enzyme';
 import React from 'react';
 import { stubCheckboxField } from '../../../__tests__/stubs';
+import { itHandlesRequiredProps } from '../../TestHelper';
 
 describe('GridFormCheckboxInput', () => {
   describe('when an id is passed as a prop', () => {
@@ -29,4 +30,6 @@ describe('GridFormCheckboxInput', () => {
       expect(textInput.find('input#name').length).toBe(1);
     });
   });
+
+  itHandlesRequiredProps('GridFormCheckboxInput', 'input');
 });

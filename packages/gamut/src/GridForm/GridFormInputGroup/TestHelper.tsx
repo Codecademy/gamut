@@ -2,6 +2,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import GridFormTextInput from './GridFormTextInput';
 import {
+  stubCheckboxField,
   stubRadioGroupField,
   stubSelectField,
   stubTextareaField,
@@ -11,6 +12,7 @@ import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
 import GridFormRadioGroupInput from './GridFormRadioGroupInput';
 import GridFormFileInput from './GridFormFileInput';
+import GridFormCheckboxInput from './GridFormCheckboxInput';
 
 export const itHandlesRequiredProps = (
   componentName: string,
@@ -119,6 +121,15 @@ const renderGridFormFileInput = (extraProps: any = {}): ReactWrapper => {
   );
 };
 
+const renderGridFormCheckboxInput = (extraProps: any = {}): ReactWrapper => {
+  return mount(
+    <GridFormCheckboxInput
+      field={{ ...stubCheckboxField, ...extraProps }}
+      register={jest.fn()}
+    />
+  );
+};
+
 const getComponent = (
   componentName: string,
   validationProps: any
@@ -134,6 +145,8 @@ const getComponent = (
       return renderGridFormRadioGroupInput(validationProps);
     case 'GridFormFileInput':
       return renderGridFormFileInput(validationProps);
+    case 'GridFormCheckboxInput':
+      return renderGridFormCheckboxInput(validationProps);
     default:
       return null;
   }
