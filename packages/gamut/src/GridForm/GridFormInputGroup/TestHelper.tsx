@@ -75,7 +75,7 @@ export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
 
 /* === renderers === */
 
-const renderGridFormTextInput = (extraProps: any = {}) => {
+export const renderGridFormTextInput = (extraProps: any = {}) => {
   return mount(
     <GridFormTextInput
       field={{ ...stubTextField, ...extraProps }}
@@ -84,7 +84,9 @@ const renderGridFormTextInput = (extraProps: any = {}) => {
   );
 };
 
-const renderGridFormSelectInput = (extraProps: any = {}): ReactWrapper => {
+export const renderGridFormSelectInput = (
+  extraProps: any = {}
+): ReactWrapper => {
   return mount(
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
@@ -93,7 +95,7 @@ const renderGridFormSelectInput = (extraProps: any = {}): ReactWrapper => {
   );
 };
 
-const renderGridFormTextArea = (extraProps: any = {}) => {
+export const renderGridFormTextArea = (extraProps: any = {}) => {
   return mount(
     <GridFormTextArea
       field={{ ...stubTextareaField, ...extraProps }}
@@ -102,7 +104,7 @@ const renderGridFormTextArea = (extraProps: any = {}) => {
   );
 };
 
-const renderGridFormRadioGroupInput = (extraProps: any = {}) => {
+export const renderGridFormRadioGroupInput = (extraProps: any = {}) => {
   return mount(
     <GridFormRadioGroupInput
       field={{ ...stubRadioGroupField, ...extraProps }}
@@ -112,7 +114,7 @@ const renderGridFormRadioGroupInput = (extraProps: any = {}) => {
   );
 };
 
-const renderGridFormFileInput = (extraProps: any = {}): ReactWrapper => {
+export const renderGridFormFileInput = (extraProps: any = {}): ReactWrapper => {
   return mount(
     <GridFormFileInput
       field={{ ...stubSelectField, ...extraProps }}
@@ -121,7 +123,9 @@ const renderGridFormFileInput = (extraProps: any = {}): ReactWrapper => {
   );
 };
 
-const renderGridFormCheckboxInput = (extraProps: any = {}): ReactWrapper => {
+export const renderGridFormCheckboxInput = (
+  extraProps: any = {}
+): ReactWrapper => {
   return mount(
     <GridFormCheckboxInput
       field={{ ...stubCheckboxField, ...extraProps }}
@@ -130,23 +134,20 @@ const renderGridFormCheckboxInput = (extraProps: any = {}): ReactWrapper => {
   );
 };
 
-const getComponent = (
-  componentName: string,
-  validationProps: any
-): ReactWrapper => {
+const getComponent = (componentName: string, extraProps: any): ReactWrapper => {
   switch (componentName) {
     case 'GridFormTextInput':
-      return renderGridFormTextInput(validationProps);
+      return renderGridFormTextInput(extraProps);
     case 'GridFormSelectInput':
-      return renderGridFormSelectInput(validationProps);
+      return renderGridFormSelectInput(extraProps);
     case 'GridFormTextArea':
-      return renderGridFormTextArea(validationProps);
+      return renderGridFormTextArea(extraProps);
     case 'GridFormRadioGroupInput':
-      return renderGridFormRadioGroupInput(validationProps);
+      return renderGridFormRadioGroupInput(extraProps);
     case 'GridFormFileInput':
-      return renderGridFormFileInput(validationProps);
+      return renderGridFormFileInput(extraProps);
     case 'GridFormCheckboxInput':
-      return renderGridFormCheckboxInput(validationProps);
+      return renderGridFormCheckboxInput(extraProps);
     default:
       return null;
   }
