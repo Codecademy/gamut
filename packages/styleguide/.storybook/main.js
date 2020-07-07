@@ -7,6 +7,12 @@ module.exports = {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@styleguide/blocks': path.resolve(__dirname, '../Blocks/'),
+    };
+
     return config;
   },
 
