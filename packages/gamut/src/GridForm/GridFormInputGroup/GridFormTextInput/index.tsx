@@ -8,7 +8,7 @@ export type GridFormTextInputProps = {
   className?: string;
   error?: boolean;
   field: Omit<GridFormTextField, 'label'>;
-  register?: FormContextValues['register'];
+  register: FormContextValues['register'];
 };
 
 export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
