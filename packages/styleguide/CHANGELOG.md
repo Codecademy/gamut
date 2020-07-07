@@ -1,8 +1,11 @@
-### [11.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.9) (2020-07-06)
+### [11.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.10) (2020-07-07)
 
 
 ### Other Changes
 
+* Correct kind structure ([b374c31](https://github.com/Codecademy/client-modules/commit/b374c315acc497791d839d9705619f9f763f2a16))
+* Merge conflicts ([8eea56e](https://github.com/Codecademy/client-modules/commit/8eea56e3408d62a731d95ba24fb0c5646ed09dc2))
+* **Styleguide:** Upgrade to latest storybook beta ([#859](https://github.com/Codecademy/client-modules/issues/859)) ([7b98753](https://github.com/Codecademy/client-modules/commit/7b987532d96a20701091b1688ce193ec52617283))
 * Add basic flex container story ([7fa75e5](https://github.com/Codecademy/client-modules/commit/7fa75e57d0834e8c8d29613ce8a9a1427925e8f2))
 * Better initial state and description ([210466d](https://github.com/Codecademy/client-modules/commit/210466d8d7a7b03b92c7c768012bfc9a08352e4f))
 
