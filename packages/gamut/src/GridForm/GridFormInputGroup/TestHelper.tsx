@@ -10,64 +10,65 @@ import {
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
 import GridFormRadioGroupInput from './GridFormRadioGroupInput';
+import GridFormFileInput from './GridFormFileInput';
 
 export const itHandlesRequiredProps = (
   componentName: string,
-  inputType: string
+  selector: string
 ): void => {
   describe('required fields', () => {
     it('marks a field as required when a required validation boolean is passed', () => {
-      isMarkedRequiredWithBoolean(componentName, inputType);
+      isMarkedRequiredWithBoolean(componentName, selector);
     });
     it('marks a field as required when a required message is passed', () => {
-      isMarkedRequiredWithMessage(componentName, inputType);
+      isMarkedRequiredWithMessage(componentName, selector);
     });
     it('does __not__ mark a field as required when `required: false` is passed', () => {
-      isMarkedNotRequiredWithBoolean(componentName, inputType);
+      isMarkedNotRequiredWithBoolean(componentName, selector);
     });
     it('does __not__ mark a field as required when required is not passed', () => {
-      isMarkedNotRequiredWhenNotPassedRequiredProp(componentName, inputType);
+      isMarkedNotRequiredWhenNotPassedRequiredProp(componentName, selector);
     });
   });
 };
 
 export const isMarkedRequiredWithBoolean = (
   componentName: string,
-  inputType: string
+  selector: string
 ): void => {
   const requiredTrue = { validation: { required: true } };
   const component = getComponent(componentName, requiredTrue);
 
-  expect(component.find(inputType).props().required).toBeTruthy();
+  expect(component.find(selector).props().required).toBeTruthy();
 };
 
 export const isMarkedRequiredWithMessage = (
   componentName: string,
-  inputType: string
+  selector: string
 ): void => {
   const requiredMessage = { validation: { required: 'Required' } };
   const component = getComponent(componentName, requiredMessage);
 
-  expect(component.find(inputType).props().required).toBeTruthy();
+  expect(component.find(selector).props().required).toBeTruthy();
 };
 
 export const isMarkedNotRequiredWithBoolean = (
   componentName: string,
-  inputType: string
+  selector: string
 ): void => {
   const requiredFalse = { validation: { required: false } };
   const component = getComponent(componentName, requiredFalse);
 
-  expect(component.find(inputType).props().required).toBeFalsy();
+  expect(component.find(selector).props().required).toBeFalsy();
 };
 
 export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
   componentName: string,
-  inputType: string
+  selector: string
 ): void => {
   const component = getComponent(componentName, {});
 
-  expect(component.find(inputType).props().required).toBeFalsy();
+  expect(component.find(selector).props().required).toBeFalsy();
 };
 
 /* === renderers === */
@@ -109,6 +110,15 @@ const renderGridFormRadioGroupInput = (extraProps: any = {}) => {
   );
 };
 
+const renderGridFormFileInput = (extraProps: any = {}): ReactWrapper => {
+  return mount(
+    <GridFormFileInput
+      field={{ ...stubSelectField, ...extraProps }}
+      register={jest.fn()}
+    />
+  );
+};
+
 const getComponent = (
   componentName: string,
   validationProps: any
@@ -122,6 +132,9 @@ const getComponent = (
       return renderGridFormTextArea(validationProps);
     case 'GridFormRadioGroupInput':
       return renderGridFormRadioGroupInput(validationProps);
+    case 'GridFormFileInput':
+      return renderGridFormFileInput(validationProps);
     default:
+      return null;
   }
 };
