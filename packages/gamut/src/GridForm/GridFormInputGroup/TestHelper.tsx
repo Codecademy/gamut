@@ -41,7 +41,7 @@ export const isMarkedRequiredWithBoolean = (
   const requiredTrue = { validation: { required: true } };
   const component = getComponent(componentName, requiredTrue);
 
-  expect(component.find(selector).props().required).toBeTruthy();
+  expect(component.find(selector).html()).toContain('required');
 };
 
 export const isMarkedRequiredWithMessage = (
@@ -51,7 +51,7 @@ export const isMarkedRequiredWithMessage = (
   const requiredMessage = { validation: { required: 'Required' } };
   const component = getComponent(componentName, requiredMessage);
 
-  expect(component.find(selector).props().required).toBeTruthy();
+  expect(component.find(selector).html()).toContain('required');
 };
 
 export const isMarkedNotRequiredWithBoolean = (
@@ -61,7 +61,7 @@ export const isMarkedNotRequiredWithBoolean = (
   const requiredFalse = { validation: { required: false } };
   const component = getComponent(componentName, requiredFalse);
 
-  expect(component.find(selector).props().required).toBeFalsy();
+  expect(component.find(selector).html()).not.toContain('required');
 };
 
 export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
@@ -70,7 +70,7 @@ export const isMarkedNotRequiredWhenNotPassedRequiredProp = (
 ): void => {
   const component = getComponent(componentName, {});
 
-  expect(component.find(selector).props().required).toBeFalsy();
+  expect(component.find(selector).html()).not.toContain('required');
 };
 
 /* === renderers === */
