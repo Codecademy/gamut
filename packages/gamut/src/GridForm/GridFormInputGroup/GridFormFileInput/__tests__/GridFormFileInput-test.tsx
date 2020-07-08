@@ -1,7 +1,5 @@
-import {
-  itHandlesRequiredProps,
-  renderGridFormFileInput,
-} from '../../TestHelper';
+import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { renderGridFormFileInput } from '../../__fixtures__/renderers';
 
 describe('GridFormFileInput', () => {
   describe('when an id is passed as a prop', () => {
