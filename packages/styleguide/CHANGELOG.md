@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.11 (2020-07-07)</small>
+
+* chore(Header): Adds Header stories [GM-51] (#856) ([cda648c](https://github.com/RyzacInc/client-modules/commit/cda648c)), closes [#856](https://github.com/RyzacInc/client-modules/issues/856)
+
+
+
+
+
+## <small>11.2.10 (2020-07-07)</small>
+
+* Fixes bad prefix on brand colors (#862) ([58f98ec](https://github.com/RyzacInc/client-modules/commit/58f98ec)), closes [#862](https://github.com/RyzacInc/client-modules/issues/862)
+
+
+
+
+
 ## <small>11.2.9 (2020-07-02)</small>
 
 * chore(Styleguide): Upgrade to latest storybook beta (#859) ([7b98753](https://github.com/RyzacInc/client-modules/commit/7b98753)), closes [#859](https://github.com/RyzacInc/client-modules/issues/859)
