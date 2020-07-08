@@ -1,30 +1,20 @@
-# Change Log
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.3.0...@codecademy/gamut@9.3.0) (2020-07-08)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 9.3.0 (2020-07-08)
-
-* feat(Gamut): Added Accordion component (#826) ([22c9b05](https://github.com/RyzacInc/client-modules/commit/22c9b05)), closes [#826](https://github.com/RyzacInc/client-modules/issues/826)
-* chore: update changelogs ([bc18b49](https://github.com/RyzacInc/client-modules/commit/bc18b49))
-* chore: update changelogs ([ad786c2](https://github.com/RyzacInc/client-modules/commit/ad786c2))
-* chore: update changelogs ([3202e2f](https://github.com/RyzacInc/client-modules/commit/3202e2f))
-* chore: update changelogs ([f0be186](https://github.com/RyzacInc/client-modules/commit/f0be186))
-* chore: update changelogs ([b798554](https://github.com/RyzacInc/client-modules/commit/b798554))
-
-
-
-
-
-### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.2.9) (2020-07-08)
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.3.0) (2020-07-08)
 
 
 ### Other Changes
 
+* update changelogs ([bc18b49](https://github.com/Codecademy/client-modules/commit/bc18b49273aeac57bdda867def044690320db8ad))
 * update changelogs ([ad786c2](https://github.com/Codecademy/client-modules/commit/ad786c213959a451796869860d68bcd3768cf8e5))
 * update changelogs ([3202e2f](https://github.com/Codecademy/client-modules/commit/3202e2f686a9ea384d7b0c01d8e7b6ef52c03529))
 * update changelogs ([f0be186](https://github.com/Codecademy/client-modules/commit/f0be186f93bf87de37e2b497b4cbd37ca1590358))
 * update changelogs ([b798554](https://github.com/Codecademy/client-modules/commit/b7985549d0c961150177a56cea7c02dd568bc1e5))
+
+
+### ✨ Features
+
+* **Gamut:** Added Accordion component ([#826](https://github.com/Codecademy/client-modules/issues/826)) ([22c9b05](https://github.com/Codecademy/client-modules/commit/22c9b05993b09c5d81c3427cd77d03f7e7d5dc02))
 
 ### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.8...@codecademy/gamut@9.2.9) (2020-07-08)
 
@@ -2680,3 +2670,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

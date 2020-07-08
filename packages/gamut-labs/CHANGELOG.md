@@ -1,25 +1,11 @@
-# Change Log
+### [1.7.37](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.37...@codecademy/gamut-labs@1.7.37) (2020-07-08)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>1.7.37 (2020-07-08)</small>
-
-* chore: update changelogs ([bc18b49](https://github.com/Codecademy/client-modules/commit/bc18b49))
-* chore: update changelogs ([ad786c2](https://github.com/Codecademy/client-modules/commit/ad786c2))
-* chore: update changelogs ([3202e2f](https://github.com/Codecademy/client-modules/commit/3202e2f))
-* chore: update changelogs ([f0be186](https://github.com/Codecademy/client-modules/commit/f0be186))
-* chore: update changelogs ([b798554](https://github.com/Codecademy/client-modules/commit/b798554))
-
-
-
-
-
-### [1.7.36](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.36...@codecademy/gamut-labs@1.7.36) (2020-07-08)
+### [1.7.37](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.36...@codecademy/gamut-labs@1.7.37) (2020-07-08)
 
 
 ### Other Changes
 
+* update changelogs ([bc18b49](https://github.com/Codecademy/client-modules/commit/bc18b49273aeac57bdda867def044690320db8ad))
 * update changelogs ([ad786c2](https://github.com/Codecademy/client-modules/commit/ad786c213959a451796869860d68bcd3768cf8e5))
 * update changelogs ([3202e2f](https://github.com/Codecademy/client-modules/commit/3202e2f686a9ea384d7b0c01d8e7b6ef52c03529))
 * update changelogs ([f0be186](https://github.com/Codecademy/client-modules/commit/f0be186f93bf87de37e2b497b4cbd37ca1590358))
@@ -111,3 +97,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
