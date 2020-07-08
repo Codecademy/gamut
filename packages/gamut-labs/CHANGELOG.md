@@ -1,4 +1,17 @@
-### [1.7.35](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.31...@codecademy/gamut-labs@1.7.35) (2020-07-08)
+### [1.7.35](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.35...@codecademy/gamut-labs@1.7.35) (2020-07-08)
+
+
+### Other Changes
+
+* Merge branch 'master' ([46e7c11](https://github.com/Codecademy/client-modules/commit/46e7c11595ec8e2b634821e63b2e89eb61dd18ee))
+
+### [1.7.35](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.34...@codecademy/gamut-labs@1.7.35) (2020-07-08)
+
+### [1.7.34](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.33...@codecademy/gamut-labs@1.7.34) (2020-06-30)
+
+### [1.7.33](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.32...@codecademy/gamut-labs@1.7.33) (2020-06-30)
+
+### [1.7.32](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.31...@codecademy/gamut-labs@1.7.32) (2020-06-29)
 
 ### [1.7.31](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.30...@codecademy/gamut-labs@1.7.31) (2020-06-25)
 

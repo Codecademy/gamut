@@ -1,4 +1,4 @@
-### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.12) (2020-07-08)
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.12...@codecademy/styleguide@11.2.12) (2020-07-08)
 
 
 ### ✨ Features
@@ -13,6 +13,7 @@
 * Header too ([02cf129](https://github.com/Codecademy/client-modules/commit/02cf129ea83d93a9627beeb6db3d5f51fb3cac2a))
 * initiallyExpanded; ^ dependency ([5ee8783](https://github.com/Codecademy/client-modules/commit/5ee8783b825ef962e04f11cfcec3408c1810e182))
 * JK, use a separate sub story ([0a3d330](https://github.com/Codecademy/client-modules/commit/0a3d330af0658ec6be8e12396dc7406a8417bd9c))
+* Merge branch 'master' ([46e7c11](https://github.com/Codecademy/client-modules/commit/46e7c11595ec8e2b634821e63b2e89eb61dd18ee))
 * Merge branch 'master' ([126eae5](https://github.com/Codecademy/client-modules/commit/126eae5c51b3bdffbfd981bdfcb5e3c8ee5cd88c))
 * Merge branch 'master' ([d9577b9](https://github.com/Codecademy/client-modules/commit/d9577b9caa218e42fb53c7a2dd61c3dd9e5b27c6))
 * Merge branch 'master' into jg-accordion ([6980437](https://github.com/Codecademy/client-modules/commit/698043782225b04233b1bd67069efb2cdb239422))
@@ -22,6 +23,47 @@
 * Removed random number generation for tests ([ec2c045](https://github.com/Codecademy/client-modules/commit/ec2c0452c3237bbed6f176f96e29cb48c78b8029))
 * Test only, without a snapshot ([90fa747](https://github.com/Codecademy/client-modules/commit/90fa74775f7cf5bd7d7dcd74de40506e75bd8019))
 * Used full Enzyme mount in renderer ([9eda436](https://github.com/Codecademy/client-modules/commit/9eda4364d3fc70981845f733424688b87a7ce957))
+
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.11...@codecademy/styleguide@11.2.12) (2020-07-08)
+
+### [11.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.10...@codecademy/styleguide@11.2.11) (2020-07-07)
+
+
+### Other Changes
+
+* **Header:** Adds Header stories [GM-51] ([#856](https://github.com/Codecademy/client-modules/issues/856)) ([cda648c](https://github.com/Codecademy/client-modules/commit/cda648ca472818296889590731d15c80216d98fa))
+
+### [11.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.9...@codecademy/styleguide@11.2.10) (2020-07-07)
+
+
+### Other Changes
+
+* Fixes bad prefix on brand colors ([#862](https://github.com/Codecademy/client-modules/issues/862)) ([58f98ec](https://github.com/Codecademy/client-modules/commit/58f98ec2c7b99efebfe5da65652f0c5260f689f8))
+
+### [11.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.9) (2020-07-02)
+
+
+### Other Changes
+
+* **Styleguide:** Upgrade to latest storybook beta ([#859](https://github.com/Codecademy/client-modules/issues/859)) ([7b98753](https://github.com/Codecademy/client-modules/commit/7b987532d96a20701091b1688ce193ec52617283))
+
+### [11.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.7...@codecademy/styleguide@11.2.8) (2020-07-01)
+
+
+### Other Changes
+
+* **Styleguide:** Add status indicator to the Badge story ([#850](https://github.com/Codecademy/client-modules/issues/850)) ([1aaa448](https://github.com/Codecademy/client-modules/commit/1aaa448c3f779a09e9db914e84867fa25d3a8150))
+
+### [11.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.6...@codecademy/styleguide@11.2.7) (2020-06-30)
+
+### [11.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.5...@codecademy/styleguide@11.2.6) (2020-06-30)
+
+
+### 🐛 Bug Fixes
+
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
+
+### [11.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.5) (2020-06-29)
 
 ### [11.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.3...@codecademy/styleguide@11.2.4) (2020-06-25)
 

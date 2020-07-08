@@ -1,4 +1,4 @@
-### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.4...@codecademy/gamut@9.2.8) (2020-07-08)
+### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.8...@codecademy/gamut@9.2.8) (2020-07-08)
 
 
 ### ✨ Features
@@ -10,6 +10,7 @@
 
 * Header too ([02cf129](https://github.com/Codecademy/client-modules/commit/02cf129ea83d93a9627beeb6db3d5f51fb3cac2a))
 * initiallyExpanded; ^ dependency ([5ee8783](https://github.com/Codecademy/client-modules/commit/5ee8783b825ef962e04f11cfcec3408c1810e182))
+* Merge branch 'master' ([46e7c11](https://github.com/Codecademy/client-modules/commit/46e7c11595ec8e2b634821e63b2e89eb61dd18ee))
 * Merge branch 'master' ([126eae5](https://github.com/Codecademy/client-modules/commit/126eae5c51b3bdffbfd981bdfcb5e3c8ee5cd88c))
 * Merge branch 'master' ([d9577b9](https://github.com/Codecademy/client-modules/commit/d9577b9caa218e42fb53c7a2dd61c3dd9e5b27c6))
 * Merge branch 'master' into jg-accordion ([6980437](https://github.com/Codecademy/client-modules/commit/698043782225b04233b1bd67069efb2cdb239422))
@@ -19,6 +20,34 @@
 * Remove static uniqueIds ([cb91830](https://github.com/Codecademy/client-modules/commit/cb9183009bae9b8e32bae2c0a6e88c26f462c12e))
 * Removed random number generation for tests ([ec2c045](https://github.com/Codecademy/client-modules/commit/ec2c0452c3237bbed6f176f96e29cb48c78b8029))
 * Updated snapshot and allowed rendering with updated ([7b2c94b](https://github.com/Codecademy/client-modules/commit/7b2c94b992de60aac990537b9c93cbbd086b3a3b))
+
+### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.7...@codecademy/gamut@9.2.8) (2020-07-08)
+
+
+### 🐛 Bug Fixes
+
+* accessibility changes ([#863](https://github.com/Codecademy/client-modules/issues/863)) ([51cce73](https://github.com/Codecademy/client-modules/commit/51cce73923d59fbe39011a69e6baebc88130cf03))
+
+### [9.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.6...@codecademy/gamut@9.2.7) (2020-06-30)
+
+
+### 💅 Styles
+
+* set default red color for form errors ([#855](https://github.com/Codecademy/client-modules/issues/855)) ([ede31dd](https://github.com/Codecademy/client-modules/commit/ede31dd2c4a142fbc1d23d72f7cdb1f6889b03a9))
+
+### [9.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.5...@codecademy/gamut@9.2.6) (2020-06-30)
+
+
+### 🐛 Bug Fixes
+
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
+
+### [9.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.4...@codecademy/gamut@9.2.5) (2020-06-29)
+
+
+### 🐛 Bug Fixes
+
+* **Video:** make video styles more flexible ([#854](https://github.com/Codecademy/client-modules/issues/854)) ([cadab3a](https://github.com/Codecademy/client-modules/commit/cadab3a5cf25ee23f3215428c49d0b93155bc87c))
 
 ### [9.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.3...@codecademy/gamut@9.2.4) (2020-06-25)
 
