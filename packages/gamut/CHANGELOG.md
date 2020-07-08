@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.8 (2020-07-08)</small>
+
+* fix: accessibility changes (#863) ([51cce73](https://github.com/RyzacInc/client-modules/commit/51cce73)), closes [#863](https://github.com/RyzacInc/client-modules/issues/863)
+
+
+
+
+
+## <small>9.2.7 (2020-06-30)</small>
+
+* style: set default red color for form errors (#855) ([ede31dd](https://github.com/RyzacInc/client-modules/commit/ede31dd)), closes [#855](https://github.com/RyzacInc/client-modules/issues/855)
+
+
+
+
+
+## <small>9.2.6 (2020-06-30)</small>
+
+* fix(Markdown): allow flexible vimeo videos in markdown (#853) ([829002d](https://github.com/RyzacInc/client-modules/commit/829002d)), closes [#853](https://github.com/RyzacInc/client-modules/issues/853)
+
+
+
+
+
+## <small>9.2.5 (2020-06-29)</small>
+
+* fix(Video): make video styles more flexible (#854) ([cadab3a](https://github.com/RyzacInc/client-modules/commit/cadab3a)), closes [#854](https://github.com/RyzacInc/client-modules/issues/854)
+
+
+
+
+
+## <small>9.2.4 (2020-06-25)</small>
+
+* fix(Video): check if onReady exists (#851) ([059d346](https://github.com/RyzacInc/client-modules/commit/059d346)), closes [#851](https://github.com/RyzacInc/client-modules/issues/851)
+
+
+
+
+
 ## <small>9.2.3 (2020-06-24)</small>
 
 * fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)
