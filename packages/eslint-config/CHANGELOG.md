@@ -1,4 +1,4 @@
-### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@0.3.3) (2020-07-08)
+### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@0.3.3) (2020-06-11)
 
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.2...@codecademy/eslint-config@0.3.3) (2020-04-17)
 
