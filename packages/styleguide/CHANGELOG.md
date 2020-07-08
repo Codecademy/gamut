@@ -1,83 +1,65 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>11.2.4 (2020-06-25)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.12) (2020-07-08)
 
 
+### ✨ Features
+
+* **Gamut:** Added Accordion header ([ef8dc40](https://github.com/Codecademy/client-modules/commit/ef8dc40452f480596866a00c72bcaf3abc1fe441))
 
 
+### Other Changes
 
-## <small>11.2.3 (2020-06-24)</small>
+* Fixed duplicate story name ([5d4373e](https://github.com/Codecademy/client-modules/commit/5d4373e4635f7c933c6be3f64d9c3f47564090c1))
+* Fixed story post merge ([69e6365](https://github.com/Codecademy/client-modules/commit/69e6365ee9eea302bce0c9ae9d8c2f861adc77f5))
+* Header too ([02cf129](https://github.com/Codecademy/client-modules/commit/02cf129ea83d93a9627beeb6db3d5f51fb3cac2a))
+* initiallyExpanded; ^ dependency ([5ee8783](https://github.com/Codecademy/client-modules/commit/5ee8783b825ef962e04f11cfcec3408c1810e182))
+* JK, use a separate sub story ([0a3d330](https://github.com/Codecademy/client-modules/commit/0a3d330af0658ec6be8e12396dc7406a8417bd9c))
+* Merge branch 'master' ([126eae5](https://github.com/Codecademy/client-modules/commit/126eae5c51b3bdffbfd981bdfcb5e3c8ee5cd88c))
+* Merge branch 'master' ([d9577b9](https://github.com/Codecademy/client-modules/commit/d9577b9caa218e42fb53c7a2dd61c3dd9e5b27c6))
+* Merge branch 'master' into jg-accordion ([6980437](https://github.com/Codecademy/client-modules/commit/698043782225b04233b1bd67069efb2cdb239422))
+* Merge branch 'master' into jg-accordion ([6efcc34](https://github.com/Codecademy/client-modules/commit/6efcc341c62f8511ff38d08b8494ba0a65535136))
+* Merge branch 'master' into jg-accordion ([a633f5d](https://github.com/Codecademy/client-modules/commit/a633f5dbdbdf21884eabf1960b21946efe47dcb2))
+* No empty classes (lol@me); subcomponents ([66f9da1](https://github.com/Codecademy/client-modules/commit/66f9da155e021080efa83858eaef1ad33225c792))
+* Removed random number generation for tests ([ec2c045](https://github.com/Codecademy/client-modules/commit/ec2c0452c3237bbed6f176f96e29cb48c78b8029))
+* Test only, without a snapshot ([90fa747](https://github.com/Codecademy/client-modules/commit/90fa74775f7cf5bd7d7dcd74de40506e75bd8019))
+* Used full Enzyme mount in renderer ([9eda436](https://github.com/Codecademy/client-modules/commit/9eda4364d3fc70981845f733424688b87a7ce957))
 
-* fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)
+### [11.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.3...@codecademy/styleguide@11.2.4) (2020-06-25)
 
-
-
-
-
-## <small>11.2.2 (2020-06-23)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## <small>11.2.1 (2020-06-22)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
+### [11.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.2...@codecademy/styleguide@11.2.3) (2020-06-24)
 
 
+### 🐛 Bug Fixes
 
-## 11.2.0 (2020-06-18)
+* **Video:** add onReady prop ([#847](https://github.com/Codecademy/client-modules/issues/847)) ([147a11e](https://github.com/Codecademy/client-modules/commit/147a11e22700530cecab1a3458fe901848f8fe3d))
 
-* feat(Video): a new video component (#842) ([afdd0d3](https://github.com/RyzacInc/client-modules/commit/afdd0d3)), closes [#842](https://github.com/RyzacInc/client-modules/issues/842)
+### [11.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.1...@codecademy/styleguide@11.2.2) (2020-06-23)
 
+### [11.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.0...@codecademy/styleguide@11.2.1) (2020-06-22)
 
-
-
-
-## <small>11.1.2 (2020-06-16)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.2...@codecademy/styleguide@11.2.0) (2020-06-18)
 
 
+### ✨ Features
+
+* **Video:** a new video component ([#842](https://github.com/Codecademy/client-modules/issues/842)) ([afdd0d3](https://github.com/Codecademy/client-modules/commit/afdd0d3437faa3abf302cc0fa3089b1ab8cb1302))
+
+### [11.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.1...@codecademy/styleguide@11.1.2) (2020-06-16)
+
+### [11.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.0...@codecademy/styleguide@11.1.1) (2020-06-16)
+
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.4...@codecademy/styleguide@11.1.0) (2020-06-16)
 
 
+### ✨ Features
 
-## <small>11.1.1 (2020-06-16)</small>
+* make text field labels optional  ([#837](https://github.com/Codecademy/client-modules/issues/837)) ([d9ca277](https://github.com/Codecademy/client-modules/commit/d9ca2775eaf5366b422a194a7224251f0271608d))
 
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
+### [11.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.4) (2020-06-12)
 
 
-## 11.1.0 (2020-06-16)
+### 🐛 Bug Fixes
 
-* feat: make text field labels optional  (#837) ([d9ca277](https://github.com/RyzacInc/client-modules/commit/d9ca277)), closes [#837](https://github.com/RyzacInc/client-modules/issues/837)
-
-
-
-
-
-## <small>11.0.4 (2020-06-12)</small>
-
-* fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)
-* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
-
-
-
-
-
-### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.3) (2020-06-11)
+* allow field props to GridForm to contain IDs ([#835](https://github.com/Codecademy/client-modules/issues/835)) ([444f56b](https://github.com/Codecademy/client-modules/commit/444f56b0e4ab368f114bde3b941dd62814005efe))
 
 ### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
 
@@ -785,3 +767,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
