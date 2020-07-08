@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.2.9 (2020-07-08)</small>
+
+* Refactor GridFormInputGroup test assertions and renderers (#867) ([0b56726](https://github.com/RyzacInc/client-modules/commit/0b56726)), closes [#867](https://github.com/RyzacInc/client-modules/issues/867)
+
+
+
+
+
 ## <small>9.2.8 (2020-07-08)</small>
 
 * fix: accessibility changes (#863) ([51cce73](https://github.com/RyzacInc/client-modules/commit/51cce73)), closes [#863](https://github.com/RyzacInc/client-modules/issues/863)

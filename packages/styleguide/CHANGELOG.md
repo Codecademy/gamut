@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.14 (2020-07-08)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>11.2.13 (2020-07-08)</small>
 
 * Rebase (#865) ([f0b5224](https://github.com/RyzacInc/client-modules/commit/f0b5224)), closes [#865](https://github.com/RyzacInc/client-modules/issues/865)
