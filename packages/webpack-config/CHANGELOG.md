@@ -3,6 +3,7 @@
 
 ### Other Changes
 
+* update changelogs ([f0be186](http://github.com/Codecademy/client-modules/commit/f0be186f93bf87de37e2b497b4cbd37ca1590358))
 * update changelogs ([b798554](http://github.com/Codecademy/client-modules/commit/b7985549d0c961150177a56cea7c02dd568bc1e5))
 
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
