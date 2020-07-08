@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "11.2.12",
+  "version": "11.2.13",
   "author": "Codecademy Engineering",
   "private": true,
   "scripts": {
