@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.2.12 (2020-07-08)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>11.2.11 (2020-07-07)</small>
 
 * chore(Header): Adds Header stories [GM-51] (#856) ([cda648c](https://github.com/RyzacInc/client-modules/commit/cda648c)), closes [#856](https://github.com/RyzacInc/client-modules/issues/856)
