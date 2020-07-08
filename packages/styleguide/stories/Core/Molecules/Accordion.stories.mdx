@@ -34,6 +34,12 @@ conditionally rendered based on whether the accordion is expanded.
 
 <Props of={Accordion} />
 
+> Note that accordions will fit to `100%` of the the height of their parent container.
+> If you need a fixed height container, wrap the accordion in a `<div>`.
+
+An `AccordionButton` component also exists if you just want the controlled heading behavior.
+We'll likely remove it soon, as all consumers are meant to switch to `Accordion`.
+
 ## Initial Expansion
 
 If you want the accordion to start off expanded, use the `initiallyExpanded` prop:
