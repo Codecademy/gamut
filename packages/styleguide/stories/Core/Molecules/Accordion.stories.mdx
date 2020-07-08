@@ -1,0 +1,112 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Accordion, AccordionButton, VisualTheme } from '@codecademy/gamut/src';
+import { action } from '@storybook/addon-actions';
+import { StoryStatus } from '../../../Blocks';
+import { boolean, select } from '@storybook/addon-knobs';
+
+<Meta
+  title="Core|Molecules/Accordion"
+  component={Accordion}
+  subcomponents={{ AccordionButton }}
+/>
+
+# Accordion
+
+<StoryStatus status="inProgress" />
+
+A molecule consisting of a clickable header that animates show or hide its children,
+such as a "hint" section in the LE or a list of department jobs on a careers page.
+
+Both its header text and general children can be any arbitrary content, or can be
+conditionally rendered based on whether the accordion is expanded.
+
+<Preview withSource="open">
+  <Story name="Accordion">
+    <Accordion
+      header="Click to Toggle Me!"
+      onChange={action('Changed')}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+    >
+      Wow, hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+<Props of={Accordion} />
+
+> Note that accordions will fit to `100%` of the the height of their parent container.
+> If you need a fixed height container, wrap the accordion in a `<div>`.
+
+An `AccordionButton` component also exists if you just want the controlled heading behavior.
+We'll likely remove it soon, as all consumers are meant to switch to `Accordion`.
+
+## Initial Expansion
+
+If you want the accordion to start off expanded, use the `initiallyExpanded` prop:
+
+<Preview>
+  <Story name="Initial Expansion">
+    <Accordion
+      header="Click to Toggle Me!"
+      initiallyExpanded
+      onChange={action('Changed')}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+    >
+      Wow, not-so-hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+## Themes
+
+### Blue
+
+Blue accordion tops are only usable in dark contexts, such as the LE's
+Help Menu.
+
+<Preview className="dark">
+  <Story name="Blue">
+    <Accordion
+      header="Click to Toggle Me!"
+      onChange={action('Changed')}
+      theme="blue"
+    >
+      Wow, hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+### Plain
+
+Plain accordion tops are best applied in plain pages such as marketing pages
+where we haven't been able to invest yet in a more solid theme.
+
+<Preview>
+  <Story name="Plain">
+    <Accordion
+      header="Click to Toggle Me!"
+      onChange={action('Changed')}
+      theme="plain"
+    >
+      Wow, hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+### Yellow
+
+Yellow accordion tops are our favorite: they look the most professional on
+their own. They're only used in the "Get a Hint" sections of the LE's
+narrative pane.
+
+<Preview>
+  <Story name="Yellow">
+    <Accordion
+      header="Click to Toggle Me!"
+      onChange={action('Changed')}
+      theme="yellow"
+    >
+      Wow, hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>

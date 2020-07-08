@@ -10,7 +10,7 @@ export type AccordionButtonProps = {
   className?: string;
   expanded?: boolean;
   onClick: () => void;
-  theme?: 'blue' | 'plain' | 'yellow';
+  theme: 'blue' | 'plain' | 'yellow';
 };
 
 const buttonThemes = {
