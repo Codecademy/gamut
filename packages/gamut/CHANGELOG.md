@@ -1,123 +1,97 @@
-# Change Log
+### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.2.9) (2020-07-08)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.8...@codecademy/gamut@9.2.9) (2020-07-08)
 
-## <small>9.2.9 (2020-07-08)</small>
 
-* Refactor GridFormInputGroup test assertions and renderers (#867) ([0b56726](https://github.com/RyzacInc/client-modules/commit/0b56726)), closes [#867](https://github.com/RyzacInc/client-modules/issues/867)
+### Other Changes
 
+* Refactor GridFormInputGroup test assertions and renderers ([#867](https://github.com/Codecademy/client-modules/issues/867)) ([0b56726](https://github.com/Codecademy/client-modules/commit/0b567266236819bd0e11b8952b1677a4496d4dcd))
 
+### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.7...@codecademy/gamut@9.2.8) (2020-07-08)
 
 
+### 🐛 Bug Fixes
 
-## <small>9.2.8 (2020-07-08)</small>
+* accessibility changes ([#863](https://github.com/Codecademy/client-modules/issues/863)) ([51cce73](https://github.com/Codecademy/client-modules/commit/51cce73923d59fbe39011a69e6baebc88130cf03))
 
-* fix: accessibility changes (#863) ([51cce73](https://github.com/RyzacInc/client-modules/commit/51cce73)), closes [#863](https://github.com/RyzacInc/client-modules/issues/863)
+### [9.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.6...@codecademy/gamut@9.2.7) (2020-06-30)
 
 
+### 💅 Styles
 
+* set default red color for form errors ([#855](https://github.com/Codecademy/client-modules/issues/855)) ([ede31dd](https://github.com/Codecademy/client-modules/commit/ede31dd2c4a142fbc1d23d72f7cdb1f6889b03a9))
 
+### [9.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.5...@codecademy/gamut@9.2.6) (2020-06-30)
 
-## <small>9.2.7 (2020-06-30)</small>
 
-* style: set default red color for form errors (#855) ([ede31dd](https://github.com/RyzacInc/client-modules/commit/ede31dd)), closes [#855](https://github.com/RyzacInc/client-modules/issues/855)
+### 🐛 Bug Fixes
 
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
 
+### [9.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.4...@codecademy/gamut@9.2.5) (2020-06-29)
 
 
+### 🐛 Bug Fixes
 
-## <small>9.2.6 (2020-06-30)</small>
+* **Video:** make video styles more flexible ([#854](https://github.com/Codecademy/client-modules/issues/854)) ([cadab3a](https://github.com/Codecademy/client-modules/commit/cadab3a5cf25ee23f3215428c49d0b93155bc87c))
 
-* fix(Markdown): allow flexible vimeo videos in markdown (#853) ([829002d](https://github.com/RyzacInc/client-modules/commit/829002d)), closes [#853](https://github.com/RyzacInc/client-modules/issues/853)
+### [9.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.3...@codecademy/gamut@9.2.4) (2020-06-25)
 
 
+### 🐛 Bug Fixes
 
+* **Video:** check if onReady exists ([#851](https://github.com/Codecademy/client-modules/issues/851)) ([059d346](https://github.com/Codecademy/client-modules/commit/059d34674a991ba2955a27e2ed0fe72598de35cf))
 
+### [9.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.2...@codecademy/gamut@9.2.3) (2020-06-24)
 
-## <small>9.2.5 (2020-06-29)</small>
 
-* fix(Video): make video styles more flexible (#854) ([cadab3a](https://github.com/RyzacInc/client-modules/commit/cadab3a)), closes [#854](https://github.com/RyzacInc/client-modules/issues/854)
+### 🐛 Bug Fixes
 
+* **Video:** add onReady prop ([#847](https://github.com/Codecademy/client-modules/issues/847)) ([147a11e](https://github.com/Codecademy/client-modules/commit/147a11e22700530cecab1a3458fe901848f8fe3d))
 
+### [9.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.1...@codecademy/gamut@9.2.2) (2020-06-23)
 
+### [9.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.0...@codecademy/gamut@9.2.1) (2020-06-22)
 
 
-## <small>9.2.4 (2020-06-25)</small>
+### 🐛 Bug Fixes
 
-* fix(Video): check if onReady exists (#851) ([059d346](https://github.com/RyzacInc/client-modules/commit/059d346)), closes [#851](https://github.com/RyzacInc/client-modules/issues/851)
+* **Video:** add onPlay prop to Video for tracking purposes ([#845](https://github.com/Codecademy/client-modules/issues/845)) ([70c6ff9](https://github.com/Codecademy/client-modules/commit/70c6ff9e0c579effe696592671841a251908d8c6))
 
+## [9.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.1.2...@codecademy/gamut@9.2.0) (2020-06-18)
 
 
+### ✨ Features
 
+* **Video:** a new video component ([#842](https://github.com/Codecademy/client-modules/issues/842)) ([afdd0d3](https://github.com/Codecademy/client-modules/commit/afdd0d3437faa3abf302cc0fa3089b1ab8cb1302))
 
-## <small>9.2.3 (2020-06-24)</small>
+### [9.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.1.1...@codecademy/gamut@9.1.2) (2020-06-16)
 
-* fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)
 
+### Other Changes
 
+* Change FormGroupLabel styles for accessibility ([#839](https://github.com/Codecademy/client-modules/issues/839)) ([dcb12ca](https://github.com/Codecademy/client-modules/commit/dcb12caa95138b7c20338684f9675782291a6b9e))
 
+### [9.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.1.0...@codecademy/gamut@9.1.1) (2020-06-16)
 
 
-## <small>9.2.2 (2020-06-23)</small>
+### 🐛 Bug Fixes
 
-**Note:** Version bump only for package @codecademy/gamut
+* **CheckboxField:** allow react nodes for checkbox description ([#840](https://github.com/Codecademy/client-modules/issues/840)) ([9758f9f](https://github.com/Codecademy/client-modules/commit/9758f9f096df4fbd8114f563dc94c15c96dd1ac1))
 
+## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.5...@codecademy/gamut@9.1.0) (2020-06-16)
 
 
+### ✨ Features
 
+* make text field labels optional  ([#837](https://github.com/Codecademy/client-modules/issues/837)) ([d9ca277](https://github.com/Codecademy/client-modules/commit/d9ca2775eaf5366b422a194a7224251f0271608d))
 
-## <small>9.2.1 (2020-06-22)</small>
+### [9.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.4...@codecademy/gamut@9.0.5) (2020-06-12)
 
-* fix(Video): add onPlay prop to Video for tracking purposes (#845) ([70c6ff9](https://github.com/RyzacInc/client-modules/commit/70c6ff9)), closes [#845](https://github.com/RyzacInc/client-modules/issues/845)
 
+### 🐛 Bug Fixes
 
-
-
-
-## 9.2.0 (2020-06-18)
-
-* feat(Video): a new video component (#842) ([afdd0d3](https://github.com/RyzacInc/client-modules/commit/afdd0d3)), closes [#842](https://github.com/RyzacInc/client-modules/issues/842)
-
-
-
-
-
-## <small>9.1.2 (2020-06-16)</small>
-
-* Change FormGroupLabel styles for accessibility (#839) ([dcb12ca](https://github.com/RyzacInc/client-modules/commit/dcb12ca)), closes [#839](https://github.com/RyzacInc/client-modules/issues/839)
-
-
-
-
-
-## <small>9.1.1 (2020-06-16)</small>
-
-* fix(CheckboxField): allow react nodes for checkbox description (#840) ([9758f9f](https://github.com/RyzacInc/client-modules/commit/9758f9f)), closes [#840](https://github.com/RyzacInc/client-modules/issues/840)
-
-
-
-
-
-## 9.1.0 (2020-06-16)
-
-* feat: make text field labels optional  (#837) ([d9ca277](https://github.com/RyzacInc/client-modules/commit/d9ca277)), closes [#837](https://github.com/RyzacInc/client-modules/issues/837)
-
-
-
-
-
-## <small>9.0.5 (2020-06-12)</small>
-
-* fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)
-* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
-
-
-
-
-
-### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.4...@codecademy/gamut@9.0.4) (2020-06-11)
+* allow field props to GridForm to contain IDs ([#835](https://github.com/Codecademy/client-modules/issues/835)) ([444f56b](https://github.com/Codecademy/client-modules/commit/444f56b0e4ab368f114bde3b941dd62814005efe))
 
 ### [9.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.0.3...@codecademy/gamut@9.0.4) (2020-06-11)
 
@@ -2680,3 +2654,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
