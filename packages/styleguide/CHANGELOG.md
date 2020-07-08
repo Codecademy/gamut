@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 11.3.0 (2020-07-08)
+
+* feat(Gamut): Added Accordion component (#826) ([22c9b05](https://github.com/RyzacInc/client-modules/commit/22c9b05)), closes [#826](https://github.com/RyzacInc/client-modules/issues/826)
+* chore: update changelogs ([bc18b49](https://github.com/RyzacInc/client-modules/commit/bc18b49))
+* chore: update changelogs ([ad786c2](https://github.com/RyzacInc/client-modules/commit/ad786c2))
+* chore: update changelogs ([3202e2f](https://github.com/RyzacInc/client-modules/commit/3202e2f))
+* chore: update changelogs ([f0be186](https://github.com/RyzacInc/client-modules/commit/f0be186))
+* chore: update changelogs ([b798554](https://github.com/RyzacInc/client-modules/commit/b798554))
+
+
+
+
+
 ### [11.2.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.2.14) (2020-07-08)
 
 
@@ -802,4 +820,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-

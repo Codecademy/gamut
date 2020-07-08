@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 9.3.0 (2020-07-08)
+
+* feat(Gamut): Added Accordion component (#826) ([22c9b05](https://github.com/RyzacInc/client-modules/commit/22c9b05)), closes [#826](https://github.com/RyzacInc/client-modules/issues/826)
+* chore: update changelogs ([bc18b49](https://github.com/RyzacInc/client-modules/commit/bc18b49))
+* chore: update changelogs ([ad786c2](https://github.com/RyzacInc/client-modules/commit/ad786c2))
+* chore: update changelogs ([3202e2f](https://github.com/RyzacInc/client-modules/commit/3202e2f))
+* chore: update changelogs ([f0be186](https://github.com/RyzacInc/client-modules/commit/f0be186))
+* chore: update changelogs ([b798554](https://github.com/RyzacInc/client-modules/commit/b798554))
+
+
+
+
+
 ### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.2.9) (2020-07-08)
 
 
@@ -2662,4 +2680,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
