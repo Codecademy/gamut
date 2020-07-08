@@ -161,7 +161,7 @@ jobs:
       - run:
           name: Update Changelogs
           command: |
-            yarn lerna regenerate-changelog
+            yarn regenerate-changelog
             if [ -n "$(git status --porcelain)" ]; then
               git add -A
               git commit -am "chore: update changelogs"
