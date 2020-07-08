@@ -1,7 +1,5 @@
-import {
-  itHandlesRequiredProps,
-  renderGridFormCheckboxInput,
-} from '../../TestHelper';
+import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { renderGridFormCheckboxInput } from '../../__fixtures__/renderers';
 
 describe('GridFormCheckboxInput', () => {
   describe('when an id is passed as a prop', () => {
