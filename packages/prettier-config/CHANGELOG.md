@@ -3,6 +3,7 @@
 
 ### Other Changes
 
+* update changelogs ([862788b](http://github.com/Codecademy/client-modules/commit/862788be0dc7678633e5750a289afc48ac516450))
 * update changelogs ([3624eb5](http://github.com/Codecademy/client-modules/commit/3624eb543e0537367192223e1f376182adf0f703))
 * update changelogs ([517a1b6](http://github.com/Codecademy/client-modules/commit/517a1b638e7881dd09a6289127074c787ad7b02f))
 * update changelogs ([a877fca](http://github.com/Codecademy/client-modules/commit/a877fca9ef44bb69581239588327cea3d2b9f70d))
