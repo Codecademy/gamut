@@ -1,8 +1,9 @@
-### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.1) (2020-07-08)
+### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.1) (2020-07-09)
 
 
 ### Other Changes
 
+* update changelogs ([2d92373](https://github.com/Codecademy/client-modules/commit/2d92373a38dfdc6969eadc6179c7bd52a936b2f8))
 * update changelogs ([64a278d](https://github.com/Codecademy/client-modules/commit/64a278ddc24cd219ce143be8b791d6a7ddb28b83))
 * update changelogs ([3c96897](https://github.com/Codecademy/client-modules/commit/3c9689753e1085402a8aee973b85fa82b32afff1))
 * update changelogs ([f95de1e](https://github.com/Codecademy/client-modules/commit/f95de1eda1775a6bc2fcd9d9f01d000ccf712e84))
