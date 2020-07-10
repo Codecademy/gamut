@@ -1,8 +1,9 @@
-## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.1.0) (2020-07-09)
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.1.0) (2020-07-10)
 
 
 ### Other Changes
 
+* update changelogs ([8d5b249](https://github.com/Codecademy/client-modules/commit/8d5b249029e7c5ee45254174614af3a7d6cade83))
 * update changelogs ([18c6c62](https://github.com/Codecademy/client-modules/commit/18c6c62f3bcb5b392308a87d12e97f7968f80d1f))
 * update changelogs ([6e1a524](https://github.com/Codecademy/client-modules/commit/6e1a5243f84bb885b7c9d55f190b07e51d0e21a0))
 * update changelogs ([6ed658b](https://github.com/Codecademy/client-modules/commit/6ed658b58f6df3b350b88413b6b85c5dc4be4370))
