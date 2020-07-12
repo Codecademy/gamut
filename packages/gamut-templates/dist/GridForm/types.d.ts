@@ -9,6 +9,7 @@ export declare type GridFormCheckboxField = BaseFormField & {
     defaultValue?: boolean;
     label?: string;
     type: 'checkbox';
+    className: string;
 };
 export declare type GridFormTextField = BaseFormField & {
     defaultValue?: string;
