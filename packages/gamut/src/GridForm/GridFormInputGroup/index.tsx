@@ -29,7 +29,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'checkbox':
         return (
           <GridFormCheckboxInput
-            className={styles.gridFormInput}
+            className={cx(styles.gridFormInput, props.field.className)}
             field={props.field}
             register={props.register}
           />
