@@ -1,8 +1,9 @@
-### [0.1.7](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.7...@codecademy/prettier-config@0.1.7) (2020-07-10)
+### [0.1.7](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.7...@codecademy/prettier-config@0.1.7) (2020-07-13)
 
 
 ### Other Changes
 
+* update changelogs ([8f4198d](http://github.com/Codecademy/client-modules/commit/8f4198d05528ba07869c52e1234e7f41d65f9d1e))
 * update changelogs ([9f12031](http://github.com/Codecademy/client-modules/commit/9f120318387350f27b5de90a242806024ad43b74))
 * update changelogs ([8887776](http://github.com/Codecademy/client-modules/commit/88877762a00f0456ddb8b940437a00f24ec6971e))
 * update changelogs ([6b18c79](http://github.com/Codecademy/client-modules/commit/6b18c7948146f46ccce91ab73da115d936126e12))
