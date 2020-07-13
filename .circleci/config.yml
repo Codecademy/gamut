@@ -155,6 +155,7 @@ jobs:
     <<: *default_env
     steps:
       - *add_github_ssh_key
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
