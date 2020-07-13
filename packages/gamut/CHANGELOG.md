@@ -3,6 +3,7 @@
 
 ### Other Changes
 
+* update changelogs ([472f413](https://github.com/Codecademy/client-modules/commit/472f413766c6f97916979ab165ec986a5cbc8e49))
 * update changelogs ([06ab442](https://github.com/Codecademy/client-modules/commit/06ab442d7d66f1bfddc5a010b01e759c7bd69a8a))
 
 ### [9.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.3.0...@codecademy/gamut@9.3.1) (2020-07-13)
