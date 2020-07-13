@@ -1,3 +1,26 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 11.4.0 (2020-07-13)
+
+* feat(Accordion): Accordion alignment: 'large' size; no outline in plain (#870) ([c7708cd](https://github.com/RyzacInc/client-modules/commit/c7708cd)), closes [#870](https://github.com/RyzacInc/client-modules/issues/870)
+* chore: update changelogs ([8b0ecdd](https://github.com/RyzacInc/client-modules/commit/8b0ecdd))
+* chore: update changelogs ([b901dcb](https://github.com/RyzacInc/client-modules/commit/b901dcb))
+* chore: update changelogs ([9ec6779](https://github.com/RyzacInc/client-modules/commit/9ec6779))
+* chore: update changelogs ([a360999](https://github.com/RyzacInc/client-modules/commit/a360999))
+* chore: update changelogs ([90957a8](https://github.com/RyzacInc/client-modules/commit/90957a8))
+* chore: update changelogs ([1e267dc](https://github.com/RyzacInc/client-modules/commit/1e267dc))
+* chore: update changelogs ([96b70bf](https://github.com/RyzacInc/client-modules/commit/96b70bf))
+* chore: update changelogs ([fdc8ebe](https://github.com/RyzacInc/client-modules/commit/fdc8ebe))
+* chore: update changelogs ([472f413](https://github.com/RyzacInc/client-modules/commit/472f413))
+* chore: update changelogs ([06ab442](https://github.com/RyzacInc/client-modules/commit/06ab442))
+
+
+
+
+
 ### [11.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.3.1...@codecademy/styleguide@11.3.1) (2020-07-13)
 
 
@@ -1423,4 +1446,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
