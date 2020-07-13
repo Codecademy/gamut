@@ -1,10 +1,17 @@
-<<<<<<< HEAD
-### [1.7.39](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.38...@codecademy/gamut-labs@1.7.39) (2020-07-13)
-=======
 # Change Log
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.7.40 (2020-07-13)</small>
+
+* chore(release): publish ([2cccbb9](https://github.com/Codecademy/client-modules/commit/2cccbb9))
+* chore(release): publish ([1607d62](https://github.com/Codecademy/client-modules/commit/1607d62))
+* chore(release): publish ([d5cf846](https://github.com/Codecademy/client-modules/commit/d5cf846))
+
+
+
+
 
 ## <small>1.7.39 (2020-07-13)</small>
 
