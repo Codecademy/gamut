@@ -23,7 +23,9 @@ export type AccordionProps = {
   /**
    * Called when the header is activated to toggle whether the accordion is expanded.
    */
-  onChange: (expanded: boolean) => void;
+  onChange?: (expanded: boolean) => void;
+
+  size?: 'normal' | 'large';
 
   /**
    * Visual theme for the clickable header button.
@@ -44,6 +46,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   header,
   initiallyExpanded,
   onChange,
+  size = 'normal',
   theme,
 }) => {
   const [expanded, setExpanded] = useState(initiallyExpanded);
@@ -60,12 +63,17 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   const onClick = () => {
     setExpanded(!expanded);
-    onChange(!expanded);
+    onChange?.(!expanded);
   };
 
   return (
     <div className={className}>
-      <AccordionButton expanded={expanded} onClick={onClick} theme={theme}>
+      <AccordionButton
+        expanded={expanded}
+        onClick={onClick}
+        size={size}
+        theme={theme}
+      >
         {header instanceof Function ? header(expanded) : header}
       </AccordionButton>
       <motion.div

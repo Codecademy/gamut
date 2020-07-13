@@ -25,7 +25,8 @@ conditionally rendered based on whether the accordion is expanded.
     <Accordion
       header="Click to Toggle Me!"
       onChange={action('Changed')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+      size={select('Size', ['normal', 'large'], 'normal')}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
     >
       Wow, hidden treasure!
     </Accordion>
@@ -36,6 +37,9 @@ conditionally rendered based on whether the accordion is expanded.
 
 > Note that accordions will fit to `100%` of the the height of their parent container.
 > If you need a fixed height container, wrap the accordion in a `<div>`.
+
+Accordions can be used for a variety of content, including big flashy subsections.
+Pass the `size` prop as `large` to create a bigger accordion.
 
 An `AccordionButton` component also exists if you just want the controlled heading behavior.
 We'll likely remove it soon, as all consumers are meant to switch to `Accordion`.

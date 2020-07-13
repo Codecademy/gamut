@@ -10,6 +10,7 @@ export type AccordionButtonProps = {
   className?: string;
   expanded?: boolean;
   onClick: () => void;
+  size?: 'normal' | 'large';
   theme: 'blue' | 'plain' | 'yellow';
 };
 
@@ -25,7 +26,6 @@ const buttonThemes = {
     component: Button,
     props: {
       flat: true,
-      outline: true,
       theme: 'brand-dark-blue',
     },
   },
@@ -40,23 +40,33 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   className,
   expanded,
   onClick,
+  size,
   theme,
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
+  const iconSize = size === 'large' ? 30 : undefined;
 
   return (
     <ButtonComponent
       aria-expanded={expanded}
-      className={cx(styles.accordionButton, styles[theme], className)}
+      className={cx(
+        styles.accordionButton,
+        styles[theme],
+        styles[size],
+        className
+      )}
       onClick={onClick}
+      flat
       {...props}
     >
-      {children}
+      <span className={styles.children}>{children}</span>
       <ChevronDownIcon
         className={cx(
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
         )}
+        height={iconSize}
+        width={iconSize}
       />
     </ButtonComponent>
   );
