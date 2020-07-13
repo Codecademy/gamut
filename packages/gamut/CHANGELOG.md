@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 9.5.0 (2020-07-13)
+
+* chore(release): publish ([2cccbb9](https://github.com/RyzacInc/client-modules/commit/2cccbb9))
+* chore(release): publish ([1607d62](https://github.com/RyzacInc/client-modules/commit/1607d62))
+* chore(release): publish ([d5cf846](https://github.com/RyzacInc/client-modules/commit/d5cf846))
+* feat(Accordion): Accordion alignment: 'large' size; no outline in plain (#870) ([e17ad5d](https://github.com/RyzacInc/client-modules/commit/e17ad5d)), closes [#870](https://github.com/RyzacInc/client-modules/issues/870)
+* feat(Gamut): Added Accordion component (#826) ([caf52d9](https://github.com/RyzacInc/client-modules/commit/caf52d9)), closes [#826](https://github.com/RyzacInc/client-modules/issues/826)
+* style: remove right left padding on checkbox and radio labels (#871) ([31c7d78](https://github.com/RyzacInc/client-modules/commit/31c7d78)), closes [#871](https://github.com/RyzacInc/client-modules/issues/871)
+
+
+
+
+
 ## 9.4.0 (2020-07-13)
 
 - feat(Accordion): Accordion alignment: 'large' size; no outline in plain (#870) ([c7708cd](https://github.com/RyzacInc/client-modules/commit/c7708cd)), closes [#870](https://github.com/RyzacInc/client-modules/issues/870)
