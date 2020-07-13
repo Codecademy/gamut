@@ -1,8 +1,22 @@
-### [1.7.37](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.37...@codecademy/gamut-labs@1.7.37) (2020-07-10)
+### [1.7.38](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.38...@codecademy/gamut-labs@1.7.38) (2020-07-13)
 
 
 ### Other Changes
 
+* update changelogs ([a360999](https://github.com/Codecademy/client-modules/commit/a360999497d2d674bb347f8471cc3c71f3828f1c))
+* update changelogs ([90957a8](https://github.com/Codecademy/client-modules/commit/90957a82305b6bd668bd7388681c29b9508f5ff4))
+* update changelogs ([1e267dc](https://github.com/Codecademy/client-modules/commit/1e267dcb557f38754b3bd8c6e547866da953aa39))
+* update changelogs ([96b70bf](https://github.com/Codecademy/client-modules/commit/96b70bfc7cde550871b9c34d28ee11193b3ab7e8))
+* update changelogs ([fdc8ebe](https://github.com/Codecademy/client-modules/commit/fdc8ebe52909abe79fe4084cb2dff3253d411264))
+* update changelogs ([472f413](https://github.com/Codecademy/client-modules/commit/472f413766c6f97916979ab165ec986a5cbc8e49))
+* update changelogs ([06ab442](https://github.com/Codecademy/client-modules/commit/06ab442d7d66f1bfddc5a010b01e759c7bd69a8a))
+
+### [1.7.38](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.37...@codecademy/gamut-labs@1.7.38) (2020-07-13)
+
+
+### Other Changes
+
+* update changelogs ([8f4198d](https://github.com/Codecademy/client-modules/commit/8f4198d05528ba07869c52e1234e7f41d65f9d1e))
 * update changelogs ([9f12031](https://github.com/Codecademy/client-modules/commit/9f120318387350f27b5de90a242806024ad43b74))
 * update changelogs ([8887776](https://github.com/Codecademy/client-modules/commit/88877762a00f0456ddb8b940437a00f24ec6971e))
 * update changelogs ([6b18c79](https://github.com/Codecademy/client-modules/commit/6b18c7948146f46ccce91ab73da115d936126e12))
