@@ -1,5 +1,10 @@
 ### [1.7.38](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.38...@codecademy/gamut-labs@1.7.38) (2020-07-13)
 
+
+### Other Changes
+
+* update changelogs ([06ab442](https://github.com/Codecademy/client-modules/commit/06ab442d7d66f1bfddc5a010b01e759c7bd69a8a))
+
 ### [1.7.38](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.37...@codecademy/gamut-labs@1.7.38) (2020-07-13)
 
 
