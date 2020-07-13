@@ -13,7 +13,7 @@
 
 .radioLabel {
   display: flex;
-  padding: $form-padding;
+  padding: $form-padding 0;
   align-items: center;
   transition: $transition-time;
   cursor: pointer;
