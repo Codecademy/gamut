@@ -1,4 +1,30 @@
+<<<<<<< HEAD
 ### [1.7.39](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.38...@codecademy/gamut-labs@1.7.39) (2020-07-13)
+=======
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.7.39 (2020-07-13)</small>
+
+* chore: update changelogs ([8b0ecdd](https://github.com/Codecademy/client-modules/commit/8b0ecdd))
+* chore: update changelogs ([b901dcb](https://github.com/Codecademy/client-modules/commit/b901dcb))
+* chore: update changelogs ([9ec6779](https://github.com/Codecademy/client-modules/commit/9ec6779))
+* chore: update changelogs ([a360999](https://github.com/Codecademy/client-modules/commit/a360999))
+* chore: update changelogs ([90957a8](https://github.com/Codecademy/client-modules/commit/90957a8))
+* chore: update changelogs ([1e267dc](https://github.com/Codecademy/client-modules/commit/1e267dc))
+* chore: update changelogs ([96b70bf](https://github.com/Codecademy/client-modules/commit/96b70bf))
+* chore: update changelogs ([fdc8ebe](https://github.com/Codecademy/client-modules/commit/fdc8ebe))
+* chore: update changelogs ([472f413](https://github.com/Codecademy/client-modules/commit/472f413))
+* chore: update changelogs ([06ab442](https://github.com/Codecademy/client-modules/commit/06ab442))
+
+
+
+
+
+### [1.7.38](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.38...@codecademy/gamut-labs@1.7.38) (2020-07-13)
+>>>>>>> 8678e9be... chore(release): publish
 
 
 ### Other Changes
@@ -711,4 +737,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
