@@ -164,6 +164,7 @@ jobs:
           command: |
             yarn regenerate-changelog
             if [ -n "$(git status --porcelain)" ]; then
+              git pull
               git add -A
               git commit -am "chore: update changelogs"
               git push
