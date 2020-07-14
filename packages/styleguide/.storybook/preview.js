@@ -16,6 +16,7 @@ addParameters({
     theme: gamutTheme,
     storySort: {
       order: [
+        'About',
         'Meta',
         'Foundations',
         'Layouts',
