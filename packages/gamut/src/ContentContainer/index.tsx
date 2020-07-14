@@ -5,8 +5,14 @@ import s from './styles.module.scss';
 
 export type ContentContainerProps = {
   className?: string;
+  /**
+   * TODO: Standardize as `as`
+   * Component type to wrap children with.
+   */
   el?: keyof ReactHTML;
-  /** Toggle a containerWide className to be applied with no max-width and smaller padding */
+  /**
+   * Toggle a containerWide className to be applied with no max-width and smaller padding
+   */
   wide?: boolean;
 };
 

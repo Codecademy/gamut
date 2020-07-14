@@ -53,18 +53,33 @@ const modificatorKeys = [
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
 export type RowProps = {
+  /** Justify columns with `space-around` on screensizes greater than modifer */
   around?: ModificatorType;
+  /** Justify columns with `space-between` on screensizes greater than modifer */
   between?: ModificatorType;
+  /** Align columns to `flex-end` on screensizes greater than modifer */
   bottom?: ModificatorType;
+  /** Justify columns to `center` on screensizes greater than modifer */
   center?: ModificatorType;
   className?: string;
+  /** Justify columns to `flex-end` on screensizes greater than modifer */
   end?: ModificatorType;
+  /** Set the row to be the first item in the FlexGrid on screensizes greater than modifer*/
   first?: ModificatorType;
+  /** Set the row to be the last item in the FlexGrid on screensizes greater than modifer */
   last?: ModificatorType;
+  /** Align columns to `center` on screensizes greater than modifer */
   middle?: ModificatorType;
+  /** Reverses the flex direction of the columns */
   reverse?: boolean;
+  /** Justify columns to `flex-start` on screensizes greater than modifer */
   start?: ModificatorType;
+  /**
+   * TODO: Standardize as `as`
+   * Component type to wrap children with.
+   */
   tagName?: string;
+  /** Align columns to `flex-start` on screensizes greater than modifer */
   top?: ModificatorType;
 };
 

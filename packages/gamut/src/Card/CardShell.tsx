@@ -7,6 +7,9 @@ const defaultProps = {
 };
 
 export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * Hover effect to show indicate depth and interactivity.
+   */
   hoverShadow?: boolean;
 };
 
