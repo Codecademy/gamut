@@ -39,7 +39,7 @@ export const ABOUT_SECTIONS = [
     emoji: '⚗️',
     description:
       'Components across the design spectrum that are more experimental or tied to brand representation.',
-    examples: ['Brand', 'Experimental'],
+    examples: ['About'],
   },
   {
     kind: 'Meta',
