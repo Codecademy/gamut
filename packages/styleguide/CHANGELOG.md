@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.7.2 (2020-07-14)</small>
+
+* chore(Styleguide): Update AboutCell's to match new heirarchy (#874) ([a9fc13a](https://github.com/RyzacInc/client-modules/commit/a9fc13a)), closes [#874](https://github.com/RyzacInc/client-modules/issues/874)
+
+
+
+
+
 ## <small>11.7.1 (2020-07-14)</small>
 
 * chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
