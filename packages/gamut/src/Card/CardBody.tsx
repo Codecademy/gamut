@@ -9,6 +9,9 @@ const defaultProps = {
 export type CardBodyProps = {
   children: ReactNode | ReactNode[];
   className?: string;
+  /**
+   * Use standard height regardless of content.
+   */
   standardPadding?: boolean;
 };
 
