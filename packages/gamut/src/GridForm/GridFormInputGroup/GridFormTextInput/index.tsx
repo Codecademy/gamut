@@ -27,6 +27,8 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       name={field.name}
       ref={register(field.validation)}
       type={field.type}
+      id={field.id}
+      required={field.validation && !!field.validation.required}
     />
   );
 };

@@ -12,6 +12,7 @@ import GridFormTextInput from './GridFormTextInput';
 import GridFormSelectInput from './GridFormSelectInput';
 import GridFormTextArea from './GridFormTextArea';
 import styles from './styles.module.scss';
+import cx from 'classnames';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -41,18 +42,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             field={props.field}
             register={props.register}
             setValue={props.setValue}
-          />
-        );
-
-      case 'date':
-      case 'email':
-      case 'text':
-        return (
-          <GridFormTextInput
-            className={styles.gridFormInput}
-            error={!!props.error}
-            field={props.field}
-            register={props.register}
+            error={props.error}
           />
         );
 
@@ -95,6 +85,16 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
             register={props.register}
           />
         );
+
+      default:
+        return (
+          <GridFormTextInput
+            className={styles.gridFormInput}
+            error={!!props.error}
+            field={props.field}
+            register={props.register}
+          />
+        );
     }
   };
 
@@ -102,8 +102,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     <Column size={props.field.size}>
       <FormGroup className={styles.formGroup}>
         <FormGroupLabel
-          className={styles.formGroupLabel}
-          htmlFor={props.field.name}
+          className={cx(
+            styles.formGroupLabel,
+            !props.field.label && styles.invisible
+          )}
+          htmlFor={props.field.id || props.field.name}
         >
           {props.field.label}
         </FormGroupLabel>

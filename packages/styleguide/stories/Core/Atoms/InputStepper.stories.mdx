@@ -1,0 +1,41 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '../../../Blocks';
+import { text, number } from '@storybook/addon-knobs';
+import { InputStepper } from '@codecademy/gamut/src';
+import { useState } from '@storybook/addons';
+
+<Meta title="Core/Atoms/InputStepper" component={InputStepper} />
+
+# Input Stepper
+
+<StoryStatus status="ready" />
+
+Input Steppers allow for finetuned control over numeric values. They
+override the default styles for numeric inputs.
+
+Steppers will default to a small size if selecting over values that are
+at most 1 digit, and choose a wider format sutable for 3 digits
+otherwise.
+
+Steppers are not appropriate for values larger than three digits.
+
+<Preview>
+  <Story name="Input Stepper">
+    {() => {
+      const [value, setValue] = useState(99);
+      return (
+        <InputStepper
+          min={number('Minimum', 0)}
+          max={number('Maximum', 999)}
+          ariaLabel="input stepper"
+          label={text('Label', 'things')}
+          onChange={setValue}
+          value={value}
+          onStepperButtonClick={() => null}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+<Props of={InputStepper} />

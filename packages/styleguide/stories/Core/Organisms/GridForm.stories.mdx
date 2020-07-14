@@ -1,11 +1,12 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { number } from '@storybook/addon-knobs';
-import { StoryStatus } from '../../../Templating/Blocks';
+import { number, select } from '@storybook/addon-knobs';
+
+import { StoryStatus } from '../../../Blocks';
 import { action } from '@storybook/addon-actions';
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
-<Meta title="Core|Organisms/GridForm" component={GridForm} />
+<Meta title="Core/Organisms/GridForm" component={GridForm} />
 
 # GridForm
 
@@ -104,6 +105,7 @@ responsive layouts.
           name: 'enough-swag',
           size: 3,
           type: 'checkbox',
+          id: 'my-super-cool-id',
         },
         {
           label: 'Preferred Modern Artist',
@@ -143,6 +145,7 @@ responsive layouts.
         contents: 'Submit Me!?',
         size: 12,
       }}
+      validation={select('validation', ['onSubmit', 'onChange'], 'onSubmit')}
     />
   </Story>
 </Preview>
@@ -288,13 +291,13 @@ default value is 'brand-purple'.
 ## Inline Submit Button
 
 We can make the Submit button inline with an input by setting the column
-sizes so they fit on the same row. e.g size 8 for an input and size 4 for
-the submit.
+sizes so they fit on the same row (e.g size 8 for an input and size 4 for
+the submit).
 
-Caveats: We need to adjust params to allow us to properly align elements
-for the following use cases.
+We can additionally remove the label from text inputs and checkbox inputs (though this
+causes alignment issues in checkboxes, as you can see below).
 
-#### Submit with no label text (but label still rendered) does not align properly with the checkbox
+#### Submit button is not aligned correctly when there is no checkbox input label
 
 <Preview>
   <Story name="Inline Submit Button">
@@ -319,14 +322,38 @@ for the following use cases.
   </Story>
 </Preview>
 
-#### Submit even when the label has visible text, is still not aligned right
+#### Submit button is not aligned correctly when there is a text input label
 
 <Preview>
-  <Story name="No Label Inline">
+  <Story name="Inline Text Input With Label">
     <GridForm
       fields={[
         {
           label: 'Label',
+          name: 'email',
+          size: 8,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async (values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Inline Submit!?',
+        size: 4,
+        position: 'right',
+      }}
+    />
+  </Story>
+</Preview>
+
+#### Submit button is aligned correctly when there is no text input label
+
+<Preview>
+  <Story name="Inline Text Input With No Label">
+    <GridForm
+      fields={[
+        {
           name: 'email',
           size: 8,
           type: 'text',

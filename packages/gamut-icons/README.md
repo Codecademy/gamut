@@ -7,7 +7,7 @@
 1. Add your SVG file to the `src` folder
 2. `cd` into the `packages/gamut-icons` directory
 3. Run `yarn build`
-4. Start storybook and go to http://localhost:6006/?path=/story/visuals-icons--all-icons
+4. Start storybook and go to http://localhost:6006/?path=/story/core-atoms-icons--editable-icon
 5. Make sure your icon shows up and looks correct, make sure it is black by default and tht you can adjust the color using the storybook knobs drawer
 
 ## Icon Guidelines

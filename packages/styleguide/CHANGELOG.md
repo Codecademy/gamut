@@ -1,2146 +1,803 @@
-# Change Log
+## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## <small>9.11.1 (2020-05-14)</small>
+### ✨ Features
 
-* Update tabs stories to MDX (#803) ([79c41eb](https://github.com/RyzacInc/client-modules/commit/79c41eb)), closes [#803](https://github.com/RyzacInc/client-modules/issues/803)
+* **Accordion:** Accordion alignment: 'large' size; no outline in plain ([#870](https://github.com/Codecademy/client-modules/issues/870)) ([e17ad5d](https://github.com/Codecademy/client-modules/commit/e17ad5d037fd2d084fb57fe1179abeaad57b26ec))
+* **Gamut:** Added Accordion component ([#826](https://github.com/Codecademy/client-modules/issues/826)) ([caf52d9](https://github.com/Codecademy/client-modules/commit/caf52d9e0408580ddab965750ae619b7626b28e7))
 
+### [11.2.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.13...@codecademy/styleguide@11.2.14) (2020-07-08)
 
+### [11.2.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.12...@codecademy/styleguide@11.2.13) (2020-07-08)
 
 
+### Other Changes
 
-## 9.11.0 (2020-05-14)
+* Rebase ([#865](https://github.com/Codecademy/client-modules/issues/865)) ([f0b5224](https://github.com/Codecademy/client-modules/commit/f0b52246cdf6b746b4f27bd04ebb682eae75dbf6))
 
-* feat(Brand): Ported common Loading icon to Brand/Labs (#794) ([b7950c9](https://github.com/RyzacInc/client-modules/commit/b7950c9)), closes [#794](https://github.com/RyzacInc/client-modules/issues/794)
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.11...@codecademy/styleguide@11.2.12) (2020-07-08)
 
+### [11.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.10...@codecademy/styleguide@11.2.11) (2020-07-07)
 
 
+### Other Changes
 
+* **Header:** Adds Header stories [GM-51] ([#856](https://github.com/Codecademy/client-modules/issues/856)) ([cda648c](https://github.com/Codecademy/client-modules/commit/cda648ca472818296889590731d15c80216d98fa))
 
-## 9.10.0 (2020-05-13)
+### [11.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.9...@codecademy/styleguide@11.2.10) (2020-07-07)
 
-* feat(Styleguide): Convert All Stories to MDX (#788) ([96255a0](https://github.com/RyzacInc/client-modules/commit/96255a0)), closes [#788](https://github.com/RyzacInc/client-modules/issues/788)
 
+### Other Changes
 
+* Fixes bad prefix on brand colors ([#862](https://github.com/Codecademy/client-modules/issues/862)) ([58f98ec](https://github.com/Codecademy/client-modules/commit/58f98ec2c7b99efebfe5da65652f0c5260f689f8))
 
+### [11.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.9) (2020-07-02)
 
 
-## <small>9.9.2 (2020-05-12)</small>
+### Other Changes
 
-* fix(Gamut): Correctly hooked up GridForm's radio-group inputs for validation updates (#795) ([2cd6d7a](https://github.com/RyzacInc/client-modules/commit/2cd6d7a)), closes [#795](https://github.com/RyzacInc/client-modules/issues/795)
+* **Styleguide:** Upgrade to latest storybook beta ([#859](https://github.com/Codecademy/client-modules/issues/859)) ([7b98753](https://github.com/Codecademy/client-modules/commit/7b987532d96a20701091b1688ce193ec52617283))
 
+### [11.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.7...@codecademy/styleguide@11.2.8) (2020-07-01)
 
 
+### Other Changes
 
+* **Styleguide:** Add status indicator to the Badge story ([#850](https://github.com/Codecademy/client-modules/issues/850)) ([1aaa448](https://github.com/Codecademy/client-modules/commit/1aaa448c3f779a09e9db914e84867fa25d3a8150))
 
-## <small>9.9.1 (2020-05-12)</small>
+### [11.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.6...@codecademy/styleguide@11.2.7) (2020-06-30)
 
-**Note:** Version bump only for package @codecademy/styleguide
+### [11.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.5...@codecademy/styleguide@11.2.6) (2020-06-30)
 
 
+### 🐛 Bug Fixes
 
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
 
+### [11.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.5) (2020-06-29)
 
-## 9.9.0 (2020-05-12)
+### [11.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.3...@codecademy/styleguide@11.2.4) (2020-06-25)
 
-* feat(Gamut): Checkbox default style changes and add multiline prop (#796) ([f83b362](https://github.com/RyzacInc/client-modules/commit/f83b362)), closes [#796](https://github.com/RyzacInc/client-modules/issues/796)
+### [11.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.2...@codecademy/styleguide@11.2.3) (2020-06-24)
 
 
+### 🐛 Bug Fixes
 
+* **Video:** add onReady prop ([#847](https://github.com/Codecademy/client-modules/issues/847)) ([147a11e](https://github.com/Codecademy/client-modules/commit/147a11e22700530cecab1a3458fe901848f8fe3d))
 
+### [11.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.1...@codecademy/styleguide@11.2.2) (2020-06-23)
 
-## 9.8.0 (2020-05-11)
+### [11.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.0...@codecademy/styleguide@11.2.1) (2020-06-22)
 
-* feat(styleguide): Added Components documentation (#781) ([d7039e5](https://github.com/RyzacInc/client-modules/commit/d7039e5)), closes [#781](https://github.com/RyzacInc/client-modules/issues/781)
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.2...@codecademy/styleguide@11.2.0) (2020-06-18)
 
 
+### ✨ Features
 
+* **Video:** a new video component ([#842](https://github.com/Codecademy/client-modules/issues/842)) ([afdd0d3](https://github.com/Codecademy/client-modules/commit/afdd0d3437faa3abf302cc0fa3089b1ab8cb1302))
 
+### [11.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.1...@codecademy/styleguide@11.1.2) (2020-06-16)
 
-## <small>9.7.1 (2020-05-11)</small>
+### [11.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.0...@codecademy/styleguide@11.1.1) (2020-06-16)
 
-* remove appbartab and make headertab simpler (#792) ([2db0e54](https://github.com/RyzacInc/client-modules/commit/2db0e54)), closes [#792](https://github.com/RyzacInc/client-modules/issues/792)
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.4...@codecademy/styleguide@11.1.0) (2020-06-16)
 
 
+### ✨ Features
 
+* make text field labels optional  ([#837](https://github.com/Codecademy/client-modules/issues/837)) ([d9ca277](https://github.com/Codecademy/client-modules/commit/d9ca2775eaf5366b422a194a7224251f0271608d))
 
+### [11.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.4) (2020-06-12)
 
-## 9.7.0 (2020-05-06)
 
-* feat(Gamut): added RadioGroup inputs for GridForm (#759) ([6d969b8](https://github.com/RyzacInc/client-modules/commit/6d969b8)), closes [#759](https://github.com/RyzacInc/client-modules/issues/759)
-* Corrected terrible couple/few typo in Platform colors (#780) ([007f371](https://github.com/RyzacInc/client-modules/commit/007f371)), closes [#780](https://github.com/RyzacInc/client-modules/issues/780)
+### 🐛 Bug Fixes
 
+* allow field props to GridForm to contain IDs ([#835](https://github.com/Codecademy/client-modules/issues/835)) ([444f56b](https://github.com/Codecademy/client-modules/commit/444f56b0e4ab368f114bde3b941dd62814005efe))
 
+### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
 
+### [11.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.1...@codecademy/styleguide@11.0.2) (2020-06-10)
 
+### [11.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.0...@codecademy/styleguide@11.0.1) (2020-06-10)
 
-## <small>9.6.1 (2020-05-06)</small>
 
-* Removed unused deprecated button themes (#774) ([013e403](https://github.com/RyzacInc/client-modules/commit/013e403)), closes [#774](https://github.com/RyzacInc/client-modules/issues/774)
+### Other Changes
 
+* Switched storyshot test renderer to Enzyme mounting ([#834](https://github.com/Codecademy/client-modules/issues/834)) ([4d2b10f](https://github.com/Codecademy/client-modules/commit/4d2b10fbbe8de798f8628066fd3135491931ce68))
 
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.11...@codecademy/styleguide@11.0.0) (2020-06-09)
 
 
+### ⚠ BREAKING CHANGES
 
-## 9.6.0 (2020-05-05)
+* **Gamut:** Removed deprecated color variables (#819)
 
-* feat(Gamut): Created separate bucket for "Platform" colors (#778) ([26daf75](https://github.com/RyzacInc/client-modules/commit/26daf75)), closes [#778](https://github.com/RyzacInc/client-modules/issues/778)
+### Other Changes
 
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/client-modules/issues/819)) ([1dcce36](https://github.com/Codecademy/client-modules/commit/1dcce363a7fc9f4a37e71b667fa0de984671bd3c))
 
+### [10.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.10...@codecademy/styleguide@10.0.11) (2020-06-09)
 
+### [10.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.9...@codecademy/styleguide@10.0.10) (2020-06-09)
 
 
-## <small>9.5.6 (2020-05-05)</small>
+### Other Changes
 
-* Fix Text Story directory (#779) ([d575e09](https://github.com/RyzacInc/client-modules/commit/d575e09)), closes [#779](https://github.com/RyzacInc/client-modules/issues/779)
+* Allowed Alerts to not be passed an onClose callback ([#829](https://github.com/Codecademy/client-modules/issues/829)) ([c461eaf](https://github.com/Codecademy/client-modules/commit/c461eaf72330b6ccf1928f1f7f94d624e430b4ea))
 
+### [10.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.8...@codecademy/styleguide@10.0.9) (2020-06-09)
 
 
+### Other Changes
 
+* Remove Unused Blocks / Helpers ([#831](https://github.com/Codecademy/client-modules/issues/831)) ([8b8e077](https://github.com/Codecademy/client-modules/commit/8b8e0771ff33728cb795bbe2acc1d6a11d5f726b))
 
-## <small>9.5.5 (2020-05-05)</small>
+### [10.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.7...@codecademy/styleguide@10.0.8) (2020-06-08)
 
-* Fix about links to allow nested linking (#776) ([e378fcb](https://github.com/RyzacInc/client-modules/commit/e378fcb)), closes [#776](https://github.com/RyzacInc/client-modules/issues/776)
+### [10.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.6...@codecademy/styleguide@10.0.7) (2020-06-05)
 
+### [10.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.5...@codecademy/styleguide@10.0.6) (2020-06-03)
 
+### [10.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.4...@codecademy/styleguide@10.0.5) (2020-06-03)
 
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.3...@codecademy/styleguide@10.0.4) (2020-05-22)
 
+### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.2...@codecademy/styleguide@10.0.3) (2020-05-21)
 
-## <small>9.5.4 (2020-05-04)</small>
+### [10.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.1...@codecademy/styleguide@10.0.2) (2020-05-21)
 
-* fix(Documentation): Re-enable story source and use top level organization (#769) ([cce7845](https://github.com/RyzacInc/client-modules/commit/cce7845)), closes [#769](https://github.com/RyzacInc/client-modules/issues/769)
+### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.0...@codecademy/styleguide@10.0.1) (2020-05-20)
 
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.13.0...@codecademy/styleguide@10.0.0) (2020-05-20)
 
 
+### ⚠ BREAKING CHANGES
 
+* Refactor Modal and Overlay components [GM-24] (#806)
 
-## <small>9.5.3 (2020-05-04)</small>
+### ✨ Features
 
-* chore(Documentation): Foundation Documentation (#765) ([cdbbffa](https://github.com/RyzacInc/client-modules/commit/cdbbffa)), closes [#765](https://github.com/RyzacInc/client-modules/issues/765)
+* Refactor Modal and Overlay components [GM-24] ([#806](https://github.com/Codecademy/client-modules/issues/806)) ([01367fc](https://github.com/Codecademy/client-modules/commit/01367fc607fd122d6b07c4244224907cfa3b0ea1))
 
+## [9.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.2...@codecademy/styleguide@9.13.0) (2020-05-20)
 
 
+### ✨ Features
 
+* **Gamut:** Add Input Stepper ([#753](https://github.com/Codecademy/client-modules/issues/753)) ([1d110a0](https://github.com/Codecademy/client-modules/commit/1d110a0bddc73141ba0d12b5d766c47b740a923f))
 
-## <small>9.5.2 (2020-05-04)</small>
+### [9.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.1...@codecademy/styleguide@9.12.2) (2020-05-20)
 
-* add mdx to ts loader (#772) ([dd55d66](https://github.com/RyzacInc/client-modules/commit/dd55d66)), closes [#772](https://github.com/RyzacInc/client-modules/issues/772)
+### [9.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.12.0...@codecademy/styleguide@9.12.1) (2020-05-19)
 
+## [9.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.3...@codecademy/styleguide@9.12.0) (2020-05-15)
 
 
+### ✨ Features
 
+* **Gamut:** Disable GridForm submit until required field are complete ([#798](https://github.com/Codecademy/client-modules/issues/798)) ([cec230f](https://github.com/Codecademy/client-modules/commit/cec230f92d33102d6e2e999513117f58f71e11e0))
 
-## <small>9.5.1 (2020-05-04)</small>
+### [9.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.2...@codecademy/styleguide@9.11.3) (2020-05-15)
 
-* chore: Update prettier & Run prettier on packages (#773) ([2f012a1](https://github.com/RyzacInc/client-modules/commit/2f012a1)), closes [#773](https://github.com/RyzacInc/client-modules/issues/773)
+### [9.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.1...@codecademy/styleguide@9.11.2) (2020-05-15)
 
 
+### Other Changes
 
+* Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
 
+### [9.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.11.0...@codecademy/styleguide@9.11.1) (2020-05-14)
 
-## 9.5.0 (2020-05-04)
 
-* feat(EditorialQuote): Port EditorialQuote from monolith ([20ee79d](https://github.com/RyzacInc/client-modules/commit/20ee79d))
+### Other Changes
 
+* Update tabs stories to MDX ([#803](https://github.com/Codecademy/client-modules/issues/803)) ([79c41eb](https://github.com/Codecademy/client-modules/commit/79c41eb98821a59dcad7f2ff18883dadc8387b62))
 
+## [9.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.10.0...@codecademy/styleguide@9.11.0) (2020-05-14)
 
 
+### ✨ Features
 
-## 9.4.0 (2020-05-01)
+* **Brand:** Ported common Loading icon to Brand/Labs ([#794](https://github.com/Codecademy/client-modules/issues/794)) ([b7950c9](https://github.com/Codecademy/client-modules/commit/b7950c9d3f8fe04a4347797a41452a88cd63bef8))
 
-* feat(EditorialImage): Port EditorialImage from monolith ([c256d9d](https://github.com/RyzacInc/client-modules/commit/c256d9d))
+## [9.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.2...@codecademy/styleguide@9.10.0) (2020-05-13)
 
 
+### ✨ Features
 
+* **Styleguide:** Convert All Stories to MDX ([#788](https://github.com/Codecademy/client-modules/issues/788)) ([96255a0](https://github.com/Codecademy/client-modules/commit/96255a03e53550b48e36d8049c728825a716d4b7))
 
+### [9.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.1...@codecademy/styleguide@9.9.2) (2020-05-12)
 
-## 9.3.0 (2020-04-30)
 
-* feat(Styleguide): updated About examples and Brand description (#764) ([85188a6](https://github.com/RyzacInc/client-modules/commit/85188a6)), closes [#764](https://github.com/RyzacInc/client-modules/issues/764)
-* Added docs for writing stories (#762) ([775d3a8](https://github.com/RyzacInc/client-modules/commit/775d3a8)), closes [#762](https://github.com/RyzacInc/client-modules/issues/762)
+### 🐛 Bug Fixes
 
+* **Gamut:** Correctly hooked up GridForm's radio-group inputs for validation updates ([#795](https://github.com/Codecademy/client-modules/issues/795)) ([2cd6d7a](https://github.com/Codecademy/client-modules/commit/2cd6d7a99e582fedf021b9cc3fb8ee8587c509fe))
 
+### [9.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.9.0...@codecademy/styleguide@9.9.1) (2020-05-12)
 
+## [9.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.8.0...@codecademy/styleguide@9.9.0) (2020-05-12)
 
 
-## <small>9.2.2 (2020-04-30)</small>
+### ✨ Features
 
-* fix(Documentation): Rework Foundation Documentation (#763) ([d0f3f9d](https://github.com/RyzacInc/client-modules/commit/d0f3f9d)), closes [#763](https://github.com/RyzacInc/client-modules/issues/763)
+* **Gamut:** Checkbox default style changes and add multiline prop ([#796](https://github.com/Codecademy/client-modules/issues/796)) ([f83b362](https://github.com/Codecademy/client-modules/commit/f83b362dbcb9e9a49f052e03284cd9e6f1bd814c))
 
+## [9.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.7.1...@codecademy/styleguide@9.8.0) (2020-05-11)
 
 
+### ✨ Features
 
+* **styleguide:** Added Components documentation ([#781](https://github.com/Codecademy/client-modules/issues/781)) ([d7039e5](https://github.com/Codecademy/client-modules/commit/d7039e50f1afd79d284ef3e51f28ebfee4745e22))
 
-## <small>9.2.1 (2020-04-30)</small>
+### [9.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.7.0...@codecademy/styleguide@9.7.1) (2020-05-11)
 
-* Corrected emoji on Organisms About page (#761) ([f8bfe16](https://github.com/RyzacInc/client-modules/commit/f8bfe16)), closes [#761](https://github.com/RyzacInc/client-modules/issues/761)
 
+### Other Changes
 
+* remove appbartab and make headertab simpler ([#792](https://github.com/Codecademy/client-modules/issues/792)) ([2db0e54](https://github.com/Codecademy/client-modules/commit/2db0e5487d3e488e28145249311f6f64118b4ed6))
 
+## [9.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.6.1...@codecademy/styleguide@9.7.0) (2020-05-06)
 
 
-## 9.2.0 (2020-04-29)
+### Other Changes
 
-* feat(Typography): Typography tweaks and format documentation (#750) ([3a12f2a](https://github.com/RyzacInc/client-modules/commit/3a12f2a)), closes [#750](https://github.com/RyzacInc/client-modules/issues/750)
+* Corrected terrible couple/few typo in Platform colors ([#780](https://github.com/Codecademy/client-modules/issues/780)) ([007f371](https://github.com/Codecademy/client-modules/commit/007f371ea91a562802c0e4107f1b3169cc8ce077))
 
 
+### ✨ Features
 
+* **Gamut:** added RadioGroup inputs for GridForm ([#759](https://github.com/Codecademy/client-modules/issues/759)) ([6d969b8](https://github.com/Codecademy/client-modules/commit/6d969b8b02aa200ae47dd61a05911c4070a74d7a))
 
+### [9.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.6.0...@codecademy/styleguide@9.6.1) (2020-05-06)
 
-## 9.1.0 (2020-04-29)
 
-* feat(BrandMono): Port component into Brand package ([16e7ad7](https://github.com/RyzacInc/client-modules/commit/16e7ad7))
+### Other Changes
 
+* Removed unused deprecated button themes ([#774](https://github.com/Codecademy/client-modules/issues/774)) ([013e403](https://github.com/Codecademy/client-modules/commit/013e40398ad3cd9adcaf3cfb5e7bd4cf39b63659))
 
+## [9.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.6...@codecademy/styleguide@9.6.0) (2020-05-05)
 
 
+### ✨ Features
 
-## 9.0.0 (2020-04-28)
+* **Gamut:** Created separate bucket for "Platform" colors ([#778](https://github.com/Codecademy/client-modules/issues/778)) ([26daf75](https://github.com/Codecademy/client-modules/commit/26daf75e7e488f1a7b268ca6d3a0700284d5e95e))
 
-* feat(webpack-config)!: Update CSS Loader and move loaders into dependencies (#736) ([2e6c1c5](https://github.com/RyzacInc/client-modules/commit/2e6c1c5)), closes [#736](https://github.com/RyzacInc/client-modules/issues/736)
+### [9.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.5...@codecademy/styleguide@9.5.6) (2020-05-05)
 
 
+### Other Changes
 
+* Fix Text Story directory ([#779](https://github.com/Codecademy/client-modules/issues/779)) ([d575e09](https://github.com/Codecademy/client-modules/commit/d575e0926574f1c1b2d8439eb99a1e809bd9fba3))
 
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.4...@codecademy/styleguide@9.5.5) (2020-05-05)
 
-## 8.5.0 (2020-04-28)
 
-* feat(styleguide): added inclusion guidelines to FAQs (#749) ([69d2a40](https://github.com/RyzacInc/client-modules/commit/69d2a40)), closes [#749](https://github.com/RyzacInc/client-modules/issues/749)
+### Other Changes
 
+* Fix about links to allow nested linking ([#776](https://github.com/Codecademy/client-modules/issues/776)) ([e378fcb](https://github.com/Codecademy/client-modules/commit/e378fcb9f3422447469aa258ab2f2de58375c076))
 
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.3...@codecademy/styleguide@9.5.4) (2020-05-04)
 
 
+### 🐛 Bug Fixes
 
-## 8.4.0 (2020-04-28)
+* **Documentation:** Re-enable story source and use top level organization ([#769](https://github.com/Codecademy/client-modules/issues/769)) ([cce7845](https://github.com/Codecademy/client-modules/commit/cce784584a8e0d7f26283cbdc0f8793be4487926))
 
-* feat(Gamut): switched ProgressBar back to taking in a 'style' prop (#752) ([eb4f640](https://github.com/RyzacInc/client-modules/commit/eb4f640)), closes [#752](https://github.com/RyzacInc/client-modules/issues/752)
+### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.2...@codecademy/styleguide@9.5.3) (2020-05-04)
 
 
+### Other Changes
 
+* **Documentation:** Foundation Documentation ([#765](https://github.com/Codecademy/client-modules/issues/765)) ([cdbbffa](https://github.com/Codecademy/client-modules/commit/cdbbffa0c6865e7aec7d898126957b187807e691))
 
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.1...@codecademy/styleguide@9.5.2) (2020-05-04)
 
-## 8.3.0 (2020-04-27)
 
-* feat(grid-form): add onUpdate to GridForm fields (#751) ([b465604](https://github.com/RyzacInc/client-modules/commit/b465604)), closes [#751](https://github.com/RyzacInc/client-modules/issues/751)
+### Other Changes
 
+* add mdx to ts loader ([#772](https://github.com/Codecademy/client-modules/issues/772)) ([dd55d66](https://github.com/Codecademy/client-modules/commit/dd55d66a1f65554b825706499378def4b1c587ab))
 
+### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.5.0...@codecademy/styleguide@9.5.1) (2020-05-04)
 
 
+### Other Changes
 
-## 8.2.0 (2020-04-22)
+* Update prettier & Run prettier on packages ([#773](https://github.com/Codecademy/client-modules/issues/773)) ([2f012a1](https://github.com/Codecademy/client-modules/commit/2f012a122a6ff75b58274cf6060087d5b86d4200))
 
-* feat(Gamut): added ProgressBar minimumPercent and theme props (#739) ([b17a7bc](https://github.com/RyzacInc/client-modules/commit/b17a7bc)), closes [#739](https://github.com/RyzacInc/client-modules/issues/739)
+## [9.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.4.0...@codecademy/styleguide@9.5.0) (2020-05-04)
 
 
+### ✨ Features
 
+* **EditorialQuote:** Port EditorialQuote from monolith ([20ee79d](https://github.com/Codecademy/client-modules/commit/20ee79d3add9ea1a663b0b610f091db7ce7a85b8))
 
+## [9.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.3.0...@codecademy/styleguide@9.4.0) (2020-05-01)
 
-## 8.1.0 (2020-04-21)
 
-* feat(Styleguide): DecoratedStories Props and better Typography Docs (#746) ([d6efbbc](https://github.com/RyzacInc/client-modules/commit/d6efbbc)), closes [#746](https://github.com/RyzacInc/client-modules/issues/746)
+### ✨ Features
 
+* **EditorialImage:** Port EditorialImage from monolith ([c256d9d](https://github.com/Codecademy/client-modules/commit/c256d9d41a0275466b474d157c5204f838956a0e))
 
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.2...@codecademy/styleguide@9.3.0) (2020-04-30)
 
 
+### Other Changes
 
-## 8.0.0 (2020-04-21)
+* Added docs for writing stories ([#762](https://github.com/Codecademy/client-modules/issues/762)) ([775d3a8](https://github.com/Codecademy/client-modules/commit/775d3a833b07b297080d410399d154e27ea6fbee))
 
-* feat(Typography)!: Heading Primitives and reconfigured responsive styles (#722) ([63da7ca](https://github.com/RyzacInc/client-modules/commit/63da7ca)), closes [#722](https://github.com/RyzacInc/client-modules/issues/722)
 
+### ✨ Features
 
+* **Styleguide:** updated About examples and Brand description ([#764](https://github.com/Codecademy/client-modules/issues/764)) ([85188a6](https://github.com/Codecademy/client-modules/commit/85188a69c03628dc0581887118ed4bb10225dc84))
 
+### [9.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.1...@codecademy/styleguide@9.2.2) (2020-04-30)
 
 
-## <small>7.1.2 (2020-04-20)</small>
+### 🐛 Bug Fixes
 
-* Made name a sibling of options (#738) ([aafd2b8](https://github.com/RyzacInc/client-modules/commit/aafd2b8)), closes [#738](https://github.com/RyzacInc/client-modules/issues/738)
+* **Documentation:** Rework Foundation Documentation ([#763](https://github.com/Codecademy/client-modules/issues/763)) ([d0f3f9d](https://github.com/Codecademy/client-modules/commit/d0f3f9d6d9d28aec8d50f1a62da21755b0f653c9))
 
+### [9.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.2.0...@codecademy/styleguide@9.2.1) (2020-04-30)
 
 
+### Other Changes
 
+* Corrected emoji on Organisms About page ([#761](https://github.com/Codecademy/client-modules/issues/761)) ([f8bfe16](https://github.com/Codecademy/client-modules/commit/f8bfe1608c6735da771e0ed67e248fa426c4716c))
 
-## <small>7.1.1 (2020-04-20)</small>
+## [9.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.1.0...@codecademy/styleguide@9.2.0) (2020-04-29)
 
-* chore(styleguide): used decoratedStory for knobs.escapeHTML in Storybook (#721) ([cfade7a](https://github.com/RyzacInc/client-modules/commit/cfade7a)), closes [#721](https://github.com/RyzacInc/client-modules/issues/721)
 
+### ✨ Features
 
+* **Typography:** Typography tweaks and format documentation ([#750](https://github.com/Codecademy/client-modules/issues/750)) ([3a12f2a](https://github.com/Codecademy/client-modules/commit/3a12f2a9e1b35b59f135371b3fe7dca3bf1d9ee4))
 
+## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@9.0.0...@codecademy/styleguide@9.1.0) (2020-04-29)
 
 
-## 7.1.0 (2020-04-20)
+### ✨ Features
 
-* feat(Alert): Adds alert banner and new status themes (#703) ([b9b97f4](https://github.com/RyzacInc/client-modules/commit/b9b97f4)), closes [#703](https://github.com/RyzacInc/client-modules/issues/703)
+* **BrandMono:** Port component into Brand package ([16e7ad7](https://github.com/Codecademy/client-modules/commit/16e7ad75fc182da5417b27add93956dfa020b1b9))
 
+## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.5.0...@codecademy/styleguide@9.0.0) (2020-04-28)
 
 
+### ⚠ BREAKING CHANGES
 
+* **webpack-config:** Update CSS Loader and move loaders into dependencies (#736)
 
-## 7.0.0 (2020-04-20)
+### ✨ Features
 
-* feat!: moved Logo atom to brand-components (#718) ([55c4fcc](https://github.com/RyzacInc/client-modules/commit/55c4fcc)), closes [#718](https://github.com/RyzacInc/client-modules/issues/718)
+* **webpack-config:** Update CSS Loader and move loaders into dependencies ([#736](https://github.com/Codecademy/client-modules/issues/736)) ([2e6c1c5](https://github.com/Codecademy/client-modules/commit/2e6c1c5435ebb3588babd31a574f20db2b2c85b0))
 
+## [8.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.4.0...@codecademy/styleguide@8.5.0) (2020-04-28)
 
 
+### ✨ Features
 
+* **styleguide:** added inclusion guidelines to FAQs ([#749](https://github.com/Codecademy/client-modules/issues/749)) ([69d2a40](https://github.com/Codecademy/client-modules/commit/69d2a40a578add347df04462861d004b89b84fd4))
 
-## 6.1.0 (2020-04-20)
+## [8.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.3.0...@codecademy/styleguide@8.4.0) (2020-04-28)
 
-* feat(GridForm): added placeholder, stretch submit options (#737) ([c110b25](https://github.com/RyzacInc/client-modules/commit/c110b25)), closes [#737](https://github.com/RyzacInc/client-modules/issues/737)
 
+### ✨ Features
 
+* **Gamut:** switched ProgressBar back to taking in a 'style' prop ([#752](https://github.com/Codecademy/client-modules/issues/752)) ([eb4f640](https://github.com/Codecademy/client-modules/commit/eb4f640d0c146f878435295021d31d82571c656a))
 
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.2.0...@codecademy/styleguide@8.3.0) (2020-04-27)
 
 
-## <small>6.0.2 (2020-04-20)</small>
+### ✨ Features
 
-**Note:** Version bump only for package @codecademy/styleguide
+* **grid-form:** add onUpdate to GridForm fields ([#751](https://github.com/Codecademy/client-modules/issues/751)) ([b465604](https://github.com/Codecademy/client-modules/commit/b465604bbabd237b33a38332cee2814042ec94fe))
 
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.1.0...@codecademy/styleguide@8.2.0) (2020-04-22)
 
 
+### ✨ Features
 
+* **Gamut:** added ProgressBar minimumPercent and theme props ([#739](https://github.com/Codecademy/client-modules/issues/739)) ([b17a7bc](https://github.com/Codecademy/client-modules/commit/b17a7bc263fdb7d1b08c6c942bbe3849ef867496))
 
-## <small>6.0.1 (2020-04-17)</small>
+## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@8.0.0...@codecademy/styleguide@8.1.0) (2020-04-21)
 
-* Corrected displayLabel/large prop name for ProgressBar story (#735) ([7fd6461](https://github.com/RyzacInc/client-modules/commit/7fd6461)), closes [#735](https://github.com/RyzacInc/client-modules/issues/735)
 
+### ✨ Features
 
+* **Styleguide:** DecoratedStories Props and better Typography Docs ([#746](https://github.com/Codecademy/client-modules/issues/746)) ([d6efbbc](https://github.com/Codecademy/client-modules/commit/d6efbbc1a87430642b6effbe2f82c598d0421c9e))
 
+## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.2...@codecademy/styleguide@8.0.0) (2020-04-21)
 
 
-## 6.0.0 (2020-04-17)
+### ⚠ BREAKING CHANGES
 
-* chore(Gamut)!: removed deprecated primary, blue, red, and yellow button colors (#714) ([7f4df44](https://github.com/RyzacInc/client-modules/commit/7f4df44)), closes [#714](https://github.com/RyzacInc/client-modules/issues/714)
+* **Typography:** Heading Primitives and reconfigured responsive styles (#722)
 
+### ✨ Features
 
+* **Typography:** Heading Primitives and reconfigured responsive styles ([#722](https://github.com/Codecademy/client-modules/issues/722)) ([63da7ca](https://github.com/Codecademy/client-modules/commit/63da7cacd51be872cf30401343d6ed20106ec77b))
 
+### [7.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.1...@codecademy/styleguide@7.1.2) (2020-04-20)
 
 
-## 5.0.0 (2020-04-17)
+### Other Changes
 
-* chore(Gamut)!: removed easily replaceable deprecated swatches- colors (#717) ([9b17bd5](https://github.com/RyzacInc/client-modules/commit/9b17bd5)), closes [#717](https://github.com/RyzacInc/client-modules/issues/717)
+* Made name a sibling of options ([#738](https://github.com/Codecademy/client-modules/issues/738)) ([aafd2b8](https://github.com/Codecademy/client-modules/commit/aafd2b89674865651fc5c1cb07fd35ac56e51d9d))
 
+### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.1.0...@codecademy/styleguide@7.1.1) (2020-04-20)
 
 
+### Other Changes
 
+* **styleguide:** used decoratedStory for knobs.escapeHTML in Storybook ([#721](https://github.com/Codecademy/client-modules/issues/721)) ([cfade7a](https://github.com/Codecademy/client-modules/commit/cfade7a59bcbca7fca877a03bd2fd6c4cbe5c917))
 
-## 4.8.0 (2020-04-17)
+## [7.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@7.0.0...@codecademy/styleguide@7.1.0) (2020-04-20)
 
-* feat(gamut-styles): formalized Editor colors in gamut-styles (#726) ([92e9e94](https://github.com/RyzacInc/client-modules/commit/92e9e94)), closes [#726](https://github.com/RyzacInc/client-modules/issues/726)
 
+### ✨ Features
 
+* **Alert:** Adds alert banner and new status themes ([#703](https://github.com/Codecademy/client-modules/issues/703)) ([b9b97f4](https://github.com/Codecademy/client-modules/commit/b9b97f496647855b8d0f938dc12b231036a79100))
 
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.1.0...@codecademy/styleguide@7.0.0) (2020-04-20)
 
 
-## 4.7.0 (2020-04-16)
+### ⚠ BREAKING CHANGES
 
-* feat(gamut): Add GridForm Submit Button functionality (#732) ([08ef6c3](https://github.com/RyzacInc/client-modules/commit/08ef6c3)), closes [#732](https://github.com/RyzacInc/client-modules/issues/732)
+* moved Logo atom to brand-components (#718)
 
+### ✨ Features
 
+* moved Logo atom to brand-components ([#718](https://github.com/Codecademy/client-modules/issues/718)) ([55c4fcc](https://github.com/Codecademy/client-modules/commit/55c4fccb578241abc6cb07d302e563100f8f18a9))
 
+## [6.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.2...@codecademy/styleguide@6.1.0) (2020-04-20)
 
 
-## 4.6.0 (2020-04-16)
+### ✨ Features
 
-* feat(Gamut): added 'custom' field type to GridForm (#733) ([d67826b](https://github.com/RyzacInc/client-modules/commit/d67826b)), closes [#733](https://github.com/RyzacInc/client-modules/issues/733)
+* **GridForm:** added placeholder, stretch submit options ([#737](https://github.com/Codecademy/client-modules/issues/737)) ([c110b25](https://github.com/Codecademy/client-modules/commit/c110b254cd62f4a9bc68b5e4a72b18b9c34a7b58))
 
+### [6.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.1...@codecademy/styleguide@6.0.2) (2020-04-20)
 
+### [6.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@6.0.0...@codecademy/styleguide@6.0.1) (2020-04-17)
 
 
+### Other Changes
 
-## 4.5.0 (2020-04-14)
+* Corrected displayLabel/large prop name for ProgressBar story ([#735](https://github.com/Codecademy/client-modules/issues/735)) ([7fd6461](https://github.com/Codecademy/client-modules/commit/7fd6461ed0882a08be7125fe5543e529baa7ccac))
 
-* feat: GridForm checkbox and select required validation (#729) ([3dc28fd](https://github.com/RyzacInc/client-modules/commit/3dc28fd)), closes [#729](https://github.com/RyzacInc/client-modules/issues/729)
+## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@5.0.0...@codecademy/styleguide@6.0.0) (2020-04-17)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Gamut:** removed deprecated primary, blue, red, and yellow button colors (#714)
 
+### Other Changes
 
-## <small>4.4.1 (2020-04-13)</small>
+* **Gamut:** removed deprecated primary, blue, red, and yellow button colors ([#714](https://github.com/Codecademy/client-modules/issues/714)) ([7f4df44](https://github.com/Codecademy/client-modules/commit/7f4df44a4193b1eb4a291633e26e27d1b9971634))
 
-* chore: finished moving to more permissive exports (#724) ([20a8d99](https://github.com/RyzacInc/client-modules/commit/20a8d99)), closes [#724](https://github.com/RyzacInc/client-modules/issues/724)
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.8.0...@codecademy/styleguide@5.0.0) (2020-04-17)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Gamut:** removed easily replaceable deprecated swatches- colors (#717)
 
+### Other Changes
 
-## 4.4.0 (2020-04-13)
+* **Gamut:** removed easily replaceable deprecated swatches- colors ([#717](https://github.com/Codecademy/client-modules/issues/717)) ([9b17bd5](https://github.com/Codecademy/client-modules/commit/9b17bd55640e0fcb6c061c4f71b83fb7f2d04130))
 
-* feat(Gamut): added AccordionTop molecule (#725) ([ae47f3a](https://github.com/RyzacInc/client-modules/commit/ae47f3a)), closes [#725](https://github.com/RyzacInc/client-modules/issues/725)
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.7.0...@codecademy/styleguide@4.8.0) (2020-04-17)
 
 
+### ✨ Features
 
+* **gamut-styles:** formalized Editor colors in gamut-styles ([#726](https://github.com/Codecademy/client-modules/issues/726)) ([92e9e94](https://github.com/Codecademy/client-modules/commit/92e9e94821a1123aeb274595db8c9e18ff9716d6))
 
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.6.0...@codecademy/styleguide@4.7.0) (2020-04-16)
 
-## <small>4.3.1 (2020-04-13)</small>
 
-**Note:** Version bump only for package @codecademy/styleguide
+### ✨ Features
 
+* **gamut:** Add GridForm Submit Button functionality ([#732](https://github.com/Codecademy/client-modules/issues/732)) ([08ef6c3](https://github.com/Codecademy/client-modules/commit/08ef6c3b536a260bf0e3135926af76bcc7412212))
 
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.5.0...@codecademy/styleguide@4.6.0) (2020-04-16)
 
 
+### ✨ Features
 
-## 4.3.0 (2020-04-10)
+* **Gamut:** added 'custom' field type to GridForm ([#733](https://github.com/Codecademy/client-modules/issues/733)) ([d67826b](https://github.com/Codecademy/client-modules/commit/d67826ba2e439eeeb8b5f0ef4e6dbbef0f768afc))
 
-* feat(GridForm): added columnGap and rowGap as props to GridForm (#713) ([3870cef](https://github.com/RyzacInc/client-modules/commit/3870cef)), closes [#713](https://github.com/RyzacInc/client-modules/issues/713)
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.4.1...@codecademy/styleguide@4.5.0) (2020-04-14)
 
 
+### ✨ Features
 
+* GridForm checkbox and select required validation ([#729](https://github.com/Codecademy/client-modules/issues/729)) ([3dc28fd](https://github.com/Codecademy/client-modules/commit/3dc28fde22dc48462557869e56a5c020994ddd4c))
 
+### [4.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.4.0...@codecademy/styleguide@4.4.1) (2020-04-13)
 
-## <small>4.2.1 (2020-04-10)</small>
 
-* chore(brand-components): filled out knobs for other Brand stories (#719) ([5d4dbb3](https://github.com/RyzacInc/client-modules/commit/5d4dbb3)), closes [#719](https://github.com/RyzacInc/client-modules/issues/719)
+### Other Changes
 
+* finished moving to more permissive exports ([#724](https://github.com/Codecademy/client-modules/issues/724)) ([20a8d99](https://github.com/Codecademy/client-modules/commit/20a8d995e9604fd88edaf69fbf8a19cbf4518000))
 
+## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.3.1...@codecademy/styleguide@4.4.0) (2020-04-13)
 
 
+### ✨ Features
 
-## 4.2.0 (2020-04-10)
+* **Gamut:** added AccordionTop molecule ([#725](https://github.com/Codecademy/client-modules/issues/725)) ([ae47f3a](https://github.com/Codecademy/client-modules/commit/ae47f3a101f380b88e8855d83fe71f77f490e1c0))
 
-* feat: Add file input and text area to GridForm (#709) ([78eef25](https://github.com/RyzacInc/client-modules/commit/78eef25)), closes [#709](https://github.com/RyzacInc/client-modules/issues/709)
+### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.3.0...@codecademy/styleguide@4.3.1) (2020-04-13)
 
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.2.1...@codecademy/styleguide@4.3.0) (2020-04-10)
 
 
+### ✨ Features
 
+* **GridForm:** added columnGap and rowGap as props to GridForm ([#713](https://github.com/Codecademy/client-modules/issues/713)) ([3870cef](https://github.com/Codecademy/client-modules/commit/3870cef5d2661518a49a5285794f270d54bc9dce))
 
-## 4.1.0 (2020-04-09)
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.2.0...@codecademy/styleguide@4.2.1) (2020-04-10)
 
-* feat(Styleguide): Storybook 6 alpha upgrade + Story ordering (#715) ([ad47482](https://github.com/RyzacInc/client-modules/commit/ad47482)), closes [#715](https://github.com/RyzacInc/client-modules/issues/715)
 
+### Other Changes
 
+* **brand-components:** filled out knobs for other Brand stories ([#719](https://github.com/Codecademy/client-modules/issues/719)) ([5d4dbb3](https://github.com/Codecademy/client-modules/commit/5d4dbb35452aa9e553b16a8d34c0ffcdba45fdc6))
 
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.1.0...@codecademy/styleguide@4.2.0) (2020-04-10)
 
 
-## 4.0.0 (2020-04-09)
+### ✨ Features
 
-* chore!: reorganized stories into Atomic Design and TypeScript (#695) ([ffe77c9](https://github.com/RyzacInc/client-modules/commit/ffe77c9)), closes [#695](https://github.com/RyzacInc/client-modules/issues/695)
+* Add file input and text area to GridForm ([#709](https://github.com/Codecademy/client-modules/issues/709)) ([78eef25](https://github.com/Codecademy/client-modules/commit/78eef25ebfb4b2ab0859245daf11caf00005da96))
 
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@4.0.0...@codecademy/styleguide@4.1.0) (2020-04-09)
 
 
+### ✨ Features
 
+* **Styleguide:** Storybook 6 alpha upgrade + Story ordering ([#715](https://github.com/Codecademy/client-modules/issues/715)) ([ad47482](https://github.com/Codecademy/client-modules/commit/ad474826a3ade2b023c5ff5238e059c2994dc979))
 
-## 3.26.0 (2020-04-08)
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.26.0...@codecademy/styleguide@4.0.0) (2020-04-09)
 
-* feat: allowed for checkbox inputs in GridForm (#686) ([1d8028a](https://github.com/RyzacInc/client-modules/commit/1d8028a)), closes [#686](https://github.com/RyzacInc/client-modules/issues/686)
 
+### ⚠ BREAKING CHANGES
 
+* reorganized stories into Atomic Design and TypeScript (#695)
 
+### Other Changes
 
+* reorganized stories into Atomic Design and TypeScript ([#695](https://github.com/Codecademy/client-modules/issues/695)) ([ffe77c9](https://github.com/Codecademy/client-modules/commit/ffe77c92f1af5d0eb8f98cfcd0745d75844397c1))
 
-## <small>3.25.1 (2020-04-07)</small>
+## [3.26.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.25.1...@codecademy/styleguide@3.26.0) (2020-04-08)
 
-* Removed unused Banner and Cover cards (#705) ([a6c4c0a](https://github.com/RyzacInc/client-modules/commit/a6c4c0a)), closes [#705](https://github.com/RyzacInc/client-modules/issues/705)
 
+### ✨ Features
 
+* allowed for checkbox inputs in GridForm ([#686](https://github.com/Codecademy/client-modules/issues/686)) ([1d8028a](https://github.com/Codecademy/client-modules/commit/1d8028a0733e3b9765e3aae314a979ec88e2f4ec))
 
+### [3.25.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.25.0...@codecademy/styleguide@3.25.1) (2020-04-07)
 
 
-## 3.25.0 (2020-04-07)
+### Other Changes
 
-* feat(Truncate): Add truncate wrapper (#700) ([fd0bf06](https://github.com/RyzacInc/client-modules/commit/fd0bf06)), closes [#700](https://github.com/RyzacInc/client-modules/issues/700)
+* Removed unused Banner and Cover cards ([#705](https://github.com/Codecademy/client-modules/issues/705)) ([a6c4c0a](https://github.com/Codecademy/client-modules/commit/a6c4c0af1e5dce176dcf970b4cb867d51cf7ea8e))
 
+## [3.25.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.24.0...@codecademy/styleguide@3.25.0) (2020-04-07)
 
 
+### ✨ Features
 
+* **Truncate:** Add truncate wrapper ([#700](https://github.com/Codecademy/client-modules/issues/700)) ([fd0bf06](https://github.com/Codecademy/client-modules/commit/fd0bf06182a79b74a1e3e543320f970017f246a6))
 
-## 3.24.0 (2020-04-07)
+## [3.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.23.0...@codecademy/styleguide@3.24.0) (2020-04-07)
 
-* feat(AppBar): Move AppBar into gamut (#696) ([ffdc5b1](https://github.com/RyzacInc/client-modules/commit/ffdc5b1)), closes [#696](https://github.com/RyzacInc/client-modules/issues/696)
 
+### ✨ Features
 
+* **AppBar:** Move AppBar into gamut ([#696](https://github.com/Codecademy/client-modules/issues/696)) ([ffdc5b1](https://github.com/Codecademy/client-modules/commit/ffdc5b19f47d42621f2815b6e4ffca04ef1a921c))
 
+## [3.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.2...@codecademy/styleguide@3.23.0) (2020-04-06)
 
 
-## 3.23.0 (2020-04-06)
+### ✨ Features
 
-* feat(Modal): An implementation of the Modal primitive (#679) ([5404f0a](https://github.com/RyzacInc/client-modules/commit/5404f0a)), closes [#679](https://github.com/RyzacInc/client-modules/issues/679)
+* **Modal:** An implementation of the Modal primitive ([#679](https://github.com/Codecademy/client-modules/issues/679)) ([5404f0a](https://github.com/Codecademy/client-modules/commit/5404f0adc53a21e1fc944422a7dd0c0d0da70ea1))
 
+### [3.22.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.1...@codecademy/styleguide@3.22.2) (2020-04-06)
 
+### [3.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.22.0...@codecademy/styleguide@3.22.1) (2020-04-06)
 
+## [3.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
 
 
-## <small>3.22.2 (2020-04-06)</small>
+### ✨ Features
 
-**Note:** Version bump only for package @codecademy/styleguide
+* created ProgressBar primitive for Gamut ([#685](https://github.com/Codecademy/client-modules/issues/685)) ([93bd747](https://github.com/Codecademy/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
 
+## [3.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
 
 
+### ✨ Features
 
+* create contentContainer component ([b5b89f3](https://github.com/Codecademy/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
 
-## <small>3.22.1 (2020-04-06)</small>
+## [3.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### ✨ Features
 
+* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/Codecademy/client-modules/issues/684)) ([b4daf36](https://github.com/Codecademy/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
 
+### [3.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.19.0...@codecademy/styleguide@3.19.1) (2020-04-01)
 
+## [3.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
 
-# [3.22.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.21.0...@codecademy/styleguide@3.22.0) (2020-04-02)
 
+### ✨ Features
 
-### Features
+* renamed Modal element to Overlay ([#683](https://github.com/Codecademy/client-modules/issues/683)) ([3bb0ffb](https://github.com/Codecademy/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
 
-* created ProgressBar primitive for Gamut ([#685](https://github.com/RyzacInc/client-modules/issues/685)) ([93bd747](https://github.com/RyzacInc/client-modules/commit/93bd747b4ed0ae37ea2a0c3d2c6dfcd72962446b))
+### [3.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
 
 
+### 🐛 Bug Fixes
 
+* correct implementation of column offset in layout story ([#676](https://github.com/Codecademy/client-modules/issues/676)) ([c4f0ad8](https://github.com/Codecademy/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
 
+## [3.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
 
-# [3.21.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.20.0...@codecademy/styleguide@3.21.0) (2020-04-02)
 
+### ✨ Features
 
-### Features
+* allows 0 width column size for column offset ([#671](https://github.com/Codecademy/client-modules/issues/671)) ([681a461](https://github.com/Codecademy/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
 
-* create contentContainer component ([b5b89f3](https://github.com/RyzacInc/client-modules/commit/b5b89f35a8100f6d8843382d6a21621c69c1b457))
+## [3.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
 
 
+### ✨ Features
 
+* use export * on all exported modules ([#658](https://github.com/Codecademy/client-modules/issues/658)) ([67ba71b](https://github.com/Codecademy/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
 
+## [3.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
-# [3.20.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.1...@codecademy/styleguide@3.20.0) (2020-04-01)
 
+### ✨ Features
 
-### Features
+* add company and full name info to Testimonial ([aa150cd](https://github.com/Codecademy/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
 
-* **LayoutGrid:** Adds XS size to layout grid responsive components ([#684](https://github.com/RyzacInc/client-modules/issues/684)) ([b4daf36](https://github.com/RyzacInc/client-modules/commit/b4daf363f3990f0151038b5f083748b30d71845e))
+## [3.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
 
+### ✨ Features
 
+* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/Codecademy/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
+* add medium and large sizes to testimonial ([9bcffc4](https://github.com/Codecademy/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
 
+## [3.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
 
-## [3.19.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.19.0...@codecademy/styleguide@3.19.1) (2020-04-01)
 
-**Note:** Version bump only for package @codecademy/styleguide
+### ✨ Features
 
+* gridform touchups ([#653](https://github.com/Codecademy/client-modules/issues/653)) ([50b72e0](https://github.com/Codecademy/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
 
+### [3.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
 
 
+### 📝 Documentation
 
-# [3.19.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.1...@codecademy/styleguide@3.19.0) (2020-04-01)
+* reorganized and pruned button stories ([#650](https://github.com/Codecademy/client-modules/issues/650)) ([a72318e](https://github.com/Codecademy/client-modules/commit/a72318e97a7a9499442d6bee8d671efbd1fa7138))
 
+### [3.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
 
-### Features
+### [3.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
 
-* renamed Modal element to Overlay ([#683](https://github.com/RyzacInc/client-modules/issues/683)) ([3bb0ffb](https://github.com/RyzacInc/client-modules/commit/3bb0ffb9d0f078b57012bf72100d026c8c9daf15))
+## [3.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
 
 
+### ✨ Features
 
+* added basic Modal primitive to Gamut ([#641](https://github.com/Codecademy/client-modules/issues/641)) ([df9fa1f](https://github.com/Codecademy/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
 
+### [3.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
 
-## [3.18.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.18.0...@codecademy/styleguide@3.18.1) (2020-03-31)
 
+### Other Changes
 
-### Bug Fixes
+* bumped remaining React versions to 16.12 ([#649](https://github.com/Codecademy/client-modules/issues/649)) ([fcada3e](https://github.com/Codecademy/client-modules/commit/fcada3ea2a4b67de98b1e3d0f422166882621131))
 
-* correct implementation of column offset in layout story ([#676](https://github.com/RyzacInc/client-modules/issues/676)) ([c4f0ad8](https://github.com/RyzacInc/client-modules/commit/c4f0ad8a5d999fefd0cfb705ee71f4f889e4d6f6))
+## [3.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
 
 
+### ✨ Features
 
+* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/Codecademy/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
 
+### [3.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
 
-# [3.18.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.17.0...@codecademy/styleguide@3.18.0) (2020-03-31)
 
+### 🐛 Bug Fixes
 
-### Features
+* fixes responsive prop configs for layout grid ([#648](https://github.com/Codecademy/client-modules/issues/648)) ([6cd2d23](https://github.com/Codecademy/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
 
-* allows 0 width column size for column offset ([#671](https://github.com/RyzacInc/client-modules/issues/671)) ([681a461](https://github.com/RyzacInc/client-modules/commit/681a46148a0d90c0ecec5ad91f1b8ef295a1a982))
+## [3.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
 
 
+### ✨ Features
 
+* add column offsets to layoutgrid ([#644](https://github.com/Codecademy/client-modules/issues/644)) ([43e7042](https://github.com/Codecademy/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
 
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
 
-# [3.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.16.0...@codecademy/styleguide@3.17.0) (2020-03-30)
 
+### ✨ Features
 
-### Features
+* added GridForm component ([#605](https://github.com/Codecademy/client-modules/issues/605)) ([253acad](https://github.com/Codecademy/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
 
-* use export * on all exported modules ([#658](https://github.com/RyzacInc/client-modules/issues/658)) ([67ba71b](https://github.com/RyzacInc/client-modules/commit/67ba71b54f2d6ff88513a140551d8997a8862c58))
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
 
 
+### ✨ Features
 
+* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/Codecademy/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
 
+### [3.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
 
-# [3.16.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.15.0...@codecademy/styleguide@3.16.0) (2020-03-26)
 
+### Other Changes
 
-### Features
+* [PREM-38] Update nav bar logos in gamut ([#638](https://github.com/Codecademy/client-modules/issues/638)) ([ed566e1](https://github.com/Codecademy/client-modules/commit/ed566e1a1d0d19eb1c4ffb931e5b4a81ea987102))
 
-* add company and full name info to Testimonial ([aa150cd](https://github.com/RyzacInc/client-modules/commit/aa150cdf29eec5c5464aef996223b69d5ae24d98))
+### [3.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
 
 
+### Other Changes
 
+* create quote brand component ([#635](https://github.com/Codecademy/client-modules/issues/635)) ([fed821c](https://github.com/Codecademy/client-modules/commit/fed821c676536e6eb5ac9c393e99316efde2f035))
 
+## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
 
-# [3.15.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.15.0) (2020-03-25)
 
+### ✨ Features
 
-### Features
+* create Byline  brand component  ([e330622](https://github.com/Codecademy/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
 
-* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+### [3.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
 
 
+### Other Changes
 
+* SkipToContent control ([#618](https://github.com/Codecademy/client-modules/issues/618)) ([b6985ee](https://github.com/Codecademy/client-modules/commit/b6985ee2d8f5d74ee935e7a14a085ce5c522f113))
 
+## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
 
-# [3.14.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.13.0...@codecademy/styleguide@3.14.0) (2020-03-25)
 
+### ✨ Features
 
-### Features
+* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/Codecademy/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
 
-* add `testimonial` object prop to Testimonial component ([98a3e0c](https://github.com/RyzacInc/client-modules/commit/98a3e0c3afc343e4c526001562a54f5460926dbb))
-* add medium and large sizes to testimonial ([9bcffc4](https://github.com/RyzacInc/client-modules/commit/9bcffc4c05c0ded0d151d12ee456914153269d50))
+### [3.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
 
 
+### 🐛 Bug Fixes
 
+* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/Codecademy/client-modules/issues/624)) ([5aa8800](https://github.com/Codecademy/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
 
+### [3.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
 
-# [3.13.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.13.0) (2020-03-24)
+### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
 
+### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
 
-### Features
+## [3.4.0](https://github.com/Codecademy/client-modules/compare/317f7f7c9255966472d5171990c3773b6cc0576d...@codecademy/styleguide@3.4.0) (2020-01-27)
 
-* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
 
+### ✨ Features
 
+* Remove storybook package aliases ([#610](https://github.com/Codecademy/client-modules/issues/610)) ([317f7f7](https://github.com/Codecademy/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
 
 
+### Other Changes
 
-# [3.12.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.3...@codecademy/styleguide@3.12.0) (2020-03-24)
+* Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
 
-
-### Features
-
-* gridform touchups ([#653](https://github.com/RyzacInc/client-modules/issues/653)) ([50b72e0](https://github.com/RyzacInc/client-modules/commit/50b72e0b19383fddf842b3b3833cfac302dff837))
-
-
-
-
-
-## [3.11.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.2...@codecademy/styleguide@3.11.3) (2020-03-11)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## [3.11.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.1...@codecademy/styleguide@3.11.2) (2020-03-09)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## [3.11.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.11.0...@codecademy/styleguide@3.11.1) (2020-03-06)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-# [3.11.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.1...@codecademy/styleguide@3.11.0) (2020-03-05)
-
-
-### Features
-
-* added basic Modal primitive to Gamut ([#641](https://github.com/RyzacInc/client-modules/issues/641)) ([df9fa1f](https://github.com/RyzacInc/client-modules/commit/df9fa1f9c3161b2ef8fcf2e8ff60700c202796cd))
-
-
-
-
-
-## [3.10.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.10.0...@codecademy/styleguide@3.10.1) (2020-03-05)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-# [3.10.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.1...@codecademy/styleguide@3.10.0) (2020-03-05)
-
-
-### Features
-
-* allow Avatar to be passed a className to allow responsive sizing ([ca99e4d](https://github.com/RyzacInc/client-modules/commit/ca99e4df47161743b914b6afd9d819baee9a87c1))
-
-
-
-
-
-## [3.9.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.9.0...@codecademy/styleguide@3.9.1) (2020-03-04)
-
-
-### Bug Fixes
-
-* fixes responsive prop configs for layout grid ([#648](https://github.com/RyzacInc/client-modules/issues/648)) ([6cd2d23](https://github.com/RyzacInc/client-modules/commit/6cd2d23b8dc07e09f68cf56de5a537f9642c3ad1))
-
-
-
-
-
-# [3.9.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.8.0...@codecademy/styleguide@3.9.0) (2020-03-04)
-
-
-### Features
-
-* add column offsets to layoutgrid ([#644](https://github.com/RyzacInc/client-modules/issues/644)) ([43e7042](https://github.com/RyzacInc/client-modules/commit/43e7042227271ae337348e4db4fddbeb889c64eb))
-
-
-
-
-
-# [3.8.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.7.0...@codecademy/styleguide@3.8.0) (2020-03-03)
-
-
-### Features
-
-* added GridForm component ([#605](https://github.com/RyzacInc/client-modules/issues/605)) ([253acad](https://github.com/RyzacInc/client-modules/commit/253acadc5d0775386f48d9290bda77d112c6aa54))
-
-
-
-
-
-# [3.7.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.2...@codecademy/styleguide@3.7.0) (2020-02-24)
-
-
-### Features
-
-* **testimonial:** create testimonial brand component in size small ([9a765c8](https://github.com/RyzacInc/client-modules/commit/9a765c847548b952c0f8c2343a1b646f7a2d009b))
-
-
-
-
-
-## [3.6.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.1...@codecademy/styleguide@3.6.2) (2020-02-24)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## [3.6.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.6.0...@codecademy/styleguide@3.6.1) (2020-02-21)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-# [3.6.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.1...@codecademy/styleguide@3.6.0) (2020-02-21)
-
-
-### Features
-
-* create Byline  brand component  ([e330622](https://github.com/RyzacInc/client-modules/commit/e330622f8e9780a2ed49b411339a310f3d1b049e))
-
-
-
-
-
-## [3.5.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.5.0...@codecademy/styleguide@3.5.1) (2020-02-20)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-# [3.5.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.4...@codecademy/styleguide@3.5.0) (2020-02-20)
-
-
-### Features
-
-* initialize Brand Components package with Avatar component ([7d7c667](https://github.com/RyzacInc/client-modules/commit/7d7c6673c7c812939259c998ed8493a0d8033aa9))
-
-
-
-
-
-## [3.4.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.3...@codecademy/styleguide@3.4.4) (2020-02-12)
-
-
-### Bug Fixes
-
-* **Markdown:** Add missing blockquote styles to markdown ([#624](https://github.com/RyzacInc/client-modules/issues/624)) ([5aa8800](https://github.com/RyzacInc/client-modules/commit/5aa8800a27edd055697062332a13a33b2b62eff0))
-
-
-
-
-
-## [3.4.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.2...@codecademy/styleguide@3.4.3) (2020-02-12)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## [3.4.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.1...@codecademy/styleguide@3.4.2) (2020-01-28)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-## [3.4.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/styleguide@3.4.0...@codecademy/styleguide@3.4.1) (2020-01-27)
-
-**Note:** Version bump only for package @codecademy/styleguide
-
-
-
-
-
-# 3.4.0 (2020-01-27)
-
-
-### Features
-
-* Remove storybook package aliases ([#610](https://github.com/RyzacInc/client-modules/issues/610)) ([317f7f7](https://github.com/RyzacInc/client-modules/commit/317f7f7c9255966472d5171990c3773b6cc0576d))
-
-
-
-
-
-## [3.3.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.3.0...@codecademy/gamut-storybook@3.3.1) (2020-01-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-# [3.3.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.6...@codecademy/gamut-storybook@3.3.0) (2020-01-16)
-
-
-### Features
-
-* Add Grid Primitive Components ([f58ef3d](https://github.com/RyzacInc/client-modules/commit/f58ef3d6bcee2b2213ab12912eefbbb8015fd577))
-
-
-
-
-
-## [3.2.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.5...@codecademy/gamut-storybook@3.2.6) (2020-01-15)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.2.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.4...@codecademy/gamut-storybook@3.2.5) (2020-01-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.2.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.3...@codecademy/gamut-storybook@3.2.4) (2020-01-08)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.2.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.2...@codecademy/gamut-storybook@3.2.3) (2020-01-08)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.2.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.1...@codecademy/gamut-storybook@3.2.2) (2020-01-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.2.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.2.0...@codecademy/gamut-storybook@3.2.1) (2020-01-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-# [3.2.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.12...@codecademy/gamut-storybook@3.2.0) (2020-01-03)
-
-
-### Features
-
-* various icon build updates([#584](https://github.com/RyzacInc/client-modules/issues/584)) ([47a1283](https://github.com/RyzacInc/client-modules/commit/47a1283))
-
-
-
-
-
-## [3.1.12](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.11...@codecademy/gamut-storybook@3.1.12) (2020-01-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.10...@codecademy/gamut-storybook@3.1.11) (2019-12-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.9...@codecademy/gamut-storybook@3.1.10) (2019-12-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.8...@codecademy/gamut-storybook@3.1.9) (2019-12-17)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.7...@codecademy/gamut-storybook@3.1.8) (2019-12-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.6...@codecademy/gamut-storybook@3.1.7) (2019-12-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.5...@codecademy/gamut-storybook@3.1.6) (2019-12-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.4...@codecademy/gamut-storybook@3.1.5) (2019-12-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.3...@codecademy/gamut-storybook@3.1.4) (2019-12-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.2...@codecademy/gamut-storybook@3.1.3) (2019-12-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.1.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.1...@codecademy/gamut-storybook@3.1.2) (2019-12-02)
-
-
-### Bug Fixes
-
-* FormGroupDescription and Toggle accessibility ([#558](https://github.com/RyzacInc/client-modules/issues/558)) ([0d12c99](https://github.com/RyzacInc/client-modules/commit/0d12c99))
-
-
-
-
-
-## [3.1.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.1.0...@codecademy/gamut-storybook@3.1.1) (2019-11-18)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-# [3.1.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.8...@codecademy/gamut-storybook@3.1.0) (2019-11-15)
-
-
-### Features
-
-* Banner Simplification ([1b6f6e5](https://github.com/RyzacInc/client-modules/commit/1b6f6e5))
-
-
-
-
-
-## [3.0.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.7...@codecademy/gamut-storybook@3.0.8) (2019-11-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.6...@codecademy/gamut-storybook@3.0.7) (2019-11-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.5...@codecademy/gamut-storybook@3.0.6) (2019-11-04)
-
-
-### Bug Fixes
-
-* Update storybook & Gamut component exports ([#496](https://github.com/RyzacInc/client-modules/issues/496)) ([5bed74c](https://github.com/RyzacInc/client-modules/commit/5bed74c))
-
-
-
-
-
-## [3.0.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.4...@codecademy/gamut-storybook@3.0.5) (2019-11-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.3...@codecademy/gamut-storybook@3.0.4) (2019-10-31)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.2...@codecademy/gamut-storybook@3.0.3) (2019-10-31)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.1...@codecademy/gamut-storybook@3.0.2) (2019-10-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-## [3.0.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@3.0.0...@codecademy/gamut-storybook@3.0.1) (2019-10-08)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-
-
-
-
-# [3.0.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.9...@codecademy/gamut-storybook@3.0.0) (2019-10-02)
-
-### Code Refactoring
-
-- move gamut out of root folder ([#494](https://github.com/RyzacInc/client-modules/issues/494)) ([c475cdf](https://github.com/RyzacInc/client-modules/commit/c475cdf))
-
-### BREAKING CHANGES
-
-- Changes the path of all files in gamut from the root to a `dist` folder.
-
-This means all imports that formerly pointed to the root:
-
-```
-import Button from '@codecademy/gamut/Button'
-```
-
-now need to include the dist folder:
-
-```
-import Button from '@codecademy/gamut/dist/Button'
-```
-
-or, preferably, import the named export instead:
-
-```
-import { Button } from '@codecademy/gamut'
-```
-
-## [2.17.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.8...@codecademy/gamut-storybook@2.17.9) (2019-10-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.8](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.7...@codecademy/gamut-storybook@2.17.8) (2019-09-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.7](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.6...@codecademy/gamut-storybook@2.17.7) (2019-09-26)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.6](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.5...@codecademy/gamut-storybook@2.17.6) (2019-09-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.5](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.4...@codecademy/gamut-storybook@2.17.5) (2019-09-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.4](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.3...@codecademy/gamut-storybook@2.17.4) (2019-09-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.3](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.2...@codecademy/gamut-storybook@2.17.3) (2019-09-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.2](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.1...@codecademy/gamut-storybook@2.17.2) (2019-09-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.17.1](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.17.0...@codecademy/gamut-storybook@2.17.1) (2019-09-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.17.0](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.16.11...@codecademy/gamut-storybook@2.17.0) (2019-09-04)
-
-### Features
-
-- **gamut-icons:** remove learn icons (unused currently) ([2dd0f36](https://github.com/RyzacInc/client-modules/commit/2dd0f36))
-
-## [2.16.11](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.11) (2019-09-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.10](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.10) (2019-08-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.9](https://github.com/RyzacInc/client-modules/compare/@codecademy/gamut-storybook@2.16.8...@codecademy/gamut-storybook@2.16.9) (2019-08-20)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.7...@codecademy/gamut-storybook@2.16.8) (2019-08-20)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.6...@codecademy/gamut-storybook@2.16.7) (2019-08-19)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.5...@codecademy/gamut-storybook@2.16.6) (2019-08-15)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.4...@codecademy/gamut-storybook@2.16.5) (2019-08-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.3...@codecademy/gamut-storybook@2.16.4) (2019-08-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.2...@codecademy/gamut-storybook@2.16.3) (2019-07-31)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.1...@codecademy/gamut-storybook@2.16.2) (2019-07-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.16.0...@codecademy/gamut-storybook@2.16.1) (2019-07-29)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.5...@codecademy/gamut-storybook@2.16.0) (2019-07-26)
-
-### Features
-
-- New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc))
-
-## [2.15.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.4...@codecademy/gamut-storybook@2.15.5) (2019-07-26)
-
-### Bug Fixes
-
-- **storybook:** Filter docgen types ([#406](https://github.com/Codecademy/client-modules/issues/406)) ([0c522c5](https://github.com/Codecademy/client-modules/commit/0c522c5))
-
-## [2.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.3...@codecademy/gamut-storybook@2.15.4) (2019-07-26)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.15.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.2...@codecademy/gamut-storybook@2.15.3) (2019-07-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.1...@codecademy/gamut-storybook@2.15.2) (2019-07-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.15.0...@codecademy/gamut-storybook@2.15.1) (2019-07-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.18...@codecademy/gamut-storybook@2.15.0) (2019-07-12)
-
-### Features
-
-- add preview for IkonaIcon icons ([#390](https://github.com/Codecademy/client-modules/issues/390)) ([42ce2cc](https://github.com/Codecademy/client-modules/commit/42ce2cc))
-
-## [2.14.18](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.17...@codecademy/gamut-storybook@2.14.18) (2019-07-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.17](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.16...@codecademy/gamut-storybook@2.14.17) (2019-07-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.16](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.15...@codecademy/gamut-storybook@2.14.16) (2019-07-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.15](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.14...@codecademy/gamut-storybook@2.14.15) (2019-07-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.13...@codecademy/gamut-storybook@2.14.14) (2019-07-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.12...@codecademy/gamut-storybook@2.14.13) (2019-07-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.11...@codecademy/gamut-storybook@2.14.12) (2019-06-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.10...@codecademy/gamut-storybook@2.14.11) (2019-06-26)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.9...@codecademy/gamut-storybook@2.14.10) (2019-06-24)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.8...@codecademy/gamut-storybook@2.14.9) (2019-06-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.7...@codecademy/gamut-storybook@2.14.8) (2019-06-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.6...@codecademy/gamut-storybook@2.14.7) (2019-06-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.5...@codecademy/gamut-storybook@2.14.6) (2019-06-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.4...@codecademy/gamut-storybook@2.14.5) (2019-06-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.3...@codecademy/gamut-storybook@2.14.4) (2019-06-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.2...@codecademy/gamut-storybook@2.14.3) (2019-05-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.1...@codecademy/gamut-storybook@2.14.2) (2019-05-15)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.14.0...@codecademy/gamut-storybook@2.14.1) (2019-05-15)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.13.3...@codecademy/gamut-storybook@2.14.0) (2019-05-15)
-
-### Features
-
-- **Card:** Add card components ([a907a41](https://github.com/Codecademy/client-modules/commit/a907a41))
-
-## [2.13.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.13.2...@codecademy/gamut-storybook@2.13.3) (2019-05-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.13.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.13.1...@codecademy/gamut-storybook@2.13.2) (2019-05-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.13.0...@codecademy/gamut-storybook@2.13.1) (2019-05-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.5...@codecademy/gamut-storybook@2.13.0) (2019-05-06)
-
-### Bug Fixes
-
-- **deps:** update storybook monorepo to v5.0.11 ([#332](https://github.com/Codecademy/client-modules/issues/332)) ([a883ad7](https://github.com/Codecademy/client-modules/commit/a883ad7))
-
-### Features
-
-- use correct parser for eslint files by default ([#336](https://github.com/Codecademy/client-modules/issues/336)) ([38ef491](https://github.com/Codecademy/client-modules/commit/38ef491))
-
-## [2.12.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.4...@codecademy/gamut-storybook@2.12.5) (2019-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.12.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.3...@codecademy/gamut-storybook@2.12.4) (2019-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.12.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.2...@codecademy/gamut-storybook@2.12.3) (2019-04-26)
-
-### Bug Fixes
-
-- **Markdown:** catch invalid url errors ([#315](https://github.com/Codecademy/client-modules/issues/315)) ([792056c](https://github.com/Codecademy/client-modules/commit/792056c))
-
-## [2.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.1...@codecademy/gamut-storybook@2.12.2) (2019-04-24)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.12.0...@codecademy/gamut-storybook@2.12.1) (2019-04-22)
-
-### Bug Fixes
-
-- **deps:** update dependency babel-preset-codecademy to v2.2.1 ([#311](https://github.com/Codecademy/client-modules/issues/311)) ([064e950](https://github.com/Codecademy/client-modules/commit/064e950))
-- **deps:** update dependency fork-ts-checker-webpack-plugin to v1.1.0 ([#312](https://github.com/Codecademy/client-modules/issues/312)) ([13e155c](https://github.com/Codecademy/client-modules/commit/13e155c))
-- **deps:** update dependency jsdom to v15 ([#318](https://github.com/Codecademy/client-modules/issues/318)) ([837d5a4](https://github.com/Codecademy/client-modules/commit/837d5a4))
-- **deps:** update storybook monorepo to v5.0.10 ([#316](https://github.com/Codecademy/client-modules/issues/316)) ([a5a520e](https://github.com/Codecademy/client-modules/commit/a5a520e))
-
-# [2.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.12...@codecademy/gamut-storybook@2.12.0) (2019-04-12)
-
-### Features
-
-- **Markdown:** add default table override component ([#307](https://github.com/Codecademy/client-modules/issues/307)) ([22ef5cb](https://github.com/Codecademy/client-modules/commit/22ef5cb))
-
-## [2.11.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.11...@codecademy/gamut-storybook@2.11.12) (2019-04-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.10...@codecademy/gamut-storybook@2.11.11) (2019-04-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.9...@codecademy/gamut-storybook@2.11.10) (2019-04-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.8...@codecademy/gamut-storybook@2.11.9) (2019-04-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.7...@codecademy/gamut-storybook@2.11.8) (2019-04-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.6...@codecademy/gamut-storybook@2.11.7) (2019-04-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.5...@codecademy/gamut-storybook@2.11.6) (2019-04-09)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.4...@codecademy/gamut-storybook@2.11.5) (2019-04-08)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.3...@codecademy/gamut-storybook@2.11.4) (2019-04-08)
-
-### Bug Fixes
-
-- **deps:** pin dependencies ([#288](https://github.com/Codecademy/client-modules/issues/288)) ([273e99a](https://github.com/Codecademy/client-modules/commit/273e99a))
-
-## [2.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.2...@codecademy/gamut-storybook@2.11.3) (2019-04-08)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.1...@codecademy/gamut-storybook@2.11.2) (2019-04-06)
-
-### Bug Fixes
-
-- storybook cleanup, add defaults opt-out to webpack-config ([#290](https://github.com/Codecademy/client-modules/issues/290)) ([16b2fb0](https://github.com/Codecademy/client-modules/commit/16b2fb0))
-
-## [2.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.11.0...@codecademy/gamut-storybook@2.11.1) (2019-04-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.10.3...@codecademy/gamut-storybook@2.11.0) (2019-04-04)
-
-### Features
-
-- Use babel to compile typescript in storybook ([#285](https://github.com/Codecademy/client-modules/issues/285)) ([5622985](https://github.com/Codecademy/client-modules/commit/5622985))
-
-## [2.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.10.2...@codecademy/gamut-storybook@2.10.3) (2019-04-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.10.1...@codecademy/gamut-storybook@2.10.2) (2019-04-03)
-
-### Bug Fixes
-
-- **deps:** update babel monorepo to v7.4.3 ([#281](https://github.com/Codecademy/client-modules/issues/281)) ([412a36a](https://github.com/Codecademy/client-modules/commit/412a36a))
-- **deps:** update react monorepo to v16.8.6 ([#263](https://github.com/Codecademy/client-modules/issues/263)) ([b4f7494](https://github.com/Codecademy/client-modules/commit/b4f7494))
-
-## [2.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.10.0...@codecademy/gamut-storybook@2.10.1) (2019-04-03)
-
-### Bug Fixes
-
-- **deps:** pin dependencies ([#280](https://github.com/Codecademy/client-modules/issues/280)) ([3b1bc1b](https://github.com/Codecademy/client-modules/commit/3b1bc1b))
-- **deps:** update dependency react-docgen-typescript-loader to v3.1.0 ([#279](https://github.com/Codecademy/client-modules/issues/279)) ([e01540d](https://github.com/Codecademy/client-modules/commit/e01540d))
-
-# [2.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.13...@codecademy/gamut-storybook@2.10.0) (2019-04-03)
-
-### Features
-
-- webpack-config, add support for ts/tsx extensions in babel, other cleanup ([#282](https://github.com/Codecademy/client-modules/issues/282)) ([d213899](https://github.com/Codecademy/client-modules/commit/d213899))
-
-## [2.9.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.12...@codecademy/gamut-storybook@2.9.13) (2019-04-02)
-
-### Bug Fixes
-
-- **deps:** update storybook monorepo to v5 (major) ([#268](https://github.com/Codecademy/client-modules/issues/268)) ([dc85ea8](https://github.com/Codecademy/client-modules/commit/dc85ea8))
-- add babel config back to storybook ([cdf77e4](https://github.com/Codecademy/client-modules/commit/cdf77e4))
-
-## [2.9.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.11...@codecademy/gamut-storybook@2.9.12) (2019-04-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.9.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.10...@codecademy/gamut-storybook@2.9.11) (2019-04-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.9.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.9...@codecademy/gamut-storybook@2.9.10) (2019-03-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.9.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.8...@codecademy/gamut-storybook@2.9.9) (2019-03-26)
-
-### Bug Fixes
-
-- **deps:** update dependency babel-loader to v8.0.5 ([#256](https://github.com/Codecademy/client-modules/issues/256)) ([b774959](https://github.com/Codecademy/client-modules/commit/b774959))
-- **deps:** update dependency chai to v4 ([#257](https://github.com/Codecademy/client-modules/issues/257)) ([86c439f](https://github.com/Codecademy/client-modules/commit/86c439f))
-
-## [2.9.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.7...@codecademy/gamut-storybook@2.9.8) (2019-03-24)
-
-### Bug Fixes
-
-- fix button story with correct import ([7e33767](https://github.com/Codecademy/client-modules/commit/7e33767))
-
-## [2.9.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.6...@codecademy/gamut-storybook@2.9.7) (2019-03-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.9.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.5...@codecademy/gamut-storybook@2.9.6) (2019-03-21)
-
-### Bug Fixes
-
-- updates story colors ([#229](https://github.com/Codecademy/client-modules/issues/229)) ([ecf01c3](https://github.com/Codecademy/client-modules/commit/ecf01c3))
-
-## [2.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.4...@codecademy/gamut-storybook@2.9.5) (2019-03-21)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.3...@codecademy/gamut-storybook@2.9.4) (2019-03-21)
-
-### Bug Fixes
-
-- **deps:** update babel monorepo to v7.4.0 ([#244](https://github.com/Codecademy/client-modules/issues/244)) ([1b4932e](https://github.com/Codecademy/client-modules/commit/1b4932e))
-
-## [2.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.2...@codecademy/gamut-storybook@2.9.3) (2019-03-21)
-
-### Bug Fixes
-
-- **deps:** update dependency css-loader to v2.1.1 ([#245](https://github.com/Codecademy/client-modules/issues/245)) ([a033a4b](https://github.com/Codecademy/client-modules/commit/a033a4b))
-- **deps:** update dependency webpack to v4.29.6 ([#247](https://github.com/Codecademy/client-modules/issues/247)) ([dd6a897](https://github.com/Codecademy/client-modules/commit/dd6a897))
-
-## [2.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.1...@codecademy/gamut-storybook@2.9.2) (2019-03-21)
-
-### Bug Fixes
-
-- **deps:** update react monorepo to v16.8.4 ([#248](https://github.com/Codecademy/client-modules/issues/248)) ([a3dc657](https://github.com/Codecademy/client-modules/commit/a3dc657))
-- **deps:** update storybook monorepo to v4.1.14 ([#249](https://github.com/Codecademy/client-modules/issues/249)) ([dd2a796](https://github.com/Codecademy/client-modules/commit/dd2a796))
-
-## [2.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.9.0...@codecademy/gamut-storybook@2.9.1) (2019-03-19)
-
-### Bug Fixes
-
-- **deps:** pin dependencies ([#231](https://github.com/Codecademy/client-modules/issues/231)) ([c185ac8](https://github.com/Codecademy/client-modules/commit/c185ac8))
-
-# [2.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.8.2...@codecademy/gamut-storybook@2.9.0) (2019-03-18)
-
-### Features
-
-- **component:** New notification menu component ([4918516](https://github.com/Codecademy/client-modules/commit/4918516))
-
-## [2.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.8.1...@codecademy/gamut-storybook@2.8.2) (2019-03-18)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.8.0...@codecademy/gamut-storybook@2.8.1) (2019-03-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-storybook@2.7.0...@codecademy/gamut-storybook@2.8.0) (2019-03-13)
-
-### Features
-
-- Add shared config modules for eslint & prettier ([#224](https://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](https://github.com/Codecademy/client-modules/commit/7fbeac6))
-
-# [2.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.6.0...@codecademy/gamut-storybook@2.7.0) (2019-03-13)
-
-### Features
-
-- Adds mar 2019 colors, deprecates colors ([#211](https://github.com/RyzacInc/gamut/issues/211)) ([c5c1e7f](https://github.com/RyzacInc/gamut/commit/c5c1e7f))
-
-# [2.6.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.14...@codecademy/gamut-storybook@2.6.0) (2019-03-13)
-
-### Features
-
-- **Markdown:** add allowedAttributes config to custom markdown overrides ([#221](https://github.com/RyzacInc/gamut/issues/221)) ([f3c9cf2](https://github.com/RyzacInc/gamut/commit/f3c9cf2))
-
-## [2.5.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.13...@codecademy/gamut-storybook@2.5.14) (2019-03-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.12...@codecademy/gamut-storybook@2.5.13) (2019-03-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.11...@codecademy/gamut-storybook@2.5.12) (2019-03-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.10...@codecademy/gamut-storybook@2.5.11) (2019-03-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.9...@codecademy/gamut-storybook@2.5.10) (2019-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.8...@codecademy/gamut-storybook@2.5.9) (2019-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.7...@codecademy/gamut-storybook@2.5.8) (2019-03-05)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.6...@codecademy/gamut-storybook@2.5.7) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.5...@codecademy/gamut-storybook@2.5.6) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.4...@codecademy/gamut-storybook@2.5.5) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.3...@codecademy/gamut-storybook@2.5.4) (2019-03-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.2...@codecademy/gamut-storybook@2.5.3) (2019-03-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.1...@codecademy/gamut-storybook@2.5.2) (2019-03-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-## [2.5.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.5.0...@codecademy/gamut-storybook@2.5.1) (2019-02-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-# [2.5.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.23...@codecademy/gamut-storybook@2.5.0) (2019-02-28)
-
-### Features
-
-- Enabled noImplicitAny globally ([#188](https://github.com/RyzacInc/gamut/issues/188)) ([2520733](https://github.com/RyzacInc/gamut/commit/2520733))
-
-<a name="2.4.23"></a>
-
-## [2.4.23](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.22...@codecademy/gamut-storybook@2.4.23) (2019-02-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.22"></a>
-
-## [2.4.22](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.21...@codecademy/gamut-storybook@2.4.22) (2019-02-26)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.21"></a>
-
-## [2.4.21](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.20...@codecademy/gamut-storybook@2.4.21) (2019-02-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.20"></a>
-
-## [2.4.20](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.19...@codecademy/gamut-storybook@2.4.20) (2019-02-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.19"></a>
-
-## [2.4.19](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.18...@codecademy/gamut-storybook@2.4.19) (2019-02-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.18"></a>
-
-## [2.4.18](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.17...@codecademy/gamut-storybook@2.4.18) (2019-02-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.17"></a>
-
-## [2.4.17](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.16...@codecademy/gamut-storybook@2.4.17) (2019-02-18)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.16"></a>
-
-## [2.4.16](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.15...@codecademy/gamut-storybook@2.4.16) (2019-02-14)
-
-### Bug Fixes
-
-- allow font element in markdown, fix storybook build ([#184](https://github.com/RyzacInc/gamut/issues/184)) ([79c11eb](https://github.com/RyzacInc/gamut/commit/79c11eb))
-
-<a name="2.4.15"></a>
-
-## [2.4.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.14...@codecademy/gamut-storybook@2.4.15) (2019-02-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.14"></a>
-
-## [2.4.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.13...@codecademy/gamut-storybook@2.4.14) (2019-02-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.13"></a>
-
-## [2.4.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.12...@codecademy/gamut-storybook@2.4.13) (2019-02-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.12"></a>
-
-## [2.4.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.11...@codecademy/gamut-storybook@2.4.12) (2019-02-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.11"></a>
-
-## [2.4.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.10...@codecademy/gamut-storybook@2.4.11) (2019-02-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.10"></a>
-
-## [2.4.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.9...@codecademy/gamut-storybook@2.4.10) (2019-01-31)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.9"></a>
-
-## [2.4.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.8...@codecademy/gamut-storybook@2.4.9) (2019-01-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.8"></a>
-
-## [2.4.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.7...@codecademy/gamut-storybook@2.4.8) (2019-01-29)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.7"></a>
-
-## [2.4.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.6...@codecademy/gamut-storybook@2.4.7) (2019-01-29)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.6"></a>
-
-## [2.4.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.5...@codecademy/gamut-storybook@2.4.6) (2019-01-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.5"></a>
-
-## [2.4.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.4...@codecademy/gamut-storybook@2.4.5) (2019-01-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.4"></a>
-
-## [2.4.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.3...@codecademy/gamut-storybook@2.4.4) (2019-01-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.3"></a>
-
-## [2.4.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.2...@codecademy/gamut-storybook@2.4.3) (2019-01-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.2"></a>
-
-## [2.4.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.1...@codecademy/gamut-storybook@2.4.2) (2019-01-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.1"></a>
-
-## [2.4.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.4.0...@codecademy/gamut-storybook@2.4.1) (2019-01-17)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.4.0"></a>
-
-# [2.4.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.3...@codecademy/gamut-storybook@2.4.0) (2019-01-17)
-
-### Features
-
-- update markdown component to include an explicit codeblock override ([daec408](https://github.com/RyzacInc/gamut/commit/daec408))
-
-<a name="2.3.3"></a>
-
-## [2.3.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.2...@codecademy/gamut-storybook@2.3.3) (2019-01-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.3.2"></a>
-
-## [2.3.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.1...@codecademy/gamut-storybook@2.3.2) (2019-01-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.3.1"></a>
-
-## [2.3.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.3.0...@codecademy/gamut-storybook@2.3.1) (2019-01-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.3.0"></a>
-
-# [2.3.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.4...@codecademy/gamut-storybook@2.3.0) (2019-01-14)
-
-### Features
-
-- Add Markdown Component ([#155](https://github.com/RyzacInc/gamut/issues/155)) ([2254b8e](https://github.com/RyzacInc/gamut/commit/2254b8e))
-
-<a name="2.2.4"></a>
-
-## [2.2.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.3...@codecademy/gamut-storybook@2.2.4) (2018-11-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.2.3"></a>
-
-## [2.2.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.2...@codecademy/gamut-storybook@2.2.3) (2018-10-29)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.2.2"></a>
-
-## [2.2.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.1...@codecademy/gamut-storybook@2.2.2) (2018-10-25)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.2.1"></a>
-
-## [2.2.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.2.0...@codecademy/gamut-storybook@2.2.1) (2018-10-04)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.2.0"></a>
-
-# [2.2.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.10...@codecademy/gamut-storybook@2.2.0) (2018-10-03)
-
-### Features
-
-- Better babel 7 support ([#145](https://github.com/RyzacInc/gamut/issues/145)) ([49a1e23](https://github.com/RyzacInc/gamut/commit/49a1e23))
-
-<a name="2.1.10"></a>
-
-## [2.1.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.9...@codecademy/gamut-storybook@2.1.10) (2018-09-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.9"></a>
-
-## [2.1.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.8...@codecademy/gamut-storybook@2.1.9) (2018-08-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.8"></a>
-
-## [2.1.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.7...@codecademy/gamut-storybook@2.1.8) (2018-08-28)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.7"></a>
-
-## [2.1.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.6...@codecademy/gamut-storybook@2.1.7) (2018-08-21)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.6"></a>
-
-## [2.1.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.5...@codecademy/gamut-storybook@2.1.6) (2018-08-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.5"></a>
-
-## [2.1.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.4...@codecademy/gamut-storybook@2.1.5) (2018-07-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.4"></a>
-
-## [2.1.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.3...@codecademy/gamut-storybook@2.1.4) (2018-07-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.3"></a>
-
-## [2.1.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.2...@codecademy/gamut-storybook@2.1.3) (2018-07-09)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.2"></a>
-
-## [2.1.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.1...@codecademy/gamut-storybook@2.1.2) (2018-07-03)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.1"></a>
-
-## [2.1.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.1.0...@codecademy/gamut-storybook@2.1.1) (2018-06-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.1.0"></a>
-
-# [2.1.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.6...@codecademy/gamut-storybook@2.1.0) (2018-06-20)
-
-### Features
-
-- Support React v16 ([#132](https://github.com/RyzacInc/gamut/issues/132)) ([fafaab2](https://github.com/RyzacInc/gamut/commit/fafaab2))
-
-<a name="2.0.6"></a>
-
-## [2.0.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.5...@codecademy/gamut-storybook@2.0.6) (2018-06-20)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.5"></a>
-
-## [2.0.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.4...@codecademy/gamut-storybook@2.0.5) (2018-06-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.4"></a>
-
-## [2.0.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.3...@codecademy/gamut-storybook@2.0.4) (2018-06-14)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.3"></a>
-
-## [2.0.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.2...@codecademy/gamut-storybook@2.0.3) (2018-06-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.2"></a>
-
-## [2.0.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.1...@codecademy/gamut-storybook@2.0.2) (2018-06-12)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.1"></a>
-
-## [2.0.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@2.0.0...@codecademy/gamut-storybook@2.0.1) (2018-06-11)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="2.0.0"></a>
-
-# [2.0.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.28...@codecademy/gamut-storybook@2.0.0) (2018-06-11)
-
-### Features
-
-- Merge standard & core variables ([#123](https://github.com/RyzacInc/gamut/issues/123)) ([5bf24b0](https://github.com/RyzacInc/gamut/commit/5bf24b0))
-
-### BREAKING CHANGES
-
-- `gamut-styles/variables` renamed to `gamut-styles/utils/variables`
-
-<a name="1.7.28"></a>
-
-## [1.7.28](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.27...@codecademy/gamut-storybook@1.7.28) (2018-05-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.27"></a>
-
-## [1.7.27](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.26...@codecademy/gamut-storybook@1.7.27) (2018-05-23)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.26"></a>
-
-## [1.7.26](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.25...@codecademy/gamut-storybook@1.7.26) (2018-05-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.25"></a>
-
-## [1.7.25](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.24...@codecademy/gamut-storybook@1.7.25) (2018-05-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.24"></a>
-
-## [1.7.24](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.23...@codecademy/gamut-storybook@1.7.24) (2018-05-21)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.23"></a>
-
-## [1.7.23](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.22...@codecademy/gamut-storybook@1.7.23) (2018-05-18)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.22"></a>
-
-## [1.7.22](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.21...@codecademy/gamut-storybook@1.7.22) (2018-05-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.21"></a>
-
-## [1.7.21](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.20...@codecademy/gamut-storybook@1.7.21) (2018-05-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.20"></a>
-
-## [1.7.20](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.19...@codecademy/gamut-storybook@1.7.20) (2018-05-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.19"></a>
-
-## [1.7.19](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.18...@codecademy/gamut-storybook@1.7.19) (2018-05-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.18"></a>
-
-## [1.7.18](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.17...@codecademy/gamut-storybook@1.7.18) (2018-05-10)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.17"></a>
-
-## [1.7.17](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.16...@codecademy/gamut-storybook@1.7.17) (2018-05-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.16"></a>
-
-## [1.7.16](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.15...@codecademy/gamut-storybook@1.7.16) (2018-05-01)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.15"></a>
-
-## [1.7.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.14...@codecademy/gamut-storybook@1.7.15) (2018-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.14"></a>
-
-## [1.7.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.13...@codecademy/gamut-storybook@1.7.14) (2018-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.13"></a>
-
-## [1.7.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.12...@codecademy/gamut-storybook@1.7.13) (2018-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.12"></a>
-
-## [1.7.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.11...@codecademy/gamut-storybook@1.7.12) (2018-04-30)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.11"></a>
-
-## [1.7.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.10...@codecademy/gamut-storybook@1.7.11) (2018-04-27)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.10"></a>
-
-## [1.7.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.9...@codecademy/gamut-storybook@1.7.10) (2018-04-26)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.9"></a>
-
-## [1.7.9](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.8...@codecademy/gamut-storybook@1.7.9) (2018-04-24)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.8"></a>
-
-## [1.7.8](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.7...@codecademy/gamut-storybook@1.7.8) (2018-04-19)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.7"></a>
-
-## [1.7.7](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.6...@codecademy/gamut-storybook@1.7.7) (2018-04-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.6"></a>
-
-## [1.7.6](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.5...@codecademy/gamut-storybook@1.7.6) (2018-04-16)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.5"></a>
-
-## [1.7.5](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.4...@codecademy/gamut-storybook@1.7.5) (2018-04-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.4"></a>
-
-## [1.7.4](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.3...@codecademy/gamut-storybook@1.7.4) (2018-03-22)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.3"></a>
-
-## [1.7.3](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.2...@codecademy/gamut-storybook@1.7.3) (2018-03-20)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.2"></a>
-
-## [1.7.2](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.1...@codecademy/gamut-storybook@1.7.2) (2018-03-13)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.1"></a>
-
-## [1.7.1](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.7.0...@codecademy/gamut-storybook@1.7.1) (2018-03-09)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.7.0"></a>
-
-# [1.7.0](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.18...@codecademy/gamut-storybook@1.7.0) (2018-03-09)
-
-### Features
-
-- show all buttons in the main button story page ([#87](https://github.com/RyzacInc/gamut/issues/87)) ([fbe5b24](https://github.com/RyzacInc/gamut/commit/fbe5b24))
-
-<a name="1.6.18"></a>
-
-## [1.6.18](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.17...@codecademy/gamut-storybook@1.6.18) (2018-03-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.17"></a>
-
-## [1.6.17](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.16...@codecademy/gamut-storybook@1.6.17) (2018-03-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.16"></a>
-
-## [1.6.16](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.15...@codecademy/gamut-storybook@1.6.16) (2018-03-07)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.15"></a>
-
-## [1.6.15](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.14...@codecademy/gamut-storybook@1.6.15) (2018-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.14"></a>
-
-## [1.6.14](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.13...@codecademy/gamut-storybook@1.6.14) (2018-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.13"></a>
-
-## [1.6.13](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.12...@codecademy/gamut-storybook@1.6.13) (2018-03-06)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.12"></a>
-
-## [1.6.12](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.11...@codecademy/gamut-storybook@1.6.12) (2018-03-02)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.11"></a>
-
-## [1.6.11](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.10...@codecademy/gamut-storybook@1.6.11) (2018-02-21)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook
-
-<a name="1.6.10"></a>
-
-## [1.6.10](https://github.com/RyzacInc/gamut/compare/@codecademy/gamut-storybook@1.6.9...@codecademy/gamut-storybook@1.6.10) (2018-02-21)
-
-**Note:** Version bump only for package @codecademy/gamut-storybook

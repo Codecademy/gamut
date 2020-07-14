@@ -7,10 +7,11 @@ export type BaseFormField<Value> = {
   name: string;
   onUpdate?: (value: Value) => void;
   size?: ColumnProps['size'];
+  id?: string;
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
+  description: React.ReactNode;
   label?: string;
   multiline?: boolean;
   validation?: Pick<ValidationOptions, 'required'>;
@@ -32,11 +33,26 @@ export type GridFormCustomField = BaseFormField<any> & {
   type: 'custom';
 };
 
+export type BasicInputType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 export type GridFormTextField = BaseFormField<string> & {
-  label: string;
+  label?: string;
   placeholder?: string;
   validation?: ValidationOptions;
-  type: 'date' | 'email' | 'text';
+  type: BasicInputType;
 };
 
 export type GridFormRadioOption = {
@@ -59,7 +75,7 @@ export type GridFormSelectField = BaseFormField<string> & {
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  label: string;
+  label: React.ReactNode;
   validation?: ValidationOptions;
   type: 'file';
 };

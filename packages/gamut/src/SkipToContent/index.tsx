@@ -23,7 +23,8 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
       onClick={onClick}
       type="button"
     >
-      Skip to Content <DownArrowIcon className={styles.downArrowIcon} />
+      Skip to Content
+      <DownArrowIcon aria-hidden className={styles.downArrowIcon} />
     </a>
   );
 };

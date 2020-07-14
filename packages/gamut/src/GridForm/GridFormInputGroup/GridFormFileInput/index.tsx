@@ -26,6 +26,8 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.files)}
       ref={register(field.validation)}
       type="file"
+      id={field.id}
+      required={field.validation && !!field.validation.required}
     />
   );
 };

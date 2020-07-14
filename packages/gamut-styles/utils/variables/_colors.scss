@@ -12,7 +12,7 @@ $color-blue-500: #3069f0;
 $color-blue-600: #2d5dcc;
 $color-blue-700: #2e4a99;
 $color-blue-800: #233466;
-$color-blue-900: #141e3b;
+$color-blue-900: #141c3a;
 $color-blue-1000: #10162f;
 $color-blue-1100: #0a0e1d;
 
@@ -96,14 +96,17 @@ $color-shadow: rgba($color-black, 0.15);
 //      BRAND COLORS
 // =======================================
 
-$brand-red: #fd4d3f;
-$brand-yellow: #ffc740;
-$brand-orange: #ff9b2a;
-$brand-purple: #6400e4;
-$brand-pink: #ff8ef5;
-$brand-mint: #6df0c2;
-$brand-beige: #efd9ca;
-$brand-dark-blue: #141c3a;
+$brand-red: $color-red-500;
+$brand-yellow: $color-yellow-500;
+$brand-orange: $color-orange-400;
+$brand-purple: $color-royal-blue;
+$brand-pink: $color-pink-400;
+$brand-mint: $color-green-300;
+$brand-magenta: $color-pink-700;
+$brand-beige: $color-beige;
+$brand-blue: $color-blue-500;
+$brand-dark-blue: $color-blue-900;
+$brand-lavender: $color-purple-500;
 
 // =======================================
 //      PLATFORM COLORS

@@ -27,6 +27,8 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       ref={register(field.validation)}
       options={field.options}
+      id={field.id}
+      required={field.validation && !!field.validation.required}
     />
   );
 };

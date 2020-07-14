@@ -34,6 +34,8 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
           label={label}
           ref={register(field.validation)}
           value={value}
+          id={field.id}
+          required={field.validation && !!field.validation.required}
         />
       ))}
     </RadioGroup>

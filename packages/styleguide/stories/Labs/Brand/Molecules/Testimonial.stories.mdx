@@ -1,0 +1,96 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '../../../../Blocks';
+import { Testimonial } from '@codecademy/gamut-labs/src';
+import { VisualTheme } from '@codecademy/gamut/src';
+
+<Meta title="Labs/Brand/Molecules/Testimonial" component={Testimonial} />
+
+# Testimonial
+
+<StoryStatus status="ready" />
+
+A pull quote for use in an editorial page.
+
+<Preview withSource="open" className="dark">
+  <Story name="Testimonial">
+    <Testimonial
+      testimonial={{
+        firstName: text('First Name', 'Lacey'),
+        lastName: text('Last Name', 'Bathala'),
+        company: text('Company', 'Microsoft'),
+        quote: text(
+          'Short Quote',
+          'Coding aint rocket science, it’s just falsely intimidating.'
+        ),
+        imageUrl: text(
+          'Image URL',
+          'https://content.codecademy.com/courses/free/boba.svg'
+        ),
+      }}
+      size={select('size', ['small', 'medium', 'large'], 'small')}
+      theme={select(
+        'theme',
+        [VisualTheme.DarkMode, VisualTheme.LightMode],
+        VisualTheme.DarkMode
+      )}
+    />
+  </Story>
+</Preview>
+
+<Props story="Testimonial" of={Testimonial} />
+
+<Preview className="dark" columns={1}>
+  <Story name="Medium">
+    <Testimonial
+      testimonial={{
+        firstName: 'Lacey',
+        lastName: 'Bathala',
+        company: 'Microsoft',
+        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+        imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+      }}
+      size="medium"
+      theme={VisualTheme.DarkMode}
+    />
+  </Story>
+  <Story name="Large">
+    <Testimonial
+      testimonial={{
+        firstName: 'Lacey',
+        lastName: 'Bathala',
+        company: 'Microsoft',
+        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+        imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+      }}
+      size="large"
+      theme={VisualTheme.DarkMode}
+    />
+  </Story>
+  <Story name="No Avatar">
+    <Testimonial
+      testimonial={{
+        firstName: 'Lacey',
+        lastName: 'Bathala',
+        company: 'Microsoft',
+        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+      }}
+      size="large"
+      theme={VisualTheme.DarkMode}
+    />
+  </Story>
+  <Story name="Light Theme">
+    <Testimonial
+      testimonial={{
+        firstName: 'Lacey',
+        lastName: 'Bathala',
+        company: 'Microsoft',
+        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+        imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+      }}
+      size="small"
+      theme={VisualTheme.Light}
+    />
+  </Story>
+</Preview>
