@@ -6,7 +6,6 @@ import s from './styles.module.scss';
 export type ContentContainerProps = {
   className?: string;
   /**
-   * TODO: Standardize as `as`
    * Component type to wrap children with.
    */
   el?: keyof ReactHTML;

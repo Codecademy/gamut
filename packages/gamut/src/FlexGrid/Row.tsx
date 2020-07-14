@@ -75,7 +75,6 @@ export type RowProps = {
   /** Justify columns to `flex-start` on screensizes greater than modifer */
   start?: ModificatorType;
   /**
-   * TODO: Standardize as `as`
    * Component type to wrap children with.
    */
   tagName?: string;
