@@ -105,7 +105,7 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
    * Variant that underlines the text of the button.
    */
   underline?: boolean;
-  /** DEPRECATED: This is a no-op prop */
+  /** @deprecated This is a no-op prop */
   fitText?: boolean;
 };
 

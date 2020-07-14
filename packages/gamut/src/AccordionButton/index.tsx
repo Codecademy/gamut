@@ -9,7 +9,7 @@ import ButtonBase from '../ButtonBase';
 export type AccordionButtonProps = {
   className?: string;
   /**
-   * Whether or not the button should display as open or closed.
+   * Whether the button should display as open or closed.
    */
   expanded?: boolean;
   /**
@@ -17,7 +17,7 @@ export type AccordionButtonProps = {
    */
   onClick: () => void;
   /**
-   * Variant that determines the size of the button.
+   * Determines the size of the button.
    */
   size?: 'normal' | 'large';
   /**

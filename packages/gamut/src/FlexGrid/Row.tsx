@@ -53,32 +53,32 @@ const modificatorKeys = [
 type ModificatorType = 'xs' | 'sm' | 'md' | 'lg';
 
 export type RowProps = {
-  /** Justify columns with `space-around` on screensizes greater than modifer */
+  /** Justify columns with `space-around` on screen sizes greater than modifer */
   around?: ModificatorType;
-  /** Justify columns with `space-between` on screensizes greater than modifer */
+  /** Justify columns with `space-between` on screen sizes greater than modifer */
   between?: ModificatorType;
-  /** Align columns to `flex-end` on screensizes greater than modifer */
+  /** Align columns to `flex-end` on screen sizes greater than modifer */
   bottom?: ModificatorType;
-  /** Justify columns to `center` on screensizes greater than modifer */
+  /** Justify columns to `center` on screen sizes greater than modifer */
   center?: ModificatorType;
   className?: string;
-  /** Justify columns to `flex-end` on screensizes greater than modifer */
+  /** Justify columns to `flex-end` on screen sizes greater than modifer */
   end?: ModificatorType;
-  /** Set the row to be the first item in the FlexGrid on screensizes greater than modifer*/
+  /** Set the row to be the first item in the FlexGrid on screen sizes greater than modifer*/
   first?: ModificatorType;
-  /** Set the row to be the last item in the FlexGrid on screensizes greater than modifer */
+  /** Set the row to be the last item in the FlexGrid on screen sizes greater than modifer */
   last?: ModificatorType;
-  /** Align columns to `center` on screensizes greater than modifer */
+  /** Align columns to `center` on screen sizes greater than modifer */
   middle?: ModificatorType;
   /** Reverses the flex direction of the columns */
   reverse?: boolean;
-  /** Justify columns to `flex-start` on screensizes greater than modifer */
+  /** Justify columns to `flex-start` on screen sizes greater than modifer */
   start?: ModificatorType;
   /**
    * Component type to wrap children with.
    */
   tagName?: string;
-  /** Align columns to `flex-start` on screensizes greater than modifer */
+  /** Align columns to `flex-start` on screen sizes greater than modifer */
   top?: ModificatorType;
 };
 

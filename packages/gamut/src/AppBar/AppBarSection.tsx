@@ -4,7 +4,7 @@ import styles from './styles/index.module.scss';
 
 export type AppBarSectionProps = {
   /**
-   * Position of the the section within the AppBar
+   * Position of the the section within the AppBar.
    */
   position?: 'left' | 'center' | 'right';
   className?: string;

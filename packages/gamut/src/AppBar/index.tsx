@@ -6,7 +6,7 @@ import styles from './styles/index.module.scss';
 export type AppBarProps = {
   className?: string;
   /**
-   * Whether the container of should be larger than the default content size.
+   * Whether the container should be larger than the default content size.
    */
   wide?: boolean;
 };
