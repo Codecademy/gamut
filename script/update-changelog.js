@@ -38,7 +38,7 @@ conventionalChangelog(
     tagPrefix: `${LERNA_PACKAGE_NAME}@`,
     releaseCount: 0,
     lernaPackage: LERNA_PACKAGE_NAME,
-    outputUnreleased: true,
+    outputUnreleased: false,
     pkg: {
       path: path.join(process.cwd(), 'package.json'),
     },

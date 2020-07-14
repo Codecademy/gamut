@@ -28,9 +28,6 @@
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json,css,scss}": [
       "prettier --ignore-path .prettierignore --write"
-    ],
-    "**/CHANGELOG.md": [
-      "yarn regenerate-changelog"
     ]
   },
   "repository": {
