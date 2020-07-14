@@ -10,7 +10,7 @@ module.exports = {
 
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@styleguide/blocks': path.resolve(__dirname, '../Blocks/'),
+      '~styleguide/blocks': path.resolve(__dirname, '../Blocks/'),
     };
 
     return config;
