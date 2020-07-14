@@ -3,6 +3,9 @@ import cx from 'classnames';
 import styles from './styles/index.module.scss';
 
 export type AppBarSectionProps = {
+  /**
+   * Position of the the section within the AppBar.
+   */
   position?: 'left' | 'center' | 'right';
   className?: string;
 };

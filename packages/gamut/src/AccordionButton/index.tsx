@@ -8,9 +8,21 @@ import ButtonBase from '../ButtonBase';
 
 export type AccordionButtonProps = {
   className?: string;
+  /**
+   * Whether the button should display as open or closed.
+   */
   expanded?: boolean;
+  /**
+   * Called when the button is clicked.
+   */
   onClick: () => void;
+  /**
+   * Determines the size of the button.
+   */
   size?: 'normal' | 'large';
+  /**
+   * Visual theme for the clickable header button.
+   */
   theme: 'blue' | 'plain' | 'yellow';
 };
 
