@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 11.7.0 (2020-07-14)
+
+* feat(Styleguide): Flatten Navigation Hierarchy for Gamut Core (#864) ([ad83bb1](https://github.com/RyzacInc/client-modules/commit/ad83bb1)), closes [#864](https://github.com/RyzacInc/client-modules/issues/864)
+
+
+
+
+
 ## 11.6.0 (2020-07-14)
 
 * feat(Styleguide): Simplify indicator story status pills (#873) ([3e83d36](https://github.com/RyzacInc/client-modules/commit/3e83d36)), closes [#873](https://github.com/RyzacInc/client-modules/issues/873)
