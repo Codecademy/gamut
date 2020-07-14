@@ -3,9 +3,9 @@ import { styled } from '@storybook/theming';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 const STATUS_COLORS = {
-  stable: colors.green[500],
-  volatile: colors.yellow[500],
-  deprecated: colors.red[500],
+  stable: colors.green[800],
+  volatile: colors.yellow[700],
+  deprecated: colors.red[700],
 };
 
 const StatusWrapper = styled.div`
