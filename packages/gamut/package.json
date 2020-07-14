@@ -23,6 +23,7 @@
     "@codecademy/gamut-styles": "^4.1.0",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
+    "emotion": "10.0.27",
     "focus-trap-react": "^6.0.0",
     "framer-motion": "^1.11.0",
     "html-to-react": "^1.4.2",
