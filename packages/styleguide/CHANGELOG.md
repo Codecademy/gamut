@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>11.5.1 (2020-07-14)</small>
+
+* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
+* chore(Styleguide): Add module alias for storybook helpers [WEB-934] (#861) ([7daf135](https://github.com/RyzacInc/client-modules/commit/7daf135)), closes [#861](https://github.com/RyzacInc/client-modules/issues/861)
+
+
+
+
+
 ## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 
 
@@ -800,4 +814,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
