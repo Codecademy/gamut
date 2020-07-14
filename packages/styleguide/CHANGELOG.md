@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>11.7.1 (2020-07-14)</small>
+
+* chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
+
+
+
+
+
 ## 11.7.0 (2020-07-14)
 
 * feat(Styleguide): Flatten Navigation Hierarchy for Gamut Core (#864) ([ad83bb1](https://github.com/RyzacInc/client-modules/commit/ad83bb1)), closes [#864](https://github.com/RyzacInc/client-modules/issues/864)
