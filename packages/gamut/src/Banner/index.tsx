@@ -11,12 +11,28 @@ export enum BannerStyle {
 
 export type BannerProps = {
   classNames?: {
+    /**
+     * Class name for the container element.
+     */
     container?: string;
+    /**
+     * Class name for the content wrapper
+     */
     content?: string;
   };
+  /** Visual variations for banners */
   displayStyle?: BannerStyle;
+  /**
+   * Whether or not the banner should be visible.
+   */
   isClosed?: boolean;
+  /**
+   * Callback called when the user closes the banner.
+   */
   onClose: (event: MouseEvent<HTMLButtonElement>) => void;
+  /**
+   * An icon or jsx element to be displayed to the left of the content.
+   */
   icon?: React.ReactNode;
 };
 

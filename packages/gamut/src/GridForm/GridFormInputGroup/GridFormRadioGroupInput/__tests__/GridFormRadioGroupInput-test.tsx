@@ -1,38 +1,26 @@
-import GridFormRadioGroupInput from '../index';
-import { mount } from 'enzyme';
-import React from 'react';
-import { stubRadioGroupField } from '../../../__tests__/stubs';
+import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const textInput = mount(
-        <GridFormRadioGroupInput
-          field={{
-            ...stubRadioGroupField,
-            id: 'mycoolid',
-            name: 'name',
-          }}
-          setValue={jest.fn()}
-          register={jest.fn()}
-        />
-      );
+      const radioButtons = renderGridFormRadioGroupInput({
+        id: 'mycoolid',
+        name: 'name',
+      });
 
-      expect(textInput.find('input#name-0-mycoolid').length).toBe(1);
+      expect(radioButtons.find('input#name-0-mycoolid').length).toBe(1);
     });
   });
 
   describe('when no id is passed', () => {
     it('renders an input with the id equal to the field option value', () => {
-      const textInput = mount(
-        <GridFormRadioGroupInput
-          field={{ ...stubRadioGroupField, name: 'name' }}
-          setValue={jest.fn()}
-          register={jest.fn()}
-        />
-      );
+      const radioButtons = renderGridFormRadioGroupInput({ name: 'name' });
 
-      expect(textInput.find('input#name-0').length).toBe(1);
+      expect(radioButtons.find('input#name-0').length).toBe(1);
     });
   });
+
+  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-0');
+  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-1');
 });
