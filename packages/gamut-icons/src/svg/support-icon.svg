@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a,.b{fill:none;stroke:currentColor;stroke-width:1.5px;}.a{stroke-linecap:round;stroke-linejoin:round;}.b{stroke-miterlimit:10;}</style></defs><title>question-circle</title><path class="a" d="M9,9a3,3,0,1,1,4,2.829,1.5,1.5,0,0,0-1,1.415V14.25"/><path class="a" d="M12,17.25a.375.375,0,1,0,.375.375A.375.375,0,0,0,12,17.25h0"/><circle class="b" cx="12" cy="12" r="11.25"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>question-circle</title>
+<g>
+	<path d="M12,15c-0.414,0-0.75-0.336-0.75-0.75v-1.006c-0.001-0.952,0.602-1.805,1.5-2.122c0.897-0.317,1.5-1.17,1.5-2.121
+		c0-0.601-0.234-1.166-0.659-1.591C13.167,6.985,12.602,6.751,12,6.751c-0.601,0-1.166,0.234-1.591,0.659
+		C9.984,7.834,9.75,8.399,9.75,9c0,0.413-0.336,0.75-0.75,0.75S8.25,9.413,8.25,9c0-1.002,0.391-1.943,1.099-2.651
+		c0.708-0.708,1.65-1.098,2.651-1.098c2.068,0,3.75,1.683,3.75,3.75c0,1.586-1.005,3.006-2.5,3.535c-0.299,0.106-0.5,0.39-0.5,0.707
+		v1.007C12.75,14.664,12.414,15,12,15z"/>
+	<circle cx="12" cy="17.625" r="1.125"/>
+	<path d="M12,24C5.383,24,0,18.617,0,12C0,5.383,5.383,0,12,0c6.617,0,12,5.383,12,12C24,18.617,18.617,24,12,24z M12,1.5
+		C6.21,1.5,1.5,6.21,1.5,12c0,5.79,4.71,10.5,10.5,10.5c5.79,0,10.5-4.71,10.5-10.5C22.5,6.21,17.79,1.5,12,1.5z"/>
+</g>
+</svg>

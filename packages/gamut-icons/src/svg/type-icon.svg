@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>app-window-type</title><rect class="a" x="1.51" y="2.254" width="21" height="19.5" rx="1.5" ry="1.5"/><line class="a" x1="1.51" y1="6.754" x2="22.51" y2="6.754"/><line class="a" x1="12.01" y1="18.707" x2="12.01" y2="10.48"/><path class="a" d="M16.51,11.98v-.75a.75.75,0,0,0-.75-.75H8.26a.75.75,0,0,0-.75.75v.75"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>app-window-type</title>
+<g>
+	<path d="M3.01,22.504c-1.241,0-2.25-1.009-2.25-2.25v-16.5c0-1.241,1.009-2.25,2.25-2.25h18c1.241,0,2.25,1.009,2.25,2.25v16.5
+		c0,1.241-1.009,2.25-2.25,2.25H3.01z M2.26,20.254c0,0.414,0.336,0.75,0.75,0.75h18c0.414,0,0.75-0.336,0.75-0.75V7.504H2.26
+		V20.254z M21.76,6.004v-2.25c0-0.414-0.336-0.75-0.75-0.75h-18c-0.414,0-0.75,0.336-0.75,0.75v2.25H21.76z"/>
+	<path d="M12.01,19.457c-0.414,0-0.75-0.336-0.75-0.75V11.23h-3v0.75c0,0.414-0.336,0.75-0.75,0.75s-0.75-0.336-0.75-0.75v-0.75
+		c0-0.827,0.673-1.5,1.5-1.5h7.5c0.827,0,1.5,0.673,1.5,1.5v0.75c0,0.414-0.336,0.75-0.75,0.75s-0.75-0.336-0.75-0.75v-0.75h-3
+		v7.477C12.76,19.121,12.423,19.457,12.01,19.457z"/>
+</g>
+</svg>

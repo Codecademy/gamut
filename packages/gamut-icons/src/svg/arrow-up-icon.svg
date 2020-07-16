@@ -1,1 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1,.cls-2{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}.cls-2{fill-rule:evenodd;}</style></defs><title>arrow-up</title><line class="cls-1" x1="12" y1="23.25" x2="12" y2="0.75"/><polyline class="cls-2" points="22.5 11.25 12 0.75 1.5 11.25"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Regular" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>arrow-up</title>
+<g>
+	<path d="M12,24c-0.414,0-0.75-0.336-0.75-0.75V2.561l-9.22,9.22C1.889,11.922,1.7,12,1.5,12s-0.389-0.078-0.53-0.22
+		c-0.142-0.141-0.22-0.33-0.22-0.53s0.078-0.389,0.22-0.53L11.469,0.22c0.07-0.07,0.152-0.125,0.245-0.163
+		c0.008-0.003,0.016-0.006,0.025-0.009C11.825,0.016,11.912,0,12,0c0.089,0,0.177,0.016,0.261,0.048
+		c0.007,0.002,0.014,0.005,0.021,0.007c0.097,0.04,0.179,0.095,0.25,0.166L23.03,10.72c0.142,0.141,0.22,0.33,0.22,0.53
+		s-0.078,0.389-0.22,0.53S22.7,12,22.5,12s-0.389-0.078-0.53-0.22l-9.22-9.22V23.25C12.75,23.664,12.414,24,12,24z"/>
+</g>
+</svg>

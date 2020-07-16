@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>mobile-phone</title><rect class="a" x="5.251" y="0.75" width="13.5" height="22.5" rx="3" ry="3"/><line class="a" x1="5.251" y1="18.75" x2="18.751" y2="18.75"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>mobile-phone</title>
+<g>
+	<path d="M8.251,24c-2.068,0-3.75-1.682-3.75-3.75V3.75C4.501,1.682,6.183,0,8.251,0h7.5c2.068,0,3.75,1.682,3.75,3.75v16.5
+		c0,2.068-1.682,3.75-3.75,3.75H8.251z M6.001,20.25c0,1.241,1.009,2.25,2.25,2.25h7.5c1.241,0,2.25-1.009,2.25-2.25V19.5h-12V20.25
+		z M18.001,18V3.75c0-1.241-1.009-2.25-2.25-2.25h-7.5c-1.241,0-2.25,1.009-2.25,2.25V18H18.001z"/>
+</g>
+</svg>

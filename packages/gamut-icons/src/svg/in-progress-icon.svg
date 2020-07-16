@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>navigation-menu-horizontal</title><circle class="a" cx="3.375" cy="12.023" r="2.625"/><circle class="a" cx="20.625" cy="12.023" r="2.625"/><circle class="a" cx="12" cy="12.023" r="2.625"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>navigation-menu-horizontal</title>
+<g>
+	<path d="M3.375,15.398C1.514,15.398,0,13.884,0,12.023s1.514-3.375,3.375-3.375s3.375,1.514,3.375,3.375S5.236,15.398,3.375,15.398
+		z M3.375,10.148c-1.034,0-1.875,0.841-1.875,1.875c0,1.034,0.841,1.875,1.875,1.875s1.875-0.841,1.875-1.875
+		C5.25,10.989,4.409,10.148,3.375,10.148z"/>
+	<path d="M20.625,15.398c-1.861,0-3.375-1.514-3.375-3.375s1.514-3.375,3.375-3.375S24,10.162,24,12.023
+		S22.486,15.398,20.625,15.398z M20.625,10.148c-1.034,0-1.875,0.841-1.875,1.875c0,1.034,0.841,1.875,1.875,1.875
+		s1.875-0.841,1.875-1.875C22.5,10.989,21.659,10.148,20.625,10.148z"/>
+	<path d="M12,15.398c-1.861,0-3.375-1.514-3.375-3.375S10.139,8.648,12,8.648c1.861,0,3.375,1.514,3.375,3.375
+		S13.861,15.398,12,15.398z M12,10.148c-1.034,0-1.875,0.841-1.875,1.875c0,1.034,0.841,1.875,1.875,1.875s1.875-0.841,1.875-1.875
+		C13.875,10.989,13.034,10.148,12,10.148z"/>
+</g>
+</svg>

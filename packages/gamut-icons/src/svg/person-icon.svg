@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>single-neutral</title><circle cx="12" cy="6.25" r="5.5"/><path d="M12,13.25a9.511,9.511,0,0,0-9.5,9.5.5.5,0,0,0,.5.5H21a.5.5,0,0,0,.5-.5A9.511,9.511,0,0,0,12,13.25Z"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Regular" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>single-neutral</title>
+<g>
+	<path d="M12,12c-3.308,0-6-2.692-6-6s2.692-6,6-6s6,2.692,6,6S15.308,12,12,12z M12,1.5C9.519,1.5,7.5,3.519,7.5,6
+		s2.019,4.5,4.5,4.5c2.481,0,4.5-2.019,4.5-4.5S14.481,1.5,12,1.5z"/>
+	<path d="M21.75,24C21.336,24,21,23.664,21,23.25c0-4.963-4.037-9-9-9s-9,4.037-9,9C3,23.664,2.664,24,2.25,24S1.5,23.664,1.5,23.25
+		c0-5.79,4.71-10.5,10.5-10.5c5.79,0,10.5,4.71,10.5,10.5C22.5,23.664,22.164,24,21.75,24z"/>
+</g>
+</svg>

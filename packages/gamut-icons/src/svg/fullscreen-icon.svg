@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>expand-3</title><line class="a" x1="9.75" y1="14.248" x2="0.75" y2="23.248"/><polyline class="a" points="23.25 7.498 23.25 0.748 16.5 0.748"/><polyline class="a" points="0.75 16.498 0.75 23.248 7.5 23.248"/><line class="a" x1="23.25" y1="0.748" x2="14.25" y2="9.748"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>expand-diagonal</title>
+<g>
+	<path d="M0.75,23.998c-0.088,0-0.175-0.016-0.26-0.047c-0.008-0.003-0.015-0.005-0.022-0.008c-0.188-0.077-0.336-0.226-0.412-0.41
+		c-0.003-0.007-0.006-0.015-0.009-0.023C0.017,23.428,0,23.339,0,23.248v-6.75c0-0.414,0.336-0.75,0.75-0.75s0.75,0.336,0.75,0.75
+		v4.939L21.439,1.498H16.5c-0.414,0-0.75-0.336-0.75-0.75s0.336-0.75,0.75-0.75h6.75c0.089,0,0.176,0.016,0.261,0.048
+		c0.011,0.004,0.022,0.008,0.032,0.012c0.176,0.072,0.325,0.221,0.401,0.405c0.003,0.008,0.007,0.017,0.01,0.026
+		C23.984,0.57,24,0.659,24,0.748v6.75c0,0.414-0.336,0.75-0.75,0.75s-0.75-0.336-0.75-0.75V2.559L2.561,22.498H7.5
+		c0.414,0,0.75,0.336,0.75,0.75s-0.336,0.75-0.75,0.75H0.75z"/>
+</g>
+</svg>
