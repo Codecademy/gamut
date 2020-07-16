@@ -1,60 +1,37 @@
 import { getComponent } from './renderers';
 
-export const itHandlesRequiredProps = (
+export const itHandlesAriaInvalid = (
   componentName: string,
   selector: string
 ): void => {
-  describe('required fields', () => {
-    it('marks a field as required when a required validation boolean is passed', () => {
-      isMarkedRequiredWithBoolean(componentName, selector);
+  describe('fields', () => {
+    it('have the property aria-invalid', () => {
+      hasAriaInvalidProperty(componentName, selector);
     });
-    it('marks a field as required when a required message is passed', () => {
-      isMarkedRequiredWithMessage(componentName, selector);
-    });
-    it('does __not__ mark a field as required when `required: false` is passed', () => {
-      isMarkedNotRequiredWithBoolean(componentName, selector);
-    });
-    it('does __not__ mark a field as required when required is not passed', () => {
-      isMarkedNotRequiredWhenNotPassedRequiredProp(componentName, selector);
+    it('marks a field as aria-invalid when a field has an error', () => {
+      isMarkedAriaInvalidIfErrorExists(componentName, selector);
     });
   });
 };
 
-const isMarkedRequiredWithBoolean = (
+const hasAriaInvalidProperty = (
   componentName: string,
   selector: string
 ): void => {
-  const requiredTrue = { validation: { required: true } };
-  const component = getComponent(componentName, requiredTrue);
-
-  expect(component.find(selector).props().required).toBeTruthy();
+  const props = { validation: { required: true } };
+  const component = getComponent(componentName, props);
+  expect(component.find(selector).props()).toHaveProperty('aria-invalid');
+  expect(component.find(selector).props()['aria-invalid']).toBeUndefined();
 };
 
-const isMarkedRequiredWithMessage = (
+const isMarkedAriaInvalidIfErrorExists = (
   componentName: string,
   selector: string
 ): void => {
-  const requiredMessage = { validation: { required: 'Required' } };
-  const component = getComponent(componentName, requiredMessage);
-
-  expect(component.find(selector).props().required).toBeTruthy();
-};
-
-const isMarkedNotRequiredWithBoolean = (
-  componentName: string,
-  selector: string
-): void => {
-  const requiredFalse = { validation: { required: false } };
-  const component = getComponent(componentName, requiredFalse);
-
-  expect(component.find(selector).props().required).toBeFalsy();
-};
-
-const isMarkedNotRequiredWhenNotPassedRequiredProp = (
-  componentName: string,
-  selector: string
-): void => {
-  const component = getComponent(componentName, {});
-
-  expect(component.find(selector).props().required).toBeFalsy();
+  const props = {
+    validation: { required: 'Required' },
+    error: true,
+  };
+  const component = getComponent(componentName, props);
+  expect(component.find(selector).props()['aria-invalid']).toBeTruthy();
 };
