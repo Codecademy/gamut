@@ -22,7 +22,9 @@ export type ButtonBaseProps = (
   asProps?: any;
   children?: ReactNode;
   className?: string;
-  href?: string;
+  /**
+   * Variant that displays the button as an inline link element, but maintains its semantic meaning as a button.
+   */
   link?: boolean;
   /**
    * @remarks

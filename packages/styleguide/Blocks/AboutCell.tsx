@@ -1,4 +1,3 @@
-import { Column } from '@codecademy/gamut/src';
 import { styled } from '@storybook/theming';
 import { colors } from '@codecademy/gamut-styles/utils/variables';
 
@@ -7,19 +6,19 @@ import { colors } from '@codecademy/gamut-styles/utils/variables';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import React from 'react';
 
-export type Section = 'Atoms' | 'Molecules' | 'Organisms' | 'Foundations';
-
-export type ExampleShape = {
-  name: string;
-  kind: string;
-  text?: string;
-};
+export type Kinds =
+  | 'Atoms'
+  | 'Molecules'
+  | 'Organisms'
+  | 'Foundations'
+  | 'Layouts'
+  | 'Meta';
 
 export type AboutCellProps = {
   emoji: string;
-  examples?: ExampleShape[];
+  examples?: string[];
   label?: string;
-  kind: Section;
+  kind: Kinds;
   story?: string;
   title?: string;
   category?: string;
@@ -42,41 +41,34 @@ export const AboutCell: React.FC<AboutCellProps> = ({
   emoji,
   examples,
   kind,
-  category,
   story = 'About',
   label = 'Examples',
-  title = kind || category,
+  title = kind,
 }) => {
-  const kindLink = [category, kind].filter(Boolean).join('|');
   return (
-    <Column size={{ xs: 12, sm: 6, md: 4 }}>
-      <div>
-        <Heading>
-          <LinkTo kind={kindLink} story={story}>
-            <span role="presentation">{emoji}</span> {title}
-          </LinkTo>
-        </Heading>
-        <Text>{children}</Text>
-        {examples && (
-          <Text>
-            {label}:{' '}
-            {examples.map((example, i) => {
-              const exampleLink = [category, example.kind]
-                .filter(Boolean)
-                .join('|');
-              return (
-                <React.Fragment key={example.name}>
-                  <LinkTo kind={exampleLink} story={example.name}>
-                    {example.text || example.name}
-                  </LinkTo>
-                  {i !== examples.length - 1 && ', '}
-                </React.Fragment>
-              );
-            })}
-          </Text>
-        )}
-      </div>
-    </Column>
+    <div>
+      <Heading>
+        <LinkTo kind={kind} story={story}>
+          <span role="presentation">{emoji}</span> {title}
+        </LinkTo>
+      </Heading>
+      <Text>{children}</Text>
+      {examples && (
+        <Text>
+          {label}:{' '}
+          {examples.map((example, i) => {
+            return (
+              <React.Fragment key={example}>
+                <LinkTo kind={kind} story={example}>
+                  {example}
+                </LinkTo>
+                {i !== examples.length - 1 && ', '}
+              </React.Fragment>
+            );
+          })}
+        </Text>
+      )}
+    </div>
   );
 };
 

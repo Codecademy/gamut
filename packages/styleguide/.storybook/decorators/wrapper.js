@@ -1,2 +1,2 @@
-import '../../../gamut-styles/core/index';
-import './styles';
+import '../../../gamut-styles/core/index.scss';
+import './styles.scss';

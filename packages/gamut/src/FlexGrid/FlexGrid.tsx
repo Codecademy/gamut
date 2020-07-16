@@ -8,7 +8,11 @@ const propKeys = ['fluid', 'className', 'tagName', 'children'];
 export type FlexGridProps = {
   children?: ReactNode | ReactNode[];
   className?: string;
+  /** Whether the container should be relative to its parents dimensions */
   fluid?: boolean;
+  /**
+   * Component type to wrap children with.
+   */
   tagName?: string;
 };
 

@@ -30,21 +30,42 @@ type ContainerPosition =
   | 'spaceBetween';
 
 export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+  /** Flex alignment for container content */
   align?: ContainerPosition;
+  /** Custom flex alignment for the container relative to its parent */
   alignSelf?: ContainerPosition;
+  /**
+   * Justifies and aligns content to the center of the container
+   * (cannot be used with: `justify` or `align`)
+   * */
   center?: boolean;
   children?: ReactNode | ReactNode[];
   className?: string;
+  /** Enables flex direction column */
   column?: boolean;
+  /** Fits the container to the dimensions of its parent element */
   fit?: boolean;
+  /** Enables flex behavior for the container */
   flex?: boolean;
+  /** Custom flex grow specification relative to its parent */
   grow?: number;
+  /** Enables inline-flex behavior for the container */
   inline?: boolean;
+  /** Flex justification for container content */
   justify?: ContainerPosition;
+  /** Disable flex wrapping for container content
+   * (cannot be used with: `wrap`)
+   * */
   nowrap?: boolean;
+  /** Reverses flex direction from the default of either `row` or `column` containers.  */
   reverse?: boolean;
+  /** Enables flex direction row */
   row?: boolean;
+  /** Custom flex shrink specification for the container relative to its parent */
   shrink?: number;
+  /** Enable flex wrapping for container content
+   *  (cannot be used with: `nowrap`)
+   * */
   wrap?: boolean;
 }
 
