@@ -22,13 +22,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     );
 
     return (
-      <textarea
-        {...rest}
-        id={id || htmlFor}
-        className={classNames}
-        ref={ref}
-        aria-invalid={error}
-      />
+      <textarea {...rest} id={id || htmlFor} className={classNames} ref={ref} />
     );
   }
 );

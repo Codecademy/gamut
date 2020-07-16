@@ -47,7 +47,6 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}
-          aria-invalid={error}
         >
           {selectOptions}
         </select>

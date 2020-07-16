@@ -29,6 +29,7 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
       type={field.type}
       id={field.id}
       required={field.validation && !!field.validation.required}
+      aria-invalid={error}
     />
   );
 };

@@ -25,13 +25,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className
     );
     return (
-      <input
-        {...rest}
-        id={id || htmlFor}
-        ref={ref}
-        className={classNames}
-        aria-invalid={error}
-      />
+      <input {...rest} id={id || htmlFor} ref={ref} className={classNames} />
     );
   }
 );
