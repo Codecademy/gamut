@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>9.5.2 (2020-07-16)</small>
+
+* fix: gridform validation (#875) ([efc757a](https://github.com/RyzacInc/client-modules/commit/efc757a)), closes [#875](https://github.com/RyzacInc/client-modules/issues/875)
+
+
+
+
+
 ## <small>9.5.1 (2020-07-14)</small>
 
 * chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
