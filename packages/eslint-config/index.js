@@ -7,7 +7,7 @@ module.exports = {
   },
 
   extends: [
-    'eslint:recommended',
+    // 'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
@@ -99,12 +99,15 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
+    '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/typedef': 'off',
-
     // These rules have been deprecated in their plugins but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
 
