@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.7.42 (2020-07-16)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>1.7.41 (2020-07-14)</small>
 
 * chore: update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171))
