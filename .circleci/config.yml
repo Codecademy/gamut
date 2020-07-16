@@ -9,7 +9,7 @@ references:
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
-      NODE_OPTIONS: "--max_old_space_size=4096"
+      NODE_OPTIONS: '--max_old_space_size=4096'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
   repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
@@ -73,7 +73,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
+        - 'c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7'
 
 jobs:
   checkout_code:
@@ -149,20 +149,22 @@ jobs:
       - *set_npm_token
       - run:
           name: Lerna Publish
-          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --no-changelog --include-merged-tags --create-release=github
+          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
 
   update_changelogs:
     <<: *default_env
     steps:
       - *add_github_ssh_key
+      - *skip_on_automated_commit
       - *set_git_user
       - *restore_repo
       - checkout
       - run:
           name: Update Changelogs
           command: |
-            yarn lerna regenerate-changelog
+            yarn regenerate-changelog
             if [ -n "$(git status --porcelain)" ]; then
+              git pull
               git add -A
               git commit -am "chore: update changelogs"
               git push

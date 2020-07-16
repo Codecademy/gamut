@@ -1,7 +1,5 @@
-import {
-  itHandlesRequiredProps,
-  renderGridFormRadioGroupInput,
-} from '../../TestHelper';
+import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
   describe('when an id is passed as a prop', () => {
