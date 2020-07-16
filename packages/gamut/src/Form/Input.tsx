@@ -13,7 +13,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ error, htmlFor, className, id, ...rest }, ref) => {
+  ({ error, htmlFor, className, id, required, ...rest }, ref) => {
     const classNames = cx(
       s.Input,
       {
@@ -25,7 +25,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       className
     );
     return (
-      <input {...rest} id={id || htmlFor} ref={ref} className={classNames} />
+      <input
+        {...rest}
+        id={id || htmlFor}
+        ref={ref}
+        className={classNames}
+        aria-required={required}
+      />
     );
   }
 );
