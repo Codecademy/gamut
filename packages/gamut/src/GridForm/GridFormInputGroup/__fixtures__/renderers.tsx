@@ -31,6 +31,7 @@ export const renderGridFormSelectInput = (
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
