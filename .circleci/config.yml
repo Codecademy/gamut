@@ -151,6 +151,20 @@ jobs:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
 
+  publish_next:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - run:
+          name: Lerna Publish
+          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github --npm-tag next
+
   update_changelogs:
     <<: *default_env
     steps:
@@ -311,11 +325,24 @@ workflows:
           filters:
             branches:
               only: master
+      - publish_next:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: next
+      - deploy_next:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: next
       - publish_alpha:
           filters:
             branches:
               ignore:
                 - master
+                - next
                 - gh-pages
           requires:
             - checkout_code
@@ -324,6 +351,7 @@ workflows:
             branches:
               ignore:
                 - master
+                - next
                 - gh-pages
           requires:
             - checkout_code
