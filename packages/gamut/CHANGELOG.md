@@ -1,24 +1,17 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>9.5.2 (2020-07-16)</small>
-
-* fix: gridform validation (#875) ([efc757a](https://github.com/RyzacInc/client-modules/commit/efc757a)), closes [#875](https://github.com/RyzacInc/client-modules/issues/875)
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.1...@codecademy/gamut@9.5.2) (2020-07-16)
 
 
+### 🐛 Bug Fixes
+
+* gridform validation ([#875](https://github.com/Codecademy/client-modules/issues/875)) ([efc757a](https://github.com/Codecademy/client-modules/commit/efc757af76afd22cedd98595126087e76c2bdd06))
+
+### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.0...@codecademy/gamut@9.5.1) (2020-07-14)
 
 
+### Other Changes
 
-## <small>9.5.1 (2020-07-14)</small>
-
-* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
-* chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
-
-
-
-
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [9.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.5.0) (2020-07-13)
 
@@ -2687,3 +2680,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

@@ -1,56 +1,40 @@
-# Change Log
+### [11.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.2...@codecademy/styleguide@11.7.3) (2020-07-16)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>11.7.3 (2020-07-16)</small>
-
-**Note:** Version bump only for package @codecademy/styleguide
+### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.1...@codecademy/styleguide@11.7.2) (2020-07-14)
 
 
+### Other Changes
+
+* **Styleguide:** Update AboutCell's to match new heirarchy ([#874](https://github.com/Codecademy/client-modules/issues/874)) ([a9fc13a](https://github.com/Codecademy/client-modules/commit/a9fc13a5c8196f9aa8b6b32ce3f36d0ccab6fc95))
+
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.0...@codecademy/styleguide@11.7.1) (2020-07-14)
 
 
+### Other Changes
 
-## <small>11.7.2 (2020-07-14)</small>
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
 
-* chore(Styleguide): Update AboutCell's to match new heirarchy (#874) ([a9fc13a](https://github.com/RyzacInc/client-modules/commit/a9fc13a)), closes [#874](https://github.com/RyzacInc/client-modules/issues/874)
-
-
-
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.6.0...@codecademy/styleguide@11.7.0) (2020-07-14)
 
 
-## <small>11.7.1 (2020-07-14)</small>
+### ✨ Features
 
-* chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
+* **Styleguide:** Flatten Navigation Hierarchy for Gamut Core ([#864](https://github.com/Codecademy/client-modules/issues/864)) ([ad83bb1](https://github.com/Codecademy/client-modules/commit/ad83bb1279c666a5af34e070ec3a0f20cfb8d438))
 
-
-
-
-
-## 11.7.0 (2020-07-14)
-
-* feat(Styleguide): Flatten Navigation Hierarchy for Gamut Core (#864) ([ad83bb1](https://github.com/RyzacInc/client-modules/commit/ad83bb1)), closes [#864](https://github.com/RyzacInc/client-modules/issues/864)
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.1...@codecademy/styleguide@11.6.0) (2020-07-14)
 
 
+### ✨ Features
+
+* **Styleguide:** Simplify indicator story status pills ([#873](https://github.com/Codecademy/client-modules/issues/873)) ([3e83d36](https://github.com/Codecademy/client-modules/commit/3e83d3624a0adeb1b6acc4c9088b9989bfdf463b))
+
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.0...@codecademy/styleguide@11.5.1) (2020-07-14)
 
 
+### Other Changes
 
-## 11.6.0 (2020-07-14)
-
-* feat(Styleguide): Simplify indicator story status pills (#873) ([3e83d36](https://github.com/RyzacInc/client-modules/commit/3e83d36)), closes [#873](https://github.com/RyzacInc/client-modules/issues/873)
-
-
-
-
-
-## <small>11.5.1 (2020-07-14)</small>
-
-* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
-* chore(Styleguide): Add module alias for storybook helpers [WEB-934] (#861) ([7daf135](https://github.com/RyzacInc/client-modules/commit/7daf135)), closes [#861](https://github.com/RyzacInc/client-modules/issues/861)
-
-
-
-
+* **Styleguide:** Add module alias for storybook helpers [WEB-934] ([#861](https://github.com/Codecademy/client-modules/issues/861)) ([7daf135](https://github.com/Codecademy/client-modules/commit/7daf135edbd7ebf933f06dd05cd76be00c75a471))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 
@@ -854,3 +838,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
