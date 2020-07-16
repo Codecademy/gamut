@@ -7,7 +7,6 @@ module.exports = {
   },
 
   extends: [
-    // 'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
