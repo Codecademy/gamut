@@ -91,10 +91,7 @@ export const renderGridFormCheckboxInput = (
   );
 };
 
-export const getComponent = (
-  componentName: string,
-  extraProps: any
-): ReactWrapper => {
+export const getComponent = (componentName: string, extraProps: any) => {
   switch (componentName) {
     case 'GridFormTextInput':
       return renderGridFormTextInput(extraProps);
@@ -109,6 +106,6 @@ export const getComponent = (
     case 'GridFormCheckboxInput':
       return renderGridFormCheckboxInput(extraProps);
     default:
-      return null;
+      throw new Error(`Unknown component name: ${componentName}`);
   }
 };

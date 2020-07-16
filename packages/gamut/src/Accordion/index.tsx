@@ -49,7 +49,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   size = 'normal',
   theme,
 }) => {
-  const [expanded, setExpanded] = useState(initiallyExpanded);
+  const [expanded, setExpanded] = useState(!!initiallyExpanded);
   const [delayExpanded, setDelayExpanded] = useState(expanded);
 
   useLayoutEffect(() => {

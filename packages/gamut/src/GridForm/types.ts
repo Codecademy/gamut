@@ -1,4 +1,4 @@
-import { FormContextValues, ValidationOptions } from 'react-hook-form';
+import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
@@ -14,7 +14,7 @@ export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: React.ReactNode;
   label?: string;
   multiline?: boolean;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'checkbox';
 };
 
@@ -22,14 +22,14 @@ export type GridFormCustomFieldProps = {
   className?: string;
   error?: string;
   field: GridFormCustomField;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
   label?: string;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'custom';
 };
 
@@ -51,7 +51,7 @@ export type BasicInputType =
 export type GridFormTextField = BaseFormField<string> & {
   label?: string;
   placeholder?: string;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: BasicInputType;
 };
 
@@ -63,26 +63,26 @@ export type GridFormRadioOption = {
 export type GridFormRadioGroupField = BaseFormField<string> & {
   label: string;
   options: GridFormRadioOption[];
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
   label: string;
   options: string[] | Record<string, number | string>;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'select';
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
   label: React.ReactNode;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
   label: string;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'textarea';
 };
 

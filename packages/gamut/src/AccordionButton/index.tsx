@@ -19,7 +19,7 @@ export type AccordionButtonProps = {
   /**
    * Determines the size of the button.
    */
-  size?: 'normal' | 'large';
+  size: 'normal' | 'large';
   /**
    * Visual theme for the clickable header button.
    */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { RadioGroup, Radio } from '../../../Form';
 import { GridFormRadioGroupField } from '../../types';
@@ -7,7 +7,7 @@ import { GridFormRadioGroupField } from '../../types';
 export type GridFormRadioGroupInputProps = {
   className?: string;
   field: Omit<GridFormRadioGroupField, 'label'>;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
 };
 
