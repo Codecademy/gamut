@@ -26,6 +26,9 @@ export const VENDOR = pick(
 export const LEARNING_ENVIRONMENT = pick(
   Icons,
   [
+    'PortfolioProjectIcon',
+    'ChallengeProjectIcon',
+    'InformationalIcon',
     'LessonIcon',
     'ProjectsIcon',
     'NarrativeIcon',
