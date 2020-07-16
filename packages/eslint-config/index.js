@@ -7,6 +7,7 @@ module.exports = {
   },
 
   extends: [
+    'eslint:recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
@@ -96,9 +97,12 @@ module.exports = {
     // These functional rules are annoying and we generally don't want them on
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
+    '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/typedef': 'off',
 
     // These rules have been deprecated in their plugins but not yet removed from presets
