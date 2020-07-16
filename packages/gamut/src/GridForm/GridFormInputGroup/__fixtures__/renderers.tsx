@@ -43,6 +43,7 @@ export const renderGridFormTextInput = (
     <GridFormTextInput
       field={{ ...stubTextField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -54,6 +55,7 @@ export const renderGridFormTextArea = (
     <GridFormTextArea
       field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -66,6 +68,7 @@ export const renderGridFormRadioGroupInput = (
       field={{ ...stubRadioGroupField, ...extraProps }}
       setValue={jest.fn()}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -77,6 +80,7 @@ export const renderGridFormFileInput = (
     <GridFormFileInput
       field={{ ...stubFileField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -88,6 +92,7 @@ export const renderGridFormCheckboxInput = (
     <GridFormCheckboxInput
       field={{ ...stubCheckboxField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };

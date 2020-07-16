@@ -1,6 +1,6 @@
 import { getComponent } from './renderers';
 
-export const itHandlesRequiredProps = (
+export const itHandlesAriaInvalid = (
   componentName: string,
   selector: string
 ): void => {
@@ -18,20 +18,20 @@ const hasAriaInvalidProperty = (
   componentName: string,
   selector: string
 ): void => {
-  const requiredTrue = { validation: { required: true } };
-  const component = getComponent(componentName, requiredTrue);
+  const props = { validation: { required: true } };
+  const component = getComponent(componentName, props);
   expect(component.find(selector).props()).toHaveProperty('aria-invalid');
+  expect(component.find(selector).props()['aria-invalid']).toBeUndefined();
 };
 
 const isMarkedAriaInvalidIfErrorExists = (
   componentName: string,
   selector: string
 ): void => {
-  const requiredMessage = {
+  const props = {
     validation: { required: 'Required' },
     error: true,
   };
-  const component = getComponent(componentName, requiredMessage);
-
+  const component = getComponent(componentName, props);
   expect(component.find(selector).props()['aria-invalid']).toBeTruthy();
 };
