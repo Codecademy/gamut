@@ -13,7 +13,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const className = cx(s.Select, props.className, props.error && s.error);
-    const { options, error, id, required, ...rest } = props;
+    const { options, error, id, ...rest } = props;
 
     let selectOptions: ReactNode[] = [];
 
@@ -47,7 +47,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}
-          aria-required={required}
+          aria-invalid={error}
         >
           {selectOptions}
         </select>

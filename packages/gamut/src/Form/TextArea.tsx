@@ -12,7 +12,7 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ error, htmlFor, className, id, required, ...rest }, ref) => {
+  ({ error, htmlFor, className, id, ...rest }, ref) => {
     const classNames = cx(
       s.TextArea,
       {
@@ -27,7 +27,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         id={id || htmlFor}
         className={classNames}
         ref={ref}
-        aria-required={required}
+        aria-invalid={error}
       />
     );
   }
