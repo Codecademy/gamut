@@ -1,4 +1,3 @@
-import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
 import { renderGridFormCheckboxInput } from '../../__fixtures__/renderers';
 
 describe('GridFormCheckboxInput', () => {
@@ -17,6 +16,4 @@ describe('GridFormCheckboxInput', () => {
       expect(checkboxInput.find('input#name').length).toBe(1);
     });
   });
-
-  itHandlesRequiredProps('GridFormCheckboxInput', 'input');
 });

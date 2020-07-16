@@ -1,4 +1,3 @@
-import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
 import { renderGridFormRadioGroupInput } from '../../__fixtures__/renderers';
 
 describe('GridFormRadioGroupInput', () => {
@@ -20,7 +19,4 @@ describe('GridFormRadioGroupInput', () => {
       expect(radioButtons.find('input#name-0').length).toBe(1);
     });
   });
-
-  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-0');
-  itHandlesRequiredProps('GridFormRadioGroupInput', 'input#stub-radio-group-1');
 });
