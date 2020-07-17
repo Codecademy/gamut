@@ -1,7 +1,7 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
 
+import { ChevronDownIcon } from '../Icon/icons/ChevronDownIcon';
 import Button from '../Button';
 import styles from './styles.module.scss';
 import ButtonBase from '../ButtonBase';
@@ -56,6 +56,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   theme,
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
+  const iconSize = size === 'large' ? 30 : undefined;
 
   return (
     <ButtonComponent
@@ -71,12 +72,13 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       {...props}
     >
       <span className={styles.children}>{children}</span>
-      <ArrowChevronDownIcon
+      <ChevronDownIcon
         className={cx(
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
         )}
-        size={size === 'large' ? 30 : undefined}
+        height={iconSize}
+        width={iconSize}
       />
     </ButtonComponent>
   );

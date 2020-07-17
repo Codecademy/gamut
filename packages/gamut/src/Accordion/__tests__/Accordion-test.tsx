@@ -62,7 +62,7 @@ describe('Accordion', () => {
     });
 
     expect(wrapper.text()).toEqual(
-      `header-${true}Arrow Chevron Down Iconchildren-${true}`
+      `header-${true}Chevron Down Iconchildren-${true}`
     );
   });
 });
