@@ -7,7 +7,7 @@ export type TabPanelProps = {
   active?: boolean;
   children?: ReactNode;
   className?: string;
-  id: string;
+  id?: string;
   renderAllPanels?: boolean;
 };
 
@@ -20,7 +20,8 @@ export const TabPanel: FunctionComponent<TabPanelProps> = ({
 }) => (
   <div
     id={id}
-    aria-labelledby={id.replace('-panel', '')}
+    // id should be passed by the TabList - confusing, but workable.
+    aria-labelledby={id!.replace('-panel', '')}
     aria-hidden={!active}
     role="tabpanel"
     className={cx(className, {
