@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>9.5.3 (2020-07-17)</small>
+
+* Used old ChevronDownIcon in AccordionButton (#879) ([e5d29a4](https://github.com/RyzacInc/client-modules/commit/e5d29a4)), closes [#879](https://github.com/RyzacInc/client-modules/issues/879)
+* chore: update changelogs ([3c6cb8f](https://github.com/RyzacInc/client-modules/commit/3c6cb8f))
+
+
+
+
+
 ### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.1...@codecademy/gamut@9.5.2) (2020-07-16)
 
 
@@ -2680,4 +2694,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
