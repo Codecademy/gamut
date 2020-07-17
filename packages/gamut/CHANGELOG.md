@@ -1,16 +1,14 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>9.5.5 (2020-07-17)</small>
-
-* fix: Automatically add display names to anonymous function components (#878) ([a6296fb](https://github.com/RyzacInc/client-modules/commit/a6296fb)), closes [#878](https://github.com/RyzacInc/client-modules/issues/878)
-* chore: update changelogs ([91047e6](https://github.com/RyzacInc/client-modules/commit/91047e6))
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.4...@codecademy/gamut@9.5.5) (2020-07-17)
 
 
+### Other Changes
+
+* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
 
+### 🐛 Bug Fixes
+
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
 
 ### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.3...@codecademy/gamut@9.5.4) (2020-07-17)
 
@@ -2710,3 +2708,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
