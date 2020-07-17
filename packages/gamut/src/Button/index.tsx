@@ -105,7 +105,9 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
    * Variant that underlines the text of the button.
    */
   underline?: boolean;
-  /** @deprecated This is a no-op prop */
+  /**
+   *  Determines whether button dimensions should be determined by the content
+   */
   fitText?: boolean;
 };
 
@@ -132,6 +134,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
       [s.round]: props.round,
       [s.square]: props.square,
       [s.flat]: props.flat,
+      [s['fit-text']]: props.fitText,
     },
     props.className
   );
