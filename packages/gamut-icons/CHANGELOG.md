@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>2.4.2 (2020-07-17)</small>
+
+* fix: Automatically add display names to anonymous function components (#878) ([a6296fb](https://github.com/RyzacInc/client-modules/commit/a6296fb)), closes [#878](https://github.com/RyzacInc/client-modules/issues/878)
+* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
+
+
+
+
+
 ### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.1) (2020-06-23)
 
 
@@ -149,4 +163,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-

@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.7.45 (2020-07-17)</small>
+
+* fix: Automatically add display names to anonymous function components (#878) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb)), closes [#878](https://github.com/Codecademy/client-modules/issues/878)
+* chore: update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e6))
+
+
+
+
+
 ### [1.7.44](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.43...@codecademy/gamut-labs@1.7.44) (2020-07-17)
 
 
@@ -109,4 +123,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
