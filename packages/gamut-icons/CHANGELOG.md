@@ -1,19 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>2.4.1 (2020-06-23)</small>
-
-* chore(gamut-icons): update svgo config (#848) ([269fa8c](https://github.com/RyzacInc/client-modules/commit/269fa8c)), closes [#848](https://github.com/RyzacInc/client-modules/issues/848)
-* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
+### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.1) (2020-06-23)
 
 
+### Other Changes
 
-
-
-## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.0) (2020-06-11)
+* **gamut-icons:** update svgo config ([#848](https://github.com/Codecademy/client-modules/issues/848)) ([269fa8c](https://github.com/Codecademy/client-modules/commit/269fa8cc0c2626097da632053e9f57e509aa5fb0))
 
 ## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.1...@codecademy/gamut-icons@2.4.0) (2020-06-09)
 
@@ -159,3 +149,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+

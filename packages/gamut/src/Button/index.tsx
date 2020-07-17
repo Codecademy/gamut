@@ -42,25 +42,73 @@ export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
    * @see https://github.com/Microsoft/TypeScript/issues/21048
    */
   asProps?: any;
+  /**
+   * Whether button should behave like a block element or inline.
+   */
   block?: boolean;
+  /**
+   * Capitalize the text of the button.
+   */
   caps?: boolean;
   children: ReactNode;
+  /**
+   * Disables the button and adds visual indicators to show it is not interactive.
+   */
   disabled?: boolean;
-  fitText?: boolean;
+  /**
+   * Variant that displays the button as flat.
+   */
   flat?: boolean;
+  /**
+   * Adds a pulsing animation to the button
+   */
   go?: boolean;
+  /**
+   * Changes the button to a link with no visual indication
+   */
   href?: string;
-  id?: string;
-  link?: boolean;
-  outline?: boolean;
+  /**
+   * Link relationship property to be used with `href`
+   */
   rel?: string;
-  round?: boolean;
-  size?: 'small' | 'large';
-  square?: boolean;
+  /**
+   * Link target property to be used with `href`
+   */
   target?: string;
+  id?: string;
+  /**
+   * Variant that displays the button as an inline link element, but maintains its semantic meaning as a button.
+   */
+  link?: boolean;
+  /**
+   * Variant the displays the button as a button that is outlined instead of solid.
+   */
+  outline?: boolean;
+  /**
+   *  Variant that rounds the corners of the button
+   */
+  round?: boolean;
+  /**
+   * Variant that determines the size of the button
+   */
+  size?: 'small' | 'large';
+  /**
+   * Variant that displays the button as a square
+   */
+  square?: boolean;
+  /**
+   * Variant that controls the background and text color of the button
+   * */
   theme?: string;
   type?: string;
+  /**
+   * Variant that underlines the text of the button.
+   */
   underline?: boolean;
+  /**
+   *  Determines whether button dimensions should be determined by the content
+   */
+  fitText?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = (props) => {

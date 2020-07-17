@@ -148,8 +148,27 @@ jobs:
       - checkout
       - *set_npm_token
       - run:
-          name: lerna publish
+          name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
+
+  update_changelogs:
+    <<: *default_env
+    steps:
+      - *add_github_ssh_key
+      - *skip_on_automated_commit
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - run:
+          name: Update Changelogs
+          command: |
+            git pull
+            yarn regenerate-changelog
+            if [ -n "$(git status --porcelain)" ]; then
+              git add -A
+              git commit -am "chore: update changelogs"
+              git push
+            fi
 
   deploy:
     <<: *default_env
@@ -277,6 +296,12 @@ workflows:
       - publish:
           requires:
             - checkout_code
+          filters:
+            branches:
+              only: master
+      - update_changelogs:
+          requires:
+            - publish
           filters:
             branches:
               only: master

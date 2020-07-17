@@ -28,6 +28,7 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       ref={register(field.validation)}
       options={field.options}
       id={field.id}
+      aria-invalid={error}
     />
   );
 };

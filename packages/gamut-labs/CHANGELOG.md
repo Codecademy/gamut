@@ -1,106 +1,55 @@
-# Change Log
+### [1.7.44](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.43...@codecademy/gamut-labs@1.7.44) (2020-07-17)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## <small>1.7.34 (2020-06-30)</small>
+### Other Changes
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
 
+### [1.7.43](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.42...@codecademy/gamut-labs@1.7.43) (2020-07-17)
 
 
+### Other Changes
 
+* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 
-## <small>1.7.33 (2020-06-30)</small>
+### [1.7.42](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.41...@codecademy/gamut-labs@1.7.42) (2020-07-16)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+### [1.7.41](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.40...@codecademy/gamut-labs@1.7.41) (2020-07-14)
 
 
+### Other Changes
 
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
+### [1.7.40](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.36...@codecademy/gamut-labs@1.7.40) (2020-07-13)
 
-## <small>1.7.32 (2020-06-29)</small>
+### [1.7.36](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.35...@codecademy/gamut-labs@1.7.36) (2020-07-08)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+### [1.7.35](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.34...@codecademy/gamut-labs@1.7.35) (2020-07-08)
 
+### [1.7.34](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.33...@codecademy/gamut-labs@1.7.34) (2020-06-30)
 
+### [1.7.33](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.32...@codecademy/gamut-labs@1.7.33) (2020-06-30)
 
+### [1.7.32](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.31...@codecademy/gamut-labs@1.7.32) (2020-06-29)
 
+### [1.7.31](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.30...@codecademy/gamut-labs@1.7.31) (2020-06-25)
 
-## <small>1.7.31 (2020-06-25)</small>
+### [1.7.30](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.29...@codecademy/gamut-labs@1.7.30) (2020-06-24)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
+### [1.7.29](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.28...@codecademy/gamut-labs@1.7.29) (2020-06-23)
 
+### [1.7.28](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.27...@codecademy/gamut-labs@1.7.28) (2020-06-22)
 
+### [1.7.27](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.26...@codecademy/gamut-labs@1.7.27) (2020-06-18)
 
+### [1.7.26](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.25...@codecademy/gamut-labs@1.7.26) (2020-06-16)
 
+### [1.7.25](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.24...@codecademy/gamut-labs@1.7.25) (2020-06-16)
 
-## <small>1.7.30 (2020-06-24)</small>
+### [1.7.24](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.23...@codecademy/gamut-labs@1.7.24) (2020-06-16)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.29 (2020-06-23)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.28 (2020-06-22)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.27 (2020-06-18)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.26 (2020-06-16)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.25 (2020-06-16)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.24 (2020-06-16)</small>
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
-
-## <small>1.7.23 (2020-06-12)</small>
-
-* ci: clean changelog update ([9d7c0f0](https://github.com/Codecademy/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/Codecademy/client-modules/commit/d139572)), closes [#836](https://github.com/Codecademy/client-modules/issues/836)
-
-
-
-
-
-### [1.7.22](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.22...@codecademy/gamut-labs@1.7.22) (2020-06-11)
+### [1.7.23](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.22...@codecademy/gamut-labs@1.7.23) (2020-06-12)
 
 ### [1.7.22](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.21...@codecademy/gamut-labs@1.7.22) (2020-06-11)
 
@@ -160,3 +109,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
