@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>11.7.6 (2020-07-17)</small>
+
+* chore: update changelogs ([91047e6](https://github.com/RyzacInc/client-modules/commit/91047e6))
+
+
+
+
+
 ### [11.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.4...@codecademy/styleguide@11.7.5) (2020-07-17)
 
 
@@ -852,4 +865,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
