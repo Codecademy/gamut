@@ -47,7 +47,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "onchange": "^7.0.2",
-    "babel-plugin-react-anonymous-display-name": "^0.0.1"
+    "onchange": "^7.0.2"
   }
 }
