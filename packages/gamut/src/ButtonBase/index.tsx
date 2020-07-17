@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
 import omitProps from '../utils/omitProps';
 import styles from './styles.module.scss';
@@ -6,10 +6,10 @@ import { ChildComponentDescriptor } from '../typings/react';
 
 const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
 
-export type ButtonBaseProps = (
-  | HTMLAttributes<HTMLLinkElement>
-  | HTMLAttributes<HTMLButtonElement>
-) & {
+export type ButtonBaseProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'size'
+> & {
   /**
    * Component type to wrap children with.
    */
