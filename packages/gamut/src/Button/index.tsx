@@ -3,7 +3,6 @@ import cx from 'classnames';
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles/index.module.scss';
-import { ChildComponentDescriptor } from '../typings/react';
 
 // themes can be an alias to a color
 // or a unique button type
@@ -32,16 +31,6 @@ const propKeys = [
 ];
 
 export type ButtonProps = ButtonBaseProps & {
-  /**
-   * Component type to wrap children with.
-   */
-  as?: ChildComponentDescriptor;
-  /**
-   * @remarks We would love to properly type this with generics, but cannot yet.
-   * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
-   * @see https://github.com/Microsoft/TypeScript/issues/21048
-   */
-  asProps?: any;
   /**
    * Whether button should behave like a block element or inline.
    */
