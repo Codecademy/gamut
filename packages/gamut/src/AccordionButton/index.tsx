@@ -56,6 +56,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   theme,
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
+  const iconSize = size === 'large' ? 30 : undefined;
 
   return (
     <ButtonComponent
@@ -70,13 +71,14 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       flat
       {...props}
     >
-      {children}
+      <span className={styles.children}>{children}</span>
       <ArrowChevronDownIcon
         className={cx(
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
         )}
-        size={size === 'large' ? 30 : undefined}
+        height={iconSize}
+        width={iconSize}
       />
     </ButtonComponent>
   );
