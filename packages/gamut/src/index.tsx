@@ -1,4 +1,5 @@
 export * from './Alert';
+export * from './Accordion';
 export * from './AccordionButton';
 export * from './AppBar';
 export * from './AppBar/AppBarSection';
@@ -42,6 +43,7 @@ export * from './Toggle';
 export * from './ToolTip';
 export * from './Truncate';
 export * from './utils';
+export * from './Video';
 export * from './typings/responsive-properties';
 export * from './Icon/icons/AccessibilityIcon';
 export * from './Icon/icons/AddIcon';

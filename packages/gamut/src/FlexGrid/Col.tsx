@@ -54,19 +54,28 @@ function getClassNames(props: ColProps) {
 }
 
 export type ColSizing = {
+  /** Size of the column on screen sizes greater than `xs` */
   xs?: boolean | number;
+  /** Size of the column on screen sizes greater than `sm` */
   sm?: boolean | number;
+  /** Size of the column on screen sizes greater than `md` */
   md?: boolean | number;
+  /** Size of the column on screen sizes greater than `lg` */
   lg?: boolean | number;
+  /** Offset of the column on screen sizes greater than `xs` */
   xsOffset?: number;
+  /** Offset of the column on screen sizes greater than `sm` */
   smOffset?: number;
+  /** Offset of the column on screen sizes greater than `md` */
   mdOffset?: number;
+  /** Offset of the column on screen sizes greater than `lg` */
   lgOffset?: number;
 };
 
 export type ColProps = ColSizing & {
   tagName?: string;
   className?: string;
+  /** Reverses the column's flex-direction */
   reverse?: boolean;
 };
 

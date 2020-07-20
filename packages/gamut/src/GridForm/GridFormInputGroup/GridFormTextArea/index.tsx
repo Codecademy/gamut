@@ -26,6 +26,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       ref={register(field.validation)}
       id={field.id}
+      aria-invalid={error}
     />
   );
 };
