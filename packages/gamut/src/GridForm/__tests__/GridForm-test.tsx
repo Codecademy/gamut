@@ -80,8 +80,8 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).not.toBe(
+        true
       );
     });
   });
@@ -105,7 +105,9 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -133,9 +135,27 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
+    });
+
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={[]}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, disabled: true }}
+          validation={'onChange'}
+        />
       );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
     });
   });
 

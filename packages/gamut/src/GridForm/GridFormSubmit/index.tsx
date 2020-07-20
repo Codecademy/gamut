@@ -10,7 +10,7 @@ export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  disabled: boolean;
+  disabled?: boolean;
   position?: GridFormSubmitPosition;
   size?: ResponsiveProperty<ColumnSizes>;
   theme?: string;
