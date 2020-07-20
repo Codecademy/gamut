@@ -20,6 +20,7 @@ export type GridFormSubmitProps = {
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
   disabled,
+  outline,
   position = 'left',
   size,
   theme = 'brand-purple',
@@ -28,7 +29,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
 
   return (
     <Column className={cx(styles.base, positionStyle)} size={size}>
-      <Button disabled={disabled} theme={theme} type="submit">
+      <Button disabled={disabled} outline={outline} theme={theme} type="submit">
         {contents}
       </Button>
     </Column>
