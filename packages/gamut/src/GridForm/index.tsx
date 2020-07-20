@@ -38,7 +38,7 @@ export type GridFormProps<Values extends {}> = {
    */
   submit: GridFormSubmitProps & {
     /**
-     * Manually overrides the disabled button to be disabled regardless of validation, if true.
+     * Manually overrides the submit button to be disabled regardless of validation, if true.
      */
     disabled?: boolean;
   };

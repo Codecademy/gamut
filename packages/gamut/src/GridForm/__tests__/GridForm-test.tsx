@@ -80,9 +80,9 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).not.toBe(
-        true
-      );
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
     });
   });
 
