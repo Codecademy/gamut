@@ -9,19 +9,19 @@ module.exports = () => ({
       require("@babel/preset-env").default,
       {
         targets: {
-          node: "current"
-        }
-      }
+          node: "current",
+        },
+      },
     ],
     (isEnvProduction || isEnvDevelopment) && [
       require("@babel/preset-env").default,
       {
         useBuiltIns: "entry",
         modules: false,
-        corejs: 2
-      }
+        corejs: 2,
+      },
     ],
-    require("@babel/preset-react").default
+    require("@babel/preset-react").default,
   ].filter(Boolean),
   plugins: [
     require("@babel/plugin-transform-destructuring").default,
@@ -29,14 +29,14 @@ module.exports = () => ({
     [
       require("@babel/plugin-proposal-class-properties").default,
       {
-        loose: true
-      }
+        loose: true,
+      },
     ],
     [
       require("@babel/plugin-proposal-object-rest-spread").default,
       {
-        useBuiltIns: true
-      }
+        useBuiltIns: true,
+      },
     ],
     require("@babel/plugin-proposal-do-expressions"),
     require("@babel/plugin-proposal-export-default-from"),
@@ -49,19 +49,20 @@ module.exports = () => ({
       {
         corejs: false,
         helpers: false,
-        regenerator: true
-      }
+        regenerator: true,
+      },
     ],
+    require("babel-plugin-react-anonymous-display-name").default,
     !isEnvTest && [
       require("@babel/plugin-transform-regenerator").default,
       {
         // Async functions are converted to generators by @babel/preset-env
-        async: false
-      }
+        async: false,
+      },
     ],
     require("@babel/plugin-syntax-dynamic-import").default,
     isEnvTest &&
       // Transform dynamic import to require
-      require("babel-plugin-transform-dynamic-import").default
-  ].filter(Boolean)
+      require("babel-plugin-transform-dynamic-import").default,
+  ].filter(Boolean),
 });

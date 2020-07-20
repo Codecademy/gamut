@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-codecademy",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "A collection of babel plugins and presets used at codecademy.com",
   "main": "index.js",
   "keywords": [
@@ -34,7 +34,8 @@
     "@babel/plugin-transform-runtime": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-plugin-transform-dynamic-import": "^2.1.0"
+    "babel-plugin-transform-dynamic-import": "^2.1.0",
+    "babel-plugin-react-anonymous-display-name": "0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.2",

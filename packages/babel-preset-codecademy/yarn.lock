@@ -940,6 +940,11 @@ babel-plugin-dynamic-import-node@^2.3.0:
   dependencies:
     object.assign "^4.1.0"
 
+babel-plugin-react-anonymous-display-name@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-react-anonymous-display-name/-/babel-plugin-react-anonymous-display-name-0.0.1.tgz#1ead71540b71d4024bd26c214b7a3a3d0d67bb93"
+  integrity sha512-VDPjkWaKY94V3tDPfHCCI/16MBeuMjiPH0cIihS+LVl53jGo1zF/pOkiqfXcxn8D44mGw2om+sIzlsLBUEMQnA==
+
 babel-plugin-transform-dynamic-import@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-dynamic-import/-/babel-plugin-transform-dynamic-import-2.1.0.tgz#3ce618dd983c072b6e2135f527d46092fb45d80e"
