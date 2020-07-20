@@ -1,16 +1,45 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>9.5.1 (2020-07-14)</small>
-
-* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
-* chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
+### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.4...@codecademy/gamut@9.5.5) (2020-07-17)
 
 
+### Other Changes
+
+* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
 
+### 🐛 Bug Fixes
+
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
+
+### [9.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.3...@codecademy/gamut@9.5.4) (2020-07-17)
+
+
+### Other Changes
+
+* Erroneous error ([#880](https://github.com/Codecademy/client-modules/issues/880)) ([5228f25](https://github.com/Codecademy/client-modules/commit/5228f25a17cb4c37ca6ea4baa5b449bd961dd02b))
+* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
+
+### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.2...@codecademy/gamut@9.5.3) (2020-07-17)
+
+
+### Other Changes
+
+* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
+* Used old ChevronDownIcon in AccordionButton ([#879](https://github.com/Codecademy/client-modules/issues/879)) ([e5d29a4](https://github.com/Codecademy/client-modules/commit/e5d29a47cc1eb6e58e3671680969b9da5edfc8ec))
+
+### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.1...@codecademy/gamut@9.5.2) (2020-07-16)
+
+
+### 🐛 Bug Fixes
+
+* gridform validation ([#875](https://github.com/Codecademy/client-modules/issues/875)) ([efc757a](https://github.com/Codecademy/client-modules/commit/efc757af76afd22cedd98595126087e76c2bdd06))
+
+### [9.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.0...@codecademy/gamut@9.5.1) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [9.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.5.0) (2020-07-13)
 
@@ -2679,3 +2708,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

@@ -72,7 +72,7 @@ export function GridForm<
   });
 
   return (
-    <Form className={className} onSubmit={handleSubmit(onSubmit)}>
+    <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;

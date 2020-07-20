@@ -1,4 +1,4 @@
-import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
 import { renderGridFormTextArea } from '../../__fixtures__/renderers';
 
 describe('GridFormTextArea', () => {
@@ -18,5 +18,5 @@ describe('GridFormTextArea', () => {
     });
   });
 
-  itHandlesRequiredProps('GridFormTextArea', 'textarea');
+  itHandlesAriaInvalid('GridFormTextArea', 'textarea');
 });
