@@ -15,7 +15,6 @@ export type BaseFormField<Value> = {
    */
   id?: string;
 
-  label?: React.ReactNode;
   name: string;
   onUpdate?: (value: Value) => void;
   size?: ColumnProps['size'];
@@ -23,6 +22,7 @@ export type BaseFormField<Value> = {
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: React.ReactNode;
+  label: React.ReactNode;
   multiline?: boolean;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'checkbox';
@@ -37,6 +37,7 @@ export type GridFormCustomFieldProps = {
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationOptions;
   type: 'custom';
@@ -58,6 +59,7 @@ export type BasicInputType =
   | 'week';
 
 export type GridFormTextField = BaseFormField<string> & {
+  label: React.ReactNode;
   placeholder?: string;
   validation?: ValidationOptions;
   type: BasicInputType;
@@ -69,23 +71,27 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
+  label: React.ReactNode;
   options: GridFormRadioOption[];
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
+  label: React.ReactNode;
   options: string[] | Record<string, number | string>;
   validation?: Pick<ValidationOptions, 'required'>;
   type: 'select';
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
+  label: React.ReactNode;
   validation?: ValidationOptions;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
+  label: React.ReactNode;
   validation?: ValidationOptions;
   type: 'textarea';
 };
