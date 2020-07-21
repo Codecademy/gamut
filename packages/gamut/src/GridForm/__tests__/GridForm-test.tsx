@@ -148,7 +148,7 @@ describe('GridForm', () => {
         <GridForm
           fields={[]}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</>, disabled: true }}
+          submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
           validation={'onChange'}
         />
       );
