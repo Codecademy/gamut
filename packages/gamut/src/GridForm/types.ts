@@ -4,15 +4,25 @@ import { ColumnProps } from '../Layout/Column';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
+
+  /**
+   * Whether the label should be hidden visually and not take up space.
+   */
+  hideLabel?: boolean;
+
+  /**
+   * HTML id to use instead of the name.
+   */
+  id?: string;
+
   name: string;
   onUpdate?: (value: Value) => void;
   size: ColumnProps['size'];
-  id?: string;
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
   description: React.ReactNode;
-  label?: string;
+  label?: React.ReactNode;
   multiline?: boolean;
   validation?: ValidationRules;
   type: 'checkbox';
@@ -27,7 +37,7 @@ export type GridFormCustomFieldProps = {
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
-  label?: string;
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
   validation?: ValidationRules;
   type: 'custom';
@@ -49,7 +59,7 @@ export type BasicInputType =
   | 'week';
 
 export type GridFormTextField = BaseFormField<string> & {
-  label?: string;
+  label: React.ReactNode;
   placeholder?: string;
   validation?: ValidationRules;
   type: BasicInputType;
@@ -61,14 +71,14 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   options: string[] | Record<string, number | string>;
   validation?: ValidationRules;
   type: 'select';
@@ -81,7 +91,7 @@ export type GridFormFileField = BaseFormField<FileList> & {
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   validation?: ValidationRules;
   type: 'textarea';
 };
