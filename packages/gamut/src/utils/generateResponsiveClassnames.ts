@@ -9,7 +9,9 @@ import {
 } from '../typings/responsive-properties';
 
 export const generateResponsiveClassnames = (
-  config: ResponsiveProperty<unknown> | OptionalResponsiveProperty<unknown>,
+  config:
+    | ResponsiveProperty<Record<string, unknown>>
+    | OptionalResponsiveProperty<Record<string, unknown>>,
   styleMap: Record<string, string>
 ): string[] => {
   const styleList: string[] = [];
