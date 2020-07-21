@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, FieldError, Mode } from 'react-hook-form';
+import { useForm, FieldError, Mode, SubmitHandler } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
@@ -26,7 +26,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Function called with field values on submit, if all validations have passed.
    */
-  onSubmit: (values: Values) => Promise<void>;
+  onSubmit: SubmitHandler<Values>;
 
   /**
    * Layout grid row gap override.
@@ -66,7 +66,7 @@ export function GridForm<
   const { errors, handleSubmit, register, setValue, formState } = useForm<
     Values
   >({
-    defaultValues: fields.reduce(
+    defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
         [field.name]: field.defaultValue,

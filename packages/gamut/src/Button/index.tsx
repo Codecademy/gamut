@@ -1,9 +1,8 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import ButtonBase from '../ButtonBase';
+import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import omitProps from '../utils/omitProps';
 import s from './styles/index.module.scss';
-import { ChildComponentDescriptor } from '../typings/react';
 
 // themes can be an alias to a color
 // or a unique button type
@@ -31,17 +30,7 @@ const propKeys = [
   'onClick',
 ];
 
-export type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
-  /**
-   * Component type to wrap children with.
-   */
-  as?: ChildComponentDescriptor;
-  /**
-   * @remarks We would love to properly type this with generics, but cannot yet.
-   * @see https://github.com/Codecademy/client-modules/pull/270#discussion_r270917147
-   * @see https://github.com/Microsoft/TypeScript/issues/21048
-   */
-  asProps?: any;
+export type ButtonProps = ButtonBaseProps & {
   /**
    * Whether button should behave like a block element or inline.
    */
@@ -124,7 +113,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const classes = cx(
     typeClassName,
     themeClassName,
-    s[props.size],
+    s[props.size!],
     {
       [s.block]: props.block,
       [s.go]: props.go,

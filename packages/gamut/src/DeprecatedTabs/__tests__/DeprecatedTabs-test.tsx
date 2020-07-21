@@ -98,7 +98,7 @@ describe('Accessible Tabs', () => {
     expect(
       wrapper.find(Tab).last().find('[aria-selected]').props()['aria-selected']
     ).toBe(true);
-    expect(wrapper.find('.tabPanel').last().props().style.display).toBe(
+    expect(wrapper.find('.tabPanel').last().props().style!.display).toBe(
       undefined
     );
     expect(wrapper.find('.tabIndicator').props().style).toEqual({

@@ -13,7 +13,7 @@ export type GridFormSubmitProps = {
   disabled?: ButtonProps['disabled'];
   position?: GridFormSubmitPosition;
   outline?: ButtonProps['outline'];
-  size?: ResponsiveProperty<ColumnSizes>;
+  size: ResponsiveProperty<ColumnSizes>;
   theme?: ButtonProps['theme'];
 };
 

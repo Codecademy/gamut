@@ -26,7 +26,7 @@ describe('GridForm', () => {
       <GridForm
         fields={fields}
         onSubmit={onSubmit}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 
@@ -73,7 +73,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onSubmit'}
         />
       );
@@ -98,7 +98,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
@@ -121,7 +121,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
@@ -190,7 +190,7 @@ describe('GridForm', () => {
           },
         ]}
         onSubmit={jest.fn()}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 
