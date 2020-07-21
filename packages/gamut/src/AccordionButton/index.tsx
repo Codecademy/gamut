@@ -15,11 +15,11 @@ export type AccordionButtonProps = {
   /**
    * Called when the button is clicked.
    */
-  onClick: () => void;
+  onClick?: () => void;
   /**
    * Determines the size of the button.
    */
-  size?: 'normal' | 'large';
+  size: 'normal' | 'large';
   /**
    * Visual theme for the clickable header button.
    */

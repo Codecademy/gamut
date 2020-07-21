@@ -12,7 +12,7 @@ export type GridFormSubmitProps = {
   contents: React.ReactNode;
   disabled: boolean;
   position?: GridFormSubmitPosition;
-  size?: ResponsiveProperty<ColumnSizes>;
+  size: ResponsiveProperty<ColumnSizes>;
   theme?: string;
 };
 
