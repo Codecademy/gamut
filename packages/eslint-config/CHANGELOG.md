@@ -1,3 +1,22 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 1.0.0 (2020-07-21)
+
+* fix!: Strict TypeScript with react-hook-form@6 (#852) ([817fa8c](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/817fa8c)), closes [#852](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/852)
+* chore: update changelogs ([1133171](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/1133171))
+* ci: clean changelog update ([9d7c0f0](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/9d7c0f0))
+* ci: cleanup changelogs ([a64dcfc](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/a64dcfc))
+* ci: run git hooks in CI (#836) ([d139572](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/d139572)), closes [#836](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/836)
+* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/acb1f18)), closes [#815](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/815)
+* ci: update changelogs & fix lerna syntax ([b258dc4](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/b258dc4))
+
+
+
+
+
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.2...@codecademy/eslint-config@0.3.3) (2020-04-17)
 
 
@@ -91,4 +110,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-
