@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import { Button } from '../../Button';
+import { Button, ButtonProps } from '../../Button';
 import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
 import styles from './styles.module.scss';
@@ -10,15 +10,17 @@ export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  disabled: boolean;
+  disabled?: ButtonProps['disabled'];
   position?: GridFormSubmitPosition;
+  outline?: ButtonProps['outline'];
   size: ResponsiveProperty<ColumnSizes>;
-  theme?: string;
+  theme?: ButtonProps['theme'];
 };
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
   disabled,
+  outline,
   position = 'left',
   size,
   theme = 'brand-purple',
@@ -27,7 +29,7 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
 
   return (
     <Column className={cx(styles.base, positionStyle)} size={size}>
-      <Button disabled={disabled} theme={theme} type="submit">
+      <Button disabled={disabled} outline={outline} theme={theme} type="submit">
         {contents}
       </Button>
     </Column>
