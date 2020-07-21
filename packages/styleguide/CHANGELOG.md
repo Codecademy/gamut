@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 12.0.0 (2020-07-21)
+
+* feat(GridForm)!: Simplified GridForm labels to allow React.ReactNode or be hidden (#844) ([8466f15](https://github.com/RyzacInc/client-modules/commit/8466f15)), closes [#844](https://github.com/RyzacInc/client-modules/issues/844)
+* chore: update changelogs ([42a3df6](https://github.com/RyzacInc/client-modules/commit/42a3df6))
+
+
+
+
+
 ### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
 
 
@@ -866,4 +880,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
