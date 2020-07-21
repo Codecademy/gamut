@@ -1,3 +1,10 @@
+### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
+
+
+### Other Changes
+
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
+
 ### [11.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.5...@codecademy/styleguide@11.7.6) (2020-07-17)
 
 

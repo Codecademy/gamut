@@ -1,3 +1,19 @@
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.5...@codecademy/gamut@10.0.0) (2020-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Strict TypeScript with react-hook-form@6 (#852)
+
+### Other Changes
+
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
+
+
+### 🐛 Bug Fixes
+
+* Strict TypeScript with react-hook-form@6 ([#852](https://github.com/Codecademy/client-modules/issues/852)) ([817fa8c](https://github.com/Codecademy/client-modules/commit/817fa8c7e05be6556e4e2f393bbe52fe142d63e4))
+
 ### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.4...@codecademy/gamut@9.5.5) (2020-07-17)
 
 
