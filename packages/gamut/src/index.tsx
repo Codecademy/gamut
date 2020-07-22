@@ -1,3 +1,4 @@
+export * from './Anchor';
 export * from './Alert';
 export * from './Accordion';
 export * from './AccordionButton';

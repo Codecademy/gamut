@@ -1,16 +1,10 @@
-import cx from 'classnames';
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { HTMLAttributes } from 'react';
 
-import styles from './styles.module.scss';
+import Anchor from '../../../../Anchor';
 
-export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
+export interface MarkdownAnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;
-  title?: string;
-  height?: number;
-  width?: number;
-  target?: string;
-  rel?: string;
 }
 
 const absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i');
@@ -30,8 +24,8 @@ const matchesOrigin = (href: string) => {
   return false;
 };
 
-const Anchor: React.FC<AnchorProps> = (props) => {
-  const anchorProps = {
+const MarkdownAnchor: React.FC<MarkdownAnchorProps> = (props) => {
+  const asProps = {
     ...props,
     target: '_blank',
     rel: 'noopener',
@@ -39,10 +33,10 @@ const Anchor: React.FC<AnchorProps> = (props) => {
 
   // remove noopener/noreferrer on relative & same origin urls
   if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
-    delete anchorProps.rel;
+    delete asProps.rel;
   }
 
-  return <a {...anchorProps} className={cx(styles.a, props.className)} />;
+  return <Anchor asProps={asProps} />;
 };
 
-export default Anchor;
+export default MarkdownAnchor;
