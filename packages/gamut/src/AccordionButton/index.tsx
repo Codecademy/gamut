@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 
-import { ChevronDownIcon } from '../Icon/icons/ChevronDownIcon';
 import Button from '../Button';
 import styles from './styles.module.scss';
 import ButtonBase from '../ButtonBase';
@@ -72,7 +72,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       {...props}
     >
       <span className={styles.children}>{children}</span>
-      <ChevronDownIcon
+      <ArrowChevronDownIcon
         className={cx(
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
