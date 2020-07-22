@@ -1,16 +1,18 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 2.0.0 (2020-07-22)
-
-* feat(Icons)!: Streamline Icon Set Full [GM-30] (#838) ([6044658](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/6044658)), closes [#838](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/838)
-* chore: update changelogs ([42a3df6](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/42a3df6))
+## [2.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@1.0.0...@codecademy/eslint-config@2.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([42a3df6](http://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
 
 
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](http://github.com/Codecademy/client-modules/issues/838)) ([6044658](http://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ## [1.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@1.0.0) (2020-07-21)
 
@@ -121,3 +123,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
+

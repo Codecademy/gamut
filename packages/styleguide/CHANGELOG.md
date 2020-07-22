@@ -1,16 +1,18 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 13.0.0 (2020-07-22)
-
-* feat(Icons)!: Streamline Icon Set Full [GM-30] (#838) ([6044658](https://github.com/RyzacInc/client-modules/commit/6044658)), closes [#838](https://github.com/RyzacInc/client-modules/issues/838)
-* chore: update changelogs ([58f8cb6](https://github.com/RyzacInc/client-modules/commit/58f8cb6))
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
 
 
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.0...@codecademy/styleguide@12.0.1) (2020-07-21)
 
@@ -903,3 +905,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
