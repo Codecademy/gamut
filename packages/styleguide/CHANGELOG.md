@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>13.0.1 (2020-07-22)</small>
-
-* chore: update changelogs ([f540c80](https://github.com/RyzacInc/client-modules/commit/f540c80))
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
 
+### Other Changes
 
-
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
 ## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
 
@@ -918,3 +912,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
