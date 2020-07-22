@@ -89,6 +89,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    'import/named': 'off',
     'import/namespace': 'off',
     'import/no-unresolved': 'off',
     'react/display-name': 'off',

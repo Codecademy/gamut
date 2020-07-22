@@ -26,7 +26,7 @@ describe('GridForm', () => {
       <GridForm
         fields={fields}
         onSubmit={onSubmit}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 
@@ -73,16 +73,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onSubmit'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
-      );
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
     });
   });
 
@@ -98,14 +98,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -119,7 +121,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
@@ -133,9 +135,27 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
+    });
+
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={[]}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
+          validation={'onChange'}
+        />
       );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
     });
   });
 
@@ -170,7 +190,7 @@ describe('GridForm', () => {
           },
         ]}
         onSubmit={jest.fn()}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 

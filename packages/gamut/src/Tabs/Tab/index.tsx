@@ -35,7 +35,7 @@ export const Tab: FunctionComponent<TabProps> = ({
     [s.tab_default]: defaultTheme,
     [s.active]: active,
     [s.tab_default__active]: defaultTheme && active,
-    [activeClassName]: active && activeClassName,
+    [activeClassName!]: active && activeClassName,
     [s.disabled]: disabled,
   });
   const dataPropsToTransfer = omitProps([], rest);

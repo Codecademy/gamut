@@ -69,7 +69,7 @@ describe('Modal', () => {
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.mouseDown(screen.queryByTestId('modal-content'));
+    fireEvent.mouseDown(screen.getByTestId('modal-content'));
     expect(onRequestClose.mock.calls.length).toBe(0);
   });
 });
