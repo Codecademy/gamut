@@ -1,16 +1,10 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>12.0.1 (2020-07-22)</small>
-
-* Fix close alert acessibility (#882) ([c9bfc68](https://github.com/RyzacInc/client-modules/commit/c9bfc68)), closes [#882](https://github.com/RyzacInc/client-modules/issues/882)
-* chore: update changelogs ([f540c80](https://github.com/RyzacInc/client-modules/commit/f540c80))
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.0...@codecademy/gamut@12.0.1) (2020-07-22)
 
 
+### Other Changes
 
-
+* Fix close alert acessibility ([#882](https://github.com/Codecademy/client-modules/issues/882)) ([c9bfc68](https://github.com/Codecademy/client-modules/commit/c9bfc683bf84a479e2bcd1d1d2b8e8ce57a5cd66))
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
 ## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.1.0...@codecademy/gamut@12.0.0) (2020-07-22)
 
@@ -2782,3 +2776,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
