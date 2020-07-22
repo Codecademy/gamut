@@ -1,16 +1,54 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 11.0.0 (2020-07-21)
-
-* feat(GridForm)!: Simplified GridForm labels to allow React.ReactNode or be hidden (#844) ([8466f15](https://github.com/RyzacInc/client-modules/commit/8466f15)), closes [#844](https://github.com/RyzacInc/client-modules/issues/844)
-* chore: update changelogs ([42a3df6](https://github.com/RyzacInc/client-modules/commit/42a3df6))
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.0...@codecademy/gamut@12.0.1) (2020-07-22)
 
 
+### Other Changes
+
+* Fix close alert acessibility ([#882](https://github.com/Codecademy/client-modules/issues/882)) ([c9bfc68](https://github.com/Codecademy/client-modules/commit/c9bfc683bf84a479e2bcd1d1d2b8e8ce57a5cd66))
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.1.0...@codecademy/gamut@12.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
+
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.0.0...@codecademy/gamut@11.1.0) (2020-07-21)
+
+
+### Other Changes
+
+* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
+
+
+### ✨ Features
+
+* **GridForm:** Allow overriding submit's disabled and outline props ([#881](https://github.com/Codecademy/client-modules/issues/881)) ([e6cfbfb](https://github.com/Codecademy/client-modules/commit/e6cfbfb15d1512ead3adb00f822575a62bf44a75))
+
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@10.0.0...@codecademy/gamut@11.0.0) (2020-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
+
+### Other Changes
+
+* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
+
+
+### ✨ Features
+
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
 
 ## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.5...@codecademy/gamut@10.0.0) (2020-07-21)
 
@@ -2738,3 +2776,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

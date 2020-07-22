@@ -36,7 +36,12 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Description of the submit button at the end of the form.
    */
-  submit: Omit<GridFormSubmitProps, 'disabled'>;
+  submit: GridFormSubmitProps & {
+    /**
+     * Manually overrides the submit button to be disabled regardless of validation, if true.
+     */
+    disabled?: boolean;
+  };
 
   /**
    * Which react hook form mode we are going to use for validation.
@@ -88,8 +93,10 @@ export function GridForm<
           );
         })}
         <GridFormSubmit
-          disabled={validation === 'onChange' && !formState.isValid}
           {...submit}
+          disabled={
+            (validation === 'onChange' && !formState.isValid) || submit.disabled
+          }
         />
         {children}
       </LayoutGrid>

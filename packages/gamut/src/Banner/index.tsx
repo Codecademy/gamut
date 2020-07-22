@@ -2,7 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
 import Button, { ButtonProps } from '../Button';
-import CloseIcon from '../Icon/icons/CloseIcon';
+import { CloseIcon } from '@codecademy/gamut-icons';
 
 export enum BannerStyle {
   BorderBottom = 'border-bottom',

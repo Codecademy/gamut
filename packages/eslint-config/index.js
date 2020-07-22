@@ -107,6 +107,14 @@ module.exports = {
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
+
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: ['@codecademy/gamut/dist/deprecated'],
+        patterns: ['@codecademy/gamut/dist/deprecated/*'],
+      },
+    ],
   },
 
   settings: {

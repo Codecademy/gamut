@@ -1,7 +1,7 @@
-import * as packageExports from '../../index';
+import * as deprecatedExports from '../../index'; //
 import iconMap from '../iconMap';
 
-const allExportedItems = new Set(Object.values(packageExports));
+const allExportedItems = new Set(Object.values(deprecatedExports));
 
 // Temporary test until we remove iconMap
 // If you see this, consider chipping in by removing uses of <Icon />! :)
