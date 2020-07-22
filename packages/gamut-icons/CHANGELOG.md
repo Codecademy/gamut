@@ -1,16 +1,18 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.0.0 (2020-07-22)
-
-* feat(Icons)!: Streamline Icon Set Full [GM-30] (#838) ([6044658](https://github.com/RyzacInc/client-modules/commit/6044658)), closes [#838](https://github.com/RyzacInc/client-modules/issues/838)
-* chore: update changelogs ([992e511](https://github.com/RyzacInc/client-modules/commit/992e511))
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
 
 
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ### [2.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.2) (2020-07-17)
 
@@ -175,3 +177,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
