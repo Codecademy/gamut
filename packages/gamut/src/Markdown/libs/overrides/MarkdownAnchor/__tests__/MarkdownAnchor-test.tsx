@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import MarkdownAnchor from '../index';
 
 describe('MarkdownAnchor', () => {
@@ -35,7 +35,7 @@ describe('MarkdownAnchor', () => {
   });
 
   it("Doesn't throw an error on an invalid URL", () => {
-    const anchor = shallow(<MarkdownAnchor href="www.codecademy.com" />);
+    const anchor = mount(<MarkdownAnchor href="www.codecademy.com" />);
     expect(anchor.find(`a[href='www.codecademy.com']`).length).toEqual(1);
   });
 });
