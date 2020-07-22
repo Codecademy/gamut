@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.cls-1{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;fill-rule:evenodd;}</style></defs><title>arrow-up-1</title><path class="cls-1" d="M.75,17.189,11.47,6.47a.749.749,0,0,1,1.06,0L23.25,17.189"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Regular" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>arrow-up-1</title>
+<g>
+	<path d="M0.75,17.939c-0.2,0-0.389-0.078-0.53-0.22c-0.292-0.292-0.292-0.768,0-1.061L10.94,5.94
+		C11.223,5.656,11.599,5.5,11.999,5.5c0.401,0,0.777,0.156,1.06,0.438l10.721,10.72c0.292,0.292,0.292,0.768,0,1.061
+		c-0.142,0.142-0.33,0.22-0.53,0.22s-0.389-0.078-0.53-0.22L12,7L1.28,17.719C1.139,17.861,0.95,17.939,0.75,17.939z"/>
+</g>
+</svg>
