@@ -1,48 +1,114 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>11.7.2 (2020-07-14)</small>
-
-* chore(Styleguide): Update AboutCell's to match new heirarchy (#874) ([a9fc13a](https://github.com/RyzacInc/client-modules/commit/a9fc13a)), closes [#874](https://github.com/RyzacInc/client-modules/issues/874)
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
 
+### Other Changes
+
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
 
-## <small>11.7.1 (2020-07-14)</small>
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
 
-* chore(Styleguide): Add prop descriptions Gamut A-F GM-42 (#872) ([bb46a47](https://github.com/RyzacInc/client-modules/commit/bb46a47)), closes [#872](https://github.com/RyzacInc/client-modules/issues/872)
+### Other Changes
 
-
-
-
-
-## 11.7.0 (2020-07-14)
-
-* feat(Styleguide): Flatten Navigation Hierarchy for Gamut Core (#864) ([ad83bb1](https://github.com/RyzacInc/client-modules/commit/ad83bb1)), closes [#864](https://github.com/RyzacInc/client-modules/issues/864)
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
 
 
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.0...@codecademy/styleguide@12.0.1) (2020-07-21)
 
 
+### Other Changes
 
-## 11.6.0 (2020-07-14)
+* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
-* feat(Styleguide): Simplify indicator story status pills (#873) ([3e83d36](https://github.com/RyzacInc/client-modules/commit/3e83d36)), closes [#873](https://github.com/RyzacInc/client-modules/issues/873)
-
-
-
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.7...@codecademy/styleguide@12.0.0) (2020-07-21)
 
 
-## <small>11.5.1 (2020-07-14)</small>
+### ⚠ BREAKING CHANGES
 
-* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
-* chore(Styleguide): Add module alias for storybook helpers [WEB-934] (#861) ([7daf135](https://github.com/RyzacInc/client-modules/commit/7daf135)), closes [#861](https://github.com/RyzacInc/client-modules/issues/861)
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
+
+### Other Changes
+
+* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
 
 
+### ✨ Features
+
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
+
+### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
 
 
+### Other Changes
+
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
+
+### [11.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.5...@codecademy/styleguide@11.7.6) (2020-07-17)
+
+
+### Other Changes
+
+* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
+
+### [11.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.4...@codecademy/styleguide@11.7.5) (2020-07-17)
+
+
+### Other Changes
+
+* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
+
+### [11.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.3...@codecademy/styleguide@11.7.4) (2020-07-17)
+
+
+### Other Changes
+
+* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
+
+### [11.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.2...@codecademy/styleguide@11.7.3) (2020-07-16)
+
+### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.1...@codecademy/styleguide@11.7.2) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Update AboutCell's to match new heirarchy ([#874](https://github.com/Codecademy/client-modules/issues/874)) ([a9fc13a](https://github.com/Codecademy/client-modules/commit/a9fc13a5c8196f9aa8b6b32ce3f36d0ccab6fc95))
+
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.0...@codecademy/styleguide@11.7.1) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
+
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.6.0...@codecademy/styleguide@11.7.0) (2020-07-14)
+
+
+### ✨ Features
+
+* **Styleguide:** Flatten Navigation Hierarchy for Gamut Core ([#864](https://github.com/Codecademy/client-modules/issues/864)) ([ad83bb1](https://github.com/Codecademy/client-modules/commit/ad83bb1279c666a5af34e070ec3a0f20cfb8d438))
+
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.1...@codecademy/styleguide@11.6.0) (2020-07-14)
+
+
+### ✨ Features
+
+* **Styleguide:** Simplify indicator story status pills ([#873](https://github.com/Codecademy/client-modules/issues/873)) ([3e83d36](https://github.com/Codecademy/client-modules/commit/3e83d3624a0adeb1b6acc4c9088b9989bfdf463b))
+
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.0...@codecademy/styleguide@11.5.1) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Add module alias for storybook helpers [WEB-934] ([#861](https://github.com/Codecademy/client-modules/issues/861)) ([7daf135](https://github.com/Codecademy/client-modules/commit/7daf135edbd7ebf933f06dd05cd76be00c75a471))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 
@@ -846,3 +912,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+

@@ -25,9 +25,7 @@ export const createPreprocessingInstructions = (styles: StylesObject) => {
       },
       preprocessNode: function (node: HTMLToReactNode) {
         const classname = cx(
-          {
-            [`${styles[node.name]}`]: Boolean(styles[node.name]),
-          },
+          styles[node.name!],
           node.attribs && node.attribs.class
         );
 

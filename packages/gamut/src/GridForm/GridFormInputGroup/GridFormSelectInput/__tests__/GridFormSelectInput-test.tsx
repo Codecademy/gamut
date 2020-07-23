@@ -1,4 +1,4 @@
-import { itHandlesRequiredProps } from '../../__fixtures__/assertions';
+import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
 import { renderGridFormSelectInput } from '../../__fixtures__/renderers';
 
 describe('GridFormSelectInput', () => {
@@ -18,5 +18,5 @@ describe('GridFormSelectInput', () => {
     });
   });
 
-  itHandlesRequiredProps('GridFormSelectInput', 'select');
+  itHandlesAriaInvalid('GridFormSelectInput', 'select');
 });

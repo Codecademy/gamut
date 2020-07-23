@@ -31,6 +31,7 @@ export const renderGridFormSelectInput = (
     <GridFormSelectInput
       field={{ ...stubSelectField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -42,6 +43,7 @@ export const renderGridFormTextInput = (
     <GridFormTextInput
       field={{ ...stubTextField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -53,6 +55,7 @@ export const renderGridFormTextArea = (
     <GridFormTextArea
       field={{ ...stubTextareaField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -65,6 +68,7 @@ export const renderGridFormRadioGroupInput = (
       field={{ ...stubRadioGroupField, ...extraProps }}
       setValue={jest.fn()}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -76,6 +80,7 @@ export const renderGridFormFileInput = (
     <GridFormFileInput
       field={{ ...stubFileField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
@@ -87,14 +92,12 @@ export const renderGridFormCheckboxInput = (
     <GridFormCheckboxInput
       field={{ ...stubCheckboxField, ...extraProps }}
       register={jest.fn()}
+      {...extraProps}
     />
   );
 };
 
-export const getComponent = (
-  componentName: string,
-  extraProps: any
-): ReactWrapper => {
+export const getComponent = (componentName: string, extraProps: any) => {
   switch (componentName) {
     case 'GridFormTextInput':
       return renderGridFormTextInput(extraProps);
@@ -109,6 +112,6 @@ export const getComponent = (
     case 'GridFormCheckboxInput':
       return renderGridFormCheckboxInput(extraProps);
     default:
-      return null;
+      throw new Error(`Unknown component name: ${componentName}`);
   }
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { TextArea } from '../../../Form';
 import { GridFormTextAreaField } from '../../types';
@@ -8,7 +8,7 @@ export type GridFormTextAreaProps = {
   className?: string;
   error?: boolean;
   field: Omit<GridFormTextAreaField, 'label'>;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
 };
 
 export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
@@ -26,7 +26,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       ref={register(field.validation)}
       id={field.id}
-      required={field.validation && !!field.validation.required}
+      aria-invalid={error}
     />
   );
 };

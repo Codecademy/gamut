@@ -1,8 +1,8 @@
 import cx from 'classnames';
-import React, { MouseEvent } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
-import Button from '../Button';
-import CloseIcon from '../Icon/icons/CloseIcon';
+import Button, { ButtonProps } from '../Button';
+import { CloseIcon } from '@codecademy/gamut-icons';
 
 export enum BannerStyle {
   BorderBottom = 'border-bottom',
@@ -29,7 +29,7 @@ export type BannerProps = {
   /**
    * Callback called when the user closes the banner.
    */
-  onClose: (event: MouseEvent<HTMLButtonElement>) => void;
+  onClose: ButtonProps['onClick'];
   /**
    * An icon or jsx element to be displayed to the left of the content.
    */

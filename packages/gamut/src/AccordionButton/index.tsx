@@ -1,6 +1,6 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 
 import Button from '../Button';
 import styles from './styles.module.scss';
@@ -15,11 +15,11 @@ export type AccordionButtonProps = {
   /**
    * Called when the button is clicked.
    */
-  onClick: () => void;
+  onClick?: () => void;
   /**
    * Determines the size of the button.
    */
-  size?: 'normal' | 'large';
+  size: 'normal' | 'large';
   /**
    * Visual theme for the clickable header button.
    */
@@ -56,6 +56,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   theme,
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
+  const iconSize = size === 'large' ? 30 : undefined;
 
   return (
     <ButtonComponent
@@ -76,7 +77,8 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
           styles.expansionIcon,
           expanded && styles.expansionIconExpanded
         )}
-        size={size === 'large' ? 30 : undefined}
+        height={iconSize}
+        width={iconSize}
       />
     </ButtonComponent>
   );

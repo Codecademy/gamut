@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { Column } from '../../Layout';
@@ -17,7 +17,7 @@ import cx from 'classnames';
 export type GridFormInputGroupProps = {
   error?: string;
   field: GridFormField;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
 
@@ -104,7 +104,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
         <FormGroupLabel
           className={cx(
             styles.formGroupLabel,
-            !props.field.label && styles.invisible
+            props.field.hideLabel && styles.invisible
           )}
           htmlFor={props.field.id || props.field.name}
         >

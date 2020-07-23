@@ -19,7 +19,7 @@ const sortedNotifications = (notifications: Notification[]) => {
 
 export type NotificationListProps = {
   className?: string;
-  notifications?: Notification[];
+  notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;
 };
 
@@ -54,7 +54,7 @@ export const NotificationList = (props: NotificationListProps) => {
             <NotificationItem
               key={notification.id}
               notification={notification}
-              onClick={() => onNotificationClick(notification)}
+              onClick={() => onNotificationClick?.(notification)}
             />
           );
         })

@@ -35,7 +35,7 @@ describe('<RadioGroup>', () => {
     const { firstInput, onChange } = createComponent();
     const event = {} as React.FormEvent;
 
-    firstInput.props().onChange(event);
+    firstInput.props().onChange!(event);
 
     expect(onChange).toHaveBeenCalledWith(event);
   });

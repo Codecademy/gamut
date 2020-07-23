@@ -1,3 +1,35 @@
+## [2.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@1.0.0...@codecademy/eslint-config@2.0.0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([42a3df6](http://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
+
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](http://github.com/Codecademy/client-modules/issues/838)) ([6044658](http://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+## [1.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@1.0.0) (2020-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Strict TypeScript with react-hook-form@6 (#852)
+
+### Other Changes
+
+* update changelogs ([1133171](http://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
+
+
+### 🐛 Bug Fixes
+
+* Strict TypeScript with react-hook-form@6 ([#852](http://github.com/Codecademy/client-modules/issues/852)) ([817fa8c](http://github.com/Codecademy/client-modules/commit/817fa8c7e05be6556e4e2f393bbe52fe142d63e4))
+
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.2...@codecademy/eslint-config@0.3.3) (2020-04-17)
 
 
