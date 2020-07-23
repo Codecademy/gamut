@@ -331,12 +331,6 @@ workflows:
           filters:
             branches:
               only: next
-      - deploy_next:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: next
       - publish_alpha:
           filters:
             branches:
