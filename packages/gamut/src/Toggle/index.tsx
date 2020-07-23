@@ -7,8 +7,8 @@ export type ToggleProps = {
   onChange?: (...args: any[]) => any;
   label?: string;
   disabled?: boolean;
-  theme?: string;
-  size?: string;
+  theme?: 'gray-blue' | 'purple';
+  size?: 'small' | 'medium';
 };
 
 export class Toggle extends Component<ToggleProps, {}> {
@@ -18,8 +18,8 @@ export class Toggle extends Component<ToggleProps, {}> {
       onChange,
       label,
       disabled,
-      theme = 'gray',
-      size = 'md',
+      theme = 'gray-blue',
+      size = 'medium',
     } = this.props;
     return (
       <label

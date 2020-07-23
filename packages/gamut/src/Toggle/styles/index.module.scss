@@ -20,7 +20,7 @@
   border-radius: 99rem;
   transition: all 0.2s ease;
 
-  &.gray {
+  &.gray-blue {
     background-color: $color-gray-500;
   }
 
@@ -29,18 +29,18 @@
   }
 }
 
-.track-md {
+.track-medium {
   width: 3.75rem;
   height: 1.8rem;
 }
 
-.track-sm {
+.track-small {
   width: 1.75rem;
   height: 0.9375rem;
 }
 
 .toggled .track {
-  &.gray {
+  &.gray-blue {
     background-color: $color-blue-500;
   }
 
@@ -55,7 +55,7 @@
   background-color: $color-white;
 }
 
-.thumb-md {
+.thumb-medium {
   top: 0.215rem;
   left: 0.204rem;
   width: 1.38rem;
@@ -63,7 +63,7 @@
   border-radius: 99rem;
 }
 
-.thumb-sm {
+.thumb-small {
   top: 0.075rem;
   left: 0.102rem;
   width: 0.795625rem;
@@ -72,11 +72,11 @@
 }
 
 .toggled .thumb {
-  &.md {
+  &.medium {
     left: 2.17rem;
   }
 
-  &.sm {
+  &.small {
     left: 0.9rem;
   }
 }
