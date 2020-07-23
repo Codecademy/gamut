@@ -7,14 +7,17 @@ import { ArrowDownIcon } from '@codecademy/gamut-icons';
 export type SkipToContentProps = {
   className?: string;
   contentId: string;
+  preventScroll?: boolean;
 };
 
 export const SkipToContent: React.FC<SkipToContentProps> = ({
   className,
   contentId,
+  preventScroll,
 }) => {
   const href = `#${contentId}`;
-  const onClick = () => document.querySelector<HTMLElement>(href)!.focus();
+  const onClick = () =>
+    document.querySelector<HTMLElement>(href)!.focus({ preventScroll });
 
   return (
     <a
