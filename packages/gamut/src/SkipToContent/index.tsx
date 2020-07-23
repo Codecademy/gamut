@@ -7,6 +7,9 @@ import { ArrowDownIcon } from '@codecademy/gamut-icons';
 export type SkipToContentProps = {
   className?: string;
   contentId: string;
+  /**
+   * A Boolean value indicating whether or not the browser should scroll the document to bring the newly-focused element into view.
+   */
   preventScroll?: boolean;
 };
 
@@ -16,8 +19,10 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   preventScroll,
 }) => {
   const href = `#${contentId}`;
-  const onClick = () =>
-    document.querySelector<HTMLElement>(href)!.focus({ preventScroll });
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    return document.querySelector<HTMLElement>(href)!.focus({ preventScroll });
+  };
 
   return (
     <a
