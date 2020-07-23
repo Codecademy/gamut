@@ -11,7 +11,7 @@ import { Toggle } from '@codecademy/gamut/src';
 <StoryStatus status="stable" />
 
 Controlled atom component indicating a user-selectable boolean value.
-Receives its `checked` prop from its parent.
+Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Preview>
   <Story name="Toggle">
@@ -19,6 +19,22 @@ Receives its `checked` prop from its parent.
       checked={boolean('checked', false)}
       label="Toggle"
       onChange={action('Change')}
+    />
+  </Story>
+</Preview>
+
+## Alternative Toggle
+
+This is the small size and brand purple theme.
+
+<Preview>
+  <Story name="Alternative Toggle">
+    <Toggle
+      checked={boolean('checked', false)}
+      label="Toggle"
+      onChange={action('Change')}
+      theme="purple"
+      size="sm"
     />
   </Story>
 </Preview>
