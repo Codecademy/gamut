@@ -6,19 +6,20 @@ import {
   IconGallery,
   IconItem,
 } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../../Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { LayoutGrid, Column, Text } from '@codecademy/gamut/src';
 import * as icons from '@codecademy/gamut-icons/src';
 import { AlertIcon } from '@codecademy/gamut-icons/src';
 
 import { number, select } from '@storybook/addon-knobs';
+import { VENDOR, LEARNING_ENVIRONMENT, ALL_ICONS } from './constants';
 import { selectableColors } from '../../../../helpers';
 
-<Meta title="Core/Atoms/Icons" component={AlertIcon} />
+<Meta title="Atoms/Icons" component={AlertIcon} />
 
 # Icons
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 <Preview>
   <Story name="Editable Icon">
@@ -48,10 +49,46 @@ import { selectableColors } from '../../../../helpers';
 
 <Props of={AlertIcon} />
 
-## All Icons
+## Usage
+
+```tsx
+import { AlertIcon } from '@codecademy/gamut-icons';
+
+const MyComponent = () => <AlertIcon />;
+```
+
+## Icons
+
+### Interface
+
+General user interface icons with affordances
 
 <IconGallery>
-  {Object.entries(icons).map(([iconName, Icon]) => (
+  {Object.entries(ALL_ICONS).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color={selectableColors.black} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Learning Enviornment
+
+Icons that have specific meanings relative to our course content.
+
+<IconGallery>
+  {Object.entries(LEARNING_ENVIRONMENT).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={64} color={selectableColors.black} />
+    </IconItem>
+  ))}
+</IconGallery>
+
+### Vendor
+
+Vendor specific icons.
+
+<IconGallery>
+  {Object.entries(VENDOR).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>

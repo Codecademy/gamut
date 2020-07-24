@@ -12,6 +12,7 @@ export const stubCheckboxField: GridFormCheckboxField = {
   description: 'Check me!',
   label: 'Stub Checkbox',
   name: 'stub-checkbox',
+  size: 6,
   type: 'checkbox',
 };
 
@@ -30,6 +31,7 @@ export const stubRadioGroupField: GridFormRadioGroupField = {
   label: 'Stub Radio Group',
   options: stubRadioGroupOptions,
   name: 'stub-radio-group',
+  size: 6,
   type: 'radio-group',
 };
 
@@ -39,23 +41,27 @@ export const stubSelectField: GridFormSelectField = {
   label: 'Stub Select',
   options: stubSelectOptions,
   name: 'stub-select',
+  size: 6,
   type: 'select',
 };
 
 export const stubTextField: GridFormTextField = {
   label: 'Stub Text',
   name: 'stub-text',
+  size: 6,
   type: 'text',
 };
 
 export const stubFileField: GridFormFileField = {
   label: 'Stub File',
   name: 'stub-file',
+  size: 6,
   type: 'file',
 };
 
 export const stubTextareaField: GridFormTextAreaField = {
   label: 'Stub Textarea',
   name: 'stub-textarea',
+  size: 6,
   type: 'textarea',
 };

@@ -1,115 +1,210 @@
-# Change Log
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## <small>11.2.8 (2020-07-01)</small>
+### Other Changes
 
-* chore(Styleguide): Add status indicator to the Badge story (#850) ([1aaa448](https://github.com/RyzacInc/client-modules/commit/1aaa448)), closes [#850](https://github.com/RyzacInc/client-modules/issues/850)
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
 
-## <small>11.2.7 (2020-06-30)</small>
+### Other Changes
 
-**Note:** Version bump only for package @codecademy/styleguide
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
 
 
+### ✨ Features
 
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.0...@codecademy/styleguide@12.0.1) (2020-07-21)
 
-## <small>11.2.6 (2020-06-30)</small>
 
-* fix(Markdown): allow flexible vimeo videos in markdown (#853) ([829002d](https://github.com/RyzacInc/client-modules/commit/829002d)), closes [#853](https://github.com/RyzacInc/client-modules/issues/853)
+### Other Changes
 
+* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.7...@codecademy/styleguide@12.0.0) (2020-07-21)
 
 
+### ⚠ BREAKING CHANGES
 
-## <small>11.2.5 (2020-06-29)</small>
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
 
-**Note:** Version bump only for package @codecademy/styleguide
+### Other Changes
 
+* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
 
 
+### ✨ Features
 
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
 
-## <small>11.2.4 (2020-06-25)</small>
+### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
 
+### [11.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.5...@codecademy/styleguide@11.7.6) (2020-07-17)
 
 
-## <small>11.2.3 (2020-06-24)</small>
+### Other Changes
 
-* fix(Video): add onReady prop (#847) ([147a11e](https://github.com/RyzacInc/client-modules/commit/147a11e)), closes [#847](https://github.com/RyzacInc/client-modules/issues/847)
+* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
+### [11.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.4...@codecademy/styleguide@11.7.5) (2020-07-17)
 
 
+### Other Changes
 
+* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
 
-## <small>11.2.2 (2020-06-23)</small>
+### [11.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.3...@codecademy/styleguide@11.7.4) (2020-07-17)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
+* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 
+### [11.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.2...@codecademy/styleguide@11.7.3) (2020-07-16)
 
+### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.1...@codecademy/styleguide@11.7.2) (2020-07-14)
 
-## <small>11.2.1 (2020-06-22)</small>
 
-**Note:** Version bump only for package @codecademy/styleguide
+### Other Changes
 
+* **Styleguide:** Update AboutCell's to match new heirarchy ([#874](https://github.com/Codecademy/client-modules/issues/874)) ([a9fc13a](https://github.com/Codecademy/client-modules/commit/a9fc13a5c8196f9aa8b6b32ce3f36d0ccab6fc95))
 
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.0...@codecademy/styleguide@11.7.1) (2020-07-14)
 
 
+### Other Changes
 
-## 11.2.0 (2020-06-18)
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
 
-* feat(Video): a new video component (#842) ([afdd0d3](https://github.com/RyzacInc/client-modules/commit/afdd0d3)), closes [#842](https://github.com/RyzacInc/client-modules/issues/842)
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.6.0...@codecademy/styleguide@11.7.0) (2020-07-14)
 
 
+### ✨ Features
 
+* **Styleguide:** Flatten Navigation Hierarchy for Gamut Core ([#864](https://github.com/Codecademy/client-modules/issues/864)) ([ad83bb1](https://github.com/Codecademy/client-modules/commit/ad83bb1279c666a5af34e070ec3a0f20cfb8d438))
 
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.1...@codecademy/styleguide@11.6.0) (2020-07-14)
 
-## <small>11.1.2 (2020-06-16)</small>
 
-**Note:** Version bump only for package @codecademy/styleguide
+### ✨ Features
 
+* **Styleguide:** Simplify indicator story status pills ([#873](https://github.com/Codecademy/client-modules/issues/873)) ([3e83d36](https://github.com/Codecademy/client-modules/commit/3e83d3624a0adeb1b6acc4c9088b9989bfdf463b))
 
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.0...@codecademy/styleguide@11.5.1) (2020-07-14)
 
 
+### Other Changes
 
-## <small>11.1.1 (2020-06-16)</small>
+* **Styleguide:** Add module alias for storybook helpers [WEB-934] ([#861](https://github.com/Codecademy/client-modules/issues/861)) ([7daf135](https://github.com/Codecademy/client-modules/commit/7daf135edbd7ebf933f06dd05cd76be00c75a471))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
-**Note:** Version bump only for package @codecademy/styleguide
+## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 
 
+### ✨ Features
 
+* **Accordion:** Accordion alignment: 'large' size; no outline in plain ([#870](https://github.com/Codecademy/client-modules/issues/870)) ([e17ad5d](https://github.com/Codecademy/client-modules/commit/e17ad5d037fd2d084fb57fe1179abeaad57b26ec))
+* **Gamut:** Added Accordion component ([#826](https://github.com/Codecademy/client-modules/issues/826)) ([caf52d9](https://github.com/Codecademy/client-modules/commit/caf52d9e0408580ddab965750ae619b7626b28e7))
 
+### [11.2.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.13...@codecademy/styleguide@11.2.14) (2020-07-08)
 
-## 11.1.0 (2020-06-16)
+### [11.2.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.12...@codecademy/styleguide@11.2.13) (2020-07-08)
 
-* feat: make text field labels optional  (#837) ([d9ca277](https://github.com/RyzacInc/client-modules/commit/d9ca277)), closes [#837](https://github.com/RyzacInc/client-modules/issues/837)
 
+### Other Changes
 
+* Rebase ([#865](https://github.com/Codecademy/client-modules/issues/865)) ([f0b5224](https://github.com/Codecademy/client-modules/commit/f0b52246cdf6b746b4f27bd04ebb682eae75dbf6))
 
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.11...@codecademy/styleguide@11.2.12) (2020-07-08)
 
+### [11.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.10...@codecademy/styleguide@11.2.11) (2020-07-07)
 
-## <small>11.0.4 (2020-06-12)</small>
 
-* fix: allow field props to GridForm to contain IDs (#835) ([444f56b](https://github.com/RyzacInc/client-modules/commit/444f56b)), closes [#835](https://github.com/RyzacInc/client-modules/issues/835)
-* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
+### Other Changes
 
+* **Header:** Adds Header stories [GM-51] ([#856](https://github.com/Codecademy/client-modules/issues/856)) ([cda648c](https://github.com/Codecademy/client-modules/commit/cda648ca472818296889590731d15c80216d98fa))
 
+### [11.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.9...@codecademy/styleguide@11.2.10) (2020-07-07)
 
 
+### Other Changes
 
-### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.3) (2020-06-11)
+* Fixes bad prefix on brand colors ([#862](https://github.com/Codecademy/client-modules/issues/862)) ([58f98ec](https://github.com/Codecademy/client-modules/commit/58f98ec2c7b99efebfe5da65652f0c5260f689f8))
+
+### [11.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.9) (2020-07-02)
+
+
+### Other Changes
+
+* **Styleguide:** Upgrade to latest storybook beta ([#859](https://github.com/Codecademy/client-modules/issues/859)) ([7b98753](https://github.com/Codecademy/client-modules/commit/7b987532d96a20701091b1688ce193ec52617283))
+
+### [11.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.7...@codecademy/styleguide@11.2.8) (2020-07-01)
+
+
+### Other Changes
+
+* **Styleguide:** Add status indicator to the Badge story ([#850](https://github.com/Codecademy/client-modules/issues/850)) ([1aaa448](https://github.com/Codecademy/client-modules/commit/1aaa448c3f779a09e9db914e84867fa25d3a8150))
+
+### [11.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.6...@codecademy/styleguide@11.2.7) (2020-06-30)
+
+### [11.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.5...@codecademy/styleguide@11.2.6) (2020-06-30)
+
+
+### 🐛 Bug Fixes
+
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
+
+### [11.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.5) (2020-06-29)
+
+### [11.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.3...@codecademy/styleguide@11.2.4) (2020-06-25)
+
+### [11.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.2...@codecademy/styleguide@11.2.3) (2020-06-24)
+
+
+### 🐛 Bug Fixes
+
+* **Video:** add onReady prop ([#847](https://github.com/Codecademy/client-modules/issues/847)) ([147a11e](https://github.com/Codecademy/client-modules/commit/147a11e22700530cecab1a3458fe901848f8fe3d))
+
+### [11.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.1...@codecademy/styleguide@11.2.2) (2020-06-23)
+
+### [11.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.0...@codecademy/styleguide@11.2.1) (2020-06-22)
+
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.2...@codecademy/styleguide@11.2.0) (2020-06-18)
+
+
+### ✨ Features
+
+* **Video:** a new video component ([#842](https://github.com/Codecademy/client-modules/issues/842)) ([afdd0d3](https://github.com/Codecademy/client-modules/commit/afdd0d3437faa3abf302cc0fa3089b1ab8cb1302))
+
+### [11.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.1...@codecademy/styleguide@11.1.2) (2020-06-16)
+
+### [11.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.0...@codecademy/styleguide@11.1.1) (2020-06-16)
+
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.4...@codecademy/styleguide@11.1.0) (2020-06-16)
+
+
+### ✨ Features
+
+* make text field labels optional  ([#837](https://github.com/Codecademy/client-modules/issues/837)) ([d9ca277](https://github.com/Codecademy/client-modules/commit/d9ca2775eaf5366b422a194a7224251f0271608d))
+
+### [11.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.4) (2020-06-12)
+
+
+### 🐛 Bug Fixes
+
+* allow field props to GridForm to contain IDs ([#835](https://github.com/Codecademy/client-modules/issues/835)) ([444f56b](https://github.com/Codecademy/client-modules/commit/444f56b0e4ab368f114bde3b941dd62814005efe))
 
 ### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
 
@@ -817,3 +912,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+

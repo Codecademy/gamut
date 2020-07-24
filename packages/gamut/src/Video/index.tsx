@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-import PlayIcon from '../Icon/icons/PlayIcon';
+import { PlayIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import styles from './styles/index.module.scss';
 

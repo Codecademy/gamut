@@ -75,11 +75,11 @@ export class Tabs extends Component<TabsProps> {
     ) as ReactElement[];
     let clonedTabPanels = childrenArray.filter((c) => c.type === TabPanel);
 
-    if (activeTabIndex >= clonedTabPanels.length) {
+    if (activeTabIndex! >= clonedTabPanels.length) {
       activeTabIndex = clonedTabPanels.length - 1;
     }
 
-    const tabListChild = childrenArray.find((c) => c.type === TabList);
+    const tabListChild = childrenArray.find((c) => c.type === TabList)!;
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
       onChange,

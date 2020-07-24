@@ -31,9 +31,9 @@ export const TabList: FunctionComponent<TabListProps> = ({
   const classes = cx(s.tabList, className, { [s.center]: center });
   return (
     <div className={classes} role="tablist" style={{ maxWidth }}>
-      {React.Children.toArray(children)
+      {(React.Children.toArray(children) as any)
         .filter((c: ReactElement) => c && c.type === Tab)
-        .map((tab: ReactElement, index) => {
+        .map((tab: ReactElement, index: number) => {
           const baseId = createBaseId ? createBaseId(index) : index;
           return React.cloneElement(tab, {
             active: activeTabIndex === index,

@@ -1,19 +1,37 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>2.4.1 (2020-06-23)</small>
-
-* chore(gamut-icons): update svgo config (#848) ([269fa8c](https://github.com/RyzacInc/client-modules/commit/269fa8c)), closes [#848](https://github.com/RyzacInc/client-modules/issues/848)
-* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
-* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
 
 
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
 
 
+### ✨ Features
 
-## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.0) (2020-06-11)
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+### [2.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.2) (2020-07-17)
+
+
+### Other Changes
+
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
+
+
+### 🐛 Bug Fixes
+
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
+
+### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.1) (2020-06-23)
+
+
+### Other Changes
+
+* **gamut-icons:** update svgo config ([#848](https://github.com/Codecademy/client-modules/issues/848)) ([269fa8c](https://github.com/Codecademy/client-modules/commit/269fa8cc0c2626097da632053e9f57e509aa5fb0))
 
 ## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.1...@codecademy/gamut-icons@2.4.0) (2020-06-09)
 
@@ -159,3 +177,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+

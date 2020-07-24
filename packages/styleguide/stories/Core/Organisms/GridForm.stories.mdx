@@ -1,16 +1,16 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { number, select } from '@storybook/addon-knobs';
 
-import { StoryStatus } from '../../../Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { action } from '@storybook/addon-actions';
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
-<Meta title="Core/Organisms/GridForm" component={GridForm} />
+<Meta title="Organisms/GridForm" component={GridForm} />
 
 # GridForm
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 This organism takes in plain JSON-like props and uses them to string
 together a validated form composed of:
@@ -294,66 +294,19 @@ We can make the Submit button inline with an input by setting the column
 sizes so they fit on the same row (e.g size 8 for an input and size 4 for
 the submit).
 
-We can additionally remove the label from text inputs and checkbox inputs (though this
-causes alignment issues in checkboxes, as you can see below).
+We can additionally remove the label from text inputs and checkbox inputs.
+Use the `hideLabel` prop to remove the label, allowing the submit button to
+align nicely with the input.
 
-#### Submit button is not aligned correctly when there is no checkbox input label
-
-<Preview>
-  <Story name="Inline Submit Button">
-    <GridForm
-      fields={[
-        {
-          description: 'I approve of inline swag',
-          name: 'enough-swag',
-          size: 8,
-          type: 'checkbox',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-      }}
-    />
-  </Story>
-</Preview>
-
-#### Submit button is not aligned correctly when there is a text input label
+#### Submit button aligned correctly with a hidden label
 
 <Preview>
   <Story name="Inline Text Input With Label">
     <GridForm
       fields={[
         {
+          hideLabel: true,
           label: 'Label',
-          name: 'email',
-          size: 8,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-      }}
-    />
-  </Story>
-</Preview>
-
-#### Submit button is aligned correctly when there is no text input label
-
-<Preview>
-  <Story name="Inline Text Input With No Label">
-    <GridForm
-      fields={[
-        {
           name: 'email',
           size: 8,
           type: 'text',
