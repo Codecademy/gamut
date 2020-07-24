@@ -116,6 +116,7 @@ export const Alert: React.FC<AlertProps> = ({
               className={cx(s.iconButton, {
                 [s[`iconButton__${type}`]]: type,
               })}
+              aria-label="Close Alert"
               onClick={onClose}
             >
               <CloseIcon size={12} />
