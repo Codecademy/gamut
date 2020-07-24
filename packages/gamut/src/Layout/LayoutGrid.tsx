@@ -1,37 +1,38 @@
-import React from 'react';
-import cx from 'classnames';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import { ContainerElementProps, GapSizes } from './types';
+import { GapSizes } from './types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
-
-import s from './styles/Grid.module.scss';
+import { responsiveProp } from './utilities';
+import { GAP_SIZES } from './constants';
 
 export type LayoutGridProps = {
   /** The grid-gap size that should be present between rows */
   rowGap?: ResponsiveProperty<GapSizes>;
   /** The grid-gap size that should be present between columns */
   columnGap?: ResponsiveProperty<GapSizes>;
-} & ContainerElementProps;
-
-export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
-  children,
-  testId,
-  className,
-  rowGap,
-  columnGap,
-}) => {
-  const classes = cx(
-    s.container,
-    className,
-    generateResponsiveClassnames({ rowGap, columnGap }, s)
-  );
-
-  return (
-    <div className={classes} data-testid={testId}>
-      {children}
-    </div>
-  );
 };
 
-export default LayoutGrid;
+export const LayoutGrid = styled.div<LayoutGridProps>`
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+
+  ${responsiveProp(
+    'columnGap',
+    (value: GapSizes) => css`
+      grid-column-gap: ${GAP_SIZES[value]};
+    `
+  )}
+
+  ${responsiveProp(
+    'rowGap',
+    (value: GapSizes) => css`
+      grid-row-gap: ${GAP_SIZES[value]};
+    `
+  )}
+`;
+
+LayoutGrid.defaultProps = {
+  rowGap: 'sm',
+  columnGap: 'sm',
+};
