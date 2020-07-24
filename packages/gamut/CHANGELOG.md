@@ -1,3 +1,27 @@
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.0...@codecademy/gamut@12.0.1) (2020-07-22)
+
+
+### Other Changes
+
+* Fix close alert acessibility ([#882](https://github.com/Codecademy/client-modules/issues/882)) ([c9bfc68](https://github.com/Codecademy/client-modules/commit/c9bfc683bf84a479e2bcd1d1d2b8e8ce57a5cd66))
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.1.0...@codecademy/gamut@12.0.0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### Other Changes
+
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
+
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
 ## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.0.0...@codecademy/gamut@11.1.0) (2020-07-21)
 
 
