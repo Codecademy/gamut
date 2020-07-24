@@ -7,57 +7,53 @@ import Accordion, { AccordionProps } from '..';
 const renderComponent = (overrides: Partial<AccordionProps> = {}) => {
   const props = {
     children: <div data-testid="contents" />,
+    expanded: false,
     header: 'Click me!',
-    onChange: jest.fn(),
     theme: 'blue',
     ...overrides,
   } as const;
 
-  const wrapper = mount(<Accordion {...props} />);
-
-  return { props, wrapper };
+  return mount(<Accordion {...props} />);
 };
 
 jest.useFakeTimers();
 
 describe('Accordion', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
-    const { wrapper } = renderComponent({ initiallyExpanded: false });
+    const wrapper = renderComponent({ expanded: false });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('starts expanded when initiallyExpanded is true', () => {
-    const { wrapper } = renderComponent({ initiallyExpanded: true });
+    const wrapper = renderComponent({ expanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
-  it('expands when clicked to expand', () => {
-    const { wrapper } = renderComponent();
+  it('expands when props change to expand', () => {
+    const wrapper = renderComponent({ expanded: false });
 
-    wrapper.find('button').simulate('click');
+    wrapper.setProps({ expanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
-  it('contracts after a delay when clicked to contract', async () => {
-    const { wrapper } = renderComponent();
-    wrapper.find('button').simulate('click');
+  it('contracts after a delay when set to not expanded after being expanded', async () => {
+    const wrapper = renderComponent({ expanded: true });
 
-    wrapper.find('button').simulate('click');
+    wrapper.setProps({ expanded: false });
     await act(async () => {
       jest.runAllTimers();
     });
-    wrapper.setProps(wrapper.props());
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('renders children with the expanded prop when children is a functino', () => {
-    const { wrapper } = renderComponent({
+    const wrapper = renderComponent({
       children: (expanded) => `children-${expanded}`,
-      initiallyExpanded: true,
+      expanded: true,
       header: (expanded) => `header-${expanded}`,
     });
 

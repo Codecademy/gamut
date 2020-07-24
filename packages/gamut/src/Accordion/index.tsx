@@ -11,19 +11,14 @@ export type AccordionProps = {
   className?: string;
 
   /**
+   * Whether the accordion is visually expanded to show its contents.
+   */
+  expanded: boolean;
+
+  /**
    * Contents of the clickable header button.
    */
   header: React.ReactNode | RenderWithExpanded;
-
-  /**
-   * Whether the accordion starts off expanded, instead of the default collapsed.
-   */
-  initiallyExpanded?: boolean;
-
-  /**
-   * Called when the header is activated to toggle whether the accordion is expanded.
-   */
-  onChange?: (expanded: boolean) => void;
 
   size?: 'normal' | 'large';
 
@@ -43,13 +38,11 @@ const variants = {
 export const Accordion: React.FC<AccordionProps> = ({
   children,
   className,
+  expanded,
   header,
-  initiallyExpanded,
-  onChange,
   size = 'normal',
   theme,
 }) => {
-  const [expanded, setExpanded] = useState(!!initiallyExpanded);
   const [delayExpanded, setDelayExpanded] = useState(expanded);
 
   useLayoutEffect(() => {
@@ -61,19 +54,9 @@ export const Accordion: React.FC<AccordionProps> = ({
     return () => clearTimeout(handle);
   }, [expanded]);
 
-  const onClick = () => {
-    setExpanded(!expanded);
-    onChange?.(!expanded);
-  };
-
   return (
     <div className={className}>
-      <AccordionButton
-        expanded={expanded}
-        onClick={onClick}
-        size={size}
-        theme={theme}
-      >
+      <AccordionButton expanded={expanded} size={size} theme={theme}>
         {header instanceof Function ? header(expanded) : header}
       </AccordionButton>
       <motion.div
