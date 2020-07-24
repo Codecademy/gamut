@@ -46,6 +46,7 @@ describe('Accordion', () => {
     await act(async () => {
       jest.runAllTimers();
     });
+    wrapper.setProps(wrapper.props());
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
