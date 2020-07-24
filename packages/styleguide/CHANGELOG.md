@@ -1,3 +1,15 @@
+## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
+
+
+### ✨ Features
+
+* **Toggle:** create alternative toggle ([#885](https://github.com/Codecademy/client-modules/issues/885)) ([b3a8996](https://github.com/Codecademy/client-modules/commit/b3a8996b65fe10947420520ac608e4e61b4a485f))
+
 ### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
 
