@@ -16,31 +16,67 @@
 }
 
 .track {
-  width: 3.75rem;
-  height: 1.8rem;
   padding: 0;
   border-radius: 99rem;
-  background-color: $color-gray-500;
   transition: all 0.2s ease;
+
+  &.gray-blue {
+    background-color: $color-gray-500;
+  }
+
+  &.purple {
+    background-color: $brand-purple;
+  }
+}
+
+.track-medium {
+  width: 3.75rem;
+  height: 1.8rem;
+}
+
+.track-small {
+  width: 1.75rem;
+  height: 0.938rem;
 }
 
 .toggled .track {
-  background-color: $color-blue-500;
+  &.gray-blue {
+    background-color: $color-blue-500;
+  }
+
+  &.purple {
+    background-color: $brand-purple;
+  }
 }
 
 .thumb {
   position: absolute;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  background-color: $color-white;
+}
+
+.thumb-medium {
   top: 0.215rem;
   left: 0.204rem;
   width: 1.38rem;
   height: 1.38rem;
   border-radius: 99rem;
-  background-color: $color-white;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.toggled .thumb {
+.thumb-small {
+  top: 0.075rem;
+  left: 0.1rem;
+  width: 0.8rem;
+  height: 0.78rem;
+  border-radius: 0.75rem;
+}
+
+.toggled .thumb-medium {
   left: 2.17rem;
+}
+
+.toggled .thumb-small {
+  left: 0.9rem;
 }
 
 .invisible {
