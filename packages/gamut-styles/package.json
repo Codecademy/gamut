@@ -12,5 +12,9 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/client-modules.git"
   },
+  "peerDependencies": {
+    "@emotion/core": ">=10.0.0",
+    "@emotion/styled": ">=10.0.0"
+  },
   "license": "MIT"
 }
