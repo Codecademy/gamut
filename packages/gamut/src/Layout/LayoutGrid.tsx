@@ -13,23 +13,25 @@ export type LayoutGridProps = {
   columnGap?: ResponsiveProperty<GapSizes>;
 };
 
+const columnGap = responsiveProp(
+  'columnGap',
+  (value: GapSizes) => css`
+    grid-column-gap: ${GAP_SIZES[value]};
+  `
+);
+
+const rowGap = responsiveProp(
+  'rowGap',
+  (value: GapSizes) => css`
+    grid-row-gap: ${GAP_SIZES[value]};
+  `
+);
+
 export const LayoutGrid = styled.div<LayoutGridProps>`
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-
-  ${responsiveProp(
-    'columnGap',
-    (value: GapSizes) => css`
-      grid-column-gap: ${GAP_SIZES[value]};
-    `
-  )}
-
-  ${responsiveProp(
-    'rowGap',
-    (value: GapSizes) => css`
-      grid-row-gap: ${GAP_SIZES[value]};
-    `
-  )}
+  ${columnGap}
+  ${rowGap}
 `;
 
 LayoutGrid.defaultProps = {

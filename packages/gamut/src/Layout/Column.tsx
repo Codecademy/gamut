@@ -15,21 +15,24 @@ export type ColumnProps = {
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
 };
 
+const size = responsiveProp(
+  'size',
+  (size: ColumnSizes) => css`
+    grid-column-end: span ${size};
+  `
+);
+
+const offset = responsiveProp(
+  'offset',
+  (offset: OffsetColumnSizes) => css`
+    grid-column-start: ${offset === 0 ? 'auto' : offset + 1};
+  `
+);
+
 export const Column = styled.div<ColumnProps>`
   display: grid;
-
-  ${responsiveProp(
-    'size',
-    (size: ColumnSizes) => css`
-      grid-column-end: span ${size};
-    `
-  )}
-  ${responsiveProp(
-    'offset',
-    (offset: OffsetColumnSizes) => css`
-      grid-column-start: ${offset === 0 ? 'auto' : offset + 1};
-    `
-  )}
+  ${size}
+  ${offset}
 `;
 
 export default Column;
