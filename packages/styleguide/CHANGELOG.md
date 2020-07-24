@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 13.1.0 (2020-07-24)
+
+* feat(Toggle): create alternative toggle (#885) ([b3a8996](https://github.com/RyzacInc/client-modules/commit/b3a8996)), closes [#885](https://github.com/RyzacInc/client-modules/issues/885)
+* chore: update changelogs ([21f99e8](https://github.com/RyzacInc/client-modules/commit/21f99e8))
+
+
+
+
+
 ### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
 
@@ -912,4 +926,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
