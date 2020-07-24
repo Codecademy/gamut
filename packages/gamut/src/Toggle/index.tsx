@@ -40,7 +40,7 @@ export class Toggle extends Component<ToggleProps, {}> {
         />
         <span className={s.invisible}>{label}</span>
         <div className={cx(s.track, s[theme], s[`track-${size}`])} />
-        <div className={cx(s.thumb, s[`thumb-${size}`], s[size])} />
+        <div className={cx(s.thumb, s[`thumb-${size}`])} />
       </label>
     );
   }

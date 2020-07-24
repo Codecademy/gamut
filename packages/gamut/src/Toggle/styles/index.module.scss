@@ -71,14 +71,12 @@
   border-radius: 0.75rem;
 }
 
-.toggled .thumb {
-  &.medium {
-    left: 2.17rem;
-  }
+.toggled .thumb-medium {
+  left: 2.17rem;
+}
 
-  &.small {
-    left: 0.9rem;
-  }
+.toggled .thumb-small {
+  left: 0.9rem;
 }
 
 .invisible {
