@@ -17,22 +17,19 @@ export type ColumnProps = {
 
 export const Column = styled.div<ColumnProps>`
   display: grid;
+
   ${responsiveProp(
     'size',
     (size: ColumnSizes) => css`
       grid-column-end: span ${size};
     `
   )}
-  ${responsiveProp('offset', (offset: OffsetColumnSizes) => {
-    if (offset === 0) {
-      return css`
-        grid-column-start: auto;
-      `;
-    }
-    return css`
-      grid-column-start: ${offset + 1};
-    `;
-  })}
+  ${responsiveProp(
+    'offset',
+    (offset: OffsetColumnSizes) => css`
+      grid-column-start: ${offset === 0 ? 'auto' : offset + 1};
+    `
+  )}
 `;
 
 export default Column;
