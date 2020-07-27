@@ -20,18 +20,11 @@ Most accordions should use an `AccordionButton`; other forms of buttons are acce
 <Preview>
   <Story name="Accordion">
     {() => {
-      const [expanded, setExpanded] = useState(false);
+      const expanded = boolean('Expanded');
       return (
         <Accordion
           expanded={expanded}
-          top={
-            <AccordionButton
-              expanded={expanded}
-              onClick={() => setExpanded(!expanded)}
-            >
-              Click me!
-            </AccordionButton>
-          }
+          top={<AccordionButton expanded={expanded}>Click me!</AccordionButton>}
         >
           Hidden treasure!
         </Accordion>
