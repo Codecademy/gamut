@@ -1,3 +1,16 @@
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.2.0) (2020-07-27)
+
+
+### Other Changes
+
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
+
 ## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.0.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
 
 

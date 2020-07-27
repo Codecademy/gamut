@@ -1,11 +1,14 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "4.1.0",
+  "version": "4.2.0",
   "author": "Jake Hiller <jake@codecademy.com>",
-  "main": "utils.scss",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build:clean": "rm -rf ./dist",
+    "build:compile": "tsc",
+    "build": "yarn build:clean && yarn build:compile",
     "prepublishOnly": "yarn build"
   },
   "repository": {
