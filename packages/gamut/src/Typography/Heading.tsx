@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 
 import s from './styles/Heading.module.scss';
-import { ContainerElementProps } from '../Layout/types';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { AllowedStyles } from './types';
@@ -19,7 +18,9 @@ export type HeadingProps = {
   style?: AllowedStyles;
   /** Toggle default heading margin */
   hideMargin?: boolean;
-} & ContainerElementProps;
+  testId?: string;
+  className?: string;
+};
 
 export const Heading: React.FC<HeadingProps> = ({
   children,

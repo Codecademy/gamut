@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 
 import s from './styles/Text.module.scss';
-import { ContainerElementProps } from '../Layout/types';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { AllowedStyles } from './types';
@@ -17,7 +16,9 @@ type TextProps = {
   fontSize?: ResponsiveProperty<TextSizes>;
   /** Allows you to pass color attributes directly to the tag */
   style?: AllowedStyles;
-} & ContainerElementProps;
+  testId?: string;
+  className?: string;
+};
 
 export const Text: React.FC<TextProps> = ({
   children,
