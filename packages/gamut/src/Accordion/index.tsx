@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion';
 import React, { useLayoutEffect, useState } from 'react';
 
-import AccordionButton from '../AccordionButton';
-
-export type RenderWithExpanded = (expanded: boolean) => React.ReactNode;
+import styles from './styles.module.scss';
 
 export type AccordionProps = {
-  children: React.ReactNode | RenderWithExpanded;
+  children: React.ReactNode;
 
   className?: string;
 
@@ -18,30 +16,21 @@ export type AccordionProps = {
   /**
    * Contents of the clickable header button.
    */
-  header: React.ReactNode | RenderWithExpanded;
-
-  size?: 'normal' | 'large';
-
-  /**
-   * Visual theme for the clickable header button.
-   */
-  theme: 'blue' | 'plain' | 'yellow';
+  top: React.ReactNode;
 };
 
 const transitionDuration = 0.2;
 
 const variants = {
   expanded: { height: '100%' },
-  folded: { height: 0, overflow: 'hidden' },
+  folded: { height: 0 },
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
   children,
   className,
   expanded,
-  header,
-  size = 'normal',
-  theme,
+  top,
 }) => {
   const [delayExpanded, setDelayExpanded] = useState(expanded);
 
@@ -56,18 +45,16 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div className={className}>
-      <AccordionButton expanded={expanded} size={size} theme={theme}>
-        {header instanceof Function ? header(expanded) : header}
-      </AccordionButton>
+      {top}
       <motion.div
         aria-expanded={expanded}
+        className={styles.accordionBody}
         initial={false}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
       >
-        {(expanded || delayExpanded) &&
-          (children instanceof Function ? children(expanded) : children)}
+        {(expanded || delayExpanded) && children}
       </motion.div>
     </div>
   );

@@ -8,8 +8,7 @@ const renderComponent = (overrides: Partial<AccordionProps> = {}) => {
   const props = {
     children: <div data-testid="contents" />,
     expanded: false,
-    header: 'Click me!',
-    theme: 'blue',
+    top: 'Click me!',
     ...overrides,
   } as const;
 
@@ -49,17 +48,5 @@ describe('Accordion', () => {
     wrapper.setProps(wrapper.props());
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
-  });
-
-  it('renders children with the expanded prop when children is a functino', () => {
-    const wrapper = renderComponent({
-      children: (expanded) => `children-${expanded}`,
-      expanded: true,
-      header: (expanded) => `header-${expanded}`,
-    });
-
-    expect(wrapper.text()).toEqual(
-      `header-${true}Arrow Chevron Down Iconchildren-${true}`
-    );
   });
 });

@@ -19,11 +19,11 @@ export type AccordionButtonProps = {
   /**
    * Determines the size of the button.
    */
-  size: 'normal' | 'large';
+  size?: 'normal' | 'large';
   /**
    * Visual theme for the clickable header button.
    */
-  theme: 'blue' | 'plain' | 'yellow';
+  theme?: 'blue' | 'plain' | 'yellow';
 };
 
 const buttonThemes = {
@@ -52,8 +52,8 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   className,
   expanded,
   onClick,
-  size,
-  theme,
+  size = 'normal',
+  theme = 'plain',
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
   const iconSize = size === 'large' ? 30 : undefined;

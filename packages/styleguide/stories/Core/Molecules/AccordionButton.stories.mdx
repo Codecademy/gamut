@@ -1,0 +1,102 @@
+import { AccordionButton } from '@codecademy/gamut/src';
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { boolean, select } from '@storybook/addon-knobs';
+import { useState } from 'react';
+
+import { StoryStatus } from '../../../Blocks';
+
+<Meta title="Molecules/AccordionButton" component={AccordionButton} />
+
+# AccordionButton
+
+<StoryStatus status="volatile" />
+
+The standard "top" button for an `Accordion`.
+Comes in a few standard size and color combinations.
+
+<Preview>
+  <Story name="AccordionButton">
+    {() => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <AccordionButton
+          expanded={expanded}
+          size={select('Size', ['normal', 'large'], 'normal')}
+          theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
+        >
+          Click me!
+        </AccordionButton>
+      );
+    }}
+  </Story>
+</Preview>
+
+<Props of={AccordionButton} />
+
+## Themes
+
+### Blue
+
+Blue accordion tops are only usable in dark contexts, such as the LE's
+Help Menu.
+
+<Preview className="dark">
+  <Story name="Blue">
+    <Accordion
+      header="Click to Toggle Me!"
+      onChange={action('Changed')}
+      theme="blue"
+    >
+      Wow, hidden treasure!
+    </Accordion>
+  </Story>
+</Preview>
+
+<Preview className="dark">
+  <Story name="Blue">
+    {() => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Accordion expanded={expanded} theme="blue">
+          Wow, hidden treasure!
+        </Accordion>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Plain
+
+Plain accordion tops are best applied in plain pages such as marketing pages
+where we haven't been able to invest yet in a more solid theme.
+
+<Preview>
+  <Story name="Plain">
+    {() => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Accordion expanded={expanded} theme="plain">
+          Wow, hidden treasure!
+        </Accordion>
+      );
+    }}
+  </Story>
+</Preview>
+
+### Yellow
+
+Yellow accordion tops are used in the "Get a Hint" sections of the LE's
+narrative pane.
+
+<Preview>
+  <Story name="Yellow">
+    {() => {
+      const [expanded, setExpanded] = useState(false);
+      return (
+        <Accordion expanded={expanded} theme="yellow">
+          Wow, hidden treasure!
+        </Accordion>
+      );
+    }}
+  </Story>
+</Preview>
