@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>13.1.2 (2020-07-27)</small>
+
+* Fixed happy little syntax accident on tooltip story (#891) ([2ed85ac](https://github.com/RyzacInc/client-modules/commit/2ed85ac)), closes [#891](https://github.com/RyzacInc/client-modules/issues/891)
+* chore: update changelogs ([1aed8cc](https://github.com/RyzacInc/client-modules/commit/1aed8cc))
+
+
+
+
+
 ### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
 
 
@@ -931,4 +945,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
