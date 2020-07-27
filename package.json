@@ -45,9 +45,9 @@
   "dependencies": {
     "babel-plugin-react-anonymous-display-name": "^0.0.1",
     "conventional-changelog-cli": "^2.0.34",
-    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^2.2.0",
-    "lerna": "3.20.2"
+    "lerna": "3.22.1"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",
@@ -67,6 +67,7 @@
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "babel-jest": "24.9.0",
+    "babel-plugin-emotion": "10.0.33",
     "babel-plugin-require-context-hook": "1.0.0",
     "babel-preset-codecademy": "2.2.5",
     "core-js": "3.0.1",

@@ -3,8 +3,6 @@ import React, { ReactNode, FunctionComponent } from 'react';
 
 import omitProps from '../../utils/omitProps';
 
-import ButtonBase from '../../ButtonBase';
-
 import s from './styles.module.scss';
 
 export type TabProps = {
@@ -41,7 +39,7 @@ export const Tab: FunctionComponent<TabProps> = ({
   const dataPropsToTransfer = omitProps([], rest);
 
   return (
-    <ButtonBase
+    <button
       id={id}
       className={tabClasses}
       aria-selected={active}
@@ -68,10 +66,11 @@ export const Tab: FunctionComponent<TabProps> = ({
       }}
       role="tab"
       tabIndex={disabled ? -1 : 0}
+      type="button"
       {...dataPropsToTransfer}
     >
       {children}
-    </ButtonBase>
+    </button>
   );
 };
 
