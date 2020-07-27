@@ -1,3 +1,20 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 4.2.0 (2020-07-27)
+
+* feat: Create default main export for gamut-styles [WEB-895] (#820) ([be4e941](https://github.com/RyzacInc/client-modules/commit/be4e941)), closes [#820](https://github.com/RyzacInc/client-modules/issues/820)
+* feat(Emotion): Add Emotion Dependency to Next WEB-982 (#888) ([d24fda1](https://github.com/RyzacInc/client-modules/commit/d24fda1)), closes [#888](https://github.com/RyzacInc/client-modules/issues/888)
+* chore: update changelogs ([1133171](https://github.com/RyzacInc/client-modules/commit/1133171))
+* ci: clean changelog update ([9d7c0f0](https://github.com/RyzacInc/client-modules/commit/9d7c0f0))
+* ci: run git hooks in CI (#836) ([d139572](https://github.com/RyzacInc/client-modules/commit/d139572)), closes [#836](https://github.com/RyzacInc/client-modules/issues/836)
+
+
+
+
+
 ## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.0.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
 
 
@@ -486,4 +503,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
