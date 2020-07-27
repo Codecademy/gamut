@@ -67,6 +67,7 @@
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "babel-jest": "24.9.0",
+    "babel-plugin-emotion": "10.0.33",
     "babel-plugin-require-context-hook": "1.0.0",
     "babel-preset-codecademy": "2.2.5",
     "core-js": "3.0.1",
