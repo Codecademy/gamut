@@ -8,13 +8,13 @@ export function getViewport(
   mediaSize: MediaSize,
   template: string | SerializedStyles
 ) {
-  if (mediaSize !== 'xs') {
-    return css`
-      @media only screen and (min-width: ${breakpoints[mediaSize]}) {
-        ${template}
-      }
-    `;
-  }
+  if (mediaSize === 'xs') return template;
+
+  return css`
+    @media only screen and (min-width: ${breakpoints[mediaSize]}) {
+      ${template}
+    }
+  `;
 }
 
 export function templateMediaQueries<T extends ValidValues>(
