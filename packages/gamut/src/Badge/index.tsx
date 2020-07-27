@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles';
 
 export const Badge = styled.span`
   background: ${colors.blue[500]};
