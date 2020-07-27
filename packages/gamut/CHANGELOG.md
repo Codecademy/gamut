@@ -1,16 +1,10 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>12.1.2 (2020-07-27)</small>
-
-* Used default outline for active and focused Tabs (#892) ([0d14b51](https://github.com/RyzacInc/client-modules/commit/0d14b51)), closes [#892](https://github.com/RyzacInc/client-modules/issues/892)
-* chore: update changelogs ([1aed8cc](https://github.com/RyzacInc/client-modules/commit/1aed8cc))
+### [12.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.1...@codecademy/gamut@12.1.2) (2020-07-27)
 
 
+### Other Changes
 
-
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+* Used default outline for active and focused Tabs ([#892](https://github.com/Codecademy/client-modules/issues/892)) ([0d14b51](https://github.com/Codecademy/client-modules/commit/0d14b519aa78c4f229aa261b8814aa4d543f1b36))
 
 ### [12.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.0...@codecademy/gamut@12.1.1) (2020-07-24)
 
@@ -2814,3 +2808,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
