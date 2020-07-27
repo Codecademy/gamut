@@ -1,18 +1,16 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 12.2.0 (2020-07-27)
-
-* Merge branch 'next' into master ([9eb2c8e](https://github.com/RyzacInc/client-modules/commit/9eb2c8e))
-* chore: update changelogs ([e9ea262](https://github.com/RyzacInc/client-modules/commit/e9ea262))
-* feat: Create default main export for gamut-styles [WEB-895] (#820) ([be4e941](https://github.com/RyzacInc/client-modules/commit/be4e941)), closes [#820](https://github.com/RyzacInc/client-modules/issues/820)
-* feat(Emotion): Add Emotion Dependency to Next WEB-982 (#888) ([d24fda1](https://github.com/RyzacInc/client-modules/commit/d24fda1)), closes [#888](https://github.com/RyzacInc/client-modules/issues/888)
+## [12.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.2...@codecademy/gamut@12.2.0) (2020-07-27)
 
 
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
 
 
+### Other Changes
+
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
 
 ### [12.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.1...@codecademy/gamut@12.1.2) (2020-07-27)
 
@@ -2824,3 +2822,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
