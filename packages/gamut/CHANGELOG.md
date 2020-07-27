@@ -1,3 +1,27 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 12.3.0 (2020-07-27)
+
+* Add emotion babel config to labs and gamut (#895) ([fe79775](https://github.com/RyzacInc/client-modules/commit/fe79775)), closes [#895](https://github.com/RyzacInc/client-modules/issues/895)
+* Used default outline for active and focused Tabs (#892) ([d0141a3](https://github.com/RyzacInc/client-modules/commit/d0141a3)), closes [#892](https://github.com/RyzacInc/client-modules/issues/892)
+* chore: update changelogs ([b1936eb](https://github.com/RyzacInc/client-modules/commit/b1936eb))
+* chore: update changelogs ([f66f062](https://github.com/RyzacInc/client-modules/commit/f66f062))
+* chore: update changelogs ([ee8b6ce](https://github.com/RyzacInc/client-modules/commit/ee8b6ce))
+* chore: update changelogs ([d37a319](https://github.com/RyzacInc/client-modules/commit/d37a319))
+* chore(release): publish ([b025ef1](https://github.com/RyzacInc/client-modules/commit/b025ef1))
+* chore(release): publish ([4fc8ea2](https://github.com/RyzacInc/client-modules/commit/4fc8ea2))
+* chore(release): publish ([5b987fd](https://github.com/RyzacInc/client-modules/commit/5b987fd))
+* chore(release): publish ([7c452dc](https://github.com/RyzacInc/client-modules/commit/7c452dc))
+* fix(Button): Added align-items: center to Button styles (#884) ([b683bce](https://github.com/RyzacInc/client-modules/commit/b683bce)), closes [#884](https://github.com/RyzacInc/client-modules/issues/884)
+* feat(Toggle): create alternative toggle (#885) ([a9b0a5e](https://github.com/RyzacInc/client-modules/commit/a9b0a5e)), closes [#885](https://github.com/RyzacInc/client-modules/issues/885)
+
+
+
+
+
 ## [12.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.2...@codecademy/gamut@12.2.0) (2020-07-27)
 
 
@@ -2822,4 +2846,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-

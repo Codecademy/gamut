@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.8.1 (2020-07-27)</small>
+
+* Add emotion babel config to labs and gamut (#895) ([fe79775](https://github.com/Codecademy/client-modules/commit/fe79775)), closes [#895](https://github.com/Codecademy/client-modules/issues/895)
+* chore: update changelogs ([b1936eb](https://github.com/Codecademy/client-modules/commit/b1936eb))
+* chore: update changelogs ([f66f062](https://github.com/Codecademy/client-modules/commit/f66f062))
+* chore: update changelogs ([ee8b6ce](https://github.com/Codecademy/client-modules/commit/ee8b6ce))
+* chore: update changelogs ([d37a319](https://github.com/Codecademy/client-modules/commit/d37a319))
+* chore(release): publish ([b025ef1](https://github.com/Codecademy/client-modules/commit/b025ef1))
+* chore(release): publish ([4fc8ea2](https://github.com/Codecademy/client-modules/commit/4fc8ea2))
+* chore(release): publish ([5b987fd](https://github.com/Codecademy/client-modules/commit/5b987fd))
+* chore(release): publish ([7c452dc](https://github.com/Codecademy/client-modules/commit/7c452dc))
+
+
+
+
+
 ## [1.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.53...@codecademy/gamut-labs@1.8.0) (2020-07-27)
 
 
@@ -191,4 +212,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
