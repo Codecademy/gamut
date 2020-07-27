@@ -45,9 +45,9 @@
   "dependencies": {
     "babel-plugin-react-anonymous-display-name": "^0.0.1",
     "conventional-changelog-cli": "^2.0.34",
-    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^2.2.0",
-    "lerna": "3.20.2"
+    "lerna": "3.22.1"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",
