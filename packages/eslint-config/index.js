@@ -89,6 +89,7 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    'import/named': 'off',
     'import/namespace': 'off',
     'import/no-unresolved': 'off',
     'react/display-name': 'off',
@@ -106,6 +107,14 @@ module.exports = {
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
+
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: ['@codecademy/gamut/dist/deprecated'],
+        patterns: ['@codecademy/gamut/dist/deprecated/*'],
+      },
+    ],
   },
 
   settings: {

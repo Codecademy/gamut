@@ -1,3 +1,21 @@
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.0.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
+
+
+### ✨ Features
+
+* Align brand color aliases [WEB-215] ([#821](https://github.com/Codecademy/client-modules/issues/821)) ([8b39239](https://github.com/Codecademy/client-modules/commit/8b39239c3b8ca93fd86b8959f98c13d9d5cd6074))
+
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.1...@codecademy/gamut-styles@4.0.0) (2020-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Removed deprecated color variables (#819)
+
+### Other Changes
+
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/client-modules/issues/819)) ([1dcce36](https://github.com/Codecademy/client-modules/commit/1dcce363a7fc9f4a37e71b667fa0de984671bd3c))
+
 ### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.0...@codecademy/gamut-styles@3.3.1) (2020-05-06)
 
 

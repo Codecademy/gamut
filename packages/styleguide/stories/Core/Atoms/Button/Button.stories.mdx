@@ -1,5 +1,5 @@
 import { Meta, Props, Story, Preview } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../../Templating/Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import {
   Button,
   ButtonBase,
@@ -15,15 +15,11 @@ import {
   deprecatedThemeKeys,
 } from './helpers';
 
-<Meta
-  title="Core|Atoms/Button"
-  component={Button}
-  subcomponents={{ ButtonBase }}
-/>
+<Meta title="Atoms/Button" component={Button} subcomponents={{ ButtonBase }} />
 
 # Buttons
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 Primary versions of buttons and links. Approximately all focusable,
 interactive elements should use some form of a `Button` (if

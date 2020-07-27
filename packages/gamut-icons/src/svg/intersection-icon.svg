@@ -1,5 +1,1 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M8 14A5 5 0 108 4a5 5 0 000 10zm0 1A6 6 0 118 3a6 6 0 010 12z"/>
-    <path d="M16 14a5 5 0 100-10 5 5 0 000 10zm0 1a6 6 0 110-12 6 6 0 010 12z"/>
-    <path d="M12 20a5 5 0 100-10 5 5 0 000 10zm0 1a6 6 0 110-12 6 6 0 010 12z"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>color-palette</title><circle class="a" cx="12" cy="8.25" r="6.75"/><circle class="a" cx="7.5" cy="15.75" r="6.75"/><circle class="a" cx="16.5" cy="15.75" r="6.75"/></svg>

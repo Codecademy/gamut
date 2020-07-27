@@ -2,7 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 
 import styles from './styles.module.scss';
-import DownArrowIcon from '../Icon/icons/DownArrowIcon';
+import { ArrowDownIcon } from '@codecademy/gamut-icons';
 
 export type SkipToContentProps = {
   className?: string;
@@ -23,7 +23,8 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
       onClick={onClick}
       type="button"
     >
-      Skip to Content <DownArrowIcon className={styles.downArrowIcon} />
+      Skip to Content
+      <ArrowDownIcon aria-hidden className={styles.downArrowIcon} />
     </a>
   );
 };

@@ -7,12 +7,13 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
+  id?: string;
 };
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const className = cx(s.Select, props.className, props.error && s.error);
-    const { options, error, ...propsToTransfer } = props;
+    const { options, error, id, ...rest } = props;
 
     let selectOptions: ReactNode[] = [];
 
@@ -41,10 +42,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           />
         </svg>
         <select
-          {...propsToTransfer}
+          {...rest}
           className={s.selectInput}
           defaultValue={props.defaultValue || ''}
-          id={props.htmlFor}
+          id={id || props.htmlFor}
           ref={ref}
         >
           {selectOptions}

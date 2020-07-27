@@ -1,15 +1,15 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../../Templating/Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { number } from '@storybook/addon-knobs';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles';
 import { bars } from './constants';
 
-<Meta title="Core|Atoms/ProgressBar" component={ProgressBar} />
+<Meta title="Atoms/ProgressBar" component={ProgressBar} />
 
 # ProgressBar
 
-<StoryStatus status="inProgress" />
+<StoryStatus status="volatile" />
 
 ProgressBars are to be used when you would like to indicate a known or
 somewhat-known amount of progress along a fixed course. For example, you

@@ -1,5 +1,8 @@
+import cx from 'classnames';
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React, { HTMLAttributes } from 'react';
+
+import styles from './styles.module.scss';
 
 export interface AnchorProps extends HTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -39,7 +42,7 @@ const Anchor: React.FC<AnchorProps> = (props) => {
     delete anchorProps.rel;
   }
 
-  return <a {...anchorProps} />;
+  return <a {...anchorProps} className={cx(styles.a, props.className)} />;
 };
 
 export default Anchor;
