@@ -9,7 +9,7 @@ references:
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
-      NODE_OPTIONS: '--max_old_space_size=4096'
+      NODE_OPTIONS: "--max_old_space_size=4096"
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
   repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
@@ -73,7 +73,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - 'c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7'
+        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
 
 jobs:
   checkout_code:
@@ -163,7 +163,7 @@ jobs:
       - *set_npm_token
       - run:
           name: Lerna Publish
-          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github --npm-tag next
+          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github --preid=next --dist-tag=next
 
   update_changelogs:
     <<: *default_env
@@ -318,7 +318,9 @@ workflows:
             - publish
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - next
       - deploy:
           requires:
             - checkout_code
