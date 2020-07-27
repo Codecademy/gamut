@@ -1,3 +1,15 @@
+### [12.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.0...@codecademy/gamut@12.1.1) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+
+
+### 🐛 Bug Fixes
+
+* **Button:** Added align-items: center to Button styles ([#884](https://github.com/Codecademy/client-modules/issues/884)) ([cc4280e](https://github.com/Codecademy/client-modules/commit/cc4280ee1b324cc023cbdfcc2d0271a04fda2f1f))
+
 ## [12.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.1...@codecademy/gamut@12.1.0) (2020-07-24)
 
 

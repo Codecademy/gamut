@@ -1,3 +1,18 @@
+### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.1...@codecademy/styleguide@13.1.2) (2020-07-27)
+
+
+### Other Changes
+
+* Fixed happy little syntax accident on tooltip story ([#891](https://github.com/Codecademy/client-modules/issues/891)) ([2ed85ac](https://github.com/Codecademy/client-modules/commit/2ed85ace129d150c31cacb5d2e240eef255b9051))
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+
+### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+
 ## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
 
 
