@@ -1,0 +1,22 @@
+{
+  "name": "@codecademy/stylelint-config",
+  "version": "1.0.0",
+  "description": "Shared stylelint config for Codecademy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules/packages/stylelint-config"
+  },
+  "author": "codecademy",
+  "license": "ISC",
+  "peerDependencies": {
+    "stylelint": "^13.6.1"
+  },
+  "dependencies": {
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-config-styled-components": "0.1.1"
+  },
+  "devDependencies": {
+    "stylelint": "13.3.3"
+  }
+}

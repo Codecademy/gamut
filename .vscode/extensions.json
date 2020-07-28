@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "jounqin.vscode-mdx",
-    "jpoissonnier.vscode-styled-components"
+    "jpoissonnier.vscode-styled-components",
+    "hex-ci.stylelint-plus"
   ]
 }
