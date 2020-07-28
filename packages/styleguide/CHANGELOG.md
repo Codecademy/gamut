@@ -1,3 +1,39 @@
+## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.3...@codecademy/styleguide@13.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Styleguide:** Add storybook controls addon [WEB-937] ([#860](https://github.com/Codecademy/client-modules/issues/860)) ([1a30e66](https://github.com/Codecademy/client-modules/commit/1a30e66d6854e8a2f7f83736edd2ca28db4366cb))
+
+
+### Other Changes
+
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
+
+### [13.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.2...@codecademy/styleguide@13.1.3) (2020-07-27)
+
+
+### Other Changes
+
+* update changelogs ([a4e359b](https://github.com/Codecademy/client-modules/commit/a4e359b5d8bbf7bffdfaf4cda4d2306a20a6d32a))
+
+### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.1...@codecademy/styleguide@13.1.2) (2020-07-27)
+
+
+### Other Changes
+
+* Fixed happy little syntax accident on tooltip story ([#891](https://github.com/Codecademy/client-modules/issues/891)) ([2ed85ac](https://github.com/Codecademy/client-modules/commit/2ed85ace129d150c31cacb5d2e240eef255b9051))
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+
+### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+
 ## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
 
 
