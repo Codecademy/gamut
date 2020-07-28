@@ -5,7 +5,6 @@ import s from './styles/index.module.scss';
 export type ToggleProps = {
   checked?: boolean;
   onChange?: (...args: any[]) => any;
-  onClick?: (...args: any[]) => any;
   label?: string;
   disabled?: boolean;
   theme?: 'gray-blue' | 'purple';
@@ -17,7 +16,6 @@ export class Toggle extends Component<ToggleProps, {}> {
     const {
       checked,
       onChange,
-      onClick,
       label,
       disabled,
       theme = 'gray-blue',
@@ -39,7 +37,6 @@ export class Toggle extends Component<ToggleProps, {}> {
           id={label}
           disabled={disabled}
           onChange={onChange}
-          onClick={onClick}
         />
         <span className={s.invisible}>{label}</span>
         <div className={cx(s.track, s[theme], s[`track-${size}`])} />
