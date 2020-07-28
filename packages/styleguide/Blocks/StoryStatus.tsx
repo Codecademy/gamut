@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { colors } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 const STATUS_COLORS = {
   stable: colors.green[800],
