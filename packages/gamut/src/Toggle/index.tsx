@@ -7,11 +7,20 @@ export type ToggleProps = {
   onChange?: (...args: any[]) => any;
   label?: string;
   disabled?: boolean;
+  theme?: 'gray-blue' | 'purple';
+  size?: 'small' | 'medium';
 };
 
 export class Toggle extends Component<ToggleProps, {}> {
   render() {
-    const { checked, onChange, label, disabled } = this.props;
+    const {
+      checked,
+      onChange,
+      label,
+      disabled,
+      theme = 'gray-blue',
+      size = 'medium',
+    } = this.props;
     return (
       <label
         className={cx(s.toggleButton, {
@@ -30,8 +39,8 @@ export class Toggle extends Component<ToggleProps, {}> {
           onChange={onChange}
         />
         <span className={s.invisible}>{label}</span>
-        <div className={s.track} />
-        <div className={s.thumb} />
+        <div className={cx(s.track, s[theme], s[`track-${size}`])} />
+        <div className={cx(s.thumb, s[`thumb-${size}`])} />
       </label>
     );
   }
