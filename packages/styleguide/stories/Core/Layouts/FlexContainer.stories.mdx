@@ -1,14 +1,10 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '../../../Blocks';
-import { Item, Container } from '@codecademy/gamut/src';
-import { Box, defaultGridProps } from './Elements';
+import { Box, Flex } from '@codecademy/gamut/src';
+import { BoxElement, defaultGridProps } from './Elements';
 import { select, boolean, number } from '@storybook/addon-knobs';
 
-<Meta
-  title="Layouts/Container"
-  component={Container}
-  subcomponents={{ Container, Item }}
-/>
+<Meta title="Layouts/Box" component={Box} subcomponents={{ Flex }} />
 
 # Container
 
@@ -17,40 +13,32 @@ import { select, boolean, number } from '@storybook/addon-knobs';
 A flex box primitive that allows you create markup configurable flex containers
 
 <Preview>
-  <Story name="Flex Container ">
-    {() => {
-      const alignments = [
-        'stretch',
-        'center',
-        'end',
-        'start',
-        'baseline',
-        'spaceAround',
-        'spaceBetween',
-      ];
+  <Story
+    name="Box"
+    withSource="open"
+    args={{
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    {(args) => {
       return (
-        <Container
-          align={select('align', alignments, undefined)}
-          alignSelf={select('alignSelf', alignments, undefined)}
-          justify={select('justify', alignments, undefined)}
-          center={boolean('center', false)}
-          column={boolean('column', false)}
-          row={boolean('row', false)}
-          fit={boolean('fit', true)}
-          flex={boolean('flex', false)}
-          grow={number('grow', undefined)}
-          shrink={number('shrink', undefined)}
-          inline={boolean('inline', false)}
-          nowrap={boolean('nowrap', false)}
-          reverse={boolean('reverse', false)}
-          wrap={boolean('wrap', false)}
-        >
-          <Box>Element 1</Box>
-          <Box>Element 2</Box>
-        </Container>
+        <Flex {...args}>
+          <Box style={{ padding: 10, background: 'blue', color: 'white' }}>
+            New Container Item 1
+          </Box>
+          <Flex row style={{ padding: 10, background: 'blue', color: 'white' }}>
+            <Box style={{ padding: 10, background: 'blue', color: 'white' }}>
+              New Container Item 2
+            </Box>
+            <Box style={{ padding: 10, background: 'blue', color: 'white' }}>
+              New Container Item 2
+            </Box>
+          </Flex>
+        </Flex>
       );
     }}
   </Story>
 </Preview>
 
-<Props of={Container} />
+<Props of={Box} />

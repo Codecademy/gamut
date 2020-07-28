@@ -2,7 +2,7 @@ import React from 'react';
 import { Item } from '@codecademy/gamut/src';
 import { colors } from '@codecademy/gamut-styles';
 
-export const Box: React.FC = ({ children }) => (
+export const BoxElement: React.FC = ({ children }) => (
   <Item
     style={{
       padding: '5px',

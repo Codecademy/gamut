@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { LayoutGrid, Column } from '@codecademy/gamut/src';
-import { Box, defaultGridProps } from './Elements';
+import { BoxElement, defaultGridProps } from './Elements';
 import { withKnobs, select } from '@storybook/addon-knobs';
 
 <Meta
@@ -29,79 +29,79 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
       rowGap={{ xs: 'sm', lg: 'lg' }}
     >
       <Column size={12}>
-        <Box>12</Box>
+        <BoxElement>12</BoxElement>
       </Column>
       <Column size={6}>
-        <Box>6</Box>
+        <BoxElement>6</BoxElement>
       </Column>
       <Column size={6}>
-        <Box>6</Box>
+        <BoxElement>6</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={2}>
-        <Box>2</Box>
+        <BoxElement>2</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
       <Column size={1}>
-        <Box>1</Box>
+        <BoxElement>1</BoxElement>
       </Column>
     </LayoutGrid>
   </Story>
@@ -118,25 +118,25 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
       columnGap={select('columnGap', [undefined, 'sm', 'md', 'lg', 'xl'], 'sm')}
     >
       <Column size={12}>
-        <Box>12</Box>
+        <BoxElement>12</BoxElement>
       </Column>
       <Column size={6}>
-        <Box>6</Box>
+        <BoxElement>6</BoxElement>
       </Column>
       <Column size={6}>
-        <Box>6</Box>
+        <BoxElement>6</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
       <Column size={3}>
-        <Box>3</Box>
+        <BoxElement>3</BoxElement>
       </Column>
     </LayoutGrid>
   </Story>
@@ -151,25 +151,25 @@ As with column and row gaps, those numbers may be static or responsive.
   <Story name="Column Offsets">
     <LayoutGrid rowGap="sm" columnGap="sm">
       <Column offset={2} size={4}>
-        <Box>2 Column offset</Box>
+        <BoxElement>2 Column offset</BoxElement>
       </Column>
       <Column size={2}>
-        <Box />
+        <BoxElement />
       </Column>
       <Column size={2}>
-        <Box />
+        <BoxElement />
       </Column>
       <Column size={4}>
-        <Box>No offset</Box>
+        <BoxElement>No offset</BoxElement>
       </Column>
       <Column size={8}>
-        <Box />
+        <BoxElement />
       </Column>
       <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
-        <Box>sm: 6, md: 4, lg: 2</Box>
+        <BoxElement>sm: 6, md: 4, lg: 2</BoxElement>
       </Column>
       <Column offset={{ xs: 0, md: 4 }} size={6}>
-        <Box>no offset sm, md: 4</Box>
+        <BoxElement>no offset sm, md: 4</BoxElement>
       </Column>
     </LayoutGrid>
   </Story>

@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Item, FlexGrid, Row, Col } from '@codecademy/gamut/src';
-import { Box, defaultGridProps } from './Elements';
+import { BoxElement, defaultGridProps } from './Elements';
 
 <Meta
   title="Layouts/FlexGrid"
@@ -25,33 +25,33 @@ not shrink to the size of its container.
     <FlexGrid {...defaultGridProps} fluid>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={6} sm={6} md={8} lg={10}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={6} sm={3} md={2} lg={1}>
-          <Box />
+          <BoxElement />
         </Col>
       </Row>
       <Row>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
       </Row>
     </FlexGrid>
@@ -70,33 +70,33 @@ container.
     <FlexGrid {...defaultGridProps} fluid>
       <Row>
         <Col xs={12} sm={3} md={2} lg={1}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={6} sm={6} md={8} lg={10}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={6} sm={3} md={2} lg={1}>
-          <Box />
+          <BoxElement />
         </Col>
       </Row>
       <Row>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xs={12} sm={2}>
-          <Box />
+          <BoxElement />
         </Col>
       </Row>
     </FlexGrid>
@@ -112,37 +112,37 @@ A column can be offset with the `xs` property.
     <FlexGrid fluid {...defaultGridProps}>
       <Row>
         <Col xsOffset={11} xs={1}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={10} xs={2}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={9} xs={3}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={8} xs={4}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={7} xs={5}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={6} xs={6}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={5} xs={7}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={4} xs={8}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={3} xs={9}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={2} xs={10}>
-          <Box />
+          <BoxElement />
         </Col>
         <Col xsOffset={1} xs={11}>
-          <Box />
+          <BoxElement />
         </Col>
       </Row>
     </FlexGrid>
@@ -160,7 +160,7 @@ You can center the content of a row by passing it `center`.
         <Col xs={12}>
           <Row center="xs">
             <Col xs={6}>
-              <Box />
+              <BoxElement />
             </Col>
           </Row>
         </Col>

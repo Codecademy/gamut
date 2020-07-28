@@ -25,6 +25,7 @@
     "@codecademy/gamut-styles": "^4.2.0",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
+    "csstype": "^2.6.11",
     "focus-trap-react": "^6.0.0",
     "framer-motion": "^1.11.0",
     "html-to-react": "^1.4.2",
