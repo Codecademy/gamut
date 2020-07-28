@@ -19,21 +19,23 @@ otherwise.
 
 Steppers are not appropriate for values larger than three digits.
 
-<Preview withSource="open">
-  <Story
-    name="Stepper"
-    args={{
-      label: 'things',
-      ariaLabel: 'input stepper',
-      min: 0,
-      max: 999,
-      value: 99,
-    }}
-  >
-    {(args) => {
-      return <InputStepper {...args} />;
+<Preview>
+  <Story name="Input Stepper">
+    {() => {
+      const [value, setValue] = useState(99);
+      return (
+        <InputStepper
+          min={number('Minimum', 0)}
+          max={number('Maximum', 999)}
+          ariaLabel="input stepper"
+          label={text('Label', 'things')}
+          onChange={setValue}
+          value={value}
+          onStepperButtonClick={() => null}
+        />
+      );
     }}
   </Story>
 </Preview>
 
-<Props story="Stepper" />
+<Props of={InputStepper} />

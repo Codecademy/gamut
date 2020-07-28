@@ -7,7 +7,7 @@ import './decorators/wrapper';
 const gamutTheme = create({
   base: 'light',
   brandTitle: 'Gamut',
-  brandUrl: '/',
+  brandUrl: 'https://gamut.codecademy.com',
 });
 
 addParameters({
@@ -37,8 +37,6 @@ addParameters({
     options: {},
     manual: true,
   },
-  actions: { argTypesRegex: '^on.*' },
-  controls: { expanded: true },
 });
 
 addDecorator(withKnobs);
