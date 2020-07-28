@@ -1,3 +1,27 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 13.3.0 (2020-07-27)
+
+* chore: update changelogs ([b1936eb](https://github.com/RyzacInc/client-modules/commit/b1936eb))
+* chore: update changelogs ([f66f062](https://github.com/RyzacInc/client-modules/commit/f66f062))
+* chore: update changelogs ([0ee8d1a](https://github.com/RyzacInc/client-modules/commit/0ee8d1a))
+* chore: update changelogs ([ee8b6ce](https://github.com/RyzacInc/client-modules/commit/ee8b6ce))
+* chore: update changelogs ([d37a319](https://github.com/RyzacInc/client-modules/commit/d37a319))
+* chore(release): publish ([b025ef1](https://github.com/RyzacInc/client-modules/commit/b025ef1))
+* chore(release): publish ([4fc8ea2](https://github.com/RyzacInc/client-modules/commit/4fc8ea2))
+* chore(release): publish ([b453307](https://github.com/RyzacInc/client-modules/commit/b453307))
+* chore(release): publish ([5b987fd](https://github.com/RyzacInc/client-modules/commit/5b987fd))
+* chore(release): publish ([7c452dc](https://github.com/RyzacInc/client-modules/commit/7c452dc))
+* Fixed happy little syntax accident on tooltip story (#891) ([94ce35a](https://github.com/RyzacInc/client-modules/commit/94ce35a)), closes [#891](https://github.com/RyzacInc/client-modules/issues/891)
+* feat(Toggle): create alternative toggle (#885) ([a9b0a5e](https://github.com/RyzacInc/client-modules/commit/a9b0a5e)), closes [#885](https://github.com/RyzacInc/client-modules/issues/885)
+
+
+
+
+
 ## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.3...@codecademy/styleguide@13.2.0) (2020-07-27)
 
 
@@ -960,4 +984,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
