@@ -1,13 +1,12 @@
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 
 import Button from '../Button';
+import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import styles from './styles.module.scss';
-import ButtonBase from '../ButtonBase';
 
-export type AccordionButtonProps = {
-  className?: string;
+export type AccordionButtonProps = ButtonBaseProps & {
   /**
    * Whether the button should display as open or closed.
    */
