@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 12.4.0 (2020-07-29)
+
+* Merge remote-tracking branch 'origin/master' into next ([363351e](https://github.com/RyzacInc/client-modules/commit/363351e)), closes [#898](https://github.com/RyzacInc/client-modules/issues/898) [#883](https://github.com/RyzacInc/client-modules/issues/883)
+* feat: Added basic Anchor component (#883) ([ed7d27b](https://github.com/RyzacInc/client-modules/commit/ed7d27b)), closes [#883](https://github.com/RyzacInc/client-modules/issues/883)
+
+
+
+
+
 ## 12.3.0 (2020-07-27)
 
 * Add emotion babel config to labs and gamut (#895) ([fe79775](https://github.com/RyzacInc/client-modules/commit/fe79775)), closes [#895](https://github.com/RyzacInc/client-modules/issues/895)
