@@ -1,12 +1,12 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import Badge from '..';
+import Anchor from '..';
 
-describe('Badge', () => {
+describe('Anchor', () => {
   it('combines classNames on its root when rootProps contains a className', () => {
     const className = 'class-name';
-    const wrapped = mount(<Badge rootProps={{ className }} />);
+    const wrapped = mount(<Anchor asProps={{ className }} />);
 
     const rootClassName = wrapped.childAt(0).prop('className');
 

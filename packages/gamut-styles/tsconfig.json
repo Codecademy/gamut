@@ -2,9 +2,8 @@
   "compilerOptions": {
     "allowJs": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "module": "esnext",
-    "outDir": "dist"
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["./**/*.js"]
 }
