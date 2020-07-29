@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "utils.scss",
   "scripts": {
