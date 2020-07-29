@@ -13,10 +13,6 @@ export type AccordionButtonProps = {
    */
   expanded?: boolean;
   /**
-   * Called when the button is clicked.
-   */
-  onClick?: () => void;
-  /**
    * Determines the size of the button.
    */
   size?: 'normal' | 'large';
@@ -51,9 +47,9 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
   className,
   expanded,
-  onClick,
   size = 'normal',
   theme = 'plain',
+  ...baseProps
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
   const iconSize = size === 'large' ? 30 : undefined;
@@ -67,8 +63,8 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
         styles[size],
         className
       )}
-      onClick={onClick}
       flat
+      {...baseProps}
       {...props}
     >
       <span className={styles.children}>{children}</span>
