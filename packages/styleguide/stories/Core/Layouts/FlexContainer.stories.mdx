@@ -27,7 +27,11 @@ A flex box primitive that allows you create markup configurable flex containers
           <Box style={{ padding: 10, background: 'blue', color: 'white' }}>
             New Container Item 1
           </Box>
-          <Flex row style={{ padding: 10, background: 'blue', color: 'white' }}>
+          <Flex
+            row
+            alignSelf="start"
+            style={{ padding: 10, background: 'blue', color: 'white' }}
+          >
             <Box style={{ padding: 10, background: 'blue', color: 'white' }}>
               New Container Item 2
             </Box>
