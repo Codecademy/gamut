@@ -1,3 +1,11 @@
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.0...@codecademy/gamut-styles@4.2.1) (2020-07-29)
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
+
 ## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.2.0) (2020-07-27)
 
 
