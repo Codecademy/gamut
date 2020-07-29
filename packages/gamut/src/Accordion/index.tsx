@@ -11,7 +11,7 @@ export type AccordionProps = {
   /**
    * Whether the accordion is visually expanded to show its contents.
    */
-  expanded: boolean;
+  expanded?: boolean;
 
   /**
    * Contents of the clickable header button.
