@@ -1,100 +1,116 @@
 ### [1.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.0...@codecademy/gamut-labs@1.8.3) (2020-07-29)
 
+
 ### Other Changes
 
-- Revert "Merge branch 'next' into main" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
-- update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
-- v1.8.2 ([5fc833b](https://github.com/Codecademy/client-modules/commit/5fc833b51f479f997564830a3ecec55412c96d5d))
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
+* v1.8.2 ([5fc833b](https://github.com/Codecademy/client-modules/commit/5fc833b51f479f997564830a3ecec55412c96d5d))
 
 ## [1.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.53...@codecademy/gamut-labs@1.8.0) (2020-07-27)
 
+
 ### ✨ Features
 
-- Create default main export for gamut-styles [WEB-895](<[#820](https://github.com/Codecademy/client-modules/issues/820)>) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
-- **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
+
 
 ### Other Changes
 
-- Merge branch 'next' into main ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
-- update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
 
 ### [1.7.53](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.52...@codecademy/gamut-labs@1.7.53) (2020-07-27)
 
+
 ### Other Changes
 
-- update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
 
 ### [1.7.52](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.51...@codecademy/gamut-labs@1.7.52) (2020-07-24)
 
+
 ### Other Changes
 
-- update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
 
 ### [1.7.51](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.50...@codecademy/gamut-labs@1.7.51) (2020-07-24)
 
+
 ### Other Changes
 
-- update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
+* update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
 
 ### [1.7.50](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.49...@codecademy/gamut-labs@1.7.50) (2020-07-22)
 
+
 ### Other Changes
 
-- update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
 ### [1.7.49](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.48...@codecademy/gamut-labs@1.7.49) (2020-07-22)
 
+
 ### Other Changes
 
-- update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
+* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
 
 ### [1.7.48](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.47...@codecademy/gamut-labs@1.7.48) (2020-07-21)
 
+
 ### Other Changes
 
-- update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
+* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
 ### [1.7.47](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.46...@codecademy/gamut-labs@1.7.47) (2020-07-21)
 
+
 ### Other Changes
 
-- update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
+* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
 
 ### [1.7.46](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.45...@codecademy/gamut-labs@1.7.46) (2020-07-21)
 
+
 ### Other Changes
 
-- update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
+* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
 
 ### [1.7.45](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.44...@codecademy/gamut-labs@1.7.45) (2020-07-17)
 
+
 ### Other Changes
 
-- update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
+* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
+
 
 ### 🐛 Bug Fixes
 
-- Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
 
 ### [1.7.44](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.43...@codecademy/gamut-labs@1.7.44) (2020-07-17)
 
+
 ### Other Changes
 
-- update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
+* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
 
 ### [1.7.43](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.42...@codecademy/gamut-labs@1.7.43) (2020-07-17)
 
+
 ### Other Changes
 
-- update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
+* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 
 ### [1.7.42](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.41...@codecademy/gamut-labs@1.7.42) (2020-07-16)
 
 ### [1.7.41](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.40...@codecademy/gamut-labs@1.7.41) (2020-07-14)
 
+
 ### Other Changes
 
-- update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ### [1.7.40](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.36...@codecademy/gamut-labs@1.7.40) (2020-07-13)
 
@@ -146,9 +162,10 @@
 
 ### [1.7.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.12...@codecademy/gamut-labs@1.7.13) (2020-06-01)
 
+
 ### 🐛 Bug Fixes
 
-- Remove alt text on Testimonial avatars. ([#822](https://github.com/Codecademy/client-modules/issues/822)) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2fdaf9409efd1021cf57e6edb53fc83c42))
+* Remove alt text on Testimonial avatars. ([#822](https://github.com/Codecademy/client-modules/issues/822)) ([10b46c2](https://github.com/Codecademy/client-modules/commit/10b46c2fdaf9409efd1021cf57e6edb53fc83c42))
 
 ### [1.7.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.11...@codecademy/gamut-labs@1.7.12) (2020-05-22)
 
@@ -158,9 +175,10 @@
 
 ### [1.7.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.8...@codecademy/gamut-labs@1.7.9) (2020-05-21)
 
+
 ### 💅 Styles
 
-- **Testimonial:** fix full width styling ([#814](https://github.com/Codecademy/client-modules/issues/814)) ([5bccc21](https://github.com/Codecademy/client-modules/commit/5bccc21ca7982f758c9063691bdf7497f3ab1ec8))
+* **Testimonial:** fix full width styling ([#814](https://github.com/Codecademy/client-modules/issues/814)) ([5bccc21](https://github.com/Codecademy/client-modules/commit/5bccc21ca7982f758c9063691bdf7497f3ab1ec8))
 
 ### [1.7.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.7...@codecademy/gamut-labs@1.7.8) (2020-05-20)
 
@@ -178,6 +196,8 @@
 
 ### [1.7.1](https://github.com/Codecademy/client-modules/compare/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d...@codecademy/gamut-labs@1.7.1) (2020-05-15)
 
+
 ### Other Changes
 
-- Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+* Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
