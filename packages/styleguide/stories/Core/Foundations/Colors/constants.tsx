@@ -1,4 +1,4 @@
-import { colors } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles/utils/variables';
 
 export const baseColors = {
   black: colors.black,

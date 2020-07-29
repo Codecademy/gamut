@@ -1,3 +1,12 @@
+### [1.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.0...@codecademy/gamut-labs@1.8.3) (2020-07-29)
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
+* v1.8.2 ([5fc833b](https://github.com/Codecademy/client-modules/commit/5fc833b51f479f997564830a3ecec55412c96d5d))
+
 ## [1.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.53...@codecademy/gamut-labs@1.8.0) (2020-07-27)
 
 
