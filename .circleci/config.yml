@@ -12,9 +12,9 @@ references:
       NODE_OPTIONS: "--max_old_space_size=4096"
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}-master
+  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ arch}}-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v2-repo-{{ arch}}-master
 
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
