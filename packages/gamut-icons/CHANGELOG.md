@@ -1,3 +1,10 @@
+### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.0...@codecademy/gamut-icons@3.0.1) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+
 ## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
 
 

@@ -1,3 +1,10 @@
+### [12.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.1...@codecademy/gamut@12.2.2) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([a81d35c](https://github.com/Codecademy/client-modules/commit/a81d35c516533a39ca95851c21a7613aa053226f))
+
 ### [12.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.0...@codecademy/gamut@12.2.1) (2020-07-29)
 
 
