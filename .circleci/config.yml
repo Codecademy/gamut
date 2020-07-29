@@ -320,7 +320,6 @@ workflows:
             branches:
               only:
                 - master
-                - next
       - deploy:
           requires:
             - checkout_code
