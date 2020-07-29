@@ -1,20 +1,14 @@
-import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import styled from '@emotion/styled';
+import { colors } from '@codecademy/gamut-styles';
 
-import s from './styles.module.scss';
-
-export type BadgeProps = {
-  /** Props to pass directly to the container element */
-  rootProps?: HTMLAttributes<HTMLSpanElement>;
-};
-
-export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
-  const combinedProps = {
-    ...rootProps,
-    className: cx(s.badge, rootProps.className),
-  };
-
-  return <span {...combinedProps}>{children}</span>;
-};
+export const Badge = styled.span`
+  background: ${colors.blue[500]};
+  border-radius: 3px;
+  color: ${colors.white};
+  display: inline-block;
+  font-size: 0.85em;
+  margin: 0 0.5em;
+  padding: 0.25em 0.75em;
+`;
 
 export default Badge;
