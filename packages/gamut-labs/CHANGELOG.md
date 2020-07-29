@@ -16,6 +16,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>1.8.2 (2020-07-29)</small>
+
+* Merge remote-tracking branch 'origin/master' into next ([363351e](https://github.com/Codecademy/client-modules/commit/363351e)), closes [#898](https://github.com/Codecademy/client-modules/issues/898) [#883](https://github.com/Codecademy/client-modules/issues/883)
+
+
+
+
+
 ## <small>1.8.1 (2020-07-27)</small>
 
 - Add emotion babel config to labs and gamut (#895) ([fe79775](https://github.com/Codecademy/client-modules/commit/fe79775)), closes [#895](https://github.com/Codecademy/client-modules/issues/895)
