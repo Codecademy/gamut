@@ -1,4 +1,3 @@
-import React from 'react';
 import isPropValid from '@emotion/is-prop-valid';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -33,7 +32,7 @@ export type BoxProps = {
    */
   column?: boolean;
   /** Display property for the component */
-  display: DisplayProperty;
+  display?: DisplayProperty;
   /** Fits the container to the dimensions of its parent element */
   fit?: boolean;
   /**
@@ -96,10 +95,9 @@ const internalBoxProps: BoxPropKeys = [
   'fit',
   'align',
   'justify',
-  'alignSelf',
 ] as const;
 
-const flexboxStyles = (props: BoxProps) => {
+const boxStyles = (props: BoxProps) => {
   const display =
     (props.flex && 'flex') || (props.inline && 'inline-flex') || props.display;
   const flexDirection =
@@ -122,20 +120,22 @@ export const Box = styled('div', {
   shouldForwardProp: (prop) =>
     isPropValid(prop) && !internalBoxProps.includes(prop as any),
 })<BoxProps>`
-  ${flexboxStyles}
+  ${boxStyles}
 `;
 
 Box.defaultProps = {
   display: 'block',
 };
 
-export const Flex = styled(Box)<Omit<BoxProps, 'display'>>`
-  display: 'flex';
-`;
+type FlexProps = Omit<BoxProps, 'display' | 'flex'>;
 
-const Tester = () => {
-  return <Flex display="block" />;
-};
+export const Flex = styled('div', {
+  shouldForwardProp: (prop) =>
+    isPropValid(prop) && !internalBoxProps.includes(prop as any),
+})<FlexProps>`
+  ${boxStyles}
+  display: ${(props) => (props.inline ? 'inline-flex' : 'flex')};
+`;
 
 /**
  * @deprecated
@@ -145,4 +145,4 @@ export const Container = Flex;
 /**
  * @deprecated
  */
-export const Item = Flex;
+export const Item = Box;
