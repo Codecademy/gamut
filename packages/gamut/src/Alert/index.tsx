@@ -57,7 +57,7 @@ export const Alert: React.FC<AlertProps> = ({
         [s[`container__${type}`]]: type,
       })}
     >
-      <Container align="start" justify="spaceAround" grow={1}>
+      <Container align="start" justify="space-around" grow={1}>
         {showIcon && (
           <Container className={s.section} justify="center" align="center">
             <TypeIcon size={24} />

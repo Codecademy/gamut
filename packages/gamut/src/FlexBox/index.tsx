@@ -1,38 +1,25 @@
 import isPropValid from '@emotion/is-prop-valid';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import {
-  AlignSelfProperty,
-  AlignItemsProperty,
-  FlexDirectionProperty,
-  FlexWrapProperty,
-  DisplayProperty,
-  JustifyContentProperty,
-  FlexBasisProperty,
-  ColorProperty,
-} from 'csstype';
-import { BackgroundColorProperty } from 'csstype';
+import * as CSS from 'csstype';
 
 export type BoxProps = {
   /** Flex alignment for container content */
-  align?: AlignItemsProperty;
+  align?: CSS.Property.AlignItems;
   /** Custom flex alignment for the container relative to its parent */
-  alignSelf?: AlignSelfProperty;
-  backgroundColor?: BackgroundColorProperty;
-
+  alignSelf?: CSS.Property.AlignSelf;
   /**
    * Justifies and aligns content to the center of the container
    * (cannot be used with: `justify` or `align`)
    * */
   center?: boolean;
-  color?: ColorProperty;
   /**
    * Enables flex direction column
    * alias for `justifyContent: 'column'`
    */
   column?: boolean;
   /** Display property for the component */
-  display?: DisplayProperty;
+  display?: CSS.Property.Display;
   /** Fits the container to the dimensions of its parent element */
   fit?: boolean;
   /**
@@ -42,10 +29,15 @@ export type BoxProps = {
   /**
    * Flex Basis
    */
-  flexBasis?: FlexBasisProperty<string | 0 | number>;
-  /**  */
-  flexDirection?: FlexDirectionProperty;
-  flexWrap?: FlexWrapProperty;
+  flexBasis?: CSS.Property.FlexBasis<string | 0 | number>;
+  /**
+   * Flex Direction
+   */
+  flexDirection?: CSS.Property.FlexDirection;
+  /**
+   * Flex Wrap
+   */
+  flexWrap?: CSS.Property.FlexWrap;
   /** Custom flex grow specification relative to its parent */
   grow?: number;
   /** Enables inline-flex behavior for the container
@@ -53,7 +45,7 @@ export type BoxProps = {
    * */
   inline?: boolean;
   /** Flex justification for container content */
-  justify?: JustifyContentProperty;
+  justify?: CSS.Property.JustifyContent;
   /** Disable flex wrapping for container content
    * (cannot be used with: `wrap`)
    * alias for `flexWrap: 'nowrap'`
@@ -81,20 +73,20 @@ export type BoxProps = {
 type BoxPropKeys = Readonly<Array<keyof BoxProps>>;
 
 const internalBoxProps: BoxPropKeys = [
-  'display',
-  'flex',
-  'inline',
-  'grow',
-  'shrink',
-  'row',
-  'column',
-  'wrap',
-  'nowrap',
-  'center',
-  'reverse',
-  'fit',
   'align',
+  'center',
+  'column',
+  'display',
+  'fit',
+  'flex',
+  'grow',
+  'inline',
   'justify',
+  'nowrap',
+  'reverse',
+  'row',
+  'shrink',
+  'wrap',
 ] as const;
 
 const boxStyles = (props: BoxProps) => {
@@ -113,6 +105,7 @@ const boxStyles = (props: BoxProps) => {
     flex-grow: ${props.grow};
     flex-shrink: ${props.shrink};
     flex-basis: ${props.flexBasis};
+    box-sizing: 'border-box';
   `;
 };
 
