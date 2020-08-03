@@ -25,7 +25,7 @@ const matchesOrigin = (href: string) => {
 };
 
 const MarkdownAnchor: React.FC<MarkdownAnchorProps> = (props) => {
-  const asProps = {
+  const anchorProps = {
     ...props,
     target: '_blank',
     rel: 'noopener',
@@ -33,10 +33,10 @@ const MarkdownAnchor: React.FC<MarkdownAnchorProps> = (props) => {
 
   // remove noopener/noreferrer on relative & same origin urls
   if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
-    delete asProps.rel;
+    delete anchorProps.rel;
   }
 
-  return <Anchor asProps={asProps} />;
+  return <Anchor {...anchorProps} />;
 };
 
 export default MarkdownAnchor;
