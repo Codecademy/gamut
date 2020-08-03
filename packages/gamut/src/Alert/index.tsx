@@ -56,6 +56,8 @@ export const Alert: React.FC<AlertProps> = ({
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
       })}
+      role="status"
+      aria-label="alert box"
     >
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
