@@ -78,4 +78,12 @@ export const Controls = {
       type: { summary: decorations.join(', ') },
     },
   },
+  text: {
+    label: 'Text',
+    description: 'Text to render',
+    defaultValue: 'Hello World',
+    control: {
+      type: 'text',
+    },
+  },
 };

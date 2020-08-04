@@ -24,7 +24,7 @@ import { StoryStatus, TextExample } from '~styleguide/blocks';
 
 <Preview withSource="none">
   <Story name="Type Sandbox">
-    {({ fontFamily, ...args }) => (
+    {({ text, fontFamily, ...args }) => (
       <p
         style={{
           ...args,
@@ -32,7 +32,7 @@ import { StoryStatus, TextExample } from '~styleguide/blocks';
           margin: 0,
         }}
       >
-        My Text
+        {text}
       </p>
     )}
   </Story>
@@ -110,6 +110,8 @@ fontStack.base; // base | heading | monospace | system
 
 ## Font Weights
 
+We support two basic `font-weight` values for both body text and headings.
+
 ### Usage
 
 ```tsx
@@ -138,6 +140,8 @@ fontWeight.base; // base | heading
 ## Line Heights
 
 ### Usage
+
+We support two basic `line-height` values for both body text and headings.
 
 ```tsx
 import { lineHeight } from '@codecademy/gamut-styles';

@@ -24,7 +24,7 @@ import {
   deprecatedGamutColors,
   platformColors,
 } from '@codecademy/gamut-styles';
-import { excludedColors, baseColors } from './constants';
+import { uiColors } from './constants';
 
 <Meta title="Foundations/Colors" component="Colors" />
 
@@ -34,7 +34,7 @@ import { excludedColors, baseColors } from './constants';
 
 These are the color palettes used by both design and engineering.
 
-## Brand Colors
+## Base Colors
 
 Brand color atoms we select from in creating designs. All colors seen on
 Codecademy properties should adhere to these. Remember your accessibility
@@ -44,54 +44,96 @@ The most visually distinct colors associated with our brand are
 unsurprisingly referred to as "brand" colors. These are commonly used on
 buttons and as vibrant background colors.
 
+### Usage
+
+```tsx
+import { brandColors } from '@codecademy/gamut-styles';
+
+brandColors.blue;
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.brandRed {
+  color: $brand-red;
+}
+```
+
+### Brand
+
 <Story name="Brand">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(brandColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <Heading as="h2" fontSize="xs">
-            Brand {startCase(color)}
-          </Heading>
-          <Swatch
-            name={`$brand-${parseCamelCase(color)}`}
-            hex={brandColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
+    {objectKeys(brandColors)
+      .filter((color) => !uiColors.includes(color))
+      .map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`$brand-${parseCamelCase(color)}`}
+              hex={brandColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
   </LayoutGrid>
 </Story>
 
 <br />
 
-### Base
+### UI
+
+Utility colors that are less brand specific but still used in similar patterns.
 
 <Story name="Base">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(baseColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <Heading as="h2" fontSize="xs">
-            {parseCamelCase(`color-${color}`)}
-          </Heading>
-          <Swatch
-            name={`$color-${parseCamelCase(color)}`}
-            hex={baseColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
+    {objectKeys(brandColors)
+      .filter((color) => uiColors.includes(color))
+      .map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`$color-${parseCamelCase(color)}`}
+              hex={brandColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
   </LayoutGrid>
 </Story>
 
 <br />
 
-### Swatches
+## Swatches
+
+Full color swatches.
+
+### Usage
+
+```tsx
+import { color } from '@codecademy/gamut-styles';
+
+color.blue[900];
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.darkBlue {
+  color: $color-blue-900;
+}
+```
 
 <Story name="Rest">
   <LayoutGrid rowGap="md" columnGap="md">
     {objectKeys(colors)
-      .filter((color) => !excludedColors.includes(color))
+      .filter((color) => !uiColors.includes(color))
       .map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
           <Container flex={false}>
