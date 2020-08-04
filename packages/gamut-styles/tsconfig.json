@@ -1,10 +1,8 @@
 {
+  "extends": "../../tsconfig.json",
+  "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
-    "allowJs": true,
     "declaration": true,
-    "skipLibCheck": true,
-    "module": "esnext",
-    "outDir": "dist"
-  },
-  "include": ["src/**/*.ts"]
+    "outDir": "./dist"
+  }
 }

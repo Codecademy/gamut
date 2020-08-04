@@ -23,6 +23,8 @@
   "dependencies": {
     "@codecademy/gamut-icons": "^3.0.0",
     "@codecademy/gamut-styles": "^4.2.0",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",

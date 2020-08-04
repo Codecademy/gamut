@@ -22,6 +22,8 @@
   "dependencies": {
     "@codecademy/gamut": "^12.4.0",
     "@codecademy/gamut-styles": "^4.2.0",
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
     "classnames": "^2.2.5"
   },
   "scripts": {
