@@ -41,12 +41,12 @@ export const fontSize = {
     md: pxRem(base),
   },
   heading: {
-    xs: pxRem(base * 3),
-    sm: pxRem(base * 2.2),
-    md: pxRem(base * 1.6),
-    lg: pxRem(base * 1.4),
-    xl: pxRem(base * 1.25),
-    xxl: pxRem(base),
+    xxl: pxRem(base * 3),
+    xl: pxRem(base * 2.2),
+    lg: pxRem(base * 1.6),
+    md: pxRem(base * 1.4),
+    sm: pxRem(base * 1.25),
+    xs: pxRem(base),
   },
 };
 
