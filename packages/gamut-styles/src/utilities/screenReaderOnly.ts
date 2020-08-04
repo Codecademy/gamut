@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-export const screenReaderOnly = () => css`
+export const screenReaderOnly = css`
   position: absolute;
   width: 1px;
   height: 1px;
@@ -12,7 +12,7 @@ export const screenReaderOnly = () => css`
   border: 0;
 `;
 
-export const screenReaderOnlyFocusable = () => css`
+export const screenReaderOnlyFocusable = css`
   &:active,
   &:focus {
     position: static;
