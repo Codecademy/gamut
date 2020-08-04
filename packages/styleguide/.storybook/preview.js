@@ -20,6 +20,7 @@ addParameters({
         'Meta',
         'Foundations',
         'Layouts',
+        'Typography',
         'Atoms',
         'Molecules',
         'Organisms',

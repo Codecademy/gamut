@@ -3,7 +3,7 @@ import { Meta, Story, Preview, Props } from '@storybook/addon-docs/dist/blocks';
 import { VisualTheme } from '@codecademy/gamut/src';
 import { StoryStatus } from '~styleguide/blocks';
 
-<Meta title="Atoms/Anchor" component={Anchor} />
+<Meta title="Typography/Anchor" component={Anchor} />
 
 # Anchors
 
@@ -13,22 +13,27 @@ Use this component for basic inline text links.
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
 
 <Preview withSource="open">
-  <Story name="Anchor">
-    <Text>
-      This is a{' '}
-      <Anchor
-        asProps={{
-          href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          target: '_blank',
-        }}
-      >
-        great video
-      </Anchor>
-      .
-    </Text>
+  <Story name="Anchor" args={{ as: 'a' }}>
+    {(args) => {
+      return (
+        <Text>
+          This is a{' '}
+          <Anchor
+            {...args}
+            asProps={{
+              href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+              target: '_blank',
+            }}
+          >
+            great video
+          </Anchor>
+          .
+        </Text>
+      );
+    }}
   </Story>
 </Preview>
 
-<Props of={Anchor} />
+<Props story="Anchor" />
 
 We know the API is a little unwieldy; we're thinking it'll get improved when we switch to CSS-in-JS...

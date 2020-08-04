@@ -1,93 +1,185 @@
-import { Meta, Typeset, Props } from '@storybook/addon-docs/dist/blocks';
+import {
+  Meta,
+  Preview,
+  Story,
+  Typeset,
+  Props,
+} from '@storybook/addon-docs/dist/blocks';
 import { Source } from '@storybook/components';
-import { typescale } from './constants';
+import { Controls, headingTypescale, bodyTypescale } from './constants';
 import * as DesignTokens from '@codecademy/gamut-styles';
-import { Swatch } from '~styleguide/blocks';
+import { StoryStatus, TextExample } from '~styleguide/blocks';
 
-<Meta title="Foundations/Typography" />
+<Meta
+  title="Foundations/Typography"
+  component="Typography"
+  argTypes={Controls}
+/>
 
 # Typography
 
 <StoryStatus status="stable" />
 
-## Font Stacks
+## Sandbox
 
-We have 4 main font-stacks that are available through both **Typescript** and **SCSS** variables in`@codecademy/gamut-styles`
+<Preview withSource="none">
+  <Story name="Type Sandbox">
+    {({ fontFamily, ...args }) => (
+      <p
+        style={{
+          ...args,
+          fontFamily: DesignTokens.fontStack[fontFamily],
+          margin: 0,
+        }}
+      >
+        My Text
+      </p>
+    )}
+  </Story>
+</Preview>
 
-## Accessing these variables
+<Props story="Type Sandbox" />
 
-Here is how to access and use them in TS:
+## Font Sizes
 
-### TS
+We have 2 font scales. One for headings and one for body text.
+
+### Usage
 
 ```tsx
-import { fontFamily } from '@codecademy/gamut-styles';
+import { fontSize } from '@codecademy/gamut-styles';
 
-const Text = ({ children }) => (
-  <p style={{ fontFamily: fontFamily.base }}>{children}</p>
-);
+fontSize.heading.md; // xs | sm | md | lg | xl | xxl
+fontSize.text.md; // sm | md | lg
 ```
-
-#### SCSS
 
 ```scss
 @import '@codecademy/gamut-styles/utils';
 
-.base {
-  font-family: $font-family-base;
-}
-
 .heading {
-  font-family: $font-family-headings;
+  font-size: $font-size-h1; // h1 - h6
 }
-
-.monospace {
-  font-family: $font-monospace;
-}
-
-.system {
-  font-family: $font-system;
+.body {
+  font-size: $font-size-base; // $font-size-small
 }
 ```
 
-### Base
+### Text
 
-This is our main body text font, please use this for any non-heading text with the default font weight.
-
-<Typeset
-  fontFamily={DesignTokens.fontStack.base}
-  fontWeight={DesignTokens.fontWeight.base}
-  fontSizes={typescale}
-/>
+<Typeset fontFamily={DesignTokens.fontStack.base} fontSizes={bodyTypescale} />
 
 ### Heading
 
-This is our main body text font, please use this for any non-heading text with the default font weight.
-
 <Typeset
   fontFamily={DesignTokens.fontStack.heading}
-  fontWeight={DesignTokens.fontWeight.base}
-  fontSizes={typescale}
+  fontSizes={headingTypescale}
 />
 
-### Monospace
+## Font Stacks
 
-<Typeset
-  fontFamily={DesignTokens.fontStack.monospace}
-  fontWeight={DesignTokens.fontWeight.base}
-  fontSizes={typescale}
-/>
+We have 4 main font-stacks that are available through both **Typescript** and **SCSS** variables in`@codecademy/gamut-styles`
 
-### System
+### Usage
 
-<Typeset
-  fontFamily={DesignTokens.fontStack.system}
-  fontWeight={DesignTokens.fontWeight.base}
-  fontSizes={typescale}
-/>
+```tsx
+import { fontStack } from '@codecademy/gamut-styles';
+
+fontStack.base; // base | heading | monospace | system
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  font-family: $font-family-base; // $font-family-base | $font-family-headings | $font-monospace | $font-system
+}
+```
+
+### Example
+
+<Preview withSource="none">
+  <Story name="Font Families">
+    <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
+    <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
+    <TextExample family={DesignTokens.fontStack.monospace}>
+      Monospace
+    </TextExample>
+    <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
+  </Story>
+</Preview>
 
 ## Font Weights
 
+### Usage
+
+```tsx
+import { fontWeight } from '@codecademy/gamut-styles';
+
+fontWeight.base; // base | heading
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  font-weight: $font-weight-base; // $font-weight-base | $font-weight-headings
+}
+```
+
+### Example
+
+<Preview withSource="none">
+  <Story name="Weights">
+    <TextExample weight={DesignTokens.fontWeight.base}>Normal</TextExample>
+    <TextExample weight={DesignTokens.fontWeight.heading}>Heading</TextExample>
+  </Story>
+</Preview>
+
 ## Line Heights
 
-## Colors
+### Usage
+
+```tsx
+import { lineHeight } from '@codecademy/gamut-styles';
+
+lineHeight.text; // text | heading
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  line-height: $line-height-base; // $line-height-headings | $line-height-base
+}
+```
+
+### Example
+
+<Preview withSource="none">
+  <Story name="Line Heights">
+    <TextExample
+      size={DesignTokens.fontSize.heading.xs}
+      line={DesignTokens.lineHeight.text}
+    >
+      Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </TextExample>
+    <TextExample
+      size={DesignTokens.fontSize.heading.xs}
+      line={DesignTokens.lineHeight.heading}
+    >
+      Heading - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </TextExample>
+  </Story>
+</Preview>
