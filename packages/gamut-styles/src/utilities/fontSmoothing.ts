@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-export const fontSmoothing = (on: boolean) =>
+export const fontSmoothing = (on = true) =>
   on
     ? css`
         -webkit-font-smoothing: antialiased;

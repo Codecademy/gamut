@@ -1,0 +1,180 @@
+import { Meta, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import styled from '@emotion/styled';
+import { boxShadow } from '@codecademy/gamut-styles';
+
+<Meta title="Foundations/Utilities" component="Utilities" />
+
+# Utilities
+
+<StoryStatus status="volatile" />
+
+## Converting Units
+
+### PX to REM
+
+In order to keep consistent sizing we like to use `rem` units for most things (within reason).
+Many times when a specific REM values is not expressive like `1.875rem` or `30px` (relative to our base of 16)
+it is better to express this as a pixel value that is closer to a round number.
+
+You can do this by using our px => rem utility in both TS and SCSS.
+
+#### TS - `pxRem`
+
+```tsx
+import { pxRem } from '@codecadem/gamut-styles';
+
+pxRem(16); // => 1rem;
+pxRem('30px'); // => 1.875rem;
+```
+
+#### SCSS - `px-rem`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.heading {
+  font-size: px-rem(30);
+}
+```
+
+## Style Mixins
+
+We also support various style partials to help you consistently achieve affects, like box shadows and screen reader content.
+
+### Box Shadow
+
+We have 5 depths of box shadows that we use.
+
+export const Box = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  ${({ shadow }) => shadow}
+`;
+
+<Preview column={5}>
+  <Box shadow={boxShadow(1)}>1</Box>
+  <Box shadow={boxShadow(2)}>2</Box>
+  <Box shadow={boxShadow(3)}>3</Box>
+  <Box shadow={boxShadow(4)}>4</Box>
+  <Box shadow={boxShadow(5)}>5</Box>
+</Preview>
+
+#### TS - `boxShadow`
+
+```tsx
+import styled from '@emotion/styled';
+import { boxShadow } from '@codecadem/gamut-styles';
+
+const Example = styled.div`
+  ${boxShadow(3)}
+`;
+```
+
+#### SCSS - `box-shadow`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.box {
+  @include box-shadow(3);
+}
+```
+
+### `fontSmoothing`
+
+In some cases we may want to toggle font smoothing.
+
+#### TS - `fontSmoothing`
+
+```tsx
+import styled from '@emotion/styled';
+import { fontSmoothing } from '@codecadem/gamut-styles';
+
+const Smooth = styled.div`
+  ${fontSmoothing()}
+`;
+
+const Smooth = styled.div`
+  ${fontSmoothing(false)}
+`;
+```
+
+#### SCSS - `font-smoothing`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.smoothed {
+  @include font-smoothing();
+}
+
+.rough {
+  @include font-smoothing(false);
+}
+```
+
+### No Selection
+
+In cases where we want to prevent the user from selecting an image or
+
+#### TS - `noSelect`
+
+```tsx
+import styled from '@emotion/styled';
+import { noSelect } from '@codecadem/gamut-styles';
+
+const Unselectable = styled.div`
+  ${noSelect}
+`;
+```
+
+#### SCSS - `no-select`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.unselectable {
+  @include font-smoothing();
+}
+```
+
+### Screen Readers
+
+Ensuring that your content is accessible can require you to make screen reader only text elements.
+We provide a few helpful mixins for use cases where you want the screen reader to be able to focus or
+just be aware of the content.
+
+#### TS - `screenReaderOnly` | `screenReaderOnlyFocusable`
+
+```tsx
+import styled from '@emotion/styled';
+import {
+  screenReaderOnly,
+  screenReaderOnlyFocusable,
+} from '@codecadem/gamut-styles';
+
+const HiddenLabel = styled.label`
+  ${screenReaderOnly}
+`;
+
+const HiddenLabelWithFocus = styled.label`
+  ${screenReaderOnlyFocusable}
+`;
+```
+
+#### SCSS - `sr-only` | `sr-only-focusable`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.hiddenLabel {
+  @include sr-only();
+}
+
+.hiddenLabel__focusable {
+  @include sr-only-focusable();
+}
+```
