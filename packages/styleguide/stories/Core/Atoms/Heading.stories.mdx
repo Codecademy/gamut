@@ -1,0 +1,38 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Heading } from '@codecademy/gamut/src';
+import { colors, fontSize } from '@codecademy/gamut-styles';
+
+<Meta
+  title="Atoms/Heading"
+  component={Heading}
+  argTypes={{
+    as: {
+      label: 'As element',
+      control: {
+        type: 'select',
+        options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      },
+    },
+    fontSize: {
+      label: 'Font Size',
+      control: { type: 'select', options: Object.keys(fontSize.heading) },
+    },
+  }}
+/>
+
+# 📝 Typography
+
+<StoryStatus status="stable" />
+
+Responsive Typography primitives for all your Headingual needs.
+
+<Preview>
+  <Story name="Heading" args={{ children: 'Hello World', as: 'h1' }}>
+    {(args) => <Heading {...args} />}
+  </Story>
+</Preview>
+
+## Props
+
+<Props story="Heading" />

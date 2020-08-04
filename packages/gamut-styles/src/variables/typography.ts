@@ -37,8 +37,9 @@ export const fontDecoration = {
 
 export const fontSize = {
   text: {
-    sm: pxRem(base * 0.85),
+    lg: pxRem(base * 1.15),
     md: pxRem(base),
+    sm: pxRem(base * 0.85),
   },
   heading: {
     xxl: pxRem(base * 3),

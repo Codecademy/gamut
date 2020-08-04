@@ -1,0 +1,31 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Text } from '@codecademy/gamut/src';
+import { colors, fontSize } from '@codecademy/gamut-styles';
+
+<Meta
+  title="Atoms/Text"
+  component={Text}
+  argTypes={{
+    fontSize: {
+      label: 'Font Size',
+      control: { type: 'select', options: Object.keys(fontSize.text) },
+    },
+  }}
+/>
+
+# 📝 Typography
+
+<StoryStatus status="stable" />
+
+Responsive Typography primitive for any text.
+
+<Preview>
+  <Story name="Text" args={{ children: 'Hello World' }}>
+    {(args) => <Text {...args} />}
+  </Story>
+</Preview>
+
+## Props
+
+<Props story="Text" />

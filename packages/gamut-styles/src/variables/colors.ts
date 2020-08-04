@@ -89,6 +89,8 @@ export const colors = {
     '800': '#323233',
     '900': '#19191a',
   },
+  black: '#000000',
+  white: '#ffffff',
 };
 
 export const brandColors = {
