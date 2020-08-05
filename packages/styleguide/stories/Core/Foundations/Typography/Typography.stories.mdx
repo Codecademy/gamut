@@ -8,7 +8,8 @@ import {
 import { Source } from '@storybook/components';
 import { Controls, headingTypescale, bodyTypescale } from './constants';
 import * as DesignTokens from '@codecademy/gamut-styles';
-import { StoryStatus, TextExample } from '~styleguide/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { TextExample } from './Elements';
 
 <Meta
   title="Foundations/Typography"
@@ -99,12 +100,10 @@ fontStack.base; // base | heading | monospace | system
 
 <Preview withSource="none">
   <Story name="Font Families">
-    <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
-    <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
-    <TextExample family={DesignTokens.fontStack.monospace}>
-      Monospace
-    </TextExample>
-    <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
+    {() => {
+      console.log(TextExample);
+      return <></>;
+    }}
   </Story>
 </Preview>
 
