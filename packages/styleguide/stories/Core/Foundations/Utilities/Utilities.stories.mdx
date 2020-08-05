@@ -1,4 +1,4 @@
-import { Meta, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import styled from '@emotion/styled';
 import { boxShadow } from '@codecademy/gamut-styles';
@@ -54,13 +54,13 @@ export const Box = styled.div`
   ${({ shadow }) => shadow}
 `;
 
-<Preview column={5}>
+<Canvas column={5}>
   <Box shadow={boxShadow(1)}>1</Box>
   <Box shadow={boxShadow(2)}>2</Box>
   <Box shadow={boxShadow(3)}>3</Box>
   <Box shadow={boxShadow(4)}>4</Box>
   <Box shadow={boxShadow(5)}>5</Box>
-</Preview>
+</Canvas>
 
 #### TS - `boxShadow`
 

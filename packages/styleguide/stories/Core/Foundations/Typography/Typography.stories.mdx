@@ -1,6 +1,6 @@
 import {
   Meta,
-  Preview,
+  Canvas,
   Story,
   Typeset,
   Props,
@@ -19,11 +19,11 @@ import { TextExample } from './Elements';
 
 # Typography
 
-<StoryStatus status="stable" />
+<StoryStatus status="volatile" />
 
 ## Sandbox
 
-<Preview withSource="none">
+<Canvas withSource="none">
   <Story name="Type Sandbox">
     {({ text, fontFamily, ...args }) => (
       <p
@@ -37,7 +37,7 @@ import { TextExample } from './Elements';
       </p>
     )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Type Sandbox" />
 
@@ -98,14 +98,12 @@ fontStack.base; // base | heading | monospace | system
 
 ### Example
 
-<Preview withSource="none">
-  <Story name="Font Families">
-    {() => {
-      console.log(TextExample);
-      return <></>;
-    }}
-  </Story>
-</Preview>
+<Canvas withSource="none" isColumn={true}>
+  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
+  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
+  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
+  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
+</Canvas>
 
 ## Font Weights
 
@@ -129,12 +127,12 @@ fontWeight.base; // base | heading
 
 ### Example
 
-<Preview withSource="none">
+<Canvas withSource="none">
   <Story name="Weights">
     <TextExample weight={DesignTokens.fontWeight.base}>Normal</TextExample>
     <TextExample weight={DesignTokens.fontWeight.heading}>Heading</TextExample>
   </Story>
-</Preview>
+</Canvas>
 
 ## Line Heights
 
@@ -158,7 +156,7 @@ lineHeight.text; // text | heading
 
 ### Example
 
-<Preview withSource="none">
+<Canvas withSource="none">
   <Story name="Line Heights">
     <TextExample
       size={DesignTokens.fontSize.heading.xs}
@@ -185,4 +183,4 @@ lineHeight.text; // text | heading
       est laborum.
     </TextExample>
   </Story>
-</Preview>
+</Canvas>

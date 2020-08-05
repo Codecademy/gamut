@@ -16,6 +16,7 @@ type TextExampleProps = {
 };
 
 export const TextExample = styled.p<TextExampleProps>`
+  margin: 0;
   font-size: ${({ size = fontSize.heading.lg }) => size};
   color: ${({ color = colors.black }) => color};
   font-family: ${({ family = fontStack.base }) => family};

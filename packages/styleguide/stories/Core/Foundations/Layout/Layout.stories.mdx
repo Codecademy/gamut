@@ -1,0 +1,21 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { spacing } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import { Box } from './Elements';
+
+<Meta title="Foundations/Layout" component="Layout" />
+
+# Layout
+
+<StoryStatus status="volatile" />
+
+## Spacing
+
+<Canvas isColumn>
+  <Box size={spacing.xs} />
+  <Box size={spacing.sm} />
+  <Box size={spacing.md} />
+  <Box size={spacing.lg} />
+  <Box size={spacing.xl} />
+</Canvas>
