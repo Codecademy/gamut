@@ -65,10 +65,9 @@ export const Box = styled.div`
 #### TS - `boxShadow`
 
 ```tsx
-import styled from '@emotion/styled';
 import { boxShadow } from '@codecadem/gamut-styles';
 
-const Example = styled.div`
+const Example = `
   ${boxShadow(3)}
 `;
 ```
@@ -90,14 +89,13 @@ In some cases we may want to toggle font smoothing.
 #### TS - `fontSmoothing`
 
 ```tsx
-import styled from '@emotion/styled';
 import { fontSmoothing } from '@codecadem/gamut-styles';
 
-const Smooth = styled.div`
+const Smooth = `
   ${fontSmoothing()}
 `;
 
-const Smooth = styled.div`
+const Smooth = `
   ${fontSmoothing(false)}
 `;
 ```
@@ -123,7 +121,6 @@ In cases where we want to prevent the user from selecting an image or
 #### TS - `noSelect`
 
 ```tsx
-import styled from '@emotion/styled';
 import { noSelect } from '@codecadem/gamut-styles';
 
 const Unselectable = styled.div`
@@ -150,17 +147,16 @@ just be aware of the content.
 #### TS - `screenReaderOnly` | `screenReaderOnlyFocusable`
 
 ```tsx
-import styled from '@emotion/styled';
 import {
   screenReaderOnly,
   screenReaderOnlyFocusable,
 } from '@codecadem/gamut-styles';
 
-const HiddenLabel = styled.label`
+const HiddenLabel = `
   ${screenReaderOnly}
 `;
 
-const HiddenLabelWithFocus = styled.label`
+const HiddenLabelWithFocus = `
   ${screenReaderOnlyFocusable}
 `;
 ```
