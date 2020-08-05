@@ -30,13 +30,13 @@
 }
 
 .track-medium {
-  width: px-rem(60);
-  height: px-rem(29);
+  width: px-rem(60px);
+  height: px-rem(29px);
 }
 
 .track-small {
-  width: px-rem(28);
-  height: px-rem(15);
+  width: px-rem(28px);
+  height: px-rem(15px);
 }
 
 .toggled .track {
@@ -56,27 +56,27 @@
 }
 
 .thumb-medium {
-  top: px-rem(3.5);
-  left: px-rem(3.5);
-  width: px-rem(22);
-  height: px-rem(22);
+  top: px-rem(3.5px);
+  left: px-rem(3.5px);
+  width: px-rem(22px);
+  height: px-rem(22px);
   border-radius: 99rem;
 }
 
 .thumb-small {
-  top: px-rem(1);
-  left: px-rem(1.5);
-  width: px-rem(13);
-  height: px-rem(12.5);
-  border-radius: px-rem(12);
+  top: px-rem(1px);
+  left: px-rem(1px);
+  width: px-rem(13px);
+  height: px-rem(13px);
+  border-radius: px-rem(12px);
 }
 
 .toggled .thumb-medium {
-  left: px-rem(34.5);
+  left: px-rem(34.5px);
 }
 
 .toggled .thumb-small {
-  left: px-rem(13.5);
+  left: px-rem(14px);
 }
 
 .invisible {
