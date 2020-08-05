@@ -1,7 +1,7 @@
 import {
   Meta,
   Props,
-  Preview,
+  Canvas,
   Story,
   IconGallery,
   IconItem,
@@ -21,7 +21,7 @@ import { selectableColors } from '../../../../helpers';
 
 <StoryStatus status="stable" />
 
-<Preview>
+<Canvas>
   <Story name="Editable Icon">
     {() => {
       const iconName = select(
@@ -45,7 +45,7 @@ import { selectableColors } from '../../../../helpers';
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={AlertIcon} />
 

@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
@@ -12,7 +12,7 @@ import { EditorialQuote } from '@codecademy/gamut-labs/src';
 
 A pull quote for use in an editorial page.
 
-<Preview withSource="open" className="dark">
+<Canvas withSource="open" className="dark">
   <Story name="EditorialQuote">
     <EditorialQuote
       quote={text(
@@ -21,6 +21,6 @@ A pull quote for use in an editorial page.
       )}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="EditorialQuote" of={EditorialQuote} />

@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import {
   Text,
@@ -34,7 +34,7 @@ matches the designs.
 Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
 (and picking the appropriate size to match the design).
 
-<Preview>
+<Canvas>
   <Story name="Heading">
     <LayoutGrid columnGap="md" rowGap="md">
       {headingSizes.map((size) => (
@@ -62,14 +62,14 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
       ))}
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Body Text
 
 This is a single primitive to handle all `<p>` and
 `<span>` tags with defined size intervals
 
-<Preview>
+<Canvas>
   <Story name="Text">
     <LayoutGrid columnGap="md" rowGap="md">
       {textSizes.map((size) => (
@@ -101,11 +101,11 @@ This is a single primitive to handle all `<p>` and
       ))}
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Custom colors
 
-<Preview>
+<Canvas>
   <Story name="Custom Colors">
     <Heading fontSize="md" as="h3" style={{ color: colors.royalBlue }}>
       Royal Blue
@@ -114,11 +114,11 @@ This is a single primitive to handle all `<p>` and
       Royal Blue
     </Text>
   </Story>
-</Preview>
+</Canvas>
 
 ## No Margin
 
-<Preview>
+<Canvas>
   <Story name="No Margin">
     <>
       <Heading fontSize="md" as="h3" hideMargin>
@@ -127,4 +127,4 @@ This is a single primitive to handle all `<p>` and
       <Text fontSize="md">Text Flow</Text>
     </>
   </Story>
-</Preview>
+</Canvas>

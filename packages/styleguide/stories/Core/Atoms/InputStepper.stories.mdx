@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { text, number } from '@storybook/addon-knobs';
 import { InputStepper } from '@codecademy/gamut/src';
@@ -19,7 +19,7 @@ otherwise.
 
 Steppers are not appropriate for values larger than three digits.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story
     name="Stepper"
     args={{
@@ -34,6 +34,6 @@ Steppers are not appropriate for values larger than three digits.
       return <InputStepper {...args} />;
     }}
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Stepper" />
