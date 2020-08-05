@@ -1,3 +1,10 @@
+### [5.0.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.3) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([1133171](http://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
+
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
 
 

@@ -9,12 +9,12 @@ references:
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
-      NODE_OPTIONS: '--max_old_space_size=4096'
+      NODE_OPTIONS: "--max_old_space_size=4096"
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v1-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v1-repo-{{ arch}}-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v1-repo-{{ arch}}-master
+  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
+  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ arch}}-{{ .Branch }}
+  repo_cache_key_3: &repo_cache_key_3 v2-repo-{{ arch}}-master
 
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
@@ -73,7 +73,7 @@ references:
   add_github_ssh_key: &add_github_ssh_key
     add_ssh_keys:
       fingerprints:
-        - 'c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7'
+        - "c9:c4:75:c4:3e:f9:1f:09:1e:bd:95:da:2d:79:2f:f7"
 
 jobs:
   checkout_code:
@@ -150,6 +150,20 @@ jobs:
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
+
+  publish_next:
+    <<: *default_env
+    resource_class: large
+    steps:
+      - *skip_on_automated_commit
+      - *add_github_ssh_key
+      - *set_git_user
+      - *restore_repo
+      - checkout
+      - *set_npm_token
+      - run:
+          name: Lerna Publish
+          command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github --preid=next --dist-tag=next
 
   update_changelogs:
     <<: *default_env
@@ -304,18 +318,26 @@ workflows:
             - publish
           filters:
             branches:
-              only: master
+              only:
+                - master
       - deploy:
           requires:
             - checkout_code
           filters:
             branches:
               only: master
+      - publish_next:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: next
       - publish_alpha:
           filters:
             branches:
               ignore:
                 - master
+                - next
                 - gh-pages
           requires:
             - checkout_code
@@ -324,6 +346,7 @@ workflows:
             branches:
               ignore:
                 - master
+                - next
                 - gh-pages
           requires:
             - checkout_code

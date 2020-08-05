@@ -1,9 +1,9 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$tab-color: $color-blue-500;
 $tab-border-radius: 2px;
 
 .tab {
+  background-color: $color-white;
   flex: 1 1;
   outline: none;
   cursor: pointer;
@@ -22,7 +22,7 @@ $tab-border-radius: 2px;
   overflow: hidden;
   white-space: nowrap;
   color: $color-black;
-  border: 1px solid $tab-color;
+  border: 1px solid $color-blue-500;
   padding: 0.5rem;
   border-left: 0;
   display: block;
@@ -40,7 +40,7 @@ $tab-border-radius: 2px;
   &:first-of-type {
     border-top-left-radius: $tab-border-radius;
     border-bottom-left-radius: $tab-border-radius;
-    border-left: 1px solid $tab-color;
+    border-left: 1px solid $color-blue-500;
   }
   &:last-of-type {
     border-top-right-radius: $tab-border-radius;
@@ -50,11 +50,11 @@ $tab-border-radius: 2px;
 
 .tab_default__active {
   color: $color-white;
-  background-color: $tab-color;
+  background-color: $color-blue-500;
 
   &:hover,
   &:focus {
-    background-color: $tab-color;
+    background-color: $color-blue-500;
     color: $color-white;
   }
 }
