@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text, number } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
@@ -14,7 +14,7 @@ import { selectableColors } from '../../../../helpers';
 Our proud logo. There is no a in the middle. Use sparingly, and make sure
 it has a lot of visual distinction to stand out appropriately.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Logo">
     <Logo
       width={number('width', 256)}
@@ -37,13 +37,13 @@ it has a lot of visual distinction to stand out appropriately.
       }}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Logo" of={Logo} />
 
 Variants of the Codecademy logo you can play around with.
 
-<Preview>
+<Canvas>
   <Story name="Pro">
     <Logo height={256} type="pro" width={256} />
   </Story>
@@ -65,4 +65,4 @@ Variants of the Codecademy logo you can play around with.
   <Story name="Default">
     <Logo height={256} type="default" width={256} />
   </Story>
-</Preview>
+</Canvas>

@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { LayoutGrid, Column } from '@codecademy/gamut/src';
 import { Box, defaultGridProps } from './Elements';
@@ -22,7 +22,7 @@ between them.
 Row and column gaps can be configured in a responsive way. For example, you might
 have a particular set of gaps at small viewports and bigger ones on large viewports.
 
-<Preview>
+<Canvas>
   <Story name="LayoutGrid">
     <LayoutGrid
       columnGap={{ xs: 'sm', lg: 'lg' }}
@@ -105,13 +105,13 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
       </Column>
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={LayoutGrid} />
 
 ## Grid Gaps
 
-<Preview>
+<Canvas>
   <Story name="Grid Gaps">
     <LayoutGrid
       rowGap={select('rowGap', [undefined, 'sm', 'md', 'lg', 'xl'], 'sm')}
@@ -140,14 +140,14 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
       </Column>
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Offsets
 
 Columns may be offset from the left by numbers within the [0-12] scale.
 As with column and row gaps, those numbers may be static or responsive.
 
-<Preview>
+<Canvas>
   <Story name="Column Offsets">
     <LayoutGrid rowGap="sm" columnGap="sm">
       <Column offset={2} size={4}>
@@ -173,4 +173,4 @@ As with column and row gaps, those numbers may be static or responsive.
       </Column>
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
