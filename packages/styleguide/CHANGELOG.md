@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 13.5.0 (2020-08-05)
+
+* feat(Styleguide): Upgrade Storybook to 6.0.0-rc26 (#905) ([9a0c00d](https://github.com/RyzacInc/client-modules/commit/9a0c00d)), closes [#905](https://github.com/RyzacInc/client-modules/issues/905)
+
+
+
+
+
 ## 13.4.0 (2020-07-29)
 
 * Merge remote-tracking branch 'origin/master' into next ([363351e](https://github.com/RyzacInc/client-modules/commit/363351e)), closes [#898](https://github.com/RyzacInc/client-modules/issues/898) [#883](https://github.com/RyzacInc/client-modules/issues/883)
