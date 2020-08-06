@@ -269,4 +269,14 @@ var test = true;
       expect(markdown.text().trim()).toEqual(expectedText);
     });
   });
+
+  describe('Renders links', () => {
+    it('renders a link with text', () => {
+      const text = '[link](/url)';
+      const expectedText = `link`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+  });
 });
