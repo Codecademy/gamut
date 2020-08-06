@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>4.2.3 (2020-08-06)</small>
+
+* add in equals sign to _responsive (#901) ([edc7e76](https://github.com/RyzacInc/client-modules/commit/edc7e76)), closes [#901](https://github.com/RyzacInc/client-modules/issues/901)
+* chore: update changelogs ([b8a49c7](https://github.com/RyzacInc/client-modules/commit/b8a49c7))
+
+
+
+
+
 ### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.1...@codecademy/gamut-styles@4.2.2) (2020-07-29)
 
 
@@ -514,4 +528,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
