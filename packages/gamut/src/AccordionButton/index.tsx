@@ -6,15 +6,21 @@ import Button from '../Button';
 import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
 import styles from './styles.module.scss';
 
+export type AccordionButtonSize = 'normal' | 'large';
+
+export type AccordionButtonTheme = 'blue' | 'plain' | 'yellow';
+
 export type AccordionButtonProps = ButtonBaseProps & {
   /**
    * Whether the button should display as open or closed.
    */
   expanded?: boolean;
+
   /**
    * Determines the size of the button.
    */
   size?: 'normal' | 'large';
+
   /**
    * Visual theme for the clickable header button.
    */

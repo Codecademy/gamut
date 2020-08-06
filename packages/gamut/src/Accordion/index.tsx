@@ -1,62 +1,42 @@
-import { motion } from 'framer-motion';
-import React, { useLayoutEffect, useState } from 'react';
-
-import styles from './styles.module.scss';
+import React, { useState } from 'react';
+import AccordionArea from '../AccordionArea';
+import AccordionButton, {
+  AccordionButtonSize,
+  AccordionButtonTheme,
+} from '../AccordionButton';
 
 export type AccordionProps = {
-  children: React.ReactNode;
-
-  className?: string;
-
-  /**
-   * Whether the accordion is visually expanded to show its contents.
-   */
-  expanded?: boolean;
-
-  /**
-   * Contents of the clickable header button.
-   */
+  initiallyExpanded?: boolean;
+  size?: AccordionButtonSize;
+  theme?: AccordionButtonTheme;
   top: React.ReactNode;
-};
-
-const transitionDuration = 0.2;
-
-const variants = {
-  expanded: { height: '100%' },
-  folded: { height: 0 },
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
   children,
-  className,
-  expanded,
+  initiallyExpanded,
+  size,
+  theme,
   top,
 }) => {
-  const [delayExpanded, setDelayExpanded] = useState(expanded);
-
-  useLayoutEffect(() => {
-    const handle = setTimeout(
-      () => setDelayExpanded(expanded),
-      transitionDuration * 1000
-    );
-
-    return () => clearTimeout(handle);
-  }, [expanded]);
+  const [expanded, setExpanded] = useState(initiallyExpanded);
 
   return (
-    <div className={className}>
-      {top}
-      <motion.div
-        aria-expanded={expanded}
-        className={styles.accordionBody}
-        initial={false}
-        animate={expanded ? 'expanded' : 'folded'}
-        variants={variants}
-        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
-      >
-        {(expanded || delayExpanded) && children}
-      </motion.div>
-    </div>
+    <AccordionArea
+      expanded={expanded}
+      top={
+        <AccordionButton
+          expanded={expanded}
+          onClick={() => setExpanded(!expanded)}
+          size={size}
+          theme={theme}
+        >
+          {top}
+        </AccordionButton>
+      }
+    >
+      {children}
+    </AccordionArea>
   );
 };
 

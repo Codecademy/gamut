@@ -19,34 +19,22 @@ jest.useFakeTimers();
 
 describe('Accordion', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
-    const wrapper = renderComponent({ expanded: false });
+    const wrapper = renderComponent({ initiallyExpanded: false });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('starts expanded when initiallyExpanded is true', () => {
-    const wrapper = renderComponent({ expanded: true });
+    const wrapper = renderComponent({ initiallyExpanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
-  it('expands when props change to expand', () => {
-    const wrapper = renderComponent({ expanded: false });
+  it('expands when its button is clicked', () => {
+    const wrapper = renderComponent({ initiallyExpanded: true });
 
-    wrapper.setProps({ expanded: true });
+    wrapper.find('button').simulate('click');
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
-  });
-
-  it('contracts after a delay when set to not expanded after being expanded', async () => {
-    const wrapper = renderComponent({ expanded: true });
-
-    wrapper.setProps({ expanded: false });
-    await act(async () => {
-      jest.runAllTimers();
-    });
-    wrapper.setProps(wrapper.props());
-
-    expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 });
