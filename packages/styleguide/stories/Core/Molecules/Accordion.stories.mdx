@@ -11,7 +11,7 @@ import { StoryStatus } from '../../../Blocks';
 
 <Meta
   component={Accordion}
-  subcomponents={{ AccordionButton }}
+  subcomponents={{ AccordionArea, AccordionButton }}
   title="Molecules/Accordion"
 />
 
@@ -37,6 +37,9 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 
 <Props of={Accordion} />
 
+> Note that accordions will fit to `100%` of the the height of their parent container.
+> If you need a fixed height container, wrap the accordion in a `<div>`.
+
 ## AccordionArea
 
 If you'd like a "controlled" component equivalent, you can manually use the `AccordionArea` and `AccordionButton` sub-components.
@@ -59,6 +62,3 @@ Most accordions should use an `AccordionButton`; other forms of buttons are acce
 </Preview>
 
 <Props of={AccordionArea} />
-
-> Note that accordions will fit to `100%` of the the height of their parent container.
-> If you need a fixed height container, wrap the accordion in a `<div>`.
