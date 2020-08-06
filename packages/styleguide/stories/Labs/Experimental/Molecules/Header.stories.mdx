@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 import { HeaderContainer, HeaderTab } from '@codecademy/gamut-labs/src';
@@ -14,7 +14,7 @@ import { HeaderContainer, HeaderTab } from '@codecademy/gamut-labs/src';
 
 Header navigation bar and tabs with configurable areas.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Header">
     <HeaderContainer
       sections={{
@@ -24,6 +24,6 @@ Header navigation bar and tabs with configurable areas.
       }}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={HeaderContainer} />

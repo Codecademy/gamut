@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Item, FlexGrid, Row, Col } from '@codecademy/gamut/src';
 import { Box, defaultGridProps } from './Elements';
@@ -20,7 +20,7 @@ column specifies its width in units at various breakpoints via props: xs
 This grid is _"fixed"_ meaning that its width is constant: it will
 not shrink to the size of its container.
 
-<Preview>
+<Canvas>
   <Story name="Fixed Grid Default">
     <FlexGrid {...defaultGridProps} fluid>
       <Row>
@@ -56,7 +56,7 @@ not shrink to the size of its container.
       </Row>
     </FlexGrid>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={FlexGrid} />
 
@@ -65,7 +65,7 @@ not shrink to the size of its container.
 Adding the fluid prop allows the grid to grow and shrink freely inside its
 container.
 
-<Preview>
+<Canvas>
   <Story name="Fluid Container">
     <FlexGrid {...defaultGridProps} fluid>
       <Row>
@@ -101,13 +101,13 @@ container.
       </Row>
     </FlexGrid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Column Offsets
 
 A column can be offset with the `xs` property.
 
-<Preview>
+<Canvas>
   <Story name="Column Offsets">
     <FlexGrid fluid {...defaultGridProps}>
       <Row>
@@ -147,13 +147,13 @@ A column can be offset with the `xs` property.
       </Row>
     </FlexGrid>
   </Story>
-</Preview>
+</Canvas>
 
 ## Centered
 
 You can center the content of a row by passing it `center`.
 
-<Preview>
+<Canvas>
   <Story name="Centered">
     <FlexGrid fluid {...defaultGridProps}>
       <Row>
@@ -167,4 +167,4 @@ You can center the content of a row by passing it `center`.
       </Row>
     </FlexGrid>
   </Story>
-</Preview>
+</Canvas>

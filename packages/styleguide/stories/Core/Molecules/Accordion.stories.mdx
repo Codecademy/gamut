@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Accordion, AccordionButton, VisualTheme } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
 import { StoryStatus } from '~styleguide/blocks';
@@ -20,7 +20,7 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 Both its header text and general children can be any arbitrary content, or can be
 conditionally rendered based on whether the accordion is expanded.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Accordion">
     <Accordion
       header="Click to Toggle Me!"
@@ -31,7 +31,7 @@ conditionally rendered based on whether the accordion is expanded.
       Wow, hidden treasure!
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Accordion} />
 
@@ -48,7 +48,7 @@ We'll likely remove it soon, as all consumers are meant to switch to `Accordion`
 
 If you want the accordion to start off expanded, use the `initiallyExpanded` prop:
 
-<Preview>
+<Canvas>
   <Story name="Initial Expansion">
     <Accordion
       header="Click to Toggle Me!"
@@ -59,7 +59,7 @@ If you want the accordion to start off expanded, use the `initiallyExpanded` pro
       Wow, not-so-hidden treasure!
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
 
 ## Themes
 
@@ -68,7 +68,7 @@ If you want the accordion to start off expanded, use the `initiallyExpanded` pro
 Blue accordion tops are only usable in dark contexts, such as the LE's
 Help Menu.
 
-<Preview className="dark">
+<Canvas className="dark">
   <Story name="Blue">
     <Accordion
       header="Click to Toggle Me!"
@@ -78,14 +78,14 @@ Help Menu.
       Wow, hidden treasure!
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
 
 ### Plain
 
 Plain accordion tops are best applied in plain pages such as marketing pages
 where we haven't been able to invest yet in a more solid theme.
 
-<Preview>
+<Canvas>
   <Story name="Plain">
     <Accordion
       header="Click to Toggle Me!"
@@ -95,7 +95,7 @@ where we haven't been able to invest yet in a more solid theme.
       Wow, hidden treasure!
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
 
 ### Yellow
 
@@ -103,7 +103,7 @@ Yellow accordion tops are our favorite: they look the most professional on
 their own. They're only used in the "Get a Hint" sections of the LE's
 narrative pane.
 
-<Preview>
+<Canvas>
   <Story name="Yellow">
     <Accordion
       header="Click to Toggle Me!"
@@ -113,4 +113,4 @@ narrative pane.
       Wow, hidden treasure!
     </Accordion>
   </Story>
-</Preview>
+</Canvas>
