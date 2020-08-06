@@ -1,5 +1,4 @@
 const path = require('path');
-const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin');
 const emoji = require('remark-emoji');
 const { configs } = require('@codecademy/webpack-config');
 
@@ -11,14 +10,16 @@ module.exports = {
     );
 
     config.module.rules
-      .find((rule) => new RegExp(rule.test).test('hello.story.mdx'))
-      .use.find((plugin) => plugin.loader.indexOf('@mdx-js') > -1)
-      .options.remarkPlugins.push(emoji);
-
-    config.module.rules
-      .find((rule) => new RegExp(rule.test).test('hello.story.mdx'))
-      .use.find((plugin) => plugin.loader.indexOf('@mdx-js') > -1)
-      .options.remarkPlugins.push(emoji);
+      .filter((rule) => {
+        var reg = new RegExp(rule.test);
+        return reg.test('hello.story.mdx') || reg.test('hello.mdx');
+      })
+      .map((rule) => {
+        rule.use
+          .find((plugin) => plugin.loader.indexOf('@mdx-js') > -1)
+          .options.remarkPlugins.push(emoji);
+        return rule;
+      });
 
     config.resolve.alias = {
       ...config.resolve.alias,
