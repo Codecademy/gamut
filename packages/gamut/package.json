@@ -6,7 +6,8 @@
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "dist/ButtonBase/index.js"
+    "dist/ButtonBase/index.js",
+    "dist/Card/CardShell.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
