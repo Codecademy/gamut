@@ -38,4 +38,12 @@ describe('MarkdownAnchor', () => {
     const anchor = mount(<MarkdownAnchor href="www.codecademy.com" />);
     expect(anchor.find(`a[href='www.codecademy.com']`).length).toEqual(1);
   });
+
+  it('renders its children', () => {
+    const text = 'natalie rulez';
+
+    const anchor = mount(<MarkdownAnchor href="/">{text}</MarkdownAnchor>);
+
+    expect(anchor.text()).toEqual(text);
+  });
 });
