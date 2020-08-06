@@ -50,6 +50,15 @@ conventionalChangelog(
         commit.header = `chore: ${commit.header}`;
       }
 
+      // Hide changelog update commits
+      if (
+        commit.type === 'chore' &&
+        commit.subject.includes('update changelogs')
+      ) {
+        cb(null);
+        return;
+      }
+
       // Fix lerna versions
       if (commit.gitTags.includes(LERNA_PACKAGE_NAME)) {
         const result = packageRegex.exec(commit.gitTags);
