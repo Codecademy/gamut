@@ -1,3 +1,76 @@
+### [12.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.3...@codecademy/gamut@12.2.4) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([c2bb19d](https://github.com/Codecademy/client-modules/commit/c2bb19d49d52268be82154bfe9025cfc3bf139b7))
+
+### [12.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.2...@codecademy/gamut@12.2.3) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([b8a49c7](https://github.com/Codecademy/client-modules/commit/b8a49c7ea245a6fd6f8e4c8b8da4cd7480f368bf))
+
+
+### 🐛 Bug Fixes
+
+* **Alert:** make alert tabbable for voiceover ([#903](https://github.com/Codecademy/client-modules/issues/903)) ([d29d92e](https://github.com/Codecademy/client-modules/commit/d29d92e90caee12ced405a31a8cf5373e6502903))
+
+### [12.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.1...@codecademy/gamut@12.2.2) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([a81d35c](https://github.com/Codecademy/client-modules/commit/a81d35c516533a39ca95851c21a7613aa053226f))
+
+### [12.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.0...@codecademy/gamut@12.2.1) (2020-07-29)
+
+
+### ✨ Features
+
+* Added basic Anchor component ([#883](https://github.com/Codecademy/client-modules/issues/883)) ([ed7d27b](https://github.com/Codecademy/client-modules/commit/ed7d27b8ed033506aadc94dadf7323b8eaf0eab8))
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
+
+## [12.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.2...@codecademy/gamut@12.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
+
+
+### Other Changes
+
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
+
+### [12.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.1...@codecademy/gamut@12.1.2) (2020-07-27)
+
+
+### Other Changes
+
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+* Used default outline for active and focused Tabs ([#892](https://github.com/Codecademy/client-modules/issues/892)) ([0d14b51](https://github.com/Codecademy/client-modules/commit/0d14b519aa78c4f229aa261b8814aa4d543f1b36))
+
+### [12.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.0...@codecademy/gamut@12.1.1) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+
+
+### 🐛 Bug Fixes
+
+* **Button:** Added align-items: center to Button styles ([#884](https://github.com/Codecademy/client-modules/issues/884)) ([cc4280e](https://github.com/Codecademy/client-modules/commit/cc4280ee1b324cc023cbdfcc2d0271a04fda2f1f))
+
 ## [12.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.1...@codecademy/gamut@12.1.0) (2020-07-24)
 
 

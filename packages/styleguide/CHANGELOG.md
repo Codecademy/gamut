@@ -1,3 +1,73 @@
+### [13.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.3...@codecademy/styleguide@13.2.4) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([c2bb19d](https://github.com/Codecademy/client-modules/commit/c2bb19d49d52268be82154bfe9025cfc3bf139b7))
+
+### [13.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.2...@codecademy/styleguide@13.2.3) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([b8a49c7](https://github.com/Codecademy/client-modules/commit/b8a49c7ea245a6fd6f8e4c8b8da4cd7480f368bf))
+
+### [13.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.1...@codecademy/styleguide@13.2.2) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([a81d35c](https://github.com/Codecademy/client-modules/commit/a81d35c516533a39ca95851c21a7613aa053226f))
+
+### [13.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.0...@codecademy/styleguide@13.2.1) (2020-07-29)
+
+
+### ✨ Features
+
+* Added basic Anchor component ([#883](https://github.com/Codecademy/client-modules/issues/883)) ([ed7d27b](https://github.com/Codecademy/client-modules/commit/ed7d27b8ed033506aadc94dadf7323b8eaf0eab8))
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
+
+## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.3...@codecademy/styleguide@13.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Styleguide:** Add storybook controls addon [WEB-937] ([#860](https://github.com/Codecademy/client-modules/issues/860)) ([1a30e66](https://github.com/Codecademy/client-modules/commit/1a30e66d6854e8a2f7f83736edd2ca28db4366cb))
+
+
+### Other Changes
+
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
+
+### [13.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.2...@codecademy/styleguide@13.1.3) (2020-07-27)
+
+
+### Other Changes
+
+* update changelogs ([a4e359b](https://github.com/Codecademy/client-modules/commit/a4e359b5d8bbf7bffdfaf4cda4d2306a20a6d32a))
+
+### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.1...@codecademy/styleguide@13.1.2) (2020-07-27)
+
+
+### Other Changes
+
+* Fixed happy little syntax accident on tooltip story ([#891](https://github.com/Codecademy/client-modules/issues/891)) ([2ed85ac](https://github.com/Codecademy/client-modules/commit/2ed85ace129d150c31cacb5d2e240eef255b9051))
+* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
+
+### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
+
+
+### Other Changes
+
+* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
+
 ## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
 
 

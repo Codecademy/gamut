@@ -58,7 +58,7 @@
 // Named view port mixin
 
 @mixin getViewport($viewport) {
-  @if $viewport = "xl" {
+  @if $viewport == "xl" {
     @include xl-viewport() {
       @content;
     }

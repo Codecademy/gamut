@@ -1,3 +1,10 @@
+### [2.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.0...@codecademy/eslint-config@2.0.1) (2020-07-29)
+
+
+### Other Changes
+
+* update changelogs ([f540c80](http://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
+
 ## [2.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@1.0.0...@codecademy/eslint-config@2.0.0) (2020-07-22)
 
 
