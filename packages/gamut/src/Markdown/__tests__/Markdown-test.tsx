@@ -177,6 +177,14 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
+    it('Renders a link with text', () => {
+      const text = '[link](/url)';
+      const expectedText = `link`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+
     it('Adds rel="noopener" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
@@ -266,16 +274,6 @@ var test = true;
       const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
       expect(text).not.toEqual(expectedText);
       const markdown = mount(<Markdown inline text={text} />);
-      expect(markdown.text().trim()).toEqual(expectedText);
-    });
-  });
-
-  describe('Renders links', () => {
-    it('renders a link with text', () => {
-      const text = '[link](/url)';
-      const expectedText = `link`;
-      expect(text).not.toEqual(expectedText);
-      const markdown = mount(<Markdown text={text} />);
       expect(markdown.text().trim()).toEqual(expectedText);
     });
   });
