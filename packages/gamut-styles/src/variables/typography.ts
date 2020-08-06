@@ -57,6 +57,6 @@ export const lineHeight = {
 };
 
 export const fontWeight = {
-  base: 'normal',
-  heading: 'bold',
+  text: 400,
+  heading: 700,
 };

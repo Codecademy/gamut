@@ -21,3 +21,4 @@ export const mediaQueries = {
 };
 
 export const maxContentWidth = breakpoints.xl;
+export const mediumContentWidth = breakpoints.lg;

@@ -11,4 +11,5 @@ export const spacing = {
   md: baseUnit,
   lg: pxRem(base * 2),
   xl: pxRem(base * 3),
+  xxl: pxRem(base * 5),
 };

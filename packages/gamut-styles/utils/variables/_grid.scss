@@ -1,8 +1,6 @@
 // Overrides for the Grid component
 
 // NOTE: When updating, make sure you also update the gamut-styles/variables.js file
-$max-content-width: 1440px;
-
 $grid-cols: 12;
 $grid-gutter-width: px-rem(16);
 $grid-outer-margin: px-rem(16);
@@ -10,4 +8,7 @@ $grid-xs-min: px-rem(480);
 $grid-sm-min: px-rem(768);
 $grid-md-min: px-rem(1024);
 $grid-lg-min: px-rem(1200);
-$grid-xl-min: px-rem($max-content-width);
+$grid-xl-min: px-rem(1440);
+
+$max-content-width: $grid-lg-min;
+$medium-content-width: $grid-xl-min;
