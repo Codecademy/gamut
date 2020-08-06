@@ -1,17 +1,15 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>12.2.5 (2020-08-06)</small>
-
-* fix: MarkdownAnchor should still render children (#909) ([1e7303c](https://github.com/RyzacInc/client-modules/commit/1e7303c)), closes [#909](https://github.com/RyzacInc/client-modules/issues/909)
-* fix(Toggle): Convert rem to px-rem() (#897) ([5a7b0b1](https://github.com/RyzacInc/client-modules/commit/5a7b0b1)), closes [#897](https://github.com/RyzacInc/client-modules/issues/897)
-* chore: update changelogs ([8bcd244](https://github.com/RyzacInc/client-modules/commit/8bcd244))
+### [12.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.4...@codecademy/gamut@12.2.5) (2020-08-06)
 
 
+### Other Changes
+
+* update changelogs ([8bcd244](https://github.com/Codecademy/client-modules/commit/8bcd244563c03a8873fa954f5355fd06d4356ee4))
 
 
+### 🐛 Bug Fixes
+
+* MarkdownAnchor should still render children ([#909](https://github.com/Codecademy/client-modules/issues/909)) ([1e7303c](https://github.com/Codecademy/client-modules/commit/1e7303c14b38c6def962259af8a4e938e2760237))
+* **Toggle:** Convert rem to px-rem() ([#897](https://github.com/Codecademy/client-modules/issues/897)) ([5a7b0b1](https://github.com/Codecademy/client-modules/commit/5a7b0b1494f56148fffbc241dd81f6f77eaf6889))
 
 ### [12.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.3...@codecademy/gamut@12.2.4) (2020-08-06)
 
@@ -2876,3 +2874,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
