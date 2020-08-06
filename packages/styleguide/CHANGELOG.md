@@ -1,3 +1,10 @@
+### [13.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.4...@codecademy/styleguide@13.2.5) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([8bcd244](https://github.com/Codecademy/client-modules/commit/8bcd244563c03a8873fa954f5355fd06d4356ee4))
+
 ### [13.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.3...@codecademy/styleguide@13.2.4) (2020-08-06)
 
 

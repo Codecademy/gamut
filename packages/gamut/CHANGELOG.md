@@ -1,3 +1,16 @@
+### [12.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.4...@codecademy/gamut@12.2.5) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([8bcd244](https://github.com/Codecademy/client-modules/commit/8bcd244563c03a8873fa954f5355fd06d4356ee4))
+
+
+### 🐛 Bug Fixes
+
+* MarkdownAnchor should still render children ([#909](https://github.com/Codecademy/client-modules/issues/909)) ([1e7303c](https://github.com/Codecademy/client-modules/commit/1e7303c14b38c6def962259af8a4e938e2760237))
+* **Toggle:** Convert rem to px-rem() ([#897](https://github.com/Codecademy/client-modules/issues/897)) ([5a7b0b1](https://github.com/Codecademy/client-modules/commit/5a7b0b1494f56148fffbc241dd81f6f77eaf6889))
+
 ### [12.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.3...@codecademy/gamut@12.2.4) (2020-08-06)
 
 

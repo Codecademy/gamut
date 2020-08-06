@@ -1,3 +1,10 @@
+### [1.8.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.5...@codecademy/gamut-labs@1.8.6) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([8bcd244](https://github.com/Codecademy/client-modules/commit/8bcd244563c03a8873fa954f5355fd06d4356ee4))
+
 ### [1.8.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.4...@codecademy/gamut-labs@1.8.5) (2020-08-06)
 
 
