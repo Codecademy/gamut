@@ -1,3 +1,15 @@
+### [12.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.2...@codecademy/gamut@12.2.3) (2020-08-06)
+
+
+### Other Changes
+
+* update changelogs ([b8a49c7](https://github.com/Codecademy/client-modules/commit/b8a49c7ea245a6fd6f8e4c8b8da4cd7480f368bf))
+
+
+### 🐛 Bug Fixes
+
+* **Alert:** make alert tabbable for voiceover ([#903](https://github.com/Codecademy/client-modules/issues/903)) ([d29d92e](https://github.com/Codecademy/client-modules/commit/d29d92e90caee12ced405a31a8cf5373e6502903))
+
 ### [12.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.1...@codecademy/gamut@12.2.2) (2020-07-29)
 
 
