@@ -20,25 +20,34 @@ import { StoryStatus, TextExample } from '~styleguide/blocks';
 
 <StoryStatus status="volatile" />
 
-## Sandbox
+## Font Stacks
 
-<Canvas withSource="none">
-  <Story name="Type Sandbox">
-    {({ text, fontFamily, ...args }) => (
-      <p
-        style={{
-          ...args,
-          fontFamily: DesignTokens.fontStack[fontFamily],
-          margin: 0,
-        }}
-      >
-        {text}
-      </p>
-    )}
-  </Story>
+We have 4 main font-stacks that are available through both **Typescript** and **SCSS** variables in`@codecademy/gamut-styles`
+
+### Usage
+
+```tsx
+import { fontStack } from '@codecademy/gamut-styles';
+
+fontStack.base; // base | heading | monospace | system
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  font-family: $font-family-base; // $font-family-base | $font-family-headings | $font-monospace | $font-system
+}
+```
+
+### Example
+
+<Canvas withSource="none" isColumn>
+  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
+  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
+  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
+  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
 </Canvas>
-
-<Props story="Type Sandbox" />
 
 ## Font Sizes
 
@@ -74,35 +83,6 @@ fontSize.text.md; // sm | md | lg
   fontFamily={DesignTokens.fontStack.heading}
   fontSizes={headingTypescale}
 />
-
-## Font Stacks
-
-We have 4 main font-stacks that are available through both **Typescript** and **SCSS** variables in`@codecademy/gamut-styles`
-
-### Usage
-
-```tsx
-import { fontStack } from '@codecademy/gamut-styles';
-
-fontStack.base; // base | heading | monospace | system
-```
-
-```scss
-@import '@codecademy/gamut-styles/utils';
-
-.text {
-  font-family: $font-family-base; // $font-family-base | $font-family-headings | $font-monospace | $font-system
-}
-```
-
-### Example
-
-<Canvas withSource="none" isColumn>
-  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
-  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
-  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
-  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
-</Canvas>
 
 ## Font Weights
 
