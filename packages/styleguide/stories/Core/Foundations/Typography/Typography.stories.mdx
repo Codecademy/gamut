@@ -1,7 +1,13 @@
 import { Meta, Canvas, Typeset } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import * as DesignTokens from '@codecademy/gamut-styles';
-import { StoryStatus, TextExample } from '~styleguide/blocks';
+import {
+  StoryStatus,
+  TextExample,
+  Text,
+  ScaleRow,
+  ScaleColumn,
+} from '~styleguide/blocks';
 
 <Meta title="Foundations/Typography" component="Typography" />
 
@@ -24,10 +30,12 @@ We have 4 main font-stacks that are used through out our front end apps. They ar
 4. `System` largely unused by still defined for when system fonts are necessary.
 
 <Canvas withSource="none" isColumn>
-  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
-  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
-  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
-  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
+  {Object.entries(DesignTokens.fontStack).map(([alias, value]) => (
+    <ScaleRow key={alias} hasAlias>
+      <ScaleColumn>{alias}</ScaleColumn>
+      <Text family={value}> All the news that fits...</Text>
+    </ScaleRow>
+  ))}
 </Canvas>
 
 ### Usage

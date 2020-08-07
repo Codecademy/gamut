@@ -7,7 +7,7 @@ import {
   lineHeight,
 } from '@codecademy/gamut-styles';
 import { fontStack } from '@codecademy/gamut-styles/src';
-
+import { ScaleColumn, ScaleRow } from './Scale';
 type TextProps = {
   size?: string;
   color?: string;
@@ -25,26 +25,11 @@ export const Text = styled.p<TextProps>`
   line-height: ${({ line = lineHeight.text }) => line};
 `;
 
-const TextRow = styled.div<{ hasProp?: boolean }>`
-  display: grid;
-  grid-template-columns: ${({ hasProp }) =>
-    hasProp ? 'minmax(4rem, max-content) 1fr' : '1fr'};
-  grid-column-gap: 2rem;
-`;
-
-const PropCol = styled.div`
-  font-size: ${fontSize.text.sm};
-  color: ${colors.gray[400]};
-  font-family: ${fontStack.monospace};
-  display: grid;
-  align-content: center;
-`;
-
 export const TextExample: React.FC<
   { propName: keyof TextProps } & TextProps
 > = ({ propName, children, ...rest }) => (
-  <TextRow hasProp={Boolean(rest[propName])}>
-    {rest[propName] && <PropCol>{rest[propName]}</PropCol>}
+  <ScaleRow hasAlias={Boolean(rest[propName])}>
+    {rest[propName] && <ScaleColumn>{rest[propName]}</ScaleColumn>}
     <Text {...rest}>{children}</Text>
-  </TextRow>
+  </ScaleRow>
 );

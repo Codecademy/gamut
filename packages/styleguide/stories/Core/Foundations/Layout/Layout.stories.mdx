@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
-import { StoryStatus, Box } from '~styleguide/blocks';
-import { spacing } from '@codecademy/gamut-styles';
+import { StoryStatus, Box, ScaleRow, ScaleColumn } from '~styleguide/blocks';
+import { spacing, breakpoints, mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 
 <Meta title="Foundations/Layout" component="Layout" />
@@ -10,27 +10,84 @@ import styled from '@emotion/styled';
 
 <StoryStatus status="volatile" />
 
-## Spacing
+## Screensizes and Media Queries
 
-We have a basic spacing scale that we like to adhere to. These can be used for padding / margins / grid gaps.
+We have 5 specific screens that we design for. Ideally we do not deviate in design or code
+for these specific sizes to avoid unintended side effects. Here are there relative values.
 
-<Canvas isColumn>
-  <Box size={spacing.xs} />
-  <Box size={spacing.sm} />
-  <Box size={spacing.md} />
-  <Box size={spacing.lg} />
-  <Box size={spacing.xl} />
-  <Box size={spacing.xll} />
+<Canvas withSource="none" isColumn>
+  {Object.entries(breakpoints).map(([alias, value]) => (
+    <ScaleRow key={alias} hasAlias>
+      <ScaleColumn>{alias}</ScaleColumn>
+      <strong>{value}</strong>
+    </ScaleRow>
+  ))}
 </Canvas>
 
-#### TS - spacing
+### Usage Typescript
 
-```tsx
-import { spacing } from '@codecademy/gamut-styles';
+These can be used on their own arbitrarily as direct values through the `breakpoint` map:
 
-const myStyles = `
-  padding: ${spacing.md} ${spacing.lg};
+```ts
+import { breakpoints } from '@codecademy/gamut-styles';
+
+const MyStyles = `
+  @media screen and (min-width: ${breakpoints.sm}) {
+    display: none;
+  }
 `;
+```
+
+However we do provide specific mobile first media queries out of the box to make this even easier with `mediaQueries`:
+
+```ts
+import { mediaQueries } from '@codecademy/gamut-styles';
+
+const MyStyles = `
+   ${mediaQueries.sm} {
+    display: none;
+  }
+`;
+```
+
+We also provide a `atViewport` utility for a more functional pattern
+
+```ts
+import { atViewport } from '@codecademy/gamut-styles';
+
+const mobileStyles = atViewport('xs', `background-color: blue;`);
+const tabletStyles = atViewport('sm', `background-color: green;`);
+
+const MyStyles = `
+  ${mobileStyles}
+  ${tabletStyles}
+`;
+```
+
+### Usage - SCSS
+
+For SCSS we have similiar equivalents matching the pattern `$grid-<SIZE_ALIAS>-min`
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.container {
+  @media only screen and (min-width: $grid-sm-min) {
+    // my styles
+  }
+}
+```
+
+And provide mixins that do the work for you matching the pattern `@include <SIZE_ALIAS>-viewport`:
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.container {
+  @include md-viewport {
+    // my styles
+  }
+}
 ```
 
 ## Max Content Width
@@ -66,4 +123,27 @@ const MaxWidth = `
 .container__medium {
   max-width: $max-content-width;
 }
+```
+
+## Spacing
+
+We have a basic spacing scale that we like to adhere to. These can be used for padding / margins / grid gaps.
+
+<Canvas isColumn>
+  {Object.entries(spacing).map(([alias, value]) => (
+    <ScaleRow key={alias} hasAlias>
+      <ScaleColumn>{alias}</ScaleColumn>
+      <Box size={value} />
+    </ScaleRow>
+  ))}
+</Canvas>
+
+#### TS - spacing
+
+```tsx
+import { spacing } from '@codecademy/gamut-styles';
+
+const myStyles = `
+  padding: ${spacing.md} ${spacing.lg};
+`;
 ```
