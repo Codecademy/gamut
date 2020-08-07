@@ -1,7 +1,7 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Text } from '@codecademy/gamut/src';
-import { colors, fontSize } from '@codecademy/gamut-styles';
+import { brandColors, fontSize } from '@codecademy/gamut-styles';
 
 <Meta
   title="Typography/Text"
@@ -18,14 +18,25 @@ import { colors, fontSize } from '@codecademy/gamut-styles';
 
 <StoryStatus status="stable" />
 
-Responsive Typography primitive for any text.
+This is a single primitive to handle all `<p>` and
+`<span>` tags with defined size intervals.
 
-<Preview>
+<Canvas>
   <Story name="Text" args={{ children: 'Hello World' }}>
     {(args) => <Text {...args} />}
   </Story>
-</Preview>
+</Canvas>
 
 ## Props
 
 <Props story="Text" />
+
+## Custom colors
+
+<Canvas>
+  <Story name="Custom Colors">
+    <Text fontSize="md" style={{ color: brandColors.purple }}>
+      Brand Purple
+    </Text>
+  </Story>
+</Canvas>

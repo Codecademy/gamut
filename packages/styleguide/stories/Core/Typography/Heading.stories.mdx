@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Heading } from '@codecademy/gamut/src';
-import { colors, fontSize } from '@codecademy/gamut-styles';
+import { brandColors, fontSize } from '@codecademy/gamut-styles';
 
 <Meta
   title="Typography/Heading"
@@ -25,10 +25,18 @@ import { colors, fontSize } from '@codecademy/gamut-styles';
 
 <StoryStatus status="stable" />
 
-Responsive Typography primitives for all your Headingual needs.
+This is a single primitive to handle all `h1-h6` tags
+with defined size intervals to allow for semantic html that also
+matches the designs.
+
+Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
+(and picking the appropriate size to match the design).
 
 <Preview>
-  <Story name="Heading" args={{ children: 'Hello World', as: 'h1' }}>
+  <Story
+    name="Heading"
+    args={{ children: 'Hello World', as: 'h1', hideMargin: true }}
+  >
     {(args) => <Heading {...args} />}
   </Story>
 </Preview>
@@ -36,3 +44,26 @@ Responsive Typography primitives for all your Headingual needs.
 ## Props
 
 <Props story="Heading" />
+
+## Custom colors
+
+<Preview>
+  <Story name="Custom Colors">
+    <Heading fontSize="md" as="h3" style={{ color: brandColors.purple }}>
+      Brand Purple
+    </Heading>
+  </Story>
+</Preview>
+
+## No Margin
+
+<Preview>
+  <Story name="No Margin">
+    <>
+      <Heading fontSize="md" as="h3" hideMargin>
+        Without Margin
+      </Heading>
+      <p>Random other text</p>
+    </>
+  </Story>
+</Preview>

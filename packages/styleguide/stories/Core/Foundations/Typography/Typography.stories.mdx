@@ -1,28 +1,34 @@
-import {
-  Meta,
-  Canvas,
-  Story,
-  Typeset,
-  Props,
-} from '@storybook/addon-docs/dist/blocks';
-import { Source } from '@storybook/components';
-import { Controls, headingTypescale, bodyTypescale } from './constants';
+import { Meta, Canvas, Typeset } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import * as DesignTokens from '@codecademy/gamut-styles';
 import { StoryStatus, TextExample } from '~styleguide/blocks';
 
-<Meta
-  title="Foundations/Typography"
-  component="Typography"
-  argTypes={Controls}
-/>
+<Meta title="Foundations/Typography" component="Typography" />
 
 # Typography
 
 <StoryStatus status="volatile" />
 
+This page is meant as a reference for Typography variables and scales that are available
+through both **Typescript** and **SCSS** variables in [`@codecademy/gamut-styles`](https://www.npmjs.com/package/@codecademy/gamut-styles). We heavily recommend
+you use the <LinkTo kind="Typography" story="Heading">`<Heading />`</LinkTo> and <LinkTo kind="Typography" story="Text">`<Text />`</LinkTo>
+primitives that we provide for your needs. They are built using these standards, so you should not need to recreate them.
+
 ## Font Stacks
 
-We have 4 main font-stacks that are available through both **Typescript** and **SCSS** variables in`@codecademy/gamut-styles`
+We have 4 main font-stacks that are used through out our front end apps. They are roughly separated by functionality.
+
+1. `Base` for all body text.
+2. `Heading` for all headings and subheadings `h1`-`h6`
+3. `Monospace` for code and other space sensitive or themed content.
+4. `System` largely unused by still defined for when system fonts are necessary.
+
+<Canvas withSource="none" isColumn>
+  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
+  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
+  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
+  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
+</Canvas>
 
 ### Usage
 
@@ -40,18 +46,47 @@ fontStack.base; // base | heading | monospace | system
 }
 ```
 
-### Example
-
-<Canvas withSource="none" isColumn>
-  <TextExample family={DesignTokens.fontStack.base}>Base</TextExample>
-  <TextExample family={DesignTokens.fontStack.heading}>Heading</TextExample>
-  <TextExample family={DesignTokens.fontStack.monospace}>Monospace</TextExample>
-  <TextExample family={DesignTokens.fontStack.system}>System</TextExample>
-</Canvas>
-
 ## Font Sizes
 
-We have 2 font scales. One for headings and one for body text.
+While we technically have a single scale for text, we have split this into two separate scales for `text` and `headings` functionally.
+If you need to use these values outside of `Text` and `Heading` primitives they are available.
+
+### Text
+
+<Canvas isColumn>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.lg}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.md}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.sm}>
+    All the news that fits...
+  </TextExample>
+</Canvas>
+
+### Heading
+
+<Canvas isColumn>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xxl}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xl}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.lg}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.md}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.sm}>
+    All the news that fits...
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xs}>
+    All the news that fits...
+  </TextExample>
+</Canvas>
 
 ### Usage
 
@@ -73,27 +108,26 @@ fontSize.text.md; // sm | md | lg
 }
 ```
 
-### Text
-
-<Typeset fontFamily={DesignTokens.fontStack.base} fontSizes={bodyTypescale} />
-
-### Heading
-
-<Typeset
-  fontFamily={DesignTokens.fontStack.heading}
-  fontSizes={headingTypescale}
-/>
-
 ## Font Weights
 
-We support two basic `font-weight` values for both body text and headings.
+We support two basic `font-weight` values for both body text `400` and headings `700`, while lighter or bolder variations may be
+available for some font stacks these will be the safest for their their desired effects.
+
+<Canvas withSource="none" isColumn>
+  <TextExample propName="weight" weight={DesignTokens.fontWeight.text}>
+    The weight of the world
+  </TextExample>
+  <TextExample propName="weight" weight={DesignTokens.fontWeight.heading}>
+    The weight of the world
+  </TextExample>
+</Canvas>
 
 ### Usage
 
 ```tsx
 import { fontWeight } from '@codecademy/gamut-styles';
 
-fontWeight.base; // base | heading
+fontWeight.text; // text | heading
 ```
 
 ```scss
@@ -104,18 +138,35 @@ fontWeight.base; // base | heading
 }
 ```
 
-### Example
-
-<Canvas withSource="none" isColumn>
-  <TextExample weight={DesignTokens.fontWeight.base}>Normal</TextExample>
-  <TextExample weight={DesignTokens.fontWeight.heading}>Heading</TextExample>
-</Canvas>
-
 ## Line Heights
 
-### Usage
+We generally like to keep body text at 1.5 and headings at 1.15.
 
-We support two basic `line-height` values for both body text and headings.
+<Canvas withSource="none" isColumn>
+  <TextExample
+    propName="line"
+    size={DesignTokens.fontSize.heading.xs}
+    line={DesignTokens.lineHeight.text}
+  >
+    Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.
+  </TextExample>
+  <TextExample
+    propName="line"
+    size={DesignTokens.fontSize.heading.sm}
+    line={DesignTokens.lineHeight.heading}
+  >
+    Heading - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+    eiusmod tempor incididunt ut labore et dolore magna aliqua. est laborum.
+  </TextExample>
+</Canvas>
+
+### Usage
 
 ```tsx
 import { lineHeight } from '@codecademy/gamut-styles';
@@ -130,32 +181,3 @@ lineHeight.text; // text | heading
   line-height: $line-height-base; // $line-height-headings | $line-height-base
 }
 ```
-
-### Example
-
-<Canvas withSource="none" isColumn>
-  <TextExample
-    size={DesignTokens.fontSize.heading.xs}
-    line={DesignTokens.lineHeight.text}
-  >
-    Text - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-    est laborum.
-  </TextExample>
-  <TextExample
-    size={DesignTokens.fontSize.heading.xs}
-    line={DesignTokens.lineHeight.heading}
-  >
-    Heading - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-    est laborum.
-  </TextExample>
-</Canvas>
