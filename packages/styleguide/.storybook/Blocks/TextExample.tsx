@@ -29,12 +29,13 @@ const TextRow = styled.div<{ hasProp?: boolean }>`
   display: grid;
   grid-template-columns: ${({ hasProp }) =>
     hasProp ? 'minmax(4rem, max-content) 1fr' : '1fr'};
-  grid-column-gap: 1rem;
+  grid-column-gap: 2rem;
 `;
 
 const PropCol = styled.div`
   font-size: ${fontSize.text.sm};
-  color: ${colors.gray[300]};
+  color: ${colors.gray[400]};
+  font-family: ${fontStack.monospace};
   display: grid;
   align-content: center;
 `;
