@@ -14,6 +14,11 @@
     "type": "git",
     "url": "git@github.com:RyzacInc/client-modules.git"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "^~styleguide/Blocks(.*)$": "<rootDir>/.storybook/Blocks$1"
+    }
+  },
   "dependencies": {
     "@babel/cli": "7.8.3",
     "@babel/core": "7.8.3",
