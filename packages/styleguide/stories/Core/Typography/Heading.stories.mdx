@@ -59,11 +59,13 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 
 <Preview>
   <Story name="No Margin">
-    <>
-      <Heading fontSize="md" as="h3" hideMargin>
-        Without Margin
-      </Heading>
-      <p>Random other text</p>
-    </>
+    {() => (
+      <>
+        <Heading fontSize="md" as="h3" hideMargin>
+          Without Margin
+        </Heading>
+        <p>Random other text</p>
+      </>
+    )}
   </Story>
 </Preview>
