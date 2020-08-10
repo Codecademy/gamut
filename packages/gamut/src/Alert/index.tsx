@@ -9,9 +9,9 @@ import {
 
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
-import Truncate from '../Truncate';
-import ButtonBase from '../ButtonBase';
-import Button from '../Button';
+import { Truncate } from '../Truncate';
+import { ButtonBase } from '../ButtonBase';
+import { Button } from '../Button';
 
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
@@ -132,5 +132,3 @@ export const Alert: React.FC<AlertProps> = ({
 };
 
 export { BannerType } from './constants';
-
-export default Alert;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styles from './styles.module.scss';
-import StepButton from './StepButton';
+import { StepButton } from './StepButton';
 import cx from 'classnames';
 
 export type InputStepperButtonTargets =
@@ -147,5 +147,3 @@ export const InputStepper: React.FC<InputStepperProps> = ({
     </div>
   );
 };
-
-export default InputStepper;

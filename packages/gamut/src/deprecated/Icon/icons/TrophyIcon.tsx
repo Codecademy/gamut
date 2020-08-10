@@ -15,5 +15,3 @@ export const TrophyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 TrophyIcon.defaultProps = defaultIconProps;
-
-export default TrophyIcon;

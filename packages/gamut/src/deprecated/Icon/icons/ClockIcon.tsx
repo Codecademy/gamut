@@ -12,5 +12,3 @@ export const ClockIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ClockIcon.defaultProps = defaultIconProps;
-
-export default ClockIcon;

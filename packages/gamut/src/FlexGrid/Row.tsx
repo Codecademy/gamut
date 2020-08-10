@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 
 const propKeys = [
@@ -88,5 +88,3 @@ export const Row: React.FC<RowProps> = (props) => {
     omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
 };
-
-export default Row;

@@ -23,5 +23,3 @@ export const MatplotLibIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 MatplotLibIcon.defaultProps = defaultIconProps;
-
-export default MatplotLibIcon;

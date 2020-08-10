@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-export default function CodecademyProgramLogo(props: SVGProps<SVGSVGElement>) {
+export function CodecademyProgramLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} viewBox="0 0 178 31" xmlns="http://www.w3.org/2000/svg">
       <title>Codecademy Program Logo</title>

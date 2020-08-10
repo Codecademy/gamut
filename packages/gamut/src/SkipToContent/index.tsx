@@ -28,5 +28,3 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
     </a>
   );
 };
-
-export default SkipToContent;

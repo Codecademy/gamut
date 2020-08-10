@@ -18,5 +18,3 @@ export const ForumsIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ForumsIcon.defaultProps = defaultIconProps;
-
-export default ForumsIcon;

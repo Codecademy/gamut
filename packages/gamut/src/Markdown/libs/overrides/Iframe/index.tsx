@@ -12,7 +12,7 @@ export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
 const YOUTUBE_PATTERN = /youtu(be\.com|\.be)/;
 const VIMEO_PATTERN = /player\.vimeo\.com/;
 
-const Iframe: FunctionComponent<IframeProps> = (props) => {
+export const Iframe: FunctionComponent<IframeProps> = (props) => {
   if (
     props.src &&
     [YOUTUBE_PATTERN, VIMEO_PATTERN].some((pattern) => pattern.test(props.src!))
@@ -37,5 +37,3 @@ const Iframe: FunctionComponent<IframeProps> = (props) => {
   }
   return <iframe {...props} />;
 };
-
-export default Iframe;

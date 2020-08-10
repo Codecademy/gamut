@@ -32,5 +32,3 @@ export function omitProps<TOmittedProps extends {}, TProps extends {}>(
     without(propsToOmit, 'children', 'className', ...dataProps)
   ) as RemoveFrom<TOmittedProps, TProps>;
 }
-
-export default omitProps;

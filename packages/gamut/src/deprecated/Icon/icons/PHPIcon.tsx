@@ -12,5 +12,3 @@ export const PHPIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PHPIcon.defaultProps = defaultIconProps;
-
-export default PHPIcon;

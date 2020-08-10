@@ -4,13 +4,13 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { Column } from '../../Layout';
 import { GridFormField } from '../types';
-import GridFormCheckboxInput from './GridFormCheckboxInput';
-import GridFormCustomInput from './GridFormCustomInput';
-import GridFormFileInput from './GridFormFileInput';
-import GridFormRadioGroupInput from './GridFormRadioGroupInput';
-import GridFormTextInput from './GridFormTextInput';
-import GridFormSelectInput from './GridFormSelectInput';
-import GridFormTextArea from './GridFormTextArea';
+import { GridFormCheckboxInput } from './GridFormCheckboxInput';
+import { GridFormCustomInput } from './GridFormCustomInput';
+import { GridFormFileInput } from './GridFormFileInput';
+import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
+import { GridFormTextInput } from './GridFormTextInput';
+import { GridFormSelectInput } from './GridFormSelectInput';
+import { GridFormTextArea } from './GridFormTextArea';
 import styles from './styles.module.scss';
 import cx from 'classnames';
 
@@ -116,5 +116,3 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     </Column>
   );
 };
-
-export default GridFormInputGroup;

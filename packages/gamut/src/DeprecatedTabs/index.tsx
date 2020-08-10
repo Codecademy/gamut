@@ -133,5 +133,3 @@ export class DeprecatedTabs extends Component<
     );
   }
 }
-
-export default DeprecatedTabs;

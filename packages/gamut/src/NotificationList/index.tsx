@@ -1,9 +1,9 @@
 import React from 'react';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import { Notification } from './typings';
-import NotificationItem from './NotificationItem';
+import { NotificationItem } from './NotificationItem';
 import s from './styles/index.module.scss';
 
 const byDate = (notification1: Notification, notification2: Notification) => {
@@ -62,5 +62,3 @@ export const NotificationList = (props: NotificationListProps) => {
     </div>
   );
 };
-
-export default NotificationList;

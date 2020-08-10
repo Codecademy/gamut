@@ -32,5 +32,3 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
 
   return <Element className={classes}>{children}</Element>;
 };
-
-export default ContentContainer;

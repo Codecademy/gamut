@@ -18,5 +18,3 @@ export const PracticeIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PracticeIcon.defaultProps = defaultIconProps;
-
-export default PracticeIcon;
