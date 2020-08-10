@@ -1,10 +1,5 @@
 ### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.0...@codecademy/gamut-icons@3.0.1) (2020-07-29)
 
-
-### Other Changes
-
-* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
-
 ## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
 
 
@@ -12,21 +7,11 @@
 
 * **Icons:** Streamline Icon Set Full [GM-30] (#838)
 
-### Other Changes
-
-* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
-
-
 ### ✨ Features
 
 * **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ### [2.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.2) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 
 ### 🐛 Bug Fixes

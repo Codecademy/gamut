@@ -1,10 +1,5 @@
 ### [1.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.11) (2020-07-29)
 
-
-### Other Changes
-
-* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
-
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.9...@codecademy/enzyme-helpers@1.1.10) (2020-05-04)
 
 

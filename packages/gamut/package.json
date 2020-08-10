@@ -1,12 +1,13 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "12.2.5",
+  "version": "12.2.6",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "dist/ButtonBase/index.js"
+    "dist/ButtonBase/index.js",
+    "dist/Card/CardShell.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
