@@ -1,6 +1,11 @@
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <g fill-rule="evenodd">
-        <path d="M8 2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2zm0 3v14h8V5H8z"/>
-        <path fill="transparent" d="M8 5h8v14H8z"/>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>mobile-phone</title>
+<g>
+	<path d="M8.251,24c-2.068,0-3.75-1.682-3.75-3.75V3.75C4.501,1.682,6.183,0,8.251,0h7.5c2.068,0,3.75,1.682,3.75,3.75v16.5
+		c0,2.068-1.682,3.75-3.75,3.75H8.251z M6.001,20.25c0,1.241,1.009,2.25,2.25,2.25h7.5c1.241,0,2.25-1.009,2.25-2.25V19.5h-12V20.25
+		z M18.001,18V3.75c0-1.241-1.009-2.25-2.25-2.25h-7.5c-1.241,0-2.25,1.009-2.25,2.25V18H18.001z"/>
+</g>
 </svg>

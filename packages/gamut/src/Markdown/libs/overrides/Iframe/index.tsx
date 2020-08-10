@@ -15,7 +15,7 @@ const VIMEO_PATTERN = /player\.vimeo\.com/;
 const Iframe: FunctionComponent<IframeProps> = (props) => {
   if (
     props.src &&
-    [YOUTUBE_PATTERN, VIMEO_PATTERN].some((pattern) => pattern.test(props.src))
+    [YOUTUBE_PATTERN, VIMEO_PATTERN].some((pattern) => pattern.test(props.src!))
   ) {
     const { width = 16, height = 9 } = props;
     const ratioPadding = (

@@ -7,6 +7,9 @@ const defaultProps = {
 };
 
 export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * Hover effect to show indicate depth and interactivity.
+   */
   hoverShadow?: boolean;
 };
 
@@ -29,6 +32,5 @@ export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
 );
 
 CardShell.defaultProps = defaultProps;
-CardShell.displayName = 'CardShell';
 
 export default CardShell;

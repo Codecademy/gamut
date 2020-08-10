@@ -14,7 +14,7 @@ import defaultSanitizationConfig from './libs/sanitizationConfig';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import s from './styles/index.module.scss';
 import Iframe from './libs/overrides/Iframe';
-import Anchor from './libs/overrides/Anchor';
+import MarkdownAnchor from './libs/overrides/MarkdownAnchor';
 import Table from './libs/overrides/Table';
 
 const htmlToReactParser = new HtmlToReact.Parser({
@@ -74,7 +74,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: Anchor,
+          component: MarkdownAnchor,
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {

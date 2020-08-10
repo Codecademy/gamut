@@ -18,13 +18,6 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.js'],
-      rules: {
-        'import/default': 'off',
-        'import/named': 'off',
-      },
-    },
-    {
       files: ['**/typings/*', '*.d.ts'],
       rules: {
         '@typescript-eslint/no-namespace': 'off',

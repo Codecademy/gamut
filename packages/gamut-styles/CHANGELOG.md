@@ -1,4 +1,26 @@
-## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
+### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.2...@codecademy/gamut-styles@4.2.3) (2020-08-06)
+
+
+### Other Changes
+
+* add in equals sign to _responsive ([#901](https://github.com/Codecademy/client-modules/issues/901)) ([edc7e76](https://github.com/Codecademy/client-modules/commit/edc7e767227a7aec90084f14e7e08916ccdf4f3f))
+
+### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.1...@codecademy/gamut-styles@4.2.2) (2020-07-29)
+
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.0...@codecademy/gamut-styles@4.2.1) (2020-07-29)
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
 
 ## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.0.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
 

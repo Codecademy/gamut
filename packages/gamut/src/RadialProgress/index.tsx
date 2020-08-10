@@ -3,7 +3,7 @@ import React, { SVGProps } from 'react';
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number | string;
   duration?: number;
-  value?: number | number[];
+  value: number | number[];
   strokeWidth?: number | string;
   strokeLinecap?: 'round' | 'butt' | 'square';
 }

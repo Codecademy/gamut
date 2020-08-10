@@ -56,6 +56,9 @@ export const Alert: React.FC<AlertProps> = ({
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
       })}
+      role="status"
+      aria-label="alert box"
+      aria-live="polite"
     >
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
@@ -116,6 +119,7 @@ export const Alert: React.FC<AlertProps> = ({
               className={cx(s.iconButton, {
                 [s[`iconButton__${type}`]]: type,
               })}
+              aria-label="Close Alert"
               onClick={onClose}
             >
               <CloseIcon size={12} />

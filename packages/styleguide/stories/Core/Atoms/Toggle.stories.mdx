@@ -1,17 +1,17 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { boolean } from '@storybook/addon-knobs';
-import { StoryStatus } from '../../../Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { Toggle } from '@codecademy/gamut/src';
 
-<Meta title="Core|Atoms/Toggle" component={Toggle} />
+<Meta title="Atoms/Toggle" component={Toggle} />
 
 # Toggle
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 Controlled atom component indicating a user-selectable boolean value.
-Receives its `checked` prop from its parent.
+Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Preview>
   <Story name="Toggle">
@@ -24,3 +24,19 @@ Receives its `checked` prop from its parent.
 </Preview>
 
 <Props of={Toggle} />
+
+## Alternative Toggle
+
+This is the small size and brand purple theme.
+
+<Preview>
+  <Story name="Alternative Toggle">
+    <Toggle
+      checked={boolean('checked', false)}
+      label="Toggle"
+      onChange={action('Change')}
+      theme="purple"
+      size="small"
+    />
+  </Story>
+</Preview>
