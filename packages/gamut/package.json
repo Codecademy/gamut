@@ -35,7 +35,8 @@
     "react-aria-tabpanel": "^4.4.0",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
-    "react-truncate-markup": "^4.1.1"
+    "react-truncate-markup": "^4.1.1",
+    "react-use": "13.18.0"
   },
   "scripts": {
     "verify": "tsc --noEmit",
