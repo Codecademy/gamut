@@ -1,18 +1,16 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>12.3.1 (2020-08-11)</small>
-
-* chore: fix package.json artifacts ([2bb761f](https://github.com/RyzacInc/client-modules/commit/2bb761f))
-* chore: update changelogs ([6ef5bb6](https://github.com/RyzacInc/client-modules/commit/6ef5bb6))
-* chore: update changelogs ([c6b398f](https://github.com/RyzacInc/client-modules/commit/c6b398f))
-* chore(deps): update react-use ([8877737](https://github.com/RyzacInc/client-modules/commit/8877737))
+### [12.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.6...@codecademy/gamut@12.3.1) (2020-08-11)
 
 
+### ✨ Features
+
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+* **Overlay:** Adds Overlay body scroll lock [GM-26] ([#857](https://github.com/Codecademy/client-modules/issues/857)) ([04520b2](https://github.com/Codecademy/client-modules/commit/04520b2002c8cb096ad97bf0c39f277fb8a794d4))
 
 
+### Other Changes
+
+* **deps:** update react-use ([8877737](https://github.com/Codecademy/client-modules/commit/88777373fbf084e5dd610cb967919d33138ce122))
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
 
 ### [12.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.5...@codecademy/gamut@12.2.6) (2020-08-06)
 
@@ -2835,3 +2833,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
