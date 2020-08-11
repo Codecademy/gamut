@@ -1,3 +1,18 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 3.1.0 (2020-08-11)
+
+* feat(Icons): Update Delete & Check Icons and add contributing guide GM-63 GM-67 (#912) ([3db8c74](https://github.com/RyzacInc/client-modules/commit/3db8c74)), closes [#912](https://github.com/RyzacInc/client-modules/issues/912)
+* chore: update changelogs ([3ba548b](https://github.com/RyzacInc/client-modules/commit/3ba548b))
+* chore: update changelogs ([b8a49c7](https://github.com/RyzacInc/client-modules/commit/b8a49c7))
+
+
+
+
+
 ### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.0...@codecademy/gamut-icons@3.0.1) (2020-07-29)
 
 ## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
@@ -169,4 +184,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
