@@ -1,11 +1,14 @@
+/** @jsx jsx */
+
 import React from 'react';
+import { jsx } from '@emotion/core';
 
 import {
   ArrowChevronUpIcon,
   ArrowChevronDownIcon,
 } from '@codecademy/gamut-icons';
 import { Button } from '../../Button';
-import styles from './styles.module.scss';
+import { stepperButtonStyles, stepperButtonIconStyles } from './styles';
 
 export interface StepButtonProps {
   onClick: () => void;
@@ -27,15 +30,15 @@ export const StepButton: React.FC<StepButtonProps> = ({
       flat
       type="button"
       onClick={onClick}
-      className={styles.stepButton}
+      css={stepperButtonStyles}
       id={id}
       aria-label={ariaLabel}
       aria-labelledby={`${labelledBy} ${id}`}
     >
       {type === 'up' ? (
-        <ArrowChevronUpIcon className={styles.stepperUp} />
+        <ArrowChevronUpIcon css={stepperButtonIconStyles} />
       ) : (
-        <ArrowChevronDownIcon className={styles.stepperDown} />
+        <ArrowChevronDownIcon css={stepperButtonIconStyles} />
       )}
     </Button>
   );

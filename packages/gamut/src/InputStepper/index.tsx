@@ -1,7 +1,14 @@
+/** @jsx jsx */
+
 import React, { useEffect } from 'react';
-import styles from './styles.module.scss';
-import { StepButton } from './StepButton';
-import cx from 'classnames';
+import { jsx } from '@emotion/core';
+import StepButton from './StepButton';
+import {
+  stepperStyles,
+  inputStyles,
+  columnStyles,
+  labelStyles,
+} from './styles';
 
 export type InputStepperButtonTargets =
   | 'increase_selection'
@@ -61,12 +68,12 @@ export const InputStepper: React.FC<InputStepperProps> = ({
 
   const calculateWidthFromMax = () => {
     if (max < 10) {
-      return styles.mini;
+      return 'mini';
     }
     if (max > 99) {
-      return styles.long;
+      return 'long';
     }
-    return styles.standardWidth;
+    return 'standard';
   };
 
   const increment = (incrementAmount: 1 | -1) => {
@@ -103,11 +110,11 @@ export const InputStepper: React.FC<InputStepperProps> = ({
   const inputWidthClass = calculateWidthFromMax();
 
   return (
-    <div className={cx(styles.stepper, className)}>
-      <div className={styles.column}>
+    <div className={className} css={stepperStyles}>
+      <div css={columnStyles}>
         {/** render the actual input field */}
         <input
-          className={cx(styles.input, inputWidthClass)}
+          css={inputStyles(inputWidthClass)}
           type="number"
           max={max}
           min={min}
@@ -123,7 +130,7 @@ export const InputStepper: React.FC<InputStepperProps> = ({
         {/* render the label for the input field */}
         <label
           id={labelId}
-          className={styles.label}
+          css={labelStyles}
           aria-label={ariaLabel}
           htmlFor={inputId}
         >
@@ -132,7 +139,7 @@ export const InputStepper: React.FC<InputStepperProps> = ({
       </div>
 
       {/** step up and step down buttons */}
-      <div className={styles.column}>
+      <div css={columnStyles}>
         <StepButton
           onClick={() => increment(1)}
           type="up"
