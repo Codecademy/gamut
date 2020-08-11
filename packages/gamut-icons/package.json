@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "license": "MIT",
   "devDependencies": {

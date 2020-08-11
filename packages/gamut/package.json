@@ -13,7 +13,7 @@
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
