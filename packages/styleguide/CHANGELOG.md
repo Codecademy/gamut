@@ -1,15 +1,10 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>13.3.1 (2020-08-11)</small>
-
-* chore: update changelogs ([c6b398f](https://github.com/RyzacInc/client-modules/commit/c6b398f))
+### [13.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.6...@codecademy/styleguide@13.3.1) (2020-08-11)
 
 
+### ✨ Features
 
-
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+* **Overlay:** Adds Overlay body scroll lock [GM-26] ([#857](https://github.com/Codecademy/client-modules/issues/857)) ([04520b2](https://github.com/Codecademy/client-modules/commit/04520b2002c8cb096ad97bf0c39f277fb8a794d4))
 
 ### [13.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.5...@codecademy/styleguide@13.2.6) (2020-08-06)
 
@@ -937,3 +932,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
