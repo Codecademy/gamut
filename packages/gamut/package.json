@@ -50,5 +50,6 @@
   "license": "MIT",
   "devDependencies": {
     "onchange": "^7.0.2"
-  }
+  },
+  "gitHead": "966ce5542079f90c99d60a8aa85f832b638629bd"
 }

@@ -30,5 +30,6 @@
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "gitHead": "966ce5542079f90c99d60a8aa85f832b638629bd"
 }
