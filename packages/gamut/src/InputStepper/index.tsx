@@ -8,6 +8,7 @@ import {
   inputStyles,
   columnStyles,
   labelStyles,
+  SizeType,
 } from './styles';
 
 export type InputStepperButtonTargets =
@@ -66,7 +67,7 @@ export const InputStepper: React.FC<InputStepperProps> = ({
     return value;
   };
 
-  const calculateWidthFromMax = () => {
+  const calculateWidthFromMax = (): SizeType => {
     if (max < 10) {
       return 'mini';
     }

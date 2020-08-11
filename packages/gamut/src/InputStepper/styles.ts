@@ -18,13 +18,14 @@ export const columnStyles = css`
   }
 `;
 
-const sizes = {
+export type SizeType = 'mini' | 'standard' | 'long';
+const sizes: Record<SizeType, number> = {
   mini: 4.5,
   standard: 5,
   long: 8,
 };
 
-export const inputStyles = (sizeType: 'mini' | 'standard' | 'long') => {
+export const inputStyles = (sizeType: SizeType) => {
   return css`
     border: 2px solid ${colors.gray[200]};
     border-radius: 4px;
