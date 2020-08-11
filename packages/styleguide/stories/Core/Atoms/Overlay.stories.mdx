@@ -1,7 +1,7 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
-import { Overlay, Button, Container } from '@codecademy/gamut/src';
+import { Overlay, Button, Heading, Container } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
 <Meta title="Atoms/Overlay" component={Overlay} />
@@ -38,9 +38,10 @@ a background behind content, see `Modal`.
               isOpen={open}
               onRequestClose={() => setOpen(false)}
             >
-              <Container>
-                <h1>Hooray!</h1>
-              </Container>
+              <Heading as="h1" fontSize="lg">
+                Hooray!
+              </Heading>
+              <Button onClick={() => setOpen(false)}>Close Me</Button>
             </Overlay>
           </Container>
         </React.Fragment>
