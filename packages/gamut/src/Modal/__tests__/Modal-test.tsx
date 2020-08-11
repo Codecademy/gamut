@@ -63,6 +63,16 @@ describe('Modal', () => {
     expect(onRequestClose.mock.calls.length).toBe(1);
   });
 
+  it('triggers onRequestClose callback when clicking the default close button', () => {
+    const onRequestClose = jest.fn();
+    renderModal({
+      isOpen: true,
+      onRequestClose,
+    });
+    fireEvent.click(screen.getByRole('button'));
+    expect(onRequestClose.mock.calls.length).toBe(1);
+  });
+
   it('does not trigger onRequestClose callback when clicking inside', () => {
     const onRequestClose = jest.fn();
     renderModal({

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import { useLockBodyScroll } from 'react-use';
-import React from 'react';
+import { useLockBodyScroll, usePrevious } from 'react-use';
+import React, { useState, useEffect } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -33,9 +33,31 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  useLockBodyScroll(isOpen);
+  const [trapActive, setTrapActive] = useState(isOpen);
+  const wasOpen = usePrevious(isOpen);
 
-  if (!isOpen) return null;
+  const requestCloseCallback = () => {
+    setTrapActive(false);
+  };
+
+  useLockBodyScroll(trapActive);
+
+  useEffect(() => {
+    // FocusTrap callbacks triggered deactivate
+    if (wasOpen && isOpen && !trapActive) {
+      onRequestClose();
+    }
+    // Parent component set isOpen to true
+    if (!wasOpen && isOpen && !trapActive) {
+      setTrapActive(true);
+    }
+    // Parent component set isOpen to false
+    if (wasOpen && !isOpen && trapActive) {
+      setTrapActive(false);
+    }
+  }, [isOpen, onRequestClose, trapActive, wasOpen]);
+
+  if (!trapActive) return null;
 
   return (
     <BodyPortal>
@@ -44,7 +66,7 @@ export const Overlay: React.FC<OverlayProps> = ({
           focusTrapOptions={{
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
-            onDeactivate: onRequestClose,
+            onDeactivate: requestCloseCallback,
           }}
         >
           {children}

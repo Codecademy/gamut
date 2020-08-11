@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 
 import { Overlay, OverlayProps } from '..';
@@ -8,7 +8,33 @@ const renderOverlay = (props?: Partial<OverlayProps>) => {
     <Overlay onRequestClose={() => {}} {...props}>
       <div data-testid="overlay-content">
         Howdy!
-        <button type="button" />
+        <button type="button" onClick={props?.onRequestClose} />
+      </div>
+    </Overlay>
+  );
+};
+
+const ToggleableOverlay = ({
+  closeCallback,
+}: {
+  closeCallback: () => void;
+}) => {
+  const [isOpen, setOpen] = useState(true);
+  const onRequestClose = useCallback(() => {
+    closeCallback();
+    setOpen(false);
+  }, [closeCallback]);
+
+  return (
+    <Overlay
+      isOpen={isOpen}
+      clickOutsideCloses
+      escapeCloses
+      onRequestClose={onRequestClose}
+    >
+      <div data-testid="overlay-content">
+        Howdy!
+        <button type="button" onClick={onRequestClose} />
       </div>
     </Overlay>
   );
@@ -73,5 +99,12 @@ describe('Overlay', () => {
     });
     fireEvent.mouseDown(screen.getByTestId('overlay-content'));
     expect(onRequestClose.mock.calls.length).toBe(0);
+  });
+
+  it('triggers onRequestClose callback once when triggered manually', () => {
+    const closeCallback = jest.fn();
+    render(<ToggleableOverlay closeCallback={closeCallback} />);
+    fireEvent.click(screen.getByRole('button'));
+    expect(closeCallback.mock.calls.length).toBe(1);
   });
 });
