@@ -1,17 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>4.2.4 (2020-08-11)</small>
-
-* chore: fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1))
-* chore: update changelogs ([3ba548b](https://github.com/Codecademy/client-modules/commit/3ba548b))
-* chore: update changelogs ([8bcd244](https://github.com/Codecademy/client-modules/commit/8bcd244))
+### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.3...@codecademy/gamut-styles@4.2.4) (2020-08-11)
 
 
+### Other Changes
 
-
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
 
 ### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.2...@codecademy/gamut-styles@4.2.3) (2020-08-06)
 
@@ -525,3 +517,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
