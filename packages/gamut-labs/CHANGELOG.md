@@ -1,3 +1,14 @@
+### [1.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.1...@codecademy/gamut-labs@1.9.2) (2020-08-11)
+
+### [1.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.0...@codecademy/gamut-labs@1.9.1) (2020-08-11)
+
+
+### Other Changes
+
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
+
+## [1.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.7...@codecademy/gamut-labs@1.9.0) (2020-08-11)
+
 ### [1.8.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.6...@codecademy/gamut-labs@1.8.7) (2020-08-06)
 
 ### [1.8.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.5...@codecademy/gamut-labs@1.8.6) (2020-08-06)

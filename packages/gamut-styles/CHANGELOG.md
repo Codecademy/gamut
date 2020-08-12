@@ -1,3 +1,10 @@
+### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.3...@codecademy/gamut-styles@4.2.4) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
 ### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.2...@codecademy/gamut-styles@4.2.3) (2020-08-06)
 
 
