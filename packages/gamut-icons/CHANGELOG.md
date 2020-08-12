@@ -1,3 +1,11 @@
+### [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.0...@codecademy/gamut-icons@3.1.1) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
+
 ## [3.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.1...@codecademy/gamut-icons@3.1.0) (2020-08-11)
 
 

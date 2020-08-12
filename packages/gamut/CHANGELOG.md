@@ -1,3 +1,10 @@
+### [12.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.1...@codecademy/gamut@12.3.2) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
 ### [12.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.6...@codecademy/gamut@12.3.1) (2020-08-11)
 
 
