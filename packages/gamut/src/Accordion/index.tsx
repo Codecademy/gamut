@@ -5,7 +5,13 @@ import AccordionButton, {
   AccordionButtonTheme,
 } from '../AccordionButton';
 
+export type ChildrenOrExpandedRender =
+  | React.ReactNode
+  | ((expanded: boolean) => React.ReactNode);
+
 export type AccordionProps = {
+  children: ChildrenOrExpandedRender;
+
   /**
    * CSS class name added to the root area container.
    */
@@ -36,7 +42,7 @@ export type AccordionProps = {
   /**
    * Contents to place within the top button.
    */
-  top: React.ReactNode;
+  top: ChildrenOrExpandedRender;
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
@@ -49,6 +55,8 @@ export const Accordion: React.FC<AccordionProps> = ({
   top,
 }) => {
   const [expanded, setExpanded] = useState(!!initiallyExpanded);
+  const expandRenderer = (renderer: ChildrenOrExpandedRender) =>
+    renderer instanceof Function ? renderer(expanded) : renderer;
 
   return (
     <AccordionArea
@@ -64,11 +72,11 @@ export const Accordion: React.FC<AccordionProps> = ({
           size={size}
           theme={theme}
         >
-          {top}
+          {expandRenderer(top)}
         </AccordionButton>
       }
     >
-      {children}
+      {expandRenderer(children)}
     </AccordionArea>
   );
 };
