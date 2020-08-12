@@ -58,7 +58,6 @@ export const Accordion: React.FC<AccordionProps> = ({
         <AccordionButton
           expanded={expanded}
           onClick={() => {
-            console.log('onClick firing');
             setExpanded(!expanded);
             onClick?.(!expanded);
           }}
