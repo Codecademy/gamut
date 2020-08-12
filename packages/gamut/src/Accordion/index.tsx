@@ -7,6 +7,11 @@ import AccordionButton, {
 
 export type AccordionProps = {
   /**
+   * CSS class name added to the root area container.
+   */
+  className?: string;
+
+  /**
    * Whether the accordion should start off with expanded state.
    */
   initiallyExpanded?: boolean;
@@ -36,6 +41,7 @@ export type AccordionProps = {
 
 export const Accordion: React.FC<AccordionProps> = ({
   children,
+  className,
   initiallyExpanded,
   onClick,
   size,
@@ -46,6 +52,7 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <AccordionArea
+      className={className}
       expanded={expanded}
       top={
         <AccordionButton
