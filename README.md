@@ -58,14 +58,12 @@ symlinks (the following instructions assume you have set up and built client-mod
 
 If your other project uses React, you must link that copy of React in Gamut:
 
-```
 1. `cd path/to/other/repo`
 1. `cd node_modules/react`
 1. `yarn link`
 1. `cd /path/to/client-modules/packages/gamut`
 1. `yarn link react`
 1. `yarn build-all`
-```
 
 [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why you have to do this.
