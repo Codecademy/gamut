@@ -2,11 +2,11 @@ import { mount } from 'enzyme';
 import React from 'react';
 
 import Accordion, { AccordionProps } from '..';
+import { act } from 'react-dom/test-utils';
 
 const renderComponent = (overrides: Partial<AccordionProps> = {}) => {
   const props = {
     children: <div data-testid="contents" />,
-    expanded: false,
     top: 'Click me!',
     ...overrides,
   } as const;
@@ -35,5 +35,16 @@ describe('Accordion', () => {
     wrapper.find('button').simulate('click');
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
+  });
+
+  it('calls onClick when its button is clicked and onClick is provided', () => {
+    const onClick = jest.fn();
+    const wrapper = renderComponent({ onClick });
+
+    act(() => {
+      wrapper.find('button').simulate('click');
+    });
+
+    expect(onClick).toHaveBeenCalledWith(true);
   });
 });
