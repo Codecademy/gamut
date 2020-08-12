@@ -91,6 +91,8 @@ export const colors = {
   },
   black: '#000000',
   white: '#ffffff',
+  beige: '#efd9ca',
+  royalBlue: '#6400e4',
 };
 
 export const brandColors = {
