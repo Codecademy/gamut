@@ -19,5 +19,3 @@ export function CardContent(props: CardContentProps) {
     </div>
   );
 }
-
-export default CardContent;

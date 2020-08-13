@@ -1,26 +1,27 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "12.2.2",
+  "version": "12.3.3",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "dist/ButtonBase/index.js"
+    "dist/ButtonBase/index.js",
+    "dist/Card/CardShell.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^3.0.1",
-    "@codecademy/gamut-styles": "^4.2.2",
+    "@codecademy/gamut-icons": "^3.1.2",
+    "@codecademy/gamut-styles": "^4.2.5",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
@@ -34,7 +35,8 @@
     "react-aria-tabpanel": "^4.4.0",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
-    "react-truncate-markup": "^4.1.1"
+    "react-truncate-markup": "^4.1.1",
+    "react-use": "^13.18.0"
   },
   "scripts": {
     "verify": "tsc --noEmit",

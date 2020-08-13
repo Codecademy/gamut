@@ -69,5 +69,3 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     </div>
   );
 };
-
-export default Testimonial;

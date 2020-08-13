@@ -30,5 +30,3 @@ export const HighlightedText: React.FC<HighlightedTextProps> = ({
 
   return <em {...combinedProps}>{words}</em>;
 };
-
-export default HighlightedText;

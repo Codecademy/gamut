@@ -13,5 +13,3 @@ export const PythonIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PythonIcon.defaultProps = defaultIconProps;
-
-export default PythonIcon;

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
-import omitProps from '../utils/omitProps';
+import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
+import { omitProps } from '../utils/omitProps';
 import s from './styles/index.module.scss';
 
 // themes can be an alias to a color
@@ -141,5 +141,3 @@ export const Button: React.FC<ButtonProps> = (props) => {
     </ButtonBase>
   );
 };
-
-export default Button;

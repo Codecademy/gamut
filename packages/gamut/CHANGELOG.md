@@ -1,9 +1,56 @@
-### [12.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.1...@codecademy/gamut@12.2.2) (2020-07-29)
+### [12.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.2...@codecademy/gamut@12.3.3) (2020-08-13)
 
 
 ### Other Changes
 
-* update changelogs ([a81d35c](https://github.com/Codecademy/client-modules/commit/a81d35c516533a39ca95851c21a7613aa053226f))
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [12.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.1...@codecademy/gamut@12.3.2) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
+### [12.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.6...@codecademy/gamut@12.3.1) (2020-08-11)
+
+
+### ✨ Features
+
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+* **Overlay:** Adds Overlay body scroll lock [GM-26] ([#857](https://github.com/Codecademy/client-modules/issues/857)) ([04520b2](https://github.com/Codecademy/client-modules/commit/04520b2002c8cb096ad97bf0c39f277fb8a794d4))
+
+
+### Other Changes
+
+* **deps:** update react-use ([8877737](https://github.com/Codecademy/client-modules/commit/88777373fbf084e5dd610cb967919d33138ce122))
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
+
+### [12.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.5...@codecademy/gamut@12.2.6) (2020-08-06)
+
+
+### 🐛 Bug Fixes
+
+* **CardShell:** Add Cardshell to the sideEffect list ([#910](https://github.com/Codecademy/client-modules/issues/910)) ([b8ce5a1](https://github.com/Codecademy/client-modules/commit/b8ce5a13ce54c543c1839eedc7d8e4c8470b871f))
+
+### [12.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.4...@codecademy/gamut@12.2.5) (2020-08-06)
+
+
+### 🐛 Bug Fixes
+
+* MarkdownAnchor should still render children ([#909](https://github.com/Codecademy/client-modules/issues/909)) ([1e7303c](https://github.com/Codecademy/client-modules/commit/1e7303c14b38c6def962259af8a4e938e2760237))
+* **Toggle:** Convert rem to px-rem() ([#897](https://github.com/Codecademy/client-modules/issues/897)) ([5a7b0b1](https://github.com/Codecademy/client-modules/commit/5a7b0b1494f56148fffbc241dd81f6f77eaf6889))
+
+### [12.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.3...@codecademy/gamut@12.2.4) (2020-08-06)
+
+### [12.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.2...@codecademy/gamut@12.2.3) (2020-08-06)
+
+
+### 🐛 Bug Fixes
+
+* **Alert:** make alert tabbable for voiceover ([#903](https://github.com/Codecademy/client-modules/issues/903)) ([d29d92e](https://github.com/Codecademy/client-modules/commit/d29d92e90caee12ced405a31a8cf5373e6502903))
+
+### [12.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.1...@codecademy/gamut@12.2.2) (2020-07-29)
 
 ### [12.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.2.0...@codecademy/gamut@12.2.1) (2020-07-29)
 
@@ -16,7 +63,6 @@
 ### Other Changes
 
 * Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
-* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
 
 ## [12.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.2...@codecademy/gamut@12.2.0) (2020-07-27)
 
@@ -30,22 +76,15 @@
 ### Other Changes
 
 * Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
-* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
 
 ### [12.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.1...@codecademy/gamut@12.1.2) (2020-07-27)
 
 
 ### Other Changes
 
-* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
 * Used default outline for active and focused Tabs ([#892](https://github.com/Codecademy/client-modules/issues/892)) ([0d14b51](https://github.com/Codecademy/client-modules/commit/0d14b519aa78c4f229aa261b8814aa4d543f1b36))
 
 ### [12.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.1.0...@codecademy/gamut@12.1.1) (2020-07-24)
-
-
-### Other Changes
-
-* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
 
 
 ### 🐛 Bug Fixes
@@ -53,11 +92,6 @@
 * **Button:** Added align-items: center to Button styles ([#884](https://github.com/Codecademy/client-modules/issues/884)) ([cc4280e](https://github.com/Codecademy/client-modules/commit/cc4280ee1b324cc023cbdfcc2d0271a04fda2f1f))
 
 ## [12.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.0.1...@codecademy/gamut@12.1.0) (2020-07-24)
-
-
-### Other Changes
-
-* update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
 
 
 ### ✨ Features
@@ -70,7 +104,6 @@
 ### Other Changes
 
 * Fix close alert acessibility ([#882](https://github.com/Codecademy/client-modules/issues/882)) ([c9bfc68](https://github.com/Codecademy/client-modules/commit/c9bfc683bf84a479e2bcd1d1d2b8e8ce57a5cd66))
-* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
 ## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.1.0...@codecademy/gamut@12.0.0) (2020-07-22)
 
@@ -79,21 +112,11 @@
 
 * **Icons:** Streamline Icon Set Full [GM-30] (#838)
 
-### Other Changes
-
-* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
-
-
 ### ✨ Features
 
 * **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@11.0.0...@codecademy/gamut@11.1.0) (2020-07-21)
-
-
-### Other Changes
-
-* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
 
 ### ✨ Features
@@ -107,11 +130,6 @@
 
 * **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
 
-### Other Changes
-
-* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
-
-
 ### ✨ Features
 
 * **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
@@ -123,21 +141,11 @@
 
 * Strict TypeScript with react-hook-form@6 (#852)
 
-### Other Changes
-
-* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
-
-
 ### 🐛 Bug Fixes
 
 * Strict TypeScript with react-hook-form@6 ([#852](https://github.com/Codecademy/client-modules/issues/852)) ([817fa8c](https://github.com/Codecademy/client-modules/commit/817fa8c7e05be6556e4e2f393bbe52fe142d63e4))
 
 ### [9.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.4...@codecademy/gamut@9.5.5) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
 
 ### 🐛 Bug Fixes
@@ -150,14 +158,12 @@
 ### Other Changes
 
 * Erroneous error ([#880](https://github.com/Codecademy/client-modules/issues/880)) ([5228f25](https://github.com/Codecademy/client-modules/commit/5228f25a17cb4c37ca6ea4baa5b449bd961dd02b))
-* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
 
 ### [9.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.2...@codecademy/gamut@9.5.3) (2020-07-17)
 
 
 ### Other Changes
 
-* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 * Used old ChevronDownIcon in AccordionButton ([#879](https://github.com/Codecademy/client-modules/issues/879)) ([e5d29a4](https://github.com/Codecademy/client-modules/commit/e5d29a47cc1eb6e58e3671680969b9da5edfc8ec))
 
 ### [9.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.5.1...@codecademy/gamut@9.5.2) (2020-07-16)
@@ -173,7 +179,6 @@
 ### Other Changes
 
 * **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
-* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [9.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@9.2.9...@codecademy/gamut@9.5.0) (2020-07-13)
 

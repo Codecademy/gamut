@@ -32,5 +32,3 @@ export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
 );
 
 CardShell.defaultProps = defaultProps;
-
-export default CardShell;

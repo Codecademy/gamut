@@ -12,5 +12,3 @@ export const EditIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 EditIcon.defaultProps = defaultIconProps;
-
-export default EditIcon;

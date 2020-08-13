@@ -1,7 +1,7 @@
 import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
-import TabPanel from '../TabPanel';
-import TabList from '../TabList';
+import { TabPanel } from '../TabPanel';
+import { TabList } from '../TabList';
 
 export interface TabsProps {
   /**
@@ -103,5 +103,3 @@ export class Tabs extends Component<TabsProps> {
     );
   }
 }
-
-export default Tabs;

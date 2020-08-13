@@ -13,5 +13,3 @@ export const DAWIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 DAWIcon.defaultProps = defaultIconProps;
-
-export default DAWIcon;

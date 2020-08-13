@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import Banner from '..';
-import Button from '../../Button';
+import { Button } from '../../Button';
+import { Banner } from '..';
 import styles from ' ../styles.module.scss';
 
 describe('Banner', () => {

@@ -12,5 +12,3 @@ export const GitIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 GitIcon.defaultProps = defaultIconProps;
-
-export default GitIcon;

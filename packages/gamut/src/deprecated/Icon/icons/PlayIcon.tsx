@@ -19,5 +19,3 @@ export const PlayIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PlayIcon.defaultProps = defaultIconProps;
-
-export default PlayIcon;

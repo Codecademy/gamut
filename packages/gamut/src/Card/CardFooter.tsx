@@ -62,5 +62,3 @@ export const CardFooter = ({
 };
 
 CardFooter.defaultProps = defaultProps;
-
-export default CardFooter;

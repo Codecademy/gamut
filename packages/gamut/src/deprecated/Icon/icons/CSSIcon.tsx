@@ -13,5 +13,3 @@ export const CSSIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CSSIcon.defaultProps = defaultIconProps;
-
-export default CSSIcon;
