@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>1.9.3 (2020-08-13)</small>
+
+* Migrated default exports to named (#913) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c)), closes [#913](https://github.com/Codecademy/client-modules/issues/913)
+* chore: update changelogs ([8d0c9ad](https://github.com/Codecademy/client-modules/commit/8d0c9ad))
+
+
+
+
+
 ### [1.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.1...@codecademy/gamut-labs@1.9.2) (2020-08-11)
 
 ### [1.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.0...@codecademy/gamut-labs@1.9.1) (2020-08-11)
@@ -157,4 +171,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-

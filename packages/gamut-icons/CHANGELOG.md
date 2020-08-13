@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>3.1.2 (2020-08-13)</small>
+
+* Migrated default exports to named (#913) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c)), closes [#913](https://github.com/Codecademy/client-modules/issues/913)
+* chore: update changelogs ([8d0c9ad](https://github.com/Codecademy/client-modules/commit/8d0c9ad))
+
+
+
+
+
 ### [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.0...@codecademy/gamut-icons@3.1.1) (2020-08-11)
 
 
@@ -184,4 +198,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
