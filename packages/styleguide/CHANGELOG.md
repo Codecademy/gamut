@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>13.3.3 (2020-08-13)</small>
-
-* Migrated default exports to named (#913) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c)), closes [#913](https://github.com/Codecademy/client-modules/issues/913)
-* chore: update changelogs ([8d0c9ad](https://github.com/Codecademy/client-modules/commit/8d0c9ad))
+### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
 
 
+### Other Changes
 
-
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
 
 ### [13.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.1...@codecademy/styleguide@13.3.2) (2020-08-11)
 
@@ -953,3 +946,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
