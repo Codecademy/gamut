@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "1.8.2",
+  "version": "1.9.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@codecademy/gamut": "^12.3.2",
-    "@codecademy/gamut-styles": "^4.2.0",
+    "@codecademy/gamut-styles": "^4.2.4",
     "classnames": "^2.2.5"
   },
   "scripts": {
