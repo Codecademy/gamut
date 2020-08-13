@@ -39,5 +39,5 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
     delete asProps.rel;
   }
 
-  return <Anchor asProps={asProps} />;
+  return <Anchor asProps={asProps}>{children}</Anchor>;
 };
