@@ -1,0 +1,34 @@
+import { Anchor, Text } from '@codecademy/gamut/src';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
+import { VisualTheme } from '@codecademy/gamut/src';
+import { StoryStatus } from '~styleguide/blocks';
+
+<Meta title="Atoms/Anchor" component={Anchor} />
+
+# Anchors
+
+<StoryStatus status="stable" />
+
+Use this component for basic inline text links.
+It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
+
+<Canvas withSource="open">
+  <Story name="Anchor">
+    <Text>
+      This is a{' '}
+      <Anchor
+        asProps={{
+          href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          target: '_blank',
+        }}
+      >
+        great video
+      </Anchor>
+      .
+    </Text>
+  </Story>
+</Canvas>
+
+<Props of={Anchor} />
+
+We know the API is a little unwieldy; we're thinking it'll get improved when we switch to CSS-in-JS...

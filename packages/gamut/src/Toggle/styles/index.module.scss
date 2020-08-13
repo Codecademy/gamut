@@ -30,13 +30,13 @@
 }
 
 .track-medium {
-  width: px-rem(60px);
-  height: px-rem(29px);
+  width: 3.75rem;
+  height: 1.8rem;
 }
 
 .track-small {
-  width: px-rem(28px);
-  height: px-rem(15px);
+  width: 1.75rem;
+  height: 0.938rem;
 }
 
 .toggled .track {
@@ -56,27 +56,27 @@
 }
 
 .thumb-medium {
-  top: px-rem(3.5px);
-  left: px-rem(3.5px);
-  width: px-rem(22px);
-  height: px-rem(22px);
+  top: 0.215rem;
+  left: 0.204rem;
+  width: 1.38rem;
+  height: 1.38rem;
   border-radius: 99rem;
 }
 
 .thumb-small {
-  top: px-rem(1px);
-  left: px-rem(1px);
-  width: px-rem(13px);
-  height: px-rem(13px);
-  border-radius: px-rem(12px);
+  top: 0.075rem;
+  left: 0.1rem;
+  width: 0.8rem;
+  height: 0.78rem;
+  border-radius: 0.75rem;
 }
 
 .toggled .thumb-medium {
-  left: px-rem(34.5px);
+  left: 2.17rem;
 }
 
 .toggled .thumb-small {
-  left: px-rem(14px);
+  left: 0.9rem;
 }
 
 .invisible {
