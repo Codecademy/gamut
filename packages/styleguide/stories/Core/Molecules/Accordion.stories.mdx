@@ -21,14 +21,16 @@ conditionally rendered based on whether the accordion is expanded.
 
 <Canvas withSource="open">
   <Story name="Accordion">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      size={select('Size', ['normal', 'large'], 'normal')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
-    >
-      Wow, hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        header="Click to Toggle Me!"
+        onChange={action('Changed')}
+        size={select('Size', ['normal', 'large'], 'normal')}
+        theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
+      >
+        Wow, hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 
@@ -49,14 +51,16 @@ If you want the accordion to start off expanded, use the `initiallyExpanded` pro
 
 <Canvas>
   <Story name="Initial Expansion">
-    <Accordion
-      header="Click to Toggle Me!"
-      initiallyExpanded
-      onChange={action('Changed')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
-    >
-      Wow, not-so-hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        header="Click to Toggle Me!"
+        initiallyExpanded
+        onChange={action('Changed')}
+        theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
+      >
+        Wow, not-so-hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 
@@ -69,13 +73,15 @@ Help Menu.
 
 <Canvas className="dark">
   <Story name="Blue">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="blue"
-    >
-      Wow, hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        header="Click to Toggle Me!"
+        onChange={action('Changed')}
+        theme="blue"
+      >
+        Wow, hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 
@@ -86,13 +92,15 @@ where we haven't been able to invest yet in a more solid theme.
 
 <Canvas>
   <Story name="Plain">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="plain"
-    >
-      Wow, hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        header="Click to Toggle Me!"
+        onChange={action('Changed')}
+        theme="plain"
+      >
+        Wow, hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 
@@ -104,12 +112,14 @@ narrative pane.
 
 <Canvas>
   <Story name="Yellow">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="yellow"
-    >
-      Wow, hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        header="Click to Toggle Me!"
+        onChange={action('Changed')}
+        theme="yellow"
+      >
+        Wow, hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>

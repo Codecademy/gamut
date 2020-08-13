@@ -19,16 +19,18 @@ Markdown renderer for all your markdown needs.
 
 <Canvas>
   <Story name="Basics">
-    <Markdown
-      text={text(
-        'markdown',
-        `
+    {(args) => (
+      <Markdown
+        text={text(
+          'markdown',
+          `
 ## Hello World
 This is markdown
     `
-      )}
-      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-    />
+        )}
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -38,10 +40,12 @@ This is markdown
 
 <Canvas>
   <Story name="Full Example">
-    <Markdown
-      text={text('markdown', exampleMarkdown)}
-      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-    />
+    {(args) => (
+      <Markdown
+        text={text('markdown', exampleMarkdown)}
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -49,33 +53,35 @@ This is markdown
 
 <Canvas>
   <Story name="Element Overrides">
-    <Markdown
-      spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-      overrides={{
-        CodeBlock: {
-          component: (props) => (
-            <Text style={{ color: 'darkblue' }} {...props} />
-          ),
-        },
-        CustomElement: {
-          component: ({ title }) => {
-            return (
-              <Heading
-                as="h3"
-                fontSize="md"
-                style={{
-                  color: 'rebeccapurple',
-                }}
-              >
-                {title}
-              </Heading>
-            );
+    {(args) => (
+      <Markdown
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+        overrides={{
+          CodeBlock: {
+            component: (props) => (
+              <Text style={{ color: 'darkblue' }} {...props} />
+            ),
           },
-          allowedAttributes: ['title'],
-        },
-      }}
-      text={customText}
-    />
+          CustomElement: {
+            component: ({ title }) => {
+              return (
+                <Heading
+                  as="h3"
+                  fontSize="md"
+                  style={{
+                    color: 'rebeccapurple',
+                  }}
+                >
+                  {title}
+                </Heading>
+              );
+            },
+            allowedAttributes: ['title'],
+          },
+        }}
+        text={customText}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -83,19 +89,21 @@ This is markdown
 
 <Canvas>
   <Story name="Inline Markdown">
-    <>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-      <Markdown
-        text={text('markdown', '`this is an inline markdown component`')}
-        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-        inline
-      />
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-      aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-      sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-      mollit anim id est laborum.
-    </>
+    {(args) => (
+      <>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+        <Markdown
+          text={text('markdown', '`this is an inline markdown component`')}
+          spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+          inline
+        />
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.
+      </>
+    )}
   </Story>
 </Canvas>

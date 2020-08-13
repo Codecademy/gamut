@@ -14,18 +14,20 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
 
 <Canvas withSource="open">
   <Story name="Anchor">
-    <Text>
-      This is a{' '}
-      <Anchor
-        asProps={{
-          href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-          target: '_blank',
-        }}
-      >
-        great video
-      </Anchor>
-      .
-    </Text>
+    {(args) => (
+      <Text>
+        This is a{' '}
+        <Anchor
+          asProps={{
+            href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            target: '_blank',
+          }}
+        >
+          great video
+        </Anchor>
+        .
+      </Text>
+    )}
   </Story>
 </Canvas>
 

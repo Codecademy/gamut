@@ -61,23 +61,25 @@ brandColors.blue;
 ### Brand
 
 <Story name="Brand">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(brandColors)
-      .filter((color) => !excludedColors.includes(color))
-      .map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <Heading as="h2" fontSize="xs">
-              {startCase(color)}
-            </Heading>
-            <Swatch
-              name={`$brand-${parseCamelCase(color)}`}
-              hex={brandColors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-  </LayoutGrid>
+  {() => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(brandColors)
+        .filter((color) => !excludedColors.includes(color))
+        .map((color) => (
+          <Column key={color} size={{ xs: 6, sm: 3 }}>
+            <Container flex={false}>
+              <Heading as="h2" fontSize="xs">
+                {startCase(color)}
+              </Heading>
+              <Swatch
+                name={`$brand-${parseCamelCase(color)}`}
+                hex={brandColors[color]}
+              />
+            </Container>
+          </Column>
+        ))}
+    </LayoutGrid>
+  )}
 </Story>
 
 <br />
@@ -87,23 +89,25 @@ brandColors.blue;
 Utility colors that are less brand specific but still used in similar patterns.
 
 <Story name="Base">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(colors)
-      .filter((color) => excludedColors.includes(color))
-      .map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <Heading as="h2" fontSize="xs">
-              {startCase(color)}
-            </Heading>
-            <Swatch
-              name={`$color-${parseCamelCase(color)}`}
-              hex={colors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-  </LayoutGrid>
+  {() => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(colors)
+        .filter((color) => excludedColors.includes(color))
+        .map((color) => (
+          <Column key={color} size={{ xs: 6, sm: 3 }}>
+            <Container flex={false}>
+              <Heading as="h2" fontSize="xs">
+                {startCase(color)}
+              </Heading>
+              <Swatch
+                name={`$color-${parseCamelCase(color)}`}
+                hex={colors[color]}
+              />
+            </Container>
+          </Column>
+        ))}
+    </LayoutGrid>
+  )}
 </Story>
 
 <br />
@@ -129,23 +133,25 @@ color.blue[900];
 ```
 
 <Story name="Rest">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(colors)
-      .filter((color) => !excludedColors.includes(color))
-      .map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <Heading as="h2" fontSize="xs">
-              {parseCamelCase(`color-${color}`)}
-            </Heading>
-            <SwatchPalette
-              variablePrefix={`color-${color}`}
-              data={colors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-  </LayoutGrid>
+  {() => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(colors)
+        .filter((color) => !excludedColors.includes(color))
+        .map((color) => (
+          <Column key={color} size={{ xs: 6, sm: 3 }}>
+            <Container flex={false}>
+              <Heading as="h2" fontSize="xs">
+                {parseCamelCase(`color-${color}`)}
+              </Heading>
+              <SwatchPalette
+                variablePrefix={`color-${color}`}
+                data={colors[color]}
+              />
+            </Container>
+          </Column>
+        ))}
+    </LayoutGrid>
+  )}
 </Story>
 
 ## Platform Colors (Learning Environment)
@@ -155,21 +161,23 @@ about containing only brand and grid colors. It uses a selection of muted
 grayish purples and a few mid-range minty greens.
 
 <Story name="Platform ">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(platformColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <Heading as="h2" fontSize="xs">
-            Platform {startCase(color)}
-          </Heading>
-          <SwatchPalette
-            variablePrefix={`platform-${color}`}
-            data={platformColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
+  {() => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(platformColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Platform {startCase(color)}
+            </Heading>
+            <SwatchPalette
+              variablePrefix={`platform-${color}`}
+              data={platformColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  )}
 </Story>
 
 ## Editor Colors
@@ -177,19 +185,21 @@ grayish purples and a few mid-range minty greens.
 The LE's code editor uses its own colors for text.
 
 <Story name="Editor">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(editorColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <Heading as="h2" fontSize="xs">
-            Editor {startCase(color)}
-          </Heading>
-          <Swatch
-            name={`color-editor-${parseCamelCase(color)}`}
-            hex={editorColors[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
+  {() => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(editorColors).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              Editor {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`color-editor-${parseCamelCase(color)}`}
+              hex={editorColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  )}
 </Story>

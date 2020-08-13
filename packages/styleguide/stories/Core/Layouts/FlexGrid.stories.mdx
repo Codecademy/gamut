@@ -22,39 +22,41 @@ not shrink to the size of its container.
 
 <Canvas>
   <Story name="Fixed Grid Default">
-    <FlexGrid {...defaultGridProps} fluid>
-      <Row>
-        <Col xs={12} sm={3} md={2} lg={1}>
-          <Box />
-        </Col>
-        <Col xs={6} sm={6} md={8} lg={10}>
-          <Box />
-        </Col>
-        <Col xs={6} sm={3} md={2} lg={1}>
-          <Box />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-      </Row>
-    </FlexGrid>
+    {(args) => (
+      <FlexGrid {...defaultGridProps} fluid>
+        <Row>
+          <Col xs={12} sm={3} md={2} lg={1}>
+            <Box />
+          </Col>
+          <Col xs={6} sm={6} md={8} lg={10}>
+            <Box />
+          </Col>
+          <Col xs={6} sm={3} md={2} lg={1}>
+            <Box />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+        </Row>
+      </FlexGrid>
+    )}
   </Story>
 </Canvas>
 
@@ -67,39 +69,41 @@ container.
 
 <Canvas>
   <Story name="Fluid Container">
-    <FlexGrid {...defaultGridProps} fluid>
-      <Row>
-        <Col xs={12} sm={3} md={2} lg={1}>
-          <Box />
-        </Col>
-        <Col xs={6} sm={6} md={8} lg={10}>
-          <Box />
-        </Col>
-        <Col xs={6} sm={3} md={2} lg={1}>
-          <Box />
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-        <Col xs={12} sm={2}>
-          <Box />
-        </Col>
-      </Row>
-    </FlexGrid>
+    {(args) => (
+      <FlexGrid {...defaultGridProps} fluid>
+        <Row>
+          <Col xs={12} sm={3} md={2} lg={1}>
+            <Box />
+          </Col>
+          <Col xs={6} sm={6} md={8} lg={10}>
+            <Box />
+          </Col>
+          <Col xs={6} sm={3} md={2} lg={1}>
+            <Box />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+          <Col xs={12} sm={2}>
+            <Box />
+          </Col>
+        </Row>
+      </FlexGrid>
+    )}
   </Story>
 </Canvas>
 
@@ -109,43 +113,45 @@ A column can be offset with the `xs` property.
 
 <Canvas>
   <Story name="Column Offsets">
-    <FlexGrid fluid {...defaultGridProps}>
-      <Row>
-        <Col xsOffset={11} xs={1}>
-          <Box />
-        </Col>
-        <Col xsOffset={10} xs={2}>
-          <Box />
-        </Col>
-        <Col xsOffset={9} xs={3}>
-          <Box />
-        </Col>
-        <Col xsOffset={8} xs={4}>
-          <Box />
-        </Col>
-        <Col xsOffset={7} xs={5}>
-          <Box />
-        </Col>
-        <Col xsOffset={6} xs={6}>
-          <Box />
-        </Col>
-        <Col xsOffset={5} xs={7}>
-          <Box />
-        </Col>
-        <Col xsOffset={4} xs={8}>
-          <Box />
-        </Col>
-        <Col xsOffset={3} xs={9}>
-          <Box />
-        </Col>
-        <Col xsOffset={2} xs={10}>
-          <Box />
-        </Col>
-        <Col xsOffset={1} xs={11}>
-          <Box />
-        </Col>
-      </Row>
-    </FlexGrid>
+    {(args) => (
+      <FlexGrid fluid {...defaultGridProps}>
+        <Row>
+          <Col xsOffset={11} xs={1}>
+            <Box />
+          </Col>
+          <Col xsOffset={10} xs={2}>
+            <Box />
+          </Col>
+          <Col xsOffset={9} xs={3}>
+            <Box />
+          </Col>
+          <Col xsOffset={8} xs={4}>
+            <Box />
+          </Col>
+          <Col xsOffset={7} xs={5}>
+            <Box />
+          </Col>
+          <Col xsOffset={6} xs={6}>
+            <Box />
+          </Col>
+          <Col xsOffset={5} xs={7}>
+            <Box />
+          </Col>
+          <Col xsOffset={4} xs={8}>
+            <Box />
+          </Col>
+          <Col xsOffset={3} xs={9}>
+            <Box />
+          </Col>
+          <Col xsOffset={2} xs={10}>
+            <Box />
+          </Col>
+          <Col xsOffset={1} xs={11}>
+            <Box />
+          </Col>
+        </Row>
+      </FlexGrid>
+    )}
   </Story>
 </Canvas>
 
@@ -155,16 +161,18 @@ You can center the content of a row by passing it `center`.
 
 <Canvas>
   <Story name="Centered">
-    <FlexGrid fluid {...defaultGridProps}>
-      <Row>
-        <Col xs={12}>
-          <Row center="xs">
-            <Col xs={6}>
-              <Box />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </FlexGrid>
+    {(args) => (
+      <FlexGrid fluid {...defaultGridProps}>
+        <Row>
+          <Col xs={12}>
+            <Row center="xs">
+              <Col xs={6}>
+                <Box />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </FlexGrid>
+    )}
   </Story>
 </Canvas>

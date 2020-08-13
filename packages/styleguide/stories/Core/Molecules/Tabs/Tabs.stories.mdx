@@ -1,9 +1,9 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { StoryStatus } from '~styleguide/blocks';
 import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
 import { Controlled, Uncontrolled } from './Examples';
+import { number, boolean, text } from '@storybook/addon-knobs';
 
 <Meta
   title="Molecules/Tabs"
@@ -18,9 +18,36 @@ import { Controlled, Uncontrolled } from './Examples';
 Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.
 
-<Canvas withSource="none">
+<Canvas withSource="open">
   <Story name="Tabs">
-    <Uncontrolled />
+    {() => (
+      <Tabs
+        defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
+        onChange={() => {}}
+        renderAllPanels={boolean('Render All panels', false)}
+      >
+        <TabList
+          center={boolean('Centered', false)}
+          maxWidth={text('Max Width', undefined)}
+        >
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanel>
+          <h2>Welcome to Tab 1</h2>
+          <p>Hi there! I'm the contents inside Tab 1. Yippee!</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>Welcome to Tab 2</h2>
+          <p>Hi there! I'm the contents inside Tab 2. Yippee!</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>Welcome to Tab 3</h2>
+          <p>Hi there! I'm the contents inside Tab 3. Yippee!</p>
+        </TabPanel>
+      </Tabs>
+    )}
   </Story>
 </Canvas>
 
@@ -30,38 +57,41 @@ to show, but only one should be visible at a time.
 
 Here's an example usage of any uncontrolled TabList
 
-```jsx
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
-
-<Tabs defaultActiveTabIndex={2} onChange={() => {}}>
-  <TabList center={false}>
-    <Tab>Tab 1</Tab>
-    <Tab>Tab 2</Tab>
-    <Tab>Tab 3</Tab>
-  </TabList>
-  <TabPanel>
-    <h2>Welcome to Tab 1</h2>
-    <p>Hi there! I'm the contents inside Tab 1. Yippee!</p>
-  </TabPanel>
-  <TabPanel>
-    <h2>Welcome to Tab 2</h2>
-    <p>Hi there! I'm the contents inside Tab 2. Yippee!</p>
-  </TabPanel>
-  <TabPanel>
-    <h2>Welcome to Tab 3</h2>
-    <p>Hi there! I'm the contents inside Tab 3. Yippee!</p>
-  </TabPanel>
-</Tabs>;
-```
-
 ## Controlled
 
 When `activeTabIndex` is specified, the component switches to
 being a controlled component. It won't change its own tab state, but will
 instead notify of a request to change using `onChange`.
 
-<Canvas withSource="none">
+<Canvas>
   <Story name="Controlled">
-    <Controlled />
+    {() => (
+      <Tabs
+        activeTabIndex={number('Active Tab Index', 0)}
+        onChange={() => {}}
+        renderAllPanels={boolean('Render All Panels', false)}
+      >
+        <TabList
+          center={boolean('Centered', false)}
+          maxWidth={text('Max Width', undefined)}
+        >
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanel>
+          <h2>Welcome to Tab 1</h2>
+          <p>Hi there! I'm the contents inside Tab 1. Yippee!</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>Welcome to Tab 2</h2>
+          <p>Hi there! I'm the contents inside Tab 2. Yippee!</p>
+        </TabPanel>
+        <TabPanel>
+          <h2>Welcome to Tab 3</h2>
+          <p>Hi there! I'm the contents inside Tab 3. Yippee!</p>
+        </TabPanel>
+      </Tabs>
+    )}
   </Story>
 </Canvas>

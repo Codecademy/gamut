@@ -13,7 +13,7 @@ Simple Modal portal to escape current DOM Context.
 
 <Canvas>
   <Story name="Modal">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
@@ -39,7 +39,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
 
 <Canvas>
   <Story name="Without Close Default">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
@@ -71,7 +71,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
 
 <Canvas>
   <Story name="Clicking Outside">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>

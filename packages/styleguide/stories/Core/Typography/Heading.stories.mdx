@@ -49,9 +49,11 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 
 <Preview>
   <Story name="Custom Colors">
-    <Heading fontSize="md" as="h3" style={{ color: brandColors.purple }}>
-      Brand Purple
-    </Heading>
+    {(args) => (
+      <Heading fontSize="md" as="h3" style={{ color: brandColors.purple }}>
+        Brand Purple
+      </Heading>
+    )}
   </Story>
 </Preview>
 
@@ -59,7 +61,7 @@ Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rul
 
 <Preview>
   <Story name="No Margin">
-    {() => (
+    {(args) => (
       <>
         <Heading fontSize="md" as="h3" hideMargin>
           Without Margin
