@@ -1,6 +1,6 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import SplitInterstitial from '..';
+import { SplitInterstitial } from '..';
 
 describe('SplitInterstitial', () => {
   it('renders left and right children in that order', () => {

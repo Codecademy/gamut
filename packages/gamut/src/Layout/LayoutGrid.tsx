@@ -33,5 +33,3 @@ export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
     </div>
   );
 };
-
-export default LayoutGrid;

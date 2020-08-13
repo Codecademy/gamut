@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import SkipToContent from '..';
+import { SkipToContent } from '..';
 
 describe('SkipToContent', () => {
   it('has a link to the corresponding content ID', () => {

@@ -29,5 +29,3 @@ export const Quote: React.FC<QuoteProps> = ({
     <q className={cx(s.text, classNames.text)}>{text}</q>
   </div>
 );
-
-export default Quote;

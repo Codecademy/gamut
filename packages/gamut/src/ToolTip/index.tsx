@@ -65,5 +65,3 @@ export const ToolTip: React.FC<ToolTipProps> = ({
     </div>
   );
 };
-
-export default ToolTip;

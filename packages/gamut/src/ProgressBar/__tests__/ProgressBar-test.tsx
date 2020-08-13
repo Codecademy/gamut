@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import ProgressBar, { ProgressBarProps } from '..';
+import { ProgressBar, ProgressBarProps } from '..';
 
 const renderComponent = (overrides: Partial<ProgressBarProps> = {}) => {
   return mount(<ProgressBar percent={50} theme="blue" {...overrides} />);

@@ -13,5 +13,3 @@ export const SassIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 SassIcon.defaultProps = defaultIconProps;
-
-export default SassIcon;

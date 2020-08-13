@@ -22,5 +22,3 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
     {caption && <span className={s.caption}>{caption}</span>}
   </div>
 );
-
-export default EditorialImage;

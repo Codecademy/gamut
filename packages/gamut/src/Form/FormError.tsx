@@ -11,5 +11,3 @@ export const FormError: React.FC<HTMLAttributes<HTMLSpanElement>> = (props) => {
     />
   );
 };
-
-export default FormError;

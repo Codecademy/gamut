@@ -15,5 +15,3 @@ export const RightArrowIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 RightArrowIcon.defaultProps = defaultIconProps;
-
-export default RightArrowIcon;

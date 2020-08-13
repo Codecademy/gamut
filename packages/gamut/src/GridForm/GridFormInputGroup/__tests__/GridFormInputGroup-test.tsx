@@ -9,7 +9,7 @@ import {
   stubTextareaField,
   stubCheckboxField,
 } from '../../__tests__/stubs';
-import GridFormInputGroup, { GridFormInputGroupProps } from '..';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props: GridFormInputGroupProps = {

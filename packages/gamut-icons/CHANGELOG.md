@@ -1,3 +1,10 @@
+### [3.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.1...@codecademy/gamut-icons@3.1.2) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
 ### [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.0...@codecademy/gamut-icons@3.1.1) (2020-08-11)
 
 

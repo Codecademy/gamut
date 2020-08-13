@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MarkdownAnchor from '../index';
+import { MarkdownAnchor } from '../index';
 
 describe('MarkdownAnchor', () => {
   it('Adds target _blank to external links', () => {
