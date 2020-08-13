@@ -18,9 +18,9 @@ import { number, boolean, text } from '@storybook/addon-knobs';
 Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="Tabs">
-    {() => (
+    {(args) => (
       <Tabs
         defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
         onChange={() => {}}
@@ -65,7 +65,7 @@ instead notify of a request to change using `onChange`.
 
 <Canvas>
   <Story name="Controlled">
-    {() => (
+    {(args) => (
       <Tabs
         activeTabIndex={number('Active Tab Index', 0)}
         onChange={() => {}}

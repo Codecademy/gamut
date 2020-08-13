@@ -61,5 +61,7 @@ menu from a header.
 Notifications are not always present, so this has an empty state.
 
 <Canvas>
-  <Story name="Empty">{() => <NotificationList notifications={[]} />}</Story>
+  <Story name="Empty">
+    {(args) => <NotificationList notifications={[]} />}
+  </Story>
 </Canvas>
