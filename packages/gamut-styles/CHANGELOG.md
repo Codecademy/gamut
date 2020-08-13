@@ -1,27 +1,9 @@
-### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.3...@codecademy/gamut-styles@4.2.4) (2020-08-11)
-
-
-### Other Changes
-
-* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
-
-### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.2...@codecademy/gamut-styles@4.2.3) (2020-08-06)
-
-
-### Other Changes
-
-* add in equals sign to _responsive ([#901](https://github.com/Codecademy/client-modules/issues/901)) ([edc7e76](https://github.com/Codecademy/client-modules/commit/edc7e767227a7aec90084f14e7e08916ccdf4f3f))
-
-### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.1...@codecademy/gamut-styles@4.2.2) (2020-07-29)
-
-### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.0...@codecademy/gamut-styles@4.2.1) (2020-07-29)
-
-
-### Other Changes
-
-* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
-
 ## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.2.0) (2020-07-27)
+
+
+### Other Changes
+
+* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 
 ### ✨ Features
