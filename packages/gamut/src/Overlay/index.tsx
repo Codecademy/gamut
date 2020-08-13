@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
+import { useLockBodyScroll } from 'react-use';
 import React from 'react';
 
 import { BodyPortal } from '../BodyPortal';
@@ -32,6 +33,8 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
+  useLockBodyScroll(isOpen);
+
   if (!isOpen) return null;
 
   return (
