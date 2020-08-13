@@ -59,5 +59,3 @@ export const Byline: React.FC<BylineProps> = ({
     )}
   </div>
 );
-
-export default Byline;

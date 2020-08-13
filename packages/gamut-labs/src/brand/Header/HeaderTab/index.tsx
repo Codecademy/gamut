@@ -22,5 +22,3 @@ export const HeaderTab: React.FC<HeaderTabProps> = ({
     </div>
   );
 };
-
-export default HeaderTab;

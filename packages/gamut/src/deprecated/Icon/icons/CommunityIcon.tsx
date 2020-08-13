@@ -12,5 +12,3 @@ export const CommunityIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CommunityIcon.defaultProps = defaultIconProps;
-
-export default CommunityIcon;

@@ -17,5 +17,3 @@ export const MAWIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 MAWIcon.defaultProps = defaultIconProps;
-
-export default MAWIcon;

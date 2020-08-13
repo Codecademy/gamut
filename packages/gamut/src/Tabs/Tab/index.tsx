@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { ReactNode, FunctionComponent } from 'react';
 
-import omitProps from '../../utils/omitProps';
+import { omitProps } from '../../utils/omitProps';
 
 import s from './styles.module.scss';
 
@@ -73,5 +73,3 @@ export const Tab: FunctionComponent<TabProps> = ({
     </button>
   );
 };
-
-export default Tab;

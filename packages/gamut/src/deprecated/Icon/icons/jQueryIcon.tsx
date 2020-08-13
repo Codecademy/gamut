@@ -14,5 +14,3 @@ export const jQueryIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 jQueryIcon.defaultProps = defaultIconProps;
-
-export default jQueryIcon;

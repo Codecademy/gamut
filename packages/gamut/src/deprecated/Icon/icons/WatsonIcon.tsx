@@ -16,5 +16,3 @@ export const WatsonIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 WatsonIcon.defaultProps = defaultIconProps;
-
-export default WatsonIcon;

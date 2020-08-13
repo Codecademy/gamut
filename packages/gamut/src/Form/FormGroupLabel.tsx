@@ -27,5 +27,3 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
 
   return <div {...rest} className={classNames} />;
 };
-
-export default FormGroupLabel;

@@ -30,5 +30,3 @@ export const Interstitial: React.FC<InterstitialProps> = ({
     </div>
   );
 };
-
-export default Interstitial;

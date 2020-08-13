@@ -12,5 +12,3 @@ export const CertificateIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CertificateIcon.defaultProps = defaultIconProps;
-
-export default CertificateIcon;

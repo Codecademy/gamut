@@ -1,3 +1,10 @@
+### [12.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.2...@codecademy/gamut@12.3.3) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
 ### [12.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.1...@codecademy/gamut@12.3.2) (2020-08-11)
 
 

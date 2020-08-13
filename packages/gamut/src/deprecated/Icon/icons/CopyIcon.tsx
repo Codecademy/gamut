@@ -25,5 +25,3 @@ export const CopyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CopyIcon.defaultProps = defaultIconProps;
-
-export default CopyIcon;

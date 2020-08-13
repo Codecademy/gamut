@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Tab, { TabProps } from '..';
+import { Tab, TabProps } from '..';
 
 const mountTab = (customProps: Partial<TabProps>) => {
   const props = {

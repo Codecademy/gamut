@@ -12,5 +12,3 @@ export const LessonIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 LessonIcon.defaultProps = defaultIconProps;
-
-export default LessonIcon;

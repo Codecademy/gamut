@@ -32,5 +32,3 @@ export const GridFormTextInput: React.FC<GridFormTextInputProps> = ({
     />
   );
 };
-
-export default GridFormTextInput;

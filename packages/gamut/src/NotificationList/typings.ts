@@ -1,4 +1,4 @@
-import iconMap from '../deprecated/Icon/iconMap';
+import { iconMap } from '../deprecated/Icon/iconMap';
 
 export type NotificationIconSettings = {
   backgroundColor?: string;

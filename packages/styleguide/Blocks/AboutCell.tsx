@@ -71,5 +71,3 @@ export const AboutCell: React.FC<AboutCellProps> = ({
     </div>
   );
 };
-
-export default AboutCell;

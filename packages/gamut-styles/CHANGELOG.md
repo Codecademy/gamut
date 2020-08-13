@@ -1,3 +1,10 @@
+### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.4...@codecademy/gamut-styles@4.2.5) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
 ### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.3...@codecademy/gamut-styles@4.2.4) (2020-08-11)
 
 

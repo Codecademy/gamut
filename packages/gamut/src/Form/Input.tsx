@@ -33,5 +33,3 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.defaultProps = {
   type: 'text',
 };
-
-export default Input;

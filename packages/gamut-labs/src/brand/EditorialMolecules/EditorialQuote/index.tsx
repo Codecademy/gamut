@@ -8,5 +8,3 @@ export type EditorialQuoteProps = {
 export const EditorialQuote: React.FC<EditorialQuoteProps> = ({ quote }) => (
   <q className={s.quote}>{quote}</q>
 );
-
-export default EditorialQuote;

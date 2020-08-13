@@ -59,5 +59,3 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     );
   }
 );
-
-export default Radio;

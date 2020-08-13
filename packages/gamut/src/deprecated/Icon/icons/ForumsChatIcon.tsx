@@ -15,5 +15,3 @@ export const ForumsChatIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ForumsChatIcon.defaultProps = defaultIconProps;
-
-export default ForumsChatIcon;

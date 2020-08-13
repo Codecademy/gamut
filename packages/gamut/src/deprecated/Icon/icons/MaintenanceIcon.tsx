@@ -18,5 +18,3 @@ export const MaintenanceIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 MaintenanceIcon.defaultProps = defaultIconProps;
-
-export default MaintenanceIcon;
