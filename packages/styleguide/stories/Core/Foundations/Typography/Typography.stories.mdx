@@ -30,7 +30,7 @@ We have 4 main font-stacks that are used through out our front end apps. They ar
 4. `System` largely unused by still defined for when system fonts are necessary.
 
 <Canvas withSource="none" isColumn>
-  {Object.entries(DesignTokens.fontStack).map(([alias, value]) => (
+  {Object.entries(DesignTokens.fontFamily).map(([alias, value]) => (
     <ScaleRow key={alias} hasAlias>
       <ScaleColumn>{alias}</ScaleColumn>
       <Text family={value}>{value.split(',')[0].replace(/"/g, '')}</Text>
@@ -41,9 +41,9 @@ We have 4 main font-stacks that are used through out our front end apps. They ar
 ### Usage
 
 ```tsx
-import { fontStack } from '@codecademy/gamut-styles';
+import { fontFamily } from '@codecademy/gamut-styles';
 
-fontStack.base; // base | heading | monospace | system
+fontFamily.base; // base | heading | monospace | system
 ```
 
 ```scss

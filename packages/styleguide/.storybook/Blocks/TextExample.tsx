@@ -6,7 +6,7 @@ import {
   fontWeight,
   lineHeight,
 } from '@codecademy/gamut-styles';
-import { fontStack } from '@codecademy/gamut-styles/src';
+import { fontFamily } from '@codecademy/gamut-styles/src';
 import { ScaleColumn, ScaleRow } from './Scale';
 type TextProps = {
   size?: string;
@@ -20,7 +20,7 @@ export const Text = styled.p<TextProps>`
   margin: 0;
   font-size: ${({ size = fontSize.heading.lg }) => size};
   color: ${({ color = colors.black }) => color};
-  font-family: ${({ family = fontStack.base }) => family};
+  font-family: ${({ family = fontFamily.base }) => family};
   font-weight: ${({ weight = fontWeight.text }) => weight};
   line-height: ${({ line = lineHeight.text }) => line};
 `;
