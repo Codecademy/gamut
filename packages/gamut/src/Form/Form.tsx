@@ -11,5 +11,3 @@ export const Form: React.FC<FormProps> = ({ method = 'post', ...props }) => {
 
   return <form {...props} method={method} className={className} />;
 };
-
-export default Form;

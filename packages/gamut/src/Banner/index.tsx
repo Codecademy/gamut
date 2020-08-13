@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
-import Button, { ButtonProps } from '../Button';
+import { Button, ButtonProps } from '../Button';
 import { CloseIcon } from '@codecademy/gamut-icons';
 
 export enum BannerStyle {
@@ -69,5 +69,3 @@ export const Banner: React.FC<BannerProps> = ({
     </div>
   );
 };
-
-export default Banner;

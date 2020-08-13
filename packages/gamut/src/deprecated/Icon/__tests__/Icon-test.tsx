@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Icon from '..';
-import iconMap from '../iconMap';
+import { Icon } from '..';
+import { iconMap } from '../iconMap';
 
 describe('Icon', () => {
   it('renders an icon mapped by its name', () => {

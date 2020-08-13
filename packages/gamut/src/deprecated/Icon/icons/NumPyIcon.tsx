@@ -12,5 +12,3 @@ export const NumPyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 NumPyIcon.defaultProps = defaultIconProps;
-
-export default NumPyIcon;

@@ -12,5 +12,3 @@ export const AlexaIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 AlexaIcon.defaultProps = defaultIconProps;
-
-export default AlexaIcon;

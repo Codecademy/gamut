@@ -78,5 +78,3 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
     </svg>
   );
 };
-
-export default RadialProgress;

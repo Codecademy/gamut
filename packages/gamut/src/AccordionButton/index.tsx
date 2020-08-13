@@ -2,9 +2,9 @@ import cx from 'classnames';
 import React from 'react';
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
+import { ButtonBase } from '../ButtonBase';
 import styles from './styles.module.scss';
-import ButtonBase from '../ButtonBase';
 
 export type AccordionButtonProps = {
   className?: string;
@@ -83,5 +83,3 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
     </ButtonComponent>
   );
 };
-
-export default AccordionButton;

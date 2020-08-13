@@ -12,5 +12,3 @@ export const AlertIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 AlertIcon.defaultProps = defaultIconProps;
-
-export default AlertIcon;

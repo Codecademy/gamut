@@ -32,5 +32,3 @@ export const BayesIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 BayesIcon.defaultProps = defaultIconProps;
-
-export default BayesIcon;

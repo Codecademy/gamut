@@ -1,5 +1,5 @@
 import React from 'react';
-import Container, { ContainerProps } from './Container';
+import { Container, ContainerProps } from './Container';
 
 export class Item extends React.Component<ContainerProps> {
   static displayName = 'Item';
@@ -11,5 +11,3 @@ export class Item extends React.Component<ContainerProps> {
     return <Container {...this.props} />;
   }
 }
-
-export default Item;

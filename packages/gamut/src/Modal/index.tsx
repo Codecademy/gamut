@@ -2,7 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import { CloseIcon } from '@codecademy/gamut-icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
 import { CardShell } from '../Card';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
@@ -80,5 +80,3 @@ export const Modal: React.FC<ModalProps> = ({
     </Overlay>
   );
 };
-
-export default Modal;

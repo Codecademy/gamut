@@ -50,5 +50,3 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     </div>
   )
 );
-
-export default Checkbox;

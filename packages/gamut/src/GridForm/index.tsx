@@ -3,8 +3,8 @@ import { useForm, FieldError, Mode, SubmitHandler } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import GridFormInputGroup from './GridFormInputGroup';
-import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
+import { GridFormInputGroup } from './GridFormInputGroup';
+import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
 export * from './types';
@@ -103,5 +103,3 @@ export function GridForm<
     </Form>
   );
 }
-
-export default GridForm;

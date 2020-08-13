@@ -5,12 +5,10 @@ export interface TableProps extends HTMLAttributes<HTMLTableElement> {
   maxHeight?: number | string;
 }
 
-const Table: React.FC<TableProps> = ({ maxHeight, ...props }) => {
+export const Table: React.FC<TableProps> = ({ maxHeight, ...props }) => {
   return (
     <div className={s.tableWrapper} style={{ maxHeight }}>
       <table {...props} />
     </div>
   );
 };
-
-export default Table;

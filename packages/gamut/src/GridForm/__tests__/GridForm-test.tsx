@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
-import GridForm from '..';
+import { GridForm } from '..';
 import {
   stubCheckboxField,
   stubFileField,

@@ -15,5 +15,3 @@ export const AddIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 AddIcon.defaultProps = defaultIconProps;
-
-export default AddIcon;

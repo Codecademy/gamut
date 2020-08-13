@@ -66,5 +66,3 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
     </div>
   );
 };
-
-export default SplitInterstitial;

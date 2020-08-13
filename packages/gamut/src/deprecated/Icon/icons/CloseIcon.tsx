@@ -14,5 +14,3 @@ export const CloseIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CloseIcon.defaultProps = defaultIconProps;
-
-export default CloseIcon;

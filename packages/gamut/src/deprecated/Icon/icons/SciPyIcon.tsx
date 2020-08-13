@@ -13,5 +13,3 @@ export const SciPyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 SciPyIcon.defaultProps = defaultIconProps;
-
-export default SciPyIcon;

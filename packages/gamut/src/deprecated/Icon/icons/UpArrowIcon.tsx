@@ -15,5 +15,3 @@ export const UpArrowIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 UpArrowIcon.defaultProps = defaultIconProps;
-
-export default UpArrowIcon;

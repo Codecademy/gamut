@@ -15,5 +15,3 @@ export const GlassesIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 GlassesIcon.defaultProps = defaultIconProps;
-
-export default GlassesIcon;

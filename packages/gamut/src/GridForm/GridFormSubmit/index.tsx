@@ -35,5 +35,3 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
     </Column>
   );
 };
-
-export default GridFormSubmit;

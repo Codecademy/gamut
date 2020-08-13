@@ -30,5 +30,3 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
     />
   );
 };
-
-export default GridFormTextArea;
