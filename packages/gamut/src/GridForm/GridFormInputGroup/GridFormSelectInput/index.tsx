@@ -32,5 +32,3 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
     />
   );
 };
-
-export default GridFormSelectInput;

@@ -41,5 +41,3 @@ export const generateResponsiveClassnames = (
   });
   return styleList;
 };
-
-export default generateResponsiveClassnames;

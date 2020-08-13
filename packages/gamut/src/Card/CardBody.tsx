@@ -31,5 +31,3 @@ export const CardBody = ({
 };
 
 CardBody.defaultProps = defaultProps;
-
-export default CardBody;

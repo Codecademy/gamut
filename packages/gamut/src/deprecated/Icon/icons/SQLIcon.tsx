@@ -14,5 +14,3 @@ export const SQLIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 SQLIcon.defaultProps = defaultIconProps;
-
-export default SQLIcon;

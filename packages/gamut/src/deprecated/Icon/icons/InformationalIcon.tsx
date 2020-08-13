@@ -16,5 +16,3 @@ export const InformationalIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 InformationalIcon.defaultProps = defaultIconProps;
-
-export default InformationalIcon;

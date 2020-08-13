@@ -31,5 +31,3 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
     />
   );
 };
-
-export default GridFormFileInput;

@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
-import Icon from '../../deprecated/Icon';
-import iconMap from '../../deprecated/Icon/iconMap';
+import { Icon } from '../../deprecated/Icon';
+import { iconMap } from '../../deprecated/Icon/iconMap';
 import styles from './styles.module.scss';
 
 interface CardEyebrowProps {
@@ -38,5 +38,3 @@ export function CardEyebrow(props: CardEyebrowProps) {
     </div>
   );
 }
-
-export default CardEyebrow;

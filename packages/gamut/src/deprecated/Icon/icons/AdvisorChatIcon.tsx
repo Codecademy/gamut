@@ -15,5 +15,3 @@ export const AdvisorChatIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 AdvisorChatIcon.defaultProps = defaultIconProps;
-
-export default AdvisorChatIcon;

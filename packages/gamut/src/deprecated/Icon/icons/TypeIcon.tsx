@@ -12,5 +12,3 @@ export const TypeIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 TypeIcon.defaultProps = defaultIconProps;
-
-export default TypeIcon;

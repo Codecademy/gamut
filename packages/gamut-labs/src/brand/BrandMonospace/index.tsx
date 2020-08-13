@@ -10,5 +10,3 @@ export const BrandMonospace: React.FC<BrandMonospaceProps> = ({
   as: Element = 'span',
   children,
 }) => <Element className={s.font}>{children}</Element>;
-
-export default BrandMonospace;

@@ -22,5 +22,3 @@ export const createPromise = <T>(): CreatedPromise<T> => {
 
   return { innerPromise, reject, resolve };
 };
-
-export default createPromise;

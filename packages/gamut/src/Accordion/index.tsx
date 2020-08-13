@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useLayoutEffect, useState } from 'react';
 
-import AccordionButton from '../AccordionButton';
+import { AccordionButton } from '../AccordionButton';
 
 export type RenderWithExpanded = (expanded: boolean) => React.ReactNode;
 
@@ -89,5 +89,3 @@ export const Accordion: React.FC<AccordionProps> = ({
     </div>
   );
 };
-
-export default Accordion;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { get } from 'lodash';
-import Icon from '../deprecated/Icon';
+import { Icon } from '../deprecated/Icon';
 import { NotificationIconSettings } from './typings';
-import iconMap from '../deprecated/Icon/iconMap';
+import { iconMap } from '../deprecated/Icon/iconMap';
 import s from './styles/NotificationIcon.module.scss';
 
 const renderIcon = (props: NotificationIconProps) => {
@@ -40,5 +40,3 @@ export type NotificationIconProps = {
 export const NotificationIcon: React.FC<NotificationIconProps> = (props) => (
   <div className={s.iconContainer}>{renderIcon(props)}</div>
 );
-
-export default NotificationIcon;

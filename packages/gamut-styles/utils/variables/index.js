@@ -167,14 +167,3 @@ export const breakpoints = {
   lg: '1200px',
   xl: '1440px',
 };
-
-export default {
-  colors,
-  brandColors,
-  editorColors,
-  effectColors,
-  grid,
-  breakpoints,
-  legacyBreakpoints,
-  platformColors,
-};

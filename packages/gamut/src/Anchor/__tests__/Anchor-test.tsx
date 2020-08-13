@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import Anchor from '..';
+import { Anchor } from '..';
 
 describe('Anchor', () => {
   it('combines classNames on its root when rootProps contains a className', () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import NotificationItem from '../NotificationItem';
+import { NotificationItem } from '../NotificationItem';
 
 const linkedNotification = {
   text: 'notification 2',

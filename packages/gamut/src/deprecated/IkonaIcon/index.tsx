@@ -61,5 +61,3 @@ export class IkonaIcon extends PureComponent<IkonaIconProps> {
     );
   }
 }
-
-export default IkonaIcon;

@@ -54,5 +54,3 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     );
   }
 );
-
-export default Select;

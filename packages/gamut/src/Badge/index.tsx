@@ -16,5 +16,3 @@ export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
 
   return <span {...combinedProps}>{children}</span>;
 };
-
-export default Badge;

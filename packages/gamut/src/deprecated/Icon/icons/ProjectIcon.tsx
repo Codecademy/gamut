@@ -12,5 +12,3 @@ export const ProjectIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ProjectIcon.defaultProps = defaultIconProps;
-
-export default ProjectIcon;

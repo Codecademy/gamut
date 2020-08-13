@@ -153,5 +153,3 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
 };
 
 Spinner.defaultProps = defaultProps;
-
-export default Spinner;

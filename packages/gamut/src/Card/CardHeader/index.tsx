@@ -29,5 +29,3 @@ export function CardHeader(props: CardHeaderProps) {
     </div>
   );
 }
-
-export default CardHeader;

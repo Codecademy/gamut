@@ -17,12 +17,12 @@ import {
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
-import GridFormSelectInput from '../GridFormSelectInput';
-import GridFormTextInput from '../GridFormTextInput';
-import GridFormCheckboxInput from '../GridFormCheckboxInput';
-import GridFormTextArea from '../GridFormTextArea';
-import GridFormRadioGroupInput from '../GridFormRadioGroupInput';
-import GridFormFileInput from '../GridFormFileInput';
+import { GridFormSelectInput } from '../GridFormSelectInput';
+import { GridFormTextInput } from '../GridFormTextInput';
+import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
+import { GridFormTextArea } from '../GridFormTextArea';
+import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
+import { GridFormFileInput } from '../GridFormFileInput';
 
 export const renderGridFormSelectInput = (
   extraProps: Partial<GridFormSelectField> = {}
