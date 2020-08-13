@@ -10,5 +10,3 @@ export const Badge = styled.span`
   margin: 0 0.5em;
   padding: 0.25em 0.75em;
 `;
-
-export default Badge;
