@@ -1,0 +1,71 @@
+import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Heading, Text } from '@codecademy/gamut/src';
+import { brandColors, fontSize } from '@codecademy/gamut-styles';
+
+<Meta
+  title="Typography/Heading"
+  component={Heading}
+  argTypes={{
+    as: {
+      label: 'As element',
+      control: {
+        type: 'select',
+        options: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+      },
+    },
+    fontSize: {
+      label: 'Font Size',
+      control: { type: 'select', options: Object.keys(fontSize.heading) },
+    },
+  }}
+/>
+
+# 📝 Typography
+
+<StoryStatus status="stable" />
+
+This is a single primitive to handle all `h1-h6` tags
+with defined size intervals to allow for semantic html that also
+matches the designs.
+
+Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
+(and picking the appropriate size to match the design).
+
+<Preview>
+  <Story
+    name="Heading"
+    args={{ children: 'Hello World', as: 'h1', hideMargin: true }}
+  >
+    {(args) => <Heading {...args} />}
+  </Story>
+</Preview>
+
+## Props
+
+<Props story="Heading" />
+
+## Custom colors
+
+<Preview>
+  <Story name="Custom Colors">
+    <Heading fontSize="md" as="h3" style={{ color: brandColors.purple }}>
+      Brand Purple
+    </Heading>
+  </Story>
+</Preview>
+
+## No Margin
+
+<Preview>
+  <Story name="No Margin">
+    {() => (
+      <>
+        <Heading fontSize="md" as="h3" hideMargin>
+          Without Margin
+        </Heading>
+        <Text>Random other text</Text>
+      </>
+    )}
+  </Story>
+</Preview>
