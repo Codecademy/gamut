@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { text, number } from '@storybook/addon-knobs';
 import { InputStepper } from '@codecademy/gamut/src';
@@ -19,23 +19,21 @@ otherwise.
 
 Steppers are not appropriate for values larger than three digits.
 
-<Preview>
-  <Story name="Input Stepper">
-    {() => {
-      const [value, setValue] = useState(99);
-      return (
-        <InputStepper
-          min={number('Minimum', 0)}
-          max={number('Maximum', 999)}
-          ariaLabel="input stepper"
-          label={text('Label', 'things')}
-          onChange={setValue}
-          value={value}
-          onStepperButtonClick={() => null}
-        />
-      );
+<Canvas withSource="open">
+  <Story
+    name="Stepper"
+    args={{
+      label: 'things',
+      ariaLabel: 'input stepper',
+      min: 0,
+      max: 999,
+      value: 99,
+    }}
+  >
+    {(args) => {
+      return <InputStepper {...args} />;
     }}
   </Story>
-</Preview>
+</Canvas>
 
-<Props of={InputStepper} />
+<Props story="Stepper" />

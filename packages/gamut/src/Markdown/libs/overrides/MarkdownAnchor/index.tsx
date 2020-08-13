@@ -24,10 +24,7 @@ const matchesOrigin = (href: string) => {
   return false;
 };
 
-const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
-  children,
-  ...props
-}) => {
+const MarkdownAnchor: React.FC<MarkdownAnchorProps> = (props) => {
   const asProps = {
     ...props,
     target: '_blank',
@@ -39,7 +36,7 @@ const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
     delete asProps.rel;
   }
 
-  return <Anchor asProps={asProps}>{children}</Anchor>;
+  return <Anchor asProps={asProps} />;
 };
 
 export default MarkdownAnchor;

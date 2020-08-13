@@ -1,5 +1,5 @@
 import { Anchor, Text } from '@codecademy/gamut/src';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
 import { VisualTheme } from '@codecademy/gamut/src';
 import { StoryStatus } from '~styleguide/blocks';
 
@@ -12,7 +12,7 @@ import { StoryStatus } from '~styleguide/blocks';
 Use this component for basic inline text links.
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Anchor">
     <Text>
       This is a{' '}
@@ -27,7 +27,7 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
       .
     </Text>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Anchor} />
 

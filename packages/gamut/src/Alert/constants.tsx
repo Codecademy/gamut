@@ -1,6 +1,6 @@
 import {
   AlertIcon,
-  DeleteIcon,
+  CloseCircleIcon,
   InfoCircleIcon,
   RatingStarCircleIcon,
   CheckCircledIcon,
@@ -16,7 +16,7 @@ export enum BannerType {
 
 export const BANNER_CONFIG = {
   notice: AlertIcon,
-  error: DeleteIcon,
+  error: CloseCircleIcon,
   info: InfoCircleIcon,
   announcement: RatingStarCircleIcon,
   success: CheckCircledIcon,

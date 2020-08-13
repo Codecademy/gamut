@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { SplitInterstitial, Heading, Text } from '@codecademy/gamut/src';
 import Triangle from './assets/Triangle.svg';
@@ -14,7 +14,7 @@ Large, 50% split content area used for information that has two facets,
 such as for a payment page with an advertisement on one side and payment
 form on another.
 
-<Preview>
+<Canvas>
   <Story name="SplitInterstitial">
     <SplitInterstitial
       left={{
@@ -35,7 +35,7 @@ form on another.
       }}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={SplitInterstitial} />
 
@@ -43,7 +43,7 @@ form on another.
 
 You can override the built-in images with your own on a per-design basis.
 
-<Preview>
+<Canvas>
   <Story name="Custom Images">
     <SplitInterstitial
       left={{
@@ -70,4 +70,4 @@ You can override the built-in images with your own on a per-design basis.
       }}
     />
   </Story>
-</Preview>
+</Canvas>

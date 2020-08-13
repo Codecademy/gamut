@@ -1,7 +1,7 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
-import { Overlay, Button, Heading, Container } from '@codecademy/gamut/src';
+import { Overlay, Button, Container } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
 <Meta title="Atoms/Overlay" component={Overlay} />
@@ -25,8 +25,8 @@ interactive items.
 Note that this atom does not come with styles defined. If you need styles such as
 a background behind content, see `Modal`.
 
-<Preview>
-  <Story name="Overlay" parameters={{ storyshots: { disable: true } }}>
+<Canvas>
+  <Story name="Overlay">
     {() => {
       const [open, setOpen] = useState(false);
       return (
@@ -38,16 +38,15 @@ a background behind content, see `Modal`.
               isOpen={open}
               onRequestClose={() => setOpen(false)}
             >
-              <Heading as="h1" fontSize="lg">
-                Hooray!
-              </Heading>
-              <Button onClick={() => setOpen(false)}>Close Me</Button>
+              <Container>
+                <h1>Hooray!</h1>
+              </Container>
             </Overlay>
           </Container>
         </React.Fragment>
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Overlay} />
