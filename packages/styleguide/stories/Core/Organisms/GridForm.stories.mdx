@@ -255,41 +255,43 @@ default value is 'brand-purple'.
 <Canvas>
   <Story name="Submit button color">
     {(args) => (
-      <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Default Purple Submit!?',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Blue Submit!?',
-        size: 12,
-        theme: 'brand-blue',
-      }}
-    />
+      <>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Default Purple Submit!?',
+            size: 12,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Blue Submit!?',
+            size: 12,
+            theme: 'brand-blue',
+          }}
+        />
+      </>
     )}
   </Story>
 </Canvas>
