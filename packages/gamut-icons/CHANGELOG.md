@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>3.1.3 (2020-08-14)</small>
-
-* Remove erroneous clip-path (#918) ([9ad193c](https://github.com/Codecademy/client-modules/commit/9ad193c)), closes [#918](https://github.com/Codecademy/client-modules/issues/918)
-* chore: update changelogs ([8bb12f5](https://github.com/Codecademy/client-modules/commit/8bb12f5))
+### [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.2...@codecademy/gamut-icons@3.1.3) (2020-08-14)
 
 
+### Other Changes
 
-
+* Remove erroneous clip-path ([#918](https://github.com/Codecademy/client-modules/issues/918)) ([9ad193c](https://github.com/Codecademy/client-modules/commit/9ad193cbd70e39dc876dc88862afeb509d94839c))
 
 ### [3.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.1...@codecademy/gamut-icons@3.1.2) (2020-08-13)
 
@@ -205,3 +198,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
