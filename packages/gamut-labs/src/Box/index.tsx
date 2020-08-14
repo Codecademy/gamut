@@ -130,7 +130,7 @@ Box.defaultProps = {
   display: 'block',
 };
 
-type FlexProps = Omit<BoxProps, 'display' | 'flex'>;
+export type FlexProps = Omit<BoxProps, 'display' | 'flex'>;
 
 /**
  * A simple variant of the Box component that defaults to display flex for easy flex-based layout composition
