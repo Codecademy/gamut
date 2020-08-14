@@ -36,7 +36,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   const [trapActive, setTrapActive] = useState(isOpen);
   const wasOpen = usePrevious(isOpen);
 
-  const requestCloseCallback = () => {
+  const onDeactivateFocusTrap = () => {
     setTrapActive(false);
   };
 
@@ -66,7 +66,7 @@ export const Overlay: React.FC<OverlayProps> = ({
           focusTrapOptions={{
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
-            onDeactivate: requestCloseCallback,
+            onDeactivate: onDeactivateFocusTrap,
           }}
         >
           {children}
