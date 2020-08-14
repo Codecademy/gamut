@@ -1,3 +1,10 @@
+### [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.2...@codecademy/gamut-icons@3.1.3) (2020-08-14)
+
+
+### Other Changes
+
+* Remove erroneous clip-path ([#918](https://github.com/Codecademy/client-modules/issues/918)) ([9ad193c](https://github.com/Codecademy/client-modules/commit/9ad193cbd70e39dc876dc88862afeb509d94839c))
+
 ### [3.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.1...@codecademy/gamut-icons@3.1.2) (2020-08-13)
 
 

@@ -1,3 +1,5 @@
+### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.3...@codecademy/styleguide@13.3.4) (2020-08-14)
+
 ### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
 
 
