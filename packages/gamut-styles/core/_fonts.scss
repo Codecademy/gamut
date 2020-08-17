@@ -1,31 +1,61 @@
 @font-face {
-  font-family: "Nunito Sans";
   font-display: swap;
-  src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff2")
-      format("woff2"),
-    url("../fonts/Nunito_Sans/nunitosans-regular-webfont.woff") format("woff"),
-    url("../fonts/Nunito_Sans/nunitosans-regular-webfont.ttf") format("ttf");
+  font-family: "Apercu";
+  font-style: normal;
   font-weight: normal;
+  src: url("../fonts/Apercu/apercu-regular-pro.eot");
+  src: url("../fonts/Apercu/apercu-regular-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-regular-pro.woff") format("woff"),
+    url("../fonts/Apercu/apercu-regular-pro.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: "Nunito Sans";
   font-display: swap;
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
-    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
-    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
+  font-family: "Apercu";
+  font-style: normal;
   font-weight: bold;
+  src: url("../fonts/Apercu/apercu-bold-pro.eot");
+  src: url("../fonts/Apercu/apercu-bold-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-bold-pro.woff") format("woff"),
+    url("../fonts/Apercu/apercu-bold-pro.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: "Regular Bold";
   font-display: swap;
-  src: url("../fonts/Regular_Bold/Regular-BoldWEB.eot");
-  src: url("../fonts/Regular_Bold/Regular-BoldWEB.woff2") format("woff2"),
-    url("../fonts/Regular_Bold/Regular-BoldWEB.woff") format("woff"),
-    url("../fonts/Regular_Bold/Regular-BoldWEB.svg") format("svg");
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/Apercu/apercu-italic-pro.eot");
+  src: url("../fonts/Apercu/apercu-italic-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-italic-pro.woff") format("woff"),
+    url("../fonts/Apercu/apercu-italic-pro.ttf") format("ttf");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/Apercu/apercu-bold-italic-pro.eot");
+  src: url("../fonts/Apercu/apercu-bold-italic-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-bold-italic-pro.woff") format("woff"),
+    url("../fonts/Apercu/apercu-bold-italic-pro.ttf") format("ttf");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-weight: normal;
+  src: url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff2") format("woff2"),
+    url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-weight: bold;
+  src: url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff2") format("woff2"),
+    url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff") format("woff");
 }
 
 @font-face {
@@ -33,14 +63,4 @@
   src: url("../fonts/ikona/ikona.eot");
   src: url("../fonts/ikona/ikona.woff") format("woff"),
     url("../fonts/ikona/ikona.ttf") format("truetype");
-}
-
-// because Regular has weird caret styles
-@font-face {
-  font-family: "Regular Patch";
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.eot");
-  src: url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff2") format("woff2"),
-    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.woff") format("woff"),
-    url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
-  unicode-range: U+003C, U+003E;
 }
