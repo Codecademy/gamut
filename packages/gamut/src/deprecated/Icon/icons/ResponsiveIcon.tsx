@@ -26,5 +26,3 @@ export const ResponsiveIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ResponsiveIcon.defaultProps = defaultIconProps;
-
-export default ResponsiveIcon;

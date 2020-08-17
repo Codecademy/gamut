@@ -15,5 +15,3 @@ export const PandasIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PandasIcon.defaultProps = defaultIconProps;
-
-export default PandasIcon;

@@ -15,5 +15,3 @@ export const JavaIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 JavaIcon.defaultProps = defaultIconProps;
-
-export default JavaIcon;

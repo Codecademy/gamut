@@ -1,3 +1,12 @@
+### [1.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.3...@codecademy/gamut-labs@1.9.4) (2020-08-14)
+
+### [1.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.2...@codecademy/gamut-labs@1.9.3) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
 ### [1.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.1...@codecademy/gamut-labs@1.9.2) (2020-08-11)
 
 ### [1.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.0...@codecademy/gamut-labs@1.9.1) (2020-08-11)

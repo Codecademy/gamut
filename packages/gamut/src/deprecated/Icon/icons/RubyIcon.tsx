@@ -15,5 +15,3 @@ export const RubyIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 RubyIcon.defaultProps = defaultIconProps;
-
-export default RubyIcon;

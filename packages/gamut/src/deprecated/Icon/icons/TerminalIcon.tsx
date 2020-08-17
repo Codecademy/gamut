@@ -13,5 +13,3 @@ export const TerminalIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 TerminalIcon.defaultProps = defaultIconProps;
-
-export default TerminalIcon;

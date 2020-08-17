@@ -80,5 +80,3 @@ export const Accordion: React.FC<AccordionProps> = ({
     </AccordionArea>
   );
 };
-
-export default Accordion;

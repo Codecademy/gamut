@@ -15,5 +15,3 @@ export const CheckmarkIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CheckmarkIcon.defaultProps = defaultIconProps;
-
-export default CheckmarkIcon;

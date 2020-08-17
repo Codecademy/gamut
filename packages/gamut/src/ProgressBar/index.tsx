@@ -79,5 +79,3 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     </div>
   );
 };
-
-export default ProgressBar;

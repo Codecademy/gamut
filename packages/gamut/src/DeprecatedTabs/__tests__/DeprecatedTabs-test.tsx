@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Tab, TabPanel } from 'react-aria-tabpanel';
-import Tabs from '../index';
+import { DeprecatedTabs } from '../index';
 
-describe('Accessible Tabs', () => {
+describe('DeprecatedTabs', () => {
   function generateTabConfig(num: number, isDefault = 0) {
     return Array(num)
       .fill(undefined)
@@ -18,10 +18,10 @@ describe('Accessible Tabs', () => {
 
   it('allows prop config to specify default tab and show appropriate tab panel', () => {
     const wrapper = shallow(
-      <Tabs config={generateTabConfig(2)}>
+      <DeprecatedTabs config={generateTabConfig(2)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </DeprecatedTabs>
     );
 
     expect((wrapper.find(Tab).at(0).props() as any).active).toBe(true);
@@ -30,10 +30,10 @@ describe('Accessible Tabs', () => {
     expect((wrapper.find('.tabPanel').at(1).props() as any).active).toBe(false);
 
     const wrapper2 = shallow(
-      <Tabs config={generateTabConfig(2, 1)}>
+      <DeprecatedTabs config={generateTabConfig(2, 1)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </DeprecatedTabs>
     );
 
     expect((wrapper2.find(Tab).at(0).props() as any).active).toBe(false);
@@ -46,10 +46,10 @@ describe('Accessible Tabs', () => {
 
   it('does not render the contents of hidden tabs', () => {
     const wrapper = shallow(
-      <Tabs config={generateTabConfig(2)}>
+      <DeprecatedTabs config={generateTabConfig(2)}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </DeprecatedTabs>
     );
 
     expect(wrapper.find('.tabPanel').at(0).children().html()).toBe(
@@ -62,10 +62,10 @@ describe('Accessible Tabs', () => {
 
   it('Shows the correct tab panel on click, with proper tab highlighted via animated underline', () => {
     const wrapper = mount(
-      <Tabs config={generateTabConfig(2)} animatedUnderlineStyle>
+      <DeprecatedTabs config={generateTabConfig(2)} animatedUnderlineStyle>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </DeprecatedTabs>
     );
 
     // highlight first tab + show first tab panel initially
@@ -110,10 +110,10 @@ describe('Accessible Tabs', () => {
   it('calls the onChange function provided in props when tabs change', () => {
     const onChange = jest.fn();
     const wrapper = mount(
-      <Tabs config={generateTabConfig(2)} onChange={onChange}>
+      <DeprecatedTabs config={generateTabConfig(2)} onChange={onChange}>
         <div>Tab 1</div>
         <div>Tab 2</div>
-      </Tabs>
+      </DeprecatedTabs>
     );
     wrapper.find(Tab).last().simulate('focus');
 

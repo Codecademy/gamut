@@ -2,8 +2,8 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
 
-import Button from '../Button';
-import ButtonBase, { ButtonBaseProps } from '../ButtonBase';
+import { Button } from '../Button';
+import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
 import styles from './styles.module.scss';
 
 export type AccordionButtonSize = 'normal' | 'large';
@@ -84,5 +84,3 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
     </ButtonComponent>
   );
 };
-
-export default AccordionButton;

@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import AccordionButton from '..';
+import { AccordionButton } from '..';
 
 describe('AccordionButton', () => {
   it('fires onClick when clicked', () => {

@@ -29,5 +29,3 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
     />
   );
 };
-
-export default GridFormCheckboxInput;

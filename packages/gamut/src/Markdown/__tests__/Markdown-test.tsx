@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import Markdown from '../index';
+import { Markdown } from '../index';
 
 const basicMarkdown = `
 # Heading 1

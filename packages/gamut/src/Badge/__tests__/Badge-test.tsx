@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import Badge from '..';
+import { Badge } from '..';
 
 describe('Badge', () => {
   it('combines classNames on its root when rootProps contains a className', () => {
