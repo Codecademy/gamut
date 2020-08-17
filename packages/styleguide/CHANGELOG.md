@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 14.0.0 (2020-08-17)
+
+* feat(Accordion)!: Decoupled AccordionArea and AccordionButton (#889) ([82ddf09](https://github.com/Codecademy/client-modules/commit/82ddf09)), closes [#889](https://github.com/Codecademy/client-modules/issues/889)
+* chore: update changelogs ([635f869](https://github.com/Codecademy/client-modules/commit/635f869))
+
+
+
+
+
 ### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.3...@codecademy/styleguide@13.3.4) (2020-08-14)
 
 ### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
@@ -948,4 +962,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
