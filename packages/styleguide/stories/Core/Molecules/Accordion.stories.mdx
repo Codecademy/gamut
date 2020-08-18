@@ -4,7 +4,7 @@ import {
   AccordionButton,
 } from '@codecademy/gamut/src';
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { select } from '@storybook/addon-knobs';
+import { boolean, select } from '@storybook/addon-knobs';
 import { useState } from 'react';
 
 import { StoryStatus } from '../../../Blocks';
@@ -25,7 +25,6 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 <Preview>
   <Story name="Accordion">
     <Accordion
-      expanded={expanded}
       size={select('Size', ['normal', 'large'], undefined)}
       theme={select('Theme', ['blue', 'plain', 'yellow'], undefined)}
       top="Click me!"
@@ -46,7 +45,7 @@ If you'd like a "controlled" component equivalent, you can manually use the `Acc
 Most accordions should use an `AccordionButton`; other forms of buttons are acceptable for custom accordions.
 
 <Preview>
-  <Story name="Accordion">
+  <Story name="AccordionArea">
     {() => {
       const expanded = boolean('Expanded');
       return (
