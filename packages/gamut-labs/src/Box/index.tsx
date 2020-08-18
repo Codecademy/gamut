@@ -94,7 +94,6 @@ const boxStyles = (props: BoxProps) => {
 
   /**
    * If any of these flex properties are set, we want to set the others to their default values
-   * @
    * */
   const shouldResetFlexProperties = !isUndefined(
     props.grow ?? props.shrink ?? props.flexBasis

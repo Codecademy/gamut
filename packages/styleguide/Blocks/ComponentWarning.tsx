@@ -7,7 +7,6 @@ export const ComponentWarning = styled.div`
   font-size: 1rem;
   font-weight: 900;
   border-radius: 2px;
-  text-transform: uppercase;
-  color: ${colors.black};
+  color: ${colors.gray[900]};
   background-color: ${colors.yellow[700]};
 `;
