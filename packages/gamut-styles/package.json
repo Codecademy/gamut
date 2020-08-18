@@ -19,10 +19,6 @@
     "@emotion/core": ">=10.0.0",
     "@emotion/styled": ">=10.0.0"
   },
-  "peerDependencies": {
-    "@emotion/core": ">=10.0.0",
-    "@emotion/styled": ">=10.0.0"
-  },
   "devDependencies": {
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27"

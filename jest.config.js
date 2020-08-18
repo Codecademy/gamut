@@ -23,13 +23,8 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
       '<rootDir>/script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
-<<<<<<< HEAD
     '^~styleguide/blocks(.*)$':
       '<rootDir>/packages/styleguide/.storybook/Blocks$1',
-=======
-    '^~styleguide/Blocks(.*)$':
-      '<rootDir>/packages/styleguide/.storybook/blocks$1',
->>>>>>> f24c2a59... chore(Styleguide): Switch Storybook to TS and move native elements to .storybook (#919)
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
