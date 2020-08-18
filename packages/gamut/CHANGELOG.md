@@ -1,3 +1,16 @@
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.4...@codecademy/gamut@13.0.0) (2020-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton (#889)
+
+### ✨ Features
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton ([#889](https://github.com/Codecademy/client-modules/issues/889)) ([82ddf09](https://github.com/Codecademy/client-modules/commit/82ddf099b6ce91bc437ed63e9dfa4f917ebffa0a))
+
+### [12.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.3...@codecademy/gamut@12.3.4) (2020-08-14)
+
 ### [12.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.2...@codecademy/gamut@12.3.3) (2020-08-13)
 
 
