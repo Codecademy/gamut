@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Banner, BannerStyle } from '@codecademy/gamut/src';
 import { AlertIcon } from '@codecademy/gamut-icons';
 import { action } from '@storybook/addon-actions';
@@ -13,11 +13,11 @@ import { StoryStatus } from '~styleguide/blocks';
 
 Full-width banner to indicate important messaging at the top of a page or section.
 
-<Preview>
+<Canvas>
   <Story name="Banner">
     <Banner onClose={action('Banner closed.')}>Some Banner content!</Banner>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Banner} />
 
@@ -25,19 +25,19 @@ Full-width banner to indicate important messaging at the top of a page or sectio
 
 An informative icon can be added to the left of the banner.
 
-<Preview>
+<Canvas>
   <Story name="Icon Banner">
     <Banner icon={<AlertIcon />} onClose={action('Banner closed.')}>
       Some Banner content!
     </Banner>
   </Story>
-</Preview>
+</Canvas>
 
 ## Bordered
 
 If your banner is on above similar content (?), add a BannerStyle to it.
 
-<Preview>
+<Canvas>
   <Story name="Bordered">
     <Banner
       displayStyle={BannerStyle.BorderBottom}
@@ -46,4 +46,4 @@ If your banner is on above similar content (?), add a BannerStyle to it.
       Some Banner content!
     </Banner>
   </Story>
-</Preview>
+</Canvas>

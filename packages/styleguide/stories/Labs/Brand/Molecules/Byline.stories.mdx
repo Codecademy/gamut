@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
@@ -13,7 +13,7 @@ import { Byline } from '@codecademy/gamut-labs/src';
 Marketing display of a person's information, such as for a testimonial.
 Commonly paired with an `Avatar`.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Byline">
     <Byline
       firstName={text('First Name', 'Bill')}
@@ -22,6 +22,6 @@ Commonly paired with an `Avatar`.
       location={text('Location', 'New York, NY', '')}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Byline" of={Byline} />

@@ -1,0 +1,42 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Text } from '@codecademy/gamut/src';
+import { brandColors, fontSize } from '@codecademy/gamut-styles';
+
+<Meta
+  title="Typography/Text"
+  component={Text}
+  argTypes={{
+    fontSize: {
+      label: 'Font Size',
+      control: { type: 'select', options: Object.keys(fontSize.text) },
+    },
+  }}
+/>
+
+# 📝 Typography
+
+<StoryStatus status="stable" />
+
+This is a single primitive to handle all `<p>` and
+`<span>` tags with defined size intervals.
+
+<Canvas>
+  <Story name="Text" args={{ children: 'Hello World' }}>
+    {(args) => <Text {...args} />}
+  </Story>
+</Canvas>
+
+## Props
+
+<Props story="Text" />
+
+## Custom colors
+
+<Canvas>
+  <Story name="Custom Colors">
+    <Text fontSize="md" style={{ color: brandColors.purple }}>
+      Brand Purple
+    </Text>
+  </Story>
+</Canvas>

@@ -1,8 +1,8 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { number } from '@storybook/addon-knobs';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles';
 import { bars } from './constants';
 
 <Meta title="Atoms/ProgressBar" component={ProgressBar} />
@@ -19,7 +19,7 @@ completed.
 Bars with `large` specified are thicker, and will display a
 percentage label if a font color is specified.
 
-<Preview>
+<Canvas>
   <Story name="ProgressBar">
     <LayoutGrid columnGap="sm" rowGap="sm">
       {[0, 25, 50, 75, 100].map((percent) =>
@@ -31,7 +31,7 @@ percentage label if a font color is specified.
       )}
     </LayoutGrid>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={ProgressBar} />
 
@@ -41,7 +41,7 @@ Some bars (generally small ones) should display at least a little bit of
 progress, even if the technical progress number is zero. You can use the
 `minimumPercent` prop for a minimum visual width percentage.
 
-<Preview>
+<Canvas>
   <Story name="Minimum Percentage">
     <ProgressBar
       minimumPercent={number('Minimum Percent', 5)}
@@ -49,14 +49,14 @@ progress, even if the technical progress number is zero. You can use the
       theme="blue"
     />
   </Story>
-</Preview>
+</Canvas>
 
 ## Style Overrides
 
 For the sake of rapid iteration, you can pass in custom style colors via the
 `style` prop.
 
-<Preview>
+<Canvas>
   <Story name="Style Overrides">
     <ProgressBar
       minimumPercent={number('Minimum Percent', 5)}
@@ -70,4 +70,4 @@ For the sake of rapid iteration, you can pass in custom style colors via the
       theme="blue"
     />
   </Story>
-</Preview>
+</Canvas>
