@@ -1,3 +1,21 @@
+### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
+
+
+### 🐛 Bug Fixes
+
+* AccordionArea typo in docs ([#927](https://github.com/Codecademy/client-modules/issues/927)) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923a5ae41b53f2ca4e65315157209c2e24ef))
+
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.4...@codecademy/styleguide@14.0.0) (2020-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton (#889)
+
+### ✨ Features
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton ([#889](https://github.com/Codecademy/client-modules/issues/889)) ([82ddf09](https://github.com/Codecademy/client-modules/commit/82ddf099b6ce91bc437ed63e9dfa4f917ebffa0a))
+
 ### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.3...@codecademy/styleguide@13.3.4) (2020-08-14)
 
 ### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
