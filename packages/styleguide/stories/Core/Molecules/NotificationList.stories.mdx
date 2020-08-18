@@ -3,7 +3,7 @@ import {
   NotificationItem,
   NotificationIcon,
 } from '@codecademy/gamut/src';
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
 <Meta
@@ -19,7 +19,7 @@ import { StoryStatus } from '~styleguide/blocks';
 List of time-sensitive user notifications, such as in a top-right dropdown
 menu from a header.
 
-<Preview>
+<Canvas>
   <Story name="NotificationsList">
     <NotificationList
       notifications={[
@@ -50,7 +50,7 @@ menu from a header.
       ]}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={NotificationList} />
 
@@ -58,8 +58,8 @@ menu from a header.
 
 Notifications are not always present, so this has an empty state.
 
-<Preview>
+<Canvas>
   <Story name="Empty">
     <NotificationList notifications={[]} />
   </Story>
-</Preview>
+</Canvas>
