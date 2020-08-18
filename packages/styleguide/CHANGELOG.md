@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 15.0.0 (2020-08-18)
+
+* feat(Gamut)!: Enable Emotion (#917) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a5)), closes [#917](https://github.com/Codecademy/client-modules/issues/917)
+* chore: update changelogs ([4629816](https://github.com/Codecademy/client-modules/commit/4629816))
+
+
+
+
+
 ### [14.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.1...@codecademy/styleguide@14.0.2) (2020-08-18)
 
 ### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
@@ -968,4 +982,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
