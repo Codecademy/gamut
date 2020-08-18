@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import Badge from '..';
+import { Badge } from '..';
 
 describe('Badge', () => {
   it('renders badge text', () => {

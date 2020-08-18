@@ -1,6 +1,6 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import styles from './styles.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
@@ -67,5 +67,3 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
   // eslint-disable-next-line react/button-has-type
   return <button {...defaultProps} />;
 };
-
-export default ButtonBase;

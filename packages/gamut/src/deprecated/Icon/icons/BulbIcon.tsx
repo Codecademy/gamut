@@ -15,5 +15,3 @@ export const BulbIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 BulbIcon.defaultProps = defaultIconProps;
-
-export default BulbIcon;

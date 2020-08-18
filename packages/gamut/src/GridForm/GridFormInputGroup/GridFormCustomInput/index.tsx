@@ -30,5 +30,3 @@ export const GridFormCustomInput: React.FC<GridFormCustomInputProps> = ({
     </>
   );
 };
-
-export default GridFormCustomInput;

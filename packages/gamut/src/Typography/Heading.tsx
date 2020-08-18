@@ -47,5 +47,3 @@ export const Heading: React.FC<HeadingProps> = ({
     </Element>
   );
 };
-
-export default Heading;

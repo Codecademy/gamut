@@ -15,5 +15,3 @@ export const NewPageIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 NewPageIcon.defaultProps = defaultIconProps;
-
-export default NewPageIcon;

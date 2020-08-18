@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 140 140" width="140" height="140"><g transform="matrix(5.833333333333333,0,0,5.833333333333333,0,0)"><path d="M23.374.287a1.5,1.5,0,0,0-2.093.345L7.246,20.2,2.561,15.511A1.5,1.5,0,1,0,.439,17.632l5.935,5.934a1.525,1.525,0,0,0,2.279-.186l15.066-21A1.5,1.5,0,0,0,23.374.287Z" fill="#000000" stroke="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0"></path></g></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+	xmlns="http://www.w3.org/2000/svg">
+  <!-- custom checkmark -->
+  <title>check</title>
+	<g>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M23.5522 3.93089C24.1426 4.51197 24.1502 5.46169 23.5691 6.05214L9.79135 20.0521C9.23431 20.6182 8.33262 20.6519 7.73481 20.1292L0.512587 13.8134C-0.111024 13.268 -0.174472 12.3204 0.370873 11.6968C0.916217 11.0732 1.86384 11.0097 2.48745 11.5551L8.6451 16.9399L21.4309 3.94786C22.012 3.35741 22.9617 3.34981 23.5522 3.93089Z" fill="black"/>
+  </g>
+</svg>

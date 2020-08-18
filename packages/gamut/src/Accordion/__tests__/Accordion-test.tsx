@@ -2,67 +2,49 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import Accordion, { AccordionProps } from '..';
+import { Accordion, AccordionProps } from '..';
 
 const renderComponent = (overrides: Partial<AccordionProps> = {}) => {
   const props = {
     children: <div data-testid="contents" />,
-    header: 'Click me!',
-    onChange: jest.fn(),
-    theme: 'blue',
+    top: 'Click me!',
     ...overrides,
   } as const;
 
-  const wrapper = mount(<Accordion {...props} />);
-
-  return { props, wrapper };
+  return mount(<Accordion {...props} />);
 };
 
 jest.useFakeTimers();
 
 describe('Accordion', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
-    const { wrapper } = renderComponent({ initiallyExpanded: false });
+    const wrapper = renderComponent({ initiallyExpanded: false });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('starts expanded when initiallyExpanded is true', () => {
-    const { wrapper } = renderComponent({ initiallyExpanded: true });
+    const wrapper = renderComponent({ initiallyExpanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
-  it('expands when clicked to expand', () => {
-    const { wrapper } = renderComponent();
+  it('expands when its button is clicked', () => {
+    const wrapper = renderComponent({ initiallyExpanded: true });
 
     wrapper.find('button').simulate('click');
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
-  it('contracts after a delay when clicked to contract', async () => {
-    const { wrapper } = renderComponent();
-    wrapper.find('button').simulate('click');
+  it('calls onClick when its button is clicked and onClick is provided', () => {
+    const onClick = jest.fn();
+    const wrapper = renderComponent({ onClick });
 
-    wrapper.find('button').simulate('click');
-    await act(async () => {
-      jest.runAllTimers();
-    });
-    wrapper.setProps(wrapper.props());
-
-    expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
-  });
-
-  it('renders children with the expanded prop when children is a functino', () => {
-    const { wrapper } = renderComponent({
-      children: (expanded) => `children-${expanded}`,
-      initiallyExpanded: true,
-      header: (expanded) => `header-${expanded}`,
+    act(() => {
+      wrapper.find('button').simulate('click');
     });
 
-    expect(wrapper.text()).toEqual(
-      `header-${true}Arrow Chevron Down Iconchildren-${true}`
-    );
+    expect(onClick).toHaveBeenCalledWith(true);
   });
 });

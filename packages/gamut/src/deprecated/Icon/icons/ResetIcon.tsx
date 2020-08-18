@@ -12,5 +12,3 @@ export const ResetIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ResetIcon.defaultProps = defaultIconProps;
-
-export default ResetIcon;

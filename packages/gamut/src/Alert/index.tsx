@@ -9,9 +9,9 @@ import {
 
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
-import Truncate from '../Truncate';
-import ButtonBase from '../ButtonBase';
-import Button from '../Button';
+import { Truncate } from '../Truncate';
+import { ButtonBase } from '../ButtonBase';
+import { Button } from '../Button';
 
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
@@ -56,6 +56,9 @@ export const Alert: React.FC<AlertProps> = ({
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
       })}
+      role="status"
+      aria-label="alert box"
+      aria-live="polite"
     >
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
@@ -129,5 +132,3 @@ export const Alert: React.FC<AlertProps> = ({
 };
 
 export { BannerType } from './constants';
-
-export default Alert;

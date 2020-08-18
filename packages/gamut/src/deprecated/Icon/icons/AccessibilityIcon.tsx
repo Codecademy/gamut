@@ -13,5 +13,3 @@ export const AccessibilityIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 AccessibilityIcon.defaultProps = defaultIconProps;
-
-export default AccessibilityIcon;

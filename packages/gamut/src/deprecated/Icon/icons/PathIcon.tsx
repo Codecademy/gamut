@@ -17,5 +17,3 @@ export const PathIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 PathIcon.defaultProps = defaultIconProps;
-
-export default PathIcon;

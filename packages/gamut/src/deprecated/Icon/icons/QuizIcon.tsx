@@ -18,5 +18,3 @@ export const QuizIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 QuizIcon.defaultProps = defaultIconProps;
-
-export default QuizIcon;

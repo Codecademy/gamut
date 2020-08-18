@@ -1,3 +1,5 @@
+### [1.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.11) (2020-07-29)
+
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.9...@codecademy/enzyme-helpers@1.1.10) (2020-05-04)
 
 

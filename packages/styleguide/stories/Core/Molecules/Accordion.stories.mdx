@@ -1,34 +1,35 @@
+import {
+  Accordion,
+  AccordionArea,
+  AccordionButton,
+} from '@codecademy/gamut/src';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { Accordion, AccordionButton, VisualTheme } from '@codecademy/gamut/src';
-import { action } from '@storybook/addon-actions';
-import { StoryStatus } from '../../../Blocks';
 import { boolean, select } from '@storybook/addon-knobs';
+import { useState } from 'react';
+
+import { StoryStatus } from '~styleguide/blocks';
 
 <Meta
-  title="Molecules/Accordion"
   component={Accordion}
-  subcomponents={{ AccordionButton }}
+  subcomponents={{ AccordionArea, AccordionButton }}
+  title="Molecules/Accordion"
 />
 
 # Accordion
 
 <StoryStatus status="volatile" />
 
-A molecule consisting of a clickable header that animates show or hide its children,
+A molecule consisting of a "top" section and an expandable body,
 such as a "hint" section in the LE or a list of department jobs on a careers page.
-
-Both its header text and general children can be any arbitrary content, or can be
-conditionally rendered based on whether the accordion is expanded.
 
 <Canvas withSource="open">
   <Story name="Accordion">
     <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      size={select('Size', ['normal', 'large'], 'normal')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
+      size={select('Size', ['normal', 'large'], undefined)}
+      theme={select('Theme', ['blue', 'plain', 'yellow'], undefined)}
+      top="Click me!"
     >
-      Wow, hidden treasure!
+      Hidden treasure!
     </Accordion>
   </Story>
 </Canvas>
@@ -38,79 +39,25 @@ conditionally rendered based on whether the accordion is expanded.
 > Note that accordions will fit to `100%` of the the height of their parent container.
 > If you need a fixed height container, wrap the accordion in a `<div>`.
 
-Accordions can be used for a variety of content, including big flashy subsections.
-Pass the `size` prop as `large` to create a bigger accordion.
+## AccordionArea
 
-An `AccordionButton` component also exists if you just want the controlled heading behavior.
-We'll likely remove it soon, as all consumers are meant to switch to `Accordion`.
-
-## Initial Expansion
-
-If you want the accordion to start off expanded, use the `initiallyExpanded` prop:
+If you'd like a "controlled" component equivalent, you can manually use the `AccordionArea` and `AccordionButton` sub-components.
+Most accordions should use an `AccordionButton`; other forms of buttons are acceptable for custom accordions.
 
 <Canvas>
-  <Story name="Initial Expansion">
-    <Accordion
-      header="Click to Toggle Me!"
-      initiallyExpanded
-      onChange={action('Changed')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'yellow')}
-    >
-      Wow, not-so-hidden treasure!
-    </Accordion>
+  <Story name="AccordionArea">
+    {() => {
+      const expanded = boolean('Expanded');
+      return (
+        <AccordionArea
+          expanded={expanded}
+          top={<AccordionButton expanded={expanded}>Click me!</AccordionButton>}
+        >
+          Hidden treasure!
+        </AccordionArea>
+      );
+    }}
   </Story>
 </Canvas>
 
-## Themes
-
-### Blue
-
-Blue accordion tops are only usable in dark contexts, such as the LE's
-Help Menu.
-
-<Canvas className="dark">
-  <Story name="Blue">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="blue"
-    >
-      Wow, hidden treasure!
-    </Accordion>
-  </Story>
-</Canvas>
-
-### Plain
-
-Plain accordion tops are best applied in plain pages such as marketing pages
-where we haven't been able to invest yet in a more solid theme.
-
-<Canvas>
-  <Story name="Plain">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="plain"
-    >
-      Wow, hidden treasure!
-    </Accordion>
-  </Story>
-</Canvas>
-
-### Yellow
-
-Yellow accordion tops are our favorite: they look the most professional on
-their own. They're only used in the "Get a Hint" sections of the LE's
-narrative pane.
-
-<Canvas>
-  <Story name="Yellow">
-    <Accordion
-      header="Click to Toggle Me!"
-      onChange={action('Changed')}
-      theme="yellow"
-    >
-      Wow, hidden treasure!
-    </Accordion>
-  </Story>
-</Canvas>
+<Props of={AccordionArea} />

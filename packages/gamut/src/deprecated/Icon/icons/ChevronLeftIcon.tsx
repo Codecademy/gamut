@@ -12,5 +12,3 @@ export const ChevronLeftIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ChevronLeftIcon.defaultProps = defaultIconProps;
-
-export default ChevronLeftIcon;

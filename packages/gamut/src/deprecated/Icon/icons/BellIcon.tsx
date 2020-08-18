@@ -12,5 +12,3 @@ export const BellIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 BellIcon.defaultProps = defaultIconProps;
-
-export default BellIcon;

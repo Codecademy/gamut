@@ -12,5 +12,3 @@ export const FormGroupDescription: React.FC<FormGroupDescriptionProps> = (
   const className = cx(s.FormGroupDescription, props.className);
   return <div {...props} className={className} />;
 };
-
-export default FormGroupDescription;

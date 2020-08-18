@@ -1,93 +1,83 @@
-import { motion } from 'framer-motion';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
+import AccordionArea from '../AccordionArea';
+import {
+  AccordionButton,
+  AccordionButtonSize,
+  AccordionButtonTheme,
+} from '../AccordionButton';
 
-import AccordionButton from '../AccordionButton';
-
-export type RenderWithExpanded = (expanded: boolean) => React.ReactNode;
+export type ChildrenOrExpandedRender =
+  | React.ReactNode
+  | ((expanded: boolean) => React.ReactNode);
 
 export type AccordionProps = {
-  children: React.ReactNode | RenderWithExpanded;
+  children: ChildrenOrExpandedRender;
 
+  /**
+   * CSS class name added to the root area container.
+   */
   className?: string;
 
   /**
-   * Contents of the clickable header button.
-   */
-  header: React.ReactNode | RenderWithExpanded;
-
-  /**
-   * Whether the accordion starts off expanded, instead of the default collapsed.
+   * Whether the accordion should start off with expanded state.
    */
   initiallyExpanded?: boolean;
 
   /**
-   * Called when the header is activated to toggle whether the accordion is expanded.
+   * Called when the top button is clicked.
+   *
+   * @param expanding - New expanded state the accordion will transition to.
    */
-  onChange?: (expanded: boolean) => void;
-
-  size?: 'normal' | 'large';
+  onClick?: (expanding: boolean) => void;
 
   /**
-   * Visual theme for the clickable header button.
+   * Visual size of the top button.
    */
-  theme: 'blue' | 'plain' | 'yellow';
-};
+  size?: AccordionButtonSize;
 
-const transitionDuration = 0.2;
+  /**
+   * Visual theme of the top button.
+   */
+  theme?: AccordionButtonTheme;
 
-const variants = {
-  expanded: { height: '100%' },
-  folded: { height: 0, overflow: 'hidden' },
+  /**
+   * Contents to place within the top button.
+   */
+  top: ChildrenOrExpandedRender;
 };
 
 export const Accordion: React.FC<AccordionProps> = ({
   children,
   className,
-  header,
   initiallyExpanded,
-  onChange,
-  size = 'normal',
+  onClick,
+  size,
   theme,
+  top,
 }) => {
   const [expanded, setExpanded] = useState(!!initiallyExpanded);
-  const [delayExpanded, setDelayExpanded] = useState(expanded);
-
-  useLayoutEffect(() => {
-    const handle = setTimeout(
-      () => setDelayExpanded(expanded),
-      transitionDuration * 1000
-    );
-
-    return () => clearTimeout(handle);
-  }, [expanded]);
-
-  const onClick = () => {
-    setExpanded(!expanded);
-    onChange?.(!expanded);
-  };
+  const expandRenderer = (renderer: ChildrenOrExpandedRender) =>
+    renderer instanceof Function ? renderer(expanded) : renderer;
 
   return (
-    <div className={className}>
-      <AccordionButton
-        expanded={expanded}
-        onClick={onClick}
-        size={size}
-        theme={theme}
-      >
-        {header instanceof Function ? header(expanded) : header}
-      </AccordionButton>
-      <motion.div
-        aria-expanded={expanded}
-        initial={false}
-        animate={expanded ? 'expanded' : 'folded'}
-        variants={variants}
-        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
-      >
-        {(expanded || delayExpanded) &&
-          (children instanceof Function ? children(expanded) : children)}
-      </motion.div>
-    </div>
+    <AccordionArea
+      className={className}
+      expanded={expanded}
+      top={
+        <AccordionButton
+          expanded={expanded}
+          onClick={() => {
+            setExpanded(!expanded);
+            onClick?.(!expanded);
+          }}
+          size={size}
+          theme={theme}
+        >
+          {expandRenderer(top)}
+        </AccordionButton>
+      }
+    >
+      {expandRenderer(children)}
+    </AccordionArea>
   );
 };
-
-export default Accordion;

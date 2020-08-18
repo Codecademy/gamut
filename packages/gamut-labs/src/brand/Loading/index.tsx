@@ -87,5 +87,3 @@ export const Loading: React.FC<LoadingProps> = ({ className }) => {
 
   return icon;
 };
-
-export default Loading;

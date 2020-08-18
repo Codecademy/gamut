@@ -1,6 +1,6 @@
 import React from 'react';
 import cx from 'classnames';
-import ContentContainer from '../ContentContainer';
+import { ContentContainer } from '../ContentContainer';
 import styles from './styles/index.module.scss';
 
 export type AppBarProps = {
@@ -26,5 +26,3 @@ export const AppBar: React.FC<AppBarProps> = ({
     </div>
   );
 };
-
-export default AppBar;

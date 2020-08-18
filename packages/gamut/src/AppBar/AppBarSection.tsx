@@ -26,5 +26,3 @@ export const AppBarSection: React.FC<AppBarSectionProps> = ({
   );
   return <div className={classes}>{children}</div>;
 };
-
-export default AppBarSection;

@@ -1,6 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import StepButton, { StepButtonProps } from '..';
+import { StepButton, StepButtonProps } from '..';
 
 const renderStepBtn = (overrideProps: Partial<StepButtonProps>) => {
   const props: StepButtonProps = {

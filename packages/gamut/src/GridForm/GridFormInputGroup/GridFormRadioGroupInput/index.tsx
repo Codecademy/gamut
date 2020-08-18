@@ -40,5 +40,3 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
     </RadioGroup>
   );
 };
-
-export default GridFormRadioGroupInput;

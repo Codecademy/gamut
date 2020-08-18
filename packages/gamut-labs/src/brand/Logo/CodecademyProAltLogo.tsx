@@ -1,6 +1,6 @@
 import React, { SVGProps } from 'react';
 
-export default function CodecademyProAltLogo(props: SVGProps<SVGSVGElement>) {
+export function CodecademyProAltLogo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg {...props} viewBox="0 0 95 40" xmlns="http://www.w3.org/2000/svg">
       <g fill="currentColor" fillRule="evenodd">

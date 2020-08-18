@@ -17,5 +17,3 @@ export const CheckFilledIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 CheckFilledIcon.defaultProps = defaultIconProps;
-
-export default CheckFilledIcon;

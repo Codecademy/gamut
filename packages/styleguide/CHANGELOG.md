@@ -1,43 +1,68 @@
-# Change Log
+### [14.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.1...@codecademy/styleguide@14.0.2) (2020-08-18)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 13.5.0 (2020-08-05)
-
-* feat(Styleguide): Upgrade Storybook to 6.0.0-rc26 (#905) ([9a0c00d](https://github.com/RyzacInc/client-modules/commit/9a0c00d)), closes [#905](https://github.com/RyzacInc/client-modules/issues/905)
+### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
 
 
+### 🐛 Bug Fixes
+
+* AccordionArea typo in docs ([#927](https://github.com/Codecademy/client-modules/issues/927)) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923a5ae41b53f2ca4e65315157209c2e24ef))
+
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.4...@codecademy/styleguide@14.0.0) (2020-08-17)
 
 
+### ⚠ BREAKING CHANGES
 
-## 13.4.0 (2020-07-29)
+* **Accordion:** Decoupled AccordionArea and AccordionButton (#889)
 
-* Merge remote-tracking branch 'origin/master' into next ([363351e](https://github.com/RyzacInc/client-modules/commit/363351e)), closes [#898](https://github.com/RyzacInc/client-modules/issues/898) [#883](https://github.com/RyzacInc/client-modules/issues/883)
-* feat: Added basic Anchor component (#883) ([ed7d27b](https://github.com/RyzacInc/client-modules/commit/ed7d27b)), closes [#883](https://github.com/RyzacInc/client-modules/issues/883)
+### ✨ Features
 
+* **Accordion:** Decoupled AccordionArea and AccordionButton ([#889](https://github.com/Codecademy/client-modules/issues/889)) ([82ddf09](https://github.com/Codecademy/client-modules/commit/82ddf099b6ce91bc437ed63e9dfa4f917ebffa0a))
 
+### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.3...@codecademy/styleguide@13.3.4) (2020-08-14)
 
-
-
-## 13.3.0 (2020-07-27)
-
-* chore: update changelogs ([b1936eb](https://github.com/RyzacInc/client-modules/commit/b1936eb))
-* chore: update changelogs ([f66f062](https://github.com/RyzacInc/client-modules/commit/f66f062))
-* chore: update changelogs ([0ee8d1a](https://github.com/RyzacInc/client-modules/commit/0ee8d1a))
-* chore: update changelogs ([ee8b6ce](https://github.com/RyzacInc/client-modules/commit/ee8b6ce))
-* chore: update changelogs ([d37a319](https://github.com/RyzacInc/client-modules/commit/d37a319))
-* chore(release): publish ([b025ef1](https://github.com/RyzacInc/client-modules/commit/b025ef1))
-* chore(release): publish ([4fc8ea2](https://github.com/RyzacInc/client-modules/commit/4fc8ea2))
-* chore(release): publish ([b453307](https://github.com/RyzacInc/client-modules/commit/b453307))
-* chore(release): publish ([5b987fd](https://github.com/RyzacInc/client-modules/commit/5b987fd))
-* chore(release): publish ([7c452dc](https://github.com/RyzacInc/client-modules/commit/7c452dc))
-* Fixed happy little syntax accident on tooltip story (#891) ([94ce35a](https://github.com/RyzacInc/client-modules/commit/94ce35a)), closes [#891](https://github.com/RyzacInc/client-modules/issues/891)
-* feat(Toggle): create alternative toggle (#885) ([a9b0a5e](https://github.com/RyzacInc/client-modules/commit/a9b0a5e)), closes [#885](https://github.com/RyzacInc/client-modules/issues/885)
+### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
 
 
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [13.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.1...@codecademy/styleguide@13.3.2) (2020-08-11)
 
 
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
+### [13.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.6...@codecademy/styleguide@13.3.1) (2020-08-11)
+
+
+### ✨ Features
+
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+* **Overlay:** Adds Overlay body scroll lock [GM-26] ([#857](https://github.com/Codecademy/client-modules/issues/857)) ([04520b2](https://github.com/Codecademy/client-modules/commit/04520b2002c8cb096ad97bf0c39f277fb8a794d4))
+
+### [13.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.5...@codecademy/styleguide@13.2.6) (2020-08-06)
+
+### [13.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.4...@codecademy/styleguide@13.2.5) (2020-08-06)
+
+### [13.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.3...@codecademy/styleguide@13.2.4) (2020-08-06)
+
+### [13.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.2...@codecademy/styleguide@13.2.3) (2020-08-06)
+
+### [13.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.1...@codecademy/styleguide@13.2.2) (2020-07-29)
+
+### [13.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.0...@codecademy/styleguide@13.2.1) (2020-07-29)
+
+
+### ✨ Features
+
+* Added basic Anchor component ([#883](https://github.com/Codecademy/client-modules/issues/883)) ([ed7d27b](https://github.com/Codecademy/client-modules/commit/ed7d27b8ed033506aadc94dadf7323b8eaf0eab8))
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
 
 ## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.3...@codecademy/styleguide@13.2.0) (2020-07-27)
 
@@ -51,14 +76,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
-* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
 
 ### [13.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.2...@codecademy/styleguide@13.1.3) (2020-07-27)
-
-
-### Other Changes
-
-* update changelogs ([a4e359b](https://github.com/Codecademy/client-modules/commit/a4e359b5d8bbf7bffdfaf4cda4d2306a20a6d32a))
 
 ### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.1...@codecademy/styleguide@13.1.2) (2020-07-27)
 
@@ -66,21 +85,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Fixed happy little syntax accident on tooltip story ([#891](https://github.com/Codecademy/client-modules/issues/891)) ([2ed85ac](https://github.com/Codecademy/client-modules/commit/2ed85ace129d150c31cacb5d2e240eef255b9051))
-* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
 
 ### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
 
-
-### Other Changes
-
-* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
-
 ## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
-
-
-### Other Changes
-
-* update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
 
 
 ### ✨ Features
@@ -89,11 +97,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
 
-
-### Other Changes
-
-* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
-
 ## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
 
 
@@ -101,21 +104,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **Icons:** Streamline Icon Set Full [GM-30] (#838)
 
-### Other Changes
-
-* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
-
-
 ### ✨ Features
 
 * **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
 
 ### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.0...@codecademy/styleguide@12.0.1) (2020-07-21)
-
-
-### Other Changes
-
-* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
 ## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.7...@codecademy/styleguide@12.0.0) (2020-07-21)
 
@@ -124,42 +117,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
 
-### Other Changes
-
-* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
-
-
 ### ✨ Features
 
 * **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
 
 ### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
 
-
-### Other Changes
-
-* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
-
 ### [11.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.5...@codecademy/styleguide@11.7.6) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
 ### [11.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.4...@codecademy/styleguide@11.7.5) (2020-07-17)
 
-
-### Other Changes
-
-* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
-
 ### [11.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.3...@codecademy/styleguide@11.7.4) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 
 ### [11.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.2...@codecademy/styleguide@11.7.3) (2020-07-16)
 
@@ -197,7 +165,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * **Styleguide:** Add module alias for storybook helpers [WEB-934] ([#861](https://github.com/Codecademy/client-modules/issues/861)) ([7daf135](https://github.com/Codecademy/client-modules/commit/7daf135edbd7ebf933f06dd05cd76be00c75a471))
-* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
 

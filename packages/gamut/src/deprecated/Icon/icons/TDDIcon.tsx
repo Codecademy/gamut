@@ -26,5 +26,3 @@ export const TDDIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 TDDIcon.defaultProps = defaultIconProps;
-
-export default TDDIcon;

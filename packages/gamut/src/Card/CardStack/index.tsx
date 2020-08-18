@@ -10,5 +10,3 @@ export function CardStack() {
     </div>
   );
 }
-
-export default CardStack;
