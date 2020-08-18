@@ -53,30 +53,36 @@ export const Modal: React.FC<ModalProps> = ({
       onRequestClose={onRequestClose}
       data-testid="modal"
     >
-      <CardShell
-        className={cx(styles.modalBody, className)}
-        aria-hidden="false"
-        role="dialog"
-        tabIndex={0}
-      >
-        {!hideDefaultCloseButton && (
-          <div
-            className={styles.closeButtonContainer}
-            data-testid="modal-default-close-button"
-          >
-            <Button
-              flat
-              theme="brand-dark-blue"
-              fitText
-              onClick={onRequestClose}
-              className={styles.closeButton}
+      <div>
+        <CardShell
+          className={cx(styles.modalBody, className)}
+          aria-hidden="false"
+          role="dialog"
+          tabIndex={0}
+        >
+          {!hideDefaultCloseButton && (
+            <div
+              className={styles.closeButtonContainer}
+              data-testid="modal-default-close-button"
             >
-              <CloseIcon width={22} height={22} className={styles.closeIcon} />
-            </Button>
-          </div>
-        )}
-        {children}
-      </CardShell>
+              <Button
+                flat
+                theme="brand-dark-blue"
+                fitText
+                onClick={onRequestClose}
+                className={styles.closeButton}
+              >
+                <CloseIcon
+                  width={22}
+                  height={22}
+                  className={styles.closeIcon}
+                />
+              </Button>
+            </div>
+          )}
+          {children}
+        </CardShell>
+      </div>
     </Overlay>
   );
 };

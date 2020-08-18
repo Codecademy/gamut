@@ -1,6 +1,12 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { Modal, ModalProps } from '..';
+
+jest.mock('../../BodyPortal', () => {
+  return {
+    BodyPortal: ({ children }: { children: any }) => <div>{children}</div>,
+  };
+});
 
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(
@@ -11,6 +17,10 @@ const renderModal = (props?: Partial<ModalProps>) => {
 };
 
 describe('Modal', () => {
+  beforeEach(() => {
+    document.body.innerHTML = '';
+  });
+
   it('renders children when isOpen is true', () => {
     const children = 'Hey';
     const { baseElement } = renderModal({ children });
@@ -26,7 +36,6 @@ describe('Modal', () => {
   it('does not render its close button if hideDefaultCloseButton is true', () => {
     renderModal({
       hideDefaultCloseButton: true,
-      children: <button type="button">Click Me</button>,
     });
 
     expect(
@@ -81,5 +90,13 @@ describe('Modal', () => {
     });
     fireEvent.mouseDown(screen.getByTestId('modal-content'));
     expect(onRequestClose.mock.calls.length).toBe(0);
+  });
+
+  it('automatically focuses the modal wrapper on open', async () => {
+    renderModal({
+      hideDefaultCloseButton: true,
+    });
+    // There is a delay before focus we need to wait for
+    await waitFor(() => expect(screen.getByRole('dialog')).toHaveFocus());
   });
 });
