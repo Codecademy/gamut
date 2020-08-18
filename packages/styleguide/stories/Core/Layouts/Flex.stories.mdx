@@ -1,28 +1,23 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus, ComponentWarning } from '../../../Blocks';
+import { StoryStatus } from '../../../Blocks';
 import { Item, Container } from '@codecademy/gamut/src';
-import { Box, defaultGridProps } from './Elements';
+import { Box as BoxElement, defaultGridProps } from './Elements';
 import { select, boolean, number } from '@storybook/addon-knobs';
 
 <Meta
-  title="Layouts/Container"
+  title="Layouts/Box (Labs)"
   component={Container}
   subcomponents={{ Container, Item }}
 />
 
 # Container
 
-<StoryStatus status="volatile" />
-
-<ComponentWarning>
-  This component will be deprecated and replaced with the Gamut Labs™ Box and
-  Flex components
-</ComponentWarning>
+<StoryStatus status="stable" />
 
 A flex box primitive that allows you create markup configurable flex containers
 
 <Canvas>
-  <Story name="Flex Container ">
+  <Story name="Box">
     {() => {
       const alignments = [
         'stretch',
@@ -50,8 +45,8 @@ A flex box primitive that allows you create markup configurable flex containers
           reverse={boolean('reverse', false)}
           wrap={boolean('wrap', false)}
         >
-          <Box>Element 1</Box>
-          <Box>Element 2</Box>
+          <BoxElement>Element 1</BoxElement>
+          <BoxElement>Element 2</BoxElement>
         </Container>
       );
     }}
