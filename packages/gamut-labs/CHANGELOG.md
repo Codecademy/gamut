@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 2.0.0 (2020-08-18)
-
-* feat(Gamut)!: Enable Emotion (#917) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a5)), closes [#917](https://github.com/Codecademy/client-modules/issues/917)
-* chore: update changelogs ([639eb1c](https://github.com/Codecademy/client-modules/commit/639eb1c))
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.5...@codecademy/gamut-labs@2.0.0) (2020-08-18)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Gamut:** Enable Emotion (#917)
 
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
 
 ### [1.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.4...@codecademy/gamut-labs@1.9.5) (2020-08-17)
 
@@ -182,3 +179,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+

@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 14.0.0 (2020-08-18)
-
-* feat(Gamut)!: Enable Emotion (#917) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a5)), closes [#917](https://github.com/Codecademy/client-modules/issues/917)
-* chore: update changelogs ([639eb1c](https://github.com/Codecademy/client-modules/commit/639eb1c))
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@13.0.0...@codecademy/gamut@14.0.0) (2020-08-18)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Gamut:** Enable Emotion (#917)
 
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
 
 ## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.4...@codecademy/gamut@13.0.0) (2020-08-17)
 
@@ -2874,3 +2871,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 5.0.0 (2020-08-18)
-
-* feat(Gamut)!: Enable Emotion (#917) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a5)), closes [#917](https://github.com/Codecademy/client-modules/issues/917)
-* chore: update changelogs ([8bb12f5](https://github.com/Codecademy/client-modules/commit/8bb12f5))
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.5...@codecademy/gamut-styles@5.0.0) (2020-08-18)
 
 
+### ⚠ BREAKING CHANGES
 
+* **Gamut:** Enable Emotion (#917)
 
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
 
 ### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.4...@codecademy/gamut-styles@4.2.5) (2020-08-13)
 
@@ -538,3 +535,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
