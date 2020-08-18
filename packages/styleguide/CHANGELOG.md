@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>14.0.1 (2020-08-18)</small>
-
-* fix: AccordionArea typo in docs (#927) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923)), closes [#927](https://github.com/Codecademy/client-modules/issues/927)
-* chore: update changelogs ([639eb1c](https://github.com/Codecademy/client-modules/commit/639eb1c))
+### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
 
 
+### 🐛 Bug Fixes
 
-
+* AccordionArea typo in docs ([#927](https://github.com/Codecademy/client-modules/issues/927)) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923a5ae41b53f2ca4e65315157209c2e24ef))
 
 ## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.4...@codecademy/styleguide@14.0.0) (2020-08-17)
 
@@ -973,3 +966,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
