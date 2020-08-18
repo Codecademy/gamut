@@ -2,12 +2,6 @@ import React from 'react';
 import { render, fireEvent, screen, waitFor } from '@testing-library/react';
 import { Modal, ModalProps } from '..';
 
-jest.mock('../../BodyPortal', () => {
-  return {
-    BodyPortal: ({ children }: { children: any }) => <div>{children}</div>,
-  };
-});
-
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(
     <Modal isOpen onRequestClose={() => {}} {...props}>
@@ -17,10 +11,6 @@ const renderModal = (props?: Partial<ModalProps>) => {
 };
 
 describe('Modal', () => {
-  beforeEach(() => {
-    document.body.innerHTML = '';
-  });
-
   it('renders children when isOpen is true', () => {
     const children = 'Hey';
     const { baseElement } = renderModal({ children });
