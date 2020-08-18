@@ -19,6 +19,7 @@ addParameters({
         'About',
         'Meta',
         'Foundations',
+        'Typography',
         'Layouts',
         'Atoms',
         'Molecules',
