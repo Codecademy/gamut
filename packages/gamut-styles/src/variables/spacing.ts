@@ -11,5 +11,5 @@ export const spacing = {
   [base * 1]: pxRem(base * 1),
   [base * 1.5]: pxRem(base * 1.5),
   [base * 2]: pxRem(base * 2),
-  [base * 2.5]: pxRem(base * 2.5),
+  [base * 3]: pxRem(base * 3),
 };
