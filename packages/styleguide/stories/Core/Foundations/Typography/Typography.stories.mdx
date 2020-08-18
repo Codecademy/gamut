@@ -27,7 +27,7 @@ We have 4 main font-stacks that are used through out our front end apps. They ar
 1. `Base` for all body text.
 2. `Heading` for all headings and subheadings `h1`-`h6`
 3. `Monospace` for code and other space-sensitive or themed content.
-4. `System` largely unused by still defined for when system fonts are necessary.
+4. `System` largely unused built still defined for when system fonts are necessary.
 
 <Canvas withSource="none" isColumn>
   {Object.entries(DesignTokens.fontFamily).map(([alias, value]) => (
@@ -112,14 +112,14 @@ fontSize.text.md; // sm | md | lg
   font-size: $font-size-h1; // h1 - h6
 }
 .body {
-  font-size: $font-size-base; // $font-size-small
+  font-size: $font-size-base; // small | base
 }
 ```
 
 ## Font Weights
 
 We support two basic `font-weight` values for both body text `400` and headings `700`, while lighter or bolder variations may be
-available for some font stacks these will be the safest for their desired effects.
+available for some font stacks, these will be the safest for their desired effects.
 
 <Canvas withSource="none" isColumn>
   <TextExample propName="weight" weight={DesignTokens.fontWeight.text}>
@@ -142,7 +142,7 @@ fontWeight.text; // text | heading
 @import '@codecademy/gamut-styles/utils';
 
 .text {
-  font-weight: $font-weight-base; // $font-weight-base | $font-weight-headings
+  font-weight: $font-weight-base; // base | headings
 }
 ```
 
@@ -165,7 +165,7 @@ We generally like to keep body text at 1.5 and headings at 1.15.
     line={DesignTokens.lineHeight.heading}
   >
     Children know perfectly well that unicorns aren’t real, but they also know
-    that books about unicorns, if they are good books, are true books
+    that books about unicorns, if they are good books, are true books.
   </TextExample>
 </Canvas>
 

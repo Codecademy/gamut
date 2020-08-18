@@ -95,19 +95,19 @@ And provide mixins that do the work for you matching the pattern `@include <SIZE
 We generally like to keep all content outside of full width screens to a few specific sizes. We recommend using <LinkTo kind="Layouts" story="ContentContainer">ContentContainer</LinkTo> in most cases,
 but if you need to use these sizes outside of that component you can find them here:
 
-#### TS - maxContentWidth | mediumContentWidth
+#### TS - contentWidths
 
 ```tsx
-import { maxContentWidth, mediumContentWidth } from '@codecademy/gamut-styles';
+import { contentWidths } from '@codecademy/gamut-styles';
 
 // 1440px
 const MediumWidth = `
-  max-width: ${mediumContentWidth};
+  max-width: ${contentWidths.md};
 `;
 
 // 1200px
 const MaxWidth = `
-  max-width: ${maxContentWidth};
+  max-width: ${contentWidths.max};
 `;
 ```
 
