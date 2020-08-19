@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AccordionArea from '../AccordionArea';
+import { AccordionArea } from '../AccordionArea';
 import {
   AccordionButton,
   AccordionButtonSize,
