@@ -1,5 +1,5 @@
 import { Badge } from '@codecademy/gamut/src';
-import { Meta, Story, Preview, Props } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
 import { VisualTheme } from '@codecademy/gamut/src';
 import { StoryStatus } from '~styleguide/blocks';
 
@@ -11,17 +11,17 @@ import { StoryStatus } from '~styleguide/blocks';
 
 Small blue indicator of some unusual text
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Badge">
     <Badge>New</Badge>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Badge} />
 
 Badges can be used within inline text.
 
-<Preview>
+<Canvas>
   <Story name="Inline Badge">
     <>
       <Badge>css</Badge>
@@ -29,4 +29,4 @@ Badges can be used within inline text.
       <Badge>css</Badge>
     </>
   </Story>
-</Preview>
+</Canvas>

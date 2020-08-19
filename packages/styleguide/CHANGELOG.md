@@ -1,3 +1,23 @@
+## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.2...@codecademy/styleguide@15.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
+### [14.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.1...@codecademy/styleguide@14.0.2) (2020-08-18)
+
+### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
+
+
+### 🐛 Bug Fixes
+
+* AccordionArea typo in docs ([#927](https://github.com/Codecademy/client-modules/issues/927)) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923a5ae41b53f2ca4e65315157209c2e24ef))
+
 ## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.4...@codecademy/styleguide@14.0.0) (2020-08-17)
 
 

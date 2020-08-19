@@ -1,4 +1,4 @@
-import { Meta, Props, Story, Preview } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import {
   Button,
@@ -30,7 +30,7 @@ Prefer `brand-purple` for significant actions such as Pro signups. Prefer `brand
 
 Play with this button, if you&apos;d like!
 
-<Preview>
+<Canvas>
   <Story name="Button">
     <Button
       block={boolean('block', false)}
@@ -46,7 +46,7 @@ Play with this button, if you&apos;d like!
       {text('Label', 'Submit')}
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Button} />
 
@@ -56,7 +56,7 @@ There are several theme sets you can use with `Button`
 
 ### Brand
 
-<Preview columns={1}>
+<Canvas columns={1}>
   <Story name="Brand Buttons">
     {brandThemeKeys.map((theme) => (
       <Button
@@ -69,13 +69,13 @@ There are several theme sets you can use with `Button`
       </Button>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ### Status
 
 We also have feedback specific button themes best paired with `Alert`
 
-<Preview>
+<Canvas>
   <Story name="Status Buttons">
     {statusThemeKeys.map((theme) => (
       <Button
@@ -88,13 +88,13 @@ We also have feedback specific button themes best paired with `Alert`
       </Button>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ### Deprecated
 
 We also have legacy button colors floating around. Do not use these.
 
-<Preview>
+<Canvas>
   <Story name="Deprecated">
     {deprecatedThemeKeys.map((theme) => (
       <Button
@@ -107,7 +107,7 @@ We also have legacy button colors floating around. Do not use these.
       </Button>
     ))}
   </Story>
-</Preview>
+</Canvas>
 
 ## ButtonBase Variants
 
@@ -118,7 +118,7 @@ _Note:_ keep in mind that buttons generally need focus and hover
 indicators for accessibility. If you use `ButtonBase`, be sure you&apos;re
 adding in your own.
 
-<Preview>
+<Canvas>
   <Story name="ButtonBase">
     <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>
   </Story>
@@ -130,13 +130,13 @@ adding in your own.
       {text('Label 3', 'a basic button styled as a link')}
     </ButtonBase>
   </Story>
-</Preview>
+</Canvas>
 
 ## Link Button
 
 You may also configure a button to behave purely like a link
 
-<Preview>
+<Canvas>
   <Story name="Link Button">
     <>
       This is an example of a{' '}
@@ -145,13 +145,13 @@ You may also configure a button to behave purely like a link
       </Button>{' '}
     </>
   </Story>
-</Preview>
+</Canvas>
 
 ## Button options
 
 Common variants of buttons you might come across.
 
-<Preview columns={1}>
+<Canvas columns={1}>
   <Story name="Flat">
     <Button theme="brand-blue" flat href="#">
       Flat
@@ -205,17 +205,17 @@ Common variants of buttons you might come across.
       Caps
     </Button>
   </Story>
-</Preview>
+</Canvas>
 
 ## Round
 
 Buttons might also be `round` to indicate rounded corners. These tend to
 be larger, advertise-y placements.
 
-<Preview>
+<Canvas>
   <Story name="Round">
     <Button theme="brand-blue" size="large" round>
       Large
     </Button>
   </Story>
-</Preview>
+</Canvas>

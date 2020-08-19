@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Video } from '@codecademy/gamut/src';
 import { StoryStatus } from '~styleguide/blocks';
 
@@ -11,7 +11,7 @@ import { StoryStatus } from '~styleguide/blocks';
 This is an example video player that can play both youtube and vimeo videos
 given a video URL
 
-<Preview>
+<Canvas>
   <Story name="Video">
     <Video
       videoUrl="https://vimeo.com/145702525"
@@ -21,13 +21,13 @@ given a video URL
       }}
     />
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Video} />
 
 # Video with PlaceholderImage
 
-<Preview>
+<Canvas>
   <Story name="Video with PlaceholderImage">
     <Video
       videoUrl="https://www.youtube.com/watch?v=Yl8yy5tpVIM"
@@ -36,4 +36,4 @@ given a video URL
       autoplay={true}
     />
   </Story>
-</Preview>
+</Canvas>

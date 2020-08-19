@@ -1,5 +1,5 @@
 import { Button, Interstitial } from '@codecademy/gamut/src';
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Truncate } from '@codecademy/gamut/src';
 
@@ -12,7 +12,7 @@ import { Truncate } from '@codecademy/gamut/src';
 Large content area used as a break between focused content, such as within
 a full-screen <code>Overlay</code> in the LE between lessons.
 
-<Preview>
+<Canvas>
   <Story name="Interstitial">
     <Interstitial
       buttons={[
@@ -30,7 +30,7 @@ a full-screen <code>Overlay</code> in the LE between lessons.
       large but not too large. We want some amount of vertical centering!
     </Interstitial>
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Interstitial} />
 
@@ -39,7 +39,7 @@ a full-screen <code>Overlay</code> in the LE between lessons.
 Decorations are added on top of the heading and are narrated as part of
 it. Put emojis or promotional images here to really emphasize them.
 
-<Preview>
+<Canvas>
   <Story name="Decorated Interstitial">
     <Interstitial
       buttons={[
@@ -56,4 +56,4 @@ it. Put emojis or promotional images here to really emphasize them.
       I really love emojis. Please confirm you love emojis too!
     </Interstitial>
   </Story>
-</Preview>
+</Canvas>

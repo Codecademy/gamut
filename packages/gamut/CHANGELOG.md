@@ -1,3 +1,14 @@
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@13.0.0...@codecademy/gamut@14.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
 ## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@12.3.4...@codecademy/gamut@13.0.0) (2020-08-17)
 
 
