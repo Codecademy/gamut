@@ -1,3 +1,18 @@
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.5...@codecademy/gamut-labs@2.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
+### [1.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.4...@codecademy/gamut-labs@1.9.5) (2020-08-17)
+
+### [1.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.3...@codecademy/gamut-labs@1.9.4) (2020-08-14)
+
 ### [1.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.2...@codecademy/gamut-labs@1.9.3) (2020-08-13)
 
 

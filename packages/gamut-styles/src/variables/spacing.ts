@@ -6,10 +6,10 @@ export const baseUnit = pxRem(base);
 export const headerHeight = pxRem(base * 4);
 
 export const spacing = {
-  xs: pxRem(base / 4),
-  sm: pxRem(base / 2),
-  md: baseUnit,
-  lg: pxRem(base * 2),
-  xl: pxRem(base * 3),
-  xxl: pxRem(base * 5),
+  [base * 0.25]: pxRem(base * 0.25),
+  [base * 0.5]: pxRem(base * 0.5),
+  [base * 1]: pxRem(base * 1),
+  [base * 1.5]: pxRem(base * 1.5),
+  [base * 2]: pxRem(base * 2),
+  [base * 3]: pxRem(base * 3),
 };

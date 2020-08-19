@@ -295,6 +295,55 @@ default value is 'brand-purple'.
     )}
   </Story>
 </Canvas>
+<<<<<<< HEAD
+=======
+
+## Submit Button color
+
+We can specify the color of our button by passing the theme prop with a
+button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
+default value is 'brand-purple'.
+
+<Canvas>
+  <Story name="Submit button color">
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async (values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Default Purple Submit!?',
+        size: 12,
+      }}
+    />
+    <GridForm
+      fields={[
+        {
+          label: 'Simple text',
+          name: 'simple-text',
+          size: 12,
+          type: 'text',
+        },
+      ]}
+      onSubmit={async (values) => {
+        action('Form Submitted')(values);
+      }}
+      submit={{
+        contents: 'Blue Submit!?',
+        size: 12,
+        theme: 'brand-blue',
+      }}
+    />
+  </Story>
+</Canvas>
+>>>>>>> 2dd0a4a26e0798f7b57dc909f39df15eeff489bf
 
 ## Inline Submit Button
 

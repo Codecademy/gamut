@@ -20,5 +20,7 @@ export const mediaQueries = {
   xl: createMediaQuery('xl', 'min'),
 };
 
-export const maxContentWidth = breakpoints.xl;
-export const mediumContentWidth = breakpoints.lg;
+export const contentWidths = {
+  md: breakpoints.lg,
+  max: breakpoints.xl,
+};

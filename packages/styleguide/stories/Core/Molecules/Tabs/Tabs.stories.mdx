@@ -1,4 +1,5 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { StoryStatus } from '~styleguide/blocks';
 import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
@@ -18,7 +19,7 @@ import { number, boolean, text } from '@storybook/addon-knobs';
 Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Tabs">
     {(args) => (
       <Tabs
@@ -63,7 +64,7 @@ When `activeTabIndex` is specified, the component switches to
 being a controlled component. It won't change its own tab state, but will
 instead notify of a request to change using `onChange`.
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="Controlled">
     {(args) => (
       <Tabs

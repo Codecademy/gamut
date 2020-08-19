@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 
-export type ShadowDepths = 1 | 2 | 3 | 4 | 5;
+export type ShadowDepth = 1 | 2 | 3 | 4 | 5;
 
 const shadowsForDepth = {
   1: {
@@ -25,7 +25,7 @@ const shadowsForDepth = {
   },
 };
 
-export const boxShadow = (depth = 1 as ShadowDepths) => {
+export const boxShadow = (depth: ShadowDepth = 1) => {
   const {
     offsets: [o1, o2, o3, o4],
     shades: [s1, s2],

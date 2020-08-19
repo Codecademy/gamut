@@ -61,25 +61,23 @@ brandColors.blue;
 ### Brand
 
 <Story name="Brand">
-  {() => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(brandColors)
-        .filter((color) => !excludedColors.includes(color))
-        .map((color) => (
-          <Column key={color} size={{ xs: 6, sm: 3 }}>
-            <Container flex={false}>
-              <Heading as="h2" fontSize="xs">
-                {startCase(color)}
-              </Heading>
-              <Swatch
-                name={`$brand-${parseCamelCase(color)}`}
-                hex={brandColors[color]}
-              />
-            </Container>
-          </Column>
-        ))}
-    </LayoutGrid>
-  )}
+  <LayoutGrid rowGap="md" columnGap="md">
+    {objectKeys(brandColors)
+      .filter((color) => !excludedColors.includes(color))
+      .map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`$brand-${parseCamelCase(color)}`}
+              hex={brandColors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+  </LayoutGrid>
 </Story>
 
 <br />
@@ -89,25 +87,23 @@ brandColors.blue;
 Utility colors that are less brand specific but still used in similar patterns.
 
 <Story name="Base">
-  {() => (
-    <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(colors)
-        .filter((color) => excludedColors.includes(color))
-        .map((color) => (
-          <Column key={color} size={{ xs: 6, sm: 3 }}>
-            <Container flex={false}>
-              <Heading as="h2" fontSize="xs">
-                {startCase(color)}
-              </Heading>
-              <Swatch
-                name={`$color-${parseCamelCase(color)}`}
-                hex={colors[color]}
-              />
-            </Container>
-          </Column>
-        ))}
-    </LayoutGrid>
-  )}
+  <LayoutGrid rowGap="md" columnGap="md">
+    {objectKeys(colors)
+      .filter((color) => excludedColors.includes(color))
+      .map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {startCase(color)}
+            </Heading>
+            <Swatch
+              name={`$color-${parseCamelCase(color)}`}
+              hex={colors[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+  </LayoutGrid>
 </Story>
 
 <br />

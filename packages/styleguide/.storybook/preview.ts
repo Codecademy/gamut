@@ -1,8 +1,14 @@
 import { addParameters, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
+import { create } from '@storybook/theming';
 
 import './decorators/wrapper';
-import { theme } from './theme';
+
+const theme = create({
+  base: 'light',
+  brandTitle: 'Gamut',
+  brandUrl: '/',
+});
 
 addParameters({
   viewMode: 'docs',
