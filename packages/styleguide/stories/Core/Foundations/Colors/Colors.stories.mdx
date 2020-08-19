@@ -129,7 +129,7 @@ color.blue[900];
 ```
 
 <Story name="Rest">
-  {() => (
+  {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(colors)
         .filter((color) => !excludedColors.includes(color))
@@ -157,7 +157,7 @@ about containing only brand and grid colors. It uses a selection of muted
 grayish purples and a few mid-range minty greens.
 
 <Story name="Platform ">
-  {() => (
+  {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(platformColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
@@ -181,7 +181,7 @@ grayish purples and a few mid-range minty greens.
 The LE's code editor uses its own colors for text.
 
 <Story name="Editor">
-  {() => (
+  {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(editorColors).map((color) => (
         <Column key={color} size={{ xs: 6, sm: 3 }}>
