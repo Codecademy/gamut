@@ -60,7 +60,6 @@ There are several theme sets you can use with `Button`
 
 <Canvas columns={1}>
   <Story name="Brand Buttons">
-<<<<<<< HEAD
     {(args) =>
       brandThemeKeys.map((theme) => (
         <Button
@@ -73,18 +72,6 @@ There are several theme sets you can use with `Button`
         </Button>
       ))
     }
-=======
-    {brandThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
->>>>>>> 2dd0a4a26e0798f7b57dc909f39df15eeff489bf
   </Story>
 </Canvas>
 
@@ -94,7 +81,6 @@ We also have feedback specific button themes best paired with `Alert`
 
 <Canvas>
   <Story name="Status Buttons">
-<<<<<<< HEAD
     {(args) =>
       statusThemeKeys.map((theme) => (
         <Button
@@ -107,18 +93,6 @@ We also have feedback specific button themes best paired with `Alert`
         </Button>
       ))
     }
-=======
-    {statusThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
->>>>>>> 2dd0a4a26e0798f7b57dc909f39df15eeff489bf
   </Story>
 </Canvas>
 
@@ -128,7 +102,6 @@ We also have legacy button colors floating around. Do not use these.
 
 <Canvas>
   <Story name="Deprecated">
-<<<<<<< HEAD
     {(args) =>
       deprecatedThemeKeys.map((theme) => (
         <Button
@@ -141,18 +114,6 @@ We also have legacy button colors floating around. Do not use these.
         </Button>
       ))
     }
-=======
-    {deprecatedThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
->>>>>>> 2dd0a4a26e0798f7b57dc909f39df15eeff489bf
   </Story>
 </Canvas>
 
