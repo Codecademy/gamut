@@ -80,5 +80,5 @@
 }
 
 .invisible {
-  @include screenreader-only;
+  @include sr-only;
 }

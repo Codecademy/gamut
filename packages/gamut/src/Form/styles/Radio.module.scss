@@ -8,7 +8,7 @@
 }
 
 .radioInput {
-  @include screenreader-only();
+  @include sr-only();
 }
 
 .radioLabel {
