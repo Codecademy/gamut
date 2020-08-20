@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>15.0.1 (2020-08-20)</small>
-
-* chore: update changelogs ([2dd0a4a](https://github.com/Codecademy/client-modules/commit/2dd0a4a))
-* chore(Styleguide): Make all Stories Functions of Args (#922) ([5c10a28](https://github.com/Codecademy/client-modules/commit/5c10a28)), closes [#922](https://github.com/Codecademy/client-modules/issues/922)
+### [15.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.0...@codecademy/styleguide@15.0.1) (2020-08-20)
 
 
+### Other Changes
 
-
+* **Styleguide:** Make all Stories Functions of Args ([#922](https://github.com/Codecademy/client-modules/issues/922)) ([5c10a28](https://github.com/Codecademy/client-modules/commit/5c10a2868abf22673ac9cc4db31bd6b7263e20ad))
 
 ## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.2...@codecademy/styleguide@15.0.0) (2020-08-18)
 
@@ -993,3 +986,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
