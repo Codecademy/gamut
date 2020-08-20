@@ -19,6 +19,7 @@ import {
   colors,
   deprecatedColors,
   editorColors,
+  baseColors,
   deprecatedGamutColors,
   platformColors,
 } from '@codecademy/gamut-styles';
@@ -58,51 +59,23 @@ brandColors.blue;
 }
 ```
 
-### Brand
-
-<Story name="Brand">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(brandColors)
-      .filter((color) => !excludedColors.includes(color))
-      .map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <Heading as="h2" fontSize="xs">
-              {startCase(color)}
-            </Heading>
-            <Swatch
-              name={`$brand-${parseCamelCase(color)}`}
-              hex={brandColors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
-  </LayoutGrid>
-</Story>
-
-<br />
-
-### UI
-
-Utility colors that are less brand specific but still used in similar patterns.
+### Base
 
 <Story name="Base">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(colors)
-      .filter((color) => excludedColors.includes(color))
-      .map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
-          <Container flex={false}>
-            <Heading as="h2" fontSize="xs">
-              {startCase(color)}
-            </Heading>
-            <Swatch
-              name={`$color-${parseCamelCase(color)}`}
-              hex={colors[color]}
-            />
-          </Container>
-        </Column>
-      ))}
+    {objectKeys(baseColors).map((color) => (
+      <Column key={color} size={{ xs: 6, sm: 3 }}>
+        <Container flex={false}>
+          <Heading as="h2" fontSize="xs">
+            {startCase(color)}
+          </Heading>
+          <Swatch
+            name={`$color-${parseCamelCase(color)}`}
+            hex={baseColors[color]}
+          />
+        </Container>
+      </Column>
+    ))}
   </LayoutGrid>
 </Story>
 
@@ -176,6 +149,8 @@ grayish purples and a few mid-range minty greens.
   )}
 </Story>
 
+<br />
+
 ## Editor Colors
 
 The LE's code editor uses its own colors for text.
@@ -198,4 +173,26 @@ The LE's code editor uses its own colors for text.
       ))}
     </LayoutGrid>
   )}
+</Story>
+
+<br />
+
+## Brand Colors (deprecated)
+
+<Story name="Brand">
+  <LayoutGrid rowGap="md" columnGap="md">
+    {objectKeys(brandColors).map((color) => (
+      <Column key={color} size={{ xs: 6, sm: 3 }}>
+        <Container flex={false}>
+          <Heading as="h2" fontSize="xs">
+            {startCase(color)}
+          </Heading>
+          <Swatch
+            name={`$brand-${parseCamelCase(color)}`}
+            hex={brandColors[color]}
+          />
+        </Container>
+      </Column>
+    ))}
+  </LayoutGrid>
 </Story>

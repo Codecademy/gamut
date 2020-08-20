@@ -4,7 +4,7 @@ export const colors = {
     '200': '#a5befa',
     '300': '#7da2fa',
     '400': '#5788fa',
-    '500': '#3069f0',
+    '500': '#1557FF',
     '600': '#2d5dcc',
     '700': '#2e4a99',
     '800': '#233466',
@@ -16,7 +16,7 @@ export const colors = {
     '100': '#ffd9fc',
     '200': '#ffbffa',
     '300': '#ffa6f8',
-    '400': '#f288e9',
+    '400': '#F966FF',
     '500': '#d957d9',
     '600': '#b035c9',
     '700': '#9129a6',
@@ -39,7 +39,7 @@ export const colors = {
     '200': '#ffb8ad',
     '300': '#ff988c',
     '400': '#ff7566',
-    '500': '#fd4d3f',
+    '500': '#F03329',
     '600': '#e53935',
     '700': '#bf2e2c',
     '800': '#992523',
@@ -61,7 +61,7 @@ export const colors = {
     '200': '#FFD093',
     '300': '#FFB764',
     '400': '#FF9F3C',
-    '500': '#FF881D',
+    '500': '#FF8C00',
     '600': '#FB7106',
     '700': '#DC5A03',
     '800': '#BA4604',
@@ -72,7 +72,7 @@ export const colors = {
     '200': '#fff2b3',
     '300': '#ffec8c',
     '400': '#ffe359',
-    '500': '#ffd500',
+    '500': '#FFD300',
     '600': '#ffb92e',
     '700': '#e69729',
     '800': '#b37620',
@@ -89,12 +89,46 @@ export const colors = {
     '800': '#323233',
     '900': '#19191a',
   },
+  forest: {
+    '400': '#AEE938',
+    '700': '#009C2C',
+  },
+  sky: {
+    '300': '#66C4FF',
+  },
   black: '#000000',
   white: '#ffffff',
   beige: '#efd9ca',
   royalBlue: '#6400e4',
 };
 
+export const baseColors = {
+  beige: '#FFF0E5',
+  black: colors.black,
+  blue: colors.sky[300],
+  darkBlue: colors.blue[500],
+  darkGreen: colors.forest[700],
+  green: colors.forest[400],
+  navy: colors.blue[1000],
+  orange: colors.orange[500],
+  pink: colors.pink[400],
+  red: colors.red[500],
+  white: colors.white,
+  yellow: colors.yellow[500],
+  hyper: '#3A10E5',
+};
+
+export const backgroundColors = {
+  lightBlue: '#F5FCFF',
+  lightGreen: '#F5FFE3',
+  lightPink: '#FFF5FF',
+  lightYellow: '#FFFAE5',
+};
+
+/**
+ * @deprecated
+ * use baseColors
+ */
 export const brandColors = {
   red: colors.red[500],
   orange: colors.orange[400],
