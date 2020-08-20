@@ -14,12 +14,14 @@ A pull quote for use in an editorial page.
 
 <Canvas withSource="open" className="dark">
   <Story name="EditorialQuote">
-    <EditorialQuote
-      quote={text(
-        'Quote',
-        'In an interstellar burst, I am back to save the universe.'
-      )}
-    />
+    {(args) => (
+      <EditorialQuote
+        quote={text(
+          'Quote',
+          'In an interstellar burst, I am back to save the universe.'
+        )}
+      />
+    )}
   </Story>
 </Canvas>
 

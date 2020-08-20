@@ -16,24 +16,26 @@ form on another.
 
 <Canvas>
   <Story name="SplitInterstitial">
-    <SplitInterstitial
-      left={{
-        children: (
-          <React.Fragment>
-            <Heading as="h1">Important stuff!</Heading>
-            <Text>Some sort of information here, perhaps?</Text>
-          </React.Fragment>
-        ),
-      }}
-      right={{
-        children: (
-          <React.Fragment>
-            <Heading as="h2">Less important...</Heading>
-            <Text>Some more information here, maybe?</Text>
-          </React.Fragment>
-        ),
-      }}
-    />
+    {(args) => (
+      <SplitInterstitial
+        left={{
+          children: (
+            <React.Fragment>
+              <Heading as="h1">Important stuff!</Heading>
+              <Text>Some sort of information here, perhaps?</Text>
+            </React.Fragment>
+          ),
+        }}
+        right={{
+          children: (
+            <React.Fragment>
+              <Heading as="h2">Less important...</Heading>
+              <Text>Some more information here, maybe?</Text>
+            </React.Fragment>
+          ),
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -45,29 +47,31 @@ You can override the built-in images with your own on a per-design basis.
 
 <Canvas>
   <Story name="Custom Images">
-    <SplitInterstitial
-      left={{
-        children: (
-          <React.Fragment>
-            <Heading as="h1">Important stuff!</Heading>
-            <Text>Some sort of information here, perhaps?</Text>
-          </React.Fragment>
-        ),
-      }}
-      right={{
-        children: (
-          <React.Fragment>
-            <Heading as="h2">Less important...</Heading>
-            <Text>Some more information here, maybe?</Text>
-          </React.Fragment>
-        ),
-      }}
-      topLeftImage={{
-        src: Triangle,
-      }}
-      bottomRightImage={{
-        src: Stairs,
-      }}
-    />
+    {(args) => (
+      <SplitInterstitial
+        left={{
+          children: (
+            <React.Fragment>
+              <Heading as="h1">Important stuff!</Heading>
+              <Text>Some sort of information here, perhaps?</Text>
+            </React.Fragment>
+          ),
+        }}
+        right={{
+          children: (
+            <React.Fragment>
+              <Heading as="h2">Less important...</Heading>
+              <Text>Some more information here, maybe?</Text>
+            </React.Fragment>
+          ),
+        }}
+        topLeftImage={{
+          src: Triangle,
+        }}
+        bottomRightImage={{
+          src: Stairs,
+        }}
+      />
+    )}
   </Story>
 </Canvas>

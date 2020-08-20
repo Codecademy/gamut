@@ -15,12 +15,14 @@ Commonly paired with an `Avatar`.
 
 <Canvas withSource="open">
   <Story name="Byline">
-    <Byline
-      firstName={text('First Name', 'Bill')}
-      lastName={text('Last Name', 'Murray')}
-      occupation={text('Occupation', 'Ghostbuster @ Ghostcademy')}
-      location={text('Location', 'New York, NY', '')}
-    />
+    {(args) => (
+      <Byline
+        firstName={text('First Name', 'Bill')}
+        lastName={text('Last Name', 'Murray')}
+        occupation={text('Occupation', 'Ghostbuster @ Ghostcademy')}
+        location={text('Location', 'New York, NY', '')}
+      />
+    )}
   </Story>
 </Canvas>
 

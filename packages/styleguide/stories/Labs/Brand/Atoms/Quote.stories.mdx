@@ -14,12 +14,14 @@ Often with an `Avatar` or `Testimonial`.
 
 <Canvas withSource="open">
   <Story name="Quote">
-    <Quote
-      text={text(
-        'Text',
-        'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
-      )}
-    />
+    {(args) => (
+      <Quote
+        text={text(
+          'Text',
+          'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
+        )}
+      />
+    )}
   </Story>
 </Canvas>
 

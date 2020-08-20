@@ -23,9 +23,11 @@ instead, use `GridForm` to auto-generate these for you.
 
 <Canvas>
   <Story name="FormGroupDescription">
-    <FormGroupDescription>
-      Secure, unique password for your account.
-    </FormGroupDescription>
+    {(args) => (
+      <FormGroupDescription>
+        Secure, unique password for your account.
+      </FormGroupDescription>
+    )}
   </Story>
 </Canvas>
 
@@ -33,6 +35,6 @@ instead, use `GridForm` to auto-generate these for you.
 
 <Canvas>
   <Story name="FormGroupLabel">
-    <FormGroupLabel>Password</FormGroupLabel>
+    {(args) => <FormGroupLabel>Password</FormGroupLabel>}
   </Story>
 </Canvas>

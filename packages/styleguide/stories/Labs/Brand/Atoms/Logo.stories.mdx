@@ -16,26 +16,28 @@ it has a lot of visual distinction to stand out appropriately.
 
 <Canvas withSource="open">
   <Story name="Logo">
-    <Logo
-      width={number('width', 256)}
-      height={number('height', undefined)}
-      type={select(
-        'type',
-        [
-          'pro',
-          'proAlt',
-          'proLockup',
-          'proMono',
-          'premium',
-          'program',
-          'default',
-        ],
-        'default'
-      )}
-      style={{
-        color: select('color', selectableColors, selectableColors.black),
-      }}
-    />
+    {(args) => (
+      <Logo
+        width={number('width', 256)}
+        height={number('height', undefined)}
+        type={select(
+          'type',
+          [
+            'pro',
+            'proAlt',
+            'proLockup',
+            'proMono',
+            'premium',
+            'program',
+            'default',
+          ],
+          'default'
+        )}
+        style={{
+          color: select('color', selectableColors, selectableColors.black),
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -45,24 +47,24 @@ Variants of the Codecademy logo you can play around with.
 
 <Canvas>
   <Story name="Pro">
-    <Logo height={256} type="pro" width={256} />
+    {(args) => <Logo height={256} type="pro" width={256} />}
   </Story>
   <Story name="Pro Alt">
-    <Logo height={256} type="proAlt" width={256} />
+    {(args) => <Logo height={256} type="proAlt" width={256} />}
   </Story>
   <Story name="Pro Lockup">
-    <Logo height={256} type="proLockup" width={256} />
+    {(args) => <Logo height={256} type="proLockup" width={256} />}
   </Story>
   <Story name="Pro Mono">
-    <Logo height={256} type="proMono" width={256} />
+    {(args) => <Logo height={256} type="proMono" width={256} />}
   </Story>
   <Story name="Premium">
-    <Logo height={256} type="premium" width={256} />
+    {(args) => <Logo height={256} type="premium" width={256} />}
   </Story>
   <Story name="Program">
-    <Logo height={256} type="program" width={256} />
+    {(args) => <Logo height={256} type="program" width={256} />}
   </Story>
   <Story name="Default">
-    <Logo height={256} type="default" width={256} />
+    {(args) => <Logo height={256} type="default" width={256} />}
   </Story>
 </Canvas>
