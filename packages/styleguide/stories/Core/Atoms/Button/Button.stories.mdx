@@ -32,19 +32,21 @@ Play with this button, if you&apos;d like!
 
 <Canvas>
   <Story name="Button">
-    <Button
-      block={boolean('block', false)}
-      caps={boolean('caps', false)}
-      go={boolean('go', false)}
-      link={boolean('link', false)}
-      onClick={action('Clicked Button')}
-      outline={boolean('outline', false)}
-      size={select('size', ['small', 'large', undefined], undefined)}
-      theme={select('theme', themes, 'brand-blue')}
-      underline={boolean('underline', false)}
-    >
-      {text('Label', 'Submit')}
-    </Button>
+    {(args) => (
+      <Button
+        block={boolean('block', false)}
+        caps={boolean('caps', false)}
+        go={boolean('go', false)}
+        link={boolean('link', false)}
+        onClick={action('Clicked Button')}
+        outline={boolean('outline', false)}
+        size={select('size', ['small', 'large', undefined], undefined)}
+        theme={select('theme', themes, 'brand-blue')}
+        underline={boolean('underline', false)}
+      >
+        {text('Label', 'Submit')}
+      </Button>
+    )}
   </Story>
 </Canvas>
 
@@ -58,16 +60,18 @@ There are several theme sets you can use with `Button`
 
 <Canvas columns={1}>
   <Story name="Brand Buttons">
-    {brandThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
+    {(args) =>
+      brandThemeKeys.map((theme) => (
+        <Button
+          key={`${theme}`}
+          onClick={action('Clicked Button')}
+          style={{ margin: '1rem' }}
+          theme={theme}
+        >
+          {theme}
+        </Button>
+      ))
+    }
   </Story>
 </Canvas>
 
@@ -77,16 +81,18 @@ We also have feedback specific button themes best paired with `Alert`
 
 <Canvas>
   <Story name="Status Buttons">
-    {statusThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
+    {(args) =>
+      statusThemeKeys.map((theme) => (
+        <Button
+          key={`${theme}`}
+          onClick={action('Clicked Button')}
+          style={{ margin: '1rem' }}
+          theme={theme}
+        >
+          {theme}
+        </Button>
+      ))
+    }
   </Story>
 </Canvas>
 
@@ -96,16 +102,18 @@ We also have legacy button colors floating around. Do not use these.
 
 <Canvas>
   <Story name="Deprecated">
-    {deprecatedThemeKeys.map((theme) => (
-      <Button
-        key={`${theme}`}
-        onClick={action('Clicked Button')}
-        style={{ margin: '1rem' }}
-        theme={theme}
-      >
-        {theme}
-      </Button>
-    ))}
+    {(args) =>
+      deprecatedThemeKeys.map((theme) => (
+        <Button
+          key={`${theme}`}
+          onClick={action('Clicked Button')}
+          style={{ margin: '1rem' }}
+          theme={theme}
+        >
+          {theme}
+        </Button>
+      ))
+    }
   </Story>
 </Canvas>
 
@@ -120,15 +128,19 @@ adding in your own.
 
 <Canvas>
   <Story name="ButtonBase">
-    <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>
+    {(args) => <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>}
   </Story>
   <Story name="ButtonBase Link">
-    <ButtonBase href="#">{text('Label 2', 'a basic link')}</ButtonBase>
+    {(args) => (
+      <ButtonBase href="#">{text('Label 2', 'a basic link')}</ButtonBase>
+    )}
   </Story>
   <Story name="ButtonBase Link Style">
-    <ButtonBase link>
-      {text('Label 3', 'a basic button styled as a link')}
-    </ButtonBase>
+    {(args) => (
+      <ButtonBase link>
+        {text('Label 3', 'a basic button styled as a link')}
+      </ButtonBase>
+    )}
   </Story>
 </Canvas>
 
@@ -138,12 +150,14 @@ You may also configure a button to behave purely like a link
 
 <Canvas>
   <Story name="Link Button">
-    <>
-      This is an example of a{' '}
-      <Button theme={select('theme', themes, 'brand-blue')} link href="#">
-        Link
-      </Button>{' '}
-    </>
+    {(args) => (
+      <>
+        This is an example of a{' '}
+        <Button theme={select('theme', themes, 'brand-blue')} link href="#">
+          Link
+        </Button>
+      </>
+    )}
   </Story>
 </Canvas>
 
@@ -152,58 +166,74 @@ You may also configure a button to behave purely like a link
 Common variants of buttons you might come across.
 
 <Canvas columns={1}>
-  <Story name="Flat">
-    <Button theme="brand-blue" flat href="#">
-      Flat
-    </Button>
+  <Story name="Flat" args={{ theme: 'brand-blue' }}>
+    {(args) => (
+      <Button theme="brand-blue" flat href="#">
+        Flat
+      </Button>
+    )}
   </Story>
   <Story name="Outline">
-    <Button
-      href="#"
-      onClick={action('Clicked Button')}
-      outline
-      theme="brand-blue"
-    >
-      Outline
-    </Button>
+    {(args) => (
+      <Button
+        href="#"
+        onClick={action('Clicked Button')}
+        outline
+        theme="brand-blue"
+      >
+        Outline
+      </Button>
+    )}
   </Story>
   <Story name="Large">
-    <Button theme="brand-blue" size="large">
-      Large
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue" size="large">
+        Large
+      </Button>
+    )}
   </Story>
   <Story name="Small">
-    <Button
-      href="#"
-      onClick={action('Clicked Button')}
-      size="small"
-      theme="brand-blue"
-    >
-      Small
-    </Button>
+    {(args) => (
+      <Button
+        href="#"
+        onClick={action('Clicked Button')}
+        size="small"
+        theme="brand-blue"
+      >
+        Small
+      </Button>
+    )}
   </Story>
   <Story name="Disabled ">
-    <Button theme="brand-blue" disabled>
-      Disabled
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue" disabled>
+        Disabled
+      </Button>
+    )}
     >
   </Story>
   <Story name="Loading">
-    <Button theme="brand-blue">
-      <Spinner />
-      &nbsp;&nbsp;Loading...
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue">
+        <Spinner />
+        &nbsp;&nbsp;Loading...
+      </Button>
+    )}
   </Story>
   <Story name="Processing">
-    <Button theme="brand-blue">
-      <RadialProgress value={[0, 100]} duration={5000} />
-      &nbsp;&nbsp;Processing...
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue">
+        <RadialProgress value={[0, 100]} duration={5000} />
+        &nbsp;&nbsp;Processing...
+      </Button>
+    )}
   </Story>
   <Story name="Caps">
-    <Button theme="brand-blue" caps href="#">
-      Caps
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue" caps href="#">
+        Caps
+      </Button>
+    )}
   </Story>
 </Canvas>
 
@@ -214,8 +244,10 @@ be larger, advertise-y placements.
 
 <Canvas>
   <Story name="Round">
-    <Button theme="brand-blue" size="large" round>
-      Large
-    </Button>
+    {(args) => (
+      <Button theme="brand-blue" size="large" round>
+        Large
+      </Button>
+    )}
   </Story>
 </Canvas>

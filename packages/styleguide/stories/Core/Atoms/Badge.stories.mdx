@@ -12,9 +12,7 @@ import { StoryStatus } from '~styleguide/blocks';
 Small blue indicator of some unusual text
 
 <Canvas withSource="open">
-  <Story name="Badge">
-    <Badge>New</Badge>
-  </Story>
+  <Story name="Badge">{(args) => <Badge>New</Badge>}</Story>
 </Canvas>
 
 <Props of={Badge} />
@@ -23,10 +21,12 @@ Badges can be used within inline text.
 
 <Canvas>
   <Story name="Inline Badge">
-    <>
-      <Badge>css</Badge>
-      <Badge>css</Badge>
-      <Badge>css</Badge>
-    </>
+    {(args) => (
+      <>
+        <Badge>css</Badge>
+        <Badge>css</Badge>
+        <Badge>css</Badge>
+      </>
+    )}
   </Story>
 </Canvas>

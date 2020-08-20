@@ -26,24 +26,26 @@ the core interface.
 
 <Canvas>
   <Story name="ToolTip">
-    <ToolTip
-      focusable
-      id="tooltip"
-      target={<InfoCircleIcon size={20} />}
-      position={select(
-        'Position',
-        [
-          ToolTipPosition.TopLeft,
-          ToolTipPosition.TopRight,
-          ToolTipPosition.BottomRight,
-          ToolTipPosition.BottomLeft,
-        ],
-        ToolTipPosition.BottomRight
-      )}
-    >
-      Like the term fortnight, a term for a two week period, antantwig refers to
-      a three week period.
-    </ToolTip>
+    {(args) => (
+      <ToolTip
+        focusable
+        id="tooltip"
+        target={<InfoCircleIcon size={20} />}
+        position={select(
+          'Position',
+          [
+            ToolTipPosition.TopLeft,
+            ToolTipPosition.TopRight,
+            ToolTipPosition.BottomRight,
+            ToolTipPosition.BottomLeft,
+          ],
+          ToolTipPosition.BottomRight
+        )}
+      >
+        Like the term fortnight, a term for a two week period, antantwig refers
+        to a three week period.
+      </ToolTip>
+    )}
   </Story>
 </Canvas>
 

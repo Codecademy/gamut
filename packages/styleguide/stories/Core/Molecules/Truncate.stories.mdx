@@ -15,13 +15,15 @@ with the user with various connotations.
 
 <Canvas withSource="open">
   <Story name="Truncate">
-    <Truncate lines={number('Lines', 2)} onTruncate={action('On Truncate')}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur.
-    </Truncate>
+    {(args) => (
+      <Truncate lines={number('Lines', 2)} onTruncate={action('On Truncate')}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.
+      </Truncate>
+    )}
   </Story>
 </Canvas>
 
@@ -29,8 +31,10 @@ with the user with various connotations.
 
 <Canvas withSource="open">
   <Story name="Truncate Markup">
-    <Truncate lines={number('Lines', 1)}>
-      This works with <Text>any</Text> <Text>random</Text> markup! Try it out.
-    </Truncate>
+    {(args) => (
+      <Truncate lines={number('Lines', 1)}>
+        This works with <Text>any</Text> <Text>random</Text> markup! Try it out.
+      </Truncate>
+    )}
   </Story>
 </Canvas>
