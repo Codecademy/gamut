@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>2.0.3 (2020-08-21)</small>
-
-* fix: add sideEffects globs that catch all components (#932) ([5cc4204](https://github.com/Codecademy/client-modules/commit/5cc4204)), closes [#932](https://github.com/Codecademy/client-modules/issues/932)
-* chore: update changelogs ([5ca5f44](https://github.com/Codecademy/client-modules/commit/5ca5f44))
+### [2.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.2...@codecademy/gamut-labs@2.0.3) (2020-08-21)
 
 
+### 🐛 Bug Fixes
 
-
+* add sideEffects globs that catch all components ([#932](https://github.com/Codecademy/client-modules/issues/932)) ([5cc4204](https://github.com/Codecademy/client-modules/commit/5cc4204784c73b24c30de51931fb9f4d90538120))
 
 ### [2.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.1...@codecademy/gamut-labs@2.0.2) (2020-08-21)
 
@@ -197,3 +190,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
