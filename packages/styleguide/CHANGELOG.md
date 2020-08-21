@@ -1,15 +1,4 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>15.0.2 (2020-08-21)</small>
-
-* chore: update changelogs ([e6f3085](https://github.com/Codecademy/client-modules/commit/e6f3085))
-
-
-
-
+### [15.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.1...@codecademy/styleguide@15.0.2) (2020-08-21)
 
 ### [15.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.0...@codecademy/styleguide@15.0.1) (2020-08-20)
 
@@ -999,3 +988,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
