@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 5.1.0 (2020-08-21)
+
+* feat: Added Apercu and Suisse font families as opt-ins (#933) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc6)), closes [#933](https://github.com/Codecademy/client-modules/issues/933)
+* chore: update changelogs ([2dd0a4a](https://github.com/Codecademy/client-modules/commit/2dd0a4a))
+
+
+
+
+
 ## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.5...@codecademy/gamut-styles@5.0.0) (2020-08-18)
 
 
@@ -535,4 +549,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
