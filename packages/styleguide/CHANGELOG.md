@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 15.1.0 (2020-08-21)
-
-* feat: Added Apercu and Suisse font families as opt-ins (#933) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc6)), closes [#933](https://github.com/Codecademy/client-modules/issues/933)
-* chore: update changelogs ([5a50a65](https://github.com/Codecademy/client-modules/commit/5a50a65))
+## [15.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.2...@codecademy/styleguide@15.1.0) (2020-08-21)
 
 
+### ✨ Features
 
-
+* Added Apercu and Suisse font families as opt-ins ([#933](https://github.com/Codecademy/client-modules/issues/933)) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc686937f17663f0a9d5842f5151c63b0411))
 
 ### [15.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.1...@codecademy/styleguide@15.0.2) (2020-08-21)
 
@@ -1002,3 +995,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
