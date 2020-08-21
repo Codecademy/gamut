@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { useState } from '@storybook/addons';
 import { Button, Modal, Text, Overlay } from '@codecademy/gamut/src';
@@ -11,9 +11,9 @@ import { Button, Modal, Text, Overlay } from '@codecademy/gamut/src';
 
 Simple Modal portal to escape current DOM Context.
 
-<Preview>
+<Canvas>
   <Story name="Modal">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
@@ -25,7 +25,7 @@ Simple Modal portal to escape current DOM Context.
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 <Props components={{ Modal, Overlay }} />
 
@@ -37,9 +37,9 @@ You can disable the default close button with the `hideDefaultCloseButton` prop.
 
 You can then use the `isOpen` prop to create other controls that toggle the Modal on and off.
 
-<Preview>
+<Canvas>
   <Story name="Without Close Default">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
@@ -58,7 +58,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
       );
     }}
   </Story>
-</Preview>
+</Canvas>
 
 ### Alternative closing methods
 
@@ -69,9 +69,9 @@ Other than creating buttons that can close the modal, there are other ways a Mod
 
 All of these methods default to true for accessibility reasons, and rely on setting the required `onRequestClose` prop and making sure it toggles the `isOpen` prop on the modal.
 
-<Preview>
+<Canvas>
   <Story name="Clicking Outside">
-    {() => {
+    {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
@@ -90,4 +90,4 @@ All of these methods default to true for accessibility reasons, and rely on sett
       );
     }}
   </Story>
-</Preview>
+</Canvas>

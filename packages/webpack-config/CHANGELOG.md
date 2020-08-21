@@ -1,3 +1,10 @@
+### [5.0.4](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.3...@codecademy/webpack-config@5.0.4) (2020-08-18)
+
+
+### 🏗 Build System
+
+* **webpack-config:** [security] bump webpack-terser-plugin ([#925](http://github.com/Codecademy/client-modules/issues/925)) ([722ae82](http://github.com/Codecademy/client-modules/commit/722ae8240261f2d7844164db9d3b147937b63916))
+
 ### [5.0.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.3) (2020-07-29)
 
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)

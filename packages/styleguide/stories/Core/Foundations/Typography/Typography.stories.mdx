@@ -1,130 +1,186 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
+import { Meta, Canvas, Typeset } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import * as DesignTokens from '@codecademy/gamut-styles';
 import {
+  StoryStatus,
+  TextExample,
   Text,
-  Heading,
-  Column,
-  LayoutGrid,
-  Container,
-} from '@codecademy/gamut/src';
-import { headingSizes, textSizes } from './constants';
+  ScaleRow,
+  ScaleColumn,
+} from '~styleguide/blocks';
 
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+<Meta title="Foundations/Typography" component="Typography" />
 
-<Meta
-  title="Foundations/Typography"
-  component={Heading}
-  subcomponents={{ Heading, Text }}
-/>
+# Typography
 
-# 📝 Typography
+<StoryStatus status="volatile" />
 
-<StoryStatus status="stable" />
+This page is meant as a reference for Typography variables and scales that are available
+through both **Typescript** and **SCSS** variables in [`@codecademy/gamut-styles`](https://www.npmjs.com/package/@codecademy/gamut-styles). We heavily recommend
+you use the <LinkTo kind="Typography" story="Heading">`<Heading />`</LinkTo> and <LinkTo kind="Typography" story="Text">`<Text />`</LinkTo>
+primitives that we provide for your needs. They are built using these standards, so you should not need to recreate them.
 
-Responsive Typography primitives for all your textual needs.
+## Font Stacks
 
-<Props of={Heading} />
+We have 4 main font-stacks that are used through out our front end apps. They are roughly separated by functionality.
 
-## Heading
+1. `Base` for all body text.
+2. `Heading` for all headings and subheadings `h1`-`h6`
+3. `Monospace` for code and other space-sensitive or themed content.
+4. `System` largely unused but still defined for when system fonts are necessary.
 
-This is a single primitive to handle all `h1-h6` tags
-with defined size intervals to allow for semantic html that also
-matches the designs.
+<Canvas withSource="none" isColumn>
+  {Object.entries(DesignTokens.fontFamily).map(([alias, value]) => (
+    <ScaleRow key={alias} hasAlias>
+      <ScaleColumn>{alias}</ScaleColumn>
+      <Text family={value}>{value.split(',')[0].replace(/"/g, '')}</Text>
+    </ScaleRow>
+  ))}
+</Canvas>
 
-Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
-(and picking the appropriate size to match the design).
+### Usage
 
-<Preview>
-  <Story name="Heading">
-    <LayoutGrid columnGap="md" rowGap="md">
-      {headingSizes.map((size) => (
-        <React.Fragment key={size}>
-          <Column size={1}>
-            <Container align="center">
-              <Heading
-                fontSize="sm"
-                as="h2"
-                hideMargin
-                style={{ color: colors.gray[400] }}
-              >
-                {size}
-              </Heading>
-            </Container>
-          </Column>
-          <Column size={11}>
-            <Container key={size} align="center">
-              <Heading fontSize={size} as="h3" hideMargin>
-                Heading
-              </Heading>
-            </Container>
-          </Column>
-        </React.Fragment>
-      ))}
-    </LayoutGrid>
-  </Story>
-</Preview>
+```tsx
+import { fontFamily } from '@codecademy/gamut-styles';
 
-## Body Text
+fontFamily.base; // base | heading | monospace | system
+```
 
-This is a single primitive to handle all `<p>` and
-`<span>` tags with defined size intervals
+```scss
+@import '@codecademy/gamut-styles/utils';
 
-<Preview>
-  <Story name="Text">
-    <LayoutGrid columnGap="md" rowGap="md">
-      {textSizes.map((size) => (
-        <React.Fragment key={size}>
-          <Column size={1}>
-            <Container align="start">
-              <Heading
-                fontSize="sm"
-                as="h2"
-                hideMargin
-                style={{ color: colors.gray[400] }}
-              >
-                {size}
-              </Heading>
-            </Container>
-          </Column>
-          <Column size={11}>
-            <Text key={size} fontSize={size} as="p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Text>
-          </Column>
-        </React.Fragment>
-      ))}
-    </LayoutGrid>
-  </Story>
-</Preview>
+.text {
+  font-family: $font-family-base; // $font-family-base | $font-family-headings | $font-monospace | $font-system
+}
+```
 
-## Custom colors
+## Font Sizes
 
-<Preview>
-  <Story name="Custom Colors">
-    <Heading fontSize="md" as="h3" style={{ color: colors.royalBlue }}>
-      Royal Blue
-    </Heading>
-    <Text fontSize="md" style={{ color: colors.royalBlue }}>
-      Royal Blue
-    </Text>
-  </Story>
-</Preview>
+While we technically have a single scale for text, we have split this into two separate scales for `text` and `headings` functionally.
+If you need to use these values outside of `Text` and `Heading` primitives they are available.
 
-## No Margin
+### Text
 
-<Preview>
-  <Story name="No Margin">
-    <>
-      <Heading fontSize="md" as="h3" hideMargin>
-        Without Margin
-      </Heading>
-      <Text fontSize="md">Text Flow</Text>
-    </>
-  </Story>
-</Preview>
+<Canvas withSource="none" isColumn>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.lg}>
+    Those who believe in telekinetics, raise my hand.
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.md}>
+    Those who believe in telekinetics, raise my hand.
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.text.sm}>
+    Those who believe in telekinetics, raise my hand.
+  </TextExample>
+</Canvas>
+
+### Heading
+
+<Canvas isColumn>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xxl}>
+    Do androids dream of electric sheep?
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xl}>
+    Do androids dream of electric sheep?
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.lg}>
+    Do androids dream of electric sheep?
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.md}>
+    Do androids dream of electric sheep?
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.sm}>
+    Do androids dream of electric sheep?
+  </TextExample>
+  <TextExample propName="size" size={DesignTokens.fontSize.heading.xs}>
+    Do androids dream of electric sheep?
+  </TextExample>
+</Canvas>
+
+### Usage
+
+```tsx
+import { fontSize } from '@codecademy/gamut-styles';
+
+fontSize.heading.md; // xs | sm | md | lg | xl | xxl
+fontSize.text.md; // sm | md | lg
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.heading {
+  font-size: $font-size-h1; // h1 - h6
+}
+.body {
+  font-size: $font-size-base; // small | base
+}
+```
+
+## Font Weights
+
+We support two basic `font-weight` values for both body text `400` and headings `700`, while lighter or bolder variations may be
+available for some font stacks, these will be the safest for their desired effects.
+
+<Canvas withSource="none" isColumn>
+  <TextExample propName="weight" weight={DesignTokens.fontWeight.text}>
+    The weight of the world
+  </TextExample>
+  <TextExample propName="weight" weight={DesignTokens.fontWeight.heading}>
+    The weight of the world
+  </TextExample>
+</Canvas>
+
+### Usage
+
+```tsx
+import { fontWeight } from '@codecademy/gamut-styles';
+
+fontWeight.text; // text | heading
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  font-weight: $font-weight-base; // base | headings
+}
+```
+
+## Line Heights
+
+We generally like to keep body text at 1.5 and headings at 1.15.
+
+<Canvas withSource="none" isColumn>
+  <TextExample
+    propName="line"
+    size={DesignTokens.fontSize.heading.xs}
+    line={DesignTokens.lineHeight.text}
+  >
+    It is far easier to argue that something nobody believes in actually exists
+    than it is to argue that something everybody believes in is unreal.
+  </TextExample>
+  <TextExample
+    propName="line"
+    size={DesignTokens.fontSize.heading.sm}
+    line={DesignTokens.lineHeight.heading}
+  >
+    Children know perfectly well that unicorns aren’t real, but they also know
+    that books about unicorns, if they are good books, are true books.
+  </TextExample>
+</Canvas>
+
+### Usage
+
+```tsx
+import { lineHeight } from '@codecademy/gamut-styles';
+
+lineHeight.text; // text | heading
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.text {
+  line-height: $line-height-base; // $line-height-headings | $line-height-base
+}
+```

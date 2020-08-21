@@ -4,21 +4,22 @@ import { create } from '@storybook/theming';
 
 import './decorators/wrapper';
 
-const gamutTheme = create({
+const theme = create({
   base: 'light',
   brandTitle: 'Gamut',
-  brandUrl: 'https://gamut.codecademy.com',
+  brandUrl: '/',
 });
 
 addParameters({
   viewMode: 'docs',
   options: {
-    theme: gamutTheme,
+    theme: theme,
     storySort: {
       order: [
         'About',
         'Meta',
         'Foundations',
+        'Typography',
         'Layouts',
         'Atoms',
         'Molecules',
@@ -37,6 +38,8 @@ addParameters({
     options: {},
     manual: true,
   },
+  actions: { argTypesRegex: '^on.*' },
+  controls: { expanded: true },
 });
 
 addDecorator(withKnobs);

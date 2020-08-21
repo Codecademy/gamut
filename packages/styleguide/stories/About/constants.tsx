@@ -4,7 +4,7 @@ export const ABOUT_SECTIONS = [
     emoji: '☀️',
     description:
       'Foundations are the abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.',
-    examples: ['Colors', 'Typography'],
+    examples: ['Utilities', 'Colors'],
   },
   {
     kind: 'Layouts',
@@ -25,7 +25,7 @@ export const ABOUT_SECTIONS = [
     emoji: '🧬',
     description:
       'Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.',
-    examples: ['Alert', 'Accordion'],
+    examples: ['Accordion', 'Alert'],
   },
   {
     kind: 'Organisms',

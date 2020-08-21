@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { ContentContainer } from '@codecademy/gamut/src';
 
@@ -12,10 +12,10 @@ ContentContainer can used when creating page layouts to contain content
 within a maximum width, as well as centering that content and providing
 responsive padding at our different breakpoints.
 
-<Preview>
+<Canvas>
   <Story name="Content Container">
-    <ContentContainer>Some random content yo</ContentContainer>
+    {(args) => <ContentContainer>Some random content yo</ContentContainer>}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={ContentContainer} />

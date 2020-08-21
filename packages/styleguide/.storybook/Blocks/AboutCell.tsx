@@ -1,5 +1,5 @@
 import { styled } from '@storybook/theming';
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { colors } from '@codecademy/gamut-styles';
 
 // The normal import would be '@storybook/addon-links/react'
 // but it is throwing a typescript error in the current alpha
