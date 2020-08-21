@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { colors, baseColors } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles';
 import chroma from 'chroma-js';
 
 export const parseCamelCase = (string: string) =>
@@ -24,19 +24,13 @@ export const getSassVariableName = (
 
 const textColor = (
   background: string,
-  lightText = baseColors.white,
-  darkText = baseColors.navy
+  lightText = colors.white,
+  darkText = colors.standard.navy
 ) => {
   if (chroma.contrast(background, lightText) >= 7) {
-    console.log(
-      `${lightText}) text color meets AAA requirements for contrast on a ${background} colored background`
-    );
     return lightText;
   }
   if (chroma.contrast(background, darkText) >= 7) {
-    console.log(
-      `${darkText}) text color meets AAA requirements for contrast on a ${background} colored background`
-    );
     return darkText;
   }
   if (chroma.contrast(background, lightText) >= 4.5) {

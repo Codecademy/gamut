@@ -93,6 +93,38 @@ $color-royal-blue: #6400e4;
 $color-shadow: rgba($color-black, 0.15);
 
 // =======================================
+//      STANDARD COLORS
+// =======================================
+
+$color-standard-beige: #fff0e5;
+$color-standard-blue: #66c4ff;
+$color-standard-dark-blue: #1557ff;
+$color-standard-dark-green: #009c2c;
+$color-standard-green: #aee938;
+$color-standard-navy: #10162f;
+$color-standard-orange: #ff8c00;
+$color-standard-pink: #f966ff;
+$color-standard-red: #f03329;
+$color-standard-yellow: #ffd300;
+$color-standard-hyper: #3a10e5;
+
+// =======================================
+//      BACKGROUND COLORS
+// =======================================
+
+$color-background-light-blue: #f5fcff;
+$color-background-light-green: #f5ffe3;
+$color-background-light-pink: #fff5ff;
+$color-background-light-yellow: #fffae5;
+
+// =======================================
+//      INTERACTIVE COLORS
+// =======================================
+
+$color-interactive-dark: $color-standard-hyper;
+$color-interactive-light: $color-standard-yellow;
+
+// =======================================
 //      BRAND COLORS
 // =======================================
 

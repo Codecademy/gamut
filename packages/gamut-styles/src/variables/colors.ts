@@ -1,10 +1,10 @@
-export const colors = {
+export const swatches = {
   blue: {
     '100': '#c8d7fa',
     '200': '#a5befa',
     '300': '#7da2fa',
     '400': '#5788fa',
-    '500': '#1557FF',
+    '500': '#3069f0',
     '600': '#2d5dcc',
     '700': '#2e4a99',
     '800': '#233466',
@@ -16,7 +16,7 @@ export const colors = {
     '100': '#ffd9fc',
     '200': '#ffbffa',
     '300': '#ffa6f8',
-    '400': '#F966FF',
+    '400': '#f288e9',
     '500': '#d957d9',
     '600': '#b035c9',
     '700': '#9129a6',
@@ -39,7 +39,7 @@ export const colors = {
     '200': '#ffb8ad',
     '300': '#ff988c',
     '400': '#ff7566',
-    '500': '#F03329',
+    '500': '#fd4d3f',
     '600': '#e53935',
     '700': '#bf2e2c',
     '800': '#992523',
@@ -61,7 +61,7 @@ export const colors = {
     '200': '#FFD093',
     '300': '#FFB764',
     '400': '#FF9F3C',
-    '500': '#FF8C00',
+    '500': '#FF881D',
     '600': '#FB7106',
     '700': '#DC5A03',
     '800': '#BA4604',
@@ -72,7 +72,7 @@ export const colors = {
     '200': '#fff2b3',
     '300': '#ffec8c',
     '400': '#ffe359',
-    '500': '#FFD300',
+    '500': '#ffd500',
     '600': '#ffb92e',
     '700': '#e69729',
     '800': '#b37620',
@@ -89,59 +89,62 @@ export const colors = {
     '800': '#323233',
     '900': '#19191a',
   },
-  forest: {
-    '400': '#AEE938',
-    '700': '#009C2C',
-  },
-  sky: {
-    '300': '#66C4FF',
-  },
-  black: '#000000',
-  white: '#ffffff',
+} as const;
+
+const black = '#000000';
+const white = '#ffffff';
+
+const legacyColors = {
   beige: '#efd9ca',
   royalBlue: '#6400e4',
-};
+} as const;
 
-export const baseColors = {
+const standard = {
   beige: '#FFF0E5',
-  black: colors.black,
-  blue: colors.sky[300],
-  darkBlue: colors.blue[500],
-  darkGreen: colors.forest[700],
-  green: colors.forest[400],
-  navy: colors.blue[1000],
-  orange: colors.orange[500],
-  pink: colors.pink[400],
-  red: colors.red[500],
-  white: colors.white,
-  yellow: colors.yellow[500],
+  blue: '#66C4FF',
+  darkBlue: '#1557FF',
+  darkGreen: '#009C2C',
+  green: '#AEE938',
   hyper: '#3A10E5',
-};
+  navy: swatches.blue[1000],
+  orange: '#FF8C00',
+  pink: '#F966FF',
+  red: '#F03329',
+  yellow: '#FFD300',
+} as const;
 
-export const backgroundColors = {
-  lightBlue: '#F5FCFF',
-  lightGreen: '#F5FFE3',
-  lightPink: '#FFF5FF',
-  lightYellow: '#FFFAE5',
-};
+const background = {
+  light: {
+    blue: '#F5FCFF',
+    green: '#F5FFE3',
+    pink: '#FFF5FF',
+    yellow: '#FFFAE5',
+  },
+  dark: {},
+} as const;
+
+const interactive = {
+  dark: standard.hyper,
+  light: standard.yellow,
+} as const;
 
 /**
  * @deprecated
- * use baseColors
+ * use standard color set
  */
 export const brandColors = {
-  red: colors.red[500],
-  orange: colors.orange[400],
-  yellow: colors.yellow[500],
-  purple: colors['royalBlue'],
-  pink: colors.pink[400],
-  magenta: colors.pink[700],
-  mint: colors.green[300],
-  beige: colors['beige'],
-  blue: colors.blue[500],
-  darkBlue: colors.blue[900],
-  lavender: colors.purple[500],
-};
+  red: swatches.red[500],
+  orange: swatches.orange[400],
+  yellow: swatches.yellow[500],
+  purple: legacyColors['royalBlue'],
+  pink: swatches.pink[400],
+  magenta: swatches.pink[700],
+  mint: swatches.green[300],
+  beige: legacyColors['beige'],
+  blue: swatches.blue[500],
+  darkBlue: swatches.blue[900],
+  lavender: swatches.purple[500],
+} as const;
 
 export const editorColors = {
   blue: '#83fff5',
@@ -152,7 +155,7 @@ export const editorColors = {
   purple: '#b3ccff',
   red: '#e85d7f',
   yellow: '#ffe083',
-};
+} as const;
 
 export const platformColors = {
   mint: {
@@ -170,4 +173,16 @@ export const platformColors = {
     '800': '#2a283e',
     '900': '#15141f',
   },
-};
+} as const;
+
+export const colors = {
+  ...legacyColors,
+  ...swatches,
+  background,
+  black,
+  editor: editorColors,
+  interactive,
+  platform: platformColors,
+  standard,
+  white,
+} as const;
