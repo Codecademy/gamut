@@ -1,9 +1,13 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
-import { text } from '@storybook/addon-knobs';
 import { Spinner } from '@codecademy/gamut/src';
 
-<Meta title="Atoms/Spinner" component={Spinner} />
+<Meta
+  title="Atoms/Spinner"
+  component={Spinner}
+  argTypes={{ size: { control: 'number' } }}
+  args={{ size: 60 }}
+/>
 
 # Spinner
 
@@ -13,9 +17,7 @@ Perpetually spinning circle, such as for a loading indicator. Similar to a
 `ProgressBar`.
 
 <Canvas>
-  <Story name="Spinner">
-    {(args) => <Spinner size={text('size', '5em')} />}
-  </Story>
+  <Story name="Spinner">{(args) => <Spinner {...args} />}</Story>
 </Canvas>
 
-<Props of={Spinner} />
+<Props story="Spinner" />

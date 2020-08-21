@@ -1,14 +1,45 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { action } from '@storybook/addon-actions';
-import { select } from '@storybook/addon-knobs';
+import { values } from 'lodash';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import { StoryStatus } from '~styleguide/blocks';
-import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
+import {
+  ToolTip,
+  ToolTipPosition,
+  Container,
+  VisualTheme,
+} from '@codecademy/gamut/src';
 
 <Meta
   title="Atoms/ToolTip"
   component={ToolTip}
-  subcomponents={{ ToolTipPosition }}
+  decorators={[
+    (Story) => (
+      <Container justify="center" align="center" style={{ margin: '2rem 0' }}>
+        <Story />
+      </Container>
+    ),
+  ]}
+  argTypes={{
+    target: {
+      control: { disable: true },
+    },
+    theme: {
+      table: {
+        defaultValue: { summary: VisualTheme.LightMode },
+      },
+    },
+    position: {
+      table: {
+        defaultValue: { summary: ToolTipPosition.TopRight },
+      },
+    },
+  }}
+  args={{
+    focusable: true,
+    id: 'tooltip',
+    theme: VisualTheme.LightMode,
+    position: ToolTipPosition.TopRight,
+  }}
 />
 
 # ToolTip
@@ -24,29 +55,14 @@ requires clickable elements, we suggest using a “Popover” instead) - Great f
 surfacing additional information that may or may not be relevant _without_ cluttering
 the core interface.
 
-<Canvas>
+<Canvas isColumn>
   <Story name="ToolTip">
     {(args) => (
-      <ToolTip
-        focusable
-        id="tooltip"
-        target={<InfoCircleIcon size={20} />}
-        position={select(
-          'Position',
-          [
-            ToolTipPosition.TopLeft,
-            ToolTipPosition.TopRight,
-            ToolTipPosition.BottomRight,
-            ToolTipPosition.BottomLeft,
-          ],
-          ToolTipPosition.BottomRight
-        )}
-      >
-        Like the term fortnight, a term for a two week period, antantwig refers
-        to a three week period.
+      <ToolTip {...args} target={<InfoCircleIcon size={24} />}>
+        Like the term fortnight, a term for a two week period
       </ToolTip>
     )}
   </Story>
 </Canvas>
 
-<Props of={ToolTip} />
+<Props story="ToolTip" />

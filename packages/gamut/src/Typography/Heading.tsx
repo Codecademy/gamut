@@ -25,7 +25,7 @@ export const Heading: React.FC<HeadingProps> = ({
   children,
   as: Element,
   className,
-  fontSize = 'md',
+  fontSize,
   style,
   testId,
   hideMargin = false,
@@ -47,3 +47,5 @@ export const Heading: React.FC<HeadingProps> = ({
     </Element>
   );
 };
+
+Heading.defaultProps = { fontSize: 'md', hideMargin: false };

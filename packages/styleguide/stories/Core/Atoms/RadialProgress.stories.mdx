@@ -1,16 +1,21 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { mapValues } from 'lodash';
 import { StoryStatus } from '~styleguide/blocks';
-import {
-  withKnobs,
-  boolean,
-  number,
-  select,
-  text,
-} from '@storybook/addon-knobs';
 import { RadialProgress } from '@codecademy/gamut/src';
 import { selectableColors } from '../../../helpers';
 
-<Meta title="Atoms/RadialProgress" componet={RadialProgress} />
+<Meta
+  title="Atoms/RadialProgress"
+  component={RadialProgress}
+  argTypes={{
+    size: { control: 'number' },
+    duration: { control: 'number' },
+    value: { control: 'number' },
+    strokeWidth: { control: 'number' },
+    strokeLinecap: { control: 'select' },
+  }}
+  args={{ size: 16 * 8, duration: 1000, value: 30 }}
+/>
 
 # Radial Progress
 
@@ -21,19 +26,11 @@ percentage out of a whole.
 
 <Canvas>
   <Story name="RadialProgress">
-    {(args) => (
-      <RadialProgress
-        style={{ color: select('color', selectableColors, 'black') }}
-        size={text('size', '10rem')}
-        value={number('value', 30)}
-        strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
-        strokeWidth={text('strokeWidth', '10')}
-      />
-    )}
+    {(args) => <RadialProgress {...args} value={[0, args.value]} />}
   </Story>
 </Canvas>
 
-<Props of={RadialProgress} />
+<Props story="RadialProgress" />
 
 ## Animating
 
@@ -42,25 +39,18 @@ smoothly upon being rendered.
 
 Click on the `Animating` checkbox below to {action}.
 
-<Canvas>
+<Canvas withSource={false}>
   <Story name="Animating">
-    {(args) => {
-      const rendering = boolean('Animating', false);
-      return (
-        <>
-          <RadialProgress size="8rem" value={0} />
-          {rendering && (
-            <>
-              <RadialProgress size="8rem" value={[0, 25]} duration={1000} />
-              <RadialProgress size="8rem" value={[25, 66]} duration={1000} />
-              <RadialProgress size="8rem" value={[0, 90]} duration={1000} />
-              <RadialProgress size="8rem" value={[80, 100]} duration={1000} />
-              <RadialProgress size="8rem" value={[0, 100]} duration={3000} />
-              <RadialProgress size="8rem" value={[0, 100]} duration={5000} />
-            </>
-          )}
-        </>
-      );
-    }}
+    {(args) => (
+      <>
+        <RadialProgress size="8rem" value={0} />
+        <RadialProgress size="8rem" value={[0, 25]} duration={1000} />
+        <RadialProgress size="8rem" value={[25, 66]} duration={1000} />
+        <RadialProgress size="8rem" value={[0, 90]} duration={1000} />
+        <RadialProgress size="8rem" value={[80, 100]} duration={1000} />
+        <RadialProgress size="8rem" value={[0, 100]} duration={3000} />
+        <RadialProgress size="8rem" value={[0, 100]} duration={5000} />
+      </>
+    )}
   </Story>
 </Canvas>

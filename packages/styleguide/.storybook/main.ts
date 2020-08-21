@@ -11,6 +11,7 @@ module.exports = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
+      '~styleguide/addons': path.resolve(__dirname, './addons'),
     };
 
     return config;

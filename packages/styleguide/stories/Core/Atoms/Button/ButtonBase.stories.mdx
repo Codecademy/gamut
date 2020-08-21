@@ -1,0 +1,43 @@
+import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { ButtonBase } from '@codecademy/gamut/src';
+
+<Meta title="Atoms/ButtonBase" component={ButtonBase} />
+
+# ButtonBase
+
+<StoryStatus status="volatile" />
+
+Use `ButtonBase` when you need something that acts as a link or
+button, but don&apos;t need the default button styles.
+
+_Note:_ keep in mind that buttons generally need focus and hover
+indicators for accessibility. If you use `ButtonBase`, be sure you&apos;re
+adding in your own.
+
+<Canvas>
+  <Story name="ButtonBase" args={{ children: 'a button base' }}>
+    {(args) => <ButtonBase {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="ButtonBase" />
+
+## Variants
+
+### Link
+
+<Canvas isColumn>
+  <Story
+    name="ButtonBase Link"
+    args={{ href: '#', children: 'a basic link button' }}
+  >
+    {(args) => <ButtonBase {...args} />}
+  </Story>
+  <Story
+    name="ButtonBase Link Style"
+    args={{ children: 'a button base styled like a link', link: true }}
+  >
+    {(args) => <ButtonBase {...args} />}
+  </Story>
+</Canvas>

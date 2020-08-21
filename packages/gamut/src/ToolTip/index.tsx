@@ -18,7 +18,9 @@ export type ToolTipProps = {
    * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
    */
   focusable?: boolean;
+  /**  */
   id: string;
+  /** The position the message should appear relative to its target */
   position?: ToolTipPosition;
   target?: ReactNode;
   theme?: VisualTheme;

@@ -1,10 +1,9 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 import { Toggle } from '@codecademy/gamut/src';
 
-<Meta title="Atoms/Toggle" component={Toggle} />
+<Meta title="Atoms/Toggle" component={Toggle} args={{ label: 'Toggle' }} />
 
 # Toggle
 
@@ -14,33 +13,17 @@ Controlled atom component indicating a user-selectable boolean value.
 Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Canvas>
-  <Story name="Toggle">
-    {(args) => (
-      <Toggle
-        checked={boolean('checked', false)}
-        label="Toggle"
-        onChange={action('Change')}
-      />
-    )}
-  </Story>
+  <Story name="Toggle">{(args) => <Toggle {...args} />}</Story>
 </Canvas>
 
-<Props of={Toggle} />
+<Props story="Toggle" />
 
 ## Alternative Toggle
 
 This is the small size and brand purple theme.
 
 <Canvas>
-  <Story name="Alternative Toggle">
-    {(args) => (
-      <Toggle
-        checked={boolean('checked', false)}
-        label="Toggle"
-        onChange={action('Change')}
-        theme="purple"
-        size="small"
-      />
-    )}
+  <Story name="Alternative Toggle" args={{ theme: 'purple' }}>
+    {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>

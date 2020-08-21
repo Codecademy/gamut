@@ -56,3 +56,5 @@ export const LEARNING_ENVIRONMENT = pick(
 const specialIcons = values({ ...LEARNING_ENVIRONMENT, ...VENDOR });
 
 export const ALL_ICONS = pickBy(Icons, (icon) => !specialIcons.includes(icon));
+
+export const ICON_SLUGS = Object.keys(ALL_ICONS);

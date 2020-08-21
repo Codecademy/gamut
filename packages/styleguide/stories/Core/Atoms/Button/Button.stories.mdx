@@ -7,7 +7,6 @@ import {
   Spinner,
 } from '@codecademy/gamut/src';
 import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
 import {
   themes,
   brandThemeKeys,
@@ -15,7 +14,19 @@ import {
   deprecatedThemeKeys,
 } from './helpers';
 
-<Meta title="Atoms/Button" component={Button} subcomponents={{ ButtonBase }} />
+<Meta
+  title="Atoms/Button"
+  component={Button}
+  argTypes={{
+    theme: {
+      control: {
+        type: 'select',
+        options: [...brandThemeKeys, ...statusThemeKeys],
+      },
+    },
+  }}
+  args={{ theme: 'brand-blue', children: 'Submit' }}
+/>
 
 # Buttons
 
@@ -31,26 +42,12 @@ Prefer `brand-purple` for significant actions such as Pro signups. Prefer `brand
 Play with this button, if you&apos;d like!
 
 <Canvas>
-  <Story name="Button">
-    {(args) => (
-      <Button
-        block={boolean('block', false)}
-        caps={boolean('caps', false)}
-        go={boolean('go', false)}
-        link={boolean('link', false)}
-        onClick={action('Clicked Button')}
-        outline={boolean('outline', false)}
-        size={select('size', ['small', 'large', undefined], undefined)}
-        theme={select('theme', themes, 'brand-blue')}
-        underline={boolean('underline', false)}
-      >
-        {text('Label', 'Submit')}
-      </Button>
-    )}
+  <Story name="Button" args={{ children: 'Submit' }}>
+    {(args) => <Button {...args} />}
   </Story>
 </Canvas>
 
-<Props of={Button} />
+<Props story="Button" />
 
 ## Themes
 
@@ -59,15 +56,10 @@ There are several theme sets you can use with `Button`
 ### Brand
 
 <Canvas columns={1}>
-  <Story name="Brand Buttons">
+  <Story name="Brand Buttons" args={{ style: { margin: '1rem' } }}>
     {(args) =>
       brandThemeKeys.map((theme) => (
-        <Button
-          key={`${theme}`}
-          onClick={action('Clicked Button')}
-          style={{ margin: '1rem' }}
-          theme={theme}
-        >
+        <Button key={`${theme}`} {...args} theme={theme}>
           {theme}
         </Button>
       ))
@@ -80,15 +72,10 @@ There are several theme sets you can use with `Button`
 We also have feedback specific button themes best paired with `Alert`
 
 <Canvas>
-  <Story name="Status Buttons">
+  <Story name="Status Buttons" args={{ style: { margin: '1rem' } }}>
     {(args) =>
       statusThemeKeys.map((theme) => (
-        <Button
-          key={`${theme}`}
-          onClick={action('Clicked Button')}
-          style={{ margin: '1rem' }}
-          theme={theme}
-        >
+        <Button key={`${theme}`} {...args} theme={theme}>
           {theme}
         </Button>
       ))
@@ -101,15 +88,10 @@ We also have feedback specific button themes best paired with `Alert`
 We also have legacy button colors floating around. Do not use these.
 
 <Canvas>
-  <Story name="Deprecated">
+  <Story name="Deprecated" args={{ style: { margin: '1rem' } }}>
     {(args) =>
       deprecatedThemeKeys.map((theme) => (
-        <Button
-          key={`${theme}`}
-          onClick={action('Clicked Button')}
-          style={{ margin: '1rem' }}
-          theme={theme}
-        >
+        <Button key={`${theme}`} {...args} theme={theme}>
           {theme}
         </Button>
       ))
@@ -117,137 +99,102 @@ We also have legacy button colors floating around. Do not use these.
   </Story>
 </Canvas>
 
-## ButtonBase Variants
+## Button States
 
-Use `ButtonBase` when you need something that acts as a link or
-button, but don&apos;t need the default button styles.
-
-_Note:_ keep in mind that buttons generally need focus and hover
-indicators for accessibility. If you use `ButtonBase`, be sure you&apos;re
-adding in your own.
+Common variants of buttons you might come across.
 
 <Canvas>
-  <Story name="ButtonBase">
-    {(args) => <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>}
+  <Story name="Disabled " args={{ disabled: true, children: 'Disabled' }}>
+    {(args) => <Button {...args} />}
   </Story>
-  <Story name="ButtonBase Link">
-    {(args) => (
-      <ButtonBase href="#">{text('Label 2', 'a basic link')}</ButtonBase>
-    )}
-  </Story>
-  <Story name="ButtonBase Link Style">
-    {(args) => (
-      <ButtonBase link>
-        {text('Label 3', 'a basic button styled as a link')}
-      </ButtonBase>
-    )}
+  <Story
+    name="Loading"
+    args={{
+      children: (
+        <>
+          <Spinner style={{ marginRight: '15px' }} /> Loading...
+        </>
+      ),
+    }}
+  >
+    {(args) => <Button {...args} />}
   </Story>
 </Canvas>
 
-## Link Button
+## Variants
+
+### Link
 
 You may also configure a button to behave purely like a link
 
-<Canvas>
-  <Story name="Link Button">
+<Canvas isColumn>
+  <Story
+    name="Link Button"
+    args={{ link: true, href: '#', children: 'link', style: null }}
+  >
     {(args) => (
       <>
-        This is an example of a{' '}
-        <Button theme={select('theme', themes, 'brand-blue')} link href="#">
-          Link
-        </Button>
+        This is an example of a <Button {...args} />
       </>
     )}
   </Story>
 </Canvas>
 
-## Button options
-
-Common variants of buttons you might come across.
-
-<Canvas columns={1}>
-  <Story name="Flat" args={{ theme: 'brand-blue' }}>
-    {(args) => (
-      <Button theme="brand-blue" flat href="#">
-        Flat
-      </Button>
-    )}
-  </Story>
-  <Story name="Outline">
-    {(args) => (
-      <Button
-        href="#"
-        onClick={action('Clicked Button')}
-        outline
-        theme="brand-blue"
-      >
-        Outline
-      </Button>
-    )}
-  </Story>
-  <Story name="Large">
-    {(args) => (
-      <Button theme="brand-blue" size="large">
-        Large
-      </Button>
-    )}
-  </Story>
-  <Story name="Small">
-    {(args) => (
-      <Button
-        href="#"
-        onClick={action('Clicked Button')}
-        size="small"
-        theme="brand-blue"
-      >
-        Small
-      </Button>
-    )}
-  </Story>
-  <Story name="Disabled ">
-    {(args) => (
-      <Button theme="brand-blue" disabled>
-        Disabled
-      </Button>
-    )}
-    >
-  </Story>
-  <Story name="Loading">
-    {(args) => (
-      <Button theme="brand-blue">
-        <Spinner />
-        &nbsp;&nbsp;Loading...
-      </Button>
-    )}
-  </Story>
-  <Story name="Processing">
-    {(args) => (
-      <Button theme="brand-blue">
-        <RadialProgress value={[0, 100]} duration={5000} />
-        &nbsp;&nbsp;Processing...
-      </Button>
-    )}
-  </Story>
-  <Story name="Caps">
-    {(args) => (
-      <Button theme="brand-blue" caps href="#">
-        Caps
-      </Button>
-    )}
-  </Story>
-</Canvas>
-
-## Round
+### Visual Variants
 
 Buttons might also be `round` to indicate rounded corners. These tend to
 be larger, advertise-y placements.
 
+<Canvas isColumn>
+  <Story name="Round" args={{ round: true, children: 'Round' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story name="Flat" args={{ flat: true, href: '#', children: 'Flat' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Outline"
+    args={{ href: '#', outline: true, children: 'Outline' }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Size Variants
+
+<Canvas isColumn>
+  <Story name="Large" args={{ size: 'large', children: 'Large' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story name="Small" args={{ size: 'small', children: 'Small' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Display Variants
+
+<Canvas isColumn>
+  <Story name="Square" args={{ square: true, children: 'X' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story
+    name="Fit Text"
+    args={{
+      fitText: true,
+      children: 'Some Text to Fit, that might be very long',
+    }}
+  >
+    {(args) => <Button {...args} />}
+  </Story>
+  <Story name="Block" args={{ block: true, children: 'Block' }}>
+    {(args) => <Button {...args} />}
+  </Story>
+</Canvas>
+
+### Text Variants
+
 <Canvas>
-  <Story name="Round">
-    {(args) => (
-      <Button theme="brand-blue" size="large" round>
-        Large
-      </Button>
-    )}
+  <Story name="Caps" args={{ caps: true }}>
+    {(args) => <Button {...args} />}
   </Story>
 </Canvas>

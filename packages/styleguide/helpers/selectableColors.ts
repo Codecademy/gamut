@@ -1,4 +1,5 @@
 import { colors } from '@codecademy/gamut-styles';
+import { values } from 'lodash';
 
 export const selectableColors = Object.keys(colors).reduce<
   Record<string, string>
@@ -10,3 +11,7 @@ export const selectableColors = Object.keys(colors).reduce<
     [colorKey]: typeof colorAtKey === 'string' ? colorAtKey : colorAtKey[500],
   };
 }, {});
+
+export const presetColors = values(selectableColors);
+
+export const defaultColor = selectableColors.black;
