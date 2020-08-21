@@ -111,16 +111,10 @@ const standard = {
   pink: '#F966FF',
   red: '#F03329',
   yellow: '#FFD300',
-} as const;
-
-const background = {
-  light: {
-    blue: '#F5FCFF',
-    green: '#F5FFE3',
-    pink: '#FFF5FF',
-    yellow: '#FFFAE5',
-  },
-  dark: {},
+  paleBlue: '#F5FCFF',
+  paleGreen: '#F5FFE3',
+  palePink: '#FFF5FF',
+  paleYellow: '#FFFAE5',
 } as const;
 
 const interactive = {

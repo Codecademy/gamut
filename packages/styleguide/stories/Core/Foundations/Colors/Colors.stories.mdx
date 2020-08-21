@@ -77,28 +77,6 @@ colors.background.lightBlue;
 
 <br />
 
-### Background Washes
-
-<Story name="Light Backgrounds">
-  <LayoutGrid rowGap="md" columnGap="md">
-    {Object.keys(colors.background.light).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
-        <Container flex={false}>
-          <Heading as="h2" fontSize="xs">
-            {startCase(color)}
-          </Heading>
-          <Swatch
-            name={`$color-background-light-${parseCamelCase(color)}`}
-            hex={colors.background.light[color]}
-          />
-        </Container>
-      </Column>
-    ))}
-  </LayoutGrid>
-</Story>
-
-<br />
-
 ### Interactive Colors
 
 For usage on links, buttons, and other interactive elements on dark and light backgrounds
