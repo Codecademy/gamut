@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.2.0 (2020-08-21)
-
-* feat(Icons): Add house-entrance, book-flip-page, pie-line-graph, rating-star-give icons (#906) ([2f4592f](https://github.com/Codecademy/client-modules/commit/2f4592f)), closes [#906](https://github.com/Codecademy/client-modules/issues/906)
-* chore: update changelogs ([635f869](https://github.com/Codecademy/client-modules/commit/635f869))
+## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
 
 
+### ✨ Features
 
-
+* **Icons:** Add house-entrance, book-flip-page, pie-line-graph, rating-star-give icons ([#906](https://github.com/Codecademy/client-modules/issues/906)) ([2f4592f](https://github.com/Codecademy/client-modules/commit/2f4592fb9b1316f28988db2f8bc056fb77c3b776))
 
 ### [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.2...@codecademy/gamut-icons@3.1.3) (2020-08-14)
 
@@ -212,3 +205,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
