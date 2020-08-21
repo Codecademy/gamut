@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { colors } from '@codecademy/gamut-styles';
-import { meetsContrastGuidelines, getContrast } from 'polished';
+import { meetsContrastGuidelines } from 'polished';
 
 export const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
