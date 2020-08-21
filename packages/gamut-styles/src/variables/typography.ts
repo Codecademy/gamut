@@ -16,10 +16,20 @@ monospace`;
 export const fontSystem = `-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
 "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
 
+export const fontApercu = `"Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+"Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
+
+export const fontSuisse = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
+"Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+"Helvetica Neue", sans-serif`;
+
 export const fontFamily = {
+  apercu: fontApercu,
   base: fontBase,
   heading: fontHeadings,
   monospace: fontMonospace,
+  suisse: fontSuisse,
   system: fontSystem,
 };
 

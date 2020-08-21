@@ -1,3 +1,12 @@
+### [2.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.2...@codecademy/gamut-labs@2.0.3) (2020-08-21)
+
+
+### 🐛 Bug Fixes
+
+* add sideEffects globs that catch all components ([#932](https://github.com/Codecademy/client-modules/issues/932)) ([5cc4204](https://github.com/Codecademy/client-modules/commit/5cc4204784c73b24c30de51931fb9f4d90538120))
+
+### [2.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.1...@codecademy/gamut-labs@2.0.2) (2020-08-21)
+
 ### [2.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.0...@codecademy/gamut-labs@2.0.1) (2020-08-21)
 
 ## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.5...@codecademy/gamut-labs@2.0.0) (2020-08-18)
