@@ -172,7 +172,6 @@ export const platformColors = {
 export const colors = {
   ...legacyColors,
   ...swatches,
-  background,
   black,
   editor: editorColors,
   interactive,

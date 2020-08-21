@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { colors } from '@codecademy/gamut-styles';
-import chroma from 'chroma-js';
+import { meetsContrastGuidelines, getContrast } from 'polished';
 
 export const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
@@ -27,20 +27,22 @@ const textColor = (
   lightText = colors.white,
   darkText = colors.standard.navy
 ) => {
-  if (chroma.contrast(background, lightText) >= 7) {
+  const darkContrast = meetsContrastGuidelines(background, darkText);
+  const lightContrast = meetsContrastGuidelines(background, lightText);
+  if (lightContrast.AAA) {
     return lightText;
   }
-  if (chroma.contrast(background, darkText) >= 7) {
+  if (darkContrast.AAA) {
     return darkText;
   }
-  if (chroma.contrast(background, lightText) >= 4.5) {
+  if (lightContrast.AA) {
     return lightText;
   }
-  if (chroma.contrast(background, darkText) >= 4.5) {
+  if (darkContrast.AA) {
     return darkText;
   }
   // fallback
-  if (chroma.contrast(background, colors.black) >= 4.5) {
+  if (meetsContrastGuidelines(background, colors.black).AA) {
     return colors.black;
   }
   throw new Error(
@@ -107,27 +109,21 @@ export const SwatchPalette: React.FC<{
 }> = ({ data, variablePrefix }) => {
   return (
     <>
-      {Object.keys(data)
-        .sort(
-          (a, b) =>
-            chroma.contrast(data[a], 'white') -
-            chroma.contrast(data[b], 'white')
-        )
-        .map((variableSuffix) => {
-          const sassVariableName = getSassVariableName(
-            variablePrefix,
-            variableSuffix
-          );
-          const hexcode = data[variableSuffix];
+      {Object.keys(data).map((variableSuffix) => {
+        const sassVariableName = getSassVariableName(
+          variablePrefix,
+          variableSuffix
+        );
+        const hexcode = data[variableSuffix];
 
-          return (
-            <Swatch
-              key={sassVariableName}
-              name={sassVariableName}
-              hex={hexcode}
-            />
-          );
-        })}
+        return (
+          <Swatch
+            key={sassVariableName}
+            name={sassVariableName}
+            hex={hexcode}
+          />
+        );
+      })}
     </>
   );
 };
