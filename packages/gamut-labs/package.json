@@ -5,7 +5,9 @@
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
-    "*.scss"
+    "*.scss",
+    "dist/**/[A-Z]**/[A-Z]*.js",
+    "dist/**/[A-Z]**/index.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
