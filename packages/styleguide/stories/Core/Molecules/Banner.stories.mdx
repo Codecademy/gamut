@@ -15,21 +15,25 @@ Full-width banner to indicate important messaging at the top of a page or sectio
 
 <Canvas>
   <Story name="Banner">
-    <Banner onClose={action('Banner closed.')}>Some Banner content!</Banner>
+    {(args) => (
+      <Banner onClose={action('Banner closed.')}>Some Banner content!</Banner>
+    )}
   </Story>
 </Canvas>
 
 <Props of={Banner} />
 
-## Full Width Icon
+## Full-Width Icon
 
 An informative icon can be added to the left of the banner.
 
 <Canvas>
   <Story name="Icon Banner">
-    <Banner icon={<AlertIcon />} onClose={action('Banner closed.')}>
-      Some Banner content!
-    </Banner>
+    {(args) => (
+      <Banner icon={<AlertIcon />} onClose={action('Banner closed.')}>
+        Some Banner content!
+      </Banner>
+    )}
   </Story>
 </Canvas>
 
@@ -39,11 +43,13 @@ If your banner is on above similar content (?), add a BannerStyle to it.
 
 <Canvas>
   <Story name="Bordered">
-    <Banner
-      displayStyle={BannerStyle.BorderBottom}
-      onClose={action('Banner closed.')}
-    >
-      Some Banner content!
-    </Banner>
+    {(args) => (
+      <Banner
+        displayStyle={BannerStyle.BorderBottom}
+        onClose={action('Banner closed.')}
+      >
+        Some Banner content!
+      </Banner>
+    )}
   </Story>
 </Canvas>

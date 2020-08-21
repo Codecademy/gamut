@@ -21,13 +21,15 @@ percentage out of a whole.
 
 <Canvas>
   <Story name="RadialProgress">
-    <RadialProgress
-      style={{ color: select('color', selectableColors, 'black') }}
-      size={text('size', '10rem')}
-      value={number('value', 30)}
-      strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
-      strokeWidth={text('strokeWidth', '10')}
-    />
+    {(args) => (
+      <RadialProgress
+        style={{ color: select('color', selectableColors, 'black') }}
+        size={text('size', '10rem')}
+        value={number('value', 30)}
+        strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
+        strokeWidth={text('strokeWidth', '10')}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -42,7 +44,7 @@ Click on the `Animating` checkbox below to {action}.
 
 <Canvas>
   <Story name="Animating">
-    {() => {
+    {(args) => {
       const rendering = boolean('Animating', false);
       return (
         <>

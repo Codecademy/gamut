@@ -4,7 +4,7 @@ import { create } from '@storybook/theming';
 
 import './decorators/wrapper';
 
-const gamutTheme = create({
+const theme = create({
   base: 'light',
   brandTitle: 'Gamut',
   brandUrl: '/',
@@ -13,7 +13,7 @@ const gamutTheme = create({
 addParameters({
   viewMode: 'docs',
   options: {
-    theme: gamutTheme,
+    theme: theme,
     storySort: {
       order: [
         'About',

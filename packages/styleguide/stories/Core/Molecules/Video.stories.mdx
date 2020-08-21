@@ -13,13 +13,15 @@ given a video URL
 
 <Canvas>
   <Story name="Video">
-    <Video
-      videoUrl="https://vimeo.com/145702525"
-      videoTitle="Super Science Friends"
-      onReady={(player) => {
-        player.wrapper.querySelector('iframe').tabIndex = 0;
-      }}
-    />
+    {(args) => (
+      <Video
+        videoUrl="https://vimeo.com/145702525"
+        videoTitle="Super Science Friends"
+        onReady={(player) => {
+          player.wrapper.querySelector('iframe').tabIndex = 0;
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -29,11 +31,13 @@ given a video URL
 
 <Canvas>
   <Story name="Video with PlaceholderImage">
-    <Video
-      videoUrl="https://www.youtube.com/watch?v=Yl8yy5tpVIM"
-      videoTitle="Workout with Rick Sanchez"
-      placeholderImage="https://placekitten.com/400/300"
-      autoplay={true}
-    />
+    {(args) => (
+      <Video
+        videoUrl="https://www.youtube.com/watch?v=Yl8yy5tpVIM"
+        videoTitle="Workout with Rick Sanchez"
+        placeholderImage="https://placekitten.com/400/300"
+        autoplay={true}
+      />
+    )}
   </Story>
 </Canvas>

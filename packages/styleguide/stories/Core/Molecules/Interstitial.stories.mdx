@@ -14,21 +14,24 @@ a full-screen <code>Overlay</code> in the LE between lessons.
 
 <Canvas>
   <Story name="Interstitial">
-    <Interstitial
-      buttons={[
-        <Button key="1" theme="brand-yellow">
-          One Button
-        </Button>,
-        <Button key="2" theme="white" outline>
-          Two Button
-        </Button>,
-      ]}
-      title="What a Glorious Day"
-    >
-      Place some happy text as the content of this interstitial for the learner
-      to feel good about themselves. Note that the max-width for this content is
-      large but not too large. We want some amount of vertical centering!
-    </Interstitial>
+    {(args) => (
+      <Interstitial
+        buttons={[
+          <Button key="1" theme="brand-yellow">
+            One Button
+          </Button>,
+          <Button key="2" theme="white" outline>
+            Two Button
+          </Button>,
+        ]}
+        title="What a Glorious Day"
+      >
+        Place some happy text as the content of this interstitial for the
+        learner to feel good about themselves. Note that the max-width for this
+        content is large but not too large. We want some amount of vertical
+        centering!
+      </Interstitial>
+    )}
   </Story>
 </Canvas>
 
@@ -41,19 +44,21 @@ it. Put emojis or promotional images here to really emphasize them.
 
 <Canvas>
   <Story name="Decorated Interstitial">
-    <Interstitial
-      buttons={[
-        <Button key="1" theme="brand-red">
-          Red Button
-        </Button>,
-        <Button key="2" theme="brand-blue">
-          Blue Button
-        </Button>,
-      ]}
-      decoration="😍"
-      title="Decorations, too!"
-    >
-      I really love emojis. Please confirm you love emojis too!
-    </Interstitial>
+    {(args) => (
+      <Interstitial
+        buttons={[
+          <Button key="1" theme="brand-red">
+            Red Button
+          </Button>,
+          <Button key="2" theme="brand-blue">
+            Blue Button
+          </Button>,
+        ]}
+        decoration="😍"
+        title="Decorations, too!"
+      >
+        I really love emojis. Please confirm you love emojis too!
+      </Interstitial>
+    )}
   </Story>
 </Canvas>

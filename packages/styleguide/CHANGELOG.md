@@ -1,3 +1,12 @@
+### [15.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.1...@codecademy/styleguide@15.0.2) (2020-08-21)
+
+### [15.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.0...@codecademy/styleguide@15.0.1) (2020-08-20)
+
+
+### Other Changes
+
+* **Styleguide:** Make all Stories Functions of Args ([#922](https://github.com/Codecademy/client-modules/issues/922)) ([5c10a28](https://github.com/Codecademy/client-modules/commit/5c10a2868abf22673ac9cc4db31bd6b7263e20ad))
+
 ## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.2...@codecademy/styleguide@15.0.0) (2020-08-18)
 
 
