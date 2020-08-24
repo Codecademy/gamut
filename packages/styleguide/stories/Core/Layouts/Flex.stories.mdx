@@ -1,6 +1,6 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Blocks';
-import { Flex, Box } from '@codecademy/gamut-labs/src';
+import { StoryStatus } from '~styleguide/blocks';
+import { Flex } from '@codecademy/gamut-labs/src';
 import { Box as BoxElement, defaultGridProps } from './Elements';
 import { select, boolean, number } from '@storybook/addon-knobs';
 
@@ -12,16 +12,19 @@ import { select, boolean, number } from '@storybook/addon-knobs';
 
 A flex box primitive that allows you create markup configurable flex containers
 
-export const Template = (args) => (
-  <Flex {...args}>
-    <BoxElement>Element 1</BoxElement>
-    <BoxElement>Element 2</BoxElement>
-  </Flex>
-);
-
 <Canvas>
-  <Story name="Flex" args={{}}>
-    {Template.bind({})}
+  <Story
+    name="Flex"
+    args={{
+      flexDirection: 'column',
+    }}
+  >
+    {(args) => (
+      <Flex {...args}>
+        <BoxElement>Element 1</BoxElement>
+        <BoxElement>Element 2</BoxElement>
+      </Flex>
+    )}
   </Story>
 </Canvas>
 

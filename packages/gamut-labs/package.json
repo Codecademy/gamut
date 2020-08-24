@@ -24,7 +24,8 @@
   "dependencies": {
     "@codecademy/gamut": "^14.0.3",
     "@codecademy/gamut-styles": "^5.1.0",
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "csstype": "^3.0.2"
   },
   "scripts": {
     "verify": "tsc --noEmit",
