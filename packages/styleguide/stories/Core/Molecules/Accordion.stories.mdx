@@ -24,13 +24,15 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 
 <Canvas withSource="open">
   <Story name="Accordion">
-    <Accordion
-      size={select('Size', ['normal', 'large'], undefined)}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], undefined)}
-      top="Click me!"
-    >
-      Hidden treasure!
-    </Accordion>
+    {(args) => (
+      <Accordion
+        size={select('Size', ['normal', 'large'], undefined)}
+        theme={select('Theme', ['blue', 'plain', 'yellow'], undefined)}
+        top="Click me!"
+      >
+        Hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 
@@ -46,7 +48,7 @@ Most accordions should use an `AccordionButton`; other forms of buttons are acce
 
 <Canvas>
   <Story name="AccordionArea">
-    {() => {
+    {(args) => {
       const expanded = boolean('Expanded');
       return (
         <AccordionArea

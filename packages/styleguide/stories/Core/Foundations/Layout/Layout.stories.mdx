@@ -1,7 +1,11 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { StoryStatus, Box, ScaleRow, ScaleColumn } from '~styleguide/blocks';
-import { spacing, breakpoints, mediaQueries } from '@codecademy/gamut-styles';
+import {
+  spacing,
+  breakpoints,
+  mediaQueries,
+} from '@codecademy/gamut-styles/src';
 import styled from '@emotion/styled';
 
 <Meta title="Foundations/Layout" component="Layout" />
@@ -144,6 +148,6 @@ We have a basic spacing scale that we like to adhere to. These can be used for p
 import { spacing } from '@codecademy/gamut-styles';
 
 const myStyles = `
-  padding: ${spacing.md} ${spacing.lg};
+  padding: ${spacing[8]} ${spacing[16]};
 `;
 ```

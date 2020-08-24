@@ -21,15 +21,17 @@ percentage label if a font color is specified.
 
 <Canvas>
   <Story name="ProgressBar">
-    <LayoutGrid columnGap="sm" rowGap="sm">
-      {[0, 25, 50, 75, 100].map((percent) =>
-        bars.map(({ large, theme }) => (
-          <Column key={[percent, large, theme].join()} size={6}>
-            <ProgressBar large={large} percent={percent} theme={theme} />
-          </Column>
-        ))
-      )}
-    </LayoutGrid>
+    {(args) => (
+      <LayoutGrid columnGap="sm" rowGap="sm">
+        {[0, 25, 50, 75, 100].map((percent) =>
+          bars.map(({ large, theme }) => (
+            <Column key={[percent, large, theme].join()} size={6}>
+              <ProgressBar large={large} percent={percent} theme={theme} />
+            </Column>
+          ))
+        )}
+      </LayoutGrid>
+    )}
   </Story>
 </Canvas>
 

@@ -44,3 +44,55 @@
     url("../fonts/Nunito_Sans/nunitosans-bold-webfont.ttf") format("ttf");
   unicode-range: U+003C, U+003E;
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Apercu/apercu-regular-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-regular-pro.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/Apercu/apercu-bold-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-bold-pro.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/Apercu/apercu-italic-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-italic-pro.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Apercu";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/Apercu/apercu-bold-italic-pro.woff2") format("woff2"),
+    url("../fonts/Apercu/apercu-bold-italic-pro.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-weight: normal;
+  src: url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff2") format("woff2"),
+    url("../fonts/Suisse/SuisseIntlMono-Regular-WebS.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Suisse";
+  font-weight: bold;
+  src: url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff2") format("woff2"),
+    url("../fonts/Suisse/SuisseIntlMono-Bold-WebS.woff") format("woff");
+}

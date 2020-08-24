@@ -16,13 +16,15 @@ Comes in a few standard size and color combinations.
 
 <Canvas>
   <Story name="AccordionButton">
-    <AccordionButton
-      expanded={boolean('Expanded')}
-      size={select('Size', ['normal', 'large'], 'normal')}
-      theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
-    >
-      Click me!
-    </AccordionButton>
+    {(args) => (
+      <AccordionButton
+        expanded={boolean('Expanded')}
+        size={select('Size', ['normal', 'large'], 'normal')}
+        theme={select('Theme', ['blue', 'plain', 'yellow'], 'plain')}
+      >
+        Click me!
+      </AccordionButton>
+    )}
   </Story>
 </Canvas>
 
@@ -37,9 +39,11 @@ Help Menu.
 
 <Canvas className="dark">
   <Story name="Blue">
-    <AccordionButton expanded theme="blue">
-      Wow, hidden treasure!
-    </AccordionButton>
+    {(args) => (
+      <AccordionButton expanded theme="blue">
+        Wow, hidden treasure!
+      </AccordionButton>
+    )}
   </Story>
 </Canvas>
 
@@ -50,9 +54,11 @@ where we haven't been able to invest yet in a more solid theme.
 
 <Canvas>
   <Story name="Plain">
-    <AccordionButton expanded theme="plain">
-      Wow, hidden treasure!
-    </AccordionButton>
+    {(args) => (
+      <AccordionButton expanded theme="plain">
+        Wow, hidden treasure!
+      </AccordionButton>
+    )}
   </Story>
 </Canvas>
 
@@ -63,8 +69,10 @@ narrative pane.
 
 <Canvas>
   <Story name="Yellow">
-    <AccordionButton expanded theme="yellow">
-      Wow, hidden treasure!
-    </AccordionButton>
+    {(args) => (
+      <AccordionButton expanded theme="yellow">
+        Wow, hidden treasure!
+      </AccordionButton>
+    )}
   </Story>
 </Canvas>

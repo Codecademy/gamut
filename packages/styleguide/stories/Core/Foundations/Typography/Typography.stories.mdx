@@ -27,7 +27,13 @@ We have 4 main font-stacks that are used through out our front end apps. They ar
 1. `Base` for all body text.
 2. `Heading` for all headings and subheadings `h1`-`h6`
 3. `Monospace` for code and other space-sensitive or themed content.
-4. `System` largely unused built still defined for when system fonts are necessary.
+4. `System` largely unused but still defined for when system fonts are necessary.
+
+We're about to swap out the font stacks used in `Base` and `Heading`.
+You can use the new stacks ahead of time with:
+
+1. `Apercu` will replace the majority of both body text and headings.
+2. `Suisse` will be an occasional "accent" stack.
 
 <Canvas withSource="none" isColumn>
   {Object.entries(DesignTokens.fontFamily).map(([alias, value]) => (

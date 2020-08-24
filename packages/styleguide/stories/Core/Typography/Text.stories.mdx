@@ -35,8 +35,10 @@ This is a single primitive to handle all `<p>` and
 
 <Canvas>
   <Story name="Custom Colors">
-    <Text fontSize="md" style={{ color: brandColors.purple }}>
-      Brand Purple
-    </Text>
+    {(args) => (
+      <Text fontSize="md" style={{ color: brandColors.purple }}>
+        Brand Purple
+      </Text>
+    )}
   </Story>
 </Canvas>

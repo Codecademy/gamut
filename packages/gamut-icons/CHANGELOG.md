@@ -1,3 +1,10 @@
+## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
+
+
+### ✨ Features
+
+* **Icons:** Add house-entrance, book-flip-page, pie-line-graph, rating-star-give icons ([#906](https://github.com/Codecademy/client-modules/issues/906)) ([2f4592f](https://github.com/Codecademy/client-modules/commit/2f4592fb9b1316f28988db2f8bc056fb77c3b776))
+
 ### [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.2...@codecademy/gamut-icons@3.1.3) (2020-08-14)
 
 

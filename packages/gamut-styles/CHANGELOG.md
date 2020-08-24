@@ -1,3 +1,21 @@
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.0.0...@codecademy/gamut-styles@5.1.0) (2020-08-21)
+
+
+### ✨ Features
+
+* Added Apercu and Suisse font families as opt-ins ([#933](https://github.com/Codecademy/client-modules/issues/933)) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc686937f17663f0a9d5842f5151c63b0411))
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.5...@codecademy/gamut-styles@5.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
 ### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.4...@codecademy/gamut-styles@4.2.5) (2020-08-13)
 
 

@@ -15,11 +15,13 @@ Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Canvas>
   <Story name="Toggle">
-    <Toggle
-      checked={boolean('checked', false)}
-      label="Toggle"
-      onChange={action('Change')}
-    />
+    {(args) => (
+      <Toggle
+        checked={boolean('checked', false)}
+        label="Toggle"
+        onChange={action('Change')}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -31,12 +33,14 @@ This is the small size and brand purple theme.
 
 <Canvas>
   <Story name="Alternative Toggle">
-    <Toggle
-      checked={boolean('checked', false)}
-      label="Toggle"
-      onChange={action('Change')}
-      theme="purple"
-      size="small"
-    />
+    {(args) => (
+      <Toggle
+        checked={boolean('checked', false)}
+        label="Toggle"
+        onChange={action('Change')}
+        theme="purple"
+        size="small"
+      />
+    )}
   </Story>
 </Canvas>

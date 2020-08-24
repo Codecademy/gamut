@@ -14,10 +14,12 @@ showcase important words in a sentence.
 
 <Canvas>
   <Story name="HighlightedText">
-    <Text fontSize="md">
-      Would you like to have{' '}
-      <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
-    </Text>
+    {(args) => (
+      <Text fontSize="md">
+        Would you like to have{' '}
+        <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
+      </Text>
+    )}
   </Story>
 </Canvas>
 

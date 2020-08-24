@@ -15,13 +15,15 @@ Header navigation bar and tabs with configurable areas.
 
 <Canvas withSource="open">
   <Story name="Header">
-    <HeaderContainer
-      sections={{
-        left: <HeaderTab>Hello</HeaderTab>,
-        right: <HeaderTab>Right</HeaderTab>,
-        after: <>After the rain has fallen</>,
-      }}
-    />
+    {(args) => (
+      <HeaderContainer
+        sections={{
+          left: <HeaderTab>Hello</HeaderTab>,
+          right: <HeaderTab>Right</HeaderTab>,
+          after: <>After the rain has fallen</>,
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
