@@ -1,4 +1,4 @@
-export const colors = {
+export const swatches = {
   blue: {
     '100': '#c8d7fa',
     '200': '#a5befa',
@@ -89,25 +89,73 @@ export const colors = {
     '800': '#323233',
     '900': '#19191a',
   },
-  black: '#000000',
-  white: '#ffffff',
-  beige: '#efd9ca',
-  royalBlue: '#6400e4',
-};
+} as const;
 
+const black = '#000000';
+const white = '#ffffff';
+
+const legacyColors = {
+  royalBlue: '#6400e4',
+} as const;
+
+export const standardColors = {
+  beige: '#FFF0E5',
+  blue: '#1557FF',
+  green: '#009C2C',
+  hyper: '#3A10E5',
+  lightBlue: '#66C4FF',
+  lightGreen: '#AEE938',
+  navy: swatches.blue[1000],
+  orange: '#FF8C00',
+  paleBlue: '#F5FCFF',
+  paleGreen: '#F5FFE3',
+  palePink: '#FFF5FF',
+  paleYellow: '#FFFAE5',
+  pink: '#F966FF',
+  red: '#F03329',
+  yellow: '#FFD300',
+} as const;
+
+export const standardColorNames = {
+  beige: 'Bagel',
+  blue: 'A Train',
+  green: 'Forest Hills',
+  hyper: 'Hyper',
+  lightBlue: 'Bronx River',
+  lightGreen: 'Gowanus',
+  navy: 'Navy Yard',
+  orange: 'Ferry',
+  paleBlue: 'Piragua',
+  paleGreen: 'Lenape',
+  palePink: 'Lox',
+  paleYellow: 'Dumpling',
+  pink: 'Hotdog',
+  red: 'Redhook',
+  yellow: 'Taxi',
+} as const;
+
+const interactive = {
+  dark: standardColors.hyper,
+  light: standardColors.yellow,
+} as const;
+
+/**
+ * @deprecated
+ * use the standard color set
+ */
 export const brandColors = {
-  red: colors.red[500],
-  orange: colors.orange[400],
-  yellow: colors.yellow[500],
-  purple: colors['royalBlue'],
-  pink: colors.pink[400],
-  magenta: colors.pink[700],
-  mint: colors.green[300],
-  beige: colors['beige'],
-  blue: colors.blue[500],
-  darkBlue: colors.blue[900],
-  lavender: colors.purple[500],
-};
+  red: swatches.red[500],
+  orange: swatches.orange[400],
+  yellow: swatches.yellow[500],
+  purple: legacyColors['royalBlue'],
+  pink: swatches.pink[400],
+  magenta: swatches.pink[700],
+  mint: swatches.green[300],
+  beige: '#efd9ca',
+  blue: swatches.blue[500],
+  darkBlue: swatches.blue[900],
+  lavender: swatches.purple[500],
+} as const;
 
 export const editorColors = {
   blue: '#83fff5',
@@ -118,7 +166,7 @@ export const editorColors = {
   purple: '#b3ccff',
   red: '#e85d7f',
   yellow: '#ffe083',
-};
+} as const;
 
 export const platformColors = {
   mint: {
@@ -136,4 +184,15 @@ export const platformColors = {
     '800': '#2a283e',
     '900': '#15141f',
   },
-};
+} as const;
+
+export const colors = {
+  ...legacyColors,
+  ...swatches,
+  ...standardColors,
+  black,
+  editor: editorColors,
+  interactive,
+  platform: platformColors,
+  white,
+} as const;
