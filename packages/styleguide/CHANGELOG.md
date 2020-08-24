@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>15.1.3 (2020-08-24)</small>
-
-* go back to  for JS colors for now (#938) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed)), closes [#938](https://github.com/Codecademy/client-modules/issues/938)
-* chore: update changelogs ([2501cce](https://github.com/Codecademy/client-modules/commit/2501cce))
+### [15.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.2...@codecademy/styleguide@15.1.3) (2020-08-24)
 
 
+### Other Changes
 
-
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
 
 ### [15.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.1...@codecademy/styleguide@15.1.2) (2020-08-24)
 
@@ -1018,3 +1011,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
