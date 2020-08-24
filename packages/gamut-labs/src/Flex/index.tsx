@@ -18,7 +18,7 @@ export type FlexProps = BoxProps & {
   /**
    * Justifies and aligns content to the center of the container
    * */
-  center?: boolean;
+  centerContent?: boolean;
   /**
    * Flex Basis
    */
@@ -41,16 +41,12 @@ export type FlexProps = BoxProps & {
 
 type FlexPropKeys = Readonly<Array<keyof FlexProps>>;
 
-const internalFlexProps: FlexPropKeys = [
-  'center',
-  'display',
-  'width',
-  'height',
-] as const;
+const internalFlexProps: FlexPropKeys = ['display', 'width', 'height'] as const;
 
 const flexStyles = (props: FlexProps) => {
-  const alignItems = props.alignItems || (props.center && 'center');
-  const justifyContent = props.justifyContent || (props.center && 'center');
+  const alignItems = props.alignItems || (props.centerContent && 'center');
+  const justifyContent =
+    props.justifyContent || (props.centerContent && 'center');
 
   /**
    * If any of these flex properties are set,
