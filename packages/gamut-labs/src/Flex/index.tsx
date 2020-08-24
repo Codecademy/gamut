@@ -19,8 +19,6 @@ export type FlexProps = BoxProps & {
    * Justifies and aligns content to the center of the container
    * */
   center?: boolean;
-  /** Display property for the component */
-  display?: CSS.Property.Display;
   /**
    * Flex Basis
    */
