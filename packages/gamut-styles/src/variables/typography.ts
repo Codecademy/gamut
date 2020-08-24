@@ -1,4 +1,4 @@
-import { colors as colorSwatch } from './colors';
+import { swatches as colorSwatch } from './colors';
 import { pxRem } from '../utilities/pxRem';
 import { base } from './base';
 
