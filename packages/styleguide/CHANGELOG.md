@@ -1,3 +1,10 @@
+### [15.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.2...@codecademy/styleguide@15.1.3) (2020-08-24)
+
+
+### Other Changes
+
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
+
 ### [15.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.1...@codecademy/styleguide@15.1.2) (2020-08-24)
 
 

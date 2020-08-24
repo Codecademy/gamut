@@ -1,3 +1,10 @@
+### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.1...@codecademy/gamut-styles@5.1.2) (2020-08-24)
+
+
+### Other Changes
+
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
+
 ### [5.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.0...@codecademy/gamut-styles@5.1.1) (2020-08-24)
 
 
