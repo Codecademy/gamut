@@ -25,7 +25,7 @@ export const getSassVariableName = (
 const textColor = (
   background: string,
   lightText = colors.white,
-  darkText = colors.navyyardBlue
+  darkText = colors.navy
 ) => {
   const darkContrast = meetsContrastGuidelines(background, darkText);
   const lightContrast = meetsContrastGuidelines(background, lightText);
@@ -91,14 +91,16 @@ const SwatchDetail = styled.div`
   })}
 `;
 
-export const Swatch: React.FC<{ name: string; hex: string }> = ({
-  name,
-  hex,
-}) => {
+export const Swatch: React.FC<{
+  name: string;
+  hex: string;
+  alias?: string;
+}> = ({ name, alias, hex }) => {
   return (
     <SwatchContainer hex={hex}>
       <SwatchDetail>{name}</SwatchDetail>
       <SwatchDetail>{hex.toUpperCase()}</SwatchDetail>
+      <SwatchDetail>{alias}</SwatchDetail>
     </SwatchContainer>
   );
 };

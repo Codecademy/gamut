@@ -17,6 +17,7 @@ import {
 import {
   brandColors,
   standardColors,
+  standardColorNames,
   colors,
   swatches,
   editorColors,
@@ -65,6 +66,7 @@ colors.atrainBlue;
             {startCase(color)}
           </Heading>
           <Swatch
+            alias={standardColorNames[color]}
             name={`$color-${parseCamelCase(color)}`}
             hex={standardColors[color]}
           />

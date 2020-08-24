@@ -4,28 +4,28 @@
 //      STANDARD COLORS
 // =======================================
 
-$color-bagel-beige: #fff0e5;
-$color-bronxriver-blue: #66c4ff;
-$color-atrain-blue: #1557ff;
-$color-foresthills-green: #009c2c;
-$color-gowanus-green: #aee938;
-$color-navyyard-blue: #10162f;
-$color-ferry-orange: #ff8c00;
-$color-hotdog-pink: #f966ff;
-$color-redhook-red: #f03329;
-$color-taxi-yellow: #ffd300;
-$color-hyper-blue: #3a10e5;
-$color-piragua-blue: #f5fcff;
-$color-lenape-green: #f5ffe3;
-$color-lox-pink: #fff5ff;
-$color-dumpling-yellow: #fffae5;
+$color-beige: #fff0e5;
+$color-blue: #66c4ff;
+$color-dark-blue: #1557ff;
+$color-dark-green: #009c2c;
+$color-green: #aee938;
+$color-navy: #10162f;
+$color-orange: #ff8c00;
+$color-pink: #f966ff;
+$color-red: #f03329;
+$color-yellow: #ffd300;
+$color-hyper: #3a10e5;
+$color-pale-blue: #f5fcff;
+$color-pale-green: #f5ffe3;
+$color-pale-pink: #fff5ff;
+$color-pale-yellow: #fffae5;
 
 // =======================================
 //      INTERACTIVE COLORS
 // =======================================
 
-$color-interactive-dark: $color-hyper-blue;
-$color-interactive-light: $color-taxi-yellow;
+$color-interactive-dark: $color-hyper;
+$color-interactive-light: $color-yellow;
 
 // =======================================
 //      OTHER COLORS
@@ -153,7 +153,6 @@ $color-gray-700: #4b4b4d;
 $color-gray-800: #323233;
 $color-gray-900: #19191a;
 
-$color-beige: #efd9ca;
 $color-royal-blue: #6400e4;
 
 // =======================================
@@ -167,7 +166,7 @@ $brand-purple: $color-royal-blue;
 $brand-pink: $color-pink-400;
 $brand-mint: $color-green-300;
 $brand-magenta: $color-pink-700;
-$brand-beige: $color-beige;
+$brand-beige: #efd9ca;
 $brand-blue: $color-blue-500;
 $brand-dark-blue: $color-blue-900;
 $brand-lavender: $color-purple-500;

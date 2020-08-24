@@ -95,31 +95,48 @@ const black = '#000000';
 const white = '#ffffff';
 
 const legacyColors = {
-  beige: '#efd9ca',
   royalBlue: '#6400e4',
 } as const;
 
 export const standardColors = {
-  bagelBeige: '#FFF0E5',
-  bronxriverBlue: '#66C4FF',
-  atrainBlue: '#1557FF',
-  foresthillsGreen: '#009C2C',
-  gowanusGreen: '#AEE938',
-  hyperBlue: '#3A10E5',
-  navyyardBlue: swatches.blue[1000],
-  ferryOrange: '#FF8C00',
-  hotdogPink: '#F966FF',
-  redhookRed: '#F03329',
-  taxiYellow: '#FFD300',
-  piraguaBlue: '#F5FCFF',
-  lenapeLime: '#F5FFE3',
-  loxPink: '#FFF5FF',
-  dumplingYellow: '#FFFAE5',
+  beige: '#FFF0E5',
+  blue: '#66C4FF',
+  darkBlue: '#1557FF',
+  darkGreen: '#009C2C',
+  green: '#AEE938',
+  hyper: '#3A10E5',
+  navy: swatches.blue[1000],
+  orange: '#FF8C00',
+  pink: '#F966FF',
+  red: '#F03329',
+  yellow: '#FFD300',
+  paleBlue: '#F5FCFF',
+  paleGreen: '#F5FFE3',
+  palePink: '#FFF5FF',
+  paleYellow: '#FFFAE5',
+} as const;
+
+export const standardColorNames = {
+  beige: 'Bagel',
+  blue: 'Bronx River',
+  darkBlue: 'A Train',
+  darkGreen: 'Forest Hills',
+  green: 'Gowanus',
+  hyper: 'Hyper',
+  navy: 'Navy Yard',
+  orange: 'Ferry',
+  pink: 'Hot Dog',
+  red: 'Redhook',
+  yellow: 'Taxi',
+  paleBlue: 'Piragua',
+  paleGreen: 'Lenape',
+  palePink: 'Lox',
+  paleYellow: 'Dumpling',
 } as const;
 
 const interactive = {
-  dark: standardColors.hyperBlue,
-  light: standardColors.taxiYellow,
+  dark: standardColors.hyper,
+  light: standardColors.yellow,
 } as const;
 
 /**
@@ -134,7 +151,7 @@ export const brandColors = {
   pink: swatches.pink[400],
   magenta: swatches.pink[700],
   mint: swatches.green[300],
-  beige: legacyColors['beige'],
+  beige: '#efd9ca',
   blue: swatches.blue[500],
   darkBlue: swatches.blue[900],
   lavender: swatches.purple[500],
