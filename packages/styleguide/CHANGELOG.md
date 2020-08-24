@@ -1,3 +1,10 @@
+### [15.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.1...@codecademy/styleguide@15.1.2) (2020-08-24)
+
+
+### Other Changes
+
+* **gamut-styles:** Add New Colors ([#931](https://github.com/Codecademy/client-modules/issues/931)) ([0643622](https://github.com/Codecademy/client-modules/commit/0643622af6cb0c99a124403d5533034c614262cc))
+
 ### [15.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.0...@codecademy/styleguide@15.1.1) (2020-08-21)
 
 ## [15.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.2...@codecademy/styleguide@15.1.0) (2020-08-21)
