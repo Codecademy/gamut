@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 export type BoxProps = {
   /** Whether the box should have a border */
-  borderType?: 'solid' | 'drop-left' | 'drop-right';
+  bordered?: boolean;
   padding?: SpacingSize;
 };
 
@@ -13,20 +13,22 @@ const boxBorder = css`
   border-radius: 2px;
 `;
 
-const dropPattern = (direction: 'left' | 'right') =>
-  css`
-    ${boxBorder}
+const borderEffect = css`
+    border: 1px solid transparent;
+    border-radius: 2px;
     position: relative;
     background-color: ${colors.white};
     z-index: 1;
+    transition: 0.2s transform;
 
     &:before {
       content: '';
+      ${boxBorder}
       background-color: ${colors.white};
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: -1px;
+      left: -1px;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
       position: absolute;
       z-index: -1;
     }
@@ -34,32 +36,27 @@ const dropPattern = (direction: 'left' | 'right') =>
     &:after {
       content: '';
       background-color: ${colors.standard.navy};
-      width: 100%;
-      height: 100%;
-      top: ${spacing[8]};
-      ${`${direction}: ${spacing[8]}`};
+      top: -1px;
+      left: -1px;
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
       position: absolute;
       z-index: -2;
+      transition: 0.2s transform;
+    }
+
+    &:hover {
+      transform: translate(${spacing[4]}, -${spacing[4]});
+
+      &:after {
+        transform: translate(-${spacing[8]}, ${spacing[8]});
+      }
     }
   `;
 
-const getBorder = ({ borderType }: Partial<BoxProps>) => {
-  switch (borderType) {
-    case 'solid': {
-      return boxBorder;
-    }
-    case 'drop-left': {
-      return dropPattern('left');
-    }
-    case 'drop-right': {
-      return dropPattern('right');
-    }
-  }
-};
-
 export const Box = styled.div<BoxProps>`
   background-color: ${colors.white};
-  ${getBorder};
+  ${({ bordered }) => bordered && borderEffect}
   ${({ padding }) =>
     padding && `padding: ${spacing[padding]} ${spacing[padding]};`}
 `;
