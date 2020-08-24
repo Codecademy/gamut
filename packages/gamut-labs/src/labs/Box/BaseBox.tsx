@@ -6,13 +6,19 @@ type Variants = 'yellow' | 'navy' | 'white';
 type BoxVariants = {
   text: string;
   background: string;
+  shadow: string;
   interactive?: string;
 };
 
+const {
+  white,
+  standard: { navy, yellow },
+} = colors;
+
 const BOX_VARIANTS: Record<Variants, BoxVariants> = {
-  yellow: { text: colors.standard.navy, background: colors.standard.yellow },
-  navy: { text: colors.white, background: colors.standard.navy },
-  white: { text: colors.standard.navy, background: colors.white },
+  yellow: { text: navy, background: yellow, shadow: navy },
+  navy: { text: white, background: navy, shadow: white },
+  white: { text: navy, background: white, shadow: navy },
 };
 
 export type BoxProps = {
@@ -26,8 +32,8 @@ export type BoxProps = {
   shadowPosition?: 'left' | 'right';
 };
 
-const boxBorder = css`
-  border: 1px solid ${colors.standard.navy};
+const border = (color: string) => css`
+  border: 1px solid ${color};
   border-radius: 2px;
 `;
 
@@ -42,20 +48,24 @@ const translationOffsets = {
   },
 };
 
-const borderEffect = (direction: 'left' | 'right', variant: Variants) => {
+const borderEffect = (
+  direction: 'left' | 'right',
+  background: string,
+  drop: string
+) => {
   const { body, shadow } = translationOffsets[direction];
   return css`
-  border: 1px solid transparent;
+  ${border('transparent')}
   border-radius: 2px;
   position: relative;
-  background-color: ${BOX_VARIANTS[variant].background};
+  background-color: ${background};
   z-index: 1;
   transition: 0.2s transform;
 
   &:before {
     content: '';
-    ${boxBorder}
-    background-color: ${BOX_VARIANTS[variant].background};
+    ${border(navy)}
+    background-color: ${background};
     top: -1px;
     left: -1px;
     width: calc(100% + 2px);
@@ -66,8 +76,8 @@ const borderEffect = (direction: 'left' | 'right', variant: Variants) => {
 
   &:after {
     content: '';
-    ${boxBorder}
-    background-color: ${BOX_VARIANTS[variant].text};
+    ${border(navy)}
+    background-color: ${drop};
     top: -1px;
     left: -1px;
     width: calc(100% + 2px);
@@ -88,19 +98,18 @@ const borderEffect = (direction: 'left' | 'right', variant: Variants) => {
 };
 
 export const Box = styled.div<BoxProps>`
-  ${({ variant }) => {
-    if (variant) {
-      const { background, text } = BOX_VARIANTS[variant];
-      return css`
-        background-color: ${background};
-        color: ${text};
-      `;
-    }
+  padding: ${({ padding }) => padding && spacing[padding]};
+
+  ${({ variant, bordered, shadowPosition }) => {
+    const { background, text, shadow } = BOX_VARIANTS[variant!];
+    return css`
+      background-color: ${background};
+      color: ${text};
+      ${bordered && shadowPosition
+        ? borderEffect(shadowPosition, background, shadow)
+        : border(background)}
+    `;
   }}
-  ${({ bordered, shadowPosition, variant }) =>
-    bordered && borderEffect(shadowPosition!, variant!)}
-  ${({ padding }) =>
-    padding && `padding: ${spacing[padding]} ${spacing[padding]};`}
 `;
 
 Box.defaultProps = {
