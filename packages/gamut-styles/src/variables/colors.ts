@@ -125,7 +125,7 @@ export const standardColorNames = {
   hyper: 'Hyper',
   navy: 'Navy Yard',
   orange: 'Ferry',
-  pink: 'Hot Dog',
+  pink: 'Hotdog',
   red: 'Redhook',
   yellow: 'Taxi',
   paleBlue: 'Piragua',
