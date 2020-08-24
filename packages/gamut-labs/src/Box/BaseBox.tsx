@@ -6,7 +6,7 @@ export type BoxProps = {
   /** Whether the box should have a border */
   bordered?: boolean;
   padding?: SpacingSize;
-  shadowPosition: 'left' | 'right';
+  shadowPosition?: 'left' | 'right';
 };
 
 const boxBorder = css`
