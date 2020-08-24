@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>5.1.2 (2020-08-24)</small>
-
-* go back to  for JS colors for now (#938) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed)), closes [#938](https://github.com/Codecademy/client-modules/issues/938)
-* chore: update changelogs ([2501cce](https://github.com/Codecademy/client-modules/commit/2501cce))
+### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.1...@codecademy/gamut-styles@5.1.2) (2020-08-24)
 
 
+### Other Changes
 
-
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
 
 ### [5.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.0...@codecademy/gamut-styles@5.1.1) (2020-08-24)
 
@@ -563,3 +556,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
