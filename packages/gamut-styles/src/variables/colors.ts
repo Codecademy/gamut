@@ -141,7 +141,7 @@ const interactive = {
 
 /**
  * @deprecated
- * use standard color set
+ * use the standard color set
  */
 export const brandColors = {
   red: swatches.red[500],
