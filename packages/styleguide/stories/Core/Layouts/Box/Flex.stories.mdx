@@ -1,0 +1,31 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Flex } from '@codecademy/gamut-labs/src';
+import { Box as ExampleBox } from '~styleguide/blocks';
+import { boxTypes } from './argTypes';
+
+<Meta title="Layouts/Box/Flex (Labs)" component={Flex} argTypes={boxTypes} />
+
+# Flex Box
+
+<StoryStatus status="stable" />
+
+A flex box primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story
+    name="Flex"
+    args={{
+      flexDirection: 'column',
+    }}
+  >
+    {(args) => (
+      <Flex {...args}>
+        <ExampleBox>Element 1</ExampleBox>
+        <ExampleBox>Element 2</ExampleBox>
+      </Flex>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Flex" />
