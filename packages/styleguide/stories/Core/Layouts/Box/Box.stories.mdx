@@ -1,6 +1,8 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
-import { Box } from '@codecademy/gamut-labs/src';
+import { Heading, Text } from '@codecademy/gamut';
+import { Box, Grid, Flex, Logo, Tag } from '@codecademy/gamut-labs/src';
+import { colors } from '@codecademy/gamut-styles/src';
 import { Box as ExampleBox } from '~styleguide/blocks';
 import { boxTypes } from './argTypes';
 
@@ -26,3 +28,33 @@ A flex box primitive that allows you create markup configurable flex containers
 </Canvas>
 
 <Props story="Box" />
+
+## Composition Example
+
+<Canvas>
+  <Story name="GridCard Example" args={{ bordered: true }}>
+    {(args) => (
+      <Grid bordered>
+        <Grid
+          padding={16}
+          gap={8}
+          ratio="max-content:max-content-max-content:1fr"
+        >
+          <Grid gap={8} direction="column">
+            <Logo height={20} type="proAlt" />
+            <Text fontSize="sm">Course</Text>
+          </Grid>
+          <Heading as="h3" fontSize="md" hideMargin>
+            This is a course card
+          </Heading>
+          <Text fontSize="sm">
+            Beginner friendly | <strong>70</strong> Lessons
+          </Text>
+        </Grid>
+        <Flex alignContent="flex-end" justifyContent="flex-end">
+          <Tag background="pink">Has a final project</Tag>
+        </Flex>
+      </Grid>
+    )}
+  </Story>
+</Canvas>

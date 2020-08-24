@@ -3,9 +3,13 @@ import { spacing, SpacingSize } from '@codecademy/gamut-styles';
 import { Box } from './BaseBox';
 import styled from '@emotion/styled';
 
+export type Alignments = 'center' | 'start' | 'end' | 'stretch';
+
 export type GridProps = {
   direction: 'column' | 'row';
   gap?: SpacingSize;
+  align?: Alignments;
+  justify?: Alignments;
   ratio?: string;
 };
 
@@ -22,12 +26,16 @@ const templateRatio = ({ direction, ratio }: Partial<GridProps>) => {
 export const gridStyles = ({
   direction = 'row',
   gap,
+  justify,
+  align,
   ratio,
 }: Partial<GridProps>) => css`
   display: grid;
   grid-auto-flow: ${direction};
-  ${gap && `grid-gap: ${spacing[gap]};`}
-  ${templateRatio({ ratio, direction })}
+  justify-content: ${justify};
+  align-items: ${align};
+  grid-gap: ${gap && spacing[gap]};
+  ${templateRatio({ ratio, direction })};
 `;
 
 export const Grid = styled(Box)<GridProps>`
