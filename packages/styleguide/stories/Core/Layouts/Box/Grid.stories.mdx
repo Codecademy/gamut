@@ -1,0 +1,26 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Grid } from '@codecademy/gamut-labs/src';
+import { Box as ExampleBox } from '~styleguide/blocks';
+import { boxTypes } from './argTypes';
+
+<Meta title="Layouts/Box/Grid (Labs)" component={Grid} argTypes={boxTypes} />
+
+# Grid Box
+
+<StoryStatus status="stable" />
+
+A Grid box primitive that allows you create markup configurable Grid containers
+
+<Canvas>
+  <Story name="Grid">
+    {(args) => (
+      <Grid {...args}>
+        <ExampleBox>Element 1</ExampleBox>
+        <ExampleBox>Element 2</ExampleBox>
+      </Grid>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Grid" />
