@@ -16,6 +16,7 @@ import {
 } from '@codecademy/gamut/src';
 import {
   brandColors,
+  standardColors,
   colors,
   swatches,
   editorColors,
@@ -42,16 +43,14 @@ contrast requirements too!
 ```tsx
 import { colors } from '@codecademy/gamut-styles';
 
-colors.standard.blue;
-colors.background.lightBlue;
+colors.atrainBlue;
 ```
 
 ```scss
 @import '@codecademy/gamut-styles/utils';
 
 .standardRed {
-  color: $standard-red;
-  background-color: $background-light-blue;
+  color: $color-atrain-blue;
 }
 ```
 
@@ -59,15 +58,15 @@ colors.background.lightBlue;
 
 <Story name="Standard">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(colors.standard).map((color) => (
+    {objectKeys(standardColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
           </Heading>
           <Swatch
-            name={`$color-standard-${parseCamelCase(color)}`}
-            hex={colors.standard[color]}
+            name={`$color-${parseCamelCase(color)}`}
+            hex={standardColors[color]}
           />
         </Container>
       </Column>

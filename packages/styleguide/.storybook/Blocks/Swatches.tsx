@@ -25,7 +25,7 @@ export const getSassVariableName = (
 const textColor = (
   background: string,
   lightText = colors.white,
-  darkText = colors.standard.navy
+  darkText = colors.navyyardBlue
 ) => {
   const darkContrast = meetsContrastGuidelines(background, darkText);
   const lightContrast = meetsContrastGuidelines(background, lightText);

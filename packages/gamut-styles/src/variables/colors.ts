@@ -99,27 +99,27 @@ const legacyColors = {
   royalBlue: '#6400e4',
 } as const;
 
-const standard = {
-  beige: '#FFF0E5',
-  blue: '#66C4FF',
-  darkBlue: '#1557FF',
-  darkGreen: '#009C2C',
-  green: '#AEE938',
-  hyper: '#3A10E5',
-  navy: swatches.blue[1000],
-  orange: '#FF8C00',
-  pink: '#F966FF',
-  red: '#F03329',
-  yellow: '#FFD300',
-  paleBlue: '#F5FCFF',
-  paleGreen: '#F5FFE3',
-  palePink: '#FFF5FF',
-  paleYellow: '#FFFAE5',
+export const standardColors = {
+  bagelBeige: '#FFF0E5',
+  bronxriverBlue: '#66C4FF',
+  atrainBlue: '#1557FF',
+  foresthillsGreen: '#009C2C',
+  gowanusGreen: '#AEE938',
+  hyperBlue: '#3A10E5',
+  navyyardBlue: swatches.blue[1000],
+  ferryOrange: '#FF8C00',
+  hotdogPink: '#F966FF',
+  redhookRed: '#F03329',
+  taxiYellow: '#FFD300',
+  piraguaBlue: '#F5FCFF',
+  lenapeLime: '#F5FFE3',
+  loxPink: '#FFF5FF',
+  dumplingYellow: '#FFFAE5',
 } as const;
 
 const interactive = {
-  dark: standard.hyper,
-  light: standard.yellow,
+  dark: standardColors.hyperBlue,
+  light: standardColors.taxiYellow,
 } as const;
 
 /**
@@ -172,10 +172,10 @@ export const platformColors = {
 export const colors = {
   ...legacyColors,
   ...swatches,
+  ...standardColors,
   black,
   editor: editorColors,
   interactive,
   platform: platformColors,
-  standard,
   white,
 } as const;
