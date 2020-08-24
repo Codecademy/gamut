@@ -5,7 +5,9 @@ import styled from '@emotion/styled';
 export type BoxProps = {
   /** Whether the box should have a border */
   bordered?: boolean;
+  /** Standard spacing sizes */
   padding?: SpacingSize;
+  /** Position of the hover shadow offset */
   shadowPosition?: 'left' | 'right';
 };
 
