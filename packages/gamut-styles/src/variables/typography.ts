@@ -2,13 +2,13 @@ import { colors as colorSwatch } from './colors';
 import { pxRem } from '../utilities/pxRem';
 import { base } from './base';
 
-export const fontBase = `"Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+export const fontBase = `"Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI",
 "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
 sans-serif`;
 
-export const fontHeadings = `"Regular Patch", "Regular Bold", "Nunito Sans",
--apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell",
-"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif`;
+export const fontHeadings = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
+"Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+sans-serif`;
 
 export const fontMonospace = `Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas,
 monospace`;
