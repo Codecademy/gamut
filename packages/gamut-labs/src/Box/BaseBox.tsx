@@ -71,7 +71,7 @@ const borderEffect = (direction: 'left' | 'right') => {
 
 export const Box = styled.div<BoxProps>`
   background-color: ${colors.white};
-  ${({ bordered, shadowPosition }) => bordered && borderEffect(shadowPosition)}
+  ${({ bordered, shadowPosition }) => bordered && borderEffect(shadowPosition!)}
   ${({ padding }) =>
     padding && `padding: ${spacing[padding]} ${spacing[padding]};`}
 `;
