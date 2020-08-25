@@ -3,11 +3,13 @@ import {
   ArgsTable,
   Canvas,
   Story,
-} from '@storybook/addon-docs/dist/blocks';
+  Source,
+} from '@storybook/addon-docs/blocks';
 import dedent from 'ts-dedent';
 import { StoryStatus } from '~styleguide/blocks';
-import { colors } from '@codecademy/gamut-styles';
+import { colors, standardColors } from '@codecademy/gamut-styles';
 import { Flex, FlexItem } from '@codecademy/gamut-labs/src';
+import { BulbIcon } from '@codecademy/gamut-icons';
 import { Box as BoxElement, defaultGridProps } from './Elements';
 import { select, boolean, number } from '@storybook/addon-knobs';
 
@@ -162,8 +164,16 @@ A flex box primitive that allows you easily create flex-based layouts without cu
         {...args}
         style={{ backgroundColor: colors.gray[300], padding: '1rem' }}
       >
-        <BoxElement alignSelf="unset">Element 1</BoxElement>
-        <BoxElement alignSelf="unset">Element 2</BoxElement>
+        <FlexItem>
+          <BoxElement height="100%" width="100%">
+            Element 1
+          </BoxElement>
+        </FlexItem>
+        <FlexItem>
+          <BoxElement height="100%" width="100%">
+            Element 2
+          </BoxElement>
+        </FlexItem>
       </Flex>
     )}
   </Story>
@@ -177,17 +187,48 @@ A flex box primitive that allows you easily create flex-based layouts without cu
 
 It is ideal for usage as a child to the `Flex` component, since it provides all of the same flex utilities.
 
-<Canvas>
+<Canvas withSource="none">
   <Story name="FlexItem">
     {(args) => (
       <Flex style={{ backgroundColor: colors.gray[300], padding: '1rem' }}>
-        <FlexItem style={{ backgroundColor: colors.blue, padding: '0.5rem' }}>
-          Element 1
-        </FlexItem>
-        <FlexItem style={{ backgroundColor: colors.blue, padding: '0.5rem' }}>
-          Element 2
+        <FlexItem
+          as={BulbIcon}
+          flexShrink={0}
+          size={30}
+          style={{ marginRight: '1rem' }}
+        />
+        <FlexItem flexGrow={1}>
+          <Text size="lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </Text>
         </FlexItem>
       </Flex>
     )}
   </Story>
 </Canvas>
+
+<Source
+  language="tsx"
+  dark="true"
+  code={`
+<Flex>
+  <FlexItem
+    as={BulbIcon}
+    flexShrink={0}
+    size={30}
+    style={{ marginRight: '1rem' }}
+  />
+  <FlexItem flexGrow={1}>
+    <Text size="lg">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+      minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+      aliquip ex ea commodo consequat.
+    </Text>
+  </FlexItem>
+</Flex>
+`}
+/>

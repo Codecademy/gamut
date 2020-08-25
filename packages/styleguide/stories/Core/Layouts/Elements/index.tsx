@@ -1,6 +1,6 @@
 import React from 'react';
 import { Flex } from '@codecademy/gamut-labs/src';
-import { colors } from '@codecademy/gamut-styles';
+import { standardColors, colors } from '@codecademy/gamut-styles';
 
 export const Box: React.FC = ({ children, ...rest }) => (
   <Flex
@@ -8,7 +8,8 @@ export const Box: React.FC = ({ children, ...rest }) => (
       padding: '5px',
       minHeight: '30px',
       marginBottom: '0.5rem',
-      backgroundColor: colors.blue[500],
+      backgroundColor: standardColors.blue,
+      outline: `1px solid ${standardColors.navy}`,
       color: colors.white,
     }}
     alignSelf="stretch"
