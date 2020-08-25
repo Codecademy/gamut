@@ -92,6 +92,23 @@ A flex box primitive that allows you create markup configurable flex containers
             Test
           </MatrixBox>
         </Grid>
+        <Grid
+          direction="column"
+          gap={48}
+          justify="center"
+          align="center"
+          ratio="1fr:1fr:1fr"
+        >
+          <DiagonalBox bordered padding={48}>
+            Test
+          </DiagonalBox>
+          <DottedBox background="navy" bordered padding={48}>
+            Test
+          </DottedBox>
+          <MatrixBox bordered background="yellow" padding={48}>
+            Test
+          </MatrixBox>
+        </Grid>
       </Grid>
     )}
   </Story>
