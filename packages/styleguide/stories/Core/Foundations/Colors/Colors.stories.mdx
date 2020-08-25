@@ -20,7 +20,7 @@ import {
   colorNames,
   interactiveColors,
   swatches,
-  legacyColors,
+  deprecatedColors,
   editorColors,
   platformColors,
 } from '@codecademy/gamut-styles';
@@ -168,9 +168,9 @@ swatches.beige[0];
 ### Legacy Color Swatches
 
 ```tsx
-import { legacyColors } from '@codecademy/gamut-styles';
+import { deprecatedColors } from '@codecademy/gamut-styles';
 
-legacyColors.blue[900];
+deprecatedColors.blue[900];
 ```
 
 ```scss
@@ -184,7 +184,7 @@ legacyColors.blue[900];
 <Story name="Rest">
   {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(legacyColors)
+      {objectKeys(deprecatedColors)
         .filter((color) => !excludedColors.includes(color))
         .map((color) => (
           <Column key={color} size={{ xs: 6, sm: 3 }}>
@@ -194,7 +194,7 @@ legacyColors.blue[900];
               </Heading>
               <SwatchPalette
                 variablePrefix={`color-${color}`}
-                data={legacyColors[color]}
+                data={deprecatedColors[color]}
               />
             </Container>
           </Column>

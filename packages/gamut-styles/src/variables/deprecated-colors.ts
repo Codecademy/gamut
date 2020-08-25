@@ -2,7 +2,7 @@ import { colors } from './colors';
 
 const { black, white } = colors;
 
-export const legacyColors = {
+export const deprecatedColors = {
   blue: {
     '100': '#c8d7fa',
     '200': '#a5befa',
@@ -103,15 +103,15 @@ export const legacyColors = {
  * use the standard color set
  */
 export const brandColors = {
-  red: legacyColors.red[500],
-  orange: legacyColors.orange[400],
-  yellow: legacyColors.yellow[500],
-  purple: legacyColors['royalBlue'],
-  pink: legacyColors.pink[400],
-  magenta: legacyColors.pink[700],
-  mint: legacyColors.green[300],
+  red: deprecatedColors.red[500],
+  orange: deprecatedColors.orange[400],
+  yellow: deprecatedColors.yellow[500],
+  purple: deprecatedColors['royalBlue'],
+  pink: deprecatedColors.pink[400],
+  magenta: deprecatedColors.pink[700],
+  mint: deprecatedColors.green[300],
   beige: '#efd9ca',
-  blue: legacyColors.blue[500],
-  darkBlue: legacyColors.blue[900],
-  lavender: legacyColors.purple[500],
+  blue: deprecatedColors.blue[500],
+  darkBlue: deprecatedColors.blue[900],
+  lavender: deprecatedColors.purple[500],
 } as const;

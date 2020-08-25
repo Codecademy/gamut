@@ -1,4 +1,4 @@
-import { legacyColors as colorSwatch } from './deprecated-colors';
+import { deprecatedColors as colorSwatch } from './deprecated-colors';
 import { pxRem } from '../utilities/pxRem';
 import { base } from './base';
 
