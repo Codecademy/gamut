@@ -1,10 +1,18 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Heading, Text } from '@codecademy/gamut';
-import { Box, Grid, Flex, Logo, Tag } from '@codecademy/gamut-labs/src';
+import {
+  Box,
+  Grid,
+  Flex,
+  Logo,
+  Tag,
+  patterns,
+} from '@codecademy/gamut-labs/src';
 import { colors } from '@codecademy/gamut-styles/src';
 import { Box as ExampleBox } from '~styleguide/blocks';
 import { boxTypes } from './argTypes';
+import { DottedBox, MatrixBox, DiagonalBox } from './Test';
 
 <Meta title="Layouts/Box" component={Box} argTypes={boxTypes} />
 
@@ -58,6 +66,32 @@ A flex box primitive that allows you create markup configurable flex containers
         <Flex alignContent="flex-end" justifyContent="flex-end">
           <Tag background="pink">Has a final project</Tag>
         </Flex>
+      </Grid>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Drop">
+    {(args) => (
+      <Grid padding={24} gap={48}>
+        <Grid
+          direction="column"
+          gap={48}
+          justify="center"
+          align="center"
+          ratio="1fr:1fr:1fr"
+        >
+          <DiagonalBox bordered padding={48}>
+            Test
+          </DiagonalBox>
+          <DottedBox bordered padding={48}>
+            Test
+          </DottedBox>
+          <MatrixBox bordered padding={48}>
+            Test
+          </MatrixBox>
+        </Grid>
       </Grid>
     )}
   </Story>

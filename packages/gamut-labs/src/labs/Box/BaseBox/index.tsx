@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 import { shadowEffect, boxBorder } from './utils';
 import { spacing } from '@codecademy/gamut-styles';
 import { HoverShadowVariants, BackgroundVariants, PaddingSizes } from './types';
@@ -18,10 +19,14 @@ export type BoxProps = {
 
 export const Box = styled.div<BoxProps>`
   padding: ${({ padding }) => spacing[padding!]};
-  ${shadowEffect}
   ${({ bordered }) => bordered && boxBorder}
   ${({ background }) => background && BACKGROUND_VARIANTS[background]}
-  ${({ hoverShadow }) => hoverShadow && SHADOW_VARIANTS[hoverShadow]}
+  ${({ hoverShadow }) =>
+    hoverShadow &&
+    css`
+      ${shadowEffect}
+      ${SHADOW_VARIANTS[hoverShadow]}
+    `}
 `;
 
 Box.defaultProps = {
