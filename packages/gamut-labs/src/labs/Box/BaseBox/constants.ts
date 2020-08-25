@@ -7,9 +7,9 @@ const {
 } = colors;
 
 export const BACKGROUND_VARIANTS = {
-  yellow: createThemeVariant(yellow, navy, navy),
-  navy: createThemeVariant(navy, white, white),
-  white: createThemeVariant(white, navy, navy),
+  yellow: createThemeVariant(yellow, navy),
+  navy: createThemeVariant(navy, white),
+  white: createThemeVariant(white, navy),
 };
 
 export const SHADOW_VARIANTS = {

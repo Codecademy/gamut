@@ -1,0 +1,100 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Heading, Text } from '@codecademy/gamut/src';
+import { Grid, Box, Pattern } from '@codecademy/gamut-labs/src';
+import { DottedBox, MatrixBox, DiagonalBox, FloatingPattern } from './Examples';
+
+<Meta
+  title="Atoms/Patterns (Labs)"
+  component={Pattern}
+  decorators={[
+    (story) => (
+      <Grid padding={48} gap={32} style={{ position: 'relative' }}>
+        {story()}
+      </Grid>
+    ),
+  ]}
+/>
+
+# Patterns
+
+<StoryStatus status="volatile" />
+
+<Canvas>
+  <Story name="Pattern" args={{ variant: 'dotted', xOffset: -15, yOffset: 15 }}>
+    {(args) => (
+      <Box style={{ position: 'relative' }}>
+        <Grid bordered padding={32} gap={8}>
+          <Heading as="h2" hideMargin>
+            Hello world
+          </Heading>
+          <Text>I am text</Text>
+        </Grid>
+        <Pattern {...args} />
+      </Box>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Pattern" />
+
+## Pattern Elements
+
+<Canvas>
+  <Story name="Positioning">
+    {(args) => (
+      <>
+        <Pattern
+          pattern="diagonal"
+          width={85}
+          height={60}
+          xOffset={6}
+          yOffset={-15}
+        />
+        <Pattern
+          pattern="dotted"
+          width={85}
+          height={60}
+          xOffset={-6}
+          yOffset={15}
+        />
+        <Box bordered padding={48}>
+          Hello
+        </Box>
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Drop Patterns
+
+<Canvas>
+  <Story name="Drop Shadow Patterns">
+    {(args) => (
+      <>
+        <Grid
+          direction="column"
+          gap={48}
+          justify="center"
+          align="center"
+          ratio="1fr:1fr:1fr"
+        >
+          <DiagonalBox bordered padding={48}></DiagonalBox>
+          <DottedBox bordered padding={48}></DottedBox>
+          <MatrixBox bordered padding={48}></MatrixBox>
+        </Grid>
+        <Grid
+          direction="column"
+          gap={48}
+          justify="center"
+          align="center"
+          ratio="1fr:1fr:1fr"
+        >
+          <DiagonalBox bordered padding={48}></DiagonalBox>
+          <DottedBox background="navy" bordered padding={48}></DottedBox>
+          <MatrixBox bordered background="yellow" padding={48}></MatrixBox>
+        </Grid>
+      </>
+    )}
+  </Story>
+</Canvas>

@@ -18,6 +18,8 @@ export type BoxProps = {
 };
 
 export const Box = styled.div<BoxProps>`
+  z-index: 1;
+  position: relative;
   padding: ${({ padding }) => spacing[padding!]};
   ${({ bordered }) => bordered && boxBorder}
   ${({ background }) => background && BACKGROUND_VARIANTS[background]}

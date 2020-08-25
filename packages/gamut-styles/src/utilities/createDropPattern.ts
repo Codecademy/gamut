@@ -3,8 +3,8 @@ import { css } from '@emotion/core';
 export type DropPattern = {
   url?: string;
   color?: string;
-  xOffset?: string;
-  yOffset?: string;
+  xOffset?: string | number;
+  yOffset?: string | number;
 };
 
 const backgroundImage = (url?: string) =>
@@ -18,8 +18,8 @@ const backgroundImage = (url?: string) =>
 export const createDropPattern = ({
   url,
   color,
-  xOffset,
-  yOffset,
+  xOffset = 0,
+  yOffset = 0,
 }: DropPattern) => css`
   position: relative;
   z-index: 1;
@@ -49,4 +49,12 @@ export const createDropPattern = ({
     top: ${yOffset};
     left: ${xOffset};
   }
+`;
+
+export const createPhysicalPattern = ({
+  url,
+  color,
+}: Partial<DropPattern>) => css`
+  background-color: ${color && color};
+  ${backgroundImage(url)}
 `;

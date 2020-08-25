@@ -1,6 +1,5 @@
 import { keys, parseInt } from 'lodash';
 import { spacing } from '@codecademy/gamut-styles/src';
-import { Box, patterns } from 'gamut-labs/src';
 
 export const boxTypes = {
   ref: { table: { disable: true } },
