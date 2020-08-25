@@ -19,9 +19,9 @@ export type BoxProps = {
 export const Box = styled.div<BoxProps>`
   padding: ${({ padding }) => spacing[padding!]};
   ${shadowEffect}
+  ${({ bordered }) => bordered && boxBorder}
   ${({ background }) => background && BACKGROUND_VARIANTS[background]}
   ${({ hoverShadow }) => hoverShadow && SHADOW_VARIANTS[hoverShadow]}
-  ${({ bordered }) => bordered && boxBorder}
 `;
 
 Box.defaultProps = {

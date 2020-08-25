@@ -4,9 +4,15 @@ import { colors } from '@codecademy/gamut-styles';
 export const boxBorder = css`
   border: 1px solid ${colors.standard.navy};
   border-radius: 2px;
+
   &:after,
   &:before {
     border: 1px solid ${colors.standard.navy};
+    border-radius: 2px;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
   }
 `;
 
@@ -38,9 +44,6 @@ export const createShadowVariant = (body: string[], shadow: string[]) => {
 };
 
 export const shadowEffect = css`
-  border: 1px;
-  border-color: transparent;
-  border-radius: 2px;
   position: relative;
   z-index: 1;
   transition: 0.2s transform;
@@ -48,10 +51,8 @@ export const shadowEffect = css`
   &:before,
   &:after {
     content: '';
-    top: -1px;
-    left: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
+    width: 100%;
+    height: 100%;
     position: absolute;
   }
 
