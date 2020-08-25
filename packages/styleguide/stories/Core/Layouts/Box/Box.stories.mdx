@@ -48,7 +48,11 @@ A flex box primitive that allows you create markup configurable flex containers
             This is a course card
           </Heading>
           <Text fontSize="sm">
-            Beginner friendly | <strong>70</strong> Lessons
+            Beginner friendly |{' '}
+            <Text as="strong" fontSize="sm">
+              70
+            </Text>{' '}
+            Lessons
           </Text>
         </Grid>
         <Flex alignContent="flex-end" justifyContent="flex-end">
