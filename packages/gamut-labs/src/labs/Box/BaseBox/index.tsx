@@ -1,11 +1,13 @@
 import styled from '@emotion/styled';
-import { shadowEffect, boxBorder, BOX_VARIANTS, HOVER_EFFECTS } from './utils';
+import { shadowEffect, boxBorder } from './utils';
 import { spacing } from '@codecademy/gamut-styles';
-import { HoverShadowVariants, Variants, PaddingSizes } from './types';
+import { HoverShadowVariants, BackgroundVariants, PaddingSizes } from './types';
+
+import { SHADOW_VARIANTS, BACKGROUND_VARIANTS } from './constants';
 
 export type BoxProps = {
   /** Background Variation */
-  variant?: Variants;
+  background?: BackgroundVariants;
   /** Whether the box should have a border */
   bordered?: boolean;
   /** Standard spacing sizes */
@@ -17,11 +19,11 @@ export type BoxProps = {
 export const Box = styled.div<BoxProps>`
   padding: ${({ padding }) => spacing[padding!]};
   ${shadowEffect}
-  ${({ variant }) => variant && BOX_VARIANTS[variant]}
+  ${({ background }) => background && BACKGROUND_VARIANTS[background]}
+  ${({ hoverShadow }) => hoverShadow && SHADOW_VARIANTS[hoverShadow]}
   ${({ bordered }) => bordered && boxBorder}
-  ${({ hoverShadow }) => hoverShadow && HOVER_EFFECTS[hoverShadow]}
 `;
 
 Box.defaultProps = {
-  variant: 'white',
+  background: 'white',
 };

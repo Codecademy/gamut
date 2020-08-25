@@ -1,21 +1,16 @@
 import { css } from '@emotion/core';
-import { spacing, colors } from '@codecademy/gamut-styles';
-
-const {
-  white,
-  standard: { navy, yellow },
-} = colors;
+import { colors } from '@codecademy/gamut-styles';
 
 export const boxBorder = css`
-  border: 1px solid ${navy};
+  border: 1px solid ${colors.standard.navy};
   border-radius: 2px;
-
+  &:after,
   &:before {
-    border: 1px solid ${navy};
+    border: 1px solid ${colors.standard.navy};
   }
 `;
 
-const createVariant = (
+export const createThemeVariant = (
   background: string,
   content: string,
   shadow: string
@@ -28,13 +23,9 @@ const createVariant = (
   }
 `;
 
-export const BOX_VARIANTS = {
-  yellow: createVariant(yellow, navy, navy),
-  navy: createVariant(navy, white, white),
-  white: createVariant(white, navy, navy),
-};
+export const neg = (value: string) => `-${value}`;
 
-export const createHoverOffset = (body: string[], shadow: string[]) => {
+export const createShadowVariant = (body: string[], shadow: string[]) => {
   return css`
     &:hover {
       transform: translate(${body.join(', ')});
@@ -44,19 +35,6 @@ export const createHoverOffset = (body: string[], shadow: string[]) => {
       }
     }
   `;
-};
-
-const neg = (value: string) => `-${value}`;
-
-export const HOVER_EFFECTS = {
-  left: createHoverOffset(
-    [spacing[4], neg(spacing[4])],
-    [neg(spacing[8]), spacing[8]]
-  ),
-  right: createHoverOffset(
-    [neg(spacing[4]), neg(spacing[4])],
-    [spacing[8], spacing[8]]
-  ),
 };
 
 export const shadowEffect = css`
