@@ -1,9 +1,9 @@
 import React from 'react';
-import { Item } from '@codecademy/gamut/src';
+import { Flex } from '@codecademy/gamut-labs/src';
 import { colors } from '@codecademy/gamut-styles';
 
-export const Box: React.FC = ({ children }) => (
-  <Item
+export const Box: React.FC = ({ children, ...rest }) => (
+  <Flex
     style={{
       padding: '5px',
       minHeight: '30px',
@@ -11,11 +11,11 @@ export const Box: React.FC = ({ children }) => (
       backgroundColor: colors.blue[500],
       color: colors.white,
     }}
-    flex
     alignSelf="stretch"
+    {...rest}
   >
     {children}
-  </Item>
+  </Flex>
 );
 
 export const defaultGridProps = {

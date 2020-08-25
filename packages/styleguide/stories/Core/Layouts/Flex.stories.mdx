@@ -1,31 +1,193 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import {
+  Meta,
+  ArgsTable,
+  Canvas,
+  Story,
+} from '@storybook/addon-docs/dist/blocks';
+import dedent from 'ts-dedent';
 import { StoryStatus } from '~styleguide/blocks';
-import { Flex } from '@codecademy/gamut-labs/src';
+import { colors } from '@codecademy/gamut-styles';
+import { Flex, FlexItem } from '@codecademy/gamut-labs/src';
 import { Box as BoxElement, defaultGridProps } from './Elements';
 import { select, boolean, number } from '@storybook/addon-knobs';
 
-<Meta title="Layouts/Flex (Labs)" component={Flex} argTypes={{}} />
+<Meta
+  title="Layouts/Flex (Labs)"
+  component={Flex}
+  argTypes={{
+    alignItems: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: [
+          'stretch',
+          'center',
+          'end',
+          'flex-end',
+          'flex-start',
+          'start',
+          'baseline',
+          'normal',
+          'self-end',
+          'self-start',
+        ],
+      },
+    },
+    alignSelf: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: [
+          'stretch',
+          'center',
+          'end',
+          'flex-end',
+          'flex-start',
+          'start',
+          'baseline',
+          'normal',
+          'self-end',
+          'self-start',
+        ],
+      },
+    },
+    height: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'text',
+      },
+    },
+    width: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'text',
+      },
+    },
+    display: {
+      description: 'Maps to the CSS display property',
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: ['none', 'block', 'flex', 'inline-flex'],
+      },
+    },
+    flexDirection: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: ['column', 'column-reverse', 'row', 'row-reverse'],
+      },
+    },
+    flexGrow: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'number',
+      },
+    },
+    flexShrink: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'number',
+      },
+    },
+    flexBasis: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'text',
+      },
+    },
+    justifyContent: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: [
+          'space-around',
+          'space-between',
+          'space-evenly',
+          'stretch',
+          'center',
+          'end',
+          'flex-end',
+        ],
+      },
+    },
+    flexWrap: {
+      table: {
+        type: false,
+      },
+      control: {
+        type: 'select',
+        options: ['nowrap', 'wrap', 'wrap-reverse'],
+      },
+    },
+  }}
+/>
 
-# Container
+# Flex
 
 <StoryStatus status="stable" />
 
-A flex box primitive that allows you create markup configurable flex containers
+A flex box primitive that allows you easily create flex-based layouts without custom CSS
 
 <Canvas>
   <Story
     name="Flex"
     args={{
-      flexDirection: 'column',
+      width: '100%',
+      height: '100px',
     }}
   >
     {(args) => (
-      <Flex {...args}>
-        <BoxElement>Element 1</BoxElement>
-        <BoxElement>Element 2</BoxElement>
+      <Flex
+        {...args}
+        style={{ backgroundColor: colors.gray[300], padding: '1rem' }}
+      >
+        <BoxElement alignSelf="unset">Element 1</BoxElement>
+        <BoxElement alignSelf="unset">Element 2</BoxElement>
       </Flex>
     )}
   </Story>
 </Canvas>
 
-<Props story="Flex" />
+<ArgsTable story="Flex" />
+
+## FlexItem
+
+`FlexItem` is an extension of the `Flex` primitive, doesn't default to `display: flex`
+
+It is ideal for usage as a child to the `Flex` component, since it provides all of the same flex utilities.
+
+<Canvas>
+  <Story name="FlexItem">
+    {(args) => (
+      <Flex style={{ backgroundColor: colors.gray[300], padding: '1rem' }}>
+        <FlexItem style={{ backgroundColor: colors.blue, padding: '0.5rem' }}>
+          Element 1
+        </FlexItem>
+        <FlexItem style={{ backgroundColor: colors.blue, padding: '0.5rem' }}>
+          Element 2
+        </FlexItem>
+      </Flex>
+    )}
+  </Story>
+</Canvas>
