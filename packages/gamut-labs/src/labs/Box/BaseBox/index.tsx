@@ -3,7 +3,8 @@ import { css } from '@emotion/core';
 import { spacing } from '@codecademy/gamut-styles';
 import { HoverShadowVariants, BoxVariants, PaddingSizes } from './types';
 
-import { SHADOW_VARIANTS, BOX_VARIANTS } from './constants';
+import { BOX_VARIANTS } from './constants';
+import { createShadowOffset } from './utils';
 
 export type BoxProps = {
   /** Background Variation */
@@ -25,8 +26,9 @@ const createShadow = (
 
   &:after,
   &:before {
-    position: absolute;
     content: '';
+    position: absolute;
+    background-color: inherit;
     border-width: inherit;
     border-color: inherit;
     border-radius: inherit;
@@ -45,11 +47,10 @@ const createShadow = (
 
   &:before {
     z-index: -1;
-    background-color: inherit;
   }
 
   &:hover {
-    ${SHADOW_VARIANTS[shadowDirection]}
+    ${createShadowOffset(4, shadowDirection)}
   }
 `;
 

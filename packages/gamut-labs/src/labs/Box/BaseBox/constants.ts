@@ -1,5 +1,4 @@
-import { neg, createShadowOffset } from './utils';
-import { spacing, colors } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles';
 
 const {
   white,
@@ -25,15 +24,4 @@ export const BOX_VARIANTS = {
     text: navy,
     border: navy,
   },
-};
-
-export const SHADOW_VARIANTS = {
-  left: createShadowOffset(
-    [spacing[4], neg(spacing[4])],
-    [neg(spacing[8]), spacing[8]]
-  ),
-  right: createShadowOffset(
-    [neg(spacing[4]), neg(spacing[4])],
-    [spacing[8], spacing[8]]
-  ),
 };
