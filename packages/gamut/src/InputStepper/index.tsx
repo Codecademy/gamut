@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import StepButton from './StepButton';
-import { colors, fontFamilies } from '@codecademy/gamut-styles';
+import { colors, fontFamily } from '@codecademy/gamut-styles';
 
 export type InputStepperButtonTargets =
   | 'increase_selection'
@@ -147,7 +147,7 @@ const StyledStepper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-family: ${fontFamilies.base};
+  font-family: ${fontFamily.base};
 `;
 
 const StyledColumn = styled.div`
@@ -167,7 +167,7 @@ const StyledInput = styled.input<{ size: number }>`
   font-size: 1.65rem;
   padding: 0.2rem 1.5rem 1rem;
   text-align: center;
-  font-family: ${fontFamilies.headings};
+  font-family: ${fontFamily.heading};
   max-width: ${(p) => p.size}rem;
 
   &[type='number']::-webkit-inner-spin-button,
@@ -185,7 +185,7 @@ const StyledLabel = styled.label`
   margin-top: -1.8rem;
   text-align: center;
   font-size: 0.9rem;
-  font-family: ${fontFamilies.base};
+  font-family: ${fontFamily.base};
   padding-bottom: 0.35rem;
   color: ${colors.gray[800]};
 `;
