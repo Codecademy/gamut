@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { css, jsx } from '@emotion/core';
+import styled from '@emotion/styled';
 import { colors } from '@codecademy/gamut-styles';
 
 import {
@@ -24,6 +25,15 @@ export const StepButton: React.FC<StepButtonProps> = ({
   const ariaLabel = type === 'up' ? 'add one' : 'subtract one';
   const id = 'stepbtn-' + type;
 
+  const StyledIconButton = styled(
+    type === 'up' ? ArrowChevronUpIcon : ArrowChevronDownIcon
+  )`
+    width: 1rem;
+    height: 1rem;
+    margin-top: -3px;
+    display: block;
+  `;
+
   return (
     <Button
       theme="brand-dark-blue"
@@ -35,11 +45,7 @@ export const StepButton: React.FC<StepButtonProps> = ({
       aria-label={ariaLabel}
       aria-labelledby={`${labelledBy} ${id}`}
     >
-      {type === 'up' ? (
-        <ArrowChevronUpIcon css={stepperButtonIconCss} />
-      ) : (
-        <ArrowChevronDownIcon css={stepperButtonIconCss} />
-      )}
+      <StyledIconButton />
     </Button>
   );
 };
@@ -55,11 +61,4 @@ export const stepperButtonCss = css`
   margin-top: 0.3rem;
   height: 2rem;
   min-width: 2rem;
-`;
-
-export const stepperButtonIconCss = css`
-  width: 1rem;
-  height: 1rem;
-  margin-top: -3px;
-  display: block;
 `;
