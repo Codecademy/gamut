@@ -1,3 +1,7 @@
+### [14.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.4...@codecademy/gamut@14.0.5) (2020-08-24)
+
+### [14.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.3...@codecademy/gamut@14.0.4) (2020-08-24)
+
 ### [14.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.2...@codecademy/gamut@14.0.3) (2020-08-21)
 
 
