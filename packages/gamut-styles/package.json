@@ -16,12 +16,12 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@emotion/core": ">=10.0.0",
-    "@emotion/styled": ">=10.0.0"
+    "@emotion/react": "^11.0.0-next.15",
+    "@emotion/styled": "^11.0.0-next.15"
   },
   "devDependencies": {
-    "@emotion/core": "10.0.28",
-    "@emotion/styled": "10.0.27"
+    "@emotion/react": "^11.0.0-next.15",
+    "@emotion/styled": "^11.0.0-next.15"
   },
   "license": "MIT"
 }
