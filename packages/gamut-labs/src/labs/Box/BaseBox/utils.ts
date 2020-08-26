@@ -1,43 +1,13 @@
 import { css } from '@emotion/core';
-import { colors, createDropPattern } from '@codecademy/gamut-styles';
-
-export const boxBorder = css`
-  border: 1px solid ${colors.standard.navy};
-  border-radius: 2px;
-
-  &:after,
-  &:before {
-    border-width: 1px;
-    border-color: transparent;
-    border-radius: 2px;
-    top: -1px;
-    left: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-  }
-`;
-
-export const createThemeVariant = (background: string, content: string) => css`
-  background-color: ${background};
-  color: ${content};
-`;
 
 export const neg = (value: string) => `-${value}`;
 
-export const createShadowVariant = (body: string[], shadow: string[]) => {
+export const createShadowOffset = (element: string[], shadow: string[]) => {
   return css`
-    &:hover {
-      transform: translate(${body.join(', ')});
+    transform: translate(${element.join(', ')});
 
-      &:after {
-        transform: translate(${shadow.join(', ')});
-      }
+    &:after {
+      transform: translate(${shadow.join(', ')});
     }
   `;
 };
-
-export const shadowEffect = createDropPattern({
-  color: colors.standard.navy,
-  xOffset: '0',
-  yOffset: '0',
-});
