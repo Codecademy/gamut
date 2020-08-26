@@ -1,15 +1,7 @@
-/** @jsx jsx */
-
 import React, { useEffect } from 'react';
-import { jsx } from '@emotion/core';
+import styled from '@emotion/styled';
 import StepButton from './StepButton';
-import {
-  stepperStyles,
-  inputStyles,
-  columnStyles,
-  labelStyles,
-  SizeType,
-} from './styles';
+import { colors, fontFamilies } from '@codecademy/gamut-styles';
 
 export type InputStepperButtonTargets =
   | 'increase_selection'
@@ -67,14 +59,14 @@ export const InputStepper: React.FC<InputStepperProps> = ({
     return value;
   };
 
-  const calculateWidthFromMax = (): SizeType => {
+  const calculateWidthFromMax = (): number => {
     if (max < 10) {
-      return 'mini';
+      return 4.5;
     }
     if (max > 99) {
-      return 'long';
+      return 8;
     }
-    return 'standard';
+    return 5;
   };
 
   const increment = (incrementAmount: 1 | -1) => {
@@ -108,14 +100,13 @@ export const InputStepper: React.FC<InputStepperProps> = ({
 
   const inputId = 'inputStepper';
   const labelId = 'inputStepperLabel';
-  const inputWidthClass = calculateWidthFromMax();
 
   return (
-    <div className={className} css={stepperStyles}>
-      <div css={columnStyles}>
+    <StyledStepper className={className}>
+      <StyledColumn>
         {/** render the actual input field */}
-        <input
-          css={inputStyles(inputWidthClass)}
+        <StyledInput
+          size={calculateWidthFromMax()}
           type="number"
           max={max}
           min={min}
@@ -129,18 +120,13 @@ export const InputStepper: React.FC<InputStepperProps> = ({
         />
 
         {/* render the label for the input field */}
-        <label
-          id={labelId}
-          css={labelStyles}
-          aria-label={ariaLabel}
-          htmlFor={inputId}
-        >
+        <StyledLabel id={labelId} aria-label={ariaLabel} htmlFor={inputId}>
           {label}
-        </label>
-      </div>
+        </StyledLabel>
+      </StyledColumn>
 
       {/** step up and step down buttons */}
-      <div css={columnStyles}>
+      <StyledColumn>
         <StepButton
           onClick={() => increment(1)}
           type="up"
@@ -151,7 +137,55 @@ export const InputStepper: React.FC<InputStepperProps> = ({
           type="down"
           labelledBy={`${labelId} ${inputId}`}
         />
-      </div>
-    </div>
+      </StyledColumn>
+    </StyledStepper>
   );
 };
+export default InputStepper;
+
+const StyledStepper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: ${fontFamilies.base};
+`;
+
+const StyledColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & + & {
+    margin-left: 0.7rem;
+  }
+`;
+
+const StyledInput = styled.input<{ size: number }>`
+  border: 2px solid ${colors.gray[200]};
+  border-radius: 4px;
+  outline: none;
+  font-size: 1.65rem;
+  padding: 0.2rem 1.5rem 1rem;
+  text-align: center;
+  font-family: ${fontFamilies.headings};
+  max-width: ${(p) => p.size}rem;
+
+  &[type='number']::-webkit-inner-spin-button,
+  &[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &[type='number'] {
+    -moz-appearance: textfield;
+  }
+`;
+
+const StyledLabel = styled.label`
+  margin-top: -1.8rem;
+  text-align: center;
+  font-size: 0.9rem;
+  font-family: ${fontFamilies.base};
+  padding-bottom: 0.35rem;
+  color: ${colors.gray[800]};
+`;
