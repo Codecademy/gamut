@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import { createEnzymeHelpers } from '../src/main';
-import TestComponent from './TestComponent';
+import { TestComponent } from './TestComponent';
 
 describe('Enzyme Helpers', () => {
   describe('Base Functionality', () => {
