@@ -1,3 +1,10 @@
+## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **Icons:** Added svg icons ([#942](https://github.com/Codecademy/client-modules/issues/942)) ([dff9075](https://github.com/Codecademy/client-modules/commit/dff9075ed6c53ef95ca283c7df4e119064ac12da))
+
 ## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
 
 
