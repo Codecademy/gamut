@@ -1,6 +1,8 @@
+import React from 'react';
 import { addParameters, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
+import { ThemeProvider } from '@codecademy/gamut/src';
 
 import './decorators/wrapper';
 
@@ -43,3 +45,13 @@ addParameters({
 });
 
 addDecorator(withKnobs);
+
+export const decorators = [
+  (Story) => {
+    return (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    );
+  },
+];

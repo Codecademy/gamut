@@ -18,6 +18,7 @@ export * from './FlexBox';
 export * from './FlexGrid';
 export * from './Form';
 export * from './GridForm';
+export * from './ThemeProvider';
 export * from './Typography/Heading';
 export * from './Typography/Text';
 export * from './HighlightedText';
