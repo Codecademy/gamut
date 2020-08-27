@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 2.1.0 (2020-08-27)
-
-* feat(BreakpointHooks): Port breakpoint hooks from Monolith into Gamut Labs ([db2e22a](https://github.com/Codecademy/client-modules/commit/db2e22a))
-* chore: update changelogs ([d6d2828](https://github.com/Codecademy/client-modules/commit/d6d2828))
+## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.7...@codecademy/gamut-labs@2.1.0) (2020-08-27)
 
 
+### ✨ Features
 
-
+* **BreakpointHooks:** Port breakpoint hooks from Monolith into Gamut Labs ([db2e22a](https://github.com/Codecademy/client-modules/commit/db2e22a20abed47615a2f26e4111cb2ef3d00b96))
 
 ### [2.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.6...@codecademy/gamut-labs@2.0.7) (2020-08-27)
 
@@ -212,3 +205,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
