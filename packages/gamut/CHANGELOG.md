@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 15.0.0 (2020-08-27)
+
+* feat!: Added import/no-default-export to ESLint config (#929) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d)), closes [#929](https://github.com/Codecademy/client-modules/issues/929)
+* chore: update changelogs ([9e7d67d](https://github.com/Codecademy/client-modules/commit/9e7d67d))
+
+
+
+
+
 ### [14.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.4...@codecademy/gamut@14.0.5) (2020-08-24)
 
 ### [14.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.3...@codecademy/gamut@14.0.4) (2020-08-24)
@@ -2886,4 +2900,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
