@@ -1,3 +1,14 @@
+## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.5...@codecademy/gamut@15.0.0) (2020-08-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added import/no-default-export to ESLint config (#929)
+
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](https://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
+
 ### [14.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.4...@codecademy/gamut@14.0.5) (2020-08-24)
 
 ### [14.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@14.0.3...@codecademy/gamut@14.0.4) (2020-08-24)

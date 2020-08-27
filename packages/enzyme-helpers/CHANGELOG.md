@@ -1,3 +1,14 @@
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.11...@codecademy/enzyme-helpers@2.0.0) (2020-08-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added import/no-default-export to ESLint config (#929)
+
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](https://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
+
 ### [1.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.11) (2020-07-29)
 
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.9...@codecademy/enzyme-helpers@1.1.10) (2020-05-04)
