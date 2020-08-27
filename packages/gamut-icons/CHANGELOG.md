@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.3.0 (2020-08-27)
-
-* feat(Icons): Added svg icons (#942) ([dff9075](https://github.com/Codecademy/client-modules/commit/dff9075)), closes [#942](https://github.com/Codecademy/client-modules/issues/942)
-* chore: update changelogs ([5a50a65](https://github.com/Codecademy/client-modules/commit/5a50a65))
+## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
 
 
+### ✨ Features
 
-
+* **Icons:** Added svg icons ([#942](https://github.com/Codecademy/client-modules/issues/942)) ([dff9075](https://github.com/Codecademy/client-modules/commit/dff9075ed6c53ef95ca283c7df4e119064ac12da))
 
 ## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
 
@@ -219,3 +212,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
