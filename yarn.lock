@@ -4341,6 +4341,11 @@
     jest-diff "^25.2.1"
     pretty-format "^25.2.1"
 
+"@types/js-cookie@2.2.4":
+  version "2.2.4"
+  resolved "https://registry.npmjs.org/@types/js-cookie/-/js-cookie-2.2.4.tgz#f79720b4755aa197c2e15e982e2f438f5748e348"
+  integrity sha512-WTfSE1Eauak/Nrg6cA9FgPTFvVawejsai6zXoq0QYTQ3mxONeRtGhKxa7wMlUzWWmzrmTeV+rwLjHgsCntdrsA==
+
 "@types/js-cookie@2.2.5":
   version "2.2.5"
   resolved "https://registry.npmjs.org/@types/js-cookie/-/js-cookie-2.2.5.tgz#38dfaacae8623b37cc0b0d27398e574e3fc28b1e"
@@ -4793,6 +4798,11 @@
     strip-ansi "^4.0.0"
     text-table "^0.2.0"
     webpack-log "^1.1.2"
+
+"@xobotyi/scrollbar-width@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@xobotyi/scrollbar-width/-/scrollbar-width-1.5.0.tgz#488210bff634548040dc22a72f62722a85b134e1"
+  integrity sha512-BK+HR1D00F2xh7n4+5en8/dMkG13uvIXLmEbsjtc1702b7+VwXkvlBDKoRPJMbkRN5hD7VqWa3nS9fNT8JG3CA==
 
 "@xobotyi/scrollbar-width@1.9.5":
   version "1.9.5"
@@ -15264,6 +15274,25 @@ react-truncate-markup@^4.1.1:
     line-height "0.3.1"
     prop-types "^15.6.0"
     resize-observer-polyfill "1.5.0"
+
+react-use@13.18.0:
+  version "13.18.0"
+  resolved "https://registry.npmjs.org/react-use/-/react-use-13.18.0.tgz#c8b9a3f6bb6d9560333e545fe0d74151d7b148be"
+  integrity sha512-Q9/F7QYZsc84TAXntD9c5fbrbtMVQYEhq24DYwMT4WBpiEBiGAJ6vKuxbRYCHxNgITCQMOuIGA7eq+f685mz5g==
+  dependencies:
+    "@types/js-cookie" "2.2.4"
+    "@xobotyi/scrollbar-width" "1.5.0"
+    copy-to-clipboard "^3.2.0"
+    fast-shallow-equal "^1.0.0"
+    js-cookie "^2.2.1"
+    nano-css "^5.2.1"
+    react-fast-compare "^2.0.4"
+    resize-observer-polyfill "^1.5.1"
+    screenfull "^5.0.0"
+    set-harmonic-interval "^1.0.1"
+    throttle-debounce "^2.1.0"
+    ts-easing "^0.2.0"
+    tslib "^1.10.0"
 
 react-use@^13.18.0:
   version "13.27.1"

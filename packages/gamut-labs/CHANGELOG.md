@@ -1,3 +1,14 @@
+## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.7...@codecademy/gamut-labs@2.1.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **BreakpointHooks:** Port breakpoint hooks from Monolith into Gamut Labs ([db2e22a](https://github.com/Codecademy/client-modules/commit/db2e22a20abed47615a2f26e4111cb2ef3d00b96))
+
+### [2.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.6...@codecademy/gamut-labs@2.0.7) (2020-08-27)
+
+### [2.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.5...@codecademy/gamut-labs@2.0.6) (2020-08-27)
+
 ### [2.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.4...@codecademy/gamut-labs@2.0.5) (2020-08-24)
 
 ### [2.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.3...@codecademy/gamut-labs@2.0.4) (2020-08-24)
