@@ -1,17 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 2.0.0 (2020-08-27)
-
-* feat!: Added import/no-default-export to ESLint config (#929) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d)), closes [#929](https://github.com/Codecademy/client-modules/issues/929)
-* chore: update changelogs ([3ba548b](https://github.com/Codecademy/client-modules/commit/3ba548b))
-* chore: update changelogs ([b8a49c7](https://github.com/Codecademy/client-modules/commit/b8a49c7))
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.11...@codecademy/enzyme-helpers@2.0.0) (2020-08-27)
 
 
+### ⚠ BREAKING CHANGES
 
+* Added import/no-default-export to ESLint config (#929)
 
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](https://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
 
 ### [1.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.11) (2020-07-29)
 
@@ -72,3 +68,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### ✨ Features
 
 * create enzyme-helpers package ([b70b7b4](https://github.com/Codecademy/client-modules/commit/b70b7b454aa600a8822636e37adc435c15ecb8da))
+
