@@ -1,25 +1,18 @@
 // Font Families:
 
-$font-family-base: "Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI",
-  "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif;
-
 $font-family-accent: "Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
   "Helvetica Neue", sans-serif;
+
+$font-family-base: "Apercu", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
 
 $font-monospace: Monaco, Menlo, "Ubuntu Mono", "Droid Sans Mono", Consolas,
   monospace;
 
 $font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
   "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-// Todo: these should be deleted in a little bit, once everyone's done using them.
-// GM-89
-$font-base: $font-family-base;
-$font-family-apercu: $font-family-base;
-$font-family-headings: $font-family-base;
-$font-family-suisse: $font-family-accent;
 
 // Font Weights
 
