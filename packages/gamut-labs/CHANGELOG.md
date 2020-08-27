@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>2.0.7 (2020-08-27)</small>
+
+* chore: update changelogs ([6e6db13](https://github.com/Codecademy/client-modules/commit/6e6db13))
+
+
+
+
+
 ### [2.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.5...@codecademy/gamut-labs@2.0.6) (2020-08-27)
 
 ### [2.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.4...@codecademy/gamut-labs@2.0.5) (2020-08-24)
@@ -196,4 +209,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
