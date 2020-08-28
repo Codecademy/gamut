@@ -13,7 +13,7 @@ export type TagProps = {
 
 export const Tag = styled.div<TagProps>`
   font-size: ${fontSize.text.sm};
-  font-weight: ${fontWeight.heading};
+  font-weight: ${fontWeight.bold};
   padding: ${spacing[4]} ${spacing[8]};
   background-color: ${({ background }) =>
     get(colors, `standard.pale${startCase(background)}`)};
