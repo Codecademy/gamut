@@ -17,7 +17,7 @@ export type TypographyProps = {
   lineHeight?: LineHeights;
   letterSpacing?: string;
   textAlign?: 'left' | 'right' | 'center';
-  fontStyle?: 'normal' | 'itelic' | 'oblique';
+  fontStyle?: 'normal' | 'italic' | 'oblique';
 };
 
 export const getTypography = (props: TypographyProps) => {
