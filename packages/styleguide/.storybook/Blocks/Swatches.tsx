@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
 import { colors, swatches } from '@codecademy/gamut-styles';
-import { meetsContrastGuidelines } from 'polished';
+import { meetsContrastGuidelines, parseToHsl } from 'polished';
 
 export const parseCamelCase = (string: string) =>
   string.replace(/([a-zA-Z])(?=[A-Z0-9])/g, '$1-').toLowerCase();
@@ -53,6 +53,7 @@ const textColor = (
 const SwatchContainer = styled.div<{ hex: string }>`
   position: relative;
   display: flex;
+  flex-direction: column;
   height: 125px;
   width: 100%;
   max-width: 100%;
@@ -74,21 +75,10 @@ const SwatchContainer = styled.div<{ hex: string }>`
 `;
 
 const SwatchDetail = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 0;
   color: inherit;
-  padding: 5px 10px;
+  padding: 0.2rem 0.5rem;
   font-weight: bold;
   font-size: 13px;
-
-  ${new Array(3).fill('x').map((val, index) => {
-    return `
-    &:nth-child(${index + 1}) {
-      transform: translate(0, ${-100 * index}%);
-    }
-    `;
-  })}
 `;
 
 export const Swatch: React.FC<{
@@ -96,11 +86,16 @@ export const Swatch: React.FC<{
   hex: string;
   alias?: string;
 }> = ({ name, alias, hex }) => {
+  const hsl = parseToHsl(hex);
   return (
     <SwatchContainer hex={hex}>
       <SwatchDetail>{name}</SwatchDetail>
-      <SwatchDetail>{hex.toUpperCase()}</SwatchDetail>
-      <SwatchDetail>{alias}</SwatchDetail>
+      <SwatchDetail>
+        {Object.keys(hsl).map((k) => (
+          <div key={k}>{`${k[0]}: ${Math.round(1000 * hsl[k]) / 1000}`}</div>
+        ))}
+      </SwatchDetail>
+      <SwatchDetail>{hex}</SwatchDetail>
     </SwatchContainer>
   );
 };

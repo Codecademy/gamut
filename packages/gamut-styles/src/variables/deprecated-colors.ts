@@ -1,8 +1,9 @@
-import { colors } from './colors';
+import { colors, fillColorScale } from './colors';
 
 const { black, white } = colors;
 
 export const deprecatedColors = {
+  newBlue: fillColorScale(colors.blue),
   blue: {
     '100': '#c8d7fa',
     '200': '#a5befa',

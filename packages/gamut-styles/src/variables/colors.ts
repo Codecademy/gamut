@@ -1,3 +1,5 @@
+import { parseToHsl, hslToColorString } from 'polished';
+
 const black = '#000000';
 const white = '#ffffff';
 
@@ -46,6 +48,71 @@ export const swatches = {
     '900': '#19191a',
   },
 } as const;
+
+const colorScale = {
+  // '0': {
+  //   lightness: 0.98,
+  // },
+  '100': {
+    lightness: 0.97,
+    saturation: 0.8,
+  },
+  '200': {
+    lightness: 0.87,
+    saturation: 0.8,
+  },
+  '300': {
+    lightness: 0.77,
+    saturation: 0.85,
+  },
+  '400': {
+    lightness: 0.64,
+    saturation: 0.9,
+  },
+  '500': {
+    lightness: 0.541,
+    saturation: 1,
+  },
+  '600': {
+    lightness: 0.4,
+    saturation: 0.9,
+  },
+  '700': {
+    lightness: 0.29,
+    saturation: 0.8,
+  },
+  '800': {
+    lightness: 0.19,
+    saturation: 0.7,
+  },
+  '900': {
+    lightness: 0.13,
+    saturation: 0.6,
+  },
+};
+
+type ColorScale = Record<string, string>;
+type ColorValues =
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900';
+
+export const fillColorScale = (hex: string) => {
+  return Object.keys(colorScale).reduce((acc: ColorScale, colorValue) => {
+    const hsl = parseToHsl(hex);
+    acc[colorValue] = hslToColorString({
+      ...hsl,
+      ...colorScale[colorValue as ColorValues],
+    });
+    return acc;
+  }, {});
+};
 
 export const colors = {
   beige: swatches.beige[0],

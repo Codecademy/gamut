@@ -17,11 +17,13 @@
   },
   "peerDependencies": {
     "@emotion/core": ">=10.0.0",
-    "@emotion/styled": ">=10.0.0"
+    "@emotion/styled": ">=10.0.0",
+    "polished": ">=3.6.5"
   },
   "devDependencies": {
     "@emotion/core": "10.0.28",
-    "@emotion/styled": "10.0.27"
+    "@emotion/styled": "10.0.27",
+    "polished": "3.6.5"
   },
   "license": "MIT"
 }
