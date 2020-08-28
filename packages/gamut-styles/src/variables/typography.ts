@@ -31,42 +31,68 @@ export const fontFamily = {
   monospace: fontMonospace,
   suisse: fontSuisse,
   system: fontSystem,
-};
+} as const;
+
+export type FontFamilies = keyof typeof fontFamily;
 
 export const fontColor = {
   base: colorSwatch.gray[800],
   heading: colorSwatch.gray[900],
   link: colorSwatch.blue[500],
   linkHover: colorSwatch.blue[700],
-};
+} as const;
 
-export const fontDecoration = {
+export type FontColors = keyof typeof fontColor;
+
+export const fontDecorations = {
   link: 'none',
   linkHover: 'underline',
-};
+} as const;
+
+export type FontDecorations = keyof typeof fontDecorations;
+
+export const fontScale = {
+  1: pxRem(0.85 * base),
+  2: pxRem(1 * base),
+  3: pxRem(1.125 * base),
+  4: pxRem(1.25 * base),
+  5: pxRem(1.4 * base),
+  6: pxRem(1.6 * base),
+  7: pxRem(2.2 * base),
+  8: pxRem(3 * base),
+} as const;
+
+export type FontScale = keyof typeof fontScale;
 
 export const fontSize = {
   text: {
-    lg: pxRem(base * 1.125),
-    md: pxRem(base),
-    sm: pxRem(base * 0.85),
+    lg: fontScale[3],
+    md: fontScale[2],
+    sm: fontScale[1],
   },
   heading: {
-    xxl: pxRem(base * 3),
-    xl: pxRem(base * 2.2),
-    lg: pxRem(base * 1.6),
-    md: pxRem(base * 1.4),
-    sm: pxRem(base * 1.25),
-    xs: pxRem(base),
+    xxl: fontScale[8],
+    xl: fontScale[7],
+    lg: fontScale[6],
+    md: fontScale[5],
+    sm: fontScale[4],
+    xs: fontScale[2],
   },
-};
+} as const;
+
+export type FontSizes = keyof typeof fontSize;
 
 export const lineHeight = {
-  text: 1.5,
-  heading: 1.1,
-};
+  '1.5': 1.5,
+  '1.1': 1.1,
+} as const;
+
+export type LineHeights = keyof typeof lineHeight;
 
 export const fontWeight = {
-  text: 400,
-  heading: 700,
-};
+  light: 300,
+  normal: 400,
+  bold: 700,
+} as const;
+
+export type FontWeights = keyof typeof fontWeight;

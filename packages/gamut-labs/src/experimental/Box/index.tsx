@@ -4,19 +4,22 @@ import {
   PaddingProps,
   PositionProps,
   BorderProps,
+  TypographyProps,
   getPadding,
   getMargin,
   getDisplay,
   DisplayProps,
   getPosition,
   getBorder,
+  getTypography,
 } from '@codecademy/gamut-styles';
 
 type BoxProps = DisplayProps &
   MarginProps &
   PaddingProps &
   PositionProps &
-  BorderProps;
+  BorderProps &
+  TypographyProps;
 
 export const Box = styled.div<BoxProps>`
   ${getDisplay}
@@ -24,4 +27,5 @@ export const Box = styled.div<BoxProps>`
   ${getMargin}
   ${getPosition}
   ${getBorder}
+  ${getTypography}
 `;
