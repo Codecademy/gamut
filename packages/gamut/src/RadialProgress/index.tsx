@@ -62,7 +62,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
         <circle
           cx="50"
           cy="50"
-          r="45"
+          r="40"
           stroke="currentColor"
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
