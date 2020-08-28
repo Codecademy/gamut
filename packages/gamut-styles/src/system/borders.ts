@@ -7,27 +7,52 @@ import {
   borderRadii,
   borderWidths,
 } from '../variables/border';
+import { pick, keys, mapKeys } from 'lodash';
 
-export type BorderProps = {
-  bordered?: boolean;
-  borderWidth?: BorderWidths;
+export const borderProps = {
+  border: 'base',
+  borderLeft: 'l',
+  borderRight: 'r',
+  borderTop: 't',
+  borderBottom: 'b',
+  borderX: 'x',
+  borderY: 'y',
+} as const;
+
+type AllBorderWidths = keyof typeof borderProps;
+type BorderWidthProperties = Partial<Record<AllBorderWidths, BorderWidths>>;
+type ShortHands = typeof borderProps[AllBorderWidths];
+
+export type BorderProps = BorderWidthProperties & {
   borderRadius?: BorderRadii;
   borderColor?: BorderColors;
 };
 
 export const getBorder = (props: BorderProps) => {
   const {
-    bordered,
-    borderWidth = 1,
-    borderRadius = 2,
-    borderColor = 'base',
-  } = props;
+    base,
+    x = base,
+    y = base,
+    l = x ?? base,
+    r = x ?? base,
+    t = y ?? base,
+    b = y ?? base,
+  } = mapKeys(
+    pick(props, keys(borderProps)),
+    (value, key) => borderProps[key as keyof typeof borderProps]
+  ) as Record<ShortHands, BorderWidths>;
 
-  return (
-    bordered &&
-    css`
-      border: ${borderWidths[borderWidth]} solid ${borderColors[borderColor]};
-      border-radius: ${borderRadii[borderRadius]};
-    `
-  );
+  const values = [t, r, b, l];
+  const isBordered = values.some((val) => val > 0);
+
+  if (!isBordered) return;
+
+  const { borderRadius = 2, borderColor = 'base' } = props;
+
+  return css`
+    border-style: 'solid';
+    border-width: ${values.map((size = 0) => borderWidths[size]).join(' ')};
+    border-color: ${borderColors[borderColor]};
+    border-radius: ${borderRadii[borderRadius]};
+  `;
 };
