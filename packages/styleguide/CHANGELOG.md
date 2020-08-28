@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 16.0.0 (2020-08-28)
+
+* feat!: Swapped default font family to Apercu (#935) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167)), closes [#935](https://github.com/Codecademy/client-modules/issues/935) [#943](https://github.com/Codecademy/client-modules/issues/943)
+* chore: update changelogs ([d6d2828](https://github.com/Codecademy/client-modules/commit/d6d2828))
+
+
+
+
+
 ### [15.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.4...@codecademy/styleguide@15.1.5) (2020-08-27)
 
 ### [15.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.3...@codecademy/styleguide@15.1.4) (2020-08-27)
@@ -1015,4 +1029,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
