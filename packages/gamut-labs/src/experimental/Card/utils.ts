@@ -1,6 +1,5 @@
 import { css } from '@emotion/core';
-import { pxRem } from '@codecademy/gamut-styles';
-import { PaddingSizes } from './types';
+import { pxRem, SpaceSizes } from '@codecademy/gamut-styles';
 
 const offsets = {
   left: [1, -1],
@@ -10,7 +9,7 @@ const offsets = {
 const shadowOffset = 2;
 
 export const createShadowOffset = (
-  offset: PaddingSizes,
+  offset: SpaceSizes,
   direction: 'left' | 'right'
 ) => {
   const [xCoeff, yCoeff] = offsets[direction];
