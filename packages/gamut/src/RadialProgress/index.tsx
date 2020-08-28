@@ -44,7 +44,7 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
       style={{ height: size, width: size }}
     >
       <svg
-        aria-label={`${finalValue}% progress`}
+        aria-label={`${value}% progress`}
         viewBox="0 0 100 100"
         height={size}
         width={size}
