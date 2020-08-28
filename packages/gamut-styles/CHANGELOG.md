@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 6.0.0 (2020-08-28)
-
-* feat!: Swapped default font family to Apercu (#935) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167)), closes [#935](https://github.com/Codecademy/client-modules/issues/935) [#943](https://github.com/Codecademy/client-modules/issues/943)
-* chore: update changelogs ([9e7d67d](https://github.com/Codecademy/client-modules/commit/9e7d67d))
+## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.2...@codecademy/gamut-styles@6.0.0) (2020-08-28)
 
 
+### ⚠ BREAKING CHANGES
 
+* Swapped default font family to Apercu (#935)
 
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
 
 ### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.1...@codecademy/gamut-styles@5.1.2) (2020-08-24)
 
@@ -570,3 +567,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

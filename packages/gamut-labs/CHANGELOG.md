@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.0.0 (2020-08-28)
-
-* feat!: Swapped default font family to Apercu (#935) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167)), closes [#935](https://github.com/Codecademy/client-modules/issues/935) [#943](https://github.com/Codecademy/client-modules/issues/943)
-* chore: update changelogs ([ffa924f](https://github.com/Codecademy/client-modules/commit/ffa924f))
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.1.0...@codecademy/gamut-labs@3.0.0) (2020-08-28)
 
 
+### ⚠ BREAKING CHANGES
 
+* Swapped default font family to Apercu (#935)
 
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
 
 ## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.7...@codecademy/gamut-labs@2.1.0) (2020-08-27)
 
@@ -219,3 +216,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
