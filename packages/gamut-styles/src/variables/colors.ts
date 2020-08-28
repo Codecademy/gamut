@@ -1,74 +1,49 @@
-import {
-  COLOR_BEIGE_000,
-  COLOR_BLUE_000,
-  COLOR_BLUE_300,
-  COLOR_BLUE_500,
-  COLOR_BLUE_900,
-  COLOR_GREEN_000,
-  COLOR_GREEN_400,
-  COLOR_GREEN_700,
-  COLOR_YELLOW_000,
-  COLOR_YELLOW_500,
-  COLOR_PINK_000,
-  COLOR_PINK_400,
-  COLOR_RED_500,
-  COLOR_ORANGE_500,
-  COLOR_HYPER_500,
-  COLOR_GRAY_100,
-  COLOR_GRAY_200,
-  COLOR_GRAY_300,
-  COLOR_GRAY_400,
-  COLOR_GRAY_500,
-  COLOR_GRAY_600,
-  COLOR_GRAY_700,
-  COLOR_GRAY_800,
-  COLOR_GRAY_900,
-  COLOR_BLACK,
-  COLOR_WHITE,
-} from './color-constants';
+const black = '#000000';
+const white = '#ffffff';
 
 export const swatches = {
   beige: {
-    '0': COLOR_BEIGE_000,
+    '0': '#FFF0E5',
   },
   blue: {
-    '0': COLOR_BLUE_000,
-    '300': COLOR_BLUE_300,
-    '500': COLOR_BLUE_500,
-    '900': COLOR_BLUE_900,
+    '0': '#F5FCFF',
+    '300': '#66C4FF',
+    '500': '#1557FF',
+    '900': '#10162f',
   },
   green: {
-    '0': COLOR_GREEN_000,
-    '400': COLOR_GREEN_400,
-    '700': COLOR_GREEN_700,
+    '0': '#F5FFE3',
+    '400': '#AEE938',
+    '700': '#009C2C',
   },
   yellow: {
-    '0': COLOR_YELLOW_000,
-    '500': COLOR_YELLOW_500,
+    '0': '#FFFAE5',
+    '500': '#FFD300',
   },
   pink: {
-    '0': COLOR_PINK_000,
-    '400': COLOR_PINK_400,
+    '0': '#FFF5FF',
+    '400': '#F966FF',
   },
   red: {
-    '500': COLOR_RED_500,
+    '500': '#F03329',
   },
   orange: {
-    '500': COLOR_ORANGE_500,
+    '500': '#FF8C00',
   },
   hyper: {
-    '500': COLOR_HYPER_500,
+    '500': '#3A10E5',
   },
   gray: {
-    '100': COLOR_GRAY_100,
-    '200': COLOR_GRAY_200,
-    '300': COLOR_GRAY_300,
-    '400': COLOR_GRAY_400,
-    '500': COLOR_GRAY_500,
-    '600': COLOR_GRAY_600,
-    '700': COLOR_GRAY_700,
-    '800': COLOR_GRAY_800,
-    '900': COLOR_GRAY_900,
+    '0': white,
+    '100': '#f6f5fa',
+    '200': '#dddce0',
+    '300': '#c4c3c7',
+    '400': '#a2a2a6',
+    '500': '#828285',
+    '600': '#646466',
+    '700': '#4b4b4d',
+    '800': '#323233',
+    '900': '#19191a',
   },
 } as const;
 
@@ -88,8 +63,8 @@ export const colors = {
   pink: swatches.pink[400],
   red: swatches.red[500],
   yellow: swatches.yellow[500],
-  black: COLOR_BLACK,
-  white: COLOR_WHITE,
+  black,
+  white,
 } as const;
 
 export const colorNames = {
