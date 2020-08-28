@@ -11,12 +11,10 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   strokeLinecap?: 'round' | 'butt' | 'square';
 }
 
-const offsetForEmptyProgress = 260;
-const offsetForFullProgress = 8;
-const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
+const offsetDelta = 280;
 
 const convertPercentToOffset = (percent: number) =>
-  offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
+  offsetDelta - Math.floor(offsetDelta * (percent / 100));
 
 export const RadialProgress: React.FC<RadialProgressProps> = ({
   children,
@@ -62,14 +60,14 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
         <circle
           cx="50"
           cy="50"
-          r="40"
+          r="45"
           stroke="currentColor"
           strokeWidth={strokeWidth}
           strokeLinecap={strokeLinecap}
           fill="none"
           opacity="1"
           strokeDashoffset={finalValue}
-          strokeDasharray="260"
+          strokeDasharray={offsetDelta}
           transform="rotate(-90 50 50)"
         >
           {startingValue !== finalValue && (
