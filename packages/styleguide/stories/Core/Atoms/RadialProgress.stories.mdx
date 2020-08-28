@@ -16,7 +16,7 @@ import { selectableColors } from '../../../helpers';
 
 <StoryStatus status="stable" />
 
-A circular display of progress without a number inside, meant to convey a
+A circular display of progress meant to convey a
 percentage out of a whole.
 
 <Canvas>
@@ -34,6 +34,21 @@ percentage out of a whole.
 </Canvas>
 
 <Props of={RadialProgress} />
+
+## Children
+
+Optionally, children may be provided to be displayed in the center of the circle.
+This is useful for conveying a textual description of progress, such as a percentage of X/Y ratio.
+
+<Canvas>
+  <Story name="Children">
+    {(args) => (
+      <RadialProgress size="5rem" value={75}>
+        {text('children', '75%')}
+      </RadialProgress>
+    )}
+  </Story>
+</Canvas>
 
 ## Animating
 
