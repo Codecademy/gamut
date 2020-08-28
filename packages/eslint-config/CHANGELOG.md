@@ -1,3 +1,14 @@
+## [3.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.1...@codecademy/eslint-config@3.0.0) (2020-08-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added import/no-default-export to ESLint config (#929)
+
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](http://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](http://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
+
 ### [2.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.0...@codecademy/eslint-config@2.0.1) (2020-07-29)
 
 ## [2.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@1.0.0...@codecademy/eslint-config@2.0.0) (2020-07-22)

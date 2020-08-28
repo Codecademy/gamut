@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import AccordionArea, { AccordionAreaProps } from '..';
+import { AccordionArea, AccordionAreaProps } from '..';
 
 const renderComponent = (overrides: Partial<AccordionAreaProps> = {}) => {
   const props = {
