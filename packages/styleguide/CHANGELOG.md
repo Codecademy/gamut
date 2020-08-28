@@ -1,3 +1,18 @@
+## [16.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.5...@codecademy/styleguide@16.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+### [15.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.4...@codecademy/styleguide@15.1.5) (2020-08-27)
+
+### [15.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.3...@codecademy/styleguide@15.1.4) (2020-08-27)
+
 ### [15.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.2...@codecademy/styleguide@15.1.3) (2020-08-24)
 
 
