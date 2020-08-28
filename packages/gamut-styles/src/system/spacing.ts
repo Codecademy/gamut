@@ -46,8 +46,9 @@ export const templateSpacing = (type: 'padding' | 'margin') => (
     pick(props, keys(aliases)),
     (value, key) => aliases[key as keyof typeof aliases]
   );
+  const values = [t, r, b, l].map(space);
 
-  return `${type}: ${space(t)} ${space(r)} ${space(b)} ${space(l)};`;
+  return values.some((val) => val) && `${type}: ${values.join(' ')};`;
 };
 
 export const getMargin = templateSpacing('margin');

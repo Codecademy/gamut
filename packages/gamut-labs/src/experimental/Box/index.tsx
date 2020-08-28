@@ -2,14 +2,19 @@ import styled from '@emotion/styled';
 import {
   MarginProps,
   PaddingProps,
+  PositionProps,
   getPadding,
   getMargin,
+  getDisplay,
+  DisplayProps,
+  getPosition,
 } from '@codecademy/gamut-styles';
 
-type BoxProps = MarginProps & PaddingProps;
+type BoxProps = DisplayProps & MarginProps & PaddingProps & PositionProps;
 
 export const Box = styled.div<BoxProps>`
-  display: block;
+  ${getDisplay}
   ${getPadding}
   ${getMargin}
+  ${getPosition}
 `;
