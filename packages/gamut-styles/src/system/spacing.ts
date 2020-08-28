@@ -28,8 +28,6 @@ type AllPaddingProperties = keyof typeof spacingProps['padding'];
 export type PaddingProps = Partial<Record<AllPaddingProperties, SpaceSizes>>;
 export type MarginProps = Partial<Record<AllMarginProperties, SpaceSizes>>;
 
-const space = (size: SpaceSizes | undefined) => (size ? spacing[size] : 0);
-
 export const templateSpacing = (type: 'padding' | 'margin') => (
   props: MarginProps | PaddingProps
 ) => {
@@ -46,9 +44,9 @@ export const templateSpacing = (type: 'padding' | 'margin') => (
     pick(props, keys(aliases)),
     (value, key) => aliases[key as keyof typeof aliases]
   );
-  const values = [t, r, b, l].map(space);
+  const values = [t, r, b, l].map((size = 0) => spacing[size]);
 
-  return values.some((val) => val) && `${type}: ${values.join(' ')};`;
+  return values.some((val) => val !== '0') && `${type}: ${values.join(' ')};`;
 };
 
 export const getMargin = templateSpacing('margin');
