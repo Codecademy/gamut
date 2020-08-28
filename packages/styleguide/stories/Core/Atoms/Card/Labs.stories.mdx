@@ -1,0 +1,28 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Card, Logo } from '@codecademy/gamut-labs/src';
+import { colors } from '@codecademy/gamut-styles/src';
+import { Box as ExampleBox } from '~styleguide/blocks';
+
+<Meta title="Atoms/Card (Labs)" component={Card} />
+
+# Card
+
+<StoryStatus status="volatile" />
+
+A flex Card primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story
+    name="Card"
+    args={{
+      children: 'Hello world I am a box',
+      padding: 16,
+      bordered: true,
+    }}
+  >
+    {(args) => <Card {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Card" />

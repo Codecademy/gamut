@@ -1,0 +1,28 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Heading, Text } from '@codecademy/gamut';
+import { Box, Logo } from '@codecademy/gamut-labs/src';
+import { colors } from '@codecademy/gamut-styles/src';
+import { Box as ExampleBox } from '~styleguide/blocks';
+import { boxTypes } from './argTypes';
+
+<Meta title="Layouts/Box" component={Box} argTypes={boxTypes} />
+
+# Box
+
+<StoryStatus status="volatile" />
+
+A flex box primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story
+    name="Box"
+    args={{
+      children: 'Hello world I am a box',
+    }}
+  >
+    {(args) => <Box {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Box" />
