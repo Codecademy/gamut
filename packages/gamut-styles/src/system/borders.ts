@@ -50,7 +50,7 @@ export const getBorder = (props: BorderProps) => {
   const { borderRadius = 2, borderColor = 'base' } = props;
 
   return css`
-    border-style: 'solid';
+    border-style: solid;
     border-width: ${values.map((size = 0) => borderWidths[size]).join(' ')};
     border-color: ${borderColors[borderColor]};
     border-radius: ${borderRadii[borderRadius]};
