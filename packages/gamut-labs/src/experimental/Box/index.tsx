@@ -12,6 +12,7 @@ import {
   getPosition,
   getBorder,
   getTypography,
+  composeSystem,
 } from '@codecademy/gamut-styles';
 
 type BoxProps = DisplayProps &
@@ -22,9 +23,8 @@ type BoxProps = DisplayProps &
   TypographyProps;
 
 export const Box = styled.div<BoxProps>`
+  ${composeSystem(getPadding, getMargin)}
   ${getDisplay}
-  ${getPadding}
-  ${getMargin}
   ${getPosition}
   ${getBorder}
   ${getTypography}

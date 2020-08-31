@@ -34,6 +34,10 @@ A flex box primitive that allows you create markup configurable flex containers
       children: 'Hello world I am a box',
     }}
   >
-    {(args) => <Box padding={{ xs: 16, md: 32 }}>Hello</Box>}
+    {(args) => (
+      <Box padding={{ xs: 16, md: 32 }} margin={{ md: 8, xs: 4 }}>
+        Hello
+      </Box>
+    )}
   </Story>
 </Canvas>
