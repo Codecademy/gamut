@@ -22,8 +22,13 @@ type BoxProps = DisplayProps &
   BorderProps &
   TypographyProps;
 
+const getSpacing = composeSystem<MarginProps & PaddingProps>(
+  getPadding,
+  getMargin
+);
+
 export const Box = styled.div<BoxProps>`
-  ${composeSystem(getPadding, getMargin)}
+  ${getSpacing}
   ${getDisplay}
   ${getPosition}
   ${getBorder}

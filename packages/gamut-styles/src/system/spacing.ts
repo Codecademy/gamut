@@ -60,5 +60,9 @@ export const templateSpacing = (type: 'padding' | 'margin') => (
   `;
 };
 
-export const getMargin = createSystemHandler(templateSpacing('margin'));
-export const getPadding = createSystemHandler(templateSpacing('padding'));
+export const getMargin = createSystemHandler<MarginProps>(
+  templateSpacing('margin')
+);
+export const getPadding = createSystemHandler<PaddingProps>(
+  templateSpacing('padding')
+);

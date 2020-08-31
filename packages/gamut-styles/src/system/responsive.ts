@@ -1,7 +1,6 @@
 import { mediaQueries } from '../variables/responsive';
 import { isObject, entries, merge, mapValues, reduce } from 'lodash';
 import { css, SerializedStyles } from '@emotion/core';
-import { getPadding } from './spacing';
 
 import { BorderProps } from './borders';
 import { LayoutProps } from './layout';
@@ -19,10 +18,9 @@ export type SystemProps = BorderProps &
   MarginProps;
 
 type Props = Partial<SystemProps>;
-type Handler = (props: Props, noMedia?: boolean) => string | SerializedStyles;
-type HandlerArray = Handler[];
+type Handler<T> = (props: T, noMedia?: boolean) => string | SerializedStyles;
 
-function handleMediaQuery(handler: Handler): Handler {
+function handleMediaQuery<T extends Props>(handler: Handler<T>): Handler<T> {
   return (systemProps) => {
     const responsive = reduce(
       entries(systemProps),
@@ -41,7 +39,7 @@ function handleMediaQuery(handler: Handler): Handler {
 
     return css`
       ${entries(responsive).map(([breakpoint, props]) => {
-        const rules = handler(props);
+        const rules = handler(props as T);
 
         if (breakpoint === 'base') {
           return css`
@@ -58,15 +56,15 @@ function handleMediaQuery(handler: Handler): Handler {
   };
 }
 
-export function createSystemHandler(handler: Handler): Handler {
+export function createSystemHandler<T>(handler: Handler<T>): Handler<T> {
   const responsiveHandler = handleMediaQuery(handler);
   return (props, noMedia = false) =>
     noMedia ? handler(props) : responsiveHandler(props);
 }
 
-export function composeSystem(...handlers: HandlerArray) {
+export function composeSystem<T>(...handlers: Handler<T>[]) {
   return handleMediaQuery(
-    (props) =>
+    (props: T) =>
       css`
         ${handlers.map((handler) => handler(props, true))}
       `
