@@ -1,5 +1,8 @@
 import { SpaceSizes, spacing } from '../variables/spacing';
 import { pick, keys, mapKeys } from 'lodash';
+import { css } from '@emotion/core';
+import { ResponsiveProp } from './types';
+import { createSystemHandler } from './responsive';
 
 export const spacingProps = {
   padding: {
@@ -25,8 +28,12 @@ export const spacingProps = {
 type AllMarginProperties = keyof typeof spacingProps['margin'];
 type AllPaddingProperties = keyof typeof spacingProps['padding'];
 
-export type PaddingProps = Partial<Record<AllPaddingProperties, SpaceSizes>>;
-export type MarginProps = Partial<Record<AllMarginProperties, SpaceSizes>>;
+export type PaddingProps = Partial<
+  Record<AllPaddingProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>
+>;
+export type MarginProps = Partial<
+  Record<AllMarginProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>
+>;
 
 export const templateSpacing = (type: 'padding' | 'margin') => (
   props: MarginProps | PaddingProps
@@ -44,10 +51,14 @@ export const templateSpacing = (type: 'padding' | 'margin') => (
     pick(props, keys(aliases)),
     (value, key) => aliases[key as keyof typeof aliases]
   );
-  const values = [t, r, b, l].map((size = 0) => spacing[size]);
 
-  return values.some((val) => val !== '0') && `${type}: ${values.join(' ')};`;
+  return css`
+    ${type}-top: ${spacing[t]};
+    ${type}-right: ${spacing[r]};
+    ${type}-bottom: ${spacing[b]};
+    ${type}-left: ${spacing[l]};
+  `;
 };
 
-export const getMargin = templateSpacing('margin');
-export const getPadding = templateSpacing('padding');
+export const getMargin = createSystemHandler(templateSpacing('margin'));
+export const getPadding = createSystemHandler(templateSpacing('padding'));
