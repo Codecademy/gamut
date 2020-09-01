@@ -50,6 +50,8 @@ export const LEARNING_ENVIRONMENT = pick(
     'PathIcon',
     'PathChangeIcon',
     'PathCompleteIcon',
+    'BookCloseBookmark1Icon',
+    'CommonFileTextSearchIcon',
   ].sort()
 );
 
