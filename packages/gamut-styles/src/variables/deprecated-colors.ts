@@ -2,6 +2,9 @@ import { colors } from './colors';
 
 const { black, white } = colors;
 
+/**
+ * @deprecated please use the `colors` export for the latest colors
+ */
 export const deprecatedColors = {
   blue: {
     '100': '#c8d7fa',
