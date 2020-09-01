@@ -9,4 +9,16 @@ export type ResponsiveProp<T> = {
   xl?: T;
 };
 
+export type OptionalResponiveProp<T> = {
+  xs?: T;
+  sm?: T;
+  md?: T;
+  lg?: T;
+  xl?: T;
+};
+
+export type SystemProp<T extends string, K> = Partial<
+  Record<T, K | ResponsiveProp<K>>
+>;
+
 export type AnyStyle = SerializedStyles | Styles | string;

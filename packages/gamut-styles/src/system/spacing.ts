@@ -1,5 +1,5 @@
 import { SpaceSizes } from '../variables/spacing';
-import { ResponsiveProp } from './types';
+import { SystemProp } from './types';
 import { createSystemHandler } from './responsive';
 import { directionalShorthand } from './directionalProp';
 
@@ -26,12 +26,8 @@ const marginProps = [
 type AllMarginProperties = typeof paddingProps[number];
 type AllPaddingProperties = typeof marginProps[number];
 
-export type PaddingProps = Partial<
-  Record<AllPaddingProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>
->;
-export type MarginProps = Partial<
-  Record<AllMarginProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>
->;
+export type PaddingProps = SystemProp<AllPaddingProperties, SpaceSizes>;
+export type MarginProps = SystemProp<AllMarginProperties, SpaceSizes>;
 
 export const getMargin = createSystemHandler<MarginProps>(
   directionalShorthand('margin')

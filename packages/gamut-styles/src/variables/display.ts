@@ -5,6 +5,7 @@ export const displayValues = [
   'grid',
   'flex',
   'inline-flex',
+  'none',
 ] as const;
 
 export type DisplayTypes = typeof displayValues[number];
