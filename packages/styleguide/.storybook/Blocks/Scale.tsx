@@ -1,10 +1,10 @@
 import { styled } from '@storybook/theming';
-import { colors, fontSize } from '@codecademy/gamut-styles';
+import { swatches, fontSize } from '@codecademy/gamut-styles';
 import { fontFamily } from '@codecademy/gamut-styles/src';
 
 export const ScaleColumn = styled.div`
   font-size: ${fontSize.text.sm};
-  color: ${colors.gray[400]};
+  color: ${swatches.gray[400]};
   font-family: ${fontFamily.monospace};
   display: grid;
   align-content: center;
