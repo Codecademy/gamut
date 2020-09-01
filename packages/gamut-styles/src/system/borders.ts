@@ -5,9 +5,11 @@ import {
   BorderColors,
   borderColors,
   borderRadii,
-  borderWidths,
 } from '../variables/border';
-import { pick, keys, mapKeys } from 'lodash';
+import { directionalShorthand } from './directionalProp';
+import { pick, keys, entries } from 'lodash';
+import { createSystemHandler } from './responsive';
+import { ResponsiveProp } from './types';
 
 export const borderProps = {
   border: 'base',
@@ -20,39 +22,30 @@ export const borderProps = {
 } as const;
 
 type AllBorderWidths = keyof typeof borderProps;
-type BorderWidthProperties = Partial<Record<AllBorderWidths, BorderWidths>>;
-type ShortHands = typeof borderProps[AllBorderWidths];
+type BorderWidthProperties = Partial<
+  Record<AllBorderWidths, BorderWidths | ResponsiveProp<BorderWidths>>
+>;
 
 export type BorderProps = BorderWidthProperties & {
   borderRadius?: BorderRadii;
   borderColor?: BorderColors;
 };
 
-export const getBorder = (props: BorderProps) => {
-  const {
-    base,
-    x = base,
-    y = base,
-    l = x ?? base,
-    r = x ?? base,
-    t = y ?? base,
-    b = y ?? base,
-  } = mapKeys(
-    pick(props, keys(borderProps)),
-    (value, key) => borderProps[key as keyof typeof borderProps]
-  ) as Record<ShortHands, BorderWidths>;
+const getBorderWidth = directionalShorthand('border');
 
-  const values = [t, r, b, l];
-  const isBordered = values.some((val) => val > 0);
+export const getBorder = createSystemHandler<BorderProps>((props) => {
+  const bordered = entries(pick(props, keys(borderProps))).some(
+    ([key, value]) => value
+  );
 
-  if (!isBordered) return;
-
-  const { borderRadius = 2, borderColor = 'base' } = props;
-
+  if (!bordered) {
+    return css``;
+  }
+  const { borderRadius, borderColor } = props;
   return css`
+    ${getBorderWidth(props)}
     border-style: solid;
-    border-width: ${values.map((size = 0) => borderWidths[size]).join(' ')};
-    border-color: ${borderColors[borderColor]};
-    border-radius: ${borderRadii[borderRadius]};
+    border-color: ${borderColors[borderColor!]};
+    border-radius: ${borderRadii[borderRadius!]};
   `;
-};
+});

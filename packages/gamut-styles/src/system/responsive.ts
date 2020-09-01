@@ -1,6 +1,6 @@
 import { mediaQueries } from '../variables/responsive';
 import { isObject, entries, merge, mapValues, reduce } from 'lodash';
-import { css, SerializedStyles } from '@emotion/core';
+import { css } from '@emotion/core';
 
 import { BorderProps } from './borders';
 import { LayoutProps } from './layout';
@@ -8,6 +8,7 @@ import { TypographyProps } from './typography';
 import { DisplayProps } from './display';
 import { PositionProps } from './position';
 import { PaddingProps, MarginProps } from './spacing';
+import { AnyStyle } from './types';
 
 export type SystemProps = BorderProps &
   LayoutProps &
@@ -18,7 +19,7 @@ export type SystemProps = BorderProps &
   MarginProps;
 
 type Props = Partial<SystemProps>;
-type Handler<T> = (props: T, noMedia?: boolean) => string | SerializedStyles;
+type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
 
 function handleMediaQuery<T extends Props>(handler: Handler<T>): Handler<T> {
   return (systemProps) => {

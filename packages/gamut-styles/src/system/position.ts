@@ -1,5 +1,6 @@
 import { css } from '@emotion/core';
 import { isNumber, isString } from 'lodash';
+import { createSystemHandler } from './responsive';
 
 export type PositionCoordinate = string | number;
 export type PositionProps = {
@@ -34,7 +35,7 @@ const parseCoord = (coordinate: PositionCoordinate) => {
   }
 };
 
-export const getPosition = (props: PositionProps) => {
+export const getPosition = createSystemHandler<PositionProps>((props) => {
   const { position, zIndex, top, bottom, left, right } = props;
   return css`
     position: ${position};
@@ -44,4 +45,4 @@ export const getPosition = (props: PositionProps) => {
     left: ${left && parseCoord(left)};
     right: ${right && parseCoord(right)};
   `;
-};
+});

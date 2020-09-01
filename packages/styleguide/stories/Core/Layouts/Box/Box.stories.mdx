@@ -35,8 +35,13 @@ A flex box primitive that allows you create markup configurable flex containers
     }}
   >
     {(args) => (
-      <Box padding={{ xs: 16, md: 32 }} margin={{ md: 8, xs: 4 }}>
-        Hello
+      <Box position="relative" display="grid">
+        <Box border={1} padding={16}>
+          Box 1
+        </Box>
+        <Box border={1} padding={16} position="absolute" zIndex={-1}>
+          Box 2
+        </Box>
       </Box>
     )}
   </Story>

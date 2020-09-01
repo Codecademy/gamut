@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import { createSystemHandler } from './responsive';
 
 export type OverflowValues = 'visisble' | 'hidden' | 'scroll' | 'auto';
 
@@ -8,7 +9,7 @@ export type LayoutProps = {
   overflowX?: OverflowValues;
 };
 
-export const getLayout = (props: LayoutProps) => {
+export const getLayout = createSystemHandler<LayoutProps>((props) => {
   const { overflow, overflowY, overflowX } = props;
 
   return css`
@@ -16,4 +17,4 @@ export const getLayout = (props: LayoutProps) => {
     overflow-y: ${overflowY};
     overflow-x: ${overflowX};
   `;
-};
+});

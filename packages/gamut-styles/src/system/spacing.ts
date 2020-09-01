@@ -1,8 +1,7 @@
-import { SpaceSizes, spacing } from '../variables/spacing';
-import { pick, keys, mapKeys } from 'lodash';
-import { css } from '@emotion/core';
+import { SpaceSizes } from '../variables/spacing';
 import { ResponsiveProp } from './types';
 import { createSystemHandler } from './responsive';
+import { directionalShorthand } from './directionalProp';
 
 export const spacingProps = {
   padding: {
@@ -35,34 +34,9 @@ export type MarginProps = Partial<
   Record<AllMarginProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>
 >;
 
-export const templateSpacing = (type: 'padding' | 'margin') => (
-  props: MarginProps | PaddingProps
-) => {
-  const aliases = spacingProps[type];
-  const {
-    base,
-    x = base,
-    y = base,
-    l = x ?? base,
-    r = x ?? base,
-    t = y ?? base,
-    b = y ?? base,
-  }: Record<string, SpaceSizes> = mapKeys(
-    pick(props, keys(aliases)),
-    (value, key) => aliases[key as keyof typeof aliases]
-  );
-
-  return css`
-    ${type}-top: ${spacing[t]};
-    ${type}-right: ${spacing[r]};
-    ${type}-bottom: ${spacing[b]};
-    ${type}-left: ${spacing[l]};
-  `;
-};
-
 export const getMargin = createSystemHandler<MarginProps>(
-  templateSpacing('margin')
+  directionalShorthand('margin')
 );
 export const getPadding = createSystemHandler<PaddingProps>(
-  templateSpacing('padding')
+  directionalShorthand('padding')
 );
