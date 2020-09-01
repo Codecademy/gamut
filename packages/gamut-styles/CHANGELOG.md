@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 7.0.0 (2020-09-01)
+
+* chore(gamut-styles)!: deprecate legacy JS color variables  (#940) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62)), closes [#940](https://github.com/Codecademy/client-modules/issues/940)
+* chore: update changelogs ([7755306](https://github.com/Codecademy/client-modules/commit/7755306))
+
+
+
+
+
 ## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.2...@codecademy/gamut-styles@6.0.0) (2020-08-28)
 
 
@@ -567,4 +581,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
