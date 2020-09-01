@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import { colors } from '@codecademy/gamut-styles';
+import { colors, swatches } from '@codecademy/gamut-styles';
 import { meetsContrastGuidelines } from 'polished';
 
 export const parseCamelCase = (string: string) =>
@@ -25,7 +25,7 @@ export const getSassVariableName = (
 const textColor = (
   background: string,
   lightText = colors.white,
-  darkText = colors.standard.navy
+  darkText = colors.navy
 ) => {
   const darkContrast = meetsContrastGuidelines(background, darkText);
   const lightContrast = meetsContrastGuidelines(background, lightText);
@@ -58,7 +58,7 @@ const SwatchContainer = styled.div<{ hex: string }>`
   max-width: 100%;
   color: ${({ hex }) => textColor(hex)};
   background-color: ${({ hex }) => hex};
-  border: 1px solid ${colors.gray[800]};
+  border: 1px solid ${swatches.gray[800]};
   border-bottom: 0;
 
   &:first-of-type {
@@ -69,7 +69,7 @@ const SwatchContainer = styled.div<{ hex: string }>`
   &:last-of-type {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    border-bottom: 1px solid ${colors.gray[800]};
+    border-bottom: 1px solid ${swatches.gray[800]};
   }
 `;
 

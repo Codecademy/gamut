@@ -8,7 +8,7 @@ export const Box: React.FC = ({ children }) => (
       padding: '5px',
       minHeight: '30px',
       marginBottom: '0.5rem',
-      backgroundColor: colors.blue[500],
+      backgroundColor: colors.blue,
       color: colors.white,
     }}
     flex
@@ -21,6 +21,6 @@ export const Box: React.FC = ({ children }) => (
 export const defaultGridProps = {
   style: {
     padding: '1rem',
-    backgroundColor: colors.blue[100],
+    backgroundColor: colors.paleBlue,
   },
 };
