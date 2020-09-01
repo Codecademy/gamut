@@ -12,17 +12,21 @@ import { createSystemHandler } from './responsive';
 import { ResponsiveProp } from './types';
 
 export const borderProps = {
-  border: 'base',
-  borderLeft: 'l',
-  borderRight: 'r',
-  borderTop: 't',
-  borderBottom: 'b',
-  borderX: 'x',
-  borderY: 'y',
+  borderColor: 'borderColor',
+  borderRadius: 'borderRadius',
+  borderWidth: [
+    'border',
+    'borderLeft',
+    'borderRight',
+    'borderTop',
+    'borderBottom',
+    'borderX',
+    'borderY',
+  ],
 } as const;
 
-type AllBorderWidths = keyof typeof borderProps;
-type BorderWidthProperties = Partial<
+type AllBorderWidths = typeof borderProps['borderWidth'][number];
+export type BorderWidthProperties = Partial<
   Record<AllBorderWidths, BorderWidths | ResponsiveProp<BorderWidths>>
 >;
 
@@ -34,7 +38,7 @@ export type BorderProps = BorderWidthProperties & {
 const getBorderWidth = directionalShorthand('border');
 
 export const getBorder = createSystemHandler<BorderProps>((props) => {
-  const bordered = entries(pick(props, keys(borderProps))).some(
+  const bordered = entries(pick(props, keys(borderProps.borderWidth))).some(
     ([key, value]) => value
   );
 

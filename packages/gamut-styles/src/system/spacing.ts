@@ -3,29 +3,28 @@ import { ResponsiveProp } from './types';
 import { createSystemHandler } from './responsive';
 import { directionalShorthand } from './directionalProp';
 
-export const spacingProps = {
-  padding: {
-    padding: 'base',
-    paddingLeft: 'l',
-    paddingRight: 'r',
-    paddingTop: 't',
-    paddingBottom: 'b',
-    paddingX: 'x',
-    paddingY: 'y',
-  },
-  margin: {
-    margin: 'base',
-    marginLeft: 'l',
-    marginRight: 'r',
-    marginTop: 't',
-    marginBottom: 'b',
-    marginX: 'x',
-    marginY: 'y',
-  },
-} as const;
+const paddingProps = [
+  'padding',
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+  'paddingX',
+  'paddingY',
+] as const;
 
-type AllMarginProperties = keyof typeof spacingProps['margin'];
-type AllPaddingProperties = keyof typeof spacingProps['padding'];
+const marginProps = [
+  'margin',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+  'marginX',
+  'marginY',
+] as const;
+
+type AllMarginProperties = typeof paddingProps[number];
+type AllPaddingProperties = typeof marginProps[number];
 
 export type PaddingProps = Partial<
   Record<AllPaddingProperties, SpaceSizes | ResponsiveProp<SpaceSizes>>

@@ -1,6 +1,6 @@
 import { directionalProperty } from 'polished';
 import { MarginProps, PaddingProps } from './spacing';
-import { BorderProps } from './borders';
+import { BorderWidthProperties } from './borders';
 
 const PROP_MAP = {
   border: 'border-width',
@@ -11,7 +11,7 @@ const PROP_MAP = {
 export function directionalShorthand(
   propertyName: 'border' | 'margin' | 'padding'
 ) {
-  return (props: MarginProps & PaddingProps & BorderProps) => {
+  return (props: MarginProps & PaddingProps & BorderWidthProperties) => {
     const {
       [propertyName]: base,
       [`${propertyName}X`]: x = base,
