@@ -1,16 +1,13 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 4.0.0 (2020-09-01)
-
-* chore(gamut-styles)!: deprecate legacy JS color variables  (#940) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62)), closes [#940](https://github.com/Codecademy/client-modules/issues/940)
-* chore: update changelogs ([17083f0](https://github.com/Codecademy/client-modules/commit/17083f0))
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.1...@codecademy/gamut-labs@4.0.0) (2020-09-01)
 
 
+### ⚠ BREAKING CHANGES
 
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
 
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
 
 ### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.0...@codecademy/gamut-labs@3.0.1) (2020-08-28)
 
@@ -232,3 +229,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
