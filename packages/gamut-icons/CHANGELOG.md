@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 3.4.0 (2020-09-02)
+
+* feat(Icons): add book and documentation icons (#950) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb76)), closes [#950](https://github.com/Codecademy/client-modules/issues/950)
+* chore: update changelogs ([d6d2828](https://github.com/Codecademy/client-modules/commit/d6d2828))
+
+
+
+
+
 ## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
 
 
@@ -212,4 +226,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
