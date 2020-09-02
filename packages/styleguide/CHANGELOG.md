@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 17.1.0 (2020-09-02)
-
-* feat(Icons): add book and documentation icons (#950) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb76)), closes [#950](https://github.com/Codecademy/client-modules/issues/950)
-* chore: update changelogs ([29f11b6](https://github.com/Codecademy/client-modules/commit/29f11b6))
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.0.0...@codecademy/styleguide@17.1.0) (2020-09-02)
 
 
+### ✨ Features
 
-
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
 
 ## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.1...@codecademy/styleguide@17.0.0) (2020-09-01)
 
@@ -1053,3 +1046,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
