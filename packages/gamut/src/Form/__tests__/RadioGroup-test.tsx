@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RadioGroup from '../RadioGroup';
-import Radio from '../Radio';
+import { RadioGroup } from '../RadioGroup';
+import { Radio } from '../Radio';
 
 describe('<RadioGroup>', () => {
   const createComponent = () => {
@@ -35,7 +35,7 @@ describe('<RadioGroup>', () => {
     const { firstInput, onChange } = createComponent();
     const event = {} as React.FormEvent;
 
-    firstInput.props().onChange(event);
+    firstInput.props().onChange!(event);
 
     expect(onChange).toHaveBeenCalledWith(event);
   });

@@ -7,9 +7,9 @@
 }
 
 .error {
-  border-color: $color-red-500;
+  border-color: $color-red-700;
   &:focus {
-    border-color: $color-red-200;
+    border-color: $color-red-500;
   }
 }
 

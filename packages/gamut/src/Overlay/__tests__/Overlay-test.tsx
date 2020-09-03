@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 
-import Overlay, { OverlayProps } from '..';
+import { Overlay, OverlayProps } from '..';
 
 const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(
@@ -60,7 +60,7 @@ describe('Overlay', () => {
     });
 
     // focus-trap listens to mouseDown, not click
-    fireEvent.mouseDown(screen.queryByTestId('overlay-content').parentElement);
+    fireEvent.mouseDown(screen.getByTestId('overlay-content').parentElement!);
     expect(onRequestClose.mock.calls.length).toBe(1);
   });
 
@@ -71,7 +71,7 @@ describe('Overlay', () => {
       clickOutsideCloses: true,
       onRequestClose,
     });
-    fireEvent.mouseDown(screen.queryByTestId('overlay-content'));
+    fireEvent.mouseDown(screen.getByTestId('overlay-content'));
     expect(onRequestClose.mock.calls.length).toBe(0);
   });
 });

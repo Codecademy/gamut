@@ -1,17 +1,392 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>10.0.4 (2020-05-22)</small>
-
-* ci: cleanup changelogs ([a64dcfc](https://github.com/RyzacInc/client-modules/commit/a64dcfc))
-* ci: script to rebuild changelogs on publish [WEB-891] (#815) ([acb1f18](https://github.com/RyzacInc/client-modules/commit/acb1f18)), closes [#815](https://github.com/RyzacInc/client-modules/issues/815)
-* ci: update changelogs & fix lerna syntax ([b258dc4](https://github.com/RyzacInc/client-modules/commit/b258dc4))
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.0.0...@codecademy/styleguide@17.1.0) (2020-09-02)
 
 
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.1...@codecademy/styleguide@17.0.0) (2020-09-01)
 
 
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
+### [16.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.0...@codecademy/styleguide@16.0.1) (2020-08-28)
+
+## [16.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.5...@codecademy/styleguide@16.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+### [15.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.4...@codecademy/styleguide@15.1.5) (2020-08-27)
+
+### [15.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.3...@codecademy/styleguide@15.1.4) (2020-08-27)
+
+### [15.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.2...@codecademy/styleguide@15.1.3) (2020-08-24)
+
+
+### Other Changes
+
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
+
+### [15.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.1...@codecademy/styleguide@15.1.2) (2020-08-24)
+
+
+### Other Changes
+
+* **gamut-styles:** Add New Colors ([#931](https://github.com/Codecademy/client-modules/issues/931)) ([0643622](https://github.com/Codecademy/client-modules/commit/0643622af6cb0c99a124403d5533034c614262cc))
+
+### [15.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.0...@codecademy/styleguide@15.1.1) (2020-08-21)
+
+## [15.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.2...@codecademy/styleguide@15.1.0) (2020-08-21)
+
+
+### ✨ Features
+
+* Added Apercu and Suisse font families as opt-ins ([#933](https://github.com/Codecademy/client-modules/issues/933)) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc686937f17663f0a9d5842f5151c63b0411))
+
+### [15.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.1...@codecademy/styleguide@15.0.2) (2020-08-21)
+
+### [15.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.0.0...@codecademy/styleguide@15.0.1) (2020-08-20)
+
+
+### Other Changes
+
+* **Styleguide:** Make all Stories Functions of Args ([#922](https://github.com/Codecademy/client-modules/issues/922)) ([5c10a28](https://github.com/Codecademy/client-modules/commit/5c10a2868abf22673ac9cc4db31bd6b7263e20ad))
+
+## [15.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.2...@codecademy/styleguide@15.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
+### [14.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.1...@codecademy/styleguide@14.0.2) (2020-08-18)
+
+### [14.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@14.0.0...@codecademy/styleguide@14.0.1) (2020-08-18)
+
+
+### 🐛 Bug Fixes
+
+* AccordionArea typo in docs ([#927](https://github.com/Codecademy/client-modules/issues/927)) ([fb7a923](https://github.com/Codecademy/client-modules/commit/fb7a923a5ae41b53f2ca4e65315157209c2e24ef))
+
+## [14.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.4...@codecademy/styleguide@14.0.0) (2020-08-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton (#889)
+
+### ✨ Features
+
+* **Accordion:** Decoupled AccordionArea and AccordionButton ([#889](https://github.com/Codecademy/client-modules/issues/889)) ([82ddf09](https://github.com/Codecademy/client-modules/commit/82ddf099b6ce91bc437ed63e9dfa4f917ebffa0a))
+
+### [13.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.3...@codecademy/styleguide@13.3.4) (2020-08-14)
+
+### [13.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.2...@codecademy/styleguide@13.3.3) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [13.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.3.1...@codecademy/styleguide@13.3.2) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
+### [13.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.6...@codecademy/styleguide@13.3.1) (2020-08-11)
+
+
+### ✨ Features
+
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+* **Overlay:** Adds Overlay body scroll lock [GM-26] ([#857](https://github.com/Codecademy/client-modules/issues/857)) ([04520b2](https://github.com/Codecademy/client-modules/commit/04520b2002c8cb096ad97bf0c39f277fb8a794d4))
+
+### [13.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.5...@codecademy/styleguide@13.2.6) (2020-08-06)
+
+### [13.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.4...@codecademy/styleguide@13.2.5) (2020-08-06)
+
+### [13.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.3...@codecademy/styleguide@13.2.4) (2020-08-06)
+
+### [13.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.2...@codecademy/styleguide@13.2.3) (2020-08-06)
+
+### [13.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.1...@codecademy/styleguide@13.2.2) (2020-07-29)
+
+### [13.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.2.0...@codecademy/styleguide@13.2.1) (2020-07-29)
+
+
+### ✨ Features
+
+* Added basic Anchor component ([#883](https://github.com/Codecademy/client-modules/issues/883)) ([ed7d27b](https://github.com/Codecademy/client-modules/commit/ed7d27b8ed033506aadc94dadf7323b8eaf0eab8))
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+
+## [13.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.3...@codecademy/styleguide@13.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Styleguide:** Add storybook controls addon [WEB-937] ([#860](https://github.com/Codecademy/client-modules/issues/860)) ([1a30e66](https://github.com/Codecademy/client-modules/commit/1a30e66d6854e8a2f7f83736edd2ca28db4366cb))
+
+
+### Other Changes
+
+* Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
+
+### [13.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.2...@codecademy/styleguide@13.1.3) (2020-07-27)
+
+### [13.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.1...@codecademy/styleguide@13.1.2) (2020-07-27)
+
+
+### Other Changes
+
+* Fixed happy little syntax accident on tooltip story ([#891](https://github.com/Codecademy/client-modules/issues/891)) ([2ed85ac](https://github.com/Codecademy/client-modules/commit/2ed85ace129d150c31cacb5d2e240eef255b9051))
+
+### [13.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.1.0...@codecademy/styleguide@13.1.1) (2020-07-24)
+
+## [13.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.1...@codecademy/styleguide@13.1.0) (2020-07-24)
+
+
+### ✨ Features
+
+* **Toggle:** create alternative toggle ([#885](https://github.com/Codecademy/client-modules/issues/885)) ([b3a8996](https://github.com/Codecademy/client-modules/commit/b3a8996b65fe10947420520ac608e4e61b4a485f))
+
+### [13.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@13.0.0...@codecademy/styleguide@13.0.1) (2020-07-22)
+
+## [13.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.1...@codecademy/styleguide@13.0.0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+### [12.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@12.0.0...@codecademy/styleguide@12.0.1) (2020-07-21)
+
+## [12.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.7...@codecademy/styleguide@12.0.0) (2020-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden (#844)
+
+### ✨ Features
+
+* **GridForm:** Simplified GridForm labels to allow React.ReactNode or be hidden ([#844](https://github.com/Codecademy/client-modules/issues/844)) ([8466f15](https://github.com/Codecademy/client-modules/commit/8466f15e83d0946ecfc16fbc3b30fc0a45e59b53))
+
+### [11.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.6...@codecademy/styleguide@11.7.7) (2020-07-21)
+
+### [11.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.5...@codecademy/styleguide@11.7.6) (2020-07-17)
+
+### [11.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.4...@codecademy/styleguide@11.7.5) (2020-07-17)
+
+### [11.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.3...@codecademy/styleguide@11.7.4) (2020-07-17)
+
+### [11.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.2...@codecademy/styleguide@11.7.3) (2020-07-16)
+
+### [11.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.1...@codecademy/styleguide@11.7.2) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Update AboutCell's to match new heirarchy ([#874](https://github.com/Codecademy/client-modules/issues/874)) ([a9fc13a](https://github.com/Codecademy/client-modules/commit/a9fc13a5c8196f9aa8b6b32ce3f36d0ccab6fc95))
+
+### [11.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.7.0...@codecademy/styleguide@11.7.1) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Add prop descriptions Gamut A-F GM-42 ([#872](https://github.com/Codecademy/client-modules/issues/872)) ([bb46a47](https://github.com/Codecademy/client-modules/commit/bb46a4703f3d242eefac178f14b84007b2c4c457))
+
+## [11.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.6.0...@codecademy/styleguide@11.7.0) (2020-07-14)
+
+
+### ✨ Features
+
+* **Styleguide:** Flatten Navigation Hierarchy for Gamut Core ([#864](https://github.com/Codecademy/client-modules/issues/864)) ([ad83bb1](https://github.com/Codecademy/client-modules/commit/ad83bb1279c666a5af34e070ec3a0f20cfb8d438))
+
+## [11.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.1...@codecademy/styleguide@11.6.0) (2020-07-14)
+
+
+### ✨ Features
+
+* **Styleguide:** Simplify indicator story status pills ([#873](https://github.com/Codecademy/client-modules/issues/873)) ([3e83d36](https://github.com/Codecademy/client-modules/commit/3e83d3624a0adeb1b6acc4c9088b9989bfdf463b))
+
+### [11.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.5.0...@codecademy/styleguide@11.5.1) (2020-07-14)
+
+
+### Other Changes
+
+* **Styleguide:** Add module alias for storybook helpers [WEB-934] ([#861](https://github.com/Codecademy/client-modules/issues/861)) ([7daf135](https://github.com/Codecademy/client-modules/commit/7daf135edbd7ebf933f06dd05cd76be00c75a471))
+
+## [11.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.14...@codecademy/styleguide@11.5.0) (2020-07-13)
+
+
+### ✨ Features
+
+* **Accordion:** Accordion alignment: 'large' size; no outline in plain ([#870](https://github.com/Codecademy/client-modules/issues/870)) ([e17ad5d](https://github.com/Codecademy/client-modules/commit/e17ad5d037fd2d084fb57fe1179abeaad57b26ec))
+* **Gamut:** Added Accordion component ([#826](https://github.com/Codecademy/client-modules/issues/826)) ([caf52d9](https://github.com/Codecademy/client-modules/commit/caf52d9e0408580ddab965750ae619b7626b28e7))
+
+### [11.2.14](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.13...@codecademy/styleguide@11.2.14) (2020-07-08)
+
+### [11.2.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.12...@codecademy/styleguide@11.2.13) (2020-07-08)
+
+
+### Other Changes
+
+* Rebase ([#865](https://github.com/Codecademy/client-modules/issues/865)) ([f0b5224](https://github.com/Codecademy/client-modules/commit/f0b52246cdf6b746b4f27bd04ebb682eae75dbf6))
+
+### [11.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.11...@codecademy/styleguide@11.2.12) (2020-07-08)
+
+### [11.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.10...@codecademy/styleguide@11.2.11) (2020-07-07)
+
+
+### Other Changes
+
+* **Header:** Adds Header stories [GM-51] ([#856](https://github.com/Codecademy/client-modules/issues/856)) ([cda648c](https://github.com/Codecademy/client-modules/commit/cda648ca472818296889590731d15c80216d98fa))
+
+### [11.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.9...@codecademy/styleguide@11.2.10) (2020-07-07)
+
+
+### Other Changes
+
+* Fixes bad prefix on brand colors ([#862](https://github.com/Codecademy/client-modules/issues/862)) ([58f98ec](https://github.com/Codecademy/client-modules/commit/58f98ec2c7b99efebfe5da65652f0c5260f689f8))
+
+### [11.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.8...@codecademy/styleguide@11.2.9) (2020-07-02)
+
+
+### Other Changes
+
+* **Styleguide:** Upgrade to latest storybook beta ([#859](https://github.com/Codecademy/client-modules/issues/859)) ([7b98753](https://github.com/Codecademy/client-modules/commit/7b987532d96a20701091b1688ce193ec52617283))
+
+### [11.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.7...@codecademy/styleguide@11.2.8) (2020-07-01)
+
+
+### Other Changes
+
+* **Styleguide:** Add status indicator to the Badge story ([#850](https://github.com/Codecademy/client-modules/issues/850)) ([1aaa448](https://github.com/Codecademy/client-modules/commit/1aaa448c3f779a09e9db914e84867fa25d3a8150))
+
+### [11.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.6...@codecademy/styleguide@11.2.7) (2020-06-30)
+
+### [11.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.5...@codecademy/styleguide@11.2.6) (2020-06-30)
+
+
+### 🐛 Bug Fixes
+
+* **Markdown:** allow flexible vimeo videos in markdown ([#853](https://github.com/Codecademy/client-modules/issues/853)) ([829002d](https://github.com/Codecademy/client-modules/commit/829002d50d1839cf4007d64dc46b40f70b338f92))
+
+### [11.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.4...@codecademy/styleguide@11.2.5) (2020-06-29)
+
+### [11.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.3...@codecademy/styleguide@11.2.4) (2020-06-25)
+
+### [11.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.2...@codecademy/styleguide@11.2.3) (2020-06-24)
+
+
+### 🐛 Bug Fixes
+
+* **Video:** add onReady prop ([#847](https://github.com/Codecademy/client-modules/issues/847)) ([147a11e](https://github.com/Codecademy/client-modules/commit/147a11e22700530cecab1a3458fe901848f8fe3d))
+
+### [11.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.1...@codecademy/styleguide@11.2.2) (2020-06-23)
+
+### [11.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.2.0...@codecademy/styleguide@11.2.1) (2020-06-22)
+
+## [11.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.2...@codecademy/styleguide@11.2.0) (2020-06-18)
+
+
+### ✨ Features
+
+* **Video:** a new video component ([#842](https://github.com/Codecademy/client-modules/issues/842)) ([afdd0d3](https://github.com/Codecademy/client-modules/commit/afdd0d3437faa3abf302cc0fa3089b1ab8cb1302))
+
+### [11.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.1...@codecademy/styleguide@11.1.2) (2020-06-16)
+
+### [11.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.1.0...@codecademy/styleguide@11.1.1) (2020-06-16)
+
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.4...@codecademy/styleguide@11.1.0) (2020-06-16)
+
+
+### ✨ Features
+
+* make text field labels optional  ([#837](https://github.com/Codecademy/client-modules/issues/837)) ([d9ca277](https://github.com/Codecademy/client-modules/commit/d9ca2775eaf5366b422a194a7224251f0271608d))
+
+### [11.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.3...@codecademy/styleguide@11.0.4) (2020-06-12)
+
+
+### 🐛 Bug Fixes
+
+* allow field props to GridForm to contain IDs ([#835](https://github.com/Codecademy/client-modules/issues/835)) ([444f56b](https://github.com/Codecademy/client-modules/commit/444f56b0e4ab368f114bde3b941dd62814005efe))
+
+### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.2...@codecademy/styleguide@11.0.3) (2020-06-11)
+
+### [11.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.1...@codecademy/styleguide@11.0.2) (2020-06-10)
+
+### [11.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@11.0.0...@codecademy/styleguide@11.0.1) (2020-06-10)
+
+
+### Other Changes
+
+* Switched storyshot test renderer to Enzyme mounting ([#834](https://github.com/Codecademy/client-modules/issues/834)) ([4d2b10f](https://github.com/Codecademy/client-modules/commit/4d2b10fbbe8de798f8628066fd3135491931ce68))
+
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.11...@codecademy/styleguide@11.0.0) (2020-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Removed deprecated color variables (#819)
+
+### Other Changes
+
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/client-modules/issues/819)) ([1dcce36](https://github.com/Codecademy/client-modules/commit/1dcce363a7fc9f4a37e71b667fa0de984671bd3c))
+
+### [10.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.10...@codecademy/styleguide@10.0.11) (2020-06-09)
+
+### [10.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.9...@codecademy/styleguide@10.0.10) (2020-06-09)
+
+
+### Other Changes
+
+* Allowed Alerts to not be passed an onClose callback ([#829](https://github.com/Codecademy/client-modules/issues/829)) ([c461eaf](https://github.com/Codecademy/client-modules/commit/c461eaf72330b6ccf1928f1f7f94d624e430b4ea))
+
+### [10.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.8...@codecademy/styleguide@10.0.9) (2020-06-09)
+
+
+### Other Changes
+
+* Remove Unused Blocks / Helpers ([#831](https://github.com/Codecademy/client-modules/issues/831)) ([8b8e077](https://github.com/Codecademy/client-modules/commit/8b8e0771ff33728cb795bbe2acc1d6a11d5f726b))
+
+### [10.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.7...@codecademy/styleguide@10.0.8) (2020-06-08)
+
+### [10.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.6...@codecademy/styleguide@10.0.7) (2020-06-05)
+
+### [10.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.5...@codecademy/styleguide@10.0.6) (2020-06-03)
+
+### [10.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.4...@codecademy/styleguide@10.0.5) (2020-06-03)
+
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.3...@codecademy/styleguide@10.0.4) (2020-05-22)
 
 ### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@10.0.2...@codecademy/styleguide@10.0.3) (2020-05-21)
 
@@ -671,3 +1046,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+

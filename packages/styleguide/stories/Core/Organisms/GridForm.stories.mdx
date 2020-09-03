@@ -1,16 +1,16 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { number, select } from '@storybook/addon-knobs';
 
-import { StoryStatus } from '../../../Templating/Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { action } from '@storybook/addon-actions';
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
-<Meta title="Core|Organisms/GridForm" component={GridForm} />
+<Meta title="Organisms/GridForm" component={GridForm} />
 
 # GridForm
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 This organism takes in plain JSON-like props and uses them to string
 together a validated form composed of:
@@ -29,217 +29,222 @@ responsive layouts.
 
 <Props of={GridForm} />
 
-<Preview>
+<Canvas>
   <Story name="GridForm">
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 3,
-          type: 'text',
-        },
-        {
-          defaultValue: 'yeet',
-          label: 'Text with default value',
-          name: 'text-with-default',
-          size: 4,
-          type: 'text',
-        },
-        {
-          label: 'Simple select (required)',
-          name: 'simple-select',
-          options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
-          size: 5,
-          type: 'select',
-          validation: {
-            required: 'Please select an option',
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Simple text',
+            name: 'simple-text',
+            size: 3,
+            type: 'text',
           },
-        },
-        {
-          label: 'Upload a cat image (we support pdf, jpeg, or png files)',
-          name: 'file-input',
-          size: 6,
-          type: 'file',
-          validation: {
-            required: true,
-            validate: (files) => {
-              const { type } = files.item(0);
-              const allowedTypes = [
-                'application/pdf',
-                'image/jpeg',
-                'image/png',
-              ];
-              if (!allowedTypes.includes(type))
-                return 'Please upload a pdf, jpeg, or png file.';
-              return true;
+          {
+            defaultValue: 'yeet',
+            label: 'Text with default value',
+            name: 'text-with-default',
+            size: 4,
+            type: 'text',
+          },
+          {
+            label: 'Simple select (required)',
+            name: 'simple-select',
+            options: ['', 'One fish', 'Two fish', 'Red fish', 'Blue fish'],
+            size: 5,
+            type: 'select',
+            validation: {
+              required: 'Please select an option',
             },
           },
-        },
-        {
-          label: 'Write a paragraph about penguins',
-          name: 'textarea-input',
+          {
+            label: 'Upload a cat image (we support pdf, jpeg, or png files)',
+            name: 'file-input',
+            size: 6,
+            type: 'file',
+            validation: {
+              required: true,
+              validate: (files) => {
+                const { type } = files.item(0);
+                const allowedTypes = [
+                  'application/pdf',
+                  'image/jpeg',
+                  'image/png',
+                ];
+                if (!allowedTypes.includes(type))
+                  return 'Please upload a pdf, jpeg, or png file.';
+                return true;
+              },
+            },
+          },
+          {
+            label: 'Write a paragraph about penguins',
+            name: 'textarea-input',
+            size: 12,
+            type: 'textarea',
+            validation: {
+              required: 'Please write something about penguins!',
+            },
+          },
+          {
+            label:
+              "Validated, required text that must contain the word 'swag' twice",
+            name: 'validated-required-text',
+            size: 5,
+            type: 'text',
+            validation: {
+              required: true,
+              pattern: {
+                value: /swag(.*)swag/,
+                message: 'Not enough swag',
+              },
+            },
+          },
+          {
+            description: 'I have swag',
+            label: 'Swag levels',
+            name: 'enough-swag',
+            size: 3,
+            type: 'checkbox',
+            id: 'my-super-cool-id',
+          },
+          {
+            label: 'Preferred Modern Artist',
+            name: 'artist',
+            options: [
+              {
+                label: 'Cardi B',
+                value: 'cardi',
+              },
+              {
+                label: 'Nicki Minaj',
+                value: 'nicki',
+              },
+            ],
+            size: 4,
+            type: 'radio-group',
+            validation: {
+              required: 'You gotta pick one!',
+            },
+          },
+          {
+            label: 'End User License Agreement',
+            description:
+              'I accept the terms and conditions (required or else!!!)',
+            name: 'eula-checkbox-required',
+            size: 12,
+            type: 'checkbox',
+            validation: {
+              required: 'Please check the box to agree to the terms.',
+            },
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit Me!?',
           size: 12,
-          type: 'textarea',
-          validation: {
-            required: 'Please write something about penguins!',
-          },
-        },
-        {
-          label:
-            "Validated, required text that must contain the word 'swag' twice",
-          name: 'validated-required-text',
-          size: 5,
-          type: 'text',
-          validation: {
-            required: true,
-            pattern: {
-              value: /swag(.*)swag/,
-              message: 'Not enough swag',
-            },
-          },
-        },
-        {
-          description: 'I have swag',
-          label: 'Swag levels',
-          name: 'enough-swag',
-          size: 3,
-          type: 'checkbox',
-        },
-        {
-          label: 'Preferred Modern Artist',
-          name: 'artist',
-          options: [
-            {
-              label: 'Cardi B',
-              value: 'cardi',
-            },
-            {
-              label: 'Nicki Minaj',
-              value: 'nicki',
-            },
-          ],
-          size: 4,
-          type: 'radio-group',
-          validation: {
-            required: 'You gotta pick one!',
-          },
-        },
-        {
-          label: 'End User License Agreement',
-          description:
-            'I accept the terms and conditions (required or else!!!)',
-          name: 'eula-checkbox-required',
-          size: 12,
-          type: 'checkbox',
-          validation: {
-            required: 'Please check the box to agree to the terms.',
-          },
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Submit Me!?',
-        size: 12,
-      }}
-      validation={select('validation', ['onSubmit', 'onChange'], 'onSubmit')}
-    />
+        }}
+        validation={select('validation', ['onSubmit', 'onChange'], 'onSubmit')}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## Submit Button Position
 
 We can position the submit button by passing the position prop with a
 value of left, center, right, or stretch.
 
-<Preview>
+<Canvas>
   <Story name="Submit Button Position">
-    <LayoutGrid>
-      <Column size={6}>
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'simple-text',
+    {(args) => (
+      <LayoutGrid>
+        <Column size={6}>
+          <GridForm
+            fields={[
+              {
+                label: 'Simple text',
+                name: 'simple-text',
+                size: 12,
+                type: 'text',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Right Submit!?',
+              position: 'right',
               size: 12,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Right Submit!?',
-            position: 'right',
-            size: 12,
-          }}
-        />
-      </Column>
-      <Column size={6}>
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'simple-text',
+            }}
+          />
+        </Column>
+        <Column size={6}>
+          <GridForm
+            fields={[
+              {
+                label: 'Simple text',
+                name: 'simple-text',
+                size: 12,
+                type: 'text',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Center Submit!?',
+              position: 'center',
               size: 12,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Center Submit!?',
-            position: 'center',
-            size: 12,
-          }}
-        />
-      </Column>
-      <Column size={6}>
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'simple-text',
+            }}
+          />
+        </Column>
+        <Column size={6}>
+          <GridForm
+            fields={[
+              {
+                label: 'Simple text',
+                name: 'simple-text',
+                size: 12,
+                type: 'text',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Left Submit!?',
+              position: 'left',
               size: 12,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Left Submit!?',
-            position: 'left',
-            size: 12,
-          }}
-        />
-      </Column>
-      <Column size={6}>
-        <GridForm
-          fields={[
-            {
-              label: 'Simple text',
-              name: 'simple-text',
+            }}
+          />
+        </Column>
+        <Column size={6}>
+          <GridForm
+            fields={[
+              {
+                label: 'Simple text',
+                name: 'simple-text',
+                size: 12,
+                type: 'text',
+              },
+            ]}
+            onSubmit={async (values) => {
+              action('Form Submitted')(values);
+            }}
+            submit={{
+              contents: 'Stretch Submit!?',
+              position: 'stretch',
               size: 12,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Stretch Submit!?',
-            position: 'stretch',
-            size: 12,
-          }}
-        />
-      </Column>
-    </LayoutGrid>
+            }}
+          />
+        </Column>
+      </LayoutGrid>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## Submit Button color
 
@@ -247,148 +252,133 @@ We can specify the color of our button by passing the theme prop with a
 button atom theme prop value. i.e. 'brand-blue', 'brand-purple'. The
 default value is 'brand-purple'.
 
-<Preview>
+<Canvas>
   <Story name="Submit button color">
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Default Purple Submit!?',
-        size: 12,
-      }}
-    />
-    <GridForm
-      fields={[
-        {
-          label: 'Simple text',
-          name: 'simple-text',
-          size: 12,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Blue Submit!?',
-        size: 12,
-        theme: 'brand-blue',
-      }}
-    />
+    {(args) => (
+      <>
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Default Purple Submit!?',
+            size: 12,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Blue Submit!?',
+            size: 12,
+            theme: 'brand-blue',
+          }}
+        />
+      </>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## Inline Submit Button
 
 We can make the Submit button inline with an input by setting the column
-sizes so they fit on the same row. e.g size 8 for an input and size 4 for
-the submit.
+sizes so they fit on the same row (e.g size 8 for an input and size 4 for
+the submit).
 
-Caveats: We need to adjust params to allow us to properly align elements
-for the following use cases.
+We can additionally remove the label from text inputs and checkbox inputs.
+Use the `hideLabel` prop to remove the label, allowing the submit button to
+align nicely with the input.
 
-#### Submit with no label text (but label still rendered) does not align properly with the checkbox
+#### Submit button aligned correctly with a hidden label
 
-<Preview>
-  <Story name="Inline Submit Button">
-    <GridForm
-      fields={[
-        {
-          description: 'I approve of inline swag',
-          name: 'enough-swag',
-          size: 8,
-          type: 'checkbox',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-      }}
-    />
+<Canvas>
+  <Story name="Inline Text Input With Label">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            hideLabel: true,
+            label: 'Label',
+            name: 'email',
+            size: 8,
+            type: 'text',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Inline Submit!?',
+          size: 4,
+          position: 'right',
+        }}
+      />
+    )}
   </Story>
-</Preview>
-
-#### Submit even when the label has visible text, is still not aligned right
-
-<Preview>
-  <Story name="No Label Inline">
-    <GridForm
-      fields={[
-        {
-          label: 'Label',
-          name: 'email',
-          size: 8,
-          type: 'text',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Inline Submit!?',
-        size: 4,
-        position: 'right',
-      }}
-    />
-  </Story>
-</Preview>
+</Canvas>
 
 ## Custom inputs
 
 Some forms, such as the checkout flows that use Recurly, need to define
 their own inputs. We can specify a 'custom' field type to with a [render prop](https://reactjs.org/docs/render-props.html)
 
-<Preview>
+<Canvas>
   <Story name="Custom Inputs">
-    <GridForm
-      fields={[
-        {
-          render: ({ className, error, setValue }) => (
-            <React.Fragment>
-              <Input
-                error={!!error}
-                id="custom-text-input"
-                type="text"
-                onChange={(event) => setValue(event.target.value)}
-              />
-              🕺
-            </React.Fragment>
-          ),
-          label: 'Gimme two more swags',
-          name: 'custom-input',
-          validation: {
-            required: true,
-            pattern: {
-              value: /swag(.*)swag/,
-              message: 'Still not enough swag, what are you doing... 💢',
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            render: ({ className, error, setValue }) => (
+              <React.Fragment>
+                <Input
+                  error={!!error}
+                  id="custom-text-input"
+                  type="text"
+                  onChange={(event) => setValue(event.target.value)}
+                />
+                🕺
+              </React.Fragment>
+            ),
+            label: 'Gimme two more swags',
+            name: 'custom-input',
+            validation: {
+              required: true,
+              pattern: {
+                value: /swag(.*)swag/,
+                message: 'Still not enough swag, what are you doing... 💢',
+              },
             },
+            size: 12,
+            type: 'custom',
           },
-          size: 12,
-          type: 'custom',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Submit Me!?',
-      }}
-    />
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit Me!?',
+        }}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## Placeholder Text
 
@@ -403,27 +393,29 @@ information to the form -- it should really only rephrase the text label.
 See [this article](https://www.nngroup.com/articles/form-design-placeholders/) or
 more details on why using placeholders is often bad.
 
-<Preview>
+<Canvas>
   <Story name="Placeholder Text">
-    <GridForm
-      fields={[
-        {
-          label: 'Email',
-          placeholder: 'Your email',
-          name: 'custom-input',
-          size: 12,
-          type: 'email',
-        },
-      ]}
-      onSubmit={async (values) => {
-        action('Form Submitted')(values);
-      }}
-      submit={{
-        contents: 'Submit Me!?',
-      }}
-    />
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            label: 'Email',
+            placeholder: 'Your email',
+            name: 'custom-input',
+            size: 12,
+            type: 'email',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Submit Me!?',
+        }}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## On Field Update
 
@@ -431,9 +423,9 @@ A field can take an onUpdate callback. This callback will fire when the
 field's value changes. This could be useful if you need to use the
 field's value in a parent component before onSubmit gets triggered.
 
-<Preview>
+<Canvas>
   <Story name="On Field Update">
-    {() => {
+    {(args) => {
       const [text, setText] = useState('');
       return (
         <React.Fragment>
@@ -459,4 +451,4 @@ field's value in a parent component before onSubmit gets triggered.
       );
     }}
   </Story>
-</Preview>
+</Canvas>

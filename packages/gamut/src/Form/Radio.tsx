@@ -28,16 +28,20 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
       htmlFor,
       onChange,
       required,
+      id,
       ...rest
     },
     ref
   ) => {
     const classNames = cx(s.Radio, className);
+
+    const inputId = id ? `${htmlFor}-${id}` : htmlFor;
+
     return (
       <div className={classNames}>
         <input
           className={s.radioInput}
-          id={htmlFor}
+          id={inputId}
           name={name}
           required={required}
           type="radio"
@@ -55,5 +59,3 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     );
   }
 );
-
-export default Radio;

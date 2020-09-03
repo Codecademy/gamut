@@ -3,11 +3,14 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
-import GridForm from '..';
+import { GridForm } from '..';
 import {
   stubCheckboxField,
+  stubFileField,
+  stubRadioGroupField,
   stubSelectField,
   stubSelectOptions,
+  stubTextareaField,
   stubTextField,
 } from './stubs';
 
@@ -23,7 +26,7 @@ describe('GridForm', () => {
       <GridForm
         fields={fields}
         onSubmit={onSubmit}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 
@@ -70,16 +73,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onSubmit'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
-      );
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
     });
   });
 
@@ -95,14 +98,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -116,7 +121,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
@@ -130,9 +135,72 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
-      );
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
     });
+
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={[]}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
+          validation={'onChange'}
+        />
+      );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+    });
+  });
+
+  it('passes custom ids to the fields', () => {
+    const form = mount(
+      <GridForm
+        fields={[
+          {
+            ...stubTextField,
+            id: 'mycoolid',
+          },
+          {
+            ...stubSelectField,
+            id: 'swaggy-id',
+          },
+          {
+            ...stubCheckboxField,
+            id: 'another-dank-id',
+          },
+          {
+            ...stubRadioGroupField,
+            id: 'and-another-one',
+            name: 'name',
+          },
+          {
+            ...stubTextareaField,
+            id: 'id-2-the-ego',
+          },
+          {
+            ...stubFileField,
+            id: 'fire-file',
+          },
+        ]}
+        onSubmit={jest.fn()}
+        submit={{ contents: <>Submit</>, size: 6 }}
+      />
+    );
+
+    expect(form.find('input#mycoolid').length).toBe(1);
+    expect(form.find('select#swaggy-id').length).toBe(1);
+    expect(form.find('input#another-dank-id').length).toBe(1);
+    expect(form.find('input#name-0-and-another-one').length).toBe(1);
+    expect(form.find('input#name-1-and-another-one').length).toBe(1);
+    expect(form.find('input#another-dank-id').length).toBe(1);
+    expect(form.find('textarea#id-2-the-ego').length).toBe(1);
+    expect(form.find('input#fire-file').length).toBe(1);
   });
 });

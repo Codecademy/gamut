@@ -1,0 +1,48 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, boolean } from '@storybook/addon-knobs';
+import {
+  CardShell,
+  CardBody,
+  CardFooter,
+  Heading,
+  Text,
+} from '@codecademy/gamut/src';
+import { StoryStatus } from '~styleguide/blocks';
+
+<Meta
+  title="Atoms/Card"
+  component={CardShell}
+  subcomponents={{ CardBody, CardFooter }}
+/>
+
+# Card
+
+<StoryStatus status="stable" />
+
+Default shell with white background that can include some subtly
+emphasized content.
+
+<Canvas>
+  <Story name="Card">
+    {(args) => (
+      <CardShell hoverShadow={boolean('shell.hoverShadow', false)}>
+        <CardBody standardPadding={boolean('body.standardPadding', true)}>
+          <Heading as="h3">Card Body</Heading>
+          <Text>This is some body text</Text>
+          <Text>Blah blah blurgha blurgha</Text>
+        </CardBody>
+        <CardFooter
+          align={select('Align', ['left', 'center', 'right'], 'left')}
+          border={select('Border', ['dashed', 'solid', 'none'], 'none')}
+          flex={boolean('Flex', true)}
+          standardPadding={boolean('Standard Padding', true)}
+          standardHeight={boolean('Standard Height', true)}
+        >
+          <React.Fragment>Footer Text</React.Fragment>
+        </CardFooter>
+      </CardShell>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={CardShell} />

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import Icon from '../../Icon';
+import { ArrowRightIcon } from '@codecademy/gamut-icons';
 import styles from './styles.module.scss';
 
 interface CardButtonProps {
@@ -23,12 +23,10 @@ export function CardButton(props: CardButtonProps) {
         <div className={styles.buttonTitle}>{props.title}</div>
         {props.withArrow && (
           <div className={styles.buttonArrow}>
-            <Icon name="rightArrow" size={22} />
+            <ArrowRightIcon size={22} />
           </div>
         )}
       </div>
     </button>
   );
 }
-
-export default CardButton;

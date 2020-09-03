@@ -1,15 +1,15 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import styles from './styles.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
 const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
 
-export type ButtonBaseProps = (
-  | HTMLProps<HTMLLinkElement>
-  | HTMLProps<HTMLButtonElement>
-) & {
+export type ButtonBaseProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'as' | 'size'
+> & {
   /**
    * Component type to wrap children with.
    */
@@ -23,8 +23,19 @@ export type ButtonBaseProps = (
   children?: ReactNode;
   className?: string;
   href?: string;
+  /**
+   * Variant that displays the button as an inline link element, but maintains its semantic meaning as a button.
+   */
   link?: boolean;
-  onClick?: (event: object) => void;
+  /**
+   * @remarks
+   * Technically, this is only ever a button event *or* a link event.
+   * We '&' them together for ease of usage.
+   */
+  onClick?: (
+    event: React.MouseEvent<HTMLAnchorElement> &
+      React.MouseEvent<HTMLButtonElement>
+  ) => void;
 };
 
 export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
@@ -56,5 +67,3 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
   // eslint-disable-next-line react/button-has-type
   return <button {...defaultProps} />;
 };
-
-export default ButtonBase;

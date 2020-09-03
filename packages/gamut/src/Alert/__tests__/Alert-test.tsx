@@ -16,6 +16,14 @@ describe('Alert', () => {
     expect(renderedAlert).toBeDefined();
   });
 
+  it('does not render a close button when there is no onClose callback', () => {
+    const renderedAlert = mount(<Alert>Hello</Alert>);
+
+    const buttons = renderedAlert.find('button');
+
+    expect(buttons).toHaveLength(0);
+  });
+
   it('calls the onClose callback when the close button is clicked', () => {
     const onClose = jest.fn();
     const renderedAlert = mount(<Alert onClose={onClose}>Hello</Alert>);

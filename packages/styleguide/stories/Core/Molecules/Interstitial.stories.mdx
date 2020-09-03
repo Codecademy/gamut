@@ -1,36 +1,39 @@
 import { Button, Interstitial } from '@codecademy/gamut/src';
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Templating/Blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { Truncate } from '@codecademy/gamut/src';
 
-<Meta title="Core|Molecules/Interstitial" component={Interstitial} />
+<Meta title="Molecules/Interstitial" component={Interstitial} />
 
 # Interstitial
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 Large content area used as a break between focused content, such as within
 a full-screen <code>Overlay</code> in the LE between lessons.
 
-<Preview>
+<Canvas>
   <Story name="Interstitial">
-    <Interstitial
-      buttons={[
-        <Button key="1" theme="brand-yellow">
-          One Button
-        </Button>,
-        <Button key="2" theme="white" outline>
-          Two Button
-        </Button>,
-      ]}
-      title="What a Glorious Day"
-    >
-      Place some happy text as the content of this interstitial for the learner
-      to feel good about themselves. Note that the max-width for this content is
-      large but not too large. We want some amount of vertical centering!
-    </Interstitial>
+    {(args) => (
+      <Interstitial
+        buttons={[
+          <Button key="1" theme="brand-yellow">
+            One Button
+          </Button>,
+          <Button key="2" theme="white" outline>
+            Two Button
+          </Button>,
+        ]}
+        title="What a Glorious Day"
+      >
+        Place some happy text as the content of this interstitial for the
+        learner to feel good about themselves. Note that the max-width for this
+        content is large but not too large. We want some amount of vertical
+        centering!
+      </Interstitial>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={Interstitial} />
 
@@ -39,21 +42,23 @@ a full-screen <code>Overlay</code> in the LE between lessons.
 Decorations are added on top of the heading and are narrated as part of
 it. Put emojis or promotional images here to really emphasize them.
 
-<Preview>
+<Canvas>
   <Story name="Decorated Interstitial">
-    <Interstitial
-      buttons={[
-        <Button key="1" theme="brand-red">
-          Red Button
-        </Button>,
-        <Button key="2" theme="brand-blue">
-          Blue Button
-        </Button>,
-      ]}
-      decoration="😍"
-      title="Decorations, too!"
-    >
-      I really love emojis. Please confirm you love emojis too!
-    </Interstitial>
+    {(args) => (
+      <Interstitial
+        buttons={[
+          <Button key="1" theme="brand-red">
+            Red Button
+          </Button>,
+          <Button key="2" theme="brand-blue">
+            Blue Button
+          </Button>,
+        ]}
+        decoration="😍"
+        title="Decorations, too!"
+      >
+        I really love emojis. Please confirm you love emojis too!
+      </Interstitial>
+    )}
   </Story>
-</Preview>
+</Canvas>

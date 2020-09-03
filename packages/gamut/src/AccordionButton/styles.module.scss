@@ -27,9 +27,27 @@
       background-color: $color-yellow-300;
     }
   }
+
+  &.large {
+    border-radius: 2px;
+    font-size: 1.5rem;
+
+    .children {
+      padding-top: 0.2rem;
+    }
+
+    .expansionIcon {
+      margin-left: 1rem;
+    }
+
+    @include md-viewport {
+      font-size: 1.75rem;
+    }
+  }
 }
 
 .expansionIcon {
+  margin-left: 0.75rem;
   transition: transform 0.35s ease-out;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import InputStepper, { InputStepperProps } from '..';
+import { InputStepper, InputStepperProps } from '..';
 
 const renderStepper = (optOverrides?: Partial<InputStepperProps>) => {
   const opts = {

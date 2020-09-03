@@ -9,9 +9,9 @@ import {
 
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
-import Truncate from '../Truncate';
-import ButtonBase from '../ButtonBase';
-import Button from '../Button';
+import { Truncate } from '../Truncate';
+import { ButtonBase } from '../ButtonBase';
+import { Button } from '../Button';
 
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
@@ -25,7 +25,7 @@ export type AlertProps = {
   /** Toggle the display of the theme's icon */
   showIcon?: boolean;
   /** On close callback */
-  onClose: () => void;
+  onClose?: () => void;
   /** Call to action configuration { text, href, onClick } */
   cta?: BannerCTA;
   /** Remove the max-width on the Alert container */
@@ -56,6 +56,9 @@ export const Alert: React.FC<AlertProps> = ({
         [s.container__fluid]: fluid,
         [s[`container__${type}`]]: type,
       })}
+      role="status"
+      aria-label="alert box"
+      aria-live="polite"
     >
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
@@ -111,21 +114,22 @@ export const Alert: React.FC<AlertProps> = ({
             </Container>
           )}
         </Container>
-        <Container className={s.section} shrink={1} center>
-          <ButtonBase
-            className={cx(s.iconButton, {
-              [s[`iconButton__${type}`]]: type,
-            })}
-            onClick={onClose}
-          >
-            <CloseIcon size={12} />
-          </ButtonBase>
-        </Container>
+        {onClose && (
+          <Container className={s.section} shrink={1} center>
+            <ButtonBase
+              className={cx(s.iconButton, {
+                [s[`iconButton__${type}`]]: type,
+              })}
+              aria-label="Close Alert"
+              onClick={onClose}
+            >
+              <CloseIcon size={12} />
+            </ButtonBase>
+          </Container>
+        )}
       </Container>
     </CardShell>
   );
 };
 
 export { BannerType } from './constants';
-
-export default Alert;

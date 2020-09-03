@@ -28,5 +28,3 @@ export const HeaderContainer: React.FC<HeaderContainerProps> = ({
     </header>
   );
 };
-
-export default HeaderContainer;

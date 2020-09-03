@@ -1,0 +1,30 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { HeaderContainer, HeaderTab } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/Header"
+  subcomponents={{ HeaderContainer, HeaderTab }}
+/>
+
+# Header
+
+<StoryStatus status="volatile" />
+
+Header navigation bar and tabs with configurable areas.
+
+<Canvas withSource="open">
+  <Story name="Header">
+    {(args) => (
+      <HeaderContainer
+        sections={{
+          left: <HeaderTab>Hello</HeaderTab>,
+          right: <HeaderTab>Right</HeaderTab>,
+          after: <>After the rain has fallen</>,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props of={HeaderContainer} />

@@ -1,7 +1,74 @@
 // NOTE: When updating, make sure you also update the gamut-styles/variables/index.js file
 
 // =======================================
-//      COLORS
+//      STANDARD COLORS
+// =======================================
+
+$color-beige: #fff0e5;
+$color-light-blue: #66c4ff;
+$color-blue: #1557ff;
+$color-green: #009c2c;
+$color-light-green: #aee938;
+$color-navy: #10162f;
+$color-orange: #ff8c00;
+$color-pink: #f966ff;
+$color-red: #f03329;
+$color-yellow: #ffd300;
+$color-hyper: #3a10e5;
+$color-pale-blue: #f5fcff;
+$color-pale-green: #f5ffe3;
+$color-pale-pink: #fff5ff;
+$color-pale-yellow: #fffae5;
+
+// =======================================
+//      INTERACTIVE COLORS
+// =======================================
+
+$color-interactive-dark: $color-hyper;
+$color-interactive-light: $color-yellow;
+
+// =======================================
+//      OTHER COLORS
+// =======================================
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-shadow: rgba($color-black, 0.15);
+
+// =======================================
+//      PLATFORM COLORS
+// =======================================
+
+$platform-mint-500: #37c3be;
+
+$platform-mint-600: mix($color-black, $platform-mint-500, 20%);
+$platform-mint-700: mix($color-black, $platform-mint-500, 40%);
+
+$platform-purple-500: #69639a;
+
+$platform-purple-200: mix($color-white, $platform-purple-500, 60%);
+$platform-purple-300: mix($color-white, $platform-purple-500, 40%);
+$platform-purple-400: mix($color-white, $platform-purple-500, 20%);
+$platform-purple-600: mix($color-black, $platform-purple-500, 20%);
+$platform-purple-700: mix($color-black, $platform-purple-500, 40%);
+$platform-purple-800: mix($color-black, $platform-purple-500, 60%);
+$platform-purple-900: mix($color-black, $platform-purple-500, 80%);
+
+// =======================================
+//      EDITOR COLORS
+// =======================================
+
+$color-editor-blue: #83fff5;
+$color-editor-deep-purple: #cc7bc2;
+$color-editor-gray: #939598;
+$color-editor-green: #b4d353;
+$color-editor-orange: #ff8973;
+$color-editor-purple: #b3ccff;
+$color-editor-red: #e85d7f;
+$color-editor-yellow: #ffe083;
+
+// =======================================
+//      LEGACY COLOR SWATCHES
 // =======================================
 
 $color-blue-100: #c8d7fa;
@@ -12,7 +79,7 @@ $color-blue-500: #3069f0;
 $color-blue-600: #2d5dcc;
 $color-blue-700: #2e4a99;
 $color-blue-800: #233466;
-$color-blue-900: #141e3b;
+$color-blue-900: #141c3a;
 $color-blue-1000: #10162f;
 $color-blue-1100: #0a0e1d;
 
@@ -86,60 +153,23 @@ $color-gray-700: #4b4b4d;
 $color-gray-800: #323233;
 $color-gray-900: #19191a;
 
-$color-white: #ffffff;
-$color-black: #000000;
-$color-beige: #efd9ca;
 $color-royal-blue: #6400e4;
-$color-shadow: rgba($color-black, 0.15);
 
 // =======================================
 //      BRAND COLORS
 // =======================================
 
-$brand-red: #fd4d3f;
-$brand-yellow: #ffc740;
-$brand-orange: #ff9b2a;
-$brand-purple: #6400e4;
-$brand-pink: #ff8ef5;
-$brand-mint: #6df0c2;
+$brand-red: $color-red-500;
+$brand-yellow: $color-yellow-500;
+$brand-orange: $color-orange-400;
+$brand-purple: $color-royal-blue;
+$brand-pink: $color-pink-400;
+$brand-mint: $color-green-300;
+$brand-magenta: $color-pink-700;
 $brand-beige: #efd9ca;
-$brand-dark-blue: #141c3a;
-
-// =======================================
-//      PLATFORM COLORS
-// =======================================
-
-$platform-mint-500: #37c3be;
-
-$platform-mint-600: mix($color-black, $platform-mint-500, 20%);
-$platform-mint-700: mix($color-black, $platform-mint-500, 40%);
-
-$platform-purple-500: #69639a;
-
-$platform-purple-200: mix($color-white, $platform-purple-500, 60%);
-$platform-purple-300: mix($color-white, $platform-purple-500, 40%);
-$platform-purple-400: mix($color-white, $platform-purple-500, 20%);
-$platform-purple-600: mix($color-black, $platform-purple-500, 20%);
-$platform-purple-700: mix($color-black, $platform-purple-500, 40%);
-$platform-purple-800: mix($color-black, $platform-purple-500, 60%);
-$platform-purple-900: mix($color-black, $platform-purple-500, 80%);
-
-// =======================================
-//      EDITOR COLORS
-// =======================================
-
-$color-editor-blue: #83fff5;
-$color-editor-deep-purple: #cc7bc2;
-$color-editor-gray: #939598;
-$color-editor-green: #b4d353;
-$color-editor-orange: #ff8973;
-$color-editor-purple: #b3ccff;
-$color-editor-red: #e85d7f;
-$color-editor-yellow: #ffe083;
-
-// =======================================
-//      DEPRECATED COLORS
-// =======================================
+$brand-blue: $color-blue-500;
+$brand-dark-blue: $color-blue-900;
+$brand-lavender: $color-purple-500;
 
 $deprecated-color-white: #ffffff;
 $deprecated-color-black: #000000;

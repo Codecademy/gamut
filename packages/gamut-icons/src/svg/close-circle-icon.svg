@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><defs><style>.a{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5px;}</style></defs><title>remove-circle</title><circle class="a" cx="12" cy="11.999" r="11.25"/><line class="a" x1="7.5" y1="16.499" x2="16.5" y2="7.499"/><line class="a" x1="16.5" y1="16.499" x2="7.5" y2="7.499"/></svg>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<title>remove-circle</title>
+<g>
+	<path d="M12,23.999c-6.617,0-12-5.383-12-12c0-6.617,5.383-12,12-12c6.617,0,12,5.383,12,12C24,18.616,18.617,23.999,12,23.999z
+		 M12,1.499c-5.79,0-10.5,4.71-10.5,10.5c0,5.79,4.71,10.5,10.5,10.5c5.79,0,10.5-4.71,10.5-10.5C22.5,6.209,17.79,1.499,12,1.499z"
+		/>
+	<path d="M16.5,17.249c-0.2,0-0.389-0.078-0.53-0.22L12,13.06l-3.97,3.97c-0.142,0.142-0.33,0.22-0.53,0.22s-0.389-0.078-0.53-0.22
+		c-0.292-0.292-0.292-0.768,0-1.061l3.97-3.97l-3.97-3.97c-0.142-0.141-0.22-0.33-0.22-0.53s0.078-0.389,0.22-0.53
+		c0.141-0.142,0.33-0.22,0.53-0.22s0.389,0.078,0.53,0.22l3.97,3.97l3.97-3.97c0.142-0.142,0.33-0.22,0.53-0.22
+		s0.389,0.078,0.53,0.22c0.142,0.141,0.22,0.33,0.22,0.53s-0.078,0.389-0.22,0.53l-3.97,3.97l3.97,3.97
+		c0.292,0.292,0.292,0.768,0,1.061C16.889,17.171,16.7,17.249,16.5,17.249z"/>
+</g>
+</svg>

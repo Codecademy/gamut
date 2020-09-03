@@ -47,9 +47,9 @@ export const Testimonial: React.FC<TestimonialProps> = ({
             <div className={s.avatarContainer}>
               <Avatar
                 src={imageUrl}
-                alt={`Photo of ${firstName} ${lastName}`}
                 theme={theme}
                 className={cx({ [s.largeContainerAvatar]: size === 'large' })}
+                alt=""
               />
             </div>
           )}
@@ -69,5 +69,3 @@ export const Testimonial: React.FC<TestimonialProps> = ({
     </div>
   );
 };
-
-export default Testimonial;

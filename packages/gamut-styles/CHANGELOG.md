@@ -1,3 +1,113 @@
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@6.0.0...@codecademy/gamut-styles@7.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
+## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.2...@codecademy/gamut-styles@6.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+### [5.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.1...@codecademy/gamut-styles@5.1.2) (2020-08-24)
+
+
+### Other Changes
+
+* go back to  for JS colors for now ([#938](https://github.com/Codecademy/client-modules/issues/938)) ([e871aed](https://github.com/Codecademy/client-modules/commit/e871aed1d646fd849ddf6dded0e4762a76484127))
+
+### [5.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.0...@codecademy/gamut-styles@5.1.1) (2020-08-24)
+
+
+### Other Changes
+
+* **gamut-styles:** Add New Colors ([#931](https://github.com/Codecademy/client-modules/issues/931)) ([0643622](https://github.com/Codecademy/client-modules/commit/0643622af6cb0c99a124403d5533034c614262cc))
+
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.0.0...@codecademy/gamut-styles@5.1.0) (2020-08-21)
+
+
+### ✨ Features
+
+* Added Apercu and Suisse font families as opt-ins ([#933](https://github.com/Codecademy/client-modules/issues/933)) ([e08bbc6](https://github.com/Codecademy/client-modules/commit/e08bbc686937f17663f0a9d5842f5151c63b0411))
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.5...@codecademy/gamut-styles@5.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
+### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.4...@codecademy/gamut-styles@4.2.5) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.3...@codecademy/gamut-styles@4.2.4) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+
+### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.2...@codecademy/gamut-styles@4.2.3) (2020-08-06)
+
+
+### Other Changes
+
+* add in equals sign to _responsive ([#901](https://github.com/Codecademy/client-modules/issues/901)) ([edc7e76](https://github.com/Codecademy/client-modules/commit/edc7e767227a7aec90084f14e7e08916ccdf4f3f))
+
+### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.1...@codecademy/gamut-styles@4.2.2) (2020-07-29)
+
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.2.0...@codecademy/gamut-styles@4.2.1) (2020-07-29)
+
+
+### Other Changes
+
+* Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.1.0...@codecademy/gamut-styles@4.2.0) (2020-07-27)
+
+
+### ✨ Features
+
+* Create default main export for gamut-styles [WEB-895] ([#820](https://github.com/Codecademy/client-modules/issues/820)) ([be4e941](https://github.com/Codecademy/client-modules/commit/be4e9415c6e14f2d6905d7f94587fc59d3d0ba45))
+* **Emotion:** Add Emotion Dependency to Next WEB-982 ([#888](https://github.com/Codecademy/client-modules/issues/888)) ([d24fda1](https://github.com/Codecademy/client-modules/commit/d24fda19cd7ba7af94a0a9b42a262e4843f83a2f))
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@4.0.0...@codecademy/gamut-styles@4.1.0) (2020-06-11)
+
+
+### ✨ Features
+
+* Align brand color aliases [WEB-215] ([#821](https://github.com/Codecademy/client-modules/issues/821)) ([8b39239](https://github.com/Codecademy/client-modules/commit/8b39239c3b8ca93fd86b8959f98c13d9d5cd6074))
+
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.1...@codecademy/gamut-styles@4.0.0) (2020-06-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Removed deprecated color variables (#819)
+
+### Other Changes
+
+* **Gamut:** Removed deprecated color variables ([#819](https://github.com/Codecademy/client-modules/issues/819)) ([1dcce36](https://github.com/Codecademy/client-modules/commit/1dcce363a7fc9f4a37e71b667fa0de984671bd3c))
+
 ### [3.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@3.3.0...@codecademy/gamut-styles@3.3.1) (2020-05-06)
 
 

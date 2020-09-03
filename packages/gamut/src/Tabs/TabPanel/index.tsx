@@ -20,7 +20,8 @@ export const TabPanel: FunctionComponent<TabPanelProps> = ({
 }) => (
   <div
     id={id}
-    aria-labelledby={id.replace('-panel', '')}
+    // id should be passed by the TabList - confusing, but workable.
+    aria-labelledby={id!.replace('-panel', '')}
     aria-hidden={!active}
     role="tabpanel"
     className={cx(className, {
@@ -31,5 +32,3 @@ export const TabPanel: FunctionComponent<TabPanelProps> = ({
     {active || renderAllPanels ? children : null}
   </div>
 );
-
-export default TabPanel;

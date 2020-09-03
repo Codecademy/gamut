@@ -13,10 +13,7 @@ export interface StepButtonProps {
   labelledBy: string;
 }
 
-/**
- * render the step button within the input stepper
- */
-const StepButton: React.FC<StepButtonProps> = ({
+export const StepButton: React.FC<StepButtonProps> = ({
   type,
   onClick,
   labelledBy,
@@ -43,5 +40,3 @@ const StepButton: React.FC<StepButtonProps> = ({
     </Button>
   );
 };
-
-export default StepButton;

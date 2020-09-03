@@ -42,5 +42,3 @@ export const Truncate: React.FC<TruncateProps> = ({
     </TruncateMarkup>
   );
 };
-
-export default Truncate;

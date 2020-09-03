@@ -1,0 +1,26 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { HighlightedText, Text } from '@codecademy/gamut/src';
+import { text } from '@storybook/addon-knobs';
+
+<Meta title="Atoms/HighlightedText" component={HighlightedText} />
+
+# HighlightedText
+
+<StoryStatus status="stable" />
+
+Emphasized (bold) text with a light background color behind it. Use to
+showcase important words in a sentence.
+
+<Canvas>
+  <Story name="HighlightedText">
+    {(args) => (
+      <Text fontSize="md">
+        Would you like to have{' '}
+        <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
+      </Text>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={HighlightedText} />

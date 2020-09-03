@@ -1,5 +1,5 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Templating/Blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import {
   withKnobs,
   boolean,
@@ -8,30 +8,47 @@ import {
   text,
 } from '@storybook/addon-knobs';
 import { RadialProgress } from '@codecademy/gamut/src';
-import { selectableColors } from '../../helpers';
+import { selectableColors } from '../../../helpers';
 
-<Meta title="Core|Atoms/RadialProgress" componet={RadialProgress} />
+<Meta title="Atoms/RadialProgress" componet={RadialProgress} />
 
 # Radial Progress
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
-A circular display of progress without a number inside, meant to convey a
+A circular display of progress meant to convey a
 percentage out of a whole.
 
-<Preview>
+<Canvas>
   <Story name="RadialProgress">
-    <RadialProgress
-      style={{ color: select('color', selectableColors, 'black') }}
-      size={text('size', '10rem')}
-      value={number('value', 30)}
-      strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
-      strokeWidth={text('strokeWidth', '10')}
-    />
+    {(args) => (
+      <RadialProgress
+        style={{ color: select('color', selectableColors, 'black') }}
+        size={text('size', '10rem')}
+        value={number('value', 30)}
+        strokeLinecap={select('strokeLinecap', ['round', 'butt'], 'round')}
+        strokeWidth={text('strokeWidth', '10')}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={RadialProgress} />
+
+## Children
+
+Optionally, children may be provided to be displayed in the center of the circle.
+This is useful for conveying a textual description of progress, such as a percentage of X/Y ratio.
+
+<Canvas>
+  <Story name="Children">
+    {(args) => (
+      <RadialProgress size="5rem" value={75}>
+        {text('children', '75%')}
+      </RadialProgress>
+    )}
+  </Story>
+</Canvas>
 
 ## Animating
 
@@ -40,9 +57,9 @@ smoothly upon being rendered.
 
 Click on the `Animating` checkbox below to {action}.
 
-<Preview>
+<Canvas>
   <Story name="Animating">
-    {() => {
+    {(args) => {
       const rendering = boolean('Animating', false);
       return (
         <>
@@ -61,4 +78,4 @@ Click on the `Animating` checkbox below to {action}.
       );
     }}
   </Story>
-</Preview>
+</Canvas>

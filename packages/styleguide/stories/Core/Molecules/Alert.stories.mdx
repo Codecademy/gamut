@@ -1,30 +1,32 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
-import { StoryStatus } from '../../../Templating/Blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { Alert, BannerType } from '@codecademy/gamut/src';
 
-<Meta title="Core|Molecules/Alert" component={Alert} />
+<Meta title="Molecules/Alert" component={Alert} />
 
 # Alert
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 Alerts can be used to asynchronously display feedback or interactions
 with the user with various connotations.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Alert">
-    <Alert
-      showIcon
-      type={BannerType.Info}
-      cta={{ text: 'Login', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      {`You have been logged out due to inactivity.
-        Click the button to log in again.`}
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Info}
+        cta={{ text: 'Login', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        {`You have been logged out due to inactivity.
+                Click the button to log in again.`}
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Alert" of={Alert} />
 
@@ -37,84 +39,94 @@ action.
 
 #### Informational
 
-<Preview>
+<Canvas>
   <Story name="Information">
-    <Alert
-      showIcon
-      type={BannerType.Info}
-      cta={{ text: 'Login', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      You have been logged out due to inactivity.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Info}
+        cta={{ text: 'Login', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        You have been logged out due to inactivity.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 #### Successful actions
 
-<Preview>
+<Canvas>
   <Story name="Success">
-    <Alert
-      showIcon
-      type={BannerType.Success}
-      cta={{ text: 'view account', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      Your account changes were saved successfully.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Success}
+        cta={{ text: 'view account', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        Your account changes were saved successfully.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 #### Error communicating an issue or showing that a user’s action can’t be completed.
 
-<Preview>
+<Canvas>
   <Story name="Error">
-    <Alert
-      showIcon
-      type={BannerType.Error}
-      cta={{ text: 'retry', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      Couldn’t save your account changes because a connection to the server
-      can’t be made.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Error}
+        cta={{ text: 'retry', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        Couldn’t save your account changes because a connection to the server
+        can’t be made.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Notice Alert
 
 Only shown when it affects the entire system. It appears on all pages without user initiating the action.
 
-<Preview>
+<Canvas>
   <Story name="Notice">
-    <Alert
-      showIcon
-      type={BannerType.Notice}
-      cta={{ text: 'retry', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      Couldn’t save your account changes because a connection to the server
-      can’t be made.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Notice}
+        cta={{ text: 'retry', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        Couldn’t save your account changes because a connection to the server
+        can’t be made.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Announcement Alert
 
 For feature announcements/changes on a specific page.
 
-<Preview>
+<Canvas>
   <Story name="Announcement">
-    <Alert
-      showIcon
-      type={BannerType.Announcement}
-      cta={{ text: 'Learn More', onClick: action('CTA Click') }}
-      onClose={action('Close')}
-    >
-      You can now do this new thing with this new feature we just added!
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon
+        type={BannerType.Announcement}
+        cta={{ text: 'Learn More', onClick: action('CTA Click') }}
+        onClose={action('Close')}
+      >
+        You can now do this new thing with this new feature we just added!
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ## Customization
 
@@ -124,88 +136,119 @@ Alerts can be customized in various ways to fit usages. Here are a few out of th
 
 You can disable most options for an `Alert` to make it mostly informational with no interaction.
 
-<Preview>
+<Canvas>
   <Story name="Skeletal">
-    <Alert showIcon={false} type={BannerType.Notice} onClose={action('Close')}>
-      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-      torquatos eam ut.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon={false}
+        type={BannerType.Notice}
+        onClose={action('Close')}
+      >
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Icon
 
 You can optionally display an icon that matches the type of the alert you are showing.
 
-<Preview>
+<Canvas>
   <Story name="Icon">
-    <Alert type={BannerType.Notice} onClose={action('Close')}>
-      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-      torquatos eam ut.
-    </Alert>
+    {(args) => (
+      <Alert type={BannerType.Notice} onClose={action('Close')}>
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Call to action
 
 You can add a call to action if specific feedback prompts user action. This is not requried as some
 feedback may not have an activity associated with it.
 
-<Preview>
+<Canvas>
   <Story name="Call to Action">
-    <Alert
-      showIcon={false}
-      type={BannerType.Notice}
-      cta={{
-        href: 'https://google.com',
-        onClick: action('Close'),
-        text: 'Click Me',
-      }}
-      onClose={action('Close')}
-    >
-      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-      torquatos eam ut.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon={false}
+        type={BannerType.Notice}
+        cta={{
+          href: 'https://google.com',
+          onClick: action('Close'),
+          text: 'Click Me',
+        }}
+        onClose={action('Close')}
+      >
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Expandable Alert
 
 You can truncate the message of the alert for dynamic messaging that may be too long to display
 without restriction. This will automatically truncate and add a toggle button.
 
-<Preview>
+<Canvas>
   <Story name="Expandable">
-    <Alert
-      showIcon={false}
-      type={BannerType.Notice}
-      lines={1}
-      onClose={action('Close')}
-    >
-      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
-      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-    </Alert>
+    {(args) => (
+      <Alert
+        showIcon={false}
+        type={BannerType.Notice}
+        lines={1}
+        onClose={action('Close')}
+      >
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
+        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
+
+### Permanent Alert
+
+If your alert should always stay on the page, you can skip giving it a close button on the right.
+Please remember that most of these are rather frustrating for users.
+
+<Canvas>
+  <Story name="Permanent">
+    {(args) => (
+      <Alert showIcon={false} type={BannerType.Notice} lines={1}>
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
+        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+      </Alert>
+    )}
+  </Story>
+</Canvas>
 
 ### All Options
 
-<Preview>
+<Canvas>
   <Story name="All Options">
-    <Alert
-      type={BannerType.Notice}
-      cta={{
-        href: 'https://google.com',
-        onClick: action('Close'),
-        text: 'Click Me',
-      }}
-      lines={1}
-      onClose={action('Close')}
-    >
-      Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-      torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens mentitum
-      consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-    </Alert>
+    {(args) => (
+      <Alert
+        type={BannerType.Notice}
+        cta={{
+          href: 'https://google.com',
+          onClick: action('Close'),
+          text: 'Click Me',
+        }}
+        lines={1}
+        onClose={action('Close')}
+      >
+        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
+        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
+        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
+      </Alert>
+    )}
   </Story>
-</Preview>
+</Canvas>
