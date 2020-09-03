@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>16.0.4 (2020-09-03)</small>
+
+* style: use white-space: pre-line for Alert (#951) ([ace3557](https://github.com/Codecademy/client-modules/commit/ace3557)), closes [#951](https://github.com/Codecademy/client-modules/issues/951)
+* chore: update changelogs ([3cfc9c5](https://github.com/Codecademy/client-modules/commit/3cfc9c5))
+
+
+
+
+
 ### [16.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.2...@codecademy/gamut@16.0.3) (2020-09-02)
 
 ### [16.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.1...@codecademy/gamut@16.0.2) (2020-09-01)
@@ -2921,4 +2935,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
