@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>17.1.1 (2020-09-03)</small>
+
+* style: use white-space: pre-line for Alert (#951) ([ace3557](https://github.com/Codecademy/client-modules/commit/ace3557)), closes [#951](https://github.com/Codecademy/client-modules/issues/951)
+* chore: update changelogs ([3cfc9c5](https://github.com/Codecademy/client-modules/commit/3cfc9c5))
+
+
+
+
+
 ## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.0.0...@codecademy/styleguide@17.1.0) (2020-09-02)
 
 
@@ -1046,4 +1060,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
