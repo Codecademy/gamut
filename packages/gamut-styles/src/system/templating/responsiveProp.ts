@@ -1,30 +1,17 @@
-import { mediaQueries } from '../variables/responsive';
-import { isObject, entries, merge, mapValues, reduce } from 'lodash';
+import { entries, reduce, isObject, merge, mapValues } from 'lodash';
+import { mediaQueries } from '../../variables/responsive';
 import { css } from '@emotion/core';
+import { AnyStyle } from '../types';
 
-import { BorderProps } from './borders';
-import { LayoutProps } from './layout';
-import { TypographyProps } from './typography';
-import { DisplayProps } from './display';
-import { PositionProps } from './position';
-import { PaddingProps, MarginProps } from './spacing';
-import { AnyStyle } from './types';
-
-export type SystemProps = BorderProps &
-  LayoutProps &
-  TypographyProps &
-  DisplayProps &
-  PositionProps &
-  PaddingProps &
-  MarginProps;
-
-type Props = Partial<SystemProps>;
 type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
 
-function handleMediaQuery<T extends Props>(handler: Handler<T>): Handler<T> {
+export function handleMediaQuery<T extends { theme?: any }>(
+  handler: Handler<T>
+): Handler<T> {
   return (systemProps) => {
+    const { theme, ...configuredProps } = systemProps;
     const responsive = reduce(
-      entries(systemProps),
+      entries(configuredProps),
       (carry, [prop, config]) => {
         if (isObject(config)) {
           return merge(
@@ -35,12 +22,12 @@ function handleMediaQuery<T extends Props>(handler: Handler<T>): Handler<T> {
 
         return merge(carry, { base: { [prop]: config } });
       },
-      {} as Record<keyof typeof mediaQueries, Props>
+      {} as Record<keyof typeof mediaQueries, T>
     );
 
     return css`
       ${entries(responsive).map(([breakpoint, props]) => {
-        const rules = handler(props as T);
+        const rules = handler(props);
 
         if (breakpoint === 'base') {
           return css`

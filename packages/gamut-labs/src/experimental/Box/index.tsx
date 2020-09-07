@@ -1,36 +1,27 @@
 import styled from '@emotion/styled';
 import {
-  MarginProps,
-  PaddingProps,
-  PositionProps,
-  BorderProps,
-  TypographyProps,
-  getPadding,
-  getMargin,
-  getDisplay,
-  DisplayProps,
-  getPosition,
-  getBorder,
   getTypography,
-  composeSystem,
+  getSpacing,
+  getBorder,
+  TypographyProps,
+  SpacingProps,
+  BorderProps,
+  PositionProps,
+  getLayout,
+  LayoutProps,
+  getPosition,
 } from '@codecademy/gamut-styles';
 
-type BoxProps = DisplayProps &
-  MarginProps &
-  PaddingProps &
-  PositionProps &
+type BoxProps = TypographyProps &
+  SpacingProps &
   BorderProps &
-  TypographyProps;
-
-const getSpacing = composeSystem<MarginProps & PaddingProps>(
-  getPadding,
-  getMargin
-);
+  LayoutProps &
+  PositionProps;
 
 export const Box = styled.div<BoxProps>`
-  ${getSpacing}
-  ${getDisplay}
-  ${getPosition}
-  ${getBorder}
   ${getTypography}
+  ${getLayout}
+  ${getSpacing}
+  ${getBorder}
+  ${getPosition}
 `;
