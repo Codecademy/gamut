@@ -1,6 +1,6 @@
 import { identity } from 'lodash';
-import { SystemProps } from '../types';
-import { system } from '../system';
+import { HandlerProps } from '../types';
+import { registerHandler } from '../system';
 import { composeSystem } from '../templating/responsiveProp';
 import { parseCoord } from '../utils';
 
@@ -11,11 +11,8 @@ const positionContextConfig = {
   propName: 'position',
 } as const;
 
-export type PositionContextProps = SystemProps<typeof positionContextConfig>;
-
-export const getPositionContext = system<PositionContextProps>(
-  positionContextConfig
-);
+export const getPositionContext = registerHandler(positionContextConfig);
+export type PositionContextProps = HandlerProps<typeof getPositionContext>;
 
 const coordinateConfig = {
   type: 'standard',
@@ -24,9 +21,8 @@ const coordinateConfig = {
   propName: ['top', 'left', 'right', 'bottom'],
 } as const;
 
-export type CoordinateProps = SystemProps<typeof coordinateConfig>;
-
-export const getCoordinate = system<CoordinateProps>(coordinateConfig);
+export const getCoordinate = registerHandler(coordinateConfig);
+export type CoordinateProps = HandlerProps<typeof getCoordinate>;
 
 const zIndexConfig = {
   type: 'standard',
@@ -35,9 +31,8 @@ const zIndexConfig = {
   propName: 'zIndex',
 } as const;
 
-export type ZIndexProps = SystemProps<typeof zIndexConfig>;
-
-export const getZIndex = system<ZIndexProps>(zIndexConfig);
+export const getZIndex = registerHandler(zIndexConfig);
+export type ZIndexProps = HandlerProps<typeof getZIndex>;
 
 export type PositionProps = PositionContextProps &
   CoordinateProps &

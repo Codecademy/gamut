@@ -1,4 +1,4 @@
-import { SystemProps } from '../types';
+import { HandlerProps } from '../types';
 import {
   BorderWidths,
   borderWidths,
@@ -7,7 +7,7 @@ import {
   BorderColors,
   borderColors,
 } from '../../variables/border';
-import { system } from '../system';
+import { registerHandler } from '../system';
 import { identity } from 'lodash';
 import { composeSystem } from '../templating/responsiveProp';
 
@@ -26,9 +26,8 @@ const borderWidthConfig = {
   ],
 } as const;
 
-export type BorderWidthProps = SystemProps<typeof borderWidthConfig>;
-
-export const getborderWidth = system<BorderRadiusProps>(borderWidthConfig);
+export const getBorderWidth = registerHandler(borderWidthConfig);
+export type BorderWidthProps = HandlerProps<typeof getBorderWidth>;
 
 const borderRadiusConfig = {
   type: 'standard',
@@ -37,9 +36,8 @@ const borderRadiusConfig = {
   computeValue: (value: any) => borderRadii[value as BorderRadii],
 } as const;
 
-export type BorderRadiusProps = SystemProps<typeof borderRadiusConfig>;
-
-export const getBorderRadius = system<BorderRadiusProps>(borderRadiusConfig);
+export const getBorderRadius = registerHandler(borderRadiusConfig);
+export type BorderRadiusProps = HandlerProps<typeof getBorderRadius>;
 
 const borderColorConfig = {
   type: 'standard',
@@ -48,9 +46,8 @@ const borderColorConfig = {
   computeValue: (value: any) => borderColors[value as BorderColors],
 } as const;
 
-export type BorderColorProps = SystemProps<typeof borderColorConfig>;
-
-export const getBorderColor = system<BorderColorProps>(borderColorConfig);
+export const getBorderColor = registerHandler(borderColorConfig);
+export type BorderColorProps = HandlerProps<typeof getBorderColor>;
 
 const borderStyleConfig = {
   type: 'standard',
@@ -59,17 +56,16 @@ const borderStyleConfig = {
   computeValue: identity,
 } as const;
 
-export type BorderStyleProps = SystemProps<typeof borderStyleConfig>;
-
-export const getBorderStyle = system<BorderStyleProps>(borderStyleConfig);
+export const getBorderStyle = registerHandler(borderStyleConfig);
+export type BorderStyleProps = HandlerProps<typeof getBorderStyle>;
 
 export type BorderProps = BorderStyleProps &
-  BorderWidthProps &
+  BorderRadiusProps &
   BorderRadiusProps &
   BorderColorProps;
 
 export const getBorder = composeSystem<BorderProps>(
-  getborderWidth,
+  getBorderWidth,
   getBorderColor,
   getBorderRadius,
   getBorderStyle

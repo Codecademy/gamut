@@ -1,4 +1,4 @@
-import { AbstractSystemConfig } from './types';
+import { ThematicConfig, ThematicProps } from './types';
 import { standardStyle } from './style/standard';
 import { createSystemHandler } from './templating/responsiveProp';
 import { directional } from './style/directional';
@@ -8,8 +8,17 @@ const typeMap = {
   directional: directional,
 };
 
-export function system<T>(config: AbstractSystemConfig) {
-  const { type = 'standard' } = config;
-  const templateFunction = typeMap[type](config);
-  return createSystemHandler<T>(templateFunction);
-}
+export const createSystem = <T extends { [key: string]: Readonly<unknown[]> }>(
+  theme: T
+) => {
+  return <K extends ThematicConfig<T>>(config: K) => {
+    const { type = 'standard' } = config;
+    const templateFunction = typeMap[type];
+    const handler = templateFunction<ThematicProps<T, K> & { theme?: T }, K>(
+      config
+    );
+    return createSystemHandler(handler);
+  };
+};
+
+export const registerHandler = createSystem({});

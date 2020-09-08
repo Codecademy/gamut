@@ -32,18 +32,43 @@ export type DirectionalConfig = {
   propName: PropAlias;
   altProps?: Readonly<string[]>;
   type: 'directional';
-  scale: ScaleShape;
+  scale: ScaleShape | Readonly<string>;
   computeValue: (value: ScaleShape[number]) => string | number;
 };
 
 export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   type: 'standard';
-  scale: ScaleShape;
+  scale: ScaleShape | Readonly<string>;
   computeValue: (value: ScaleShape[number]) => string | number;
 };
 
 export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
+
+export type ThematicConfig<T extends { [key: string]: ScaleShape }> =
+  | (StandardConfig & { scale: ScaleShape | Readonly<keyof T> })
+  | (DirectionalConfig & { scale: ScaleShape | Readonly<keyof T> });
+
+export type ThematicProps<
+  T extends { [key: string]: ScaleShape },
+  K extends ThematicConfig<T>
+> = Partial<
+  Record<
+    | Extract<K, { propName: string }>['propName']
+    | Extract<K, { propName: Readonly<string[]> }>['propName'][number]
+    | Extract<K, { altProps: Readonly<string[]> }>['altProps'][number],
+    | OptionalResponiveProp<
+        | T[Extract<K, { scale: string }>['scale']][number]
+        | Extract<K, { scale: ScaleShape }>['scale'][number]
+      >
+    | T[Extract<K, { scale: string }>['scale']][number]
+    | Extract<K, { scale: ScaleShape }>['scale'][number]
+  >
+>;
+
+export type HandlerProps<
+  T extends (props: Record<string, unknown>) => unknown
+> = Parameters<T>[0];
 
 export type SystemProps<T extends AbstractSystemConfig> = Partial<
   Record<

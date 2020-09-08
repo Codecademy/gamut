@@ -1,8 +1,11 @@
 import { directionalProperty } from 'polished';
-import { AbstractSystemConfig } from '../types';
+import { ScaleShape, AbstractSystemConfig, AnyStyle } from '../types';
 
-export function directional<T>(config: AbstractSystemConfig) {
-  const { propName, scale, computeValue } = config;
+export function directional<
+  T extends Record<string, unknown>,
+  K extends AbstractSystemConfig
+>(config: K): (props: T) => AnyStyle {
+  const { propName, computeValue } = config;
   return (props: T) => {
     const {
       [propName as string]: base,
@@ -12,7 +15,7 @@ export function directional<T>(config: AbstractSystemConfig) {
       [`${propName}Right`]: r = x,
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
-    } = props as Record<string, typeof scale[number]>;
+    } = props as Record<string, ScaleShape[number]>;
 
     return directionalProperty(
       propName as string,

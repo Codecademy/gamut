@@ -8,8 +8,8 @@ import {
   FontScale,
   fontScale,
 } from '../../variables/typography';
-import { SystemProps } from '../types';
-import { system } from '../system';
+import { HandlerProps } from '../types';
+import { registerHandler } from '../system';
 import { composeSystem } from '../templating/responsiveProp';
 import { identity } from 'lodash';
 
@@ -20,9 +20,8 @@ const fontFamilyConfig = {
   computeValue: (value: any) => fonts[value as FontFamilies],
 } as const;
 
-export type FontFamilyProps = SystemProps<typeof fontFamilyConfig>;
-
-export const getFontFamily = system<FontFamilyProps>(fontFamilyConfig);
+export const getFontFamily = registerHandler(fontFamilyConfig);
+export type FontFamilyProps = HandlerProps<typeof getFontFamily>;
 
 const fontWeightConfig = {
   type: 'standard',
@@ -31,9 +30,8 @@ const fontWeightConfig = {
   computeValue: (value: any) => weights[value as FontWeights],
 } as const;
 
-export type FontWeightProps = SystemProps<typeof fontWeightConfig>;
-
-export const getFontWeight = system<FontWeightProps>(fontWeightConfig);
+export const getFontWeight = registerHandler(fontWeightConfig);
+export type FontWeightProps = HandlerProps<typeof getFontWeight>;
 
 const lineHeightConfig = {
   type: 'standard',
@@ -42,9 +40,8 @@ const lineHeightConfig = {
   computeValue: (value: any) => lineHeight[value as LineHeights],
 } as const;
 
-export type LineHeightProps = SystemProps<typeof lineHeightConfig>;
-
-export const getLineHeight = system<LineHeightProps>(lineHeightConfig);
+export const getLineHeight = registerHandler(lineHeightConfig);
+export type LineHeightProps = HandlerProps<typeof getLineHeight>;
 
 const fontSizeConfig = {
   type: 'standard',
@@ -53,9 +50,8 @@ const fontSizeConfig = {
   computeValue: (value: any) => fontScale[value as FontScale],
 } as const;
 
-export type FontSizeProps = SystemProps<typeof fontSizeConfig>;
-
-export const getFontSize = system<FontSizeProps>(fontSizeConfig);
+export const getFontSize = registerHandler(fontSizeConfig);
+export type FontSizeProps = HandlerProps<typeof getFontSize>;
 
 const letterSpacingConfig = {
   type: 'standard',
@@ -64,9 +60,8 @@ const letterSpacingConfig = {
   computeValue: identity,
 } as const;
 
-export type LetterSpacingProps = SystemProps<typeof letterSpacingConfig>;
-
-export const getLetterSpacing = system<LetterSpacingProps>(letterSpacingConfig);
+export const getLetterSpacing = registerHandler(letterSpacingConfig);
+export type LetterSpacingProps = HandlerProps<typeof getLetterSpacing>;
 
 const textAlignConfig = {
   type: 'standard',
@@ -75,9 +70,8 @@ const textAlignConfig = {
   computeValue: identity,
 } as const;
 
-export type TextAlignProps = SystemProps<typeof textAlignConfig>;
-
-export const getTextAlign = system<TextAlignProps>(textAlignConfig);
+export const getTextAlign = registerHandler(textAlignConfig);
+export type TextAlignProps = HandlerProps<typeof getTextAlign>;
 
 const fontStyleConfig = {
   type: 'standard',
@@ -86,9 +80,8 @@ const fontStyleConfig = {
   computeValue: identity,
 } as const;
 
-export type FontStyleProps = SystemProps<typeof fontStyleConfig>;
-
-export const getFontStyle = system<FontStyleProps>(fontStyleConfig);
+export const getFontStyle = registerHandler(fontStyleConfig);
+export type FontStyleProps = HandlerProps<typeof getFontStyle>;
 
 export type TypographyProps = FontWeightProps &
   FontFamilyProps &

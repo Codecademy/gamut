@@ -1,6 +1,6 @@
 import { spacing, SpaceSizes } from '../../variables/spacing';
-import { SystemProps } from '../types';
-import { system } from '../system';
+import { HandlerProps } from '../types';
+import { registerHandler } from '../system';
 import { composeSystem } from '../templating/responsiveProp';
 
 const marginConfig = {
@@ -18,9 +18,8 @@ const marginConfig = {
   ],
 } as const;
 
-export type MarginProps = SystemProps<typeof marginConfig>;
-
-export const getMargin = system<PaddingProps>(marginConfig);
+export const getMargin = registerHandler(marginConfig);
+export type MarginProps = HandlerProps<typeof getMargin>;
 
 const paddingConfig = {
   scale: [] as SpaceSizes[],
@@ -37,9 +36,8 @@ const paddingConfig = {
   ],
 } as const;
 
-export type PaddingProps = SystemProps<typeof paddingConfig>;
-
-export const getPadding = system<PaddingProps>(paddingConfig);
+export const getPadding = registerHandler(paddingConfig);
+export type PaddingProps = HandlerProps<typeof getMargin>;
 
 export type SpacingProps = PaddingProps & MarginProps;
 
