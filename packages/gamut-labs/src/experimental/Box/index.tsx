@@ -10,13 +10,18 @@ import {
   getLayout,
   LayoutProps,
   getPosition,
-  getMargin,
 } from '@codecademy/gamut-styles';
 
-type BoxProps = TypographyProps & BorderProps & LayoutProps & PositionProps;
+type BoxProps = TypographyProps &
+  SpacingProps &
+  BorderProps &
+  LayoutProps &
+  PositionProps;
 
 export const Box = styled.div<BoxProps>`
-  ${getMargin}
+  ${getTypography}
+  ${getLayout}
+  ${getSpacing}
+  ${getBorder}
+  ${getPosition}
 `;
-
-getMargin({ margin: 0 });

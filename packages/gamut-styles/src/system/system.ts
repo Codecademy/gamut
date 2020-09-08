@@ -20,18 +20,18 @@ export const createSystem = <T extends { [key: string]: Readonly<unknown[]> }>(
     let systemHandler;
 
     if (typeof propName === 'string') {
-      const styleFunction = templateFunction<
-        ThematicProps<T, K> & { theme?: T },
-        K
-      >(propName, computeValue);
+      const styleFunction = templateFunction<ThematicProps<T, K>, K>(
+        propName,
+        computeValue
+      );
       systemHandler = createSystemHandler(styleFunction);
     } else {
       const composite: Handler<{}>[] = [];
       propName.forEach((propKey) => {
-        const styleFunction = templateFunction<
-          ThematicProps<T, K> & { theme?: T },
-          K
-        >(propKey, computeValue);
+        const styleFunction = templateFunction<ThematicProps<T, K>, K>(
+          propKey,
+          computeValue
+        );
         const propHandler = createSystemHandler(styleFunction);
 
         composite.push(propHandler);

@@ -61,7 +61,7 @@ export type BorderStyleProps = HandlerProps<typeof getBorderStyle>;
 
 export type BorderProps = BorderStyleProps &
   BorderRadiusProps &
-  BorderRadiusProps &
+  BorderWidthProps &
   BorderColorProps;
 
 export const getBorder = composeSystem<BorderProps>(
