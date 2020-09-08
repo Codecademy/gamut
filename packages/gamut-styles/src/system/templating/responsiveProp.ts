@@ -1,9 +1,7 @@
 import { entries, reduce, isObject, merge, mapValues } from 'lodash';
 import { mediaQueries } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { AnyStyle } from '../types';
-
-type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
+import { Handler, AnyStyle } from '../types';
 
 export function handleMediaQuery<T extends { theme?: any }>(
   handler: Handler<T>
@@ -45,13 +43,13 @@ export function handleMediaQuery<T extends { theme?: any }>(
 }
 
 export function createSystemHandler<T>(handler: Handler<T>): Handler<T> {
-  const responsiveHandler = handleMediaQuery(handler);
+  const responsiveHandler = handleMediaQuery<T>(handler);
   return (props, noMedia = false) =>
     noMedia ? handler(props) : responsiveHandler(props);
 }
 
 export function composeSystem<T>(...handlers: Handler<T>[]) {
-  return handleMediaQuery(
+  return handleMediaQuery<T>(
     (props: T) =>
       css`
         ${handlers.map((handler) => handler(props, true))}

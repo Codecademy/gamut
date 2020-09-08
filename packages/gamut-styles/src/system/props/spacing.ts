@@ -37,8 +37,8 @@ const paddingConfig = {
 } as const;
 
 export const getPadding = registerHandler(paddingConfig);
-export type PaddingProps = HandlerProps<typeof getMargin>;
+export type PaddingProps = HandlerProps<typeof getPadding>;
 
 export type SpacingProps = PaddingProps & MarginProps;
 
-export const getSpacing = composeSystem(getPadding, getMargin);
+export const getSpacing = composeSystem<SpacingProps>(getPadding, getMargin);

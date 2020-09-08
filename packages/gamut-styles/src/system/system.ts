@@ -1,6 +1,9 @@
-import { ThematicConfig, ThematicProps } from './types';
+import { ThematicConfig, ThematicProps, Handler } from './types';
 import { standardStyle } from './style/standard';
-import { createSystemHandler } from './templating/responsiveProp';
+import {
+  createSystemHandler,
+  composeSystem,
+} from './templating/responsiveProp';
 import { directional } from './style/directional';
 
 const typeMap = {
@@ -12,12 +15,32 @@ export const createSystem = <T extends { [key: string]: Readonly<unknown[]> }>(
   theme: T
 ) => {
   return <K extends ThematicConfig<T>>(config: K) => {
-    const { type = 'standard' } = config;
+    const { propName, computeValue, type = 'standard' } = config;
     const templateFunction = typeMap[type];
-    const handler = templateFunction<ThematicProps<T, K> & { theme?: T }, K>(
-      config
-    );
-    return createSystemHandler(handler);
+    let systemHandler;
+
+    if (typeof propName === 'string') {
+      const styleFunction = templateFunction<
+        ThematicProps<T, K> & { theme?: T },
+        K
+      >(propName, computeValue);
+      systemHandler = createSystemHandler(styleFunction);
+    } else {
+      const composite: Handler<{}>[] = [];
+      propName.forEach((propKey) => {
+        const styleFunction = templateFunction<
+          ThematicProps<T, K> & { theme?: T },
+          K
+        >(propKey, computeValue);
+        const propHandler = createSystemHandler(styleFunction);
+
+        composite.push(propHandler);
+      });
+
+      systemHandler = composeSystem(...composite);
+    }
+
+    return systemHandler;
   };
 };
 

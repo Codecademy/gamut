@@ -4,8 +4,10 @@ import { ScaleShape, AbstractSystemConfig, AnyStyle } from '../types';
 export function directional<
   T extends Record<string, unknown>,
   K extends AbstractSystemConfig
->(config: K): (props: T) => AnyStyle {
-  const { propName, computeValue } = config;
+>(
+  propName: K['propName'] | K['propName'][number],
+  computeValue: K['computeValue']
+): (props: T) => AnyStyle {
   return (props: T) => {
     const {
       [propName as string]: base,

@@ -27,6 +27,7 @@ export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
 export type ScaleShape = Readonly<unknown[]>;
+export type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
 
 export type DirectionalConfig = {
   propName: PropAlias;
@@ -67,7 +68,7 @@ export type ThematicProps<
 >;
 
 export type HandlerProps<
-  T extends (props: Record<string, unknown>) => unknown
+  T extends Handler<Record<string, unknown>>
 > = Parameters<T>[0];
 
 export type SystemProps<T extends AbstractSystemConfig> = Partial<
