@@ -1,4 +1,4 @@
-import { isNumber, isString } from 'lodash';
+import { isNumber } from 'lodash';
 
 const percentOrPx = (coordinate: number) => {
   if (coordinate <= 1 && coordinate >= -1) {
