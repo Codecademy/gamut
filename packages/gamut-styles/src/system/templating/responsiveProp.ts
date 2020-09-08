@@ -1,7 +1,7 @@
 import { entries, reduce, isObject, merge, mapValues } from 'lodash';
 import { mediaQueries } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { Handler, AnyStyle } from '../types';
+import { Handler } from '../types';
 
 export function handleMediaQuery<T extends { theme?: any }>(
   handler: Handler<T>
