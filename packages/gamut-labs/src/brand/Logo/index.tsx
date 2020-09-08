@@ -9,7 +9,7 @@ import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';
 
 const defaultProps = {
   height: 32,
-  type: 'default',
+  type: 'standard',
 };
 
 const logos = {

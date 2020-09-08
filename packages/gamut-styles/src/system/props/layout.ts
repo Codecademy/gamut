@@ -5,7 +5,7 @@ import { system } from '../system';
 import { composeSystem } from '../templating/responsiveProp';
 
 const displayConfig = {
-  type: 'default',
+  type: 'standard',
   scale: [] as DisplayTypes[],
   computeValue: identity,
   propName: 'display',
@@ -16,7 +16,7 @@ export type DisplayProps = SystemProps<typeof displayConfig>;
 export const getDisplay = system<DisplayProps>(displayConfig);
 
 const overflowConfig = {
-  type: 'default',
+  type: 'standard',
   scale: [] as ('visible' | 'hidden' | 'scroll')[],
   computeValue: identity,
   propName: ['overflow', 'overflowX', 'overflowY'],

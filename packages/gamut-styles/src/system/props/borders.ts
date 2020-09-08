@@ -31,7 +31,7 @@ export type BorderWidthProps = SystemProps<typeof borderWidthConfig>;
 export const getborderWidth = system<BorderRadiusProps>(borderWidthConfig);
 
 const borderRadiusConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'borderRadius',
   scale: [] as BorderRadii[],
   computeValue: (value: any) => borderRadii[value as BorderRadii],
@@ -42,7 +42,7 @@ export type BorderRadiusProps = SystemProps<typeof borderRadiusConfig>;
 export const getBorderRadius = system<BorderRadiusProps>(borderRadiusConfig);
 
 const borderColorConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'borderColor',
   scale: [] as BorderColors[],
   computeValue: (value: any) => borderColors[value as BorderColors],
@@ -53,7 +53,7 @@ export type BorderColorProps = SystemProps<typeof borderColorConfig>;
 export const getBorderColor = system<BorderColorProps>(borderColorConfig);
 
 const borderStyleConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'borderStyle',
   scale: [] as ('none' | 'solid')[],
   computeValue: identity,

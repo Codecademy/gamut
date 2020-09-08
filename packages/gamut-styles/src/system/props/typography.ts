@@ -14,7 +14,7 @@ import { composeSystem } from '../templating/responsiveProp';
 import { identity } from 'lodash';
 
 const fontFamilyConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'fontFamily',
   scale: [] as FontFamilies[],
   computeValue: (value: any) => fonts[value as FontFamilies],
@@ -25,7 +25,7 @@ export type FontFamilyProps = SystemProps<typeof fontFamilyConfig>;
 export const getFontFamily = system<FontFamilyProps>(fontFamilyConfig);
 
 const fontWeightConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'fontWeight',
   scale: [] as FontWeights[],
   computeValue: (value: any) => weights[value as FontWeights],
@@ -36,7 +36,7 @@ export type FontWeightProps = SystemProps<typeof fontWeightConfig>;
 export const getFontWeight = system<FontWeightProps>(fontWeightConfig);
 
 const lineHeightConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'lineHeight',
   scale: [] as LineHeights[],
   computeValue: (value: any) => lineHeight[value as LineHeights],
@@ -47,7 +47,7 @@ export type LineHeightProps = SystemProps<typeof lineHeightConfig>;
 export const getLineHeight = system<LineHeightProps>(lineHeightConfig);
 
 const fontSizeConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'fontSize',
   scale: [] as FontScale[],
   computeValue: (value: any) => fontScale[value as FontScale],
@@ -58,7 +58,7 @@ export type FontSizeProps = SystemProps<typeof fontSizeConfig>;
 export const getFontSize = system<FontSizeProps>(fontSizeConfig);
 
 const letterSpacingConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'letterSpacing',
   scale: [] as string[],
   computeValue: identity,
@@ -69,7 +69,7 @@ export type LetterSpacingProps = SystemProps<typeof letterSpacingConfig>;
 export const getLetterSpacing = system<LetterSpacingProps>(letterSpacingConfig);
 
 const textAlignConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'textAlign',
   scale: [] as ('left' | 'right' | 'center')[],
   computeValue: identity,
@@ -80,7 +80,7 @@ export type TextAlignProps = SystemProps<typeof textAlignConfig>;
 export const getTextAlign = system<TextAlignProps>(textAlignConfig);
 
 const fontStyleConfig = {
-  type: 'default',
+  type: 'standard',
   propName: 'fontStyle',
   scale: [] as ('normal' | 'italic' | 'oblique')[],
   computeValue: identity,

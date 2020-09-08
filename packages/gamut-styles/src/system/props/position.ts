@@ -5,7 +5,7 @@ import { composeSystem } from '../templating/responsiveProp';
 import { parseCoord } from '../utils';
 
 const positionContextConfig = {
-  type: 'default',
+  type: 'standard',
   scale: [] as ('static' | 'fixed' | 'absolute' | 'relative' | 'sticky')[],
   computeValue: identity,
   propName: 'position',
@@ -18,7 +18,7 @@ export const getPositionContext = system<PositionContextProps>(
 );
 
 const coordinateConfig = {
-  type: 'default',
+  type: 'standard',
   scale: [] as (number | string)[],
   computeValue: (value: any) => parseCoord(value as string | number),
   propName: ['top', 'left', 'right', 'bottom'],
@@ -29,7 +29,7 @@ export type CoordinateProps = SystemProps<typeof coordinateConfig>;
 export const getCoordinate = system<CoordinateProps>(coordinateConfig);
 
 const zIndexConfig = {
-  type: 'default',
+  type: 'standard',
   scale: [] as number[],
   computeValue: identity,
   propName: 'zIndex',

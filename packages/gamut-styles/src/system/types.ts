@@ -19,7 +19,7 @@ export type OptionalResponiveProp<T> = {
   xl?: T;
 };
 
-export type PropTemplateType = 'default' | 'directional';
+export type PropTemplateType = 'standard' | 'directional';
 
 export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { propName: string }>['propName']
@@ -38,7 +38,7 @@ export type DirectionalConfig = {
 
 export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
-  type: 'default';
+  type: 'standard';
   scale: ScaleShape;
   computeValue: (value: ScaleShape[number]) => string | number;
 };
