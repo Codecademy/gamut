@@ -17,7 +17,7 @@ export const borderRadii = {
 export type BorderRadii = keyof typeof borderRadii;
 
 export const borderColors = {
-  base: colors.standard.navy,
+  base: colors.navy,
 };
 
 export type BorderColors = keyof typeof borderColors;

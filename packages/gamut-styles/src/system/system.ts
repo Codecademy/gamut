@@ -42,4 +42,4 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
   };
 };
 
-export const registerHandler = createSystem({} as AbstractTheme);
+export const registerHandler = createSystem({});

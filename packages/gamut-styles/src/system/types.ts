@@ -20,10 +20,18 @@ export type OptionalResponiveProp<T> = {
 };
 
 /** Utility  */
-export type AnyStyle = SerializedStyles | Styles | string;
+export type NeverUnknown<T> = T extends string
+  ? T
+  : T extends number
+  ? T
+  : T extends unknown
+  ? never
+  : T;
 
 /** Abstract Configurations  */
-export type AbstractTheme = Record<string, ScaleShape>;
+export type AnyStyle = SerializedStyles | Styles | string;
+
+export type AbstractTheme = Readonly<Partial<Record<string, ScaleShape>>>;
 
 export type PropTemplateType = 'standard' | 'directional';
 
@@ -63,11 +71,13 @@ export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
+export type SafeLookup<T> = T extends ScaleShape ? T[number] : never;
+
 export type ThematicScaleValue<
   T extends AbstractTheme,
   K extends ThematicConfig<T>
 > =
-  | T[Extract<K, { scale: string }>['scale']][number]
+  | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
   | Extract<K, { scale: ScaleShape }>['scale'][number];
 
 export type ThematicProps<
