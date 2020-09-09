@@ -1,5 +1,5 @@
 import { directionalProperty } from 'polished';
-import { ScaleShape, AbstractSystemConfig, AnyStyle } from '../types';
+import { ScaleShape, AbstractSystemConfig, StyleTemplate } from '../types';
 
 export function directional<
   T extends Record<string, unknown>,
@@ -7,7 +7,7 @@ export function directional<
 >(
   propName: K['propName'] | K['propName'][number],
   computeValue: K['computeValue']
-): (props: T) => AnyStyle {
+): StyleTemplate<T> {
   return (props: T) => {
     const {
       [propName as string]: base,

@@ -37,7 +37,11 @@ export type PropTemplateType = 'standard' | 'directional';
 
 export type ScaleShape = Readonly<unknown[]>;
 
-export type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
+export type StyleTemplate<T> = (props: T) => AnyStyle;
+
+export type Handler<T extends Record<string, unknown>> = {
+  propNames?: (keyof T)[];
+} & ((props: T, noMedia?: boolean) => AnyStyle);
 
 export type HandlerProps<
   T extends Handler<Record<string, unknown>>

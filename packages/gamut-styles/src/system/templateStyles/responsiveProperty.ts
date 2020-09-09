@@ -1,11 +1,11 @@
 import { entries, reduce, isObject, merge, mapValues } from 'lodash';
 import { mediaQueries } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { Handler } from '../types';
+import { Handler, StyleTemplate } from '../types';
 
 export function responsiveProperty<T extends { theme?: any }>(
   handler: Handler<T>
-): Handler<T> {
+): StyleTemplate<T> {
   return (systemProps) => {
     const { theme, ...configuredProps } = systemProps;
     const responsive = reduce(

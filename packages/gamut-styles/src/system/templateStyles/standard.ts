@@ -1,4 +1,4 @@
-import { AbstractSystemConfig, AnyStyle } from '../types';
+import { AbstractSystemConfig, StyleTemplate } from '../types';
 import { propMap, PropAlias } from '../constants';
 
 export const standard = <
@@ -7,7 +7,7 @@ export const standard = <
 >(
   propName: K['propName'] | K['propName'][number],
   computeValue: K['computeValue']
-): ((props: T) => AnyStyle) => {
+): StyleTemplate<T> => {
   return (props: T) => {
     const propKey = propName as PropAlias;
     return (
