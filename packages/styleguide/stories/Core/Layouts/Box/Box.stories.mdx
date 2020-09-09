@@ -1,0 +1,24 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Box } from '@codecademy/gamut-labs/src';
+
+<Meta title="Layouts/Box (Labs)" component={Box} />
+
+# Box
+
+<StoryStatus status="volatile" />
+
+A primitive box component.
+
+<Canvas>
+  <Story
+    name="Box"
+    args={{
+      children: 'Hello world I am a box',
+    }}
+  >
+    {(args) => <Box {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Box" />
