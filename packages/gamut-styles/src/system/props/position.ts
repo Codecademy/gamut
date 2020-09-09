@@ -1,8 +1,7 @@
 import { identity } from 'lodash';
 import { HandlerProps } from '../types';
-import { registerHandler } from '../system';
-import { composeSystem } from '../templating/responsiveProp';
-import { parseCoord } from '../utils';
+import { registerHandler, compose } from '../system';
+import { parseCoordinate } from '../transforms';
 
 const positionContextConfig = {
   type: 'standard',
@@ -17,7 +16,7 @@ export type PositionContextProps = HandlerProps<typeof getPositionContext>;
 const coordinateConfig = {
   type: 'standard',
   scale: [] as (number | string)[],
-  computeValue: (value: any) => parseCoord(value as string | number),
+  computeValue: (value: any) => parseCoordinate(value as string | number),
   propName: ['top', 'left', 'right', 'bottom'],
 } as const;
 
@@ -38,7 +37,7 @@ export type PositionProps = PositionContextProps &
   CoordinateProps &
   ZIndexProps;
 
-export const getPosition = composeSystem<PositionProps>(
+export const getPosition = compose<PositionProps>(
   getPositionContext,
   getZIndex,
   getCoordinate

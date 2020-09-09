@@ -1,7 +1,7 @@
 import { AbstractSystemConfig, AnyStyle } from '../types';
-import { propMap, PropAlias } from './constants';
+import { propMap, PropAlias } from '../constants';
 
-export const standardStyle = <
+export const standard = <
   T extends Record<string, unknown>,
   K extends AbstractSystemConfig
 >(

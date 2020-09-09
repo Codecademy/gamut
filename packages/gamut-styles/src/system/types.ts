@@ -1,6 +1,6 @@
 import { SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
-import { PropAlias } from './style/constants';
+import { PropAlias } from './constants';
 
 /** System Configuration */
 export type ResponsiveProp<T> = {

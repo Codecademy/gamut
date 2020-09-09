@@ -1,8 +1,7 @@
 import { DisplayTypes } from '../../variables/display';
 import { identity } from 'lodash';
 import { HandlerProps } from '../types';
-import { registerHandler } from '../system';
-import { composeSystem } from '../templating/responsiveProp';
+import { compose, registerHandler } from '../system';
 
 const displayConfig = {
   type: 'standard',
@@ -26,4 +25,4 @@ type OverflowProps = HandlerProps<typeof getOverflow>;
 
 export type LayoutProps = DisplayProps & OverflowProps;
 
-export const getLayout = composeSystem<LayoutProps>(getDisplay, getOverflow);
+export const getLayout = compose<LayoutProps>(getDisplay, getOverflow);

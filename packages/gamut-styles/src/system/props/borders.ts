@@ -7,9 +7,8 @@ import {
   BorderColors,
   borderColors,
 } from '../../variables/border';
-import { registerHandler } from '../system';
+import { registerHandler, compose } from '../system';
 import { identity } from 'lodash';
-import { composeSystem } from '../templating/responsiveProp';
 
 const borderWidthConfig = {
   scale: [] as BorderWidths[],
@@ -64,7 +63,7 @@ export type BorderProps = BorderStyleProps &
   BorderWidthProps &
   BorderColorProps;
 
-export const getBorder = composeSystem<BorderProps>(
+export const getBorder = compose<BorderProps>(
   getBorderWidth,
   getBorderColor,
   getBorderRadius,

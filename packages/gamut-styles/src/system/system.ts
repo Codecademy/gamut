@@ -1,15 +1,27 @@
 import { ThematicConfig, ThematicProps, Handler, AbstractTheme } from './types';
-import { standardStyle } from './style/standard';
-import {
-  createSystemHandler,
-  composeSystem,
-} from './templating/responsiveProp';
-import { directional } from './style/directional';
+
+import { directional, responsiveProperty, standard } from './templateStyles';
+import { css } from '@emotion/core';
 
 const typeMap = {
-  standard: standardStyle,
+  standard: standard,
   directional: directional,
 };
+
+export function createHandler<T>(handler: Handler<T>): Handler<T> {
+  const responsiveHandler = responsiveProperty<T>(handler);
+  return (props, noMedia = false) =>
+    noMedia ? handler(props) : responsiveHandler(props);
+}
+
+export function compose<T>(...handlers: Handler<T>[]) {
+  return responsiveProperty<T>(
+    (props: T) =>
+      css`
+        ${handlers.map((handler) => handler(props, true))}
+      `
+  );
+}
 
 export const createSystem = <T extends AbstractTheme>(theme: T) => {
   return <K extends ThematicConfig<T>>(config: K) => {
@@ -22,7 +34,7 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
         propName,
         computeValue
       );
-      systemHandler = createSystemHandler(styleFunction);
+      systemHandler = createHandler(styleFunction);
     } else {
       const composite: Handler<{}>[] = [];
       propName.forEach((propKey) => {
@@ -30,12 +42,12 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
           propKey,
           computeValue
         );
-        const propHandler = createSystemHandler(styleFunction);
+        const propHandler = createHandler(styleFunction);
 
         composite.push(propHandler);
       });
 
-      systemHandler = composeSystem(...composite);
+      systemHandler = compose(...composite);
     }
 
     return systemHandler;

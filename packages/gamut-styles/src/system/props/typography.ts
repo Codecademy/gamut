@@ -9,8 +9,7 @@ import {
   fontScale,
 } from '../../variables/typography';
 import { HandlerProps } from '../types';
-import { registerHandler } from '../system';
-import { composeSystem } from '../templating/responsiveProp';
+import { registerHandler, compose } from '../system';
 import { identity } from 'lodash';
 
 const fontFamilyConfig = {
@@ -91,7 +90,7 @@ export type TypographyProps = FontWeightProps &
   TextAlignProps &
   LetterSpacingProps;
 
-export const getTypography = composeSystem<TypographyProps>(
+export const getTypography = compose<TypographyProps>(
   getFontFamily,
   getFontWeight,
   getFontSize,
