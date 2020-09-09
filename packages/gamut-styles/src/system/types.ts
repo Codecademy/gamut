@@ -23,6 +23,8 @@ export type OptionalResponiveProp<T> = {
 export type AnyStyle = SerializedStyles | Styles | string;
 
 /** Abstract Configurations  */
+export type AbstractTheme = Record<string, ScaleShape>;
+
 export type PropTemplateType = 'standard' | 'directional';
 
 export type ScaleShape = Readonly<unknown[]>;
@@ -52,7 +54,7 @@ export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
 
 /** Theme Aware Configurations */
 
-export type ThematicConfig<T extends { [key: string]: ScaleShape }> =
+export type ThematicConfig<T extends AbstractTheme> =
   | (StandardConfig & { scale: ScaleShape | Readonly<keyof T> })
   | (DirectionalConfig & { scale: ScaleShape | Readonly<keyof T> });
 
@@ -62,14 +64,14 @@ export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
 export type ThematicScaleValue<
-  T extends { [key: string]: ScaleShape },
+  T extends AbstractTheme,
   K extends ThematicConfig<T>
 > =
   | T[Extract<K, { scale: string }>['scale']][number]
   | Extract<K, { scale: ScaleShape }>['scale'][number];
 
 export type ThematicProps<
-  T extends { [key: string]: ScaleShape },
+  T extends AbstractTheme,
   K extends ThematicConfig<T>
 > = Partial<
   Record<

@@ -1,4 +1,4 @@
-import { ThematicConfig, ThematicProps, Handler } from './types';
+import { ThematicConfig, ThematicProps, Handler, AbstractTheme } from './types';
 import { standardStyle } from './style/standard';
 import {
   createSystemHandler,
@@ -11,9 +11,7 @@ const typeMap = {
   directional: directional,
 };
 
-export const createSystem = <T extends { [key: string]: Readonly<unknown[]> }>(
-  theme: T
-) => {
+export const createSystem = <T extends AbstractTheme>(theme: T) => {
   return <K extends ThematicConfig<T>>(config: K) => {
     const { propName, computeValue, type = 'standard' } = config;
     const templateFunction = typeMap[type];
@@ -44,4 +42,4 @@ export const createSystem = <T extends { [key: string]: Readonly<unknown[]> }>(
   };
 };
 
-export const registerHandler = createSystem({});
+export const registerHandler = createSystem({} as AbstractTheme);
