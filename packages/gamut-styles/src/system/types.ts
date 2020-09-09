@@ -19,15 +19,19 @@ export type OptionalResponiveProp<T> = {
   xl?: T;
 };
 
+/** Utility  */
+export type AnyStyle = SerializedStyles | Styles | string;
+
+/** Abstract Configurations  */
 export type PropTemplateType = 'standard' | 'directional';
 
-export type PropKey<T extends AbstractSystemConfig> =
-  | Extract<T, { propName: string }>['propName']
-  | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
-  | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
-
 export type ScaleShape = Readonly<unknown[]>;
+
 export type Handler<T> = (props: T, noMedia?: boolean) => AnyStyle;
+
+export type HandlerProps<
+  T extends Handler<Record<string, unknown>>
+> = Parameters<T>[0];
 
 export type DirectionalConfig = {
   propName: PropAlias;
@@ -46,37 +50,30 @@ export type StandardConfig = {
 
 export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
 
+/** Theme Aware Configurations */
+
 export type ThematicConfig<T extends { [key: string]: ScaleShape }> =
   | (StandardConfig & { scale: ScaleShape | Readonly<keyof T> })
   | (DirectionalConfig & { scale: ScaleShape | Readonly<keyof T> });
+
+export type PropKey<T extends AbstractSystemConfig> =
+  | Extract<T, { propName: string }>['propName']
+  | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
+  | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
+
+export type ThematicScaleValue<
+  T extends { [key: string]: ScaleShape },
+  K extends ThematicConfig<T>
+> =
+  | T[Extract<K, { scale: string }>['scale']][number]
+  | Extract<K, { scale: ScaleShape }>['scale'][number];
 
 export type ThematicProps<
   T extends { [key: string]: ScaleShape },
   K extends ThematicConfig<T>
 > = Partial<
   Record<
-    | Extract<K, { propName: string }>['propName']
-    | Extract<K, { propName: Readonly<string[]> }>['propName'][number]
-    | Extract<K, { altProps: Readonly<string[]> }>['altProps'][number],
-    | OptionalResponiveProp<
-        | T[Extract<K, { scale: string }>['scale']][number]
-        | Extract<K, { scale: ScaleShape }>['scale'][number]
-      >
-    | T[Extract<K, { scale: string }>['scale']][number]
-    | Extract<K, { scale: ScaleShape }>['scale'][number]
+    PropKey<K>,
+    ThematicScaleValue<T, K> | OptionalResponiveProp<ThematicScaleValue<T, K>>
   >
 >;
-
-export type HandlerProps<
-  T extends Handler<Record<string, unknown>>
-> = Parameters<T>[0];
-
-export type SystemProps<T extends AbstractSystemConfig> = Partial<
-  Record<
-    PropKey<T>,
-    OptionalResponiveProp<T['scale'][number]> | T['scale'][number]
-  >
->;
-
-/** Utility  */
-export type AnyStyle = SerializedStyles | Styles | string;
