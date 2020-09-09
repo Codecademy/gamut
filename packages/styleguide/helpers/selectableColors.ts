@@ -7,6 +7,6 @@ export const selectableColors = Object.keys(colors).reduce<
 
   return {
     ...acc,
-    [colorKey]: typeof colorAtKey === 'string' ? colorAtKey : colorAtKey[500],
+    [colorKey]: colorAtKey,
   };
 }, {});

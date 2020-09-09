@@ -1,3 +1,19 @@
+### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.0...@codecademy/gamut-icons@3.4.1) (2020-09-03)
+
+## [3.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.3.0...@codecademy/gamut-icons@3.4.0) (2020-09-02)
+
+
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
+## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **Icons:** Added svg icons ([#942](https://github.com/Codecademy/client-modules/issues/942)) ([dff9075](https://github.com/Codecademy/client-modules/commit/dff9075ed6c53ef95ca283c7df4e119064ac12da))
+
 ## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
 
 

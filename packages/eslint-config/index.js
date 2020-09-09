@@ -36,6 +36,7 @@ module.exports = {
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
     eqeqeq: 'error',
+    'import/no-default-export': 'error',
     'no-console': 'error',
     'no-eval': 'error',
     'no-global-assign': 'error',

@@ -59,5 +59,3 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
     </div>
   );
 };
-
-export default AccordionArea;

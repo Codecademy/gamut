@@ -82,6 +82,7 @@ export const Alert: React.FC<AlertProps> = ({
             <Truncate
               lines={isExpanded ? undefined : lines}
               onTruncate={setIsTruncated}
+              className={s.truncate}
             >
               {children}
             </Truncate>

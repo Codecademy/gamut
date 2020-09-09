@@ -1,3 +1,45 @@
+### [17.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.0...@codecademy/styleguide@17.1.1) (2020-09-03)
+
+
+### 💅 Styles
+
+* use white-space: pre-line for Alert ([#951](https://github.com/Codecademy/client-modules/issues/951)) ([ace3557](https://github.com/Codecademy/client-modules/commit/ace35571bbb4c0a0c550993ac3255e5db058c321))
+
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.0.0...@codecademy/styleguide@17.1.0) (2020-09-02)
+
+
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.1...@codecademy/styleguide@17.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
+### [16.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.0...@codecademy/styleguide@16.0.1) (2020-08-28)
+
+## [16.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.5...@codecademy/styleguide@16.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+### [15.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.4...@codecademy/styleguide@15.1.5) (2020-08-27)
+
+### [15.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.3...@codecademy/styleguide@15.1.4) (2020-08-27)
+
 ### [15.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.2...@codecademy/styleguide@15.1.3) (2020-08-24)
 
 

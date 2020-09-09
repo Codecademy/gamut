@@ -1,84 +1,40 @@
+const black = '#000000';
+const white = '#ffffff';
+
 export const swatches = {
+  beige: {
+    '0': '#FFF0E5',
+  },
   blue: {
-    '100': '#c8d7fa',
-    '200': '#a5befa',
-    '300': '#7da2fa',
-    '400': '#5788fa',
-    '500': '#3069f0',
-    '600': '#2d5dcc',
-    '700': '#2e4a99',
-    '800': '#233466',
-    '900': '#141c3a',
-    '1000': '#10162f',
-    '1100': '#0a0e1d',
-  },
-  pink: {
-    '100': '#ffd9fc',
-    '200': '#ffbffa',
-    '300': '#ffa6f8',
-    '400': '#f288e9',
-    '500': '#d957d9',
-    '600': '#b035c9',
-    '700': '#9129a6',
-    '800': '#702080',
-    '900': '#43134d',
-  },
-  purple: {
-    '100': '#d5ccff',
-    '200': '#c0b6f2',
-    '300': '#ac9df2',
-    '400': '#917ef2',
-    '500': '#7c5ce6',
-    '600': '#6437cc',
-    '700': '#4b2999',
-    '800': '#381f73',
-    '900': '#231347',
-  },
-  red: {
-    '100': '#ffd3cc',
-    '200': '#ffb8ad',
-    '300': '#ff988c',
-    '400': '#ff7566',
-    '500': '#fd4d3f',
-    '600': '#e53935',
-    '700': '#bf2e2c',
-    '800': '#992523',
-    '900': '#661917',
+    '0': '#F5FCFF',
+    '300': '#66C4FF',
+    '500': '#1557FF',
+    '900': '#10162f',
   },
   green: {
-    '100': '#bbfae5',
-    '200': '#91f2d2',
-    '300': '#6aebc0',
-    '400': '#4fe0b0',
-    '500': '#47cca0',
-    '600': '#3eb38c',
-    '700': '#318c6e',
-    '800': '#246650',
-    '900': '#164032',
-  },
-  orange: {
-    '100': '#FFE9C8',
-    '200': '#FFD093',
-    '300': '#FFB764',
-    '400': '#FF9F3C',
-    '500': '#FF881D',
-    '600': '#FB7106',
-    '700': '#DC5A03',
-    '800': '#BA4604',
-    '900': '#963606',
+    '0': '#F5FFE3',
+    '400': '#AEE938',
+    '700': '#009C2C',
   },
   yellow: {
-    '100': '#fff7cc',
-    '200': '#fff2b3',
-    '300': '#ffec8c',
-    '400': '#ffe359',
-    '500': '#ffd500',
-    '600': '#ffb92e',
-    '700': '#e69729',
-    '800': '#b37620',
-    '900': '#805417',
+    '0': '#FFFAE5',
+    '500': '#FFD300',
+  },
+  pink: {
+    '0': '#FFF5FF',
+    '400': '#F966FF',
+  },
+  red: {
+    '500': '#F03329',
+  },
+  orange: {
+    '500': '#FF8C00',
+  },
+  hyper: {
+    '500': '#3A10E5',
   },
   gray: {
+    '0': white,
     '100': '#f6f5fa',
     '200': '#dddce0',
     '300': '#c4c3c7',
@@ -91,32 +47,27 @@ export const swatches = {
   },
 } as const;
 
-const black = '#000000';
-const white = '#ffffff';
-
-const legacyColors = {
-  royalBlue: '#6400e4',
+export const colors = {
+  beige: swatches.beige[0],
+  blue: swatches.blue[500],
+  green: swatches.green[700],
+  hyper: swatches.hyper[500],
+  lightBlue: swatches.blue[300],
+  lightGreen: swatches.green[400],
+  navy: swatches.blue[900],
+  orange: swatches.orange[500],
+  paleBlue: swatches.blue[0],
+  paleGreen: swatches.green[0],
+  palePink: swatches.pink[0],
+  paleYellow: swatches.yellow[0],
+  pink: swatches.pink[400],
+  red: swatches.red[500],
+  yellow: swatches.yellow[500],
+  black,
+  white,
 } as const;
 
-export const standardColors = {
-  beige: '#FFF0E5',
-  blue: '#1557FF',
-  green: '#009C2C',
-  hyper: '#3A10E5',
-  lightBlue: '#66C4FF',
-  lightGreen: '#AEE938',
-  navy: swatches.blue[1000],
-  orange: '#FF8C00',
-  paleBlue: '#F5FCFF',
-  paleGreen: '#F5FFE3',
-  palePink: '#FFF5FF',
-  paleYellow: '#FFFAE5',
-  pink: '#F966FF',
-  red: '#F03329',
-  yellow: '#FFD300',
-} as const;
-
-export const standardColorNames = {
+export const colorNames = {
   beige: 'Bagel',
   blue: 'A Train',
   green: 'Forest Hills',
@@ -132,29 +83,13 @@ export const standardColorNames = {
   pink: 'Hotdog',
   red: 'Redhook',
   yellow: 'Taxi',
+  black: 'Black',
+  white: 'White',
 } as const;
 
-const interactive = {
-  dark: standardColors.hyper,
-  light: standardColors.yellow,
-} as const;
-
-/**
- * @deprecated
- * use the standard color set
- */
-export const brandColors = {
-  red: swatches.red[500],
-  orange: swatches.orange[400],
-  yellow: swatches.yellow[500],
-  purple: legacyColors['royalBlue'],
-  pink: swatches.pink[400],
-  magenta: swatches.pink[700],
-  mint: swatches.green[300],
-  beige: '#efd9ca',
-  blue: swatches.blue[500],
-  darkBlue: swatches.blue[900],
-  lavender: swatches.purple[500],
+export const interactiveColors = {
+  dark: colors.hyper,
+  light: colors.yellow,
 } as const;
 
 export const editorColors = {
@@ -184,15 +119,4 @@ export const platformColors = {
     '800': '#2a283e',
     '900': '#15141f',
   },
-} as const;
-
-export const colors = {
-  ...legacyColors,
-  ...swatches,
-  standard: standardColors,
-  black,
-  editor: editorColors,
-  interactive,
-  platform: platformColors,
-  white,
 } as const;

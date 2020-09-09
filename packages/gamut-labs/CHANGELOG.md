@@ -1,3 +1,42 @@
+### [4.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.1...@codecademy/gamut-labs@4.0.2) (2020-09-03)
+
+### [4.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.0...@codecademy/gamut-labs@4.0.1) (2020-09-02)
+
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.1...@codecademy/gamut-labs@4.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
+### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.0...@codecademy/gamut-labs@3.0.1) (2020-08-28)
+
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.1.0...@codecademy/gamut-labs@3.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.7...@codecademy/gamut-labs@2.1.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **BreakpointHooks:** Port breakpoint hooks from Monolith into Gamut Labs ([db2e22a](https://github.com/Codecademy/client-modules/commit/db2e22a20abed47615a2f26e4111cb2ef3d00b96))
+
+### [2.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.6...@codecademy/gamut-labs@2.0.7) (2020-08-27)
+
+### [2.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.5...@codecademy/gamut-labs@2.0.6) (2020-08-27)
+
 ### [2.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.4...@codecademy/gamut-labs@2.0.5) (2020-08-24)
 
 ### [2.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.3...@codecademy/gamut-labs@2.0.4) (2020-08-24)
