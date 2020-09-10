@@ -8,7 +8,7 @@ export function responsiveProperty<T extends { theme?: any }>({
   templateFns,
 }: {
   propNames: (keyof T)[];
-  templateFns: Record<keyof T, StyleTemplate<T>>;
+  templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
 }): StyleTemplate<T> {
   return (props) => {
     const responsive = {} as Record<keyof typeof mediaQueries | 'base', T>;
@@ -45,7 +45,7 @@ export function responsiveProperty<T extends { theme?: any }>({
     return css`
       ${entries(responsive).map(([breakpoint, props]) => {
         const rules = Object.entries(templateFns).map(([propName, fn]) => {
-          const rule = fn(props);
+          const rule = fn && fn(props);
           return rule ? rule : '';
         });
 

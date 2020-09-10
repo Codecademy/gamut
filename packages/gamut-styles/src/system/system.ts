@@ -20,7 +20,7 @@ export function createHandler<T extends Record<string, unknown>>(
   const propNames = [propName];
   const templateFns = {
     [propName]: styleTemplate,
-  } as Record<keyof T, StyleTemplate<T>>;
+  } as Partial<Record<keyof T, StyleTemplate<T>>>;
 
   const handler: Handler<T> = responsiveProperty<T>({ propNames, templateFns });
   handler.propNames = propNames;
@@ -32,7 +32,7 @@ export function compose<T extends Record<string, unknown>>(
   ...handlers: Handler<T>[]
 ) {
   let propNames: (keyof T)[] = [];
-  let templateFns = {} as Record<keyof T, StyleTemplate<T>>;
+  let templateFns = {} as Partial<Record<keyof T, StyleTemplate<T>>>;
 
   handlers.forEach((handler) => {
     if (handler.propNames) {
@@ -49,6 +49,7 @@ export function compose<T extends Record<string, unknown>>(
   });
 
   composedHandler.propNames = propNames;
+  composedHandler.templateFns = templateFns;
 
   return composedHandler;
 }

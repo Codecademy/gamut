@@ -37,16 +37,20 @@ export type PropTemplateType = 'standard' | 'directional';
 
 export type ScaleShape = Readonly<unknown[]>;
 
-export type StyleTemplate<T> = (props: T) => AnyStyle;
+export type AbstractProps = Record<string, unknown>;
 
-export type Handler<T extends Record<string, unknown>> = {
+export type StyleTemplate<T extends AbstractProps> = (props: T) => AnyStyle;
+
+export type TemplateMap<T extends AbstractProps> = Partial<
+  Record<keyof T, StyleTemplate<T>>
+>;
+
+export type Handler<T extends AbstractProps> = {
   propNames?: (keyof T)[];
-  templateFns?: Record<keyof T, StyleTemplate<T>>;
-} & ((props: T, noMedia?: boolean) => AnyStyle);
+  templateFns?: TemplateMap<T>;
+} & ((props: T) => AnyStyle);
 
-export type HandlerProps<
-  T extends Handler<Record<string, unknown>>
-> = Parameters<T>[0];
+export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
 export type DirectionalConfig = {
   propName: PropAlias;
