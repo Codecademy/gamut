@@ -4,22 +4,31 @@ import {
   Handler,
   AbstractTheme,
   StyleTemplate,
+  AbstractProps,
 } from './types';
 
 import { directional, responsiveProperty, standard } from './templateStyles';
+import { get } from 'lodash';
 
 const typeMap = {
   standard: standard,
   directional: directional,
 };
 
-export function createHandler<T extends Record<string, unknown>>(
-  styleTemplate: StyleTemplate<T>,
-  propName: keyof T
-): Handler<T> {
-  const propNames = [propName];
+type HandlerConfig<T extends AbstractProps> = {
+  propName: keyof T;
+  altProps?: (keyof T)[];
+  templateFn: StyleTemplate<T>;
+};
+
+export function createHandler<T extends AbstractProps>({
+  propName,
+  altProps = [],
+  templateFn,
+}: HandlerConfig<T>): Handler<T> {
+  const propNames = [propName, ...altProps];
   const templateFns = {
-    [propName]: styleTemplate,
+    [propName]: templateFn,
   } as Partial<Record<keyof T, StyleTemplate<T>>>;
 
   const handler: Handler<T> = responsiveProperty<T>({ propNames, templateFns });
@@ -64,12 +73,21 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
 
     if (typeof propName === 'string') {
       const styleFunction = templateFunction<P, K>(propName, computeValue);
-      systemHandler = createHandler<P>(styleFunction, propName);
+
+      systemHandler = createHandler<P>({
+        propName,
+        altProps: get(config, 'altProps'),
+        templateFn: styleFunction,
+      });
     } else {
       const composite: Handler<P>[] = [];
       propName.forEach((propKey) => {
         const styleFunction = templateFunction<P, K>(propKey, computeValue);
-        const propHandler = createHandler<P>(styleFunction, propKey);
+
+        const propHandler = createHandler<P>({
+          propName: propKey,
+          templateFn: styleFunction,
+        });
 
         composite.push(propHandler);
       });
