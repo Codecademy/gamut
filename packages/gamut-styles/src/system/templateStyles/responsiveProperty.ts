@@ -1,15 +1,17 @@
 import { entries, isObject } from 'lodash';
 import { mediaQueries, MediaSize } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { StyleTemplate } from '../types';
+import { StyleTemplate, AbstractProps } from '../types';
+
+type PropertyConfig<T extends AbstractProps> = {
+  propNames: (keyof T)[];
+  templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
+};
 
 export function responsiveProperty<T extends { theme?: any }>({
   propNames,
   templateFns,
-}: {
-  propNames: (keyof T)[];
-  templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
-}): StyleTemplate<T> {
+}: PropertyConfig<T>): StyleTemplate<T> {
   return (props) => {
     const responsive = {} as Record<keyof typeof mediaQueries | 'base', T>;
 
