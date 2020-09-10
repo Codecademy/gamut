@@ -1,3 +1,5 @@
+import { standard, directional } from './templateStyles';
+
 export const propMap = {
   fontFamily: 'font-family',
   fontSize: 'font-size',
@@ -25,3 +27,8 @@ export const propMap = {
 } as const;
 
 export type PropAlias = keyof typeof propMap;
+
+export const typeMap = {
+  standard: standard,
+  directional: directional,
+};

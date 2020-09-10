@@ -20,6 +20,12 @@ export type OptionalResponiveProp<T> = {
 };
 
 /** Utility  */
+export type UnionToIntersection<U> = (
+  U extends any ? (k: U) => void : never
+) extends (k: infer I) => void
+  ? I
+  : never;
+
 export type NeverUnknown<T> = T extends string
   ? T
   : T extends number
@@ -51,6 +57,12 @@ export type StyleTemplate<T extends AbstractProps> = (props: T) => AnyStyle;
 export type TemplateMap<T extends AbstractProps> = Partial<
   Record<keyof T, StyleTemplate<T>>
 >;
+
+export type HandlerConfig<T extends AbstractProps> = {
+  propName: keyof T;
+  altProps?: (keyof T)[];
+  templateFn: StyleTemplate<T>;
+};
 
 export type Handler<T extends AbstractProps> = {
   propNames?: (keyof T)[];
@@ -100,9 +112,8 @@ export type ThematicScaleValue<
 export type ThematicProps<
   T extends AbstractTheme,
   K extends ThematicConfig<T>
-> = Partial<
-  Record<
-    PropKey<K>,
-    ThematicScaleValue<T, K> | OptionalResponiveProp<ThematicScaleValue<T, K>>
-  >
->;
+> = {
+  [key in PropKey<K>]?:
+    | ThematicScaleValue<T, K>
+    | OptionalResponiveProp<ThematicScaleValue<T, K>>;
+};

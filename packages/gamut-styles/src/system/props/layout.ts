@@ -25,4 +25,4 @@ type OverflowProps = HandlerProps<typeof getOverflow>;
 
 export type LayoutProps = DisplayProps & OverflowProps;
 
-export const getLayout = compose<LayoutProps>(getDisplay, getOverflow);
+export const getLayout = compose(getDisplay, getOverflow);

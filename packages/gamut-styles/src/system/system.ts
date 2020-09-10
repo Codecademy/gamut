@@ -5,22 +5,13 @@ import {
   AbstractTheme,
   StyleTemplate,
   AbstractProps,
+  UnionToIntersection,
+  HandlerConfig,
 } from './types';
 
-import { directional, responsiveProperty, standard } from './templateStyles';
+import { responsiveProperty } from './templateStyles';
 import { get } from 'lodash';
-import { PropAlias } from './constants';
-
-const typeMap = {
-  standard: standard,
-  directional: directional,
-};
-
-type HandlerConfig<T extends AbstractProps> = {
-  propName: keyof T;
-  altProps?: (keyof T)[];
-  templateFn: StyleTemplate<T>;
-};
+import { PropAlias, typeMap } from './constants';
 
 export function createHandler<T extends AbstractProps>({
   propName,
@@ -38,11 +29,12 @@ export function createHandler<T extends AbstractProps>({
   return handler;
 }
 
-export function compose<T extends Record<string, unknown>>(
-  ...handlers: Handler<T>[]
-) {
-  let propNames: (keyof T)[] = [];
-  let templateFns = {} as Partial<Record<keyof T, StyleTemplate<T>>>;
+export function compose<
+  T extends Handler<AbstractProps>[],
+  P extends AbstractProps & UnionToIntersection<Parameters<T[number]>[0]>
+>(...handlers: T) {
+  let propNames: (keyof P)[] = [];
+  let templateFns = {} as Partial<Record<keyof P, StyleTemplate<P>>>;
 
   handlers.forEach((handler) => {
     if (handler.propNames) {
@@ -58,7 +50,7 @@ export function compose<T extends Record<string, unknown>>(
     templateFns,
   };
 
-  const composedHandler: Handler<T> = responsiveProperty<T>(config);
+  const composedHandler: Handler<P> = responsiveProperty<P>(config);
 
   composedHandler.propNames = propNames;
   composedHandler.templateFns = templateFns;
@@ -104,7 +96,7 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
       systemHandler = createHandler<P>(propConfig);
       registerProp(propName, systemHandler);
     } else {
-      const composite: Handler<P>[] = [];
+      const composite: Handler<AbstractProps>[] = [];
       propName.forEach((propKey) => {
         const styleFunction = templateFunction<P, K>(propKey, computeValue);
         const propConfig = {
@@ -114,10 +106,10 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
         const propHandler = createHandler<P>(propConfig);
         registerProp(propKey, propHandler);
 
-        composite.push(propHandler);
+        composite.push(propHandler as Handler<AbstractProps>);
       });
 
-      systemHandler = compose<P>(...composite);
+      systemHandler = compose(...composite);
     }
 
     return systemHandler;

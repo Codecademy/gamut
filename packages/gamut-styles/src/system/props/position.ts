@@ -37,7 +37,7 @@ export type PositionProps = PositionContextProps &
   CoordinateProps &
   ZIndexProps;
 
-export const getPosition = compose<PositionProps>(
+export const getPosition = compose(
   getPositionContext,
   getZIndex,
   getCoordinate

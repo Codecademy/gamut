@@ -40,4 +40,4 @@ export type PaddingProps = HandlerProps<typeof getPadding>;
 
 export type SpacingProps = PaddingProps & MarginProps;
 
-export const getSpacing = compose<SpacingProps>(getPadding, getMargin);
+export const getSpacing = compose(getPadding, getMargin);

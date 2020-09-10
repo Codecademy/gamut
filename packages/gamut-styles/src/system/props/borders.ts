@@ -58,12 +58,9 @@ const borderStyleConfig = {
 export const getBorderStyle = registerHandler(borderStyleConfig);
 export type BorderStyleProps = HandlerProps<typeof getBorderStyle>;
 
-export type BorderProps = BorderStyleProps &
-  BorderRadiusProps &
-  BorderWidthProps &
-  BorderColorProps;
+export type BorderProps = HandlerProps<typeof getBorder>;
 
-export const getBorder = compose<BorderProps>(
+export const getBorder = compose(
   getBorderWidth,
   getBorderColor,
   getBorderRadius,

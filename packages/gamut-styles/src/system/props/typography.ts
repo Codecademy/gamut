@@ -90,7 +90,7 @@ export type TypographyProps = FontWeightProps &
   TextAlignProps &
   LetterSpacingProps;
 
-export const getTypography = compose<TypographyProps>(
+export const getTypography = compose(
   getFontFamily,
   getFontWeight,
   getFontSize,

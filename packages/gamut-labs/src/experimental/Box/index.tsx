@@ -5,23 +5,17 @@ import {
   getTypography,
   getSpacing,
   getBorder,
-  PositionProps,
-  TypographyProps,
-  SpacingProps,
-  LayoutProps,
-  BorderProps,
+  compose,
 } from '@codecademy/gamut-styles';
 
-type BoxProps = TypographyProps &
-  SpacingProps &
-  BorderProps &
-  LayoutProps &
-  PositionProps;
+const boxStyles = compose(
+  getTypography,
+  getLayout,
+  getSpacing,
+  getBorder,
+  getPosition
+);
 
-export const Box = styled.div<BoxProps>`
-  ${getTypography}
-  ${getLayout}
-  ${getSpacing}
-  ${getBorder}
-  ${getPosition}
+export const Box = styled.div`
+  ${boxStyles}
 `;
