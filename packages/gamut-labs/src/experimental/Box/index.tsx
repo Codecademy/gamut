@@ -1,15 +1,15 @@
 import styled from '@emotion/styled';
 import {
+  getLayout,
+  getPosition,
   getTypography,
   getSpacing,
   getBorder,
+  PositionProps,
   TypographyProps,
   SpacingProps,
-  BorderProps,
-  PositionProps,
-  getLayout,
   LayoutProps,
-  getPosition,
+  BorderProps,
 } from '@codecademy/gamut-styles';
 
 type BoxProps = TypographyProps &

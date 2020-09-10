@@ -1,12 +1,15 @@
 import { entries, isObject } from 'lodash';
 import { mediaQueries, MediaSize } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { Handler, StyleTemplate } from '../types';
+import { StyleTemplate } from '../types';
 
-export function responsiveProperty<T extends { theme?: any }>(
-  handler: Handler<T>,
-  propNames: (keyof T)[]
-): StyleTemplate<T> {
+export function responsiveProperty<T extends { theme?: any }>({
+  propNames,
+  templateFns,
+}: {
+  propNames: (keyof T)[];
+  templateFns: Record<keyof T, StyleTemplate<T>>;
+}): StyleTemplate<T> {
   return (props) => {
     const responsive = {} as Record<keyof typeof mediaQueries | 'base', T>;
 
@@ -41,7 +44,10 @@ export function responsiveProperty<T extends { theme?: any }>(
 
     return css`
       ${entries(responsive).map(([breakpoint, props]) => {
-        const rules = handler(props);
+        const rules = Object.entries(templateFns).map(([propName, fn]) => {
+          const rule = fn(props);
+          return rule ? rule : '';
+        });
 
         if (breakpoint === 'base') {
           return css`

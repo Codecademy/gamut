@@ -7,7 +7,6 @@ import {
 } from './types';
 
 import { directional, responsiveProperty, standard } from './templateStyles';
-import { css } from '@emotion/core';
 
 const typeMap = {
   standard: standard,
@@ -19,9 +18,13 @@ export function createHandler<T extends Record<string, unknown>>(
   propName: keyof T
 ): Handler<T> {
   const propNames = [propName];
-  const handler: Handler<T> = responsiveProperty<T>(styleTemplate, propNames);
+  const templateFns = {
+    [propName]: styleTemplate,
+  } as Record<keyof T, StyleTemplate<T>>;
+
+  const handler: Handler<T> = responsiveProperty<T>({ propNames, templateFns });
   handler.propNames = propNames;
-  handler.templateFn = styleTemplate;
+  handler.templateFns = templateFns;
   return handler;
 }
 
@@ -29,19 +32,21 @@ export function compose<T extends Record<string, unknown>>(
   ...handlers: Handler<T>[]
 ) {
   let propNames: (keyof T)[] = [];
+  let templateFns = {} as Record<keyof T, StyleTemplate<T>>;
+
   handlers.forEach((handler) => {
     if (handler.propNames) {
       propNames = propNames.concat(handler.propNames);
     }
+    if (handler.templateFns) {
+      templateFns = { ...templateFns, ...handler.templateFns };
+    }
   });
 
-  const composedHandler: Handler<T> = responsiveProperty<T>(
-    (props: T) =>
-      css`
-        ${handlers.map((handler) => handler(props, true))}
-      `,
-    propNames
-  );
+  const composedHandler: Handler<T> = responsiveProperty<T>({
+    propNames,
+    templateFns,
+  });
 
   composedHandler.propNames = propNames;
 
