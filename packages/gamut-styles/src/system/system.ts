@@ -9,6 +9,7 @@ import {
 
 import { directional, responsiveProperty, standard } from './templateStyles';
 import { get } from 'lodash';
+import { PropAlias } from './constants';
 
 const typeMap = {
   standard: standard,
@@ -52,10 +53,12 @@ export function compose<T extends Record<string, unknown>>(
     }
   });
 
-  const composedHandler: Handler<T> = responsiveProperty<T>({
+  const config = {
     propNames,
     templateFns,
-  });
+  };
+
+  const composedHandler: Handler<T> = responsiveProperty<T>(config);
 
   composedHandler.propNames = propNames;
   composedHandler.templateFns = templateFns;
@@ -64,7 +67,26 @@ export function compose<T extends Record<string, unknown>>(
 }
 
 export const createSystem = <T extends AbstractTheme>(theme: T) => {
-  return <K extends ThematicConfig<T>, P extends ThematicProps<T, K>>(
+  const global: {
+    props: Partial<Record<PropAlias, Handler<AbstractProps>>>;
+  } = {
+    props: {},
+  };
+
+  const registerProp = <T extends AbstractProps>(
+    propKey: PropAlias,
+    handler: Handler<T>
+  ) => {
+    global.props = {
+      ...global.props,
+      [propKey]: handler,
+    };
+  };
+
+  const registerHandler = <
+    K extends ThematicConfig<T>,
+    P extends ThematicProps<T, K>
+  >(
     config: K
   ) => {
     const { propName, computeValue, type = 'standard' } = config;
@@ -73,21 +95,24 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
 
     if (typeof propName === 'string') {
       const styleFunction = templateFunction<P, K>(propName, computeValue);
-
-      systemHandler = createHandler<P>({
+      const propConfig = {
         propName,
         altProps: get(config, 'altProps'),
         templateFn: styleFunction,
-      });
+      };
+
+      systemHandler = createHandler<P>(propConfig);
+      registerProp(propName, systemHandler);
     } else {
       const composite: Handler<P>[] = [];
       propName.forEach((propKey) => {
         const styleFunction = templateFunction<P, K>(propKey, computeValue);
-
-        const propHandler = createHandler<P>({
+        const propConfig = {
           propName: propKey,
           templateFn: styleFunction,
-        });
+        };
+        const propHandler = createHandler<P>(propConfig);
+        registerProp(propKey, propHandler);
 
         composite.push(propHandler);
       });
@@ -97,6 +122,8 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
 
     return systemHandler;
   };
+
+  return { registerHandler, global };
 };
 
-export const registerHandler = createSystem({});
+export const { registerHandler, global } = createSystem({});
