@@ -1,4 +1,4 @@
-import { ScaleShape, AbstractSystemConfig, StyleTemplate } from '../types';
+import { AbstractSystemConfig, StyleTemplate } from '../types';
 import { PropAlias } from '../constants';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
@@ -32,7 +32,7 @@ export function directional<
       [`${propName}Right`]: r = x,
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
-    } = props as Record<string, ScaleShape[number]>;
+    } = props as Record<string, unknown>;
     const propKey = propName as PropAlias;
 
     const propertyValues = DIRECTIONS.map((direction) =>
