@@ -67,7 +67,7 @@ export function compose<T extends Record<string, unknown>>(
 }
 
 export const createSystem = <T extends AbstractTheme>(theme: T) => {
-  const global: {
+  const systemConfig: {
     props: Partial<Record<PropAlias, Handler<AbstractProps>>>;
   } = {
     props: {},
@@ -77,8 +77,8 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
     propKey: PropAlias,
     handler: Handler<T>
   ) => {
-    global.props = {
-      ...global.props,
+    systemConfig.props = {
+      ...systemConfig.props,
       [propKey]: handler,
     };
   };
@@ -123,7 +123,7 @@ export const createSystem = <T extends AbstractTheme>(theme: T) => {
     return systemHandler;
   };
 
-  return { registerHandler, global };
+  return { registerHandler, systemConfig };
 };
 
-export const { registerHandler, global } = createSystem({});
+export const { registerHandler, systemConfig } = createSystem({});
