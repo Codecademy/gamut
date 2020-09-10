@@ -28,22 +28,21 @@ export type NeverUnknown<T> = T extends string
   ? never
   : T;
 
-export type SafeLookup<T> = T extends ScaleShape ? T[number] : never;
-export type SafeMapKey<T> = T extends ScaleMap ? keyof T : never;
+export type SafeLookup<T> = T extends Readonly<unknown[]> ? T[number] : never;
+export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
+  ? keyof T
+  : never;
 
 /** Abstract Configurations  */
 export type AnyStyle = SerializedStyles | Styles | string;
 
-export type AbstractTheme = Readonly<Partial<Record<string, ScaleShape>>>;
+export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
-export type PropTemplateType = 'standard' | 'directional';
-
-export type ScaleShape = Readonly<unknown[]>;
+export type ScaleArray = Readonly<unknown[]>;
 
 export type ScaleMap = Readonly<Record<string, unknown>>;
 
-export type AbstractScales = ScaleShape | ScaleMap | Readonly<string>;
-export type AbstractScales = ScaleShape | ScaleMap | Readonly<string>;
+export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
 
 export type AbstractProps = Record<string, unknown>;
 
@@ -60,19 +59,21 @@ export type Handler<T extends AbstractProps> = {
 
 export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
+export type PropTemplateType = 'standard' | 'directional';
+
 export type DirectionalConfig = {
   propName: PropAlias;
   altProps?: Readonly<string[]>;
   type: 'directional';
   scale: AbstractScales;
-  computeValue: (value: ScaleShape[number]) => string | number;
+  computeValue: (value: ScaleArray[number]) => string | number;
 };
 
 export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   type: 'standard';
   scale: AbstractScales;
-  computeValue: (value: ScaleShape[number]) => string | number;
+  computeValue: (value: ScaleArray[number]) => string | number;
 };
 
 export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
@@ -80,8 +81,8 @@ export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
 /** Theme Aware Configurations */
 
 export type ThematicConfig<T extends AbstractTheme> =
-  | (StandardConfig & { scale: ScaleShape | ScaleMap | Readonly<keyof T> })
-  | (DirectionalConfig & { scale: ScaleShape | ScaleMap | Readonly<keyof T> });
+  | (StandardConfig & { scale: ScaleArray | ScaleMap | Readonly<keyof T> })
+  | (DirectionalConfig & { scale: ScaleArray | ScaleMap | Readonly<keyof T> });
 
 export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { propName: string }>['propName']
@@ -94,7 +95,7 @@ export type ThematicScaleValue<
 > =
   | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
   | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']>
-  | Extract<K, { scale: ScaleShape }>['scale'][number];
+  | Extract<K, { scale: ScaleArray }>['scale'][number];
 
 export type ThematicProps<
   T extends AbstractTheme,
