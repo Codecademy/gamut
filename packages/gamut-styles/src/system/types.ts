@@ -41,6 +41,7 @@ export type StyleTemplate<T> = (props: T) => AnyStyle;
 
 export type Handler<T extends Record<string, unknown>> = {
   propNames?: (keyof T)[];
+  templateFn?: StyleTemplate<T>;
 } & ((props: T, noMedia?: boolean) => AnyStyle);
 
 export type HandlerProps<

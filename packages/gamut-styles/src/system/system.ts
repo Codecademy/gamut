@@ -18,33 +18,32 @@ export function createHandler<T extends Record<string, unknown>>(
   styleTemplate: StyleTemplate<T>,
   propName: keyof T
 ): Handler<T> {
-  const responsiveStyles = responsiveProperty<T>(styleTemplate);
-  const handler: Handler<T> = (props: T, noMedia = false) =>
-    noMedia ? styleTemplate(props) : responsiveStyles(props);
-
-  handler.propNames = [propName];
+  const propNames = [propName];
+  const handler: Handler<T> = responsiveProperty<T>(styleTemplate, propNames);
+  handler.propNames = propNames;
+  handler.templateFn = styleTemplate;
   return handler;
 }
 
 export function compose<T extends Record<string, unknown>>(
   ...handlers: Handler<T>[]
 ) {
+  let propNames: (keyof T)[] = [];
+  handlers.forEach((handler) => {
+    if (handler.propNames) {
+      propNames = propNames.concat(handler.propNames);
+    }
+  });
+
   const composedHandler: Handler<T> = responsiveProperty<T>(
     (props: T) =>
       css`
         ${handlers.map((handler) => handler(props, true))}
-      `
+      `,
+    propNames
   );
 
-  composedHandler.propNames = [];
-  handlers.forEach((handler) => {
-    if (handler.propNames) {
-      composedHandler.propNames = [
-        ...composedHandler.propNames!,
-        ...handler.propNames,
-      ];
-    }
-  });
+  composedHandler.propNames = propNames;
 
   return composedHandler;
 }
