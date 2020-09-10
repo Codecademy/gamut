@@ -32,20 +32,12 @@ export const Byline: React.FC<BylineProps> = ({
       data-testid="author-container"
       className={cx(s.author, classNames.author)}
     >
-      <span aria-label={`First Name: ${firstName}`}>{firstName}</span>
-      {lastName && (
-        <span aria-label={`Last Name: ${lastName}`} className={s.lastName}>
-          {` ${lastName}`}
-        </span>
-      )}
+      <span>{firstName}</span>
+      {lastName && <span className={s.lastName}>{` ${lastName}`}</span>}
     </span>
     <div data-testid="job-container" className={classNames.jobContainer}>
-      <span aria-label={`Occupation: ${occupation}`}>{occupation}</span>
-      {company && (
-        <span aria-label={`Company: ${company}`} className={s.company}>
-          {` @ ${company}`}
-        </span>
-      )}
+      <span>{occupation}</span>
+      {company && <span className={s.company}>{` @ ${company}`}</span>}
     </div>
     {location && (
       <div className={s.locationContainer}>
