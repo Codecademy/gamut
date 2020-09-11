@@ -42,7 +42,7 @@
     "fork-ts-checker-webpack-plugin": "4.0.2",
     "invariant": "2.2.4",
     "jsdom": "15.0.0",
-    "lodash": "4.17.13",
+    "lodash": "4.17.20",
     "moment": "2.24.0",
     "polished": "^3.6.5",
     "react": "16.12.0",
