@@ -8,7 +8,7 @@ export type MediaQueryArray<T> =
   | [T | undefined, T | undefined]
   | [T | undefined, T | undefined, T | undefined]
   | [T | undefined, T | undefined, T | undefined, T | undefined]
-  | [T | undefined, T | undefined, T | undefined, T | undefined];
+  | [T | undefined, T | undefined, T | undefined, T | undefined, T | undefined];
 
 export type MediaQueryMap<T> = {
   xs?: T;
