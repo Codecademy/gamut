@@ -1,21 +1,11 @@
 import styled from '@emotion/styled';
-import {
-  getLayout,
-  getPosition,
-  getTypography,
-  getSpacing,
-  getBorder,
-  compose,
-} from '@codecademy/gamut-styles';
 
-const boxStyles = compose(
-  getTypography,
-  getLayout,
-  getSpacing,
-  getBorder,
-  getPosition
-);
+import { padding, margin } from '@codecademy/gamut-styles/dist/system';
+import { HandlerProps } from '@codecademy/gamut-styles/dist/system/types';
 
-export const Box = styled.div`
-  ${boxStyles}
+type BoxProps = HandlerProps<typeof padding> & HandlerProps<typeof margin>;
+
+export const Box = styled.div<BoxProps>`
+  ${padding}
+  ${margin}
 `;

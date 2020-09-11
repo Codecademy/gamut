@@ -13,7 +13,7 @@ export const standard = <
     return (
       props[propKey] &&
       `
-        ${propMap[propKey]}: ${computeValue(props[propKey])};
+        ${propMap[propKey]}: ${computeValue!(props[propKey])};
       `
     );
   };

@@ -42,7 +42,7 @@ export function directional<
     return `${[t, r, b, l]
       .map((value, index) => {
         if (value !== undefined) {
-          return `${propertyValues[index]}: ${computeValue(value)};`;
+          return `${propertyValues[index]}: ${computeValue!(value)};`;
         }
         return '';
       })

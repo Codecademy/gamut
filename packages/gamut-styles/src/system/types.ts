@@ -73,19 +73,21 @@ export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
 export type PropTemplateType = 'standard' | 'directional';
 
+export type TransformValue = (value: unknown) => string | number;
+
 export type DirectionalConfig = {
   propName: PropAlias;
   altProps?: Readonly<string[]>;
   type: 'directional';
   scale: AbstractScales;
-  computeValue: (value: ScaleArray[number]) => string | number;
+  computeValue?: TransformValue;
 };
 
 export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
-  type: 'standard';
+  type?: 'standard';
   scale: AbstractScales;
-  computeValue: (value: ScaleArray[number]) => string | number;
+  computeValue?: TransformValue;
 };
 
 export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
