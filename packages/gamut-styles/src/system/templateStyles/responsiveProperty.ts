@@ -1,4 +1,4 @@
-import { entries, isObject } from 'lodash';
+import { entries, isArray, isObject } from 'lodash';
 import { mediaQueries, MediaSize } from '../../variables/responsive';
 import { css } from '@emotion/core';
 import { StyleTemplate, AbstractProps } from '../types';
@@ -7,6 +7,8 @@ type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];
   templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
 };
+
+const MEDIA: MediaSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export function responsiveProperty<T extends { theme?: any }>({
   propNames,
@@ -21,24 +23,28 @@ export function responsiveProperty<T extends { theme?: any }>({
         return;
       }
 
-      if (isObject(propConfig)) {
+      if (isArray(propConfig)) {
+        propConfig.forEach((value, i) => {
+          const media = MEDIA[i];
+          if (value === undefined) {
+            return;
+          }
+          responsive[media] = {
+            ...responsive[media],
+            [propName]: value,
+          };
+        });
+      } else if (isObject(propConfig)) {
         Object.entries(propConfig).forEach(([key, value]) => {
           const media = key as MediaSize;
-          if (media === 'xs') {
-            responsive['base'] = {
-              ...responsive['base'],
-              [propName]: value,
-            };
-          } else {
-            responsive[media] = {
-              ...responsive[media],
-              [propName]: value,
-            };
-          }
+          responsive[media] = {
+            ...responsive[media],
+            [propName]: value,
+          };
         });
       } else {
-        responsive['base'] = {
-          ...responsive['base'],
+        responsive['xs'] = {
+          ...responsive['xs'],
           [propName]: propConfig,
         };
       }
@@ -51,7 +57,7 @@ export function responsiveProperty<T extends { theme?: any }>({
           return rule ? rule : '';
         });
 
-        if (breakpoint === 'base') {
+        if (breakpoint === 'xs') {
           return css`
             ${rules}
           `;
