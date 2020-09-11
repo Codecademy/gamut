@@ -1,4 +1,4 @@
-import { parseCoordinate } from '../transforms';
+import { parseSize } from '../transforms';
 
 export const positioning = {
   position: {
@@ -7,7 +7,7 @@ export const positioning = {
   },
   coordinate: {
     scale: [] as (number | string)[],
-    computeValue: (value: any) => parseCoordinate(value as string | number),
+    computeValue: (value: any) => parseSize(value as string | number),
     propName: ['top', 'left', 'right', 'bottom'],
   },
   zIndex: {

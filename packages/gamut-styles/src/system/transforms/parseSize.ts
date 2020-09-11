@@ -7,7 +7,7 @@ const percentOrPx = (coordinate: number) => {
   return `${coordinate}px`;
 };
 
-export const parseCoordinate = (coordinate: string | number) => {
+export const parseSize = (coordinate: string | number) => {
   if (isNumber(coordinate)) {
     return percentOrPx(coordinate);
   }

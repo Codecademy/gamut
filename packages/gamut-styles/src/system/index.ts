@@ -15,4 +15,4 @@ export const {
 } = system(typography);
 export const { position, coordinate, zIndex } = system(positioning);
 export const { margin, padding } = system(spacing);
-export const { display, overflow } = system(layout);
+export const { display, overflow, dimensions } = system(layout);

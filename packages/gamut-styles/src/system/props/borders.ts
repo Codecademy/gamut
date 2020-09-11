@@ -9,10 +9,7 @@ import {
 
 export const border = {
   borderWidth: {
-    scale: [] as BorderWidths[],
-    type: 'directional',
     propName: 'borderWidth',
-    computeValue: (value: any) => borderWidths[value as BorderWidths],
     altProps: [
       'borderWidthLeft',
       'borderWidthRight',
@@ -21,6 +18,9 @@ export const border = {
       'borderWidthX',
       'borderWidthY',
     ],
+    type: 'directional',
+    scale: [] as BorderWidths[],
+    computeValue: (value: any) => borderWidths[value as BorderWidths],
   },
   borderRadius: {
     propName: 'borderRadius',

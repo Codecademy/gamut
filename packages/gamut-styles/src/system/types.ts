@@ -3,21 +3,22 @@ import { Styles } from 'polished/lib/types/style';
 import { PropAlias } from './constants';
 
 /** System Configuration */
-export type ResponsiveProp<T> = {
-  xs: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
-};
+export type MediaQueryArray<T> =
+  | [T | undefined]
+  | [T | undefined, T | undefined]
+  | [T | undefined, T | undefined, T | undefined]
+  | [T | undefined, T | undefined, T | undefined, T | undefined]
+  | [T | undefined, T | undefined, T | undefined, T | undefined];
 
-export type OptionalResponiveProp<T> = {
+export type MediaQueryMap<T> = {
   xs?: T;
   sm?: T;
   md?: T;
   lg?: T;
   xl?: T;
 };
+
+export type ResponiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
 
 /** Utility  */
 export type UnionToIntersection<U> = (
@@ -117,5 +118,5 @@ export type ThematicProps<
 > = {
   [key in PropKey<K>]?:
     | ThematicScaleValue<T, K>
-    | OptionalResponiveProp<ThematicScaleValue<T, K>>;
+    | ResponiveProp<ThematicScaleValue<T, K>>;
 };

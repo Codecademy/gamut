@@ -1,1 +1,1 @@
-export * from './parseCoordinate';
+export * from './parseSize';
