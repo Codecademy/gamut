@@ -47,7 +47,7 @@ export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
 export type ScaleArray = Readonly<unknown[]>;
 
-export type ScaleMap = Readonly<Record<string, unknown>>;
+export type ScaleMap = Readonly<Record<string | number, unknown>>;
 
 export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
 
