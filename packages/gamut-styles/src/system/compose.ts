@@ -8,11 +8,11 @@ import { responsiveProperty } from './templateStyles';
 
 export const compose = <
   T extends Handler<AbstractProps>[],
-  P extends AbstractProps & UnionToIntersection<Parameters<T[number]>[0]>
+  P extends Partial<UnionToIntersection<Parameters<T[number]>[0]>>
 >(
   ...handlers: T
 ) => {
-  let propNames: (keyof P)[] = [];
+  let propNames: (keyof Parameters<T[number]>[0])[] = [];
   let templateFns = {} as Partial<Record<keyof P, StyleTemplate<P>>>;
 
   handlers.forEach((handler) => {
