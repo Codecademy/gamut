@@ -12,6 +12,7 @@ describe(directionalProperty, () => {
       'margin-left: 10px;',
     ]);
   });
+
   it('accepts a custom transform function', () => {
     const propFunction = directionalProperty(
       'margin',
@@ -26,6 +27,7 @@ describe(directionalProperty, () => {
       'margin-left: 10px;',
     ]);
   });
+
   it('overrides the base property along each axis', () => {
     const propFunction = directionalProperty('margin', (val) => val as string);
 
@@ -45,6 +47,7 @@ describe(directionalProperty, () => {
       `margin-left: 10px;`,
     ]);
   });
+
   it('overrides the base and axis properties when given a specific direction', () => {
     const propFunction = directionalProperty('margin', (val) => val as string);
 
@@ -96,6 +99,7 @@ describe(directionalProperty, () => {
       `margin-left: 15px;`,
     ]);
   });
+
   it('does not template base when no configuration is given', () => {
     const propFunction = directionalProperty('margin', (val) => val as string);
 
