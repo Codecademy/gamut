@@ -1,7 +1,7 @@
 import { entries, isArray, isObject, values } from 'lodash';
 import { mediaQueries, MediaSize } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { StyleTemplate, AbstractProps, AnyStyle } from '../types';
+import { StyleTemplate, AbstractProps, AnyStyle, Handler } from '../types';
 
 type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];
@@ -13,7 +13,7 @@ const MEDIA: MediaSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 export function responsiveProperty<T extends { theme?: any }>({
   propNames,
   templateFns,
-}: PropertyConfig<T>): StyleTemplate<T> {
+}: PropertyConfig<T>): Handler<T> {
   return (props) => {
     const responsive = {} as Record<keyof typeof mediaQueries | 'base', T>;
 
