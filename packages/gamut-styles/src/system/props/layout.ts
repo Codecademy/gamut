@@ -22,4 +22,17 @@ export const layout = {
     scale: [] as (number | string)[],
     computeValue: (value: unknown) => parseSize(value as string | number),
   },
+  verticalAlign: {
+    propName: 'verticalAlign',
+    scale: [] as (
+      | 'baseline'
+      | 'sub'
+      | 'super'
+      | 'text-top'
+      | 'text-bottom'
+      | 'middle'
+      | 'top'
+      | 'bottom'
+    )[],
+  },
 } as const;

@@ -1,5 +1,3 @@
-import { standard, directional } from './templateStyles';
-
 export const propMap = {
   fontFamily: 'font-family',
   fontSize: 'font-size',
@@ -15,6 +13,7 @@ export const propMap = {
   borderColor: 'border-color',
   borderRadius: 'border-radius',
   display: 'display',
+  verticalAlign: 'vertical-align',
   width: 'width',
   minWidth: 'min-width',
   maxWidth: 'max-width',
@@ -30,11 +29,38 @@ export const propMap = {
   left: 'left',
   right: 'right',
   zIndex: 'z-index',
+  gridAutoColumns: 'grid-auto-columns',
+  gridAutoRows: 'grid-auto-rows',
+  gridTemplateColumns: 'grid-template-columns',
+  gridTemplateRows: 'grid-template-rows',
+  gridGap: 'grid-gap',
+  gridColumnGap: 'grid-column-gap',
+  gridRowGap: 'grid-row-gap',
+  gridAutoFlow: 'grid-auto-flow',
+  gridColumnStart: 'grid-column-start',
+  gridColumnEnd: 'grid-column-end',
+  gridRowStart: 'grid-row-start',
+  gridRowEnd: 'grid-row-end',
+  justifyContent: 'justify-content',
+  justifyItems: 'justify-items',
+  justifySelf: 'justify-self',
+  alignItems: 'align-items',
+  alignContent: 'align-content',
+  alignSelf: 'align-self',
+  order: 'order',
+  flex: 'flex',
+  flexGrow: 'flex-grow',
+  flexShrink: 'flex-shrink',
+  flexWrap: 'flex-wrap',
+  flexDirection: 'flex-direction',
+  flexBasis: 'flex-basis',
+  backgroundSize: 'background-size',
+  backgroundColor: 'background-color',
+  backgroundRepeat: 'background-repeat',
+  backgroundPosition: 'background-position',
+  backgroundImage: 'background-image',
+  boxShadow: 'box-shadow',
+  textShadow: 'text-shadow',
 } as const;
 
 export type PropAlias = keyof typeof propMap;
-
-export const typeMap = {
-  standard: standard,
-  directional: directional,
-};

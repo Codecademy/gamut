@@ -6,9 +6,14 @@ import {
   Handler,
 } from './types';
 import { identity, get } from 'lodash';
-import { typeMap } from './constants';
+import { standard, directional } from './templateStyles';
 import { createHandler } from './createHandler';
 import { compose } from './compose';
+
+const TEMPLATES = {
+  standard,
+  directional,
+};
 
 export const registerHandler = <
   T extends AbstractTheme,
@@ -18,10 +23,9 @@ export const registerHandler = <
   config: C
 ): Handler<P> => {
   const { propName, computeValue = identity, type = 'standard' } = config;
+  const templateFunction = TEMPLATES[type];
 
-  const templateFunction = typeMap[type];
   let systemHandler: Handler<P>;
-
   if (typeof propName === 'string') {
     const styleFunction = templateFunction<P, C>(propName, computeValue);
     const propConfig = {
