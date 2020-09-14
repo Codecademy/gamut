@@ -1,0 +1,37 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, number, boolean } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { LogoProCutout } from '@codecademy/gamut-labs/src';
+import { selectableColors } from '../../../../helpers';
+
+<Meta title="Labs/Brand/Atoms/LogoProCutout" component={LogoProCutout} />
+
+# LogoProCutout
+
+<StoryStatus status="volatile" />
+
+This Pro logo will be used in the most recent designs for Curriculum Cards and Course overview pages.
+
+<Canvas withSource="open">
+  <Story name="LogoProCutout">
+    {(args) => (
+      <LogoProCutout
+        transparentCutout={boolean('transparentCutout', false)}
+        backgroundColor={select(
+          'backgroundColor',
+          selectableColors,
+          selectableColors.navy
+        )}
+        cutoutColor={select(
+          'cutoutColor',
+          selectableColors,
+          selectableColors.white
+        )}
+        width={number('width', 30)}
+        height={number('height', 16)}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="LogoProCutout" of={LogoProCutout} />
