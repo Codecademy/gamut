@@ -1,5 +1,5 @@
-import { AbstractSystemConfig, AnyStyle, StyleTemplate } from '../types';
-import { PropAlias } from '../constants';
+import { AbstractSystemConfig, AnyStyle, StyleTemplate } from '../../types';
+import { PropAlias } from '../../constants';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 

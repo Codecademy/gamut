@@ -1,8 +1,8 @@
 import { SerializedStyles } from '@emotion/core';
-import { directionalProperty } from '../directionalProperty';
-import { responsiveProperty } from '../responsiveProperty';
-import { standardProperty } from '../standardProperty';
-import { ResponiveProp } from '../../types';
+import { directionalProperty } from '../../directionalProperty';
+import { responsiveProperty } from '..';
+import { standardProperty } from '../../standardProperty';
+import { ResponiveProp } from '../../../types';
 
 describe(responsiveProperty, () => {
   const templateFns = {

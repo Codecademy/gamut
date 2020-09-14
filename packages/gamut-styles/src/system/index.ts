@@ -1,4 +1,4 @@
-import { compose } from './compose';
+import { compose } from './core/compose';
 import {
   border as borderConfig,
   typography as typographyConfig,
@@ -10,7 +10,7 @@ import {
   grid as gridConfig,
   background as backgroundConfig,
 } from './props';
-import { system } from './system';
+import { system } from './core/system';
 import { HandlerProps } from './types';
 
 /** Single Props */

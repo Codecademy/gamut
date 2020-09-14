@@ -1,5 +1,5 @@
-import { AbstractSystemConfig, StyleTemplate } from '../types';
-import { propMap, PropAlias } from '../constants';
+import { AbstractSystemConfig, StyleTemplate } from '../../types';
+import { propMap, PropAlias } from '../../constants';
 
 export const standardProperty = <
   T extends Record<string, unknown>,

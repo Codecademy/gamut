@@ -1,4 +1,4 @@
-import { standardProperty } from '../standardProperty';
+import { standardProperty } from '..';
 
 describe(standardProperty, () => {
   it('creates a property function', () => {

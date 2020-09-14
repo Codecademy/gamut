@@ -1,4 +1,4 @@
-import { directionalProperty } from '../directionalProperty';
+import { directionalProperty } from '..';
 
 describe(directionalProperty, () => {
   it('creates a property function', () => {

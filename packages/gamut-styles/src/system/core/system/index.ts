@@ -1,5 +1,10 @@
-import { AbstractTheme, ThematicConfig, ThematicProps, Handler } from './types';
-import { registerHandler } from './registerHandler';
+import {
+  AbstractTheme,
+  ThematicConfig,
+  ThematicProps,
+  Handler,
+} from '../../types';
+import { registerHandler } from '../registerHandler';
 
 export const system = <
   T extends AbstractTheme,

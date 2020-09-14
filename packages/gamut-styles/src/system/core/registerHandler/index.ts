@@ -6,14 +6,14 @@ import {
   Handler,
   HandlerConfig,
   StyleTemplate,
-} from './types';
+} from '../../types';
 import { identity, get } from 'lodash';
 import {
   standardProperty,
   directionalProperty,
   responsiveProperty,
-} from './propTemplates';
-import { compose } from './compose';
+} from '../../propTemplates';
+import { compose } from '../compose';
 
 const TEMPLATES = {
   standard: standardProperty,

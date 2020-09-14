@@ -1,7 +1,7 @@
 import { entries, isArray, isObject, values } from 'lodash';
-import { mediaQueries, MediaSize } from '../../variables/responsive';
+import { mediaQueries, MediaSize } from '../../../variables/responsive';
 import { css } from '@emotion/core';
-import { StyleTemplate, AbstractProps, AnyStyle, Handler } from '../types';
+import { StyleTemplate, AbstractProps, AnyStyle, Handler } from '../../types';
 
 type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];

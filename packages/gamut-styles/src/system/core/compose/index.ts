@@ -3,8 +3,8 @@ import {
   Handler,
   UnionToIntersection,
   StyleTemplate,
-} from './types';
-import { responsiveProperty } from './propTemplates';
+} from '../../types';
+import { responsiveProperty } from '../../propTemplates';
 
 export const compose = <
   T extends Handler<AbstractProps>[],
