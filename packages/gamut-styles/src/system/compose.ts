@@ -4,7 +4,7 @@ import {
   UnionToIntersection,
   StyleTemplate,
 } from './types';
-import { responsiveProperty } from './templateStyles';
+import { responsiveProperty } from './propTemplates';
 
 export const compose = <
   T extends Handler<AbstractProps>[],

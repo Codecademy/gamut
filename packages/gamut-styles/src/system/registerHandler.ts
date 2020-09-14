@@ -4,15 +4,38 @@ import {
   ThematicProps,
   AbstractProps,
   Handler,
+  HandlerConfig,
+  StyleTemplate,
 } from './types';
 import { identity, get } from 'lodash';
-import { standard, directional } from './templateStyles';
-import { createHandler } from './createHandler';
+import {
+  standardProperty,
+  directionalProperty,
+  responsiveProperty,
+} from './propTemplates';
 import { compose } from './compose';
 
 const TEMPLATES = {
-  standard,
-  directional,
+  standard: standardProperty,
+  directional: directionalProperty,
+};
+
+export const createHandler = <T extends AbstractProps>({
+  propName,
+  altProps = [],
+  templateFn,
+}: HandlerConfig<T>): Handler<T> => {
+  const propNames = [propName, ...altProps];
+  const templateFns = {
+    [propName]: templateFn,
+  } as Partial<Record<keyof T, StyleTemplate<T>>>;
+
+  const handler: Handler<T> = responsiveProperty<T>({ propNames, templateFns });
+
+  handler.propNames = propNames;
+  handler.templateFns = templateFns;
+
+  return handler;
 };
 
 export const registerHandler = <

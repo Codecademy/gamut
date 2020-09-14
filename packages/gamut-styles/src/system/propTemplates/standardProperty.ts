@@ -1,7 +1,7 @@
 import { AbstractSystemConfig, StyleTemplate } from '../types';
 import { propMap, PropAlias } from '../constants';
 
-export const standard = <
+export const standardProperty = <
   T extends Record<string, unknown>,
   K extends AbstractSystemConfig
 >(
@@ -10,11 +10,9 @@ export const standard = <
 ): StyleTemplate<T> => {
   return (props: T) => {
     const propKey = propName as PropAlias;
-    return (
-      props[propKey] &&
-      `
-        ${propMap[propKey]}: ${computeValue!(props[propKey])};
-      `
-    );
+    if (props[propKey] !== undefined && props[propKey] !== null) {
+      return `${propMap[propKey]}: ${computeValue!(props[propKey])};`;
+    }
+    return '';
   };
 };

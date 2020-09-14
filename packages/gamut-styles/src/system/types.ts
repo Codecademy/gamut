@@ -53,7 +53,9 @@ export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
 
 export type AbstractProps = Record<string, unknown>;
 
-export type StyleTemplate<T extends AbstractProps> = (props: T) => AnyStyle;
+export type StyleTemplate<T extends AbstractProps> = (
+  props: T
+) => AnyStyle | AnyStyle[];
 
 export type TemplateMap<T extends AbstractProps> = Partial<
   Record<keyof T, StyleTemplate<T>>

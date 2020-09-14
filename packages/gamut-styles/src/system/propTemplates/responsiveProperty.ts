@@ -1,7 +1,7 @@
-import { entries, isArray, isObject } from 'lodash';
+import { entries, isArray, isObject, values } from 'lodash';
 import { mediaQueries, MediaSize } from '../../variables/responsive';
 import { css } from '@emotion/core';
-import { StyleTemplate, AbstractProps } from '../types';
+import { StyleTemplate, AbstractProps, AnyStyle } from '../types';
 
 type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];
@@ -52,19 +52,20 @@ export function responsiveProperty<T extends { theme?: any }>({
 
     return css`
       ${entries(responsive).map(([breakpoint, props]) => {
-        const rules = Object.entries(templateFns).map(([propName, fn]) => {
-          const rule = fn && fn(props);
-          return rule ? rule : '';
-        });
-
+        const styles: (AnyStyle | AnyStyle[])[] = [];
+        const templates = values(templateFns);
+        for (let i = 0; i < templates.length; i += 1) {
+          const rule = templates?.[i]?.(props);
+          if (rule) {
+            styles.push(rule);
+          }
+        }
         if (breakpoint === 'xs') {
-          return css`
-            ${rules}
-          `;
+          return styles;
         }
         return css`
           ${mediaQueries[breakpoint as keyof typeof mediaQueries]} {
-            ${rules}
+            ${styles}
           }
         `;
       })}
