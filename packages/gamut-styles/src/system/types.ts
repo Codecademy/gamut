@@ -1,14 +1,9 @@
-import { SerializedStyles } from '@emotion/core';
+import { CSSObject, SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
-import { PropAlias } from './constants';
+import { CSSProperties } from 'react';
 
 /** System Configuration */
-export type MediaQueryArray<T> =
-  | [T | undefined]
-  | [T | undefined, T | undefined]
-  | [T | undefined, T | undefined, T | undefined]
-  | [T | undefined, T | undefined, T | undefined, T | undefined]
-  | [T | undefined, T | undefined, T | undefined, T | undefined, T | undefined];
+export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
 
 export type MediaQueryMap<T> = {
   xs?: T;
@@ -18,7 +13,7 @@ export type MediaQueryMap<T> = {
   xl?: T;
 };
 
-export type ResponiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
+export type ResponsiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
 
 /** Utility  */
 export type UnionToIntersection<U> = (
@@ -41,7 +36,11 @@ export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
   : never;
 
 /** Abstract Configurations  */
+export type PropAlias = Readonly<keyof CSSProperties>;
+
 export type AnyStyle = SerializedStyles | Styles | string;
+
+export type StyleMap = CSSObject;
 
 export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
@@ -55,7 +54,7 @@ export type AbstractProps = Record<string, unknown>;
 
 export type StyleTemplate<T extends AbstractProps> = (
   props: T
-) => AnyStyle | AnyStyle[];
+) => StyleMap | undefined;
 
 export type TemplateMap<T extends AbstractProps> = Partial<
   Record<keyof T, StyleTemplate<T>>
@@ -63,23 +62,22 @@ export type TemplateMap<T extends AbstractProps> = Partial<
 
 export type HandlerConfig<T extends AbstractProps> = {
   propName: keyof T;
-  altProps?: (keyof T)[];
+  altProps?: Readonly<(keyof T)[]>;
   templateFn: StyleTemplate<T>;
 };
 
 export type Handler<T extends AbstractProps> = {
   propNames?: (keyof T)[];
   templateFns?: TemplateMap<T>;
-} & ((props: T) => AnyStyle);
+} & ((props: T) => CSSObject);
 
 export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
 export type PropTemplateType = 'standard' | 'directional';
 
 export type TransformValue = (value: unknown) => string | number;
-
 export type DirectionalConfig = {
-  propName: PropAlias;
+  propName: PropAlias | Readonly<PropAlias[]>;
   altProps?: Readonly<string[]>;
   type: 'directional';
   scale: AbstractScales;
@@ -88,6 +86,7 @@ export type DirectionalConfig = {
 
 export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
+  altProps?: Readonly<string[]>;
   type?: 'standard';
   scale: AbstractScales;
   computeValue?: TransformValue;
@@ -110,9 +109,9 @@ export type ThematicScaleValue<
   T extends AbstractTheme,
   K extends ThematicConfig<T>
 > =
-  | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
-  | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']>
-  | Extract<K, { scale: ScaleArray }>['scale'][number];
+  | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>> /// Theme
+  | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']> // Key { scale: { } }
+  | Extract<K, { scale: ScaleArray }>['scale'][number]; //
 
 export type ThematicProps<
   T extends AbstractTheme,
@@ -120,5 +119,5 @@ export type ThematicProps<
 > = {
   [key in PropKey<K>]?:
     | ThematicScaleValue<T, K>
-    | ResponiveProp<ThematicScaleValue<T, K>>;
+    | ResponsiveProp<ThematicScaleValue<T, K>>;
 };

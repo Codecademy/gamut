@@ -1,7 +1,7 @@
 import { entries, isArray, isObject, values } from 'lodash';
 import { mediaQueries, MediaSize } from '../../../variables/responsive';
-import { css } from '@emotion/core';
-import { StyleTemplate, AbstractProps, AnyStyle, Handler } from '../../types';
+import { CSSObject } from '@emotion/core';
+import { StyleTemplate, AbstractProps, Handler } from '../../types';
 
 type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];
@@ -19,6 +19,7 @@ export function responsiveProperty<T extends { theme?: any }>({
 
     propNames.forEach((propName) => {
       const propConfig = props[propName];
+
       if (!propConfig) {
         return;
       }
@@ -50,25 +51,30 @@ export function responsiveProperty<T extends { theme?: any }>({
       }
     });
 
-    return css`
-      ${entries(responsive).map(([breakpoint, props]) => {
-        const styles: (AnyStyle | AnyStyle[])[] = [];
-        const templates = values(templateFns);
-        for (let i = 0; i < templates.length; i += 1) {
-          const rule = templates?.[i]?.(props);
-          if (rule) {
-            styles.push(rule);
-          }
-        }
+    let styles: CSSObject = {};
+
+    entries(responsive).forEach(([breakpoint, props]) => {
+      const templates = values(templateFns);
+      templates.forEach((templatFn) => {
+        const templateStyles = templatFn?.(props) || {};
+
         if (breakpoint === 'xs') {
-          return styles;
+          styles = {
+            ...styles,
+            ...templateStyles,
+          };
         }
-        return css`
-          ${mediaQueries[breakpoint as keyof typeof mediaQueries]} {
-            ${styles}
-          }
-        `;
-      })}
-    `;
+
+        const breakpointKey = mediaQueries[breakpoint as MediaSize];
+        const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
+
+        styles[breakpointKey] = {
+          ...existingStyles,
+          ...templateStyles,
+        };
+      });
+    });
+
+    return styles;
   };
 }

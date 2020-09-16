@@ -7,7 +7,7 @@ import {
   HandlerConfig,
   StyleTemplate,
 } from '../../types';
-import { identity, get } from 'lodash';
+import { identity } from 'lodash';
 import {
   standardProperty,
   directionalProperty,
@@ -45,7 +45,12 @@ export const registerHandler = <
 >(
   config: C
 ): Handler<P> => {
-  const { propName, computeValue = identity, type = 'standard' } = config;
+  const {
+    propName,
+    altProps = [],
+    computeValue = identity,
+    type = 'standard',
+  } = config;
   const templateFunction = TEMPLATES[type];
 
   let systemHandler: Handler<P>;
@@ -53,7 +58,7 @@ export const registerHandler = <
     const styleFunction = templateFunction<P, C>(propName, computeValue);
     const propConfig = {
       propName,
-      altProps: get(config, 'altProps'),
+      altProps,
       templateFn: styleFunction,
     };
 

@@ -2,7 +2,7 @@ import { SerializedStyles } from '@emotion/core';
 import { directionalProperty } from '../../directionalProperty';
 import { responsiveProperty } from '..';
 import { standardProperty } from '../../standardProperty';
-import { ResponiveProp } from '../../../types';
+import { ResponsiveProp } from '../../../types';
 
 describe(responsiveProperty, () => {
   const templateFns = {
@@ -11,9 +11,9 @@ describe(responsiveProperty, () => {
   };
   xit('creates a property function', () => {
     const propFunction = responsiveProperty<{
-      margin?: string | ResponiveProp<string>;
-      marginLeft?: string | ResponiveProp<string>;
-      display?: string | ResponiveProp<string>;
+      margin?: string | ResponsiveProp<string>;
+      marginLeft?: string | ResponsiveProp<string>;
+      display?: string | ResponsiveProp<string>;
       theme?: any;
     }>({
       propNames: ['display', 'margin', 'marginLeft'],

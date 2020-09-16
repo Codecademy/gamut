@@ -1,5 +1,10 @@
-import { AbstractSystemConfig, AnyStyle, StyleTemplate } from '../../types';
-import { PropAlias } from '../../constants';
+import {
+  AbstractSystemConfig,
+  PropAlias,
+  StyleMap,
+  StyleTemplate,
+} from '../../types';
+import { CSSObject } from '@emotion/core';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 
@@ -19,11 +24,8 @@ const directionalRules: Partial<Record<
 export function directionalProperty<
   T extends Record<string, unknown>,
   K extends AbstractSystemConfig
->(
-  propName: K['propName'] | K['propName'][number],
-  computeValue: K['computeValue']
-): StyleTemplate<T> {
-  return (props: T): AnyStyle[] | AnyStyle => {
+>(propName: K['propName'], computeValue: K['computeValue']): StyleTemplate<T> {
+  return (props: T): StyleMap => {
     const {
       [propName as string]: base,
       [`${propName}X`]: x = base,
@@ -36,14 +38,14 @@ export function directionalProperty<
     const propKey = propName as PropAlias;
     const orderedProps = [t, r, b, l];
 
-    const styles: AnyStyle[] = [];
+    const styles = {} as StyleMap;
 
     for (let i = 0; i < DIRECTIONS.length; i += 1) {
       if (orderedProps[i] !== undefined) {
-        const rule = `${directionalRules?.[propKey]!(
+        const prop = directionalRules?.[propKey]!(
           DIRECTIONS[i]
-        )}: ${computeValue!(orderedProps[i])};`;
-        styles.push(rule);
+        ) as keyof CSSObject;
+        styles[prop] = computeValue!(orderedProps[i]);
       }
     }
     return styles;
