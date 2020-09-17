@@ -1,29 +1,37 @@
-import {
-  AbstractSystemConfig,
-  PropAlias,
-  StyleMap,
-  StyleTemplate,
-} from '../../types';
-import { CSSObject } from '@emotion/core';
-import { startCase } from 'lodash';
+import { AbstractSystemConfig, StyleMap, StyleTemplate } from '../../types';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
-
 const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];
 
-const directionalRules: Partial<Record<
-  PropAlias,
-  (direction: AllDirections) => string
->> = {
-  margin: (direction: AllDirections) => `margin${startCase(direction)}`,
-  padding: (direction: AllDirections) => `padding${startCase(direction)}`,
-  borderWidth: (direction: AllDirections) =>
-    `border${startCase(direction)}Width`,
-  borderColor: (direction: AllDirections) =>
-    `border${startCase(direction)}Color`,
-  borderStyle: (direction: AllDirections) =>
-    `border${startCase(direction)}Style`,
-};
+const DIRECTIONAL_PROPS = {
+  margin: {
+    left: 'marginLeft',
+    right: 'marginRight',
+    top: 'marginTop',
+    bottom: 'marginBottom',
+  },
+  padding: {
+    left: 'paddingLeft',
+    right: 'paddingRight',
+    top: 'paddingTop',
+    bottom: 'paddingBottom',
+  },
+  borderColor: {
+    left: 'borderLeftColor',
+    right: 'borderRightColor',
+    top: 'borderTopColor',
+    bottom: 'borderBottomColor',
+  },
+  borderWidth: {
+    left: 'borderLeftWidth',
+    right: 'borderRightWidth',
+    top: 'borderLeftColor',
+    bottom: 'borderBottomWidth',
+  },
+} as const;
+
+type DirectionalProps = typeof DIRECTIONAL_PROPS;
+type AllAliases = DirectionalProps[keyof DirectionalProps][keyof DirectionalProps[keyof DirectionalProps]];
 
 export function directionalProperty<
   T extends Record<string, unknown>,
@@ -39,17 +47,17 @@ export function directionalProperty<
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
     } = props as Record<string, unknown>;
-    const propKey = propName as PropAlias;
+    const propKey = propName as keyof typeof DIRECTIONAL_PROPS;
     const orderedProps = [t, r, b, l];
+    console.log(orderedProps);
 
-    const styles = {} as StyleMap;
+    const styles = {} as Pick<StyleMap, AllAliases>;
 
     for (let i = 0; i < DIRECTIONS.length; i += 1) {
       if (orderedProps[i] !== undefined) {
-        const prop = directionalRules?.[propKey]!(
-          DIRECTIONS[i]
-        ) as keyof CSSObject;
-        styles[prop] = computeValue!(orderedProps[i]);
+        const prop = DIRECTIONAL_PROPS[propKey][DIRECTIONS[i]];
+        const value = computeValue!(orderedProps[i]) as string;
+        styles[prop] = value;
       }
     }
     return styles;

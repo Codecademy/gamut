@@ -18,11 +18,12 @@
   "peerDependencies": {
     "@emotion/core": ">=10.0.0",
     "@emotion/styled": ">=10.0.0",
-    "polished": ">=3.0.0"
+    "polished": "<3.0.0"
   },
   "devDependencies": {
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
+    "csstype": "2.6.8",
     "jest-emotion": "10.0.32"
   },
   "license": "MIT"

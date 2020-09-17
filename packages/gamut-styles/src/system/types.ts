@@ -1,6 +1,6 @@
 import { CSSObject, SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
-import { CSSProperties } from 'react';
+import * as CSS from 'csstype';
 
 /** System Configuration */
 export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
@@ -36,11 +36,11 @@ export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
   : never;
 
 /** Abstract Configurations  */
-export type PropAlias = Readonly<keyof CSSProperties>;
+export type PropAlias = Readonly<keyof CSS.Properties>;
 
 export type AnyStyle = SerializedStyles | Styles | string;
 
-export type StyleMap = CSSObject;
+export type StyleMap = CSS.Properties;
 
 export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
