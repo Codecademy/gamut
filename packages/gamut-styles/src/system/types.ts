@@ -54,7 +54,7 @@ export type AbstractProps = Record<string, unknown>;
 
 export type StyleTemplate<T extends AbstractProps> = (
   props: T
-) => StyleMap | undefined;
+) => CSSObject | undefined;
 
 export type TemplateMap<T extends AbstractProps> = Partial<
   Record<keyof T, StyleTemplate<T>>
