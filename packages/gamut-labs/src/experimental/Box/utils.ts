@@ -2,6 +2,7 @@ import { css } from '@emotion/core';
 import { pxRem } from '@codecademy/gamut-styles';
 import { PaddingSizes } from './types';
 
+/** [foreground, background] */
 const offsets = {
   left: [1, -1],
   right: [-1, -1],

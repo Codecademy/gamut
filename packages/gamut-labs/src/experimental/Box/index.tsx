@@ -1,14 +1,14 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { spacing } from '@codecademy/gamut-styles';
-import { HoverShadowVariants, BoxVariants, PaddingSizes } from './types';
+import { HoverShadowVariants, PaddingSizes } from './types';
 
 import { BOX_VARIANTS } from './constants';
 import { createShadowOffset } from './utils';
 
 export type BoxProps = {
   /** Background Variation */
-  variant?: BoxVariants;
+  variant?: keyof typeof BOX_VARIANTS;
   /** Whether the box should have a border */
   bordered?: boolean;
   /** Standard spacing sizes */
@@ -54,8 +54,13 @@ const createShadow = (
   }
 `;
 
-const boxStyles = ({ padding, variant, bordered, hoverShadow }: BoxProps) => {
-  const { background, shadow, text, border } = BOX_VARIANTS[variant!];
+const boxStyles = ({
+  padding,
+  variant = 'white',
+  bordered,
+  hoverShadow,
+}: BoxProps) => {
+  const { background, shadow, text, border } = BOX_VARIANTS[variant];
 
   return css`
     background-color: ${background};
