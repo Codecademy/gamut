@@ -27,6 +27,7 @@ export const {
   lineHeight,
 } = system(typographyConfig);
 export const { position, coordinate, zIndex } = system(positioningConfig);
+
 export const { margin, padding } = system(spacingConfig);
 export const { display, overflow, dimensions, verticalAlign } = system(
   layoutConfig
@@ -41,6 +42,7 @@ export const {
   flexBasis,
   order,
 } = system(flexConfig);
+
 export const {
   gridGap,
   gridItems,
@@ -49,6 +51,7 @@ export const {
   gridPosition,
   gridAutoFlow,
 } = system(gridConfig);
+
 export const {
   backgroundImage,
   backgroundPosition,
@@ -108,6 +111,7 @@ export const grid = compose(
   gridPosition,
   gridAutoFlow
 );
+
 export type GridProps = HandlerProps<typeof grid>;
 
 export const background = compose(

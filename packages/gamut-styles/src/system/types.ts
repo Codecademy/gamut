@@ -1,7 +1,7 @@
 import { CSSObject, SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
 import * as CSS from 'csstype';
-
+type bar = CSS.Properties['borderStyle'];
 /** System Configuration */
 export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
 
@@ -80,7 +80,7 @@ export type DirectionalConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   altProps?: Readonly<string[]>;
   type: 'directional';
-  scale: AbstractScales;
+  scale?: AbstractScales;
   computeValue?: TransformValue;
 };
 
@@ -88,7 +88,7 @@ export type StandardConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   altProps?: Readonly<string[]>;
   type?: 'standard';
-  scale: AbstractScales;
+  scale?: AbstractScales;
   computeValue?: TransformValue;
 };
 
@@ -97,21 +97,37 @@ export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
 /** Theme Aware Configurations */
 
 export type ThematicConfig<T extends AbstractTheme> =
-  | (StandardConfig & { scale: ScaleArray | ScaleMap | Readonly<keyof T> })
-  | (DirectionalConfig & { scale: ScaleArray | ScaleMap | Readonly<keyof T> });
+  | (StandardConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> })
+  | (DirectionalConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> });
 
 export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { propName: string }>['propName']
   | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
+type SafeCSSType<T extends PropAlias> = Extract<
+  Readonly<CSS.Properties[T]>,
+  Readonly<string>
+>;
+
+/** Standard CSS Property Types */
+export type DefaultPropScale<
+  T extends AbstractSystemConfig
+> = T['propName'] extends PropAlias[]
+  ? SafeCSSType<T['propName'][number]>
+  : T['propName'] extends PropAlias
+  ? SafeCSSType<T['propName']>
+  : never;
+
 export type ThematicScaleValue<
   T extends AbstractTheme,
   K extends ThematicConfig<T>
-> =
-  | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>> /// Theme
-  | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']> // Key { scale: { } }
-  | Extract<K, { scale: ScaleArray }>['scale'][number]; //
+> = K['scale'] extends AbstractScales
+  ?
+      | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
+      | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']>
+      | Extract<K, { scale: ScaleArray }>['scale'][number]
+  : DefaultPropScale<K>;
 
 export type ThematicProps<
   T extends AbstractTheme,

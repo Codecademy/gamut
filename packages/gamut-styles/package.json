@@ -23,7 +23,7 @@
   "devDependencies": {
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27",
-    "csstype": "2.6.8",
+    "csstype": "3.0.3",
     "jest-emotion": "10.0.32"
   },
   "license": "MIT"

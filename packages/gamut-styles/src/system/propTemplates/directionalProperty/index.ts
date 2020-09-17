@@ -31,7 +31,7 @@ const DIRECTIONAL_PROPS = {
 } as const;
 
 type DirectionalProps = typeof DIRECTIONAL_PROPS;
-type AllAliases = DirectionalProps[keyof DirectionalProps][keyof DirectionalProps[keyof DirectionalProps]];
+type DirectionalAliases = DirectionalProps[keyof DirectionalProps][keyof DirectionalProps[keyof DirectionalProps]];
 
 export function directionalProperty<
   T extends Record<string, unknown>,
@@ -47,10 +47,10 @@ export function directionalProperty<
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
     } = props as Record<string, unknown>;
-    const propKey = propName as keyof typeof DIRECTIONAL_PROPS;
+    const propKey = propName as keyof DirectionalProps;
     const orderedProps = [t, r, b, l];
 
-    const styles = {} as Pick<StyleMap, AllAliases>;
+    const styles = {} as Pick<StyleMap, DirectionalAliases>;
 
     DIRECTIONS.forEach((direction, i) => {
       if (orderedProps[i] !== undefined) {
