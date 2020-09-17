@@ -18,16 +18,20 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
-      selectOptions = options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ));
+      selectOptions = options.map((option) => {
+        const key = id ? `${id}-${option}` : option;
+        return (
+          <option key={key} value={option}>
+            {option}
+          </option>
+        );
+      });
     } else if (isObject(options)) {
-      each(options, (val, key) => {
+      each(options, (text, val) => {
+        const key = id ? `${id}-${val}` : val;
         selectOptions.push(
-          <option key={key} value={key}>
-            {val}
+          <option key={key} value={val}>
+            {text}
           </option>
         );
       });
