@@ -5,6 +5,7 @@ import {
   StyleTemplate,
 } from '../../types';
 import { CSSObject } from '@emotion/core';
+import { startCase } from 'lodash';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 
@@ -14,11 +15,14 @@ const directionalRules: Partial<Record<
   PropAlias,
   (direction: AllDirections) => string
 >> = {
-  margin: (direction: AllDirections) => `margin-${direction}`,
-  padding: (direction: AllDirections) => `padding-${direction}`,
-  borderWidth: (direction: AllDirections) => `border-${direction}-width`,
-  borderColor: (direction: AllDirections) => `border-${direction}-color`,
-  borderStyle: (direction: AllDirections) => `border-${direction}-style`,
+  margin: (direction: AllDirections) => `margin${startCase(direction)}`,
+  padding: (direction: AllDirections) => `padding${startCase(direction)}`,
+  borderWidth: (direction: AllDirections) =>
+    `border${startCase(direction)}Width`,
+  borderColor: (direction: AllDirections) =>
+    `border${startCase(direction)}Color`,
+  borderStyle: (direction: AllDirections) =>
+    `border${startCase(direction)}Style`,
 };
 
 export function directionalProperty<

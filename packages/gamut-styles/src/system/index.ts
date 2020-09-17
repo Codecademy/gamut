@@ -41,7 +41,6 @@ export const {
   flexBasis,
   order,
 } = system(flexConfig);
-flexAlign({ alignItems: 'center' });
 export const {
   gridGap,
   gridItems,
@@ -98,6 +97,7 @@ export const flex = compose(
   flexBasis,
   order
 );
+
 export type FlexProps = HandlerProps<typeof flex>;
 
 export const grid = compose(

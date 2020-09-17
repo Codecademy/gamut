@@ -63,15 +63,15 @@ export function responsiveProperty<T extends { theme?: any }>({
             ...styles,
             ...templateStyles,
           };
+        } else {
+          const breakpointKey = mediaQueries[breakpoint as MediaSize];
+          const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
+
+          styles[breakpointKey] = {
+            ...existingStyles,
+            ...templateStyles,
+          };
         }
-
-        const breakpointKey = mediaQueries[breakpoint as MediaSize];
-        const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
-
-        styles[breakpointKey] = {
-          ...existingStyles,
-          ...templateStyles,
-        };
       });
     });
 

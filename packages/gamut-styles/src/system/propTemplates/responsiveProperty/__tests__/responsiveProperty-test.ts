@@ -1,15 +1,15 @@
-import { SerializedStyles } from '@emotion/core';
 import { directionalProperty } from '../../directionalProperty';
 import { responsiveProperty } from '..';
 import { standardProperty } from '../../standardProperty';
 import { ResponsiveProp } from '../../../types';
+import { mediaQueries } from '../../../../variables/responsive';
 
 describe(responsiveProperty, () => {
   const templateFns = {
     display: standardProperty('display', (val) => val as string),
     margin: directionalProperty('margin', (val) => val as string),
   };
-  xit('creates a property function', () => {
+  it('creates a property function', () => {
     const propFunction = responsiveProperty<{
       margin?: string | ResponsiveProp<string>;
       marginLeft?: string | ResponsiveProp<string>;
@@ -24,8 +24,17 @@ describe(responsiveProperty, () => {
       margin: '10px',
       marginLeft: [, '5px'],
       display: 'block',
-    }) as SerializedStyles;
+    });
 
-    expect(outputStyles).toEqual('');
+    expect(outputStyles).toEqual({
+      marginLeft: '10px',
+      marginRight: '10px',
+      marginBottom: '10px',
+      marginTop: '10px',
+      display: 'block',
+      [mediaQueries['sm']]: {
+        marginLeft: '5px',
+      },
+    });
   });
 });

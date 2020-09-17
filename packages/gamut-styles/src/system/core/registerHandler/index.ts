@@ -20,6 +20,10 @@ const TEMPLATES = {
   directional: directionalProperty,
 };
 
+/**
+ *
+ * @param handlerConfig
+ */
 export const createHandler = <T extends AbstractProps>({
   propName,
   altProps = [],
