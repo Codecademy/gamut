@@ -49,17 +49,16 @@ export function directionalProperty<
     } = props as Record<string, unknown>;
     const propKey = propName as keyof typeof DIRECTIONAL_PROPS;
     const orderedProps = [t, r, b, l];
-    console.log(orderedProps);
 
     const styles = {} as Pick<StyleMap, AllAliases>;
 
-    for (let i = 0; i < DIRECTIONS.length; i += 1) {
+    DIRECTIONS.forEach((direction, i) => {
       if (orderedProps[i] !== undefined) {
-        const prop = DIRECTIONAL_PROPS[propKey][DIRECTIONS[i]];
+        const prop = DIRECTIONAL_PROPS[propKey][direction];
         const value = computeValue!(orderedProps[i]) as string;
         styles[prop] = value;
       }
-    }
+    });
     return styles;
   };
 }

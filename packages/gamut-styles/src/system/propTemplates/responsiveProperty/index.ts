@@ -20,7 +20,7 @@ export function responsiveProperty<T extends { theme?: any }>({
     propNames.forEach((propName) => {
       const propConfig = props[propName];
 
-      if (!propConfig) {
+      if (propConfig === undefined) {
         return;
       }
 
