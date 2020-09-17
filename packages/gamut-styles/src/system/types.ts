@@ -1,7 +1,7 @@
 import { CSSObject, SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
 import * as CSS from 'csstype';
-type bar = CSS.Properties['borderStyle'];
+
 /** System Configuration */
 export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
 
