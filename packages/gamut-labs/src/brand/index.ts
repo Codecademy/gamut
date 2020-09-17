@@ -7,5 +7,6 @@ export * from './Header/HeaderTab';
 export * from './Loading';
 export * from './Logo';
 export * from './LogoProCutout';
+export * from './LogoProCutoutTransparent';
 export * from './Quote';
 export * from './Testimonial';
