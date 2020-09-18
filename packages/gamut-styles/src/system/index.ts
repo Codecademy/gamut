@@ -10,10 +10,11 @@ import {
   grid as gridConfig,
   background as backgroundConfig,
 } from './props';
-import { system } from './core/system';
+import { system, system2 } from './core/system';
 import { HandlerProps } from './types';
 
 /** Single Props */
+
 export const { borderWidth, borderStyle, borderRadius, borderColor } = system(
   borderConfig
 );

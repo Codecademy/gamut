@@ -1,5 +1,5 @@
 import { CSSObject } from '@emotion/core';
-import { AbstractSystemConfig, StyleTemplate } from '../../types';
+import { AbstractPropConfig, StyleTemplate } from '../../types';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];
@@ -35,7 +35,7 @@ type DirectionalProps = typeof DIRECTIONAL_PROPS;
 
 export function directionalProperty<
   T extends Record<string, unknown>,
-  K extends AbstractSystemConfig
+  K extends AbstractPropConfig
 >(propName: K['propName'], computeValue: K['computeValue']): StyleTemplate<T> {
   return (props: T): CSSObject => {
     const {

@@ -76,34 +76,47 @@ export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 export type PropTemplateType = 'standard' | 'directional';
 
 export type TransformValue = (value: unknown) => string | number;
-export type DirectionalConfig = {
+
+export type AbstractPropConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   altProps?: Readonly<string[]>;
-  type: 'directional';
+  type?: 'directional' | 'standard';
   scale?: AbstractScales;
   computeValue?: TransformValue;
 };
-
-export type StandardConfig = {
-  propName: PropAlias | Readonly<PropAlias[]>;
-  altProps?: Readonly<string[]>;
-  type?: 'standard';
-  scale?: AbstractScales;
-  computeValue?: TransformValue;
-};
-
-export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
 
 /** Theme Aware Configurations */
 
-export type ThematicConfig<T extends AbstractTheme> =
-  | (StandardConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> })
-  | (DirectionalConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> });
+export type ThematicPropConfig<T extends AbstractTheme> = AbstractPropConfig & {
+  scale?: ScaleArray | ScaleMap | Readonly<keyof T>;
+};
 
-export type PropKey<T extends AbstractSystemConfig> =
+export type PropKey<T extends AbstractPropConfig> =
   | Extract<T, { propName: string }>['propName']
   | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
+
+export type ExtractConfigByKeyArray<
+  T extends AbstractPropConfig,
+  K extends stirng
+> = K extends Extract<T, { propName: Readonly<string[]> }>['propName'][number]
+  ? T
+  : never;
+
+export type ExtractConfigByKeyAlt<
+  T extends AbstractPropConfig,
+  K extends stirng
+> = K extends Extract<T, { altProps: Readonly<string[]> }>['altProps'][number]
+  ? T
+  : never;
+
+export type ExtractConfigByKey<
+  T extends AbstractPropConfig,
+  K extends PropAlias
+> =
+  | Extract<T, { propName: K }>
+  | ExtractConfigByKeyAlt<T, K>
+  | ExtractConfigByKeyArray<T, K>;
 
 type SafeCSSType<T extends PropAlias> = Extract<
   Readonly<CSS.Properties[T]>,
@@ -112,7 +125,7 @@ type SafeCSSType<T extends PropAlias> = Extract<
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<
-  T extends AbstractSystemConfig
+  T extends AbstractPropConfig
 > = T['propName'] extends PropAlias[]
   ? SafeCSSType<T['propName'][number]>
   : T['propName'] extends PropAlias
@@ -121,7 +134,7 @@ export type DefaultPropScale<
 
 export type ThematicScaleValue<
   T extends AbstractTheme,
-  K extends ThematicConfig<T>
+  K extends ThematicPropConfig<T>
 > = K['scale'] extends AbstractScales
   ?
       | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
@@ -131,9 +144,9 @@ export type ThematicScaleValue<
 
 export type ThematicProps<
   T extends AbstractTheme,
-  K extends ThematicConfig<T>
+  K extends ThematicPropConfig<T>
 > = {
   [key in PropKey<K>]?:
-    | ThematicScaleValue<T, K>
-    | ResponsiveProp<ThematicScaleValue<T, K>>;
+    | ThematicScaleValue<T, ExtractConfigByKey<K, key>>
+    | ResponsiveProp<ThematicScaleValue<T, ExtractConfigByKey<K, key>>>;
 };

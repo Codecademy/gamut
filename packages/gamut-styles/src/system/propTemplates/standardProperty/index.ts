@@ -1,8 +1,8 @@
-import { AbstractSystemConfig, PropAlias, StyleTemplate } from '../../types';
+import { AbstractPropConfig, PropAlias, StyleTemplate } from '../../types';
 
 export const standardProperty = <
   T extends Record<string, unknown>,
-  K extends AbstractSystemConfig
+  K extends AbstractPropConfig
 >(
   propName: K['propName'],
   computeValue: K['computeValue']

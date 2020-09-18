@@ -1,11 +1,11 @@
 import {
-  ThematicConfig,
   AbstractTheme,
   ThematicProps,
   AbstractProps,
   Handler,
   HandlerConfig,
   StyleTemplate,
+  ThematicPropConfig,
 } from '../../types';
 import { identity } from 'lodash';
 import {
@@ -44,7 +44,7 @@ export const createHandler = <T extends AbstractProps>({
 
 export const registerHandler = <
   T extends AbstractTheme,
-  C extends ThematicConfig<T>,
+  C extends ThematicPropConfig<T>,
   P extends ThematicProps<T, C>
 >(
   config: C
@@ -55,6 +55,7 @@ export const registerHandler = <
     computeValue = identity,
     type = 'standard',
   } = config;
+
   const templateFunction = TEMPLATES[type];
 
   let systemHandler: Handler<P>;
