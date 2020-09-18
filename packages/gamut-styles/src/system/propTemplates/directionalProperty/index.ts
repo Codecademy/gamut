@@ -1,5 +1,5 @@
 import { CSSObject } from '@emotion/core';
-import { AbstractPropConfig, StyleTemplate } from '../../types';
+import { AbstractPropConfig, AbstractProps, StyleTemplate } from '../../types';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];
@@ -34,10 +34,10 @@ const DIRECTIONAL_PROPS = {
 type DirectionalProps = typeof DIRECTIONAL_PROPS;
 
 export function directionalProperty<
-  T extends Record<string, unknown>,
-  K extends AbstractPropConfig
->(propName: K['propName'], computeValue: K['computeValue']): StyleTemplate<T> {
-  return (props: T): CSSObject => {
+  Config extends Required<Omit<AbstractPropConfig, 'scale'>>,
+  Props extends AbstractProps
+>({ propName, computeValue }: Config): StyleTemplate<Props> {
+  return (props: Props): CSSObject => {
     const {
       [propName as string]: base,
       [`${propName}X`]: x = base,
@@ -46,7 +46,7 @@ export function directionalProperty<
       [`${propName}Right`]: r = x,
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
-    } = props as Record<string, unknown>;
+    } = props as AbstractProps;
     const propKey = propName as keyof DirectionalProps;
     const orderedProps = [t, r, b, l];
 
@@ -55,7 +55,7 @@ export function directionalProperty<
     DIRECTIONS.forEach((direction, i) => {
       if (orderedProps[i] !== undefined) {
         const prop = DIRECTIONAL_PROPS[propKey][direction];
-        const value = computeValue!(orderedProps[i]) as string;
+        const value = computeValue(orderedProps[i]) as string;
 
         styles[prop] = value;
       }

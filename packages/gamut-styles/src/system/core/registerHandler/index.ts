@@ -46,21 +46,24 @@ export const registerHandler = <
   T extends AbstractTheme,
   C extends ThematicPropConfig<T>,
   P extends ThematicProps<T, C>
->(
-  config: C
-): Handler<P> => {
-  const {
+>({
+  propName,
+  altProps,
+  computeValue,
+  type,
+}: C): Handler<P> => {
+  const config: Required<Omit<ThematicPropConfig<T>, 'scale'>> = {
     propName,
-    altProps = [],
-    computeValue = identity,
-    type = 'standard',
-  } = config;
+    altProps: altProps ?? [],
+    computeValue: computeValue ?? identity,
+    type: type ?? 'standard',
+  };
 
-  const templateFunction = TEMPLATES[type];
+  const templateFunction = TEMPLATES[config.type];
 
   let systemHandler: Handler<P>;
   if (typeof propName === 'string') {
-    const styleFunction = templateFunction<P, C>(propName, computeValue);
+    const styleFunction = templateFunction<typeof config, P>(config);
     const propConfig = {
       propName,
       altProps,
@@ -71,7 +74,13 @@ export const registerHandler = <
   } else {
     const composite: Handler<AbstractProps>[] = [];
     propName.forEach((propKey) => {
-      const styleFunction = templateFunction<P, C>(propKey, computeValue);
+      const individualConfig = {
+        ...config,
+        propName: propKey,
+      };
+      const styleFunction = templateFunction<typeof individualConfig, P>(
+        individualConfig
+      );
       const propConfig = {
         propName: propKey,
         templateFn: styleFunction,
