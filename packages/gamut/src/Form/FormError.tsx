@@ -2,10 +2,17 @@ import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import s from './styles/FormError.module.scss';
 
-export const FormError: React.FC<HTMLAttributes<HTMLSpanElement>> = (props) => {
+export type FormErrorProps = HTMLAttributes<HTMLSpanElement> & {
+  isFirstError?: boolean;
+};
+
+export const FormError: React.FC<FormErrorProps> = ({
+  isFirstError = true,
+  ...props
+}) => {
   return (
     <span
-      aria-live="assertive"
+      aria-live={isFirstError ? 'assertive' : 'off'}
       className={cx(s.formError, props.className)}
       {...props}
     />

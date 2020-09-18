@@ -16,6 +16,7 @@ import cx from 'classnames';
 
 export type GridFormInputGroupProps = {
   error?: string;
+  isFirstError?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
@@ -110,7 +111,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
         >
           {props.field.label}
         </FormGroupLabel>
-        {props.error && <FormError>{props.error}</FormError>}
+        {props.error && (
+          <FormError isFirstError={props.isFirstError}>{props.error}</FormError>
+        )}
         {getInput()}
       </FormGroup>
     </Column>
