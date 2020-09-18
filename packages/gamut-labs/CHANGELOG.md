@@ -1,3 +1,10 @@
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.3...@codecademy/gamut-labs@4.1.0) (2020-09-18)
+
+
+### ✨ Features
+
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
+
 ### [4.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.2...@codecademy/gamut-labs@4.0.3) (2020-09-11)
 
 
