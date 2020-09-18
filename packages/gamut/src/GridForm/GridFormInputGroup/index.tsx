@@ -112,7 +112,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
           {props.field.label}
         </FormGroupLabel>
         {props.error && (
-          <FormError isFirstError={props.isFirstError}>{props.error}</FormError>
+          <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
+            {props.error}
+          </FormError>
         )}
         {getInput()}
       </FormGroup>
