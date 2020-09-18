@@ -80,17 +80,16 @@ export function GridForm<
    * Keep track of the first error in this form.
    * This is so we only add the correct aria-live props on the first error.
    */
-  let hasFirstError = false;
+  let pastFirstError = false;
 
   return (
     <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
-          // check if this is our first error
-          const isFirstError = !hasFirstError && errorMessage !== undefined;
-          // update our first error tracking variable
-          hasFirstError = hasFirstError || isFirstError;
+
+          const isFirstError = !pastFirstError && errorMessage !== undefined;
+          pastFirstError = pastFirstError || isFirstError;
 
           return (
             <GridFormInputGroup
