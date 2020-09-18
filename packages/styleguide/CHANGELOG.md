@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 17.2.0 (2020-09-18)
-
-* feat(Box): Temporary Box component (#958) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196)), closes [#958](https://github.com/Codecademy/client-modules/issues/958)
-* chore: update changelogs ([19f6aaa](https://github.com/Codecademy/client-modules/commit/19f6aaa))
+## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.1...@codecademy/styleguide@17.2.0) (2020-09-18)
 
 
+### ✨ Features
 
-
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
 
 ### [17.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.0...@codecademy/styleguide@17.1.1) (2020-09-03)
 
@@ -1067,3 +1060,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
