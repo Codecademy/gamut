@@ -8,26 +8,6 @@ import {
 import { compose } from '../compose';
 import { registerHandler } from '../registerHandler';
 
-export const system = <
-  T extends AbstractTheme,
-  C extends Record<string, ThematicPropConfig<T>>
->(
-  config: C,
-  theme?: T
-) => {
-  const configMap = {} as {
-    [P in keyof typeof config]: Handler<ThematicProps<T, C[P]>>;
-  };
-
-  for (const key in config) {
-    const handler = registerHandler(config[key]);
-
-    configMap[key] = handler;
-  }
-
-  return configMap;
-};
-
 export const createSystem = <
   T extends AbstractTheme,
   C extends Record<string, Record<string, ThematicPropConfig<T>>>

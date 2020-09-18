@@ -2,19 +2,6 @@ import { CSSObject, SerializedStyles } from '@emotion/core';
 import { Styles } from 'polished/lib/types/style';
 import * as CSS from 'csstype';
 
-/** System Configuration */
-export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
-
-export type MediaQueryMap<T> = {
-  xs?: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
-};
-
-export type ResponsiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
-
 /** Utility  */
 export type UnionToIntersection<U> = (
   U extends any ? (k: U) => void : never
@@ -35,12 +22,9 @@ export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
   ? keyof T
   : never;
 
-/** Abstract Configurations  */
+/** Configurations  */
+
 export type PropAlias = Readonly<keyof CSS.Properties>;
-
-export type AnyStyle = SerializedStyles | Styles | string;
-
-export type StyleMap = CSS.Properties;
 
 export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
@@ -51,6 +35,8 @@ export type ScaleMap = Readonly<Record<string | number, unknown>>;
 export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
 
 export type AbstractProps = Record<string, unknown>;
+
+/** Style Handler */
 
 export type StyleTemplate<T extends AbstractProps> = (
   props: T
@@ -73,23 +59,21 @@ export type Handler<T extends AbstractProps> = {
 
 export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
-export type PropTemplateType = 'standard' | 'directional';
-
-export type TransformValue = (value: unknown) => string | number;
+/** Prop Configs */
 
 export type AbstractPropConfig = {
   propName: PropAlias | Readonly<PropAlias[]>;
   altProps?: Readonly<string[]>;
   type?: 'directional' | 'standard';
   scale?: AbstractScales;
-  computeValue?: TransformValue;
+  computeValue?: (value: unknown) => string | number;
 };
-
-/** Theme Aware Configurations */
 
 export type ThematicPropConfig<T extends AbstractTheme> = AbstractPropConfig & {
   scale?: ScaleArray | ScaleMap | Readonly<keyof T>;
 };
+
+/** Prop Keys */
 
 export type PropKey<T extends AbstractPropConfig> =
   | Extract<T, { propName: string }>['propName']
@@ -118,12 +102,25 @@ export type ExtractConfigByKey<
   | ExtractConfigByKeyAlt<T, K>
   | ExtractConfigByKeyArray<T, K>;
 
-type SafeCSSType<T extends PropAlias> = Extract<
+/** Prop Values */
+/** Responsive Properties */
+export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
+
+export type MediaQueryMap<T> = {
+  xs?: T;
+  sm?: T;
+  md?: T;
+  lg?: T;
+  xl?: T;
+};
+
+export type ResponsiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
+
+export type SafeCSSType<T extends PropAlias> = Extract<
   Readonly<CSS.Properties[T]>,
   Readonly<string>
 >;
 
-/** Standard CSS Property Types */
 export type DefaultPropScale<
   T extends AbstractPropConfig
 > = T['propName'] extends PropAlias[]

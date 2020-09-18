@@ -3,16 +3,17 @@ import {
   Handler,
   UnionToIntersection,
   StyleTemplate,
+  HandlerProps,
 } from '../../types';
 import { responsiveProperty } from '../../propTemplates';
 
 export const compose = <
   T extends Handler<AbstractProps>[],
-  P extends Partial<UnionToIntersection<Parameters<T[number]>[0]>>
+  P extends Partial<UnionToIntersection<HandlerProps<T[number]>>>
 >(
   ...handlers: T
 ) => {
-  let propNames: (keyof Parameters<T[number]>[0])[] = [];
+  let propNames: (keyof HandlerProps<T[number]>)[] = [];
   let templateFns = {} as Partial<Record<keyof P, StyleTemplate<P>>>;
 
   handlers.forEach((handler) => {

@@ -27,7 +27,7 @@ export const typography = {
   },
   fontSize: {
     propName: 'fontSize',
-    scale: [] as FontScale[],
+    scale: 'fontSize',
     computeValue: (value: any) => fontScale[value as FontScale],
   },
   letterSpacing: {
