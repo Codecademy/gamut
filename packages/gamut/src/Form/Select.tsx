@@ -21,7 +21,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       selectOptions = options.map((option) => {
         const key = id ? `${id}-${option}` : option;
         return (
-          <option key={key} value={option}>
+          <option key={key} value={option} data-testid={key}>
             {option}
           </option>
         );
@@ -30,7 +30,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       each(options, (text, val) => {
         const key = id ? `${id}-${val}` : val;
         selectOptions.push(
-          <option key={key} value={val}>
+          <option key={key} value={val} data-testid={key}>
             {text}
           </option>
         );
