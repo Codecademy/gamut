@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>4.1.1 (2020-09-21)</small>
+
+* Correct Navy Box Variant shadow and update imports (#961) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5)), closes [#961](https://github.com/Codecademy/client-modules/issues/961)
+* chore: update changelogs ([c04b826](https://github.com/Codecademy/client-modules/commit/c04b826))
+
+
+
+
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.3...@codecademy/gamut-labs@4.1.0) (2020-09-18)
+
+
+### ✨ Features
+
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
+
 ### [4.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.2...@codecademy/gamut-labs@4.0.3) (2020-09-11)
 
 
@@ -240,4 +261,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
