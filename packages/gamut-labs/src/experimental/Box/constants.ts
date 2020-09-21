@@ -1,11 +1,19 @@
 import { colors } from '@codecademy/gamut-styles';
 
 const { white, navy, yellow } = colors;
+export type BoxVariants = 'yellow' | 'navy' | 'white';
 
-export const BOX_VARIANTS = {
+export const BOX_VARIANTS: Record<
+  BoxVariants,
+  {
+    background: string;
+    text: string;
+    border: string;
+    shadow?: string;
+  }
+> = {
   yellow: {
     background: yellow,
-    shadow: navy,
     text: navy,
     border: navy,
   },
@@ -17,7 +25,6 @@ export const BOX_VARIANTS = {
   },
   white: {
     background: white,
-    shadow: navy,
     text: navy,
     border: navy,
   },
