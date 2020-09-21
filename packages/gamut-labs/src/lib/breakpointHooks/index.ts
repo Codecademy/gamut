@@ -1,5 +1,5 @@
 import { mapValues } from 'lodash';
-import { breakpoints as originalBreakpoints } from '@codecademy/gamut-styles/utils/variables';
+import { breakpoints as originalBreakpoints } from '@codecademy/gamut-styles';
 import { createBreakpoint } from 'react-use';
 
 export type Breakpoint = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
