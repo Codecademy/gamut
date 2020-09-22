@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { Select } from '../Select';
 
-describe('<Select>', () => {
+describe('Select', () => {
   const selectOptions = ['red', 'yellow', 'green'];
   const defaultProps = {
     options: selectOptions,
