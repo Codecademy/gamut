@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>16.0.7 (2020-09-22)</small>
-
-* Fix deprecation warning (#962) ([2431dcc](https://github.com/Codecademy/client-modules/commit/2431dcc)), closes [#962](https://github.com/Codecademy/client-modules/issues/962)
-* chore: update changelogs ([d4b3640](https://github.com/Codecademy/client-modules/commit/d4b3640))
+### [16.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.6...@codecademy/gamut@16.0.7) (2020-09-22)
 
 
+### Other Changes
 
-
+* Fix deprecation warning ([#962](https://github.com/Codecademy/client-modules/issues/962)) ([2431dcc](https://github.com/Codecademy/client-modules/commit/2431dcc220667119cf895564b87724c317c29a98))
 
 ### [16.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.5...@codecademy/gamut@16.0.6) (2020-09-22)
 
@@ -2956,3 +2949,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
