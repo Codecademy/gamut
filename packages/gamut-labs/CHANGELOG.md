@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>4.1.2 (2020-09-22)</small>
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## <small>4.1.1 (2020-09-21)</small>
 
 * Correct Navy Box Variant shadow and update imports (#961) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5)), closes [#961](https://github.com/Codecademy/client-modules/issues/961)
