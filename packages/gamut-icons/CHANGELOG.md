@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>3.4.2 (2020-09-22)</small>
-
-* fix: updated Select key to take in id (#959) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587f)), closes [#959](https://github.com/Codecademy/client-modules/issues/959)
-* chore: update changelogs ([19f6aaa](https://github.com/Codecademy/client-modules/commit/19f6aaa))
+### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.1...@codecademy/gamut-icons@3.4.2) (2020-09-22)
 
 
+### 🐛 Bug Fixes
 
-
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
 
 ### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.0...@codecademy/gamut-icons@3.4.1) (2020-09-03)
 
@@ -235,3 +228,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+

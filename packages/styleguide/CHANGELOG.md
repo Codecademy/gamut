@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>17.2.2 (2020-09-22)</small>
-
-* fix: updated Select key to take in id (#959) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587f)), closes [#959](https://github.com/Codecademy/client-modules/issues/959)
-* chore: update changelogs ([35254b4](https://github.com/Codecademy/client-modules/commit/35254b4))
+### [17.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.1...@codecademy/styleguide@17.2.2) (2020-09-22)
 
 
+### 🐛 Bug Fixes
 
-
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
 
 ### [17.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.0...@codecademy/styleguide@17.2.1) (2020-09-22)
 
@@ -1076,3 +1069,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
