@@ -1,3 +1,10 @@
+### [16.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.4...@codecademy/gamut@16.0.5) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* **GridForm:** only set aria-live on first error component ([#960](https://github.com/Codecademy/client-modules/issues/960)) ([2dfdaee](https://github.com/Codecademy/client-modules/commit/2dfdaee0ceda9005d9a10b127e060efa7fda0156))
+
 ### [16.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.3...@codecademy/gamut@16.0.4) (2020-09-03)
 
 
