@@ -4,7 +4,6 @@ import { colors } from '@codecademy/gamut-styles';
 export type LogoProCutoutProps = {
   backgroundColor?: string;
   cutoutColor?: string;
-  transparentCutout?: boolean;
   width?: number;
 };
 
