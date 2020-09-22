@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>16.0.5 (2020-09-22)</small>
-
-* fix(GridForm): only set aria-live on first error component (#960) ([2dfdaee](https://github.com/Codecademy/client-modules/commit/2dfdaee)), closes [#960](https://github.com/Codecademy/client-modules/issues/960)
-* chore: update changelogs ([19f6aaa](https://github.com/Codecademy/client-modules/commit/19f6aaa))
+### [16.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.4...@codecademy/gamut@16.0.5) (2020-09-22)
 
 
+### 🐛 Bug Fixes
 
-
+* **GridForm:** only set aria-live on first error component ([#960](https://github.com/Codecademy/client-modules/issues/960)) ([2dfdaee](https://github.com/Codecademy/client-modules/commit/2dfdaee0ceda9005d9a10b127e060efa7fda0156))
 
 ### [16.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.3...@codecademy/gamut@16.0.4) (2020-09-03)
 
@@ -2942,3 +2935,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
