@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { Props } from './types/props';
 import { CSSObject } from '@emotion/core';
 
