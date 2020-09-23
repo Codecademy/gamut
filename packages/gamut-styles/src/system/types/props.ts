@@ -17,16 +17,6 @@ export type Props = {
 
   /** Borders  */
 
-  borderColor: {
-    defaultValue: CSS.Properties['borderColor'];
-    altProps:
-      | 'borderColorLeft'
-      | 'borderColorRight'
-      | 'borderColorTop'
-      | 'borderColorBottom'
-      | 'borderColorX'
-      | 'borderColorY';
-  };
   borderWidth: {
     defaultValue: CSS.Properties['borderWidth'];
     altProps:
@@ -226,6 +216,24 @@ export type Props = {
   };
   order: {
     defaultValue: CSS.Properties['order'];
+  };
+
+  /** Colors */
+  color: {
+    defaultValue: CSS.Properties['color'];
+  };
+  borderColor: {
+    defaultValue: CSS.Properties['borderColor'];
+    altProps:
+      | 'borderColorLeft'
+      | 'borderColorRight'
+      | 'borderColorTop'
+      | 'borderColorBottom'
+      | 'borderColorX'
+      | 'borderColorY';
+  };
+  backgroundColor: {
+    defaultValue: CSS.Properties['backgroundColor'];
   };
 };
 

@@ -4,28 +4,32 @@ import {
   createVariant,
   spacing,
   border,
+  SpacingProps,
+  BorderProps,
 } from '@codecademy/gamut-styles/dist/system';
-import { colors } from '@codecademy/gamut-styles';
 
 const boxVariants = createVariant({
   primary: {
-    borderColor: colors.navy,
-    backgroundColor: colors.white,
-    color: colors.navy,
+    borderColor: 'navy',
+    backgroundColor: 'white',
+    color: 'navy',
   },
   secondary: {
-    borderColor: colors.navy,
-    backgroundColor: colors.navy,
-    color: colors.white,
+    borderColor: 'navy',
+    backgroundColor: 'navy',
+    color: 'white',
   },
   alternate: {
-    borderColor: colors.navy,
-    backgroundColor: colors.yellow,
-    color: colors.white,
+    borderColor: 'navy',
+    backgroundColor: 'yellow',
+    color: 'white',
   },
 });
 
-export const Box = styled.div`
+type BoxVariantProps = Parameters<typeof boxVariants>[0];
+type BoxProps = SpacingProps & BorderProps & BoxVariantProps;
+
+export const Box = styled.div<BoxProps>`
   ${border}
   ${spacing}
   ${boxVariants}

@@ -1,5 +1,5 @@
+import { Props } from './types/props';
 import { CSSObject } from '@emotion/core';
-import * as CSS from 'csstype';
 
 /** System Configuration */
 export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
@@ -35,9 +35,9 @@ export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
   : never;
 
 /** Abstract Configurations  */
-export type PropAlias = Readonly<keyof CSS.Properties>;
+export type PropAlias = Readonly<keyof Props>;
 
-export type StyleMap = CSS.Properties;
+export type StyleMap = Props;
 
 export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
@@ -92,7 +92,7 @@ export type PropKey<T extends AbstractSystemConfig> =
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
 type SafeCSSType<T extends PropAlias> = Extract<
-  Readonly<CSS.Properties[T]>,
+  Readonly<Props[T]['defaultValue']>,
   Readonly<string>
 >;
 
