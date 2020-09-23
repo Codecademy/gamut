@@ -31,7 +31,7 @@ export type Props = {
     defaultValue: CSS.Properties['borderRadius'];
   };
   borderStyle: {
-    defaultValue: CSS.Properties['borderStyle'];
+    defaultValue: CSS.Property.BorderTopStyle; // Dumb Hack
   };
 
   /** Shadows */
