@@ -26,7 +26,7 @@ const DIRECTIONAL_PROPS = {
   borderWidth: {
     left: 'borderLeftWidth',
     right: 'borderRightWidth',
-    top: 'borderLeftColor',
+    top: 'borderTopWidth',
     bottom: 'borderBottomWidth',
   },
 } as const;

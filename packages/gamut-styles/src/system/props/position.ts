@@ -3,15 +3,24 @@ import { parseSize } from '../transforms';
 export const positioning = {
   position: {
     propName: 'position',
-    scale: [] as ('static' | 'fixed' | 'absolute' | 'relative' | 'sticky')[],
   },
-  coordinate: {
-    scale: [] as (number | string)[],
-    computeValue: (value: any) => parseSize(value as string | number),
-    propName: ['top', 'left', 'right', 'bottom'],
+  top: {
+    propName: 'top',
+    computeValue: parseSize,
+  },
+  right: {
+    propName: 'right',
+    computeValue: parseSize,
+  },
+  bottom: {
+    propName: 'bottom',
+    computeValue: parseSize,
+  },
+  left: {
+    propName: 'left',
+    computeValue: parseSize,
   },
   zIndex: {
-    scale: [] as number[],
     propName: 'zIndex',
   },
 } as const;

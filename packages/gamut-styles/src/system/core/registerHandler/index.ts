@@ -13,7 +13,6 @@ import {
   directionalProperty,
   responsiveProperty,
 } from '../../propTemplates';
-import { compose } from '../compose';
 
 const TEMPLATES = {
   standard: standardProperty,
@@ -57,31 +56,13 @@ export const registerHandler = <
   } = config;
   const templateFunction = TEMPLATES[type];
 
-  let systemHandler: Handler<P>;
-  if (typeof propName === 'string') {
-    const styleFunction = templateFunction<P, C>(propName, computeValue);
-    const propConfig = {
-      propName,
-      altProps,
-      templateFn: styleFunction,
-    };
+  const styleFunction = templateFunction<P, C>(propName, computeValue);
+  const propConfig = {
+    propName,
+    altProps,
+    templateFn: styleFunction,
+  };
 
-    systemHandler = createHandler<P>(propConfig);
-  } else {
-    const composite: Handler<AbstractProps>[] = [];
-    propName.forEach((propKey) => {
-      const styleFunction = templateFunction<P, C>(propKey, computeValue);
-      const propConfig = {
-        propName: propKey,
-        templateFn: styleFunction,
-      };
-      const propHandler = createHandler<P>(propConfig);
-
-      composite.push(propHandler as Handler<AbstractProps>);
-    });
-
-    systemHandler = compose(...composite);
-  }
-
-  return systemHandler;
+  const systemHandler = createHandler(propConfig as any) as any;
+  return systemHandler as Handler<P>;
 };

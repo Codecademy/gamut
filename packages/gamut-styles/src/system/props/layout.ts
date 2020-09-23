@@ -1,38 +1,43 @@
-import { DisplayTypes } from '../../variables/display';
 import { parseSize } from '../transforms';
 
 export const layout = {
   display: {
     propName: 'display',
-    scale: [] as DisplayTypes[],
   },
   overflow: {
-    propName: ['overflow', 'overflowX', 'overflowY'],
-    scale: [] as ('visible' | 'hidden' | 'scroll')[],
+    propName: 'overflow',
   },
-  dimensions: {
-    propName: [
-      'width',
-      'minWidth',
-      'maxWidth',
-      'height',
-      'minHeight',
-      'maxHeight',
-    ],
-    scale: [] as (number | string)[],
-    computeValue: (value: unknown) => parseSize(value as string | number),
+  overflowX: {
+    propName: 'overflowX',
+  },
+  overflowY: {
+    propName: 'overflowY',
+  },
+  width: {
+    propName: 'width',
+    computeValue: parseSize,
+  },
+  minWidth: {
+    propName: 'minWidth',
+    computeValue: parseSize,
+  },
+  maxWidth: {
+    propName: 'maxWidth',
+    computeValue: parseSize,
+  },
+  height: {
+    propName: 'height',
+    computeValue: parseSize,
+  },
+  minHeight: {
+    propName: 'minHeight',
+    computeValue: parseSize,
+  },
+  maxHeight: {
+    propName: 'maxHeight',
+    computeValue: parseSize,
   },
   verticalAlign: {
     propName: 'verticalAlign',
-    scale: [] as (
-      | 'baseline'
-      | 'sub'
-      | 'super'
-      | 'text-top'
-      | 'text-bottom'
-      | 'middle'
-      | 'top'
-      | 'bottom'
-    )[],
   },
 } as const;

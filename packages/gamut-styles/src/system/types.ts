@@ -1,5 +1,4 @@
-import { CSSObject, SerializedStyles } from '@emotion/core';
-import { Styles } from 'polished/lib/types/style';
+import { CSSObject } from '@emotion/core';
 import * as CSS from 'csstype';
 
 /** System Configuration */
@@ -13,7 +12,7 @@ export type MediaQueryMap<T> = {
   xl?: T;
 };
 
-export type ResponsiveProp<T> = MediaQueryArray<T> | MediaQueryMap<T>;
+export type ResponsiveProp<T> = T | MediaQueryArray<T> | MediaQueryMap<T>;
 
 /** Utility  */
 export type UnionToIntersection<U> = (
@@ -37,8 +36,6 @@ export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
 
 /** Abstract Configurations  */
 export type PropAlias = Readonly<keyof CSS.Properties>;
-
-export type AnyStyle = SerializedStyles | Styles | string;
 
 export type StyleMap = CSS.Properties;
 
@@ -75,34 +72,23 @@ export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
 
 export type PropTemplateType = 'standard' | 'directional';
 
-export type TransformValue = (value: unknown) => string | number;
-export type DirectionalConfig = {
-  propName: PropAlias | Readonly<PropAlias[]>;
+export type TransformValue = (value: any) => string | number;
+
+export type AbstractSystemConfig = {
+  propName: PropAlias;
   altProps?: Readonly<string[]>;
-  type: 'directional';
+  type?: 'standard' | 'directional';
   scale?: AbstractScales;
   computeValue?: TransformValue;
 };
-
-export type StandardConfig = {
-  propName: PropAlias | Readonly<PropAlias[]>;
-  altProps?: Readonly<string[]>;
-  type?: 'standard';
-  scale?: AbstractScales;
-  computeValue?: TransformValue;
-};
-
-export type AbstractSystemConfig = StandardConfig | DirectionalConfig;
-
 /** Theme Aware Configurations */
 
-export type ThematicConfig<T extends AbstractTheme> =
-  | (StandardConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> })
-  | (DirectionalConfig & { scale?: ScaleArray | ScaleMap | Readonly<keyof T> });
+export type ThematicConfig<T extends AbstractTheme> = AbstractSystemConfig & {
+  scale?: ScaleArray | ScaleMap | Readonly<keyof T>;
+};
 
 export type PropKey<T extends AbstractSystemConfig> =
-  | Extract<T, { propName: string }>['propName']
-  | Extract<T, { propName: Readonly<string[]> }>['propName'][number]
+  | T['propName']
   | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
 
 type SafeCSSType<T extends PropAlias> = Extract<
@@ -133,7 +119,7 @@ export type ThematicProps<
   T extends AbstractTheme,
   K extends ThematicConfig<T>
 > = {
-  [key in PropKey<K>]?:
-    | ThematicScaleValue<T, K>
-    | ResponsiveProp<ThematicScaleValue<T, K>>;
+  [key in K['propName']]?: ResponsiveProp<
+    ThematicScaleValue<T, Extract<K, { propName: key }>>
+  >;
 };

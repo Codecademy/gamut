@@ -7,3 +7,4 @@ export * from './grid';
 export * from './flex';
 export * from './background';
 export * from './shadow';
+export * from './colors';
