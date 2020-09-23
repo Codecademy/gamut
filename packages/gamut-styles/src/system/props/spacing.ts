@@ -1,5 +1,3 @@
-import { spacing as spaceScale, SpaceSizes } from '../../variables/spacing';
-
 export const spacing = {
   margin: {
     propName: 'margin',
@@ -12,8 +10,6 @@ export const spacing = {
       'marginY',
     ],
     type: 'directional',
-    scale: [] as SpaceSizes[],
-    computeValue: (value: unknown) => spaceScale[value as SpaceSizes],
   },
   padding: {
     propName: 'padding',
@@ -26,7 +22,5 @@ export const spacing = {
       'paddingY',
     ],
     type: 'directional',
-    scale: [] as SpaceSizes[],
-    computeValue: (value: unknown) => spaceScale[value as SpaceSizes],
   },
 } as const;

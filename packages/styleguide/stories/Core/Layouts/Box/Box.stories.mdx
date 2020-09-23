@@ -17,7 +17,12 @@ A primitive box component.
       children: 'Hello world I am a box',
     }}
   >
-    {(args) => <Box {...args} />}
+    {(args) => (
+      <>
+        <Box variant="primary">I am a primary</Box>
+        <Box variant="secondary">I am a secondary</Box>
+      </>
+    )}
   </Story>
 </Canvas>
 
