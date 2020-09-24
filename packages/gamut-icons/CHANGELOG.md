@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 3.6.0 (2020-09-24)
+
+* feat: Add file download icon (#969) ([4ac7d4c](https://github.com/Codecademy/client-modules/commit/4ac7d4c)), closes [#969](https://github.com/Codecademy/client-modules/issues/969)
+* chore: update changelogs ([f1fa25a](https://github.com/Codecademy/client-modules/commit/f1fa25a))
+
+
+
+
+
 ## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.2...@codecademy/gamut-icons@3.5.0) (2020-09-24)
 
 
@@ -235,4 +249,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
