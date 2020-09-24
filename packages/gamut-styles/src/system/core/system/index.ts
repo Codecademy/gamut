@@ -1,25 +1,19 @@
 import {
   AbstractTheme,
   ThematicConfig,
-  ThematicProps,
   Handler,
   UnionToIntersection,
   ThematicScaleValue,
-  AbstractSystemConfig,
+  GetAltProps,
 } from '../../types';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
 import { registerHandler } from '../registerHandler';
 import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
-import { Props as PropDefaults } from '../../types/props';
+import { getDefaultPropKey } from '../utils';
 
 type BasePropConfig = typeof BaseProps;
-
-type GetAltProps<Config extends AbstractSystemConfig> = Extract<
-  PropDefaults[Config['propName']],
-  { altProps: string }
->['altProps'];
 
 export const system = <
   Theme extends AbstractTheme,
@@ -43,10 +37,9 @@ export const system = <
 
   const createVariant = (config: any) => {
     const props = uniq(
-      values(config).reduce(
-        (carry, variant) => carry.concat(keys(variant)),
-        [] as any
-      )
+      values(config)
+        .reduce((carry, variant) => carry.concat(keys(variant)), [] as any)
+        .map((prop: string) => getDefaultPropKey(prop))
     );
 
     const handlers = pick(system.handlers, props as any);

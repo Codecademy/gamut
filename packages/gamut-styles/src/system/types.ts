@@ -102,6 +102,11 @@ export type PropKey<Config extends AbstractSystemConfig> =
   | Config['propName']
   | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
 
+export type GetAltProps<Config extends AbstractSystemConfig> = Extract<
+  Props[Config['propName']],
+  { altProps: string }
+>['altProps'];
+
 type SafeCSSType<PropName extends PropAlias> = Extract<
   Readonly<Props[PropName]['defaultValue']>,
   Readonly<string>
