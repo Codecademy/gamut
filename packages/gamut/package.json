@@ -19,8 +19,7 @@
     "@emotion/core": ">=10.0.0",
     "@emotion/styled": ">=10.0.0",
     "react": ">=16.8.1",
-    "react-dom": ">=16.8.1",
-    "polished": ">=3.0.0"
+    "react-dom": ">=16.8.1"
   },
   "dependencies": {
     "@codecademy/gamut-icons": "^3.4.1",
