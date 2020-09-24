@@ -5,16 +5,25 @@ import { ResponsiveProp } from '../../../types/system';
 
 describe(responsiveProperty, () => {
   const templateFns = {
-    display: standardProperty('display', (val) => val as string),
-    margin: directionalProperty('margin', (val) => val as string),
+    display: standardProperty({
+      propName: 'display',
+      computeValue: (val) => val,
+    }),
+    margin: directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => val,
+    }),
   };
   it('creates a property function', () => {
-    const propFunction = responsiveProperty<{
-      margin?: string | ResponsiveProp<string>;
-      marginLeft?: string | ResponsiveProp<string>;
-      display?: string | ResponsiveProp<string>;
-      theme?: any;
-    }>({
+    const propFunction = responsiveProperty<
+      {},
+      {
+        margin?: string | ResponsiveProp<string>;
+        marginLeft?: string | ResponsiveProp<string>;
+        display?: string | ResponsiveProp<string>;
+        theme?: any;
+      }
+    >({
       propNames: ['display', 'margin', 'marginLeft'],
       templateFns,
     });

@@ -3,6 +3,7 @@ import {
   Handler,
   UnionToIntersection,
   StyleTemplate,
+  AbstractTheme,
 } from '../../types/system';
 import { responsiveProperty } from '../../propTemplates';
 
@@ -29,7 +30,10 @@ export const compose = <
     templateFns,
   };
 
-  const composedHandler: Handler<Props> = responsiveProperty<Props>(config);
+  const composedHandler: Handler<Props> = responsiveProperty<
+    AbstractTheme,
+    Props
+  >(config);
 
   composedHandler.propNames = propNames;
   composedHandler.templateFns = templateFns;
