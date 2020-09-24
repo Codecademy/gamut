@@ -10,9 +10,10 @@ export const altKeys = {
 const propAndAlts = entries(altKeys);
 
 export const getDefaultPropKey = (key: string) => {
-  for (const [key, matcher] of propAndAlts) {
+  for (const [main, matcher] of propAndAlts) {
     if (matcher.test(key)) {
-      return key;
+      return main;
     }
   }
+  return key;
 };
