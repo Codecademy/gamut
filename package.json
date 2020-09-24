@@ -82,7 +82,6 @@
     "jest-environment-jsdom-global": "1.2.0",
     "lint-staged": "10.2.2",
     "mutationobserver-shim": "^0.3.3",
-    "polished": "3.6.6",
     "prettier": "2.0.5",
     "react": "16.12.0",
     "react-docgen-typescript-loader": "3.6.0",

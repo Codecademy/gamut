@@ -14,5 +14,3 @@ export const spacing = {
   32: pxRem(32),
   48: pxRem(48),
 } as const;
-
-export type SpaceSizes = keyof typeof spacing;

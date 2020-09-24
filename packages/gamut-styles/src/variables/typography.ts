@@ -23,8 +23,6 @@ export const fontFamily = {
   system: fontSystem,
 } as const;
 
-export type FontFamilies = keyof typeof fontFamily;
-
 export const fontColor = {
   base: colorSwatch.gray[800],
   heading: colorSwatch.gray[900],
@@ -32,14 +30,10 @@ export const fontColor = {
   linkHover: colorSwatch.blue[700],
 } as const;
 
-export type FontColors = keyof typeof fontColor;
-
 export const fontDecorations = {
   link: 'none',
   linkHover: 'underline',
 } as const;
-
-export type FontDecorations = keyof typeof fontDecorations;
 
 export const fontScale = {
   1: pxRem(0.85 * base),
@@ -51,8 +45,6 @@ export const fontScale = {
   7: pxRem(2.2 * base),
   8: pxRem(3 * base),
 } as const;
-
-export type FontScale = keyof typeof fontScale;
 
 export const fontSize = {
   text: {
@@ -70,19 +62,13 @@ export const fontSize = {
   },
 } as const;
 
-export type FontSizes = keyof typeof fontSize;
-
 export const lineHeight = {
-  '1.5': 1.5,
-  '1.1': 1.1,
+  text: 1.5,
+  heading: 1.1,
 } as const;
-
-export type LineHeights = keyof typeof lineHeight;
 
 export const fontWeight = {
   light: 300,
   normal: 400,
   bold: 700,
 } as const;
-
-export type FontWeights = keyof typeof fontWeight;
