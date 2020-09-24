@@ -23,6 +23,7 @@ export const {
     shadow,
     colors,
   },
+  handlers: { margin },
 
   /** Helpers */
   createVariant,
