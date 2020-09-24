@@ -1,3 +1,26 @@
+## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.2...@codecademy/gamut-icons@3.5.0) (2020-09-24)
+
+
+### ✨ Features
+
+* added Pause icon ([#966](https://github.com/Codecademy/client-modules/issues/966)) ([e7ac196](https://github.com/Codecademy/client-modules/commit/e7ac196ce5873d98cc857601cadbec15faac8e97))
+
+### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.1...@codecademy/gamut-icons@3.4.2) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
+
+### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.0...@codecademy/gamut-icons@3.4.1) (2020-09-03)
+
+## [3.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.3.0...@codecademy/gamut-icons@3.4.0) (2020-09-02)
+
+
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
 ## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
 
 

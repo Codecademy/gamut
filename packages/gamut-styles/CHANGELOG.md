@@ -1,3 +1,14 @@
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@6.0.0...@codecademy/gamut-styles@7.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
 ## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@5.1.2...@codecademy/gamut-styles@6.0.0) (2020-08-28)
 
 

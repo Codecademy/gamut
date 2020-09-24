@@ -1,3 +1,50 @@
+### [17.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.4...@codecademy/styleguide@17.2.5) (2020-09-24)
+
+### [17.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.3...@codecademy/styleguide@17.2.4) (2020-09-24)
+
+### [17.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.2...@codecademy/styleguide@17.2.3) (2020-09-22)
+
+### [17.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.1...@codecademy/styleguide@17.2.2) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
+
+### [17.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.0...@codecademy/styleguide@17.2.1) (2020-09-22)
+
+## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.1...@codecademy/styleguide@17.2.0) (2020-09-18)
+
+
+### ✨ Features
+
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
+
+### [17.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.0...@codecademy/styleguide@17.1.1) (2020-09-03)
+
+
+### 💅 Styles
+
+* use white-space: pre-line for Alert ([#951](https://github.com/Codecademy/client-modules/issues/951)) ([ace3557](https://github.com/Codecademy/client-modules/commit/ace35571bbb4c0a0c550993ac3255e5db058c321))
+
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.0.0...@codecademy/styleguide@17.1.0) (2020-09-02)
+
+
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.1...@codecademy/styleguide@17.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
 ### [16.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@16.0.0...@codecademy/styleguide@16.0.1) (2020-08-28)
 
 ## [16.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@15.1.5...@codecademy/styleguide@16.0.0) (2020-08-28)
