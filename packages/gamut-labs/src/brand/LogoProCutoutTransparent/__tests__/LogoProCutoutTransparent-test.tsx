@@ -3,7 +3,7 @@ import React from 'react';
 
 import { LogoProCutoutTransparent } from '..';
 
-describe('LogoProCutout', () => {
+describe('LogoProCutoutTransparent', () => {
   it('renders the PRO logo', () => {
     const wrapper = mount(<LogoProCutoutTransparent />);
 
