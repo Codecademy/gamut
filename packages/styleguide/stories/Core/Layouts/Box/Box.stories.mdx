@@ -1,8 +1,8 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
-import { Box } from '@codecademy/gamut-labs/src';
+import { SystemBox } from '@codecademy/gamut-labs/src';
 
-<Meta title="Layouts/Box (Labs)" component={Box} />
+<Meta title="Layouts/SystemBox (Labs)" component={SystemBox} />
 
 # Box
 
@@ -12,18 +12,18 @@ A primitive box component.
 
 <Canvas>
   <Story
-    name="Box"
+    name="SystemBox"
     args={{
       children: 'Hello world I am a box',
     }}
   >
     {(args) => (
       <>
-        <Box variant="primary">I am a primary</Box>
-        <Box variant="secondary">I am a secondary</Box>
+        <SystemBox variant="primary">I am a primary</SystemBox>
+        <SystemBox variant="secondary">I am a secondary</SystemBox>
       </>
     )}
   </Story>
 </Canvas>
 
-<Props story="Box" />
+<Props story="SystemBox" />

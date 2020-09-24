@@ -67,22 +67,30 @@ export const system = <
         >;
       };
       props: {
-        [Property in keyof Merged[PropGroup]]: Record<
-          Property | GetAltProps<Merged[PropGroup][Property]>,
-          ThematicScaleValue<Theme, Merged[PropGroup][Property]>
+        [Property in keyof Merged[PropGroup]]: Partial<
+          Record<
+            Property | GetAltProps<Merged[PropGroup][Property]>,
+            ThematicScaleValue<Theme, Merged[PropGroup][Property]>
+          >
         >;
       };
     };
   };
 
-  type AllProps = UnionToIntersection<BaseGroup[keyof BaseGroup]['props']>;
+  type PropGroups = {
+    [PropGroup in keyof BaseGroup]: Handler<
+      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
+    >;
+  };
+
+  type AllProps = UnionToIntersection<
+    Parameters<PropGroups[keyof PropGroups]>[0]
+  >;
 
   type ReturnedSystem = {
     groups: {
       [PropGroup in keyof BaseGroup]: Handler<
-        Partial<
-          BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
-        >
+        BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
       >;
     };
     handlers: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;

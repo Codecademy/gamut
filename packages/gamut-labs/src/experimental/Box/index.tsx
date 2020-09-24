@@ -1,43 +1,85 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+import { colors, spacing } from '@codecademy/gamut-styles';
+import { HoverShadowVariants, PaddingSizes } from './types';
 
-import {
-  createVariant,
-  spacing,
-  border,
-  SpacingProps,
-  BorderProps,
-} from '@codecademy/gamut-styles/dist/system';
+import { BOX_VARIANTS, BoxVariants } from './constants';
+import { createShadowOffset } from './utils';
 
-const boxVariants = createVariant({
-  primary: {
-    borderColor: 'navy',
-    backgroundColor: 'white',
-    color: 'navy',
-  },
-  secondary: {
-    borderColor: 'navy',
-    backgroundColor: 'navy',
-    color: 'white',
-  },
-  alternate: {
-    borderColor: 'navy',
-    backgroundColor: 'yellow',
-    color: 'white',
-  },
-});
+export type BoxProps = {
+  /** Background Variation */
+  variant?: BoxVariants;
+  /** Whether the box should have a border */
+  bordered?: boolean;
+  /** Standard spacing sizes */
+  padding?: PaddingSizes;
+  /** Position of the hover shadow offset */
+  hoverShadow?: HoverShadowVariants;
+};
 
-type BoxVariantProps = Parameters<typeof boxVariants>[0];
-type BoxProps = SpacingProps & BorderProps & BoxVariantProps;
+const createShadow = (
+  shadowDirection: HoverShadowVariants,
+  shadowColor?: string
+) => css`
+  position: relative;
+  transition: 0.2s transform;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    border-width: inherit;
+    border-color: inherit;
+    border-radius: inherit;
+    border-style: inherit;
+    top: -1px;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+  }
+
+  &:after {
+    z-index: -2;
+    background-color: ${colors.navy};
+    transition: inherit;
+  }
+
+  &:before {
+    ${shadowColor && `box-shadow: -1px 1px 0 ${shadowColor};`}
+    z-index: -1;
+  }
+
+  &:hover {
+    ${createShadowOffset(4, shadowDirection)}
+  }
+`;
+
+const boxStyles = ({
+  padding,
+  variant = 'white',
+  bordered,
+  hoverShadow,
+}: BoxProps) => {
+  const { background, shadow, text, border } = BOX_VARIANTS[variant];
+
+  return css`
+    background-color: ${background};
+    color: ${text};
+    padding: ${spacing[padding!]};
+    border-width: 1px;
+    border-color: ${border};
+    border-radius: 2px;
+    border-style: ${bordered ? 'solid' : 'none'};
+
+    ${hoverShadow && createShadow(hoverShadow, shadow)}
+  `;
+};
 
 export const Box = styled.div<BoxProps>`
-  ${border}
-  ${spacing}
-  ${boxVariants}
+  ${boxStyles}
 `;
 
 Box.defaultProps = {
-  margin: '16px',
-  borderStyle: 'solid',
-  borderWidth: '1px',
-  padding: '16px',
-} as any;
+  variant: 'white',
+};

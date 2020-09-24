@@ -1,3 +1,34 @@
+### [4.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.5...@codecademy/gamut-labs@4.1.6) (2020-09-24)
+
+### [4.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.4...@codecademy/gamut-labs@4.1.5) (2020-09-24)
+
+### [4.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.3...@codecademy/gamut-labs@4.1.4) (2020-09-22)
+
+### [4.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.2...@codecademy/gamut-labs@4.1.3) (2020-09-22)
+
+### [4.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.1...@codecademy/gamut-labs@4.1.2) (2020-09-22)
+
+### [4.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.0...@codecademy/gamut-labs@4.1.1) (2020-09-21)
+
+
+### Other Changes
+
+* Correct Navy Box Variant shadow and update imports ([#961](https://github.com/Codecademy/client-modules/issues/961)) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5fe1c2a56e8ef61fb636215950337866c9))
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.3...@codecademy/gamut-labs@4.1.0) (2020-09-18)
+
+
+### ✨ Features
+
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
+
+### [4.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.2...@codecademy/gamut-labs@4.0.3) (2020-09-11)
+
+
+### 🐛 Bug Fixes
+
+* Byline remove aria-labels ([#955](https://github.com/Codecademy/client-modules/issues/955)) ([374904a](https://github.com/Codecademy/client-modules/commit/374904a17f12f1d8bc4d82fac1bde91dea66b081))
+
 ### [4.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.1...@codecademy/gamut-labs@4.0.2) (2020-09-03)
 
 ### [4.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.0...@codecademy/gamut-labs@4.0.1) (2020-09-02)
