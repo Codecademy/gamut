@@ -44,7 +44,9 @@ export type SafeMapKey<MaybeMap> = MaybeMap extends Readonly<
 /** Abstract Configurations  */
 export type PropAlias = Readonly<keyof Props>;
 
-export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
+export type AbstractTheme = Readonly<
+  Partial<Record<string, ScaleArray | ScaleMap>>
+>;
 
 export type ScaleArray = Readonly<unknown[]>;
 

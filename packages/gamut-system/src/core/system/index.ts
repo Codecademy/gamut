@@ -43,7 +43,7 @@ export const createSystem = <Theme extends AbstractTheme>() => {
       const variantHandler = compose(...values(handlers));
 
       return (props: { variant: any; theme: Theme }) => {
-        const variantProps = config[props.variant];
+        const variantProps = config[props.variant] || {};
         return variantHandler({ ...variantProps, theme: props.theme });
       };
     };

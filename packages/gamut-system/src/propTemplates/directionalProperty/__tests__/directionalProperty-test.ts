@@ -2,7 +2,10 @@ import { directionalProperty } from '..';
 
 describe(directionalProperty, () => {
   it('creates a property function', () => {
-    const propFunction = directionalProperty('margin', (val) => val as string);
+    const propFunction = directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => val,
+    });
 
     const templatedStyles = propFunction({ margin: '10px' });
     expect(templatedStyles).toEqual({
@@ -14,10 +17,10 @@ describe(directionalProperty, () => {
   });
 
   it('accepts a custom transform function', () => {
-    const propFunction = directionalProperty(
-      'margin',
-      (val) => `${(val as number) * 2}px`
-    );
+    const propFunction = directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => `${(val as number) * 2}px`,
+    });
 
     const templatedStyles = propFunction({ margin: 5 });
     expect(templatedStyles).toEqual({
@@ -29,7 +32,10 @@ describe(directionalProperty, () => {
   });
 
   it('overrides the base property along each axis', () => {
-    const propFunction = directionalProperty('margin', (val) => val as string);
+    const propFunction = directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => val,
+    });
 
     const xOverride = propFunction({ margin: '10px', marginX: '5px' });
     expect(xOverride).toEqual({
@@ -49,7 +55,10 @@ describe(directionalProperty, () => {
   });
 
   it('overrides the base and axis properties when given a specific direction', () => {
-    const propFunction = directionalProperty('margin', (val) => val as string);
+    const propFunction = directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => val,
+    });
 
     const topOverride = propFunction({
       margin: '10px',
@@ -101,7 +110,10 @@ describe(directionalProperty, () => {
   });
 
   it('does not template base when no configuration is given', () => {
-    const propFunction = directionalProperty('margin', (val) => val as string);
+    const propFunction = directionalProperty({
+      propName: 'margin',
+      computeValue: (val) => val,
+    });
 
     const leftStyles = propFunction({ marginLeft: '10px' });
     expect(leftStyles).toEqual({ marginLeft: '10px' });

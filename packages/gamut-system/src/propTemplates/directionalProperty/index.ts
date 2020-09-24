@@ -1,4 +1,5 @@
 import { CSSObject } from '@emotion/core';
+import { themeScaleValue } from '../../transforms/themeScaleValue';
 import {
   AbstractProps,
   AbstractSystemConfig,
@@ -39,11 +40,9 @@ type DirectionalProps = typeof DIRECTIONAL_PROPS;
 
 export function directionalProperty<
   Props extends AbstractProps,
-  Config extends AbstractSystemConfig
->(
-  propName: Config['propName'],
-  computeValue: Config['computeValue']
-): StyleTemplate<Props> {
+  Config extends AbstractSystemConfig &
+    Required<Pick<AbstractSystemConfig, 'propName' | 'computeValue'>>
+>({ propName, scale, computeValue }: Config): StyleTemplate<Props> {
   return (props: Props): CSSObject => {
     const {
       [propName as string]: base,
@@ -60,12 +59,15 @@ export function directionalProperty<
     const styles = {} as CSSObject;
 
     DIRECTIONS.forEach((direction, i) => {
-      if (orderedProps[i] !== undefined) {
-        const prop = DIRECTIONAL_PROPS[propKey][direction];
-        const value = computeValue!(orderedProps[i]) as string;
+      const value = themeScaleValue(
+        props as any,
+        scale,
+        orderedProps[i] as any
+      );
+      if (value === undefined) return;
 
-        styles[prop] = value;
-      }
+      const prop = DIRECTIONAL_PROPS[propKey][direction];
+      styles[prop] = computeValue(orderedProps[i]) as string;
     });
     return styles;
   };

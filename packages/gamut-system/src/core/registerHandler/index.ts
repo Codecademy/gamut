@@ -6,6 +6,7 @@ import {
   Handler,
   HandlerConfig,
   StyleTemplate,
+  TransformValue,
 } from '../../types/system';
 import { identity } from 'lodash';
 import {
@@ -23,7 +24,10 @@ const TEMPLATES = {
  *
  * @param handlerConfig
  */
-export const createHandler = <Props extends AbstractProps>({
+export const createHandler = <
+  Theme extends AbstractTheme,
+  Props extends AbstractProps
+>({
   propName,
   altProps = [],
   templateFn,
@@ -33,7 +37,7 @@ export const createHandler = <Props extends AbstractProps>({
     [propName]: templateFn,
   } as Partial<Record<keyof Props, StyleTemplate<Props>>>;
 
-  const handler: Handler<Props> = responsiveProperty<Props>({
+  const handler: Handler<Props> = responsiveProperty<Theme, Props>({
     propNames,
     templateFns,
   });
@@ -59,7 +63,14 @@ export const registerHandler = <
   } = config;
   const templateFunction = TEMPLATES[type];
 
-  const styleFunction = templateFunction<Props, Config>(propName, computeValue);
+  const styleFunction = templateFunction<
+    Props,
+    Config & { computeValue: TransformValue }
+  >({
+    ...config,
+    propName,
+    computeValue,
+  });
   const propConfig = {
     propName,
     altProps,
