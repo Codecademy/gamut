@@ -2,36 +2,43 @@ import { Props } from './types/props';
 import { CSSObject } from '@emotion/core';
 
 /** System Configuration */
-export type MediaQueryArray<T> = [T?, T?, T?, T?, T?];
+export type MediaQueryArray<Value> = [Value?, Value?, Value?, Value?, Value?];
 
-export type MediaQueryMap<T> = {
-  xs?: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
+export type MediaQueryMap<Value> = {
+  xs?: Value;
+  sm?: Value;
+  md?: Value;
+  lg?: Value;
+  xl?: Value;
 };
 
-export type ResponsiveProp<T> = T | MediaQueryArray<T> | MediaQueryMap<T>;
+export type ResponsiveProp<Value> =
+  | Value
+  | MediaQueryArray<Value>
+  | MediaQueryMap<Value>;
 
 /** Utility  */
-export type UnionToIntersection<U> = (
-  U extends any ? (k: U) => void : never
-) extends (k: infer I) => void
-  ? I
+export type UnionToIntersection<Union> = (
+  Union extends any ? (k: Union) => void : never
+) extends (k: infer Intersection) => void
+  ? Intersection
   : never;
 
-export type NeverUnknown<T> = T extends string
-  ? T
-  : T extends number
-  ? T
-  : T extends unknown
+export type NeverUnknown<Value> = Value extends string
+  ? Value
+  : Value extends number
+  ? Value
+  : Value extends unknown
   ? never
-  : T;
+  : Value;
 
-export type SafeLookup<T> = T extends Readonly<unknown[]> ? T[number] : never;
-export type SafeMapKey<T> = T extends Readonly<Record<string, unknown>>
-  ? keyof T
+export type SafeLookup<MaybeArray> = MaybeArray extends Readonly<unknown[]>
+  ? MaybeArray[number]
+  : never;
+export type SafeMapKey<MaybeMap> = MaybeMap extends Readonly<
+  Record<string, unknown>
+>
+  ? keyof MaybeMap
   : never;
 
 /** Abstract Configurations  */
@@ -49,26 +56,28 @@ export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
 
 export type AbstractProps = Record<string, unknown>;
 
-export type StyleTemplate<T extends AbstractProps> = (
-  props: T
+export type StyleTemplate<Props extends AbstractProps> = (
+  props: Props
 ) => CSSObject | undefined;
 
-export type TemplateMap<T extends AbstractProps> = Partial<
-  Record<keyof T, StyleTemplate<T>>
+export type TemplateMap<Props extends AbstractProps> = Partial<
+  Record<keyof Props, StyleTemplate<Props>>
 >;
 
-export type HandlerConfig<T extends AbstractProps> = {
-  propName: keyof T;
-  altProps?: Readonly<(keyof T)[]>;
-  templateFn: StyleTemplate<T>;
+export type HandlerConfig<Props extends AbstractProps> = {
+  propName: keyof Props;
+  altProps?: Readonly<(keyof Props)[]>;
+  templateFn: StyleTemplate<Props>;
 };
 
-export type Handler<T extends AbstractProps> = {
-  propNames?: (keyof T)[];
-  templateFns?: TemplateMap<T>;
-} & ((props: T) => CSSObject);
+export type Handler<Props extends AbstractProps> = {
+  propNames?: (keyof Props)[];
+  templateFns?: TemplateMap<Props>;
+} & ((props: Props) => CSSObject);
 
-export type HandlerProps<T extends Handler<AbstractProps>> = Parameters<T>[0];
+export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
+  HandlerFn
+>[0];
 
 export type PropTemplateType = 'standard' | 'directional';
 
@@ -83,43 +92,47 @@ export type AbstractSystemConfig = {
 };
 /** Theme Aware Configurations */
 
-export type ThematicConfig<T extends AbstractTheme> = AbstractSystemConfig & {
-  scale?: ScaleArray | ScaleMap | Readonly<keyof T>;
+export type ThematicConfig<
+  Theme extends AbstractTheme
+> = AbstractSystemConfig & {
+  scale?: ScaleArray | ScaleMap | Readonly<keyof Theme>;
 };
 
-export type PropKey<T extends AbstractSystemConfig> =
-  | T['propName']
-  | Extract<T, { altProps: Readonly<string[]> }>['altProps'][number];
+export type PropKey<Config extends AbstractSystemConfig> =
+  | Config['propName']
+  | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
 
-type SafeCSSType<T extends PropAlias> = Extract<
-  Readonly<Props[T]['defaultValue']>,
+type SafeCSSType<PropName extends PropAlias> = Extract<
+  Readonly<Props[PropName]['defaultValue']>,
   Readonly<string>
 >;
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<
-  T extends AbstractSystemConfig
-> = T['propName'] extends PropAlias[]
-  ? SafeCSSType<T['propName'][number]>
-  : T['propName'] extends PropAlias
-  ? SafeCSSType<T['propName']>
+  Config extends AbstractSystemConfig
+> = Config['propName'] extends PropAlias[]
+  ? SafeCSSType<Config['propName'][number]>
+  : Config['propName'] extends PropAlias
+  ? SafeCSSType<Config['propName']>
   : never;
 
 export type ThematicScaleValue<
-  T extends AbstractTheme,
-  K extends ThematicConfig<T>
-> = K['scale'] extends AbstractScales
+  Theme extends AbstractTheme,
+  Config extends ThematicConfig<Theme>
+> = Config['scale'] extends AbstractScales
   ?
-      | NeverUnknown<SafeLookup<T[Extract<K, { scale: string }>['scale']]>>
-      | SafeMapKey<Extract<K, { scale: ScaleMap }>['scale']>
-      | Extract<K, { scale: ScaleArray }>['scale'][number]
-  : DefaultPropScale<K>;
+      | NeverUnknown<
+          SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
+        >
+      | SafeMapKey<Extract<Config, { scale: ScaleMap }>['scale']>
+      | Extract<Config, { scale: ScaleArray }>['scale'][number]
+  : DefaultPropScale<Config>;
 
 export type ThematicProps<
-  T extends AbstractTheme,
-  K extends ThematicConfig<T>
+  Theme extends AbstractTheme,
+  Config extends ThematicConfig<Theme>
 > = {
-  [key in K['propName']]?: ResponsiveProp<
-    ThematicScaleValue<T, Extract<K, { propName: key }>>
+  [key in Config['propName']]?: ResponsiveProp<
+    ThematicScaleValue<Theme, Extract<Config, { propName: key }>>
   >;
 };

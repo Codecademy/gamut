@@ -23,17 +23,20 @@ const TEMPLATES = {
  *
  * @param handlerConfig
  */
-export const createHandler = <T extends AbstractProps>({
+export const createHandler = <Props extends AbstractProps>({
   propName,
   altProps = [],
   templateFn,
-}: HandlerConfig<T>): Handler<T> => {
+}: HandlerConfig<Props>): Handler<Props> => {
   const propNames = [propName, ...altProps];
   const templateFns = {
     [propName]: templateFn,
-  } as Partial<Record<keyof T, StyleTemplate<T>>>;
+  } as Partial<Record<keyof Props, StyleTemplate<Props>>>;
 
-  const handler: Handler<T> = responsiveProperty<T>({ propNames, templateFns });
+  const handler: Handler<Props> = responsiveProperty<Props>({
+    propNames,
+    templateFns,
+  });
 
   handler.propNames = propNames;
   handler.templateFns = templateFns;
@@ -42,12 +45,12 @@ export const createHandler = <T extends AbstractProps>({
 };
 
 export const registerHandler = <
-  T extends AbstractTheme,
-  C extends ThematicConfig<T>,
-  P extends ThematicProps<T, C>
+  Theme extends AbstractTheme,
+  Config extends ThematicConfig<Theme>,
+  Props extends ThematicProps<Theme, Config>
 >(
-  config: C
-): Handler<P> => {
+  config: Config
+): Handler<Props> => {
   const {
     propName,
     altProps = [],
@@ -56,7 +59,7 @@ export const registerHandler = <
   } = config;
   const templateFunction = TEMPLATES[type];
 
-  const styleFunction = templateFunction<P, C>(propName, computeValue);
+  const styleFunction = templateFunction<Props, Config>(propName, computeValue);
   const propConfig = {
     propName,
     altProps,
@@ -64,5 +67,5 @@ export const registerHandler = <
   };
 
   const systemHandler = createHandler(propConfig as any) as any;
-  return systemHandler as Handler<P>;
+  return systemHandler as Handler<Props>;
 };

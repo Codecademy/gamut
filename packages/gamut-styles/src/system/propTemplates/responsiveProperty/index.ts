@@ -10,12 +10,12 @@ type PropertyConfig<T extends AbstractProps> = {
 
 const MEDIA: MediaSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-export function responsiveProperty<T extends { theme?: any }>({
+export function responsiveProperty<Props extends { theme?: any }>({
   propNames,
   templateFns,
-}: PropertyConfig<T>): Handler<T> {
+}: PropertyConfig<Props>): Handler<Props> {
   return (props) => {
-    const responsive = {} as Record<keyof typeof mediaQueries | 'base', T>;
+    const responsive = {} as Record<keyof typeof mediaQueries | 'base', Props>;
 
     propNames.forEach((propName) => {
       const propConfig = props[propName];

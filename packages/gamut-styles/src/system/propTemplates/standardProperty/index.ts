@@ -1,13 +1,18 @@
-import { AbstractSystemConfig, PropAlias, StyleTemplate } from '../../types';
+import {
+  AbstractProps,
+  AbstractSystemConfig,
+  PropAlias,
+  StyleTemplate,
+} from '../../types';
 
 export const standardProperty = <
-  T extends Record<string, unknown>,
-  K extends AbstractSystemConfig
+  Props extends AbstractProps,
+  Config extends AbstractSystemConfig
 >(
-  propName: K['propName'],
-  computeValue: K['computeValue']
-): StyleTemplate<T> => {
-  return (props: T) => {
+  propName: Config['propName'],
+  computeValue: Config['computeValue']
+): StyleTemplate<Props> => {
+  return (props: Props) => {
     const propKey = propName as PropAlias;
     if (props[propKey] !== undefined && props[propKey] !== null) {
       return {

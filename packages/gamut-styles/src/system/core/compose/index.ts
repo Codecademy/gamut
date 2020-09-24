@@ -7,13 +7,13 @@ import {
 import { responsiveProperty } from '../../propTemplates';
 
 export const compose = <
-  T extends Handler<AbstractProps>[],
-  P extends Partial<UnionToIntersection<Parameters<T[number]>[0]>>
+  Handlers extends Handler<AbstractProps>[],
+  Props extends Partial<UnionToIntersection<Parameters<Handlers[number]>[0]>>
 >(
-  ...handlers: T
+  ...handlers: Handlers
 ) => {
-  let propNames: (keyof Parameters<T[number]>[0])[] = [];
-  let templateFns = {} as Partial<Record<keyof P, StyleTemplate<P>>>;
+  let propNames: (keyof Parameters<Handlers[number]>[0])[] = [];
+  let templateFns = {} as Partial<Record<keyof Props, StyleTemplate<Props>>>;
 
   handlers.forEach((handler) => {
     if (handler.propNames) {
@@ -29,7 +29,7 @@ export const compose = <
     templateFns,
   };
 
-  const composedHandler: Handler<P> = responsiveProperty<P>(config);
+  const composedHandler: Handler<Props> = responsiveProperty<Props>(config);
 
   composedHandler.propNames = propNames;
   composedHandler.templateFns = templateFns;

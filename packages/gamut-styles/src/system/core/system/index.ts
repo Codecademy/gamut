@@ -15,11 +15,11 @@ import { CSSObject } from '@emotion/core';
 type BasePropConfig = typeof BaseProps;
 
 export const system = <
-  T extends AbstractTheme,
-  C extends Record<string, Record<string, ThematicConfig<T>>>
+  Theme extends AbstractTheme,
+  Config extends Record<string, Record<string, ThematicConfig<Theme>>>
 >(
-  config: C,
-  theme?: T
+  config: Config,
+  theme?: Theme
 ) => {
   const system = {
     handlers: {},
@@ -45,40 +45,44 @@ export const system = <
     const handlers = pick(system.handlers, props as any);
     const variantHandler = compose(...values(handlers));
 
-    return (props: { variant: any; theme: T }) => {
+    return (props: { variant: any; theme: Theme }) => {
       const variantProps = config[props.variant];
       return variantHandler({ ...variantProps, theme: props.theme });
     };
   };
   system.createVariant = createVariant;
 
-  type Merged = BasePropConfig & C;
+  type Merged = BasePropConfig & Config;
 
   type BaseGroup = {
-    [P in keyof Merged]: {
+    [PropGroup in keyof Merged]: {
       handlers: {
-        [D in keyof Merged[P]]: Handler<ThematicProps<T, Merged[P][D]>>;
+        [Property in keyof Merged[PropGroup]]: Handler<
+          ThematicProps<Theme, Merged[PropGroup][Property]>
+        >;
       };
       props: {
-        [S in keyof Merged[P]]: ThematicScaleValue<T, Merged[P][S]>;
+        [Property in keyof Merged[PropGroup]]: ThematicScaleValue<
+          Theme,
+          Merged[PropGroup][Property]
+        >;
       };
-      composed: Handler<ThematicProps<T, Merged[P][keyof Merged[P]]>>;
+      composed: Handler<
+        ThematicProps<Theme, Merged[PropGroup][keyof Merged[PropGroup]]>
+      >;
     };
   };
 
-  type Handlers = UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
   type Props = UnionToIntersection<BaseGroup[keyof BaseGroup]['props']>;
-  type Composed = {
-    [P in keyof BaseGroup]: BaseGroup[P]['composed'];
-  };
-  type VariantCreator = <Variant extends Record<string, Partial<Props>>>(
-    config: Variant
-  ) => (props: { variant: keyof Variant }) => CSSObject;
 
   type ReturnedSystem = {
-    groups: Composed;
-    handlers: Handlers;
-    createVariant: VariantCreator;
+    groups: {
+      [PropGroup in keyof BaseGroup]: BaseGroup[PropGroup]['composed'];
+    };
+    handlers: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+    createVariant: <Variant extends Record<string, Partial<Props>>>(
+      config: Variant
+    ) => (props: { variant: keyof Variant; theme: Theme }) => CSSObject;
   };
 
   return system as ReturnedSystem;
