@@ -129,6 +129,9 @@ export type ThematicScaleValue<
       | NeverUnknown<
           SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
         >
+      | NeverUnknown<
+          SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
+        >
       | SafeMapKey<Extract<Config, { scale: ScaleMap }>['scale']>
       | Extract<Config, { scale: ScaleArray }>['scale'][number]
   : DefaultPropScale<Config>;
