@@ -74,38 +74,26 @@ export const system = <
         >;
       };
       props: {
-        [Property in keyof Merged[PropGroup]]: ThematicScaleValue<
-          Theme,
-          Merged[PropGroup][Property]
-        >;
-      };
-      altProps: {
         [Property in keyof Merged[PropGroup]]: Record<
-          GetAltProps<Merged[PropGroup][Property]>,
+          Property | GetAltProps<Merged[PropGroup][Property]>,
           ThematicScaleValue<Theme, Merged[PropGroup][Property]>
         >;
       };
     };
   };
 
-  type Props = UnionToIntersection<
-    | BaseGroup[keyof BaseGroup]['props']
-    | BaseGroup[keyof BaseGroup]['altProps'][keyof BaseGroup[keyof BaseGroup]['altProps']]
-  >;
+  type AllProps = UnionToIntersection<BaseGroup[keyof BaseGroup]['props']>;
 
   type ReturnedSystem = {
     groups: {
       [PropGroup in keyof BaseGroup]: Handler<
         Partial<
-          BaseGroup[PropGroup]['props'] &
-            UnionToIntersection<
-              BaseGroup[PropGroup]['altProps'][keyof BaseGroup[PropGroup]['altProps']]
-            >
+          BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
         >
       >;
     };
     handlers: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
-    createVariant: <Variant extends Record<string, Partial<Props>>>(
+    createVariant: <Variant extends Record<string, AllProps>>(
       config: Variant
     ) => (props: { variant: keyof Variant; theme: Theme }) => CSSObject;
   };
