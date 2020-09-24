@@ -1,3 +1,10 @@
+### [16.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.7...@codecademy/gamut@16.0.8) (2020-09-24)
+
+
+### Other Changes
+
+* Fix variables ([#965](https://github.com/Codecademy/client-modules/issues/965)) ([a6c3c18](https://github.com/Codecademy/client-modules/commit/a6c3c1829e6456b19cbbff0d5d15e4cca4856285))
+
 ### [16.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.6...@codecademy/gamut@16.0.7) (2020-09-22)
 
 
