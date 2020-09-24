@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>17.2.6 (2020-09-24)</small>
+
+* chore: update changelogs ([f1fa25a](https://github.com/Codecademy/client-modules/commit/f1fa25a))
+
+
+
+
+
 ### [17.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.4...@codecademy/styleguide@17.2.5) (2020-09-24)
 
 ### [17.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.3...@codecademy/styleguide@17.2.4) (2020-09-24)
@@ -1075,4 +1088,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
