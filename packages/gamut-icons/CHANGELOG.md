@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 3.5.0 (2020-09-24)
+
+* feat: added Pause icon (#966) ([e7ac196](https://github.com/Codecademy/client-modules/commit/e7ac196)), closes [#966](https://github.com/Codecademy/client-modules/issues/966)
+* chore: update changelogs ([d4b3640](https://github.com/Codecademy/client-modules/commit/d4b3640))
+
+
+
+
+
 ### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.1...@codecademy/gamut-icons@3.4.2) (2020-09-22)
 
 
@@ -228,4 +242,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
