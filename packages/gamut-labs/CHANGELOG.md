@@ -1,16 +1,21 @@
-# Change Log
+### [4.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.6...@codecademy/gamut-labs@4.1.7) (2020-09-24)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### [4.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.5...@codecademy/gamut-labs@4.1.6) (2020-09-24)
 
-## <small>4.1.1 (2020-09-21)</small>
+### [4.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.4...@codecademy/gamut-labs@4.1.5) (2020-09-24)
 
-* Correct Navy Box Variant shadow and update imports (#961) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5)), closes [#961](https://github.com/Codecademy/client-modules/issues/961)
-* chore: update changelogs ([c04b826](https://github.com/Codecademy/client-modules/commit/c04b826))
+### [4.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.3...@codecademy/gamut-labs@4.1.4) (2020-09-22)
+
+### [4.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.2...@codecademy/gamut-labs@4.1.3) (2020-09-22)
+
+### [4.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.1...@codecademy/gamut-labs@4.1.2) (2020-09-22)
+
+### [4.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.0...@codecademy/gamut-labs@4.1.1) (2020-09-21)
 
 
+### Other Changes
 
-
+* Correct Navy Box Variant shadow and update imports ([#961](https://github.com/Codecademy/client-modules/issues/961)) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5fe1c2a56e8ef61fb636215950337866c9))
 
 ## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.3...@codecademy/gamut-labs@4.1.0) (2020-09-18)
 
@@ -261,3 +266,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
