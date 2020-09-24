@@ -1,3 +1,14 @@
+### [17.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.2...@codecademy/styleguide@17.2.3) (2020-09-22)
+
+### [17.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.1...@codecademy/styleguide@17.2.2) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
+
+### [17.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.0...@codecademy/styleguide@17.2.1) (2020-09-22)
+
 ## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.1.1...@codecademy/styleguide@17.2.0) (2020-09-18)
 
 

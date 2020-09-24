@@ -1,3 +1,24 @@
+### [16.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.6...@codecademy/gamut@16.0.7) (2020-09-22)
+
+
+### Other Changes
+
+* Fix deprecation warning ([#962](https://github.com/Codecademy/client-modules/issues/962)) ([2431dcc](https://github.com/Codecademy/client-modules/commit/2431dcc220667119cf895564b87724c317c29a98))
+
+### [16.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.5...@codecademy/gamut@16.0.6) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
+
+### [16.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.4...@codecademy/gamut@16.0.5) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* **GridForm:** only set aria-live on first error component ([#960](https://github.com/Codecademy/client-modules/issues/960)) ([2dfdaee](https://github.com/Codecademy/client-modules/commit/2dfdaee0ceda9005d9a10b127e060efa7fda0156))
+
 ### [16.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.3...@codecademy/gamut@16.0.4) (2020-09-03)
 
 
