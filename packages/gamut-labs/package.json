@@ -35,5 +35,8 @@
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

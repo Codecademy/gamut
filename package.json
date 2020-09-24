@@ -1,6 +1,5 @@
 {
   "name": "client-modules",
-  "private": true,
   "description": "Modules and components for Codecademy",
   "version": "1.2.0",
   "license": "MIT",
@@ -94,5 +93,8 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
