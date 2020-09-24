@@ -1,4 +1,4 @@
-import { Props } from './types/props';
+import { Props } from './types/properties';
 import { CSSObject } from '@emotion/core';
 
 /** System Configuration */
@@ -43,8 +43,6 @@ export type SafeMapKey<MaybeMap> = MaybeMap extends Readonly<
 
 /** Abstract Configurations  */
 export type PropAlias = Readonly<keyof Props>;
-
-export type StyleMap = Props;
 
 export type AbstractTheme = Readonly<Partial<Record<string, ScaleArray>>>;
 
