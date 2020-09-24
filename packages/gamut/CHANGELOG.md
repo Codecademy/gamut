@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>16.0.8 (2020-09-24)</small>
+
+* Fix variables (#965) ([a6c3c18](https://github.com/Codecademy/client-modules/commit/a6c3c18)), closes [#965](https://github.com/Codecademy/client-modules/issues/965)
+* chore: update changelogs ([2903282](https://github.com/Codecademy/client-modules/commit/2903282))
+
+
+
+
+
 ### [16.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.6...@codecademy/gamut@16.0.7) (2020-09-22)
 
 
@@ -2949,4 +2963,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
