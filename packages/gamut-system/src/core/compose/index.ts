@@ -3,7 +3,7 @@ import {
   Handler,
   UnionToIntersection,
   StyleTemplate,
-} from '../../types';
+} from '../../types/system';
 import { responsiveProperty } from '../../propTemplates';
 
 export const compose = <

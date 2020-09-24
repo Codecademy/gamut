@@ -1,0 +1,30 @@
+{
+  "name": "@codecademy/gamut-system",
+  "version": "0.0.0",
+  "description": "Typesafe styled component utilities",
+  "author": "codecademy",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/gamut-system",
+  "peerDependencies": {
+    "@emotion/core": ">=10.0.0",
+    "@emotion/styled": ">=10.0.0",
+    "csstype": "3.0.3"
+  },
+  "devDependencies": {
+    "@emotion/core": "10.0.28",
+    "@emotion/styled": "10.0.27",
+    "csstype": "3.0.3"
+  },
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "build:compile": "tsc",
+    "build": "yarn build:clean && yarn build:compile",
+    "prepublishOnly": "yarn build"
+  },
+  "license": "MIT"
+}

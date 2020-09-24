@@ -1,8 +1,7 @@
 import { directionalProperty } from '../../directionalProperty';
-import { responsiveProperty } from '..';
+import { DEFAULT_MEDIA_QUERIES, responsiveProperty } from '..';
 import { standardProperty } from '../../standardProperty';
-import { ResponsiveProp } from '../../../types';
-import { mediaQueries } from '../../../../variables/responsive';
+import { ResponsiveProp } from '../../../types/system';
 
 describe(responsiveProperty, () => {
   const templateFns = {
@@ -32,7 +31,7 @@ describe(responsiveProperty, () => {
       marginBottom: '10px',
       marginTop: '10px',
       display: 'block',
-      [mediaQueries['sm']]: {
+      [DEFAULT_MEDIA_QUERIES['sm']]: {
         marginLeft: '5px',
       },
     });

@@ -3,7 +3,7 @@ import {
   AbstractSystemConfig,
   PropAlias,
   StyleTemplate,
-} from '../../types';
+} from '../../types/system';
 
 export const standardProperty = <
   Props extends AbstractProps,

@@ -1,4 +1,4 @@
-import { Props } from './types/properties';
+import { Props } from './properties';
 import { CSSObject } from '@emotion/core';
 
 /** System Configuration */

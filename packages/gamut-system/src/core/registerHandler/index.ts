@@ -6,7 +6,7 @@ import {
   Handler,
   HandlerConfig,
   StyleTemplate,
-} from '../../types';
+} from '../../types/system';
 import { identity } from 'lodash';
 import {
   standardProperty,

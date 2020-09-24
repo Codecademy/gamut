@@ -3,7 +3,7 @@ import {
   AbstractProps,
   AbstractSystemConfig,
   StyleTemplate,
-} from '../../types';
+} from '../../types/system';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];

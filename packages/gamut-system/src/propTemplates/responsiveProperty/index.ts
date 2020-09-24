@@ -1,21 +1,35 @@
 import { entries, isArray, isObject, values } from 'lodash';
-import { mediaQueries, MediaSize } from '../../../variables/responsive';
 import { CSSObject } from '@emotion/core';
-import { StyleTemplate, AbstractProps, Handler } from '../../types';
+import { StyleTemplate, AbstractProps, Handler } from '../../types/system';
 
 type PropertyConfig<T extends AbstractProps> = {
   propNames: (keyof T)[];
   templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
 };
 
-const MEDIA: MediaSize[] = ['xs', 'sm', 'md', 'lg', 'xl'];
+export const DEFAULT_MEDIA_QUERIES = {
+  xs: '@media (min-width: 320px)',
+  sm: '@media (min-width: 480px)',
+  md: '@media (min-width: 768px)',
+  lg: '@media (min-width: 1024px)',
+  xl: '@media (min-width: 1248px)',
+};
+
+type MediaSize = keyof typeof DEFAULT_MEDIA_QUERIES;
+const MEDIA: (keyof typeof DEFAULT_MEDIA_QUERIES)[] = [
+  'xs',
+  'sm',
+  'md',
+  'lg',
+  'xl',
+];
 
 export function responsiveProperty<Props extends { theme?: any }>({
   propNames,
   templateFns,
 }: PropertyConfig<Props>): Handler<Props> {
   return (props) => {
-    const responsive = {} as Record<keyof typeof mediaQueries | 'base', Props>;
+    const responsive = {} as Record<MediaSize | 'base', Props>;
 
     propNames.forEach((propName) => {
       const propConfig = props[propName];
@@ -64,7 +78,7 @@ export function responsiveProperty<Props extends { theme?: any }>({
             ...templateStyles,
           };
         } else {
-          const breakpointKey = mediaQueries[breakpoint as MediaSize];
+          const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
           const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
 
           styles[breakpointKey] = {
