@@ -79,12 +79,12 @@ or running `yarn build-all` in this repo.
 
 1. Create a new directory at `packages/<package-name>/package.json`.
 1. Use `yarn lerna create` to create the new package, copying values from existing `package.json`s when unsure.
+   - Also copy the `publishConfig` field to let your published package be public by default
 1. Create a minimal amount of source code in the new package
    - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
 1. Run `yarn lerna bootstrap` from the repository root
 1. Send a `feat` PR adding that package
-1. Once the PR is published, use our `codecademy` npm account from 1Password to [make the package public](https://docs.npmjs.com/changing-package-visibility#making-a-private-package-public)
-1. Message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
+1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
 
 ### PR Title Guide
 
