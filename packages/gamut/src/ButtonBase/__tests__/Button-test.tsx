@@ -29,6 +29,12 @@ describe('<ButtonBase>', () => {
     expect(wrapper.find('a').length).toBe(1);
   });
 
+  it('adds rel="noopnener" if no rel is set on <a> tags with target="_blank"', () => {
+    const wrapper = shallow(<ButtonBase href="/awesome" target="_blank" />);
+    expect(wrapper.prop('rel')).toContain('noopener');
+    expect(wrapper.prop('rel')).toContain('noreferrer');
+  });
+
   it('uses a <button> tag when you omit an href and the As prop', () => {
     const wrapper = shallow(<ButtonBase />);
     expect(wrapper.find('button').length).toBe(1);
