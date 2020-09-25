@@ -1,3 +1,10 @@
+### [16.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.10...@codecademy/gamut@16.0.11) (2020-09-25)
+
+
+### Other Changes
+
+* **TSLint:** TS 4.0.2 and Eslint 6.5.1 ([#968](https://github.com/Codecademy/client-modules/issues/968)) ([b2c3ad5](https://github.com/Codecademy/client-modules/commit/b2c3ad556f46d0c7589e8211c39c226dbca26d43))
+
 ### [16.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.9...@codecademy/gamut@16.0.10) (2020-09-24)
 
 ### [16.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.8...@codecademy/gamut@16.0.9) (2020-09-24)
