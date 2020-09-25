@@ -66,6 +66,12 @@ module.exports = {
     ],
 
     // These rules could be useful, but we haven't gotten around to trying them out
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/array-type': 'off',
     '@typescript-eslint/await-thenable': 'off',
     '@typescript-eslint/ban-types': 'off',
