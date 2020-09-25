@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 4.2.0 (2020-09-25)
+
+* feat: added new pro logo (#957) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9b)), closes [#957](https://github.com/Codecademy/client-modules/issues/957)
+* chore: update changelogs ([d8d36e8](https://github.com/Codecademy/client-modules/commit/d8d36e8))
+
+
+
+
+
 ### [4.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.6...@codecademy/gamut-labs@4.1.7) (2020-09-24)
 
 ### [4.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.5...@codecademy/gamut-labs@4.1.6) (2020-09-24)
@@ -266,4 +280,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
