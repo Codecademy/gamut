@@ -67,7 +67,7 @@ export function directionalProperty<
       if (value === undefined) return;
 
       const prop = DIRECTIONAL_PROPS[propKey][direction];
-      styles[prop] = computeValue(orderedProps[i]) as string;
+      styles[prop] = computeValue(value) as string;
     });
     return styles;
   };
