@@ -1,3 +1,14 @@
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.0...@codecademy/styleguide@17.3.1) (2020-09-25)
+
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.6...@codecademy/styleguide@17.3.0) (2020-09-25)
+
+
+### ✨ Features
+
+* added new pro logo ([#957](https://github.com/Codecademy/client-modules/issues/957)) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9ba1bffe48e30a8ebcd4051585d3024c64c))
+
+### [17.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.5...@codecademy/styleguide@17.2.6) (2020-09-24)
+
 ### [17.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.4...@codecademy/styleguide@17.2.5) (2020-09-24)
 
 ### [17.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.3...@codecademy/styleguide@17.2.4) (2020-09-24)

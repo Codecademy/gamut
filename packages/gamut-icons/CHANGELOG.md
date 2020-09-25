@@ -1,3 +1,10 @@
+## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.5.0...@codecademy/gamut-icons@3.6.0) (2020-09-24)
+
+
+### ✨ Features
+
+* Add file download icon ([#969](https://github.com/Codecademy/client-modules/issues/969)) ([4ac7d4c](https://github.com/Codecademy/client-modules/commit/4ac7d4c88aca01177c20dea21ab3252679f3fc39))
+
 ## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.2...@codecademy/gamut-icons@3.5.0) (2020-09-24)
 
 
