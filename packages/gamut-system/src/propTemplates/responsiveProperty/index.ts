@@ -72,11 +72,11 @@ export function responsiveProperty<
 
     let styles: CSSObject = {};
 
-    entries(responsive).forEach(([breakpoint, props]) => {
+    entries(responsive).forEach(([breakpoint, bpProps]) => {
       const templates = values(templateFns);
       templates.forEach((templatFn) => {
         const templateStyles =
-          templatFn?.({ ...props, theme: props.theme }) || {};
+          templatFn?.({ ...bpProps, theme: props.theme }) || {};
 
         if (breakpoint === 'xs') {
           styles = {
