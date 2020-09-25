@@ -1,0 +1,33 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, number, boolean } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { ProLogo } from '@codecademy/gamut-labs/src';
+import { selectableColors } from '../../../../helpers';
+
+<Meta
+  title="Labs/Brand/Atoms/ProLogo"
+  component={ProLogo}
+  argTypes={{
+    backgroundColor: {
+      control: { type: 'select', options: selectableColors },
+    },
+    cutoutColor: {
+      control: { type: 'select', options: selectableColors },
+    },
+  }}
+  args={{
+    variant: 'cutout',
+  }}
+/>
+
+# ProLogo
+
+<StoryStatus status="volatile" />
+
+This Pro logo will be used in the most recent designs for Curriculum Cards and Course overview pages.
+
+<Canvas withSource="open">
+  <Story name="ProLogo">{(args) => <ProLogo {...args} />}</Story>
+</Canvas>
+
+<Props story="ProLogo" />
