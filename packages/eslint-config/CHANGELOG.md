@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>3.0.1 (2020-09-25)</small>
+
+* chore: update changelogs ([6e6db13](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/6e6db13))
+* chore(TSLint): TS 4.0.2 and Eslint 6.5.1 (#968) ([b2c3ad5](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/b2c3ad5)), closes [#968](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/968)
+
+
+
+
+
 ## [3.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.1...@codecademy/eslint-config@3.0.0) (2020-08-27)
 
 
@@ -126,4 +140,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-
