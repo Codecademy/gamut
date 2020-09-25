@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 17.3.0 (2020-09-25)
-
-* feat: added new pro logo (#957) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9b)), closes [#957](https://github.com/Codecademy/client-modules/issues/957)
-* chore: update changelogs ([d8d36e8](https://github.com/Codecademy/client-modules/commit/d8d36e8))
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.6...@codecademy/styleguide@17.3.0) (2020-09-25)
 
 
+### ✨ Features
 
-
+* added new pro logo ([#957](https://github.com/Codecademy/client-modules/issues/957)) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9ba1bffe48e30a8ebcd4051585d3024c64c))
 
 ### [17.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.5...@codecademy/styleguide@17.2.6) (2020-09-24)
 
@@ -1091,3 +1084,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
