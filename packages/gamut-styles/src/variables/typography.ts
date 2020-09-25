@@ -21,54 +21,42 @@ export const fontFamily = {
   base: fontBase,
   monospace: fontMonospace,
   system: fontSystem,
-} as const;
+};
 
 export const fontColor = {
   base: colorSwatch.gray[800],
   heading: colorSwatch.gray[900],
   link: colorSwatch.blue[500],
   linkHover: colorSwatch.blue[700],
-} as const;
+};
 
-export const fontDecorations = {
+export const fontDecoration = {
   link: 'none',
   linkHover: 'underline',
-} as const;
-
-export const fontScale = {
-  1: pxRem(0.85 * base),
-  2: pxRem(1 * base),
-  3: pxRem(1.125 * base),
-  4: pxRem(1.25 * base),
-  5: pxRem(1.4 * base),
-  6: pxRem(1.6 * base),
-  7: pxRem(2.2 * base),
-  8: pxRem(3 * base),
-} as const;
+};
 
 export const fontSize = {
   text: {
-    lg: fontScale[3],
-    md: fontScale[2],
-    sm: fontScale[1],
+    lg: pxRem(base * 1.125),
+    md: pxRem(base),
+    sm: pxRem(base * 0.85),
   },
   heading: {
-    xxl: fontScale[8],
-    xl: fontScale[7],
-    lg: fontScale[6],
-    md: fontScale[5],
-    sm: fontScale[4],
-    xs: fontScale[2],
+    xxl: pxRem(base * 3),
+    xl: pxRem(base * 2.2),
+    lg: pxRem(base * 1.6),
+    md: pxRem(base * 1.4),
+    sm: pxRem(base * 1.25),
+    xs: pxRem(base),
   },
-} as const;
+};
 
 export const lineHeight = {
   text: 1.5,
   heading: 1.1,
-} as const;
+};
 
 export const fontWeight = {
-  light: 300,
-  normal: 400,
-  bold: 700,
-} as const;
+  text: 400,
+  heading: 700,
+};

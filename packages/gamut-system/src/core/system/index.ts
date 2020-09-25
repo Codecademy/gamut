@@ -15,15 +15,27 @@ import { getDefaultPropKey } from '../utils';
 
 type BasePropConfig = typeof BaseProps;
 
+type GroupConfig<Theme extends AbstractTheme> = Record<
+  string,
+  ThematicConfig<Theme>
+>;
+
+type SystemConfig<Theme extends AbstractTheme> = Record<
+  string,
+  GroupConfig<Theme>
+>;
+
 export const createSystem = <Theme extends AbstractTheme>() => {
-  return <Config extends Record<string, Record<string, ThematicConfig<Theme>>>>(
-    config: Config
-  ) => {
+  return <Config extends SystemConfig<Theme>>(config: Config) => {
+    // Defines the returned system shape of both single prop
     const system = {
-      handlers: {},
-      groups: {},
+      props: {},
+      propGroups: {},
     } as any;
+
+    // Merge the the default prop configurations and user defined ones together.
     const props = merge(BaseProps, config) as any;
+
     entries(props).forEach(([groupKey, groupProps]) => {
       const handlers = mapValues(groupProps as any, (prop) =>
         registerHandler(prop)
@@ -85,12 +97,12 @@ export const createSystem = <Theme extends AbstractTheme>() => {
     >;
 
     type ReturnedSystem = {
-      groups: {
+      props: {
         [PropGroup in keyof BaseGroup]: Handler<
           BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
         >;
       };
-      handlers: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+      propGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
       createVariant: <Variant extends Record<string, AllProps>>(
         config: Variant
       ) => (props: { variant: keyof Variant; theme?: Theme }) => CSSObject;
