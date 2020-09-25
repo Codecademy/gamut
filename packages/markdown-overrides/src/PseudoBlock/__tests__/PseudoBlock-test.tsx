@@ -4,7 +4,10 @@ import { render } from '@testing-library/react';
 import { PseudoBlock } from '../';
 
 describe('PsuedoBlock', () => {
-  it('renders', () => {
-    render(<PseudoBlock />);
+  it('renders itself and children', () => {
+    const psuedoText = 'pseudocode!';
+    const { getByText } = render(<PseudoBlock>{psuedoText}</PseudoBlock>);
+
+    getByText(psuedoText);
   });
 });
