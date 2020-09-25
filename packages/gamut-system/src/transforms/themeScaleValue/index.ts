@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, isObject } from 'lodash';
 import { AbstractTheme } from '../../types/system';
 
 export const themeScaleValue = (
@@ -6,7 +6,7 @@ export const themeScaleValue = (
   scaleKey: unknown,
   value: string | number
 ) => {
-  if (typeof scaleKey === 'string') {
+  if (typeof scaleKey === 'string' && isObject(theme)) {
     return get(theme, [scaleKey, value]);
   }
 

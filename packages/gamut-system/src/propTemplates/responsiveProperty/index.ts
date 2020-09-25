@@ -75,7 +75,8 @@ export function responsiveProperty<
     entries(responsive).forEach(([breakpoint, props]) => {
       const templates = values(templateFns);
       templates.forEach((templatFn) => {
-        const templateStyles = templatFn?.(props) || {};
+        const templateStyles =
+          templatFn?.({ ...props, theme: props.theme }) || {};
 
         if (breakpoint === 'xs') {
           styles = {
