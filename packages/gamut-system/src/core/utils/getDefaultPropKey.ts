@@ -1,8 +1,9 @@
 import { entries } from 'lodash';
 
 export const altKeys = {
-  borderStyle: /border(.*)Style/g,
-  borderWidth: /border(.*)Width/g,
+  borderStyle: /borderStyle/g,
+  borderWidth: /borderWidth/g,
+  borderColor: /borderColor/g,
   margin: /margin/,
   padding: /padding/,
 };
