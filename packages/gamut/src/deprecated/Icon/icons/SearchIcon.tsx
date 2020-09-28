@@ -15,5 +15,3 @@ export const SearchIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 SearchIcon.defaultProps = defaultIconProps;
-
-export default SearchIcon;

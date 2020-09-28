@@ -12,5 +12,3 @@ export const VideoIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 VideoIcon.defaultProps = defaultIconProps;
-
-export default VideoIcon;

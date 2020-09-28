@@ -3,6 +3,7 @@
 exports[`Gamut Exported Keys 1`] = `
 Array [
   "Accordion",
+  "AccordionArea",
   "AccordionButton",
   "Alert",
   "Anchor",

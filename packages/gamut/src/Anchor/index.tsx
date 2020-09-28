@@ -32,5 +32,3 @@ export const Anchor: React.FC<AnchorProps> = ({
 
   return <As {...combinedProps}>{children}</As>;
 };
-
-export default Anchor;

@@ -1,4 +1,4 @@
-import { colors } from '@codecademy/gamut-styles/utils/variables';
+import { deprecatedColors as colors } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React from 'react';
 
@@ -87,5 +87,3 @@ export const Loading: React.FC<LoadingProps> = ({ className }) => {
 
   return icon;
 };
-
-export default Loading;

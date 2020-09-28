@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import RadioGroup from '../RadioGroup';
-import Radio from '../Radio';
+import { RadioGroup } from '../RadioGroup';
+import { Radio } from '../Radio';
 
 describe('<RadioGroup>', () => {
   const createComponent = () => {

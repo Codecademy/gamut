@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MarkdownAnchor from '../index';
+import { MarkdownAnchor } from '../index';
 
 describe('MarkdownAnchor', () => {
   it('Adds target _blank to external links', () => {
@@ -37,5 +37,13 @@ describe('MarkdownAnchor', () => {
   it("Doesn't throw an error on an invalid URL", () => {
     const anchor = mount(<MarkdownAnchor href="www.codecademy.com" />);
     expect(anchor.find(`a[href='www.codecademy.com']`).length).toEqual(1);
+  });
+
+  it('renders its children', () => {
+    const text = 'natalie rulez';
+
+    const anchor = mount(<MarkdownAnchor href="/">{text}</MarkdownAnchor>);
+
+    expect(anchor.text()).toEqual(text);
   });
 });

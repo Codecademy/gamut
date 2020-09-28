@@ -13,5 +13,3 @@ export const MenuIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 MenuIcon.defaultProps = defaultIconProps;
-
-export default MenuIcon;

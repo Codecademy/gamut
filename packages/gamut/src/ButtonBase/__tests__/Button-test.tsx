@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ButtonBase from '../index';
+import { ButtonBase } from '../index';
 
 describe('<ButtonBase>', () => {
   it('allows passing an id through props', () => {
@@ -27,6 +27,12 @@ describe('<ButtonBase>', () => {
   it('uses an <a> tag when you pass in an href and the As prop is omitted', () => {
     const wrapper = shallow(<ButtonBase href="/awesome" />);
     expect(wrapper.find('a').length).toBe(1);
+  });
+
+  it('adds rel="noopnener" if no rel is set on <a> tags with target="_blank"', () => {
+    const wrapper = shallow(<ButtonBase href="/awesome" target="_blank" />);
+    expect(wrapper.prop('rel')).toContain('noopener');
+    expect(wrapper.prop('rel')).toContain('noreferrer');
   });
 
   it('uses a <button> tag when you omit an href and the As prop', () => {

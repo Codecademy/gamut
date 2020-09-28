@@ -1,10 +1,18 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import styles from './styles.module.scss';
 import { ChildComponentDescriptor } from '../typings/react';
 
-const propKeys = ['children', 'className', 'href', 'link', 'onClick'];
+const propKeys = [
+  'children',
+  'className',
+  'href',
+  'link',
+  'onClick',
+  'target',
+  'rel',
+];
 
 export type ButtonBaseProps = Omit<
   HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
@@ -23,6 +31,8 @@ export type ButtonBaseProps = Omit<
   children?: ReactNode;
   className?: string;
   href?: string;
+  target?: string;
+  rel?: string;
   /**
    * Variant that displays the button as an inline link element, but maintains its semantic meaning as a button.
    */
@@ -39,7 +49,7 @@ export type ButtonBaseProps = Omit<
 };
 
 export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
-  const { href, className, link, onClick } = props;
+  const { href, className, link, onClick, target, rel } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
   const propsToTransfer = omitProps(propKeys, restOfProps);
 
@@ -59,13 +69,17 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
   }
 
   if (href) {
+    // Check if this is a popup and and appropriate rel props if they don't exist (see https://web.dev/external-anchors-use-rel-noopener/)
+    const anchorProps = {
+      target,
+      rel: target === '_blank' && !rel ? 'noopener noreferrer' : rel,
+    };
+
     // Anchor tag receives children content from propsToTransfer
     // eslint-disable-next-line jsx-a11y/anchor-has-content
-    return <a {...defaultProps} href={href} />;
+    return <a {...defaultProps} {...anchorProps} href={href} />;
   }
 
   // eslint-disable-next-line react/button-has-type
   return <button {...defaultProps} />;
 };
-
-export default ButtonBase;

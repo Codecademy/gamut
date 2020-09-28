@@ -29,12 +29,12 @@ $headingSizes: (
   "xl": (
     "size": 44,
     "margin": 24,
-    "font": $font-family-headings
+    "font": $font-family-base
   ),
   "xxl": (
     "size": 64,
     "margin": 32,
-    "font": $font-family-headings
+    "font": $font-family-base
   )
 );
 
@@ -44,7 +44,7 @@ $textSizes: (
     "font": $font-family-base
   ),
   "md": (
-    "size": 18,
+    "size": 16,
     "font": $font-family-base
   ),
   "lg": (

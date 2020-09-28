@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import Modal, { ModalProps } from '..';
+import { Modal, ModalProps } from '..';
 
 const renderModal = (props?: Partial<ModalProps>) => {
   return render(

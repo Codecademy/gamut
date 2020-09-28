@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import MenuItem from '../index';
+import { MenuItem } from '../index';
 import s from '../styles.module.scss';
 
 describe('MenuItem', () => {

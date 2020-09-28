@@ -1,29 +1,30 @@
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
+import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
 import styles from './styles.module.scss';
-import ButtonBase from '../ButtonBase';
 
-export type AccordionButtonProps = {
-  className?: string;
+export type AccordionButtonSize = 'normal' | 'large';
+
+export type AccordionButtonTheme = 'blue' | 'plain' | 'yellow';
+
+export type AccordionButtonProps = ButtonBaseProps & {
   /**
    * Whether the button should display as open or closed.
    */
   expanded?: boolean;
-  /**
-   * Called when the button is clicked.
-   */
-  onClick?: () => void;
+
   /**
    * Determines the size of the button.
    */
-  size: 'normal' | 'large';
+  size?: 'normal' | 'large';
+
   /**
    * Visual theme for the clickable header button.
    */
-  theme: 'blue' | 'plain' | 'yellow';
+  theme?: 'blue' | 'plain' | 'yellow';
 };
 
 const buttonThemes = {
@@ -51,9 +52,9 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
   children,
   className,
   expanded,
-  onClick,
-  size,
-  theme,
+  size = 'normal',
+  theme = 'plain',
+  ...baseProps
 }) => {
   const { component: ButtonComponent, props } = buttonThemes[theme];
   const iconSize = size === 'large' ? 30 : undefined;
@@ -67,8 +68,8 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
         styles[size],
         className
       )}
-      onClick={onClick}
       flat
+      {...baseProps}
       {...props}
     >
       <span className={styles.children}>{children}</span>
@@ -83,5 +84,3 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
     </ButtonComponent>
   );
 };
-
-export default AccordionButton;

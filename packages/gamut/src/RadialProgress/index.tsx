@@ -1,4 +1,7 @@
+import cx from 'classnames';
 import React, { SVGProps } from 'react';
+
+import styles from './styles.module.scss';
 
 export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   size?: number | string;
@@ -8,14 +11,16 @@ export interface RadialProgressProps extends SVGProps<SVGSVGElement> {
   strokeLinecap?: 'round' | 'butt' | 'square';
 }
 
-const offsetForEmptyProgress = 260;
-const offsetForFullProgress = 8;
+const offsetForEmptyProgress = 290;
+const offsetForFullProgress = 10;
 const offsetDelta = offsetForEmptyProgress - offsetForFullProgress;
 
 const convertPercentToOffset = (percent: number) =>
   offsetForEmptyProgress - Math.floor(offsetDelta * (percent / 100));
 
 export const RadialProgress: React.FC<RadialProgressProps> = ({
+  children,
+  className,
   size = 24,
   duration,
   value,
@@ -34,49 +39,53 @@ export const RadialProgress: React.FC<RadialProgressProps> = ({
   }
 
   return (
-    <svg
-      aria-label={`${finalValue}% progress`}
-      viewBox="0 0 100 100"
-      height={size}
-      width={size}
-      {...props}
+    <div
+      className={cx(styles.radialProgress, className)}
+      style={{ height: size, width: size }}
     >
-      <circle
-        cx="50"
-        cy="50"
-        r="40"
-        stroke="currentColor"
-        strokeWidth={strokeWidth}
-        fill="none"
-        opacity=".2"
-      />
-      <circle
-        cx="50"
-        cy="50"
-        r="40"
-        stroke="currentColor"
-        strokeWidth={strokeWidth}
-        strokeLinecap={strokeLinecap}
-        fill="none"
-        opacity="1"
-        strokeDashoffset={finalValue}
-        strokeDasharray="260"
-        transform="rotate(-90 50 50)"
+      <svg
+        aria-label={`${value}% progress`}
+        viewBox="0 0 100 100"
+        height={size}
+        width={size}
+        {...props}
       >
-        {startingValue !== finalValue && (
-          <animate
-            attributeType="CSS"
-            attributeName="stroke-dashoffset"
-            from={startingValue}
-            to={finalValue}
-            dur={`${duration}ms`}
-            begin="0"
-            fill="freeze"
-          />
-        )}
-      </circle>
-    </svg>
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          fill="none"
+          opacity=".2"
+        />
+        <circle
+          cx="50"
+          cy="50"
+          r="45"
+          stroke="currentColor"
+          strokeWidth={strokeWidth}
+          strokeLinecap={strokeLinecap}
+          fill="none"
+          opacity="1"
+          strokeDashoffset={finalValue}
+          strokeDasharray={offsetForEmptyProgress}
+          transform="rotate(-90 50 50)"
+        >
+          {startingValue !== finalValue && (
+            <animate
+              attributeType="CSS"
+              attributeName="stroke-dashoffset"
+              from={startingValue}
+              to={finalValue}
+              dur={`${duration}ms`}
+              begin="0"
+              fill="freeze"
+            />
+          )}
+        </circle>
+      </svg>
+      {children && <div className={styles.children}>{children}</div>}
+    </div>
   );
 };
-
-export default RadialProgress;

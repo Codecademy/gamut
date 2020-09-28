@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import { text } from '@storybook/addon-knobs';
@@ -12,13 +12,15 @@ import { text } from '@storybook/addon-knobs';
 Emphasized (bold) text with a light background color behind it. Use to
 showcase important words in a sentence.
 
-<Preview>
+<Canvas>
   <Story name="HighlightedText">
-    <Text fontSize="md">
-      Would you like to have{' '}
-      <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
-    </Text>
+    {(args) => (
+      <Text fontSize="md">
+        Would you like to have{' '}
+        <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
+      </Text>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={HighlightedText} />

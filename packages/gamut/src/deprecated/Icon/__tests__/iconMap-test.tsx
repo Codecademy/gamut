@@ -1,5 +1,5 @@
 import * as deprecatedExports from '../../index'; //
-import iconMap from '../iconMap';
+import { iconMap } from '../iconMap';
 
 const allExportedItems = new Set(Object.values(deprecatedExports));
 

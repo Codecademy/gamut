@@ -12,5 +12,3 @@ export const ArticleIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ArticleIcon.defaultProps = defaultIconProps;
-
-export default ArticleIcon;

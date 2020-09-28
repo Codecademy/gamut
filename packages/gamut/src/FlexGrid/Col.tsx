@@ -1,5 +1,5 @@
 import React from 'react';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 
 const propKeys = [
@@ -87,5 +87,3 @@ export const Col: React.FC<ColProps> = (props) => {
     omitProps(propKeys, { ...props, className })
   );
 };
-
-export default Col;

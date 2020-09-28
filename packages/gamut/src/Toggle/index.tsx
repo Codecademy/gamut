@@ -45,5 +45,3 @@ export class Toggle extends Component<ToggleProps, {}> {
     );
   }
 }
-
-export default Toggle;

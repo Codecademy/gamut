@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
@@ -13,16 +13,18 @@ import { Avatar } from '@codecademy/gamut-labs/src';
 Small, circular profile photo that includes a colored drop shadow.
 Commonly paired with a `Byline`.with the user with various connotations.
 
-<Preview withSource="open">
+<Canvas withSource="open">
   <Story name="Avatar">
-    <Avatar
-      alt={text('Image Alt', 'The Codey character drinking Boba tea')}
-      src={text(
-        'Source URL',
-        'https://content.codecademy.com/courses/free/boba.svg'
-      )}
-    />
+    {(args) => (
+      <Avatar
+        alt={text('Image Alt', 'The Codey character drinking Boba tea')}
+        src={text(
+          'Source URL',
+          'https://content.codecademy.com/courses/free/boba.svg'
+        )}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props story="Avatar" of={Avatar} />

@@ -32,5 +32,3 @@ export const TabPanel: FunctionComponent<TabPanelProps> = ({
     {active || renderAllPanels ? children : null}
   </div>
 );
-
-export default TabPanel;

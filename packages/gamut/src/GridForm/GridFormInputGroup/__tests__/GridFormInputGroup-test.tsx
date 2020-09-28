@@ -9,7 +9,7 @@ import {
   stubTextareaField,
   stubCheckboxField,
 } from '../../__tests__/stubs';
-import GridFormInputGroup, { GridFormInputGroupProps } from '..';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props: GridFormInputGroupProps = {
@@ -165,5 +165,23 @@ describe('GridFormInputGroup', () => {
       .simulate('change', { target: { files: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('sets aria-live to assertive if isFirstError flag is on', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: true,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('assertive');
+  });
+
+  it('sets aria-live to off if isFirstError flag is off', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: false,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('off');
   });
 });

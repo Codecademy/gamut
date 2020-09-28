@@ -22,5 +22,3 @@ export const FloatIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 FloatIcon.defaultProps = defaultIconProps;
-
-export default FloatIcon;

@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import {
   Checkbox,
@@ -37,73 +37,84 @@ instead, use `GridForm` to auto-generate these for you.
 
 Toggles a named boolean input value.
 
-<Preview>
+<Canvas>
   <Story name="Checkbox">
-    <Checkbox htmlFor="html-css" label="HTML & CSS" />
-    <Checkbox htmlFor="javascript" label="JavaScript" />
-    <Checkbox htmlFor="ruby" label="Ruby" />
-    <Checkbox
-      htmlFor="multiline"
-      label={`I am a really long input that takes multiple lines.
+    {(args) => (
+      <>
+        <Checkbox htmlFor="html-css" label="HTML & CSS" />
+        <Checkbox htmlFor="javascript" label="JavaScript" />
+        <Checkbox htmlFor="ruby" label="Ruby" />
+        <Checkbox
+          htmlFor="multiline"
+          label={`I am a really long input that takes multiple lines.
        To make the checkbox better aligned with the text we can add
        the multiline prop which will add some margin-top to it and
        reduce the fontsize to be much smaller. Yay to a better
        looking block of text and checkbox! Now I am sort of
        grasping at straws in my attempt to fill this up.
         Look at that though; another sentence.`}
-      multiline
-    />
+          multiline
+        />
+      </>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Input
 
 Sets a short-form text-based value. It can be configured as a native HTML `<input/>`,
 such as limiting to numbers. If the `error` prop is passed, it has a red outline.
 
-<Preview>
+<Canvas>
   <Story name="Input">
-    <Input
-      htmlFor="name"
-      defaultValue="Default value"
-      error={boolean('error', false)}
-      type={selectKnob('type', ['number', 'text'], 'text')}
-    />
+    {(args) => (
+      <Input
+        htmlFor="name"
+        defaultValue="Default value"
+        error={boolean('error', false)}
+        type={selectKnob('type', ['number', 'text'], 'text')}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### RadioGroup
 
 Sets a value to one of a finite set of known values.
 
-<Preview>
+<Canvas>
   <Story name="RadioGroup">
-    <RadioGroup
-      htmlForPrefix="why-are-you-learning"
-      name="why-are-you-learning"
-    >
-      <Radio
-        label="Skills to communicate with developers and other technical people"
-        value="skills"
-      />
-      <Radio
-        label="A better understanding of web development in general"
-        value="understanding"
-      />
-    </RadioGroup>
+    {(args) => (
+      <RadioGroup
+        htmlForPrefix="why-are-you-learning"
+        name="why-are-you-learning"
+      >
+        <Radio
+          label="Skills to communicate with developers and other technical people"
+          value="skills"
+        />
+        <Radio
+          label="A better understanding of web development in general"
+          value="understanding"
+        />
+      </RadioGroup>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### Select
 
-<Preview>
+<Canvas>
   <Story name="Select">
-    <Select
-      htmlFor="select"
-      options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
-    />
+    {(args) => (
+      <Select
+        htmlFor="select"
+        options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
+        id="fruits"
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 ### TextArea
 
@@ -112,12 +123,14 @@ Sets a long-form text-based value. It can be configured as a native HTML
 
 If the `error` prop is passed, it has a red outline.
 
-<Preview>
+<Canvas>
   <Story name="TextArea">
-    <TextArea
-      htmlFor="about"
-      error={boolean('error', false)}
-      rows={number('rows', 8)}
-    />
+    {(args) => (
+      <TextArea
+        htmlFor="about"
+        error={boolean('error', false)}
+        rows={number('rows', 8)}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>

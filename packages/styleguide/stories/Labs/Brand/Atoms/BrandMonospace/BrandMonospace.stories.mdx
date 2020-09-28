@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { StoryStatus } from '~styleguide/blocks';
 import { BrandMonospace } from '@codecademy/gamut-labs/src';
@@ -18,23 +18,25 @@ font. Currently, Codecademy uses `Monaco` as our default monospaced
 font. However, there are a few brand related instances where we are experimenting
 with using `Roboto Mono`.
 
-<Preview>
+<Canvas>
   <Story name="BrandMonospace">
-    <>
-      <BrandMonospace>
-        <Heading fontSize="xl" as="h1">
-          Roboto Mono
+    {(args) => (
+      <>
+        <BrandMonospace>
+          <Heading fontSize="xl" as="h1">
+            Roboto Mono
+          </Heading>
+          <Heading fontSize="lg" as="h2">
+            {text('text', 'The quick brown fox jumps over the lazy dog')}
+          </Heading>
+        </BrandMonospace>
+        <Heading fontSize="xl" as="h1" className={styles.monacoFont}>
+          Monaco
         </Heading>
-        <Heading fontSize="lg" as="h2">
+        <Heading fontSize="lg" as="h2" className={styles.monacoFont}>
           {text('text', 'The quick brown fox jumps over the lazy dog')}
         </Heading>
-      </BrandMonospace>
-      <Heading fontSize="xl" as="h1" className={styles.monacoFont}>
-        Monaco
-      </Heading>
-      <Heading fontSize="lg" as="h2" className={styles.monacoFont}>
-        {text('text', 'The quick brown fox jumps over the lazy dog')}
-      </Heading>
-    </>
+      </>
+    )}
   </Story>
-</Preview>
+</Canvas>

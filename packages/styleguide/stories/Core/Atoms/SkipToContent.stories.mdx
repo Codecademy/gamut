@@ -1,4 +1,4 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
 import { SkipToContent } from '@codecademy/gamut/src';
@@ -16,10 +16,10 @@ to the page's main content. It takes in the ID of the elemnt it scrolls to
 and focuses ([dev.to article explaining why](https://dev.to/robdodson/managing-focus-64l))
 To see it, keep tabbing around on this page.
 
-<Preview>
+<Canvas>
   <Story name="Skip To Content">
-    <SkipToContent contentId="example" />
+    {(args) => <SkipToContent contentId="example" />}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={SkipToContent} />

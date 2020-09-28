@@ -12,5 +12,3 @@ export const ChevronUpIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 ChevronUpIcon.defaultProps = defaultIconProps;
-
-export default ChevronUpIcon;

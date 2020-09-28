@@ -14,5 +14,3 @@ export const FullstackIcon: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 };
 
 FullstackIcon.defaultProps = defaultIconProps;
-
-export default FullstackIcon;

@@ -23,8 +23,6 @@ function iconTemplate(api, opts, { jsx /* imports, props, exports */ }) {
     ) => {
       return ${jsx};
     });
-
-    export default ${exportName};
   `;
 }
 module.exports = iconTemplate;

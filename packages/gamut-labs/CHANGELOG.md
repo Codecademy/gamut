@@ -1,10 +1,148 @@
+### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.1...@codecademy/gamut-labs@4.2.2) (2020-09-25)
+
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.0...@codecademy/gamut-labs@4.2.1) (2020-09-25)
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.7...@codecademy/gamut-labs@4.2.0) (2020-09-25)
+
+
+### ✨ Features
+
+* added new pro logo ([#957](https://github.com/Codecademy/client-modules/issues/957)) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9ba1bffe48e30a8ebcd4051585d3024c64c))
+
+### [4.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.6...@codecademy/gamut-labs@4.1.7) (2020-09-24)
+
+### [4.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.5...@codecademy/gamut-labs@4.1.6) (2020-09-24)
+
+### [4.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.4...@codecademy/gamut-labs@4.1.5) (2020-09-24)
+
+### [4.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.3...@codecademy/gamut-labs@4.1.4) (2020-09-22)
+
+### [4.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.2...@codecademy/gamut-labs@4.1.3) (2020-09-22)
+
+### [4.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.1...@codecademy/gamut-labs@4.1.2) (2020-09-22)
+
+### [4.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.0...@codecademy/gamut-labs@4.1.1) (2020-09-21)
+
+
+### Other Changes
+
+* Correct Navy Box Variant shadow and update imports ([#961](https://github.com/Codecademy/client-modules/issues/961)) ([4c2cfa5](https://github.com/Codecademy/client-modules/commit/4c2cfa5fe1c2a56e8ef61fb636215950337866c9))
+
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.3...@codecademy/gamut-labs@4.1.0) (2020-09-18)
+
+
+### ✨ Features
+
+* **Box:** Temporary Box component ([#958](https://github.com/Codecademy/client-modules/issues/958)) ([d24f196](https://github.com/Codecademy/client-modules/commit/d24f196bccd04af3d80accc286d5a574c9bbf4f5))
+
+### [4.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.2...@codecademy/gamut-labs@4.0.3) (2020-09-11)
+
+
+### 🐛 Bug Fixes
+
+* Byline remove aria-labels ([#955](https://github.com/Codecademy/client-modules/issues/955)) ([374904a](https://github.com/Codecademy/client-modules/commit/374904a17f12f1d8bc4d82fac1bde91dea66b081))
+
+### [4.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.1...@codecademy/gamut-labs@4.0.2) (2020-09-03)
+
+### [4.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.0.0...@codecademy/gamut-labs@4.0.1) (2020-09-02)
+
+## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.1...@codecademy/gamut-labs@4.0.0) (2020-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* **gamut-styles:** deprecate legacy JS color variables  (#940)
+
+### Other Changes
+
+* **gamut-styles:** deprecate legacy JS color variables  ([#940](https://github.com/Codecademy/client-modules/issues/940)) ([903de62](https://github.com/Codecademy/client-modules/commit/903de62bf3086e3d51ba6dec36cc77ca482ba52f))
+
+### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@3.0.0...@codecademy/gamut-labs@3.0.1) (2020-08-28)
+
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.1.0...@codecademy/gamut-labs@3.0.0) (2020-08-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Swapped default font family to Apercu (#935)
+
+### ✨ Features
+
+* Swapped default font family to Apercu ([#935](https://github.com/Codecademy/client-modules/issues/935)) ([ce20167](https://github.com/Codecademy/client-modules/commit/ce20167524c2302cff218261d10a81eb3deb41c0)), closes [#943](https://github.com/Codecademy/client-modules/issues/943)
+
+## [2.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.7...@codecademy/gamut-labs@2.1.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **BreakpointHooks:** Port breakpoint hooks from Monolith into Gamut Labs ([db2e22a](https://github.com/Codecademy/client-modules/commit/db2e22a20abed47615a2f26e4111cb2ef3d00b96))
+
+### [2.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.6...@codecademy/gamut-labs@2.0.7) (2020-08-27)
+
+### [2.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.5...@codecademy/gamut-labs@2.0.6) (2020-08-27)
+
+### [2.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.4...@codecademy/gamut-labs@2.0.5) (2020-08-24)
+
+### [2.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.3...@codecademy/gamut-labs@2.0.4) (2020-08-24)
+
+### [2.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.2...@codecademy/gamut-labs@2.0.3) (2020-08-21)
+
+
+### 🐛 Bug Fixes
+
+* add sideEffects globs that catch all components ([#932](https://github.com/Codecademy/client-modules/issues/932)) ([5cc4204](https://github.com/Codecademy/client-modules/commit/5cc4204784c73b24c30de51931fb9f4d90538120))
+
+### [2.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.1...@codecademy/gamut-labs@2.0.2) (2020-08-21)
+
+### [2.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@2.0.0...@codecademy/gamut-labs@2.0.1) (2020-08-21)
+
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.5...@codecademy/gamut-labs@2.0.0) (2020-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Gamut:** Enable Emotion (#917)
+
+### ✨ Features
+
+* **Gamut:** Enable Emotion ([#917](https://github.com/Codecademy/client-modules/issues/917)) ([11c83a5](https://github.com/Codecademy/client-modules/commit/11c83a58736f080abd87019990d5c8049bdf9c9a))
+
+### [1.9.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.4...@codecademy/gamut-labs@1.9.5) (2020-08-17)
+
+### [1.9.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.3...@codecademy/gamut-labs@1.9.4) (2020-08-14)
+
+### [1.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.2...@codecademy/gamut-labs@1.9.3) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [1.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.1...@codecademy/gamut-labs@1.9.2) (2020-08-11)
+
+### [1.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.9.0...@codecademy/gamut-labs@1.9.1) (2020-08-11)
+
+
+### Other Changes
+
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
+
+## [1.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.7...@codecademy/gamut-labs@1.9.0) (2020-08-11)
+
+### [1.8.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.6...@codecademy/gamut-labs@1.8.7) (2020-08-06)
+
+### [1.8.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.5...@codecademy/gamut-labs@1.8.6) (2020-08-06)
+
+### [1.8.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.4...@codecademy/gamut-labs@1.8.5) (2020-08-06)
+
+### [1.8.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.3...@codecademy/gamut-labs@1.8.4) (2020-08-06)
+
 ### [1.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.8.0...@codecademy/gamut-labs@1.8.3) (2020-07-29)
 
 
 ### Other Changes
 
 * Revert "Merge branch 'next' into master" ([#898](https://github.com/Codecademy/client-modules/issues/898)) ([c055d41](https://github.com/Codecademy/client-modules/commit/c055d4103ba70782ffe825053ce45e66447a220a))
-* update changelogs ([4efb01c](https://github.com/Codecademy/client-modules/commit/4efb01c23d27ad71c0986673fef92e40bd995cab))
 * v1.8.2 ([5fc833b](https://github.com/Codecademy/client-modules/commit/5fc833b51f479f997564830a3ecec55412c96d5d))
 
 ## [1.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.53...@codecademy/gamut-labs@1.8.0) (2020-07-27)
@@ -19,70 +157,24 @@
 ### Other Changes
 
 * Merge branch 'next' into master ([9eb2c8e](https://github.com/Codecademy/client-modules/commit/9eb2c8ef3605db8efb6e96eac043eb1d046514dd))
-* update changelogs ([e9ea262](https://github.com/Codecademy/client-modules/commit/e9ea2624dbc09c09a0bb656578c7888a739cf785))
 
 ### [1.7.53](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.52...@codecademy/gamut-labs@1.7.53) (2020-07-27)
 
-
-### Other Changes
-
-* update changelogs ([1aed8cc](https://github.com/Codecademy/client-modules/commit/1aed8cccd91ce78a9b83014d468bc4d5d0c64bc6))
-
 ### [1.7.52](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.51...@codecademy/gamut-labs@1.7.52) (2020-07-24)
-
-
-### Other Changes
-
-* update changelogs ([3b253d9](https://github.com/Codecademy/client-modules/commit/3b253d955a237ea0ac6962fd78b726feb8c168fe))
 
 ### [1.7.51](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.50...@codecademy/gamut-labs@1.7.51) (2020-07-24)
 
-
-### Other Changes
-
-* update changelogs ([21f99e8](https://github.com/Codecademy/client-modules/commit/21f99e8f8b1f8022ad7f7158f149237f26189945))
-
 ### [1.7.50](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.49...@codecademy/gamut-labs@1.7.50) (2020-07-22)
-
-
-### Other Changes
-
-* update changelogs ([f540c80](https://github.com/Codecademy/client-modules/commit/f540c80556585fada087fed2b6425c883a10f0df))
 
 ### [1.7.49](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.48...@codecademy/gamut-labs@1.7.49) (2020-07-22)
 
-
-### Other Changes
-
-* update changelogs ([58f8cb6](https://github.com/Codecademy/client-modules/commit/58f8cb61876d6233a1954b32769b060672b6eadf))
-
 ### [1.7.48](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.47...@codecademy/gamut-labs@1.7.48) (2020-07-21)
-
-
-### Other Changes
-
-* update changelogs ([9cd8c26](https://github.com/Codecademy/client-modules/commit/9cd8c261f512348584efa871763713678dbad079))
 
 ### [1.7.47](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.46...@codecademy/gamut-labs@1.7.47) (2020-07-21)
 
-
-### Other Changes
-
-* update changelogs ([42a3df6](https://github.com/Codecademy/client-modules/commit/42a3df60c0c32b7acc8516c47c9a5ae6f07c335b))
-
 ### [1.7.46](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.45...@codecademy/gamut-labs@1.7.46) (2020-07-21)
 
-
-### Other Changes
-
-* update changelogs ([992e511](https://github.com/Codecademy/client-modules/commit/992e5118fa835ab0c6b7a0079d653209a18b7e0d))
-
 ### [1.7.45](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.44...@codecademy/gamut-labs@1.7.45) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([91047e6](https://github.com/Codecademy/client-modules/commit/91047e62ad06ddcb561c07ba3bed57a3f9b547c7))
 
 
 ### 🐛 Bug Fixes
@@ -91,26 +183,11 @@
 
 ### [1.7.44](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.43...@codecademy/gamut-labs@1.7.44) (2020-07-17)
 
-
-### Other Changes
-
-* update changelogs ([7a29c75](https://github.com/Codecademy/client-modules/commit/7a29c75e41c8caab21b6fedddb00d9c8720738ac))
-
 ### [1.7.43](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.42...@codecademy/gamut-labs@1.7.43) (2020-07-17)
-
-
-### Other Changes
-
-* update changelogs ([3c6cb8f](https://github.com/Codecademy/client-modules/commit/3c6cb8ff7f41625e3dea9cd21e5e69d262b8987f))
 
 ### [1.7.42](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.41...@codecademy/gamut-labs@1.7.42) (2020-07-16)
 
 ### [1.7.41](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.40...@codecademy/gamut-labs@1.7.41) (2020-07-14)
-
-
-### Other Changes
-
-* update changelogs ([1133171](https://github.com/Codecademy/client-modules/commit/1133171f6945c10709414e63a9de6943ed44d733))
 
 ### [1.7.40](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@1.7.36...@codecademy/gamut-labs@1.7.40) (2020-07-13)
 

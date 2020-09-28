@@ -1,6 +1,6 @@
 import React, { ReactElement, FunctionComponent, ReactNode } from 'react';
 import cx from 'classnames';
-import Tab from '../Tab';
+import { Tab } from '../Tab';
 import s from './styles.module.scss';
 
 export type TabListProps = {
@@ -48,5 +48,3 @@ export const TabList: FunctionComponent<TabListProps> = ({
 };
 
 TabList.defaultProps = defaultProps;
-
-export default TabList;
