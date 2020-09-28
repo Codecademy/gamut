@@ -9,6 +9,14 @@
     "type": "git",
     "url": "git+https://github.com/Codecademy/client-modules.git"
   },
+  "peerDependencies": {
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@codecademy/gamut-styles": "^7.0.0",
+    "classnames": "^2.2.5"
+  },
   "scripts": {
     "build:clean": "rm -rf dist",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
