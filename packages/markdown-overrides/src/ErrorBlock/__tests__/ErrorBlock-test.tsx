@@ -6,8 +6,8 @@ import { ErrorBlock } from '../';
 describe('ErrorBlock', () => {
   it('renders itself and children', () => {
     const errorText = 'error!';
-    const { getByText } = render(<ErrorBlock>{errorText}</ErrorBlock>);
+    const view = render(<ErrorBlock>{errorText}</ErrorBlock>);
 
-    getByText(errorText);
+    view.getByText(errorText);
   });
 });
