@@ -1,2 +1,2 @@
-export * from './parseSizeValue';
+export * from './parseSize';
 export * from './percentageOrAbsolute';
