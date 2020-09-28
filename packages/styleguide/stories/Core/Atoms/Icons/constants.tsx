@@ -16,6 +16,7 @@ export const VENDOR = pick(
     'JavascriptIcon',
     'PythonIcon',
     'RailsIcon',
+    'ReactIcon',
     'RubyIcon',
     'FaviconIcon',
     'FaviconSolidIcon',
