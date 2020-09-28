@@ -75,6 +75,17 @@ To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` 
 If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
 or running `yarn build-all` in this repo.
 
+### Adding a New Package
+
+1. Create a new directory at `packages/<package-name>/package.json`.
+1. Use `yarn lerna create` to create the new package, copying values from existing `package.json`s when unsure.
+   - Also copy the `publishConfig` field to let your published package be public by default
+1. Create a minimal amount of source code in the new package
+   - Example: a simple `tsconfig.json` with a `index.ts` exporting a single object
+1. Run `yarn lerna bootstrap` from the repository root
+1. Send a `feat` PR adding that package
+1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
+
 ### PR Title Guide
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.

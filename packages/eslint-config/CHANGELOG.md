@@ -1,3 +1,10 @@
+### [3.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.0...@codecademy/eslint-config@3.0.1) (2020-09-25)
+
+
+### Other Changes
+
+* **TSLint:** TS 4.0.2 and Eslint 6.5.1 ([#968](http://github.com/Codecademy/client-modules/issues/968)) ([b2c3ad5](http://github.com/Codecademy/client-modules/commit/b2c3ad556f46d0c7589e8211c39c226dbca26d43))
+
 ## [3.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.1...@codecademy/eslint-config@3.0.0) (2020-08-27)
 
 

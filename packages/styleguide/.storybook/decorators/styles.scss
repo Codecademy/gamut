@@ -2,6 +2,10 @@
 
 // Needed to avoid overriding story styles
 :global {
+  .sb-show-main {
+    background-color: transparent;
+  }
+
   .sb-show-main #root {
     display: flex;
     align-items: center;
