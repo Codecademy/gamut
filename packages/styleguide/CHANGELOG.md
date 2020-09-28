@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 17.4.0 (2020-09-28)
-
-* feat: add React icon (#975) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25)), closes [#975](https://github.com/Codecademy/client-modules/issues/975)
-* chore: update changelogs ([4df3b0e](https://github.com/Codecademy/client-modules/commit/4df3b0e))
+## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.2...@codecademy/styleguide@17.4.0) (2020-09-28)
 
 
+### ✨ Features
 
-
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
 
 ### [17.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.1...@codecademy/styleguide@17.3.2) (2020-09-25)
 
@@ -1102,3 +1095,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
