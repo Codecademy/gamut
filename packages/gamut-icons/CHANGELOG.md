@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.7.0 (2020-09-28)
-
-* feat: add React icon (#975) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25)), closes [#975](https://github.com/Codecademy/client-modules/issues/975)
-* chore: update changelogs ([d8d36e8](https://github.com/Codecademy/client-modules/commit/d8d36e8))
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.6.0...@codecademy/gamut-icons@3.7.0) (2020-09-28)
 
 
+### ✨ Features
 
-
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
 
 ## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.5.0...@codecademy/gamut-icons@3.6.0) (2020-09-24)
 
@@ -256,3 +249,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
