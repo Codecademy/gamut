@@ -36,13 +36,17 @@ export function responsiveProperty<
   return (props) => {
     const responsive = {} as Record<MediaSize | 'base', Props>;
 
+    // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
+      // only select the props we want
       const propConfig = props[propName];
 
+      // Escape if this is undefined.
       if (propConfig === undefined) {
         return;
       }
 
+      // Add to the config if it is an array of prop values
       if (isArray(propConfig)) {
         propConfig.forEach((value, i) => {
           const media = MEDIA[i];
@@ -54,6 +58,7 @@ export function responsiveProperty<
             [propName]: value,
           };
         });
+        // Add to the config if it is an object of sizes / values
       } else if (isObject(propConfig)) {
         Object.entries(propConfig).forEach(([key, value]) => {
           const media = key as MediaSize;
@@ -62,6 +67,7 @@ export function responsiveProperty<
             [propName]: value,
           };
         });
+        // Otherwise add it as the smallest media size.
       } else {
         responsive['xs'] = {
           ...responsive['xs'],
@@ -72,18 +78,23 @@ export function responsiveProperty<
 
     let styles: CSSObject = {};
 
+    // Iterate through each breakpoints sorted props
     entries(responsive).forEach(([breakpoint, bpProps]) => {
       const templates = values(templateFns);
+
+      // TODO: Only call the templateFns we have props for.
       templates.forEach((templatFn) => {
         const templateStyles =
           templatFn?.({ ...bpProps, theme: props.theme }) || {};
 
+        // Smallest sizes are always on by default
         if (breakpoint === 'xs') {
           styles = {
             ...styles,
             ...templateStyles,
           };
         } else {
+          // For all sizes higher, create a new media object.
           const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
           const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
 
