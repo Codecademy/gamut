@@ -28,6 +28,8 @@ export const LEARNING_ENVIRONMENT = pick(
   Icons,
   [
     'PortfolioProjectIcon',
+    'ChecklistIcon',
+    'PinIcon',
     'ChallengeProjectIcon',
     'InformationalIcon',
     'LessonIcon',
