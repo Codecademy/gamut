@@ -13,30 +13,34 @@ export const compose = <
 >(
   ...handlers: Handlers
 ) => {
-  let propNames: (keyof Parameters<Handlers[number]>[0])[] = [];
-  let templateFns = {} as Partial<Record<keyof Props, StyleTemplate<Props>>>;
+  // Initialize the new composites arguments
+  const config = {
+    propNames: [],
+    templateFns: {},
+  } as {
+    propNames: (keyof Parameters<Handlers[number]>[0])[];
+    templateFns: Partial<Record<keyof Props, StyleTemplate<Props>>>;
+  };
 
+  // Add each handlers respective propNames and templateFns to the new composite
   handlers.forEach((handler) => {
     if (handler.propNames) {
-      propNames = propNames.concat(handler.propNames);
+      config.propNames = [...config.propNames, ...handler.propNames];
     }
     if (handler.templateFns) {
-      templateFns = { ...templateFns, ...handler.templateFns };
+      config.templateFns = { ...config.templateFns, ...handler.templateFns };
     }
   });
 
-  const config = {
-    propNames,
-    templateFns,
-  };
-
+  // Create a new responsive property responsible for templating all the single handlers
   const composedHandler: Handler<Props> = responsiveProperty<
     AbstractTheme,
     Props
   >(config);
 
-  composedHandler.propNames = propNames;
-  composedHandler.templateFns = templateFns;
+  // Make the handlers propNames and functions accessible on the function reference
+  composedHandler.propNames = config.propNames;
+  composedHandler.templateFns = config.templateFns;
 
   return composedHandler;
 };
