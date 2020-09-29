@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 3.8.0 (2020-09-29)
-
-* feat: added checklist and pin icons for curated content (#976) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e249)), closes [#976](https://github.com/Codecademy/client-modules/issues/976)
-* chore: update changelogs ([6700fdb](https://github.com/Codecademy/client-modules/commit/6700fdb))
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
 
 
+### ✨ Features
 
-
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/client-modules/issues/976)) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e24976da66cb69341934ac80b2c53f5e975cc))
 
 ## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.6.0...@codecademy/gamut-icons@3.7.0) (2020-09-28)
 
@@ -263,3 +256,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
