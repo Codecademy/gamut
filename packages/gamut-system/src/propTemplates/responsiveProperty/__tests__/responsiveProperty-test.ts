@@ -14,16 +14,17 @@ describe(responsiveProperty, () => {
       computeValue: (val) => val,
     }),
   };
+
+  type Theme = {};
+  type PropShape = {
+    margin?: string | ResponsiveProp<string>;
+    marginLeft?: string | ResponsiveProp<string>;
+    display?: string | ResponsiveProp<string>;
+    theme?: any;
+  };
+
   it('creates a property function', () => {
-    const propFunction = responsiveProperty<
-      {},
-      {
-        margin?: string | ResponsiveProp<string>;
-        marginLeft?: string | ResponsiveProp<string>;
-        display?: string | ResponsiveProp<string>;
-        theme?: any;
-      }
-    >({
+    const propFunction = responsiveProperty<Theme, PropShape>({
       propNames: ['display', 'margin', 'marginLeft'],
       templateFns,
     });
