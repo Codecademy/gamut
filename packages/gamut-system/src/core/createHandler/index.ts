@@ -2,9 +2,7 @@ import {
   ThematicConfig,
   AbstractTheme,
   ThematicProps,
-  AbstractProps,
   Handler,
-  HandlerConfig,
   StyleTemplate,
   TransformValue,
 } from '../../types/system';
@@ -20,35 +18,7 @@ const TEMPLATES = {
   directional: directionalProperty,
 };
 
-/**
- *
- * @param handlerConfig
- */
 export const createHandler = <
-  Theme extends AbstractTheme,
-  Props extends AbstractProps
->({
-  propName,
-  altProps = [],
-  templateFn,
-}: HandlerConfig<Props>): Handler<Props> => {
-  const propNames = [propName, ...altProps];
-  const templateFns = {
-    [propName]: templateFn,
-  } as Partial<Record<keyof Props, StyleTemplate<Props>>>;
-
-  const handler: Handler<Props> = responsiveProperty<Theme, Props>({
-    propNames,
-    templateFns,
-  });
-
-  handler.propNames = propNames;
-  handler.templateFns = templateFns;
-
-  return handler;
-};
-
-export const registerHandler = <
   Theme extends AbstractTheme,
   Config extends ThematicConfig<Theme>,
   Props extends ThematicProps<Theme, Config>
@@ -71,12 +41,19 @@ export const registerHandler = <
     propName,
     computeValue,
   });
-  const propConfig = {
-    propName,
-    altProps,
-    templateFn: styleFunction,
-  };
 
-  const systemHandler = createHandler(propConfig as any) as any;
-  return systemHandler as Handler<Props>;
+  const propNames: any[] = [propName, ...altProps];
+  const templateFns = {
+    [propName]: styleFunction,
+  } as Partial<Record<keyof Props, StyleTemplate<Props>>>;
+
+  const handler = responsiveProperty<Theme, Props>({
+    propNames,
+    templateFns,
+  });
+
+  handler.propNames = propNames;
+  handler.templateFns = templateFns;
+
+  return handler;
 };

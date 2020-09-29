@@ -64,12 +64,6 @@ export type TemplateMap<Props extends AbstractProps> = Partial<
   Record<keyof Props, StyleTemplate<Props>>
 >;
 
-export type HandlerConfig<Props extends AbstractProps> = {
-  propName: keyof Props;
-  altProps?: Readonly<(keyof Props)[]>;
-  templateFn: StyleTemplate<Props>;
-};
-
 export type Handler<Props extends AbstractProps> = {
   propNames?: (keyof Props)[];
   templateFns?: TemplateMap<Props>;
@@ -83,7 +77,7 @@ export type PropTemplateType = 'standard' | 'directional';
 
 export type TransformValue = (value: any) => string | number;
 
-export type AbstractSystemConfig = {
+export type AbstractPropertyConfig = {
   propName: PropAlias;
   altProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
@@ -92,17 +86,17 @@ export type AbstractSystemConfig = {
 };
 /** Theme Aware Configurations */
 
-export type ThematicConfig<
+export type PropertyConfig<
   Theme extends AbstractTheme
-> = AbstractSystemConfig & {
+> = AbstractPropertyConfig & {
   scale?: ScaleArray | ScaleMap | Readonly<keyof Theme>;
 };
 
-export type PropKey<Config extends AbstractSystemConfig> =
+export type PropKey<Config extends AbstractPropertyConfig> =
   | Config['propName']
   | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
 
-export type GetAltProps<Config extends AbstractSystemConfig> = Extract<
+export type GetAltProps<Config extends AbstractPropertyConfig> = Extract<
   Props[Config['propName']],
   { altProps: string }
 >['altProps'];
@@ -114,7 +108,7 @@ type SafeCSSType<PropName extends PropAlias> = Extract<
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<
-  Config extends AbstractSystemConfig
+  Config extends AbstractPropertyConfig
 > = Config['propName'] extends PropAlias[]
   ? SafeCSSType<Config['propName'][number]>
   : Config['propName'] extends PropAlias
@@ -123,7 +117,7 @@ export type DefaultPropScale<
 
 export type ThematicScaleValue<
   Theme extends AbstractTheme,
-  Config extends ThematicConfig<Theme>
+  Config extends PropertyConfig<Theme>
 > = Config['scale'] extends AbstractScales
   ?
       | NeverUnknown<
@@ -138,7 +132,7 @@ export type ThematicScaleValue<
 
 export type ThematicProps<
   Theme extends AbstractTheme,
-  Config extends ThematicConfig<Theme>
+  Config extends PropertyConfig<Theme>
 > = {
   [key in Config['propName']]?: ResponsiveProp<
     ThematicScaleValue<Theme, Extract<Config, { propName: key }>>
