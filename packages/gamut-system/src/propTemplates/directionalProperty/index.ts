@@ -39,7 +39,7 @@ const DIRECTIONAL_PROPS = {
 type DirectionalProps = typeof DIRECTIONAL_PROPS;
 
 /**
- * Directional props requrie destructuring of their values to ensure their order.  Instead
+ * Directional props require destructuring of their values to ensure their order.  Instead
  * of sorting the styles to make overrides make sense we handle all of these props at once
  * and use upstream previous values to initialize downstream ones such that upstream specific
  * values will not be overriden by the CSS cascade erroneously.  We prefer this over manually
