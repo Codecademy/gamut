@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 17.5.0 (2020-09-29)
+
+* feat: added checklist and pin icons for curated content (#976) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e249)), closes [#976](https://github.com/Codecademy/client-modules/issues/976)
+* chore: update changelogs ([6700fdb](https://github.com/Codecademy/client-modules/commit/6700fdb))
+
+
+
+
+
 ## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.2...@codecademy/styleguide@17.4.0) (2020-09-28)
 
 
@@ -1095,4 +1109,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
