@@ -1,14 +1,14 @@
 import { themeScaleValue } from '../../transforms/themeScaleValue';
 import {
   AbstractProps,
-  AbstractSystemConfig,
+  AbstractPropertyConfig,
   StyleTemplate,
 } from '../../types/system';
 
 export const standardProperty = <
   Props extends AbstractProps,
-  Config extends AbstractSystemConfig &
-    Required<Pick<AbstractSystemConfig, 'propName' | 'computeValue'>>
+  Config extends AbstractPropertyConfig &
+    Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
 >({
   propName,
   scale,
