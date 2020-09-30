@@ -1,5 +1,5 @@
-import { createSystem } from '..';
+import { system } from '..';
 
-describe(createSystem, () => {
+describe(system, () => {
   xit('', () => {});
 });
