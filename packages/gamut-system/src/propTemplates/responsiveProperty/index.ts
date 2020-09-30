@@ -79,7 +79,7 @@ export function responsiveProperty<
       // TODO: Only call the templateFns we have props for.
       templates.forEach((templatFn) => {
         const templateStyles =
-          templatFn?.({ ...bpProps, theme: props.theme }) || {};
+          templatFn?.({ ...bpProps, theme: props.theme }) ?? {};
 
         // Smallest sizes are always on by default
         if (breakpoint === MEDIA[0]) {
@@ -89,7 +89,7 @@ export function responsiveProperty<
           const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
           styles[breakpointKey] = assign(styles[breakpointKey], templateStyles);
         }
-      });
+      }  as ([MediaSize, Props]) => void);
     });
 
     return styles;
