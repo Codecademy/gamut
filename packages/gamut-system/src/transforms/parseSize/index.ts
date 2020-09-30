@@ -5,8 +5,7 @@ export const parseSize = (value: string | number) => {
   if (isNumber(value)) {
     return percentageOrAbsolute(value);
   }
-  const normalizedValue = value.startsWith('.') ? `0${value}` : value;
-  const numeric = parseFloat(normalizedValue);
-  const isUnitless = numeric.toString().length === normalizedValue.length;
-  return isUnitless ? percentageOrAbsolute(numeric) : normalizedValue;
+  const [, number, unit] = value.match(/(\-?\d*\.?\d+)(%|\w*)/) ?? [];
+  const numericValue = parseFloat(number);
+  return !unit ? percentageOrAbsolute(numericValue) : `${numericValue}${unit}`;
 };
