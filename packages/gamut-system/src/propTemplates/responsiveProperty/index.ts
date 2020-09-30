@@ -41,15 +41,14 @@ export function responsiveProperty<
 
     // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
-      // only select the props we want
       const propertyValue = props[propName];
-      const propertyTypeof = typeof propertyValue;
 
-      switch (propertyTypeof) {
+      // Handle responsive configurations properly.
+      switch (typeof propertyValue) {
         case 'string':
         case 'number':
           // If no extra styles exist add this to the lowest breakpoint
-          return set(responsive, ['xs', propName], propertyValue);
+          return set(responsive, [MEDIA[0], propName], propertyValue);
         case 'object': {
           // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
@@ -83,7 +82,7 @@ export function responsiveProperty<
           templatFn?.({ ...bpProps, theme: props.theme }) || {};
 
         // Smallest sizes are always on by default
-        if (breakpoint === 'xs') {
+        if (breakpoint === MEDIA[0]) {
           styles = assign(styles, templateStyles);
         } else {
           // For all sizes higher, create a new media object.
