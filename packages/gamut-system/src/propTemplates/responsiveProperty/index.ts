@@ -46,34 +46,27 @@ export function responsiveProperty<
       const propertyTypeof = typeof propertyValue;
 
       switch (propertyTypeof) {
-        case 'undefined':
-          return;
         case 'string':
         case 'number':
           // If no extra styles exist add this to the lowest breakpoint
-          set(responsive, ['xs', propName], propertyValue);
-          return;
+          return set(responsive, ['xs', propName], propertyValue);
         case 'object': {
           // Add to the config if it is an object of sizes / values
-
           if (isObject(propertyValue)) {
-            entries(propertyValue).forEach(([mediaSize, value]) => {
+            return entries(propertyValue).forEach(([mediaSize, value]) => {
               set(responsive, [mediaSize, propName], value);
             });
-
-            return;
           }
 
+          // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
-            // Add to the config if it is an array of prop values
-            propertyValue.forEach((value, i) => {
+            return propertyValue.forEach((value, i) => {
               const media = MEDIA[i];
               if (value === undefined) {
                 return;
               }
               set(responsive, [media, propName], propertyValue);
             });
-            return;
           }
         }
         default:
