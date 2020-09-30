@@ -53,12 +53,10 @@ export function responsiveProperty<
         case 'object': {
           // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
-            return propertyValue.forEach((value, i) => {
-              const media = MEDIA[i];
-              if (value === undefined) {
-                return;
+            return propertyValue.forEach((value, mediaIndex) => {
+              if (value !== undefined) {
+                return set(responsive, [MEDIA[mediaIndex], propName], value);
               }
-              set(responsive, [media, propName], value);
             });
           }
           // Add to the config if it is an object of sizes / values
