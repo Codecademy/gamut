@@ -43,45 +43,52 @@ export function responsiveProperty<
     propNames.forEach((propName) => {
       // only select the props we want
       const propertyValue = props[propName];
+      const propertyTypeof = typeof propertyValue;
 
-      // Escape if this is undefined.
-      if (propertyValue === undefined) {
-        return;
-      }
+      switch (propertyTypeof) {
+        case 'undefined':
+          return;
+        case 'string':
+        case 'number':
+          // If no extra styles exist add this to the lowest breakpoint
+          responsive['xs'] = {
+            ...responsive['xs'],
+            [propName]: propertyValue,
+          };
+          return;
+        case 'object': {
+          // Add to the config if it is an object of sizes / values
 
-      // Add to the config if it is an array of prop values
-      if (isArray(propertyValue)) {
-        propertyValue.forEach((value, i) => {
-          const media = MEDIA[i];
-          if (value === undefined) {
+          if (isObject(propertyValue)) {
+            entries(propertyValue).forEach(([mediaSize, value]) => {
+              const media = mediaSize as MediaSize;
+              responsive[media] = {
+                ...responsive[media],
+                [propName]: value,
+              };
+            });
+
             return;
           }
-          responsive[media] = {
-            ...responsive[media],
-            [propName]: value,
-          };
-        });
-        return;
+
+          if (isArray(propertyValue)) {
+            // Add to the config if it is an array of prop values
+            propertyValue.forEach((value, i) => {
+              const media = MEDIA[i];
+              if (value === undefined) {
+                return;
+              }
+              responsive[media] = {
+                ...responsive[media],
+                [propName]: value,
+              };
+            });
+            return;
+          }
+        }
+        default:
+          return;
       }
-
-      // Add to the config if it is an object of sizes / values
-      if (isObject(propertyValue)) {
-        entries(propertyValue).forEach(([mediaSize, value]) => {
-          const media = mediaSize as MediaSize;
-          responsive[media] = {
-            ...responsive[media],
-            [propName]: value,
-          };
-        });
-
-        return;
-      }
-
-      // If no extra styles exist add this to the lowest breakpoint
-      responsive['xs'] = {
-        ...responsive['xs'],
-        [propName]: propertyValue,
-      };
     });
 
     let styles: CSSObject = {};
