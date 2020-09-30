@@ -18,7 +18,6 @@ import { system } from '@codecademy/gamut-system';
 
 export const {
   propGroups: { typography, spacing, layout },
-  createVarant,
 } = system();
 
 export type TypographyProps = HandlerProps<typeof typography>;
@@ -68,33 +67,12 @@ export const Box = styled<BoxProps>`
 <Box margin={{ xs: 16, sm: 24, md: 32 }} />
 ```
 
-Using the variant API to group and share specific configurations.
+## Docs
 
-```tsx
-import styled from '@emotion/styled';
-import { HandlerProps } from '@codecademy/gamut-system';
-import { createVariant } from '../system';
-
-const buttonVariants = createVariant({
-  primary: {
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    color: 'white',
-    borderColor: 'darkblue',
-    backgroundColor: 'blue',
-  },
-  secondary: {
-    borderStyle: 'solid',
-    borderWidth: '1px',
-    color: 'white',
-    borderColor: 'darkgreen',
-    backgroundColor: 'green',
-  },
-});
-
-export type ButtonProps = HandlerProps<typeof ButtonVariants>;
-
-export const Button = styled.button<ButtonProps>`
-  ${buttonVariants}
-`;
-```
+- [Getting Started](docs/getting-started.md)
+- [System](docs/system.md)
+- [Properties](docs/properties.md)
+- [Responsive Properties](docs/responsive.md)
+- [Variants](docs/variants.md)
+- [Customization](docs/customization.md)
+- [Compose](docs/compose.md)
