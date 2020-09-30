@@ -1,4 +1,4 @@
-import { entries, isArray, isObject, values } from 'lodash';
+import { entries, isArray, isObject, set, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
 import {
   StyleTemplate,
@@ -51,21 +51,14 @@ export function responsiveProperty<
         case 'string':
         case 'number':
           // If no extra styles exist add this to the lowest breakpoint
-          responsive['xs'] = {
-            ...responsive['xs'],
-            [propName]: propertyValue,
-          };
+          set(responsive, ['xs', propName], propertyValue);
           return;
         case 'object': {
           // Add to the config if it is an object of sizes / values
 
           if (isObject(propertyValue)) {
             entries(propertyValue).forEach(([mediaSize, value]) => {
-              const media = mediaSize as MediaSize;
-              responsive[media] = {
-                ...responsive[media],
-                [propName]: value,
-              };
+              set(responsive, [mediaSize, propName], value);
             });
 
             return;
@@ -78,10 +71,7 @@ export function responsiveProperty<
               if (value === undefined) {
                 return;
               }
-              responsive[media] = {
-                ...responsive[media],
-                [propName]: value,
-              };
+              set(responsive, [media, propName], propertyValue);
             });
             return;
           }
