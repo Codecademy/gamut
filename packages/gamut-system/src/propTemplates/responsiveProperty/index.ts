@@ -89,7 +89,7 @@ export function responsiveProperty<
           const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
           styles[breakpointKey] = assign(styles[breakpointKey], templateStyles);
         }
-      }  as ([MediaSize, Props]) => void);
+      });
     });
 
     return styles;
