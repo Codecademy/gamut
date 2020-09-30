@@ -11,11 +11,9 @@ Style props for building robustly typed design systems in react.
 
 ## Usage
 
-Create your new system locally to your app.
+Create your new system locally to your app:
 
-`src/system`
-
-````tsx
+```tsx
 import { system } from '@codecademy/gamut-system';
 
 export const {
@@ -28,14 +26,20 @@ export type SpacingProps = HandlerProps<typeof spacing>;
 export type LayoutProps = HandlerProps<typeof layout>;
 ```
 
-Using basic props / prop groups:
+In your components:
 
 ```tsx
 import styled from '@emotion/styled';
-import { typography, spacing, layout, TypographyProps, SpacingProps, LayoutProps } from '../system';
+import {
+  typography,
+  spacing,
+  layout,
+  TypographyProps,
+  SpacingProps,
+  LayoutProps,
+} from '../system';
 
-
-export type BoxProps = TypographyProps & SpacingProps & LayoutProps
+export type BoxProps = TypographyProps & SpacingProps & LayoutProps;
 
 export const Box = styled<BoxProps>`
   ${typography}
@@ -45,6 +49,7 @@ export const Box = styled<BoxProps>`
 ```
 
 ### Regular Props
+
 ```tsx
 <Box margin="1rem" />
 
@@ -54,6 +59,7 @@ export const Box = styled<BoxProps>`
 ```
 
 ### Responsive Props
+
 ```tsx
 // Array Syntax
 <Box width={[50, 100, 200]} />
@@ -92,4 +98,3 @@ export const Button = styled.button<ButtonProps>`
   ${buttonVariants}
 `;
 ```
-````
