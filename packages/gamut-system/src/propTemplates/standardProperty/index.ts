@@ -1,4 +1,4 @@
-import { themeScaleValue } from '../../transforms/themeScaleValue';
+import { get } from 'lodash';
 import {
   AbstractProps,
   AbstractPropertyConfig,
@@ -15,7 +15,8 @@ export const standardProperty = <
   computeValue,
 }: Config): StyleTemplate<Props> => {
   return (props: Props) => {
-    const value = themeScaleValue(props as any, scale, props[propName] as any);
+    const propValue = props[propName];
+    const value = get(props, `theme.${scale}.${propValue}`, propValue);
     if (value === undefined) return;
     return {
       [propName]: computeValue(value),

@@ -1,5 +1,5 @@
 import { CSSObject } from '@emotion/core';
-import { themeScaleValue } from '../../transforms/themeScaleValue';
+import { get } from 'lodash';
 import {
   AbstractProps,
   AbstractPropertyConfig,
@@ -70,12 +70,8 @@ export function directionalProperty<
 
     // Iterate over all possible directions
     DIRECTIONS.forEach((direction, i) => {
-      // Get value
-      const value = themeScaleValue(
-        props as any,
-        scale,
-        orderedProps[i] as any
-      );
+      const propValue = orderedProps[i];
+      const value = get(props, `theme.${scale}.${propValue}`, propValue);
       // If there's nothing don't add it to the style object
       if (value === undefined) return;
 
