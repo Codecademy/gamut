@@ -1,4 +1,4 @@
-import { entries, isArray, isObject, set, values } from 'lodash';
+import { assign, entries, isArray, isObject, set, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
 import {
   StyleTemplate,
@@ -51,13 +51,6 @@ export function responsiveProperty<
           // If no extra styles exist add this to the lowest breakpoint
           return set(responsive, ['xs', propName], propertyValue);
         case 'object': {
-          // Add to the config if it is an object of sizes / values
-          if (isObject(propertyValue)) {
-            return entries(propertyValue).forEach(([mediaSize, value]) => {
-              set(responsive, [mediaSize, propName], value);
-            });
-          }
-
           // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
             return propertyValue.forEach((value, i) => {
@@ -65,7 +58,13 @@ export function responsiveProperty<
               if (value === undefined) {
                 return;
               }
-              set(responsive, [media, propName], propertyValue);
+              set(responsive, [media, propName], value);
+            });
+          }
+          // Add to the config if it is an object of sizes / values
+          if (isObject(propertyValue)) {
+            return entries(propertyValue).forEach(([mediaSize, value]) => {
+              set(responsive, [mediaSize, propName], value);
             });
           }
         }
@@ -87,19 +86,11 @@ export function responsiveProperty<
 
         // Smallest sizes are always on by default
         if (breakpoint === 'xs') {
-          styles = {
-            ...styles,
-            ...templateStyles,
-          };
+          styles = assign(styles, templateStyles);
         } else {
           // For all sizes higher, create a new media object.
           const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
-          const existingStyles = (styles[breakpointKey] || {}) as CSSObject;
-
-          styles[breakpointKey] = {
-            ...existingStyles,
-            ...templateStyles,
-          };
+          styles[breakpointKey] = assign(styles[breakpointKey], templateStyles);
         }
       });
     });
