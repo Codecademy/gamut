@@ -7,7 +7,7 @@ import {
   AbstractTheme,
 } from '../../types/system';
 
-type PropertyConfig<T extends AbstractProps> = {
+export type ResponsivePropertyArguments<T extends AbstractProps> = {
   propNames: (keyof T)[];
   templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
 };
@@ -32,23 +32,26 @@ const MEDIA: (keyof typeof DEFAULT_MEDIA_QUERIES)[] = [
 export function responsiveProperty<
   Theme extends AbstractTheme,
   Props extends { theme?: Theme }
->({ propNames, templateFns }: PropertyConfig<Props>): Handler<Props> {
+>({
+  propNames,
+  templateFns,
+}: ResponsivePropertyArguments<Props>): Handler<Props> {
   return (props) => {
     const responsive = {} as Record<MediaSize | 'base', Props>;
 
     // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
       // only select the props we want
-      const propConfig = props[propName];
+      const propertyValue = props[propName];
 
       // Escape if this is undefined.
-      if (propConfig === undefined) {
+      if (propertyValue === undefined) {
         return;
       }
 
       // Add to the config if it is an array of prop values
-      if (isArray(propConfig)) {
-        propConfig.forEach((value, i) => {
+      if (isArray(propertyValue)) {
+        propertyValue.forEach((value, i) => {
           const media = MEDIA[i];
           if (value === undefined) {
             return;
@@ -58,22 +61,27 @@ export function responsiveProperty<
             [propName]: value,
           };
         });
-        // Add to the config if it is an object of sizes / values
-      } else if (isObject(propConfig)) {
-        Object.entries(propConfig).forEach(([key, value]) => {
-          const media = key as MediaSize;
+        return;
+      }
+
+      // Add to the config if it is an object of sizes / values
+      if (isObject(propertyValue)) {
+        entries(propertyValue).forEach(([mediaSize, value]) => {
+          const media = mediaSize as MediaSize;
           responsive[media] = {
             ...responsive[media],
             [propName]: value,
           };
         });
-        // Otherwise add it as the smallest media size.
-      } else {
-        responsive['xs'] = {
-          ...responsive['xs'],
-          [propName]: propConfig,
-        };
+
+        return;
       }
+
+      // If no extra styles exist add this to the lowest breakpoint
+      responsive['xs'] = {
+        ...responsive['xs'],
+        [propName]: propertyValue,
+      };
     });
 
     let styles: CSSObject = {};

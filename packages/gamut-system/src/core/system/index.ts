@@ -28,117 +28,120 @@ type SystemConfig<Theme extends AbstractTheme> = Record<
   GroupConfig<Theme>
 >;
 
-export const createSystem = <Theme extends AbstractTheme>() => {
-  return <Config extends SystemConfig<Theme>>(config: Config) => {
-    // Initialize all type derivations and declare return signature
-    // Intersection of Base and the supplied configuration objects.
-    type SystemConfig = BaseConfig & Config;
+export const system = <
+  Config extends SystemConfig<Theme>,
+  Theme extends AbstractTheme
+>(
+  config?: Config
+) => {
+  // Initialize all type derivations and declare return signature
+  // Intersection of Base and the supplied configuration objects.
+  type SystemConfig = BaseConfig & Config;
 
-    // Intermediate type to derive return types from representing all properties and handler
-    type BaseGroup = {
-      /** All possible property handlers based off the SystemConfig  */
-      [PropGroup in keyof SystemConfig]: {
-        handlers: {
-          [Property in keyof SystemConfig[PropGroup]]: Handler<
-            Partial<
-              Record<
-                Property | GetAltProps<SystemConfig[PropGroup][Property]>,
-                ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
-              >
-            >
-          >;
-        };
-        /** All possible prop type signatures  */
-        props: {
-          [Property in keyof SystemConfig[PropGroup]]: Partial<
+  // Intermediate type to derive return types from representing all properties and handler
+  type BaseGroup = {
+    /** All possible property handlers based off the SystemConfig  */
+    [PropGroup in keyof SystemConfig]: {
+      handlers: {
+        [Property in keyof SystemConfig[PropGroup]]: Handler<
+          Partial<
             Record<
               Property | GetAltProps<SystemConfig[PropGroup][Property]>,
               ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
             >
-          >;
-        };
+          >
+        >;
+      };
+      /** All possible prop type signatures  */
+      props: {
+        [Property in keyof SystemConfig[PropGroup]]: Partial<
+          Record<
+            Property | GetAltProps<SystemConfig[PropGroup][Property]>,
+            ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+          >
+        >;
       };
     };
+  };
 
-    // Return type for composed propGroup handlers
-    type PropGroups = {
+  // Return type for composed propGroup handlers
+  type PropGroups = {
+    [PropGroup in keyof BaseGroup]: Handler<
+      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
+    >;
+  };
+
+  // Intersection of all possible props
+  type AllProps = UnionToIntersection<
+    Parameters<PropGroups[keyof PropGroups]>[0]
+  >;
+
+  type System = {
+    // Map of all prop handlers
+    props: {
       [PropGroup in keyof BaseGroup]: Handler<
         BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
       >;
     };
-
-    // Intersection of all possible props
-    type AllProps = UnionToIntersection<
-      Parameters<PropGroups[keyof PropGroups]>[0]
-    >;
-
-    type System = {
-      // Map of all prop handlers
-      props: {
-        [PropGroup in keyof BaseGroup]: Handler<
-          BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
-        >;
-      };
-      // Map of all propGroup handlers
-      propGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
-      // createVariant with closure types
-      createVariant: <Variant extends Record<string, AllProps>>(
-        config: Variant
-      ) => (props: { variant: keyof Variant; theme?: Theme }) => CSSObject;
-    };
-
-    // Initializes the return object
-    const system = {
-      props: {},
-      propGroups: {},
-    } as any;
-
-    // Merge the the default prop configurations and user defined ones together.
-    const propGroups = merge(BaseProps, config) as any;
-
-    // Iterate over all the property groups
-    entries(propGroups).forEach(([groupKey, groupProps]) => {
-      // Create the style functions (handlers) for each of the specifieed properties.
-      const propHandlers = mapValues(groupProps as any, (prop) =>
-        createHandler(prop)
-      );
-
-      // Create a composed group handler for the group (handles all group properties at once)
-      const groupHandler = compose(...values(propHandlers));
-
-      // Add them to the default props group.
-      system.props = {
-        ...system.props,
-        ...propHandlers,
-      };
-
-      // Add the composite group handler to the correct propGroups key
-      system.propGroups[groupKey] = groupHandler;
-    });
-
-    // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
-    const createVariant = (config: any) => {
-      // Collect the props the resulting variant function will be responsible for templating.
-      const props = uniq(
-        values(config)
-          .reduce((carry, variant) => carry.concat(keys(variant)), [] as any)
-          .map((prop: string) => getDefaultPropKey(prop))
-      );
-
-      // Pick the correct handlers from the system (closure specific) and create a composite.
-      const handlers = pick(system.handlers, props as any);
-      const variantHandler = compose(...values(handlers));
-
-      // Return the variant function
-      return (props: { variant: any; theme: Theme }) => {
-        const variantProps = config[props.variant] || {};
-        return variantHandler({ ...variantProps, theme: props.theme });
-      };
-    };
-
-    // add the function to the returned object
-    system.createVariant = createVariant;
-
-    return system as System;
+    // Map of all propGroup handlers
+    propGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+    // createVariant with closure types
+    createVariant: <Variant extends Record<string, AllProps>>(
+      config: Variant
+    ) => (props: { variant: keyof Variant; theme?: Theme }) => CSSObject;
   };
+
+  // Initializes the return object
+  const system = {
+    props: {},
+    propGroups: {},
+  } as any;
+
+  // Merge the the default prop configurations and user defined ones together.
+  const propGroups = merge(BaseProps, config ?? {}) as any;
+
+  // Iterate over all the property groups
+  entries(propGroups).forEach(([groupKey, groupProps]) => {
+    // Create the style functions (handlers) for each of the specifieed properties.
+    const propHandlers = mapValues(groupProps as any, (prop) =>
+      createHandler(prop)
+    );
+
+    // Create a composed group handler for the group (handles all group properties at once)
+    const groupHandler = compose(...values(propHandlers));
+
+    // Add them to the default props group.
+    system.props = {
+      ...system.props,
+      ...propHandlers,
+    };
+
+    // Add the composite group handler to the correct propGroups key
+    system.propGroups[groupKey] = groupHandler;
+  });
+
+  // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
+  const createVariant = (config: any) => {
+    // Collect the props the resulting variant function will be responsible for templating.
+    const props = uniq(
+      values(config)
+        .reduce((carry, variant) => carry.concat(keys(variant)), [] as any)
+        .map((prop: string) => getDefaultPropKey(prop))
+    );
+
+    // Pick the correct handlers from the system (closure specific) and create a composite.
+    const handlers = pick(system.handlers, props as any);
+    const variantHandler = compose(...values(handlers));
+
+    // Return the variant function
+    return (props: { variant: any; theme: Theme }) => {
+      const variantProps = config[props.variant] || {};
+      return variantHandler({ ...variantProps, theme: props.theme });
+    };
+  };
+
+  // add the function to the returned object
+  system.createVariant = createVariant;
+
+  return system as System;
 };

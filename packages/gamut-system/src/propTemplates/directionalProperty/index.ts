@@ -63,7 +63,7 @@ export function directionalProperty<
       [`${propName}Bottom`]: b = y,
     } = props as AbstractProps;
     const propKey = propName as keyof DirectionalProps;
-    // Order props in their correct short hand order for consistency.
+    // Order props in their correct short hand order for consistency between components.
     const orderedProps = [t, r, b, l];
 
     const styles = {} as CSSObject;

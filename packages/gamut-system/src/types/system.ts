@@ -84,8 +84,8 @@ export type AbstractPropertyConfig = {
   scale?: AbstractScales;
   computeValue?: TransformValue;
 };
-/** Theme Aware Configurations */
 
+/** Theme Aware Configurations */
 export type PropertyConfig<
   Theme extends AbstractTheme
 > = AbstractPropertyConfig & {
