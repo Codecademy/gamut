@@ -36,7 +36,9 @@ export const system = <
 ) => {
   // Initialize all type derivations and declare return signature
   // Intersection of Base and the supplied configuration objects.
-  type SystemConfig = BaseConfig & Config;
+  type SystemConfig = typeof config extends Config
+    ? BaseConfig & Config
+    : BaseConfig;
 
   // Intermediate type to derive return types from representing all properties and handler
   type BaseGroup = {
@@ -78,23 +80,30 @@ export const system = <
 
   type System = {
     // Map of all prop handlers
-    props: {
+    properties: {
       [PropGroup in keyof BaseGroup]: Handler<
         BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
       >;
     };
     // Map of all propGroup handlers
-    propGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+    propertyGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
     // createVariant with closure types
-    createVariant: <Variant extends Record<string, AllProps>>(
+    variant: <
+      Variant extends { key?: string; variants: Record<string, AllProps> },
+      PropKey extends Variant['key'] extends string ? Variant['key'] : 'variant'
+    >(
       config: Variant
-    ) => (props: { variant: keyof Variant; theme?: Theme }) => CSSObject;
+    ) => (
+      props: Record<PropKey, keyof Variant['variants']> & {
+        theme?: Theme;
+      }
+    ) => CSSObject;
   };
 
   // Initializes the return object
   const system = {
-    props: {},
-    propGroups: {},
+    properties: {},
+    propertyGroups: {},
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
@@ -111,13 +120,13 @@ export const system = <
     const groupHandler = compose(...values(propHandlers));
 
     // Add them to the default props group.
-    system.props = {
-      ...system.props,
+    system.properties = {
+      ...system.properties,
       ...propHandlers,
     };
 
     // Add the composite group handler to the correct propGroups key
-    system.propGroups[groupKey] = groupHandler;
+    system.propertyGroups[groupKey] = groupHandler;
   });
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
@@ -141,7 +150,7 @@ export const system = <
   };
 
   // add the function to the returned object
-  system.createVariant = createVariant;
+  system.variant = createVariant;
 
   return system as System;
 };
