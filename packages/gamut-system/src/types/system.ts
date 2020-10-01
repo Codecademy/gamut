@@ -65,8 +65,8 @@ export type TemplateMap<Props extends AbstractProps> = Partial<
 >;
 
 export type Handler<Props extends AbstractProps> = {
-  propNames?: (keyof Props)[];
-  templateFns?: TemplateMap<Props>;
+  propNames: (keyof Props)[];
+  templateFns: TemplateMap<Props>;
 } & ((props: Props) => CSSObject);
 
 export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
