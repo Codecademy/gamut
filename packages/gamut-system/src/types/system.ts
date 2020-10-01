@@ -101,18 +101,13 @@ export type GetAltProps<Config extends AbstractPropertyConfig> = Extract<
   { altProps: string }
 >['altProps'];
 
-type SafeCSSType<PropName extends PropAlias> = Extract<
-  Readonly<Props[PropName]['defaultValue']>,
-  Readonly<string>
->;
-
 /** Standard CSS Property Types */
 export type DefaultPropScale<
   Config extends AbstractPropertyConfig
 > = Config['propName'] extends PropAlias[]
-  ? SafeCSSType<Config['propName'][number]>
+  ? Props[Config['propName'][number]]['defaultValue']
   : Config['propName'] extends PropAlias
-  ? SafeCSSType<Config['propName']>
+  ? Props[Config['propName']]['defaultValue']
   : never;
 
 export type ThematicScaleValue<
