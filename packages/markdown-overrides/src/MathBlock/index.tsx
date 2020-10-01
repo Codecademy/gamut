@@ -28,9 +28,7 @@ export const MathBlock: React.FC<MathBlockProps> = ({
   wrap = true,
 }) => {
   const classes = cx(
-    {
-      [styles.wrap]: wrap,
-    },
+    wrap && styles.wrap,
     styles.MathBlock,
     className
   );
