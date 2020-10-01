@@ -27,11 +27,7 @@ export const MathBlock: React.FC<MathBlockProps> = ({
   className,
   wrap = true,
 }) => {
-  const classes = cx(
-    wrap && styles.wrap,
-    styles.MathBlock,
-    className
-  );
+  const classes = cx(wrap && styles.wrap, styles.MathBlock, className);
 
   const html = getKatex(children);
 
