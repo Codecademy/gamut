@@ -9,8 +9,10 @@ jest.mock('katex');
 describe('MathBlock', () => {
   describe('with valid LaTex', () => {
     it('renders itself and children', () => {
-      (katex as any).renderToString.mockReturnValue('<div>1234</div>');
       const latexText = '1234';
+
+      (katex as any).renderToString.mockReturnValue(`<div>${latexText}</div>`);
+
       const view = render(<MathBlock>{latexText}</MathBlock>);
 
       view.getByText(latexText);
