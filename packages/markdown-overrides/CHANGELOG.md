@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 0.3.0 (2020-10-01)
-
-* feat(markdown-overrides): Add MathBlock component (#977) ([4b46117](https://github.com/Codecademy/client-modules/commit/4b46117)), closes [#977](https://github.com/Codecademy/client-modules/issues/977)
-* chore: update changelogs ([8678ae3](https://github.com/Codecademy/client-modules/commit/8678ae3))
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.2.0...@codecademy/markdown-overrides@0.3.0) (2020-10-01)
 
 
+### ✨ Features
 
-
+* **markdown-overrides:** Add MathBlock component ([#977](https://github.com/Codecademy/client-modules/issues/977)) ([4b46117](https://github.com/Codecademy/client-modules/commit/4b46117f5806ce5e705a76c7d09e42a8451658f8))
 
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.1.0...@codecademy/markdown-overrides@0.2.0) (2020-09-28)
 
@@ -25,3 +18,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### ✨ Features
 
 * **markdown-overrides:** Initial markdown-overrides package setup ([#967](https://github.com/Codecademy/client-modules/issues/967)) ([17b92b9](https://github.com/Codecademy/client-modules/commit/17b92b9225b195837293b1259c397d07f36b816b))
+
