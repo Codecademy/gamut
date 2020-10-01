@@ -20,10 +20,6 @@ describe(system, () => {
     expect(properties).toBeDefined();
     expect(propertyGroups).toBeDefined();
     expect(variant).toBeDefined();
-    variant({
-      propKey: 'hello',
-      variants: { primary: { width: 'in' } },
-    });
   });
 
   it('initializes a system with default properties', () => {
