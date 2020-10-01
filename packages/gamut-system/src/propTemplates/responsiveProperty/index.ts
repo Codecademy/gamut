@@ -3,7 +3,6 @@ import { CSSObject } from '@emotion/core';
 import {
   StyleTemplate,
   AbstractProps,
-  Handler,
   AbstractTheme,
 } from '../../types/system';
 
@@ -35,7 +34,7 @@ export function responsiveProperty<
 >({
   propNames,
   templateFns,
-}: ResponsivePropertyArguments<Props>): Handler<Props> {
+}: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
   return (props) => {
     const responsive = {} as Record<MediaSize | 'base', Props>;
 

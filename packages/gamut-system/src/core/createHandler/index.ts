@@ -55,7 +55,7 @@ export const createHandler = <
   const handler = responsiveProperty<Theme, Props>({
     propNames,
     templateFns,
-  });
+  }) as Handler<Props>;
 
   // Make the handlers propNames and functions accessible on the function reference (for compose)
   handler.propNames = propNames;

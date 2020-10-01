@@ -33,10 +33,9 @@ export const compose = <
   });
 
   // Create a new responsive property responsible for templating all the single handlers
-  const composedHandler: Handler<Props> = responsiveProperty<
-    AbstractTheme,
-    Props
-  >(config);
+  const composedHandler = responsiveProperty<AbstractTheme, Props>(
+    config
+  ) as Handler<Props>;
 
   // Make the handlers propNames and functions accessible on the function reference
   composedHandler.propNames = config.propNames;
