@@ -2,7 +2,6 @@ import React from 'react';
 import 'katex/dist/katex.css';
 import katex from 'katex';
 import cx from 'classnames';
-import { isString } from 'lodash';
 import styles from './styles.module.scss';
 
 export type MathBlockProps = {
@@ -28,10 +27,6 @@ export const MathBlock: React.FC<MathBlockProps> = ({
   className,
   wrap = true,
 }) => {
-  if (!isString(children)) {
-    throw new Error(`MathBlock needs a text node child; got ${children}`);
-  }
-
   const classes = cx(
     {
       [styles.wrap]: wrap,
