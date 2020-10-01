@@ -10,6 +10,7 @@ describe(standardProperty, () => {
     const templatedStyles = propFunction({ display: 'block' });
     expect(templatedStyles).toEqual({ display: 'block' });
   });
+
   it('accepts a custom transform function', () => {
     const doubleMargin = standardProperty({
       propName: 'margin',
@@ -19,6 +20,7 @@ describe(standardProperty, () => {
     const templatedStyles = doubleMargin({ margin: 4 });
     expect(templatedStyles).toEqual({ margin: '8px' });
   });
+
   it('does not return a rule if not given a a value', () => {
     const propFunction = standardProperty({
       propName: 'display',
@@ -31,6 +33,7 @@ describe(standardProperty, () => {
     const emptyPropsStyles = propFunction({});
     expect(emptyPropsStyles).toBe(undefined);
   });
+
   it('returns a rule if prop value is falsy', () => {
     const propFunction = standardProperty({
       propName: 'margin',
