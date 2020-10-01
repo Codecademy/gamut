@@ -12,7 +12,8 @@
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/gamut-system",
   "peerDependencies": {
     "@emotion/core": ">=10.0.0",
-    "csstype": "3.0.3"
+    "lodash": "^>=4.0,0",
+    "csstype": ">=3.0.0"
   },
   "devDependencies": {
     "@emotion/core": "10.0.28",
