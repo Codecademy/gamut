@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import { MathBlock } from '../';
 
-jest.mock('katex', ()=> ({
+jest.mock('katex', () => ({
   renderToString: () => '<div>1234</div>',
 }));
 
@@ -15,5 +15,3 @@ describe('MathBlock', () => {
     view.getByText(latexText);
   });
 });
-
-

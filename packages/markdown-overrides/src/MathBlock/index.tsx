@@ -21,7 +21,7 @@ const getKatex = (children: string) => {
   } catch (error) {
     return error.message;
   }
-}
+};
 
 export const MathBlock: React.FC<MathBlockProps> = ({
   children,
@@ -48,4 +48,4 @@ export const MathBlock: React.FC<MathBlockProps> = ({
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </span>
   );
-}
+};
