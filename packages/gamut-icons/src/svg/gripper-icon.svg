@@ -1,16 +1,16 @@
-<svg viewBox="0 0 7 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="6" cy="31" r="1" fill="currentColor"/>
-    <circle cx="1" cy="31" r="1" fill="currentColor"/>
-    <circle cx="6" cy="26" r="1" fill="currentColor"/>
-    <circle cx="1" cy="26" r="1" fill="currentColor"/>
-    <circle cx="6" cy="21" r="1" fill="currentColor"/>
-    <circle cx="1" cy="21" r="1" fill="currentColor"/>
-    <circle cx="6" cy="16" r="1" fill="currentColor"/>
-    <circle cx="1" cy="16" r="1" fill="currentColor"/>
-    <circle cx="6" cy="11" r="1" fill="currentColor"/>
-    <circle cx="1" cy="11" r="1" fill="currentColor"/>
-    <circle cx="6" cy="6" r="1" fill="currentColor"/>
-    <circle cx="1" cy="6" r="1" fill="currentColor"/>
-    <circle cx="6" cy="1" r="1" fill="currentColor"/>
-    <circle cx="1" cy="1" r="1" fill="currentColor"/>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="6" cy="31" r="1" fill="currentColor" />
+  <circle cx="1" cy="31" r="1" fill="currentColor" />
+  <circle cx="6" cy="26" r="1" fill="currentColor" />
+  <circle cx="1" cy="26" r="1" fill="currentColor" />
+  <circle cx="6" cy="21" r="1" fill="currentColor" />
+  <circle cx="1" cy="21" r="1" fill="currentColor" />
+  <circle cx="6" cy="16" r="1" fill="currentColor" />
+  <circle cx="1" cy="16" r="1" fill="currentColor" />
+  <circle cx="6" cy="11" r="1" fill="currentColor" />
+  <circle cx="1" cy="11" r="1" fill="currentColor" />
+  <circle cx="6" cy="6" r="1" fill="currentColor" />
+  <circle cx="1" cy="6" r="1" fill="currentColor" />
+  <circle cx="6" cy="1" r="1" fill="currentColor" />
+  <circle cx="1" cy="1" r="1" fill="currentColor" />
 </svg>
