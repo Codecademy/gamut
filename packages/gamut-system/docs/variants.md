@@ -1,6 +1,6 @@
-# Variants
+## Variants
 
-Using the variant API to group and share specific configurations.
+Using the variant API to a group and share specific configurations.
 
 ```tsx
 import styled from '@emotion/styled';

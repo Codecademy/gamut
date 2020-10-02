@@ -70,7 +70,6 @@ export const Box = styled<BoxProps>`
 ## Docs
 
 - [Getting Started](docs/getting-started.md)
-- [System](docs/system.md)
 - [Properties](docs/properties.md)
 - [Responsive Properties](docs/responsive.md)
 - [Variants](docs/variants.md)
