@@ -1,3 +1,10 @@
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.2.0...@codecademy/markdown-overrides@0.3.0) (2020-10-01)
+
+
+### ✨ Features
+
+* **markdown-overrides:** Add MathBlock component ([#977](https://github.com/Codecademy/client-modules/issues/977)) ([4b46117](https://github.com/Codecademy/client-modules/commit/4b46117f5806ce5e705a76c7d09e42a8451658f8))
+
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.1.0...@codecademy/markdown-overrides@0.2.0) (2020-09-28)
 
 
