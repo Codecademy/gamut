@@ -1,5 +1,7 @@
 # Properties
 
+There are 10 different property groups that we support by default each with a number of individual properties. While each of these properties is completely customizable, we currently do not support any other properties at this time.
+
 - [Properties](#properties)
   - [Spacing](#spacing)
   - [Typography](#typography)
@@ -45,19 +47,19 @@
 
 ## Layout
 
-| Prop         | CSS Property   | defaultTransform |
-| ------------ | -------------- | ---------------- |
-| display      | display        |                  |
-| overflow     | overflow       |                  |
-| overflowY    | overflow-y     |                  |
-| overflowX    | overflow-x     |                  |
-| width        | width          | `parseSize`      |
-| minWidth     | min-width      | `parseSize`      |
-| maxWidth     | max-width      | `parseSize`      |
-| height       | height         | `parseSize`      |
-| minHeight    | min-height     | `parseSize`      |
-| maxHeight    | max-height     | `parseSize`      |
-| verticalAign | vertical-align |                  |
+| Prop          | CSS Property   | defaultTransform |
+| ------------- | -------------- | ---------------- |
+| display       | display        |                  |
+| overflow      | overflow       |                  |
+| overflowY     | overflow-y     |                  |
+| overflowX     | overflow-x     |                  |
+| width         | width          | `parseSize`      |
+| minWidth      | min-width      | `parseSize`      |
+| maxWidth      | max-width      | `parseSize`      |
+| height        | height         | `parseSize`      |
+| minHeight     | min-height     | `parseSize`      |
+| maxHeight     | max-height     | `parseSize`      |
+| verticalAlign | vertical-align |                  |
 
 ## Colors
 

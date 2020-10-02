@@ -69,27 +69,30 @@ describe(system, () => {
     });
   });
 
-  xdescribe('base system', () => {
+  describe('base system', () => {
     const { properties, propertyGroups } = system();
 
-    describe('properties', () => {
-      allPossibilities.props.forEach((prop) => {
-        it(`creates a style function for ${prop}`, () => {
-          const propFunction = properties[
-            prop as keyof typeof properties
-          ] as any;
-          expect(propFunction({})).toEqual({});
-        });
-      });
-    });
+    Object.entries(BaseProps).forEach(([group, groupProps]) => {
+      describe(group, () => {
+        const groupPropConfigs = Object.entries(groupProps);
 
-    describe('propertyGroups', () => {
-      allPossibilities.propGroups.forEach((prop) => {
-        it(`creates a function for ${prop}`, () => {
-          const propFunction = propertyGroups[
-            prop as keyof typeof propertyGroups
+        it(`${group} composite renders without breaking`, () => {
+          const styleFunction = propertyGroups[
+            group as keyof typeof propertyGroups
           ] as any;
-          expect(propFunction({})).toEqual({});
+
+          expect(
+            styleFunction({ [groupPropConfigs[0][1].propName]: '' })
+          ).toBeDefined();
+        });
+
+        groupPropConfigs.forEach(([property, config]) => {
+          it(`${property} renders without breaking`, () => {
+            const styleFunction =
+              properties[property as keyof typeof properties];
+
+            expect(styleFunction({ [config.propName]: '' })).toBeDefined();
+          });
         });
       });
     });

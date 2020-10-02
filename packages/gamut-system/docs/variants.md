@@ -1,6 +1,8 @@
 # Variants
 
-Using the variant API to a group and share specific configurations.
+System also returns a function called `variant` that is aware of all possible properties.
+This can be used to alias or store specific combinations of style props as a variation, and make a
+components API significantly simpler.
 
 ```tsx
 import styled from '@emotion/styled';
