@@ -1,4 +1,4 @@
-## Responsive Properties\_
+# Responsive Properties
 
 By default, all `system` generated style functions accept responsive configurations. Responsive configurations are two basic shape a map of breakpoint aliases / values or an array of values:
 

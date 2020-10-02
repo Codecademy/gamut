@@ -1,4 +1,4 @@
-## Composition
+# Composition
 
 There may be instances where you would like to combine properties for ease of sharing or performance to batch their computations.
 To make this easy we've added a compose function to combine returned style functions into a single one with the intersection of all of their props.

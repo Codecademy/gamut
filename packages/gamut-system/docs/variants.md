@@ -1,4 +1,4 @@
-## Variants
+# Variants
 
 Using the variant API to a group and share specific configurations.
 
