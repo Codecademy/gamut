@@ -1,6 +1,9 @@
+import { parseSize } from '../transforms';
+
 export const flex = {
   flexBasis: {
     propName: 'flexBasis',
+    computeValue: parseSize,
   },
   flexDirection: {
     propName: 'flexDirection',

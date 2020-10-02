@@ -1,5 +1,19 @@
 # Properties
 
+Properties](#properties)
+
+- [Properties](#properties)
+  - [Spacing](#spacing)
+  - [Typography](#typography)
+  - [Layout](#layout)
+  - [Colors](#colors)
+  - [Background](#background)
+  - [Borders](#borders)
+  - [Position](#position)
+  - [Shadow](#shadow)
+  - [Flex](#flex)
+  - [Grid](#grid)
+
 ## Spacing
 
 | Prop          | CSS Property                | defaultTransform |
@@ -96,6 +110,37 @@
 | boxShadow  | box-shadow   |                  |
 | textShadow | text-shadow  |                  |
 
+## Flex
+
+| Prop           | CSS Property    | defaultTransform |
+| -------------- | --------------- | ---------------- |
+| flexBasis      | flex-basis      | `parseSize`      |
+| flexDirection  | flex-direction  |                  |
+| flexWrap       | flex-wrap       |                  |
+| flexShrink     | flex-shrink     |                  |
+| flexGrow       | flex-grow       |                  |
+| order          | order           |                  |
+| justifySelf    | justify-self    |                  |
+| justifyContent | justify-content |                  |
+| justifyItems   | justify-items   |                  |
+| alignSelf      | align-self      |                  |
+| alignItems     | align-items     |                  |
+| alignContent   | align-content   |                  |
+
 ## Grid
 
-## Flex
+| Prop                | CSS Property          | defaultTransform |
+| ------------------- | --------------------- | ---------------- |
+| gridAutoColumns     | grid-auto-columns     |                  |
+| gridAutoRows        | grid-auto-rows        |                  |
+| gridTemplateColumns | grid-template-columns |                  |
+| gridTemplateRows    | grid-template-rows    |                  |
+| gridAutoFlow        | grid-auto-flow        |                  |
+| rowGap              | grid-row-gap          |                  |
+| columnGap           | grid-column-gap       |                  |
+| gridColumn          | grid-column           |                  |
+| gridRow             | grid-row              |                  |
+| gridColumnStart     | grid-column-start     |                  |
+| gridRowStart        | grid-row-start        |                  |
+| gridColumnEnd       | grid-column-end       |                  |
+| gridRowEnd          | grid-row-end          |                  |
