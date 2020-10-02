@@ -19,15 +19,6 @@ export const DEFAULT_MEDIA_QUERIES = {
   xl: '@media (min-width: 1248px)',
 };
 
-type MediaSize = keyof typeof DEFAULT_MEDIA_QUERIES;
-const MEDIA: (keyof typeof DEFAULT_MEDIA_QUERIES)[] = [
-  'xs',
-  'sm',
-  'md',
-  'lg',
-  'xl',
-];
-
 export function responsiveProperty<
   Theme extends AbstractTheme,
   Props extends { theme?: Theme }
@@ -36,7 +27,14 @@ export function responsiveProperty<
   templateFns,
 }: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
   return (props) => {
-    const responsive = {} as Record<MediaSize | 'base', Props>;
+    const { breakpoints = DEFAULT_MEDIA_QUERIES } = props?.theme || {};
+
+    const breakpointOrder = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+    const responsive = {} as Record<
+      keyof typeof DEFAULT_MEDIA_QUERIES | 'base',
+      Props
+    >;
 
     // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
@@ -47,13 +45,17 @@ export function responsiveProperty<
         case 'string':
         case 'number':
           // If no extra styles exist add this to the lowest breakpoint
-          return set(responsive, [MEDIA[0], propName], propertyValue);
+          return set(responsive, ['base', propName], propertyValue);
         case 'object': {
           // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
             return propertyValue.forEach((value, mediaIndex) => {
               if (value !== undefined) {
-                return set(responsive, [MEDIA[mediaIndex], propName], value);
+                return set(
+                  responsive,
+                  [breakpointOrder[mediaIndex], propName],
+                  value
+                );
               }
             });
           }
@@ -81,11 +83,12 @@ export function responsiveProperty<
           templatFn?.({ ...bpProps, theme: props.theme }) ?? {};
 
         // Smallest sizes are always on by default
-        if (breakpoint === MEDIA[0]) {
+        if (breakpoint === breakpointOrder[0]) {
           styles = assign(styles, templateStyles);
         } else {
           // For all sizes higher, create a new media object.
-          const breakpointKey = DEFAULT_MEDIA_QUERIES[breakpoint as MediaSize];
+          const breakpointKey =
+            breakpoints[breakpoint as keyof typeof breakpoints];
           styles[breakpointKey] = assign(styles[breakpointKey], templateStyles);
         }
       });

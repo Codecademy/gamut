@@ -51,11 +51,11 @@ describe(responsiveProperty, () => {
 
   it('Creates the correct breapoint with object syntax', () => {
     const outputStyles = propFunction({
-      display: { sm: 'block' },
+      display: { xs: 'block' },
     });
 
     expect(outputStyles).toEqual({
-      [DEFAULT_MEDIA_QUERIES['sm']]: {
+      [DEFAULT_MEDIA_QUERIES['xs']]: {
         display: 'block',
       },
     });
@@ -67,7 +67,7 @@ describe(responsiveProperty, () => {
     });
 
     expect(outputStyles).toEqual({
-      [DEFAULT_MEDIA_QUERIES['sm']]: {
+      [DEFAULT_MEDIA_QUERIES['xs']]: {
         display: 'block',
       },
     });
@@ -77,7 +77,7 @@ describe(responsiveProperty, () => {
     const outputStyles = propFunction({
       display: 'block',
       width: ['5px'],
-      height: { xs: '5px' },
+      height: { base: '5px' },
     });
 
     expect(outputStyles).toEqual({
@@ -90,7 +90,7 @@ describe(responsiveProperty, () => {
   it('merges higher breakpoints with different props', () => {
     const outputStyles = propFunction({
       display: 'block',
-      width: [, , '5px'],
+      width: [, , , '5px'],
       height: { md: '5px' },
     });
 

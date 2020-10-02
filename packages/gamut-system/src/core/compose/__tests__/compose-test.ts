@@ -30,7 +30,7 @@ describe(compose, () => {
     expect(
       displayAndTextAlign({ textAlign: [, 'center'], display: { lg: 'block' } })
     ).toEqual({
-      [DEFAULT_MEDIA_QUERIES['sm']]: {
+      [DEFAULT_MEDIA_QUERIES['xs']]: {
         textAlign: 'center',
       },
       [DEFAULT_MEDIA_QUERIES['lg']]: {

@@ -2,9 +2,17 @@ import { Props } from './properties';
 import { CSSObject } from '@emotion/core';
 
 /** System Configuration */
-export type MediaQueryArray<Value> = [Value?, Value?, Value?, Value?, Value?];
+export type MediaQueryArray<Value> = [
+  Value?,
+  Value?,
+  Value?,
+  Value?,
+  Value?,
+  Value?
+];
 
 export type MediaQueryMap<Value> = {
+  base?: Value;
   xs?: Value;
   sm?: Value;
   md?: Value;
@@ -44,9 +52,17 @@ export type SafeMapKey<MaybeMap> = MaybeMap extends Readonly<
 /** Abstract Configurations  */
 export type PropAlias = Readonly<keyof Props>;
 
-export type AbstractTheme = Readonly<
-  Partial<Record<string, ScaleArray | ScaleMap>>
->;
+type BaseTheme = Readonly<Partial<Record<string, ScaleArray | ScaleMap>>>;
+
+export type AbstractTheme = BaseTheme & {
+  breakpoints?: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+};
 
 export type ScaleArray = Readonly<unknown[]>;
 

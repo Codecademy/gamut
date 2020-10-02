@@ -90,7 +90,7 @@ describe(createHandler, () => {
     });
 
     expect(styleFunction({ height: [, 'auto'] })).toEqual({
-      [DEFAULT_MEDIA_QUERIES['sm']]: {
+      [DEFAULT_MEDIA_QUERIES['xs']]: {
         height: 'auto',
       },
     });

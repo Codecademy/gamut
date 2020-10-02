@@ -5,6 +5,7 @@ import {
   UnionToIntersection,
   ThematicScaleValue,
   GetAltProps,
+  ResponsiveProp,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
@@ -49,7 +50,9 @@ export const system = <
           Partial<
             Record<
               Property | GetAltProps<SystemConfig[PropGroup][Property]>,
-              ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+              ResponsiveProp<
+                ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+              >
             >
           >
         >;
@@ -59,7 +62,9 @@ export const system = <
         [Property in keyof SystemConfig[PropGroup]]: Partial<
           Record<
             Property | GetAltProps<SystemConfig[PropGroup][Property]>,
-            ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+            ResponsiveProp<
+              ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+            >
           >
         >;
       };
