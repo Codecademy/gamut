@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 17.6.0 (2020-10-02)
-
-* feat: Added HiddenText component (#949) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486)), closes [#949](https://github.com/Codecademy/client-modules/issues/949)
-* chore: update changelogs ([d7f85d1](https://github.com/Codecademy/client-modules/commit/d7f85d1))
+## [17.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.5.0...@codecademy/styleguide@17.6.0) (2020-10-02)
 
 
+### ✨ Features
 
-
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
 
 ## [17.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.4.0...@codecademy/styleguide@17.5.0) (2020-09-29)
 
@@ -1116,3 +1109,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
