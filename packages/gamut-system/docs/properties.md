@@ -1,7 +1,5 @@
 # Properties
 
-Properties](#properties)
-
 - [Properties](#properties)
   - [Spacing](#spacing)
   - [Typography](#typography)
