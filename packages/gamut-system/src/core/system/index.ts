@@ -80,13 +80,13 @@ export const system = <
 
   type System = {
     // Map of all prop handlers
-    properties: {
+    propertyGroups: {
       [PropGroup in keyof BaseGroup]: Handler<
         BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
       >;
     };
     // Map of all propGroup handlers
-    propertyGroups: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+    properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
     // createVariant with closure types
     variant: <
       Variant extends { key?: string; variants: Record<string, AllProps> },
@@ -101,7 +101,7 @@ export const system = <
   };
 
   // Initializes the return object
-  const system = {
+  const systemShape = {
     properties: {},
     propertyGroups: {},
   } as any;
@@ -120,13 +120,13 @@ export const system = <
     const groupHandler = compose(...values(propHandlers));
 
     // Add them to the default props group.
-    system.properties = {
-      ...system.properties,
+    systemShape.properties = {
+      ...systemShape.properties,
       ...propHandlers,
     };
 
     // Add the composite group handler to the correct propGroups key
-    system.propertyGroups[groupKey] = groupHandler;
+    systemShape.propertyGroups[groupKey] = groupHandler;
   });
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
@@ -139,7 +139,7 @@ export const system = <
     );
 
     // Pick the correct handlers from the system (closure specific) and create a composite.
-    const handlers = pick(system.properties, props as any);
+    const handlers = pick(systemShape.properties, props as any);
     const variantHandler = compose(...values(handlers));
 
     // Return the variant function
@@ -150,7 +150,7 @@ export const system = <
   };
 
   // add the function to the returned object
-  system.variant = createVariant;
+  systemShape.variant = createVariant;
 
-  return system as System;
+  return systemShape as System;
 };
