@@ -130,21 +130,21 @@ export const system = <
   });
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
-  const createVariant = (config: any) => {
+  const createVariant = ({ key = 'variant', variants }: any) => {
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
-      values(config)
+      values(variants)
         .reduce((carry, variant) => carry.concat(keys(variant)), [] as any)
         .map((prop: string) => getDefaultPropKey(prop))
     );
 
     // Pick the correct handlers from the system (closure specific) and create a composite.
-    const handlers = pick(system.handlers, props as any);
+    const handlers = pick(system.properties, props as any);
     const variantHandler = compose(...values(handlers));
 
     // Return the variant function
-    return (props: { variant: any; theme: Theme }) => {
-      const variantProps = config[props.variant] || {};
+    return (props: any) => {
+      const variantProps = variants[props[key]] || {};
       return variantHandler({ ...variantProps, theme: props.theme });
     };
   };

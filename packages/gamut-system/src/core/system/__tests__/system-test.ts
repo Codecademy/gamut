@@ -45,6 +45,30 @@ describe(system, () => {
       );
     });
   });
+
+  describe('variant', () => {
+    const { variant } = system();
+
+    it('returns a style function with a propKey of variant by default', () => {
+      const myVariant = variant({
+        variants: { primary: { color: 'blue' }, secondary: { color: 'green' } },
+      });
+
+      expect(myVariant({ variant: 'primary' })).toEqual({ color: 'blue' });
+    });
+
+    it('can configure a different propKey', () => {
+      const myVariant = variant({
+        key: 'colorVariant',
+        variants: { primary: { color: 'blue' }, secondary: { color: 'green' } },
+      });
+
+      expect(myVariant({ colorVariant: 'secondary' })).toEqual({
+        color: 'green',
+      });
+    });
+  });
+
   xdescribe('base system', () => {
     const { properties, propertyGroups } = system();
 
@@ -71,7 +95,5 @@ describe(system, () => {
     });
   });
 
-  describe('customized system props', () => {});
-
-  describe('variant', () => {});
+  xdescribe('customized system props', () => {});
 });
