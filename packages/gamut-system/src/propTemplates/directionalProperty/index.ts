@@ -1,9 +1,11 @@
 import { CSSObject } from '@emotion/core';
-import { get } from 'lodash';
+import { get, isObject } from 'lodash';
 import {
   AbstractProps,
   AbstractPropertyConfig,
   StyleTemplate,
+  ScaleMap,
+  ScaleArray,
 } from '../../types/system';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
@@ -70,15 +72,25 @@ export function directionalProperty<
 
     // Iterate over all possible directions
     DIRECTIONS.forEach((direction, i) => {
-      const propValue = orderedProps[i];
-      const value = get(props, `theme.${scale}.${propValue}`, propValue);
+      let propValue = orderedProps[i];
       // If there's nothing don't add it to the style object
-      if (value === undefined) return;
+      if (propValue === undefined) {
+        return;
+      }
+
+      let scaleShape = scale;
+      if (typeof scaleShape === 'string') {
+        scaleShape = get(props, `theme.${scale}`, {}) as ScaleMap | ScaleArray;
+      }
+
+      if (isObject(scaleShape)) {
+        propValue = get(scaleShape, `${propValue}`, propValue);
+      }
 
       // Look up valid directional prop name based on direction.
       const prop = DIRECTIONAL_PROPS[propKey][direction];
       // Do final calculations
-      styles[prop] = computeValue(value) as string;
+      styles[prop] = computeValue(propValue) as string;
     });
     return styles;
   };

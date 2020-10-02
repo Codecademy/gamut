@@ -1,8 +1,10 @@
-import { get } from 'lodash';
+import { get, isObject } from 'lodash';
 import {
   AbstractProps,
   AbstractPropertyConfig,
   StyleTemplate,
+  ScaleMap,
+  ScaleArray,
 } from '../../types/system';
 
 export const standardProperty = <
@@ -15,11 +17,22 @@ export const standardProperty = <
   computeValue,
 }: Config): StyleTemplate<Props> => {
   return (props: Props) => {
-    const propValue = props[propName];
-    const value = get(props, `theme.${scale}.${propValue}`, propValue);
-    if (value === undefined) return;
+    let propValue = props[propName];
+    if (propValue === undefined) {
+      return;
+    }
+
+    let scaleShape = scale;
+    if (typeof scaleShape === 'string') {
+      scaleShape = get(props, `theme.${scale}`, {}) as ScaleMap | ScaleArray;
+    }
+
+    if (isObject(scaleShape)) {
+      propValue = get(scaleShape, `${propValue}`, propValue);
+    }
+
     return {
-      [propName]: computeValue(value),
+      [propName]: computeValue(propValue),
     };
   };
 };
