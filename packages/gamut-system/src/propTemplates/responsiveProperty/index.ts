@@ -31,10 +31,7 @@ export function responsiveProperty<
 
     const breakpointOrder = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
 
-    const responsive = {} as Record<
-      keyof typeof DEFAULT_MEDIA_QUERIES | 'base',
-      Props
-    >;
+    const responsive = {} as Record<typeof breakpointOrder[number], Props>;
 
     // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
@@ -77,7 +74,7 @@ export function responsiveProperty<
     entries(responsive).forEach(([breakpoint, bpProps]) => {
       const templates = values(templateFns);
 
-      // TODO: Only call the templateFns we have props for.
+      // TODO: Only call the templateFns we have props for.1
       templates.forEach((templatFn) => {
         const templateStyles =
           templatFn?.({ ...bpProps, theme: props.theme }) ?? {};
