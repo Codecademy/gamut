@@ -15,10 +15,6 @@
     "lodash": "^>=4.0,0",
     "csstype": ">=3.0.0"
   },
-  "devDependencies": {
-    "@emotion/core": "10.0.28",
-    "csstype": "3.0.3"
-  },
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",

@@ -88,7 +88,5 @@ const MyTheme = {
 
 export const { properties, propertyGroups } = system<{}, typeof MyTheme>();
 
-
-
-export const App = ({ children }) => <ThemeProvider theme={MyTheme}>{chidlren}</ThemeProvider>
+export const Apps = ({ children }) => <ThemeProvider theme={MyTheme}>{chidlren}</ThemeProvider>
 ```
