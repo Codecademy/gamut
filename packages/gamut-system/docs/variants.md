@@ -1,8 +1,6 @@
 # Variants
 
-System also returns a function called `variant` that is aware of all possible properties.
-This can be used to alias or store specific combinations of style props as a variation, and make a
-components API significantly simpler.
+There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have `variant`, a function that is meant to make creating these combinations easy and scalable.
 
 ```tsx
 import styled from '@emotion/styled';
@@ -44,8 +42,7 @@ Using your variants:
   <Button variant="secondary" />
 ```
 
-There may be cases where you want to use a special key for your variants instead of the default `variant`. You may pass
-an arbitrary key for your prop to customize the prop type.
+There may be cases where you want to use a special key for your variants instead of the default `variant`. You may pass an arbitrary key for your prop to customize the prop type.
 
 ```tsx
 const colorVariant = variants({
