@@ -19,6 +19,9 @@ export const DEFAULT_MEDIA_QUERIES = {
   xl: '@media (min-width: 1248px)',
 };
 
+// This will return a function that takes in array of prop names
+// and returns a function that generates CSS styles for a props object
+// TODO CLARIFY: This what creates the dungus that does the fancy CSS-in-JS parsing of sub media queries
 export function responsiveProperty<
   Theme extends AbstractTheme,
   Props extends { theme?: Theme }
@@ -29,6 +32,9 @@ export function responsiveProperty<
   return (props) => {
     const { breakpoints = DEFAULT_MEDIA_QUERIES } = props?.theme || {};
 
+    // TODO Note: this doesn't exist when responsiveProperty is first called
+    // TODO We might be able to inject as return (props, breakpointOrder)...?
+    // TODO JOSH PLAY AROUND TO GET THIS INTO THE SYSTEM
     const breakpointOrder = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
 
     const responsive = {} as Record<typeof breakpointOrder[number], Props>;

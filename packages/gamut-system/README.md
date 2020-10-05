@@ -17,7 +17,25 @@ Create your new system locally to your app:
 import { system } from '@codecademy/gamut-system';
 
 export const {
+  // TODO THINK ABOUT THIS JOSH PLAY AROUND
+  // https://www.typescriptlang.org/play?ts=4.1.0-dev.20201005#code/MYewdgzgLgBARgJwKYEMDWAHEBLMUIwC8MA3gFAyXwoRIBcMADADQVUQC2DAjNwEysqMDgBMGffgGZBVADYBzBpMYqyAXzJkoATwxIYAIWTosufERg69IAGbxjmHHggBuTQHoAVGRu4UsmBAAVygMEIYgsGxwQLsAOgTNABUyAG0kgF00pOYYTOzcnLys9MKy4rJPd00rfQAxP1kAeRCwqCSAC1x5AB4io1RHMwA5FA4kAiQADygkMBECaARu1IyAPjZKd3c8wIQYAAooDv1lkWxgINlggkjosABKTYskmAAfGAAlbHPL66CIABBBAIFDaACqUXAfVyAxMTigo3GEA2Wl0+m+vyuN2BoIhULAMMMDlMeCRExg01m80WUGWYHkqw2QmIcKGZLGFKpcwWpBgsjm8mOPBgGiEQgA-LsPuksuKqAwAGr+IITOogBBEtmkxGclHvL4-C7YgG4sGQ+5EgAiCBAGAaCGgPW1CPJKLWBqSbjRehgytkqog6s1RTdHuI5CEqQA0khtDBcDA0HHbDA3RkGF71DV0TAbXaHU7XtyaTBImgwCAAO5gJlEZ7FmY8gipFBgbS5BJxXA2JD7cFy+UwKXg55CBirb21GBVlCwYgNMD+FqhEKdbo9OAgEACtu5VIAcjgNCQB9yB84Z5gB9EV4PCgP6xcQA
+
+  // User only has one place where the configure the stuff that doesn't change
+  // We then have all our types centralized to one location (system),
+  // and don't need to introduce them at arbitrary points in the architecture
+  breakpoints: {
+    sm: 720,
+    md: 1024,
+    lg: 1600,
+  },
+  // ...
+
   propGroups: { typography, spacing, layout },
+
+  // LOL NAMESPACIIII
+  LayoutProps,
+  SpacingProps,
+  TypographyProps,
 } = system();
 
 export type TypographyProps = HandlerProps<typeof typography>;

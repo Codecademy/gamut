@@ -95,7 +95,7 @@ export type TransformValue = (value: any) => string | number;
 
 export type AbstractPropertyConfig = {
   propName: PropAlias;
-  altProps?: Readonly<string[]>;
+  altProps?: ReadonlyArray<string>; // todo: do peeps prefer ReadonlyArray/Object or Readonly<...>
   type?: 'standard' | 'directional';
   scale?: AbstractScales;
   computeValue?: TransformValue;
@@ -105,6 +105,7 @@ export type AbstractPropertyConfig = {
 export type PropertyConfig<
   Theme extends AbstractTheme
 > = AbstractPropertyConfig & {
+  // altProps?: ReadonlyArray<PropName>;
   scale?: ScaleArray | ScaleMap | Readonly<keyof Theme>;
 };
 
