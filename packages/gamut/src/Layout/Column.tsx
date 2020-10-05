@@ -14,6 +14,8 @@ export type ColumnProps = {
   size: ResponsiveProperty<ColumnSizes>;
   /** The column that this element should start at */
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
+  /** The number of rows this element should span */
+  rowspan?: number;
 } & ContainerElementProps;
 
 export const Column: React.FC<ColumnProps> = ({
@@ -21,6 +23,7 @@ export const Column: React.FC<ColumnProps> = ({
   className,
   size,
   offset,
+  rowspan = 1,
   testId,
 }) => {
   const classNames = cx(
@@ -29,7 +32,13 @@ export const Column: React.FC<ColumnProps> = ({
     generateResponsiveClassnames({ size, offset }, s)
   );
   return (
-    <div className={classNames} data-testid={testId}>
+    <div
+      className={classNames}
+      data-testid={testId}
+      style={{
+        gridRow: `span ${rowspan}`,
+      }}
+    >
       {children}
     </div>
   );
