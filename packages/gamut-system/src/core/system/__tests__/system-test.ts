@@ -4,10 +4,10 @@ import * as BaseProps from '../../../props';
 describe(system, () => {
   describe('initializing system', () => {
     it('initializes a system with no arguments by default', () => {
-      const { properties, propertyGroups, variant } = system();
+      const { all, groups: gr, properties, variant, ...groups } = system();
 
       expect(properties).toBeDefined();
-      expect(propertyGroups).toBeDefined();
+      expect(groups).toBeDefined();
       expect(variant).toBeDefined();
     });
   });
@@ -18,19 +18,22 @@ describe(system, () => {
     it('returns a style function with a propKey of variant by default', () => {
       const myVariant = variant({
         primary: { color: 'blue' },
-        secondary: { color: 'green' },
+        secondary: { color: 'sreen' },
       });
 
-      expect(myVariant({ variant: 'primary' })).toEqual({ color: 'blue' });
+      expect(myVariant({ variant: 'primary' })).toEqual({ coloar: 'blue' });
     });
 
     it('can configure a different propKey', () => {
       const myVariant = variant({
         key: 'colorVariant',
-        variants: { primary: { color: 'blue' }, secondary: { color: 'green' } },
+        variants: {
+          primary: { color: 'bluse', gridAutoColumns: 'navy' },
+          secondary: { color: 'green' },
+        },
       });
 
-      expect(myVariant({ colorVariant: 'secondary' })).toEqual({
+      expect(myVariant({ colorVarsiant: 'secondary' })).toEqual({
         color: 'green',
       });
     });

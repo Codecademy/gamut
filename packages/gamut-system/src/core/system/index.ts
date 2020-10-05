@@ -2,10 +2,10 @@ import {
   AbstractTheme,
   PropertyConfig,
   Handler,
-  UnionToIntersection,
+  ThematicProps,
   ThematicScaleValue,
-  GetAltProps,
   ResponsiveProp,
+  GetAltProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
@@ -13,6 +13,7 @@ import { createHandler } from '../createHandler';
 import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
 import { getDefaultPropKey } from '../utils';
+import { UnionToIntersection, WeakRecord } from '../../types/utils';
 
 /** The Default Out of the Box Configuration */
 type BaseConfig = typeof BaseProps;
@@ -47,75 +48,56 @@ export const system = <
     [PropGroup in keyof MergedConfiguration]: {
       handlers: {
         [Property in keyof MergedConfiguration[PropGroup]]: Handler<
-          Partial<
-            Record<
-              Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
-              ResponsiveProp<
-                ThematicScaleValue<
-                  Theme,
-                  MergedConfiguration[PropGroup][Property]
-                >
-              >
-            >
-          >
+          ThematicProps<Theme, MergedConfiguration[PropGroup][Property]>
         >;
       };
       /** All possible prop type signatures  */
       props: {
-        [Property in keyof MergedConfiguration[PropGroup]]: Partial<
-          Record<
-            Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
-            ResponsiveProp<
-              ThematicScaleValue<
-                Theme,
-                MergedConfiguration[PropGroup][Property]
-              >
-            >
-          >
+        [Property in keyof MergedConfiguration[PropGroup]]: ThematicProps<
+          Theme,
+          MergedConfiguration[PropGroup][Property]
         >;
       };
     };
   };
 
   // Return type for composed propGroup handlers
-  type PropGroups = {
-    [PropGroup in keyof BaseGroup]: Handler<
-      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
-    >;
-  };
-
-  // Intersection of all possible props
-  type AllProps = UnionToIntersection<
-    Parameters<PropGroups[keyof PropGroups]>[0]
-  >;
-
   type PropertyGroups = {
     [PropGroup in keyof BaseGroup]: Handler<
       BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
     >;
   };
 
-  type VariantShape = Record<string, AllProps>;
-  type VariantConfig = { key: string; variants: VariantShape };
-  type VariantKey<
-    T extends VariantShape | VariantConfig
-  > = T extends VariantConfig ? T['key'] : 'variant';
+  // Intersection of all possible props
+  type GroupProps = {
+    [PropGroup in keyof BaseGroup]: UnionToIntersection<
+      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
+    >;
+  };
+
+  type AllProps = UnionToIntersection<GroupProps[keyof GroupProps]>;
+
+  type VariantConfig = Readonly<{
+    key: string;
+    variants: Readonly<Record<string, AllProps>>;
+  }>;
+
+  type VariantProps<T> = T extends VariantConfig
+    ? WeakRecord<T['key'], keyof T['variants']>
+    : WeakRecord<'variant', keyof T>;
 
   type System = {
     // Map of all propGroup handlers
     properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
     // createVariant with closure types
-    variant: <Variants extends VariantConfig | VariantShape>(
-      config: Variants
+    variant: <
+      ConfigShape extends
+        | Readonly<VariantConfig>
+        | Readonly<VariantConfig['variants']>
+    >(
+      config: ConfigShape
     ) => (
-      props: Partial<
-        Record<
-          VariantKey<Variants>,
-          Variants extends VariantShape
-            ? keyof Variants
-            : keyof Variants['variants']
-        >
-      > & {
+      props: VariantProps<typeof config> & {
         theme?: Theme;
       }
     ) => CSSObject;
@@ -124,7 +106,6 @@ export const system = <
   // Initializes the return object
   const systemShape = {
     properties: {},
-    propertyGroups: {},
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.

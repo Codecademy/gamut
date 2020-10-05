@@ -1,10 +1,7 @@
 import { identity } from 'lodash';
 import { createHandler } from '..';
-import {
-  DEFAULT_MEDIA_QUERIES,
-  directionalProperty,
-  standardProperty,
-} from '../../../propTemplates';
+import { directionalProperty, standardProperty } from '../../../propTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
 import { ThematicProps } from '../../../types/system';
 
 type Theme = {
