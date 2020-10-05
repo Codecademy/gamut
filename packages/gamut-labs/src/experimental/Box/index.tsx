@@ -1,35 +1,56 @@
 import {
   border,
+  BorderProps,
   color,
+  ColorProps,
+  layout,
+  LayoutProps,
   space,
+  positioning,
+  PositioningProps,
   SpaceProps,
-  styled,
   variant,
+  styled,
 } from '@codecademy/gamut-styles';
 
-const boxVariants = variant({
+const baseBoxProps = {
+  borderColor: 'navy',
+  borderStyle: 'solid',
+  borderWidth: '1px',
+} as const;
+
+export const boxVariants = variant({
   variants: {
     navy: {
-      backgroundColor: 'yellow',
-      color: 'navy',
+      ...baseBoxProps,
+      backgroundColor: 'navy',
+      color: 'white',
     },
     yellow: {
-      color: 'white',
+      ...baseBoxProps,
+      color: 'navy',
       backgroundColor: 'yellow',
     },
     white: {
+      ...baseBoxProps,
       backgroundColor: 'white',
       color: 'navy',
     },
   },
 });
-type BoxProps = SpaceProps & Parameters<typeof boxVariants>[0];
+
+type BoxProps = SpaceProps &
+  LayoutProps &
+  BorderProps &
+  ColorProps &
+  PositioningProps;
 
 export const NewBox = styled.div<BoxProps>`
-  ${space({ padding: 16 })}
-  ${border({ borderStyle: 'solid', borderWidth: '1px' })}
-  ${color({ borderColor: 'navy' })}
-  ${boxVariants}
+  ${border}
+  ${layout}
+  ${space}
+  ${color}
+  ${positioning}
 `;
 
 NewBox.defaultProps = {

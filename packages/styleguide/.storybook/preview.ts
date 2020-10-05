@@ -3,6 +3,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 
 import './decorators/wrapper';
+import { ThemeDecorator } from './decorators/theme';
 
 const theme = create({
   base: 'light',
@@ -43,3 +44,4 @@ addParameters({
 });
 
 addDecorator(withKnobs);
+addDecorator(ThemeDecorator);

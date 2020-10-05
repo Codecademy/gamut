@@ -6,7 +6,6 @@ import {
   ThematicScaleValue,
   GetAltProps,
   ResponsiveProp,
-  ThematicProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
@@ -91,7 +90,6 @@ export const system = <
   >;
 
   type System = {
-    test: Handler<ThematicProps<Theme, MergedConfiguration['colors']['color']>>;
     // Map of all prop handlers
     propertyGroups: {
       [PropGroup in keyof BaseGroup]: Handler<
