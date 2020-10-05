@@ -6,7 +6,6 @@ import {
   ThematicScaleValue,
   GetAltProps,
   ResponsiveProp,
-  ThematicProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
