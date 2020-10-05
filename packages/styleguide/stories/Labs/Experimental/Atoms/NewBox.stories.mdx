@@ -1,0 +1,25 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { NewBox } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Experimental/Atoms/NewBox" component={NewBox} />
+
+# NewBox
+
+<StoryStatus status="volatile" />
+
+A flex NewBox primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story
+    name="NewBox"
+    args={{
+      children: 'I am a box',
+      variant: 'white',
+    }}
+  >
+    {(args) => <NewBox {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Box" />

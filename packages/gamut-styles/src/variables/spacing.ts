@@ -1,15 +1,14 @@
 import { pxRem } from '../utilities/pxRem';
-import { base } from './base';
 
-export const baseUnit = pxRem(base);
+export const baseUnit = '1rem';
 
-export const headerHeight = pxRem(base * 4);
+export const headerHeight = '4rem';
 
 export const spacing = {
-  [base * 0.25]: pxRem(base * 0.25),
-  [base * 0.5]: pxRem(base * 0.5),
-  [base * 1]: pxRem(base * 1),
-  [base * 1.5]: pxRem(base * 1.5),
-  [base * 2]: pxRem(base * 2),
-  [base * 3]: pxRem(base * 3),
-};
+  4: pxRem(4),
+  8: pxRem(8),
+  16: pxRem(16),
+  24: pxRem(24),
+  32: pxRem(32),
+  48: pxRem(48),
+} as const;

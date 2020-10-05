@@ -24,5 +24,8 @@
     "@emotion/styled": "10.0.27",
     "csstype": "3.0.3"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@codecademy/gamut-system": "^0.0.0"
+  }
 }

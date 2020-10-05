@@ -6,6 +6,7 @@ import {
   ThematicScaleValue,
   GetAltProps,
   ResponsiveProp,
+  ThematicProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
@@ -37,21 +38,24 @@ export const system = <
 ) => {
   // Initialize all type derivations and declare return signature
   // Intersection of Base and the supplied configuration objects.
-  type SystemConfig = typeof config extends Config
+  type MergedConfiguration = Config extends {}
     ? BaseConfig & Config
     : BaseConfig;
 
   // Intermediate type to derive return types from representing all properties and handler
   type BaseGroup = {
-    /** All possible property handlers based off the SystemConfig  */
-    [PropGroup in keyof SystemConfig]: {
+    /** All possible property handlers based off the MergedConfiguration  */
+    [PropGroup in keyof MergedConfiguration]: {
       handlers: {
-        [Property in keyof SystemConfig[PropGroup]]: Handler<
+        [Property in keyof MergedConfiguration[PropGroup]]: Handler<
           Partial<
             Record<
-              Property | GetAltProps<SystemConfig[PropGroup][Property]>,
+              Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
               ResponsiveProp<
-                ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+                ThematicScaleValue<
+                  Theme,
+                  MergedConfiguration[PropGroup][Property]
+                >
               >
             >
           >
@@ -59,11 +63,14 @@ export const system = <
       };
       /** All possible prop type signatures  */
       props: {
-        [Property in keyof SystemConfig[PropGroup]]: Partial<
+        [Property in keyof MergedConfiguration[PropGroup]]: Partial<
           Record<
-            Property | GetAltProps<SystemConfig[PropGroup][Property]>,
+            Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
             ResponsiveProp<
-              ThematicScaleValue<Theme, SystemConfig[PropGroup][Property]>
+              ThematicScaleValue<
+                Theme,
+                MergedConfiguration[PropGroup][Property]
+              >
             >
           >
         >;
@@ -84,6 +91,7 @@ export const system = <
   >;
 
   type System = {
+    test: Handler<ThematicProps<Theme, MergedConfiguration['colors']['color']>>;
     // Map of all prop handlers
     propertyGroups: {
       [PropGroup in keyof BaseGroup]: Handler<

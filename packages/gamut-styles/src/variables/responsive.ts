@@ -6,7 +6,7 @@ export const breakpoints: Record<MediaSize, string> = {
   md: '1024px',
   lg: '1200px',
   xl: '1440px',
-};
+} as const;
 
 const createMediaQuery = (size: MediaSize, direction: 'min' | 'max') => `
   @media only screen and (${direction}-width: ${breakpoints[size]})
@@ -18,9 +18,9 @@ export const mediaQueries = {
   md: createMediaQuery('md', 'min'),
   lg: createMediaQuery('lg', 'min'),
   xl: createMediaQuery('xl', 'min'),
-};
+} as const;
 
 export const contentWidths = {
   md: breakpoints.lg,
   max: breakpoints.xl,
-};
+} as const;
