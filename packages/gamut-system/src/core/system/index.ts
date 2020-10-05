@@ -89,26 +89,34 @@ export const system = <
     Parameters<PropGroups[keyof PropGroups]>[0]
   >;
 
+  type VariantShape = Record<string, AllProps>;
+  type VariantConfig = { key: string; variants: VariantShape };
+  type VariantKey<
+    T extends VariantShape | VariantConfig
+  > = T extends VariantConfig ? T['key'] : 'variant';
+
   type System = {
-    // Map of all prop handlers
-    propertyGroups: {
-      [PropGroup in keyof BaseGroup]: Handler<
-        BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
-      >;
-    };
     // Map of all propGroup handlers
     properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
     // createVariant with closure types
-    variant: <
-      Variant extends { key?: string; variants: Record<string, AllProps> },
-      PropKey extends Variant['key'] extends string ? Variant['key'] : 'variant'
-    >(
-      config: Variant
+    variant: <Variants extends VariantConfig | VariantShape>(
+      config: Variants
     ) => (
-      props: Record<PropKey, keyof Variant['variants']> & {
+      props: Partial<
+        Record<
+          VariantKey<Variants>,
+          Variants extends VariantShape
+            ? keyof Variants
+            : keyof Variants['variants']
+        >
+      > & {
         theme?: Theme;
       }
     ) => CSSObject;
+  } & {
+    [PropGroup in keyof BaseGroup]: Handler<
+      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
+    >;
   };
 
   // Initializes the return object
@@ -137,11 +145,13 @@ export const system = <
     };
 
     // Add the composite group handler to the correct propGroups key
-    systemShape.propertyGroups[groupKey] = groupHandler;
+    systemShape[groupKey] = groupHandler;
   });
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
-  const createVariant = ({ key = 'variant', variants }: any) => {
+  const createVariant = (config: any) => {
+    const variants = config?.variants ?? config;
+    const propKey = config?.key ?? 'variant';
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)
@@ -155,7 +165,7 @@ export const system = <
 
     // Return the variant function
     return (props: any) => {
-      const variantProps = variants[props[key]] || {};
+      const variantProps = variants[props[propKey]] || {};
       return variantHandler({ ...variantProps, theme: props.theme });
     };
   };
