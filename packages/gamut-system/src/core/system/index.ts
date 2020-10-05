@@ -74,30 +74,25 @@ export const system = <
 
   type AllProps = UnionToIntersection<GroupProps[keyof GroupProps]>;
 
-  type VariantConfig = Readonly<{
-    key: string;
-    variants: Readonly<Record<string, AllProps>>;
-  }>;
-
-  type VariantProps<T> = T extends VariantConfig
-    ? WeakRecord<T['key'], keyof T['variants']>
-    : WeakRecord<'variant', keyof T>;
+  type BaseProps = {
+    theme?: Theme;
+  };
 
   type System = {
+    variant: {
+      /** Customizable PropKey */
+      <Prop extends Readonly<string>, Keys extends string>(config: {
+        prop: Prop;
+        variants: Readonly<Record<Keys, AllProps>>;
+      }): (props: WeakRecord<Prop, Keys> & BaseProps) => CSSObject;
+      /**  */
+      <Keys extends string>(config: Readonly<Record<Keys, AllProps>>): (
+        props: WeakRecord<'variant', Keys> & BaseProps
+      ) => CSSObject;
+    };
     // Map of all propGroup handlers
     properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
     // createVariant with closure types
-    variant: <
-      ConfigShape extends
-        | Readonly<VariantConfig>
-        | Readonly<VariantConfig['variants']>
-    >(
-      config: ConfigShape
-    ) => (
-      props: VariantProps<typeof config> & {
-        theme?: Theme;
-      }
-    ) => CSSObject;
   } & PropertyGroups;
 
   // Initializes the return object
@@ -131,7 +126,7 @@ export const system = <
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
     const variants = config?.variants ?? config;
-    const propKey = config?.key ?? 'variant';
+    const propKey = config?.prop ?? 'variant';
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)
