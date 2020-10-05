@@ -3,9 +3,6 @@ import {
   PropertyConfig,
   Handler,
   ThematicProps,
-  ThematicScaleValue,
-  ResponsiveProp,
-  GetAltProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';

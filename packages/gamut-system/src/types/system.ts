@@ -90,12 +90,6 @@ export type PropKey<Config extends AbstractPropertyConfig> =
   | Config['propName']
   | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
 
-export type GetAltProps<
-  Config extends AbstractPropertyConfig
-> = Config['propName'] extends DirectionalProperties
-  ? Props[Config['propName']]['altProps']
-  : never;
-
 /** Standard CSS Property Types */
 export type DefaultPropScale<
   Config extends AbstractPropertyConfig
