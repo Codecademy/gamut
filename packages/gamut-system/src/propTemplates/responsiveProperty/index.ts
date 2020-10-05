@@ -5,18 +5,11 @@ import {
   AbstractProps,
   AbstractTheme,
 } from '../../types/system';
+import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
 
 export type ResponsivePropertyArguments<T extends AbstractProps> = {
-  propNames: (keyof T)[];
+  propNames: Exclude<keyof T, 'theme'>[];
   templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
-};
-
-export const DEFAULT_MEDIA_QUERIES = {
-  xs: '@media (min-width: 320px)',
-  sm: '@media (min-width: 480px)',
-  md: '@media (min-width: 768px)',
-  lg: '@media (min-width: 1024px)',
-  xl: '@media (min-width: 1248px)',
 };
 
 export function responsiveProperty<
@@ -26,11 +19,10 @@ export function responsiveProperty<
   propNames,
   templateFns,
 }: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
-  return (props) => {
-    const { breakpoints = DEFAULT_MEDIA_QUERIES } = props?.theme || {};
+  return ({ theme = {}, ...props }) => {
+    const { breakpoints = DEFAULT_MEDIA_QUERIES } = theme;
 
-    const breakpointOrder = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
-
+    const breakpointOrder = [BASE, ...Object.keys(breakpoints)];
     const responsive = {} as Record<typeof breakpointOrder[number], Props>;
 
     // Iterate through all responsible props and create a base style configuration.
@@ -42,7 +34,7 @@ export function responsiveProperty<
         case 'string':
         case 'number':
           // If no extra styles exist add this to the lowest breakpoint
-          return set(responsive, ['base', propName], propertyValue);
+          return set(responsive, [BASE, propName], propertyValue);
         case 'object': {
           // Add to the config if it is an array of prop values
           if (isArray(propertyValue)) {
@@ -75,9 +67,9 @@ export function responsiveProperty<
       const templates = values(templateFns);
 
       // TODO: Only call the templateFns we have props for.1
-      templates.forEach((templatFn) => {
-        const templateStyles =
-          templatFn?.({ ...bpProps, theme: props.theme }) ?? {};
+      templates.forEach((styleFunction) => {
+        if (!styleFunction) return;
+        const templateStyles = styleFunction({ ...bpProps, theme });
 
         // Smallest sizes are always on by default
         if (breakpoint === breakpointOrder[0]) {

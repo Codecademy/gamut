@@ -1,5 +1,6 @@
 import { CSSObject } from '@emotion/core';
 import { get, isObject } from 'lodash';
+import { DirectionalProperties } from '../../types/properties';
 import {
   AbstractProps,
   AbstractPropertyConfig,
@@ -7,38 +8,7 @@ import {
   ScaleMap,
   ScaleArray,
 } from '../../types/system';
-
-type AllDirections = 'top' | 'right' | 'left' | 'bottom';
-const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];
-
-const DIRECTIONAL_PROPS = {
-  margin: {
-    left: 'marginLeft',
-    right: 'marginRight',
-    top: 'marginTop',
-    bottom: 'marginBottom',
-  },
-  padding: {
-    left: 'paddingLeft',
-    right: 'paddingRight',
-    top: 'paddingTop',
-    bottom: 'paddingBottom',
-  },
-  borderColor: {
-    left: 'borderLeftColor',
-    right: 'borderRightColor',
-    top: 'borderTopColor',
-    bottom: 'borderBottomColor',
-  },
-  borderWidth: {
-    left: 'borderLeftWidth',
-    right: 'borderRightWidth',
-    top: 'borderTopWidth',
-    bottom: 'borderBottomWidth',
-  },
-} as const;
-
-type DirectionalProps = typeof DIRECTIONAL_PROPS;
+import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
 
 /**
  * Directional props require destructuring of their values to ensure their order.  Instead
@@ -47,7 +17,6 @@ type DirectionalProps = typeof DIRECTIONAL_PROPS;
  * values will not be overriden by the CSS cascade erroneously.  We prefer this over manually
  * sorting properties at runtime and having consistent CSS for these particular props.
  */
-
 export function directionalProperty<
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
@@ -56,15 +25,15 @@ export function directionalProperty<
   return (props: Props): CSSObject => {
     // Initialize all directional props from base => specific direction
     const {
-      [propName as string]: base,
+      [propName]: base,
       [`${propName}X`]: x = base,
       [`${propName}Y`]: y = base,
       [`${propName}Left`]: l = x,
       [`${propName}Right`]: r = x,
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
-    } = props as AbstractProps;
-    const propKey = propName as keyof DirectionalProps;
+    } = props;
+    const propKey = propName as DirectionalProperties;
     // Order props in their correct short hand order for consistency between components.
     const orderedProps = [t, r, b, l];
 
