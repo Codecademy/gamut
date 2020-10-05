@@ -114,8 +114,8 @@ export type PropKey<Config extends AbstractPropertyConfig> =
 
 export type GetAltProps<Config extends AbstractPropertyConfig> = Extract<
   Props[Config['propName']],
-  { altProps: string }
->['altProps'];
+  { altProps: string[] }
+>['altProps'][number];
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<

@@ -89,6 +89,12 @@ export const system = <
     Parameters<PropGroups[keyof PropGroups]>[0]
   >;
 
+  type PropertyGroups = {
+    [PropGroup in keyof BaseGroup]: Handler<
+      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
+    >;
+  };
+
   type VariantShape = Record<string, AllProps>;
   type VariantConfig = { key: string; variants: VariantShape };
   type VariantKey<
@@ -113,11 +119,7 @@ export const system = <
         theme?: Theme;
       }
     ) => CSSObject;
-  } & {
-    [PropGroup in keyof BaseGroup]: Handler<
-      BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
-    >;
-  };
+  } & PropertyGroups;
 
   // Initializes the return object
   const systemShape = {
