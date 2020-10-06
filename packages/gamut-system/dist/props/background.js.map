@@ -1,1 +1,0 @@
-{"version":3,"file":"background.js","sourceRoot":"","sources":["../../src/props/background.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,UAAU,GAAG;IACxB,eAAe,EAAE;QACf,QAAQ,EAAE,iBAAiB;KAC5B;IACD,cAAc,EAAE;QACd,QAAQ,EAAE,gBAAgB;KAC3B;IACD,gBAAgB,EAAE;QAChB,QAAQ,EAAE,kBAAkB;KAC7B;IACD,kBAAkB,EAAE;QAClB,QAAQ,EAAE,oBAAoB;KAC/B;CACO,CAAC"}
