@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>16.1.2 (2020-10-06)</small>
+
+* This seems like it should have been there before? (#979) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7)), closes [#979](https://github.com/Codecademy/client-modules/issues/979)
+
+
+
+
+
 ## <small>16.1.1 (2020-10-06)</small>
 
 * chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)

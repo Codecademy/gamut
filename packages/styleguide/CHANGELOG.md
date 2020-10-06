@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>17.6.2 (2020-10-06)</small>
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## <small>17.6.1 (2020-10-06)</small>
 
 * chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
