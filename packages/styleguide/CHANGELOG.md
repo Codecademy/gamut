@@ -1,3 +1,10 @@
+## [17.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.5.0...@codecademy/styleguide@17.6.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
 ## [17.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.4.0...@codecademy/styleguide@17.5.0) (2020-09-29)
 
 

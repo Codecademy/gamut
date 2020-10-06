@@ -1,3 +1,10 @@
+## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
 ### [16.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.13...@codecademy/gamut@16.0.14) (2020-09-29)
 
 ### [16.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.12...@codecademy/gamut@16.0.13) (2020-09-28)

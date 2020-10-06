@@ -1,3 +1,5 @@
+### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.4...@codecademy/gamut-labs@4.2.5) (2020-10-02)
+
 ### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.3...@codecademy/gamut-labs@4.2.4) (2020-09-29)
 
 ### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.2...@codecademy/gamut-labs@4.2.3) (2020-09-28)
