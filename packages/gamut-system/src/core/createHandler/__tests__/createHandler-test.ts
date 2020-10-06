@@ -1,10 +1,7 @@
 import { identity } from 'lodash';
 import { createHandler } from '..';
-import {
-  DEFAULT_MEDIA_QUERIES,
-  directionalProperty,
-  standardProperty,
-} from '../../../propTemplates';
+import { directionalProperty, standardProperty } from '../../../propTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
 import { ThematicProps } from '../../../types/system';
 
 type Theme = {
@@ -34,14 +31,14 @@ describe(createHandler, () => {
     expect(styleFunction.propNames).toEqual(['height']);
   });
 
-  it('adds altProps to the propName array', () => {
+  it('adds dependentProps to the propName array', () => {
     const styleFunction = createHandler<
       Theme,
-      PropConfig & { altProps: ['maxHeight', 'minHeight'] },
+      PropConfig & { dependentProps: ['maxHeight', 'minHeight'] },
       Props
     >({
       propName: 'height',
-      altProps: ['maxHeight', 'minHeight'],
+      dependentProps: ['maxHeight', 'minHeight'],
     });
 
     expect(styleFunction.propNames).toEqual([

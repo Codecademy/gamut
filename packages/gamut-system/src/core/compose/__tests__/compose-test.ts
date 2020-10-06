@@ -1,11 +1,8 @@
 import { identity } from 'lodash';
 import { compose } from '..';
 import { border, layout, typography } from '../../../props';
-import {
-  DEFAULT_MEDIA_QUERIES,
-  directionalProperty,
-  standardProperty,
-} from '../../../propTemplates';
+import { directionalProperty, standardProperty } from '../../../propTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
 import { createHandler } from '../../createHandler';
 
 const display = createHandler(layout.display);
@@ -52,7 +49,7 @@ describe(compose, () => {
       'display',
       'textAlign',
       'borderWidth',
-      ...border.borderWidth.altProps,
+      ...border.borderWidth.dependentProps,
     ]);
   });
 

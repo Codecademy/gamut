@@ -4,10 +4,9 @@ import * as BaseProps from '../../../props';
 describe(system, () => {
   describe('initializing system', () => {
     it('initializes a system with no arguments by default', () => {
-      const { properties, propertyGroups, variant } = system();
-
+      const { properties, variant, ...groups } = system();
       expect(properties).toBeDefined();
-      expect(propertyGroups).toBeDefined();
+      expect(groups).toBeDefined();
       expect(variant).toBeDefined();
     });
   });
@@ -26,8 +25,11 @@ describe(system, () => {
 
     it('can configure a different propKey', () => {
       const myVariant = variant({
-        key: 'colorVariant',
-        variants: { primary: { color: 'blue' }, secondary: { color: 'green' } },
+        prop: 'colorVariant',
+        variants: {
+          primary: { color: 'blue' },
+          secondary: { color: 'green' },
+        },
       });
 
       expect(myVariant({ colorVariant: 'secondary' })).toEqual({

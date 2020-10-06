@@ -1,5 +1,6 @@
-import { Props } from './properties';
+import { DirectionalProperties, Props } from './properties';
 import { CSSObject } from '@emotion/core';
+import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** System Configuration */
 export type MediaQueryArray<Value> = [
@@ -25,34 +26,10 @@ export type ResponsiveProp<Value> =
   | MediaQueryArray<Value>
   | MediaQueryMap<Value>;
 
-/** Utility  */
-export type UnionToIntersection<Union> = (
-  Union extends any ? (k: Union) => void : never
-) extends (k: infer Intersection) => void
-  ? Intersection
-  : never;
-
-export type NeverUnknown<Value> = Value extends string
-  ? Value
-  : Value extends number
-  ? Value
-  : Value extends unknown
-  ? never
-  : Value;
-
-export type SafeLookup<MaybeArray> = MaybeArray extends Readonly<unknown[]>
-  ? MaybeArray[number]
-  : never;
-export type SafeMapKey<MaybeMap> = MaybeMap extends Readonly<
-  Record<string, unknown>
->
-  ? keyof MaybeMap
-  : never;
-
 /** Abstract Configurations  */
 export type PropAlias = Readonly<keyof Props>;
 
-type BaseTheme = Readonly<Partial<Record<string, ScaleArray | ScaleMap>>>;
+type BaseTheme = Readonly<WeakRecord<string, ScaleArray | ScaleMap>>;
 
 export type AbstractTheme = BaseTheme & {
   breakpoints?: {
@@ -76,8 +53,9 @@ export type StyleTemplate<Props extends AbstractProps> = (
   props: Props
 ) => CSSObject | undefined;
 
-export type TemplateMap<Props extends AbstractProps> = Partial<
-  Record<keyof Props, StyleTemplate<Props>>
+export type TemplateMap<Props extends AbstractProps> = WeakRecord<
+  keyof Props,
+  StyleTemplate<Props>
 >;
 
 export type Handler<Props extends AbstractProps> = {
@@ -115,31 +93,18 @@ export type PropKey<Config extends AbstractPropertyConfig> =
       { dependentProps: Readonly<string[]> }
     >['dependentProps'][number];
 
-export type GetAltProps<Config extends AbstractPropertyConfig> = Extract<
-  Props[Config['propName']],
-  { dependentProps: string }
->['dependentProps'];
-
 /** Standard CSS Property Types */
 export type DefaultPropScale<
   Config extends AbstractPropertyConfig
-> = Config['propName'] extends PropAlias[]
-  ? Props[Config['propName'][number]]['defaultValue']
-  : Config['propName'] extends PropAlias
-  ? Props[Config['propName']]['defaultValue']
-  : never;
+> = Props[Config['propName']]['defaultValue'];
 
 export type ThematicScaleValue<
   Theme extends AbstractTheme,
   Config extends PropertyConfig<Theme>
 > = Config['scale'] extends AbstractScales
   ?
-      | NeverUnknown<
-          SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
-        >
-      | NeverUnknown<
-          SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
-        >
+      | SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
+      | SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
       | SafeMapKey<Extract<Config, { scale: ScaleMap }>['scale']>
       | Extract<Config, { scale: ScaleArray }>['scale'][number]
   : DefaultPropScale<Config>;
@@ -147,8 +112,11 @@ export type ThematicScaleValue<
 export type ThematicProps<
   Theme extends AbstractTheme,
   Config extends PropertyConfig<Theme>
-> = {
-  [key in Config['propName']]?: ResponsiveProp<
-    ThematicScaleValue<Theme, Extract<Config, { propName: key }>>
-  >;
-};
+> = WeakRecord<
+  Config['propName'] extends DirectionalProperties
+    ? Props[Config['propName']]['dependentProps'] | Config['propName']
+    : Config['propName'],
+  ResponsiveProp<
+    ThematicScaleValue<Theme, Extract<Config, { propName: Config['propName'] }>>
+  >
+>;

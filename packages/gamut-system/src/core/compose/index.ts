@@ -1,10 +1,6 @@
-import {
-  AbstractProps,
-  Handler,
-  UnionToIntersection,
-  StyleTemplate,
-} from '../../types/system';
-import { responsiveProperty } from '../../propTemplates';
+import { createResponsiveStyleTemplate } from '../../styleTemplates';
+import { AbstractProps, Handler, StyleTemplate } from '../../types/system';
+import { UnionToIntersection } from '../../types/utils';
 
 export const compose = <
   Handlers extends Handler<AbstractProps>[],
@@ -35,11 +31,6 @@ export const compose = <
   });
 
   // Create a new responsive property responsible for templating all the single handlers
-  const composedHandler = responsiveProperty<Props>(config) as Handler<Props>;
-
   // Make the handlers propNames and functions accessible on the function reference
-  composedHandler.propNames = config.propNames;
-  composedHandler.styleTemplates = config.styleTemplates;
-
-  return composedHandler;
+  return Object.assign(createResponsiveStyleTemplate<Props>(config), config);
 };

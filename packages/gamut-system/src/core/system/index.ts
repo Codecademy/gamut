@@ -2,10 +2,7 @@ import {
   AbstractTheme,
   PropertyConfig,
   Handler,
-  UnionToIntersection,
-  ThematicScaleValue,
-  GetAltProps,
-  ResponsiveProp,
+  ThematicProps,
 } from '../../types/system';
 import * as BaseProps from '../../props';
 import { compose } from '../compose';
@@ -13,6 +10,7 @@ import { createHandler } from '../createHandler';
 import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
 import { getDefaultPropKey } from '../utils';
+import { UnionToIntersection, WeakRecord } from '../../types/utils';
 
 /** The Default Out of the Box Configuration */
 type BaseConfig = typeof BaseProps;
@@ -47,82 +45,59 @@ export const system = <
     [PropGroup in keyof MergedConfiguration]: {
       handlers: {
         [Property in keyof MergedConfiguration[PropGroup]]: Handler<
-          Partial<
-            Record<
-              Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
-              ResponsiveProp<
-                ThematicScaleValue<
-                  Theme,
-                  MergedConfiguration[PropGroup][Property]
-                >
-              >
-            >
-          >
+          ThematicProps<Theme, MergedConfiguration[PropGroup][Property]>
         >;
       };
       /** All possible prop type signatures  */
       props: {
-        [Property in keyof MergedConfiguration[PropGroup]]: Partial<
-          Record<
-            Property | GetAltProps<MergedConfiguration[PropGroup][Property]>,
-            ResponsiveProp<
-              ThematicScaleValue<
-                Theme,
-                MergedConfiguration[PropGroup][Property]
-              >
-            >
-          >
+        [Property in keyof MergedConfiguration[PropGroup]]: ThematicProps<
+          Theme,
+          MergedConfiguration[PropGroup][Property]
         >;
       };
     };
   };
 
   // Return type for composed propGroup handlers
-  type PropGroups = {
+  type PropertyGroups = {
     [PropGroup in keyof BaseGroup]: Handler<
       BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
     >;
   };
 
   // Intersection of all possible props
-  type AllProps = UnionToIntersection<
-    Parameters<PropGroups[keyof PropGroups]>[0]
-  >;
-
-  type VariantShape = Record<string, AllProps>;
-  type VariantConfig = { key: string; variants: VariantShape };
-  type VariantKey<
-    T extends VariantShape | VariantConfig
-  > = T extends VariantConfig ? T['key'] : 'variant';
-
-  type System = {
-    // Map of all propGroup handlers
-    properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
-    // createVariant with closure types
-    variant: <Variants extends VariantConfig | VariantShape>(
-      config: Variants
-    ) => (
-      props: Partial<
-        Record<
-          VariantKey<Variants>,
-          Variants extends VariantShape
-            ? keyof Variants
-            : keyof Variants['variants']
-        >
-      > & {
-        theme?: Theme;
-      }
-    ) => CSSObject;
-  } & {
-    [PropGroup in keyof BaseGroup]: Handler<
+  type GroupProps = {
+    [PropGroup in keyof BaseGroup]: UnionToIntersection<
       BaseGroup[PropGroup]['props'][keyof BaseGroup[PropGroup]['props']]
     >;
   };
 
+  type AllProps = UnionToIntersection<GroupProps[keyof GroupProps]>;
+
+  type BaseProps = {
+    theme?: Theme;
+  };
+
+  type System = {
+    variant: {
+      /** Customizable PropKey */
+      <Prop extends Readonly<string>, Keys extends string>(config: {
+        prop: Prop;
+        variants: Readonly<Record<Keys, AllProps>>;
+      }): (props: WeakRecord<Prop, Keys> & BaseProps) => CSSObject;
+      /**  */
+      <Keys extends string>(config: Readonly<Record<Keys, AllProps>>): (
+        props: WeakRecord<'variant', Keys> & BaseProps
+      ) => CSSObject;
+    };
+    // Map of all propGroup handlers
+    properties: UnionToIntersection<BaseGroup[keyof BaseGroup]['handlers']>;
+    // createVariant with closure types
+  } & PropertyGroups;
+
   // Initializes the return object
   const systemShape = {
     properties: {},
-    propertyGroups: {},
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
@@ -151,7 +126,7 @@ export const system = <
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
     const variants = config?.variants ?? config;
-    const propKey = config?.key ?? 'variant';
+    const propKey = config?.prop ?? 'variant';
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)

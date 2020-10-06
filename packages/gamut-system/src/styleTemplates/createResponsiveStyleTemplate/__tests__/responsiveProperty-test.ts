@@ -1,4 +1,5 @@
-import { DEFAULT_MEDIA_QUERIES, responsiveProperty } from '..';
+import { responsiveProperty } from '..';
+import { DEFAULT_MEDIA_QUERIES } from '../constants';
 import { standardProperty } from '../../standardProperty';
 import { ResponsiveProp } from '../../../types/system';
 

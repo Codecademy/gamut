@@ -236,3 +236,14 @@ export type Props = {
     defaultValue: CSS.Properties['backgroundColor'];
   };
 };
+
+type PropUnion = {
+  [P in keyof Props]: {
+    propName: P;
+  } & Props[P];
+}[keyof Props];
+
+export type DirectionalProperties = Extract<
+  PropUnion,
+  { dependentProps: string }
+>['propName'];
