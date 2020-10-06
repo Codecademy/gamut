@@ -48,8 +48,5 @@
     "style-loader": "^1.2.0",
     "terser-webpack-plugin": "^4.1.0",
     "webpack-merge": "^4.2.1"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

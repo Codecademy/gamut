@@ -23,8 +23,5 @@
     "@emotion/core": "10.0.28",
     "@emotion/styled": "10.0.27"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  }
+  "license": "MIT"
 }

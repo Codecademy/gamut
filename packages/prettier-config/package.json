@@ -15,8 +15,5 @@
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/prettier-config",
   "peerDependencies": {
     "prettier": "^2.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
