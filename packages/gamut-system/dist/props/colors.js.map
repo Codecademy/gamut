@@ -1,0 +1,1 @@
+{"version":3,"file":"colors.js","sourceRoot":"","sources":["../../src/props/colors.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,MAAM,GAAG;IACpB,KAAK,EAAE;QACL,QAAQ,EAAE,OAAO;KAClB;IACD,WAAW,EAAE;QACX,QAAQ,EAAE,aAAa;KACxB;IACD,eAAe,EAAE;QACf,QAAQ,EAAE,iBAAiB;KAC5B;CACO,CAAC"}
