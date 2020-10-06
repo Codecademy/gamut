@@ -10,7 +10,7 @@ export const compose = <
 >(
   ...handlers: Handlers
 ) => {
-  // Mash the handlers into a Frankenstonian conglomeration of each of their prop names and style templates.
+  // Mash the handlers into a Frankensteinian conglomeration of each of their prop names and style templates.
   const config = handlers.reduce<ResponsivePropertyArguments<Props>>(
     (accum, handler) => {
       return {

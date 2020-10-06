@@ -35,7 +35,10 @@ export const createHandler = <
 
   // These are all the possible prop names that this function could be responsible for.
   // These will be passed to style functions to indicate which props should be computed.
-  const propNames = [propName, ...dependentProps] as (keyof Props)[];
+  const propNames = [propName, ...dependentProps] as Exclude<
+    keyof Props,
+    'theme'
+  >[];
 
   // Use the requested template generator to create the style template fnction.
   // This is the *inner* function that takes in a single prop description and produces CSS.
