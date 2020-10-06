@@ -1,35 +1,45 @@
-import { FormContextValues, ValidationOptions } from 'react-hook-form';
+import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
+
+  /**
+   * Whether the label should be hidden visually and not take up space.
+   */
+  hideLabel?: boolean;
+
+  /**
+   * HTML id to use instead of the name.
+   */
+  id?: string;
+
   name: string;
   onUpdate?: (value: Value) => void;
-  size?: ColumnProps['size'];
-  id?: string;
+  size: ColumnProps['size'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
-  label?: string;
+  description: React.ReactNode;
+  label?: React.ReactNode;
   multiline?: boolean;
-  validation?: Pick<ValidationOptions, 'required'>;
+  validation?: ValidationRules;
   type: 'checkbox';
 };
 
 export type GridFormCustomFieldProps = {
-  className: string;
+  className?: string;
   error?: string;
   field: GridFormCustomField;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
-  label?: string;
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'custom';
 };
 
@@ -49,9 +59,9 @@ export type BasicInputType =
   | 'week';
 
 export type GridFormTextField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   placeholder?: string;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: BasicInputType;
 };
 
@@ -61,28 +71,28 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   options: GridFormRadioOption[];
-  validation?: Pick<ValidationOptions, 'required'>;
+  validation?: ValidationRules;
   type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   options: string[] | Record<string, number | string>;
-  validation?: Pick<ValidationOptions, 'required'>;
+  validation?: ValidationRules;
   type: 'select';
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
   label: React.ReactNode;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
-  label: string;
-  validation?: ValidationOptions;
+  label: React.ReactNode;
+  validation?: ValidationRules;
   type: 'textarea';
 };
 

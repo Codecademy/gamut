@@ -1,9 +1,8 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "11.0.4",
+  "version": "17.6.2",
   "author": "Codecademy Engineering",
-  "private": true,
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
@@ -12,27 +11,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
     "@babel/cli": "7.8.3",
     "@babel/core": "7.8.3",
     "@babel/polyfill": "7.8.3",
     "@babel/register": "7.8.3",
-    "@codecademy/gamut": "^9.0.5",
-    "@codecademy/gamut-icons": "^2.4.0",
-    "@codecademy/gamut-styles": "^4.1.0",
-    "@codecademy/webpack-config": "^5.0.2",
-    "@storybook/addon-a11y": "6.0.0-alpha.44",
-    "@storybook/addon-actions": "6.0.0-alpha.44",
-    "@storybook/addon-docs": "6.0.0-alpha.44",
-    "@storybook/addon-essentials": "6.0.0-alpha.44",
-    "@storybook/addon-knobs": "6.0.0-alpha.44",
-    "@storybook/addon-links": "6.0.0-alpha.44",
-    "@storybook/addon-storyshots": "6.0.0-alpha.44",
-    "@storybook/addons": "6.0.0-alpha.44",
-    "@storybook/react": "6.0.0-alpha.44",
-    "@storybook/theming": "6.0.0-alpha.44",
+    "@codecademy/gamut": "^16.1.2",
+    "@codecademy/gamut-icons": "^3.8.1",
+    "@codecademy/gamut-styles": "^7.0.1",
+    "@codecademy/webpack-config": "^5.0.5",
+    "@storybook/addon-a11y": "6.0.5",
+    "@storybook/addon-actions": "6.0.5",
+    "@storybook/addon-controls": "6.0.5",
+    "@storybook/addon-docs": "6.0.5",
+    "@storybook/addon-essentials": "6.0.5",
+    "@storybook/addon-knobs": "6.0.5",
+    "@storybook/addon-links": "6.0.5",
+    "@storybook/addon-storyshots": "6.0.5",
+    "@storybook/addons": "6.0.5",
+    "@storybook/react": "6.0.5",
+    "@storybook/theming": "6.0.5",
     "@types/react": "*",
     "@types/react-color": "^3.0.1",
     "autoprefixer": "^9.7.4",
@@ -43,6 +43,7 @@
     "jsdom": "15.0.0",
     "lodash": "4.17.13",
     "moment": "2.24.0",
+    "polished": "^3.6.5",
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "typescript": "*",
@@ -50,5 +51,8 @@
     "webpack-cli": "3.3.11",
     "webpack-react-docgen-typescript": "0.9.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -26,5 +26,3 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     );
   }
 );
-
-export default TextArea;

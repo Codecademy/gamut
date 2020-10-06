@@ -1,33 +1,22 @@
-import GridFormFileInput from '../index';
-import { mount } from 'enzyme';
-import React from 'react';
-import { stubFileField } from '../../../__tests__/stubs';
+import { itHandlesAriaInvalid } from '../../__fixtures__/assertions';
+import { renderGridFormFileInput } from '../../__fixtures__/renderers';
 
 describe('GridFormFileInput', () => {
   describe('when an id is passed as a prop', () => {
     it('renders an input with the same id', () => {
-      const textInput = mount(
-        <GridFormFileInput
-          field={stubFileField}
-          register={jest.fn()}
-          id={'mycoolid'}
-        />
-      );
+      const fileInput = renderGridFormFileInput({ id: 'mycoolid' });
 
-      expect(textInput.find('input#mycoolid').length).toBe(1);
+      expect(fileInput.find('input#mycoolid').length).toBe(1);
     });
   });
 
   describe('when no id is passed', () => {
     it('renders an input with the id equal to the field name', () => {
-      const textInput = mount(
-        <GridFormFileInput
-          field={{ ...stubFileField, name: 'name' }}
-          register={jest.fn()}
-        />
-      );
+      const fileInput = renderGridFormFileInput({ name: 'name' });
 
-      expect(textInput.find('input#name').length).toBe(1);
+      expect(fileInput.find('input#name').length).toBe(1);
     });
   });
+
+  itHandlesAriaInvalid('GridFormFileInput', 'input');
 });

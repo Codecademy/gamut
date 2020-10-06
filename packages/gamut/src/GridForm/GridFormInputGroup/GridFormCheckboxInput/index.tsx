@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { Checkbox } from '../../../Form';
 import { GridFormCheckboxField } from '../../types';
@@ -7,15 +7,13 @@ import { GridFormCheckboxField } from '../../types';
 export type GridFormCheckboxInputProps = {
   className?: string;
   field: GridFormCheckboxField;
-  register: FormContextValues['register'];
-  id?: string;
+  register: UseFormMethods['register'];
 };
 
 export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
   className,
   field,
   register,
-  id,
 }) => {
   return (
     <Checkbox
@@ -27,9 +25,7 @@ export const GridFormCheckboxInput: React.FC<GridFormCheckboxInputProps> = ({
       label={field.description}
       multiline={field.multiline}
       ref={register(field.validation)}
-      id={id}
+      id={field.id}
     />
   );
 };
-
-export default GridFormCheckboxInput;

@@ -1,4 +1,129 @@
-## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.0) (2020-06-11)
+### [3.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.0...@codecademy/gamut-icons@3.8.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
+
+
+### ✨ Features
+
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/client-modules/issues/976)) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e24976da66cb69341934ac80b2c53f5e975cc))
+
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.6.0...@codecademy/gamut-icons@3.7.0) (2020-09-28)
+
+
+### ✨ Features
+
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
+
+## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.5.0...@codecademy/gamut-icons@3.6.0) (2020-09-24)
+
+
+### ✨ Features
+
+* Add file download icon ([#969](https://github.com/Codecademy/client-modules/issues/969)) ([4ac7d4c](https://github.com/Codecademy/client-modules/commit/4ac7d4c88aca01177c20dea21ab3252679f3fc39))
+
+## [3.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.2...@codecademy/gamut-icons@3.5.0) (2020-09-24)
+
+
+### ✨ Features
+
+* added Pause icon ([#966](https://github.com/Codecademy/client-modules/issues/966)) ([e7ac196](https://github.com/Codecademy/client-modules/commit/e7ac196ce5873d98cc857601cadbec15faac8e97))
+
+### [3.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.1...@codecademy/gamut-icons@3.4.2) (2020-09-22)
+
+
+### 🐛 Bug Fixes
+
+* updated Select key to take in id ([#959](https://github.com/Codecademy/client-modules/issues/959)) ([e09587f](https://github.com/Codecademy/client-modules/commit/e09587fd3ee258e82e168b0e58d6fcde010582c0))
+
+### [3.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.4.0...@codecademy/gamut-icons@3.4.1) (2020-09-03)
+
+## [3.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.3.0...@codecademy/gamut-icons@3.4.0) (2020-09-02)
+
+
+### ✨ Features
+
+* **Icons:** add book and documentation icons ([#950](https://github.com/Codecademy/client-modules/issues/950)) ([435eb76](https://github.com/Codecademy/client-modules/commit/435eb760f631cedf933985bdc6be2d39260f41da))
+
+## [3.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.2.0...@codecademy/gamut-icons@3.3.0) (2020-08-27)
+
+
+### ✨ Features
+
+* **Icons:** Added svg icons ([#942](https://github.com/Codecademy/client-modules/issues/942)) ([dff9075](https://github.com/Codecademy/client-modules/commit/dff9075ed6c53ef95ca283c7df4e119064ac12da))
+
+## [3.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.3...@codecademy/gamut-icons@3.2.0) (2020-08-21)
+
+
+### ✨ Features
+
+* **Icons:** Add house-entrance, book-flip-page, pie-line-graph, rating-star-give icons ([#906](https://github.com/Codecademy/client-modules/issues/906)) ([2f4592f](https://github.com/Codecademy/client-modules/commit/2f4592fb9b1316f28988db2f8bc056fb77c3b776))
+
+### [3.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.2...@codecademy/gamut-icons@3.1.3) (2020-08-14)
+
+
+### Other Changes
+
+* Remove erroneous clip-path ([#918](https://github.com/Codecademy/client-modules/issues/918)) ([9ad193c](https://github.com/Codecademy/client-modules/commit/9ad193cbd70e39dc876dc88862afeb509d94839c))
+
+### [3.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.1...@codecademy/gamut-icons@3.1.2) (2020-08-13)
+
+
+### Other Changes
+
+* Migrated default exports to named ([#913](https://github.com/Codecademy/client-modules/issues/913)) ([5250e0c](https://github.com/Codecademy/client-modules/commit/5250e0c1a104694ec6cc44d5cab45bd401b85f56))
+
+### [3.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.1.0...@codecademy/gamut-icons@3.1.1) (2020-08-11)
+
+
+### Other Changes
+
+* fix git urls ([00c57a1](https://github.com/Codecademy/client-modules/commit/00c57a1dab9fbc196f820471729dc5a43445280e))
+* fix package.json artifacts ([2bb761f](https://github.com/Codecademy/client-modules/commit/2bb761fa3133b858bcef7ea369f9a7b616b09c42))
+
+## [3.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.1...@codecademy/gamut-icons@3.1.0) (2020-08-11)
+
+
+### ✨ Features
+
+* **Icons:** Update Delete & Check Icons and add contributing guide GM-63 GM-67 ([#912](https://github.com/Codecademy/client-modules/issues/912)) ([3db8c74](https://github.com/Codecademy/client-modules/commit/3db8c74f4f73153ca8409570bb424158495d2ce6))
+
+### [3.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.0.0...@codecademy/gamut-icons@3.0.1) (2020-07-29)
+
+## [3.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.2...@codecademy/gamut-icons@3.0.0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](https://github.com/Codecademy/client-modules/issues/838)) ([6044658](https://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+### [2.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.1...@codecademy/gamut-icons@2.4.2) (2020-07-17)
+
+
+### 🐛 Bug Fixes
+
+* Automatically add display names to anonymous function components ([#878](https://github.com/Codecademy/client-modules/issues/878)) ([a6296fb](https://github.com/Codecademy/client-modules/commit/a6296fb5e9e701e7e4a7740341e4dac6b04f0b96))
+
+### [2.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.4.0...@codecademy/gamut-icons@2.4.1) (2020-06-23)
+
+
+### Other Changes
+
+* **gamut-icons:** update svgo config ([#848](https://github.com/Codecademy/client-modules/issues/848)) ([269fa8c](https://github.com/Codecademy/client-modules/commit/269fa8cc0c2626097da632053e9f57e509aa5fb0))
 
 ## [2.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@2.3.1...@codecademy/gamut-icons@2.4.0) (2020-06-09)
 

@@ -1,4 +1,24 @@
-### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.2) (2020-06-11)
+### [5.0.5](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.4...@codecademy/webpack-config@5.0.5) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970))" ([#981](http://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](http://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](http://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](http://github.com/Codecademy/client-modules/issues/982)) ([294d355](http://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](http://github.com/Codecademy/client-modules/issues/970) [#981](http://github.com/Codecademy/client-modules/issues/981)
+
+### [5.0.4](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.3...@codecademy/webpack-config@5.0.4) (2020-08-18)
+
+
+### 🏗 Build System
+
+* **webpack-config:** [security] bump webpack-terser-plugin ([#925](http://github.com/Codecademy/client-modules/issues/925)) ([722ae82](http://github.com/Codecademy/client-modules/commit/722ae8240261f2d7844164db9d3b147937b63916))
+
+### [5.0.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.2...@codecademy/webpack-config@5.0.3) (2020-07-29)
 
 ### [5.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.1...@codecademy/webpack-config@5.0.2) (2020-05-12)
 

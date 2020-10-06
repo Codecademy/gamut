@@ -1,4 +1,4 @@
-import omitProps from '../omitProps';
+import { omitProps } from '../omitProps';
 
 describe('omitProps', () => {
   it('omits values from props object when passed in as an array', () => {

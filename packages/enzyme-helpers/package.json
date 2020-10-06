@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/enzyme-helpers",
-  "version": "1.1.10",
+  "version": "2.0.1",
   "description": "Helpers for writing Enzyme tests",
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
@@ -12,7 +12,6 @@
     "develop": "yarn build --watch",
     "prepublishOnly": "yarn build"
   },
-  "private": false,
   "peerDependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.11.2",
@@ -24,5 +23,8 @@
     "rollup": "1.19.4",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-node-resolve": "4.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

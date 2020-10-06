@@ -1,28 +1,32 @@
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
 import { Logo } from '@codecademy/gamut-labs/src';
 import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 
 <Meta
-  title="Core|Molecules/AppBar"
+  title="Molecules/AppBar"
   component={AppBar}
   subcomponents={{ AppBarSection }}
 />
 
 # AppBar
 
+<StoryStatus status="volatile" />
+
 This is an example of an AppBar component that contains one left-oriented
 AppBarSection that holds one AppBar Tab. These components mostly provide
 spacing and layout help that you can use for something like a footer or
 header
 
-<Preview>
+<Canvas>
   <Story name="AppBar">
-    <AppBar>
-      <AppBarSection position="left"></AppBarSection>
-    </AppBar>
+    {(args) => (
+      <AppBar>
+        <AppBarSection position="left"></AppBarSection>
+      </AppBar>
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={AppBar} />
 
@@ -32,14 +36,16 @@ This is an example of how our headers use the AppBar component to format
 various sections in a bar (left, center, and right). The AppBar can hold
 as many AppBarSections as you'd like.
 
-<Preview>
+<Canvas>
   <Story name="Header">
-    <AppBar>
-      <AppBarSection position="left">
-        <Logo />
-      </AppBarSection>
-      <AppBarSection position="center">Pricing</AppBarSection>
-      <AppBarSection position="right">Sign In</AppBarSection>
-    </AppBar>
+    {(args) => (
+      <AppBar>
+        <AppBarSection position="left">
+          <Logo />
+        </AppBarSection>
+        <AppBarSection position="center">Pricing</AppBarSection>
+        <AppBarSection position="right">Sign In</AppBarSection>
+      </AppBar>
+    )}
   </Story>
-</Preview>
+</Canvas>

@@ -1,0 +1,56 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Item, Container } from '@codecademy/gamut/src';
+import { Box, defaultGridProps } from './Elements';
+import { select, boolean, number } from '@storybook/addon-knobs';
+
+<Meta
+  title="Layouts/Container"
+  component={Container}
+  subcomponents={{ Container, Item }}
+/>
+
+# Container
+
+<StoryStatus status="stable" />
+
+A flex box primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story name="Flex Container ">
+    {(args) => {
+      const alignments = [
+        'stretch',
+        'center',
+        'end',
+        'start',
+        'baseline',
+        'spaceAround',
+        'spaceBetween',
+      ];
+      return (
+        <Container
+          align={select('align', alignments, undefined)}
+          alignSelf={select('alignSelf', alignments, undefined)}
+          justify={select('justify', alignments, undefined)}
+          center={boolean('center', false)}
+          column={boolean('column', false)}
+          row={boolean('row', false)}
+          fit={boolean('fit', true)}
+          flex={boolean('flex', false)}
+          grow={number('grow', undefined)}
+          shrink={number('shrink', undefined)}
+          inline={boolean('inline', false)}
+          nowrap={boolean('nowrap', false)}
+          reverse={boolean('reverse', false)}
+          wrap={boolean('wrap', false)}
+        >
+          <Box>Element 1</Box>
+          <Box>Element 2</Box>
+        </Container>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Props of={Container} />

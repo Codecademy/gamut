@@ -1,0 +1,25 @@
+import { HiddenText } from '@codecademy/gamut/src';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
+import { VisualTheme } from '@codecademy/gamut/src';
+import { StoryStatus } from '~styleguide/blocks';
+
+<Meta title="Atoms/HiddenText" component={HiddenText} />
+
+# HiddenText
+
+<StoryStatus status="stable" />
+
+Visually hidden text that should still be narrated by screenreaders.
+
+This is useful for cases where we visually indicate something not easily conveyed through semantic HTML.
+Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
+
+See https://wdn.unl.edu/page-title-h1-best-practices for more information.
+
+<Canvas withSource="open">
+  <Story name="HiddenText">
+    {(args) => <HiddenText>Surprise!</HiddenText>}
+  </Story>
+</Canvas>
+
+<Props of={HiddenText} />

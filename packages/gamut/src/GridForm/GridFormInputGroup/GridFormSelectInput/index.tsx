@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { Select } from '../../../Form';
 import { GridFormSelectField } from '../../types';
@@ -8,8 +8,7 @@ export type GridFormSelectInputProps = {
   className?: string;
   error?: boolean;
   field: Omit<GridFormSelectField, 'label'>;
-  register: FormContextValues['register'];
-  id?: string;
+  register: UseFormMethods['register'];
 };
 
 export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
@@ -17,7 +16,6 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
   error,
   field,
   register,
-  id,
 }) => {
   return (
     <Select
@@ -29,9 +27,8 @@ export const GridFormSelectInput: React.FC<GridFormSelectInputProps> = ({
       onChange={(event) => field.onUpdate?.(event.target.value)}
       ref={register(field.validation)}
       options={field.options}
-      id={id}
+      id={field.id}
+      aria-invalid={error}
     />
   );
 };
-
-export default GridFormSelectInput;

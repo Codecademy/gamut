@@ -6,5 +6,6 @@ export * from './Header/HeaderContainer';
 export * from './Header/HeaderTab';
 export * from './Loading';
 export * from './Logo';
+export * from './ProLogo';
 export * from './Quote';
 export * from './Testimonial';

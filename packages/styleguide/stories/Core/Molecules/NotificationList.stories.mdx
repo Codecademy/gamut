@@ -3,54 +3,56 @@ import {
   NotificationItem,
   NotificationIcon,
 } from '@codecademy/gamut/src';
-import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Blocks';
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
 
 <Meta
-  title="Core|Molecules/NotificationList"
+  title="Molecules/NotificationList"
   component={NotificationList}
   subcomponents={{ NotificationItem, NotificationIcon }}
 />
 
 # NotificationList
 
-<StoryStatus status="ready" />
+<StoryStatus status="stable" />
 
 List of time-sensitive user notifications, such as in a top-right dropdown
 menu from a header.
 
-<Preview>
+<Canvas>
   <Story name="NotificationsList">
-    <NotificationList
-      notifications={[
-        {
-          campaign: 'python-livestream',
-          date: 1,
-          iconSettings: {
-            color: '#3069f0',
-            backgroundColor: '#ffd500',
+    {(args) => (
+      <NotificationList
+        notifications={[
+          {
+            campaign: 'python-livestream',
+            date: 1,
+            iconSettings: {
+              color: '#3069f0',
+              backgroundColor: '#ffd500',
+            },
+            iconSlug: 'python',
+            id: 'abc',
+            link:
+              'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
+            text: 'Check out our Python livestream!',
+            unread: true,
           },
-          iconSlug: 'python',
-          id: 'abc',
-          link:
-            'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
-          text: 'Check out our Python livestream!',
-          unread: true,
-        },
-        {
-          campaign: 'pro-trial',
-          date: 2,
-          id: '123',
-          imageUrl: 'https://bit.ly/2Ckp4eW',
-          link:
-            'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
-          text:
-            "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
-        },
-      ]}
-    />
+          {
+            campaign: 'pro-trial',
+            date: 2,
+            id: '123',
+            imageUrl: 'https://bit.ly/2Ckp4eW',
+            link:
+              'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
+            text:
+              "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+          },
+        ]}
+      />
+    )}
   </Story>
-</Preview>
+</Canvas>
 
 <Props of={NotificationList} />
 
@@ -58,8 +60,8 @@ menu from a header.
 
 Notifications are not always present, so this has an empty state.
 
-<Preview>
+<Canvas>
   <Story name="Empty">
-    <NotificationList notifications={[]} />
+    {(args) => <NotificationList notifications={[]} />}
   </Story>
-</Preview>
+</Canvas>

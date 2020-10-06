@@ -1,4 +1,28 @@
-### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.10) (2020-06-11)
+### [2.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@2.0.0...@codecademy/enzyme-helpers@2.0.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.11...@codecademy/enzyme-helpers@2.0.0) (2020-08-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added import/no-default-export to ESLint config (#929)
+
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](https://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](https://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
+
+### [1.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.10...@codecademy/enzyme-helpers@1.1.11) (2020-07-29)
 
 ### [1.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.9...@codecademy/enzyme-helpers@1.1.10) (2020-05-04)
 

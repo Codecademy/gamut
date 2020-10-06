@@ -4,11 +4,11 @@ import {
   IconGallery,
   IconItem,
 } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '../../../Blocks';
-import { Icon } from '@codecademy/gamut/src';
-import iconMap from '@codecademy/gamut/src/Icon/iconMap';
+import { StoryStatus } from '~styleguide/blocks';
+import { Icon } from '@codecademy/gamut/src/deprecated';
+import { iconMap } from '@codecademy/gamut/src/deprecated/Icon/iconMap';
 
-<Meta title="Deprecated|Atoms/Icon" componet={Icon} />
+<Meta title="Deprecated/Atoms/Icon" componet={Icon} />
 
 # Icon
 
@@ -20,12 +20,24 @@ Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package ins
 
 <Props of={Icon} />
 
+## Usage
+
+In order to use this component you will need to import it from a specific deprecated path. Since we want
+to limit usage of this component going forward we have added eslint rules that will prevent you from
+importing.
+
+```tsx
+import { Icon } from '@codecademy/gamut/dist/deprecated';
+
+const MyComponent = () => <Icon name="close" />;
+```
+
 ## All Icons
 
 <IconGallery>
   {Object.keys(iconMap).map((iconName) => (
     <IconItem key={iconName} name={iconName}>
-      <Icon key={iconName} name={iconName} />
+      <Icon key={iconName} name={iconName} label={iconName} />
     </IconItem>
   ))}
 </IconGallery>

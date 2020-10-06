@@ -8,7 +8,7 @@
   margin: ($form-padding / 2) 0;
   width: 100%;
   font-weight: normal;
-  padding: $form-padding;
+  padding: $form-padding 0;
 }
 
 .checkboxText {
@@ -83,5 +83,5 @@ input:disabled + .checkboxLabel {
 }
 
 .invisible {
-  @include sr-only;
+  @include screenreader-only;
 }

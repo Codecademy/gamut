@@ -1,4 +1,57 @@
-### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@0.3.3) (2020-06-11)
+### [3.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.1...@codecademy/eslint-config@3.0.2) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970))" ([#981](http://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](http://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](http://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](http://github.com/Codecademy/client-modules/issues/982)) ([294d355](http://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](http://github.com/Codecademy/client-modules/issues/970) [#981](http://github.com/Codecademy/client-modules/issues/981)
+
+### [3.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.0...@codecademy/eslint-config@3.0.1) (2020-09-25)
+
+
+### Other Changes
+
+* **TSLint:** TS 4.0.2 and Eslint 6.5.1 ([#968](http://github.com/Codecademy/client-modules/issues/968)) ([b2c3ad5](http://github.com/Codecademy/client-modules/commit/b2c3ad556f46d0c7589e8211c39c226dbca26d43))
+
+## [3.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.1...@codecademy/eslint-config@3.0.0) (2020-08-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added import/no-default-export to ESLint config (#929)
+
+### ✨ Features
+
+* Added import/no-default-export to ESLint config ([#929](http://github.com/Codecademy/client-modules/issues/929)) ([7bbc10d](http://github.com/Codecademy/client-modules/commit/7bbc10d85f1090064bc98f96c2eb5218a93c7d8a))
+
+### [2.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@2.0.0...@codecademy/eslint-config@2.0.1) (2020-07-29)
+
+## [2.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@1.0.0...@codecademy/eslint-config@2.0.0) (2020-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Icons:** Streamline Icon Set Full [GM-30] (#838)
+
+### ✨ Features
+
+* **Icons:** Streamline Icon Set Full [GM-30] ([#838](http://github.com/Codecademy/client-modules/issues/838)) ([6044658](http://github.com/Codecademy/client-modules/commit/6044658c5fc97edcb100bc38b529c4837df5fd96))
+
+## [1.0.0](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.3...@codecademy/eslint-config@1.0.0) (2020-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Strict TypeScript with react-hook-form@6 (#852)
+
+### 🐛 Bug Fixes
+
+* Strict TypeScript with react-hook-form@6 ([#852](http://github.com/Codecademy/client-modules/issues/852)) ([817fa8c](http://github.com/Codecademy/client-modules/commit/817fa8c7e05be6556e4e2f393bbe52fe142d63e4))
 
 ### [0.3.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@0.3.2...@codecademy/eslint-config@0.3.3) (2020-04-17)
 

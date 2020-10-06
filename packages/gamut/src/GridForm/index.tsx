@@ -1,10 +1,10 @@
 import React from 'react';
-import { useForm, FieldError, Mode } from 'react-hook-form';
+import { useForm, FieldError, Mode, SubmitHandler } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import GridFormInputGroup from './GridFormInputGroup';
-import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
+import { GridFormInputGroup } from './GridFormInputGroup';
+import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
 export * from './types';
@@ -26,7 +26,7 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Function called with field values on submit, if all validations have passed.
    */
-  onSubmit: (values: Values) => Promise<void>;
+  onSubmit: SubmitHandler<Values>;
 
   /**
    * Layout grid row gap override.
@@ -36,7 +36,12 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Description of the submit button at the end of the form.
    */
-  submit: Omit<GridFormSubmitProps, 'disabled'>;
+  submit: GridFormSubmitProps & {
+    /**
+     * Manually overrides the submit button to be disabled regardless of validation, if true.
+     */
+    disabled?: boolean;
+  };
 
   /**
    * Which react hook form mode we are going to use for validation.
@@ -61,7 +66,7 @@ export function GridForm<
   const { errors, handleSubmit, register, setValue, formState } = useForm<
     Values
   >({
-    defaultValues: fields.reduce(
+    defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
         [field.name]: field.defaultValue,
@@ -71,15 +76,25 @@ export function GridForm<
     mode: validation,
   });
 
+  /**
+   * Keep track of the first error in this form.
+   * This is so we only add the correct aria-live props on the first error.
+   */
+  let pastFirstError = false;
+
   return (
-    <Form className={className} onSubmit={handleSubmit(onSubmit)}>
+    <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
         {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
 
+          const isFirstError = !pastFirstError && errorMessage !== undefined;
+          pastFirstError = pastFirstError || isFirstError;
+
           return (
             <GridFormInputGroup
               error={errorMessage as string}
+              isFirstError={isFirstError}
               field={field}
               key={field.name}
               register={register}
@@ -88,13 +103,13 @@ export function GridForm<
           );
         })}
         <GridFormSubmit
-          disabled={validation === 'onChange' && !formState.isValid}
           {...submit}
+          disabled={
+            (validation === 'onChange' && !formState.isValid) || submit.disabled
+          }
         />
         {children}
       </LayoutGrid>
     </Form>
   );
 }
-
-export default GridForm;

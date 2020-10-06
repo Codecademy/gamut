@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
+import { UseFormMethods } from 'react-hook-form';
 
 import { RadioGroup, Radio } from '../../../Form';
 import { GridFormRadioGroupField } from '../../types';
@@ -7,9 +7,8 @@ import { GridFormRadioGroupField } from '../../types';
 export type GridFormRadioGroupInputProps = {
   className?: string;
   field: Omit<GridFormRadioGroupField, 'label'>;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
-  id?: string;
 };
 
 export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = ({
@@ -17,7 +16,6 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
   field,
   register,
   setValue,
-  id,
 }) => {
   return (
     <RadioGroup
@@ -36,11 +34,9 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
           label={label}
           ref={register(field.validation)}
           value={value}
-          id={id}
+          id={field.id}
         />
       ))}
     </RadioGroup>
   );
 };
-
-export default GridFormRadioGroupInput;

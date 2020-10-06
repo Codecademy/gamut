@@ -9,7 +9,7 @@ import {
   stubTextareaField,
   stubCheckboxField,
 } from '../../__tests__/stubs';
-import GridFormInputGroup, { GridFormInputGroupProps } from '..';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
   const props: GridFormInputGroupProps = {
@@ -33,14 +33,12 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toContain(error);
   });
 
-  describe('checkbox input', () => {
-    it('renders a checkbox input when the field type is checkbox', () => {
-      const { wrapped } = renderComponent({
-        field: { ...stubCheckboxField, id: 'mycoolid' },
-      });
-
-      expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
+  it('renders a checkbox input when the field type is checkbox', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubCheckboxField, id: 'mycoolid' },
     });
+
+    expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a custom input when the field type is custom', () => {
@@ -49,6 +47,7 @@ describe('GridFormInputGroup', () => {
       field: {
         render: () => text,
         name: 'stub-custom',
+        size: 6,
         type: 'custom',
       },
     });
@@ -166,5 +165,23 @@ describe('GridFormInputGroup', () => {
       .simulate('change', { target: { files: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('sets aria-live to assertive if isFirstError flag is on', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: true,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('assertive');
+  });
+
+  it('sets aria-live to off if isFirstError flag is off', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: false,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('off');
   });
 });

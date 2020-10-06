@@ -3,7 +3,7 @@ import React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { createPromise } from '../../utils/createPromise';
-import GridForm from '..';
+import { GridForm } from '..';
 import {
   stubCheckboxField,
   stubFileField,
@@ -26,7 +26,7 @@ describe('GridForm', () => {
       <GridForm
         fields={fields}
         onSubmit={onSubmit}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 
@@ -61,6 +61,36 @@ describe('GridForm', () => {
     });
   });
 
+  it('only sets aria-live prop on the first validation error in a form', async () => {
+    const fields = [
+      { ...stubTextField, validation: { required: 'Please enter text' } },
+      {
+        ...stubTextField,
+        validation: { required: 'Please enter second text' },
+        name: 'second-stub',
+      },
+    ];
+    const api = createPromise<{}>();
+    const onSubmit = async (values: {}) => api.resolve(values);
+    const wrapped = mount(
+      <GridForm
+        fields={fields}
+        onSubmit={onSubmit}
+        submit={{ contents: <>Submit</>, size: 6 }}
+      />
+    );
+
+    wrapped.setProps(wrapped.props());
+
+    await act(async () => {
+      wrapped.find('form').simulate('submit');
+    });
+    wrapped.update();
+
+    // there should only be a single "assertive" error from the form submission
+    expect(wrapped.find('span[aria-live="assertive"]').length).toBe(1);
+  });
+
   describe('when "onSubmit" validation is selected', () => {
     it('never disables the submit button', () => {
       const fields = [
@@ -73,16 +103,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onSubmit'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
-      );
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
     });
   });
 
@@ -98,14 +128,16 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).toBeTruthy();
     });
 
     it('enables the submit button after the required fields are completed', async () => {
@@ -119,7 +151,7 @@ describe('GridForm', () => {
         <GridForm
           fields={fields}
           onSubmit={onSubmit}
-          submit={{ contents: <>Submit</> }}
+          submit={{ contents: <>Submit</>, size: 6 }}
           validation={'onChange'}
         />
       );
@@ -133,9 +165,27 @@ describe('GridForm', () => {
 
       wrapped.setProps(wrapped.props());
 
-      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(
-        false
+      expect(
+        wrapped.find('button[type="submit"]').prop('disabled')
+      ).not.toBeTruthy();
+    });
+
+    it('keeps the submit button disabled when overridden and there are no incomplete fields', async () => {
+      const api = createPromise<{}>();
+      const onSubmit = async (values: {}) => api.resolve(values);
+
+      const wrapped = mount(
+        <GridForm
+          fields={[]}
+          onSubmit={onSubmit}
+          submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
+          validation={'onChange'}
+        />
       );
+
+      wrapped.setProps(wrapped.props());
+
+      expect(wrapped.find('button[type="submit"]').prop('disabled')).toBe(true);
     });
   });
 
@@ -170,7 +220,7 @@ describe('GridForm', () => {
           },
         ]}
         onSubmit={jest.fn()}
-        submit={{ contents: <>Submit</> }}
+        submit={{ contents: <>Submit</>, size: 6 }}
       />
     );
 

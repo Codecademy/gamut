@@ -13,3 +13,8 @@
 .fixedPositioning {
   position: fixed;
 }
+
+.modalOpen {
+  overflow-y: hidden;
+  max-height: 100vh;
+}

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import Markdown from '../index';
+import { Markdown } from '../index';
 
 const basicMarkdown = `
 # Heading 1
@@ -177,6 +177,14 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
+    it('Renders a link with text', () => {
+      const text = '[link](/url)';
+      const expectedText = `link`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+
     it('Adds rel="noopener" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />

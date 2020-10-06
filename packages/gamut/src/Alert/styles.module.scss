@@ -76,6 +76,10 @@ $themeColors: (
   margin-left: px-rem(6);
 }
 
+.truncate {
+  white-space: pre-line;
+}
+
 @each $theme, $map in $themeColors {
   .iconButton__#{$theme} {
     color: map-get($map, "color");

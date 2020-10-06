@@ -3,19 +3,19 @@ import cx from 'classnames';
 import marked from 'marked';
 import insane from 'insane';
 import HtmlToReact from 'html-to-react';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import {
   createTagOverride,
   createCodeBlockOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
-import defaultSanitizationConfig from './libs/sanitizationConfig';
+import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import s from './styles/index.module.scss';
-import Iframe from './libs/overrides/Iframe';
-import Anchor from './libs/overrides/Anchor';
-import Table from './libs/overrides/Table';
+import { Iframe } from './libs/overrides/Iframe';
+import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
+import { Table } from './libs/overrides/Table';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
@@ -74,7 +74,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: Anchor,
+          component: MarkdownAnchor,
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
@@ -135,5 +135,3 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
-
-export default Markdown;

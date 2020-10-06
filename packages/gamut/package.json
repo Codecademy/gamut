@@ -1,29 +1,33 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "9.0.5",
+  "version": "16.1.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "dist/ButtonBase/index.js"
+    "dist/**/[A-Z]**/[A-Z]*.js",
+    "dist/**/[A-Z]**/index.js"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
+    "@emotion/core": ">=10.0.0",
+    "@emotion/styled": ">=10.0.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^2.4.0",
-    "@codecademy/gamut-styles": "^4.1.0",
+    "@codecademy/gamut-icons": "^3.8.1",
+    "@codecademy/gamut-styles": "^7.0.1",
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
+    "framer-motion": "^1.11.0",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
     "invariant": "^2.2.4",
@@ -31,8 +35,10 @@
     "marked": "^0.6.0",
     "moment": "^2.24.0",
     "react-aria-tabpanel": "^4.4.0",
-    "react-hook-form": "^5.2.0",
-    "react-truncate-markup": "^4.1.1"
+    "react-hook-form": "6.0.6",
+    "react-player": "^2.3.1",
+    "react-truncate-markup": "^4.1.1",
+    "react-use": "^13.18.0"
   },
   "scripts": {
     "verify": "tsc --noEmit",
@@ -46,5 +52,8 @@
   "license": "MIT",
   "devDependencies": {
     "onchange": "^7.0.2"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
