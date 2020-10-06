@@ -8,7 +8,7 @@ import {
 
 export type ResponsivePropertyArguments<T extends AbstractProps> = {
   propNames: (keyof T)[];
-  templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
+  styleTemplates: Partial<Record<keyof T, StyleTemplate<T>>>;
 };
 
 export const DEFAULT_MEDIA_QUERIES = {
@@ -19,12 +19,11 @@ export const DEFAULT_MEDIA_QUERIES = {
   xl: '@media (min-width: 1248px)',
 };
 
-export function responsiveProperty<
-  Theme extends AbstractTheme,
-  Props extends { theme?: Theme }
+export function createResponsiveStyleTemplate<
+  Props extends { theme?: AbstractTheme }
 >({
   propNames,
-  templateFns,
+  styleTemplates,
 }: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
   return (props) => {
     const { breakpoints = DEFAULT_MEDIA_QUERIES } = props?.theme || {};
@@ -72,9 +71,9 @@ export function responsiveProperty<
 
     // Iterate through each breakpoints sorted props
     entries(responsive).forEach(([breakpoint, bpProps]) => {
-      const templates = values(templateFns);
+      const templates = values(styleTemplates);
 
-      // TODO: Only call the templateFns we have props for.1
+      // TODO: Only call the styleTemplates we have props for.1
       templates.forEach((templatFn) => {
         const templateStyles =
           templatFn?.({ ...bpProps, theme: props.theme }) ?? {};

@@ -82,7 +82,7 @@ export type TemplateMap<Props extends AbstractProps> = Partial<
 
 export type Handler<Props extends AbstractProps> = {
   propNames: (keyof Props)[];
-  templateFns: TemplateMap<Props>;
+  styleTemplates: TemplateMap<Props>;
 } & ((props: Props) => CSSObject);
 
 export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
@@ -95,7 +95,7 @@ export type TransformValue = (value: any) => string | number;
 
 export type AbstractPropertyConfig = {
   propName: PropAlias;
-  altProps?: Readonly<string[]>;
+  dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AbstractScales;
   computeValue?: TransformValue;
@@ -110,12 +110,15 @@ export type PropertyConfig<
 
 export type PropKey<Config extends AbstractPropertyConfig> =
   | Config['propName']
-  | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
+  | Extract<
+      Config,
+      { dependentProps: Readonly<string[]> }
+    >['dependentProps'][number];
 
 export type GetAltProps<Config extends AbstractPropertyConfig> = Extract<
   Props[Config['propName']],
-  { altProps: string }
->['altProps'];
+  { dependentProps: string }
+>['dependentProps'];
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<

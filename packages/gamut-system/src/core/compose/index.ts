@@ -3,7 +3,6 @@ import {
   Handler,
   UnionToIntersection,
   StyleTemplate,
-  AbstractTheme,
 } from '../../types/system';
 import { responsiveProperty } from '../../propTemplates';
 
@@ -16,30 +15,31 @@ export const compose = <
   // Initialize the new composites arguments
   const config = {
     propNames: [],
-    templateFns: {},
+    styleTemplates: {},
   } as {
     propNames: (keyof Parameters<Handlers[number]>[0])[];
-    templateFns: Partial<Record<keyof Props, StyleTemplate<Props>>>;
+    styleTemplates: Partial<Record<keyof Props, StyleTemplate<Props>>>;
   };
 
-  // Add each handlers respective propNames and templateFns to the new composite
+  // Add each handlers respective propNames and styleTemplates to the new composite
   handlers.forEach((handler) => {
     if (handler.propNames) {
       config.propNames = [...config.propNames, ...handler.propNames];
     }
-    if (handler.templateFns) {
-      config.templateFns = { ...config.templateFns, ...handler.templateFns };
+    if (handler.styleTemplates) {
+      config.styleTemplates = {
+        ...config.styleTemplates,
+        ...handler.styleTemplates,
+      };
     }
   });
 
   // Create a new responsive property responsible for templating all the single handlers
-  const composedHandler = responsiveProperty<AbstractTheme, Props>(
-    config
-  ) as Handler<Props>;
+  const composedHandler = responsiveProperty<Props>(config) as Handler<Props>;
 
   // Make the handlers propNames and functions accessible on the function reference
   composedHandler.propNames = config.propNames;
-  composedHandler.templateFns = config.templateFns;
+  composedHandler.styleTemplates = config.styleTemplates;
 
   return composedHandler;
 };

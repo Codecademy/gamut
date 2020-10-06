@@ -19,7 +19,7 @@ export type Props = {
 
   borderWidth: {
     defaultValue: CSS.Properties['borderWidth'];
-    altProps:
+    dependentProps:
       | 'borderWidthLeft'
       | 'borderWidthRight'
       | 'borderWidthTop'
@@ -68,7 +68,7 @@ export type Props = {
   /** Spacing */
   margin: {
     defaultValue: CSS.Properties['margin'];
-    altProps:
+    dependentProps:
       | 'marginLeft'
       | 'marginRight'
       | 'marginTop'
@@ -78,7 +78,7 @@ export type Props = {
   };
   padding: {
     defaultValue: CSS.Properties['padding'];
-    altProps:
+    dependentProps:
       | 'paddingLeft'
       | 'paddingRight'
       | 'paddingTop'
@@ -224,7 +224,7 @@ export type Props = {
   };
   borderColor: {
     defaultValue: CSS.Properties['borderColor'];
-    altProps:
+    dependentProps:
       | 'borderColorLeft'
       | 'borderColorRight'
       | 'borderColorTop'

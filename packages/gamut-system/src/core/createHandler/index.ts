@@ -1,21 +1,20 @@
-import {
-  PropertyConfig,
-  AbstractTheme,
-  ThematicProps,
-  Handler,
-  StyleTemplate,
-  TransformValue,
-} from '../../types/system';
 import { identity } from 'lodash';
 import {
-  standardProperty,
-  directionalProperty,
-  responsiveProperty,
-} from '../../propTemplates';
+  createStandardStyleTemplate,
+  createDirectionalStyleTemplate,
+  createResponsiveStyleTemplate,
+} from '../../styleTemplates';
+import {
+  AbstractTheme,
+  Handler,
+  PropertyConfig,
+  StyleTemplate,
+  ThematicProps,
+} from '../../types/system';
 
-const TEMPLATES = {
-  standard: standardProperty,
-  directional: directionalProperty,
+const STYLE_TEMPLATE_GENERATORS = {
+  directional: createDirectionalStyleTemplate,
+  standard: createStandardStyleTemplate,
 };
 
 export const createHandler = <
@@ -25,41 +24,39 @@ export const createHandler = <
 >(
   config: Config
 ): Handler<Props> => {
-  // Initialize the config defaults
+  // Prop configs may choose between standard style templates and the fancy directional properties.
+  // By default, we assume no value transformations ("identity") and standard templates.
   const {
-    propName,
-    altProps = [],
     computeValue = identity,
+    dependentProps = [],
+    propName,
     type = 'standard',
   } = config;
 
-  // Find the correct template function
-  const templateFunction = TEMPLATES[type];
+  // These are all the possible prop names that this function could be responsible for.
+  // These will be passed to style functions to indicate which props should be computed.
+  const propNames = [propName, ...dependentProps] as (keyof Props)[];
 
-  // Create the style template function for the relative props
-  const styleFunction = templateFunction<
-    Props,
-    Config & { computeValue: TransformValue }
-  >({
+  // Use the requested template generator to create the style template fnction.
+  // This is the *inner* function that takes in a single prop description and produces CSS.
+  const styleTemplate: StyleTemplate<Props> = STYLE_TEMPLATE_GENERATORS[type]({
     ...config,
     propName,
     computeValue,
   });
 
-  const propNames: any[] = [propName, ...altProps];
-  const templateFns = {
-    [propName]: styleFunction,
+  // Create a container to place composed style templates in.
+  // This only contains our one requested style template to start, but might be added to later,
+  // if compose combines this with other templates.
+  const styleTemplates = {
+    [propName]: styleTemplate,
   } as Partial<Record<keyof Props, StyleTemplate<Props>>>;
 
-  // Create a responsive property for those propNames / templates
-  const handler = responsiveProperty<Theme, Props>({
-    propNames,
-    templateFns,
-  }) as Handler<Props>;
-
-  // Make the handlers propNames and functions accessible on the function reference (for compose)
-  handler.propNames = propNames;
-  handler.templateFns = templateFns;
-
-  return handler;
+  // Using our style templates, create a responsive property for the prop names and template,
+  // which will be a function that takes in an object of prop descriptions and returns valid CSS.
+  // We also assign the prop names and original template as members (for composition later).
+  return Object.assign(
+    createResponsiveStyleTemplate<Props>({ propNames, styleTemplates }),
+    { propNames, styleTemplates }
+  );
 };

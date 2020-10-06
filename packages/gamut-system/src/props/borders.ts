@@ -1,7 +1,7 @@
 export const border = {
   borderWidth: {
     propName: 'borderWidth',
-    altProps: [
+    dependentProps: [
       'borderWidthLeft',
       'borderWidthRight',
       'borderWidthTop',
