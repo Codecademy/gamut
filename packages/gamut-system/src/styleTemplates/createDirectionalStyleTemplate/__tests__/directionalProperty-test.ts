@@ -1,13 +1,13 @@
-import { directionalProperty } from '..';
+import { createDirectionalStyleTemplate } from '..';
 
-describe(directionalProperty, () => {
+describe(createDirectionalStyleTemplate, () => {
   it('creates a property function', () => {
-    const propFunction = directionalProperty({
+    const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
       computeValue: (val) => val,
     });
 
-    const templatedStyles = propFunction({ margin: '10px' });
+    const templatedStyles = styleTemplate({ margin: '10px' });
     expect(templatedStyles).toEqual({
       marginTop: '10px',
       marginRight: '10px',
@@ -17,12 +17,12 @@ describe(directionalProperty, () => {
   });
 
   it('accepts a custom transform function', () => {
-    const propFunction = directionalProperty({
+    const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
       computeValue: (val) => `${(val as number) * 2}px`,
     });
 
-    const templatedStyles = propFunction({ margin: 5 });
+    const templatedStyles = styleTemplate({ margin: 5 });
     expect(templatedStyles).toEqual({
       marginTop: '10px',
       marginRight: '10px',
@@ -32,20 +32,20 @@ describe(directionalProperty, () => {
   });
 
   it('does not template base when no configuration is given', () => {
-    const propFunction = directionalProperty({
+    const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
       computeValue: (val) => val,
     });
 
-    const leftStyles = propFunction({ marginLeft: '10px' });
+    const leftStyles = styleTemplate({ marginLeft: '10px' });
     expect(leftStyles).toEqual({ marginLeft: '10px' });
 
-    const YStyles = propFunction({ marginY: '10px' });
+    const YStyles = styleTemplate({ marginY: '10px' });
     expect(YStyles).toEqual({ marginTop: '10px', marginBottom: '10px' });
   });
 
   describe('directional overrides', () => {
-    const propFunction = directionalProperty({
+    const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
       computeValue: (val) => val,
     });
@@ -129,7 +129,7 @@ describe(directionalProperty, () => {
       ];
 
       it(`overrides the ${key} propeties when configured`, () => {
-        expect(propFunction(props)).toEqual(expected);
+        expect(styleTemplate(props)).toEqual(expected);
       });
     });
   });

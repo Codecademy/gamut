@@ -7,14 +7,13 @@ import {
 } from '../../types/system';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
 
-export type ResponsivePropertyArguments<T extends AbstractProps> = {
-  propNames: Exclude<keyof T, 'theme'>[];
-  styleTemplates: Partial<Record<keyof T, StyleTemplate<T>>>;
+export type ResponsivePropertyArguments<Props extends AbstractProps> = {
+  propNames: Exclude<keyof Props, 'theme'>[];
+  styleTemplates: Partial<Record<keyof Props, StyleTemplate<Props>>>;
 };
 
 export function createResponsiveStyleTemplate<
-  Theme extends AbstractTheme,
-  Props extends { theme?: Theme }
+  Props extends { theme?: AbstractTheme }
 >({
   propNames,
   styleTemplates,

@@ -1,8 +1,7 @@
 import { identity } from 'lodash';
 import { compose } from '..';
 import { border, layout, typography } from '../../../props';
-import { directionalProperty, standardProperty } from '../../../propTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
+import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { createHandler } from '../../createHandler';
 
 const display = createHandler(layout.display);
