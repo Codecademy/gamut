@@ -11,6 +11,19 @@ describe(standardProperty, () => {
     expect(templatedStyles).toEqual({ display: 'block' });
   });
 
+  it('accepts a custom scale', () => {
+    const propFunction = standardProperty({
+      scale: {
+        xs: '1rem',
+      },
+      propName: 'fontSize',
+      computeValue: (val) => val,
+    });
+
+    const templatedStyles = propFunction({ fontSize: 'xs' });
+    expect(templatedStyles).toEqual({ fontSize: '1rem' });
+  });
+
   it('accepts a custom transform function', () => {
     const doubleMargin = standardProperty({
       propName: 'margin',

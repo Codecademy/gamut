@@ -1,12 +1,8 @@
 import { CSSObject } from '@emotion/core';
 import { get, isObject } from 'lodash';
-import {
-  AbstractProps,
-  AbstractPropertyConfig,
-  StyleTemplate,
-  ScaleMap,
-  ScaleArray,
-} from '../../types/system';
+import { StyleTemplate } from '../../types/templates';
+import { AbstractProps, ScaleMap, ScaleArray } from '../../types/theme';
+import { TemplateConfig } from '../types';
 
 type AllDirections = 'top' | 'right' | 'left' | 'bottom';
 const DIRECTIONS: AllDirections[] = ['top', 'right', 'bottom', 'left'];
@@ -50,8 +46,7 @@ type DirectionalProps = typeof DIRECTIONAL_PROPS;
 
 export function directionalProperty<
   Props extends AbstractProps,
-  Config extends AbstractPropertyConfig &
-    Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
+  Config extends TemplateConfig
 >({ propName, scale, computeValue }: Config): StyleTemplate<Props> {
   return (props: Props): CSSObject => {
     // Initialize all directional props from base => specific direction

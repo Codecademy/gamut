@@ -1,38 +1,45 @@
-import { get, isObject } from 'lodash';
-import {
-  AbstractProps,
-  AbstractPropertyConfig,
-  StyleTemplate,
-  ScaleMap,
-  ScaleArray,
-} from '../../types/system';
+import { get, isArray, isObject } from 'lodash';
+import { AbstractPropertyConfig } from '../../types/props';
+import { StyleTemplate, TemplateFactorySettings } from '../../types/templates';
+import { TemplateConfig } from '../types';
 
+/**
+ * Creates a template function to compute the single CSS property
+ * corresponding to a provided prop description.
+ */
 export const standardProperty = <
-  Props extends AbstractProps,
-  Config extends AbstractPropertyConfig &
-    Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
+  Config extends TemplateConfig,
+  Props extends Record<string, unknown>
 >({
+  computeValue,
   propName,
   scale,
-  computeValue,
-}: Config): StyleTemplate<Props> => {
+}: TemplateConfig): StyleTemplate<Props> => {
+  const getScaledValue = (initialValue: unknown) => {
+    switch (typeof scale) {
+      case 'number':
+      case 'string':
+        return initialValue;
+
+      case 'object':
+        scale[initialValue as number | string];
+    }
+
+    return initialValue;
+  };
+
   return (props: Props) => {
-    let propValue = props[propName];
-    if (propValue === undefined) {
-      return;
-    }
+    // let scaleShape = scale;
+    // if (typeof scaleShape === 'string') {
+    //   scaleShape = props.theme[scaleShape];
+    // }
 
-    let scaleShape = scale;
-    if (typeof scaleShape === 'string') {
-      scaleShape = get(props, `theme.${scale}`, {}) as ScaleMap | ScaleArray;
-    }
-
-    if (isObject(scaleShape)) {
-      propValue = get(scaleShape, `${propValue}`, propValue);
-    }
+    // if (isObject(scaleShape)) {
+    //   propValue = get(scaleShape, `${propValue}`, propValue);
+    // }
 
     return {
-      [propName]: computeValue(propValue),
+      [propName]: computeValue(getScaledValue(props[propName])),
     };
   };
 };

@@ -1,7 +1,7 @@
 export const spacing = {
   margin: {
     propName: 'margin',
-    altProps: [
+    boundProps: [
       'marginLeft',
       'marginRight',
       'marginTop',
@@ -13,7 +13,7 @@ export const spacing = {
   },
   padding: {
     propName: 'padding',
-    altProps: [
+    boundProps: [
       'paddingLeft',
       'paddingRight',
       'paddingTop',

@@ -4,7 +4,7 @@ import {
   UnionToIntersection,
   StyleTemplate,
   AbstractTheme,
-} from '../../types/system';
+} from '../../types/groups';
 import { responsiveProperty } from '../../propTemplates';
 
 export const compose = <

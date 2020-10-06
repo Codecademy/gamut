@@ -1,3 +1,3 @@
-export * from './standardProperty';
-export * from './responsiveProperty';
+export * from './createResponsiveStyles';
 export * from './directionalProperty';
+export * from './standardProperty';

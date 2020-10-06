@@ -7,7 +7,7 @@ by creating a prop config: an immutable definition that defines the way the styl
 ## Config Specifcation
 
 - `propName`: Any defined prop in the system.
-- `altProps`: An array of alternative props that you would like to group with the same style function.
+- `boundProps`: An array of alternative props that you would like to group with the same style function.
 - `type`: Declare the template type `standard` by default or `directional` for properties that have a shorthand for directional values.
 - `computedValue`: There may be cases where you would like to transform or compute a property value into something more CSS
   friendly some examples may be adding units or looking up configurations. You may provide a `computeValue` function on your config to do this.
@@ -16,7 +16,7 @@ by creating a prop config: an immutable definition that defines the way the styl
 ```tsx
 type AbstractPropertyConfig = {
   propName: PropAlias;
-  altProps?: Readonly<string[]>;
+  boundProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AbstractScales;
   computeValue?: TransformValue;
@@ -73,7 +73,7 @@ const config = {
 } as const;
 
 
-export const { properties }  = system<ThemeShape, typeof config>(config);
+export const { properties } = system<ThemeShape, typeof config>(config);
 ```
 
 In your react code:

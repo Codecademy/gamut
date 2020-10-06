@@ -1,9 +1,10 @@
-import { DEFAULT_MEDIA_QUERIES, responsiveProperty } from '..';
+import { createResponsiveStyles } from '..';
+import { DefaultBreakpoints } from '../../../core/system/defaultSystem';
+import { ResponsiveProp } from '../../../types/props';
 import { standardProperty } from '../../standardProperty';
-import { ResponsiveProp } from '../../../types/system';
 
-describe(responsiveProperty, () => {
-  const templateFns = {
+describe(createResponsiveStyles, () => {
+  const styleTemplate = {
     display: standardProperty({
       propName: 'display',
       computeValue: (val) => val,
@@ -20,16 +21,13 @@ describe(responsiveProperty, () => {
 
   type Theme = {};
   type PropShape = {
-    height?: ResponsiveProp<string>;
-    width?: ResponsiveProp<string>;
-    display?: ResponsiveProp<string>;
+    height?: ResponsiveProp<DefaultBreakpoints, string>;
+    width?: ResponsiveProp<DefaultBreakpoints, string>;
+    display?: ResponsiveProp<DefaultBreakpoints, string>;
     theme?: any;
   };
 
-  const propFunction = responsiveProperty<Theme, PropShape>({
-    propNames: ['display', 'width', 'height'],
-    templateFns,
-  });
+  const propFunction = createResponsiveStyles(styleTemplate);
 
   it('returns empty object if styles are undefined', () => {
     const outputStyles = propFunction({

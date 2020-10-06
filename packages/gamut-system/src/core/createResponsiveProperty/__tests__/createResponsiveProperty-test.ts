@@ -1,11 +1,11 @@
 import { identity } from 'lodash';
-import { createHandler } from '..';
+import { createResponsiveProperty } from '..';
 import {
   DEFAULT_MEDIA_QUERIES,
   directionalProperty,
   standardProperty,
 } from '../../../propTemplates';
-import { ThematicProps } from '../../../types/system';
+import { ThematicProps } from '../../../types/groups';
 
 type Theme = {
   colors: {
@@ -17,9 +17,9 @@ type Theme = {
 type PropConfig = { propName: 'height' };
 type Props = ThematicProps<Theme, PropConfig>;
 
-describe(createHandler, () => {
+describe(createResponsiveProperty, () => {
   it('creates a style function', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createResponsiveProperty<Theme, PropConfig, Props>({
       propName: 'height',
     });
 
@@ -27,7 +27,7 @@ describe(createHandler, () => {
   });
 
   it('adds prop names the function is responsible for as a key on the function object', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createResponsiveProperty<Theme, PropConfig, Props>({
       propName: 'height',
     });
 
@@ -35,7 +35,7 @@ describe(createHandler, () => {
   });
 
   it('adds altProps to the propName array', () => {
-    const styleFunction = createHandler<
+    const styleFunction = createResponsiveProperty<
       Theme,
       PropConfig & { altProps: ['maxHeight', 'minHeight'] },
       Props
@@ -52,7 +52,7 @@ describe(createHandler, () => {
   });
 
   it('adds the the template functions to the templateFns key on the function object', () => {
-    const { templateFns } = createHandler<Theme, PropConfig, Props>({
+    const { templateFns } = createResponsiveProperty<Theme, PropConfig, Props>({
       propName: 'height',
     });
 
@@ -67,7 +67,7 @@ describe(createHandler, () => {
   });
 
   it('creates a directionalProperty if type is specified', () => {
-    const { templateFns } = createHandler<
+    const { templateFns } = createResponsiveProperty<
       Theme,
       PropConfig & { type: 'directional' },
       Props
@@ -85,7 +85,7 @@ describe(createHandler, () => {
   });
 
   it('returns a responsive property to handle media queries', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createResponsiveProperty<Theme, PropConfig, Props>({
       propName: 'height',
     });
 

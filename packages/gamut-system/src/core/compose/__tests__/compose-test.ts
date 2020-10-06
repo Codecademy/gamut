@@ -6,11 +6,11 @@ import {
   directionalProperty,
   standardProperty,
 } from '../../../propTemplates';
-import { createHandler } from '../../createHandler';
+import { createResponsiveProperty } from '../../createResponsiveProperty';
 
-const display = createHandler(layout.display);
-const textAlign = createHandler(typography.textAlign);
-const borderWidth = createHandler(border.borderWidth);
+const display = createResponsiveProperty(layout.display);
+const textAlign = createResponsiveProperty(typography.textAlign);
+const borderWidth = createResponsiveProperty(border.borderWidth);
 
 describe(compose, () => {
   it('creates a handler from multiple handlers', () => {
