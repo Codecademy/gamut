@@ -3,6 +3,7 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "17.6.0",
   "author": "Codecademy Engineering",
+  "private": true,
   "scripts": {
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
@@ -51,8 +52,5 @@
     "webpack-cli": "3.3.11",
     "webpack-react-docgen-typescript": "0.9.5"
   },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  }
+  "license": "MIT"
 }

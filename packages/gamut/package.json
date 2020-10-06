@@ -52,8 +52,5 @@
   "license": "MIT",
   "devDependencies": {
     "onchange": "^7.0.2"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
