@@ -1,3 +1,20 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>0.1.9 (2020-10-06)</small>
+
+* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](http://github.com/Codecademy/client-modules/packages/prettier-config/commit/bd026a8)), closes [#970](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/970)
+* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](http://github.com/Codecademy/client-modules/packages/prettier-config/commit/294d355)), closes [#982](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/982) [#970](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/981)
+* chore: update changelogs ([3ba548b](http://github.com/Codecademy/client-modules/packages/prettier-config/commit/3ba548b))
+* chore: update changelogs ([b8a49c7](http://github.com/Codecademy/client-modules/packages/prettier-config/commit/b8a49c7))
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](http://github.com/Codecademy/client-modules/packages/prettier-config/commit/056f5ac)), closes [#970](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/prettier-config/issues/981)
+
+
+
+
+
 ### [0.1.8](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.7...@codecademy/prettier-config@0.1.8) (2020-07-29)
 
 ### [0.1.7](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.6...@codecademy/prettier-config@0.1.7) (2020-05-04)
@@ -41,4 +58,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-
