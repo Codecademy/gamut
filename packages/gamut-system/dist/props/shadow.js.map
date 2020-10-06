@@ -1,0 +1,1 @@
+{"version":3,"file":"shadow.js","sourceRoot":"","sources":["../../src/props/shadow.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,MAAM,GAAG;IACpB,SAAS,EAAE;QACT,QAAQ,EAAE,WAAW;KACtB;IACD,UAAU,EAAE;QACV,QAAQ,EAAE,YAAY;KACvB;CACO,CAAC"}
