@@ -1,3 +1,28 @@
+## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
+### [16.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.13...@codecademy/gamut@16.0.14) (2020-09-29)
+
+### [16.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.12...@codecademy/gamut@16.0.13) (2020-09-28)
+
+### [16.0.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.11...@codecademy/gamut@16.0.12) (2020-09-25)
+
+
+### 🐛 Bug Fixes
+
+* **Button:** Add rel by default if none is set when target=blank ([#973](https://github.com/Codecademy/client-modules/issues/973)) ([8e5bade](https://github.com/Codecademy/client-modules/commit/8e5baded035cb21a151083c309665165e8d9c4b2))
+
+### [16.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.10...@codecademy/gamut@16.0.11) (2020-09-25)
+
+
+### Other Changes
+
+* **TSLint:** TS 4.0.2 and Eslint 6.5.1 ([#968](https://github.com/Codecademy/client-modules/issues/968)) ([b2c3ad5](https://github.com/Codecademy/client-modules/commit/b2c3ad556f46d0c7589e8211c39c226dbca26d43))
+
 ### [16.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.9...@codecademy/gamut@16.0.10) (2020-09-24)
 
 ### [16.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.8...@codecademy/gamut@16.0.9) (2020-09-24)

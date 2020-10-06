@@ -1,3 +1,17 @@
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
+
+
+### ✨ Features
+
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/client-modules/issues/976)) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e24976da66cb69341934ac80b2c53f5e975cc))
+
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.6.0...@codecademy/gamut-icons@3.7.0) (2020-09-28)
+
+
+### ✨ Features
+
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
+
 ## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.5.0...@codecademy/gamut-icons@3.6.0) (2020-09-24)
 
 

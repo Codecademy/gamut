@@ -1,3 +1,35 @@
+## [17.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.5.0...@codecademy/styleguide@17.6.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
+## [17.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.4.0...@codecademy/styleguide@17.5.0) (2020-09-29)
+
+
+### ✨ Features
+
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/client-modules/issues/976)) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e24976da66cb69341934ac80b2c53f5e975cc))
+
+## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.2...@codecademy/styleguide@17.4.0) (2020-09-28)
+
+
+### ✨ Features
+
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
+
+### [17.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.1...@codecademy/styleguide@17.3.2) (2020-09-25)
+
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.3.0...@codecademy/styleguide@17.3.1) (2020-09-25)
+
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.6...@codecademy/styleguide@17.3.0) (2020-09-25)
+
+
+### ✨ Features
+
+* added new pro logo ([#957](https://github.com/Codecademy/client-modules/issues/957)) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9ba1bffe48e30a8ebcd4051585d3024c64c))
+
 ### [17.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.5...@codecademy/styleguide@17.2.6) (2020-09-24)
 
 ### [17.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.2.4...@codecademy/styleguide@17.2.5) (2020-09-24)

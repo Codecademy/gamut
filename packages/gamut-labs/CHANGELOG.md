@@ -1,3 +1,20 @@
+### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.4...@codecademy/gamut-labs@4.2.5) (2020-10-02)
+
+### [4.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.3...@codecademy/gamut-labs@4.2.4) (2020-09-29)
+
+### [4.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.2...@codecademy/gamut-labs@4.2.3) (2020-09-28)
+
+### [4.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.1...@codecademy/gamut-labs@4.2.2) (2020-09-25)
+
+### [4.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.0...@codecademy/gamut-labs@4.2.1) (2020-09-25)
+
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.7...@codecademy/gamut-labs@4.2.0) (2020-09-25)
+
+
+### ✨ Features
+
+* added new pro logo ([#957](https://github.com/Codecademy/client-modules/issues/957)) ([dfa1b9b](https://github.com/Codecademy/client-modules/commit/dfa1b9ba1bffe48e30a8ebcd4051585d3024c64c))
+
 ### [4.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.6...@codecademy/gamut-labs@4.1.7) (2020-09-24)
 
 ### [4.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.1.5...@codecademy/gamut-labs@4.1.6) (2020-09-24)
