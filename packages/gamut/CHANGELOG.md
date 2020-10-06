@@ -1,26 +1,22 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>16.1.2 (2020-10-06)</small>
-
-* This seems like it should have been there before? (#979) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7)), closes [#979](https://github.com/Codecademy/client-modules/issues/979)
+### [16.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.1...@codecademy/gamut@16.1.2) (2020-10-06)
 
 
+### Other Changes
+
+* This seems like it should have been there before? ([#979](https://github.com/Codecademy/client-modules/issues/979)) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7052feb722130a8ded4eb8c966b240a824))
+
+### [16.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.0...@codecademy/gamut@16.1.1) (2020-10-06)
 
 
+### 🗑 Reverts
 
-## <small>16.1.1 (2020-10-06)</small>
-
-* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
-* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355)), closes [#982](https://github.com/Codecademy/client-modules/issues/982) [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
-* chore: update changelogs ([c9e2975](https://github.com/Codecademy/client-modules/commit/c9e2975))
-* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
 
 
+### Other Changes
 
-
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
 
 ## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
 
@@ -3009,3 +3005,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

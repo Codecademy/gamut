@@ -1,18 +1,15 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>3.8.1 (2020-10-06)</small>
-
-* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
-* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355)), closes [#982](https://github.com/Codecademy/client-modules/issues/982) [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
-* chore: update changelogs ([d7f85d1](https://github.com/Codecademy/client-modules/commit/d7f85d1))
-* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+### [3.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.0...@codecademy/gamut-icons@3.8.1) (2020-10-06)
 
 
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
 
 
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
 
 ## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
 
@@ -272,3 +269,4 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
+
