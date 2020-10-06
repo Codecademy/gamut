@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>2.0.1 (2020-10-06)</small>
+
+* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
+* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355)), closes [#982](https://github.com/Codecademy/client-modules/issues/982) [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+* chore: update changelogs ([6e6db13](https://github.com/Codecademy/client-modules/commit/6e6db13))
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+
+
+
+
 ## [2.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@1.1.11...@codecademy/enzyme-helpers@2.0.0) (2020-08-27)
 
 
@@ -68,4 +84,3 @@
 ### ✨ Features
 
 * create enzyme-helpers package ([b70b7b4](https://github.com/Codecademy/client-modules/commit/b70b7b454aa600a8822636e37adc435c15ecb8da))
-
