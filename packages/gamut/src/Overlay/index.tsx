@@ -48,7 +48,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <BodyPortal>
       <div
         className={cx(
-          { [styles.fixedPositioning]: fixedPositioning },
+          fixedPositioning && styles.fixedPositioning,
           styles.container,
           className
         )}
@@ -66,5 +66,3 @@ export const Overlay: React.FC<OverlayProps> = ({
     </BodyPortal>
   );
 };
-
-export default Overlay;

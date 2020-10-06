@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 
-import Overlay, { OverlayProps } from '..';
+import { Overlay, OverlayProps } from '..';
 
 const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(

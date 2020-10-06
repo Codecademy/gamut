@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { forwardRef, useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 import styles from './styles.module.scss';
 import { Overlay, OverlayProps } from '../Overlay';
@@ -36,11 +36,6 @@ export type PopoverProps = {
   position?: 'above' | 'below';
 
   /**
-   * Necessary?
-   */
-  defaultTargetRect?: DOMRect;
-
-  /**
    * Whether to show a beak on the popover. Needs showScreen=true
    */
   showBeak?: boolean;
@@ -57,91 +52,84 @@ export type PopoverProps = {
   overlayProps?: Omit<OverlayProps, 'isOpen' | 'children'>;
 };
 
-export const Popover = forwardRef<HTMLDivElement, PopoverProps>(
-  (
-    {
-      className,
-      children,
-      isOpen,
-      showBeak,
-      showScreen,
-      position = 'below',
-      offset = 20,
-      align = 'left',
-      overlayProps,
-      targetRef,
-    },
-    targetRef1: React.RefObject<HTMLDivElement>
-  ) => {
-    const [targetRect, setTargetRect] = useState<DOMRect>();
+export const Popover: React.FC<PopoverProps> = ({
+  className,
+  children,
+  isOpen,
+  showBeak,
+  showScreen,
+  position = 'below',
+  offset = 20,
+  align = 'left',
+  overlayProps,
+  targetRef,
+}) => {
+  const [targetRect, setTargetRect] = useState<DOMRect>();
 
-    const setRect = useCallback(() => {
-      const rect = targetRef?.current?.getBoundingClientRect();
+  const setRect = useCallback(() => {
+    const rect = targetRef?.current?.getBoundingClientRect();
 
-      setTargetRect(rect);
-    }, [targetRef]);
+    setTargetRect(rect);
+  }, [targetRef]);
 
-    useEffect(() => {
-      setRect();
-      window.addEventListener('resize', setRect);
+  useEffect(() => {
+    setRect();
+    window.addEventListener('resize', setRect);
 
-      return function cleanup() {
-        window.removeEventListener('resize', setRect);
-      };
-    }, [setRect, isOpen]);
+    return function cleanup() {
+      window.removeEventListener('resize', setRect);
+    };
+  }, [setRect, isOpen]);
 
-    const getPopoverPosition = useCallback(() => {
-      if (!targetRect) return {};
+  const getPopoverPosition = useCallback(() => {
+    if (!targetRect) return {};
 
-      const positions = {
-        above: Math.round(window.scrollY + targetRect.top - offset),
-        below: Math.round(
-          window.scrollY + targetRect.top + targetRect.height + offset
-        ),
-      };
-      return {
-        top: positions[position],
-        left:
-          align === 'right'
-            ? Math.round(window.scrollX + targetRect.right)
-            : Math.round(window.scrollX + targetRect.left),
-      };
-    }, [targetRect, offset, align, position]);
+    const positions = {
+      above: Math.round(window.scrollY + targetRect.top - offset),
+      below: Math.round(
+        window.scrollY + targetRect.top + targetRect.height + offset
+      ),
+    };
+    return {
+      top: positions[position],
+      left:
+        align === 'right'
+          ? Math.round(window.scrollX + targetRect.right)
+          : Math.round(window.scrollX + targetRect.left),
+    };
+  }, [targetRect, offset, align, position]);
 
-    if (!isOpen || !targetRef) return null;
+  if (!isOpen || !targetRef) return null;
 
-    return (
-      <Overlay
-        fixedPositioning={false}
-        {...overlayProps}
-        isOpen={!!isOpen}
-        data-testid={'popover-container'}
-      >
-        <div>
-          {showScreen && (
-            <div className={styles.screen} data-testid={'popover-screen'} />
+  return (
+    <Overlay
+      fixedPositioning={false}
+      {...overlayProps}
+      isOpen={!!isOpen}
+      data-testid={'popover-container'}
+    >
+      <div>
+        {showScreen && (
+          <div className={styles.screen} data-testid={'popover-screen'} />
+        )}
+        <div
+          className={cx(
+            styles.popover,
+            styles[`${position}-${align}`],
+            className
           )}
-          <div
-            className={cx(
-              styles.popover,
-              styles[`${position}-${align}`],
-              className
-            )}
-            style={getPopoverPosition()}
-            data-testid={'popover-content'}
-          >
-            {showBeak && (
-              <div
-                className={cx(styles.beak, styles[`${position}-beak`])}
-                data-testid={'popover-beak'}
-              />
-            )}
-            {children}
-          </div>
+          style={getPopoverPosition()}
+          data-testid={'popover-content-container'}
+        >
+          {showBeak && (
+            <div
+              className={cx(styles.beak, styles[`${position}-beak`])}
+              data-testid={'popover-beak'}
+            />
+          )}
+          {children}
         </div>
-      </Overlay>
-    );
-  }
-);
-
-export default Popover;
+      </div>
+    </Overlay>
+  );
+};
