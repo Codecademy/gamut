@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>5.0.5 (2020-10-06)</small>
+
+* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/bd026a8)), closes [#970](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/970)
+* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/294d355)), closes [#982](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/982) [#970](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/981)
+* chore: update changelogs ([4629816](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/4629816))
+* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](http://github.com/Codecademy/client-modules/packages/webpack-config/commit/056f5ac)), closes [#970](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/webpack-config/issues/981)
+
+
+
+
+
 ### [5.0.4](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.3...@codecademy/webpack-config@5.0.4) (2020-08-18)
 
 
@@ -369,4 +385,3 @@
 
 * add webpack-config to packages ([#114](http://github.com/Codecademy/client-modules/issues/114)) ([cb9574b](http://github.com/Codecademy/client-modules/commit/cb9574b1b4e2c0589f5ebbec8d602d1a297c16db))
 * Publish ([f93cf5f](http://github.com/Codecademy/client-modules/commit/f93cf5f5ac707ae4757f3e91cfbb9807def1a508))
-
