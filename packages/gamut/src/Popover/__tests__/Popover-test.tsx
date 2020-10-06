@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
 import { Popover, PopoverProps } from '..';
 
-const targetRefObj: React.RefObject<HTMLDivElement> = {
+const targetRefObj = {
   current: {
     getBoundingClientRect: () => {
       return {

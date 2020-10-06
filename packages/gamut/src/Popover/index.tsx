@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import React, { useState, useCallback, useEffect } from 'react';
+import { useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
 import { Overlay, OverlayProps } from '../Overlay';
@@ -15,8 +16,7 @@ export type PopoverProps = {
   /**
    * The target element around which the popover will be positioned
    */
-  targetRef: React.RefObject<HTMLDivElement>;
-
+  targetRef: React.RefObject<Pick<HTMLDivElement, 'getBoundingClientRect'>>;
   /**
    * Which vertical edge of the source component to align against
    * @default right
@@ -65,6 +65,7 @@ export const Popover: React.FC<PopoverProps> = ({
   targetRef,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
+  const { width, height } = useWindowSize();
 
   const setRect = useCallback(() => {
     const rect = targetRef?.current?.getBoundingClientRect();
@@ -74,12 +75,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   useEffect(() => {
     setRect();
-    window.addEventListener('resize', setRect);
-
-    return function cleanup() {
-      window.removeEventListener('resize', setRect);
-    };
-  }, [setRect, isOpen]);
+  }, [setRect, isOpen, width, height]);
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
