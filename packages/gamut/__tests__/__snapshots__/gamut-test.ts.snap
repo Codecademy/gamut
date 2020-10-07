@@ -50,6 +50,7 @@ Array [
   "NotificationList",
   "omitProps",
   "Overlay",
+  "Popover",
   "ProgressBar",
   "RadialProgress",
   "Radio",
