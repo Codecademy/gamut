@@ -1,7 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { Popover, Button, Container } from '@codecademy/gamut/src';
+import React, { useRef, useState } from 'react';
+import {
+  Popover,
+  Button,
+  Container,
+  PopoverProps,
+} from '@codecademy/gamut/src';
 
-export const PopoverExample = () => {
+export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
 
@@ -18,11 +23,8 @@ export const PopoverExample = () => {
       </div>
       <Container>
         <Popover
+          {...args}
           isOpen={open}
-          offset={20}
-          position="below"
-          showBeak={true}
-          showScreen={true}
           targetRef={activeElRef}
           overlayProps={{
             onRequestClose: () => setOpen(false),
