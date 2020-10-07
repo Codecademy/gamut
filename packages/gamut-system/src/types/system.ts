@@ -58,10 +58,13 @@ export type TemplateMap<Props extends AbstractProps> = WeakRecord<
   StyleTemplate<Props>
 >;
 
-export type Handler<Props extends AbstractProps> = {
+export type HandlerMeta<Props extends AbstractProps> = {
   propNames: Exclude<keyof Props, 'theme'>[];
   styleTemplates: TemplateMap<Props>;
-} & ((props: Props) => CSSObject);
+};
+
+export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
+  ((props: Props) => CSSObject);
 
 export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
   HandlerFn

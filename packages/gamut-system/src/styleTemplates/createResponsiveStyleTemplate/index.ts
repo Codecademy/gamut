@@ -1,23 +1,14 @@
 import { assign, entries, isArray, isObject, set, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
-import {
-  StyleTemplate,
-  AbstractProps,
-  AbstractTheme,
-} from '../../types/system';
+import { AbstractTheme, HandlerMeta } from '../../types/system';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
-
-export type ResponsivePropertyArguments<Props extends AbstractProps> = {
-  propNames: Exclude<keyof Props, 'theme'>[];
-  styleTemplates: Partial<Record<keyof Props, StyleTemplate<Props>>>;
-};
 
 export function createResponsiveStyleTemplate<
   Props extends { theme?: AbstractTheme }
 >({
   propNames,
   styleTemplates,
-}: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
+}: HandlerMeta<Props>): (props: Props) => CSSObject {
   return ({ theme = {}, ...props }) => {
     const { breakpoints = DEFAULT_MEDIA_QUERIES } = theme;
 

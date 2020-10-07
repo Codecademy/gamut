@@ -31,7 +31,7 @@ export const system = <
   Config extends SystemConfig<Theme>,
   Theme extends AbstractTheme
 >(
-  config?: Config
+  config: Config
 ) => {
   // Initialize all type derivations and declare return signature
   // Intersection of Base and the supplied configuration objects.
@@ -98,7 +98,7 @@ export const system = <
   // Initializes the return object
   const systemShape = {
     properties: {},
-  };
+  } as any;
 
   // Merge the the default prop configurations and user defined ones together.
   const propGroups = merge(BaseProps, config ?? {});
@@ -133,8 +133,8 @@ export const system = <
     );
 
     // Pick the correct handlers from the system (closure specific) and create a composite.
-    const handlers = pick(systemShape.properties, props);
-    const variantHandler = compose(...values(handlers));
+    const handlers = pick(systemShape.properties, props as any);
+    const variantHandler = compose(...(values(handlers) as any));
 
     // Return the variant function
     return (props: any) => {

@@ -1,17 +1,15 @@
-import {
-  createResponsiveStyleTemplate,
-  ResponsivePropertyArguments,
-} from '../../styleTemplates';
-import { AbstractTheme, Handler } from '../../types/system';
+import { createResponsiveStyleTemplate } from '../../styleTemplates';
+import { AbstractProps, Handler } from '../../types/system';
+import { UnionToIntersection } from '../../types/utils';
 
 export const compose = <
-  Props extends { theme?: AbstractTheme },
-  Handlers extends Handler<Props>[]
+  Handlers extends Handler<AbstractProps>[],
+  Props extends Partial<UnionToIntersection<Parameters<Handlers[number]>[0]>>
 >(
   ...handlers: Handlers
-) => {
+): Handler<Props> => {
   // Mash the handlers into a Frankensteinian conglomeration of each of their prop names and style templates.
-  const config = handlers.reduce<ResponsivePropertyArguments<Props>>(
+  const config = handlers.reduce<any>(
     (accum, handler) => {
       return {
         propNames: [...accum.propNames, ...handler.propNames],

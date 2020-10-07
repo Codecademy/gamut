@@ -1,10 +1,9 @@
 import { system } from '..';
-import * as BaseProps from '../../../props';
 
 describe(system, () => {
   describe('initializing system', () => {
     it('initializes a system with no arguments by default', () => {
-      const { properties, variant, ...groups } = system();
+      const { properties, variant, ...groups } = system({});
       expect(properties).toBeDefined();
       expect(groups).toBeDefined();
       expect(variant).toBeDefined();
@@ -12,7 +11,7 @@ describe(system, () => {
   });
 
   describe('variant', () => {
-    const { variant } = system();
+    const { variant } = system({});
 
     it('returns a style function with a propKey of variant by default', () => {
       const myVariant = variant({
@@ -39,26 +38,19 @@ describe(system, () => {
   });
 
   describe('base system', () => {
-    const { properties, variant, ...systemProps } = system();
-
-    Object.entries(BaseProps).forEach(([group, groupProps]) => {
-      describe(group, () => {
-        const groupPropConfigs = Object.entries(groupProps);
-
+    const { properties, variant, ...groups } = system({});
+    describe('groups', () => {
+      Object.entries(groups).forEach(([group, styleFunction]) => {
         it(`${group} composite renders without breaking`, () => {
-          const styleFunction = systemProps[group];
-
-          expect(
-            styleFunction({ [groupPropConfigs[0][1].propName]: '' })
-          ).toBeDefined();
+          expect(styleFunction).toBeDefined();
         });
+      });
+    });
 
-        groupPropConfigs.forEach(([property, config]) => {
-          it(`${property} renders without breaking`, () => {
-            const styleFunction = properties[property];
-
-            expect(styleFunction({ [config.propName]: '' })).toBeDefined();
-          });
+    describe('properties', () => {
+      Object.entries(properties).forEach(([property, styleFunction]) => {
+        it(`${property} composite renders without breaking`, () => {
+          expect(styleFunction).toBeDefined();
         });
       });
     });
