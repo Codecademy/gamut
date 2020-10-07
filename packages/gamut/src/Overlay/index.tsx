@@ -22,7 +22,7 @@ export type OverlayProps = {
    * Called when the Overlay requests to be closed,
    * this could be due to clicking outside of the overlay, or by clicking the escape key
    */
-  onRequestClose: () => void;
+  onRequestClose?: () => void;
   /**
    * Whether the overlay is rendered
    */

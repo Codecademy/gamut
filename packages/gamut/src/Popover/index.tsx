@@ -19,7 +19,7 @@ export type PopoverProps = {
   targetRef: React.RefObject<Pick<HTMLDivElement, 'getBoundingClientRect'>>;
   /**
    * Which vertical edge of the source component to align against
-   * @default right
+   * @default left
    */
   align?: 'left' | 'right';
 
