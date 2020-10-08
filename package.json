@@ -80,6 +80,7 @@
     "jest": "24.9.0",
     "jest-environment-jsdom": "24.9.0",
     "jest-environment-jsdom-global": "1.2.0",
+    "jest-enzyme": "^7.1.2",
     "lint-staged": "10.2.2",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "2.0.5",
