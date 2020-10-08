@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>4.2.10 (2020-10-08)</small>
+
+* chore: rename 's' styles to 'styles' (#984) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf7210)), closes [#984](https://github.com/Codecademy/client-modules/issues/984)
+* chore: update changelogs ([a33d251](https://github.com/Codecademy/client-modules/commit/a33d251))
+
+
+
+
+
 ### [4.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.8...@codecademy/gamut-labs@4.2.9) (2020-10-08)
 
 ### [4.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.7...@codecademy/gamut-labs@4.2.8) (2020-10-08)
@@ -302,4 +316,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
