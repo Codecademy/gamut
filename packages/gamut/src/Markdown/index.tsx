@@ -21,7 +21,7 @@ const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
 
-const preprocessingInstructions = createPreprocessingInstructions(s);
+const preprocessingInstructions = createPreprocessingInstructions(styles);
 
 const isValidNode = function () {
   return true;
