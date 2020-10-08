@@ -25,7 +25,7 @@
     "@codecademy/gamut": "^16.1.2",
     "@codecademy/gamut-styles": "^7.0.1",
     "classnames": "^2.2.5",
-    "react-use": "13.18.0"
+    "react-use": "15.3.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
