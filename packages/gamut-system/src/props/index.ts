@@ -1,3 +1,29 @@
+import { typography } from './typography';
+import { spacing } from './spacing';
+import { border } from './borders';
+import { layout } from './layout';
+import { positioning } from './position';
+import { grid } from './grid';
+import { flex } from './flex';
+import { background } from './background';
+import { shadow } from './shadow';
+import { colors } from './colors';
+
+export const baseConfig = {
+  typography,
+  spacing,
+  border,
+  layout,
+  positioning,
+  grid,
+  flex,
+  background,
+  shadow,
+  colors,
+};
+
+export type BaseSystemConfig = typeof baseConfig;
+
 export * from './typography';
 export * from './spacing';
 export * from './borders';

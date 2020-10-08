@@ -1,125 +1,98 @@
-import { DirectionalProperties, Props } from './properties';
 import { CSSObject } from '@emotion/core';
-import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
+import { BaseSystemConfig } from '../props';
+import {
+  AbstractTheme,
+  Handler,
+  PropertyConfig,
+  ThematicProps,
+} from './config';
+import { UnionToIntersection, WeakRecord } from './utils';
 
-/** System Configuration */
-export type MediaQueryArray<Value> = [
-  Value?,
-  Value?,
-  Value?,
-  Value?,
-  Value?,
-  Value?
-];
+/** A Group of Property Configurations EG: typography | spacing */
+type GroupConfig<Theme extends AbstractTheme> = Record<
+  string,
+  PropertyConfig<Theme>
+>;
 
-export type MediaQueryMap<Value> = {
-  base?: Value;
-  xs?: Value;
-  sm?: Value;
-  md?: Value;
-  lg?: Value;
-  xl?: Value;
-};
+/** All Groups / Properties */
+export type SystemConfig<Theme extends AbstractTheme> = Record<
+  string,
+  GroupConfig<Theme>
+>;
 
-export type ResponsiveProp<Value> =
-  | Value
-  | MediaQueryArray<Value>
-  | MediaQueryMap<Value>;
+// Initialize all type derivations and declare return signature
+// Intersection of Base and the supplied configuration objects.
+type MergeConfig<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> = BaseSystemConfig & Config;
 
-/** Abstract Configurations  */
-export type PropAlias = Readonly<keyof Props>;
-
-type BaseTheme = Readonly<WeakRecord<string, ScaleArray | ScaleMap>>;
-
-export type AbstractTheme = BaseTheme & {
-  breakpoints?: {
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
+// Intermediate type to derive return types from representing all properties and handler
+type SystemProperties<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> = {
+  /** All possible property handlers based off the MergedConfiguration  */
+  [PropGroup in keyof MergeConfig<Theme, Config>]: {
+    handlers: {
+      [Property in keyof MergeConfig<Theme, Config>[PropGroup]]: Handler<
+        ThematicProps<Theme, MergeConfig<Theme, Config>[PropGroup][Property]>
+      >;
+    };
+    /** All possible prop type signatures  */
+    props: {
+      [Property in keyof MergeConfig<Theme, Config>[PropGroup]]: ThematicProps<
+        Theme,
+        MergeConfig<Theme, Config>[PropGroup][Property]
+      >;
+    };
   };
 };
 
-export type ScaleArray = Readonly<unknown[]>;
-
-export type ScaleMap = Readonly<Record<string | number, unknown>>;
-
-export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
-
-export type AbstractProps = Record<string, unknown>;
-
-export type StyleTemplate<Props extends AbstractProps> = (
-  props: Props
-) => CSSObject | undefined;
-
-export type TemplateMap<Props extends AbstractProps> = WeakRecord<
-  keyof Props,
-  StyleTemplate<Props>
+// Intersection of all possible props
+export type AllSystemProps<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> = UnionToIntersection<
+  {
+    [PropGroup in keyof SystemProperties<Theme, Config>]: UnionToIntersection<
+      SystemProperties<
+        Theme,
+        Config
+      >[PropGroup]['props'][keyof SystemProperties<
+        Theme,
+        Config
+      >[PropGroup]['props']]
+    >;
+  }[keyof SystemProperties<Theme, Config>]
 >;
 
-export type HandlerMeta<Props extends AbstractProps> = {
-  propNames: Exclude<keyof Props, 'theme'>[];
-  styleTemplates: TemplateMap<Props>;
-};
-
-export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
-  ((props: Props) => CSSObject);
-
-export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
-  HandlerFn
->[0];
-
-export type PropTemplateType = 'standard' | 'directional';
-
-export type TransformValue = (value: any) => string | number;
-
-export type AbstractPropertyConfig = {
-  propName: PropAlias;
-  dependentProps?: Readonly<string[]>;
-  type?: 'standard' | 'directional';
-  scale?: AbstractScales;
-  computeValue?: TransformValue;
-};
-
-/** Theme Aware Configurations */
-export type PropertyConfig<
-  Theme extends AbstractTheme
-> = AbstractPropertyConfig & {
-  scale?: ScaleArray | ScaleMap | Readonly<keyof Theme>;
-};
-
-export type PropKey<Config extends AbstractPropertyConfig> =
-  | Config['propName']
-  | Extract<
-      Config,
-      { dependentProps: Readonly<string[]> }
-    >['dependentProps'][number];
-
-/** Standard CSS Property Types */
-export type DefaultPropScale<
-  Config extends AbstractPropertyConfig
-> = Props[Config['propName']]['defaultValue'];
-
-export type ThematicScaleValue<
+export type System<
   Theme extends AbstractTheme,
-  Config extends PropertyConfig<Theme>
-> = Config['scale'] extends AbstractScales
-  ?
-      | SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
-      | SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
-      | SafeMapKey<Extract<Config, { scale: ScaleMap }>['scale']>
-      | Extract<Config, { scale: ScaleArray }>['scale'][number]
-  : DefaultPropScale<Config>;
-
-export type ThematicProps<
-  Theme extends AbstractTheme,
-  Config extends PropertyConfig<Theme>
-> = WeakRecord<
-  Config['propName'] extends DirectionalProperties
-    ? Props[Config['propName']]['dependentProps'] | Config['propName']
-    : Config['propName'],
-  ResponsiveProp<
-    ThematicScaleValue<Theme, Extract<Config, { propName: Config['propName'] }>>
-  >
->;
+  Config extends SystemConfig<Theme>
+> = {
+  variant: {
+    /** Customizable PropKey */
+    <Prop extends Readonly<string>, Keys extends string>(config: {
+      prop: Prop;
+      variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+    }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
+    /**  */
+    <Keys extends string>(
+      config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
+    ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
+  };
+  properties: UnionToIntersection<
+    SystemProperties<Theme, Config>[keyof SystemProperties<
+      Theme,
+      Config
+    >]['handlers']
+  >;
+} & {
+  [PropGroup in keyof SystemProperties<Theme, Config>]: Handler<
+    SystemProperties<Theme, Config>[PropGroup]['props'][keyof SystemProperties<
+      Theme,
+      Config
+    >[PropGroup]['props']]
+  >;
+};

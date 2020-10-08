@@ -10,7 +10,7 @@ import {
   PropertyConfig,
   StyleTemplate,
   ThematicProps,
-} from '../../types/system';
+} from '../../types/config';
 
 const STYLE_TEMPLATE_GENERATORS = {
   directional: createDirectionalStyleTemplate,

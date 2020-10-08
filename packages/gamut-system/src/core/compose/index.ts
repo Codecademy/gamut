@@ -1,5 +1,5 @@
 import { createResponsiveStyleTemplate } from '../../styleTemplates';
-import { AbstractProps, Handler } from '../../types/system';
+import { AbstractProps, Handler } from '../../types/config';
 import { UnionToIntersection } from '../../types/utils';
 
 export const compose = <

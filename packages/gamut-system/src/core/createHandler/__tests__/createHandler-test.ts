@@ -5,7 +5,7 @@ import {
   createStandardStyleTemplate,
 } from '../../../styleTemplates';
 import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
-import { ThematicProps } from '../../../types/system';
+import { ThematicProps } from '../../../types/config';
 
 type Theme = {
   colors: {

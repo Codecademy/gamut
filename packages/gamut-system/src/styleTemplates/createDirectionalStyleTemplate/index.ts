@@ -7,7 +7,7 @@ import {
   StyleTemplate,
   ScaleMap,
   ScaleArray,
-} from '../../types/system';
+} from '../../types/config';
 import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
 
 /**

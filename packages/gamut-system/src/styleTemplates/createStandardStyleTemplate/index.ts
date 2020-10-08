@@ -5,7 +5,7 @@ import {
   StyleTemplate,
   ScaleMap,
   ScaleArray,
-} from '../../types/system';
+} from '../../types/config';
 
 export const createStandardStyleTemplate = <
   Props extends AbstractProps,

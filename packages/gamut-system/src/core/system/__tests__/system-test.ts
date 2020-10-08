@@ -3,7 +3,7 @@ import { system } from '..';
 describe(system, () => {
   describe('initializing system', () => {
     it('initializes a system with no arguments by default', () => {
-      const { properties, variant, ...groups } = system();
+      const { properties, variant, ...groups } = system({});
       expect(properties).toBeDefined();
       expect(groups).toBeDefined();
       expect(variant).toBeDefined();

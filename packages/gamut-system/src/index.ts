@@ -1,2 +1,2 @@
-export * from './types/system';
+export * from './types/config';
 export * from './core';
