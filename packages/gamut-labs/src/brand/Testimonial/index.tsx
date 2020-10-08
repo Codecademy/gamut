@@ -42,7 +42,9 @@ export const Testimonial: React.FC<TestimonialProps> = ({
       })}
     >
       <div className={styles.testimonialCardContainer}>
-        <div className={cx(styles.contentContainer, s[`${size}Container`])}>
+        <div
+          className={cx(styles.contentContainer, styles[`${size}Container`])}
+        >
           {imageUrl && (
             <div className={styles.avatarContainer}>
               <Avatar
