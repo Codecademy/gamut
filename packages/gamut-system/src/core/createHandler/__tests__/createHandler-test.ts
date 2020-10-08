@@ -1,7 +1,10 @@
 import { identity } from 'lodash';
 import { createHandler } from '..';
-import { directionalProperty, standardProperty } from '../../../propTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
+import {
+  createDirectionalStyleTemplate,
+  createStandardStyleTemplate,
+} from '../../../styleTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { ThematicProps } from '../../../types/system';
 
 type Theme = {
@@ -31,14 +34,14 @@ describe(createHandler, () => {
     expect(styleFunction.propNames).toEqual(['height']);
   });
 
-  it('adds altProps to the propName array', () => {
+  it('adds dependentProps to the propName array', () => {
     const styleFunction = createHandler<
       Theme,
-      PropConfig & { altProps: ['maxHeight', 'minHeight'] },
+      PropConfig & { dependentProps: ['maxHeight', 'minHeight'] },
       Props
     >({
       propName: 'height',
-      altProps: ['maxHeight', 'minHeight'],
+      dependentProps: ['maxHeight', 'minHeight'],
     });
 
     expect(styleFunction.propNames).toEqual([
@@ -48,23 +51,23 @@ describe(createHandler, () => {
     ]);
   });
 
-  it('adds the the template functions to the templateFns key on the function object', () => {
-    const { templateFns } = createHandler<Theme, PropConfig, Props>({
+  it('adds the the template functions to the styleTemplates key on the function object', () => {
+    const { styleTemplates } = createHandler<Theme, PropConfig, Props>({
       propName: 'height',
     });
 
-    expect(Object.keys(templateFns)).toEqual(['height']);
+    expect(Object.keys(styleTemplates)).toEqual(['height']);
 
-    expect(templateFns.height?.toString()).toEqual(
-      standardProperty({
+    expect(styleTemplates.height?.toString()).toEqual(
+      createStandardStyleTemplate({
         propName: 'height',
         computeValue: identity,
       }).toString()
     );
   });
 
-  it('creates a directionalProperty if type is specified', () => {
-    const { templateFns } = createHandler<
+  it('creates a directional style template if type is specified', () => {
+    const { styleTemplates } = createHandler<
       Theme,
       PropConfig & { type: 'directional' },
       Props
@@ -73,15 +76,15 @@ describe(createHandler, () => {
       type: 'directional',
     });
 
-    expect(templateFns.height?.toString()).toEqual(
-      directionalProperty({
+    expect(styleTemplates.height?.toString()).toEqual(
+      createDirectionalStyleTemplate({
         propName: 'height',
         computeValue: identity,
       }).toString()
     );
   });
 
-  it('returns a responsive property to handle media queries', () => {
+  it('returns a responsive style template to handle media queries', () => {
     const styleFunction = createHandler<Theme, PropConfig, Props>({
       propName: 'height',
     });

@@ -1,8 +1,11 @@
 import { identity } from 'lodash';
 import { compose } from '..';
 import { border, layout, typography } from '../../../props';
-import { directionalProperty, standardProperty } from '../../../propTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../propTemplates/responsiveProperty/constants';
+import {
+  createDirectionalStyleTemplate,
+  createStandardStyleTemplate,
+} from '../../../styleTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { createHandler } from '../../createHandler';
 
 const display = createHandler(layout.display);
@@ -49,35 +52,35 @@ describe(compose, () => {
       'display',
       'textAlign',
       'borderWidth',
-      ...border.borderWidth.altProps,
+      ...border.borderWidth.dependentProps,
     ]);
   });
 
   it('adds template functions for each prop to its template functionMap', () => {
-    const { templateFns } = compose(display, textAlign, borderWidth);
+    const { styleTemplates } = compose(display, textAlign, borderWidth);
 
-    expect(Object.keys(templateFns)).toEqual([
+    expect(Object.keys(styleTemplates)).toEqual([
       'display',
       'textAlign',
       'borderWidth',
     ]);
 
-    expect(templateFns.textAlign?.toString()).toEqual(
-      standardProperty({
+    expect(styleTemplates.textAlign?.toString()).toEqual(
+      createStandardStyleTemplate({
         propName: 'textAlign',
         computeValue: identity,
       }).toString()
     );
 
-    expect(templateFns.display?.toString()).toEqual(
-      standardProperty({
+    expect(styleTemplates.display?.toString()).toEqual(
+      createStandardStyleTemplate({
         propName: 'display',
         computeValue: identity,
       }).toString()
     );
 
-    expect(templateFns.borderWidth?.toString()).toEqual(
-      directionalProperty({
+    expect(styleTemplates.borderWidth?.toString()).toEqual(
+      createDirectionalStyleTemplate({
         propName: 'borderWidth',
         computeValue: identity,
       }).toString()

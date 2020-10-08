@@ -1,25 +1,24 @@
-import { responsiveProperty } from '..';
+import { createResponsiveStyleTemplate } from '..';
 import { DEFAULT_MEDIA_QUERIES } from '../constants';
-import { standardProperty } from '../../standardProperty';
+import { createStandardStyleTemplate } from '../../createStandardStyleTemplate';
 import { ResponsiveProp } from '../../../types/system';
 
-describe(responsiveProperty, () => {
-  const templateFns = {
-    display: standardProperty({
+describe(createResponsiveStyleTemplate, () => {
+  const styleTemplates = {
+    display: createStandardStyleTemplate({
       propName: 'display',
       computeValue: (val) => val,
     }),
-    height: standardProperty({
+    height: createStandardStyleTemplate({
       propName: 'height',
       computeValue: (val) => val,
     }),
-    width: standardProperty({
+    width: createStandardStyleTemplate({
       propName: 'width',
       computeValue: (val) => val,
     }),
   };
 
-  type Theme = {};
   type PropShape = {
     height?: ResponsiveProp<string>;
     width?: ResponsiveProp<string>;
@@ -27,9 +26,9 @@ describe(responsiveProperty, () => {
     theme?: any;
   };
 
-  const propFunction = responsiveProperty<Theme, PropShape>({
+  const propFunction = createResponsiveStyleTemplate<PropShape>({
     propNames: ['display', 'width', 'height'],
-    templateFns,
+    styleTemplates,
   });
 
   it('returns empty object if styles are undefined', () => {

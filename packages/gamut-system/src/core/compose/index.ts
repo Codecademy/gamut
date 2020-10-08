@@ -1,10 +1,5 @@
-import {
-  AbstractProps,
-  Handler,
-  StyleTemplate,
-  AbstractTheme,
-} from '../../types/system';
-import { responsiveProperty } from '../../propTemplates';
+import { createResponsiveStyleTemplate } from '../../styleTemplates';
+import { AbstractProps, Handler } from '../../types/system';
 import { UnionToIntersection } from '../../types/utils';
 
 export const compose = <
@@ -12,34 +7,23 @@ export const compose = <
   Props extends Partial<UnionToIntersection<Parameters<Handlers[number]>[0]>>
 >(
   ...handlers: Handlers
-) => {
-  // Initialize the new composites arguments
-  const config = {
-    propNames: [],
-    templateFns: {},
-  } as {
-    propNames: (keyof Parameters<Handlers[number]>[0])[];
-    templateFns: Partial<Record<keyof Props, StyleTemplate<Props>>>;
-  };
-
-  // Add each handlers respective propNames and templateFns to the new composite
-  handlers.forEach((handler) => {
-    if (handler.propNames) {
-      config.propNames = [...config.propNames, ...handler.propNames];
+): Handler<Props> => {
+  // Mash the handlers into a Frankensteinian conglomeration of each of their prop names and style templates.
+  const config = handlers.reduce<any>(
+    (accum, handler) => {
+      return {
+        propNames: [...accum.propNames, ...handler.propNames],
+        styleTemplates: { ...accum.styleTemplates, ...handler.styleTemplates },
+      };
+    },
+    {
+      propNames: [],
+      styleTemplates: {},
     }
-    if (handler.templateFns) {
-      config.templateFns = { ...config.templateFns, ...handler.templateFns };
-    }
-  });
+  );
 
-  // Create a new responsive property responsible for templating all the single handlers
-  const composedHandler = responsiveProperty<AbstractTheme, Props>(
-    config as any
-  ) as Handler<Props>;
-
-  // Make the handlers propNames and functions accessible on the function reference
-  composedHandler.propNames = config.propNames;
-  composedHandler.templateFns = config.templateFns;
-
-  return composedHandler;
+  // Ignore the original prop-to-style-template logic from each of the handlers;
+  // instead, we create a new responsive property responsible for all of them.
+  // We again make propNames and functions accessible for later composition.
+  return Object.assign(createResponsiveStyleTemplate<Props>(config), config);
 };

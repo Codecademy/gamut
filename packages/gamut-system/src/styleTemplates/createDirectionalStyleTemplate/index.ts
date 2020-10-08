@@ -17,7 +17,8 @@ import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
  * values will not be overriden by the CSS cascade erroneously.  We prefer this over manually
  * sorting properties at runtime and having consistent CSS for these particular props.
  */
-export function directionalProperty<
+
+export function createDirectionalStyleTemplate<
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
     Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>

@@ -58,10 +58,13 @@ export type TemplateMap<Props extends AbstractProps> = WeakRecord<
   StyleTemplate<Props>
 >;
 
-export type Handler<Props extends AbstractProps> = {
-  propNames: (keyof Props)[];
-  templateFns: TemplateMap<Props>;
-} & ((props: Props) => CSSObject);
+export type HandlerMeta<Props extends AbstractProps> = {
+  propNames: Exclude<keyof Props, 'theme'>[];
+  styleTemplates: TemplateMap<Props>;
+};
+
+export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
+  ((props: Props) => CSSObject);
 
 export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
   HandlerFn
@@ -73,7 +76,7 @@ export type TransformValue = (value: any) => string | number;
 
 export type AbstractPropertyConfig = {
   propName: PropAlias;
-  altProps?: Readonly<string[]>;
+  dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AbstractScales;
   computeValue?: TransformValue;
@@ -88,7 +91,10 @@ export type PropertyConfig<
 
 export type PropKey<Config extends AbstractPropertyConfig> =
   | Config['propName']
-  | Extract<Config, { altProps: Readonly<string[]> }>['altProps'][number];
+  | Extract<
+      Config,
+      { dependentProps: Readonly<string[]> }
+    >['dependentProps'][number];
 
 /** Standard CSS Property Types */
 export type DefaultPropScale<
@@ -111,7 +117,7 @@ export type ThematicProps<
   Config extends PropertyConfig<Theme>
 > = WeakRecord<
   Config['propName'] extends DirectionalProperties
-    ? Props[Config['propName']]['altProps'] | Config['propName']
+    ? Props[Config['propName']]['dependentProps'] | Config['propName']
     : Config['propName'],
   ResponsiveProp<
     ThematicScaleValue<Theme, Extract<Config, { propName: Config['propName'] }>>

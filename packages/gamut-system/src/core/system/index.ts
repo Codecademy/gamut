@@ -31,7 +31,7 @@ export const system = <
   Config extends SystemConfig<Theme>,
   Theme extends AbstractTheme
 >(
-  config?: Config
+  config: Config
 ) => {
   // Initialize all type derivations and declare return signature
   // Intersection of Base and the supplied configuration objects.
@@ -101,14 +101,12 @@ export const system = <
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BaseProps, config ?? {}) as any;
+  const propGroups = merge(BaseProps, config ?? {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
     // Create the style functions (handlers) for each of the specifieed properties.
-    const propHandlers = mapValues(groupProps as any, (prop) =>
-      createHandler(prop)
-    );
+    const propHandlers = mapValues(groupProps, (prop) => createHandler(prop));
 
     // Create a composed group handler for the group (handles all group properties at once)
     const groupHandler = compose(...values(propHandlers));
@@ -130,13 +128,13 @@ export const system = <
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)
-        .reduce((carry, variant) => carry.concat(keys(variant)), [] as any)
+        .reduce((carry, variant) => carry.concat(keys(variant)), [])
         .map((prop: string) => getDefaultPropKey(prop))
     );
 
     // Pick the correct handlers from the system (closure specific) and create a composite.
     const handlers = pick(systemShape.properties, props as any);
-    const variantHandler = compose(...values(handlers));
+    const variantHandler = compose(...(values(handlers) as any));
 
     // Return the variant function
     return (props: any) => {

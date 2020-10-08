@@ -1,24 +1,14 @@
 import { assign, entries, isArray, isObject, set, values } from 'lodash';
 import { CSSObject } from '@emotion/core';
-import {
-  StyleTemplate,
-  AbstractProps,
-  AbstractTheme,
-} from '../../types/system';
+import { AbstractTheme, HandlerMeta } from '../../types/system';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
 
-export type ResponsivePropertyArguments<T extends AbstractProps> = {
-  propNames: Exclude<keyof T, 'theme'>[];
-  templateFns: Partial<Record<keyof T, StyleTemplate<T>>>;
-};
-
-export function responsiveProperty<
-  Theme extends AbstractTheme,
-  Props extends { theme?: Theme }
+export function createResponsiveStyleTemplate<
+  Props extends { theme?: AbstractTheme }
 >({
   propNames,
-  templateFns,
-}: ResponsivePropertyArguments<Props>): (props: Props) => CSSObject {
+  styleTemplates,
+}: HandlerMeta<Props>): (props: Props) => CSSObject {
   return ({ theme = {}, ...props }) => {
     const { breakpoints = DEFAULT_MEDIA_QUERIES } = theme;
 
@@ -64,7 +54,7 @@ export function responsiveProperty<
 
     // Iterate through each breakpoints sorted props
     entries(responsive).forEach(([breakpoint, bpProps]) => {
-      const templates = values(templateFns);
+      const templates = values(styleTemplates);
 
       // TODO: Only call the templateFns we have props for.1
       templates.forEach((styleFunction) => {

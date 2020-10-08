@@ -7,7 +7,7 @@ import {
   ScaleArray,
 } from '../../types/system';
 
-export const standardProperty = <
+export const createStandardStyleTemplate = <
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
     Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>

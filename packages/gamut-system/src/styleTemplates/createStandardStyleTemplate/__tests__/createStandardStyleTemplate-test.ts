@@ -1,18 +1,18 @@
-import { standardProperty } from '..';
+import { createStandardStyleTemplate } from '..';
 
-describe(standardProperty, () => {
+describe(createStandardStyleTemplate, () => {
   it('creates a property function', () => {
-    const propFunction = standardProperty({
+    const styleTemplate = createStandardStyleTemplate({
       propName: 'display',
       computeValue: (val) => val,
     });
 
-    const templatedStyles = propFunction({ display: 'block' });
+    const templatedStyles = styleTemplate({ display: 'block' });
     expect(templatedStyles).toEqual({ display: 'block' });
   });
 
   it('accepts a custom transform function', () => {
-    const doubleMargin = standardProperty({
+    const doubleMargin = createStandardStyleTemplate({
       propName: 'margin',
       computeValue: (val) => `${(val as number) * 2}px`,
     });
@@ -22,25 +22,25 @@ describe(standardProperty, () => {
   });
 
   it('does not return a rule if not given a a value', () => {
-    const propFunction = standardProperty({
+    const styleTemplate = createStandardStyleTemplate({
       propName: 'display',
       computeValue: (val) => val,
     });
 
-    const templatedStyles = propFunction({ display: undefined });
+    const templatedStyles = styleTemplate({ display: undefined });
     expect(templatedStyles).toBe(undefined);
 
-    const emptyPropsStyles = propFunction({});
+    const emptyPropsStyles = styleTemplate({});
     expect(emptyPropsStyles).toBe(undefined);
   });
 
   it('returns a rule if prop value is falsy', () => {
-    const propFunction = standardProperty({
+    const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
       computeValue: (val) => val,
     });
 
-    const falsyValueStyles = propFunction({ margin: 0 });
+    const falsyValueStyles = styleTemplate({ margin: 0 });
     expect(falsyValueStyles).toEqual({ margin: 0 });
   });
 });
