@@ -2,7 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 
 import { ChildComponentDescriptor } from '../../typings/react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type AsProps = {
   className?: string;
@@ -33,10 +33,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   selected,
   children,
 }) => {
-  const childClassName = cx(s.link, asProps.className);
+  const childClassName = cx(styles.link, asProps.className);
 
   return (
-    <li className={cx(s.menuItem, { [s.selected]: selected })}>
+    <li className={cx(styles.menuItem, { [styles.selected]: selected })}>
       <As {...asProps} className={childClassName}>
         {children}
       </As>

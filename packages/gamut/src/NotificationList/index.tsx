@@ -4,7 +4,7 @@ import { isEmpty } from 'lodash';
 import { omitProps } from '../utils/omitProps';
 import { Notification } from './typings';
 import { NotificationItem } from './NotificationItem';
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 const byDate = (notification1: Notification, notification2: Notification) => {
   return (
@@ -32,8 +32,8 @@ export const NotificationList = (props: NotificationListProps) => {
     maxNotifications
   );
   const notificationClasses = cx(
-    s.notificationsContainer,
-    { [s.emptyContainer]: isEmpty(notifications) },
+    styles.notificationsContainer,
+    { [styles.emptyContainer]: isEmpty(notifications) },
     className
   );
 
@@ -43,7 +43,7 @@ export const NotificationList = (props: NotificationListProps) => {
       className={notificationClasses}
     >
       {isEmpty(notifications) ? (
-        <button className={s.emptyText} type="button">
+        <button className={styles.emptyText} type="button">
           {'No new notifications.'}
           <br />
           {"You're all caught up!"}

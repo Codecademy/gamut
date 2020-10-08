@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 export type ToggleProps = {
   checked?: boolean;
@@ -23,9 +23,9 @@ export class Toggle extends Component<ToggleProps, {}> {
     } = this.props;
     return (
       <label
-        className={cx(s.toggleButton, {
-          [s.toggled]: checked,
-          [s.disabled]: disabled,
+        className={cx(styles.toggleButton, {
+          [styles.toggled]: checked,
+          [styles.disabled]: disabled,
         })}
         arial-label={label}
         htmlFor={label}
@@ -33,14 +33,16 @@ export class Toggle extends Component<ToggleProps, {}> {
         <input
           type="checkbox"
           checked={checked}
-          className={s.invisible}
+          className={styles.invisible}
           id={label}
           disabled={disabled}
           onChange={onChange}
         />
-        <span className={s.invisible}>{label}</span>
-        <div className={cx(s.track, s[theme], s[`track-${size}`])} />
-        <div className={cx(s.thumb, s[`thumb-${size}`])} />
+        <span className={styles.invisible}>{label}</span>
+        <div
+          className={cx(styles.track, styles[theme], styles[`track-${size}`])}
+        />
+        <div className={cx(styles.thumb, styles[`thumb-${size}`])} />
       </label>
     );
   }

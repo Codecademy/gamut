@@ -3,7 +3,7 @@ import { Avatar, Byline, Quote } from '../../index';
 import { VisualTheme } from '@codecademy/gamut';
 import cx from 'classnames';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type Testimonial = {
   firstName: string;
@@ -36,24 +36,26 @@ export const Testimonial: React.FC<TestimonialProps> = ({
 
   return (
     <div
-      className={cx(s.testimonialWrapper, {
-        [s.darkWrapper]: theme === VisualTheme.DarkMode,
-        [s.lightWrapper]: theme === VisualTheme.LightMode,
+      className={cx(styles.testimonialWrapper, {
+        [styles.darkWrapper]: theme === VisualTheme.DarkMode,
+        [styles.lightWrapper]: theme === VisualTheme.LightMode,
       })}
     >
-      <div className={s.testimonialCardContainer}>
-        <div className={cx(s.contentContainer, s[`${size}Container`])}>
+      <div className={styles.testimonialCardContainer}>
+        <div className={cx(styles.contentContainer, s[`${size}Container`])}>
           {imageUrl && (
-            <div className={s.avatarContainer}>
+            <div className={styles.avatarContainer}>
               <Avatar
                 src={imageUrl}
                 theme={theme}
-                className={cx({ [s.largeContainerAvatar]: size === 'large' })}
+                className={cx({
+                  [styles.largeContainerAvatar]: size === 'large',
+                })}
                 alt=""
               />
             </div>
           )}
-          <div className={s.bylineContainer}>
+          <div className={styles.bylineContainer}>
             <Byline
               firstName={firstName}
               occupation={occupation}
@@ -61,7 +63,7 @@ export const Testimonial: React.FC<TestimonialProps> = ({
               lastName={lastName}
             />
           </div>
-          <div className={s.quoteContainer}>
+          <div className={styles.quoteContainer}>
             <Quote text={quote} theme={theme} />
           </div>
         </div>
