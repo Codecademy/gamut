@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/prettier-config",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Shared Prettier config for Codecademy",
   "main": "index.js",
   "repository": {
@@ -15,5 +15,8 @@
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/prettier-config",
   "peerDependencies": {
     "prettier": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

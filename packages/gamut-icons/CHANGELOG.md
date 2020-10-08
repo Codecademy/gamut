@@ -1,3 +1,30 @@
+### [3.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.0...@codecademy/gamut-icons@3.8.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
+
+
+### ✨ Features
+
+* added checklist and pin icons for curated content ([#976](https://github.com/Codecademy/client-modules/issues/976)) ([d66e249](https://github.com/Codecademy/client-modules/commit/d66e24976da66cb69341934ac80b2c53f5e975cc))
+
+## [3.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.6.0...@codecademy/gamut-icons@3.7.0) (2020-09-28)
+
+
+### ✨ Features
+
+* add React icon ([#975](https://github.com/Codecademy/client-modules/issues/975)) ([6a72a25](https://github.com/Codecademy/client-modules/commit/6a72a25b447341217b17cfe9aee9458a7a88144f))
+
 ## [3.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.5.0...@codecademy/gamut-icons@3.6.0) (2020-09-24)
 
 

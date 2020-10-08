@@ -1,3 +1,48 @@
+### [16.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.1...@codecademy/gamut@16.1.2) (2020-10-06)
+
+
+### Other Changes
+
+* This seems like it should have been there before? ([#979](https://github.com/Codecademy/client-modules/issues/979)) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7052feb722130a8ded4eb8c966b240a824))
+
+### [16.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.0...@codecademy/gamut@16.1.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
+### [16.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.13...@codecademy/gamut@16.0.14) (2020-09-29)
+
+### [16.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.12...@codecademy/gamut@16.0.13) (2020-09-28)
+
+### [16.0.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.11...@codecademy/gamut@16.0.12) (2020-09-25)
+
+
+### 🐛 Bug Fixes
+
+* **Button:** Add rel by default if none is set when target=blank ([#973](https://github.com/Codecademy/client-modules/issues/973)) ([8e5bade](https://github.com/Codecademy/client-modules/commit/8e5baded035cb21a151083c309665165e8d9c4b2))
+
+### [16.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.10...@codecademy/gamut@16.0.11) (2020-09-25)
+
+
+### Other Changes
+
+* **TSLint:** TS 4.0.2 and Eslint 6.5.1 ([#968](https://github.com/Codecademy/client-modules/issues/968)) ([b2c3ad5](https://github.com/Codecademy/client-modules/commit/b2c3ad556f46d0c7589e8211c39c226dbca26d43))
+
 ### [16.0.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.9...@codecademy/gamut@16.0.10) (2020-09-24)
 
 ### [16.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.8...@codecademy/gamut@16.0.9) (2020-09-24)
