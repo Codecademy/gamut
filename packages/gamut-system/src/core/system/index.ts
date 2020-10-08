@@ -108,7 +108,7 @@ export type ThemedSystem<Theme extends AbstractTheme> = <
 ) => System<Theme, Config>;
 
 export const system = <Config extends SystemConfig<{}>>(
-  config: Config
+  config?: Config
 ): System<{}, Config> => {
   // Initializes the return object
   const systemShape = {
