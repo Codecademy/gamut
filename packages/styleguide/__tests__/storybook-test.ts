@@ -7,6 +7,6 @@ initStoryshots({
   test: renderWithOptions({
     renderer: mount,
   }),
-  storyKindRegex: /^((?!.*?Popover).)*$/,
+  storyKindRegex: /^((?!.*?Popover).(?!.*?Overlay).)*$/,
   configPath: path.join(__dirname, '../.storybook'),
 });

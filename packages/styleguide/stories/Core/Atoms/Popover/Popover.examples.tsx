@@ -28,6 +28,7 @@ export const PopoverExample = (args: PopoverProps) => {
           targetRef={activeElRef}
           overlayProps={{
             onRequestClose: () => setOpen(false),
+            clickOutsideCloses: false,
           }}
         >
           <Container>
