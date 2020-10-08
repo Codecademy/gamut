@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export enum ToolTipPosition {
   BottomLeft = 'bottom-left',
@@ -37,10 +37,10 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   wrapperClassName,
 }) => {
   return (
-    <div className={cx(s.toolTipWrapper, wrapperClassName)}>
+    <div className={cx(styles.toolTipWrapper, wrapperClassName)}>
       <div
         aria-labelledby={id}
-        className={s.targetContainer}
+        className={styles.targetContainer}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
         // This element still needs tab focus so we must use the `tabIndex=0` hack. Sigh.
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -50,17 +50,17 @@ export const ToolTip: React.FC<ToolTipProps> = ({
       </div>
       <div
         className={cx(
-          s.toolTipContainer,
-          s[position],
+          styles.toolTipContainer,
+          styles[position],
           theme === VisualTheme.DarkMode
-            ? s.toolTipContainerDark
-            : s.toolTipContainerLight,
+            ? styles.toolTipContainerDark
+            : styles.toolTipContainerLight,
           tipClassName
         )}
         role="tooltip"
         id={id}
       >
-        <CardBody className={s.toolTipBody}>{children}</CardBody>
+        <CardBody className={styles.toolTipBody}>{children}</CardBody>
       </div>
     </div>
   );

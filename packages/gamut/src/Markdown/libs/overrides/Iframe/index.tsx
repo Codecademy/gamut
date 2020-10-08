@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { HTMLAttributes, FunctionComponent } from 'react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   src?: string;
@@ -27,7 +27,7 @@ export const Iframe: FunctionComponent<IframeProps> = (props) => {
     };
     return (
       <div
-        className={s.youtubeVideoWrapper}
+        className={styles.youtubeVideoWrapper}
         data-testid="yt-iframe"
         style={wrapperStyles}
       >

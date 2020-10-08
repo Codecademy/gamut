@@ -1,7 +1,7 @@
 import { isNumber, omit } from 'lodash';
 import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 const internalProps = [
   'flex',
@@ -79,22 +79,22 @@ export class Container extends React.Component<ContainerProps> {
 
   render() {
     const classes = cx(this.props.className, {
-      [s.flex]: this.props.flex && !this.props.inline,
-      [s.inline]: this.props.flex && this.props.inline,
-      [s.fld]: isNumber(this.props.grow) || isNumber(this.props.shrink),
-      [s[`flg-${this.props.grow}`]]: isNumber(this.props.grow),
-      [s[`fls-${this.props.shrink}`]]: isNumber(this.props.shrink),
-      [s.row]: this.props.row,
-      [s.col]: this.props.column,
-      [s.wrap]: this.props.wrap,
-      [s.nowrap]: this.props.nowrap,
-      [s.rev]: this.props.reverse,
-      [s.fit]: this.props.fit,
-      [s['align-center']]: this.props.center && !this.props.align,
-      [s['justify-center']]: this.props.center && !this.props.justify,
-      [s[`align-${this.props.align}`]]: !!this.props.align,
-      [s[`justify-${this.props.justify}`]]: !!this.props.justify,
-      [s[`aself-${this.props.alignSelf}`]]: !!this.props.alignSelf,
+      [styles.flex]: this.props.flex && !this.props.inline,
+      [styles.inline]: this.props.flex && this.props.inline,
+      [styles.fld]: isNumber(this.props.grow) || isNumber(this.props.shrink),
+      [styles[`flg-${this.props.grow}`]]: isNumber(this.props.grow),
+      [styles[`fls-${this.props.shrink}`]]: isNumber(this.props.shrink),
+      [styles.row]: this.props.row,
+      [styles.col]: this.props.column,
+      [styles.wrap]: this.props.wrap,
+      [styles.nowrap]: this.props.nowrap,
+      [styles.rev]: this.props.reverse,
+      [styles.fit]: this.props.fit,
+      [styles['align-center']]: this.props.center && !this.props.align,
+      [styles['justify-center']]: this.props.center && !this.props.justify,
+      [styles[`align-${this.props.align}`]]: !!this.props.align,
+      [styles[`justify-${this.props.justify}`]]: !!this.props.justify,
+      [styles[`aself-${this.props.alignSelf}`]]: !!this.props.alignSelf,
     });
 
     const propsToTransfer = omit(this.props, internalProps);

@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type HeaderTabProps = HTMLAttributes<HTMLElement> & {
   className?: string;
@@ -14,7 +14,7 @@ export const HeaderTab: React.FC<HeaderTabProps> = ({
   id,
   testId,
 }) => {
-  const classes = cx(s.headerTab, className);
+  const classes = cx(styles.headerTab, className);
 
   return (
     <div id={id} className={classes} data-testid={testId}>

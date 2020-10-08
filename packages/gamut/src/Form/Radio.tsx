@@ -1,6 +1,6 @@
 import React, { ReactNode, InputHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/Radio.module.scss';
+import styles from './styles/Radio.module.scss';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
@@ -33,14 +33,14 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     },
     ref
   ) => {
-    const classNames = cx(s.Radio, className);
+    const classNames = cx(styles.Radio, className);
 
     const inputId = id ? `${htmlFor}-${id}` : htmlFor;
 
     return (
       <div className={classNames}>
         <input
-          className={s.radioInput}
+          className={styles.radioInput}
           id={inputId}
           name={name}
           required={required}
@@ -52,7 +52,7 @@ export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
           value={value}
           {...rest}
         />
-        <label htmlFor={htmlFor} className={s.radioLabel}>
+        <label htmlFor={htmlFor} className={styles.radioLabel}>
           {label}
         </label>
       </div>
