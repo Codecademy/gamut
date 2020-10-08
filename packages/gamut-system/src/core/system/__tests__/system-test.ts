@@ -1,9 +1,10 @@
 import { system } from '..';
 
 describe(system, () => {
+  const { properties, variant, ...groups } = system({});
+
   describe('initializing system', () => {
-    it('initializes a system with no arguments by default', () => {
-      const { properties, variant, ...groups } = system({});
+    it('initializes a system with any empty config', () => {
       expect(properties).toBeDefined();
       expect(groups).toBeDefined();
       expect(variant).toBeDefined();
@@ -11,8 +12,6 @@ describe(system, () => {
   });
 
   describe('variant', () => {
-    const { variant } = system({});
-
     it('returns a style function with a propKey of variant by default', () => {
       const myVariant = variant({
         primary: { color: 'blue' },
@@ -38,7 +37,6 @@ describe(system, () => {
   });
 
   describe('base system', () => {
-    const { properties, variant, ...groups } = system();
     describe('groups', () => {
       Object.entries(groups).forEach(([group, styleFunction]) => {
         it(`${group} composite renders without breaking`, () => {
