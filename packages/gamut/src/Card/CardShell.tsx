@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/CardShell.module.scss';
+import styles from './styles/CardShell.module.scss';
 
 const defaultProps = {
   hoverShadow: false,
@@ -16,9 +16,9 @@ export type CardShellProps = HTMLAttributes<HTMLDivElement> & {
 export const CardShell = React.forwardRef<HTMLDivElement, CardShellProps>(
   ({ children, hoverShadow, className, ...props }, ref) => {
     const shellClasses = cx(
-      s.shell,
+      styles.shell,
       {
-        [s.hoverShadow]: hoverShadow,
+        [styles.hoverShadow]: hoverShadow,
       },
       className
     );
