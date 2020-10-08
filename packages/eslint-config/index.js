@@ -116,6 +116,17 @@ module.exports = {
         patterns: ['@codecademy/gamut/dist/deprecated/*'],
       },
     ],
+    'no-restricted-imports': [
+      'warn',
+      {
+        name: 'moment',
+        message: 'Please use date-fns instead.',
+      },
+      {
+        name: 'moment-timezone',
+        message: 'Please use date-fns-tz instead.',
+      },
+    ],
   },
 
   settings: {
