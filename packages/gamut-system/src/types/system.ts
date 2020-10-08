@@ -20,8 +20,7 @@ export type SystemConfig<Theme extends AbstractTheme> = Record<
   GroupConfig<Theme>
 >;
 
-// Initialize all type derivations and declare return signature
-// Intersection of Base and the supplied configuration objects.
+/** Merge the configs into a single type, overriding */
 type MergeConfig<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -49,7 +48,7 @@ type SystemProperties<
   };
 };
 
-// Intersection of all possible props
+// The intersction of all possible system props.  This used to provide `variant` with a valid list of props.
 export type AllSystemProps<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -67,6 +66,12 @@ export type AllSystemProps<
   }[keyof SystemProperties<Theme, Config>]
 >;
 
+/** The return type for `system`
+ * variant: a function to create aliased combinations of all system props.
+ * properties: a map of all individual style functions.
+ *
+ * And the remaing composed handlers for each to level system group.
+ */
 export type System<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>

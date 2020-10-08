@@ -41,26 +41,15 @@ export type AbstractTheme = BaseTheme & {
   };
 };
 
-export type ScaleArray = Readonly<unknown[]>;
-
-export type ScaleMap = Readonly<Record<string | number, unknown>>;
-
-export type AbstractScales = ScaleArray | ScaleMap | Readonly<string>;
-
 export type AbstractProps = Record<string, unknown>;
 
 export type StyleTemplate<Props extends AbstractProps> = (
   props: Props
 ) => CSSObject | undefined;
 
-export type TemplateMap<Props extends AbstractProps> = WeakRecord<
-  keyof Props,
-  StyleTemplate<Props>
->;
-
 export type HandlerMeta<Props extends AbstractProps> = {
   propNames: Exclude<keyof Props, 'theme'>[];
-  styleTemplates: TemplateMap<Props>;
+  styleTemplates: WeakRecord<keyof Props, StyleTemplate<Props>>;
 };
 
 export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
@@ -74,19 +63,33 @@ export type PropTemplateType = 'standard' | 'directional';
 
 export type TransformValue = (value: any) => string | number;
 
+/** Property Scales */
+
+export type ScaleArray = Readonly<unknown[]>;
+
+export type ScaleMap = Readonly<Record<string | number, unknown>>;
+
+export type ScaleAlias = Readonly<string>;
+
+export type AnyScale = ScaleArray | ScaleMap | ScaleAlias;
+export type AnyThematicScale<Theme extends AbstractTheme> =
+  | ScaleArray
+  | ScaleMap
+  | Readonly<keyof Theme>;
+
+/**  */
 export type AbstractPropertyConfig = {
   propName: PropAlias;
   dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
-  scale?: AbstractScales;
+  scale?: AnyScale;
   computeValue?: TransformValue;
 };
 
-/** Theme Aware Configurations */
 export type PropertyConfig<
   Theme extends AbstractTheme
 > = AbstractPropertyConfig & {
-  scale?: ScaleArray | ScaleMap | Readonly<keyof Theme>;
+  scale?: AnyThematicScale<Theme>;
 };
 
 export type PropKey<Config extends AbstractPropertyConfig> =
@@ -104,7 +107,7 @@ export type DefaultPropScale<
 export type ThematicScaleValue<
   Theme extends AbstractTheme,
   Config extends PropertyConfig<Theme>
-> = Config['scale'] extends AbstractScales
+> = Config['scale'] extends AnyThematicScale<Theme>
   ?
       | SafeLookup<Theme[Extract<Config, { scale: string }>['scale']]>
       | SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
@@ -119,7 +122,5 @@ export type ThematicProps<
   Config['propName'] extends DirectionalProperties
     ? Props[Config['propName']]['dependentProps'] | Config['propName']
     : Config['propName'],
-  ResponsiveProp<
-    ThematicScaleValue<Theme, Extract<Config, { propName: Config['propName'] }>>
-  >
+  ResponsiveProp<ThematicScaleValue<Theme, Config>>
 >;
