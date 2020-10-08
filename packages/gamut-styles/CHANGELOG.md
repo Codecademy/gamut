@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>7.0.2 (2020-10-08)</small>
+
+* Ensure key constancy (#999) ([3cf98e6](https://github.com/Codecademy/client-modules/commit/3cf98e6)), closes [#999](https://github.com/Codecademy/client-modules/issues/999)
+* chore: update changelogs ([e6c1279](https://github.com/Codecademy/client-modules/commit/e6c1279))
+
+
+
+
+
 ### [7.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.0.0...@codecademy/gamut-styles@7.0.1) (2020-10-06)
 
 
@@ -591,4 +605,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
