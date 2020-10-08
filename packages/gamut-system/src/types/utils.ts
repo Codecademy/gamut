@@ -1,4 +1,3 @@
-/** Utility  */
 export type UnionToIntersection<Union> = (
   Union extends any ? (k: Union) => void : never
 ) extends (k: infer Intersection) => void

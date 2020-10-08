@@ -1,6 +1,6 @@
 import { CSSObject } from '@emotion/core';
 import { get, isObject } from 'lodash';
-import { DirectionalProperties } from '../../types/properties';
+import { DirectionalProperty } from '../../types/properties';
 import {
   AbstractProps,
   AbstractPropertyConfig,
@@ -34,7 +34,7 @@ export function createDirectionalStyleTemplate<
       [`${propName}Top`]: t = y,
       [`${propName}Bottom`]: b = y,
     } = props;
-    const propKey = propName as DirectionalProperties;
+    const propKey = propName as DirectionalProperty;
     // Order props in their correct short hand order for consistency between components.
     const orderedProps = [t, r, b, l];
 

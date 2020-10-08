@@ -1,24 +1,24 @@
 import * as CSS from 'csstype';
 
-export type Props = {
+export type Properties = {
   /** Backgrounds */
   backgroundImage: {
-    defaultValue: CSS.Properties['backgroundImage'];
+    defaultScale: CSS.Properties['backgroundImage'];
   };
   backgroundSize: {
-    defaultValue: CSS.Properties['backgroundSize'];
+    defaultScale: CSS.Properties['backgroundSize'];
   };
   backgroundRepeat: {
-    defaultValue: CSS.Properties['backgroundRepeat'];
+    defaultScale: CSS.Properties['backgroundRepeat'];
   };
   backgroundPosition: {
-    defaultValue: CSS.Properties['backgroundPosition'];
+    defaultScale: CSS.Properties['backgroundPosition'];
   };
 
   /** Borders  */
 
   borderWidth: {
-    defaultValue: CSS.Properties['borderWidth'];
+    defaultScale: CSS.Properties['borderWidth'];
     dependentProps:
       | 'borderWidthLeft'
       | 'borderWidthRight'
@@ -28,46 +28,46 @@ export type Props = {
       | 'borderWidthY';
   };
   borderRadius: {
-    defaultValue: CSS.Properties['borderRadius'];
+    defaultScale: CSS.Properties['borderRadius'];
   };
   borderStyle: {
-    defaultValue: CSS.Property.BorderTopStyle; // Dumb Hack
+    defaultScale: CSS.Property.BorderTopStyle; // Dumb Hack
   };
 
   /** Shadows */
   boxShadow: {
-    defaultValue: CSS.Properties['boxShadow'];
+    defaultScale: CSS.Properties['boxShadow'];
   };
   textShadow: {
-    defaultValue: CSS.Properties['textShadow'];
+    defaultScale: CSS.Properties['textShadow'];
   };
 
   /** Typography */
   fontFamily: {
-    defaultValue: CSS.Properties['fontFamily'];
+    defaultScale: CSS.Properties['fontFamily'];
   };
   fontSize: {
-    defaultValue: CSS.Properties['fontSize'];
+    defaultScale: CSS.Properties['fontSize'];
   };
   fontWeight: {
-    defaultValue: CSS.Properties['fontWeight'];
+    defaultScale: CSS.Properties['fontWeight'];
   };
   fontStyle: {
-    defaultValue: CSS.Properties['fontStyle'];
+    defaultScale: CSS.Properties['fontStyle'];
   };
   lineHeight: {
-    defaultValue: CSS.Properties['lineHeight'];
+    defaultScale: CSS.Properties['lineHeight'];
   };
   letterSpacing: {
-    defaultValue: CSS.Properties['letterSpacing'];
+    defaultScale: CSS.Properties['letterSpacing'];
   };
   textAlign: {
-    defaultValue: CSS.Properties['textAlign'];
+    defaultScale: CSS.Properties['textAlign'];
   };
 
   /** Spacing */
   margin: {
-    defaultValue: CSS.Properties['margin'];
+    defaultScale: CSS.Properties['margin'];
     dependentProps:
       | 'marginLeft'
       | 'marginRight'
@@ -77,7 +77,7 @@ export type Props = {
       | 'marginY';
   };
   padding: {
-    defaultValue: CSS.Properties['padding'];
+    defaultScale: CSS.Properties['padding'];
     dependentProps:
       | 'paddingLeft'
       | 'paddingRight'
@@ -88,142 +88,142 @@ export type Props = {
   };
   /** Layout */
   display: {
-    defaultValue: CSS.Properties['display'];
+    defaultScale: CSS.Properties['display'];
   };
   overflow: {
-    defaultValue: CSS.Properties['overflow'];
+    defaultScale: CSS.Properties['overflow'];
   };
   overflowX: {
-    defaultValue: CSS.Properties['overflowX'];
+    defaultScale: CSS.Properties['overflowX'];
   };
   overflowY: {
-    defaultValue: CSS.Properties['overflowY'];
+    defaultScale: CSS.Properties['overflowY'];
   };
   width: {
-    defaultValue: CSS.Properties['width'];
+    defaultScale: CSS.Properties['width'];
   };
   minWidth: {
-    defaultValue: CSS.Properties['minWidth'];
+    defaultScale: CSS.Properties['minWidth'];
   };
   maxWidth: {
-    defaultValue: CSS.Properties['maxWidth'];
+    defaultScale: CSS.Properties['maxWidth'];
   };
   height: {
-    defaultValue: CSS.Properties['height'];
+    defaultScale: CSS.Properties['height'];
   };
   minHeight: {
-    defaultValue: CSS.Properties['minHeight'];
+    defaultScale: CSS.Properties['minHeight'];
   };
   maxHeight: {
-    defaultValue: CSS.Properties['maxHeight'];
+    defaultScale: CSS.Properties['maxHeight'];
   };
   verticalAlign: {
-    defaultValue: CSS.Properties['verticalAlign'];
+    defaultScale: CSS.Properties['verticalAlign'];
   };
 
   /** Positioning */
   position: {
-    defaultValue: CSS.Properties['position'];
+    defaultScale: CSS.Properties['position'];
   };
   top: {
-    defaultValue: CSS.Properties['top'];
+    defaultScale: CSS.Properties['top'];
   };
   bottom: {
-    defaultValue: CSS.Properties['bottom'];
+    defaultScale: CSS.Properties['bottom'];
   };
   left: {
-    defaultValue: CSS.Properties['left'];
+    defaultScale: CSS.Properties['left'];
   };
   right: {
-    defaultValue: CSS.Properties['right'];
+    defaultScale: CSS.Properties['right'];
   };
   zIndex: {
-    defaultValue: CSS.Properties['zIndex'];
+    defaultScale: CSS.Properties['zIndex'];
   };
   /** Grid */
   gridAutoColumns: {
-    defaultValue: CSS.Properties['gridAutoColumns'];
+    defaultScale: CSS.Properties['gridAutoColumns'];
   };
   gridAutoRows: {
-    defaultValue: CSS.Properties['gridAutoRows'];
+    defaultScale: CSS.Properties['gridAutoRows'];
   };
   gridTemplateColumns: {
-    defaultValue: CSS.Properties['gridTemplateColumns'];
+    defaultScale: CSS.Properties['gridTemplateColumns'];
   };
   gridTemplateRows: {
-    defaultValue: CSS.Properties['gridTemplateRows'];
+    defaultScale: CSS.Properties['gridTemplateRows'];
   };
   gridAutoFlow: {
-    defaultValue: CSS.Properties['gridAutoFlow'];
+    defaultScale: CSS.Properties['gridAutoFlow'];
   };
   rowGap: {
-    defaultValue: CSS.Properties['rowGap'];
+    defaultScale: CSS.Properties['rowGap'];
   };
   columnGap: {
-    defaultValue: CSS.Properties['columnGap'];
+    defaultScale: CSS.Properties['columnGap'];
   };
   gridColumn: {
-    defaultValue: CSS.Properties['gridColumn'];
+    defaultScale: CSS.Properties['gridColumn'];
   };
   gridRow: {
-    defaultValue: CSS.Properties['gridRow'];
+    defaultScale: CSS.Properties['gridRow'];
   };
   gridColumnStart: {
-    defaultValue: CSS.Properties['gridColumnStart'];
+    defaultScale: CSS.Properties['gridColumnStart'];
   };
   gridRowStart: {
-    defaultValue: CSS.Properties['gridRowStart'];
+    defaultScale: CSS.Properties['gridRowStart'];
   };
   gridColumnEnd: {
-    defaultValue: CSS.Properties['gridColumnEnd'];
+    defaultScale: CSS.Properties['gridColumnEnd'];
   };
   gridRowEnd: {
-    defaultValue: CSS.Properties['gridRowEnd'];
+    defaultScale: CSS.Properties['gridRowEnd'];
   };
   justifySelf: {
-    defaultValue: CSS.Properties['justifySelf'];
+    defaultScale: CSS.Properties['justifySelf'];
   };
   justifyContent: {
-    defaultValue: CSS.Properties['justifyContent'];
+    defaultScale: CSS.Properties['justifyContent'];
   };
   justifyItems: {
-    defaultValue: CSS.Properties['justifyItems'];
+    defaultScale: CSS.Properties['justifyItems'];
   };
   alignSelf: {
-    defaultValue: CSS.Properties['alignSelf'];
+    defaultScale: CSS.Properties['alignSelf'];
   };
   alignItems: {
-    defaultValue: CSS.Properties['alignItems'];
+    defaultScale: CSS.Properties['alignItems'];
   };
   alignContent: {
-    defaultValue: CSS.Properties['alignContent'];
+    defaultScale: CSS.Properties['alignContent'];
   };
   /** Flex */
   flexBasis: {
-    defaultValue: CSS.Properties['flexBasis'];
+    defaultScale: CSS.Properties['flexBasis'];
   };
   flexDirection: {
-    defaultValue: CSS.Properties['flexDirection'];
+    defaultScale: CSS.Properties['flexDirection'];
   };
   flexWrap: {
-    defaultValue: CSS.Properties['flexWrap'];
+    defaultScale: CSS.Properties['flexWrap'];
   };
   flexShrink: {
-    defaultValue: CSS.Properties['flexShrink'];
+    defaultScale: CSS.Properties['flexShrink'];
   };
   flexGrow: {
-    defaultValue: CSS.Properties['flexGrow'];
+    defaultScale: CSS.Properties['flexGrow'];
   };
   order: {
-    defaultValue: CSS.Properties['order'];
+    defaultScale: CSS.Properties['order'];
   };
 
   /** Colors */
   color: {
-    defaultValue: CSS.Properties['color'];
+    defaultScale: CSS.Properties['color'];
   };
   borderColor: {
-    defaultValue: CSS.Properties['borderColor'];
+    defaultScale: CSS.Properties['borderColor'];
     dependentProps:
       | 'borderColorLeft'
       | 'borderColorRight'
@@ -233,17 +233,19 @@ export type Props = {
       | 'borderColorY';
   };
   backgroundColor: {
-    defaultValue: CSS.Properties['backgroundColor'];
+    defaultScale: CSS.Properties['backgroundColor'];
   };
 };
 
-type PropUnion = {
-  [P in keyof Props]: {
+export type PropertyUnion = {
+  [P in keyof Properties]: {
     propName: P;
-  } & Props[P];
-}[keyof Props];
+  } & Properties[P];
+}[keyof Properties];
 
-export type DirectionalProperties = Extract<
-  PropUnion,
+export type Property = keyof Properties;
+
+export type DirectionalProperty = Extract<
+  PropertyUnion,
   { dependentProps: string }
 >['propName'];

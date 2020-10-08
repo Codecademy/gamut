@@ -8,25 +8,29 @@ import {
 } from './config';
 import { UnionToIntersection, WeakRecord } from './utils';
 
-/** A Group of Property Configurations EG: typography | spacing */
+/** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
 type GroupConfig<Theme extends AbstractTheme> = Record<
   string,
   PropertyConfig<Theme>
 >;
 
-/** All Groups / Properties */
+/** A collection of Property Groups EG: 'typography' | 'layout' etc.  */
 export type SystemConfig<Theme extends AbstractTheme> = Record<
   string,
   GroupConfig<Theme>
 >;
 
-/** Merge the configs into a single type, overriding */
+/** Merge a user defined configuration on top of the base configuration to derive defaults correctly */
 type MergeConfig<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > = BaseSystemConfig & Config;
 
-// Intermediate type to derive return types from representing all properties and handler
+/**
+ * This is an intermediate type to derive other more complex properties from for the system return type.
+ * It infers the type signatures of all individual stylefunctions that exist within a property group and
+ * all of their possible props/
+ */
 type SystemProperties<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -48,7 +52,9 @@ type SystemProperties<
   };
 };
 
-// The intersction of all possible system props.  This used to provide `variant` with a valid list of props.
+/**
+ * The union of all possible props in `SystemProperties`
+ */
 export type AllSystemProps<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -66,27 +72,30 @@ export type AllSystemProps<
   }[keyof SystemProperties<Theme, Config>]
 >;
 
-/** The return type for `system`
+/**
+ * The return type for `system`
  * variant: a function to create aliased combinations of all system props.
  * properties: a map of all individual style functions.
- *
- * And the remaing composed handlers for each to level system group.
+
+ * And a map of all composed handlers from each top level system group.
  */
 export type System<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > = {
+  /** Higher order variant function, with two overloads */
   variant: {
-    /** Customizable PropKey */
+    /** Customizable prop interface */
     <Prop extends Readonly<string>, Keys extends string>(config: {
       prop: Prop;
       variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
     }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
-    /**  */
+    /** Default `variant` interface */
     <Keys extends string>(
       config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
     ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
   };
+  /** The intersection of all style properties (regardless of group) */
   properties: UnionToIntersection<
     SystemProperties<Theme, Config>[keyof SystemProperties<
       Theme,
