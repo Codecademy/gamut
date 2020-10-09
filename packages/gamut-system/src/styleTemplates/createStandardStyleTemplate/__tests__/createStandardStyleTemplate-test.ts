@@ -4,7 +4,7 @@ describe(createStandardStyleTemplate, () => {
   it('creates a property function', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'display',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const templatedStyles = styleTemplate({ display: 'block' });
@@ -14,7 +14,7 @@ describe(createStandardStyleTemplate, () => {
   it('accepts a custom transform function', () => {
     const doubleMargin = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => `${(val as number) * 2}px`,
+      transformValue: (val) => `${(val as number) * 2}px`,
     });
 
     const templatedStyles = doubleMargin({ margin: 4 });
@@ -24,7 +24,7 @@ describe(createStandardStyleTemplate, () => {
   it('does not return a rule if not given a a value', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'display',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const templatedStyles = styleTemplate({ display: undefined });
@@ -37,7 +37,7 @@ describe(createStandardStyleTemplate, () => {
   it('returns a rule if prop value is falsy', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const falsyValueStyles = styleTemplate({ margin: 0 });
@@ -47,7 +47,7 @@ describe(createStandardStyleTemplate, () => {
   it('looks up literal map scale values when configured', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: {
         sm: '10px',
       },
@@ -60,7 +60,7 @@ describe(createStandardStyleTemplate, () => {
   it('if literal map scale values cannot be found it returns the the original value', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: {
         sm: '10px',
       },
@@ -73,7 +73,7 @@ describe(createStandardStyleTemplate, () => {
   it('returns the original value if array scale values are provided', () => {
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: [10, 20],
     });
 
@@ -85,7 +85,7 @@ describe(createStandardStyleTemplate, () => {
     const theme = { spacing: { sm: '10px', md: '20px' } };
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 
@@ -97,7 +97,7 @@ describe(createStandardStyleTemplate, () => {
     const theme = { spacing: { sm: '10px', md: '20px' } };
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 
@@ -109,7 +109,7 @@ describe(createStandardStyleTemplate, () => {
     const theme = { spacing: [10, 20] };
     const styleTemplate = createStandardStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 

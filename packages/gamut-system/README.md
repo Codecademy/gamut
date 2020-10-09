@@ -14,11 +14,11 @@ Style props for building robustly typed design systems in react.
 Create your new system locally to your app:
 
 ```tsx
-import { system } from '@codecademy/gamut-system';
+import { system, HandlerProps } from '@codecademy/gamut-system';
 
 export const {
   propGroups: { typography, spacing, layout },
-} = system();
+} = system({});
 
 export type TypographyProps = HandlerProps<typeof typography>;
 export type SpacingProps = HandlerProps<typeof spacing>;

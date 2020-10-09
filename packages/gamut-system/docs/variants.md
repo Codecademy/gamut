@@ -6,7 +6,7 @@ There may be cases where you want to change many props at the same time to achie
 import styled from '@emotion/styled';
 import { system, HandlerProps } from '@codecademy/gamut-system';
 
-export const { variants } = system();
+export const { variants } = system({});
 
 const buttonVariants = variants({
   variants: {

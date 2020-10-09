@@ -58,7 +58,7 @@ describe(createHandler, () => {
     expect(styleTemplates.height?.toString()).toEqual(
       createStandardStyleTemplate({
         propName: 'height',
-        computeValue: identity,
+        transformValue: identity,
       }).toString()
     );
   });
@@ -75,7 +75,7 @@ describe(createHandler, () => {
     expect(styleTemplates.height?.toString()).toEqual(
       createDirectionalStyleTemplate({
         propName: 'height',
-        computeValue: identity,
+        transformValue: identity,
       }).toString()
     );
   });

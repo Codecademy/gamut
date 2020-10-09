@@ -9,8 +9,8 @@ by creating a prop config: an immutable definition that defines the way the styl
 - `propName`: Any defined prop in the system.
 - `dependentProps`: An array of alternative props that you would like to group with the same style function.
 - `type`: Declare the template type `standard` by default or `directional` for properties that have a shorthand for directional values.
-- `computedValue`: There may be cases where you would like to transform or compute a property value into something more CSS
-  friendly some examples may be adding units or looking up configurations. You may provide a `computeValue` function on your config to do this.
+- `transformValue`: There may be cases where you would like to transform or compute a property value into something more CSS
+  friendly some examples may be adding units or looking up configurations. You may provide a `transformValue` function on your config to do this.
 - `scale`: Either a typed array/object literal or a key of your theme that has those values.
 
 ```tsx
@@ -19,7 +19,7 @@ type AbstractPropertyConfig = {
   dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AbstractScales;
-  computeValue?: TransformValue;
+  transformValue?: TransformValue;
 };
 ```
 

@@ -88,7 +88,13 @@ const MyTheme = {
 }
 
 const themedSystem = system as ThemedSystem<MyTheme>
-export const { properties, propertyGroups } = themedSystem({ });
+
+export const {
+  layout,
+  spacing,
+  typography,
+  variant
+} = themedSystem({});
 
 export const Apps = ({ children }) => <ThemeProvider theme={MyTheme}>{children}</ThemeProvider>
 ```

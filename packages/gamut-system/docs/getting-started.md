@@ -18,18 +18,17 @@ the correct types for your properties.
 import { system } from '@codecademy/gamut-system';
 
 export const {
-  propertyGroups: {
-    typography,
-    layout,
-    spacing,
-    border
-    background
-    color,
-    flexbox,
-    grid,
-  },
+  typography,
+  layout,
+  spacing,
+  border
+  background
+  color,
+  flexbox,
+  grid,
+  properties,
   variants
-} = system();
+} = system({});
 ```
 
 ## Create a component

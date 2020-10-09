@@ -15,27 +15,27 @@ export const layout = {
   },
   width: {
     propName: 'width',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   minWidth: {
     propName: 'minWidth',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   maxWidth: {
     propName: 'maxWidth',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   height: {
     propName: 'height',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   minHeight: {
     propName: 'minHeight',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   maxHeight: {
     propName: 'maxHeight',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   verticalAlign: {
     propName: 'verticalAlign',

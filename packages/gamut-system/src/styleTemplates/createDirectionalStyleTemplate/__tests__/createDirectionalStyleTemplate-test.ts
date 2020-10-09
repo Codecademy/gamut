@@ -4,7 +4,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('creates a property function', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const templatedStyles = styleTemplate({ margin: '10px' });
@@ -19,7 +19,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('accepts a custom transform function', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => `${(val as number) * 2}px`,
+      transformValue: (val) => `${(val as number) * 2}px`,
     });
 
     const templatedStyles = styleTemplate({ margin: 5 });
@@ -34,7 +34,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('does not template base when no configuration is given', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const leftStyles = styleTemplate({ marginLeft: '10px' });
@@ -47,7 +47,7 @@ describe(createDirectionalStyleTemplate, () => {
   describe('directional overrides', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     });
 
     const directionalOverrides = {
@@ -137,7 +137,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('looks up literal map scale values when configured', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: { sm: '10px' },
     });
 
@@ -148,7 +148,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('if literal map scale values cannot be found it returns the the original value', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: { sm: '10px' },
     });
 
@@ -159,7 +159,7 @@ describe(createDirectionalStyleTemplate, () => {
   it('returns the original value if array scale values are provided', () => {
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: ['10px', '20px'],
     });
 
@@ -171,7 +171,7 @@ describe(createDirectionalStyleTemplate, () => {
     const theme = { spacing: { sm: '10px', md: '20px' } };
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 
@@ -183,7 +183,7 @@ describe(createDirectionalStyleTemplate, () => {
     const theme = { spacing: { sm: '10px', md: '20px' } };
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 
@@ -195,7 +195,7 @@ describe(createDirectionalStyleTemplate, () => {
     const theme = { spacing: [10, 20] };
     const styleTemplate = createDirectionalStyleTemplate({
       propName: 'margin',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
       scale: 'spacing',
     });
 

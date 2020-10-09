@@ -51,7 +51,7 @@ export type AbstractPropertyConfig = {
   dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AnyScale;
-  computeValue?: (value: any) => string | number;
+  transformValue?: (value: any) => string | number;
 };
 
 export type PropertyConfig<

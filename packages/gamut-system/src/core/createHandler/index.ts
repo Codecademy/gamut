@@ -26,7 +26,7 @@ export const createHandler = <
   // Prop configs may choose between standard style templates and the fancy directional properties.
   // By default, we assume no value transformations ("identity") and standard templates.
   const {
-    computeValue = identity,
+    transformValue = identity,
     dependentProps = [],
     propName,
     type = 'standard',
@@ -47,7 +47,7 @@ export const createHandler = <
   >> = STYLE_TEMPLATE_GENERATORS[type]({
     ...config,
     propName,
-    computeValue,
+    transformValue,
   });
 
   // Create a container to place composed style templates in.

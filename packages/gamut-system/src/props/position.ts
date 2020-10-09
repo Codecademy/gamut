@@ -6,19 +6,19 @@ export const positioning = {
   },
   top: {
     propName: 'top',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   right: {
     propName: 'right',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   bottom: {
     propName: 'bottom',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   left: {
     propName: 'left',
-    computeValue: parseSize,
+    transformValue: parseSize,
   },
   zIndex: {
     propName: 'zIndex',

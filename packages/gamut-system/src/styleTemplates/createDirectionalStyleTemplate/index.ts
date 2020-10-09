@@ -19,9 +19,9 @@ import { createScaleValueTransformer } from '../../transforms/transformScaleValu
 export function createDirectionalStyleTemplate<
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
-    Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
+    Required<Pick<AbstractPropertyConfig, 'propName' | 'transformValue'>>
 >(config: Config): StyleTemplate<Props> {
-  const { propName, computeValue } = config;
+  const { propName, transformValue } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
   return (props: Props): CSSObject => {
@@ -51,7 +51,7 @@ export function createDirectionalStyleTemplate<
       // Look up valid directional prop name based on direction.
       const prop = DIRECTIONAL_PROPS[propKey][direction];
       // Do final calculations
-      styles[prop] = computeValue(propValue) as string;
+      styles[prop] = transformValue(propValue) as string;
     });
     return styles;
   };

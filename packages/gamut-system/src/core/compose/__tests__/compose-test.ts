@@ -68,21 +68,21 @@ describe(compose, () => {
     expect(styleTemplates.textAlign?.toString()).toEqual(
       createStandardStyleTemplate({
         propName: 'textAlign',
-        computeValue: identity,
+        transformValue: identity,
       }).toString()
     );
 
     expect(styleTemplates.display?.toString()).toEqual(
       createStandardStyleTemplate({
         propName: 'display',
-        computeValue: identity,
+        transformValue: identity,
       }).toString()
     );
 
     expect(styleTemplates.borderWidth?.toString()).toEqual(
       createDirectionalStyleTemplate({
         propName: 'borderWidth',
-        computeValue: identity,
+        transformValue: identity,
       }).toString()
     );
   });

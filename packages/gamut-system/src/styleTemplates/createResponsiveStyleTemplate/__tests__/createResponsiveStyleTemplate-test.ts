@@ -7,15 +7,15 @@ describe(createResponsiveStyleTemplate, () => {
   const styleTemplates = {
     display: createStandardStyleTemplate({
       propName: 'display',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     }),
     height: createStandardStyleTemplate({
       propName: 'height',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     }),
     width: createStandardStyleTemplate({
       propName: 'width',
-      computeValue: (val) => val,
+      transformValue: (val) => val,
     }),
   };
 
