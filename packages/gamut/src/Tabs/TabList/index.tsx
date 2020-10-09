@@ -1,7 +1,7 @@
 import React, { ReactElement, FunctionComponent, ReactNode } from 'react';
 import cx from 'classnames';
 import { Tab } from '../Tab';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type TabListProps = {
   activeTabIndex?: number;
@@ -28,7 +28,7 @@ export const TabList: FunctionComponent<TabListProps> = ({
   maxWidth,
   onChange,
 }) => {
-  const classes = cx(s.tabList, className, { [s.center]: center });
+  const classes = cx(styles.tabList, className, { [styles.center]: center });
   return (
     <div className={classes} role="tablist" style={{ maxWidth }}>
       {(React.Children.toArray(children) as any)

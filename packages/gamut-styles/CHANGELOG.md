@@ -1,3 +1,10 @@
+### [7.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.0.1...@codecademy/gamut-styles@7.0.2) (2020-10-08)
+
+
+### Other Changes
+
+* Ensure key constancy ([#999](https://github.com/Codecademy/client-modules/issues/999)) ([3cf98e6](https://github.com/Codecademy/client-modules/commit/3cf98e6c25451fb3aa7e0bde201c198d6a66ec26))
+
 ### [7.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.0.0...@codecademy/gamut-styles@7.0.1) (2020-10-06)
 
 

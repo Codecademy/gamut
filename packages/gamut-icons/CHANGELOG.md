@@ -1,3 +1,10 @@
+### [3.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.1...@codecademy/gamut-icons@3.8.2) (2020-10-08)
+
+
+### Other Changes
+
+* Reformat and add a title remove the id: ([#998](https://github.com/Codecademy/client-modules/issues/998)) ([16e15aa](https://github.com/Codecademy/client-modules/commit/16e15aa5097db4500e673f78d582b7258a6f4212))
+
 ### [3.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.0...@codecademy/gamut-icons@3.8.1) (2020-10-06)
 
 
