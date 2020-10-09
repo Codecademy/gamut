@@ -27,7 +27,7 @@
     "@types/marked": "^0.6.1",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
-    "framer-motion": "^1.11.0",
+    "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
     "invariant": "^2.2.4",
