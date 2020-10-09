@@ -97,7 +97,7 @@ export type ThematicProps<
     ? Properties[Config['propName']]['dependentProps'] | Config['propName']
     : Config['propName'],
   ResponsiveProp<ThematicScaleValue<Theme, Config>>
->;
+> & { theme?: Theme };
 
 /** Style Functions */
 

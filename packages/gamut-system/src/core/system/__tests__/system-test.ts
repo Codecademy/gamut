@@ -1,11 +1,7 @@
-import { system } from '..';
+import { system, ThemedSystem } from '..';
 
 describe(system, () => {
-  const { properties, variant, ...groups } = system({
-    typography: {
-      fontSize: { propName: 'fontSize', scale: [] as (1 | 2 | 3)[] },
-    },
-  });
+  const { properties, variant, ...groups } = system({});
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {
@@ -44,6 +40,67 @@ describe(system, () => {
     });
   });
 
+  describe('Custom Scales', () => {
+    const { typography, variant } = system({
+      typography: {
+        fontSize: { propName: 'fontSize', scale: { sm: '14px', md: '16px' } },
+      },
+    });
+
+    it('theme scale values are found off of the specified theme', () => {
+      expect(typography({ fontSize: 'md' })).toEqual({ fontSize: '16px' });
+    });
+
+    it('variants calculate theme values', () => {
+      const textVariants = variant({
+        caption: {
+          fontSize: 'sm',
+        },
+        paragraph: {
+          fontSize: 'md',
+        },
+      });
+
+      expect(textVariants({ variant: 'caption' })).toEqual({
+        fontSize: '14px',
+      });
+    });
+  });
+
+  describe('Theme Scales', () => {
+    const themedSystem = system as ThemedSystem<{
+      fontSize: { sm: string; md: string };
+    }>;
+
+    const { typography, variant } = themedSystem({
+      typography: {
+        fontSize: { propName: 'fontSize', scale: 'fontSize' },
+      },
+    });
+    const theme = { fontSize: { sm: '14px', md: '16px' } };
+
+    it('theme scale values are found off of the specified theme', () => {
+      expect(typography({ fontSize: 'md', theme })).toEqual({
+        fontSize: '16px',
+      });
+    });
+
+    it('variants calculate theme values', () => {
+      const textVariants = variant({
+        caption: {
+          fontSize: 'sm',
+        },
+        paragraph: {
+          fontSize: 'md',
+        },
+      });
+
+      expect(textVariants({ variant: 'caption', theme })).toEqual({
+        fontSize: '14px',
+      });
+    });
+  });
+
   describe('base system', () => {
     describe('groups', () => {
       Object.entries(groups).forEach(([group, styleFunction]) => {
@@ -61,6 +118,4 @@ describe(system, () => {
       });
     });
   });
-
-  xdescribe('customized system props', () => {});
 });
