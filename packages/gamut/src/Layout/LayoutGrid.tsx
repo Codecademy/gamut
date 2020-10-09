@@ -5,7 +5,7 @@ import { generateResponsiveClassnames } from '../utils/generateResponsiveClassna
 import { ContainerElementProps, GapSizes } from './types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 
-import s from './styles/Grid.module.scss';
+import styles from './styles/Grid.module.scss';
 
 export type LayoutGridProps = {
   /** The grid-gap size that should be present between rows */
@@ -22,9 +22,9 @@ export const LayoutGrid: React.FC<Partial<LayoutGridProps>> = ({
   columnGap,
 }) => {
   const classes = cx(
-    s.container,
+    styles.container,
     className,
-    generateResponsiveClassnames({ rowGap, columnGap }, s)
+    generateResponsiveClassnames({ rowGap, columnGap }, styles)
   );
 
   return (

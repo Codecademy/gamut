@@ -1,3 +1,14 @@
+### [16.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.4...@codecademy/gamut@16.1.5) (2020-10-08)
+
+
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [16.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.3...@codecademy/gamut@16.1.4) (2020-10-08)
+
+### [16.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.2...@codecademy/gamut@16.1.3) (2020-10-08)
+
 ### [16.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.1...@codecademy/gamut@16.1.2) (2020-10-06)
 
 

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React, { ReactHTML } from 'react';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type ContentContainerProps = {
   className?: string;
@@ -24,9 +24,9 @@ export const ContentContainer: React.FC<ContentContainerProps> = ({
   const Element = el || 'div';
   const classes = cx(
     {
-      [s.contentContainerWide]: wide,
+      [styles.contentContainerWide]: wide,
     },
-    s.contentContainer,
+    styles.contentContainer,
     className
   );
 
