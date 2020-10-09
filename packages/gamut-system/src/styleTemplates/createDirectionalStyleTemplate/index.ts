@@ -1,14 +1,12 @@
 import { CSSObject } from '@emotion/core';
-import { get, isObject } from 'lodash';
 import { DirectionalProperty } from '../../types/properties';
 import {
   AbstractProps,
   AbstractPropertyConfig,
   StyleTemplate,
-  ScaleMap,
-  ScaleArray,
 } from '../../types/config';
 import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
+import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
 
 /**
  * Directional props require destructuring of their values to ensure their order.  Instead
@@ -22,8 +20,12 @@ export function createDirectionalStyleTemplate<
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
     Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
->({ propName, scale, computeValue }: Config): StyleTemplate<Props> {
+>(config: Config): StyleTemplate<Props> {
+  const { propName, computeValue } = config;
+  const getScaleFunction = createScaleValueTransformer(config);
+
   return (props: Props): CSSObject => {
+    const scaleTransform = getScaleFunction(props);
     // Initialize all directional props from base => specific direction
     const {
       [propName]: base,
@@ -42,20 +44,9 @@ export function createDirectionalStyleTemplate<
 
     // Iterate over all possible directions
     DIRECTIONS.forEach((direction, i) => {
-      let propValue = orderedProps[i];
+      const propValue = scaleTransform(orderedProps[i]);
       // If there's nothing don't add it to the style object
-      if (propValue === undefined) {
-        return;
-      }
-
-      let scaleShape = scale;
-      if (typeof scaleShape === 'string') {
-        scaleShape = get(props, `theme.${scale}`, {}) as ScaleMap | ScaleArray;
-      }
-
-      if (isObject(scaleShape)) {
-        propValue = get(scaleShape, `${propValue}`, propValue);
-      }
+      if (propValue === undefined) return;
 
       // Look up valid directional prop name based on direction.
       const prop = DIRECTIONAL_PROPS[propKey][direction];

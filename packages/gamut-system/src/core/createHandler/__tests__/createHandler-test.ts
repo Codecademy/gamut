@@ -5,7 +5,6 @@ import {
   createStandardStyleTemplate,
 } from '../../../styleTemplates';
 import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
-import { ThematicProps } from '../../../types/config';
 
 type Theme = {
   colors: {
@@ -15,11 +14,10 @@ type Theme = {
 };
 
 type PropConfig = { propName: 'height' };
-type Props = ThematicProps<Theme, PropConfig>;
 
 describe(createHandler, () => {
   it('creates a style function', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createHandler<Theme, PropConfig>({
       propName: 'height',
     });
 
@@ -27,7 +25,7 @@ describe(createHandler, () => {
   });
 
   it('adds prop names the function is responsible for as a key on the function object', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createHandler<Theme, PropConfig>({
       propName: 'height',
     });
 
@@ -37,8 +35,7 @@ describe(createHandler, () => {
   it('adds dependentProps to the propName array', () => {
     const styleFunction = createHandler<
       Theme,
-      PropConfig & { dependentProps: ['maxHeight', 'minHeight'] },
-      Props
+      PropConfig & { dependentProps: ['maxHeight', 'minHeight'] }
     >({
       propName: 'height',
       dependentProps: ['maxHeight', 'minHeight'],
@@ -52,7 +49,7 @@ describe(createHandler, () => {
   });
 
   it('adds the the template functions to the styleTemplates key on the function object', () => {
-    const { styleTemplates } = createHandler<Theme, PropConfig, Props>({
+    const { styleTemplates } = createHandler<Theme, PropConfig>({
       propName: 'height',
     });
 
@@ -69,8 +66,7 @@ describe(createHandler, () => {
   it('creates a directional style template if type is specified', () => {
     const { styleTemplates } = createHandler<
       Theme,
-      PropConfig & { type: 'directional' },
-      Props
+      PropConfig & { type: 'directional' }
     >({
       propName: 'height',
       type: 'directional',
@@ -85,7 +81,7 @@ describe(createHandler, () => {
   });
 
   it('returns a responsive style template to handle media queries', () => {
-    const styleFunction = createHandler<Theme, PropConfig, Props>({
+    const styleFunction = createHandler<Theme, PropConfig>({
       propName: 'height',
     });
 

@@ -249,3 +249,7 @@ export type DirectionalProperty = Extract<
   PropertyUnion,
   { dependentProps: string }
 >['propName'];
+
+export type AllPropertiesAndDependents =
+  | PropertyUnion['propName']
+  | Extract<PropertyUnion, { dependentProps: string }>['dependentProps'];

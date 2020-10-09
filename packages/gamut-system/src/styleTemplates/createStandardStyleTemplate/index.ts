@@ -1,38 +1,28 @@
-import { get, isObject } from 'lodash';
+import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
 import {
   AbstractProps,
   AbstractPropertyConfig,
   StyleTemplate,
-  ScaleMap,
-  ScaleArray,
 } from '../../types/config';
 
 export const createStandardStyleTemplate = <
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig &
     Required<Pick<AbstractPropertyConfig, 'propName' | 'computeValue'>>
->({
-  propName,
-  scale,
-  computeValue,
-}: Config): StyleTemplate<Props> => {
+>(
+  config: Config
+): StyleTemplate<Props> => {
+  const { propName: prop, computeValue } = config;
+  const getScaleFunction = createScaleValueTransformer(config);
+
   return (props: Props) => {
-    let propValue = props[propName];
-    if (propValue === undefined) {
-      return;
-    }
+    const getScalarValue = getScaleFunction(props);
+    const propValue = getScalarValue(props[prop]);
 
-    let scaleShape = scale;
-    if (typeof scaleShape === 'string') {
-      scaleShape = get(props, `theme.${scale}`, {}) as ScaleMap | ScaleArray;
-    }
-
-    if (isObject(scaleShape)) {
-      propValue = get(scaleShape, `${propValue}`, propValue);
-    }
-
-    return {
-      [propName]: computeValue(propValue),
-    };
+    return propValue !== undefined
+      ? {
+          [prop]: computeValue(propValue),
+        }
+      : propValue;
   };
 };

@@ -1,5 +1,5 @@
 import { AbstractTheme } from '../../types/config';
-import * as BaseProps from '../../props';
+import * as BASE_CONFIG from '../../props';
 import { compose } from '../compose';
 import { createHandler } from '../createHandler';
 import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
@@ -21,12 +21,12 @@ export const system = <Config extends SystemConfig<{}>>(
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BaseProps, config ?? {});
+  const propGroups = merge(BASE_CONFIG, config ?? {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
     // Create the style functions (handlers) for each of the specifieed properties.
-    const propHandlers = mapValues(groupProps, (prop) => createHandler(prop));
+    const propHandlers = mapValues(groupProps, createHandler);
 
     // Create a composed group handler for the group (handles all group properties at once)
     const groupHandler = compose(...values(propHandlers));

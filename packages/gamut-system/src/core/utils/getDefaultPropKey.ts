@@ -1,5 +1,3 @@
-import { entries } from 'lodash';
-
 export const altKeys = {
   borderStyle: /borderStyle/g,
   borderWidth: /borderWidth/g,
@@ -8,7 +6,7 @@ export const altKeys = {
   padding: /padding/,
 };
 
-const propAndAlts = entries(altKeys);
+const propAndAlts = Object.entries(altKeys);
 
 export const getDefaultPropKey = (key: string) => {
   for (const [main, matcher] of propAndAlts) {

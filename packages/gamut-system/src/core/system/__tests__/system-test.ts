@@ -1,7 +1,11 @@
 import { system } from '..';
 
 describe(system, () => {
-  const { properties, variant, ...groups } = system({});
+  const { properties, variant, ...groups } = system({
+    typography: {
+      fontSize: { propName: 'fontSize', scale: [] as (1 | 2 | 3)[] },
+    },
+  });
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {
@@ -15,7 +19,11 @@ describe(system, () => {
     it('returns a style function with a propKey of variant by default', () => {
       const myVariant = variant({
         primary: { color: 'blue' },
-        secondary: { color: 'green' },
+        secondary: {
+          color: 'green',
+          backgroundColor: 'green',
+          fontFamily: 'serif',
+        },
       });
 
       expect(myVariant({ variant: 'primary' })).toEqual({ color: 'blue' });
