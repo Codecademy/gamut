@@ -37,6 +37,11 @@ export type OverlayProps = {
    * @default true
    */
   returnFocusOnDeactivates?: boolean;
+  /**
+   * Whether to lock scroll when overlay is opened.
+   * @default true
+   */
+  lockScroll?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
@@ -48,8 +53,9 @@ export const Overlay: React.FC<OverlayProps> = ({
   returnFocusOnDeactivates = true,
   onRequestClose,
   isOpen,
+  lockScroll = true,
 }) => {
-  useLockBodyScroll(isOpen);
+  useLockBodyScroll(isOpen && lockScroll);
 
   if (!isOpen) return null;
 
