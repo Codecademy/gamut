@@ -32,6 +32,11 @@ export type OverlayProps = {
    * @default true
    */
   fixedPositioning?: boolean;
+  /**
+   * Whether the focus will return to the element that had focus before activation. If false, it will *not* return.
+   * @default true
+   */
+  returnFocusOnDeactivates?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
@@ -40,6 +45,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   clickOutsideCloses = true,
   escapeCloses = true,
   fixedPositioning = true,
+  returnFocusOnDeactivates = true,
   onRequestClose,
   isOpen,
 }) => {
@@ -61,6 +67,7 @@ export const Overlay: React.FC<OverlayProps> = ({
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
             onDeactivate: onRequestClose,
+            returnFocusOnDeactivate: returnFocusOnDeactivates,
           }}
         >
           {children}
