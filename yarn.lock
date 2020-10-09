@@ -9454,9 +9454,9 @@ fragment-cache@^0.2.1:
     map-cache "^0.2.2"
 
 framer-motion@^2.7.9:
-  version "2.7.9"
-  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-2.7.9.tgz#52eeea6323e0500e82a6f2ada1142e60944ac679"
-  integrity sha512-rQEz9mjDLu0A6BtOFRh0T2Jg0dxtP06WKLobHLuvHWwg7LZQ/fbVKa5u4VyP5USgLnkLZEHkCHqC2XX9D5ggXw==
+  version "2.8.0"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-2.8.0.tgz#f77ae82eeb8277f6aa0b357fd95b946c273bf226"
+  integrity sha512-ZWuAZmrKIZ+5BKqd6BUTddNijcjoAl7TDbP2JnWUhtRqA6/a0qG8Ku/8+bcLZO00G8KY4B0BzvkbeLCVMgmGIQ==
   dependencies:
     framesync "^4.1.0"
     hey-listen "^1.0.8"
