@@ -73,6 +73,7 @@ If you would like to use your own, we allow you to specificy 5 different breakpo
 
 ```tsx
 import React from 'react';
+import { system, ThemedSystem } from '@codecademy/gamut-system';
 import { ThemeProvider } from 'emotion-theming';
 
 const MyTheme = {
@@ -86,7 +87,8 @@ const MyTheme = {
   }
 }
 
-export const { properties, propertyGroups } = system<{}, typeof MyTheme>();
+const themedSystem = system as ThemedSystem<MyTheme>
+export const { properties, propertyGroups } = themedSystem({ });
 
-export const Apps = ({ children }) => <ThemeProvider theme={MyTheme}>{chidlren}</ThemeProvider>
+export const Apps = ({ children }) => <ThemeProvider theme={MyTheme}>{children}</ThemeProvider>
 ```

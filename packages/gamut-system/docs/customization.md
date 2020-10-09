@@ -28,7 +28,7 @@ type AbstractPropertyConfig = {
 To use this you must pass a subset of the base config and its property definitions (propGroups and handlers):
 
 ```tsx
-const config = {
+export const { properties } = system({
   typography: {
     fontSize: {
       propName: 'fontSize',
@@ -40,9 +40,7 @@ const config = {
       },
     },
   },
-} as const;
-
-export const { properties } = system(config);
+});
 ```
 
 The resulting types for your `fontSize` property and ALL consumers (`typography` and `variants`) will now be only the values specified as keys on your scale:
@@ -60,20 +58,19 @@ The resulting types for your `fontSize` property and ALL consumers (`typography`
 Using a theme can make this even more flexible.
 
 ```tsx
+
 type ThemeShape = {
   fontSizes: { xs: string, sm: string, md: string, lg: string };
 }
 
-const config = {
+
+export const { properties }  = (system as ThemedSystem<ThemeShape>)({
   typography: {
     fontSize: {
       propName: 'fontSize',
       scale: 'fontSizes'
   },
-} as const;
-
-
-export const { properties }  = system<ThemeShape, typeof config>(config);
+});
 ```
 
 In your react code:
