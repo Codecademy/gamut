@@ -83,7 +83,7 @@
     "lint-staged": "10.2.2",
     "mutationobserver-shim": "^0.3.3",
     "prettier": "2.1.2",
-    "react": "16.12.0",
+    "react": "16.13.1",
     "react-docgen-typescript-loader": "3.6.0",
     "react-dom": "16.13.1",
     "react-test-renderer": "16.13.0",
