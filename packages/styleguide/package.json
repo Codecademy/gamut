@@ -24,7 +24,7 @@
     "@codecademy/webpack-config": "^5.0.5",
     "@storybook/addon-a11y": "6.0.26",
     "@storybook/addon-actions": "6.0.5",
-    "@storybook/addon-controls": "6.0.5",
+    "@storybook/addon-controls": "6.0.26",
     "@storybook/addon-docs": "6.0.5",
     "@storybook/addon-essentials": "6.0.5",
     "@storybook/addon-knobs": "6.0.5",
