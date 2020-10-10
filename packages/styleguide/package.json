@@ -40,7 +40,7 @@
     "classnames": "2.2.6",
     "fork-ts-checker-webpack-plugin": "4.0.2",
     "invariant": "2.2.4",
-    "jsdom": "15.0.0",
+    "jsdom": "16.4.0",
     "lodash": "4.17.20",
     "moment": "2.24.0",
     "polished": "^3.6.5",
