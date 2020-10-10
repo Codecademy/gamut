@@ -3212,6 +3212,20 @@
     react "^16.8.3"
     regenerator-runtime "^0.13.3"
 
+"@storybook/addon-controls@6.0.26":
+  version "6.0.26"
+  resolved "https://registry.npmjs.org/@storybook/addon-controls/-/addon-controls-6.0.26.tgz#4cc4c30ee7bf89ab873158ead4d25d6f7e07ffba"
+  integrity sha512-K3Oik9ClpShv8Qc6JeNwtmd4yJJcnO2nyaAYYFiyNt+Vsg7zMaDtE2wfvViThNKjX7nUXIeh+OscseIkdWgLuA==
+  dependencies:
+    "@storybook/addons" "6.0.26"
+    "@storybook/api" "6.0.26"
+    "@storybook/client-api" "6.0.26"
+    "@storybook/components" "6.0.26"
+    "@storybook/node-logger" "6.0.26"
+    "@storybook/theming" "6.0.26"
+    core-js "^3.0.1"
+    ts-dedent "^1.1.1"
+
 "@storybook/addon-controls@6.0.5":
   version "6.0.5"
   resolved "https://registry.npmjs.org/@storybook/addon-controls/-/addon-controls-6.0.5.tgz#efefc07f205fa9737bd20a5f4fd880207eea2134"
@@ -3748,6 +3762,17 @@
   integrity sha512-USTLkZze5gkel8MYCujSRBVIrUQ3YPBrLOx7GNk/0wttvVtlzWXAq9eLbQ4p/NicGxP+3T7KPEMVV//g+yubpw==
   dependencies:
     lodash "^4.17.15"
+
+"@storybook/node-logger@6.0.26":
+  version "6.0.26"
+  resolved "https://registry.npmjs.org/@storybook/node-logger/-/node-logger-6.0.26.tgz#2ef95ea1e2defd4efcba6b23431ea5c5cbaa110b"
+  integrity sha512-mdILu91d/2ZgYfICoAMBjwBAYOgjk2URsPudrs5+23lFoPPIwf4CPWcfgs0f4GdfoICk3kV0W7+8bIARhRKp3g==
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^4.0.0"
+    core-js "^3.0.1"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
 
 "@storybook/node-logger@6.0.5":
   version "6.0.5"
