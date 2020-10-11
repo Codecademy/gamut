@@ -48,7 +48,7 @@
     "react-dom": "16.13.1",
     "typescript": "*",
     "webpack": "4.44.2",
-    "webpack-cli": "3.3.12",
+    "webpack-cli": "4.0.0",
     "webpack-react-docgen-typescript": "0.9.5"
   },
   "license": "MIT",
