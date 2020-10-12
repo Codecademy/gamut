@@ -20,7 +20,7 @@ const query = graphql`
 `;
 
 const docOrder = [
-  'introduction',
+  'getting-started',
   'properties',
   'variants',
   'responsive',
@@ -45,7 +45,7 @@ const Navigation = ({
         const isActive = activeRoute === slug;
         return (
           <ListItem fontWeight="heading" key={id} padding={4}>
-            <Link to={`/${slug}`}>{slug}</Link>
+            <Link to={`/${slug}`}>{slug.replace('-', ' ')}</Link>
             {Boolean(isActive && subLinks.length) && (
               <List paddingTop={8} listStyle="menu">
                 {subLinks.map(({ url, title }) => (
