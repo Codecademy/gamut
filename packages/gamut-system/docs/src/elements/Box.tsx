@@ -56,9 +56,10 @@ const borderVariants = variant({
 });
 
 type BoxProps = Parameters<typeof borderVariants>[0] &
-  Parameters<typeof colorVariants>[0];
+  Parameters<typeof colorVariants>[0] & { as?: 'button' | 'div' };
 
 export const Box = styled(Container)<BoxProps>`
   ${borderVariants}
   ${colorVariants}
+  cursor: ${({ as }) => (Boolean(as === 'button') ? 'pointer' : 'default')}
 `;

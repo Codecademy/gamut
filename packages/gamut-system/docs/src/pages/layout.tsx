@@ -1,9 +1,8 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Box, Container } from '../elements/Box';
 import { Heading } from '../elements/Text';
 import { graphql, useStaticQuery } from 'gatsby';
 import { List, ListItem } from '../elements';
-import { MultiTheme } from './base';
 import { Link } from '../elements/Link';
 
 const query = graphql`
@@ -20,6 +19,15 @@ const query = graphql`
   }
 `;
 
+const docOrder = [
+  'introduction',
+  'properties',
+  'variants',
+  'responsive',
+  'customization',
+  'composition',
+];
+
 const Navigation = ({
   links,
   activeRoute,
@@ -27,9 +35,13 @@ const Navigation = ({
   links: any;
   activeRoute: string;
 }) => {
+  const items = useMemo(() => {
+    return docOrder.map((slug) => links.find((link) => link.slug === slug));
+  }, [links]);
+
   return (
     <List listStyle="menu">
-      {links.map(({ id, slug, links: subLinks }) => {
+      {items.map(({ id, slug, links: subLinks }) => {
         const isActive = activeRoute === slug;
         return (
           <ListItem fontWeight="heading" key={id} padding={4}>
@@ -60,7 +72,6 @@ export const Layout: React.FC<{ location: { pathname: string } }> = ({
   children,
   location,
 }) => {
-  const { theme, toggleTheme } = useContext(MultiTheme);
   const data = useStaticQuery(query);
   const links = useMemo(() => {
     return data.allMdx.edges.map(({ node: { id, slug, tableOfContents } }) => ({
@@ -75,19 +86,6 @@ export const Layout: React.FC<{ location: { pathname: string } }> = ({
 
   return (
     <Box colorVariant="primary">
-      <Box
-        colorVariant="primary"
-        borderVariant="bordered"
-        position="fixed"
-        right="2rem"
-        top="1rem"
-        padding={8}
-        onClick={() => {
-          toggleTheme(theme);
-        }}
-      >
-        {theme}
-      </Box>
       <Container height="100vh" display="flex" justifyContent="center">
         <Container width="1" display="flex">
           <Container
@@ -99,15 +97,17 @@ export const Layout: React.FC<{ location: { pathname: string } }> = ({
             paddingTop={32}
             padding={12}
           >
-            <Heading
-              as="h1"
-              margin={0}
-              hSize="5"
-              fontWeight="heading"
-              paddingLeft={8}
-            >
-              Gamut System
-            </Heading>
+            <Link to="/">
+              <Heading
+                as="h1"
+                margin={0}
+                hSize="5"
+                fontWeight="heading"
+                paddingLeft={8}
+              >
+                Gamut System
+              </Heading>
+            </Link>
             <Container paddingY={8}>
               <Navigation links={links} activeRoute={activeSlug} />
             </Container>

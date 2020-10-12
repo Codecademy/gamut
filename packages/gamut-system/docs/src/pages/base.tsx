@@ -1,12 +1,15 @@
 import React, { createContext, useState } from 'react';
 import { Global, css } from '@emotion/core';
+import { Helmet } from 'react-helmet';
 
 import '@codecademy/gamut-styles/core/_fonts.scss';
 
 import { ThemeProvider } from 'emotion-theming';
 import { theme, DynamicTheme } from '../theme';
+import { Box } from '../elements/Box';
+import { graphql, useStaticQuery } from 'gatsby';
 
-import { Layout } from './layout';
+const HelmetWrapper = Helmet as any;
 
 const globalStyles = css`
   html,
@@ -69,6 +72,17 @@ const dynamicThemes: Record<string, DynamicTheme> = {
   },
 };
 
+const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`;
+
 export const MultiTheme = createContext<{
   toggleTheme?: (theme: string) => void;
   theme?: string;
@@ -83,19 +97,47 @@ const ThemeSwitcher = ({ children }) => {
   return (
     <MultiTheme.Provider value={{ theme: themeKey, toggleTheme }}>
       <ThemeProvider theme={{ ...theme, ...activeTheme }}>
+        <Box
+          colorVariant="primary"
+          borderVariant="bordered"
+          position="fixed"
+          right="2rem"
+          top="1rem"
+          padding={8}
+          onClick={() => {
+            toggleTheme(themeKey);
+          }}
+          as="button"
+        >
+          {themeKey}
+        </Box>
         {children}
       </ThemeProvider>
     </MultiTheme.Provider>
   );
 };
 
-export const wrapPageElement = ({ element, props }) => {
+const Page = (props) => {
+  const data = useStaticQuery(query);
+  const { title, description } = data.site.siteMetadata;
+
   return (
     <>
-      <Global styles={globalStyles} />
-      <ThemeSwitcher>
-        <Layout {...props}>{element}</Layout>
-      </ThemeSwitcher>
+      <HelmetWrapper>
+        <title>{title}</title>
+        <meta name="twitter:description" content={description} />
+        <meta name="description" content={description} />
+      </HelmetWrapper>
+      {props.children}
     </>
+  );
+};
+
+export const wrapPageElement = ({ element, props }) => {
+  return (
+    <Page {...props}>
+      <Global styles={globalStyles} />
+      <ThemeSwitcher>{element}</ThemeSwitcher>
+    </Page>
   );
 };

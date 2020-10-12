@@ -13,6 +13,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 };
 
 exports.createPages = async ({ graphql, actions }) => {
+  actions.createRedirect({
+    fromPath: `/`,
+    toPath: `/introduction`,
+    isPermanent: `true`,
+  });
+
   const result = await graphql(`
     {
       allMdx {
