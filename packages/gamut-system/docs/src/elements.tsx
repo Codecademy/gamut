@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/core';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import { MultiTheme } from '../pages/base';
-import { spacing, styled, typography } from '../system';
-import { syntaxTheme } from '../theme/syntax';
+import { MultiTheme } from './pages/base';
+import { spacing, styled, typography } from './system';
+import { syntaxTheme } from './theme/syntax';
 
 export const ListItem = styled.li`
   ${compose(spacing, typography)}
@@ -16,9 +16,9 @@ ListItem.defaultProps = {
   lineHeight: 'base',
 };
 
-type ListProps = {
-  listStyle?: 'regular' | 'menu';
-} & HandlerProps<typeof spacing>;
+type ListProps = { listStyle?: 'regular' | 'menu' } & HandlerProps<
+  typeof spacing
+>;
 
 export const List = styled.ul<ListProps>`
   ${spacing}
@@ -84,7 +84,7 @@ export const Line = styled.div`
 
 export const Highlighter = ({ children }) => {
   const { theme } = useContext(MultiTheme);
-  const activeTheme = syntaxTheme[theme!];
+  const activeTheme = syntaxTheme[theme];
   return (
     <Highlight
       {...defaultProps}
@@ -100,19 +100,10 @@ export const Highlighter = ({ children }) => {
           }}
         >
           {tokens.map((line, i) => (
-            <Line
-              {...getLineProps({
-                line,
-                key: i,
-              })}
-            >
+            <Line {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
-                <span
-                  {...getTokenProps({
-                    token,
-                    key,
-                  })}
-                />
+                // eslint-disable-next-line react/jsx-key
+                <span {...getTokenProps({ token, key })} />
               ))}
             </Line>
           ))}

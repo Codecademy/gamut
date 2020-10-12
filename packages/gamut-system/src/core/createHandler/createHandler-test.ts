@@ -1,10 +1,10 @@
 import { identity } from 'lodash';
-import { createHandler } from '..';
+import { createHandler } from '.';
 import {
   createDirectionalStyleTemplate,
   createStandardStyleTemplate,
-} from '../../../styleTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
+} from '../../styleTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../styleTemplates/createResponsiveStyleTemplate/constants';
 
 type Theme = {
   colors: {

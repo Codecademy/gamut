@@ -1,9 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXProvider } from '@mdx-js/react';
+
 import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
-import { Heading, Text } from '../components/Text';
+import { Heading, Text } from '../elements/Text';
 import {
   Code,
   Highlighter,
@@ -13,8 +14,8 @@ import {
   Tr,
   List,
   ListItem,
-} from '../components/elements';
-import { Link } from '../components/Link';
+} from '../elements';
+import { Link } from '../elements/Link';
 
 export const pageQuery = graphql`
   query($id: String!) {
@@ -28,17 +29,17 @@ export const pageQuery = graphql`
   }
 `;
 
-const generateId = ({ children }: { children: string }) =>
+const generateId = ({ children }) =>
   children.toLowerCase().split(' ').join('-');
 
 // eslint-disable-next-line import/no-default-export
-export default (props: any) => {
+export default (props) => {
   const { body } = props.data.mdx;
   return (
     <MDXProvider
       components={{
         pre: Highlighter,
-        a: ({ children, href }: any) => (
+        a: ({ children, href }) => (
           <Link to={href.replace('/#', '#')}>{children}</Link>
         ),
         ul: List,
@@ -48,8 +49,8 @@ export default (props: any) => {
         th: Th,
         td: Td,
         tr: Tr,
-        p: (props: any) => <Text marginBottom={16}>{props.children}</Text>,
-        h1: (props: any) => (
+        p: (props) => <Text marginBottom={16}>{props.children}</Text>,
+        h1: (props) => (
           <Heading
             as="h1"
             hSize="3"
@@ -59,7 +60,7 @@ export default (props: any) => {
             {...props}
           />
         ),
-        h2: (props: any) => (
+        h2: (props) => (
           <Heading
             as="h2"
             hSize="4"
@@ -69,7 +70,7 @@ export default (props: any) => {
             {...props}
           />
         ),
-        h3: (props: any) => (
+        h3: (props) => (
           <Heading
             as="h3"
             hSize="5"
@@ -79,7 +80,7 @@ export default (props: any) => {
             {...props}
           />
         ),
-        h4: (props: any) => (
+        h4: (props) => (
           <Heading
             as="h4"
             hSize="6"
@@ -89,7 +90,7 @@ export default (props: any) => {
             {...props}
           />
         ),
-        h5: (props: any) => (
+        h5: (props) => (
           <Heading
             as="h5"
             hSize="6"
@@ -99,7 +100,7 @@ export default (props: any) => {
             {...props}
           />
         ),
-        h6: (props: any) => (
+        h6: (props) => (
           <Heading
             as="h6"
             hSize="6"

@@ -1,4 +1,4 @@
-import { compose } from '../../src/core';
+import { compose } from '@codecademy/gamut-system';
 import {
   styled,
   layout,
@@ -23,9 +23,7 @@ const containerProps = compose(
   positioning
 );
 
-export const Container = styled.div`
-  ${containerProps}
-`;
+export const Container = styled.div(containerProps);
 
 const colorVariants = variant({
   prop: 'colorVariant',

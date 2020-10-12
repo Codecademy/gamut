@@ -1,7 +1,8 @@
 import unthemedStyled, { CreateStyled } from '@emotion/styled';
-import { system, ThemedSystem } from '../../src/core';
+import { system, ThemedSystem } from '@codecademy/gamut-system';
 import { Theme } from '../theme';
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 const themedSystem = system as ThemedSystem<Theme>;
 
 const pxRem = (value: any) =>
@@ -9,6 +10,7 @@ const pxRem = (value: any) =>
 
 export const {
   properties,
+  variant,
   typography,
   layout,
   colors,
@@ -19,7 +21,6 @@ export const {
   positioning,
   border,
   background,
-  variant,
 } = themedSystem({
   typography: {
     fontSize: {

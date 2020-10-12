@@ -47,31 +47,28 @@ export const Box = styled<BoxProps>`
 `;
 ```
 
-### Regular Props
+### Props
 
 ```tsx
+// Regular
 <Box margin="1rem" />
 
 <Box fontSize="2rem" />
 
 <Box width={1 / 5} />
-```
 
-### Responsive Props
-
-```tsx
-// Array Syntax
+// Responsive
 <Box width={[50, 100, 200]} />
 
-// Object syntax
 <Box margin={{ xs: 16, sm: 24, md: 32 }} />
 ```
 
+
 ## Docs
 
-- [Getting Started](docs/getting-started.md)
-- [Properties](docs/properties.md)
-- [Responsive Properties](docs/responsive.md)
-- [Variants](docs/variants.md)
-- [Customization](docs/customization.md)
-- [Compose](docs/compose.md)
+- [Getting Started](docs/src/docs/getting-started.mdx)
+- [Properties](docs/src/docs/properties.mdx)
+- [Responsive Properties](docs/src/docs/responsive.mdx)
+- [Variants](docs/src/docs/variants.mdx)
+- [Customization](docs/src/docs/customization.mdx)
+- [Compose](docs/src/docs/compose.mdx)

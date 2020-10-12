@@ -1,10 +1,10 @@
 import React, { useContext, useMemo } from 'react';
-import { Box, Container } from '../components/Box';
-import { Heading } from '../components/Text';
+import { Box, Container } from '../elements/Box';
+import { Heading } from '../elements/Text';
 import { graphql, useStaticQuery } from 'gatsby';
-import { List, ListItem } from '../components/elements';
+import { List, ListItem } from '../elements';
 import { MultiTheme } from './base';
-import { Link } from '../components/Link';
+import { Link } from '../elements/Link';
 
 const query = graphql`
   query {
@@ -29,14 +29,14 @@ const Navigation = ({
 }) => {
   return (
     <List listStyle="menu">
-      {links.map(({ id, slug, links: subLinks }: any) => {
+      {links.map(({ id, slug, links: subLinks }) => {
         const isActive = activeRoute === slug;
         return (
           <ListItem fontWeight="heading" key={id} padding={4}>
             <Link to={`/${slug}`}>{slug}</Link>
             {Boolean(isActive && subLinks.length) && (
               <List paddingTop={8} listStyle="menu">
-                {subLinks.map(({ url, title }: any) => (
+                {subLinks.map(({ url, title }) => (
                   <ListItem
                     fontWeight="base"
                     padding={4}
@@ -56,9 +56,10 @@ const Navigation = ({
   );
 };
 
-export const Layout: React.FC<{
-  location: { pathname: string };
-}> = ({ children, location }) => {
+export const Layout: React.FC<{ location: { pathname: string } }> = ({
+  children,
+  location,
+}) => {
   const { theme, toggleTheme } = useContext(MultiTheme);
   const data = useStaticQuery(query);
   const links = useMemo(() => {

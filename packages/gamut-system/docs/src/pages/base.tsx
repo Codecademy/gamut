@@ -38,9 +38,7 @@ const globalStyles = css`
   }
 `;
 
-type ThemeKeys = 'light' | 'dark';
-
-const dynamicThemes: Record<ThemeKeys, DynamicTheme> = {
+const dynamicThemes: Record<string, DynamicTheme> = {
   light: {
     textColor: {
       primary: theme.color.navy,
@@ -72,43 +70,26 @@ const dynamicThemes: Record<ThemeKeys, DynamicTheme> = {
 };
 
 export const MultiTheme = createContext<{
-  toggleTheme?: (theme: ThemeKeys) => void;
-  theme?: ThemeKeys;
+  toggleTheme?: (theme: string) => void;
+  theme?: string;
 }>({});
 
-const ThemeSwitcher: React.FC = ({ children }) => {
+const ThemeSwitcher = ({ children }) => {
   const [themeKey, setTheme] = useState<keyof typeof dynamicThemes>('light');
-
-  const toggleTheme = (currentTheme: ThemeKeys) =>
+  const toggleTheme = (currentTheme) =>
     setTheme(currentTheme === 'light' ? 'dark' : 'light');
   const activeTheme = dynamicThemes[themeKey];
 
   return (
-    <MultiTheme.Provider
-      value={{
-        theme: themeKey,
-        toggleTheme,
-      }}
-    >
-      <ThemeProvider
-        theme={{
-          ...theme,
-          ...activeTheme,
-        }}
-      >
+    <MultiTheme.Provider value={{ theme: themeKey, toggleTheme }}>
+      <ThemeProvider theme={{ ...theme, ...activeTheme }}>
         {children}
       </ThemeProvider>
     </MultiTheme.Provider>
   );
 };
 
-export const wrapPageElement = ({
-  element,
-  props,
-}: {
-  element: any;
-  props: any;
-}) => {
+export const wrapPageElement = ({ element, props }) => {
   return (
     <>
       <Global styles={globalStyles} />
