@@ -14,9 +14,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   actions.createRedirect({
-    fromPath: `/`,
-    toPath: `/introduction`,
-    isPermanent: `true`,
+    fromPath: '/',
+    isPermanent: false,
+    redirectInBrowser: true,
+    toPath: '/getting-started/',
   });
 
   const result = await graphql(`

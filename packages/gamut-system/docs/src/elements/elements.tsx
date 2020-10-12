@@ -3,9 +3,9 @@ import React, { useContext } from 'react';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/core';
 import Highlight, { defaultProps } from 'prism-react-renderer';
-import { MultiTheme } from './pages/base';
-import { spacing, styled, typography } from './system';
-import { syntaxTheme } from './theme/syntax';
+import { MultiTheme } from '../base';
+import { spacing, styled, typography } from '../system';
+import { syntaxTheme } from '../theme/syntax';
 
 export const ListItem = styled.li`
   ${compose(spacing, typography)}

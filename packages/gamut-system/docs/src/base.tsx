@@ -5,8 +5,8 @@ import { Helmet } from 'react-helmet';
 import '@codecademy/gamut-styles/core/_fonts.scss';
 
 import { ThemeProvider } from 'emotion-theming';
-import { theme, DynamicTheme } from '../theme';
-import { Box } from '../elements/Box';
+import { theme, DynamicTheme } from './theme';
+import { Box } from './elements/Box';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const HelmetWrapper = Helmet as any;
@@ -134,10 +134,14 @@ const Page = (props) => {
 };
 
 export const wrapPageElement = ({ element, props }) => {
+  return <Page {...props}>{element}</Page>;
+};
+
+export const wrapRootElement = ({ element, props }) => {
   return (
-    <Page {...props}>
+    <>
       <Global styles={globalStyles} />
       <ThemeSwitcher>{element}</ThemeSwitcher>
-    </Page>
+    </>
   );
 };

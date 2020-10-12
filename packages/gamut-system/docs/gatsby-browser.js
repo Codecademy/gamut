@@ -1,1 +1,2 @@
-export { wrapPageElement } from './src/pages/base';
+export { wrapRootElement } from './src/base';
+export { wrapPageElement } from './src/base';
