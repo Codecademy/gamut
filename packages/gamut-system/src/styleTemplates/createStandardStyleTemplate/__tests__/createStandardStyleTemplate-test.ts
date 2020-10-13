@@ -118,14 +118,13 @@ describe(createStandardStyleTemplate, () => {
   });
 
   it('can have a property used instead of propName', () => {
-    const theme = { spacing: [10, 20] };
     const styleTemplate = createStandardStyleTemplate({
       propName: 'textColor',
       property: 'color',
       transformValue: (val) => val,
     });
 
-    const themeValues = styleTemplate({ textColor: 'green', theme });
+    const themeValues = styleTemplate({ textColor: 'green' });
     expect(themeValues).toEqual({ color: 'green' });
   });
 });
