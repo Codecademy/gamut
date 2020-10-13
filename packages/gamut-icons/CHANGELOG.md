@@ -1,3 +1,23 @@
+### [3.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.1...@codecademy/gamut-icons@3.8.2) (2020-10-08)
+
+
+### Other Changes
+
+* Reformat and add a title remove the id: ([#998](https://github.com/Codecademy/client-modules/issues/998)) ([16e15aa](https://github.com/Codecademy/client-modules/commit/16e15aa5097db4500e673f78d582b7258a6f4212))
+
+### [3.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.0...@codecademy/gamut-icons@3.8.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
 ## [3.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.7.0...@codecademy/gamut-icons@3.8.0) (2020-09-29)
 
 

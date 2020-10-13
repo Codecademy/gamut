@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
-import s from './styles/Column.module.scss';
+import styles from './styles/Column.module.scss';
 import {
   ResponsiveProperty,
   OptionalResponsiveProperty,
@@ -27,9 +27,9 @@ export const Column: React.FC<ColumnProps> = ({
   testId,
 }) => {
   const classNames = cx(
-    s.container,
+    styles.container,
     className,
-    generateResponsiveClassnames({ size, offset, rowspan }, s)
+    generateResponsiveClassnames({ size, offset, rowspan }, styles)
   );
   return (
     <div className={classNames} data-testid={testId}>

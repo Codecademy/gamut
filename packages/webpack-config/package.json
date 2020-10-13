@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -48,5 +48,8 @@
     "style-loader": "^1.2.0",
     "terser-webpack-plugin": "^4.1.0",
     "webpack-merge": "^4.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

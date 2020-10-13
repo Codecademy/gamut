@@ -1,3 +1,34 @@
+### [16.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.4...@codecademy/gamut@16.1.5) (2020-10-08)
+
+
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [16.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.3...@codecademy/gamut@16.1.4) (2020-10-08)
+
+### [16.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.2...@codecademy/gamut@16.1.3) (2020-10-08)
+
+### [16.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.1...@codecademy/gamut@16.1.2) (2020-10-06)
+
+
+### Other Changes
+
+* This seems like it should have been there before? ([#979](https://github.com/Codecademy/client-modules/issues/979)) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7052feb722130a8ded4eb8c966b240a824))
+
+### [16.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.0...@codecademy/gamut@16.1.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
 ## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
 
 
