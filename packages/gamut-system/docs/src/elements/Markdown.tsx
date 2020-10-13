@@ -7,8 +7,10 @@ import { List, ListItem } from './List';
 import { Code, Highlighter } from './Code';
 import { Table, Td, Th, Tr } from './Table';
 
-const generateId = ({ children }) =>
-  children.toLowerCase().split(' ').join('-');
+const decorateProps = (props) => ({
+  ...props,
+  id: props.children.toLowerCase().split(' ').join('-'),
+});
 
 const components = {
   pre: Highlighter,
@@ -23,66 +25,12 @@ const components = {
   td: Td,
   tr: Tr,
   p: (props) => <Text marginBottom={16}>{props.children}</Text>,
-  h1: (props) => (
-    <Heading
-      as="h1"
-      hSize="3"
-      marginTop={32}
-      marginBottom={16}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
-  h2: (props) => (
-    <Heading
-      as="h2"
-      hSize="4"
-      marginTop={32}
-      marginBottom={16}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
-  h3: (props) => (
-    <Heading
-      as="h3"
-      hSize="5"
-      marginTop={16}
-      marginBottom={8}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
-  h4: (props) => (
-    <Heading
-      as="h4"
-      hSize="6"
-      marginTop={16}
-      marginBottom={8}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
-  h5: (props) => (
-    <Heading
-      as="h5"
-      hSize="6"
-      marginTop={16}
-      marginBottom={8}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
-  h6: (props) => (
-    <Heading
-      as="h6"
-      hSize="6"
-      marginTop={16}
-      marginBottom={8}
-      id={generateId(props)}
-      {...props}
-    />
-  ),
+  h1: (props) => <Heading as="h1" {...decorateProps(props)} />,
+  h2: (props) => <Heading as="h2" {...decorateProps(props)} />,
+  h3: (props) => <Heading as="h3" {...decorateProps(props)} />,
+  h4: (props) => <Heading as="h4" {...decorateProps(props)} />,
+  h5: (props) => <Heading as="h5" {...decorateProps(props)} />,
+  h6: (props) => <Heading as="h6" {...decorateProps(props)} />,
 };
 
 export const Markdown = ({ children }) => (

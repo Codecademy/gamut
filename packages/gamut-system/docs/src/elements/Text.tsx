@@ -1,4 +1,4 @@
-import { compose } from '@codecademy/gamut-system';
+import { compose, HandlerProps } from '@codecademy/gamut-system';
 import {
   styled,
   layout,
@@ -11,7 +11,22 @@ import {
 
 export const textProps = compose(typography, layout, spacing, colors);
 
-export const Text = styled.p(textProps);
+type TextProps = HandlerProps<typeof textProps> & {
+  as?:
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'p'
+    | 'span'
+    | 'em'
+    | 'strong'
+    | 'code';
+};
+
+export const Text = styled.p<TextProps>(textProps);
 
 Text.defaultProps = {
   fontSize: 2,
@@ -20,58 +35,60 @@ Text.defaultProps = {
   lineHeight: 'base',
 };
 
-const codeProps = compose(textProps, border);
-
-export const Code = styled.code`
-  ${codeProps}
-`;
-
-Code.defaultProps = {
-  borderRadius: 'sm',
-  fontWeight: 'base',
-  fontFamily: 'monospace',
-  fontSize: 1,
-  paddingX: 4,
-};
-
 const headingVariant = variant({
-  prop: 'hSize',
+  prop: 'headingType',
   variants: {
-    '1': {
-      fontFamily: 'accent',
-      fontSize: 9,
-    },
-    '2': {
-      fontFamily: 'accent',
-      fontSize: 8,
-    },
-    '3': {
+    h1: {
+      marginTop: 32,
+      marginBottom: 16,
       fontFamily: 'accent',
       fontSize: 7,
     },
-    '4': {
+    h2: {
+      marginTop: 32,
+      marginBottom: 16,
       fontFamily: 'accent',
       fontSize: 6,
     },
-    '5': {
+    h3: {
+      marginTop: 16,
+      marginBottom: 8,
       fontFamily: 'accent',
       fontSize: 5,
     },
-    '6': {
+    h4: {
+      marginTop: 16,
+      marginBottom: 8,
       fontFamily: 'accent',
       fontSize: 4,
+    },
+    h5: {
+      marginTop: 16,
+      marginBottom: 8,
+      fontFamily: 'accent',
+      fontSize: 3,
+    },
+    h6: {
+      marginTop: 16,
+      marginBottom: 8,
+      fontFamily: 'accent',
+      fontSize: 2,
     },
   },
 });
 
 type HeadingProps = {
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 } & Parameters<typeof headingVariant>[0];
 
-export const Heading = styled(Text)<HeadingProps>`
+export const HeadingElement = styled(Text)<HeadingProps>`
   ${headingVariant}
 `;
-
-Heading.defaultProps = {
+HeadingElement.defaultProps = {
   fontWeight: 'heading',
 };
+
+export const Heading: React.FC<Pick<TextProps & HeadingProps, 'as'>> = ({
+  as,
+  ...restProps
+}) => <HeadingElement {...restProps} as={as} headingType={as} />;

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Box, Container } from '../elements/Box';
 import { Link } from '../elements/Link';
 import { List, ListItem } from '../elements/List';
-import { Heading } from '../elements/Text';
+import { Text } from '../elements/Text';
 
 export const NavigationMenu = ({
   links,
@@ -48,15 +48,15 @@ export const NavigationMenu = ({
       >
         <Container paddingBottom={8} display={{ base: 'none', lg: 'block' }}>
           <Link to="/">
-            <Heading
+            <Text
               as="h1"
-              margin={0}
-              hSize="5"
+              fontFamily="accent"
+              fontSize={5}
               fontWeight="heading"
               paddingLeft={8}
             >
               Gamut System
-            </Heading>
+            </Text>
           </Link>
         </Container>
         <List listStyle="menu">
