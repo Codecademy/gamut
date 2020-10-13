@@ -67,4 +67,10 @@ type HeadingProps = {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 } & Parameters<typeof headingVariant>[0];
 
-export const Heading = styled(Text)<HeadingProps>(headingVariant);
+export const Heading = styled(Text)<HeadingProps>`
+  ${headingVariant}
+`;
+
+Heading.defaultProps = {
+  fontWeight: 'heading',
+};

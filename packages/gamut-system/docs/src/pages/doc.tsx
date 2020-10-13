@@ -1,11 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
-
-import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
 
 import { Layout } from '../templates/layout';
-import { mdxComponents } from '../elements/Markdown';
+import { Markdown } from '../elements/Markdown';
 
 export const pageQuery = graphql`
   query($id: String) {
@@ -24,9 +21,7 @@ export default (props) => {
   const { body } = props.data.mdx;
   return (
     <Layout {...props}>
-      <MDXProvider components={mdxComponents}>
-        <MDXRenderer scope={{}}>{body}</MDXRenderer>
-      </MDXProvider>
+      <Markdown>{body}</Markdown>
     </Layout>
   );
 };

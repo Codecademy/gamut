@@ -1,20 +1,16 @@
+import { MDXProvider } from '@mdx-js/react';
+import MDXRenderer from 'gatsby-plugin-mdx/mdx-renderer';
+
 import { Heading, Text } from './Text';
-import {
-  Code,
-  Highlighter,
-  Table,
-  Td,
-  Th,
-  Tr,
-  List,
-  ListItem,
-} from './elements';
 import { Link } from './Link';
+import { List, ListItem } from './List';
+import { Code, Highlighter } from './Code';
+import { Table, Td, Th, Tr } from './Table';
 
 const generateId = ({ children }) =>
   children.toLowerCase().split(' ').join('-');
 
-export const mdxComponents = {
+const components = {
   pre: Highlighter,
   a: ({ children, href }) => (
     <Link to={href.replace('/#', '#')}>{children}</Link>
@@ -88,3 +84,9 @@ export const mdxComponents = {
     />
   ),
 };
+
+export const Markdown = ({ children }) => (
+  <MDXProvider components={components}>
+    <MDXRenderer scope={{}}>{children}</MDXRenderer>
+  </MDXProvider>
+);

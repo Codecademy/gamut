@@ -1,6 +1,6 @@
 import unthemedStyled, { CreateStyled } from '@emotion/styled';
 import { system, ThemedSystem } from '@codecademy/gamut-system';
-import { Theme } from '../theme';
+import { Theme } from './theme';
 
 // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 const themedSystem = system as ThemedSystem<Theme>;

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Box, Container } from '../elements/Box';
 import { Heading } from '../elements/Text';
 import { graphql, useStaticQuery } from 'gatsby';
-import { List, ListItem } from '../elements/elements';
+import { List, ListItem } from '../elements/List';
 import { Link } from '../elements/Link';
 
 const query = graphql`
