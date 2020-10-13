@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>3.0.3 (2020-10-13)</small>
+
+* style: add warning to eslint for importing moment (#1019) ([909b46a](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/909b46a)), closes [#1019](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/1019)
+* chore: update changelogs ([e6c1279](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/e6c1279))
+
+
+
+
+
 ### [3.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.1...@codecademy/eslint-config@3.0.2) (2020-10-06)
 
 
@@ -146,4 +160,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-
