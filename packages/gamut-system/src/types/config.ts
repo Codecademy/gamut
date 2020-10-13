@@ -1,4 +1,9 @@
-import { Property, Properties, DirectionalProperty } from './properties';
+import {
+  PropName,
+  Property,
+  Properties,
+  DirectionalProperty,
+} from './properties';
 import { CSSObject } from '@emotion/core';
 import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
@@ -47,7 +52,8 @@ export type ThematicScaleValue<
 /** Property Configurations */
 
 export type AbstractPropertyConfig = {
-  propName: Property;
+  propName: PropName;
+  property?: Property;
   dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AnyScale;

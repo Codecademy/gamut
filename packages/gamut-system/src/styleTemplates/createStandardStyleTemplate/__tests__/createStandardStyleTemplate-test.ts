@@ -116,4 +116,15 @@ describe(createStandardStyleTemplate, () => {
     const themeValues = styleTemplate({ margin: 'sms', theme });
     expect(themeValues).toEqual({ margin: 'sms' });
   });
+
+  it('can have a property used instead of propName', () => {
+    const styleTemplate = createStandardStyleTemplate({
+      propName: 'textColor',
+      property: 'color',
+      transformValue: (val) => val,
+    });
+
+    const themeValues = styleTemplate({ textColor: 'green' });
+    expect(themeValues).toEqual({ color: 'green' });
+  });
 });

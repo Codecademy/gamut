@@ -12,7 +12,7 @@ export const createStandardStyleTemplate = <
 >(
   config: Config
 ): StyleTemplate<Props> => {
-  const { propName: prop, transformValue } = config;
+  const { property, propName: prop, transformValue } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
   return (props: Props) => {
@@ -21,7 +21,7 @@ export const createStandardStyleTemplate = <
 
     return propValue !== undefined
       ? {
-          [prop]: transformValue(propValue),
+          [property || prop]: transformValue(propValue),
         }
       : propValue;
   };
