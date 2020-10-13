@@ -2,7 +2,7 @@ import React from 'react';
 import { colors } from '@codecademy/gamut-styles';
 
 export type LogoProCutoutProps = {
-  backgroundColor?: keyof typeof colors;
+  backgroundColor?: string;
   cutoutColor?: string;
   width?: number;
 };
