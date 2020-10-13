@@ -4,6 +4,7 @@ import { LogoProCutout } from '../LogoProCutout';
 import { LogoProCutoutTransparent } from '../LogoProCutoutTransparent';
 
 type BaseProps = {
+  ariaLabel?: string;
   backgroundColor?: keyof typeof colors;
   width?: number;
 };
