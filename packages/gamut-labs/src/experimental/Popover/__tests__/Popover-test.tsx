@@ -104,12 +104,13 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('top', 319);
-
-    expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('left', 58);
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 319,
+        left: 58,
+      },
+    });
   });
 
   it('positions with given position and align values when provided', () => {
@@ -123,12 +124,13 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('top', 241);
-
-    expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('left', 841);
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 241,
+        left: 841,
+      },
+    });
   });
 
   it('positions with given offset value when provided', () => {
@@ -143,12 +145,13 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('top', 231);
-
-    expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('left', 841);
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 231,
+        left: 841,
+      },
+    });
   });
 
   it('positions round to whole number when ', () => {
@@ -163,11 +166,12 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('top', 232);
-
-    expect(
-      wrapped.find('[data-testid="popover-content-container"]').prop('style')
-    ).toHaveProperty('left', 842);
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 232,
+        left: 842,
+      },
+    });
   });
 });

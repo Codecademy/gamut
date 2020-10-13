@@ -3,51 +3,45 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
-import { Overlay, OverlayProps } from '../Overlay';
+import { Overlay, OverlayProps } from '../../../../gamut/src/Overlay';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
   className?: string;
   /**
-   * Whether the popover is rendered
+   * Whether the popover is rendered.
    */
   isOpen: boolean;
-
   /**
-   * The target element around which the popover will be positioned
+   * The target element around which the popover will be positioned.
    */
   targetRef: React.RefObject<Pick<HTMLDivElement, 'getBoundingClientRect'>>;
   /**
-   * Which vertical edge of the source component to align against
+   * Which vertical edge of the source component to align against.
    * @default left
    */
   align?: 'left' | 'right';
-
   /**
-   * Number of pixels to offset the popover from the source component
+   * Number of pixels to offset the popover from the source component.
    * @default 20
    */
   offset?: number;
-
   /**
-   * Which horizontal edge of the source componet to align against
+   * Which horizontal edge of the source componet to align against.
    * @default below
    */
   position?: 'above' | 'below';
-
   /**
-   * Whether to show a beak on the popover. Needs showScreen=true
+   * Whether to show a beak on the popover. Needs showScreen=true.
    */
   showBeak?: boolean;
-
   /**
-   * Whether to show a screen behind the popover to mask the background contents
-   * If enabled, the overlay clickOutsideToDeactivate no longer works
+   * Whether to show a screen behind the popover to mask the background contents.
+   * If enabled, the overlay clickOutsideToDeactivate no longer works.
    */
   showScreen?: boolean;
-
   /**
-   * Props to pass to the containing Overlay component
+   * Props to pass to the containing Overlay component.
    */
   overlayProps?: Omit<OverlayProps, 'isOpen' | 'children'>;
 };
@@ -61,8 +55,8 @@ export const Popover: React.FC<PopoverProps> = ({
   position = 'below',
   offset = 20,
   align = 'left',
-  overlayProps,
   targetRef,
+  overlayProps,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const { width, height } = useWindowSize();
@@ -99,10 +93,10 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <Overlay
-      fixedPositioning={false}
-      {...overlayProps}
+      staticPositioning={true}
       isOpen={!!isOpen}
-      data-testid={'popover-container'}
+      data-testid="popover-container"
+      {...(overlayProps as OverlayProps)}
     >
       <div>
         {showScreen && (

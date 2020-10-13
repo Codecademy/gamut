@@ -1,10 +1,6 @@
 import React, { useRef, useState } from 'react';
-import {
-  Popover,
-  Button,
-  Container,
-  PopoverProps,
-} from '@codecademy/gamut/src';
+import { Button, Container } from '@codecademy/gamut/src';
+import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
@@ -28,7 +24,6 @@ export const PopoverExample = (args: PopoverProps) => {
           targetRef={activeElRef}
           overlayProps={{
             onRequestClose: () => setOpen(false),
-            clickOutsideCloses: false,
           }}
         >
           <Container>

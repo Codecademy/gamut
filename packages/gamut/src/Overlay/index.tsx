@@ -9,39 +9,28 @@ import styles from './styles.module.scss';
 export type OverlayProps = {
   children: React.ReactElement<any>;
   className?: string;
-
   /**
-   * Whether clicking on the screen outside of the container should close the Overlay
+   * Whether clicking on the screen outside of the container should close the Overlay.
    */
   clickOutsideCloses?: boolean;
   /**
-   * Whether clicking the escape key should close the Overlay
+   * Whether clicking the escape key should close the Overlay.
    */
   escapeCloses?: boolean;
   /**
    * Called when the Overlay requests to be closed,
-   * this could be due to clicking outside of the overlay, or by clicking the escape key
+   * this could be due to clicking outside of the overlay, or by clicking the escape key.
    */
-  onRequestClose?: () => void;
+  onRequestClose: () => void;
   /**
-   * Whether the overlay is rendered
+   * Whether the overlay is rendered.
    */
   isOpen?: boolean;
   /**
-   * Whether to use fixed positioning on the overlay. Defaults to true.
-   * @default true
+   * Whether to use static positioning on the overlay. Defaults to false since by default Overlay's position is fixed.
+   * @default false
    */
-  fixedPositioning?: boolean;
-  /**
-   * Whether the focus will return to the element that had focus before activation. If false, it will *not* return.
-   * @default true
-   */
-  returnFocusOnDeactivates?: boolean;
-  /**
-   * Whether to lock scroll when overlay is opened.
-   * @default true
-   */
-  lockScroll?: boolean;
+  staticPositioning?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
@@ -49,13 +38,11 @@ export const Overlay: React.FC<OverlayProps> = ({
   children,
   clickOutsideCloses = true,
   escapeCloses = true,
-  fixedPositioning = true,
-  returnFocusOnDeactivates = true,
+  staticPositioning = false,
   onRequestClose,
   isOpen,
-  lockScroll = true,
 }) => {
-  useLockBodyScroll(isOpen && lockScroll);
+  useLockBodyScroll(isOpen);
 
   if (!isOpen) return null;
 
@@ -63,7 +50,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <BodyPortal>
       <div
         className={cx(
-          fixedPositioning && styles.fixedPositioning,
+          staticPositioning && styles.staticPositioning,
           styles.container,
           className
         )}
@@ -73,7 +60,6 @@ export const Overlay: React.FC<OverlayProps> = ({
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
             onDeactivate: onRequestClose,
-            returnFocusOnDeactivate: returnFocusOnDeactivates,
           }}
         >
           {children}
