@@ -6,9 +6,10 @@ import {
   typography,
   variant,
   border,
+  colors,
 } from '../system';
 
-export const textProps = compose(typography, layout, spacing);
+export const textProps = compose(typography, layout, spacing, colors);
 
 export const Text = styled.p(textProps);
 

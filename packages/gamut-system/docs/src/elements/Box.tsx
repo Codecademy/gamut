@@ -31,15 +31,19 @@ const colorVariants = variant({
   variants: {
     primary: {
       backgroundColor: 'primary',
-      color: 'primary',
+      textColor: 'primary',
     },
     secondary: {
       backgroundColor: 'accent',
-      color: 'primary',
+      textColor: 'secondary',
     },
     tertiary: {
       backgroundColor: 'secondary',
-      color: 'primary',
+      textColor: 'contrast',
+    },
+    contrast: {
+      backgroundColor: 'contrast',
+      textColor: 'contrast',
     },
   },
 });

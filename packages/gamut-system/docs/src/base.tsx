@@ -109,6 +109,7 @@ const ThemeSwitcher = ({ children }) => {
       <ThemeProvider theme={activeTheme}>
         <Global styles={globalStyles({ theme: activeTheme })} />
         <Box
+          zIndex={5}
           colorVariant="primary"
           borderVariant="bordered"
           position="fixed"

@@ -54,8 +54,8 @@ export const {
     },
   },
   colors: {
-    color: {
-      propName: 'color',
+    textColor: {
+      propName: 'textColor',
       scale: 'textColor',
     },
     borderColor: {

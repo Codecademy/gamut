@@ -1,8 +1,11 @@
+import { compose } from '@codecademy/gamut-system';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { useContext } from 'react';
 import { MultiTheme } from '../base';
-import { layout, styled } from '../system';
+import { layout, positioning, styled } from '../system';
 import { syntaxTheme } from '../theme';
+import { Box } from './Box';
+import { Text } from './Text';
 
 export const Code = styled.code`
   color: ${({ theme }) => theme.textColor.accent};
@@ -13,7 +16,7 @@ export const Code = styled.code`
 `;
 
 export const Pre = styled.pre`
-  ${layout}
+  ${compose(layout, positioning)}
   font-family: ${({ theme }) => theme.fontFamily.monospace};
   font-size: ${({ theme }) => theme.fontSize[1]}px;
   padding: ${({ theme }) => theme.space[24]}px;
@@ -40,10 +43,23 @@ export const Highlighter = ({ children }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre
           className={className}
+          position="relative"
           style={{
             ...style,
           }}
         >
+          <Box
+            position="absolute"
+            top="0"
+            right="2rem"
+            colorVariant="contrast"
+            padding={4}
+            paddingX={8}
+          >
+            <Text fontFamily="monospace" fontSize={1} fontWeight="heading">
+              {children.props.className.replace('language-', '')}
+            </Text>
+          </Box>
           {tokens.map((line, i) => (
             <Line {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (

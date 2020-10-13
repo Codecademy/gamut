@@ -1021,10 +1021,10 @@
   resolved "https://registry.yarnpkg.com/@codecademy/gamut-styles/-/gamut-styles-7.0.2.tgz#dfdcdba3b1eb8fdad19031d8fc8bcc32dea925dc"
   integrity sha512-8Eu1zahBVHUozqs5OgZdyts7S0kpunTE9Ey3SMVVnUKpFxtiFple8YIuSddRgAHjApz2vHs0+DfSGCFNsT3Frw==
 
-"@codecademy/gamut-system@0.0.1-alpha.959814.0":
-  version "0.0.1-alpha.959814.0"
-  resolved "https://registry.yarnpkg.com/@codecademy/gamut-system/-/gamut-system-0.0.1-alpha.959814.0.tgz#d51ce3c5b8ff92af9202ba392463ae14ee7f9d59"
-  integrity sha512-m9ci5H/LsFKHW8cgCZ0xPpYS1C54XUNuNpMxchTEjOWEeafSCPQ47nHEq3VGUsO11a4zFhV860VedPvQzSqIpQ==
+"@codecademy/gamut-system@0.0.1-alpha.74f4b0.0":
+  version "0.0.1-alpha.74f4b0.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-system/-/gamut-system-0.0.1-alpha.74f4b0.0.tgz#2a50602ced561e8907603b08d93a768e60c19dcd"
+  integrity sha512-3wVfVG/gnrkbeExekNBR5PHhLtc0jD5q6PHVM7efz7OR5UCz23ZztBWPEmiaDbKem83aTfEwOVWUz5Z96eK5KA==
 
 "@emotion/babel-plugin-jsx-pragmatic@^0.1.5":
   version "0.1.5"
