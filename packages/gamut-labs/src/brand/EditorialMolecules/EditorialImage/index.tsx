@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type EditorialImageProps = {
   /** The URL used for the image src */
@@ -16,9 +16,9 @@ export const EditorialImage: React.FC<EditorialImageProps> = ({
   caption,
 }) => (
   <div>
-    <div className={s.imageContainer}>
-      <img className={s.image} alt={alt} src={image} />
+    <div className={styles.imageContainer}>
+      <img className={styles.image} alt={alt} src={image} />
     </div>
-    {caption && <span className={s.caption}>{caption}</span>}
+    {caption && <span className={styles.caption}>{caption}</span>}
   </div>
 );

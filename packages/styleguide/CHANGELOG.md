@@ -1,18 +1,23 @@
-# Change Log
+### [17.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.4...@codecademy/styleguide@17.6.5) (2020-10-08)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### [17.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.3...@codecademy/styleguide@17.6.4) (2020-10-08)
 
-## <small>17.6.1 (2020-10-06)</small>
+### [17.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.2...@codecademy/styleguide@17.6.3) (2020-10-08)
 
-* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
-* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355)), closes [#982](https://github.com/Codecademy/client-modules/issues/982) [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
-* chore: update changelogs ([c9e2975](https://github.com/Codecademy/client-modules/commit/c9e2975))
-* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+### [17.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.1...@codecademy/styleguide@17.6.2) (2020-10-06)
+
+### [17.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.0...@codecademy/styleguide@17.6.1) (2020-10-06)
 
 
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
 
 
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
 
 ## [17.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.5.0...@codecademy/styleguide@17.6.0) (2020-10-02)
 
@@ -1125,3 +1130,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+

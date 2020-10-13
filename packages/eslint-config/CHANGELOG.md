@@ -1,18 +1,22 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>3.0.2 (2020-10-06)</small>
-
-* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/bd026a8)), closes [#970](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/970)
-* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/294d355)), closes [#982](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/982) [#970](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/981)
-* chore: update changelogs ([e3ce3ba](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/e3ce3ba))
-* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](http://github.com/Codecademy/client-modules/packages/eslint-config/commit/056f5ac)), closes [#970](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/970) [#981](http://github.com/Codecademy/client-modules/packages/eslint-config/issues/981)
+### [3.0.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.2...@codecademy/eslint-config@3.0.3) (2020-10-13)
 
 
+### 💅 Styles
+
+* add warning to eslint for importing moment ([#1019](http://github.com/Codecademy/client-modules/issues/1019)) ([909b46a](http://github.com/Codecademy/client-modules/commit/909b46ad54cfa63a396bacb43d8e2798f2f7f9ea))
+
+### [3.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.1...@codecademy/eslint-config@3.0.2) (2020-10-06)
 
 
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970))" ([#981](http://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](http://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](http://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](http://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](http://github.com/Codecademy/client-modules/issues/982)) ([294d355](http://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](http://github.com/Codecademy/client-modules/issues/970) [#981](http://github.com/Codecademy/client-modules/issues/981)
 
 ### [3.0.1](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.0...@codecademy/eslint-config@3.0.1) (2020-09-25)
 
@@ -149,3 +153,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
+

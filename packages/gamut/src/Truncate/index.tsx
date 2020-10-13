@@ -2,7 +2,7 @@ import React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 import cx from 'classnames';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 type TruncateProps = {
   /** element for the component */
@@ -24,7 +24,7 @@ export const Truncate: React.FC<TruncateProps> = ({
 }) => {
   /** Truncate markup expects a single child element */
   const content = (
-    <Element className={cx(s.wrapper, className)}>{children}</Element>
+    <Element className={cx(styles.wrapper, className)}>{children}</Element>
   );
 
   /** If lines is false do not attempt to truncate */

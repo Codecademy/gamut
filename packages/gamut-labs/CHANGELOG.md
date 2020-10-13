@@ -1,18 +1,28 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## <small>4.2.6 (2020-10-06)</small>
-
-* chore: set packages to have publishConfig: access: public (#970) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a8)), closes [#970](https://github.com/Codecademy/client-modules/issues/970)
-* chore: set packages to have publishConfig: access: public (again) (#982) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355)), closes [#982](https://github.com/Codecademy/client-modules/issues/982) [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
-* chore: update changelogs ([c9e2975](https://github.com/Codecademy/client-modules/commit/c9e2975))
-* Revert "chore: set packages to have publishConfig: access: public (#970)" (#981) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+### [4.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.9...@codecademy/gamut-labs@4.2.10) (2020-10-08)
 
 
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [4.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.8...@codecademy/gamut-labs@4.2.9) (2020-10-08)
+
+### [4.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.7...@codecademy/gamut-labs@4.2.8) (2020-10-08)
+
+### [4.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.6...@codecademy/gamut-labs@4.2.7) (2020-10-06)
+
+### [4.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.5...@codecademy/gamut-labs@4.2.6) (2020-10-06)
 
 
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
 
 ### [4.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.4...@codecademy/gamut-labs@4.2.5) (2020-10-02)
 
@@ -299,3 +309,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+

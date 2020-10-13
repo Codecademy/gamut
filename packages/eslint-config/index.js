@@ -116,9 +116,19 @@ module.exports = {
     '@typescript-eslint/quotes': 'off',
 
     'no-restricted-imports': [
-      'error',
+      'warn',
       {
-        paths: ['@codecademy/gamut/dist/deprecated'],
+        paths: [
+          '@codecademy/gamut/dist/deprecated',
+          {
+            name: 'moment',
+            message: 'Please use date-fns instead.',
+          },
+          {
+            name: 'moment-timezone',
+            message: 'Please use date-fns-tz instead.',
+          },
+        ],
         patterns: ['@codecademy/gamut/dist/deprecated/*'],
       },
     ],
