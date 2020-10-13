@@ -4,7 +4,6 @@ import { Box, Container } from '../elements/Box';
 import { Link } from '../elements/Link';
 import { List, ListItem } from '../elements/List';
 import { Heading } from '../elements/Text';
-import { styled } from '../system';
 
 export const NavigationMenu = ({
   links,
