@@ -17,8 +17,15 @@ export const Link: React.FC<{ to?: string }> = ({ to, children }) => {
             text-decoration: none;
             color: ${theme.textColor.primary};
 
-            &:hover {
+            &:hover,
+            :active {
               color: ${theme.textColor.accent};
+            }
+            &:hover,
+            :focus,
+            :active {
+              outline-offset: ${theme.space[8]}px;
+              outline-color: ${theme.textColor.accent};
             }
           `}
           activeStyle={{

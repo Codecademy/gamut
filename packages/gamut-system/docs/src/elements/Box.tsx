@@ -1,4 +1,5 @@
 import { compose } from '@codecademy/gamut-system';
+import { css } from '@emotion/core';
 import {
   styled,
   layout,
@@ -61,5 +62,15 @@ type BoxProps = Parameters<typeof borderVariants>[0] &
 export const Box = styled(Container)<BoxProps>`
   ${borderVariants}
   ${colorVariants}
-  cursor: ${({ as }) => (Boolean(as === 'button') ? 'pointer' : 'default')}
+
+  ${({ as, theme }) =>
+    as === 'button' &&
+    css`
+      cursor: 'pointer';
+
+      &:focus,
+      &:active {
+        outline-color: ${theme.textColor.accent};
+      }
+    `}
 `;
