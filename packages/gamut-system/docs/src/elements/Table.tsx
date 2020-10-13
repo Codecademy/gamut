@@ -1,4 +1,5 @@
-import { styled } from '../system';
+import { compose } from '@codecademy/gamut-system';
+import { spacing, styled, typography } from '../system';
 
 export const Table = styled.table`
   width: 100%;
@@ -7,20 +8,28 @@ export const Table = styled.table`
 `;
 
 export const Th = styled.th`
-  font-family: ${({ theme }) => theme.fontFamily.base};
-  font-size: ${({ theme }) => theme.fontSize[3]}px;
-  text-align: left;
+  ${typography}
   border-bottom: 2px solid ${({ theme }) => theme.backgroundColor.contrast};
 `;
 
+Th.defaultProps = {
+  textAlign: 'left',
+  fontSize: { base: 1, md: 3 },
+};
+
 export const Td = styled.td`
-  font-family: ${({ theme }) => theme.fontFamily.monospace};
-  font-size: ${({ theme }) => theme.fontSize[1]}px;
-  padding: ${({ theme }) => theme.space[4]}px ${({ theme }) => theme.space[0]};
+  ${compose(typography, spacing)}
 `;
 
+Td.defaultProps = {
+  fontFamily: 'monospace',
+  fontSize: 1,
+  paddingX: 0,
+  paddingY: 4,
+};
+
 export const Tr = styled.tr`
-  &::first-of-type {
+  &:first-of-type {
     > * {
       padding-top: ${({ theme }) => theme.space[8]}px;
     }

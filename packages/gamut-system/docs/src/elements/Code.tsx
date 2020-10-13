@@ -1,7 +1,7 @@
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { useContext } from 'react';
 import { MultiTheme } from '../base';
-import { styled } from '../system';
+import { layout, styled } from '../system';
 import { syntaxTheme } from '../theme';
 
 export const Code = styled.code`
@@ -13,10 +13,15 @@ export const Code = styled.code`
 `;
 
 export const Pre = styled.pre`
+  ${layout}
   font-family: ${({ theme }) => theme.fontFamily.monospace};
   font-size: ${({ theme }) => theme.fontSize[1]}px;
   padding: ${({ theme }) => theme.space[24]}px;
 `;
+
+Pre.defaultProps = {
+  overflowY: 'auto',
+};
 
 export const Line = styled.div`
   display: table-row;

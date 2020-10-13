@@ -5,13 +5,13 @@ import { Helmet } from 'react-helmet';
 import '@codecademy/gamut-styles/core/_fonts.scss';
 
 import { ThemeProvider } from 'emotion-theming';
-import { theme, DynamicTheme } from './theme';
+import { theme, DynamicTheme, Theme } from './theme';
 import { Box } from './elements/Box';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const HelmetWrapper = Helmet as any;
 
-const globalStyles = css`
+const globalStyles = ({ theme }: { theme: Theme }) => css`
   html,
   body {
     margin: 0;
@@ -21,6 +21,16 @@ const globalStyles = css`
 
   * {
     box-sizing: border-box;
+    &::-webkit-scrollbar {
+      height: ${theme.space[8]}px;
+      width: ${theme.space[8]}px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: ${theme.textColor.accent};
+    }
   }
 
   h1,
@@ -92,11 +102,12 @@ const ThemeSwitcher = ({ children }) => {
   const [themeKey, setTheme] = useState<keyof typeof dynamicThemes>('light');
   const toggleTheme = (currentTheme) =>
     setTheme(currentTheme === 'light' ? 'dark' : 'light');
-  const activeTheme = dynamicThemes[themeKey];
-
+  const dynamicTheme = dynamicThemes[themeKey];
+  const activeTheme = { ...theme, ...dynamicTheme };
   return (
     <MultiTheme.Provider value={{ theme: themeKey, toggleTheme }}>
-      <ThemeProvider theme={{ ...theme, ...activeTheme }}>
+      <ThemeProvider theme={activeTheme}>
+        <Global styles={globalStyles({ theme: activeTheme })} />
         <Box
           colorVariant="primary"
           borderVariant="bordered"
@@ -138,10 +149,5 @@ export const wrapPageElement = ({ element, props }) => {
 };
 
 export const wrapRootElement = ({ element, props }) => {
-  return (
-    <>
-      <Global styles={globalStyles} />
-      <ThemeSwitcher>{element}</ThemeSwitcher>
-    </>
-  );
+  return <ThemeSwitcher>{element}</ThemeSwitcher>;
 };
