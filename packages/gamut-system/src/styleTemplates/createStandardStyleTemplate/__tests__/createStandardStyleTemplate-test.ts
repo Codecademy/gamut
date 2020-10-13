@@ -116,4 +116,16 @@ describe(createStandardStyleTemplate, () => {
     const themeValues = styleTemplate({ margin: 'sms', theme });
     expect(themeValues).toEqual({ margin: 'sms' });
   });
+
+  it('can have a property used instead of propName', () => {
+    const theme = { spacing: [10, 20] };
+    const styleTemplate = createStandardStyleTemplate({
+      propName: 'textColor',
+      property: 'color',
+      transformValue: (val) => val,
+    });
+
+    const themeValues = styleTemplate({ textColor: 'green', theme });
+    expect(themeValues).toEqual({ color: 'green' });
+  });
 });

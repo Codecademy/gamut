@@ -51,9 +51,9 @@ export const system = <Config extends SystemConfig<{}>>(
         .reduce((carry, variant) => carry.concat(keys(variant)), [])
         .map((prop: string) => getDefaultPropKey(prop))
     );
-
     // Pick the correct handlers from the system (closure specific) and create a composite.
     const handlers = pick(systemShape.properties, props as any);
+
     const variantHandler = compose(...(values(handlers) as any));
 
     // Return the variant function

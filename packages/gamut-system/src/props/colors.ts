@@ -1,6 +1,7 @@
 export const colors = {
-  color: {
-    propName: 'color',
+  textColor: {
+    propName: 'textColor',
+    property: 'color',
   },
   borderColor: {
     propName: 'borderColor',

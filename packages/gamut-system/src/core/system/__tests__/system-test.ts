@@ -14,9 +14,9 @@ describe(system, () => {
   describe('variant', () => {
     it('returns a style function with a propKey of variant by default', () => {
       const myVariant = variant({
-        primary: { color: 'blue' },
+        primary: { textColor: 'blue' },
         secondary: {
-          color: 'green',
+          textColor: 'green',
           backgroundColor: 'green',
           fontFamily: 'serif',
         },
@@ -29,8 +29,8 @@ describe(system, () => {
       const myVariant = variant({
         prop: 'colorVariant',
         variants: {
-          primary: { color: 'blue' },
-          secondary: { color: 'green' },
+          primary: { textColor: 'blue' },
+          secondary: { textColor: 'green' },
         },
       });
 

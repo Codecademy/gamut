@@ -219,7 +219,8 @@ export type Properties = {
   };
 
   /** Colors */
-  color: {
+  textColor: {
+    property: 'color';
     defaultScale: CSS.Properties['color'];
   };
   borderColor: {
@@ -243,7 +244,11 @@ export type PropertyUnion = {
   } & Properties[P];
 }[keyof Properties];
 
-export type Property = keyof Properties;
+export type PropName = PropertyUnion['propName'];
+
+export type Property =
+  | Exclude<PropertyUnion, { property: string }>['propName']
+  | Extract<PropertyUnion, { property: string }>['property'];
 
 export type DirectionalProperty = Extract<
   PropertyUnion,
