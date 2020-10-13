@@ -66,7 +66,7 @@ export const Box = styled(Container)<BoxProps>`
   ${({ as, theme }) =>
     as === 'button' &&
     css`
-      cursor: 'pointer';
+      cursor: pointer;
 
       &:focus,
       &:active {
