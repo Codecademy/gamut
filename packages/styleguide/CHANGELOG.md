@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>17.7.1 (2020-10-14)</small>
+
+* chore: update changelogs ([64f882c](https://github.com/Codecademy/client-modules/commit/64f882c))
+
+
+
+
+
 ## [17.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.5...@codecademy/styleguide@17.7.0) (2020-10-14)
 
 
@@ -1137,4 +1150,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
