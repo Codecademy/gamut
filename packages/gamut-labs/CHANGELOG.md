@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## <small>4.3.2 (2020-10-14)</small>
+
+* added aria-label prop to pro logo (#1057) ([0c5e13b](https://github.com/Codecademy/client-modules/commit/0c5e13b)), closes [#1057](https://github.com/Codecademy/client-modules/issues/1057)
+* chore: update changelogs ([004c089](https://github.com/Codecademy/client-modules/commit/004c089))
+
+
+
+
+
 ### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.0...@codecademy/gamut-labs@4.3.1) (2020-10-14)
 
 ## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.10...@codecademy/gamut-labs@4.3.0) (2020-10-14)
@@ -318,4 +332,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
