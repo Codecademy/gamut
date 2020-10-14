@@ -9,6 +9,19 @@ Style props for building robustly typed design systems in react.
 - Strict design system aware types with no manual fuss.
 - Works with `emotion` and `styled-components` in preferred syntax.
 
+## Docs
+
+Checkout each section
+
+- [Getting Started](docs/getting-started.md)
+- [Properties](docs/properties.md)
+- [Responsive Properties](docs/responsive.md)
+- [Variants](docs/variants.md)
+- [Customization](docs/customization.md)
+- [Compose](docs/compose.md)
+
+
+
 ## Usage
 
 Create your new system locally to your app:
@@ -67,11 +80,3 @@ export const Box = styled<BoxProps>`
 <Box margin={{ xs: 16, sm: 24, md: 32 }} />
 ```
 
-## Docs
-
-- [Getting Started](docs/getting-started.md)
-- [Properties](docs/properties.md)
-- [Responsive Properties](docs/responsive.md)
-- [Variants](docs/variants.md)
-- [Customization](docs/customization.md)
-- [Compose](docs/compose.md)

@@ -1,4 +1,8 @@
 {
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 120
+  },
   "search.exclude": {
     "docs": true
   },

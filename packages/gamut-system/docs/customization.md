@@ -1,16 +1,13 @@
 # Customizing your System
 
-By default calling system will return the base `CSSType` definitions for each rule and some extra transforms for quality of life. However,
-there are many cases where we want more strict typings for our style functions or to have custom transformations. This can be configured
-by creating a prop config: an immutable definition that defines the way the style functions should be constructed.
+By default calling system will return the base `CSSType` definitions for each rule and some extra transforms for quality of life. However, there are many cases where we want more strict typings for our style functions or to have custom transformations. This can be configured by creating a prop config: an immutable definition that defines the way the style functions should be constructed.
 
 ## Config Specifcation
 
 - `propName`: Any defined prop in the system.
 - `dependentProps`: An array of alternative props that you would like to group with the same style function.
 - `type`: Declare the template type `standard` by default or `directional` for properties that have a shorthand for directional values.
-- `transformValue`: There may be cases where you would like to transform or compute a property value into something more CSS
-  friendly some examples may be adding units or looking up configurations. You may provide a `transformValue` function on your config to do this.
+- `transformValue`: There may be cases where you would like to transform or compute a property value into something more CSS friendly some examples may be adding units or looking up configurations. You may provide a `transformValue` function on your config to do this.
 - `scale`: Either a typed array/object literal or a key of your theme that has those values.
 
 ```tsx
@@ -93,5 +90,4 @@ const App = ({ children }) => (
 );
 ```
 
-Your components will automatically look these values up from your theme. This also means the values of your keys can change depending on the context.
-Making aliasing color combinations etc far easier.
+Your components will automatically look these values up from your theme. This also means the values of your keys can change depending on the context. Making aliasing color combinations etc far easier.
