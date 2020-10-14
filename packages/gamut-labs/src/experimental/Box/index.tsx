@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { colors, spacing } from '@codecademy/gamut-styles';
-import { HoverShadowVariants, PaddingSizes } from './types';
+import { ShadowOffset, PaddingSizes } from './types';
 
 import { BOX_VARIANTS, BoxVariants } from './constants';
 import { createShadowOffset } from './utils';
@@ -14,15 +14,17 @@ export type BoxProps = {
   /** Standard spacing sizes */
   padding?: PaddingSizes;
   /** Position of the hover shadow offset */
-  hoverShadow?: HoverShadowVariants;
+  shadowOffset?: ShadowOffset;
 };
 
+const transitionCoefficient = 50;
+
 const createShadow = (
-  shadowDirection: HoverShadowVariants,
+  offsetAmount: 2 | 4,
   shadowColor?: string
 ) => css`
   position: relative;
-  transition: 0.2s transform;
+  transition: ${offsetAmount * transitionCoefficient}ms transform;
 
   &:after,
   &:before {
@@ -51,7 +53,7 @@ const createShadow = (
   }
 
   &:hover {
-    ${createShadowOffset(4, shadowDirection)}
+    ${createShadowOffset(offsetAmount)}
   }
 `;
 
@@ -59,7 +61,7 @@ const boxStyles = ({
   padding,
   variant = 'white',
   bordered,
-  hoverShadow,
+  shadowOffset,
 }: BoxProps) => {
   const { background, shadow, text, border } = BOX_VARIANTS[variant];
 
@@ -72,7 +74,7 @@ const boxStyles = ({
     border-radius: 2px;
     border-style: ${bordered ? 'solid' : 'none'};
 
-    ${hoverShadow && createShadow(hoverShadow, shadow)}
+    ${shadowOffset && createShadow(shadowOffset, shadow)}
   `;
 };
 
