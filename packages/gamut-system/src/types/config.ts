@@ -119,6 +119,6 @@ export type HandlerMeta<Props extends AbstractProps> = {
 export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
   ((props: Props) => CSSObject);
 
-export type HandlerProps<HandlerFn extends Handler<AbstractProps>> = Parameters<
-  HandlerFn
->[0];
+export type HandlerProps<
+  HandlerFn extends (props: AbstractProps) => CSSObject
+> = Parameters<HandlerFn>[0];
