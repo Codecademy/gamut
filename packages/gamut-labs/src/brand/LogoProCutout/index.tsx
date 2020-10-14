@@ -3,7 +3,7 @@ import { colors } from '@codecademy/gamut-styles';
 
 export type LogoProCutoutProps = {
   ariaLabel?: string;
-  backgroundColor?: keyof typeof colors;
+  backgroundColor?: string;
   cutoutColor?: string;
   width?: number;
 };

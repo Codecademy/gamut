@@ -1,3 +1,10 @@
+## [3.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.2...@codecademy/gamut-icons@3.9.0) (2020-10-14)
+
+
+### ✨ Features
+
+* added small-check-icon ([#1058](https://github.com/Codecademy/client-modules/issues/1058)) ([3e93e20](https://github.com/Codecademy/client-modules/commit/3e93e2041dd061c73861dd92be780232cbde7f20))
+
 ### [3.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.8.1...@codecademy/gamut-icons@3.8.2) (2020-10-08)
 
 
