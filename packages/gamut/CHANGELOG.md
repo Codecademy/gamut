@@ -1,3 +1,10 @@
+## [16.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.5...@codecademy/gamut@16.2.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
 ### [16.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.4...@codecademy/gamut@16.1.5) (2020-10-08)
 
 

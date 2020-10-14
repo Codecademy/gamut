@@ -1,3 +1,10 @@
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.10...@codecademy/gamut-labs@4.3.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
 ### [4.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.9...@codecademy/gamut-labs@4.2.10) (2020-10-08)
 
 

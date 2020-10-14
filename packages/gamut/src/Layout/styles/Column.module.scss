@@ -21,5 +21,11 @@
         }
       }
     }
+
+    @each $rowspan in $rowspans {
+      .rowspan_#{$rowspan}__#{$screenSize} {
+        grid-row: span #{$rowspan};
+      }
+    }
   }
 }
