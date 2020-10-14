@@ -1,6 +1,6 @@
 # Getting Started
 
-Gamut system is a styled-system inpsired utility toolkit that focuses on making your design system
+Gamut system is a styled-system inspired utility toolkit that focuses on making your design system
 typesafe.
 
 To use gamut-system, install gamut-system and your CSS in JS library of choice:
