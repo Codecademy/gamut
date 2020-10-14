@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## 4.3.0 (2020-10-14)
-
-* feat(LayoutGrid): add rowspan to LayoutGrid and fix colors for ProLogo (#1056) ([a820693](https://github.com/Codecademy/client-modules/commit/a820693)), closes [#1056](https://github.com/Codecademy/client-modules/issues/1056)
-* chore: update changelogs ([22ca6ad](https://github.com/Codecademy/client-modules/commit/22ca6ad))
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.10...@codecademy/gamut-labs@4.3.0) (2020-10-14)
 
 
+### ✨ Features
 
-
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
 
 ### [4.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.9...@codecademy/gamut-labs@4.2.10) (2020-10-08)
 
@@ -323,3 +316,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
