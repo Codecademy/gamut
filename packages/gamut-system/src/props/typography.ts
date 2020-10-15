@@ -20,4 +20,7 @@ export const typography = {
   fontStyle: {
     propName: 'fontStyle',
   },
+  textDecoration: {
+    propName: 'textDecoration',
+  },
 } as const;

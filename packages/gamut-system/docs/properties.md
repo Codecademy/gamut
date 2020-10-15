@@ -35,15 +35,16 @@ There are 10 different property groups that we support by default each with a nu
 
 ## Typography
 
-| Prop          | CSS Property   | defaultTransform |
-| ------------- | -------------- | ---------------- |
-| fontFamily    | font-family    |                  |
-| fontWeight    | font-weight    |                  |
-| fontSize      | font-size      |                  |
-| lineHeight    | line-height    |                  |
-| textAlign     | text-align     |                  |
-| fontStyle     | font-style     |                  |
-| letterSpacing | letter-spacing |                  |
+| Prop           | CSS Property    | defaultTransform |
+| -------------- | --------------- | ---------------- |
+| fontFamily     | font-family     |                  |
+| fontWeight     | font-weight     |                  |
+| fontSize       | font-size       |                  |
+| lineHeight     | line-height     |                  |
+| textAlign      | text-align      |                  |
+| fontStyle      | font-style      |                  |
+| letterSpacing  | letter-spacing  |                  |
+| textDecoration | text-decoration |                  |
 
 ## Layout
 
@@ -63,11 +64,17 @@ There are 10 different property groups that we support by default each with a nu
 
 ## Colors
 
-| Prop            | CSS Property     | defaultTransform |
-| --------------- | ---------------- | ---------------- |
-| color           | color            |                  |
-| borderColor     | border-color     |                  |
-| backgroundColor | background-color |                  |
+| Prop              | CSS Property                          | defaultTransform |
+| ----------------- | ------------------------------------- | ---------------- |
+| color             | color                                 |                  |
+| backgroundColor   | background-color                      |                  |
+| borderColor       | border-color                          |                  |
+| borderColorY      | border-top-color, border-bottom-color |                  |
+| borderColorX      | border-left-color, border-right-color |                  |
+| borderColorTop    | border-top-color                      |                  |
+| borderColorBottom | border-bottom-color                   |                  |
+| borderColorLeft   | border-left-color                     |                  |
+| borderColorRight  | border-right-color                    |                  |
 
 ## Background
 

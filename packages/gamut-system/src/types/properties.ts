@@ -72,6 +72,9 @@ export type Properties = {
   textAlign: {
     defaultScale: CSS.Properties['textAlign'];
   };
+  textDecoration: {
+    defaultScale: CSS.Properties['textDecoration'];
+  };
 
   /** Spacing */
   margin: {
