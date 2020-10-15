@@ -49,9 +49,9 @@ export function createDirectionalStyleTemplate<
       if (propValue === undefined) return;
 
       // Look up valid directional prop name based on direction.
-      const prop = DIRECTIONAL_PROPS[propKey][direction];
+      const prop = DIRECTIONAL_PROPS[propKey][direction] as string;
       // Do final calculations
-      styles[prop] = transformValue(propValue) as string;
+      styles[prop] = transformValue(propValue);
     });
     return styles;
   };

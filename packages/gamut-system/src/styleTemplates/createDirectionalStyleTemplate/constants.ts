@@ -20,6 +20,12 @@ export const DIRECTIONAL_PROPS = {
     top: 'borderTopColor',
     bottom: 'borderBottomColor',
   },
+  borderStyle: {
+    left: 'borderLeftStyle',
+    right: 'borderRightStyle',
+    top: 'borderTopStyle',
+    bottom: 'borderBottomStyle',
+  },
   borderWidth: {
     left: 'borderLeftWidth',
     right: 'borderRightWidth',

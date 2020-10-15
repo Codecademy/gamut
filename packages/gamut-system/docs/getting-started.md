@@ -52,7 +52,7 @@ Now you can use both `spacing` and `layout` props on your `<Container />`.
 <Container padding="1rem" display="inline-block" />
 ```
 
-## Component extention
+## Component extension
 
 Now that we have a box component we might want to make a few variations of this that have some extra features. Like [flex](./properties.md#flex) props.  To achieve this we can decorate our original container with more style functions to add new capabilities to the resulting `<FlexContainer />` component.
 

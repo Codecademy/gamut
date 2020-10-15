@@ -31,7 +31,15 @@ export type Properties = {
     defaultScale: CSS.Properties['borderRadius'];
   };
   borderStyle: {
-    defaultScale: CSS.Property.BorderTopStyle; // Dumb Hack
+    // Import fails on some peer versions this ensures that the type exists.  Enabling dependentProps causes union overflow
+    defaultScale: CSS.Property.BorderTopStyle;
+    // dependentProps:
+    //   | 'borderStyleLeft'
+    //   | 'borderStyleRight'
+    //   | 'borderStyleTop'
+    //   | 'borderStyleBottom'
+    //   | 'borderStyleX'
+    //   | 'borderStyleY';
   };
 
   /** Shadows */

@@ -16,5 +16,14 @@ export const border = {
   },
   borderStyle: {
     propName: 'borderStyle',
+    dependentProps: [
+      'borderStyleLeft',
+      'borderStyleRight',
+      'borderStyleTop',
+      'borderStyleBottom',
+      'borderStyleX',
+      'borderStyleY',
+    ],
+    type: 'directional',
   },
 } as const;

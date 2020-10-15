@@ -5,6 +5,15 @@ export const colors = {
   },
   borderColor: {
     propName: 'borderColor',
+    dependentProps: [
+      'borderColorLeft',
+      'borderColorRight',
+      'borderColorTop',
+      'borderColorBottom',
+      'borderColorX',
+      'borderColorY',
+    ],
+    type: 'directional',
   },
   backgroundColor: {
     propName: 'backgroundColor',
