@@ -18,16 +18,6 @@ $below: translateY(0%);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
 }
 
-.screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.75);
-}
-
 .above-right {
   transform: $right $above;
 }
