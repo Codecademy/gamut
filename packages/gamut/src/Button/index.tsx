@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
 import { omitProps } from '../utils/omitProps';
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 // themes can be an alias to a color
 // or a unique button type
@@ -107,23 +107,25 @@ export const Button: React.FC<ButtonProps> = (props) => {
     theme = buttonPresetThemes[theme];
   }
 
-  const typeClassName = props.link ? s.link : s.btn;
-  const themeClassName = props.link ? s[`link-${theme}`] : s[`btn-${theme}`];
+  const typeClassName = props.link ? styles.link : styles.btn;
+  const themeClassName = props.link
+    ? styles[`link-${theme}`]
+    : styles[`btn-${theme}`];
 
   const classes = cx(
     typeClassName,
     themeClassName,
-    s[props.size!],
+    styles[props.size!],
     {
-      [s.block]: props.block,
-      [s.go]: props.go,
-      [s.outline]: props.outline,
-      [s.underline]: props.underline,
-      [s.caps]: props.caps,
-      [s.round]: props.round,
-      [s.square]: props.square,
-      [s.flat]: props.flat,
-      [s['fit-text']]: props.fitText,
+      [styles.block]: props.block,
+      [styles.go]: props.go,
+      [styles.outline]: props.outline,
+      [styles.underline]: props.underline,
+      [styles.caps]: props.caps,
+      [styles.round]: props.round,
+      [styles.square]: props.square,
+      [styles.flat]: props.flat,
+      [styles['fit-text']]: props.fitText,
     },
     props.className
   );

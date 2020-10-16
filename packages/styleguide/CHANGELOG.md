@@ -1,3 +1,31 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [17.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.1...@codecademy/styleguide@17.7.2) (2020-10-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [17.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.0...@codecademy/styleguide@17.7.1) (2020-10-14)
+
+## [17.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.5...@codecademy/styleguide@17.7.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
+### [17.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.4...@codecademy/styleguide@17.6.5) (2020-10-08)
+
+### [17.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.3...@codecademy/styleguide@17.6.4) (2020-10-08)
+
+### [17.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.2...@codecademy/styleguide@17.6.3) (2020-10-08)
+
 ### [17.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.1...@codecademy/styleguide@17.6.2) (2020-10-06)
 
 ### [17.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.0...@codecademy/styleguide@17.6.1) (2020-10-06)
@@ -1124,4 +1152,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-

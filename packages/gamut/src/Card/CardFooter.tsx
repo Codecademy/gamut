@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardFooter.module.scss';
+import styles from './styles/CardFooter.module.scss';
 
 const defaultProps = {
   border: 'none',
@@ -43,17 +43,17 @@ export const CardFooter = ({
   className,
 }: CardFooterProps) => {
   const footerClasses = cx(
-    s.footer,
+    styles.footer,
     {
-      [s.flex]: flex,
-      [s.solidTopBorder]: border === 'solid',
-      [s.dashedTopBorder]: border === 'dashed',
-      [s.transparentTopBorder]: border === 'none',
-      [s.leftAlign]: align === 'left',
-      [s.centerAlign]: align === 'center',
-      [s.rightAlign]: align === 'right',
-      [s.standardPadding]: standardPadding,
-      [s.standardHeight]: standardHeight,
+      [styles.flex]: flex,
+      [styles.solidTopBorder]: border === 'solid',
+      [styles.dashedTopBorder]: border === 'dashed',
+      [styles.transparentTopBorder]: border === 'none',
+      [styles.leftAlign]: align === 'left',
+      [styles.centerAlign]: align === 'center',
+      [styles.rightAlign]: align === 'right',
+      [styles.standardPadding]: standardPadding,
+      [styles.standardHeight]: standardHeight,
     },
     className
   );

@@ -16,7 +16,7 @@ import { Button } from '../Button';
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type AlertProps = {
   className?: string;
@@ -52,9 +52,9 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <CardShell
-      className={cx(s.container, className, {
-        [s.container__fluid]: fluid,
-        [s[`container__${type}`]]: type,
+      className={cx(styles.container, className, {
+        [styles.container__fluid]: fluid,
+        [styles[`container__${type}`]]: type,
       })}
       role="status"
       aria-label="alert box"
@@ -62,18 +62,18 @@ export const Alert: React.FC<AlertProps> = ({
     >
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
-          <Container className={s.section} justify="center" align="center">
+          <Container className={styles.section} justify="center" align="center">
             <TypeIcon size={24} />
           </Container>
         )}
         <Container
-          className={s.section__main}
+          className={styles.section__main}
           align="start"
           grow={1}
           shrink={1}
         >
           <Container
-            className={s.section}
+            className={styles.section}
             grow={1}
             shrink={1}
             align="start"
@@ -82,16 +82,20 @@ export const Alert: React.FC<AlertProps> = ({
             <Truncate
               lines={isExpanded ? undefined : lines}
               onTruncate={setIsTruncated}
-              className={s.truncate}
+              className={styles.truncate}
             >
               {children}
             </Truncate>
             {showExpandToggle && (
               <Container inline>
                 <ButtonBase
-                  className={cx(s.iconButton, s.iconButton__pushRight, {
-                    [s[`iconButton__${type}`]]: type,
-                  })}
+                  className={cx(
+                    styles.iconButton,
+                    styles.iconButton__pushRight,
+                    {
+                      [styles[`iconButton__${type}`]]: type,
+                    }
+                  )}
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
                   <ToggleIcon size={16} />
@@ -100,11 +104,11 @@ export const Alert: React.FC<AlertProps> = ({
             )}
           </Container>
           {cta && (
-            <Container className={s.section} shrink={1}>
+            <Container className={styles.section} shrink={1}>
               <Button
                 caps
                 theme={type}
-                className={s.actionButton}
+                className={styles.actionButton}
                 onClick={cta.onClick}
                 href={cta.href}
                 disabled={cta.disabled}
@@ -115,10 +119,10 @@ export const Alert: React.FC<AlertProps> = ({
           )}
         </Container>
         {onClose && (
-          <Container className={s.section} shrink={1} center>
+          <Container className={styles.section} shrink={1} center>
             <ButtonBase
-              className={cx(s.iconButton, {
-                [s[`iconButton__${type}`]]: type,
+              className={cx(styles.iconButton, {
+                [styles[`iconButton__${type}`]]: type,
               })}
               aria-label="Close Alert"
               onClick={onClose}

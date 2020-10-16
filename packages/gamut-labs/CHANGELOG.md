@@ -1,3 +1,43 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [4.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.2...@codecademy/gamut-labs@4.3.3) (2020-10-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [4.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.1...@codecademy/gamut-labs@4.3.2) (2020-10-14)
+
+
+### Other Changes
+
+* added aria-label prop to pro logo ([#1057](https://github.com/Codecademy/client-modules/issues/1057)) ([0c5e13b](https://github.com/Codecademy/client-modules/commit/0c5e13b98e6c535bde2ba78480548c6c92615d2f))
+
+### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.0...@codecademy/gamut-labs@4.3.1) (2020-10-14)
+
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.10...@codecademy/gamut-labs@4.3.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
+### [4.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.9...@codecademy/gamut-labs@4.2.10) (2020-10-08)
+
+
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [4.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.8...@codecademy/gamut-labs@4.2.9) (2020-10-08)
+
+### [4.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.7...@codecademy/gamut-labs@4.2.8) (2020-10-08)
+
 ### [4.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.6...@codecademy/gamut-labs@4.2.7) (2020-10-06)
 
 ### [4.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.5...@codecademy/gamut-labs@4.2.6) (2020-10-06)
@@ -298,4 +338,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-

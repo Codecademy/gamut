@@ -2,11 +2,13 @@ import React from 'react';
 import { colors } from '@codecademy/gamut-styles';
 
 export type LogoProCutoutTransparent = {
+  ariaLabel?: string;
   backgroundColor?: string;
   width?: number;
 };
 
 export const LogoProCutoutTransparent: React.FC<LogoProCutoutTransparent> = ({
+  ariaLabel = 'Pro',
   backgroundColor = colors.navy,
   width = 30,
 }) => (
@@ -16,6 +18,7 @@ export const LogoProCutoutTransparent: React.FC<LogoProCutoutTransparent> = ({
     viewBox="0 0 30 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-label={ariaLabel}
   >
     <path
       d="M6.698 7.16199C6.474 7.37665 6.15666 7.48401 5.746 7.48401H3.94V4.88H5.746C6.15666 4.88 6.474 4.9873 6.698 5.20203C6.922 5.41669 7.034 5.74335 7.034 6.18201C7.034 6.62067 6.922 6.94733 6.698 7.16199Z"
