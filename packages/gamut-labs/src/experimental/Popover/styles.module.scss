@@ -14,6 +14,8 @@ $below: translateY(0%);
   align-items: center;
   z-index: 20;
   background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
 }
 
 .screen {

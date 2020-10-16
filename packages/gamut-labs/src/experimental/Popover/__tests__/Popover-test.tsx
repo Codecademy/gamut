@@ -59,24 +59,6 @@ describe('Popover', () => {
     expect(popoverIsRendered()).toBeTruthy();
   });
 
-  it('does not show a screen overlay if the prop is false', () => {
-    renderPopover({
-      isOpen: true,
-      showScreen: false,
-    });
-
-    expect(screen.queryByTestId('popover-screen')).not.toBeInTheDocument();
-  });
-
-  it('shows a screen overlay if the prop is true', () => {
-    renderPopover({
-      isOpen: true,
-      showScreen: true,
-    });
-
-    expect(screen.queryByTestId('popover-screen')).toBeInTheDocument();
-  });
-
   it('does not show a beak if the prop is false', () => {
     renderPopover({
       isOpen: true,

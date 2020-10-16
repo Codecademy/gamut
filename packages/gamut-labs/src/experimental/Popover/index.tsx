@@ -32,14 +32,9 @@ export type PopoverProps = {
    */
   position?: 'above' | 'below';
   /**
-   * Whether to show a beak on the popover. Needs showScreen=true.
+   * Whether to show a beak on the popover.
    */
   showBeak?: boolean;
-  /**
-   * Whether to show a screen behind the popover to mask the background contents.
-   * If enabled, the overlay clickOutsideToDeactivate no longer works.
-   */
-  showScreen?: boolean;
   /**
    * Props to pass to the containing Overlay component.
    */
@@ -51,7 +46,6 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   isOpen,
   showBeak,
-  showScreen,
   position = 'below',
   offset = 20,
   align = 'left',
@@ -98,27 +92,22 @@ export const Popover: React.FC<PopoverProps> = ({
       data-testid="popover-container"
       {...(overlayProps as OverlayProps)}
     >
-      <div>
-        {showScreen && (
-          <div className={styles.screen} data-testid={'popover-screen'} />
+      <div
+        className={cx(
+          styles.popover,
+          styles[`${position}-${align}`],
+          className
         )}
-        <div
-          className={cx(
-            styles.popover,
-            styles[`${position}-${align}`],
-            className
-          )}
-          style={getPopoverPosition()}
-          data-testid={'popover-content-container'}
-        >
-          {showBeak && (
-            <div
-              className={cx(styles.beak, styles[`${position}-beak`])}
-              data-testid={'popover-beak'}
-            />
-          )}
-          {children}
-        </div>
+        style={getPopoverPosition()}
+        data-testid={'popover-content-container'}
+      >
+        {showBeak && (
+          <div
+            className={cx(styles.beak, styles[`${position}-beak`])}
+            data-testid={'popover-beak'}
+          />
+        )}
+        {children}
       </div>
     </Overlay>
   );
