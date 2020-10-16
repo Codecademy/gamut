@@ -1,3 +1,10 @@
+### [3.0.3](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.2...@codecademy/eslint-config@3.0.3) (2020-10-13)
+
+
+### 💅 Styles
+
+* add warning to eslint for importing moment ([#1019](http://github.com/Codecademy/client-modules/issues/1019)) ([909b46a](http://github.com/Codecademy/client-modules/commit/909b46ad54cfa63a396bacb43d8e2798f2f7f9ea))
+
 ### [3.0.2](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.1...@codecademy/eslint-config@3.0.2) (2020-10-06)
 
 
