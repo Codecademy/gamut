@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [2.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@2.0.1...@codecademy/enzyme-helpers@2.0.2) (2020-10-16)
+
+**Note:** Version bump only for package @codecademy/enzyme-helpers
+
+
+
+
+
 ### [2.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/enzyme-helpers@2.0.0...@codecademy/enzyme-helpers@2.0.1) (2020-10-06)
 
 
@@ -81,4 +94,3 @@
 ### ✨ Features
 
 * create enzyme-helpers package ([b70b7b4](https://github.com/Codecademy/client-modules/commit/b70b7b454aa600a8822636e37adc435c15ecb8da))
-
