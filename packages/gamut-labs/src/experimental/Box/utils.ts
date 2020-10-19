@@ -1,28 +1,17 @@
 import { css } from '@emotion/core';
 import { pxRem } from '@codecademy/gamut-styles';
-import { PaddingSizes } from './types';
-
-/** [foreground, background] */
-const offsets = {
-  left: [1, -1],
-  right: [-1, -1],
-};
+import { ShadowOffset } from './types';
 
 const shadowOffset = 2;
 
-export const createShadowOffset = (
-  offset: PaddingSizes,
-  direction: 'left' | 'right'
-) => {
-  const [xCoeff, yCoeff] = offsets[direction];
-
+export const createShadowOffset = (offset: ShadowOffset) => {
   return css`
-    transform: translate(${pxRem(xCoeff * offset)}, ${pxRem(yCoeff * offset)});
+    transform: translate(${pxRem(offset)}, ${pxRem(-1 * offset)});
 
     &:after {
       transform: translate(
-        ${pxRem(-1 * xCoeff * offset * shadowOffset)},
-        ${pxRem(-1 * yCoeff * offset * shadowOffset)}
+        ${pxRem(-1 * offset * shadowOffset)},
+        ${pxRem(offset * shadowOffset)}
       );
     }
   `;
