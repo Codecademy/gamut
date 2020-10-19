@@ -19,10 +19,7 @@ export type BoxProps = {
 
 const transitionCoefficient = 50;
 
-const createShadow = (
-  offsetAmount: 2 | 4,
-  shadowColor?: string
-) => css`
+const createShadow = (offsetAmount: 2 | 4, shadowColor?: string) => css`
   position: relative;
   transition: ${offsetAmount * transitionCoefficient}ms transform;
 
