@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.3...@codecademy/gamut-labs@4.4.0) (2020-10-19)
+
+
+### Features
+
+* **Box:** make ShadowOffset customizable ([#1060](https://github.com/Codecademy/client-modules/issues/1060)) ([0435253](https://github.com/Codecademy/client-modules/commit/04352538399244b861ea30d634edb4a8959ac62e))
+
+
+
 ### [4.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.2...@codecademy/gamut-labs@4.3.3) (2020-10-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
