@@ -96,7 +96,7 @@ export class Tabs extends Component<TabsProps> {
     );
 
     return (
-      <div>
+      <div className={this.props.className}>
         {clonedTabList}
         {clonedTabPanels}
       </div>

@@ -35,6 +35,7 @@ Array [
   "generateResponsiveClassnames",
   "GridForm",
   "Heading",
+  "HiddenText",
   "HighlightedText",
   "Input",
   "InputStepper",

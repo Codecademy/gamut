@@ -1,3 +1,80 @@
+### [16.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.2...@codecademy/gamut@16.2.3) (2020-10-19)
+
+
+### Other Changes
+
+* aria hidded added to chevron in accordion button component ([#1062](https://github.com/Codecademy/client-modules/issues/1062)) ([b942a50](https://github.com/Codecademy/client-modules/commit/b942a50be40dbba3b7f4fa75a03f897a74485008))
+
+
+### 🐛 Bug Fixes
+
+* corrected GridForm Values to allow FileList ([#983](https://github.com/Codecademy/client-modules/issues/983)) ([68f99c2](https://github.com/Codecademy/client-modules/commit/68f99c223e9ed1974eaa3cae94e52ce8444fab84))
+
+### [16.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.1...@codecademy/gamut@16.2.2) (2020-10-16)
+
+
+### Other Changes
+
+* bump a few assorted dependencies to latest ([#986](https://github.com/Codecademy/client-modules/issues/986)) ([2d61eef](https://github.com/Codecademy/client-modules/commit/2d61eefa4fb0d8604d99e8aae45131b93d045248)), closes [#930](https://github.com/Codecademy/client-modules/issues/930) [#900](https://github.com/Codecademy/client-modules/issues/900) [#987](https://github.com/Codecademy/client-modules/issues/987) [#988](https://github.com/Codecademy/client-modules/issues/988) [#989](https://github.com/Codecademy/client-modules/issues/989) [#990](https://github.com/Codecademy/client-modules/issues/990) [#991](https://github.com/Codecademy/client-modules/issues/991) [#992](https://github.com/Codecademy/client-modules/issues/992) [#994](https://github.com/Codecademy/client-modules/issues/994) [#1002](https://github.com/Codecademy/client-modules/issues/1002) [#1004](https://github.com/Codecademy/client-modules/issues/1004) [#1005](https://github.com/Codecademy/client-modules/issues/1005) [#1007](https://github.com/Codecademy/client-modules/issues/1007) [#1006](https://github.com/Codecademy/client-modules/issues/1006) [#1010](https://github.com/Codecademy/client-modules/issues/1010) [#1011](https://github.com/Codecademy/client-modules/issues/1011) [#996](https://github.com/Codecademy/client-modules/issues/996) [#995](https://github.com/Codecademy/client-modules/issues/995) [#997](https://github.com/Codecademy/client-modules/issues/997) [#993](https://github.com/Codecademy/client-modules/issues/993) [#1013](https://github.com/Codecademy/client-modules/issues/1013) [#1014](https://github.com/Codecademy/client-modules/issues/1014) [#1016](https://github.com/Codecademy/client-modules/issues/1016) [#1015](https://github.com/Codecademy/client-modules/issues/1015) [#1017](https://github.com/Codecademy/client-modules/issues/1017) [#1008](https://github.com/Codecademy/client-modules/issues/1008) [#1012](https://github.com/Codecademy/client-modules/issues/1012) [#1018](https://github.com/Codecademy/client-modules/issues/1018) [#1020](https://github.com/Codecademy/client-modules/issues/1020) [#1021](https://github.com/Codecademy/client-modules/issues/1021) [#1022](https://github.com/Codecademy/client-modules/issues/1022) [#1023](https://github.com/Codecademy/client-modules/issues/1023) [#1024](https://github.com/Codecademy/client-modules/issues/1024) [#1025](https://github.com/Codecademy/client-modules/issues/1025) [#1026](https://github.com/Codecademy/client-modules/issues/1026) [#1028](https://github.com/Codecademy/client-modules/issues/1028) [#1029](https://github.com/Codecademy/client-modules/issues/1029) [#1031](https://github.com/Codecademy/client-modules/issues/1031) [#1032](https://github.com/Codecademy/client-modules/issues/1032) [#1035](https://github.com/Codecademy/client-modules/issues/1035) [#1027](https://github.com/Codecademy/client-modules/issues/1027) [#1034](https://github.com/Codecademy/client-modules/issues/1034) [#1039](https://github.com/Codecademy/client-modules/issues/1039) [#1041](https://github.com/Codecademy/client-modules/issues/1041) [#1033](https://github.com/Codecademy/client-modules/issues/1033) [#1042](https://github.com/Codecademy/client-modules/issues/1042) [#1043](https://github.com/Codecademy/client-modules/issues/1043) [#1044](https://github.com/Codecademy/client-modules/issues/1044) [#1045](https://github.com/Codecademy/client-modules/issues/1045) [#1047](https://github.com/Codecademy/client-modules/issues/1047) [#1048](https://github.com/Codecademy/client-modules/issues/1048) [#1050](https://github.com/Codecademy/client-modules/issues/1050) [#1051](https://github.com/Codecademy/client-modules/issues/1051) [#1052](https://github.com/Codecademy/client-modules/issues/1052) [#1053](https://github.com/Codecademy/client-modules/issues/1053) [#1054](https://github.com/Codecademy/client-modules/issues/1054)
+
+### [16.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.0...@codecademy/gamut@16.2.1) (2020-10-14)
+
+## [16.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.5...@codecademy/gamut@16.2.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
+### [16.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.4...@codecademy/gamut@16.1.5) (2020-10-08)
+
+
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [16.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.3...@codecademy/gamut@16.1.4) (2020-10-08)
+
+### [16.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.2...@codecademy/gamut@16.1.3) (2020-10-08)
+
+### [16.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.1...@codecademy/gamut@16.1.2) (2020-10-06)
+
+
+### Other Changes
+
+* This seems like it should have been there before? ([#979](https://github.com/Codecademy/client-modules/issues/979)) ([e2e28e7](https://github.com/Codecademy/client-modules/commit/e2e28e7052feb722130a8ded4eb8c966b240a824))
+
+### [16.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.1.0...@codecademy/gamut@16.1.1) (2020-10-06)
+
+
+### 🗑 Reverts
+
+* Revert "chore: set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970))" ([#981](https://github.com/Codecademy/client-modules/issues/981)) ([056f5ac](https://github.com/Codecademy/client-modules/commit/056f5ac0df91493c2535274ec043d6e4335d71d8))
+
+
+### Other Changes
+
+* set packages to have publishConfig: access: public ([#970](https://github.com/Codecademy/client-modules/issues/970)) ([bd026a8](https://github.com/Codecademy/client-modules/commit/bd026a85193dbd077d0ee8661df996d105cf709c))
+* set packages to have publishConfig: access: public (again) ([#982](https://github.com/Codecademy/client-modules/issues/982)) ([294d355](https://github.com/Codecademy/client-modules/commit/294d355f353dc307a400679ce849dd7b2388d95d)), closes [#970](https://github.com/Codecademy/client-modules/issues/970) [#981](https://github.com/Codecademy/client-modules/issues/981)
+
+## [16.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.14...@codecademy/gamut@16.1.0) (2020-10-02)
+
+
+### ✨ Features
+
+* Added HiddenText component ([#949](https://github.com/Codecademy/client-modules/issues/949)) ([68f8486](https://github.com/Codecademy/client-modules/commit/68f8486d6320f67741813fac6c422880130e63fe))
+
+### [16.0.14](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.13...@codecademy/gamut@16.0.14) (2020-09-29)
+
+### [16.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.12...@codecademy/gamut@16.0.13) (2020-09-28)
+
+### [16.0.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.11...@codecademy/gamut@16.0.12) (2020-09-25)
+
+
+### 🐛 Bug Fixes
+
+* **Button:** Add rel by default if none is set when target=blank ([#973](https://github.com/Codecademy/client-modules/issues/973)) ([8e5bade](https://github.com/Codecademy/client-modules/commit/8e5baded035cb21a151083c309665165e8d9c4b2))
+
 ### [16.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.0.10...@codecademy/gamut@16.0.11) (2020-09-25)
 
 

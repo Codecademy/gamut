@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 import cx from 'classnames';
 import { VisualTheme } from '@codecademy/gamut';
 import orangeQuotes from '../assets/orangeQuotes.svg';
@@ -18,14 +18,16 @@ export const Quote: React.FC<QuoteProps> = ({
 }) => (
   <div
     className={cx(
-      theme === VisualTheme.DarkMode ? s.darkContainer : s.lightContainer
+      theme === VisualTheme.DarkMode
+        ? styles.darkContainer
+        : styles.lightContainer
     )}
   >
     <img
       src={theme === VisualTheme.DarkMode ? purpleQuotes : orangeQuotes}
       alt=""
-      className={cx(s.icon, classNames.icon)}
+      className={cx(styles.icon, classNames.icon)}
     />
-    <q className={cx(s.text, classNames.text)}>{text}</q>
+    <q className={cx(styles.text, classNames.text)}>{text}</q>
   </div>
 );
