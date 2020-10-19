@@ -72,22 +72,20 @@ const commonConfig = (options = {}) => {
   };
 
   if (DEV) {
-    config = merge.smart(config, {
+    config = merge(config, {
       output: {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
       },
     });
   } else {
-    config = merge.smart(config, {
+    config = merge(config, {
       bail: true, // Don't try to continue through any errors
       optimization: {
         minimize: true,
         minimizer: minimizer || [
           new TerserPlugin({
-            cache: true,
             parallel: true,
-            sourceMap: true,
             terserOptions: {
               compress: {
                 inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842

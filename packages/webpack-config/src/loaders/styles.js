@@ -39,10 +39,6 @@ const postCssLoaderDefaults = {
 
 const extractPluginDefaults = {
   loader: MiniCssExtractPlugin.loader,
-  options: {
-    hmr: !PROD,
-    esModule: true,
-  },
 };
 
 const scssFilePattern = /\.scss?$/;
