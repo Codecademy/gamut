@@ -1,7 +1,7 @@
 import React, { Component, Children, ReactNode } from 'react';
 import { TabList, Tab, TabPanel, Wrapper } from 'react-aria-tabpanel';
 
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 
 export interface DeprecatedTabsProps {
   config: {
@@ -30,9 +30,7 @@ export class DeprecatedTabs extends Component<
   UNSAFE_componentWillMount() {
     // for unique tab ids (in case there are multiple
     // tab widgets on the page)
-    this.idPrefix = Math.random()
-      .toString()
-      .replace('.', '');
+    this.idPrefix = Math.random().toString().replace('.', '');
   }
 
   createId(index: number) {
@@ -48,17 +46,17 @@ export class DeprecatedTabs extends Component<
       100;
 
     return (
-      <TabList className={s.tabList}>
+      <TabList className={styles.tabList}>
         {this.props.config.map((c, i) => {
           const key = this.createId(i);
           return (
             <Tab
               id={key}
               key={key}
-              className={`${s.tab} ${
+              className={`${styles.tab} ${
                 this.props.animatedUnderlineStyle
-                  ? s.animatedUnderline
-                  : s.traditional
+                  ? styles.animatedUnderline
+                  : styles.traditional
               }`}
               active={key === activeTabId}
             >
@@ -68,7 +66,7 @@ export class DeprecatedTabs extends Component<
         })}
         {this.props.animatedUnderlineStyle && (
           <div
-            className={s.tabIndicator}
+            className={styles.tabIndicator}
             style={{
               left: `${leftPercent}%`,
               width: `${100 / this.props.config.length}%`,
@@ -82,7 +80,7 @@ export class DeprecatedTabs extends Component<
 
   renderTabPanels = (activeTabId: string) => (
     // render all tab panels, but only active tab panel contains anything
-    <div className={s.tabPanelContainer}>
+    <div className={styles.tabPanelContainer}>
       {this.props.config.map((c, i) => {
         const key = this.createId(i);
         const isActive = key === activeTabId;
@@ -91,7 +89,7 @@ export class DeprecatedTabs extends Component<
             tabId={key}
             key={key}
             active={isActive}
-            className={s.tabPanel}
+            className={styles.tabPanel}
           >
             {isActive || this.props.renderAllChildren ? (
               Children.toArray(this.props.children)[i]
@@ -115,8 +113,10 @@ export class DeprecatedTabs extends Component<
     if (this.state.activeTabId) {
       // eslint-disable-next-line prefer-destructuring
       activeTabId = this.state.activeTabId;
-    } else if (this.props.config.findIndex(c => c.default) !== -1) {
-      activeTabId = this.createId(this.props.config.findIndex(c => c.default));
+    } else if (this.props.config.findIndex((c) => c.default) !== -1) {
+      activeTabId = this.createId(
+        this.props.config.findIndex((c) => c.default)
+      );
     } else {
       activeTabId = this.createId(0);
     }
@@ -125,7 +125,7 @@ export class DeprecatedTabs extends Component<
       <Wrapper
         onChange={this.onChange}
         activeTabId={activeTabId}
-        className={s.tabContainer}
+        className={styles.tabContainer}
       >
         {this.renderTabList(activeTabId)}
         {this.renderTabPanels(activeTabId)}
@@ -133,5 +133,3 @@ export class DeprecatedTabs extends Component<
     );
   }
 }
-
-export default DeprecatedTabs;

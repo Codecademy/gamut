@@ -1,11 +1,14 @@
 import React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
+import cx from 'classnames';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 type TruncateProps = {
   /** element for the component */
   as?: 'div' | 'span' | 'p';
+  /** class name for styling */
+  className?: string;
   /** number of the maximum lines to display, pass false to disable truncation */
   lines?: number | false;
   /** Callback indicating if truncation was necessary */
@@ -14,12 +17,15 @@ type TruncateProps = {
 
 export const Truncate: React.FC<TruncateProps> = ({
   as: Element = 'span',
+  className,
   lines,
   children,
   onTruncate,
 }) => {
   /** Truncate markup expects a single child element */
-  const content = <Element className={s.wrapper}>{children}</Element>;
+  const content = (
+    <Element className={cx(styles.wrapper, className)}>{children}</Element>
+  );
 
   /** If lines is false do not attempt to truncate */
   if (!lines) {
@@ -36,5 +42,3 @@ export const Truncate: React.FC<TruncateProps> = ({
     </TruncateMarkup>
   );
 };
-
-export default Truncate;

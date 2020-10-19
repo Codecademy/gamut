@@ -1,0 +1,109 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Markdown, Heading, Text } from '@codecademy/gamut/src';
+import { text, select } from '@storybook/addon-knobs';
+import exampleMarkdown from './markdown-example.md';
+import { customText } from './helpers';
+
+<Meta
+  title="Atoms/Markdown"
+  component={Markdown}
+  parameters={{ knobs: { escapeHTML: false } }}
+/>
+
+# Markdown
+
+<StoryStatus status="stable" />
+
+Markdown renderer for all your markdown needs.
+
+<Canvas>
+  <Story name="Basics">
+    {(args) => (
+      <Markdown
+        text={text(
+          'markdown',
+          `
+## Hello World
+This is markdown
+    `
+        )}
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props of={Markdown} />
+
+## Full example
+
+<Canvas>
+  <Story name="Full Example">
+    {(args) => (
+      <Markdown
+        text={text('markdown', exampleMarkdown)}
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Element Overrides
+
+<Canvas>
+  <Story name="Element Overrides">
+    {(args) => (
+      <Markdown
+        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+        overrides={{
+          CodeBlock: {
+            component: (props) => (
+              <Text style={{ color: 'darkblue' }} {...props} />
+            ),
+          },
+          CustomElement: {
+            component: ({ title }) => {
+              return (
+                <Heading
+                  as="h3"
+                  fontSize="md"
+                  style={{
+                    color: 'rebeccapurple',
+                  }}
+                >
+                  {title}
+                </Heading>
+              );
+            },
+            allowedAttributes: ['title'],
+          },
+        }}
+        text={customText}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Inline Markdown
+
+<Canvas>
+  <Story name="Inline Markdown">
+    {(args) => (
+      <>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+        <Markdown
+          text={text('markdown', '`this is an inline markdown component`')}
+          spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
+          inline
+        />
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+        ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+        qui officia deserunt mollit anim id est laborum.
+      </>
+    )}
+  </Story>
+</Canvas>

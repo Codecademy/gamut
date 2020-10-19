@@ -1,0 +1,70 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text, number } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { Logo } from '@codecademy/gamut-labs/src';
+import { selectableColors } from '../../../../helpers';
+
+<Meta title="Labs/Brand/Atoms/Logo" component={Logo} />
+
+# Logo
+
+<StoryStatus status="stable" />
+
+Our proud logo. There is no a in the middle. Use sparingly, and make sure
+it has a lot of visual distinction to stand out appropriately.
+
+<Canvas withSource="open">
+  <Story name="Logo">
+    {(args) => (
+      <Logo
+        width={number('width', 256)}
+        height={number('height', undefined)}
+        type={select(
+          'type',
+          [
+            'pro',
+            'proAlt',
+            'proLockup',
+            'proMono',
+            'premium',
+            'program',
+            'default',
+          ],
+          'default'
+        )}
+        style={{
+          color: select('color', selectableColors, selectableColors.black),
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Logo" of={Logo} />
+
+Variants of the Codecademy logo you can play around with.
+
+<Canvas>
+  <Story name="Pro">
+    {(args) => <Logo height={256} type="pro" width={256} />}
+  </Story>
+  <Story name="Pro Alt">
+    {(args) => <Logo height={256} type="proAlt" width={256} />}
+  </Story>
+  <Story name="Pro Lockup">
+    {(args) => <Logo height={256} type="proLockup" width={256} />}
+  </Story>
+  <Story name="Pro Mono">
+    {(args) => <Logo height={256} type="proMono" width={256} />}
+  </Story>
+  <Story name="Premium">
+    {(args) => <Logo height={256} type="premium" width={256} />}
+  </Story>
+  <Story name="Program">
+    {(args) => <Logo height={256} type="program" width={256} />}
+  </Story>
+  <Story name="Default">
+    {(args) => <Logo height={256} type="default" width={256} />}
+  </Story>
+</Canvas>

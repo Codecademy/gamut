@@ -1,0 +1,18 @@
+import { Loading } from '@codecademy/gamut-labs/src';
+import { StoryStatus } from '~styleguide/blocks';
+import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta title="Labs/Brand/Atoms/Loading" component={Loading} />
+
+# Loading
+
+<StoryStatus status="stable" />
+
+Our standard-use loading icon. Use this to indicate a major part of the page is
+still coming.
+
+<Canvas withSource="open">
+  <Story name="Loading">{(args) => <Loading />}</Story>
+</Canvas>
+
+<Props story="Loading" of={Loading} />

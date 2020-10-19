@@ -1,0 +1,104 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { StoryStatus } from '~styleguide/blocks';
+import {
+  Text,
+  Heading,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanel,
+} from '@codecademy/gamut/src';
+import { Controlled, Uncontrolled } from './Examples';
+import { number, boolean, text } from '@storybook/addon-knobs';
+
+<Meta
+  title="Molecules/Tabs"
+  component={Tabs}
+  subcomponents={{ TabList, Tab, TabPanel }}
+/>
+
+# Tabs
+
+<StoryStatus status="stable" />
+
+Use a series of tabbed areas for when you have multiple potential sections
+to show, but only one should be visible at a time.
+
+<Canvas>
+  <Story name="Tabs">
+    {(args) => (
+      <Tabs
+        defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
+        onChange={() => {}}
+        renderAllPanels={boolean('Render All panels', false)}
+      >
+        <TabList
+          center={boolean('Centered', false)}
+          maxWidth={text('Max Width', undefined)}
+        >
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 1</Heading>
+          <Text>Hi there! I'm the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 2</Heading>
+          <Text>Hi there! I'm the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 3</Heading>
+          <Text>Hi there! I'm the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </Tabs>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={Tabs} />
+
+## Usage
+
+Here's an example usage of any uncontrolled TabList
+
+## Controlled
+
+When `activeTabIndex` is specified, the component switches to
+being a controlled component. It won't change its own tab state, but will
+instead notify of a request to change using `onChange`.
+
+<Canvas>
+  <Story name="Controlled">
+    {(args) => (
+      <Tabs
+        activeTabIndex={number('Active Tab Index', 0)}
+        onChange={() => {}}
+        renderAllPanels={boolean('Render All Panels', false)}
+      >
+        <TabList
+          center={boolean('Centered', false)}
+          maxWidth={text('Max Width', undefined)}
+        >
+          <Tab>Tab 1</Tab>
+          <Tab>Tab 2</Tab>
+          <Tab>Tab 3</Tab>
+        </TabList>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 2</Heading>
+          <Text>Hi there! I'm the contents inside Tab 2. Yippee!</Text>
+        </TabPanel>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 1</Heading>
+          <Text>Hi there! I'm the contents inside Tab 1. Yippee!</Text>
+        </TabPanel>
+        <TabPanel>
+          <Heading as="h2">Welcome to Tab 3</Heading>
+          <Text>Hi there! I'm the contents inside Tab 3. Yippee!</Text>
+        </TabPanel>
+      </Tabs>
+    )}
+  </Story>
+</Canvas>

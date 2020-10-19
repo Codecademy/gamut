@@ -13,7 +13,7 @@
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
     "lerna": "lerna",
-    "prettier": "prettier --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json,css,scss}\"",
+    "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
     "format:verify": "yarn prettier --list-different",
     "verify-all": "yarn lerna run verify",
@@ -22,17 +22,17 @@
     "start": "yarn && yarn start:storybook",
     "start:storybook": "cd ./packages/styleguide && yarn start",
     "build-storybook": "cd ./packages/styleguide && yarn build-storybook",
-    "deploy": "gh-pages -b gh-pages -d dist"
+    "deploy": "gh-pages -b gh-pages -d dist",
+    "regenerate-changelog": "yarn lerna exec --concurrency 1 --stream -- 'node $LERNA_ROOT_PATH/script/update-changelog'"
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx,json,css,scss}": [
-      "prettier --ignore-path .eslintignore --write",
-      "git add"
+    "**/*.{mdx,js,ts,tsx,json,css,scss}": [
+      "prettier --ignore-path .prettierignore --write"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "workspaces": {
     "packages": [
@@ -43,45 +43,54 @@
     ]
   },
   "dependencies": {
-    "conventional-changelog-conventionalcommits": "^4.2.3",
+    "babel-plugin-react-anonymous-display-name": "^0.0.1",
+    "conventional-changelog-cli": "^2.0.34",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
     "gh-pages": "^2.2.0",
-    "lerna": "3.20.2"
+    "lerna": "3.22.1"
   },
   "devDependencies": {
     "@babel/cli": "7.8.3",
-    "@babel/core": "7.8.3",
-    "@babel/polyfill": "7.8.3",
+    "@babel/core": "7.11.6",
+    "@babel/polyfill": "7.11.5",
     "@babel/preset-typescript": "7.9.0",
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
+    "@testing-library/jest-dom": "^5.7.0",
+    "@testing-library/react": "^11.0.4",
     "@types/chai": "4.1.7",
-    "@types/classnames": "2.2.9",
+    "@types/classnames": "2.2.10",
     "@types/enzyme": "3.10.5",
     "@types/invariant": "2.2.29",
-    "@types/jest": "24.9.0",
-    "@types/lodash": "4.14.123",
+    "@types/jest": "26.0.14",
+    "@types/lodash": "4.14.162",
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "babel-jest": "24.9.0",
+    "babel-plugin-emotion": "10.0.33",
     "babel-plugin-require-context-hook": "1.0.0",
     "babel-preset-codecademy": "2.2.5",
+    "core-js": "3.6.5",
     "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
+    "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.3.5",
-    "eslint": "5.16.0",
-    "husky": "4.0.10",
+    "eslint": "6.5.1",
+    "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-environment-jsdom": "24.9.0",
     "jest-environment-jsdom-global": "1.2.0",
-    "lint-staged": "8.1.5",
+    "lint-staged": "10.4.0",
     "mutationobserver-shim": "^0.3.3",
-    "prettier": "1.19.1",
-    "react": "16.12.0",
-    "react-docgen-typescript-loader": "3.6.0",
-    "react-dom": "16.12.0",
-    "react-test-renderer": "16.12.0",
-    "typescript": "3.8.3"
+    "prettier": "2.1.2",
+    "react": "16.13.1",
+    "react-docgen-typescript-loader": "3.7.2",
+    "react-dom": "16.13.1",
+    "react-test-renderer": "16.13.0",
+    "typescript": "4.0.3"
   },
   "husky": {
+    "skipCI": false,
     "hooks": {
       "pre-commit": "lint-staged"
     }

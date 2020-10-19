@@ -1,9 +1,9 @@
 import React from 'react';
 import { get } from 'lodash';
-import Icon from '../Icon';
+import { Icon } from '../deprecated/Icon';
 import { NotificationIconSettings } from './typings';
-import iconMap from '../Icon/iconMap';
-import s from './styles/NotificationIcon.module.scss';
+import { iconMap } from '../deprecated/Icon/iconMap';
+import styles from './styles/NotificationIcon.module.scss';
 
 const renderIcon = (props: NotificationIconProps) => {
   const { iconSettings, iconSlug, imageUrl } = props;
@@ -18,14 +18,14 @@ const renderIcon = (props: NotificationIconProps) => {
     };
 
     return (
-      <div className={s.iconComponentContainer} style={iconStyle}>
-        <Icon name={iconSlug} className={s.iconImage} />
+      <div className={styles.iconComponentContainer} style={iconStyle}>
+        <Icon name={iconSlug} className={styles.iconImage} />
       </div>
     );
   }
 
   if (imageUrl) {
-    return <img src={imageUrl} className={s.icon} alt="" />;
+    return <img src={imageUrl} className={styles.icon} alt="" />;
   }
 
   return null;
@@ -37,8 +37,6 @@ export type NotificationIconProps = {
   imageUrl?: string;
 };
 
-export const NotificationIcon: React.FC<NotificationIconProps> = props => (
-  <div className={s.iconContainer}>{renderIcon(props)}</div>
+export const NotificationIcon: React.FC<NotificationIconProps> = (props) => (
+  <div className={styles.iconContainer}>{renderIcon(props)}</div>
 );
-
-export default NotificationIcon;

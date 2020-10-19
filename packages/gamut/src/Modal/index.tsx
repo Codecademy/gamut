@@ -2,22 +2,35 @@ import React from 'react';
 import cx from 'classnames';
 import { CloseIcon } from '@codecademy/gamut-icons';
 
-import Button from '../Button';
+import { Button } from '../Button';
 import { CardShell } from '../Card';
-import Overlay from '../Overlay';
+import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
+
+export type ModalOverlayProps = Partial<
+  Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
+>;
 
 export type ModalProps = {
   children?: React.ReactNode;
   className?: string;
   /**
-   * Whether the modal is open or closed
+   * Whether the Modal is open or closed
    */
   isOpen: boolean;
+
   /**
-   * A function that, at minimum, sets the state to close the modal
+   * A function that is called when the Modal expects to be closed
+   * Triggered automatically by the Overlay component in certain situations
    */
-  closeModal?: () => void;
+  onRequestClose: () => void;
+
+  /**
+   * See Overlay component for prop definitions
+   * @description ModalOverlayProps
+   */
+  overlayProps?: ModalOverlayProps;
+
   /**
    * Whether to hide the default close button and pass your own through children
    */
@@ -27,43 +40,43 @@ export type ModalProps = {
 export const Modal: React.FC<ModalProps> = ({
   children,
   className,
-  closeModal,
+  onRequestClose,
+  overlayProps,
   isOpen,
   hideDefaultCloseButton,
 }) => {
   return (
     <Overlay
       isOpen={isOpen}
-      className={cx(styles.modal, className)}
+      {...overlayProps}
+      className={cx(styles.modal, overlayProps?.className)}
+      onRequestClose={onRequestClose}
       data-testid="modal"
     >
-      <div className={styles.modalContainer}>
-        <CardShell className={styles.modalBody}>
-          {!hideDefaultCloseButton && (
-            <div
-              className={styles.closeButtonContainer}
-              data-testid="modal-default-close-button"
+      <CardShell
+        className={cx(styles.modalBody, className)}
+        aria-hidden="false"
+        role="dialog"
+        tabIndex={0}
+      >
+        {!hideDefaultCloseButton && (
+          <div
+            className={styles.closeButtonContainer}
+            data-testid="modal-default-close-button"
+          >
+            <Button
+              flat
+              theme="brand-dark-blue"
+              fitText
+              onClick={onRequestClose}
+              className={styles.closeButton}
             >
-              <Button
-                flat
-                theme="brand-dark-blue"
-                fitText
-                onClick={closeModal && closeModal}
-                className={styles.closeButton}
-              >
-                <CloseIcon
-                  width={22}
-                  height={22}
-                  className={styles.closeIcon}
-                />
-              </Button>
-            </div>
-          )}
-          {children}
-        </CardShell>
-      </div>
+              <CloseIcon width={22} height={22} className={styles.closeIcon} />
+            </Button>
+          </div>
+        )}
+        {children}
+      </CardShell>
     </Overlay>
   );
 };
-
-export default Modal;

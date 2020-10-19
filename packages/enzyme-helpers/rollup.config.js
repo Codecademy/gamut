@@ -1,6 +1,7 @@
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 
+// eslint-disable-next-line import/no-default-export
 export default {
   input: 'src/main.js',
   output: [

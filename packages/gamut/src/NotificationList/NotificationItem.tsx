@@ -1,10 +1,10 @@
 import React from 'react';
 import cx from 'classnames';
 import moment from 'moment';
-import Truncate from '../Truncate';
+import { Truncate } from '../Truncate';
 import { Notification } from './typings';
-import NotificationIcon from './NotificationIcon';
-import s from './styles/Notification.module.scss';
+import { NotificationIcon } from './NotificationIcon';
+import styles from './styles/Notification.module.scss';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
@@ -15,7 +15,7 @@ const formatTime = (notificationDate: string): string => {
   return moment(notificationDate).fromNow();
 };
 
-export const NotificationItem: React.FC<NotificationItemProps> = props => {
+export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
   const { notification, onClick } = props;
   const {
     date,
@@ -27,8 +27,8 @@ export const NotificationItem: React.FC<NotificationItemProps> = props => {
     unread,
   } = notification;
 
-  const notificationClasses = cx(s.notification, {
-    [s.unread]: unread,
+  const notificationClasses = cx(styles.notification, {
+    [styles.unread]: unread,
   });
 
   const [TagName, tagProps] = link
@@ -49,14 +49,12 @@ export const NotificationItem: React.FC<NotificationItemProps> = props => {
         iconSlug={iconSlug}
         imageUrl={imageUrl}
       />
-      <div className={s.body}>
-        <div className={s.text}>
+      <div className={styles.body}>
+        <div className={styles.text}>
           <Truncate lines={3}>{text}</Truncate>
         </div>
-        <div className={s.time}>{formatTime(date)}</div>
+        <div className={styles.time}>{formatTime(date)}</div>
       </div>
     </TagName>
   );
 };
-
-export default NotificationItem;

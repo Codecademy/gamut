@@ -3,7 +3,7 @@ import cx from 'classnames';
 
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
-import s from './styles/Column.module.scss';
+import styles from './styles/Column.module.scss';
 import {
   ResponsiveProperty,
   OptionalResponsiveProperty,
@@ -14,6 +14,8 @@ export type ColumnProps = {
   size: ResponsiveProperty<ColumnSizes>;
   /** The column that this element should start at */
   offset?: OptionalResponsiveProperty<OffsetColumnSizes>;
+  /** The number of rows this element should span */
+  rowspan?: OptionalResponsiveProperty<1 | 2 | 3>;
 } & ContainerElementProps;
 
 export const Column: React.FC<ColumnProps> = ({
@@ -21,12 +23,13 @@ export const Column: React.FC<ColumnProps> = ({
   className,
   size,
   offset,
+  rowspan,
   testId,
 }) => {
   const classNames = cx(
-    s.container,
+    styles.container,
     className,
-    generateResponsiveClassnames({ size, offset }, s)
+    generateResponsiveClassnames({ size, offset, rowspan }, styles)
   );
   return (
     <div className={classNames} data-testid={testId}>
@@ -34,5 +37,3 @@ export const Column: React.FC<ColumnProps> = ({
     </div>
   );
 };
-
-export default Column;

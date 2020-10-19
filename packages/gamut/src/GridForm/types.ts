@@ -1,65 +1,105 @@
-import { FormContextValues, ValidationOptions } from 'react-hook-form';
+import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
 import { ColumnProps } from '../Layout/Column';
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;
+
+  /**
+   * Whether the label should be hidden visually and not take up space.
+   */
+  hideLabel?: boolean;
+
+  /**
+   * HTML id to use instead of the name.
+   */
+  id?: string;
+
   name: string;
   onUpdate?: (value: Value) => void;
-  size?: ColumnProps['size'];
+  size: ColumnProps['size'];
 };
 
 export type GridFormCheckboxField = BaseFormField<boolean> & {
-  description: string;
-  label?: string;
-  validation?: Pick<ValidationOptions, 'required'>;
+  description: React.ReactNode;
+  label?: React.ReactNode;
+  multiline?: boolean;
+  validation?: ValidationRules;
   type: 'checkbox';
 };
 
 export type GridFormCustomFieldProps = {
-  className: string;
+  className?: string;
   error?: string;
   field: GridFormCustomField;
-  register: FormContextValues['register'];
+  register: UseFormMethods['register'];
   setValue: (value: any) => void;
 };
 
 export type GridFormCustomField = BaseFormField<any> & {
-  label?: string;
+  label?: React.ReactNode;
   render: (props: GridFormCustomFieldProps) => React.ReactNode;
-  validation?: ValidationOptions;
+  validation?: ValidationRules;
   type: 'custom';
 };
 
+export type BasicInputType =
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'month'
+  | 'number'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 export type GridFormTextField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   placeholder?: string;
-  validation?: ValidationOptions;
-  type: 'text' | 'email';
+  validation?: ValidationRules;
+  type: BasicInputType;
+};
+
+export type GridFormRadioOption = {
+  label: string;
+  value: string;
+};
+
+export type GridFormRadioGroupField = BaseFormField<string> & {
+  label: React.ReactNode;
+  options: GridFormRadioOption[];
+  validation?: ValidationRules;
+  type: 'radio-group';
 };
 
 export type GridFormSelectField = BaseFormField<string> & {
-  label: string;
+  label: React.ReactNode;
   options: string[] | Record<string, number | string>;
-  validation?: Pick<ValidationOptions, 'required'>;
+  validation?: ValidationRules;
   type: 'select';
 };
 
 export type GridFormFileField = BaseFormField<FileList> & {
-  label: string;
-  validation?: ValidationOptions;
+  label: React.ReactNode;
+  validation?: ValidationRules;
   type: 'file';
 };
 
 export type GridFormTextAreaField = BaseFormField<string> & {
-  label: string;
-  validation?: ValidationOptions;
+  label: React.ReactNode;
+  validation?: ValidationRules;
   type: 'textarea';
 };
 
 export type GridFormField =
   | GridFormCheckboxField
   | GridFormCustomField
+  | GridFormRadioGroupField
   | GridFormTextField
   | GridFormSelectField
   | GridFormFileField

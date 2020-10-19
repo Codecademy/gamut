@@ -1,0 +1,52 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select } from '@storybook/addon-knobs';
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+import { StoryStatus } from '~styleguide/blocks';
+import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
+
+<Meta
+  title="Atoms/ToolTip"
+  component={ToolTip}
+  subcomponents={{ ToolTipPosition }}
+/>
+
+# ToolTip
+
+<StoryStatus status="stable" />
+
+Small piece of extra information triggered on the focus or hover of a button or icon,
+such as extra requirements for a form surfaced from an informative (i) icon. They
+dissapear when the focus or hover are no longer active.
+
+Tooltips cannot contain clickable elements (if your solution
+requires clickable elements, we suggest using a “Popover” instead) - Great for
+surfacing additional information that may or may not be relevant _without_ cluttering
+the core interface.
+
+<Canvas>
+  <Story name="ToolTip">
+    {(args) => (
+      <ToolTip
+        focusable
+        id="tooltip"
+        target={<InfoCircleIcon size={20} />}
+        position={select(
+          'Position',
+          [
+            ToolTipPosition.TopLeft,
+            ToolTipPosition.TopRight,
+            ToolTipPosition.BottomRight,
+            ToolTipPosition.BottomLeft,
+          ],
+          ToolTipPosition.BottomRight
+        )}
+      >
+        Like the term fortnight, a term for a two week period, antantwig refers
+        to a three week period.
+      </ToolTip>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={ToolTip} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 
 const propKeys = [
@@ -40,7 +40,7 @@ function getClassNames(props: ColProps) {
   }
 
   return (Object.keys(props) as (keyof typeof classMap & keyof typeof props)[])
-    .filter(key => classMap[key])
+    .filter((key) => classMap[key])
     .map(
       (key: keyof typeof classMap) =>
         style[
@@ -54,23 +54,32 @@ function getClassNames(props: ColProps) {
 }
 
 export type ColSizing = {
+  /** Size of the column on screen sizes greater than `xs` */
   xs?: boolean | number;
+  /** Size of the column on screen sizes greater than `sm` */
   sm?: boolean | number;
+  /** Size of the column on screen sizes greater than `md` */
   md?: boolean | number;
+  /** Size of the column on screen sizes greater than `lg` */
   lg?: boolean | number;
+  /** Offset of the column on screen sizes greater than `xs` */
   xsOffset?: number;
+  /** Offset of the column on screen sizes greater than `sm` */
   smOffset?: number;
+  /** Offset of the column on screen sizes greater than `md` */
   mdOffset?: number;
+  /** Offset of the column on screen sizes greater than `lg` */
   lgOffset?: number;
 };
 
 export type ColProps = ColSizing & {
   tagName?: string;
   className?: string;
+  /** Reverses the column's flex-direction */
   reverse?: boolean;
 };
 
-export const Col: React.FC<ColProps> = props => {
+export const Col: React.FC<ColProps> = (props) => {
   const className = getClassNames(props);
 
   return React.createElement(
@@ -78,5 +87,3 @@ export const Col: React.FC<ColProps> = props => {
     omitProps(propKeys, { ...props, className })
   );
 };
-
-export default Col;

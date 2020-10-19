@@ -1,7 +1,7 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 import cx from 'classnames';
 
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export type TabPanelProps = {
   active?: boolean;
@@ -20,16 +20,15 @@ export const TabPanel: FunctionComponent<TabPanelProps> = ({
 }) => (
   <div
     id={id}
-    aria-labelledby={id.replace('-panel', '')}
+    // id should be passed by the TabList - confusing, but workable.
+    aria-labelledby={id!.replace('-panel', '')}
     aria-hidden={!active}
     role="tabpanel"
     className={cx(className, {
-      [s.active]: active,
-      [s.hidden]: !active,
+      [styles.active]: active,
+      [styles.hidden]: !active,
     })}
   >
     {active || renderAllPanels ? children : null}
   </div>
 );
-
-export default TabPanel;

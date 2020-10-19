@@ -3,15 +3,16 @@ import React from 'react';
 
 import {
   stubFileField,
+  stubRadioGroupField,
   stubSelectField,
   stubTextField,
   stubTextareaField,
   stubCheckboxField,
 } from '../../__tests__/stubs';
-import GridFormInputGroup, { GridFormInputGroupProps } from '..';
+import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 
 const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
-  const props = {
+  const props: GridFormInputGroupProps = {
     field: stubSelectField,
     setValue: jest.fn(),
     register: jest.fn(),
@@ -34,10 +35,10 @@ describe('GridFormInputGroup', () => {
 
   it('renders a checkbox input when the field type is checkbox', () => {
     const { wrapped } = renderComponent({
-      field: stubCheckboxField,
+      field: { ...stubCheckboxField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="checkbox"]')).toHaveLength(1);
+    expect(wrapped.find('input[type="checkbox"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a custom input when the field type is custom', () => {
@@ -46,6 +47,7 @@ describe('GridFormInputGroup', () => {
       field: {
         render: () => text,
         name: 'stub-custom',
+        size: 6,
         type: 'custom',
       },
     });
@@ -53,36 +55,45 @@ describe('GridFormInputGroup', () => {
     expect(wrapped.text()).toEqual(text);
   });
 
-  it('renders a select when the field type is select', () => {
+  it('renders a radio group when the field type is radio-group', () => {
     const { wrapped } = renderComponent({
-      field: stubSelectField,
+      field: { ...stubRadioGroupField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('select')).toHaveLength(1);
+    expect(wrapped.find('input[type="radio"]')).toHaveLength(2);
+    expect(wrapped.find('input#stub-radio-group-0-mycoolid')).toHaveLength(1);
+  });
+
+  it('renders a select when the field type is select', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubSelectField, id: 'mycoolid' },
+    });
+
+    expect(wrapped.find('select#mycoolid')).toHaveLength(1);
   });
 
   it('renders a text input when the field type is text', () => {
     const { wrapped } = renderComponent({
-      field: stubTextField,
+      field: { ...stubTextField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="text"]')).toHaveLength(1);
+    expect(wrapped.find('input[type="text"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a file input when the field type is file', () => {
     const { wrapped } = renderComponent({
-      field: stubFileField,
+      field: { ...stubFileField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('input[type="file"]')).toHaveLength(1);
+    expect(wrapped.find('input[type="file"]#mycoolid')).toHaveLength(1);
   });
 
   it('renders a textarea when the field type is textarea', () => {
     const { wrapped } = renderComponent({
-      field: stubTextareaField,
+      field: { ...stubTextareaField, id: 'mycoolid' },
     });
 
-    expect(wrapped.find('textarea')).toHaveLength(1);
+    expect(wrapped.find('textarea#mycoolid')).toHaveLength(1);
   });
 
   it('invokes onUpdate when the field type is text and it gets changed', () => {
@@ -100,7 +111,7 @@ describe('GridFormInputGroup', () => {
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
   });
 
-  it('invokes onUpdate when the field type is textera and it gets changed', () => {
+  it('invokes onUpdate when the field type is textarea and it gets changed', () => {
     const onUpdateSpy = jest.fn();
     const newVal = 'foo';
 
@@ -154,5 +165,23 @@ describe('GridFormInputGroup', () => {
       .simulate('change', { target: { files: newVal } });
 
     expect(onUpdateSpy).toHaveBeenCalledWith(newVal);
+  });
+
+  it('sets aria-live to assertive if isFirstError flag is on', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: true,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('assertive');
+  });
+
+  it('sets aria-live to off if isFirstError flag is off', () => {
+    const { wrapped } = renderComponent({
+      field: { ...stubRadioGroupField, id: 'mycoolid', size: 6 },
+      error: 'It broke',
+      isFirstError: false,
+    });
+    expect(wrapped.find('span').prop('aria-live')).toEqual('off');
   });
 });

@@ -1,8 +1,8 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
+import React, { ReactNode, InputHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/Radio.module.scss';
+import styles from './styles/Radio.module.scss';
 
-export type RadioProps = HTMLAttributes<HTMLInputElement> & {
+export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   checked?: boolean;
   disabled?: boolean;
   htmlFor?: string;
@@ -16,38 +16,46 @@ export type RadioProps = HTMLAttributes<HTMLInputElement> & {
   readOnly?: boolean;
 };
 
-export const Radio: React.FC<RadioProps> = ({
-  name,
-  value,
-  label,
-  checked,
-  className,
-  disabled,
-  htmlFor,
-  onChange,
-  required,
-  ...rest
-}) => {
-  const classNames = cx(s.Radio, className);
-  return (
-    <div className={classNames}>
-      <input
-        className={s.radioInput}
-        id={htmlFor}
-        name={name}
-        required={required}
-        type="radio"
-        checked={checked}
-        disabled={disabled}
-        onChange={onChange}
-        value={value}
-        {...rest}
-      />
-      <label htmlFor={htmlFor} className={s.radioLabel}>
-        {label}
-      </label>
-    </div>
-  );
-};
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+  (
+    {
+      name,
+      value,
+      label,
+      checked,
+      className,
+      disabled,
+      htmlFor,
+      onChange,
+      required,
+      id,
+      ...rest
+    },
+    ref
+  ) => {
+    const classNames = cx(styles.Radio, className);
 
-export default Radio;
+    const inputId = id ? `${htmlFor}-${id}` : htmlFor;
+
+    return (
+      <div className={classNames}>
+        <input
+          className={styles.radioInput}
+          id={inputId}
+          name={name}
+          required={required}
+          type="radio"
+          checked={checked}
+          disabled={disabled}
+          onChange={onChange}
+          ref={ref}
+          value={value}
+          {...rest}
+        />
+        <label htmlFor={htmlFor} className={styles.radioLabel}>
+          {label}
+        </label>
+      </div>
+    );
+  }
+);

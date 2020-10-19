@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/FormGroupLabel.module.scss';
+import styles from './styles/FormGroupLabel.module.scss';
 
 export type FormGroupLabelProps = FormGroupLabelPropsWithFor &
   FormGroupLabelPropsPlain;
@@ -19,7 +19,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   className,
   ...rest
 }) => {
-  const classNames = cx(s.FormGroupLabel, className);
+  const classNames = cx(styles.FormGroupLabel, className);
 
   if (htmlFor) {
     return <label {...rest} htmlFor={htmlFor} className={classNames} />;
@@ -27,5 +27,3 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
 
   return <div {...rest} className={classNames} />;
 };
-
-export default FormGroupLabel;

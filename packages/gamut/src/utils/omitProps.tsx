@@ -25,12 +25,10 @@ export function omitProps<TOmittedProps extends {}, TProps extends {}>(
   );
 
   // allow all data-* props, mainly used for testing libraries
-  const dataProps = propsToOmit.filter(p => p.match(/^data-.*/));
+  const dataProps = propsToOmit.filter((p) => p.match(/^data-.*/));
 
   return omit(
     (props as unknown) as AnyKindOfDictionary,
     without(propsToOmit, 'children', 'className', ...dataProps)
   ) as RemoveFrom<TOmittedProps, TProps>;
 }
-
-export default omitProps;

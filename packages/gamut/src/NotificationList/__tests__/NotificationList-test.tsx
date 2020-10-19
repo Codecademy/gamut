@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NotificationList from '..';
-import Notification from '../NotificationItem';
+import { NotificationList } from '..';
+import { NotificationItem } from '../NotificationItem';
 
 const notifications = [
   {
@@ -53,16 +53,16 @@ describe('NotificationList', () => {
 
   it('renders up to five notifications', () => {
     const wrapper = shallow(<NotificationList notifications={notifications} />);
-    expect(wrapper.find(Notification).length).toEqual(5);
+    expect(wrapper.find(NotificationItem).length).toEqual(5);
   });
 
   it('renders the most recent notifications first', () => {
     const wrapper = shallow(<NotificationList notifications={notifications} />);
-    const renderedNotifications = wrapper.find(Notification);
+    const renderedNotifications = wrapper.find(NotificationItem);
 
     const expectedIds = ['6', '5', '4', '3', '2'];
     const receivedIds = renderedNotifications.map(
-      notifComponent => notifComponent.prop('notification').id
+      (notifComponent) => notifComponent.prop('notification').id
     );
 
     expect(receivedIds).toEqual(expectedIds);
@@ -81,10 +81,7 @@ describe('NotificationList', () => {
       <NotificationList notifications={[unreadNotification]} />
     );
     expect(
-      wrapper
-        .find(Notification)
-        .first()
-        .prop('notification').unread
+      wrapper.find(NotificationItem).first().prop('notification').unread
     ).toEqual(true);
   });
 
@@ -97,10 +94,7 @@ describe('NotificationList', () => {
       />
     );
 
-    wrapper
-      .find(Notification)
-      .first()
-      .simulate('click');
+    wrapper.find(NotificationItem).first().simulate('click');
     expect(mockCallBack.mock.calls.length).toEqual(1);
     expect(mockCallBack.mock.calls[0][0]).toStrictEqual(notifications[0]);
   });

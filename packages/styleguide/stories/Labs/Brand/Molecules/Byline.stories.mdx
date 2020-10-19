@@ -1,0 +1,29 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { Byline } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Brand/Molecules/Byline" component={Byline} />
+
+# Byline
+
+<StoryStatus status="stable" />
+
+Marketing display of a person's information, such as for a testimonial.
+Commonly paired with an `Avatar`.
+
+<Canvas withSource="open">
+  <Story name="Byline">
+    {(args) => (
+      <Byline
+        firstName={text('First Name', 'Bill')}
+        lastName={text('Last Name', 'Murray')}
+        occupation={text('Occupation', 'Ghostbuster @ Ghostcademy')}
+        location={text('Location', 'New York, NY', '')}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Byline" of={Byline} />

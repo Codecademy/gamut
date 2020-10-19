@@ -1,0 +1,28 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { Quote } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Brand/Atoms/Quote" component={Quote} />
+
+# Quote
+
+<StoryStatus status="stable" />
+
+Emphasized text intended to be a direct quote, such as from a learner.
+Often with an `Avatar` or `Testimonial`.
+
+<Canvas withSource="open">
+  <Story name="Quote">
+    {(args) => (
+      <Quote
+        text={text(
+          'Text',
+          'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
+        )}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="Quote" of={Quote} />

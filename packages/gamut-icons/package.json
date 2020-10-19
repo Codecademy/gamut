@@ -1,14 +1,14 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "2.3.0",
+  "version": "3.9.1",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "format": "svgo -f ./src --pretty --config=.svgo.yml",
+    "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
     "build:icons": "rm -rf ./src/icons && svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
     "build:types": "tsc --emitDeclarationOnly",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
@@ -18,12 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
   },
   "license": "MIT",
   "devDependencies": {
-    "@svgr/cli": "5.3.1",
+    "@svgr/cli": "5.4.0",
     "svgo": "^1.3.2",
     "typescript": "*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

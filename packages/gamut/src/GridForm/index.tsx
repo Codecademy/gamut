@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { useForm, FieldError } from 'react-hook-form';
+import React from 'react';
+import { useForm, FieldError, Mode, SubmitHandler } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';
-import GridFormInputGroup from './GridFormInputGroup';
-import GridFormSubmit, { GridFormSubmitProps } from './GridFormSubmit';
+import { GridFormInputGroup } from './GridFormInputGroup';
+import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
 import { GridFormField } from './types';
 
 export * from './types';
@@ -19,14 +19,14 @@ export type GridFormProps<Values extends {}> = {
   columnGap?: LayoutGridProps['columnGap'];
 
   /**
-   * Descriptions of the fields comprising the form.
+   * Descriptions of any fields comprising the form.
    */
-  fields: GridFormField[];
+  fields?: GridFormField[];
 
   /**
    * Function called with field values on submit, if all validations have passed.
    */
-  onSubmit: (values: Values) => Promise<void>;
+  onSubmit: SubmitHandler<Values>;
 
   /**
    * Layout grid row gap override.
@@ -36,7 +36,19 @@ export type GridFormProps<Values extends {}> = {
   /**
    * Description of the submit button at the end of the form.
    */
-  submit: GridFormSubmitProps;
+  submit: GridFormSubmitProps & {
+    /**
+     * Manually overrides the submit button to be disabled regardless of validation, if true.
+     */
+    disabled?: boolean;
+  };
+
+  /**
+   * Which react hook form mode we are going to use for validation.
+   * If you use the onChange mode the submit button will be disabled until all
+   * required fields are completed.
+   */
+  validation?: Exclude<Mode, 'onBlur'>;
 };
 
 export function GridForm<
@@ -45,36 +57,44 @@ export function GridForm<
   children,
   className,
   columnGap = 'lg',
-  fields,
+  fields = [],
   onSubmit,
   rowGap = 'md',
   submit,
+  validation = 'onSubmit',
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue } = useForm<Values>({
-    defaultValues: fields.reduce(
+  const { errors, handleSubmit, register, setValue, formState } = useForm<
+    Values
+  >({
+    defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
         [field.name]: field.defaultValue,
       }),
       {}
     ),
+    mode: validation,
   });
 
-  useEffect(() => {
-    for (const field of fields) {
-      register({ name: field.name });
-    }
-  }, [fields, register]);
+  /**
+   * Keep track of the first error in this form.
+   * This is so we only add the correct aria-live props on the first error.
+   */
+  let pastFirstError = false;
 
   return (
-    <Form className={className} onSubmit={handleSubmit(onSubmit)}>
+    <Form className={className} onSubmit={handleSubmit(onSubmit)} noValidate>
       <LayoutGrid columnGap={columnGap} rowGap={rowGap}>
-        {fields.map(field => {
+        {fields.map((field) => {
           const errorMessage = (errors[field.name] as FieldError)?.message;
+
+          const isFirstError = !pastFirstError && errorMessage !== undefined;
+          pastFirstError = pastFirstError || isFirstError;
 
           return (
             <GridFormInputGroup
               error={errorMessage as string}
+              isFirstError={isFirstError}
               field={field}
               key={field.name}
               register={register}
@@ -82,11 +102,14 @@ export function GridForm<
             />
           );
         })}
-        <GridFormSubmit {...submit} />
+        <GridFormSubmit
+          {...submit}
+          disabled={
+            (validation === 'onChange' && !formState.isValid) || submit.disabled
+          }
+        />
         {children}
       </LayoutGrid>
     </Form>
   );
 }
-
-export default GridForm;

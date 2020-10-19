@@ -1,0 +1,46 @@
+import {
+  Meta,
+  Props,
+  IconGallery,
+  IconItem,
+} from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { IkonaIcon } from '@codecademy/gamut/src/deprecated';
+import iconStyles from '@codecademy/gamut/src/deprecated/IkonaIcon/styles/index.module.scss';
+
+<Meta title="Deprecated/Atoms/IkonaIcon" component={IkonaIcon} />
+
+# IkonaIcon
+
+<StoryStatus status="deprecated" />
+
+Very old legacy icons as defined in the `@codecademy/gamut/src` package&apos;s `IkonaIcon` export.
+
+Please use non-deprecated `Icon`s from the `@codecademy/gamut-icons` package instead.
+
+<Props of={IkonaIcon} />
+
+## Usage
+
+In order to use this component you will need to import it from a specific deprecated path. Since we want
+to limit usage of this component going forward we have added eslint rules that will prevent you from
+importing.
+
+```tsx
+import { IkonaIcon } from '@codecademy/gamut/dist/deprecated';
+
+const MyComponent = () => <IkonaIcon name="close" />;
+```
+
+## All Icons
+
+<IconGallery>
+  {Object.keys(iconStyles)
+    .filter((cn) => cn.match('ikona-'))
+    .map((cn) => cn.replace('ikona-', ''))
+    .map((iconName) => (
+      <IconItem key={iconName} name={iconName}>
+        <IkonaIcon key={iconName} name={iconName} size={2} />
+      </IconItem>
+    ))}
+</IconGallery>

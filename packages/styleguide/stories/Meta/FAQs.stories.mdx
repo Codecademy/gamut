@@ -43,9 +43,9 @@ As general rules of thumb:
 
 2. If a component is being used for a third time or more, please discuss moving it to Gamut
 
-### Brand or Core?
+### Labs or Core?
 
-The "Brand" components section contains two types of components:
+The "Labs" components section contains two types of components:
 
 - Brand-specific ones that we want shared but are too specific for the general design system, such as logos or headers
 - "Experimental" components that are already shared across our site but are new and relatively use-case-specific, such as marketing-style testimonials
@@ -53,16 +53,6 @@ The "Brand" components section contains two types of components:
 Components in this system might "graduate" to the core design system over time.
 They might also be discarded if our design team moves away from using them.
 Until either, they're treated as experimental and don't always respect semver.
-
-## `style` or `theme`?
-
-Most components that have configurable themes use one of two APIs:
-
-- `style`: Allowing one or more colors to be passed as values from their parent, such as `ProgressBar`
-- `theme`: A pre-configured list of allowed colors, such as `Button`
-
-We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
-As we learn more and restrict component usage over time, we might switch to `theme`.
 
 ## What's Going On With Accessibility?
 

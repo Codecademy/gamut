@@ -1,6 +1,6 @@
 import insane from 'insane';
 
-const defaultSanitizationConfig = {
+export const defaultSanitizationConfig = {
   allowedAttributes: {
     ...insane.defaults.allowedAttributes,
     span: ['class'],
@@ -35,5 +35,3 @@ const defaultSanitizationConfig = {
     'codeblock',
   ],
 };
-
-export default defaultSanitizationConfig;

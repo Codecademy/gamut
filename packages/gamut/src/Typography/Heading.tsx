@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 
-import s from './styles/Heading.module.scss';
+import styles from './styles/Heading.module.scss';
 import { ContainerElementProps } from '../Layout/types';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
@@ -33,11 +33,11 @@ export const Heading: React.FC<HeadingProps> = ({
   return (
     <Element
       className={cx(
-        s.heading,
+        styles.heading,
         className,
-        generateResponsiveClassnames({ fontSize }, s),
+        generateResponsiveClassnames({ fontSize }, styles),
         {
-          [s.hideMargin]: hideMargin,
+          [styles.hideMargin]: hideMargin,
         }
       )}
       data-testid={testId}
@@ -47,5 +47,3 @@ export const Heading: React.FC<HeadingProps> = ({
     </Element>
   );
 };
-
-export default Heading;

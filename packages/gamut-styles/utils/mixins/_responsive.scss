@@ -28,6 +28,12 @@
   }
 }
 
+@mixin xl-viewport {
+  @media only screen and (min-width: $grid-xl-min) {
+    @content;
+  }
+}
+
 // Media query abstractions if you need more complex responsive behavior
 // or custom breakpoints
 
@@ -52,6 +58,11 @@
 // Named view port mixin
 
 @mixin getViewport($viewport) {
+  @if $viewport == "xl" {
+    @include xl-viewport() {
+      @content;
+    }
+  }
   @if $viewport == "lg" {
     @include lg-viewport {
       @content;

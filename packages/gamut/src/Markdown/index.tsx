@@ -3,27 +3,27 @@ import cx from 'classnames';
 import marked from 'marked';
 import insane from 'insane';
 import HtmlToReact from 'html-to-react';
-import omitProps from '../utils/omitProps';
+import { omitProps } from '../utils/omitProps';
 import {
   createTagOverride,
   createCodeBlockOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
-import defaultSanitizationConfig from './libs/sanitizationConfig';
+import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import { createPreprocessingInstructions } from './libs/preprocessing';
-import s from './styles/index.module.scss';
-import Iframe from './libs/overrides/Iframe';
-import Anchor from './libs/overrides/Anchor';
-import Table from './libs/overrides/Table';
+import styles from './styles/index.module.scss';
+import { Iframe } from './libs/overrides/Iframe';
+import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
+import { Table } from './libs/overrides/Table';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
 
-const preprocessingInstructions = createPreprocessingInstructions(s);
+const preprocessingInstructions = createPreprocessingInstructions(styles);
 
-const isValidNode = function() {
+const isValidNode = function () {
   return true;
 };
 
@@ -55,12 +55,12 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     if (!text) return null;
 
-    const spacingStyles = s[`spacing-${spacing}`];
+    const spacingStyles = styles[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 
     const Wrapper = inline ? 'span' : 'div';
 
-    const overrides = Object.keys(userOverrides).map(tagName => {
+    const overrides = Object.keys(userOverrides).map((tagName) => {
       if (tagName === 'CodeBlock') {
         return createCodeBlockOverride(tagName, userOverrides[tagName]);
       }
@@ -74,11 +74,11 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: Anchor,
+          component: MarkdownAnchor,
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
-          component: props => (
+          component: (props) => (
             <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
           ),
           allowedAttributes: ['style'],
@@ -100,7 +100,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       ...defaultSanitizationConfig,
       allowedTags: [
         ...defaultSanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(tagName => tagName.toLowerCase()),
+        ...Object.keys(userOverrides).map((tagName) => tagName.toLowerCase()),
       ],
       allowedAttributes: {
         ...defaultSanitizationConfig.allowedAttributes,
@@ -109,7 +109,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
             ...acc,
             [tagName.toLowerCase()]: (
               userOverrides[tagName].allowedAttributes || []
-            ).map(attr => attr.toLowerCase()),
+            ).map((attr) => attr.toLowerCase()),
           };
         }, {}),
       },
@@ -135,5 +135,3 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
-
-export default Markdown;

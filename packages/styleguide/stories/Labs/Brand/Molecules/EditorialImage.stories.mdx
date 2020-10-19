@@ -1,0 +1,30 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { EditorialImage } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Brand/Molecules/EditorialImage" component={EditorialImage} />
+
+# EditorialImage
+
+<StoryStatus status="stable" />
+
+An image used for editorial pages with an optional caption.
+
+<Canvas withSource="open" className="dark">
+  <Story name="EditorialImage">
+    {(args) => (
+      <EditorialImage
+        image={text(
+          'Image URL',
+          'https://images.ctfassets.net/go6kr6r0ykrq/4NI4czS6Y3DeaBBlVAoPTL/5a95deb01518e0cbb27bac8c6e00eaf6/broadway_2_70.jpg'
+        )}
+        alt={text('Alt text', 'A picture of two Codecademy employees.')}
+        caption={text('Optional caption', 'You can remove this caption.')}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="EditorialImage" of={EditorialImage} />

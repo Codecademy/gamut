@@ -1,19 +1,30 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "3.1.0",
+  "version": "7.0.3",
   "author": "Jake Hiller <jake@codecademy.com>",
-  "main": "utils.scss",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
-    "develop-core": "npx node-sass core/index.scss demo-styles/index.css; npx http-server"
+    "build:clean": "rm -rf ./dist",
+    "build:compile": "tsc",
+    "build": "yarn build:clean && yarn build:compile",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:RyzacInc/client-modules.git"
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "@emotion/core": ">=10.0.0",
+    "@emotion/styled": ">=10.0.0"
+  },
+  "devDependencies": {
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27"
   },
   "license": "MIT",
-  "devDependencies": {
-    "http-server": "0.11.1",
-    "node-sass": "4.13.0"
+  "publishConfig": {
+    "access": "public"
   }
 }

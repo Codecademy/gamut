@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import React, { HTMLAttributes, FunctionComponent } from 'react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 
 export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   src?: string;
@@ -9,8 +9,14 @@ export interface IframeProps extends HTMLAttributes<HTMLIFrameElement> {
   height?: number;
 }
 
-const Iframe: FunctionComponent<IframeProps> = props => {
-  if (props.src && props.src.match(/youtu(be\.com|\.be)/)) {
+const YOUTUBE_PATTERN = /youtu(be\.com|\.be)/;
+const VIMEO_PATTERN = /player\.vimeo\.com/;
+
+export const Iframe: FunctionComponent<IframeProps> = (props) => {
+  if (
+    props.src &&
+    [YOUTUBE_PATTERN, VIMEO_PATTERN].some((pattern) => pattern.test(props.src!))
+  ) {
     const { width = 16, height = 9 } = props;
     const ratioPadding = (
       (Math.round(height) / Math.round(width)) *
@@ -21,7 +27,7 @@ const Iframe: FunctionComponent<IframeProps> = props => {
     };
     return (
       <div
-        className={s.youtubeVideoWrapper}
+        className={styles.youtubeVideoWrapper}
         data-testid="yt-iframe"
         style={wrapperStyles}
       >
@@ -31,5 +37,3 @@ const Iframe: FunctionComponent<IframeProps> = props => {
   }
   return <iframe {...props} />;
 };
-
-export default Iframe;

@@ -1,0 +1,40 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { FormGroupDescription, FormGroupLabel } from '@codecademy/gamut/src';
+
+<Meta
+  title="Atoms/Form Decorations"
+  subcomponents={{ FormGroupLabel, FormGroupDescription }}
+/>
+
+# Form Decorations
+
+<StoryStatus status="stable" />
+
+Ancillary descriptions for input atoms tied 1:1 with values to
+be submitted in a form.
+
+You should generally never use these directly as a Gamut consumer;
+instead, use `GridForm` to auto-generate these for you.
+
+<Props of={FormGroupDescription} />
+
+## FormGroupDescription
+
+<Canvas>
+  <Story name="FormGroupDescription">
+    {(args) => (
+      <FormGroupDescription>
+        Secure, unique password for your account.
+      </FormGroupDescription>
+    )}
+  </Story>
+</Canvas>
+
+## FormGroupLabel
+
+<Canvas>
+  <Story name="FormGroupLabel">
+    {(args) => <FormGroupLabel>Password</FormGroupLabel>}
+  </Story>
+</Canvas>

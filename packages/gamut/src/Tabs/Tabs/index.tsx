@@ -1,7 +1,7 @@
 import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
-import TabPanel from '../TabPanel';
-import TabList from '../TabList';
+import { TabPanel } from '../TabPanel';
+import { TabList } from '../TabList';
 
 export interface TabsProps {
   /**
@@ -45,9 +45,7 @@ export class Tabs extends Component<TabsProps> {
     }
   }
 
-  idPrefix = Math.random()
-    .toString()
-    .replace('.', '');
+  idPrefix = Math.random().toString().replace('.', '');
 
   createBaseId = (index: number) => `${this.idPrefix}-${index}`;
 
@@ -75,13 +73,13 @@ export class Tabs extends Component<TabsProps> {
     const childrenArray = React.Children.toArray(
       this.props.children
     ) as ReactElement[];
-    let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
+    let clonedTabPanels = childrenArray.filter((c) => c.type === TabPanel);
 
-    if (activeTabIndex >= clonedTabPanels.length) {
+    if (activeTabIndex! >= clonedTabPanels.length) {
       activeTabIndex = clonedTabPanels.length - 1;
     }
 
-    const tabListChild = childrenArray.find(c => c.type === TabList);
+    const tabListChild = childrenArray.find((c) => c.type === TabList)!;
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
       onChange,
@@ -98,12 +96,10 @@ export class Tabs extends Component<TabsProps> {
     );
 
     return (
-      <div>
+      <div className={this.props.className}>
         {clonedTabList}
         {clonedTabPanels}
       </div>
     );
   }
 }
-
-export default Tabs;

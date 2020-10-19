@@ -1,0 +1,55 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { Banner, BannerStyle } from '@codecademy/gamut/src';
+import { AlertIcon } from '@codecademy/gamut-icons';
+import { action } from '@storybook/addon-actions';
+
+import { StoryStatus } from '~styleguide/blocks';
+
+<Meta title={'Molecules/Banner'} component={Banner} />
+
+# Banner
+
+<StoryStatus status="volatile" />
+
+Full-width banner to indicate important messaging at the top of a page or section.
+
+<Canvas>
+  <Story name="Banner">
+    {(args) => (
+      <Banner onClose={action('Banner closed.')}>Some Banner content!</Banner>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={Banner} />
+
+## Full-Width Icon
+
+An informative icon can be added to the left of the banner.
+
+<Canvas>
+  <Story name="Icon Banner">
+    {(args) => (
+      <Banner icon={<AlertIcon />} onClose={action('Banner closed.')}>
+        Some Banner content!
+      </Banner>
+    )}
+  </Story>
+</Canvas>
+
+## Bordered
+
+If your banner is on above similar content (?), add a BannerStyle to it.
+
+<Canvas>
+  <Story name="Bordered">
+    {(args) => (
+      <Banner
+        displayStyle={BannerStyle.BorderBottom}
+        onClose={action('Banner closed.')}
+      >
+        Some Banner content!
+      </Banner>
+    )}
+  </Story>
+</Canvas>

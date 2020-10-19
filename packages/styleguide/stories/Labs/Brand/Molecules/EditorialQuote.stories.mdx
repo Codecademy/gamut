@@ -1,0 +1,28 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { EditorialQuote } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Brand/Molecules/EditorialQuote" component={EditorialQuote} />
+
+# EditorialQuote
+
+<StoryStatus status="stable" />
+
+A pull quote for use in an editorial page.
+
+<Canvas withSource="open" className="dark">
+  <Story name="EditorialQuote">
+    {(args) => (
+      <EditorialQuote
+        quote={text(
+          'Quote',
+          'In an interstellar burst, I am back to save the universe.'
+        )}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props story="EditorialQuote" of={EditorialQuote} />

@@ -4,7 +4,10 @@ module.exports = {
     __DEV__: true,
   },
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],
+  setupFilesAfterEnv: [
+    '<rootDir>/script/jest/rtl-setup.ts',
+    '<rootDir>/node_modules/jest-enzyme/lib/index.js',
+  ],
   moduleFileExtensions: [
     'js',
     'json',
@@ -20,6 +23,8 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|md)$':
       '<rootDir>/script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
+    '^~styleguide/blocks(.*)$':
+      '<rootDir>/packages/styleguide/.storybook/Blocks$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {

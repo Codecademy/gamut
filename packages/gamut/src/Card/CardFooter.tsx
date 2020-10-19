@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardFooter.module.scss';
+import styles from './styles/CardFooter.module.scss';
 
 const defaultProps = {
   border: 'none',
@@ -11,12 +11,25 @@ const defaultProps = {
 };
 
 export type CardFooterProps = {
-  align?: 'center' | 'left' | 'right';
+  /**
+   * Variant for the top border style.
+   */
   border?: 'dashed' | 'none' | 'solid';
   children: ReactNode;
   className?: string;
+  /** Displays the footer content as flex and aligned center */
   flex?: boolean;
+  /**
+   * Flex justification for the content of the footer.  (used with `flex`)
+   */
+  align?: 'center' | 'left' | 'right';
+  /**
+   * Use standard height regardless of content.
+   */
   standardHeight?: boolean;
+  /**
+   * Use standard padding sizes regardless of content.
+   */
   standardPadding?: boolean;
 };
 
@@ -30,17 +43,17 @@ export const CardFooter = ({
   className,
 }: CardFooterProps) => {
   const footerClasses = cx(
-    s.footer,
+    styles.footer,
     {
-      [s.flex]: flex,
-      [s.solidTopBorder]: border === 'solid',
-      [s.dashedTopBorder]: border === 'dashed',
-      [s.transparentTopBorder]: border === 'none',
-      [s.leftAlign]: align === 'left',
-      [s.centerAlign]: align === 'center',
-      [s.rightAlign]: align === 'right',
-      [s.standardPadding]: standardPadding,
-      [s.standardHeight]: standardHeight,
+      [styles.flex]: flex,
+      [styles.solidTopBorder]: border === 'solid',
+      [styles.dashedTopBorder]: border === 'dashed',
+      [styles.transparentTopBorder]: border === 'none',
+      [styles.leftAlign]: align === 'left',
+      [styles.centerAlign]: align === 'center',
+      [styles.rightAlign]: align === 'right',
+      [styles.standardPadding]: standardPadding,
+      [styles.standardHeight]: standardHeight,
     },
     className
   );
@@ -49,5 +62,3 @@ export const CardFooter = ({
 };
 
 CardFooter.defaultProps = defaultProps;
-
-export default CardFooter;
