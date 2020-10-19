@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './styles.module.scss';
+import styles from './styles.module.scss';
 import cx from 'classnames';
 import networkPin from './assets/networkPin.svg';
 
@@ -27,31 +27,23 @@ export const Byline: React.FC<BylineProps> = ({
   company,
   lastName,
 }) => (
-  <div className={cx(s.bylineContainer, classNames.bylineContainer)}>
+  <div className={cx(styles.bylineContainer, classNames.bylineContainer)}>
     <span
       data-testid="author-container"
-      className={cx(s.author, classNames.author)}
+      className={cx(styles.author, classNames.author)}
     >
-      <span aria-label="First Name">{firstName}</span>
-      {lastName && (
-        <span aria-label="Last Name" className={s.lastName}>
-          {` ${lastName}`}
-        </span>
-      )}
+      <span>{firstName}</span>
+      {lastName && <span className={styles.lastName}>{` ${lastName}`}</span>}
     </span>
     <div data-testid="job-container" className={classNames.jobContainer}>
-      <span aria-label="Occupation">{occupation}</span>
-      {company && (
-        <span aria-label="Company" className={s.company}>
-          {` @ ${company}`}
-        </span>
-      )}
+      <span>{occupation}</span>
+      {company && <span className={styles.company}>{` @ ${company}`}</span>}
     </div>
     {location && (
-      <div className={s.locationContainer}>
+      <div className={styles.locationContainer}>
         <img
           alt="Location pin icon"
-          className={s.networkPin}
+          className={styles.networkPin}
           src={networkPin}
         />
         <span className={classNames.location}>{location}</span>

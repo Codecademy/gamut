@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/Input.module.scss';
+import styles from './styles/Input.module.scss';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -15,12 +15,12 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ error, htmlFor, className, id, ...rest }, ref) => {
     const classNames = cx(
-      s.Input,
+      styles.Input,
       {
-        [s.fileInput]: rest.type === 'file',
+        [styles.fileInput]: rest.type === 'file',
       },
       {
-        [s.error]: error,
+        [styles.error]: error,
       },
       className
     );

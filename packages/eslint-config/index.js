@@ -36,6 +36,7 @@ module.exports = {
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
     eqeqeq: 'error',
+    'import/no-default-export': 'error',
     'no-console': 'error',
     'no-eval': 'error',
     'no-global-assign': 'error',
@@ -65,6 +66,12 @@ module.exports = {
     ],
 
     // These rules could be useful, but we haven't gotten around to trying them out
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/array-type': 'off',
     '@typescript-eslint/await-thenable': 'off',
     '@typescript-eslint/ban-types': 'off',
@@ -109,9 +116,19 @@ module.exports = {
     '@typescript-eslint/quotes': 'off',
 
     'no-restricted-imports': [
-      'error',
+      'warn',
       {
-        paths: ['@codecademy/gamut/dist/deprecated'],
+        paths: [
+          '@codecademy/gamut/dist/deprecated',
+          {
+            name: 'moment',
+            message: 'Please use date-fns instead.',
+          },
+          {
+            name: 'moment-timezone',
+            message: 'Please use date-fns-tz instead.',
+          },
+        ],
         patterns: ['@codecademy/gamut/dist/deprecated/*'],
       },
     ],

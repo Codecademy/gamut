@@ -1,7 +1,7 @@
 import React, { ReactNode, SelectHTMLAttributes } from 'react';
 import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
-import s from './styles/Select.module.scss';
+import styles from './styles/Select.module.scss';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -12,22 +12,30 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
 
 export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
-    const className = cx(s.Select, props.className, props.error && s.error);
+    const className = cx(
+      styles.Select,
+      props.className,
+      props.error && styles.error
+    );
     const { options, error, id, ...rest } = props;
 
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
-      selectOptions = options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ));
+      selectOptions = options.map((option) => {
+        const key = id ? `${id}-${option}` : option;
+        return (
+          <option key={key} value={option} data-testid={key}>
+            {option}
+          </option>
+        );
+      });
     } else if (isObject(options)) {
-      each(options, (val, key) => {
+      each(options, (text, val) => {
+        const key = id ? `${id}-${val}` : val;
         selectOptions.push(
-          <option key={key} value={key}>
-            {val}
+          <option key={key} value={val} data-testid={key}>
+            {text}
           </option>
         );
       });
@@ -35,7 +43,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <div className={className}>
-        <svg className={s.selectIcon}>
+        <svg className={styles.selectIcon}>
           <path
             d="M1.175 0L5 3.825 8.825 0 10 1.183l-5 5-5-5z"
             fill="#3E3E40"
@@ -43,7 +51,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         </svg>
         <select
           {...rest}
-          className={s.selectInput}
+          className={styles.selectInput}
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}

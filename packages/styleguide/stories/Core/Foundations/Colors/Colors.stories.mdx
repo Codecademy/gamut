@@ -16,10 +16,11 @@ import {
 } from '@codecademy/gamut/src';
 import {
   brandColors,
-  standardColors,
-  standardColorNames,
   colors,
+  colorNames,
+  interactiveColors,
   swatches,
+  deprecatedColors,
   editorColors,
   platformColors,
 } from '@codecademy/gamut-styles';
@@ -44,7 +45,7 @@ contrast requirements too!
 ```tsx
 import { colors } from '@codecademy/gamut-styles';
 
-colors.standard.blue;
+colors.blue;
 ```
 
 ```scss
@@ -59,16 +60,16 @@ colors.standard.blue;
 
 <Story name="Standard">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(standardColors).map((color) => (
+    {objectKeys(colors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
           </Heading>
           <Swatch
-            alias={standardColorNames[color].toUpperCase()}
+            alias={colorNames[color].toUpperCase()}
             name={`$color-${parseCamelCase(color)}`}
-            hex={standardColors[color]}
+            hex={colors[color]}
           />
         </Container>
       </Column>
@@ -82,9 +83,9 @@ colors.standard.blue;
 
 For usage on links, buttons, and other interactive elements on dark and light backgrounds
 
-<Story name="Interactive Colors">
+<Story name="Interactive">
   <LayoutGrid rowGap="md" columnGap="md">
-    {Object.keys(colors.interactive).map((color) => (
+    {Object.keys(interactiveColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
@@ -92,7 +93,7 @@ For usage on links, buttons, and other interactive elements on dark and light ba
           </Heading>
           <Swatch
             name={`$color-interactive-${parseCamelCase(color)}`}
-            hex={colors.interactive[color]}
+            hex={interactiveColors[color]}
           />
         </Container>
       </Column>
@@ -131,9 +132,45 @@ Full-color swatches.
 ### Usage
 
 ```tsx
-import { colors } from '@codecademy/gamut-styles';
+import { swatches } from '@codecademy/gamut-styles';
 
-colors.blue[900];
+swatches.beige[0];
+```
+
+```scss
+@import '@codecademy/gamut-styles/utils';
+
+.darkBlue {
+  color: $color-beige;
+}
+```
+
+<Story name="Color Swatches">
+  {(args) => (
+    <LayoutGrid rowGap="md" columnGap="md">
+      {objectKeys(swatches).map((color) => (
+        <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Container flex={false}>
+            <Heading as="h2" fontSize="xs">
+              {parseCamelCase(`color-${color}`)}
+            </Heading>
+            <SwatchPalette
+              variablePrefix={`color-${color}`}
+              data={swatches[color]}
+            />
+          </Container>
+        </Column>
+      ))}
+    </LayoutGrid>
+  )}
+</Story>
+
+### Legacy Color Swatches
+
+```tsx
+import { deprecatedColors } from '@codecademy/gamut-styles';
+
+deprecatedColors.blue[900];
 ```
 
 ```scss
@@ -147,7 +184,7 @@ colors.blue[900];
 <Story name="Rest">
   {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
-      {objectKeys(swatches)
+      {objectKeys(deprecatedColors)
         .filter((color) => !excludedColors.includes(color))
         .map((color) => (
           <Column key={color} size={{ xs: 6, sm: 3 }}>
@@ -157,7 +194,7 @@ colors.blue[900];
               </Heading>
               <SwatchPalette
                 variablePrefix={`color-${color}`}
-                data={swatches[color]}
+                data={deprecatedColors[color]}
               />
             </Container>
           </Column>

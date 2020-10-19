@@ -184,3 +184,58 @@ As with column and row gaps, those numbers may be static or responsive.
     )}
   </Story>
 </Canvas>
+
+## Rowspans
+
+Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
+
+<Canvas>
+  <Story name="Column Rowspans">
+    {(args) => (
+      <LayoutGrid columnGap="sm" rowGap="sm">
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column rowspan={2} size={3}>
+          <Box>2</Box>
+        </Column>
+        <Column rowspan={3} size={3}>
+          <Box>3</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column rowspan={3} size={3}>
+          <Box>3</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column rowspan={2} size={3}>
+          <Box>2</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+        <Column size={3}>
+          <Box>1</Box>
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>

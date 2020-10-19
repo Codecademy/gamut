@@ -2,7 +2,7 @@
 
 ### PR Checklist
 
-- [ ] Related to Abstract designs:
+- [ ] Related to designs:
 - [ ] Related to JIRA ticket: ABC-123
 - [ ] I have run this code to verify it works
 - [ ] This PR includes unit tests for the code change

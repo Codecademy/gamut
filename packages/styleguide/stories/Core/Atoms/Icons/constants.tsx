@@ -16,6 +16,7 @@ export const VENDOR = pick(
     'JavascriptIcon',
     'PythonIcon',
     'RailsIcon',
+    'ReactIcon',
     'RubyIcon',
     'FaviconIcon',
     'FaviconSolidIcon',
@@ -27,6 +28,8 @@ export const LEARNING_ENVIRONMENT = pick(
   Icons,
   [
     'PortfolioProjectIcon',
+    'ChecklistIcon',
+    'PinIcon',
     'ChallengeProjectIcon',
     'InformationalIcon',
     'LessonIcon',
@@ -50,6 +53,8 @@ export const LEARNING_ENVIRONMENT = pick(
     'PathIcon',
     'PathChangeIcon',
     'PathCompleteIcon',
+    'BookClosedBookmarkIcon',
+    'FileSearchIcon',
   ].sort()
 );
 
