@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "@emotion/styled": "^10.0.27",
-    "jest-emotion": "^10.0.32"
+    "jest-emotion": "^10.0.32",
+    "emotion-theming": "^10.0.27"
   },
   "license": "MIT"
 }
