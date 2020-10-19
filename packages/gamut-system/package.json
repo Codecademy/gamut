@@ -10,16 +10,20 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/gamut-system",
-  "peerDependencies": {
-    "@emotion/core": ">=10.0.0",
-    "lodash": "^>=4.0,0",
-    "csstype": ">=3.0.0"
-  },
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
     "build": "yarn build:clean && yarn build:compile",
     "prepublishOnly": "yarn build"
+  },
+  "peerDependencies": {
+    "@emotion/core": ">=10.0.0",
+    "csstype": ">=3.0.0",
+    "lodash": "^>=4.0,0"
+  },
+  "devDependencies": {
+    "@emotion/styled": "^10.0.27",
+    "jest-emotion": "^10.0.32"
   },
   "license": "MIT"
 }
