@@ -6,7 +6,7 @@ module.exports = {
       '@emotion',
       {
         sourceMap: true,
-        autoLabel: process.env.NODE_ENV !== 'production',
+        autoLabel: 'always',
         labelFormat: '[local]',
         cssPropOptimization: true,
       },
