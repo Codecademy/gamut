@@ -80,6 +80,7 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
         )}
         height={iconSize}
         width={iconSize}
+        aria-hidden
       />
     </ButtonComponent>
   );
