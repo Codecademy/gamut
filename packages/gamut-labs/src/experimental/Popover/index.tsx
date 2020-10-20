@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize } from 'react-use';
+import { useWindowSize, useClickAway } from 'react-use';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import styles from './styles.module.scss';
@@ -100,22 +100,13 @@ export const Popover: React.FC<PopoverProps> = ({
       onRequestClose?.();
       return;
     }
-    if (
-      popoverRef.current &&
-      !popoverRef.current.contains(event.target as Element)
-    ) {
-      if (targetRef?.current?.contains(event.target as Element)) {
-        disableOutsideEvent?.();
-      }
-      onRequestClose?.();
+    if (targetRef?.current?.contains(event.target as Element)) {
+      disableOutsideEvent?.();
     }
+    onRequestClose?.();
   };
 
-  useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  });
-
+  useClickAway(popoverRef, handleClickOutside, ['mousedown']);
   useHotkeys('escape', handleClickOutside);
 
   if (!isOpen || !targetRef) return null;
