@@ -8,7 +8,6 @@ const cssExtracted = (options) => {
   const defaultExtractOptions = {
     filename: PROD ? '[name].[contenthash].css' : '[name].css',
     chunkFilename: PROD ? '[id].[contenthash].chunk.css' : '[id].chunk.css',
-    esModule: true,
     ignoreOrder: true,
   };
 

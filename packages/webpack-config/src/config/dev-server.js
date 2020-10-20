@@ -32,11 +32,6 @@ const devServerConfig = (options) => {
       },
       ...rest,
     },
-
-    plugins: [
-      new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.NamedModulesPlugin(),
-    ],
   };
 };
 
