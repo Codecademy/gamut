@@ -1,7 +1,7 @@
-import { system, ThemedSystem } from '..';
+import { system } from '..';
 
-describe(system, () => {
-  const { properties, variant, ...groups } = system({});
+describe('system', () => {
+  const { properties, variant, ...groups } = system.create();
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {
@@ -41,7 +41,7 @@ describe(system, () => {
   });
 
   describe('Custom Scales', () => {
-    const { typography, variant } = system({
+    const { typography, variant } = system.create({
       typography: {
         fontSize: { propName: 'fontSize', scale: { sm: '14px', md: '16px' } },
       },
@@ -68,15 +68,15 @@ describe(system, () => {
   });
 
   describe('Theme Scales', () => {
-    const themedSystem = system as ThemedSystem<{
-      fontSize: { sm: string; md: string };
-    }>;
-
-    const { typography, variant } = themedSystem({
-      typography: {
-        fontSize: { propName: 'fontSize', scale: 'fontSize' },
-      },
-    });
+    const { typography, variant } = system
+      .withTheme<{
+        fontSize: { sm: string; md: string };
+      }>()
+      .create({
+        typography: {
+          fontSize: { propName: 'fontSize', scale: 'fontSize' },
+        },
+      });
     const theme = { fontSize: { sm: '14px', md: '16px' } };
 
     it('theme scale values are found off of the specified theme', () => {

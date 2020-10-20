@@ -25,7 +25,7 @@ type AbstractPropertyConfig = {
 To use this you must pass a subset of the base config and its property definitions (propGroups and handlers):
 
 ```tsx
-export const { properties } = system({
+export const { properties } = system.create({
   typography: {
     fontSize: {
       propName: 'fontSize',
@@ -61,13 +61,15 @@ type ThemeShape = {
 }
 
 
-export const { properties }  = (system as ThemedSystem<ThemeShape>)({
-  typography: {
-    fontSize: {
-      propName: 'fontSize',
-      scale: 'fontSizes'
-  },
-});
+export const { properties } = system
+  .withTheme<ThemeShape>()
+  .create({
+    typography: {
+      fontSize: {
+        propName: 'fontSize',
+        scale: 'fontSizes'
+    },
+  });
 ```
 
 In your react code:

@@ -1,5 +1,5 @@
 import React from 'react';
-import { system, ThemedSystem } from '..';
+import { system } from '..';
 import render from 'react-test-renderer';
 import styled from '@emotion/styled';
 import { matchers } from 'jest-emotion';
@@ -11,7 +11,7 @@ expect.extend(matchers);
 
 describe('Styled components integration', () => {
   describe('base components', () => {
-    const { variant, typography } = system({});
+    const { variant, typography } = system.create({});
     const textVariants = variant({
       primary: { fontSize: '1rem', textColor: 'blue' },
       secondary: { fontSize: '0.85rem' },
@@ -63,7 +63,7 @@ describe('Styled components integration', () => {
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     );
 
-    const { variant, typography } = (system as ThemedSystem<ThemeShape>)({
+    const { variant, typography } = system.withTheme<ThemeShape>().create({
       typography: { fontSize: { propName: 'fontSize', scale: 'fontSizes' } },
     });
 

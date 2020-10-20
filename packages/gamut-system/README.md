@@ -20,8 +20,6 @@ Checkout each section
 - [Customization](docs/customization.md)
 - [Compose](docs/compose.md)
 
-
-
 ## Usage
 
 Create your new system locally to your app:
@@ -31,7 +29,7 @@ import { system, HandlerProps } from '@codecademy/gamut-system';
 
 export const {
   propGroups: { typography, spacing, layout },
-} = system({});
+} = system.create({});
 
 export type TypographyProps = HandlerProps<typeof typography>;
 export type SpacingProps = HandlerProps<typeof spacing>;
@@ -79,4 +77,3 @@ export const Box = styled<BoxProps>`
 // Object syntax
 <Box margin={{ xs: 16, sm: 24, md: 32 }} />
 ```
-
