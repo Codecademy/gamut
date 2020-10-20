@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useWindowSize } from 'react-use';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 import styles from './styles.module.scss';
 import { BodyPortal } from '../../../../gamut/src/BodyPortal';
@@ -94,7 +95,11 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
+  const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
+    if (event.type === 'keydown') {
+      onRequestClose?.();
+      return;
+    }
     if (
       popoverRef.current &&
       !popoverRef.current.contains(event.target as Element)
@@ -110,6 +115,8 @@ export const Popover: React.FC<PopoverProps> = ({
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   });
+
+  useHotkeys('escape', handleClickOutside);
 
   if (!isOpen || !targetRef) return null;
 
