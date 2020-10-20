@@ -26,7 +26,7 @@ export const {
   grid,
   properties,
   variants
-} = system({});
+} = system.create({});
 ```
 
 ## Using in a component

@@ -6,15 +6,12 @@ import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { getDefaultPropKey } from '../utils';
 import { System, SystemConfig } from '../../types/system';
 
-export type ThemedSystem<Theme extends AbstractTheme> = <
+const create = <
+  Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 >(
-  config: Config
-) => System<Theme, Config>;
-
-export const system = <Config extends SystemConfig<{}>>(
-  config: Config
-): System<{}, Config> => {
+  config?: Config
+): System<Theme, Config> => {
   // Initializes the return object
   const systemShape = {
     properties: {},
@@ -67,4 +64,15 @@ export const system = <Config extends SystemConfig<{}>>(
   systemShape.variant = createVariant;
 
   return systemShape;
+};
+
+export const system = {
+  create,
+  withTheme: <Theme extends AbstractTheme>() => {
+    return {
+      create: <Config extends SystemConfig<Theme>>(config: Config) => {
+        return create<Theme, Config>(config);
+      },
+    };
+  },
 };
