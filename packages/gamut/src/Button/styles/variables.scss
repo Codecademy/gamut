@@ -34,13 +34,14 @@ $btn-disabled-color: $color-gray-600;
 $btn-box-shadow-color: rgba(0, 0, 0, 0.3);
 
 $btn-swatches: (
-  "mint": $deprecated-swatches-mint-700,
-  "darkmint": $deprecated-swatches-mint-800,
-  "grey": $color-gray-300,
-  "greyblue": $deprecated-swatches-grey-blue-600,
+  // Gamut Next
+  "hyper": $color-hyper,
+  "red": $color-red,
+  "navy": $color-navy,
   "white": $color-white,
-  "royalblue": $deprecated-gamut-royal-blue,
-  "purple": $deprecated-gamut-purple,
+  // Gamut Classic
+  "grey": $color-gray-300,
+  "brand-blue": $color-blue-500,
   "brand-red": $brand-red,
   "brand-orange": $brand-orange,
   "brand-yellow": $brand-yellow,
@@ -49,7 +50,12 @@ $btn-swatches: (
   "brand-mint": $brand-mint,
   "brand-beige": $brand-beige,
   "brand-dark-blue": $brand-dark-blue,
-  "brand-blue": $color-blue-500,
+  "mint": $deprecated-swatches-mint-700,
+  "darkmint": $deprecated-swatches-mint-800,
+  "greyblue": $deprecated-swatches-grey-blue-600,
+  "royalblue": $deprecated-gamut-royal-blue,
+  "purple": $deprecated-gamut-purple,
+  // Alerts
   "notice": $color-yellow-300,
   "error": $color-red-300,
   "announcement": $color-purple-300,
