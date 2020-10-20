@@ -4,6 +4,7 @@ import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
+  const [disable, setDisable] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
 
   return (
@@ -11,6 +12,10 @@ export const PopoverExample = (args: PopoverProps) => {
       <div ref={activeElRef}>
         <Button
           onClick={() => {
+            if (disable) {
+              setDisable(false);
+              return;
+            }
             setOpen(true);
           }}
         >
@@ -22,9 +27,8 @@ export const PopoverExample = (args: PopoverProps) => {
           {...args}
           isOpen={open}
           targetRef={activeElRef}
-          overlayProps={{
-            onRequestClose: () => setOpen(false),
-          }}
+          onRequestClose={() => setOpen(false)}
+          disableOutsideEvent={() => setDisable(true)}
         >
           <Container>
             <h1>Hooray!</h1>

@@ -1,9 +1,9 @@
 import cx from 'classnames';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
-import { Overlay, OverlayProps } from '../../../../gamut/src/Overlay';
+import { BodyPortal } from '../../../../gamut/src/BodyPortal';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
@@ -15,7 +15,9 @@ export type PopoverProps = {
   /**
    * The target element around which the popover will be positioned.
    */
-  targetRef: React.RefObject<Pick<HTMLDivElement, 'getBoundingClientRect'>>;
+  targetRef: React.RefObject<
+    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+  >;
   /**
    * Which vertical edge of the source component to align against.
    * @default left
@@ -36,9 +38,15 @@ export type PopoverProps = {
    */
   showBeak?: boolean;
   /**
-   * Props to pass to the containing Overlay component.
+   * Called when the Popover requests to be closed,
+   * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
-  overlayProps?: Omit<OverlayProps, 'isOpen' | 'children'>;
+  onRequestClose?: () => void;
+  /**
+   * Called to prevent unwanted targetRef event (targetRef is outside of Popover).
+   * (i.e. when targetRef is a button and it is used to close the popover, this prevents triggering its onclick that would re-open the popover.)
+   */
+  disableOutsideEvent?: () => void;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -50,7 +58,8 @@ export const Popover: React.FC<PopoverProps> = ({
   offset = 20,
   align = 'left',
   targetRef,
-  overlayProps,
+  onRequestClose,
+  disableOutsideEvent,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const { width, height } = useWindowSize();
@@ -83,16 +92,31 @@ export const Popover: React.FC<PopoverProps> = ({
     };
   }, [targetRect, offset, align, position]);
 
+  const popoverRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      popoverRef.current &&
+      !popoverRef.current.contains(event.target as Element)
+    ) {
+      if (targetRef?.current?.contains(event.target as Element)) {
+        disableOutsideEvent?.();
+      }
+      onRequestClose?.();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  });
+
   if (!isOpen || !targetRef) return null;
 
   return (
-    <Overlay
-      staticPositioning={true}
-      isOpen={!!isOpen}
-      data-testid="popover-container"
-      {...(overlayProps as OverlayProps)}
-    >
+    <BodyPortal>
       <div
+        ref={popoverRef}
         className={cx(
           styles.popover,
           styles[`${position}-${align}`],
@@ -109,6 +133,6 @@ export const Popover: React.FC<PopoverProps> = ({
         )}
         {children}
       </div>
-    </Overlay>
+    </BodyPortal>
   );
 };
