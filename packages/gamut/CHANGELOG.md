@@ -1,3 +1,12 @@
+### [16.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.4...@codecademy/gamut@16.2.5) (2020-10-20)
+
+### [16.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.3...@codecademy/gamut@16.2.4) (2020-10-20)
+
+
+### Other Changes
+
+* add stop gap themes for buttons ([#1063](https://github.com/Codecademy/client-modules/issues/1063)) ([19b3835](https://github.com/Codecademy/client-modules/commit/19b3835cd315922602b478d17c8b614d9f827604))
+
 ### [16.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.2...@codecademy/gamut@16.2.3) (2020-10-19)
 
 

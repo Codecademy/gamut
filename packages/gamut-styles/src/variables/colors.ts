@@ -14,7 +14,7 @@ export const swatches = {
   green: {
     '0': '#F5FFE3',
     '400': '#AEE938',
-    '700': '#009C2C',
+    '700': '#008A27',
   },
   yellow: {
     '0': '#FFFAE5',
@@ -25,7 +25,7 @@ export const swatches = {
     '400': '#F966FF',
   },
   red: {
-    '500': '#F03329',
+    '500': '#E91C11',
   },
   orange: {
     '500': '#FF8C00',
