@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize, useClickAway } from 'react-use';
+import { useWindowSize, useClickAway, useWindowScroll } from 'react-use';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import styles from './styles.module.scss';
@@ -63,7 +63,9 @@ export const Popover: React.FC<PopoverProps> = ({
   disableOutsideEvent,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
+  const [isInViewport, setIsInViewport] = useState(true);
   const { width, height } = useWindowSize();
+  const { x, y } = useWindowScroll();
 
   const setRect = useCallback(() => {
     const rect = targetRef?.current?.getBoundingClientRect();
@@ -71,9 +73,18 @@ export const Popover: React.FC<PopoverProps> = ({
     setTargetRect(rect);
   }, [targetRef]);
 
-  useEffect(() => {
-    setRect();
-  }, [setRect, isOpen, width, height]);
+  const isElementInViewPort = useCallback(() => {
+    if (targetRect) {
+      const inView =
+        targetRect.top >= 0 &&
+        targetRect.left >= 0 &&
+        targetRect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        targetRect.right <=
+          (window.innerWidth || document.documentElement.clientWidth);
+      setIsInViewport(inView);
+    }
+  }, [targetRect]);
 
   const getPopoverPosition = useCallback(() => {
     if (!targetRect) return {};
@@ -84,16 +95,15 @@ export const Popover: React.FC<PopoverProps> = ({
         window.scrollY + targetRect.top + targetRect.height + offset
       ),
     };
+    const alignments = {
+      right: Math.round(window.scrollX + targetRect.right),
+      left: Math.round(window.scrollX + targetRect.left),
+    };
     return {
       top: positions[position],
-      left:
-        align === 'right'
-          ? Math.round(window.scrollX + targetRect.right)
-          : Math.round(window.scrollX + targetRect.left),
+      left: alignments[align],
     };
   }, [targetRect, offset, align, position]);
-
-  const popoverRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
     if (event.type === 'keydown') {
@@ -106,6 +116,16 @@ export const Popover: React.FC<PopoverProps> = ({
     onRequestClose?.();
   };
 
+  useEffect(() => {
+    setRect();
+  }, [setRect, isOpen, width, height, x, y]);
+
+  useEffect(() => {
+    isElementInViewPort();
+    if (!isInViewport) onRequestClose?.();
+  }, [isElementInViewPort, isInViewport, onRequestClose]);
+
+  const popoverRef = useRef<HTMLDivElement>(null);
   useClickAway(popoverRef, handleClickOutside, ['mousedown']);
   useHotkeys('escape', handleClickOutside);
 
