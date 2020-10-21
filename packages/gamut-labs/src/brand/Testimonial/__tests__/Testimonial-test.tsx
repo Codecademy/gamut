@@ -19,7 +19,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="small"
-        theme={VisualTheme.LightMode}
+        theme={'light'}
       />
     );
 
@@ -35,7 +35,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="small"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 
@@ -51,7 +51,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="small"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 
@@ -67,7 +67,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="medium"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 
@@ -83,7 +83,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="large"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 
@@ -99,7 +99,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={{ ...exampleTestmonial, imageUrl: 'someCoolUrl' }}
         size="small"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 
@@ -113,7 +113,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={exampleTestmonial}
         size="small"
-        theme={VisualTheme.DarkMode}
+        theme={'dark'}
       />
     );
 

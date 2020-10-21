@@ -13,6 +13,7 @@ Array [
   "Banner",
   "BannerStyle",
   "BannerType",
+  "ButtonBase",
   "ButtonDeprecated",
   "ButtonDeprecatedBase",
   "buttonPresetThemes",
@@ -25,7 +26,9 @@ Array [
   "Container",
   "ContentContainer",
   "createPromise",
+  "CTAButton",
   "DeprecatedTabs",
+  "FillButton",
   "FlexGrid",
   "Form",
   "FormError",
@@ -45,6 +48,7 @@ Array [
   "Markdown",
   "MenuItem",
   "Modal",
+  "modeColorGroups",
   "NotificationIcon",
   "NotificationItem",
   "NotificationList",
@@ -71,6 +75,5 @@ Array [
   "ToolTipPosition",
   "Truncate",
   "Video",
-  "VisualTheme",
 ]
 `;
