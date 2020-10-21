@@ -1,3 +1,16 @@
+### [17.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.6...@codecademy/styleguide@17.7.7) (2020-10-20)
+
+### [17.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.5...@codecademy/styleguide@17.7.6) (2020-10-20)
+
+### [17.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.4...@codecademy/styleguide@17.7.5) (2020-10-20)
+
+### [17.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.3...@codecademy/styleguide@17.7.4) (2020-10-20)
+
+
+### Other Changes
+
+* add stop gap themes for buttons ([#1063](https://github.com/Codecademy/client-modules/issues/1063)) ([19b3835](https://github.com/Codecademy/client-modules/commit/19b3835cd315922602b478d17c8b614d9f827604))
+
 ### [17.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.2...@codecademy/styleguide@17.7.3) (2020-10-19)
 
 ### [17.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.1...@codecademy/styleguide@17.7.2) (2020-10-16)
