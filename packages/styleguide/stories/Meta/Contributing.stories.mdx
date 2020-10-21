@@ -70,7 +70,7 @@ In that case it's reasonable to add a `className?: string` prop so that consumer
 Most components that have configurable themes use one of two APIs:
 
 - `style`: Allowing one or more colors to be passed as values from their parent, such as `Heading`
-- `theme`: A pre-configured list of allowed colors, such as `Button`
+- `theme`: A pre-configured list of allowed colors, such as `AccordionButton`
 
 We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
 As we learn more and restrict component usage over time, we might switch to `theme`.

@@ -10,8 +10,8 @@ import {
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
 import { Truncate } from '../Truncate';
-import { ButtonBase } from '../ButtonBase';
-import { Button } from '../Button';
+import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
+import { ButtonDeprecated } from '../ButtonDeprecated';
 
 import { BannerType, BANNER_CONFIG } from './constants';
 import { BannerCTA } from './types';
@@ -88,7 +88,7 @@ export const Alert: React.FC<AlertProps> = ({
             </Truncate>
             {showExpandToggle && (
               <Container inline>
-                <ButtonBase
+                <ButtonDeprecatedBase
                   className={cx(
                     styles.iconButton,
                     styles.iconButton__pushRight,
@@ -99,13 +99,13 @@ export const Alert: React.FC<AlertProps> = ({
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
                   <ToggleIcon size={16} />
-                </ButtonBase>
+                </ButtonDeprecatedBase>
               </Container>
             )}
           </Container>
           {cta && (
             <Container className={styles.section} shrink={1}>
-              <Button
+              <ButtonDeprecated
                 caps
                 theme={type}
                 className={styles.actionButton}
@@ -114,13 +114,13 @@ export const Alert: React.FC<AlertProps> = ({
                 disabled={cta.disabled}
               >
                 {cta.text}
-              </Button>
+              </ButtonDeprecated>
             </Container>
           )}
         </Container>
         {onClose && (
           <Container className={styles.section} shrink={1} center>
-            <ButtonBase
+            <ButtonDeprecatedBase
               className={cx(styles.iconButton, {
                 [styles[`iconButton__${type}`]]: type,
               })}
@@ -128,7 +128,7 @@ export const Alert: React.FC<AlertProps> = ({
               onClick={onClose}
             >
               <CloseIcon size={12} />
-            </ButtonBase>
+            </ButtonDeprecatedBase>
           </Container>
         )}
       </Container>

@@ -1,7 +1,7 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
-import { Overlay, Button, Container } from '@codecademy/gamut/src';
+import { Overlay, ButtonDeprecated, Container } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
 
 <Meta title="Atoms/Overlay" component={Overlay} />
@@ -31,7 +31,9 @@ a background behind content, see `Modal`.
       const [open, setOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button onClick={() => setOpen(true)}>Open Overlay</Button>
+          <ButtonDeprecated onClick={() => setOpen(true)}>
+            Open Overlay
+          </ButtonDeprecated>
           <Container>
             <Overlay
               clickOutsideCloses

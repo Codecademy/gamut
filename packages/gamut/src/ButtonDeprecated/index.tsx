@@ -1,6 +1,9 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
+import {
+  ButtonDeprecatedBase,
+  ButtonDeprecatedBaseProps,
+} from '../ButtonDeprecatedBase';
 import { omitProps } from '../utils/omitProps';
 import styles from './styles/index.module.scss';
 
@@ -30,7 +33,7 @@ const propKeys = [
   'onClick',
 ];
 
-export type ButtonProps = ButtonBaseProps & {
+export type ButtonDeprecatedProps = ButtonDeprecatedBaseProps & {
   /**
    * Whether button should behave like a block element or inline.
    */
@@ -100,7 +103,7 @@ export type ButtonProps = ButtonBaseProps & {
   fitText?: boolean;
 };
 
-export const Button: React.FC<ButtonProps> = (props) => {
+export const ButtonDeprecated: React.FC<ButtonDeprecatedProps> = (props) => {
   let { theme = 'brand-red' } = props;
 
   if (theme && buttonPresetThemes[theme]) {
@@ -133,13 +136,13 @@ export const Button: React.FC<ButtonProps> = (props) => {
   const propsToTransfer = omitProps(propKeys, props);
 
   return (
-    <ButtonBase
+    <ButtonDeprecatedBase
       {...propsToTransfer}
       className={classes}
       link={props.link}
       onClick={props.onClick}
     >
       {props.children}
-    </ButtonBase>
+    </ButtonDeprecatedBase>
   );
 };
