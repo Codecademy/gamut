@@ -1,0 +1,26 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { BashBox } from '@codecademy/gamut-labs/src';
+
+<Meta title="Labs/Experimental/Atoms/BashBox" component={BashBox} />
+
+# BashBox
+
+<StoryStatus status="volatile" />
+
+A flex BashBox primitive that allows you create markup configurable flex containers
+
+<Canvas>
+  <Story
+    name="BashBox"
+    args={{
+      children: 'Hello world I am a BashBox',
+      padding: 16,
+      bordered: true,
+    }}
+  >
+    {(args) => <BashBox {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="BashBox" />
