@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Button, Container } from '@codecademy/gamut/src';
-import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
+import {
+  Popover,
+  PopoverProps,
+} from 'gamut-labs/src/experimental/Popover/index';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
