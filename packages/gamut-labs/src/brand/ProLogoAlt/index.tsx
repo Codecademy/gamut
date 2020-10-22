@@ -13,7 +13,7 @@ const textDefault = colors.black;
 const widthDefault = 50;
 
 export const ProLogoAlt: React.FC<ProLogoAltProps> = ({
-  ariaLabel = 'ProLogo',
+  ariaLabel = 'Codecademy Pro Logo',
   backgroundColor = backgroundDefault,
   textColor = textDefault,
   width = widthDefault,
