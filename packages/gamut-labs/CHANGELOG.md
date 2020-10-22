@@ -1,3 +1,14 @@
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.5...@codecademy/gamut-labs@4.5.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [4.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.4...@codecademy/gamut-labs@4.4.5) (2020-10-20)
+
+### [4.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.3...@codecademy/gamut-labs@4.4.4) (2020-10-20)
+
 ### [4.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.2...@codecademy/gamut-labs@4.4.3) (2020-10-20)
 
 ### [4.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.1...@codecademy/gamut-labs@4.4.2) (2020-10-20)

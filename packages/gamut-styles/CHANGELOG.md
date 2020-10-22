@@ -1,3 +1,10 @@
+### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.0...@codecademy/gamut-styles@7.1.1) (2020-10-20)
+
+
+### 🐛 Bug Fixes
+
+* **Text:** Make small text size 14px ([#1065](https://github.com/Codecademy/client-modules/issues/1065)) ([b1f0576](https://github.com/Codecademy/client-modules/commit/b1f057694d6d08ca244177b3427c4ccfb1efde6e))
+
 ## [7.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.0.3...@codecademy/gamut-styles@7.1.0) (2020-10-20)
 
 

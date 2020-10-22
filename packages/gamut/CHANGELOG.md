@@ -1,3 +1,14 @@
+## [16.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.7...@codecademy/gamut@16.3.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [16.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.6...@codecademy/gamut@16.2.7) (2020-10-20)
+
+### [16.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.5...@codecademy/gamut@16.2.6) (2020-10-20)
+
 ### [16.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.4...@codecademy/gamut@16.2.5) (2020-10-20)
 
 ### [16.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.3...@codecademy/gamut@16.2.4) (2020-10-20)

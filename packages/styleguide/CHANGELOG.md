@@ -1,3 +1,14 @@
+## [17.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.7...@codecademy/styleguide@17.8.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [17.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.6...@codecademy/styleguide@17.7.7) (2020-10-20)
+
+### [17.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.5...@codecademy/styleguide@17.7.6) (2020-10-20)
+
 ### [17.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.4...@codecademy/styleguide@17.7.5) (2020-10-20)
 
 ### [17.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.3...@codecademy/styleguide@17.7.4) (2020-10-20)
