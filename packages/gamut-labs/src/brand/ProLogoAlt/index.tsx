@@ -10,13 +10,12 @@ export type ProLogoAltProps = {
 
 const backgroundDefault = colors.yellow;
 const textDefault = colors.black;
-const widthDefault = 50;
 
 export const ProLogoAlt: React.FC<ProLogoAltProps> = ({
   ariaLabel = 'Codecademy Pro Logo',
   backgroundColor = backgroundDefault,
   textColor = textDefault,
-  width = widthDefault,
+  width = 50,
 }) => (
   <svg
     width={width}
