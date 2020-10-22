@@ -2,17 +2,17 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 import { ProLogoAlt } from '@codecademy/gamut-labs/src';
-import { selectableColors } from '../../../../helpers';
+import { selectableColorNames } from '../../../../helpers';
 
 <Meta
   title="Labs/Brand/Atoms/ProLogoAlt"
   component={ProLogoAlt}
   argTypes={{
     backgroundColor: {
-      control: { type: 'select', options: selectableColors },
+      control: { type: 'select', options: selectableColorNames },
     },
     textColor: {
-      control: { type: 'select', options: selectableColors },
+      control: { type: 'select', options: selectableColorNames },
     },
   }}
 />
