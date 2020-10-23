@@ -1,33 +1,30 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, number, boolean } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
-import { ProLogo } from '@codecademy/gamut-labs/src';
+import { ProLogoAlt } from '@codecademy/gamut-labs/src';
 import { selectableColorNames } from '../../../../helpers';
 
 <Meta
-  title="Labs/Brand/Atoms/ProLogo"
-  component={ProLogo}
+  title="Labs/Brand/Atoms/ProLogoAlt"
+  component={ProLogoAlt}
   argTypes={{
     backgroundColor: {
       control: { type: 'select', options: selectableColorNames },
     },
-    cutoutColor: {
+    textColor: {
       control: { type: 'select', options: selectableColorNames },
     },
   }}
-  args={{
-    variant: 'cutout',
-  }}
 />
 
-# ProLogo
+# ProLogoAlt
 
 <StoryStatus status="volatile" />
 
-This Pro logo will be used in the most recent designs for Curriculum Cards and Course overview pages.
+Version of the Pro Alt logo that allows you to choose the text color. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.
 
 <Canvas withSource="open">
-  <Story name="ProLogo">{(args) => <ProLogo {...args} />}</Story>
+  <Story name="ProLogoAlt">{(args) => <ProLogoAlt {...args} />}</Story>
 </Canvas>
 
-<Props story="ProLogo" />
+<Props story="ProLogoAlt" />
