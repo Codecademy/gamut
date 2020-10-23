@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
+
+
+### Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
+
+
 ## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.5...@codecademy/gamut-labs@4.5.0) (2020-10-22)
 
 
@@ -356,4 +370,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
