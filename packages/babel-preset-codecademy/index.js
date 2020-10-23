@@ -48,18 +48,13 @@ module.exports = () => ({
       require("@babel/plugin-transform-runtime").default,
       {
         corejs: false,
-        helpers: false,
         regenerator: true,
+        helpers: true,
+        regenerator: true,
+        useESModules: isEnvDevelopment || isEnvProduction,
       },
     ],
     require("babel-plugin-react-anonymous-display-name").default,
-    !isEnvTest && [
-      require("@babel/plugin-transform-regenerator").default,
-      {
-        // Async functions are converted to generators by @babel/preset-env
-        async: false,
-      },
-    ],
     require("@babel/plugin-syntax-dynamic-import").default,
     isEnvTest &&
       // Transform dynamic import to require
