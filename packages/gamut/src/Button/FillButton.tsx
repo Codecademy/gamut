@@ -36,7 +36,6 @@ const FillButtonOuter = styled(ButtonOutline)`
   padding: 1px;
 `;
 
-// Todo: how to compose?
 export const FillButton: React.FC<React.ComponentProps<
   typeof FillButtonOuter
 >> = ({ children, mode, ...props }) => {

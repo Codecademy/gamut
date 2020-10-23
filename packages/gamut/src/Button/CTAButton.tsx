@@ -47,13 +47,12 @@ const CTAButtonOuter = styled(ButtonOutline)`
   padding: 1px 1px 7px 5px;
 `;
 
-// Todo: how to compose?
 export const CTAButton: React.FC<React.ComponentProps<
   typeof CTAButtonOuter
->> = ({ children, ...props }) => {
+>> = ({ children, mode, ...props }) => {
   return (
-    <CTAButtonOuter {...props}>
-      <CTAButtonInner>{children}</CTAButtonInner>
+    <CTAButtonOuter mode={mode} {...props}>
+      <CTAButtonInner mode={mode}>{children}</CTAButtonInner>
     </CTAButtonOuter>
   );
 };

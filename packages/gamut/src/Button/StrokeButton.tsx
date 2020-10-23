@@ -44,7 +44,6 @@ const StrokeButtonOuter = styled(ButtonOutline)`
   padding: 1px;
 `;
 
-// Todo: how to compose?
 export const StrokeButton: React.FC<React.ComponentProps<
   typeof StrokeButtonOuter
 >> = ({ children, mode, ...props }) => {
