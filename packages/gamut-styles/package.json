@@ -27,5 +27,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@codecademy/gamut-system": "^0.0.0"
   }
 }
