@@ -1,3 +1,10 @@
+## [17.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.8.0...@codecademy/styleguide@17.9.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
 ## [17.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.7...@codecademy/styleguide@17.8.0) (2020-10-22)
 
 
