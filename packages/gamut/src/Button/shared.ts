@@ -1,5 +1,4 @@
 import { colors } from '@codecademy/gamut-styles';
-import { css } from '@emotion/core';
 
 import { VisualTheme } from '../theming/VisualTheme';
 

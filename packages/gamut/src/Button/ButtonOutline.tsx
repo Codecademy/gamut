@@ -1,3 +1,4 @@
+import { timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
@@ -11,7 +12,12 @@ export const ButtonOutline = styled(ButtonBase)<ButtonProps>(
     return css`
       border-radius: 4px;
       box-shadow: 0 0 0 0 transparent;
-      transition: 150ms box-shadow;
+      transition: ${timing.fast} box-shadow;
+
+      &:disabled {
+        cursor: not-allowed;
+        user-select: none;
+      }
 
       &:focus {
         box-shadow: 0 0 0 2px ${modeColors.background};

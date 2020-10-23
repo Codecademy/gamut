@@ -7,24 +7,27 @@ import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
-const FillButtonInner = styled(ButtonInner)<ButtonProps>(
+const TextButtonInner = styled(ButtonInner)<ButtonProps>(
   ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
-      background-color: ${modeColors.background};
       border-radius: 3px;
-      color: ${modeColors.foreground};
+      color: ${modeColors.background};
       padding: 0.75rem 1rem;
 
-      ${FillButtonOuter}:hover & {
-        background-color: ${swatches.hyper['400']};
+      ${TextButtonOuter}:hover & {
+        background-color: ${mode === 'light'
+          ? swatches.gray[100]
+          : swatches.gray[900]};
       }
 
-      ${FillButtonOuter}:disabled & {
-        background: ${mode === 'light'
-          ? swatches.gray[200]
-          : swatches.gray[600]};
+      ${TextButtonOuter}:active & {
+        color: ${modeColors.background};
+      }
+
+      ${TextButtonOuter}:disabled & {
+        background-color: transparent;
         color: ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
         cursor: not-allowed;
       }
@@ -32,17 +35,17 @@ const FillButtonInner = styled(ButtonInner)<ButtonProps>(
   }
 );
 
-const FillButtonOuter = styled(ButtonOutline)`
+const TextButtonOuter = styled(ButtonOutline)`
   padding: 1px;
 `;
 
 // Todo: how to compose?
-export const FillButton: React.FC<React.ComponentProps<
-  typeof FillButtonOuter
+export const TextButton: React.FC<React.ComponentProps<
+  typeof TextButtonOuter
 >> = ({ children, mode, ...props }) => {
   return (
-    <FillButtonOuter mode={mode} {...props}>
-      <FillButtonInner mode={mode}>{children}</FillButtonInner>
-    </FillButtonOuter>
+    <TextButtonOuter mode={mode} {...props}>
+      <TextButtonInner mode={mode}>{children}</TextButtonInner>
+    </TextButtonOuter>
   );
 };

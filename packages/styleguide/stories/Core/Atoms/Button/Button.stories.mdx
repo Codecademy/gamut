@@ -1,6 +1,13 @@
 import { action } from '@storybook/addon-actions';
 import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
-import { CTAButton, FillButton } from '@codecademy/gamut/src';
+import {
+  CTAButton,
+  FillButton,
+  IconButton,
+  StrokeButton,
+  TextButton,
+} from '@codecademy/gamut/src';
+import { SearchIcon } from '@codecademy/gamut-icons/src';
 import { select, text, boolean } from '@storybook/addon-knobs';
 
 import { StoryStatus } from '~styleguide/blocks';
@@ -10,6 +17,11 @@ import { StoryStatus } from '~styleguide/blocks';
     children: 'Click Me',
     disabled: false,
     mode: 'light',
+  }}
+  argTypes={{
+    mode: {
+      control: { type: 'select', options: ['dark', 'light'] },
+    },
   }}
   subcomponents={{ CTAButton, FillButton }}
   title="Atoms/Button"
@@ -35,4 +47,24 @@ TODO: Fill out these docs, perhaps with a big table :)
 
 <Canvas>
   <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
+</Canvas>
+
+## Stroke Button
+
+<Canvas>
+  <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
+</Canvas>
+
+## Text Button
+
+<Canvas>
+  <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
+</Canvas>
+
+## Icon Button
+
+<Canvas>
+  <Story name="IconButton">
+    {(args) => <IconButton icon={SearchIcon} {...args} />}
+  </Story>
 </Canvas>

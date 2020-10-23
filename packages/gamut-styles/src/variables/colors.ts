@@ -31,6 +31,7 @@ export const swatches = {
     '500': '#FF8C00',
   },
   hyper: {
+    '400': '#5533FF',
     '500': '#3A10E5',
   },
   gray: {
