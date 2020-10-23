@@ -62,44 +62,14 @@ fontFamily.base; // base | heading | monospace | system
 
 ## Font Sizes
 
-While we technically have a single scale for text, we have split this into two separate scales for `text` and `headings` functionally.
-If you need to use these values outside of `Text` and `Heading` primitives they are available.
-
-### Text
+We use a single scale for font sizes that are aliased to their most appropriate use case.
 
 <Canvas withSource="none" isColumn>
-  <TextExample propName="size" size={DesignTokens.fontSize.text.lg}>
-    Those who believe in telekinetics, raise my hand.
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.text.md}>
-    Those who believe in telekinetics, raise my hand.
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.text.sm}>
-    Those who believe in telekinetics, raise my hand.
-  </TextExample>
-</Canvas>
-
-### Heading
-
-<Canvas isColumn>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.xxl}>
-    Do androids dream of electric sheep?
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.xl}>
-    Do androids dream of electric sheep?
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.lg}>
-    Do androids dream of electric sheep?
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.md}>
-    Do androids dream of electric sheep?
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.sm}>
-    Do androids dream of electric sheep?
-  </TextExample>
-  <TextExample propName="size" size={DesignTokens.fontSize.heading.xs}>
-    Do androids dream of electric sheep?
-  </TextExample>
+  {Object.entries(DesignTokens.fontSize).map(([key, size]) => {
+    <TextExample propName="size" size={size}>
+      {key}
+    </TextExample>;
+  })}
 </Canvas>
 
 ### Usage
