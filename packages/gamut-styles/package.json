@@ -22,7 +22,8 @@
   "devDependencies": {
     "@emotion/core": "10.0.35",
     "@emotion/styled": "10.0.27",
-    "csstype": "3.0.3"
+    "csstype": "3.0.3",
+    "emotion-theming": "10.0.27"
   },
   "license": "MIT",
   "publishConfig": {

@@ -18,11 +18,11 @@ type TextProps = {
 
 export const Text = styled.p<TextProps>`
   margin: 0;
-  font-size: ${({ size = fontSize.heading.lg }) => size};
+  font-size: ${({ size = fontSize['t-3'] }) => size};
   color: ${({ color = colors.black }) => color};
   font-family: ${({ family = fontFamily.base }) => family};
-  font-weight: ${({ weight = fontWeight.text }) => weight};
-  line-height: ${({ line = lineHeight.text }) => line};
+  font-weight: ${({ weight = fontWeight.base }) => weight};
+  line-height: ${({ line = lineHeight.base }) => line};
 `;
 
 export const TextExample: React.FC<
