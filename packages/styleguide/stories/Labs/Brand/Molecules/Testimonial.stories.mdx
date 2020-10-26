@@ -31,7 +31,11 @@ A pull quote for use in an editorial page.
           ),
         }}
         size={select('size', ['small', 'medium', 'large'], 'small')}
-        theme={select('theme', ['dark', 'light'], 'dark')}
+        theme={select(
+          'theme',
+          [VisualTheme.DarkMode, VisualTheme.LightMode],
+          VisualTheme.DarkMode
+        )}
       />
     )}
   </Story>
@@ -51,7 +55,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="medium"
-        theme="dark"
+        theme={VisualTheme.DarkMode}
       />
     )}
   </Story>
@@ -66,7 +70,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="large"
-        theme="dark"
+        theme={VisualTheme.DarkMode}
       />
     )}
   </Story>
@@ -80,7 +84,7 @@ A pull quote for use in an editorial page.
           quote: 'Coding aint rocket science, it’s just falsely intimidating.',
         }}
         size="large"
-        theme="dark"
+        theme={VisualTheme.DarkMode}
       />
     )}
   </Story>
@@ -95,7 +99,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="small"
-        theme="light"
+        theme={VisualTheme.Light}
       />
     )}
   </Story>

@@ -1,1 +1,4 @@
-export type VisualTheme = 'dark' | 'light';
+export enum VisualTheme {
+  DarkMode = 'dark-mode',
+  LightMode = 'light-mode',
+}

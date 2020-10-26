@@ -1,5 +1,6 @@
 import { mount } from 'enzyme';
 import React from 'react';
+import { VisualTheme } from '@codecademy/gamut';
 
 import { Testimonial } from '..';
 import styles from '../../styles.module.scss';
@@ -15,7 +16,11 @@ const exampleTestmonial = {
 describe('Testimonial', () => {
   it('adds the light class to the wrapper container when its theme is light', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="light" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="small"
+        theme={VisualTheme.LightMode}
+      />
     );
 
     const containerClassName = wrapper
@@ -27,7 +32,11 @@ describe('Testimonial', () => {
 
   it('adds the dark class to the wrapper container when its theme is dark', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="small"
+        theme={VisualTheme.DarkMode}
+      />
     );
 
     const containerClassName = wrapper
@@ -39,7 +48,11 @@ describe('Testimonial', () => {
 
   it('adds the small class to the content container when its size is small', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="small"
+        theme={VisualTheme.DarkMode}
+      />
     );
 
     const containerClassName = wrapper
@@ -51,7 +64,11 @@ describe('Testimonial', () => {
 
   it('adds the medium class to the content container when its size is medium', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="medium" theme="dark" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="medium"
+        theme={VisualTheme.DarkMode}
+      />
     );
 
     const containerClassName = wrapper
@@ -63,7 +80,11 @@ describe('Testimonial', () => {
 
   it('adds the large class to the content container when its size is large', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="large" theme="dark" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="large"
+        theme={VisualTheme.DarkMode}
+      />
     );
 
     const containerClassName = wrapper
@@ -78,7 +99,7 @@ describe('Testimonial', () => {
       <Testimonial
         testimonial={{ ...exampleTestmonial, imageUrl: 'someCoolUrl' }}
         size="small"
-        theme="dark"
+        theme={VisualTheme.DarkMode}
       />
     );
 
@@ -89,7 +110,11 @@ describe('Testimonial', () => {
 
   it('does _not_ render the Avatar component when an imageUrl prop is _not_ present', () => {
     const wrapper = mount(
-      <Testimonial testimonial={exampleTestmonial} size="small" theme="dark" />
+      <Testimonial
+        testimonial={exampleTestmonial}
+        size="small"
+        theme={VisualTheme.DarkMode}
+      />
     );
 
     const avatarContainer = wrapper.find('div.avatarContainer');
