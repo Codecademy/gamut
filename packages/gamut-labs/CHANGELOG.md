@@ -1,3 +1,10 @@
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
 ## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.5...@codecademy/gamut-labs@4.5.0) (2020-10-22)
 
 
