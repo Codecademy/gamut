@@ -35,12 +35,12 @@ export const fontDecoration = {
 };
 
 export const fontSize = {
-  ['t-1']: pxRem(64),
-  ['t-2']: pxRem(44),
-  ['t-3']: pxRem(34),
-  ['t-4']: pxRem(26),
-  ['t-5']: pxRem(22),
-  ['t-6']: pxRem(20),
+  ['title-1']: pxRem(64),
+  ['title-2']: pxRem(44),
+  ['title-3']: pxRem(34),
+  ['title-4']: pxRem(26),
+  ['title-5']: pxRem(22),
+  ['title-6']: pxRem(20),
   ['p-large']: pxRem(18),
   ['p-base']: pxRem(16),
   ['p-small']: pxRem(14),
