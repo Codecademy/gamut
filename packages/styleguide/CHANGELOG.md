@@ -1,3 +1,61 @@
+## [17.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.9.0...@codecademy/styleguide@17.10.0) (2020-10-23)
+
+
+### ✨ Features
+
+* Creating the @codecademy/tracking pachage. ([1a91e7e](https://github.com/Codecademy/client-modules/commit/1a91e7e41e9a30e3cabb3b736c1b686c43e9570e))
+
+## [17.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.8.0...@codecademy/styleguide@17.9.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
+## [17.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.7...@codecademy/styleguide@17.8.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [17.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.6...@codecademy/styleguide@17.7.7) (2020-10-20)
+
+### [17.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.5...@codecademy/styleguide@17.7.6) (2020-10-20)
+
+### [17.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.4...@codecademy/styleguide@17.7.5) (2020-10-20)
+
+### [17.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.3...@codecademy/styleguide@17.7.4) (2020-10-20)
+
+
+### Other Changes
+
+* add stop gap themes for buttons ([#1063](https://github.com/Codecademy/client-modules/issues/1063)) ([19b3835](https://github.com/Codecademy/client-modules/commit/19b3835cd315922602b478d17c8b614d9f827604))
+
+### [17.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.2...@codecademy/styleguide@17.7.3) (2020-10-19)
+
+### [17.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.1...@codecademy/styleguide@17.7.2) (2020-10-16)
+
+
+### Other Changes
+
+* bump a few assorted dependencies to latest ([#986](https://github.com/Codecademy/client-modules/issues/986)) ([2d61eef](https://github.com/Codecademy/client-modules/commit/2d61eefa4fb0d8604d99e8aae45131b93d045248)), closes [#930](https://github.com/Codecademy/client-modules/issues/930) [#900](https://github.com/Codecademy/client-modules/issues/900) [#987](https://github.com/Codecademy/client-modules/issues/987) [#988](https://github.com/Codecademy/client-modules/issues/988) [#989](https://github.com/Codecademy/client-modules/issues/989) [#990](https://github.com/Codecademy/client-modules/issues/990) [#991](https://github.com/Codecademy/client-modules/issues/991) [#992](https://github.com/Codecademy/client-modules/issues/992) [#994](https://github.com/Codecademy/client-modules/issues/994) [#1002](https://github.com/Codecademy/client-modules/issues/1002) [#1004](https://github.com/Codecademy/client-modules/issues/1004) [#1005](https://github.com/Codecademy/client-modules/issues/1005) [#1007](https://github.com/Codecademy/client-modules/issues/1007) [#1006](https://github.com/Codecademy/client-modules/issues/1006) [#1010](https://github.com/Codecademy/client-modules/issues/1010) [#1011](https://github.com/Codecademy/client-modules/issues/1011) [#996](https://github.com/Codecademy/client-modules/issues/996) [#995](https://github.com/Codecademy/client-modules/issues/995) [#997](https://github.com/Codecademy/client-modules/issues/997) [#993](https://github.com/Codecademy/client-modules/issues/993) [#1013](https://github.com/Codecademy/client-modules/issues/1013) [#1014](https://github.com/Codecademy/client-modules/issues/1014) [#1016](https://github.com/Codecademy/client-modules/issues/1016) [#1015](https://github.com/Codecademy/client-modules/issues/1015) [#1017](https://github.com/Codecademy/client-modules/issues/1017) [#1008](https://github.com/Codecademy/client-modules/issues/1008) [#1012](https://github.com/Codecademy/client-modules/issues/1012) [#1018](https://github.com/Codecademy/client-modules/issues/1018) [#1020](https://github.com/Codecademy/client-modules/issues/1020) [#1021](https://github.com/Codecademy/client-modules/issues/1021) [#1022](https://github.com/Codecademy/client-modules/issues/1022) [#1023](https://github.com/Codecademy/client-modules/issues/1023) [#1024](https://github.com/Codecademy/client-modules/issues/1024) [#1025](https://github.com/Codecademy/client-modules/issues/1025) [#1026](https://github.com/Codecademy/client-modules/issues/1026) [#1028](https://github.com/Codecademy/client-modules/issues/1028) [#1029](https://github.com/Codecademy/client-modules/issues/1029) [#1031](https://github.com/Codecademy/client-modules/issues/1031) [#1032](https://github.com/Codecademy/client-modules/issues/1032) [#1035](https://github.com/Codecademy/client-modules/issues/1035) [#1027](https://github.com/Codecademy/client-modules/issues/1027) [#1034](https://github.com/Codecademy/client-modules/issues/1034) [#1039](https://github.com/Codecademy/client-modules/issues/1039) [#1041](https://github.com/Codecademy/client-modules/issues/1041) [#1033](https://github.com/Codecademy/client-modules/issues/1033) [#1042](https://github.com/Codecademy/client-modules/issues/1042) [#1043](https://github.com/Codecademy/client-modules/issues/1043) [#1044](https://github.com/Codecademy/client-modules/issues/1044) [#1045](https://github.com/Codecademy/client-modules/issues/1045) [#1047](https://github.com/Codecademy/client-modules/issues/1047) [#1048](https://github.com/Codecademy/client-modules/issues/1048) [#1050](https://github.com/Codecademy/client-modules/issues/1050) [#1051](https://github.com/Codecademy/client-modules/issues/1051) [#1052](https://github.com/Codecademy/client-modules/issues/1052) [#1053](https://github.com/Codecademy/client-modules/issues/1053) [#1054](https://github.com/Codecademy/client-modules/issues/1054)
+
+### [17.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.0...@codecademy/styleguide@17.7.1) (2020-10-14)
+
+## [17.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.5...@codecademy/styleguide@17.7.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
+### [17.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.4...@codecademy/styleguide@17.6.5) (2020-10-08)
+
+### [17.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.3...@codecademy/styleguide@17.6.4) (2020-10-08)
+
+### [17.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.2...@codecademy/styleguide@17.6.3) (2020-10-08)
+
 ### [17.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.1...@codecademy/styleguide@17.6.2) (2020-10-06)
 
 ### [17.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.6.0...@codecademy/styleguide@17.6.1) (2020-10-06)

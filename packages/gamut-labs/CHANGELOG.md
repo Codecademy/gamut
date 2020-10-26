@@ -1,3 +1,68 @@
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.5...@codecademy/gamut-labs@4.5.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [4.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.4...@codecademy/gamut-labs@4.4.5) (2020-10-20)
+
+### [4.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.3...@codecademy/gamut-labs@4.4.4) (2020-10-20)
+
+### [4.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.2...@codecademy/gamut-labs@4.4.3) (2020-10-20)
+
+### [4.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.1...@codecademy/gamut-labs@4.4.2) (2020-10-20)
+
+### [4.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.0...@codecademy/gamut-labs@4.4.1) (2020-10-19)
+
+## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.3...@codecademy/gamut-labs@4.4.0) (2020-10-19)
+
+
+### ✨ Features
+
+* **Box:** make ShadowOffset customizable ([#1060](https://github.com/Codecademy/client-modules/issues/1060)) ([0435253](https://github.com/Codecademy/client-modules/commit/04352538399244b861ea30d634edb4a8959ac62e))
+
+### [4.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.2...@codecademy/gamut-labs@4.3.3) (2020-10-16)
+
+
+### Other Changes
+
+* bump a few assorted dependencies to latest ([#986](https://github.com/Codecademy/client-modules/issues/986)) ([2d61eef](https://github.com/Codecademy/client-modules/commit/2d61eefa4fb0d8604d99e8aae45131b93d045248)), closes [#930](https://github.com/Codecademy/client-modules/issues/930) [#900](https://github.com/Codecademy/client-modules/issues/900) [#987](https://github.com/Codecademy/client-modules/issues/987) [#988](https://github.com/Codecademy/client-modules/issues/988) [#989](https://github.com/Codecademy/client-modules/issues/989) [#990](https://github.com/Codecademy/client-modules/issues/990) [#991](https://github.com/Codecademy/client-modules/issues/991) [#992](https://github.com/Codecademy/client-modules/issues/992) [#994](https://github.com/Codecademy/client-modules/issues/994) [#1002](https://github.com/Codecademy/client-modules/issues/1002) [#1004](https://github.com/Codecademy/client-modules/issues/1004) [#1005](https://github.com/Codecademy/client-modules/issues/1005) [#1007](https://github.com/Codecademy/client-modules/issues/1007) [#1006](https://github.com/Codecademy/client-modules/issues/1006) [#1010](https://github.com/Codecademy/client-modules/issues/1010) [#1011](https://github.com/Codecademy/client-modules/issues/1011) [#996](https://github.com/Codecademy/client-modules/issues/996) [#995](https://github.com/Codecademy/client-modules/issues/995) [#997](https://github.com/Codecademy/client-modules/issues/997) [#993](https://github.com/Codecademy/client-modules/issues/993) [#1013](https://github.com/Codecademy/client-modules/issues/1013) [#1014](https://github.com/Codecademy/client-modules/issues/1014) [#1016](https://github.com/Codecademy/client-modules/issues/1016) [#1015](https://github.com/Codecademy/client-modules/issues/1015) [#1017](https://github.com/Codecademy/client-modules/issues/1017) [#1008](https://github.com/Codecademy/client-modules/issues/1008) [#1012](https://github.com/Codecademy/client-modules/issues/1012) [#1018](https://github.com/Codecademy/client-modules/issues/1018) [#1020](https://github.com/Codecademy/client-modules/issues/1020) [#1021](https://github.com/Codecademy/client-modules/issues/1021) [#1022](https://github.com/Codecademy/client-modules/issues/1022) [#1023](https://github.com/Codecademy/client-modules/issues/1023) [#1024](https://github.com/Codecademy/client-modules/issues/1024) [#1025](https://github.com/Codecademy/client-modules/issues/1025) [#1026](https://github.com/Codecademy/client-modules/issues/1026) [#1028](https://github.com/Codecademy/client-modules/issues/1028) [#1029](https://github.com/Codecademy/client-modules/issues/1029) [#1031](https://github.com/Codecademy/client-modules/issues/1031) [#1032](https://github.com/Codecademy/client-modules/issues/1032) [#1035](https://github.com/Codecademy/client-modules/issues/1035) [#1027](https://github.com/Codecademy/client-modules/issues/1027) [#1034](https://github.com/Codecademy/client-modules/issues/1034) [#1039](https://github.com/Codecademy/client-modules/issues/1039) [#1041](https://github.com/Codecademy/client-modules/issues/1041) [#1033](https://github.com/Codecademy/client-modules/issues/1033) [#1042](https://github.com/Codecademy/client-modules/issues/1042) [#1043](https://github.com/Codecademy/client-modules/issues/1043) [#1044](https://github.com/Codecademy/client-modules/issues/1044) [#1045](https://github.com/Codecademy/client-modules/issues/1045) [#1047](https://github.com/Codecademy/client-modules/issues/1047) [#1048](https://github.com/Codecademy/client-modules/issues/1048) [#1050](https://github.com/Codecademy/client-modules/issues/1050) [#1051](https://github.com/Codecademy/client-modules/issues/1051) [#1052](https://github.com/Codecademy/client-modules/issues/1052) [#1053](https://github.com/Codecademy/client-modules/issues/1053) [#1054](https://github.com/Codecademy/client-modules/issues/1054)
+
+### [4.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.1...@codecademy/gamut-labs@4.3.2) (2020-10-14)
+
+
+### Other Changes
+
+* added aria-label prop to pro logo ([#1057](https://github.com/Codecademy/client-modules/issues/1057)) ([0c5e13b](https://github.com/Codecademy/client-modules/commit/0c5e13b98e6c535bde2ba78480548c6c92615d2f))
+
+### [4.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.0...@codecademy/gamut-labs@4.3.1) (2020-10-14)
+
+## [4.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.10...@codecademy/gamut-labs@4.3.0) (2020-10-14)
+
+
+### ✨ Features
+
+* **LayoutGrid:** add rowspan to LayoutGrid and fix colors for ProLogo ([#1056](https://github.com/Codecademy/client-modules/issues/1056)) ([a820693](https://github.com/Codecademy/client-modules/commit/a8206937a02909c776f63c4c391af7043f7cf5db))
+
+### [4.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.9...@codecademy/gamut-labs@4.2.10) (2020-10-08)
+
+
+### Other Changes
+
+* rename 's' styles to 'styles' ([#984](https://github.com/Codecademy/client-modules/issues/984)) ([0cf7210](https://github.com/Codecademy/client-modules/commit/0cf721035564f9050cdbcc9de689f149be0e96a2))
+
+### [4.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.8...@codecademy/gamut-labs@4.2.9) (2020-10-08)
+
+### [4.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.7...@codecademy/gamut-labs@4.2.8) (2020-10-08)
+
 ### [4.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.6...@codecademy/gamut-labs@4.2.7) (2020-10-06)
 
 ### [4.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.2.5...@codecademy/gamut-labs@4.2.6) (2020-10-06)

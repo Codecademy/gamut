@@ -12,7 +12,7 @@ import {
 } from './libs/overrides';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import { createPreprocessingInstructions } from './libs/preprocessing';
-import s from './styles/index.module.scss';
+import styles from './styles/index.module.scss';
 import { Iframe } from './libs/overrides/Iframe';
 import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
 import { Table } from './libs/overrides/Table';
@@ -21,7 +21,7 @@ const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
 
-const preprocessingInstructions = createPreprocessingInstructions(s);
+const preprocessingInstructions = createPreprocessingInstructions(styles);
 
 const isValidNode = function () {
   return true;
@@ -55,7 +55,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
 
     if (!text) return null;
 
-    const spacingStyles = s[`spacing-${spacing}`];
+    const spacingStyles = styles[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 
     const Wrapper = inline ? 'span' : 'div';

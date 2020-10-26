@@ -52,7 +52,7 @@ export type GridFormProps<Values extends {}> = {
 };
 
 export function GridForm<
-  Values extends Record<string, boolean | string | undefined>
+  Values extends Record<string, boolean | string | undefined | FileList>
 >({
   children,
   className,
