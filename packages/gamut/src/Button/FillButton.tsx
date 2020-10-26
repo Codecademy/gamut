@@ -3,12 +3,13 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -22,10 +23,12 @@ const FillButtonInner = styled(ButtonInner)<ButtonProps>(
       }
 
       ${FillButtonOuter}:disabled & {
-        background: ${mode === 'light'
+        background: ${mode === VisualTheme.LightMode
           ? swatches.gray[200]
           : swatches.gray[600]};
-        color: ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
+        color: ${mode === VisualTheme.LightMode
+          ? swatches.gray[600]
+          : swatches.gray[200]};
         cursor: not-allowed;
       }
     `;

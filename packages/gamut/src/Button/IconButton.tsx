@@ -8,7 +8,6 @@ export type IconButtonProps = {
   icon: React.ComponentType<GamutIconProps>;
 };
 
-// Todo: how to compose?
 export const IconButton: React.FC<
   IconButtonProps & React.ComponentProps<typeof TextButton>
 > = ({ icon: Icon, ...props }) => {

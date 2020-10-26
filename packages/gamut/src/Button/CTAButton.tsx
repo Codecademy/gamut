@@ -1,17 +1,17 @@
 import { colors, fontFamily, swatches } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-
 import React from 'react';
 
+import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
-    const shadow = mode === 'light' ? colors.black : colors.white;
+    const shadow = mode === VisualTheme.LightMode ? colors.black : colors.white;
 
     return css`
       background-color: ${modeColors.background};
@@ -32,12 +32,16 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
       }
 
       ${CTAButtonOuter}:disabled & {
-        background: ${mode === 'light'
+        background: ${mode === VisualTheme.LightMode
           ? swatches.gray[200]
           : swatches.gray[600]};
         box-shadow: -3px 5px 0 1px
-          ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
-        color: ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
+          ${mode === VisualTheme.LightMode
+            ? swatches.gray[600]
+            : swatches.gray[200]};
+        color: ${mode === VisualTheme.LightMode
+          ? swatches.gray[600]
+          : swatches.gray[200]};
       }
     `;
   }

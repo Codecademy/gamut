@@ -7,11 +7,11 @@ export type ButtonProps = {
 };
 
 export const modeColorGroups = {
-  dark: {
+  [VisualTheme.DarkMode]: {
     background: colors.yellow,
     foreground: colors.black,
   },
-  light: {
+  [VisualTheme.LightMode]: {
     background: colors.hyper,
     foreground: colors.white,
   },

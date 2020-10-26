@@ -2,13 +2,14 @@ import { colors, swatches } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
+import { VisualTheme } from '../theming/VisualTheme';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -18,22 +19,26 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
       padding: 0.75rem 1rem;
 
       ${StrokeButtonOuter}:hover & {
-        background-color: ${mode === 'light'
+        background-color: ${mode === VisualTheme.LightMode
           ? swatches.gray[100]
           : swatches.gray[900]};
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${mode === 'light' ? colors.hyper : colors.yellow};
+        background: ${mode === VisualTheme.LightMode
+          ? colors.hyper
+          : colors.yellow};
         color: ${modeColors.foreground};
       }
 
       ${StrokeButtonOuter}:disabled & {
         background-color: transparent;
-        border-color: ${mode === 'light'
+        border-color: ${mode === VisualTheme.LightMode
           ? swatches.gray[200]
           : swatches.gray[600]};
-        color: ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
+        color: ${mode === VisualTheme.LightMode
+          ? swatches.gray[600]
+          : swatches.gray[200]};
         cursor: not-allowed;
       }
     `;

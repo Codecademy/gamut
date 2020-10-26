@@ -3,10 +3,11 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { ButtonBase } from '../ButtonBase';
+import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonProps, modeColorGroups } from './shared';
 
 export const ButtonOutline = styled(ButtonBase)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`

@@ -6,6 +6,7 @@ import {
   IconButton,
   StrokeButton,
   TextButton,
+  VisualTheme,
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import { select, text, boolean } from '@storybook/addon-knobs';
@@ -16,11 +17,14 @@ import { StoryStatus } from '~styleguide/blocks';
   args={{
     children: 'Click Me',
     disabled: false,
-    mode: 'light',
+    mode: VisualTheme.LightMode,
   }}
   argTypes={{
     mode: {
-      control: { type: 'select', options: ['dark', 'light'] },
+      control: {
+        type: 'select',
+        options: [VisualTheme.DarkMode, VisualTheme.LightMode],
+      },
     },
   }}
   subcomponents={{ CTAButton, FillButton }}

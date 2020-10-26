@@ -3,12 +3,13 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const TextButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -17,7 +18,7 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
       padding: 0.75rem 1rem;
 
       ${TextButtonOuter}:hover & {
-        background-color: ${mode === 'light'
+        background-color: ${mode === VisualTheme.LightMode
           ? swatches.gray[100]
           : swatches.gray[900]};
       }
@@ -28,7 +29,9 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
 
       ${TextButtonOuter}:disabled & {
         background-color: transparent;
-        color: ${mode === 'light' ? swatches.gray[600] : swatches.gray[200]};
+        color: ${mode === VisualTheme.LightMode
+          ? swatches.gray[600]
+          : swatches.gray[200]};
         cursor: not-allowed;
       }
     `;
