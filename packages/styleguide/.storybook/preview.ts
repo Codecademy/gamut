@@ -1,6 +1,7 @@
 import { addParameters, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
+import { withTheme } from './decorators/theme';
 
 import './decorators/wrapper';
 
@@ -43,3 +44,4 @@ addParameters({
 });
 
 addDecorator(withKnobs);
+addDecorator(withTheme);

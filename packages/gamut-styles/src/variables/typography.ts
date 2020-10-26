@@ -1,6 +1,5 @@
 import { deprecatedColors as colorSwatch } from './deprecated-colors';
 import { pxRem } from '../utilities/pxRem';
-import { base } from './base';
 
 export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
 "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
@@ -36,27 +35,23 @@ export const fontDecoration = {
 };
 
 export const fontSize = {
-  text: {
-    lg: pxRem(base * 1.125),
-    md: pxRem(base),
-    sm: pxRem(base * 0.85),
-  },
-  heading: {
-    xxl: pxRem(base * 3),
-    xl: pxRem(base * 2.2),
-    lg: pxRem(base * 1.6),
-    md: pxRem(base * 1.4),
-    sm: pxRem(base * 1.25),
-    xs: pxRem(base),
-  },
+  ['title-1']: pxRem(64),
+  ['title-2']: pxRem(44),
+  ['title-3']: pxRem(34),
+  ['title-4']: pxRem(26),
+  ['title-5']: pxRem(22),
+  ['title-6']: pxRem(20),
+  ['p-large']: pxRem(18),
+  ['p-base']: pxRem(16),
+  ['p-small']: pxRem(14),
 };
 
 export const lineHeight = {
-  text: 1.5,
-  heading: 1.1,
+  base: 1.5,
+  title: 1.1,
 };
 
 export const fontWeight = {
-  text: 400,
-  heading: 700,
+  base: 400,
+  title: 700,
 };

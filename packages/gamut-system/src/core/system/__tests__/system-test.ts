@@ -1,7 +1,7 @@
 import { system } from '..';
 
 describe('system', () => {
-  const { properties, variant, ...groups } = system.create();
+  const { properties, variant, ...groups } = system.create({});
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {

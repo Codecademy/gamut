@@ -1,0 +1,22 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Text } from '@codecademy/gamut-labs/src';
+
+<Meta title="Typography/Text-(Labs)" component={Text} />
+
+# 📝 Typography
+
+<StoryStatus status="stable" />
+
+This is a single primitive to handle all `<p>` and
+`<span>` tags with defined size intervals.
+
+<Canvas>
+  <Story name="Text" args={{ children: 'Hello World' }}>
+    {(args) => <Text {...args} />}
+  </Story>
+</Canvas>
+
+## Props
+
+<Props story="Text" />

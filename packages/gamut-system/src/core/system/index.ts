@@ -67,7 +67,9 @@ const create = <
 };
 
 export const system = {
-  create,
+  create: <Config extends SystemConfig<{}>>(config: Config) => {
+    return create<{}, Config>(config);
+  },
   withTheme: <Theme extends AbstractTheme>() => {
     return {
       create: <Config extends SystemConfig<Theme>>(config: Config) => {
