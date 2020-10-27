@@ -10,6 +10,7 @@ import { action } from '@storybook/addon-actions';
 import { select, text, boolean } from '@storybook/addon-knobs';
 import {
   themes,
+  newThemeKeys,
   brandThemeKeys,
   statusThemeKeys,
   deprecatedThemeKeys,
@@ -55,6 +56,25 @@ Play with this button, if you&apos;d like!
 ## Themes
 
 There are several theme sets you can use with `Button`
+
+### New
+
+<Canvas columns={1}>
+  <Story name="New Buttons">
+    {(args) =>
+      newThemeKeys.map((theme) => (
+        <Button
+          key={`${theme}`}
+          onClick={action('Clicked Button')}
+          style={{ margin: '1rem' }}
+          theme={theme}
+        >
+          {theme}
+        </Button>
+      ))
+    }
+  </Story>
+</Canvas>
 
 ### Brand
 

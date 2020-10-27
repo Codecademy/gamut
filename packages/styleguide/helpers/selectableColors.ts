@@ -10,3 +10,12 @@ export const selectableColors = Object.keys(colors).reduce<
     [colorKey]: colorAtKey,
   };
 }, {});
+
+export const selectableColorNames = Object.keys(colors).reduce<
+  Record<string, string>
+>((acc, colorKey) => {
+  return {
+    ...acc,
+    [colorKey]: colorKey,
+  };
+}, {});
