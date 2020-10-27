@@ -3,7 +3,7 @@ import { swatches, fontSize } from '@codecademy/gamut-styles';
 import { fontFamily } from '@codecademy/gamut-styles/src';
 
 export const ScaleColumn = styled.div`
-  font-size: ${fontSize['p-small']};
+  font-size: ${fontSize[14]};
   color: ${swatches.gray[400]};
   font-family: ${fontFamily.monospace};
   display: grid;
