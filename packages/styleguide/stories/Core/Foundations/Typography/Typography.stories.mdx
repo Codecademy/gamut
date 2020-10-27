@@ -80,7 +80,7 @@ We use a single scale for font sizes that are aliased to their most appropriate 
 ```tsx
 import { fontSize } from '@codecademy/gamut-styles';
 
-fontSize['p-small']; // p-body | p-large | title-1 | title-2 | title-2 | title-3 | title-4 | title-5 | title-6
+fontSize[14];
 ```
 
 ```scss
@@ -104,7 +104,7 @@ available for some font stacks, these will be the safest for their desired effec
     return (
       <ScaleRow key={key} hasAlias>
         <ScaleColumn>{key}</ScaleColumn>
-        <Text weight={size}>{size}</Text>
+        <Text weight={size}>Do andriods dream of electric sheep?</Text>
       </ScaleRow>
     );
   })}
@@ -135,7 +135,7 @@ We generally like to keep body text at 1.5 and headings at 1.15.
     return (
       <ScaleRow key={key} hasAlias>
         <ScaleColumn>{key}</ScaleColumn>
-        <Text line={height} size="title-5">
+        <Text line={height} size={22}>
           Children know perfectly well that unicorns aren’t real, but they also
           know that books about unicorns, if they are good books, are true
           books.

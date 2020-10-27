@@ -18,7 +18,7 @@ type TextProps = {
 
 export const Text = styled.p<TextProps>`
   margin: 0;
-  font-size: ${({ size = fontSize['title-3'] }) => size};
+  font-size: ${({ size = fontSize[34] }) => size};
   color: ${({ color = colors.black }) => color};
   font-family: ${({ family = fontFamily.base }) => family};
   font-weight: ${({ weight = fontWeight.base }) => weight};

@@ -35,15 +35,15 @@ export const fontDecoration = {
 };
 
 export const fontSize = {
-  ['title-1']: pxRem(64),
-  ['title-2']: pxRem(44),
-  ['title-3']: pxRem(34),
-  ['title-4']: pxRem(26),
-  ['title-5']: pxRem(22),
-  ['title-6']: pxRem(20),
-  ['p-large']: pxRem(18),
-  ['p-base']: pxRem(16),
-  ['p-small']: pxRem(14),
+  64: pxRem(64),
+  44: pxRem(44),
+  34: pxRem(34),
+  26: pxRem(26),
+  22: pxRem(22),
+  20: pxRem(20),
+  18: pxRem(18),
+  16: pxRem(16),
+  14: pxRem(14),
 };
 
 export const lineHeight = {
