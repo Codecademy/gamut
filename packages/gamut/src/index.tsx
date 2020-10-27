@@ -7,6 +7,7 @@ export * from './AppBar';
 export * from './AppBar/AppBarSection';
 export * from './Badge';
 export * from './Banner';
+export * from './BodyPortal';
 export * from './Button';
 export * from './ButtonBase';
 export * from './Card/CardBody';
