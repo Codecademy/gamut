@@ -11,7 +11,7 @@
     "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
     "build:icons": "rm -rf ./src/icons && svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "rename-icons": "find ./src/svg -depth -type f \\( -name '*.svg' ! -name '*-icon.svg' \\) -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
     "build": "yarn rename-icons && yarn build:icons && yarn build:compile && yarn build:types",
     "prepublishOnly": "yarn build"
