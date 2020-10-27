@@ -1,3 +1,10 @@
+### [3.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.9.1...@codecademy/gamut-icons@3.9.2) (2020-10-20)
+
+
+### Other Changes
+
+* trim gamut-icons readme endlines ([#1067](https://github.com/Codecademy/client-modules/issues/1067)) ([b8fd442](https://github.com/Codecademy/client-modules/commit/b8fd4425bf43f3a087448f8d9df63cc153c871cf))
+
 ### [3.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.9.0...@codecademy/gamut-icons@3.9.1) (2020-10-16)
 
 

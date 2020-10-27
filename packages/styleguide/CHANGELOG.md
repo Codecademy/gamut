@@ -1,3 +1,46 @@
+### [17.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.1...@codecademy/styleguide@17.10.2) (2020-10-27)
+
+### [17.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.0...@codecademy/styleguide@17.10.1) (2020-10-26)
+
+
+### Other Changes
+
+* Surface box story ([#1073](https://github.com/Codecademy/client-modules/issues/1073)) ([4057003](https://github.com/Codecademy/client-modules/commit/4057003fb35f0f3728567733334305841aa75520))
+
+## [17.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.9.0...@codecademy/styleguide@17.10.0) (2020-10-23)
+
+
+### ✨ Features
+
+* Creating the @codecademy/tracking pachage. ([1a91e7e](https://github.com/Codecademy/client-modules/commit/1a91e7e41e9a30e3cabb3b736c1b686c43e9570e))
+
+## [17.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.8.0...@codecademy/styleguide@17.9.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
+## [17.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.7...@codecademy/styleguide@17.8.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [17.7.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.6...@codecademy/styleguide@17.7.7) (2020-10-20)
+
+### [17.7.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.5...@codecademy/styleguide@17.7.6) (2020-10-20)
+
+### [17.7.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.4...@codecademy/styleguide@17.7.5) (2020-10-20)
+
+### [17.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.3...@codecademy/styleguide@17.7.4) (2020-10-20)
+
+
+### Other Changes
+
+* add stop gap themes for buttons ([#1063](https://github.com/Codecademy/client-modules/issues/1063)) ([19b3835](https://github.com/Codecademy/client-modules/commit/19b3835cd315922602b478d17c8b614d9f827604))
+
 ### [17.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.2...@codecademy/styleguide@17.7.3) (2020-10-19)
 
 ### [17.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.7.1...@codecademy/styleguide@17.7.2) (2020-10-16)

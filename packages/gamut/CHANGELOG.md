@@ -1,3 +1,30 @@
+### [16.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.0...@codecademy/gamut@16.3.1) (2020-10-27)
+
+
+### 🐛 Bug Fixes
+
+* fixes export/import of bodyportal ([#1078](https://github.com/Codecademy/client-modules/issues/1078)) ([9543ce2](https://github.com/Codecademy/client-modules/commit/9543ce2292d633c337e0149b73c0e48ff0e856d4))
+
+## [16.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.7...@codecademy/gamut@16.3.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [16.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.6...@codecademy/gamut@16.2.7) (2020-10-20)
+
+### [16.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.5...@codecademy/gamut@16.2.6) (2020-10-20)
+
+### [16.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.4...@codecademy/gamut@16.2.5) (2020-10-20)
+
+### [16.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.3...@codecademy/gamut@16.2.4) (2020-10-20)
+
+
+### Other Changes
+
+* add stop gap themes for buttons ([#1063](https://github.com/Codecademy/client-modules/issues/1063)) ([19b3835](https://github.com/Codecademy/client-modules/commit/19b3835cd315922602b478d17c8b614d9f827604))
+
 ### [16.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.2...@codecademy/gamut@16.2.3) (2020-10-19)
 
 

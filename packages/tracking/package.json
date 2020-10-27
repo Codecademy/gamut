@@ -1,0 +1,39 @@
+{
+  "name": "@codecademy/tracking",
+  "description": "Tracking library for Codecademy apps.",
+  "version": "0.1.1",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.12.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.15",
+    "babel-preset-codecademy": "^2.3.0",
+    "jest": "^26.6.0",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "^26.4.1",
+    "typescript": "^4.0.3"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "prepublishOnly": "yarn build"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

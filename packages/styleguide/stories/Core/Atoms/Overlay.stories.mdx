@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 
 import { Overlay, Button, Container } from '@codecademy/gamut/src';
-import { useState } from '@storybook/addons';
 
 <Meta title="Atoms/Overlay" component={Overlay} />
 
@@ -14,9 +14,9 @@ Overlay primitives are controlled components that are told whether
 they're open by their parent. They're very basic and
 don't have animations defined.
 
-Unlike the legacy `Modal` implementations in the monolith, this: - always
+Unlike the legacy `Modal` implementations in the monolith, this: -always
 assumes viewport is locked, by making content `position: fixed` - cannot override
-contentProps, animation, or shouldFocusOnMount
+contentProps, animation, or shouldFocusOnMount.
 
 Use this overlay only for actual 'overlay' content that takes
 up the full screen. Do not use it for dropdowns or other small
@@ -34,13 +34,14 @@ a background behind content, see `Modal`.
           <Button onClick={() => setOpen(true)}>Open Overlay</Button>
           <Container>
             <Overlay
+              {...args}
               clickOutsideCloses
               isOpen={open}
               onRequestClose={() => setOpen(false)}
             >
               <Container>
                 <h1>Hooray!</h1>
-                <button onClick={() => setOpen(false)}>On Close</button>
+                <Button onClick={() => setOpen(false)}>Close Overlay</Button>
               </Container>
             </Overlay>
           </Container>
@@ -50,4 +51,4 @@ a background behind content, see `Modal`.
   </Story>
 </Canvas>
 
-<Props of={Overlay} />
+<Props story="Overlay" />
