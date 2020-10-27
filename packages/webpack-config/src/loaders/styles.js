@@ -74,7 +74,7 @@ const css = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          onlyLocals: true,
+          exportOnlyLocals: true,
         },
       }),
     ],
@@ -119,7 +119,7 @@ const scss = {
       merge(cssLoaderDefaults, {
         options: {
           modules: cssModulesDefaults,
-          onlyLocals: true,
+          exportOnlyLocals: true,
           importLoaders: 2,
         },
       }),
