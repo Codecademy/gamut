@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [4.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.0...@codecademy/gamut-labs@4.6.1) (2020-10-27)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 * fixes export/import of bodyportal ([#1078](https://github.com/Codecademy/client-modules/issues/1078)) ([9543ce2](https://github.com/Codecademy/client-modules/commit/9543ce2292d633c337e0149b73c0e48ff0e856d4))
-
-
 
 ## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
 
@@ -377,3 +370,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
