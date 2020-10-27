@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [16.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.0...@codecademy/gamut@16.3.1) (2020-10-27)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 * fixes export/import of bodyportal ([#1078](https://github.com/Codecademy/client-modules/issues/1078)) ([9543ce2](https://github.com/Codecademy/client-modules/commit/9543ce2292d633c337e0149b73c0e48ff0e856d4))
-
-
 
 ## [16.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.2.7...@codecademy/gamut@16.3.0) (2020-10-22)
 
@@ -3078,3 +3071,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
