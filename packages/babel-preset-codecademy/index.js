@@ -72,7 +72,7 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
         {
           corejs: false,
           regenerator: true,
-          helpers: packageType === PACKAGE_APPLICATION,
+          helpers: type === PACKAGE_APPLICATION,
           regenerator: true,
           useESModules: isEnvDevelopment || isEnvProduction,
           // Undocumented: ensures that the correct runtime version is used
