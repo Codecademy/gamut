@@ -1,3 +1,10 @@
+### [17.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.0...@codecademy/styleguide@17.10.1) (2020-10-26)
+
+
+### Other Changes
+
+* Surface box story ([#1073](https://github.com/Codecademy/client-modules/issues/1073)) ([4057003](https://github.com/Codecademy/client-modules/commit/4057003fb35f0f3728567733334305841aa75520))
+
 ## [17.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.9.0...@codecademy/styleguide@17.10.0) (2020-10-23)
 
 
