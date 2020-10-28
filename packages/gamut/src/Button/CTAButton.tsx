@@ -1,4 +1,4 @@
-import { colors, fontFamily, swatches } from '@codecademy/gamut-styles';
+import { fontFamily } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -11,37 +11,29 @@ import { ButtonProps, modeColorGroups } from './shared';
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
   ({ mode = VisualTheme.LightMode }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
-    const shadow = mode === VisualTheme.LightMode ? colors.black : colors.white;
 
     return css`
       background-color: ${modeColors.background};
       border-radius: 2px;
-      box-shadow: -3px 5px 0 1px ${shadow};
+      box-shadow: -3px 5px 0 1px ${modeColors.shadow};
       color: ${modeColors.foreground};
       font-family: ${fontFamily.accent};
       font-weight: bold;
       padding: 0.75rem 1.25rem;
 
       ${CTAButtonOuter}:hover & {
-        box-shadow: -6px 8px 0 1px ${shadow};
+        box-shadow: -6px 8px 0 1px ${modeColors.shadow};
       }
 
       ${CTAButtonOuter}:active & {
-        background: ${shadow};
+        background: ${modeColors.shadow};
         box-shadow: none;
       }
 
       ${CTAButtonOuter}:disabled & {
-        background: ${mode === VisualTheme.LightMode
-          ? swatches.gray[200]
-          : swatches.gray[600]};
-        box-shadow: -3px 5px 0 1px
-          ${mode === VisualTheme.LightMode
-            ? swatches.gray[600]
-            : swatches.gray[200]};
-        color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[600]
-          : swatches.gray[200]};
+        background: ${modeColors.backgroundMuted};
+        box-shadow: -3px 5px 0 1px ${modeColors.foregroundMuted};
+        color: ${modeColors.foregroundMuted};
       }
     `;
   }

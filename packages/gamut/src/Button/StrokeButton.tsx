@@ -1,4 +1,4 @@
-import { colors, swatches } from '@codecademy/gamut-styles';
+import { colors } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -19,9 +19,7 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
       padding: 0.75rem 1rem;
 
       ${StrokeButtonOuter}:hover & {
-        background-color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[100]
-          : swatches.gray[900]};
+        background-color: ${modeColors.backgroundEmphasized};
       }
 
       ${StrokeButtonOuter}:active & {
@@ -33,12 +31,8 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
 
       ${StrokeButtonOuter}:disabled & {
         background-color: transparent;
-        border-color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[200]
-          : swatches.gray[600]};
-        color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[600]
-          : swatches.gray[200]};
+        border-color: ${modeColors.backgroundMuted};
+        color: ${modeColors.foregroundMuted};
         cursor: not-allowed;
       }
     `;

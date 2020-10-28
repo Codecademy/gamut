@@ -23,12 +23,8 @@ const FillButtonInner = styled(ButtonInner)<ButtonProps>(
       }
 
       ${FillButtonOuter}:disabled & {
-        background: ${mode === VisualTheme.LightMode
-          ? swatches.gray[200]
-          : swatches.gray[600]};
-        color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[600]
-          : swatches.gray[200]};
+        background: ${modeColors.backgroundMuted};
+        color: ${modeColors.foregroundMuted};
         cursor: not-allowed;
       }
     `;

@@ -1,4 +1,3 @@
-import { swatches } from '@codecademy/gamut-styles';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -18,9 +17,7 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
       padding: 0.75rem 1rem;
 
       ${TextButtonOuter}:hover & {
-        background-color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[100]
-          : swatches.gray[900]};
+        background-color: ${modeColors.backgroundEmphasized};
       }
 
       ${TextButtonOuter}:active & {
@@ -29,9 +26,7 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
 
       ${TextButtonOuter}:disabled & {
         background-color: transparent;
-        color: ${mode === VisualTheme.LightMode
-          ? swatches.gray[600]
-          : swatches.gray[200]};
+        color: ${modeColors.foregroundMuted};
         cursor: not-allowed;
       }
     `;
