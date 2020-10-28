@@ -7,4 +7,4 @@ export type TextProps = HandlerProps<typeof textStyles> & {
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
 };
 
-export const Text = styled.span<TextProps>(typography);
+export const Text = styled.span<TextProps>(textStyles);
