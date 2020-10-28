@@ -4638,10 +4638,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/marked@^0.6.1":
-  version "0.6.5"
-  resolved "https://registry.npmjs.org/@types/marked/-/marked-0.6.5.tgz#3cf2a56ef615dad24aaf99784ef90a9eba4e29d8"
-  integrity sha512-6kBKf64aVfx93UJrcyEZ+OBM5nGv4RLsI6sR1Ar34bpgvGVRoyTgpxn4ZmtxOM5aDTAaaznYuYUH8bUX3Nk3YA==
+"@types/marked@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.npmjs.org/@types/marked/-/marked-1.1.0.tgz#53509b5f127e0c05c19176fcf1d743a41e00ff19"
+  integrity sha512-j8XXj6/l9kFvCwMyVqozznqpd/nk80krrW+QiIJN60Uu9gX5Pvn4/qPJ2YngQrR3QREPwmrE1f9/EWKVTFzoEw==
 
 "@types/micromatch@^4.0.1":
   version "4.0.1"
