@@ -7,7 +7,7 @@ import { grid } from './grid';
 import { flex } from './flex';
 import { background } from './background';
 import { shadow } from './shadow';
-import { colors } from './colors';
+import { color } from './colors';
 
 export const baseConfig = {
   typography,
@@ -19,7 +19,7 @@ export const baseConfig = {
   flex,
   background,
   shadow,
-  colors,
+  color,
 };
 
 export type BaseSystemConfig = typeof baseConfig;

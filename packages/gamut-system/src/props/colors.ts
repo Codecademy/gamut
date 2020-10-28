@@ -1,4 +1,4 @@
-export const colors = {
+export const color = {
   textColor: {
     propName: 'textColor',
     property: 'color',
