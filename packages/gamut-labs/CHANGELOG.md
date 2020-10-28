@@ -1,3 +1,12 @@
+### [4.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.1...@codecademy/gamut-labs@4.6.2) (2020-10-28)
+
+### [4.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.0...@codecademy/gamut-labs@4.6.1) (2020-10-27)
+
+
+### 🐛 Bug Fixes
+
+* fixes export/import of bodyportal ([#1078](https://github.com/Codecademy/client-modules/issues/1078)) ([9543ce2](https://github.com/Codecademy/client-modules/commit/9543ce2292d633c337e0149b73c0e48ff0e856d4))
+
 ## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
 
 

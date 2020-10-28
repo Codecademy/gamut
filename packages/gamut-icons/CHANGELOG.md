@@ -1,3 +1,10 @@
+## [3.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.9.2...@codecademy/gamut-icons@3.10.0) (2020-10-28)
+
+
+### ✨ Features
+
+* **Icon:** arrow down icon  ([#1076](https://github.com/Codecademy/client-modules/issues/1076)) ([98378d0](https://github.com/Codecademy/client-modules/commit/98378d06e326a48f9d82bb015b05a05f37a579b1))
+
 ### [3.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.9.1...@codecademy/gamut-icons@3.9.2) (2020-10-20)
 
 

@@ -4,7 +4,7 @@ import { useWindowSize, useClickAway, useWindowScroll } from 'react-use';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 import styles from './styles.module.scss';
-import { BodyPortal } from '../../../../gamut/src/BodyPortal';
+import { BodyPortal } from '@codecademy/gamut';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
