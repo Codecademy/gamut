@@ -43,7 +43,7 @@ const {
       scale: 'spacing',
     },
   },
-  colors: {
+  color: {
     textColor: {
       propName: 'textColor',
       scale: 'colors',
