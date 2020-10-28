@@ -31,8 +31,8 @@ const commonConfig = (options = {}) => {
     },
 
     optimization: {
-      chunkIds: PROD ? 'deterministic' : 'named',
-      moduleIds: PROD ? 'deterministic' : 'named',
+      chunkIds: DEV ? 'named' : 'deterministic',
+      moduleIds: DEV ? 'named' : 'deterministic',
     },
 
     module: {
