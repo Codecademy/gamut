@@ -9,6 +9,7 @@ export * from './Badge';
 export * from './Banner';
 export * from './ButtonDeprecated';
 export * from './ButtonDeprecatedBase';
+export * from './BodyPortal';
 export * from './Card/CardBody';
 export * from './Card/CardFooter';
 export * from './Card/CardShell';
