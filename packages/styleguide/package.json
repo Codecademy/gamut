@@ -42,7 +42,7 @@
     "invariant": "2.2.4",
     "jsdom": "16.4.0",
     "lodash": "4.17.20",
-    "moment": "2.24.0",
+    "moment": "2.29.1",
     "polished": "^3.6.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
