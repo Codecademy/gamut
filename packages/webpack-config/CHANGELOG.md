@@ -1,3 +1,10 @@
+## [5.1.0](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.6...@codecademy/webpack-config@5.1.0) (2020-10-23)
+
+
+### ✨ Features
+
+* Creating the @codecademy/tracking pachage. ([1a91e7e](http://github.com/Codecademy/client-modules/commit/1a91e7e41e9a30e3cabb3b736c1b686c43e9570e))
+
 ### [5.0.6](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.5...@codecademy/webpack-config@5.0.6) (2020-10-16)
 
 

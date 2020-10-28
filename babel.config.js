@@ -19,6 +19,3 @@ module.exports = {
     },
   },
 };
-
-// todo: check whether adding emotion here is good?
-//

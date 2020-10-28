@@ -13,6 +13,8 @@ Array [
   "Banner",
   "BannerStyle",
   "BannerType",
+  "BodyPortal",
+  "Button",
   "ButtonBase",
   "ButtonDeprecated",
   "ButtonDeprecatedBase",
