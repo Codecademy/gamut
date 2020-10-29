@@ -4,7 +4,7 @@ _Shared node modules for codecademy.com & co_
 
 ---
 
-[![CircleCI](https://circleci.com/gh/Codecademy/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/RyzacInc/client-modules)
+[![CircleCI](https://circleci.com/gh/Codecademy/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/client-modules)
 [![codecov](https://codecov.io/gh/Codecademy/client-modules/branch/main/graph/badge.svg)](https://codecov.io/gh/Codecademy/client-modules)
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:

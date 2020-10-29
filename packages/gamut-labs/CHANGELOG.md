@@ -1,3 +1,34 @@
+### [4.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.1...@codecademy/gamut-labs@4.6.2) (2020-10-28)
+
+### [4.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.0...@codecademy/gamut-labs@4.6.1) (2020-10-27)
+
+
+### 🐛 Bug Fixes
+
+* fixes export/import of bodyportal ([#1078](https://github.com/Codecademy/client-modules/issues/1078)) ([9543ce2](https://github.com/Codecademy/client-modules/commit/9543ce2292d633c337e0149b73c0e48ff0e856d4))
+
+## [4.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.5.0...@codecademy/gamut-labs@4.6.0) (2020-10-23)
+
+
+### ✨ Features
+
+* ProAltLogo ([#1071](https://github.com/Codecademy/client-modules/issues/1071)) ([c608e95](https://github.com/Codecademy/client-modules/commit/c608e958b57e54b4c43f241a2862a708df659594))
+
+## [4.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.5...@codecademy/gamut-labs@4.5.0) (2020-10-22)
+
+
+### ✨ Features
+
+* Add a popover component ([#846](https://github.com/Codecademy/client-modules/issues/846)) ([baaef9d](https://github.com/Codecademy/client-modules/commit/baaef9db73282e868fef4f519201b64c8f54d0a2))
+
+### [4.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.4...@codecademy/gamut-labs@4.4.5) (2020-10-20)
+
+### [4.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.3...@codecademy/gamut-labs@4.4.4) (2020-10-20)
+
+### [4.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.2...@codecademy/gamut-labs@4.4.3) (2020-10-20)
+
+### [4.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.1...@codecademy/gamut-labs@4.4.2) (2020-10-20)
+
 ### [4.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.4.0...@codecademy/gamut-labs@4.4.1) (2020-10-19)
 
 ## [4.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.3.3...@codecademy/gamut-labs@4.4.0) (2020-10-19)

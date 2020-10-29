@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { pxRem } from '@codecademy/gamut-styles';
 import { ShadowOffset } from './types';
 
