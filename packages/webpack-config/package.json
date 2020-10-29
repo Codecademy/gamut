@@ -18,9 +18,9 @@
   },
   "homepage": "https://github.com/Codecademy/client-modules/packages/webpack-config",
   "peerDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.12.1",
     "autoprefixer": "^10.0.1",
-    "babel-preset-codecademy": ">= 2.0",
+    "babel-preset-codecademy": "^3.0.1",
     "webpack": "^5.0.0",
     "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
@@ -28,21 +28,21 @@
   "devDependencies": {
     "@babel/core": "7.12.3",
     "babel-preset-codecademy": "3.0.1",
-    "webpack": "^5.3.0"
+    "webpack": "^5.3.2"
   },
   "dependencies": {
     "babel-loader": "^8.1.0",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "css-loader": "^5.0.0",
     "cssnano": "^4.1.10",
-    "file-loader": "^6.1.1",
-    "mini-css-extract-plugin": "^1.1.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.2.1",
     "node-sass": "^4.14.1",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-loader": "^4.0.4",
-    "sass-loader": "^10.0.3",
+    "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.0.0",
+    "terser-webpack-plugin": "^5.0.3",
     "webpack-merge": "^4.2.1"
   },
   "publishConfig": {
