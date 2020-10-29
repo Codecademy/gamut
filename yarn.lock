@@ -16880,14 +16880,15 @@ react-transition-group@^2.2.1:
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
 
-react-truncate-markup@^4.1.1:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-4.1.1.tgz#fee4a1fd431738a550f09bc7f7d8a80f900ead2a"
-  integrity sha512-KRItS1iKsbE1cZ8yaRTsI0bYTeD1XJGvMhfBmbF2veUtQDEpfkjfJsWn9PtQs8KKvNtvM7Ji++97LsIDpZcpFA==
+react-truncate-markup@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.0.1.tgz#5c52bda712f7e185e84969b2b79440ec8b422441"
+  integrity sha512-WG1E9FLyTrq5ERaDbIq0DjWVs3JrAdr93fasdQqbVlEifBUp27kGM7ws4xCBIh2keDjumTPjw3iiHNNmD+YtcQ==
   dependencies:
     line-height "0.3.1"
+    memoize-one "^5.1.1"
     prop-types "^15.6.0"
-    resize-observer-polyfill "1.5.0"
+    resize-observer-polyfill "1.5.x"
 
 react-universal-interface@^0.6.2:
   version "0.6.2"
@@ -17468,12 +17469,7 @@ require-main-filename@^2.0.0:
   resolved "https://registry.npmjs.org/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
   integrity sha512-NKN5kMDylKuldxYLSUfrbo5Tuzh4hd+2E8NPPX02mZtn1VuREQToYe/ZdlJy+J3uCpfaiGF05e7B8W0iXbQHmg==
 
-resize-observer-polyfill@1.5.0:
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.0.tgz#660ff1d9712a2382baa2cad450a4716209f9ca69"
-  integrity sha512-M2AelyJDVR/oLnToJLtuDJRBBWUGUvvGigj1411hXhAdyFWqMaqHp7TixW3FpiLuVaikIcR1QL+zqoJoZlOgpg==
-
-resize-observer-polyfill@^1.5.1:
+resize-observer-polyfill@1.5.x, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
   resolved "https://registry.npmjs.org/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
   integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
