@@ -1,3 +1,5 @@
+### [16.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.1...@codecademy/gamut@16.3.2) (2020-10-28)
+
 ### [16.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.0...@codecademy/gamut@16.3.1) (2020-10-27)
 
 
