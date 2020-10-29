@@ -32,14 +32,14 @@ export type Properties = {
   };
   borderStyle: {
     // Import fails on some peer versions this ensures that the type exists.  Enabling dependentProps causes union overflow
-    defaultScale: CSS.Property.BorderTopStyle;
-    // dependentProps:
-    //   | 'borderStyleLeft'
-    //   | 'borderStyleRight'
-    //   | 'borderStyleTop'
-    //   | 'borderStyleBottom'
-    //   | 'borderStyleX'
-    //   | 'borderStyleY';
+    defaultScale: CSS.Properties['borderStyle'];
+    dependentProps:
+      | 'borderStyleLeft'
+      | 'borderStyleRight'
+      | 'borderStyleTop'
+      | 'borderStyleBottom'
+      | 'borderStyleX'
+      | 'borderStyleY';
   };
 
   /** Shadows */

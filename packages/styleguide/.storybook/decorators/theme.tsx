@@ -1,10 +1,11 @@
 import React from 'react';
-import { ThemeProvider } from '@codecademy/gamut-styles';
+import { ThemeContext } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
 
 export const withTheme = (Story) => {
   return (
-    <ThemeProvider>
+    <ThemeContext.Provider value={theme}>
       <Story />
-    </ThemeProvider>
+    </ThemeContext.Provider>
   );
 };

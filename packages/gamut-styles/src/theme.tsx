@@ -1,6 +1,3 @@
-import React from 'react';
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming';
-
 import * as tokens from './variables';
 
 export const theme = {
@@ -14,7 +11,3 @@ export const theme = {
 };
 
 export type Theme = typeof theme;
-
-export const ThemeProvider: React.FC = ({ ...props }) => {
-  return <EmotionThemeProvider {...props} theme={theme} />;
-};

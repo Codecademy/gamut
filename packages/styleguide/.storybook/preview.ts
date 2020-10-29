@@ -1,9 +1,8 @@
-import { addParameters, addDecorator } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
-import { withTheme } from './decorators/theme';
 
 import './decorators/wrapper';
+import { withTheme } from './decorators/theme';
 
 const theme = create({
   base: 'light',
@@ -11,7 +10,7 @@ const theme = create({
   brandUrl: '/',
 });
 
-addParameters({
+export const parameters = {
   viewMode: 'docs',
   options: {
     theme: theme,
@@ -41,7 +40,6 @@ addParameters({
   },
   actions: { argTypesRegex: '^on.*' },
   controls: { expanded: true },
-});
+};
 
-addDecorator(withKnobs);
-addDecorator(withTheme);
+export const decorators = [withKnobs, withTheme];

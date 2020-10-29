@@ -1,4 +1,3 @@
-import { CSSObject } from '@emotion/core';
 import { BaseSystemConfig } from '../props';
 import {
   AbstractTheme,
@@ -7,6 +6,8 @@ import {
   ThematicProps,
 } from './config';
 import { UnionToIntersection, WeakRecord } from './utils';
+
+export type CSSObject = Record<string, string | number>;
 
 /** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
 type GroupConfig<Theme extends AbstractTheme> = Record<

@@ -1,4 +1,3 @@
-import { CSSObject } from '@emotion/core';
 import { DirectionalProperty } from '../../types/properties';
 import {
   AbstractProps,
@@ -7,6 +6,7 @@ import {
 } from '../../types/config';
 import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
 import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
+import { CSSObject } from '../../types/system';
 
 /**
  * Directional props require destructuring of their values to ensure their order.  Instead

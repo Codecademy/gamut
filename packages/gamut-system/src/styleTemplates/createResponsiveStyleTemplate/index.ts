@@ -1,6 +1,6 @@
 import { assign, entries, isArray, isObject, set, values } from 'lodash';
-import { CSSObject } from '@emotion/core';
 import { AbstractTheme, HandlerMeta } from '../../types/config';
+import { CSSObject } from '../../types/system';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
 
 export function createResponsiveStyleTemplate<

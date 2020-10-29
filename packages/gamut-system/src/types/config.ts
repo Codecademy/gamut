@@ -4,7 +4,7 @@ import {
   Properties,
   DirectionalProperty,
 } from './properties';
-import { CSSObject } from '@emotion/core';
+import { CSSObject } from './system';
 import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** Theme Shape  */
