@@ -1,6 +1,4 @@
 const path = require('path');
-const { DllReferencePlugin } = require('webpack');
-
 const { configs } = require('@codecademy/webpack-config');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
@@ -57,21 +55,6 @@ module.exports = {
         '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
       },
     };
-
-    config.plugins = config.plugins.map((plugin) => {
-      // clone the config of the DllReferencePlugin and remove references to emotion libs
-      if (plugin instanceof DllReferencePlugin) {
-        const { name, content } = require(plugin.options.manifest);
-
-        return new DllReferencePlugin({
-          context: plugin.options.context,
-          name,
-          content: emotionless(content),
-        });
-      } else {
-        return plugin;
-      }
-    });
 
     return config;
   },
