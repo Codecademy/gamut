@@ -1,9 +1,5 @@
 module.exports = {
-  presets: [
-    'codecademy',
-    '@babel/preset-typescript',
-    '@emotion/babel-preset-css-prop',
-  ],
+  presets: ['codecademy', '@babel/preset-typescript'],
   plugins: [
     'react-anonymous-display-name',
     [
