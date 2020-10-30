@@ -88,9 +88,11 @@ export const Popover: React.FC<PopoverProps> = ({
       targetRef?.current?.contains(event.target as Element) &&
       event.type !== 'keydown'
     ) {
-      disableOutsideEvent?.();
+      // Do nothing because we are clicking the button again
+      // the button should handle it's own toggling on / off
+    } else {
+      onRequestClose?.();
     }
-    onRequestClose?.();
   };
 
   useEffect(() => {
@@ -112,7 +114,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, isInViewport, onRequestClose]);
 
   const popoverRef = useRef<HTMLDivElement>(null);
-  useClickAway(popoverRef, handleClickOutside, ['mousedown']);
+  useClickAway(popoverRef, handleClickOutside);
   useHotkeys('escape', handleClickOutside);
 
   if (!isOpen || !targetRef) return null;
