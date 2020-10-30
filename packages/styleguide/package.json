@@ -38,7 +38,7 @@
     "autoprefixer": "^9.7.4",
     "babel-preset-codecademy": "^2.3.0",
     "classnames": "2.2.6",
-    "fork-ts-checker-webpack-plugin": "5.2.0",
+    "fork-ts-checker-webpack-plugin": "5.2.1",
     "invariant": "2.2.4",
     "jsdom": "16.4.0",
     "lodash": "4.17.20",
