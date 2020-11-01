@@ -8,10 +8,10 @@ const getEmotionNode = () => {
     return;
   }
 
-  let node = document?.getElementById(EMOTION_CONTAINER);
+  let node = document.getElementById(EMOTION_CONTAINER);
   if (node) return node;
 
-  node = document?.createElement('div');
+  node = document.createElement('div');
   node.setAttribute('id', EMOTION_CONTAINER);
 
   // if this has not been created add it to the DOM at the top of the body
@@ -21,5 +21,5 @@ const getEmotionNode = () => {
 
 export const emotionCache = createCache({
   key: EMOTION_KEY,
-  container: getEmotionNode()!,
+  container: getEmotionNode(),
 });
