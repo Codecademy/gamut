@@ -2,7 +2,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 
 import './decorators/wrapper';
-import { withTheme } from './decorators/theme';
+import { withEmotion } from './decorators/emotion';
 
 const theme = create({
   base: 'light',
@@ -42,4 +42,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withKnobs, withTheme];
+export const decorators = [withKnobs, withEmotion];

@@ -21,10 +21,9 @@
     "lodash": "^>=4.0,0"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.27",
-    "@emotion/styled": "^10.0.27",
-    "jest-emotion": "^10.0.32",
-    "emotion-theming": "^10.0.27"
+    "@emotion/react": "^11.0.0-rc.0",
+    "@emotion/styled": "^11.0.0-rc.0",
+    "jest-emotion": "11.0.0-rc.0"
   },
   "license": "MIT"
 }
