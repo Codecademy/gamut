@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { colors, fontSize } from '@codecademy/gamut-styles';
 
 export const Badge = styled.span`
-  background: ${colors.blue[500]};
+  background: ${colors.blue};
   border-radius: 3px;
   color: ${colors.white};
   display: inline-block;
