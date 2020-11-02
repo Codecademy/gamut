@@ -24,12 +24,17 @@ const targetRefObj = {
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
-    <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-      <div data-testid={'popover-content'}>
-        Howdy!
-        <button type="button" />
+    <>
+      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
+        <div data-testid={'popover-content'}>
+          Howdy!
+          <button type="button" />
+        </div>
+      </Popover>
+      <div>
+        <h1 data-testid={'outside-content'}>hi</h1>
       </div>
-    </Popover>
+    </>
   );
 };
 
@@ -66,11 +71,8 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-
-    fireEvent.mouseDown(
-      screen.getByTestId('popover-content-container').parentElement!
-    );
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    fireEvent.mouseDown(screen.getByTestId('outside-content'));
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -80,7 +82,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
@@ -90,7 +92,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.keyDown(baseElement, { key: 'Escape', keyCode: 27 });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
@@ -121,7 +123,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not onRequestClose callback when popover is out of viewport', () => {
@@ -149,7 +151,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
   it('does not show a beak if the prop is false', () => {
