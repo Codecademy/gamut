@@ -40,11 +40,6 @@ export type PopoverProps = {
    * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
   onRequestClose?: () => void;
-  /**
-   * Called to prevent unwanted targetRef event (targetRef is outside of Popover).
-   * (i.e. when targetRef is a button and it is used to close the popover, this prevents triggering its onclick that would re-open the popover.)
-   */
-  disableOutsideEvent?: () => void;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -57,7 +52,6 @@ export const Popover: React.FC<PopoverProps> = ({
   align = 'left',
   targetRef,
   onRequestClose,
-  disableOutsideEvent,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -85,12 +79,11 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
     if (
-      targetRef?.current?.contains(event.target as Element) &&
-      event.type !== 'keydown'
+      !targetRef?.current?.contains(event.target as Element) ||
+      event.type === 'keydown'
     ) {
-      disableOutsideEvent?.();
+      onRequestClose?.();
     }
-    onRequestClose?.();
   };
 
   useEffect(() => {
@@ -112,7 +105,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, isInViewport, onRequestClose]);
 
   const popoverRef = useRef<HTMLDivElement>(null);
-  useClickAway(popoverRef, handleClickOutside, ['mousedown']);
+  useClickAway(popoverRef, handleClickOutside);
   useHotkeys('escape', handleClickOutside);
 
   if (!isOpen || !targetRef) return null;
