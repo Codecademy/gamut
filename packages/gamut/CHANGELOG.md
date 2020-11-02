@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [16.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.2...@codecademy/gamut@16.4.0) (2020-11-02)
 
 
-### Features
+### ✨ Features
 
 * **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
-
-
 
 ### [16.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.1...@codecademy/gamut@16.3.2) (2020-10-28)
 
@@ -3087,3 +3080,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
