@@ -21,5 +21,6 @@ const getEmotionNode = () => {
 
 export const emotionCache = createCache({
   key: EMOTION_KEY,
+  speedy: false,
   container: getEmotionNode(),
 });
