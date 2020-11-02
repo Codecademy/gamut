@@ -1,6 +1,6 @@
 import createCache from '@emotion/cache';
 
-export const EMOTION_KEY = 'gamut';
+export const EMOTION_KEY = 'css';
 export const EMOTION_CONTAINER = 'emotion-styles';
 
 const getEmotionNode = () => {
@@ -19,8 +19,9 @@ const getEmotionNode = () => {
   return node;
 };
 
-export const emotionCache = createCache({
-  key: EMOTION_KEY,
-  speedy: false,
-  container: getEmotionNode(),
-});
+export const createEmotionCache = () =>
+  createCache({
+    key: EMOTION_KEY,
+    speedy: false,
+    container: getEmotionNode(),
+  });

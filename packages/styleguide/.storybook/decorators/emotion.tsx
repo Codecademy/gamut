@@ -2,10 +2,12 @@ import React from 'react';
 import { CacheProvider } from '@emotion/react';
 import { ThemeContext } from '@emotion/react';
 
-import { emotionCache } from '@codecademy/gamut-styles';
+import { createEmotionCache } from '@codecademy/gamut-styles';
+
+const cache = createEmotionCache();
 
 export const withEmotion = (Story) => (
-  <CacheProvider value={emotionCache}>
+  <CacheProvider value={cache}>
     <ThemeContext.Provider value={{}}>
       <Story />
     </ThemeContext.Provider>
