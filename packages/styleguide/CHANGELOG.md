@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [17.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.3...@codecademy/styleguide@17.11.0) (2020-11-02)
+
+
+### Features
+
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
+
+
+
 ### [17.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.2...@codecademy/styleguide@17.10.3) (2020-10-28)
 
 ### [17.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.1...@codecademy/styleguide@17.10.2) (2020-10-27)
@@ -1193,4 +1207,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
