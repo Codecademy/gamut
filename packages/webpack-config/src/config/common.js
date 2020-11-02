@@ -42,9 +42,7 @@ const commonConfig = (options = {}) => {
             {
               ...loaders.files.default,
               options: {
-                name: DEV
-                  ? '[path][name].[contenthash].[ext]'
-                  : '[contenthash].[ext]',
+                name: DEV ? '[path][name].[ext]' : '[contenthash].[ext]',
                 ...fileLoaderOptions,
               },
             },
