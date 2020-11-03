@@ -1,3 +1,10 @@
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.2...@codecademy/gamut-labs@4.7.0) (2020-11-02)
+
+
+### ✨ Features
+
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
+
 ### [4.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.1...@codecademy/gamut-labs@4.6.2) (2020-10-28)
 
 ### [4.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.0...@codecademy/gamut-labs@4.6.1) (2020-10-27)
