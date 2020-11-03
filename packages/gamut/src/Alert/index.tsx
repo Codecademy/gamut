@@ -63,7 +63,7 @@ export const Alert: React.FC<AlertProps> = ({
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
           <Container className={styles.section} justify="center" align="center">
-            <TypeIcon size={24} aria-hidden />
+            <TypeIcon size={24} aria-label={`${type}: `} />
           </Container>
         )}
         <Container
