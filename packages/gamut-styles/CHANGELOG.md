@@ -1,3 +1,10 @@
+## [7.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.1...@codecademy/gamut-styles@7.2.0) (2020-11-02)
+
+
+### ✨ Features
+
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
+
 ### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.0...@codecademy/gamut-styles@7.1.1) (2020-10-20)
 
 
