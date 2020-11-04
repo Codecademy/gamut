@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [3.0.5](http://github.com///compare/@codecademy/eslint-config@3.0.4...@codecademy/eslint-config@3.0.5) (2020-11-04)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
 ### [3.0.4](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.3...@codecademy/eslint-config@3.0.4) (2020-10-16)
 
 
@@ -160,4 +173,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-
