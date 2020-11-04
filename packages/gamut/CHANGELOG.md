@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [16.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.1...@codecademy/gamut@16.4.2) (2020-11-04)
 
-**Note:** Version bump only for package @codecademy/gamut
 
+### Other Changes
 
-
-
+* **Dependencies:** Deps ([#1122](https://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](https://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](https://github.com/Codecademy/client-modules/issues/1079) [#1080](https://github.com/Codecademy/client-modules/issues/1080) [#1082](https://github.com/Codecademy/client-modules/issues/1082) [#1083](https://github.com/Codecademy/client-modules/issues/1083) [#1085](https://github.com/Codecademy/client-modules/issues/1085) [#1086](https://github.com/Codecademy/client-modules/issues/1086) [#1087](https://github.com/Codecademy/client-modules/issues/1087) [#1088](https://github.com/Codecademy/client-modules/issues/1088) [#1090](https://github.com/Codecademy/client-modules/issues/1090) [#1091](https://github.com/Codecademy/client-modules/issues/1091) [#1092](https://github.com/Codecademy/client-modules/issues/1092) [#1089](https://github.com/Codecademy/client-modules/issues/1089) [#1093](https://github.com/Codecademy/client-modules/issues/1093) [#1000](https://github.com/Codecademy/client-modules/issues/1000) [#1098](https://github.com/Codecademy/client-modules/issues/1098) [#1099](https://github.com/Codecademy/client-modules/issues/1099) [#1100](https://github.com/Codecademy/client-modules/issues/1100) [#1101](https://github.com/Codecademy/client-modules/issues/1101) [#1102](https://github.com/Codecademy/client-modules/issues/1102) [#1103](https://github.com/Codecademy/client-modules/issues/1103) [#1104](https://github.com/Codecademy/client-modules/issues/1104) [#1105](https://github.com/Codecademy/client-modules/issues/1105) [#1106](https://github.com/Codecademy/client-modules/issues/1106) [#1108](https://github.com/Codecademy/client-modules/issues/1108) [#1107](https://github.com/Codecademy/client-modules/issues/1107)
 
 ### [16.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.0...@codecademy/gamut@16.4.1) (2020-11-04)
 
@@ -3100,3 +3094,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-### [5.1.1](http://github.com///compare/@codecademy/webpack-config@5.1.0...@codecademy/webpack-config@5.1.1) (2020-11-04)
-
-**Note:** Version bump only for package @codecademy/webpack-config
+### [5.1.1](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.0...@codecademy/webpack-config@5.1.1) (2020-11-04)
 
 
+### Other Changes
 
-
+* **Dependencies:** Deps ([#1122](http://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](http://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](http://github.com/Codecademy/client-modules/issues/1079) [#1080](http://github.com/Codecademy/client-modules/issues/1080) [#1082](http://github.com/Codecademy/client-modules/issues/1082) [#1083](http://github.com/Codecademy/client-modules/issues/1083) [#1085](http://github.com/Codecademy/client-modules/issues/1085) [#1086](http://github.com/Codecademy/client-modules/issues/1086) [#1087](http://github.com/Codecademy/client-modules/issues/1087) [#1088](http://github.com/Codecademy/client-modules/issues/1088) [#1090](http://github.com/Codecademy/client-modules/issues/1090) [#1091](http://github.com/Codecademy/client-modules/issues/1091) [#1092](http://github.com/Codecademy/client-modules/issues/1092) [#1089](http://github.com/Codecademy/client-modules/issues/1089) [#1093](http://github.com/Codecademy/client-modules/issues/1093) [#1000](http://github.com/Codecademy/client-modules/issues/1000) [#1098](http://github.com/Codecademy/client-modules/issues/1098) [#1099](http://github.com/Codecademy/client-modules/issues/1099) [#1100](http://github.com/Codecademy/client-modules/issues/1100) [#1101](http://github.com/Codecademy/client-modules/issues/1101) [#1102](http://github.com/Codecademy/client-modules/issues/1102) [#1103](http://github.com/Codecademy/client-modules/issues/1103) [#1104](http://github.com/Codecademy/client-modules/issues/1104) [#1105](http://github.com/Codecademy/client-modules/issues/1105) [#1106](http://github.com/Codecademy/client-modules/issues/1106) [#1108](http://github.com/Codecademy/client-modules/issues/1108) [#1107](http://github.com/Codecademy/client-modules/issues/1107)
 
 ## [5.1.0](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.0.6...@codecademy/webpack-config@5.1.0) (2020-10-23)
 
@@ -409,3 +403,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add webpack-config to packages ([#114](http://github.com/Codecademy/client-modules/issues/114)) ([cb9574b](http://github.com/Codecademy/client-modules/commit/cb9574b1b4e2c0589f5ebbec8d602d1a297c16db))
 * Publish ([f93cf5f](http://github.com/Codecademy/client-modules/commit/f93cf5f5ac707ae4757f3e91cfbb9807def1a508))
+
