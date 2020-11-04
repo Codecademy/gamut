@@ -78,6 +78,7 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, offset, align, position]);
 
   const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
+    if (!isOpen) return;
     if (
       !targetRef?.current?.contains(event.target as Element) ||
       event.type === 'keydown'
@@ -106,7 +107,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const popoverRef = useRef<HTMLDivElement>(null);
   useClickAway(popoverRef, handleClickOutside);
-  useHotkeys('escape', handleClickOutside);
+  useHotkeys('escape', handleClickOutside, {}, [targetRect]);
 
   if (!isOpen || !targetRef) return null;
 

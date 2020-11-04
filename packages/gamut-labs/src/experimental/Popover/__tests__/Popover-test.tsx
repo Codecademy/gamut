@@ -5,7 +5,7 @@ import { Popover, PopoverProps } from '..';
 
 const targetRefObj = {
   current: {
-    contains: () => true,
+    contains: () => false,
     getBoundingClientRect: () => {
       return {
         bottom: 298,
@@ -26,13 +26,13 @@ const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
     <>
       <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-        <div data-testid={'popover-content'}>
+        <div data-testid="popover-content">
           Howdy!
           <button type="button" />
         </div>
       </Popover>
       <div>
-        <h1 data-testid={'outside-content'}>hi</h1>
+        <h1 data-testid="outside-popover">hi</h1>
       </div>
     </>
   );
@@ -71,7 +71,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.mouseDown(screen.getByTestId('outside-content'));
+    fireEvent.mouseDown(screen.getByTestId('outside-popover'));
     expect(onRequestClose).toBeCalledTimes(1);
   });
 
