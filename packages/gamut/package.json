@@ -24,7 +24,7 @@
   "dependencies": {
     "@codecademy/gamut-icons": "^3.10.0",
     "@codecademy/gamut-styles": "^7.2.0",
-    "@types/marked": "^0.6.1",
+    "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "focus-trap-react": "^6.0.0",
     "framer-motion": "^2.7.9",
@@ -37,7 +37,7 @@
     "react-aria-tabpanel": "^4.4.0",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
-    "react-truncate-markup": "^4.1.1",
+    "react-truncate-markup": "^5.0.1",
     "react-use": "^15.3.4"
   },
   "scripts": {
