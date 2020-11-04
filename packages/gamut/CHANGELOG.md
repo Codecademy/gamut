@@ -1,3 +1,10 @@
+### [16.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.0...@codecademy/gamut@16.4.1) (2020-11-04)
+
+
+### 🐛 Bug Fixes
+
+* fixes an a11y bug in Alert component ([#1117](https://github.com/Codecademy/client-modules/issues/1117)) ([51d1770](https://github.com/Codecademy/client-modules/commit/51d17708f721d4edc70412c148953743d0785341))
+
 ## [16.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.2...@codecademy/gamut@16.4.0) (2020-11-02)
 
 
