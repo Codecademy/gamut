@@ -184,7 +184,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 319,
+        top: 318,
         left: 58,
       },
     });
@@ -204,7 +204,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 241,
+        top: 240,
         left: 841,
       },
     });
@@ -218,7 +218,7 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 30,
+      offset: 29,
     });
 
     expect(
@@ -246,7 +246,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 232,
+        top: 230,
         left: 842,
       },
     });
