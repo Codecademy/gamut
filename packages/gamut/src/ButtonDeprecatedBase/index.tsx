@@ -14,7 +14,7 @@ const propKeys = [
   'rel',
 ];
 
-export type ButtonBaseProps = Omit<
+export type ButtonDeprecatedBaseProps = Omit<
   HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
   'as' | 'size'
 > & {
@@ -48,7 +48,9 @@ export type ButtonBaseProps = Omit<
   ) => void;
 };
 
-export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
+export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (
+  props
+) => {
   const { href, className, link, onClick, target, rel } = props;
   const { as: As, asProps = {}, ...restOfProps } = props;
   const propsToTransfer = omitProps(propKeys, restOfProps);
