@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.12.0...@codecademy/styleguide@18.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+
+
 ## [17.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.2...@codecademy/styleguide@17.12.0) (2020-11-05)
 
 
@@ -1221,4 +1239,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
