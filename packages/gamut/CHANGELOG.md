@@ -1,3 +1,17 @@
+### [16.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.1...@codecademy/gamut@16.4.2) (2020-11-04)
+
+
+### Other Changes
+
+* **Dependencies:** Deps ([#1122](https://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](https://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](https://github.com/Codecademy/client-modules/issues/1079) [#1080](https://github.com/Codecademy/client-modules/issues/1080) [#1082](https://github.com/Codecademy/client-modules/issues/1082) [#1083](https://github.com/Codecademy/client-modules/issues/1083) [#1085](https://github.com/Codecademy/client-modules/issues/1085) [#1086](https://github.com/Codecademy/client-modules/issues/1086) [#1087](https://github.com/Codecademy/client-modules/issues/1087) [#1088](https://github.com/Codecademy/client-modules/issues/1088) [#1090](https://github.com/Codecademy/client-modules/issues/1090) [#1091](https://github.com/Codecademy/client-modules/issues/1091) [#1092](https://github.com/Codecademy/client-modules/issues/1092) [#1089](https://github.com/Codecademy/client-modules/issues/1089) [#1093](https://github.com/Codecademy/client-modules/issues/1093) [#1000](https://github.com/Codecademy/client-modules/issues/1000) [#1098](https://github.com/Codecademy/client-modules/issues/1098) [#1099](https://github.com/Codecademy/client-modules/issues/1099) [#1100](https://github.com/Codecademy/client-modules/issues/1100) [#1101](https://github.com/Codecademy/client-modules/issues/1101) [#1102](https://github.com/Codecademy/client-modules/issues/1102) [#1103](https://github.com/Codecademy/client-modules/issues/1103) [#1104](https://github.com/Codecademy/client-modules/issues/1104) [#1105](https://github.com/Codecademy/client-modules/issues/1105) [#1106](https://github.com/Codecademy/client-modules/issues/1106) [#1108](https://github.com/Codecademy/client-modules/issues/1108) [#1107](https://github.com/Codecademy/client-modules/issues/1107)
+
+### [16.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.0...@codecademy/gamut@16.4.1) (2020-11-04)
+
+
+### 🐛 Bug Fixes
+
+* fixes an a11y bug in Alert component ([#1117](https://github.com/Codecademy/client-modules/issues/1117)) ([51d1770](https://github.com/Codecademy/client-modules/commit/51d17708f721d4edc70412c148953743d0785341))
+
 ## [16.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.3.2...@codecademy/gamut@16.4.0) (2020-11-02)
 
 
