@@ -3,10 +3,10 @@ module.exports = {
   plugins: [
     'react-anonymous-display-name',
     [
-      'emotion',
+      '@emotion',
       {
         sourceMap: true,
-        autoLabel: process.env.NODE_ENV !== 'production',
+        autoLabel: 'always',
         labelFormat: '[local]',
         cssPropOptimization: true,
       },
