@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.8.0...@codecademy/gamut-labs@5.0.0) (2020-11-05)
 
 
@@ -10,11 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * deprecate Button and ButtonBase (#1069)
 
-### Features
+### ✨ Features
 
 * deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
-
-
 
 ## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.2...@codecademy/gamut-labs@4.8.0) (2020-11-05)
 
@@ -413,3 +406,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
