@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-### [5.1.2](http://github.com///compare/@codecademy/webpack-config@5.1.1...@codecademy/webpack-config@5.1.2) (2020-11-05)
-
-**Note:** Version bump only for package @codecademy/webpack-config
+### [5.1.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.1...@codecademy/webpack-config@5.1.2) (2020-11-05)
 
 
+### Other Changes
 
-
+* **webpack-config:** fix homepage url ([f81061f](http://github.com/Codecademy/client-modules/commit/f81061f578ee52b3c9978aed47b904b085004fcf))
 
 ### [5.1.1](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.0...@codecademy/webpack-config@5.1.1) (2020-11-04)
 
@@ -416,3 +410,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add webpack-config to packages ([#114](http://github.com/Codecademy/client-modules/issues/114)) ([cb9574b](http://github.com/Codecademy/client-modules/commit/cb9574b1b4e2c0589f5ebbec8d602d1a297c16db))
 * Publish ([f93cf5f](http://github.com/Codecademy/client-modules/commit/f93cf5f5ac707ae4757f3e91cfbb9807def1a508))
+
