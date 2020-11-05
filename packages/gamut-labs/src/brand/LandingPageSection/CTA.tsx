@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Button } from '@codecademy/gamut';
+import { ButtonDeprecated } from '@codecademy/gamut';
 
 const CTA = styled.div`
   margin: 2rem 0 0;
@@ -20,8 +20,8 @@ export const LandingPageSectionCTA: React.FC<LandingPageSectionCTAProps> = ({
   children,
 }) => (
   <CTA className={className} data-testid={testId}>
-    <Button theme="hyper" href={href}>
+    <ButtonDeprecated theme="hyper" href={href}>
       {children}
-    </Button>
+    </ButtonDeprecated>
   </CTA>
 );
