@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.2...@codecademy/gamut-labs@4.8.0) (2020-11-05)
+
+
+### Features
+
+* Start of the base landing page components section ([#1118](https://github.com/Codecademy/client-modules/issues/1118)) ([1d4d4e1](https://github.com/Codecademy/client-modules/commit/1d4d4e10897db293bba1a33af426f44864d053ee))
+
+
+
 ### [4.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.1...@codecademy/gamut-labs@4.7.2) (2020-11-04)
 
 ### [4.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.0...@codecademy/gamut-labs@4.7.1) (2020-11-04)
@@ -383,4 +397,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
