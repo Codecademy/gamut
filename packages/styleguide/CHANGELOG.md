@@ -1,3 +1,15 @@
+## [17.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.2...@codecademy/styleguide@17.12.0) (2020-11-05)
+
+
+### ✨ Features
+
+* Start of the base landing page components section ([#1118](https://github.com/Codecademy/client-modules/issues/1118)) ([1d4d4e1](https://github.com/Codecademy/client-modules/commit/1d4d4e10897db293bba1a33af426f44864d053ee))
+
+
+### 🧹 Code Refactoring
+
+* remove disableOutsideClick prop in popover ([#1120](https://github.com/Codecademy/client-modules/issues/1120)) ([9ae3c95](https://github.com/Codecademy/client-modules/commit/9ae3c956d06e9af0765aece060d89b00bb2fd03c))
+
 ### [17.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.1...@codecademy/styleguide@17.11.2) (2020-11-04)
 
 
