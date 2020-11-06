@@ -1,3 +1,10 @@
+### [5.1.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.1...@codecademy/webpack-config@5.1.2) (2020-11-05)
+
+
+### Other Changes
+
+* **webpack-config:** fix homepage url ([f81061f](http://github.com/Codecademy/client-modules/commit/f81061f578ee52b3c9978aed47b904b085004fcf))
+
 ### [5.1.1](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.0...@codecademy/webpack-config@5.1.1) (2020-11-04)
 
 

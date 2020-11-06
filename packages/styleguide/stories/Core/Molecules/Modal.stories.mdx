@@ -1,7 +1,7 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { useState } from '@storybook/addons';
-import { Button, Modal, Text, Overlay } from '@codecademy/gamut/src';
+import { ButtonDeprecated, Modal, Text, Overlay } from '@codecademy/gamut/src';
 
 <Meta title="Molecules/Modal" component={Modal} subcomponents={{ Overlay }} />
 
@@ -17,7 +17,9 @@ Simple Modal portal to escape current DOM Context.
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+            Open
+          </ButtonDeprecated>
           <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             Close the modal!
           </Modal>
@@ -43,16 +45,18 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+            Open
+          </ButtonDeprecated>
           <Modal
             isOpen={isOpen}
             hideDefaultCloseButton
             onRequestClose={() => setIsOpen(false)}
           >
             <p>Close the modal...</p>
-            <Button block onClick={() => setIsOpen(false)}>
+            <ButtonDeprecated block onClick={() => setIsOpen(false)}>
               with this button instead
-            </Button>
+            </ButtonDeprecated>
           </Modal>
         </React.Fragment>
       );
@@ -75,7 +79,9 @@ All of these methods default to true for accessibility reasons, and rely on sett
       const [isOpen, setIsOpen] = useState(false);
       return (
         <React.Fragment>
-          <Button onClick={() => setIsOpen(true)}>Open</Button>
+          <ButtonDeprecated onClick={() => setIsOpen(true)}>
+            Open
+          </ButtonDeprecated>
           <Modal
             isOpen={isOpen}
             hideDefaultCloseButton

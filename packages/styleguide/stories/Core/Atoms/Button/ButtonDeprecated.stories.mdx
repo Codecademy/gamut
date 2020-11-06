@@ -1,8 +1,8 @@
 import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import {
-  Button,
-  ButtonBase,
+  ButtonDeprecated,
+  ButtonDeprecatedBase,
   RadialProgress,
   Spinner,
 } from '@codecademy/gamut/src';
@@ -16,25 +16,31 @@ import {
   deprecatedThemeKeys,
 } from './helpers';
 
-<Meta title="Atoms/Button" component={Button} subcomponents={{ ButtonBase }} />
+<Meta
+  title="Atoms/ButtonDeprecated"
+  component={ButtonDeprecated}
+  subcomponents={{ ButtonDeprecatedBase }}
+/>
 
-# Buttons
+# Buttons (Deprecated)
 
-<StoryStatus status="stable" />
+<StoryStatus status="deprecated" />
 
-Primary versions of buttons and links. Approximately all focusable,
-interactive elements should use some form of a `Button` (if
-they look like this) or `ButtonBase` (if they have custom
+Primary versions of buttons and links. Previously, all focusable,
+interactive elements were using some form of a `ButtonDeprecated` (if
+they look like this) or `ButtonDeprecatedBase` (if they have custom
 styles).
+
+**Now they're deprecated.**
 
 Prefer `brand-purple` for significant actions such as Pro signups. Prefer `brand-blue` for generic actions.
 
 Play with this button, if you&apos;d like!
 
 <Canvas>
-  <Story name="Button">
+  <Story name="ButtonDeprecated">
     {(args) => (
-      <Button
+      <ButtonDeprecated
         block={boolean('block', false)}
         caps={boolean('caps', false)}
         go={boolean('go', false)}
@@ -46,16 +52,16 @@ Play with this button, if you&apos;d like!
         underline={boolean('underline', false)}
       >
         {text('Label', 'Submit')}
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
 </Canvas>
 
-<Props of={Button} />
+<Props of={ButtonDeprecated} />
 
 ## Themes
 
-There are several theme sets you can use with `Button`
+There are several theme sets you can use with `ButtonDeprecated`
 
 ### New
 
@@ -63,14 +69,14 @@ There are several theme sets you can use with `Button`
   <Story name="New Buttons">
     {(args) =>
       newThemeKeys.map((theme) => (
-        <Button
+        <ButtonDeprecated
           key={`${theme}`}
           onClick={action('Clicked Button')}
           style={{ margin: '1rem' }}
           theme={theme}
         >
           {theme}
-        </Button>
+        </ButtonDeprecated>
       ))
     }
   </Story>
@@ -82,14 +88,14 @@ There are several theme sets you can use with `Button`
   <Story name="Brand Buttons">
     {(args) =>
       brandThemeKeys.map((theme) => (
-        <Button
+        <ButtonDeprecated
           key={`${theme}`}
           onClick={action('Clicked Button')}
           style={{ margin: '1rem' }}
           theme={theme}
         >
           {theme}
-        </Button>
+        </ButtonDeprecated>
       ))
     }
   </Story>
@@ -103,14 +109,14 @@ We also have feedback specific button themes best paired with `Alert`
   <Story name="Status Buttons">
     {(args) =>
       statusThemeKeys.map((theme) => (
-        <Button
+        <ButtonDeprecated
           key={`${theme}`}
           onClick={action('Clicked Button')}
           style={{ margin: '1rem' }}
           theme={theme}
         >
           {theme}
-        </Button>
+        </ButtonDeprecated>
       ))
     }
   </Story>
@@ -124,42 +130,48 @@ We also have legacy button colors floating around. Do not use these.
   <Story name="Deprecated">
     {(args) =>
       deprecatedThemeKeys.map((theme) => (
-        <Button
+        <ButtonDeprecated
           key={`${theme}`}
           onClick={action('Clicked Button')}
           style={{ margin: '1rem' }}
           theme={theme}
         >
           {theme}
-        </Button>
+        </ButtonDeprecated>
       ))
     }
   </Story>
 </Canvas>
 
-## ButtonBase Variants
+## ButtonDeprecatedBase Variants
 
-Use `ButtonBase` when you need something that acts as a link or
+Use `ButtonDeprecatedBase` when you need something that acts as a link or
 button, but don&apos;t need the default button styles.
 
 _Note:_ keep in mind that buttons generally need focus and hover
-indicators for accessibility. If you use `ButtonBase`, be sure you&apos;re
+indicators for accessibility. If you use `ButtonDeprecatedBase`, be sure you&apos;re
 adding in your own.
 
 <Canvas>
-  <Story name="ButtonBase">
-    {(args) => <ButtonBase>{text('Label 1', 'I am basic')}</ButtonBase>}
-  </Story>
-  <Story name="ButtonBase Link">
+  <Story name="ButtonDeprecatedBase">
     {(args) => (
-      <ButtonBase href="#">{text('Label 2', 'a basic link')}</ButtonBase>
+      <ButtonDeprecatedBase>
+        {text('Label 1', 'I am basic')}
+      </ButtonDeprecatedBase>
     )}
   </Story>
-  <Story name="ButtonBase Link Style">
+  <Story name="ButtonDeprecatedBase Link">
     {(args) => (
-      <ButtonBase link>
+      <ButtonDeprecatedBase href="#">
+        {text('Label 2', 'a basic link')}
+      </ButtonDeprecatedBase>
+    )}
+  </Story>
+  <Story name="ButtonDeprecatedBase Link Style">
+    {(args) => (
+      <ButtonDeprecatedBase link>
         {text('Label 3', 'a basic button styled as a link')}
-      </ButtonBase>
+      </ButtonDeprecatedBase>
     )}
   </Story>
 </Canvas>
@@ -173,9 +185,13 @@ You may also configure a button to behave purely like a link
     {(args) => (
       <>
         This is an example of a{' '}
-        <Button theme={select('theme', themes, 'brand-blue')} link href="#">
+        <ButtonDeprecated
+          theme={select('theme', themes, 'brand-blue')}
+          link
+          href="#"
+        >
           Link
-        </Button>
+        </ButtonDeprecated>
       </>
     )}
   </Story>
@@ -188,71 +204,71 @@ Common variants of buttons you might come across.
 <Canvas columns={1}>
   <Story name="Flat" args={{ theme: 'brand-blue' }}>
     {(args) => (
-      <Button theme="brand-blue" flat href="#">
+      <ButtonDeprecated theme="brand-blue" flat href="#">
         Flat
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Outline">
     {(args) => (
-      <Button
+      <ButtonDeprecated
         href="#"
         onClick={action('Clicked Button')}
         outline
         theme="brand-blue"
       >
         Outline
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Large">
     {(args) => (
-      <Button theme="brand-blue" size="large">
+      <ButtonDeprecated theme="brand-blue" size="large">
         Large
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Small">
     {(args) => (
-      <Button
+      <ButtonDeprecated
         href="#"
         onClick={action('Clicked Button')}
         size="small"
         theme="brand-blue"
       >
         Small
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Disabled ">
     {(args) => (
-      <Button theme="brand-blue" disabled>
+      <ButtonDeprecated theme="brand-blue" disabled>
         Disabled
-      </Button>
+      </ButtonDeprecated>
     )}
     >
   </Story>
   <Story name="Loading">
     {(args) => (
-      <Button theme="brand-blue">
+      <ButtonDeprecated theme="brand-blue">
         <Spinner />
         &nbsp;&nbsp;Loading...
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Processing">
     {(args) => (
-      <Button theme="brand-blue">
+      <ButtonDeprecated theme="brand-blue">
         <RadialProgress value={[0, 100]} duration={5000} />
         &nbsp;&nbsp;Processing...
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
   <Story name="Caps">
     {(args) => (
-      <Button theme="brand-blue" caps href="#">
+      <ButtonDeprecated theme="brand-blue" caps href="#">
         Caps
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
 </Canvas>
@@ -265,9 +281,9 @@ be larger, advertise-y placements.
 <Canvas>
   <Story name="Round">
     {(args) => (
-      <Button theme="brand-blue" size="large" round>
+      <ButtonDeprecated theme="brand-blue" size="large" round>
         Large
-      </Button>
+      </ButtonDeprecated>
     )}
   </Story>
 </Canvas>

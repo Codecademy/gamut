@@ -1,3 +1,16 @@
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.3...@codecademy/gamut@17.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### ✨ Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+### [16.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.2...@codecademy/gamut@16.4.3) (2020-11-05)
+
 ### [16.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.1...@codecademy/gamut@16.4.2) (2020-11-04)
 
 
