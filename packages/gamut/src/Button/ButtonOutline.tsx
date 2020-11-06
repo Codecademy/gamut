@@ -13,6 +13,7 @@ export const ButtonOutline = styled.button<ButtonProps>(
       border: none;
       border-radius: 4px;
       box-shadow: 0 0 0 0 transparent;
+      cursor: pointer;
       transition: ${timing.fast} box-shadow;
 
       &:disabled {
