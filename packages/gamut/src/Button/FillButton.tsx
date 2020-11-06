@@ -1,5 +1,5 @@
 import { swatches } from '@codecademy/gamut-styles';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 

@@ -1,5 +1,5 @@
 import { timing } from '@codecademy/gamut-styles';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { ButtonBase } from '../ButtonBase';
