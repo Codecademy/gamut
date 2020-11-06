@@ -14,5 +14,5 @@ const PixelContainer = styled(Container)`
 `;
 
 export const PixelBox: React.FC<PixelBoxProps> = ({ color }) => {
-  return <PixelContainer color={color} />;
+  return <PixelContainer color={color}></PixelContainer>;
 };

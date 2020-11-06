@@ -1,5 +1,6 @@
 import { PixelBox } from '@codecademy/gamut-labs/src';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 
 <Meta title="Labs/Experimental/Atoms/PixelBox" component={PixelBox} />
@@ -11,7 +12,7 @@ import { StoryStatus } from '~styleguide/blocks';
 What's in the Booooxxxxxx?!!!!!
 
 <Canvas>
-  <Story name="PixelBox">{(args) => <PixelBox />}}</Story>
+  <Story name="PixelBox">{(args) => <PixelBox color={args.color} />}}</Story>
 </Canvas>
 
 <Props story="PixelBox" />
