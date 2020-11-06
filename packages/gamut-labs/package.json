@@ -24,6 +24,7 @@
   "dependencies": {
     "@codecademy/gamut": "^17.0.0",
     "@codecademy/gamut-styles": "^7.2.0",
+    "@codecademy/gamut-system": "^0.0.0",
     "classnames": "^2.2.5",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.4"
