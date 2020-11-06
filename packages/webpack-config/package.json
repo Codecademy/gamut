@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "5.1.0",
+  "version": "5.1.3",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -18,9 +18,9 @@
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Codecademy/client-modules/packages/webpack-config"
+    "url": "https://github.com/Codecademy/client-modules/tree/main/packages/webpack-config"
   },
-  "homepage": "https://github.com/Codecademy/client-modules/packages/webpack-config",
+  "homepage": "https://github.com/Codecademy/client-modules/tree/main/packages/webpack-config",
   "peerDependencies": {
     "@babel/core": "^7.0.0",
     "autoprefixer": "^9.7.4",

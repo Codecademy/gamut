@@ -1,3 +1,10 @@
+### [3.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.10.0...@codecademy/gamut-icons@3.10.1) (2020-11-05)
+
+
+### 🐛 Bug Fixes
+
+* remove fill color from ArrowChevronDownFilledIcon ([#1125](https://github.com/Codecademy/client-modules/issues/1125)) ([8862d80](https://github.com/Codecademy/client-modules/commit/8862d80991f1a927fb923ddbfc80097e8fcce8b6))
+
 ## [3.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.9.2...@codecademy/gamut-icons@3.10.0) (2020-10-28)
 
 
