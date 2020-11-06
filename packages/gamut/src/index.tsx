@@ -1,5 +1,3 @@
-import 'focus-visible/dist/focus-visible.min.js';
-
 export * from './Anchor';
 export * from './Alert';
 export * from './Accordion';
