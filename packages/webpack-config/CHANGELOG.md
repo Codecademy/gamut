@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-## [5.2.0](http://github.com///compare/@codecademy/webpack-config@5.1.3...@codecademy/webpack-config@5.2.0) (2020-11-09)
+## [5.2.0](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.3...@codecademy/webpack-config@5.2.0) (2020-11-09)
 
 
-### Features
+### ✨ Features
 
-* Minimally added focus-visible with postcss-focus-visible ([#1129](http://github.com//undefined/issues/1129)) ([6ee3065](http://github.com///commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
-
-
+* Minimally added focus-visible with postcss-focus-visible ([#1129](http://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](http://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
 
 ### [5.1.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.2...@codecademy/webpack-config@5.1.3) (2020-11-06)
 
@@ -431,3 +424,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add webpack-config to packages ([#114](http://github.com/Codecademy/client-modules/issues/114)) ([cb9574b](http://github.com/Codecademy/client-modules/commit/cb9574b1b4e2c0589f5ebbec8d602d1a297c16db))
 * Publish ([f93cf5f](http://github.com/Codecademy/client-modules/commit/f93cf5f5ac707ae4757f3e91cfbb9807def1a508))
+

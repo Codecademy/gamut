@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.1...@codecademy/styleguide@18.1.0) (2020-11-09)
 
 
-### Features
+### ✨ Features
 
 * Minimally added focus-visible with postcss-focus-visible ([#1129](https://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](https://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
-
-
 
 ### [18.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.0...@codecademy/styleguide@18.0.1) (2020-11-06)
 
@@ -1248,3 +1241,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
