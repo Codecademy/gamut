@@ -1,3 +1,10 @@
+### [5.1.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.2...@codecademy/webpack-config@5.1.3) (2020-11-06)
+
+
+### Other Changes
+
+* revert webpack-config changes ([#1130](http://github.com/Codecademy/client-modules/issues/1130)) ([2524e78](http://github.com/Codecademy/client-modules/commit/2524e783769b0c21f1bb23b7bd40fc89c52890b1))
+
 ### [5.1.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.1...@codecademy/webpack-config@5.1.2) (2020-11-05)
 
 
