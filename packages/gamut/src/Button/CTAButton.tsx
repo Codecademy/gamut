@@ -40,7 +40,7 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
 );
 
 const CTAButtonOuter = styled(ButtonOutline)`
-  padding: 1px 1px 7px 5px;
+  padding: 1px 1px 5px 5px;
 `;
 
 export const CTAButton: React.FC<React.ComponentProps<
