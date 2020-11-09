@@ -15,14 +15,14 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
     return css`
       background-color: ${modeColors.background};
       border-radius: 2px;
-      box-shadow: -3px 5px 0 1px ${modeColors.shadow};
+      box-shadow: -4px 4px 0 0 ${modeColors.shadow};
       color: ${modeColors.foreground};
       font-family: ${fontFamily.accent};
       font-weight: bold;
       padding: 0.75rem 1.25rem;
 
       ${CTAButtonOuter}:hover & {
-        box-shadow: -6px 8px 0 1px ${modeColors.shadow};
+        box-shadow: -8px 8px 0 0 ${modeColors.shadow};
       }
 
       ${CTAButtonOuter}:active & {
@@ -32,7 +32,7 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
 
       ${CTAButtonOuter}:disabled & {
         background: ${modeColors.backgroundMuted};
-        box-shadow: -3px 5px 0 1px ${modeColors.foregroundMuted};
+        box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
         color: ${modeColors.foregroundMuted};
       }
     `;
