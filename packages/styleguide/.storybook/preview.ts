@@ -21,6 +21,7 @@ addParameters({
         'Foundations',
         'Typography',
         'Layouts',
+        'Icons',
         'Atoms',
         'Molecules',
         'Organisms',
