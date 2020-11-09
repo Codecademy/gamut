@@ -1,3 +1,39 @@
+### [5.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.0...@codecademy/gamut-labs@5.0.1) (2020-11-09)
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.8.0...@codecademy/gamut-labs@5.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### ✨ Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.2...@codecademy/gamut-labs@4.8.0) (2020-11-05)
+
+
+### ✨ Features
+
+* Start of the base landing page components section ([#1118](https://github.com/Codecademy/client-modules/issues/1118)) ([1d4d4e1](https://github.com/Codecademy/client-modules/commit/1d4d4e10897db293bba1a33af426f44864d053ee))
+
+
+### 🧹 Code Refactoring
+
+* remove disableOutsideClick prop in popover ([#1120](https://github.com/Codecademy/client-modules/issues/1120)) ([9ae3c95](https://github.com/Codecademy/client-modules/commit/9ae3c956d06e9af0765aece060d89b00bb2fd03c))
+
+### [4.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.1...@codecademy/gamut-labs@4.7.2) (2020-11-04)
+
+### [4.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.0...@codecademy/gamut-labs@4.7.1) (2020-11-04)
+
+## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.2...@codecademy/gamut-labs@4.7.0) (2020-11-02)
+
+
+### ✨ Features
+
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
+
 ### [4.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.1...@codecademy/gamut-labs@4.6.2) (2020-10-28)
 
 ### [4.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.0...@codecademy/gamut-labs@4.6.1) (2020-10-27)

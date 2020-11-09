@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { colors, spacing } from '@codecademy/gamut-styles';
 import { ShadowOffset, PaddingSizes } from './types';
 

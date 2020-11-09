@@ -1,0 +1,27 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { LandingPageSectionCTA } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Brand/Organisms/LandingPageSectionCTA"
+  component={LandingPageSectionCTA}
+/>
+
+# LandingPageSectionCTA
+
+<StoryStatus status="unstable" />
+
+This is a cta used in sections on a marketing page.
+
+<Canvas withSource="open">
+  <Story name="LandingPageSectionCTA">
+    {(args) => (
+      <LandingPageSectionCTA href={text('href', 'https://example.com/')}>
+        {text('Text', 'Lorem ipsum dolor sit amet')}
+      </LandingPageSectionCTA>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={LandingPageSectionCTA} />
