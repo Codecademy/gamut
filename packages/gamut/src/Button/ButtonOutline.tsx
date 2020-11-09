@@ -10,6 +10,7 @@ export const ButtonOutline = styled.button<ButtonProps>(
     const modeColors = modeColorGroups[mode];
 
     return css`
+      background: none;
       border: none;
       border-radius: 4px;
       box-shadow: 0 0 0 0 transparent;
