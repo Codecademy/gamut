@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [18.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.4.0...@codecademy/styleguide@18.4.1) (2020-11-10)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
-
-
+* Corrected (Fill)Button import in Popover story ([#1138](https://github.com/Codecademy/client-modules/issues/1138)) ([e5ea9da](https://github.com/Codecademy/client-modules/commit/e5ea9daf879f0d9f8b58ee1d6d4b0f9b0a07b08f))
 
 ## [18.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.3.0...@codecademy/styleguide@18.4.0) (2020-11-10)
 
@@ -1284,3 +1278,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
