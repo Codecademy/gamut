@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [18.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.2.0...@codecademy/styleguide@18.3.0) (2020-11-10)
 
 
-### Features
+### ✨ Features
 
 * **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
-
-
 
 ## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.2...@codecademy/styleguide@18.2.0) (2020-11-10)
 
@@ -1271,3 +1264,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
