@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.1.0...@codecademy/gamut@17.2.0) (2020-11-10)
+
+
+### Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+
+
 ## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.0.0...@codecademy/gamut@17.1.0) (2020-11-09)
 
 
@@ -3114,4 +3128,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
