@@ -16,6 +16,7 @@ Array [
   "BodyPortal",
   "ButtonDeprecated",
   "ButtonDeprecatedBase",
+  "ButtonProps",
   "buttonPresetThemes",
   "CardBody",
   "CardFooter",
