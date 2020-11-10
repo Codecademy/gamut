@@ -22,7 +22,7 @@ You can do this by using our px => rem utility in both TS and SCSS.
 #### TS - `pxRem`
 
 ```tsx
-import { pxRem } from '@codecadem/gamut-styles';
+import { pxRem } from '@codecademy/gamut-styles';
 
 pxRem(16); // => 1rem;
 pxRem('30px'); // => 1.875rem;
@@ -65,7 +65,7 @@ export const Box = styled.div`
 #### TS - `boxShadow`
 
 ```tsx
-import { boxShadow } from '@codecadem/gamut-styles';
+import { boxShadow } from '@codecademy/gamut-styles';
 
 const Example = `
   ${boxShadow(3)}
@@ -89,7 +89,7 @@ We enable font smoothing in some places to make typography more readable.
 #### TS - `fontSmoothing`
 
 ```tsx
-import { fontSmoothing } from '@codecadem/gamut-styles';
+import { fontSmoothing } from '@codecademy/gamut-styles';
 
 const Smooth = `
   ${fontSmoothing()}
@@ -121,7 +121,7 @@ In cases where we want to prevent the user from selecting an image or text.
 #### TS - `noSelect`
 
 ```tsx
-import { noSelect } from '@codecadem/gamut-styles';
+import { noSelect } from '@codecademy/gamut-styles';
 
 const Unselectable = styled.div`
   ${noSelect}
@@ -150,7 +150,7 @@ just be aware of the content.
 import {
   screenReaderOnly,
   screenReaderOnlyFocusable,
-} from '@codecadem/gamut-styles';
+} from '@codecademy/gamut-styles';
 
 const HiddenLabel = `
   ${screenReaderOnly}
