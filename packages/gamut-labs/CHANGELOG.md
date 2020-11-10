@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.1.0...@codecademy/gamut-labs@5.2.0) (2020-11-10)
 
 
-### Features
+### ✨ Features
 
 * **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
-
-
 
 ## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.1...@codecademy/gamut-labs@5.1.0) (2020-11-10)
 
@@ -429,3 +422,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
