@@ -1,3 +1,33 @@
+## [18.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.2.0...@codecademy/styleguide@18.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
+
+## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.2...@codecademy/styleguide@18.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+### [18.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.1...@codecademy/styleguide@18.1.2) (2020-11-10)
+
+### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.0...@codecademy/styleguide@18.1.1) (2020-11-09)
+
+
+### Other Changes
+
+* icon story moved up to core + docs updated  ([#1135](https://github.com/Codecademy/client-modules/issues/1135)) ([4d3a613](https://github.com/Codecademy/client-modules/commit/4d3a613f77ff10f7b5688e0d94b3332fb95f21a7))
+
+## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.1...@codecademy/styleguide@18.1.0) (2020-11-09)
+
+
+### ✨ Features
+
+* Minimally added focus-visible with postcss-focus-visible ([#1129](https://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](https://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
+
 ### [18.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.0...@codecademy/styleguide@18.0.1) (2020-11-06)
 
 ## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.12.0...@codecademy/styleguide@18.0.0) (2020-11-05)

@@ -1,3 +1,17 @@
+## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.1.0...@codecademy/gamut@17.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.0.0...@codecademy/gamut@17.1.0) (2020-11-09)
+
+
+### ✨ Features
+
+* Minimally added focus-visible with postcss-focus-visible ([#1129](https://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](https://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
+
 ## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.3...@codecademy/gamut@17.0.0) (2020-11-05)
 
 

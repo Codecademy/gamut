@@ -1,3 +1,19 @@
+## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.1.0...@codecademy/gamut-labs@5.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
+
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.1...@codecademy/gamut-labs@5.1.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+### [5.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.0...@codecademy/gamut-labs@5.0.1) (2020-11-09)
+
 ## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.8.0...@codecademy/gamut-labs@5.0.0) (2020-11-05)
 
 
