@@ -1,0 +1,73 @@
+import { action } from '@storybook/addon-actions';
+import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
+import {
+  CTAButton,
+  FillButton,
+  IconButton,
+  StrokeButton,
+  TextButton,
+  VisualTheme,
+} from '@codecademy/gamut/src';
+import { SearchIcon } from '@codecademy/gamut-icons/src';
+import { select, text, boolean } from '@storybook/addon-knobs';
+
+import { StoryStatus } from '~styleguide/blocks';
+
+<Meta
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    mode: VisualTheme.LightMode,
+  }}
+  argTypes={{
+    mode: {
+      control: {
+        type: 'select',
+        options: [VisualTheme.DarkMode, VisualTheme.LightMode],
+      },
+    },
+  }}
+  subcomponents={{ CTAButton, FillButton }}
+  title="Atoms/Button"
+/>
+
+# Buttons
+
+<StoryStatus status="stable" />
+
+We have several versions of buttons that you can use.
+Each supports a _light_ and _dark_ mode.
+
+<Props of={CTAButton} />
+
+## CTA Button
+
+<Canvas>
+  <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
+</Canvas>
+
+## Fill Button
+
+<Canvas>
+  <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
+</Canvas>
+
+## Stroke Button
+
+<Canvas>
+  <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
+</Canvas>
+
+## Text Button
+
+<Canvas>
+  <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
+</Canvas>
+
+## Icon Button
+
+<Canvas>
+  <Story name="IconButton">
+    {(args) => <IconButton icon={SearchIcon} {...args} />}
+  </Story>
+</Canvas>
