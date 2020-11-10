@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
 
 
-### Features
+### ✨ Features
 
 * add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
-
-
 
 ## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.2.0...@codecademy/gamut-styles@7.3.0) (2020-11-10)
 
@@ -647,3 +640,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
