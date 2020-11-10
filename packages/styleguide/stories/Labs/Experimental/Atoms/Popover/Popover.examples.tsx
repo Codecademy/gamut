@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Container } from '@codecademy/gamut/src';
+import { FillButton, Container } from '@codecademy/gamut/src';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
 
 export const PopoverExample = (args: PopoverProps) => {
@@ -9,13 +9,13 @@ export const PopoverExample = (args: PopoverProps) => {
   return (
     <React.Fragment>
       <div ref={activeElRef}>
-        <Button
+        <FillButton
           onClick={() => {
             setOpen(!open);
           }}
         >
           Open Popover
-        </Button>
+        </FillButton>
       </div>
       <Container>
         <Popover
@@ -26,7 +26,9 @@ export const PopoverExample = (args: PopoverProps) => {
         >
           <Container>
             <h1>Hooray!</h1>
-            <Button onClick={() => setOpen(false)}>Close Popover</Button>
+            <FillButton onClick={() => setOpen(false)}>
+              Close Popover
+            </FillButton>
           </Container>
         </Popover>
       </Container>
