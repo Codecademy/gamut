@@ -1,3 +1,10 @@
+### [18.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.4.0...@codecademy/styleguide@18.4.1) (2020-11-10)
+
+
+### Other Changes
+
+* Corrected (Fill)Button import in Popover story ([#1138](https://github.com/Codecademy/client-modules/issues/1138)) ([e5ea9da](https://github.com/Codecademy/client-modules/commit/e5ea9daf879f0d9f8b58ee1d6d4b0f9b0a07b08f))
+
 ## [18.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.3.0...@codecademy/styleguide@18.4.0) (2020-11-10)
 
 
