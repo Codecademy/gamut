@@ -1,3 +1,10 @@
+### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.0...@codecademy/styleguide@18.1.1) (2020-11-09)
+
+
+### Other Changes
+
+* icon story moved up to core + docs updated  ([#1135](https://github.com/Codecademy/client-modules/issues/1135)) ([4d3a613](https://github.com/Codecademy/client-modules/commit/4d3a613f77ff10f7b5688e0d94b3332fb95f21a7))
+
 ## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.1...@codecademy/styleguide@18.1.0) (2020-11-09)
 
 
