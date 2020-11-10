@@ -7,5 +7,5 @@
     "module": "esnext",
     "outDir": "dist"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"]
 }
