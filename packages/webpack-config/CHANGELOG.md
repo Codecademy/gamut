@@ -1,3 +1,17 @@
+## [5.2.0](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.3...@codecademy/webpack-config@5.2.0) (2020-11-09)
+
+
+### ✨ Features
+
+* Minimally added focus-visible with postcss-focus-visible ([#1129](http://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](http://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
+
+### [5.1.3](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.2...@codecademy/webpack-config@5.1.3) (2020-11-06)
+
+
+### Other Changes
+
+* revert webpack-config changes ([#1130](http://github.com/Codecademy/client-modules/issues/1130)) ([2524e78](http://github.com/Codecademy/client-modules/commit/2524e783769b0c21f1bb23b7bd40fc89c52890b1))
+
 ### [5.1.2](http://github.com/Codecademy/client-modules/compare/@codecademy/webpack-config@5.1.1...@codecademy/webpack-config@5.1.2) (2020-11-05)
 
 
