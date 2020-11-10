@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.2...@codecademy/styleguide@18.2.0) (2020-11-10)
+
+
+### Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+
+
 ### [18.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.1...@codecademy/styleguide@18.1.2) (2020-11-10)
 
 ### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.0...@codecademy/styleguide@18.1.1) (2020-11-09)
@@ -1250,4 +1264,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
