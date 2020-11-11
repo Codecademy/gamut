@@ -18,7 +18,7 @@ export const ABOUT_SECTIONS = [
     emoji: '⚛️',
     description:
       'Atoms are our basic building block components. They are the most granular, low-level visuals in our system.',
-    examples: ['Badge', 'Toggle'],
+    examples: ['Button', 'Toggle'],
   },
   {
     kind: 'Molecules',

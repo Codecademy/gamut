@@ -1,3 +1,10 @@
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.2.0...@codecademy/gamut@17.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
 ## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.1.0...@codecademy/gamut@17.2.0) (2020-11-10)
 
 

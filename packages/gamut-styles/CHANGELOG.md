@@ -1,3 +1,10 @@
+## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
 ## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.2.0...@codecademy/gamut-styles@7.3.0) (2020-11-10)
 
 
