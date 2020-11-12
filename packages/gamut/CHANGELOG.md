@@ -1,3 +1,10 @@
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.0...@codecademy/gamut@17.3.1) (2020-11-12)
+
+
+### 🐛 Bug Fixes
+
+* **DeprecatedTabs:** Remove DeprecatedTabs component GM-54 ([#1140](https://github.com/Codecademy/client-modules/issues/1140)) ([1b41c89](https://github.com/Codecademy/client-modules/commit/1b41c89ca139bbf27a10dbf2489fc9cc0fd580c5))
+
 ## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.2.0...@codecademy/gamut@17.3.0) (2020-11-10)
 
 
