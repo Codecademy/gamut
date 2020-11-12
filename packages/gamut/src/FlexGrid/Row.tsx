@@ -77,7 +77,7 @@ export type RowProps = {
   /**
    * Component type to wrap children with.
    */
-  as?: string;
+  as?: React.ElementType;
   /** Align columns to `flex-start` on screen sizes greater than modifer */
   top?: ModificatorType;
 };

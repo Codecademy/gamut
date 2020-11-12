@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { ReactHTML } from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
@@ -8,7 +8,7 @@ export type ContentContainerProps = {
   /**
    * Component type to wrap children with.
    */
-  as?: keyof ReactHTML;
+  as?: React.ElementType;
   /**
    * Toggle a containerWide className to be applied with no max-width and smaller padding
    */

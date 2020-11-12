@@ -13,7 +13,7 @@ export type FlexGridProps = {
   /**
    * Component type to wrap children with.
    */
-  as?: string;
+  as?: React.ElementType;
 };
 
 export const FlexGrid: React.FC<FlexGridProps> = (props) => {

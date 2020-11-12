@@ -73,7 +73,7 @@ export type ColSizing = {
 };
 
 export type ColProps = ColSizing & {
-  as?: string;
+  as?: React.ElementType;
   className?: string;
   /** Reverses the column's flex-direction */
   reverse?: boolean;
