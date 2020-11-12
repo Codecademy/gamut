@@ -1,0 +1,163 @@
+// Button variants
+//
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+
+@mixin button-variant($color, $background, $border: transparent) {
+  $active-background: mix($color-black, $background, $btn-state-modifier);
+
+  @if $border == transparent {
+    $active-border: transparent;
+    $active-border-hover: transparent;
+  }
+
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+
+  &:hover {
+    box-shadow: 0 2px 4px $btn-box-shadow-color;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $background;
+  }
+
+  &:focus-visible,
+  &:hover {
+    text-decoration: none;
+    color: $color;
+
+    &:active {
+      box-shadow: 0 2px 4px $btn-box-shadow-color;
+    }
+  }
+
+  &:active {
+    background-color: $active-background;
+  }
+
+  &:disabled {
+    background-color: $btn-disabled-color;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+@mixin button-outline-variant($color) {
+  $active-contrast-base: text-contrast-color($color);
+  $active-background: mix($active-contrast-base, $color, $btn-state-modifier);
+  color: $color;
+  background-color: transparent;
+  border: 1px solid $color;
+
+  &:focus-visible,
+  &:hover {
+    background-color: $color;
+    box-shadow: none;
+    color: $active-contrast-base;
+
+    &:active {
+      background-color: $active-background;
+      box-shadow: none;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0 2px 4px 0 $btn-box-shadow-color;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
+  }
+
+  &:disabled {
+    border-color: $btn-disabled-color;
+    color: $btn-disabled-color;
+    background-color: transparent;
+  }
+}
+
+@mixin button-flat-variant($color) {
+  color: $color;
+  background-color: transparent;
+
+  &:hover,
+  &:active {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px $color-white, 0 0 0 4px $color;
+  }
+
+  &:disabled {
+    color: $btn-disabled-color;
+    background-color: transparent;
+  }
+}
+
+// Button sizes
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $min-width
+) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+  min-width: $min-width;
+
+  &.fit-text {
+    min-width: 0;
+    min-height: 0;
+  }
+}
+
+@mixin button-variants($name, $color, $background, $border: transparent) {
+  .btn-#{$name} {
+    @include button-variant($color, $background, $border);
+    &.outline {
+      @include button-outline-variant($background);
+    }
+    &.flat {
+      @include button-flat-variant($background);
+    }
+    @content;
+  }
+  .link-#{$name} {
+    font-weight: bold;
+    @include font-smoothing;
+    color: $background;
+    text-decoration: underline;
+
+    &:disabled {
+      color: $btn-disabled-color;
+    }
+  }
+}
+
+// Shamelessly copied from https://codepen.io/davidhalford/pen/wlDxL
+// Adds text color to an element based on what has more contrast with its background
+
+@function color-brightness($color) {
+  @return round(
+    (red($color) * 299) + (green($color) * 587) + (blue($color) * 114) / 1000
+  );
+}
+
+$brightness-threshold: color-brightness($color-white) / 2;
+
+@function text-contrast-color($background) {
+  $brightness: color-brightness($background);
+
+  @if abs($brightness) < $brightness-threshold {
+    @return #fff;
+  }
+
+  @return #000;
+}

@@ -1,3 +1,24 @@
+## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
+## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.2.0...@codecademy/gamut-styles@7.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+## [7.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.1...@codecademy/gamut-styles@7.2.0) (2020-11-02)
+
+
+### ✨ Features
+
+* **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
+
 ### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.0...@codecademy/gamut-styles@7.1.1) (2020-10-20)
 
 

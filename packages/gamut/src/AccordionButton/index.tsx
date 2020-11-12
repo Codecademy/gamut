@@ -2,15 +2,18 @@ import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
 
-import { Button } from '../Button';
-import { ButtonBase, ButtonBaseProps } from '../ButtonBase';
+import { ButtonDeprecated } from '../ButtonDeprecated';
+import {
+  ButtonDeprecatedBase,
+  ButtonDeprecatedBaseProps,
+} from '../ButtonDeprecatedBase';
 import styles from './styles.module.scss';
 
 export type AccordionButtonSize = 'normal' | 'large';
 
 export type AccordionButtonTheme = 'blue' | 'plain' | 'yellow';
 
-export type AccordionButtonProps = ButtonBaseProps & {
+export type AccordionButtonProps = ButtonDeprecatedBaseProps & {
   /**
    * Whether the button should display as open or closed.
    */
@@ -29,21 +32,21 @@ export type AccordionButtonProps = ButtonBaseProps & {
 
 const buttonThemes = {
   blue: {
-    component: Button,
+    component: ButtonDeprecated,
     props: {
       flat: true,
       theme: 'white',
     },
   },
   plain: {
-    component: Button,
+    component: ButtonDeprecated,
     props: {
       flat: true,
       theme: 'brand-dark-blue',
     },
   },
   yellow: {
-    component: ButtonBase,
+    component: ButtonDeprecatedBase,
     props: {},
   },
 };
