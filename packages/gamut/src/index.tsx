@@ -15,7 +15,6 @@ export * from './Card/CardBody';
 export * from './Card/CardFooter';
 export * from './Card/CardShell';
 export * from './ContentContainer';
-export * from './DeprecatedTabs';
 export * from './FlexBox';
 export * from './FlexGrid';
 export * from './Form';
