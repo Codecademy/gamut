@@ -67,12 +67,6 @@ const {
       scale: 'spacing',
     },
   },
-  shadows: {
-    boxShadow: {
-      propName: 'boxShadow',
-      scale: 'boxShadows',
-    },
-  },
 });
 
 export {
