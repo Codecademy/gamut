@@ -1,9 +1,8 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
-import { Box } from '@codecademy/gamut-labs/src';
-import { boxTypes } from './argTypes';
+import { CardBox } from '@codecademy/gamut-labs/src';
 
-<Meta title="Atoms/Box (Labs)" component={Box} argTypes={boxTypes} />
+<Meta title="Atoms/CardBox (Labs)" component={CardBox} />
 
 # Box
 
@@ -13,15 +12,14 @@ A flex box primitive that allows you create markup configurable flex containers
 
 <Canvas>
   <Story
-    name="Box"
+    name="CardBox"
     args={{
       children: 'Hello world I am a box',
       padding: 16,
-      bordered: true,
     }}
   >
-    {(args) => <Box {...args} />}
+    {(args) => <CardBox {...args} />}
   </Story>
 </Canvas>
 
-<Props story="Box" />
+<Props story="CardBox" />

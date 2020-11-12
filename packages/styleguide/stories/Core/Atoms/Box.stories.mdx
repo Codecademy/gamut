@@ -1,0 +1,54 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { Box, FlexBox } from '@codecademy/gamut/src';
+
+<Meta title="Atoms/Box" component={Box} />
+
+# Box
+
+<StoryStatus status="volatile" />
+
+Just a box with a lot of props
+
+<Canvas>
+  <Story
+    name="Box"
+    args={{
+      children: 'Hello world I am a box',
+    }}
+  >
+    {(args) => <Box {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Box" />
+
+## FlexBox
+
+A flex container with props to configure your flex content
+
+<Canvas>
+  <Story
+    name="FlexBox"
+    args={{
+      children: 'Hello world I am a FlexBox',
+    }}
+  >
+    {(args) => <FlexBox {...args} />}
+  </Story>
+</Canvas>
+
+## GridBox
+
+A grid container with props to configure your grid.
+
+<Canvas>
+  <Story
+    name="GridBox"
+    args={{
+      children: 'Hello world I am a GridBox',
+    }}
+  >
+    {(args) => <GridBox {...args} />}
+  </Story>
+</Canvas>
