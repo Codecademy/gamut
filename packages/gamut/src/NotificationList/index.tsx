@@ -1,10 +1,30 @@
 import React from 'react';
-import cx from 'classnames';
 import { isEmpty } from 'lodash';
 import { omitProps } from '../utils/omitProps';
 import { Notification } from './typings';
 import { NotificationItem } from './NotificationItem';
-import styles from './styles/index.module.scss';
+import { space } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
+import styled from '@emotion/styled';
+
+export const NotifcationListContainer = styled.div<
+  { noContent?: boolean } & HandlerProps<typeof space>
+>`
+  ${space}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: ${({ theme }) => theme.fontSize[16]};
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.swatches.gray[800]};
+`;
+
+export const EmptyButton = styled.button`
+  background: none;
+  border: none;
+  text-align: center;
+`;
 
 const byDate = (notification1: Notification, notification2: Notification) => {
   return (
@@ -31,23 +51,21 @@ export const NotificationList = (props: NotificationListProps) => {
     0,
     maxNotifications
   );
-  const notificationClasses = cx(
-    styles.notificationsContainer,
-    { [styles.emptyContainer]: isEmpty(notifications) },
-    className
-  );
+
+  const noContent = isEmpty(notifications);
 
   return (
-    <div
+    <NotifcationListContainer
       {...omitProps(Object.keys(props), props)}
-      className={notificationClasses}
+      className={className}
+      padding={noContent ? 48 : 0}
     >
-      {isEmpty(notifications) ? (
-        <button className={styles.emptyText} type="button">
+      {noContent ? (
+        <EmptyButton type="button">
           {'No new notifications.'}
           <br />
           {"You're all caught up!"}
-        </button>
+        </EmptyButton>
       ) : (
         visibleNotifications.map((notification: Notification) => {
           return (
@@ -59,6 +77,6 @@ export const NotificationList = (props: NotificationListProps) => {
           );
         })
       )}
-    </div>
+    </NotifcationListContainer>
   );
 };

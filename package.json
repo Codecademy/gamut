@@ -61,6 +61,7 @@
     "@testing-library/react": "^11.0.4",
     "@types/chai": "4.2.14",
     "@types/classnames": "2.2.10",
+    "@types/date-fns": "2.6.0",
     "@types/enzyme": "3.10.5",
     "@types/invariant": "2.2.29",
     "@types/jest": "26.0.14",

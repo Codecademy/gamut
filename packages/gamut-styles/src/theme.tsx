@@ -8,6 +8,7 @@ export const theme = {
   fontWeight: tokens.fontWeight,
   colors: tokens.colors,
   spacing: tokens.spacing,
+  swatches: tokens.swatches,
 };
 
 export type Theme = typeof theme;

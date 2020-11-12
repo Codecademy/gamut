@@ -23,7 +23,7 @@ describe('NotificationItem', () => {
       <NotificationItem notification={linkedNotification} />
     );
 
-    expect(renderedNotification.name()).toBe('a');
+    expect(renderedNotification.prop('as')).toBe('a');
   });
 
   it('renders a button if no href is specified', () => {
@@ -31,7 +31,7 @@ describe('NotificationItem', () => {
       <NotificationItem notification={noLinkNotification} />
     );
 
-    expect(renderedNotification.name()).toBe('button');
+    expect(renderedNotification.prop('as')).toBe('button');
   });
 
   it('calls onClick when clicked', () => {
@@ -40,7 +40,7 @@ describe('NotificationItem', () => {
       <NotificationItem notification={noLinkNotification} onClick={onClick} />
     );
 
-    renderedNotification.find('button').simulate('click');
+    renderedNotification.find('NotificationItemElement').simulate('click');
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });

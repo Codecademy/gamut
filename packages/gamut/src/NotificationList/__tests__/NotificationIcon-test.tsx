@@ -1,8 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { NotificationIcon } from '../NotificationIcon';
-import { Icon } from '../../deprecated/Icon';
+import {
+  NotificationIcon,
+  NotificationIconElement,
+  NotificationImageElement,
+} from '../NotificationIcon';
 import { iconMap } from '../../deprecated/Icon/iconMap';
 
 describe('NotificationIcon', () => {
@@ -13,7 +16,9 @@ describe('NotificationIcon', () => {
     };
 
     const wrapper = shallow(<NotificationIcon {...props} />);
-    expect(wrapper.find('img').first().prop('src')).toEqual(imageUrl);
+    expect(wrapper.find(NotificationImageElement).first().prop('src')).toEqual(
+      imageUrl
+    );
   });
 
   it('can render a gamut icon', () => {
@@ -22,6 +27,6 @@ describe('NotificationIcon', () => {
     const props = { iconSlug };
     const wrapper = shallow(<NotificationIcon {...props} />);
 
-    expect(wrapper.find(Icon).length).toEqual(1);
+    expect(wrapper.find(NotificationIconElement).length).toEqual(1);
   });
 });

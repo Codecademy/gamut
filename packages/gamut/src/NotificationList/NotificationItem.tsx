@@ -1,19 +1,60 @@
 import React from 'react';
-import cx from 'classnames';
-import moment from 'moment';
+import { format } from 'date-fns';
 import { Truncate } from '../Truncate';
 import { Notification } from './typings';
 import { NotificationIcon } from './NotificationIcon';
-import styles from './styles/Notification.module.scss';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { Text } from '../Typography';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
 };
 
-const formatTime = (notificationDate: string): string => {
-  return moment(notificationDate).fromNow();
-};
+const formatTime = (notificationDate: string): string =>
+  format(new Date(notificationDate), 'MMM d, yyyy');
+
+const NotificationMessage = styled(Text)`
+  max-height: 4rem;
+  overflow: hidden;
+`;
+const NotificationTime = styled(Text)`
+  color: ${({ theme }) => theme.swatches.gray[700]};
+`;
+
+const NotificationItemElement = styled.div<{ isActive?: boolean }>`
+  background: none;
+  width: 100%;
+  padding: ${({ theme }) => `${theme.spacing[16]} ${theme.spacing[24]}`};
+  display: flex;
+  align-items: flex-start;
+  font-size: ${({ theme }) => theme.fontSize[14]};
+  color: $color-black;
+  border: none;
+  border-bottom: 1px solid ${({ theme }) => theme.swatches.gray[200]};
+  text-align: left;
+  ${({ isActive, theme }) => {
+    if (isActive) {
+      return css`
+        background-color: rgba(${theme.colors.blue} 0.1);
+
+        ${NotificationTime} {
+          color: ${theme.swatches.gray[700]};
+        }
+      `;
+    }
+    return '';
+  }}
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
 
 export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
   const { notification, onClick } = props;
@@ -27,34 +68,26 @@ export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
     unread,
   } = notification;
 
-  const notificationClasses = cx(styles.notification, {
-    [styles.unread]: unread,
-  });
-
-  const [TagName, tagProps] = link
-    ? ([
-        'a',
-        { href: link, rel: 'noopener noreferrer', target: '_blank' },
-      ] as const)
-    : (['button', { type: 'button' }] as const);
+  const itemProps = link
+    ? ({
+        as: 'a',
+        href: link,
+        rel: 'noopener noreferrer',
+        target: '_blank',
+      } as const)
+    : ({ as: 'button', type: 'button' } as const);
 
   return (
-    <TagName
-      className={cx(notificationClasses)}
-      onClick={onClick}
-      {...tagProps}
-    >
+    <NotificationItemElement isActive={unread} {...itemProps} onClick={onClick}>
       <NotificationIcon
         iconSettings={iconSettings}
         iconSlug={iconSlug}
         imageUrl={imageUrl}
       />
-      <div className={styles.body}>
-        <div className={styles.text}>
-          <Truncate lines={3}>{text}</Truncate>
-        </div>
-        <div className={styles.time}>{formatTime(date)}</div>
-      </div>
-    </TagName>
+      <NotificationMessage>
+        <Truncate lines={3}>{text}</Truncate>
+      </NotificationMessage>
+      <NotificationTime>{formatTime(date)}</NotificationTime>
+    </NotificationItemElement>
   );
 };
