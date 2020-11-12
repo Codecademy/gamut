@@ -7,7 +7,7 @@ import { space } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
 
-export const NotifcationListContainer = styled.div<
+const NotifcationListContainer = styled.div<
   { noContent?: boolean } & HandlerProps<typeof space>
 >`
   ${space}
@@ -20,7 +20,7 @@ export const NotifcationListContainer = styled.div<
   color: ${({ theme }) => theme.swatches.gray[800]};
 `;
 
-export const EmptyButton = styled.button`
+const EmptyButton = styled.button`
   background: none;
   border: none;
   text-align: center;

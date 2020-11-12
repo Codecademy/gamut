@@ -6,13 +6,13 @@ import styles from './styles/NotificationIcon.module.scss';
 import styled from '@emotion/styled';
 import { Icon } from '../deprecated';
 
-export const OuterIconContainer = styled.div`
+const OuterIconContainer = styled.div`
   height: 3rem;
   width: 3rem;
   margin-right: 1.5rem;
 `;
 
-export const InnerIconContainer = styled.div`
+const InnerIconContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,13 +21,13 @@ export const InnerIconContainer = styled.div`
   width: 3rem;
 `;
 
-export const NotificationIconElement = styled(Icon)`
+const NotificationIconElement = styled(Icon)`
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
 `;
 
-export const NotificationImageElement = styled.img`
+const NotificationImageElement = styled.img`
   height: 2.5rem;
   width: 2.5rem;
 `;
