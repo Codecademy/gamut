@@ -1,6 +1,7 @@
 const black = '#000000';
 const white = '#ffffff';
-const swatches = {
+
+export const swatches = {
   beige: {
     '0': '#FFF0E5',
   },
