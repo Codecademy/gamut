@@ -18,10 +18,9 @@ export type ContentContainerProps = {
 export const ContentContainer: React.FC<ContentContainerProps> = ({
   children,
   className,
-  as,
+  as: Element = 'div',
   wide = false,
 }) => {
-  const Element = as || 'div';
   const classes = cx(
     {
       [styles.contentContainerWide]: wide,

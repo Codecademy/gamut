@@ -16,12 +16,12 @@ export type FlexGridProps = {
   as?: React.ElementType;
 };
 
-export const FlexGrid: React.FC<FlexGridProps> = (props) => {
+export const FlexGrid: React.FC<FlexGridProps> = ({
+  as: Element = 'div',
+  ...props
+}) => {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 
-  return React.createElement(
-    props.as || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };

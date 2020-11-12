@@ -79,11 +79,8 @@ export type ColProps = ColSizing & {
   reverse?: boolean;
 };
 
-export const Col: React.FC<ColProps> = (props) => {
+export const Col: React.FC<ColProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
 
-  return React.createElement(
-    props.as || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };
