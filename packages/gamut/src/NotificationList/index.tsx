@@ -17,7 +17,7 @@ const NotifcationListContainer = styled.div<
   flex-direction: column;
   font-size: ${({ theme }) => theme.fontSize[16]};
   background-color: ${({ theme }) => theme.colors.white};
-  color: ${({ theme }) => theme.swatches.gray[800]};
+  color: ${({ theme }) => theme.colors['gray-800']};
 `;
 
 const EmptyButton = styled.button`

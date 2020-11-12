@@ -20,7 +20,7 @@ const NotificationMessage = styled(Text)`
   overflow: hidden;
 `;
 const NotificationTime = styled(Text)`
-  color: ${({ theme }) => theme.swatches.gray[700]};
+  color: ${({ theme }) => theme.colors['gray-700']};
 `;
 
 const NotificationItemElement = styled.div<{ isActive?: boolean }>`
@@ -32,7 +32,7 @@ const NotificationItemElement = styled.div<{ isActive?: boolean }>`
   font-size: ${({ theme }) => theme.fontSize[14]};
   color: $color-black;
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.swatches.gray[200]};
+  border-bottom: 1px solid ${({ theme }) => theme.colors['gray-200']};
   text-align: left;
   ${({ isActive, theme }) => {
     if (isActive) {
@@ -40,7 +40,7 @@ const NotificationItemElement = styled.div<{ isActive?: boolean }>`
         background-color: rgba(${theme.colors.blue} 0.1);
 
         ${NotificationTime} {
-          color: ${theme.swatches.gray[700]};
+          color: ${theme.colors['gray-700']};
         }
       `;
     }
