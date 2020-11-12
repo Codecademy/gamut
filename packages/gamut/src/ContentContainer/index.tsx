@@ -8,7 +8,7 @@ export type ContentContainerProps = {
   /**
    * Component type to wrap children with.
    */
-  el?: keyof ReactHTML;
+  as?: keyof ReactHTML;
   /**
    * Toggle a containerWide className to be applied with no max-width and smaller padding
    */
@@ -18,10 +18,10 @@ export type ContentContainerProps = {
 export const ContentContainer: React.FC<ContentContainerProps> = ({
   children,
   className,
-  el,
+  as,
   wide = false,
 }) => {
-  const Element = el || 'div';
+  const Element = as || 'div';
   const classes = cx(
     {
       [styles.contentContainerWide]: wide,

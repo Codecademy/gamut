@@ -16,7 +16,7 @@ const propKeys = [
   'first',
   'last',
   'className',
-  'tagName',
+  'as',
   'children',
 ];
 
@@ -77,14 +77,14 @@ export type RowProps = {
   /**
    * Component type to wrap children with.
    */
-  tagName?: string;
+  as?: string;
   /** Align columns to `flex-start` on screen sizes greater than modifer */
   top?: ModificatorType;
 };
 
 export const Row: React.FC<RowProps> = (props) => {
   return React.createElement(
-    props.tagName || 'div',
+    props.as || 'div',
     omitProps(propKeys, { ...props, className: getClassNames(props) })
   );
 };
