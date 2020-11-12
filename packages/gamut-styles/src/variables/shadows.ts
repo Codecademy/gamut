@@ -5,4 +5,4 @@ export const boxShadows = {
   3: boxShadow(3),
   4: boxShadow(4),
   5: boxShadow(5),
-};
+} as const;
