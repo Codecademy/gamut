@@ -19,13 +19,13 @@ const InnerIconContainer = styled.div`
   width: 3rem;
 `;
 
-const NotificationIconElement = styled(Icon)`
+export const NotificationIconElement = styled(Icon)`
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
 `;
 
-const NotificationImageElement = styled.img`
+export const NotificationImageElement = styled.img`
   height: 2.5rem;
   width: 2.5rem;
 `;
