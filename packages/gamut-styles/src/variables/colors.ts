@@ -48,7 +48,7 @@ export const swatches = {
   },
 } as const;
 
-const flatSwatches = {
+export const flatSwatches = {
   'beige-0': '#FFF0E5',
   'blue-0': '#F5FCFF',
   'blue-300': '#66C4FF',
@@ -77,8 +77,7 @@ const flatSwatches = {
   'gray-900': '#19191a',
 } as const;
 
-export const colors = {
-  ...flatSwatches,
+export const trueColors = {
   beige: swatches.beige[0],
   blue: swatches.blue[500],
   green: swatches.green[700],
@@ -96,6 +95,11 @@ export const colors = {
   yellow: swatches.yellow[500],
   black,
   white,
+} as const;
+
+export const colors = {
+  ...flatSwatches,
+  ...trueColors,
 } as const;
 
 export const colorNames = {
