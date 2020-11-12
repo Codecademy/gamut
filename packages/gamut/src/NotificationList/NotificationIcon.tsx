@@ -1,10 +1,8 @@
 import React from 'react';
 import { get } from 'lodash';
 import { NotificationIconSettings } from './typings';
-import { iconMap } from '../deprecated/Icon/iconMap';
-import styles from './styles/NotificationIcon.module.scss';
 import styled from '@emotion/styled';
-import { Icon } from '../deprecated';
+import { Icon, iconMap } from '../deprecated';
 
 const OuterIconContainer = styled.div`
   height: 3rem;
@@ -46,15 +44,13 @@ const renderIcon = (props: NotificationIconProps) => {
 
     return (
       <InnerIconContainer style={iconStyle}>
-        <NotificationIconElement name={iconSlug} className={styles.iconImage} />
+        <NotificationIconElement name={iconSlug} />
       </InnerIconContainer>
     );
   }
 
   if (imageUrl) {
-    return (
-      <NotificationImageElement src={imageUrl} className={styles.icon} alt="" />
-    );
+    return <NotificationImageElement src={imageUrl} alt="" />;
   }
 
   return null;

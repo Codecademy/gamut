@@ -1,6 +1,6 @@
 import React, { SVGProps, HTMLAttributes } from 'react';
 import { iconMap } from './iconMap';
-
+export { iconMap } from './iconMap';
 /**
  * @deprecated Directly import icons from @codecademy/gamut-icons instead.
  */
