@@ -53,67 +53,69 @@ This is markdown
 
 In cases where our default Markdown renderer is not returning exactly what you need, you can override specific tags or custom tags.
 
-  <Canvas>
-    <Story name="Element Overrides">
-        <Markdown
-          overrides={{
-            CodeBlock: {
-              component: (props) => <Text style={{ color: 'darkblue'}} {...props} />,
-            },
-            CustomElement: {
-              component: ({ title }) => {
-                return (
-                  <Heading
-                    as="h3"
-                    fontSize="md"
-                    style={{
-                      color: 'rebeccapurple',
-                    }}
-                  >
-                    {title}
-                  </Heading>
-                );
-              },
-              allowedAttributes: ['title'],
-            },
-          }}
-          text="## Hello World
+<Canvas>
+  <Story name="Element Overrides">
+    <Markdown
+      overrides={{
+        CodeBlock: {
+          component: (props) => (
+            <Text style={{ color: 'darkblue' }} {...props} />
+          ),
+        },
+        CustomElement: {
+          component: ({ title }) => {
+            return (
+              <Heading
+                as="h3"
+                fontSize="md"
+                style={{
+                  color: 'rebeccapurple',
+                }}
+              >
+                {title}
+              </Heading>
+            );
+          },
+          allowedAttributes: ['title'],
+        },
+      }}
+      text="## Hello World
           <CodeBlock>Span inside a custom code block element</CodeBlock>
           <CustomElement title='A Custom Component' />"
-        />
-    </Story>
-  </Canvas>
+    />
+  </Story>
+</Canvas>
 
-  A common override may be to change the font size of a Heading.
+A common override may be to change the font size of a Heading.
 
-  <Canvas>
-    <Story name="Tag Overrides">
-        <Markdown
-          overrides={{
-            h3: {
-              component: (props) => <Heading {...props} as="h3" size="xs" />
-            }
-          }}
-          text="### Smaller H3"
-        />
-    </Story>
-  </Canvas>
+<Canvas>
+  <Story name="Tag Overrides">
+    <Markdown
+      overrides={{
+        h3: {
+          component: (props) => <Heading {...props} as="h3" size="xs" />,
+        },
+      }}
+      text="### Smaller H3"
+    />
+  </Story>
+</Canvas>
 
-  If you need to override a link, iframe, or table, you also need to provide the `skipDefaultOverides` prop.
+If you need to override a link, iframe, or table, you also need to provide the `skipDefaultOverides` prop.
 
-  <Canvas>
-    <Story name="Link Overrides">
-        <Markdown
-          skipDefaultOverides
-          overrides={{
-            a: {
-              component: Text,
-            }
-          }}
-          text="[This was a link](https://codecademy.com)."
-        />
-    </Story>
-  </Canvas>
+<Canvas>
+  <Story name="Link Overrides">
+    <Markdown
+      skipDefaultOverides
+      overrides={{
+        a: {
+          component: Text,
+        },
+      }}
+      text="[This was a link](https://codecademy.com)."
+    />
+  </Story>
+</Canvas>
 
 ## Inline Markdown
 
