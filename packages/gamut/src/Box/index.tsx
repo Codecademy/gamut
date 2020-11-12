@@ -18,8 +18,6 @@ const boxStyles = compose(
   layout,
   border,
   color,
-  grid,
-  flex,
   shadow,
   positioning,
   background,
@@ -30,13 +28,13 @@ export type BoxProps = HandlerProps<typeof boxStyles>;
 
 export const Box = styled.div<BoxProps>(boxStyles);
 
-export const FlexBox = styled(Box)``;
+export const FlexBox = styled(Box)(flex);
 
 FlexBox.defaultProps = {
   display: 'flex',
 };
 
-export const GridBox = styled(Box)``;
+export const GridBox = styled(Box)(grid);
 
 GridBox.defaultProps = {
   display: 'grid',
