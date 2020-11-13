@@ -24,17 +24,23 @@ const boxStyles = compose(
   typography
 );
 
-export type BoxProps = HandlerProps<typeof boxStyles>;
+export interface BoxProps extends HandlerProps<typeof boxStyles> {}
 
 export const Box = styled.div<BoxProps>(boxStyles);
 
-export const FlexBox = styled(Box)(flex);
+const flexStyles = compose(flex);
+export interface FlexProps extends HandlerProps<typeof flexStyles> {}
+
+export const FlexBox = styled(Box)<HandlerProps<typeof flexStyles>>(flexStyles);
 
 FlexBox.defaultProps = {
   display: 'flex',
 };
 
-export const GridBox = styled(Box)(grid);
+const gridStyles = compose(grid);
+export interface GridProps extends HandlerProps<typeof gridStyles> {}
+
+export const GridBox = styled(Box)<GridProps>(gridStyles);
 
 GridBox.defaultProps = {
   display: 'grid',

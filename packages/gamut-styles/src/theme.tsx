@@ -9,7 +9,8 @@ export const theme = {
   fontWeight: tokens.fontWeight,
   colors: tokens.colors,
   spacing: tokens.spacing,
-  swatches: tokens.swatches,
-};
+} as const;
 
-export type Theme = typeof theme;
+export type ThemeShape = typeof theme;
+
+export interface Theme extends ThemeShape {}
