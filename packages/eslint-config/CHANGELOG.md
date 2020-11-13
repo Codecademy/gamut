@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-### [3.0.6](http://github.com///compare/@codecademy/eslint-config@3.0.5...@codecademy/eslint-config@3.0.6) (2020-11-13)
+### [3.0.6](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.5...@codecademy/eslint-config@3.0.6) (2020-11-13)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
-* **System:** Typescript memory performance fixes ([#1145](http://github.com//undefined/issues/1145)) ([496a122](http://github.com///commit/496a122602d5fede07b4cc551666c338e9a25b10))
-
-
+* **System:** Typescript memory performance fixes ([#1145](http://github.com/Codecademy/client-modules/issues/1145)) ([496a122](http://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
 
 ### [3.0.5](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.4...@codecademy/eslint-config@3.0.5) (2020-11-04)
 
@@ -181,3 +174,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
+
