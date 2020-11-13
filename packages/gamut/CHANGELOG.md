@@ -1,3 +1,19 @@
+### [17.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.2...@codecademy/gamut@17.3.3) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* used type-only export for ButtonProps ([#1147](https://github.com/Codecademy/client-modules/issues/1147)) ([7146bb9](https://github.com/Codecademy/client-modules/commit/7146bb9a2c68d8c00891259346b6752fdcb14bf5))
+
+### [17.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.1...@codecademy/gamut@17.3.2) (2020-11-13)
+
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.0...@codecademy/gamut@17.3.1) (2020-11-12)
+
+
+### 🐛 Bug Fixes
+
+* **DeprecatedTabs:** Remove DeprecatedTabs component GM-54 ([#1140](https://github.com/Codecademy/client-modules/issues/1140)) ([1b41c89](https://github.com/Codecademy/client-modules/commit/1b41c89ca139bbf27a10dbf2489fc9cc0fd580c5))
+
 ## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.2.0...@codecademy/gamut@17.3.0) (2020-11-10)
 
 
