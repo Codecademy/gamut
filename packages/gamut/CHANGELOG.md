@@ -1,3 +1,19 @@
+### [17.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.3...@codecademy/gamut@17.3.4) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* fixes an a11y bug in the MenuItem component ([#1139](https://github.com/Codecademy/client-modules/issues/1139)) ([8040f95](https://github.com/Codecademy/client-modules/commit/8040f95567dcf27988da6abbc602df74e6e14e64))
+
+### [17.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.2...@codecademy/gamut@17.3.3) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* used type-only export for ButtonProps ([#1147](https://github.com/Codecademy/client-modules/issues/1147)) ([7146bb9](https://github.com/Codecademy/client-modules/commit/7146bb9a2c68d8c00891259346b6752fdcb14bf5))
+
+### [17.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.1...@codecademy/gamut@17.3.2) (2020-11-13)
+
 ### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.0...@codecademy/gamut@17.3.1) (2020-11-12)
 
 
