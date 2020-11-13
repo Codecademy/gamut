@@ -25,6 +25,7 @@ export type MenuItemProps = {
   asProps?: any;
 
   selected?: boolean;
+  ariaLabel?: string;
 };
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -32,15 +33,13 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   asProps = {},
   selected,
   children,
+  ariaLabel,
 }) => {
   const childClassName = cx(styles.link, asProps.className);
 
   return (
-    <li
-      className={cx(styles.menuItem, { [styles.selected]: selected })}
-      aria-label={selected ? 'current page' : undefined}
-    >
-      <As {...asProps} className={childClassName}>
+    <li className={cx(styles.menuItem, { [styles.selected]: selected })}>
+      <As {...asProps} className={childClassName} aria-label={ariaLabel}>
         {children}
       </As>
     </li>
