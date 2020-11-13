@@ -17,6 +17,12 @@ $below: translateY(0%);
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
 }
 
+.outline {
+  border: 1px solid $brand-dark-blue;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
 .above-right {
   transform: $right $above;
 }
