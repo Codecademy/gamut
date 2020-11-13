@@ -1,3 +1,10 @@
+### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.0...@codecademy/gamut-styles@7.4.1) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/client-modules/issues/1145)) ([496a122](https://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
 ## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
 
 

@@ -13,7 +13,7 @@ const propKeys = [
   'lgOffset',
   'reverse',
   'className',
-  'tagName',
+  'as',
   'children',
 ];
 
@@ -73,17 +73,14 @@ export type ColSizing = {
 };
 
 export type ColProps = ColSizing & {
-  tagName?: string;
+  as?: React.ElementType;
   className?: string;
   /** Reverses the column's flex-direction */
   reverse?: boolean;
 };
 
-export const Col: React.FC<ColProps> = (props) => {
+export const Col: React.FC<ColProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
 
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };
