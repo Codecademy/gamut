@@ -1,3 +1,10 @@
+### [17.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.4...@codecademy/gamut@17.3.5) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **Gamut:** Standardizes node type props as "as" GM-53 ([#1141](https://github.com/Codecademy/client-modules/issues/1141)) ([b2473fa](https://github.com/Codecademy/client-modules/commit/b2473fa84146473c0377959ab3ee009d88e9a465))
+
 ### [17.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.3...@codecademy/gamut@17.3.4) (2020-11-13)
 
 
