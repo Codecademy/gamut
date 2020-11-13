@@ -5,7 +5,7 @@ import { typography, color, space } from '@codecademy/gamut-styles';
 
 export const textStyles = compose(typography, color, space);
 
-export type TextProps = HandlerProps<typeof textStyles>;
+export interface TextProps extends HandlerProps<typeof textStyles> {}
 
 export const Text = styled.span<TextProps>(textStyles);
 
