@@ -31,6 +31,7 @@ const PropList = styled.ul`
   background-color: ${colors['gray-100']};
   list-style: none;
   margin: 0;
+  border-radius: 6px;
   ${boxShadow(2)}
 `;
 
