@@ -1,3 +1,5 @@
+### [5.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.6...@codecademy/gamut-labs@5.2.7) (2020-11-13)
+
 ### [5.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.5...@codecademy/gamut-labs@5.2.6) (2020-11-13)
 
 ### [5.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.4...@codecademy/gamut-labs@5.2.5) (2020-11-13)

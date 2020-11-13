@@ -1,3 +1,10 @@
+### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.1...@codecademy/gamut-styles@7.4.2) (2020-11-13)
+
+
+### Other Changes
+
+* **Styles:** Assorted theme / variable additions ([#1144](https://github.com/Codecademy/client-modules/issues/1144)) ([9b04960](https://github.com/Codecademy/client-modules/commit/9b04960e42024c40608d355b0758f199dc6b2aa5))
+
 ### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.0...@codecademy/gamut-styles@7.4.1) (2020-11-13)
 
 
