@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.0...@codecademy/gamut-styles@7.4.1) (2020-11-13)
+
+
+### Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/client-modules/issues/1145)) ([496a122](https://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
+
+
 ## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
 
 
@@ -640,4 +654,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
