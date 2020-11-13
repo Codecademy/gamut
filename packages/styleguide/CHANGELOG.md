@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [18.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.2...@codecademy/styleguide@18.5.3) (2020-11-13)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [18.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.1...@codecademy/styleguide@18.5.2) (2020-11-13)
 
 ### [18.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.0...@codecademy/styleguide@18.5.1) (2020-11-12)
@@ -1289,4 +1302,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
