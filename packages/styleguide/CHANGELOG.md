@@ -1,3 +1,10 @@
+### [18.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.5...@codecademy/styleguide@18.5.6) (2020-11-13)
+
+
+### Other Changes
+
+* **Styles:** Assorted theme / variable additions ([#1144](https://github.com/Codecademy/client-modules/issues/1144)) ([9b04960](https://github.com/Codecademy/client-modules/commit/9b04960e42024c40608d355b0758f199dc6b2aa5))
+
 ### [18.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.4...@codecademy/styleguide@18.5.5) (2020-11-13)
 
 ### [18.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.3...@codecademy/styleguide@18.5.4) (2020-11-13)
