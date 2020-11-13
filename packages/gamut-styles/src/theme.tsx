@@ -1,6 +1,7 @@
 import * as tokens from './variables';
 
 export const theme = {
+  boxShadows: tokens.boxShadows,
   breakpoints: tokens.mediaQueries,
   fontSize: tokens.fontSize,
   fontFamily: tokens.fontFamily,
