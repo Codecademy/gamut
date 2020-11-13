@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [17.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.4...@codecademy/gamut@17.3.5) (2020-11-13)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 * **Gamut:** Standardizes node type props as "as" GM-53 ([#1141](https://github.com/Codecademy/client-modules/issues/1141)) ([b2473fa](https://github.com/Codecademy/client-modules/commit/b2473fa84146473c0377959ab3ee009d88e9a465))
-
-
 
 ### [17.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.3...@codecademy/gamut@17.3.4) (2020-11-13)
 
@@ -3165,3 +3158,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+

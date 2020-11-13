@@ -1,15 +1,4 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [5.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.5...@codecademy/gamut-labs@5.2.6) (2020-11-13)
-
-**Note:** Version bump only for package @codecademy/gamut-labs
-
-
-
-
 
 ### [5.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.4...@codecademy/gamut-labs@5.2.5) (2020-11-13)
 
@@ -450,3 +439,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
