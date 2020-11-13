@@ -25,6 +25,7 @@
     "@codecademy/gamut": "^17.3.6",
     "@codecademy/gamut-styles": "^7.4.2",
     "@codecademy/gamut-system": "^0.1.1",
+    "@reach/popover": "^0.11.2",
     "classnames": "^2.2.5",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.4"
