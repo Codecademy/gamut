@@ -1,3 +1,10 @@
+### [3.0.6](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.5...@codecademy/eslint-config@3.0.6) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](http://github.com/Codecademy/client-modules/issues/1145)) ([496a122](http://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
 ### [3.0.5](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.4...@codecademy/eslint-config@3.0.5) (2020-11-04)
 
 

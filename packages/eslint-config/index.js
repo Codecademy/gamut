@@ -102,6 +102,7 @@ module.exports = {
     'react/display-name': 'off',
 
     // These functional rules are annoying and we generally don't want them on
+    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',

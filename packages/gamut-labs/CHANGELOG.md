@@ -1,3 +1,12 @@
+### [5.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.3...@codecademy/gamut-labs@5.2.4) (2020-11-13)
+
+### [5.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.2...@codecademy/gamut-labs@5.2.3) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/client-modules/issues/1145)) ([496a122](https://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
 ### [5.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.1...@codecademy/gamut-labs@5.2.2) (2020-11-12)
 
 ### [5.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.0...@codecademy/gamut-labs@5.2.1) (2020-11-10)

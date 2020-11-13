@@ -9,7 +9,9 @@ import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** Theme Shape  */
 
-type BaseTheme = Readonly<WeakRecord<string, ScaleArray | ScaleMap>>;
+type BaseTheme = Readonly<{
+  [key: string]: any;
+}>;
 
 export type AbstractTheme = BaseTheme & {
   breakpoints?: {
