@@ -28,10 +28,11 @@ export interface BoxProps extends HandlerProps<typeof boxStyles> {}
 
 export const Box = styled.div<BoxProps>(boxStyles);
 
+// This is a work around for flex props not being assignable to an interface.
 const flexStyles = compose(flex);
 export interface FlexProps extends HandlerProps<typeof flexStyles> {}
 
-export const FlexBox = styled(Box)<HandlerProps<typeof flexStyles>>(flexStyles);
+export const FlexBox = styled(Box)<FlexProps>(flexStyles);
 
 FlexBox.defaultProps = {
   display: 'flex',
