@@ -29,10 +29,11 @@ const PropList = styled.ul`
   transform: translate(-50%, 0);
   padding: ${spacing[8]} ${spacing[12]};
   background-color: ${colors['gray-100']};
+  border: 1px solid ${colors['gray-200']};
   list-style: none;
   margin: 0;
   border-radius: 6px;
-  ${boxShadow(2)}
+  ${boxShadow(1)}
 `;
 
 const PropItem = styled.li`
@@ -48,14 +49,15 @@ const Tag = styled.span`
   position: relative;
   display: inline-block;
   padding: ${spacing[4]} ${spacing[8]};
-  font-size: 12px;
+  font-size: 11px;
   font-family: ${fontAccent};
   margin: ${spacing[4]};
   margin-top: 0;
-  color: ${colors['gray-500']};
-  border: 1px solid ${colors['gray-300']};
+  color: ${colors['gray-600']};
+  border: 1px solid ${colors['gray-400']};
   border-radius: 4px;
   text-transform: uppercase;
+  cursor: help;
 
   &:first-of-type {
     margin-left: 0;
