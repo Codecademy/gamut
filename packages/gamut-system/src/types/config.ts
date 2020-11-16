@@ -10,7 +10,7 @@ import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 /** Theme Shape  */
 
 type BaseTheme = Readonly<{
-  [key: string]: any;
+  readonly [key: string]: any;
 }>;
 
 export type AbstractTheme = BaseTheme & {
