@@ -1,3 +1,5 @@
+### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.2...@codecademy/gamut-styles@7.4.3) (2020-11-16)
+
 ### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.1...@codecademy/gamut-styles@7.4.2) (2020-11-13)
 
 
