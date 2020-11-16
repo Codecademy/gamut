@@ -10,16 +10,6 @@ export type PopoverProps = {
   children: React.ReactElement<any>;
   className?: string;
   /**
-   * Whether the popover is rendered.
-   */
-  isOpen: boolean;
-  /**
-   * The target element around which the popover will be positioned.
-   */
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >;
-  /**
    * Which vertical edge of the source component to align against.
    */
   align?: 'left' | 'right';
@@ -27,6 +17,10 @@ export type PopoverProps = {
    * Number of pixels to offset the popover from the source component.
    */
   offset?: number;
+  /**
+   * Whether to add outline style (i.e. used for dropdowns).
+   */
+  outline?: boolean;
   /**
    * Which horizontal edge of the source componet to align against.
    */
@@ -36,22 +30,33 @@ export type PopoverProps = {
    */
   showBeak?: boolean;
   /**
+   * Whether the popover is rendered.
+   */
+  isOpen: boolean;
+  /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
   onRequestClose?: () => void;
+  /**
+   * The target element around which the popover will be positioned.
+   */
+  targetRef: React.RefObject<
+    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+  >;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
-  className,
   children,
-  isOpen,
-  showBeak,
-  position = 'below',
-  offset = 20,
+  className,
   align = 'left',
-  targetRef,
+  offset = 20,
+  outline = false,
+  position = 'below',
+  showBeak,
+  isOpen,
   onRequestClose,
+  targetRef,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -116,6 +121,7 @@ export const Popover: React.FC<PopoverProps> = ({
         className={cx(
           styles.popover,
           styles[`${position}-${align}`],
+          outline && styles.outline,
           className
         )}
         style={getPopoverPosition()}

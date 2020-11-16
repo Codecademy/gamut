@@ -1,3 +1,18 @@
+### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.0...@codecademy/gamut-labs@5.3.1) (2020-11-16)
+
+## [5.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.7...@codecademy/gamut-labs@5.3.0) (2020-11-13)
+
+
+### ✨ Features
+
+* **popover:** add outline prop ([8374ee4](https://github.com/Codecademy/client-modules/commit/8374ee4cc21de12603a4911a66fb5b30f0792352))
+
+### [5.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.6...@codecademy/gamut-labs@5.2.7) (2020-11-13)
+
+### [5.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.5...@codecademy/gamut-labs@5.2.6) (2020-11-13)
+
+### [5.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.4...@codecademy/gamut-labs@5.2.5) (2020-11-13)
+
 ### [5.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.3...@codecademy/gamut-labs@5.2.4) (2020-11-13)
 
 ### [5.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.2...@codecademy/gamut-labs@5.2.3) (2020-11-13)

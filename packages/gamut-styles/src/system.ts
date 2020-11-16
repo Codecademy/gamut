@@ -57,6 +57,16 @@ const {
       scale: 'colors',
     },
   },
+  grid: {
+    columnGap: {
+      propName: 'columnGap',
+      scale: 'spacing',
+    },
+    rowGap: {
+      propName: 'rowGap',
+      scale: 'spacing',
+    },
+  },
 });
 
 export {

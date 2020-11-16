@@ -1,3 +1,10 @@
+### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.1...@codecademy/gamut-system@0.1.2) (2020-11-16)
+
+
+### Other Changes
+
+* Fix color type inference ([#1150](https://github.com/Codecademy/client-modules/issues/1150)) ([a73dcfb](https://github.com/Codecademy/client-modules/commit/a73dcfb09f294ff4c3d8b0d6606472aa2cf9c9ca))
+
 ### [0.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.0...@codecademy/gamut-system@0.1.1) (2020-11-13)
 
 

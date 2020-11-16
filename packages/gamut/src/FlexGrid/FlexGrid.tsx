@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 
-const propKeys = ['fluid', 'className', 'tagName', 'children'];
+const propKeys = ['fluid', 'className', 'as', 'children'];
 
 export type FlexGridProps = {
   children?: ReactNode | ReactNode[];
@@ -13,15 +13,15 @@ export type FlexGridProps = {
   /**
    * Component type to wrap children with.
    */
-  tagName?: string;
+  as?: React.ElementType;
 };
 
-export const FlexGrid: React.FC<FlexGridProps> = (props) => {
+export const FlexGrid: React.FC<FlexGridProps> = ({
+  as: Element = 'div',
+  ...props
+}) => {
   const containerClass = style[props.fluid ? 'container-fluid' : 'container'];
   const className = cx(props.className, containerClass);
 
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };
