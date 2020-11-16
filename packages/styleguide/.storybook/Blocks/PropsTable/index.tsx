@@ -67,7 +67,9 @@ export const PropsTable: React.FC<Parameters<typeof ArgsTable>[0]> = (
     <React.Fragment>
       {usedProps.length > 0 && (
         <Header>
-          <Title>System Props</Title>
+          <HeaderColumn>
+            <Title>System Props</Title>
+          </HeaderColumn>
           <HeaderColumn>
             {systemPropGroups.map((group) => (
               <PropTag prop={group as keyof typeof groups} />
