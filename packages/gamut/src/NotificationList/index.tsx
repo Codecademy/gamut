@@ -14,9 +14,7 @@ export type NotificationListProps = {
 
 export const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
-  const maxNotifications = 5;
 
-  const visibleNotifications = notifications.slice(0, maxNotifications);
   const notificationClasses = cx(
     styles.notificationsContainer,
     { [styles.emptyContainer]: isEmpty(notifications) },
@@ -35,7 +33,7 @@ export const NotificationList = (props: NotificationListProps) => {
           {"You're all caught up!"}
         </button>
       ) : (
-        visibleNotifications.map((notification: Notification) => {
+        notifications.map((notification: Notification) => {
           return (
             <NotificationItem
               key={notification.id}
