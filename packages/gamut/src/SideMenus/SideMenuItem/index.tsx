@@ -28,7 +28,7 @@ export type MenuItemProps = {
   ariaLabel?: string;
 };
 
-export const MenuItem: React.FC<MenuItemProps> = ({
+export const SideMenuItem: React.FC<MenuItemProps> = ({
   as: As = 'a',
   asProps = {},
   selected,
