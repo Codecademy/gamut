@@ -11,7 +11,7 @@
     "../../typings/*.d.ts",
     "./**/*",
     "../**/src/**/*",
-    ".storybook/Blocks"
+    ".storybook/**/*"
   ],
   "exclude": []
 }
