@@ -53,7 +53,7 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
-        '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
+        '~styleguide/blocks': path.resolve(__dirname, './components/'),
       },
     };
 
