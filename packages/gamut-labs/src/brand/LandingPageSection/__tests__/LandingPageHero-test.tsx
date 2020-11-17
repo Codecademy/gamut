@@ -1,4 +1,4 @@
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import { LandingPageHero } from '..';
 
@@ -42,10 +42,10 @@ describe('LandingPageHero', () => {
   });
 
   it('should only render an image when an imgSrc is provided', () => {
-    const wrapper = mount(<LandingPageHero imgSrc="test" testId="hero" />);
-    expect(wrapper.find('img')).toHaveLength(1);
+    const wrapper = shallow(<LandingPageHero imgSrc="test" testId="hero" />);
+    expect(wrapper.find('*[testId="hero-img"]')).toHaveLength(1);
 
-    const wrapperNoImg = mount(<LandingPageHero testId="hero" />);
-    expect(wrapperNoImg.find('img')).toHaveLength(0);
+    const wrapperNoImg = shallow(<LandingPageHero testId="hero" />);
+    expect(wrapperNoImg.find('*[testId="hero-img"]')).toHaveLength(0);
   });
 });
