@@ -51,23 +51,6 @@ describe('NotificationList', () => {
     );
   });
 
-  it('renders up to five notifications', () => {
-    const wrapper = shallow(<NotificationList notifications={notifications} />);
-    expect(wrapper.find(NotificationItem).length).toEqual(5);
-  });
-
-  it('renders the most recent notifications first', () => {
-    const wrapper = shallow(<NotificationList notifications={notifications} />);
-    const renderedNotifications = wrapper.find(NotificationItem);
-
-    const expectedIds = ['6', '5', '4', '3', '2'];
-    const receivedIds = renderedNotifications.map(
-      (notifComponent) => notifComponent.prop('notification').id
-    );
-
-    expect(receivedIds).toEqual(expectedIds);
-  });
-
   it('renders an unread notification', () => {
     const unreadNotification = {
       text: 'notification 1',
