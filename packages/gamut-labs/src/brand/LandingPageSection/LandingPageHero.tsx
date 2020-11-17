@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import { LayoutGrid, Column } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import {
   LandingPageSectionCTA,
@@ -8,24 +9,19 @@ import {
   LandingPageSectionDescription,
 } from './';
 
-const Container = styled.div`
-  display: flex;
-  align-items: flex-start;
+const Layout = styled(LayoutGrid)`
   padding: 0 2rem;
   margin: 2rem 0;
 `;
 
-const Content = styled.div`
-  flex: 1;
-`;
-
-const Image = styled.img`
-  width: 16.6%; // 2 columns in a 12 column layout
-  margin-left: 1rem;
-
+const RightColumn = styled(Column)`
   @media only screen and (max-width: ${breakpoints.sm}) {
     display: none;
   }
+`;
+
+const Image = styled.img`
+  width: 100%;
 `;
 
 export type LandingPageHeroProps = {
@@ -61,30 +57,32 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
   imgSrc,
   imgAlt,
   testId,
-}) => {
-  const hasImage = !!imgSrc;
-
-  return (
-    <Container>
-      <Content>
-        {title && (
-          <LandingPageSectionTitle isPageHeading testId={`${testId}-title`}>
-            {title}
-          </LandingPageSectionTitle>
-        )}
-        {desc && (
-          <LandingPageSectionDescription
-            text={desc}
-            testId={`${testId}-desc`}
-          />
-        )}
-        {cta && ctaHref && (
-          <LandingPageSectionCTA href={ctaHref} testId={`${testId}-cta`}>
-            {cta}
-          </LandingPageSectionCTA>
-        )}
-      </Content>
-      {hasImage && <Image src={imgSrc} alt={imgAlt} />}
-    </Container>
-  );
-};
+}) => (
+  <Layout>
+    <Column
+      size={{
+        xs: 12,
+        sm: imgSrc ? 9 : 12,
+      }}
+    >
+      {title && (
+        <LandingPageSectionTitle isPageHeading testId={`${testId}-title`}>
+          {title}
+        </LandingPageSectionTitle>
+      )}
+      {desc && (
+        <LandingPageSectionDescription text={desc} testId={`${testId}-desc`} />
+      )}
+      {cta && ctaHref && (
+        <LandingPageSectionCTA href={ctaHref} testId={`${testId}-cta`}>
+          {cta}
+        </LandingPageSectionCTA>
+      )}
+    </Column>
+    {imgSrc && (
+      <RightColumn size={3} testId={`${testId}-img`}>
+        <Image src={imgSrc} alt={imgAlt} />
+      </RightColumn>
+    )}
+  </Layout>
+);
