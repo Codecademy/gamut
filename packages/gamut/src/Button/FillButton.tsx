@@ -35,12 +35,19 @@ const FillButtonOuter = styled(ButtonOutline)`
   padding: 1px;
 `;
 
-export const FillButton: React.FC<React.ComponentProps<
-  typeof FillButtonOuter
->> = ({ children, mode, ...props }) => {
-  return (
-    <FillButtonOuter mode={mode} {...props}>
-      <FillButtonInner mode={mode}>{children}</FillButtonInner>
-    </FillButtonOuter>
-  );
-};
+export const FillButton = React.forwardRef<HTMLButtonElement>(
+  (
+    {
+      children,
+      mode,
+      ...props
+    }: React.PropsWithChildren<React.ComponentProps<typeof FillButtonOuter>>,
+    ref
+  ) => {
+    return (
+      <FillButtonOuter mode={mode} ref={ref} {...props}>
+        <FillButtonInner mode={mode}>{children}</FillButtonInner>
+      </FillButtonOuter>
+    );
+  }
+);

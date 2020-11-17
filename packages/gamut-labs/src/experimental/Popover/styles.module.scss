@@ -1,62 +1,62 @@
 @import "~@codecademy/gamut-styles/utils";
 
-$right: translateX(-100%);
-$left: translateX(0%);
-$center: translateX(-50%);
+// $right: translateX(-100%);
+// $left: translateX(0%);
+// $center: translateX(-50%);
 
-$above: translateY(-100%);
-$below: translateY(0%);
+// $above: translateY(-100%);
+// $below: translateY(0%);
 
-.popover {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
-}
+// .popover {
+//   position: fixed;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   background-color: white;
+//   border-radius: 4px;
+//   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
+// }
 
-.outline {
-  border: 1px solid $brand-dark-blue;
-  border-radius: 2px;
-  box-shadow: none;
-}
+// .outline {
+//   border: 1px solid $brand-dark-blue;
+//   border-radius: 2px;
+//   box-shadow: none;
+// }
 
-.above-right {
-  transform: $right $above;
-}
+// .above-right {
+//   transform: $right $above;
+// }
 
-.below-right {
-  transform: $right $below;
-}
+// .below-right {
+//   transform: $right $below;
+// }
 
-.above-left {
-  transform: $left $above;
-}
+// .above-left {
+//   transform: $left $above;
+// }
 
-.below-left {
-  transform: $left $below;
-}
+// .below-left {
+//   transform: $left $below;
+// }
 
-.beak {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
+// .beak {
+//   width: 0;
+//   height: 0;
+//   border-left: 15px solid transparent;
+//   border-right: 15px solid transparent;
 
-  border-bottom: 15px solid white;
-}
+//   border-bottom: 15px solid white;
+// }
 
-.below-beak {
-  position: absolute;
-  top: -15px;
-  left: 20px;
-}
+// .below-beak {
+//   position: absolute;
+//   top: -15px;
+//   left: 20px;
+// }
 
-.above-beak {
-  position: absolute;
-  transform: rotate(180deg);
-  top: calc(100% - 1px);
-  left: 20px;
-}
+// .above-beak {
+//   position: absolute;
+//   transform: rotate(180deg);
+//   top: calc(100% - 1px);
+//   left: 20px;
+// }

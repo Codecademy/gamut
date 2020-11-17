@@ -4,15 +4,16 @@ import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
-  const activeElRef = useRef<HTMLDivElement>(null);
+  const activeElRef = useRef<HTMLButtonElement>(null);
 
   return (
     <React.Fragment>
-      <div ref={activeElRef}>
+      <div>
         <FillButton
           onClick={() => {
             setOpen(!open);
           }}
+          ref={activeElRef}
         >
           Open Popover
         </FillButton>
