@@ -1,4 +1,4 @@
-import { mapValues, update, isNumber } from 'lodash/fp';
+import { mapValues, update, isNumber, compose, get, set, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import * as system from '@codecademy/gamut-styles/src/system';
 
@@ -11,29 +11,59 @@ const systemProps = Object.entries(properties).reduce<string[]>(
   []
 );
 
+const getScale = (value: string) => {
+  const [match, scale] = value.match(/<(.*?)>/) ?? [];
+  return scale ?? value;
+};
+
+const sortScale = (scale: string[]) => {
+  const numericScale =
+    isNumber(parseInt(scale[0])) && !isNaN(parseInt(scale[0]));
+  if (numericScale) {
+    return scale.map((val) => parseInt(val)).sort((a, b) => (a > b ? 1 : -1));
+  }
+  return scale;
+};
+
+const parseScaleValue = update('table.type.summary', (summary) => {
+  if (summary.length) {
+    return sortScale(getScale(summary).split(' | ')).join(' | ');
+  }
+  return summary;
+});
+
+const updateDescription = update(
+  'description',
+  (desc) => 'Responsive Property'
+);
+
+const updateConrol = (arg) => {
+  const summary = get('table.type.summary', arg);
+  const options = sortScale(summary.split(' | '));
+  if (summary.indexOf('string') > -1) {
+    return set('control', { type: 'text' }, arg);
+  } else {
+    return set(
+      'control',
+      {
+        type: 'select',
+        options: map(
+          (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
+          options
+        ),
+      },
+      arg
+    );
+  }
+};
+
+const enrichArg = compose(updateConrol, updateDescription, parseScaleValue);
+
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((args) => {
     if (systemProps.includes(args.name) && args.description === '') {
-      return update(
-        'table.type.summary',
-        (summary) => {
-          if (summary.length) {
-            const parsedScale = summary.split('| Media')[0];
-            let scale = parsedScale.split(' | ');
-            const numericScale =
-              isNumber(parseInt(scale[0])) && !isNaN(parseInt(scale[0]));
-            if (numericScale) {
-              scale = scale
-                .map((val) => parseInt(val))
-                .sort((a, b) => (a > b ? 1 : -1));
-            }
-            return scale.join(' | ');
-          }
-          return summary;
-        },
-        args
-      );
+      return enrichArg(args);
     }
     return args;
   }, argTypes);
