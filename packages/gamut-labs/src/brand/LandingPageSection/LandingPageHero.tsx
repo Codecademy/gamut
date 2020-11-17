@@ -15,6 +15,8 @@ const Layout = styled(LayoutGrid)`
 `;
 
 const RightColumn = styled(Column)`
+  margin-left: 1rem;
+
   @media only screen and (max-width: ${breakpoints.sm}) {
     display: none;
   }
