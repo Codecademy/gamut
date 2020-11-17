@@ -1,8 +1,12 @@
+import React from 'react';
 import { mapValues, update, isNumber, compose, get, set, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import * as system from '@codecademy/gamut-styles/src/system';
 
-const { properties, variant, ...groups } = system;
+const DOCS_LINK =
+  'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
+
+const { properties, variant } = system;
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
@@ -32,10 +36,7 @@ const parseScaleValue = update('table.type.summary', (summary) => {
   return summary;
 });
 
-const updateDescription = update(
-  'description',
-  (desc) => 'Responsive Property'
-);
+const updateDescription = update('description', (desc) => DOCS_LINK);
 
 const updateConrol = (arg) => {
   const summary = get('table.type.summary', arg);
@@ -62,6 +63,16 @@ const enrichArg = compose(updateConrol, updateDescription, parseScaleValue);
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((args) => {
+    if (args.name === 'theme') {
+      return {
+        ...args,
+        description: 'Codecademy Theme',
+        control: {
+          ...args.control,
+          disable: true,
+        },
+      };
+    }
     if (systemProps.includes(args.name) && args.description === '') {
       return enrichArg(args);
     }
