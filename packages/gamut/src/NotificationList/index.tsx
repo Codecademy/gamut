@@ -6,17 +6,6 @@ import { Notification } from './typings';
 import { NotificationItem } from './NotificationItem';
 import styles from './styles/index.module.scss';
 
-const byDate = (notification1: Notification, notification2: Notification) => {
-  return (
-    new Date(notification2.date).getTime() -
-    new Date(notification1.date).getTime()
-  );
-};
-
-const sortedNotifications = (notifications: Notification[]) => {
-  return notifications.sort(byDate);
-};
-
 export type NotificationListProps = {
   className?: string;
   notifications: Notification[];
@@ -27,10 +16,7 @@ export const NotificationList = (props: NotificationListProps) => {
   const { className, notifications, onNotificationClick } = props;
   const maxNotifications = 5;
 
-  const visibleNotifications = sortedNotifications(notifications).slice(
-    0,
-    maxNotifications
-  );
+  const visibleNotifications = notifications.slice(0, maxNotifications);
   const notificationClasses = cx(
     styles.notificationsContainer,
     { [styles.emptyContainer]: isEmpty(notifications) },
