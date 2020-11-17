@@ -22,6 +22,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
+    './addons/system/preset',
   ],
   stories: ['../stories/**/*.stories.(mdx|tsx)'],
 
