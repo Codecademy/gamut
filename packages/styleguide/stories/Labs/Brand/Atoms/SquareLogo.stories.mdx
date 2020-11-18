@@ -1,0 +1,27 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { select, number, boolean } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { SquareLogo } from '@codecademy/gamut-labs/src';
+import { selectableColorNames } from '../../../../helpers';
+
+<Meta
+  title="Labs/Brand/Atoms/SquareLogo"
+  component={SquareLogo}
+  argTypes={{
+    backgroundColor: {
+      control: { type: 'select', options: selectableColorNames },
+    },
+  }}
+/>
+
+# SquareLogo
+
+<StoryStatus status="stable" />
+
+Square iteration of our Codecademy Logo. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.
+
+<Canvas withSource="open">
+  <Story name="SquareLogo">{(args) => <SquareLogo {...args} />}</Story>
+</Canvas>
+
+<Props story="SquareLogo" />

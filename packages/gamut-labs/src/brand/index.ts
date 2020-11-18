@@ -9,5 +9,6 @@ export * from './Loading';
 export * from './Logo';
 export * from './ProLogo';
 export * from './ProLogoAlt';
+export * from './SquareLogo';
 export * from './Quote';
 export * from './Testimonial';
