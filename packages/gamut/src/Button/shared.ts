@@ -1,13 +1,11 @@
 import { colors, swatches } from '@codecademy/gamut-styles';
 
-import { VisualTheme } from '../theming/VisualTheme';
-
 export type ButtonProps = {
-  mode?: VisualTheme;
+  mode?: 'dark' | 'light';
 };
 
 export const modeColorGroups = {
-  [VisualTheme.DarkMode]: {
+  dark: {
     background: colors.yellow,
     backgroundEmphasized: swatches.gray[900],
     backgroundMuted: swatches.gray[600],
@@ -15,7 +13,7 @@ export const modeColorGroups = {
     foreground: colors.black,
     shadow: colors.white,
   },
-  [VisualTheme.LightMode]: {
+  light: {
     background: colors.hyper,
     backgroundEmphasized: swatches.gray[100],
     backgroundMuted: swatches.gray[200],

@@ -2,11 +2,10 @@ import { timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonProps, modeColorGroups } from './shared';
 
 export const ButtonOutline = styled.button<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`

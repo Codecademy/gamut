@@ -3,13 +3,12 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
