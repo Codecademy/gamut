@@ -18,7 +18,7 @@ const create = <
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BASE_CONFIG, config ?? {});
+  const propGroups = merge(BASE_CONFIG, config || {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
