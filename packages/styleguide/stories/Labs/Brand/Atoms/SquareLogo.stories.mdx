@@ -8,7 +8,7 @@ import { selectableColorNames } from '../../../../helpers';
   title="Labs/Brand/Atoms/SquareLogo"
   component={SquareLogo}
   argTypes={{
-    backgroundColor: {
+    color: {
       control: { type: 'select', options: selectableColorNames },
     },
   }}
@@ -18,7 +18,7 @@ import { selectableColorNames } from '../../../../helpers';
 
 <StoryStatus status="stable" />
 
-Square iteration of our Codecademy Logo. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.
+Square variant of our Codecademy Logo. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.
 
 <Canvas withSource="open">
   <Story name="SquareLogo">{(args) => <SquareLogo {...args} />}</Story>
