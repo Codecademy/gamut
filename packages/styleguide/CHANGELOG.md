@@ -1,3 +1,17 @@
+## [18.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.6.0...@codecademy/styleguide@18.7.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Custom PropTable ([#1149](https://github.com/Codecademy/client-modules/issues/1149)) ([9fb1235](https://github.com/Codecademy/client-modules/commit/9fb1235bb7dd3aac4c1a8ee4e423a2e8c50323af))
+
+## [18.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.9...@codecademy/styleguide@18.6.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Adds docgen parser for system props ([#1158](https://github.com/Codecademy/client-modules/issues/1158)) ([d144238](https://github.com/Codecademy/client-modules/commit/d144238fede0ae4624b31789a3c026c1f6da0fa2))
+
 ### [18.5.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.8...@codecademy/styleguide@18.5.9) (2020-11-19)
 
 ### [18.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.7...@codecademy/styleguide@18.5.8) (2020-11-17)
