@@ -1,24 +1,16 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.2...@codecademy/gamut-labs@5.5.0) (2020-11-19)
 
 
-### Features
+### ✨ Features
 
 * add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
 
-
-
 ### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.1...@codecademy/gamut-labs@5.4.2) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
 
+### Other Changes
 
-
-
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
 
 ### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.0...@codecademy/gamut-labs@5.4.1) (2020-11-19)
 
@@ -483,3 +475,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+

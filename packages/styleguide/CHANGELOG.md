@@ -1,24 +1,16 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [18.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.2...@codecademy/styleguide@18.8.0) (2020-11-19)
 
 
-### Features
+### ✨ Features
 
 * add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
 
-
-
 ### [18.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.1...@codecademy/styleguide@18.7.2) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
-
-
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
 
 ### [18.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.0...@codecademy/styleguide@18.7.1) (2020-11-19)
 
@@ -1351,3 +1343,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
