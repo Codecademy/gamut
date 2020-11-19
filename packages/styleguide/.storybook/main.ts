@@ -45,10 +45,6 @@ module.exports = {
     return config;
   },
   webpackFinal: (config) => {
-    // config.module.rules = config.module.rules.concat(
-    //   configs.css().module.rules
-    // );
-
     config.module.rules = config.module.rules
       .filter((rule) => rule.test.toString() !== '/\\.css$/')
       .concat(configs.css().module.rules);
@@ -61,7 +57,6 @@ module.exports = {
       },
     };
 
-    console.log(config.module.rules);
     return config;
   },
 };

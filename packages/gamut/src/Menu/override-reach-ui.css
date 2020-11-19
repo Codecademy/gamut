@@ -1,4 +1,8 @@
-/* https://reach.tech/styling/ */
+/*
+https://reach.tech/styling/
+Their docs are pretty clear that it's normally better to use their styles as a base.
+...as we use more Reach components, we should investigate switching over.
+*/
 :root {
   --reach-dialog: 1;
 }
