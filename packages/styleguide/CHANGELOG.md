@@ -1,3 +1,37 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [18.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.1...@codecademy/styleguide@18.7.2) (2020-11-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [18.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.0...@codecademy/styleguide@18.7.1) (2020-11-19)
+
+
+### Other Changes
+
+* Fix for knobs being carried over everywhere ([#1159](https://github.com/Codecademy/client-modules/issues/1159)) ([a1ce5d4](https://github.com/Codecademy/client-modules/commit/a1ce5d4405a231cdab55436d17cdfb3ab7b28e8b))
+
+## [18.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.6.0...@codecademy/styleguide@18.7.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Custom PropTable ([#1149](https://github.com/Codecademy/client-modules/issues/1149)) ([9fb1235](https://github.com/Codecademy/client-modules/commit/9fb1235bb7dd3aac4c1a8ee4e423a2e8c50323af))
+
+## [18.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.9...@codecademy/styleguide@18.6.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Adds docgen parser for system props ([#1158](https://github.com/Codecademy/client-modules/issues/1158)) ([d144238](https://github.com/Codecademy/client-modules/commit/d144238fede0ae4624b31789a3c026c1f6da0fa2))
+
 ### [18.5.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.8...@codecademy/styleguide@18.5.9) (2020-11-19)
 
 ### [18.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.7...@codecademy/styleguide@18.5.8) (2020-11-17)
@@ -1308,4 +1342,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
