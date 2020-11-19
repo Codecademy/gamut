@@ -1,3 +1,10 @@
+### [3.0.7](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.6...@codecademy/eslint-config@3.0.7) (2020-11-18)
+
+
+### Other Changes
+
+* disable jsx-a11y/accessible-emoji ([#1167](http://github.com/Codecademy/client-modules/issues/1167)) ([84d9add](http://github.com/Codecademy/client-modules/commit/84d9add9859c6bbb547fdbb1aa2f346caedd5589))
+
 ### [3.0.6](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.5...@codecademy/eslint-config@3.0.6) (2020-11-13)
 
 

@@ -7,11 +7,6 @@
     "isolatedModules": true,
     "declaration": false
   },
-  "include": [
-    "../../typings/*.d.ts",
-    "./**/*",
-    "../**/src/**/*",
-    ".storybook/Blocks"
-  ],
+  "include": ["../../typings/*.d.ts", "./**/*", "../**/src/**/*"],
   "exclude": []
 }

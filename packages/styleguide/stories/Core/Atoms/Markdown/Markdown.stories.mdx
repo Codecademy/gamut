@@ -9,6 +9,13 @@ import { customText } from './helpers';
   title="Atoms/Markdown"
   component={Markdown}
   parameters={{ knobs: { escapeHTML: false } }}
+  args={{
+    text: `
+## Hello World
+This is markdown
+    `,
+    spacing: 'none',
+  }}
 />
 
 # Markdown
@@ -18,20 +25,7 @@ import { customText } from './helpers';
 Markdown renderer for all your markdown needs.
 
 <Canvas>
-  <Story name="Basics">
-    {(args) => (
-      <Markdown
-        text={text(
-          'markdown',
-          `
-## Hello World
-This is markdown
-    `
-        )}
-        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-      />
-    )}
-  </Story>
+  <Story name="Basics">{(args) => <Markdown {...args} />}</Story>
 </Canvas>
 
 <Props of={Markdown} />

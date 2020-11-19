@@ -1,3 +1,10 @@
+### [0.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.2...@codecademy/gamut-system@0.1.3) (2020-11-19)
+
+
+### 🐛 Bug Fixes
+
+* **system:** Operators ([#1169](https://github.com/Codecademy/client-modules/issues/1169)) ([ccef036](https://github.com/Codecademy/client-modules/commit/ccef0368f12c099c338e0fa96249c93de2b61ccd))
+
 ### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.1...@codecademy/gamut-system@0.1.2) (2020-11-16)
 
 
