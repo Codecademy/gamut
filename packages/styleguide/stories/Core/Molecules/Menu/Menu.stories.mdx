@@ -1,0 +1,35 @@
+import {
+  Menu,
+  MenuButton,
+  MenuButtonToggle,
+  MenuItem,
+  MenuLink,
+  MenuList,
+} from '@codecademy/gamut/src';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+
+import { MenuExample } from './Menu.examples';
+
+<Meta
+  title="Molecules/Menu"
+  component={Menu}
+  subcomponents={{
+    MenuButton,
+    MenuButtonToggle,
+    MenuItem,
+    MenuLink,
+    MenuList,
+  }}
+/>
+
+# Menus
+
+<StoryStatus status="stable" />
+
+Menus are a single button with a dropdown of items in a popover.
+Those items are typically buttons or links of some kind, both of which are visually similar to links.
+
+<Canvas>
+  <Story name="Menu">{MenuExample}</Story>
+</Canvas>
