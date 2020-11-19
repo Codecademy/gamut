@@ -1,0 +1,27 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { text, boolean } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { LandingPageSectionTitle } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Brand/Atoms/LandingPageSectionTitle"
+  component={LandingPageSectionTitle}
+/>
+
+# LandingPageSectionTitle
+
+<StoryStatus status="unstable" />
+
+This is title field used in sections on a marketing page.
+
+<Canvas withSource="open">
+  <Story name="LandingPageSectionTitle">
+    {(args) => (
+      <LandingPageSectionTitle isPageHeading={boolean('isPageHeading', false)}>
+        {text('Text', 'Lorem ipsum dolor sit amet')}
+      </LandingPageSectionTitle>
+    )}
+  </Story>
+</Canvas>
+
+<Props of={LandingPageSectionTitle} />
