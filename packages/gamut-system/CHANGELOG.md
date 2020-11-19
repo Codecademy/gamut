@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [0.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.3...@codecademy/gamut-system@0.1.4) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/gamut-system
 
+### Other Changes
 
-
-
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
 
 ### [0.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.2...@codecademy/gamut-system@0.1.3) (2020-11-19)
 
@@ -50,3 +44,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **Emotion:** Upgrade to Emotion 11 ([#944](https://github.com/Codecademy/client-modules/issues/944)) ([547c17e](https://github.com/Codecademy/client-modules/commit/547c17e22c6e5d6f9074c2e7c63c73968da4bab2))
 * **system:** Gamut System Alpha ([#1126](https://github.com/Codecademy/client-modules/issues/1126)) ([1de9b29](https://github.com/Codecademy/client-modules/commit/1de9b299847fb9f95cd18f84516b64cc53e8946c))
+
