@@ -1,3 +1,5 @@
+### [0.3.12](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.11...@codecademy/markdown-overrides@0.3.12) (2020-11-19)
+
 ### [0.3.11](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.10...@codecademy/markdown-overrides@0.3.11) (2020-11-16)
 
 ### [0.3.10](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.9...@codecademy/markdown-overrides@0.3.10) (2020-11-13)

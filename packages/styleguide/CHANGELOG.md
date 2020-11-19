@@ -1,3 +1,5 @@
+### [18.5.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.8...@codecademy/styleguide@18.5.9) (2020-11-19)
+
 ### [18.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.7...@codecademy/styleguide@18.5.8) (2020-11-17)
 
 ### [18.5.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.6...@codecademy/styleguide@18.5.7) (2020-11-16)
