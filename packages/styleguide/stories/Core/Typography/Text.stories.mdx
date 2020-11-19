@@ -1,7 +1,7 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Text } from '@codecademy/gamut/src';
-import { brandColors, fontSize } from '@codecademy/gamut-styles';
+import { brandColors } from '@codecademy/gamut-styles';
 
 <Meta
   title="Typography/Text"
@@ -9,7 +9,7 @@ import { brandColors, fontSize } from '@codecademy/gamut-styles';
   argTypes={{
     fontSize: {
       label: 'Font Size',
-      control: { type: 'select', options: Object.keys(fontSize.text) },
+      control: { type: 'select', options: ['sm', 'md', 'lg'] },
     },
   }}
 />

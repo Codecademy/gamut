@@ -31,6 +31,10 @@ const postCssLoaderDefaults = {
     plugins: () =>
       [
         require('postcss-flexbugs-fixes'),
+        require('postcss-focus-visible')({
+          preserve: false,
+          replaceWith: '[data-focus-visible-added]',
+        }),
         require('autoprefixer')({ flexbox: 'no-2009' }),
         PROD && require('cssnano')({ preset: 'default' }),
       ].filter(Boolean),

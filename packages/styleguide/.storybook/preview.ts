@@ -1,5 +1,6 @@
 import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
+import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
 import { withEmotion } from './decorators/emotion';
@@ -21,6 +22,7 @@ export const parameters = {
         'Foundations',
         'Typography',
         'Layouts',
+        'Icons',
         'Atoms',
         'Molecules',
         'Organisms',

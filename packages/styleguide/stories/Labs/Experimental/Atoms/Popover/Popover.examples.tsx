@@ -1,26 +1,21 @@
 import React, { useRef, useState } from 'react';
-import { Button, Container } from '@codecademy/gamut/src';
+import { FillButton, Container } from '@codecademy/gamut/src';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
-  const [disable, setDisable] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
 
   return (
     <React.Fragment>
       <div ref={activeElRef}>
-        <Button
+        <FillButton
           onClick={() => {
-            if (disable) {
-              setDisable(false);
-              return;
-            }
-            setOpen(true);
+            setOpen(!open);
           }}
         >
           Open Popover
-        </Button>
+        </FillButton>
       </div>
       <Container>
         <Popover
@@ -28,11 +23,12 @@ export const PopoverExample = (args: PopoverProps) => {
           isOpen={open}
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
-          disableOutsideEvent={() => setDisable(true)}
         >
           <Container>
             <h1>Hooray!</h1>
-            <Button onClick={() => setOpen(false)}>Close Popover</Button>
+            <FillButton onClick={() => setOpen(false)}>
+              Close Popover
+            </FillButton>
           </Container>
         </Popover>
       </Container>
