@@ -112,6 +112,7 @@ module.exports = {
 
     // These rules have been deprecated in their plugins but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
+    'jsx-a11y/accessible-emoji': 'off',
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
