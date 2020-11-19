@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 import styles from './styles.module.scss';
-import { Button, ButtonProps } from '../Button';
+import { ButtonDeprecated, ButtonDeprecatedProps } from '../ButtonDeprecated';
 import { CloseIcon } from '@codecademy/gamut-icons';
 
 export enum BannerStyle {
@@ -29,7 +29,7 @@ export type BannerProps = {
   /**
    * Callback called when the user closes the banner.
    */
-  onClose: ButtonProps['onClick'];
+  onClose: ButtonDeprecatedProps['onClick'];
   /**
    * An icon or jsx element to be displayed to the left of the content.
    */
@@ -63,9 +63,9 @@ export const Banner: React.FC<BannerProps> = ({
     >
       {icon && <div data-testid="icon-id">{icon}</div>}
       <div className={cx(styles.content, classNames.content)}>{children}</div>
-      <Button onClick={onClose} className={styles.closeButton}>
+      <ButtonDeprecated onClick={onClose} className={styles.closeButton}>
         <CloseIcon aria-label="dismiss" />
-      </Button>
+      </ButtonDeprecated>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import cx from 'classnames';
+import FocusTrap from 'focus-trap-react';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize, useClickAway, useWindowScroll } from 'react-use';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { useWindowSize, useWindowScroll } from 'react-use';
 
 import styles from './styles.module.scss';
 import { BodyPortal } from '@codecademy/gamut';
@@ -9,16 +9,6 @@ import { BodyPortal } from '@codecademy/gamut';
 export type PopoverProps = {
   children: React.ReactElement<any>;
   className?: string;
-  /**
-   * Whether the popover is rendered.
-   */
-  isOpen: boolean;
-  /**
-   * The target element around which the popover will be positioned.
-   */
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >;
   /**
    * Which vertical edge of the source component to align against.
    */
@@ -28,6 +18,10 @@ export type PopoverProps = {
    */
   offset?: number;
   /**
+   * Whether to add outline style (i.e. used for dropdowns).
+   */
+  outline?: boolean;
+  /**
    * Which horizontal edge of the source componet to align against.
    */
   position?: 'above' | 'below';
@@ -36,28 +30,33 @@ export type PopoverProps = {
    */
   showBeak?: boolean;
   /**
+   * Whether the popover is rendered.
+   */
+  isOpen: boolean;
+  /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
   onRequestClose?: () => void;
   /**
-   * Called to prevent unwanted targetRef event (targetRef is outside of Popover).
-   * (i.e. when targetRef is a button and it is used to close the popover, this prevents triggering its onclick that would re-open the popover.)
+   * The target element around which the popover will be positioned.
    */
-  disableOutsideEvent?: () => void;
+  targetRef: React.RefObject<
+    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
+  >;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
-  className,
   children,
-  isOpen,
-  showBeak,
-  position = 'below',
-  offset = 20,
+  className,
   align = 'left',
-  targetRef,
+  offset = 20,
+  outline = false,
+  position = 'below',
+  showBeak,
+  isOpen,
   onRequestClose,
-  disableOutsideEvent,
+  targetRef,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -68,10 +67,8 @@ export const Popover: React.FC<PopoverProps> = ({
     if (!targetRect) return {};
 
     const positions = {
-      above: Math.round(window.scrollY + targetRect.top - offset),
-      below: Math.round(
-        window.scrollY + targetRect.top + targetRect.height + offset
-      ),
+      above: Math.round(targetRect.top - offset),
+      below: Math.round(targetRect.top + targetRect.height + offset),
     };
     const alignments = {
       right: Math.round(window.scrollX + targetRect.right),
@@ -82,16 +79,6 @@ export const Popover: React.FC<PopoverProps> = ({
       left: alignments[align],
     };
   }, [targetRect, offset, align, position]);
-
-  const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
-    if (
-      targetRef?.current?.contains(event.target as Element) &&
-      event.type !== 'keydown'
-    ) {
-      disableOutsideEvent?.();
-    }
-    onRequestClose?.();
-  };
 
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
@@ -112,31 +99,37 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, isInViewport, onRequestClose]);
 
   const popoverRef = useRef<HTMLDivElement>(null);
-  useClickAway(popoverRef, handleClickOutside, ['mousedown']);
-  useHotkeys('escape', handleClickOutside);
 
   if (!isOpen || !targetRef) return null;
 
   return (
     <BodyPortal>
-      <div
-        ref={popoverRef}
-        className={cx(
-          styles.popover,
-          styles[`${position}-${align}`],
-          className
-        )}
-        style={getPopoverPosition()}
-        data-testid="popover-content-container"
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          onDeactivate: onRequestClose,
+        }}
       >
-        {showBeak && (
-          <div
-            className={cx(styles.beak, styles[`${position}-beak`])}
-            data-testid="popover-beak"
-          />
-        )}
-        {children}
-      </div>
+        <div
+          ref={popoverRef}
+          className={cx(
+            styles.popover,
+            styles[`${position}-${align}`],
+            outline && styles.outline,
+            className
+          )}
+          style={getPopoverPosition()}
+          data-testid="popover-content-container"
+        >
+          {showBeak && (
+            <div
+              className={cx(styles.beak, styles[`${position}-beak`])}
+              data-testid="popover-beak"
+            />
+          )}
+          {children}
+        </div>
+      </FocusTrap>
     </BodyPortal>
   );
 };

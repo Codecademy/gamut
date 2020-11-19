@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
-import { Button } from '../../Button';
+import { ButtonDeprecated } from '../../ButtonDeprecated';
 import { Banner } from '..';
 import styles from ' ../styles.module.scss';
 
@@ -22,7 +22,7 @@ describe('Banner', () => {
   it('renders a button always', () => {
     const component = shallow(<Banner onClose={() => {}} />);
 
-    expect(component.find(Button)).toHaveLength(1);
+    expect(component.find(ButtonDeprecated)).toHaveLength(1);
   });
 
   it('renders as full width by default', () => {
@@ -58,7 +58,7 @@ describe('Banner', () => {
     const onClose = jest.fn();
     const component = shallow(<Banner onClose={onClose} />);
 
-    component.find(Button).simulate('click');
+    component.find(ButtonDeprecated).simulate('click');
 
     expect(onClose).toHaveBeenCalled();
   });

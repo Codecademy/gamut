@@ -5,7 +5,7 @@ import { Popover, PopoverProps } from '..';
 
 const targetRefObj = {
   current: {
-    contains: () => true,
+    contains: () => false,
     getBoundingClientRect: () => {
       return {
         bottom: 298,
@@ -24,12 +24,17 @@ const targetRefObj = {
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
-    <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-      <div data-testid={'popover-content'}>
-        Howdy!
-        <button type="button" />
+    <>
+      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
+        <div data-testid="popover-content">
+          Howdy!
+          <button type="button" />
+        </div>
+      </Popover>
+      <div>
+        <h1 data-testid="outside-popover">hi</h1>
       </div>
-    </Popover>
+    </>
   );
 };
 
@@ -66,11 +71,8 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-
-    fireEvent.mouseDown(
-      screen.getByTestId('popover-content-container').parentElement!
-    );
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    fireEvent.mouseDown(screen.getByTestId('outside-popover'));
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -80,7 +82,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
@@ -89,8 +91,8 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.keyDown(baseElement, { key: 'Escape', keyCode: 27 });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
@@ -121,7 +123,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not onRequestClose callback when popover is out of viewport', () => {
@@ -149,7 +151,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
   it('does not show a beak if the prop is false', () => {
@@ -182,7 +184,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 319,
+        top: 318,
         left: 58,
       },
     });
@@ -202,7 +204,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 241,
+        top: 240,
         left: 841,
       },
     });
@@ -216,7 +218,7 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 30,
+      offset: 29,
     });
 
     expect(
@@ -244,7 +246,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 232,
+        top: 230,
         left: 842,
       },
     });

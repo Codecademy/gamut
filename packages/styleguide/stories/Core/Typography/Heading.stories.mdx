@@ -16,7 +16,10 @@ import { brandColors, fontSize } from '@codecademy/gamut-styles';
     },
     fontSize: {
       label: 'Font Size',
-      control: { type: 'select', options: Object.keys(fontSize.heading) },
+      control: {
+        type: 'select',
+        options: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
+      },
     },
   }}
 />

@@ -1,3 +1,82 @@
+### [17.3.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.8...@codecademy/gamut@17.3.9) (2020-11-19)
+
+### [17.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.7...@codecademy/gamut@17.3.8) (2020-11-17)
+
+### [17.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.6...@codecademy/gamut@17.3.7) (2020-11-16)
+
+### [17.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.5...@codecademy/gamut@17.3.6) (2020-11-13)
+
+### [17.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.4...@codecademy/gamut@17.3.5) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **Gamut:** Standardizes node type props as "as" GM-53 ([#1141](https://github.com/Codecademy/client-modules/issues/1141)) ([b2473fa](https://github.com/Codecademy/client-modules/commit/b2473fa84146473c0377959ab3ee009d88e9a465))
+
+### [17.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.3...@codecademy/gamut@17.3.4) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* fixes an a11y bug in the MenuItem component ([#1139](https://github.com/Codecademy/client-modules/issues/1139)) ([8040f95](https://github.com/Codecademy/client-modules/commit/8040f95567dcf27988da6abbc602df74e6e14e64))
+
+### [17.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.2...@codecademy/gamut@17.3.3) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* used type-only export for ButtonProps ([#1147](https://github.com/Codecademy/client-modules/issues/1147)) ([7146bb9](https://github.com/Codecademy/client-modules/commit/7146bb9a2c68d8c00891259346b6752fdcb14bf5))
+
+### [17.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.1...@codecademy/gamut@17.3.2) (2020-11-13)
+
+### [17.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.0...@codecademy/gamut@17.3.1) (2020-11-12)
+
+
+### 🐛 Bug Fixes
+
+* **DeprecatedTabs:** Remove DeprecatedTabs component GM-54 ([#1140](https://github.com/Codecademy/client-modules/issues/1140)) ([1b41c89](https://github.com/Codecademy/client-modules/commit/1b41c89ca139bbf27a10dbf2489fc9cc0fd580c5))
+
+## [17.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.2.0...@codecademy/gamut@17.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
+## [17.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.1.0...@codecademy/gamut@17.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+## [17.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.0.0...@codecademy/gamut@17.1.0) (2020-11-09)
+
+
+### ✨ Features
+
+* Minimally added focus-visible with postcss-focus-visible ([#1129](https://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](https://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
+
+## [17.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.3...@codecademy/gamut@17.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### ✨ Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+### [16.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.2...@codecademy/gamut@16.4.3) (2020-11-05)
+
+### [16.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.1...@codecademy/gamut@16.4.2) (2020-11-04)
+
+
+### Other Changes
+
+* **Dependencies:** Deps ([#1122](https://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](https://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](https://github.com/Codecademy/client-modules/issues/1079) [#1080](https://github.com/Codecademy/client-modules/issues/1080) [#1082](https://github.com/Codecademy/client-modules/issues/1082) [#1083](https://github.com/Codecademy/client-modules/issues/1083) [#1085](https://github.com/Codecademy/client-modules/issues/1085) [#1086](https://github.com/Codecademy/client-modules/issues/1086) [#1087](https://github.com/Codecademy/client-modules/issues/1087) [#1088](https://github.com/Codecademy/client-modules/issues/1088) [#1090](https://github.com/Codecademy/client-modules/issues/1090) [#1091](https://github.com/Codecademy/client-modules/issues/1091) [#1092](https://github.com/Codecademy/client-modules/issues/1092) [#1089](https://github.com/Codecademy/client-modules/issues/1089) [#1093](https://github.com/Codecademy/client-modules/issues/1093) [#1000](https://github.com/Codecademy/client-modules/issues/1000) [#1098](https://github.com/Codecademy/client-modules/issues/1098) [#1099](https://github.com/Codecademy/client-modules/issues/1099) [#1100](https://github.com/Codecademy/client-modules/issues/1100) [#1101](https://github.com/Codecademy/client-modules/issues/1101) [#1102](https://github.com/Codecademy/client-modules/issues/1102) [#1103](https://github.com/Codecademy/client-modules/issues/1103) [#1104](https://github.com/Codecademy/client-modules/issues/1104) [#1105](https://github.com/Codecademy/client-modules/issues/1105) [#1106](https://github.com/Codecademy/client-modules/issues/1106) [#1108](https://github.com/Codecademy/client-modules/issues/1108) [#1107](https://github.com/Codecademy/client-modules/issues/1107)
+
 ### [16.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@16.4.0...@codecademy/gamut@16.4.1) (2020-11-04)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -18,9 +18,9 @@
   "author": "codecademy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Codecademy/client-modules/packages/webpack-config"
+    "url": "https://github.com/Codecademy/client-modules/tree/main/packages/webpack-config"
   },
-  "homepage": "https://github.com/Codecademy/client-modules/packages/webpack-config",
+  "homepage": "https://github.com/Codecademy/client-modules/tree/main/packages/webpack-config",
   "peerDependencies": {
     "@babel/core": "^7.0.0",
     "autoprefixer": "^9.7.4",
@@ -43,6 +43,7 @@
     "mini-css-extract-plugin": "^0.12.0",
     "node-sass": "^4.13.0",
     "postcss-flexbugs-fixes": "^4.1.0",
+    "postcss-focus-visible": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^10.0.4",
     "style-loader": "^2.0.0",
