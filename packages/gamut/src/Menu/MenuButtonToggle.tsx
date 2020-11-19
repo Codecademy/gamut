@@ -6,6 +6,7 @@ import React from 'react';
 import { MenuButton } from './MenuButton';
 
 export type MenuButtonProps = {
+  className?: string;
   isExpanded?: boolean;
 };
 
@@ -22,10 +23,11 @@ const StyledIcon = styled(ArrowChevronDownFilledIcon)<{ isExpanded?: boolean }>`
 
 export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   children,
+  className,
   isExpanded,
 }) => {
   return (
-    <MenuButton>
+    <MenuButton className={className}>
       {children}
       <StyledIcon aria-hidden isExpanded={isExpanded} size={8} />
     </MenuButton>
