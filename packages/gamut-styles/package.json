@@ -19,14 +19,14 @@
     "@codecademy/gamut-system": "^0.1.3"
   },
   "peerDependencies": {
-    "@emotion/cache": "^11.0.0-rc.0",
-    "@emotion/react": "^11.0.0-rc.0",
-    "@emotion/styled": "^11.0.0-rc.0"
+    "@emotion/cache": "^11.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0"
   },
   "devDependencies": {
-    "@emotion/cache": "^11.0.0-rc.0",
-    "@emotion/react": "^11.0.0-rc.0",
-    "@emotion/styled": "^11.0.0-rc.0"
+    "@emotion/cache": "^11.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0"
   },
   "license": "MIT",
   "publishConfig": {
