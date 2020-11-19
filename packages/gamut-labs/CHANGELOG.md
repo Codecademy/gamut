@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.2...@codecademy/gamut-labs@5.5.0) (2020-11-19)
+
+
+### Features
+
+* add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
+
+
+
 ### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.1...@codecademy/gamut-labs@5.4.2) (2020-11-19)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
