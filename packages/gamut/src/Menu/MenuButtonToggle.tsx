@@ -27,7 +27,7 @@ export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   return (
     <MenuButton>
       {children}
-      <StyledIcon isExpanded={isExpanded} size={8} />
+      <StyledIcon aria-hidden isExpanded={isExpanded} size={8} />
     </MenuButton>
   );
 };
