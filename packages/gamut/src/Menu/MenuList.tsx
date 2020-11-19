@@ -6,5 +6,6 @@ export const MenuList = styled(ReachMenuList)`
   background: ${colors.white};
   border: 1px solid ${colors.black};
   border-radius: 2px;
+  margin-left: 0.5rem;
   padding: ${spacing[4]} 0;
 `;

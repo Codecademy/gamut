@@ -16,7 +16,7 @@ const StyledIcon = styled(ArrowChevronDownFilledIcon)<{ isExpanded?: boolean }>`
   ${({ isExpanded }) =>
     isExpanded &&
     `
-    margin-bottom: 2px;
+    margin-bottom: 3px;
     transform: rotate(-180deg);
   `}
 `;
@@ -27,9 +27,9 @@ export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   isExpanded,
 }) => {
   return (
-    <MenuButton className={className}>
+    <MenuButton className={className} isExpanded={isExpanded}>
       {children}
-      <StyledIcon aria-hidden isExpanded={isExpanded} size={8} />
+      <StyledIcon aria-hidden isExpanded={isExpanded} size={12} />
     </MenuButton>
   );
 };
