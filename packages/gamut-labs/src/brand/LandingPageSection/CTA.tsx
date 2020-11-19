@@ -20,7 +20,12 @@ export const LandingPageSectionCTA: React.FC<LandingPageSectionCTAProps> = ({
   children,
 }) => (
   <CTA className={className} data-testid={testId}>
-    <CTAButton onClick={() => (window.location.href = href)}>
+    <CTAButton
+      as="a"
+      // @ts-expect-error: href does not yet validate as a prop on CTAButton
+      href={href}
+      style={{ display: 'inline-block' }}
+    >
       {children}
     </CTAButton>
   </CTA>

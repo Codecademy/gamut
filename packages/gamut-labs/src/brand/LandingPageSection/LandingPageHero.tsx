@@ -60,7 +60,7 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
   imgAlt,
   testId,
 }) => (
-  <Layout>
+  <Layout testId={testId}>
     <Column
       size={{
         xs: 12,
@@ -68,21 +68,15 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
       }}
     >
       {title && (
-        <LandingPageSectionTitle isPageHeading testId={`${testId}-title`}>
-          {title}
-        </LandingPageSectionTitle>
+        <LandingPageSectionTitle isPageHeading>{title}</LandingPageSectionTitle>
       )}
-      {desc && (
-        <LandingPageSectionDescription text={desc} testId={`${testId}-desc`} />
-      )}
+      {desc && <LandingPageSectionDescription text={desc} />}
       {cta && ctaHref && (
-        <LandingPageSectionCTA href={ctaHref} testId={`${testId}-cta`}>
-          {cta}
-        </LandingPageSectionCTA>
+        <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
       )}
     </Column>
     {imgSrc && (
-      <RightColumn size={3} testId={`${testId}-img`}>
+      <RightColumn size={3}>
         <Image src={imgSrc} alt={imgAlt} />
       </RightColumn>
     )}
