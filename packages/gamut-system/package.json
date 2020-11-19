@@ -13,7 +13,8 @@
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
-    "build": "yarn build:clean && yarn build:compile",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
