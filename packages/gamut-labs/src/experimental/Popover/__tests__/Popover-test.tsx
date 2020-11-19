@@ -91,7 +91,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.keyDown(baseElement, { key: 'Escape', keyCode: 27 });
+    fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
     expect(onRequestClose).toBeCalledTimes(1);
   });
 

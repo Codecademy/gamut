@@ -24,7 +24,7 @@ module.exports = {
       '<rootDir>/script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
     '^~styleguide/blocks(.*)$':
-      '<rootDir>/packages/styleguide/.storybook/Blocks$1',
+      '<rootDir>/packages/styleguide/.storybook/components$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
