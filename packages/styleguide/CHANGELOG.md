@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
-
-
+* Remove deprecated icon stories ([#1168](https://github.com/Codecademy/client-modules/issues/1168)) ([816fdf1](https://github.com/Codecademy/client-modules/commit/816fdf14e86a1488009c68f7ead4c85fe5394416))
 
 ### [18.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.1...@codecademy/styleguide@18.8.2) (2020-11-19)
 
@@ -1365,3 +1359,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
