@@ -1608,13 +1608,13 @@
     "@emotion/weak-memoize" "0.2.5"
 
 "@emotion/cache@^11.0.0-rc.0":
-  version "11.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@emotion/cache/-/cache-11.0.0-rc.0.tgz#27e800eaa67813e3af736062609ae5111382b441"
-  integrity sha512-2LMa4ZAgoIFV5yiGYGalqBilhrTAvDryBdvQQ4LEmC2PibueHeKgl451czeLzzhZ9JFt371Bb9ykaZxnMG9UIA==
+  version "11.0.0"
+  resolved "https://registry.npmjs.org/@emotion/cache/-/cache-11.0.0.tgz#473adcaf9e04c6a0e30fb1421e79a209a96818f8"
+  integrity sha512-NStfcnLkL5vj3mBILvkR2m/5vFxo3G0QEreYKDGHNHm9IMYoT/t3j6xwjx6lMI/S1LUJfVHQqn0m9wSINttTTQ==
   dependencies:
     "@emotion/memoize" "^0.7.4"
-    "@emotion/sheet" "^1.0.0-rc.0"
-    "@emotion/utils" "^1.0.0-rc.0"
+    "@emotion/sheet" "^1.0.0"
+    "@emotion/utils" "^1.0.0"
     "@emotion/weak-memoize" "^0.2.5"
     stylis "^4.0.3"
 
@@ -1735,10 +1735,10 @@
   resolved "https://registry.npmjs.org/@emotion/sheet/-/sheet-0.9.4.tgz#894374bea39ec30f489bbfc3438192b9774d32e5"
   integrity sha512-zM9PFmgVSqBw4zL101Q0HrBVTGmpAxFZH/pYx/cjJT5advXguvcgjHFTCaIO3enL/xr89vK2bh0Mfyj9aa0ANA==
 
-"@emotion/sheet@^1.0.0-rc.0":
-  version "1.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@emotion/sheet/-/sheet-1.0.0-rc.0.tgz#6f24f7de059138e16c0fc12e32ec19f3342d1fe2"
-  integrity sha512-wZBWjoF1ie4PQbIGO2fTSLd5TUhDR9p1vT5nfUDYA9qyRtAwag5NO/s1vhru5MHsLgxNWSsgtqFRt6qhNlvBrg==
+"@emotion/sheet@^1.0.0", "@emotion/sheet@^1.0.0-rc.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@emotion/sheet/-/sheet-1.0.0.tgz#a0ef06080f339477ad4ba7f56e1c931f7ba50822"
+  integrity sha512-cdCHfZtf/0rahPDCZ9zyq+36EqfD/6c0WUqTFZ/hv9xadTUv2lGE5QK7/Z6Dnx2oRxC0usfVM2/BYn9q9B9wZA==
 
 "@emotion/styled-base@^10.0.27":
   version "10.0.27"
@@ -1784,10 +1784,10 @@
   resolved "https://registry.npmjs.org/@emotion/utils/-/utils-0.11.3.tgz#a759863867befa7e583400d322652a3f44820924"
   integrity sha512-0o4l6pZC+hI88+bzuaX/6BgOvQVhbt2PfmxauVaYOGgbsAw14wdKyvMCZXnsnsHys94iadcF+RG/wZyx6+ZZBw==
 
-"@emotion/utils@^1.0.0-rc.0":
-  version "1.0.0-rc.0"
-  resolved "https://registry.npmjs.org/@emotion/utils/-/utils-1.0.0-rc.0.tgz#ab9d21e71887158f8c1899c063072a1e82eacb90"
-  integrity sha512-W9YjlRRq8ImIARa3iHlmDnJIBcuUoVciML767eAO42bZnWkrYLSBssbjTVWiAUJ9AQn1WZR+L3TFlPYXI7NWmA==
+"@emotion/utils@^1.0.0", "@emotion/utils@^1.0.0-rc.0":
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/@emotion/utils/-/utils-1.0.0.tgz#abe06a83160b10570816c913990245813a2fd6af"
+  integrity sha512-mQC2b3XLDs6QCW+pDQDiyO/EdGZYOygE8s5N5rrzjSI4M3IejPE/JPndCBwRT9z982aqQNi6beWs1UeayrQxxA==
 
 "@emotion/weak-memoize@0.2.5", "@emotion/weak-memoize@^0.2.5":
   version "0.2.5"
@@ -11700,10 +11700,10 @@ jest-environment-enzyme@^7.1.2:
   dependencies:
     jest-environment-jsdom "^24.0.0"
 
-jest-environment-jsdom-global@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/jest-environment-jsdom-global/-/jest-environment-jsdom-global-1.2.0.tgz#dd5b16fe0a0566ee40010d8632be5adf5a5ccb65"
-  integrity sha512-41cDl0OxzmFY/cnW0COUN+lnt2N2ks1r3V4fAKOnlZ9xIrGy0PNPan+Bz8HP+uQy/8bGV6T7J4Oi7X+h43It6g==
+jest-environment-jsdom-global@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.npmjs.org/jest-environment-jsdom-global/-/jest-environment-jsdom-global-2.0.4.tgz#b74704487a374a67ff301fc51cfeae30fae40e8e"
+  integrity sha512-1vB8q+PrszXW4Pf7Zgp3eQ4oNVbA7GY6+jmrg1qi6RtYRWDJ60/xdkhjqAbQpX8BRyvqQJYQi66LXER5YNeHXg==
 
 jest-environment-jsdom@24.9.0, jest-environment-jsdom@^24.0.0, jest-environment-jsdom@^24.9.0:
   version "24.9.0"
