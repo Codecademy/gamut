@@ -22,10 +22,14 @@ import { StoryStatus } from '~styleguide/blocks';
   }}
   argTypes={{
     mode: {
+      description: 'Visual mode',
       control: {
         type: 'select',
         options: [VisualTheme.DarkMode, VisualTheme.LightMode],
       },
+    },
+    href: {
+      description: 'If defined, component will use an anchor tag',
     },
   }}
   title="Atoms/Button"
