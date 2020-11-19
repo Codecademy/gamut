@@ -1,0 +1,37 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { LandingPageHero } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Brand/Molecules/LandingPageHero"
+  component={LandingPageHero}
+  args={{
+    title:
+      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    desc:
+      'feat. <a href="https://en.wikipedia.org/wiki/Rob_Thomas_(musician)">Rob Thomas of Matchbox Twenty</a> off the multi-platinum album',
+    cta: 'Supernatural',
+    ctaHref:
+      'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+    imgSrc:
+      'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
+    imgAlt:
+      'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+  }}
+/>
+
+# LandingPageHero
+
+<StoryStatus status="volatile" />
+
+Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.
+
+<Canvas withSource="open">
+  <Story name="LandingPageHero">
+    {(args) => <LandingPageHero {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="LandingPageHero" of={LandingPageHero} />
