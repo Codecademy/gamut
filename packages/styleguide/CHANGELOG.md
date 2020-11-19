@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [18.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.0...@codecademy/styleguide@18.7.1) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
-
-
+* Fix for knobs being carried over everywhere ([#1159](https://github.com/Codecademy/client-modules/issues/1159)) ([a1ce5d4](https://github.com/Codecademy/client-modules/commit/a1ce5d4405a231cdab55436d17cdfb3ab7b28e8b))
 
 ## [18.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.6.0...@codecademy/styleguide@18.7.0) (2020-11-19)
 
@@ -1335,3 +1329,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
