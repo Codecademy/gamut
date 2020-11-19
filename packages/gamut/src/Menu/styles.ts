@@ -15,6 +15,10 @@ export const listItemStyles = css`
     text-decoration: underline;
   }
 
+  &[data-selected] {
+    background: ${colors.white};
+  }
+
   &[data-selected],
   &:hover {
     color: ${colors.hyper};

@@ -1,4 +1,4 @@
-import './override-reach-ui.css';
+import '@reach/menu-button/styles.css';
 
 export { Menu } from './Menu';
 export { MenuButton } from './MenuButton';
