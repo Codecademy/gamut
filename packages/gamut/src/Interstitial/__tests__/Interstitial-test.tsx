@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { Button } from '../../Button';
+import { ButtonDeprecated } from '../../ButtonDeprecated';
 import { Interstitial } from '..';
 
 describe('Interstitial', () => {
@@ -28,7 +28,10 @@ describe('Interstitial', () => {
     const children = 'Hi!';
 
     const wrapped = mount(
-      <Interstitial buttons={[<Button key="1">{button}</Button>]} title={title}>
+      <Interstitial
+        buttons={[<ButtonDeprecated key="1">{button}</ButtonDeprecated>]}
+        title={title}
+      >
         {children}
       </Interstitial>
     );

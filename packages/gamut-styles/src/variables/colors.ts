@@ -31,6 +31,7 @@ export const swatches = {
     '500': '#FF8C00',
   },
   hyper: {
+    '400': '#5533FF',
     '500': '#3A10E5',
   },
   gray: {
@@ -47,7 +48,36 @@ export const swatches = {
   },
 } as const;
 
-export const colors = {
+export const flatSwatches = {
+  'beige-0': '#FFF0E5',
+  'blue-0': '#F5FCFF',
+  'blue-300': '#66C4FF',
+  'blue-500': '#1557FF',
+  'blue-900': '#10162f',
+  'green-0': '#F5FFE3',
+  'green-400': '#AEE938',
+  'green-700': '#008A27',
+  'yellow-0': '#FFFAE5',
+  'yellow-500': '#FFD300',
+  'pink-0': '#FFF5FF',
+  'pink-400': '#F966FF',
+  'red-500': '#E91C11',
+  'orange-500': '#FF8C00',
+  'hyper-400': '#5533FF',
+  'hyper-500': '#3A10E5',
+  'gray-0': '#ffffff',
+  'gray-100': '#f6f5fa',
+  'gray-200': '#dddce0',
+  'gray-300': '#c4c3c7',
+  'gray-400': '#a2a2a6',
+  'gray-500': '#828285',
+  'gray-600': '#646466',
+  'gray-700': '#4b4b4d',
+  'gray-800': '#323233',
+  'gray-900': '#19191a',
+} as const;
+
+export const trueColors = {
   beige: swatches.beige[0],
   blue: swatches.blue[500],
   green: swatches.green[700],
@@ -65,6 +95,11 @@ export const colors = {
   yellow: swatches.yellow[500],
   black,
   white,
+} as const;
+
+export const colors = {
+  ...flatSwatches,
+  ...trueColors,
 } as const;
 
 export const colorNames = {

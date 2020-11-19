@@ -4,7 +4,7 @@ import {
   ArrowChevronUpIcon,
   ArrowChevronDownIcon,
 } from '@codecademy/gamut-icons';
-import { Button } from '../../Button';
+import { ButtonDeprecated } from '../../ButtonDeprecated';
 import styles from './styles.module.scss';
 
 export interface StepButtonProps {
@@ -22,7 +22,7 @@ export const StepButton: React.FC<StepButtonProps> = ({
   const id = 'stepbtn-' + type;
 
   return (
-    <Button
+    <ButtonDeprecated
       theme="brand-dark-blue"
       flat
       type="button"
@@ -37,6 +37,6 @@ export const StepButton: React.FC<StepButtonProps> = ({
       ) : (
         <ArrowChevronDownIcon className={styles.stepperDown} />
       )}
-    </Button>
+    </ButtonDeprecated>
   );
 };

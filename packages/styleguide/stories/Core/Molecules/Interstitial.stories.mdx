@@ -1,4 +1,4 @@
-import { Button, Interstitial } from '@codecademy/gamut/src';
+import { ButtonDeprecated, Interstitial } from '@codecademy/gamut/src';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { Truncate } from '@codecademy/gamut/src';
@@ -17,12 +17,12 @@ a full-screen <code>Overlay</code> in the LE between lessons.
     {(args) => (
       <Interstitial
         buttons={[
-          <Button key="1" theme="brand-yellow">
+          <ButtonDeprecated key="1" theme="brand-yellow">
             One Button
-          </Button>,
-          <Button key="2" theme="white" outline>
+          </ButtonDeprecated>,
+          <ButtonDeprecated key="2" theme="white" outline>
             Two Button
-          </Button>,
+          </ButtonDeprecated>,
         ]}
         title="What a Glorious Day"
       >
@@ -47,12 +47,12 @@ it. Put emojis or promotional images here to really emphasize them.
     {(args) => (
       <Interstitial
         buttons={[
-          <Button key="1" theme="brand-red">
+          <ButtonDeprecated key="1" theme="brand-red">
             Red Button
-          </Button>,
-          <Button key="2" theme="brand-blue">
+          </ButtonDeprecated>,
+          <ButtonDeprecated key="2" theme="brand-blue">
             Blue Button
-          </Button>,
+          </ButtonDeprecated>,
         ]}
         decoration="😍"
         title="Decorations, too!"

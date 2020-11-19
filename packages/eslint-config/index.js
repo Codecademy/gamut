@@ -102,6 +102,7 @@ module.exports = {
     'react/display-name': 'off',
 
     // These functional rules are annoying and we generally don't want them on
+    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
@@ -111,6 +112,7 @@ module.exports = {
 
     // These rules have been deprecated in their plugins but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
+    'jsx-a11y/accessible-emoji': 'off',
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',

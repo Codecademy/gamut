@@ -1,3 +1,83 @@
+### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.0...@codecademy/gamut-labs@5.4.1) (2020-11-19)
+
+## [5.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.2...@codecademy/gamut-labs@5.4.0) (2020-11-18)
+
+
+### ✨ Features
+
+* added focus trap to Popover... ([#1164](https://github.com/Codecademy/client-modules/issues/1164)) ([dd8958f](https://github.com/Codecademy/client-modules/commit/dd8958fc5ad7de11670d318a5c45dd09c06453d8))
+
+### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.1...@codecademy/gamut-labs@5.3.2) (2020-11-17)
+
+### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.0...@codecademy/gamut-labs@5.3.1) (2020-11-16)
+
+## [5.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.7...@codecademy/gamut-labs@5.3.0) (2020-11-13)
+
+
+### ✨ Features
+
+* **popover:** add outline prop ([8374ee4](https://github.com/Codecademy/client-modules/commit/8374ee4cc21de12603a4911a66fb5b30f0792352))
+
+### [5.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.6...@codecademy/gamut-labs@5.2.7) (2020-11-13)
+
+### [5.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.5...@codecademy/gamut-labs@5.2.6) (2020-11-13)
+
+### [5.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.4...@codecademy/gamut-labs@5.2.5) (2020-11-13)
+
+### [5.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.3...@codecademy/gamut-labs@5.2.4) (2020-11-13)
+
+### [5.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.2...@codecademy/gamut-labs@5.2.3) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/client-modules/issues/1145)) ([496a122](https://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
+### [5.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.1...@codecademy/gamut-labs@5.2.2) (2020-11-12)
+
+### [5.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.2.0...@codecademy/gamut-labs@5.2.1) (2020-11-10)
+
+## [5.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.1.0...@codecademy/gamut-labs@5.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
+
+## [5.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.1...@codecademy/gamut-labs@5.1.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+### [5.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.0.0...@codecademy/gamut-labs@5.0.1) (2020-11-09)
+
+## [5.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.8.0...@codecademy/gamut-labs@5.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### ✨ Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+## [4.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.2...@codecademy/gamut-labs@4.8.0) (2020-11-05)
+
+
+### ✨ Features
+
+* Start of the base landing page components section ([#1118](https://github.com/Codecademy/client-modules/issues/1118)) ([1d4d4e1](https://github.com/Codecademy/client-modules/commit/1d4d4e10897db293bba1a33af426f44864d053ee))
+
+
+### 🧹 Code Refactoring
+
+* remove disableOutsideClick prop in popover ([#1120](https://github.com/Codecademy/client-modules/issues/1120)) ([9ae3c95](https://github.com/Codecademy/client-modules/commit/9ae3c956d06e9af0765aece060d89b00bb2fd03c))
+
+### [4.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.1...@codecademy/gamut-labs@4.7.2) (2020-11-04)
+
 ### [4.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.7.0...@codecademy/gamut-labs@4.7.1) (2020-11-04)
 
 ## [4.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@4.6.2...@codecademy/gamut-labs@4.7.0) (2020-11-02)
