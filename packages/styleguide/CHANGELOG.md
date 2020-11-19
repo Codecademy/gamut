@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [18.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.6.0...@codecademy/styleguide@18.7.0) (2020-11-19)
 
 
-### Features
+### ✨ Features
 
 * **Styleguide:** Custom PropTable ([#1149](https://github.com/Codecademy/client-modules/issues/1149)) ([9fb1235](https://github.com/Codecademy/client-modules/commit/9fb1235bb7dd3aac4c1a8ee4e423a2e8c50323af))
-
-
 
 ## [18.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.9...@codecademy/styleguide@18.6.0) (2020-11-19)
 
@@ -1329,3 +1322,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+
