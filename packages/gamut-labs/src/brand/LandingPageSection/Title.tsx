@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Heading } from '@codecademy/gamut';
 
 const Title = styled(Heading)`
-  margin: 2rem 0 0;
+  margin: 0;
 `;
 
 export type LandingPageSectionTitleProps = {

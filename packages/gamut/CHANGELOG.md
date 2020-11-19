@@ -1,3 +1,14 @@
+### [17.3.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.10...@codecademy/gamut@17.3.11) (2020-11-19)
+
+### [17.3.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.9...@codecademy/gamut@17.3.10) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [17.3.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.8...@codecademy/gamut@17.3.9) (2020-11-19)
+
 ### [17.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.7...@codecademy/gamut@17.3.8) (2020-11-17)
 
 ### [17.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.6...@codecademy/gamut@17.3.7) (2020-11-16)

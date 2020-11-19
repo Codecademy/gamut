@@ -1,3 +1,5 @@
+import './override-reach-ui.css';
+
 export { Menu } from './Menu';
 export { MenuButton } from './MenuButton';
 export { MenuButtonToggle } from './MenuButtonToggle';

@@ -22,6 +22,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
+    './addons/system/preset',
   ],
   stories: ['../stories/**/*.stories.(mdx|tsx)'],
 
@@ -44,18 +45,23 @@ module.exports = {
     return config;
   },
   webpackFinal: (config) => {
-    config.module.rules = config.module.rules.concat(
-      configs.css().module.rules
-    );
+    // config.module.rules = config.module.rules.concat(
+    //   configs.css().module.rules
+    // );
+
+    config.module.rules = config.module.rules
+      .filter((rule) => rule.test.toString() !== '/\\.css$/')
+      .concat(configs.css().module.rules);
 
     config.resolve = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
-        '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
+        '~styleguide/blocks': path.resolve(__dirname, './components/'),
       },
     };
 
+    console.log(config.module.rules);
     return config;
   },
 };

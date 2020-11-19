@@ -1,3 +1,28 @@
+### [5.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.5.0...@codecademy/gamut-labs@5.5.1) (2020-11-19)
+
+## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.2...@codecademy/gamut-labs@5.5.0) (2020-11-19)
+
+
+### ✨ Features
+
+* add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
+
+### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.1...@codecademy/gamut-labs@5.4.2) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.0...@codecademy/gamut-labs@5.4.1) (2020-11-19)
+
+## [5.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.2...@codecademy/gamut-labs@5.4.0) (2020-11-18)
+
+
+### ✨ Features
+
+* added focus trap to Popover... ([#1164](https://github.com/Codecademy/client-modules/issues/1164)) ([dd8958f](https://github.com/Codecademy/client-modules/commit/dd8958fc5ad7de11670d318a5c45dd09c06453d8))
+
 ### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.1...@codecademy/gamut-labs@5.3.2) (2020-11-17)
 
 ### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.0...@codecademy/gamut-labs@5.3.1) (2020-11-16)

@@ -1,3 +1,14 @@
+### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
+
+### [7.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.4...@codecademy/gamut-styles@7.4.5) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.3...@codecademy/gamut-styles@7.4.4) (2020-11-19)
+
 ### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.2...@codecademy/gamut-styles@7.4.3) (2020-11-16)
 
 ### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.1...@codecademy/gamut-styles@7.4.2) (2020-11-13)

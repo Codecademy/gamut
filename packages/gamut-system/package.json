@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut-system",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "description": "Typesafe styled component utilities",
   "author": "codecademy",
   "main": "dist/index.js",
@@ -13,7 +13,8 @@
   "scripts": {
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
-    "build": "yarn build:clean && yarn build:compile",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
     "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
@@ -21,9 +22,9 @@
     "lodash": "^>=4.0,0"
   },
   "devDependencies": {
-    "@emotion/jest": "11.0.0-rc.0",
-    "@emotion/react": "^11.0.0-rc.0",
-    "@emotion/styled": "^11.0.0-rc.0"
+    "@emotion/jest": "11.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0"
   },
   "license": "MIT"
 }
