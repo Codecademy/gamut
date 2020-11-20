@@ -1,3 +1,10 @@
+## [18.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.3...@codecademy/styleguide@18.9.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
 ### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
 
 
