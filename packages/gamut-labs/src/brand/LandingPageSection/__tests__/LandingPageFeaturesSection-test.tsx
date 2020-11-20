@@ -86,27 +86,4 @@ describe('LandingPageFeaturesSection', () => {
     });
     expect(wrapper.find(LandingPageFeature)).toHaveLength(2);
   });
-
-  it('renders column size based on the number of features', () => {
-    const wrapper = renderComponent({
-      features: [
-        {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
-          title: 'Software Engineer',
-          desc: '**Software Engineer**. Example link [here](#).',
-        },
-        {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
-          title: 'Data Scientist',
-          desc: '**Data Scientist**. Example link [here](#).',
-        },
-      ],
-    });
-    expect(wrapper.find(Column).first().prop('size')).toMatchObject({
-      xs: 12,
-      sm: 6,
-    });
-  });
 });
