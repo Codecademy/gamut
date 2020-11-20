@@ -1,10 +1,12 @@
 import { colors, swatches } from '@codecademy/gamut-styles';
+import type { HTMLProps } from 'react';
 
 import { VisualTheme } from '../theming/VisualTheme';
 
-export type ButtonProps = {
-  mode?: VisualTheme;
-};
+export type ButtonProps = HTMLProps<HTMLLinkElement> &
+  HTMLProps<HTMLButtonElement> & {
+    mode?: VisualTheme;
+  };
 
 export const modeColorGroups = {
   [VisualTheme.DarkMode]: {
