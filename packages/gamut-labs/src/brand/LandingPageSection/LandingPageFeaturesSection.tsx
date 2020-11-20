@@ -15,27 +15,36 @@ const Container = styled.div`
 `;
 
 export type LandingPageFeaturesSectionProps = {
+  /**
+   * Main title text
+   */
   title?: string;
+
   /**
-    Main body text (can include html)
-  */
+   * Main body text as markdown
+   */
   desc?: string;
+
   /**
-    Button text
-  */
+   * Button text
+   */
   cta?: string;
+
   /**
-    Url to navigate to when clicking the button
-  */
+   * Url to navigate to when clicking the button
+   */
   ctaHref?: string;
+
   /**
-    Array of features, which consist of image, image alt, title, and description
-  */
+   * Array of features, which consist of image, image alt, title, and description
+   */
   features: LandingPageFeatureProps[];
+
   /**
-    Used to determine if an icon or a full size image should be rendered
-  */
+   * Whether an icon or a full size image should be rendered
+   */
   isIcon?: boolean;
+
   testId?: string;
 };
 

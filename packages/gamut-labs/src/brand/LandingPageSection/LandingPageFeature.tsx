@@ -21,22 +21,30 @@ const StyledMarkdown = styled(Markdown)`
 
 export type LandingPageFeatureProps = {
   /**
-    Used to determine if an icon or a full size image should be rendered
-  */
+   * Whether an icon or a full size image should be rendered
+   */
   isIcon?: boolean;
+
+  /**
+   * Feature image URL
+   */
   imgSrc: string;
+
   /**
-   Hero image alt text (for screen readers)
-  */
+   * Feature image alt text (for screen readers)
+   */
   imgAlt: string;
+
+  /**
+   * Feature title text
+   */
   title?: string;
+
   /**
-    Main body text (can include html)
-  */
+   * Feature body text as markdown
+   */
   desc?: string;
-  /**
-    Hero image URL
-  */
+
   testId?: string;
 };
 
