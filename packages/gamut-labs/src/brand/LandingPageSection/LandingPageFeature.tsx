@@ -24,11 +24,11 @@ export type LandingPageFeatureProps = {
     Used to determine if an icon or a full size image should be rendered
   */
   isIcon?: boolean;
-  imgSrc?: string;
+  imgSrc: string;
   /**
    Hero image alt text (for screen readers)
   */
-  imgAlt?: string;
+  imgAlt: string;
   title?: string;
   /**
     Main body text (can include html)
@@ -51,9 +51,9 @@ export const LandingPageFeature: React.FC<LandingPageFeatureProps> = ({
   return (
     <div data-testid={testId}>
       {isIcon ? (
-        <Icon src={imgSrc} alt={imgAlt} />
+        <Icon src={imgSrc} alt={imgAlt} data-testid="feature-icon" />
       ) : (
-        <Image src={imgSrc} alt={imgAlt} />
+        <Image src={imgSrc} alt={imgAlt} data-testid="feature-image" />
       )}
       {title && (
         <Heading as="h4" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>

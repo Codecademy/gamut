@@ -62,7 +62,7 @@ export const LandingPageFeaturesSection: React.FC<LandingPageFeaturesSectionProp
           <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
         )}
       </div>
-      <LayoutGrid columnGap={{ xs: 'md', lg: 'lg' }} rowGap="lg">
+      <LayoutGrid columnGap={{ xs: 'md', lg: 'lg' }}>
         {features.map((feature) => (
           <Column size={{ xs: 12, sm: featureColSize }} key={feature.title}>
             <LandingPageFeature {...feature} isIcon={isIcon} />
