@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [5.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.5.1...@codecademy/gamut-labs@5.6.0) (2020-11-20)
+
+
+### Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
+
+
 ### [5.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.5.0...@codecademy/gamut-labs@5.5.1) (2020-11-19)
 
 ## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.2...@codecademy/gamut-labs@5.5.0) (2020-11-19)
@@ -477,4 +491,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
