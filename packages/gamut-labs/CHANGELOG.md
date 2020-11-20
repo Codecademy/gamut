@@ -1,15 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [5.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.1...@codecademy/gamut-labs@5.7.2) (2020-11-20)
 
-**Note:** Version bump only for package @codecademy/gamut-labs
 
+### Other Changes
 
-
-
+* update flex items to grow and shrink evenly ([#1178](https://github.com/Codecademy/client-modules/issues/1178)) ([0f0c268](https://github.com/Codecademy/client-modules/commit/0f0c268af67c7fdfc5297a2beb38d5eff4b5d4d9))
 
 ### [5.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.0...@codecademy/gamut-labs@5.7.1) (2020-11-20)
 
@@ -511,3 +505,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
