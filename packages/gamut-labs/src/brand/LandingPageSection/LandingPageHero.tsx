@@ -61,7 +61,7 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
   cta,
   ctaHref,
   imgSrc,
-  imgAlt,
+  imgAlt = '',
   isPageHeading,
   testId,
 }) => (
@@ -73,7 +73,7 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
       }}
     >
       {title && (
-        <LandingPageSectionTitle isPageHeading={isPageHeading ?? false}>
+        <LandingPageSectionTitle isPageHeading={isPageHeading}>
           {title}
         </LandingPageSectionTitle>
       )}
@@ -89,7 +89,3 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
     )}
   </Layout>
 );
-
-LandingPageHero.defaultProps = {
-  imgAlt: '',
-};
