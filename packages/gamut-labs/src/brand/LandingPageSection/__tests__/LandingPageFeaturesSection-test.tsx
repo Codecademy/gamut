@@ -9,7 +9,6 @@ import {
   LandingPageSectionTitle,
   LandingPageFeature,
 } from '..';
-import { Column } from '@codecademy/gamut';
 
 const renderComponent = (
   overrides: Partial<LandingPageFeaturesSectionProps> = {}
