@@ -21,6 +21,7 @@ const StyledMarkdown = styled(Markdown)`
 `;
 
 const FeatureBlock = styled.div`
+  flex: 1;
   ${mediaQueries.sm} {
     &:not(:last-of-type) {
       margin-right: 1rem;
