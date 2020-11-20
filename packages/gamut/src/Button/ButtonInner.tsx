@@ -4,7 +4,7 @@ import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
 
 export const ButtonInner = styled('span', {
-  shouldForwardProp: (prop: any) => isPropValid(prop) && prop !== 'mode',
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
 })(() => {
   return css`
     display: flex;

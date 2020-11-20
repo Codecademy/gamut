@@ -8,7 +8,7 @@ import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const StyledButtonOutline = styled('button', {
-  shouldForwardProp: (prop: any) => isPropValid(prop) && prop !== 'mode',
+  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
 })<ButtonProps>(({ mode = VisualTheme.LightMode }: ButtonProps) => {
   const modeColors = modeColorGroups[mode];
 
