@@ -38,7 +38,7 @@ export type LandingPageFeaturesSectionProps = {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: LandingPageFeatureProps[];
+  features: Omit<LandingPageFeatureProps, 'isIcon'>[];
 
   /**
    * Whether an icon or a full size image should be rendered
@@ -54,7 +54,7 @@ export const LandingPageFeaturesSection: React.FC<LandingPageFeaturesSectionProp
   cta,
   ctaHref,
   features,
-  isIcon = false,
+  isIcon,
   testId,
 }) => {
   const featureColSize = (12 / features.length) as ColumnSizes;

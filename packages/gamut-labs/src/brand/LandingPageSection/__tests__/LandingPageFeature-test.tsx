@@ -16,12 +16,12 @@ const renderComponent = (overrides: Partial<LandingPageFeatureProps> = {}) => {
 describe('LandingPageFeature', () => {
   it('renders a title when title prop is provided', () => {
     const wrapper = renderComponent({ title: 'Test Title' });
-    expect(wrapper.find('h4').text()).toEqual('Test Title');
+    expect(wrapper.find('h3').text()).toEqual('Test Title');
   });
 
   it('does not render a title when title prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find('h4')).toHaveLength(0);
+    expect(wrapper.find('h3')).toHaveLength(0);
   });
 
   it('renders a description when desc prop is provided', () => {

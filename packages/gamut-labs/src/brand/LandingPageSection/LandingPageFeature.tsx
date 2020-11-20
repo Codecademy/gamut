@@ -64,7 +64,7 @@ export const LandingPageFeature: React.FC<LandingPageFeatureProps> = ({
         <Image src={imgSrc} alt={imgAlt} data-testid="feature-image" />
       )}
       {title && (
-        <Heading as="h4" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>
+        <Heading as="h3" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>
           {title}
         </Heading>
       )}
