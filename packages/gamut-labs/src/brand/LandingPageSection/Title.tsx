@@ -8,7 +8,7 @@ const Title = styled(Heading)`
 `;
 
 export type LandingPageSectionTitleProps = {
-  isPageHeading: boolean;
+  isPageHeading?: boolean;
   className?: string;
   testId?: string;
 };
