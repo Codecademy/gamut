@@ -19,7 +19,7 @@ const getEmotionNode = () => {
   return node;
 };
 
-export const createEmotionCache = (optionOverrides: Partial<Options>) =>
+export const createEmotionCache = (optionOverrides?: Partial<Options>) =>
   createCache({
     key: EMOTION_KEY,
     speedy: true,
