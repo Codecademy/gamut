@@ -1,5 +1,4 @@
 import createCache, { Options } from '@emotion/cache';
-import { omit, pick } from 'lodash';
 
 export const EMOTION_KEY = 'css';
 export const EMOTION_CONTAINER = 'emotion-styles';
