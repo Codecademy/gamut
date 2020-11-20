@@ -31,7 +31,8 @@ const StyledButtonOutline = styled('button', {
     vertical-align: middle;
     white-space: nowrap;
 
-    &:disabled {
+    &:disabled,
+    &[aria-disabled='true'] {
       cursor: not-allowed;
       user-select: none;
     }
@@ -40,12 +41,41 @@ const StyledButtonOutline = styled('button', {
       box-shadow: 0 0 0 2px ${modeColors.background};
       outline: none;
     }
+
+    &:hover {
+      text-decoration: none;
+    }
   `;
 });
 
-export const ButtonOutline: React.FC<React.ComponentProps<
-  typeof StyledButtonOutline
->> = ({ as, href, ...props }) => {
-  const asComponent = !as && href ? 'a' : as ?? 'button';
-  return <StyledButtonOutline as={asComponent} {...props} />;
+const linkTag = 'a';
+const buttonTag = 'button';
+
+type ButtonOutlineProps = React.ComponentProps<typeof StyledButtonOutline>;
+
+export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
+  as = buttonTag,
+  disabled,
+  ...props
+}) => {
+  const buttonProps: Partial<ButtonOutlineProps> = {
+    as,
+  };
+  // Switch to an anchor tag if href is defined and the default component is unchanged
+  if (buttonProps.as === buttonTag && props.href) {
+    buttonProps.as = linkTag;
+  }
+
+  // Sensible defaults based on element tagName
+  if (buttonProps.as === buttonTag) {
+    buttonProps.type = props.type ?? 'button';
+    buttonProps.disabled = disabled;
+  } else {
+    if (buttonProps.as !== linkTag || !props.href) {
+      buttonProps.role = props.role ?? 'button';
+    }
+    buttonProps['aria-disabled'] = disabled;
+  }
+
+  return <StyledButtonOutline {...props} {...buttonProps} />;
 };
