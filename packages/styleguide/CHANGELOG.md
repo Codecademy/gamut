@@ -1,3 +1,19 @@
+### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
+
+
+### Other Changes
+
+* Remove deprecated icon stories ([#1168](https://github.com/Codecademy/client-modules/issues/1168)) ([816fdf1](https://github.com/Codecademy/client-modules/commit/816fdf14e86a1488009c68f7ead4c85fe5394416))
+
+### [18.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.1...@codecademy/styleguide@18.8.2) (2020-11-19)
+
+### [18.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.0...@codecademy/styleguide@18.8.1) (2020-11-19)
+
+
+### 📝 Documentation
+
+* Clarify landing page sub-components as atoms, not organisms ([#1173](https://github.com/Codecademy/client-modules/issues/1173)) ([be7d887](https://github.com/Codecademy/client-modules/commit/be7d8872ef513de65011f6dfc7f28a93b27b50db))
+
 ## [18.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.2...@codecademy/styleguide@18.8.0) (2020-11-19)
 
 

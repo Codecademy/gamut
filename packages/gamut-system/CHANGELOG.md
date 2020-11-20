@@ -1,3 +1,10 @@
+### [0.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.4...@codecademy/gamut-system@0.1.5) (2020-11-19)
+
+
+### Other Changes
+
+* Force reversioning ([#1174](https://github.com/Codecademy/client-modules/issues/1174)) ([5e6ea40](https://github.com/Codecademy/client-modules/commit/5e6ea40a2cfa43da595d766bc29960abdbb16432))
+
 ### [0.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.3...@codecademy/gamut-system@0.1.4) (2020-11-19)
 
 
