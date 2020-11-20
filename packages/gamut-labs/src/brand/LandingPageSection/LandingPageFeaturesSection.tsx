@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { LayoutGrid, Column, ColumnSizes } from '@codecademy/gamut';
+import { Container } from '@codecademy/gamut';
 import {
   LandingPageSectionCTA,
   LandingPageSectionTitle,
@@ -9,9 +9,16 @@ import {
   LandingPageFeature,
   LandingPageFeatureProps,
 } from './';
+import { mediaQueries } from '@codecademy/gamut-styles';
 
-const Container = styled.div`
+const Section = styled.div`
   margin: 2rem;
+`;
+
+const FlexContainer = styled(Container)`
+  ${mediaQueries.sm} {
+    flex-direction: row;
+  }
 `;
 
 export type LandingPageFeaturesSectionProps = {
@@ -56,28 +63,23 @@ export const LandingPageFeaturesSection: React.FC<LandingPageFeaturesSectionProp
   features,
   isIcon,
   testId,
-}) => {
-  const featureColSize = (12 / features.length) as ColumnSizes;
-  return (
-    <Container data-testid={testId}>
-      <div>
-        {title && (
-          <LandingPageSectionTitle isPageHeading={false}>
-            {title}
-          </LandingPageSectionTitle>
-        )}
-        {desc && <LandingPageSectionDescription text={desc} />}
-        {cta && ctaHref && (
-          <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
-        )}
-      </div>
-      <LayoutGrid columnGap={{ xs: 'md', lg: 'lg' }}>
-        {features.map((feature) => (
-          <Column size={{ xs: 12, sm: featureColSize }} key={feature.title}>
-            <LandingPageFeature {...feature} isIcon={isIcon} />
-          </Column>
-        ))}
-      </LayoutGrid>
-    </Container>
-  );
-};
+}) => (
+  <Section data-testid={testId}>
+    <div>
+      {title && (
+        <LandingPageSectionTitle isPageHeading={false}>
+          {title}
+        </LandingPageSectionTitle>
+      )}
+      {desc && <LandingPageSectionDescription text={desc} />}
+      {cta && ctaHref && (
+        <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
+      )}
+    </div>
+    <FlexContainer nowrap column>
+      {features.map((feature) => (
+        <LandingPageFeature {...feature} isIcon={isIcon} key={feature.title} />
+      ))}
+    </FlexContainer>
+  </Section>
+);
