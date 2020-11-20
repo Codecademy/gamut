@@ -1,15 +1,32 @@
-# Change Log
+### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### Other Changes
+
+* Remove deprecated icon stories ([#1168](https://github.com/Codecademy/client-modules/issues/1168)) ([816fdf1](https://github.com/Codecademy/client-modules/commit/816fdf14e86a1488009c68f7ead4c85fe5394416))
+
+### [18.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.1...@codecademy/styleguide@18.8.2) (2020-11-19)
+
+### [18.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.0...@codecademy/styleguide@18.8.1) (2020-11-19)
+
+
+### 📝 Documentation
+
+* Clarify landing page sub-components as atoms, not organisms ([#1173](https://github.com/Codecademy/client-modules/issues/1173)) ([be7d887](https://github.com/Codecademy/client-modules/commit/be7d8872ef513de65011f6dfc7f28a93b27b50db))
+
+## [18.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.2...@codecademy/styleguide@18.8.0) (2020-11-19)
+
+
+### ✨ Features
+
+* add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
 
 ### [18.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.1...@codecademy/styleguide@18.7.2) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/styleguide
 
+### Other Changes
 
-
-
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
 
 ### [18.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.0...@codecademy/styleguide@18.7.1) (2020-11-19)
 
@@ -1342,3 +1359,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
+

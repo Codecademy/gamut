@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { ButtonDeprecated } from '@codecademy/gamut';
+import { CTAButton } from '@codecademy/gamut';
 
 const CTA = styled.div`
   margin: 2rem 0 0;
@@ -20,8 +20,13 @@ export const LandingPageSectionCTA: React.FC<LandingPageSectionCTAProps> = ({
   children,
 }) => (
   <CTA className={className} data-testid={testId}>
-    <ButtonDeprecated theme="hyper" href={href}>
+    <CTAButton
+      as="a"
+      // @ts-expect-error: href does not yet validate as a prop on CTAButton
+      href={href}
+      style={{ display: 'inline-block' }}
+    >
       {children}
-    </ButtonDeprecated>
+    </CTAButton>
   </CTA>
 );

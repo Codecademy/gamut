@@ -1,15 +1,11 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
 
 ### [7.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.4...@codecademy/gamut-styles@7.4.5) (2020-11-19)
 
-**Note:** Version bump only for package @codecademy/gamut-styles
 
+### Other Changes
 
-
-
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
 
 ### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.3...@codecademy/gamut-styles@7.4.4) (2020-11-19)
 
@@ -671,3 +667,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
