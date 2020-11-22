@@ -1,12 +1,12 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
+import { MenuButtonProps as ReachMenuButtonProps } from '@reach/menu-button';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { MenuButton } from './MenuButton';
 
-export type MenuButtonProps = {
-  className?: string;
+export type MenuButtonProps = ReachMenuButtonProps & {
   isExpanded?: boolean;
 };
 
@@ -23,11 +23,11 @@ const StyledIcon = styled(ArrowChevronDownFilledIcon)<{ isExpanded?: boolean }>`
 
 export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   children,
-  className,
   isExpanded,
+  ...props
 }) => {
   return (
-    <MenuButton className={className} isExpanded={isExpanded}>
+    <MenuButton isExpanded={isExpanded} {...props}>
       {children}
       <StyledIcon aria-hidden isExpanded={isExpanded} size={12} />
     </MenuButton>
