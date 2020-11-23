@@ -1,0 +1,31 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { PagePrefooter } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Brand/Organisms/PagePrefooter"
+  component={PagePrefooter}
+  args={{
+    title:
+      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    desc:
+      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+    cta: 'Supernatural',
+    ctaHref:
+      'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+  }}
+/>
+
+# PagePrefooter
+
+<StoryStatus status="volatile" />
+
+Prefooter component for landing pages created in Contentful. All props are optional.
+
+<Canvas withSource="open">
+  <Story name="PagePrefooter">{(args) => <PagePrefooter {...args} />}</Story>
+</Canvas>
+
+<Props story="PagePrefooter" of={PagePrefooter} />
