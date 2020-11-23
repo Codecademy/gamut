@@ -7,7 +7,7 @@ export const MenuButton = styled(ReachMenuButton)<MenuButtonProps>`
   background: none;
   border: none;
   cursor: pointer;
-  padding: ${spacing[4]} ${spacing[12]};
+  padding: ${spacing[4]} ${spacing[8]};
 
   ${({ isExpanded }) => isExpanded && `font-weight: bold;`}
 
