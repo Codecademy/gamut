@@ -1,5 +1,5 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
+import { colors, pxRem } from '@codecademy/gamut-styles';
 import { MenuButtonProps as ReachMenuButtonProps } from '@reach/menu-button';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -24,13 +24,17 @@ const StyledIcon = styled(ArrowChevronDownFilledIcon)<{ isExpanded?: boolean }>`
 const Contents = styled.span<{ isExpanded?: boolean }>`
   text-align: center;
 
-  :after {
+  &::after {
     display: block;
     content: attr(title);
     font-weight: bold;
     height: 0;
     overflow: hidden;
     visibility: hidden;
+  }
+
+  &:hover {
+    color: ${colors.hyper};
   }
 `;
 
