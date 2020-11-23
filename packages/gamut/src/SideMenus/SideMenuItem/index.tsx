@@ -8,7 +8,7 @@ export type AsProps = {
   className?: string;
 };
 
-export type MenuItemProps = {
+export type SideMenuItemProps = {
   /**
    * Component type to wrap children with.
    *
@@ -28,7 +28,7 @@ export type MenuItemProps = {
   ariaLabel?: string;
 };
 
-export const SideMenuItem: React.FC<MenuItemProps> = ({
+export const SideMenuItem: React.FC<SideMenuItemProps> = ({
   as: As = 'a',
   asProps = {},
   selected,
