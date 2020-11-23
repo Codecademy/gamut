@@ -1,3 +1,56 @@
+### [5.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.1...@codecademy/gamut-labs@5.7.2) (2020-11-20)
+
+
+### Other Changes
+
+* update flex items to grow and shrink evenly ([#1178](https://github.com/Codecademy/client-modules/issues/1178)) ([0f0c268](https://github.com/Codecademy/client-modules/commit/0f0c268af67c7fdfc5297a2beb38d5eff4b5d4d9))
+
+### [5.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.0...@codecademy/gamut-labs@5.7.1) (2020-11-20)
+
+
+### 🐛 Bug Fixes
+
+* default img alt to "", accept isPageHeading, update tests ([#1177](https://github.com/Codecademy/client-modules/issues/1177)) ([eb2501e](https://github.com/Codecademy/client-modules/commit/eb2501e8599c3f3061ab56caef1f28985926ad9f))
+
+## [5.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.6.0...@codecademy/gamut-labs@5.7.0) (2020-11-20)
+
+
+### ✨ Features
+
+* add landing page features section component ([#1175](https://github.com/Codecademy/client-modules/issues/1175)) ([9051740](https://github.com/Codecademy/client-modules/commit/90517405cf42d14abe672a3f4891911b80003d5c))
+
+## [5.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.5.1...@codecademy/gamut-labs@5.6.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
+### [5.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.5.0...@codecademy/gamut-labs@5.5.1) (2020-11-19)
+
+## [5.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.2...@codecademy/gamut-labs@5.5.0) (2020-11-19)
+
+
+### ✨ Features
+
+* add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
+
+### [5.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.1...@codecademy/gamut-labs@5.4.2) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [5.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.4.0...@codecademy/gamut-labs@5.4.1) (2020-11-19)
+
+## [5.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.2...@codecademy/gamut-labs@5.4.0) (2020-11-18)
+
+
+### ✨ Features
+
+* added focus trap to Popover... ([#1164](https://github.com/Codecademy/client-modules/issues/1164)) ([dd8958f](https://github.com/Codecademy/client-modules/commit/dd8958fc5ad7de11670d318a5c45dd09c06453d8))
+
 ### [5.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.1...@codecademy/gamut-labs@5.3.2) (2020-11-17)
 
 ### [5.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.3.0...@codecademy/gamut-labs@5.3.1) (2020-11-16)
