@@ -7,13 +7,9 @@ export const MenuButton = styled(ReachMenuButton)<MenuButtonProps>`
   background: none;
   border: none;
   cursor: pointer;
-  padding: ${spacing[8]} ${spacing[12]};
+  padding: ${spacing[4]} ${spacing[12]};
 
-  ${({ isExpanded }) =>
-    isExpanded &&
-    `
-    font-weight: bold;
-  `}
+  ${({ isExpanded }) => isExpanded && `font-weight: bold;`}
 
   &:focus:not([data-focus-visible-added]) {
     outline: none;

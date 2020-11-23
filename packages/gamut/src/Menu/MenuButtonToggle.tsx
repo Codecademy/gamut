@@ -10,15 +10,28 @@ export type MenuButtonProps = ReachMenuButtonProps & {
   isExpanded?: boolean;
 };
 
+const StyledMenuButton = styled(MenuButton)`
+  align-items: center;
+  display: flex;
+`;
+
 const StyledIcon = styled(ArrowChevronDownFilledIcon)<{ isExpanded?: boolean }>`
   margin-left: ${pxRem(5)};
 
-  ${({ isExpanded }) =>
-    isExpanded &&
-    `
-    margin-bottom: 3px;
-    transform: rotate(-180deg);
-  `}
+  ${({ isExpanded }) => isExpanded && `transform: rotate(-180deg);`}
+`;
+
+const Contents = styled.span<{ isExpanded?: boolean }>`
+  text-align: center;
+
+  :after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
 `;
 
 export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
@@ -27,9 +40,11 @@ export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   ...props
 }) => {
   return (
-    <MenuButton isExpanded={isExpanded} {...props}>
-      {children}
+    <StyledMenuButton isExpanded={isExpanded} {...props}>
+      <Contents isExpanded={isExpanded} title={`${children}`}>
+        {children}
+      </Contents>
       <StyledIcon aria-hidden isExpanded={isExpanded} size={12} />
-    </MenuButton>
+    </StyledMenuButton>
   );
 };

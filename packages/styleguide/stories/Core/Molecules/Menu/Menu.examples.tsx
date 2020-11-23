@@ -13,10 +13,12 @@ export const MenuExample = () => {
       <Menu>
         {({ isExpanded }) => (
           <>
-            <MenuButtonToggle isExpanded={isExpanded}>Actions</MenuButtonToggle>
+            <MenuButtonToggle isExpanded={isExpanded}>
+              Community
+            </MenuButtonToggle>
             <MenuList>
               <MenuItem onSelect={() => alert('Action!')}>Action!</MenuItem>
-              <MenuLink href="https://codecademy.com">Codecademy</MenuLink>
+              <MenuLink href="https://codecademy.com">Forums</MenuLink>
             </MenuList>
           </>
         )}

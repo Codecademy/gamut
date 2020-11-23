@@ -6,7 +6,7 @@ export const listItemStyles = css`
   cursor: pointer;
   display: block;
   font-size: ${fontSize[16]};
-  padding: ${spacing[16]} ${spacing[24]};
+  padding: ${spacing[8]} ${spacing[24]};
 
   &:hover {
     text-decoration: none;
