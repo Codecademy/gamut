@@ -40,7 +40,11 @@ export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
   ...props
 }) => {
   return (
-    <StyledMenuButton isExpanded={isExpanded} {...props}>
+    <StyledMenuButton
+      aria-expanded={isExpanded}
+      isExpanded={isExpanded}
+      {...props}
+    >
       <Contents isExpanded={isExpanded} title={`${children}`}>
         {children}
       </Contents>
