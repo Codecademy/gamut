@@ -1,5 +1,5 @@
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { colors, pxRem } from '@codecademy/gamut-styles';
+import { pxRem } from '@codecademy/gamut-styles';
 import { MenuButtonProps as ReachMenuButtonProps } from '@reach/menu-button';
 import styled from '@emotion/styled';
 import React from 'react';
