@@ -24,7 +24,8 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
         color: ${modeColors.background};
       }
 
-      ${TextButtonOuter}:disabled & {
+      ${TextButtonOuter}:disabled &,
+      ${TextButtonOuter}[aria-disabled='true'] & {
         background-color: transparent;
         color: ${modeColors.foregroundMuted};
         cursor: not-allowed;
