@@ -1,4 +1,3 @@
-import { spacing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { MenuItem as ReachMenuItem } from '@reach/menu-button';
 
