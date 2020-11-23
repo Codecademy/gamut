@@ -18,16 +18,20 @@ import { StoryStatus } from '~styleguide/blocks';
     children: 'Click Me',
     disabled: false,
     mode: VisualTheme.LightMode,
+    href: '',
   }}
   argTypes={{
     mode: {
+      description: 'Visual mode',
       control: {
         type: 'select',
         options: [VisualTheme.DarkMode, VisualTheme.LightMode],
       },
     },
+    href: {
+      description: 'If defined, component will use an anchor tag',
+    },
   }}
-  subcomponents={{ CTAButton, FillButton }}
   title="Atoms/Button"
 />
 
@@ -38,13 +42,13 @@ import { StoryStatus } from '~styleguide/blocks';
 We have several versions of buttons that you can use.
 Each supports a _light_ and _dark_ mode.
 
-<Props of={CTAButton} />
-
 ## CTA Button
 
 <Canvas>
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
 </Canvas>
+
+<Props story="CTAButton" />
 
 ## Fill Button
 
@@ -52,17 +56,23 @@ Each supports a _light_ and _dark_ mode.
   <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
 </Canvas>
 
+<Props story="FillButton" />
+
 ## Stroke Button
 
 <Canvas>
   <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
 </Canvas>
 
+<Props story="StrokeButton" />
+
 ## Text Button
 
 <Canvas>
   <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
 </Canvas>
+
+<Props story="TextButton" />
 
 ## Icon Button
 
@@ -71,3 +81,5 @@ Each supports a _light_ and _dark_ mode.
     {(args) => <IconButton icon={SearchIcon} {...args} />}
   </Story>
 </Canvas>
+
+<Props story="IconButton" />

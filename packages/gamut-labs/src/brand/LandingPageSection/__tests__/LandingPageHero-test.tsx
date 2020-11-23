@@ -1,52 +1,51 @@
-import { shallow, mount } from 'enzyme';
 import React from 'react';
-import {
-  LandingPageHero,
-  LandingPageSectionCTA,
-  LandingPageSectionTitle,
-  LandingPageSectionDescription,
-} from '..';
+import { render } from '@testing-library/react';
+import { LandingPageHero } from '..';
 
 describe('LandingPageHero', () => {
-  it('should only render a title when one is provided', () => {
-    const wrapper = shallow(<LandingPageHero title="test" />);
-    expect(wrapper.find(LandingPageSectionTitle)).toHaveLength(1);
-
-    const wrapperNoTitle = shallow(<LandingPageHero />);
-    expect(wrapperNoTitle.find(LandingPageSectionTitle)).toHaveLength(0);
+  it('should render a title when one is provided', () => {
+    const wrapper = render(<LandingPageHero title="title" />);
+    wrapper.getByText('title');
   });
 
-  it('should only render a description when one is provided', () => {
-    const wrapper = shallow(<LandingPageHero desc="test" />);
-    expect(wrapper.find(LandingPageSectionDescription)).toHaveLength(1);
-
-    const wrapperNoDesc = shallow(<LandingPageHero />);
-    expect(wrapperNoDesc.find(LandingPageSectionDescription)).toHaveLength(0);
+  it('should render a description when one is provided', () => {
+    const wrapper = render(<LandingPageHero desc="desc" />);
+    wrapper.getByText('desc');
   });
 
-  it('should only render a button when both an href and cta are provided', () => {
-    const wrapper = shallow(
-      <LandingPageHero cta="test" ctaHref="https://codecademy.com" />
+  it('should render a button when both ctaHref and cta are provided', () => {
+    const wrapper = render(
+      <LandingPageHero cta="cta" ctaHref="https://codecademy.com" />
     );
-    expect(wrapper.find(LandingPageSectionCTA)).toHaveLength(1);
+    wrapper.getByText('cta');
+  });
 
-    const wrapperNoHref = shallow(<LandingPageHero cta="test" />);
-    expect(wrapperNoHref.find(LandingPageSectionCTA)).toHaveLength(0);
+  it('should not render a button when only cta is provided', () => {
+    const wrapper = render(<LandingPageHero cta="cta" />);
+    expect(wrapper.queryByText('cta')).not.toBeInTheDocument();
+  });
 
-    const wrapperNoCta = shallow(
+  it('should not render a button when only ctaHref is provided', () => {
+    const wrapper = render(
       <LandingPageHero ctaHref="https://codecademy.com" />
     );
-    expect(wrapperNoCta.find(LandingPageSectionCTA)).toHaveLength(0);
-
-    const wrapperNoCtaOrHref = shallow(<LandingPageHero />);
-    expect(wrapperNoCtaOrHref.find(LandingPageSectionCTA)).toHaveLength(0);
+    expect(
+      wrapper.queryByText('https://codecademy.com')
+    ).not.toBeInTheDocument();
   });
 
-  it('should only render an image when an imgSrc is provided', () => {
-    const wrapper = mount(<LandingPageHero imgSrc="test" />);
-    expect(wrapper.find('img')).toHaveLength(1);
+  it('should render an img with alt="" when an imgSrc is provided', () => {
+    const wrapper = render(<LandingPageHero imgSrc="test" />);
+    wrapper.getByAltText('');
+  });
 
-    const wrapperNoImg = mount(<LandingPageHero />);
-    expect(wrapperNoImg.find('img')).toHaveLength(0);
+  it('should not render an image when imgSrc is not provided', () => {
+    const wrapper = render(<LandingPageHero imgAlt="alt" />);
+    expect(wrapper.queryByAltText('alt')).not.toBeInTheDocument();
+  });
+
+  it('should not render anything when no props are provided', () => {
+    const wrapper = render(<LandingPageHero />);
+    expect(wrapper.queryByText(/.+/)).not.toBeInTheDocument();
   });
 });

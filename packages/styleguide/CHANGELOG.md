@@ -1,3 +1,31 @@
+### [18.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.0...@codecademy/styleguide@18.10.1) (2020-11-20)
+
+
+### 🐛 Bug Fixes
+
+* default img alt to "", accept isPageHeading, update tests ([#1177](https://github.com/Codecademy/client-modules/issues/1177)) ([eb2501e](https://github.com/Codecademy/client-modules/commit/eb2501e8599c3f3061ab56caef1f28985926ad9f))
+
+## [18.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.9.0...@codecademy/styleguide@18.10.0) (2020-11-20)
+
+
+### ✨ Features
+
+* add landing page features section component ([#1175](https://github.com/Codecademy/client-modules/issues/1175)) ([9051740](https://github.com/Codecademy/client-modules/commit/90517405cf42d14abe672a3f4891911b80003d5c))
+
+## [18.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.3...@codecademy/styleguide@18.9.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
+### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
+
+
+### Other Changes
+
+* Remove deprecated icon stories ([#1168](https://github.com/Codecademy/client-modules/issues/1168)) ([816fdf1](https://github.com/Codecademy/client-modules/commit/816fdf14e86a1488009c68f7ead4c85fe5394416))
+
 ### [18.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.1...@codecademy/styleguide@18.8.2) (2020-11-19)
 
 ### [18.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.0...@codecademy/styleguide@18.8.1) (2020-11-19)

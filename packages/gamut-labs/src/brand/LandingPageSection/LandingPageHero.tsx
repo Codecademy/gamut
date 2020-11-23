@@ -29,25 +29,29 @@ const Image = styled.img`
 export type LandingPageHeroProps = {
   title?: string;
   /**
-    Main body text (can include html)
-  */
+   * Main body text (can include markdown)
+   */
   desc?: string;
   /**
-    Button text
-  */
+   * Button text
+   */
   cta?: string;
   /**
-    Url to navigate to when clicking the button
-  */
+   * Url to navigate to when clicking the button
+   */
   ctaHref?: string;
   /**
-    Hero image URL
-  */
+   * Hero image URL
+   */
   imgSrc?: string;
   /**
-    Hero image alt text (for screen readers)
-  */
+   * Hero image alt text (for screen readers)
+   */
   imgAlt?: string;
+  /**
+   * True if this is the semantic page heading (h1)
+   */
+  isPageHeading?: boolean;
   testId?: string;
 };
 
@@ -57,7 +61,8 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
   cta,
   ctaHref,
   imgSrc,
-  imgAlt,
+  imgAlt = '',
+  isPageHeading,
   testId,
 }) => (
   <Layout testId={testId}>
@@ -68,7 +73,9 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
       }}
     >
       {title && (
-        <LandingPageSectionTitle isPageHeading>{title}</LandingPageSectionTitle>
+        <LandingPageSectionTitle isPageHeading={isPageHeading}>
+          {title}
+        </LandingPageSectionTitle>
       )}
       {desc && <LandingPageSectionDescription text={desc} />}
       {cta && ctaHref && (

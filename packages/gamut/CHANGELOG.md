@@ -1,3 +1,10 @@
+## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.11...@codecademy/gamut@17.4.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
 ### [17.3.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.10...@codecademy/gamut@17.3.11) (2020-11-19)
 
 ### [17.3.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.9...@codecademy/gamut@17.3.10) (2020-11-19)
