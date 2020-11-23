@@ -1,4 +1,4 @@
-import { spacing } from '@codecademy/gamut-styles';
+import { colors, spacing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { MenuButton as ReachMenuButton } from '@reach/menu-button';
 import { MenuButtonProps } from './MenuButtonToggle';
@@ -13,5 +13,9 @@ export const MenuButton = styled(ReachMenuButton)<MenuButtonProps>`
 
   &:focus:not([data-focus-visible-added]) {
     outline: none;
+  }
+
+  &:hover {
+    color: ${colors.hyper};
   }
 `;

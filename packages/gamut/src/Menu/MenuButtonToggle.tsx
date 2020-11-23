@@ -32,10 +32,6 @@ const Contents = styled.span<{ isExpanded?: boolean }>`
     overflow: hidden;
     visibility: hidden;
   }
-
-  &:hover {
-    color: ${colors.hyper};
-  }
 `;
 
 export const MenuButtonToggle: React.FC<MenuButtonProps> = ({
