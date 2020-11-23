@@ -3,11 +3,11 @@ import styled from '@emotion/styled';
 
 import { Container } from '@codecademy/gamut';
 import {
-  LandingPageSectionCTA,
-  LandingPageSectionTitle,
-  LandingPageSectionDescription,
-  LandingPageFeature,
-  LandingPageFeatureProps,
+  PageSectionCTA,
+  PageSectionTitle,
+  PageSectionDescription,
+  PageFeature,
+  PageFeatureProps,
 } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
 
@@ -21,7 +21,7 @@ const FlexContainer = styled(Container)`
   }
 `;
 
-export type LandingPageFeaturesSectionProps = {
+export type PageFeaturesSectionProps = {
   /**
    * Main title text
    */
@@ -45,7 +45,7 @@ export type LandingPageFeaturesSectionProps = {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: Omit<LandingPageFeatureProps, 'isIcon'>[];
+  features: Omit<PageFeatureProps, 'isIcon'>[];
 
   /**
    * Whether an icon or a full size image should be rendered
@@ -55,7 +55,7 @@ export type LandingPageFeaturesSectionProps = {
   testId?: string;
 };
 
-export const LandingPageFeaturesSection: React.FC<LandingPageFeaturesSectionProps> = ({
+export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
   title,
   desc,
   cta,
@@ -67,18 +67,14 @@ export const LandingPageFeaturesSection: React.FC<LandingPageFeaturesSectionProp
   <Section data-testid={testId}>
     <div>
       {title && (
-        <LandingPageSectionTitle isPageHeading={false}>
-          {title}
-        </LandingPageSectionTitle>
+        <PageSectionTitle isPageHeading={false}>{title}</PageSectionTitle>
       )}
-      {desc && <LandingPageSectionDescription text={desc} />}
-      {cta && ctaHref && (
-        <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
-      )}
+      {desc && <PageSectionDescription text={desc} />}
+      {cta && ctaHref && <PageSectionCTA href={ctaHref}>{cta}</PageSectionCTA>}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (
-        <LandingPageFeature {...feature} isIcon={isIcon} key={feature.title} />
+        <PageFeature {...feature} isIcon={isIcon} key={feature.title} />
       ))}
     </FlexContainer>
   </Section>

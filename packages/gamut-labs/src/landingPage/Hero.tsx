@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 
 import { LayoutGrid, Column } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import {
-  LandingPageSectionCTA,
-  LandingPageSectionTitle,
-  LandingPageSectionDescription,
-} from './';
+import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
 
 const Layout = styled(LayoutGrid)`
   padding: 0 2rem;
@@ -26,7 +22,7 @@ const Image = styled.img`
   width: 100%;
 `;
 
-export type LandingPageHeroProps = {
+export type PageHeroProps = {
   title?: string;
   /**
    * Main body text (can include markdown)
@@ -55,7 +51,7 @@ export type LandingPageHeroProps = {
   testId?: string;
 };
 
-export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
+export const PageHero: React.FC<PageHeroProps> = ({
   title,
   desc,
   cta,
@@ -73,14 +69,12 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
       }}
     >
       {title && (
-        <LandingPageSectionTitle isPageHeading={isPageHeading}>
+        <PageSectionTitle isPageHeading={isPageHeading}>
           {title}
-        </LandingPageSectionTitle>
+        </PageSectionTitle>
       )}
-      {desc && <LandingPageSectionDescription text={desc} />}
-      {cta && ctaHref && (
-        <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
-      )}
+      {desc && <PageSectionDescription text={desc} />}
+      {cta && ctaHref && <PageSectionCTA href={ctaHref}>{cta}</PageSectionCTA>}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>

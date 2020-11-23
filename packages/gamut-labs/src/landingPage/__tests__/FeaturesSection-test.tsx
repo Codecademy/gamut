@@ -2,17 +2,15 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import {
-  LandingPageFeaturesSection,
-  LandingPageFeaturesSectionProps,
-  LandingPageSectionCTA,
-  LandingPageSectionDescription,
-  LandingPageSectionTitle,
-  LandingPageFeature,
+  PageFeaturesSection,
+  PageFeaturesSectionProps,
+  PageSectionCTA,
+  PageSectionDescription,
+  PageSectionTitle,
+  PageFeature,
 } from '..';
 
-const renderComponent = (
-  overrides: Partial<LandingPageFeaturesSectionProps> = {}
-) => {
+const renderComponent = (overrides: Partial<PageFeaturesSectionProps> = {}) => {
   const props = {
     features: [
       {
@@ -25,48 +23,48 @@ const renderComponent = (
     ...overrides,
   };
 
-  return mount(<LandingPageFeaturesSection {...props} />);
+  return mount(<PageFeaturesSection {...props} />);
 };
 
-describe('LandingPageFeaturesSection', () => {
+describe('PageFeaturesSection', () => {
   it('renders a title when title prop is provided', () => {
     const wrapper = renderComponent({ title: 'Test Title' });
-    expect(wrapper.find(LandingPageSectionTitle).text()).toEqual('Test Title');
+    expect(wrapper.find(PageSectionTitle).text()).toEqual('Test Title');
   });
 
   it('does not render a title when title prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(LandingPageSectionTitle)).toHaveLength(0);
+    expect(wrapper.find(PageSectionTitle)).toHaveLength(0);
   });
 
   it('renders a description when desc prop is provided', () => {
     const wrapper = renderComponent({ desc: 'Test Description' });
-    expect(wrapper.find(LandingPageSectionDescription).prop('text')).toEqual(
+    expect(wrapper.find(PageSectionDescription).prop('text')).toEqual(
       'Test Description'
     );
   });
 
   it('does not render a description when desc prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(LandingPageSectionDescription)).toHaveLength(0);
+    expect(wrapper.find(PageSectionDescription)).toHaveLength(0);
   });
 
   it('renders a cta button when cta and ctaHref props are provided', () => {
     const wrapper = renderComponent({ cta: 'Click Me', ctaHref: '#' });
-    expect(wrapper.find(LandingPageSectionCTA).text()).toEqual('Click Me');
+    expect(wrapper.find(PageSectionCTA).text()).toEqual('Click Me');
   });
 
   it('does not render a cta button when both cta and ctaHref props are not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(LandingPageSectionCTA)).toHaveLength(0);
+    expect(wrapper.find(PageSectionCTA)).toHaveLength(0);
   });
 
   it('does not render a cta button when ctaHref prop is not provided', () => {
     const wrapper = renderComponent({ cta: 'Click Me' });
-    expect(wrapper.find(LandingPageSectionCTA)).toHaveLength(0);
+    expect(wrapper.find(PageSectionCTA)).toHaveLength(0);
   });
 
-  it('renders a LandingPageFeature component for each element in the features array prop', () => {
+  it('renders a PageFeature component for each element in the features array prop', () => {
     const wrapper = renderComponent({
       features: [
         {
@@ -83,6 +81,6 @@ describe('LandingPageFeaturesSection', () => {
         },
       ],
     });
-    expect(wrapper.find(LandingPageFeature)).toHaveLength(2);
+    expect(wrapper.find(PageFeature)).toHaveLength(2);
   });
 });

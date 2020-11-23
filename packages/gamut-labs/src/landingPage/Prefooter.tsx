@@ -3,11 +3,7 @@ import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
 import { mediaQueries, breakpoints } from '@codecademy/gamut-styles';
 
-import {
-  LandingPageSectionCTA,
-  LandingPageSectionTitle,
-  LandingPageSectionDescription,
-} from './';
+import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
 
 const FlexContainer = styled(Container)`
   margin: 2rem 0;
@@ -26,7 +22,7 @@ const Content = styled.div`
   }
 `;
 
-const CTA = styled(LandingPageSectionCTA)`
+const CTA = styled(PageSectionCTA)`
   ${mediaQueries.sm} {
     margin: 0 0 0 2rem;
   }
@@ -49,8 +45,8 @@ export const PagePrefooter: React.FC<PagePrefooterProps> = ({
 }) => (
   <FlexContainer nowrap column justify="spaceBetween">
     <Content>
-      {title && <LandingPageSectionTitle>{title}</LandingPageSectionTitle>}
-      {desc && <LandingPageSectionDescription text={desc} />}
+      {title && <PageSectionTitle>{title}</PageSectionTitle>}
+      {desc && <PageSectionDescription text={desc} />}
     </Content>
     {cta && ctaHref && <CTA href={ctaHref}>{cta}</CTA>}
   </FlexContainer>

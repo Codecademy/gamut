@@ -2,11 +2,11 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
-import { LandingPageHero } from '@codecademy/gamut-labs/src';
+import { PageHero } from '@codecademy/gamut-labs/src';
 
 <Meta
-  title="Labs/Brand/Organisms/LandingPageHero"
-  component={LandingPageHero}
+  title="Labs/LandingPage/Organisms/PageHero"
+  component={PageHero}
   args={{
     title:
       "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
@@ -22,16 +22,14 @@ import { LandingPageHero } from '@codecademy/gamut-labs/src';
   }}
 />
 
-# LandingPageHero
+# PageHero
 
 <StoryStatus status="volatile" />
 
 Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.
 
 <Canvas withSource="open">
-  <Story name="LandingPageHero">
-    {(args) => <LandingPageHero {...args} />}
-  </Story>
+  <Story name="PageHero">{(args) => <PageHero {...args} />}</Story>
 </Canvas>
 
-<Props story="LandingPageHero" of={LandingPageHero} />
+<Props story="PageHero" of={PageHero} />

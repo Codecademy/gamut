@@ -7,13 +7,13 @@ const CTA = styled.div`
   margin: 2rem 0 0;
 `;
 
-export type LandingPageSectionCTAProps = {
+export type PageSectionCTAProps = {
   href: string;
   className?: string;
   testId?: string;
 };
 
-export const LandingPageSectionCTA: React.FC<LandingPageSectionCTAProps> = ({
+export const PageSectionCTA: React.FC<PageSectionCTAProps> = ({
   href,
   className,
   testId,
