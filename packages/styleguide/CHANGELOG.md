@@ -1,3 +1,21 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.3...@codecademy/styleguide@19.0.0) (2020-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* add landing page prefooter component (#1185)
+
+### Features
+
+* add landing page prefooter component ([#1185](https://github.com/Codecademy/client-modules/issues/1185)) ([f5aa7f6](https://github.com/Codecademy/client-modules/commit/f5aa7f6ba529dbe359bae5e654d6bc11baea9916))
+
+
+
 ### [18.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.2...@codecademy/styleguide@18.10.3) (2020-11-24)
 
 ### [18.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.1...@codecademy/styleguide@18.10.2) (2020-11-24)
@@ -1384,4 +1402,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
