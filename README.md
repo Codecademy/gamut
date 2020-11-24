@@ -7,21 +7,17 @@ _Shared node modules for codecademy.com & co_
 [![CircleCI](https://circleci.com/gh/Codecademy/client-modules.svg?style=svg&circle-token=3d9adfca5a8b44e7297ceb18e032e89a11d223a2)](https://circleci.com/gh/Codecademy/client-modules)
 [![codecov](https://codecov.io/gh/Codecademy/client-modules/branch/main/graph/badge.svg)](https://codecov.io/gh/Codecademy/client-modules)
 
-## Releases
-
-- `gamut` [![gamut](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
-- `gamut-labs` [![gamut-labs](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
-- `gamut-styles` [![gamut-styles](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
-- `gamut-icons` [![gamut-icons](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
-- `gamut-system` [![gamut-system](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
-
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
-[`gamut`: Our React UI component library](/packages/gamut/README.md)
+[`gamut`: Our React UI component library](/packages/gamut/README.md) [![gamut](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
 
-[`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
+[`gamut-labs`: React components](/packages/gamut-labs/README.md) ![gamut-labs](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
 
-[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
+[`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md) [![gamut-styles](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
+
+[`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md) [![gamut-icons](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
+
+[`gamut-system`: Typesafe style utilities for design systems](/packages/gamut-system/README.md) [![gamut-system](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
