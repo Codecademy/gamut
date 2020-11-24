@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "17.4.0",
+  "version": "17.4.2",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -33,7 +33,6 @@
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
-    "moment": "^2.24.0",
     "react-aria-tabpanel": "^4.4.0",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
