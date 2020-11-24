@@ -1,3 +1,10 @@
+### [17.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.0...@codecademy/gamut@17.4.1) (2020-11-24)
+
+
+### 🐛 Bug Fixes
+
+* prevent VO from saying "group" for ProgressBar ([#1184](https://github.com/Codecademy/client-modules/issues/1184)) ([2b755a8](https://github.com/Codecademy/client-modules/commit/2b755a8c671720a8b6daca89edb2b379070ba2c5))
+
 ## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.11...@codecademy/gamut@17.4.0) (2020-11-20)
 
 
