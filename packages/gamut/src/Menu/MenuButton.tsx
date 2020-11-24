@@ -6,12 +6,18 @@ import { MenuButtonProps } from './MenuButtonToggle';
 export const MenuButton = styled(ReachMenuButton)<MenuButtonProps>`
   background: none;
   border: none;
+  border-radius: 2px;
   cursor: pointer;
   padding: ${spacing[4]} ${spacing[8]};
+  transition: box-shadow 0.1s ease-in-out;
 
   ${({ isExpanded }) => isExpanded && `font-weight: bold;`}
 
-  &:focus:not([data-focus-visible-added]) {
+  &[data-focus-visible-added] {
+    box-shadow: 0 0 0 2px ${colors.black};
+  }
+
+  &:focus {
     outline: none;
   }
 
