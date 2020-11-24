@@ -4,6 +4,11 @@ import { Container } from '@codecademy/gamut';
 import { mediaQueries, breakpoints } from '@codecademy/gamut-styles';
 
 import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import { BaseProps } from './types';
+
+const NoFlexContainer = styled.div`
+  margin: 2rem 0;
+`;
 
 const FlexContainer = styled(Container)`
   margin: 2rem 0;
@@ -14,7 +19,7 @@ const FlexContainer = styled(Container)`
   }
 `;
 
-const Content = styled.div`
+const FlexContent = styled.div`
   flex-shrink: 1;
 
   ${mediaQueries.sm} {
@@ -28,26 +33,27 @@ const CTA = styled(PageSectionCTA)`
   }
 `;
 
-export type PagePrefooterProps = {
-  title?: string;
-  desc?: string;
-  cta?: string;
-  ctaHref?: string;
-  testId?: string;
-};
-
-export const PagePrefooter: React.FC<PagePrefooterProps> = ({
+export const PagePrefooter: React.FC<BaseProps> = ({
   title,
   desc,
   cta,
-  ctaHref,
   testId,
-}) => (
-  <FlexContainer nowrap column justify="spaceBetween">
-    <Content>
-      {title && <PageSectionTitle>{title}</PageSectionTitle>}
-      {desc && <PageSectionDescription text={desc} />}
-    </Content>
-    {cta && ctaHref && <CTA href={ctaHref}>{cta}</CTA>}
-  </FlexContainer>
-);
+}) => {
+  const Title = title && <PageSectionTitle>{title}</PageSectionTitle>;
+  const Desc = desc && <PageSectionDescription text={desc} />;
+
+  return cta ? (
+    <FlexContainer nowrap column justify="spaceBetween">
+      <FlexContent>
+        {Title}
+        {Desc}
+      </FlexContent>
+      <CTA href={cta.href}>{cta.text}</CTA>
+    </FlexContainer>
+  ) : (
+    <NoFlexContainer>
+      {Title}
+      {Desc}
+    </NoFlexContainer>
+  );
+};

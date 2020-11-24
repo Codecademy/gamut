@@ -10,6 +10,7 @@ import {
   PageFeatureProps,
 } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import { BaseProps } from './types';
 
 const Section = styled.div`
   margin: 2rem;
@@ -21,27 +22,7 @@ const FlexContainer = styled(Container)`
   }
 `;
 
-export type PageFeaturesSectionProps = {
-  /**
-   * Main title text
-   */
-  title?: string;
-
-  /**
-   * Main body text as markdown
-   */
-  desc?: string;
-
-  /**
-   * Button text
-   */
-  cta?: string;
-
-  /**
-   * Url to navigate to when clicking the button
-   */
-  ctaHref?: string;
-
+export type PageFeaturesSectionProps = BaseProps & {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
@@ -51,15 +32,12 @@ export type PageFeaturesSectionProps = {
    * Whether an icon or a full size image should be rendered
    */
   isIcon?: boolean;
-
-  testId?: string;
 };
 
 export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
   title,
   desc,
   cta,
-  ctaHref,
   features,
   isIcon,
   testId,
@@ -70,7 +48,7 @@ export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
         <PageSectionTitle isPageHeading={false}>{title}</PageSectionTitle>
       )}
       {desc && <PageSectionDescription text={desc} />}
-      {cta && ctaHref && <PageSectionCTA href={ctaHref}>{cta}</PageSectionCTA>}
+      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (

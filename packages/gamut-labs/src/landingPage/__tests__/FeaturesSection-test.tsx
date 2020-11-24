@@ -49,18 +49,18 @@ describe('PageFeaturesSection', () => {
     expect(wrapper.find(PageSectionDescription)).toHaveLength(0);
   });
 
-  it('renders a cta button when cta and ctaHref props are provided', () => {
-    const wrapper = renderComponent({ cta: 'Click Me', ctaHref: '#' });
+  it('renders a cta button when cta prop is provided', () => {
+    const wrapper = renderComponent({
+      cta: {
+        text: 'Click Me',
+        href: '#',
+      },
+    });
     expect(wrapper.find(PageSectionCTA).text()).toEqual('Click Me');
   });
 
-  it('does not render a cta button when both cta and ctaHref props are not provided', () => {
+  it('does not render a cta button when cta prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(PageSectionCTA)).toHaveLength(0);
-  });
-
-  it('does not render a cta button when ctaHref prop is not provided', () => {
-    const wrapper = renderComponent({ cta: 'Click Me' });
     expect(wrapper.find(PageSectionCTA)).toHaveLength(0);
   });
 

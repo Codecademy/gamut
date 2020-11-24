@@ -13,23 +13,11 @@ describe('PageHero', () => {
     wrapper.getByText('desc');
   });
 
-  it('should render a button when both ctaHref and cta are provided', () => {
+  it('should render a button when cta prop is provided', () => {
     const wrapper = render(
-      <PageHero cta="cta" ctaHref="https://codecademy.com" />
+      <PageHero cta={{ text: 'cta', href: 'https://codecademy.com' }} />
     );
     wrapper.getByText('cta');
-  });
-
-  it('should not render a button when only cta is provided', () => {
-    const wrapper = render(<PageHero cta="cta" />);
-    expect(wrapper.queryByText('cta')).not.toBeInTheDocument();
-  });
-
-  it('should not render a button when only ctaHref is provided', () => {
-    const wrapper = render(<PageHero ctaHref="https://codecademy.com" />);
-    expect(
-      wrapper.queryByText('https://codecademy.com')
-    ).not.toBeInTheDocument();
   });
 
   it('should render an img with alt="" when an imgSrc is provided', () => {

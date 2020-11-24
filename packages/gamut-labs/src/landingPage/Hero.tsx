@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { LayoutGrid, Column } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import { BaseProps } from './types';
 
 const Layout = styled(LayoutGrid)`
   padding: 0 2rem;
@@ -22,20 +23,7 @@ const Image = styled.img`
   width: 100%;
 `;
 
-export type PageHeroProps = {
-  title?: string;
-  /**
-   * Main body text (can include markdown)
-   */
-  desc?: string;
-  /**
-   * Button text
-   */
-  cta?: string;
-  /**
-   * Url to navigate to when clicking the button
-   */
-  ctaHref?: string;
+export type PageHeroProps = BaseProps & {
   /**
    * Hero image URL
    */
@@ -48,14 +36,12 @@ export type PageHeroProps = {
    * True if this is the semantic page heading (h1)
    */
   isPageHeading?: boolean;
-  testId?: string;
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
   title,
   desc,
   cta,
-  ctaHref,
   imgSrc,
   imgAlt = '',
   isPageHeading,
@@ -74,7 +60,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
         </PageSectionTitle>
       )}
       {desc && <PageSectionDescription text={desc} />}
-      {cta && ctaHref && <PageSectionCTA href={ctaHref}>{cta}</PageSectionCTA>}
+      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>

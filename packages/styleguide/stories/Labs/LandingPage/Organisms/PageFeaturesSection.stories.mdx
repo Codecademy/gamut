@@ -11,8 +11,10 @@ import { PageFeaturesSection } from '@codecademy/gamut-labs/src';
     title: 'Welcome to Codecademy',
     desc:
       "**Lorem Ipsum** is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Example link [here](#).",
-    cta: 'Click Me',
-    ctaHref: '#',
+    cta: {
+      text: 'Click Me',
+      href: '#',
+    },
     features: [
       {
         imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
@@ -46,7 +48,7 @@ import { PageFeaturesSection } from '@codecademy/gamut-labs/src';
 
 <StoryStatus status="volatile" />
 
-A features section for use in landing pages created in Contentful. Images can be icons or full size via `isIcon` prop. Consists of an array of features and optional title, description, cta, cta href, and test id.
+A features section for use in landing pages created in Contentful. Images can be icons or full size via `isIcon` prop. Consists of an array of features and optional title, description, cta, and test id.
 
 <Canvas>
   <Story name="WithImages">{(args) => <PageFeaturesSection {...args} />}</Story>
@@ -102,8 +104,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
     {(args) => (
       <PageFeaturesSection
         {...args}
-        cta={false}
-        ctaHref={false}
+        cta={undefined}
         features={[
           {
             imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
@@ -138,8 +139,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
         {...args}
         isIcon={false}
         desc={false}
-        cta={false}
-        ctaHref={false}
+        cta={undefined}
         features={[
           {
             imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
@@ -167,8 +167,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
       <PageFeaturesSection
         {...args}
         isIcon
-        cta={false}
-        ctaHref={false}
+        cta={undefined}
         features={[
           {
             imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
