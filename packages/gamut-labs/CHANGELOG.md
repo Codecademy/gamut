@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.4...@codecademy/gamut-labs@6.0.0) (2020-11-24)
 
 
@@ -10,11 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * add landing page prefooter component (#1185)
 
-### Features
+### ✨ Features
 
 * add landing page prefooter component ([#1185](https://github.com/Codecademy/client-modules/issues/1185)) ([f5aa7f6](https://github.com/Codecademy/client-modules/commit/f5aa7f6ba529dbe359bae5e654d6bc11baea9916))
-
-
 
 ### [5.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.3...@codecademy/gamut-labs@5.7.4) (2020-11-24)
 
@@ -527,3 +520,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
+
