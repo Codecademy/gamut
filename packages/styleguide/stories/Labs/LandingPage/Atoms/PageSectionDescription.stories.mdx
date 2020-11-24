@@ -1,24 +1,24 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
-import { LandingPageSectionDescription } from '@codecademy/gamut-labs/src';
+import { PageSectionDescription } from '@codecademy/gamut-labs/src';
 
 <Meta
-  title="Labs/Brand/Atoms/LandingPageSectionDescription"
-  component={LandingPageSectionDescription}
+  title="Labs/LandingPage/Atoms/PageSectionDescription"
+  component={PageSectionDescription}
   parameters={{ knobs: { escapeHTML: false } }}
 />
 
-# LandingPageSectionDescription
+# PageSectionDescription
 
 <StoryStatus status="unstable" />
 
 This is a description field used in sections on a marketing page.
 
 <Canvas withSource="open">
-  <Story name="LandingPageSectionDescription">
+  <Story name="PageSectionDescription">
     {(args) => (
-      <LandingPageSectionDescription
+      <PageSectionDescription
         text={text(
           'markdown',
           `
@@ -31,4 +31,4 @@ This is markdown
   </Story>
 </Canvas>
 
-<Props of={LandingPageSectionDescription} />
+<Props of={PageSectionDescription} />

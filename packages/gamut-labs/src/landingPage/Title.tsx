@@ -7,13 +7,13 @@ const Title = styled(Heading)`
   margin: 0;
 `;
 
-export type LandingPageSectionTitleProps = {
+export type PageSectionTitleProps = {
   isPageHeading?: boolean;
   className?: string;
   testId?: string;
 };
 
-export const LandingPageSectionTitle: React.FC<LandingPageSectionTitleProps> = ({
+export const PageSectionTitle: React.FC<PageSectionTitleProps> = ({
   isPageHeading,
   className,
   testId,
