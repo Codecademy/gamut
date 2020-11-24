@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [17.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.0...@codecademy/gamut@17.4.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* prevent VO from saying "group" for ProgressBar ([#1184](https://github.com/Codecademy/client-modules/issues/1184)) ([2b755a8](https://github.com/Codecademy/client-modules/commit/2b755a8c671720a8b6daca89edb2b379070ba2c5))
+
+
+
 ## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.11...@codecademy/gamut@17.4.0) (2020-11-20)
 
 
@@ -3182,4 +3196,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
