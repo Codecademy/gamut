@@ -31,8 +31,9 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 ### Publishing Modules
 
 1.  Make your changes in a feature branch, and get another engineer to review your code
-1.  After you've reviewed and tested your code, you can merge your branch into main.
-1.  To merge your changes, use the "squash and merge" button in github. Make sure you update the title/description of the merge to match the [commit message guide](#commit-message-guide), otherwise it will not generate a detailed changelog entry.
+1.  After your code has been reviewed and tested, you can merge your branch into main.
+1.  Make sure to update your PR title and add a short description of your changes for the changelog (see the [PR Title Guide](https://github.com/Codecademy/client-modules#pr-title-guide))
+1.  To merge your changes, add the `Ship It` label to your Pull Request.
 1.  Once your branch is merged into main, it will be published automatically by CircleCI.
 1.  You can check the main branch or CircleCI for the new version number
 
@@ -90,9 +91,11 @@ or running `yarn build-all` in this repo.
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Because we use squash merges through the Github UI, you'll need to format your PR title to match these guidelines. Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
+Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message. 
 
-This Title format will be linted in the `probot/conventional-pr-title` status check and prevent merging if you do not follow the correct format.
+Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
+
+This Title format will be linted in the `conventional-pr-title` status check and prevent merging if you do not follow the correct format.
 
 ### PR Title Format
 
@@ -125,10 +128,6 @@ feat(Button)!: :fire: Deleted the Button component
 ```
 
 Check out the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) page for more detailed options
-
-Here's an example of how the squash and merge form should look:
-
-![screen shot 2019-03-04 at 10 41 07 am](https://user-images.githubusercontent.com/6455018/53745157-79101d00-3e6c-11e9-9b5f-e35582106b31.png)
 
 **Type**
 
@@ -170,9 +169,7 @@ This will indicate to package consumers that they need to refactor their usage o
 
 Optional extra description for your changes.
 
-This goes in the description field of the squash and merge form.
-
-Make sure to clean up the default content if your listed commit messages are not adequate to describe your changes.
+This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTION -->` comment tags in the PR template.
 
 If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
 
