@@ -1,3 +1,25 @@
+## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.3...@codecademy/styleguide@19.0.0) (2020-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* add landing page prefooter component (#1185)
+
+### ✨ Features
+
+* add landing page prefooter component ([#1185](https://github.com/Codecademy/client-modules/issues/1185)) ([f5aa7f6](https://github.com/Codecademy/client-modules/commit/f5aa7f6ba529dbe359bae5e654d6bc11baea9916))
+
+### [18.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.2...@codecademy/styleguide@18.10.3) (2020-11-24)
+
+### [18.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.1...@codecademy/styleguide@18.10.2) (2020-11-24)
+
+### [18.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.0...@codecademy/styleguide@18.10.1) (2020-11-20)
+
+
+### 🐛 Bug Fixes
+
+* default img alt to "", accept isPageHeading, update tests ([#1177](https://github.com/Codecademy/client-modules/issues/1177)) ([eb2501e](https://github.com/Codecademy/client-modules/commit/eb2501e8599c3f3061ab56caef1f28985926ad9f))
+
 ## [18.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.9.0...@codecademy/styleguide@18.10.0) (2020-11-20)
 
 

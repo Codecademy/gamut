@@ -3,11 +3,8 @@ import styled from '@emotion/styled';
 
 import { LayoutGrid, Column } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import {
-  LandingPageSectionCTA,
-  LandingPageSectionTitle,
-  LandingPageSectionDescription,
-} from './';
+import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import { BaseProps } from './types';
 
 const Layout = styled(LayoutGrid)`
   padding: 0 2rem;
@@ -26,38 +23,28 @@ const Image = styled.img`
   width: 100%;
 `;
 
-export type LandingPageHeroProps = {
-  title?: string;
+export type PageHeroProps = BaseProps & {
   /**
-    Main body text (can include html)
-  */
-  desc?: string;
-  /**
-    Button text
-  */
-  cta?: string;
-  /**
-    Url to navigate to when clicking the button
-  */
-  ctaHref?: string;
-  /**
-    Hero image URL
-  */
+   * Hero image URL
+   */
   imgSrc?: string;
   /**
-    Hero image alt text (for screen readers)
-  */
+   * Hero image alt text (for screen readers)
+   */
   imgAlt?: string;
-  testId?: string;
+  /**
+   * True if this is the semantic page heading (h1)
+   */
+  isPageHeading?: boolean;
 };
 
-export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
+export const PageHero: React.FC<PageHeroProps> = ({
   title,
   desc,
   cta,
-  ctaHref,
   imgSrc,
-  imgAlt,
+  imgAlt = '',
+  isPageHeading,
   testId,
 }) => (
   <Layout testId={testId}>
@@ -68,12 +55,12 @@ export const LandingPageHero: React.FC<LandingPageHeroProps> = ({
       }}
     >
       {title && (
-        <LandingPageSectionTitle isPageHeading>{title}</LandingPageSectionTitle>
+        <PageSectionTitle isPageHeading={isPageHeading}>
+          {title}
+        </PageSectionTitle>
       )}
-      {desc && <LandingPageSectionDescription text={desc} />}
-      {cta && ctaHref && (
-        <LandingPageSectionCTA href={ctaHref}>{cta}</LandingPageSectionCTA>
-      )}
+      {desc && <PageSectionDescription text={desc} />}
+      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>

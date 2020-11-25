@@ -1,3 +1,32 @@
+## [6.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.4...@codecademy/gamut-labs@6.0.0) (2020-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* add landing page prefooter component (#1185)
+
+### ✨ Features
+
+* add landing page prefooter component ([#1185](https://github.com/Codecademy/client-modules/issues/1185)) ([f5aa7f6](https://github.com/Codecademy/client-modules/commit/f5aa7f6ba529dbe359bae5e654d6bc11baea9916))
+
+### [5.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.3...@codecademy/gamut-labs@5.7.4) (2020-11-24)
+
+### [5.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.2...@codecademy/gamut-labs@5.7.3) (2020-11-24)
+
+### [5.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.1...@codecademy/gamut-labs@5.7.2) (2020-11-20)
+
+
+### Other Changes
+
+* update flex items to grow and shrink evenly ([#1178](https://github.com/Codecademy/client-modules/issues/1178)) ([0f0c268](https://github.com/Codecademy/client-modules/commit/0f0c268af67c7fdfc5297a2beb38d5eff4b5d4d9))
+
+### [5.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.7.0...@codecademy/gamut-labs@5.7.1) (2020-11-20)
+
+
+### 🐛 Bug Fixes
+
+* default img alt to "", accept isPageHeading, update tests ([#1177](https://github.com/Codecademy/client-modules/issues/1177)) ([eb2501e](https://github.com/Codecademy/client-modules/commit/eb2501e8599c3f3061ab56caef1f28985926ad9f))
+
 ## [5.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@5.6.0...@codecademy/gamut-labs@5.7.0) (2020-11-20)
 
 
