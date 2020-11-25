@@ -42,15 +42,19 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   const Title = title && <PageSectionTitle>{title}</PageSectionTitle>;
   const Desc = desc && <PageSectionDescription text={desc} />;
 
-  return cta ? (
-    <FlexContainer nowrap column justify="spaceBetween">
-      <FlexContent>
-        {Title}
-        {Desc}
-      </FlexContent>
-      {cta?.href && cta?.text && <CTA href={cta.href}>{cta.text}</CTA>}
-    </FlexContainer>
-  ) : (
+  if (cta && cta?.href && cta?.text) {
+    return (
+      <FlexContainer nowrap column justify="spaceBetween">
+        <FlexContent>
+          {Title}
+          {Desc}
+        </FlexContent>
+        <CTA href={cta.href}>{cta.text}</CTA>
+      </FlexContainer>
+    );
+  }
+
+  return (
     <NoFlexContainer>
       {Title}
       {Desc}
