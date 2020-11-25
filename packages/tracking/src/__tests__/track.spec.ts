@@ -1,4 +1,4 @@
-import { createTracker } from './track';
+import { createTracker } from '../track';
 
 const apiBaseUrl = 'https://www.codecademy.com';
 const authToken = 'super-secure-token';
@@ -7,7 +7,7 @@ const fakeWindow = {
   location: {
     href: 'https://example.com/',
     pathname: '/',
-    search: '',
+    search: '?utm_source=twitter',
   },
   document: {
     title: 'Test Title',
@@ -43,7 +43,7 @@ describe('createTracker', () => {
 
     expect(beaconMock.mock.calls.length).toBe(1);
     expect(beaconMock.mock.calls[0][0]).toBe(
-      `${apiBaseUrl}/analytics/user?authentication_token=${authToken}`
+      `${apiBaseUrl}/analytics/user?utm_source=twitter&authentication_token=${authToken}`
     );
     const formData = beaconMock.mock.calls[0][1];
     expect(formData).toBeInstanceOf(FormData);
