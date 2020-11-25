@@ -14,7 +14,7 @@ export const MenuButton = styled(ReachMenuButton)<MenuButtonProps>`
   ${({ isExpanded }) => isExpanded && `font-weight: bold;`}
 
   &[data-focus-visible-added] {
-    box-shadow: 0 0 0 2px ${colors.black};
+    box-shadow: 0 0 0 2px ${colors.navy};
   }
 
   &:focus {
