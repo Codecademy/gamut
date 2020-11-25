@@ -29,7 +29,7 @@ env:
 jobs:
   merge-disabled:
     runs-on: ubuntu-latest
-    if: github.event.action == 'labeled'
+    if: github.event_name == 'pull_request'
     steps:
       - name: Merge Disabled
         uses: mheap/github-action-required-labels@v1
