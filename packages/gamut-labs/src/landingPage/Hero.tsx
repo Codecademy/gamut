@@ -60,7 +60,9 @@ export const PageHero: React.FC<PageHeroProps> = ({
         </PageSectionTitle>
       )}
       {desc && <PageSectionDescription text={desc} />}
-      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
+      {cta?.href && cta?.text && (
+        <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>
+      )}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>

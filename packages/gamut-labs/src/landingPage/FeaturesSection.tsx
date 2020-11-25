@@ -48,7 +48,9 @@ export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
         <PageSectionTitle isPageHeading={false}>{title}</PageSectionTitle>
       )}
       {desc && <PageSectionDescription text={desc} />}
-      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
+      {cta?.href && cta?.text && (
+        <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>
+      )}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (

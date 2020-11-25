@@ -48,7 +48,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
         {Title}
         {Desc}
       </FlexContent>
-      <CTA href={cta.href}>{cta.text}</CTA>
+      {cta?.href && cta?.text && <CTA href={cta.href}>{cta.text}</CTA>}
     </FlexContainer>
   ) : (
     <NoFlexContainer>
