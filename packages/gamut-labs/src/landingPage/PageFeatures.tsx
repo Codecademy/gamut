@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
 import { CTA, Title, Description, Feature, FeatureProps } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
-import { BaseProps } from '@codecademy/gamut-labs/src/landingPage/types';
+import { BaseProps } from './types';
 
 const Section = styled.div`
   margin: 2rem;
