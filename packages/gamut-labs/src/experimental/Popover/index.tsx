@@ -41,9 +41,7 @@ export type PopoverProps = {
   /**
    * The target element around which the popover will be positioned.
    */
-  targetRef: React.RefObject<
-    Pick<HTMLDivElement, 'getBoundingClientRect' | 'contains'>
-  >;
+  targetRef: React.RefObject<HTMLDivElement>;
 };
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -106,7 +104,13 @@ export const Popover: React.FC<PopoverProps> = ({
     <BodyPortal>
       <FocusTrap
         focusTrapOptions={{
-          clickOutsideDeactivates: true,
+          allowOutsideClick: (event) => {
+            if (!targetRef.current?.contains(event.target as Node)) {
+              onRequestClose?.();
+            }
+
+            return true;
+          },
           onDeactivate: onRequestClose,
         }}
       >
