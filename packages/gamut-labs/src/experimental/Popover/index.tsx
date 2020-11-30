@@ -2,6 +2,7 @@ import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useWindowSize, useWindowScroll } from 'react-use';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import styles from './styles.module.scss';
 import { BodyPortal } from '@codecademy/gamut';
@@ -104,32 +105,43 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <BodyPortal>
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: true,
-          onDeactivate: onRequestClose,
-        }}
-      >
-        <div
-          ref={popoverRef}
-          className={cx(
-            styles.popover,
-            styles[`${position}-${align}`],
-            outline && styles.outline,
-            className
-          )}
-          style={getPopoverPosition()}
-          data-testid="popover-content-container"
-        >
-          {showBeak && (
-            <div
-              className={cx(styles.beak, styles[`${position}-beak`])}
-              data-testid="popover-beak"
-            />
-          )}
-          {children}
-        </div>
-      </FocusTrap>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="popover"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <FocusTrap
+              focusTrapOptions={{
+                clickOutsideDeactivates: true,
+                onDeactivate: onRequestClose,
+              }}
+            >
+              <div
+                ref={popoverRef}
+                className={cx(
+                  styles.popover,
+                  styles[`${position}-${align}`],
+                  outline && styles.outline,
+                  className
+                )}
+                style={getPopoverPosition()}
+                data-testid="popover-content-container"
+              >
+                {showBeak && (
+                  <div
+                    className={cx(styles.beak, styles[`${position}-beak`])}
+                    data-testid="popover-beak"
+                  />
+                )}
+                {children}
+              </div>
+            </FocusTrap>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </BodyPortal>
   );
 };
