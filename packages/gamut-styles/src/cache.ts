@@ -1,4 +1,4 @@
-import createCache from '@emotion/cache';
+import createCache, { Options } from '@emotion/cache';
 
 export const EMOTION_KEY = 'css';
 export const EMOTION_CONTAINER = 'emotion-styles';
@@ -19,9 +19,10 @@ const getEmotionNode = () => {
   return node;
 };
 
-export const createEmotionCache = () =>
+export const createEmotionCache = (optionOverrides?: Partial<Options>) =>
   createCache({
     key: EMOTION_KEY,
-    speedy: false,
+    speedy: true,
     container: getEmotionNode(),
+    ...optionOverrides,
   });

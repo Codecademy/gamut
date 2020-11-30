@@ -1,3 +1,10 @@
+### [7.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.6...@codecademy/gamut-styles@7.4.7) (2020-11-30)
+
+
+### 🐛 Bug Fixes
+
+* **emotion:** Add emotion cache settings overrides and default speedy styles ([76e06e0](https://github.com/Codecademy/client-modules/commit/76e06e0ec78f689c99a607662c1672933d49c249))
+
 ### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
 
 ### [7.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.4...@codecademy/gamut-styles@7.4.5) (2020-11-19)
