@@ -3,23 +3,23 @@ import styled from '@emotion/styled';
 
 import { CTAButton } from '@codecademy/gamut';
 
-const CTA = styled.div`
+const CTAContainer = styled.div`
   margin: 2rem 0 0;
 `;
 
-export type PageSectionCTAProps = {
+export type CTAProps = {
   href: string;
   className?: string;
   testId?: string;
 };
 
-export const PageSectionCTA: React.FC<PageSectionCTAProps> = ({
+export const CTA: React.FC<CTAProps> = ({
   href,
   className,
   testId,
   children,
 }) => (
-  <CTA className={className} data-testid={testId}>
+  <CTAContainer className={className} data-testid={testId}>
     <CTAButton href={href}>{children}</CTAButton>
-  </CTA>
+  </CTAContainer>
 );

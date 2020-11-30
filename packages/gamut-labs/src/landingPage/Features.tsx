@@ -2,15 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import { Container } from '@codecademy/gamut';
-import {
-  PageSectionCTA,
-  PageSectionTitle,
-  PageSectionDescription,
-  PageFeature,
-  PageFeatureProps,
-} from './';
+import { CTA, Title, Description, Feature, FeatureProps } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
-import { BaseProps } from './types';
+import { BaseProps } from '@codecademy/gamut-labs/src/landingPage/types';
 
 const Section = styled.div`
   margin: 2rem;
@@ -22,11 +16,11 @@ const FlexContainer = styled(Container)`
   }
 `;
 
-export type PageFeaturesSectionProps = BaseProps & {
+export type PageFeaturesProps = BaseProps & {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: Omit<PageFeatureProps, 'isIcon'>[];
+  features: Omit<FeatureProps, 'isIcon'>[];
 
   /**
    * Whether an icon or a full size image should be rendered
@@ -34,7 +28,7 @@ export type PageFeaturesSectionProps = BaseProps & {
   isIcon?: boolean;
 };
 
-export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
+export const PageFeatures: React.FC<PageFeaturesProps> = ({
   title,
   desc,
   cta,
@@ -44,15 +38,13 @@ export const PageFeaturesSection: React.FC<PageFeaturesSectionProps> = ({
 }) => (
   <Section data-testid={testId}>
     <div>
-      {title && (
-        <PageSectionTitle isPageHeading={false}>{title}</PageSectionTitle>
-      )}
-      {desc && <PageSectionDescription text={desc} />}
-      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
+      {title && <Title isPageHeading={false}>{title}</Title>}
+      {desc && <Description text={desc} />}
+      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (
-        <PageFeature {...feature} isIcon={isIcon} key={feature.title} />
+        <Feature {...feature} isIcon={isIcon} key={feature.title} />
       ))}
     </FlexContainer>
   </Section>
