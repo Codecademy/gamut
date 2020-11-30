@@ -1,3 +1,21 @@
+### [17.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.3...@codecademy/gamut@17.4.4) (2020-11-30)
+
+### [17.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.2...@codecademy/gamut@17.4.3) (2020-11-30)
+
+### [17.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.1...@codecademy/gamut@17.4.2) (2020-11-24)
+
+
+### 🐛 Bug Fixes
+
+* **Notification:** Remove moment from notification and remove rendundancies WEB-1093 ([#1162](https://github.com/Codecademy/client-modules/issues/1162)) ([fa69aea](https://github.com/Codecademy/client-modules/commit/fa69aeace0a9f71efca92764327ef57ea25cb2a5))
+
+### [17.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.0...@codecademy/gamut@17.4.1) (2020-11-24)
+
+
+### 🐛 Bug Fixes
+
+* prevent VO from saying "group" for ProgressBar ([#1184](https://github.com/Codecademy/client-modules/issues/1184)) ([2b755a8](https://github.com/Codecademy/client-modules/commit/2b755a8c671720a8b6daca89edb2b379070ba2c5))
+
 ## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.11...@codecademy/gamut@17.4.0) (2020-11-20)
 
 
