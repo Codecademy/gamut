@@ -22,7 +22,7 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^17.4.3",
+    "@codecademy/gamut": "^17.4.4-alpha.fa53aa.0",
     "@codecademy/gamut-styles": "^7.4.7",
     "@codecademy/gamut-system": "^0.1.5",
     "classnames": "^2.2.5",

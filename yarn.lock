@@ -1579,6 +1579,28 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codecademy/gamut@^17.4.4-alpha.fa53aa.0":
+  version "17.4.4-alpha.fa53aa.0"
+  resolved "https://registry.npmjs.org/@codecademy/gamut/-/gamut-17.4.4-alpha.fa53aa.0.tgz#6a7525197f25af25126112a038aebfc776869c49"
+  integrity sha512-GHweXP1lZ1C4I9YR2W42AwPg71bVCJ2s5GcHc9ESBLDzgjtaExZ+nVMj62l/ODsNklGCpfX5GH+oF3bUgLVq4g==
+  dependencies:
+    "@codecademy/gamut-icons" "^3.11.0"
+    "@codecademy/gamut-styles" "^7.4.7"
+    "@types/marked" "^1.1.0"
+    classnames "^2.2.5"
+    focus-trap-react "^8.3.1"
+    framer-motion "^2.7.9"
+    html-to-react "^1.4.2"
+    insane "^2.6.2"
+    invariant "^2.2.4"
+    lodash "^4.17.5"
+    marked "^0.7.0"
+    react-aria-tabpanel "^4.4.0"
+    react-hook-form "6.0.6"
+    react-player "^2.3.1"
+    react-truncate-markup "^5.0.1"
+    react-use "^15.3.4"
+
 "@emotion/babel-plugin@11.0.0", "@emotion/babel-plugin@^11.0.0":
   version "11.0.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.0.0.tgz#e6f40fa81ef52775773a53d50220c597ebc5c2ef"
