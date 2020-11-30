@@ -2,6 +2,8 @@ name: automerge
 
 on:
   pull_request:
+    branches:
+      - main
     types:
       - labeled
       - unlabeled
@@ -27,6 +29,7 @@ env:
 jobs:
   merge-disabled:
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: Merge Disabled
         uses: mheap/github-action-required-labels@v1
@@ -37,7 +40,6 @@ jobs:
 
   automerge:
     runs-on: ubuntu-latest
-    needs: merge-disabled
     steps:
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
