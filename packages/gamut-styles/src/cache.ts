@@ -1,6 +1,6 @@
 import createCache, { Options } from '@emotion/cache';
 
-export const EMOTION_KEY = 'css';
+export const EMOTION_KEY = 'gamut';
 export const EMOTION_CONTAINER = 'emotion-styles';
 
 const getEmotionNode = () => {
