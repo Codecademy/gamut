@@ -1,0 +1,36 @@
+name: automerge-comment
+
+on:
+  issue_comment:
+    types: [created]
+
+env:
+  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+jobs:
+  automerge-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '/merge'
+          prefix_only: true
+          reaction: rocket
+      - uses: actions-ecosystem/action-add-labels@v1
+        if: steps.checkcomment.outputs.triggered == 'true'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          labels: "Ship It :shipit:"
+      - name: automerge
+        uses: "pascalgn/automerge-action@v0.12.0"
+        if: steps.check.outputs.triggered == 'true'
+        env:
+          MERGE_LABELS: ""
+          MERGE_REMOVE_LABELS: ""
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
+          MERGE_COMMIT_MESSAGE_REGEX: "<!--- CHANGELOG-DESCRIPTION -->(.*)<!--- END-CHANGELOG-DESCRIPTION -->"
+          MERGE_FORKS: false
+          MERGE_RETRIES: 6
+          MERGE_RETRY_SLEEP: 10000
