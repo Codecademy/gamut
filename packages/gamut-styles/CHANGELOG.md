@@ -1,16 +1,9 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ### [7.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.6...@codecademy/gamut-styles@7.4.7) (2020-11-30)
 
 
-### Bug Fixes
+### 🐛 Bug Fixes
 
 * **emotion:** Add emotion cache settings overrides and default speedy styles ([76e06e0](https://github.com/Codecademy/client-modules/commit/76e06e0ec78f689c99a607662c1672933d49c249))
-
-
 
 ### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
 
@@ -681,3 +674,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
