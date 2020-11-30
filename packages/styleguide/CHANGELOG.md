@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [19.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@19.0.0...@codecademy/styleguide@19.0.1) (2020-11-30)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.3...@codecademy/styleguide@19.0.0) (2020-11-24)
 
 
@@ -1395,4 +1408,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-
