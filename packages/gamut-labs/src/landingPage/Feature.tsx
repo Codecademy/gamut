@@ -33,7 +33,7 @@ const FeatureBlock = styled.div`
   }
 `;
 
-export type LandingPageFeatureProps = {
+export type PageFeatureProps = {
   /**
    * Whether an icon or a full size image should be rendered
    */
@@ -62,7 +62,7 @@ export type LandingPageFeatureProps = {
   testId?: string;
 };
 
-export const LandingPageFeature: React.FC<LandingPageFeatureProps> = ({
+export const PageFeature: React.FC<PageFeatureProps> = ({
   isIcon = false,
   imgSrc,
   imgAlt,
