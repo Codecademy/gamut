@@ -7,23 +7,21 @@ import { StoryStatus } from '~styleguide/blocks';
 
 # Anchors
 
-<StoryStatus status="volatile" />
+<StoryStatus status="stable" />
 
 Use this component for basic inline text links.
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
 
 <Canvas withSource="open">
-  <Story name="Anchor" args={{ as: 'a' }}>
+  <Story name="Anchor">
     {(args) => {
       return (
         <Text>
           This is a{' '}
           <Anchor
             {...args}
-            asProps={{
-              href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-              target: '_blank',
-            }}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
           >
             great video
           </Anchor>
@@ -35,5 +33,3 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
 </Canvas>
 
 <Props story="Anchor" />
-
-We know the API is a little unwieldy; we're thinking it'll get improved when we switch to CSS-in-JS...
