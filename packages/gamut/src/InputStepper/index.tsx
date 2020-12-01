@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import styles from './styles.module.scss';
-import { StepButton } from './StepButton';
 import cx from 'classnames';
+import React, { useEffect } from 'react';
+
+import { StepButton } from './StepButton';
+import styles from './styles.module.scss';
 
 export type InputStepperButtonTargets =
   | 'increase_selection'

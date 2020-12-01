@@ -1,11 +1,12 @@
 import React, { SVGProps } from 'react';
+
 import { CodecademyLogo } from './CodecademyLogo';
-import { CodecademyProLogo } from './CodecademyProLogo';
+import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';
 import { CodecademyProAltLogo } from './CodecademyProAltLogo';
 import { CodecademyProgramLogo } from './CodecademyProgramLogo';
 import { CodecademyProLockupLogo } from './CodecademyProLockupLogo';
+import { CodecademyProLogo } from './CodecademyProLogo';
 import { CodecademyProMonoLogo } from './CodecademyProMonoLogo';
-import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';
 
 const defaultProps = {
   height: 32,

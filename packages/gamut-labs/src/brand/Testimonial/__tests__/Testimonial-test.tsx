@@ -1,9 +1,9 @@
+import { VisualTheme } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
-import { VisualTheme } from '@codecademy/gamut';
 
-import { Testimonial } from '..';
 import styles from '../../styles.module.scss';
+import { Testimonial } from '..';
 
 const exampleTestmonial = {
   firstName: 'Frank',

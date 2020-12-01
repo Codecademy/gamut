@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
-import { LayoutGrid, Column } from '@codecademy/gamut';
+import { Column, LayoutGrid } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { PageSectionCTA, PageSectionDescription, PageSectionTitle } from './';
 import { BaseProps } from './types';
 
 const Layout = styled(LayoutGrid)`

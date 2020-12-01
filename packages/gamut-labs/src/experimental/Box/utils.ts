@@ -1,5 +1,6 @@
-import { css } from '@emotion/react';
 import { pxRem } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+
 import { ShadowOffset } from './types';
 
 const shadowOffset = 2;

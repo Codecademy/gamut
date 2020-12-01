@@ -1,13 +1,13 @@
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
 
 import {
+  PageFeature,
   PageFeaturesSection,
   PageFeaturesSectionProps,
   PageSectionCTA,
   PageSectionDescription,
   PageSectionTitle,
-  PageFeature,
 } from '..';
 
 const renderComponent = (overrides: Partial<PageFeaturesSectionProps> = {}) => {

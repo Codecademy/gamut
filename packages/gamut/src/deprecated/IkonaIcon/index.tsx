@@ -1,5 +1,6 @@
-import React, { PureComponent, ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { HTMLAttributes, PureComponent, ReactNode } from 'react';
+
 import s from './styles/index.module.scss';
 
 /**

@@ -1,7 +1,6 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { CTAButton } from '@codecademy/gamut';
+import styled from '@emotion/styled';
+import React from 'react';
 
 const CTA = styled.div`
   margin: 2rem 0 0;

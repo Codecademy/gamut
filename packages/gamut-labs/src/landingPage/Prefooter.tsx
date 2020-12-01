@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
-import { mediaQueries, breakpoints } from '@codecademy/gamut-styles';
+import { breakpoints, mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
 
-import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import { PageSectionCTA, PageSectionDescription, PageSectionTitle } from './';
 import { BaseProps } from './types';
 
 const NoFlexContainer = styled.div`

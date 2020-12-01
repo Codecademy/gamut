@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { colors, spacing } from '@codecademy/gamut-styles';
-import { ShadowOffset, PaddingSizes } from './types';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 import { BOX_VARIANTS, BoxVariants } from './constants';
+import { PaddingSizes, ShadowOffset } from './types';
 import { createShadowOffset } from './utils';
 
 export type BoxProps = {

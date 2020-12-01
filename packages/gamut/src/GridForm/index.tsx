@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm, FieldError, Mode, SubmitHandler } from 'react-hook-form';
+import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Form } from '../Form';
 import { LayoutGrid, LayoutGridProps } from '../Layout';

@@ -1,8 +1,9 @@
-import React, { HTMLProps, ReactNode } from 'react';
 import cx from 'classnames';
+import React, { HTMLProps, ReactNode } from 'react';
+
+import { ChildComponentDescriptor } from '../typings/react';
 import { omitProps } from '../utils/omitProps';
 import styles from './styles.module.scss';
-import { ChildComponentDescriptor } from '../typings/react';
 
 const propKeys = [
   'children',

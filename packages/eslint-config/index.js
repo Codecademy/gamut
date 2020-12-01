@@ -71,7 +71,7 @@ module.exports = {
         skipUndeclared: true,
       },
     ],
-    'simple-import-sort/sort': 'error',
+    'simple-import-sort/imports': 'error',
 
     // These rules could be useful, but we haven't gotten around to trying them out
     '@typescript-eslint/no-unsafe-member-access': 'off',

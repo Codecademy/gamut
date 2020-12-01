@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { Container } from '@codecademy/gamut';
+import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
+
 import {
-  PageSectionCTA,
-  PageSectionTitle,
-  PageSectionDescription,
   PageFeature,
   PageFeatureProps,
+  PageSectionCTA,
+  PageSectionDescription,
+  PageSectionTitle,
 } from './';
-import { mediaQueries } from '@codecademy/gamut-styles';
 import { BaseProps } from './types';
 
 const Section = styled.div`

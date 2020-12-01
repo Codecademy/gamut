@@ -1,9 +1,9 @@
+import { VisualTheme } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
-import { VisualTheme } from '@codecademy/gamut';
 
-import { Avatar } from '..';
 import styles from '../../styles.module.scss';
+import { Avatar } from '..';
 
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
