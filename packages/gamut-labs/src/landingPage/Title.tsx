@@ -1,24 +1,19 @@
 import { Heading } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
 
-const Title = styled(Heading)`
-  margin: 0;
-`;
-
-export type PageSectionTitleProps = {
+export type TitleProps = {
   isPageHeading?: boolean;
   className?: string;
   testId?: string;
 };
 
-export const PageSectionTitle: React.FC<PageSectionTitleProps> = ({
+export const Title: React.FC<TitleProps> = ({
   isPageHeading,
   className,
   testId,
   children,
 }) => (
-  <Title
+  <Heading
     as={isPageHeading ? 'h1' : 'h2'}
     fontSize={
       isPageHeading
@@ -34,7 +29,8 @@ export const PageSectionTitle: React.FC<PageSectionTitleProps> = ({
     }
     className={className}
     testId={testId}
+    hideMargin
   >
     {children}
-  </Title>
+  </Heading>
 );

@@ -2,15 +2,15 @@ import { mount } from 'enzyme';
 import React from 'react';
 
 import {
-  PageFeature,
-  PageFeaturesSection,
-  PageFeaturesSectionProps,
-  PageSectionCTA,
-  PageSectionDescription,
-  PageSectionTitle,
+  CTA,
+  Description,
+  Feature,
+  PageFeatures,
+  PageFeaturesProps,
+  Title,
 } from '..';
 
-const renderComponent = (overrides: Partial<PageFeaturesSectionProps> = {}) => {
+const renderComponent = (overrides: Partial<PageFeaturesProps> = {}) => {
   const props = {
     features: [
       {
@@ -23,30 +23,28 @@ const renderComponent = (overrides: Partial<PageFeaturesSectionProps> = {}) => {
     ...overrides,
   };
 
-  return mount(<PageFeaturesSection {...props} />);
+  return mount(<PageFeatures {...props} />);
 };
 
-describe('PageFeaturesSection', () => {
+describe('PageFeatures', () => {
   it('renders a title when title prop is provided', () => {
     const wrapper = renderComponent({ title: 'Test Title' });
-    expect(wrapper.find(PageSectionTitle).text()).toEqual('Test Title');
+    expect(wrapper.find(Title).text()).toEqual('Test Title');
   });
 
   it('does not render a title when title prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(PageSectionTitle)).toHaveLength(0);
+    expect(wrapper.find(Title)).toHaveLength(0);
   });
 
   it('renders a description when desc prop is provided', () => {
     const wrapper = renderComponent({ desc: 'Test Description' });
-    expect(wrapper.find(PageSectionDescription).prop('text')).toEqual(
-      'Test Description'
-    );
+    expect(wrapper.find(Description).prop('text')).toEqual('Test Description');
   });
 
   it('does not render a description when desc prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(PageSectionDescription)).toHaveLength(0);
+    expect(wrapper.find(Description)).toHaveLength(0);
   });
 
   it('renders a cta button when cta prop is provided', () => {
@@ -56,12 +54,12 @@ describe('PageFeaturesSection', () => {
         href: '#',
       },
     });
-    expect(wrapper.find(PageSectionCTA).text()).toEqual('Click Me');
+    expect(wrapper.find(CTA).text()).toEqual('Click Me');
   });
 
   it('does not render a cta button when cta prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(PageSectionCTA)).toHaveLength(0);
+    expect(wrapper.find(CTA)).toHaveLength(0);
   });
 
   it('renders a PageFeature component for each element in the features array prop', () => {
@@ -81,6 +79,6 @@ describe('PageFeaturesSection', () => {
         },
       ],
     });
-    expect(wrapper.find(PageFeature)).toHaveLength(2);
+    expect(wrapper.find(Feature)).toHaveLength(2);
   });
 });

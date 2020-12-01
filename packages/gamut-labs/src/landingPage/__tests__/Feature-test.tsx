@@ -1,19 +1,19 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { PageFeature, PageFeatureProps } from '..';
+import { Feature, FeatureProps } from '..';
 
-const renderComponent = (overrides: Partial<PageFeatureProps> = {}) => {
+const renderComponent = (overrides: Partial<FeatureProps> = {}) => {
   const props = {
     imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
     imgAlt: 'Codey Boba Tea',
     ...overrides,
   };
 
-  return mount(<PageFeature {...props} />);
+  return mount(<Feature {...props} />);
 };
 
-describe('PageFeature', () => {
+describe('Feature', () => {
   it('renders a title when title prop is provided', () => {
     const wrapper = renderComponent({ title: 'Test Title' });
     expect(wrapper.find('h3').text()).toEqual('Test Title');

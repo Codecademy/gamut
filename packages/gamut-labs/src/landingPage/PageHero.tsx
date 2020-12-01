@@ -3,7 +3,7 @@ import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { PageSectionCTA, PageSectionDescription, PageSectionTitle } from './';
+import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
 const Layout = styled(LayoutGrid)`
@@ -54,13 +54,9 @@ export const PageHero: React.FC<PageHeroProps> = ({
         sm: imgSrc ? 9 : 12,
       }}
     >
-      {title && (
-        <PageSectionTitle isPageHeading={isPageHeading}>
-          {title}
-        </PageSectionTitle>
-      )}
-      {desc && <PageSectionDescription text={desc} />}
-      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
+      {title && <Title isPageHeading={isPageHeading}>{title}</Title>}
+      {desc && <Description text={desc} />}
+      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>
