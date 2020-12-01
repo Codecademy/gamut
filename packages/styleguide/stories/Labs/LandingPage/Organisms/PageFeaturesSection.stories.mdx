@@ -2,11 +2,11 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
-import { PageFeaturesSection } from '@codecademy/gamut-labs/src';
+import { PageFeatures } from '@codecademy/gamut-labs/src';
 
 <Meta
-  title="Labs/LandingPage/Organisms/PageFeaturesSection"
-  component={PageFeaturesSection}
+  title="Labs/LandingPage/Organisms/PageFeatures"
+  component={PageFeatures}
   args={{
     title: 'Welcome to Codecademy',
     desc:
@@ -44,17 +44,17 @@ import { PageFeaturesSection } from '@codecademy/gamut-labs/src';
   }}
 />
 
-# PageFeaturesSection
+# PageFeatures
 
 <StoryStatus status="volatile" />
 
 A features section for use in landing pages created in Contentful. Images can be icons or full size via `isIcon` prop. Consists of an array of features and optional title, description, cta, and test id.
 
 <Canvas>
-  <Story name="WithImages">{(args) => <PageFeaturesSection {...args} />}</Story>
+  <Story name="WithImages">{(args) => <PageFeatures {...args} />}</Story>
 </Canvas>
 
-<Props story="WithImages" of={PageFeaturesSection} />
+<Props story="WithImages" of={PageFeatures} />
 
 ## Icon Images
 
@@ -63,7 +63,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
 <Canvas>
   <Story name="WithIcons">
     {(args) => (
-      <PageFeaturesSection
+      <PageFeatures
         {...args}
         isIcon
         features={[
@@ -102,7 +102,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
 <Canvas>
   <Story name="WithoutButton">
     {(args) => (
-      <PageFeaturesSection
+      <PageFeatures
         {...args}
         cta={undefined}
         features={[
@@ -135,7 +135,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
 <Canvas>
   <Story name="WithoutMainDescription">
     {(args) => (
-      <PageFeaturesSection
+      <PageFeatures
         {...args}
         isIcon={false}
         desc={false}
@@ -164,7 +164,7 @@ Small icons can be used instead of full size images by setting the `isIcon` prop
 <Canvas>
   <Story name="WithoutSubDescriptions">
     {(args) => (
-      <PageFeaturesSection
+      <PageFeatures
         {...args}
         isIcon
         cta={undefined}
