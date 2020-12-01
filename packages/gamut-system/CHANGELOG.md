@@ -1,3 +1,24 @@
+### [0.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.4...@codecademy/gamut-system@0.1.5) (2020-11-19)
+
+
+### Other Changes
+
+* Force reversioning ([#1174](https://github.com/Codecademy/client-modules/issues/1174)) ([5e6ea40](https://github.com/Codecademy/client-modules/commit/5e6ea40a2cfa43da595d766bc29960abdbb16432))
+
+### [0.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.3...@codecademy/gamut-system@0.1.4) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [0.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.2...@codecademy/gamut-system@0.1.3) (2020-11-19)
+
+
+### 🐛 Bug Fixes
+
+* **system:** Operators ([#1169](https://github.com/Codecademy/client-modules/issues/1169)) ([ccef036](https://github.com/Codecademy/client-modules/commit/ccef0368f12c099c338e0fa96249c93de2b61ccd))
+
 ### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.1...@codecademy/gamut-system@0.1.2) (2020-11-16)
 
 

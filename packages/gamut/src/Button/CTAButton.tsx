@@ -29,7 +29,8 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
         box-shadow: none;
       }
 
-      ${CTAButtonOuter}:disabled & {
+      ${CTAButtonOuter}:disabled &,
+      ${CTAButtonOuter}[aria-disabled='true'] & {
         background: ${modeColors.backgroundMuted};
         box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
         color: ${modeColors.foregroundMuted};

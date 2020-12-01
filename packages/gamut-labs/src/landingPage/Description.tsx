@@ -7,13 +7,13 @@ const Description = styled.div`
   margin: 2rem 0 0;
 `;
 
-export type LandingPageSectionDescriptionProps = {
+export type PageSectionDescriptionProps = {
   text: string;
   className?: string;
   testId?: string;
 };
 
-export const LandingPageSectionDescription: React.FC<LandingPageSectionDescriptionProps> = ({
+export const PageSectionDescription: React.FC<PageSectionDescriptionProps> = ({
   text,
   className,
   testId,

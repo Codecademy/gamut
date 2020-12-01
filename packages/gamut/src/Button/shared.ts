@@ -1,8 +1,10 @@
 import { colors, swatches } from '@codecademy/gamut-styles';
+import type { HTMLProps } from 'react';
 
-export type ButtonProps = {
-  mode?: 'dark' | 'light';
-};
+export type ButtonProps = HTMLProps<HTMLLinkElement> &
+  HTMLProps<HTMLButtonElement> & {
+    mode?: 'dark' | 'light';
+  };
 
 export const modeColorGroups = {
   dark: {

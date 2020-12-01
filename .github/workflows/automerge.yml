@@ -1,0 +1,53 @@
+name: automerge
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+  pull_request_review:
+    types:
+      - submitted
+  check_suite:
+    types:
+      - completed
+  status: {}
+
+env:
+  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Automerge Ready
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          conclusion: success
+      - name: automerge
+        uses: pascalgn/automerge-action@v0.12.0
+        env:
+          MERGE_LABELS: "Ship It :shipit:"
+          MERGE_REMOVE_LABELS: "Ship It :shipit:"
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
+          MERGE_COMMIT_MESSAGE_REGEX: "<!--- CHANGELOG-DESCRIPTION -->(.*)<!--- END-CHANGELOG-DESCRIPTION -->"
+          MERGE_FORKS: false
+          MERGE_RETRIES: 6
+          MERGE_RETRY_SLEEP: 10000
+      - name: Automerge Not Ready
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          status: in_progress

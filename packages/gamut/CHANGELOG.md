@@ -1,3 +1,50 @@
+## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.4...@codecademy/gamut@18.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* used Emotion for Anchor
+
+### ✨ Features
+
+* used Emotion for Anchor ([3d32ceb](https://github.com/Codecademy/client-modules/commit/3d32ceb1c3c242254712a50d154121d7ffa19032))
+
+### [17.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.3...@codecademy/gamut@17.4.4) (2020-11-30)
+
+### [17.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.2...@codecademy/gamut@17.4.3) (2020-11-30)
+
+### [17.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.1...@codecademy/gamut@17.4.2) (2020-11-24)
+
+
+### 🐛 Bug Fixes
+
+* **Notification:** Remove moment from notification and remove rendundancies WEB-1093 ([#1162](https://github.com/Codecademy/client-modules/issues/1162)) ([fa69aea](https://github.com/Codecademy/client-modules/commit/fa69aeace0a9f71efca92764327ef57ea25cb2a5))
+
+### [17.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.0...@codecademy/gamut@17.4.1) (2020-11-24)
+
+
+### 🐛 Bug Fixes
+
+* prevent VO from saying "group" for ProgressBar ([#1184](https://github.com/Codecademy/client-modules/issues/1184)) ([2b755a8](https://github.com/Codecademy/client-modules/commit/2b755a8c671720a8b6daca89edb2b379070ba2c5))
+
+## [17.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.11...@codecademy/gamut@17.4.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
+### [17.3.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.10...@codecademy/gamut@17.3.11) (2020-11-19)
+
+### [17.3.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.9...@codecademy/gamut@17.3.10) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [17.3.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.8...@codecademy/gamut@17.3.9) (2020-11-19)
+
 ### [17.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.7...@codecademy/gamut@17.3.8) (2020-11-17)
 
 ### [17.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.3.6...@codecademy/gamut@17.3.7) (2020-11-16)

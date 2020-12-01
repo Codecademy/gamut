@@ -26,7 +26,8 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
         color: ${modeColors.foreground};
       }
 
-      ${StrokeButtonOuter}:disabled & {
+      ${StrokeButtonOuter}:disabled &,
+      ${StrokeButtonOuter}[aria-disabled='true'] & {
         background-color: transparent;
         border-color: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};

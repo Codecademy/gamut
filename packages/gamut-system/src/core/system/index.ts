@@ -18,7 +18,7 @@ const create = <
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BASE_CONFIG, config ?? {});
+  const propGroups = merge(BASE_CONFIG, config || {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
@@ -40,8 +40,8 @@ const create = <
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
-    const variants = config?.variants ?? config;
-    const propKey = config?.prop ?? 'variant';
+    const variants = config?.variants || config;
+    const propKey = config?.prop || 'variant';
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)

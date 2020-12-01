@@ -4,16 +4,16 @@ import styled from '@emotion/styled';
 import { Heading } from '@codecademy/gamut';
 
 const Title = styled(Heading)`
-  margin: 2rem 0 0;
+  margin: 0;
 `;
 
-export type LandingPageSectionTitleProps = {
-  isPageHeading: boolean;
+export type PageSectionTitleProps = {
+  isPageHeading?: boolean;
   className?: string;
   testId?: string;
 };
 
-export const LandingPageSectionTitle: React.FC<LandingPageSectionTitleProps> = ({
+export const PageSectionTitle: React.FC<PageSectionTitleProps> = ({
   isPageHeading,
   className,
   testId,

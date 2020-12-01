@@ -1,3 +1,28 @@
+### [7.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.7...@codecademy/gamut-styles@7.4.8) (2020-11-30)
+
+
+### 🐛 Bug Fixes
+
+* **emotion:** change emotion style prefix to gamut ([50c7fb9](https://github.com/Codecademy/client-modules/commit/50c7fb90efaaa99d274ea99a7fc4d78600dded82))
+
+### [7.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.6...@codecademy/gamut-styles@7.4.7) (2020-11-30)
+
+
+### 🐛 Bug Fixes
+
+* **emotion:** Add emotion cache settings overrides and default speedy styles ([76e06e0](https://github.com/Codecademy/client-modules/commit/76e06e0ec78f689c99a607662c1672933d49c249))
+
+### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
+
+### [7.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.4...@codecademy/gamut-styles@7.4.5) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.3...@codecademy/gamut-styles@7.4.4) (2020-11-19)
+
 ### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.2...@codecademy/gamut-styles@7.4.3) (2020-11-16)
 
 ### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.1...@codecademy/gamut-styles@7.4.2) (2020-11-13)

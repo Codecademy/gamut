@@ -21,7 +21,8 @@ const FillButtonInner = styled(ButtonInner)<ButtonProps>(
         background-color: ${swatches.hyper['400']};
       }
 
-      ${FillButtonOuter}:disabled & {
+      ${FillButtonOuter}:disabled &,
+      ${FillButtonOuter}[aria-disabled='true'] & {
         background: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
         cursor: not-allowed;
