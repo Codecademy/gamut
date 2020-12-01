@@ -19,28 +19,21 @@ on:
   check_suite:
     types:
       - completed
-  status:
-  issue_comment:
-    types: [created]
+  status: {}
 
 env:
   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
 jobs:
-  merge-disabled:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Merge Disabled
-        uses: mheap/github-action-required-labels@v1
-        with:
-          mode: minimum
-          count: 1
-          labels: "Ship It :shipit:"
-
   automerge:
     runs-on: ubuntu-latest
     steps:
+      - name: Automerge Ready
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          conclusion: success
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
         env:
@@ -50,5 +43,11 @@ jobs:
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
           MERGE_COMMIT_MESSAGE_REGEX: "<!--- CHANGELOG-DESCRIPTION -->(.*)<!--- END-CHANGELOG-DESCRIPTION -->"
           MERGE_FORKS: false
-          MERGE_RETRIES: 3
+          MERGE_RETRIES: 6
           MERGE_RETRY_SLEEP: 10000
+      - name: Automerge Not Ready
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          status: in_progress
