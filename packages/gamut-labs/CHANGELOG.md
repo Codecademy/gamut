@@ -1,3 +1,10 @@
+### [6.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.3...@codecademy/gamut-labs@6.0.4) (2020-12-01)
+
+
+### 🧹 Code Refactoring
+
+* rename landing page components and remove atoms from storybook ([997607c](https://github.com/Codecademy/client-modules/commit/997607c98e749c12fcbf24d176de6a30790c37f0))
+
 ### [6.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.2...@codecademy/gamut-labs@6.0.3) (2020-12-01)
 
 ### [6.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.1...@codecademy/gamut-labs@6.0.2) (2020-11-30)
