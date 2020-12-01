@@ -1,8 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
 ## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.4...@codecademy/gamut@18.0.0) (2020-12-01)
 
 
@@ -10,11 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * used Emotion for Anchor
 
-### Features
+### ✨ Features
 
 * used Emotion for Anchor ([3d32ceb](https://github.com/Codecademy/client-modules/commit/3d32ceb1c3c242254712a50d154121d7ffa19032))
-
-
 
 ### [17.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.3...@codecademy/gamut@17.4.4) (2020-11-30)
 
@@ -3218,3 +3211,4 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
+
