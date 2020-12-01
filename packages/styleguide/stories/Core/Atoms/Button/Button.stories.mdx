@@ -17,7 +17,7 @@ import { StoryStatus } from '~styleguide/blocks';
   args={{
     children: 'Click Me',
     disabled: false,
-    mode: VisualTheme.LightMode,
+    mode: 'light',
     href: '',
   }}
   argTypes={{
@@ -25,7 +25,7 @@ import { StoryStatus } from '~styleguide/blocks';
       description: 'Visual mode',
       control: {
         type: 'select',
-        options: [VisualTheme.DarkMode, VisualTheme.LightMode],
+        options: ['dark', 'light'],
       },
     },
     href: {
