@@ -1,3 +1,10 @@
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@20.0.0...@codecademy/styleguide@20.0.1) (2020-12-01)
+
+
+### 🧹 Code Refactoring
+
+* rename landing page components and remove atoms from storybook ([997607c](https://github.com/Codecademy/client-modules/commit/997607c98e749c12fcbf24d176de6a30790c37f0))
+
 ## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@19.0.2...@codecademy/styleguide@20.0.0) (2020-12-01)
 
 
