@@ -4,12 +4,11 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const StyledButtonOutline = styled('button', {
   shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
-})<ButtonProps>(({ mode = VisualTheme.LightMode }: ButtonProps) => {
+})<ButtonProps>(({ mode = 'light' }: ButtonProps) => {
   const modeColors = modeColorGroups[mode];
 
   return css`
