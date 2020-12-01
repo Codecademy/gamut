@@ -14,33 +14,25 @@ Controlled atom component indicating a user-selectable boolean value.
 Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Canvas>
-  <Story name="Toggle">
-    {(args) => (
-      <Toggle
-        checked={boolean('checked', false)}
-        label="Toggle"
-        onChange={action('Change')}
-      />
-    )}
-  </Story>
+  <Story name="Toggle">{(args) => <Toggle {...args} />}</Story>
 </Canvas>
 
-<Props of={Toggle} />
+<Props story="Toggle" />
 
 ## Alternative Toggle
 
 This is the small size and brand purple theme.
 
 <Canvas>
-  <Story name="Alternative Toggle">
-    {(args) => (
-      <Toggle
-        checked={boolean('checked', false)}
-        label="Toggle"
-        onChange={action('Change')}
-        theme="purple"
-        size="small"
-      />
-    )}
+  <Story
+    name="Alternative Toggle"
+    args={{
+      checked: true,
+      label: 'Toggle',
+      theme: 'purple',
+      size: 'small',
+    }}
+  >
+    {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>
