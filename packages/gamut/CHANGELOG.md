@@ -1,3 +1,18 @@
+## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.4...@codecademy/gamut@18.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* used Emotion for Anchor
+
+### ✨ Features
+
+* used Emotion for Anchor ([3d32ceb](https://github.com/Codecademy/client-modules/commit/3d32ceb1c3c242254712a50d154121d7ffa19032))
+
+### [17.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.3...@codecademy/gamut@17.4.4) (2020-11-30)
+
+### [17.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.2...@codecademy/gamut@17.4.3) (2020-11-30)
+
 ### [17.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.1...@codecademy/gamut@17.4.2) (2020-11-24)
 
 
