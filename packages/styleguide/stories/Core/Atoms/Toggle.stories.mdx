@@ -1,10 +1,12 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { action } from '@storybook/addon-actions';
-import { boolean } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 import { Toggle } from '@codecademy/gamut/src';
 
-<Meta title="Atoms/Toggle" component={Toggle} />
+<Meta
+  title="Atoms/Toggle"
+  component={Toggle}
+  args={{ checked: true, label: 'Toggle' }}
+/>
 
 # Toggle
 
@@ -27,8 +29,6 @@ This is the small size and brand purple theme.
   <Story
     name="Alternative Toggle"
     args={{
-      checked: true,
-      label: 'Toggle',
       theme: 'purple',
       size: 'small',
     }}
