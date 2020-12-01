@@ -1,3 +1,14 @@
+## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@18.0.0...@codecademy/gamut@19.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace VisualTheme enum with string type union (#1166)
+
+### Other Changes
+
+* replace VisualTheme enum with string type union ([#1166](https://github.com/Codecademy/client-modules/issues/1166)) ([30827e3](https://github.com/Codecademy/client-modules/commit/30827e3f47610b074f23cc51f3ab51dbb55bc609))
+
 ## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@17.4.4...@codecademy/gamut@18.0.0) (2020-12-01)
 
 

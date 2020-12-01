@@ -13,18 +13,16 @@ type QuoteProps = {
 
 export const Quote: React.FC<QuoteProps> = ({
   text,
-  theme = VisualTheme.LightMode,
+  theme = 'light',
   classNames = {},
 }) => (
   <div
     className={cx(
-      theme === VisualTheme.DarkMode
-        ? styles.darkContainer
-        : styles.lightContainer
+      theme === 'dark' ? styles.darkContainer : styles.lightContainer
     )}
   >
     <img
-      src={theme === VisualTheme.DarkMode ? purpleQuotes : orangeQuotes}
+      src={theme === 'dark' ? purpleQuotes : orangeQuotes}
       alt=""
       className={cx(styles.icon, classNames.icon)}
     />
