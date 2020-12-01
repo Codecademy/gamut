@@ -1,15 +1,12 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { VisualTheme } from '../../theming/VisualTheme';
 import { ToolTip } from '..';
 import styles from '../styles.module.scss';
 
 describe('ToolTip', () => {
   it('adds the dark class to the container name when its theme is dark', () => {
-    const wrapper = mount(
-      <ToolTip id="test-id" theme={VisualTheme.DarkMode} />
-    );
+    const wrapper = mount(<ToolTip id="test-id" theme="dark" />);
 
     const containerClassName = wrapper
       .find({ role: 'tooltip' })
@@ -19,9 +16,7 @@ describe('ToolTip', () => {
   });
 
   it('adds the light class to the container name when its theme is light', () => {
-    const wrapper = mount(
-      <ToolTip id="test-id" theme={VisualTheme.LightMode} />
-    );
+    const wrapper = mount(<ToolTip id="test-id" theme="light" />);
 
     const containerClassName = wrapper
       .find({ role: 'tooltip' })
