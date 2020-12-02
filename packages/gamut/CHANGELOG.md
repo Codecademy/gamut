@@ -1,3 +1,10 @@
+### [19.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.1...@codecademy/gamut@19.0.2) (2020-12-02)
+
+
+### 🐛 Bug Fixes
+
+* prevent VO from reading Close Icon in Alert ([#1197](https://github.com/Codecademy/client-modules/issues/1197)) ([5c0fec3](https://github.com/Codecademy/client-modules/commit/5c0fec3b98ba39dabc8472209613a4afd1ca9ac7))
+
 ### [19.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.0...@codecademy/gamut@19.0.1) (2020-12-01)
 
 

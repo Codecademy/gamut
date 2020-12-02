@@ -1,3 +1,10 @@
+### [7.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.1...@codecademy/gamut-labs@7.0.2) (2020-12-02)
+
+
+### 🐛 Bug Fixes
+
+* use relative import for ProLogoAlt test ([#1201](https://github.com/Codecademy/client-modules/issues/1201)) ([3ab6963](https://github.com/Codecademy/client-modules/commit/3ab69632a3603403f2febe93b197d336443955ad))
+
 ### [7.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.0...@codecademy/gamut-labs@7.0.1) (2020-12-01)
 
 
