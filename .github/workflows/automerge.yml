@@ -41,6 +41,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: automerge-ready
     steps:
+      - name: Wait for CI build
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build-test
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
         with:
