@@ -5,6 +5,7 @@ import { Markdown } from '@codecademy/gamut';
 
 const DescriptionContainer = styled.div`
   margin: 2rem 0 0;
+  max-width: 38rem;
 `;
 
 export type DescriptionProps = {
