@@ -105,7 +105,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <AnimatePresence>
-      {isOpen && targetRef && (
+      {isOpen && !!targetRef && (
         <BodyPortal>
           <FocusTrap
             focusTrapOptions={{
