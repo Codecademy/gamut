@@ -33,7 +33,7 @@ const FeatureBlock = styled.div`
   }
 `;
 
-export type PageFeatureProps = {
+export type FeatureProps = {
   /**
    * Whether an icon or a full size image should be rendered
    */
@@ -47,7 +47,7 @@ export type PageFeatureProps = {
   /**
    * Feature image alt text (for screen readers)
    */
-  imgAlt: string;
+  imgAlt?: string;
 
   /**
    * Feature title text
@@ -62,10 +62,10 @@ export type PageFeatureProps = {
   testId?: string;
 };
 
-export const PageFeature: React.FC<PageFeatureProps> = ({
-  isIcon = false,
+export const Feature: React.FC<FeatureProps> = ({
+  isIcon,
   imgSrc,
-  imgAlt,
+  imgAlt = '',
   title,
   desc,
   testId,

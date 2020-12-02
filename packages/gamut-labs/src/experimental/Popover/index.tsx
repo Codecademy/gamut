@@ -106,7 +106,13 @@ export const Popover: React.FC<PopoverProps> = ({
     <BodyPortal>
       <FocusTrap
         focusTrapOptions={{
-          clickOutsideDeactivates: true,
+          allowOutsideClick: (event) => {
+            if (!targetRef.current?.contains(event.target as Node)) {
+              onRequestClose?.();
+            }
+
+            return true;
+          },
           onDeactivate: onRequestClose,
         }}
       >

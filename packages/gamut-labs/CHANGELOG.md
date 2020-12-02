@@ -1,3 +1,28 @@
+### [7.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.0...@codecademy/gamut-labs@7.0.1) (2020-12-01)
+
+
+### 🐛 Bug Fixes
+
+* **Popover:** Switch Popover to use allowOutsideClick ([#1194](https://github.com/Codecademy/client-modules/issues/1194)) ([8becd84](https://github.com/Codecademy/client-modules/commit/8becd8421b57928cff569088f06303ba51697195))
+
+## [7.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.4...@codecademy/gamut-labs@7.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace VisualTheme enum with string type union (#1166)
+
+### Other Changes
+
+* replace VisualTheme enum with string type union ([#1166](https://github.com/Codecademy/client-modules/issues/1166)) ([30827e3](https://github.com/Codecademy/client-modules/commit/30827e3f47610b074f23cc51f3ab51dbb55bc609))
+
+### [6.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.3...@codecademy/gamut-labs@6.0.4) (2020-12-01)
+
+
+### 🧹 Code Refactoring
+
+* rename landing page components and remove atoms from storybook ([997607c](https://github.com/Codecademy/client-modules/commit/997607c98e749c12fcbf24d176de6a30790c37f0))
+
 ### [6.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.2...@codecademy/gamut-labs@6.0.3) (2020-12-01)
 
 ### [6.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@6.0.1...@codecademy/gamut-labs@6.0.2) (2020-11-30)
