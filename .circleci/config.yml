@@ -298,7 +298,9 @@ workflows:
       - queue/block_workflow:
           only-on-branch: main
           time: '10'
-      - checkout_code
+      - checkout_code:
+          requires:
+           - queue/block_workflow
       - tests:
           requires:
             - checkout_code
