@@ -56,7 +56,9 @@ export const createTracker = (
       console.groupEnd();
     }
 
-    beacon(`/analytics/${category}`, {
+    // This allows the UTM query params to get registered in the user session.
+    const queryParams = window.location.search;
+    beacon(`/analytics/${category}${queryParams}`, {
       category,
       event,
       properties: JSON.stringify(properties),

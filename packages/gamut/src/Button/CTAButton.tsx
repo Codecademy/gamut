@@ -3,13 +3,12 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -30,7 +29,8 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
         box-shadow: none;
       }
 
-      ${CTAButtonOuter}:disabled & {
+      ${CTAButtonOuter}:disabled &,
+      ${CTAButtonOuter}[aria-disabled='true'] & {
         background: ${modeColors.backgroundMuted};
         box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
         color: ${modeColors.foregroundMuted};

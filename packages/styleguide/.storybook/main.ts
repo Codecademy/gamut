@@ -22,6 +22,7 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
+    './addons/system/preset',
   ],
   stories: ['../stories/**/*.stories.(mdx|tsx)'],
 
@@ -52,7 +53,7 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
-        '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
+        '~styleguide/blocks': path.resolve(__dirname, './components/'),
       },
     };
 

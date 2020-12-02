@@ -2,14 +2,13 @@ import { colors } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
-import { VisualTheme } from '../theming/VisualTheme';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -23,13 +22,12 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${mode === VisualTheme.LightMode
-          ? colors.hyper
-          : colors.yellow};
+        background: ${mode === 'light' ? colors.hyper : colors.yellow};
         color: ${modeColors.foreground};
       }
 
-      ${StrokeButtonOuter}:disabled & {
+      ${StrokeButtonOuter}:disabled &,
+      ${StrokeButtonOuter}[aria-disabled='true'] & {
         background-color: transparent;
         border-color: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};

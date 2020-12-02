@@ -1,0 +1,191 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { action } from '@storybook/addon-actions';
+import { select, text } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+import { PageFeatures } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/LandingPage/Organisms/PageFeatures"
+  component={PageFeatures}
+  args={{
+    title: 'Welcome to Codecademy',
+    desc:
+      "**Lorem Ipsum** is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Example link [here](#).",
+    cta: {
+      text: 'Click Me',
+      href: '#',
+    },
+    features: [
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Software Engineer',
+        desc: '**Software Engineer**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Data Scientist',
+        desc: '**Data Scientist**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Product Manager',
+        desc: '**Product Manager**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Product Designer',
+        desc: '**Product Designer**. Example link [here](#).',
+      },
+    ],
+  }}
+/>
+
+# PageFeatures
+
+<StoryStatus status="volatile" />
+
+A features section for use in landing pages created in Contentful. Images can be icons or full size via `isIcon` prop. Consists of an array of features and optional title, description, cta, and test id.
+
+<Canvas>
+  <Story name="WithImages">{(args) => <PageFeatures {...args} />}</Story>
+</Canvas>
+
+<Props story="WithImages" of={PageFeatures} />
+
+## Icon Images
+
+Small icons can be used instead of full size images by setting the `isIcon` prop to `true`.
+
+<Canvas>
+  <Story name="WithIcons">
+    {(args) => (
+      <PageFeatures
+        {...args}
+        isIcon
+        features={[
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Software Engineer',
+            desc: '**Software Engineer**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Data Scientist',
+            desc: '**Data Scientist**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Product Manager',
+            desc: '**Product Manager**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Product Designer',
+            desc: '**Product Designer**. Example link [here](#).',
+          },
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Without Button
+
+<Canvas>
+  <Story name="WithoutButton">
+    {(args) => (
+      <PageFeatures
+        {...args}
+        cta={undefined}
+        features={[
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Software Engineer',
+            desc: '**Software Engineer**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Data Scientist',
+            desc: '**Data Scientist**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Product Manager',
+            desc: '**Product Manager**. Example link [here](#).',
+          },
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Without Main Description
+
+<Canvas>
+  <Story name="WithoutMainDescription">
+    {(args) => (
+      <PageFeatures
+        {...args}
+        isIcon={false}
+        desc={false}
+        cta={undefined}
+        features={[
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Software Engineer',
+            desc: '**Software Engineer**. Example link [here](#).',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Data Scientist',
+            desc: '**Data Scientist**. Example link [here](#).',
+          },
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Without Feature Descriptions
+
+<Canvas>
+  <Story name="WithoutSubDescriptions">
+    {(args) => (
+      <PageFeatures
+        {...args}
+        isIcon
+        cta={undefined}
+        features={[
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Software Engineer',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Data Scientist',
+          },
+          {
+            imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+            imgAlt: 'Codey boba tea',
+            title: 'Product Manager',
+          },
+        ]}
+      />
+    )}
+  </Story>
+</Canvas>

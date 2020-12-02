@@ -1,3 +1,10 @@
+### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.1...@codecademy/tracking@0.1.2) (2020-11-25)
+
+
+### 🐛 Bug Fixes
+
+* Add query params to tracking calls ([#1189](https://github.com/Codecademy/client-modules/issues/1189)) ([02438ae](https://github.com/Codecademy/client-modules/commit/02438ae4fbad0130b8ef3e8de3a22f07922c9eed))
+
 ### [0.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.0...@codecademy/tracking@0.1.1) (2020-10-23)
 
 

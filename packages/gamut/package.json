@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "17.3.7",
+  "version": "19.0.3",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -16,24 +16,23 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.0.0-rc.0",
-    "@emotion/styled": "^11.0.0-rc.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
     "react": ">=16.8.1",
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut-icons": "^3.10.1",
-    "@codecademy/gamut-styles": "^7.4.3",
+    "@codecademy/gamut-icons": "^3.11.1",
+    "@codecademy/gamut-styles": "^7.4.8",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
-    "focus-trap-react": "^6.0.0",
+    "focus-trap-react": "^8.3.1",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
     "insane": "^2.6.2",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
-    "moment": "^2.24.0",
     "react-aria-tabpanel": "^4.4.0",
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",

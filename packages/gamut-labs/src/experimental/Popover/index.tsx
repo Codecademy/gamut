@@ -1,7 +1,7 @@
 import cx from 'classnames';
+import FocusTrap from 'focus-trap-react';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize, useClickAway, useWindowScroll } from 'react-use';
-import { useHotkeys } from 'react-hotkeys-hook';
+import { useWindowSize, useWindowScroll } from 'react-use';
 
 import styles from './styles.module.scss';
 import { BodyPortal } from '@codecademy/gamut';
@@ -80,16 +80,6 @@ export const Popover: React.FC<PopoverProps> = ({
     };
   }, [targetRect, offset, align, position]);
 
-  const handleClickOutside = (event: MouseEvent | KeyboardEvent) => {
-    if (!isOpen) return;
-    if (
-      !targetRef?.current?.contains(event.target as Element) ||
-      event.type === 'keydown'
-    ) {
-      onRequestClose?.();
-    }
-  };
-
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
   }, [targetRef, isOpen, width, height, x, y]);
@@ -109,32 +99,43 @@ export const Popover: React.FC<PopoverProps> = ({
   }, [targetRect, isInViewport, onRequestClose]);
 
   const popoverRef = useRef<HTMLDivElement>(null);
-  useClickAway(popoverRef, handleClickOutside);
-  useHotkeys('escape', handleClickOutside, {}, [targetRect]);
 
   if (!isOpen || !targetRef) return null;
 
   return (
     <BodyPortal>
-      <div
-        ref={popoverRef}
-        className={cx(
-          styles.popover,
-          styles[`${position}-${align}`],
-          outline && styles.outline,
-          className
-        )}
-        style={getPopoverPosition()}
-        data-testid="popover-content-container"
+      <FocusTrap
+        focusTrapOptions={{
+          allowOutsideClick: (event) => {
+            if (!targetRef.current?.contains(event.target as Node)) {
+              onRequestClose?.();
+            }
+
+            return true;
+          },
+          onDeactivate: onRequestClose,
+        }}
       >
-        {showBeak && (
-          <div
-            className={cx(styles.beak, styles[`${position}-beak`])}
-            data-testid="popover-beak"
-          />
-        )}
-        {children}
-      </div>
+        <div
+          ref={popoverRef}
+          className={cx(
+            styles.popover,
+            styles[`${position}-${align}`],
+            outline && styles.outline,
+            className
+          )}
+          style={getPopoverPosition()}
+          data-testid="popover-content-container"
+        >
+          {showBeak && (
+            <div
+              className={cx(styles.beak, styles[`${position}-beak`])}
+              data-testid="popover-beak"
+            />
+          )}
+          {children}
+        </div>
+      </FocusTrap>
     </BodyPortal>
   );
 };

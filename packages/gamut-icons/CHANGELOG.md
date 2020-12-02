@@ -1,3 +1,17 @@
+### [3.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.11.0...@codecademy/gamut-icons@3.11.1) (2020-12-02)
+
+
+### 🐛 Bug Fixes
+
+* color defined by props in Favicon  ([b3772c2](https://github.com/Codecademy/client-modules/commit/b3772c279d1f2a607dc3a18dfe74f9ab5b52e5e1))
+
+## [3.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.10.1...@codecademy/gamut-icons@3.11.0) (2020-11-17)
+
+
+### ✨ Features
+
+* **Icon:** added two icons  ([#1157](https://github.com/Codecademy/client-modules/issues/1157)) ([42ba202](https://github.com/Codecademy/client-modules/commit/42ba202075433a7b3315a8f6aad97c4b4f054f90))
+
 ### [3.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.10.0...@codecademy/gamut-icons@3.10.1) (2020-11-05)
 
 

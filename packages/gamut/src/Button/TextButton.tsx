@@ -2,13 +2,12 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { VisualTheme } from '../theming/VisualTheme';
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const TextButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -24,7 +23,8 @@ const TextButtonInner = styled(ButtonInner)<ButtonProps>(
         color: ${modeColors.background};
       }
 
-      ${TextButtonOuter}:disabled & {
+      ${TextButtonOuter}:disabled &,
+      ${TextButtonOuter}[aria-disabled='true'] & {
         background-color: transparent;
         color: ${modeColors.foregroundMuted};
         cursor: not-allowed;

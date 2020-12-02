@@ -1,0 +1,45 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { PageHero } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/LandingPage/Organisms/PageHero"
+  component={PageHero}
+  args={{
+    title:
+      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    desc:
+      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+    cta: {
+      text: 'Supernatural',
+      href:
+        'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+    },
+    imgSrc:
+      'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
+    imgAlt:
+      'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+  }}
+/>
+
+# PageHero
+
+<StoryStatus status="volatile" />
+
+Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.
+
+### With CTA
+
+<Canvas withSource="open">
+  <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
+</Canvas>
+
+<Props story="With CTA" of={PageHero} />
+
+### Without CTA
+
+<Canvas withSource="open">
+  <Story name="Without CTA">
+    {(args) => <PageHero {...args} cta={undefined} />}
+  </Story>
+</Canvas>
