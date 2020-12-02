@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [7.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.1...@codecademy/gamut-labs@7.0.2) (2020-12-02)
+
+
+### Bug Fixes
+
+* use relative import for ProLogoAlt test ([#1201](https://github.com/Codecademy/client-modules/issues/1201)) ([3ab6963](https://github.com/Codecademy/client-modules/commit/3ab69632a3603403f2febe93b197d336443955ad))
+
+
+
 ### [7.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.0...@codecademy/gamut-labs@7.0.1) (2020-12-01)
 
 
@@ -551,4 +565,3 @@
 ### Other Changes
 
 * Repurposed and renamed brand-components into gamut-labs ⚗️ ([#797](https://github.com/Codecademy/client-modules/issues/797)) ([d1aaabf](https://github.com/Codecademy/client-modules/commit/d1aaabf0ebefc0a4a7c0e83e803e1117bf60747d))
-
