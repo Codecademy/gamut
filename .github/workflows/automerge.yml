@@ -30,6 +30,7 @@ env:
 jobs:
   automerge-ready:
     runs-on: ubuntu-latest
+    if: github.base_ref == 'main'
     steps:
       - name: Automerge Ready
         uses: LouisBrunner/checks-action@v1.1.1
@@ -40,6 +41,7 @@ jobs:
   automerge:
     runs-on: ubuntu-latest
     needs: automerge-ready
+    if: github.base_ref == 'main'
     steps:
       - name: Wait for CI build
         uses: fountainhead/action-wait-for-check@v1.0.0
