@@ -48,6 +48,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: build-test
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 1200
+          intervalSeconds: 30
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
         with:
