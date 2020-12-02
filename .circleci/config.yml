@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+  queue: eddiewebb/queue@1.5.0
 
 references:
   default_env: &default_env
@@ -294,6 +295,9 @@ workflows:
   version: 2
   build-test:
     jobs:
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
       - checkout_code
       - tests:
           requires:
