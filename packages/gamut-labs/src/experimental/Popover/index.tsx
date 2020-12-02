@@ -101,23 +101,24 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const popoverRef = useRef<HTMLDivElement>(null);
 
-  if (!isOpen || !targetRef) return null;
+  // if (!isOpen || !targetRef) return null;
 
   return (
-    <BodyPortal>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            key="popover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+    <AnimatePresence>
+      {isOpen && (
+        <BodyPortal>
+          <FocusTrap
+            focusTrapOptions={{
+              clickOutsideDeactivates: true,
+              onDeactivate: onRequestClose,
+            }}
           >
-            <FocusTrap
-              focusTrapOptions={{
-                clickOutsideDeactivates: true,
-                onDeactivate: onRequestClose,
-              }}
+            <motion.div
+              key="popover"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
               <div
                 ref={popoverRef}
@@ -136,12 +137,13 @@ export const Popover: React.FC<PopoverProps> = ({
                     data-testid="popover-beak"
                   />
                 )}
+
                 {children}
               </div>
-            </FocusTrap>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </BodyPortal>
+            </motion.div>
+          </FocusTrap>
+        </BodyPortal>
+      )}
+    </AnimatePresence>
   );
 };
