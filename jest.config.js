@@ -34,7 +34,7 @@ module.exports = {
       '<rootDir>/packages/styleguide/node_modules/@storybook/addon-docs/jest-transform-mdx',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
-  testRegex: '\\-test\\.(j|t)sx?$',
+  testRegex: '\\(\\.spec|-test)\\.(j|t)sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
   collectCoverageFrom: ['packages/**/*.{js,jsx,ts,tsx}'],

@@ -115,7 +115,6 @@ jobs:
     steps:
       - checkout
       - *restore_built_packages
-      - run: yarn --production=false --frozen-lockfile
       - run:
           name: Verify Prettier
           command: yarn format:verify
@@ -150,8 +149,9 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            TESTFILES=$(circleci tests glob "**/*{.spec,-test}.{jsx,tsx,js,ts}" | circleci tests split)
-            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
+            export TESTFILES=$(circleci tests glob "**/*{.spec,-test}.{jsx,tsx,js,ts}" | circleci tests split)
+            export JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest"
+            yarn test --ci --runInBand ${TESTFILES} --coverage
       - store_test_results:
           path: /tmp/test-results
       - codecov/upload:
