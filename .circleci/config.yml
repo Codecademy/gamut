@@ -13,19 +13,21 @@ references:
       NODE_OPTIONS: '--max_old_space_size=4096'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ arch}}-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v2-repo-{{ arch}}-main
+  yarn_cache_key_1: &yarn_cache_key_1 v1-yarn-{{ arch}}-{{ checksum "yarn.lock" }}
 
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
-  restore_repo: &restore_repo
+  restore_yarn_cache: &restore_yarn_cache
     restore_cache:
       keys:
-        - *repo_cache_key_1
-        - *repo_cache_key_2
-        - *repo_cache_key_3
+        - *yarn_cache_key_1
+
+  save_yarn_cache: &save_yarn_cache
+    save_cache:
+      key: *yarn_cache_key_1
+      paths:
+        - ~/.cache/yarn
 
   restore_webpack_cache: &restore_webpack_cache
     restore_cache:
@@ -39,6 +41,17 @@ references:
       paths:
         - node_modules/.cache
         - packages/styleguide/node_modules/.cache
+
+  save_built_packages: &save_built_packages
+    persist_to_workspace:
+      root: ~/repo
+      paths:
+        - node_modules
+        - packages
+
+  restore_built_packages: &restore_built_packages
+    attach_workspace:
+      at: ~/repo
 
   set_git_user: &set_git_user
     run:
@@ -80,25 +93,29 @@ jobs:
   checkout_code:
     <<: *default_env
     steps:
-      - *restore_repo
       - checkout
       - *set_npm_token
+      - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
+      - *save_yarn_cache
+      - *save_built_packages
+
+  build_changed_packages:
+    <<: *default_env
+    steps:
+      - checkout
+      - *restore_built_packages
       - run:
           name: Run all builds
-          command: yarn build-all
-      - run:
-          name: Clean up garbage
-          command: git gc
-      - save_cache:
-          key: *repo_cache_key_1
-          paths:
-            - .
+          command: yarn build-all --since main --include-dependencies
+      - *save_built_packages
 
   verify_formatting:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_built_packages
+      - run: yarn --production=false --frozen-lockfile
       - run:
           name: Verify Prettier
           command: yarn format:verify
@@ -106,7 +123,8 @@ jobs:
   verify_linting:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_built_packages
       - run:
           name: Verify ESLint
           command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
@@ -116,7 +134,8 @@ jobs:
   verify_packages:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_built_packages
       - run:
           name: Verify Packages
           command: yarn verify-all
@@ -126,7 +145,8 @@ jobs:
     parallelism: 4
     resource_class: large
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_built_packages
       - run:
           name: Run test suite
           command: |
@@ -145,8 +165,8 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_built_packages
       - *set_npm_token
       - run:
           name: Lerna Publish
@@ -159,8 +179,8 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_built_packages
       - *set_npm_token
       - run:
           name: Lerna Publish
@@ -173,8 +193,8 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_built_packages
       - *restore_webpack_cache
       - run:
           name: build packages
@@ -195,8 +215,8 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_built_packages
       - *restore_webpack_cache
       - run:
           name: build packages
@@ -244,8 +264,8 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_built_packages
       - *set_npm_token
       - run:
           name: lerna publish (alpha)
@@ -282,9 +302,12 @@ workflows:
       - checkout_code:
           requires:
            - queue/block_workflow
-      - tests:
+      - build_changed_packages:
           requires:
             - checkout_code
+      - tests:
+          requires:
+            - build_changed_packages
       - verify_linting:
           requires:
             - checkout_code
@@ -296,7 +319,7 @@ workflows:
             - checkout_code
       - publish:
           requires:
-            - checkout_code
+            - build_changed_packages
           filters:
             branches:
               only: main
@@ -308,7 +331,7 @@ workflows:
               only: main
       - publish_next:
           requires:
-            - checkout_code
+            - build_changed_packages
           filters:
             branches:
               only: next
@@ -320,7 +343,7 @@ workflows:
                 - next
                 - gh-pages
           requires:
-            - checkout_code
+            - build_changed_packages
       - deploy_alpha:
           filters:
             branches:
