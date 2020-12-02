@@ -19,6 +19,9 @@ on:
   check_suite:
     types:
       - completed
+  check_run:
+    types:
+      - completed
   status: {}
 
 env:
@@ -42,7 +45,7 @@ jobs:
         uses: pascalgn/automerge-action@v0.12.0
         env:
           MERGE_LABELS: "Ship It :shipit:"
-          UPDATE_LABELS: "Ship It :shipit:"
+          UPDATE_LABELS: "-disable-updating-from-action-"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"
           MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
