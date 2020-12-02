@@ -1,3 +1,10 @@
+### [21.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.3...@codecademy/styleguide@21.0.4) (2020-12-02)
+
+
+### Other Changes
+
+* **Styleguide:** add args to toggle story ([d6e6858](https://github.com/Codecademy/client-modules/commit/d6e6858bdb5aecf99a901a7738868afcc191deca))
+
 ### [21.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.2...@codecademy/styleguide@21.0.3) (2020-12-02)
 
 ### [21.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.1...@codecademy/styleguide@21.0.2) (2020-12-02)
