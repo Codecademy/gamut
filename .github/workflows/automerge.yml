@@ -19,36 +19,56 @@ on:
   check_suite:
     types:
       - completed
-  status:
-  issue_comment:
-    types: [created]
+  check_run:
+    types:
+      - completed
+  status: {}
 
 env:
   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
 jobs:
-  merge-disabled:
+  automerge-ready:
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+    if: github.ref != 'refs/heads/main'
     steps:
-      - name: Merge Disabled
-        uses: mheap/github-action-required-labels@v1
+      - name: Automerge Ready
+        uses: LouisBrunner/checks-action@v1.1.1
         with:
-          mode: minimum
-          count: 1
-          labels: "Ship It :shipit:"
-
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          conclusion: success
   automerge:
     runs-on: ubuntu-latest
+    needs: automerge-ready
+    if: github.ref != 'refs/heads/main'
     steps:
+      - name: Wait for CI build
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build-test
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 1200
+          intervalSeconds: 30
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
+        with:
+          args: "--trace"
         env:
           MERGE_LABELS: "Ship It :shipit:"
+          UPDATE_LABELS: "-disable-updating-from-action-"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"
           MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
           MERGE_COMMIT_MESSAGE_REGEX: "<!--- CHANGELOG-DESCRIPTION -->(.*)<!--- END-CHANGELOG-DESCRIPTION -->"
           MERGE_FORKS: false
-          MERGE_RETRIES: 3
+          MERGE_RETRIES: 6
           MERGE_RETRY_SLEEP: 10000
+      - name: Automerge Not Ready
+        uses: LouisBrunner/checks-action@v1.1.1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Automerge Ready
+          status: in_progress

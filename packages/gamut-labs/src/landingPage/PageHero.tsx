@@ -3,13 +3,8 @@ import styled from '@emotion/styled';
 
 import { LayoutGrid, Column } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import { PageSectionCTA, PageSectionTitle, PageSectionDescription } from './';
+import { CTA, Title, Description } from './';
 import { BaseProps } from './types';
-
-const Layout = styled(LayoutGrid)`
-  padding: 0 2rem;
-  margin: 2rem 0;
-`;
 
 const RightColumn = styled(Column)`
   margin-left: 1rem;
@@ -32,10 +27,6 @@ export type PageHeroProps = BaseProps & {
    * Hero image alt text (for screen readers)
    */
   imgAlt?: string;
-  /**
-   * True if this is the semantic page heading (h1)
-   */
-  isPageHeading?: boolean;
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -44,28 +35,23 @@ export const PageHero: React.FC<PageHeroProps> = ({
   cta,
   imgSrc,
   imgAlt = '',
-  isPageHeading,
   testId,
 }) => (
-  <Layout testId={testId}>
+  <LayoutGrid testId={testId}>
     <Column
       size={{
         xs: 12,
         sm: imgSrc ? 9 : 12,
       }}
     >
-      {title && (
-        <PageSectionTitle isPageHeading={isPageHeading}>
-          {title}
-        </PageSectionTitle>
-      )}
-      {desc && <PageSectionDescription text={desc} />}
-      {cta && <PageSectionCTA href={cta.href}>{cta.text}</PageSectionCTA>}
+      {title && <Title isPageHeading>{title}</Title>}
+      {desc && <Description text={desc} />}
+      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>
         <Image src={imgSrc} alt={imgAlt} />
       </RightColumn>
     )}
-  </Layout>
+  </LayoutGrid>
 );

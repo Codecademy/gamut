@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+  queue: eddiewebb/queue@1.5.0
 
 references:
   default_env: &default_env
@@ -129,7 +130,7 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            TESTFILES=$(circleci tests glob "**/*(.spec|-test).{jsx,tsx,js,ts}" | circleci tests split)
+            TESTFILES=$(circleci tests glob "**/*{.spec,-test}.{jsx,tsx,js,ts}" | circleci tests split)
             JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
       - store_test_results:
           path: /tmp/test-results
@@ -294,7 +295,12 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - checkout_code
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
+      - checkout_code:
+          requires:
+           - queue/block_workflow
       - tests:
           requires:
             - checkout_code
