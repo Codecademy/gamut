@@ -127,7 +127,7 @@ export const Alert: React.FC<AlertProps> = ({
               aria-label="Close Alert"
               onClick={onClose}
             >
-              <CloseIcon size={12} />
+              <CloseIcon aria-hidden size={12} />
             </ButtonDeprecatedBase>
           </Container>
         )}
