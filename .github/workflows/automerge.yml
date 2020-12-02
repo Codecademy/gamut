@@ -23,7 +23,9 @@ on:
     types:
       - completed
   status: {}
-  push: {}
+  push:
+    branches:
+      - main
 
 jobs:
   automerge:
