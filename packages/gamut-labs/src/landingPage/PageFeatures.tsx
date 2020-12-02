@@ -6,10 +6,6 @@ import { CTA, Title, Description, Feature, FeatureProps } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import { BaseProps } from './types';
 
-const Section = styled.div`
-  margin: 2rem;
-`;
-
 const FlexContainer = styled(Container)`
   ${mediaQueries.sm} {
     flex-direction: row;
@@ -36,7 +32,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   isIcon,
   testId,
 }) => (
-  <Section data-testid={testId}>
+  <div data-testid={testId}>
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
       {desc && <Description text={desc} />}
@@ -47,5 +43,5 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         <Feature {...feature} isIcon={isIcon} key={feature.title} />
       ))}
     </FlexContainer>
-  </Section>
+  </div>
 );

@@ -1,18 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
-import { mediaQueries, breakpoints } from '@codecademy/gamut-styles';
+import { mediaQueries } from '@codecademy/gamut-styles';
 
 import { CTA, Title, Description } from './';
 import { BaseProps } from './types';
 
-const NoFlexContainer = styled.div`
-  margin: 2rem 0;
-`;
-
 const FlexContainer = styled(Container)`
-  margin: 2rem 0;
-
   ${mediaQueries.sm} {
     flex-direction: row;
     align-items: center;
@@ -20,11 +14,7 @@ const FlexContainer = styled(Container)`
 `;
 
 const FlexContent = styled.div`
-  flex-shrink: 1;
-
-  ${mediaQueries.sm} {
-    max-width: ${breakpoints.xs};
-  }
+  flex: 1;
 `;
 
 const StyledCTA = styled(CTA)`
@@ -51,9 +41,9 @@ export const PagePrefooter: React.FC<BaseProps> = ({
       <StyledCTA href={cta.href}>{cta.text}</StyledCTA>
     </FlexContainer>
   ) : (
-    <NoFlexContainer>
+    <div>
       {SectionTitle}
       {Desc}
-    </NoFlexContainer>
+    </div>
   );
 };
