@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { ProLogoAlt } from '@codecademy/gamut-labs/src/brand/ProLogoAlt';
+import { ProLogoAlt } from '..';
 
 describe('LogoProAlt', () => {
   it('renders the Pro Alt logo', () => {

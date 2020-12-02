@@ -19,14 +19,18 @@ on:
   check_suite:
     types:
       - completed
+  check_run:
+    types:
+      - completed
   status: {}
 
 env:
   GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
 jobs:
-  automerge:
+  automerge-ready:
     runs-on: ubuntu-latest
+    if: github.base_ref == 'main'
     steps:
       - name: Automerge Ready
         uses: LouisBrunner/checks-action@v1.1.1
@@ -34,10 +38,27 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Automerge Ready
           conclusion: success
+  automerge:
+    runs-on: ubuntu-latest
+    needs: automerge-ready
+    if: github.base_ref == 'main'
+    steps:
+      - name: Wait for CI build
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: build-test
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          timeoutSeconds: 1200
+          intervalSeconds: 30
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
+        with:
+          args: "--trace"
         env:
           MERGE_LABELS: "Ship It :shipit:"
+          UPDATE_LABELS: "-disable-updating-from-action-"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"
           MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
