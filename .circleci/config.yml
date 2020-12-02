@@ -166,25 +166,6 @@ jobs:
           name: Lerna Publish
           command: yarn lerna publish --canary --preid=next --dist-tag=next
 
-  update_changelogs:
-    <<: *default_env
-    steps:
-      - *add_github_ssh_key
-      - *skip_on_automated_commit
-      - *set_git_user
-      - *restore_repo
-      - checkout
-      - run:
-          name: Update Changelogs
-          command: |
-            git pull
-            yarn regenerate-changelog
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: update changelogs"
-              git push
-            fi
-
   deploy:
     <<: *default_env
     resource_class: large
@@ -319,13 +300,6 @@ workflows:
           filters:
             branches:
               only: main
-      - update_changelogs:
-          requires:
-            - publish
-          filters:
-            branches:
-              only:
-                - main
       - deploy:
           requires:
             - checkout_code
