@@ -207,9 +207,6 @@ jobs:
       - *restore_built_packages
       - *restore_webpack_cache
       - run:
-          name: build packages
-          command: yarn build-all
-      - run:
           name: build storybook
           command: yarn build-storybook
       - *save_webpack_cache
