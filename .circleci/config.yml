@@ -317,13 +317,13 @@ workflows:
             - build_all_packages
       - verify_linting:
           requires:
-            - build_all_packages
+            - checkout_code
       - verify_formatting:
           requires:
-            - build_all_packages
+            - checkout_code
       - verify_packages:
           requires:
-            - build_all_packages
+            - build_changed_packages
       - publish:
           requires:
             - build_changed_packages

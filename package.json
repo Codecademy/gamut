@@ -15,7 +15,7 @@
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
-    "format:verify": "prettier --check",
+    "format:verify": "yarn prettier --check",
     "verify-all": "lerna run verify",
     "verify-changed": "lerna run verify --since main --include-dependencies",
     "clear-modules": "lerna clean -y && rm -rf node_modules",
