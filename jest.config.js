@@ -25,6 +25,9 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
     '^~styleguide/blocks(.*)$':
       '<rootDir>/packages/styleguide/.storybook/components$1',
+    '^@codecademy\\/gamut$': '<rootDir>/packages/gamut/src',
+    '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
+    '^@codecademy\\/gamut-system$': '<rootDir>/packages/gamut-system/src',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {

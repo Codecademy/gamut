@@ -155,7 +155,10 @@ jobs:
     resource_class: large
     steps:
       - checkout
-      - *restore_built_packages
+      - run:
+          name: Build icons
+          command: |
+            yarn build-all --scope @codecademy/gamut-icons
       - run:
           name: Run test suite
           command: |
@@ -314,7 +317,7 @@ workflows:
             - checkout_code
       - tests:
           requires:
-            - build_all_packages
+            - checkout_code
       - verify_linting:
           requires:
             - checkout_code
