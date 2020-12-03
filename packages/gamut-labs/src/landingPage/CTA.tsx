@@ -11,18 +11,18 @@ export type CTAProps = {
   href: string;
   className?: string;
   testId?: string;
-  onClick?: () => void;
+  onCtaButtonClick?: () => void;
 };
 
 export const CTA: React.FC<CTAProps> = ({
   href,
   className,
   testId,
-  onClick,
+  onCtaButtonClick,
   children,
 }) => (
   <CTAContainer className={className} data-testid={testId}>
-    <CTAButton href={href} onClick={onClick}>
+    <CTAButton href={href} onClick={onCtaButtonClick}>
       {children}
     </CTAButton>
   </CTAContainer>
