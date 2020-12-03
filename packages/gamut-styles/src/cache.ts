@@ -1,4 +1,4 @@
-import createCache, { Options } from '@emotion/cache';
+import createCache, { Options, StylisPlugin } from '@emotion/cache';
 
 export const EMOTION_KEY = 'gamut';
 export const EMOTION_CONTAINER = 'emotion-styles';
@@ -19,10 +19,20 @@ const getEmotionNode = () => {
   return node;
 };
 
+const focusVisible: StylisPlugin = (element) => {
+  if (element.type === 'rule' && element.value.includes(':focus-visible')) {
+    element.props = element.props.map((prop) =>
+      prop.replace(/:focus-visible/g, '[data-focus-visible-added]')
+    );
+  }
+  return undefined;
+};
+
 export const createEmotionCache = (optionOverrides?: Partial<Options>) =>
   createCache({
     key: EMOTION_KEY,
     speedy: true,
     container: getEmotionNode(),
+    stylisPlugins: [focusVisible],
     ...optionOverrides,
   });
