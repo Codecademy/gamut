@@ -110,6 +110,16 @@ jobs:
           command: yarn build-changed
       - *save_built_packages
 
+  build_all_packages:
+    <<: *default_env
+    steps:
+      - checkout
+      - *restore_built_packages
+      - run:
+          name: Run all builds
+          command: yarn build-all
+      - *save_built_packages
+
   verify_formatting:
     <<: *default_env
     steps:
@@ -305,18 +315,21 @@ workflows:
       - build_changed_packages:
           requires:
             - checkout_code
+      - build_all_packages:
+          requires:
+            - checkout_code
       - tests:
           requires:
-            - build_changed_packages
+            - build_all_packages
       - verify_linting:
           requires:
-            - checkout_code
+            - build_all_packages
       - verify_formatting:
           requires:
-            - checkout_code
+            - build_all_packages
       - verify_packages:
           requires:
-            - checkout_code
+            - build_all_packages
       - publish:
           requires:
             - build_changed_packages
