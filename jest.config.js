@@ -51,5 +51,5 @@ module.exports = {
     '/example/',
     '/typings/',
   ],
-  coverageDirectory: './coverage',
+  coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
 };
