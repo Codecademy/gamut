@@ -155,6 +155,7 @@ jobs:
     resource_class: large
     steps:
       - checkout
+      - *restore_built_packages
       - run:
           name: Build icons
           command: |
