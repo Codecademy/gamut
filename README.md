@@ -57,12 +57,12 @@ symlinks (the following instructions assume you have set up and built client-mod
 1. `yarn link @codecademy/gamut`
 1. `yarn install`
 
-If your other project uses React, you must link that copy of React in Gamut:
+If your other project uses React, you may need to link that copy of React in client-modules:
 
 1. `cd path/to/other/repo`
 1. `cd node_modules/react`
 1. `yarn link`
-1. `cd /path/to/client-modules/packages/gamut`
+1. `cd /path/to/client-modules`
 1. `yarn link react`
 1. `yarn build-all`
 
