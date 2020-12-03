@@ -107,7 +107,7 @@ jobs:
       - *restore_built_packages
       - run:
           name: Run all builds
-          command: yarn build-all --since main --include-dependencies
+          command: yarn build-changed
       - *save_built_packages
 
   verify_formatting:
@@ -137,7 +137,7 @@ jobs:
       - *restore_built_packages
       - run:
           name: Verify Packages
-          command: yarn verify-all
+          command: yarn verify-changed
 
   tests:
     <<: *default_env
