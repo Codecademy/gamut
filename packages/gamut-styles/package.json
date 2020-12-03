@@ -9,7 +9,7 @@
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
     "build": "yarn build:clean && yarn build:compile",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "repository": {
     "type": "git",

@@ -30,7 +30,7 @@
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "license": "MIT",
   "publishConfig": {
