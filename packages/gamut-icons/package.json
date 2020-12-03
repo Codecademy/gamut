@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "scripts": {
+    "test": "jest",
     "format": "svgo -f ./src/svg --pretty --config=.svgo.yml",
     "build:icons": "rm -rf ./src/icons && svgr --out-dir ./src/icons --ext 'tsx' ./src/svg",
     "build:types": "tsc --emitDeclarationOnly",

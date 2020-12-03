@@ -4,8 +4,6 @@
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
     "webpack": "webpack",
     "example": "webpack --profile --config=./example/webpack.config.js",
     "example-prod": "NODE_ENV=production webpack --profile --config=./example/webpack.config.js",

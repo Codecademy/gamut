@@ -4,6 +4,7 @@
   "version": "21.0.4",
   "author": "Codecademy Engineering",
   "scripts": {
+    "test": "jest",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
     "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/storybook",

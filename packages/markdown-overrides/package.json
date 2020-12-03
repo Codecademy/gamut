@@ -22,6 +22,7 @@
     "@types/katex": "0.11.0"
   },
   "scripts": {
+    "test": "jest",
     "build:clean": "rm -rf dist",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:types": "tsc --emitDeclarationOnly",

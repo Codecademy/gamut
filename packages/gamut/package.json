@@ -40,6 +40,7 @@
     "react-use": "^15.3.4"
   },
   "scripts": {
+    "test": "jest",
     "verify": "tsc --noEmit",
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
