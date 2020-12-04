@@ -52,7 +52,7 @@ module.exports = {
     '/typings/',
   ],
   reporters: process.env.CI ? ['default', 'jest-junit'] : ['default'],
-  coverageReporters: ['json', 'lcov', 'text', 'clover'],
+  coverageReporters: ['json', 'text', 'clover'],
   coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
   collectCoverage: process.env.CI ? true : false,
 };
