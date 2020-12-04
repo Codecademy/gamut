@@ -51,7 +51,8 @@ module.exports = {
     '/example/',
     '/typings/',
   ],
-  coverageReporters: ['json', 'lcov', 'text', 'clover', 'jest-junit'],
+  reporters: process.env.CI ? ['default', 'jest-junit'] : ['default'],
+  coverageReporters: ['json', 'lcov', 'text', 'clover'],
   coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
   collectCoverage: process.env.CI ? true : false,
 };
