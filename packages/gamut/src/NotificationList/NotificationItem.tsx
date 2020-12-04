@@ -16,13 +16,16 @@ const notificationStyles = `
   align-items: flex-start;
   background: none;
   border: none;
-  border-top: 1px solid ${colors.black};
   color: ${colors.black};
   display: flex;
   font-size: ${fontSize[14]};
   padding: ${spacing[24]} ${spacing[16]};
   text-align: left;
   width: 100%;
+
+  &:not(:first-of-type) {
+    border-top: 1px solid ${colors.black};
+  }
 
   &:hover {
     text-decoration: none;

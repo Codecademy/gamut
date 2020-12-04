@@ -2,7 +2,6 @@ import { colors, mediaQueries, spacing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
 import React from 'react';
-import { Heading } from '../Typography';
 
 import { NotificationItem } from './NotificationItem';
 import { Notification } from './typings';
@@ -17,7 +16,7 @@ const NotificationsContainer = styled.div`
   background-color: ${colors.white};
   /* color: ${colors['gray-800']}; */
   font-size: 1rem;
-  padding: ${spacing[32]} ${spacing[32]} ${spacing[4]};
+  padding: ${spacing[8]} ${spacing[32]} ${spacing[4]};
 
   ${mediaQueries.md} {
     text-align: left;
@@ -45,20 +44,15 @@ export const NotificationList: React.FC<NotificationListProps> = ({
           You&apos;re all caught up!
         </EmptyText>
       ) : (
-        <>
-          <Heading as="h2" fontSize="sm">
-            Recent Notifications
-          </Heading>
-          {notifications.map((notification: Notification) => {
-            return (
-              <NotificationItem
-                key={notification.id}
-                notification={notification}
-                onClick={() => onNotificationClick?.(notification)}
-              />
-            );
-          })}{' '}
-        </>
+        notifications.map((notification: Notification) => {
+          return (
+            <NotificationItem
+              key={notification.id}
+              notification={notification}
+              onClick={() => onNotificationClick?.(notification)}
+            />
+          );
+        })
       )}
     </NotificationsContainer>
   );
