@@ -17,7 +17,7 @@ For flex layouts we've added a specific flex `FlexBox` component that extends `B
       children: 'Hello world I am a FlexBox',
     }}
   >
-    {(args) => {
+    {({ as = 'div', ...args }) => {
       const elProps = {
         borderWidth: '1px',
         borderStyle: 'solid',

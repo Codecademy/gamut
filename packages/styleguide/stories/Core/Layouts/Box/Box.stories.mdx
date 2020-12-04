@@ -17,7 +17,7 @@ This is our primitive box component that is meant to be a kitchen sink utility c
       children: 'Hello world I am a box',
     }}
   >
-    {(args) => <Box {...args} />}
+    {({ as = 'div', ...args }) => <Box {...args} />}
   </Story>
 </Canvas>
 
