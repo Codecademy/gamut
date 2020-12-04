@@ -1,9 +1,8 @@
 import { colors, fontSize, spacing } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-import { TextButton } from '../Button';
-import { Markdown } from '../Markdown';
 
+import { Markdown } from '../Markdown';
 import { Truncate } from '../Truncate';
 import { NotificationIcon } from './NotificationIcon';
 import { Notification } from './typings';
@@ -42,6 +41,12 @@ const Date = styled.span`
   display: inline-block;
 `;
 
+const CallToAction = styled.div`
+  color: ${colors.hyper};
+  font-weight: bold;
+  margin-top: ${spacing[8]};
+`;
+
 export const NotificationItem: React.FC<NotificationItemProps> = ({
   notification,
   onClick,
@@ -76,7 +81,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
           <Markdown inline spacing="none" text={text} />
         </StyledTruncate>{' '}
         <Date>{date}</Date>
-        {cta && <TextButton>{cta}</TextButton>}
+        {cta && <CallToAction>{cta}</CallToAction>}
       </div>
     </TagName>
   );
