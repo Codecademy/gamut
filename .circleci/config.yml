@@ -49,16 +49,19 @@ references:
         - node_modules
         - packages
 
-  save_built_packages: &save_built_packages
-    persist_to_workspace:
-      root: ~/repo
-      paths:
-        - packages
-
-
-  restore_built_packages: &restore_built_packages
+  restore_node_modules: &restore_node_modules
     attach_workspace:
       at: ~/repo
+
+  build_all_packages: &build_all_packages
+      run:
+        name: Build All Packages
+        command: yarn build-all
+
+  build_changed_packages: &build_changed_packages
+      run:
+        name: Build Changed Packages
+        command: yarn build-changed
 
   set_git_user: &set_git_user
     run:
@@ -107,21 +110,11 @@ jobs:
       - *save_yarn_cache
       - *save_node_modules
 
-  build_changed_packages:
-    <<: *default_env
-    steps:
-      - checkout
-      - *restore_built_packages
-      - run:
-          name: Run all builds
-          command: yarn build-changed
-      - *save_built_packages
-
   verify_formatting:
     <<: *default_env
     steps:
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
       - run:
           name: Verify Prettier
           command: yarn format:verify
@@ -130,7 +123,7 @@ jobs:
     <<: *default_env
     steps:
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
       - run:
           name: Verify ESLint
           command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
@@ -141,7 +134,8 @@ jobs:
     <<: *default_env
     steps:
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
+      - *build_changed_packages
       - run:
           name: Verify Packages
           command: yarn verify-changed
@@ -152,7 +146,7 @@ jobs:
     resource_class: large
     steps:
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
       - run:
           name: Build icons
           command: |
@@ -171,6 +165,7 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
   publish:
     <<: *default_env
     resource_class: large
@@ -179,7 +174,8 @@ jobs:
       - *add_github_ssh_key
       - *set_git_user
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
+      - *build_changed_packages
       - *set_npm_token
       - run:
           name: Lerna Publish
@@ -193,7 +189,8 @@ jobs:
       - *add_github_ssh_key
       - *set_git_user
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
+      - *build_changed_packages
       - *set_npm_token
       - run:
           name: Lerna Publish
@@ -207,7 +204,7 @@ jobs:
       - *add_github_ssh_key
       - *set_git_user
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
       - run:
           name: Run all builds
           command: yarn build-all
@@ -229,7 +226,7 @@ jobs:
       - *add_github_ssh_key
       - *set_git_user
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
       - run:
           name: Run all builds
           command: yarn build-all
@@ -278,7 +275,8 @@ jobs:
       - *add_github_ssh_key
       - *set_git_user
       - checkout
-      - *restore_built_packages
+      - *restore_node_modules
+      - *build_changed_packages
       - *set_npm_token
       - run:
           name: lerna publish (alpha)
@@ -315,9 +313,6 @@ workflows:
       - checkout_code:
           requires:
            - queue/block_workflow
-      - build_changed_packages:
-          requires:
-            - checkout_code
       - tests:
           requires:
             - checkout_code
@@ -329,10 +324,10 @@ workflows:
             - checkout_code
       - verify_packages:
           requires:
-            - build_changed_packages
+            - checkout_code
       - publish:
           requires:
-            - build_changed_packages
+            - checkout_code
           filters:
             branches:
               only: main
@@ -344,7 +339,7 @@ workflows:
               only: main
       - publish_next:
           requires:
-            - build_changed_packages
+            - checkout_code
           filters:
             branches:
               only: next
@@ -356,7 +351,7 @@ workflows:
                 - next
                 - gh-pages
           requires:
-            - build_changed_packages
+            - checkout_code
       - deploy_alpha:
           filters:
             branches:
