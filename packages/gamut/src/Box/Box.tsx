@@ -7,6 +7,8 @@ import {
   positioning,
   background,
   typography,
+  flex,
+  grid,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
@@ -19,7 +21,9 @@ const boxStyles = compose(
   shadow,
   positioning,
   background,
-  typography
+  typography,
+  flex,
+  grid
 );
 
 export type BoxStyles = HandlerProps<typeof boxStyles>;
