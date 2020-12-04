@@ -42,12 +42,19 @@ references:
         - node_modules/.cache
         - packages/styleguide/node_modules/.cache
 
-  save_built_packages: &save_built_packages
+  save_node_modules: &save_node_modules
     persist_to_workspace:
       root: ~/repo
       paths:
         - node_modules
         - packages
+
+  save_built_packages: &save_built_packages
+    persist_to_workspace:
+      root: ~/repo
+      paths:
+        - packages
+
 
   restore_built_packages: &restore_built_packages
     attach_workspace:
@@ -98,7 +105,7 @@ jobs:
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
-      - *save_built_packages
+      - *save_node_modules
 
   build_changed_packages:
     <<: *default_env
