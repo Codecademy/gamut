@@ -11,7 +11,7 @@ import {
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
 
-export const boxStyles = compose(
+const boxStyles = compose(
   space,
   layout,
   border,

@@ -1,15 +1,8 @@
 import { flex } from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
-import { boxStyles } from './Box';
+import { Box } from './Box';
 
-const flexBoxStyles = compose(boxStyles, flex);
-
-type FlexStyles = HandlerProps<typeof flexBoxStyles>;
-
-export interface FlexBoxProps extends FlexStyles {}
-
-export const FlexBox = styled.div<FlexBoxProps>(flexBoxStyles);
+export const FlexBox = styled(Box)(flex);
 
 FlexBox.defaultProps = {
   display: 'flex',

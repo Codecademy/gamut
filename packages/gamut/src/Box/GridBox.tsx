@@ -1,15 +1,8 @@
 import { grid } from '@codecademy/gamut-styles';
-import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
-import { boxStyles } from './Box';
+import { Box } from './Box';
 
-const gridBoxStyles = compose(boxStyles, grid);
-
-type GridStyles = HandlerProps<typeof gridBoxStyles>;
-
-export interface GridBoxProps extends GridStyles {}
-
-export const GridBox = styled.div<GridBoxProps>(gridBoxStyles);
+export const GridBox = styled(Box)(grid);
 
 GridBox.defaultProps = {
   display: 'grid',
