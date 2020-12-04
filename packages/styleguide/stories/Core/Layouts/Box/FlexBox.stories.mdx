@@ -1,0 +1,65 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus, PropsTable } from '~styleguide/blocks';
+import { FlexBox, Box } from '@codecademy/gamut/src';
+
+<Meta title="Layouts/Box/FlexBox" component={FlexBox} />
+
+# FlexBox
+
+<StoryStatus status="volatile" />
+
+For flex layouts we've added a specific flex `FlexBox` component that extends `Box` with added flex props.
+
+<Canvas>
+  <Story
+    name="FlexBox"
+    args={{
+      children: 'Hello world I am a FlexBox',
+    }}
+  >
+    {(args) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <FlexBox {...args}>
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="FlexBox" />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Space Between"
+    args={{
+      children: 'Hello world I am a FlexBox',
+    }}
+  >
+    {(args) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <FlexBox justifyContent="space-between">
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+          <Box {...elProps}>Child Element 3</Box>
+          <Box {...elProps}>Child Element 4</Box>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>

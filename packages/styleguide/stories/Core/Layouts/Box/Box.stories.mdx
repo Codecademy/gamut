@@ -1,8 +1,8 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus, PropsTable } from '~styleguide/blocks';
-import { Box, FlexBox, GridBox } from '@codecademy/gamut/src';
+import { Box } from '@codecademy/gamut/src';
 
-<Meta title="Atoms/Box" component={Box} />
+<Meta title="Layouts/Box" component={Box} />
 
 # Box
 
@@ -111,65 +111,5 @@ This is our primitive box component that is meant to be a kitchen sink utility c
         </Box>
       </Box>
     )}
-  </Story>
-</Canvas>
-
-## FlexBox
-
-For flex layouts we've added a specific flex `FlexBox` component that extends `Box` with added flex props.
-
-<Canvas>
-  <Story
-    name="FlexBox"
-    args={{
-      children: 'Hello world I am a FlexBox',
-    }}
-  >
-    {(args) => {
-      const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
-      };
-      return (
-        <FlexBox justifyContent="space-between">
-          <Box {...elProps}>Child Element 1</Box>
-          <Box {...elProps}>Child Element 2</Box>
-          <Box {...elProps}>Child Element 3</Box>
-          <Box {...elProps}>Child Element 4</Box>
-        </FlexBox>
-      );
-    }}
-  </Story>
-</Canvas>
-
-## GridBox
-
-For custom grid layouts we've added a specific flex `FlexBox` component that extends `Box` with added flex props.
-
-<Canvas>
-  <Story
-    name="GridBox"
-    args={{
-      children: 'Hello world I am a GridBox',
-    }}
-  >
-    {(args) => {
-      const elProps = {
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: 'navy',
-        padding: 16,
-      };
-      return (
-        <GridBox gridAutoFlow="column" gridAutoColumns="1fr" columnGap={16}>
-          <Box {...elProps}>Child Element 1</Box>
-          <Box {...elProps}>Child Element 2</Box>
-          <Box {...elProps}>Child Element 3</Box>
-          <Box {...elProps}>Child Element 4</Box>
-        </GridBox>
-      );
-    }}
   </Story>
 </Canvas>

@@ -1,0 +1,60 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus, PropsTable } from '~styleguide/blocks';
+import { GridBox, Box } from '@codecademy/gamut/src';
+
+<Meta title="Layouts/Box/GridBox" component={GridBox} />
+
+# GridBox
+
+<StoryStatus status="volatile" />
+
+For flex layouts we've added a specific flex `GridBox` component that extends `Box` with added flex props.
+
+<Canvas>
+  <Story
+    name="GridBox"
+    args={{
+      children: 'Hello world I am a GridBox',
+    }}
+  >
+    {(args) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <GridBox {...args}>
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+        </GridBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="GridBox" />
+
+## Example
+
+<Canvas>
+  <Story name="4 Column Grid">
+    {(args) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <GridBox gridAutoFlow="column" gridAutoColumns="1fr" columnGap={16}>
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+          <Box {...elProps}>Child Element 3</Box>
+          <Box {...elProps}>Child Element 4</Box>
+        </GridBox>
+      );
+    }}
+  </Story>
+</Canvas>
