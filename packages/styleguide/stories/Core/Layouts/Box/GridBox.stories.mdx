@@ -1,4 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { StoryStatus, PropsTable } from '~styleguide/blocks';
 import { GridBox, Box } from '@codecademy/gamut/src';
 
@@ -8,7 +9,14 @@ import { GridBox, Box } from '@codecademy/gamut/src';
 
 <StoryStatus status="volatile" />
 
-For flex layouts we've added a specific flex `GridBox` component that extends `Box` with added flex props.
+<p>
+  For Grid layouts we've added a specific flex <code>GridBox</code> component
+  that extends{' '}
+  <code>
+    <LinkTo kind="Layouts/Box">Box</LinkTo>
+  </code>{' '}
+  with added flex props.
+</p>
 
 <Canvas>
   <Story

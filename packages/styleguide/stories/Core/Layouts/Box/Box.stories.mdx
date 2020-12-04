@@ -1,4 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { StoryStatus, PropsTable } from '~styleguide/blocks';
 import { Box } from '@codecademy/gamut/src';
 
@@ -9,6 +10,20 @@ import { Box } from '@codecademy/gamut/src';
 <StoryStatus status="volatile" />
 
 This is our primitive box component that is meant to be a kitchen sink utility component for all basic layouts. This is meant to act as a configurable building block for almost any occasion. It is extremely flexible and has access to nearly all of our `system props`.
+
+You can use this for pretty much anything. So try it out!
+
+<p>
+  While this can be made to be a `grid` or `flex` container, we also provide two
+  specific components to handle those in addition to everything that Box does!{' '}
+  <code>
+    <LinkTo kind="/Layouts/Box/GridBox">GridBox</LinkTo>
+  </code>{' '}
+  and{' '}
+  <code>
+    <LinkTo kind="/Layouts/Box/FlexBox">FlexBox</LinkTo>
+  </code>
+</p>
 
 <Canvas>
   <Story
@@ -21,11 +36,13 @@ This is our primitive box component that is meant to be a kitchen sink utility c
   </Story>
 </Canvas>
 
-<PropsTable story="Box" />
+## Visual Examples
 
-## Examples
+While the component really has no default styles or props, it can be hard to imagine what you might be able to achieve with it. So we've come up with some examples on how you might use `<Box />` to solve your own problems.
 
-### Bordered Box
+### Bordered Containers
+
+One of the main uses of box is to create bordered containers with their own borders and internal padding. Many times when we want to achieve this kind of bordered container effect it can be tempting to just reinvent the wheel, but as requirements mount and differ between contexts we end up with a lot of variety in implementation. The flexibility of `<Box />` can help limit the amount of redundancy and account for a wild range of possibilities.
 
 <Canvas>
   <Story
@@ -44,12 +61,15 @@ This is our primitive box component that is meant to be a kitchen sink utility c
 
 ### Badges
 
+Another great example of how we can use `<Box />` as a swiss army knife is recreatng badges. Since we can specificy any `display` property or HTML tag on the component we can create our own inline Badge / Tag elements through some simple configuration.
+
 <Canvas>
   <Story name="Badges" args={{ elements: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] }}>
     {(args) => (
       <Box>
         {args.elements.map((el) => (
           <Box
+            as="span"
             key={el}
             margin={4}
             paddingY={4}
@@ -67,7 +87,13 @@ This is our primitive box component that is meant to be a kitchen sink utility c
   </Story>
 </Canvas>
 
-### Positioning Contexts
+## Container Examples
+
+So far we've covered examples of using `<Box />` as a visual element on its own, but there are many times where we just need a container to provide a specific context for other design elements.
+
+### Positioning
+
+Positioning elements and maintaining stacking contexts can be annoying, especially when upstream affects can be hard to identify (IE: a `position: relative;` container that is ancient ancestor of some `position: absolute` descendent being tricky to debug). With `<Box />` you can configure these contexts in your mark up, and coordinate them easily.
 
 <Canvas>
   <Story name="Positioning">
