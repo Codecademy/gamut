@@ -179,7 +179,6 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_changed_packages
       - *set_npm_token
       - run:
           name: Lerna Publish
@@ -194,7 +193,6 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_changed_packages
       - *set_npm_token
       - run:
           name: Lerna Publish

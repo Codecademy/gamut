@@ -26,7 +26,7 @@
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "lernaBuildTask": "yarn build"
+    "prepublishOnly": "yarn build"
   },
   "license": "MIT"
 }
