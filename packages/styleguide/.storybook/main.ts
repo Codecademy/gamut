@@ -54,6 +54,15 @@ module.exports = {
       alias: {
         ...emotionless(config.resolve.alias),
         '~styleguide/blocks': path.resolve(__dirname, './components/'),
+        '@codecademy/gamut-styles$': path.resolve(
+          __dirname,
+          '../../gamut-styles/src'
+        ),
+        '@codecademy/gamut-system$': path.resolve(
+          __dirname,
+          '../../gamut-system/src'
+        ),
+        '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
       },
     };
 

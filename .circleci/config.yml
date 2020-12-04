@@ -63,6 +63,12 @@ references:
         name: Build Changed Packages
         command: yarn build-changed
 
+  build_required_packages: &build_required_packages
+    run:
+      name: Build Required Packages
+      command: |
+        yarn build-all --scope @codecademy/gamut-icons
+
   set_git_user: &set_git_user
     run:
       name: Set git user
@@ -147,10 +153,7 @@ jobs:
     steps:
       - checkout
       - *restore_node_modules
-      - run:
-          name: Build icons
-          command: |
-            yarn build-all --scope @codecademy/gamut-icons
+      - *build_required_packages
       - run:
           name: Run test suite
           command: |
@@ -205,9 +208,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - run:
-          name: Run all builds
-          command: yarn build-all
+      - *build_required_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -227,9 +228,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - run:
-          name: Run all builds
-          command: yarn build-all
+      - *build_required_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
