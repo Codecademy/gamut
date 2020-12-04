@@ -6,13 +6,14 @@ export type NotificationIconSettings = {
 };
 
 export type Notification = {
+  campaign: string;
+  cta?: string;
   date: string;
-  id: string;
   iconSettings?: NotificationIconSettings;
   iconSlug?: keyof typeof iconMap;
+  id: string;
   imageUrl?: string;
   link?: string;
   text: string;
   unread?: boolean;
-  campaign: string;
 };

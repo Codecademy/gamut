@@ -1,10 +1,11 @@
-import React from 'react';
-import cx from 'classnames';
+import { colors, mediaQueries, spacing } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import { isEmpty } from 'lodash';
-import { omitProps } from '../utils/omitProps';
-import { Notification } from './typings';
+import React from 'react';
+import { Heading } from '../Typography';
+
 import { NotificationItem } from './NotificationItem';
-import styles from './styles/index.module.scss';
+import { Notification } from './typings';
 
 export type NotificationListProps = {
   className?: string;
@@ -12,37 +13,53 @@ export type NotificationListProps = {
   onNotificationClick?: (notification: Notification) => void;
 };
 
-export const NotificationList = (props: NotificationListProps) => {
-  const { className, notifications, onNotificationClick } = props;
+const NotificationsContainer = styled.div`
+  background-color: ${colors.white};
+  /* color: ${colors['gray-800']}; */
+  font-size: 1rem;
+  padding: ${spacing[32]} ${spacing[32]} ${spacing[4]};
 
-  const notificationClasses = cx(
-    styles.notificationsContainer,
-    { [styles.emptyContainer]: isEmpty(notifications) },
-    className
-  );
+  ${mediaQueries.md} {
+    text-align: left;
+  }
+`;
 
+const EmptyText = styled.div`
+  background: none;
+  border: none;
+  margin: 3rem;
+  text-align: center;
+`;
+
+export const NotificationList: React.FC<NotificationListProps> = ({
+  className,
+  notifications,
+  onNotificationClick,
+}) => {
   return (
-    <div
-      {...omitProps(Object.keys(props), props)}
-      className={notificationClasses}
-    >
+    <NotificationsContainer className={className}>
       {isEmpty(notifications) ? (
-        <button className={styles.emptyText} type="button">
-          {'No new notifications.'}
+        <EmptyText>
+          No new notifications.
           <br />
-          {"You're all caught up!"}
-        </button>
+          You&apos;re all caught up!
+        </EmptyText>
       ) : (
-        notifications.map((notification: Notification) => {
-          return (
-            <NotificationItem
-              key={notification.id}
-              notification={notification}
-              onClick={() => onNotificationClick?.(notification)}
-            />
-          );
-        })
+        <>
+          <Heading as="h2" fontSize="sm">
+            Recent Notifications
+          </Heading>
+          {notifications.map((notification: Notification) => {
+            return (
+              <NotificationItem
+                key={notification.id}
+                notification={notification}
+                onClick={() => onNotificationClick?.(notification)}
+              />
+            );
+          })}{' '}
+        </>
       )}
-    </div>
+    </NotificationsContainer>
   );
 };

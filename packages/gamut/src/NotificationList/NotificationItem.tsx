@@ -1,54 +1,82 @@
+import { colors, fontSize, spacing } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
-import cx from 'classnames';
+import { TextButton } from '../Button';
+import { Markdown } from '../Markdown';
+
 import { Truncate } from '../Truncate';
-import { Notification } from './typings';
 import { NotificationIcon } from './NotificationIcon';
-import styles from './styles/Notification.module.scss';
+import { Notification } from './typings';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
 };
 
-export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
-  const { notification, onClick } = props;
+const notificationStyles = `
+  align-items: flex-start;
+  background: none;
+  border: none;
+  border-top: 1px solid ${colors.black};
+  color: ${colors.black};
+  display: flex;
+  font-size: ${fontSize[14]};
+  padding: ${spacing[24]} ${spacing[16]};
+  text-align: left;
+  width: 100%;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
+const NotificationLink = styled.a(notificationStyles);
+const NotificationButton = styled.button(notificationStyles);
+
+const StyledTruncate = styled(Truncate)`
+  display: inline;
+`;
+
+const Date = styled.span`
+  color: ${colors['gray-600']};
+  display: inline-block;
+`;
+
+export const NotificationItem: React.FC<NotificationItemProps> = ({
+  notification,
+  onClick,
+}) => {
   const {
+    cta,
     date,
     iconSettings,
     iconSlug,
     imageUrl,
     link,
     text,
-    unread,
+    /* unread, */
   } = notification;
-
-  const notificationClasses = cx(styles.notification, {
-    [styles.unread]: unread,
-  });
 
   const [TagName, tagProps] = link
     ? ([
-        'a',
+        NotificationLink,
         { href: link, rel: 'noopener noreferrer', target: '_blank' },
       ] as const)
-    : (['button', { type: 'button' }] as const);
+    : ([NotificationButton, { type: 'button' }] as const);
 
   return (
-    <TagName
-      className={cx(notificationClasses)}
-      onClick={onClick}
-      {...tagProps}
-    >
+    <TagName onClick={onClick} {...tagProps}>
       <NotificationIcon
         iconSettings={iconSettings}
         iconSlug={iconSlug}
         imageUrl={imageUrl}
       />
-      <div className={styles.body}>
-        <div className={styles.text}>
-          <Truncate lines={3}>{text}</Truncate>
-        </div>
-        <div className={styles.time}>{date}</div>
+      <div>
+        <StyledTruncate lines={3}>
+          <Markdown inline spacing="none" text={text} />
+        </StyledTruncate>{' '}
+        <Date>{date}</Date>
+        {cta && <TextButton>{cta}</TextButton>}
       </div>
     </TagName>
   );
