@@ -161,7 +161,8 @@ jobs:
           name: Run test suite
           command: |
             export TESTFILES=$(circleci tests glob "**/*{.spec,-test}.{jsx,tsx,js,ts}" | circleci tests split)
-            yarn test --ci --runInBand ${TESTFILES} --coverage
+            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest"
+            yarn test --ci --runInBand ${TESTFILES}
       - codecov/upload:
           file: /tmp/test-results/jest/*
           conf: codecov.yml
