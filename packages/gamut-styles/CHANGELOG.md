@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.8...@codecademy/gamut-styles@7.5.0) (2020-12-03)
+
+
+### Features
+
+* **focus-visible:** Add stylis plugin for focus-visible support WEB-1148 ([3bb685f](https://github.com/Codecademy/client-modules/commit/3bb685ff0763bd9190e919d0df216956c6cd3d8a))
+
+
+
 ### [7.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.7...@codecademy/gamut-styles@7.4.8) (2020-11-30)
 
 
@@ -681,4 +695,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-
