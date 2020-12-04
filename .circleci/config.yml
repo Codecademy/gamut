@@ -6,7 +6,7 @@ orbs:
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:12.14.0
+      - image: circleci/node:12.16.0
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
@@ -98,7 +98,6 @@ jobs:
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
-      - run: yarn autoclean --force
       - *save_built_packages
 
   build_changed_packages:
