@@ -24,7 +24,7 @@ module.exports = {
     '@storybook/addon-knobs/register',
     './addons/system/preset',
   ],
-  stories: ['../stories/**/*.stories.(mdx|tsx)'],
+  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
 
   babel: (config) => {
     config.plugins = config.plugins.map((plugin) => {
