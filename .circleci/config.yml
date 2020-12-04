@@ -98,7 +98,7 @@ jobs:
       - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
       - *save_yarn_cache
-      - run: yarn autoclean
+      - run: yarn autoclean --force
       - *save_built_packages
 
   build_changed_packages:
