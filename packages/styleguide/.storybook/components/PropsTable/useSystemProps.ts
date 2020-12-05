@@ -42,7 +42,7 @@ const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
 };
 
 export const useSystemProps = (
-  initialState = INITIAL_STATE
+  initialState: PropsTableState = INITIAL_STATE
 ): [PropsTableState, Actions] => {
   const [state, dispatch] = useReducer(reducer, initialState);
 

@@ -39,7 +39,7 @@ type PropsTableProps = Parameters<typeof ArgsTable>[0] & {
 };
 
 export const PropsTable: React.FC<PropsTableProps> = ({
-  defaultGroups,
+  defaultGroups = [],
   ...props
 }) => {
   const {
@@ -48,7 +48,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
 
   const [{ showAll, activeGroups }, actions] = useSystemProps({
     showAll: false,
-    activeGroups: defaultGroups || [],
+    activeGroups: defaultGroups,
   });
 
   const usedProps = useMemo<string[]>(
