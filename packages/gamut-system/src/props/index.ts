@@ -9,7 +9,7 @@ import { background } from './background';
 import { shadow } from './shadow';
 import { color } from './colors';
 
-export const baseConfig = {
+const baseConfig = {
   typography,
   spacing,
   border,

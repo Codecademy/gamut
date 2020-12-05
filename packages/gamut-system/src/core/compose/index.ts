@@ -25,5 +25,8 @@ export const compose = <
   // Ignore the original prop-to-style-template logic from each of the handlers;
   // instead, we create a new responsive property responsible for all of them.
   // We again make propNames and functions accessible for later composition.
-  return Object.assign(createResponsiveStyleTemplate<Props>(config), config);
+  const templateFn = createResponsiveStyleTemplate<Props>(config);
+  const handler = Object.assign(templateFn, config);
+
+  return handler;
 };
