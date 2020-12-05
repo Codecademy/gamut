@@ -1,5 +1,5 @@
-import React, { useContext, useState, useMemo, useReducer } from 'react';
-import * as system from '@codecademy/gamut-styles/src/system';
+import React, { useContext, useMemo } from 'react';
+import { propGroups, properties, PropGroups } from './constants';
 import { Toggle } from '@codecademy/gamut/src';
 import { ArgsTable, DocsContext } from '@storybook/addon-docs/blocks';
 import { intersection } from 'lodash';
@@ -13,23 +13,15 @@ import {
   ToggleContainer,
   ToggleLabel,
 } from './Elements';
-
-const { properties, variant, ...groups } = system;
-
-const systemProps = Object.entries(properties).reduce<string[]>(
-  (carry, [key, handler]) => {
-    return [...carry, ...handler.propNames];
-  },
-  []
-);
+import { useSystemProps } from './useSystemProps';
 
 type PropTagProps = {
-  prop: keyof typeof groups;
+  prop: PropGroups;
   onClick: () => void;
 };
 
 export const PropTag: React.FC<PropTagProps> = ({ prop, onClick }) => {
-  const { propNames } = groups[prop];
+  const { propNames } = propGroups[prop];
   return (
     <PropGroupTag onClick={onClick}>
       {prop}
@@ -40,42 +32,6 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, onClick }) => {
       </PropGroupTooltip>
     </PropGroupTag>
   );
-};
-
-interface PropsTableState {
-  activeGroups: string[];
-  showAll: boolean;
-}
-
-const INITIAL_STATE: PropsTableState = {
-  activeGroups: [],
-  showAll: true,
-};
-
-const actions = {
-  TOGGLE_GROUP: 'TOGGLE_GROUP',
-  TOGGLE_ALL: 'TOGGLE_ALL',
-};
-
-const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
-  const { payload } = action;
-  switch (action.type) {
-    case actions.TOGGLE_GROUP: {
-      const isActive = state.activeGroups.includes(payload);
-      return {
-        ...state,
-        activeGroups: isActive
-          ? state.activeGroups.filter((group) => group !== payload)
-          : [...state.activeGroups, payload],
-      };
-    }
-    case actions.TOGGLE_ALL: {
-      return {
-        ...state,
-        showAll: !state.showAll,
-      };
-    }
-  }
 };
 
 type PropsTableProps = Parameters<typeof ArgsTable>[0] & {
@@ -90,26 +46,23 @@ export const PropsTable: React.FC<PropsTableProps> = ({
     parameters: { argTypes },
   } = useContext(DocsContext);
 
-  const [{ showAll, activeGroups }, dispatch] = useReducer(
-    reducer,
-    INITIAL_STATE
-  );
-  const toggleAll = () => dispatch({ type: actions.TOGGLE_ALL });
-  const toggleGroup = (group: string) =>
-    dispatch({ type: actions.TOGGLE_GROUP, payload: group });
+  const [{ showAll, activeGroups }, actions] = useSystemProps({
+    showAll: false,
+    activeGroups: defaultGroups || [],
+  });
 
   const usedProps = useMemo<string[]>(
-    () => Object.keys(argTypes).filter((prop) => systemProps.includes(prop)),
+    () => Object.keys(argTypes).filter((prop) => properties.includes(prop)),
     [argTypes]
   );
 
   const hasSystemProps = usedProps.length > 0;
 
-  const propGroups = useMemo(() => {
-    return Object.entries(groups).reduce<string[]>(
+  const groups = useMemo(() => {
+    return Object.entries(propGroups).reduce<PropGroups[]>(
       (carry, [groupKey, { propNames }]) => {
         if (intersection(propNames, usedProps).length > 0) {
-          return [...carry, groupKey];
+          return [...carry, groupKey as PropGroups];
         }
         return carry;
       },
@@ -119,12 +72,15 @@ export const PropsTable: React.FC<PropsTableProps> = ({
 
   const excludedProps = useMemo<string[]>(() => {
     if (showAll) return [];
-    return Object.entries(groups).reduce((carry, [group, { propNames }]) => {
-      if (activeGroups.includes(group)) {
-        return carry;
-      }
-      return [...carry, ...propNames];
-    }, []);
+    return Object.entries(propGroups).reduce(
+      (carry, [group, { propNames }]) => {
+        if (activeGroups.includes(group)) {
+          return carry;
+        }
+        return [...carry, ...propNames];
+      },
+      []
+    );
   }, [showAll, activeGroups]);
 
   return (
@@ -135,10 +91,10 @@ export const PropsTable: React.FC<PropsTableProps> = ({
             <Title>System Props</Title>
           </HeaderColumn>
           <HeaderColumn>
-            {propGroups.map((group) => (
+            {groups.map((group) => (
               <PropTag
-                prop={group as keyof typeof groups}
-                onClick={() => toggleGroup(group)}
+                prop={group}
+                onClick={() => actions.toggleGroup(group)}
               />
             ))}
           </HeaderColumn>
@@ -149,7 +105,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
                 size="small"
                 label="Show in table"
                 checked={showAll}
-                onChange={toggleAll}
+                onChange={actions.toggleAll}
               />
             </ToggleContainer>
           </HeaderColumn>
