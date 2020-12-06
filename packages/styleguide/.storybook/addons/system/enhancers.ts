@@ -6,7 +6,7 @@ import * as system from '@codecademy/gamut-styles/src/system';
 const DOCS_LINK =
   'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
 
-const { properties, variant } = system;
+const { properties, variant, ...groups } = system;
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
@@ -38,7 +38,7 @@ const parseScaleValue = update('table.type.summary', (summary) => {
 
 const updateDescription = update('description', (desc) => DOCS_LINK);
 
-const updateConrol = (arg) => {
+const updateControl = (arg) => {
   const summary = get('table.type.summary', arg);
   const options = sortScale(summary.split(' | '));
   if (summary.indexOf('string') > -1) {
@@ -58,7 +58,20 @@ const updateConrol = (arg) => {
   }
 };
 
-const enrichArg = compose(updateConrol, updateDescription, parseScaleValue);
+const updateCategory = (arg) => {
+  const group = Object.entries(groups).find(([key, { propNames }]) =>
+    propNames.includes(arg.name)
+  )[0];
+
+  return set('table.category', group, arg);
+};
+
+const enrichArg = compose(
+  updateCategory,
+  updateControl,
+  updateDescription,
+  parseScaleValue
+);
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
