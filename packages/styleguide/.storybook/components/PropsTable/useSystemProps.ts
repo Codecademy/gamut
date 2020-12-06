@@ -1,4 +1,7 @@
-import { useReducer } from 'react';
+import { useReducer, useMemo, useContext } from 'react';
+import { propGroups, properties, PropGroups } from './constants';
+import { intersection } from 'lodash';
+import { DocsContext } from '@storybook/addon-docs/blocks';
 
 interface PropsTableState {
   activeGroups: string[];
@@ -41,20 +44,69 @@ const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
   }
 };
 
+interface UseSystemProps {
+  state: PropsTableState & {
+    hasSystemProps: boolean;
+    allGroups: PropGroups[];
+    excludedProps: string[];
+  };
+  actions: Actions;
+}
+
 export const useSystemProps = (
   initialState: PropsTableState = INITIAL_STATE
-): [PropsTableState, Actions] => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+): UseSystemProps => {
+  const {
+    parameters: { argTypes },
+  } = useContext(DocsContext);
+
+  const [{ showAll, activeGroups }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   const toggleAll = () => dispatch({ type: actions.TOGGLE_ALL });
   const toggleGroup = (group: string) =>
     dispatch({ type: actions.TOGGLE_GROUP, payload: group });
 
-  return [
-    state,
-    {
+  const usedProps = useMemo<string[]>(
+    () => Object.keys(argTypes).filter((prop) => properties.includes(prop)),
+    [argTypes]
+  );
+
+  const hasSystemProps = usedProps.length > 0;
+
+  const groups = useMemo(() => {
+    return Object.entries(propGroups).reduce<PropGroups[]>(
+      (carry, [groupKey, { propNames }]) =>
+        intersection(propNames, usedProps).length > 0
+          ? [...carry, groupKey as PropGroups]
+          : carry,
+      []
+    );
+  }, [usedProps]);
+
+  const excludedProps = useMemo<string[]>(() => {
+    if (showAll) return [];
+    return Object.entries(propGroups).reduce(
+      (carry, [group, { propNames }]) => {
+        return !activeGroups.includes(group) ? [...carry, ...propNames] : carry;
+      },
+      []
+    );
+  }, [showAll, activeGroups]);
+
+  return {
+    state: {
+      hasSystemProps,
+      showAll,
+      activeGroups,
+      allGroups: groups,
+      excludedProps,
+    },
+    actions: {
       toggleAll,
       toggleGroup,
     },
-  ];
+  };
 };
