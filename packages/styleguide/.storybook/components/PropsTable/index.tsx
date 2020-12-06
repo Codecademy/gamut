@@ -44,7 +44,7 @@ export const PropsTable: React.FC<Parameters<typeof ArgsTable>[0]> = (
   const {
     parameters: { argTypes },
   } = context;
-  const [showSystemProps, toggleSystemProps] = useState(false);
+  const [showSystemProps, toggleSystemProps] = useState(true);
 
   const usedProps = useMemo<string[]>(
     () => Object.keys(argTypes).filter((prop) => systemProps.includes(prop)),

@@ -6,7 +6,7 @@ import * as system from '@codecademy/gamut-styles/src/system';
 const DOCS_LINK =
   'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
 
-const { properties, variant } = system;
+const { properties, variant, ...groups } = system;
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
@@ -58,18 +58,61 @@ const updateConrol = (arg) => {
   }
 };
 
-const enrichArg = compose(updateConrol, updateDescription, parseScaleValue);
+const updateCategory = (arg) => {
+  const group = Object.entries(groups).find(([key, { propNames }]) =>
+    propNames.includes(arg.name)
+  )[0];
+
+  return set('table.category', group, arg);
+};
+
+const enrichArg = compose(
+  updateCategory,
+  updateConrol,
+  updateDescription,
+  parseScaleValue
+);
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((args) => {
-    if (args.name === 'theme') {
+    if (
+      args.name === 'theme' &&
+      args.table.type.summary.indexOf('Theme') > -1
+    ) {
       return {
         ...args,
+        table: {
+          ...args.table,
+          category: 'base',
+        },
         description: 'Codecademy Theme',
         control: {
           ...args.control,
           disable: true,
+        },
+      };
+    }
+
+    if (args.name === 'as') {
+      const summary = get('table.type.summary', args);
+      const options = sortScale(summary.split(' | '));
+
+      return {
+        ...args,
+        description:
+          'Configures what element tag this component should present as',
+        table: {
+          ...args.table,
+          category: 'base',
+        },
+        control: {
+          ...args.control,
+          type: 'select',
+          options: map(
+            (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
+            options
+          ),
         },
       };
     }
