@@ -1,6 +1,18 @@
 import React, { useContext, useState, useMemo } from 'react';
-import * as system from '@codecademy/gamut-styles/src/system';
-import { Toggle } from '@codecademy/gamut/src';
+import {
+  properties,
+  background,
+  typography,
+  space,
+  grid,
+  flex,
+  color,
+  shadow,
+  border,
+  positioning,
+  layout,
+} from '@codecademy/gamut-styles';
+import { Toggle } from '@codecademy/gamut';
 import { ArgsTable, DocsContext } from '@storybook/addon-docs/blocks';
 import { intersection } from 'lodash';
 import {
@@ -14,7 +26,18 @@ import {
   ToggleLabel,
 } from './Elements';
 
-const { properties, variant, ...groups } = system;
+const groups = {
+  typography,
+  space,
+  grid,
+  flex,
+  color,
+  shadow,
+  border,
+  background,
+  positioning,
+  layout,
+};
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
