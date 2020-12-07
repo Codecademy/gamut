@@ -46,7 +46,11 @@ export const PageHero: React.FC<PageHeroProps> = ({
     >
       {title && <Title isPageHeading>{title}</Title>}
       {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>
