@@ -103,42 +103,39 @@ export const Popover: React.FC<PopoverProps> = ({
 
   // if (!isOpen || !targetRef) return null;
 
-  return (
-    isOpen &&
-    !!targetRef && (
-      <BodyPortal>
-        <FocusTrap
-          focusTrapOptions={{
-            clickOutsideDeactivates: true,
-            onDeactivate: onRequestClose,
-          }}
+  return isOpen && !!targetRef ? (
+    <BodyPortal>
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          onDeactivate: onRequestClose,
+        }}
+      >
+        <motion.div
+          key="popover"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          ref={popoverRef}
+          className={cx(
+            styles.popover,
+            styles[`${position}-${align}`],
+            outline && styles.outline,
+            className
+          )}
+          style={getPopoverPosition()}
+          data-testid="popover-content-container"
         >
-          <motion.div
-            key="popover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}
-            ref={popoverRef}
-            className={cx(
-              styles.popover,
-              styles[`${position}-${align}`],
-              outline && styles.outline,
-              className
-            )}
-            style={getPopoverPosition()}
-            data-testid="popover-content-container"
-          >
-            {showBeak && (
-              <div
-                className={cx(styles.beak, styles[`${position}-beak`])}
-                data-testid="popover-beak"
-              />
-            )}
+          {showBeak && (
+            <div
+              className={cx(styles.beak, styles[`${position}-beak`])}
+              data-testid="popover-beak"
+            />
+          )}
 
-            {children}
-          </motion.div>
-        </FocusTrap>
-      </BodyPortal>
-    )
-  );
+          {children}
+        </motion.div>
+      </FocusTrap>
+    </BodyPortal>
+  ) : null;
 };
