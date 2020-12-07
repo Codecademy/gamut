@@ -161,6 +161,7 @@ jobs:
             yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
+            JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - codecov/upload:
           file: /tmp/test-results/jest/*
           conf: codecov.yml
