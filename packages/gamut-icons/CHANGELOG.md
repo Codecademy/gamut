@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [3.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.11.1...@codecademy/gamut-icons@3.11.2) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-icons
+
+
+
+
+
 ### [3.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.11.0...@codecademy/gamut-icons@3.11.1) (2020-12-02)
 
 
@@ -325,4 +338,3 @@ import { Button } from '@codecademy/gamut'
 ### ✨ Features
 
 * New Gamut Icons Package ([#402](https://github.com/Codecademy/client-modules/issues/402)) ([6e0fcfc](https://github.com/Codecademy/client-modules/commit/6e0fcfc27768c9496f8e79a465c8adcd50ffd8f7))
-
