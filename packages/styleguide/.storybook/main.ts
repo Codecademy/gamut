@@ -24,7 +24,7 @@ module.exports = {
     '@storybook/addon-knobs/register',
     './addons/system/preset',
   ],
-  stories: ['../stories/**/*.stories.(mdx|tsx)'],
+  stories: ['../stories/**/*.stories.@(mdx|tsx)'],
 
   babel: (config) => {
     config.plugins = config.plugins.map((plugin) => {
@@ -54,6 +54,15 @@ module.exports = {
       alias: {
         ...emotionless(config.resolve.alias),
         '~styleguide/blocks': path.resolve(__dirname, './components/'),
+        '@codecademy/gamut-styles$': path.resolve(
+          __dirname,
+          '../../gamut-styles/src'
+        ),
+        '@codecademy/gamut-system$': path.resolve(
+          __dirname,
+          '../../gamut-system/src'
+        ),
+        '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
       },
     };
 

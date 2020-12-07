@@ -1,12 +1,11 @@
-import React from 'react';
-import { mapValues, update, isNumber, compose, get, set, map } from 'lodash/fp';
+import { mapValues, isNumber, get, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import * as system from '@codecademy/gamut-styles/src/system';
 
 const DOCS_LINK =
   'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
 
-const { properties, variant } = system;
+const { properties, variant, ...groups } = system;
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
@@ -29,54 +28,86 @@ const sortScale = (scale: string[]) => {
   return scale;
 };
 
-const parseScaleValue = update('table.type.summary', (summary) => {
-  if (summary.length) {
-    return sortScale(getScale(summary).split(' | ')).join(' | ');
-  }
-  return summary;
-});
-
-const updateDescription = update('description', (desc) => DOCS_LINK);
-
-const updateConrol = (arg) => {
-  const summary = get('table.type.summary', arg);
-  const options = sortScale(summary.split(' | '));
-  if (summary.indexOf('string') > -1) {
-    return set('control', { type: 'text' }, arg);
-  } else {
-    return set(
-      'control',
-      {
-        type: 'select',
-        options: map(
-          (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
-          options
-        ),
-      },
-      arg
-    );
-  }
-};
-
-const enrichArg = compose(updateConrol, updateDescription, parseScaleValue);
+const sanitizeOptions = map((val) =>
+  typeof val === 'string' ? val.replace(/"/g, '') : val
+);
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
-  return mapValues((args) => {
-    if (args.name === 'theme') {
+  return mapValues((arg) => {
+    // Update theme props
+    if (arg.name === 'theme' && arg.table.type.summary.indexOf('Theme') > -1) {
       return {
-        ...args,
+        ...arg,
+        table: {
+          ...arg.table,
+          category: 'base',
+        },
         description: 'Codecademy Theme',
         control: {
-          ...args.control,
+          ...arg.control,
           disable: true,
         },
       };
     }
-    if (systemProps.includes(args.name) && args.description === '') {
-      return enrichArg(args);
+
+    // For as props we want to provide a standard description
+    if (arg.name === 'as') {
+      const summary = get('table.type.summary', arg);
+      const options = sortScale(summary.split(' | '));
+
+      return {
+        ...arg,
+        description:
+          'Configures what element tag this component should present as',
+        table: {
+          ...arg.table,
+          category: 'base',
+        },
+        control: {
+          ...arg.control,
+          type: 'select',
+          options: sanitizeOptions(options),
+        },
+      };
     }
-    return args;
+
+    // Find all system props that do not have a description
+    if (systemProps.includes(arg.name) && arg.description === '') {
+      const category = Object.entries(groups).find(([key, { propNames }]) =>
+        propNames.includes(arg.name)
+      )[0];
+      const rawScale = arg?.table?.type?.summary;
+      const options = rawScale && sortScale(getScale(rawScale).split(' | '));
+      const parsedScale = options.join(' | ');
+
+      let control: {
+        type: 'string' | 'select';
+        options?: unknown[];
+      } = {
+        type: 'select',
+        options: sanitizeOptions(options),
+      };
+
+      if (rawScale.indexOf('string') > -1) {
+        control = { type: 'string' };
+      }
+
+      return {
+        ...arg,
+        description: DOCS_LINK,
+        table: {
+          ...arg.table,
+          category,
+          type: {
+            ...arg?.table?.type,
+            summary: parsedScale || rawScale,
+          },
+        },
+        control,
+      };
+    }
+    return arg;
   }, argTypes);
 };
 
