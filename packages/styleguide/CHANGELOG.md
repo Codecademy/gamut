@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.6...@codecademy/styleguide@21.0.7) (2020-12-07)
+
+
+### Bug Fixes
+
+* **Styleguide:** Add sectioning in a nice way ([d61ac76](https://github.com/Codecademy/client-modules/commit/d61ac764cae59f90fb99a4188874fb246a251fab))
+
+
+
+### [21.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.5...@codecademy/styleguide@21.0.6) (2020-12-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [21.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.4...@codecademy/styleguide@21.0.5) (2020-12-03)
 
 **Note:** Version bump only for package @codecademy/styleguide
