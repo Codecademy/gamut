@@ -1,8 +1,8 @@
-import { boxShadow } from '../utilities';
+import { createBoxShadow } from '../utilities';
 export const boxShadows = {
-  1: boxShadow(1),
-  2: boxShadow(2),
-  3: boxShadow(3),
-  4: boxShadow(4),
-  5: boxShadow(5),
+  1: createBoxShadow(1),
+  2: createBoxShadow(2),
+  3: createBoxShadow(3),
+  4: createBoxShadow(4),
+  5: createBoxShadow(5),
 } as const;

@@ -1,0 +1,53 @@
+import {
+  Meta,
+  ColorItem,
+  ColorPalette,
+  Canvas,
+} from '@storybook/addon-docs/dist/blocks';
+import { startCase } from 'lodash';
+import { theme, swatches, colorNames } from '@codecademy/gamut-styles';
+
+<Meta title="Foundations/Theme" component="theme" />
+
+# Theme
+
+## Colors
+
+<ColorPalette>
+  {Object.entries(theme.colors).map(([key, hex]) => {
+    if (key.indexOf('-') === -1) {
+      return (
+        <ColorItem
+          title={colorNames[key]}
+          subtitle={`theme.color.${key}`}
+          colors={[hex]}
+        />
+      );
+    }
+    return null;
+  })}
+</ColorPalette>
+
+<ColorPalette>
+  {Object.entries(swatches).map(([key, pallete]) => {
+    const weights = Object.keys(pallete);
+    return (
+      <ColorItem
+        title={colorNames[key] || startCase(key)}
+        subtitle={
+          <p>
+            <p>{`theme.colors['${key}-{weight}']`}</p>
+            <p>{weights.join(', ')}</p>
+          </p>
+        }
+        colors={weights.map((weight) => pallete[weight])}
+      />
+    );
+  })}
+</ColorPalette>
+
+## Typography
+
+## Spacing
+
+## Shadows
