@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { NotificationList } from '..';
-import { NotificationItem } from '../NotificationItem';
 
 const notifications = [
   {
