@@ -24,7 +24,7 @@
     "@codecademy/webpack-config": "^5.2.0",
     "@emotion/react": "^11.0.0-rc.0",
     "@emotion/styled": "^11.0.0-rc.0",
-    "@storybook/addon-a11y": "6.0.28",
+    "@storybook/addon-a11y": "6.1.10",
     "@storybook/addon-actions": "6.0.28",
     "@storybook/addon-controls": "6.0.28",
     "@storybook/addon-docs": "6.0.28",
