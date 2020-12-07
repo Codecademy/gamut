@@ -2,7 +2,7 @@ import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useWindowSize, useWindowScroll } from 'react-use';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import styles from './styles.module.scss';
 import { BodyPortal } from '@codecademy/gamut';
