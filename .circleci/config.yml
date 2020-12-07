@@ -329,12 +329,6 @@ workflows:
           filters:
             branches:
               only: main
-      - deploy:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: main
       - publish_next:
           requires:
             - checkout_code
@@ -350,6 +344,20 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
+  deploy:
+    jobs:
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
+      - checkout_code:
+          requires:
+           - queue/block_workflow
+      - deploy:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: main
       - deploy_alpha:
           filters:
             branches:
