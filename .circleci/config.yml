@@ -157,7 +157,7 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            export TESTFILES=$(yarn --silent test --listTests | xargs realpath --relative-to=$PWD "$0" | sort | circleci tests split --split-by=timings)
+            export TESTFILES=$(yarn --silent test --listTests | xargs realpath -q --relative-to=$PWD "$1" | sort | circleci tests split --split-by=timings)
             yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
