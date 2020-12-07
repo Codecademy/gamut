@@ -60,7 +60,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         id={id}
       >
-        <CardBody className={styles.toolTipBody}>{children}</CardBody>
+        <div className={styles.toolTipBody}>{children}</div>
       </div>
     </div>
   );
