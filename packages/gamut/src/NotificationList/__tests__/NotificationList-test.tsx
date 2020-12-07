@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import { NotificationList } from '..';
 import { NotificationItem } from '../NotificationItem';
@@ -45,40 +45,23 @@ const notifications = [
 
 describe('NotificationList', () => {
   it('renders a message when no notifications are passed in', () => {
-    const wrapper = shallow(<NotificationList notifications={[]} />);
+    const wrapper = mount(<NotificationList notifications={[]} />);
     expect(wrapper.text()).toEqual(
       "No new notifications.You're all caught up!"
     );
   });
 
-  it('renders an unread notification', () => {
-    const unreadNotification = {
-      text: 'notification 1',
-      id: '1',
-      date: 'Fri Mar 15 2019 09:00:00 GMT-0400',
-      unread: true,
-      campaign: 'new campaign',
-    };
-
-    const wrapper = shallow(
-      <NotificationList notifications={[unreadNotification]} />
-    );
-    expect(
-      wrapper.find(NotificationItem).first().prop('notification').unread
-    ).toEqual(true);
-  });
-
   it('passes down the onNotificationClick function', () => {
-    const mockCallBack = jest.fn();
-    const wrapper = shallow(
+    const onNotificationClick = jest.fn();
+    const wrapper = mount(
       <NotificationList
         notifications={notifications}
-        onNotificationClick={mockCallBack}
+        onNotificationClick={onNotificationClick}
       />
     );
 
-    wrapper.find(NotificationItem).first().simulate('click');
-    expect(mockCallBack.mock.calls.length).toEqual(1);
-    expect(mockCallBack.mock.calls[0][0]).toStrictEqual(notifications[0]);
+    wrapper.find('button').first().simulate('click');
+
+    expect(onNotificationClick).toHaveBeenCalledWith(notifications[0]);
   });
 });
