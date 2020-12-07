@@ -1,0 +1,162 @@
+import { Meta } from '@storybook/addon-docs/dist/blocks';
+import { FigmaLink, Box } from '~styleguide/blocks';
+import { LayoutGrid, Column, Container } from '@codecademy/gamut';
+import { breakpoints } from '@codecademy/gamut-styles';
+import { ViewPortGrid, Space } from './Examples';
+import ExampleSvg from './example.svg';
+
+<Meta title="Foundations/Grids" />
+
+# Grids
+
+These are the grids we use for all the screen sizes we design for. We use a 12-column grid approach, meaning every layout can be divided in sections of 2 or 3. It’s important to design with the in mind to create structured and consistent experiences. On smaller screensizes try to avoid using smaller components while using the grid as a guide.
+
+<FigmaLink href="https://www.figma.com/file/ZUJ7cfVgyoh1kiQYNN8Hbt/Grid-%E2%9C%85" />
+
+<Space size={16} />
+
+### Screen sizes
+
+<Space />
+
+#### 6 Viewports to Consider
+
+<Space />
+
+<ViewPortGrid />
+
+<Space />
+
+#### Breakpoints
+
+The designer decides how many columns at each breakpoint a section should
+span. The grid will allow the engineer to set a minimum amount of columns
+for each breakpoint (to avoid having .
+
+**Example:**
+`<Column size={{ xs: 6, md: 4 }}>Content</Column>`
+
+This section would be 6 columns at the smallest screen size and 4 columns at anything larger than the 4th breakpoint.
+
+<Space />
+
+#### Best Practices
+
+- You should begin most design work with a target viewport of 1440px width, using the “XXL” column grid.
+- Make sure you adjust each design to the viewports and take into account their respective screenheights (the ‘fold’).
+- Wider layouts should maintain proper line-lengths and component widths by adjusting arrangements to take advantage of the increased area—do not simply stretch to fill.
+- Elements that are not placed in an explicit lockup (like catalog cards) do not need to fill entire column widths. Alignment to gridlines on on axis (usually left side) is often enough
+
+<Space />
+
+### Spacing
+
+<Space />
+<LayoutGrid>
+  <Column size={4}>
+    <Container column>
+      <h4>Horizontal Spacing</h4>
+      <p>For spacing between components and sections use these as a guide.</p>
+      <Container column>
+        {[64, 48, 32, 16].map((size) => {
+          return (
+            <Container style={{ marginTop: '24px' }}>
+              {size}{' '}
+              <Box
+                style={{
+                  marginTop: size < 32 ? '4px' : null,
+                  marginLeft: '8px',
+                }}
+                size={`${size}px`}
+              />
+            </Container>
+          );
+        })}
+      </Container>
+    </Container>
+  </Column>
+  <Column size={4}>
+    <Container column>
+      <h4>Gutter Sizes</h4>
+      <p>For spacing between components and sections use these as a guide.</p>
+      <Container column>
+        {[32, 24, 16, 8].map((size) => {
+          return (
+            <Container style={{ marginTop: '24px' }}>
+              {size}{' '}
+              <Box
+                style={{
+                  marginTop: size < 32 ? '4px' : null,
+                  marginLeft: '8px',
+                }}
+                size={`${size}px`}
+              />
+            </Container>
+          );
+        })}
+      </Container>
+    </Container>
+  </Column>
+  <Column size={4}>
+    <Container column>
+      <h4>Row Gaps</h4>
+      <p>For spacing between components and sections use these as a guide.</p>
+      <Container column>
+        {[32, 24, 16, 8].map((size) => {
+          return (
+            <Container style={{ marginTop: '24px' }}>
+              {size}{' '}
+              <Box
+                style={{
+                  marginTop: size < 32 ? '4px' : null,
+                  marginLeft: '8px',
+                }}
+                size={`${size}px`}
+              />
+            </Container>
+          );
+        })}
+      </Container>
+    </Container>
+  </Column>
+</LayoutGrid>
+
+<Space />
+
+#### Best Practices
+
+- The smallest unit of space for block elements is 8px.
+- Type can be placed with greater precision within elements or in relation to other lines of type (eg. Headlines/text or information in cards) using the 4px baseline grid.
+- Spaces between elements should use default units in multiples of 8px. The default spacing amount for margins and padding is 16px.
+- Use additional spacing in order to conceptually group or distance design elements, to create more negative space in a composition, or to assist with rhythm.
+  Whenever possible, make sure that objects line up, both vertically and horizontally.
+
+<Space />
+
+### Example Screen Size: 1200x900
+
+<LayoutGrid rowGap="md">
+  <Column size={3}>
+    <Container row justify="start">
+      Columns: 12
+    </Container>
+  </Column>
+  <Column size={3}>
+    <Container row justify="start">
+      Gutter: 32px
+    </Container>
+  </Column>
+  <Column size={3}>
+    <Container row justify="center">
+      Content Width: 1072px
+    </Container>
+  </Column>
+  <Column size={3}>
+    <Container row justify="end">
+      Outer-margin: 64px
+    </Container>
+  </Column>
+  <Column size={12}>
+    <img src={ExampleSvg} alt="example grid" />
+  </Column>
+</LayoutGrid>
