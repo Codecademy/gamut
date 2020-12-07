@@ -28,6 +28,10 @@ const sortScale = (scale: string[]) => {
   return scale;
 };
 
+const sanitizeOptions = map((val) =>
+  typeof val === 'string' ? val.replace(/"/g, '') : val
+);
+
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((arg) => {
@@ -63,10 +67,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
         control: {
           ...arg.control,
           type: 'select',
-          options: map(
-            (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
-            options
-          ),
+          options: sanitizeOptions(options),
         },
       };
     }
@@ -79,17 +80,13 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       const rawScale = arg?.table?.type?.summary;
       const options = rawScale && sortScale(getScale(rawScale).split(' | '));
       const parsedScale = options.join(' | ');
-      const sanitizedOptions = map(
-        (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
-        options
-      ) as string[] | number[];
 
       let control: {
         type: 'string' | 'select';
-        options?: string[] | number[];
+        options?: unknown[];
       } = {
         type: 'select',
-        options: sanitizedOptions,
+        options: sanitizeOptions(options),
       };
 
       if (rawScale.indexOf('string') > -1) {
