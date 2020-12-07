@@ -1,5 +1,4 @@
-import React from 'react';
-import { mapValues, update, isNumber, compose, get, set, map } from 'lodash/fp';
+import { mapValues, isNumber, get, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import * as system from '@codecademy/gamut-styles/src/system';
 
@@ -29,85 +28,40 @@ const sortScale = (scale: string[]) => {
   return scale;
 };
 
-const parseScaleValue = update('table.type.summary', (summary) => {
-  if (summary.length) {
-    return sortScale(getScale(summary).split(' | ')).join(' | ');
-  }
-  return summary;
-});
-
-const updateDescription = update('description', (desc) => DOCS_LINK);
-
-const updateConrol = (arg) => {
-  const summary = get('table.type.summary', arg);
-  const options = sortScale(summary.split(' | '));
-  if (summary.indexOf('string') > -1) {
-    return set('control', { type: 'text' }, arg);
-  } else {
-    return set(
-      'control',
-      {
-        type: 'select',
-        options: map(
-          (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
-          options
-        ),
-      },
-      arg
-    );
-  }
-};
-
-const updateCategory = (arg) => {
-  const group = Object.entries(groups).find(([key, { propNames }]) =>
-    propNames.includes(arg.name)
-  )[0];
-
-  return set('table.category', group, arg);
-};
-
-const enrichArg = compose(
-  updateCategory,
-  updateConrol,
-  updateDescription,
-  parseScaleValue
-);
-
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
-  return mapValues((args) => {
-    if (
-      args.name === 'theme' &&
-      args.table.type.summary.indexOf('Theme') > -1
-    ) {
+  return mapValues((arg) => {
+    // Update theme props
+    if (arg.name === 'theme' && arg.table.type.summary.indexOf('Theme') > -1) {
       return {
-        ...args,
+        ...arg,
         table: {
-          ...args.table,
+          ...arg.table,
           category: 'base',
         },
         description: 'Codecademy Theme',
         control: {
-          ...args.control,
+          ...arg.control,
           disable: true,
         },
       };
     }
 
-    if (args.name === 'as') {
-      const summary = get('table.type.summary', args);
+    // For as props we want to provide a standard description
+    if (arg.name === 'as') {
+      const summary = get('table.type.summary', arg);
       const options = sortScale(summary.split(' | '));
 
       return {
-        ...args,
+        ...arg,
         description:
           'Configures what element tag this component should present as',
         table: {
-          ...args.table,
+          ...arg.table,
           category: 'base',
         },
         control: {
-          ...args.control,
+          ...arg.control,
           type: 'select',
           options: map(
             (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
@@ -116,10 +70,47 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
         },
       };
     }
-    if (systemProps.includes(args.name) && args.description === '') {
-      return enrichArg(args);
+
+    // Find all system props that do not have a description
+    if (systemProps.includes(arg.name) && arg.description === '') {
+      const category = Object.entries(groups).find(([key, { propNames }]) =>
+        propNames.includes(arg.name)
+      )[0];
+      const rawScale = arg?.table?.type?.summary;
+      const options = rawScale && sortScale(getScale(rawScale).split(' | '));
+      const parsedScale = options.join(' | ');
+      const sanitizedOptions = map(
+        (val) => (typeof val === 'string' ? val.replace(/"/g, '') : val),
+        options
+      ) as string[] | number[];
+
+      let control: {
+        type: 'string' | 'select';
+        options?: string[] | number[];
+      } = {
+        type: 'select',
+        options: sanitizedOptions,
+      };
+
+      if (rawScale.indexOf('string') > -1) {
+        control = { type: 'string' };
+      }
+
+      return {
+        ...arg,
+        description: DOCS_LINK,
+        table: {
+          ...arg.table,
+          category,
+          type: {
+            ...arg?.table?.type,
+            summary: parsedScale || rawScale,
+          },
+        },
+        control,
+      };
     }
-    return args;
+    return arg;
   }, argTypes);
 };
 
