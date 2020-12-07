@@ -207,7 +207,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -227,7 +227,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
