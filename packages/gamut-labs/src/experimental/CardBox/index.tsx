@@ -33,7 +33,6 @@ const cardVariants = variant({
 
 export const CardBox = styled(Box)<CardBoxProps>`
   ${cardVariants}
-
   ${({ shadowOffset, variant }) =>
     shadowOffset &&
     createShadow(shadowOffset, variant === 'navy' ? 'white' : 'none')}
