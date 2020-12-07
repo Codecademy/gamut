@@ -46,7 +46,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "license": "MIT",
   "devDependencies": {
