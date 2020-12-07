@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Markdown } from '../Markdown';
-import { Truncate } from '../Truncate';
 import { NotificationIcon } from './NotificationIcon';
 import { Notification } from './typings';
 
@@ -34,10 +33,6 @@ const notificationStyles = `
 
 const NotificationLink = styled.a(notificationStyles);
 const NotificationButton = styled.button(notificationStyles);
-
-const StyledTruncate = styled(Truncate)`
-  display: inline;
-`;
 
 const Date = styled.span`
   color: ${colors['gray-600']};
@@ -80,10 +75,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = ({
         imageUrl={imageUrl}
       />
       <div>
-        <StyledTruncate lines={3}>
-          <Markdown inline spacing="none" text={text} />
-        </StyledTruncate>{' '}
-        <Date>{date}</Date>
+        <Markdown inline spacing="none" text={text} /> <Date>{date}</Date>
         {cta && <CallToAction>{cta}</CallToAction>}
       </div>
     </TagName>
