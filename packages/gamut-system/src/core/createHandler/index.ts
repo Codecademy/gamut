@@ -50,14 +50,11 @@ export const createHandler = <
     transformValue,
   });
 
-  // Assign the scale key to the styleTemplate
-  const template = Object.assign(styleTemplate, { scale: config.scale });
-
   // Create a container to place composed style templates in.
   // This only contains our one requested style template to start, but might be added to later,
   // if compose combines this with other templates.
   const styleTemplates = {
-    [propName]: template,
+    [propName]: styleTemplate,
   } as Partial<
     Record<
       keyof ThematicProps<Theme, Config>,
