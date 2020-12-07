@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { NotificationItem } from '../NotificationItem';
 
 const linkedNotification = {
@@ -19,24 +19,24 @@ const noLinkNotification = {
 
 describe('NotificationItem', () => {
   it('renders an anchor tag if href is specified', () => {
-    const renderedNotification = shallow(
+    const renderedNotification = mount(
       <NotificationItem notification={linkedNotification} />
     );
 
-    expect(renderedNotification.name()).toBe('a');
+    expect(renderedNotification.find('a')).toHaveLength(1);
   });
 
   it('renders a button if no href is specified', () => {
-    const renderedNotification = shallow(
+    const renderedNotification = mount(
       <NotificationItem notification={noLinkNotification} />
     );
 
-    expect(renderedNotification.name()).toBe('button');
+    expect(renderedNotification.find('button')).toHaveLength(1);
   });
 
   it('calls onClick when clicked', () => {
     const onClick = jest.fn();
-    const renderedNotification = shallow(
+    const renderedNotification = mount(
       <NotificationItem notification={noLinkNotification} onClick={onClick} />
     );
 
