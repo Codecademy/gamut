@@ -1,30 +1,33 @@
 version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.5
+  queue: eddiewebb/queue@1.5.0
 
 references:
   default_env: &default_env
     docker:
-      - image: circleci/node:12.14.0
+      - image: circleci/node:12.16.0
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
       NODE_OPTIONS: '--max_old_space_size=4096'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
-  repo_cache_key_1: &repo_cache_key_1 v2-repo-{{ arch}}-{{ .Branch }}-{{ .Revision }}
-  repo_cache_key_2: &repo_cache_key_2 v2-repo-{{ arch}}-{{ .Branch }}
-  repo_cache_key_3: &repo_cache_key_3 v2-repo-{{ arch}}-main
+  yarn_cache_key_1: &yarn_cache_key_1 v1-yarn-{{ arch}}-{{ checksum "yarn.lock" }}
 
   webpack_cache_key_1: &webpack_cache_key_1 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}-{{ .Revision }}
   webpack_cache_key_2: &webpack_cache_key_2 v1-webpack-{{ arch}}-{{ checksum "yarn.lock" }}-{{ .Branch }}
 
-  restore_repo: &restore_repo
+  restore_yarn_cache: &restore_yarn_cache
     restore_cache:
       keys:
-        - *repo_cache_key_1
-        - *repo_cache_key_2
-        - *repo_cache_key_3
+        - *yarn_cache_key_1
+
+  save_yarn_cache: &save_yarn_cache
+    save_cache:
+      key: *yarn_cache_key_1
+      paths:
+        - ~/.cache/yarn
 
   restore_webpack_cache: &restore_webpack_cache
     restore_cache:
@@ -38,6 +41,33 @@ references:
       paths:
         - node_modules/.cache
         - packages/styleguide/node_modules/.cache
+
+  save_node_modules: &save_node_modules
+    persist_to_workspace:
+      root: ~/repo
+      paths:
+        - node_modules
+        - packages
+
+  restore_node_modules: &restore_node_modules
+    attach_workspace:
+      at: ~/repo
+
+  build_all_packages: &build_all_packages
+      run:
+        name: Build All Packages
+        command: yarn build-all
+
+  build_changed_packages: &build_changed_packages
+      run:
+        name: Build Changed Packages
+        command: yarn build-changed
+
+  build_required_packages: &build_required_packages
+    run:
+      name: Build Required Packages
+      command: |
+        yarn build-all --scope @codecademy/gamut-icons
 
   set_git_user: &set_git_user
     run:
@@ -79,25 +109,18 @@ jobs:
   checkout_code:
     <<: *default_env
     steps:
-      - *restore_repo
       - checkout
       - *set_npm_token
+      - *restore_yarn_cache
       - run: yarn --production=false --frozen-lockfile
-      - run:
-          name: Run all builds
-          command: yarn build-all
-      - run:
-          name: Clean up garbage
-          command: git gc
-      - save_cache:
-          key: *repo_cache_key_1
-          paths:
-            - .
+      - *save_yarn_cache
+      - *save_node_modules
 
   verify_formatting:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_node_modules
       - run:
           name: Verify Prettier
           command: yarn format:verify
@@ -105,7 +128,8 @@ jobs:
   verify_linting:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_node_modules
       - run:
           name: Verify ESLint
           command: yarn lint --format junit --output-file /tmp/test-results/eslint.xml
@@ -115,27 +139,36 @@ jobs:
   verify_packages:
     <<: *default_env
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_node_modules
+      - *build_changed_packages
       - run:
           name: Verify Packages
-          command: yarn verify-all
+          command: yarn verify-changed
 
   tests:
     <<: *default_env
     parallelism: 4
     resource_class: large
     steps:
-      - *restore_repo
+      - checkout
+      - *restore_node_modules
+      - *build_required_packages
       - run:
           name: Run test suite
           command: |
-            TESTFILES=$(circleci tests glob "**/*(.spec|-test).{jsx,tsx,js,ts}" | circleci tests split)
-            JEST_JUNIT_OUTPUT_DIR="$CIRCLE_TEST_REPORTS/jest" yarn test --ci --runInBand ${TESTFILES} --coverage
-      - store_test_results:
-          path: /tmp/test-results
+            export TESTFILES=$(yarn --silent test --listTests | sort | circleci tests split --split-by=timings)
+            yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
       - codecov/upload:
           file: /tmp/test-results/jest/*
           conf: codecov.yml
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
 
   publish:
     <<: *default_env
@@ -144,9 +177,10 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
@@ -158,31 +192,13 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --canary --preid=next --dist-tag=next
-
-  update_changelogs:
-    <<: *default_env
-    steps:
-      - *add_github_ssh_key
-      - *skip_on_automated_commit
-      - *set_git_user
-      - *restore_repo
-      - checkout
-      - run:
-          name: Update Changelogs
-          command: |
-            git pull
-            yarn regenerate-changelog
-            if [ -n "$(git status --porcelain)" ]; then
-              git add -A
-              git commit -am "chore: update changelogs"
-              git push
-            fi
 
   deploy:
     <<: *default_env
@@ -191,12 +207,10 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_node_modules
+      - *build_all_packages
       - *restore_webpack_cache
-      - run:
-          name: build packages
-          command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -213,12 +227,10 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_node_modules
+      - *build_all_packages
       - *restore_webpack_cache
-      - run:
-          name: build packages
-          command: yarn build-all
       - run:
           name: build storybook
           command: yarn build-storybook
@@ -262,9 +274,10 @@ jobs:
       - *skip_on_automated_commit
       - *add_github_ssh_key
       - *set_git_user
-      - *restore_repo
       - checkout
+      - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
@@ -294,7 +307,12 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - checkout_code
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
+      - checkout_code:
+          requires:
+           - queue/block_workflow
       - tests:
           requires:
             - checkout_code
@@ -313,13 +331,6 @@ workflows:
           filters:
             branches:
               only: main
-      - update_changelogs:
-          requires:
-            - publish
-          filters:
-            branches:
-              only:
-                - main
       - deploy:
           requires:
             - checkout_code

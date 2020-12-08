@@ -9,7 +9,7 @@ import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = VisualTheme.LightMode }: ButtonProps) => {
+  ({ mode = 'light' }: ButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -23,9 +23,7 @@ const StrokeButtonInner = styled(ButtonInner)<ButtonProps>(
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${mode === VisualTheme.LightMode
-          ? colors.hyper
-          : colors.yellow};
+        background: ${mode === 'light' ? colors.hyper : colors.yellow};
         color: ${modeColors.foreground};
       }
 

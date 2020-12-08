@@ -4,6 +4,7 @@ import React from 'react';
 
 const DescriptionContainer = styled.div`
   margin: 2rem 0 0;
+  max-width: 38rem;
 `;
 
 export type DescriptionProps = {

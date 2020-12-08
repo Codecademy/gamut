@@ -33,7 +33,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   id,
   position = ToolTipPosition.TopRight,
   target,
-  theme = VisualTheme.LightMode,
+  theme = 'light',
   tipClassName,
   wrapperClassName,
 }) => {
@@ -53,7 +53,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         className={cx(
           styles.toolTipContainer,
           styles[position],
-          theme === VisualTheme.DarkMode
+          theme === 'dark'
             ? styles.toolTipContainerDark
             : styles.toolTipContainerLight,
           tipClassName

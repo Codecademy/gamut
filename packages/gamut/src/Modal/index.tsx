@@ -56,6 +56,7 @@ export const Modal: React.FC<ModalProps> = ({
       <CardShell
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
+        aria-modal="true"
         role="dialog"
         tabIndex={0}
       >

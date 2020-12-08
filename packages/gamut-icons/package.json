@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-icons",
   "description": "Icon library for codecademy.com",
-  "version": "3.11.0",
+  "version": "3.11.2",
   "author": "Codecademy <dev@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,7 +14,7 @@
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "rename-icons": "find ./src/svg -depth -type f \\( -name '*.svg' ! -name '*-icon.svg' \\) -exec sh -c 'mv \"$1\" \"${1%.svg}-icon.svg\"' _ {} \\;",
     "build": "yarn rename-icons && yarn build:icons && yarn build:compile && yarn build:types",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "repository": {
     "type": "git",

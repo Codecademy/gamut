@@ -1,3 +1,82 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.9...@codecademy/styleguide@21.1.0) (2020-12-07)
+
+
+### Features
+
+* Add optional onClick handler to landing page CTA button ([f0ec6be](https://github.com/Codecademy/client-modules/commit/f0ec6be21fe248dbc931633184a4dbfaada1fd52))
+
+
+
+### [21.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.8...@codecademy/styleguide@21.0.9) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.7...@codecademy/styleguide@21.0.8) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.6...@codecademy/styleguide@21.0.7) (2020-12-07)
+
+
+### Bug Fixes
+
+* **Styleguide:** Add sectioning in a nice way ([d61ac76](https://github.com/Codecademy/client-modules/commit/d61ac764cae59f90fb99a4188874fb246a251fab))
+
+
+
+### [21.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.5...@codecademy/styleguide@21.0.6) (2020-12-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.4...@codecademy/styleguide@21.0.5) (2020-12-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.3...@codecademy/styleguide@21.0.4) (2020-12-02)
+
+
+### Other Changes
+
+* **Styleguide:** add args to toggle story ([d6e6858](https://github.com/Codecademy/client-modules/commit/d6e6858bdb5aecf99a901a7738868afcc191deca))
+
+### [21.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.2...@codecademy/styleguide@21.0.3) (2020-12-02)
+
+### [21.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.1...@codecademy/styleguide@21.0.2) (2020-12-02)
+
+### [21.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.0...@codecademy/styleguide@21.0.1) (2020-12-01)
+
+## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@20.0.1...@codecademy/styleguide@21.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace VisualTheme enum with string type union (#1166)
+
+### Other Changes
+
+* replace VisualTheme enum with string type union ([#1166](https://github.com/Codecademy/client-modules/issues/1166)) ([30827e3](https://github.com/Codecademy/client-modules/commit/30827e3f47610b074f23cc51f3ab51dbb55bc609))
+
 ### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@20.0.0...@codecademy/styleguide@20.0.1) (2020-12-01)
 
 
@@ -1417,4 +1496,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-

@@ -37,8 +37,8 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   return (
     <div
       className={cx(styles.testimonialWrapper, {
-        [styles.darkWrapper]: theme === VisualTheme.DarkMode,
-        [styles.lightWrapper]: theme === VisualTheme.LightMode,
+        [styles.darkWrapper]: theme === 'dark',
+        [styles.lightWrapper]: theme === 'light',
       })}
     >
       <div className={styles.testimonialCardContainer}>

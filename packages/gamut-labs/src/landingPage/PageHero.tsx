@@ -6,11 +6,6 @@ import React from 'react';
 import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
-const Layout = styled(LayoutGrid)`
-  padding: 0 2rem;
-  margin: 2rem 0;
-`;
-
 const RightColumn = styled(Column)`
   margin-left: 1rem;
 
@@ -32,10 +27,6 @@ export type PageHeroProps = BaseProps & {
    * Hero image alt text (for screen readers)
    */
   imgAlt?: string;
-  /**
-   * True if this is the semantic page heading (h1)
-   */
-  isPageHeading?: boolean;
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
@@ -44,24 +35,27 @@ export const PageHero: React.FC<PageHeroProps> = ({
   cta,
   imgSrc,
   imgAlt = '',
-  isPageHeading,
   testId,
 }) => (
-  <Layout testId={testId}>
+  <LayoutGrid testId={testId}>
     <Column
       size={{
         xs: 12,
         sm: imgSrc ? 9 : 12,
       }}
     >
-      {title && <Title isPageHeading={isPageHeading}>{title}</Title>}
+      {title && <Title isPageHeading>{title}</Title>}
       {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>
         <Image src={imgSrc} alt={imgAlt} />
       </RightColumn>
     )}
-  </Layout>
+  </LayoutGrid>
 );

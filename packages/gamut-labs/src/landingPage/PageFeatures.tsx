@@ -6,10 +6,6 @@ import React from 'react';
 import { CTA, Description, Feature, FeatureProps, Title } from './';
 import { BaseProps } from './types';
 
-const Section = styled.div`
-  margin: 2rem;
-`;
-
 const FlexContainer = styled(Container)`
   ${mediaQueries.sm} {
     flex-direction: row;
@@ -36,16 +32,20 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   isIcon,
   testId,
 }) => (
-  <Section data-testid={testId}>
+  <div data-testid={testId}>
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
       {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (
         <Feature {...feature} isIcon={isIcon} key={feature.title} />
       ))}
     </FlexContainer>
-  </Section>
+  </div>
 );
