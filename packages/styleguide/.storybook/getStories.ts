@@ -10,13 +10,11 @@ const splitToChunks = (array, parts) => {
   return result;
 };
 
-// @ts-expect-error globals for storyshots splitting setup
 const TOTAL = global.STORYSHOTS_TOTAL;
 
 const storiesFiles = glob.sync(DEFAULT_STORIES_GLOB, { cwd: __dirname }).sort();
 
 const getChunkedStories = () => {
-  // @ts-expect-error globals for storyshots splitting setup
   const INDEX = global.STORYSHOTS_INDEX;
 
   const chunkedStories = splitToChunks(storiesFiles, TOTAL);
