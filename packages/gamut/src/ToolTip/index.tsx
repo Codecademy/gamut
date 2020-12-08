@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { CardBody } from '../Card';
 import { VisualTheme } from '../theming/VisualTheme';
 import styles from './styles.module.scss';
 
