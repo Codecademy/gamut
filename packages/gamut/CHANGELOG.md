@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.2...@codecademy/gamut@19.1.3) (2020-12-08)
+
+
+### Bug Fixes
+
+* **Form:** Remove flex-start declaration ([40b5316](https://github.com/Codecademy/client-modules/commit/40b53168d3d3b9b041ecfc9446d133c83ce3f080))
+
+
+
+### [19.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.1...@codecademy/gamut@19.1.2) (2020-12-08)
+
+
+### Bug Fixes
+
+* stop using CardBody padding in ToolTip ([0b9a90b](https://github.com/Codecademy/client-modules/commit/0b9a90b6baa12446ff44d7f966f28d7fcd6698e0))
+
+
+
+### [19.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.0...@codecademy/gamut@19.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [19.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.5...@codecademy/gamut@19.1.0) (2020-12-07)
 
 
