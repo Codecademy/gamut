@@ -180,6 +180,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
@@ -194,6 +195,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --canary --preid=next --dist-tag=next
@@ -207,7 +209,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -227,7 +229,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -274,8 +276,8 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_changed_packages
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
