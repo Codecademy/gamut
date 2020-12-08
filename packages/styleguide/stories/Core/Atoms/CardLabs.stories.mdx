@@ -15,10 +15,12 @@ import { Card } from '@codecademy/gamut-labs/src';
 
 <StoryStatus status="volatile" />
 
+export const Template = (args) => <Card {...args} />;
+
 A flex box primitive that allows you create markup configurable flex containers
 
 <Canvas>
-  <Story name="Card">{(args) => <Card {...args} />}</Story>
+  <Story name="Card">{Template.bind({})}</Story>
 </Canvas>
 
 <PropsTable story="Card" />
@@ -29,12 +31,12 @@ We provide 3 style variants for Card.
 
 <Canvas>
   <Story name="White" args={{ variant: 'white' }}>
-    {(args) => <Card {...args} />}
+    {Template.bind({})}
   </Story>
   <Story name="Yellow" args={{ variant: 'yellow' }}>
-    {(args) => <Card {...args} />}
+    {Template.bind({})}
   </Story>
   <Story name="Navy" args={{ variant: 'navy' }}>
-    {(args) => <Card {...args} />}
+    {Template.bind({})}
   </Story>
 </Canvas>

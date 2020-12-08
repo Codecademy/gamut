@@ -30,10 +30,11 @@ You can use this for pretty much anything. So try it out!
   <Story
     name="Box"
     args={{
+      as: 'div',
       children: 'Hello world I am a box',
     }}
   >
-    {({ as = 'div', ...args }) => <Box {...args} />}
+    {(args) => <Box {...args} />}
   </Story>
 </Canvas>
 
