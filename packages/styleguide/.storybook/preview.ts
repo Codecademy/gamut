@@ -3,7 +3,7 @@ import { create } from '@storybook/theming';
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
-import { withEmotion } from './decorators/emotion';
+import { wrapDocs, withEmotion } from './decorators/emotion';
 
 const theme = create({
   base: 'light',
@@ -13,6 +13,11 @@ const theme = create({
 
 export const parameters = {
   viewMode: 'docs',
+  docs: {
+    components: {
+      wrapper: wrapDocs(({ children }) => children),
+    },
+  },
   options: {
     theme: theme,
     storySort: {

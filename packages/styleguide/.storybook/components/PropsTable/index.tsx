@@ -13,6 +13,7 @@ import {
   layout,
 } from '@codecademy/gamut-styles';
 import { Toggle } from '@codecademy/gamut';
+import { Text } from '@codecademy/gamut-labs';
 import { ArgsTable, DocsContext } from '@storybook/addon-docs/blocks';
 import { intersection } from 'lodash';
 import {
