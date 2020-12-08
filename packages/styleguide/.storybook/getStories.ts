@@ -1,7 +1,14 @@
 const glob = require('glob');
-const { chunk } = require('lodash');
 
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
+
+const splitToChunks = (array, parts) => {
+  let result = [];
+  for (let i = parts; i > 0; i--) {
+    result.push(array.splice(0, Math.ceil(array.length / i)));
+  }
+  return result;
+};
 
 const getChunkedStories = () => {
   // @ts-expect-error globals for storyshots splitting setup
@@ -13,17 +20,14 @@ const getChunkedStories = () => {
     .sync(DEFAULT_STORIES_GLOB, { cwd: __dirname })
     .sort();
 
-  const chunkedStories = chunk(
-    storiesFiles,
-    Math.ceil(storiesFiles.length / TOTAL)
-  );
+  const chunkedStories = splitToChunks(storiesFiles, TOTAL);
 
   console.log(
     `Running storyshot tests for ${
       chunkedStories[INDEX].length
-    } stories out of ${storiesFiles.length} total stories. ${chunkedStories[
-      INDEX
-    ].join(', ')}`
+    } stories out of ${storiesFiles.length} total stories ${
+      INDEX + 1
+    }/${TOTAL}. ${chunkedStories[INDEX].join(', ')}`
   );
 
   return chunkedStories[INDEX];
