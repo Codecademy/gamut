@@ -94,6 +94,7 @@ export type GridFormTextAreaField = BaseFormField<string> & {
   label: React.ReactNode;
   validation?: ValidationRules;
   type: 'textarea';
+  placeholder?: string;
 };
 
 export type GridFormField =
