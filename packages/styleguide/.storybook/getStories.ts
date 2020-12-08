@@ -25,9 +25,7 @@ const getChunkedStories = () => {
   console.log(
     `Running storyshot tests for ${
       chunkedStories[INDEX].length
-    } stories out of ${storiesFiles.length} total stories ${
-      INDEX + 1
-    }/${TOTAL}. ${chunkedStories[INDEX].join(', ')}`
+    } stories out of ${storiesFiles.length} total stories ${INDEX + 1}/${TOTAL}`
   );
 
   return chunkedStories[INDEX];
