@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/gamut-system",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Typesafe styled component utilities",
   "author": "codecademy",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
     "build:compile": "tsc",
     "build:transpile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "peerDependencies": {
     "csstype": ">=3.0.0",
