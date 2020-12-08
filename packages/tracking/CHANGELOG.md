@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [0.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.2...@codecademy/tracking@0.1.3) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
 ### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.1...@codecademy/tracking@0.1.2) (2020-11-25)
 
 
@@ -18,4 +31,3 @@
 ### ✨ Features
 
 * Creating the @codecademy/tracking pachage. ([1a91e7e](https://github.com/Codecademy/client-modules/commit/1a91e7e41e9a30e3cabb3b736c1b686c43e9570e))
-
