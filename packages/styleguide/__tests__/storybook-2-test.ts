@@ -1,9 +1,9 @@
 import { mount } from 'enzyme';
 import path from 'path';
 import initStoryshots, { renderWithOptions } from '@storybook/addon-storyshots';
-import { splitTestGlobals } from './splitTestGlobals';
+import { runSplitStoryshotsTests } from './runSplitStoryshotsTests';
 
-splitTestGlobals(2);
+runSplitStoryshotsTests(2);
 
 initStoryshots({
   framework: 'react',
