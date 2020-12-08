@@ -8,10 +8,13 @@ export type BaseProps = {
    * text: button text
    *
    * href: url to navigate to when clicking the button
+   *
+   * onClick: callback when the button is clicked
    */
   cta?: {
     text: string;
     href: string;
+    onClick?: () => void;
   };
   testId?: string;
 };
