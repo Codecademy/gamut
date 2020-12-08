@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.9...@codecademy/styleguide@21.1.0) (2020-12-07)
+
+
+### Features
+
+* Add optional onClick handler to landing page CTA button ([f0ec6be](https://github.com/Codecademy/client-modules/commit/f0ec6be21fe248dbc931633184a4dbfaada1fd52))
+
+
+
 ### [21.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.8...@codecademy/styleguide@21.0.9) (2020-12-07)
 
 **Note:** Version bump only for package @codecademy/styleguide
