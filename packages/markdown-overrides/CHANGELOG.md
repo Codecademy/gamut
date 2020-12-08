@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [0.3.18](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.17...@codecademy/markdown-overrides@0.3.18) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
+### [0.3.17](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.16...@codecademy/markdown-overrides@0.3.17) (2020-12-03)
+
+**Note:** Version bump only for package @codecademy/markdown-overrides
+
+
+
+
+
 ### [0.3.16](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.15...@codecademy/markdown-overrides@0.3.16) (2020-11-30)
 
 ### [0.3.15](https://github.com/Codecademy/client-modules/compare/@codecademy/markdown-overrides@0.3.14...@codecademy/markdown-overrides@0.3.15) (2020-11-30)
@@ -50,4 +71,3 @@
 ### ✨ Features
 
 * **markdown-overrides:** Initial markdown-overrides package setup ([#967](https://github.com/Codecademy/client-modules/issues/967)) ([17b92b9](https://github.com/Codecademy/client-modules/commit/17b92b9225b195837293b1259c397d07f36b816b))
-
