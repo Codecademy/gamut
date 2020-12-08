@@ -4,9 +4,9 @@ const { chunk } = require('lodash');
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
 
 const getChunkedStories = () => {
-  // @ts-expect-error we using janky globals
+  // @ts-expect-error globals for storyshots splitting setup
   const INDEX = global.STORYSHOTS_INDEX;
-  // @ts-expect-error we using janky globals
+  // @ts-expect-error globals for storyshots splitting setup
   const TOTAL = global.STORYSHOTS_TOTAL;
 
   const storiesFiles = glob

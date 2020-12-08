@@ -1,7 +1,7 @@
-// @ts-expect-error we using janky globals
-global.STORYSHOTS_TOTAL = 5;
+// @ts-expect-error globals for storyshots splitting setup
+global.STORYSHOTS_TOTAL = 8;
 
 export const splitTestGlobals = (index: number) => {
-  // @ts-expect-error we using janky globals
+  // @ts-expect-error globals for storyshots splitting setup
   global.STORYSHOTS_INDEX = index;
 };
