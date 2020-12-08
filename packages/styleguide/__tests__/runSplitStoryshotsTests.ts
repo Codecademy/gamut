@@ -9,8 +9,6 @@ export const runSplitStoryshotsTests = (index: number) => {
   // @ts-expect-error globals for storyshots splitting setup
   global.STORYSHOTS_INDEX = index;
 
-  runSplitStoryshotsTests(0);
-
   initStoryshots({
     framework: 'react',
     test: renderWithOptions({
