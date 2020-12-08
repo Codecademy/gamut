@@ -36,7 +36,11 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
       {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (

@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-styles",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "7.5.0",
+  "version": "7.5.2",
   "author": "Jake Hiller <jake@codecademy.com>",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -9,14 +9,14 @@
     "build:clean": "rm -rf ./dist",
     "build:compile": "tsc",
     "build": "yarn build:clean && yarn build:compile",
-    "prepublishOnly": "yarn build"
+    "lernaBuildTask": "yarn build"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut-system": "^0.1.5"
+    "@codecademy/gamut-system": "^0.1.6"
   },
   "peerDependencies": {
     "@emotion/cache": "^11.0.0",

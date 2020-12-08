@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.0...@codecademy/gamut@19.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [19.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.5...@codecademy/gamut@19.1.0) (2020-12-07)
+
+
+### Features
+
+* **modal:** add aria-modal="true" ([7ca7db6](https://github.com/Codecademy/client-modules/commit/7ca7db65fe4a5be80cde32df5157b0cf6327f52b))
+
+
+
+### [19.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.4...@codecademy/gamut@19.0.5) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.3...@codecademy/gamut@19.0.4) (2020-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut
