@@ -3,10 +3,7 @@ import { variant } from '@codecademy/gamut-styles';
 
 import { Box } from '@codecademy/gamut';
 import { HandlerProps } from '@codecademy/gamut-system';
-import {
-  ShadowOffset,
-  createShadow,
-} from '@codecademy/gamut-labs/src/experimental/Card/shadow';
+import { ShadowOffset, createShadow } from './shadow';
 
 const cardVariants = variant({
   yellow: {
