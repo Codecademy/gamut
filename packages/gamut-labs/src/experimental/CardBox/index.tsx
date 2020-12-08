@@ -1,14 +1,10 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { colors, pxRem, variant } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 
 import { Box } from '@codecademy/gamut';
 import { HandlerProps } from '@codecademy/gamut-system';
+import { ShadowOffset, createShadow } from './shadow';
 
-const transitionCoefficient = 50;
-const shadowOffset = 2;
-
-export type ShadowOffset = 2 | 4;
 export type CardBoxProps = { shadowOffset?: ShadowOffset } & HandlerProps<
   typeof cardVariants
 >;
@@ -45,51 +41,3 @@ CardBox.defaultProps = {
   borderWidth: '1px',
   borderStyle: 'solid',
 };
-
-export const createShadowOffset = (offset: ShadowOffset) => {
-  return css`
-    transform: translate(${pxRem(offset)}, ${pxRem(-1 * offset)});
-
-    &:after {
-      transform: translate(
-        ${pxRem(-1 * offset * shadowOffset)},
-        ${pxRem(offset * shadowOffset)}
-      );
-    }
-  `;
-};
-
-const createShadow = (offsetAmount: 2 | 4, shadowColor?: string) => css`
-  position: relative;
-  transition: ${offsetAmount * transitionCoefficient}ms transform;
-
-  &:after,
-  &:before {
-    content: '';
-    position: absolute;
-    background-color: inherit;
-    border-width: inherit;
-    border-color: inherit;
-    border-radius: inherit;
-    border-style: inherit;
-    top: -1px;
-    left: -1px;
-    width: calc(100% + 2px);
-    height: calc(100% + 2px);
-  }
-
-  &:after {
-    z-index: -2;
-    background-color: ${colors.navy};
-    transition: inherit;
-  }
-
-  &:before {
-    ${shadowColor && `box-shadow: -1px 1px 0 ${shadowColor};`}
-    z-index: -1;
-  }
-
-  &:hover {
-    ${createShadowOffset(offsetAmount)}
-  }
-`;
