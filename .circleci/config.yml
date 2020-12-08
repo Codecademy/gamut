@@ -148,7 +148,7 @@ jobs:
 
   tests:
     <<: *default_env
-    parallelism: 4
+    parallelism: 5
     resource_class: large
     steps:
       - checkout
