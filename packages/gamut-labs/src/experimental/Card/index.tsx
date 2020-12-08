@@ -21,6 +21,11 @@ const cardVariants = variant({
     textColor: 'navy',
     borderColor: 'navy',
   },
+  hyper: {
+    backgroundColor: 'hyper',
+    textColor: 'white',
+    borderColor: 'navy',
+  },
 });
 
 export type CardProps = HandlerProps<typeof cardVariants> & {
