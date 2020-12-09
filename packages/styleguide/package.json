@@ -57,5 +57,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
   }
 }
