@@ -14,7 +14,7 @@ module.exports = createConfig()
     context: __dirname // required
   })
   .merge({
-    entry: 'app.js' // defaults to src/main.js
+    entry: 'app.js', // defaults to src/main.js
     output: {
       filename: 'app.js', // defaults to main.js
       path: path.resolve(__dirname, 'public') // defaults to /dist
