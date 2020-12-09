@@ -1,4 +1,5 @@
 import createCache, { Options } from '@emotion/cache';
+import { focusVisible } from './stylisPlugins';
 
 export const EMOTION_KEY = 'gamut';
 export const EMOTION_CONTAINER = 'emotion-styles';
@@ -24,5 +25,6 @@ export const createEmotionCache = (optionOverrides?: Partial<Options>) =>
     key: EMOTION_KEY,
     speedy: true,
     container: getEmotionNode(),
+    stylisPlugins: [focusVisible],
     ...optionOverrides,
   });
