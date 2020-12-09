@@ -46,6 +46,7 @@ Array [
   "Item",
   "LayoutGrid",
   "Markdown",
+  "MarkdownAnchor",
   "MenuItem",
   "Modal",
   "NotificationIcon",

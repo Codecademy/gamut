@@ -27,6 +27,7 @@ export * from './InputStepper';
 export * from './Interstitial';
 export * from './Layout';
 export * from './Markdown';
+export * from './Markdown/libs/overrides/MarkdownAnchor';
 export * from './Menus/MenuItem';
 export * from './Menus/SideMenu';
 export * from './Modal';
