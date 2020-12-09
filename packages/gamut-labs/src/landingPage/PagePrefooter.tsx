@@ -38,7 +38,9 @@ export const PagePrefooter: React.FC<BaseProps> = ({
         {SectionTitle}
         {Desc}
       </FlexContent>
-      <StyledCTA href={cta.href}>{cta.text}</StyledCTA>
+      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick}>
+        {cta.text}
+      </StyledCTA>
     </FlexContainer>
   ) : (
     <div>

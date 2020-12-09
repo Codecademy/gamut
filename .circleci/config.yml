@@ -148,7 +148,7 @@ jobs:
 
   tests:
     <<: *default_env
-    parallelism: 4
+    parallelism: 7
     resource_class: large
     steps:
       - checkout
@@ -157,10 +157,11 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            export TESTFILES=$(yarn --silent test --listTests | sort | circleci tests split --split-by=timings)
-            yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
+            export TESTFILES=$(yarn --silent test --listTests | xargs realpath -q --relative-to=$PWD "$1" | sort | circleci tests split --split-by=timings)
+            yarn test --ci --runInBand --runTestsByPath ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
+            JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - codecov/upload:
           file: /tmp/test-results/jest/*
           conf: codecov.yml
@@ -180,6 +181,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --yes --conventional-commits --changelog-preset conventionalcommits --include-merged-tags --create-release=github
@@ -194,6 +196,7 @@ jobs:
       - checkout
       - *restore_node_modules
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: Lerna Publish
           command: yarn lerna publish --canary --preid=next --dist-tag=next
@@ -207,7 +210,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -227,7 +230,7 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_required_packages
+      - *build_all_packages
       - *restore_webpack_cache
       - run:
           name: build storybook
@@ -274,8 +277,8 @@ jobs:
       - *set_git_user
       - checkout
       - *restore_node_modules
-      - *build_changed_packages
       - *set_npm_token
+      - *build_changed_packages
       - run:
           name: lerna publish (alpha)
           command: yarn lerna publish --exact --yes --include-merged-tags --no-push --no-git-reset --conventional-commits --conventional-prerelease --preid=alpha.${CIRCLE_SHA1:0:6} --dist-tag=alpha.${CIRCLE_SHA1:0:6}
@@ -329,12 +332,6 @@ workflows:
           filters:
             branches:
               only: main
-      - deploy:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: main
       - publish_next:
           requires:
             - checkout_code
@@ -350,6 +347,20 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
+  deploy:
+    jobs:
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
+      - checkout_code:
+          requires:
+           - queue/block_workflow
+      - deploy:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: main
       - deploy_alpha:
           filters:
             branches:
