@@ -1,4 +1,3 @@
-import { VisualTheme } from '@codecademy/gamut';
 import { mount } from 'enzyme';
 import React from 'react';
 
