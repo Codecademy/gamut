@@ -3,6 +3,64 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.3...@codecademy/gamut-labs@7.1.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* Logo's defaultProps need to be of type LogoProps ([e0f3479](https://github.com/Codecademy/client-modules/commit/e0f34796e890b796e1b484cafc6a529a0179ccd9))
+
+
+
+### [7.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.2...@codecademy/gamut-labs@7.1.3) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.1...@codecademy/gamut-labs@7.1.2) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.0...@codecademy/gamut-labs@7.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.7...@codecademy/gamut-labs@7.1.0) (2020-12-07)
+
+
+### Features
+
+* Add optional onClick handler to landing page CTA button ([f0ec6be](https://github.com/Codecademy/client-modules/commit/f0ec6be21fe248dbc931633184a4dbfaada1fd52))
+
+
+
+### [7.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.6...@codecademy/gamut-labs@7.0.7) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.5...@codecademy/gamut-labs@7.0.6) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [7.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.0.4...@codecademy/gamut-labs@7.0.5) (2020-12-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

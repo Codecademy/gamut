@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.4...@codecademy/styleguide@21.1.5) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.3...@codecademy/styleguide@21.1.4) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.2...@codecademy/styleguide@21.1.3) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.1...@codecademy/styleguide@21.1.2) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.0...@codecademy/styleguide@21.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.9...@codecademy/styleguide@21.1.0) (2020-12-07)
+
+
+### Features
+
+* Add optional onClick handler to landing page CTA button ([f0ec6be](https://github.com/Codecademy/client-modules/commit/f0ec6be21fe248dbc931633184a4dbfaada1fd52))
+
+
+
+### [21.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.8...@codecademy/styleguide@21.0.9) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.7...@codecademy/styleguide@21.0.8) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [21.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.6...@codecademy/styleguide@21.0.7) (2020-12-07)
 
 
