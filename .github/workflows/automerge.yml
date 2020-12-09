@@ -46,7 +46,7 @@ jobs:
         env:
           GITHUB_TOKEN: "${{ secrets.REPO_ACCESS_TOKEN }}"
           MERGE_LABELS: "Ship It :shipit:"
-          UPDATE_LABELS: "Ship It :shipit:"
+          UPDATE_LABELS: "Ship It :shipit:,Auto Update"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"
           MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"
