@@ -7,7 +7,7 @@ import { CodecademyProLockupLogo } from './CodecademyProLockupLogo';
 import { CodecademyProMonoLogo } from './CodecademyProMonoLogo';
 import { CodecademyPremiumLogo } from './CodecademyPremiumLogo';
 
-const defaultProps = {
+const defaultProps: LogoProps = {
   height: 32,
   type: 'default',
 };
