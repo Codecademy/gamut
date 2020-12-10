@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.3...@codecademy/gamut@19.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
 ### [19.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.2...@codecademy/gamut@19.1.3) (2020-12-08)
 
 
