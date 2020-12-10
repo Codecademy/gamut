@@ -1,14 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import {
-  PageFeatures,
-  PageFeaturesProps,
-  CTA,
-  Description,
-  Title,
-  Feature,
-} from '..';
+import { PageFeatures, PageFeaturesProps, CTA, Title, Feature } from '..';
 
 const renderComponent = (overrides: Partial<PageFeaturesProps> = {}) => {
   const props = {
@@ -38,13 +31,18 @@ describe('PageFeatures', () => {
   });
 
   it('renders a description when desc prop is provided', () => {
-    const wrapper = renderComponent({ desc: 'Test Description' });
-    expect(wrapper.find(Description).prop('text')).toEqual('Test Description');
+    const wrapper = renderComponent({
+      desc: 'Test Description',
+      testId: 'test',
+    });
+    expect(
+      wrapper.find('div[data-testid="test-description"]').text()
+    ).toContain('Test Description');
   });
 
   it('does not render a description when desc prop is not provided', () => {
     const wrapper = renderComponent();
-    expect(wrapper.find(Description)).toHaveLength(0);
+    expect(wrapper.find('div[data-testid="test-description"]')).toHaveLength(0);
   });
 
   it('renders a cta button when cta prop is provided', () => {

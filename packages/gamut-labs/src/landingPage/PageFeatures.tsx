@@ -47,7 +47,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
       {desc && (
-        <DescriptionContainer>
+        <DescriptionContainer data-testid={`${testId}-description`}>
           <Description text={desc} onMarkdownLinkClick={onMarkdownLinkClick} />
         </DescriptionContainer>
       )}
