@@ -23,9 +23,9 @@ on:
     types:
       - completed
   status: {}
-
-env:
-  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  push:
+    branches:
+      - main
 
 jobs:
   automerge:
@@ -44,8 +44,9 @@ jobs:
       - name: automerge
         uses: pascalgn/automerge-action@v0.12.0
         env:
+          GITHUB_TOKEN: "${{ secrets.REPO_ACCESS_TOKEN }}"
           MERGE_LABELS: "Ship It :shipit:"
-          UPDATE_LABELS: "-disable-updating-from-action-"
+          UPDATE_LABELS: "Ship It :shipit:,Auto Update"
           MERGE_REMOVE_LABELS: "Ship It :shipit:"
           MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "pull-request-title-and-description"

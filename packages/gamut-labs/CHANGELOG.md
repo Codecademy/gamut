@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.3...@codecademy/gamut-labs@7.1.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* Logo's defaultProps need to be of type LogoProps ([e0f3479](https://github.com/Codecademy/client-modules/commit/e0f34796e890b796e1b484cafc6a529a0179ccd9))
+
+
+
 ### [7.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.2...@codecademy/gamut-labs@7.1.3) (2020-12-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/styleguide",
   "description": "Styleguide & Component library for codecademy.com",
-  "version": "21.1.4",
+  "version": "21.1.6",
   "author": "Codecademy Engineering",
   "scripts": {
     "start": "yarn storybook",
@@ -57,5 +57,8 @@
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
   }
 }
