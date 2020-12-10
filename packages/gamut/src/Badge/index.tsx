@@ -1,12 +1,17 @@
-import styled from '@emotion/styled';
-import { colors, fontSize } from '@codecademy/gamut-styles';
+import React from 'react';
+import { Box } from '../Box';
 
-export const Badge = styled.span`
-  background: ${colors.blue};
-  border-radius: 3px;
-  color: ${colors.white};
-  display: inline-block;
-  font-size: ${fontSize[14]};
-  margin: 0 0.5em;
-  padding: 0.25em 0.75em;
-`;
+export const Badge: React.FC = ({ children }) => (
+  <Box
+    backgroundColor="blue"
+    borderRadius="3px"
+    textColor="white"
+    display="inline-block"
+    fontSize={14}
+    marginX={8}
+    paddingY={4}
+    paddingX={12}
+  >
+    {children}
+  </Box>
+);
