@@ -28,7 +28,7 @@ export type PopoverProps = {
   /**
    * Which side to position the beak. If not provided, beak will not be rendered.
    */
-  beakPosition?: 'left' | 'right';
+  beak?: 'left' | 'right';
   /**
    * Whether the popover is rendered.
    */
@@ -53,7 +53,7 @@ export const Popover: React.FC<PopoverProps> = ({
   offset = 20,
   outline = false,
   position = 'below',
-  beakPosition,
+  beak,
   isOpen,
   onRequestClose,
   targetRef,
@@ -127,12 +127,9 @@ export const Popover: React.FC<PopoverProps> = ({
           style={getPopoverPosition()}
           data-testid="popover-content-container"
         >
-          {beakPosition && (
+          {beak && (
             <div
-              className={cx(
-                styles.beak,
-                styles[`${position}-${beakPosition}-beak`]
-              )}
+              className={cx(styles.beak, styles[`${position}-${beak}-beak`])}
               data-testid="popover-beak"
             />
           )}
