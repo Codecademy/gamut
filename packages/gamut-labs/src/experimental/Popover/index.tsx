@@ -58,7 +58,7 @@ export const Popover: React.FC<PopoverProps> = ({
   outline = false,
   position = 'below',
   showBeak,
-  beakPosition,
+  beakPosition = 'left',
   isOpen,
   onRequestClose,
   targetRef,
