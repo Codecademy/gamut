@@ -26,11 +26,21 @@ export const Description: React.FC<DescriptionProps> = ({
     skipDefaultOverrides={{ a: true }}
     overrides={{
       a: {
-        component: (props: MarkdownAnchorProps) => (
-          <MarkdownAnchor href={props.href} onClick={onMarkdownLinkClick}>
-            {props.children}
+        component: ({ href, children }: MarkdownAnchorProps) => (
+          <MarkdownAnchor href={href} onClick={onMarkdownLinkClick}>
+            {children}
           </MarkdownAnchor>
         ),
+        // From https://github.com/bevacqua/insane/blob/master/defaults.js
+        allowedAttributes: [
+          'title',
+          'accesskey',
+          'href',
+          'name',
+          'target',
+          'aria-label',
+          'onclick',
+        ],
       },
     }}
   />
