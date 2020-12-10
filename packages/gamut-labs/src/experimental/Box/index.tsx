@@ -65,7 +65,7 @@ const boxStyles = ({
   return css`
     background-color: ${background};
     color: ${text};
-    padding: ${spacing[padding!]};
+    padding: ${spacing[padding]};
     border-width: 1px;
     border-color: ${border};
     border-radius: 2px;

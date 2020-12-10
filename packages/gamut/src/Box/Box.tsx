@@ -1,14 +1,14 @@
 import {
-  space,
-  layout,
+  background,
   border,
   color,
-  shadow,
-  positioning,
-  background,
-  typography,
   flex,
   grid,
+  layout,
+  positioning,
+  shadow,
+  space,
+  typography,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
