@@ -5,6 +5,10 @@ export type BaseProps = {
    */
   desc?: string;
   /**
+   * Callback when a markdown anchor tag is clicked
+   */
+  onMarkdownLinkClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+  /**
    * text: button text
    *
    * href: url to navigate to when clicking the button

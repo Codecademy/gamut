@@ -1,25 +1,37 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { BaseProps } from './types';
 
-import { Markdown } from '@codecademy/gamut';
+import {
+  Markdown,
+  MarkdownAnchor,
+  MarkdownAnchorProps,
+} from '@codecademy/gamut';
 
-const DescriptionContainer = styled.div`
+export const DescriptionContainer = styled.div`
   margin: 2rem 0 0;
   max-width: 38rem;
 `;
 
 export type DescriptionProps = {
   text: string;
-  className?: string;
-  testId?: string;
-};
+} & Pick<BaseProps, 'onMarkdownLinkClick'>;
 
 export const Description: React.FC<DescriptionProps> = ({
   text,
-  className,
-  testId,
+  onMarkdownLinkClick,
 }) => (
-  <DescriptionContainer className={className} data-testid={testId}>
-    <Markdown text={text} />
-  </DescriptionContainer>
+  <Markdown
+    text={text}
+    skipDefaultOverrides={{ a: true }}
+    overrides={{
+      a: {
+        component: (props: MarkdownAnchorProps) => (
+          <MarkdownAnchor href={props.href} onClick={onMarkdownLinkClick}>
+            {props.children}
+          </MarkdownAnchor>
+        ),
+      },
+    }}
+  />
 );

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 
-import { CTA, Title, Description } from './';
+import { CTA, Title, Description, DescriptionContainer } from './index';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -28,9 +28,14 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   desc,
   cta,
   testId,
+  onMarkdownLinkClick,
 }) => {
   const SectionTitle = title && <Title>{title}</Title>;
-  const Desc = desc && <Description text={desc} />;
+  const Desc = desc && (
+    <DescriptionContainer>
+      <Description text={desc} onMarkdownLinkClick={onMarkdownLinkClick} />
+    </DescriptionContainer>
+  );
 
   return cta ? (
     <FlexContainer nowrap column justify="spaceBetween">

@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { Heading, Markdown } from '@codecademy/gamut';
+import { Heading } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import { Description } from './index';
+import { BaseProps } from './types';
 
 const Icon = styled.img`
   width: 4rem;
@@ -16,7 +18,7 @@ const Image = styled.img`
   margin-bottom: 2rem;
 `;
 
-const StyledMarkdown = styled(Markdown)`
+const StyledDescription = styled(Description)`
   font-size: 1rem;
 `;
 
@@ -60,7 +62,7 @@ export type FeatureProps = {
   desc?: string;
 
   testId?: string;
-};
+} & Pick<BaseProps, 'onMarkdownLinkClick'>;
 
 export const Feature: React.FC<FeatureProps> = ({
   isIcon,
@@ -69,6 +71,7 @@ export const Feature: React.FC<FeatureProps> = ({
   title,
   desc,
   testId,
+  onMarkdownLinkClick,
 }) => (
   <FeatureBlock data-testid={testId}>
     {isIcon ? (
@@ -83,7 +86,10 @@ export const Feature: React.FC<FeatureProps> = ({
     )}
     {desc && (
       <div>
-        <StyledMarkdown text={desc} />
+        <StyledDescription
+          text={desc}
+          onMarkdownLinkClick={onMarkdownLinkClick}
+        />
       </div>
     )}
   </FeatureBlock>
