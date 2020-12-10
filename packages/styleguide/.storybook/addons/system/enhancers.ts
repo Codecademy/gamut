@@ -82,15 +82,15 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       const parsedScale = options.join(' | ');
 
       let control: {
-        type: 'string' | 'select';
+        type: 'text' | 'select';
         options?: unknown[];
       } = {
         type: 'select',
         options: sanitizeOptions(options),
       };
 
-      if (rawScale.indexOf('string') > -1) {
-        control = { type: 'string' };
+      if (rawScale.indexOf('string') > -1 || options.length < 2) {
+        control = { type: 'text' };
       }
 
       return {
