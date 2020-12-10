@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.6...@codecademy/styleguide@21.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
+### [21.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.5...@codecademy/styleguide@21.1.6) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [21.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.4...@codecademy/styleguide@21.1.5) (2020-12-09)
 
 **Note:** Version bump only for package @codecademy/styleguide
