@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { IllustrationProps } from './types';
 
 export const NumberBlocks: React.FC<IllustrationProps> = ({
