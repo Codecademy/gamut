@@ -1,7 +1,8 @@
-import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
-import { TabPanel } from '../TabPanel';
+import React, { Component, ReactElement } from 'react';
+
 import { TabList } from '../TabList';
+import { TabPanel } from '../TabPanel';
 
 export interface TabsProps {
   /**

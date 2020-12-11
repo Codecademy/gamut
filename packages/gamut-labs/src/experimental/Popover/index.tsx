@@ -1,10 +1,10 @@
+import { BodyPortal } from '@codecademy/gamut';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize, useWindowScroll } from 'react-use';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useWindowScroll, useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
-import { BodyPortal } from '@codecademy/gamut';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Avatar, Byline, Quote } from '../../index';
 import { VisualTheme } from '@codecademy/gamut';
 import cx from 'classnames';
+import React from 'react';
 
+import { Avatar, Byline, Quote } from '../../index';
 import styles from './styles.module.scss';
 
 export type Testimonial = {

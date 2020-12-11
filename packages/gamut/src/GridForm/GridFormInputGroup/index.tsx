@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
@@ -8,11 +9,10 @@ import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
 import { GridFormFileInput } from './GridFormFileInput';
 import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
-import { GridFormTextInput } from './GridFormTextInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
+import { GridFormTextInput } from './GridFormTextInput';
 import styles from './styles.module.scss';
-import cx from 'classnames';
 
 export type GridFormInputGroupProps = {
   error?: string;
