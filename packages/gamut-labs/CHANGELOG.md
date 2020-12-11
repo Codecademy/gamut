@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.2.0...@codecademy/gamut-labs@7.3.0) (2020-12-10)
+
+
+### Features
+
+* add beakPosition prop to Popover ([d2fd977](https://github.com/Codecademy/client-modules/commit/d2fd9776ddae130b505ae871d3d386a028fc21e8))
+
+
+
 ## [7.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.4...@codecademy/gamut-labs@7.2.0) (2020-12-10)
 
 
