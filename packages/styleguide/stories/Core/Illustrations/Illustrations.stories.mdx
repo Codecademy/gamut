@@ -6,16 +6,34 @@ import {
   Props,
   Story,
 } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
+import { number, select } from '@storybook/addon-knobs';
 import { LayoutGrid, Column, Text } from '@codecademy/gamut/src';
 import * as illustrations from '@codecademy/gamut-illustrations/src';
 
-import { number, select } from '@storybook/addon-knobs';
+import { StoryStatus } from '~styleguide/blocks';
+
 import { selectableColors } from '../../../helpers';
 
 <Meta
-  title="Illustrations/All Illustrations"
+  args={{
+    illustration: 'NumberBlocks',
+    width: 256,
+  }}
+  argTypes={{
+    illustration: {
+      control: {
+        options: Object.keys(illustrations),
+        type: 'select',
+      },
+    },
+    width: {
+      control: {
+        type: 'number',
+      },
+    },
+  }}
   component={illustrations.NumberBlocks}
+  title="Illustrations/All Illustrations"
 />
 
 # Illustrations
@@ -43,19 +61,14 @@ If you cannot find the Illustration you would like in the ones that we have spec
 
 <Preview>
   <Story name="Editable Illustration">
-    {(args) => {
-      const illustrationName = select(
-        'Illustration Name',
-        Object.keys(illustrations),
-        'NumberBlocks'
-      );
-      const IllustrationComponent = illustrations[illustrationName];
-      return <IllustrationComponent width={number('width', 256)} />;
+    {({ illustration, ...args }) => {
+      const IllustrationComponent = illustrations[illustration];
+      return <IllustrationComponent {...args} />;
     }}
   </Story>
 </Preview>
 
-<Props of={illustrations.NumberBlocks} />
+<Props story="Editable Illustration" />
 
 ## Usage
 
