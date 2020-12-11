@@ -1,8 +1,9 @@
-import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import styles from './styles/FormGroup.module.scss';
+import React, { HTMLAttributes } from 'react';
+
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
+import styles from './styles/FormGroup.module.scss';
 
 export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;

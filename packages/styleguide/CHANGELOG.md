@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.1...@codecademy/styleguide@21.3.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [21.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.0...@codecademy/styleguide@21.2.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* **styleguide:** Fix that md knob ([253bfcb](https://github.com/Codecademy/client-modules/commit/253bfcb6717fb36730ef6cce77d8046fc4b56fd5))
+
+
+
 ## [21.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.6...@codecademy/styleguide@21.2.0) (2020-12-10)
 
 

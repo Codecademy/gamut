@@ -1,7 +1,7 @@
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
-import { RadioGroup, Radio } from '../../../Form';
+import { Radio, RadioGroup } from '../../../Form';
 import { GridFormRadioGroupField } from '../../types';
 
 export type GridFormRadioGroupInputProps = {

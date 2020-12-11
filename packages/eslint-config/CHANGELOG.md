@@ -1,3 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [3.1.0](http://github.com///compare/@codecademy/eslint-config@3.0.7...@codecademy/eslint-config@3.1.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](http://github.com///commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
 ### [3.0.7](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.6...@codecademy/eslint-config@3.0.7) (2020-11-18)
 
 
@@ -181,4 +195,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-

@@ -1,4 +1,5 @@
 import { isNumber } from 'lodash';
+
 import { percentageOrAbsolute } from '../percentageOrAbsolute';
 
 const valueWithUnit = /(\-?\d*\.?\d+)(%|\w*)/;

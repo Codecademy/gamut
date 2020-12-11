@@ -1,8 +1,7 @@
 import cx from 'classnames';
-import React, { ReactNode, FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import { omitProps } from '../../utils/omitProps';
-
 import styles from './styles.module.scss';
 
 export type TabProps = {

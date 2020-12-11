@@ -1,12 +1,12 @@
-import { DirectionalProperty } from '../../types/properties';
+import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
 import {
-  AbstractProps,
   AbstractPropertyConfig,
+  AbstractProps,
   StyleTemplate,
 } from '../../types/config';
-import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
-import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
+import { DirectionalProperty } from '../../types/properties';
 import { CSSObject } from '../../types/system';
+import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
 
 /**
  * Directional props require destructuring of their values to ensure their order.  Instead

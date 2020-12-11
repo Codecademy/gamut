@@ -1,4 +1,5 @@
 import fetch from 'jest-fetch-mock';
+
 import { fetchUser } from '../user';
 
 const apiBaseUrl = 'https://www.codecademy.com';

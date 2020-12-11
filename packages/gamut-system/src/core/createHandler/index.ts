@@ -1,8 +1,9 @@
 import { identity } from 'lodash';
+
 import {
-  createStandardStyleTemplate,
   createDirectionalStyleTemplate,
   createResponsiveStyleTemplate,
+  createStandardStyleTemplate,
 } from '../../styleTemplates';
 import {
   AbstractTheme,
