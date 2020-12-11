@@ -10,6 +10,7 @@ export const BrowserLock: React.FC<IllustrationProps> = ({
     className={className}
     fill="none"
     height={height}
+    viewBox="0 0 287 244"
     width={width}
     xmlns="http://www.w3.org/2000/svg"
   >
