@@ -1,0 +1,44 @@
+{
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "bugs": {
+    "url": "https://github.com/Codecademy/client-modules/issues"
+  },
+  "dependencies": {
+    "@codecademy/gamut": "^19.2.0",
+    "@codecademy/gamut-styles": "^7.5.2",
+    "@codecademy/gamut-system": "^0.1.6",
+    "classnames": "^2.2.5"
+  },
+  "description": "Illustrations library for Codecademy",
+  "homepage": "https://github.com/Codecademy/client-modules#readme",
+  "name": "@codecademy/gamut-illustrations",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "license": "MIT",
+  "peerDependencies": {
+    "@emotion/react": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Codecademy/client-modules.git"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "sideEffects": [
+    "dist/**/[A-Z]**/[A-Z]*.js",
+    "dist/**/[A-Z]**/index.js"
+  ],
+  "version": "0.1.0"
+}

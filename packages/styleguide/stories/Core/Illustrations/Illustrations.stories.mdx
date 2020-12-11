@@ -1,0 +1,74 @@
+import {
+  IconGallery,
+  IconItem,
+  Meta,
+  Preview,
+  Props,
+  Story,
+} from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { LayoutGrid, Column, Text } from '@codecademy/gamut/src';
+import * as illustrations from '@codecademy/gamut-illustrations/src';
+
+import { number, select } from '@storybook/addon-knobs';
+import { selectableColors } from '../../../helpers';
+
+<Meta
+  title="Illustrations/All Illustrations"
+  component={illustrations.NumberBlocks}
+/>
+
+# Illustrations
+
+<StoryStatus status="stable" />
+
+## General Infomation
+
+We're developing a set of fun illustrations given us to design.
+These are intended to be able to take in props for variants such as color, so despite being SVG-based, they're stored in our code as regular React components.
+
+## Adding An Illustration
+
+If you cannot find the Illustration you would like in the ones that we have specified here, please follow these steps to add one.
+
+1. In a Figma that contains an illustration, right-click on the layer and copy it as an SVG
+2. Paste the SVG in a new component under `packages/gamut-illustrations/src/<IllustrationName>.tsx`
+3. Run the ESLint auto-fixer to correct React attribute names
+4. Add the illustration under `packages/gamut-illustrations/src/index.ts`
+5. Send this in as a `feat` pull request
+
+## Sandbox
+
+<Preview>
+  <Story name="Editable Illustration">
+    {(args) => {
+      const illustrationName = select(
+        'Illustration Name',
+        Object.keys(illustrations),
+        Object.keys(illustrations)[0]
+      );
+      const IllustrationComponent = illustrations[illustrationName];
+      return <IllustrationComponent width={number('width', 256)} />;
+    }}
+  </Story>
+</Preview>
+
+<Props of={illustrations.NumberBlocks} />
+
+## Usage
+
+```tsx
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
+
+const MyComponent = () => <NumberBlocks />;
+```
+
+## Illustrations
+
+<IconGallery>
+  {Object.entries(illustrations).map(([illustrationName, Illustration]) => (
+    <IconItem key={illustrationName} name={illustrationName}>
+      <Illustration width="128px" />
+    </IconItem>
+  ))}
+</IconGallery>
