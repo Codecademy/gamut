@@ -1,11 +1,11 @@
-# `gamut-illustrations`
+# 🖼 `gamut-illustrations`
 
-> TODO: description
+_Illustrations for the Gamut component library_
 
 ## Usage
 
-```
-const gamutIllustrations = require('gamut-illustrations');
+```tsx
+import { NumberBlocks } from '@codecademy/gamut-illustrations';
 
-// TODO: DEMONSTRATE API
+const MyComponent = () => <NumberBlocks />;
 ```
