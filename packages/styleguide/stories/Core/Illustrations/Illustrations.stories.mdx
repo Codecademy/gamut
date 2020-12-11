@@ -32,10 +32,11 @@ These are intended to be able to take in props for variants such as color, so de
 If you cannot find the Illustration you would like in the ones that we have specified here, please follow these steps to add one.
 
 1. In a Figma that contains an illustration, right-click on the layer and copy it as an SVG
-2. Paste the SVG in a new component under `packages/gamut-illustrations/src/<IllustrationName>.tsx`
-3. Run the ESLint auto-fixer to correct React attribute names
-4. Add the illustration under `packages/gamut-illustrations/src/index.ts`
-5. Send this in as a `feat` pull request
+2. Use `svgo`, such as through https://jakearchibald.github.io/svgomg, to minify that markup
+3. Paste the SVG in a new component under `packages/gamut-illustrations/src/<IllustrationName>.tsx`
+4. Run the ESLint auto-fixer to correct React attribute names
+5. Add the illustration under `packages/gamut-illustrations/src/index.ts`
+6. Send this in as a `feat` pull request
 
 ## Sandbox
 
