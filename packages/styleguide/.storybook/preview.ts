@@ -13,6 +13,9 @@ const theme = create({
 
 export const parameters = {
   viewMode: 'docs',
+  docs: {
+    theme,
+  },
   options: {
     theme: theme,
     storySort: {
