@@ -35,6 +35,7 @@ export const PropItem = styled.li`
 export const HeaderColumn = styled.div``;
 
 export const PropGroupTag = styled.span<{ active?: boolean }>`
+  user-select: none;
   position: relative;
   display: inline-block;
   padding: ${spacing[4]} ${spacing[8]};
