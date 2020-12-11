@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 

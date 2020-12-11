@@ -1,5 +1,5 @@
+import { mount, shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import { shallow, mount, ShallowWrapper } from 'enzyme';
 
 import { Tab, TabList, TabPanel, Tabs } from '..';
 

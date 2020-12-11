@@ -1,7 +1,8 @@
-import React from 'react';
-import styles from './styles.module.scss';
 import cx from 'classnames';
+import React from 'react';
+
 import networkPin from './assets/networkPin.svg';
+import styles from './styles.module.scss';
 
 type BylineClassNamesProps = {
   bylineContainer?: string;

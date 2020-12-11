@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
 import { PlayIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
+
 import styles from './styles/index.module.scss';
 
 const OverlayPlayButton = () => {

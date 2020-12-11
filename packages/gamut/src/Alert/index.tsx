@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import cx from 'classnames';
-
 import {
-  CloseIcon,
   ArrowChevronDownIcon,
   ArrowChevronUpIcon,
+  CloseIcon,
 } from '@codecademy/gamut-icons';
+import cx from 'classnames';
+import React, { useState } from 'react';
 
+import { ButtonDeprecated } from '../ButtonDeprecated';
+import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
 import { Truncate } from '../Truncate';
-import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
-import { ButtonDeprecated } from '../ButtonDeprecated';
-
-import { BannerType, BANNER_CONFIG } from './constants';
-import { BannerCTA } from './types';
-
+import { BANNER_CONFIG, BannerType } from './constants';
 import styles from './styles.module.scss';
+import { BannerCTA } from './types';
 
 export type AlertProps = {
   className?: string;

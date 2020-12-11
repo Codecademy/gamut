@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import type {
-  TrackingOptions,
   EventDataTypes,
+  TrackingOptions,
   UserClickData,
   UserVisitData,
 } from './types';

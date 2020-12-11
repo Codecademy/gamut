@@ -1,7 +1,6 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { Heading } from '@codecademy/gamut';
+import styled from '@emotion/styled';
+import React from 'react';
 
 const StyledHeading = styled(Heading)`
   max-width: 58rem;

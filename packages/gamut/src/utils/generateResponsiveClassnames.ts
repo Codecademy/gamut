@@ -4,8 +4,8 @@
  */
 
 import {
-  ResponsiveProperty,
   OptionalResponsiveProperty,
+  ResponsiveProperty,
 } from '../typings/responsive-properties';
 
 export const generateResponsiveClassnames = (

@@ -1,5 +1,6 @@
-import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { HTMLAttributes } from 'react';
+
 import styles from './styles/FormGroupLabel.module.scss';
 
 export type FormGroupLabelProps = FormGroupLabelPropsWithFor &

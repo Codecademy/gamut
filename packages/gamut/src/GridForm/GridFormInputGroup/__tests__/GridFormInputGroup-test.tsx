@@ -2,12 +2,12 @@ import { mount } from 'enzyme';
 import React from 'react';
 
 import {
+  stubCheckboxField,
   stubFileField,
   stubRadioGroupField,
   stubSelectField,
-  stubTextField,
   stubTextareaField,
-  stubCheckboxField,
+  stubTextField,
 } from '../../__tests__/stubs';
 import { GridFormInputGroup, GridFormInputGroupProps } from '..';
 

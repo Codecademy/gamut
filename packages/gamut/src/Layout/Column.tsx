@@ -1,13 +1,13 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
 
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import { ContainerElementProps, ColumnSizes, OffsetColumnSizes } from './types';
-import styles from './styles/Column.module.scss';
 import {
-  ResponsiveProperty,
   OptionalResponsiveProperty,
+  ResponsiveProperty,
 } from '../typings/responsive-properties';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
+import styles from './styles/Column.module.scss';
+import { ColumnSizes, ContainerElementProps, OffsetColumnSizes } from './types';
 
 export type ColumnProps = {
   /** The number of columns this element should span out of 12 */

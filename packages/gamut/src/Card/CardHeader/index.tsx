@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
 import cx from 'classnames';
+import React, { ReactNode } from 'react';
+
 import styles from './styles.module.scss';
 
 interface CardHeaderProps {

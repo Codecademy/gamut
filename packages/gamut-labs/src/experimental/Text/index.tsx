@@ -1,7 +1,6 @@
-import styled from '@emotion/styled';
-
+import { color, space, typography } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { typography, color, space } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 
 export const textStyles = compose(typography, color, space);
 

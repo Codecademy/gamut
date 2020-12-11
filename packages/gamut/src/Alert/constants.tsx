@@ -1,9 +1,9 @@
 import {
   AlertIcon,
+  CheckCircledIcon,
   DeleteIcon,
   InfoCircleIcon,
   RatingStarCircleIcon,
-  CheckCircledIcon,
 } from '@codecademy/gamut-icons';
 
 export enum BannerType {
