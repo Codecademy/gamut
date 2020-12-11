@@ -1,8 +1,9 @@
+import { CloseIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
-import styles from './styles.module.scss';
+
 import { ButtonDeprecated, ButtonDeprecatedProps } from '../ButtonDeprecated';
-import { CloseIcon } from '@codecademy/gamut-icons';
+import styles from './styles.module.scss';
 
 export enum BannerStyle {
   BorderBottom = 'border-bottom',

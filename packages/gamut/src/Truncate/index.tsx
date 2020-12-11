@@ -1,6 +1,6 @@
+import cx from 'classnames';
 import React from 'react';
 import TruncateMarkup from 'react-truncate-markup';
-import cx from 'classnames';
 
 import styles from './styles.module.scss';
 

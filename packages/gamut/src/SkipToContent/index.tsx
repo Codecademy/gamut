@@ -1,8 +1,8 @@
+import { ArrowDownIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
 import React from 'react';
 
 import styles from './styles.module.scss';
-import { ArrowDownIcon } from '@codecademy/gamut-icons';
 
 export type SkipToContentProps = {
   className?: string;

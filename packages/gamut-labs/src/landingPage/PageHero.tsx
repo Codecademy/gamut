@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
-import { LayoutGrid, Column } from '@codecademy/gamut';
+import { Column, LayoutGrid } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import { CTA, Title, Description } from './';
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
 const RightColumn = styled(Column)`

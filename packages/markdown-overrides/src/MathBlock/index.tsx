@@ -1,7 +1,9 @@
-import React from 'react';
 import 'katex/dist/katex.css';
-import katex from 'katex';
+
 import cx from 'classnames';
+import katex from 'katex';
+import React from 'react';
+
 import styles from './styles.module.scss';
 
 export type MathBlockProps = {

@@ -1,11 +1,10 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
 
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
-import { ContainerElementProps, GapSizes } from './types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
-
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import styles from './styles/Grid.module.scss';
+import { ContainerElementProps, GapSizes } from './types';
 
 export type LayoutGridProps = {
   /** The grid-gap size that should be present between rows */

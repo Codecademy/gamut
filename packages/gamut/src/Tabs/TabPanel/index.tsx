@@ -1,5 +1,5 @@
-import React, { ReactNode, FunctionComponent } from 'react';
 import cx from 'classnames';
+import React, { FunctionComponent, ReactNode } from 'react';
 
 import styles from './styles.module.scss';
 

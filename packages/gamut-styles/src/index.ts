@@ -1,4 +1,5 @@
 import '@emotion/react';
+
 import { Theme as GamutTheme } from './theme';
 
 export * from './cache';
