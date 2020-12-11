@@ -16,13 +16,14 @@ import { useSystemProps } from './useSystemProps';
 
 type PropTagProps = {
   prop: PropGroups;
+  active: boolean;
   onClick: () => void;
 };
 
-export const PropTag: React.FC<PropTagProps> = ({ prop, onClick }) => {
+export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
   const { propNames } = propGroups[prop];
   return (
-    <PropGroupTag onClick={onClick}>
+    <PropGroupTag active={active} onClick={onClick}>
       {prop}
       <PropGroupTooltip>
         {propNames.map((propName) => (
@@ -42,7 +43,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
   ...props
 }) => {
   const {
-    state: { showAll, allGroups, excludedProps, hasSystemProps },
+    state: { showAll, allGroups, activeGroups, excludedProps, hasSystemProps },
     actions: { toggleGroup, toggleAll },
   } = useSystemProps({
     showAll: false,
@@ -58,7 +59,11 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           </HeaderColumn>
           <HeaderColumn>
             {allGroups.map((group) => (
-              <PropTag prop={group} onClick={() => toggleGroup(group)} />
+              <PropTag
+                prop={group}
+                onClick={() => toggleGroup(group)}
+                active={!showAll && activeGroups.includes(group)}
+              />
             ))}
           </HeaderColumn>
           <HeaderColumn>

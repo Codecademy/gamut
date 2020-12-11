@@ -15,7 +15,7 @@ interface Actions {
 
 const INITIAL_STATE: PropsTableState = {
   activeGroups: [],
-  showAll: true,
+  showAll: false,
 };
 
 const actions = {

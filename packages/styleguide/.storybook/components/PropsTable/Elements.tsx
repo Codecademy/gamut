@@ -6,6 +6,7 @@ import {
   fontMonospace,
   spacing,
 } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 
 export const PropGroupTooltip = styled.ul`
   display: none;
@@ -33,7 +34,7 @@ export const PropItem = styled.li`
 
 export const HeaderColumn = styled.div``;
 
-export const PropGroupTag = styled.span`
+export const PropGroupTag = styled.span<{ active?: boolean }>`
   position: relative;
   display: inline-block;
   padding: ${spacing[4]} ${spacing[8]};
@@ -41,11 +42,22 @@ export const PropGroupTag = styled.span`
   font-family: ${fontAccent};
   margin: ${spacing[4]};
   margin-top: 0;
-  color: ${colors['gray-600']};
-  border: 1px solid ${colors['gray-400']};
   border-radius: 4px;
   text-transform: uppercase;
   cursor: help;
+  ${({ active }) => {
+    if (active) {
+      return css`
+        color: ${colors['blue-300']};
+        border: 1px solid ${colors['blue-200']};
+      `;
+    }
+
+    return css`
+      color: ${colors['gray-600']};
+      border: 1px solid ${colors['gray-400']};
+    `;
+  }}
 
   &:first-of-type {
     margin-left: 0;
