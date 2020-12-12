@@ -1,4 +1,3 @@
-import { swatches } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -18,7 +17,7 @@ const FillButtonInner = styled(ButtonInner)<ButtonProps>(
       padding: 0.75rem 1rem;
 
       ${FillButtonOuter}:hover & {
-        background-color: ${swatches.hyper['400']};
+        background-color: ${modeColors.backgroundDull};
       }
 
       ${FillButtonOuter}:disabled &,

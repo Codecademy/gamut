@@ -2147,6 +2147,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@codecademy/gamut-system@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/@codecademy/gamut-system/-/gamut-system-0.1.6.tgz#40d84043cf0cf6d5734a07779164af16724fdb1d"
+  integrity sha512-xY2b/JYefFB1CAAyz69Qy/SKEqgtplwnoSgZ7zDLXlA+QBh9xhwqDDdZAJcpKKW7ajpl71G034rSkPdsfmfLVw==
+
 "@emotion/babel-plugin@11.0.0", "@emotion/babel-plugin@^11.0.0":
   version "11.0.0"
   resolved "https://registry.npmjs.org/@emotion/babel-plugin/-/babel-plugin-11.0.0.tgz#e6f40fa81ef52775773a53d50220c597ebc5c2ef"

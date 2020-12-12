@@ -9,6 +9,7 @@ export type ButtonProps = HTMLProps<HTMLLinkElement> &
 export const modeColorGroups = {
   dark: {
     background: colors.yellow,
+    backgroundDull: colors.yellow[400],
     backgroundEmphasized: swatches.gray[900],
     backgroundMuted: swatches.gray[600],
     foregroundMuted: swatches.gray[200],
@@ -17,6 +18,7 @@ export const modeColorGroups = {
   },
   light: {
     background: colors.hyper,
+    backgroundDull: swatches.hyper[400],
     backgroundEmphasized: swatches.gray[100],
     backgroundMuted: swatches.gray[200],
     foregroundMuted: swatches.gray[600],
