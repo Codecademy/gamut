@@ -11,9 +11,23 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
+
 [`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
 
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
+
 [`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
+
+[`gamut-labs`: Styleguide Documentation & storybook development sandbox](/packages/gamut-labs/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
+
+[`gamut-system`: Styleguide Documentation & storybook development sandbox](/packages/gamut-system/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
