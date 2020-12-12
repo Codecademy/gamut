@@ -9,12 +9,12 @@
     "es2015",
     "javascript"
   ],
-  "author": "Jake Hiller <jake@codecademy.com>",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Codecademy/babel-preset-codecademy.git"
+    "url": "git+ssh://git@github.com/Codecademy/client-modules.git"
   },
-  "license": "Apache-2.0",
+  "license": "MIT",
   "peerDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/runtime": "^7.12.1"
