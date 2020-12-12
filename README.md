@@ -21,11 +21,11 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
 
-[`gamut-labs`: Styleguide Documentation & storybook development sandbox](/packages/gamut-labs/README.md)
+[`gamut-labs`: Experimental and brand level components](/packages/gamut-labs/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
 
-[`gamut-system`: Styleguide Documentation & storybook development sandbox](/packages/gamut-system/README.md)
+[`gamut-system`: Typescript CSS in JS utility library](/packages/gamut-system/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
 
