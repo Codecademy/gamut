@@ -12,8 +12,11 @@ import {
   standardOverrides,
 } from './libs/overrides';
 import { Iframe } from './libs/overrides/Iframe';
-import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
-import { Table } from './libs/overrides/Table';
+import {
+  MarkdownAnchor,
+  MarkdownAnchorProps,
+} from './libs/overrides/MarkdownAnchor';
+import { Table, TableProps } from './libs/overrides/Table';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
 import styles from './styles/index.module.scss';
@@ -41,6 +44,10 @@ export type MarkdownProps = {
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
+  /**
+   * Callback when a markdown anchor tag is clicked
+   */
+  onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export class Markdown extends PureComponent<MarkdownProps> {
@@ -52,6 +59,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
+      onAnchorClick = () => null,
     } = this.props;
 
     if (!text) return null;
@@ -75,11 +83,13 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: MarkdownAnchor,
+          component: (props: MarkdownAnchorProps) => (
+            <MarkdownAnchor onClick={onAnchorClick} {...props} />
+          ),
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
-          component: (props) => (
+          component: (props: TableProps) => (
             <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
           ),
           allowedAttributes: ['style'],
