@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.1...@codecademy/styleguide@21.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
 ### [21.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.0...@codecademy/styleguide@21.4.1) (2020-12-14)
 
 
