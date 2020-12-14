@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.0...@codecademy/gamut-system@0.2.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* **System:** Refactor props table to have some more features ([c23b68d](https://github.com/Codecademy/client-modules/commit/c23b68da93eb2951e63190d00fe1600bb780d5c7))
+
+
+
 ## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.6...@codecademy/gamut-system@0.2.0) (2020-12-11)
 
 
