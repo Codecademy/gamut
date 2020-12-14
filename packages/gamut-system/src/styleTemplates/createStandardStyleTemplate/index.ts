@@ -1,7 +1,7 @@
 import { createScaleValueTransformer } from '../../transforms/transformScaleValues';
 import {
-  AbstractProps,
   AbstractPropertyConfig,
+  AbstractProps,
   StyleTemplate,
 } from '../../types/config';
 

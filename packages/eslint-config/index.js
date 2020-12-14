@@ -31,7 +31,14 @@ module.exports = {
     sourceType: 'module',
   },
 
-  plugins: ['import', 'jsx-a11y', 'no-only-tests', 'react', 'react-hooks'],
+  plugins: [
+    'import',
+    'jsx-a11y',
+    'no-only-tests',
+    'react',
+    'react-hooks',
+    'simple-import-sort',
+  ],
 
   rules: {
     // These off-by-default or configurable rules are good and we like having them on
@@ -64,6 +71,7 @@ module.exports = {
         skipUndeclared: true,
       },
     ],
+    'simple-import-sort/imports': 'error',
 
     // These rules could be useful, but we haven't gotten around to trying them out
     '@typescript-eslint/no-unsafe-member-access': 'off',

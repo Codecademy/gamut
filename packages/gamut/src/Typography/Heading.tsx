@@ -1,10 +1,10 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
 
-import styles from './styles/Heading.module.scss';
 import { ContainerElementProps } from '../Layout/types';
-import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import { ResponsiveProperty } from '../typings/responsive-properties';
+import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
+import styles from './styles/Heading.module.scss';
 import { AllowedStyles } from './types';
 
 export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

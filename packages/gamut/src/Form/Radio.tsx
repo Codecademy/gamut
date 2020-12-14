@@ -1,5 +1,6 @@
-import React, { ReactNode, InputHTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { InputHTMLAttributes, ReactNode } from 'react';
+
 import styles from './styles/Radio.module.scss';
 
 export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {

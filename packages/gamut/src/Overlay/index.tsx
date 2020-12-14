@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import { useLockBodyScroll } from 'react-use';
 import React from 'react';
+import { useLockBodyScroll } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';

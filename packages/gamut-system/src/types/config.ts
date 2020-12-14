@@ -1,8 +1,8 @@
 import {
-  PropName,
-  Property,
-  Properties,
   DirectionalProperty,
+  Properties,
+  Property,
+  PropName,
 } from './properties';
 import { CSSObject } from './system';
 import { SafeLookup, SafeMapKey, WeakRecord } from './utils';

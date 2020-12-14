@@ -1,5 +1,5 @@
-import { parseSize } from '..';
 import { percentageOrAbsolute } from '../../percentageOrAbsolute';
+import { parseSize } from '..';
 
 jest.mock('../../percentageOrAbsolute', () => ({
   percentageOrAbsolute: jest.fn(),

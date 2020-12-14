@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { Heading, Markdown } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
 
 const Icon = styled.img`
   width: 4rem;

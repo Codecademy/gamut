@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.6...@codecademy/gamut-system@0.2.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
 ### [0.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.1.5...@codecademy/gamut-system@0.1.6) (2020-12-07)
 
 **Note:** Version bump only for package @codecademy/gamut-system

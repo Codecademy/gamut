@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
 
-import { CTA, Title, Description } from './';
+import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`

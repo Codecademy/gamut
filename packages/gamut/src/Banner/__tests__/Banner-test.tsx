@@ -1,9 +1,10 @@
 import { shallow } from 'enzyme';
 import React from 'react';
 
+import styles from ' ../styles.module.scss';
+
 import { ButtonDeprecated } from '../../ButtonDeprecated';
 import { Banner } from '..';
-import styles from ' ../styles.module.scss';
 
 describe('Banner', () => {
   it('renders children when closing has not been requested', () => {
