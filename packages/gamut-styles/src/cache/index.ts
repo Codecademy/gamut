@@ -1,4 +1,5 @@
 import createCache, { Options } from '@emotion/cache';
+
 import { focusVisible } from './stylisPlugins';
 
 export const EMOTION_KEY = 'gamut';

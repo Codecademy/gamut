@@ -1,11 +1,12 @@
-import React from 'react';
-import { system } from '..';
-import render from 'react-test-renderer';
-import styled from '@emotion/styled';
 import { matchers } from '@emotion/jest';
 import { ThemeProvider } from '@emotion/react';
+import styled from '@emotion/styled';
+import React from 'react';
+import render from 'react-test-renderer';
+
 import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { HandlerProps } from '../../../types/config';
+import { system } from '..';
 
 expect.extend(matchers);
 

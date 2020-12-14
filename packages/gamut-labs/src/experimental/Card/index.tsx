@@ -1,9 +1,9 @@
-import styled from '@emotion/styled';
-import { variant } from '@codecademy/gamut-styles';
-
 import { Box } from '@codecademy/gamut';
+import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { ShadowOffset, createShadow } from './shadow';
+import styled from '@emotion/styled';
+
+import { createShadow, ShadowOffset } from './shadow';
 
 const cardVariants = variant({
   yellow: {

@@ -1,5 +1,5 @@
-import { values, pick, pickBy } from 'lodash';
 import * as Icons from '@codecademy/gamut-icons/src';
+import { pick, pickBy, values } from 'lodash';
 
 export const VENDOR = pick(
   Icons,

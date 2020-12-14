@@ -1,5 +1,5 @@
-import React from 'react';
 import { colors } from '@codecademy/gamut-styles';
+import React from 'react';
 
 export type ProLogoAltProps = {
   ariaLabel?: string;

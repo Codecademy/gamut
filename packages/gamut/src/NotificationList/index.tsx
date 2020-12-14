@@ -1,10 +1,11 @@
-import React from 'react';
 import cx from 'classnames';
 import { isEmpty } from 'lodash';
+import React from 'react';
+
 import { omitProps } from '../utils/omitProps';
-import { Notification } from './typings';
 import { NotificationItem } from './NotificationItem';
 import styles from './styles/index.module.scss';
+import { Notification } from './typings';
 
 export type NotificationListProps = {
   className?: string;

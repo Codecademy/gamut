@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
+
 import { MarkdownAnchor } from '../index';
 
 describe('MarkdownAnchor', () => {

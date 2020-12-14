@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import { Box, BoxProps } from './Box';
 
 export const GridBox = styled(Box)<BoxProps>();
