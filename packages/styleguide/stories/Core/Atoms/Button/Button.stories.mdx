@@ -17,10 +17,14 @@ import { StoryStatus } from '~styleguide/blocks';
   args={{
     children: 'Click Me',
     disabled: false,
-    mode: 'light',
     href: '',
+    mode: 'light',
+    size: 'normal',
   }}
   argTypes={{
+    href: {
+      description: 'If defined, component will use an anchor tag',
+    },
     mode: {
       description: 'Visual mode',
       control: {
@@ -28,8 +32,12 @@ import { StoryStatus } from '~styleguide/blocks';
         options: ['dark', 'light'],
       },
     },
-    href: {
-      description: 'If defined, component will use an anchor tag',
+    size: {
+      description: 'Visual size',
+      control: {
+        type: 'select',
+        options: ['normal', 'small'],
+      },
     },
   }}
   title="Atoms/Button"
@@ -43,6 +51,7 @@ We have several versions of buttons that you can use.
 Each supports a _light_ and _dark_ mode.
 
 See the [Figma designs](https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/Buttons-%E2%9C%85?node-id=268%3A0) for a nice grid view of all the variants.
+All but CTA button support a size of either `normal` (default) or `small`.
 
 ## CTA Button
 
