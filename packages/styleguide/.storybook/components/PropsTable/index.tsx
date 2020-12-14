@@ -51,7 +51,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
   });
 
   return (
-    <React.Fragment>
+    <>
       {hasSystemProps && (
         <Header>
           <HeaderColumn>
@@ -60,6 +60,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           <HeaderColumn>
             {allGroups.map((group) => (
               <PropTag
+                key={group}
                 prop={group}
                 onClick={() => toggleGroup(group)}
                 active={!showAll && activeGroups.includes(group)}
@@ -80,6 +81,6 @@ export const PropsTable: React.FC<PropsTableProps> = ({
         </Header>
       )}
       <ArgsTable {...props} exclude={excludedProps} />
-    </React.Fragment>
+    </>
   );
 };

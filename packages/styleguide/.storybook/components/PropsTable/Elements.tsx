@@ -34,6 +34,17 @@ export const PropItem = styled.li`
 
 export const HeaderColumn = styled.div``;
 
+const propTagStates = {
+  active: css`
+    color: ${colors['blue-300']};
+    border: 1px solid ${colors['blue-200']};
+  `,
+  default: css`
+    color: ${colors['gray-600']};
+    border: 1px solid ${colors['gray-400']};
+  `,
+};
+
 export const PropGroupTag = styled.span<{ active?: boolean }>`
   user-select: none;
   position: relative;
@@ -46,19 +57,6 @@ export const PropGroupTag = styled.span<{ active?: boolean }>`
   border-radius: 4px;
   text-transform: uppercase;
   cursor: help;
-  ${({ active }) => {
-    if (active) {
-      return css`
-        color: ${colors['blue-300']};
-        border: 1px solid ${colors['blue-200']};
-      `;
-    }
-
-    return css`
-      color: ${colors['gray-600']};
-      border: 1px solid ${colors['gray-400']};
-    `;
-  }}
 
   &:first-of-type {
     margin-left: 0;
@@ -69,6 +67,8 @@ export const PropGroupTag = styled.span<{ active?: boolean }>`
       display: block;
     }
   }
+
+  ${({ active }) => (active ? propTagStates.active : propTagStates.default)}
 `;
 
 export const Header = styled.div`
