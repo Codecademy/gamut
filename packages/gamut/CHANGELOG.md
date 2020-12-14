@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.2...@codecademy/gamut@19.3.3) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [19.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.1...@codecademy/gamut@19.3.2) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.0...@codecademy/gamut@19.3.1) (2020-12-11)
 
 **Note:** Version bump only for package @codecademy/gamut
