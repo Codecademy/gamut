@@ -1,7 +1,7 @@
+import { ResponsiveProp } from '../../../types/config';
+import { createStandardStyleTemplate } from '../../createStandardStyleTemplate';
 import { createResponsiveStyleTemplate } from '..';
 import { DEFAULT_MEDIA_QUERIES } from '../constants';
-import { createStandardStyleTemplate } from '../../createStandardStyleTemplate';
-import { ResponsiveProp } from '../../../types/config';
 
 describe(createResponsiveStyleTemplate, () => {
   const styleTemplates = {

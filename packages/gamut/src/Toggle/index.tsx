@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import cx from 'classnames';
+import React, { Component } from 'react';
+
 import styles from './styles/index.module.scss';
 
 export type ToggleProps = {

@@ -1,4 +1,5 @@
 import { get, identity, isNumber, isObject, isString } from 'lodash';
+
 import {
   AbstractPropertyConfig,
   AbstractProps,

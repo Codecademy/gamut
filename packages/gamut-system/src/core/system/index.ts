@@ -1,10 +1,11 @@
-import { AbstractTheme } from '../../types/config';
+import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
+
 import * as BASE_CONFIG from '../../props';
+import { AbstractTheme } from '../../types/config';
+import { System, SystemConfig } from '../../types/system';
 import { compose } from '../compose';
 import { createHandler } from '../createHandler';
-import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { getDefaultPropKey } from '../utils';
-import { System, SystemConfig } from '../../types/system';
 
 const create = <
   Theme extends AbstractTheme,

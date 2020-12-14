@@ -1,9 +1,10 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
+
 import { Truncate } from '../Truncate';
-import { Notification } from './typings';
 import { NotificationIcon } from './NotificationIcon';
 import styles from './styles/Notification.module.scss';
+import { Notification } from './typings';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;

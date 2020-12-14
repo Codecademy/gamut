@@ -1,13 +1,13 @@
-import { typography } from './typography';
-import { spacing } from './spacing';
+import { background } from './background';
 import { border } from './borders';
+import { color } from './colors';
+import { flex } from './flex';
+import { grid } from './grid';
 import { layout } from './layout';
 import { positioning } from './position';
-import { grid } from './grid';
-import { flex } from './flex';
-import { background } from './background';
 import { shadow } from './shadow';
-import { color } from './colors';
+import { spacing } from './spacing';
+import { typography } from './typography';
 
 export const baseConfig = {
   typography,

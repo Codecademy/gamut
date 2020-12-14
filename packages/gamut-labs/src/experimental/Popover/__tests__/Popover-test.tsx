@@ -1,6 +1,7 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
+import React from 'react';
+
 import { Popover, PopoverProps } from '..';
 
 const targetRefObj = {
@@ -154,10 +155,9 @@ describe('Popover', () => {
     expect(onRequestClose).toBeCalledTimes(0);
   });
 
-  it('does not show a beak if the prop is false', () => {
+  it('does not show a beak if the prop is not provided', () => {
     renderPopover({
       isOpen: true,
-      showBeak: false,
     });
 
     expect(screen.queryByTestId('popover-beak')).not.toBeInTheDocument();
@@ -166,7 +166,7 @@ describe('Popover', () => {
   it('shows a beak if the prop is true', () => {
     renderPopover({
       isOpen: true,
-      showBeak: true,
+      beak: 'right',
     });
 
     expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();

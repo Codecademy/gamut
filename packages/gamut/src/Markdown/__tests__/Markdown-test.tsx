@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import React from 'react';
+
 import { Markdown } from '../index';
 
 const basicMarkdown = `

@@ -1,21 +1,22 @@
-import React, { PureComponent } from 'react';
 import cx from 'classnames';
-import marked from 'marked';
-import insane from 'insane';
 import HtmlToReact from 'html-to-react';
+import insane from 'insane';
+import marked from 'marked';
+import React, { PureComponent } from 'react';
+
 import { omitProps } from '../utils/omitProps';
 import {
-  createTagOverride,
   createCodeBlockOverride,
+  createTagOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
-import { defaultSanitizationConfig } from './libs/sanitizationConfig';
-import { createPreprocessingInstructions } from './libs/preprocessing';
-import styles from './styles/index.module.scss';
 import { Iframe } from './libs/overrides/Iframe';
 import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
 import { Table } from './libs/overrides/Table';
+import { createPreprocessingInstructions } from './libs/preprocessing';
+import { defaultSanitizationConfig } from './libs/sanitizationConfig';
+import styles from './styles/index.module.scss';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,

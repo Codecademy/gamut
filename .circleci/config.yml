@@ -148,7 +148,7 @@ jobs:
 
   tests:
     <<: *default_env
-    parallelism: 4
+    parallelism: 7
     resource_class: large
     steps:
       - checkout
@@ -157,10 +157,11 @@ jobs:
       - run:
           name: Run test suite
           command: |
-            export TESTFILES=$(yarn --silent test --listTests | sort | circleci tests split --split-by=timings)
-            yarn test --ci --runInBand ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
+            export TESTFILES=$(yarn --silent test --listTests | xargs realpath -q --relative-to=$PWD "$1" | sort | circleci tests split --split-by=timings)
+            yarn test --ci --runInBand --runTestsByPath ${TESTFILES} --coverage --reporters="default" --reporters="jest-junit"
           environment:
             JEST_JUNIT_OUTPUT_DIR: /tmp/test-results/junit
+            JEST_JUNIT_ADD_FILE_ATTRIBUTE: 'true'
       - codecov/upload:
           file: /tmp/test-results/jest/*
           conf: codecov.yml
@@ -331,12 +332,6 @@ workflows:
           filters:
             branches:
               only: main
-      - deploy:
-          requires:
-            - checkout_code
-          filters:
-            branches:
-              only: main
       - publish_next:
           requires:
             - checkout_code
@@ -352,6 +347,20 @@ workflows:
                 - gh-pages
           requires:
             - checkout_code
+  deploy:
+    jobs:
+      - queue/block_workflow:
+          only-on-branch: main
+          time: '10'
+      - checkout_code:
+          requires:
+           - queue/block_workflow
+      - deploy:
+          requires:
+            - checkout_code
+          filters:
+            branches:
+              only: main
       - deploy_alpha:
           filters:
             branches:
