@@ -36,6 +36,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   imgSrc,
   imgAlt = '',
   testId,
+  onAnchorClick,
 }) => (
   <LayoutGrid testId={testId}>
     <Column
@@ -45,7 +46,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
       }}
     >
       {title && <Title isPageHeading>{title}</Title>}
-      {desc && <Description text={desc} />}
+      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
         <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
           {cta.text}

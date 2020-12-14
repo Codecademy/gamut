@@ -1,9 +1,13 @@
 export type BaseProps = {
   title?: string;
   /**
-   * Main body text (can include markdown)
+   * Body text as markdown
    */
   desc?: string;
+  /**
+   * Callback when a markdown anchor tag is clicked
+   */
+  onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   /**
    * text: button text
    *

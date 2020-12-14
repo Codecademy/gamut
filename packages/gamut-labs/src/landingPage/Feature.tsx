@@ -3,6 +3,8 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { BaseProps } from './types';
+
 const Icon = styled.img`
   width: 4rem;
   margin-top: 3rem;
@@ -47,19 +49,7 @@ export type FeatureProps = {
    * Feature image alt text (for screen readers)
    */
   imgAlt?: string;
-
-  /**
-   * Feature title text
-   */
-  title?: string;
-
-  /**
-   * Feature body text as markdown
-   */
-  desc?: string;
-
-  testId?: string;
-};
+} & Pick<BaseProps, 'title' | 'desc' | 'onAnchorClick' | 'testId'>;
 
 export const Feature: React.FC<FeatureProps> = ({
   isIcon,
@@ -67,6 +57,7 @@ export const Feature: React.FC<FeatureProps> = ({
   imgAlt = '',
   title,
   desc,
+  onAnchorClick,
   testId,
 }) => (
   <FeatureBlock data-testid={testId}>
@@ -82,7 +73,7 @@ export const Feature: React.FC<FeatureProps> = ({
     )}
     {desc && (
       <div>
-        <StyledMarkdown text={desc} />
+        <StyledMarkdown text={desc} onAnchorClick={onAnchorClick} />
       </div>
     )}
   </FeatureBlock>
