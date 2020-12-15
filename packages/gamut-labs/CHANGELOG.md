@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.1...@codecademy/gamut-labs@7.5.2) (2020-12-15)
+
+
+### Bug Fixes
+
+* actually use testId prop in prefooter ([bb748dc](https://github.com/Codecademy/client-modules/commit/bb748dc1f938aa6bd922824d763fa9106afe89df))
+
+
+
+### [7.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.0...@codecademy/gamut-labs@7.5.1) (2020-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.4...@codecademy/gamut-labs@7.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.3...@codecademy/gamut-labs@7.4.4) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.2...@codecademy/gamut-labs@7.4.3) (2020-12-14)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
