@@ -37,8 +37,8 @@
     "lernaBuildTask": "yarn build"
   },
   "sideEffects": [
-    "dist/**/[A-Z]**/[A-Z]*.js",
-    "dist/**/[A-Z]**/index.js"
+    "./dist/**/[A-Z]**/[A-Z]*.js",
+    "./dist/**/[A-Z]**/index.js"
   ],
   "version": "0.3.0"
 }
