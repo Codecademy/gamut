@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.2.4...@codecademy/gamut-illustrations@0.2.5) (2020-12-15)
+
+
+### Bug Fixes
+
+* added missing .npmignore to gamut-illustrations ([54d5c37](https://github.com/Codecademy/client-modules/commit/54d5c37821fb0392e4f572aca24dd9d04a02abcd))
+
+
+
 ### [0.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.2.3...@codecademy/gamut-illustrations@0.2.4) (2020-12-15)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations
