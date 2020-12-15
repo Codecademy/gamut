@@ -28,6 +28,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   desc,
   cta,
   onAnchorClick,
+  testId,
 }) => {
   const SectionTitle = title && <Title>{title}</Title>;
   const Desc = desc && (
@@ -35,7 +36,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   );
 
   return cta ? (
-    <FlexContainer nowrap column justify="spaceBetween">
+    <FlexContainer testId={testId} nowrap column justify="spaceBetween">
       <FlexContent>
         {SectionTitle}
         {Desc}
@@ -45,7 +46,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
       </StyledCTA>
     </FlexContainer>
   ) : (
-    <div>
+    <div data-testid={testId}>
       {SectionTitle}
       {Desc}
     </div>
