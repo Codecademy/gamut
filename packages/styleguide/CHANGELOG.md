@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.3...@codecademy/styleguide@21.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
 ### [21.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.2...@codecademy/styleguide@21.4.3) (2020-12-14)
 
 **Note:** Version bump only for package @codecademy/styleguide
