@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.6.0...@codecademy/gamut@19.7.0) (2020-12-16)
+
+
+### Features
+
+* added focus-visible to newer buttons and similar ([a105d03](https://github.com/Codecademy/client-modules/commit/a105d03d7753e22dc91db76b05ba9684fcd7acdb))
+
+
+
 ## [19.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.5.0...@codecademy/gamut@19.6.0) (2020-12-16)
 
 
