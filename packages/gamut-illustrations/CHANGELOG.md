@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.3.0...@codecademy/gamut-illustrations@0.3.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* corrected gamut-system dependency in gamut-illustrations ([ca537fc](https://github.com/Codecademy/client-modules/commit/ca537fcb58fdc33ae72f1dc3716c0596f5ecc634))
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.2.5...@codecademy/gamut-illustrations@0.3.0) (2020-12-15)
+
+
+### Features
+
+* also export types from gamut-illustrations ([fd0d41c](https://github.com/Codecademy/client-modules/commit/fd0d41ca5080db4a7aad6df1712391f2ef233b78))
+
+
+
 ### [0.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.2.4...@codecademy/gamut-illustrations@0.2.5) (2020-12-15)
 
 
