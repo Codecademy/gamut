@@ -36,7 +36,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   );
 
   return cta ? (
-    <FlexContainer testId={testId} nowrap column justify="spaceBetween">
+    <FlexContainer data-testid={testId} nowrap column justify="spaceBetween">
       <FlexContent>
         {SectionTitle}
         {Desc}
