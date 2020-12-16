@@ -19,7 +19,6 @@ const internalProps = [
   'align',
   'justify',
   'alignSelf',
-  'testId',
 ];
 
 type ContainerPosition =
@@ -69,7 +68,6 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
    *  (cannot be used with: `nowrap`)
    * */
   wrap?: boolean;
-  testId?: string;
 }
 
 export class Container extends React.Component<ContainerProps> {
@@ -103,11 +101,7 @@ export class Container extends React.Component<ContainerProps> {
     const propsToTransfer = omit(this.props, internalProps);
 
     return (
-      <div
-        {...propsToTransfer}
-        className={classes}
-        data-testid={this.props.testId}
-      >
+      <div {...propsToTransfer} className={classes}>
         {this.props.children}
       </div>
     );
