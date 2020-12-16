@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.0...@codecademy/gamut@19.7.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* revert "feat: add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242))" ([#1248](https://github.com/Codecademy/client-modules/issues/1248)) ([5a69644](https://github.com/Codecademy/client-modules/commit/5a69644499ec9f684d670aa11250e3ab1db767cd))
+
+
+
 ## [19.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.6.0...@codecademy/gamut@19.7.0) (2020-12-16)
 
 
