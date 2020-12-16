@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.5.0...@codecademy/gamut@19.6.0) (2020-12-16)
+
+
+### Features
+
+* added size prop for buttons ([da17d06](https://github.com/Codecademy/client-modules/commit/da17d069e5ec4d9b7635d7900efb13190d0aa349))
+
+
+
 ## [19.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.4.0...@codecademy/gamut@19.5.0) (2020-12-15)
 
 
