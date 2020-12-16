@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { StoryStatus } from '~styleguide/blocks';
 import { Testimonial } from '@codecademy/gamut-labs/src';
-import { VisualTheme } from '@codecademy/gamut/src';
 
 <Meta title="Labs/Brand/Molecules/Testimonial" component={Testimonial} />
 
@@ -31,11 +30,7 @@ A pull quote for use in an editorial page.
           ),
         }}
         size={select('size', ['small', 'medium', 'large'], 'small')}
-        theme={select(
-          'theme',
-          [VisualTheme.DarkMode, VisualTheme.LightMode],
-          VisualTheme.DarkMode
-        )}
+        theme={select('theme', ['dark', 'light'], 'dark')}
       />
     )}
   </Story>
@@ -55,7 +50,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="medium"
-        theme={VisualTheme.DarkMode}
+        theme="dark"
       />
     )}
   </Story>
@@ -70,7 +65,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="large"
-        theme={VisualTheme.DarkMode}
+        theme="dark"
       />
     )}
   </Story>
@@ -84,7 +79,7 @@ A pull quote for use in an editorial page.
           quote: 'Coding aint rocket science, it’s just falsely intimidating.',
         }}
         size="large"
-        theme={VisualTheme.DarkMode}
+        theme="dark"
       />
     )}
   </Story>
@@ -99,7 +94,7 @@ A pull quote for use in an editorial page.
           imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
         }}
         size="small"
-        theme={VisualTheme.Light}
+        theme="light"
       />
     )}
   </Story>

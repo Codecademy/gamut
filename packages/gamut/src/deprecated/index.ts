@@ -72,4 +72,3 @@ export * from './Icon/icons/UpArrowIcon';
 export * from './Icon/icons/RightArrowIcon';
 export * from './Icon/icons/LeftArrowIcon';
 export * from './Icon';
-export * from './IkonaIcon';

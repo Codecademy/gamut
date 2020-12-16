@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import { CardBody } from '../Card';
+import React, { ReactNode } from 'react';
+
 import { VisualTheme } from '../theming/VisualTheme';
 import styles from './styles.module.scss';
 
@@ -32,7 +32,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   id,
   position = ToolTipPosition.TopRight,
   target,
-  theme = VisualTheme.LightMode,
+  theme = 'light',
   tipClassName,
   wrapperClassName,
 }) => {
@@ -52,7 +52,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         className={cx(
           styles.toolTipContainer,
           styles[position],
-          theme === VisualTheme.DarkMode
+          theme === 'dark'
             ? styles.toolTipContainerDark
             : styles.toolTipContainerLight,
           tipClassName
@@ -60,7 +60,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         role="tooltip"
         id={id}
       >
-        <CardBody className={styles.toolTipBody}>{children}</CardBody>
+        <div className={styles.toolTipBody}>{children}</div>
       </div>
     </div>
   );

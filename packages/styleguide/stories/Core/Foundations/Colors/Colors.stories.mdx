@@ -17,6 +17,7 @@ import {
 import {
   brandColors,
   colors,
+  trueColors,
   colorNames,
   interactiveColors,
   swatches,
@@ -60,7 +61,7 @@ colors.blue;
 
 <Story name="Standard">
   <LayoutGrid rowGap="md" columnGap="md">
-    {objectKeys(colors).map((color) => (
+    {objectKeys(trueColors).map((color) => (
       <Column key={color} size={{ xs: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">

@@ -54,6 +54,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
+      role="figure"
       className={cx(styles.progressBar, styles[theme], className)}
       style={{
         background: backgroundColor,

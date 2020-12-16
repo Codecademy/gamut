@@ -1,4 +1,5 @@
 import { system } from '@codecademy/gamut-system';
+
 import { Theme } from './theme';
 
 const {
@@ -55,6 +56,16 @@ const {
     borderColor: {
       propName: 'borderColor',
       scale: 'colors',
+    },
+  },
+  grid: {
+    columnGap: {
+      propName: 'columnGap',
+      scale: 'spacing',
+    },
+    rowGap: {
+      propName: 'rowGap',
+      scale: 'spacing',
     },
   },
 });

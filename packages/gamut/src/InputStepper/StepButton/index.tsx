@@ -1,9 +1,9 @@
+import {
+  ArrowChevronDownIcon,
+  ArrowChevronUpIcon,
+} from '@codecademy/gamut-icons';
 import React from 'react';
 
-import {
-  ArrowChevronUpIcon,
-  ArrowChevronDownIcon,
-} from '@codecademy/gamut-icons';
 import { ButtonDeprecated } from '../../ButtonDeprecated';
 import styles from './styles.module.scss';
 

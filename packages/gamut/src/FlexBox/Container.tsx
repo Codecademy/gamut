@@ -1,6 +1,7 @@
-import { isNumber, omit } from 'lodash';
-import React, { ReactNode, HTMLAttributes } from 'react';
 import cx from 'classnames';
+import { isNumber, omit } from 'lodash';
+import React, { HTMLAttributes, ReactNode } from 'react';
+
 import styles from './styles/index.module.scss';
 
 const internalProps = [

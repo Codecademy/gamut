@@ -1,7 +1,8 @@
-import React from 'react';
-import styles from './styles.module.scss';
-import cx from 'classnames';
 import { VisualTheme } from '@codecademy/gamut';
+import cx from 'classnames';
+import React from 'react';
+
+import styles from './styles.module.scss';
 
 type AvatarImageProps =
   | {
@@ -19,7 +20,7 @@ type AvatarBaseProps = {
 type AvatarProps = AvatarBaseProps & AvatarImageProps;
 
 export const Avatar: React.FC<AvatarProps> = ({
-  theme = VisualTheme.LightMode,
+  theme = 'light',
   className,
   ...avatarImageProps
 }) => {
@@ -28,9 +29,7 @@ export const Avatar: React.FC<AvatarProps> = ({
       className={cx(
         styles.container,
         className,
-        theme === VisualTheme.DarkMode
-          ? styles.darkContainer
-          : styles.lightContainer
+        theme === 'dark' ? styles.darkContainer : styles.lightContainer
       )}
     >
       {/*  The current rules for alt-text don't allow images with aria-labelledby to have no alt. So, we need to disable the rule for that line. https://github.com/evcohen/eslint-plugin-jsx-a11y/issues/411#issue-306995775 */}

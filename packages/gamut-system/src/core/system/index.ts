@@ -1,10 +1,11 @@
+import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
+
+import * as BaseConfig from '../../props';
 import { AbstractTheme } from '../../types/config';
-import * as BASE_CONFIG from '../../props';
+import { System, SystemConfig } from '../../types/system';
 import { compose } from '../compose';
 import { createHandler } from '../createHandler';
-import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 import { getDefaultPropKey } from '../utils';
-import { System, SystemConfig } from '../../types/system';
 
 const create = <
   Theme extends AbstractTheme,
@@ -18,7 +19,7 @@ const create = <
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BASE_CONFIG, config ?? {});
+  const propGroups = merge(BaseConfig, config || {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {
@@ -40,8 +41,8 @@ const create = <
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
-    const variants = config?.variants ?? config;
-    const propKey = config?.prop ?? 'variant';
+    const variants = config?.variants || config;
+    const propKey = config?.prop || 'variant';
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)

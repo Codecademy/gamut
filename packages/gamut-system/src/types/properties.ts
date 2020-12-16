@@ -1,6 +1,6 @@
 import * as CSS from 'csstype';
 
-export type Properties = {
+export interface Properties {
   /** Backgrounds */
   backgroundImage: {
     defaultScale: CSS.Properties['backgroundImage'];
@@ -247,7 +247,7 @@ export type Properties = {
   backgroundColor: {
     defaultScale: CSS.Properties['backgroundColor'];
   };
-};
+}
 
 export type PropertyUnion = {
   [P in keyof Properties]: {

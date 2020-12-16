@@ -1,11 +1,11 @@
 import {
   GridFormCheckboxField,
   GridFormFileField,
-  GridFormSelectField,
-  GridFormTextField,
-  GridFormTextAreaField,
   GridFormRadioGroupField,
   GridFormRadioOption,
+  GridFormSelectField,
+  GridFormTextAreaField,
+  GridFormTextField,
 } from '../types';
 
 export const stubCheckboxField: GridFormCheckboxField = {

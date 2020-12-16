@@ -1,5 +1,6 @@
-import React from 'react';
 import cx from 'classnames';
+import React from 'react';
+
 import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 
@@ -16,7 +17,7 @@ const propKeys = [
   'first',
   'last',
   'className',
-  'tagName',
+  'as',
   'children',
 ];
 
@@ -77,14 +78,12 @@ export type RowProps = {
   /**
    * Component type to wrap children with.
    */
-  tagName?: string;
+  as?: React.ElementType;
   /** Align columns to `flex-start` on screen sizes greater than modifer */
   top?: ModificatorType;
 };
 
-export const Row: React.FC<RowProps> = (props) => {
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className: getClassNames(props) })
-  );
+export const Row: React.FC<RowProps> = ({ as: Element = 'div', ...props }) => {
+  const className = getClassNames(props);
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };

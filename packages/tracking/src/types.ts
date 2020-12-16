@@ -143,6 +143,7 @@ export type UserClickData = UserSharedData & {
   content_slug?: string;
   module_id?: string;
   track_slug?: string;
+  module_slug?: string;
   button?: string;
   type?: string;
   current_challenge_day?: string | number;

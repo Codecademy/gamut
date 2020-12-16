@@ -1,9 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { VisualTheme } from '@codecademy/gamut';
 
-import { Avatar } from '..';
 import styles from '../../styles.module.scss';
+import { Avatar } from '..';
 
 describe('Avatar', () => {
   it('when an "alt" prop is passed, an "alt" attribute is added to the <img/>', () => {
@@ -31,9 +30,7 @@ describe('Avatar', () => {
   });
 
   it('adds the light class to the container name when its theme is light', () => {
-    const wrapper = mount(
-      <Avatar src="" theme={VisualTheme.LightMode} alt="" />
-    );
+    const wrapper = mount(<Avatar src="" theme="light" alt="" />);
 
     const containerClassName = wrapper.find(`div`).prop('className');
 
@@ -41,9 +38,7 @@ describe('Avatar', () => {
   });
 
   it('adds the dark class to the container name when its theme is dark', () => {
-    const wrapper = mount(
-      <Avatar src="" theme={VisualTheme.DarkMode} alt="" />
-    );
+    const wrapper = mount(<Avatar src="" theme="dark" alt="" />);
 
     const containerClassName = wrapper.find(`div`).prop('className');
 

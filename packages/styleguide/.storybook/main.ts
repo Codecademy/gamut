@@ -1,5 +1,6 @@
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
+const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
@@ -22,8 +23,9 @@ module.exports = {
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs/register',
+    './addons/system/preset',
   ],
-  stories: ['../stories/**/*.stories.(mdx|tsx)'],
+  stories: getStories(),
 
   babel: (config) => {
     config.plugins = config.plugins.map((plugin) => {
@@ -52,7 +54,16 @@ module.exports = {
       ...config.resolve,
       alias: {
         ...emotionless(config.resolve.alias),
-        '~styleguide/blocks': path.resolve(__dirname, './Blocks/'),
+        '~styleguide/blocks': path.resolve(__dirname, './components/'),
+        '@codecademy/gamut-styles$': path.resolve(
+          __dirname,
+          '../../gamut-styles/src'
+        ),
+        '@codecademy/gamut-system$': path.resolve(
+          __dirname,
+          '../../gamut-system/src'
+        ),
+        '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
       },
     };
 

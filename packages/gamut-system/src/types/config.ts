@@ -1,15 +1,17 @@
 import {
-  PropName,
-  Property,
-  Properties,
   DirectionalProperty,
+  Properties,
+  Property,
+  PropName,
 } from './properties';
 import { CSSObject } from './system';
 import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** Theme Shape  */
 
-type BaseTheme = Readonly<WeakRecord<string, ScaleArray | ScaleMap>>;
+type BaseTheme = Readonly<{
+  readonly [key: string]: any;
+}>;
 
 export type AbstractTheme = BaseTheme & {
   breakpoints?: {

@@ -1,5 +1,5 @@
-import { deprecatedColors as colorSwatch } from './deprecated-colors';
 import { pxRem } from '../utilities/pxRem';
+import { deprecatedColors as colorSwatch } from './deprecated-colors';
 
 export const fontAccent = `"Suisse", "Apercu", -apple-system, BlinkMacSystemFont,
 "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",

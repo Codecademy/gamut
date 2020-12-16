@@ -1,8 +1,8 @@
-import React from 'react';
-import { Avatar, Byline, Quote } from '../../index';
 import { VisualTheme } from '@codecademy/gamut';
 import cx from 'classnames';
+import React from 'react';
 
+import { Avatar, Byline, Quote } from '../../index';
 import styles from './styles.module.scss';
 
 export type Testimonial = {
@@ -37,8 +37,8 @@ export const Testimonial: React.FC<TestimonialProps> = ({
   return (
     <div
       className={cx(styles.testimonialWrapper, {
-        [styles.darkWrapper]: theme === VisualTheme.DarkMode,
-        [styles.lightWrapper]: theme === VisualTheme.LightMode,
+        [styles.darkWrapper]: theme === 'dark',
+        [styles.lightWrapper]: theme === 'light',
       })}
     >
       <div className={styles.testimonialCardContainer}>
