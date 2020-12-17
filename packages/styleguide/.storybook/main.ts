@@ -1,6 +1,5 @@
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
-
 const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
