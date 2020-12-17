@@ -6,8 +6,8 @@
   "sideEffects": [
     "**/*.css",
     "**/*.scss",
-    "**/[A-Z]*.{js,tsx}",
-    "**/[A-Z]*/**/index.{js,tsx}"
+    "**/[A-Z]*.js",
+    "**/[A-Z]*/index.js"
   ],
   "main": "dist/index.js",
   "module": "dist/index.js",
