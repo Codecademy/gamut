@@ -36,7 +36,7 @@ const StyledButtonOutline = styled('button', {
       user-select: none;
     }
 
-    &:focus {
+    &:focus-visible {
       box-shadow: 0 0 0 2px ${modeColors.background};
       outline: none;
     }
