@@ -3,6 +3,10 @@
   "description": "Styleguide & Component library for codecademy.com",
   "version": "7.6.2",
   "author": "Jake Hiller <jake@codecademy.com>",
+  "sideEffects": [
+    "**/*.css",
+    "**/*.scss"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "scripts": {

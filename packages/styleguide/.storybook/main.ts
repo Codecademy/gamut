@@ -1,5 +1,7 @@
 const path = require('path');
 const { configs } = require('@codecademy/webpack-config');
+const SideEffectsFlagPlugin = require('@codecademy/webpack-config/plugins/SideEffectsFlagPlugin');
+
 const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
@@ -66,7 +68,7 @@ module.exports = {
         '@codecademy/gamut$': path.resolve(__dirname, '../../gamut/src'),
       },
     };
-
+    config.plugins.push(new SideEffectsFlagPlugin());
     return config;
   },
 };

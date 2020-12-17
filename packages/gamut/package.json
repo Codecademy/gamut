@@ -4,10 +4,10 @@
   "version": "19.5.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
-    "./dist/**/*.css",
-    "./dist/**/*.scss",
-    "./dist/**/[A-Z]**/[A-Z]*.js",
-    "./dist/**/[A-Z]**/index.js"
+    "**/*.css",
+    "**/*.scss",
+    "**/[A-Z]*.{js,tsx}",
+    "**/[A-Z]*/**/index.{js,tsx}"
   ],
   "module": "./dist/index.js",
   "main": "./dist/index.js",

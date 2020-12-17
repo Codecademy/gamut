@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const loaders = require('../loaders');
+const SideEffectsFlagPlugin = require('@codecademy/webpack-config/plugins/SideEffectsFlagPlugin');
 const ENV = require('../lib/env');
 
 const commonConfig = (options = {}) => {
@@ -102,6 +103,12 @@ const commonConfig = (options = {}) => {
           }),
         ],
       },
+      plugins: [
+        /**
+         * Apply better side effects glob handling until webpack 5 is released
+         */
+        new SideEffectsFlagPlugin(),
+      ],
     });
   }
 

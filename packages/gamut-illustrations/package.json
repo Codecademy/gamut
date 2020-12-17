@@ -36,9 +36,6 @@
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
-  "sideEffects": [
-    "./dist/**/[A-Z]**/[A-Z]*.js",
-    "./dist/**/[A-Z]**/index.js"
-  ],
+  "sideEffects": false,
   "version": "0.3.0"
 }
