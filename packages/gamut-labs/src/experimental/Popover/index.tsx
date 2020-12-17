@@ -77,7 +77,7 @@ export const Popover: React.FC<PopoverProps> = ({
     };
     const alignments = {
       right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
-      left: Math.round(window.scrollX + targetRect.left + horizontalOffset),
+      left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
     };
     return {
       top: positions[position],
