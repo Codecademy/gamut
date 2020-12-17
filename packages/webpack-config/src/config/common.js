@@ -87,6 +87,8 @@ const commonConfig = (options = {}) => {
       optimization: {
         moduleIds: 'hashed',
         minimize: true,
+        // Disabled until webpack 5 while we use our own side effects plugin
+        sideEffects: false,
         minimizer: minimizer || [
           new TerserPlugin({
             cache: true,
