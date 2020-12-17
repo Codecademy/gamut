@@ -12,6 +12,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
+    "lint:fix": "yarn lint --fix",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",

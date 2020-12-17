@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { Container } from '@codecademy/gamut';
-import { CTA, Title, Description, Feature, FeatureProps } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { CTA, Description, Feature, FeatureProps, Title } from './';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -16,7 +16,10 @@ export type PageFeaturesProps = BaseProps & {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: Omit<FeatureProps, 'isIcon'>[];
+  features: Pick<
+    FeatureProps,
+    'imgSrc' | 'imgAlt' | 'title' | 'desc' | 'testId'
+  >[];
 
   /**
    * Whether an icon or a full size image should be rendered
@@ -31,11 +34,12 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   features,
   isIcon,
   testId,
+  onAnchorClick,
 }) => (
   <div data-testid={testId}>
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
-      {desc && <Description text={desc} />}
+      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
       {cta && (
         <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
           {cta.text}
@@ -44,7 +48,12 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (
-        <Feature {...feature} isIcon={isIcon} key={feature.title} />
+        <Feature
+          {...feature}
+          isIcon={isIcon}
+          key={feature.title}
+          onAnchorClick={onAnchorClick}
+        />
       ))}
     </FlexContainer>
   </div>

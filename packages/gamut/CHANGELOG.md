@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.0...@codecademy/gamut@19.7.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* revert "feat: add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242))" ([#1248](https://github.com/Codecademy/client-modules/issues/1248)) ([5a69644](https://github.com/Codecademy/client-modules/commit/5a69644499ec9f684d670aa11250e3ab1db767cd))
+
+
+
+## [19.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.6.0...@codecademy/gamut@19.7.0) (2020-12-16)
+
+
+### Features
+
+* added focus-visible to newer buttons and similar ([a105d03](https://github.com/Codecademy/client-modules/commit/a105d03d7753e22dc91db76b05ba9684fcd7acdb))
+
+
+
+## [19.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.5.0...@codecademy/gamut@19.6.0) (2020-12-16)
+
+
+### Features
+
+* added size prop for buttons ([da17d06](https://github.com/Codecademy/client-modules/commit/da17d069e5ec4d9b7635d7900efb13190d0aa349))
+
+
+
+## [19.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.4.0...@codecademy/gamut@19.5.0) (2020-12-15)
+
+
+### Features
+
+* add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242)) ([3db2a8f](https://github.com/Codecademy/client-modules/commit/3db2a8fbcdcd3abba25c32771f7d53e95f8d068d))
+
+
+
+## [19.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.3...@codecademy/gamut@19.4.0) (2020-12-14)
+
+
+### Features
+
+* **Markdown:** Add onAnchorClick prop ([110c263](https://github.com/Codecademy/client-modules/commit/110c263214e620c808abf5e9a1a91b8c2a7a7e96))
+
+
+
+### [19.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.2...@codecademy/gamut@19.3.3) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [19.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.1...@codecademy/gamut@19.3.2) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.0...@codecademy/gamut@19.3.1) (2020-12-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [19.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.2.0...@codecademy/gamut@19.3.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
 ## [19.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.3...@codecademy/gamut@19.2.0) (2020-12-10)
 
 

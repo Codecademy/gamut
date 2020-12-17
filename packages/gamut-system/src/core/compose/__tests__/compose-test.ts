@@ -1,5 +1,5 @@
 import { identity } from 'lodash';
-import { compose } from '..';
+
 import { border, layout, typography } from '../../../props';
 import {
   createDirectionalStyleTemplate,
@@ -7,6 +7,7 @@ import {
 } from '../../../styleTemplates';
 import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { createHandler } from '../../createHandler';
+import { compose } from '..';
 
 const display = createHandler(layout.display);
 const textAlign = createHandler(typography.textAlign);

@@ -3,6 +3,98 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.4...@codecademy/gamut-labs@7.5.5) (2020-12-16)
+
+
+### Bug Fixes
+
+* revert "feat: add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242))" ([#1248](https://github.com/Codecademy/client-modules/issues/1248)) ([5a69644](https://github.com/Codecademy/client-modules/commit/5a69644499ec9f684d670aa11250e3ab1db767cd))
+
+
+
+### [7.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.3...@codecademy/gamut-labs@7.5.4) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.2...@codecademy/gamut-labs@7.5.3) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.1...@codecademy/gamut-labs@7.5.2) (2020-12-15)
+
+
+### Bug Fixes
+
+* actually use testId prop in prefooter ([bb748dc](https://github.com/Codecademy/client-modules/commit/bb748dc1f938aa6bd922824d763fa9106afe89df))
+
+
+
+### [7.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.0...@codecademy/gamut-labs@7.5.1) (2020-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.4...@codecademy/gamut-labs@7.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.3...@codecademy/gamut-labs@7.4.4) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.2...@codecademy/gamut-labs@7.4.3) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.1...@codecademy/gamut-labs@7.4.2) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.0...@codecademy/gamut-labs@7.4.1) (2020-12-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.3.0...@codecademy/gamut-labs@7.4.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
 ## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.2.0...@codecademy/gamut-labs@7.3.0) (2020-12-10)
 
 

@@ -1,9 +1,10 @@
-import React from 'react';
 import { get } from 'lodash';
+import React from 'react';
+
 import { Icon } from '../deprecated/Icon';
-import { NotificationIconSettings } from './typings';
 import { iconMap } from '../deprecated/Icon/iconMap';
 import styles from './styles/NotificationIcon.module.scss';
+import { NotificationIconSettings } from './typings';
 
 const renderIcon = (props: NotificationIconProps) => {
   const { iconSettings, iconSlug, imageUrl } = props;
