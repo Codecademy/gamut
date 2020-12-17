@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 const TerserPlugin = require('terser-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const loaders = require('../loaders');
-const SideEffectsFlagPlugin = require('@codecademy/webpack-config/plugins/SideEffectsFlagPlugin');
+const SideEffectsFlagPlugin = require('../plugins/SideEffectsFlagPlugin');
 const ENV = require('../lib/env');
 
 const commonConfig = (options = {}) => {
