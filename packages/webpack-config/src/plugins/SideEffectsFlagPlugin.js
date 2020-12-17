@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /**
  * Temporary modified version of internal webpack plugin https://raw.githubusercontent.com/webpack/webpack/v4.44.2/lib/optimize/SideEffectsFlagPlugin.js
  * Modifications come directly from the Webpack 5 version of this plugin, so this can be discarded after the Webpack 5 upgrade
@@ -93,8 +94,8 @@ class SideEffectsFlagPlugin {
       cache = new Map();
       globToRegexpCache.set(compiler, cache);
     }
-    compiler.hooks.normalModuleFactory.tap('SideEffectsFlagPlugin', (nmf) => {
-      nmf.hooks.module.tap('SideEffectsFlagPlugin', (module, data) => {
+    compiler.hooks.normalModuleFactory.tap('CCSideEffectsFlagPlugin', (nmf) => {
+      nmf.hooks.module.tap('CCSideEffectsFlagPlugin', (module, data) => {
         const resolveData = data.resourceResolveData;
         if (
           resolveData &&
@@ -114,7 +115,7 @@ class SideEffectsFlagPlugin {
 
         return module;
       });
-      nmf.hooks.module.tap('SideEffectsFlagPlugin', (module, data) => {
+      nmf.hooks.module.tap('CCSideEffectsFlagPlugin', (module, data) => {
         if (data.settings.sideEffects === false) {
           module.factoryMeta.sideEffectFree = true;
         } else if (data.settings.sideEffects === true) {
@@ -122,9 +123,9 @@ class SideEffectsFlagPlugin {
         }
       });
     });
-    compiler.hooks.compilation.tap('SideEffectsFlagPlugin', (compilation) => {
+    compiler.hooks.compilation.tap('CCSideEffectsFlagPlugin', (compilation) => {
       compilation.hooks.optimizeDependencies.tap(
-        'SideEffectsFlagPlugin',
+        'CCSideEffectsFlagPlugin',
         (modules) => {
           /** @type {Map<Module, ReexportInfo>} */
           const reexportMaps = new Map();
