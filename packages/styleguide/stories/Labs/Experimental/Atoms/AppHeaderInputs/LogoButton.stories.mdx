@@ -1,0 +1,28 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { LogoButton } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Atoms/AppHeaderInputs/LogoButton"
+  subcomponents={{ LogoButton }}
+/>
+
+# LogoButton
+
+<StoryStatus status="volatile" />
+
+LogoButton
+
+<Canvas withSource="open">
+  <Story name="LogoButton - Pro">
+    {(args) => <LogoButton pro onClick=""></LogoButton>}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="LogoButton - Free/Anonymous Users">
+    {(args) => <LogoButton onClick=""></LogoButton>}
+  </Story>
+</Canvas>
+
+<Props of={LogoButton} />

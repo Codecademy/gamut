@@ -1,0 +1,20 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { AppHeader } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeader"
+  subcomponents={{ AppHeader }}
+/>
+
+# AppHeader; maybe pass in as props POJO
+
+<StoryStatus status="volatile" />
+
+AppHeader navigation bar and tabs with configurable areas.
+
+<Canvas withSource="open">
+  <Story name="AppHeader">{(args) => <AppHeader></AppHeader>}</Story>
+</Canvas>
+
+<Props of={AppHeader} />
