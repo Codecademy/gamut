@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.12.1...@codecademy/gamut-icons@3.12.2) (2020-12-18)
+
+
+### Bug Fixes
+
+* **icons:** remove rectangle from filled caret icon ([9cee703](https://github.com/Codecademy/client-modules/commit/9cee703c2886b06e491a92f93053c0a04b527bac))
+
+
+
 ### [3.12.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.12.0...@codecademy/gamut-icons@3.12.1) (2020-12-18)
 
 **Note:** Version bump only for package @codecademy/gamut-icons
