@@ -1,0 +1,34 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { StoryStatus } from '~styleguide/blocks';
+import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
+
+<Meta
+  title="Labs/Experimental/Molecules/GlobalHeader"
+  component={GlobalHeader}
+/>
+
+# GlobalHeader
+
+<StoryStatus status="volatile" />
+
+Header for a unified Codecademy global navigation system.
+
+<Canvas withSource="open">
+  <Story name="GlobalHeader">
+    {(args) => (
+      <GlobalHeader
+        user={{
+          avatar: '',
+          roles: {
+            accountType: 'free',
+            isAdmin: false,
+            isCustomerService: false,
+          },
+          displayName: 'Katie',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props of={GlobalHeader} />
