@@ -172,7 +172,7 @@ describe('Popover', () => {
     expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
   });
 
-  it("positions with default 'below', 'left', '20' value when position, align, offset props are not provided respectively", () => {
+  it("positions with default 'below', 'left', '20', '0' value when position, align, verticalOffset, horizontalOffset props are not provided respectively", () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
@@ -210,7 +210,7 @@ describe('Popover', () => {
     });
   });
 
-  it('positions with given offset value when provided', () => {
+  it('positions with given verticalOffset value when provided', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
@@ -218,7 +218,7 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 29,
+      verticalOffset: 29,
     });
 
     expect(
@@ -231,6 +231,27 @@ describe('Popover', () => {
     });
   });
 
+  it('positions with given horizontalOffset value when provided', () => {
+    Object.defineProperty(window, 'scrollY', { value: 1 });
+    Object.defineProperty(window, 'scrollX', { value: 1 });
+
+    const wrapped = mountPopover({
+      isOpen: true,
+      position: 'above',
+      align: 'right',
+      horizontalOffset: 30,
+    });
+
+    expect(
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 240,
+        left: 871,
+      },
+    });
+  });
+
   it('positions round to whole number when ', () => {
     Object.defineProperty(window, 'scrollY', { value: 1.5 });
     Object.defineProperty(window, 'scrollX', { value: 1.5 });
@@ -239,7 +260,7 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 30,
+      verticalOffset: 30,
     });
 
     expect(
