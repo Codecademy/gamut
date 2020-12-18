@@ -26,10 +26,14 @@ export class Toggle extends Component<ToggleProps, {}> {
     } = this.props;
     return (
       <label
-        className={cx(styles.toggleButton, {
-          [styles.toggled]: checked,
-          [styles.disabled]: disabled,
-        }, className)}
+        className={cx(
+          styles.toggleButton,
+          {
+            [styles.toggled]: checked,
+            [styles.disabled]: disabled,
+          },
+          className
+        )}
         arial-label={label}
         htmlFor={label}
       >
