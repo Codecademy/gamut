@@ -5,6 +5,7 @@ import styles from './styles/index.module.scss';
 
 export type ToggleProps = {
   checked?: boolean;
+  className?: string;
   onChange?: (...args: any[]) => any;
   label?: string;
   disabled?: boolean;
@@ -16,6 +17,7 @@ export class Toggle extends Component<ToggleProps, {}> {
   render() {
     const {
       checked,
+      className,
       onChange,
       label,
       disabled,
@@ -24,10 +26,14 @@ export class Toggle extends Component<ToggleProps, {}> {
     } = this.props;
     return (
       <label
-        className={cx(styles.toggleButton, {
-          [styles.toggled]: checked,
-          [styles.disabled]: disabled,
-        })}
+        className={cx(
+          styles.toggleButton,
+          {
+            [styles.toggled]: checked,
+            [styles.disabled]: disabled,
+          },
+          className
+        )}
         arial-label={label}
         htmlFor={label}
       >
