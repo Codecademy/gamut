@@ -46,9 +46,9 @@ module.exports = {
     return config;
   },
   webpackFinal: (config) => {
-    config.module.rules = config.module.rules.concat(
-      configs.css().module.rules
-    );
+    config.module.rules = config.module.rules
+      .filter(({ test }) => !test.test('.css'))
+      .concat(configs.css().module.rules);
 
     config.resolve = {
       ...config.resolve,

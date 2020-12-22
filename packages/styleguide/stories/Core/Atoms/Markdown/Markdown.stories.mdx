@@ -3,6 +3,7 @@ import { StoryStatus } from '~styleguide/blocks';
 import { Markdown, Heading, Text } from '@codecademy/gamut/src';
 import { text, select } from '@storybook/addon-knobs';
 import exampleMarkdown from './markdown-example.md';
+import { ErrorBlock, Codepedia } from '@codecademy/markdown-overrides';
 
 <Meta
   title="Atoms/Markdown"
@@ -128,6 +129,58 @@ If you need to override a link, iframe, or table, you also need to provide the `
         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
         pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
         qui officia deserunt mollit anim id est laborum.
+      </>
+    )}
+  </Story>
+</Canvas>
+
+## Markdown Overrides
+
+There are several overrides available from the `@codecademy/markdown-overrides` package that can also be used.
+
+### Codepedia
+
+<StoryStatus status="volatile" />
+
+Used to render inline information from Codepedia (a hackathon project!)
+
+<Canvas>
+  <Story name="Codepedia (Standalone)">
+    {(args) => (
+      <Codepedia concept="comments" language="js">
+        Comments
+      </Codepedia>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Codepedia (Override)">
+    {(args) => (
+      <Markdown
+        text='This is an example of an embedded <Codepedia concept="comments" language="js">Codepedia link</Codepedia>. It will render inline for anything that uses the markdown field.'
+        overrides={{
+          Codepedia: {
+            component: Codepedia,
+            allowedAttributes: ['concept', 'language'],
+          },
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Error Block
+
+<StoryStatus status="stable" />
+
+Used to render errors
+
+<Canvas>
+  <Story name="Error Block Override">
+    {(args) => (
+      <>
+        <ErrorBlock>Oh no you encountered an error!</ErrorBlock>
       </>
     )}
   </Story>
