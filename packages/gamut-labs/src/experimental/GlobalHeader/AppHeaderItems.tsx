@@ -2,31 +2,32 @@ import { ReactNode } from 'react';
 import {
   AppHeaderButton,
   AppHeaderLink,
+  AppHeaderLogo,
   AppHeaderPopover,
-  AppHeaderTab,
+  AppHeaderProLogo,
 } from '../AppHeader/types';
 
-export const logoItem: AppHeaderTab = {
-  id: 'codecademy-logo',
-  type: 'tab',
+export const logoItem: AppHeaderLogo = {
+  id: 'logo',
+  type: 'logo',
 };
 
-export const proLogoItem: AppHeaderTab = {
-  id: 'codecademy-pro-logo',
-  type: 'tab',
+export const proLogoItem: AppHeaderProLogo = {
+  id: 'pro-logo',
+  type: 'pro-logo',
 };
 
 export const myHome: AppHeaderLink = {
   id: 'my-home',
   text: 'My Home',
-  href: 'https://www.codecademy.com/learn',
+  href: '/learn',
   type: 'link',
 };
 
 export const courseCatalog: AppHeaderLink = {
   id: 'course-catalog',
   text: 'Course Catalog',
-  href: 'https://www.codecademy.com/catalog',
+  href: '/catalog',
   type: 'link',
 };
 
@@ -36,13 +37,13 @@ export const resourcesDropdown: AppHeaderPopover = {
   popover: [
     {
       id: 'cheatsheets',
-      href: 'https://www.codecademy.com/resources/cheatsheets/all',
+      href: '/resources/cheatsheets/all',
       text: 'Cheatsheets',
       type: 'popover-item',
     },
     {
       id: 'articles',
-      href: 'https://www.codecademy.com/articles',
+      href: '/articles',
       text: 'Articles',
       type: 'popover-item',
     },
@@ -74,7 +75,7 @@ export const communityDropdown: AppHeaderPopover = {
     },
     {
       id: 'events',
-      href: 'https://www.codecademy.com/events',
+      href: '/events',
       text: 'Events',
       type: 'popover-item',
     },
@@ -88,19 +89,19 @@ export const plansPricingDropdown: AppHeaderPopover = {
   popover: [
     {
       id: 'pro-membership',
-      href: 'https://www.codecademy.com/pricing',
+      href: '/pricing',
       text: 'Pro Membership',
       type: 'popover-item',
     },
     {
       id: 'for-business',
-      href: 'https://www.codecademy.com/business',
+      href: '/business',
       text: 'For Business',
       type: 'popover-item',
     },
     {
       id: 'for-students',
-      href: 'https://www.codecademy.com/student-center',
+      href: '/student-center',
       text: 'For Students',
       type: 'popover-item',
     },
@@ -140,20 +141,20 @@ export const profile = (renderProfile: () => ReactNode): AppHeaderPopover => {
 export const upgradeToPro: AppHeaderButton = {
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
-  href: 'https://www.codecademy.com/pro/membership',
+  href: '/pro/membership',
   type: 'button',
 };
 
 export const login: AppHeaderLink = {
   id: 'login',
   text: 'Log In',
-  href: 'https://www.codecademy.com/login',
+  href: '/login',
   type: 'link',
 };
 
 export const signUp: AppHeaderButton = {
   id: 'signup',
   text: 'Sign Up',
-  href: 'https://www.codecademy.com/register',
+  href: '/register',
   type: 'button',
 };

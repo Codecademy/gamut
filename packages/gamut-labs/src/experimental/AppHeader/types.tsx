@@ -1,5 +1,6 @@
 export type AppHeaderItem =
-  | AppHeaderTab
+  | AppHeaderLogo
+  | AppHeaderProLogo
   | AppHeaderLink
   | AppHeaderButton
   | AppHeaderPopover;
@@ -11,8 +12,12 @@ type AppHeaderBase = {
   text?: string;
 };
 
-export type AppHeaderTab = AppHeaderBase & {
-  type: 'tab';
+export type AppHeaderLogo = AppHeaderBase & {
+  type: 'logo';
+};
+
+export type AppHeaderProLogo = AppHeaderBase & {
+  type: 'pro-logo';
 };
 
 export type AppHeaderLink = AppHeaderBase & {
