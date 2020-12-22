@@ -1,19 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { TextButton } from '@codecademy/gamut';
 import { SupportFilledIcon } from '@codecademy/gamut-icons';
 
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import { CodepediaPopover } from './Popover';
-
-const RAW_ROOT =
-  'https://raw.githubusercontent.com/codecademy/codepedia/main/codepedia';
-const VIEW_ROOT = 'https://codecademy.github.io/codepedia/entries';
+import { CodepediaPopover, LinkProperties } from './Popover';
+import { getLoadUrl, getViewUrl } from './urlHelpers';
 
 export type CodepediaProps = {
   concept: string;
   language?: string;
   overrides?: any;
+  linkOverrides: LinkProperties;
 };
 
 export const Codepedia: React.FC<CodepediaProps> = ({
@@ -21,26 +19,34 @@ export const Codepedia: React.FC<CodepediaProps> = ({
   concept,
   language,
   overrides,
+  linkOverrides = {},
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState('');
 
   const parentRef = useRef<HTMLSpanElement>(null);
 
-  const viewUrl = `${VIEW_ROOT}/${concept}/${language ? language : ''}`;
-  const rawUrl = `${RAW_ROOT}/${concept}/${concept}${
-    language ? `.${language}` : ''
-  }.md`;
+  const loadDefault = useCallback(async () => {
+    const resp = await fetch(getLoadUrl(concept, language));
+    const text = await resp.text();
+    return text;
+  }, [concept, language]);
 
   // fetch the details directly from Codepedia
   // TODO: make a service for this request instead of relying on GitHub.
   React.useEffect(() => {
     (async () => {
-      const resp = await fetch(rawUrl);
-      const text = await resp.text();
-      setContent(text);
+      const content = await (linkOverrides.onLoad
+        ? linkOverrides.onLoad()
+        : loadDefault());
+      setContent(content);
     })();
-  }, [rawUrl]);
+  }, [loadDefault, linkOverrides]);
+
+  // set a default view link if the caller didn't provide one
+  if (!linkOverrides.href && !linkOverrides.onViewClick) {
+    linkOverrides.href = getViewUrl(concept, language);
+  }
 
   return (
     <>
@@ -56,8 +62,8 @@ export const Codepedia: React.FC<CodepediaProps> = ({
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         content={content}
-        viewUrl={viewUrl}
         overrides={overrides}
+        linkProperties={linkOverrides}
       />
     </>
   );

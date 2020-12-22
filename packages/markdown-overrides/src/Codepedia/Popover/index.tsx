@@ -6,13 +6,20 @@ import { CloseIcon } from '@codecademy/gamut-icons';
 import { ManyOverrideSettings } from '@codecademy/gamut/dist/Markdown/libs/overrides';
 import { colors } from '@codecademy/gamut-styles';
 
+export type LinkProperties = {
+  label?: string;
+  onViewClick?: () => void;
+  onLoad?: () => Promise<string>;
+  href?: string;
+};
+
 export type CodepediaPopoverProps = {
   content: string;
-  viewUrl: string;
   targetRef: RefObject<any>;
   isOpen: boolean;
   onClose: () => void;
   overrides?: ManyOverrideSettings;
+  linkProperties: LinkProperties;
 };
 
 export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
@@ -20,9 +27,11 @@ export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
   isOpen,
   onClose,
   content,
-  viewUrl,
   overrides,
+  linkProperties,
 }) => {
+  const buttonLabel = linkProperties.label || 'View on Codepedia';
+
   return (
     <SPopover
       isOpen={isOpen}
@@ -40,9 +49,15 @@ export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
       >
         <SContainer>
           <TopBar>
-            <NeutralTextButton href={viewUrl} target="_blank">
-              View on Codepedia
-            </NeutralTextButton>
+            {linkProperties.onViewClick ? (
+              <NeutralTextButton onClick={linkProperties.onViewClick}>
+                {buttonLabel}
+              </NeutralTextButton>
+            ) : (
+              <NeutralTextButton href={linkProperties.href} target="_blank">
+                {buttonLabel}
+              </NeutralTextButton>
+            )}
 
             <NeutralTextButton onClick={() => onClose()}>
               <CloseIcon />
@@ -100,9 +115,11 @@ const MiniMarkdown = styled(MarkdownBase)`
   margin: 0;
   padding: 0 1.25rem;
   overflow-y: auto;
+
   h1 {
     font-size: 1.5rem;
   }
+
   h2 {
     font-size: 1.2rem;
   }
