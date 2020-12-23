@@ -5,7 +5,6 @@ import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
 import React, { useRef, useState } from 'react';
 import { Popover } from '..';
-import { HeaderTab } from '../..';
 import { AppHeaderPopover } from '../AppHeader/types';
 import styles from './styles.scss';
 
