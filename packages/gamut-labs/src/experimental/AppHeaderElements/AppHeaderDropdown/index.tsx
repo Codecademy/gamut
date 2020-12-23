@@ -54,7 +54,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       <Popover
         className={styles.topDropdown}
         align="left"
-        // offset={-2}
+        offset={-2}
         outline
         isOpen={isOpen}
         onRequestClose={handleClose}

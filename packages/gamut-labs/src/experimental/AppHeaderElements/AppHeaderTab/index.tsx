@@ -11,7 +11,7 @@ export const AppHeaderTab: React.FC<HeaderTabProps> = ({
   className,
 }) => {
   return (
-    <div className={cx(styles.headerTabItem, styles.headerTab, className)}>
+    <div className={cx(className, styles.headerTabItem, styles.headerTab)}>
       {children}
     </div>
   );

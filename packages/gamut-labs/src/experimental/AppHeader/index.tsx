@@ -29,7 +29,11 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
         </AppHeaderTab>
       );
     case 'link':
-      return <AppHeaderLinkElement item={item} />;
+      return (
+        <AppHeaderTab className={styles.headerTabLogo}>
+          <AppHeaderLinkElement item={item} />
+        </AppHeaderTab>
+      );
     case 'text-button':
       return (
         <AppHeaderTab>
@@ -57,7 +61,11 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
         </AppHeaderTab>
       );
     case 'popover':
-      return <AppHeaderDropdown item={item} />;
+      return (
+        <AppHeaderTab className={styles.headerTabLogo}>
+          <AppHeaderDropdown item={item} />
+        </AppHeaderTab>
+      );
     default:
       return <AppHeaderTab />;
   }
