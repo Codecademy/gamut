@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 import {
-  AppHeaderButton,
+  AppHeaderFillButton,
   AppHeaderLink,
   AppHeaderLogo,
   AppHeaderPopover,
   AppHeaderProLogo,
+  AppHeaderTextButton,
 } from '../AppHeader/types';
 
 export const logoItem: AppHeaderLogo = {
@@ -138,23 +139,23 @@ export const profile = (renderProfile: () => ReactNode): AppHeaderPopover => {
   };
 };
 
-export const upgradeToPro: AppHeaderButton = {
+export const upgradeToPro: AppHeaderFillButton = {
   id: 'upgrade-to-pro',
   text: 'Upgrade to Pro',
   href: '/pro/membership',
-  type: 'button',
+  type: 'fill-button',
 };
 
-export const login: AppHeaderLink = {
+export const login: AppHeaderTextButton = {
   id: 'login',
   text: 'Log In',
   href: '/login',
-  type: 'link',
+  type: 'text-button',
 };
 
-export const signUp: AppHeaderButton = {
+export const signUp: AppHeaderFillButton = {
   id: 'signup',
   text: 'Sign Up',
   href: '/register',
-  type: 'button',
+  type: 'fill-button',
 };

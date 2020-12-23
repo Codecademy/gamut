@@ -13,6 +13,8 @@ import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHead
 
 Header for a unified Codecademy global navigation system.
 
+## GlobalHeader
+
 <Canvas withSource="open">
   <Story name="GlobalHeader">
     {(args) => (
@@ -20,11 +22,11 @@ Header for a unified Codecademy global navigation system.
         user={{
           avatar: '',
           roles: {
-            accountType: 'free',
             isAdmin: false,
             isCustomerService: false,
+            isPro: false,
           },
-          displayName: 'Katie',
+          displayName: 'Codey',
         }}
       />
     )}
@@ -32,3 +34,51 @@ Header for a unified Codecademy global navigation system.
 </Canvas>
 
 <Props of={GlobalHeader} />
+
+## Free User
+
+<Canvas>
+  <Story name="Free User Global Header">
+    {(args) => (
+      <GlobalHeader
+        user={{
+          avatar: '',
+          roles: {
+            isAdmin: false,
+            isCustomerService: false,
+            isPro: false,
+          },
+          displayName: 'Free Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Pro User
+
+<Canvas>
+  <Story name="Pro User Global Header">
+    {(args) => (
+      <GlobalHeader
+        user={{
+          avatar: '',
+          roles: {
+            isAdmin: true,
+            isCustomerService: true,
+            isPro: true,
+          },
+          displayName: 'Pro Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+## Anonymous User
+
+<Canvas>
+  <Story name="Anonymous User Global Header">
+    {(args) => <GlobalHeader />}
+  </Story>
+</Canvas>

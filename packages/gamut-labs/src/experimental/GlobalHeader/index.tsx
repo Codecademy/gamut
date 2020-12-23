@@ -18,8 +18,6 @@ import {
   upgradeToPro,
 } from './AppHeaderItems';
 
-// import appHeaderItems from './AppHeaderItemPOJOs.json';
-
 export type GlobalHeaderProps = {
   user?: User;
   renderSearch?: () => ReactNode;
@@ -34,9 +32,9 @@ type User = {
 };
 
 type UserRoles = {
-  accountType: 'free' | 'trial' | 'pro';
   isAdmin: boolean;
   isCustomerService: boolean;
+  isPro: boolean;
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
@@ -45,28 +43,26 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
   renderNotifications,
   renderProfileDropdown,
 }) => {
-  const userHasRole = (role: 'free' | 'trial' | 'pro') =>
-    user?.roles.accountType === role;
   const isLoggedIn = user !== undefined;
+  const codecademyLogo = user?.roles.isPro ? proLogoItem : logoItem;
 
-  const codecademyLogo =
-    user?.roles.accountType === 'pro' ? proLogoItem : logoItem;
+  const leftItems: AppHeaderItem[] = [];
+  const rightItems: AppHeaderItem[] = [];
 
-  const items: AppHeaderItem[] = [];
+  leftItems.push(codecademyLogo);
+  isLoggedIn && leftItems.push(myHome);
+  leftItems.push(courseCatalog, resourcesDropdown, communityDropdown);
+  !user?.roles.isPro && leftItems.push(plansPricingDropdown);
 
-  items.push(codecademyLogo);
-  isLoggedIn && items.push(myHome);
-  items.push(courseCatalog, resourcesDropdown, communityDropdown);
-  !userHasRole('pro') && items.push(plansPricingDropdown);
-  renderSearch && items.push(search(renderSearch));
+  renderSearch && rightItems.push(search(renderSearch));
   isLoggedIn &&
     renderNotifications &&
-    items.push(notifications(renderNotifications));
+    rightItems.push(notifications(renderNotifications));
   isLoggedIn &&
     renderProfileDropdown &&
-    items.push(profile(renderProfileDropdown));
-  userHasRole('free') && items.push(upgradeToPro);
-  !isLoggedIn && items.push(login, signUp);
+    rightItems.push(profile(renderProfileDropdown));
+  isLoggedIn && !user?.roles.isPro && rightItems.push(upgradeToPro);
+  !isLoggedIn && rightItems.push(login, signUp);
 
-  return <AppHeader items={items} />;
+  return <AppHeader items={{ left: leftItems, right: rightItems }} />;
 };
