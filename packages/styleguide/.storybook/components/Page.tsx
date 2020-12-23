@@ -51,7 +51,7 @@ export const Page = (props) => {
         <HeaderCol>
           {figma && (
             <FigmaLink target="_blank" href={figma}>
-              Open in Figma <OpenIcon />
+              View in Figma <OpenIcon />
             </FigmaLink>
           )}
         </HeaderCol>
