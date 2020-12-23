@@ -11,8 +11,6 @@ import {
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import { select, text, boolean } from '@storybook/addon-knobs';
 
-import { StoryStatus } from '~styleguide/blocks';
-
 <Meta
   args={{
     children: 'Click Me',
@@ -21,6 +19,7 @@ import { StoryStatus } from '~styleguide/blocks';
     mode: 'light',
     size: 'normal',
   }}
+  component={TextButton}
   argTypes={{
     href: {
       description: 'If defined, component will use an anchor tag',
@@ -40,10 +39,6 @@ import { StoryStatus } from '~styleguide/blocks';
   }}
   title="Atoms/Button"
 />
-
-# Buttons
-
-<StoryStatus status="stable" />
 
 We have several versions of buttons that you can use.
 Each supports a _light_ and _dark_ mode.

@@ -3,13 +3,11 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { boolean, select } from '@storybook/addon-knobs';
 import { useState } from 'react';
 
-import { StoryStatus } from '~styleguide/blocks';
-
-<Meta title="Molecules/AccordionButton" component={AccordionButton} />
-
-# AccordionButton
-
-<StoryStatus status="volatile" />
+<Meta
+  title="Molecules/AccordionButton"
+  component={AccordionButton}
+  parameters={{ status: 'volatile' }}
+/>
 
 The standard "top" button for an `Accordion`.
 Comes in a few standard size and color combinations.

@@ -1,6 +1,5 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, number, boolean } from '@storybook/addon-knobs';
-import { StoryStatus } from '~styleguide/blocks';
 import { ProLogoAlt } from '@codecademy/gamut-labs/src';
 import { selectableColorNames } from '../../../helpers';
 
@@ -15,11 +14,8 @@ import { selectableColorNames } from '../../../helpers';
       control: { type: 'select', options: selectableColorNames },
     },
   }}
+  parameters={{ status: 'volatile' }}
 />
-
-# ProLogoAlt
-
-<StoryStatus status="volatile" />
 
 Version of the Pro Alt logo that allows you to choose the text color. Use sparingly, and make sure it has a lot of visual distinction to stand out appropriately.
 
