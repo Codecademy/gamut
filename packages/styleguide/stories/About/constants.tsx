@@ -35,7 +35,7 @@ export const ABOUT_SECTIONS = [
     examples: ['GridForm'],
   },
   {
-    kind: 'Labs',
+    kind: 'Brand',
     emoji: '⚗️',
     description:
       'Components across the design spectrum that are more experimental or tied to brand representation.',

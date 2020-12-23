@@ -1,0 +1,249 @@
+import {
+  Meta,
+  ColorItem,
+  ColorPalette,
+  Typeset,
+  Canvas,
+} from '@storybook/addon-docs/dist/blocks';
+import { Row, Column } from '~styleguide/blocks';
+import { startCase } from 'lodash';
+import { theme, swatches, colorNames } from '@codecademy/gamut-styles';
+
+<Meta title="Foundations/Theme" component="theme" />
+
+# Theme
+
+All emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
+
+These are available through context or directly as the `theme` prop on every styled component.
+
+```tsx
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from "gamut-styles" if you are not using a `ThemeProvider` in your app.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
+`;
+```
+
+## Color
+
+Theme Key: `theme.colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. This object will not include older or more specific design tokens, if you need to acess these color variables please check out the [full colors documentation](/?path=/docs/foundations-colors--standard)
+
+### Standard Colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<ColorPalette>
+  {Object.entries(theme.colors).map(([key, hex]) => {
+    if (key.indexOf('-') === -1) {
+      return (
+        <ColorItem
+          title={`${colorNames[key]}`}
+          subtitle={<code>theme.color.{key}</code>}
+          colors={[hex]}
+        />
+      );
+    }
+    return null;
+  })}
+</ColorPalette>
+
+### Swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
+
+<ColorPalette>
+  {Object.entries(swatches).map(([key, pallete]) => {
+    const weights = Object.keys(pallete);
+    return (
+      <ColorItem
+        title={colorNames[key] || startCase(key)}
+        subtitle={
+          <code>
+            theme.colors['{key}-{`{weight}`}']
+          </code>
+        }
+        colors={pallete}
+      />
+    );
+  })}
+</ColorPalette>
+
+## Typography
+
+### Font Family
+
+Theme Key: `theme.fontFamily`
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.fontFamily).map((val) => (
+      <>
+        <Column>{val}</Column>
+        <Column>
+          <div style={{ fontFamily: theme.fontFamily[val], fontSize: '2rem' }}>
+            {theme.fontFamily[val].split(',')[0].replace(/"/g, '')} is a cool
+            font
+          </div>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
+
+### Font Size
+
+Theme Key: `theme.fontSize`
+
+export const sample = 'I do not know what to put here';
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.fontSize)
+      .reverse()
+      .map((val) => (
+        <>
+          <Column>{val}</Column>
+          <Column>
+            <div style={{ fontSize: theme.fontSize[val] }}>{sample}</div>
+          </Column>
+        </>
+      ))}
+  </Row>
+</Canvas>
+
+### Font Weight
+
+Theme Key: `theme.fontWeight`
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.fontWeight).map((val) => (
+      <>
+        <Column>
+          <span>
+            {val} - <code>{theme.fontWeight[val]}</code>
+          </span>
+        </Column>
+        <Column>
+          <div style={{ fontWeight: theme.fontWeight[val] }}>{sample}</div>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
+
+### Line Height
+
+Theme Key: `theme.lineHeight`
+
+export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+`;
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.lineHeight).map((val) => (
+      <>
+        <Column>
+          <span>
+            {val} - <code>{theme.lineHeight[val]}</code>
+          </span>
+        </Column>
+        <Column>
+          <div style={{ lineHeight: theme.lineHeight[val] }}>{lorem}</div>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
+
+## Space
+
+### Spacing
+
+Theme Key: `theme.spacing`
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.spacing).map((val) => (
+      <>
+        <Column>{val}</Column>
+        <Column>
+          <div
+            style={{
+              background: theme.colors['blue-300'],
+              width: theme.spacing[val],
+              height: theme.spacing[val],
+            }}
+          ></div>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
+
+## Shadows
+
+### Box Shadow
+
+Theme Key: `theme.boxShadows`
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.boxShadows).map((val) => (
+      <>
+        <Column>{val}</Column>
+        <Column>
+          <div
+            style={{
+              boxShadow: theme.boxShadows[val],
+              width: '3rem',
+              height: '3rem',
+            }}
+          ></div>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
+
+## Other
+
+### Breakpoints
+
+Theme Key: `theme.breakpoints`
+
+<Canvas>
+  <Row>
+    {Object.keys(theme.breakpoints).map((val) => (
+      <>
+        <Column>{val}</Column>
+        <Column>
+          <code
+            style={{
+              borderRadius: '5px',
+              padding: '4px 8px',
+              backgroundColor: theme.colors['gray-100'],
+              color: theme.colors['gray-500'],
+            }}
+          >
+            {theme.breakpoints[val]}
+          </code>
+        </Column>
+      </>
+    ))}
+  </Row>
+</Canvas>
