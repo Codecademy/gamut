@@ -1,9 +1,16 @@
 import { mapValues, isNumber, get, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import * as system from '@codecademy/gamut-styles/src/system';
+import { kebabCase } from 'lodash';
+import { PROP_META } from './propMeta';
+import { theme } from '@codecademy/gamut-styles/src/theme';
 
-const DOCS_LINK =
-  'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
+const createDescription = (name: string) => {
+  const cssProp = kebabCase(name);
+
+  return ` Property: **[${cssProp}](https://developer.mozilla.org/en-US/docs/Web/CSS/${cssProp})**
+    `;
+};
 
 const { properties, variant, ...groups } = system;
 
@@ -31,6 +38,11 @@ const sortScale = (scale: string[]) => {
 const sanitizeOptions = map((val) =>
   typeof val === 'string' ? val.replace(/"/g, '') : val
 );
+
+type ControlType = {
+  type: 'text' | 'select' | 'radio' | 'inline-radio';
+  options?: unknown[];
+};
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
@@ -74,19 +86,27 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
 
     // Find all system props that do not have a description
     if (systemProps.includes(arg.name) && arg.description === '') {
+      const scale = PROP_META?.[arg.name]?.scale;
       const category = Object.entries(groups).find(([key, { propNames }]) =>
         propNames.includes(arg.name)
       )[0];
       const rawScale = arg?.table?.type?.summary;
       const options = rawScale && sortScale(getScale(rawScale).split(' | '));
       const parsedScale = options.join(' | ');
+      const argOptions = scale
+        ? Object.keys(theme[scale])
+        : sanitizeOptions(options);
 
-      let control: {
-        type: 'text' | 'select';
-        options?: unknown[];
-      } = {
-        type: 'select',
-        options: sanitizeOptions(options),
+      const argType =
+        argOptions.length > 4
+          ? 'select'
+          : argOptions.length > 2
+          ? 'radio'
+          : 'inline-radio';
+
+      let control: ControlType = {
+        type: argType,
+        options: argOptions,
       };
 
       if (rawScale.indexOf('string') > -1 || options.length < 2) {
@@ -95,7 +115,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
 
       return {
         ...arg,
-        description: DOCS_LINK,
+        description: createDescription(arg.name),
         table: {
           ...arg.table,
           category,
