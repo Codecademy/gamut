@@ -9,7 +9,7 @@ import { Row, Column } from '~styleguide/blocks';
 import { startCase } from 'lodash';
 import { theme, swatches, colorNames } from '@codecademy/gamut-styles';
 
-<Meta title="Foundations/Theme" component="theme" />
+<Meta title="Foundations/Emotion/Theme" component="theme" />
 
 # Theme
 
@@ -18,8 +18,21 @@ All emotion components we build have access to a typed theme object allowing you
 These are available through context or directly as the `theme` prop on every styled component.
 
 ```tsx
-const styles = ({ theme }) => `
-  blue: ${theme.colors.blue};
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from "gamut-styles" if you are not using a `ThemeProvider` in your app.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
 `;
 ```
 
@@ -75,19 +88,16 @@ Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weigh
 
 Theme Key: `theme.fontFamily`
 
-export const sample = 'I do not know what to put here';
-
 <Canvas>
   <Row>
     {Object.keys(theme.fontFamily).map((val) => (
       <>
+        <Column>{val}</Column>
         <Column>
-          <code>
-            {val} - ({theme.fontFamily[val].split(',')[0]})
-          </code>
-        </Column>
-        <Column>
-          <p style={{ fontFamily: theme.fontFamily[val] }}>{sample}</p>
+          <div style={{ fontFamily: theme.fontFamily[val], fontSize: '2rem' }}>
+            {theme.fontFamily[val].split(',')[0].replace(/"/g, '')} is a cool
+            font
+          </div>
         </Column>
       </>
     ))}
@@ -98,17 +108,17 @@ export const sample = 'I do not know what to put here';
 
 Theme Key: `theme.fontSize`
 
+export const sample = 'I do not know what to put here';
+
 <Canvas>
   <Row>
     {Object.keys(theme.fontSize)
       .reverse()
       .map((val) => (
         <>
+          <Column>{val}</Column>
           <Column>
-            <code>{val}</code>
-          </Column>
-          <Column>
-            <p style={{ fontSize: theme.fontSize[val] }}>{sample}</p>
+            <div style={{ fontSize: theme.fontSize[val] }}>{sample}</div>
           </Column>
         </>
       ))}
@@ -124,12 +134,12 @@ Theme Key: `theme.fontWeight`
     {Object.keys(theme.fontWeight).map((val) => (
       <>
         <Column>
-          <code>
-            {val} ({theme.fontWeight[val]})
-          </code>
+          <span>
+            {val} - <code>{theme.fontWeight[val]}</code>
+          </span>
         </Column>
         <Column>
-          <p style={{ fontWeight: theme.fontWeight[val] }}>{sample}</p>
+          <div style={{ fontWeight: theme.fontWeight[val] }}>{sample}</div>
         </Column>
       </>
     ))}
@@ -148,12 +158,12 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
     {Object.keys(theme.lineHeight).map((val) => (
       <>
         <Column>
-          <code>
-            {val} ({theme.lineHeight[val]})
-          </code>
+          <span>
+            {val} - <code>{theme.lineHeight[val]}</code>
+          </span>
         </Column>
         <Column>
-          <p style={{ lineHeight: theme.lineHeight[val] }}>{lorem}</p>
+          <div style={{ lineHeight: theme.lineHeight[val] }}>{lorem}</div>
         </Column>
       </>
     ))}
@@ -170,9 +180,7 @@ Theme Key: `theme.spacing`
   <Row>
     {Object.keys(theme.spacing).map((val) => (
       <>
-        <Column>
-          <code>{val}</code>
-        </Column>
+        <Column>{val}</Column>
         <Column>
           <div
             style={{
@@ -197,9 +205,7 @@ Theme Key: `theme.boxShadows`
   <Row>
     {Object.keys(theme.boxShadows).map((val) => (
       <>
-        <Column>
-          <code>{val}</code>
-        </Column>
+        <Column>{val}</Column>
         <Column>
           <div
             style={{
@@ -224,11 +230,18 @@ Theme Key: `theme.breakpoints`
   <Row>
     {Object.keys(theme.breakpoints).map((val) => (
       <>
+        <Column>{val}</Column>
         <Column>
-          <code>{val}</code>
-        </Column>
-        <Column>
-          <code>{theme.breakpoints[val]}</code>
+          <code
+            style={{
+              borderRadius: '5px',
+              padding: '4px 8px',
+              backgroundColor: theme.colors['gray-100'],
+              color: theme.colors['gray-500'],
+            }}
+          >
+            {theme.breakpoints[val]}
+          </code>
         </Column>
       </>
     ))}

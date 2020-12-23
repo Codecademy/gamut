@@ -21,7 +21,7 @@ const createDescription = (name: string) => {
   const scale = PROP_META?.[name]?.scale;
   if (scale) {
     description.push(
-      `⚖️ Scale: [${scale}](/?path=/docs/foundations-theme--page#${kebabCase(
+      `⚖️ Scale: [${scale}](/?path=/docs/foundations-emotion-theme--page#${kebabCase(
         scale
       )})`
     );
