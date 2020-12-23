@@ -11,8 +11,9 @@ import { ReactElement } from 'react';
 import styles from './styles.scss';
 import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
-import { HeaderTab } from '../../brand';
+
 import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
+import { AppHeaderTab } from '../AppHeaderElements/AppHeaderTab';
 
 export type AppHeaderProps = {
   items: { left: AppHeaderItem[]; right: AppHeaderItem[] };
@@ -23,15 +24,15 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
   switch (item.type) {
     case 'logo':
       return (
-        <HeaderTab className={styles.headerTabLogo}>
+        <AppHeaderTab className={styles.headerTabLogo}>
           <AppHeaderLogoElement item={item} />
-        </HeaderTab>
+        </AppHeaderTab>
       );
     case 'link':
       return <AppHeaderLinkElement item={item} />;
     case 'text-button':
       return (
-        <HeaderTab>
+        <AppHeaderTab>
           <TextButton
             // href={addRedirectParam(loginPath)}
             // onClick={() => trackClick('topnav_login')}
@@ -40,11 +41,11 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           >
             {item.text}
           </TextButton>
-        </HeaderTab>
+        </AppHeaderTab>
       );
     case 'fill-button':
       return (
-        <HeaderTab>
+        <AppHeaderTab>
           <FillButton
             // href={addRedirectParam('/register')}
             // data-testid="header-sign-up"
@@ -53,12 +54,12 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           >
             {item.text}
           </FillButton>
-        </HeaderTab>
+        </AppHeaderTab>
       );
     case 'popover':
       return <AppHeaderDropdown item={item} />;
     default:
-      return <HeaderTab />;
+      return <AppHeaderTab />;
   }
 };
 

@@ -6,7 +6,7 @@ export type HeaderTabProps = {
   className?: string;
 };
 
-export const HeaderTab: React.FC<HeaderTabProps> = ({
+export const AppHeaderTab: React.FC<HeaderTabProps> = ({
   children,
   className,
 }) => {
