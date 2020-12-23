@@ -5,7 +5,7 @@ import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 
-const figma = styled.a`
+const FigmaLink = styled.a`
   display: grid;
   grid-template-columns: max-content max-content;
   column-gap: 0.5rem;
@@ -50,9 +50,9 @@ export const Page = (props) => {
         <HeaderCol />
         <HeaderCol>
           {figma && (
-            <figma target="_blank" href={figma}>
-              Figma Designs <OpenIcon />
-            </figma>
+            <FigmaLink target="_blank" href={figma}>
+              Open in Figma <OpenIcon />
+            </FigmaLink>
           )}
         </HeaderCol>
       </HeaderRow>
