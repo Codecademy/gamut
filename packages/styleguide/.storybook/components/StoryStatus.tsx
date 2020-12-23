@@ -9,11 +9,10 @@ const STATUS_COLORS = {
 };
 
 const StatusWrapper = styled.div`
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
   padding: 0 0.75rem;
-  height: 1.75rem;
-  margin: 1rem 0;
+  line-height: 2;
   font-size: 0.8rem;
   font-weight: 900;
   border-radius: 1rem;

@@ -4,7 +4,14 @@ import { select, text, number } from '@storybook/addon-knobs';
 import { Logo } from '@codecademy/gamut-labs/src';
 import { selectableColors } from '../../../helpers';
 
-<Meta title="Brand/Atoms/Logo" component={Logo} />
+<Meta
+  title="Brand/Atoms/Logo"
+  component={Logo}
+  parameters={{
+    figma:
+      'https://www.figma.com/file/q5fnSuZuxMo5EVS6ZQWzkj/Logos-%E2%9C%85?node-id=0%3A1',
+  }}
+/>
 
 Our proud logo. There is no a in the middle. Use sparingly, and make sure
 it has a lot of visual distinction to stand out appropriately.

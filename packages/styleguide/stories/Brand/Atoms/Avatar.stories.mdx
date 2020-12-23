@@ -3,7 +3,14 @@ import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { Avatar } from '@codecademy/gamut-labs/src';
 
-<Meta title="Brand/Atoms/Avatar" component={Avatar} />
+<Meta
+  title="Brand/Atoms/Avatar"
+  component={Avatar}
+  parameters={{
+    figma:
+      'https://www.figma.com/file/ReGfRNillGABAj5SlITalN/%F0%9F%93%90-Gamut?node-id=465%3A80',
+  }}
+/>
 
 Small, circular profile photo that includes a colored drop shadow.
 Commonly paired with a `Byline`.with the user with various connotations.

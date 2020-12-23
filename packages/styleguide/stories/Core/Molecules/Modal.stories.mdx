@@ -2,7 +2,16 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { useState } from '@storybook/addons';
 import { ButtonDeprecated, Modal, Text, Overlay } from '@codecademy/gamut/src';
 
-<Meta title="Molecules/Modal" component={Modal} subcomponents={{ Overlay }} />
+<Meta
+  title="Molecules/Modal"
+  component={Modal}
+  subcomponents={{ Overlay }}
+  parameters={{
+    status: 'volatile',
+    figma:
+      'https://www.figma.com/file/yt7NdZTETDRPUn0CtRu3v0/Modals-(Yassine%3A-Retheme-%2B-Add-Variants-%2B-Update-Guidelines)?node-id=26%3A4',
+  }}
+/>
 
 Simple Modal portal to escape current DOM Context.
 
