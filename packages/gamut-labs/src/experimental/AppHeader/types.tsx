@@ -1,6 +1,5 @@
 export type AppHeaderItem =
   | AppHeaderLogo
-  | AppHeaderProLogo
   | AppHeaderLink
   | AppHeaderTextButton
   | AppHeaderFillButton
@@ -16,10 +15,7 @@ type AppHeaderBase = {
 
 export type AppHeaderLogo = AppHeaderBase & {
   type: 'logo';
-};
-
-export type AppHeaderProLogo = AppHeaderBase & {
-  type: 'pro-logo';
+  pro: boolean;
 };
 
 export type AppHeaderLink = AppHeaderBase & {

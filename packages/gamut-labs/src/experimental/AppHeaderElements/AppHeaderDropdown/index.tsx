@@ -4,10 +4,11 @@ import { ButtonDeprecated, Container } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
 import React, { useRef, useState } from 'react';
-import { Popover } from '..';
-import { AppHeaderPopover } from '../AppHeader/types';
+
 import styles from './styles.scss';
-import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
+import { Popover } from '../..';
+import { AppHeaderPopover } from '../../AppHeader/types';
+import { AppHeaderLinkElement } from '../AppHeaderLinkElement';
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;

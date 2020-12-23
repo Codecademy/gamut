@@ -4,19 +4,20 @@ import {
   AppHeaderLink,
   AppHeaderLogo,
   AppHeaderPopover,
-  AppHeaderProLogo,
   AppHeaderRenderPopover,
   AppHeaderTextButton,
 } from '../AppHeader/types';
 
 export const logoItem: AppHeaderLogo = {
   id: 'logo',
+  pro: false,
   type: 'logo',
 };
 
-export const proLogoItem: AppHeaderProLogo = {
+export const proLogoItem: AppHeaderLogo = {
   id: 'pro-logo',
-  type: 'pro-logo',
+  pro: true,
+  type: 'logo',
 };
 
 export const myHome: AppHeaderLink = {

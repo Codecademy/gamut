@@ -1,16 +1,18 @@
-import { AppBar, AppBarSection, ButtonDeprecated } from '@codecademy/gamut';
+import { AppBar, AppBarSection } from '@codecademy/gamut';
 import cx from 'classnames';
 
 import React from 'react';
-import { Logo } from '../..';
+
 import { AppHeaderItem } from './types';
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
-import { colors } from '@codecademy/gamut-styles';
+
 import { ReactElement } from 'react';
 
 import styles from './styles.scss';
-import { AppHeaderDropdown } from '../AppHeaderDropdown';
 import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
+import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
+import { HeaderTab } from '../../brand';
+import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
 
 export type AppHeaderProps = {
   items: { left: AppHeaderItem[]; right: AppHeaderItem[] };
@@ -21,39 +23,15 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
   switch (item.type) {
     case 'logo':
       return (
-        <div className={styles.headerTabLogo}>
-          <ButtonDeprecated
-            className={styles.logo}
-            // data-testid="header-logo"
-            // onClick={() => trackClick('topnav_logo')}
-            flat
-            href={'/'}
-            theme="navy"
-          >
-            <Logo type={'default'} height={27} color={colors.navy} />
-          </ButtonDeprecated>
-        </div>
-      );
-    case 'pro-logo':
-      return (
-        <div className={styles.headerTabLogo}>
-          <ButtonDeprecated
-            className={styles.logo}
-            // data-testid="header-logo"
-            // onClick={() => trackClick('topnav_logo')}
-            flat
-            href={'/'}
-            theme="navy"
-          >
-            <Logo type={'proMono'} height={27} color={colors.navy} />
-          </ButtonDeprecated>
-        </div>
+        <HeaderTab className={styles.headerTabLogo}>
+          <AppHeaderLogoElement item={item} />
+        </HeaderTab>
       );
     case 'link':
       return <AppHeaderLinkElement item={item} />;
     case 'text-button':
       return (
-        <div>
+        <HeaderTab>
           <TextButton
             // href={addRedirectParam(loginPath)}
             // onClick={() => trackClick('topnav_login')}
@@ -62,11 +40,11 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           >
             {item.text}
           </TextButton>
-        </div>
+        </HeaderTab>
       );
     case 'fill-button':
       return (
-        <div>
+        <HeaderTab>
           <FillButton
             // href={addRedirectParam('/register')}
             // data-testid="header-sign-up"
@@ -75,18 +53,21 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           >
             {item.text}
           </FillButton>
-        </div>
+        </HeaderTab>
       );
     case 'popover':
       return <AppHeaderDropdown item={item} />;
     default:
-      return <div />;
+      return <HeaderTab />;
   }
 };
 
-export const AppHeader: React.FC<AppHeaderProps> = ({ items }) => {
+export const AppHeader: React.FC<AppHeaderProps> = ({
+  items,
+  className = '',
+}) => {
   return (
-    <AppBar>
+    <AppBar className={className}>
       <AppBarSection position="left">
         {items.left.map((item) => mapItemToElement(item))}
       </AppBarSection>

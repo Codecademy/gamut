@@ -1,0 +1,12 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.headerTabItem {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+@include sm-viewport {
+  .headerTab {
+    margin: 0 0.5rem;
+  }
+}

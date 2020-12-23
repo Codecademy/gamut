@@ -6,31 +6,31 @@
   z-index: 14;
 }
 
-.registerButtonTabMobile {
-  margin-top: -1rem;
-}
+// .registerButtonTabMobile {
+//   margin-top: -1rem;
+// }
 
-.mobileNotifications {
-  display: block;
+// .mobileNotifications {
+//   display: block;
 
-  &:focus {
-    outline: none;
-  }
-  &:focus-visible {
-    outline: 0.3rem auto $color-navy;
-  }
+//   &:focus {
+//     outline: none;
+//   }
+//   &:focus-visible {
+//     outline: 0.3rem auto $color-navy;
+//   }
 
-  @include lg-viewport {
-    background-color: $color-white;
-    position: relative;
-    display: none;
-    height: 100vh;
-    width: 100vw;
-    overflow: auto;
-  }
-}
+//   @include lg-viewport {
+//     background-color: $color-white;
+//     position: relative;
+//     display: none;
+//     height: 100vh;
+//     width: 100vw;
+//     overflow: auto;
+//   }
+// }
 
-.proButtonHeaderTab {
-  display: flex;
-  justify-content: center;
-}
+// .proButtonHeaderTab {
+//   display: flex;
+//   justify-content: center;
+// }
