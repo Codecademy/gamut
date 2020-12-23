@@ -1,10 +1,12 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { StoryStatus } from '~styleguide/blocks';
 import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
+import { colors } from '@codecademy/gamut-styles';
 
 <Meta
   title="Labs/Experimental/Molecules/GlobalHeader"
   component={GlobalHeader}
+  parameters={{ layout: 'padded' }}
 />
 
 # GlobalHeader
@@ -80,5 +82,34 @@ Header for a unified Codecademy global navigation system.
 <Canvas>
   <Story name="Anonymous User Global Header">
     {(args) => <GlobalHeader />}
+  </Story>
+</Canvas>
+
+## GlobalHeader Over Background Color
+
+<Canvas withSource="open">
+  <Story
+    name="Background Color GlobalHeader"
+    decorators={[
+      (Story) => (
+        <div style={{ 'background-color': colors.beige }}>
+          <Story />
+        </div>
+      ),
+    ]}
+  >
+    {(args) => (
+      <GlobalHeader
+        user={{
+          avatar: '',
+          roles: {
+            isAdmin: false,
+            isCustomerService: false,
+            isPro: false,
+          },
+          displayName: 'Codey',
+        }}
+      />
+    )}
   </Story>
 </Canvas>

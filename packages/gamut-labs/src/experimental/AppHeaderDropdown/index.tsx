@@ -7,6 +7,7 @@ import React, { useRef, useState } from 'react';
 import { Popover } from '..';
 import { AppHeaderPopover } from '../AppHeader/types';
 import styles from './styles.scss';
+import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
@@ -61,18 +62,11 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         <Container column className={styles.dropdown}>
           {item.popover.map((link) => {
             return (
-              <div key={link.id}>
-                <ButtonDeprecated
-                  className={cx(styles.menuItem)}
-                  // data-testid={`header-${item.id}`}
-                  flat
-                  href={link.href}
-                  // onClick={() => trackClick(`topnav_${name}`)}
-                  theme="navy"
-                >
-                  {link.text}
-                </ButtonDeprecated>
-              </div>
+              <AppHeaderLinkElement
+                item={link}
+                key={link.id}
+                className={styles.menuItem}
+              />
             );
           })}
         </Container>

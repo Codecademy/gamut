@@ -10,6 +10,7 @@ import { ReactElement } from 'react';
 
 import styles from './styles.scss';
 import { AppHeaderDropdown } from '../AppHeaderDropdown';
+import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 
 export type AppHeaderProps = {
   items: { left: AppHeaderItem[]; right: AppHeaderItem[] };
@@ -49,24 +50,7 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
         </div>
       );
     case 'link':
-      return (
-        <div className={cx(styles.basicNavLinkHeader)}>
-          <ButtonDeprecated
-            className={cx(
-              styles.plainNavLink,
-              styles.navLink,
-              styles.hoverable
-            )}
-            // data-testid={`header-${item.id}`}
-            flat
-            href={item.href}
-            // onClick={() => trackClick(`topnav_${name}`)}
-            theme="navy"
-          >
-            {item.text}
-          </ButtonDeprecated>
-        </div>
-      );
+      return <AppHeaderLinkElement item={item} />;
     case 'text-button':
       return (
         <div>

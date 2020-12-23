@@ -17,6 +17,7 @@ import {
   signUp,
   upgradeToPro,
 } from './AppHeaderItems';
+import styles from './styles.scss';
 
 export type GlobalHeaderProps = {
   user?: User;
@@ -64,5 +65,10 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
   isLoggedIn && !user?.roles.isPro && rightItems.push(upgradeToPro);
   !isLoggedIn && rightItems.push(login, signUp);
 
-  return <AppHeader items={{ left: leftItems, right: rightItems }} />;
+  return (
+    <AppHeader
+      className={styles.globalHeader}
+      items={{ left: leftItems, right: rightItems }}
+    />
+  );
 };

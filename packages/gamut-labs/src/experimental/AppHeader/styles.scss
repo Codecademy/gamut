@@ -15,17 +15,6 @@
   }
 }
 
-.plainNavLink {
-  font-weight: normal;
-  min-width: 0;
-  padding: 0.1rem;
-  text-align: left;
-}
-
-.navLink {
-  display: block;
-}
-
 .searchButton {
   padding: 0.2rem;
   min-width: 0;
@@ -41,10 +30,4 @@
 
 .headerTabMobileMenu {
   margin-right: 0;
-}
-
-.hoverable {
-  &:hover {
-    color: $color-hyper;
-  }
 }
