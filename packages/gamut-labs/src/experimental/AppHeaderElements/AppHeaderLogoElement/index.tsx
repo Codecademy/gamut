@@ -1,6 +1,5 @@
 import { ButtonDeprecated } from '@codecademy/gamut';
 import { colors } from '@codecademy/gamut-styles';
-import { TextButton } from '@codecademy/gamut/src/Button';
 import React from 'react';
 import { Logo } from '../../..';
 
