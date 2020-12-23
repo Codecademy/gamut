@@ -6,8 +6,9 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { CodepediaPopover, LinkProperties } from './Popover';
 import { getLoadUrl, getViewUrl } from './urlHelpers';
+import { PopoverProps } from '@codecademy/gamut-labs';
 
-export type CodepediaProps = {
+export type CodepediaProps = Omit<PopoverProps, 'isOpen' | 'targetRef'> & {
   concept: string;
   language?: string;
   overrides?: any;
@@ -20,6 +21,7 @@ export const Codepedia: React.FC<CodepediaProps> = ({
   language,
   overrides,
   linkOverrides = {},
+  ...popoverProps
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState('');
@@ -64,6 +66,7 @@ export const Codepedia: React.FC<CodepediaProps> = ({
         content={content}
         overrides={overrides}
         linkProperties={linkOverrides}
+        {...popoverProps}
       />
     </>
   );

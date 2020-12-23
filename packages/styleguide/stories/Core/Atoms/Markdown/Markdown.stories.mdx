@@ -142,12 +142,19 @@ There are several overrides available from the `@codecademy/markdown-overrides` 
 
 <StoryStatus status="volatile" />
 
-Used to render inline information from Codepedia (a hackathon project!)
+Used to render inline information from [Codepedia](https://codecademy.github.io/codepedia) (a hackathon project!)
 
 <Canvas>
   <Story name="Codepedia (Standalone)">
     {(args) => (
-      <Codepedia concept="comments" language="js">
+      <Codepedia
+        concept="comments"
+        language="js"
+        align="left"
+        position="above"
+        verticalOffset={12}
+        horizontalOffset={-10}
+      >
         Comments
       </Codepedia>
     )}

@@ -1,10 +1,12 @@
 import React, { RefObject } from 'react';
 import styled from '@emotion/styled';
-import { Markdown as MarkdownBase, Box, TextButton } from '@codecademy/gamut';
-import { Loading, Popover } from '@codecademy/gamut-labs';
+import { Box, Container } from '@codecademy/gamut';
+import { Loading, Popover, PopoverProps } from '@codecademy/gamut-labs';
 import { CloseIcon } from '@codecademy/gamut-icons';
 import { ManyOverrideSettings } from '@codecademy/gamut/dist/Markdown/libs/overrides';
 import { colors } from '@codecademy/gamut-styles';
+import { NeutralTextButton } from '../NeutralTextButton';
+import { MiniMarkdown } from '../MiniMarkdown';
 
 export type LinkProperties = {
   label?: string;
@@ -13,7 +15,10 @@ export type LinkProperties = {
   href?: string;
 };
 
-export type CodepediaPopoverProps = {
+export type CodepediaPopoverProps = Omit<
+  PopoverProps,
+  'isOpen' | 'targetRef' | 'children'
+> & {
   content: string;
   targetRef: RefObject<any>;
   isOpen: boolean;
@@ -29,16 +34,23 @@ export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
   content,
   overrides,
   linkProperties,
+  verticalOffset,
+  horizontalOffset,
+  align,
+  position,
+  ...popoverProps
 }) => {
   const buttonLabel = linkProperties.label || 'View on Codepedia';
 
   return (
-    <SPopover
+    <StyledPopover
       isOpen={isOpen}
       targetRef={targetRef}
-      verticalOffset={3}
-      horizontalOffset={0}
-      align="right"
+      verticalOffset={verticalOffset ?? 3}
+      horizontalOffset={horizontalOffset ?? 0}
+      align={align ?? 'right'}
+      position={position ?? 'below'}
+      {...popoverProps}
     >
       <Box
         borderColor="navy"
@@ -47,8 +59,8 @@ export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
         borderWidth="1px"
         borderRadius="4px"
       >
-        <SContainer>
-          <TopBar>
+        <PopoverContent column>
+          <TopBar justify="spaceBetween">
             {linkProperties.onViewClick ? (
               <NeutralTextButton onClick={linkProperties.onViewClick}>
                 {buttonLabel}
@@ -69,58 +81,24 @@ export const CodepediaPopover: React.FC<CodepediaPopoverProps> = ({
           ) : (
             <Loading />
           )}
-        </SContainer>
+        </PopoverContent>
       </Box>
-    </SPopover>
+    </StyledPopover>
   );
 };
 
-const SPopover = styled(Popover)`
+const StyledPopover = styled(Popover)`
   box-shadow: -6px 6px 0 0 ${colors.navy}FF;
 `;
 
-const SContainer = styled.div`
+const PopoverContent = styled(Container)`
   max-width: 25vw;
   max-height: 21rem;
-  display: flex;
-  flex-direction: column;
   padding-bottom: 0.5rem;
 `;
 
-const TopBar = styled.div`
+const TopBar = styled(Container)`
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid ${colors['gray-200']};
   padding: 0.3rem;
-`;
-
-const NeutralTextButton = styled(TextButton)`
-  color: ${colors.navy} !important;
-  span {
-    color: ${colors.navy} !important;
-  }
-  :hover span {
-    background-color: ${colors.lightGreen}33 !important;
-  }
-  :focus {
-    box-shadow: none;
-  }
-  :focus-visible {
-    box-shadow: ${colors.lightGreen} 0 0 0 2px;
-  }
-`;
-
-const MiniMarkdown = styled(MarkdownBase)`
-  margin: 0;
-  padding: 0 1.25rem;
-  overflow-y: auto;
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
 `;
