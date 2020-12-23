@@ -95,6 +95,8 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
       );
     case 'popover':
       return <AppHeaderDropdown item={item} />;
+    default:
+      return <div />;
   }
 };
 

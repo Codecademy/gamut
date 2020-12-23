@@ -4,7 +4,8 @@ export type AppHeaderItem =
   | AppHeaderLink
   | AppHeaderTextButton
   | AppHeaderFillButton
-  | AppHeaderPopover;
+  | AppHeaderPopover
+  | AppHeaderRenderPopover;
 
 type AppHeaderBase = {
   id: string;
@@ -38,8 +39,12 @@ export type AppHeaderFillButton = AppHeaderBase & {
 
 export type AppHeaderPopover = AppHeaderBase & {
   popover: HeaderPopoverItem[];
-  // | (() => React.ReactNode);
   type: 'popover';
+};
+
+export type AppHeaderRenderPopover = AppHeaderBase & {
+  popover: () => React.ReactNode;
+  type: 'render-popover';
 };
 
 export type HeaderPopoverItem = {

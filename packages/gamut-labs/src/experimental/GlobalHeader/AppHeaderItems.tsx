@@ -5,6 +5,7 @@ import {
   AppHeaderLogo,
   AppHeaderPopover,
   AppHeaderProLogo,
+  AppHeaderRenderPopover,
   AppHeaderTextButton,
 } from '../AppHeader/types';
 
@@ -110,32 +111,36 @@ export const plansPricingDropdown: AppHeaderPopover = {
   type: 'popover',
 };
 
-export const search = (renderSearch: () => ReactNode): AppHeaderPopover => {
+export const search = (
+  renderSearch: () => ReactNode
+): AppHeaderRenderPopover => {
   return {
     id: 'search',
     icon: '',
     popover: renderSearch,
-    type: 'popover',
+    type: 'render-popover',
   };
 };
 
 export const notifications = (
   renderNotifications: () => ReactNode
-): AppHeaderPopover => {
+): AppHeaderRenderPopover => {
   return {
     id: 'notifications',
     icon: '',
     popover: renderNotifications,
-    type: 'popover',
+    type: 'render-popover',
   };
 };
 
-export const profile = (renderProfile: () => ReactNode): AppHeaderPopover => {
+export const profile = (
+  renderProfile: () => ReactNode
+): AppHeaderRenderPopover => {
   return {
     id: 'profile',
     image: '',
     popover: renderProfile,
-    type: 'popover',
+    type: 'render-popover',
   };
 };
 
