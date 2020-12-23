@@ -1,3 +1,16 @@
+import * as system from '@codecademy/gamut-styles/src/system';
+
+const { properties, variant, ...groups } = system;
+
+export const PROP_GROUPS = groups;
+
+export const ALL_PROPS = Object.entries(properties).reduce<string[]>(
+  (carry, [key, handler]) => {
+    return [...carry, ...handler.propNames];
+  },
+  []
+);
+
 export const PROP_META = {
   fontSize: {
     propName: 'fontSize',

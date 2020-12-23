@@ -1,0 +1,21 @@
+<Meta title="Foundations/System Props" />
+
+# System Properties
+
+## Example Usage
+
+```tsx
+import styled from '@emotion/styled';
+import { space } from '@codecademy/gamut-styles';
+
+const StyledComponent = styled.div(space);
+```
+
+## Composition
+
+```tsx
+import { compose } from '@codecademy/gamut-system';
+import { space, typography } from '@codecademy/gamut-styles';
+
+const StyledComponent = styled.div(compose(space, typography));
+```

@@ -1,25 +1,32 @@
 import { mapValues, isNumber, get, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
-import * as system from '@codecademy/gamut-styles/src/system';
 import { kebabCase } from 'lodash';
-import { PROP_META } from './propMeta';
+import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
 import { theme } from '@codecademy/gamut-styles/src/theme';
 
-const createDescription = (name: string) => {
-  const cssProp = kebabCase(name);
+export type SystemControls = 'text' | 'select' | 'radio' | 'inline-radio';
 
-  return ` Property: **[${cssProp}](https://developer.mozilla.org/en-US/docs/Web/CSS/${cssProp})**
-    `;
+export type ControlType = {
+  type: SystemControls;
+  options?: unknown[];
 };
 
-const { properties, variant, ...groups } = system;
+const createDescription = (name: string) => {
+  const description: string[] = [];
+  const cssProp = kebabCase(name);
+  description.push(
+    `📐 Property: [${cssProp}](https://developer.mozilla.org/en-US/docs/Web/CSS/${cssProp})`
+  );
 
-const systemProps = Object.entries(properties).reduce<string[]>(
-  (carry, [key, handler]) => {
-    return [...carry, ...handler.propNames];
-  },
-  []
-);
+  const scale = PROP_META?.[name]?.scale;
+  if (scale) {
+    description.push(
+      `⚖️ Scale: [${scale}](/?path=/docs/foundations-theme#${scale})`
+    );
+  }
+
+  return description.join('<br />');
+};
 
 const getScale = (value: string) => {
   const [match, scale] = value.match(/<(.*?)>/) ?? [];
@@ -39,9 +46,15 @@ const sanitizeOptions = map((val) =>
   typeof val === 'string' ? val.replace(/"/g, '') : val
 );
 
-type ControlType = {
-  type: 'text' | 'select' | 'radio' | 'inline-radio';
-  options?: unknown[];
+const getArgsType = (args: unknown[]): SystemControls => {
+  const selections = args.length;
+  if (args.length > 4) {
+    return 'select';
+  }
+  if (args.length > 2) {
+    return 'radio';
+  }
+  return 'inline-radio';
 };
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
@@ -85,27 +98,18 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
     }
 
     // Find all system props that do not have a description
-    if (systemProps.includes(arg.name) && arg.description === '') {
-      const scale = PROP_META?.[arg.name]?.scale;
-      const category = Object.entries(groups).find(([key, { propNames }]) =>
-        propNames.includes(arg.name)
-      )[0];
+    if (ALL_PROPS.includes(arg.name) && arg.description === '') {
+      const scale = theme[PROP_META?.[arg.name]?.scale];
+      const category = Object.entries(
+        PROP_GROUPS
+      ).find(([key, { propNames }]) => propNames.includes(arg.name))[0];
       const rawScale = arg?.table?.type?.summary;
       const options = rawScale && sortScale(getScale(rawScale).split(' | '));
       const parsedScale = options.join(' | ');
-      const argOptions = scale
-        ? Object.keys(theme[scale])
-        : sanitizeOptions(options);
-
-      const argType =
-        argOptions.length > 4
-          ? 'select'
-          : argOptions.length > 2
-          ? 'radio'
-          : 'inline-radio';
+      const argOptions = scale ? Object.keys(scale) : sanitizeOptions(options);
 
       let control: ControlType = {
-        type: argType,
+        type: getArgsType(argOptions),
         options: argOptions,
       };
 
