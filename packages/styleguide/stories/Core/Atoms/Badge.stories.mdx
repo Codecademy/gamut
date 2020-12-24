@@ -6,15 +6,16 @@ import { VisualTheme } from '@codecademy/gamut/src';
   title="Atoms/Badge"
   component={Badge}
   parameters={{ status: 'stable', source: 'gamut' }}
+  args={{ children: 'badge' }}
 />
 
 Small blue indicator of some unusual text
 
-<Canvas withSource="open">
-  <Story name="Badge">{(args) => <Badge>New</Badge>}</Story>
+<Canvas>
+  <Story name="Badge">{(args) => <Badge {...args} />}</Story>
 </Canvas>
 
-<Props of={Badge} />
+<Props story="Badge" />
 
 Badges can be used within inline text.
 

@@ -1,11 +1,6 @@
 import React from 'react';
 import { styled } from '@storybook/theming';
-import {
-  colors,
-  fontMonospace,
-  fontBase,
-  fontSmoothing,
-} from '@codecademy/gamut-styles';
+import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles';
 
 const Badge = styled.div`
   display: inline-block;
