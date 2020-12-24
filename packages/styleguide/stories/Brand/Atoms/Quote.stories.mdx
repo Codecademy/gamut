@@ -2,22 +2,21 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, text } from '@storybook/addon-knobs';
 import { Quote } from '@codecademy/gamut-labs/src';
 
-<Meta title="Brand/Atoms/Quote" component={Quote} />
+<Meta
+  title="Brand/Atoms/Quote"
+  component={Quote}
+  args={{
+    text:
+      'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.',
+  }}
+  parameters={{ source: 'gamut-labs' }}
+/>
 
 Emphasized text intended to be a direct quote, such as from a learner.
 Often with an `Avatar` or `Testimonial`.
 
 <Canvas withSource="open">
-  <Story name="Quote">
-    {(args) => (
-      <Quote
-        text={text(
-          'Text',
-          'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.'
-        )}
-      />
-    )}
-  </Story>
+  <Story name="Quote">{(args) => <Quote {...args} />}</Story>
 </Canvas>
 
-<Props story="Quote" of={Quote} />
+<Props story="Quote" />
