@@ -32,14 +32,3 @@ const STATUS_COLORS = {
 export const StatusBadge: React.FC<{ status: keyof typeof STATUS_COLORS }> = ({
   status,
 }) => <Badge color={STATUS_COLORS[status]}>{status}</Badge>;
-
-const SOURCES = {
-  gamut: colors.hyper,
-  'gamut-labs': colors.orange,
-  'gamut-system': colors.blue,
-  'gamut-styles': colors.palePink,
-};
-
-export const SourceBadge: React.FC<{ source: keyof typeof SOURCES }> = ({
-  source,
-}) => <Badge color={SOURCES[source]}>{source}</Badge>;

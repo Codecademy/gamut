@@ -1,4 +1,5 @@
 import { styled } from '@storybook/theming';
+import { allProps } from './styles';
 
 export const Row = styled.div`
   display: grid;
@@ -12,3 +13,5 @@ export const Column = styled.div`
   align-items: center;
   justify-content: start;
 `;
+
+export const Example = styled.div(allProps);

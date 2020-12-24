@@ -5,7 +5,7 @@ import {
   Typeset,
   Canvas,
 } from '@storybook/addon-docs/dist/blocks';
-import { Row, Column } from '~styleguide/blocks';
+import { Row, Column, Example } from '~styleguide/blocks';
 import { startCase } from 'lodash';
 import { theme, swatches, colorNames } from '@codecademy/gamut-styles';
 
@@ -95,10 +95,10 @@ Theme Key: `theme.fontFamily`
       <>
         <Column>{val}</Column>
         <Column>
-          <div style={{ fontFamily: theme.fontFamily[val], fontSize: '2rem' }}>
+          <Example fontFamily={theme.fontFamily[val]} fontSize="2rem">
             {theme.fontFamily[val].split(',')[0].replace(/"/g, '')} is a cool
             font
-          </div>
+          </Example>
         </Column>
       </>
     ))}
@@ -119,7 +119,7 @@ export const sample = 'I do not know what to put here';
         <>
           <Column>{val}</Column>
           <Column>
-            <div style={{ fontSize: theme.fontSize[val] }}>{sample}</div>
+            <Example fontSize={theme.fontSize[val]}>{sample}</Example>
           </Column>
         </>
       ))}
@@ -140,7 +140,7 @@ Theme Key: `theme.fontWeight`
           </span>
         </Column>
         <Column>
-          <div style={{ fontWeight: theme.fontWeight[val] }}>{sample}</div>
+          <Example fontWeight={theme.fontWeight[val]}>{sample}</Example>
         </Column>
       </>
     ))}
@@ -164,7 +164,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
           </span>
         </Column>
         <Column>
-          <div style={{ lineHeight: theme.lineHeight[val] }}>{lorem}</div>
+          <Example lineHeight={theme.lineHeight[val]}>{lorem}</Example>
         </Column>
       </>
     ))}
@@ -183,13 +183,11 @@ Theme Key: `theme.spacing`
       <>
         <Column>{val}</Column>
         <Column>
-          <div
-            style={{
-              background: theme.colors['blue-300'],
-              width: theme.spacing[val],
-              height: theme.spacing[val],
-            }}
-          ></div>
+          <Example
+            backgroundColor={theme.colors['blue-300']}
+            width={theme.spacing[val]}
+            height={theme.spacing[val]}
+          />
         </Column>
       </>
     ))}
@@ -208,13 +206,11 @@ Theme Key: `theme.boxShadows`
       <>
         <Column>{val}</Column>
         <Column>
-          <div
-            style={{
-              boxShadow: theme.boxShadows[val],
-              width: '3rem',
-              height: '3rem',
-            }}
-          ></div>
+          <Example
+            boxShadow={theme.boxShadows[val]}
+            width="3rem"
+            height="3rem"
+          />
         </Column>
       </>
     ))}
@@ -233,16 +229,14 @@ Theme Key: `theme.breakpoints`
       <>
         <Column>{val}</Column>
         <Column>
-          <code
-            style={{
-              borderRadius: '5px',
-              padding: '4px 8px',
-              backgroundColor: theme.colors['gray-100'],
-              color: theme.colors['gray-500'],
-            }}
+          <Example
+            borderRadius="5px"
+            padding="4px 8px"
+            backgroundColor={theme.colors['gray-100']}
+            color={theme.colors['gray-500']}
           >
             {theme.breakpoints[val]}
-          </code>
+          </Example>
         </Column>
       </>
     ))}

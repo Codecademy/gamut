@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { SourceBadge, StatusBadge } from './Badge';
+import { StatusBadge } from '../Badge';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
@@ -39,12 +39,21 @@ const StoryTitle = styled.h1`
 export const Page = (props) => {
   const {
     mdxComponentMeta: { title },
-    parameters: { component, subcomponents, status, pageTitle, figma, source },
+    parameters: {
+      component,
+      subcomponents,
+      status,
+      pageTitle,
+      figmaId,
+      source,
+    },
   } = useContext(DocsContext);
 
   const titleString = pageTitle || title.split('/').reverse()[0];
   const showStatus = Boolean(status) || Boolean(component || subcomponents);
+
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
+  const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   return (
     <>
@@ -76,13 +85,13 @@ export const Page = (props) => {
             </HeaderCol>
           </>
         )}
-        {figma && (
+        {figmaId && (
           <>
             <HeaderCol>
               <strong>Design:</strong>
             </HeaderCol>
             <HeaderCol>
-              <FigmaLink target="_blank" href={figma}>
+              <FigmaLink target="_blank" href={figmaLink}>
                 Figma <OpenIcon size={14} />
               </FigmaLink>
             </HeaderCol>
