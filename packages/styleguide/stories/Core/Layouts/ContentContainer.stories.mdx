@@ -4,6 +4,7 @@ import { ContentContainer } from '@codecademy/gamut/src';
 <Meta
   title="Layouts/ContentContainer"
   component={ContentContainer}
+  args={{ children: 'Some random content yo' }}
   parameters={{ source: 'gamut' }}
 />
 
@@ -13,8 +14,8 @@ responsive padding at our different breakpoints.
 
 <Canvas>
   <Story name="Content Container">
-    {(args) => <ContentContainer>Some random content yo</ContentContainer>}
+    {(args) => <ContentContainer {...args} />}
   </Story>
 </Canvas>
 
-<Props of={ContentContainer} />
+<Props story="Content Container" />
