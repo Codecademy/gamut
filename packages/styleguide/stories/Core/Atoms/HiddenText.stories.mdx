@@ -1,8 +1,11 @@
-import { HiddenText } from '@codecademy/gamut/src';
+import { HiddenText, VisualTheme } from '@codecademy/gamut/src';
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
-import { VisualTheme } from '@codecademy/gamut/src';
 
-<Meta title="Atoms/HiddenText" component={HiddenText} />
+<Meta
+  title="Atoms/HiddenText"
+  component={HiddenText}
+  parameters={{ source: 'gamut' }}
+/>
 
 Visually hidden text that should still be narrated by screenreaders.
 

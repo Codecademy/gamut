@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
-import { DocsContext, Title } from '@storybook/addon-docs/blocks';
-import { StoryStatus } from './StoryStatus';
+import { DocsContext } from '@storybook/addon-docs/blocks';
+import { SourceBadge, StatusBadge } from './Badge';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 
 const FigmaLink = styled.a`
-  display: grid;
+  display: inline-flex;
   grid-template-columns: max-content max-content;
+  line-height: 1;
   column-gap: 0.5rem;
-  align-items: center;
+  align-items: flex-start;
   color: ${theme.colors.blue};
-  font-weight: bold;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    text-decoration: none;
+    border-bottom-color: ${theme.colors.blue};
+  }
 `;
 
 const HeaderRow = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: max-content max-content 1fr max-content;
+  grid-template-columns: max-content 1fr;
   align-items: center;
   column-gap: 1rem;
+  row-gap: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 const HeaderCol = styled.div``;
@@ -32,29 +39,55 @@ const StoryTitle = styled.h1`
 export const Page = (props) => {
   const {
     mdxComponentMeta: { title },
-    parameters: { component, subcomponents, status, pageTitle, figma },
+    parameters: { component, subcomponents, status, pageTitle, figma, source },
   } = useContext(DocsContext);
 
   const titleString = pageTitle || title.split('/').reverse()[0];
-  const hasComponent = Boolean(component || subcomponents);
-  const hasStatus = Boolean(status);
-  const showStatus = hasStatus || hasComponent;
+  const showStatus = Boolean(status) || Boolean(component || subcomponents);
+  const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
 
   return (
     <>
       <HeaderRow>
-        <HeaderCol>{<StoryTitle>{titleString}</StoryTitle>}</HeaderCol>
         <HeaderCol>
-          {showStatus && <StoryStatus status={status || 'stable'} />}
+          <StoryTitle>{titleString}</StoryTitle>
         </HeaderCol>
-        <HeaderCol />
-        <HeaderCol>
-          {figma && (
-            <FigmaLink target="_blank" href={figma}>
-              View in Figma <OpenIcon />
-            </FigmaLink>
-          )}
-        </HeaderCol>
+      </HeaderRow>
+      <HeaderRow>
+        {showStatus && (
+          <>
+            <HeaderCol>
+              <strong>Status: </strong>
+            </HeaderCol>
+            <HeaderCol>
+              <StatusBadge status={status || 'stable'} />
+            </HeaderCol>
+          </>
+        )}
+        {source && (
+          <>
+            <HeaderCol>
+              <strong>Source: </strong>
+            </HeaderCol>
+            <HeaderCol>
+              <FigmaLink target="_blank" href={npmLink}>
+                @codecademy/{source} <OpenIcon size={14} />
+              </FigmaLink>
+            </HeaderCol>
+          </>
+        )}
+        {figma && (
+          <>
+            <HeaderCol>
+              <strong>Design:</strong>
+            </HeaderCol>
+            <HeaderCol>
+              <FigmaLink target="_blank" href={figma}>
+                Figma <OpenIcon size={14} />
+              </FigmaLink>
+            </HeaderCol>
+          </>
+        )}
       </HeaderRow>
       {props.children}
     </>

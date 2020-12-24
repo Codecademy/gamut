@@ -67,7 +67,7 @@ export const Box = styled.div`
 ```tsx
 import { boxShadow } from '@codecademy/gamut-styles';
 
-const Example = `
+const Example = styled.div`
   ${boxShadow(3)}
 `;
 ```
@@ -91,11 +91,11 @@ We enable font smoothing in some places to make typography more readable.
 ```tsx
 import { fontSmoothing } from '@codecademy/gamut-styles';
 
-const Smooth = `
+const Smooth = styled.div`
   ${fontSmoothing()}
 `;
 
-const Smooth = `
+const Smooth = styled.div`
   ${fontSmoothing(false)}
 `;
 ```
@@ -152,11 +152,11 @@ import {
   screenReaderOnlyFocusable,
 } from '@codecademy/gamut-styles';
 
-const HiddenLabel = `
+const HiddenLabel = styled.div`
   ${screenReaderOnly}
 `;
 
-const HiddenLabelWithFocus = `
+const HiddenLabelWithFocus = styled.div`
   ${screenReaderOnlyFocusable}
 `;
 ```

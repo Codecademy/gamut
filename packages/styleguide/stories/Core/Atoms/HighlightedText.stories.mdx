@@ -2,7 +2,11 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import { text } from '@storybook/addon-knobs';
 
-<Meta title="Atoms/HighlightedText" component={HighlightedText} />
+<Meta
+  title="Atoms/HighlightedText"
+  component={HighlightedText}
+  parameters={{ source: 'gamut' }}
+/>
 
 Emphasized (bold) text with a light background color behind it. Use to
 showcase important words in a sentence.

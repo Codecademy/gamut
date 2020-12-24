@@ -2,7 +2,11 @@ import { Anchor, Text } from '@codecademy/gamut/src';
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
 import { VisualTheme } from '@codecademy/gamut/src';
 
-<Meta title="Typography/Anchor" component={Anchor} />
+<Meta
+  title="Typography/Anchor"
+  component={Anchor}
+  parameters={{ source: 'gamut' }}
+/>
 
 Use this component for basic inline text links.
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
