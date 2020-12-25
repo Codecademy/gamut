@@ -12,7 +12,7 @@ export const runSplitStoryshotsTests = (index: number) => {
     test: renderWithOptions({
       renderer: mount,
     }),
-    storyKindRegex: /^((?!.*?Popover).(?!.*?Overlay).).(?!.*?Markdown).)*$/,
+    storyKindRegex: /^((?!.*?Popover).(?!.*?Overlay).(?!.*?Markdown))*$/,
     configPath: path.join(__dirname, '../.storybook'),
   });
 };
