@@ -1,5 +1,6 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Markdown, Heading, Text } from '@codecademy/gamut/src';
+import { elements, tags } from './examples';
 import exampleMarkdown from './markdown-example.md';
 
 <Meta
@@ -35,33 +36,11 @@ Markdown renderer for all your markdown needs.
 
 In cases where our default Markdown renderer is not returning exactly what you need, you can override specific tags or custom tags.
 
-export const elOverrides = {
-  CodeBlock: {
-    component: (props) => <Text style={{ color: 'darkblue' }} {...props} />,
-  },
-  CustomElement: {
-    component: ({ title }) => {
-      return (
-        <Heading
-          as="h3"
-          fontSize="md"
-          style={{
-            color: 'rebeccapurple',
-          }}
-        >
-          {title}
-        </Heading>
-      );
-    },
-    allowedAttributes: ['title'],
-  },
-};
-
 <Canvas>
   <Story
     name="Element Overrides"
     args={{
-      overrides: elOverrides,
+      overrides: elements,
       text: `"## Hello World
           <CodeBlock>Span inside a custom code block element</CodeBlock>
           <CustomElement title='A Custom Component' />"`,
@@ -72,12 +51,6 @@ export const elOverrides = {
 </Canvas>
 
 A common override may be to change the font size of a Heading.
-
-export const tags = {
-  h3: {
-    component: (props) => <Heading {...props} as="h3" size="xs" />,
-  },
-};
 
 <Canvas>
   <Story
