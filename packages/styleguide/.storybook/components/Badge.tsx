@@ -1,8 +1,23 @@
-import React from 'react';
 import { styled } from '@storybook/theming';
+import { variant } from './styles';
 import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles';
 
-const Badge = styled.div`
+const badgeVariants = variant({
+  prop: 'status',
+  variants: {
+    stable: {
+      backgroundColor: colors.green,
+    },
+    volatile: {
+      backgroundColor: colors.yellow,
+    },
+    depreccated: {
+      backgroundColor: colors.red,
+    },
+  },
+});
+
+export const Badge = styled.div`
   display: inline-block;
   align-items: center;
   padding: 0.15rem 0.75rem 0;
@@ -14,16 +29,6 @@ const Badge = styled.div`
   text-transform: uppercase;
   font-family: ${fontBase};
   color: ${colors.white};
-  background-color: ${({ color }) => color};
+  ${badgeVariants}
   ${fontSmoothing()}
 `;
-
-const STATUS_COLORS = {
-  stable: colors.green,
-  volatile: colors.yellow,
-  deprecated: colors.red,
-};
-
-export const StatusBadge: React.FC<{ status: keyof typeof STATUS_COLORS }> = ({
-  status,
-}) => <Badge color={STATUS_COLORS[status]}>{status}</Badge>;

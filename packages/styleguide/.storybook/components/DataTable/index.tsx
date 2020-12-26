@@ -14,13 +14,16 @@ type ColumnConfig = {
 
 const TableEl = styled.div`
   display: grid;
-  row-gap: 1rem;
 `;
 
 const RowEl = styled.div`
   display: flex;
   max-width: 100%;
   border-bottom: 1px solid #eeeeee;
+
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const colSizes = variant({
@@ -40,6 +43,8 @@ const colSizes = variant({
     },
     fill: {
       flexGrow: 1,
+      flexShrink: 0,
+      flexBasis: 0,
     },
   },
 });
@@ -57,7 +62,7 @@ type ColProps = HandlerProps<typeof colVariants> &
 const ColEl = styled.div<ColProps>`
   ${colSizes}
   ${colVariants}
-  padding: 4px 8px;
+  padding: 16px 12px;
 
   &:first-child {
     padding-left: 4px;

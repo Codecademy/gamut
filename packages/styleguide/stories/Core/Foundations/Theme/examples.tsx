@@ -52,7 +52,7 @@ export const swatchTable = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.colors[{key}-WEIGHT]</Code>,
+      render: ({ key }: any) => <Code>theme.colors['{key}-WEIGHT']</Code>,
     },
     {
       key: 'swatch',
@@ -74,7 +74,7 @@ const createExampleColumn = ({
 }) => ({
   key: 'example',
   name: 'Example',
-  size: 'Fill',
+  size: 'fill',
   render: ({ value }: any) => <Box {...{ [prop]: value }}>{text}</Box>,
 });
 
@@ -126,6 +126,8 @@ export const fontSizeTable = {
   ],
 };
 
+const longExampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`;
+
 export const lineHeightTable = {
   rows: Object.entries(theme.lineHeight).map(([key, value]) => ({
     key,
@@ -138,7 +140,10 @@ export const lineHeightTable = {
       render: ({ key }: any) => <Code>theme.lineHeight[{key}]</Code>,
     },
     VALUE_COLUMN,
-    createExampleColumn({ text: 'Example Text', prop: 'lineHeight' }),
+    createExampleColumn({
+      text: longExampleText,
+      prop: 'lineHeight',
+    }),
   ],
 };
 
@@ -192,11 +197,12 @@ export const boxShadowTable = {
       render: ({ value }: any) => (
         <Box
           boxShadow={value}
-          width="2rem"
-          height="2rem"
+          width="1.5rem"
+          height="1.5rem"
           borderStyle="solid"
           borderColor="grey"
           borderWidth="1px"
+          marginBottom="2rem"
         />
       ),
     },

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { StatusBadge } from '../Badge';
+import { Badge } from '../Badge';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
@@ -36,13 +36,13 @@ const StoryTitle = styled.h1`
   margin: 0;
 `;
 
-export const Page = (props) => {
+export const Page = (props: any) => {
   const {
     mdxComponentMeta: { title },
     parameters: {
       component,
       subcomponents,
-      status,
+      status = 'stable',
       pageTitle,
       figmaId,
       source,
@@ -69,7 +69,7 @@ export const Page = (props) => {
               <strong>Status: </strong>
             </HeaderCol>
             <HeaderCol>
-              <StatusBadge status={status || 'stable'} />
+              <Badge status={status}>{status}</Badge>
             </HeaderCol>
           </>
         )}
