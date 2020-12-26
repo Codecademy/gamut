@@ -33,3 +33,15 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
 </Canvas>
 
 <Props story="Anchor" />
+
+## Anchor Guidelines
+
+Links are really hard to get right for accessibility!
+Most importantly: links must be _visually distinct_ from body text.
+For general links in body text, we use a visual underline to make it clear that they're links.
+
+<Text>
+  <Anchor href="/">This is a link</Anchor>. This is not.
+</Text>
+
+If you're designing a different visual that requires a link, unless your link text is clearly positioned separately from body text in a way that implies it's a link, remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
