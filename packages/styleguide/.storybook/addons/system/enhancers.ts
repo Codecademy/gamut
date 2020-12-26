@@ -1,4 +1,4 @@
-import { mapValues, isNumber, get, map } from 'lodash/fp';
+import { mapValues, isNumber, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import { kebabCase } from 'lodash';
 import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
@@ -11,27 +11,25 @@ export type ControlType = {
   options?: unknown[];
 };
 
+const MDN_URL = 'https://developer.mozilla.org/en-US/docs/Web/CSS/';
+const THEME_PATH = '/?path=/docs/foundations-emotion-theme--page';
+
 const createDescription = (name: string) => {
   const description: string[] = [];
   const cssProp = kebabCase(name);
-  description.push(
-    `📐 Property: [${cssProp}](https://developer.mozilla.org/en-US/docs/Web/CSS/${cssProp})`
-  );
+  description.push(`Property: [${cssProp}](${MDN_URL}${cssProp})`);
 
   const scale = PROP_META?.[name]?.scale;
+
   if (scale) {
-    description.push(
-      `⚖️ Scale: [${scale}](/?path=/docs/foundations-emotion-theme--page#${kebabCase(
-        scale
-      )})`
-    );
+    description.push(`Scale: [${scale}](${THEME_PATH}#${kebabCase(scale)})`);
   }
 
   return description.join('<br />');
 };
 
 const getScale = (value: string) => {
-  const [match, scale] = value.match(/<(.*?)>/) ?? [];
+  const [, scale] = value.match(/<(.*?)>/) ?? [];
   return scale ?? value;
 };
 
@@ -48,31 +46,37 @@ const sanitizeOptions = map((val) =>
   typeof val === 'string' ? val.replace(/"/g, '') : val
 );
 
-const getArgsType = (args: unknown[]): SystemControls => {
+const getControlType = (args: unknown[]): SystemControls => {
   const selections = args.length;
-  if (args.length > 4) {
+  if (selections > 4) {
     return 'select';
   }
-  if (args.length > 2) {
+  if (selections > 2) {
     return 'radio';
   }
   return 'inline-radio';
 };
+
+const getPropCategory = (name: string) =>
+  Object.entries(PROP_GROUPS).find(([key, { propNames }]) =>
+    propNames.includes(name)
+  )[0];
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((arg) => {
     // Update theme props
     if (arg.name === 'theme' && arg.table.type.summary.indexOf('Theme') > -1) {
+      const description = `[Emotion Theme](${THEME_PATH})`;
+
       return {
         ...arg,
+        description,
         table: {
           ...arg.table,
           category: 'base',
         },
-        description: 'Codecademy Theme',
         control: {
-          ...arg.control,
           disable: true,
         },
       };
@@ -80,13 +84,13 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
 
     // For as props we want to provide a standard description
     if (arg.name === 'as') {
-      const summary = get('table.type.summary', arg);
+      const summary = arg?.table?.type?.summary;
       const options = sortScale(summary.split(' | '));
+      const description = 'Change the element this component uses';
 
       return {
         ...arg,
-        description:
-          'Configures what element tag this component should present as',
+        description,
         table: {
           ...arg.table,
           category: 'base',
@@ -101,33 +105,34 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
 
     // Find all system props that do not have a description
     if (ALL_PROPS.includes(arg.name) && arg.description === '') {
-      const scale = theme[PROP_META?.[arg.name]?.scale];
-      const category = Object.entries(
-        PROP_GROUPS
-      ).find(([key, { propNames }]) => propNames.includes(arg.name))[0];
+      const { name } = arg;
+      const control: ControlType = { type: 'text' };
+
       const rawScale = arg?.table?.type?.summary;
       const options = rawScale && sortScale(getScale(rawScale).split(' | '));
-      const parsedScale = options.join(' | ');
-      const argOptions = scale ? Object.keys(scale) : sanitizeOptions(options);
 
-      let control: ControlType = {
-        type: getArgsType(argOptions),
-        options: argOptions,
-      };
+      const isStringControl =
+        rawScale.indexOf('string') > -1 || options.length < 2;
 
-      if (rawScale.indexOf('string') > -1 || options.length < 2) {
-        control = { type: 'text' };
+      if (!isStringControl) {
+        const scale = theme[PROP_META?.[name]?.scale];
+        const argOptions = scale
+          ? Object.keys(scale)
+          : sanitizeOptions(options);
+
+        control.type = getControlType(argOptions);
+        control.options = argOptions;
       }
 
       return {
         ...arg,
-        description: createDescription(arg.name),
+        description: createDescription(name),
         table: {
           ...arg.table,
-          category,
+          category: getPropCategory(name),
           type: {
             ...arg?.table?.type,
-            summary: parsedScale || rawScale,
+            summary: options.join(' | ') || rawScale,
           },
         },
         control,
