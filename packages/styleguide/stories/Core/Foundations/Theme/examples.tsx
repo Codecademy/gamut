@@ -1,7 +1,7 @@
 import { swatches, theme, trueColors } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import { Code, ColorScale, Example } from '../../../../.storybook/components';
+import { Box, Code, ColorScale } from '../../../../.storybook/components';
 
 const PROP_COLUMN = {
   key: 'key',
@@ -75,7 +75,7 @@ const createExampleColumn = ({
   key: 'example',
   name: 'Example',
   size: 'Fill',
-  render: ({ value }: any) => <Example {...{ [prop]: value }}>{text}</Example>,
+  render: ({ value }: any) => <Box {...{ [prop]: value }}>{text}</Box>,
 });
 
 export const fontFamilyTable = {
@@ -159,7 +159,7 @@ export const spaceTable = {
       name: 'Example',
       size: 'fill',
       render: ({ value }: any) => (
-        <Example
+        <Box
           display="inline-block"
           height="1rem"
           width={value}
@@ -190,7 +190,7 @@ export const boxShadowTable = {
       name: 'Example',
       size: 'md',
       render: ({ value }: any) => (
-        <Example
+        <Box
           boxShadow={value}
           width="2rem"
           height="2rem"

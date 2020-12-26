@@ -5,4 +5,3 @@ export * from './DataTable';
 export * from './PropsTable';
 export * from './Page';
 export * from './MarkdownElements';
-export * from './Example';
