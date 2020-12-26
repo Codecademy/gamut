@@ -1,22 +1,19 @@
+import { Meta, Description } from '@storybook/addon-docs/dist/blocks';
+import gettingStarted from '@codecademy/gamut-system/docs/getting-started.md';
+import composition from '@codecademy/gamut-system/docs/compose.md';
+import variant from '@codecademy/gamut-system/docs/variants.md';
+
 <Meta
   title="Foundations/System Props"
   parameters={{ status: 'volatile', source: 'gamut-styles' }}
 />
 
-## Example Usage
+<Description>{gettingStarted}</Description>
 
-```tsx
-import styled from '@emotion/styled';
-import { space } from '@codecademy/gamut-styles';
+<br />
 
-const StyledComponent = styled.div(space);
-```
+<Description>{variant}</Description>
 
-## Composition
+<br />
 
-```tsx
-import { compose } from '@codecademy/gamut-system';
-import { space, typography } from '@codecademy/gamut-styles';
-
-const StyledComponent = styled.div(compose(space, typography));
-```
+<Description>{composition}</Description>

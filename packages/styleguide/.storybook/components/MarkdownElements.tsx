@@ -1,5 +1,4 @@
 import { css, styled } from '@storybook/theming';
-import { allProps } from './styles';
 
 export const Code = styled.code(({ theme }) => {
   return css`
@@ -17,5 +16,3 @@ export const Code = styled.code(({ theme }) => {
     display: inline-block;
   `;
 });
-
-export const Example = styled.div(allProps);

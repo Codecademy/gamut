@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "paths": {
+      "~/styleguide/blocks": [".storybook/components"]
+    },
     "baseUrl": "../",
     "allowJs": true,
     "noEmit": true,

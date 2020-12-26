@@ -1,18 +1,5 @@
-import {
-  Meta,
-  ColorItem,
-  ColorPalette,
-  Typeset,
-  Canvas,
-} from '@storybook/addon-docs/dist/blocks';
-import {
-  Row,
-  Column,
-  Example,
-  Code,
-  ThemeScale,
-  ColorScale,
-} from '~styleguide/blocks';
+import { Meta, Canvas } from '@storybook/addon-docs/dist/blocks';
+import { DataTable } from '~styleguide/blocks';
 import { startCase } from 'lodash';
 import {
   theme,
@@ -20,6 +7,17 @@ import {
   swatches,
   colorNames,
 } from '@codecademy/gamut-styles';
+import {
+  colorTable,
+  swatchTable,
+  fontFamilyTable,
+  fontSizeTable,
+  fontWeightTable,
+  lineHeightTable,
+  spaceTable,
+  boxShadowTable,
+  breakpointTable,
+} from './examples';
 
 <Meta
   title="Foundations/Theme"
@@ -59,28 +57,13 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<ThemeScale
-  scale={trueColors}
-  prop="colors"
-  renderValue={(hex) => <ColorScale colors={[hex]} />}
-/>
+<DataTable {...colorTable} />
 
 ### Swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
 
-<ThemeScale
-  scale={swatches}
-  prop="colors"
-  renderPath={(value, key) => (
-    <Example width="200px">
-      <Code>
-        theme.colors[{key}-{'X'}]
-      </Code>
-    </Example>
-  )}
-  renderValue={(hexes) => <ColorScale colors={hexes} />}
-/>
+<DataTable {...swatchTable} />
 
 ## Typography
 
@@ -93,45 +76,25 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.fontFamily`
 
-<ThemeScale
-  scale={theme.fontFamily}
-  prop="fontFamily"
-  renderExample={(val) => <Example fontFamily={val}>{sampleText}</Example>}
-/>
+<DataTable {...fontFamilyTable} />
 
 ### Font Size
 
 **Key**: `theme.fontSize`
 
-<ThemeScale
-  scale={theme.fontSize}
-  prop="fontSize"
-  renderExample={(val) => (
-    <Example fontSize={val} lineHeight="1.15">
-      {sampleText}
-    </Example>
-  )}
-/>
+<DataTable {...fontSizeTable} />
 
 ### Font Weight
 
 **Key**: `theme.fontWeight`
 
-<ThemeScale
-  scale={theme.fontWeight}
-  prop="fontWeight"
-  renderExample={(val) => <Example fontWeight={val}>{sampleText}</Example>}
-/>
+<DataTable {...fontWeightTable} />
 
 ### Line Height
 
 **Key**: `theme.lineHeight`
 
-<ThemeScale
-  scale={theme.lineHeight}
-  prop="lineHeight"
-  renderExample={(val) => <Example lineHeight={val}>{lorem}</Example>}
-/>
+<DataTable {...lineHeightTable} />
 
 ## Space
 
@@ -139,18 +102,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.spacing`
 
-<ThemeScale
-  scale={theme.spacing}
-  prop="spacing"
-  renderExample={(val) => (
-    <Example
-      display="inline-block"
-      height="1rem"
-      width={val}
-      backgroundColor={theme.colors['blue-300']}
-    />
-  )}
-/>
+<DataTable {...spaceTable} />
 
 ## Shadows
 
@@ -158,20 +110,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.boxShadows`
 
-<ThemeScale
-  scale={theme.boxShadows}
-  prop="boxShadows"
-  renderExample={(val) => (
-    <Example
-      boxShadow={val}
-      width="2rem"
-      height="2rem"
-      borderStyle="solid"
-      borderColor="grey"
-      borderWidth="1px"
-    />
-  )}
-/>
+<DataTable {...boxShadowTable} />
 
 ## Other
 
@@ -179,4 +118,4 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.breakpoints`
 
-<ThemeScale scale={theme.breakpoints} prop="breakpoints" />
+<DataTable {...breakpointTable} />
