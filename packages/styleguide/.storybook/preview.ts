@@ -23,6 +23,7 @@ export const parameters = {
         'About',
         'Meta',
         'Foundations',
+        ['About', 'Theme', 'Design Guidelines', 'Legacy'],
         'Typography',
         'Layouts',
         'Icons',
