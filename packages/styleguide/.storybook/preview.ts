@@ -21,16 +21,14 @@ export const parameters = {
     storySort: {
       order: [
         'About',
-        'Meta',
         'Foundations',
-        'Typography',
         'Layouts',
-        'Icons',
+        'Typography',
         'Atoms',
         'Molecules',
         'Organisms',
         'Labs',
-        'Deprecated',
+        'Meta',
       ],
       // Fallback ordering
       method: 'alphabetical',

@@ -1,5 +1,8 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
-import LinkTo from '@storybook/addon-links/react';
+
+import { TableOfContents } from '~styleguide/blocks';
+
+import { LAYOUTS_TABLE } from './constants';
 
 <Meta title="Layouts/About" />
 
@@ -7,3 +10,5 @@ import LinkTo from '@storybook/addon-links/react';
 
 Pure sizing and padding containers.
 These position our elements on pages in standard responsive layouts.
+
+<TableOfContents data={LAYOUTS_TABLE} />

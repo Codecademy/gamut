@@ -15,13 +15,14 @@ export type Kinds =
   | 'Meta';
 
 export type AboutCellProps = {
+  alias?: string;
+  description: React.ReactNode;
   emoji: string;
   examples?: string[];
+  kind: string;
   label?: string;
-  kind: Kinds;
   story?: string;
   title?: string;
-  category?: string;
 };
 
 const Heading = styled.h2`
@@ -37,22 +38,23 @@ const Text = styled.p`
 `;
 
 export const AboutCell: React.FC<AboutCellProps> = ({
-  children,
+  alias,
+  description,
   emoji,
   examples,
   kind,
-  story = 'About',
   label = 'Examples',
-  title = kind,
+  story,
+  title = story || kind,
 }) => {
   return (
     <div>
       <Heading>
-        <LinkTo kind={kind} story={story}>
-          <span role="presentation">{emoji}</span> {title}
+        <LinkTo kind={kind} story={story || 'About'}>
+          <span role="presentation">{emoji}</span> {alias || title || 'About'}
         </LinkTo>
       </Heading>
-      <Text>{children}</Text>
+      <Text>{description}</Text>
       {examples && (
         <Text>
           {label}:{' '}

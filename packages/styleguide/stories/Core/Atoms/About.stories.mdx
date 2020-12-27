@@ -1,6 +1,10 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
+import { TableOfContents } from '~styleguide/blocks';
+
+import { ATOMS_TABLE } from './constants';
+
 <Meta title="Atoms/About" />
 
 # ⚛️ Atoms
@@ -9,3 +13,5 @@ import LinkTo from '@storybook/addon-links/react';
 > Applied to web interfaces, atoms are our HTML tags, such as a form label, an input or a button.
 > Atoms can also include more abstract elements like color palettes, fonts and even more invisible aspects of an interface like animations.
 > [[link](https://bradfrost.com/blog/post/atomic-web-design/#atoms)]
+
+<TableOfContents data={ATOMS_TABLE} />

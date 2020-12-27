@@ -59,6 +59,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "glob": "^7.1.6"
+    "@types/recursive-readdir": "^2.2.0",
+    "glob": "^7.1.6",
+    "recursive-readdir": "^2.2.2"
   }
 }

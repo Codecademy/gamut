@@ -1,5 +1,8 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
-import LinkTo from '@storybook/addon-links/react';
+
+import { TableOfContents } from '~styleguide/blocks';
+
+import { FOUNDATIONS_TABLE } from './constants';
 
 <Meta title="Foundations/About" />
 
@@ -7,3 +10,5 @@ import LinkTo from '@storybook/addon-links/react';
 
 Foundations make up the smallest scale design values that comprise a design system.
 Sometimes referred to elsewhere as "tokens", they are the abstract units that comprise and stitch together our atoms, molecules, and organisms.
+
+<TableOfContents data={FOUNDATIONS_TABLE} />

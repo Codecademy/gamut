@@ -1,6 +1,10 @@
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
+import { TableOfContents } from '~styleguide/blocks';
+
+import { MOLECULES_TABLE } from './constants';
+
 <Meta title="Molecules/About" />
 
 # 🧬 Molecules
@@ -9,3 +13,5 @@ import LinkTo from '@storybook/addon-links/react';
 > Molecules are groups of atoms bonded together and are the smallest fundamental units of a compound.
 > These molecules take on their own properties and serve as the backbone of our design systems.
 > [[link](https://bradfrost.com/blog/post/atomic-web-design/#molecules)]
+
+<TableOfContents data={MOLECULES_TABLE} />
