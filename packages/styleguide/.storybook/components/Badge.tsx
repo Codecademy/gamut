@@ -11,7 +11,7 @@ const badgeVariants = variant({
     volatile: {
       backgroundColor: colors.yellow,
     },
-    depreccated: {
+    deprecated: {
       backgroundColor: colors.red,
     },
   },

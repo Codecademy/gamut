@@ -27,7 +27,7 @@ export const parameters = {
         'About',
         'Meta',
         'Foundations',
-        ['About', 'Theme', 'System Props', 'Legacy'],
+        ['About', 'Theme', 'System Props', 'Design Guidelines', 'Legacy'],
         'Typography',
         'Layouts',
         'Icons',

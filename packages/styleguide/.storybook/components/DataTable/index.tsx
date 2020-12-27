@@ -1,7 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { variant } from '../styles';
 import { HandlerProps } from '@codecademy/gamut-system/src';
+import {
+  ArrowChevronDownIcon,
+  ArrowChevronUpIcon,
+} from '@codecademy/gamut-icons';
 
 type ColumnSizes = 'sm' | 'md' | 'lg' | 'fill';
 
@@ -16,10 +20,22 @@ const TableEl = styled.div`
   display: grid;
 `;
 
+const rowVariants = variant({
+  inset: {
+    borderStyle: 'solid',
+    borderStyleTop: 'none',
+    borderWidth: '1px',
+    borderColor: '#eeeeee',
+    backgroundColor: '#F6F9FC',
+    padding: '2rem',
+  },
+});
+
 const RowEl = styled.div`
   display: flex;
   max-width: 100%;
   border-bottom: 1px solid #eeeeee;
+  ${rowVariants}
 
   &:last-child {
     border-bottom: none;
@@ -72,10 +88,25 @@ const ColEl = styled.div<ColProps>`
   }
 `;
 
-export const DataTable: React.FC<{
+const ExpandButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+`;
+
+type DataTableProps = {
   rows: Record<string, string>[];
   columns: ColumnConfig[];
-}> = ({ rows, columns }) => {
+  renderRowExpand?: (row: Record<string, string>) => ReactNode;
+};
+
+export const DataTable: React.FC<DataTableProps> = ({
+  rows,
+  columns,
+  renderRowExpand,
+}) => {
+  const [expandedRow, setExpandedRow] = useState<number | null>(null);
+
   return (
     <TableEl>
       <RowEl>
@@ -84,16 +115,40 @@ export const DataTable: React.FC<{
             {name ? name : key}
           </ColEl>
         ))}
+        {renderRowExpand && <ColEl size="sm" />}
       </RowEl>
-      {rows.map((row) => {
+      {rows.map((row, i) => {
+        const isExpanded = i === expandedRow;
         return (
-          <RowEl>
-            {columns.map(({ key, size, render }) => {
-              return (
-                <ColEl size={size}>{render ? render(row) : row?.[key]}</ColEl>
-              );
-            })}
-          </RowEl>
+          <>
+            <RowEl>
+              {columns.map(({ key, size, render }) => {
+                return (
+                  <ColEl size={size}>{render ? render(row) : row?.[key]}</ColEl>
+                );
+              })}
+              {renderRowExpand && (
+                <ColEl size="sm">
+                  <ExpandButton
+                    onClick={() => setExpandedRow(isExpanded ? null : i)}
+                  >
+                    {isExpanded ? (
+                      <ArrowChevronUpIcon />
+                    ) : (
+                      <ArrowChevronDownIcon />
+                    )}
+                  </ExpandButton>
+                </ColEl>
+              )}
+            </RowEl>
+            {isExpanded && (
+              <RowEl variant="inset">
+                <ColEl size="fill">
+                  {renderRowExpand && renderRowExpand(row)}
+                </ColEl>
+              </RowEl>
+            )}
+          </>
         );
       })}
     </TableEl>

@@ -42,7 +42,7 @@ export const Page = (props: any) => {
     parameters: {
       component,
       subcomponents,
-      status = 'stable',
+      status,
       pageTitle,
       figmaId,
       source,
@@ -69,7 +69,7 @@ export const Page = (props: any) => {
               <strong>Status: </strong>
             </HeaderCol>
             <HeaderCol>
-              <Badge status={status}>{status}</Badge>
+              <Badge status={status || 'stable'}>{status || 'stable'}</Badge>
             </HeaderCol>
           </>
         )}

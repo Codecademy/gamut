@@ -1,0 +1,67 @@
+import { Meta } from '@storybook/addon-docs/dist/blocks';
+import { DataTable, Code } from '~styleguide/blocks';
+
+<Meta title="Getting Started" />
+
+## Packages
+
+<DataTable
+  rows={[
+    {
+      title: 'gamut',
+      description: 'Our React UI component library',
+    },
+    {
+      title: 'gamut-labs',
+      description: 'Experimental and brand level components',
+    },
+    {
+      title: 'gamut-styles',
+      description:
+        'Base styles and style utilities for gamut components and codecademy apps',
+    },
+    {
+      title: 'gamut-icons',
+      description: 'SVG Icon React Components',
+    },
+    {
+      title: 'gamut-illustrations',
+      description: 'Larger SVG Visual react components',
+    },
+    {
+      title: 'gamut-system',
+      description: 'Typescript CSS in JS utility library',
+    },
+  ]}
+  columns={[
+    {
+      key: 'title',
+      name: 'Name',
+      size: 'lg',
+      render: ({ title }) => (
+        <a
+          href={`https://github.com/Codecademy/client-modules/tree/main/packages/${title}`}
+          target="_blank"
+        >
+          <Code>{title}</Code>
+        </a>
+      ),
+    },
+    {
+      key: 'description',
+      name: 'Description',
+      size: 'fill',
+    },
+    {
+      key: 'package',
+      name: 'Latest Release',
+      size: 'lg',
+      render: ({ title }) => (
+        <img
+          src={`https://badge.fury.io/js/%40codecademy%2F${title}.svg`}
+          alt=""
+        />
+      ),
+    },
+  ]}
+/>
