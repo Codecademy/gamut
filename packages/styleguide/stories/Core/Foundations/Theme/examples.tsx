@@ -23,7 +23,7 @@ const PATH_COLUMN = {
   size: 'lg',
 };
 
-export const colorTable = {
+export const color = {
   rows: Object.entries(trueColors).map(([key, value]) => ({
     key,
     hex: value,
@@ -43,7 +43,7 @@ export const colorTable = {
   ],
 };
 
-export const swatchTable = {
+export const swatch = {
   rows: Object.entries(swatches).map(([key, value]) => ({
     key,
     hexes: value,
@@ -78,7 +78,7 @@ const createExampleColumn = ({
   render: ({ value }: any) => <Box {...{ [prop]: value }}>{text}</Box>,
 });
 
-export const fontFamilyTable = {
+export const fontFamily = {
   rows: Object.entries(theme.fontFamily).map(([key, value]) => ({
     key,
     value,
@@ -94,7 +94,7 @@ export const fontFamilyTable = {
   ],
 };
 
-export const fontWeightTable = {
+export const fontWeight = {
   rows: Object.entries(theme.fontWeight).map(([key, value]) => ({
     key,
     value,
@@ -110,7 +110,7 @@ export const fontWeightTable = {
   ],
 };
 
-export const fontSizeTable = {
+export const fontSize = {
   rows: Object.entries(theme.fontSize).map(([key, value]) => ({
     key,
     value,
@@ -128,7 +128,7 @@ export const fontSizeTable = {
 
 const longExampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`;
 
-export const lineHeightTable = {
+export const lineHeight = {
   rows: Object.entries(theme.lineHeight).map(([key, value]) => ({
     key,
     value,
@@ -147,7 +147,7 @@ export const lineHeightTable = {
   ],
 };
 
-export const spaceTable = {
+export const space = {
   rows: Object.entries(theme.spacing).map(([key, value]) => ({
     key,
     value,
@@ -175,7 +175,7 @@ export const spaceTable = {
   ],
 };
 
-export const boxShadowTable = {
+export const boxShadow = {
   rows: Object.entries(theme.boxShadows).map(([key, value]) => ({
     key,
     value,
@@ -209,7 +209,7 @@ export const boxShadowTable = {
   ],
 };
 
-export const breakpointTable = {
+export const breakpoint = {
   rows: Object.entries(theme.breakpoints).map(([key, value]) => ({
     key,
     value,

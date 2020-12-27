@@ -7,22 +7,14 @@ import {
   swatches,
   colorNames,
 } from '@codecademy/gamut-styles';
-import {
-  colorTable,
-  swatchTable,
-  fontFamilyTable,
-  fontSizeTable,
-  fontWeightTable,
-  lineHeightTable,
-  spaceTable,
-  boxShadowTable,
-  breakpointTable,
-} from './examples';
+import * as Tables from './examples';
 
 <Meta
   title="Foundations/Theme"
   parameters={{ status: 'volatile', source: 'gamut-styles' }}
 />
+
+# Theme
 
 All emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
 
@@ -57,13 +49,13 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<DataTable {...colorTable} />
+<DataTable {...Tables.color} />
 
 ### Swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
 
-<DataTable {...swatchTable} />
+<DataTable {...Tables.swatch} />
 
 ## Typography
 
@@ -76,25 +68,25 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.fontFamily`
 
-<DataTable {...fontFamilyTable} />
+<DataTable {...Tables.fontFamily} />
 
 ### Font Size
 
 **Key**: `theme.fontSize`
 
-<DataTable {...fontSizeTable} />
+<DataTable {...Tables.fontSize} />
 
 ### Font Weight
 
 **Key**: `theme.fontWeight`
 
-<DataTable {...fontWeightTable} />
+<DataTable {...Tables.fontWeight} />
 
 ### Line Height
 
 **Key**: `theme.lineHeight`
 
-<DataTable {...lineHeightTable} />
+<DataTable {...Tables.lineHeight} />
 
 ## Space
 
@@ -102,7 +94,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.spacing`
 
-<DataTable {...spaceTable} />
+<DataTable {...Tables.space} />
 
 ## Layout
 
@@ -110,7 +102,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.breakpoints`
 
-<DataTable {...breakpointTable} />
+<DataTable {...Tables.breakpoint} />
 
 ## Shadows
 
@@ -118,4 +110,4 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.boxShadows`
 
-<DataTable {...boxShadowTable} />
+<DataTable {...Tables.boxShadow} />
