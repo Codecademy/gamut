@@ -1,0 +1,121 @@
+import { Meta, Canvas } from '@storybook/addon-docs/dist/blocks';
+import { DataTable } from '~styleguide/blocks';
+import { startCase } from 'lodash';
+import {
+  theme,
+  trueColors,
+  swatches,
+  colorNames,
+} from '@codecademy/gamut-styles';
+import {
+  colorTable,
+  swatchTable,
+  fontFamilyTable,
+  fontSizeTable,
+  fontWeightTable,
+  lineHeightTable,
+  spaceTable,
+  boxShadowTable,
+  breakpointTable,
+} from './examples';
+
+<Meta
+  title="Foundations/Theme"
+  parameters={{ status: 'volatile', source: 'gamut-styles' }}
+/>
+
+All emotion components we build have access to a typed theme object allowing you to have direct access to all the design tokens without any imports.
+
+These are available through context or directly as the `theme` prop on every styled component.
+
+```tsx
+import styled from '@emotion/styled';
+
+const styles = styled.div`
+  blue: ${({ theme }) => theme.colors.blue};
+`;
+```
+
+Or by importing the object from "gamut-styles" if you are not using a `ThemeProvider` in your app.
+
+```tsx
+import { css } from '@emotion/react';
+import { theme } from '@codecademy/gamut-styles';
+
+const myStyles = css`
+  font-size: ${theme.fontSize[14]};
+`;
+```
+
+## Color
+
+**Key**: `theme.colors`
+
+All current visual identity colors are available on the `colors` key on the Theme object, this includes named standard colors and their respective swatches. This object will not include older or more specific design tokens, if you need to acess these color variables please check out the [full colors documentation](/?path=/docs/foundations-colors--standard)
+
+### Standard Colors
+
+Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
+
+<DataTable {...colorTable} />
+
+### Swatches
+
+Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
+
+<DataTable {...swatchTable} />
+
+## Typography
+
+export const sampleText = 'Example Text';
+
+export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+`;
+
+### Font Family
+
+**Key**: `theme.fontFamily`
+
+<DataTable {...fontFamilyTable} />
+
+### Font Size
+
+**Key**: `theme.fontSize`
+
+<DataTable {...fontSizeTable} />
+
+### Font Weight
+
+**Key**: `theme.fontWeight`
+
+<DataTable {...fontWeightTable} />
+
+### Line Height
+
+**Key**: `theme.lineHeight`
+
+<DataTable {...lineHeightTable} />
+
+## Space
+
+### Spacing
+
+**Key**: `theme.spacing`
+
+<DataTable {...spaceTable} />
+
+## Layout
+
+### Breakpoints
+
+**Key**: `theme.breakpoints`
+
+<DataTable {...breakpointTable} />
+
+## Shadows
+
+### Box Shadow
+
+**Key**: `theme.boxShadows`
+
+<DataTable {...boxShadowTable} />
