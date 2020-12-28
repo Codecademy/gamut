@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { Fragment, ReactNode, useState } from 'react';
 import { styled } from '@storybook/theming';
 import { variant } from '../styles';
 import { HandlerProps } from '@codecademy/gamut-system/src';
@@ -95,12 +95,14 @@ const ExpandButton = styled.button`
 `;
 
 type DataTableProps = {
+  idKey: string;
   rows: Record<string, string>[];
   columns: ColumnConfig[];
   renderRowExpand?: (row: Record<string, string>) => ReactNode;
 };
 
 export const DataTable: React.FC<DataTableProps> = ({
+  idKey = 'id',
   rows,
   columns,
   renderRowExpand,
@@ -120,11 +122,13 @@ export const DataTable: React.FC<DataTableProps> = ({
       {rows.map((row, i) => {
         const isExpanded = i === expandedRow;
         return (
-          <>
+          <Fragment key={`row-${row?.[idKey]}`}>
             <RowEl>
               {columns.map(({ key, size, render }) => {
                 return (
-                  <ColEl size={size}>{render ? render(row) : row?.[key]}</ColEl>
+                  <ColEl key={`col-${key}-${row?.[idKey]}`} size={size}>
+                    {render ? render(row) : row?.[key]}
+                  </ColEl>
                 );
               })}
               {renderRowExpand && (
@@ -148,7 +152,7 @@ export const DataTable: React.FC<DataTableProps> = ({
                 </ColEl>
               </RowEl>
             )}
-          </>
+          </Fragment>
         );
       })}
     </TableEl>

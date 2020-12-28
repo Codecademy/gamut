@@ -7,7 +7,7 @@ const PROP_COLUMN = {
   key: 'key',
   name: 'Prop',
   size: 'md',
-  render: ({ key }: any) => <Code>{key}</Code>,
+  render: ({ id }: any) => <Code>{id}</Code>,
 };
 
 const VALUE_COLUMN = {
@@ -24,15 +24,15 @@ const PATH_COLUMN = {
 };
 
 export const color = {
-  rows: Object.entries(trueColors).map(([key, value]) => ({
-    key,
+  rows: Object.entries(trueColors).map(([id, value]) => ({
+    id,
     hex: value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.colors.{key}</Code>,
+      render: ({ id }: any) => <Code>theme.colors.{id}</Code>,
     },
     {
       key: 'swatch',
@@ -44,15 +44,15 @@ export const color = {
 };
 
 export const swatch = {
-  rows: Object.entries(swatches).map(([key, value]) => ({
-    key,
+  rows: Object.entries(swatches).map(([id, value]) => ({
+    id,
     hexes: value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.colors['{key}-WEIGHT']</Code>,
+      render: ({ id }: any) => <Code>theme.colors['{id}-WEIGHT']</Code>,
     },
     {
       key: 'swatch',
@@ -79,15 +79,15 @@ const createExampleColumn = ({
 });
 
 export const fontFamily = {
-  rows: Object.entries(theme.fontFamily).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.fontFamily).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.fontFamily.{key}</Code>,
+      render: ({ id }: any) => <Code>theme.fontFamily.{id}</Code>,
     },
     VALUE_COLUMN,
     createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
@@ -95,15 +95,15 @@ export const fontFamily = {
 };
 
 export const fontWeight = {
-  rows: Object.entries(theme.fontWeight).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.fontWeight).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.fontWeight.{key}</Code>,
+      render: ({ id }: any) => <Code>theme.fontWeight.{id}</Code>,
     },
     VALUE_COLUMN,
     createExampleColumn({ text: 'Example Text', prop: 'fontWeight' }),
@@ -111,15 +111,15 @@ export const fontWeight = {
 };
 
 export const fontSize = {
-  rows: Object.entries(theme.fontSize).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.fontSize).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.fontSize[{key}]</Code>,
+      render: ({ id }: any) => <Code>theme.fontSize[{id}]</Code>,
     },
     VALUE_COLUMN,
     createExampleColumn({ text: 'Example Text', prop: 'fontSize' }),
@@ -129,15 +129,15 @@ export const fontSize = {
 const longExampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.`;
 
 export const lineHeight = {
-  rows: Object.entries(theme.lineHeight).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.lineHeight).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.lineHeight[{key}]</Code>,
+      render: ({ id }: any) => <Code>theme.lineHeight[{id}]</Code>,
     },
     VALUE_COLUMN,
     createExampleColumn({
@@ -148,15 +148,15 @@ export const lineHeight = {
 };
 
 export const space = {
-  rows: Object.entries(theme.spacing).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.spacing).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.spacing[{key}]</Code>,
+      render: ({ id }: any) => <Code>theme.spacing[{id}]</Code>,
     },
     VALUE_COLUMN,
     {
@@ -176,15 +176,15 @@ export const space = {
 };
 
 export const boxShadow = {
-  rows: Object.entries(theme.boxShadows).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.boxShadows).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.boxShadows[{key}]</Code>,
+      render: ({ id }: any) => <Code>theme.boxShadows[{id}]</Code>,
     },
     {
       ...VALUE_COLUMN,
@@ -210,15 +210,15 @@ export const boxShadow = {
 };
 
 export const breakpoint = {
-  rows: Object.entries(theme.breakpoints).map(([key, value]) => ({
-    key,
+  rows: Object.entries(theme.breakpoints).map(([id, value]) => ({
+    id,
     value,
   })),
   columns: [
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ key }: any) => <Code>theme.breakpoints[{key}]</Code>,
+      render: ({ id }: any) => <Code>theme.breakpoints[{id}]</Code>,
     },
     { ...VALUE_COLUMN, size: 'fill' },
   ],
