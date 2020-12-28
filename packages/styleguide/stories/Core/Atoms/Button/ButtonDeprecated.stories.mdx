@@ -1,5 +1,5 @@
 import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
+
 import {
   ButtonDeprecated,
   ButtonDeprecatedBase,
@@ -20,11 +20,8 @@ import {
   title="Atoms/ButtonDeprecated"
   component={ButtonDeprecated}
   subcomponents={{ ButtonDeprecatedBase }}
+  parameters={{ status: 'deprecated', source: 'gamut' }}
 />
-
-# Buttons (Deprecated)
-
-<StoryStatus status="deprecated" />
 
 Primary versions of buttons and links. Previously, all focusable,
 interactive elements were using some form of a `ButtonDeprecated` (if

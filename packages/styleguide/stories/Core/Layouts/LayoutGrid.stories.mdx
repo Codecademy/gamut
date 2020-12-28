@@ -1,18 +1,12 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
 import { LayoutGrid, Column } from '@codecademy/gamut/src';
-import { Box, defaultGridProps } from './Elements';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { ExampleBox, defaultGridProps } from './Elements';
 
 <Meta
   title="Layouts/LayoutGrid"
   component={LayoutGrid}
-  subcomponents={{ LayoutGrid, Column }}
+  parameters={{ status: 'volatile', source: 'gamut' }}
 />
-
-# LayoutGrid
-
-<StoryStatus status="stable" />
 
 A flexible grid that can support arbitrary rows of content, each of
 which snaps to assuming 12 "units" of width. Cells in the rows are
@@ -23,127 +17,120 @@ Row and column gaps can be configured in a responsive way. For example, you migh
 have a particular set of gaps at small viewports and bigger ones on large viewports.
 
 <Canvas>
-  <Story name="LayoutGrid">
+  <Story
+    name="LayoutGrid"
+    args={{ rowGap: { xs: 'sm', lg: 'lg' }, columnGap: { xs: 'sm', lg: 'lg' } }}
+  >
     {(args) => (
-      <LayoutGrid
-        columnGap={{ xs: 'sm', lg: 'lg' }}
-        rowGap={{ xs: 'sm', lg: 'lg' }}
-      >
+      <LayoutGrid {...args}>
         <Column size={12}>
-          <Box>12</Box>
+          <ExampleBox>12</ExampleBox>
         </Column>
         <Column size={6}>
-          <Box>6</Box>
+          <ExampleBox>6</ExampleBox>
         </Column>
         <Column size={6}>
-          <Box>6</Box>
+          <ExampleBox>6</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={1}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
       </LayoutGrid>
     )}
   </Story>
 </Canvas>
 
-<Props of={LayoutGrid} />
+<Props story="LayoutGrid" of={LayoutGrid} />
 
 ## Grid Gaps
 
 <Canvas>
-  <Story name="Grid Gaps">
+  <Story name="Grid Gaps" args={{ rowGap: 'sm', columnGap: 'sm' }}>
     {(args) => (
-      <LayoutGrid
-        rowGap={select('rowGap', [undefined, 'sm', 'md', 'lg', 'xl'], 'sm')}
-        columnGap={select(
-          'columnGap',
-          [undefined, 'sm', 'md', 'lg', 'xl'],
-          'sm'
-        )}
-      >
+      <LayoutGrid {...args}>
         <Column size={12}>
-          <Box>12</Box>
+          <ExampleBox>12</ExampleBox>
         </Column>
         <Column size={6}>
-          <Box>6</Box>
+          <ExampleBox>6</ExampleBox>
         </Column>
         <Column size={6}>
-          <Box>6</Box>
+          <ExampleBox>6</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
       </LayoutGrid>
     )}
@@ -160,25 +147,25 @@ As with column and row gaps, those numbers may be static or responsive.
     {(args) => (
       <LayoutGrid rowGap="sm" columnGap="sm">
         <Column offset={2} size={4}>
-          <Box>2 Column offset</Box>
+          <ExampleBox>2 Column offset</ExampleBox>
         </Column>
         <Column size={2}>
-          <Box />
+          <ExampleBox />
         </Column>
         <Column size={2}>
-          <Box />
+          <ExampleBox />
         </Column>
         <Column size={4}>
-          <Box>No offset</Box>
+          <ExampleBox>No offset</ExampleBox>
         </Column>
         <Column size={8}>
-          <Box />
+          <ExampleBox />
         </Column>
         <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
-          <Box>sm: 6, md: 4, lg: 2</Box>
+          <ExampleBox>sm: 6, md: 4, lg: 2</ExampleBox>
         </Column>
         <Column offset={{ xs: 0, md: 4 }} size={6}>
-          <Box>no offset sm, md: 4</Box>
+          <ExampleBox>no offset sm, md: 4</ExampleBox>
         </Column>
       </LayoutGrid>
     )}
@@ -194,46 +181,46 @@ Columns may be span multiple rows. Make sure you have a consistent row height wh
     {(args) => (
       <LayoutGrid columnGap="sm" rowGap="sm">
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column rowspan={2} size={3}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column rowspan={3} size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column rowspan={3} size={3}>
-          <Box>3</Box>
+          <ExampleBox>3</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column rowspan={2} size={3}>
-          <Box>2</Box>
+          <ExampleBox>2</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
         <Column size={3}>
-          <Box>1</Box>
+          <ExampleBox>1</ExampleBox>
         </Column>
       </LayoutGrid>
     )}
