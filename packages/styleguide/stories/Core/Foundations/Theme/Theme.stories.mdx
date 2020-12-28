@@ -7,7 +7,7 @@ import {
   swatches,
   colorNames,
 } from '@codecademy/gamut-styles';
-import * as Tables from './tables';
+import * as TABLES from './tables';
 
 <Meta
   title="Foundations/Theme"
@@ -49,13 +49,13 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<DataTable {...Tables.color} />
+<DataTable {...TABLES.color} />
 
 ### Swatches
 
 Swatch colors are accessible with a dashcase key `theme.colors['${color}-${weight}']`. Here's a full list of all the swatches available.
 
-<DataTable {...Tables.swatch} />
+<DataTable {...TABLES.swatch} />
 
 ## Typography
 
@@ -68,25 +68,25 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.fontFamily`
 
-<DataTable {...Tables.fontFamily} />
+<DataTable {...TABLES.fontFamily} />
 
 ### Font Size
 
 **Key**: `theme.fontSize`
 
-<DataTable {...Tables.fontSize} />
+<DataTable {...TABLES.fontSize} />
 
 ### Font Weight
 
 **Key**: `theme.fontWeight`
 
-<DataTable {...Tables.fontWeight} />
+<DataTable {...TABLES.fontWeight} />
 
 ### Line Height
 
 **Key**: `theme.lineHeight`
 
-<DataTable {...Tables.lineHeight} />
+<DataTable {...TABLES.lineHeight} />
 
 ## Space
 
@@ -94,7 +94,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.spacing`
 
-<DataTable {...Tables.space} />
+<DataTable {...TABLES.space} />
 
 ## Layout
 
@@ -102,7 +102,7 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.breakpoints`
 
-<DataTable {...Tables.breakpoint} />
+<DataTable {...TABLES.breakpoint} />
 
 ## Shadows
 
@@ -110,4 +110,4 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.boxShadows`
 
-<DataTable {...Tables.boxShadow} />
+<DataTable {...TABLES.boxShadow} />
