@@ -4,3 +4,5 @@ import { values } from 'lodash';
 export const { properties, variant, ...groups } = system.create({});
 
 export const allProps = compose(...values(groups));
+
+export const { color, typography, spacing, layout } = groups;

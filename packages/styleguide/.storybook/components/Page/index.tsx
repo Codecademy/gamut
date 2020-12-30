@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
+import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 
-const FigmaLink = styled.a`
+const Link = styled.a`
   display: inline-flex;
-  grid-template-columns: max-content max-content;
   line-height: 1;
   column-gap: 0.5rem;
   align-items: flex-start;
@@ -20,85 +20,92 @@ const FigmaLink = styled.a`
   }
 `;
 
+const Header = styled.div`
+  ${spacing}
+`;
+
 const HeaderRow = styled.div`
   display: grid;
   grid-template-columns: max-content 1fr;
   align-items: center;
   column-gap: 1rem;
   row-gap: 0.5rem;
-  margin-bottom: 1rem;
+  ${spacing}
 `;
 
 const HeaderCol = styled.div``;
 
-const StoryTitle = styled.h1`
-  font-size: 2rem;
-  margin: 0;
-`;
+interface Parameters {
+  component?: React.Component | string;
+  subcomponents?: Record<string, React.Component>;
+  pageTitle?: string;
+  status?: 'stable' | 'volatile' | 'deprecated';
+  figmaId?: string;
+  source?: string;
+}
 
-export const Page = (props: any) => {
+export const Page: React.FC = ({ children }) => {
+  const { parameters } = useContext(DocsContext);
   const {
-    mdxComponentMeta: { title },
-    parameters: {
-      component,
-      subcomponents,
-      status,
-      pageTitle,
-      figmaId,
-      source,
-    },
-  } = useContext(DocsContext);
+    component,
+    subcomponents,
+    status,
+    pageTitle,
+    figmaId,
+    source,
+  }: Parameters = parameters;
 
-  const titleString = pageTitle || title.split('/').reverse()[0];
-  const showStatus = Boolean(status) || Boolean(component || subcomponents);
+  const showStatus = Boolean(status || component || subcomponents);
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
 
   return (
     <>
-      <HeaderRow>
-        <HeaderCol>
-          <StoryTitle>{titleString}</StoryTitle>
-        </HeaderCol>
-      </HeaderRow>
-      <HeaderRow>
-        {showStatus && (
-          <>
-            <HeaderCol>
-              <strong>Status: </strong>
-            </HeaderCol>
-            <HeaderCol>
-              <Badge status={status || 'stable'}>{status || 'stable'}</Badge>
-            </HeaderCol>
-          </>
-        )}
-        {source && (
-          <>
-            <HeaderCol>
-              <strong>Source: </strong>
-            </HeaderCol>
-            <HeaderCol>
-              <FigmaLink target="_blank" href={npmLink}>
-                @codecademy/{source} <OpenIcon size={14} />
-              </FigmaLink>
-            </HeaderCol>
-          </>
-        )}
-        {figmaId && (
-          <>
-            <HeaderCol>
-              <strong>Design:</strong>
-            </HeaderCol>
-            <HeaderCol>
-              <FigmaLink target="_blank" href={figmaLink}>
-                Figma <OpenIcon size={14} />
-              </FigmaLink>
-            </HeaderCol>
-          </>
-        )}
-      </HeaderRow>
-      {props.children}
+      <Header marginBottom="1rem">
+        <HeaderRow>
+          <HeaderCol>
+            <Title>{pageTitle}</Title>
+          </HeaderCol>
+        </HeaderRow>
+        <HeaderRow>
+          {showStatus && (
+            <>
+              <HeaderCol>
+                <strong>Status:</strong>
+              </HeaderCol>
+              <HeaderCol>
+                <Badge status={status || 'stable'}>{status || 'stable'}</Badge>
+              </HeaderCol>
+            </>
+          )}
+          {source && (
+            <>
+              <HeaderCol>
+                <strong>Source:</strong>
+              </HeaderCol>
+              <HeaderCol>
+                <Link target="_blank" href={npmLink}>
+                  @codecademy/{source} <OpenIcon size={14} />
+                </Link>
+              </HeaderCol>
+            </>
+          )}
+          {figmaId && (
+            <>
+              <HeaderCol>
+                <strong>Design:</strong>
+              </HeaderCol>
+              <HeaderCol>
+                <Link target="_blank" href={figmaLink}>
+                  Figma <OpenIcon size={14} />
+                </Link>
+              </HeaderCol>
+            </>
+          )}
+        </HeaderRow>
+      </Header>
+      {children}
     </>
   );
 };
