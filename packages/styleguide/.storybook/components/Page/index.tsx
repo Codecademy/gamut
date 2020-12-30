@@ -35,7 +35,7 @@ const HeaderRow = styled.div`
 
 const HeaderCol = styled.div``;
 
-interface Parameters {
+export interface Parameters {
   component?: React.Component | string;
   subcomponents?: Record<string, React.Component>;
   pageTitle?: string;
