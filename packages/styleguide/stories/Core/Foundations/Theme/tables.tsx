@@ -13,14 +13,14 @@ const PROP_COLUMN = {
 const VALUE_COLUMN = {
   key: 'value',
   name: 'Value',
-  size: 'lg',
+  size: 'xl',
   render: ({ value }: any) => <Code>{value}</Code>,
 };
 
 const PATH_COLUMN = {
   key: 'path',
   name: 'Path',
-  size: 'lg',
+  size: 'xl',
 };
 
 export const color = {
@@ -52,7 +52,11 @@ export const swatch = {
     PROP_COLUMN,
     {
       ...PATH_COLUMN,
-      render: ({ id }: any) => <Code>theme.colors['{id}-WEIGHT']</Code>,
+      render: ({ id, hexes }: any) => (
+        <Code>
+          theme.colors['{id}-{Object.keys(hexes)[0]}']
+        </Code>
+      ),
     },
     {
       key: 'swatch',
