@@ -4,17 +4,16 @@ import {
   NotificationIcon,
 } from '@codecademy/gamut/src';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
 
 <Meta
   title="Molecules/NotificationList"
   component={NotificationList}
   subcomponents={{ NotificationItem, NotificationIcon }}
+  parameters={{
+    source: 'gamut',
+    figmaId: 'KIqFTtIa7WoDA8G1owEvYL',
+  }}
 />
-
-# NotificationList
-
-<StoryStatus status="stable" />
 
 List of time-sensitive user notifications, such as in a top-right dropdown
 menu from a header.
