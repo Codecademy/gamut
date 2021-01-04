@@ -1,14 +1,13 @@
-import cx from 'classnames';
-
 import { ButtonDeprecated, Container } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import { pxRem } from '@codecademy/gamut-styles';
+import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 
-import styles from './styles.scss';
 import { Popover } from '../..';
 import { AppHeaderPopover } from '../../AppHeader/types';
 import { AppHeaderLinkElement } from '../AppHeaderLinkElement';
+import styles from './styles.scss';
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
@@ -54,7 +53,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       <Popover
         className={styles.topDropdown}
         align="left"
-        offset={-2}
+        verticalOffset={-2}
         outline
         isOpen={isOpen}
         onRequestClose={handleClose}

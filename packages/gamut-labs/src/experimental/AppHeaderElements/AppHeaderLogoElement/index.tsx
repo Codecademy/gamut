@@ -1,8 +1,8 @@
 import { ButtonDeprecated } from '@codecademy/gamut';
 import { colors } from '@codecademy/gamut-styles';
 import React from 'react';
-import { Logo } from '../../..';
 
+import { Logo } from '../../..';
 import { AppHeaderLogo } from '../../AppHeader/types';
 import styles from './styles.scss';
 

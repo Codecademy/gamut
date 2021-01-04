@@ -1,7 +1,8 @@
 import { ButtonDeprecated } from '@codecademy/gamut';
-import React from 'react';
-import { AppHeaderLink } from '../../AppHeader/types';
 import cx from 'classnames';
+import React from 'react';
+
+import { AppHeaderLink } from '../../AppHeader/types';
 import styles from './styles.scss';
 
 export type AppHeaderLinkElementProps = {
