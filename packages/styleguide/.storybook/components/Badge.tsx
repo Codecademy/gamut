@@ -32,3 +32,11 @@ export const Badge = styled.div`
   ${badgeVariants}
   ${fontSmoothing()}
 `;
+
+export const Indicator = styled.span`
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  ${badgeVariants}
+`;

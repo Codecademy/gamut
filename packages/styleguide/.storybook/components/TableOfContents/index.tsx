@@ -4,6 +4,7 @@ import { allProps } from '../styles';
 import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
+import { Indicator } from '../Badge';
 
 const INDEX_KIND = 'About';
 
@@ -41,17 +42,41 @@ const createAdjacentFolderMethod = (indexKind: string) => {
   };
 };
 
-export const ContentItem = ({ kind, title }) => {
+export const ContentItem = ({ kind }) => {
+  const { storyStore } = useContext(DocsContext);
+  const kindMeta = storyStore['_kinds']?.[kind];
+
+  if (!kindMeta) return null;
+  const path = kind.split('/');
+  const {
+    parameters: {
+      pageTitle,
+      description,
+      status,
+      component,
+      subcomponents,
+      figmaId,
+    },
+  } = kindMeta;
+
+  const title = pageTitle || path[path.length - 1];
+  const showStatus = Boolean(status || component || subcomponents);
+
   return (
     <StyledLinkTo kind={kind}>
       <Container padding="1.5rem" paddingY="1rem">
-        <Container fontSize="22px" fontWeight="bold">
-          {title}
+        <Container
+          display="flex"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Container fontSize="22px" fontWeight="bold">
+            {title}
+          </Container>
+          {showStatus && <Indicator status={status || 'stable'} />}
         </Container>
-        <p>
-          Lorem ipsum dolor I am just making this up as I go along. So long and
-          thanks for all the fish yo.
-        </p>
+
+        {description && <p>{description}</p>}
       </Container>
     </StyledLinkTo>
   );
@@ -82,21 +107,16 @@ export const TableOfContents = () => {
       paddingTop="1rem"
       display="grid"
       maxWidth="100%"
-      gridTemplateColumns={['1fr', , , `repeat(2, 1fr)`, `repeat(3, 1fr)`]}
+      gridTemplateColumns={{
+        base: '1fr',
+        md: 'repeat(2, 1fr)',
+        lg: 'repeat(3, 1fr)',
+      }}
       columnGap="2rem"
       rowGap="2rem"
     >
       {kinds.map((adjacentKind) => {
-        const path = adjacentKind.kind.split('/');
-        const title =
-          adjacentKind?.parameters?.pageTitle || path[path.length - 1];
-
-        return (
-          <ContentItem
-            kind={adjacentKind.kind}
-            title={title === INDEX_KIND ? path[0] : title}
-          />
-        );
+        return <ContentItem kind={adjacentKind.kind} />;
       })}
     </Container>
   );
