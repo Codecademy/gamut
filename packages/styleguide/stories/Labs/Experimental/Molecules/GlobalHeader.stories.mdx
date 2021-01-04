@@ -1,17 +1,12 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
 import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
 import { colors } from '@codecademy/gamut-styles';
 
 <Meta
   title="Labs/Experimental/Molecules/GlobalHeader"
   component={GlobalHeader}
-  parameters={{ layout: 'padded' }}
+  parameters={{ layout: 'padded', status: 'volatile' }}
 />
-
-# GlobalHeader
-
-<StoryStatus status="volatile" />
 
 Header for a unified Codecademy global navigation system.
 
