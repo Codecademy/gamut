@@ -1,4 +1,3 @@
-import { ButtonDeprecated } from '@codecademy/gamut';
 import { colors } from '@codecademy/gamut-styles';
 import React from 'react';
 
@@ -12,13 +11,11 @@ export type LogoButtonProps = {
 
 export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({ item }) => {
   return (
-    <ButtonDeprecated
+    <a
       className={styles.logo}
       // data-testid="header-logo"
       // onClick={() => trackClick('topnav_logo')}
-      flat
       href={'/'}
-      theme="navy"
     >
       {
         <Logo
@@ -27,6 +24,6 @@ export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({ item }) => {
           color={colors.navy}
         />
       }
-    </ButtonDeprecated>
+    </a>
   );
 };
