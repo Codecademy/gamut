@@ -1,6 +1,7 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut';
 import cx from 'classnames';
 import React, { ReactElement } from 'react';
+
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
 import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
