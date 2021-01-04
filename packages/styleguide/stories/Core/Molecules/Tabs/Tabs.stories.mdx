@@ -1,6 +1,5 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
-import { StoryStatus } from '~styleguide/blocks';
 import {
   Text,
   Heading,
@@ -16,11 +15,11 @@ import { number, boolean, text } from '@storybook/addon-knobs';
   title="Molecules/Tabs"
   component={Tabs}
   subcomponents={{ TabList, Tab, TabPanel }}
+  parameters={{
+    source: 'gamut',
+    figmaId: 'fiLDZMjifzDmg70aYRUisW',
+  }}
 />
-
-# Tabs
-
-<StoryStatus status="stable" />
 
 Use a series of tabbed areas for when you have multiple potential sections
 to show, but only one should be visible at a time.

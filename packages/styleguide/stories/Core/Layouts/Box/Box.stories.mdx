@@ -1,13 +1,13 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
-import { StoryStatus, PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '~styleguide/blocks';
 import { Box } from '@codecademy/gamut/src';
 
-<Meta title="Layouts/Box" component={Box} />
-
-# Box
-
-<StoryStatus status="volatile" />
+<Meta
+  title="Layouts/Box"
+  component={Box}
+  parameters={{ status: 'volatile', source: 'gamut' }}
+/>
 
 This is our primitive box component that is meant to be a kitchen sink utility component for all basic layouts. This is meant to act as a configurable building block for almost any occasion. It is extremely flexible and has access to nearly all of our `system props`.
 

@@ -1,5 +1,5 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
+
 import { Logo } from '@codecademy/gamut-labs/src';
 import { AppBar, AppBarSection } from '@codecademy/gamut/src';
 
@@ -7,11 +7,8 @@ import { AppBar, AppBarSection } from '@codecademy/gamut/src';
   title="Molecules/AppBar"
   component={AppBar}
   subcomponents={{ AppBarSection }}
+  parameters={{ status: 'volatile', source: 'gamut-labs' }}
 />
-
-# AppBar
-
-<StoryStatus status="volatile" />
 
 This is an example of an AppBar component that contains one left-oriented
 AppBarSection that holds one AppBar Tab. These components mostly provide

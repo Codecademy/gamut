@@ -1,17 +1,17 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
-import { StoryStatus } from '~styleguide/blocks';
+
 import { BrandMonospace } from '@codecademy/gamut-labs/src';
 import { Heading } from '@codecademy/gamut/src';
 import { text } from '@storybook/addon-knobs';
 
 import styles from './styles.module.scss';
 
-<Meta title="Labs/Brand/Atoms/BrandMonospace" component={BrandMonospace} />
-
-# BrandMonospace
-
-<StoryStatus status="volatile" />
+<Meta
+  title="Brand/Atoms/BrandMonospace"
+  component={BrandMonospace}
+  parameters={{ status: 'volatile', source: 'gamut-labs' }}
+/>
 
 A wrapper component that will style text with the `Robot Mono`
 font. Currently, Codecademy uses `Monaco` as our default monospaced

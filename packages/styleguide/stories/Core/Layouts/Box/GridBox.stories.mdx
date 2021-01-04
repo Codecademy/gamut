@@ -1,13 +1,13 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
-import { StoryStatus, PropsTable } from '~styleguide/blocks';
+import { PropsTable } from '~styleguide/blocks';
 import { GridBox, Box } from '@codecademy/gamut/src';
 
-<Meta title="Layouts/Box/GridBox" component={GridBox} />
-
-# GridBox
-
-<StoryStatus status="volatile" />
+<Meta
+  title="Layouts/Box/GridBox"
+  component={GridBox}
+  parameters={{ status: 'volatile', source: 'gamut' }}
+/>
 
 <p>
   For Grid layouts we've added a specific flex <code>GridBox</code> component
