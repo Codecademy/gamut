@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.6...@codecademy/styleguide@21.7.0) (2021-01-04)
+
+
+### Features
+
+* **Styleguide:** Docs Page Wrapper for consistent meta information ([7d27225](https://github.com/Codecademy/client-modules/commit/7d27225bfdf759a623e8002ee663b3819c1836e5))
+
+
+
 ### [21.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.5...@codecademy/styleguide@21.6.6) (2020-12-29)
 
 **Note:** Version bump only for package @codecademy/styleguide
