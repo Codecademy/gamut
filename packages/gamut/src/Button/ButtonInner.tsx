@@ -1,10 +1,11 @@
 import { fontSize, timing } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
 import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
 export const ButtonInner = styled('span', {
-  shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
+  shouldForwardProp: (prop: string) =>
+    isPropValid(prop) && !['mode', 'size'].includes(prop),
 })(() => {
   return css`
     display: flex;

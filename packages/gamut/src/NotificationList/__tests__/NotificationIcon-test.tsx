@@ -1,9 +1,9 @@
-import React from 'react';
 import { shallow } from 'enzyme';
+import React from 'react';
 
-import { NotificationIcon } from '../NotificationIcon';
 import { Icon } from '../../deprecated/Icon';
 import { iconMap } from '../../deprecated/Icon/iconMap';
+import { NotificationIcon } from '../NotificationIcon';
 
 describe('NotificationIcon', () => {
   it('can render a picture icon', () => {

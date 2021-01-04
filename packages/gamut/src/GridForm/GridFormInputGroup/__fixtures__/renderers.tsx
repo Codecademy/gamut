@@ -1,14 +1,6 @@
-import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import React from 'react';
 
-import {
-  GridFormCheckboxField,
-  GridFormFileField,
-  GridFormRadioGroupField,
-  GridFormSelectField,
-  GridFormTextAreaField,
-  GridFormTextField,
-} from '../../types';
 import {
   stubCheckboxField,
   stubFileField,
@@ -17,12 +9,20 @@ import {
   stubTextareaField,
   stubTextField,
 } from '../../__tests__/stubs';
-import { GridFormSelectInput } from '../GridFormSelectInput';
-import { GridFormTextInput } from '../GridFormTextInput';
+import {
+  GridFormCheckboxField,
+  GridFormFileField,
+  GridFormRadioGroupField,
+  GridFormSelectField,
+  GridFormTextAreaField,
+  GridFormTextField,
+} from '../../types';
 import { GridFormCheckboxInput } from '../GridFormCheckboxInput';
-import { GridFormTextArea } from '../GridFormTextArea';
-import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
 import { GridFormFileInput } from '../GridFormFileInput';
+import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
+import { GridFormSelectInput } from '../GridFormSelectInput';
+import { GridFormTextArea } from '../GridFormTextArea';
+import { GridFormTextInput } from '../GridFormTextInput';
 
 export const renderGridFormSelectInput = (
   extraProps: Partial<GridFormSelectField> = {}

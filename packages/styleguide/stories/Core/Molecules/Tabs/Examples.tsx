@@ -1,6 +1,6 @@
+import { Tab, TabList, TabPanel, Tabs } from '@codecademy/gamut/src';
+import { boolean, number, text } from '@storybook/addon-knobs';
 import React from 'react';
-import { Tabs, TabList, Tab, TabPanel } from '@codecademy/gamut/src';
-import { number, boolean, text } from '@storybook/addon-knobs';
 
 export const Uncontrolled = () => {
   return (

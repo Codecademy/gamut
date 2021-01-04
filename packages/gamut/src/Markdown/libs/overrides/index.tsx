@@ -1,7 +1,7 @@
-import React from 'react';
-import { get } from 'lodash';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
+import { get } from 'lodash';
+import React from 'react';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 

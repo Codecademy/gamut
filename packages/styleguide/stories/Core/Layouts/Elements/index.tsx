@@ -1,21 +1,18 @@
-import React from 'react';
-import { Item } from '@codecademy/gamut/src';
+import { Box } from '@codecademy/gamut/src';
 import { colors } from '@codecademy/gamut-styles';
+import React from 'react';
 
-export const Box: React.FC = ({ children }) => (
-  <Item
-    style={{
-      padding: '5px',
-      minHeight: '30px',
-      marginBottom: '0.5rem',
-      backgroundColor: colors.blue,
-      color: colors.white,
-    }}
-    flex
-    alignSelf="stretch"
+export const ExampleBox: React.FC = ({ children }) => (
+  <Box
+    padding={8}
+    minHeight="30px"
+    marginBottom={8}
+    backgroundColor="blue"
+    textColor="white"
+    display="flex"
   >
     {children}
-  </Item>
+  </Box>
 );
 
 export const defaultGridProps = {

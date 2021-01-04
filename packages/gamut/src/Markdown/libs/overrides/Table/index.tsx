@@ -1,4 +1,5 @@
 import React, { HTMLAttributes } from 'react';
+
 import styles from './styles.module.scss';
 
 export interface TableProps extends HTMLAttributes<HTMLTableElement> {

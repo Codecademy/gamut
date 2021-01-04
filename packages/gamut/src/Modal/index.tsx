@@ -1,6 +1,6 @@
-import React from 'react';
-import cx from 'classnames';
 import { CloseIcon } from '@codecademy/gamut-icons';
+import cx from 'classnames';
+import React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
 import { CardShell } from '../Card';

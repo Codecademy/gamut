@@ -1,5 +1,6 @@
-import React, { ReactNode } from 'react';
 import cx from 'classnames';
+import React, { ReactNode } from 'react';
+
 import { omitProps } from '../utils/omitProps';
 import style from './styles/index.module.scss';
 

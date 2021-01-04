@@ -4,6 +4,7 @@ import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
 import { withEmotion } from './decorators/emotion';
+import { Page } from './components';
 
 const theme = create({
   base: 'light',
@@ -13,6 +14,12 @@ const theme = create({
 
 export const parameters = {
   viewMode: 'docs',
+  docs: {
+    theme,
+    components: {
+      wrapper: Page,
+    },
+  },
   options: {
     theme: theme,
     storySort: {

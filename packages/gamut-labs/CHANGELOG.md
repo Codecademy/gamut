@@ -3,6 +3,158 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.2...@codecademy/gamut-labs@7.6.3) (2020-12-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.1...@codecademy/gamut-labs@7.6.2) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.0...@codecademy/gamut-labs@7.6.1) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.5...@codecademy/gamut-labs@7.6.0) (2020-12-17)
+
+
+### Features
+
+* add vertical and horizontal offsets to the popover component ([8c5b178](https://github.com/Codecademy/client-modules/commit/8c5b178dbd2eb820b58de6cbc0e93c495d2ab55f))
+
+
+
+### [7.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.4...@codecademy/gamut-labs@7.5.5) (2020-12-16)
+
+
+### Bug Fixes
+
+* revert "feat: add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242))" ([#1248](https://github.com/Codecademy/client-modules/issues/1248)) ([5a69644](https://github.com/Codecademy/client-modules/commit/5a69644499ec9f684d670aa11250e3ab1db767cd))
+
+
+
+### [7.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.3...@codecademy/gamut-labs@7.5.4) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.2...@codecademy/gamut-labs@7.5.3) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.1...@codecademy/gamut-labs@7.5.2) (2020-12-15)
+
+
+### Bug Fixes
+
+* actually use testId prop in prefooter ([bb748dc](https://github.com/Codecademy/client-modules/commit/bb748dc1f938aa6bd922824d763fa9106afe89df))
+
+
+
+### [7.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.0...@codecademy/gamut-labs@7.5.1) (2020-12-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.4...@codecademy/gamut-labs@7.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.3...@codecademy/gamut-labs@7.4.4) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.2...@codecademy/gamut-labs@7.4.3) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.1...@codecademy/gamut-labs@7.4.2) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.4.0...@codecademy/gamut-labs@7.4.1) (2020-12-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.3.0...@codecademy/gamut-labs@7.4.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.2.0...@codecademy/gamut-labs@7.3.0) (2020-12-10)
+
+
+### Features
+
+* add beakPosition prop to Popover ([d2fd977](https://github.com/Codecademy/client-modules/commit/d2fd9776ddae130b505ae871d3d386a028fc21e8))
+
+
+
+## [7.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.4...@codecademy/gamut-labs@7.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
+### [7.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.3...@codecademy/gamut-labs@7.1.4) (2020-12-09)
+
+
+### Bug Fixes
+
+* Logo's defaultProps need to be of type LogoProps ([e0f3479](https://github.com/Codecademy/client-modules/commit/e0f34796e890b796e1b484cafc6a529a0179ccd9))
+
+
+
 ### [7.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.1.2...@codecademy/gamut-labs@7.1.3) (2020-12-08)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

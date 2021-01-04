@@ -1,14 +1,12 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { StoryStatus } from '~styleguide/blocks';
 import { Markdown, Heading, Text } from '@codecademy/gamut/src';
-import { text, select } from '@storybook/addon-knobs';
+import { elements, tags } from './examples';
 import exampleMarkdown from './markdown-example.md';
-import { customText } from './helpers';
 
 <Meta
   title="Atoms/Markdown"
   component={Markdown}
-  parameters={{ knobs: { escapeHTML: false } }}
+  parameters={{ source: 'gamut' }}
   args={{
     text: `
 ## Hello World
@@ -18,28 +16,19 @@ This is markdown
   }}
 />
 
-# Markdown
-
-<StoryStatus status="stable" />
-
 Markdown renderer for all your markdown needs.
 
 <Canvas>
   <Story name="Basics">{(args) => <Markdown {...args} />}</Story>
 </Canvas>
 
-<Props of={Markdown} />
+<Props story="Basics" />
 
 ## Full example
 
 <Canvas>
-  <Story name="Full Example">
-    {(args) => (
-      <Markdown
-        text={text('markdown', exampleMarkdown)}
-        spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-      />
-    )}
+  <Story name="Full Example" args={{ text: exampleMarkdown }}>
+    {(args) => <Markdown {...args} />}
   </Story>
 </Canvas>
 
@@ -48,82 +37,63 @@ Markdown renderer for all your markdown needs.
 In cases where our default Markdown renderer is not returning exactly what you need, you can override specific tags or custom tags.
 
 <Canvas>
-  <Story name="Element Overrides">
-    <Markdown
-      overrides={{
-        CodeBlock: {
-          component: (props) => (
-            <Text style={{ color: 'darkblue' }} {...props} />
-          ),
-        },
-        CustomElement: {
-          component: ({ title }) => {
-            return (
-              <Heading
-                as="h3"
-                fontSize="md"
-                style={{
-                  color: 'rebeccapurple',
-                }}
-              >
-                {title}
-              </Heading>
-            );
-          },
-          allowedAttributes: ['title'],
-        },
-      }}
-      text="## Hello World
+  <Story
+    name="Element Overrides"
+    args={{
+      overrides: elements,
+      text: `"## Hello World
           <CodeBlock>Span inside a custom code block element</CodeBlock>
-          <CustomElement title='A Custom Component' />"
-    />
+          <CustomElement title='A Custom Component' />"`,
+    }}
+  >
+    {(args) => <Markdown {...args} />}
   </Story>
 </Canvas>
 
 A common override may be to change the font size of a Heading.
 
 <Canvas>
-  <Story name="Tag Overrides">
-    <Markdown
-      overrides={{
-        h3: {
-          component: (props) => <Heading {...props} as="h3" size="xs" />,
-        },
-      }}
-      text="### Smaller H3"
-    />
+  <Story
+    name="Tag Overrides"
+    args={{ overrides: tags, text: '### Smaller H3' }}
+  >
+    {(args) => <Markdown {...args} />}
   </Story>
 </Canvas>
 
 If you need to override a link, iframe, or table, you also need to provide the `skipDefaultOverides` prop.
 
+export const overrides = {
+  a: {
+    component: Text,
+  },
+};
+
 <Canvas>
-  <Story name="Link Overrides">
-    <Markdown
-      skipDefaultOverides
-      overrides={{
-        a: {
-          component: Text,
-        },
-      }}
-      text="[This was a link](https://codecademy.com)."
-    />
+  <Story
+    name="Link Overrides"
+    args={{
+      text: 'This was a link](https://codecademy.com).',
+      skipDefaultOverides: true,
+      overrides,
+    }}
+  >
+    <Markdown skipDefaultOverides />
   </Story>
 </Canvas>
 
 ## Inline Markdown
 
 <Canvas>
-  <Story name="Inline Markdown">
+  <Story
+    name="Inline Markdown"
+    args={{ text: `this is an inline markdown component`, inline: true }}
+  >
     {(args) => (
       <>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
-        <Markdown
-          text={text('markdown', '`this is an inline markdown component`')}
-          spacing={select('spacing', ['tight', 'loose', 'none'], 'none')}
-          inline
-        />
+        <Markdown {...args} />
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
         ut aliquip ex ea commodo consequat. Duis aute irure dolor in
         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla

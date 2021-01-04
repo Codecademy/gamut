@@ -3,6 +3,167 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.6...@codecademy/styleguide@21.7.0) (2021-01-04)
+
+
+### Features
+
+* **Styleguide:** Docs Page Wrapper for consistent meta information ([7d27225](https://github.com/Codecademy/client-modules/commit/7d27225bfdf759a623e8002ee663b3819c1836e5))
+
+
+
+### [21.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.5...@codecademy/styleguide@21.6.6) (2020-12-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.4...@codecademy/styleguide@21.6.5) (2020-12-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.3...@codecademy/styleguide@21.6.4) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.2...@codecademy/styleguide@21.6.3) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.1...@codecademy/styleguide@21.6.2) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.0...@codecademy/styleguide@21.6.1) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.5.1...@codecademy/styleguide@21.6.0) (2020-12-16)
+
+
+### Features
+
+* added size prop for buttons ([da17d06](https://github.com/Codecademy/client-modules/commit/da17d069e5ec4d9b7635d7900efb13190d0aa349))
+
+
+
+### [21.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.5.0...@codecademy/styleguide@21.5.1) (2020-12-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.3...@codecademy/styleguide@21.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
+### [21.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.2...@codecademy/styleguide@21.4.3) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.1...@codecademy/styleguide@21.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [21.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.0...@codecademy/styleguide@21.4.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* **System:** Refactor props table to have some more features ([c23b68d](https://github.com/Codecademy/client-modules/commit/c23b68da93eb2951e63190d00fe1600bb780d5c7))
+
+
+
+## [21.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.3.0...@codecademy/styleguide@21.4.0) (2020-12-11)
+
+
+### Features
+
+* added gamut-illustrations package ([b2b53b8](https://github.com/Codecademy/client-modules/commit/b2b53b83d5db00f4c358bb91ca27c6593c0b2708))
+
+
+
+## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.1...@codecademy/styleguide@21.3.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [21.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.0...@codecademy/styleguide@21.2.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* **styleguide:** Fix that md knob ([253bfcb](https://github.com/Codecademy/client-modules/commit/253bfcb6717fb36730ef6cce77d8046fc4b56fd5))
+
+
+
+## [21.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.6...@codecademy/styleguide@21.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
+### [21.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.5...@codecademy/styleguide@21.1.6) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.4...@codecademy/styleguide@21.1.5) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [21.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.3...@codecademy/styleguide@21.1.4) (2020-12-08)
 
 **Note:** Version bump only for package @codecademy/styleguide

@@ -11,36 +11,44 @@ import {
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import { select, text, boolean } from '@storybook/addon-knobs';
 
-import { StoryStatus } from '~styleguide/blocks';
-
 <Meta
   args={{
     children: 'Click Me',
     disabled: false,
-    mode: 'light',
     href: '',
+    mode: 'light',
+    size: 'normal',
   }}
+  parameters={{
+    source: 'gamut',
+    figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
+  }}
+  component={TextButton}
   argTypes={{
+    href: {
+      description: 'If defined, component will use an anchor tag',
+    },
     mode: {
-      description: 'Visual mode',
       control: {
         type: 'select',
         options: ['dark', 'light'],
       },
     },
-    href: {
-      description: 'If defined, component will use an anchor tag',
+    size: {
+      control: {
+        type: 'select',
+        options: ['normal', 'small'],
+      },
     },
   }}
   title="Atoms/Button"
 />
 
-# Buttons
-
-<StoryStatus status="stable" />
-
 We have several versions of buttons that you can use.
 Each supports a _light_ and _dark_ mode.
+
+See the [Figma designs](https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/Buttons-%E2%9C%85?node-id=268%3A0) for a nice grid view of all the variants.
+All but CTA button support a size of either `normal` (default) or `small`.
 
 ## CTA Button
 
@@ -48,7 +56,7 @@ Each supports a _light_ and _dark_ mode.
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
 </Canvas>
 
-<Props story="CTAButton" />
+<Props exclude={['size']} story="CTAButton" />
 
 ## Fill Button
 
