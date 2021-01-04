@@ -83,28 +83,21 @@ Header for a unified Codecademy global navigation system.
 ## GlobalHeader Over Background Color
 
 <Canvas withSource="open">
-  <Story
-    name="Background Color GlobalHeader"
-    decorators={[
-      (Story) => (
-        <div style={{ 'background-color': colors.beige }}>
-          <Story />
-        </div>
-      ),
-    ]}
-  >
+  <Story name="Background Color GlobalHeader">
     {(args) => (
-      <GlobalHeader
-        user={{
-          avatar: '',
-          roles: {
-            isAdmin: false,
-            isCustomerService: false,
-            isPro: false,
-          },
-          displayName: 'Codey',
-        }}
-      />
+      <div style={{ 'background-color': colors.beige }}>
+        <GlobalHeader
+          user={{
+            avatar: '',
+            roles: {
+              isAdmin: false,
+              isCustomerService: false,
+              isPro: false,
+            },
+            displayName: 'Codey',
+          }}
+        />
+      </div>
     )}
   </Story>
 </Canvas>
