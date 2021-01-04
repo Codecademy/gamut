@@ -4,7 +4,7 @@ export const Code = styled.code(
   (props) => css`
     font-family: ${props.theme.fontCode};
     max-width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
     line-height: 1;
     padding: 3px 5px;
     white-space: nowrap;
