@@ -1,19 +1,13 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut';
 import cx from 'classnames';
-
-import React from 'react';
-
-import { AppHeaderItem } from './types';
+import React, { ReactElement } from 'react';
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
-
-import { ReactElement } from 'react';
-
-import styles from './styles.scss';
-import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
-
+import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
 import { AppHeaderTab } from '../AppHeaderElements/AppHeaderTab';
+import styles from './styles.scss';
+import { AppHeaderItem } from './types';
 
 export type AppHeaderProps = {
   items: { left: AppHeaderItem[]; right: AppHeaderItem[] };
