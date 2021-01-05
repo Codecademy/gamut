@@ -10,6 +10,7 @@ import {
 } from '../AppHeader/types';
 
 export const logoItem: AppHeaderLogo = {
+  dataTestId: 'header-logo',
   id: 'logo',
   pro: false,
   target: 'topnav_logo',
@@ -17,6 +18,7 @@ export const logoItem: AppHeaderLogo = {
 };
 
 export const proLogoItem: AppHeaderLogo = {
+  dataTestId: 'header-logo',
   id: 'pro-logo',
   pro: true,
   target: 'topnav_logo',
@@ -24,6 +26,7 @@ export const proLogoItem: AppHeaderLogo = {
 };
 
 export const myHome: AppHeaderLink = {
+  dataTestId: 'header-home',
   id: 'my-home',
   text: 'My Home',
   href: '/learn',
@@ -32,6 +35,7 @@ export const myHome: AppHeaderLink = {
 };
 
 export const courseCatalog: AppHeaderLink = {
+  dataTestId: 'header-catalog',
   id: 'course-catalog',
   text: 'Course Catalog',
   href: '/catalog',
@@ -179,6 +183,7 @@ export const upgradeToPro: AppHeaderFillButton = {
 };
 
 export const login: AppHeaderTextButton = {
+  dataTestId: 'header-sign-in',
   id: 'login',
   text: 'Log In',
   href: '/login',
@@ -187,6 +192,7 @@ export const login: AppHeaderTextButton = {
 };
 
 export const signUp: AppHeaderFillButton = {
+  dataTestId: 'header-sign-up',
   id: 'signup',
   text: 'Sign Up',
   href: '/register',

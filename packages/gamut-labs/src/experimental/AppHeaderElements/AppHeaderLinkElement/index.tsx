@@ -20,7 +20,7 @@ export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
     <div className={cx(styles.basicNavLinkHeader, className)}>
       <ButtonDeprecated
         className={cx(styles.plainNavLink, styles.navLink, styles.hoverable)}
-        // data-testid={`header-${item.id}`}
+        data-testid={item.dataTestId}
         flat
         href={item.href}
         onClick={() => trackUserClick(item.target)}

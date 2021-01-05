@@ -9,6 +9,7 @@ export type AppHeaderItem =
   | AppHeaderRenderPopover;
 
 type AppHeaderBase = {
+  dataTestId?: string;
   id: string;
   image?: string;
   icon?: string;

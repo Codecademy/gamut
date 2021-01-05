@@ -35,10 +35,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       theme="navy"
       style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
     >
-      <span
-        //  title={copy}
-        className={styles.copy}
-      >
+      <span title={item.text} className={styles.copy}>
         {item.text}
       </span>
       <ArrowChevronDownFilledIcon

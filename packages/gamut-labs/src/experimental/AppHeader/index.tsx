@@ -42,10 +42,10 @@ const mapItemToElement = (
       return (
         <AppHeaderTab>
           <TextButton
-            // href={addRedirectParam(loginPath)}
+            href={item.href}
             onClick={() => trackUserClick(item.target)}
             className={styles.navLink}
-            // data-testid="header-sign-in"
+            data-testid={item.dataTestId}
           >
             {item.text}
           </TextButton>
@@ -55,8 +55,8 @@ const mapItemToElement = (
       return (
         <AppHeaderTab>
           <FillButton
-            // href={addRedirectParam('/register')}
-            // data-testid="header-sign-up"
+            href={item.href}
+            data-testid={item.dataTestId}
             onClick={() => trackUserClick(item.target)}
             className={cx(styles.navLink)}
           >

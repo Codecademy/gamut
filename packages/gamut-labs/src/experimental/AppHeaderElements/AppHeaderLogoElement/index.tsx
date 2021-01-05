@@ -17,7 +17,7 @@ export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
   return (
     <a
       className={styles.logo}
-      // data-testid="header-logo"
+      data-testid={item.dataTestId}
       onClick={() => trackUserClick(item.target)}
       href={'/'}
     >
