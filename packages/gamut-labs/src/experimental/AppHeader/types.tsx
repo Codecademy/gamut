@@ -17,26 +17,31 @@ type AppHeaderBase = {
 
 export type AppHeaderLogo = AppHeaderBase & {
   pro: boolean;
+  target: string;
   type: 'logo';
 };
 
 export type AppHeaderLink = AppHeaderBase & {
   href: string;
+  target: string;
   type: 'link';
 };
 
 export type AppHeaderTextButton = AppHeaderBase & {
   href: string;
+  target: string;
   type: 'text-button';
 };
 
 export type AppHeaderFillButton = AppHeaderBase & {
   href: string;
+  target: string;
   type: 'fill-button';
 };
 
 export type AppHeaderPopover = AppHeaderBase & {
   popover: AppHeaderLink[];
+  target: string;
   type: 'popover';
 };
 

@@ -74,3 +74,20 @@ Header for a unified Codecademy global navigation system.
     )}
   </Story>
 </Canvas>
+
+## GlobalHeader Can Accept a trackUserClick Function
+
+To mock this, we're providing a very basic trackUserClick function which just prints out the target to the console.
+
+<Canvas>
+  <Story name="TrackUserClick GlobalHeader">
+    {(args) => (
+      <GlobalHeader
+        variant={{ type: 'anon' }}
+        trackUserClick={(target) => {
+          console.log(target);
+        }}
+      />
+    )}
+  </Story>
+</Canvas>

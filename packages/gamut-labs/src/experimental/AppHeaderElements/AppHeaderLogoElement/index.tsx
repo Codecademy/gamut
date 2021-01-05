@@ -7,14 +7,18 @@ import styles from './styles.scss';
 
 export type LogoButtonProps = {
   item: AppHeaderLogo;
+  trackUserClick: (target: string) => void;
 };
 
-export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({ item }) => {
+export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
+  item,
+  trackUserClick,
+}) => {
   return (
     <a
       className={styles.logo}
       // data-testid="header-logo"
-      // onClick={() => trackClick('topnav_logo')}
+      onClick={() => trackUserClick(item.target)}
       href={'/'}
     >
       {

@@ -13,6 +13,7 @@ import { AppHeaderItem } from './types';
 export type AppHeaderProps = {
   items: AppHeaderItemsProp;
   className?: string;
+  trackUserClick: (target: string) => void;
 };
 
 export type AppHeaderItemsProp = {
@@ -20,18 +21,21 @@ export type AppHeaderItemsProp = {
   right: AppHeaderItem[];
 };
 
-const mapItemToElement = (item: AppHeaderItem): ReactElement => {
+const mapItemToElement = (
+  item: AppHeaderItem,
+  trackUserClick: (target: string) => void
+): ReactElement => {
   switch (item.type) {
     case 'logo':
       return (
         <AppHeaderTab className={styles.headerTabLogo}>
-          <AppHeaderLogoElement item={item} />
+          <AppHeaderLogoElement item={item} trackUserClick={trackUserClick} />
         </AppHeaderTab>
       );
     case 'link':
       return (
         <AppHeaderTab className={styles.headerTabLogo}>
-          <AppHeaderLinkElement item={item} />
+          <AppHeaderLinkElement item={item} trackUserClick={trackUserClick} />
         </AppHeaderTab>
       );
     case 'text-button':
@@ -39,7 +43,7 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
         <AppHeaderTab>
           <TextButton
             // href={addRedirectParam(loginPath)}
-            // onClick={() => trackClick('topnav_login')}
+            onClick={() => trackUserClick(item.target)}
             className={styles.navLink}
             // data-testid="header-sign-in"
           >
@@ -53,7 +57,7 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           <FillButton
             // href={addRedirectParam('/register')}
             // data-testid="header-sign-up"
-            // onClick={() => trackClick('topnav_signup')}
+            onClick={() => trackUserClick(item.target)}
             className={cx(styles.navLink)}
           >
             {item.text}
@@ -63,7 +67,7 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
     case 'popover':
       return (
         <AppHeaderTab className={styles.headerTabLogo}>
-          <AppHeaderDropdown item={item} />
+          <AppHeaderDropdown item={item} trackUserClick={trackUserClick} />
         </AppHeaderTab>
       );
     case 'render-popover':
@@ -77,14 +81,15 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
 export const AppHeader: React.FC<AppHeaderProps> = ({
   items,
   className = '',
+  trackUserClick,
 }) => {
   return (
     <AppBar className={className}>
       <AppBarSection position="left">
-        {items.left.map((item) => mapItemToElement(item))}
+        {items.left.map((item) => mapItemToElement(item, trackUserClick))}
       </AppBarSection>
       <AppBarSection position="right">
-        {items.right.map((item) => mapItemToElement(item))}
+        {items.right.map((item) => mapItemToElement(item, trackUserClick))}
       </AppBarSection>
     </AppBar>
   );
