@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { Fragment, useContext, useMemo } from 'react';
 import { Description, DocsContext } from '@storybook/addon-docs/blocks';
 import { allProps } from '../styles';
 import { styled, css } from '@storybook/theming';
@@ -14,6 +14,10 @@ const StyledLinkTo = styled(LinkTo)<{ kind?: string; box?: boolean }>`
   color: #484848;
   border-radius: 4px;
   font-size: 14px;
+
+  p {
+    margin: 0;
+  }
 
   a {
     color: #1ea7fd;
@@ -84,11 +88,18 @@ export const ContentItem = ({ kind }) => {
   const title = kind.replace('/About', '').split('/').reverse()[0];
   const showStatus = Boolean(status || component || subcomponents);
   const content = (
-    <Container padding="1.5rem" paddingY="1rem">
+    <Container
+      padding="1.5rem"
+      paddingY="1.5rem"
+      rowGap="0.5rem"
+      display="grid"
+      gridTemplateRows="min-content 6rem 1rem"
+    >
       <Container
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        overflowY="hidden"
       >
         <Container fontSize="22px" fontWeight="bold">
           {title}
@@ -102,10 +113,28 @@ export const ContentItem = ({ kind }) => {
         display="flex"
         fontSize="1rem"
         fontWeight="bold"
+        flexWrap="wrap"
+        maxHeight="1rem"
+        overflowX="hidden"
       >
         {examples.map(({ kind, text }) => (
-          <StyledLinkTo kind={kind}>{text}</StyledLinkTo>
+          <StyledLinkTo key={`${kind}-story`} kind={kind}>
+            {text}
+          </StyledLinkTo>
         ))}
+        {examples.length === 0 &&
+          subcomponents &&
+          (component?.name ? [component?.name] : [])
+            .concat(Object.keys(subcomponents))
+            .map((name) => (
+              <StyledLinkTo
+                key={`${kind}-${name}-subcomponent`}
+                kind={kind}
+                story={name}
+              >
+                {name}
+              </StyledLinkTo>
+            ))}
       </Container>
     </Container>
   );
@@ -159,7 +188,12 @@ export const TableOfContents = () => {
       rowGap="2rem"
     >
       {kinds.map((adjacentKind) => {
-        return <ContentItem kind={adjacentKind.kind} />;
+        return (
+          <ContentItem
+            key={`${adjacentKind.kind}-item`}
+            kind={adjacentKind.kind}
+          />
+        );
       })}
     </Container>
   );
