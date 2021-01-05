@@ -12,10 +12,7 @@ import {
   standardOverrides,
 } from './libs/overrides';
 import { Iframe } from './libs/overrides/Iframe';
-import {
-  MarkdownAnchor,
-  MarkdownAnchorProps,
-} from './libs/overrides/MarkdownAnchor';
+import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
 import { Table, TableProps } from './libs/overrides/Table';
 import { createPreprocessingInstructions } from './libs/preprocessing';
 import { defaultSanitizationConfig } from './libs/sanitizationConfig';
@@ -59,7 +56,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
-      onAnchorClick = () => null,
     } = this.props;
 
     if (!text) return null;
@@ -83,10 +79,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: (props: MarkdownAnchorProps) => (
-            <MarkdownAnchor onClick={onAnchorClick} {...props} />
-          ),
-          allowedAttributes: ['onClick'],
+          component: (props) => <MarkdownAnchor {...props} />,
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {

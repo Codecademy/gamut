@@ -38,6 +38,5 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
   if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
     delete anchorProps.rel;
   }
-
   return <Anchor {...anchorProps}>{children}</Anchor>;
 };
