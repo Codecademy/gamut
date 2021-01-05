@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DocsContext, Title } from '@storybook/addon-docs/blocks';
+import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
@@ -39,6 +39,7 @@ export interface Parameters {
   component?: React.Component | string;
   subcomponents?: Record<string, React.Component>;
   pageTitle?: string;
+  subtitle?: string;
   status?: 'stable' | 'volatile' | 'deprecated';
   figmaId?: string;
   source?: string;
@@ -51,6 +52,7 @@ export const Page: React.FC = ({ children }) => {
     subcomponents,
     status,
     pageTitle,
+    subtitle,
     figmaId,
     source,
   }: Parameters = parameters;
@@ -105,6 +107,7 @@ export const Page: React.FC = ({ children }) => {
           )}
         </HeaderRow>
       </Header>
+      <Description>{subtitle}</Description>
       {children}
     </>
   );

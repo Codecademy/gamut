@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { DocsContext } from '@storybook/addon-docs/blocks';
+import { Description, DocsContext } from '@storybook/addon-docs/blocks';
 import { allProps } from '../styles';
 import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
@@ -43,41 +43,55 @@ const createAdjacentFolderMethod = (indexKind: string) => {
 };
 
 export const ContentItem = ({ kind }) => {
-  const { storyStore } = useContext(DocsContext);
+  const { storyStore, ...rest } = useContext(DocsContext);
+  const kindPath = kind.replace('/About', '');
   const kindMeta = storyStore['_kinds']?.[kind];
+
+  const examples = useMemo(() => {
+    return Object.keys(storyStore['_kinds'])
+      .filter((key) => key.indexOf(kindPath) === 0 && key !== kind)
+      .slice(0, 2)
+      .map((kind) => ({ text: kind.split('/').reverse()[0], kind }));
+  }, [kindPath, storyStore, kind]);
 
   if (!kindMeta) return null;
   const path = kind.split('/');
   const {
-    parameters: {
-      pageTitle,
-      description,
-      status,
-      component,
-      subcomponents,
-      figmaId,
-    },
+    parameters: { pageTitle, status, component, subcomponents, subtitle },
   } = kindMeta;
 
   const title = pageTitle || path[path.length - 1];
   const showStatus = Boolean(status || component || subcomponents);
+  const content = (
+    <Container padding="1.5rem" paddingY="1rem">
+      <Container
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <Container fontSize="22px" fontWeight="bold">
+          {title}
+        </Container>
+        {showStatus && <Indicator status={status || 'stable'} />}
+      </Container>
+
+      {subtitle && <Description>{subtitle}</Description>}
+      <Container
+        columnGap="1rem"
+        display="flex"
+        fontSize="1rem"
+        fontWeight="bold"
+      >
+        {examples.map(({ kind, text }) => (
+          <LinkTo kind={kind}>{text}</LinkTo>
+        ))}
+      </Container>
+    </Container>
+  );
 
   return (
-    <StyledLinkTo kind={kind}>
-      <Container padding="1.5rem" paddingY="1rem">
-        <Container
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <Container fontSize="22px" fontWeight="bold">
-            {title}
-          </Container>
-          {showStatus && <Indicator status={status || 'stable'} />}
-        </Container>
-
-        {description && <p>{description}</p>}
-      </Container>
+    <StyledLinkTo kind={examples.length === 0 ? kind : null}>
+      {content}
     </StyledLinkTo>
   );
 };
