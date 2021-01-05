@@ -113,6 +113,13 @@ export const plansPricingDropdown: AppHeaderPopover = {
   type: 'popover',
 };
 
+export const forEnterprise: AppHeaderLink = {
+  id: 'for-enterprise',
+  text: 'For Enterprise',
+  href: '/business',
+  type: 'link',
+};
+
 export const search = (
   renderSearch: () => ReactElement
 ): AppHeaderRenderPopover => {

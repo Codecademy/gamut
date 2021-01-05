@@ -5,6 +5,7 @@ import { AppHeaderItem } from '../AppHeader/types';
 import {
   communityDropdown,
   courseCatalog,
+  forEnterprise,
   login,
   logoItem,
   myHome,
@@ -27,6 +28,7 @@ export const anonHeaderItems = (
     resourcesDropdown,
     communityDropdown,
     plansPricingDropdown,
+    forEnterprise,
   ];
   renderSearch && leftItems.push(search(renderSearch));
 
@@ -48,6 +50,7 @@ export const freeHeaderItems = (
     resourcesDropdown,
     communityDropdown,
     plansPricingDropdown,
+    forEnterprise,
   ];
   renderSearch && leftItems.push(search(renderSearch));
   renderNotifications && leftItems.push(notifications(renderNotifications));
