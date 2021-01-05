@@ -22,6 +22,10 @@
   margin-bottom: 1rem;
 }
 
+h1.title:focus {
+  outline: none;
+}
+
 h1.title {
   color: $color-white;
   font-size: 2.25rem;

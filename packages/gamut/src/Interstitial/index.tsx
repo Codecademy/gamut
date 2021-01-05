@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -17,10 +17,16 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   decoration,
   title,
 }) => {
+  const headerRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    headerRef.current?.focus();
+  });
+
   return (
     <div className={cx(styles.Interstitial, className)}>
       <div className={styles.content}>
-        <h1 className={styles.title}>
+        <h1 className={styles.title} ref={headerRef} tabIndex={0}>
           {decoration && <div className={styles.decoration}>{decoration}</div>}
           {title}
         </h1>
