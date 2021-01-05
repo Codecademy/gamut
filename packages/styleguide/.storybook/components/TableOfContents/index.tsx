@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { Description, DocsContext } from '@storybook/addon-docs/blocks';
 import { allProps } from '../styles';
-import { styled } from '@storybook/theming';
+import { styled, css } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { Indicator } from '../Badge';
@@ -16,15 +16,19 @@ const StyledLinkTo = styled(LinkTo)`
   font-size: 14px;
   ${boxShadows[1]}
 
-  &:hover {
-    ${boxShadows[2]}
-    text-decoration: none;
-  }
+  ${({ kind }) => {
+    return css`
+      &:hover {
+        ${kind && boxShadows[2]}
+        text-decoration: none;
+      }
+    `;
+  }}
 `;
 
-const createAdjacentFolderMethod = (indexKind: string) => {
+const createAdjacentFolderMethod = (indexKind: string, offset = 1) => {
   const sectionHeirarchy = indexKind.split('/');
-  const adjacentDepth = sectionHeirarchy.length - 1;
+  const adjacentDepth = sectionHeirarchy.length - offset;
 
   if (adjacentDepth === 0) {
     return (kind: string) => kind.split('/')[1] === INDEX_KIND;
@@ -33,7 +37,7 @@ const createAdjacentFolderMethod = (indexKind: string) => {
   const adjacentPath = sectionHeirarchy.slice(0, adjacentDepth).join('/');
 
   return (kind: string) => {
-    const depth = kind.split('/').length - 1;
+    const depth = kind.replace(`/${INDEX_KIND}`, '').split('/').length - 1;
     return (
       kind.indexOf(adjacentPath) === 0 &&
       indexKind !== kind &&
@@ -45,31 +49,30 @@ const createAdjacentFolderMethod = (indexKind: string) => {
 export const ContentItem = ({ kind }) => {
   const { storyStore } = useContext(DocsContext);
 
-  const path = kind.split('/');
-  const kindDepth = path.length;
   const indexKind = path.filter((slug) => slug !== INDEX_KIND).join('/');
 
   const examples = useMemo(() => {
     return Object.keys(storyStore['_kinds'])
-      .filter((key) => {
-        const keyPath = key.split('/');
-        const keyIndex = keyPath.slice(0, kindDepth - 1).join('/');
-
-        return keyIndex === indexKind && keyPath.length === kindDepth;
-      })
+      .filter(createAdjacentFolderMethod(indexKind, 0))
       .slice(0, 2)
-      .map((kind) => ({ text: kind.split('/').reverse()[0], kind }));
-  }, [path, storyStore, kind]);
+      .map((kind) => ({
+        text: kind
+          .split('/')
+          .filter((slug) => slug !== INDEX_KIND)
+          .reverse()[0],
+        kind,
+      }));
+  }, [indexKind, storyStore, kind]);
 
   const kindMeta = storyStore['_kinds']?.[kind];
 
   if (!kindMeta) return null;
 
   const {
-    parameters: { pageTitle, status, component, subcomponents, subtitle },
+    parameters: { status, component, subcomponents, subtitle },
   } = kindMeta;
 
-  const title = pageTitle || path[path.length - 1];
+  const title = kind.replace('/About', '').split('/').reverse()[0];
   const showStatus = Boolean(status || component || subcomponents);
   const content = (
     <Container padding="1.5rem" paddingY="1rem">

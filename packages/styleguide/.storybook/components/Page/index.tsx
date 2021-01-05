@@ -5,6 +5,7 @@ import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
+import { tail } from 'lodash';
 
 const Link = styled.a`
   display: inline-flex;
@@ -46,12 +47,11 @@ export interface Parameters {
 }
 
 export const Page: React.FC = ({ children }) => {
-  const { parameters } = useContext(DocsContext);
+  const { kind, parameters } = useContext(DocsContext);
   const {
     component,
     subcomponents,
     status,
-    pageTitle,
     subtitle,
     figmaId,
     source,
@@ -61,13 +61,14 @@ export const Page: React.FC = ({ children }) => {
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
+  const title = kind.replace('/About', '').split('/').reverse()[0];
 
   return (
     <>
       <Header marginBottom="1rem">
         <HeaderRow>
           <HeaderCol>
-            <Title>{pageTitle}</Title>
+            <Title>{title}</Title>
           </HeaderCol>
         </HeaderRow>
         <HeaderRow>
