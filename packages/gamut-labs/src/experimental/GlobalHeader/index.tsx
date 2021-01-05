@@ -35,36 +35,30 @@ type ProHeader = LoggedInHeader & {
   type: 'pro';
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ variant }) => {
+const getAppHeaderItems = (variant: AnonHeader | FreeHeader | ProHeader) => {
   switch (variant.type) {
     case 'anon':
-      return (
-        <AppHeader
-          className={styles.globalHeader}
-          items={anonHeaderItems(variant.renderSearch)}
-        />
-      );
+      return anonHeaderItems(variant.renderSearch);
     case 'free':
-      return (
-        <AppHeader
-          className={styles.globalHeader}
-          items={freeHeaderItems(
-            variant.renderSearch,
-            variant.renderNotifications,
-            variant.renderProfile
-          )}
-        />
+      return freeHeaderItems(
+        variant.renderSearch,
+        variant.renderNotifications,
+        variant.renderProfile
       );
     case 'pro':
-      return (
-        <AppHeader
-          className={styles.globalHeader}
-          items={proHeaderItems(
-            variant.renderSearch,
-            variant.renderNotifications,
-            variant.renderProfile
-          )}
-        />
+      return proHeaderItems(
+        variant.renderSearch,
+        variant.renderNotifications,
+        variant.renderProfile
       );
   }
+};
+
+export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ variant }) => {
+  return (
+    <AppHeader
+      className={styles.globalHeader}
+      items={getAppHeaderItems(variant)}
+    />
+  );
 };
