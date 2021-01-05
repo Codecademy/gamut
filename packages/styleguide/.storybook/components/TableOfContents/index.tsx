@@ -5,6 +5,7 @@ import { styled, css } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { Indicator } from '../Badge';
+import { startCase } from 'lodash';
 
 const INDEX_KIND = 'About';
 
@@ -59,41 +60,77 @@ const createAdjacentFolderMethod = (indexKind: string, offset = 1) => {
   };
 };
 
+type SubsectionLink = {
+  children: string;
+  kind: string;
+  story: string;
+};
+
 export const ContentItem = ({ kind }) => {
   const { storyStore } = useContext(DocsContext);
+  const { [kind]: kindMeta = {} } = storyStore['_kinds'];
+  const {
+    parameters: { status, component, subcomponents, subtitle },
+  } = kindMeta;
+
   const path = kind.split('/');
   const indexKind = path.filter((slug) => slug !== INDEX_KIND).join('/');
 
-  const examples = useMemo(() => {
-    return Object.keys(storyStore['_kinds'])
+  const links = useMemo<
+    | {
+        type: 'examples' | 'components';
+        items: SubsectionLink[];
+      }
+    | undefined
+  >(() => {
+    const subsections = Object.keys(storyStore['_kinds'])
       .filter(createAdjacentFolderMethod(indexKind, 0))
-      .slice(0, 2)
-      .map((kind) => ({
-        text: kind
+      .map<SubsectionLink>((kind) => ({
+        children: kind
           .split('/')
           .filter((slug) => slug !== INDEX_KIND)
           .reverse()[0],
         kind,
+        story: '',
       }));
+
+    if (subsections.length) {
+      return {
+        type: 'examples',
+        items: subsections,
+      };
+    } else if (typeof subcomponents !== 'object') {
+      return;
+    }
+
+    console.log(subcomponents);
+    const items = Object.keys(subcomponents).map<SubsectionLink>((key) => ({
+      children: key,
+      kind,
+      story: key.toLowerCase(),
+    }));
+
+    if (component?.name) {
+      items.unshift({
+        children: component?.name,
+        kind,
+        story: component?.name.toLowerCase(),
+      });
+    }
+
+    return { type: 'components', items };
   }, [indexKind, storyStore, kind]);
 
-  const kindMeta = storyStore['_kinds']?.[kind];
-
   if (!kindMeta) return null;
-
-  const {
-    parameters: { status, component, subcomponents, subtitle },
-  } = kindMeta;
 
   const title = kind.replace('/About', '').split('/').reverse()[0];
   const showStatus = Boolean(status || component || subcomponents);
   const content = (
     <Container
       padding="1.5rem"
-      paddingY="1.5rem"
       rowGap="0.5rem"
       display="grid"
-      gridTemplateRows="min-content 6rem 1rem"
+      gridTemplateRows="min-content 5rem 1.5rem"
     >
       <Container
         display="flex"
@@ -106,41 +143,45 @@ export const ContentItem = ({ kind }) => {
         </Container>
         {showStatus && <Indicator status={status || 'stable'} />}
       </Container>
-
-      {subtitle && <Description>{subtitle}</Description>}
-      <Container
-        columnGap="1rem"
-        display="flex"
-        fontSize="1rem"
-        fontWeight="bold"
-        flexWrap="wrap"
-        maxHeight="1rem"
-        overflowX="hidden"
-      >
-        {examples.map(({ kind, text }) => (
-          <StyledLinkTo key={`${kind}-story`} kind={kind}>
-            {text}
-          </StyledLinkTo>
-        ))}
-        {examples.length === 0 &&
-          subcomponents &&
-          (component?.name ? [component?.name] : [])
-            .concat(Object.keys(subcomponents))
-            .map((name) => (
-              <StyledLinkTo
-                key={`${kind}-${name}-subcomponent`}
-                kind={kind}
-                story={name}
-              >
-                {name}
-              </StyledLinkTo>
-            ))}
+      <Container overflowY="hidden">
+        {subtitle && <Description>{subtitle}</Description>}
       </Container>
+      {links?.type && (
+        <Container paddingTop="1rem" flexDirection="column" position="relative">
+          <Container
+            position="absolute"
+            borderStyleTop="solid"
+            borderColor="#eeeeee"
+            borderWidthTop="1px"
+            left="-1.5rem"
+            right="-1.5rem"
+            top="0"
+          />
+          <Container
+            columnGap="1rem"
+            display="flex"
+            flexWrap="wrap"
+            maxHeight="1rem"
+            lineHeight="1rem"
+            fontWeight="bold"
+            overflowX="auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {links.items.map(({ kind, story = undefined, ...props }) => (
+              <StyledLinkTo
+                key={`${kind}-story${story && `-${story}`}`}
+                kind={kind}
+                {...props}
+              />
+            ))}
+          </Container>
+        </Container>
+      )}
     </Container>
   );
 
   return (
-    <StyledLinkTo box kind={examples.length === 0 ? kind : null}>
+    <StyledLinkTo box kind={kind}>
       {content}
     </StyledLinkTo>
   );
