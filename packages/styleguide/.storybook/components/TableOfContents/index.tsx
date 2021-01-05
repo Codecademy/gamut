@@ -5,6 +5,7 @@ import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { Indicator } from '../Badge';
+import { isEqual, dropRight, intersection } from 'lodash';
 
 const INDEX_KIND = 'About';
 
@@ -43,19 +44,29 @@ const createAdjacentFolderMethod = (indexKind: string) => {
 };
 
 export const ContentItem = ({ kind }) => {
-  const { storyStore, ...rest } = useContext(DocsContext);
-  const kindPath = kind.replace('/About', '');
-  const kindMeta = storyStore['_kinds']?.[kind];
+  const { storyStore } = useContext(DocsContext);
+
+  const path = kind.split('/');
+  const kindDepth = path.length;
+  const indexPath = path.filter((slug) => slug !== INDEX_KIND);
 
   const examples = useMemo(() => {
     return Object.keys(storyStore['_kinds'])
-      .filter((key) => key.indexOf(kindPath) === 0 && key !== kind)
+      .filter((key) => {
+        const keyPath = key.split('/');
+        return (
+          isEqual(keyPath.slice(0, kindDepth - 1), indexPath) &&
+          keyPath.length === kindDepth
+        );
+      })
       .slice(0, 2)
       .map((kind) => ({ text: kind.split('/').reverse()[0], kind }));
-  }, [kindPath, storyStore, kind]);
+  }, [path, storyStore, kind]);
+
+  const kindMeta = storyStore['_kinds']?.[kind];
 
   if (!kindMeta) return null;
-  const path = kind.split('/');
+
   const {
     parameters: { pageTitle, status, component, subcomponents, subtitle },
   } = kindMeta;
