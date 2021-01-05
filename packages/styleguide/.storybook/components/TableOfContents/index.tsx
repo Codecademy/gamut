@@ -150,12 +150,11 @@ export const ContentItem = ({ kind }) => {
         <Container paddingTop="1rem" flexDirection="column" position="relative">
           <Container
             position="absolute"
-            borderStyleTop="solid"
-            borderColor="#eeeeee"
-            borderWidthTop="1px"
+            boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
             left="-1.5rem"
             right="-1.5rem"
             top="0"
+            minHeight="1px"
           />
           <Container
             columnGap="1rem"
