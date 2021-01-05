@@ -48,6 +48,8 @@ Header for a unified Codecademy global navigation system.
 
 ## GlobalHeader With Search, Notifications, and Profile Dropdown
 
+To mock this, we're providing IconButtons as placeholders.
+
 <Canvas>
   <Story name="GlobalHeader Search Notifications Profile">
     {(args) => (
@@ -68,7 +70,7 @@ Header for a unified Codecademy global navigation system.
 <Canvas>
   <Story name="Background Color GlobalHeader">
     {(args) => (
-      <div style={{ backgroundColor: colors.beige }}>
+      <div style={{ backgroundColor: colors.beige, width: '100%' }}>
         <GlobalHeader variant={{ type: 'anon' }} />
       </div>
     )}
