@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import cx from 'classnames';
 import React, { useEffect, useRef } from 'react';
 
