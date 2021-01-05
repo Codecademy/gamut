@@ -48,7 +48,7 @@ const createAdjacentFolderMethod = (indexKind: string, offset = 1) => {
 
 export const ContentItem = ({ kind }) => {
   const { storyStore } = useContext(DocsContext);
-
+  const path = kind.split('/');
   const indexKind = path.filter((slug) => slug !== INDEX_KIND).join('/');
 
   const examples = useMemo(() => {

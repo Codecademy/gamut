@@ -39,7 +39,6 @@ const HeaderCol = styled.div``;
 export interface Parameters {
   component?: React.Component | string;
   subcomponents?: Record<string, React.Component>;
-  pageTitle?: string;
   subtitle?: string;
   status?: 'stable' | 'volatile' | 'deprecated';
   figmaId?: string;
