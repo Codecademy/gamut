@@ -26,6 +26,7 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   return (
     <div className={cx(styles.Interstitial, className)}>
       <div className={styles.content}>
+        // eslint-disable-next-line
         <h1 className={styles.title} ref={headerRef} tabIndex={0}>
           {decoration && <div className={styles.decoration}>{decoration}</div>}
           {title}
