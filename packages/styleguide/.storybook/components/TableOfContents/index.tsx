@@ -5,7 +5,6 @@ import { styled } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { Indicator } from '../Badge';
-import { isEqual, dropRight, intersection } from 'lodash';
 
 const INDEX_KIND = 'About';
 
@@ -48,16 +47,15 @@ export const ContentItem = ({ kind }) => {
 
   const path = kind.split('/');
   const kindDepth = path.length;
-  const indexPath = path.filter((slug) => slug !== INDEX_KIND);
+  const indexKind = path.filter((slug) => slug !== INDEX_KIND).join('/');
 
   const examples = useMemo(() => {
     return Object.keys(storyStore['_kinds'])
       .filter((key) => {
         const keyPath = key.split('/');
-        return (
-          isEqual(keyPath.slice(0, kindDepth - 1), indexPath) &&
-          keyPath.length === kindDepth
-        );
+        const keyIndex = keyPath.slice(0, kindDepth - 1).join('/');
+
+        return keyIndex === indexKind && keyPath.length === kindDepth;
       })
       .slice(0, 2)
       .map((kind) => ({ text: kind.split('/').reverse()[0], kind }));
