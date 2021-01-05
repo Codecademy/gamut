@@ -10,16 +10,25 @@ const INDEX_KIND = 'About';
 
 const Container = styled.div(allProps);
 
-const StyledLinkTo = styled(LinkTo)`
+const StyledLinkTo = styled(LinkTo)<{ kind?: string; box?: boolean }>`
   color: #484848;
   border-radius: 4px;
   font-size: 14px;
-  ${boxShadows[1]}
 
-  ${({ kind }) => {
+  a {
+    color: #1ea7fd;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ${({ kind, box }) => {
     return css`
+      ${box && boxShadows[1]}
+
       &:hover {
-        ${kind && boxShadows[2]}
+        ${kind && box && boxShadows[2]}
         text-decoration: none;
       }
     `;
@@ -95,14 +104,14 @@ export const ContentItem = ({ kind }) => {
         fontWeight="bold"
       >
         {examples.map(({ kind, text }) => (
-          <LinkTo kind={kind}>{text}</LinkTo>
+          <StyledLinkTo kind={kind}>{text}</StyledLinkTo>
         ))}
       </Container>
     </Container>
   );
 
   return (
-    <StyledLinkTo kind={examples.length === 0 ? kind : null}>
+    <StyledLinkTo box kind={examples.length === 0 ? kind : null}>
       {content}
     </StyledLinkTo>
   );
@@ -117,15 +126,23 @@ export const TableOfContents = () => {
   }, [kind]);
 
   const kinds = useMemo(() => {
-    return Object.entries(allKinds).reduce<Record<string, any>[]>(
-      (carry, [path, meta]: [string, Record<string, any>]) => {
-        if (filterMethod(path)) {
-          return [...carry, { kind: path, ...meta }];
-        }
-        return carry;
-      },
-      []
-    );
+    return Object.entries(allKinds)
+      .reduce<Record<string, any>[]>(
+        (carry, [path, meta]: [string, Record<string, any>]) => {
+          if (filterMethod(path)) {
+            return [...carry, { kind: path, ...meta }];
+          }
+          return carry;
+        },
+        []
+      )
+      .sort((a, b) => {
+        const weights = ['stable', 'volatile', 'deprecated'];
+        return (
+          weights.indexOf(a?.parameters?.status) -
+          weights.indexOf(b?.parameters?.status)
+        );
+      });
   }, [allKinds, filterMethod]);
 
   return (

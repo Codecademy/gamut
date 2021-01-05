@@ -6,11 +6,13 @@ import { useState } from '@storybook/addons';
 <Meta
   title="Atoms/InputStepper"
   component={InputStepper}
-  parameters={{ source: 'gamut' }}
-/>
-
+  parameters={{
+    subtitle: `
 Input Steppers allow for finetuned control over numeric values. They
-override the default styles for numeric inputs.
+override the default styles for numeric inputs.`,
+    source: 'gamut',
+  }}
+/>
 
 Steppers will default to a small size if selecting over values that are
 at most 1 digit, and choose a wider format sutable for 3 digits

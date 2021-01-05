@@ -11,11 +11,14 @@ import { useState } from 'react';
   component={Accordion}
   subcomponents={{ AccordionArea, AccordionButton }}
   title="Molecules/Accordion"
-  parameters={{ status: 'volatile', source: 'gamut' }}
-/>
-
-A molecule consisting of a "top" section and an expandable body,
+  parameters={{
+    subtitle: `A molecule consisting of a "top" section and an expandable body,
 such as a "hint" section in the LE or a list of department jobs on a careers page.
+`,
+    status: 'volatile',
+    source: 'gamut',
+  }}
+/>
 
 <Canvas withSource="open">
   <Story name="Accordion">
