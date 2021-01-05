@@ -1,3 +1,5 @@
+import { ReactElement } from 'react';
+
 export type AppHeaderItem =
   | AppHeaderLogo
   | AppHeaderLink
@@ -14,8 +16,8 @@ type AppHeaderBase = {
 };
 
 export type AppHeaderLogo = AppHeaderBase & {
-  type: 'logo';
   pro: boolean;
+  type: 'logo';
 };
 
 export type AppHeaderLink = AppHeaderBase & {
@@ -39,6 +41,6 @@ export type AppHeaderPopover = AppHeaderBase & {
 };
 
 export type AppHeaderRenderPopover = AppHeaderBase & {
-  popover: () => React.ReactNode;
+  popover: () => ReactElement;
   type: 'render-popover';
 };

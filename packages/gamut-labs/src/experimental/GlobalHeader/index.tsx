@@ -1,75 +1,70 @@
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactElement } from 'react';
 
 import { AppHeader } from '../AppHeader';
-import { AppHeaderItem } from '../AppHeader/types';
 import {
-  communityDropdown,
-  courseCatalog,
-  login,
-  logoItem,
-  myHome,
-  notifications,
-  plansPricingDropdown,
-  profile,
-  proLogoItem,
-  resourcesDropdown,
-  search,
-  signUp,
-  upgradeToPro,
-} from './AppHeaderItems';
+  anonHeaderItems,
+  freeHeaderItems,
+  proHeaderItems,
+} from './AppHeaderVariants';
 import styles from './styles.scss';
 
 export type GlobalHeaderProps = {
-  user?: User;
-  renderSearch?: () => ReactNode;
-  renderNotifications?: () => ReactNode;
-  renderProfileDropdown?: () => ReactNode;
+  variant: AnonHeader | FreeHeader | ProHeader;
 };
 
-type User = {
+type AnonHeader = {
+  type: 'anon';
+  renderSearch?: () => ReactElement;
+};
+
+type LoggedInHeader = {
   avatar: string;
-  roles: UserRoles;
+  displayName: string;
+  renderSearch?: () => ReactElement;
+  renderNotifications?: () => ReactElement;
+  renderProfile?: () => ReactElement;
+};
+
+type FreeHeader = LoggedInHeader & {
+  type: 'free';
+  avatar: string;
   displayName: string;
 };
 
-type UserRoles = {
-  isAdmin: boolean;
-  isCustomerService: boolean;
-  isPro: boolean;
+type ProHeader = LoggedInHeader & {
+  type: 'pro';
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
-  user,
-  renderSearch,
-  renderNotifications,
-  renderProfileDropdown,
-}) => {
-  const isLoggedIn = user !== undefined;
-  const codecademyLogo = user?.roles.isPro ? proLogoItem : logoItem;
-
-  const leftItems: AppHeaderItem[] = [];
-  const rightItems: AppHeaderItem[] = [];
-
-  leftItems.push(codecademyLogo);
-  isLoggedIn && leftItems.push(myHome);
-  leftItems.push(courseCatalog, resourcesDropdown, communityDropdown);
-  !user?.roles.isPro && leftItems.push(plansPricingDropdown);
-
-  renderSearch && rightItems.push(search(renderSearch));
-  isLoggedIn &&
-    renderNotifications &&
-    rightItems.push(notifications(renderNotifications));
-  isLoggedIn &&
-    renderProfileDropdown &&
-    rightItems.push(profile(renderProfileDropdown));
-  isLoggedIn && !user?.roles.isPro && rightItems.push(upgradeToPro);
-  !isLoggedIn && rightItems.push(login, signUp);
-
-  return (
-    <AppHeader
-      className={styles.globalHeader}
-      items={{ left: leftItems, right: rightItems }}
-    />
-  );
+export const GlobalHeader: React.FC<GlobalHeaderProps> = ({ variant }) => {
+  switch (variant.type) {
+    case 'anon':
+      return (
+        <AppHeader
+          className={styles.globalHeader}
+          items={anonHeaderItems(variant.renderSearch)}
+        />
+      );
+    case 'free':
+      return (
+        <AppHeader
+          className={styles.globalHeader}
+          items={freeHeaderItems(
+            variant.renderSearch,
+            variant.renderNotifications,
+            variant.renderProfile
+          )}
+        />
+      );
+    case 'pro':
+      return (
+        <AppHeader
+          className={styles.globalHeader}
+          items={proHeaderItems(
+            variant.renderSearch,
+            variant.renderNotifications,
+            variant.renderProfile
+          )}
+        />
+      );
+  }
 };

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 
 import {
   AppHeaderFillButton,
@@ -114,7 +114,7 @@ export const plansPricingDropdown: AppHeaderPopover = {
 };
 
 export const search = (
-  renderSearch: () => ReactNode
+  renderSearch: () => ReactElement
 ): AppHeaderRenderPopover => {
   return {
     id: 'search',
@@ -125,7 +125,7 @@ export const search = (
 };
 
 export const notifications = (
-  renderNotifications: () => ReactNode
+  renderNotifications: () => ReactElement
 ): AppHeaderRenderPopover => {
   return {
     id: 'notifications',
@@ -136,7 +136,7 @@ export const notifications = (
 };
 
 export const profile = (
-  renderProfile: () => ReactNode
+  renderProfile: () => ReactElement
 ): AppHeaderRenderPopover => {
   return {
     id: 'profile',

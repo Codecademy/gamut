@@ -11,8 +11,13 @@ import styles from './styles.scss';
 import { AppHeaderItem } from './types';
 
 export type AppHeaderProps = {
-  items: { left: AppHeaderItem[]; right: AppHeaderItem[] };
+  items: AppHeaderItemsProp;
   className?: string;
+};
+
+export type AppHeaderItemsProp = {
+  left: AppHeaderItem[];
+  right: AppHeaderItem[];
 };
 
 const mapItemToElement = (item: AppHeaderItem): ReactElement => {
@@ -61,6 +66,9 @@ const mapItemToElement = (item: AppHeaderItem): ReactElement => {
           <AppHeaderDropdown item={item} />
         </AppHeaderTab>
       );
+    case 'render-popover':
+      return <AppHeaderTab>{item.popover()}</AppHeaderTab>;
+
     default:
       return <AppHeaderTab />;
   }

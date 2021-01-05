@@ -1,5 +1,7 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
+import { IconButton } from '@codecademy/gamut/src';
+import { BellIcon, SearchIcon, PersonIcon } from '@codecademy/gamut-icons/src';
 import { colors } from '@codecademy/gamut-styles';
 
 <Meta
@@ -14,19 +16,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas withSource="open">
   <Story name="GlobalHeader">
-    {(args) => (
-      <GlobalHeader
-        user={{
-          avatar: '',
-          roles: {
-            isAdmin: false,
-            isCustomerService: false,
-            isPro: false,
-          },
-          displayName: 'Codey',
-        }}
-      />
-    )}
+    {(args) => <GlobalHeader variant={{ type: 'free' }} />}
   </Story>
 </Canvas>
 
@@ -36,19 +26,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Free User Global Header">
-    {(args) => (
-      <GlobalHeader
-        user={{
-          avatar: '',
-          roles: {
-            isAdmin: false,
-            isCustomerService: false,
-            isPro: false,
-          },
-          displayName: 'Free Codey',
-        }}
-      />
-    )}
+    {(args) => <GlobalHeader variant={{ type: 'free' }} />}
   </Story>
 </Canvas>
 
@@ -56,19 +34,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Pro User Global Header">
-    {(args) => (
-      <GlobalHeader
-        user={{
-          avatar: '',
-          roles: {
-            isAdmin: true,
-            isCustomerService: true,
-            isPro: true,
-          },
-          displayName: 'Pro Codey',
-        }}
-      />
-    )}
+    {(args) => <GlobalHeader variant={{ type: 'pro' }} />}
   </Story>
 </Canvas>
 
@@ -76,27 +42,34 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Anonymous User Global Header">
-    {(args) => <GlobalHeader />}
+    {(args) => <GlobalHeader variant={{ type: 'anon' }} />}
+  </Story>
+</Canvas>
+
+## GlobalHeader With Search, Notifications, and Profile Dropdown
+
+<Canvas>
+  <Story name="GlobalHeader Search Notifications Profile">
+    {(args) => (
+      <GlobalHeader
+        variant={{
+          type: 'pro',
+          renderSearch: () => <IconButton icon={SearchIcon} />,
+          renderNotifications: () => <IconButton icon={BellIcon} />,
+          renderProfile: () => <IconButton icon={PersonIcon} />,
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
 ## GlobalHeader Over Background Color
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="Background Color GlobalHeader">
     {(args) => (
-      <div style={{ 'background-color': colors.beige }}>
-        <GlobalHeader
-          user={{
-            avatar: '',
-            roles: {
-              isAdmin: false,
-              isCustomerService: false,
-              isPro: false,
-            },
-            displayName: 'Codey',
-          }}
-        />
+      <div style={{ backgroundColor: colors.beige }}>
+        <GlobalHeader variant={{ type: 'anon' }} />
       </div>
     )}
   </Story>
