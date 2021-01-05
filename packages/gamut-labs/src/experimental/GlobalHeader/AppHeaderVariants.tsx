@@ -30,11 +30,14 @@ export const anonHeaderItems = (
     plansPricingDropdown,
     forEnterprise,
   ];
-  renderSearch && leftItems.push(search(renderSearch));
+
+  const rightItems: AppHeaderItem[] = [];
+  renderSearch && rightItems.push(search(renderSearch));
+  rightItems.concat([login, signUp]);
 
   return {
     left: leftItems,
-    right: [login, signUp],
+    right: rightItems,
   };
 };
 
@@ -52,13 +55,16 @@ export const freeHeaderItems = (
     plansPricingDropdown,
     forEnterprise,
   ];
-  renderSearch && leftItems.push(search(renderSearch));
-  renderNotifications && leftItems.push(notifications(renderNotifications));
-  renderProfile && leftItems.push(profile(renderProfile));
+
+  const rightItems: AppHeaderItem[] = [];
+  renderSearch && rightItems.push(search(renderSearch));
+  renderNotifications && rightItems.push(notifications(renderNotifications));
+  renderProfile && rightItems.push(profile(renderProfile));
+  rightItems.concat([upgradeToPro]);
 
   return {
     left: leftItems,
-    right: [upgradeToPro],
+    right: rightItems,
   };
 };
 
@@ -74,12 +80,14 @@ export const proHeaderItems = (
     resourcesDropdown,
     communityDropdown,
   ];
-  renderSearch && leftItems.push(search(renderSearch));
-  renderNotifications && leftItems.push(notifications(renderNotifications));
-  renderProfile && leftItems.push(profile(renderProfile));
+
+  const rightItems: AppHeaderItem[] = [];
+  renderSearch && rightItems.push(search(renderSearch));
+  renderNotifications && rightItems.push(notifications(renderNotifications));
+  renderProfile && rightItems.push(profile(renderProfile));
 
   return {
     left: leftItems,
-    right: [],
+    right: rightItems,
   };
 };
