@@ -1,14 +1,13 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { StoryStatus } from '~styleguide/blocks';
 import { Truncate, Text } from '@codecademy/gamut/src';
 
-<Meta title="Molecules/Truncate" component={Truncate} />
-
-# Truncate
-
-<StoryStatus status="stable" />
+<Meta
+  title="Molecules/Truncate"
+  component={Truncate}
+  parameters={{ source: 'gamut' }}
+/>
 
 Truncates can be used to asynchronously display feedback or interactions
 with the user with various connotations.

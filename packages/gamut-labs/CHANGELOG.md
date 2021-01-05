@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.2...@codecademy/gamut-labs@7.6.3) (2020-12-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.1...@codecademy/gamut-labs@7.6.2) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.0...@codecademy/gamut-labs@7.6.1) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.5...@codecademy/gamut-labs@7.6.0) (2020-12-17)
+
+
+### Features
+
+* add vertical and horizontal offsets to the popover component ([8c5b178](https://github.com/Codecademy/client-modules/commit/8c5b178dbd2eb820b58de6cbc0e93c495d2ab55f))
+
+
+
 ### [7.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.4...@codecademy/gamut-labs@7.5.5) (2020-12-16)
 
 

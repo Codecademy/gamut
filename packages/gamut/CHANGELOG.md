@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.3...@codecademy/gamut@19.8.0) (2020-12-21)
+
+
+### Features
+
+* **Toggle:** adds a className prop to the Toggle component ([f032766](https://github.com/Codecademy/client-modules/commit/f0327664a735140e4ebb5619e283011249c543a3))
+
+
+
+### [19.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.2...@codecademy/gamut@19.7.3) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.1...@codecademy/gamut@19.7.2) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.0...@codecademy/gamut@19.7.1) (2020-12-16)
 
 

@@ -14,9 +14,13 @@ export type PopoverProps = {
    */
   align?: 'left' | 'right';
   /**
-   * Number of pixels to offset the popover from the source component.
+   * Number of pixels to offset the popover vertically from the source component.
    */
-  offset?: number;
+  verticalOffset?: number;
+  /**
+   * Number of pixels to offset the popover horizontally from the source component.
+   */
+  horizontalOffset?: number;
   /**
    * Whether to add outline style (i.e. used for dropdowns).
    */
@@ -50,7 +54,8 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   className,
   align = 'left',
-  offset = 20,
+  verticalOffset = 20,
+  horizontalOffset = 0,
   outline = false,
   position = 'below',
   beak,
@@ -67,18 +72,18 @@ export const Popover: React.FC<PopoverProps> = ({
     if (!targetRect) return {};
 
     const positions = {
-      above: Math.round(targetRect.top - offset),
-      below: Math.round(targetRect.top + targetRect.height + offset),
+      above: Math.round(targetRect.top - verticalOffset),
+      below: Math.round(targetRect.top + targetRect.height + verticalOffset),
     };
     const alignments = {
-      right: Math.round(window.scrollX + targetRect.right),
-      left: Math.round(window.scrollX + targetRect.left),
+      right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
+      left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
     };
     return {
       top: positions[position],
       left: alignments[align],
     };
-  }, [targetRect, offset, align, position]);
+  }, [targetRect, verticalOffset, horizontalOffset, align, position]);
 
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
