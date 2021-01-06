@@ -4,7 +4,7 @@ import { allProps } from '../styles';
 import { styled, css } from '@storybook/theming';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
-import { Indicator } from '../Badge';
+import { Badge, Indicator } from '../Badge';
 import { startCase } from 'lodash';
 
 const INDEX_KIND = 'About';
@@ -38,6 +38,16 @@ const StyledLinkTo = styled(LinkTo)<{ kind?: string; box?: boolean }>`
       }
     `;
   }}
+`;
+
+const ItemStatus = styled(Badge)`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(100% + 1rem);
+  padding: 0;
+  width: 1rem;
+  border-radius: 0.25rem 0 0 0.25rem;
 `;
 
 const createAdjacentFolderMethod = (indexKind: string, offset = 1) => {
@@ -76,16 +86,14 @@ export const ContentItem = ({ kind }) => {
   const path = kind.split('/');
   const indexKind = path.filter((slug) => slug !== INDEX_KIND).join('/');
 
-  const links = useMemo<
-    | {
-        type: 'examples' | 'components';
-        items: SubsectionLink[];
-      }
-    | undefined
-  >(() => {
-    const subsections = Object.keys(storyStore['_kinds'])
-      .filter(createAdjacentFolderMethod(indexKind, 0))
-      .map<SubsectionLink>((kind) => ({
+  const links = useMemo<SubsectionLink[]>(() => {
+    const components = Object.keys(subcomponents ?? {});
+    const sections = Object.keys(storyStore['_kinds']).filter(
+      createAdjacentFolderMethod(indexKind, 0)
+    );
+
+    if (sections.length) {
+      return sections.map<SubsectionLink>((kind) => ({
         children: kind
           .split('/')
           .filter((slug) => slug !== INDEX_KIND)
@@ -93,32 +101,17 @@ export const ContentItem = ({ kind }) => {
         kind,
         story: '',
       }));
-
-    if (subsections.length) {
-      return {
-        type: 'examples',
-        items: subsections,
-      };
-    } else if (typeof subcomponents !== 'object') {
-      return;
+    } else if (components.length) {
+      return [component?.name, ...components]
+        .filter((x) => x)
+        .map<SubsectionLink>((key) => ({
+          children: key,
+          kind,
+          story: key.toLowerCase(),
+        }));
     }
 
-    console.log(subcomponents);
-    const items = Object.keys(subcomponents).map<SubsectionLink>((key) => ({
-      children: key,
-      kind,
-      story: key.toLowerCase(),
-    }));
-
-    if (component?.name) {
-      items.unshift({
-        children: component?.name,
-        kind,
-        story: component?.name.toLowerCase(),
-      });
-    }
-
-    return { type: 'components', items };
+    return [] as SubsectionLink[];
   }, [indexKind, storyStore, kind]);
 
   if (!kindMeta) return null;
@@ -131,51 +124,47 @@ export const ContentItem = ({ kind }) => {
       rowGap="0.5rem"
       display="grid"
       gridTemplateRows="min-content 5rem 1.5rem"
+      overflow="hidden"
     >
-      <Container
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        overflowY="hidden"
-      >
-        <Container fontSize="22px" fontWeight="bold">
-          {title}
-        </Container>
-        {showStatus && <Indicator status={status || 'stable'} />}
+      <Container fontSize="22px" fontWeight="bold" position="relative">
+        {title} {showStatus && <ItemStatus status={status || 'stable'} />}
       </Container>
       <Container overflowY="hidden">
         {subtitle && <Description>{subtitle}</Description>}
       </Container>
-      {links?.type && (
-        <Container paddingTop="1rem" flexDirection="column" position="relative">
-          <Container
-            position="absolute"
-            boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
-            left="-1.5rem"
-            right="-1.5rem"
-            top="0"
-            minHeight="1px"
-          />
-          <Container
-            columnGap="1rem"
-            display="flex"
-            flexWrap="wrap"
-            maxHeight="1rem"
-            lineHeight="1rem"
-            fontWeight="bold"
-            overflowX="auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {links.items.map(({ kind, story = undefined, ...props }) => (
-              <StyledLinkTo
-                key={`${kind}-story${story && `-${story}`}`}
-                kind={kind}
-                {...props}
-              />
-            ))}
-          </Container>
-        </Container>
-      )}
+      <Container paddingTop="1rem" flexDirection="column" position="relative">
+        {links.length > 0 && (
+          <>
+            <Container
+              position="absolute"
+              display="inline-block"
+              boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
+              left="-1.5rem"
+              right="-1.5rem"
+              top="0"
+              minHeight="1px"
+            />
+            <Container
+              columnGap="1rem"
+              display="flex"
+              flexWrap="wrap"
+              maxHeight="1rem"
+              lineHeight="1rem"
+              fontWeight="bold"
+              overflowX="auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {links.map(({ kind, story = undefined, ...props }) => (
+                <StyledLinkTo
+                  key={`${kind}-story${story && `-${story}`}`}
+                  kind={kind}
+                  {...props}
+                />
+              ))}
+            </Container>
+          </>
+        )}
+      </Container>
     </Container>
   );
 

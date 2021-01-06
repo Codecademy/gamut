@@ -35,8 +35,8 @@ export const Badge = styled.div`
 
 export const Indicator = styled.span`
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  ${badgeVariants}
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0 0 0.5rem 0.25rem;
+  ${badgeVariants};
 `;
