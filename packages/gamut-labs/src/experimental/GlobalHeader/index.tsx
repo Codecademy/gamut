@@ -13,23 +13,21 @@ export type GlobalHeaderProps = {
   trackUserClick: (target: string) => void;
 };
 
-type AnonHeader = {
-  type: 'anon';
+type LoggedOutHeader = {
   renderSearch?: () => ReactElement;
 };
 
-type LoggedInHeader = {
-  avatar: string;
-  displayName: string;
-  renderSearch?: () => ReactElement;
+type LoggedInHeader = LoggedOutHeader & {
   renderNotifications?: () => ReactElement;
   renderProfile?: () => ReactElement;
 };
 
+type AnonHeader = LoggedOutHeader & {
+  type: 'anon';
+};
+
 type FreeHeader = LoggedInHeader & {
   type: 'free';
-  avatar: string;
-  displayName: string;
 };
 
 type ProHeader = LoggedInHeader & {
