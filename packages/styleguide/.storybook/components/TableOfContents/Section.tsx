@@ -69,7 +69,7 @@ export const Section = ({ kind }) => {
       paddingBottom=".5rem"
       rowGap="0.4rem"
       display="grid"
-      gridTemplateRows="min-content 5rem 3rem"
+      gridTemplateRows="min-content 4.5rem 3rem"
       overflow="hidden"
       position="relative"
     >

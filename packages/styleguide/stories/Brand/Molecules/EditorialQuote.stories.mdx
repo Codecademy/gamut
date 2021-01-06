@@ -5,10 +5,11 @@ import { EditorialQuote } from '@codecademy/gamut-labs/src';
   title="Brand/Molecules/EditorialQuote"
   component={EditorialQuote}
   args={{ quote: 'In an interstellar burst, I am back to save the universe.' }}
-  parameters={{ source: 'gamut-labs' }}
+  parameters={{
+    subtitle: `A pull quote for use in an editorial page.`,
+    source: 'gamut-labs',
+  }}
 />
-
-A pull quote for use in an editorial page.
 
 <Canvas withSource="open" className="dark">
   <Story name="EditorialQuote">{(args) => <EditorialQuote {...args} />}</Story>
