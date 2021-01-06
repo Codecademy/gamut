@@ -8,7 +8,7 @@ export type InterstitialProps = {
   buttons?: React.ReactNode[];
   className?: string;
   decoration?: React.ReactNode;
-  /** Should be enabled if Interstitial is not rendered on a new route or the child of a component with focus managment, such as Modal. */
+  /** If enabled, pull focus onto the header of the component upon render. Should be enabled if Interstitial is not the child of a component with focus managment, such as Modal. */
   focus?: boolean;
   title: string;
 };
