@@ -1,7 +1,7 @@
 import { Description, DocsContext } from '@storybook/addon-docs/blocks';
 import React, { useContext, useMemo } from 'react';
 import { getAdjacentKinds, getTitle, parsePath } from './utils';
-import { Box, SectionLink, SectionStatus } from './elements';
+import { Box, Reset, SectionLink, SectionStatus } from './elements';
 import { uniq } from 'lodash';
 
 interface SubsectionLink {
@@ -66,37 +66,56 @@ export const Section = ({ kind }) => {
   const content = (
     <Box
       padding="1.5rem"
-      rowGap="0.5rem"
+      paddingBottom=".5rem"
+      rowGap="0.4rem"
       display="grid"
-      gridTemplateRows="min-content 5rem 1.5rem"
+      gridTemplateRows="min-content 5rem 3rem"
       overflow="hidden"
+      position="relative"
     >
-      <Box fontSize="22px" fontWeight="bold" position="relative">
+      <Box
+        fontSize="22px"
+        lineHeight="1.1"
+        fontWeight="bold"
+        position="relative"
+      >
         {getTitle(kind)}
         {showStatus && <SectionStatus status={status || 'stable'} />}
       </Box>
       <Box overflowY="hidden">
-        {subtitle && <Description>{subtitle}</Description>}
+        <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
       </Box>
-      <Box paddingTop="1rem" flexDirection="column" position="relative">
+      <Box
+        display="grid"
+        alignItems="center"
+        paddingX="1.5rem"
+        paddingBottom=".25rem"
+        position="absolute"
+        left="0"
+        right="0"
+        bottom="0"
+        height="3rem"
+      >
         {links.length > 0 && (
           <>
             <Box
+              width="100%"
               position="absolute"
               display="inline-block"
               boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
-              left="-1.5rem"
-              right="-1.5rem"
+              left="0"
+              right="0"
               top="0"
               minHeight="1px"
             />
             <Box
+              maxWidth="100%"
               columnGap="1rem"
               display="flex"
-              flexWrap="wrap"
               maxHeight="1rem"
               fontWeight="bold"
-              overflowX="auto"
+              flexWrap="wrap"
+              overflow="hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {links.map((props) => {

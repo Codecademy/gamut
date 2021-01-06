@@ -4,7 +4,19 @@ import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { boxShadows } from '@codecademy/gamut-styles/src';
 import { badgeVariants } from '../Badge';
 
-export const Box = styled.div(allProps);
+export const Box = styled.div`
+  ${allProps}
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+  }
+`;
+
+export const Reset = styled.div`
+  *:first-of-type {
+    margin-top: 0;
+  }
+`;
 
 export const SectionStatus = styled.div`
   position: absolute;
@@ -16,31 +28,23 @@ export const SectionStatus = styled.div`
   ${badgeVariants}
 `;
 
-export const SectionLink = styled(LinkTo)<{ kind?: string; box?: boolean }>`
-  color: #484848;
-  border-radius: 4px;
-  font-size: 14px;
+interface SectionLinkProps {
+  story?: string;
+  kind?: string;
+  box?: boolean;
+}
 
-  * {
-    margin: 0;
-  }
-
-  a {
-    color: #1ea7fd;
+export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
+  return css`
+    ${box && boxShadows[1]}
+    color: #484848;
+    border-radius: 4px;
+    font-size: 14px;
+    color: ${(!box && `#1ea7fd`) || 'inherit'};
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: ${box ? 'none' : 'underline'};
+      ${box && boxShadows[2]}
     }
-  }
-
-  ${({ kind, box }) => {
-    return css`
-      ${box && boxShadows[1]}
-
-      &:hover {
-        ${kind && box && boxShadows[2]}
-        text-decoration: none;
-      }
-    `;
-  }}
-`;
+  `;
+});
