@@ -24,7 +24,7 @@ export const parameters = {
     theme: theme,
     storySort: {
       order: [
-        'About',
+        'Gamut',
         'Meta',
         'Foundations',
         'Typography',
