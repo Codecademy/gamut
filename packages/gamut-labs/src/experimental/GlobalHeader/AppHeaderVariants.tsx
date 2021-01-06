@@ -33,7 +33,8 @@ export const anonHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
-  rightItems.concat([login, signUp]);
+  rightItems.push(login);
+  rightItems.push(signUp);
 
   return {
     left: leftItems,
@@ -60,7 +61,7 @@ export const freeHeaderItems = (
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   renderProfile && rightItems.push(profile(renderProfile));
-  rightItems.concat([upgradeToPro]);
+  rightItems.push(upgradeToPro);
 
   return {
     left: leftItems,
