@@ -11,10 +11,10 @@ How to add a new item to the app header?
 First, determine what type of item you need and who needs to see it? Is it a button, link, a drop down? Do all users see this? Does logged in status matter? What about membership type?
 
 1) Add the appropriate item to the AppHeaderItems.tsx file, including the necessary properities like id, href, type, text 
-2) Add the item in the functions for each type of app header where you need it. (you'll find these functions in AppHeaderVariants.tsx).
+2) Add the item in the functions for each type of app header where you need it. (you'll find these functions in AppHeaderVariants.tsx: they are anonHeaderItems, proHeaderItems, and freeHeaderItems). Each of these functions returns an object in the form {left: AppHeaderItem[], right: AppHeaderItem[]}. This object gets passed to the AppHeader as the "items" prop.
 
 example usage:
 The sign up button is of type AppHeaderFillButton - only anonymous users see this so it only appears in the anonHeaderItems
-The course catalog link in the header is the most basic type of app header item: an AppHeaderLink. All users (anon, free, pro) see this so it exists in the render function for each type of app header. 
+The course catalog link in the header is the most basic type of app header item: an AppHeaderLink. All users (anon, free, pro) see this so it exists in anonHeaderItems, proHeaderItems, and freeHeaderItems.
 
 
