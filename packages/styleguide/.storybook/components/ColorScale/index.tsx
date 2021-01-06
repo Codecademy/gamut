@@ -21,12 +21,13 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
         boxShadow={boxShadows[1]}
       >
         {weights.map(([key, hex]) => (
-          <Box backgroundColor={hex} />
+          <Box key={`color-${key}`} backgroundColor={hex} />
         ))}
       </Box>
       <Box width="100%" padding="4px" display="grid" gridAutoFlow="column">
         {weights.map(([key, hex]) => (
           <Box
+            key={`hex-${key}`}
             fontFamily={fontCode}
             fontSize="12px"
             display="grid"
