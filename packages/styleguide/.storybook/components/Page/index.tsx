@@ -5,7 +5,7 @@ import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
-import { tail } from 'lodash';
+import { Parameters } from '@storybook/addons';
 
 const Link = styled.a`
   display: inline-flex;
@@ -36,9 +36,7 @@ const HeaderRow = styled.div`
 
 const HeaderCol = styled.div``;
 
-export interface Parameters {
-  component?: React.Component | string;
-  subcomponents?: Record<string, React.Component>;
+export interface GamutParameters extends Parameters {
   subtitle?: string;
   status?: 'stable' | 'volatile' | 'deprecated';
   figmaId?: string;

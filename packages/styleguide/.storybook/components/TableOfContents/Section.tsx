@@ -1,30 +1,25 @@
 import { Description, DocsContext } from '@storybook/addon-docs/blocks';
 import React, { useContext, useMemo } from 'react';
-import { getAdjacentKinds, getTitle, parsePath } from './getAdjacentKinds';
+import { getAdjacentKinds, getTitle, parsePath } from './utils';
 import { Box, SectionLink, SectionStatus } from './elements';
 import { uniq } from 'lodash';
 
-type SubsectionLink = {
+interface SubsectionLink {
   children: string;
   kind: string;
   story: string;
-};
+}
 
-export const Section = ({ kind }) => {
+function useSectionLinks(kind: string) {
   const { storyStore } = useContext(DocsContext);
-  const { [kind]: kindMeta = {} } = storyStore['_kinds'];
-  const {
-    parameters: { status, component, subcomponents, subtitle },
-  } = kindMeta;
-
-  const indexKind = parsePath(kind).join('/');
+  const parameters = storyStore?.['_kinds']?.[kind]?.parameters;
+  const { component, subcomponents } = parameters;
+  const kinds = Object.keys(storyStore['_kinds']);
 
   const links = useMemo(() => {
+    const indexKind = parsePath(kind).join('/');
     const links: SubsectionLink[] = [];
-
-    const sections = Object.keys(storyStore['_kinds']).filter(
-      getAdjacentKinds(indexKind, 0)
-    );
+    const sections = kinds.filter(getAdjacentKinds(indexKind, 0));
 
     if (sections.length) {
       sections.forEach((kind) =>
@@ -54,11 +49,19 @@ export const Section = ({ kind }) => {
     }
 
     return links;
-  }, [indexKind, storyStore, kind]);
+  }, [component, subcomponents, kind, kinds]);
+
+  return links;
+}
+
+export const Section = ({ kind }) => {
+  const { storyStore } = useContext(DocsContext);
+  const links = useSectionLinks(kind);
+  const kindMeta = storyStore?.['_kinds']?.[kind];
+  const { status, component, subcomponents, subtitle } = kindMeta?.parameters;
+  const showStatus = Boolean(status || component || subcomponents);
 
   if (!kindMeta) return null;
-
-  const showStatus = Boolean(status || component || subcomponents);
 
   const content = (
     <Box
@@ -92,18 +95,14 @@ export const Section = ({ kind }) => {
               display="flex"
               flexWrap="wrap"
               maxHeight="1rem"
-              lineHeight="1rem"
               fontWeight="bold"
               overflowX="auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {links.map(({ kind, story = undefined, ...props }) => (
-                <SectionLink
-                  key={`${kind}-story${story && `-${story}`}`}
-                  kind={kind}
-                  {...props}
-                />
-              ))}
+              {links.map((props) => {
+                const key = [props.kind, 'story', props.story].join('-');
+                return <SectionLink key={key} {...props} />;
+              })}
             </Box>
           </>
         )}

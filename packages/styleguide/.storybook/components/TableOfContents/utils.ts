@@ -1,3 +1,9 @@
+interface Kind {
+  [x: string]: any;
+}
+
+const STATUS_ORDER = ['stable', 'volatile', 'deprecated'];
+
 export const INDEX_KIND = 'About';
 
 export const parsePath = (path: string) =>
@@ -27,3 +33,8 @@ export const getAdjacentKinds = (indexKind: string, offset = 1) => {
     );
   };
 };
+
+const getStatus = (kind: Kind) =>
+  STATUS_ORDER.indexOf(kind?.parameters?.status);
+
+export const sortByStatus = (a: Kind, b: Kind) => getStatus(a) - getStatus(b);

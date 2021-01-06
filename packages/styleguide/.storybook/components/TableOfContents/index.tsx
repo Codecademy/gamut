@@ -1,30 +1,18 @@
 import React, { useContext, useMemo } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { getAdjacentKinds } from './getAdjacentKinds';
+import { getAdjacentKinds, sortByStatus } from './utils';
 import { Section } from './Section';
 import { Box } from './elements';
-import { compose, get, indexOf, rearg, set } from 'lodash/fp';
-
-const ORDER = ['stable', 'volatile', 'deprecated'];
-
-interface Kind {
-  [x: string]: any;
-}
-
-type KindEntries = [string, Kind];
 
 export const TableOfContents = () => {
   const { kind, storyStore } = useContext(DocsContext);
   const allKinds = storyStore['_kinds'];
 
   const kinds = useMemo(() => {
-    const getStatus = (kind: Kind) =>
-      ORDER.indexOf(get('parameters.status', kind));
-
     return Object.keys(allKinds)
       .filter(getAdjacentKinds(kind))
       .map((kind) => ({ ...allKinds?.[kind], kind }))
-      .sort((a, b) => getStatus(a) - getStatus(b));
+      .sort(sortByStatus);
   }, [allKinds, kind]);
 
   return (
