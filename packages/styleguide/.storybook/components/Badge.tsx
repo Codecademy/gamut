@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { variant } from './styles';
 import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles';
 
-const badgeVariants = variant({
+export const badgeVariants = variant({
   prop: 'status',
   variants: {
     stable: {
@@ -31,12 +31,4 @@ export const Badge = styled.div`
   color: ${colors.white};
   ${badgeVariants}
   ${fontSmoothing()}
-`;
-
-export const Indicator = styled.span`
-  display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 0 0 0.5rem 0.25rem;
-  ${badgeVariants};
 `;
