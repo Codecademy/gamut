@@ -16,7 +16,7 @@ Use this component for basic inline text links.
 It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
 
 <Canvas>
-  <Story name="Anchor" args={{ variant: 'inline' }}>
+  <Story name="Anchor">
     {(args) => {
       return (
         <Text>
@@ -63,7 +63,7 @@ We provide 2 style variants for Anchor.
 </Canvas>
 
 <Canvas>
-  <Story name="notInline" args={{ variant: 'notInline' }}>
+  <Story name="Not Inline" args={{ variant: 'notInline' }}>
     {(args) => {
       return (
         <Text>
@@ -81,6 +81,7 @@ We provide 2 style variants for Anchor.
             {...args}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
+            color="navy"
           >
             <span> great video 2 </span>
           </Anchor>
@@ -97,10 +98,7 @@ Most importantly: links must be _visually distinct_ from body text.
 For general links in body text, we use a visual underline to make it clear that they're links.
 
 <Text>
-  <Anchor href="/" variant="inline">
-    This is a link
-  </Anchor>
-  . This is not.
+  <Anchor href="/">This is a link</Anchor>. This is not.
 </Text>
 
-If you're designing a different visual that requires a link, unless your link text is clearly positioned separately from body text in a way that implies it's a link, remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
+Only use `notInline` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default `inline` Anchor style; remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
