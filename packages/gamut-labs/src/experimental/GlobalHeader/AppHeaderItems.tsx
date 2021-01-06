@@ -176,9 +176,9 @@ export const profile = (
 
 export const upgradeToPro: AppHeaderFillButton = {
   id: 'upgrade-to-pro',
-  text: 'Upgrade to Pro',
+  text: 'Try Pro For Free',
   href: '/pro/membership',
-  target: 'TODO', // TODO
+  target: 'topnav_pro_trial',
   type: 'fill-button',
 };
 
