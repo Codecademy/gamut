@@ -6,7 +6,7 @@ export const Code = styled.code(
     max-width: 100%;
     overflow-x: auto;
     line-height: 1;
-    padding: 3px 5px;
+    padding: 5px 7px 1px;
     white-space: nowrap;
     border-radius: 3px;
     font-size: 13px;
@@ -14,5 +14,19 @@ export const Code = styled.code(
     color: rgba(51, 51, 51, 0.8);
     background-color: #f8f8f8;
     display: inline-block;
+    overflow-x: scroll;
+
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #eeeeee;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
   `
 );

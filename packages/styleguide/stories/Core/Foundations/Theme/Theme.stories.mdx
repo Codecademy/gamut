@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/dist/blocks';
+import { Meta, Story } from '@storybook/addon-docs/dist/blocks';
 import { DataTable } from '~styleguide/blocks';
 import { startCase } from 'lodash';
 import {
@@ -11,6 +11,7 @@ import * as TABLES from './tables';
 
 <Meta
   title="Foundations/Theme"
+  description="Lol"
   parameters={{ status: 'volatile', source: 'gamut-styles' }}
 />
 
@@ -47,7 +48,9 @@ All current visual identity colors are available on the `colors` key on the Them
 
 Standard color atoms we select from in creating designs. All colors on Codecademy properties should adhere to these. Remember your accessibility contrast requirements too!
 
-<DataTable {...TABLES.color} />
+<Story name="colors">
+  <DataTable {...TABLES.color} />
+</Story>
 
 ### Swatches
 
@@ -66,25 +69,33 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.fontFamily`
 
-<DataTable {...TABLES.fontFamily} />
+<Story name="fontFamily">
+  <DataTable {...TABLES.fontFamily} />
+</Story>
 
 ### Font Size
 
 **Key**: `theme.fontSize`
 
-<DataTable {...TABLES.fontSize} />
+<Story name="fontSize">
+  <DataTable {...TABLES.fontSize} />
+</Story>
 
 ### Font Weight
 
 **Key**: `theme.fontWeight`
 
-<DataTable {...TABLES.fontWeight} />
+<Story name="fontWeight">
+  <DataTable {...TABLES.fontWeight} />
+</Story>
 
 ### Line Height
 
 **Key**: `theme.lineHeight`
 
-<DataTable {...TABLES.lineHeight} />
+<Story name="lineHeight">
+  <DataTable {...TABLES.lineHeight} />
+</Story>
 
 ## Space
 
@@ -92,7 +103,9 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.spacing`
 
-<DataTable {...TABLES.space} />
+<Story name="spacing">
+  <DataTable {...TABLES.space} />
+</Story>
 
 ## Layout
 
@@ -100,7 +113,9 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.breakpoints`
 
-<DataTable {...TABLES.breakpoint} />
+<Story name="breakpoints">
+  <DataTable {...TABLES.breakpoint} />
+</Story>
 
 ## Shadows
 
@@ -108,4 +123,6 @@ export const lorem = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, s
 
 **Key**: `theme.boxShadows`
 
-<DataTable {...TABLES.boxShadow} />
+<Story name="boxShadows">
+  <DataTable {...TABLES.boxShadow} />
+</Story>
