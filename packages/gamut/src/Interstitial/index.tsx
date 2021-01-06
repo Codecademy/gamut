@@ -8,6 +8,8 @@ export type InterstitialProps = {
   buttons?: React.ReactNode[];
   className?: string;
   decoration?: React.ReactNode;
+  /** Should be enabled if Interstitial is not rendered on a new route or the child of a component with focus managment, such as Modal. */
+  focus?: boolean;
   title: string;
 };
 
@@ -16,18 +18,19 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   children,
   className,
   decoration,
+  focus,
   title,
 }) => {
   const headerRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    headerRef.current?.focus();
+    focus && headerRef.current?.focus();
   });
 
   return (
     <div className={cx(styles.Interstitial, className)}>
       <div className={styles.content}>
-        <h1 className={styles.title} ref={headerRef} tabIndex={0}>
+        <h1 className={styles.title} ref={headerRef} tabIndex={focus ? 0 : -1}>
           {decoration && <div className={styles.decoration}>{decoration}</div>}
           {title}
         </h1>
