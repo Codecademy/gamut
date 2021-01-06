@@ -59,7 +59,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
-      onAnchorClick = () => null,
+      onAnchorClick,
     } = this.props;
 
     if (!text) return null;
@@ -86,7 +86,6 @@ export class Markdown extends PureComponent<MarkdownProps> {
           component: (props: MarkdownAnchorProps) => (
             <MarkdownAnchor onClick={onAnchorClick} {...props} />
           ),
-          allowedAttributes: ['onClick'],
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {

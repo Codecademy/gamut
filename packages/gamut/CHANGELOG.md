@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.0...@codecademy/gamut@19.8.1) (2021-01-06)
+
+
+### Bug Fixes
+
+* **Markdown:** prevent re-renders caused by default prop ([b54253f](https://github.com/Codecademy/client-modules/commit/b54253fc9b39e9831fced3f6c66a8bd9db9fe50b))
+
+
+
 ## [19.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.3...@codecademy/gamut@19.8.0) (2020-12-21)
 
 
