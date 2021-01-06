@@ -1,31 +1,24 @@
-import { variant } from '@codecademy/gamut-styles';
+import { variant, properties } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 const anchorVariants = variant({
   inline: {
     textDecoration: 'underline',
+    textColor: 'hyper',
   },
   notInline: {
+    display: 'block',
     textDecoration: 'none',
   },
 });
 
-export type AnchorProps = HandlerProps<typeof anchorVariants> & {
-  color?: string;
-};
+export type AnchorProps = HandlerProps<typeof anchorVariants> &
+  HandlerProps<typeof properties.textColor>;
 
-export const Anchor = styled.a`
+export const Anchor = styled.a<AnchorProps>`
+  ${properties.textColor}
   ${anchorVariants}
-  ${({ color, variant }) => {
-    if (variant === 'notInline' && color) {
-      return css`
-        color: ${color};
-      `;
-    }
-  }}
-  text-decoration: 'underline'
 `;
 
 Anchor.defaultProps = {
