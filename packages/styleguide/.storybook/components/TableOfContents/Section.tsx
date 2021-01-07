@@ -24,7 +24,7 @@ function useSectionLinks(kind: string) {
     if (sections.length) {
       sections.forEach((kind) =>
         links.push({
-          children: parsePath(kind).reverse()[0],
+          children: getTitle(kind),
           kind,
           story: '',
         })

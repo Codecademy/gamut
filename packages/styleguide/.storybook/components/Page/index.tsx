@@ -6,6 +6,7 @@ import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
+import { getTitle } from '../TableOfContents/utils';
 
 const Link = styled.a`
   display: inline-flex;
@@ -58,14 +59,13 @@ export const Page: React.FC = ({ children }) => {
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
-  const title = kind.replace('/About', '').split('/').reverse()[0];
 
   return (
     <>
       <Header marginBottom="1rem">
         <HeaderRow>
           <HeaderCol>
-            <Title>{title}</Title>
+            <Title>{getTitle(kind)}</Title>
           </HeaderCol>
         </HeaderRow>
         <HeaderRow>
