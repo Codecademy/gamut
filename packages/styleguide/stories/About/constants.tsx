@@ -4,7 +4,7 @@ export const ABOUT_SECTIONS = [
     emoji: '☀️',
     description:
       'Foundations are the abstract concepts our system is built on: colors, spacing, responsive layouts, and the like.',
-    examples: ['Utilities', 'Colors'],
+    examples: ['Legacy/Utilities', 'Legacy/Colors'],
   },
   {
     kind: 'Layouts',
