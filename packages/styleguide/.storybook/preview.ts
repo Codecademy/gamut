@@ -29,11 +29,10 @@ export const parameters = {
         'Foundations',
         'Typography',
         'Layouts',
-        'Icons',
         'Atoms',
         'Molecules',
         'Organisms',
-        'Labs',
+        'Brand',
         'Deprecated',
       ],
       // Fallback ordering
