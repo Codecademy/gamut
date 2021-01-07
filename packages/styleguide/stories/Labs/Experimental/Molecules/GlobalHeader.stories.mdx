@@ -79,15 +79,15 @@ To mock this, we're providing IconButtons as placeholders.
 
 ## GlobalHeader Can Accept a onClick Function
 
-To mock this, we're providing a very basic onClick function which just prints out the tracking target to the console.
+To mock this, we're providing a very basic onClick function which just prints out the event & the tracking target to the console.
 
 <Canvas>
   <Story name="Passing an OnClick to GlobalHeader">
     {(args) => (
       <GlobalHeader
         variant={{ type: 'anon' }}
-        onClick={(e, trackingTarget) => {
-          console.log(e);
+        onClick={(event, trackingTarget) => {
+          console.log(event);
           console.log(trackingTarget);
         }}
       />

@@ -23,7 +23,7 @@ export type AppHeaderItemsProp = {
 
 const mapItemToElement = (
   item: AppHeaderItem,
-  onClick: (e: React.MouseEvent, trackingTarget: string) => void
+  onClick: (event: React.MouseEvent, trackingTarget: string) => void
 ): ReactElement => {
   switch (item.type) {
     case 'logo':
