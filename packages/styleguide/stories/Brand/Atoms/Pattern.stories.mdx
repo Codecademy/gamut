@@ -1,0 +1,26 @@
+import { Pattern } from '@codecademy/gamut-labs/src';
+import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title="Brand/Atoms/Pattern"
+  component={Pattern}
+  parameters={{ source: 'gamut-labs' }}
+/>
+
+Our new pattern component.
+
+<Canvas withSource="open">
+  <Story name="Pattern Loose">
+    {(args) => <Pattern width={200} height={200} name="diagonalStripesLoose" />}
+  </Story>
+  <Story name="Pattern Regular">
+    {(args) => (
+      <Pattern width={200} height={200} name="diagonalStripesRegular" />
+    )}
+  </Story>
+  <Story name="Pattern Dense">
+    {(args) => <Pattern width={200} height={200} name="diagonalStripesDense" />}
+  </Story>
+</Canvas>
+
+<Props story="Pattern" of={Pattern} />
