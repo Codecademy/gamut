@@ -86,7 +86,8 @@ To mock this, we're providing a very basic onClick function which just prints ou
     {(args) => (
       <GlobalHeader
         variant={{ type: 'anon' }}
-        onClick={(trackingTarget) => {
+        onClick={(e, trackingTarget) => {
+          console.log(e);
           console.log(trackingTarget);
         }}
       />

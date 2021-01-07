@@ -7,7 +7,7 @@ import styles from './styles.scss';
 
 export type LogoButtonProps = {
   item: AppHeaderLogo;
-  onClick: (trackingTarget: string) => void;
+  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
 };
 
 export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
@@ -18,7 +18,7 @@ export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
     <a
       className={styles.logo}
       data-testid={item.dataTestId}
-      onClick={() => onClick(item.trackingTarget)}
+      onClick={(event: React.MouseEvent) => onClick(event, item.trackingTarget)}
       href={'/'}
     >
       {

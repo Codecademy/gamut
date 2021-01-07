@@ -13,7 +13,7 @@ import { AppHeaderItem } from './types';
 export type AppHeaderProps = {
   items: AppHeaderItemsProp;
   className?: string;
-  onClick: (trackingTarget: string) => void;
+  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
 };
 
 export type AppHeaderItemsProp = {
@@ -23,7 +23,7 @@ export type AppHeaderItemsProp = {
 
 const mapItemToElement = (
   item: AppHeaderItem,
-  onClick: (trackingTarget: string) => void
+  onClick: (e: React.MouseEvent, trackingTarget: string) => void
 ): ReactElement => {
   switch (item.type) {
     case 'logo':
@@ -43,7 +43,9 @@ const mapItemToElement = (
         <AppHeaderTab>
           <TextButton
             href={item.href}
-            onClick={() => onClick(item.trackingTarget)}
+            onClick={(event: React.MouseEvent) =>
+              onClick(event, item.trackingTarget)
+            }
             className={styles.navLink}
             data-testid={item.dataTestId}
           >
@@ -57,7 +59,9 @@ const mapItemToElement = (
           <FillButton
             href={item.href}
             data-testid={item.dataTestId}
-            onClick={() => onClick(item.trackingTarget)}
+            onClick={(event: React.MouseEvent) =>
+              onClick(event, item.trackingTarget)
+            }
             className={cx(styles.navLink)}
           >
             {item.text}

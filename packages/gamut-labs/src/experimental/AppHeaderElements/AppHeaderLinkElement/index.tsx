@@ -8,7 +8,7 @@ import styles from './styles.scss';
 export type AppHeaderLinkElementProps = {
   className?: string;
   item: AppHeaderLink;
-  onClick: (trackingTarget: string) => void;
+  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
 };
 
 export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
@@ -23,7 +23,9 @@ export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
         data-testid={item.dataTestId}
         flat
         href={item.href}
-        onClick={() => onClick(item.trackingTarget)}
+        onClick={(event: React.MouseEvent) =>
+          onClick(event, item.trackingTarget)
+        }
         theme="navy"
       >
         {item.text}

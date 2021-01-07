@@ -10,7 +10,7 @@ import styles from './styles.scss';
 
 export type GlobalHeaderProps = {
   variant: AnonHeader | FreeHeader | ProHeader;
-  onClick: (target: string) => void;
+  onClick: (e: React.MouseEvent, target: string) => void;
 };
 
 type LoggedOutHeader = {

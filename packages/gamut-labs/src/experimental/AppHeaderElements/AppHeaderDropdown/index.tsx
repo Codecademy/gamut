@@ -11,7 +11,7 @@ import styles from './styles.scss';
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
-  onClick: (trackingTarget: string) => void;
+  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -20,9 +20,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
 }) => {
   const headerDropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const toggleIsOpen = () => {
+  const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && onClick(item.trackingTarget);
+    !isOpen && onClick(event, item.trackingTarget);
   };
   const handleClose = () => {
     setIsOpen(false);
