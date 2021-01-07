@@ -11,18 +11,18 @@ import styles from './styles.scss';
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
-  trackUserClick: (target: string) => void;
+  onClick: (trackingTarget: string) => void;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   item,
-  trackUserClick,
+  onClick,
 }) => {
   const headerDropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = () => {
     setIsOpen(!isOpen);
-    !isOpen && trackUserClick(item.target);
+    !isOpen && onClick(item.trackingTarget);
   };
   const handleClose = () => {
     setIsOpen(false);
@@ -64,7 +64,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
                 item={link}
                 key={link.id}
                 className={styles.menuItem}
-                trackUserClick={trackUserClick}
+                onClick={onClick}
               />
             );
           })}

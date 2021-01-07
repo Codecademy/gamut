@@ -8,13 +8,13 @@ import styles from './styles.scss';
 export type AppHeaderLinkElementProps = {
   className?: string;
   item: AppHeaderLink;
-  trackUserClick: (target: string) => void;
+  onClick: (trackingTarget: string) => void;
 };
 
 export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
   item,
   className,
-  trackUserClick,
+  onClick,
 }) => {
   return (
     <div className={cx(styles.basicNavLinkHeader, className)}>
@@ -23,7 +23,7 @@ export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
         data-testid={item.dataTestId}
         flat
         href={item.href}
-        onClick={() => trackUserClick(item.target)}
+        onClick={() => onClick(item.trackingTarget)}
         theme="navy"
       >
         {item.text}

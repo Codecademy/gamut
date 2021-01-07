@@ -13,7 +13,7 @@ export const logoItem: AppHeaderLogo = {
   dataTestId: 'header-logo',
   id: 'logo',
   pro: false,
-  target: 'topnav_logo',
+  trackingTarget: 'topnav_logo',
   type: 'logo',
 };
 
@@ -21,7 +21,7 @@ export const proLogoItem: AppHeaderLogo = {
   dataTestId: 'header-logo',
   id: 'pro-logo',
   pro: true,
-  target: 'topnav_logo',
+  trackingTarget: 'topnav_logo',
   type: 'logo',
 };
 
@@ -30,7 +30,7 @@ export const myHome: AppHeaderLink = {
   id: 'my-home',
   text: 'My Home',
   href: '/learn',
-  target: 'topnav_home',
+  trackingTarget: 'topnav_home',
   type: 'link',
 };
 
@@ -39,7 +39,7 @@ export const courseCatalog: AppHeaderLink = {
   id: 'course-catalog',
   text: 'Course Catalog',
   href: '/catalog',
-  target: 'topnav_catalog',
+  trackingTarget: 'topnav_catalog',
   type: 'link',
 };
 
@@ -50,26 +50,26 @@ export const resourcesDropdown: AppHeaderPopover = {
     {
       id: 'cheatsheets',
       href: '/resources/cheatsheets/all',
-      target: 'topnav_resources_cheatsheets',
+      trackingTarget: 'topnav_resources_cheatsheets',
       text: 'Cheatsheets',
       type: 'link',
     },
     {
       id: 'articles',
       href: '/articles',
-      target: 'topnav_resources_articles',
+      trackingTarget: 'topnav_resources_articles',
       text: 'Articles',
       type: 'link',
     },
     {
       id: 'blog',
       href: 'https://news.codecademy.com/',
-      target: 'topnav_resources_blog',
+      trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
       type: 'link',
     },
   ],
-  target: 'topnav_resources',
+  trackingTarget: 'topnav_resources',
   type: 'popover',
 };
 
@@ -80,26 +80,26 @@ export const communityDropdown: AppHeaderPopover = {
     {
       id: 'forums',
       href: 'https://discuss.codecademy.com/',
-      target: 'topnav_community_forums',
+      trackingTarget: 'topnav_community_forums',
       text: 'Forums',
       type: 'link',
     },
     {
       id: 'chapters',
       href: 'https://community.codecademy.com/',
-      target: 'topnav_community_forums',
+      trackingTarget: 'topnav_community_forums',
       text: 'Chapters',
       type: 'link',
     },
     {
       id: 'events',
       href: '/events',
-      target: 'topnav_community_events',
+      trackingTarget: 'topnav_community_events',
       text: 'Events',
       type: 'link',
     },
   ],
-  target: 'topnav_community',
+  trackingTarget: 'topnav_community',
   type: 'popover',
 };
 
@@ -110,32 +110,32 @@ export const plansPricingDropdown: AppHeaderPopover = {
     {
       id: 'pro-membership',
       href: '/pricing',
-      target: 'topnav_pro_membership',
+      trackingTarget: 'topnav_pro_membership',
       text: 'Pro Membership',
       type: 'link',
     },
     {
       id: 'for-business',
       href: '/business',
-      target: 'topnav_pricing_business',
+      trackingTarget: 'topnav_pricing_business',
       text: 'For Business',
       type: 'link',
     },
     {
       id: 'for-students',
       href: '/student-center',
-      target: 'topnav_pricing_business',
+      trackingTarget: 'topnav_pricing_business',
       text: 'For Students',
       type: 'link',
     },
   ],
-  target: 'topnav_pricing',
+  trackingTarget: 'topnav_pricing',
   type: 'popover',
 };
 
 export const forEnterprise: AppHeaderLink = {
   id: 'for-enterprise',
-  target: 'topnav_business',
+  trackingTarget: 'topnav_business',
   text: 'For Enterprise',
   href: '/business',
   type: 'link',
@@ -178,7 +178,7 @@ export const upgradeToPro: AppHeaderFillButton = {
   id: 'upgrade-to-pro',
   text: 'Try Pro For Free',
   href: '/pro/membership',
-  target: 'topnav_pro_trial',
+  trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
 };
 
@@ -187,7 +187,7 @@ export const login: AppHeaderTextButton = {
   id: 'login',
   text: 'Log In',
   href: '/login',
-  target: 'topnav_login',
+  trackingTarget: 'topnav_login',
   type: 'text-button',
 };
 
@@ -196,6 +196,6 @@ export const signUp: AppHeaderFillButton = {
   id: 'signup',
   text: 'Sign Up',
   href: '/register',
-  target: 'topnav_signup',
+  trackingTarget: 'topnav_signup',
   type: 'fill-button',
 };

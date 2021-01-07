@@ -10,7 +10,7 @@ import styles from './styles.scss';
 
 export type GlobalHeaderProps = {
   variant: AnonHeader | FreeHeader | ProHeader;
-  trackUserClick: (target: string) => void;
+  onClick: (target: string) => void;
 };
 
 type LoggedOutHeader = {
@@ -55,13 +55,13 @@ const getAppHeaderItems = (variant: AnonHeader | FreeHeader | ProHeader) => {
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
   variant,
-  trackUserClick,
+  onClick,
 }) => {
   return (
     <AppHeader
       className={styles.globalHeader}
       items={getAppHeaderItems(variant)}
-      trackUserClick={trackUserClick}
+      onClick={onClick}
     />
   );
 };
