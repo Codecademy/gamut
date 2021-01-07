@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.1...@codecademy/gamut@19.8.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* **IconButton:** make children prop optional ([57c4226](https://github.com/Codecademy/client-modules/commit/57c422644b876ec651f6026163cc661e113e8930))
+
+
+
 ### [19.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.0...@codecademy/gamut@19.8.1) (2021-01-06)
 
 
