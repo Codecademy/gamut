@@ -41,6 +41,7 @@ export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
     border-radius: 4px;
     font-size: 14px;
     color: ${(!box && `#1ea7fd`) || 'inherit'};
+    transition: 200ms box-shadow;
 
     &:hover {
       text-decoration: ${box ? 'none' : 'underline'};
