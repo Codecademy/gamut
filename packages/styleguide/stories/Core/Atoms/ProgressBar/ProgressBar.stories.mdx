@@ -73,3 +73,20 @@ For the sake of rapid iteration, you can pass in custom style colors via the
     />
   </Story>
 </Canvas>
+
+## Striped pattern
+
+Using the new SVG Pattern component for a striped background. Here we are using the DiagonalStripesRegular Pattern in \$color-navy.
+
+<Canvas>
+  <Story name="Stripe">
+    <LayoutGrid columnGap="sm" rowGap="sm">
+      <Column size={6}>
+        <ProgressBar percent={50} stripes large theme="yellow" />
+      </Column>
+      <Column size={6}>
+        <ProgressBar percent={50} stripes theme="blue" />
+      </Column>
+    </LayoutGrid>
+  </Story>
+</Canvas>

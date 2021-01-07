@@ -1,3 +1,4 @@
+import { Pattern } from '@codecademy/gamut-labs/src';
 import cx from 'classnames';
 import React from 'react';
 
@@ -30,6 +31,11 @@ export type ProgressBarProps = {
    * Base color theme to extend from.
    */
   theme: 'blue' | 'yellow';
+
+  /**
+   * Whether to use a striped background
+   */
+  stripes?: boolean;
 };
 
 export type ProgressBarStyle = {
@@ -45,6 +51,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   percent,
   style = {},
   theme,
+  stripes,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
@@ -63,6 +70,14 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         height: `${height}px`,
       }}
     >
+      {stripes && (
+        <Pattern
+          className={styles.stripes}
+          width={1000}
+          height={36}
+          name="diagonalStripesRegular"
+        />
+      )}
       <div
         className={styles.bar}
         data-testid="progress-bar-bar"
