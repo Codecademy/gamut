@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.2...@codecademy/gamut@19.9.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
 ### [19.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.1...@codecademy/gamut@19.8.2) (2021-01-07)
 
 
