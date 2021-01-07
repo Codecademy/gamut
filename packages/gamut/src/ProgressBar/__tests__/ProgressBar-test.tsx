@@ -43,4 +43,16 @@ describe('ProgressBar', () => {
 
     expect(wrapped.text()).toEqual('50%');
   });
+
+  it('uses an svg when stripes is true', () => {
+    const wrapped = renderComponent({ stripes: true });
+
+    expect(wrapped.find('svg').length).toBe(1);
+  });
+
+  it('does not use an svg when stripes is false', () => {
+    const wrapped = renderComponent({ stripes: false });
+
+    expect(wrapped.find('svg').length).toBe(0);
+  });
 });
