@@ -67,7 +67,8 @@ We provide 2 style variants for Anchor.
       return (
         <Text>
           This interface style should only be used when link is not part of the
-          body text and it doesn't make sense to use Text Button.
+          body text and it doesn't make sense to use Text Button. Color can be
+          customized by using textColor prop.
           <br />
           <br />
           <Anchor
@@ -80,7 +81,6 @@ We provide 2 style variants for Anchor.
             {...args}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
-            textColor="navy"
           >
             <span> great video 2 </span>
           </Anchor>
@@ -100,4 +100,6 @@ For general links in body text, we use a visual underline to make it clear that 
   <Anchor href="/">This is a link</Anchor>. This is not.
 </Text>
 
-Only use `interface` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default `inline` Anchor style; remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
+Only use the `interface` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default (`inline`) Anchor style.
+
+Remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.
