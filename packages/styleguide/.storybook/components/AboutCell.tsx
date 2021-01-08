@@ -15,7 +15,7 @@ export type Kinds =
   | 'Meta';
 
 export type AboutCellProps = {
-  emoji?: string;
+  emoji: string;
   examples?: string[];
   label?: string;
   kind: Kinds;
