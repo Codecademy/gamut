@@ -6,7 +6,6 @@ export * from './Header/HeaderContainer';
 export * from './Header/HeaderTab';
 export * from './Loading';
 export * from './Logo';
-export * from './Pattern';
 export * from './ProLogo';
 export * from './ProLogoAlt';
 export * from './Quote';

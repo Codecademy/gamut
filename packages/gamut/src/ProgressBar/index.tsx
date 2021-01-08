@@ -1,7 +1,7 @@
-import { Pattern } from '@codecademy/gamut-labs/src';
 import cx from 'classnames';
 import React from 'react';
 
+import { Pattern } from '../Pattern';
 import styles from './styles.module.scss';
 
 export type ProgressBarProps = {
