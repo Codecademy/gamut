@@ -1,8 +1,8 @@
 import React from 'react';
 
 export type PatternProps = {
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   name:
     | 'diagonalStripesLoose'
     | 'diagonalStripesRegular'
