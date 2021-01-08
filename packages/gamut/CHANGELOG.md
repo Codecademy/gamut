@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.1...@codecademy/gamut@19.9.2) (2021-01-08)
+
+
+### Bug Fixes
+
+* added fontSmoothing to buttons ([6afbe95](https://github.com/Codecademy/client-modules/commit/6afbe9532aa16282a370910c0bb5955ae1033478))
+
+
+
 ### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.0...@codecademy/gamut@19.9.1) (2021-01-08)
 
 
