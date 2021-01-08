@@ -63,8 +63,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
     links.push(nextLink);
   });
 
-  links =
-    links.length === 1 ? [{ text: 'Gamut', kind: 'Gamut' }, ...links] : links;
+  links = [{ text: 'Gamut', kind: 'Gamut' }, ...links];
 
   return (
     <Box
