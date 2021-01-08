@@ -6,7 +6,9 @@ import { styled } from '@storybook/theming';
 import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
-import { getTitle } from '../TableOfContents/utils';
+import { useKind } from '../TableOfContents/utils';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { Box } from '../TableOfContents/elements';
 
 const Link = styled.a`
   display: inline-flex;
@@ -44,18 +46,64 @@ export interface GamutParameters extends Parameters {
   source?: string;
 }
 
-export const Page: React.FC = ({ children }) => {
-  const { kind, parameters } = useContext(DocsContext);
-  const {
-    component,
-    subcomponents,
-    status,
-    subtitle,
-    figmaId,
-    source,
-  }: Parameters = parameters;
+const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
+  const { storyStore } = useContext(DocsContext);
+  if (path[0] === 'Gamut') return null;
 
-  const showStatus = Boolean(status || component || subcomponents);
+  let links = [];
+
+  path.forEach((kind, i) => {
+    const prevKind = i ? `${links[i - 1].kind}/` : '';
+
+    const nextLink = {
+      text: kind,
+      kind: `${prevKind}${kind}`,
+    };
+
+    links.push(nextLink);
+  });
+
+  links =
+    links.length === 1 ? [{ text: 'Gamut', kind: 'Gamut' }, ...links] : links;
+
+  return (
+    <Box
+      display="flex"
+      columnGap="0.5rem"
+      marginBottom="0.5rem"
+      fontWeight="bold"
+    >
+      {links.map(({ text, kind }, i) => {
+        const key = `breadcrumb-${text}`;
+        if (i + 1 < links.length) {
+          const kindIndex = storyStore['_kinds']?.[kind]
+            ? kind
+            : `${kind}/About`;
+
+          return (
+            <React.Fragment key={key}>
+              <LinkTo key={kind} kind={kindIndex}>
+                {text}
+              </LinkTo>
+              <span>&gt;</span>
+            </React.Fragment>
+          );
+        }
+        return <span key={key}>{text}</span>;
+      })}
+    </Box>
+  );
+};
+
+export const Page: React.FC = ({ children }) => {
+  const { kind } = useContext(DocsContext);
+  const {
+    path,
+    status,
+    title,
+    subtitle,
+    parameters: { figmaId, source },
+  } = useKind(kind);
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
@@ -63,13 +111,16 @@ export const Page: React.FC = ({ children }) => {
   return (
     <>
       <Header marginBottom="1rem">
+        <div>
+          <BreadCrumbs path={path} />
+        </div>
         <HeaderRow>
           <HeaderCol>
-            <Title>{getTitle(kind)}</Title>
+            <Title>{title}</Title>
           </HeaderCol>
         </HeaderRow>
         <HeaderRow>
-          {showStatus && (
+          {status && (
             <>
               <HeaderCol>
                 <strong>Status:</strong>
