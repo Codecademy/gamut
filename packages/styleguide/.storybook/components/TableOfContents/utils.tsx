@@ -61,13 +61,12 @@ export function useKind(kind: string) {
   );
 
   const componentNames = useMemo(() => {
-    const components = component?.name
-      ? {
-          [component?.name]: component,
-          ...subcomponents,
-        }
-      : { ...subcomponents };
-    return Object.keys(components).filter(Boolean);
+    if (!subcomponents) {
+      return [];
+    }
+    return uniq([component?.name, ...Object.keys(subcomponents)]).filter(
+      Boolean
+    );
   }, [component, subcomponents]);
 
   const siblingKinds = allKinds

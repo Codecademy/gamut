@@ -11,23 +11,26 @@ interface SubsectionLink {
 
 export const Section = ({ kind }: { kind: string }) => {
   const { title, subtitle, status, childrenKinds, components } = useKind(kind);
-
   const renderSubsection = () => {
     let links = [];
 
     if (childrenKinds.length > 0) {
       links = childrenKinds.map(({ kind }) => (
-        <SectionLink key={`${kind}-story`} kind={kind} />
+        <SectionLink key={`${kind}-story`} kind={kind}>
+          {getTitle(kind)}
+        </SectionLink>
       ));
     }
 
-    if (links.length > 0) {
+    if (links.length === 0) {
       links = components.map((component) => (
         <SectionLink
           key={`${kind}-story-${component}`}
           kind={kind}
           story={component}
-        />
+        >
+          {component}
+        </SectionLink>
       ));
     }
 
