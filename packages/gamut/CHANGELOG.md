@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.0...@codecademy/gamut@19.9.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **toggle:** aria-label typo ([8d948ac](https://github.com/Codecademy/client-modules/commit/8d948ac624760b6300d7aa00d3030b161c3da6b5))
+
+
+
 ## [19.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.2...@codecademy/gamut@19.9.0) (2021-01-07)
 
 
