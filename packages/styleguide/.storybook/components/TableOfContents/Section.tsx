@@ -1,8 +1,7 @@
-import { Description, DocsContext } from '@storybook/addon-docs/blocks';
-import React, { useContext, useMemo } from 'react';
-import { getAdjacentKinds, getTitle, parsePath } from './utils';
+import { Description } from '@storybook/addon-docs/blocks';
+import React, { useMemo } from 'react';
+import { getTitle, useKind, Kind } from './utils';
 import { Box, Reset, SectionLink, SectionStatus } from './elements';
-import { uniq } from 'lodash';
 
 interface SubsectionLink {
   children: string;
@@ -10,58 +9,57 @@ interface SubsectionLink {
   story: string;
 }
 
-function useSectionLinks(kind: string) {
-  const { storyStore } = useContext(DocsContext);
-  const parameters = storyStore?.['_kinds']?.[kind]?.parameters;
-  const { component, subcomponents } = parameters;
-  const kinds = Object.keys(storyStore['_kinds']);
+export const Section = ({ kind }: { kind: string }) => {
+  const { title, subtitle, status, childrenKinds, components } = useKind(kind);
 
-  const links = useMemo(() => {
-    const indexKind = parsePath(kind).join('/');
-    const links: SubsectionLink[] = [];
-    const sections = kinds.filter(getAdjacentKinds(indexKind, 0));
+  const renderSubsection = () => {
+    let links = [];
 
-    if (sections.length) {
-      sections.forEach((kind) =>
-        links.push({
-          children: getTitle(kind),
-          kind,
-          story: '',
-        })
+    if (childrenKinds.length > 0) {
+      links = childrenKinds.map(({ kind }) => (
+        <SectionLink key={`${kind}-story`} kind={kind} />
+      ));
+    }
+
+    if (links.length > 0) {
+      links = components.map((component) => (
+        <SectionLink
+          key={`${kind}-story-${component}`}
+          kind={kind}
+          story={component}
+        />
+      ));
+    }
+
+    if (links.length > 0) {
+      return (
+        <>
+          <Box
+            width="100%"
+            position="absolute"
+            display="inline-block"
+            boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
+            left="0"
+            right="0"
+            top="0"
+            minHeight="1px"
+          />
+          <Box
+            maxWidth="100%"
+            columnGap="1rem"
+            display="flex"
+            maxHeight="1rem"
+            fontWeight="bold"
+            flexWrap="wrap"
+            overflow="hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {links}
+          </Box>
+        </>
       );
-      return links;
     }
-
-    const components = Object.keys(subcomponents ?? {});
-
-    if (components.length) {
-      uniq([component?.name, ...components])
-        .filter(Boolean)
-        .forEach((key) =>
-          links.push({
-            children: key,
-            kind,
-            story: key.toLowerCase(),
-          })
-        );
-
-      return links;
-    }
-
-    return links;
-  }, [component, subcomponents, kind, kinds]);
-
-  return links;
-}
-
-export const Section = ({ kind }) => {
-  const { storyStore } = useContext(DocsContext);
-  const links = useSectionLinks(kind);
-  const kindMeta = storyStore?.['_kinds']?.[kind];
-  const { status, component, subcomponents, subtitle } = kindMeta?.parameters;
-  const showStatus = Boolean(status || component || subcomponents);
-
-  if (!kindMeta) return null;
+  };
 
   const content = (
     <Box
@@ -79,8 +77,8 @@ export const Section = ({ kind }) => {
         fontWeight="bold"
         position="relative"
       >
-        {getTitle(kind)}
-        {showStatus && <SectionStatus status={status || 'stable'} />}
+        {title}
+        {status && <SectionStatus status={status} />}
       </Box>
       <Box overflowY="hidden">
         <Reset>{subtitle && <Description>{subtitle}</Description>}</Reset>
@@ -96,35 +94,7 @@ export const Section = ({ kind }) => {
         bottom="0"
         height="3rem"
       >
-        {links.length > 0 && (
-          <>
-            <Box
-              width="100%"
-              position="absolute"
-              display="inline-block"
-              boxShadow="rgba(0,0,0,.1) 0 -1px 0 0 inset"
-              left="0"
-              right="0"
-              top="0"
-              minHeight="1px"
-            />
-            <Box
-              maxWidth="100%"
-              columnGap="1rem"
-              display="flex"
-              maxHeight="1rem"
-              fontWeight="bold"
-              flexWrap="wrap"
-              overflow="hidden"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {links.map((props) => {
-                const key = [props.kind, 'story', props.story].join('-');
-                return <SectionLink key={key} {...props} />;
-              })}
-            </Box>
-          </>
-        )}
+        {renderSubsection()}
       </Box>
     </Box>
   );

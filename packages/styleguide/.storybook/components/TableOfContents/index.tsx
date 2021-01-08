@@ -1,19 +1,12 @@
 import React, { useContext, useMemo } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { getAdjacentKinds, sortByStatus } from './utils';
+import { useKind } from './utils';
 import { Section } from './Section';
 import { Box } from './elements';
 
 export const TableOfContents = () => {
-  const { kind, storyStore } = useContext(DocsContext);
-  const allKinds = storyStore['_kinds'];
-
-  const kinds = useMemo(() => {
-    return Object.keys(allKinds)
-      .filter(getAdjacentKinds(kind))
-      .map((kind) => ({ ...allKinds?.[kind], kind }))
-      .sort(sortByStatus);
-  }, [allKinds, kind]);
+  const { kind } = useContext(DocsContext);
+  const { siblingKinds } = useKind(kind);
 
   return (
     <Box
@@ -28,11 +21,9 @@ export const TableOfContents = () => {
       columnGap="2rem"
       rowGap="2rem"
     >
-      {kinds.map((adjacentKind) => {
-        return (
-          <Section key={`${adjacentKind.kind}-item`} kind={adjacentKind.kind} />
-        );
-      })}
+      {siblingKinds.map(({ kind }) => (
+        <Section key={`${kind}-item`} kind={kind} />
+      ))}
     </Box>
   );
 };
