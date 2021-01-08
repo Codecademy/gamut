@@ -39,7 +39,7 @@ export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
     ${box && boxShadows[1]}
     color: #484848;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: inherit;
     color: ${(!box && `#1ea7fd`) || 'inherit'};
     transition: 200ms box-shadow;
 

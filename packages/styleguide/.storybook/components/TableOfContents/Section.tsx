@@ -55,6 +55,7 @@ export const Section = ({ kind }: { kind: string }) => {
             fontWeight="bold"
             flexWrap="wrap"
             overflow="hidden"
+            fontSize="14px"
             onClick={(e) => e.stopPropagation()}
           >
             {links}

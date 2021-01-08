@@ -7,8 +7,7 @@ import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
-import { Box } from '../TableOfContents/elements';
+import { Box, SectionLink } from '../TableOfContents/elements';
 
 const Link = styled.a`
   display: inline-flex;
@@ -71,6 +70,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
       columnGap="0.5rem"
       marginBottom="0.5rem"
       fontWeight="bold"
+      fontSize="16px"
     >
       {links.map(({ text, kind }, i) => {
         const key = `breadcrumb-${text}`;
@@ -81,9 +81,9 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
 
           return (
             <React.Fragment key={key}>
-              <LinkTo key={kind} kind={kindIndex}>
+              <SectionLink key={kind} kind={kindIndex}>
                 {text}
-              </LinkTo>
+              </SectionLink>
               <span>&gt;</span>
             </React.Fragment>
           );
