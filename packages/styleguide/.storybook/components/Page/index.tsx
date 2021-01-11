@@ -49,7 +49,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
   const { storyStore } = useContext(DocsContext);
   if (path[0] === 'Gamut') return null;
 
-  let links = [];
+  const links = [{ text: 'Gamut', kind: 'Gamut' }];
 
   path.forEach((kind, i) => {
     const prevKind = i ? `${links[i - 1].kind}/` : '';
@@ -62,8 +62,6 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
     links.push(nextLink);
   });
 
-  links = [{ text: 'Gamut', kind: 'Gamut' }, ...links];
-
   return (
     <Box
       display="flex"
@@ -75,9 +73,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
       {links.map(({ text, kind }, i) => {
         const key = `breadcrumb-${text}`;
         if (i + 1 < links.length) {
-          const kindIndex = storyStore['_kinds']?.[kind]
-            ? kind
-            : `${kind}/About`;
+          const kindIndex = storyStore._kinds?.[kind] ? kind : `${kind}/About`;
 
           return (
             <React.Fragment key={key}>

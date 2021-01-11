@@ -44,19 +44,17 @@ export const getAdjacentKinds = (indexKind: string, offset = 1) => {
 
 export function useKind(kind: string) {
   const { storyStore } = useContext(DocsContext);
-  const kindMeta = storyStore?.['_kinds']?.[kind];
+  const kindMeta = storyStore?._kinds?.[kind];
   const { status, component, subcomponents, subtitle } = kindMeta?.parameters;
   const path = parsePath(kind);
   const hasComponentStatus = Boolean(status || component || subcomponents);
 
   const allKinds = useMemo(
     () =>
-      Object.entries(storyStore?.['_kinds']).map(
-        ([key, kind]: [string, Kind]) => ({
-          ...kind,
-          kind: key,
-        })
-      ),
+      Object.entries(storyStore?._kinds).map(([key, kind]: [string, Kind]) => ({
+        ...kind,
+        kind: key,
+      })),
     []
   );
 
