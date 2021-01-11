@@ -8,11 +8,14 @@ import { useState } from '@storybook/addons';
 <Meta
   title="Organisms/GridForm"
   component={GridForm}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    subtitle: `This organism takes in plain JSON-like props and uses them to string
+together a validated form`,
+    source: 'gamut',
+  }}
 />
 
-This organism takes in plain JSON-like props and uses them to string
-together a validated form composed of:
+This is composed of:
 
 - [react-hook-form](https://react-hook-form.com)
 - [Our existing `Grid` layout system](/?path=/story/layout-grid-system--fixed-grid-default)

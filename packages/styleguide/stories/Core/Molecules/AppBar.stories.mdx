@@ -7,13 +7,17 @@ import { AppBar, AppBarSection } from '@codecademy/gamut/src';
   title="Molecules/AppBar"
   component={AppBar}
   subcomponents={{ AppBarSection }}
-  parameters={{ status: 'volatile', source: 'gamut-labs' }}
+  parameters={{
+    subtitle: `Components that provide
+spacing and layout help that you can use for something like a footer or
+header`,
+    status: 'volatile',
+    source: 'gamut-labs',
+  }}
 />
 
 This is an example of an AppBar component that contains one left-oriented
-AppBarSection that holds one AppBar Tab. These components mostly provide
-spacing and layout help that you can use for something like a footer or
-header
+AppBarSection that holds one AppBar Tab.
 
 <Canvas>
   <Story name="AppBar">

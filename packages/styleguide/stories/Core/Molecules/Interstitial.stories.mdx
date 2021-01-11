@@ -5,11 +5,14 @@ import { Truncate } from '@codecademy/gamut/src';
 <Meta
   title="Molecules/Interstitial"
   component={Interstitial}
-  parameters={{ source: 'gamut' }}
-/>
-
+  parameters={{
+    subtitle: `
 Large content area used as a break between focused content, such as within
-a full-screen <code>Overlay</code> in the LE between lessons.
+a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between lessons.
+`,
+    source: 'gamut',
+  }}
+/>
 
 <Canvas>
   <Story name="Interstitial">

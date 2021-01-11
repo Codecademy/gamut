@@ -6,12 +6,15 @@ import Stairs from './assets/Stairs.svg';
 <Meta
   title="Molecules/SplitInterstitial"
   component={SplitInterstitial}
-  parameters={{ source: 'gamut' }}
-/>
-
+  parameters={{
+    subtitle: `
 Large, 50% split content area used for information that has two facets,
 such as for a payment page with an advertisement on one side and payment
-form on another.
+form on another.`,
+    status: 'deprecated',
+    source: 'gamut',
+  }}
+/>
 
 <Canvas>
   <Story name="SplitInterstitial">

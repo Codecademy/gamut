@@ -4,11 +4,12 @@ import { FormGroupDescription, FormGroupLabel } from '@codecademy/gamut/src';
 <Meta
   title="Atoms/Form Decorations"
   subcomponents={{ FormGroupLabel, FormGroupDescription }}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    subtitle: `Ancillary descriptions for input atoms tied 1:1 with values to
+be submitted in a form.`,
+    source: 'gamut',
+  }}
 />
-
-Ancillary descriptions for input atoms tied 1:1 with values to
-be submitted in a form.
 
 You should generally never use these directly as a Gamut consumer;
 instead, use `GridForm` to auto-generate these for you.
