@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.2...@codecademy/styleguide@21.9.0) (2021-01-11)
+
+
+### Features
+
+* **Styleguide:** Docs Navigation - GM-133 ([6dc2b48](https://github.com/Codecademy/client-modules/commit/6dc2b48b2e80598db19f4eac908a7f5deec90a80))
+
+
+
+### [21.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.1...@codecademy/styleguide@21.8.2) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.0...@codecademy/styleguide@21.8.1) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.2...@codecademy/styleguide@21.8.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [21.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.1...@codecademy/styleguide@21.7.2) (2021-01-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.0...@codecademy/styleguide@21.7.1) (2021-01-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [21.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.6...@codecademy/styleguide@21.7.0) (2021-01-04)
 
 

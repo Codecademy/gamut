@@ -4,10 +4,11 @@ import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
 <Meta
   title="Atoms/HiddenText"
   component={HiddenText}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
+    source: 'gamut',
+  }}
 />
-
-Visually hidden text that should still be narrated by screenreaders.
 
 This is useful for cases where we visually indicate something not easily conveyed through semantic HTML.
 Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.

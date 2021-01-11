@@ -5,7 +5,12 @@ import { ExampleBox, defaultGridProps } from './Elements';
 <Meta
   title="Layouts/LayoutGrid"
   component={LayoutGrid}
-  parameters={{ status: 'volatile', source: 'gamut' }}
+  subcomponents={{ Column }}
+  parameters={{
+    subtitle: 'A CSS grid based 12 Column grid system using just grid items',
+    status: 'volatile',
+    source: 'gamut',
+  }}
 />
 
 A flexible grid that can support arbitrary rows of content, each of

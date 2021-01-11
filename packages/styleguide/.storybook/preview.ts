@@ -24,17 +24,16 @@ export const parameters = {
     theme: theme,
     storySort: {
       order: [
-        'About',
+        'Gamut',
         'Meta',
         'Foundations',
         ['About', 'Theme', 'Design Guidelines', 'Legacy'],
         'Typography',
         'Layouts',
-        'Icons',
         'Atoms',
         'Molecules',
         'Organisms',
-        'Labs',
+        'Brand',
         'Deprecated',
       ],
       // Fallback ordering
