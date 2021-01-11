@@ -36,7 +36,7 @@ interface SectionLinkProps {
 
 export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
   return css`
-    ${box && boxShadows[1]}
+    box-shadow: ${box && boxShadows[1]};
     color: #484848;
     border-radius: 4px;
     font-size: inherit;
@@ -45,7 +45,7 @@ export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
 
     &:hover {
       text-decoration: ${box ? 'none' : 'underline'};
-      ${box && boxShadows[2]}
+      box-shadow: ${box && boxShadows[2]};
     }
   `;
 });
