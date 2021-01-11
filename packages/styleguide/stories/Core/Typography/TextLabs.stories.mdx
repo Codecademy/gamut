@@ -5,11 +5,12 @@ import { Text } from '@codecademy/gamut-labs/src';
 <Meta
   title="Typography/Text"
   component={Text}
-  parameters={{ source: 'gamut-labs' }}
+  parameters={{
+    subtitle: `This is a single primitive to handle all \`<p>\` and
+\`<span>\` tags with defined size intervals.`,
+    source: 'gamut-labs',
+  }}
 />
-
-This is a single primitive to handle all `<p>` and
-`<span>` tags with defined size intervals.
 
 <Canvas>
   <Story name="Text" args={{ children: 'Hello World' }}>

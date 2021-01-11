@@ -4,11 +4,13 @@ import { Video } from '@codecademy/gamut/src';
 <Meta
   title="Molecules/Video"
   component={Video}
-  parameters={{ source: 'gamut' }}
-/>
-
+  parameters={{
+    subtitle: `
 This is an example video player that can play both youtube and vimeo videos
-given a video URL
+given a video URL`,
+    source: 'gamut',
+  }}
+/>
 
 <Canvas>
   <Story name="Video">

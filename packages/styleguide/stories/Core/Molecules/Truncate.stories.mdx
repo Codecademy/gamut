@@ -6,11 +6,14 @@ import { Truncate, Text } from '@codecademy/gamut/src';
 <Meta
   title="Molecules/Truncate"
   component={Truncate}
-  parameters={{ source: 'gamut' }}
-/>
-
+  parameters={{
+    subtitle: `
 Truncates can be used to asynchronously display feedback or interactions
 with the user with various connotations.
+`,
+    source: 'gamut',
+  }}
+/>
 
 <Canvas withSource="open">
   <Story name="Truncate">

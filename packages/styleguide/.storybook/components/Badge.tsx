@@ -2,7 +2,7 @@ import { styled } from '@storybook/theming';
 import { variant } from './styles';
 import { colors, fontBase, fontSmoothing } from '@codecademy/gamut-styles';
 
-const badgeVariants = variant({
+export const badgeVariants = variant({
   prop: 'status',
   variants: {
     stable: {

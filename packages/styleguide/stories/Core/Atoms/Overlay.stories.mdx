@@ -6,12 +6,13 @@ import { Overlay, ButtonDeprecated, Container } from '@codecademy/gamut/src';
 <Meta
   title="Atoms/Overlay"
   component={Overlay}
-  parameters={{ source: 'gamut' }}
-/>
-
-Overlay primitives are controlled components that are told whether
+  parameters={{
+    subtitle: `Overlay primitives are controlled components that are told whether
 they're open by their parent. They're very basic and
-don't have animations defined.
+don't have animations defined.`,
+    source: 'gamut',
+  }}
+/>
 
 Unlike the legacy `Modal` implementations in the monolith, this: -always
 assumes viewport is locked, by making content `position: fixed` - cannot override
