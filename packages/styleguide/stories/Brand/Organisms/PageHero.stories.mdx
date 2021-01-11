@@ -3,7 +3,7 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { PageHero } from '@codecademy/gamut-labs/src';
 
 <Meta
-  title="Brand/Organisms/LandingPage/PageHero"
+  title="Brand/Organisms/PageHero"
   component={PageHero}
   args={{
     title:
@@ -25,10 +25,11 @@ import { PageHero } from '@codecademy/gamut-labs/src';
     imgAlt:
       'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
   }}
-  parameters={{ status: 'volatile' }}
+  parameters={{
+    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
+    status: 'volatile',
+  }}
 />
-
-Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.
 
 ### With CTA
 
