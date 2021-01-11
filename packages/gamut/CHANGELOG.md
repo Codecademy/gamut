@@ -3,6 +3,51 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.1...@codecademy/gamut@19.9.2) (2021-01-08)
+
+
+### Bug Fixes
+
+* added fontSmoothing to buttons ([6afbe95](https://github.com/Codecademy/client-modules/commit/6afbe9532aa16282a370910c0bb5955ae1033478))
+
+
+
+### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.0...@codecademy/gamut@19.9.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **toggle:** aria-label typo ([8d948ac](https://github.com/Codecademy/client-modules/commit/8d948ac624760b6300d7aa00d3030b161c3da6b5))
+
+
+
+## [19.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.2...@codecademy/gamut@19.9.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [19.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.1...@codecademy/gamut@19.8.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* **IconButton:** make children prop optional ([57c4226](https://github.com/Codecademy/client-modules/commit/57c422644b876ec651f6026163cc661e113e8930))
+
+
+
+### [19.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.0...@codecademy/gamut@19.8.1) (2021-01-06)
+
+
+### Bug Fixes
+
+* **Markdown:** prevent re-renders caused by default prop ([b54253f](https://github.com/Codecademy/client-modules/commit/b54253fc9b39e9831fced3f6c66a8bd9db9fe50b))
+
+
+
 ## [19.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.3...@codecademy/gamut@19.8.0) (2020-12-21)
 
 
