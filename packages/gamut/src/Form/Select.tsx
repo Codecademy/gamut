@@ -53,6 +53,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
         <select
           {...rest}
           className={styles.selectInput}
+          data-testid="select-input"
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}
