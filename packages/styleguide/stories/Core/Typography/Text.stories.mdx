@@ -5,7 +5,11 @@ import { brandColors } from '@codecademy/gamut-styles';
 <Meta
   title="Typography/Text (Deprecated)"
   component={Text}
-  parameters={{ status: 'deprecated', source: 'gamut' }}
+  parameters={{
+    subtitle: `This primitive can be configured as any possible combination of our typography tokens`,
+    status: 'deprecated',
+    source: 'gamut',
+  }}
   argTypes={{
     fontSize: {
       label: 'Font Size',
@@ -13,9 +17,6 @@ import { brandColors } from '@codecademy/gamut-styles';
     },
   }}
 />
-
-This is a single primitive to handle all `<p>` and
-`<span>` tags with defined size intervals.
 
 <Canvas>
   <Story name="Text" args={{ children: 'Hello World' }}>

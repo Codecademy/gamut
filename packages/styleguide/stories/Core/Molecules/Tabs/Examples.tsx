@@ -11,7 +11,7 @@ export const Uncontrolled = () => {
     >
       <TabList
         center={boolean('Centered', false)}
-        maxWidth={text('Max Width', undefined)}
+        maxWidth={text('Max Width', '')}
       >
         <Tab>Tab 1</Tab>
         <Tab>Tab 2</Tab>
@@ -42,7 +42,7 @@ export const Controlled = () => {
     >
       <TabList
         center={boolean('Centered', false)}
-        maxWidth={text('Max Width', undefined)}
+        maxWidth={text('Max Width', '')}
       >
         <Tab>Tab 1</Tab>
         <Tab>Tab 2</Tab>

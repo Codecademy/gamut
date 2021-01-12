@@ -5,11 +5,12 @@ import { text } from '@storybook/addon-knobs';
 <Meta
   title="Atoms/HighlightedText"
   component={HighlightedText}
-  parameters={{ source: 'gamut' }}
+  parameters={{
+    subtitle: `Emphasized (bold) text with a light background color behind it. Use to
+showcase important words in a sentence.`,
+    source: 'gamut',
+  }}
 />
-
-Emphasized (bold) text with a light background color behind it. Use to
-showcase important words in a sentence.
 
 <Canvas>
   <Story name="HighlightedText">

@@ -5,11 +5,14 @@ import { VisualTheme } from '@codecademy/gamut/src';
 <Meta
   title="Atoms/Badge"
   component={Badge}
-  parameters={{ status: 'stable', source: 'gamut' }}
+  parameters={{
+    subtitle:
+      'A small text box with a dark background for displaying tags or emphasised information in a condensed area',
+    status: 'stable',
+    source: 'gamut',
+  }}
   args={{ children: 'badge' }}
 />
-
-Small blue indicator of some unusual text
 
 <Canvas>
   <Story name="Badge">{(args) => <Badge {...args} />}</Story>
