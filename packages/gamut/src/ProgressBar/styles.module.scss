@@ -39,13 +39,3 @@
     color: $color-black;
   }
 }
-
-.stripes {
-  position: absolute;
-  z-index: 0;
-  color: $color-navy;
-  width: 100%;
-  svg {
-    position: absolute;
-  }
-}

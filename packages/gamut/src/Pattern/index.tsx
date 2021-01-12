@@ -1,24 +1,24 @@
+import styled from '@emotion/styled';
 import React from 'react';
+
+import { Box, BoxProps } from '../Box';
 
 export type PatternName =
   | 'diagonalStripesLoose'
   | 'diagonalStripesRegular'
   | 'diagonalStripesDense';
-export type PatternProps = {
-  width: number | string;
-  height: number | string;
-  name: PatternName;
-  className?: string;
-};
 
-export const Pattern: React.FC<PatternProps> = ({
-  width,
-  height,
-  name,
-  className,
-}) => (
-  <div className={className}>
-    <svg width={width} height={height}>
+export interface PatternProps extends BoxProps {
+  name: PatternName;
+}
+const Svg = styled.svg`
+  width: 100%;
+  height: 100%;
+`;
+
+export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => (
+  <Box {...props}>
+    <Svg>
       <defs>
         {name === 'diagonalStripesLoose' && (
           <pattern
@@ -98,7 +98,7 @@ export const Pattern: React.FC<PatternProps> = ({
           </pattern>
         )}
       </defs>
-      <rect x="0" y="0" width={width} height={height} fill={`url(#${name})`} />
-    </svg>
-  </div>
+      <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
+    </Svg>
+  </Box>
 );

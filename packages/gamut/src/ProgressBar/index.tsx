@@ -72,9 +72,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     >
       {pattern && (
         <Pattern
-          className={styles.stripes}
+          textColor="navy"
           width="100%"
-          height={height}
+          position="absolute"
+          zIndex={0}
           name={pattern}
         />
       )}
