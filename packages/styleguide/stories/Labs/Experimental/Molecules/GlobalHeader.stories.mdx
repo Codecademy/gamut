@@ -16,7 +16,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas withSource="open">
   <Story name="GlobalHeader">
-    {(args) => <GlobalHeader variant={{ type: 'free' }} />}
+    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'free' }} />}
   </Story>
 </Canvas>
 
@@ -26,7 +26,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Free User Global Header">
-    {(args) => <GlobalHeader variant={{ type: 'free' }} />}
+    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'free' }} />}
   </Story>
 </Canvas>
 
@@ -34,7 +34,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Pro User Global Header">
-    {(args) => <GlobalHeader variant={{ type: 'pro' }} />}
+    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'pro' }} />}
   </Story>
 </Canvas>
 
@@ -42,7 +42,7 @@ Header for a unified Codecademy global navigation system.
 
 <Canvas>
   <Story name="Anonymous User Global Header">
-    {(args) => <GlobalHeader variant={{ type: 'anon' }} />}
+    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'anon' }} />}
   </Story>
 </Canvas>
 
@@ -54,6 +54,7 @@ To mock this, we're providing IconButtons as placeholders.
   <Story name="GlobalHeader Search Notifications Profile">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         variant={{
           type: 'pro',
           renderSearch: () => <IconButton icon={SearchIcon} />,
@@ -71,13 +72,13 @@ To mock this, we're providing IconButtons as placeholders.
   <Story name="Background Color GlobalHeader">
     {(args) => (
       <div style={{ backgroundColor: colors.beige, width: '100%' }}>
-        <GlobalHeader variant={{ type: 'anon' }} />
+        <GlobalHeader variant={{ type: 'anon' }} onClick={() => {}} />
       </div>
     )}
   </Story>
 </Canvas>
 
-## GlobalHeader Can Accept an onClick Function
+## GlobalHeader Accepts an onClick Function
 
 To mock this, we're providing a very basic onClick function which just prints out the event & the tracking target to the console.
 
