@@ -5,7 +5,13 @@ import { brandColors, fontSize } from '@codecademy/gamut-styles';
 <Meta
   title="Typography/Heading (Deprecated)"
   component={Heading}
-  parameters={{ status: 'deprecated', source: 'gamut' }}
+  parameters={{
+    subtitle: `This is a primitive to handle all \`h1-h6\` tags
+with defined size intervals to allow for semantic html that also
+matches the designs.`,
+    status: 'deprecated',
+    source: 'gamut',
+  }}
   argTypes={{
     as: {
       label: 'As element',
@@ -23,10 +29,6 @@ import { brandColors, fontSize } from '@codecademy/gamut-styles';
     },
   }}
 />
-
-This is a single primitive to handle all `h1-h6` tags
-with defined size intervals to allow for semantic html that also
-matches the designs.
 
 Note: Please only [increase heading levels by 1](https://dequeuniversity.com/rules/axe/3.0/heading-order)
 (and pick the appropriate size to match the design).

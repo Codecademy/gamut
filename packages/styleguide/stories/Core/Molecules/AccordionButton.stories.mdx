@@ -6,11 +6,15 @@ import { useState } from 'react';
 <Meta
   title="Molecules/AccordionButton"
   component={AccordionButton}
-  parameters={{ status: 'volatile', source: 'gamut' }}
-/>
-
-The standard "top" button for an `Accordion`.
+  parameters={{
+    subtitle: `
+The standard "top" button for an \`Accordion\`.
 Comes in a few standard size and color combinations.
+`,
+    status: 'volatile',
+    source: 'gamut',
+  }}
+/>
 
 <Canvas>
   <Story name="AccordionButton">

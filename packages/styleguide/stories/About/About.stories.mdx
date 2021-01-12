@@ -1,35 +1,18 @@
+import { Meta } from '@storybook/addon-docs/dist/blocks';
 import { Column, LayoutGrid } from '@codecademy/gamut/src';
 import LinkTo from '@storybook/addon-links/react';
 
-import { AboutCell } from '~styleguide/blocks';
+import { TableOfContents } from '~styleguide/blocks';
 
-import { ABOUT_SECTIONS } from './constants';
+<Meta title="Gamut" />
 
-<Meta title="About" parameters={{ pageTitle: 'Gamut' }} />
-
-<strong>
-  The design system for Codecademy
-  <span aria-label="sparkles" role="img">
-    ✨
-  </span>
-</strong>
+**The design system for Codecademy ✨**
 
 Gamut components, styles, and utilities are the core of the Codecademy brand shared across its websites.
-They're most notably used on <a href="https://codecademy.com">codecademy.com</a> but are also found on our internal websites and tools, as well as on our mobile application.
+They're most notably used on [codecademy.com](https://codecademy.com) but are also found on our internal websites and tools, as well as on our mobile application.
 
 This storybook represents components found in the Codecademy [Client Modules](https://github.com/Codecademy/client-modules) repo.
-Its organization roughly aligns with variations of <a href="https://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>.
 
-<br />
+Its organization roughly aligns with variations of [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/).
 
-<LayoutGrid columnGap="lg" rowGap="lg">
-  {ABOUT_SECTIONS.map(({ description, emoji, kind, examples }) => {
-    return (
-      <Column size={{ xs: 12, sm: 6, md: 4 }}>
-        <AboutCell kind={kind} examples={examples} emoji={emoji}>
-          {description}
-        </AboutCell>
-      </Column>
-    );
-  })}
-</LayoutGrid>
+<TableOfContents />
