@@ -1,13 +1,34 @@
-import { ButtonDeprecated, Container } from '@codecademy/gamut';
+import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
-import cx from 'classnames';
+import { colors, pxRem } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../..';
+import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderPopover } from '../../AppHeader/types';
 import { AppHeaderLinkElement } from '../AppHeaderLinkElement';
 import styles from './styles.scss';
+
+const AppHeaderTargetButton = styled.button`
+  background-color: transparent;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  color: ${colors.navy};
+  border: 1px solid transparent;
+  line-height: 1.5;
+  white-space: nowrap;
+  font-weight: normal;
+  min-width: 0;
+  padding: 1rem 0;
+  font-size: 0;
+  &:hover {
+    color: ${colors.hyper};
+    text-decoration: none;
+  }
+  ${focusStyles}
+`;
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
@@ -28,11 +49,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     setIsOpen(false);
   };
   const clickTarget = (
-    <ButtonDeprecated
-      className={cx(styles.target, isOpen && styles.open)}
-      onClick={toggleIsOpen}
-      flat
-      theme="navy"
+    <AppHeaderTargetButton
+      className={isOpen && styles.open}
+      onClick={(event) => toggleIsOpen(event)}
       style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
     >
       <span title={item.text} className={styles.copy}>
@@ -43,8 +62,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         className={styles.icon}
         aria-label="dropdown"
       />
-    </ButtonDeprecated>
+    </AppHeaderTargetButton>
   );
+
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
@@ -57,7 +77,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         onRequestClose={handleClose}
         targetRef={headerDropdownRef}
       >
-        <Container column className={styles.dropdown}>
+        <Box paddingY={12}>
           {item.popover.map((link) => {
             return (
               <AppHeaderLinkElement
@@ -69,7 +89,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
               />
             );
           })}
-        </Container>
+        </Box>
       </Popover>
     </>
   );

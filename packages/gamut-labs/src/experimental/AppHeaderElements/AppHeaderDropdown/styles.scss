@@ -1,29 +1,9 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.dropdown {
-  background-color: $color-white;
-  line-height: normal;
-  @include font-smoothing(off);
-  padding: 0.7rem 0;
-}
-
 .topDropdown {
   z-index: 15;
   @media only screen and (max-width: $grid-lg-min) {
     display: none;
-  }
-}
-
-.target {
-  font-weight: normal;
-  min-width: 0;
-  padding: 1rem 0;
-  color: $color-navy;
-  font-size: 0;
-  display: flex;
-  align-items: center;
-  &:hover {
-    color: $color-hyper;
   }
 }
 

@@ -2,6 +2,7 @@ import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderLink } from '../../AppHeader/types';
 
 type AppHeaderLinkButtonProps = {
@@ -9,7 +10,7 @@ type AppHeaderLinkButtonProps = {
   horizontalPadding?: number;
 };
 
-export const AppHeaderLinkButton = styled.a<AppHeaderLinkButtonProps>`
+const AppHeaderLinkButton = styled.a<AppHeaderLinkButtonProps>`
   font-weight: normal;
   min-width: 0;
   /* margin: 0 0.5rem; */
@@ -30,6 +31,7 @@ export const AppHeaderLinkButton = styled.a<AppHeaderLinkButtonProps>`
     color: ${colors.hyper};
     text-decoration: none;
   }
+  ${focusStyles}
 `;
 
 export type AppHeaderLinkElementProps = AppHeaderLinkButtonProps & {

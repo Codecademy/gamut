@@ -1,9 +1,5 @@
-import styled from '@emotion/styled';
+import { Box } from '@codecademy/gamut';
 import React from 'react';
-
-const HeaderTab = styled.div`
-  margin: 0 0.5rem;
-`;
 
 export type HeaderTabProps = {
   className?: string;
@@ -13,5 +9,9 @@ export const AppHeaderTab: React.FC<HeaderTabProps> = ({
   children,
   className,
 }) => {
-  return <HeaderTab className={className}>{children}</HeaderTab>;
+  return (
+    <Box marginLeft={8} marginRight={8} className={className}>
+      {children}
+    </Box>
+  );
 };
