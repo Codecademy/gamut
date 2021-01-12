@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.12.2...@codecademy/gamut-icons@3.13.0) (2021-01-12)
+
+
+### Features
+
+* **Icons:** Add video player movie icon ([def3a59](https://github.com/Codecademy/client-modules/commit/def3a59d9c253330bc4703f2c46ded80a1079bac))
+
+
+
 ### [3.12.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.12.1...@codecademy/gamut-icons@3.12.2) (2020-12-18)
 
 
