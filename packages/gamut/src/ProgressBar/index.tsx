@@ -74,7 +74,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         <Pattern
           className={styles.stripes}
           width="100%"
-          height={36}
+          height={height}
           name="diagonalStripesRegular"
         />
       )}
