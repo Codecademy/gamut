@@ -1,12 +1,13 @@
 import React from 'react';
 
+export type PatternName =
+  | 'diagonalStripesLoose'
+  | 'diagonalStripesRegular'
+  | 'diagonalStripesDense';
 export type PatternProps = {
   width: number | string;
   height: number | string;
-  name:
-    | 'diagonalStripesLoose'
-    | 'diagonalStripesRegular'
-    | 'diagonalStripesDense';
+  name: PatternName;
   className?: string;
 };
 

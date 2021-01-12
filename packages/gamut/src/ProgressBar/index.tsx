@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { Pattern } from '../Pattern';
+import { Pattern, PatternName } from '../Pattern';
 import styles from './styles.module.scss';
 
 export type ProgressBarProps = {
@@ -33,9 +33,9 @@ export type ProgressBarProps = {
   theme: 'blue' | 'yellow';
 
   /**
-   * Whether to use a striped background
+   * Whether to use a pattern background
    */
-  stripes?: boolean;
+  pattern?: PatternName;
 };
 
 export type ProgressBarStyle = {
@@ -51,7 +51,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   percent,
   style = {},
   theme,
-  stripes,
+  pattern,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
@@ -70,12 +70,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         height: `${height}px`,
       }}
     >
-      {stripes && (
+      {pattern && (
         <Pattern
           className={styles.stripes}
           width="100%"
           height={height}
-          name="diagonalStripesDense"
+          name={pattern}
         />
       )}
       <div
