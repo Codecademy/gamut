@@ -75,7 +75,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           className={styles.stripes}
           width="100%"
           height={height}
-          name="diagonalStripesRegular"
+          name="diagonalStripesDense"
         />
       )}
       <div
