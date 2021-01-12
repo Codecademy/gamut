@@ -44,14 +44,14 @@ describe('ProgressBar', () => {
     expect(wrapped.text()).toEqual('50%');
   });
 
-  it('uses an svg when stripes is true', () => {
-    const wrapped = renderComponent({ stripes: true });
+  it('uses an svg when given a pattern', () => {
+    const wrapped = renderComponent({ pattern: 'diagonalStripesRegular' });
 
     expect(wrapped.find('svg').length).toBe(1);
   });
 
-  it('does not use an svg when stripes is false', () => {
-    const wrapped = renderComponent({ stripes: false });
+  it('does not use an svg when not given a pattern', () => {
+    const wrapped = renderComponent();
 
     expect(wrapped.find('svg').length).toBe(0);
   });
