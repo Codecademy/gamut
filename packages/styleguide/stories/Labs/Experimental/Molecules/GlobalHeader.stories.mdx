@@ -1,6 +1,6 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
-import { IconButton } from '@codecademy/gamut/src';
+import { Box, IconButton } from '@codecademy/gamut/src';
 import { BellIcon, SearchIcon, PersonIcon } from '@codecademy/gamut-icons/src';
 import { colors } from '@codecademy/gamut-styles';
 
@@ -71,9 +71,9 @@ To mock this, we're providing IconButtons as placeholders.
 <Canvas>
   <Story name="Background Color GlobalHeader">
     {(args) => (
-      <div style={{ backgroundColor: colors.beige, width: '100%' }}>
+      <Box backgroundColor="beige" width="100%">
         <GlobalHeader variant={{ type: 'anon' }} onClick={() => {}} />
-      </div>
+      </Box>
     )}
   </Story>
 </Canvas>

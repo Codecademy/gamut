@@ -81,13 +81,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         <Box paddingY={12}>
           {item.popover.map((link) => {
             return (
-              <AppHeaderLinkElement
-                item={link}
-                key={link.id}
-                className={styles.menuItem}
-                onClick={onClick}
-                horizontalPadding={1}
-              />
+              <Box key={link.id} paddingX={16}>
+                <AppHeaderLinkElement
+                  className={styles.menuItem}
+                  item={link}
+                  onClick={onClick}
+                />
+              </Box>
             );
           })}
         </Box>
