@@ -5,6 +5,7 @@ import React from 'react';
 import { Logo } from '../../..';
 import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderLogo } from '../../AppHeader/types';
+import { HeaderClickHandler } from '../../GlobalHeader';
 
 const LogoButton = styled.a`
   display: inline-block;
@@ -21,7 +22,7 @@ const LogoButton = styled.a`
 
 export type LogoButtonProps = {
   item: AppHeaderLogo;
-  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
+  onClick: HeaderClickHandler;
 };
 
 export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
@@ -31,7 +32,7 @@ export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
   return (
     <LogoButton
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => onClick(event, item.trackingTarget)}
+      onClick={(event: React.MouseEvent) => onClick(event, item)}
       href={'/'}
     >
       {

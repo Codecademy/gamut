@@ -6,12 +6,13 @@ import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
 import { AppHeaderTab } from '../AppHeaderElements/AppHeaderTab';
+import { HeaderClickHandler } from '../GlobalHeader';
 import { AppHeaderItem } from './types';
 
 export type AppHeaderProps = {
   items: AppHeaderItemsProp;
   className?: string;
-  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
+  onClick: HeaderClickHandler;
 };
 
 export type AppHeaderItemsProp = {
@@ -21,7 +22,7 @@ export type AppHeaderItemsProp = {
 
 const mapItemToElement = (
   item: AppHeaderItem,
-  onClick: (event: React.MouseEvent, trackingTarget: string) => void
+  onClick: HeaderClickHandler
 ): ReactElement => {
   switch (item.type) {
     case 'logo':
@@ -41,9 +42,7 @@ const mapItemToElement = (
         <AppHeaderTab key={item.id}>
           <TextButton
             href={item.href}
-            onClick={(event: React.MouseEvent) =>
-              onClick(event, item.trackingTarget)
-            }
+            onClick={(event: React.MouseEvent) => onClick(event, item)}
             data-testid={item.dataTestId}
           >
             {item.text}
@@ -56,9 +55,7 @@ const mapItemToElement = (
           <FillButton
             href={item.href}
             data-testid={item.dataTestId}
-            onClick={(event: React.MouseEvent) =>
-              onClick(event, item.trackingTarget)
-            }
+            onClick={(event: React.MouseEvent) => onClick(event, item)}
           >
             {item.text}
           </FillButton>

@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import { AppHeader } from '../AppHeader';
+import { AppHeaderItem } from '../AppHeader/types';
 import {
   anonHeaderItems,
   freeHeaderItems,
@@ -8,9 +9,14 @@ import {
 } from './AppHeaderVariants';
 import styles from './styles.scss';
 
+export type HeaderClickHandler = (
+  event: React.MouseEvent,
+  item: AppHeaderItem
+) => void;
+
 export type GlobalHeaderProps = {
   variant: AnonHeader | FreeHeader | ProHeader;
-  onClick: (event: React.MouseEvent, target: string) => void;
+  onClick: HeaderClickHandler;
 };
 
 type LoggedOutHeader = {

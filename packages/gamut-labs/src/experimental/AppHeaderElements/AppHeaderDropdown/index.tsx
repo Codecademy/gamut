@@ -7,6 +7,7 @@ import React, { useRef, useState } from 'react';
 import { Popover } from '../..';
 import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderPopover } from '../../AppHeader/types';
+import { HeaderClickHandler } from '../../GlobalHeader';
 import { AppHeaderLinkElement } from '../AppHeaderLinkElement';
 import styles from './styles.scss';
 
@@ -32,7 +33,7 @@ const AppHeaderTargetButton = styled.button`
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderPopover;
-  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
+  onClick: HeaderClickHandler;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -43,7 +44,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && onClick(event, item.trackingTarget);
+    !isOpen && onClick(event, item);
   };
   const handleClose = () => {
     setIsOpen(false);

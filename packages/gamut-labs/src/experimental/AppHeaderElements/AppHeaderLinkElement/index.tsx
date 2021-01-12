@@ -4,6 +4,7 @@ import React from 'react';
 
 import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderLink } from '../../AppHeader/types';
+import { HeaderClickHandler } from '../../GlobalHeader';
 
 type AppHeaderLinkButtonProps = {
   verticalPadding?: number;
@@ -37,7 +38,7 @@ const AppHeaderLinkButton = styled.a<AppHeaderLinkButtonProps>`
 export type AppHeaderLinkElementProps = AppHeaderLinkButtonProps & {
   className?: string;
   item: AppHeaderLink;
-  onClick: (event: React.MouseEvent, trackingTarget: string) => void;
+  onClick: HeaderClickHandler;
 };
 
 export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
@@ -48,7 +49,7 @@ export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
   return (
     <AppHeaderLinkButton
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => onClick(event, item.trackingTarget)}
+      onClick={(event: React.MouseEvent) => onClick(event, item)}
       href={item.href}
       {...props}
     >
