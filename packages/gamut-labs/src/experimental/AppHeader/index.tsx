@@ -1,5 +1,4 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut';
-import cx from 'classnames';
 import React, { ReactElement } from 'react';
 
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
@@ -7,7 +6,6 @@ import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
 import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
 import { AppHeaderTab } from '../AppHeaderElements/AppHeaderTab';
-import styles from './styles.scss';
 import { AppHeaderItem } from './types';
 
 export type AppHeaderProps = {
@@ -28,25 +26,24 @@ const mapItemToElement = (
   switch (item.type) {
     case 'logo':
       return (
-        <AppHeaderTab className={styles.headerTabLogo}>
+        <AppHeaderTab key={item.id}>
           <AppHeaderLogoElement item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'link':
       return (
-        <AppHeaderTab className={styles.headerTabLogo}>
+        <AppHeaderTab key={item.id}>
           <AppHeaderLinkElement item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'text-button':
       return (
-        <AppHeaderTab>
+        <AppHeaderTab key={item.id}>
           <TextButton
             href={item.href}
             onClick={(event: React.MouseEvent) =>
               onClick(event, item.trackingTarget)
             }
-            className={styles.navLink}
             data-testid={item.dataTestId}
           >
             {item.text}
@@ -55,14 +52,13 @@ const mapItemToElement = (
       );
     case 'fill-button':
       return (
-        <AppHeaderTab>
+        <AppHeaderTab key={item.id}>
           <FillButton
             href={item.href}
             data-testid={item.dataTestId}
             onClick={(event: React.MouseEvent) =>
               onClick(event, item.trackingTarget)
             }
-            className={cx(styles.navLink)}
           >
             {item.text}
           </FillButton>
@@ -70,15 +66,12 @@ const mapItemToElement = (
       );
     case 'popover':
       return (
-        <AppHeaderTab className={styles.headerTabLogo}>
+        <AppHeaderTab key={item.id}>
           <AppHeaderDropdown item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'render-popover':
-      return <AppHeaderTab>{item.popover()}</AppHeaderTab>;
-
-    default:
-      return <AppHeaderTab />;
+      return <AppHeaderTab key={item.id}>{item.popover()}</AppHeaderTab>;
   }
 };
 

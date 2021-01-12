@@ -65,6 +65,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
                 key={link.id}
                 className={styles.menuItem}
                 onClick={onClick}
+                horizontalPadding={1}
               />
             );
           })}

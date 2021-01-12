@@ -1,38 +1,9 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .globalHeader {
-  padding: px-rem(16);
+  padding: 0.5rem 0;
   border-bottom: 1px solid $color-navy;
   box-shadow: none;
   z-index: 14;
   width: 100%;
 }
-
-// .registerButtonTabMobile {
-//   margin-top: -1rem;
-// }
-
-// .mobileNotifications {
-//   display: block;
-
-//   &:focus {
-//     outline: none;
-//   }
-//   &:focus-visible {
-//     outline: 0.3rem auto $color-navy;
-//   }
-
-//   @include lg-viewport {
-//     background-color: $color-white;
-//     position: relative;
-//     display: none;
-//     height: 100vh;
-//     width: 100vw;
-//     overflow: auto;
-//   }
-// }
-
-// .proButtonHeaderTab {
-//   display: flex;
-//   justify-content: center;
-// }

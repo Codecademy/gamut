@@ -1,7 +1,9 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import styles from './styles.scss';
+const HeaderTab = styled.div`
+  margin: 0 0.5rem;
+`;
 
 export type HeaderTabProps = {
   className?: string;
@@ -11,9 +13,5 @@ export const AppHeaderTab: React.FC<HeaderTabProps> = ({
   children,
   className,
 }) => {
-  return (
-    <div className={cx(className, styles.headerTabItem, styles.headerTab)}>
-      {children}
-    </div>
-  );
+  return <HeaderTab className={className}>{children}</HeaderTab>;
 };
