@@ -22,8 +22,8 @@ export type AccordionAreaProps = {
 const transitionDuration = 0.2;
 
 const variants = {
-  expanded: { height: '100%' },
-  folded: { height: 0 },
+  expanded: { height: 'auto' },
+  folded: { height: '0' },
 };
 
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
@@ -49,7 +49,7 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
       <motion.div
         aria-expanded={expanded}
         className={styles.accordionBody}
-        initial={false}
+        initial={expanded ? 'expanded' : 'folded'}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
