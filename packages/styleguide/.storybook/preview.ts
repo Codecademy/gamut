@@ -27,6 +27,7 @@ export const parameters = {
         'Gamut',
         'Meta',
         'Foundations',
+        ['About', 'Getting Started'],
         'Typography',
         'Layouts',
         'Atoms',

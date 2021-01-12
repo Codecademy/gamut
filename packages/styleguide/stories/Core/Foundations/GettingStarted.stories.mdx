@@ -1,0 +1,81 @@
+<Meta
+  title="Foundations/Getting Started"
+  parameters={{
+    subtitle: 'A walkthrough of how to set up gamut and how to configure it.',
+  }}
+/>
+
+This is a guide to understand how to start using gamut in a new React application. We'll cover every step in getting your app set up and what is going on behind the scenes in each place gamut is used.
+
+## Installation
+
+In order to use gamut you'll need to install a few different packages. For the most basic app you'll need to install 4 depencies:
+
+- [gamut](https://www.npmjs.com/package/@codecademy/gamut) - Our core component library
+- [gamut-styles](https://www.npmjs.com/package/@codecademy/gamut-styles) - SCSS and CSS in JS base styles and variables
+- [gamut-icons](https://www.npmjs.com/package/@codecademy/gamut-icons) - Icon library for codecademy.com
+- [gamut-system](https://www.npmjs.com/package/@codecademy/gamut-system) - Typescript CSS in JS utilities
+- [gamut-labs](https://www.npmjs.com/package/@codecademy/gamut-labs) (optional) - Brand and experimental component library for Codecademy
+
+```sh
+yarn add @codecademy/gamut @codecademy/gamut-styles @codecademy/gamut-system @codecademy/gamut-icons @codecademy/gamut-labs
+```
+
+There are also a few required peer dependencies you'll need to add as well
+
+```sh
+yarn add react react-dom @emotion/styled @emotion/react @emotion/babel-plugin
+```
+
+## Global Styles
+
+All gamut components assume certain base styles of your application to reset and normalize between browsers and load in our font stack.
+
+To add them simply add our core SCSS to your application root or style index file. (If you are using webpack you will need to add the correct loader to handle SCSS files)
+
+**Note**: These are curretly only available through SCSS, however we do have plans to eventually provide a CSS in JS alternative.
+
+```tsx
+// In your apps entry point
+import '@codecademy/gamut-styles/core/index.scss';
+```
+
+You may want to add an additional rule to a stylesheet of your own to normalize box-sizing.
+
+```css
+* {
+  box-sizing: border-box;
+}
+```
+
+## Emotion
+
+Many gamut components use `emotion` to dynamically compute styles. In order for these components to work correctly you'll need to wrap your app in a few providers to ensure emotion has access to our configurations:
+
+- `ThemeProvider`: A context with access to our gamut theme object.
+- `CacheProivder`: A way to override emotions default value that changes class name prefixing, [CSS post processing](https://stylis.js.org/), and the DOM target for the generated style rules.
+
+```tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { CacheProvider, ThemeProvider } from '@emotion/react';
+import { theme, createEmotionCache } from '@codecademy/gamut-styles';
+
+import App from './App.js';
+
+// Create the cache at the entry point
+const cache = createEmotionCache();
+
+export const GamutProvider: React.FC = ({ children }) => (
+  <CacheProvider value={cache}>
+    <ThemeProvider value={theme}>{children}</ThemeProvider>
+  </CacheProvider>
+);
+
+ReactDOM.render(
+  <GamutProvider>
+    <App />
+  </GamutProvider>,
+  document.getElementById('root')
+);
+```
