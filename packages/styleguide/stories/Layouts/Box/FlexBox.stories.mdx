@@ -1,11 +1,12 @@
-import { fileAbsolute } from 'paths.macro';
-import { PropsTable, storyTitle } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
+
+import { PropsTable } from '~styleguide/blocks';
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 import { FlexBox, Box } from '@codecademy/gamut/src';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={FlexBox}
   parameters={{ status: 'volatile', source: 'gamut' }}
 />

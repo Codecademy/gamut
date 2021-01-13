@@ -2,11 +2,11 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text, number } from '@storybook/addon-knobs';
 import { Logo } from '@codecademy/gamut-labs/src';
-import { selectableColorNames, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { selectableColorNames } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Logo}
   parameters={{
     subtitle: `Our proud logo. There is no a in the middle. Use sparingly, and make sure

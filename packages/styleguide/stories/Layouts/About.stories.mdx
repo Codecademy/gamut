@@ -1,9 +1,8 @@
 import { TableOfContents } from '~styleguide/blocks';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   parameters={{
     subtitle:
       'Layouts are basic building blocks to help you construct layouts on the page via configuration',

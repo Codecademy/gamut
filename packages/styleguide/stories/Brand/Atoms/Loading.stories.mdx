@@ -1,10 +1,9 @@
 import { Loading } from '@codecademy/gamut-labs/src';
 import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Loading}
   parameters={{
     subtitle: `Our standard-use loading icon. Use this to indicate a major part of the page is

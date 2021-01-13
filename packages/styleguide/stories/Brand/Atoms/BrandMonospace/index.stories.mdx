@@ -1,13 +1,14 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+
+import title from '../../../../.storybook/title.macro.js';
+
 import { BrandMonospace } from '@codecademy/gamut-labs/src';
 import { Heading } from '@codecademy/gamut/src';
 
 import styles from './styles.module.scss';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={BrandMonospace}
   parameters={{
     subtitle: `A wrapper component that will style text with the \`Robot Mono\`

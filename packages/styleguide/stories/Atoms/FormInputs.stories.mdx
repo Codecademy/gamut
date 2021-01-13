@@ -13,9 +13,10 @@ import {
   number,
   withKnobs,
 } from '@storybook/addon-knobs';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title="Atoms/Form Inputs"
+  title={title}
   subcomponents={{ Checkbox, Input, Radio, RadioGroup, Select, TextArea }}
   parameters={{
     subtitle: 'Input atoms tied 1:1 with values to be submitted in a form.',

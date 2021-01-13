@@ -1,8 +1,8 @@
-import { TableOfContents, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { TableOfContents } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   parameters={{
     subtitle:
       'Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.',

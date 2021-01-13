@@ -1,11 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { select, text } from '@storybook/addon-knobs';
 import { Quote } from '@codecademy/gamut-labs/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Quote}
   args={{
     text:

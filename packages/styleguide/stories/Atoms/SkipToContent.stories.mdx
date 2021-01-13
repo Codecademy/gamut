@@ -1,10 +1,9 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { SkipToContent } from '@codecademy/gamut/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={SkipToContent}
   parameters={{
     subtitle: 'An invisible component to make pages keyboard accessible',

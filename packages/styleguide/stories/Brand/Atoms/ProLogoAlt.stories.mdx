@@ -1,10 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { ProLogoAlt } from '@codecademy/gamut-labs/src';
-import { selectableColorNames, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { selectableColorNames } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={ProLogoAlt}
   argTypes={{
     backgroundColor: {

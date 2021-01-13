@@ -1,8 +1,8 @@
-import { TableOfContents, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { TableOfContents } from '~styleguide/blocks';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   parameters={{
     subtitle:
       'These are basic primitives for displaying text components in configurable ways',

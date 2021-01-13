@@ -1,11 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import { text } from '@storybook/addon-knobs';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={HighlightedText}
   parameters={{
     subtitle: `Emphasized (bold) text with a light background color behind it. Use to

@@ -4,11 +4,10 @@ import { number, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { GridForm, Input, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { useState } from '@storybook/addons';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={GridForm}
   parameters={{
     subtitle: `This organism takes in plain JSON-like props and uses them to string

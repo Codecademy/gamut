@@ -6,11 +6,10 @@ import {
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { boolean, select } from '@storybook/addon-knobs';
 import { useState } from 'react';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Accordion}
   subcomponents={{ AccordionArea, AccordionButton }}
   parameters={{

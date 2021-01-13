@@ -25,11 +25,10 @@ import {
   platformColors,
 } from '@codecademy/gamut-styles';
 import { excludedColors } from './constants';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component="Colors"
   parameters={{
     subtitle:

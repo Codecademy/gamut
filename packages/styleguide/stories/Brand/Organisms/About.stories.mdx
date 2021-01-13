@@ -1,8 +1,8 @@
-import { TableOfContents, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { TableOfContents } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   parameters={{
     subtitle:
       'Organisms are groups of molecules joined together to form a relatively complex, distinct section of an interface.',

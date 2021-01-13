@@ -4,11 +4,10 @@ import {
   NotificationIcon,
 } from '@codecademy/gamut/src';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={NotificationList}
   subcomponents={{ NotificationItem, NotificationIcon }}
   parameters={{

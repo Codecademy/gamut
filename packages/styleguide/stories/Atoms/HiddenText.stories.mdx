@@ -1,10 +1,9 @@
 import { HiddenText, VisualTheme } from '@codecademy/gamut/src';
 import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={HiddenText}
   parameters={{
     subtitle: `Visually hidden text that should still be narrated by screenreaders.`,

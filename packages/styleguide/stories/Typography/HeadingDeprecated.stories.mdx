@@ -1,11 +1,10 @@
 import { Meta, Props, Preview, Story } from '@storybook/addon-docs/dist/blocks';
 import { Heading, Text } from '@codecademy/gamut/src';
 import { brandColors, fontSize } from '@codecademy/gamut-styles';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Heading}
   parameters={{
     subtitle: `This is a primitive to handle all \`h1-h6\` tags

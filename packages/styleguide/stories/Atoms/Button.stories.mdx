@@ -10,11 +10,10 @@ import {
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
 import { select, text, boolean } from '@storybook/addon-knobs';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   args={{
     children: 'Click Me',
     disabled: false,

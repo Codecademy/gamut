@@ -1,10 +1,9 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { FormGroupDescription, FormGroupLabel } from '@codecademy/gamut/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   subcomponents={{ FormGroupLabel, FormGroupDescription }}
   parameters={{
     subtitle: `Ancillary descriptions for input atoms tied 1:1 with values to

@@ -1,11 +1,11 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
-import { PropsTable, storyTitle } from '~styleguide/blocks';
+import { PropsTable } from '~styleguide/blocks';
 import { Box } from '@codecademy/gamut/src';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Box}
   parameters={{
     subtitle: 'Flexible container component with all system props available',

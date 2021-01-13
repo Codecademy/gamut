@@ -2,11 +2,10 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Markdown, Heading, Text } from '@codecademy/gamut/src';
 import { elements, tags } from './examples';
 import exampleMarkdown from './markdown-example.md';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Markdown}
   parameters={{
     subtitle: 'Markdown renderer for all your markdown needs.',

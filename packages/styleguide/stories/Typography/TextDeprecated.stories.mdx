@@ -1,11 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Text } from '@codecademy/gamut/src';
 import { brandColors } from '@codecademy/gamut-styles';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Text}
   parameters={{
     subtitle: `This primitive can be configured as any possible combination of our typography tokens`,

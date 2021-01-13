@@ -3,11 +3,10 @@ import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
 import { PageFeatures } from '@codecademy/gamut-labs/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={PageFeatures}
   args={{
     title: 'Welcome to Codecademy',

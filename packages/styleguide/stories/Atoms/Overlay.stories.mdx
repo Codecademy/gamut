@@ -2,11 +2,10 @@ import { useState } from 'react';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { Overlay, ButtonDeprecated, Container } from '@codecademy/gamut/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Overlay}
   parameters={{
     subtitle: `Overlay primitives are controlled components that are told whether

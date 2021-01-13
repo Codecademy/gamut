@@ -1,8 +1,8 @@
-import { TableOfContents, storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import { TableOfContents } from '~styleguide/blocks';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   parameters={{
     subtitle:
       'Atoms are our basic building block components. They are the most granular, low-level visuals in our system.',

@@ -4,11 +4,10 @@ import { ProgressBar, LayoutGrid, Column } from '@codecademy/gamut/src';
 import { number } from '@storybook/addon-knobs';
 import { colors } from '@codecademy/gamut-styles';
 import { bars } from './constants';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={ProgressBar}
   parameters={{
     subtitle: 'A horizontal bar for displaying progress',

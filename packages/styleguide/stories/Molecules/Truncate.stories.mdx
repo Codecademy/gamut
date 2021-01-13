@@ -2,11 +2,10 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { Truncate, Text } from '@codecademy/gamut/src';
-import { storyTitle } from '~styleguide/blocks';
-import { fileAbsolute } from 'paths.macro';
+import title from '../../.storybook/title.macro.js';
 
 <Meta
-  title={storyTitle(fileAbsolute)}
+  title={title}
   component={Truncate}
   parameters={{
     subtitle: `
