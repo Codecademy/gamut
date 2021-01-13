@@ -60,7 +60,6 @@
   },
   "devDependencies": {
     "glob": "^7.1.6",
-    "paths.macro": "3.0.1",
     "babel-plugin-macros": "3.0.1"
   }
 }
