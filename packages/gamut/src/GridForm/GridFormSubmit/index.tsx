@@ -1,4 +1,4 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import {
@@ -7,7 +7,6 @@ import {
 } from '../../ButtonDeprecated';
 import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
-import styles from './styles.module.scss';
 
 export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
 
@@ -20,6 +19,17 @@ export type GridFormSubmitProps = {
   theme?: ButtonDeprecatedProps['theme'];
 };
 
+const styles: Record<string, string> = {
+  left: 'flex-start',
+  center: 'center',
+  right: 'flex-end',
+};
+
+const StyledColumn = styled(Column)<{ position: GridFormSubmitPosition }>`
+  align-items: center;
+  justify-content: ${({ position }) => styles[position]};
+`;
+
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
   disabled,
@@ -28,10 +38,8 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   size,
   theme = 'brand-purple',
 }) => {
-  const positionStyle = styles[position];
-
   return (
-    <Column className={cx(styles.base, positionStyle)} size={size}>
+    <StyledColumn position={position} size={size}>
       <ButtonDeprecated
         disabled={disabled}
         outline={outline}
@@ -40,6 +48,6 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
       >
         {contents}
       </ButtonDeprecated>
-    </Column>
+    </StyledColumn>
   );
 };
