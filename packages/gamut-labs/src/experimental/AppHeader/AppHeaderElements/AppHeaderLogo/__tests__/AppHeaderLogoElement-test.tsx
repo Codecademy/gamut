@@ -22,12 +22,12 @@ describe('AppHeaderLogo', () => {
   it('renders a logo', () => {
     const wrapper = renderAppHeaderLogo();
     const icon = wrapper.find('svg');
-    expect(icon).toHaveLength(1);
+    expect(icon.find('title').text()).toContain('Codecademy Logo');
   });
+
   it('shows the pro logo when user has pro subscription', () => {
     const wrapper = renderAppHeaderLogo({ pro: true });
     const icon = wrapper.find('svg');
-    expect(icon).toHaveLength(1);
-    // how do i test for pro v not pro : the svg attributes are the same
+    expect(icon.find('title').text()).toEqual('Codecademy Pro Logo');
   });
 });
