@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 export type AppHeaderItem =
-  | AppHeaderLogoLink
+  | AppHeaderLogo
   | AppHeaderLink
   | AppHeaderTextButton
   | AppHeaderFillButton
