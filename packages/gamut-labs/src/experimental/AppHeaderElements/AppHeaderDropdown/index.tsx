@@ -70,7 +70,6 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
       <Popover
-        className={styles.topDropdown}
         align="left"
         verticalOffset={-2}
         outline
@@ -83,7 +82,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             return (
               <Box key={link.id} paddingX={16}>
                 <AppHeaderLinkElement
-                  className={styles.menuItem}
+                  // className={styles.menuItem} - className isn't being used in AppHeaderLinkElement so commenting this out
                   item={link}
                   onClick={onClick}
                 />

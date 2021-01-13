@@ -17,6 +17,7 @@ type AppHeaderBase = {
 };
 
 export type AppHeaderLogo = AppHeaderBase & {
+  href: string;
   pro: boolean;
   trackingTarget: string;
   type: 'logo';

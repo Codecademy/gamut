@@ -1,12 +1,5 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.topDropdown {
-  z-index: 15;
-  @media only screen and (max-width: $grid-lg-min) {
-    display: none;
-  }
-}
-
 .copy {
   display: inline-block;
   text-align: center;
