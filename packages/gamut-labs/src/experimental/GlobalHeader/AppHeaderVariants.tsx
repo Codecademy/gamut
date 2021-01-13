@@ -7,12 +7,12 @@ import {
   courseCatalog,
   forEnterprise,
   login,
-  logoItem,
+  logo,
   myHome,
   notifications,
   plansPricingDropdown,
   profile,
-  proLogoItem,
+  proLogo,
   resourcesDropdown,
   search,
   signUp,
@@ -23,7 +23,7 @@ export const anonHeaderItems = (
   renderSearch?: () => ReactElement
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
-    logoItem,
+    logo,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
@@ -48,7 +48,7 @@ export const freeHeaderItems = (
   renderProfile?: () => ReactElement
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
-    logoItem,
+    logo,
     myHome,
     courseCatalog,
     resourcesDropdown,
@@ -75,7 +75,7 @@ export const proHeaderItems = (
   renderProfile?: () => ReactElement
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
-    proLogoItem,
+    proLogo,
     myHome,
     courseCatalog,
     resourcesDropdown,

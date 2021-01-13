@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { focusStyles } from '../../AppHeader/styles';
-import { AppHeaderLink } from '../../AppHeader/types';
+import { AppHeaderLinkItem } from '../../AppHeader/types';
 import { HeaderClickHandler } from '../../GlobalHeader';
 
 const AppHeaderLinkButtonOuter = styled(Anchor)`
@@ -21,12 +21,12 @@ const AppHeaderLinkButtonInner = styled(Box)`
   white-space: nowrap;
 `;
 
-export type AppHeaderLinkElementProps = {
-  item: AppHeaderLink;
+export type AppHeaderLinkProps = {
+  item: AppHeaderLinkItem;
   onClick: HeaderClickHandler;
 };
 
-export const AppHeaderLinkElement: React.FC<AppHeaderLinkElementProps> = ({
+export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   item,
   onClick,
 }) => {

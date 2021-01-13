@@ -1,15 +1,15 @@
 import { ReactElement } from 'react';
 
 import {
-  AppHeaderFillButton,
-  AppHeaderLink,
-  AppHeaderLogo,
-  AppHeaderPopover,
-  AppHeaderRenderPopover,
-  AppHeaderTextButton,
+  AppHeaderFillButtonItem,
+  AppHeaderLinkItem,
+  AppHeaderLogoItem,
+  AppHeaderPopoverItem,
+  AppHeaderRenderPopoverItem,
+  AppHeaderTextButtonItem,
 } from '../AppHeader/types';
 
-export const logoItem: AppHeaderLogo = {
+export const logo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
   id: 'logo',
   href: '/',
@@ -18,7 +18,7 @@ export const logoItem: AppHeaderLogo = {
   type: 'logo',
 };
 
-export const proLogoItem: AppHeaderLogo = {
+export const proLogo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
   href: '/',
   id: 'pro-logo',
@@ -27,7 +27,7 @@ export const proLogoItem: AppHeaderLogo = {
   type: 'logo',
 };
 
-export const myHome: AppHeaderLink = {
+export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
   id: 'my-home',
   text: 'My Home',
@@ -36,7 +36,7 @@ export const myHome: AppHeaderLink = {
   type: 'link',
 };
 
-export const courseCatalog: AppHeaderLink = {
+export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
   id: 'course-catalog',
   text: 'Course Catalog',
@@ -45,7 +45,7 @@ export const courseCatalog: AppHeaderLink = {
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderPopover = {
+export const resourcesDropdown: AppHeaderPopoverItem = {
   id: 'resources',
   text: 'Resources',
   popover: [
@@ -75,7 +75,7 @@ export const resourcesDropdown: AppHeaderPopover = {
   type: 'popover',
 };
 
-export const communityDropdown: AppHeaderPopover = {
+export const communityDropdown: AppHeaderPopoverItem = {
   id: 'community',
   text: 'Community',
   popover: [
@@ -105,7 +105,7 @@ export const communityDropdown: AppHeaderPopover = {
   type: 'popover',
 };
 
-export const plansPricingDropdown: AppHeaderPopover = {
+export const plansPricingDropdown: AppHeaderPopoverItem = {
   id: 'plans-pricing',
   text: 'Plans + Pricing',
   popover: [
@@ -135,7 +135,7 @@ export const plansPricingDropdown: AppHeaderPopover = {
   type: 'popover',
 };
 
-export const forEnterprise: AppHeaderLink = {
+export const forEnterprise: AppHeaderLinkItem = {
   id: 'for-enterprise',
   trackingTarget: 'topnav_business',
   text: 'For Enterprise',
@@ -145,7 +145,7 @@ export const forEnterprise: AppHeaderLink = {
 
 export const search = (
   renderSearch: () => ReactElement
-): AppHeaderRenderPopover => {
+): AppHeaderRenderPopoverItem => {
   return {
     id: 'search',
     icon: '',
@@ -156,7 +156,7 @@ export const search = (
 
 export const notifications = (
   renderNotifications: () => ReactElement
-): AppHeaderRenderPopover => {
+): AppHeaderRenderPopoverItem => {
   return {
     id: 'notifications',
     icon: '',
@@ -167,7 +167,7 @@ export const notifications = (
 
 export const profile = (
   renderProfile: () => ReactElement
-): AppHeaderRenderPopover => {
+): AppHeaderRenderPopoverItem => {
   return {
     id: 'profile',
     image: '',
@@ -176,7 +176,7 @@ export const profile = (
   };
 };
 
-export const upgradeToPro: AppHeaderFillButton = {
+export const upgradeToPro: AppHeaderFillButtonItem = {
   id: 'upgrade-to-pro',
   text: 'Try Pro For Free',
   href: '/pro/membership',
@@ -184,7 +184,7 @@ export const upgradeToPro: AppHeaderFillButton = {
   type: 'fill-button',
 };
 
-export const login: AppHeaderTextButton = {
+export const login: AppHeaderTextButtonItem = {
   dataTestId: 'header-sign-in',
   id: 'login',
   text: 'Log In',
@@ -193,7 +193,7 @@ export const login: AppHeaderTextButton = {
   type: 'text-button',
 };
 
-export const signUp: AppHeaderFillButton = {
+export const signUp: AppHeaderFillButtonItem = {
   dataTestId: 'header-sign-up',
   id: 'signup',
   text: 'Sign Up',

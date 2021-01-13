@@ -3,8 +3,8 @@ import React, { ReactElement } from 'react';
 
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
 import { AppHeaderDropdown } from '../AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderLinkElement } from '../AppHeaderElements/AppHeaderLinkElement';
-import { AppHeaderLogoElement } from '../AppHeaderElements/AppHeaderLogoElement';
+import { AppHeaderLink } from '../AppHeaderElements/AppHeaderLink';
+import { AppHeaderLogo } from '../AppHeaderElements/AppHeaderLogo';
 import { AppHeaderTab } from '../AppHeaderElements/AppHeaderTab';
 import { HeaderClickHandler } from '../GlobalHeader';
 import { AppHeaderItem } from './types';
@@ -28,13 +28,13 @@ const mapItemToElement = (
     case 'logo':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderLogoElement item={item} onClick={onClick} />
+          <AppHeaderLogo item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'link':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderLinkElement item={item} onClick={onClick} />
+          <AppHeaderLink item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'text-button':

@@ -5,7 +5,7 @@ import React from 'react';
 
 import { Logo } from '../../..';
 import { focusStyles } from '../../AppHeader/styles';
-import { AppHeaderLogo } from '../../AppHeader/types';
+import { AppHeaderLogoItem } from '../../AppHeader/types';
 import { HeaderClickHandler } from '../../GlobalHeader';
 
 const LogoButton = styled(Anchor)`
@@ -20,12 +20,12 @@ const StyledLogo = styled(Logo)`
   margin-bottom: -0.1875rem;
 `;
 
-export type LogoButtonProps = {
-  item: AppHeaderLogo;
+export type AppHeaderLogoProps = {
+  item: AppHeaderLogoItem;
   onClick: HeaderClickHandler;
 };
 
-export const AppHeaderLogoElement: React.FC<LogoButtonProps> = ({
+export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   item,
   onClick,
 }) => {

@@ -6,9 +6,9 @@ import React, { useRef, useState } from 'react';
 
 import { Popover } from '../..';
 import { focusStyles } from '../../AppHeader/styles';
-import { AppHeaderPopover } from '../../AppHeader/types';
+import { AppHeaderPopoverItem } from '../../AppHeader/types';
 import { HeaderClickHandler } from '../../GlobalHeader';
-import { AppHeaderLinkElement } from '../AppHeaderLinkElement';
+import { AppHeaderLink } from '../AppHeaderLink';
 import styles from './styles.scss';
 
 const AppHeaderTargetButton = styled.button`
@@ -32,7 +32,7 @@ const AppHeaderTargetButton = styled.button`
 `;
 
 export type AppHeaderDropdownProps = {
-  item: AppHeaderPopover;
+  item: AppHeaderPopoverItem;
   onClick: HeaderClickHandler;
 };
 
@@ -81,7 +81,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           {item.popover.map((link) => {
             return (
               <Box key={link.id} paddingX={16}>
-                <AppHeaderLinkElement
+                <AppHeaderLink
                   // className={styles.menuItem} - className isn't being used in AppHeaderLinkElement so commenting this out
                   item={link}
                   onClick={onClick}

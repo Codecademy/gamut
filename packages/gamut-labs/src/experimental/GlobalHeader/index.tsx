@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 import { AppHeader } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/types';
@@ -8,6 +8,7 @@ import {
   proHeaderItems,
 } from './AppHeaderVariants';
 import styles from './styles.scss';
+import { AnonHeader, FreeHeader, ProHeader } from './types';
 
 export type HeaderClickHandler = (
   event: React.MouseEvent,
@@ -17,27 +18,6 @@ export type HeaderClickHandler = (
 export type GlobalHeaderProps = {
   variant: AnonHeader | FreeHeader | ProHeader;
   onClick: HeaderClickHandler;
-};
-
-type LoggedOutHeader = {
-  renderSearch?: () => ReactElement;
-};
-
-type LoggedInHeader = LoggedOutHeader & {
-  renderNotifications?: () => ReactElement;
-  renderProfile?: () => ReactElement;
-};
-
-type AnonHeader = LoggedOutHeader & {
-  type: 'anon';
-};
-
-type FreeHeader = LoggedInHeader & {
-  type: 'free';
-};
-
-type ProHeader = LoggedInHeader & {
-  type: 'pro';
 };
 
 const getAppHeaderItems = (variant: AnonHeader | FreeHeader | ProHeader) => {

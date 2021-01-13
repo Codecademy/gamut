@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 
 export type AppHeaderItem =
-  | AppHeaderLogo
-  | AppHeaderLink
-  | AppHeaderTextButton
-  | AppHeaderFillButton
-  | AppHeaderPopover
-  | AppHeaderRenderPopover;
+  | AppHeaderLogoItem
+  | AppHeaderLinkItem
+  | AppHeaderTextButtonItem
+  | AppHeaderFillButtonItem
+  | AppHeaderPopoverItem
+  | AppHeaderRenderPopoverItem;
 
-type AppHeaderBase = {
+type AppHeaderBaseItem = {
   dataTestId?: string;
   id: string;
   image?: string;
@@ -16,38 +16,38 @@ type AppHeaderBase = {
   text?: string;
 };
 
-export type AppHeaderLogo = AppHeaderBase & {
+export type AppHeaderLogoItem = AppHeaderBaseItem & {
   href: string;
   pro: boolean;
   trackingTarget: string;
   type: 'logo';
 };
 
-export type AppHeaderLink = AppHeaderBase & {
+export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
   trackingTarget: string;
   type: 'link';
 };
 
-export type AppHeaderTextButton = AppHeaderBase & {
+export type AppHeaderTextButtonItem = AppHeaderBaseItem & {
   href: string;
   trackingTarget: string;
   type: 'text-button';
 };
 
-export type AppHeaderFillButton = AppHeaderBase & {
+export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
   href: string;
   trackingTarget: string;
   type: 'fill-button';
 };
 
-export type AppHeaderPopover = AppHeaderBase & {
-  popover: AppHeaderLink[];
+export type AppHeaderPopoverItem = AppHeaderBaseItem & {
+  popover: AppHeaderLinkItem[];
   trackingTarget: string;
   type: 'popover';
 };
 
-export type AppHeaderRenderPopover = AppHeaderBase & {
+export type AppHeaderRenderPopoverItem = AppHeaderBaseItem & {
   popover: () => ReactElement;
   type: 'render-popover';
 };
