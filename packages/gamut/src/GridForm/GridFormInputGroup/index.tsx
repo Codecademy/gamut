@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
+
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -28,18 +29,23 @@ const StyledFormGroup = styled(FormGroup)`
 const StyledGridFormCheckboxInput = styled(GridFormCheckboxInput)`
   width: 100%;
 `;
+
 const StyledGridFormCustomInput = styled(GridFormCustomInput)`
   width: 100%;
 `;
+
 const StyledGridFormFileInput = styled(GridFormFileInput)`
   width: 100%;
 `;
+
 const StyledGridFormRadioGroupInput = styled(GridFormRadioGroupInput)`
   width: 100%;
 `;
+
 const StyledGridFormSelectInput = styled(GridFormSelectInput)`
   width: 100%;
 `;
+
 const StyledGridFormTextArea = styled(GridFormTextArea)`
   width: 100%;
 `;
