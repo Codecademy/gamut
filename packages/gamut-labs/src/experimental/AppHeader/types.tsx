@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 export type AppHeaderItem =
-  | AppHeaderLogo
+  | AppHeaderLogoLink
   | AppHeaderLink
   | AppHeaderTextButton
   | AppHeaderFillButton
@@ -17,6 +17,7 @@ type AppHeaderBase = {
 };
 
 export type AppHeaderLogo = AppHeaderBase & {
+  href: string;
   pro: boolean;
   trackingTarget: string;
   type: 'logo';

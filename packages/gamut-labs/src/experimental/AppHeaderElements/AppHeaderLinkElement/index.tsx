@@ -7,10 +7,6 @@ import { focusStyles } from '../../AppHeader/styles';
 import { AppHeaderLink } from '../../AppHeader/types';
 import { HeaderClickHandler } from '../../GlobalHeader';
 
-const AppHeaderLinkButtonInner = styled(Box)`
-  white-space: nowrap;
-`;
-
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   color: ${colors.navy};
   text-decoration: none;
@@ -21,8 +17,11 @@ const AppHeaderLinkButtonOuter = styled(Anchor)`
   ${focusStyles}
 `;
 
+const AppHeaderLinkButtonInner = styled(Box)`
+  white-space: nowrap;
+`;
+
 export type AppHeaderLinkElementProps = {
-  className?: string;
   item: AppHeaderLink;
   onClick: HeaderClickHandler;
 };

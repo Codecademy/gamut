@@ -12,6 +12,7 @@ import {
 export const logoItem: AppHeaderLogo = {
   dataTestId: 'header-logo',
   id: 'logo',
+  href: '/',
   pro: false,
   trackingTarget: 'topnav_logo',
   type: 'logo',
@@ -19,6 +20,7 @@ export const logoItem: AppHeaderLogo = {
 
 export const proLogoItem: AppHeaderLogo = {
   dataTestId: 'header-logo',
+  href: '/',
   id: 'pro-logo',
   pro: true,
   trackingTarget: 'topnav_logo',
