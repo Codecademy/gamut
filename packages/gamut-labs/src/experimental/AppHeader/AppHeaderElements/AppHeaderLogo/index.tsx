@@ -1,10 +1,9 @@
 import { Anchor } from '@codecademy/gamut';
+import { Logo } from '@codecademy/gamut-labs/src';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Logo } from '../../..'; // FIX THIS IMPORT
-// import { HeaderClickHandler } from '../../GlobalHeader';
 import { focusStyles } from '../SharedStyles';
 import { AppHeaderLogoItem } from '../types';
 
@@ -22,7 +21,7 @@ const StyledLogo = styled(Logo)`
 
 export type AppHeaderLogoProps = {
   item: AppHeaderLogoItem;
-  onClick: () => {}; // is this what I should do or should I already put the type as the click handler we created specific to app header?
+  onClick: (event: React.MouseEvent) => {}; // eventually this will be of type HeaderClickHandler and take in a second parameter "item" (the react node)
 };
 
 export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
@@ -32,7 +31,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   return (
     <LogoButton
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => onClick(event, item)}
+      onClick={(event: React.MouseEvent) => onClick(event)}
       href={item.href}
     >
       {
