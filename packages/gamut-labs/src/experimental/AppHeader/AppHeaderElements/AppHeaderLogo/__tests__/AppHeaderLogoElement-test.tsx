@@ -4,11 +4,13 @@ import React from 'react';
 import { AppHeaderLogoItem } from '../../types';
 import { AppHeaderLogo, AppHeaderLogoProps } from '..';
 
+const testUrl = 'https://codecademy.com';
+
 const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
   const props: AppHeaderLogoProps = {
     item: {
       id: '1dfa',
-      href: 'https://codecademy.com',
+      href: testUrl,
       type: 'logo',
       pro: false,
       trackingTarget: 'tracking target',
@@ -18,6 +20,7 @@ const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
   };
   return mount(<AppHeaderLogo {...props} />);
 };
+
 describe('AppHeaderLogo', () => {
   it('renders a logo', () => {
     const wrapper = renderAppHeaderLogo();
@@ -29,5 +32,11 @@ describe('AppHeaderLogo', () => {
     const wrapper = renderAppHeaderLogo({ pro: true });
     const icon = wrapper.find('svg');
     expect(icon.find('title').text()).toEqual('Codecademy Pro Logo');
+  });
+
+  it('links to the provided href', () => {
+    const wrapper = renderAppHeaderLogo();
+    const href = wrapper.find('a').prop('href');
+    expect(href).toEqual(testUrl);
   });
 });
