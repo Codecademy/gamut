@@ -1,7 +1,9 @@
+import { fileAbsolute } from 'paths.macro';
+import { PropsTable, storyTitle } from '~styleguide/blocks';
 import { TableOfContents } from '~styleguide/blocks';
 
 <Meta
-  title="Meta/About"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle:
       'Documentation and associated links explaining our in-progress approach to a design system.',

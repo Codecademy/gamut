@@ -1,7 +1,8 @@
-import { TableOfContents } from '~styleguide/blocks';
+import { TableOfContents, storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/About"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle:
       'Components across the design spectrum that are more experimental or tied to brand representation.',

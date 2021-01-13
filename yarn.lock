@@ -15727,6 +15727,15 @@ path-type@^4.0.0:
   resolved "https://registry.npmjs.org/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+paths.macro@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.npmjs.org/paths.macro/-/paths.macro-3.0.1.tgz#ee2532f345531177a6547e13c94196911d6471cd"
+  integrity sha512-jnrSe8j9WCZuvG+LRu8gFc+Zz3PskVOeM6WwXXocjz29L7SXETEAlamUvTDc39VGtHBQK6eBNhAkJ7ZuGpkpkQ==
+  dependencies:
+    babel-plugin-macros "^2.8.0"
+    find-root "^1.1.0"
+    upath "^1.2.0"
+
 pbkdf2@^3.0.3:
   version "3.0.17"
   resolved "https://registry.npmjs.org/pbkdf2/-/pbkdf2-3.0.17.tgz#976c206530617b14ebb32114239f7b09336e93a6"

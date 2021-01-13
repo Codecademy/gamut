@@ -1,5 +1,8 @@
+import { fileAbsolute } from 'paths.macro';
+import { storyTitle } from '~styleguide/blocks';
+
 <Meta
-  title="Meta/FAQs"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle: `Please let us know if there are questions you'd like answered here!`,
   }}

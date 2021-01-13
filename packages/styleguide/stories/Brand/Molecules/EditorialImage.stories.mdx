@@ -1,8 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { EditorialImage } from '@codecademy/gamut-labs/src';
+import { storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Molecules/EditorialImage"
+  title={storyTitle(fileAbsolute)}
   component={EditorialImage}
   args={{
     image:

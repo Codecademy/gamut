@@ -1,7 +1,8 @@
-import { TableOfContents } from '~styleguide/blocks';
+import { TableOfContents, storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Molecules/About"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle:
       'Molecules are groups of atoms together. These consist of a few atoms combined for a small, self-contained design.',

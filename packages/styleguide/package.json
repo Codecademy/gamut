@@ -59,6 +59,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "glob": "^7.1.6"
+    "glob": "^7.1.6",
+    "paths.macro": "3.0.1"
   }
 }

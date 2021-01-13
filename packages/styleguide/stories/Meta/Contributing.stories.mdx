@@ -1,10 +1,12 @@
 <!-- The normal import would be '@storybook/addon-links/react' -->
 <!-- but it is throwing a typescript error in the current alpha  -->
 
+import { fileAbsolute } from 'paths.macro';
+import { PropsTable, storyTitle } from '~styleguide/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 <Meta
-  title="Meta/Contributing"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle: `Thanks so much for being interested in contributing to Gamut!
 We love working with Codecademy employees across all our teams.`,

@@ -1,7 +1,8 @@
-import { TableOfContents } from '~styleguide/blocks';
+import { TableOfContents, storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Atoms/About"
+  title={storyTitle(fileAbsolute)}
   parameters={{
     subtitle:
       'Atoms are our basic building block components. They are the most granular, low-level visuals in our system.',

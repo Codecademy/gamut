@@ -1,8 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { EditorialQuote } from '@codecademy/gamut-labs/src';
+import { storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Molecules/EditorialQuote"
+  title={storyTitle(fileAbsolute)}
   component={EditorialQuote}
   args={{ quote: 'In an interstellar burst, I am back to save the universe.' }}
   parameters={{

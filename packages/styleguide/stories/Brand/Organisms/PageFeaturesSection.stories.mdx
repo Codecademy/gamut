@@ -3,9 +3,11 @@ import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 
 import { PageFeatures } from '@codecademy/gamut-labs/src';
+import { storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Organisms/PageFeatures"
+  title={storyTitle(fileAbsolute)}
   component={PageFeatures}
   args={{
     title: 'Welcome to Codecademy',

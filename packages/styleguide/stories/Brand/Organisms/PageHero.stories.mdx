@@ -1,9 +1,11 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PageHero } from '@codecademy/gamut-labs/src';
+import { storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
 
 <Meta
-  title="Brand/Organisms/PageHero"
+  title={storyTitle(fileAbsolute)}
   component={PageHero}
   args={{
     title:

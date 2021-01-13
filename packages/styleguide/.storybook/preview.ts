@@ -25,7 +25,6 @@ export const parameters = {
     storySort: {
       order: [
         'Gamut',
-        'Meta',
         'Foundations',
         'Typography',
         'Layouts',
@@ -33,6 +32,7 @@ export const parameters = {
         'Molecules',
         'Organisms',
         'Brand',
+        'Meta',
         'Deprecated',
       ],
       // Fallback ordering

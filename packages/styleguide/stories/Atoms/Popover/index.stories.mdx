@@ -1,0 +1,23 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { Popover } from '@codecademy/gamut-labs/src';
+import { PopoverExample } from './Popover.examples';
+import { storyTitle } from '~styleguide/blocks';
+import { fileAbsolute } from 'paths.macro';
+
+<Meta
+  title={storyTitle(fileAbsolute)}
+  component={Popover}
+  parameters={{
+    subtitle: `Popover is a surface which takes a target element and shows an overlay
+positioned around that element.`,
+    source: 'gamut-labs',
+    status: 'volatile',
+  }}
+/>
+
+<Canvas>
+  <Story name="Popover">{PopoverExample}</Story>
+</Canvas>
+
+<Props story="Popover" />
