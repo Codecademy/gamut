@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -41,21 +41,19 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  const overlayRef = useRef<HTMLDivElement>(null);
-  if (!isOpen) return null;
+  const body = document.querySelector('body');
 
   useEffect(() => {
-    const body = overlayRef.current?.parentElement;
-    if (isOpen && body) {
-      body.style.overflow = 'hidden';
+    if (body) {
+      body.style.overflow = isOpen ? 'hidden' : 'visible';
     }
-  }, [overlayRef, isOpen]);
+  }, [isOpen]);
 
   if (!isOpen) return null;
+
   return (
     <BodyPortal>
       <div
-        ref={overlayRef}
         className={cx(
           staticPositioning && styles.staticPositioning,
           styles.container,
