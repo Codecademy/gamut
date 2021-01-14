@@ -5,9 +5,9 @@ import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../..';
-import { focusStyles } from '../../SharedStyles';
-import { AppHeaderDropdownItem } from '../../types';
 import { AppHeaderLink } from '../AppHeaderLink';
+import { focusStyles } from '../SharedStyles';
+import { AppHeaderDropdownItem, AppHeaderLinkItem } from '../types';
 import styles from './styles.scss';
 
 const AppHeaderTargetButton = styled.button(({ theme }) => {
@@ -38,8 +38,7 @@ const StyledPopover = styled(Popover)`
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
-  // onClick: HeaderClickHandler;
-  onClick: (event: React.MouseEvent) => {}; // PLACEHOLDER until GlobalHeader is merged
+  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -50,9 +49,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen &&
-      // onClick(event, item)
-      onClick(event); // PLACEHOLDER until GlobalHeader is merged
+    !isOpen && onClick(event); // TODO pass item through
   };
   const handleClose = () => {
     setIsOpen(false);
@@ -86,7 +83,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         targetRef={headerDropdownRef}
       >
         <Box paddingY={12}>
-          {item.popover.map((link) => {
+          {item.popover.map((link: AppHeaderLinkItem) => {
             return (
               <Box key={link.id} paddingX={16}>
                 <AppHeaderLink
