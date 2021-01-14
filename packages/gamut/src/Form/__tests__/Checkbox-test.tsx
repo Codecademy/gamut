@@ -10,10 +10,14 @@ describe('<Checkbox>', () => {
   };
 
   it('sets the input checked state when the prop is passed', () => {
-    const wrapper = shallow(<Checkbox {...defaultProps} checked />);
-    expect(wrapper.find('input[type="checkbox"]').prop('checked')).toEqual(
-      true
+    const onChangeCallback = jest.fn();
+
+    const wrapper = shallow(
+      <Checkbox {...defaultProps} checked onChange={onChangeCallback} />
     );
+    expect(
+      wrapper.find('[data-testid="input-checkbox"]').prop('checked')
+    ).toEqual(true);
   });
 
   it('calls the onChange callback when the input changes', () => {
@@ -22,7 +26,7 @@ describe('<Checkbox>', () => {
     const wrapper = shallow(
       <Checkbox {...defaultProps} onChange={onChangeCallback} value="a" />
     );
-    wrapper.find('input[type="checkbox"]').simulate('change', {
+    wrapper.find('[data-testid="input-checkbox"]').simulate('change', {
       target: {
         value: 'a',
       },

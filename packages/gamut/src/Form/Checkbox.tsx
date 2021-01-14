@@ -1,4 +1,4 @@
-import { pxRem, screenReaderOnly } from '@codecademy/gamut-styles';
+import { pxRem, screenReaderOnly, swatches } from '@codecademy/gamut-styles';
 import { noSelect } from '@codecademy/gamut-styles';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -102,7 +102,13 @@ const CheckboxText = styled.span<Multiline>`
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, htmlFor, multiline, id, ...rest }, ref) => (
     <div className={className}>
-      <Input id={id || htmlFor} type="checkbox" {...rest} ref={ref} />
+      <Input
+        id={id || htmlFor}
+        type="checkbox"
+        {...rest}
+        ref={ref}
+        data-testid="input-checkbox"
+      />
       <CheckboxLabel htmlFor={id || htmlFor}>
         <CheckboxElement multiline={multiline}>
           <CheckboxVector width="24px" height="24px" viewBox="0 0 20 20">
