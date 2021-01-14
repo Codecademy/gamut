@@ -10,6 +10,7 @@ import { HeaderClickHandler } from '../../GlobalHeader';
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   color: ${colors.navy};
   text-decoration: none;
+  display: block;
   &:hover {
     color: ${colors.hyper};
     text-decoration: none;
