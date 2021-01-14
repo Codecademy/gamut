@@ -7440,6 +7440,11 @@ component-emitter@^1.2.1:
   resolved "https://registry.npmjs.org/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
+component-test-setup@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/component-test-setup/-/component-test-setup-0.0.1.tgz#245d4eec96e11f3eb5f0130d257298465642095a"
+  integrity sha512-Ug64z2Y5uQKse+6AXq7B/CWsue0Hfj95ZjQQrdJn3D8H+fpf1slRJ02/6O9b/v4G2nwd34XKmNi7pgzw+59n/w==
+
 compute-scroll-into-view@^1.0.14:
   version "1.0.16"
   resolved "https://registry.npmjs.org/compute-scroll-into-view/-/compute-scroll-into-view-1.0.16.tgz#5b7bf4f7127ea2c19b750353d7ce6776a90ee088"
