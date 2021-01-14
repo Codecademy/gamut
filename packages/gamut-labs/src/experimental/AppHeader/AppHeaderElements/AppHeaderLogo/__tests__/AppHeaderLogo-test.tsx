@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { mount } from 'enzyme';
 import React from 'react';
 
@@ -18,7 +20,11 @@ const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
     },
     onClick: jest.fn(),
   };
-  return mount(<AppHeaderLogo {...props} />);
+  return mount(
+    <ThemeProvider theme={theme}>
+      <AppHeaderLogo {...props} />
+    </ThemeProvider>
+  );
 };
 
 describe('AppHeaderLogo', () => {
