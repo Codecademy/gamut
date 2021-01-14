@@ -1,9 +1,19 @@
 (Work In Progress; will update as we continue to build the Global Header + then integrate it w/ the monolith)
 
-The Global Header is the component to be consumed. It takes in one prop called 'variant' - which is of type
+The Global Header is the component to be consumed. It takes in two props. The first is called 'variant' - which is of type
 AnonHeader (the header an 'anonyous user' i.e. logged out user will see), FreeHeader (the header a user with a free membership will see), or ProHeader (the header a user with a pro membership will see).
 
 The variant tells us 1) what type of user we have, so we can get the header items for that user and 2) whether we need to render the Search, Notification, and Profile components.
+
+The prop of the Global Header is of type 
+HeaderClickHandler: (
+event: React.MouseEvent,
+item: AppHeaderItem
+) => void;
+
+This will be defined in the monolith or static sites, and handle any tracking that needs to be done. 
+
+--- How it's all connected in Gamut ---
 
 The Global Header passes to the AppHeader the header items, and the AppHeader renders the header content in App Sections (left + right). The AppHeader has no knowledge of the user, it just takes as a prop an object that has a left property (an array of AppHeaderItems) to render on the left side of the header & a right property (an array of AppHeaderItems) to render on the right side of the header.
 
