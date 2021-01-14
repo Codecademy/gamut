@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React from 'react';
-import { useLockBodyScroll } from 'react-use';
+import React, { useRef, useEffect } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -42,13 +41,20 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  useLockBodyScroll(isOpen);
-
+  const overlayRef = useRef<HTMLDivElement>(null);
   if (!isOpen) return null;
+
+  useEffect(() => {
+    const body = overlayRef.current?.parentElement;
+    if (isOpen && body) {
+      body.style.overflow = 'hidden';
+    }
+  }, [overlayRef, isOpen]);
 
   return (
     <BodyPortal>
       <div
+        ref={overlayRef}
         className={cx(
           staticPositioning && styles.staticPositioning,
           styles.container,
