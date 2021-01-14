@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const HiddenText = styled.span`
+export const HiddenText = styled.span<{ htmlFor?: string }>`
   display: inline-block;
   font-size: 0;
   height: 1px;

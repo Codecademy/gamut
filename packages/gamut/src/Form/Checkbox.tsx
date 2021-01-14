@@ -1,4 +1,4 @@
-import { pxRem, screenReaderOnly, swatches } from '@codecademy/gamut-styles';
+import { pxRem, screenReaderOnly } from '@codecademy/gamut-styles';
 import { noSelect } from '@codecademy/gamut-styles';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
