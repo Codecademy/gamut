@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import styles from './styles.module.scss';
@@ -51,6 +51,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     }
   }, [overlayRef, isOpen]);
 
+  if (!isOpen) return null;
   return (
     <BodyPortal>
       <div
