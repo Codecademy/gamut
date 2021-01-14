@@ -24,8 +24,7 @@ const AppHeaderLinkButtonInner = styled(Box)`
 
 export type AppHeaderLinkProps = {
   item: AppHeaderLinkItem;
-  // onClick: HeaderClickHandler;
-  onClick: (event: React.MouseEvent) => {}; // PLACEHOLDER until GlobalHeader is merged
+  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
@@ -36,8 +35,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      // onClick={(event: React.MouseEvent) => onClick(event, item)}
-      onClick={(event: React.MouseEvent) => onClick(event)} // PLACEHOLDER until GlobalHeader is merged
+      onClick={(event: React.MouseEvent) => onClick(event)} // TODO pass item through
       variant="interface"
     >
       <AppHeaderLinkButtonInner
