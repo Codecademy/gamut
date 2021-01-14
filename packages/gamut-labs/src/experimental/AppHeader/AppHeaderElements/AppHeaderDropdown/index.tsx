@@ -86,11 +86,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           {item.popover.map((link: AppHeaderLinkItem) => {
             return (
               <Box key={link.id} paddingX={16}>
-                <AppHeaderLink
-                  // className={styles.menuItem} - className isn't being used in AppHeaderLinkElement so commenting this out
-                  item={link}
-                  onClick={onClick}
-                />
+                <AppHeaderLink item={link} onClick={onClick} />
               </Box>
             );
           })}
