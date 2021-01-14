@@ -41,9 +41,9 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  const body = document.querySelector('body');
-
   useEffect(() => {
+    const body = document.querySelector('body');
+
     if (body) {
       body.style.overflow = isOpen ? 'hidden' : 'visible';
     }
