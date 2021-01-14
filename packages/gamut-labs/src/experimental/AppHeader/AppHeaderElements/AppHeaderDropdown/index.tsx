@@ -24,6 +24,7 @@ const AppHeaderTargetButton = styled.button(({ theme }) => {
   min-width: 0;
   padding: 1rem 0;
   font-size: 0;
+  cursor: ponter;
   &:hover {
     color: ${theme.colors.hyper};
     text-decoration: none;
@@ -31,10 +32,6 @@ const AppHeaderTargetButton = styled.button(({ theme }) => {
   ${focusStyles}
 `;
 });
-
-const StyledPopover = styled(Popover)`
-  z-index: 100;
-`;
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
@@ -74,7 +71,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
-      <StyledPopover
+      <Popover
         align="left"
         verticalOffset={-2}
         outline
@@ -91,7 +88,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             );
           })}
         </Box>
-      </StyledPopover>
+      </Popover>
     </>
   );
 };
