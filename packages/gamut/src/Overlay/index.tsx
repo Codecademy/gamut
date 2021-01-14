@@ -1,9 +1,8 @@
-import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useEffect } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
-import styles from './styles.module.scss';
+import { FlexBox } from '../Box';
 
 export type OverlayProps = {
   children: React.ReactElement<any>;
@@ -53,12 +52,15 @@ export const Overlay: React.FC<OverlayProps> = ({
 
   return (
     <BodyPortal>
-      <div
-        className={cx(
-          staticPositioning && styles.staticPositioning,
-          styles.container,
-          className
-        )}
+      <FlexBox
+        position={staticPositioning ? 'static' : 'fixed'}
+        justifyContent="center"
+        alignItems="center"
+        bottom="0"
+        left="0"
+        right="0"
+        top="0"
+        className={className} // TODO: Test overwritting rules works as desired
       >
         <FocusTrap
           focusTrapOptions={{
@@ -69,7 +71,7 @@ export const Overlay: React.FC<OverlayProps> = ({
         >
           {children}
         </FocusTrap>
-      </div>
+      </FlexBox>
     </BodyPortal>
   );
 };
