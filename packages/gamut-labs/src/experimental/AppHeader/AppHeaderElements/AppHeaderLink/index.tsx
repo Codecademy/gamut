@@ -1,21 +1,22 @@
 import { Anchor, Box } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { focusStyles } from '../../SharedStyles';
 import { AppHeaderLinkItem } from '../../types';
 
-const AppHeaderLinkButtonOuter = styled(Anchor)`
-  color: ${colors.navy};
+const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
+  return `
+  color: ${theme.colors.navy};
   text-decoration: none;
   display: block;
   &:hover {
-    color: ${colors.hyper};
+    color: ${theme.colors.hyper};
     text-decoration: none;
   }
   ${focusStyles}
 `;
+});
 
 const AppHeaderLinkButtonInner = styled(Box)`
   white-space: nowrap;
