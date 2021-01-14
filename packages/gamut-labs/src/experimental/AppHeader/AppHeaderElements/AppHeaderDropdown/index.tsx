@@ -1,6 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { colors, pxRem } from '@codecademy/gamut-styles';
+import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
@@ -10,12 +10,13 @@ import { AppHeaderDropdownItem } from '../../types';
 import { AppHeaderLink } from '../AppHeaderLink';
 import styles from './styles.scss';
 
-const AppHeaderTargetButton = styled.button`
+const AppHeaderTargetButton = styled.button(({ theme }) => {
+  return `
   background-color: transparent;
   text-align: left;
   display: flex;
   align-items: center;
-  color: ${colors.navy};
+  color: ${theme.colors.navy};
   border: 1px solid transparent;
   line-height: 1.5;
   white-space: nowrap;
@@ -24,11 +25,12 @@ const AppHeaderTargetButton = styled.button`
   padding: 1rem 0;
   font-size: 0;
   &:hover {
-    color: ${colors.hyper};
+    color: ${theme.colors.hyper};
     text-decoration: none;
   }
   ${focusStyles}
 `;
+});
 
 const StyledPopover = styled(Popover)`
   z-index: 100;
