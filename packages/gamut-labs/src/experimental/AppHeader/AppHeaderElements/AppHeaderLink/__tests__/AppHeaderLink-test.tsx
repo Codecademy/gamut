@@ -8,11 +8,11 @@ const testUrl = 'test-url';
 
 const props: AppHeaderLinkProps = {
   item: {
-    dataTestId: 'test-url',
+    dataTestId: '',
     id: 'test-url',
     href: testUrl,
     text: testText,
-    trackingTarget: 'string',
+    trackingTarget: '',
     type: 'link',
   },
   onClick: jest.fn(),
