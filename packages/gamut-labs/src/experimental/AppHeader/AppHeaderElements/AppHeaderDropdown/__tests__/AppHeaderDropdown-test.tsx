@@ -46,10 +46,6 @@ describe('AppHeaderDropdown', () => {
     expect(screen.getByText(testTargetText));
   });
 
-  it('target links to the provided href', () => {
-    renderAppHeaderDropdown();
-  });
-
   it('displays sublinks text upon expanding the dropdown', () => {
     renderAppHeaderDropdown();
     screen.getByRole('button').click();
