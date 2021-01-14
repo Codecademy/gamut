@@ -21,7 +21,7 @@ export type CheckboxProps = InputHTMLAttributes<HTMLInputElement> &
 
 type Multiline = { multiline?: boolean };
 
-const blue = colors['blue-500'];
+const activeColor = colors['blue-500'];
 
 const CheckboxLabel = styled.label`
   ${noSelect}
@@ -66,16 +66,16 @@ const Input = styled.input`
   ${screenReaderOnly}
 
   &:focus + ${CheckboxLabel} > ${CheckboxElement} {
-    outline: ${pxRem(2)} solid ${blue};
+    outline: ${pxRem(2)} solid ${activeColor};
     outline-offset: ${pxRem(2)};
   }
 
   &:checked + ${CheckboxLabel} ${CheckboxElement} {
-    border-color: ${blue};
+    border-color: ${activeColor};
 
     ${CheckboxVector} {
       path {
-        fill: ${blue};
+        fill: ${activeColor};
       }
 
       ${Polyline} {
