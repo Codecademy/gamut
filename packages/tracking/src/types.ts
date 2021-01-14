@@ -52,8 +52,8 @@ export type EventDataTypes = {
     result: BaseEventAnyData;
   };
   page: {
-    career_path_visited: PagePathVisited;
-    skill_path_visited: PagePathVisited;
+    career_path_visited: PagePathVisitedData;
+    skill_path_visited: PagePathVisitedData;
   };
 };
 
@@ -226,7 +226,7 @@ export type UseUserResponse = {
   status: string;
 };
 
-export declare type PagePathVisited = BaseEventData & {
+export declare type PagePathVisitedData = BaseEventData & {
   path_id: string;
   path_full_title: string;
 };
