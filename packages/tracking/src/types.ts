@@ -51,6 +51,10 @@ export type EventDataTypes = {
     query: BaseEventAnyData;
     result: BaseEventAnyData;
   };
+  page: {
+    career_path_visited: PagePathVisitedData;
+    skill_path_visited: PagePathVisitedData;
+  };
 };
 
 /**
@@ -220,4 +224,9 @@ export type User = {
 export type UseUserResponse = {
   user?: User;
   status: string;
+};
+
+export declare type PagePathVisitedData = BaseEventData & {
+  path_id: string;
+  path_full_title: string;
 };
