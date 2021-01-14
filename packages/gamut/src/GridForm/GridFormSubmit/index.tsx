@@ -1,3 +1,4 @@
+import { grid } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -25,10 +26,7 @@ const styles: Record<string, string> = {
   right: 'flex-end',
 };
 
-const StyledColumn = styled(Column)<{ position: GridFormSubmitPosition }>`
-  align-items: center;
-  justify-content: ${({ position }) => styles[position]};
-`;
+const StyledColumn = styled(Column)(grid);
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,

@@ -24,34 +24,11 @@ export type GridFormInputGroupProps = {
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
-`;
 
-const StyledGridFormCheckboxInput = styled(GridFormCheckboxInput)`
-  width: 100%;
-`;
-
-const StyledGridFormCustomInput = styled(GridFormCustomInput)`
-  width: 100%;
-`;
-
-const StyledGridFormFileInput = styled(GridFormFileInput)`
-  width: 100%;
-`;
-
-const StyledGridFormRadioGroupInput = styled(GridFormRadioGroupInput)`
-  width: 100%;
-`;
-
-const StyledGridFormSelectInput = styled(GridFormSelectInput)`
-  width: 100%;
-`;
-
-const StyledGridFormTextArea = styled(GridFormTextArea)`
-  width: 100%;
-`;
-
-const StyledGridFormTextInput = styled(GridFormTextInput)`
-  width: 100%;
+  // This is always the input
+  > *:last-child {
+    width: 100%;
+  }
 `;
 
 const StyledFormGroupLabel = styled(FormGroupLabel)`
@@ -66,7 +43,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     switch (props.field.type) {
       case 'checkbox':
         return (
-          <StyledGridFormCheckboxInput
+          <GridFormCheckboxInput
             field={props.field}
             register={props.register}
           />
@@ -74,7 +51,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       case 'custom':
         return (
-          <StyledGridFormCustomInput
+          <GridFormCustomInput
             field={props.field}
             register={props.register}
             setValue={props.setValue}
@@ -84,7 +61,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       case 'radio-group':
         return (
-          <StyledGridFormRadioGroupInput
+          <GridFormRadioGroupInput
             field={props.field}
             register={props.register}
             setValue={props.setValue}
@@ -93,7 +70,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       case 'select':
         return (
-          <StyledGridFormSelectInput
+          <GridFormSelectInput
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -102,7 +79,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       case 'file':
         return (
-          <StyledGridFormFileInput
+          <GridFormFileInput
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -111,7 +88,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       case 'textarea':
         return (
-          <StyledGridFormTextArea
+          <GridFormTextArea
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -120,7 +97,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
 
       default:
         return (
-          <StyledGridFormTextInput
+          <GridFormTextInput
             error={!!props.error}
             field={props.field}
             register={props.register}
