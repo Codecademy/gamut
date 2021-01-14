@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
@@ -37,7 +39,11 @@ const props: AppHeaderDropdownProps = {
 };
 
 const renderAppHeaderDropdown = () => {
-  return render(<AppHeaderDropdown {...props} />);
+  return render(
+    <ThemeProvider theme={theme}>
+      <AppHeaderDropdown {...props} />
+    </ThemeProvider>
+  );
 };
 
 describe('AppHeaderDropdown', () => {
