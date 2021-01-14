@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.4...@codecademy/gamut-labs@7.8.0) (2021-01-14)
+
+
+### Features
+
+* **AppHeaderLogo:** logo button AppHeaderElement ([#1277](https://github.com/Codecademy/client-modules/issues/1277)) ([9e3f25b](https://github.com/Codecademy/client-modules/commit/9e3f25b837d0332db54973a5b5dfea2c3f430525))
+
+
+
 ### [7.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.3...@codecademy/gamut-labs@7.7.4) (2021-01-13)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
