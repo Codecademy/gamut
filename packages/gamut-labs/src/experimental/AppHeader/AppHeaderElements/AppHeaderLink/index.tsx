@@ -2,8 +2,8 @@ import { Anchor, Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { focusStyles } from '../SharedStyles';
-import { AppHeaderLinkItem } from '../types';
+import { focusStyles } from '../../SharedStyles';
+import { AppHeaderLinkItem } from '../../types';
 
 const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
   return `
