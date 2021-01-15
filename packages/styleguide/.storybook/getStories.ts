@@ -27,16 +27,14 @@ const getChunkedStories = () => {
   const sanitized = storiesFiles.filter((path) =>
     intersection(EXCLUDED_STORIES, path.split('/').length === 0)
   );
-  console.log(sanitized);
   const chunkedStories = splitToChunks(sanitized, TOTAL);
   const foundStories = chunkedStories[INDEX] || [];
+
   console.log(
     `Running storyshot tests for ${foundStories.length} stories out of ${
       storiesFiles.length
     } total stories ${INDEX + 1}/${TOTAL}`
   );
-
-  console.log(foundStories);
 
   return foundStories;
 };
