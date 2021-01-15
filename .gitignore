@@ -46,3 +46,6 @@ packages/gamut-styles/demo-styles
 # For vim users
 *.swp
 *.swo
+
+# Automatic report....json files
+report*.json
