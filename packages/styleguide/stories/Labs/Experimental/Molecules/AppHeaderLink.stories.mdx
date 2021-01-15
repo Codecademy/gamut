@@ -5,7 +5,7 @@ import title from '@codecademy/macros/lib/title.macro';
 <Meta
   title={title}
   component={AppHeaderLink}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
   args={{
     item: {
       id: 'link',
@@ -17,10 +17,8 @@ import title from '@codecademy/macros/lib/title.macro';
   }}
 />
 
-<Props of={AppHeaderLink} />
-
-## Link
-
 <Canvas>
   <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
 </Canvas>
+
+<Props story="AppHeaderLink" />

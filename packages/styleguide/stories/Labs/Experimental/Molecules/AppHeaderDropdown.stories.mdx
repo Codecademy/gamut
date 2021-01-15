@@ -5,7 +5,7 @@ import title from '@codecademy/macros/lib/title.macro';
 <Meta
   title={title}
   component={AppHeaderDropdown}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
   args={{
     item: {
       id: 'target',
@@ -32,12 +32,10 @@ import title from '@codecademy/macros/lib/title.macro';
   }}
 />
 
-<Props of={AppHeaderDropdown} />
-
-## Dropdown
-
 <Canvas>
   <Story name="AppHeaderDropdown">
     {(args) => <AppHeaderDropdown {...args} />}
   </Story>
 </Canvas>
+
+<Props story="AppHeaderDropdown" />
