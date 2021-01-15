@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`title.macro should transform 1`] = `
+exports[`title.macro should transform a js file 1`] = `
 "const meta = {
-  title: \\"World/Hello.js\\"
+  default: \\"World/Hello\\",
+  title: \\"World/Hello\\"
 };"
 `;
+
+exports[`title.macro should transform a story file 1`] = `""`;

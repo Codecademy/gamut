@@ -7,8 +7,16 @@ const options = {
 };
 
 describe('title.macro', () => {
-  test('should transform', () => {
+  test('should transform a js file', () => {
     const inputFile = './example/stories/World/Hello.js';
+
+    const result = babel.transformFileSync(inputFile, options);
+
+    expect(result.code).toMatchSnapshot();
+  });
+
+  test('should transform a story file', () => {
+    const inputFile = './example/stories/World/Example.stories.js';
 
     const result = babel.transformFileSync(inputFile, options);
 
