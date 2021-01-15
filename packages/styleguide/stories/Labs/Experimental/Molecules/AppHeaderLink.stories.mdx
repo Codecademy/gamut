@@ -1,0 +1,25 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { AppHeaderLink } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderLink"
+  component={AppHeaderLink}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: {
+      id: 'link',
+      href: 'http://codecademy.com',
+      text: 'Nav Link',
+      trackingTarget: 'track-link',
+      type: 'link',
+    },
+  }}
+/>
+
+<Props of={AppHeaderLink} />
+
+## Link
+
+<Canvas>
+  <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
+</Canvas>

@@ -3,7 +3,7 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
 
 <Meta
-  title="Brand/Organisms/LandingPage/PagePrefooter"
+  title="Brand/Organisms/PagePrefooter"
   component={PagePrefooter}
   args={{
     title:
@@ -19,10 +19,11 @@ import { PagePrefooter } from '@codecademy/gamut-labs/src';
       },
     },
   }}
-  parameters={{ status: 'volatile' }}
+  parameters={{
+    subtitle: `Prefooter component for landing pages created in Contentful. All props are optional.`,
+    status: 'volatile',
+  }}
 />
-
-Prefooter component for landing pages created in Contentful. All props are optional.
 
 ### With CTA
 

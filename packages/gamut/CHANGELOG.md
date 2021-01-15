@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.0...@codecademy/gamut@19.10.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* **Overlay:**  Body overflow hidden iOS bug ([c5a2057](https://github.com/Codecademy/client-modules/commit/c5a205713ab44c11ac2eb93b79c70ca63bc4a4b3)), closes [/github.com/streamich/react-use/issues/1477#issuecomment-749788126](https://github.com/Codecademy//github.com/streamich/react-use/issues/1477/issues/issuecomment-749788126)
+
+
+
+## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.3...@codecademy/gamut@19.10.0) (2021-01-13)
+
+
+### Features
+
+* **Pattern:** add new Pattern component ([#1271](https://github.com/Codecademy/client-modules/issues/1271)) ([c392c8f](https://github.com/Codecademy/client-modules/commit/c392c8fe647811354dff89a0cddf198cb4cb0b2b))
+
+
+
+### [19.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.2...@codecademy/gamut@19.9.3) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.1...@codecademy/gamut@19.9.2) (2021-01-08)
+
+
+### Bug Fixes
+
+* added fontSmoothing to buttons ([6afbe95](https://github.com/Codecademy/client-modules/commit/6afbe9532aa16282a370910c0bb5955ae1033478))
+
+
+
+### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.0...@codecademy/gamut@19.9.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **toggle:** aria-label typo ([8d948ac](https://github.com/Codecademy/client-modules/commit/8d948ac624760b6300d7aa00d3030b161c3da6b5))
+
+
+
+## [19.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.2...@codecademy/gamut@19.9.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [19.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.1...@codecademy/gamut@19.8.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* **IconButton:** make children prop optional ([57c4226](https://github.com/Codecademy/client-modules/commit/57c422644b876ec651f6026163cc661e113e8930))
+
+
+
 ### [19.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.0...@codecademy/gamut@19.8.1) (2021-01-06)
 
 

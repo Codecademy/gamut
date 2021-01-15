@@ -34,7 +34,7 @@ export class Toggle extends Component<ToggleProps, {}> {
           },
           className
         )}
-        arial-label={label}
+        aria-label={label}
         htmlFor={label}
       >
         <input
