@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.12.0...@codecademy/styleguide@21.13.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderDropdown:** dropdown AppHeaderElement ([#1279](https://github.com/Codecademy/client-modules/issues/1279)) ([1d7505f](https://github.com/Codecademy/client-modules/commit/1d7505fda48b247b295722859b5f64862f067b0f))
+
+
+
 ## [21.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.11.0...@codecademy/styleguide@21.12.0) (2021-01-15)
 
 
