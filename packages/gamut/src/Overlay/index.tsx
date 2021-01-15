@@ -41,11 +41,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   isOpen,
 }) => {
   useLayoutEffect(() => {
-    const body = document.querySelector('body');
-
-    if (body) {
-      body.style.overflow = isOpen ? 'hidden' : 'visible';
-    }
+    document.body.style.overflow = isOpen ? 'hidden' : 'visible';
   }, [isOpen]);
 
   if (!isOpen) return null;
