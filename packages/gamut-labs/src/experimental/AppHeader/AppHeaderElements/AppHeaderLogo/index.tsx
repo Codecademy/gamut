@@ -1,8 +1,8 @@
 import { Anchor } from '@codecademy/gamut';
-import { Logo } from '@codecademy/gamut-labs/src';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Logo } from '../../../../brand/Logo';
 import { focusStyles } from '../SharedStyles';
 import { AppHeaderLogoItem } from '../types';
 
