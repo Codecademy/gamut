@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.11.0...@codecademy/styleguide@21.12.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderLink:** link AppHeaderElement ([#1278](https://github.com/Codecademy/client-modules/issues/1278)) ([f75674f](https://github.com/Codecademy/client-modules/commit/f75674f07eee218c7ecd5628826334873d710b56))
+
+
+
 ## [21.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.10.0...@codecademy/styleguide@21.11.0) (2021-01-14)
 
 
