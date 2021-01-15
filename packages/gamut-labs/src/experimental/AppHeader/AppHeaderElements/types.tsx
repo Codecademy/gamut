@@ -12,3 +12,9 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
   trackingTarget: string;
   type: 'logo';
 };
+
+export type AppHeaderLinkItem = AppHeaderBaseItem & {
+  href: string;
+  trackingTarget: string;
+  type: 'link';
+};
