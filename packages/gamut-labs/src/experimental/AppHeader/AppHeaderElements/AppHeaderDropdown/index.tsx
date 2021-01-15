@@ -7,7 +7,11 @@ import React, { useRef, useState } from 'react';
 import { Popover } from '../../..';
 import { AppHeaderLink } from '../AppHeaderLink';
 import { focusStyles } from '../SharedStyles';
-import { AppHeaderDropdownItem, AppHeaderLinkItem } from '../types';
+import {
+  AppHeaderClickHandler,
+  AppHeaderDropdownItem,
+  AppHeaderLinkItem,
+} from '../types';
 import styles from './styles.scss';
 
 const AppHeaderTargetButton = styled.button(({ theme }) => {
@@ -35,7 +39,7 @@ const AppHeaderTargetButton = styled.button(({ theme }) => {
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
-  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
+  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -46,7 +50,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && onClick(event); // TODO pass item through
+    !isOpen && onClick(event, item);
   };
   const handleClose = () => {
     setIsOpen(false);

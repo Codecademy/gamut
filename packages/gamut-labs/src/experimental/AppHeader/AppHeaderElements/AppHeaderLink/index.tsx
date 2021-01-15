@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { focusStyles } from '../SharedStyles';
-import { AppHeaderLinkItem } from '../types';
+import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
   return `
@@ -24,7 +24,7 @@ const AppHeaderLinkButtonInner = styled(Box)`
 
 export type AppHeaderLinkProps = {
   item: AppHeaderLinkItem;
-  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
+  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
@@ -35,7 +35,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      onClick={(event: React.MouseEvent) => onClick(event)} // TODO pass item through
+      onClick={(event: React.MouseEvent) => onClick(event, item)}
       variant="interface"
     >
       <AppHeaderLinkButtonInner
