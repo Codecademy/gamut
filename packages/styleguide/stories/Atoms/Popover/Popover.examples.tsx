@@ -1,6 +1,7 @@
-import { Container, FillButton } from '@codecademy/gamut/src';
+import { Box, Container, FillButton } from '@codecademy/gamut/src';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
-import React, { useRef, useState } from 'react';
+import { useState } from '@storybook/addons';
+import React, { useRef } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
@@ -8,7 +9,7 @@ export const PopoverExample = (args: PopoverProps) => {
 
   return (
     <React.Fragment>
-      <div ref={activeElRef}>
+      <Box ref={activeElRef}>
         <FillButton
           onClick={() => {
             setOpen(!open);
@@ -16,7 +17,7 @@ export const PopoverExample = (args: PopoverProps) => {
         >
           Open Popover
         </FillButton>
-      </div>
+      </Box>
       <Container>
         <Popover
           {...args}
@@ -25,7 +26,7 @@ export const PopoverExample = (args: PopoverProps) => {
           onRequestClose={() => setOpen(false)}
         >
           <Container>
-            <h1>Hooray!</h1>
+            <Box fontSize={44}>Hooray!</Box>
             <FillButton onClick={() => setOpen(false)}>
               Close Popover
             </FillButton>

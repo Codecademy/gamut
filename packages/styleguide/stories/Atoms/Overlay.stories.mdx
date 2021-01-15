@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState } from '@storybook/addons';
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Overlay, ButtonDeprecated, Container } from '@codecademy/gamut/src';
+import { Text } from '@codecademy/gamut-labs/src';
+
 import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
@@ -42,7 +44,7 @@ a background behind content, see `Modal`.
               onRequestClose={() => setOpen(false)}
             >
               <Container>
-                <h1>Hooray!</h1>
+                <Text size={48}>Hooray!</Text>
                 <ButtonDeprecated onClick={() => setOpen(false)}>
                   Close Overlay
                 </ButtonDeprecated>
