@@ -6,18 +6,18 @@ import React from 'react';
 import { AppHeaderLink, AppHeaderLinkProps } from '..';
 
 const testText = 'Test Link';
-const testUrl = 'test-url';
+const onClick = jest.fn();
 
 const props: AppHeaderLinkProps = {
   item: {
     dataTestId: '',
-    id: 'test-url',
-    href: testUrl,
+    id: 'test-link',
+    href: 'test-url',
     text: testText,
     trackingTarget: '',
     type: 'link',
   },
-  onClick: jest.fn(),
+  onClick: onClick,
 };
 
 const renderAppHeaderLink = () => {
@@ -29,13 +29,9 @@ const renderAppHeaderLink = () => {
 };
 
 describe('AppHeaderLink', () => {
-  it('displays link text', () => {
+  it('calls onClick() when clicked', () => {
     renderAppHeaderLink();
-    expect(screen.getByText(testText));
-  });
-
-  it('links to the provided href', () => {
-    renderAppHeaderLink();
-    expect(screen.getByRole('link').getAttribute('href')).toEqual(testUrl);
+    screen.getByText(testText).click();
+    expect(onClick).toHaveBeenCalled();
   });
 });
