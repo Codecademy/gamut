@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`title.macro should transform 1`] = `
+"const meta = {
+  title: \\"World/Hello.js\\"
+};"
+`;

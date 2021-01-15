@@ -21,9 +21,12 @@
     "url": "git+https://github.com/Codecademy/client-modules.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/Codecademy/client-modules/issues"
+  },
+  "dependencies": {
+    "babel-plugin-macros": "^3.0.1"
   }
 }

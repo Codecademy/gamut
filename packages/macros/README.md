@@ -1,11 +1,16 @@
 # `@codecademy/macros`
 
-> TODO: description
+Simple babel utility macros.
 
 ## Usage
 
-```
-const macros = require('@codecademy/macros');
+### `title.macro`
 
-// TODO: DEMONSTRATE API
+This is used to derive the correct story heirarchy from the file path ensuring the file system and storybook heirarchy will be identical.
+
+```tsx
+// stories/Atoms/Button.stories.mdx
+import title from '@codecademy/macros/lib/title.macro';
+
+console.log(title); // Atoms/Button
 ```
