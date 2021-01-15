@@ -60,7 +60,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "babel-plugin-macros": "3.0.1",
     "glob": "^7.1.6"
   }
 }
