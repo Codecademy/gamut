@@ -18,3 +18,9 @@ export type AppHeaderLinkItem = AppHeaderBaseItem & {
   trackingTarget: string;
   type: 'link';
 };
+
+export type AppHeaderDropdownItem = AppHeaderBaseItem & {
+  popover: AppHeaderLinkItem[];
+  trackingTarget: string;
+  type: 'dropdown';
+};

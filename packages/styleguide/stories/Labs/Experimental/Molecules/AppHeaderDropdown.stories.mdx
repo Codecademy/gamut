@@ -1,0 +1,42 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderDropdown"
+  component={AppHeaderDropdown}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: {
+      id: 'target',
+      text: 'Dropdown Target',
+      popover: [
+        {
+          id: 'sublink-1',
+          text: 'A Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+        {
+          id: 'sublink-2',
+          text: 'Another Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+      ],
+      trackingTarget: '',
+      type: 'dropdown',
+    },
+  }}
+/>
+
+<Props of={AppHeaderDropdown} />
+
+## Dropdown
+
+<Canvas>
+  <Story name="AppHeaderDropdown">
+    {(args) => <AppHeaderDropdown {...args} />}
+  </Story>
+</Canvas>
