@@ -1,0 +1,44 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { AppHeaderLogo } from '@codecademy/gamut-labs/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderLogo"
+  component={AppHeaderLogo}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: {
+      pro: true,
+      href: 'http://codecademy.com',
+      trackingTarget: 'test',
+      type: 'logo',
+    },
+  }}
+/>
+
+<Props of={AppHeaderLogo} />
+
+## Pro
+
+<Canvas>
+  <Story name="AppHeaderLogo - pro ">
+    {(args) => <AppHeaderLogo {...args} />}
+  </Story>
+</Canvas>
+
+## Free + Anon
+
+<Canvas>
+  <Story
+    name="AppHeaderLogo - free"
+    args={{
+      item: {
+        pro: false,
+        href: 'http://codecademy.com',
+        trackingTarget: 'test',
+        type: 'logo',
+      },
+    }}
+  >
+    {(args) => <AppHeaderLogo {...args} />}
+  </Story>
+</Canvas>
