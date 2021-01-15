@@ -5,7 +5,6 @@ import React from 'react';
 
 import { AppHeaderDropdown, AppHeaderDropdownProps } from '..';
 
-const testTargetText = 'Test Link';
 const testDropdownTexts = ['Test SubLink 1 Text', 'Test Sublink 2 Text'];
 const testDropdownUrls = ['test-sublink-url-1', 'test-sublink-url-2'];
 
@@ -13,7 +12,7 @@ const props: AppHeaderDropdownProps = {
   item: {
     dataTestId: '',
     id: 'target-link',
-    text: testTargetText,
+    text: 'Test Link',
     popover: [
       {
         dataTestId: '',
@@ -47,11 +46,6 @@ const renderAppHeaderDropdown = () => {
 };
 
 describe('AppHeaderDropdown', () => {
-  it('displays target link text', () => {
-    renderAppHeaderDropdown();
-    expect(screen.getByText(testTargetText));
-  });
-
   it('displays sublinks text upon expanding the dropdown', () => {
     renderAppHeaderDropdown();
     screen.getByRole('button').click();
