@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.12.0...@codecademy/styleguide@21.13.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderDropdown:** dropdown AppHeaderElement ([#1279](https://github.com/Codecademy/client-modules/issues/1279)) ([1d7505f](https://github.com/Codecademy/client-modules/commit/1d7505fda48b247b295722859b5f64862f067b0f))
+
+
+
+## [21.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.11.0...@codecademy/styleguide@21.12.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderLink:** link AppHeaderElement ([#1278](https://github.com/Codecademy/client-modules/issues/1278)) ([f75674f](https://github.com/Codecademy/client-modules/commit/f75674f07eee218c7ecd5628826334873d710b56))
+
+
+
+## [21.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.10.0...@codecademy/styleguide@21.11.0) (2021-01-14)
+
+
+### Features
+
+* **AppHeaderLogo:** logo button AppHeaderElement ([#1277](https://github.com/Codecademy/client-modules/issues/1277)) ([9e3f25b](https://github.com/Codecademy/client-modules/commit/9e3f25b837d0332db54973a5b5dfea2c3f430525))
+
+
+
+## [21.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.9.1...@codecademy/styleguide@21.10.0) (2021-01-13)
+
+
+### Features
+
+* **Pattern:** add new Pattern component ([#1271](https://github.com/Codecademy/client-modules/issues/1271)) ([c392c8f](https://github.com/Codecademy/client-modules/commit/c392c8fe647811354dff89a0cddf198cb4cb0b2b))
+
+
+
+### [21.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.9.0...@codecademy/styleguide@21.9.1) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [21.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.2...@codecademy/styleguide@21.9.0) (2021-01-11)
 
 

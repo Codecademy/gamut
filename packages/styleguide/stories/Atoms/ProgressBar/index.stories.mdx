@@ -77,3 +77,25 @@ For the sake of rapid iteration, you can pass in custom style colors via the
     />
   </Story>
 </Canvas>
+
+## Pattern background
+
+Using the new SVG Pattern component for the background. Here we are using the DiagonalStripesRegular Pattern in navy in the large ProgressBar and the diagonalStripesDense pattern in the smaller ProgressBar.
+
+<Canvas>
+  <Story name="Stripe">
+    <LayoutGrid columnGap="sm" rowGap="sm">
+      <Column size={6}>
+        <ProgressBar
+          percent={50}
+          pattern="diagonalStripesRegular"
+          large
+          theme="yellow"
+        />
+      </Column>
+      <Column size={6}>
+        <ProgressBar percent={50} pattern="diagonalStripesDense" theme="blue" />
+      </Column>
+    </LayoutGrid>
+  </Story>
+</Canvas>

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.3...@codecademy/gamut@19.10.0) (2021-01-13)
+
+
+### Features
+
+* **Pattern:** add new Pattern component ([#1271](https://github.com/Codecademy/client-modules/issues/1271)) ([c392c8f](https://github.com/Codecademy/client-modules/commit/c392c8fe647811354dff89a0cddf198cb4cb0b2b))
+
+
+
+### [19.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.2...@codecademy/gamut@19.9.3) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.1...@codecademy/gamut@19.9.2) (2021-01-08)
 
 
