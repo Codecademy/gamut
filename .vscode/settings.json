@@ -6,5 +6,8 @@
   "search.exclude": {
     "docs": true
   },
+  "files.associations": {
+    "*.md": "mdx"
+  },
   "typescript.tsdk": "node_modules/typescript/lib"
 }

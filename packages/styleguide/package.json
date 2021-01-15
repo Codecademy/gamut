@@ -21,6 +21,7 @@
     "@codecademy/gamut": "^19.9.2",
     "@codecademy/gamut-icons": "^3.12.2",
     "@codecademy/gamut-styles": "^7.6.2",
+    "@codecademy/macros": "^1.0.0",
     "@codecademy/webpack-config": "^5.2.1",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
@@ -59,7 +60,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "glob": "^7.1.6",
-    "babel-plugin-macros": "3.0.1"
+    "babel-plugin-macros": "3.0.1",
+    "glob": "^7.1.6"
   }
 }
