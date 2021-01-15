@@ -1,5 +1,5 @@
 import FocusTrap from 'focus-trap-react';
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
@@ -40,7 +40,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const body = document.querySelector('body');
 
     if (body) {
@@ -53,6 +53,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   return (
     <BodyPortal>
       <FlexBox
+        data-testid="overlay-content-container"
         position={staticPositioning ? 'static' : 'fixed'}
         justifyContent="center"
         alignItems="center"
@@ -60,7 +61,7 @@ export const Overlay: React.FC<OverlayProps> = ({
         left="0"
         right="0"
         top="0"
-        className={className} // TODO: Test overwritting rules works as desired
+        className={className}
       >
         <FocusTrap
           focusTrapOptions={{
