@@ -31,7 +31,7 @@ const renderAppHeaderLink = () => {
 describe('AppHeaderLink', () => {
   it('calls onClick() when clicked', () => {
     renderAppHeaderLink();
-    screen.getByText(testText).click();
+    screen.getByRole('link').click();
     expect(onClick).toHaveBeenCalled();
   });
 });
