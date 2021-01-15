@@ -1,6 +1,8 @@
 const glob = require('glob');
+const { intersection } = require('lodash');
 
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
+const EXCLUDED_STORIES = ['Truncate', 'Overlay', 'Popover'];
 
 const splitToChunks = (array, parts) => {
   const copiedArray = array.concat([]);
@@ -22,14 +24,19 @@ const storiesFiles = glob.sync(DEFAULT_STORIES_GLOB, { cwd: __dirname }).sort();
 
 const getChunkedStories = () => {
   const INDEX = global.STORYSHOTS_INDEX;
-
-  const chunkedStories = splitToChunks(storiesFiles, TOTAL);
+  const sanitized = storiesFiles.filter((path) =>
+    intersection(EXCLUDED_STORIES, path.split('/').length === 0)
+  );
+  console.log(sanitized);
+  const chunkedStories = splitToChunks(sanitized, TOTAL);
   const foundStories = chunkedStories[INDEX] || [];
   console.log(
     `Running storyshot tests for ${foundStories.length} stories out of ${
       storiesFiles.length
     } total stories ${INDEX + 1}/${TOTAL}`
   );
+
+  console.log(foundStories);
 
   return foundStories;
 };
