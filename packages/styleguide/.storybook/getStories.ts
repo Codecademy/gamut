@@ -3,10 +3,10 @@ const glob = require('glob');
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
 
 const splitToChunks = (array, parts) => {
+  const copiedArray = array.concat([]);
   let result = [];
   for (let i = parts; i > 0; i--) {
-    const chunk = array.splice(0, Math.ceil(array.length / i));
-    console.log(chunk);
+    const chunk = copiedArray.splice(0, Math.ceil(copiedArray.length / i));
     result.push(chunk);
   }
   return result;
