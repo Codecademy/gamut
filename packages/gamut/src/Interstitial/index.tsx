@@ -30,7 +30,12 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   return (
     <div className={cx(styles.Interstitial, className)}>
       <div className={styles.content}>
-        <h1 className={styles.title} ref={headerRef} tabIndex={focus ? 0 : -1}>
+        <h1
+          className={styles.title}
+          ref={headerRef}
+          tabIndex={focus ? 0 : -1}
+          onBlur={() => (focus = false)}
+        >
           {decoration && <div className={styles.decoration}>{decoration}</div>}
           {title}
         </h1>
