@@ -8,6 +8,7 @@ import { omitProps } from '../utils/omitProps';
 import {
   createCodeBlockOverride,
   createTagOverride,
+  HTMLToReactNode,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
@@ -83,9 +84,10 @@ export class Markdown extends PureComponent<MarkdownProps> {
         }),
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
-          component: (props: MarkdownAnchorProps) => (
-            <MarkdownAnchor onClick={onAnchorClick} {...props} />
-          ),
+          component: MarkdownAnchor,
+          processNode: (node, props) =>  {
+            return <MarkdownAnchor onClick={onAnchorClick} {...props as MarkdownAnchorProps} />;
+          },
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
