@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import cx from 'classnames';
-import React, { useEffect, useRef } from 'react';
-
-import styles from './styles.module.scss';
+import styled from '@emotion/styled';
+import React, { useEffect, useRef, useState } from 'react';
+import { colors } from '@codecademy/gamut-styles';
 
 export type InterstitialProps = {
   buttons?: React.ReactNode[];
@@ -13,6 +12,51 @@ export type InterstitialProps = {
   title: string;
 };
 
+const InterstitialWrapper = styled.div`
+  align-items: center;
+  background: ${colors.navy};
+  color: ${colors.white};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  min-height: 30rem;
+  text-align: center;
+  width: 100%;
+`;
+
+const Content = styled.div`
+  max-width: 40rem;
+`;
+
+const Decoration = styled.div`
+  font-size: 4rem;
+  margin-bottom: 1rem;
+`;
+
+const Header = styled.h1`
+  color: ${colors.white};
+  font-size: 2.25rem;
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    box-shadow: 0 0 0 3px ${colors.white};
+  }
+`;
+
+const Children = styled.div`
+  margin: 3rem 0;
+`;
+
+const Buttons = styled.div`
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: 1;
+  row-gap: 1rem;
+  width: 12.5rem;
+`;
+
 export const Interstitial: React.FC<InterstitialProps> = ({
   buttons,
   children,
@@ -22,26 +66,26 @@ export const Interstitial: React.FC<InterstitialProps> = ({
   title,
 }) => {
   const headerRef = useRef<HTMLHeadingElement>(null);
+  const [focusable, setFocusable] = useState(focus);
 
   useEffect(() => {
     focus && headerRef.current?.focus();
   }, [headerRef]);
 
   return (
-    <div className={cx(styles.Interstitial, className)}>
-      <div className={styles.content}>
-        <h1
-          className={styles.title}
+    <InterstitialWrapper className={className}>
+      <Content>
+        <Header
           ref={headerRef}
-          tabIndex={focus ? 0 : -1}
-          onBlur={() => (focus = false)}
+          tabIndex={focusable ? 0 : -1}
+          onBlur={() => setFocusable(false)}
         >
-          {decoration && <div className={styles.decoration}>{decoration}</div>}
+          {decoration && <Decoration>{decoration}</Decoration>}
           {title}
-        </h1>
-        <div className={styles.children}>{children}</div>
-      </div>
-      {buttons && <div className={styles.buttons}>{buttons}</div>}
-    </div>
+        </Header>
+        <Children>{children}</Children>
+      </Content>
+      {buttons && <Buttons>{buttons}</Buttons>}
+    </InterstitialWrapper>
   );
 };
