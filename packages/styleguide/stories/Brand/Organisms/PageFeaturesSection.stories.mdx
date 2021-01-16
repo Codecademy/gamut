@@ -1,11 +1,11 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
-
 import { PageFeatures } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
-  title="Brand/Organisms/PageFeatures"
+  title={title}
   component={PageFeatures}
   args={{
     title: 'Welcome to Codecademy',

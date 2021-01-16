@@ -1,0 +1,25 @@
+import { HiddenText, VisualTheme } from '@codecademy/gamut/src';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
+import title from '@codecademy/macros/lib/title.macro';
+
+<Meta
+  title={title}
+  component={HiddenText}
+  parameters={{
+    subtitle: `Visually hidden text that should still be narrated by screenreaders.`,
+    source: 'gamut',
+  }}
+/>
+
+This is useful for cases where we visually indicate something not easily conveyed through semantic HTML.
+Ideally those cases should be exceedingly rare; unfortunately, some of our older pages aren't set up well for this.
+
+See https://wdn.unl.edu/page-title-h1-best-practices for more information.
+
+<Canvas withSource="open">
+  <Story name="HiddenText">
+    {(args) => <HiddenText>Surprise!</HiddenText>}
+  </Story>
+</Canvas>
+
+<Props of={HiddenText} />

@@ -1,10 +1,11 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { AppHeaderLink } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
-  title="Labs/Experimental/Molecules/AppHeaderLink"
+  title={title}
   component={AppHeaderLink}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
   args={{
     item: {
       id: 'link',
@@ -16,10 +17,8 @@ import { AppHeaderLink } from '@codecademy/gamut-labs/src';
   }}
 />
 
-<Props of={AppHeaderLink} />
-
-## Link
-
 <Canvas>
   <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
 </Canvas>
+
+<Props story="AppHeaderLink" />
