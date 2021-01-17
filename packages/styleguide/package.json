@@ -30,7 +30,6 @@
     "@storybook/addon-controls": "6.1.14",
     "@storybook/addon-docs": "6.1.14",
     "@storybook/addon-essentials": "6.1.14",
-    "@storybook/addon-knobs": "6.1.14",
     "@storybook/addon-links": "6.1.14",
     "@storybook/addon-storyshots": "6.1.14",
     "@storybook/addons": "6.1.14",

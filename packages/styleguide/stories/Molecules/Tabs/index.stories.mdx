@@ -8,7 +8,6 @@ import {
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { boolean, number, text } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -20,20 +19,14 @@ to show, but only one should be visible at a time.`,
     source: 'gamut',
     figmaId: 'fiLDZMjifzDmg70aYRUisW',
   }}
+  args={{ renderAllPanels: false, defaultActiveTabIndex: 2 }}
 />
 
 <Canvas>
   <Story name="Tabs">
     {(args) => (
-      <Tabs
-        defaultActiveTabIndex={number('defaultActiveTabIndex', 2)}
-        onChange={() => {}}
-        renderAllPanels={boolean('Render All panels', false)}
-      >
-        <TabList
-          center={boolean('Centered', false)}
-          maxWidth={text('Max Width', undefined)}
-        >
+      <Tabs {...args}>
+        <TabList>
           <Tab>Tab 1</Tab>
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>
@@ -55,7 +48,7 @@ to show, but only one should be visible at a time.`,
   </Story>
 </Canvas>
 
-<Props of={Tabs} />
+<Props story="Tabs" />
 
 ## Usage
 
@@ -68,17 +61,10 @@ being a controlled component. It won't change its own tab state, but will
 instead notify of a request to change using `onChange`.
 
 <Canvas>
-  <Story name="Controlled">
+  <Story name="Controlled" args={{ activeTabIndex: 0 }}>
     {(args) => (
-      <Tabs
-        activeTabIndex={number('Active Tab Index', 0)}
-        onChange={() => {}}
-        renderAllPanels={boolean('Render All Panels', false)}
-      >
-        <TabList
-          center={boolean('Centered', false)}
-          maxWidth={text('Max Width', undefined)}
-        >
+      <Tabs {...args}>
+        <TabList>
           <Tab>Tab 1</Tab>
           <Tab>Tab 2</Tab>
           <Tab>Tab 3</Tab>

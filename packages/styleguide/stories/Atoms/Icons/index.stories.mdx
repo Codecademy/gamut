@@ -8,7 +8,6 @@ import {
   Props,
   Story,
 } from '@storybook/addon-docs/dist/blocks';
-import { number, select } from '@storybook/addon-knobs';
 
 import { selectableColors } from '~styleguide/blocks';
 
@@ -23,6 +22,17 @@ import { ALL_ICONS, LEARNING_ENVIRONMENT, VENDOR } from './constants';
       Object.keys(icons).length
     } Codecademy icons in their immaculate resplendence`,
     source: 'gamut-icons',
+  }}
+  argTypes={{
+    iconName: {
+      type: 'select',
+      options: Object.keys(icons),
+    },
+  }}
+  args={{
+    iconName: Object.keys(icons)[0],
+    size: 40,
+    style: { color: 'black', backgroundColor: 'white' },
   }}
 />
 
@@ -51,26 +61,9 @@ If you cannot find the Icon you would like in the ones that we have specified he
 
 <Preview>
   <Story name="Editable Icon">
-    {(args) => {
-      const iconName = select(
-        'Icon Name',
-        Object.keys(icons),
-        Object.keys(icons)[0]
-      );
-      const IconComponent = icons[iconName];
-      return (
-        <IconComponent
-          size={number('size', 40)}
-          style={{
-            color: select('color', selectableColors, 'black'),
-            backgroundColor: select(
-              'backgroundColor',
-              selectableColors,
-              'white'
-            ),
-          }}
-        />
-      );
+    {({ iconName, ...args }) => {
+      const IconComponent = icons[args.iconName];
+      return <IconComponent {...args} />;
     }}
   </Story>
 </Preview>

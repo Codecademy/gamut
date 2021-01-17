@@ -1,7 +1,6 @@
 import { Spinner } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { text } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -11,12 +10,11 @@ import { text } from '@storybook/addon-knobs';
 \`ProgressBar\`.`,
     source: 'gamut',
   }}
+  args={{ size: 60 }}
 />
 
 <Canvas>
-  <Story name="Spinner">
-    {(args) => <Spinner size={text('size', '5em')} />}
-  </Story>
+  <Story name="Spinner">{(args) => <Spinner {...args} />}</Story>
 </Canvas>
 
-<Props of={Spinner} />
+<Props story="Spinner" />
