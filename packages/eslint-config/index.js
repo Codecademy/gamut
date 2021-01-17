@@ -16,10 +16,10 @@ module.exports = {
     'prettier/@typescript-eslint',
   ],
 
-  // Disable this plugin for mdx specifically as it does not use the eslint-mdx parser
+  // ensure that ts eslint parser only runs for the correct files
   overrides: [
     {
-      files: ['*.tsx', '*.ts', '.js', '.jsx'],
+      files: ['*.tsx', '*.ts', '*.js', '*.jsx'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],

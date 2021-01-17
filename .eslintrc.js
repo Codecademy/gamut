@@ -11,7 +11,7 @@ const defaultConfig = require('./packages/eslint-config');
 
 module.exports = {
   ...defaultConfig,
-  root: false,
+  root: true,
 
   overrides: [
     {
