@@ -22,11 +22,6 @@ module.exports = {
       },
     },
     {
-      files: ['*.mdx'],
-      parser: 'eslint-mdx',
-      parserOptions: {},
-    },
-    {
       files: ['**/typings/*', '*.d.ts'],
       rules: {
         '@typescript-eslint/no-namespace': 'off',
