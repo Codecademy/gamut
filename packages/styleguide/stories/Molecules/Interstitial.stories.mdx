@@ -12,32 +12,34 @@ a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between le
 `,
     source: 'gamut',
   }}
+  args={{
+    children: `Place some happy text as the content of this interstitial for the
+        learner to feel good about themselves. Note that the max-width for this
+        content is large but not too large. We want some amount of vertical
+        centering!`,
+    title: 'What a Glorious Day',
+  }}
 />
 
 <Canvas>
-  <Story name="Interstitial">
-    {(args) => (
-      <Interstitial
-        buttons={[
-          <ButtonDeprecated key="1" theme="brand-yellow">
-            One Button
-          </ButtonDeprecated>,
-          <ButtonDeprecated key="2" theme="white" outline>
-            Two Button
-          </ButtonDeprecated>,
-        ]}
-        title="What a Glorious Day"
-      >
-        Place some happy text as the content of this interstitial for the
-        learner to feel good about themselves. Note that the max-width for this
-        content is large but not too large. We want some amount of vertical
-        centering!
-      </Interstitial>
-    )}
+  <Story
+    name="Interstitial"
+    args={{
+      buttons: [
+        <ButtonDeprecated key="1" theme="brand-yellow">
+          One Button
+        </ButtonDeprecated>,
+        <ButtonDeprecated key="2" theme="white" outline>
+          Two Button
+        </ButtonDeprecated>,
+      ],
+    }}
+  >
+    {(args) => <Interstitial {...args} />}
   </Story>
 </Canvas>
 
-<Props of={Interstitial} />
+<Props story="Interstitial" />
 
 ## Decorations
 
@@ -45,22 +47,22 @@ Decorations are added on top of the heading and are narrated as part of
 it. Put emojis or promotional images here to really emphasize them.
 
 <Canvas>
-  <Story name="Decorated Interstitial">
-    {(args) => (
-      <Interstitial
-        buttons={[
-          <ButtonDeprecated key="1" theme="brand-red">
-            Red Button
-          </ButtonDeprecated>,
-          <ButtonDeprecated key="2" theme="brand-blue">
-            Blue Button
-          </ButtonDeprecated>,
-        ]}
-        decoration="😍"
-        title="Decorations, too!"
-      >
-        I really love emojis. Please confirm you love emojis too!
-      </Interstitial>
-    )}
+  <Story
+    name="Decorated Interstitial"
+    args={{
+      buttons: [
+        <ButtonDeprecated key="1" theme="brand-red">
+          Red Button
+        </ButtonDeprecated>,
+        <ButtonDeprecated key="2" theme="brand-blue">
+          Blue Button
+        </ButtonDeprecated>,
+      ],
+      decoration: '😍',
+      title: 'Decorations, too!',
+      children: 'I really love emojis. Please confirm you love emojis too!',
+    }}
+  >
+    {(args) => <Interstitial {...args} />}
   </Story>
 </Canvas>
