@@ -8,6 +8,7 @@ module.exports = {
     {
       files: ['*.mdx'],
       parser: 'eslint-mdx',
+      // Add this for MDX specifically since we rely on TS in other files
       rules: { 'unused-imports/no-unused-imports': 'error' },
     },
     {

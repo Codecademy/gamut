@@ -19,7 +19,7 @@ module.exports = {
   // Disable this plugin for mdx specifically as it does not use the eslint-mdx parser
   overrides: [
     {
-      files: ['*.tsx', '*.ts'],
+      files: ['*.tsx', '*.ts', '.js', '.jsx'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
