@@ -16,7 +16,6 @@ import { ALL_ICONS, LEARNING_ENVIRONMENT, VENDOR } from './constants';
 <Meta
   title={title}
   component={icons.AlertIcon}
-  subcomponents={{ ...icons }}
   parameters={{
     subtitle: `All ${
       Object.keys(icons).length
@@ -62,7 +61,7 @@ If you cannot find the Icon you would like in the ones that we have specified he
 <Preview>
   <Story name="Editable Icon">
     {({ iconName, ...args }) => {
-      const IconComponent = icons[args.iconName];
+      const IconComponent = icons[iconName];
       return <IconComponent {...args} />;
     }}
   </Story>
