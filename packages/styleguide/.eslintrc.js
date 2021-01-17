@@ -1,11 +1,15 @@
 const path = require('path');
 
 module.exports = {
-  plugins: ['react', 'mdx'],
+  plugins: ['react', 'mdx', 'unused-imports'],
   extends: ['plugin:mdx/recommended'],
 
   overrides: [
-    { files: ['*.mdx'], parser: 'eslint-mdx' },
+    {
+      files: ['*.mdx'],
+      parser: 'eslint-mdx',
+      rules: { 'unused-imports/no-unused-imports': 'error' },
+    },
     {
       files: ['stories/**/*'],
       rules: {
