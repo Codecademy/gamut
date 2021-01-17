@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
 import {
   CTAButton,
   FillButton,
@@ -9,8 +7,10 @@ import {
   VisualTheme,
 } from '@codecademy/gamut/src';
 import { SearchIcon } from '@codecademy/gamut-icons/src';
-import { select, text, boolean } from '@storybook/addon-knobs';
 import title from '@codecademy/macros/lib/title.macro';
+import { action } from '@storybook/addon-actions';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { boolean, select, text } from '@storybook/addon-knobs';
 
 <Meta
   title={title}

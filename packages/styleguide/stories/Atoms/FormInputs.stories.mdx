@@ -1,4 +1,3 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import {
   Checkbox,
   Input,
@@ -7,13 +6,14 @@ import {
   Select,
   TextArea,
 } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 import {
-  select as selectKnob,
   boolean,
   number,
+  select as selectKnob,
   withKnobs,
 } from '@storybook/addon-knobs';
-import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
   title={title}

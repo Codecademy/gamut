@@ -1,31 +1,33 @@
-import { startCase } from 'lodash';
 import {
-  Swatch,
-  SwatchPalette,
-  parseCamelCase,
-  objectKeys,
-} from '~styleguide/blocks';
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import {
-  LayoutGrid,
   Column,
-  VisualTheme,
   Container,
   Heading,
+  LayoutGrid,
+  VisualTheme,
 } from '@codecademy/gamut/src';
 import {
   brandColors,
-  colors,
-  trueColors,
   colorNames,
-  interactiveColors,
-  swatches,
+  colors,
   deprecatedColors,
   editorColors,
+  interactiveColors,
   platformColors,
+  swatches,
+  trueColors,
 } from '@codecademy/gamut-styles';
-import { excludedColors } from './constants';
 import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { startCase } from 'lodash';
+
+import {
+  objectKeys,
+  parseCamelCase,
+  Swatch,
+  SwatchPalette,
+} from '~styleguide/blocks';
+
+import { excludedColors } from './constants';
 
 <Meta
   title={title}
