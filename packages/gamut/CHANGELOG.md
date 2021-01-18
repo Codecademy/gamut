@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.0...@codecademy/gamut@19.10.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* **Overlay:**  Body overflow hidden iOS bug ([c5a2057](https://github.com/Codecademy/client-modules/commit/c5a205713ab44c11ac2eb93b79c70ca63bc4a4b3)), closes [/github.com/streamich/react-use/issues/1477#issuecomment-749788126](https://github.com/Codecademy//github.com/streamich/react-use/issues/1477/issues/issuecomment-749788126)
+
+
+
 ## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.3...@codecademy/gamut@19.10.0) (2021-01-13)
 
 

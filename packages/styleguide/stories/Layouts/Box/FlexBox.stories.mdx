@@ -1,0 +1,74 @@
+import title from '@codecademy/macros/lib/title.macro';
+import { PropsTable } from '~styleguide/blocks';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
+import { FlexBox, Box } from '@codecademy/gamut/src';
+
+<Meta
+  title={title}
+  component={FlexBox}
+  parameters={{ status: 'volatile', source: 'gamut' }}
+/>
+
+<p>
+  For flex layouts we've added a specific flex <code>FlexBox</code> component
+  that extends{' '}
+  <code>
+    <LinkTo kind="Layouts/Box">Box</LinkTo>
+  </code>{' '}
+  with added flex props.
+</p>
+
+<Canvas>
+  <Story
+    name="FlexBox"
+    args={{
+      justifyContent: 'space-around',
+    }}
+  >
+    {({ as = 'div', ...args }) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <FlexBox {...args}>
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="FlexBox" defaultGroups={['flex']} />
+
+## Example
+
+<Canvas>
+  <Story
+    name="Space Between"
+    args={{
+      children: 'Hello world I am a FlexBox',
+    }}
+  >
+    {(args) => {
+      const elProps = {
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: 'navy',
+        padding: 16,
+      };
+      return (
+        <FlexBox justifyContent="space-between">
+          <Box {...elProps}>Child Element 1</Box>
+          <Box {...elProps}>Child Element 2</Box>
+          <Box {...elProps}>Child Element 3</Box>
+          <Box {...elProps}>Child Element 4</Box>
+        </FlexBox>
+      );
+    }}
+  </Story>
+</Canvas>

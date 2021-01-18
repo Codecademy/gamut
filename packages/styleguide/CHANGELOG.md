@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.13.1...@codecademy/styleguide@21.14.0) (2021-01-16)
+
+
+### Features
+
+* **styleguide:** Use file for story hierarchy  ([472ba5d](https://github.com/Codecademy/client-modules/commit/472ba5dc6e7ea22b0d32e8434f19f377edf0524d))
+
+
+
+### [21.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.13.0...@codecademy/styleguide@21.13.1) (2021-01-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [21.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.12.0...@codecademy/styleguide@21.13.0) (2021-01-15)
 
 
