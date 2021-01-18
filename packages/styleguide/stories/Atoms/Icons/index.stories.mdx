@@ -1,4 +1,3 @@
-import * as icons from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import {
   IconGallery,
@@ -11,25 +10,25 @@ import {
 
 import { selectableColors } from '~styleguide/blocks';
 
-import { ALL_ICONS, LEARNING_ENVIRONMENT, VENDOR } from './constants';
+import { ICONS, LE_ICONS, UI_ICONS, VENDOR_ICONS } from './constants';
 
 <Meta
   title={title}
-  component={icons.AlertIcon}
+  component={ICONS.AlertIcon}
   parameters={{
     subtitle: `All ${
-      Object.keys(icons).length
+      Object.keys(ICONS).length
     } Codecademy icons in their immaculate resplendence`,
     source: 'gamut-icons',
   }}
   argTypes={{
     iconName: {
       type: 'select',
-      options: Object.keys(icons),
+      options: Object.keys(ICONS),
     },
   }}
   args={{
-    iconName: Object.keys(icons)[0],
+    iconName: Object.keys(ICONS)[0],
     size: 40,
     style: { color: 'black', backgroundColor: 'white' },
   }}
@@ -84,7 +83,7 @@ const MyComponent = () => <AlertIcon />;
 General user interface icons with affordances
 
 <IconGallery>
-  {Object.entries(ALL_ICONS).map(([iconName, Icon]) => (
+  {Object.entries(UI_ICONS).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>
@@ -96,7 +95,7 @@ General user interface icons with affordances
 Icons that have specific meanings relative to our course content.
 
 <IconGallery>
-  {Object.entries(LEARNING_ENVIRONMENT).map(([iconName, Icon]) => (
+  {Object.entries(LE_ICONS).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>
@@ -108,7 +107,7 @@ Icons that have specific meanings relative to our course content.
 Vendor specific icons.
 
 <IconGallery>
-  {Object.entries(VENDOR).map(([iconName, Icon]) => (
+  {Object.entries(VENDOR_ICONS).map(([iconName, Icon]) => (
     <IconItem key={iconName} name={iconName}>
       <Icon size={64} color={selectableColors.black} />
     </IconItem>
