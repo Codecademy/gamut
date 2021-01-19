@@ -1,0 +1,30 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { HeaderContainer, HeaderTab } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+
+<Meta
+  title={title}
+  subcomponents={{ HeaderContainer, HeaderTab }}
+  parameters={{
+    subtitle: `Header navigation bar and tabs with configurable areas.`,
+    status: 'volatile',
+    source: 'gamut-labs',
+    figmaId: 'TemYhRWOavsERWprDzRJCx',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Header">
+    {(args) => (
+      <HeaderContainer
+        sections={{
+          left: <HeaderTab>Hello</HeaderTab>,
+          right: <HeaderTab>Right</HeaderTab>,
+          after: <>After the rain has fallen</>,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props of={HeaderContainer} />

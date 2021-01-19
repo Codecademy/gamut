@@ -7,3 +7,4 @@ export * from './Scale';
 export * from './PropsTable';
 export * from './Page';
 export * from './TableOfContents';
+export * from './utils';

@@ -2,9 +2,10 @@ import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { action } from '@storybook/addon-actions';
 import { select, text } from '@storybook/addon-knobs';
 import { Avatar } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
-  title="Brand/Atoms/Avatar"
+  title={title}
   component={Avatar}
   parameters={{
     subtitle: `Small, circular profile photo that includes a colored drop shadow.

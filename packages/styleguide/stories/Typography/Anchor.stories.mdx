@@ -1,0 +1,104 @@
+import { Anchor, Text } from '@codecademy/gamut';
+import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
+import { VisualTheme } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+
+<Meta
+  title={title}
+  component={Anchor}
+  parameters={{
+    subtitle: `Use this component for basic inline text links.`,
+    status: 'stable',
+    source: 'gamut',
+  }}
+/>
+
+It applies `text-decoration: underline` per our accessibility guidelines to distiguish them with more than just a purple color from body text.
+
+<Canvas>
+  <Story name="Anchor">
+    {(args) => {
+      return (
+        <Text>
+          This is a{' '}
+          <Anchor
+            {...args}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+          >
+            great video
+          </Anchor>
+          .
+        </Text>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<PropsTable story="Anchor" />
+
+## Variants
+
+We provide 2 style variants for Anchor.
+
+<Canvas>
+  <Story name="Inline" args={{ variant: 'inline' }}>
+    {(args) => {
+      return (
+        <Text>
+          This inline style is the default style and should be used when link is
+          part of the body text, like this. Check out this{' '}
+          <Anchor
+            {...args}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+          >
+            great video
+          </Anchor>
+          .
+        </Text>
+      );
+    }}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Interface" args={{ variant: 'interface' }}>
+    {(args) => {
+      return (
+        <Text>
+          This interface style should only be used when link is not part of the
+          body text and it doesn't make sense to use Text Button. Color can be
+          customized by using textColor prop. &nbsp;&nbsp;
+          <Anchor
+            {...args}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+          >
+            great video 1
+          </Anchor> | <Anchor
+            {...args}
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+          >
+            great video 2
+          </Anchor>
+        </Text>
+      );
+    }}
+  </Story>
+</Canvas>
+
+## Anchor Guidelines
+
+Links are really hard to get right for accessibility!
+Most importantly: links must be _visually distinct_ from body text.
+For general links in body text, we use a visual underline to make it clear that they're links.
+
+<Text>
+  <Anchor href="/">This is a link</Anchor>. This is not.
+</Text>
+
+Only use the `interface` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default (`inline`) Anchor style.
+
+Remember [color contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) and [non-color visual distinction](https://www.w3.org/TR/WCAG20-TECHS/F73.html): users who are color-blind and/or low vision should still be able to see the link and text distinction.

@@ -1,0 +1,31 @@
+import { Pattern } from '@codecademy/gamut/src';
+import { Meta, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { PropsTable } from '~styleguide/blocks';
+import title from '@codecademy/macros/lib/title.macro';
+
+<Meta
+  title={title}
+  component={Pattern}
+  parameters={{ source: 'gamut' }}
+  args={{ height: 200, width: 200, name: 'diagonalStripesLoose' }}
+/>
+
+Our new SVG pattern component.
+
+<Canvas>
+  <Story name="Pattern" args={{ width: '100%', height: 200 }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="Pattern" />
+
+<Canvas withSource="open">
+  <Story name="Pattern Loose">{(args) => <Pattern {...args} />}</Story>
+  <Story name="Pattern Regular" args={{ name: 'diagonalStripesRegular' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+  <Story name="Pattern Dense" args={{ name: 'diagonalStripesDense' }}>
+    {(args) => <Pattern {...args} />}
+  </Story>
+</Canvas>

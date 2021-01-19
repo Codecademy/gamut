@@ -1,9 +1,10 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { ProLogoAlt } from '@codecademy/gamut-labs/src';
-import { selectableColorNames } from '../../../helpers';
+import { selectableColorNames } from '~styleguide/blocks';
+import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
-  title="Brand/Atoms/ProLogoAlt"
+  title={title}
   component={ProLogoAlt}
   argTypes={{
     backgroundColor: {

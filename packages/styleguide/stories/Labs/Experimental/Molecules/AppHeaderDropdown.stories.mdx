@@ -1,10 +1,11 @@
 import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 
 <Meta
-  title="Labs/Experimental/Molecules/AppHeaderDropdown"
+  title={title}
   component={AppHeaderDropdown}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
   args={{
     item: {
       id: 'target',
@@ -31,12 +32,10 @@ import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
   }}
 />
 
-<Props of={AppHeaderDropdown} />
-
-## Dropdown
-
 <Canvas>
   <Story name="AppHeaderDropdown">
     {(args) => <AppHeaderDropdown {...args} />}
   </Story>
 </Canvas>
+
+<Props story="AppHeaderDropdown" />
