@@ -19,6 +19,18 @@ module.exports = {
   // ensure that ts eslint parser only runs for the correct files
   overrides: [
     {
+      plugins: ['unused-imports'],
+      extends: ['plugin:mdx/recommended'],
+      files: ['*.mdx'],
+      parser: 'eslint-mdx',
+      // Add this for MDX specifically since we rely on TS in other
+      rules: {
+        'unused-imports/no-unused-imports': 'error',
+        'react/react-in-jsx-scope': 'off',
+        'react/no-unescaped-entities': 'off',
+      },
+    },
+    {
       files: ['*.tsx', '*.ts', '*.js', '*.jsx'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
@@ -41,6 +53,7 @@ module.exports = {
   plugins: [
     'import',
     'jsx-a11y',
+    'mdx',
     'no-only-tests',
     'react',
     'react-hooks',
