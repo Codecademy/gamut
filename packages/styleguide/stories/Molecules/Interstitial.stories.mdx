@@ -19,6 +19,7 @@ a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between le
   <Story name="Interstitial">
     {(args) => (
       <Interstitial
+        focus
         buttons={[
           <ButtonDeprecated key="1" theme="brand-yellow">
             One Button
@@ -49,7 +50,6 @@ it. Put emojis or promotional images here to really emphasize them.
   <Story name="Decorated Interstitial">
     {(args) => (
       <Interstitial
-        focus
         buttons={[
           <ButtonDeprecated key="1" theme="brand-red">
             Red Button

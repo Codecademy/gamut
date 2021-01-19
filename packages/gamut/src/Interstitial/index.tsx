@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
 import { colors } from '@codecademy/gamut-styles';
