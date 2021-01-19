@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.0...@codecademy/gamut@19.11.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **Markdown:** Don't wrap MarkdownAnchor component in tag overrides ([#1286](https://github.com/Codecademy/client-modules/issues/1286)) ([74d4fe3](https://github.com/Codecademy/client-modules/commit/74d4fe36b58e2c75380fd94c19fd0cb05c56ecdc))
+
+
+
 ## [19.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.2...@codecademy/gamut@19.11.0) (2021-01-19)
 
 
