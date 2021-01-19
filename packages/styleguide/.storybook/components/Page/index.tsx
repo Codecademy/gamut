@@ -3,7 +3,6 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
-import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
