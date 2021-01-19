@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.2...@codecademy/gamut@19.11.0) (2021-01-19)
+
+
+### Features
+
+* **Interstitial:** add focus mgmt to Interstitial ([18fcc9f](https://github.com/Codecademy/client-modules/commit/18fcc9f8bf7567b9df2b8dbed9c8c4ef6979a5aa))
+
+
+
 ### [19.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.1...@codecademy/gamut@19.10.2) (2021-01-18)
 
 
