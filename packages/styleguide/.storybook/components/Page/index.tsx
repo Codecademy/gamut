@@ -98,7 +98,7 @@ export const Page: React.FC = ({ children }) => {
     title,
     subtitle,
     parameters: { figmaId, source },
-  } = useKind(kind);
+  } = useKind(kind!);
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;

@@ -1,12 +1,17 @@
 import React from 'react';
-import { useTheme } from '@storybook/theming';
 import { boxShadows } from '@codecademy/gamut-styles';
+import { css, styled } from '@storybook/theming';
 import { Box } from '../Box';
+
+const HexCode = styled.span(
+  (props) => css`
+    font-family: ${props.theme.fontCode};
+  `
+);
 
 export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
   colors,
 }) => {
-  const { fontCode } = useTheme();
   const weights = Object.entries(colors);
 
   return (
@@ -28,7 +33,6 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
         {weights.map(([key, hex]) => (
           <Box
             key={`hex-${key}`}
-            fontFamily={fontCode}
             fontSize="12px"
             display="grid"
             alignItems="center"
@@ -36,8 +40,8 @@ export const ColorScale: React.FC<{ colors: Record<string, string> }> = ({
             textAlign="center"
             textColor="rgba(51,51,51,0.5)"
           >
-            {weights.length > 1 && <span>{key}</span>}
-            <span>{hex}</span>
+            {weights.length > 1 && <HexCode>{key}</HexCode>}
+            <HexCode>{hex}</HexCode>
           </Box>
         ))}
       </Box>
