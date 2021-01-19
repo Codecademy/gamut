@@ -5,30 +5,49 @@ module.exports = {
     jest: true,
     node: true,
   },
-
   extends: [
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
+  ],
+
+  // ensure that ts eslint parser only runs for the correct files
+  overrides: [
+    {
+      plugins: ['unused-imports'],
+      files: ['*.mdx'],
+      parser: 'eslint-mdx',
+      // Add this for MDX specifically since we rely on TS in other
+      rules: {
+        'unused-imports/no-unused-imports': 'error',
+        'react/react-in-jsx-scope': 'off',
+        'react/no-unescaped-entities': 'off',
+        'react/jsx-no-undef': 'off',
+      },
+    },
+    {
+      files: ['*.tsx', '*.ts'],
+      parser: require.resolve('@typescript-eslint/parser'),
+
+      parserOptions: {
+        project: './tsconfig.json',
+        sourceType: 'module',
+      },
+      extends: [
+        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ],
+    },
   ],
 
   globals: {
     // testcafe
     fixture: false,
     test: false,
-  },
-
-  parser: require.resolve('@typescript-eslint/parser'),
-
-  parserOptions: {
-    project: './tsconfig.json',
-    sourceType: 'module',
   },
 
   plugins: [

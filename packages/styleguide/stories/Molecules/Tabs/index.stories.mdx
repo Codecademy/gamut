@@ -1,16 +1,14 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { action } from '@storybook/addon-actions';
 import {
-  Text,
   Heading,
-  Tabs,
-  TabList,
   Tab,
+  TabList,
   TabPanel,
+  Tabs,
+  Text,
 } from '@codecademy/gamut/src';
-import { Controlled, Uncontrolled } from './Examples';
-import { number, boolean, text } from '@storybook/addon-knobs';
 import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { boolean, number, text } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -42,15 +40,15 @@ to show, but only one should be visible at a time.`,
         </TabList>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 1</Heading>
-          <Text>Hi there! I'm the contents inside Tab 1. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 2</Heading>
-          <Text>Hi there! I'm the contents inside Tab 2. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 3</Heading>
-          <Text>Hi there! I'm the contents inside Tab 3. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>
       </Tabs>
     )}
@@ -87,15 +85,15 @@ instead notify of a request to change using `onChange`.
         </TabList>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 2</Heading>
-          <Text>Hi there! I'm the contents inside Tab 2. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 2. Yippee!</Text>
         </TabPanel>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 1</Heading>
-          <Text>Hi there! I'm the contents inside Tab 1. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 1. Yippee!</Text>
         </TabPanel>
         <TabPanel>
           <Heading as="h2">Welcome to Tab 3</Heading>
-          <Text>Hi there! I'm the contents inside Tab 3. Yippee!</Text>
+          <Text>Hi there! I&apos;m the contents inside Tab 3. Yippee!</Text>
         </TabPanel>
       </Tabs>
     )}
