@@ -23,6 +23,7 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
 
 export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
+  newTab?: boolean;
   trackingTarget: string;
   type: 'link';
 };
