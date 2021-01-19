@@ -70,7 +70,7 @@ export const Interstitial: React.FC<InterstitialProps> = ({
 
   useEffect(() => {
     focus && headerRef.current?.focus();
-  }, [headerRef]);
+  }, [headerRef, focus]);
 
   return (
     <InterstitialWrapper className={className}>
