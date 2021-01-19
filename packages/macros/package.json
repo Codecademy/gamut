@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/macros",
   "description": "Babel Utility Macros",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "codecademy",
   "homepage": "https://github.com/Codecademy/client-modules#readme",
   "license": "MIT",
