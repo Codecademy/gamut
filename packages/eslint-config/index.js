@@ -31,7 +31,7 @@ module.exports = {
       },
     },
     {
-      files: ['*.tsx', '*.ts', '*.js', '*.jsx'],
+      files: ['*.tsx', '*.ts'],
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
