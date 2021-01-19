@@ -1,7 +1,7 @@
 import { swatches, theme, trueColors } from '@codecademy/gamut-styles';
 import React from 'react';
 
-import { Box, Code, ColorScale } from '../../../../.storybook/components';
+import { Box, Code, ColorScale } from '~styleguide/blocks';
 
 const PROP_COLUMN = {
   key: 'key',
@@ -54,7 +54,7 @@ export const swatch = {
       ...PATH_COLUMN,
       render: ({ id, hexes }: any) => (
         <Code>
-          theme.colors['{id}-{Object.keys(hexes)[0]}']
+          theme.colors[`{id}-{Object.keys(hexes)[0]}`]
         </Code>
       ),
     },
