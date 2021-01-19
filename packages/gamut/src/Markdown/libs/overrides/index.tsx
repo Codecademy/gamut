@@ -27,12 +27,24 @@ const attributeMap: { [key: string]: string } = {
   class: 'className',
 };
 
-export type OverrideSettings = {
-  component: React.ComponentType<any>;
+export type OverrideSettingsBase = {
+  component?: React.ComponentType<any>;
   allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
+
+export interface OverrideSettingsComponent extends OverrideSettingsBase {
+  component: React.ComponentType<any>;
+}
+
+export interface OverrideSettingsProcessNode extends OverrideSettingsBase {
+  processNode: (node: HTMLToReactNode, props: object) => React.ReactNode;
+}
+
+export type OverrideSettings =
+  | OverrideSettingsComponent
+  | OverrideSettingsProcessNode;
 
 export type ManyOverrideSettings = {
   [i: string]: OverrideSettings;
@@ -91,6 +103,8 @@ export const createTagOverride = (
       return Override.processNode(node, props);
     }
 
+    if (!Override.component) return null;
+
     return <Override.component {...props} />;
   },
 });
@@ -111,6 +125,8 @@ export const createCodeBlockOverride = (
     processNode(node: HTMLToReactNode, props: any) {
       const [, language = undefined] =
         (props.className && props.className.match(/language-([^\s]+)/)) || [];
+
+      if (!Override.component) return null;
 
       return (
         <Override.component {...props} language={language}>
