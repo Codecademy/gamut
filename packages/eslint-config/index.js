@@ -20,7 +20,6 @@ module.exports = {
   overrides: [
     {
       plugins: ['unused-imports'],
-      extends: ['plugin:mdx/recommended'],
       files: ['*.mdx'],
       parser: 'eslint-mdx',
       // Add this for MDX specifically since we rely on TS in other
@@ -28,6 +27,7 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         'react/react-in-jsx-scope': 'off',
         'react/no-unescaped-entities': 'off',
+        'react/jsx-no-undef': 'off',
       },
     },
     {
@@ -53,7 +53,6 @@ module.exports = {
   plugins: [
     'import',
     'jsx-a11y',
-    'mdx',
     'no-only-tests',
     'react',
     'react-hooks',
