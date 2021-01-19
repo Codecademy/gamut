@@ -9,7 +9,7 @@ import { AppHeader, AppHeaderProps } from '..';
 
 const onClick = jest.fn();
 
-const props: AppHeaderProps = {
+const logoProps: AppHeaderProps = {
   items: {
     left: [
       {
@@ -19,6 +19,15 @@ const props: AppHeaderProps = {
         trackingTarget: 'tracking-target',
         type: 'logo',
       },
+    ],
+    right: [],
+  },
+  onClick: onClick,
+};
+
+const linkProps: AppHeaderProps = {
+  items: {
+    left: [
       {
         id: 'link',
         href: 'http://codecademy.com',
@@ -26,6 +35,15 @@ const props: AppHeaderProps = {
         text: 'AppHeaderLink',
         type: 'link',
       },
+    ],
+    right: [],
+  },
+  onClick: onClick,
+};
+
+const dropdownProps: AppHeaderProps = {
+  items: {
+    left: [
       {
         id: 'dropdown',
         text: 'AppHeaderDropdown',
@@ -49,12 +67,29 @@ const props: AppHeaderProps = {
         type: 'dropdown',
       },
     ],
+    right: [],
+  },
+  onClick: onClick,
+};
+
+const renderElementProps: AppHeaderProps = {
+  items: {
+    left: [],
     right: [
       {
         id: 'render-element',
         renderElement: () => <IconButton icon={FaviconIcon} />,
         type: 'render-element',
       },
+    ],
+  },
+  onClick: onClick,
+};
+
+const textButtonProps: AppHeaderProps = {
+  items: {
+    left: [],
+    right: [
       {
         id: 'text-button',
         text: 'TextButton',
@@ -62,6 +97,15 @@ const props: AppHeaderProps = {
         trackingTarget: 'tracking-target',
         type: 'text-button',
       },
+    ],
+  },
+  onClick: onClick,
+};
+
+const fillButtonProps: AppHeaderProps = {
+  items: {
+    left: [],
+    right: [
       {
         id: 'fill-button',
         text: 'FillButton',
@@ -74,7 +118,7 @@ const props: AppHeaderProps = {
   onClick: onClick,
 };
 
-const renderAppHeader = () => {
+const renderAppHeader = (props: AppHeaderProps) => {
   return render(
     <ThemeProvider theme={theme}>
       <AppHeader {...props} />
@@ -84,33 +128,33 @@ const renderAppHeader = () => {
 
 describe('AppHeader', () => {
   it('renders AppHeaderLogo', () => {
-    renderAppHeader();
+    renderAppHeader(logoProps);
     screen.getByTitle('Codecademy Logo');
   });
 
   it('renders AppHeaderLink', () => {
-    renderAppHeader();
+    renderAppHeader(linkProps);
     screen.getByText('AppHeaderLink');
   });
 
   it('renders AppHeaderDropdown', () => {
-    renderAppHeader();
+    renderAppHeader(dropdownProps);
     screen.getByText('AppHeaderDropdown');
   });
 
   it('renders a custom component', () => {
-    renderAppHeader();
+    renderAppHeader(renderElementProps);
     screen.getByTitle('Favicon Icon');
   });
 
   it('TextButton calls onClick() when clicked', () => {
-    renderAppHeader();
+    renderAppHeader(textButtonProps);
     screen.getByText('TextButton').click();
     expect(onClick).toHaveBeenCalled();
   });
 
   it('FillButton calls onClick() when clicked', () => {
-    renderAppHeader();
+    renderAppHeader(fillButtonProps);
     screen.getByText('FillButton').click();
     expect(onClick).toHaveBeenCalled();
   });
