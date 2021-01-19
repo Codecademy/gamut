@@ -48,6 +48,7 @@ it. Put emojis or promotional images here to really emphasize them.
   <Story name="Decorated Interstitial">
     {(args) => (
       <Interstitial
+        focus
         buttons={[
           <ButtonDeprecated key="1" theme="brand-red">
             Red Button
@@ -59,7 +60,10 @@ it. Put emojis or promotional images here to really emphasize them.
         decoration="😍"
         title="Decorations, too!"
       >
-        I really love emojis. Please confirm you love emojis too!
+        I really love emojis. Please confirm you love emojis too! This
+        interstitial also has the focus prop, so focus will be drawn to the
+        Title of this component upon render if the learner if using a screen
+        reader.
       </Interstitial>
     )}
   </Story>
