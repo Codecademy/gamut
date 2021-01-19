@@ -21,6 +21,10 @@ module.exports = {
     },
     {
       files: ['**/typings/*', '*.d.ts'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
       rules: {
         '@typescript-eslint/no-namespace': 'off',
       },
