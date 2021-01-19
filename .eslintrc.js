@@ -14,20 +14,42 @@ module.exports = {
   ...defaultConfig,
   root: true,
 
-  overrides: merge(defaultConfig.overrides, [
-    {
-      files: ['*.mdx'],
-      parser: 'eslint-mdx',
-    },
-    {
-      files: ['**/typings/*', '*.d.ts'],
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+  overrides: Object.values(
+    merge(defaultConfig.overrides, [
+      {
+        files: ['*.mdx'],
+        parser: 'eslint-mdx',
       },
-      rules: {
-        '@typescript-eslint/no-namespace': 'off',
+      {
+        files: ['**/typings/*', '*.d.ts'],
+        parserOptions: {
+          tsconfigRootDir: __dirname,
+          project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        },
+        rules: {
+          '@typescript-eslint/no-namespace': 'off',
+        },
       },
-    },
-  ]),
+      {
+        files: ['*.tsx'],
+        parserOptions: {
+          tsconfigRootDir: __dirname,
+          project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        },
+        rules: {
+          'no-restricted-syntax': [
+            'error',
+            {
+              message:
+                "Don't import stylesheets that don't end with `module.scss`, rename them to end with `module.scss` like `style.module.scss`.",
+              selector:
+                'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
+            },
+          ],
+        },
+      },
+    ])
+  ).reduce(function (list, item) {
+    return [...list, item];
+  }, []),
 };
