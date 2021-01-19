@@ -1,6 +1,6 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
@@ -15,6 +15,7 @@ import title from '@codecademy/macros/lib/title.macro';
       href:
         'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
       onClick: () => {
+        // eslint-disable-next-line no-console
         console.log('You could add event tracking here');
       },
     },

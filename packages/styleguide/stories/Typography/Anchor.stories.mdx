@@ -1,7 +1,8 @@
-import { Anchor, Text } from '@codecademy/gamut';
-import { Meta, Story, Canvas, Props } from '@storybook/addon-docs/dist/blocks';
-import { VisualTheme } from '@codecademy/gamut/src';
+import { Anchor, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -68,8 +69,8 @@ We provide 2 style variants for Anchor.
       return (
         <Text>
           This interface style should only be used when link is not part of the
-          body text and it doesn't make sense to use Text Button. Color can be
-          customized by using textColor prop. &nbsp;&nbsp;
+          body text and it doesn&apos;t make sense to use Text Button. Color can
+          be customized by using textColor prop. &nbsp;&nbsp;
           <Anchor
             {...args}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
