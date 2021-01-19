@@ -8,20 +8,26 @@
  * project root
  */
 const defaultConfig = require('./packages/eslint-config');
+const { merge } = require('lodash');
 
 module.exports = {
   ...defaultConfig,
   root: true,
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './packages/*/tsconfig.json'],
-  },
-  overrides: [
+
+  overrides: merge(defaultConfig.overrides, [
+    {
+      files: ['*.mdx'],
+      parser: 'eslint-mdx',
+    },
     {
       files: ['**/typings/*', '*.d.ts'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
       rules: {
         '@typescript-eslint/no-namespace': 'off',
       },
     },
-  ],
+  ]),
 };

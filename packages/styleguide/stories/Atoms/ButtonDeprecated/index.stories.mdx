@@ -1,20 +1,21 @@
-import { Meta, Props, Story, Canvas } from '@storybook/addon-docs/dist/blocks';
 import {
   ButtonDeprecated,
   ButtonDeprecatedBase,
   RadialProgress,
   Spinner,
 } from '@codecademy/gamut/src';
-import { action } from '@storybook/addon-actions';
-import { select, text, boolean } from '@storybook/addon-knobs';
-import {
-  themes,
-  newThemeKeys,
-  brandThemeKeys,
-  statusThemeKeys,
-  deprecatedThemeKeys,
-} from './helpers';
 import title from '@codecademy/macros/lib/title.macro';
+import { action } from '@storybook/addon-actions';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { boolean, select, text } from '@storybook/addon-knobs';
+
+import {
+  brandThemeKeys,
+  deprecatedThemeKeys,
+  newThemeKeys,
+  statusThemeKeys,
+  themes,
+} from './helpers';
 
 <Meta
   title={title}
@@ -247,7 +248,6 @@ Common variants of buttons you might come across.
         Disabled
       </ButtonDeprecated>
     )}
-    >
   </Story>
   <Story name="Loading">
     {(args) => (
