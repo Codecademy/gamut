@@ -20,9 +20,15 @@
     "typescriptreact",
     "html"
   ],
+  "files.associations": {
+    "*.md": "mdx"
+  },
   "[mdx]": {
     "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120
+    "editor.wordWrapColumn": 120,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
   },
   "search.exclude": {
     "docs": true
