@@ -7,7 +7,6 @@ import {
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { boolean, select } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -21,26 +20,20 @@ import { boolean, select } from '@storybook/addon-knobs';
 />
 
 <Canvas>
-  <Story name="Card">
+  <Story name="Card" args={{ hoverShadow: false }}>
     {(args) => (
-      <CardShell hoverShadow={boolean('shell.hoverShadow', false)}>
-        <CardBody standardPadding={boolean('body.standardPadding', true)}>
+      <CardShell>
+        <CardBody>
           <Heading as="h3">Card Body</Heading>
           <Text>This is some body text</Text>
           <Text>Blah blah blurgha blurgha</Text>
         </CardBody>
-        <CardFooter
-          align={select('Align', ['left', 'center', 'right'], 'left')}
-          border={select('Border', ['dashed', 'solid', 'none'], 'none')}
-          flex={boolean('Flex', true)}
-          standardPadding={boolean('Standard Padding', true)}
-          standardHeight={boolean('Standard Height', true)}
-        >
-          <React.Fragment>Footer Text</React.Fragment>
+        <CardFooter>
+          <Text>Footer Text</Text>
         </CardFooter>
       </CardShell>
     )}
   </Story>
 </Canvas>
 
-<Props of={CardShell} />
+<Props story="Card" />

@@ -1,8 +1,10 @@
-import * as Icons from '@codecademy/gamut-icons/src';
-import { pick, pickBy, values } from 'lodash';
+import * as icons from '@codecademy/gamut-icons/src';
+import { keys, omit, pick } from 'lodash';
 
-export const VENDOR = pick(
-  Icons,
+export const ICONS = icons;
+
+export const VENDOR_ICONS = pick(
+  ICONS,
   [
     'InstagramIcon',
     'FacebookIcon',
@@ -24,8 +26,8 @@ export const VENDOR = pick(
   ].sort()
 );
 
-export const LEARNING_ENVIRONMENT = pick(
-  Icons,
+export const LE_ICONS = pick(
+  ICONS,
   [
     'PortfolioProjectIcon',
     'ChecklistIcon',
@@ -58,6 +60,4 @@ export const LEARNING_ENVIRONMENT = pick(
   ].sort()
 );
 
-const specialIcons = values({ ...LEARNING_ENVIRONMENT, ...VENDOR });
-
-export const ALL_ICONS = pickBy(Icons, (icon) => !specialIcons.includes(icon));
+export const UI_ICONS = omit(ICONS, keys({ ...LE_ICONS, ...VENDOR_ICONS }));

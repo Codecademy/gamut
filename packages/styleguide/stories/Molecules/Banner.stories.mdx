@@ -1,7 +1,6 @@
 import { Banner, BannerStyle } from '@codecademy/gamut/src';
 import { AlertIcon } from '@codecademy/gamut-icons';
 import title from '@codecademy/macros/lib/title.macro';
-import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
@@ -13,29 +12,22 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     source: 'gamut',
     figmaId: 'lsgaSKkOTN2FgSURwhQ6j5',
   }}
+  args={{ children: 'Some Banner content!' }}
 />
 
 <Canvas>
-  <Story name="Banner">
-    {(args) => (
-      <Banner onClose={action('Banner closed.')}>Some Banner content!</Banner>
-    )}
-  </Story>
+  <Story name="Banner">{(args) => <Banner {...args} />}</Story>
 </Canvas>
 
-<Props of={Banner} />
+<Props story="Banner" />
 
 ## Full-Width Icon
 
 An informative icon can be added to the left of the banner.
 
 <Canvas>
-  <Story name="Icon Banner">
-    {(args) => (
-      <Banner icon={<AlertIcon />} onClose={action('Banner closed.')}>
-        Some Banner content!
-      </Banner>
-    )}
+  <Story name="Icon Banner" args={{ icon: <AlertIcon /> }}>
+    {(args) => <Banner {...args} />}
   </Story>
 </Canvas>
 
@@ -44,14 +36,7 @@ An informative icon can be added to the left of the banner.
 If your banner is on above similar content (?), add a BannerStyle to it.
 
 <Canvas>
-  <Story name="Bordered">
-    {(args) => (
-      <Banner
-        displayStyle={BannerStyle.BorderBottom}
-        onClose={action('Banner closed.')}
-      >
-        Some Banner content!
-      </Banner>
-    )}
+  <Story name="Bordered" args={{ displayStyle: BannerStyle.BorderBottom }}>
+    {(args) => <Banner {...args} />}
   </Story>
 </Canvas>

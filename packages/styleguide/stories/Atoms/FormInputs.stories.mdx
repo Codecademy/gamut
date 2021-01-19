@@ -8,7 +8,6 @@ import {
 } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { boolean, number, select as selectKnob } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -60,15 +59,11 @@ Sets a short-form text-based value. It can be configured as a native HTML `<inpu
 such as limiting to numbers. If the `error` prop is passed, it has a red outline.
 
 <Canvas>
-  <Story name="Input">
-    {(args) => (
-      <Input
-        htmlFor="name"
-        defaultValue="Default value"
-        error={boolean('error', false)}
-        type={selectKnob('type', ['number', 'text'], 'text')}
-      />
-    )}
+  <Story
+    name="Input"
+    args={{ htmlFor: 'name', defaultValue: 'Default Value', type: 'text' }}
+  >
+    {(args) => <Input {...args} />}
   </Story>
 </Canvas>
 
@@ -118,13 +113,7 @@ Sets a long-form text-based value. It can be configured as a native HTML
 If the `error` prop is passed, it has a red outline.
 
 <Canvas>
-  <Story name="TextArea">
-    {(args) => (
-      <TextArea
-        htmlFor="about"
-        error={boolean('error', false)}
-        rows={number('rows', 8)}
-      />
-    )}
+  <Story name="TextArea" args={{ htmlFor: 'about', error: false, rows: 8 }}>
+    {(args) => <TextArea {...args} />}
   </Story>
 </Canvas>
