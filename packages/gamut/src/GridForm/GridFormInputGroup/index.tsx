@@ -1,8 +1,9 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
+import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
 import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
@@ -12,7 +13,6 @@ import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
-import styles from './styles.module.scss';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -22,6 +22,20 @@ export type GridFormInputGroupProps = {
   setValue: (value: any) => void;
 };
 
+const StyledFormGroup = styled(FormGroup)`
+  margin-bottom: 0;
+
+  // This is always the input
+  > *:last-child {
+    width: 100%;
+  }
+`;
+
+const StyledFormGroupLabel = styled(FormGroupLabel)`
+  display: inline-block;
+  margin-right: 0.5rem;
+`;
+
 export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   props
 ) => {
@@ -30,7 +44,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'checkbox':
         return (
           <GridFormCheckboxInput
-            className={styles.gridFormInput}
             field={props.field}
             register={props.register}
           />
@@ -39,7 +52,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'custom':
         return (
           <GridFormCustomInput
-            className={styles.gridFormInput}
             field={props.field}
             register={props.register}
             setValue={props.setValue}
@@ -50,7 +62,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'radio-group':
         return (
           <GridFormRadioGroupInput
-            className={styles.gridFormInput}
             field={props.field}
             register={props.register}
             setValue={props.setValue}
@@ -60,7 +71,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'select':
         return (
           <GridFormSelectInput
-            className={styles.gridFormInput}
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -70,7 +80,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'file':
         return (
           <GridFormFileInput
-            className={styles.gridFormInput}
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -80,7 +89,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       case 'textarea':
         return (
           <GridFormTextArea
-            className={styles.gridFormInput}
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -90,7 +98,6 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       default:
         return (
           <GridFormTextInput
-            className={styles.gridFormInput}
             error={!!props.error}
             field={props.field}
             register={props.register}
@@ -99,25 +106,23 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     }
   };
 
+  const label = (
+    <StyledFormGroupLabel htmlFor={props.field.id || props.field.name}>
+      {props.field.label}
+    </StyledFormGroupLabel>
+  );
+
   return (
     <Column size={props.field.size}>
-      <FormGroup className={styles.formGroup}>
-        <FormGroupLabel
-          className={cx(
-            styles.formGroupLabel,
-            props.field.hideLabel && styles.invisible
-          )}
-          htmlFor={props.field.id || props.field.name}
-        >
-          {props.field.label}
-        </FormGroupLabel>
+      <StyledFormGroup>
+        {props.field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {props.error && (
           <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
             {props.error}
           </FormError>
         )}
         {getInput()}
-      </FormGroup>
+      </StyledFormGroup>
     </Column>
   );
 };
