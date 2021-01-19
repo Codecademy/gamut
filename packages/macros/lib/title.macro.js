@@ -16,7 +16,7 @@ const getPathInformation = (f) => {
     .filter((slug) => slug.indexOf('index') === -1 && slug.length > 0)
     .map((slug) =>
       slug
-        .replace(/.stories|.(mdx|tsx|ts|js)/g, '')
+        .replace(/\.stories\.(mdx|tsx|ts|js)/g, '')
         .replace('Deprecated', ` (Deprecated)`)
     )
     .join('/');
