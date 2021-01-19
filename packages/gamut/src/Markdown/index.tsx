@@ -84,12 +84,17 @@ export class Markdown extends PureComponent<MarkdownProps> {
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
           component: MarkdownAnchor,
-          processNode: (node, props) =>  {
+          processNode: (node, props) => {
             // Note: this processNode override is necessary because wrapping this component
             // in an anonymous functional component as with the Table below causes react rendering
             // to crash with some chrome translation features.
             // See https://codecademy.atlassian.net/browse/WEB-1214
-            return <MarkdownAnchor onClick={onAnchorClick} {...props as MarkdownAnchorProps} />;
+            return (
+              <MarkdownAnchor
+                onClick={onAnchorClick}
+                {...(props as MarkdownAnchorProps)}
+              />
+            );
           },
         }),
       !skipDefaultOverrides.table &&
