@@ -2,7 +2,6 @@ import { Column, GridForm, Input, LayoutGrid } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { select } from '@storybook/addon-knobs';
 import { useState } from '@storybook/addons';
 
 <Meta
@@ -32,7 +31,7 @@ responsive layouts.
 <Props of={GridForm} />
 
 <Canvas>
-  <Story name="GridForm">
+  <Story name="GridForm" args={{ validation: 'onSubmit' }}>
     {(args) => (
       <GridForm
         fields={[
@@ -148,7 +147,7 @@ responsive layouts.
           contents: 'Submit Me!?',
           size: 12,
         }}
-        validation={select('validation', ['onSubmit', 'onChange'], 'onSubmit')}
+        {...args}
       />
     )}
   </Story>

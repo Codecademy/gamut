@@ -1,8 +1,6 @@
 import { InputStepper } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Meta, Preview, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { number, text } from '@storybook/addon-knobs';
-import { useState } from '@storybook/addons';
 
 <Meta
   title={title}
@@ -13,6 +11,13 @@ Input Steppers allow for finetuned control over numeric values. They
 override the default styles for numeric inputs.`,
     source: 'gamut',
   }}
+  args={{
+    min: 0,
+    max: 999,
+    ariaLabel: 'input stepper',
+    label: 'things',
+    value: 99,
+  }}
 />
 
 Steppers will default to a small size if selecting over values that are
@@ -22,22 +27,7 @@ otherwise.
 Steppers are not appropriate for values larger than three digits.
 
 <Preview>
-  <Story name="Input Stepper">
-    {(args) => {
-      const [value, setValue] = useState(99);
-      return (
-        <InputStepper
-          min={number('Minimum', 0)}
-          max={number('Maximum', 999)}
-          ariaLabel="input stepper"
-          label={text('Label', 'things')}
-          onChange={setValue}
-          value={value}
-          onStepperButtonClick={() => null}
-        />
-      );
-    }}
-  </Story>
+  <Story name="InputStepper">{(args) => <InputStepper {...args} />}</Story>
 </Preview>
 
-<Props of={InputStepper} />
+<Props story="InputStepper" />
