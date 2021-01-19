@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.14.2...@codecademy/styleguide@21.15.0) (2021-01-19)
+
+
+### Features
+
+* **Interstitial:** add focus mgmt to Interstitial ([18fcc9f](https://github.com/Codecademy/client-modules/commit/18fcc9f8bf7567b9df2b8dbed9c8c4ef6979a5aa))
+
+
+### Bug Fixes
+
+* **MDX:** Parsing Validation and ESlint for MDX WEB-1238 ([a9fc436](https://github.com/Codecademy/client-modules/commit/a9fc436b415d319bff2858cf75fff6afbb489f6f))
+
+
+
 ### [21.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.14.1...@codecademy/styleguide@21.14.2) (2021-01-19)
 
 **Note:** Version bump only for package @codecademy/styleguide
