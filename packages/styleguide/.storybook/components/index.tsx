@@ -8,3 +8,4 @@ export * from './Box';
 export * from './ColorScale';
 export * from './Page';
 export * from './TableOfContents';
+export * from './utils';

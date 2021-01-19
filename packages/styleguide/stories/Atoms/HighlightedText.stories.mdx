@@ -1,0 +1,26 @@
+import { HighlightedText, Text } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={HighlightedText}
+  parameters={{
+    subtitle: `Emphasized (bold) text with a light background color behind it. Use to
+showcase important words in a sentence.`,
+    source: 'gamut',
+  }}
+  args={{ children: 'superpowers' }}
+/>
+
+<Canvas>
+  <Story name="HighlightedText">
+    {(args) => (
+      <Text fontSize="md">
+        Would you like to have <HighlightedText />?
+      </Text>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="HighlightedText" />

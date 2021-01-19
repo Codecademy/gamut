@@ -1,11 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { action } from '@storybook/addon-actions';
-import { select, text } from '@storybook/addon-knobs';
-
 import { PageFeatures } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Organisms/PageFeatures"
+  title={title}
   component={PageFeatures}
   args={{
     title: 'Welcome to Codecademy',
@@ -15,6 +13,7 @@ import { PageFeatures } from '@codecademy/gamut-labs/src';
       text: 'Click Me',
       href: '#',
       onClick: () => {
+        // eslint-disable-next-line no-console
         console.log('You could add event tracking here');
       },
     },
@@ -56,7 +55,7 @@ import { PageFeatures } from '@codecademy/gamut-labs/src';
   <Story name="WithImages">{(args) => <PageFeatures {...args} />}</Story>
 </Canvas>
 
-<Props story="WithImages" of={PageFeatures} />
+<Props story="WithImages" />
 
 ## Icon Images
 

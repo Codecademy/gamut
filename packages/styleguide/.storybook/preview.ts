@@ -1,4 +1,3 @@
-import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 import 'focus-visible/dist/focus-visible.min.js';
 
@@ -25,7 +24,6 @@ export const parameters = {
     storySort: {
       order: [
         'Gamut',
-        'Meta',
         'Foundations',
         ['About', 'Theme', 'Design Guidelines', 'Legacy'],
         'Typography',
@@ -34,6 +32,7 @@ export const parameters = {
         'Molecules',
         'Organisms',
         'Brand',
+        'Meta',
         'Deprecated',
       ],
       // Fallback ordering
@@ -51,4 +50,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withKnobs, withEmotion];
+export const decorators = [withEmotion];
