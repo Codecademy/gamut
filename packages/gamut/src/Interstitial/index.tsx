@@ -1,6 +1,6 @@
 import { colors } from '@codecademy/gamut-styles';
-import React, { useEffect, useRef, useState } from 'react';
 import styled from '@emotion/styled';
+import React, { useEffect, useRef, useState } from 'react';
 
 export type InterstitialProps = {
   buttons?: React.ReactNode[];
