@@ -59,8 +59,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "eslint-plugin-mdx": "^1.8.2",
-    "eslint-plugin-unused-imports": "^1.0.1",
     "glob": "^7.1.6"
   }
 }
