@@ -1,0 +1,38 @@
+import { FormGroupDescription, FormGroupLabel } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  subcomponents={{ FormGroupLabel, FormGroupDescription }}
+  parameters={{
+    subtitle: `Ancillary descriptions for input atoms tied 1:1 with values to
+be submitted in a form.`,
+    source: 'gamut',
+  }}
+/>
+
+You should generally never use these directly as a Gamut consumer;
+instead, use `GridForm` to auto-generate these for you.
+
+<Props of={FormGroupDescription} />
+
+## FormGroupDescription
+
+<Canvas>
+  <Story name="FormGroupDescription">
+    {(args) => (
+      <FormGroupDescription>
+        Secure, unique password for your account.
+      </FormGroupDescription>
+    )}
+  </Story>
+</Canvas>
+
+## FormGroupLabel
+
+<Canvas>
+  <Story name="FormGroupLabel">
+    {(args) => <FormGroupLabel>Password</FormGroupLabel>}
+  </Story>
+</Canvas>

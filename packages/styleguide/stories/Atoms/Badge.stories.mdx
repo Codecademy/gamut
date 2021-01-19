@@ -1,0 +1,35 @@
+import { Badge } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Badge}
+  parameters={{
+    subtitle:
+      'A small text box with a dark background for displaying tags or emphasised information in a condensed area',
+    status: 'stable',
+    source: 'gamut',
+  }}
+  args={{ children: 'badge' }}
+/>
+
+<Canvas>
+  <Story name="Badge">{(args) => <Badge {...args} />}</Story>
+</Canvas>
+
+<Props story="Badge" />
+
+Badges can be used within inline text.
+
+<Canvas>
+  <Story name="Inline Badge">
+    {(args) => (
+      <>
+        <Badge>css</Badge>
+        <Badge>css</Badge>
+        <Badge>css</Badge>
+      </>
+    )}
+  </Story>
+</Canvas>

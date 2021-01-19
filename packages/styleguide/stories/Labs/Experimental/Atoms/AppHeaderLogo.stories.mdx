@@ -1,10 +1,11 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { AppHeaderLogo } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Labs/Experimental/Atoms/AppHeaderLogo"
+  title={title}
   component={AppHeaderLogo}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
   args={{
     item: {
       pro: true,
@@ -15,21 +16,23 @@ import { AppHeaderLogo } from '@codecademy/gamut-labs/src';
   }}
 />
 
-<Props of={AppHeaderLogo} />
+<Canvas>
+  <Story name="AppHeaderLogo">{(args) => <AppHeaderLogo {...args} />}</Story>
+</Canvas>
+
+<Props story="AppHeaderLogo" />
 
 ## Pro
 
 <Canvas>
-  <Story name="AppHeaderLogo - pro ">
-    {(args) => <AppHeaderLogo {...args} />}
-  </Story>
+  <Story name="pro">{(args) => <AppHeaderLogo {...args} />}</Story>
 </Canvas>
 
 ## Free + Anon
 
 <Canvas>
   <Story
-    name="AppHeaderLogo - free"
+    name="free"
     args={{
       item: {
         pro: false,

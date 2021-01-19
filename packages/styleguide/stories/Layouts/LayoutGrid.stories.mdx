@@ -1,0 +1,235 @@
+import { Column, LayoutGrid } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { ExampleBox } from './Elements';
+
+<Meta
+  title={title}
+  component={LayoutGrid}
+  subcomponents={{ Column }}
+  parameters={{
+    subtitle: 'A CSS grid based 12 Column grid system using just grid items',
+    status: 'volatile',
+    source: 'gamut',
+  }}
+/>
+
+A flexible grid that can support arbitrary rows of content, each of
+which snaps to assuming 12 "units" of width. Cells in the rows are
+stored as a `Column` that have a grid-specified gap
+between them.
+
+Row and column gaps can be configured in a responsive way. For example, you might
+have a particular set of gaps at small viewports and bigger ones on large viewports.
+
+<Canvas>
+  <Story
+    name="LayoutGrid"
+    args={{ rowGap: { xs: 'sm', lg: 'lg' }, columnGap: { xs: 'sm', lg: 'lg' } }}
+  >
+    {(args) => (
+      <LayoutGrid {...args}>
+        <Column size={12}>
+          <ExampleBox>12</ExampleBox>
+        </Column>
+        <Column size={6}>
+          <ExampleBox>6</ExampleBox>
+        </Column>
+        <Column size={6}>
+          <ExampleBox>6</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={1}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="LayoutGrid" />
+
+## Grid Gaps
+
+<Canvas>
+  <Story name="Grid Gaps" args={{ rowGap: 'sm', columnGap: 'sm' }}>
+    {(args) => (
+      <LayoutGrid {...args}>
+        <Column size={12}>
+          <ExampleBox>12</ExampleBox>
+        </Column>
+        <Column size={6}>
+          <ExampleBox>6</ExampleBox>
+        </Column>
+        <Column size={6}>
+          <ExampleBox>6</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Offsets
+
+Columns may be offset from the left by numbers within the [0-12] scale.
+As with column and row gaps, those numbers may be static or responsive.
+
+<Canvas>
+  <Story name="Column Offsets">
+    {(args) => (
+      <LayoutGrid rowGap="sm" columnGap="sm">
+        <Column offset={2} size={4}>
+          <ExampleBox>2 Column offset</ExampleBox>
+        </Column>
+        <Column size={2}>
+          <ExampleBox />
+        </Column>
+        <Column size={2}>
+          <ExampleBox />
+        </Column>
+        <Column size={4}>
+          <ExampleBox>No offset</ExampleBox>
+        </Column>
+        <Column size={8}>
+          <ExampleBox />
+        </Column>
+        <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
+          <ExampleBox>sm: 6, md: 4, lg: 2</ExampleBox>
+        </Column>
+        <Column offset={{ xs: 0, md: 4 }} size={6}>
+          <ExampleBox>no offset sm, md: 4</ExampleBox>
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+## Rowspans
+
+Columns may be span multiple rows. Make sure you have a consistent row height when using rowspans.
+
+<Canvas>
+  <Story name="Column Rowspans">
+    {(args) => (
+      <LayoutGrid columnGap="sm" rowGap="sm">
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column rowspan={2} size={3}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column rowspan={3} size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column rowspan={3} size={3}>
+          <ExampleBox>3</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column rowspan={2} size={3}>
+          <ExampleBox>2</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+        <Column size={3}>
+          <ExampleBox>1</ExampleBox>
+        </Column>
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>

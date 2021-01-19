@@ -1,8 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { Byline } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Molecules/Byline"
+  title={title}
   component={Byline}
   args={{
     firstName: 'Bill',

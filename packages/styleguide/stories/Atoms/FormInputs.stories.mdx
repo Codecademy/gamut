@@ -1,0 +1,119 @@
+import {
+  Checkbox,
+  Input,
+  Radio,
+  RadioGroup,
+  Select,
+  TextArea,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  subcomponents={{ Checkbox, Input, Radio, RadioGroup, Select, TextArea }}
+  parameters={{
+    subtitle: 'Input atoms tied 1:1 with values to be submitted in a form.',
+    source: 'gamut',
+    figmaId: 'OoMThJj3Gk9NZGaTlECssl',
+  }}
+/>
+
+You should generally never use several of these grouped together directly as a Gamut consumer;
+instead, use `GridForm` to auto-generate a form for you.
+
+<Props of={Checkbox} />
+
+## Elements
+
+### Checkbox
+
+Toggles a named boolean input value.
+
+<Canvas>
+  <Story name="Checkbox">
+    {(args) => (
+      <>
+        <Checkbox htmlFor="html-css" label="HTML & CSS" />
+        <Checkbox htmlFor="javascript" label="JavaScript" />
+        <Checkbox htmlFor="ruby" label="Ruby" />
+        <Checkbox
+          htmlFor="multiline"
+          label={`I am a really long input that takes multiple lines.
+       To make the checkbox better aligned with the text we can add
+       the multiline prop which will add some margin-top to it and
+       reduce the fontsize to be much smaller. Yay to a better
+       looking block of text and checkbox! Now I am sort of
+       grasping at straws in my attempt to fill this up.
+        Look at that though; another sentence.`}
+          multiline
+        />
+      </>
+    )}
+  </Story>
+</Canvas>
+
+### Input
+
+Sets a short-form text-based value. It can be configured as a native HTML `<input/>`,
+such as limiting to numbers. If the `error` prop is passed, it has a red outline.
+
+<Canvas>
+  <Story
+    name="Input"
+    args={{ htmlFor: 'name', defaultValue: 'Default Value', type: 'text' }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+</Canvas>
+
+### RadioGroup
+
+Sets a value to one of a finite set of known values.
+
+<Canvas>
+  <Story name="RadioGroup">
+    {(args) => (
+      <RadioGroup
+        htmlForPrefix="why-are-you-learning"
+        name="why-are-you-learning"
+      >
+        <Radio
+          label="Skills to communicate with developers and other technical people"
+          value="skills"
+        />
+        <Radio
+          label="A better understanding of web development in general"
+          value="understanding"
+        />
+      </RadioGroup>
+    )}
+  </Story>
+</Canvas>
+
+### Select
+
+<Canvas>
+  <Story name="Select">
+    {(args) => (
+      <Select
+        htmlFor="select"
+        options={['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant']}
+        id="fruits"
+      />
+    )}
+  </Story>
+</Canvas>
+
+### TextArea
+
+Sets a long-form text-based value. It can be configured as a native HTML
+`&lt;textarea/&gt;`, such as adjusting number of rows.
+
+If the `error` prop is passed, it has a red outline.
+
+<Canvas>
+  <Story name="TextArea" args={{ htmlFor: 'about', error: false, rows: 8 }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+</Canvas>

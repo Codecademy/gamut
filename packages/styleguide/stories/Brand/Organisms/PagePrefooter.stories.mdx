@@ -1,9 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-
 import { PagePrefooter } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Organisms/PagePrefooter"
+  title={title}
   component={PagePrefooter}
   args={{
     title:
@@ -15,6 +15,7 @@ import { PagePrefooter } from '@codecademy/gamut-labs/src';
       href:
         'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
       onClick: () => {
+        // eslint-disable-next-line no-console
         console.log('You could add event tracking here');
       },
     },
@@ -31,7 +32,7 @@ import { PagePrefooter } from '@codecademy/gamut-labs/src';
   <Story name="With CTA">{(args) => <PagePrefooter {...args} />}</Story>
 </Canvas>
 
-<Props story="With CTA" of={PagePrefooter} />
+<Props story="With CTA" />
 
 ### Without CTA
 

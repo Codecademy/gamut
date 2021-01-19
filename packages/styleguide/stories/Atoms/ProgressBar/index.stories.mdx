@@ -1,0 +1,109 @@
+import { Column, LayoutGrid, ProgressBar } from '@codecademy/gamut/src';
+import { colors } from '@codecademy/gamut-styles';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { bars } from './constants';
+
+<Meta
+  title={title}
+  component={ProgressBar}
+  parameters={{
+    subtitle: 'A horizontal bar for displaying progress',
+    source: 'gamut',
+    status: 'volatile',
+  }}
+  args={{ minimumPercent: 5, percent: 5, theme: 'blue' }}
+/>
+
+ProgressBars are to be used when you would like to indicate a known or
+somewhat-known amount of progress along a fixed course. For example, you
+might show one on a quiz page indicating how many questions have been
+completed.
+
+Bars with `large` specified are thicker, and will display a
+percentage label if a font color is specified.
+
+<Canvas>
+  <Story name="ProgressBar">
+    {(args) => (
+      <LayoutGrid columnGap="sm" rowGap="sm">
+        {[0, 25, 50, 75, 100].map((percent) =>
+          bars.map(({ large, theme }) => (
+            <Column key={[percent, large, theme].join()} size={6}>
+              <ProgressBar large={large} percent={percent} theme={theme} />
+            </Column>
+          ))
+        )}
+      </LayoutGrid>
+    )}
+  </Story>
+</Canvas>
+
+<Props story="ProgressBar" />
+
+## Minimum Percent
+
+Some bars (generally small ones) should display at least a little bit of
+progress, even if the technical progress number is zero. You can use the
+`minimumPercent` prop for a minimum visual width percentage.
+
+<Canvas>
+  <Story name="Minimum Percentage">{(args) => <ProgressBar {...args} />}</Story>
+</Canvas>
+
+## Style Overrides
+
+For the sake of rapid iteration, you can pass in custom style colors via the
+`style` prop.
+
+<Canvas>
+  <Story
+    name="Style Overrides"
+    args={{
+      style: {
+        backgroundColor: colors.red[900],
+        barColor: colors.red[600],
+        fontColor: colors.white,
+      },
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+## Pattern background
+
+Using the new SVG Pattern component for the background. Here we are using the DiagonalStripesRegular Pattern in navy in the large ProgressBar and the diagonalStripesDense pattern in the smaller ProgressBar.
+
+### Stripes Regular
+
+<Canvas column={2}>
+  <Story
+    name="Stripe - Regular"
+    args={{
+      pattern: 'diagonalStripesRegular',
+      large: true,
+      percent: 50,
+      theme: 'yellow',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+### Stripes Dense
+
+<Canvas>
+  <Story
+    name="Stripe - Dense"
+    args={{
+      pattern: 'diagonalStripesDense',
+      large: true,
+      percent: 50,
+      theme: 'blue',
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>

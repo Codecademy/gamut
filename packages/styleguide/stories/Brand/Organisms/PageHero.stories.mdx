@@ -1,9 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-
 import { PageHero } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Organisms/PageHero"
+  title={title}
   component={PageHero}
   args={{
     title:
@@ -11,12 +11,14 @@ import { PageHero } from '@codecademy/gamut-labs/src';
     desc:
       'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
     onAnchorClick: () =>
+      // eslint-disable-next-line no-console
       console.log('You clicked me an anchor tag inside Markdown!'),
     cta: {
       text: 'Supernatural',
       href:
         'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
       onClick: () => {
+        // eslint-disable-next-line no-console
         console.log('You could add event tracking here');
       },
     },
@@ -37,7 +39,7 @@ import { PageHero } from '@codecademy/gamut-labs/src';
   <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
 </Canvas>
 
-<Props story="With CTA" of={PageHero} />
+<Props story="With CTA" />
 
 ### Without CTA
 
