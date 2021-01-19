@@ -20,13 +20,6 @@ module.exports = {
       parser: 'eslint-mdx',
     },
     {
-      files: ['*.ts', '*.tsx'],
-      parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
-      },
-    },
-    {
       files: ['**/typings/*', '*.d.ts'],
       parserOptions: {
         tsconfigRootDir: __dirname,
