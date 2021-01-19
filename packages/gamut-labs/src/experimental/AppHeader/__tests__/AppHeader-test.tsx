@@ -85,14 +85,22 @@ const renderAppHeader = () => {
 describe('AppHeader', () => {
   it('renders AppHeaderLogo', () => {
     renderAppHeader();
-    expect(screen.getByRole('svg').getAttribute('title')).toEqual(
-      'Codecademy Logo'
-    );
+    screen.getByTitle('Codecademy Logo');
   });
 
   it('renders AppHeaderLink', () => {
     renderAppHeader();
-    screen.getByText('TextButton');
+    screen.getByText('AppHeaderLink');
+  });
+
+  it('renders AppHeaderDropdown', () => {
+    renderAppHeader();
+    screen.getByText('AppHeaderDropdown');
+  });
+
+  it('renders a custom component', () => {
+    renderAppHeader();
+    screen.getByTitle('Favicon Icon');
   });
 
   it('TextButton calls onClick() when clicked', () => {

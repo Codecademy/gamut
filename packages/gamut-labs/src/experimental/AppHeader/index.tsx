@@ -37,6 +37,14 @@ const mapItemToElement = (
           <AppHeaderLink item={item} onClick={onClick} />
         </AppHeaderTab>
       );
+    case 'dropdown':
+      return (
+        <AppHeaderTab key={item.id}>
+          <AppHeaderDropdown item={item} onClick={onClick} />
+        </AppHeaderTab>
+      );
+    case 'render-element':
+      return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>;
     case 'text-button':
       return (
         <AppHeaderTab key={item.id}>
@@ -61,14 +69,6 @@ const mapItemToElement = (
           </FillButton>
         </AppHeaderTab>
       );
-    case 'dropdown':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderDropdown item={item} onClick={onClick} />
-        </AppHeaderTab>
-      );
-    case 'render-element':
-      return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>;
   }
 };
 
