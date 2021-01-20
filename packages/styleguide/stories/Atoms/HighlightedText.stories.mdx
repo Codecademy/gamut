@@ -1,7 +1,6 @@
 import { HighlightedText, Text } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { text } from '@storybook/addon-knobs';
 
 <Meta
   title={title}
@@ -11,17 +10,17 @@ import { text } from '@storybook/addon-knobs';
 showcase important words in a sentence.`,
     source: 'gamut',
   }}
+  args={{ children: 'superpowers' }}
 />
 
 <Canvas>
   <Story name="HighlightedText">
     {(args) => (
       <Text fontSize="md">
-        Would you like to have{' '}
-        <HighlightedText>{text('text', 'superpowers')}</HighlightedText>?
+        Would you like to have <HighlightedText />?
       </Text>
     )}
   </Story>
 </Canvas>
 
-<Props of={HighlightedText} />
+<Props story="HighlightedText" />
