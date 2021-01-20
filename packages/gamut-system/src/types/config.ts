@@ -9,11 +9,11 @@ import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** Theme Shape  */
 
-type BaseTheme = Readonly<{
+interface BaseTheme {
   readonly [key: string]: any;
-}>;
+}
 
-export type AbstractTheme = BaseTheme & {
+export interface AbstractTheme extends BaseTheme {
   breakpoints?: {
     xs: string;
     sm: string;
@@ -21,20 +21,24 @@ export type AbstractTheme = BaseTheme & {
     lg: string;
     xl: string;
   };
-};
+}
 
 /** Property Scales */
 export type DefaultPropScale<
   Config extends AbstractPropertyConfig
 > = Properties[Config['propName']]['defaultScale'];
 
-export type ScaleArray = Readonly<unknown[]>;
+export type ScaleArray = readonly unknown[];
 
-export type ScaleMap = Readonly<Record<string | number, unknown>>;
+export interface ScaleMap {
+  readonly [key: string]: unknown;
+  readonly [key: number]: unknown;
+}
 
 export type ScaleAlias = Readonly<string>;
 
 export type AnyScale = ScaleArray | ScaleMap | ScaleAlias;
+
 export type AnyThematicScale<Theme extends AbstractTheme> =
   | ScaleArray
   | ScaleMap
@@ -53,14 +57,14 @@ export type ThematicScaleValue<
 
 /** Property Configurations */
 
-export type AbstractPropertyConfig = {
+export interface AbstractPropertyConfig {
   propName: PropName;
   property?: Property;
   dependentProps?: Readonly<string[]>;
   type?: 'standard' | 'directional';
   scale?: AnyScale;
   transformValue?: (value: any) => string | number;
-};
+}
 
 export type PropertyConfig<
   Theme extends AbstractTheme
@@ -79,14 +83,14 @@ export type MediaQueryArray<Value> = [
   Value?
 ];
 
-export type MediaQueryMap<Value> = {
+export interface MediaQueryMap<Value> {
   base?: Value;
   xs?: Value;
   sm?: Value;
   md?: Value;
   lg?: Value;
   xl?: Value;
-};
+}
 
 export type ResponsiveProp<Value> =
   | Value
@@ -95,7 +99,9 @@ export type ResponsiveProp<Value> =
 
 /** Prop Shapes */
 
-export type AbstractProps = Record<string, unknown>;
+export interface AbstractProps {
+  [key: string]: unknown;
+}
 
 export type ThematicProps<
   Theme extends AbstractTheme,
@@ -113,14 +119,15 @@ export type StyleTemplate<Props extends AbstractProps> = (
   props: Props
 ) => CSSObject | undefined;
 
-export type HandlerMeta<Props extends AbstractProps> = {
+export interface HandlerMeta<Props extends AbstractProps> {
   propNames: Exclude<keyof Props, 'theme'>[];
   styleTemplates: WeakRecord<keyof Props, StyleTemplate<Props>>;
-};
+}
 
-export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
-  ((props: Props) => CSSObject);
-
+export interface Handler<Props extends AbstractProps>
+  extends HandlerMeta<Props> {
+  (props: Props): CSSObject;
+}
 export type HandlerProps<
   HandlerFn extends (props: AbstractProps) => CSSObject
 > = Parameters<HandlerFn>[0];

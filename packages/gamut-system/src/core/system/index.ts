@@ -16,6 +16,7 @@ const create = <
   // Initializes the return object
   const systemShape = {
     properties: {},
+    groups: {},
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
@@ -36,7 +37,7 @@ const create = <
     };
 
     // Add the composite group handler to the correct propGroups key
-    systemShape[groupKey] = groupHandler;
+    systemShape.groups[groupKey] = groupHandler;
   });
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
@@ -63,6 +64,13 @@ const create = <
 
   // add the function to the returned object
   systemShape.variant = createVariant;
+
+  const allProps = compose(...(values(systemShape.properties) as any));
+
+  const css = (config: any) => (props: any = {}) =>
+    allProps({ ...config, theme: props?.theme });
+
+  systemShape.css = css;
 
   return systemShape;
 };

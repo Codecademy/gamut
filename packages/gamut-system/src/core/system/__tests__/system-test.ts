@@ -1,13 +1,14 @@
 import { system } from '..';
 
 describe('system', () => {
-  const { properties, variant, ...groups } = system.create({});
+  const { css, properties, variant, groups } = system.create({});
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {
       expect(properties).toBeDefined();
       expect(groups).toBeDefined();
       expect(variant).toBeDefined();
+      expect(css).toBeDefined();
     });
   });
 
@@ -40,8 +41,19 @@ describe('system', () => {
     });
   });
 
+  describe('css', () => {
+    it('returns a higher order function that returns a css object', () => {
+      const myCustomCss = css({ textColor: 'blue' });
+
+      expect(myCustomCss()).toEqual({ color: 'blue' });
+    });
+  });
+
   describe('Custom Scales', () => {
-    const { typography, variant } = system.create({
+    const {
+      groups: { typography },
+      variant,
+    } = system.create({
       typography: {
         fontSize: { propName: 'fontSize', scale: { sm: '14px', md: '16px' } },
       },
@@ -68,7 +80,10 @@ describe('system', () => {
   });
 
   describe('Theme Scales', () => {
-    const { typography, variant } = system
+    const {
+      groups: { typography },
+      variant,
+    } = system
       .withTheme<{
         fontSize: { sm: string; md: string };
       }>()

@@ -115,7 +115,11 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   return (
     <Column size={props.field.size}>
       <StyledFormGroup>
-        {props.field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {props.field.hideLabel ? (
+          <HiddenText htmlFor="hello">{label}</HiddenText>
+        ) : (
+          label
+        )}
         {props.error && (
           <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
             {props.error}

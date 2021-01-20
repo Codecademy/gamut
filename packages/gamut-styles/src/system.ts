@@ -5,16 +5,18 @@ import { Theme } from './theme';
 const {
   variant,
   properties,
-  typography,
-  grid,
-  flex,
-  layout,
-  positioning,
-  background,
-  color,
-  shadow,
-  spacing: space,
-  border,
+  groups: {
+    typography,
+    grid,
+    flex,
+    layout,
+    positioning,
+    background,
+    color,
+    shadow,
+    spacing: space,
+    border,
+  },
 } = system.withTheme<Theme>().create({
   typography: {
     fontSize: {

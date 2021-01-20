@@ -7,19 +7,19 @@ import {
 } from './config';
 import { UnionToIntersection, WeakRecord } from './utils';
 
-export type CSSObject = Record<string, string | number>;
+export interface CSSObject {
+  [key: string]: string | number;
+}
 
 /** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
-type GroupConfig<Theme extends AbstractTheme> = Record<
-  string,
-  PropertyConfig<Theme>
->;
+interface GroupConfig<Theme extends AbstractTheme> {
+  [key: string]: PropertyConfig<Theme>;
+}
 
 /** A collection of Property Groups EG: 'typography' | 'layout' etc.  */
-export type SystemConfig<Theme extends AbstractTheme> = Record<
-  string,
-  GroupConfig<Theme>
->;
+export interface SystemConfig<Theme extends AbstractTheme> {
+  [key: string]: GroupConfig<Theme>;
+}
 
 /** Merge a user defined configuration on top of the base configuration to derive defaults correctly */
 type MergeConfig<
@@ -80,22 +80,39 @@ export type AllSystemProps<
 
  * And a map of all composed handlers from each top level system group.
  */
-export type System<
+
+export interface Variant<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
-> = {
+> {
+  /** Customizable prop interface */
+  <Prop extends Readonly<string>, Keys extends string>(config: {
+    prop: Prop;
+    variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+  }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
+  /** Default `variant` interface */
+  <Keys extends string>(
+    config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
+  ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
+}
+
+export interface CSS<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> {
+  (props: AllSystemProps<Theme, Config>): (props?: {
+    theme?: Theme;
+  }) => CSSObject;
+}
+
+export interface System<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> {
+  /** Higher order function for theme aware CSS object */
+  css: CSS<Theme, Config>;
   /** Higher order variant function, with two overloads */
-  variant: {
-    /** Customizable prop interface */
-    <Prop extends Readonly<string>, Keys extends string>(config: {
-      prop: Prop;
-      variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
-    }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
-    /** Default `variant` interface */
-    <Keys extends string>(
-      config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
-    ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
-  };
+  variant: Variant<Theme, Config>;
   /** The intersection of all style properties (regardless of group) */
   properties: UnionToIntersection<
     SystemProperties<Theme, Config>[keyof SystemProperties<
@@ -103,11 +120,15 @@ export type System<
       Config
     >]['handlers']
   >;
-} & {
-  [PropGroup in keyof SystemProperties<Theme, Config>]: Handler<
-    SystemProperties<Theme, Config>[PropGroup]['props'][keyof SystemProperties<
-      Theme,
-      Config
-    >[PropGroup]['props']]
-  >;
-};
+  groups: {
+    [PropGroup in keyof SystemProperties<Theme, Config>]: Handler<
+      SystemProperties<
+        Theme,
+        Config
+      >[PropGroup]['props'][keyof SystemProperties<
+        Theme,
+        Config
+      >[PropGroup]['props']]
+    >;
+  };
+}

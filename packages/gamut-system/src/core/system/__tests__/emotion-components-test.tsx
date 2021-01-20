@@ -12,7 +12,10 @@ expect.extend(matchers);
 
 describe('Styled components integration', () => {
   describe('base components', () => {
-    const { variant, typography } = system.create({});
+    const {
+      variant,
+      groups: { typography },
+    } = system.create({});
     const textVariants = variant({
       primary: { fontSize: '1rem', textColor: 'blue' },
       secondary: { fontSize: '0.85rem' },
@@ -64,7 +67,10 @@ describe('Styled components integration', () => {
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     );
 
-    const { variant, typography } = system.withTheme<ThemeShape>().create({
+    const {
+      variant,
+      groups: { typography },
+    } = system.withTheme<ThemeShape>().create({
       typography: { fontSize: { propName: 'fontSize', scale: 'fontSizes' } },
     });
 
