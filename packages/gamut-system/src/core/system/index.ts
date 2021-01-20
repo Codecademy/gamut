@@ -7,6 +7,20 @@ import { compose } from '../compose';
 import { createHandler } from '../createHandler';
 import { getDefaultPropKey } from '../utils';
 
+const getPseudoGroups = (config: any) => {
+  const base: any = {};
+  const pseudoGroups: any = {};
+  entries(config).forEach(([key, value]) => {
+    if (key.charAt(0) === ':') {
+      pseudoGroups[`&${key}`] = value;
+    } else {
+      base[key] = value;
+    }
+  });
+
+  return [base, pseudoGroups];
+};
+
 const create = <
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -56,13 +70,33 @@ const create = <
 
     // Return the variant function
     return (props: any) => {
-      const variantProps = variants[props[propKey]] || {};
-      return variantHandler({ ...variantProps, theme: props.theme });
+      const [base] = getPseudoGroups(variants[props[propKey]] || {});
+
+      return {
+        ...variantHandler({ ...base, theme: props.theme }),
+      };
     };
   };
 
   // add the function to the returned object
   systemShape.variant = createVariant;
+
+  const baseCssFn = compose(...(values(systemShape.properties) as any));
+
+  const css = (config: any) => {
+    const [base, pseudoGroups] = getPseudoGroups(config);
+    return (props: any) => {
+      return merge(
+        baseCssFn({ ...base, theme: props.theme }),
+        mapValues(pseudoGroups, (pseudo: any) => {
+          return baseCssFn({ ...pseudo, theme: props.theme });
+        })
+      );
+    };
+  };
+
+  // add css function
+  systemShape.css = css;
 
   return systemShape;
 };

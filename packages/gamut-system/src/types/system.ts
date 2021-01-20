@@ -1,3 +1,5 @@
+import { SimplePseudos } from 'csstype';
+
 import { BaseSystemConfig } from '../props';
 import {
   AbstractTheme,
@@ -6,6 +8,14 @@ import {
   ThematicProps,
 } from './config';
 import { UnionToIntersection, WeakRecord } from './utils';
+
+export type ComplexCss<
+  Theme extends AbstractTheme,
+  Config extends SystemConfig<Theme>
+> = AllSystemProps<Theme, Config> &
+  {
+    [key in SimplePseudos]?: AllSystemProps<Theme, Config>;
+  };
 
 export type CSSObject = Record<string, string | number>;
 
@@ -84,16 +94,19 @@ export type System<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > = {
+  css: (
+    config: ComplexCss<Theme, Config>
+  ) => (props: { theme?: Theme }) => CSSObject;
   /** Higher order variant function, with two overloads */
   variant: {
     /** Customizable prop interface */
     <Prop extends Readonly<string>, Keys extends string>(config: {
       prop: Prop;
-      variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+      variants: Readonly<Record<Keys, ComplexCss<Theme, Config>>>;
     }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */
     <Keys extends string>(
-      config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
+      config: Readonly<Record<Keys, ComplexCss<Theme, Config>>>
     ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
   };
   /** The intersection of all style properties (regardless of group) */

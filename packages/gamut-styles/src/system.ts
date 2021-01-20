@@ -3,6 +3,7 @@ import { system } from '@codecademy/gamut-system';
 import { Theme } from './theme';
 
 const {
+  css,
   variant,
   properties,
   typography,
@@ -71,6 +72,7 @@ const {
 });
 
 export {
+  css,
   variant,
   properties,
   typography,

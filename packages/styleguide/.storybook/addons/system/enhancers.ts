@@ -5,7 +5,7 @@ import * as system from '@codecademy/gamut-styles/src/system';
 const DOCS_LINK =
   'Responsive Property [spec](https://github.com/Codecademy/client-modules/blob/main/packages/gamut-system/docs/responsive.md)';
 
-const { properties, variant, ...groups } = system;
+const { css, properties, variant, ...groups } = system;
 
 const systemProps = Object.entries(properties).reduce<string[]>(
   (carry, [key, handler]) => {
