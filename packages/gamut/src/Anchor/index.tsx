@@ -6,6 +6,9 @@ const anchorVariants = variant({
   inline: {
     textDecoration: 'underline',
     textColor: 'hyper',
+    '&:hover': {
+      textColor: 'blue',
+    },
   },
   interface: {
     textDecoration: 'none',

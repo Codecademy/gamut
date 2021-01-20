@@ -7,6 +7,26 @@ import { compose } from '../compose';
 import { createHandler } from '../createHandler';
 import { getDefaultPropKey } from '../utils';
 
+const handlePseudoSelectors = (config: any, styleFn: any) => {
+  const base: any = {};
+  const pseudoGroups: any = {};
+
+  Object.keys(config).forEach((key) => {
+    if (key.indexOf('&') === 0) {
+      pseudoGroups[key] = config[key];
+    } else {
+      base[key] = config[key];
+    }
+  });
+
+  return ({ theme }: any) => ({
+    ...styleFn({ ...base, theme }),
+    ...mapValues(pseudoGroups, (pseudoStyles) =>
+      styleFn({ ...pseudoStyles, theme })
+    ),
+  });
+};
+
 const create = <
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -47,7 +67,19 @@ const create = <
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)
-        .reduce((carry, variant) => carry.concat(keys(variant)), [])
+        .reduce((carry, variant) => {
+          let props = [...carry];
+          const variantStyles = keys(variant);
+          variantStyles.forEach((prop) => {
+            if (prop.indexOf('&') === 0) {
+              props = [...props, ...keys(variant[prop])];
+            } else {
+              props.push(prop);
+            }
+          });
+
+          return props;
+        }, [])
         .map((prop: string) => getDefaultPropKey(prop))
     );
     // Pick the correct handlers from the system (closure specific) and create a composite.
@@ -58,7 +90,7 @@ const create = <
     // Return the variant function
     return (props: any) => {
       const variantProps = variants[props[propKey]] || {};
-      return variantHandler({ ...variantProps, theme: props.theme });
+      return handlePseudoSelectors(variantProps, variantHandler)(props);
     };
   };
 
@@ -67,8 +99,9 @@ const create = <
 
   const allProps = compose(...(values(systemShape.properties) as any));
 
-  const css = (config: any) => (props: any = {}) =>
-    allProps({ ...config, theme: props?.theme });
+  const css = (config: any) => {
+    handlePseudoSelectors(config, allProps);
+  };
 
   systemShape.css = css;
 

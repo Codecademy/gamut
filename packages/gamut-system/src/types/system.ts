@@ -5,6 +5,7 @@ import {
   PropertyConfig,
   ThematicProps,
 } from './config';
+import { PseudoSelectors } from './properties';
 import { UnionToIntersection, WeakRecord } from './utils';
 
 export interface CSSObject {
@@ -88,11 +89,23 @@ export interface Variant<
   /** Customizable prop interface */
   <Prop extends Readonly<string>, Keys extends string>(config: {
     prop: Prop;
-    variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+    variants: Readonly<
+      Record<
+        Keys,
+        AllSystemProps<Theme, Config> &
+          PseudoSelectors<AllSystemProps<Theme, Config>>
+      >
+    >;
   }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
   /** Default `variant` interface */
   <Keys extends string>(
-    config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>
+    config: Readonly<
+      Record<
+        Keys,
+        AllSystemProps<Theme, Config> &
+          PseudoSelectors<AllSystemProps<Theme, Config>>
+      >
+    >
   ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
 }
 
@@ -100,9 +113,10 @@ export interface CSS<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > {
-  (props: AllSystemProps<Theme, Config>): (props?: {
-    theme?: Theme;
-  }) => CSSObject;
+  (
+    props: AllSystemProps<Theme, Config> &
+      PseudoSelectors<AllSystemProps<Theme, Config>>
+  ): (props?: { theme?: Theme }) => CSSObject;
 }
 
 export interface System<

@@ -269,3 +269,12 @@ export type DirectionalProperty = Extract<
 export type AllPropertiesAndDependents =
   | PropertyUnion['propName']
   | Extract<PropertyUnion, { dependentProps: string }>['dependentProps'];
+
+export interface PseudoSelectors<Props extends unknown> {
+  '&:hover'?: Props;
+  '&:focus'?: Props;
+  '&:first-child'?: Props;
+  '&:last-child'?: Props;
+  '&:first-of-type'?: Props;
+  '&:last-of-type'?: Props;
+}
