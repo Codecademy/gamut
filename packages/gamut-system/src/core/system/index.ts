@@ -99,9 +99,7 @@ const create = <
 
   const allProps = compose(...(values(systemShape.properties) as any));
 
-  const css = (config: any) => {
-    handlePseudoSelectors(config, allProps);
-  };
+  const css = (config: any) => handlePseudoSelectors(config, allProps);
 
   systemShape.css = css;
 
