@@ -1,0 +1,138 @@
+import { PageFeatures } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={PageFeatures}
+  args={{
+    title: 'Welcome to Codecademy',
+    desc:
+      "**Lorem Ipsum** is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Example link [here](#).",
+    cta: {
+      text: 'Click Me',
+      href: '#',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('You could add event tracking here');
+      },
+    },
+    features: [
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Software Engineer',
+        desc: '**Software Engineer**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Data Scientist',
+        desc: '**Data Scientist**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Product Manager',
+        desc: '**Product Manager**. Example link [here](#).',
+      },
+      {
+        imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+        imgAlt: 'Codey boba tea',
+        title: 'Product Designer',
+        desc: '**Product Designer**. Example link [here](#).',
+      },
+    ],
+    featuresMedia: 'image',
+  }}
+  parameters={{
+    subtitle: `A features section for use in landing pages created in Contentful. Images can be icons or full size via \`isIcon\` prop. Consists of an array of features and optional title, description, cta, and test id.
+`,
+    status: 'volatile',
+  }}
+/>
+
+## Featured Images
+
+<Canvas>
+  <Story name="Featured Images">{(args) => <PageFeatures {...args} />}</Story>
+</Canvas>
+
+<Props story="Featured Images" />
+
+## Featured Icons
+
+Small icons can be used instead of full size images by setting the `featuresMedia` prop to `icon`.
+
+<Canvas>
+  <Story
+    name="Featured Icons"
+    args={{
+      features: [
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Software Engineer',
+          desc: '**Software Engineer**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Data Scientist',
+          desc: '**Data Scientist**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Product Manager',
+          desc: '**Product Manager**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Product Designer',
+          desc: '**Product Designer**. Example link [here](#).',
+        },
+      ],
+      featuresMedia: 'icon',
+    }}
+  >
+    {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>
+
+## Featured Stats
+
+Promote a single stat by setting the `featuresMedia` prop to `stat` and providing `statText`.
+
+<Canvas>
+  <Story
+    name="Featured Stats"
+    args={{
+      cta: null,
+      features: [
+        {
+          statText: '45 mil.',
+          title: 'Media Inquiries',
+          desc:
+            'E-mail us at [press@codecademy.com](#) or [download our press kit](#).',
+        },
+        {
+          statText: '170',
+          title: 'Media Inquiries',
+          desc:
+            'E-mail us at [press@codecademy.com](#) or [download our press kit](#).',
+        },
+        {
+          statText: '200+',
+          title: 'Media Inquiries',
+          desc:
+            'E-mail us at [press@codecademy.com](#) or [download our press kit](#).',
+        },
+      ],
+      featuresMedia: 'stat',
+    }}
+  >
+    {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>
