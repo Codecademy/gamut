@@ -27,7 +27,6 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         'react/react-in-jsx-scope': 'off',
         'react/no-unescaped-entities': 'off',
-        'react/jsx-no-undef': 'off',
       },
     },
     {
