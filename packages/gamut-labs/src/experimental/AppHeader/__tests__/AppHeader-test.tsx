@@ -127,33 +127,33 @@ const renderAppHeader = (props: AppHeaderProps) => {
 };
 
 describe('AppHeader', () => {
-  it('renders AppHeaderLogo', () => {
+  it('renders an AppHeaderLogo when the item type is logo', () => {
     renderAppHeader(logoProps);
     screen.getByTitle('Codecademy Logo');
   });
 
-  it('renders AppHeaderLink', () => {
+  it('renders an AppHeaderLink when the item type is link', () => {
     renderAppHeader(linkProps);
     screen.getByText('AppHeaderLink');
   });
 
-  it('renders AppHeaderDropdown', () => {
+  it('renders an AppHeaderDropdown when the item type is dropdown', () => {
     renderAppHeader(dropdownProps);
     screen.getByText('AppHeaderDropdown');
   });
 
-  it('renders a custom component', () => {
+  it('renders a custom component when the item type is render-element', () => {
     renderAppHeader(renderElementProps);
     screen.getByTitle('Favicon Icon');
   });
 
-  it('TextButton calls onClick() when clicked', () => {
+  it('calls onClick() when a TextButton is clicked', () => {
     renderAppHeader(textButtonProps);
     screen.getByText('TextButton').click();
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('FillButton calls onClick() when clicked', () => {
+  it('calls onClick() when a FillButton clicked', () => {
     renderAppHeader(fillButtonProps);
     screen.getByText('FillButton').click();
     expect(onClick).toHaveBeenCalled();

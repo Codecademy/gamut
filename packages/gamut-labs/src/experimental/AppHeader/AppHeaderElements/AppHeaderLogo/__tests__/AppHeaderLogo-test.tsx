@@ -7,6 +7,7 @@ import { AppHeaderLogoItem } from '../../types';
 import { AppHeaderLogo, AppHeaderLogoProps } from '..';
 
 const testUrl = 'https://codecademy.com';
+const onClick = jest.fn();
 
 const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
   const props: AppHeaderLogoProps = {
@@ -18,7 +19,7 @@ const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
       trackingTarget: 'tracking target',
       ...overrideProps,
     },
-    onClick: jest.fn(),
+    onClick: onClick,
   };
   return mount(
     <ThemeProvider theme={theme}>
@@ -44,5 +45,11 @@ describe('AppHeaderLogo', () => {
     const wrapper = renderAppHeaderLogo();
     const href = wrapper.find('a').prop('href');
     expect(href).toEqual(testUrl);
+  });
+
+  it('calls onClick() when clicked', () => {
+    const wrapper = renderAppHeaderLogo();
+    wrapper.find('a').simulate('click');
+    expect(onClick).toHaveBeenCalled();
   });
 });
