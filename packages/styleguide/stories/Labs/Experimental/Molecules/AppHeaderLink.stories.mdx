@@ -17,19 +17,38 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
 />
 
+A Codecademy logo button for use in AppHeader.
+
+<Canvas>
+  <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
+</Canvas>
+
 <Props of={AppHeaderLink} />
 
 ## Link in Current Tab
 
 <Canvas>
-  <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
+  <Story
+    name="Current Tab"
+    args={{
+      item: {
+        id: 'link-current-tab',
+        href: 'http://codecademy.com',
+        text: 'Current Tab',
+        trackingTarget: 'tracking-target',
+        type: 'link',
+      },
+    }}
+  >
+    {(args) => <AppHeaderLink {...args} />}
+  </Story>
 </Canvas>
 
 ## Link in New Tab
 
 <Canvas>
   <Story
-    name="AppHeaderLinkNewTab"
+    name="New Tab"
     args={{
       item: {
         id: 'link-new-tab',
