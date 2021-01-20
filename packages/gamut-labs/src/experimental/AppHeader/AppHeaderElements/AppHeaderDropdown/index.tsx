@@ -6,7 +6,7 @@ import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../..';
 import { AppHeaderLink } from '../AppHeaderLink';
-import { focusStyles } from '../SharedStyles';
+import { focusStyles, hoverStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
@@ -14,13 +14,12 @@ import {
 } from '../types';
 import styles from './styles.scss';
 
-const AppHeaderTargetButton = styled.button(({ theme }) => {
-  return `
+const AppHeaderTargetButton = styled.button`
   background-color: transparent;
   text-align: left;
   display: flex;
   align-items: center;
-  color: ${theme.colors.navy};
+  color: ${({ theme }) => theme.colors.navy};
   border: 1px solid transparent;
   line-height: 1.5;
   white-space: nowrap;
@@ -29,13 +28,9 @@ const AppHeaderTargetButton = styled.button(({ theme }) => {
   padding: 1rem 0;
   font-size: 0;
   cursor: ponter;
-  &:hover {
-    color: ${theme.colors.hyper};
-    text-decoration: none;
-  }
+  ${hoverStyles}
   ${focusStyles}
 `;
-});
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;

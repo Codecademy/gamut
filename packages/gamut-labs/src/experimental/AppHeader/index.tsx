@@ -49,9 +49,9 @@ const mapItemToElement = (
       return (
         <AppHeaderTab key={item.id}>
           <TextButton
+            data-testid={item.dataTestId}
             href={item.href}
             onClick={(event: React.MouseEvent) => onClick(event, item)}
-            data-testid={item.dataTestId}
           >
             {item.text}
           </TextButton>
@@ -61,8 +61,8 @@ const mapItemToElement = (
       return (
         <AppHeaderTab key={item.id}>
           <FillButton
-            href={item.href}
             data-testid={item.dataTestId}
+            href={item.href}
             onClick={(event: React.MouseEvent) => onClick(event, item)}
           >
             {item.text}

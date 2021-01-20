@@ -2,21 +2,16 @@ import { Anchor, Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { focusStyles } from '../SharedStyles';
+import { focusStyles, hoverStyles } from '../SharedStyles';
 import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
-const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
-  return `
-  color: ${theme.colors.navy};
+const AppHeaderLinkButtonOuter = styled(Anchor)`
+  color: ${({ theme }) => theme.colors.navy};
   text-decoration: none;
   display: block;
-  &:hover {
-    color: ${theme.colors.hyper};
-    text-decoration: none;
-  }
+  ${hoverStyles}
   ${focusStyles}
 `;
-});
 
 const AppHeaderLinkButtonInner = styled(Box)`
   white-space: nowrap;
