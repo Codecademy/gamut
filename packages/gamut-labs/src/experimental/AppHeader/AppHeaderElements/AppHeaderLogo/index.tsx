@@ -29,7 +29,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
   return (
     <LogoButton
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => onClick(event, item)}
+      onClick={(event) => onClick(event, item)}
       href={item.href}
     >
       {<StyledLogo type={item.pro ? 'proMono' : 'default'} height={27} />}

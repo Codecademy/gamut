@@ -74,7 +74,7 @@ const mapItemToElement = (
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
   items,
-  className = '',
+  className,
   onClick,
 }) => {
   return (
