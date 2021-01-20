@@ -18,6 +18,9 @@ module.exports = {
     {
       files: ['*.mdx'],
       parser: 'eslint-mdx',
+      rules: {
+        'no-undef': 'error',
+      },
     },
     {
       files: ['**/typings/*', '*.d.ts'],
