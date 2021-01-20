@@ -1,4 +1,4 @@
-import { Alert, BannerType } from '@codecademy/gamut/src';
+import { Alert } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
@@ -14,123 +14,19 @@ with the user with various connotations.`,
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
   }}
+  args={{
+    variant: 'info',
+    cta: { text: 'Login', onClick: action('CTA Click') },
+    children: `You have been logged out due to inactivity.
+                Click the button to log in again.`,
+  }}
 />
 
 <Canvas withSource="open">
-  <Story name="Alert">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Info}
-        cta={{ text: 'Login', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        {`You have been logged out due to inactivity.
-                Click the button to log in again.`}
-      </Alert>
-    )}
-  </Story>
+  <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 </Canvas>
 
 <Props story="Alert" />
-
-## Types of Alerts
-
-### Feedback Alert
-
-Serves as _feedback_ and confirmation that requires an
-action.
-
-#### Informational
-
-<Canvas>
-  <Story name="Information">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Info}
-        cta={{ text: 'Login', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        You have been logged out due to inactivity.
-      </Alert>
-    )}
-  </Story>
-</Canvas>
-
-#### Successful actions
-
-<Canvas>
-  <Story name="Success">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Success}
-        cta={{ text: 'view account', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        Your account changes were saved successfully.
-      </Alert>
-    )}
-  </Story>
-</Canvas>
-
-#### Error communicating an issue or showing that a user’s action can’t be completed.
-
-<Canvas>
-  <Story name="Error">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Error}
-        cta={{ text: 'retry', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        Couldn’t save your account changes because a connection to the server
-        can’t be made.
-      </Alert>
-    )}
-  </Story>
-</Canvas>
-
-### Notice Alert
-
-Only shown when it affects the entire system. It appears on all pages without user initiating the action.
-
-<Canvas>
-  <Story name="Notice">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Notice}
-        cta={{ text: 'retry', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        Couldn’t save your account changes because a connection to the server
-        can’t be made.
-      </Alert>
-    )}
-  </Story>
-</Canvas>
-
-### Announcement Alert
-
-For feature announcements/changes on a specific page.
-
-<Canvas>
-  <Story name="Announcement">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Announcement}
-        cta={{ text: 'Learn More', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        You can now do this new thing with this new feature we just added!
-      </Alert>
-    )}
-  </Story>
-</Canvas>
 
 ## Customization
 
@@ -143,11 +39,7 @@ You can disable most options for an `Alert` to make it mostly informational with
 <Canvas>
   <Story name="Skeletal">
     {(args) => (
-      <Alert
-        showIcon={false}
-        type={BannerType.Notice}
-        onClose={action('Close')}
-      >
+      <Alert showIcon={false} variant="info" onClose={action('Close')}>
         Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
         torquatos eam ut.
       </Alert>
@@ -162,7 +54,7 @@ You can optionally display an icon that matches the type of the alert you are sh
 <Canvas>
   <Story name="Icon">
     {(args) => (
-      <Alert type={BannerType.Notice} onClose={action('Close')}>
+      <Alert variant="info" onClose={action('Close')}>
         Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
         torquatos eam ut.
       </Alert>
@@ -180,7 +72,7 @@ feedback may not have an activity associated with it.
     {(args) => (
       <Alert
         showIcon={false}
-        type={BannerType.Notice}
+        variant="info"
         cta={{
           href: 'https://google.com',
           onClick: action('Close'),
@@ -205,7 +97,7 @@ without restriction. This will automatically truncate and add a toggle button.
     {(args) => (
       <Alert
         showIcon={false}
-        type={BannerType.Notice}
+        variant="info"
         lines={1}
         onClose={action('Close')}
       >
@@ -225,7 +117,7 @@ Please remember that most of these are rather frustrating for users.
 <Canvas>
   <Story name="Permanent">
     {(args) => (
-      <Alert showIcon={false} type={BannerType.Notice} lines={1}>
+      <Alert showIcon={false} variant="info" lines={1}>
         Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
         torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
         mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
@@ -240,7 +132,7 @@ Please remember that most of these are rather frustrating for users.
   <Story name="All Options">
     {(args) => (
       <Alert
-        type={BannerType.Notice}
+        variant="info"
         cta={{
           href: 'https://google.com',
           onClick: action('Close'),

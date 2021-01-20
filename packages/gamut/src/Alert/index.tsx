@@ -1,26 +1,71 @@
 import {
   ArrowChevronDownIcon,
   ArrowChevronUpIcon,
+  CheckFilledIcon,
+  CloseCircleIcon,
   CloseIcon,
+  InfoCircleIcon,
+  StarIcon,
+  SupportFilledIcon,
 } from '@codecademy/gamut-icons';
-import cx from 'classnames';
+import { variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { ButtonDeprecated } from '../ButtonDeprecated';
-import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
-import { CardShell } from '../Card';
-import { Container } from '../FlexBox';
-import { Truncate } from '../Truncate';
-import { BANNER_CONFIG, BannerType } from './constants';
-import styles from './styles.module.scss';
+import { FlexBox, GridBox } from '../Box';
+import { IconButton } from '../Button';
 import { BannerCTA } from './types';
+
+const alertVariants = variant({
+  info: {
+    backgroundColor: 'blue',
+    textColor: 'white',
+  },
+  success: {
+    backgroundColor: 'green',
+    textColor: 'white',
+  },
+  error: {
+    backgroundColor: 'red',
+    textColor: 'white',
+  },
+  maintenance: {
+    backgroundColor: 'orange',
+    textColor: 'navy',
+  },
+  feature: {
+    backgroundColor: 'paleBlue',
+    textColor: 'navy',
+  },
+});
+
+type AlertContainerProps = HandlerProps<typeof alertVariants>;
+type AlertVariants = AlertContainerProps['variant'];
+
+const VariantIcons = {
+  info: InfoCircleIcon,
+  success: CheckFilledIcon,
+  error: CloseCircleIcon,
+  maintenance: SupportFilledIcon,
+  feature: StarIcon,
+};
+
+const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
+  return css`
+    padding: ${theme.spacing[12]} ${theme.spacing[16]};
+    border-style: solid;
+    border-width: 2px;
+    border-color: ${theme.colors.navy};
+    border-radius: 3px;
+  `;
+}, alertVariants);
 
 export type AlertProps = {
   className?: string;
   /** Banner theme string: info, alert, success, announcement, error */
-  type?: BannerType;
-  /** Toggle the display of the theme's icon */
-  showIcon?: boolean;
+  variant?: AlertVariants;
   /** On close callback */
   onClose?: () => void;
   /** Call to action configuration { text, href, onClick } */
@@ -34,103 +79,61 @@ export type AlertProps = {
 export const Alert: React.FC<AlertProps> = ({
   className,
   children,
-  fluid = false,
-  type = BannerType.Info,
-  showIcon = true,
+  variant = 'info',
   lines,
   cta,
   onClose,
 }) => {
-  const TypeIcon = BANNER_CONFIG[type];
   const [isExpanded, setIsExpanded] = useState(false);
   const [isTruncated, setIsTruncated] = useState(false);
   const showExpandToggle = isTruncated || isExpanded;
   const ToggleIcon = isExpanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
-
+  const Icon = VariantIcons[variant];
   return (
-    <CardShell
-      className={cx(styles.container, className, {
-        [styles.container__fluid]: fluid,
-        [styles[`container__${type}`]]: type,
-      })}
+    <AlertContainer
+      className={className}
+      variant={variant}
       role="status"
       aria-label="alert box"
       aria-live="polite"
     >
-      <Container align="start" justify="spaceAround" grow={1}>
-        {showIcon && (
-          <Container className={styles.section} justify="center" align="center">
-            <TypeIcon size={24} aria-label={`${type}: `} />
-          </Container>
-        )}
-        <Container
-          className={styles.section__main}
-          align="start"
-          grow={1}
-          shrink={1}
-        >
-          <Container
-            className={styles.section}
-            grow={1}
-            shrink={1}
-            align="start"
-            justify="spaceBetween"
+      <GridBox
+        columnGap={16}
+        gridAutoFlow="column"
+        gridTemplateColumns="max-content 1fr max-content max-content"
+      >
+        <Icon size={20} />
+        <GridBox gridAutoFlow="column" gridTemplateColumns="1fr max-content">
+          <FlexBox
+            width="100%"
+            maxHeight={isExpanded ? 'none' : '1.5rem'}
+            overflowY="hidden"
           >
-            <Truncate
-              lines={isExpanded ? undefined : lines}
-              onTruncate={setIsTruncated}
-              className={styles.truncate}
-            >
-              {children}
-            </Truncate>
-            {showExpandToggle && (
-              <Container inline>
-                <ButtonDeprecatedBase
-                  className={cx(
-                    styles.iconButton,
-                    styles.iconButton__pushRight,
-                    {
-                      [styles[`iconButton__${type}`]]: type,
-                    }
-                  )}
-                  onClick={() => setIsExpanded(!isExpanded)}
-                >
-                  <ToggleIcon size={16} />
-                </ButtonDeprecatedBase>
-              </Container>
-            )}
-          </Container>
-          {cta && (
-            <Container className={styles.section} shrink={1}>
-              <ButtonDeprecated
-                caps
-                theme={type}
-                className={styles.actionButton}
-                onClick={cta.onClick}
-                href={cta.href}
-                disabled={cta.disabled}
-              >
-                {cta.text}
-              </ButtonDeprecated>
-            </Container>
+            {children}
+          </FlexBox>
+          {showExpandToggle && (
+            <IconButton
+              icon={ToggleIcon}
+              onClick={() => setIsExpanded(!isExpanded)}
+            />
           )}
-        </Container>
-        {onClose && (
-          <Container className={styles.section} shrink={1} center>
-            <ButtonDeprecatedBase
-              className={cx(styles.iconButton, {
-                [styles[`iconButton__${type}`]]: type,
-              })}
-              aria-label="Close Alert"
-              onClick={onClose}
-            >
-              <CloseIcon aria-hidden size={12} />
-            </ButtonDeprecatedBase>
-          </Container>
+        </GridBox>
+        {cta && (
+          <FlexBox
+            as="button"
+            backgroundColor="white"
+            textColor="navy"
+            borderStyle="none"
+          >
+            {cta.text}
+          </FlexBox>
         )}
-      </Container>
-    </CardShell>
+        {onClose && (
+          <FlexBox as="button" borderStyle="none">
+            <CloseIcon />
+          </FlexBox>
+        )}
+      </GridBox>
+    </AlertContainer>
   );
 };
-
-export { BannerType } from './constants';
