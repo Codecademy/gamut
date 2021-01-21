@@ -9,7 +9,20 @@ import { shadow } from './shadow';
 import { spacing } from './spacing';
 import { typography } from './typography';
 
-const baseConfig = {
+export const AllProps = {
+  ...typography,
+  ...spacing,
+  ...border,
+  ...layout,
+  ...positioning,
+  ...grid,
+  ...flex,
+  ...background,
+  ...shadow,
+  ...color,
+};
+
+export const Groups = {
   typography,
   spacing,
   border,
@@ -22,15 +35,8 @@ const baseConfig = {
   color,
 };
 
-export type BaseSystemConfig = typeof baseConfig;
+export type PropGroups = {
+  [K in keyof typeof Groups]: keyof typeof Groups[K];
+};
 
-export * from './typography';
-export * from './spacing';
-export * from './borders';
-export * from './layout';
-export * from './position';
-export * from './grid';
-export * from './flex';
-export * from './background';
-export * from './shadow';
-export * from './colors';
+export type BaseSystemConfig = typeof AllProps;

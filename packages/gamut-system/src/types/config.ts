@@ -9,9 +9,9 @@ import { SafeLookup, SafeMapKey, WeakRecord } from './utils';
 
 /** Theme Shape  */
 
-interface BaseTheme {
+type BaseTheme = Readonly<{
   readonly [key: string]: any;
-}
+}>;
 
 export interface AbstractTheme extends BaseTheme {
   breakpoints?: {
@@ -23,12 +23,16 @@ export interface AbstractTheme extends BaseTheme {
   };
 }
 
+export interface ThemeProps<Theme extends AbstractTheme> {
+  theme?: Theme;
+}
+
 /** Property Scales */
 export type DefaultPropScale<
   Config extends AbstractPropertyConfig
 > = Properties[Config['propName']]['defaultScale'];
 
-export type ScaleArray = readonly unknown[];
+export type ScaleArray = Readonly<unknown[]>;
 
 export interface ScaleMap {
   readonly [key: string]: unknown;
@@ -111,23 +115,24 @@ export type ThematicProps<
     ? Properties[Config['propName']]['dependentProps'] | Config['propName']
     : Config['propName'],
   ResponsiveProp<ThematicScaleValue<Theme, Config>>
-> & { theme?: Theme };
+> &
+  ThemeProps<Theme>;
 
 /** Style Functions */
 
-export type StyleTemplate<Props extends AbstractProps> = (
-  props: Props
-) => CSSObject | undefined;
-
+export interface StyleTemplate<Props extends AbstractProps> {
+  (props: Props): CSSObject | undefined;
+}
 export interface HandlerMeta<Props extends AbstractProps> {
   propNames: Exclude<keyof Props, 'theme'>[];
-  styleTemplates: WeakRecord<keyof Props, StyleTemplate<Props>>;
+  styleTemplates: { [key: string]: StyleTemplate<Props> };
 }
 
 export interface Handler<Props extends AbstractProps>
   extends HandlerMeta<Props> {
   (props: Props): CSSObject;
 }
+
 export type HandlerProps<
   HandlerFn extends (props: AbstractProps) => CSSObject
 > = Parameters<HandlerFn>[0];

@@ -1,4 +1,4 @@
-import { BaseSystemConfig } from '../props';
+import { BaseSystemConfig, PropGroups } from '../props';
 import {
   AbstractTheme,
   Handler,
@@ -12,14 +12,9 @@ export interface CSSObject {
   [key: string]: string | number;
 }
 
-/** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
-interface GroupConfig<Theme extends AbstractTheme> {
-  [key: string]: PropertyConfig<Theme>;
-}
-
 /** A collection of Property Groups EG: 'typography' | 'layout' etc.  */
 export interface SystemConfig<Theme extends AbstractTheme> {
-  [key: string]: GroupConfig<Theme>;
+  [key: string]: PropertyConfig<Theme>;
 }
 
 /** Merge a user defined configuration on top of the base configuration to derive defaults correctly */
@@ -33,26 +28,24 @@ type MergeConfig<
  * It infers the type signatures of all individual stylefunctions that exist within a property group and
  * all of their possible props/
  */
-type SystemProperties<
+interface SystemProperties<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
-> = {
+> {
   /** All possible property handlers based off the MergedConfiguration  */
-  [PropGroup in keyof MergeConfig<Theme, Config>]: {
-    handlers: {
-      [Property in keyof MergeConfig<Theme, Config>[PropGroup]]: Handler<
-        ThematicProps<Theme, MergeConfig<Theme, Config>[PropGroup][Property]>
-      >;
-    };
-    /** All possible prop type signatures  */
-    props: {
-      [Property in keyof MergeConfig<Theme, Config>[PropGroup]]: ThematicProps<
-        Theme,
-        MergeConfig<Theme, Config>[PropGroup][Property]
-      >;
-    };
+  handlers: {
+    [Property in keyof MergeConfig<Theme, Config>]: Handler<
+      ThematicProps<Theme, MergeConfig<Theme, Config>[Property]>
+    >;
   };
-};
+  /** All possible prop type signatures  */
+  props: {
+    [Property in keyof MergeConfig<Theme, Config>]: ThematicProps<
+      Theme,
+      MergeConfig<Theme, Config>[Property]
+    >;
+  };
+}
 
 /**
  * The union of all possible props in `SystemProperties`
@@ -61,17 +54,10 @@ export type AllSystemProps<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > = UnionToIntersection<
-  {
-    [PropGroup in keyof SystemProperties<Theme, Config>]: UnionToIntersection<
-      SystemProperties<
-        Theme,
-        Config
-      >[PropGroup]['props'][keyof SystemProperties<
-        Theme,
-        Config
-      >[PropGroup]['props']]
-    >;
-  }[keyof SystemProperties<Theme, Config>]
+  SystemProperties<Theme, Config>['props'][keyof SystemProperties<
+    Theme,
+    Config
+  >['props']]
 >;
 
 /**
@@ -118,7 +104,6 @@ export interface CSS<
       PseudoSelectors<AllSystemProps<Theme, Config>>
   ): (props?: { theme?: Theme }) => CSSObject;
 }
-
 export interface System<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
@@ -128,21 +113,14 @@ export interface System<
   /** Higher order variant function, with two overloads */
   variant: Variant<Theme, Config>;
   /** The intersection of all style properties (regardless of group) */
-  properties: UnionToIntersection<
-    SystemProperties<Theme, Config>[keyof SystemProperties<
-      Theme,
-      Config
-    >]['handlers']
-  >;
+  propTypes: SystemProperties<Theme, Config>['props'];
+  properties: SystemProperties<Theme, Config>['handlers'];
   groups: {
-    [PropGroup in keyof SystemProperties<Theme, Config>]: Handler<
-      SystemProperties<
-        Theme,
-        Config
-      >[PropGroup]['props'][keyof SystemProperties<
-        Theme,
-        Config
-      >[PropGroup]['props']]
+    [Group in keyof PropGroups]: Handler<
+      Pick<
+        SystemProperties<Theme, Config>['props'],
+        PropGroups[Group]
+      >[keyof Pick<SystemProperties<Theme, Config>['props'], PropGroups[Group]>]
     >;
   };
 }

@@ -1,6 +1,6 @@
 import { identity } from 'lodash';
 
-import { border, layout, typography } from '../../../props';
+import { Groups } from '../../../props';
 import {
   createDirectionalStyleTemplate,
   createStandardStyleTemplate,
@@ -9,9 +9,9 @@ import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveS
 import { createHandler } from '../../createHandler';
 import { compose } from '..';
 
-const display = createHandler(layout.display);
-const textAlign = createHandler(typography.textAlign);
-const borderWidth = createHandler(border.borderWidth);
+const display = createHandler(Groups.layout.display);
+const textAlign = createHandler(Groups.typography.textAlign);
+const borderWidth = createHandler(Groups.border.borderWidth);
 
 describe(compose, () => {
   it('creates a handler from multiple handlers', () => {
@@ -53,7 +53,7 @@ describe(compose, () => {
       'display',
       'textAlign',
       'borderWidth',
-      ...border.borderWidth.dependentProps,
+      ...Groups.border.borderWidth.dependentProps,
     ]);
   });
 

@@ -1,12 +1,11 @@
 import { system } from '..';
 
 describe('system', () => {
-  const { css, properties, variant, groups } = system.create({});
+  const { css, properties, variant } = system.create({});
 
   describe('initializing system', () => {
     it('initializes a system with any empty config', () => {
       expect(properties).toBeDefined();
-      expect(groups).toBeDefined();
       expect(variant).toBeDefined();
       expect(css).toBeDefined();
     });
@@ -51,16 +50,14 @@ describe('system', () => {
 
   describe('Custom Scales', () => {
     const {
-      groups: { typography },
+      properties: { fontSize },
       variant,
     } = system.create({
-      typography: {
-        fontSize: { propName: 'fontSize', scale: { sm: '14px', md: '16px' } },
-      },
+      fontSize: { propName: 'fontSize', scale: { sm: '14px', md: '16px' } },
     });
 
     it('theme scale values are found off of the specified theme', () => {
-      expect(typography({ fontSize: 'md' })).toEqual({ fontSize: '16px' });
+      expect(fontSize({ fontSize: 'md' })).toEqual({ fontSize: '16px' });
     });
 
     it('variants calculate theme values', () => {
@@ -81,21 +78,19 @@ describe('system', () => {
 
   describe('Theme Scales', () => {
     const {
-      groups: { typography },
+      properties: { fontSize },
       variant,
     } = system
       .withTheme<{
         fontSize: { sm: string; md: string };
       }>()
       .create({
-        typography: {
-          fontSize: { propName: 'fontSize', scale: 'fontSize' },
-        },
+        fontSize: { propName: 'fontSize', scale: 'fontSize' },
       });
     const theme = { fontSize: { sm: '14px', md: '16px' } };
 
     it('theme scale values are found off of the specified theme', () => {
-      expect(typography({ fontSize: 'md', theme })).toEqual({
+      expect(fontSize({ fontSize: 'md', theme })).toEqual({
         fontSize: '16px',
       });
     });
@@ -117,14 +112,6 @@ describe('system', () => {
   });
 
   describe('base system', () => {
-    describe('groups', () => {
-      Object.entries(groups).forEach(([group, styleFunction]) => {
-        it(`${group} composite renders without breaking`, () => {
-          expect(styleFunction).toBeDefined();
-        });
-      });
-    });
-
     describe('properties', () => {
       Object.entries(properties).forEach(([property, styleFunction]) => {
         it(`${property} composite renders without breaking`, () => {

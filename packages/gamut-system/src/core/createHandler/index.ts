@@ -56,12 +56,7 @@ export const createHandler = <
   // if compose combines this with other templates.
   const styleTemplates = {
     [propName]: styleTemplate,
-  } as Partial<
-    Record<
-      keyof ThematicProps<Theme, Config>,
-      StyleTemplate<ThematicProps<Theme, Config>>
-    >
-  >;
+  };
 
   // Using our style templates, create a responsive property for the prop names and template,
   // which will be a function that takes in an object of prop descriptions and returns valid CSS.

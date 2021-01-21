@@ -2,77 +2,71 @@ import { system } from '@codecademy/gamut-system';
 
 import { Theme } from './theme';
 
-const {
-  variant,
-  properties,
-  groups: {
-    typography,
-    grid,
-    flex,
-    layout,
-    positioning,
-    background,
-    color,
-    shadow,
-    spacing: space,
-    border,
+const { css, variant, properties, groups } = system.withTheme<Theme>().create({
+  fontSize: {
+    propName: 'fontSize',
+    scale: 'fontSize',
   },
-} = system.withTheme<Theme>().create({
-  typography: {
-    fontSize: {
-      propName: 'fontSize',
-      scale: 'fontSize',
-    },
-    fontFamily: {
-      propName: 'fontFamily',
-      scale: 'fontFamily',
-    },
-    fontWeight: {
-      propName: 'fontWeight',
-      scale: 'fontWeight',
-    },
-    lineHeight: {
-      propName: 'lineHeight',
-      scale: 'lineHeight',
-    },
+  fontFamily: {
+    propName: 'fontFamily',
+    scale: 'fontFamily',
   },
-  spacing: {
-    margin: {
-      propName: 'margin',
-      scale: 'spacing',
-    },
-    padding: {
-      propName: 'padding',
-      scale: 'spacing',
-    },
+  fontWeight: {
+    propName: 'fontWeight',
+    scale: 'fontWeight',
   },
-  color: {
-    textColor: {
-      propName: 'textColor',
-      scale: 'colors',
-    },
-    backgroundColor: {
-      propName: 'backgroundColor',
-      scale: 'colors',
-    },
-    borderColor: {
-      propName: 'borderColor',
-      scale: 'colors',
-    },
+  lineHeight: {
+    propName: 'lineHeight',
+    scale: 'lineHeight',
   },
-  grid: {
-    columnGap: {
-      propName: 'columnGap',
-      scale: 'spacing',
-    },
-    rowGap: {
-      propName: 'rowGap',
-      scale: 'spacing',
-    },
+  margin: {
+    propName: 'margin',
+    scale: 'spacing',
+  },
+  padding: {
+    propName: 'padding',
+    scale: 'spacing',
+  },
+  textColor: {
+    propName: 'textColor',
+    scale: 'colors',
+  },
+  backgroundColor: {
+    propName: 'backgroundColor',
+    scale: 'colors',
+  },
+  borderColor: {
+    propName: 'borderColor',
+    scale: 'colors',
+  },
+  columnGap: {
+    propName: 'columnGap',
+    scale: 'spacing',
+  },
+  rowGap: {
+    propName: 'rowGap',
+    scale: 'spacing',
   },
 });
 
+type GroupProps = typeof groups;
+interface Groups extends GroupProps {}
+
+const {
+  typography,
+  grid,
+  flex,
+  layout,
+  positioning,
+  background,
+  color,
+  shadow,
+  spacing: space,
+  border,
+}: Groups = groups;
+
 export {
+  css,
   variant,
   properties,
   typography,
