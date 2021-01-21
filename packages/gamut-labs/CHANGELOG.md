@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.6...@codecademy/gamut-labs@7.10.7) (2021-01-20)
+
+
+### Bug Fixes
+
+* landing page descriptions margin-top adjustments ([813f183](https://github.com/Codecademy/client-modules/commit/813f183ee8248c5859c3c385a4888d6aa46ccbb7))
+
+
+
+### [7.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.5...@codecademy/gamut-labs@7.10.6) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [7.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.4...@codecademy/gamut-labs@7.10.5) (2021-01-19)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

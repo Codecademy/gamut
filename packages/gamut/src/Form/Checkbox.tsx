@@ -102,13 +102,7 @@ const CheckboxText = styled.span<Multiline>`
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, htmlFor, multiline, id, ...rest }, ref) => (
     <div className={className}>
-      <Input
-        id={id || htmlFor}
-        type="checkbox"
-        {...rest}
-        ref={ref}
-        data-testid="input-checkbox"
-      />
+      <Input id={id || htmlFor} type="checkbox" {...rest} ref={ref} />
       <CheckboxLabel htmlFor={id || htmlFor}>
         <CheckboxElement multiline={multiline}>
           <CheckboxVector width="24px" height="24px" viewBox="0 0 20 20">

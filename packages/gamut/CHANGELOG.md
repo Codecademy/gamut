@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.1...@codecademy/gamut@19.11.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Remove overwritten data-testids on checkboxes ([a7792e7](https://github.com/Codecademy/client-modules/commit/a7792e73f84f65cf2139322bd4a56de443e5c6c8))
+
+
+
 ### [19.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.0...@codecademy/gamut@19.11.1) (2021-01-19)
 
 
