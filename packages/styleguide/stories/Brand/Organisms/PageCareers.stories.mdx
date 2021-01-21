@@ -1,0 +1,22 @@
+<!--  must include regenerator-runtime as PageCareers uses async/await -->
+
+import 'regenerator-runtime/runtime';
+
+import { PageCareers } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={PageCareers}
+  parameters={{
+    subtitle: 'Component for listing all job openings from Greenhouse.',
+    status: 'volatile',
+  }}
+/>
+
+<Canvas>
+  <Story name="Careers">
+    <PageCareers />
+  </Story>
+</Canvas>
