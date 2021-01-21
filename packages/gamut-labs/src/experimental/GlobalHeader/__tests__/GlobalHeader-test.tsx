@@ -22,33 +22,25 @@ const onClick = jest.fn();
 
 const anonHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
-  variant: {
-    type: 'anon',
-  },
+  type: 'anon',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
-  variant: {
-    type: 'free',
-  },
+  type: 'free',
 };
 
 const proHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
-  variant: {
-    type: 'pro',
-  },
+  type: 'pro',
 };
 
 const renderElementProps: GlobalHeaderProps = {
   onClick: onClick,
-  variant: {
-    renderSearch: () => <IconButton icon={SearchIcon} />,
-    renderNotifications: () => <IconButton icon={BellIcon} />,
-    renderProfile: () => <IconButton icon={PersonIcon} />,
-    type: 'pro',
-  },
+  renderSearch: () => <IconButton icon={SearchIcon} />,
+  renderNotifications: () => <IconButton icon={BellIcon} />,
+  renderProfile: () => <IconButton icon={PersonIcon} />,
+  type: 'pro',
 };
 
 const renderGlobalHeader = (props: GlobalHeaderProps) => {
@@ -159,10 +151,6 @@ describe('GlobalHeader', () => {
 
     it('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
-    });
-
-    it('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
     });
   });
 

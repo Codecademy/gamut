@@ -1,6 +1,9 @@
 import { ReactElement } from 'react';
 
+import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
+
 type LoggedOutHeader = {
+  onClick: AppHeaderClickHandler;
   renderSearch?: () => ReactElement;
 };
 

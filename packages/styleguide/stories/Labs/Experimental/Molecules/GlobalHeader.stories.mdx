@@ -17,14 +17,10 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 ## GlobalHeader
 
 <Canvas withSource="open">
-  <Story name="GlobalHeader">
-    {(args) => <GlobalHeader variant={{ onClick: () => {}, type: 'free' }} />}
-  </Story>
+  <Story name="GlobalHeader">{(args) => <GlobalHeader type="free" />}</Story>
 </Canvas>
 
-GlobalHeader takes in two props. The first, `variant`, is of type `AnonHeader` (the header for anonymous visitor/logged-out user), `FreeHeader` (the header for a user with a free account), or `ProHeader` (the header for a user with a pro membership). The `variant` tells us 1) what type of user we have, so we can get the header items for that user and 2) whether we need to render the Search, Notification, and Profile components.
-
-The second prop, `onClick`, is of type `AppHeaderClickHandler`, This will be defined by the consumer, and handle any routing/tracking that needs to be done.
+GlobalHeader takes in several props.`type` determines which header to render based on the user role (anonymous, free, or pro). `type` will also determine which of Search, Notification, and Profile components need to be passed in: Search will appear for all users, whereas Notifications and Profile will only appear for logged-in users. `onClick` will be defined by the consumer and handle any routing/tracking that needs to be done.
 
 <Props of={GlobalHeader} />
 
@@ -36,7 +32,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Free User Global Header">
-    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'free' }} />}
+    {(args) => <GlobalHeader type="free" />}
   </Story>
 </Canvas>
 
@@ -44,7 +40,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Pro User Global Header">
-    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'pro' }} />}
+    {(args) => <GlobalHeader type="pro" />}
   </Story>
 </Canvas>
 
@@ -52,7 +48,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Anonymous User Global Header">
-    {(args) => <GlobalHeader onClick={() => {}} variant={{ type: 'anon' }} />}
+    {(args) => <GlobalHeader type="anon" />}
   </Story>
 </Canvas>
 
@@ -64,13 +60,10 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="GlobalHeader Search Notifications Profile">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
-        variant={{
-          renderNotifications: () => <IconButton icon={BellIcon} />,
-          renderProfile: () => <IconButton icon={PersonIcon} />,
-          renderSearch: () => <IconButton icon={SearchIcon} />,
-          type: 'pro',
-        }}
+        renderNotifications={() => <IconButton icon={BellIcon} />}
+        renderProfile={() => <IconButton icon={PersonIcon} />}
+        renderSearch={() => <IconButton icon={SearchIcon} />}
+        type="pro"
       />
     )}
   </Story>
@@ -82,7 +75,7 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="Background Color GlobalHeader">
     {(args) => (
       <Box backgroundColor="beige" width="100%">
-        <GlobalHeader onClick={() => {}} variant={{ type: 'anon' }} />
+        <GlobalHeader type="anon" />
       </Box>
     )}
   </Story>
@@ -102,9 +95,7 @@ To mock this, a very basic onClick function is provided, which just prints out t
           // eslint-disable-next-line no-console
           console.log(item);
         }}
-        variant={{
-          type: 'anon',
-        }}
+        type="anon"
       />
     )}
   </Story>
@@ -112,11 +103,12 @@ To mock this, a very basic onClick function is provided, which just prints out t
 
 ## How It's All Connected in Gamut
 
-`GlobalHeader` passes to `AppHeader` the header items, and then `AppHeader` renders the header content in `AppBar` (with a `left` and `right` `AppBarSection`). The `AppHeader` has no knowledge of the user; it just takes as a prop an object that has a left property (an array of `AppHeaderItem`) to render on the left side of the header & a right property (an array of `AppHeaderItem`) to render on the right side of the header. These item objects which are passed in are mapped to `AppHeader` components.
+`GlobalHeader` passes to `AppHeader` the header items, and then `AppHeader` renders the header content using `AppBar` (with a `left` and `right` `AppBarSection`). The `AppHeader` has no knowledge of the user; it just takes as a prop an object that has a left property (an array of `AppHeaderItem`) to render on the left side of the header and a right property (an array of `AppHeaderItem`) to render on the right side of the header. These item objects which are passed in are mapped to `AppHeader` components.
 
 ### How to Add a New Item to GlobalHeader
 
-Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6IjvSJG0w8N63phbw5aZCknUOR4B-q_SFM3GLIJc/edit#slide=id.g8a8c98c6f1_0_14) for information on what should be included in the global navigation system.
+Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6IjvSJG0w8N63phbw5aZCknUOR4B-q_SFM3GLIJc/edit#slide=id.g8a8c98c6f1_0_14) to determine how your new item should fit within the global navigation system.
 
 1. Add the appropriate item to the `GlobalHeaderItems.tsx` file, including the necessary properities like `id`, `href`, `text`, `type`, etc.
 2. Update `GlobalHeaderVariants.tsx` to include the new item for the user roles that need it.
+3. Update tests in `GlobalHeader-test.tsx`.

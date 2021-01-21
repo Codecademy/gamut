@@ -80,7 +80,6 @@ export const proHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    forEnterprise,
   ];
 
   const rightItems: AppHeaderItem[] = [];

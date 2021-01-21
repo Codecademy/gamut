@@ -15,39 +15,33 @@ export type HeaderClickHandler = (
   item: AppHeaderItem
 ) => void;
 
-export type GlobalHeaderProps = {
-  variant: AnonHeader | FreeHeader | ProHeader;
-  onClick: HeaderClickHandler;
-};
+export type GlobalHeaderProps = AnonHeader | FreeHeader | ProHeader;
 
-const getAppHeaderItems = (variant: AnonHeader | FreeHeader | ProHeader) => {
-  switch (variant.type) {
+const getAppHeaderItems = (props: GlobalHeaderProps) => {
+  switch (props.type) {
     case 'anon':
-      return anonHeaderItems(variant.renderSearch);
+      return anonHeaderItems(props.renderSearch);
     case 'free':
       return freeHeaderItems(
-        variant.renderSearch,
-        variant.renderNotifications,
-        variant.renderProfile
+        props.renderSearch,
+        props.renderNotifications,
+        props.renderProfile
       );
     case 'pro':
       return proHeaderItems(
-        variant.renderSearch,
-        variant.renderNotifications,
-        variant.renderProfile
+        props.renderSearch,
+        props.renderNotifications,
+        props.renderProfile
       );
   }
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = ({
-  variant,
-  onClick,
-}) => {
+export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <AppHeader
       className={styles.globalHeader}
-      items={getAppHeaderItems(variant)}
-      onClick={onClick}
+      items={getAppHeaderItems(props)}
+      onClick={props.onClick}
     />
   );
 };
