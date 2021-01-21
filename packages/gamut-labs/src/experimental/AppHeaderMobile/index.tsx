@@ -35,28 +35,26 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
   const Icon = item.icon;
 
   return (
-    <div aria-label={item.text}>
-      <AppHeaderLinkButtonOuter
-        data-testid={item.dataTestId}
-        href={item.href}
-        onClick={(event: React.MouseEvent) => onClick(event)}
-        variant="interface"
+    <AppHeaderLinkButtonOuter
+      data-testid={item.dataTestId}
+      href={item.href}
+      onClick={(event: React.MouseEvent) => onClick(event)}
+      variant="interface"
+    >
+      <AppHeaderLinkButtonInner
+        lineHeight="base"
+        minWidth="0"
+        paddingY={8}
+        textAlign="left"
+        display="flex"
       >
-        <AppHeaderLinkButtonInner
-          lineHeight="base"
-          minWidth="0"
-          paddingY={8}
-          textAlign="left"
-          display="flex"
-        >
-          {Icon && (
-            <Box display="flex" alignContent="center" marginRight={16}>
-              <Icon size={24} aria-hidden />
-            </Box>
-          )}
-          {item.text}
-        </AppHeaderLinkButtonInner>
-      </AppHeaderLinkButtonOuter>
-    </div>
+        {Icon && (
+          <Box display="flex" alignContent="center" marginRight={16}>
+            <Icon size={24} aria-hidden />
+          </Box>
+        )}
+        {item.text}
+      </AppHeaderLinkButtonInner>
+    </AppHeaderLinkButtonOuter>
   );
 };
