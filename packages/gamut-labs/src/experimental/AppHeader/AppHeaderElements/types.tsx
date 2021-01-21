@@ -11,7 +11,6 @@ export type AppHeaderItem =
 type AppHeaderBaseItem = {
   dataTestId?: string;
   id: string;
-  text?: string;
 };
 
 export type AppHeaderLogoItem = AppHeaderBaseItem & {
@@ -24,24 +23,28 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
 export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
   newTab?: boolean;
+  text: string;
   trackingTarget: string;
   type: 'link';
 };
 
 export type AppHeaderTextButtonItem = AppHeaderBaseItem & {
   href: string;
+  text: string;
   trackingTarget: string;
   type: 'text-button';
 };
 
 export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
   href: string;
+  text: string;
   trackingTarget: string;
   type: 'fill-button';
 };
 
 export type AppHeaderDropdownItem = AppHeaderBaseItem & {
   popover: AppHeaderLinkItem[];
+  text: string;
   trackingTarget: string;
   type: 'dropdown';
 };

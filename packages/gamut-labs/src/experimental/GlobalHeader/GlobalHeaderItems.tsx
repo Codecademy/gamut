@@ -19,7 +19,7 @@ export const logo: AppHeaderLogoItem = {
 };
 
 export const proLogo: AppHeaderLogoItem = {
-  dataTestId: 'header-logo',
+  dataTestId: 'header-pro-logo',
   href: '/',
   id: 'pro-logo',
   pro: true,
