@@ -1,0 +1,30 @@
+import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
+import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderLinkMobile"
+  component={AppHeaderLinkMobile}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    arrowButton: false,
+    item: {
+      id: 'link',
+      icon: InfoCircleIcon,
+      href: 'http://codecademy.com',
+      text: 'Nav Link',
+      trackingTarget: 'track-link',
+      type: 'link',
+    },
+  }}
+/>
+
+<Props of={AppHeaderLinkMobile} />
+
+## Link
+
+<Canvas>
+  <Story name="AppHeaderLinkMobile">
+    {(args) => <AppHeaderLinkMobile {...args} />}
+  </Story>
+</Canvas>

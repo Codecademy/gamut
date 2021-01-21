@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { GamutIconProps } from '@codecademy/gamut-icons';
+
 
 export type AppHeaderItem =
   | AppHeaderLogoItem
@@ -22,6 +24,7 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
 
 export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
+  icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
   trackingTarget: string;
