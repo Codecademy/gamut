@@ -5,7 +5,7 @@ import React from 'react';
 import { focusStyles } from '../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderLinkItem } from '../AppHeader/AppHeaderElements/types';
 
-type AppHeaderLinkMobileProps = {
+export type AppHeaderLinkMobileProps = {
   arrowButton?: boolean;
   onClick: (event: React.MouseEvent) => {};
   item: AppHeaderLinkItem;
