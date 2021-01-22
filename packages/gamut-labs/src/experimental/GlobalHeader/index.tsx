@@ -10,7 +10,7 @@ import {
   freeHeaderItems,
   proHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, ProHeader } from './types';
 
 export type HeaderClickHandler = (
