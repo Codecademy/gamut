@@ -6,7 +6,7 @@ import { Box } from '../Box';
 import { HiddenText } from '../HiddenText';
 
 export type ToggleSizes = keyof typeof sizes;
-export type ToggleVariants = keyof typeof colors;
+export type ToggleVariants = typeof colors[number];
 
 export type LabelProps = {
   disabled?: boolean;
@@ -34,10 +34,7 @@ const sizes = {
   },
 };
 
-const colors = {
-  'gray-blue': 'blue-500',
-  purple: 'hyper',
-} as const;
+const colors = ['blue', 'hyper'] as const;
 
 const ToggleTrack = styled(Box)`
   transition: background-color 0.2s ease;
@@ -90,11 +87,11 @@ export class Toggle extends Component<ToggleProps, {}> {
       onChange,
       label,
       disabled,
-      variant = 'gray-blue',
+      variant = 'blue',
       size = 'medium',
     } = this.props;
-    const activeColor = colors[variant];
-    const checkedColor = checked ? activeColor : 'gray-500';
+    const activeColor = variant;
+    const checkedColor = checked ? variant : 'gray-500';
     const sizeStyles = sizes[size];
 
     return (
