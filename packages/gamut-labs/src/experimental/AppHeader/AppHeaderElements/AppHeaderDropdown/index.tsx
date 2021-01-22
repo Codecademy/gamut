@@ -12,7 +12,7 @@ import {
   AppHeaderDropdownItem,
   AppHeaderLinkItem,
 } from '../types';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const AppHeaderTargetButton = styled.button`
   background-color: transparent;
