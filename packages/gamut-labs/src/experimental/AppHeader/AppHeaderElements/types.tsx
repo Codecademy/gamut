@@ -1,8 +1,16 @@
+import { ReactElement } from 'react';
+
+export type AppHeaderItem =
+  | AppHeaderLogoItem
+  | AppHeaderLinkItem
+  | AppHeaderTextButtonItem
+  | AppHeaderFillButtonItem
+  | AppHeaderDropdownItem
+  | AppHeaderRenderElementItem;
+
 type AppHeaderBaseItem = {
   dataTestId?: string;
   id: string;
-  image?: string;
-  icon?: string;
   text?: string;
 };
 
@@ -15,8 +23,21 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
 
 export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
+  newTab?: boolean;
   trackingTarget: string;
   type: 'link';
+};
+
+export type AppHeaderTextButtonItem = AppHeaderBaseItem & {
+  href: string;
+  trackingTarget: string;
+  type: 'text-button';
+};
+
+export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
+  href: string;
+  trackingTarget: string;
+  type: 'fill-button';
 };
 
 export type AppHeaderDropdownItem = AppHeaderBaseItem & {
@@ -24,3 +45,13 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
   trackingTarget: string;
   type: 'dropdown';
 };
+
+export type AppHeaderRenderElementItem = AppHeaderBaseItem & {
+  renderElement: () => ReactElement;
+  type: 'render-element';
+};
+
+export type AppHeaderClickHandler = (
+  event: React.MouseEvent,
+  item: AppHeaderItem
+) => void;
