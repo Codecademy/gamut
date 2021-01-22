@@ -22,7 +22,7 @@ const logoProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const linkProps: AppHeaderProps = {
@@ -38,7 +38,7 @@ const linkProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const dropdownProps: AppHeaderProps = {
@@ -69,7 +69,7 @@ const dropdownProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const renderElementProps: AppHeaderProps = {
@@ -83,7 +83,7 @@ const renderElementProps: AppHeaderProps = {
       },
     ],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const textButtonProps: AppHeaderProps = {
@@ -99,7 +99,7 @@ const textButtonProps: AppHeaderProps = {
       },
     ],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const fillButtonProps: AppHeaderProps = {
@@ -115,7 +115,7 @@ const fillButtonProps: AppHeaderProps = {
       },
     ],
   },
-  onClick: onClick,
+  onClick,
 };
 
 const renderAppHeader = (props: AppHeaderProps) => {
