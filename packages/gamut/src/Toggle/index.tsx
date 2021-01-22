@@ -6,14 +6,22 @@ import React, { Component } from 'react';
 import { Box } from '../Box';
 import { HiddenText } from '../HiddenText';
 
+export type ToggleSizes = keyof typeof sizes;
+export type ToggleVariants = keyof typeof colors;
+
+export type LabelProps = {
+  disabled?: boolean;
+  variant?: ToggleVariants;
+};
+
 export type ToggleProps = {
   checked?: boolean;
   className?: string;
   onChange?: (...args: any[]) => any;
   label?: string;
   disabled?: boolean;
-  variant?: keyof typeof colors;
-  size?: keyof typeof sizes;
+  variant?: ToggleVariants;
+  size?: ToggleSizes;
 };
 
 const sizes = {
@@ -32,7 +40,7 @@ const colors = {
   purple: 'hyper',
 } as const;
 
-const Track = styled(Box)`
+const ToggleTrack = styled(Box)`
   transition: background-color 0.2s ease;
 
   &:after {
@@ -55,11 +63,6 @@ const Track = styled(Box)`
   }
 `;
 
-export type LabelProps = {
-  disabled?: boolean;
-  variant?: keyof typeof colors;
-};
-
 const ToggleInput = styled.input(screenReaderOnly);
 
 const ToggleLabel = styled.label<LabelProps>`
@@ -74,7 +77,7 @@ const ToggleLabel = styled.label<LabelProps>`
       opacity: 0.75;
     `}
 
-  ${ToggleInput}:focus-visible + ${Track} {
+  ${ToggleInput}:focus-visible + ${ToggleTrack} {
     &:after {
       opacity: 1;
     }
@@ -112,7 +115,7 @@ export class Toggle extends Component<ToggleProps, {}> {
           disabled={disabled}
           onChange={onChange}
         />
-        <Track
+        <ToggleTrack
           {...sizeStyles}
           borderColor={activeColor}
           backgroundColor={checkedColor}
@@ -128,7 +131,7 @@ export class Toggle extends Component<ToggleProps, {}> {
             bottom="10%"
             left={checked ? '55%' : '5%'}
           />
-        </Track>
+        </ToggleTrack>
       </ToggleLabel>
     );
   }
