@@ -75,7 +75,6 @@ const ToggleLabel = styled.label<LabelProps>`
 
     ${ToggleTrack} {
       opacity: 0.75;
-      background-color: ${({ theme }) => theme.colors['gray-500']};
     }
   }
 
@@ -98,6 +97,7 @@ export class Toggle extends Component<ToggleProps, {}> {
       size = 'medium',
     } = this.props;
     const activeColor = colors[variant];
+    const checkedColor = checked ? activeColor : 'gray-500';
     const sizeStyles = sizes[size];
 
     return (
@@ -119,7 +119,7 @@ export class Toggle extends Component<ToggleProps, {}> {
         <ToggleTrack
           {...sizeStyles}
           borderColor={activeColor}
-          backgroundColor={activeColor}
+          backgroundColor={checkedColor}
           borderRadius="99rem"
           position="relative"
         >
