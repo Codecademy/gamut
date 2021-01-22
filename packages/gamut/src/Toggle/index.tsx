@@ -33,7 +33,22 @@ const colors = {
 } as const;
 
 const Track = styled(Box)`
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease;
+
+  &:after {
+    transition: opacity 0.2s ease;
+    opacity: 0;
+    content: '';
+    border-radius: 99rem;
+    position: absolute;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    top: -4px;
+    left: -4px;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 2px;
+  }
 
   ${Box} {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -62,16 +77,7 @@ const ToggleLabel = styled.label<LabelProps>`
 
   ${ToggleInput}:focus-visible + ${Track} {
     &:after {
-      content: '';
-      border-radius: 99rem;
-      position: absolute;
-      width: calc(100% + 8px);
-      height: calc(100% + 8px);
-      top: -4px;
-      left: -4px;
-      border-color: inherit;
-      border-style: solid;
-      border-width: 2px;
+      opacity: 1;
     }
   }
 `;
