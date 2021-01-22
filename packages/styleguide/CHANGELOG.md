@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.7...@codecademy/styleguide@21.16.0) (2021-01-22)
+
+
+### Features
+
+* **PageFeatures:** allow this component to render stats and no media, in addition to images and icons ([#1307](https://github.com/Codecademy/client-modules/issues/1307)) ([61370f5](https://github.com/Codecademy/client-modules/commit/61370f508390b3fbc4eb3aef660684c9253617a8))
+
+
+
 ### [21.15.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.6...@codecademy/styleguide@21.15.7) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
