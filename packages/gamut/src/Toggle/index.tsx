@@ -1,4 +1,4 @@
-import { screenReaderOnly } from '@codecademy/gamut-styles';
+import { color, screenReaderOnly } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { Component } from 'react';
@@ -33,6 +33,8 @@ const colors = {
 } as const;
 
 const Track = styled(Box)`
+  transition: all 0.2s ease;
+
   ${Box} {
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -45,41 +47,34 @@ export type LabelProps = {
 
 const ToggleInput = styled.input(screenReaderOnly);
 
-const ToggleLabel = styled.label<LabelProps>(
-  ({ disabled, variant = 'gray-blue', theme }) => {
-    const currentColor = theme.colors[colors[variant]];
-    return css`
-      display: inline-block;
-      position: relative;
-      cursor: pointer;
-      border: 0;
-      padding: 0;
-      ${disabled &&
-      css`
-        cursor: auto;
-        opacity: 0.75;
-      `}
+const ToggleLabel = styled.label<LabelProps>`
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: auto;
+      opacity: 0.75;
+    `}
 
-      ${ToggleInput}:focus + ${Track} {
-        &:after {
-          content: '';
-          border-radius: 99rem;
-          position: absolute;
-          width: calc(100% + 8px);
-          height: calc(100% + 8px);
-          top: -4px;
-          left: -4px;
-          border: 2px solid ${currentColor};
-        }
-      }
-
-      ${Track} {
-        background-color: ${currentColor};
-        transition: all 0.2s ease;
-      }
-    `;
+  ${ToggleInput}:focus-visible + ${Track} {
+    &:after {
+      content: '';
+      border-radius: 99rem;
+      position: absolute;
+      width: calc(100% + 8px);
+      height: calc(100% + 8px);
+      top: -4px;
+      left: -4px;
+      border-color: inherit;
+      border-style: solid;
+      border-width: 2px;
+    }
   }
-);
+`;
 
 export class Toggle extends Component<ToggleProps, {}> {
   render() {
@@ -92,9 +87,8 @@ export class Toggle extends Component<ToggleProps, {}> {
       variant = 'gray-blue',
       size = 'medium',
     } = this.props;
-
+    const colorProp = checked ? colors[variant] : 'gray-500';
     const sizeStyles = sizes[size];
-    const thumbStyles = checked ? { right: '5%' } : { left: '5%' };
 
     return (
       <ToggleLabel
@@ -112,7 +106,13 @@ export class Toggle extends Component<ToggleProps, {}> {
           disabled={disabled}
           onChange={onChange}
         />
-        <Track {...sizeStyles} borderRadius="99rem" position="relative">
+        <Track
+          {...sizeStyles}
+          borderColor={colorProp}
+          backgroundColor={colorProp}
+          borderRadius="99rem"
+          position="relative"
+        >
           <Box
             borderRadius="50%"
             backgroundColor="white"
@@ -120,7 +120,7 @@ export class Toggle extends Component<ToggleProps, {}> {
             top="10%"
             bottom="10%"
             width="40%"
-            {...thumbStyles}
+            left={checked ? '55%' : '5%'}
           />
         </Track>
       </ToggleLabel>
