@@ -17,7 +17,7 @@ const props: AppHeaderLinkProps = {
     trackingTarget: '',
     type: 'link',
   },
-  onClick: onClick,
+  onClick,
 };
 
 const renderAppHeaderLink = () => {

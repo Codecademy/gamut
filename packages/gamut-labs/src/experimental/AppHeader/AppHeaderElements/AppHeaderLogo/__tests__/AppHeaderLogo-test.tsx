@@ -19,7 +19,7 @@ const renderAppHeaderLogo = (overrideProps?: Partial<AppHeaderLogoItem>) => {
       trackingTarget: 'tracking target',
       ...overrideProps,
     },
-    onClick: onClick,
+    onClick,
   };
   return mount(
     <ThemeProvider theme={theme}>
