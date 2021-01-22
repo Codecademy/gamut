@@ -14,13 +14,6 @@ export const hoverStyles = css`
   &:hover {
     color: ${colors.hyper};
     text-decoration: none;
-  }
-`;
-
-export const hoverStyles = css`
-  &:hover {
-    color: ${colors.hyper};
-    text-decoration: none;
-    cursor: pointer;
+    cursor: pointer; // may be able to remove
   }
 `;
