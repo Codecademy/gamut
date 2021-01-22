@@ -1,5 +1,6 @@
-import React, { ReactElement, FunctionComponent, ReactNode } from 'react';
 import cx from 'classnames';
+import React, { FunctionComponent, ReactElement, ReactNode } from 'react';
+
 import { Tab } from '../Tab';
 import styles from './styles.module.scss';
 

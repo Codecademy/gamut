@@ -42,21 +42,31 @@ $below: translateY(0%);
 .beak {
   width: 0;
   height: 0;
+  position: absolute;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
 
   border-bottom: 15px solid white;
 }
 
-.below-beak {
-  position: absolute;
+.below-left-beak {
   top: -15px;
   left: 20px;
 }
 
-.above-beak {
-  position: absolute;
+.above-left-beak {
   transform: rotate(180deg);
   top: calc(100% - 1px);
   left: 20px;
+}
+
+.below-right-beak {
+  top: -15px;
+  right: 20px;
+}
+
+.above-right-beak {
+  transform: rotate(180deg);
+  top: calc(100% - 1px);
+  right: 20px;
 }

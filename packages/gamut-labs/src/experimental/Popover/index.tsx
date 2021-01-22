@@ -1,10 +1,10 @@
+import { BodyPortal } from '@codecademy/gamut';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { useWindowSize, useWindowScroll } from 'react-use';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useWindowScroll, useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
-import { BodyPortal } from '@codecademy/gamut';
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
@@ -14,9 +14,13 @@ export type PopoverProps = {
    */
   align?: 'left' | 'right';
   /**
-   * Number of pixels to offset the popover from the source component.
+   * Number of pixels to offset the popover vertically from the source component.
    */
-  offset?: number;
+  verticalOffset?: number;
+  /**
+   * Number of pixels to offset the popover horizontally from the source component.
+   */
+  horizontalOffset?: number;
   /**
    * Whether to add outline style (i.e. used for dropdowns).
    */
@@ -26,9 +30,9 @@ export type PopoverProps = {
    */
   position?: 'above' | 'below';
   /**
-   * Whether to show a beak on the popover.
+   * Which side to position the beak. If not provided, beak will not be rendered.
    */
-  showBeak?: boolean;
+  beak?: 'left' | 'right';
   /**
    * Whether the popover is rendered.
    */
@@ -50,10 +54,11 @@ export const Popover: React.FC<PopoverProps> = ({
   children,
   className,
   align = 'left',
-  offset = 20,
+  verticalOffset = 20,
+  horizontalOffset = 0,
   outline = false,
   position = 'below',
-  showBeak,
+  beak,
   isOpen,
   onRequestClose,
   targetRef,
@@ -67,18 +72,18 @@ export const Popover: React.FC<PopoverProps> = ({
     if (!targetRect) return {};
 
     const positions = {
-      above: Math.round(targetRect.top - offset),
-      below: Math.round(targetRect.top + targetRect.height + offset),
+      above: Math.round(targetRect.top - verticalOffset),
+      below: Math.round(targetRect.top + targetRect.height + verticalOffset),
     };
     const alignments = {
-      right: Math.round(window.scrollX + targetRect.right),
-      left: Math.round(window.scrollX + targetRect.left),
+      right: Math.round(window.scrollX + targetRect.right + horizontalOffset),
+      left: Math.round(window.scrollX + targetRect.left - horizontalOffset),
     };
     return {
       top: positions[position],
       left: alignments[align],
     };
-  }, [targetRect, offset, align, position]);
+  }, [targetRect, verticalOffset, horizontalOffset, align, position]);
 
   useEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
@@ -127,9 +132,9 @@ export const Popover: React.FC<PopoverProps> = ({
           style={getPopoverPosition()}
           data-testid="popover-content-container"
         >
-          {showBeak && (
+          {beak && (
             <div
-              className={cx(styles.beak, styles[`${position}-beak`])}
+              className={cx(styles.beak, styles[`${position}-${beak}-beak`])}
               data-testid="popover-beak"
             />
           )}

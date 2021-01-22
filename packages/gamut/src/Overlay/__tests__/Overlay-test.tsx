@@ -1,10 +1,22 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import { mount } from 'enzyme';
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
 
 import { Overlay, OverlayProps } from '..';
 
 const renderOverlay = (props?: Partial<OverlayProps>) => {
   return render(
+    <Overlay onRequestClose={() => {}} {...props}>
+      <div data-testid="overlay-content">
+        Howdy!
+        <button type="button" />
+      </div>
+    </Overlay>
+  );
+};
+
+const mountOverlay = (props?: Partial<OverlayProps>) => {
+  return mount(
     <Overlay onRequestClose={() => {}} {...props}>
       <div data-testid="overlay-content">
         Howdy!
@@ -73,5 +85,34 @@ describe('Overlay', () => {
     });
     fireEvent.mouseDown(screen.getByTestId('overlay-content'));
     expect(onRequestClose.mock.calls.length).toBe(0);
+  });
+
+  it('allows additional styles when using the className prop', () => {
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = '.fakeClassName { text-align: center; }';
+    document.body.appendChild(styleTag);
+
+    const wrapped = mountOverlay({ isOpen: true, className: 'fakeClassName' });
+
+    const containerStyles = getComputedStyle(
+      wrapped.find('div[data-testid="overlay-content-container"]').getDOMNode()
+    );
+
+    expect(containerStyles.getPropertyValue('position')).toBe('fixed');
+    expect(containerStyles.getPropertyValue('text-align')).toBe('center');
+  });
+
+  it('overloads default styling when using the className prop', async () => {
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = '.fakeClassName { position: sticky; }';
+    document.body.appendChild(styleTag);
+
+    const wrapped = mountOverlay({ isOpen: true, className: 'fakeClassName' });
+
+    const containerStyles = getComputedStyle(
+      wrapped.find('div[data-testid="overlay-content-container"]').getDOMNode()
+    );
+
+    expect(containerStyles.getPropertyValue('position')).toBe('sticky');
   });
 });

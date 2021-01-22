@@ -1,8 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import { Testimonial } from '..';
 import styles from '../../styles.module.scss';
+import { Testimonial } from '..';
 
 const exampleTestmonial = {
   firstName: 'Frank',

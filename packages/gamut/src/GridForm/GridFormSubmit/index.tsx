@@ -1,5 +1,6 @@
+import { flex } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
-import cx from 'classnames';
 
 import {
   ButtonDeprecated,
@@ -7,9 +8,8 @@ import {
 } from '../../ButtonDeprecated';
 import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
-import styles from './styles.module.scss';
 
-export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
+export type GridFormSubmitPosition = keyof typeof positions;
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
@@ -20,6 +20,15 @@ export type GridFormSubmitProps = {
   theme?: ButtonDeprecatedProps['theme'];
 };
 
+const positions = {
+  left: 'flex-start',
+  center: 'center',
+  right: 'flex-end',
+  stretch: 'stretch',
+};
+
+const StyledColumn = styled(Column)(flex);
+
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
   disabled,
@@ -28,10 +37,12 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   size,
   theme = 'brand-purple',
 }) => {
-  const positionStyle = styles[position];
-
   return (
-    <Column className={cx(styles.base, positionStyle)} size={size}>
+    <StyledColumn
+      justifyContent={positions[position]}
+      alignItems="center"
+      size={size}
+    >
       <ButtonDeprecated
         disabled={disabled}
         outline={outline}
@@ -40,6 +51,6 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
       >
         {contents}
       </ButtonDeprecated>
-    </Column>
+    </StyledColumn>
   );
 };

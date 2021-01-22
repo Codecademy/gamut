@@ -1,3 +1,43 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [3.1.3](http://github.com///compare/@codecademy/eslint-config@3.1.2...@codecademy/eslint-config@3.1.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
+### [3.1.2](http://github.com///compare/@codecademy/eslint-config@3.1.1...@codecademy/eslint-config@3.1.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](http://github.com///commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
+### [3.1.1](http://github.com///compare/@codecademy/eslint-config@3.1.0...@codecademy/eslint-config@3.1.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **MDX:** Parsing Validation and ESlint for MDX WEB-1238 ([a9fc436](http://github.com///commit/a9fc436b415d319bff2858cf75fff6afbb489f6f))
+
+
+
+## [3.1.0](http://github.com///compare/@codecademy/eslint-config@3.0.7...@codecademy/eslint-config@3.1.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](http://github.com///commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
 ### [3.0.7](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.6...@codecademy/eslint-config@3.0.7) (2020-11-18)
 
 
@@ -181,4 +221,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-

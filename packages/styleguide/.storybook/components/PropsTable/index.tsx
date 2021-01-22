@@ -1,8 +1,7 @@
-import React, { useContext, useState, useMemo } from 'react';
-import * as system from '@codecademy/gamut-styles/src/system';
+import React from 'react';
+import { propGroups, PropGroups } from './constants';
 import { Toggle } from '@codecademy/gamut/src';
-import { ArgsTable, DocsContext } from '@storybook/addon-docs/blocks';
-import { intersection } from 'lodash';
+import { ArgsTable } from '@storybook/addon-docs/blocks';
 import {
   Header,
   PropItem,
@@ -13,66 +12,59 @@ import {
   ToggleContainer,
   ToggleLabel,
 } from './Elements';
+import { useSystemProps } from './useSystemProps';
 
-const { properties, variant, ...groups } = system;
+type PropTagProps = {
+  prop: PropGroups;
+  active: boolean;
+  onClick: () => void;
+};
 
-const systemProps = Object.entries(properties).reduce<string[]>(
-  (carry, [key, handler]) => {
-    return [...carry, ...handler.propNames];
-  },
-  []
-);
-
-export const PropTag: React.FC<{ prop: keyof typeof groups }> = ({ prop }) => {
-  const subprops = groups[prop].propNames;
+export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
+  const { propNames } = propGroups[prop];
   return (
-    <PropGroupTag>
+    <PropGroupTag active={active} onClick={onClick}>
       {prop}
       <PropGroupTooltip>
-        {subprops.map((propName) => (
-          <PropItem key={propName}>{propName}</PropItem>
+        {propNames.map((propName) => (
+          <PropItem key={`${prop}-prop`}>{propName}</PropItem>
         ))}
       </PropGroupTooltip>
     </PropGroupTag>
   );
 };
 
-export const PropsTable: React.FC<Parameters<typeof ArgsTable>[0]> = (
-  props
-) => {
-  const context = useContext(DocsContext);
+type PropsTableProps = Parameters<typeof ArgsTable>[0] & {
+  defaultGroups: string[];
+};
+
+export const PropsTable: React.FC<PropsTableProps> = ({
+  defaultGroups = [],
+  ...props
+}) => {
   const {
-    parameters: { argTypes },
-  } = context;
-  const [showSystemProps, toggleSystemProps] = useState(false);
-
-  const usedProps = useMemo<string[]>(
-    () => Object.keys(argTypes).filter((prop) => systemProps.includes(prop)),
-    [argTypes]
-  );
-
-  const systemPropGroups = useMemo(() => {
-    return Object.entries(groups).reduce<string[]>(
-      (carry, [groupKey, handler]) => {
-        if (intersection(handler.propNames, usedProps).length > 0) {
-          return [...carry, groupKey];
-        }
-        return carry;
-      },
-      []
-    );
-  }, [usedProps]);
+    state: { showAll, allGroups, activeGroups, excludedProps, hasSystemProps },
+    actions: { toggleGroup, toggleAll },
+  } = useSystemProps({
+    showAll: false,
+    activeGroups: defaultGroups,
+  });
 
   return (
-    <React.Fragment>
-      {usedProps.length > 0 && (
+    <>
+      {hasSystemProps && (
         <Header>
           <HeaderColumn>
             <Title>System Props</Title>
           </HeaderColumn>
           <HeaderColumn>
-            {systemPropGroups.map((group) => (
-              <PropTag prop={group as keyof typeof groups} />
+            {allGroups.map((group) => (
+              <PropTag
+                key={`${group}-group`}
+                prop={group}
+                onClick={() => toggleGroup(group)}
+                active={!showAll && activeGroups.includes(group)}
+              />
             ))}
           </HeaderColumn>
           <HeaderColumn>
@@ -81,14 +73,14 @@ export const PropsTable: React.FC<Parameters<typeof ArgsTable>[0]> = (
               <Toggle
                 size="small"
                 label="Show in table"
-                checked={showSystemProps}
-                onChange={() => toggleSystemProps(!showSystemProps)}
+                checked={showAll}
+                onChange={toggleAll}
               />
             </ToggleContainer>
           </HeaderColumn>
         </Header>
       )}
-      <ArgsTable {...props} exclude={showSystemProps ? [] : usedProps} />
-    </React.Fragment>
+      <ArgsTable {...props} exclude={excludedProps} />
+    </>
   );
 };

@@ -1,6 +1,5 @@
 import React from 'react';
-import { CacheProvider } from '@emotion/react';
-import { ThemeContext } from '@emotion/react';
+import { CacheProvider, ThemeContext } from '@emotion/react';
 
 import { theme, createEmotionCache } from '@codecademy/gamut-styles';
 

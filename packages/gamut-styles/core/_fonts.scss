@@ -28,13 +28,6 @@
     url("../fonts/Regular_Bold/Regular-BoldWEB.svg") format("svg");
 }
 
-@font-face {
-  font-family: "ikona";
-  src: url("../fonts/ikona/ikona.eot");
-  src: url("../fonts/ikona/ikona.woff") format("woff"),
-    url("../fonts/ikona/ikona.ttf") format("truetype");
-}
-
 // because Regular has weird caret styles
 @font-face {
   font-family: "Regular Patch";

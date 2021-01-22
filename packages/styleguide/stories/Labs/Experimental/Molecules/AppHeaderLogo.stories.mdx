@@ -1,0 +1,47 @@
+import { AppHeaderLogo } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={AppHeaderLogo}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  args={{
+    item: {
+      pro: true,
+      href: 'http://codecademy.com',
+      trackingTarget: 'test',
+      type: 'logo',
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="AppHeaderLogo">{(args) => <AppHeaderLogo {...args} />}</Story>
+</Canvas>
+
+<Props story="AppHeaderLogo" />
+
+## Pro
+
+<Canvas>
+  <Story name="pro">{(args) => <AppHeaderLogo {...args} />}</Story>
+</Canvas>
+
+## Free + Anon
+
+<Canvas>
+  <Story
+    name="free"
+    args={{
+      item: {
+        pro: false,
+        href: 'http://codecademy.com',
+        trackingTarget: 'test',
+        type: 'logo',
+      },
+    }}
+  >
+    {(args) => <AppHeaderLogo {...args} />}
+  </Story>
+</Canvas>

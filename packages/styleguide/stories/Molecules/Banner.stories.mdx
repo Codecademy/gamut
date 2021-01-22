@@ -1,0 +1,42 @@
+import { Banner, BannerStyle } from '@codecademy/gamut/src';
+import { AlertIcon } from '@codecademy/gamut-icons';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Banner}
+  parameters={{
+    subtitle: `Full-width banner to indicate important messaging at the top of a page or section.`,
+    status: 'volatile',
+    source: 'gamut',
+    figmaId: 'lsgaSKkOTN2FgSURwhQ6j5',
+  }}
+  args={{ children: 'Some Banner content!' }}
+/>
+
+<Canvas>
+  <Story name="Banner">{(args) => <Banner {...args} />}</Story>
+</Canvas>
+
+<Props story="Banner" />
+
+## Full-Width Icon
+
+An informative icon can be added to the left of the banner.
+
+<Canvas>
+  <Story name="Icon Banner" args={{ icon: <AlertIcon /> }}>
+    {(args) => <Banner {...args} />}
+  </Story>
+</Canvas>
+
+## Bordered
+
+If your banner is on above similar content (?), add a BannerStyle to it.
+
+<Canvas>
+  <Story name="Bordered" args={{ displayStyle: BannerStyle.BorderBottom }}>
+    {(args) => <Banner {...args} />}
+  </Story>
+</Canvas>

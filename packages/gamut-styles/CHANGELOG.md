@@ -1,3 +1,68 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
+
+
+### Bug Fixes
+
+* **styles:** Default button focus styles to focus-visible ([6493ee2](https://github.com/Codecademy/client-modules/commit/6493ee2703b9f3e723ce0f5283b8b7d60e3e153e))
+
+
+
+### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.1...@codecademy/gamut-styles@7.6.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [7.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.0...@codecademy/gamut-styles@7.6.1) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.2...@codecademy/gamut-styles@7.6.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [7.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.1...@codecademy/gamut-styles@7.5.2) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [7.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.0...@codecademy/gamut-styles@7.5.1) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.8...@codecademy/gamut-styles@7.5.0) (2020-12-03)
+
+
+### Features
+
+* **focus-visible:** Add stylis plugin for focus-visible support WEB-1148 ([3bb685f](https://github.com/Codecademy/client-modules/commit/3bb685ff0763bd9190e919d0df216956c6cd3d8a))
+
+
+
 ### [7.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.7...@codecademy/gamut-styles@7.4.8) (2020-11-30)
 
 
@@ -681,4 +746,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-

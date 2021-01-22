@@ -11,9 +11,23 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
+
 [`gamut-styles`: Utility styles for gamut components and codecademy apps](/packages/gamut-styles/README.md)
 
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-styles.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-styles)
+
 [`gamut-icons`: SVG Icons for gamut components and codecademy apps](/packages/gamut-icons/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-icons.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-icons)
+
+[`gamut-labs`: Experimental and brand level components](/packages/gamut-labs/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-labs.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-labs)
+
+[`gamut-system`: Typescript CSS in JS utility library](/packages/gamut-system/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
 
@@ -87,11 +101,15 @@ or running `yarn build-all` in this repo.
 1. Send a `feat` PR adding that package
 1. One merged, message out in our #frontend Slack channel to other client-modules developers to re-run `yarn lerna bootstrap` after they merge from `main`
 
+Notes:
+
+If your package will be used in other packages in the monorepo, you may need to set up aliases in jest and storybook so that they can be run without building your package first. You can find these aliases in [jest.config.js](/jest.config.js) and the [styleguide storybook config](/packages/styleguide/.storybook/main.ts).
+
 ### PR Title Guide
 
 Your PR Title should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) Format.
 
-Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message. 
+Because we automatically squash merge Pull Requests, you'll need to format your PR title to match these guidelines since the title will become the commit message.
 
 Your individual commits will affect the `alpha` version number, but not the final version once you merge to main.
 

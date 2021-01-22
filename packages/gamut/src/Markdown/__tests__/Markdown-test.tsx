@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
+import React from 'react';
+import { act } from 'react-dom/test-utils';
+
 import { Markdown } from '../index';
 
 const basicMarkdown = `
@@ -190,6 +192,23 @@ var test = true;
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
       expect(markdown.find('a[rel="noopener"]').length).toEqual(1);
+    });
+
+    it('Allows onClicks callbacks', () => {
+      const onClick = jest.fn();
+
+      const markdown = mount(
+        <Markdown
+          text={`<a data-testid="testLink" href="http://google.com">google</a>`}
+          onAnchorClick={onClick}
+        />
+      );
+
+      act(() => {
+        markdown.find(`a[href="http://google.com"]`).simulate('click');
+      });
+
+      expect(onClick).toHaveBeenCalledTimes(1);
     });
   });
 

@@ -1,8 +1,13 @@
-<Meta title="Meta/Stories" />
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/dist/blocks';
 
-# Stories
-
-> 🏗 We're still building these opinions out, so don't expect all stories to adhere just yet!
+<Meta
+  title={title}
+  parameters={{
+    subtitle: `> 🏗 We're still building these opinions out, so don't expect all stories to adhere just yet!
+`,
+  }}
+/>
 
 ## Story Structure
 
@@ -49,7 +54,7 @@ use a `LayoutGrid` with `"sm"` gaps to showcase them all neatly.
 </LayoutGrid>
 ```
 
-Otherwise, show a single reasonable default for the component, and allow configuring its props using knobs.
+Otherwise, show a single reasonable default for the component, and allow configuring its props using controls.
 
 ```tsx
 <ProgressBar percent={number('Percent', 50)} />
@@ -58,7 +63,7 @@ Otherwise, show a single reasonable default for the component, and allow configu
 ### Granular Stories
 
 Each subsequent story should elaborate on an important behavioral feature of the component.
-Try to show a single use of the behavior configurable with knobs.
+Try to show a single use of the behavior configurable with args.
 
 ```tsx
 export const minimumPercent = decoratedStory(() => (
@@ -75,13 +80,4 @@ export const minimumPercent = decoratedStory(() => (
     />
   </StoryTemplate>
 ));
-```
-
-## Knobs
-
-Storybook knobs are great!
-Give them names in Title Case and use them directly in your story JSX.
-
-```tsx
-<ProgressBar minimumPercent={number('Minimum Percent', 5)} />
 ```

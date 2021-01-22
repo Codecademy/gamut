@@ -1,3 +1,51 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.3.0...@codecademy/tracking@0.4.0) (2021-01-14)
+
+
+### Features
+
+* **tracking:** Add a new page_career_path_visited event ([#1283](https://github.com/Codecademy/client-modules/issues/1283)) ([398e863](https://github.com/Codecademy/client-modules/commit/398e8636ed1ae5dc602f8ed103583b73aa0d6abc))
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.2.1...@codecademy/tracking@0.3.0) (2021-01-12)
+
+
+### Features
+
+* **tracking:** Add a fullstory boolean to TrackingOptions type ([8e58696](https://github.com/Codecademy/client-modules/commit/8e58696cda506c8b9fed5a6b58eadcf0d9ebcfab))
+
+
+
+### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.2.0...@codecademy/tracking@0.2.1) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
+## [0.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.3...@codecademy/tracking@0.2.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [0.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.2...@codecademy/tracking@0.1.3) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/tracking
+
+
+
+
+
 ### [0.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.1.1...@codecademy/tracking@0.1.2) (2020-11-25)
 
 
@@ -18,4 +66,3 @@
 ### ✨ Features
 
 * Creating the @codecademy/tracking pachage. ([1a91e7e](https://github.com/Codecademy/client-modules/commit/1a91e7e41e9a30e3cabb3b736c1b686c43e9570e))
-

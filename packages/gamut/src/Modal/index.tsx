@@ -1,6 +1,6 @@
-import React from 'react';
-import cx from 'classnames';
 import { CloseIcon } from '@codecademy/gamut-icons';
+import cx from 'classnames';
+import React from 'react';
 
 import { ButtonDeprecated } from '../ButtonDeprecated';
 import { CardShell } from '../Card';
@@ -56,6 +56,7 @@ export const Modal: React.FC<ModalProps> = ({
       <CardShell
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
+        aria-modal="true"
         role="dialog"
         tabIndex={0}
       >

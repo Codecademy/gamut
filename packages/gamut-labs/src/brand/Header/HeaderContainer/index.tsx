@@ -1,7 +1,6 @@
+import { AppBar, AppBarSection } from '@codecademy/gamut';
 import cx from 'classnames';
 import React from 'react';
-
-import { AppBar, AppBarSection } from '@codecademy/gamut';
 
 import styles from './styles.module.scss';
 

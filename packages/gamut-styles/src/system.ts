@@ -1,4 +1,5 @@
 import { system } from '@codecademy/gamut-system';
+
 import { Theme } from './theme';
 
 const {

@@ -1,6 +1,7 @@
-import React from 'react';
-import { Alert } from '..';
 import { mount } from 'enzyme';
+import React from 'react';
+
+import { Alert } from '..';
 
 describe('Alert', () => {
   const onClose = jest.fn();

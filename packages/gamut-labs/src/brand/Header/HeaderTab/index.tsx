@@ -1,5 +1,6 @@
-import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { HTMLAttributes } from 'react';
+
 import styles from './styles.module.scss';
 
 export type HeaderTabProps = HTMLAttributes<HTMLElement> & {

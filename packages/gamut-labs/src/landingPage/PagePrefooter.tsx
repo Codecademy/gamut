@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
 import { Container } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
 
-import { CTA, Title, Description } from './';
+import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -27,21 +27,26 @@ export const PagePrefooter: React.FC<BaseProps> = ({
   title,
   desc,
   cta,
+  onAnchorClick,
   testId,
 }) => {
   const SectionTitle = title && <Title>{title}</Title>;
-  const Desc = desc && <Description text={desc} />;
+  const Desc = desc && (
+    <Description text={desc} onAnchorClick={onAnchorClick} />
+  );
 
   return cta ? (
-    <FlexContainer nowrap column justify="spaceBetween">
+    <FlexContainer data-testid={testId} nowrap column justify="spaceBetween">
       <FlexContent>
         {SectionTitle}
         {Desc}
       </FlexContent>
-      <StyledCTA href={cta.href}>{cta.text}</StyledCTA>
+      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick}>
+        {cta.text}
+      </StyledCTA>
     </FlexContainer>
   ) : (
-    <div>
+    <div data-testid={testId}>
       {SectionTitle}
       {Desc}
     </div>

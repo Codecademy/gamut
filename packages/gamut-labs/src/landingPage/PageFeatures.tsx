@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
 import { Container } from '@codecademy/gamut';
-import { CTA, Title, Description, Feature, FeatureProps } from './';
 import { mediaQueries } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { CTA, Description, Feature, FeatureProps, Title } from './';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -16,12 +16,17 @@ export type PageFeaturesProps = BaseProps & {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: Omit<FeatureProps, 'isIcon'>[];
+  features: Omit<FeatureProps, 'featuresMedia' | 'onAnchorClick'>[];
 
   /**
-   * Whether an icon or a full size image should be rendered
+   * @deprecated - Whether an icon or a full size image should be rendered
    */
   isIcon?: boolean;
+
+  /**
+   * The primary visual element.
+   */
+  featuresMedia?: 'image' | 'icon' | 'stat' | 'none';
 };
 
 export const PageFeatures: React.FC<PageFeaturesProps> = ({
@@ -29,18 +34,31 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   desc,
   cta,
   features,
+  featuresMedia,
   isIcon,
   testId,
+  onAnchorClick,
 }) => (
   <div data-testid={testId}>
     <div>
       {title && <Title isPageHeading={false}>{title}</Title>}
-      {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </div>
     <FlexContainer nowrap column>
       {features.map((feature) => (
-        <Feature {...feature} isIcon={isIcon} key={feature.title} />
+        <Feature
+          key={feature.title}
+          {...feature}
+          featuresMedia={
+            featuresMedia ? featuresMedia : isIcon ? 'icon' : 'image'
+          }
+          onAnchorClick={onAnchorClick}
+        />
       ))}
     </FlexContainer>
   </div>

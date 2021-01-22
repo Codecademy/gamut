@@ -1,6 +1,6 @@
 # Gamut Icons
 
-_UI Icons for the gamut component library_
+_UI Icons for the Gamut component library_
 
 ## Adding an icon
 

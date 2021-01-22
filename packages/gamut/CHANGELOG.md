@@ -1,3 +1,287 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [19.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.2...@codecademy/gamut@19.11.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.1...@codecademy/gamut@19.11.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Remove overwritten data-testids on checkboxes ([a7792e7](https://github.com/Codecademy/client-modules/commit/a7792e73f84f65cf2139322bd4a56de443e5c6c8))
+
+
+
+### [19.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.0...@codecademy/gamut@19.11.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **Markdown:** Don't wrap MarkdownAnchor component in tag overrides ([#1286](https://github.com/Codecademy/client-modules/issues/1286)) ([74d4fe3](https://github.com/Codecademy/client-modules/commit/74d4fe36b58e2c75380fd94c19fd0cb05c56ecdc))
+
+
+
+## [19.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.2...@codecademy/gamut@19.11.0) (2021-01-19)
+
+
+### Features
+
+* **Interstitial:** add focus mgmt to Interstitial ([18fcc9f](https://github.com/Codecademy/client-modules/commit/18fcc9f8bf7567b9df2b8dbed9c8c4ef6979a5aa))
+
+
+
+### [19.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.1...@codecademy/gamut@19.10.2) (2021-01-18)
+
+
+### Bug Fixes
+
+* Converting from SCSS to emotion for Form and GridForm components ([dee4938](https://github.com/Codecademy/client-modules/commit/dee4938ece08e3e66f5cfb24ed2edff467b609f1))
+
+
+
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.0...@codecademy/gamut@19.10.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* **Overlay:**  Body overflow hidden iOS bug ([c5a2057](https://github.com/Codecademy/client-modules/commit/c5a205713ab44c11ac2eb93b79c70ca63bc4a4b3)), closes [/github.com/streamich/react-use/issues/1477#issuecomment-749788126](https://github.com/Codecademy//github.com/streamich/react-use/issues/1477/issues/issuecomment-749788126)
+
+
+
+## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.3...@codecademy/gamut@19.10.0) (2021-01-13)
+
+
+### Features
+
+* **Pattern:** add new Pattern component ([#1271](https://github.com/Codecademy/client-modules/issues/1271)) ([c392c8f](https://github.com/Codecademy/client-modules/commit/c392c8fe647811354dff89a0cddf198cb4cb0b2b))
+
+
+
+### [19.9.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.2...@codecademy/gamut@19.9.3) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.9.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.1...@codecademy/gamut@19.9.2) (2021-01-08)
+
+
+### Bug Fixes
+
+* added fontSmoothing to buttons ([6afbe95](https://github.com/Codecademy/client-modules/commit/6afbe9532aa16282a370910c0bb5955ae1033478))
+
+
+
+### [19.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.0...@codecademy/gamut@19.9.1) (2021-01-08)
+
+
+### Bug Fixes
+
+* **toggle:** aria-label typo ([8d948ac](https://github.com/Codecademy/client-modules/commit/8d948ac624760b6300d7aa00d3030b161c3da6b5))
+
+
+
+## [19.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.2...@codecademy/gamut@19.9.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [19.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.1...@codecademy/gamut@19.8.2) (2021-01-07)
+
+
+### Bug Fixes
+
+* **IconButton:** make children prop optional ([57c4226](https://github.com/Codecademy/client-modules/commit/57c422644b876ec651f6026163cc661e113e8930))
+
+
+
+### [19.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.8.0...@codecademy/gamut@19.8.1) (2021-01-06)
+
+
+### Bug Fixes
+
+* **Markdown:** prevent re-renders caused by default prop ([b54253f](https://github.com/Codecademy/client-modules/commit/b54253fc9b39e9831fced3f6c66a8bd9db9fe50b))
+
+
+
+## [19.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.3...@codecademy/gamut@19.8.0) (2020-12-21)
+
+
+### Features
+
+* **Toggle:** adds a className prop to the Toggle component ([f032766](https://github.com/Codecademy/client-modules/commit/f0327664a735140e4ebb5619e283011249c543a3))
+
+
+
+### [19.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.2...@codecademy/gamut@19.7.3) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.1...@codecademy/gamut@19.7.2) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.7.0...@codecademy/gamut@19.7.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* revert "feat: add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242))" ([#1248](https://github.com/Codecademy/client-modules/issues/1248)) ([5a69644](https://github.com/Codecademy/client-modules/commit/5a69644499ec9f684d670aa11250e3ab1db767cd))
+
+
+
+## [19.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.6.0...@codecademy/gamut@19.7.0) (2020-12-16)
+
+
+### Features
+
+* added focus-visible to newer buttons and similar ([a105d03](https://github.com/Codecademy/client-modules/commit/a105d03d7753e22dc91db76b05ba9684fcd7acdb))
+
+
+
+## [19.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.5.0...@codecademy/gamut@19.6.0) (2020-12-16)
+
+
+### Features
+
+* added size prop for buttons ([da17d06](https://github.com/Codecademy/client-modules/commit/da17d069e5ec4d9b7635d7900efb13190d0aa349))
+
+
+
+## [19.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.4.0...@codecademy/gamut@19.5.0) (2020-12-15)
+
+
+### Features
+
+* add testId prop to Container ([#1242](https://github.com/Codecademy/client-modules/issues/1242)) ([3db2a8f](https://github.com/Codecademy/client-modules/commit/3db2a8fbcdcd3abba25c32771f7d53e95f8d068d))
+
+
+
+## [19.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.3...@codecademy/gamut@19.4.0) (2020-12-14)
+
+
+### Features
+
+* **Markdown:** Add onAnchorClick prop ([110c263](https://github.com/Codecademy/client-modules/commit/110c263214e620c808abf5e9a1a91b8c2a7a7e96))
+
+
+
+### [19.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.2...@codecademy/gamut@19.3.3) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [19.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.1...@codecademy/gamut@19.3.2) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.3.0...@codecademy/gamut@19.3.1) (2020-12-11)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [19.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.2.0...@codecademy/gamut@19.3.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+## [19.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.3...@codecademy/gamut@19.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
+### [19.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.2...@codecademy/gamut@19.1.3) (2020-12-08)
+
+
+### Bug Fixes
+
+* **Form:** Remove flex-start declaration ([40b5316](https://github.com/Codecademy/client-modules/commit/40b53168d3d3b9b041ecfc9446d133c83ce3f080))
+
+
+
+### [19.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.1...@codecademy/gamut@19.1.2) (2020-12-08)
+
+
+### Bug Fixes
+
+* stop using CardBody padding in ToolTip ([0b9a90b](https://github.com/Codecademy/client-modules/commit/0b9a90b6baa12446ff44d7f966f28d7fcd6698e0))
+
+
+
+### [19.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.1.0...@codecademy/gamut@19.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [19.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.5...@codecademy/gamut@19.1.0) (2020-12-07)
+
+
+### Features
+
+* **modal:** add aria-modal="true" ([7ca7db6](https://github.com/Codecademy/client-modules/commit/7ca7db65fe4a5be80cde32df5157b0cf6327f52b))
+
+
+
+### [19.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.4...@codecademy/gamut@19.0.5) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.3...@codecademy/gamut@19.0.4) (2020-12-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.2...@codecademy/gamut@19.0.3) (2020-12-02)
 
 ### [19.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.0.1...@codecademy/gamut@19.0.2) (2020-12-02)
@@ -3238,4 +3522,3 @@ import { Button } from '@codecademy/gamut'
 * moved styles ([cbe6f5b](https://github.com/Codecademy/client-modules/commit/cbe6f5bb8f77e2e733b6651599929335bdf64efe))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-

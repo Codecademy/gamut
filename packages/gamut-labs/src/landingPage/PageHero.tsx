@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-
-import { LayoutGrid, Column } from '@codecademy/gamut';
+import { Column, LayoutGrid } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
-import { CTA, Title, Description } from './';
+import styled from '@emotion/styled';
+import React from 'react';
+
+import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
 const RightColumn = styled(Column)`
@@ -36,6 +36,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   imgSrc,
   imgAlt = '',
   testId,
+  onAnchorClick,
 }) => (
   <LayoutGrid testId={testId}>
     <Column
@@ -45,8 +46,12 @@ export const PageHero: React.FC<PageHeroProps> = ({
       }}
     >
       {title && <Title isPageHeading>{title}</Title>}
-      {desc && <Description text={desc} />}
-      {cta && <CTA href={cta.href}>{cta.text}</CTA>}
+      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+      {cta && (
+        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+          {cta.text}
+        </CTA>
+      )}
     </Column>
     {imgSrc && (
       <RightColumn size={3}>
