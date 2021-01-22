@@ -72,183 +72,183 @@ const renderGlobalHeader = (props: GlobalHeaderProps) => {
 };
 
 describe('GlobalHeader', () => {
-  describe('renders the correct components for an anonymous user: ', () => {
+  describe('anonymous users', () => {
     beforeEach(() => {
       renderGlobalHeader(anonHeaderProps);
     });
 
-    it('logo', () => {
+    test('logo', () => {
       screen.getByTestId('header-logo');
     });
 
-    it('courseCatalog', () => {
+    test('courseCatalog', () => {
       screen.getByText(courseCatalog.text);
     });
 
-    it('resourcesDropdown', () => {
+    test('resourcesDropdown', () => {
       screen.getByText(resourcesDropdown.text);
     });
 
-    it('communityDropdown', () => {
+    test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
 
-    it('plansPricingDropdown', () => {
+    test('plansPricingDropdown', () => {
       screen.getByText(plansPricingDropdown.text);
     });
 
-    it('forEnterprise', () => {
+    test('forEnterprise', () => {
       screen.getByText(forEnterprise.text);
     });
 
-    it('login', () => {
+    test('login', () => {
       screen.getByText(login.text);
     });
 
-    it('signup', () => {
+    test('signup', () => {
       screen.getByText(signUp.text);
     });
   });
 
-  describe('renders the correct components for an anonymous user on ', () => {
-    describe('the landing page: ', () => {
+  describe('anonymous users (variants)', () => {
+    describe('landing page', () => {
       beforeEach(() => {
         renderGlobalHeader(anonLandingHeaderProps);
       });
 
-      it('does not show search', () => {
+      test('does not show search', () => {
         expect(screen.queryByTitle('Search Icon')).toBeFalsy();
       });
 
-      it('shows login', () => {
+      test('shows login', () => {
         screen.getByText(login.text);
       });
 
-      it('does not show signup', () => {
+      test('does not show signup', () => {
         expect(screen.queryByText(signUp.text)).toBeFalsy();
       });
     });
 
-    describe('the login page: ', () => {
+    describe('login page', () => {
       beforeEach(() => {
         renderGlobalHeader(anonLoginHeaderProps);
       });
 
-      it('shows search', () => {
+      test('shows search', () => {
         screen.getByTitle('Search Icon');
       });
 
-      it('does not show login', () => {
+      test('does not show login', () => {
         expect(screen.queryByText(login.text)).toBeFalsy();
       });
 
-      it('shows signup', () => {
+      test('shows signup', () => {
         screen.getByText(signUp.text);
       });
     });
 
-    describe('the sign up page: ', () => {
+    describe('sign up page', () => {
       beforeEach(() => {
         renderGlobalHeader(anonSignUpHeaderProps);
       });
 
-      it('shows search', () => {
+      test('shows search', () => {
         screen.getByTitle('Search Icon');
       });
 
-      it('shows login', () => {
+      test('shows login', () => {
         screen.getByText(login.text);
       });
 
-      it('does not show sign up', () => {
+      test('does not show sign up', () => {
         expect(screen.queryByText(signUp.text)).toBeFalsy();
       });
     });
   });
 
-  describe('renders the correct components for a free user: ', () => {
+  describe('free users', () => {
     beforeEach(() => {
       renderGlobalHeader(freeHeaderProps);
     });
 
-    it('logo', () => {
+    test('logo', () => {
       screen.getByTestId('header-logo');
     });
 
-    it('myHome', () => {
+    test('myHome', () => {
       screen.getByText(myHome.text);
     });
 
-    it('courseCatalog', () => {
+    test('courseCatalog', () => {
       screen.getByText(courseCatalog.text);
     });
 
-    it('resourcesDropdown', () => {
+    test('resourcesDropdown', () => {
       screen.getByText(resourcesDropdown.text);
     });
 
-    it('communityDropdown', () => {
+    test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
 
-    it('plansPricingDropdown', () => {
+    test('plansPricingDropdown', () => {
       screen.getByText(plansPricingDropdown.text);
     });
 
-    it('forEnterprise', () => {
+    test('forEnterprise', () => {
       screen.getByText(forEnterprise.text);
     });
 
-    it('upgradeToPro', () => {
+    test('upgradeToPro', () => {
       screen.getByText(upgradeToPro.text);
     });
   });
 
-  describe('renders the correct components for a pro user', () => {
+  describe('pro users', () => {
     beforeEach(() => {
       renderGlobalHeader(proHeaderProps);
     });
 
-    it('proLogo', () => {
+    test('proLogo', () => {
       screen.getByTestId('header-pro-logo');
     });
 
-    it('myHome', () => {
+    test('myHome', () => {
       screen.getByText(myHome.text);
     });
 
-    it('courseCatalog', () => {
+    test('courseCatalog', () => {
       screen.getByText(courseCatalog.text);
     });
 
-    it('resourcesDropdown', () => {
+    test('resourcesDropdown', () => {
       screen.getByText(resourcesDropdown.text);
     });
 
-    it('communityDropdown', () => {
+    test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
   });
 
-  describe('renders a custom element when provided one: ', () => {
+  describe('renders a custom element when provided one', () => {
     beforeEach(() => {
       renderGlobalHeader(renderElementProps);
     });
 
-    it('search', () => {
+    test('search', () => {
       screen.getByTitle('Search Icon');
     });
 
-    it('notifications', () => {
+    test('notifications', () => {
       screen.getByTitle('Bell Icon');
     });
 
-    it('profile', () => {
+    test('profile', () => {
       screen.getByTitle('Person Icon');
     });
   });
 
-  it('fires onClick upon clicking an element', () => {
+  test('fires onClick upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
     screen.getAllByRole('button')[0].click();
     expect(onClick).toHaveBeenCalled();
