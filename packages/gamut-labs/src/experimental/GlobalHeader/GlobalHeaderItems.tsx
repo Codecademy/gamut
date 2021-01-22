@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 
 import {
   AppHeaderDropdownItem,
@@ -152,7 +152,7 @@ export const forEnterprise: AppHeaderLinkItem = {
 };
 
 export const search = (
-  renderSearch: () => ReactElement
+  renderSearch: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
     id: 'search',
@@ -162,7 +162,7 @@ export const search = (
 };
 
 export const notifications = (
-  renderNotifications: () => ReactElement
+  renderNotifications: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
     id: 'notifications',
@@ -172,7 +172,7 @@ export const notifications = (
 };
 
 export const profile = (
-  renderProfile: () => ReactElement
+  renderProfile: () => ReactNode
 ): AppHeaderRenderElementItem => {
   return {
     id: 'profile',

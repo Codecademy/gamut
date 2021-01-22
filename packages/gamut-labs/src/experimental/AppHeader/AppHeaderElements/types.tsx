@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 
 export type AppHeaderItem =
   | AppHeaderLogoItem
@@ -50,7 +50,7 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
 };
 
 export type AppHeaderRenderElementItem = AppHeaderBaseItem & {
-  renderElement: () => ReactElement;
+  renderElement: () => ReactNode;
   type: 'render-element';
 };
 

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 
 import { AppHeaderItemsProp } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
@@ -22,7 +22,7 @@ import {
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
-  renderSearch?: () => ReactElement
+  renderSearch?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -45,7 +45,7 @@ const anonHeaderItems = (
 };
 
 export const anonDefaultHeaderItems = (
-  renderSearch?: () => ReactElement
+  renderSearch?: () => ReactNode
 ): AppHeaderItemsProp => {
   return anonHeaderItems(true, true, renderSearch);
 };
@@ -55,21 +55,21 @@ export const anonLandingHeaderItems = (): AppHeaderItemsProp => {
 };
 
 export const anonLoginHeaderItems = (
-  renderSearch?: () => ReactElement
+  renderSearch?: () => ReactNode
 ): AppHeaderItemsProp => {
   return anonHeaderItems(false, true, renderSearch);
 };
 
 export const anonSignupHeaderItems = (
-  renderSearch?: () => ReactElement
+  renderSearch?: () => ReactNode
 ): AppHeaderItemsProp => {
   return anonHeaderItems(true, false, renderSearch);
 };
 
 export const freeHeaderItems = (
-  renderSearch?: () => ReactElement,
-  renderNotifications?: () => ReactElement,
-  renderProfile?: () => ReactElement
+  renderSearch?: () => ReactNode,
+  renderNotifications?: () => ReactNode,
+  renderProfile?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -94,9 +94,9 @@ export const freeHeaderItems = (
 };
 
 export const proHeaderItems = (
-  renderSearch?: () => ReactElement,
-  renderNotifications?: () => ReactElement,
-  renderProfile?: () => ReactElement
+  renderSearch?: () => ReactNode,
+  renderNotifications?: () => ReactNode,
+  renderProfile?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     proLogo,

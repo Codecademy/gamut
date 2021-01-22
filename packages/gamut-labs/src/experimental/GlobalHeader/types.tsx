@@ -1,18 +1,18 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
-type LoggedOutHeader = {
+type BaseHeader = {
   onClick: AppHeaderClickHandler;
-  renderSearch?: () => ReactElement;
+  renderSearch?: () => ReactNode;
 };
 
-type LoggedInHeader = LoggedOutHeader & {
-  renderNotifications?: () => ReactElement;
-  renderProfile?: () => ReactElement;
+type LoggedInHeader = BaseHeader & {
+  renderNotifications?: () => ReactNode;
+  renderProfile?: () => ReactNode;
 };
 
-export type AnonHeader = LoggedOutHeader & {
+export type AnonHeader = BaseHeader & {
   type: 'anon';
   variant?: 'landing' | 'login' | 'signup';
 };
