@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.8...@codecademy/gamut-labs@7.11.0) (2021-01-22)
+
+
+### Features
+
+* **PageFeatures:** allow this component to render stats and no media, in addition to images and icons ([#1307](https://github.com/Codecademy/client-modules/issues/1307)) ([61370f5](https://github.com/Codecademy/client-modules/commit/61370f508390b3fbc4eb3aef660684c9253617a8))
+
+
+
 ### [7.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.7...@codecademy/gamut-labs@7.10.8) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
