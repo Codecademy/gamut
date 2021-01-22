@@ -1,5 +1,3 @@
-import { SimplePseudos } from 'csstype';
-
 import {
   DirectionalProperty,
   Properties,
