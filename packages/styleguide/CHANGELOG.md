@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.17.0...@codecademy/styleguide@21.18.0) (2021-01-22)
+
+
+### Features
+
+* **GlobalHeader:** add GlobalHeader component ([#1306](https://github.com/Codecademy/client-modules/issues/1306)) ([7656137](https://github.com/Codecademy/client-modules/commit/7656137fd532dcaeff37408b6bc1f6e933807aee))
+
+
+
 ## [21.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.1...@codecademy/styleguide@21.17.0) (2021-01-22)
 
 
