@@ -2,8 +2,11 @@ import { Anchor, Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { focusStyles } from '../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderLinkItem } from '../AppHeader/AppHeaderElements/types';
+import {
+  focusStyles,
+  hoverStyles,
+} from '../../AppHeader/AppHeaderElements/SharedStyles';
+import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderLinkMobileProps = {
   arrowButton?: boolean;
@@ -11,15 +14,13 @@ export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
 };
 
+// Can be a link to page and a link to open submenu? Or just former?
 const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
   return `
     color: ${theme.colors.navy};
     text-decoration: none;
     display: block;
-    &:hover {
-      color: ${theme.colors.hyper};
-      text-decoration: none;
-    }
+    ${hoverStyles}
     ${focusStyles}
 `;
 });
