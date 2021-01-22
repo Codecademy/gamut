@@ -36,10 +36,10 @@ const Track = styled(Box)`
   transition: background-color 0.2s ease;
 
   &:after {
+    content: '';
     transition: opacity 0.2s ease;
     opacity: 0;
-    content: '';
-    border-radius: 99rem;
+    border-radius: inherit;
     position: absolute;
     width: calc(100% + 8px);
     height: calc(100% + 8px);
@@ -64,7 +64,6 @@ const ToggleInput = styled.input(screenReaderOnly);
 
 const ToggleLabel = styled.label<LabelProps>`
   display: inline-block;
-  position: relative;
   cursor: pointer;
   border: 0;
   padding: 0;
@@ -121,12 +120,12 @@ export class Toggle extends Component<ToggleProps, {}> {
           position="relative"
         >
           <Box
+            width="40%"
             borderRadius="50%"
             backgroundColor="white"
             position="absolute"
             top="10%"
             bottom="10%"
-            width="40%"
             left={checked ? '55%' : '5%'}
           />
         </Track>

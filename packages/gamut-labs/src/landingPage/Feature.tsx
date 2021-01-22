@@ -1,8 +1,9 @@
-import { Heading, Markdown } from '@codecademy/gamut';
+import { Markdown } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
 const Icon = styled.img`
@@ -35,42 +36,72 @@ const FeatureBlock = styled.div`
   }
 `;
 
-export type FeatureProps = {
-  /**
-   * Whether an icon or a full size image should be rendered
-   */
-  isIcon?: boolean;
-
-  /**
-   * Feature image URL
-   */
+type FeaturedMediaProps = {
+  featuresMedia?: 'image' | 'icon' | 'stat' | 'none';
   imgSrc: string;
-
-  /**
-   * Feature image alt text (for screen readers)
-   */
   imgAlt?: string;
-} & Pick<BaseProps, 'title' | 'desc' | 'onAnchorClick' | 'testId'>;
+  statText?: string;
+};
+
+const FeaturedMedia: React.FC<FeaturedMediaProps> = ({
+  featuresMedia = 'none',
+  ...rest
+}) => {
+  if (featuresMedia === 'image') {
+    return (
+      <Image src={rest.imgSrc} alt={rest.imgAlt} data-testid="feature-image" />
+    );
+  }
+
+  if (featuresMedia === 'icon') {
+    return (
+      <Icon src={rest.imgSrc} alt={rest.imgAlt} data-testid="feature-icon" />
+    );
+  }
+
+  if (featuresMedia === 'stat') {
+    return (
+      <Text
+        as="div"
+        marginTop={48}
+        fontSize={{ xs: 44, lg: 64 }}
+        data-testid="feature-stat"
+      >
+        {rest.statText}
+      </Text>
+    );
+  }
+
+  return null;
+};
+
+export type FeatureProps = Pick<
+  BaseProps,
+  'title' | 'desc' | 'onAnchorClick' | 'testId'
+> &
+  FeaturedMediaProps;
 
 export const Feature: React.FC<FeatureProps> = ({
-  isIcon,
+  featuresMedia,
   imgSrc,
   imgAlt = '',
+  statText,
   title,
   desc,
   onAnchorClick,
   testId,
 }) => (
   <FeatureBlock data-testid={testId}>
-    {isIcon ? (
-      <Icon src={imgSrc} alt={imgAlt} data-testid="feature-icon" />
-    ) : (
-      <Image src={imgSrc} alt={imgAlt} data-testid="feature-image" />
-    )}
+    <FeaturedMedia
+      featuresMedia={featuresMedia}
+      imgSrc={imgSrc}
+      imgAlt={imgAlt}
+      statText={statText}
+    />
     {title && (
-      <Heading as="h3" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>
+      <Text as="h3" fontSize={{ xs: 22, lg: 26 }}>
         {title}
-      </Heading>
+      </Text>
     )}
     {desc && (
       <div>
