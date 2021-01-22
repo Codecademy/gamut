@@ -31,7 +31,7 @@ a background behind content, see `Modal`.
     {(args) => {
       const [open, setOpen] = useState(false);
       return (
-        <React.Fragment>
+        <>
           <ButtonDeprecated onClick={() => setOpen(true)}>
             Open Overlay
           </ButtonDeprecated>
@@ -50,7 +50,7 @@ a background behind content, see `Modal`.
               </Container>
             </Overlay>
           </Container>
-        </React.Fragment>
+        </>
       );
     }}
   </Story>

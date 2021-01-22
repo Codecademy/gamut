@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.15.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.6...@codecademy/styleguide@21.15.7) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.5...@codecademy/styleguide@21.15.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](https://github.com/Codecademy/client-modules/commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
+### [21.15.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.4...@codecademy/styleguide@21.15.5) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.3...@codecademy/styleguide@21.15.4) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.2...@codecademy/styleguide@21.15.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* **Storybook:** Update meta links to storybooks standard color ([9e1eae0](https://github.com/Codecademy/client-modules/commit/9e1eae07f368097586d626e45865333c98135968))
+
+
+
 ### [21.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.1...@codecademy/styleguide@21.15.2) (2021-01-19)
 
 **Note:** Version bump only for package @codecademy/styleguide

@@ -20,14 +20,14 @@ import { useState } from '@storybook/addons';
     {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
-        <React.Fragment>
+        <>
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
           <Modal isOpen={isOpen} onRequestClose={() => setIsOpen(false)}>
             Close the modal!
           </Modal>
-        </React.Fragment>
+        </>
       );
     }}
   </Story>
@@ -48,7 +48,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
     {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
-        <React.Fragment>
+        <>
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
@@ -62,7 +62,7 @@ You can then use the `isOpen` prop to create other controls that toggle the Moda
               with this button instead
             </ButtonDeprecated>
           </Modal>
-        </React.Fragment>
+        </>
       );
     }}
   </Story>
@@ -82,7 +82,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
     {(args) => {
       const [isOpen, setIsOpen] = useState(false);
       return (
-        <React.Fragment>
+        <>
           <ButtonDeprecated onClick={() => setIsOpen(true)}>
             Open
           </ButtonDeprecated>
@@ -96,7 +96,7 @@ All of these methods default to true for accessibility reasons, and rely on sett
               content, or by clicking the escape key.
             </p>
           </Modal>
-        </React.Fragment>
+        </>
       );
     }}
   </Story>

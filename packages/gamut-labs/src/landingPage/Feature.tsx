@@ -19,6 +19,7 @@ const Image = styled.img`
 
 const StyledMarkdown = styled(Markdown)`
   font-size: 1rem;
+  margin: 1rem 0 0;
 `;
 
 const FeatureBlock = styled.div`
