@@ -70,12 +70,15 @@ const ToggleLabel = styled.label<LabelProps>`
   cursor: pointer;
   border: 0;
   padding: 0;
-  ${({ disabled }) =>
-    disabled &&
-    css`
-      cursor: auto;
+
+  &[disabled] {
+    cursor: auto;
+
+    ${ToggleTrack} {
       opacity: 0.75;
-    `}
+      background-color: ${({ theme }) => theme.colors['gray-500']};
+    }
+  }
 
   ${ToggleInput}:focus-visible + ${ToggleTrack} {
     &:after {
@@ -96,7 +99,6 @@ export class Toggle extends Component<ToggleProps, {}> {
       size = 'medium',
     } = this.props;
     const activeColor = colors[variant];
-    const checkedColor = checked ? activeColor : 'gray-500';
     const sizeStyles = sizes[size];
 
     return (
@@ -118,7 +120,7 @@ export class Toggle extends Component<ToggleProps, {}> {
         <ToggleTrack
           {...sizeStyles}
           borderColor={activeColor}
-          backgroundColor={checkedColor}
+          backgroundColor={activeColor}
           borderRadius="99rem"
           position="relative"
         >
