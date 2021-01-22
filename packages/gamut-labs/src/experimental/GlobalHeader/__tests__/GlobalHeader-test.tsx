@@ -25,6 +25,26 @@ const anonHeaderProps: GlobalHeaderProps = {
   type: 'anon',
 };
 
+const anonLandingHeaderProps: GlobalHeaderProps = {
+  onClick: onClick,
+  type: 'anon',
+  variant: 'landing',
+};
+
+const anonLoginHeaderProps: GlobalHeaderProps = {
+  onClick: onClick,
+  renderSearch: () => <IconButton icon={SearchIcon} />,
+  type: 'anon',
+  variant: 'login',
+};
+
+const anonSignUpHeaderProps: GlobalHeaderProps = {
+  onClick: onClick,
+  renderSearch: () => <IconButton icon={SearchIcon} />,
+  type: 'anon',
+  variant: 'signup',
+};
+
 const freeHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
   type: 'free',
@@ -87,6 +107,62 @@ describe('GlobalHeader', () => {
 
     it('signup', () => {
       screen.getByText(signUp.text);
+    });
+  });
+
+  describe('renders the correct components for an anonymous user on ', () => {
+    describe('the landing page: ', () => {
+      beforeEach(() => {
+        renderGlobalHeader(anonLandingHeaderProps);
+      });
+
+      it('does not show search', () => {
+        expect(screen.queryByTitle('Search Icon')).toBeFalsy();
+      });
+
+      it('shows login', () => {
+        screen.getByText(login.text);
+      });
+
+      it('does not show signup', () => {
+        expect(screen.queryByText(signUp.text)).toBeFalsy();
+      });
+    });
+
+    describe('the login page: ', () => {
+      beforeEach(() => {
+        renderGlobalHeader(anonLoginHeaderProps);
+      });
+
+      it('shows search', () => {
+        screen.getByTitle('Search Icon');
+      });
+
+      it('does not show login', () => {
+        expect(screen.queryByText(login.text)).toBeFalsy();
+      });
+
+      it('shows signup', () => {
+        screen.getByText(signUp.text);
+      });
+    });
+
+    describe('the sign up page: ', () => {
+      beforeEach(() => {
+        renderGlobalHeader(anonSignUpHeaderProps);
+      });
+
+      it('shows search', () => {
+        screen.getByTitle('Search Icon');
+      });
+
+      it('shows login', () => {
+        screen.getByText(login.text);
+      });
+
+      it('does not show sign up', () => {
+        expect(screen.queryByText(signUp.text)).toBeFalsy();
+      });
     });
   });
 

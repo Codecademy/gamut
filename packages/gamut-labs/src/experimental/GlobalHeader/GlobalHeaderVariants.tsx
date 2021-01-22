@@ -19,7 +19,9 @@ import {
   upgradeToPro,
 } from './GlobalHeaderItems';
 
-export const anonHeaderItems = (
+const anonHeaderItems = (
+  renderLogin: boolean,
+  renderSignUp: boolean,
   renderSearch?: () => ReactElement
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
@@ -33,13 +35,35 @@ export const anonHeaderItems = (
 
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
-  rightItems.push(login);
-  rightItems.push(signUp);
+  renderLogin && rightItems.push(login);
+  renderSignUp && rightItems.push(signUp);
 
   return {
     left: leftItems,
     right: rightItems,
   };
+};
+
+export const anonDefaultHeaderItems = (
+  renderSearch?: () => ReactElement
+): AppHeaderItemsProp => {
+  return anonHeaderItems(true, true, renderSearch);
+};
+
+export const anonLandingHeaderItems = (): AppHeaderItemsProp => {
+  return anonHeaderItems(true, false);
+};
+
+export const anonLoginHeaderItems = (
+  renderSearch?: () => ReactElement
+): AppHeaderItemsProp => {
+  return anonHeaderItems(false, true, renderSearch);
+};
+
+export const anonSignupHeaderItems = (
+  renderSearch?: () => ReactElement
+): AppHeaderItemsProp => {
+  return anonHeaderItems(true, false, renderSearch);
 };
 
 export const freeHeaderItems = (

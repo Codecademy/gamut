@@ -14,6 +14,7 @@ type LoggedInHeader = LoggedOutHeader & {
 
 export type AnonHeader = LoggedOutHeader & {
   type: 'anon';
+  variant?: 'landing' | 'login' | 'signup';
 };
 
 export type FreeHeader = LoggedInHeader & {

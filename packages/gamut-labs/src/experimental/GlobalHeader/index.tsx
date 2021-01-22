@@ -3,7 +3,10 @@ import React from 'react';
 import { AppHeader } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
-  anonHeaderItems,
+  anonDefaultHeaderItems,
+  anonLandingHeaderItems,
+  anonLoginHeaderItems,
+  anonSignupHeaderItems,
   freeHeaderItems,
   proHeaderItems,
 } from './GlobalHeaderVariants';
@@ -20,7 +23,16 @@ export type GlobalHeaderProps = AnonHeader | FreeHeader | ProHeader;
 const getAppHeaderItems = (props: GlobalHeaderProps) => {
   switch (props.type) {
     case 'anon':
-      return anonHeaderItems(props.renderSearch);
+      switch (props.variant) {
+        case 'landing':
+          return anonLandingHeaderItems();
+        case 'login':
+          return anonLoginHeaderItems(props.renderSearch);
+        case 'signup':
+          return anonSignupHeaderItems(props.renderSearch);
+        default:
+          return anonDefaultHeaderItems(props.renderSearch);
+      }
     case 'free':
       return freeHeaderItems(
         props.renderSearch,

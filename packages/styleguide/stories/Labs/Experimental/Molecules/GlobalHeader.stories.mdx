@@ -20,7 +20,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   <Story name="GlobalHeader">{(args) => <GlobalHeader type="free" />}</Story>
 </Canvas>
 
-GlobalHeader takes in several props.`type` determines which header to render based on the user role (anonymous, free, or pro). `type` will also determine which of Search, Notification, and Profile components need to be passed in: Search will appear for all users, whereas Notifications and Profile will only appear for logged-in users. `onClick` will be defined by the consumer and handle any routing/tracking that needs to be done.
+GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro). `type` will also determine which of Search, Notification, and Profile components need to be passed in: Search will appear for all users, whereas Notifications and Profile will only appear for logged-in users. `onClick` will be defined by the consumer and handle any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header for the landing page, login page, and signup page.
 
 <Props of={GlobalHeader} />
 
@@ -44,11 +44,47 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### Anonymous User
+### Anonymous User - Default
 
 <Canvas>
   <Story name="Anonymous User Global Header">
     {(args) => <GlobalHeader type="anon" />}
+  </Story>
+</Canvas>
+
+### Anonymous User - Landing Page
+
+<Canvas>
+  <Story name="Anonymous User Global Header - Landing">
+    {(args) => <GlobalHeader type="anon" variant="landing" />}
+  </Story>
+</Canvas>
+
+### Anonymous User - Login Page
+
+<Canvas>
+  <Story name="Anonymous User Global Header - Login">
+    {(args) => (
+      <GlobalHeader
+        renderSearch={() => <IconButton icon={SearchIcon} />}
+        type="anon"
+        variant="login"
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Anonymous User - Signup Page
+
+<Canvas>
+  <Story name="Anonymous User Global Header - Signup">
+    {(args) => (
+      <GlobalHeader
+        renderSearch={() => <IconButton icon={SearchIcon} />}
+        type="anon"
+        variant="signup"
+      />
+    )}
   </Story>
 </Canvas>
 
