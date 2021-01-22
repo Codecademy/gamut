@@ -1,5 +1,5 @@
 import { AppBar, AppBarSection } from '@codecademy/gamut';
-import React, { ReactElement } from 'react';
+import React, { ReactNode } from 'react';
 
 import { FillButton, TextButton } from '../../../../gamut/src/Button';
 import { AppHeaderDropdown, AppHeaderLink, AppHeaderLogo } from '..';
@@ -23,7 +23,7 @@ export type AppHeaderItemsProp = {
 const mapItemToElement = (
   item: AppHeaderItem,
   onClick: AppHeaderClickHandler
-): ReactElement => {
+): ReactNode => {
   switch (item.type) {
     case 'logo':
       return (
