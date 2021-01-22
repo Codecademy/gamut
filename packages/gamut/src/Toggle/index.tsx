@@ -72,10 +72,7 @@ const ToggleLabel = styled.label<LabelProps>`
 
   &[disabled] {
     cursor: auto;
-
-    ${ToggleTrack} {
-      opacity: 0.75;
-    }
+    opacity: 0.75;
   }
 
   ${ToggleInput}:focus-visible + ${ToggleTrack} {
