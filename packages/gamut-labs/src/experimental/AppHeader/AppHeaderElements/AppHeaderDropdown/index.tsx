@@ -6,17 +6,20 @@ import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../..';
 import { AppHeaderLink } from '../AppHeaderLink';
-import { focusStyles } from '../SharedStyles';
-import { AppHeaderDropdownItem, AppHeaderLinkItem } from '../types';
-import styles from './styles.scss';
+import { focusStyles, hoverStyles } from '../SharedStyles';
+import {
+  AppHeaderClickHandler,
+  AppHeaderDropdownItem,
+  AppHeaderLinkItem,
+} from '../types';
+import styles from './styles.module.scss';
 
-const AppHeaderTargetButton = styled.button(({ theme }) => {
-  return `
+const AppHeaderTargetButton = styled.button`
   background-color: transparent;
   text-align: left;
   display: flex;
   align-items: center;
-  color: ${theme.colors.navy};
+  color: ${({ theme }) => theme.colors.navy};
   border: 1px solid transparent;
   line-height: 1.5;
   white-space: nowrap;
@@ -24,18 +27,14 @@ const AppHeaderTargetButton = styled.button(({ theme }) => {
   min-width: 0;
   padding: 1rem 0;
   font-size: 0;
-  cursor: ponter;
-  &:hover {
-    color: ${theme.colors.hyper};
-    text-decoration: none;
-  }
+  cursor: pointer;
+  ${hoverStyles}
   ${focusStyles}
 `;
-});
 
 export type AppHeaderDropdownProps = {
   item: AppHeaderDropdownItem;
-  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
+  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -46,7 +45,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && onClick(event); // TODO pass item through
+    !isOpen && onClick(event, item);
   };
   const handleClose = () => {
     setIsOpen(false);

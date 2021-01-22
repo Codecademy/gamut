@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.3](http://github.com///compare/@codecademy/eslint-config@3.1.2...@codecademy/eslint-config@3.1.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
+### [3.1.2](http://github.com///compare/@codecademy/eslint-config@3.1.1...@codecademy/eslint-config@3.1.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](http://github.com///commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
 ### [3.1.1](http://github.com///compare/@codecademy/eslint-config@3.1.0...@codecademy/eslint-config@3.1.1) (2021-01-19)
 
 

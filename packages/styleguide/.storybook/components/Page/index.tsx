@@ -3,7 +3,6 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
-import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
@@ -14,12 +13,12 @@ const Link = styled.a`
   line-height: 1;
   column-gap: 0.5rem;
   align-items: flex-start;
-  color: ${theme.colors.blue};
+  color: #1ea7fd;
   border-bottom: 2px solid transparent;
 
   &:hover {
     text-decoration: none;
-    border-bottom-color: ${theme.colors.blue};
+    border-bottom-color: #1ea7fd;
   }
 `;
 
