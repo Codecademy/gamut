@@ -93,7 +93,8 @@ export class Toggle extends Component<ToggleProps, {}> {
       variant = 'gray-blue',
       size = 'medium',
     } = this.props;
-    const colorProp = checked ? colors[variant] : 'gray-500';
+    const activeColor = colors[variant];
+    const checkedColor = checked ? activeColor : 'gray-500';
     const sizeStyles = sizes[size];
 
     return (
@@ -114,8 +115,8 @@ export class Toggle extends Component<ToggleProps, {}> {
         />
         <Track
           {...sizeStyles}
-          borderColor={colorProp}
-          backgroundColor={colorProp}
+          borderColor={activeColor}
+          backgroundColor={checkedColor}
           borderRadius="99rem"
           position="relative"
         >
