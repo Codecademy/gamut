@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.1...@codecademy/styleguide@21.17.0) (2021-01-22)
+
+
+### Features
+
+* **AppHeader:** add AppHeader component ([#1300](https://github.com/Codecademy/client-modules/issues/1300)) ([040ca60](https://github.com/Codecademy/client-modules/commit/040ca60dfd4e98eb2c48aada2d40eab2a63425cf))
+
+
+
 ### [21.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.0...@codecademy/styleguide@21.16.1) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
