@@ -15,24 +15,23 @@ be submitted in a form.`,
 You should generally never use these directly as a Gamut consumer;
 instead, use `GridForm` to auto-generate these for you.
 
-<Props of={FormGroupDescription} />
-
 ## FormGroupDescription
 
 <Canvas>
-  <Story name="FormGroupDescription">
-    {(args) => (
-      <FormGroupDescription>
-        Secure, unique password for your account.
-      </FormGroupDescription>
-    )}
+  <Story
+    name="FormGroupDescription"
+    args={{ children: 'Secure, unique password for your account.' }}
+  >
+    {(args) => <FormGroupDescription {...args} />}
   </Story>
 </Canvas>
+
+<Props story="FormGroupDescription" />
 
 ## FormGroupLabel
 
 <Canvas>
-  <Story name="FormGroupLabel">
-    {(args) => <FormGroupLabel>Password</FormGroupLabel>}
+  <Story name="FormGroupLabel" args={{ children: 'Password' }}>
+    {(args) => <FormGroupLabel {...args} />}
   </Story>
 </Canvas>

@@ -7,8 +7,6 @@ const cache = createEmotionCache();
 
 export const withEmotion = (Story) => (
   <CacheProvider value={cache}>
-    <ThemeContext.Provider value={theme}>
-      <Story />
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={theme}>{Story()}</ThemeContext.Provider>
   </CacheProvider>
 );

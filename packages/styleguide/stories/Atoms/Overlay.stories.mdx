@@ -29,7 +29,7 @@ a background behind content, see `Modal`.
 <Canvas>
   <Story name="Overlay">
     {(args) => {
-      const [open, setOpen] = useState(false);
+      const [open, setOpen] = useState(args.isOpen);
       return (
         <>
           <ButtonDeprecated onClick={() => setOpen(true)}>
@@ -38,8 +38,8 @@ a background behind content, see `Modal`.
           <Container>
             <Overlay
               {...args}
-              clickOutsideCloses
               isOpen={open}
+              clickOutsideCloses
               onRequestClose={() => setOpen(false)}
             >
               <Container>
