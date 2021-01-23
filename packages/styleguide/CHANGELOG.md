@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.1...@codecademy/styleguide@21.19.0) (2021-01-22)
+
+
+### Features
+
+* **docs:** Refresh story writing meta docs ([ffc1573](https://github.com/Codecademy/client-modules/commit/ffc1573cf72e9a0a2b03dd7e4acc45888a797f7d))
+
+
+
 ### [21.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.0...@codecademy/styleguide@21.18.1) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
