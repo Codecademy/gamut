@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.13.0...@codecademy/gamut-labs@7.13.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.12.0...@codecademy/gamut-labs@7.13.0) (2021-01-22)
+
+
+### Features
+
+* **GlobalHeader:** add GlobalHeader component ([#1306](https://github.com/Codecademy/client-modules/issues/1306)) ([7656137](https://github.com/Codecademy/client-modules/commit/7656137fd532dcaeff37408b6bc1f6e933807aee))
+
+
+
+## [7.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.11.1...@codecademy/gamut-labs@7.12.0) (2021-01-22)
+
+
+### Features
+
+* **AppHeader:** add AppHeader component ([#1300](https://github.com/Codecademy/client-modules/issues/1300)) ([040ca60](https://github.com/Codecademy/client-modules/commit/040ca60dfd4e98eb2c48aada2d40eab2a63425cf))
+
+
+
 ### [7.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.11.0...@codecademy/gamut-labs@7.11.1) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
