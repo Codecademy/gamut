@@ -1,6 +1,6 @@
 import { screenReaderOnly } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Box } from '../Box';
 import { HiddenText } from '../HiddenText';
@@ -79,55 +79,52 @@ const ToggleLabel = styled.label<LabelProps>`
   }
 `;
 
-export class Toggle extends Component<ToggleProps, {}> {
-  render() {
-    const {
-      checked,
-      className,
-      onChange,
-      label,
-      disabled,
-      variant = 'blue',
-      size = 'medium',
-    } = this.props;
-    const activeColor = variant;
-    const checkedColor = checked ? variant : 'gray-500';
-    const sizeStyles = sizes[size];
+export const Toggle: React.FC<ToggleProps> = ({
+  checked,
+  className,
+  onChange,
+  label,
+  disabled,
+  variant = 'blue',
+  size = 'medium',
+}) => {
+  const activeColor = variant;
+  const checkedColor = checked ? variant : 'gray-500';
+  const sizeStyles = sizes[size];
 
-    return (
-      <ToggleLabel
-        className={className}
-        aria-label={label}
-        htmlFor={label}
-        variant={variant}
+  return (
+    <ToggleLabel
+      className={className}
+      aria-label={label}
+      htmlFor={label}
+      variant={variant}
+      disabled={disabled}
+    >
+      <HiddenText>{label}</HiddenText>
+      <ToggleInput
+        type="checkbox"
+        checked={checked}
+        id={label}
         disabled={disabled}
+        onChange={onChange}
+      />
+      <ToggleTrack
+        {...sizeStyles}
+        borderColor={activeColor}
+        backgroundColor={checkedColor}
+        borderRadius="99rem"
+        position="relative"
       >
-        <HiddenText>{label}</HiddenText>
-        <ToggleInput
-          type="checkbox"
-          checked={checked}
-          id={label}
-          disabled={disabled}
-          onChange={onChange}
+        <Box
+          width="40%"
+          borderRadius="50%"
+          backgroundColor="white"
+          position="absolute"
+          top="10%"
+          bottom="10%"
+          left={checked ? '55%' : '5%'}
         />
-        <ToggleTrack
-          {...sizeStyles}
-          borderColor={activeColor}
-          backgroundColor={checkedColor}
-          borderRadius="99rem"
-          position="relative"
-        >
-          <Box
-            width="40%"
-            borderRadius="50%"
-            backgroundColor="white"
-            position="absolute"
-            top="10%"
-            bottom="10%"
-            left={checked ? '55%' : '5%'}
-          />
-        </ToggleTrack>
-      </ToggleLabel>
-    );
-  }
-}
+      </ToggleTrack>
+    </ToggleLabel>
+  );
+};
