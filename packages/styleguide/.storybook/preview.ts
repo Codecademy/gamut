@@ -4,10 +4,13 @@ import 'focus-visible/dist/focus-visible.min.js';
 import './decorators/wrapper';
 import { withEmotion } from './decorators/emotion';
 import { Page } from './components';
+import { colors } from '@codecademy/gamut-styles/src';
+import logo from './assets/gamut-logo.svg';
 
 const theme = create({
   base: 'light',
   brandTitle: 'Gamut',
+  brandImage: logo,
   brandUrl: '/',
 });
 
@@ -19,7 +22,21 @@ export const parameters = {
       wrapper: Page,
     },
   },
+  backgrounds: {
+    grid: {
+      cellSize: 20,
+      opacity: 0.5,
+      cellAmount: 5,
+    },
+    values: [
+      { name: 'light', value: colors.white },
+      { name: 'dark', value: colors.navy },
+    ],
+  },
   options: {
+    showPanel: true,
+    panelPosition: 'right',
+    selectedPanel: 'addon-controls',
     theme: theme,
     storySort: {
       order: [

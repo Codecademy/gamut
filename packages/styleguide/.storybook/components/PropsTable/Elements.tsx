@@ -37,7 +37,7 @@ export const HeaderColumn = styled.div``;
 const propTagStates = {
   active: css`
     color: ${colors['blue-300']};
-    border: 1px solid ${colors['blue-200']};
+    border: 1px solid ${colors['blue-300']};
   `,
   default: css`
     color: ${colors['gray-600']};

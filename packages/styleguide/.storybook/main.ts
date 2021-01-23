@@ -4,8 +4,8 @@ const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
-function emotionless(object) {
-  let result = {};
+function emotionless(object: any) {
+  let result = {} as any;
   for (let key in object) {
     if (!/emotion/.test(key)) {
       result[key] = object[key];
@@ -18,16 +18,13 @@ module.exports = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
     '@storybook/addon-links',
     './addons/system/preset',
   ],
   stories: getStories(),
 
-  babel: (config) => {
-    config.plugins = config.plugins.map((plugin) => {
+  babel: (config: any) => {
+    config.plugins = config.plugins.map((plugin: any) => {
       if (/emotion/.test(plugin[0])) {
         return [
           require('@emotion/babel-plugin'),
@@ -44,7 +41,7 @@ module.exports = {
     });
     return config;
   },
-  webpackFinal: (config) => {
+  webpackFinal: (config: any) => {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );

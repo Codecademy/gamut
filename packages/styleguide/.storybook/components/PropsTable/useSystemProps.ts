@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useContext } from 'react';
+import { useReducer, useMemo, useContext, Dispatch } from 'react';
 import { propGroups, properties, PropGroups } from './constants';
 import { intersection } from 'lodash';
 import { DocsContext } from '@storybook/addon-docs/blocks';
@@ -8,25 +8,30 @@ interface PropsTableState {
   showAll: boolean;
 }
 
-interface Actions {
-  toggleAll: () => void;
-  toggleGroup: (group: string) => void;
-}
-
 const INITIAL_STATE: PropsTableState = {
   activeGroups: [],
   showAll: false,
 };
 
-const actions = {
-  TOGGLE_GROUP: 'TOGGLE_GROUP',
-  TOGGLE_ALL: 'TOGGLE_ALL',
-};
+enum ActionTypes {
+  TOGGLE_GROUP = 'TOGGLE_GROUP',
+  TOGGLE_ALL = 'TOGGLE_ALL',
+}
 
-const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
-  const { payload } = action;
+type ActionShapes =
+  | {
+      type: ActionTypes.TOGGLE_GROUP;
+      payload: string;
+    }
+  | { type: ActionTypes.TOGGLE_ALL };
+
+const reducer = (
+  state: PropsTableState = INITIAL_STATE,
+  action: ActionShapes
+) => {
   switch (action.type) {
-    case actions.TOGGLE_GROUP: {
+    case ActionTypes.TOGGLE_GROUP: {
+      const { payload } = action;
       const isActive = state.activeGroups.includes(payload);
       return {
         ...state,
@@ -35,7 +40,7 @@ const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
           : [...state.activeGroups, payload],
       };
     }
-    case actions.TOGGLE_ALL: {
+    case ActionTypes.TOGGLE_ALL: {
       return {
         ...state,
         showAll: !state.showAll,
@@ -43,6 +48,11 @@ const reducer = (state: PropsTableState = INITIAL_STATE, action) => {
     }
   }
 };
+
+interface Actions {
+  toggleAll: () => void;
+  toggleGroup: (group: string) => void;
+}
 
 interface UseSystemProps {
   state: PropsTableState & {
@@ -65,9 +75,9 @@ export const useSystemProps = (
     initialState
   );
 
-  const toggleAll = () => dispatch({ type: actions.TOGGLE_ALL });
+  const toggleAll = () => dispatch({ type: ActionTypes.TOGGLE_ALL });
   const toggleGroup = (group: string) =>
-    dispatch({ type: actions.TOGGLE_GROUP, payload: group });
+    dispatch({ type: ActionTypes.TOGGLE_GROUP, payload: group });
 
   const usedProps = useMemo<string[]>(
     () => Object.keys(argTypes).filter((prop) => properties.includes(prop)),
@@ -88,7 +98,7 @@ export const useSystemProps = (
 
   const excludedProps = useMemo<string[]>(() => {
     if (showAll) return [];
-    return Object.entries(propGroups).reduce(
+    return Object.entries(propGroups).reduce<string[]>(
       (carry, [group, { propNames }]) => {
         return !activeGroups.includes(group) ? [...carry, ...propNames] : carry;
       },
