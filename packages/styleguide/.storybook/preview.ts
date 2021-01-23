@@ -1,21 +1,14 @@
-import { create } from '@storybook/theming';
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
 import { withEmotion } from './decorators/emotion';
 import { Page } from './components';
 import { colors } from '@codecademy/gamut-styles/src';
-import logo from './assets/gamut-logo.svg';
-
-const theme = create({
-  base: 'light',
-  brandTitle: 'Gamut',
-  brandImage: logo,
-  brandUrl: '/',
-});
+import { theme } from './theme';
 
 export const parameters = {
   viewMode: 'docs',
+  theme,
   docs: {
     theme,
     components: {
