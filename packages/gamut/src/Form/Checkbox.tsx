@@ -86,8 +86,13 @@ const Input = styled.input`
   }
 
   &:checked:disabled + ${CheckboxLabel} ${CheckboxElement} {
+    border-color: ${variables.itemBackgroundHover};
+
     ${CheckboxVector} {
       ${Polyline} {
+        fill: ${variables.itemBackgroundHover};
+      }
+      path {
         fill: ${variables.itemBackgroundHover};
       }
     }
