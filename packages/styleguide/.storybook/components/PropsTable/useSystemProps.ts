@@ -1,4 +1,4 @@
-import { useReducer, useMemo, useContext, Dispatch } from 'react';
+import { useReducer, useMemo, useContext } from 'react';
 import { propGroups, properties, PropGroups } from './constants';
 import { intersection } from 'lodash';
 import { DocsContext } from '@storybook/addon-docs/blocks';
@@ -46,6 +46,8 @@ const reducer = (
         showAll: !state.showAll,
       };
     }
+    default:
+      return state;
   }
 };
 

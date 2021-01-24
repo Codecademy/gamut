@@ -1,9 +1,8 @@
-import styled from '@emotion/styled';
+import { styled } from '@storybook/theming';
 import {
   boxShadow,
   colors,
   fontAccent,
-  fontMonospace,
   spacing,
 } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
@@ -15,8 +14,8 @@ export const PropGroupTooltip = styled.ul`
   left: 50%;
   transform: translate(-50%, 0);
   padding: ${spacing[8]} ${spacing[12]};
-  background-color: ${colors['gray-100']};
-  border: 1px solid ${colors['gray-200']};
+  background-color: ${({ theme }) => theme.color.light};
+  border: 1px solid ${({ theme }) => theme.color.medium};
   list-style: none;
   margin: 0;
   border-radius: 6px;
@@ -26,24 +25,13 @@ export const PropGroupTooltip = styled.ul`
 export const PropItem = styled.li`
   margin: ${spacing[8]} 0;
   font-size: 11px;
-  font-family: ${fontMonospace};
+  font-family: ${({ theme }) => theme.typography.fonts.mono};
   text-align: center;
   text-transform: none;
-  color: ${colors['gray-700']};
+  color: ${({ theme }) => theme.color.dark};
 `;
 
 export const HeaderColumn = styled.div``;
-
-const propTagStates = {
-  active: css`
-    color: ${colors['blue-300']};
-    border: 1px solid ${colors['blue-300']};
-  `,
-  default: css`
-    color: ${colors['gray-600']};
-    border: 1px solid ${colors['gray-400']};
-  `,
-};
 
 export const PropGroupTag = styled.span<{ active?: boolean }>`
   user-select: none;
@@ -51,7 +39,8 @@ export const PropGroupTag = styled.span<{ active?: boolean }>`
   display: inline-block;
   padding: ${spacing[4]} ${spacing[8]};
   font-size: 11px;
-  font-family: ${fontAccent};
+  font-family: ${({ theme }) => theme.typography.fonts.mono};
+  font-weight: 700;
   margin: ${spacing[4]};
   margin-top: 0;
   border-radius: 4px;
@@ -63,31 +52,35 @@ export const PropGroupTag = styled.span<{ active?: boolean }>`
   }
 
   &:hover {
-    ${PropGroupTooltip} {
+    > * {
       display: block;
     }
   }
 
-  ${({ active }) => (active ? propTagStates.active : propTagStates.default)}
-`;
-
-export const Header = styled.div`
-  display: grid;
-  grid-template-columns: max-content 1fr max-content;
+  ${({ active, theme }) =>
+    active
+      ? css`
+          color: ${theme.color.secondary};
+          border: 1px solid ${theme.color.secondary};
+        `
+      : css`
+          color: ${theme.color.dark};
+          border: 1px solid ${theme.color.mediumdark};
+        `}
 `;
 
 export const Title = styled.p`
   display: inline-block;
+  font-weight: 700;
   margin: 0;
-  margin-right: ${spacing[8]};
 `;
 
 export const ToggleContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 `;
 
-export const ToggleLabel = styled.span`
+export const ToggleLabel = styled.label`
   margin-right: 4px;
   font-size: 14px;
   line-height: 2;
