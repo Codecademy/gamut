@@ -11,7 +11,6 @@ export const parameters = {
   viewMode: 'docs',
   options: {
     showPanel: true,
-    panelPosition: 'right',
     selectedPanel: 'addon-controls',
     storySort: {
       order: [
@@ -53,7 +52,7 @@ export const parameters = {
     defaultViewport: 'responsive',
     viewports: {
       xs: {
-        name: 'XS',
+        name: `XS - ${breakpoints.xs}`,
         styles: {
           width: breakpoints.xs,
           height: '900px',
@@ -61,7 +60,7 @@ export const parameters = {
         type: 'mobile',
       },
       sm: {
-        name: 'SM',
+        name: `SM - ${breakpoints.sm}`,
         styles: {
           width: breakpoints.sm,
           height: '1024px',
@@ -69,7 +68,7 @@ export const parameters = {
         type: 'tablet',
       },
       md: {
-        name: 'MD',
+        name: `MD - ${breakpoints.md}`,
         styles: {
           width: breakpoints.md,
           height: '768px',
@@ -77,20 +76,20 @@ export const parameters = {
         type: 'desktop',
       },
       lg: {
-        name: 'LG',
+        name: `LG - ${breakpoints.lg}`,
         styles: {
           width: breakpoints.lg,
           height: '900px',
         },
-        type: 'desktp',
+        type: 'desktop',
       },
       xl: {
-        name: 'XL',
+        name: `XL - ${breakpoints.xl}`,
         styles: {
           width: breakpoints.xl,
           height: '900px',
         },
-        type: 'desktp',
+        type: 'desktop',
       },
     },
   },
