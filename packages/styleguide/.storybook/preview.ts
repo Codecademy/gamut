@@ -44,8 +44,9 @@ export const parameters = {
       cellAmount: 5,
     },
     values: [
-      { name: 'light', value: colors.white },
-      { name: 'dark', value: colors.navy },
+      { name: 'White', value: colors.white },
+      { name: 'Navy', value: colors.navy },
+      { name: 'Beige', value: colors.beige },
     ],
   },
   viewport: {
