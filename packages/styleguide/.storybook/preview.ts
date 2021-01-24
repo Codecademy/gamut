@@ -1,7 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
-import { withEmotion } from './decorators/emotion';
+import { withEmotion } from './decorators/theme';
 import { Page } from './components';
 import { colors } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
