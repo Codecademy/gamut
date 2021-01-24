@@ -13,25 +13,23 @@ import {
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 import styles from './styles.scss';
 
-const FullMenuButton = styled.button(({ theme }) => {
-  return `
-    background-color: transparent;
-    border: 1px solid transparent;
-    color: ${theme.colors.navy};
-    display: flex;
-    align-items: center;
-    font-weight: normal;
-    line-height: 1.5;
-    margin-bottom:${pxRem(24)}
-    min-width: 0;
-    width: 100%;
-    padding: ${pxRem(2)} 0;
-    text-align: left;
-    white-space: nowrap;
-    ${hoverStyles}
-    ${focusStyles}
+const FullMenuButton = styled.button`
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: ${({ theme }) => theme.colors.navy};
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  line-height: 1.5;
+  margin-bottom: ${pxRem(24)};
+  min-width: 0;
+  width: 100%;
+  padding: ${pxRem(2)} 0;
+  text-align: left;
+  white-space: nowrap;
+  ${hoverStyles}
+  ${focusStyles}
 `;
-});
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderDropdownProps> = ({
   item,
