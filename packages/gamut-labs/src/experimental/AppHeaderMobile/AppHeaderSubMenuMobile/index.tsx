@@ -13,6 +13,10 @@ import {
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 import styles from './styles.scss';
 
+export type AppHeaderSubMenuMobile = AppHeaderDropdownProps & {
+  handleClose: () => void;
+};
+
 const FullMenuButton = styled.button`
   background-color: transparent;
   border: 1px solid transparent;
@@ -31,14 +35,11 @@ const FullMenuButton = styled.button`
   ${focusStyles}
 `;
 
-export const AppHeaderSubMenuMobile: React.FC<AppHeaderDropdownProps> = ({
+export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobile> = ({
+  handleClose,
   item,
   onClick,
 }) => {
-  const handleClose = () => {
-    // go back to main menu
-  };
-
   return (
     <>
       <Box>
