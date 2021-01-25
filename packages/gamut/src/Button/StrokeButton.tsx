@@ -5,7 +5,11 @@ import React from 'react';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
+import {
+  modeColorGroups,
+  SizedButtonProps,
+  sizedButtonVariants,
+} from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
   ({ mode = 'light', size }: SizedButtonProps) => {
@@ -15,7 +19,7 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
       border: 2px solid ${modeColors.background};
       border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
+      ${sizedButtonVariants({ size })}
 
       ${StrokeButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};

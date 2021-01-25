@@ -4,7 +4,11 @@ import React from 'react';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
+import {
+  modeColorGroups,
+  SizedButtonProps,
+  sizedButtonVariants,
+} from './shared';
 
 const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   ({ mode = 'light', size }) => {
@@ -13,7 +17,7 @@ const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
     return css`
       border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
+      ${sizedButtonVariants({ size })}
 
       ${TextButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};
