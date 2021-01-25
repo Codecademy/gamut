@@ -29,8 +29,8 @@ const sizes = {
     width: '60px',
   },
   small: {
-    height: '16px',
-    width: '32px',
+    height: '18px',
+    width: '36px',
   },
 };
 
@@ -121,8 +121,8 @@ export const Toggle: React.FC<ToggleProps> = ({
           backgroundColor="white"
           position="absolute"
           top="12%"
-          bottom="12%"
-          left={checked ? '55%' : '5%'}
+          height="80%"
+          left={checked ? '55%' : '6%'}
         />
       </ToggleTrack>
     </ToggleLabel>
