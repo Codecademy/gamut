@@ -26,11 +26,19 @@ import { PropsTable } from '~styleguide/blocks';
 
 <PropsTable story="TextArea" />
 
+### Input States
+
 <Canvas>
   <Story name="Disabled" args={{ disabled: true }}>
     {(args) => <TextArea {...args} />}
   </Story>
   <Story name="Error" args={{ error: true }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+  <Story
+    name="Placeholder"
+    args={{ placeholder: 'Some placeholder text', defaultValue: undefined }}
+  >
     {(args) => <TextArea {...args} />}
   </Story>
 </Canvas>

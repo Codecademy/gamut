@@ -37,7 +37,12 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
   <Story
     name="Number"
-    args={{ htmlFor: 'example-number', name: 'example-number', type: 'number' }}
+    args={{
+      htmlFor: 'example-number',
+      name: 'example-number',
+      type: 'number',
+      value: 1,
+    }}
   >
     {(args) => <Input {...args} />}
   </Story>
@@ -69,6 +74,7 @@ import { PropsTable } from '~styleguide/blocks';
       htmlFor: 'example-placeholder',
       name: 'example-placeholder',
       placeholder: 'This is some placeholder text',
+      defaultValue: undefined,
     }}
   >
     {(args) => <Input {...args} />}
