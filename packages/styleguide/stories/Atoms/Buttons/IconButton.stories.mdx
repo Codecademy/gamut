@@ -35,18 +35,19 @@ import { PropsTable } from '~styleguide/blocks';
 ## Modes
 
 <Canvas>
-  <Story name="Light" args={{ mode: 'light' }}>
+  <Story name="light" args={{ mode: 'light' }}>
     {(args) => <IconButton {...args} />}
   </Story>
-  <Story name="Dark" args={{ mode: 'dark' }}>
+  <Story name="light-disabled" args={{ disabled: true }}>
     {(args) => <IconButton {...args} />}
   </Story>
 </Canvas>
 
-## States
-
 <Canvas>
-  <Story name="Disabled" args={{ disabled: true }}>
+  <Story name="dark" args={{ mode: 'dark' }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+  <Story name="dark-disabled" args={{ mode: 'dark', disabled: true }}>
     {(args) => <IconButton {...args} />}
   </Story>
 </Canvas>
@@ -54,10 +55,10 @@ import { PropsTable } from '~styleguide/blocks';
 ## Sizes
 
 <Canvas>
-  <Story name="Normal" args={{ size: 'normal' }}>
+  <Story name="normal" args={{ size: 'normal' }}>
     {(args) => <IconButton {...args} />}
   </Story>
-  <Story name="Small" args={{ size: 'small' }}>
+  <Story name="small" args={{ size: 'small' }}>
     {(args) => <IconButton {...args} />}
   </Story>
 </Canvas>

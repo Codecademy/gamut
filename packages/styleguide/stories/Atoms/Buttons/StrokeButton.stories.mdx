@@ -31,18 +31,25 @@ import { PropsTable } from '~styleguide/blocks';
 ## Modes
 
 <Canvas>
-  <Story name="Light" args={{ mode: 'light', children: 'light' }}>
+  <Story name="light" args={{ mode: 'light', children: 'light' }}>
     {(args) => <StrokeButton {...args} />}
   </Story>
-  <Story name="Dark" args={{ mode: 'dark', children: 'dark' }}>
+  <Story
+    name="light-disabled"
+    args={{ disabled: true, children: 'light-disabled' }}
+  >
     {(args) => <StrokeButton {...args} />}
   </Story>
 </Canvas>
 
-## States
-
 <Canvas>
-  <Story name="Disabled" args={{ disabled: true, children: 'disabled' }}>
+  <Story name="dark" args={{ mode: 'dark', children: 'dark' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story
+    name="dark-disabled"
+    args={{ mode: 'dark', disabled: true, children: 'dark-disabled' }}
+  >
     {(args) => <StrokeButton {...args} />}
   </Story>
 </Canvas>
@@ -50,10 +57,10 @@ import { PropsTable } from '~styleguide/blocks';
 ## Sizes
 
 <Canvas>
-  <Story name="Normal" args={{ size: 'normal', children: 'normal' }}>
+  <Story name="normal" args={{ size: 'normal', children: 'normal' }}>
     {(args) => <StrokeButton {...args} />}
   </Story>
-  <Story name="Small" args={{ size: 'small', children: 'small' }}>
+  <Story name="small" args={{ size: 'small', children: 'small' }}>
     {(args) => <StrokeButton {...args} />}
   </Story>
 </Canvas>
