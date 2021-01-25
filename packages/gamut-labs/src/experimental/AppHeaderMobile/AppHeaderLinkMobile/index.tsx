@@ -9,7 +9,6 @@ import {
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderLinkMobileProps = {
-  arrowButton?: boolean;
   onClick: (event: React.MouseEvent) => {};
   item: AppHeaderLinkItem;
 };
