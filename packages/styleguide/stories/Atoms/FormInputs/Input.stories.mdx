@@ -1,0 +1,93 @@
+import { Input } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Input}
+  parameters={{
+    subtitle:
+      'A general `<input />` element for handling "text", "number" and "file" input types',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    htmlFor: 'example-input',
+    name: 'example-input',
+    defaultValue: 'Default Value',
+    type: 'text',
+  }}
+/>
+
+<Canvas>
+  <Story name="Input">{(args) => <Input {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Input" />
+
+### Input Types
+
+<Canvas>
+  <Story
+    name="Text"
+    args={{
+      htmlFor: 'example-text',
+      defaultValue: 'Text',
+      name: 'example-text',
+      type: 'text',
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
+    name="Number"
+    args={{
+      htmlFor: 'example-number',
+      name: 'example-number',
+      type: 'number',
+      value: 1,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
+    name="File"
+    args={{
+      htmlFor: 'example-file',
+      name: 'example-file',
+      type: 'file',
+      value: '',
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+</Canvas>
+
+### Input States
+
+<Canvas>
+  <Story
+    name="Error"
+    args={{
+      htmlFor: 'example-error',
+      defaultValue: 'Error',
+      name: 'example-error',
+      error: true,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
+    name="Placeholder"
+    args={{
+      htmlFor: 'example-placeholder',
+      name: 'example-placeholder',
+      placeholder: 'Placeholder',
+      defaultValue: undefined,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+</Canvas>
