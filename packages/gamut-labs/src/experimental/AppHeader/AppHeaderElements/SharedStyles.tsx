@@ -14,6 +14,6 @@ export const hoverStyles = css`
   &:hover {
     color: ${colors.hyper};
     text-decoration: none;
-    cursor: pointer; // may be able to remove
+    cursor: pointer;
   }
 `;
