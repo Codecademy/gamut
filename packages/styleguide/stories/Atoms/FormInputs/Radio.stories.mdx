@@ -27,7 +27,20 @@ import { PropsTable } from '~styleguide/blocks';
 <PropsTable story="Radio" />
 
 <Canvas>
-  <Story name="Error" args={{ error: true }}>
+  <Story
+    name="Disabled"
+    args={{
+      htmlFor: 'example-disabled',
+      name: 'example-disabled',
+      disabled: true,
+    }}
+  >
+    {(args) => <Radio {...args} />}
+  </Story>
+  <Story
+    name="Error"
+    args={{ htmlFor: 'example-error', name: 'example-error', error: true }}
+  >
     {(args) => <Radio {...args} />}
   </Story>
 </Canvas>

@@ -20,7 +20,7 @@ export const exampleRadios = [{ id: '1' }, { id: '2' }];
     label: 'A radio Label',
     name: 'example-radio',
     children: exampleRadios.map(({ id }) => (
-      <Radio key={id} name={id} value={id} label={`Radio ${id}`} />
+      <Radio key={id} value={id} label={`Radio ${id}`} />
     )),
   }}
   argTypes={{
