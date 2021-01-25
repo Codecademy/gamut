@@ -11,9 +11,9 @@ import {
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
-export type AppHeaderSubMenuMobile = AppHeaderDropdownProps & {
+export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
 };
 
@@ -35,7 +35,7 @@ const FullMenuButton = styled.button`
   ${focusStyles}
 `;
 
-export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobile> = ({
+export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   handleClose,
   item,
   onClick,

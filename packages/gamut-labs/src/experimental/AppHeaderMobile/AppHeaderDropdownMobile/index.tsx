@@ -11,7 +11,7 @@ import {
   focusStyles,
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 const AppHeaderTargetButton = styled.button(({ theme }) => {
   return `

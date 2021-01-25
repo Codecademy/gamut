@@ -14,7 +14,6 @@ export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
 };
 
-// Can be a link to page and a link to open submenu? Or just former?
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   color: ${({ theme }) => theme.colors.navy};
   text-decoration: none;
