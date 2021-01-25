@@ -1,4 +1,4 @@
-import { VideoProps } from '@codecademy/gamut';
+import { Video, VideoProps } from '@codecademy/gamut';
 import { Column, LayoutGrid } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
@@ -15,8 +15,16 @@ const RightColumn = styled(Column)`
   }
 `;
 
+const VideoColumn = styled(Column)`
+  margin-left: 1rem;
+`;
+
 const Image = styled.img`
   width: 100%;
+`;
+
+const StyledVideo = styled(Video)`
+  align-self: center;
 `;
 
 export type ImageProps = {
@@ -51,21 +59,30 @@ export const PageHero: React.FC<PageHeroProps> = ({
           <Image src={media.src} alt={media.alt} />
         </RightColumn>
       );
-    } else {
-      // return (
-      //   <RightColumn size={3}>
-      //     <Image src={imgSrc} alt={imgAlt} />
-      //   </RightColumn>
-      // );
+    } else if (media && media.type === 'video') {
+      return (
+        <VideoColumn size={{ xs: 12, sm: 7 }}>
+          <StyledVideo videoUrl={media?.videoUrl} />
+        </VideoColumn>
+      );
+    }
+  };
+
+  const columSize = () => {
+    if (!media) return 12;
+    if (media.type === 'image') {
+      return 9;
+    } else if (media.type === 'video') {
+      return 5;
     }
   };
 
   return (
-    <LayoutGrid testId={testId}>
+    <LayoutGrid testId={testId} rowGap="md">
       <Column
         size={{
           xs: 12,
-          sm: media ? 9 : 12,
+          sm: columSize(),
         }}
       >
         {title && <Title isPageHeading>{title}</Title>}
