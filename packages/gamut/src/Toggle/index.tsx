@@ -120,9 +120,9 @@ export const Toggle: React.FC<ToggleProps> = ({
           borderRadius="50%"
           backgroundColor="white"
           position="absolute"
-          top="12%"
-          height="80%"
-          left={checked ? '55%' : '6%'}
+          top="10%"
+          bottom="10%"
+          left={checked ? '55%' : '5%'}
         />
       </ToggleTrack>
     </ToggleLabel>
