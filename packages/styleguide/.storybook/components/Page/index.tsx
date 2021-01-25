@@ -51,7 +51,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
   const links = [{ text: 'Gamut', kind: 'Gamut' }];
 
   path.forEach((kind, i) => {
-    const prevKind = i ? `${links[i - 1].kind}/` : '';
+    const prevKind = i ? `${links[i].kind}/` : '';
 
     const nextLink = {
       text: kind,
@@ -105,9 +105,7 @@ export const Page: React.FC = ({ children }) => {
   return (
     <>
       <Header marginBottom="1rem">
-        <div>
-          <BreadCrumbs path={path} />
-        </div>
+        <BreadCrumbs path={path} />
         <HeaderRow>
           <HeaderCol>
             <Title>{title}</Title>
