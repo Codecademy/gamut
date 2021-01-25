@@ -5,7 +5,7 @@ import React from 'react';
 import { BaseProps } from './types';
 
 const DescriptionContainer = styled.div`
-  margin: 2rem 0 0;
+  margin: 1rem 0 0;
   max-width: 38rem;
 `;
 

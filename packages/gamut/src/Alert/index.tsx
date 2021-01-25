@@ -1,6 +1,4 @@
 import {
-  ArrowChevronDownIcon,
-  ArrowChevronUpIcon,
   CheckFilledIcon,
   CloseCircleIcon,
   CloseIcon,
@@ -10,13 +8,33 @@ import {
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { FlexBox, GridBox } from '../Box';
-import { IconButton } from '../Button';
-import { BannerCTA } from './types';
+
+type AlertContainerProps = HandlerProps<typeof alertVariants>;
+type AlertVariants = AlertContainerProps['variant'];
+
+export interface AlertCTAProps {
+  href?: string;
+  text: string;
+  onClick: () => void;
+  disabled?: boolean;
+}
+
+export type AlertProps = {
+  className?: string;
+  /** Banner theme string: info, alert, success, announcement, error */
+  variant?: AlertVariants;
+  /** On close callback */
+  onClose?: () => void;
+  /** Call to action configuration { text, href, onClick } */
+  cta?: AlertCTAProps;
+  /** Remove the max-width on the Alert container */
+  fluid?: boolean;
+};
 
 const alertVariants = variant({
   info: {
@@ -41,9 +59,6 @@ const alertVariants = variant({
   },
 });
 
-type AlertContainerProps = HandlerProps<typeof alertVariants>;
-type AlertVariants = AlertContainerProps['variant'];
-
 const VariantIcons = {
   info: InfoCircleIcon,
   success: CheckFilledIcon,
@@ -62,32 +77,46 @@ const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
   `;
 }, alertVariants);
 
-export type AlertProps = {
-  className?: string;
-  /** Banner theme string: info, alert, success, announcement, error */
-  variant?: AlertVariants;
-  /** On close callback */
-  onClose?: () => void;
-  /** Call to action configuration { text, href, onClick } */
-  cta?: BannerCTA;
-  /** Remove the max-width on the Alert container */
-  fluid?: boolean;
-  /** Number of lines to limit the message to */
-  lines?: number;
+type AlertButtonProps =
+  | {
+      as: 'a';
+      href: string;
+    }
+  | {
+      as: 'button';
+      role: 'button';
+    };
+
+const AlertButton = styled.button<AlertButtonProps>(
+  ({ theme }: { theme: Theme }) => css`
+    font-size: ${theme.fontSize[14]};
+    color: ${theme.colors.navy};
+    padding: ${theme.spacing[4]} ${theme.spacing[8]};
+    background-color: ${theme.colors.white};
+    border: none;
+    box-shadow: none;
+    border-radius: 2px;
+  `
+);
+
+const AlertCTA: React.FC<AlertCTAProps> = ({ href, text, ...rest }) => {
+  const asProps: AlertButtonProps = href
+    ? { as: 'a', href }
+    : { as: 'button', role: 'button' };
+  return (
+    <AlertButton {...asProps} {...rest}>
+      {text}
+    </AlertButton>
+  );
 };
 
 export const Alert: React.FC<AlertProps> = ({
   className,
   children,
   variant = 'info',
-  lines,
   cta,
   onClose,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isTruncated, setIsTruncated] = useState(false);
-  const showExpandToggle = isTruncated || isExpanded;
-  const ToggleIcon = isExpanded ? ArrowChevronUpIcon : ArrowChevronDownIcon;
   const Icon = VariantIcons[variant];
   return (
     <AlertContainer
@@ -104,30 +133,11 @@ export const Alert: React.FC<AlertProps> = ({
       >
         <Icon size={20} />
         <GridBox gridAutoFlow="column" gridTemplateColumns="1fr max-content">
-          <FlexBox
-            width="100%"
-            maxHeight={isExpanded ? 'none' : '1.5rem'}
-            overflowY="hidden"
-          >
+          <FlexBox width="100%" overflowY="hidden">
             {children}
           </FlexBox>
-          {showExpandToggle && (
-            <IconButton
-              icon={ToggleIcon}
-              onClick={() => setIsExpanded(!isExpanded)}
-            />
-          )}
         </GridBox>
-        {cta && (
-          <FlexBox
-            as="button"
-            backgroundColor="white"
-            textColor="navy"
-            borderStyle="none"
-          >
-            {cta.text}
-          </FlexBox>
-        )}
+        {cta && <AlertCTA {...cta} />}
         {onClose && (
           <FlexBox as="button" borderStyle="none">
             <CloseIcon />
