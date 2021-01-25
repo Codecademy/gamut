@@ -1,0 +1,28 @@
+import { CTAButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={CTAButton}
+  parameters={{
+    subtitle: 'A button that only renders an icon',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
+  }}
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    href: '',
+    mode: 'light',
+  }}
+/>
+
+<Canvas>
+  <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="CTAButton" />

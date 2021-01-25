@@ -1,0 +1,29 @@
+import { FillButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={FillButton}
+  parameters={{
+    subtitle: 'A button that only renders an icon',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
+  }}
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    href: '',
+    mode: 'light',
+    size: 'normal',
+  }}
+/>
+
+<Canvas>
+  <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FillButton" />
