@@ -114,13 +114,18 @@ export const Alert: React.FC<AlertProps> = ({
         </Box>
         <Box lineHeight="base">{children}</Box>
         {cta && (
-          <FillButton href={cta.href} size="small">
+          <FillButton mode="dark" href={cta.href} size="small">
             {cta.text}
           </FillButton>
         )}
         {onClose && (
           <Box height="1.5rem" display="flex" alignItems="center">
-            <IconButton size="small" onClick={onClose} icon={CloseIcon} />
+            <IconButton
+              mode="dark"
+              size="small"
+              onClick={onClose}
+              icon={CloseIcon}
+            />
           </Box>
         )}
       </GridBox>
