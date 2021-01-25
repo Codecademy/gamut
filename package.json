@@ -11,7 +11,7 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "eslint --ignore-path .eslintignore \"./**/*.{js,ts,tsx,json}\"",
+    "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\"",
     "lint:fix": "yarn lint --fix",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
@@ -71,6 +71,7 @@
     "@types/react": "^16.9",
     "@types/react-dom": "^16.9",
     "babel-jest": "24.9.0",
+    "babel-plugin-macros": "3.0.1",
     "babel-plugin-require-context-hook": "1.0.0",
     "babel-preset-codecademy": "3.0.1",
     "core-js": "3.6.5",

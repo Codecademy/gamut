@@ -1,9 +1,9 @@
-import { withKnobs } from '@storybook/addon-knobs';
 import { create } from '@storybook/theming';
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
 import { withEmotion } from './decorators/emotion';
+import { Page } from './components';
 
 const theme = create({
   base: 'light',
@@ -15,21 +15,23 @@ export const parameters = {
   viewMode: 'docs',
   docs: {
     theme,
+    components: {
+      wrapper: Page,
+    },
   },
   options: {
     theme: theme,
     storySort: {
       order: [
-        'About',
-        'Meta',
+        'Gamut',
         'Foundations',
         'Typography',
         'Layouts',
-        'Icons',
         'Atoms',
         'Molecules',
         'Organisms',
-        'Labs',
+        'Brand',
+        'Meta',
         'Deprecated',
       ],
       // Fallback ordering
@@ -47,4 +49,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withKnobs, withEmotion];
+export const decorators = [withEmotion];

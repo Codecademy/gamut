@@ -16,15 +16,17 @@ export type PageFeaturesProps = BaseProps & {
   /**
    * Array of features, which consist of image, image alt, title, and description
    */
-  features: Pick<
-    FeatureProps,
-    'imgSrc' | 'imgAlt' | 'title' | 'desc' | 'testId'
-  >[];
+  features: Omit<FeatureProps, 'featuresMedia' | 'onAnchorClick'>[];
 
   /**
-   * Whether an icon or a full size image should be rendered
+   * @deprecated - Whether an icon or a full size image should be rendered
    */
   isIcon?: boolean;
+
+  /**
+   * The primary visual element.
+   */
+  featuresMedia?: 'image' | 'icon' | 'stat' | 'none';
 };
 
 export const PageFeatures: React.FC<PageFeaturesProps> = ({
@@ -32,6 +34,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   desc,
   cta,
   features,
+  featuresMedia,
   isIcon,
   testId,
   onAnchorClick,
@@ -49,9 +52,11 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
     <FlexContainer nowrap column>
       {features.map((feature) => (
         <Feature
-          {...feature}
-          isIcon={isIcon}
           key={feature.title}
+          {...feature}
+          featuresMedia={
+            featuresMedia ? featuresMedia : isIcon ? 'icon' : 'image'
+          }
           onAnchorClick={onAnchorClick}
         />
       ))}

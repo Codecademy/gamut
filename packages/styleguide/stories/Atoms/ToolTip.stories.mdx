@@ -1,0 +1,38 @@
+import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={ToolTip}
+  subcomponents={{ ToolTipPosition }}
+  parameters={{
+    subtitle:
+      'A floating text component that positions itself relative to its targetw',
+    source: 'gamut',
+    figmaId: 'cTJDwsS9s3I0KkLpKaETn2',
+  }}
+  args={{
+    children: `Like the term fortnight, a term for a two week period, antantwig refers
+        to a three week period.`,
+    focusable: true,
+    id: 'tooltip',
+    target: <InfoCircleIcon size={20} />,
+  }}
+/>
+
+Small piece of extra information triggered on the focus or hover of a button or icon,
+such as extra requirements for a form surfaced from an informative (i) icon. They
+dissapear when the focus or hover are no longer active.
+
+Tooltips cannot contain clickable elements (if your solution
+requires clickable elements, we suggest using a “Popover” instead) - Great for
+surfacing additional information that may or may not be relevant _without_ cluttering
+the core interface.
+
+<Canvas>
+  <Story name="ToolTip">{(args) => <ToolTip {...args} />}</Story>
+</Canvas>
+
+<Props story="ToolTip" />

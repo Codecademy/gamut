@@ -3,6 +3,231 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.13.0...@codecademy/gamut-labs@7.13.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.12.0...@codecademy/gamut-labs@7.13.0) (2021-01-22)
+
+
+### Features
+
+* **GlobalHeader:** add GlobalHeader component ([#1306](https://github.com/Codecademy/client-modules/issues/1306)) ([7656137](https://github.com/Codecademy/client-modules/commit/7656137fd532dcaeff37408b6bc1f6e933807aee))
+
+
+
+## [7.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.11.1...@codecademy/gamut-labs@7.12.0) (2021-01-22)
+
+
+### Features
+
+* **AppHeader:** add AppHeader component ([#1300](https://github.com/Codecademy/client-modules/issues/1300)) ([040ca60](https://github.com/Codecademy/client-modules/commit/040ca60dfd4e98eb2c48aada2d40eab2a63425cf))
+
+
+
+### [7.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.11.0...@codecademy/gamut-labs@7.11.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.8...@codecademy/gamut-labs@7.11.0) (2021-01-22)
+
+
+### Features
+
+* **PageFeatures:** allow this component to render stats and no media, in addition to images and icons ([#1307](https://github.com/Codecademy/client-modules/issues/1307)) ([61370f5](https://github.com/Codecademy/client-modules/commit/61370f508390b3fbc4eb3aef660684c9253617a8))
+
+
+
+### [7.10.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.7...@codecademy/gamut-labs@7.10.8) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.6...@codecademy/gamut-labs@7.10.7) (2021-01-20)
+
+
+### Bug Fixes
+
+* landing page descriptions margin-top adjustments ([813f183](https://github.com/Codecademy/client-modules/commit/813f183ee8248c5859c3c385a4888d6aa46ccbb7))
+
+
+
+### [7.10.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.5...@codecademy/gamut-labs@7.10.6) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.4...@codecademy/gamut-labs@7.10.5) (2021-01-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.3...@codecademy/gamut-labs@7.10.4) (2021-01-19)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.2...@codecademy/gamut-labs@7.10.3) (2021-01-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.1...@codecademy/gamut-labs@7.10.2) (2021-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.10.0...@codecademy/gamut-labs@7.10.1) (2021-01-15)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.9.0...@codecademy/gamut-labs@7.10.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderDropdown:** dropdown AppHeaderElement ([#1279](https://github.com/Codecademy/client-modules/issues/1279)) ([1d7505f](https://github.com/Codecademy/client-modules/commit/1d7505fda48b247b295722859b5f64862f067b0f))
+
+
+
+## [7.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.8.0...@codecademy/gamut-labs@7.9.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderLink:** link AppHeaderElement ([#1278](https://github.com/Codecademy/client-modules/issues/1278)) ([f75674f](https://github.com/Codecademy/client-modules/commit/f75674f07eee218c7ecd5628826334873d710b56))
+
+
+
+## [7.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.4...@codecademy/gamut-labs@7.8.0) (2021-01-14)
+
+
+### Features
+
+* **AppHeaderLogo:** logo button AppHeaderElement ([#1277](https://github.com/Codecademy/client-modules/issues/1277)) ([9e3f25b](https://github.com/Codecademy/client-modules/commit/9e3f25b837d0332db54973a5b5dfea2c3f430525))
+
+
+
+### [7.7.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.3...@codecademy/gamut-labs@7.7.4) (2021-01-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.2...@codecademy/gamut-labs@7.7.3) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.1...@codecademy/gamut-labs@7.7.2) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.7.0...@codecademy/gamut-labs@7.7.1) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.5...@codecademy/gamut-labs@7.7.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [7.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.4...@codecademy/gamut-labs@7.6.5) (2021-01-07)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.3...@codecademy/gamut-labs@7.6.4) (2021-01-06)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.2...@codecademy/gamut-labs@7.6.3) (2020-12-21)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.1...@codecademy/gamut-labs@7.6.2) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.6.0...@codecademy/gamut-labs@7.6.1) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.5...@codecademy/gamut-labs@7.6.0) (2020-12-17)
+
+
+### Features
+
+* add vertical and horizontal offsets to the popover component ([8c5b178](https://github.com/Codecademy/client-modules/commit/8c5b178dbd2eb820b58de6cbc0e93c495d2ab55f))
+
+
+
 ### [7.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.5.4...@codecademy/gamut-labs@7.5.5) (2020-12-16)
 
 

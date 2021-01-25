@@ -27,7 +27,7 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
       {prop}
       <PropGroupTooltip>
         {propNames.map((propName) => (
-          <PropItem key={propName}>{propName}</PropItem>
+          <PropItem key={`${prop}-prop`}>{propName}</PropItem>
         ))}
       </PropGroupTooltip>
     </PropGroupTag>
@@ -60,7 +60,7 @@ export const PropsTable: React.FC<PropsTableProps> = ({
           <HeaderColumn>
             {allGroups.map((group) => (
               <PropTag
-                key={group}
+                key={`${group}-group`}
                 prop={group}
                 onClick={() => toggleGroup(group)}
                 active={!showAll && activeGroups.includes(group)}

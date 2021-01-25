@@ -1,0 +1,68 @@
+import {
+  NotificationIcon,
+  NotificationItem,
+  NotificationList,
+} from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={NotificationList}
+  subcomponents={{ NotificationItem, NotificationIcon }}
+  parameters={{
+    subtitle: `List of time-sensitive user notifications, such as in a top-right dropdown
+menu from a header.`,
+    source: 'gamut',
+    figmaId: 'KIqFTtIa7WoDA8G1owEvYL',
+  }}
+/>
+
+export const examples = [
+  {
+    campaign: 'python-livestream',
+    date: 1,
+    iconSettings: {
+      color: '#3069f0',
+      backgroundColor: '#ffd500',
+    },
+    iconSlug: 'python',
+    id: 'abc',
+    link:
+      'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
+    text: 'Check out our Python livestream!',
+    unread: true,
+  },
+  {
+    campaign: 'pro-trial',
+    date: 2,
+    id: '123',
+    imageUrl: 'https://bit.ly/2Ckp4eW',
+    link: 'https://www.codecademy.com/subscriptions/proSixMonthV2a/checkout',
+    text:
+      "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+  },
+];
+
+<Canvas>
+  <Story
+    name="NotificationsList"
+    args={{
+      notifications: examples,
+    }}
+  >
+    {(args) => <NotificationList {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="NotificationList" />
+
+## Empty
+
+Notifications are not always present, so this has an empty state.
+
+<Canvas>
+  <Story name="Empty" args={{ notifications: [] }}>
+    {(args) => <NotificationList {...args} />}
+  </Story>
+</Canvas>

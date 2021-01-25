@@ -1,0 +1,72 @@
+import { ButtonDeprecated, Interstitial } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Interstitial}
+  parameters={{
+    subtitle: `
+Large content area used as a break between focused content, such as within
+a full-screen [Overlay](?path=/docs/atoms-overlay--overlay) in the LE between lessons.
+`,
+    source: 'gamut',
+  }}
+  args={{
+    children: `Place some happy text as the content of this interstitial for the
+        learner to feel good about themselves. Note that the max-width for this
+        content is large but not too large. We want some amount of vertical
+        centering!`,
+    title: 'What a Glorious Day',
+  }}
+/>
+
+<Canvas>
+  <Story
+    name="Interstitial"
+    args={{
+      buttons: [
+        <ButtonDeprecated key="1" theme="brand-yellow">
+          One Button
+        </ButtonDeprecated>,
+        <ButtonDeprecated key="2" theme="white" outline>
+          Two Button
+        </ButtonDeprecated>,
+      ],
+    }}
+  >
+    {(args) => <Interstitial {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="Interstitial" />
+
+## Decorations
+
+Decorations are added on top of the heading and are narrated as part of
+it. Put emojis or promotional images here to really emphasize them.
+
+<Canvas>
+  <Story
+    name="Decorated Interstitial"
+    args={{
+      focus: true,
+      buttons: [
+        <ButtonDeprecated key="1" theme="brand-red">
+          Red Button
+        </ButtonDeprecated>,
+        <ButtonDeprecated key="2" theme="brand-blue">
+          Blue Button
+        </ButtonDeprecated>,
+      ],
+      decoration: '😍',
+      title: 'Decorations, too!',
+      children: `I really love emojis. Please confirm you love emojis too! This
+        interstitial also has the focus prop, so focus will be drawn to the
+        Title of this component upon render if the learner is using a screen
+        reader.`,
+    }}
+  >
+    {(args) => <Interstitial {...args} />}
+  </Story>
+</Canvas>

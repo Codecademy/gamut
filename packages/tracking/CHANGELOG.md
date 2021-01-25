@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.3.0...@codecademy/tracking@0.4.0) (2021-01-14)
+
+
+### Features
+
+* **tracking:** Add a new page_career_path_visited event ([#1283](https://github.com/Codecademy/client-modules/issues/1283)) ([398e863](https://github.com/Codecademy/client-modules/commit/398e8636ed1ae5dc602f8ed103583b73aa0d6abc))
+
+
+
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.2.1...@codecademy/tracking@0.3.0) (2021-01-12)
+
+
+### Features
+
+* **tracking:** Add a fullstory boolean to TrackingOptions type ([8e58696](https://github.com/Codecademy/client-modules/commit/8e58696cda506c8b9fed5a6b58eadcf0d9ebcfab))
+
+
+
 ### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.2.0...@codecademy/tracking@0.2.1) (2020-12-14)
 
 **Note:** Version bump only for package @codecademy/tracking

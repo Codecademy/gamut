@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
+
+
+### Bug Fixes
+
+* **styles:** Default button focus styles to focus-visible ([6493ee2](https://github.com/Codecademy/client-modules/commit/6493ee2703b9f3e723ce0f5283b8b7d60e3e153e))
+
+
+
 ### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.1...@codecademy/gamut-styles@7.6.2) (2020-12-14)
 
 
