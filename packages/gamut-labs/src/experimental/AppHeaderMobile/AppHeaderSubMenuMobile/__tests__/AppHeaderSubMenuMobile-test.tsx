@@ -9,6 +9,8 @@ import {
 } from './../index';
 
 const subMenuHeading = 'Community';
+const sublink1Href = 'https://google.com';
+const sublink2Href = 'https://medium.com';
 const onClick = jest.fn();
 const handleClose = jest.fn();
 
@@ -24,7 +26,7 @@ const props: AppHeaderSubMenuMobileProps = {
         dataTestId: '',
         id: 'sublink-1',
         text: 'forum',
-        href: 'google.com',
+        href: sublink1Href,
         trackingTarget: '',
         type: 'link',
       },
@@ -32,7 +34,7 @@ const props: AppHeaderSubMenuMobileProps = {
         dataTestId: '',
         id: 'sublink-2',
         text: 'blog',
-        href: 'medium.com',
+        href: sublink2Href,
         trackingTarget: '',
         type: 'link',
       },
@@ -53,30 +55,27 @@ const renderAppHeaderSubMenuMobile = () => {
 describe('AppHeaderSubMenuMobile', () => {
   it('displays the sub menu title', () => {
     renderAppHeaderSubMenuMobile();
-    screen.getByRole('heading').click();
-    expect(onClick).toHaveBeenCalled();
+    expect(screen.getByRole('heading').innerHTML).toBe(subMenuHeading);
   });
 
-  // it('renders the sub menu links', () => {
-  //   renderAppHeaderSubMenuMobile();
-  //   screen.getByRole('link').click();
-  //   expect(onClick).toHaveBeenCalled();
-  // });
+  it('renders the sub menu links', () => {
+    renderAppHeaderSubMenuMobile();
+    expect(screen.getAllByRole('link')).toHaveLength(2);
+  });
 
-  // it('sublinks link to the provided hrefs', () => {
-  //   renderAppHeaderDropdown();
-  //   screen.getByRole('button').click();
-  //   expect(screen.getAllByRole('link')[0].getAttribute('href')).toEqual(
-  //     testDropdownUrls[0]
-  //   );
-  //   expect(screen.getAllByRole('link')[1].getAttribute('href')).toEqual(
-  //     testDropdownUrls[1]
-  //   );
-  // });
+  it('creates sublinks with the provided hrefs', () => {
+    renderAppHeaderSubMenuMobile();
+    expect(screen.getAllByRole('link')[0].getAttribute('href')).toEqual(
+      sublink1Href
+    );
+    expect(screen.getAllByRole('link')[1].getAttribute('href')).toEqual(
+      sublink2Href
+    );
+  });
 
   it('links back to the main menu', () => {
     renderAppHeaderSubMenuMobile();
-    screen.getByText('main menu').click();
+    screen.getByText('Full Menu').click();
     expect(handleClose).toHaveBeenCalled();
   });
 });

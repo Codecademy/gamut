@@ -49,7 +49,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
             Full Menu
           </Box>
         </FullMenuButton>
-        <Heading as="h3" fontSize="sm" hideMargin className={styles.heading}>
+        <Heading as="h1" fontSize="sm" hideMargin className={styles.heading}>
           {item.text}
         </Heading>
         {item.popover.map((link: AppHeaderLinkItem) => {
