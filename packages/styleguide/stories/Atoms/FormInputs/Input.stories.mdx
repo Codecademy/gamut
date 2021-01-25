@@ -17,6 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
     htmlFor: 'example-input',
     name: 'example-input',
     defaultValue: 'Default Value',
+    type: 'text',
   }}
 />
 
@@ -31,7 +32,12 @@ import { PropsTable } from '~styleguide/blocks';
 <Canvas>
   <Story
     name="Text"
-    args={{ htmlFor: 'example-text', name: 'example-text', type: 'text' }}
+    args={{
+      htmlFor: 'example-text',
+      defaultValue: 'Text',
+      name: 'example-text',
+      type: 'text',
+    }}
   >
     {(args) => <Input {...args} />}
   </Story>
@@ -64,7 +70,12 @@ import { PropsTable } from '~styleguide/blocks';
 <Canvas>
   <Story
     name="Error"
-    args={{ htmlFor: 'example-error', name: 'example-error', error: true }}
+    args={{
+      htmlFor: 'example-error',
+      defaultValue: 'Error',
+      name: 'example-error',
+      error: true,
+    }}
   >
     {(args) => <Input {...args} />}
   </Story>
@@ -73,7 +84,7 @@ import { PropsTable } from '~styleguide/blocks';
     args={{
       htmlFor: 'example-placeholder',
       name: 'example-placeholder',
-      placeholder: 'This is some placeholder text',
+      placeholder: 'Placeholder',
       defaultValue: undefined,
     }}
   >

@@ -4,6 +4,14 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+export const fruitOptions = [
+  'Apple',
+  'Banana',
+  'Cherry',
+  'Dragonfruit',
+  'Eggplant',
+];
+
 <Meta
   title={title}
   component={Select}
@@ -15,7 +23,16 @@ import { PropsTable } from '~styleguide/blocks';
   args={{
     htmlFor: 'example-select',
     name: 'example-select',
-    options: ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'],
+    value: 'Apple',
+    options: fruitOptions,
+  }}
+  argTypes={{
+    value: {
+      control: {
+        type: 'select',
+        options: fruitOptions,
+      },
+    },
   }}
 />
 
@@ -28,10 +45,16 @@ import { PropsTable } from '~styleguide/blocks';
 ### Input States
 
 <Canvas>
-  <Story name="Disabled" args={{ disabled: true }}>
+  <Story
+    name="Disabled"
+    args={{ options: ['Disabled'], defaultValue: 'Disabled', disabled: true }}
+  >
     {(args) => <Select {...args} />}
   </Story>
-  <Story name="Error" args={{ error: true }}>
+  <Story
+    name="Error"
+    args={{ options: ['Error'], defaultValue: 'Error', error: true }}
+  >
     {(args) => <Select {...args} />}
   </Story>
 </Canvas>

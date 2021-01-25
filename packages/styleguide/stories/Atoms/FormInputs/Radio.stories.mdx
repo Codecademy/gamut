@@ -15,7 +15,7 @@ import { PropsTable } from '~styleguide/blocks';
   }}
   args={{
     htmlFor: 'example-radio',
-    label: 'A radio Label',
+    label: 'Option 1',
     name: 'example-radio',
   }}
 />
@@ -34,6 +34,7 @@ import { PropsTable } from '~styleguide/blocks';
     args={{
       htmlFor: 'example-disabled',
       name: 'example-disabled',
+      label: 'Disabled',
       disabled: true,
     }}
   >
@@ -41,7 +42,12 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
   <Story
     name="Error"
-    args={{ htmlFor: 'example-error', name: 'example-error', error: true }}
+    args={{
+      htmlFor: 'example-error',
+      label: 'Error',
+      name: 'example-error',
+      error: true,
+    }}
   >
     {(args) => <Radio {...args} />}
   </Story>

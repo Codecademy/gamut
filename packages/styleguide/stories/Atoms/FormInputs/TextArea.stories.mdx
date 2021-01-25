@@ -15,7 +15,7 @@ import { PropsTable } from '~styleguide/blocks';
   args={{
     htmlFor: 'example-input',
     name: 'example-input',
-    defaultValue: 'Default Value',
+    defaultValue: 'Some text',
     rows: 4,
   }}
 />
@@ -29,15 +29,15 @@ import { PropsTable } from '~styleguide/blocks';
 ### Input States
 
 <Canvas>
-  <Story name="Disabled" args={{ disabled: true }}>
+  <Story name="Disabled" args={{ defaultValue: 'Disabled', disabled: true }}>
     {(args) => <TextArea {...args} />}
   </Story>
-  <Story name="Error" args={{ error: true }}>
+  <Story name="Error" args={{ defaultValue: 'Error', error: true }}>
     {(args) => <TextArea {...args} />}
   </Story>
   <Story
     name="Placeholder"
-    args={{ placeholder: 'Some placeholder text', defaultValue: undefined }}
+    args={{ placeholder: 'Placholder', defaultValue: undefined }}
   >
     {(args) => <TextArea {...args} />}
   </Story>
