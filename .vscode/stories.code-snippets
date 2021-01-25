@@ -13,8 +13,8 @@
       "  component={$1}",
       "  parameters={{",
       "    subtitle: '$3',",
-      "    source: '$2'",
-      "    status: '$4'",
+      "    source: '$2',",
+      "    status: '$4',",
       "    figmaId: '$5'",
       "  }}",
       "  args={{}}",
@@ -49,7 +49,7 @@
     ],
     "description": "TOC Story Structure."
   },
-  "Canvas BLock": {
+  "Canvas Block": {
     "prefix": "canvas-block",
     "body": [
       "<Canvas>",
@@ -57,6 +57,16 @@
       "    {(args) => <$2 {...args} />}",
       "  </Story>",
       "</Canvas>"
-    ]
+    ],
+    "description": "A single story block wrapped in a canvas"
+  },
+  "Story Block": {
+    "prefix": "story-block",
+    "body": [
+      "  <Story name=\"$1\" args={{}}>",
+      "    {(args) => <$2 {...args} />}",
+      "  </Story>"
+    ],
+    "description": "A single story block without a canvas"
   }
 }

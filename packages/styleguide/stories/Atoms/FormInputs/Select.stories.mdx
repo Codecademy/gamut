@@ -1,0 +1,37 @@
+import { Select } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Select}
+  parameters={{
+    subtitle: 'A standard Select input for handling boolean values',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    htmlFor: 'example-select',
+    name: 'example-select',
+    options: ['Apple', 'Banana', 'Cherry', 'Dragonfruit', 'Eggplant'],
+  }}
+/>
+
+<Canvas>
+  <Story name="Select">{(args) => <Select {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Select" />
+
+## Select States
+
+<Canvas>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {(args) => <Select {...args} />}
+  </Story>
+  <Story name="Error" args={{ error: true }}>
+    {(args) => <Select {...args} />}
+  </Story>
+</Canvas>

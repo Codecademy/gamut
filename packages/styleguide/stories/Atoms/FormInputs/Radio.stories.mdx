@@ -1,0 +1,32 @@
+import { Radio } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Radio}
+  parameters={{
+    subtitle: 'A standard radio input for handling boolean values',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    htmlFor: 'example-radio',
+    label: 'A radio Label',
+    name: 'example-radio',
+  }}
+/>
+
+<Canvas>
+  <Story name="Radio">{(args) => <Radio {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Radio" />
+
+<Canvas>
+  <Story name="Error" args={{ error: true }}>
+    {(args) => <Radio {...args} />}
+  </Story>
+</Canvas>

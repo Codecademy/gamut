@@ -1,0 +1,36 @@
+import { TextArea } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={TextArea}
+  parameters={{
+    subtitle: 'A standard textarea input for handling boolean values',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    htmlFor: 'example-input',
+    name: 'example-input',
+    defaultValue: 'Default Value',
+    rows: 4,
+  }}
+/>
+
+<Canvas>
+  <Story name="TextArea">{(args) => <TextArea {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="TextArea" />
+
+<Canvas>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+  <Story name="Error" args={{ error: true }}>
+    {(args) => <TextArea {...args} />}
+  </Story>
+</Canvas>
