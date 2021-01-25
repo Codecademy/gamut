@@ -4,8 +4,8 @@ const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
-function emotionless(object: any) {
-  let result = {} as any;
+function emotionless<T extends Record<string, unknown>>(object: T) {
+  let result = {} as T;
   for (let key in object) {
     if (!/emotion/.test(key)) {
       result[key] = object[key];
