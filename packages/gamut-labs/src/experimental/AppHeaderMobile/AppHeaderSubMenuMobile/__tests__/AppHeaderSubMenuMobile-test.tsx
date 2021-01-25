@@ -41,7 +41,7 @@ const props: AppHeaderSubMenuMobileProps = {
     ],
   },
   handleClose: handleClose,
-  onClick: onClick,
+  onClick,
 };
 
 const renderAppHeaderSubMenuMobile = () => {
