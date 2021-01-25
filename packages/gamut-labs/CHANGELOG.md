@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.13.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.13.2...@codecademy/gamut-labs@7.13.3) (2021-01-25)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Change focus outline color and add export ([#1322](https://github.com/Codecademy/client-modules/issues/1322)) ([e5fe628](https://github.com/Codecademy/client-modules/commit/e5fe628ca7e347d6c65e6efc50271a006ef7a6e5))
+
+
+
 ### [7.13.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.13.1...@codecademy/gamut-labs@7.13.2) (2021-01-25)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
