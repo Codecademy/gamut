@@ -8,11 +8,12 @@ import {
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box, GridBox } from '../Box';
+import { FillButton, IconButton } from '../Button';
 
 type AlertContainerProps = HandlerProps<typeof alertVariants>;
 type AlertVariants = AlertContainerProps['variant'];
@@ -77,80 +78,6 @@ const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
   `;
 }, alertVariants);
 
-type AlertButtonProps =
-  | {
-      as: 'a';
-      href: string;
-    }
-  | {
-      as: 'button';
-      role: 'button';
-    };
-
-const CloseButton = styled.button`
-  background-color: transparent;
-  border: none;
-  box-shadow: none;
-  border-radius: 2px;
-  color: currentColor;
-  display: flex;
-  align-items: center;
-  padding: 4px;
-
-  path {
-    stroke-width: 4px;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    box-shadow: 0 0 0 2px currentColor;
-  }
-`;
-
-const AlertButton = styled.button<AlertButtonProps>(
-  ({ theme }: { theme: Theme }) => css`
-    align-items: center;
-    display: flex;
-    font-size: ${theme.fontSize[14]};
-    color: ${theme.colors.navy};
-    padding: 2px ${theme.spacing[8]} 0;
-    background-color: ${theme.colors.white};
-    border: none;
-    box-shadow: none;
-    border-radius: 2px;
-    font-weight: ${theme.fontWeight.title};
-    line-height: 0.5;
-    height: 1.5rem;
-    cursor: pointer;
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:focus-visible {
-      box-shadow: 0 0 0 2px currentColor;
-    }
-  `
-);
-
-const AlertCTA: React.FC<AlertCTAProps> = ({ href, text, ...rest }) => {
-  const asProps: AlertButtonProps = href
-    ? { as: 'a', href }
-    : { as: 'button', role: 'button' };
-  return (
-    <AlertButton {...asProps} {...rest}>
-      {text}
-    </AlertButton>
-  );
-};
-
 export const Alert: React.FC<AlertProps> = ({
   className,
   children,
@@ -186,12 +113,14 @@ export const Alert: React.FC<AlertProps> = ({
           <Icon size={16} />
         </Box>
         <Box lineHeight="base">{children}</Box>
-        {cta && <AlertCTA {...cta} />}
+        {cta && (
+          <FillButton href={cta.href} size="small">
+            {cta.text}
+          </FillButton>
+        )}
         {onClose && (
           <Box height="1.5rem" display="flex" alignItems="center">
-            <CloseButton onClick={onClose}>
-              <CloseIcon size={12} />
-            </CloseButton>
+            <IconButton size="small" onClick={onClose} icon={CloseIcon} />
           </Box>
         )}
       </GridBox>

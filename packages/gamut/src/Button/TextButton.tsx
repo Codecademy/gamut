@@ -7,7 +7,7 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
+  ({ mode = 'light', size }) => {
     const modeColors = modeColorGroups[mode];
 
     return css`

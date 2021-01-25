@@ -1,10 +1,14 @@
 import { colors, fontSize, swatches } from '@codecademy/gamut-styles';
 import type { HTMLProps } from 'react';
 
-export type ButtonProps = HTMLProps<HTMLLinkElement> &
-  HTMLProps<HTMLButtonElement> & {
-    mode?: 'dark' | 'light';
-  };
+export type ButtonHTMLProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'size'
+>;
+
+export type ButtonProps = ButtonHTMLProps & {
+  mode?: 'dark' | 'light';
+};
 
 export type ButtonSize = 'normal' | 'small';
 
