@@ -17,6 +17,13 @@ import { PropsTable } from '~styleguide/blocks';
   args={{
     icon: SearchIcon,
   }}
+  argTypes={{
+    icon: {
+      control: {
+        disable: true,
+      },
+    },
+  }}
 />
 
 <Canvas>
@@ -24,3 +31,33 @@ import { PropsTable } from '~styleguide/blocks';
 </Canvas>
 
 <PropsTable story="IconButton" />
+
+## Modes
+
+<Canvas>
+  <Story name="Light" args={{ mode: 'light' }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+  <Story name="Dark" args={{ mode: 'dark' }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+</Canvas>
+
+## States
+
+<Canvas>
+  <Story name="Disabled" args={{ disabled: true }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Normal" args={{ size: 'normal' }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+  <Story name="Small" args={{ size: 'small' }}>
+    {(args) => <IconButton {...args} />}
+  </Story>
+</Canvas>

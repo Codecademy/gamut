@@ -27,3 +27,33 @@ import { PropsTable } from '~styleguide/blocks';
 </Canvas>
 
 <PropsTable story="TextButton" />
+
+## Modes
+
+<Canvas>
+  <Story name="Light" args={{ mode: 'light', children: 'light' }}>
+    {(args) => <TextButton {...args} />}
+  </Story>
+  <Story name="Dark" args={{ mode: 'dark', children: 'dark' }}>
+    {(args) => <TextButton {...args} />}
+  </Story>
+</Canvas>
+
+## States
+
+<Canvas>
+  <Story name="Disabled" args={{ disabled: true, children: 'disabled' }}>
+    {(args) => <TextButton {...args} />}
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="Normal" args={{ size: 'normal', children: 'normal' }}>
+    {(args) => <TextButton {...args} />}
+  </Story>
+  <Story name="Small" args={{ size: 'small', children: 'small' }}>
+    {(args) => <TextButton {...args} />}
+  </Story>
+</Canvas>

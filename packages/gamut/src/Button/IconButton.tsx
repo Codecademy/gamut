@@ -12,7 +12,7 @@ export type IconButtonProps = React.ComponentProps<typeof TextButton> &
 
 export const IconButton: React.FC<IconButtonProps> = ({
   icon: Icon,
-  size,
+  size = 'normal',
   ...props
 }) => {
   return (
