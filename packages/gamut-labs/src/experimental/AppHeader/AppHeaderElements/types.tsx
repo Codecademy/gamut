@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import { GamutIconProps } from '@codecademy/gamut-icons';
 
-
 export type AppHeaderItem =
   | AppHeaderLogoItem
   | AppHeaderLinkItem
