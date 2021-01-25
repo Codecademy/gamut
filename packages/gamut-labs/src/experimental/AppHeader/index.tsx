@@ -26,13 +26,8 @@ export type AppHeaderItemsProp = {
   right: AppHeaderItem[];
 };
 
-const AppHeaderTextButton = styled(TextButton)`
-  ${focusStyles}
-`;
-
-const AppHeaderFillButton = styled(FillButton)`
-  ${focusStyles}
-`;
+const AppHeaderTextButton = styled(TextButton)(focusStyles);
+const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 const mapItemToElement = (
   item: AppHeaderItem,
