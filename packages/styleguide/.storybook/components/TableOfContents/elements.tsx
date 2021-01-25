@@ -34,18 +34,19 @@ interface SectionLinkProps {
   box?: boolean;
 }
 
-export const SectionLink = styled(LinkTo)<SectionLinkProps>(({ box }) => {
-  return css`
-    box-shadow: ${box && boxShadows[1]};
-    color: #484848;
-    border-radius: 4px;
-    font-size: inherit;
-    color: ${(!box && `#1ea7fd`) || 'inherit'};
-    transition: 200ms box-shadow;
+export const SectionLink = styled(LinkTo)<SectionLinkProps>(
+  ({ box, theme }) => {
+    return css`
+      ${box && boxShadows[1]}
+      border-radius: 4px;
+      font-size: inherit;
+      color: ${(!box && theme.color.secondary) || 'inherit'};
+      transition: 200ms box-shadow;
 
-    &:hover {
-      text-decoration: ${box ? 'none' : 'underline'};
-      box-shadow: ${box && boxShadows[2]};
-    }
-  `;
-});
+      &:hover {
+        text-decoration: ${box ? 'none' : 'underline'};
+        ${box && boxShadows[2]}
+      }
+    `;
+  }
+);

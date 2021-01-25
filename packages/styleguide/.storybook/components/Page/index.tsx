@@ -13,12 +13,12 @@ const Link = styled.a`
   line-height: 1;
   column-gap: 0.5rem;
   align-items: flex-start;
-  color: #1ea7fd;
+  color: ${({ theme }) => theme.color.secondary};
   border-bottom: 2px solid transparent;
 
   &:hover {
     text-decoration: none;
-    border-bottom-color: #1ea7fd;
+    border-bottom-color: ${({ theme }) => theme.color.secondary};
   }
 `;
 
