@@ -26,11 +26,11 @@ export interface AlertCTAProps {
 
 export type AlertProps = {
   className?: string;
-  /** Banner theme string: info, alert, success, announcement, error */
+  /** Alert Variant String */
   variant?: AlertVariants;
-  /** On close callback */
+  /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
-  /** Call to action configuration { text, href, onClick } */
+  /** Call to Action Configuration */
   cta?: AlertCTAProps;
 };
 
@@ -67,6 +67,8 @@ const VariantIcons = {
 
 const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
   return css`
+    width: 100%;
+    max-width: 820px;
     padding: ${theme.spacing[8]} ${theme.spacing[16]};
     border-style: solid;
     border-width: 2px;
