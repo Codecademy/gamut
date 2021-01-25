@@ -12,7 +12,7 @@ import { css, Theme } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { FlexBox, GridBox } from '../Box';
+import { Box, GridBox } from '../Box';
 
 type AlertContainerProps = HandlerProps<typeof alertVariants>;
 type AlertVariants = AlertContainerProps['variant'];
@@ -32,12 +32,10 @@ export type AlertProps = {
   onClose?: () => void;
   /** Call to action configuration { text, href, onClick } */
   cta?: AlertCTAProps;
-  /** Remove the max-width on the Alert container */
-  fluid?: boolean;
 };
 
 const alertVariants = variant({
-  info: {
+  general: {
     backgroundColor: 'blue',
     textColor: 'white',
   },
@@ -54,13 +52,13 @@ const alertVariants = variant({
     textColor: 'navy',
   },
   feature: {
-    backgroundColor: 'paleBlue',
+    backgroundColor: 'blue-300',
     textColor: 'navy',
   },
 });
 
 const VariantIcons = {
-  info: InfoCircleIcon,
+  general: InfoCircleIcon,
   success: CheckFilledIcon,
   error: CloseCircleIcon,
   maintenance: SupportFilledIcon,
@@ -69,7 +67,7 @@ const VariantIcons = {
 
 const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
   return css`
-    padding: ${theme.spacing[12]} ${theme.spacing[16]};
+    padding: ${theme.spacing[8]} ${theme.spacing[16]};
     border-style: solid;
     border-width: 2px;
     border-color: ${theme.colors.navy};
@@ -87,15 +85,56 @@ type AlertButtonProps =
       role: 'button';
     };
 
+const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 2px;
+  color: currentColor;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+
+  path {
+    stroke-width: 4px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px currentColor;
+  }
+`;
+
 const AlertButton = styled.button<AlertButtonProps>(
   ({ theme }: { theme: Theme }) => css`
+    align-items: center;
+    display: flex;
     font-size: ${theme.fontSize[14]};
     color: ${theme.colors.navy};
-    padding: ${theme.spacing[4]} ${theme.spacing[8]};
+    padding: 2px ${theme.spacing[8]} 0;
     background-color: ${theme.colors.white};
     border: none;
     box-shadow: none;
     border-radius: 2px;
+    font-weight: ${theme.fontWeight.title};
+    line-height: 0.5;
+    height: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px currentColor;
+    }
   `
 );
 
@@ -113,11 +152,20 @@ const AlertCTA: React.FC<AlertCTAProps> = ({ href, text, ...rest }) => {
 export const Alert: React.FC<AlertProps> = ({
   className,
   children,
-  variant = 'info',
+  variant = 'general',
   cta,
   onClose,
 }) => {
   const Icon = VariantIcons[variant];
+  const columns = [
+    'max-content',
+    '1fr',
+    cta && 'max-content',
+    onClose && 'max-content',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
   return (
     <AlertContainer
       className={className}
@@ -129,19 +177,20 @@ export const Alert: React.FC<AlertProps> = ({
       <GridBox
         columnGap={16}
         gridAutoFlow="column"
-        gridTemplateColumns="max-content 1fr max-content max-content"
+        alignItems="start"
+        gridTemplateColumns={columns}
       >
-        <Icon size={20} />
-        <GridBox gridAutoFlow="column" gridTemplateColumns="1fr max-content">
-          <FlexBox width="100%" overflowY="hidden">
-            {children}
-          </FlexBox>
-        </GridBox>
+        <Box paddingY={4} height="1.5rem" display="flex">
+          <Icon size={16} />
+        </Box>
+        <Box lineHeight="base">{children}</Box>
         {cta && <AlertCTA {...cta} />}
         {onClose && (
-          <FlexBox as="button" borderStyle="none">
-            <CloseIcon />
-          </FlexBox>
+          <Box height="1.5rem" display="flex" alignItems="center">
+            <CloseButton onClick={onClose}>
+              <CloseIcon size={12} />
+            </CloseButton>
+          </Box>
         )}
       </GridBox>
     </AlertContainer>

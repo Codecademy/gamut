@@ -7,144 +7,49 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   title={title}
   component={Alert}
   parameters={{
-    subtitle: `
-Alerts can be used to asynchronously display feedback or interactions
-with the user with various connotations.`,
+    subtitle:
+      'An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.',
     status: 'volatile',
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
   }}
   args={{
-    variant: 'info',
+    variant: 'general',
     cta: { text: 'Login', onClick: action('CTA Click') },
-    children: `You have been logged out due to inactivity.
-                Click the button to log in again.`,
+    children:
+      'You have been logged out due to inactivity. Click the button to log in again.',
   }}
 />
 
-<Canvas withSource="open">
+## Usage Guidelines
+
+- Alerts should be displayed at the top of the page, below the navigation bar. (40px)
+- They’re persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
+- Floats/overlays over any content below it
+- Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
+
+<Canvas>
   <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 </Canvas>
 
 <Props story="Alert" />
 
-## Customization
-
-Alerts can be customized in various ways to fit usages. Here are a few out of the box options you have available.
-
-### Skeletal Alert
-
-You can disable most options for an `Alert` to make it mostly informational with no interaction.
+## Alert Variants
 
 <Canvas>
-  <Story name="Skeletal">
-    {(args) => (
-      <Alert showIcon={false} variant="info" onClose={action('Close')}>
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut.
-      </Alert>
-    )}
+  <Story name="general" args={{ variant: 'general' }}>
+    {(args) => <Alert {...args} />}
   </Story>
-</Canvas>
-
-### Icon
-
-You can optionally display an icon that matches the type of the alert you are showing.
-
-<Canvas>
-  <Story name="Icon">
-    {(args) => (
-      <Alert variant="info" onClose={action('Close')}>
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut.
-      </Alert>
-    )}
+  <Story name="success" args={{ variant: 'success' }}>
+    {(args) => <Alert {...args} />}
   </Story>
-</Canvas>
-
-### Call to action
-
-You can add a call to action if specific feedback prompts user action. This is not requried as some
-feedback may not have an activity associated with it.
-
-<Canvas>
-  <Story name="Call to Action">
-    {(args) => (
-      <Alert
-        showIcon={false}
-        variant="info"
-        cta={{
-          href: 'https://google.com',
-          onClick: action('Close'),
-          text: 'Click Me',
-        }}
-        onClose={action('Close')}
-      >
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut.
-      </Alert>
-    )}
+  <Story name="error" args={{ variant: 'error' }}>
+    {(args) => <Alert {...args} />}
   </Story>
-</Canvas>
-
-### Expandable Alert
-
-You can truncate the message of the alert for dynamic messaging that may be too long to display
-without restriction. This will automatically truncate and add a toggle button.
-
-<Canvas>
-  <Story name="Expandable">
-    {(args) => (
-      <Alert
-        showIcon={false}
-        variant="info"
-        lines={1}
-        onClose={action('Close')}
-      >
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
-        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-      </Alert>
-    )}
+  <Story name="maintenance" args={{ variant: 'maintenance' }}>
+    {(args) => <Alert {...args} />}
   </Story>
-</Canvas>
-
-### Permanent Alert
-
-If your alert should always stay on the page, you can skip giving it a close button on the right.
-Please remember that most of these are rather frustrating for users.
-
-<Canvas>
-  <Story name="Permanent">
-    {(args) => (
-      <Alert showIcon={false} variant="info" lines={1}>
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
-        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-      </Alert>
-    )}
-  </Story>
-</Canvas>
-
-### All Options
-
-<Canvas>
-  <Story name="All Options">
-    {(args) => (
-      <Alert
-        variant="info"
-        cta={{
-          href: 'https://google.com',
-          onClick: action('Close'),
-          text: 'Click Me',
-        }}
-        lines={1}
-        onClose={action('Close')}
-      >
-        Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
-        torquatos eam ut. Dicta dolores adversarium mei in. Ius ei ridens
-        mentitum consequat. Amet intellegam in nec. Pro duis novum ludus ad.
-      </Alert>
-    )}
+  <Story name="feature" args={{ variant: 'feature' }}>
+    {(args) => <Alert {...args} />}
   </Story>
 </Canvas>
