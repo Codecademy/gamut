@@ -7,16 +7,19 @@ import {
   SupportFilledIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Box, GridBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 
-type AlertContainerProps = HandlerProps<typeof alertVariants>;
-type AlertVariants = AlertContainerProps['variant'];
+type AlertVariants =
+  | 'general'
+  | 'success'
+  | 'error'
+  | 'maintenance'
+  | 'feature';
 
 export interface AlertCTAProps {
   href?: string;
@@ -35,7 +38,7 @@ export type AlertProps = {
   cta?: AlertCTAProps;
 };
 
-const alertVariants = variant({
+const alertVariants = variant<AlertVariants>({
   general: {
     backgroundColor: 'blue',
     textColor: 'white',
@@ -58,7 +61,7 @@ const alertVariants = variant({
   },
 });
 
-const VariantIcons = {
+const VARIANT_ICONS = {
   general: InfoCircleIcon,
   success: CheckFilledIcon,
   error: CloseCircleIcon,
@@ -66,14 +69,12 @@ const VariantIcons = {
   feature: StarIcon,
 };
 
-const AlertContainer = styled.div<AlertContainerProps>(({ theme }) => {
+const AlertContainer = styled.div<Pick<AlertProps, 'variant'>>(({ theme }) => {
   return css`
     width: 100%;
     max-width: 820px;
     padding: ${theme.spacing[8]} ${theme.spacing[16]};
-    border-style: solid;
-    border-width: 2px;
-    border-color: ${theme.colors.navy};
+    border: 2px solid ${theme.colors.navy};
     border-radius: 3px;
   `;
 }, alertVariants);
@@ -82,18 +83,21 @@ export const Alert: React.FC<AlertProps> = ({
   className,
   children,
   variant = 'general',
-  cta,
+  cta = {},
   onClose,
 }) => {
-  const Icon = VariantIcons[variant];
-  const columns = [
-    'max-content',
-    '1fr',
-    cta && 'max-content',
-    onClose && 'max-content',
-  ]
-    .filter(Boolean)
-    .join(' ');
+  const { text, href, onClick } = cta;
+  const Icon = VARIANT_ICONS[variant];
+  const columns = useMemo(() => {
+    return [
+      'max-content',
+      '1fr',
+      text && 'max-content',
+      onClose && 'max-content',
+    ]
+      .filter(Boolean)
+      .join(' ');
+  }, [onClose, text]);
 
   return (
     <AlertContainer
@@ -114,8 +118,8 @@ export const Alert: React.FC<AlertProps> = ({
         </Box>
         <Box lineHeight="base">{children}</Box>
         {cta && (
-          <FillButton mode="dark" href={cta.href} size="small">
-            {cta.text}
+          <FillButton mode="dark" href={href} onClick={onClick} size="small">
+            {text}
           </FillButton>
         )}
         {onClose && (
