@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.1...@codecademy/styleguide@21.20.0) (2021-01-25)
+
+
+### Features
+
+* **styleguide:** Storybook config clean up ([01c70c8](https://github.com/Codecademy/client-modules/commit/01c70c858259a3b7b5dbb1f409cadb5feb395b3e))
+
+
+
 ### [21.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.0...@codecademy/styleguide@21.19.1) (2021-01-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
