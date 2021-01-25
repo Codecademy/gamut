@@ -5,6 +5,7 @@ import { Canvas, Meta } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
+  component="Utilities"
   parameters={{ subtitle: 'Style utilities for both SCSS and Emotion' }}
 />
 
@@ -54,7 +55,7 @@ export const Box = styled.div`
 `;
 
 <Canvas column={5} withSource="none">
-  <Box boxShadow={boxShadow(1)}>1</Box>
+  <Box shadow={boxShadow(1)}>1</Box>
   <Box shadow={boxShadow(2)}>2</Box>
   <Box shadow={boxShadow(3)}>3</Box>
   <Box shadow={boxShadow(4)}>4</Box>

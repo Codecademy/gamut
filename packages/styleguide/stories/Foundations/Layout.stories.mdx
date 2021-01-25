@@ -135,7 +135,7 @@ We have a basic spacing scale that we like to adhere to. These can be used for p
   {Object.entries(spacing).map(([alias, value]) => (
     <ScaleRow key={alias} hasAlias>
       <ScaleColumn>{alias}</ScaleColumn>
-      <Box width={value} height={value} backgroundColor="paleBlue" />
+      <Box size={value} />
     </ScaleRow>
   ))}
 </Canvas>
