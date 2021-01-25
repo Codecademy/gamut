@@ -6,7 +6,7 @@ export const focusStyles = css`
     outline: none;
   }
   &:focus-visible {
-    outline: 0.3rem auto ${colors.hyper};
+    outline: 0.3rem auto ${colors.navy};
   }
 `;
 
