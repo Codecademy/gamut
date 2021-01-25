@@ -36,7 +36,6 @@ const postCssLoaderDefaults = {
           replaceWith: '[data-focus-visible-added]',
         }),
         require('autoprefixer')({ flexbox: 'no-2009' }),
-        PROD && require('cssnano')({ preset: 'default' }),
       ].filter(Boolean),
   },
 };
