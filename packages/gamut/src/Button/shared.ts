@@ -1,27 +1,36 @@
-import { colors, fontSize, swatches } from '@codecademy/gamut-styles';
+import { colors, swatches, variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
 import type { HTMLProps } from 'react';
 
-export type ButtonProps = HTMLProps<HTMLLinkElement> &
-  HTMLProps<HTMLButtonElement> & {
-    mode?: 'dark' | 'light';
-  };
+export type ButtonHTMLProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'size'
+>;
+
+export type ButtonProps = ButtonHTMLProps & {
+  mode?: 'dark' | 'light';
+};
 
 export type ButtonSize = 'normal' | 'small';
 
-export type SizedButtonProps = ButtonProps & {
-  size?: ButtonSize;
-};
+export type SizedButtonProps = ButtonProps &
+  HandlerProps<typeof sizedButtonVariants>;
 
-export const buttonSizing = (size?: ButtonSize) =>
-  size === 'small'
-    ? `
-      font-size: ${fontSize[14]};
-      padding: 0.35rem 0.5rem;
-    `
-    : `
-      font-size: ${fontSize[16]};
-      padding: 0.75rem 1rem;
-    `;
+export const sizedButtonVariants = variant<'size', ButtonSize>({
+  prop: 'size',
+  variants: {
+    small: {
+      lineHeight: 'title',
+      fontSize: 14,
+      padding: 8,
+    },
+    normal: {
+      fontSize: 16,
+      paddingY: 12,
+      paddingX: 16,
+    },
+  },
+});
 
 export const modeColorGroups = {
   dark: {
