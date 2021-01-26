@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.11.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.4...@codecademy/gamut@19.11.5) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.11.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.3...@codecademy/gamut@19.11.4) (2021-01-25)
+
+
+### Bug Fixes
+
+* **Checkbox:** Fixes :checked + :disabled styles ([b06c2e4](https://github.com/Codecademy/client-modules/commit/b06c2e4819c47644e12632ab15d34ad91a2c96ed))
+
+
+
+### [19.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.2...@codecademy/gamut@19.11.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.1...@codecademy/gamut@19.11.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Remove overwritten data-testids on checkboxes ([a7792e7](https://github.com/Codecademy/client-modules/commit/a7792e73f84f65cf2139322bd4a56de443e5c6c8))
+
+
+
+### [19.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.0...@codecademy/gamut@19.11.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **Markdown:** Don't wrap MarkdownAnchor component in tag overrides ([#1286](https://github.com/Codecademy/client-modules/issues/1286)) ([74d4fe3](https://github.com/Codecademy/client-modules/commit/74d4fe36b58e2c75380fd94c19fd0cb05c56ecdc))
+
+
+
+## [19.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.2...@codecademy/gamut@19.11.0) (2021-01-19)
+
+
+### Features
+
+* **Interstitial:** add focus mgmt to Interstitial ([18fcc9f](https://github.com/Codecademy/client-modules/commit/18fcc9f8bf7567b9df2b8dbed9c8c4ef6979a5aa))
+
+
+
+### [19.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.1...@codecademy/gamut@19.10.2) (2021-01-18)
+
+
+### Bug Fixes
+
+* Converting from SCSS to emotion for Form and GridForm components ([dee4938](https://github.com/Codecademy/client-modules/commit/dee4938ece08e3e66f5cfb24ed2edff467b609f1))
+
+
+
+### [19.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.10.0...@codecademy/gamut@19.10.1) (2021-01-15)
+
+
+### Bug Fixes
+
+* **Overlay:**  Body overflow hidden iOS bug ([c5a2057](https://github.com/Codecademy/client-modules/commit/c5a205713ab44c11ac2eb93b79c70ca63bc4a4b3)), closes [/github.com/streamich/react-use/issues/1477#issuecomment-749788126](https://github.com/Codecademy//github.com/streamich/react-use/issues/1477/issues/issuecomment-749788126)
+
+
+
 ## [19.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.9.3...@codecademy/gamut@19.10.0) (2021-01-13)
 
 

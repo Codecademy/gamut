@@ -3,7 +3,6 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
-import { theme } from '@codecademy/gamut-styles';
 import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
@@ -14,12 +13,12 @@ const Link = styled.a`
   line-height: 1;
   column-gap: 0.5rem;
   align-items: flex-start;
-  color: ${theme.colors.blue};
+  color: ${({ theme }) => theme.color.secondary};
   border-bottom: 2px solid transparent;
 
   &:hover {
     text-decoration: none;
-    border-bottom-color: ${theme.colors.blue};
+    border-bottom-color: ${({ theme }) => theme.color.secondary};
   }
 `;
 
@@ -52,7 +51,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
   const links = [{ text: 'Gamut', kind: 'Gamut' }];
 
   path.forEach((kind, i) => {
-    const prevKind = i ? `${links[i - 1].kind}/` : '';
+    const prevKind = i ? `${links[i].kind}/` : '';
 
     const nextLink = {
       text: kind,
@@ -106,9 +105,7 @@ export const Page: React.FC = ({ children }) => {
   return (
     <>
       <Header marginBottom="1rem">
-        <div>
-          <BreadCrumbs path={path} />
-        </div>
+        <BreadCrumbs path={path} />
         <HeaderRow>
           <HeaderCol>
             <Title>{title}</Title>

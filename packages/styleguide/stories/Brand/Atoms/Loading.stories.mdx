@@ -1,8 +1,9 @@
 import { Loading } from '@codecademy/gamut-labs/src';
-import { Meta, Canvas, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Atoms/Loading"
+  title={title}
   component={Loading}
   parameters={{
     subtitle: `Our standard-use loading icon. Use this to indicate a major part of the page is
@@ -15,4 +16,4 @@ still coming.`,
   <Story name="Loading">{(args) => <Loading />}</Story>
 </Canvas>
 
-<Props story="Loading" of={Loading} />
+<Props story="Loading" />

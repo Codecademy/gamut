@@ -4,7 +4,8 @@ import React from 'react';
 import { Feature, FeatureProps } from '..';
 
 const renderComponent = (overrides: Partial<FeatureProps> = {}) => {
-  const props = {
+  const props: FeatureProps = {
+    featuresMedia: 'image',
     imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
     imgAlt: 'Codey Boba Tea',
     ...overrides,
@@ -34,15 +35,34 @@ describe('Feature', () => {
     expect(wrapper.find('p')).toHaveLength(0);
   });
 
-  it('renders an icon when isIcon prop is true', () => {
-    const wrapper = renderComponent({ isIcon: true });
-    expect(wrapper.find('img[data-testid="feature-icon"]')).toHaveLength(1);
+  it('renders a no-media feature', () => {
+    const wrapper = renderComponent({ featuresMedia: 'none' });
     expect(wrapper.find('img[data-testid="feature-image"]')).toHaveLength(0);
+    expect(wrapper.find('img[data-testid="feature-icon"]')).toHaveLength(0);
+    expect(wrapper.find('div[data-testid="feature-stat"]')).toHaveLength(0);
   });
 
-  it('renders an image when isIcon prop is not provided', () => {
+  it('renders an image', () => {
     const wrapper = renderComponent();
     expect(wrapper.find('img[data-testid="feature-image"]')).toHaveLength(1);
     expect(wrapper.find('img[data-testid="feature-icon"]')).toHaveLength(0);
+    expect(wrapper.find('div[data-testid="feature-stat"]')).toHaveLength(0);
+  });
+
+  it('renders an icon', () => {
+    const wrapper = renderComponent({ featuresMedia: 'icon' });
+    expect(wrapper.find('img[data-testid="feature-image"]')).toHaveLength(0);
+    expect(wrapper.find('img[data-testid="feature-icon"]')).toHaveLength(1);
+    expect(wrapper.find('div[data-testid="feature-stat"]')).toHaveLength(0);
+  });
+
+  it('renders a stat', () => {
+    const wrapper = renderComponent({
+      featuresMedia: 'stat',
+      statText: '99.9999%',
+    });
+    expect(wrapper.find('img[data-testid="feature-image"]')).toHaveLength(0);
+    expect(wrapper.find('img[data-testid="feature-icon"]')).toHaveLength(0);
+    expect(wrapper.find('div[data-testid="feature-stat"]')).toHaveLength(1);
   });
 });

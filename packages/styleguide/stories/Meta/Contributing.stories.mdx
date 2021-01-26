@@ -1,10 +1,9 @@
-<!-- The normal import would be '@storybook/addon-links/react' -->
-<!-- but it is throwing a typescript error in the current alpha  -->
-
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 <Meta
-  title="Meta/Contributing"
+  title={title}
   parameters={{
     subtitle: `Thanks so much for being interested in contributing to Gamut!
 We love working with Codecademy employees across all our teams.`,
@@ -31,7 +30,6 @@ Consider saving this recommended format as an editor snippet:
 ```tsx
 import cx from 'classnames';
 import React from 'react';
-
 import styles from './styles.module.scss';
 
 export type MyComponentProps = { /* ... */ };

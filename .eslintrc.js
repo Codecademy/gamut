@@ -12,15 +12,39 @@ const defaultConfig = require('./packages/eslint-config');
 module.exports = {
   ...defaultConfig,
   root: true,
-  parserOptions: {
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json', './packages/*/tsconfig.json'],
-  },
+
   overrides: [
+    ...defaultConfig.overrides,
+    {
+      files: ['*.mdx'],
+      parser: 'eslint-mdx',
+    },
     {
       files: ['**/typings/*', '*.d.ts'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
       rules: {
         '@typescript-eslint/no-namespace': 'off',
+      },
+    },
+    {
+      files: ['*.tsx'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
+      rules: {
+        'no-restricted-syntax': [
+          'error',
+          {
+            message:
+              "Don't import stylesheets that don't end with `module.scss`, rename them to end with `module.scss` like `style.module.scss`.",
+            selector:
+              'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
+          },
+        ],
       },
     },
   ],

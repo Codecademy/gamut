@@ -1,0 +1,43 @@
+import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={AppHeaderDropdown}
+  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  args={{
+    item: {
+      id: 'target',
+      text: 'Dropdown Target',
+      popover: [
+        {
+          id: 'sublink-1',
+          text: 'A Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+        {
+          id: 'sublink-2',
+          text: 'Another Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+      ],
+      trackingTarget: '',
+      type: 'dropdown',
+    },
+  }}
+/>
+
+A dropdown menu for use in AppHeader.
+
+<Canvas>
+  <Story name="AppHeaderDropdown">
+    {(args) => <AppHeaderDropdown {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="AppHeaderDropdown" />

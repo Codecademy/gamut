@@ -1,9 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { select, text } from '@storybook/addon-knobs';
 import { Quote } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Atoms/Quote"
+  title={title}
   component={Quote}
   args={{
     text:
