@@ -48,7 +48,7 @@ const placementVariants = variant({
       position: 'relative',
       display: 'flex',
       paddingY: 16,
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'flex-start',
     },
     'top-center': {

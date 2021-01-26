@@ -37,12 +37,16 @@ export type AlertProps = {
 };
 
 export const VARIANT_META = {
-  general: { order: 4, icon: MiniInfoCircleIcon },
-  success: { order: 2, icon: MiniCheckCircleIcon },
-  error: { order: 1, icon: MiniRemoveCircleIcon },
-  maintenance: { order: 3, icon: MiniWarningTriangleIcon },
-  feature: { order: 5, icon: MiniStarIcon },
-};
+  general: { order: 4, icon: MiniInfoCircleIcon, buttonMode: 'dark-alt' },
+  success: { order: 2, icon: MiniCheckCircleIcon, buttonMode: 'dark-alt' },
+  error: { order: 1, icon: MiniRemoveCircleIcon, buttonMode: 'dark-alt' },
+  maintenance: {
+    order: 3,
+    icon: MiniWarningTriangleIcon,
+    buttonMode: 'light-alt',
+  },
+  feature: { order: 5, icon: MiniStarIcon, buttonMode: 'light-alt' },
+} as const;
 
 const alertVariants = variant({
   general: {
@@ -78,7 +82,7 @@ export const Alert: React.FC<AlertProps> = ({
   onClick,
   onClose,
 }) => {
-  const { icon: Icon } = VARIANT_META[variant];
+  const { icon: Icon, buttonMode } = VARIANT_META[variant];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -121,12 +125,14 @@ export const Alert: React.FC<AlertProps> = ({
           </Truncate>
         </FlexBox>
         {truncated && (
-          <IconButton
-            mode="dark-alt"
-            size="small"
-            icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
-            onClick={() => setExpanded(!expanded)}
-          />
+          <FlexBox height={['1.75rem', , '2rem']}>
+            <IconButton
+              mode={buttonMode}
+              size="small"
+              icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
+              onClick={() => setExpanded(!expanded)}
+            />
+          </FlexBox>
         )}
         {cta && (
           <FlexBox
@@ -147,12 +153,14 @@ export const Alert: React.FC<AlertProps> = ({
           </FlexBox>
         )}
         {onClose && (
-          <IconButton
-            mode="dark-alt"
-            size="small"
-            onClick={onClose}
-            icon={MiniDeleteIcon}
-          />
+          <FlexBox height={['1.75rem', , '2rem']}>
+            <IconButton
+              mode={buttonMode}
+              size="small"
+              onClick={onClose}
+              icon={MiniDeleteIcon}
+            />
+          </FlexBox>
         )}
       </FlexBox>
     </AlertBanner>

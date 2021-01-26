@@ -8,7 +8,7 @@ export type ButtonHTMLProps = Omit<
 >;
 
 export type ButtonProps = ButtonHTMLProps & {
-  mode?: 'dark' | 'light' | 'dark-alt';
+  mode?: keyof typeof modeColorGroups;
 };
 
 export type ButtonSize = 'normal' | 'small';
@@ -58,5 +58,14 @@ export const modeColorGroups = {
     foregroundMuted: swatches.gray[600],
     foreground: colors.white,
     shadow: colors.black,
+  },
+  'light-alt': {
+    background: colors.navy,
+    backgroundDull: swatches.gray[600],
+    backgroundEmphasized: swatches.gray[100],
+    backgroundMuted: swatches.gray[200],
+    foregroundMuted: swatches.gray[600],
+    foreground: colors.white,
+    shadow: colors.navy,
   },
 };
