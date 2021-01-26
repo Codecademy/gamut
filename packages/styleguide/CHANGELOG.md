@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.1...@codecademy/styleguide@21.20.2) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.0...@codecademy/styleguide@21.20.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Change focus outline color and add export ([#1322](https://github.com/Codecademy/client-modules/issues/1322)) ([e5fe628](https://github.com/Codecademy/client-modules/commit/e5fe628ca7e347d6c65e6efc50271a006ef7a6e5))
+
+
+
+## [21.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.1...@codecademy/styleguide@21.20.0) (2021-01-25)
+
+
+### Features
+
+* **styleguide:** Storybook config clean up ([01c70c8](https://github.com/Codecademy/client-modules/commit/01c70c858259a3b7b5dbb1f409cadb5feb395b3e))
+
+
+
+### [21.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.0...@codecademy/styleguide@21.19.1) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.1...@codecademy/styleguide@21.19.0) (2021-01-22)
+
+
+### Features
+
+* **docs:** Refresh story writing meta docs ([ffc1573](https://github.com/Codecademy/client-modules/commit/ffc1573cf72e9a0a2b03dd7e4acc45888a797f7d))
+
+
+
 ### [21.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.0...@codecademy/styleguide@21.18.1) (2021-01-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
