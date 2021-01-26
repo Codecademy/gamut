@@ -1,7 +1,6 @@
 import { positioning } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
-import { uniq } from 'lodash';
 import React, { useMemo, useState } from 'react';
 
 import { Alert, AlertProps, VARIANT_META } from './Alert';
@@ -12,7 +11,6 @@ export const AlertItem = styled.div<AlertItemProps>`
   ${positioning}
   width: 100%;
   position: absolute;
-  padding: ${({ theme }) => theme.spacing[16]};
   opacity: 1;
   transition: opacity 0.1s ease-out, top 0.4s cubic-bezier(0.23, 1, 0.32, 1),
     left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -23,8 +21,16 @@ export const AlertItem = styled.div<AlertItemProps>`
   }
 `;
 
+const ItemArea = styled.div`
+  position: relative;
+  width: 820px;
+`;
+
 export const AlertsWrapper = styled.div`
   position: absolute;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   left: 0;
   right: 0;
   top: 0;
@@ -33,10 +39,11 @@ export const AlertsWrapper = styled.div`
   max-width: 1200px;
 `;
 
-export const Alerts: React.FC<{ alerts?: AlertProps[] }> = ({
-  alerts = [],
-}) => {
-  const [closed, setClosed] = useState<string[]>([]);
+export const Alerts: React.FC<{
+  alerts?: AlertProps[];
+  onClose: (id: string) => void;
+}> = ({ alerts = [], onClose }) => {
+  const [closed] = useState<string[]>([]);
 
   const alertsToRender = useMemo(() => {
     return alerts.sort(
@@ -47,26 +54,30 @@ export const Alerts: React.FC<{ alerts?: AlertProps[] }> = ({
 
   return (
     <AlertsWrapper>
-      {alertsToRender.map((alert, i) => {
-        const normalIndex = i - closed.length;
-        const offset = normalIndex > 2 ? 8 : normalIndex * 4;
-        const isClosed = closed.includes(alert.message);
+      <ItemArea>
+        {alertsToRender.map((alert, i) => {
+          const normalIndex = i - closed.length;
+          const offset = normalIndex > 2 ? 8 : normalIndex * 4;
+          const isClosed = closed.includes(alert.message);
 
-        return (
-          <AlertItem
-            zIndex={10 - i}
-            aria-hidden={isClosed}
-            left={`${-offset}px`}
-            top={`${isClosed ? -100 : offset}px`}
-            key={alert.message}
-          >
-            <Alert
-              {...alert}
-              onClose={() => setClosed(uniq([...closed, alert.message]))}
-            />
-          </AlertItem>
-        );
-      })}
+          return (
+            <AlertItem
+              zIndex={alertsToRender.length - i}
+              aria-hidden={isClosed}
+              left={`${-offset}px`}
+              top={`${isClosed ? -100 : offset}px`}
+              key={alert.message}
+            >
+              <Alert
+                {...alert}
+                onClose={() => {
+                  onClose(alert.message);
+                }}
+              />
+            </AlertItem>
+          );
+        })}
+      </ItemArea>
     </AlertsWrapper>
   );
 };

@@ -21,13 +21,6 @@ import { Truncate } from '../Truncate';
 export type AlertContainerProps = HandlerProps<typeof alertVariants>;
 export type AlertVariants = AlertContainerProps['variant'];
 
-export interface AlertCTAProps {
-  href?: string;
-  text: string;
-  onClick: () => void;
-  disabled?: boolean;
-}
-
 export type AlertProps = {
   className?: string;
   /** Alert Variant String */
@@ -35,7 +28,11 @@ export type AlertProps = {
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
   /** Call to Action Configuration */
-  cta?: AlertCTAProps;
+  cta?: string;
+  /**  */
+  href?: string;
+  /** CTA onClick */
+  onClick: () => void;
   /** Message */
   message: string;
 };
@@ -73,7 +70,8 @@ const alertVariants = variant({
 
 export const AlertBanner = styled.div<AlertContainerProps>(({ theme }) => {
   return css`
-    width: 100%;
+    width: 820px;
+    max-width: 100%;
     padding: ${theme.spacing[8]} ${theme.spacing[16]};
     border: 2px solid ${theme.colors.navy};
     border-radius: 3px;
@@ -84,10 +82,11 @@ export const Alert: React.FC<AlertProps> = ({
   className,
   message,
   variant = 'general',
-  cta = {},
+  cta,
+  href,
+  onClick,
   onClose,
 }) => {
-  const { text, href, onClick } = cta;
   const { icon: Icon } = VARIANT_META[variant];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
@@ -104,8 +103,8 @@ export const Alert: React.FC<AlertProps> = ({
         <FlexBox paddingY={4} height="1.5rem">
           <Icon size={16} />
         </FlexBox>
-        <FlexBox flexGrow={1}>
-          <Truncate expanded={expanded} onTruncate={setTruncated} lines={2}>
+        <FlexBox flexGrow={1} flexShrink={1} justifySelf="stretch">
+          <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
             {message}
           </Truncate>
         </FlexBox>
@@ -119,7 +118,7 @@ export const Alert: React.FC<AlertProps> = ({
         )}
         {cta && (
           <FillButton mode="dark" href={href} onClick={onClick} size="small">
-            {text}
+            {cta}
           </FillButton>
         )}
         {onClose && (
