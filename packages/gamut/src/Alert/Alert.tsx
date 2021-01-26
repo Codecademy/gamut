@@ -125,7 +125,7 @@ export const Alert: React.FC<AlertProps> = ({
           </Truncate>
         </FlexBox>
         {truncated && (
-          <FlexBox height={['1.75rem', , '2rem']}>
+          <FlexBox alignItems="center" height={['1.75rem', , '2rem']}>
             <IconButton
               mode={buttonMode}
               size="small"
@@ -153,7 +153,7 @@ export const Alert: React.FC<AlertProps> = ({
           </FlexBox>
         )}
         {onClose && (
-          <FlexBox height={['1.75rem', , '2rem']}>
+          <FlexBox alignItems="center" height={['1.75rem', , '2rem']}>
             <IconButton
               mode={buttonMode}
               size="small"
