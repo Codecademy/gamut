@@ -47,7 +47,6 @@ const placementVariants = variant({
     inline: {
       position: 'relative',
       display: 'flex',
-      minHeight: '5rem',
       paddingY: 16,
       justifyContent: 'center',
       alignItems: 'flex-start',
@@ -81,8 +80,10 @@ export const Alerts: React.FC<{
     );
   }, [alerts]);
 
+  if (!alertsToRender || closed.length === alertsToRender.length) return null;
+
   return (
-    <AlertContainer width="100%" placement={placement}>
+    <AlertContainer width="100%" minHeight="5rem" placement={placement}>
       <Box position="relative" width="100%" maxWidth="820px">
         {alertsToRender.map((alert, i) => {
           const normalIndex = i - closed.length;

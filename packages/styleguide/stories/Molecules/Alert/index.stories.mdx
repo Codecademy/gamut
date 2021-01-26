@@ -1,4 +1,4 @@
-import { Alert, Alerts, Box } from '@codecademy/gamut/src';
+import { Alert, Alerts, Box, FillButton } from '@codecademy/gamut/src';
 import { Card, Text } from '@codecademy/gamut-labs/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
 import title from '@codecademy/macros/lib/title.macro';
@@ -123,7 +123,15 @@ import { ALERTS } from './constants';
             Inline Form
           </Text>
           {Story()}
-          <Text fontSize={16}>Some asynchronous validation</Text>
+          <Text as="p" fontSize={16} marginBottom={8}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur.
+          </Text>
+          <FillButton size="normal">I agree</FillButton>
         </Card>
       ),
     ]}
