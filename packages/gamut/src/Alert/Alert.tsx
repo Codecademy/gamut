@@ -90,6 +90,8 @@ export const Alert: React.FC<AlertProps> = ({
       role="status"
       aria-label="alert box"
       aria-live="polite"
+      width="100%"
+      maxWidth="820px"
       padding={4}
       paddingX={[4, 8]}
       borderColor="navy"
@@ -98,7 +100,7 @@ export const Alert: React.FC<AlertProps> = ({
       borderRadius="3px"
     >
       <FlexBox
-        columnGap={[4, 12]}
+        columnGap={[4, 8, 12]}
         rowGap={4}
         alignItems="start"
         lineHeight="base"
