@@ -14,7 +14,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { FlexBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
@@ -68,15 +68,7 @@ const alertVariants = variant({
   },
 });
 
-export const AlertBanner = styled.div<AlertContainerProps>(({ theme }) => {
-  return css`
-    width: 820px;
-    max-width: 100%;
-    padding: ${theme.spacing[8]} ${theme.spacing[16]};
-    border: 2px solid ${theme.colors.navy};
-    border-radius: 3px;
-  `;
-}, alertVariants);
+export const AlertBanner = styled(Box)<AlertContainerProps>(alertVariants);
 
 export const Alert: React.FC<AlertProps> = ({
   className,
@@ -98,12 +90,31 @@ export const Alert: React.FC<AlertProps> = ({
       role="status"
       aria-label="alert box"
       aria-live="polite"
+      padding={4}
+      paddingX={[4, 8]}
+      borderColor="navy"
+      borderStyle="solid"
+      borderWidth="2px"
+      borderRadius="3px"
     >
-      <FlexBox columnGap={16} alignItems="start" lineHeight="base">
-        <FlexBox paddingY={4} height="1.5rem">
+      <FlexBox
+        columnGap={[4, 12]}
+        rowGap={4}
+        alignItems="start"
+        lineHeight="base"
+        flexWrap={['wrap', 'nowrap']}
+      >
+        <FlexBox padding={8} alignItems="center" height={['1.75rem', '2rem']}>
           <Icon size={16} />
         </FlexBox>
-        <FlexBox flexGrow={1} flexShrink={1} justifySelf="stretch">
+        <FlexBox
+          flexGrow={1}
+          flexBasis={['50%', 'auto']}
+          justifySelf="stretch"
+          lineHeight="base"
+          paddingTop={[4]}
+          fontSize={[14, 16]}
+        >
           <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
             {message}
           </Truncate>
@@ -117,9 +128,16 @@ export const Alert: React.FC<AlertProps> = ({
           />
         )}
         {cta && (
-          <FillButton mode="dark" href={href} onClick={onClick} size="small">
-            {cta}
-          </FillButton>
+          <FlexBox
+            paddingX={[32, 0]}
+            order={[4, 'initial']}
+            flexBasis={['100%', 'initial']}
+            justifyContent="flex-start"
+          >
+            <FillButton mode="dark" href={href} onClick={onClick} size="small">
+              {cta}
+            </FillButton>
+          </FlexBox>
         )}
         {onClose && (
           <IconButton

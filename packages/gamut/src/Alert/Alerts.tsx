@@ -23,6 +23,7 @@ const stacking = css`
   &[aria-hidden='false'] ~ [aria-hidden='false'] {
     left: -4px;
     top: 4px;
+
     ~ [aria-hidden='false'] {
       left: -8px;
       top: 8px;

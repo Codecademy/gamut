@@ -21,8 +21,7 @@ export const sizedButtonVariants = variant<'size', ButtonSize>({
   variants: {
     small: {
       fontSize: 14,
-      paddingY: 4,
-      paddingX: 8,
+      padding: 8,
     },
     normal: {
       fontSize: 16,
@@ -34,8 +33,8 @@ export const sizedButtonVariants = variant<'size', ButtonSize>({
 
 export const modeColorGroups = {
   dark: {
-    background: colors.white,
-    backgroundDull: colors['gray-400'],
+    background: colors.yellow,
+    backgroundDull: colors.yellow[400],
     backgroundEmphasized: swatches.gray[900],
     backgroundMuted: swatches.gray[600],
     foregroundMuted: swatches.gray[200],
