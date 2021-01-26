@@ -14,8 +14,8 @@ export const AlertItem = styled.div<AlertItemProps>`
   position: absolute;
   padding: ${({ theme }) => theme.spacing[16]};
   opacity: 1;
-  transition: opacity 0.1s ease-out, top 0.4s ease-in, left 0.4s ease-in,
-    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: opacity 0.1s ease-out, top 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
   &[aria-hidden='true'] {
     opacity: 0;
@@ -49,16 +49,15 @@ export const Alerts: React.FC<{ alerts?: AlertProps[] }> = ({
     <AlertsWrapper>
       {alertsToRender.map((alert, i) => {
         const normalIndex = i - closed.length;
-        const hidden = normalIndex > 2;
-        const offset = normalIndex * -4;
+        const offset = normalIndex > 2 ? 8 : normalIndex * 4;
         const isClosed = closed.includes(alert.message);
 
         return (
           <AlertItem
             zIndex={10 - i}
-            aria-hidden={hidden || isClosed}
-            left={`${offset}px`}
-            top={`${isClosed ? -100 : -offset}px`}
+            aria-hidden={isClosed}
+            left={`${-offset}px`}
+            top={`${isClosed ? -100 : offset}px`}
             key={alert.message}
           >
             <Alert
