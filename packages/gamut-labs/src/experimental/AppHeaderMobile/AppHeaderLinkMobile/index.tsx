@@ -6,11 +6,14 @@ import {
   focusStyles,
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderClickHandler,
+  AppHeaderLinkItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderLinkMobileProps = {
   arrowButton?: boolean;
-  onClick: (event: React.MouseEvent) => {};
+  onClick: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
 };
 
@@ -36,7 +39,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      onClick={(event: React.MouseEvent) => onClick(event)}
+      onClick={(event: React.MouseEvent) => onClick(event, item)}
       variant="interface"
     >
       <AppHeaderLinkButtonInner

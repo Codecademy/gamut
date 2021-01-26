@@ -35,15 +35,13 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
       }
     case 'free':
       return freeHeaderItems(
-        props.user.avatar,
-        props.user.displayName,
+        props.user,
         props.renderSearch,
         props.renderNotifications
       );
     case 'pro':
       return proHeaderItems(
-        props.user.avatar,
-        props.user.displayName,
+        props.user,
         props.renderSearch,
         props.renderNotifications
       );

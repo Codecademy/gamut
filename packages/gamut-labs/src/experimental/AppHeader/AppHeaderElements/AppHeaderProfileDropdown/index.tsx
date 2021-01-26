@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../..';
+import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
-import { AppHeaderLink } from '../AppHeaderLink';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
@@ -75,7 +75,7 @@ export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> =
           {item.popover.map((link: AppHeaderLinkItem) => {
             return (
               <Box key={link.id} paddingX={16}>
-                <AppHeaderLink item={link} onClick={onClick} />
+                <AppHeaderLinkMobile item={link} onClick={onClick} />
               </Box>
             );
           })}

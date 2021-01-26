@@ -19,6 +19,7 @@ import {
   signUp,
   upgradeToPro,
 } from './GlobalHeaderItems';
+import { User } from './types';
 
 const anonHeaderItems = (
   renderLogin: boolean,
@@ -68,8 +69,7 @@ export const anonSignupHeaderItems = (
 };
 
 export const freeHeaderItems = (
-  avatar: string,
-  displayName: string,
+  user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
@@ -86,7 +86,7 @@ export const freeHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  rightItems.push(freeProfile(avatar, displayName));
+  rightItems.push(freeProfile(user));
   rightItems.push(upgradeToPro);
 
   return {
@@ -96,8 +96,7 @@ export const freeHeaderItems = (
 };
 
 export const proHeaderItems = (
-  avatar: string,
-  displayName: string,
+  user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
@@ -112,7 +111,7 @@ export const proHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  rightItems.push(proProfile(avatar, displayName));
+  rightItems.push(proProfile(user));
 
   return {
     left: leftItems,

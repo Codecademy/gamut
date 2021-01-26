@@ -58,6 +58,8 @@ The following are available variations for the GlobalHeader component.
 
 ### Pro User
 
+#### Pro User - Default
+
 <Canvas>
   <Story name="Pro User Global Header">
     {(args) => (
@@ -73,7 +75,45 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### Anonymous User - Default
+#### Pro User - Admin
+
+<Canvas>
+  <Story name="Pro User Global Header - Admin">
+    {(args) => (
+      <GlobalHeader
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+          isAdmin: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Customer Support
+
+<Canvas>
+  <Story name="Pro User Global Header - Customer Support">
+    {(args) => (
+      <GlobalHeader
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+          isCustomerSupport: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+### Anonymous User
+
+#### Anonymous User - Default
 
 <Canvas>
   <Story name="Anonymous User Global Header">
@@ -81,7 +121,7 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### Anonymous User - Landing Page
+#### Anonymous User - Landing Page
 
 <Canvas>
   <Story name="Anonymous User Global Header - Landing">
@@ -89,7 +129,7 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### Anonymous User - Login Page
+#### Anonymous User - Login Page
 
 <Canvas>
   <Story name="Anonymous User Global Header - Login">
@@ -103,7 +143,7 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### Anonymous User - Signup Page
+#### Anonymous User - Signup Page
 
 <Canvas>
   <Story name="Anonymous User Global Header - Signup">

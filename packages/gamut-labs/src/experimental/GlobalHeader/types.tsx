@@ -7,11 +7,11 @@ type BaseHeader = {
   renderSearch?: () => ReactNode;
 };
 
-type User = {
+export type User = {
   avatar: string;
   displayName: string;
   isAdmin?: boolean;
-  isCustomerService?: boolean;
+  isCustomerSupport?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
