@@ -10,7 +10,6 @@ import {
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -123,7 +122,7 @@ export const Alert: React.FC<AlertProps> = ({
         </FlexBox>
         {truncated && (
           <IconButton
-            mode="dark"
+            mode="dark-alt"
             size="small"
             icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
             onClick={() => setExpanded(!expanded)}
@@ -131,19 +130,25 @@ export const Alert: React.FC<AlertProps> = ({
         )}
         {cta && (
           <FlexBox
+            fontWeight="title"
             paddingX={[32, 0]}
             order={[4, 'initial']}
             flexBasis={['100%', 'initial']}
             justifyContent="flex-start"
           >
-            <FillButton mode="dark" href={href} onClick={onClick} size="small">
+            <FillButton
+              mode="dark-alt"
+              href={href}
+              onClick={onClick}
+              size="small"
+            >
               {cta}
             </FillButton>
           </FlexBox>
         )}
         {onClose && (
           <IconButton
-            mode="dark"
+            mode="dark-alt"
             size="small"
             onClick={onClose}
             icon={MiniDeleteIcon}
