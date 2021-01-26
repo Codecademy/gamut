@@ -29,5 +29,6 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
