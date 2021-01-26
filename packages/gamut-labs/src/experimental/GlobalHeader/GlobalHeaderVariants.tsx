@@ -6,13 +6,14 @@ import {
   communityDropdown,
   courseCatalog,
   forEnterprise,
+  freeProfile,
   login,
   logo,
   myHome,
   notifications,
   plansPricingDropdown,
-  profile,
   proLogo,
+  proProfile,
   resourcesDropdown,
   search,
   signUp,
@@ -67,9 +68,10 @@ export const anonSignupHeaderItems = (
 };
 
 export const freeHeaderItems = (
+  avatar: string,
+  displayName: string,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode,
-  renderProfile?: () => ReactNode
+  renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -84,7 +86,7 @@ export const freeHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderProfile && rightItems.push(profile(renderProfile));
+  rightItems.push(freeProfile(avatar, displayName));
   rightItems.push(upgradeToPro);
 
   return {
@@ -94,9 +96,10 @@ export const freeHeaderItems = (
 };
 
 export const proHeaderItems = (
+  avatar: string,
+  displayName: string,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode,
-  renderProfile?: () => ReactNode
+  renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
@@ -109,7 +112,7 @@ export const proHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderProfile && rightItems.push(profile(renderProfile));
+  rightItems.push(proProfile(avatar, displayName));
 
   return {
     left: leftItems,

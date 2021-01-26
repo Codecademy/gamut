@@ -8,6 +8,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { AppHeaderDropdown, AppHeaderLink, AppHeaderLogo } from '..';
+import { AppHeaderProfileDropdown } from './AppHeaderElements/AppHeaderProfileDropdown';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
@@ -50,6 +51,12 @@ const mapItemToElement = (
       return (
         <AppHeaderTab key={item.id}>
           <AppHeaderDropdown item={item} onClick={onClick} />
+        </AppHeaderTab>
+      );
+    case 'profile-dropdown':
+      return (
+        <AppHeaderTab key={item.id}>
+          <AppHeaderProfileDropdown item={item} onClick={onClick} />
         </AppHeaderTab>
       );
     case 'render-element':

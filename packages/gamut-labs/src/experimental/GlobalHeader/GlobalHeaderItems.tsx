@@ -1,3 +1,4 @@
+import { PersonIcon } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
 import {
@@ -5,6 +6,7 @@ import {
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
+  AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
@@ -171,13 +173,112 @@ export const notifications = (
   };
 };
 
-export const profile = (
-  renderProfile: () => ReactNode
-): AppHeaderRenderElementItem => {
+export const freeProfile = (
+  avatar: string,
+  displayName: string
+): AppHeaderProfileDropdownItem => {
   return {
+    avatar,
+    displayName,
     id: 'profile',
-    renderElement: renderProfile,
-    type: 'render-element',
+    text: 'Profile',
+    popover: [
+      {
+        id: 'my-profile',
+        href: '/profiles/me',
+        trackingTarget: 'avatar_my_profile',
+        text: 'Profile',
+        type: 'link',
+      },
+      {
+        id: 'account',
+        href: '/account',
+        trackingTarget: 'avatar_settings',
+        text: 'Account + Billing',
+        type: 'link',
+      },
+      {
+        id: 'my-home',
+        href: '/learn',
+        trackingTarget: 'avatar_dashboard',
+        text: 'My Home',
+        type: 'link',
+      },
+      {
+        id: 'help-center',
+        href: '/help',
+        trackingTarget: 'avatar_help',
+        text: 'Help Center',
+        type: 'link',
+      },
+      {
+        id: 'log-out',
+        href: '/sign_out',
+        trackingTarget: 'avatar_log_out',
+        text: 'Log Out',
+        type: 'link',
+      },
+    ],
+    trackingTarget: 'topnav_pricing',
+    type: 'profile-dropdown',
+  };
+};
+
+export const proProfile = (
+  avatar: string,
+  displayName: string
+): AppHeaderProfileDropdownItem => {
+  return {
+    avatar,
+    displayName,
+    id: 'profile',
+    text: 'Profile',
+    popover: [
+      {
+        id: 'my-profile',
+        href: '/profiles/me',
+        trackingTarget: 'avatar_my_profile',
+        text: 'Profile',
+        type: 'link',
+      },
+      {
+        id: 'account',
+        href: '/account',
+        trackingTarget: 'avatar_settings',
+        text: 'Account + Billing',
+        type: 'link',
+      },
+      {
+        id: 'my-home',
+        href: '/learn',
+        trackingTarget: 'avatar_dashboard',
+        text: 'My Home',
+        type: 'link',
+      },
+      {
+        id: 'business',
+        href: '/business/plans',
+        trackingTarget: 'avatar_business',
+        text: 'Business Account Management',
+        type: 'link',
+      },
+      {
+        id: 'help-center',
+        href: '/help',
+        trackingTarget: 'avatar_help',
+        text: 'Help Center',
+        type: 'link',
+      },
+      {
+        id: 'log-out',
+        href: '/sign_out',
+        trackingTarget: 'avatar_log_out',
+        text: 'Log Out',
+        type: 'link',
+      },
+    ],
+    trackingTarget: 'topnav_pricing',
+    type: 'profile-dropdown',
   };
 };
 

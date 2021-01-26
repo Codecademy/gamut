@@ -35,15 +35,17 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
       }
     case 'free':
       return freeHeaderItems(
+        props.user.avatar,
+        props.user.displayName,
         props.renderSearch,
-        props.renderNotifications,
-        props.renderProfile
+        props.renderNotifications
       );
     case 'pro':
       return proHeaderItems(
+        props.user.avatar,
+        props.user.displayName,
         props.renderSearch,
-        props.renderNotifications,
-        props.renderProfile
+        props.renderNotifications
       );
   }
 };

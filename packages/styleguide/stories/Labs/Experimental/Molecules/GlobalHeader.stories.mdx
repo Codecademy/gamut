@@ -1,5 +1,5 @@
 import { Box, IconButton } from '@codecademy/gamut/src';
-import { BellIcon, PersonIcon, SearchIcon } from '@codecademy/gamut-icons/src';
+import { BellIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import { GlobalHeader } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -17,7 +17,18 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 ## GlobalHeader
 
 <Canvas withSource="open">
-  <Story name="GlobalHeader">{(args) => <GlobalHeader type="free" />}</Story>
+  <Story name="GlobalHeader">
+    {(args) => (
+      <GlobalHeader
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+        }}
+      />
+    )}
+  </Story>
 </Canvas>
 
 GlobalHeader takes in several props. `type` determines which header to render based on the user role (anonymous, free, or pro). `type` will also determine which of Search, Notification, and Profile components need to be passed in: Search will appear for all users, whereas Notifications and Profile will only appear for logged-in users. `onClick` will be defined by the consumer and handle any routing/tracking that needs to be done. `variant` is a prop which may only be used when `type="anon"`, and provides variations of the anonymous header for the landing page, login page, and signup page.
@@ -32,7 +43,16 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Free User Global Header">
-    {(args) => <GlobalHeader type="free" />}
+    {(args) => (
+      <GlobalHeader
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -40,7 +60,16 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Pro User Global Header">
-    {(args) => <GlobalHeader type="pro" />}
+    {(args) => (
+      <GlobalHeader
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+        }}
+      />
+    )}
   </Story>
 </Canvas>
 
@@ -88,18 +117,22 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
-### GlobalHeader With Search, Notifications, and Profile Dropdown
+### GlobalHeader With Search and Notifications
 
 To mock this, IconButtons are provided as placeholders.
 
 <Canvas>
-  <Story name="GlobalHeader Search Notifications Profile">
+  <Story name="GlobalHeader Search Notifications">
     {(args) => (
       <GlobalHeader
         renderNotifications={() => <IconButton icon={BellIcon} />}
-        renderProfile={() => <IconButton icon={PersonIcon} />}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+          displayName: 'Codey',
+        }}
       />
     )}
   </Story>

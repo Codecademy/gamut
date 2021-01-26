@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
 import { GamutIconProps } from '@codecademy/gamut-icons';
-
+import { ReactNode } from 'react';
 
 export type AppHeaderItem =
   | AppHeaderLogoItem
@@ -8,6 +7,7 @@ export type AppHeaderItem =
   | AppHeaderTextButtonItem
   | AppHeaderFillButtonItem
   | AppHeaderDropdownItem
+  | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
 type AppHeaderBaseItem = {
@@ -50,6 +50,15 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
   text: string;
   trackingTarget: string;
   type: 'dropdown';
+};
+
+export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
+  avatar: string;
+  displayName: string;
+  popover: AppHeaderLinkItem[];
+  text: string;
+  trackingTarget: string;
+  type: 'profile-dropdown';
 };
 
 export type AppHeaderRenderElementItem = AppHeaderBaseItem & {

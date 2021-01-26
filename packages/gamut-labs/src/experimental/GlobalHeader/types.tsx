@@ -7,9 +7,17 @@ type BaseHeader = {
   renderSearch?: () => ReactNode;
 };
 
+type User = {
+  avatar: string;
+  displayName: string;
+  isAdmin?: boolean;
+  isCustomerService?: boolean;
+};
+
 type LoggedInHeader = BaseHeader & {
   renderNotifications?: () => ReactNode;
   renderProfile?: () => ReactNode;
+  user: User;
 };
 
 export type AnonHeader = BaseHeader & {
