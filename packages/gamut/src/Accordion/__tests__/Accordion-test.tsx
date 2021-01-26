@@ -2,7 +2,7 @@ import { setupEnzyme } from '@codecademy/gamut-tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { Accordion, AccordionProps } from '..';
+import { Accordion } from '..';
 
 const renderWrapper = setupEnzyme(Accordion, {
   children: <div data-testid="contents" />,
