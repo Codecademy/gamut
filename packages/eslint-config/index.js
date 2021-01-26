@@ -6,14 +6,15 @@ module.exports = {
     node: true,
   },
   extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/react',
     'prettier/@typescript-eslint',
+    'prettier/react',
   ],
 
   // ensure that ts eslint parser only runs for the correct files
@@ -67,10 +68,12 @@ module.exports = {
 
   plugins: [
     'import',
+    'jest',
+    'jest-react',
     'jsx-a11y',
     'no-only-tests',
-    'react',
     'react-hooks',
+    'react',
     'simple-import-sort',
   ],
 
