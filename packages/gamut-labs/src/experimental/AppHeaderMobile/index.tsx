@@ -2,12 +2,14 @@
 import {
   AppBar,
   AppBarSection,
+  Container,
   FillButton,
+  Overlay,
   TextButton,
 } from '@codecademy/gamut';
 import { MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import { AppHeaderDropdown, AppHeaderItemsProp, AppHeaderLogo } from '..';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
@@ -20,6 +22,7 @@ import {
   AppHeaderItem,
 } from './../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from './../AppHeaderMobile/AppHeaderLinkMobile';
+import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
   items: AppHeaderItemsProp;
@@ -95,24 +98,49 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   className,
   onClick,
 }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const openMobileMenu = () => {
+    setMobileMenuOpen(true);
+  };
+
   return (
-    <AppBar className={className}>
-      <AppBarSection position="left">
-        {items.left.map((item) => mapItemToElement(item, onClick))}
-      </AppBarSection>
-      <AppBarSection position="right">
-        {items.right.map((item) => mapItemToElement(item, onClick))}
-        <AppHeaderTab>
-          {/* monolith aria label doesn't seem to make sense here: open settings menu */}
-          <MenuButton
-            type="button"
-            data-testid="header-mobile-menu"
-            aria-label="open navigation menu"
-          >
-            <MenuIcon height={20} width={20} />
-          </MenuButton>
-        </AppHeaderTab>
-      </AppBarSection>
-    </AppBar>
+    <>
+      <AppBar className={className}>
+        <AppBarSection position="left">
+          {items.left.map((item) => mapItemToElement(item, onClick))}
+        </AppBarSection>
+        <AppBarSection position="right">
+          {items.right.map((item) => mapItemToElement(item, onClick))}
+          <AppHeaderTab>
+            {/* monolith aria label doesn't seem to make sense here: open settings menu */}
+            <MenuButton
+              type="button"
+              data-testid="header-mobile-menu"
+              aria-label="open navigation menu"
+              onClick={() => {
+                openMobileMenu();
+              }}
+            >
+              <MenuIcon height={20} width={20} />
+            </MenuButton>
+          </AppHeaderTab>
+        </AppBarSection>
+      </AppBar>
+      <Container>
+        <Overlay
+          className={styles.overlay}
+          clickOutsideCloses
+          escapeCloses
+          isOpen={mobileMenuOpen}
+          onRequestClose={() => setMobileMenuOpen(false)}
+        >
+          <Container>
+            <h1>test</h1>
+            <button type="button">button</button>
+          </Container>
+        </Overlay>
+      </Container>
+    </>
   );
 };

@@ -1,0 +1,51 @@
+import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderMainMenuMobile"
+  component={AppHeaderMainMenuMobile}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+  }}
+  args={{
+    logo: {
+      id: 'test',
+      dataTestId: '',
+      pro: true,
+      href: 'http://codecademy.com',
+      trackingTarget: 'test',
+      type: 'logo',
+    },
+    items: [
+      {
+        dataTestId: 'header-catalog',
+        icon: BookFlipPageIcon,
+        id: 'course-catalog',
+        text: 'Course Catalog',
+        href: '/catalog',
+        trackingTarget: 'topnav_catalog',
+        type: 'link',
+      },
+      {
+        dataTestId: 'header-home',
+        icon: HouseEntranceIcon,
+        id: 'my-home',
+        text: 'My Home',
+        href: '/learn',
+        trackingTarget: 'topnav_home',
+        type: 'link',
+      },
+    ],
+  }}
+/>
+
+<Props of={AppHeaderMainMenuMobile} />
+
+## AppHeaderMainMenuMobile
+
+<Canvas>
+  <Story name="App Header Main Menu Mobile">
+    {(args) => <AppHeaderMainMenuMobile {...args} />}
+  </Story>
+</Canvas>
