@@ -8,7 +8,6 @@ import {
   AppHeaderSubMenuMobileProps,
 } from './../index';
 
-const subMenuHeading = 'Community';
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
 const onClick = jest.fn();
@@ -18,7 +17,7 @@ const props: AppHeaderSubMenuMobileProps = {
   item: {
     dataTestId: '',
     id: 'test-link',
-    text: subMenuHeading,
+    text: 'menu heading',
     trackingTarget: '',
     type: 'dropdown',
     popover: [
@@ -53,27 +52,15 @@ const renderAppHeaderSubMenuMobile = () => {
 };
 
 describe('AppHeaderSubMenuMobile', () => {
-  it('displays the sub menu title', () => {
-    renderAppHeaderSubMenuMobile();
-    expect(screen.getByRole('heading').innerHTML).toBe(subMenuHeading);
-  });
-
-  it('renders the sub menu links', () => {
-    renderAppHeaderSubMenuMobile();
-    expect(screen.getAllByRole('link')).toHaveLength(2);
-  });
-
   it('creates sublinks with the provided hrefs', () => {
     renderAppHeaderSubMenuMobile();
-    expect(screen.getAllByRole('link')[0].getAttribute('href')).toEqual(
-      sublink1Href
-    );
-    expect(screen.getAllByRole('link')[1].getAttribute('href')).toEqual(
-      sublink2Href
-    );
+    const linkArray = screen
+      .getAllByRole('link')
+      .map((node) => node.getAttribute('href'));
+    expect(linkArray).toStrictEqual([sublink1Href, sublink2Href]);
   });
 
-  it('links back to the main menu', () => {
+  it('calls handleClose when the menu link is clicked', () => {
     renderAppHeaderSubMenuMobile();
     screen.getByText('Full Menu').click();
     expect(handleClose).toHaveBeenCalled();
