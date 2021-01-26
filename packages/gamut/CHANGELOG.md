@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.11.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.4...@codecademy/gamut@19.11.5) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.11.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.3...@codecademy/gamut@19.11.4) (2021-01-25)
+
+
+### Bug Fixes
+
+* **Checkbox:** Fixes :checked + :disabled styles ([b06c2e4](https://github.com/Codecademy/client-modules/commit/b06c2e4819c47644e12632ab15d34ad91a2c96ed))
+
+
+
+### [19.11.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.2...@codecademy/gamut@19.11.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [19.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.1...@codecademy/gamut@19.11.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **Checkbox:** Remove overwritten data-testids on checkboxes ([a7792e7](https://github.com/Codecademy/client-modules/commit/a7792e73f84f65cf2139322bd4a56de443e5c6c8))
+
+
+
 ### [19.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.0...@codecademy/gamut@19.11.1) (2021-01-19)
 
 
