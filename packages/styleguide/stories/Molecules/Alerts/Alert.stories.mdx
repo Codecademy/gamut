@@ -15,7 +15,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
   args={{
     variant: 'general',
-    cta: { text: 'Login', onClick: action('CTA Click') },
+    cta: { text: 'Learn more', onClick: action('CTA Click') },
     message:
       'You have been logged out due to inactivity. Click the button to log in again.',
   }}
@@ -37,19 +37,54 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 ## Alert Variants
 
 <Canvas>
-  <Story name="general" args={{ variant: 'general' }}>
+  <Story
+    name="general"
+    args={{
+      variant: 'general',
+      message: 'You have been logged out due to inactivity.',
+      cta: { text: 'Login' },
+    }}
+  >
     {(args) => <Alert {...args} />}
   </Story>
-  <Story name="success" args={{ variant: 'success' }}>
+  <Story
+    name="success"
+    args={{
+      variant: 'success',
+      message:
+        'Success notification with an icon, an inline link, a call-to-action and an X',
+    }}
+  >
     {(args) => <Alert {...args} />}
   </Story>
-  <Story name="error" args={{ variant: 'error' }}>
+  <Story
+    name="error"
+    args={{
+      variant: 'error',
+      message:
+        'Couldn’t save your account changes because there is connection.',
+    }}
+  >
     {(args) => <Alert {...args} />}
   </Story>
-  <Story name="maintenance" args={{ variant: 'maintenance' }}>
+  <Story
+    name="maintenance"
+    args={{
+      variant: 'maintenance',
+      message:
+        'Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM.',
+    }}
+  >
     {(args) => <Alert {...args} />}
   </Story>
-  <Story name="feature" args={{ variant: 'feature' }}>
+  <Story
+    name="feature"
+    args={{
+      variant: 'feature',
+      message:
+        'You can now do this new thing with this new feature we just added!',
+    }}
+  >
     {(args) => <Alert {...args} />}
   </Story>
 </Canvas>
