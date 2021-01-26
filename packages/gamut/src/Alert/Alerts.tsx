@@ -1,4 +1,4 @@
-import { positioning } from '@codecademy/gamut-styles';
+import { positioning, variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -41,10 +41,37 @@ export const AlertItem = styled.div<AlertItemProps>`
   ${stacking}
 `;
 
+const placementVariants = variant({
+  prop: 'placement',
+  variants: {
+    inline: {
+      position: 'relative',
+      display: 'flex',
+      minHeight: '5rem',
+      paddingY: 16,
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+    },
+    'top-center': {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      top: '5rem',
+      left: 0,
+      right: 0,
+    },
+  },
+});
+
+export const AlertContainer = styled(Box)(placementVariants);
+
 export const Alerts: React.FC<{
+  id?: string;
+  placement?: HandlerProps<typeof placementVariants>['placement'];
   alerts?: AlertProps[];
   onClose: (id: string) => void;
-}> = ({ alerts = [], onClose }) => {
+}> = ({ id, alerts = [], onClose, placement = 'inline' }) => {
   const [closed, setClosed] = useState<string[]>([]);
 
   const alertsToRender = useMemo(() => {
@@ -55,17 +82,7 @@ export const Alerts: React.FC<{
   }, [alerts]);
 
   return (
-    <Box
-      position="absolute"
-      display="flex"
-      alignItems="flex-start"
-      justifyContent="center"
-      left="0"
-      right="0"
-      top="0"
-      height="100%"
-      width="100%"
-    >
+    <AlertContainer width="100%" placement={placement}>
       <Box position="relative" width="100%" maxWidth="820px">
         {alertsToRender.map((alert, i) => {
           const normalIndex = i - closed.length;
@@ -75,7 +92,7 @@ export const Alerts: React.FC<{
             <AlertItem
               zIndex={alertsToRender.length - i}
               aria-hidden={isClosed}
-              key={alert.message}
+              key={`${id}-${alert.message}`}
             >
               <Alert
                 {...alert}
@@ -88,6 +105,6 @@ export const Alerts: React.FC<{
           );
         })}
       </Box>
-    </Box>
+    </AlertContainer>
   );
 };

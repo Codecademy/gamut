@@ -43,7 +43,7 @@ export const modeColorGroups = {
   },
   'dark-alt': {
     background: colors.white,
-    backgroundDull: colors['gray-300'],
+    backgroundDull: swatches.gray[200],
     backgroundEmphasized: colors.navy,
     backgroundMuted: swatches.gray[600],
     foregroundMuted: swatches.gray[200],

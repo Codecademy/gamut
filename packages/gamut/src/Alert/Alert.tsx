@@ -31,7 +31,7 @@ export type AlertProps = {
   /**  */
   href?: string;
   /** CTA onClick */
-  onClick: () => void;
+  onClick?: () => void;
   /** Message */
   message: string;
 };

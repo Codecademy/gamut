@@ -49,4 +49,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withEmotion, withContainer];
+export const decorators = [withContainer, withEmotion];

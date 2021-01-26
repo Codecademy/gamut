@@ -1,4 +1,6 @@
-import { Alert, Alerts } from '@codecademy/gamut/src';
+import { Alert, Alerts, Box } from '@codecademy/gamut/src';
+import { Card, Text } from '@codecademy/gamut-labs/src';
+import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -61,11 +63,18 @@ import { ALERTS } from './constants';
   <Story
     name="Truncated"
     args={{
-      ...ALERTS.feature,
       message:
         'You can now do this new thing with this new feature we just added! Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM.  Couldn’t save your account changes because there is connection.',
     }}
   >
+    {(args) => <Alert {...args} />}
+  </Story>
+</Canvas>
+
+## No CTA
+
+<Canvas>
+  <Story name="No CTA" args={{ cta: undefined }}>
     {(args) => <Alert {...args} />}
   </Story>
 </Canvas>
@@ -75,18 +84,82 @@ import { ALERTS } from './constants';
 <Canvas isColumn>
   <Story
     name="Stacked"
-    parameters={{ container: { paddingY: 32 } }}
     args={{
+      id: 'stacked',
       alerts: [ALERTS.general, ALERTS.maintenance, ALERTS.feature],
     }}
   >
     {(args) => <Alerts {...args} />}
   </Story>
   <Story
-    name="Priority"
-    parameters={{ container: { paddingY: 32 } }}
+    name="priority"
     args={{
-      alerts: [ALERTS.feature, ALERTS.feature, ALERTS.success],
+      id: 'priority',
+      alerts: [ALERTS.feature, ALERTS.general, ALERTS.success],
+    }}
+  >
+    {(args) => <Alerts {...args} />}
+  </Story>
+</Canvas>
+
+## Positioning
+
+<Canvas>
+  <Story
+    name="inline"
+    args={{
+      placement: 'inline',
+      alerts: [
+        {
+          ...ALERTS.error,
+          message: 'You messed up something please try again',
+        },
+      ],
+    }}
+    decorators={[
+      (Story) => (
+        <Card variant="white" width="600px" minHeight="20rem" padding={32}>
+          <Text fontFamily="accent" fontSize={36}>
+            Inline Form
+          </Text>
+          {Story()}
+          <Text fontSize={16}>Some asynchronous validation</Text>
+        </Card>
+      ),
+    ]}
+  >
+    {(args) => <Alerts {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="top-center"
+    parameters={{
+      container: {
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center',
+        minHeight: '300px',
+        width: '100%',
+        overflow: 'hidden',
+        backgroundColor: 'beige',
+      },
+    }}
+    decorators={[
+      (Story) => (
+        <>
+          <Box height="3.75rem" width="100%">
+            <GlobalHeader type="pro" />
+          </Box>
+          <>{Story()}</>
+        </>
+      ),
+    ]}
+    args={{
+      id: 'top',
+      placement: 'top-center',
+      alerts: [ALERTS.feature, ALERTS.general, ALERTS.success],
     }}
   >
     {(args) => <Alerts {...args} />}
