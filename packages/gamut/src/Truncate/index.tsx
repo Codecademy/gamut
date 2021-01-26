@@ -30,9 +30,12 @@ export const Truncate: React.FC<TruncateProps> = ({
   /** Truncate markup expects a single child element */
   const truncatedChildren = (
     <TruncateMarkup
+      tokenize="words"
       ellipsis={<span>...</span>}
       lines={lines}
-      onTruncate={(truncated) => setIsTruncated(truncated)}
+      onTruncate={(truncated) => {
+        setIsTruncated(truncated);
+      }}
     >
       <div>
         {React.Children.map(children, (child) =>

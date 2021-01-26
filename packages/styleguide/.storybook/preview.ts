@@ -2,7 +2,7 @@ import { create } from '@storybook/theming';
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
-import { withEmotion } from './decorators/emotion';
+import { withEmotion, withContainer } from './decorators/emotion';
 import { Page } from './components';
 
 const theme = create({
@@ -49,4 +49,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withEmotion];
+export const decorators = [withEmotion, withContainer];

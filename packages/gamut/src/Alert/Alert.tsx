@@ -92,29 +92,29 @@ export const Alert: React.FC<AlertProps> = ({
       width="100%"
       maxWidth="820px"
       padding={4}
-      paddingX={[4, 8]}
+      paddingX={[4, , 8]}
       borderColor="navy"
       borderStyle="solid"
       borderWidth="2px"
       borderRadius="3px"
     >
       <FlexBox
-        columnGap={[4, 8, 12]}
+        columnGap={[4, 8, , 12]}
         rowGap={4}
         alignItems="start"
         lineHeight="base"
-        flexWrap={['wrap', 'nowrap']}
+        flexWrap={['wrap', , 'nowrap']}
       >
-        <FlexBox padding={8} alignItems="center" height={['1.75rem', '2rem']}>
+        <FlexBox padding={8} alignItems="center" height={['1.75rem', , '2rem']}>
           <Icon size={16} />
         </FlexBox>
         <FlexBox
           flexGrow={1}
-          flexBasis={['50%', 'auto']}
+          flexBasis={['50%', , 'auto']}
           justifySelf="stretch"
           lineHeight="base"
-          paddingTop={[4]}
-          fontSize={[14, 16]}
+          paddingTop={4}
+          fontSize={[14, , 16]}
         >
           <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
             {message}
@@ -131,9 +131,9 @@ export const Alert: React.FC<AlertProps> = ({
         {cta && (
           <FlexBox
             fontWeight="title"
-            paddingX={[32, 0]}
-            order={[4, 'initial']}
-            flexBasis={['100%', 'initial']}
+            paddingX={[32, , 0]}
+            order={[4, , 'initial']}
+            flexBasis={['100%', , 'initial']}
             justifyContent="flex-start"
           >
             <FillButton
