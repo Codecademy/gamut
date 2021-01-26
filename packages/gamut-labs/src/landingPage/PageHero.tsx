@@ -3,7 +3,7 @@ import { Column, LayoutGrid } from '@codecademy/gamut';
 import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
-
+import { omit } from 'lodash';
 import { CTA, Description, Title } from './';
 import { BaseProps } from './types';
 
@@ -60,9 +60,10 @@ export const PageHero: React.FC<PageHeroProps> = ({
         </RightColumn>
       );
     } else if (media && media.type === 'video') {
+      const videoArgs = omit({ ...media }, 'type');
       return (
         <VideoColumn size={{ xs: 12, sm: 7 }}>
-          <StyledVideo videoUrl={media?.videoUrl} />
+          <StyledVideo {...videoArgs} />
         </VideoColumn>
       );
     }
