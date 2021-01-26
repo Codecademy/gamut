@@ -1,18 +1,18 @@
 import React from 'react';
 import { propGroups, PropGroups } from './constants';
-import { Toggle } from '@codecademy/gamut/src';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
+import { BooleanControl } from '@storybook/components';
+
 import {
-  Header,
   PropItem,
   PropGroupTooltip,
   PropGroupTag,
-  HeaderColumn,
   Title,
   ToggleContainer,
   ToggleLabel,
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
+import { Box } from '../TableOfContents/elements';
 
 type PropTagProps = {
   prop: PropGroups;
@@ -27,7 +27,7 @@ export const PropTag: React.FC<PropTagProps> = ({ prop, active, onClick }) => {
       {prop}
       <PropGroupTooltip>
         {propNames.map((propName) => (
-          <PropItem key={`${prop}-prop`}>{propName}</PropItem>
+          <PropItem key={`${prop}-${propName}`}>{propName}</PropItem>
         ))}
       </PropGroupTooltip>
     </PropGroupTag>
@@ -53,11 +53,22 @@ export const PropsTable: React.FC<PropsTableProps> = ({
   return (
     <>
       {hasSystemProps && (
-        <Header>
-          <HeaderColumn>
+        <Box>
+          <Box display="grid" gridTemplateColumns="minmax(0, 1fr) max-content">
             <Title>System Props</Title>
-          </HeaderColumn>
-          <HeaderColumn>
+            <ToggleContainer>
+              <ToggleLabel htmlFor="toggle-props">
+                Show all in table:
+              </ToggleLabel>
+              <BooleanControl
+                name="toggle-props"
+                value={showAll}
+                defaultValue={showAll}
+                onChange={toggleAll}
+              />
+            </ToggleContainer>
+          </Box>
+          <Box>
             {allGroups.map((group) => (
               <PropTag
                 key={`${group}-group`}
@@ -66,19 +77,8 @@ export const PropsTable: React.FC<PropsTableProps> = ({
                 active={!showAll && activeGroups.includes(group)}
               />
             ))}
-          </HeaderColumn>
-          <HeaderColumn>
-            <ToggleContainer>
-              <ToggleLabel>Show in table</ToggleLabel>
-              <Toggle
-                size="small"
-                label="Show in table"
-                checked={showAll}
-                onChange={toggleAll}
-              />
-            </ToggleContainer>
-          </HeaderColumn>
-        </Header>
+          </Box>
+        </Box>
       )}
       <ArgsTable {...props} exclude={excludedProps} />
     </>
