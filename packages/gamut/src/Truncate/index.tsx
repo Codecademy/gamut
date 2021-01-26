@@ -1,7 +1,3 @@
-import {
-  ArrowChevronDownIcon,
-  ArrowChevronUpIcon,
-} from '@codecademy/gamut-icons';
 import React, { isValidElement, useEffect, useState } from 'react';
 import TruncateMarkup from 'react-truncate-markup';
 
