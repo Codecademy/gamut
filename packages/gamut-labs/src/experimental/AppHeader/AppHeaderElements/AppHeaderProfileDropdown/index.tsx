@@ -65,7 +65,7 @@ export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> =
       <div ref={headerDropdownRef}>{clickTarget}</div>
       <Popover
         align={'right'}
-        verticalOffset={-2}
+        verticalOffset={0}
         outline
         isOpen={isOpen}
         onRequestClose={handleClose}

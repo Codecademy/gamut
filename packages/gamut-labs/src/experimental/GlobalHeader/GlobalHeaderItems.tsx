@@ -220,6 +220,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
   id: 'help-center',
   icon: SupportIcon,
   href: '/help',
+  newTab: true,
   trackingTarget: 'avatar_help',
   text: 'Help Center',
   type: 'link',

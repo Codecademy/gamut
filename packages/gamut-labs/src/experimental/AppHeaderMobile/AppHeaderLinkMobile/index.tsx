@@ -1,4 +1,5 @@
 import { Anchor, Box } from '@codecademy/gamut';
+import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
@@ -13,8 +14,8 @@ import {
 
 export type AppHeaderLinkMobileProps = {
   arrowButton?: boolean;
-  onClick: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
+  onClick: AppHeaderClickHandler;
 };
 
 const AppHeaderLinkButtonOuter = styled(Anchor)`

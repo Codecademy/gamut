@@ -4,7 +4,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownProps } from '../../..';
+import { AppHeaderProfileDropdownProps } from '../../..';
 import {
   focusStyles,
   hoverStyles,
@@ -13,7 +13,7 @@ import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import styles from './styles.module.scss';
 
-export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
+export type AppHeaderProfileSubMenuMobileProps = AppHeaderProfileDropdownProps & {
   handleClose: () => void;
 };
 
@@ -35,7 +35,7 @@ const FullMenuButton = styled.button`
   ${focusStyles}
 `;
 
-export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
+export const AppHeaderProfileSubMenuMobile: React.FC<AppHeaderProfileSubMenuMobileProps> = ({
   handleClose,
   item,
   onClick,

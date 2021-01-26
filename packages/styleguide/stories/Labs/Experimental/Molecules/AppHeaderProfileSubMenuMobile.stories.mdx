@@ -1,0 +1,45 @@
+import { AppHeaderProfileSubMenuMobile } from '@codecademy/gamut-labs/src';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderProfileSubMenuMobile"
+  component={AppHeaderProfileSubMenuMobile}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: {
+      avatar:
+        'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+      displayName: 'Codey',
+      id: 'profile',
+      text: 'Profile',
+      popover: [
+        {
+          id: 'sublink-1',
+          text: 'A Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+        {
+          id: 'sublink-2',
+          text: 'Another Link',
+          href: 'http://codecademy.com',
+          trackingTarget: '',
+          type: 'link',
+        },
+      ],
+      trackingTarget: 'topnav_pricing',
+      type: 'profile-dropdown',
+    },
+  }}
+/>
+
+<Props of={AppHeaderProfileSubMenuMobile} />
+
+## Profile SubMenu
+
+<Canvas>
+  <Story name="AppHeaderProfileSubMenuMobile">
+    {(args) => <AppHeaderProfileSubMenuMobile {...args} />}
+  </Story>
+</Canvas>
