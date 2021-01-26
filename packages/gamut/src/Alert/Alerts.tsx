@@ -1,32 +1,26 @@
-import { css } from '@emotion/react';
+import { positioning } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
 import styled from '@emotion/styled';
 import { uniq } from 'lodash';
 import React, { useMemo, useState } from 'react';
 
 import { Alert, AlertProps, VARIANT_META } from './Alert';
 
-type AlertItemProps = { index: number; offset: number; isClosed?: boolean };
+type AlertItemProps = HandlerProps<typeof positioning>;
 
 export const AlertItem = styled.div<AlertItemProps>`
+  ${positioning}
   width: 100%;
   position: absolute;
   padding: ${({ theme }) => theme.spacing[16]};
-  z-index: ${({ index }) => index};
-  top: ${({ offset }) => offset}px;
-  left: ${({ offset }) => `calc(50% + ${offset + 10}px)`};
-  transform: translate(-50%, 0);
   opacity: 1;
-
   transition: opacity 0.1s ease-out, top 0.4s ease-in, left 0.4s ease-in,
     transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
-  ${({ isClosed }) =>
-    isClosed &&
-    css`
-      opacity: 0;
-      pointer-events: none;
-      transform: translate(-50%, 100%);
-    `}
+  &[aria-hidden='true'] {
+    opacity: 0;
+    pointer-events: none;
+  }
 `;
 
 export const AlertsWrapper = styled.div`
@@ -55,15 +49,16 @@ export const Alerts: React.FC<{ alerts?: AlertProps[] }> = ({
     <AlertsWrapper>
       {alertsToRender.map((alert, i) => {
         const normalIndex = i - closed.length;
-        const offset = (normalIndex > 2 ? 2 : normalIndex) * -10;
+        const hidden = normalIndex > 2;
+        const offset = normalIndex * -4;
         const isClosed = closed.includes(alert.message);
 
         return (
           <AlertItem
-            index={10 - i}
-            aria-hidden={isClosed ?? 'true'}
-            isClosed={isClosed}
-            offset={offset}
+            zIndex={10 - i}
+            aria-hidden={hidden || isClosed}
+            left={`${offset}px`}
+            top={`${isClosed ? -100 : -offset}px`}
             key={alert.message}
           >
             <Alert
