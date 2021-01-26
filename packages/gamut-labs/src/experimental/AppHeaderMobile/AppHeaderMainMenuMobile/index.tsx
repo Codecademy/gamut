@@ -15,6 +15,7 @@ export type AppHeaderMainMenuMobileProps = {
   onClick: AppHeaderClickHandler;
   items: AppHeaderItem[];
 };
+
 const mapItemToElement = (
   item: AppHeaderItem,
   onClick: AppHeaderClickHandler
@@ -33,10 +34,9 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   onClick,
 }) => {
   return (
-    // <>
-    <div>Test</div>
-    // <AppHeaderLogo item={logo} onClick={onClick} />
-    // {items.map(item=>mapItemToElement(item, onClick))}
-    // </>
+    <>
+      <AppHeaderLogo item={logo} onClick={onClick} />
+      {items.map((item) => mapItemToElement(item, onClick))}
+    </>
   );
 };

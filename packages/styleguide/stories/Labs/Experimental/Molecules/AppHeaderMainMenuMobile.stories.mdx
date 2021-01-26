@@ -1,22 +1,19 @@
+import {
+  BookFlipPageIcon,
+  HouseEntranceIcon,
+} from '@codecademy/gamut-icons/src';
 import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Labs/Experimental/Molecules/AppHeaderMainMenuMobile"
+  title={title}
   component={AppHeaderMainMenuMobile}
   parameters={{
     layout: 'padded',
     status: 'volatile',
   }}
   args={{
-    logo: {
-      id: 'test',
-      dataTestId: '',
-      pro: true,
-      href: 'http://codecademy.com',
-      trackingTarget: 'test',
-      type: 'logo',
-    },
     items: [
       {
         dataTestId: 'header-catalog',
@@ -37,6 +34,14 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
         type: 'link',
       },
     ],
+    logo: {
+      id: 'test',
+      dataTestId: '',
+      pro: true,
+      href: 'http://codecademy.com',
+      trackingTarget: 'test',
+      type: 'logo',
+    },
   }}
 />
 
