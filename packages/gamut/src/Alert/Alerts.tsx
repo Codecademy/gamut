@@ -1,11 +1,34 @@
 import { positioning } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useMemo, useState } from 'react';
 
+import { Box } from '../Box';
 import { Alert, AlertProps, VARIANT_META } from './Alert';
 
 type AlertItemProps = HandlerProps<typeof positioning>;
+
+const stacking = css`
+  &[aria-hidden='true'] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &[aria-hidden='false'] {
+    left: 0;
+    top: 0;
+  }
+
+  &[aria-hidden='false'] ~ [aria-hidden='false'] {
+    left: -4px;
+    top: 4px;
+    ~ [aria-hidden='false'] {
+      left: -8px;
+      top: 8px;
+    }
+  }
+`;
 
 export const AlertItem = styled.div<AlertItemProps>`
   ${positioning}
@@ -14,36 +37,14 @@ export const AlertItem = styled.div<AlertItemProps>`
   opacity: 1;
   transition: opacity 0.1s ease-out, top 0.4s cubic-bezier(0.23, 1, 0.32, 1),
     left 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-
-  &[aria-hidden='true'] {
-    opacity: 0;
-    pointer-events: none;
-  }
-`;
-
-const ItemArea = styled.div`
-  position: relative;
-  width: 820px;
-`;
-
-export const AlertsWrapper = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  max-width: 1200px;
+  ${stacking}
 `;
 
 export const Alerts: React.FC<{
   alerts?: AlertProps[];
   onClose: (id: string) => void;
 }> = ({ alerts = [], onClose }) => {
-  const [closed] = useState<string[]>([]);
+  const [closed, setClosed] = useState<string[]>([]);
 
   const alertsToRender = useMemo(() => {
     return alerts.sort(
@@ -53,31 +54,39 @@ export const Alerts: React.FC<{
   }, [alerts]);
 
   return (
-    <AlertsWrapper>
-      <ItemArea>
+    <Box
+      position="absolute"
+      display="flex"
+      alignItems="flex-start"
+      justifyContent="center"
+      left="0"
+      right="0"
+      top="0"
+      height="100%"
+      width="100%"
+    >
+      <Box position="relative" width="100%" maxWidth="820px">
         {alertsToRender.map((alert, i) => {
           const normalIndex = i - closed.length;
-          const offset = normalIndex > 2 ? 8 : normalIndex * 4;
-          const isClosed = closed.includes(alert.message);
+          const isClosed = closed.includes(alert.message) || normalIndex > 2;
 
           return (
             <AlertItem
               zIndex={alertsToRender.length - i}
               aria-hidden={isClosed}
-              left={`${-offset}px`}
-              top={`${isClosed ? -100 : offset}px`}
               key={alert.message}
             >
               <Alert
                 {...alert}
                 onClose={() => {
                   onClose(alert.message);
+                  setClosed([...closed, alert.message]);
                 }}
               />
             </AlertItem>
           );
         })}
-      </ItemArea>
-    </AlertsWrapper>
+      </Box>
+    </Box>
   );
 };

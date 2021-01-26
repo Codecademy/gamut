@@ -130,6 +130,17 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     args={{
       alerts: [
         {
+          variant: 'general',
+          message: 'You have been logged out due to inactivity.',
+          cta: 'Login',
+        },
+        {
+          variant: 'success',
+          cta: 'Learn more',
+          message:
+            'Success notification with an icon, an inline link, a call-to-action and an X',
+        },
+        {
           variant: 'feature',
           cta: 'Learn more',
           message:

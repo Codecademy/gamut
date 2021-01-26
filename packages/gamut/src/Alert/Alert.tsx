@@ -1,12 +1,12 @@
 import {
-  ArrowChevronDownIcon,
-  ArrowChevronUpIcon,
-  CheckFilledIcon,
-  CloseCircleIcon,
-  CloseIcon,
-  InfoCircleIcon,
-  StarIcon,
-  SupportFilledIcon,
+  MiniCheckCircleIcon,
+  MiniChevronDownIcon,
+  MiniChevronUpIcon,
+  MiniDeleteIcon,
+  MiniInfoCircleIcon,
+  MiniRemoveCircleIcon,
+  MiniStarIcon,
+  MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
@@ -38,11 +38,11 @@ export type AlertProps = {
 };
 
 export const VARIANT_META = {
-  general: { order: 4, icon: InfoCircleIcon },
-  success: { order: 2, icon: CheckFilledIcon },
-  error: { order: 1, icon: CloseCircleIcon },
-  maintenance: { order: 3, icon: SupportFilledIcon },
-  feature: { order: 5, icon: StarIcon },
+  general: { order: 4, icon: MiniInfoCircleIcon },
+  success: { order: 2, icon: MiniCheckCircleIcon },
+  error: { order: 1, icon: MiniRemoveCircleIcon },
+  maintenance: { order: 3, icon: MiniWarningTriangleIcon },
+  feature: { order: 5, icon: MiniStarIcon },
 };
 
 const alertVariants = variant({
@@ -112,7 +112,7 @@ export const Alert: React.FC<AlertProps> = ({
           <IconButton
             mode="dark"
             size="small"
-            icon={expanded ? ArrowChevronUpIcon : ArrowChevronDownIcon}
+            icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
             onClick={() => setExpanded(!expanded)}
           />
         )}
@@ -126,7 +126,7 @@ export const Alert: React.FC<AlertProps> = ({
             mode="dark"
             size="small"
             onClick={onClose}
-            icon={CloseIcon}
+            icon={MiniDeleteIcon}
           />
         )}
       </FlexBox>
