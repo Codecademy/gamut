@@ -1,0 +1,44 @@
+import { Alerts, Box } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Alerts}
+  decorators={[
+    (Story) => (
+      <Box height="10rem" width="100%" position="relative">
+        <Story />
+      </Box>
+    ),
+  ]}
+  parameters={{
+    subtitle:
+      'An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.',
+    status: 'volatile',
+    source: 'gamut',
+    figmaId: 'TemYhRWOavsERWprDzRJCx',
+  }}
+  args={{
+    alerts: ['error', 'success', 'maintenance', 'feature', 'general'].map(
+      (variant) => ({
+        variant,
+        onClose: () => {},
+        cta: {
+          text: 'Click Me',
+        },
+        message: `Some cool message ${variant}`,
+      })
+    ),
+  }}
+/>
+
+<Canvas>
+  <Story name="Alerts Story" args={{}}>
+    {(args) => {
+      return <Alerts {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+<Props story="Alerts Story" />

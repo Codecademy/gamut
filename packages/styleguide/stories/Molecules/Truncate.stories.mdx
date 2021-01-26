@@ -1,4 +1,4 @@
-import { Text, Truncate } from '@codecademy/gamut/src';
+import { Box, Truncate } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -13,11 +13,9 @@ with the user with various connotations.
     source: 'gamut',
   }}
   args={{
-    children: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur.`,
+    lines: 1,
+    children:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
   }}
 />
 
@@ -34,8 +32,14 @@ with the user with various connotations.
       lines: 1,
       children: (
         <>
-          This works with <Text>any</Text> <Text>random</Text> markup! Try it
-          out.
+          This works with{' '}
+          <Box as="span" fontWeight="title">
+            any
+          </Box>{' '}
+          <Box as="span" textDecoration="underline">
+            random
+          </Box>{' '}
+          markup! Try it out.
         </>
       ),
     }}
