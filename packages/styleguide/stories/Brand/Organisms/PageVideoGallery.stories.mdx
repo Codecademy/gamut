@@ -1,0 +1,38 @@
+import { PageVideoGallery } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={PageVideoGallery}
+  args={{
+    videos: [
+      {
+        title: 'Steppin on the M83',
+        url: 'https://www.youtube.com/watch?v=-m2fVWj99x4',
+      },
+      {
+        title: 'Once in a Lifetime performed by Kermit the Frog',
+        url: 'https://www.youtube.com/watch?v=PCY0aeUx-Ns',
+        placeholderImage:
+          'https://i.kinja-img.com/gawker-media/image/upload/c_fill,f_auto,fl_progressive,g_center,h_675,pg_1,q_80,w_1200/slvzej9jmwy1ze8nknmr.jpg',
+      },
+      {
+        title: 'Spooky Scary Skeletons',
+        url: 'https://www.youtube.com/watch?v=K2rwxs1gH9w',
+        placeholderImage:
+          'https://image.pbs.org/video-assets/UWTcFJA-asset-mezzanine-16x9-NfmXh7O.jpg',
+      },
+    ],
+  }}
+  parameters={{
+    subtitle: `Video Gallery component for landing pages created in Contentful. Videos are lazy-loaded with optionally configurable placeholder images.`,
+    status: 'volatile',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="video-gallery">{(args) => <PageVideoGallery {...args} />}</Story>
+</Canvas>
+
+<Props story="video-gallery" />
