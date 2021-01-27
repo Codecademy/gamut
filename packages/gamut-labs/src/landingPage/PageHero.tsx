@@ -1,33 +1,10 @@
-import { Video, VideoProps } from '@codecademy/gamut';
+import { VideoProps } from '@codecademy/gamut';
 import { Column, LayoutGrid } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
-import styled from '@emotion/styled';
-import { omit } from 'lodash';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
 import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
-
-const RightColumn = styled(Column)`
-  margin-left: 1rem;
-
-  @media only screen and (max-width: ${breakpoints.sm}) {
-    display: none;
-  }
-`;
-
-const VideoColumn = styled(Column)`
-  margin-left: 1rem;
-`;
-
-const Image = styled.img`
-  width: 100%;
-`;
-
-const StyledVideo = styled(Video)`
-  align-self: center;
-`;
 
 export type ImageProps = {
   src: string;
