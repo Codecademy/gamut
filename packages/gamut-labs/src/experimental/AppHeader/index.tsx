@@ -1,9 +1,15 @@
-import { AppBar, AppBarSection } from '@codecademy/gamut';
+import {
+  AppBar,
+  AppBarSection,
+  FillButton,
+  TextButton,
+} from '@codecademy/gamut';
+import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { FillButton, TextButton } from '../../../../gamut/src/Button';
 import { AppHeaderDropdown, AppHeaderLink, AppHeaderLogo } from '..';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
+import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
@@ -19,6 +25,9 @@ export type AppHeaderItemsProp = {
   left: AppHeaderItem[];
   right: AppHeaderItem[];
 };
+
+const AppHeaderTextButton = styled(TextButton)(focusStyles);
+const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 const mapItemToElement = (
   item: AppHeaderItem,
@@ -48,25 +57,25 @@ const mapItemToElement = (
     case 'text-button':
       return (
         <AppHeaderTab key={item.id}>
-          <TextButton
+          <AppHeaderTextButton
             data-testid={item.dataTestId}
             href={item.href}
             onClick={(event: React.MouseEvent) => onClick(event, item)}
           >
             {item.text}
-          </TextButton>
+          </AppHeaderTextButton>
         </AppHeaderTab>
       );
     case 'fill-button':
       return (
         <AppHeaderTab key={item.id}>
-          <FillButton
+          <AppHeaderFillButton
             data-testid={item.dataTestId}
             href={item.href}
             onClick={(event: React.MouseEvent) => onClick(event, item)}
           >
             {item.text}
-          </FillButton>
+          </AppHeaderFillButton>
         </AppHeaderTab>
       );
   }
