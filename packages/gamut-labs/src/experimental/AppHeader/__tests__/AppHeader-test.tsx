@@ -10,6 +10,7 @@ import { AppHeader, AppHeaderProps } from '..';
 const onClick = jest.fn();
 
 const logoProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [
       {
@@ -26,6 +27,7 @@ const logoProps: AppHeaderProps = {
 };
 
 const linkProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [
       {
@@ -42,6 +44,7 @@ const linkProps: AppHeaderProps = {
 };
 
 const dropdownProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [
       {
@@ -73,6 +76,7 @@ const dropdownProps: AppHeaderProps = {
 };
 
 const renderElementProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [],
     right: [
@@ -87,6 +91,7 @@ const renderElementProps: AppHeaderProps = {
 };
 
 const textButtonProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [],
     right: [
@@ -103,6 +108,7 @@ const textButtonProps: AppHeaderProps = {
 };
 
 const fillButtonProps: AppHeaderProps = {
+  baseZIndex: 1,
   items: {
     left: [],
     right: [

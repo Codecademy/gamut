@@ -9,6 +9,7 @@ const testDropdownTexts = ['Test SubLink 1 Text', 'Test Sublink 2 Text'];
 const testDropdownUrls = ['test-sublink-url-1', 'test-sublink-url-2'];
 
 const props: AppHeaderDropdownProps = {
+  baseZIndex: 1,
   item: {
     dataTestId: '',
     id: 'target-link',

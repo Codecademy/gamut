@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { BellIcon, PersonIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';

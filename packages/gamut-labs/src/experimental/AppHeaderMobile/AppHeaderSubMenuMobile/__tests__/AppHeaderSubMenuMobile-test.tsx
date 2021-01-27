@@ -14,6 +14,7 @@ const onClick = jest.fn();
 const handleClose = jest.fn();
 
 const props: AppHeaderSubMenuMobileProps = {
+  baseZIndex: 1,
   item: {
     dataTestId: '',
     id: 'test-link',
