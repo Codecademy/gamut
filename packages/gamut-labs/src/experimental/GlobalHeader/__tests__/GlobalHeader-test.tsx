@@ -17,8 +17,14 @@ import {
   signUp,
   upgradeToPro,
 } from '../GlobalHeaderItems';
+import { User } from '../types';
 
 const onClick = jest.fn();
+const user: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+};
 
 const anonHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
@@ -48,19 +54,21 @@ const anonSignUpHeaderProps: GlobalHeaderProps = {
 const freeHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
   type: 'free',
+  user,
 };
 
 const proHeaderProps: GlobalHeaderProps = {
   onClick: onClick,
   type: 'pro',
+  user,
 };
 
 const renderElementProps: GlobalHeaderProps = {
   onClick: onClick,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   renderNotifications: () => <IconButton icon={BellIcon} />,
-  renderProfile: () => <IconButton icon={PersonIcon} />,
   type: 'pro',
+  user,
 };
 
 const renderGlobalHeader = (props: GlobalHeaderProps) => {
@@ -199,6 +207,10 @@ describe('GlobalHeader', () => {
       screen.getByText(forEnterprise.text);
     });
 
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
+    });
+
     test('upgradeToPro', () => {
       screen.getByText(upgradeToPro.text);
     });
@@ -228,6 +240,10 @@ describe('GlobalHeader', () => {
     test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
+
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
+    });
   });
 
   describe('renders a custom element when provided one', () => {
@@ -241,10 +257,6 @@ describe('GlobalHeader', () => {
 
     test('notifications', () => {
       screen.getByTitle('Bell Icon');
-    });
-
-    test('profile', () => {
-      screen.getByTitle('Person Icon');
     });
   });
 

@@ -3,7 +3,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
-import { Popover } from '../../..';
+import { AppHeaderPopover } from '../../..';
 import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { focusStyles, hoverStyles } from '../SharedStyles';
@@ -33,11 +33,13 @@ const AppHeaderAvatarTargetButton = styled.button`
 `;
 
 export type AppHeaderProfileDropdownProps = {
+  baseZIndex: number;
   item: AppHeaderProfileDropdownItem;
   onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> = ({
+  baseZIndex,
   item,
   onClick,
 }) => {
@@ -63,8 +65,9 @@ export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> =
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
-      <Popover
+      <AppHeaderPopover
         align={'right'}
+        baseZIndex={baseZIndex}
         verticalOffset={0}
         outline
         isOpen={isOpen}
@@ -80,7 +83,7 @@ export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> =
             );
           })}
         </Box>
-      </Popover>
+      </AppHeaderPopover>
     </>
   );
 };

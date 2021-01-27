@@ -20,10 +20,11 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   <Story name="GlobalHeader">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         type="free"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
         }}
       />
@@ -45,10 +46,11 @@ The following are available variations for the GlobalHeader component.
   <Story name="Free User Global Header">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         type="free"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
         }}
       />
@@ -64,10 +66,11 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         type="pro"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
         }}
       />
@@ -81,10 +84,11 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header - Admin">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         type="pro"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
           isAdmin: true,
         }}
@@ -99,11 +103,13 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header - Customer Support">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         type="pro"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
+          isAdmin: true,
           isCustomerSupport: true,
         }}
       />
@@ -117,7 +123,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Anonymous User Global Header">
-    {(args) => <GlobalHeader type="anon" />}
+    {(args) => <GlobalHeader onClick={() => {}} type="anon" />}
   </Story>
 </Canvas>
 
@@ -125,7 +131,9 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Anonymous User Global Header - Landing">
-    {(args) => <GlobalHeader type="anon" variant="landing" />}
+    {(args) => (
+      <GlobalHeader onClick={() => {}} type="anon" variant="landing" />
+    )}
   </Story>
 </Canvas>
 
@@ -135,6 +143,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Anonymous User Global Header - Login">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="anon"
         variant="login"
@@ -149,6 +158,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Anonymous User Global Header - Signup">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="anon"
         variant="signup"
@@ -165,12 +175,13 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="GlobalHeader Search Notifications">
     {(args) => (
       <GlobalHeader
+        onClick={() => {}}
         renderNotifications={() => <IconButton icon={BellIcon} />}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="pro"
         user={{
           avatar:
-            'https://www.gravatar.com/avatar/decf562b785ba1ceda6b66de40eee0f6?s=140&d=retro',
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
         }}
       />
@@ -184,7 +195,7 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="Background Color GlobalHeader">
     {(args) => (
       <Box backgroundColor="beige" width="100%">
-        <GlobalHeader type="anon" />
+        <GlobalHeader onClick={() => {}} type="anon" />
       </Box>
     )}
   </Story>

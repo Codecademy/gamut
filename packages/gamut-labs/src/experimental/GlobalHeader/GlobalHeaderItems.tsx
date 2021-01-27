@@ -229,6 +229,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
   href: '/admin',
+  topSeparator: true,
   trackingTarget: 'avatar_admin',
   text: 'Admin',
   type: 'link',
@@ -253,6 +254,7 @@ const profileReportBug: AppHeaderLinkItem = {
 const profileLogOut: AppHeaderLinkItem = {
   id: 'log-out',
   href: '/sign_out',
+  topSeparator: true,
   trackingTarget: 'avatar_log_out',
   text: 'Log Out',
   type: 'link',

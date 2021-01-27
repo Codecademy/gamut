@@ -32,12 +32,20 @@ const AppHeaderTargetButton = styled.button`
   ${focusStyles}
 `;
 
+type AppHeaderPopoverProps = { baseZIndex: number };
+
+export const AppHeaderPopover = styled(Popover)<AppHeaderPopoverProps>`
+  z-index: ${({ baseZIndex }) => baseZIndex + 1};
+`;
+
 export type AppHeaderDropdownProps = {
+  baseZIndex: number;
   item: AppHeaderDropdownItem;
   onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
+  baseZIndex,
   item,
   onClick,
 }) => {
@@ -70,8 +78,9 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
-      <Popover
+      <AppHeaderPopover
         align="left"
+        baseZIndex={baseZIndex}
         verticalOffset={-2}
         outline
         isOpen={isOpen}
@@ -87,7 +96,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
             );
           })}
         </Box>
-      </Popover>
+      </AppHeaderPopover>
     </>
   );
 };

@@ -17,6 +17,7 @@ import {
 } from './AppHeaderElements/types';
 
 export type AppHeaderProps = {
+  baseZIndex: number;
   items: AppHeaderItemsProp;
   className?: string;
   onClick: AppHeaderClickHandler;
@@ -31,6 +32,7 @@ const AppHeaderTextButton = styled(TextButton)(focusStyles);
 const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 const mapItemToElement = (
+  baseZIndex: number,
   item: AppHeaderItem,
   onClick: AppHeaderClickHandler
 ): ReactNode => {
@@ -50,13 +52,21 @@ const mapItemToElement = (
     case 'dropdown':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderDropdown item={item} onClick={onClick} />
+          <AppHeaderDropdown
+            baseZIndex={baseZIndex}
+            item={item}
+            onClick={onClick}
+          />
         </AppHeaderTab>
       );
     case 'profile-dropdown':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderProfileDropdown item={item} onClick={onClick} />
+          <AppHeaderProfileDropdown
+            baseZIndex={baseZIndex}
+            item={item}
+            onClick={onClick}
+          />
         </AppHeaderTab>
       );
     case 'render-element':
@@ -89,6 +99,7 @@ const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
+  baseZIndex,
   items,
   className,
   onClick,
@@ -96,10 +107,10 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   return (
     <AppBar className={className}>
       <AppBarSection position="left">
-        {items.left.map((item) => mapItemToElement(item, onClick))}
+        {items.left.map((item) => mapItemToElement(baseZIndex, item, onClick))}
       </AppBarSection>
       <AppBarSection position="right">
-        {items.right.map((item) => mapItemToElement(item, onClick))}
+        {items.right.map((item) => mapItemToElement(baseZIndex, item, onClick))}
       </AppBarSection>
     </AppBar>
   );
