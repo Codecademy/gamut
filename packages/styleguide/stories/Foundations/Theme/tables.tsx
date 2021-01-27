@@ -93,7 +93,7 @@ export const fontFamily = {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.fontFamily.{id}</Code>,
     },
-    VALUE_COLUMN,
+    { ...VALUE_COLUMN, size: 'fill' },
     createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
   ],
 };

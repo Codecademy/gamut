@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
+
+
+### Features
+
+* **Icons:** Adds initial Mini Bold streamline icons ([e3c521c](https://github.com/Codecademy/client-modules/commit/e3c521c5e2a4f207db079c942560c54c93125fa5))
+
+
+
 ## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
 
 
