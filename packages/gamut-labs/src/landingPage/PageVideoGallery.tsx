@@ -3,6 +3,9 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { CTA, Description, Title } from './';
+import { BaseProps } from './types';
+
 const Grid = styled.div`
   display: grid;
   grid-template: 1fr / 1fr;
@@ -32,29 +35,45 @@ const GridVideo = styled(Video)`
   }
 `;
 
+const StyledDesc = styled(Description)`
+  margin-bottom: 2rem;
+`;
+
 export type PageVideo = {
   url: string;
   title: string;
   placeholderImage?: string;
 };
 
-export type PageVideoGalleryProps = {
+export type PageVideoGalleryProps = BaseProps & {
   videos: PageVideo[];
-  testId?: string;
 };
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   videos,
+  title,
+  desc,
+  onAnchorClick,
+  cta,
   testId,
 }) => (
-  <Grid data-testid={testId}>
-    {videos.map((video) => (
-      <GridVideo
-        key={video.url}
-        videoUrl={video.url}
-        videoTitle={video.title}
-        placeholderImage={video.placeholderImage || true}
-      />
-    ))}
-  </Grid>
+  <div>
+    {title && <Title isPageHeading>{title}</Title>}
+    {desc && <StyledDesc text={desc} onAnchorClick={onAnchorClick} />}
+    <Grid data-testid={testId}>
+      {videos.map((video) => (
+        <GridVideo
+          key={video.url}
+          videoUrl={video.url}
+          videoTitle={video.title}
+          placeholderImage={video.placeholderImage || true}
+        />
+      ))}
+    </Grid>
+    {cta && (
+      <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+        {cta.text}
+      </CTA>
+    )}
+  </div>
 );
