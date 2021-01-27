@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.23.0...@codecademy/styleguide@21.24.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
 ## [21.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.1...@codecademy/styleguide@21.23.0) (2021-01-27)
 
 
