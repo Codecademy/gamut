@@ -1,0 +1,39 @@
+import * as MINI from '@codecademy/gamut-icons/src/icons/mini';
+import title from '@codecademy/macros/lib/title.macro';
+import {
+  Canvas,
+  IconGallery,
+  IconItem,
+  Meta,
+  Story,
+} from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={MINI.MiniStarIcon}
+  parameters={{
+    subtitle:
+      'A subset of [Streamline Mini Bold](https://app.streamlinehq.com/streamline-mini-bold). These are a smaller set of icons that are bolder and work well in smaller resolutions.',
+    source: 'gamut-icons',
+    figmaId: '',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="Mini Icon">{(args) => <MINI.MiniStarIcon {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Mini Icon" />
+
+## Icons
+
+<IconGallery>
+  {Object.entries(MINI).map(([iconName, Icon]) => (
+    <IconItem key={iconName} name={iconName}>
+      <Icon size={16} />
+    </IconItem>
+  ))}
+</IconGallery>
