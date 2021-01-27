@@ -6,8 +6,6 @@ export const Item: React.FC<ContainerProps> = (props) => {
   return <Container {...props} />;
 };
 
-Item.displayName = 'Item';
-
 Item.defaultProps = {
   flex: false,
 };

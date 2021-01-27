@@ -99,8 +99,6 @@ export const Container: React.FC<ContainerProps> = (props) => {
   );
 };
 
-Container.displayName = 'Container';
-
 Container.defaultProps = {
   flex: true,
   inline: false,
