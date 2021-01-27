@@ -136,3 +136,51 @@ Promote a single stat by setting the `featuresMedia` prop to `stat` and providin
     {(args) => <PageFeatures {...args} />}
   </Story>
 </Canvas>
+
+## Wrap the features to create a grid
+
+If you specify a `maxCols` the features at desktop will wrap at that number of columns
+
+<Canvas>
+  <Story
+    name="Features Grid"
+    args={{
+      features: [
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Software Engineer',
+          desc: '**Software Engineer**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Data Scientist',
+          desc: '**Data Scientist**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Product Manager',
+          desc: '**Product Manager**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Product Designer',
+          desc: '**Product Designer**. Example link [here](#).',
+        },
+        {
+          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
+          imgAlt: 'Codey boba tea',
+          title: 'Product Designer',
+          desc: '**Product Designer**. Example link [here](#).',
+        },
+      ],
+      featuresMedia: 'icon',
+      maxCols: 3,
+    }}
+  >
+    {(args) => <PageFeatures {...args} />}
+  </Story>
+</Canvas>
