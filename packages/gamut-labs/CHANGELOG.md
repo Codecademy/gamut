@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.15.0...@codecademy/gamut-labs@7.16.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
 ## [7.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.2...@codecademy/gamut-labs@7.15.0) (2021-01-27)
 
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.7...@codecademy/gamut@19.12.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
 ### [19.11.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.6...@codecademy/gamut@19.11.7) (2021-01-27)
 
 
