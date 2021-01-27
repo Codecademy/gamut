@@ -33,7 +33,7 @@ export const PageHeroMedia: React.FC<MediaProps> = (media) => {
         <Image src={media.src} alt={media.alt} />
       </RightColumn>
     );
-  } else if (media && media.type === 'video') {
+  } else if (media.type === 'video') {
     const videoArgs = omit(media, 'type');
     return (
       <VideoColumn size={{ xs: 12, sm: 7 }}>
