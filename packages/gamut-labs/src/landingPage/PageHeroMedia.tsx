@@ -27,18 +27,19 @@ const StyledVideo = styled(Video)`
 `;
 
 export const PageHeroMedia: React.FC<MediaProps> = (media) => {
-  if (media.type === 'image') {
-    return (
-      <RightColumn size={3}>
-        <Image src={media.src} alt={media.alt} />
-      </RightColumn>
-    );
-  } else if (media.type === 'video') {
-    const videoArgs = omit(media, 'type');
-    return (
-      <VideoColumn size={{ xs: 12, sm: 7 }}>
-        <StyledVideo {...videoArgs} />
-      </VideoColumn>
-    );
-  } else return null;
+  switch (media.type) {
+    case 'image':
+      return (
+        <RightColumn size={3}>
+          <Image src={media.src} alt={media.alt} />
+        </RightColumn>
+      );
+    case 'video':
+      const videoArgs = omit(media, 'type');
+      return (
+        <VideoColumn size={{ xs: 12, sm: 7 }}>
+          <StyledVideo {...videoArgs} />
+        </VideoColumn>
+      );
+  }
 };
