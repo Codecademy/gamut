@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.5](http://github.com///compare/@codecademy/eslint-config@3.1.4...@codecademy/eslint-config@3.1.5) (2021-01-27)
+
+
+### Reverts
+
+* Revert "A few more disables, from the PRs" ([b7e7855](http://github.com///commit/b7e7855f84c3ca6b8453c92379118aa0d3c45f32))
+
+
+
 ### [3.1.4](http://github.com///compare/@codecademy/eslint-config@3.1.3...@codecademy/eslint-config@3.1.4) (2021-01-27)
 
 **Note:** Version bump only for package @codecademy/eslint-config
