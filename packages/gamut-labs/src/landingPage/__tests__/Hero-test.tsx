@@ -38,29 +38,33 @@ describe('PageHero', () => {
     wrapper.getByText('cta');
   });
 
-  it('should render an img with alt="" when media prop with type="image" is provided', () => {
+  it('should render an img when media prop with type="image" is provided', () => {
     const wrapper = render(
       <PageHero media={{ type: 'image', src: 'test', alt: 'alt' }} />
     );
     wrapper.getByAltText('alt');
   });
 
-  it('should not render an image when media  prop is not provided', () => {
+  it('should not render an image when media prop is not provided', () => {
     const wrapper = render(<PageHero />);
     expect(wrapper.queryByAltText('alt')).not.toBeInTheDocument();
   });
 
-  it('should render a video with videoTitle="" when media prop with type="video" is provided', () => {
+  it('should render a video media prop with type="video" is provided', () => {
     const wrapper = render(
       <PageHero
-        media={{ type: 'video', videoUrl: 'video-url', videoTitle: 'title' }}
+        media={{
+          type: 'video',
+          videoUrl: 'video-url',
+          videoTitle: 'video-title',
+        }}
       />
     );
-    wrapper.getByTitle('title');
+    wrapper.getByTitle('video-title');
   });
   it('should not render a video when media prop is not provided', () => {
-    const wrapper = render(<PageHero />);
-    expect(wrapper.queryByTitle('title')).not.toBeInTheDocument();
+    const wrapper = render(<PageHero title="title" />);
+    expect(wrapper.queryByTitle('video-title')).not.toBeInTheDocument();
   });
 
   it('should not render anything when no props are provided', () => {

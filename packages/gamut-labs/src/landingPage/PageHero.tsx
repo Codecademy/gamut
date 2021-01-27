@@ -6,6 +6,7 @@ import { omit } from 'lodash';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
+import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
 
 const RightColumn = styled(Column)`
@@ -45,6 +46,15 @@ export type PageHeroProps = BaseProps & {
   media?: MediaProps;
 };
 
+const columnSize = (type: string | undefined) => {
+  if (!type) return 12;
+  if (type === 'image') {
+    return 9;
+  } else if (type === 'video') {
+    return 5;
+  }
+};
+
 export const PageHero: React.FC<PageHeroProps> = ({
   title,
   desc,
@@ -53,38 +63,12 @@ export const PageHero: React.FC<PageHeroProps> = ({
   testId,
   onAnchorClick,
 }) => {
-  const renderMedia = () => {
-    if (media && media.type === 'image') {
-      return (
-        <RightColumn size={3}>
-          <Image src={media.src} alt={media.alt} />
-        </RightColumn>
-      );
-    } else if (media && media.type === 'video') {
-      const videoArgs = omit({ ...media }, 'type');
-      return (
-        <VideoColumn size={{ xs: 12, sm: 7 }}>
-          <StyledVideo {...videoArgs} />
-        </VideoColumn>
-      );
-    }
-  };
-
-  const columSize = () => {
-    if (!media) return 12;
-    if (media.type === 'image') {
-      return 9;
-    } else if (media.type === 'video') {
-      return 5;
-    }
-  };
-
   return (
     <LayoutGrid testId={testId} rowGap="md">
       <Column
         size={{
           xs: 12,
-          sm: columSize(),
+          sm: columnSize(media?.type),
         }}
       >
         {title && <Title isPageHeading>{title}</Title>}
@@ -95,7 +79,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           </CTA>
         )}
       </Column>
-      {media && renderMedia()}
+      {media && <PageHeroMedia {...media} />}
     </LayoutGrid>
   );
 };
