@@ -136,6 +136,7 @@ module.exports = {
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-unresolved': 'off',
+    'no-sparse-arrays': 'off',
     'react/display-name': 'off',
 
     // These functional rules are annoying and we generally don't want them on
@@ -146,6 +147,7 @@ module.exports = {
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/typedef': 'off',
+    'no-fallthrough': 'off',
 
     // These rules have been deprecated in their plugins but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
