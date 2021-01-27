@@ -20,7 +20,7 @@ const AppHeaderTargetButton = styled.button`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.colors.navy};
-  border: 1px solid transparent;
+  border: transparent;
   line-height: 1.5;
   white-space: nowrap;
   font-weight: normal;

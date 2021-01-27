@@ -4,7 +4,11 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownProps, AppHeaderLinkMobile } from '../../..';
+import {
+  AppHeaderDropdownProps,
+  AppHeaderLinkMobile,
+  AppHeaderProfileDropdownProps,
+} from '../../..';
 import { Text } from '../../../experimental/Text';
 import {
   focusStyles,
@@ -12,13 +16,16 @@ import {
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
-export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
+export type AppHeaderSubMenuMobileProps = (
+  | AppHeaderDropdownProps
+  | AppHeaderProfileDropdownProps
+) & {
   handleClose: () => void;
 };
 
 const FullMenuButton = styled.button`
   background-color: transparent;
-  border: 1px solid transparent;
+  border: transparent;
   color: ${({ theme }) => theme.colors.navy};
   display: flex;
   align-items: center;

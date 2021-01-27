@@ -195,7 +195,15 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="Background Color GlobalHeader">
     {(args) => (
       <Box backgroundColor="beige" width="100%">
-        <GlobalHeader onClick={() => {}} type="anon" />
+        <GlobalHeader
+          onClick={() => {}}
+          type="pro"
+          user={{
+            avatar:
+              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+            displayName: 'Codey',
+          }}
+        />
       </Box>
     )}
   </Story>

@@ -12,21 +12,12 @@ import {
   AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
 } from '../types';
-import styles from './styles.module.scss';
 
 const AppHeaderAvatarTargetButton = styled.button`
   background-color: transparent;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  color: ${({ theme }) => theme.colors.navy};
-  border: 1px solid transparent;
-  line-height: 1.5;
-  white-space: nowrap;
+  border: transparent;
   font-weight: normal;
-  min-width: 0;
   padding: 1rem 0;
-  font-size: 0;
   cursor: pointer;
   ${hoverStyles}
   ${focusStyles}
@@ -54,7 +45,6 @@ export const AppHeaderProfileDropdown: React.FC<AppHeaderProfileDropdownProps> =
   };
   const clickTarget = (
     <AppHeaderAvatarTargetButton
-      className={isOpen && styles.open}
       onClick={(event) => toggleIsOpen(event)}
       style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
     >

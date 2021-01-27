@@ -9,8 +9,12 @@ import { AppHeader, AppHeaderProps } from '..';
 
 const onClick = jest.fn();
 
-const logoProps: AppHeaderProps = {
+const baseProps = {
   baseZIndex: 1,
+  onClick,
+};
+
+const logoProps: AppHeaderProps = {
   items: {
     left: [
       {
@@ -23,11 +27,10 @@ const logoProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick,
+  ...baseProps,
 };
 
 const linkProps: AppHeaderProps = {
-  baseZIndex: 1,
   items: {
     left: [
       {
@@ -40,11 +43,10 @@ const linkProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick,
+  ...baseProps,
 };
 
 const dropdownProps: AppHeaderProps = {
-  baseZIndex: 1,
   items: {
     left: [
       {
@@ -72,11 +74,10 @@ const dropdownProps: AppHeaderProps = {
     ],
     right: [],
   },
-  onClick,
+  ...baseProps,
 };
 
 const renderElementProps: AppHeaderProps = {
-  baseZIndex: 1,
   items: {
     left: [],
     right: [
@@ -87,11 +88,10 @@ const renderElementProps: AppHeaderProps = {
       },
     ],
   },
-  onClick,
+  ...baseProps,
 };
 
 const textButtonProps: AppHeaderProps = {
-  baseZIndex: 1,
   items: {
     left: [],
     right: [
@@ -104,11 +104,10 @@ const textButtonProps: AppHeaderProps = {
       },
     ],
   },
-  onClick,
+  ...baseProps,
 };
 
 const fillButtonProps: AppHeaderProps = {
-  baseZIndex: 1,
   items: {
     left: [],
     right: [
@@ -121,7 +120,7 @@ const fillButtonProps: AppHeaderProps = {
       },
     ],
   },
-  onClick,
+  ...baseProps,
 };
 
 const renderAppHeader = (props: AppHeaderProps) => {
