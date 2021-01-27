@@ -33,9 +33,7 @@ export const Truncate: React.FC<TruncateProps> = ({
       tokenize="words"
       ellipsis={<span>...</span>}
       lines={lines}
-      onTruncate={(truncated) => {
-        setIsTruncated(truncated);
-      }}
+      onTruncate={setIsTruncated}
     >
       <span>
         {React.Children.map(children, (child) =>
