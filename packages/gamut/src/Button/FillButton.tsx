@@ -4,7 +4,11 @@ import React from 'react';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
+import {
+  modeColorGroups,
+  SizedButtonProps,
+  sizedButtonVariants,
+} from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   ({ mode = 'light', size }: SizedButtonProps) => {
@@ -14,7 +18,7 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
       background-color: ${modeColors.background};
       border-radius: 3px;
       color: ${modeColors.foreground};
-      ${buttonSizing(size)}
+      ${sizedButtonVariants({ size })}
 
       ${FillButtonOuter}:hover & {
         background-color: ${modeColors.backgroundDull};

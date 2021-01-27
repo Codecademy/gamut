@@ -1,27 +1,43 @@
-import { colors, fontSize, swatches } from '@codecademy/gamut-styles';
+import { colors, swatches, variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
 import type { HTMLProps } from 'react';
 
-export type ButtonProps = HTMLProps<HTMLLinkElement> &
-  HTMLProps<HTMLButtonElement> & {
-    mode?: 'dark' | 'light';
-  };
+export type ButtonHTMLProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'size'
+>;
+
+export type ButtonProps = ButtonHTMLProps & {
+  mode?: keyof typeof modeColorGroups;
+};
 
 export type ButtonSize = 'normal' | 'small';
 
-export type SizedButtonProps = ButtonProps & {
-  size?: ButtonSize;
-};
+export type SizedButtonProps = ButtonProps &
+  HandlerProps<typeof sizedButtonVariants>;
 
-export const buttonSizing = (size?: ButtonSize) =>
-  size === 'small'
-    ? `
-      font-size: ${fontSize[14]};
-      padding: 0.35rem 0.5rem;
-    `
-    : `
-      font-size: ${fontSize[16]};
-      padding: 0.75rem 1rem;
-    `;
+export const sizedButtonVariants = variant({
+  prop: 'size',
+  variants: {
+    tiny: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '24px',
+      minWidth: '24px',
+      padding: 4,
+    },
+    small: {
+      fontSize: 14,
+      padding: 8,
+    },
+    normal: {
+      fontSize: 16,
+      paddingY: 12,
+      paddingX: 16,
+    },
+  },
+});
 
 export const modeColorGroups = {
   dark: {
@@ -33,6 +49,15 @@ export const modeColorGroups = {
     foreground: colors.black,
     shadow: colors.white,
   },
+  'dark-alt': {
+    background: colors.white,
+    backgroundDull: swatches.gray[200],
+    backgroundEmphasized: colors.navy,
+    backgroundMuted: swatches.gray[600],
+    foregroundMuted: swatches.gray[200],
+    foreground: colors.navy,
+    shadow: colors.white,
+  },
   light: {
     background: colors.hyper,
     backgroundDull: swatches.hyper[400],
@@ -41,5 +66,14 @@ export const modeColorGroups = {
     foregroundMuted: swatches.gray[600],
     foreground: colors.white,
     shadow: colors.black,
+  },
+  'light-alt': {
+    background: colors.navy,
+    backgroundDull: swatches.gray[600],
+    backgroundEmphasized: swatches.gray[100],
+    backgroundMuted: swatches.gray[200],
+    foregroundMuted: swatches.gray[600],
+    foreground: colors.white,
+    shadow: colors.navy,
   },
 };

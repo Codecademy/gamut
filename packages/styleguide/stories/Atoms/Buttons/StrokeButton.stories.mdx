@@ -1,0 +1,84 @@
+import { StrokeButton } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={StrokeButton}
+  parameters={{
+    subtitle: 'A button that only renders an icon',
+    source: 'gamut',
+    status: 'stable',
+    figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
+  }}
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    href: '',
+    mode: 'light',
+    size: 'normal',
+  }}
+/>
+
+<Canvas>
+  <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="StrokeButton" />
+
+## Modes
+
+<Canvas columns={2}>
+  <Story name="light" args={{ mode: 'light', children: 'light' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story
+    name="light-disabled"
+    args={{ disabled: true, children: 'light-disabled' }}
+  >
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story name="light-alt" args={{ mode: 'light-alt', children: 'light-alt' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story
+    name="light-alt disabled"
+    args={{ disabled: true, children: 'light-alt disabled' }}
+  >
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+</Canvas>
+
+<Canvas columns={2}>
+  <Story name="dark" args={{ mode: 'dark', children: 'dark' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story
+    name="dark-disabled"
+    args={{ mode: 'dark', disabled: true, children: 'dark-disabled' }}
+  >
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story name="dark-alt" args={{ mode: 'dark-alt', children: 'dark-alt' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story
+    name="dark-alt disabled"
+    args={{ mode: 'dark-alt', disabled: true, children: 'dark-alt disabled' }}
+  >
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+  <Story name="normal" args={{ size: 'normal', children: 'normal' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+  <Story name="small" args={{ size: 'small', children: 'small' }}>
+    {(args) => <StrokeButton {...args} />}
+  </Story>
+</Canvas>

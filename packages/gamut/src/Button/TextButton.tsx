@@ -4,16 +4,20 @@ import React from 'react';
 
 import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
-import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
+import {
+  modeColorGroups,
+  SizedButtonProps,
+  sizedButtonVariants,
+} from './shared';
 
 const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
+  ({ mode = 'light', size }) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
       border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
+      ${sizedButtonVariants({ size })}
 
       ${TextButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};
@@ -38,7 +42,7 @@ const TextButtonOuter = styled(ButtonOutline)`
 `;
 
 export const TextButton: React.FC<
-  SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
+  React.ComponentProps<typeof TextButtonOuter> & SizedButtonProps
 > = ({ children, mode, size, ...props }) => {
   return (
     <TextButtonOuter mode={mode} {...props}>
