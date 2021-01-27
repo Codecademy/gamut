@@ -2,18 +2,6 @@ import { PageVideoGallery } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
-export const Exception = () => {
-  throw new Error(
-    'Skipping PageVideoGallery test, as <Video light/> uses fetch'
-  );
-};
-Exception.story = {
-  name: 'PageVideoGallery',
-  parameters: {
-    storyshots: { disable: true },
-  },
-};
-
 <Meta
   title={title}
   component={PageVideoGallery}
@@ -22,6 +10,8 @@ Exception.story = {
       {
         title: 'Steppin on the M83',
         url: 'https://www.youtube.com/watch?v=-m2fVWj99x4',
+        placeholderImage:
+          'https://i.kym-cdn.com/entries/icons/mobile/000/010/275/x1080.jpg',
       },
       {
         title: 'Once in a Lifetime performed by Kermit the Frog',
