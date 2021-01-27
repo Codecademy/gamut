@@ -22,14 +22,14 @@ describe('Alert', () => {
 
     const buttons = renderedAlert.find('button');
 
-    expect(buttons).toHaveLength(0);
+    expect(buttons).toHaveLength(1);
   });
 
   it('calls the onClose callback when the close button is clicked', () => {
     const onClose = jest.fn();
     const renderedAlert = mount(<Alert onClose={onClose}>Hello</Alert>);
 
-    const close = renderedAlert.find('button').at(0);
+    const close = renderedAlert.find('button').at(1);
     close.simulate('click');
 
     expect(onClose).toHaveBeenCalled();
@@ -42,7 +42,7 @@ describe('Alert', () => {
       </Alert>
     );
 
-    const cta = renderedAlert.find('button').at(0);
+    const cta = renderedAlert.find('button').at(1);
     cta.simulate('click');
 
     expect(onCtaClick).toHaveBeenCalled();
@@ -59,7 +59,7 @@ describe('Alert', () => {
       </Alert>
     );
 
-    const cta = renderedAlert.find('button').at(1);
+    const cta = renderedAlert.find('button').at(2);
     cta.simulate('click');
 
     expect(onCtaClick).not.toHaveBeenCalled();
@@ -116,7 +116,7 @@ describe('Alert', () => {
 
     renderedAlert.update();
 
-    expect(renderedAlert.find('Truncate').prop('lines')).toEqual(undefined);
+    expect(renderedAlert.find('Truncate').prop('expanded')).toEqual(true);
   });
 
   it('renders a clickable button to collapse the truncated section when clicked twice', () => {
