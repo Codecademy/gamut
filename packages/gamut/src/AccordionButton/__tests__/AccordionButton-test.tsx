@@ -7,7 +7,7 @@ describe('AccordionButton', () => {
   it('fires onClick when clicked', () => {
     const onClick = jest.fn();
     const wrapped = mount(
-      <AccordionButton onClick={onClick} size="normal" theme="yellow">
+      <AccordionButton onClick={onClick} size="normal" colorVariant="yellow">
         Hi there!
       </AccordionButton>
     );
@@ -17,9 +17,9 @@ describe('AccordionButton', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('renders a blue button when the theme is blue', () => {
+  it('renders a blue button when the colorVariant is blue', () => {
     const wrapped = mount(
-      <AccordionButton onClick={jest.fn()} size="normal" theme="blue">
+      <AccordionButton onClick={jest.fn()} size="normal" colorVariant="blue">
         Hi there!
       </AccordionButton>
     );
@@ -29,9 +29,9 @@ describe('AccordionButton', () => {
     expect(rootClassName).toMatch(new RegExp(`(.+) blue`));
   });
 
-  it('renders a plain button when the theme is plain', () => {
+  it('renders a plain button when the colorVariant is plain', () => {
     const wrapped = mount(
-      <AccordionButton onClick={jest.fn()} size="normal" theme="plain">
+      <AccordionButton onClick={jest.fn()} size="normal" colorVariant="plain">
         Hi there!
       </AccordionButton>
     );
@@ -41,9 +41,9 @@ describe('AccordionButton', () => {
     expect(rootClassName).toMatch(new RegExp(`(.+) plain`));
   });
 
-  it('renders a yellow button when the theme is yellow', () => {
+  it('renders a yellow button when the colorVariant is yellow', () => {
     const wrapped = mount(
-      <AccordionButton onClick={jest.fn()} size="normal" theme="yellow">
+      <AccordionButton onClick={jest.fn()} size="normal" colorVariant="yellow">
         Hi there!
       </AccordionButton>
     );

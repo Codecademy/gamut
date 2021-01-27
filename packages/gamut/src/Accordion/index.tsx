@@ -39,7 +39,7 @@ export type AccordionProps = {
   /**
    * Visual theme of the top button.
    */
-  theme?: AccordionButtonTheme;
+  colorVariant?: AccordionButtonTheme;
 
   /**
    * Contents to place within the top button.
@@ -53,7 +53,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   initiallyExpanded,
   onClick,
   size,
-  theme,
+  colorVariant,
   top,
 }) => {
   const [expanded, setExpanded] = useState(!!initiallyExpanded);
@@ -72,7 +72,7 @@ export const Accordion: React.FC<AccordionProps> = ({
             onClick?.(!expanded);
           }}
           size={size}
-          theme={theme}
+          colorVariant={colorVariant}
         >
           {expandRenderer(top)}
         </AccordionButton>

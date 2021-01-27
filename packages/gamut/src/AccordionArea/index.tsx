@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useLayoutEffect, useState } from 'react';
 
-import styles from './styles.module.scss';
+import { Box } from '../Box';
 
 export type AccordionAreaProps = {
   children: React.ReactNode;
@@ -44,11 +44,10 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
   }, [expanded]);
 
   return (
-    <div className={className}>
+    <Box className={className} overflow="hidden">
       {top}
       <motion.div
         aria-expanded={expanded}
-        className={styles.accordionBody}
         initial={false}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
@@ -56,6 +55,6 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
       >
         {(expanded || delayExpanded) && children}
       </motion.div>
-    </div>
+    </Box>
   );
 };

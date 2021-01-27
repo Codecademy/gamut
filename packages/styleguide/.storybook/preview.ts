@@ -50,7 +50,6 @@ export const parameters = {
     ],
   },
   viewport: {
-    defaultViewport: 'responsive',
     viewports: {
       xs: {
         name: `XS - ${breakpoints.xs}`,
