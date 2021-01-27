@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [19.11.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.6...@codecademy/gamut@19.11.7) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
 ### [19.11.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.5...@codecademy/gamut@19.11.6) (2021-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut
