@@ -66,14 +66,10 @@ describe('PageFeatures', () => {
     const wrapper = renderComponent({
       features: [
         {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
           title: 'Software Engineer',
           desc: '**Software Engineer**. Example link [here](#).',
         },
         {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
           title: 'Data Scientist',
           desc: '**Data Scientist**. Example link [here](#).',
         },
