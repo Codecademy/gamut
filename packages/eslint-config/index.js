@@ -7,11 +7,13 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
     'plugin:import/errors',
     'plugin:import/typescript',
     'plugin:jsx-a11y/strict',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/react',
@@ -25,9 +27,10 @@ module.exports = {
       parser: 'eslint-mdx',
       // Add this for MDX specifically since we rely on TS in other
       rules: {
-        'unused-imports/no-unused-imports': 'error',
-        'react/react-in-jsx-scope': 'off',
+        'react/jsx-filename-extension': 'off',
         'react/no-unescaped-entities': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'unused-imports/no-unused-imports': 'error',
       },
     },
     {
@@ -72,8 +75,8 @@ module.exports = {
     'jest-react',
     'jsx-a11y',
     'no-only-tests',
-    'react-hooks',
     'react',
+    'react-hooks',
     'simple-import-sort',
   ],
 
@@ -133,11 +136,20 @@ module.exports = {
     '@typescript-eslint/require-array-sort-compare': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
+    'consistent-return': 'off',
+    'default-case': 'off',
     'import/named': 'off',
     'import/namespace': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'import/no-unresolved': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'no-multi-assign': 'off',
     'no-sparse-arrays': 'off',
+    'no-template-curly-in-string': 'off',
+    'prefer-template': 'off',
+    'react/destructuring-assignment': 'off',
     'react/display-name': 'off',
+    'react/sort-comp': 'off',
 
     // These functional rules are annoying and we generally don't want them on
     '@typescript-eslint/no-empty-interface': 'off',
@@ -147,11 +159,27 @@ module.exports = {
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/typedef': 'off',
+    'arrow-body-style': 'off',
+    camelcase: 'off',
+    'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
     'no-fallthrough': 'off',
+    'no-param-reassign': 'off',
+    'no-restricted-syntax': 'off',
+    'no-shadow': 'off',
+    'no-use-before-define': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/jsx-pascal-case': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
+    'react/state-in-constructor': 'off',
+    'react/static-property-placement': 'off',
+    strict: 'off',
 
-    // These rules have been deprecated in their plugins but not yet removed from presets
+    // These rules have been deprecated in their plugins or overridden but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
     'jsx-a11y/accessible-emoji': 'off',
+    'no-unused-expressions': 'off',
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',

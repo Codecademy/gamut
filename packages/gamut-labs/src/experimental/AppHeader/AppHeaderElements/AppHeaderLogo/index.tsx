@@ -32,7 +32,7 @@ export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
       onClick={(event) => onClick(event, item)}
       href={item.href}
     >
-      {<StyledLogo type={item.pro ? 'proMono' : 'default'} height={27} />}
+      <StyledLogo type={item.pro ? 'proMono' : 'default'} height={27} />
     </LogoButton>
   );
 };

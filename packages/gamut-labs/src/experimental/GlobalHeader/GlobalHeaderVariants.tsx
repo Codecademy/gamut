@@ -107,9 +107,17 @@ export const proHeaderItems = (
   ];
 
   const rightItems: AppHeaderItem[] = [];
-  renderSearch && rightItems.push(search(renderSearch));
-  renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderProfile && rightItems.push(profile(renderProfile));
+  if (renderSearch) {
+    rightItems.push(search(renderSearch));
+  }
+
+  if (renderNotifications) {
+    rightItems.push(notifications(renderNotifications));
+  }
+
+  if (renderProfile) {
+    rightItems.push(profile(renderProfile));
+  }
 
   return {
     left: leftItems,

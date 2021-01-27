@@ -18,7 +18,7 @@ const renderStepper = (optOverrides?: Partial<InputStepperProps>) => {
 };
 
 const onChange = (value: number, wrapper: ReactWrapper) => {
-  wrapper.setProps({ value: value });
+  wrapper.setProps({ value });
 };
 
 /**
@@ -29,7 +29,7 @@ const onChange = (value: number, wrapper: ReactWrapper) => {
  */
 const changeValue = (value: number, wrapper: ReactWrapper) => {
   const fieldBefore = wrapper.find('input');
-  fieldBefore.simulate('change', { target: { value: value } });
+  fieldBefore.simulate('change', { target: { value } });
 
   const fieldAfter = wrapper.find('input');
   return fieldAfter;

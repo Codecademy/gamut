@@ -3,7 +3,7 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Feature, FeatureProps, Title } from './';
+import { CTA, Description, Feature, FeatureProps, Title } from '.';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -54,9 +54,7 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         <Feature
           key={feature.title}
           {...feature}
-          featuresMedia={
-            featuresMedia ? featuresMedia : isIcon ? 'icon' : 'image'
-          }
+          featuresMedia={featuresMedia || (isIcon ? 'icon' : 'image')}
           onAnchorClick={onAnchorClick}
         />
       ))}

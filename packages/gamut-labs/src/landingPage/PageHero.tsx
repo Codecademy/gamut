@@ -3,7 +3,7 @@ import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from './';
+import { CTA, Description, Title } from '.';
 import { BaseProps } from './types';
 
 const RightColumn = styled(Column)`

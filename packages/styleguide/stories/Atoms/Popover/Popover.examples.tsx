@@ -8,7 +8,7 @@ export const PopoverExample = (args: PopoverProps) => {
   const activeElRef = useRef<HTMLDivElement>(null);
 
   return (
-    <React.Fragment>
+    <>
       <Box ref={activeElRef}>
         <FillButton
           onClick={() => {
@@ -33,6 +33,6 @@ export const PopoverExample = (args: PopoverProps) => {
           </Container>
         </Popover>
       </Container>
-    </React.Fragment>
+    </>
   );
 };

@@ -2,13 +2,12 @@ import React from 'react';
 
 import { Container, ContainerProps } from './Container';
 
-export class Item extends React.Component<ContainerProps> {
-  static displayName = 'Item';
-  static defaultProps = {
-    flex: false,
-  };
+export const Item: React.FC<ContainerProps> = (props) => {
+  return <Container {...props} />;
+};
 
-  render() {
-    return <Container {...this.props} />;
-  }
-}
+Item.displayName = 'Item';
+
+Item.defaultProps = {
+  flex: false,
+};

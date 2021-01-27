@@ -1,4 +1,5 @@
 import { boxShadow } from '../utilities';
+
 export const boxShadows = {
   1: boxShadow(1),
   2: boxShadow(2),

@@ -21,42 +21,42 @@ import {
 const onClick = jest.fn();
 
 const anonHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   type: 'free',
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   type: 'pro',
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  onClick: onClick,
+  onClick,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   renderNotifications: () => <IconButton icon={BellIcon} />,
   renderProfile: () => <IconButton icon={PersonIcon} />,
