@@ -18,7 +18,7 @@ const props: AppHeaderLinkMobileProps = {
     type: 'link',
     icon: () => <svg />,
   },
-  onClick: onClick,
+  onClick,
 };
 
 const renderAppHeaderLinkMobile = () => {
