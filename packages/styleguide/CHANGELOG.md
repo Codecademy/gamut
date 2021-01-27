@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.1...@codecademy/styleguide@21.23.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
+### [21.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.0...@codecademy/styleguide@21.22.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
+
+
+### Features
+
+* **Icons:** Adds initial Mini Bold streamline icons ([e3c521c](https://github.com/Codecademy/client-modules/commit/e3c521c5e2a4f207db079c942560c54c93125fa5))
+
+
+
 ## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
 
 
