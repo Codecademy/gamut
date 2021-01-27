@@ -4,7 +4,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownProps } from '../../..';
+import { AppHeaderDropdownProps, AppHeaderLinkMobile } from '../../..';
 import { Text } from '../../../experimental/Text';
 import {
   focusStyles,
