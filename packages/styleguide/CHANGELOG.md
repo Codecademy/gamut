@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.0...@codecademy/styleguide@21.22.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
 ## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
 
 
