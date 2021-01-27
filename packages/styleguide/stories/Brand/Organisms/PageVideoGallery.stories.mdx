@@ -2,6 +2,18 @@ import { PageVideoGallery } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
+export const Exception = () => {
+  throw new Error(
+    'Skipping PageVideoGallery test, as <Video light/> uses fetch'
+  );
+};
+Exception.story = {
+  name: 'PageVideoGallery',
+  parameters: {
+    storyshots: { disable: true },
+  },
+};
+
 <Meta
   title={title}
   component={PageVideoGallery}
