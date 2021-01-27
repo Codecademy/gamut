@@ -1,4 +1,4 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
+import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
 import { css } from '@emotion/react';
@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
-import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
+import { TextButton } from '../Button';
 
 export type AccordionButtonSize = 'normal' | 'large';
 
@@ -55,7 +55,7 @@ type ButtonProps = HandlerProps<typeof buttonVariants> & {
   size?: AccordionButtonSize;
 };
 
-const ButtonComponent = styled(ButtonDeprecatedBase)<ButtonProps>`
+const ButtonComponent = styled(TextButton)<ButtonProps>`
   display: flex;
   justify-content: space-between;
   padding: 0.375rem 1rem;
@@ -75,15 +75,11 @@ const ButtonComponent = styled(ButtonDeprecatedBase)<ButtonProps>`
       }
     `}
 
-  &:hover {
-    background-color: ;
-  }
-
   ${size}
   ${buttonVariants};
 `;
 
-const ExpandIcon = styled(ArrowChevronDownIcon)<{ expanded?: boolean }>`
+const ExpandIcon = styled(MiniChevronDownIcon)<{ expanded?: boolean }>`
   transition: transform 0.35s ease-out;
   transform: ${({ expanded }) => expanded && `rotate(-180deg)`};
 `;
@@ -103,7 +99,6 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       className={className}
       aria-expanded={expanded}
       colorVariant={colorVariant}
-      size={size}
       {...baseProps}
       as="button"
     >

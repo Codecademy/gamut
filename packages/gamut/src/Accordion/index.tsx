@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 
 import { AccordionArea } from '../AccordionArea';
-import {
-  AccordionButton,
-  AccordionButtonSize,
-  AccordionButtonTheme,
-} from '../AccordionButton';
+import { AccordionButton, AccordionButtonTheme } from '../AccordionButton';
 
 export type ChildrenOrExpandedRender =
   | React.ReactNode
@@ -32,11 +28,6 @@ export type AccordionProps = {
   onClick?: (expanding: boolean) => void;
 
   /**
-   * Visual size of the top button.
-   */
-  size?: AccordionButtonSize;
-
-  /**
    * Visual theme of the top button.
    */
   colorVariant?: AccordionButtonTheme;
@@ -52,7 +43,6 @@ export const Accordion: React.FC<AccordionProps> = ({
   className,
   initiallyExpanded,
   onClick,
-  size,
   colorVariant,
   top,
 }) => {
@@ -71,7 +61,6 @@ export const Accordion: React.FC<AccordionProps> = ({
             setExpanded(!expanded);
             onClick?.(!expanded);
           }}
-          size={size}
           colorVariant={colorVariant}
         >
           {expandRenderer(top)}
