@@ -18,8 +18,6 @@ export type AppHeaderLinkMobileProps = {
 
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   color: ${({ theme }) => theme.colors.navy};
-  text-decoration: none;
-  display: block;
   ${hoverStyles}
   ${focusStyles}
 `;
@@ -43,7 +41,6 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
     >
       <AppHeaderLinkButtonInner
         lineHeight="base"
-        minWidth="0"
         paddingY={8}
         textAlign="left"
         display="flex"
