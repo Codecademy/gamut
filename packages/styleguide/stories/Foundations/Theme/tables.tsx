@@ -93,8 +93,19 @@ export const fontFamily = {
       ...PATH_COLUMN,
       render: ({ id }: any) => <Code>theme.fontFamily.{id}</Code>,
     },
-    { ...VALUE_COLUMN, size: 'fill' },
-    createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
+    {
+      ...VALUE_COLUMN,
+      render: ({ value }: any) => (
+        <Box maxWidth="24rem">
+          <Code>{value}</Code>
+        </Box>
+      ),
+      size: 'fill',
+    },
+    {
+      ...createExampleColumn({ text: 'Example Text', prop: 'fontFamily' }),
+      size: 'lg',
+    },
   ],
 };
 
@@ -192,6 +203,11 @@ export const boxShadow = {
     },
     {
       ...VALUE_COLUMN,
+      render: ({ value }: any) => (
+        <Box maxWidth="24rem">
+          <Code>{value}</Code>
+        </Box>
+      ),
       size: 'fill',
     },
     {
