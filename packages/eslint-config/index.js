@@ -55,6 +55,8 @@ module.exports = {
         '@typescript-eslint/require-await': 'off',
         '@typescript-eslint/prefer-regexp-exec': 'off',
         '@typescript-eslint/unbound-method': 'off',
+        'no-restricted-globals': 'off',
+        'no-undef': 'off',
       },
     },
   ],
@@ -136,13 +138,24 @@ module.exports = {
     'react/display-name': 'off',
 
     // These functional rules are annoying and we generally don't want them on
-    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/consistent-type-definitions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-magic-numbers': 'off',
     '@typescript-eslint/no-type-alias': 'off',
     '@typescript-eslint/no-unused-vars': 'off', // https://github.com/bradzacher/eslint-plugin-typescript/issues/283
     '@typescript-eslint/typedef': 'off',
+    'import/no-default-export': 'off',
+    'import/no-named-as-default': 'off',
+    'no-await-in-loop': 'off',
+    'no-cond-assign': 'off',
+    'no-plusplus': 'off',
+    'no-restricted-globals': 'off',
+    'no-underscore-dangle': 'off',
+    'import/order': 'off',
+    'lines-between-class-members': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/no-unused-prop-types': 'off',
 
     // These rules have been deprecated in their plugins but not yet removed from presets
     'jsx-a11y/label-has-for': 'off',
