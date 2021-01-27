@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
+
+
+### Features
+
+* **Mobile Menu components:** mobile menu set up ([#1320](https://github.com/Codecademy/client-modules/issues/1320)) ([6d33a20](https://github.com/Codecademy/client-modules/commit/6d33a204de35bf3167773241af2ed77706bbcb89))
+
+
+
+### [21.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.1...@codecademy/styleguide@21.20.2) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.0...@codecademy/styleguide@21.20.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Change focus outline color and add export ([#1322](https://github.com/Codecademy/client-modules/issues/1322)) ([e5fe628](https://github.com/Codecademy/client-modules/commit/e5fe628ca7e347d6c65e6efc50271a006ef7a6e5))
+
+
+
 ## [21.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.1...@codecademy/styleguide@21.20.0) (2021-01-25)
 
 

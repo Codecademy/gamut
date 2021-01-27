@@ -2,7 +2,7 @@ import { pxRem, screenReaderOnly } from '@codecademy/gamut-styles';
 import { noSelect } from '@codecademy/gamut-styles';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import React, { InputHTMLAttributes, ReactNode } from 'react';
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { variables } from './_variables';
 
@@ -104,7 +104,7 @@ const CheckboxText = styled.span<Multiline>`
   font-size: ${({ multiline }) => multiline && '0.75rem'};
 `;
 
-export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, label, htmlFor, multiline, id, ...rest }, ref) => (
     <div className={className}>
       <Input id={id || htmlFor} type="checkbox" {...rest} ref={ref} />
