@@ -16,7 +16,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   ...props
 }) => {
   return (
-    <TextButton size={size} {...props}>
+    <TextButton size={size === 'small' ? 'tiny' : size} {...props}>
       <Icon size={size === 'small' ? 12 : 24} />
     </TextButton>
   );

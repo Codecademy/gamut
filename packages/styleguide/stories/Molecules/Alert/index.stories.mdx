@@ -1,6 +1,4 @@
-import { Alert, Alerts, Box, FillButton } from '@codecademy/gamut/src';
-import { Card, Text } from '@codecademy/gamut-labs/src';
-import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
+import { Alert } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -15,6 +13,7 @@ import { ALERTS } from './constants';
     status: 'volatile',
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
+    padded: true,
   }}
   args={{
     variant: 'general',
@@ -76,100 +75,5 @@ import { ALERTS } from './constants';
 <Canvas>
   <Story name="No CTA" args={{ cta: undefined }}>
     {(args) => <Alert {...args} />}
-  </Story>
-</Canvas>
-
-## Stacked Alerts
-
-<Canvas isColumn>
-  <Story
-    name="Stacked"
-    args={{
-      id: 'stacked',
-      alerts: [ALERTS.general, ALERTS.maintenance, ALERTS.feature],
-    }}
-  >
-    {(args) => <Alerts {...args} />}
-  </Story>
-  <Story
-    name="priority"
-    args={{
-      id: 'priority',
-      alerts: [ALERTS.feature, ALERTS.general, ALERTS.success],
-    }}
-  >
-    {(args) => <Alerts {...args} />}
-  </Story>
-</Canvas>
-
-## Positioning
-
-<Canvas>
-  <Story
-    name="inline"
-    args={{
-      placement: 'inline',
-      alerts: [
-        {
-          ...ALERTS.error,
-          message: 'You messed up something please try again',
-        },
-      ],
-    }}
-    decorators={[
-      (Story) => (
-        <Card variant="white" width="600px" minHeight="20rem" padding={32}>
-          <Text fontFamily="accent" fontSize={36}>
-            Inline Form
-          </Text>
-          {Story()}
-          <Text as="p" fontSize={16} marginBottom={8}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </Text>
-          <FillButton size="normal">I agree</FillButton>
-        </Card>
-      ),
-    ]}
-  >
-    {(args) => <Alerts {...args} />}
-  </Story>
-</Canvas>
-
-<Canvas>
-  <Story
-    name="top-center"
-    parameters={{
-      container: {
-        position: 'relative',
-        display: 'flex',
-        justifyContent: 'center',
-        minHeight: '300px',
-        width: '100%',
-        overflow: 'hidden',
-        backgroundColor: 'beige',
-      },
-    }}
-    decorators={[
-      (Story) => (
-        <>
-          <Box height="3.75rem" width="100%">
-            <GlobalHeader type="pro" />
-          </Box>
-          <>{Story()}</>
-        </>
-      ),
-    ]}
-    args={{
-      id: 'top',
-      placement: 'top-center',
-      alerts: [ALERTS.feature, ALERTS.general, ALERTS.success],
-    }}
-  >
-    {(args) => <Alerts {...args} />}
   </Story>
 </Canvas>

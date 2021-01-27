@@ -16,9 +16,17 @@ export type ButtonSize = 'normal' | 'small';
 export type SizedButtonProps = ButtonProps &
   HandlerProps<typeof sizedButtonVariants>;
 
-export const sizedButtonVariants = variant<'size', ButtonSize>({
+export const sizedButtonVariants = variant({
   prop: 'size',
   variants: {
+    tiny: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '24px',
+      minWidth: '24px',
+      padding: 4,
+    },
     small: {
       fontSize: 14,
       padding: 8,

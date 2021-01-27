@@ -1,0 +1,94 @@
+import { Alerts, Box } from '@codecademy/gamut';
+import { GlobalHeader } from '@codecademy/gamut-labs/src/experimental/GlobalHeader/index.tsx';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { ALERTS } from './constants';
+
+<Meta
+  title={title}
+  component={Alerts}
+  parameters={{
+    subtitle: 'A container component for displaying many alerts',
+    source: 'gamut',
+    container: {
+      minHeight: '150px',
+    },
+  }}
+  args={{
+    id: 'defaultStory',
+    alerts: [
+      ALERTS.general,
+      ALERTS.error,
+      ALERTS.maintenance,
+      ALERTS.feature,
+      ALERTS.success,
+    ],
+  }}
+/>
+
+<Canvas>
+  <Story name="Alerts">{(args) => <Alerts {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Alerts" />
+
+## Stacked Alerts
+
+<Canvas isColumn>
+  <Story
+    name="Stacked"
+    args={{
+      id: 'stacked',
+    }}
+  >
+    {(args) => <Alerts {...args} />}
+  </Story>
+  <Story
+    name="priority"
+    args={{
+      id: 'priority',
+    }}
+  >
+    {(args) => <Alerts {...args} />}
+  </Story>
+</Canvas>
+
+## Positioning
+
+<Canvas>
+  <Story
+    name="top-center"
+    parameters={{
+      container: {
+        position: 'relative',
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+        minHeight: '300px',
+        width: '100%',
+        overflow: 'hidden',
+        backgroundColor: 'beige',
+      },
+    }}
+    decorators={[
+      (Story) => (
+        <>
+          <Box height="3.75rem" width="100%">
+            <GlobalHeader type="pro" />
+          </Box>
+          <>{Story()}</>
+        </>
+      ),
+    ]}
+    args={{
+      id: 'top',
+      placement: 'top-center',
+      alerts: [ALERTS.feature, ALERTS.general, ALERTS.success],
+    }}
+  >
+    {(args) => <Alerts {...args} />}
+  </Story>
+</Canvas>
