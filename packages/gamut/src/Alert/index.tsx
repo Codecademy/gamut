@@ -37,7 +37,7 @@ export const Alert: React.FC<AlertProps> = ({
   fluid = false,
   type = BannerType.Info,
   showIcon = true,
-  lines = 2,
+  lines,
   cta,
   onClose,
 }) => {
@@ -77,8 +77,8 @@ export const Alert: React.FC<AlertProps> = ({
             justify="spaceBetween"
           >
             <Truncate
-              expanded={isExpanded}
-              lines={lines}
+              expanded={isExpanded || Boolean(lines)}
+              lines={lines || 1}
               onTruncate={setIsTruncated}
               className={styles.truncate}
             >
