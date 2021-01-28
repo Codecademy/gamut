@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 export type AccordionAreaProps = {
   children: React.ReactNode;
@@ -33,7 +34,7 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
 }) => {
   const [delayExpanded, setDelayExpanded] = useState(expanded);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const handle = setTimeout(
       () => setDelayExpanded(expanded),
       transitionDuration * 1000
