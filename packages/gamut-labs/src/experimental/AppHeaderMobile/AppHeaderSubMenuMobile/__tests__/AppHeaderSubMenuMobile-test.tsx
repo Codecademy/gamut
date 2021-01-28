@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
 import {
   AppHeaderSubMenuMobile,
   AppHeaderSubMenuMobileProps,
@@ -22,22 +23,8 @@ const props: AppHeaderSubMenuMobileProps = {
     trackingTarget: '',
     type: 'dropdown',
     popover: [
-      {
-        dataTestId: '',
-        id: 'sublink-1',
-        text: 'forum',
-        href: sublink1Href,
-        trackingTarget: '',
-        type: 'link',
-      },
-      {
-        dataTestId: '',
-        id: 'sublink-2',
-        text: 'blog',
-        href: sublink2Href,
-        trackingTarget: '',
-        type: 'link',
-      },
+      createMockAppHeaderLinkItem('sublink-1', sublink1Href, 'forum'),
+      createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
     ],
   },
   handleClose: handleClose,

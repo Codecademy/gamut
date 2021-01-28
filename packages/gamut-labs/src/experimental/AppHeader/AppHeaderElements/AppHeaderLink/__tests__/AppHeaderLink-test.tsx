@@ -3,20 +3,14 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { createMockAppHeaderLinkItem } from '../../../mockAppHeaderItems';
 import { AppHeaderLink, AppHeaderLinkProps } from '..';
 
 const testText = 'Test Link';
 const onClick = jest.fn();
 
 const props: AppHeaderLinkProps = {
-  item: {
-    dataTestId: '',
-    id: 'test-link',
-    href: 'test-url',
-    text: testText,
-    trackingTarget: '',
-    type: 'link',
-  },
+  item: createMockAppHeaderLinkItem('test-link', 'test-url', testText),
   onClick,
 };
 

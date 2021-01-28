@@ -3,6 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { createMockAppHeaderLinkItem } from '../../../mockAppHeaderItems';
 import { AppHeaderDropdown, AppHeaderDropdownProps } from '..';
 
 const testDropdownTexts = ['Test SubLink 1 Text', 'Test Sublink 2 Text'];
@@ -15,22 +16,16 @@ const props: AppHeaderDropdownProps = {
     id: 'target-link',
     text: 'Test Link',
     popover: [
-      {
-        dataTestId: '',
-        id: 'sublink-1',
-        text: testDropdownTexts[0],
-        href: testDropdownUrls[0],
-        trackingTarget: '',
-        type: 'link',
-      },
-      {
-        dataTestId: '',
-        id: 'sublink-2',
-        text: testDropdownTexts[1],
-        href: testDropdownUrls[1],
-        trackingTarget: '',
-        type: 'link',
-      },
+      createMockAppHeaderLinkItem(
+        'link-0',
+        testDropdownUrls[0],
+        testDropdownTexts[0]
+      ),
+      createMockAppHeaderLinkItem(
+        'link-1',
+        testDropdownUrls[1],
+        testDropdownTexts[1]
+      ),
     ],
     trackingTarget: '',
     type: 'dropdown',
@@ -57,11 +52,8 @@ describe('AppHeaderDropdown', () => {
   it('sublinks link to the provided hrefs', () => {
     renderAppHeaderDropdown();
     screen.getByRole('button').click();
-    expect(screen.getAllByRole('link')[0].getAttribute('href')).toEqual(
-      testDropdownUrls[0]
-    );
-    expect(screen.getAllByRole('link')[1].getAttribute('href')).toEqual(
-      testDropdownUrls[1]
-    );
+    expect(
+      screen.getAllByRole('link').map((node) => node.getAttribute('href'))
+    ).toStrictEqual(testDropdownUrls);
   });
 });
