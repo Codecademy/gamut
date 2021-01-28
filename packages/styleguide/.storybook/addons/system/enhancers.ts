@@ -12,7 +12,7 @@ export type ControlType = {
 };
 
 const MDN_URL = 'https://developer.mozilla.org/en-US/docs/Web/CSS/';
-const THEME_PATH = '/?path=/docs/foundations-theme--page';
+const THEME_PATH = '/?path=/docs/foundations-theme';
 
 const createDescription = (name: string) => {
   const description: string[] = [];
@@ -22,7 +22,7 @@ const createDescription = (name: string) => {
   const scale = PROP_META?.[name]?.scale;
 
   if (scale) {
-    description.push(`Scale: [${scale}](${THEME_PATH}#${kebabCase(scale)})`);
+    description.push(`Scale: [${scale}](${THEME_PATH}--${kebabCase(scale)})`);
   }
 
   return description.join('<br />');
@@ -70,7 +70,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       arg.name === 'theme' &&
       arg?.table?.type?.summary.indexOf('Theme') > -1
     ) {
-      const description = `[Emotion Theme](${THEME_PATH})`;
+      const description = `[Emotion Theme](${THEME_PATH}--page)`;
 
       return {
         ...arg,
