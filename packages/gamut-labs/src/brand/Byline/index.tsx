@@ -17,8 +17,8 @@ export type BylineProps = {
   location?: string;
   company?: string;
   lastName?: string;
-  /** an object to overwrite any combo of, or all, of the default styles. Structured as: {bylineContainer: ..., author: ...,
-   * jobContainer: styles.jobClassName, location: styles.locationClassName}`
+  /** an object to overwrite any combo of, or all, of the default styles. Structured as: `{bylineContainer: styles.className, author: styles.className,
+   * jobContainer:styles.className, location: styles.className}`
    */
   classNames?: BylineClassNamesProps;
 };
