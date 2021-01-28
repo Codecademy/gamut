@@ -24,9 +24,8 @@ export const AppHeaderAvatar: React.FC<AppHeaderAvatarProps> = ({
   return (
     <AvatarContainer>
       <AvatarImage
-        alt="Avatar"
+        alt="My Account dropdown toggle"
         data-testid="avatar"
-        aria-label="my account dropdown toggle"
         src={imageUrl}
       />
     </AvatarContainer>
