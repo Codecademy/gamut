@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.0...@codecademy/gamut@20.0.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Truncate:** Fix truncation markup and makes props more flexible ([4f0f710](https://github.com/Codecademy/client-modules/commit/4f0f71050ce9b8dff5fe167d81ddd79bbbffc88f))
+
+
+
 ## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.12.0...@codecademy/gamut@20.0.0) (2021-01-28)
 
 
