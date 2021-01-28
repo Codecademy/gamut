@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.2...@codecademy/styleguide@22.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
 ### [21.24.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.1...@codecademy/styleguide@21.24.2) (2021-01-28)
 
 
