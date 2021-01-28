@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, { InputHTMLAttributes, ReactNode } from 'react';
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import styles from './styles/Radio.module.scss';
 
@@ -17,7 +17,7 @@ export type RadioProps = InputHTMLAttributes<HTMLInputElement> & {
   readOnly?: boolean;
 };
 
-export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       name,
