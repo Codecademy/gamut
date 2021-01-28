@@ -17174,10 +17174,10 @@ react-textarea-autosize@^8.1.1:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-truncate-markup@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.0.1.tgz#5c52bda712f7e185e84969b2b79440ec8b422441"
-  integrity sha512-WG1E9FLyTrq5ERaDbIq0DjWVs3JrAdr93fasdQqbVlEifBUp27kGM7ws4xCBIh2keDjumTPjw3iiHNNmD+YtcQ==
+react-truncate-markup@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.npmjs.org/react-truncate-markup/-/react-truncate-markup-5.1.0.tgz#632f263a7d70925ab6368d5620ef32f066c2857a"
+  integrity sha512-TTp8gj63w/o5jQC7HnLMEeAHp9jjSxFlA5lzklvPzcSubcurkEI4g0YjW67YG1yNAJHqQwCadj4mTUvz58S1wQ==
   dependencies:
     line-height "0.3.1"
     memoize-one "^5.1.1"

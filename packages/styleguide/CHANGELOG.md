@@ -3,6 +3,107 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.2...@codecademy/styleguide@22.0.3) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.1...@codecademy/styleguide@22.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [22.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.0...@codecademy/styleguide@22.0.1) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.2...@codecademy/styleguide@22.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
+### [21.24.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.1...@codecademy/styleguide@21.24.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* scr => src ([c194b40](https://github.com/Codecademy/client-modules/commit/c194b40c8ba49204e020cc0fdce85569f4d3e5ed))
+
+
+
+### [21.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.0...@codecademy/styleguide@21.24.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **styleguide:** import/export ([1b276f7](https://github.com/Codecademy/client-modules/commit/1b276f76d46f677e640e5a9651b16b273a3725be))
+
+
+
+## [21.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.23.0...@codecademy/styleguide@21.24.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+## [21.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.1...@codecademy/styleguide@21.23.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
+### [21.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.0...@codecademy/styleguide@21.22.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
+
+
+### Features
+
+* **Icons:** Adds initial Mini Bold streamline icons ([e3c521c](https://github.com/Codecademy/client-modules/commit/e3c521c5e2a4f207db079c942560c54c93125fa5))
+
+
+
+## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
+
+
+### Features
+
+* **Mobile Menu components:** mobile menu set up ([#1320](https://github.com/Codecademy/client-modules/issues/1320)) ([6d33a20](https://github.com/Codecademy/client-modules/commit/6d33a204de35bf3167773241af2ed77706bbcb89))
+
+
+
 ### [21.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.1...@codecademy/styleguide@21.20.2) (2021-01-25)
 
 **Note:** Version bump only for package @codecademy/styleguide
