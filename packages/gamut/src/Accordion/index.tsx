@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { AccordionArea } from '../AccordionArea';
-import { AccordionButton, AccordionButtonTheme } from '../AccordionButton';
+import { AccordionButton, AccordionButtonVariant } from '../AccordionButton';
 
 export type ChildrenOrExpandedRender =
   | React.ReactNode
@@ -30,7 +30,7 @@ export type AccordionProps = {
   /**
    * Visual theme of the top button.
    */
-  colorVariant?: AccordionButtonTheme;
+  colorVariant?: AccordionButtonVariant;
 
   /**
    * Contents to place within the top button.

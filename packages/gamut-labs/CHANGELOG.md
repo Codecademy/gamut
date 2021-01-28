@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.2...@codecademy/gamut-labs@7.15.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
+### [7.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.1...@codecademy/gamut-labs@7.14.2) (2021-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [7.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.0...@codecademy/gamut-labs@7.14.1) (2021-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

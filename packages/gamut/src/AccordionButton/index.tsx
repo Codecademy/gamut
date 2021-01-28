@@ -1,83 +1,96 @@
 import { MiniChevronDownIcon } from '@codecademy/gamut-icons';
-import { variant } from '@codecademy/gamut-styles';
+import { space, theme, variant } from '@codecademy/gamut-styles';
 import { HandlerProps } from '@codecademy/gamut-system';
+import { UnionToIntersection } from '@codecademy/gamut-system/dist/types/utils';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ComponentProps } from 'react';
 
 import { Box } from '../Box';
-import { TextButton } from '../Button';
-
+import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
 export type AccordionButtonSize = 'normal' | 'large';
 
-export type AccordionButtonTheme = 'blue' | 'plain' | 'yellow';
+export type AccordionButtonVariant = 'blue' | 'plain' | 'yellow';
 
-export type AccordionButtonProps = ComponentProps<typeof ButtonComponent> & {
-  /**
-   * Whether the button should display as open or closed.
-   */
-  expanded?: boolean;
-};
+export type AccordionButtonProps = UnionToIntersection<
+  ComponentProps<typeof ButtonComponent> & {
+    /**
+     * Whether the button should display as open or closed.
+     */
+    expanded?: boolean;
+  }
+>;
 
-const buttonVariants = variant({
+const buttonVariants = variant<'colorVariant', AccordionButtonVariant>({
   prop: 'colorVariant',
   variants: {
-    plain: {},
+    plain: {
+      textColor: 'black',
+    },
     blue: {
       textColor: 'blue-300',
     },
     yellow: {
-      backgroundColor: 'yellow-500',
-      borderStyle: 'solid',
-      borderWidthY: '1px',
-      borderStyleX: '0',
+      textColor: 'yellow-400',
+      backgroundColor: 'yellow-0',
+      borderColorY: 'yellow-500',
       fontWeight: 'base',
+      borderRadius: '0',
     },
   },
 });
 
-const size = ({ size, theme }: any) =>
-  size &&
-  css`
-    border-radius: 2px;
-    padding-top: 4px;
-    font-size: 1.5rem;
-
-    ${theme.breakpoints.md} {
-      font-size: 1.75rem;
-    }
-  `;
-
-type ButtonProps = HandlerProps<typeof buttonVariants> & {
+const focusVariants = variant<'colorVariant', AccordionButtonVariant>({
+  prop: 'colorVariant',
+  variants: {
+    plain: {
+      boxShadow: `0 0 0 2px ${theme.colors.white}, 0 0 0 4px currentColor`,
+    },
+    blue: {
+      boxShadow: `0 0 0 2px ${theme.colors.white}, 0 0 0 4px currentColor`,
+    },
+    yellow: {
+      borderColorY: 'yellow-400',
+    },
+  },
+});
+type ButtonProps = HandlerProps<typeof space> & {
+  colorVariant?: AccordionButtonVariant;
   /**
    * Determines the size of the button.
    */
   size?: AccordionButtonSize;
 };
 
-const ButtonComponent = styled(TextButton)<ButtonProps>`
-  display: flex;
-  justify-content: space-between;
-  padding: 0.375rem 1rem;
-  width: 100%;
-  column-gap: ${({ theme, size }) =>
-    size === 'large' ? theme.spacing[16] : theme.spacing[12]};
+const ButtonComponent = styled(ButtonDeprecatedBase)<ButtonProps>((props) => {
+  const spaceStyles = space(props);
+  const variantStyles = buttonVariants(props);
+  const focusStyles = focusVariants(props);
+  const { theme } = props;
 
-  ${({ size, theme }: any) =>
-    size === 'large' &&
-    css`
-      border-radius: 2px;
-      padding-top: 4px;
-      font-size: 1.5rem;
+  return css`
+    display: flex;
+    border: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.375rem 1rem;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    column-gap: ${theme.spacing[12]};
+    ${variantStyles};
 
-      ${theme.breakpoints.md} {
-        font-size: 1.75rem;
-      }
-    `}
+    &:focus-visible {
+      ${focusStyles}
+    }
 
-  ${size}
-  ${buttonVariants};
-`;
+    & > * {
+      color: inherit;
+    }
+
+    ${spaceStyles}
+  `;
+});
 
 const ExpandIcon = styled(MiniChevronDownIcon)<{ expanded?: boolean }>`
   transition: transform 0.35s ease-out;
@@ -100,9 +113,16 @@ export const AccordionButton: React.FC<AccordionButtonProps> = ({
       aria-expanded={expanded}
       colorVariant={colorVariant}
       {...baseProps}
-      as="button"
     >
-      <Box paddingTop={size === 'large' ? 4 : 0}>{children}</Box>
+      <Box
+        paddingLeft={baseProps.paddingLeft}
+        paddingTop={size === 'large' ? 4 : 0}
+        textAlign="left"
+        lineHeight="base"
+        width="100%"
+      >
+        {children}
+      </Box>
       <ExpandIcon
         expanded={expanded}
         height={iconSize}

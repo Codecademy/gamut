@@ -59,6 +59,7 @@ export const flatSwatches = {
   'green-400': '#AEE938',
   'green-700': '#008A27',
   'yellow-0': '#FFFAE5',
+  'yellow-400': '#CCA900',
   'yellow-500': '#FFD300',
   'pink-0': '#FFF5FF',
   'pink-400': '#F966FF',
