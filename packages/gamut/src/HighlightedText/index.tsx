@@ -1,21 +1,20 @@
 import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
 export type HighlightedTextProps = {
+  /**
+   * Text, with support for new lines and whitespace.
+   */
   children?: string;
-  wordProps?: HTMLAttributes<HTMLSpanElement>;
-  textProps?: HTMLAttributes<HTMLElement>;
 };
 
 export const HighlightedText: React.FC<HighlightedTextProps> = ({
   children = '',
-  textProps = {},
 }) => {
   const combinedProps = {
-    ...textProps,
-    className: cx(styles.highlightedText, textProps.className),
+    className: cx(styles.highlightedText),
   };
 
   const words = children
