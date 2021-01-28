@@ -77,7 +77,7 @@ export const Alert: React.FC<AlertProps> = ({
             justify="spaceBetween"
           >
             <Truncate
-              expanded={isExpanded || Boolean(lines)}
+              expanded={isExpanded || !Boolean(lines)}
               lines={lines || 1}
               onTruncate={setIsTruncated}
               className={styles.truncate}

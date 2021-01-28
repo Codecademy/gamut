@@ -22,14 +22,14 @@ describe('Alert', () => {
 
     const buttons = renderedAlert.find('button');
 
-    expect(buttons).toHaveLength(1);
+    expect(buttons).toHaveLength(0);
   });
 
   it('calls the onClose callback when the close button is clicked', () => {
     const onClose = jest.fn();
     const renderedAlert = mount(<Alert onClose={onClose}>Hello</Alert>);
 
-    const close = renderedAlert.find('button').at(1);
+    const close = renderedAlert.find('button').at(0);
     close.simulate('click');
 
     expect(onClose).toHaveBeenCalled();
@@ -42,7 +42,7 @@ describe('Alert', () => {
       </Alert>
     );
 
-    const cta = renderedAlert.find('button').at(1);
+    const cta = renderedAlert.find('button').at(0);
     cta.simulate('click');
 
     expect(onCtaClick).toHaveBeenCalled();
@@ -59,7 +59,7 @@ describe('Alert', () => {
       </Alert>
     );
 
-    const cta = renderedAlert.find('button').at(2);
+    const cta = renderedAlert.find('button').at(1);
     cta.simulate('click');
 
     expect(onCtaClick).not.toHaveBeenCalled();
@@ -98,6 +98,20 @@ describe('Alert', () => {
     expect(renderedTruncated.prop('lines')).toEqual(2);
   });
 
+  it('automatically displays content as expanded if no lines are set', () => {
+    const renderedAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick, href: '/hello' }}
+      >
+        Hello
+      </Alert>
+    );
+
+    const renderedTruncated = renderedAlert.find('Truncate');
+    expect(renderedTruncated.prop('expanded')).toEqual(true);
+  });
+
   it('renders a clickable button to expand the truncated section', () => {
     const renderedAlert = mount(
       <Alert
@@ -131,6 +145,7 @@ describe('Alert', () => {
     );
 
     const buttons = renderedAlert.find('button');
+    expect(buttons.length).toBe(3);
 
     buttons.at(0).simulate('click');
 
