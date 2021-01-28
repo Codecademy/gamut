@@ -1,3 +1,4 @@
+import { Box } from '@codecademy/gamut';
 import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
@@ -101,6 +102,21 @@ A dropdown menu for use in AppHeader.
     }}
     name="AppHeaderProfileDropdown"
   >
-    {(args) => <AppHeaderDropdown {...args} />}
+    {(args) => (
+      <Box height="50">
+        <Box position="absolute" left="225">
+          <AppHeaderDropdown {...args} />
+        </Box>
+      </Box>
+    )}
   </Story>
 </Canvas>
+
+<!-- These breaks are to allow room on the page for the Profile dropdown above -->
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
