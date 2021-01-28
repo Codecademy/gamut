@@ -22,26 +22,24 @@ module.exports = {
     },
     {
       files: ['**/typings/*', '*.d.ts'],
-      parserOptions: {
-        tsconfigRootDir: TYPE_AWARE && __dirname,
-        project: TYPE_AWARE && [
-          './tsconfig.json',
-          './packages/*/tsconfig.json',
-        ],
-      },
+      parserOptions: TYPE_AWARE
+        ? {
+            tsconfigRootDir: __dirname,
+            project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+          }
+        : {},
       rules: {
         '@typescript-eslint/no-namespace': 'off',
       },
     },
     {
       files: ['*.tsx'],
-      parserOptions: {
-        tsconfigRootDir: TYPE_AWARE && __dirname,
-        project: TYPE_AWARE && [
-          './tsconfig.json',
-          './packages/*/tsconfig.json',
-        ],
-      },
+      parserOptions: TYPE_AWARE
+        ? {
+            tsconfigRootDir: __dirname,
+            project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+          }
+        : {},
       rules: {
         'no-restricted-syntax': [
           'error',
