@@ -6,7 +6,6 @@ import React from 'react';
 
 import { Text } from '../../../experimental/Text';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderProfileDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderProfileDropdown';
 import {
   focusStyles,
   hoverStyles,
@@ -14,10 +13,7 @@ import {
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 
-export type AppHeaderSubMenuMobileProps = (
-  | AppHeaderDropdownProps
-  | AppHeaderProfileDropdownProps
-) & {
+export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
 };
 
