@@ -14,11 +14,12 @@ type AvatarImageProps =
 //TO-DO: Add link to theme documentation
 
 type AvatarBaseProps = {
-  /* path to image asset */
+  /**path to image asset
+   */
   src: string;
-  /* chooses`light` or `dark` container*/
+  /**chooses color of drop shadow
+   */
   theme?: VisualTheme;
-  /*applies className to Avatar and container */
   className?: string; // useful if avatar size needs to be overridden
 };
 
