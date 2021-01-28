@@ -1,5 +1,5 @@
 const TYPE_AWARE = process.env.ESLINT_TYPE_AWARE !== 'false';
-
+console.log('IS TYPE AWARE', TYPE_AWARE);
 module.exports = {
   env: {
     browser: true,
