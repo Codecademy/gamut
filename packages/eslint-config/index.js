@@ -1,3 +1,5 @@
+const TYPE_AWARE = process.env.ESLINT_TYPE_AWARE !== 'false';
+
 module.exports = {
   env: {
     browser: true,
@@ -38,12 +40,15 @@ module.exports = {
       parser: require.resolve('@typescript-eslint/parser'),
 
       parserOptions: {
-        project: './tsconfig.json',
+        project: TYPE_AWARE && './tsconfig.json',
         sourceType: 'module',
       },
+
       extends: [
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
+        TYPE_AWARE &&
+          'plugin:@typescript-eslint/recommended-requiring-type-checking',
+      ].filter(Boolean),
+
       rules: {
         // These rules could be useful, but we haven't gotten around to trying them out
         // Additionally, they're moved into this override object (further nested from the rules

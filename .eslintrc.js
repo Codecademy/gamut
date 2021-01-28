@@ -8,6 +8,7 @@
  * project root
  */
 const defaultConfig = require('./packages/eslint-config');
+const TYPE_AWARE = process.env.ESLINT_TYPE_AWARE !== 'false';
 
 module.exports = {
   ...defaultConfig,
@@ -22,8 +23,11 @@ module.exports = {
     {
       files: ['**/typings/*', '*.d.ts'],
       parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        tsconfigRootDir: TYPE_AWARE && __dirname,
+        project: TYPE_AWARE && [
+          './tsconfig.json',
+          './packages/*/tsconfig.json',
+        ],
       },
       rules: {
         '@typescript-eslint/no-namespace': 'off',
@@ -32,8 +36,11 @@ module.exports = {
     {
       files: ['*.tsx'],
       parserOptions: {
-        tsconfigRootDir: __dirname,
-        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+        tsconfigRootDir: TYPE_AWARE && __dirname,
+        project: TYPE_AWARE && [
+          './tsconfig.json',
+          './packages/*/tsconfig.json',
+        ],
       },
       rules: {
         'no-restricted-syntax': [

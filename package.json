@@ -12,7 +12,8 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\"",
-    "lint:fix": "yarn lint --fix",
+    "lint:fix": "ESLINT_TYPE_AWARE=false yarn lint --fix",
+    "hook:lint:fix": "ESLINT_TYPE_AWARE=false eslint --ignore-path .eslintignore --fix",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint --fix && yarn prettier --write",
@@ -30,6 +31,9 @@
   "lint-staged": {
     "**/*.{mdx,js,ts,tsx,json,css,scss}": [
       "prettier --ignore-path .prettierignore --write"
+    ],
+    "**/*.{mdx,js,ts,tsx,json}": [
+      "yarn hook:lint:fix"
     ]
   },
   "repository": {
