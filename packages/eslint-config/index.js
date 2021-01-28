@@ -1,5 +1,5 @@
 const TYPE_AWARE = process.env.ESLINT_TYPE_AWARE !== 'false';
-console.log('IS TYPE AWARE', TYPE_AWARE);
+
 module.exports = {
   env: {
     browser: true,
@@ -39,10 +39,12 @@ module.exports = {
       files: ['*.tsx', '*.ts'],
       parser: require.resolve('@typescript-eslint/parser'),
 
-      parserOptions: {
-        project: TYPE_AWARE && './tsconfig.json',
-        sourceType: 'module',
-      },
+      parserOptions: TYPE_AWARE
+        ? {
+            project: './tsconfig.json',
+            sourceType: 'module',
+          }
+        : {},
 
       extends: [
         TYPE_AWARE &&
