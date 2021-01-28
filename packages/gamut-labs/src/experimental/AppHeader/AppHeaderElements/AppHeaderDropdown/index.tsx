@@ -4,17 +4,19 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
+import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
 import { Popover } from '../../../Popover';
-import { AppHeaderLink } from '../AppHeaderLink';
+import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderLinkItem,
+  AppHeaderProfileDropdownItem,
 } from '../types';
 import styles from './styles.module.scss';
 
-const AppHeaderTargetButton = styled.button`
+const AppHeaderTextTargetButton = styled.button`
   background-color: transparent;
   text-align: left;
   display: flex;
@@ -32,6 +34,16 @@ const AppHeaderTargetButton = styled.button`
   ${focusStyles}
 `;
 
+const AppHeaderAvatarTargetButton = styled.button`
+  background-color: transparent;
+  border: transparent;
+  font-weight: normal;
+  padding: 1rem 0;
+  cursor: pointer;
+  ${hoverStyles}
+  ${focusStyles}
+`;
+
 type AppHeaderPopoverProps = { baseZIndex: number };
 
 export const AppHeaderPopover = styled(Popover)<AppHeaderPopoverProps>`
@@ -40,7 +52,7 @@ export const AppHeaderPopover = styled(Popover)<AppHeaderPopoverProps>`
 
 export type AppHeaderDropdownProps = {
   baseZIndex: number;
-  item: AppHeaderDropdownItem;
+  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
   onClick: AppHeaderClickHandler;
 };
 
@@ -58,30 +70,38 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   const handleClose = () => {
     setIsOpen(false);
   };
-  const clickTarget = (
-    <AppHeaderTargetButton
-      className={isOpen && styles.open}
-      onClick={(event) => toggleIsOpen(event)}
-      style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
-    >
-      <span title={item.text} className={styles.copy}>
-        {item.text}
-      </span>
-      <ArrowChevronDownFilledIcon
-        size={12}
-        className={styles.icon}
-        aria-label="dropdown"
-      />
-    </AppHeaderTargetButton>
-  );
+  const clickTarget =
+    item.type === 'profile-dropdown' ? (
+      <AppHeaderAvatarTargetButton
+        onClick={(event) => toggleIsOpen(event)}
+        style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
+      >
+        <AppHeaderAvatar imageUrl={item.avatar} />
+      </AppHeaderAvatarTargetButton>
+    ) : (
+      <AppHeaderTextTargetButton
+        className={isOpen && styles.open}
+        onClick={(event) => toggleIsOpen(event)}
+        style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
+      >
+        <span title={item.text} className={styles.copy}>
+          {item.text}
+        </span>
+        <ArrowChevronDownFilledIcon
+          size={12}
+          className={styles.icon}
+          aria-label="dropdown"
+        />
+      </AppHeaderTextTargetButton>
+    );
 
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
       <AppHeaderPopover
-        align="left"
+        align={item.type === 'profile-dropdown' ? 'right' : 'left'}
         baseZIndex={baseZIndex}
-        verticalOffset={-2}
+        verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
         outline
         isOpen={isOpen}
         onRequestClose={handleClose}
@@ -91,7 +111,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           {item.popover.map((link: AppHeaderLinkItem) => {
             return (
               <Box key={link.id} paddingX={16}>
-                <AppHeaderLink item={link} onClick={onClick} />
+                <AppHeaderLinkMobile item={link} onClick={onClick} />
               </Box>
             );
           })}

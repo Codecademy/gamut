@@ -10,7 +10,6 @@ import React, { ReactNode } from 'react';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
-import { AppHeaderProfileDropdown } from './AppHeaderElements/AppHeaderProfileDropdown';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {
@@ -52,6 +51,7 @@ const mapItemToElement = (
         </AppHeaderTab>
       );
     case 'dropdown':
+    case 'profile-dropdown':
       return (
         <AppHeaderTab key={item.id}>
           <AppHeaderDropdown
@@ -61,16 +61,7 @@ const mapItemToElement = (
           />
         </AppHeaderTab>
       );
-    case 'profile-dropdown':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderProfileDropdown
-            baseZIndex={baseZIndex}
-            item={item}
-            onClick={onClick}
-          />
-        </AppHeaderTab>
-      );
+
     case 'render-element':
       return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>;
     case 'text-button':
