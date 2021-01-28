@@ -33,11 +33,9 @@ export const Truncate: React.FC<TruncateProps> = ({
       tokenize="words"
       ellipsis={<span>...</span>}
       lines={lines}
-      onTruncate={(truncated) => {
-        setIsTruncated(truncated);
-      }}
+      onTruncate={setIsTruncated}
     >
-      <div>
+      <span>
         {React.Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
@@ -45,19 +43,14 @@ export const Truncate: React.FC<TruncateProps> = ({
             <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
           )
         )}
-      </div>
+      </span>
     </TruncateMarkup>
   );
 
   /** If lines is false do not attempt to truncate */
 
   return (
-    <Box
-      className={className}
-      display="flex"
-      alignItems="flex-start"
-      columnGap={8}
-    >
+    <Box as="span" className={className}>
       {expanded ? children : truncatedChildren}
     </Box>
   );

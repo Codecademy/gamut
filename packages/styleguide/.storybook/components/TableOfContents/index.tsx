@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { DocsContext } from '@storybook/addon-docs/blocks';
 import { useKind } from './utils';
 import { Section } from './Section';
