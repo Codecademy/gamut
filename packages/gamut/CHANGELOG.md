@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.2...@codecademy/gamut@20.0.3) (2021-01-28)
+
+
+### Bug Fixes
+
+* used useIsomorphicLayoutEffect instead of useLayoutEffect ([2475942](https://github.com/Codecademy/client-modules/commit/247594238dc33f7712d20c3c0b724c249429b482))
+
+
+
 ### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.1...@codecademy/gamut@20.0.2) (2021-01-28)
 
 
