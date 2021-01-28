@@ -68,7 +68,7 @@ const ToggleLabel = styled.label<LabelProps>`
   padding: 0;
 
   &[disabled] {
-    cursor: auto;
+    cursor: not-allowed;
     opacity: 0.75;
   }
 
