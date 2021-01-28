@@ -21,18 +21,36 @@ Receives its `checked` prop from its parent. This is the default theme and size.
 
 <Props story="Toggle" />
 
-## Alternative Toggle
+## Color Variants
 
-This is the small size and brand purple theme.
+We currently support 2 colors for toggles
 
 <Canvas>
   <Story
-    name="Alternative Toggle"
+    name="Blue"
     args={{
-      theme: 'purple',
-      size: 'small',
+      variant: 'blue',
     }}
   >
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story
+    name="Hyper"
+    args={{
+      variant: 'hyper',
+    }}
+  >
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Size Variants
+
+<Canvas>
+  <Story name="Medium" args={{ size: 'medium' }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story name="Small" args={{ size: 'small' }}>
     {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>
