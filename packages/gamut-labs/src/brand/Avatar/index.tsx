@@ -11,9 +11,14 @@ type AvatarImageProps =
     }
   | { alt?: never; 'aria-labelledby': string };
 
+//TO-DO: Add link to theme documentation
+
 type AvatarBaseProps = {
+  /* path to image asset */
   src: string;
+  /* chooses`light` or `dark` container*/
   theme?: VisualTheme;
+  /*applies className to Avatar and container */
   className?: string; // useful if avatar size needs to be overridden
 };
 
