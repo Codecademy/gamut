@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.0...@codecademy/styleguide@21.24.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **styleguide:** import/export ([1b276f7](https://github.com/Codecademy/client-modules/commit/1b276f76d46f677e640e5a9651b16b273a3725be))
+
+
+
 ## [21.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.23.0...@codecademy/styleguide@21.24.0) (2021-01-27)
 
 
