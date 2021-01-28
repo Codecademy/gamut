@@ -12,7 +12,8 @@ type AvatarImageProps =
   | { alt?: never; 'aria-labelledby': string };
 
 type AvatarBaseProps = {
-  /**path to image asset
+  /**
+   * path to image asset
    */
   src: string;
   /**chooses color of drop shadow
