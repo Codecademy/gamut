@@ -11,8 +11,6 @@ type AvatarImageProps =
     }
   | { alt?: never; 'aria-labelledby': string };
 
-//TO-DO: Add link to theme documentation
-
 type AvatarBaseProps = {
   /**path to image asset
    */
