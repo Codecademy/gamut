@@ -6,7 +6,8 @@ import styles from './styles.module.scss';
 
 export type HeaderContainerProps = {
   className?: string;
-  /** Pass ReactNode into any or each desired positions
+  /**
+   * Pass ReactNode into any or each desired positions
    */
   sections?: {
     after?: React.ReactNode;

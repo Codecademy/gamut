@@ -16,7 +16,8 @@ type AvatarBaseProps = {
    * path to image asset
    */
   src: string;
-  /**chooses color of drop shadow
+  /**
+   * chooses color of drop shadow
    */
   theme?: VisualTheme;
   className?: string; // useful if avatar size needs to be overridden
