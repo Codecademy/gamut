@@ -3,6 +3,72 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.2...@codecademy/gamut@20.0.3) (2021-01-28)
+
+
+### Bug Fixes
+
+* used useIsomorphicLayoutEffect instead of useLayoutEffect ([2475942](https://github.com/Codecademy/client-modules/commit/247594238dc33f7712d20c3c0b724c249429b482))
+
+
+
+### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.1...@codecademy/gamut@20.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.0...@codecademy/gamut@20.0.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Truncate:** Fix truncation markup and makes props more flexible ([4f0f710](https://github.com/Codecademy/client-modules/commit/4f0f71050ce9b8dff5fe167d81ddd79bbbffc88f))
+
+
+
+## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.12.0...@codecademy/gamut@20.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
+## [19.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.7...@codecademy/gamut@19.12.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+### [19.11.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.6...@codecademy/gamut@19.11.7) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+### [19.11.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.5...@codecademy/gamut@19.11.6) (2021-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.11.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.4...@codecademy/gamut@19.11.5) (2021-01-25)
 
 **Note:** Version bump only for package @codecademy/gamut
