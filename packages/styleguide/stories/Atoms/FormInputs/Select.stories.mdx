@@ -1,0 +1,60 @@
+import { Select } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+export const fruitOptions = [
+  'Apple',
+  'Banana',
+  'Cherry',
+  'Dragonfruit',
+  'Eggplant',
+];
+
+<Meta
+  title={title}
+  component={Select}
+  parameters={{
+    subtitle: 'A `<select />` element for picking from exclusive options',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    htmlFor: 'example-select',
+    name: 'example-select',
+    value: 'Apple',
+    options: fruitOptions,
+  }}
+  argTypes={{
+    value: {
+      control: {
+        type: 'select',
+        options: fruitOptions,
+      },
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="Select">{(args) => <Select {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Select" />
+
+### Input States
+
+<Canvas>
+  <Story
+    name="Disabled"
+    args={{ options: ['Disabled'], defaultValue: 'Disabled', disabled: true }}
+  >
+    {(args) => <Select {...args} />}
+  </Story>
+  <Story
+    name="Error"
+    args={{ options: ['Error'], defaultValue: 'Error', error: true }}
+  >
+    {(args) => <Select {...args} />}
+  </Story>
+</Canvas>

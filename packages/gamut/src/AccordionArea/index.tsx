@@ -1,7 +1,6 @@
+import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useLayoutEffect, useState } from 'react';
-
-import styles from './styles.module.scss';
 
 export type AccordionAreaProps = {
   children: React.ReactNode;
@@ -22,8 +21,8 @@ export type AccordionAreaProps = {
 const transitionDuration = 0.2;
 
 const variants = {
-  expanded: { height: '100%' },
-  folded: { height: 0 },
+  expanded: { height: 'auto' },
+  folded: { height: '0' },
 };
 
 export const AccordionArea: React.FC<AccordionAreaProps> = ({
@@ -46,16 +45,19 @@ export const AccordionArea: React.FC<AccordionAreaProps> = ({
   return (
     <div className={className}>
       {top}
-      <motion.div
+      <StyledAccordionBody
         aria-expanded={expanded}
-        className={styles.accordionBody}
-        initial={false}
+        initial={expanded ? 'expanded' : 'folded'}
         animate={expanded ? 'expanded' : 'folded'}
         variants={variants}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
       >
         {(expanded || delayExpanded) && children}
-      </motion.div>
+      </StyledAccordionBody>
     </div>
   );
 };
+
+const StyledAccordionBody = styled(motion.div)`
+  overflow: hidden;
+`;
