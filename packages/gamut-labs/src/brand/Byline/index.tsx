@@ -15,18 +15,21 @@ export type BylineProps = {
   firstName: string;
   occupation: string;
   location?: string;
-  classNames?: BylineClassNamesProps;
   company?: string;
   lastName?: string;
+  /** an object to overwrite any combo of, or all, of the default styles. Structured as: {bylineContainer: ..., author: ...,
+   * jobContainer: styles.jobClassName, location: styles.locationClassName}`
+   */
+  classNames?: BylineClassNamesProps;
 };
 
 export const Byline: React.FC<BylineProps> = ({
   firstName,
   occupation,
   location,
-  classNames = {},
   company,
   lastName,
+  classNames = {},
 }) => (
   <div className={cx(styles.bylineContainer, classNames.bylineContainer)}>
     <span
