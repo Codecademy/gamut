@@ -1,6 +1,8 @@
 import { AccordionButton } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -17,7 +19,7 @@ Comes in a few standard size and color combinations.
     children: 'Click me!',
     expanded: false,
     size: 'normal',
-    theme: 'plain',
+    colorVariant: 'plain',
   }}
 />
 
@@ -27,7 +29,7 @@ Comes in a few standard size and color combinations.
   </Story>
 </Canvas>
 
-<Props story="AccordionButton" />
+<PropsTable story="AccordionButton" />
 
 ## Themes
 
@@ -37,7 +39,7 @@ Blue accordion tops are only usable in dark contexts, such as the LE's
 Help Menu.
 
 <Canvas className="dark">
-  <Story name="Blue" args={{ expanded: true, theme: 'blue' }}>
+  <Story name="Blue" args={{ expanded: true, colorVariant: 'blue' }}>
     {(args) => <AccordionButton {...args} />}
   </Story>
 </Canvas>
@@ -45,10 +47,10 @@ Help Menu.
 ### Plain
 
 Plain AccordionButton tops are best applied in plain pages such as marketing pages
-where we haven't been able to invest yet in a more solid theme.
+where we haven't been able to invest yet in a more solid colorVariant.
 
 <Canvas>
-  <Story name="Plain" args={{ expanded: true, theme: 'plain' }}>
+  <Story name="Plain" args={{ expanded: true, colorVariant: 'plain' }}>
     {(args) => <AccordionButton {...args} />}
   </Story>
 </Canvas>
@@ -59,7 +61,7 @@ Yellow AccordionButton tops are used in the "Get a Hint" sections of the LE's
 narrative pane.
 
 <Canvas>
-  <Story name="Yellow" args={{ expanded: true, theme: 'yellow' }}>
+  <Story name="Yellow" args={{ expanded: true, colorVariant: 'yellow' }}>
     {(args) => <AccordionButton {...args} />}
   </Story>
 </Canvas>

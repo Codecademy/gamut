@@ -54,6 +54,7 @@ const focusVariants = variant<'colorVariant', AccordionButtonVariant>({
     },
   },
 });
+
 type ButtonProps = HandlerProps<typeof space> & {
   colorVariant?: AccordionButtonVariant;
   /**
