@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.12.0...@codecademy/gamut@20.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
+## [19.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.7...@codecademy/gamut@19.12.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+### [19.11.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.6...@codecademy/gamut@19.11.7) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+### [19.11.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.5...@codecademy/gamut@19.11.6) (2021-01-27)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ### [19.11.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.4...@codecademy/gamut@19.11.5) (2021-01-25)
 
 **Note:** Version bump only for package @codecademy/gamut
