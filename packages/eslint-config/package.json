@@ -4,7 +4,7 @@
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "bin": {
-    "eslint-safe-fix": "./bin/eslint-config-fix"
+    "eslint-safe-fix": "./bin/eslint-safe-fix"
   },
   "repository": {
     "type": "git",
