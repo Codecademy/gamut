@@ -56,7 +56,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
           </CTA>
         )}
       </Column>
-      {media && <PageHeroMedia {...media} />}
+      {media && <PageHeroMedia media={media} />}
     </LayoutGrid>
   );
 };

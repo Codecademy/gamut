@@ -26,7 +26,11 @@ const StyledVideo = styled(Video)`
   align-self: center;
 `;
 
-export const PageHeroMedia: React.FC<MediaProps> = (media) => {
+export type PageHeroMediaProps = {
+  media: MediaProps;
+};
+
+export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({ media }) => {
   switch (media.type) {
     case 'image':
       return (
