@@ -3,7 +3,9 @@
   "version": "3.1.3",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
-  "bin": "eslint-config-fix.sh",
+  "bin": {
+    "eslint-safe-fix": "bin/eslint-config-fix"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/client-modules/packages/eslint-config"
