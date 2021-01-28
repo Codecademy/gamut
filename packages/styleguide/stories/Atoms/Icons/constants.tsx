@@ -1,5 +1,5 @@
-import * as ICONS from '@codecademy/gamut-icons/src/icons/regular';
-export * as ICONS from '@codecademy/gamut-icons/src/icons/regular';
+import * as icons from '@codecademy/gamut-icons/src/icons/regular';
+export const ICONS = icons;
 import { keys, omit, pick } from 'lodash';
 
 export const VENDOR_ICONS = pick(
