@@ -4,17 +4,15 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import {
-  AppHeaderDropdownProps,
-  AppHeaderLinkMobile,
-  AppHeaderProfileDropdownProps,
-} from '../../..';
 import { Text } from '../../../experimental/Text';
+import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderProfileDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderProfileDropdown';
 import {
   focusStyles,
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
+import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 
 export type AppHeaderSubMenuMobileProps = (
   | AppHeaderDropdownProps

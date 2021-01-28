@@ -7,12 +7,10 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import {
-  AppHeaderDropdown,
-  AppHeaderLink,
-  AppHeaderLogo,
-  AppHeaderProfileDropdown,
-} from '..';
+import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
+import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
+import { AppHeaderProfileDropdown } from './AppHeaderElements/AppHeaderProfileDropdown';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';
 import {

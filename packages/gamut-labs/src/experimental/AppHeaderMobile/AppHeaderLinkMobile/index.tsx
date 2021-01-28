@@ -12,7 +12,6 @@ import {
 } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderLinkMobileProps = {
-  arrowButton?: boolean;
   item: AppHeaderLinkItem;
   onClick: AppHeaderClickHandler;
   topSeparator?: boolean;

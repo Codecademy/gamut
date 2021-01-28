@@ -4,7 +4,7 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
-import { Popover } from '../../..';
+import { Popover } from '../../../Popover';
 import { AppHeaderLink } from '../AppHeaderLink';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import {

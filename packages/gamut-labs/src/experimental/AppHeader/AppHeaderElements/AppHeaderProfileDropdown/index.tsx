@@ -3,9 +3,9 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
-import { AppHeaderPopover } from '../../..';
 import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
+import { AppHeaderPopover } from '../AppHeaderDropdown';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
