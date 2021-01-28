@@ -1,6 +1,5 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
-import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
@@ -34,6 +33,10 @@ const AppHeaderTextTargetButton = styled.button`
   ${focusStyles}
 `;
 
+const AppHeaderTextTarget = styled(AppHeaderTextTargetButton)`
+  padding: 2px 0;
+`;
+
 const AppHeaderAvatarTargetButton = styled.button`
   background-color: transparent;
   border: transparent;
@@ -42,6 +45,10 @@ const AppHeaderAvatarTargetButton = styled.button`
   cursor: pointer;
   ${hoverStyles}
   ${focusStyles}
+`;
+
+const AppHeaderAvatarTarget = styled(AppHeaderAvatarTargetButton)`
+  padding: 2px 0;
 `;
 
 type AppHeaderPopoverProps = { baseZIndex: number };
@@ -72,17 +79,13 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   };
   const clickTarget =
     item.type === 'profile-dropdown' ? (
-      <AppHeaderAvatarTargetButton
-        onClick={(event) => toggleIsOpen(event)}
-        style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
-      >
+      <AppHeaderAvatarTarget onClick={(event) => toggleIsOpen(event)}>
         <AppHeaderAvatar imageUrl={item.avatar} />
-      </AppHeaderAvatarTargetButton>
+      </AppHeaderAvatarTarget>
     ) : (
-      <AppHeaderTextTargetButton
+      <AppHeaderTextTarget
         className={isOpen && styles.open}
         onClick={(event) => toggleIsOpen(event)}
-        style={{ paddingTop: pxRem(2), paddingBottom: pxRem(2) }}
       >
         <span title={item.text} className={styles.copy}>
           {item.text}
@@ -92,7 +95,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           className={styles.icon}
           aria-label="dropdown"
         />
-      </AppHeaderTextTargetButton>
+      </AppHeaderTextTarget>
     );
 
   return (
