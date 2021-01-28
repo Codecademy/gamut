@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.16.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.3...@codecademy/gamut-labs@7.16.4) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.16.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.2...@codecademy/gamut-labs@7.16.3) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.16.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.1...@codecademy/gamut-labs@7.16.2) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [7.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.0...@codecademy/gamut-labs@7.16.1) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [7.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.15.0...@codecademy/gamut-labs@7.16.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+## [7.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.2...@codecademy/gamut-labs@7.15.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
 ### [7.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.14.1...@codecademy/gamut-labs@7.14.2) (2021-01-27)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
