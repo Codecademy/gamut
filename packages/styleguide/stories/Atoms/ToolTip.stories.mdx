@@ -54,7 +54,7 @@ Tooltips can be positioned both horizontally and vertically relative to their ta
     {(args) => {
       return Object.values(ToolTipPosition).map((position) => {
         return (
-          <TooltipArea>
+          <TooltipArea key={position}>
             {position.split('-').map(upperFirst).join(' ')}: &nbsp;
             <ToolTip {...args} position={position} />
           </TooltipArea>

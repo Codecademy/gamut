@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 export type HighlightedTextProps = {
   /**
-   * Text, with support for new lines and whitespace.
+   * Text, with support for newlines and whitespace.
    */
   children?: string;
 };
