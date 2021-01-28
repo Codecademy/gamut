@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import React from 'react';
 
 import styles from './styles.module.scss';
@@ -10,13 +9,7 @@ export type HighlightedTextProps = {
   children?: string;
 };
 
-export const HighlightedText: React.FC<HighlightedTextProps> = ({
-  children = '',
-}) => {
-  const combinedProps = {
-    className: cx(styles.highlightedText),
-  };
-
+export const HighlightedText = ({ children = '' }: HighlightedTextProps) => {
   const words = children
     .split(/(\s+)(\S+)/g)
     .filter(Boolean)
@@ -27,5 +20,5 @@ export const HighlightedText: React.FC<HighlightedTextProps> = ({
       </span>
     ));
 
-  return <em {...combinedProps}>{words}</em>;
+  return <em className={styles.highlightedText}>{words}</em>;
 };
