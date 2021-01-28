@@ -1,0 +1,79 @@
+import { Alert } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { ALERTS } from './constants';
+
+<Meta
+  title={title}
+  component={Alert}
+  parameters={{
+    subtitle:
+      'An alert displays an important, succinct message, and provides actions for users to address (or dismiss the alert). It requires a user action to be dismissed.',
+    status: 'volatile',
+    source: 'gamut',
+    figmaId: 'TemYhRWOavsERWprDzRJCx',
+    padded: true,
+  }}
+  args={{
+    variant: 'general',
+    cta: 'Learn more',
+    message:
+      'You have been logged out due to inactivity. Click the button to log in again.',
+  }}
+/>
+
+## Usage Guidelines
+
+- Alerts should be displayed at the top of the page, below the navigation bar. (40px)
+- They’re persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
+- Floats/overlays over any content below it
+- Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
+
+<Canvas>
+  <Story name="Alert">{(args) => <Alert {...args} />}</Story>
+</Canvas>
+
+<Props story="Alert" />
+
+## Alert Variants
+
+<Canvas isColumn>
+  <Story name="general" args={ALERTS.general}>
+    {(args) => <Alert {...args} />}
+  </Story>
+  <Story name="success" args={ALERTS.success}>
+    {(args) => <Alert {...args} />}
+  </Story>
+  <Story name="error" args={ALERTS.error}>
+    {(args) => <Alert {...args} />}
+  </Story>
+  <Story name="maintenance" args={ALERTS.maintenance}>
+    {(args) => <Alert {...args} />}
+  </Story>
+  <Story name="feature" args={ALERTS.feature}>
+    {(args) => <Alert {...args} />}
+  </Story>
+</Canvas>
+
+## Truncated message
+
+<Canvas>
+  <Story
+    name="Truncated"
+    args={{
+      message:
+        'You can now do this new thing with this new feature we just added! Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM.  Couldn’t save your account changes because there is connection.',
+    }}
+  >
+    {(args) => <Alert {...args} />}
+  </Story>
+</Canvas>
+
+## No CTA
+
+<Canvas>
+  <Story name="No CTA" args={{ cta: undefined }}>
+    {(args) => <Alert {...args} />}
+  </Story>
+</Canvas>
