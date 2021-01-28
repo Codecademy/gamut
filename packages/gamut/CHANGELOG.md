@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.1...@codecademy/gamut@20.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
 ### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.0...@codecademy/gamut@20.0.1) (2021-01-28)
 
 
