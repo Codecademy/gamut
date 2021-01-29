@@ -1,0 +1,24 @@
+import { Sidebar, SidebarButton } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Sidebar}
+  subcomponents={{ SidebarButton }}
+  parameters={{
+    subtitle: 'A sidebar for fun',
+    status: 'volatile',
+    source: 'gamut',
+  }}
+/>
+
+<Canvas>
+  <Story name="Sidebar">
+    {(args) => (
+      <Sidebar expanded={true} button={<button>click</button>} {...args}>
+        <div>Hidden treasure!</div>
+      </Sidebar>
+    )}
+  </Story>
+</Canvas>

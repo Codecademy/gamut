@@ -1,0 +1,29 @@
+@import "@codecademy/gamut-styles/utils";
+
+.kanbanSidebarWrapper {
+  width: fit-content;
+  max-width: 100vw;
+}
+
+.kanbanSidebarContainer {
+  max-width: 33rem;
+  overflow: hidden;
+}
+
+.arrowButton {
+  display: flex;
+  align-content: center;
+  background-color: blue;
+  height: 3rem;
+  min-width: 2.3rem;
+  margin: 1rem 0;
+  padding: 0;
+}
+
+.expansionIcon {
+  transition: transform 0.35s ease-out;
+}
+
+.expansionIconExpanded {
+  transform: rotate(180deg);
+}
