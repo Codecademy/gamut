@@ -6,6 +6,11 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 <Meta
   title="Labs/Experimental/Molecules/GlobalHeader"
   component={GlobalHeader}
+  decorators={[
+    (Story) => {
+      return <div style={{ minHeight: '500px' }}>{Story()}</div>;
+    },
+  ]}
   parameters={{
     layout: 'padded',
     status: 'volatile',

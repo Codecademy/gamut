@@ -11,11 +11,11 @@ import {
 
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
-const onClick = jest.fn();
+const action = jest.fn();
 const handleClose = jest.fn();
 
 const props: AppHeaderSubMenuMobileProps = {
-  baseZIndex: 1,
+  action,
   item: {
     dataTestId: '',
     id: 'test-link',
@@ -28,7 +28,6 @@ const props: AppHeaderSubMenuMobileProps = {
     ],
   },
   handleClose: handleClose,
-  onClick,
 };
 
 const renderAppHeaderSubMenuMobile = () => {

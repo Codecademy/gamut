@@ -50,21 +50,13 @@ const AppHeaderAvatarTarget = styled(AppHeaderAvatarTargetButton)`
   padding: 2px 0;
 `;
 
-type AppHeaderPopoverProps = { baseZIndex: number };
-
-export const AppHeaderPopover = styled(Popover)<AppHeaderPopoverProps>`
-  z-index: ${({ baseZIndex }) => baseZIndex + 1};
-`;
-
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
-  baseZIndex: number;
   item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   action,
-  baseZIndex,
   item,
 }) => {
   const headerDropdownRef = useRef<HTMLDivElement>(null);
@@ -100,9 +92,8 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
   return (
     <>
       <div ref={headerDropdownRef}>{clickTarget}</div>
-      <AppHeaderPopover
+      <Popover
         align={item.type === 'profile-dropdown' ? 'right' : 'left'}
-        baseZIndex={baseZIndex}
         verticalOffset={item.type === 'profile-dropdown' ? 0 : -2}
         outline
         isOpen={isOpen}
@@ -112,7 +103,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         <Box paddingY={12}>
           <AppHeaderLinkSections action={action} item={item} />
         </Box>
-      </AppHeaderPopover>
+      </Popover>
     </>
   );
 };

@@ -7,11 +7,10 @@ import React from 'react';
 
 import { AppHeader, AppHeaderProps } from '..';
 
-const onClick = jest.fn();
+const action = jest.fn();
 
 const baseProps = {
-  baseZIndex: 1,
-  onClick,
+  action,
 };
 
 const logoProps: AppHeaderProps = {
@@ -155,12 +154,12 @@ describe('AppHeader', () => {
   it('calls onClick() when a TextButton is clicked', () => {
     renderAppHeader(textButtonProps);
     screen.getByText('TextButton').click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 
   it('calls onClick() when a FillButton clicked', () => {
     renderAppHeader(fillButtonProps);
     screen.getByText('FillButton').click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 });
