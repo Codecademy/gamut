@@ -23,24 +23,14 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
       {item.type === 'profile-dropdown'
         ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) => {
             return linkSection.map((link: AppHeaderLinkItem, linkIndex) => {
-              if (sectionIndex !== 0 && linkIndex === 0) {
-                return (
-                  <Box key={link.id} paddingX={16}>
-                    <AppHeaderLinkMobile
-                      action={action}
-                      item={link}
-                      key={link.id}
-                      topSeparator={true}
-                    />
-                  </Box>
-                );
-              }
+              const showTopSeparator = sectionIndex !== 0 && linkIndex === 0;
               return (
                 <Box key={link.id} paddingX={16}>
                   <AppHeaderLinkMobile
                     action={action}
                     item={link}
                     key={link.id}
+                    topSeparator={showTopSeparator}
                   />
                 </Box>
               );
