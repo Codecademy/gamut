@@ -65,21 +65,17 @@ export const Banner: React.FC<BannerProps> = ({
   return (
     <BannerContainer
       width="100%"
-      paddingY={4}
+      minHeight="40px"
+      paddingY={{ base: 8, sm: 4 }}
       paddingX={{ base: 32, sm: 48 }}
+      alignItems="center"
       justifyContent="center"
+      textAlign="center"
       flexWrap={{ base: 'wrap', sm: 'nowrap' }}
-      height={{ base: 'auto', sm: '40px' }}
       variant={variant}
       className={className}
     >
-      <FlexBox
-        textAlign="center"
-        alignItems="center"
-        paddingX={{ base: 8, sm: 0 }}
-      >
-        {children}
-      </FlexBox>
+      <span>{children}</span>
       {cta && (
         <TextButton size="small" onClick={onCtaClick} href={href} mode={text}>
           <Box fontWeight="title">{cta}</Box>
@@ -87,12 +83,11 @@ export const Banner: React.FC<BannerProps> = ({
       )}
       <FlexBox
         position="absolute"
+        height={{ base: 'auto', sm: '40px' }}
+        padding={8}
+        alignItems="center"
         top="0"
         right="0"
-        padding={4}
-        height={{ base: 'auto', sm: '100%' }}
-        alignItems="center"
-        justifyContent="center"
       >
         <IconButton
           mode={icon}
