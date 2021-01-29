@@ -26,9 +26,9 @@ export interface CTABanner extends BaseBannerProps {
 }
 
 export interface TextBanner extends BaseBannerProps {
-  cta: never;
-  onCtaClick: never;
-  href: never;
+  cta?: never;
+  onCtaClick?: never;
+  href?: never;
 }
 
 type BannerProps = TextBanner | CTABanner;
