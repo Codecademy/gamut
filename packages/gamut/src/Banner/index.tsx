@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Box, FlexBox } from '../Box';
-import { IconButton, IconButtonProps, TextButton } from '../Button';
+import { IconButton, TextButton } from '../Button';
 
 type BannerVariants = 'navy' | 'yellow';
 
@@ -13,7 +13,7 @@ export interface BaseBannerProps {
   /** Visual variations for banners */
   variant?: BannerVariants;
   /**  Callback called when the user closes the banner. */
-  onClose: IconButtonProps['onClick'];
+  onClose: () => void;
 }
 
 export interface CTABanner extends BaseBannerProps {
@@ -22,7 +22,7 @@ export interface CTABanner extends BaseBannerProps {
   /** Link associated with CTA */
   href: string;
   /** Call to action click callback */
-  onCtaClick?: IconButtonProps['onClick'];
+  onCtaClick?: () => void;
 }
 
 export interface TextBanner extends BaseBannerProps {
@@ -46,7 +46,7 @@ const BannerContainer = styled(FlexBox)<Pick<BaseBannerProps, 'variant'>>`
   })}
 `;
 
-const variantButtonMode = {
+const variantButtons = {
   navy: {
     text: 'dark',
     icon: 'dark-alt',
@@ -66,7 +66,7 @@ export const Banner: React.FC<BannerProps> = ({
   onCtaClick,
   onClose,
 }) => {
-  const { text, icon } = variantButtonMode[variant];
+  const { text, icon } = variantButtons[variant];
 
   return (
     <BannerContainer
@@ -79,17 +79,17 @@ export const Banner: React.FC<BannerProps> = ({
     >
       <span>{children}</span>
       {cta && (
-        <TextButton size="small" onClick={onCtaClick} href={href} mode={text}>
+        <TextButton mode={text} size="small" onClick={onCtaClick} href={href}>
           <Box fontWeight="title">{cta}</Box>
         </TextButton>
       )}
       <FlexBox
         position="absolute"
-        height={{ base: 'auto', sm: '40px' }}
-        padding={8}
-        alignItems="center"
         top="0"
         right="0"
+        alignItems="center"
+        height={{ base: 'auto', sm: '40px' }}
+        padding={8}
       >
         <IconButton
           mode={icon}
