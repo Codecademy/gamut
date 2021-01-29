@@ -42,7 +42,9 @@ export const Overlay: React.FC<OverlayProps> = ({
   isOpen,
 }) => {
   useIsomorphicLayoutEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
