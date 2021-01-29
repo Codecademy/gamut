@@ -58,21 +58,21 @@ export const AppHeaderPopover = styled(Popover)<AppHeaderPopoverProps>`
 `;
 
 export type AppHeaderDropdownProps = {
+  action: AppHeaderClickHandler;
   baseZIndex: number;
   item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
-  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
+  action,
   baseZIndex,
   item,
-  onClick,
 }) => {
   const headerDropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = (event: React.MouseEvent) => {
     setIsOpen(!isOpen);
-    !isOpen && onClick(event, item);
+    !isOpen && action(event, item);
   };
   const handleClose = () => {
     setIsOpen(false);
@@ -114,7 +114,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
           {item.popover.map((link: AppHeaderLinkItem) => {
             return (
               <Box key={link.id} paddingX={16}>
-                <AppHeaderLinkMobile item={link} onClick={onClick} />
+                <AppHeaderLinkMobile item={link} onClick={action} />
               </Box>
             );
           })}

@@ -18,10 +18,10 @@ import {
 } from './AppHeaderElements/types';
 
 export type AppHeaderProps = {
+  action: AppHeaderClickHandler;
   baseZIndex: number;
-  items: AppHeaderItemsProp;
   className?: string;
-  onClick: AppHeaderClickHandler;
+  items: AppHeaderItemsProp;
 };
 
 export type AppHeaderItemsProp = {
@@ -33,21 +33,21 @@ const AppHeaderTextButton = styled(TextButton)(focusStyles);
 const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 const mapItemToElement = (
+  action: AppHeaderClickHandler,
   baseZIndex: number,
-  item: AppHeaderItem,
-  onClick: AppHeaderClickHandler
+  item: AppHeaderItem
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderLogo item={item} onClick={onClick} />
+          <AppHeaderLogo action={action} item={item} />
         </AppHeaderTab>
       );
     case 'link':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderLink item={item} onClick={onClick} />
+          <AppHeaderLink action={action} item={item} />
         </AppHeaderTab>
       );
     case 'dropdown':
@@ -55,9 +55,9 @@ const mapItemToElement = (
       return (
         <AppHeaderTab key={item.id}>
           <AppHeaderDropdown
+            action={action}
             baseZIndex={baseZIndex}
             item={item}
-            onClick={onClick}
           />
         </AppHeaderTab>
       );
@@ -68,9 +68,9 @@ const mapItemToElement = (
       return (
         <AppHeaderTab key={item.id}>
           <AppHeaderTextButton
+            onClick={(event: React.MouseEvent) => action(event, item)}
             data-testid={item.dataTestId}
             href={item.href}
-            onClick={(event: React.MouseEvent) => onClick(event, item)}
           >
             {item.text}
           </AppHeaderTextButton>
@@ -82,7 +82,7 @@ const mapItemToElement = (
           <AppHeaderFillButton
             data-testid={item.dataTestId}
             href={item.href}
-            onClick={(event: React.MouseEvent) => onClick(event, item)}
+            onClick={(event: React.MouseEvent) => action(event, item)}
           >
             {item.text}
           </AppHeaderFillButton>
@@ -95,15 +95,15 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
   baseZIndex,
   items,
   className,
-  onClick,
+  action,
 }) => {
   return (
     <AppBar className={className}>
       <AppBarSection position="left">
-        {items.left.map((item) => mapItemToElement(baseZIndex, item, onClick))}
+        {items.left.map((item) => mapItemToElement(action, baseZIndex, item))}
       </AppBarSection>
       <AppBarSection position="right">
-        {items.right.map((item) => mapItemToElement(baseZIndex, item, onClick))}
+        {items.right.map((item) => mapItemToElement(action, baseZIndex, item))}
       </AppBarSection>
     </AppBar>
   );

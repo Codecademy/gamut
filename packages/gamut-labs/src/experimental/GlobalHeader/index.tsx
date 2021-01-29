@@ -53,10 +53,10 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <AppHeader
+      action={props.action}
       baseZIndex={props.baseZIndex || DEFAULT_BASE_Z_INDEX}
       className={styles.globalHeader}
       items={getAppHeaderItems(props)}
-      onClick={props.onClick}
     />
   );
 };

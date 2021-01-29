@@ -20,7 +20,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   <Story name="GlobalHeader">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         type="free"
         user={{
           avatar:
@@ -46,7 +46,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Free User Global Header">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         type="free"
         user={{
           avatar:
@@ -66,7 +66,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         type="pro"
         user={{
           avatar:
@@ -84,7 +84,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header - Admin">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         type="pro"
         user={{
           avatar:
@@ -103,7 +103,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Pro User Global Header - Customer Support">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         type="pro"
         user={{
           avatar:
@@ -123,7 +123,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Anonymous User Global Header">
-    {(args) => <GlobalHeader onClick={() => {}} type="anon" />}
+    {(args) => <GlobalHeader action={() => {}} type="anon" />}
   </Story>
 </Canvas>
 
@@ -131,9 +131,7 @@ The following are available variations for the GlobalHeader component.
 
 <Canvas>
   <Story name="Anonymous User Global Header - Landing">
-    {(args) => (
-      <GlobalHeader onClick={() => {}} type="anon" variant="landing" />
-    )}
+    {(args) => <GlobalHeader action={() => {}} type="anon" variant="landing" />}
   </Story>
 </Canvas>
 
@@ -143,7 +141,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Anonymous User Global Header - Login">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="anon"
         variant="login"
@@ -158,7 +156,7 @@ The following are available variations for the GlobalHeader component.
   <Story name="Anonymous User Global Header - Signup">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="anon"
         variant="signup"
@@ -175,7 +173,7 @@ To mock this, IconButtons are provided as placeholders.
   <Story name="GlobalHeader Search Notifications">
     {(args) => (
       <GlobalHeader
-        onClick={() => {}}
+        action={() => {}}
         renderNotifications={() => <IconButton icon={BellIcon} />}
         renderSearch={() => <IconButton icon={SearchIcon} />}
         type="pro"
@@ -196,7 +194,7 @@ To mock this, IconButtons are provided as placeholders.
     {(args) => (
       <Box backgroundColor="beige" width="100%">
         <GlobalHeader
-          onClick={() => {}}
+          action={() => {}}
           type="pro"
           user={{
             avatar:
@@ -209,15 +207,15 @@ To mock this, IconButtons are provided as placeholders.
   </Story>
 </Canvas>
 
-### GlobalHeader Accepts an onClick Function
+### GlobalHeader Accepts an Action Function
 
-To mock this, a very basic onClick function is provided, which just prints out the event & the item to the console.
+To mock this, a very basic action function is provided, which just prints out the event & the item to the console.
 
 <Canvas>
-  <Story name="Passing an OnClick to GlobalHeader">
+  <Story name="Passing an Action Function to GlobalHeader">
     {(args) => (
       <GlobalHeader
-        onClick={(event, item) => {
+        action={(event, item) => {
           // eslint-disable-next-line no-console
           console.log(event);
           // eslint-disable-next-line no-console

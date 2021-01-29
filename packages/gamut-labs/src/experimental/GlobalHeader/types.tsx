@@ -4,7 +4,7 @@ import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
 type BaseHeader = {
   baseZIndex?: number;
-  onClick: AppHeaderClickHandler;
+  action: AppHeaderClickHandler;
   renderSearch?: () => ReactNode;
 };
 
