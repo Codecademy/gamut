@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.5...@codecademy/gamut-labs@8.0.0) (2021-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** added functionality for PageHero to take images or videos as props
+
+### Features
+
+* **PageHero:** added functionality for PageHero to take images or videos as props ([3a9040f](https://github.com/Codecademy/client-modules/commit/3a9040f30c3a0784cec0e7cb2c6ac2f48251d586))
+
+
+
+### [7.16.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.4...@codecademy/gamut-labs@7.16.5) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [7.16.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.3...@codecademy/gamut-labs@7.16.4) (2021-01-28)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
