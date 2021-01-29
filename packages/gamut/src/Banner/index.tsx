@@ -1,72 +1,106 @@
-import { CloseIcon } from '@codecademy/gamut-icons';
-import cx from 'classnames';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { variant } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import { ButtonDeprecated, ButtonDeprecatedProps } from '../ButtonDeprecated';
-import styles from './styles.module.scss';
+import { Box, FlexBox } from '../Box';
+import { IconButton, IconButtonProps, TextButton } from '../Button';
 
-export enum BannerStyle {
-  BorderBottom = 'border-bottom',
-  FullWidth = 'full-width',
-}
+type BannerVariants = 'navy' | 'yellow';
 
 export type BannerProps = {
-  classNames?: {
-    /**
-     * Class name for the container element.
-     */
-    container?: string;
-    /**
-     * Class name for the content wrapper
-     */
-    content?: string;
-  };
+  className?: string;
   /** Visual variations for banners */
-  displayStyle?: BannerStyle;
-  /**
-   * Whether or not the banner should be visible.
-   */
+  variant?: BannerVariants;
+  /** Removes  */
   isClosed?: boolean;
-  /**
-   * Callback called when the user closes the banner.
-   */
-  onClose: ButtonDeprecatedProps['onClick'];
-  /**
-   * An icon or jsx element to be displayed to the left of the content.
-   */
-  icon?: React.ReactNode;
+  /**  Callback called when the user closes the banner. */
+  onClose: IconButtonProps['onClick'];
+  /** Call to action text */
+  cta?: string;
+  /** Call to action click callback */
+  onCtaClick?: IconButtonProps['onClick'];
+  /** Link associated with CTA */
+  href?: string;
 };
 
-const BANNER_CLASSES = {
-  [BannerStyle.BorderBottom]: styles.containerBordered,
-  [BannerStyle.FullWidth]: styles.containerFullWidth,
-};
+const BannerContainer = styled(FlexBox)<Pick<BannerProps, 'variant'>>`
+  position: relative;
+  ${variant<BannerVariants>({
+    navy: {
+      columnGap: 8,
+      textColor: 'white',
+      backgroundColor: 'navy',
+    },
+    yellow: { columnGap: 8, textColor: 'navy', backgroundColor: 'yellow' },
+  })}
+`;
+
+const variantButtonMode = {
+  navy: {
+    text: 'dark',
+    icon: 'dark-alt',
+  },
+  yellow: {
+    text: 'light',
+    icon: 'light-alt',
+  },
+} as const;
 
 export const Banner: React.FC<BannerProps> = ({
   children,
-  classNames = {},
-  displayStyle = BannerStyle.FullWidth,
+  className,
+  variant = 'navy',
   isClosed = false,
+  cta,
+  href,
+  onCtaClick,
   onClose,
-  icon,
 }) => {
   if (isClosed) {
     return null;
   }
+  const { text, icon } = variantButtonMode[variant];
 
   return (
-    <div
-      className={cx(
-        styles.container,
-        classNames.container,
-        BANNER_CLASSES[displayStyle]
-      )}
+    <BannerContainer
+      width="100%"
+      paddingY={4}
+      paddingX={{ base: 32, sm: 48 }}
+      justifyContent="center"
+      flexWrap={{ base: 'wrap', sm: 'nowrap' }}
+      height={{ base: 'auto', sm: '40px' }}
+      variant={variant}
+      className={className}
     >
-      {icon && <div data-testid="icon-id">{icon}</div>}
-      <div className={cx(styles.content, classNames.content)}>{children}</div>
-      <ButtonDeprecated onClick={onClose} className={styles.closeButton}>
-        <CloseIcon aria-label="dismiss" />
-      </ButtonDeprecated>
-    </div>
+      <FlexBox
+        textAlign="center"
+        alignItems="center"
+        paddingX={{ base: 8, sm: 0 }}
+      >
+        {children}
+      </FlexBox>
+      {cta && (
+        <TextButton size="small" onClick={onCtaClick} href={href} mode={text}>
+          <Box fontWeight="title">{cta}</Box>
+        </TextButton>
+      )}
+      <FlexBox
+        position="absolute"
+        top="0"
+        right="0"
+        padding={4}
+        height={{ base: 'auto', sm: '100%' }}
+        alignItems="center"
+        justifyContent="center"
+      >
+        <IconButton
+          mode={icon}
+          size="small"
+          onClick={onClose}
+          icon={MiniDeleteIcon}
+        />
+      </FlexBox>
+    </BannerContainer>
   );
 };
