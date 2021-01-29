@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [8.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.0.0...@codecademy/gamut-labs@8.0.1) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@7.16.5...@codecademy/gamut-labs@8.0.0) (2021-01-29)
 
 
