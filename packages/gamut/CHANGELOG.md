@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [20.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.3...@codecademy/gamut@20.0.4) (2021-01-29)
+
+
+### Bug Fixes
+
+* guard against undefined body in Overlay ([a8eab2b](https://github.com/Codecademy/client-modules/commit/a8eab2b3c6b2ca1ef6df3d0252287bd2f21693cd))
+
+
+
 ### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.2...@codecademy/gamut@20.0.3) (2021-01-28)
 
 

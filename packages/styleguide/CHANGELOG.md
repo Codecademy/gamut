@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.0...@codecademy/styleguide@23.0.1) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.4...@codecademy/styleguide@23.0.0) (2021-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** added functionality for PageHero to take images or videos as props
+
+### Features
+
+* **PageHero:** added functionality for PageHero to take images or videos as props ([3a9040f](https://github.com/Codecademy/client-modules/commit/3a9040f30c3a0784cec0e7cb2c6ac2f48251d586))
+
+
+
+### [22.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.3...@codecademy/styleguide@22.0.4) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.2...@codecademy/styleguide@22.0.3) (2021-01-28)
 
 **Note:** Version bump only for package @codecademy/styleguide
