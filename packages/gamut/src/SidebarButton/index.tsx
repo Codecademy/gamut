@@ -13,7 +13,7 @@ export type SidebarButtonProps = ButtonDeprecatedBaseProps & {
   onClick: () => void;
 };
 
-export const ArrowButton: React.FC<SidebarButtonProps> = ({
+export const SidebarButton: React.FC<SidebarButtonProps> = ({
   expanded,
   onClick,
   ...baseProps
