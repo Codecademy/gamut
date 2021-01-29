@@ -8,7 +8,7 @@ import { IconButton, IconButtonProps, TextButton } from '../Button';
 
 type BannerVariants = 'navy' | 'yellow';
 
-export type BannerProps = {
+export interface BaseBannerProps {
   className?: string;
   /** Visual variations for banners */
   variant?: BannerVariants;
@@ -16,23 +16,35 @@ export type BannerProps = {
   isClosed?: boolean;
   /**  Callback called when the user closes the banner. */
   onClose: IconButtonProps['onClick'];
+}
+
+export interface CTABanner extends BaseBannerProps {
   /** Call to action text */
-  cta?: string;
+  cta: string;
+  /** Link associated with CTA */
+  href: string;
   /** Call to action click callback */
   onCtaClick?: IconButtonProps['onClick'];
-  /** Link associated with CTA */
-  href?: string;
-};
+}
 
-const BannerContainer = styled(FlexBox)<Pick<BannerProps, 'variant'>>`
+export interface TextBanner extends BaseBannerProps {
+  cta: never;
+  onCtaClick: never;
+  href: never;
+}
+
+type BannerProps = TextBanner | CTABanner;
+
+const BannerContainer = styled(FlexBox)<Pick<BaseBannerProps, 'variant'>>`
   position: relative;
+  width: 100%;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   ${variant<BannerVariants>({
-    navy: {
-      columnGap: 8,
-      textColor: 'white',
-      backgroundColor: 'navy',
-    },
-    yellow: { columnGap: 8, textColor: 'navy', backgroundColor: 'yellow' },
+    navy: { textColor: 'white', backgroundColor: 'navy' },
+    yellow: { textColor: 'navy', backgroundColor: 'yellow' },
   })}
 `;
 
@@ -64,13 +76,9 @@ export const Banner: React.FC<BannerProps> = ({
 
   return (
     <BannerContainer
-      width="100%"
-      minHeight="40px"
+      columnGap={8}
       paddingY={{ base: 8, sm: 4 }}
       paddingX={{ base: 32, sm: 48 }}
-      alignItems="center"
-      justifyContent="center"
-      textAlign="center"
       flexWrap={{ base: 'wrap', sm: 'nowrap' }}
       variant={variant}
       className={className}
