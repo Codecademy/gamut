@@ -36,7 +36,10 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
   return mapValues((arg) => {
     // Update theme props
-    if (arg.name === 'theme' && arg.table.type.summary.indexOf('Theme') > -1) {
+    if (
+      arg.name === 'theme' &&
+      arg?.table?.type?.summary.indexOf('Theme') > -1
+    ) {
       return {
         ...arg,
         table: {

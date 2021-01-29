@@ -6,6 +6,14 @@ export const focusStyles = css`
     outline: none;
   }
   &:focus-visible {
-    outline: 1px solid ${colors.navy};
+    outline: 0.3rem auto ${colors.navy};
+  }
+`;
+
+export const hoverStyles = css`
+  &:hover {
+    color: ${colors.hyper};
+    text-decoration: none;
+    cursor: pointer;
   }
 `;

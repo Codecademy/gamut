@@ -1,0 +1,25 @@
+import { FormGroup } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={FormGroup}
+  parameters={{
+    subtitle: 'A label and description wrapper for a form element',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{
+    label: "Don't you label me!",
+    description: 'This is a form group, it is pretty darn cool',
+  }}
+/>
+
+<Canvas>
+  <Story name="FormGroup">{(args) => <FormGroup {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FormGroup" />

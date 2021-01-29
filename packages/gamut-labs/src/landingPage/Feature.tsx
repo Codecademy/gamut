@@ -1,8 +1,9 @@
-import { Heading, Markdown } from '@codecademy/gamut';
+import { Markdown } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
 const Icon = styled.img`
@@ -19,6 +20,7 @@ const Image = styled.img`
 
 const StyledMarkdown = styled(Markdown)`
   font-size: 1rem;
+  margin: 1rem 0 0;
 `;
 
 const FeatureBlock = styled.div`
@@ -34,42 +36,86 @@ const FeatureBlock = styled.div`
   }
 `;
 
-export type FeatureProps = {
-  /**
-   * Whether an icon or a full size image should be rendered
-   */
-  isIcon?: boolean;
-
-  /**
-   * Feature image URL
-   */
+type FeaturedImageProps = {
+  featuresMedia: 'image';
   imgSrc: string;
+  imgAlt: string;
+};
 
-  /**
-   * Feature image alt text (for screen readers)
-   */
-  imgAlt?: string;
-} & Pick<BaseProps, 'title' | 'desc' | 'onAnchorClick' | 'testId'>;
+type FeaturedIconProps = {
+  featuresMedia: 'icon';
+  imgSrc: string;
+  imgAlt: string;
+};
+
+type FeaturedStatProps = {
+  featuresMedia: 'stat';
+  statText: string;
+};
+
+type FeaturedNoMediaProps = {
+  featuresMedia: 'none';
+};
+
+type FeaturedMediaProps =
+  | FeaturedImageProps
+  | FeaturedIconProps
+  | FeaturedStatProps
+  | FeaturedNoMediaProps;
+
+const FeaturedMedia: React.FC<FeaturedMediaProps> = (props) => {
+  if (props.featuresMedia === 'image') {
+    return (
+      <Image
+        src={props.imgSrc}
+        alt={props.imgAlt}
+        data-testid="feature-image"
+      />
+    );
+  }
+
+  if (props.featuresMedia === 'icon') {
+    return (
+      <Icon src={props.imgSrc} alt={props.imgAlt} data-testid="feature-icon" />
+    );
+  }
+
+  if (props.featuresMedia === 'stat') {
+    return (
+      <Text
+        as="div"
+        marginTop={48}
+        fontSize={{ xs: 44, lg: 64 }}
+        fontWeight="title"
+        data-testid="feature-stat"
+      >
+        {props.statText}
+      </Text>
+    );
+  }
+
+  return null;
+};
+
+export type FeatureProps = Pick<
+  BaseProps,
+  'title' | 'desc' | 'onAnchorClick' | 'testId'
+> &
+  FeaturedMediaProps;
 
 export const Feature: React.FC<FeatureProps> = ({
-  isIcon,
-  imgSrc,
-  imgAlt = '',
   title,
   desc,
   onAnchorClick,
   testId,
+  ...featuredMediaProps
 }) => (
   <FeatureBlock data-testid={testId}>
-    {isIcon ? (
-      <Icon src={imgSrc} alt={imgAlt} data-testid="feature-icon" />
-    ) : (
-      <Image src={imgSrc} alt={imgAlt} data-testid="feature-image" />
-    )}
+    <FeaturedMedia {...featuredMediaProps} />
     {title && (
-      <Heading as="h3" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>
+      <Text as="h3" fontSize={{ xs: 22, lg: 26 }} fontWeight="title">
         {title}
-      </Heading>
+      </Text>
     )}
     {desc && (
       <div>

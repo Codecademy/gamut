@@ -8,13 +8,13 @@
  * project root
  */
 const defaultConfig = require('./packages/eslint-config');
-const { merge } = require('lodash');
 
 module.exports = {
   ...defaultConfig,
   root: true,
 
-  overrides: merge(defaultConfig.overrides, [
+  overrides: [
+    ...defaultConfig.overrides,
     {
       files: ['*.mdx'],
       parser: 'eslint-mdx',
@@ -29,5 +29,23 @@ module.exports = {
         '@typescript-eslint/no-namespace': 'off',
       },
     },
-  ]),
+    {
+      files: ['*.tsx'],
+      parserOptions: {
+        tsconfigRootDir: __dirname,
+        project: ['./tsconfig.json', './packages/*/tsconfig.json'],
+      },
+      rules: {
+        'no-restricted-syntax': [
+          'error',
+          {
+            message:
+              "Don't import stylesheets that don't end with `module.scss`, rename them to end with `module.scss` like `style.module.scss`.",
+            selector:
+              'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
+          },
+        ],
+      },
+    },
+  ],
 };
