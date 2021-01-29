@@ -7,11 +7,11 @@ import { createMockAppHeaderLinkItem } from '../../../mockAppHeaderItems';
 import { AppHeaderLink, AppHeaderLinkProps } from '..';
 
 const testText = 'Test Link';
-const onClick = jest.fn();
+const action = jest.fn();
 
 const props: AppHeaderLinkProps = {
+  action,
   item: createMockAppHeaderLinkItem('test-link', 'test-url', testText),
-  onClick,
 };
 
 const renderAppHeaderLink = () => {
@@ -23,9 +23,9 @@ const renderAppHeaderLink = () => {
 };
 
 describe('AppHeaderLink', () => {
-  it('calls onClick() when clicked', () => {
+  it('calls action() when clicked', () => {
     renderAppHeaderLink();
     screen.getByRole('link').click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 });

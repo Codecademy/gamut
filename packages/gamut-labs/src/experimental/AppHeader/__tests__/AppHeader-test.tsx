@@ -9,11 +9,8 @@ import { AppHeader, AppHeaderProps } from '..';
 
 const action = jest.fn();
 
-const baseProps = {
-  action,
-};
-
 const logoProps: AppHeaderProps = {
+  action,
   items: {
     left: [
       {
@@ -26,10 +23,10 @@ const logoProps: AppHeaderProps = {
     ],
     right: [],
   },
-  ...baseProps,
 };
 
 const linkProps: AppHeaderProps = {
+  action,
   items: {
     left: [
       {
@@ -42,10 +39,10 @@ const linkProps: AppHeaderProps = {
     ],
     right: [],
   },
-  ...baseProps,
 };
 
 const dropdownProps: AppHeaderProps = {
+  action,
   items: {
     left: [
       {
@@ -73,10 +70,10 @@ const dropdownProps: AppHeaderProps = {
     ],
     right: [],
   },
-  ...baseProps,
 };
 
 const renderElementProps: AppHeaderProps = {
+  action,
   items: {
     left: [],
     right: [
@@ -87,10 +84,10 @@ const renderElementProps: AppHeaderProps = {
       },
     ],
   },
-  ...baseProps,
 };
 
 const textButtonProps: AppHeaderProps = {
+  action,
   items: {
     left: [],
     right: [
@@ -103,10 +100,10 @@ const textButtonProps: AppHeaderProps = {
       },
     ],
   },
-  ...baseProps,
 };
 
 const fillButtonProps: AppHeaderProps = {
+  action,
   items: {
     left: [],
     right: [
@@ -119,7 +116,6 @@ const fillButtonProps: AppHeaderProps = {
       },
     ],
   },
-  ...baseProps,
 };
 
 const renderAppHeader = (props: AppHeaderProps) => {
@@ -151,13 +147,13 @@ describe('AppHeader', () => {
     screen.getByTitle('Favicon Icon');
   });
 
-  it('calls onClick() when a TextButton is clicked', () => {
+  it('calls action() when a TextButton is clicked', () => {
     renderAppHeader(textButtonProps);
     screen.getByText('TextButton').click();
     expect(action).toHaveBeenCalled();
   });
 
-  it('calls onClick() when a FillButton clicked', () => {
+  it('calls action() when a FillButton clicked', () => {
     renderAppHeader(fillButtonProps);
     screen.getByText('FillButton').click();
     expect(action).toHaveBeenCalled();

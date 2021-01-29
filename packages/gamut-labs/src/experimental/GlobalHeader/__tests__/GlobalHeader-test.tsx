@@ -19,7 +19,7 @@ import {
 } from '../GlobalHeaderItems';
 import { User } from '../types';
 
-const onClick = jest.fn();
+const action = jest.fn();
 const user: User = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
@@ -27,44 +27,44 @@ const user: User = {
 };
 
 const anonHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'free',
   user,
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'pro',
   user,
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   renderNotifications: () => <IconButton icon={BellIcon} />,
   type: 'pro',
@@ -260,9 +260,9 @@ describe('GlobalHeader', () => {
     });
   });
 
-  test('fires onClick upon clicking an element', () => {
+  test('fires action() upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
     screen.getAllByRole('button')[0].click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 });
