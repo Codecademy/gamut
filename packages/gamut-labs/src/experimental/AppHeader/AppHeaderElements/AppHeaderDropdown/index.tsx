@@ -3,14 +3,13 @@ import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useRef, useState } from 'react';
 
-import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
 import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
+import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
-  AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
 } from '../types';
 import styles from './styles.module.scss';
@@ -111,13 +110,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         targetRef={headerDropdownRef}
       >
         <Box paddingY={12}>
-          {item.popover.map((link: AppHeaderLinkItem) => {
-            return (
-              <Box key={link.id} paddingX={16}>
-                <AppHeaderLinkMobile item={link} onClick={action} />
-              </Box>
-            );
-          })}
+          <AppHeaderLinkSections action={action} item={item} />
         </Box>
       </AppHeaderPopover>
     </>

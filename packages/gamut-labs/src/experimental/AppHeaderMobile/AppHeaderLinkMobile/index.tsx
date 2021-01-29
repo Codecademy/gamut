@@ -13,7 +13,7 @@ import {
 
 export type AppHeaderLinkMobileProps = {
   item: AppHeaderLinkItem;
-  onClick: AppHeaderClickHandler;
+  action: AppHeaderClickHandler;
   topSeparator?: boolean;
 };
 
@@ -43,11 +43,11 @@ const AppHeaderLinkButtonInner = styled(Box)`
 `;
 
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
-  onClick,
+  action,
   item,
+  topSeparator = false,
 }) => {
   const Icon = item.icon;
-  const topSeparator = item.topSeparator || false;
 
   return (
     <SeparatorOuter topSeparator={topSeparator}>
@@ -55,7 +55,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
         <AppHeaderLinkButtonOuter
           data-testid={item.dataTestId}
           href={item.href}
-          onClick={(event: React.MouseEvent) => onClick(event, item)}
+          onClick={(event: React.MouseEvent) => action(event, item)}
           variant="interface"
         >
           <AppHeaderLinkButtonInner

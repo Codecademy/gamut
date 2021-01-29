@@ -6,12 +6,11 @@ import React from 'react';
 
 import { Text } from '../../../experimental/Text';
 import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import {
   focusStyles,
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
-import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
@@ -40,9 +39,9 @@ const Heading = styled(Text)`
 `;
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
+  action,
   handleClose,
   item,
-  onClick,
 }) => {
   return (
     <>
@@ -56,13 +55,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
           {item.text}
         </Heading>
-        {item.popover.map((link: AppHeaderLinkItem) => {
-          return (
-            <Box key={link.id}>
-              <AppHeaderLinkMobile item={link} onClick={onClick} />
-            </Box>
-          );
-        })}
+        <AppHeaderLinkSections action={action} item={item} />
       </Box>
     </>
   );

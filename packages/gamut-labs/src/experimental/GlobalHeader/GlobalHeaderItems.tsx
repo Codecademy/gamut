@@ -229,7 +229,6 @@ const profileHelpCenter: AppHeaderLinkItem = {
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
   href: '/admin',
-  topSeparator: true,
   trackingTarget: 'avatar_admin',
   text: 'Admin',
   type: 'link',
@@ -254,7 +253,6 @@ const profileReportBug: AppHeaderLinkItem = {
 const profileLogOut: AppHeaderLinkItem = {
   id: 'log-out',
   href: '/sign_out',
-  topSeparator: true,
   trackingTarget: 'avatar_log_out',
   text: 'Log Out',
   type: 'link',
@@ -267,11 +265,8 @@ export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
     id: 'profile',
     text: 'Profile',
     popover: [
-      profileMyProfile,
-      profileAccount,
-      profileMyHome,
-      profileHelpCenter,
-      profileLogOut,
+      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
+      [profileLogOut],
     ],
     trackingTarget: 'topnav_pricing',
     type: 'profile-dropdown',
@@ -279,17 +274,22 @@ export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
 };
 
 export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const popover = [
+  const popover = [];
+  popover.push([
     profileMyProfile,
     profileAccount,
     profileMyHome,
     profileBusiness,
     profileHelpCenter,
-  ];
-  user.isAdmin && popover.push(profileAdmin);
-  user.isCustomerSupport && popover.push(profileCustomerSupport);
-  user.isAdmin && popover.push(profileReportBug);
-  popover.push(profileLogOut);
+  ]);
+
+  const adminSection = [];
+  user.isAdmin && adminSection.push(profileAdmin);
+  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
+  user.isAdmin && adminSection.push(profileReportBug);
+  popover.push(adminSection);
+
+  popover.push([profileLogOut]);
   return {
     avatar: user.avatar,
     displayName: user.displayName,

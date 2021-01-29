@@ -56,7 +56,7 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
 export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
   avatar: string;
   displayName: string;
-  popover: AppHeaderLinkItem[];
+  popover: AppHeaderLinkItem[][];
   text: string;
   trackingTarget: string;
   type: 'profile-dropdown';
