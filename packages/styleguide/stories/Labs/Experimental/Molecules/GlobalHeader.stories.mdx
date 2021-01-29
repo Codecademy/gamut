@@ -8,7 +8,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={GlobalHeader}
   decorators={[
     (Story) => {
-      return <div style={{ minHeight: '500px' }}>{Story()}</div>;
+      return <Box style={{ minHeight: '500px' }}>{Story()}</Box>;
     },
   ]}
   parameters={{
