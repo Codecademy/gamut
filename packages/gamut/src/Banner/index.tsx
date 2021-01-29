@@ -12,8 +12,6 @@ export interface BaseBannerProps {
   className?: string;
   /** Visual variations for banners */
   variant?: BannerVariants;
-  /** Removes  */
-  isClosed?: boolean;
   /**  Callback called when the user closes the banner. */
   onClose: IconButtonProps['onClick'];
 }
@@ -63,15 +61,11 @@ export const Banner: React.FC<BannerProps> = ({
   children,
   className,
   variant = 'navy',
-  isClosed = false,
   cta,
   href,
   onCtaClick,
   onClose,
 }) => {
-  if (isClosed) {
-    return null;
-  }
   const { text, icon } = variantButtonMode[variant];
 
   return (
