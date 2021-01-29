@@ -1,7 +1,7 @@
 import 'focus-visible/dist/focus-visible.min.js';
 
 import './decorators/wrapper';
-import { withEmotion } from './decorators/theme';
+import { withEmotion, withPseudoStates } from './decorators/theme';
 import { Page } from './components';
 import { colors } from '@codecademy/gamut-styles/src';
 import { theme } from './theme';
@@ -105,4 +105,4 @@ export const parameters = {
   controls: { expanded: true },
 };
 
-export const decorators = [withEmotion];
+export const decorators = [withEmotion, withPseudoStates];

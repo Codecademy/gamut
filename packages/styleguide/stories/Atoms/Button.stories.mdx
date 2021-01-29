@@ -53,6 +53,21 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 <Canvas>
   <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
+  <Story name="CTAButton - disabled" args={{ disabled: true }}>
+    {(args) => <CTAButton {...args} />}
+  </Story>
+  <Story name="CTAButton - hover" parameters={{ pseudos: ['hover'] }}>
+    {(args) => <CTAButton {...args} />}
+  </Story>
+  <Story
+    name="CTAButton - focus-visible"
+    parameters={{ pseudos: ['focus-visible'] }}
+  >
+    {(args) => <CTAButton {...args} />}
+  </Story>
+  <Story name="CTAButton - active" parameters={{ pseudos: ['active'] }}>
+    {(args) => <CTAButton {...args} />}
+  </Story>
 </Canvas>
 
 <Props exclude={['size']} story="CTAButton" />
