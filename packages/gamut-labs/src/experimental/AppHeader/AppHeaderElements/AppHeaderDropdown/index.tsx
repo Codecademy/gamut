@@ -78,9 +78,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         className={isOpen && styles.open}
         onClick={(event) => toggleIsOpen(event)}
       >
-        <span title={item.text} className={styles.copy}>
-          {item.text}
-        </span>
+        <span className={styles.copy}>{item.text}</span>
         <ArrowChevronDownFilledIcon
           size={12}
           className={styles.icon}
