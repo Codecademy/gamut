@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [22.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.3...@codecademy/styleguide@22.0.4) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.2...@codecademy/styleguide@22.0.3) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.1...@codecademy/styleguide@22.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [22.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.0...@codecademy/styleguide@22.0.1) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.2...@codecademy/styleguide@22.0.0) (2021-01-28)
 
 
