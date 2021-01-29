@@ -13,8 +13,6 @@ import {
 import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, ProHeader } from './types';
 
-const DEFAULT_BASE_Z_INDEX = 14;
-
 export type HeaderClickHandler = (
   event: React.MouseEvent,
   item: AppHeaderItem
@@ -54,7 +52,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <AppHeader
       action={props.action}
-      baseZIndex={props.baseZIndex || DEFAULT_BASE_Z_INDEX}
       className={styles.globalHeader}
       items={getAppHeaderItems(props)}
     />

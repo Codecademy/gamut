@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
 type BaseHeader = {
-  baseZIndex?: number;
   action: AppHeaderClickHandler;
   renderSearch?: () => ReactNode;
 };
