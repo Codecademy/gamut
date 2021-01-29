@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.3...@codecademy/gamut-styles@7.7.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
 ### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
 
 
