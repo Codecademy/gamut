@@ -25,13 +25,17 @@ const shadowsForDepth = {
   },
 };
 
-export const boxShadow = (depth: ShadowDepth = 1) => {
+export const createShadow = (depth: ShadowDepth) => {
   const {
     offsets: [o1, o2, o3, o4],
     shades: [s1, s2],
   } = shadowsForDepth[depth];
+  return ` 0 ${o1}px ${o2}px rgba(0, 0, 0, ${s1}),
+  0 ${o3}px ${o4}px rgba(0, 0, 0, ${s2})`;
+};
+
+export const boxShadow = (depth: ShadowDepth = 1) => {
   return css`
-    box-shadow: 0 ${o1}px ${o2}px rgba(0, 0, 0, ${s1}),
-      0 ${o3}px ${o4}px rgba(0, 0, 0, ${s2});
+    box-shadow: ${createShadow(depth)};
   `;
 };
