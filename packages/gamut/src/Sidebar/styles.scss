@@ -6,6 +6,12 @@
   width: 25rem;
 }
 
+.overlay {
+  height: 100%;
+  z-index: 1;
+  margin: 0;
+}
+
 .kanbanSidebarContainer {
   background-color: aliceblue;
   max-width: 25rem;
@@ -20,6 +26,10 @@
   min-width: 2.3rem;
   margin: 1rem 0;
   padding: 0;
+}
+
+.hidden {
+  display: hidden;
 }
 
 .expansionIcon {

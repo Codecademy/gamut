@@ -8,6 +8,7 @@ export type SidebarProps = {
   children: React.ReactNode;
   expanded: boolean;
   overlay: boolean;
+  button?: React.ReactNode;
   testId?: string;
 };
 
@@ -15,6 +16,7 @@ const transitionDuration = 0.35;
 
 export const Sidebar: React.FC<SidebarProps> = ({
   children,
+  button,
   expanded,
   overlay,
   testId,
@@ -27,10 +29,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
     folded: { width: 0 },
   };
 
-  return (
-    <Container
-      className={overlay ? s.kanbanSidebarWrapper : s.kanbanSidebarWrapper}
-    >
+  return overlay ? (
+    <Container className={s.overlay}>
+      <SidebarButton
+        expanded={isSidebarOpen}
+        onClick={() => toggleDrawer()}
+        data-testid="arrow-sidebar-button"
+      >
+        {button}
+      </SidebarButton>
+      <motion.div
+        aria-expanded={isSidebarOpen}
+        className={s.kanbanSidebarContainer}
+        initial={false}
+        animate={isSidebarOpen ? 'expanded' : 'folded'}
+        variants={variants}
+        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
+        data-testid={testId}
+      >
+        {children}
+      </motion.div>
+    </Container>
+  ) : (
+    <Container className={s.kanbanSidebarWrapper}>
       <motion.div
         aria-expanded={isSidebarOpen}
         className={s.kanbanSidebarContainer}
@@ -46,6 +67,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
         key={'navy'}
+        tab
         data-testid="arrow-sidebar-button"
       />
     </Container>

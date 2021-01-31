@@ -11,21 +11,28 @@ import s from '../Sidebar/styles.scss';
 export type SidebarButtonProps = ButtonDeprecatedBaseProps & {
   expanded: boolean;
   onClick: () => void;
+  tab?: boolean;
+  children?: React.ReactNode;
 };
 
 export const SidebarButton: React.FC<SidebarButtonProps> = ({
   expanded,
   onClick,
+  children,
+  tab,
   ...baseProps
 }) => {
-  return (
+  return children ? (
+    React.cloneElement(children, {
+      onClick: onClick,
+    })
+  ) : (
     <ButtonDeprecated
       className={s.arrowButton}
       aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
       aria-expanded={expanded}
       onClick={onClick}
       {...baseProps}
-      key={'navy'}
       theme={'navy'}
     >
       <ArrowChevronRightIcon

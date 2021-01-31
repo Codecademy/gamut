@@ -1,4 +1,10 @@
-import { Box, FlexBox, Sidebar, AccordionButton } from '@codecademy/gamut/src';
+import {
+  Box,
+  FlexBox,
+  Sidebar,
+  TextButton,
+  AccordionButton,
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -17,8 +23,16 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 <Canvas>
   <Story name="Sidebar">
     {(args) => (
-      <FlexBox height="20rem">
-        <Sidebar expanded={true} {...args}>
+      <Box height="20rem">
+        <Sidebar
+          overlay
+          button={
+            <TextButton height={'5rem'} width={'5rem'}>
+              chiller time
+            </TextButton>
+          }
+          {...args}
+        >
           Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
           the oldest of the Swooping Hawks and the first Exarch of those winged
           Aspect Warriors. Baharroth is the founder of the Eldar Warrior Path
@@ -36,7 +50,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
           though the term can actually apply to any divine entity of the Warp
           that has found some way to take on a corporeal form within realspace.
         </FlexBox>
-      </FlexBox>
+      </Box>
     )}
   </Story>
 </Canvas>
