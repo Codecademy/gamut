@@ -3,7 +3,7 @@ import { CloseIcon } from '@codecademy/gamut-icons/src';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-import s from './styles.scss';
+import styled from '@emotion/styled';
 
 export type SidebarProps = {
   children: React.ReactNode;
@@ -12,6 +12,30 @@ export type SidebarProps = {
   button?: React.ReactNode;
   testId?: string;
 };
+
+//Overlay component
+const Overlay = styled(motion.div)`
+  height: 100vh;
+  width: 20rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background-color: grey;
+`;
+
+//In-space component
+const SidebarWrapper = styled(Container)`
+  height: 100%;
+  position: relative;
+  width: 25rem;
+`;
+
+const SidebarContent = styled(motion.div)`
+  background-color: aliceblue;
+  max-width: 25rem;
+  overflow: hidden;
+`;
 
 const transitionDuration = 0.35;
 
@@ -41,9 +65,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </SidebarButton>
       <AnimatePresence>
         {isSidebarOpen ? (
-          <motion.div
+          <Overlay
             aria-expanded={isSidebarOpen}
-            className={s.overlay}
             initial={{ x: 700 }}
             animate={{ x: 0 }}
             exit={{ x: 700 }}
@@ -52,15 +75,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
           >
             <IconButton icon={CloseIcon} onClick={() => toggleDrawer()} />
             {children}
-          </motion.div>
+          </Overlay>
         ) : null}
       </AnimatePresence>
     </>
   ) : (
-    <Container className={s.kanbanSidebarWrapper}>
-      <motion.div
+    <SidebarWrapper>
+      <SidebarContent
         aria-expanded={isSidebarOpen}
-        className={s.kanbanSidebarContainer}
         initial={false}
         animate={isSidebarOpen ? 'expanded' : 'folded'}
         variants={variants}
@@ -68,7 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         data-testid={testId}
       >
         {children}
-      </motion.div>
+      </SidebarContent>
       <SidebarButton
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
@@ -76,6 +98,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         tab
         data-testid="arrow-sidebar-button"
       />
-    </Container>
+    </SidebarWrapper>
   );
 };
