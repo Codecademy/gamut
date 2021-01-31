@@ -7,6 +7,7 @@ import s from './styles.scss';
 export type SidebarProps = {
   children: React.ReactNode;
   expanded: boolean;
+  overlay: boolean;
   testId?: string;
 };
 
@@ -15,6 +16,7 @@ const transitionDuration = 0.35;
 export const Sidebar: React.FC<SidebarProps> = ({
   children,
   expanded,
+  overlay,
   testId,
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
@@ -26,7 +28,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
   };
 
   return (
-    <Container className={s.kanbanSidebarWrapper}>
+    <Container
+      className={overlay ? s.kanbanSidebarWrapper : s.kanbanSidebarWrapper}
+    >
       <motion.div
         aria-expanded={isSidebarOpen}
         className={s.kanbanSidebarContainer}
