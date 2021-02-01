@@ -2,9 +2,7 @@ import React from 'react';
 
 import { Box } from '../Box';
 
-export const Badge: React.FC<{ hello: `${number}${'px' | '%'}` }> = ({
-  children,
-}) => (
+export const Badge: React.FC = ({ children }) => (
   <Box
     backgroundColor="blue"
     borderRadius="3px"
