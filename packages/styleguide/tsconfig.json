@@ -1,20 +1,20 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "rootDir": "/",
     "baseUrl": ".storybook",
     "paths": {
       "~styleguide/blocks": ["components"]
     },
     "allowJs": true,
     "noEmit": true,
-    "isolatedModules": true,
     "declaration": false
   },
   "include": [
     "../../typings/*.d.ts",
-    "./**/*",
+    "./*.d.ts",
     "../**/src/**/*",
-    "./.storybook/**.*"
-  ],
-  "exclude": ["./.storybook/*"]
+    "./.storybook/**/*.(ts|tx)",
+    "./stories/**/*.(ts|tx)"
+  ]
 }
