@@ -13,7 +13,7 @@ export type OverlayProps = {
    */
   clickOutsideCloses?: boolean;
   /**
-   * Whether to allow outside clicks in the overlay. No effect uniless clickOutsideCloses is false
+   * Whether to allow outside clicks in the overlay. No effect unless clickOutsideCloses is false
    */
   allowOutsideClick?: boolean;
   /**
