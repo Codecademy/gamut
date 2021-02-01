@@ -10,13 +10,5 @@
     "noEmit": true,
     "declaration": false
   },
-  "include": [
-    "../../typings/*.d.ts",
-    "./*.d.ts",
-    "../**/src/**/*",
-    "./.storybook/**/*.ts",
-    "./.storybook/**/*.tsx",
-    "./stories/**/*.ts",
-    "./stories/**/*.tsx"
-  ]
+  "include": ["../../typings/*.d.ts", "../**/src/**/*", "./**/*"]
 }
