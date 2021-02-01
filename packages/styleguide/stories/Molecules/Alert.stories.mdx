@@ -167,7 +167,7 @@ You can optionally display an icon that matches the type of the alert you are sh
 
 ### Call to action
 
-You can add a call to action if specific feedback prompts user action. This is not requried as some
+You can add a call to action if specific feedback prompts user action. This is not required as some
 feedback may not have an activity associated with it.
 
 <Canvas>
@@ -185,6 +185,28 @@ feedback may not have an activity associated with it.
       >
         Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
         torquatos eam ut.
+      </Alert>
+    )}
+  </Story>
+</Canvas>
+
+You may optionally specify that the cta opens in a new tab.
+
+<Canvas>
+  <Story name="Call to action that opens in new tab">
+    {(args) => (
+      <Alert
+        showIcon={false}
+        type={BannerType.Notice}
+        cta={{
+          href: 'https://google.com',
+          onClick: action('Close'),
+          text: 'Click Me',
+          newTab: true,
+        }}
+        onClose={action('Close')}
+      >
+        This cta opens in a new tab.
       </Alert>
     )}
   </Story>
