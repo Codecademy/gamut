@@ -4,14 +4,13 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownProps } from '../../..';
 import { Text } from '../../../experimental/Text';
-import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
+import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import {
   focusStyles,
   hoverStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
@@ -19,7 +18,7 @@ export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
 
 const FullMenuButton = styled.button`
   background-color: transparent;
-  border: 1px solid transparent;
+  border: transparent;
   color: ${({ theme }) => theme.colors.navy};
   display: flex;
   align-items: center;
@@ -40,9 +39,9 @@ const Heading = styled(Text)`
 `;
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
+  action,
   handleClose,
   item,
-  onClick,
 }) => {
   return (
     <>
@@ -56,13 +55,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
         <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
           {item.text}
         </Heading>
-        {item.popover.map((link: AppHeaderLinkItem) => {
-          return (
-            <Box key={link.id}>
-              <AppHeaderLink item={link} onClick={onClick} />
-            </Box>
-          );
-        })}
+        <AppHeaderLinkSections action={action} item={item} />
       </Box>
     </>
   );

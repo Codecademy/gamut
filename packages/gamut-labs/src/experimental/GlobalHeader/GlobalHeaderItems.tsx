@@ -1,3 +1,10 @@
+import {
+  GearIcon,
+  HouseEntranceIcon,
+  PersonIcon,
+  PieLineGraphIcon,
+  SupportIcon,
+} from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
 import {
@@ -5,9 +12,11 @@ import {
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
+  AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
+import { User } from './types';
 
 export const logo: AppHeaderLogoItem = {
   dataTestId: 'header-logo',
@@ -171,13 +180,124 @@ export const notifications = (
   };
 };
 
-export const profile = (
-  renderProfile: () => ReactNode
-): AppHeaderRenderElementItem => {
+const profileMyProfile: AppHeaderLinkItem = {
+  id: 'my-profile',
+  icon: PersonIcon,
+  href: '/profiles/me',
+  trackingTarget: 'avatar_my_profile',
+  text: 'Profile',
+  type: 'link',
+};
+
+const profileAccount: AppHeaderLinkItem = {
+  id: 'account',
+  icon: GearIcon,
+  href: '/account',
+  trackingTarget: 'avatar_settings',
+  text: 'Account + Billing',
+  type: 'link',
+};
+
+const profileMyHome: AppHeaderLinkItem = {
+  id: 'my-home',
+  icon: HouseEntranceIcon,
+  href: '/learn',
+  trackingTarget: 'avatar_dashboard',
+  text: 'My Home',
+  type: 'link',
+};
+
+const profileBusiness: AppHeaderLinkItem = {
+  id: 'business',
+  icon: PieLineGraphIcon,
+  href: '/business/plans',
+  trackingTarget: 'avatar_business',
+  text: 'Business Account Management',
+  type: 'link',
+};
+
+const profileHelpCenter: AppHeaderLinkItem = {
+  id: 'help-center',
+  icon: SupportIcon,
+  href: '/help',
+  newTab: true,
+  trackingTarget: 'avatar_help',
+  text: 'Help Center',
+  type: 'link',
+};
+
+const profileAdmin: AppHeaderLinkItem = {
+  id: 'admin',
+  href: '/admin',
+  trackingTarget: 'avatar_admin',
+  text: 'Admin',
+  type: 'link',
+};
+
+const profileCustomerSupport: AppHeaderLinkItem = {
+  id: 'customer-support',
+  href: '/admin/concessions',
+  trackingTarget: 'avatar_customer_support',
+  text: 'Customer Support',
+  type: 'link',
+};
+
+const profileReportBug: AppHeaderLinkItem = {
+  id: 'report-bug',
+  href: 'https://codecademy.atlassian.net/servicedesk/customer/portal/9',
+  trackingTarget: 'avatar_report_bug',
+  text: 'Report a Bug [ADMIN]',
+  type: 'link',
+};
+
+const profileLogOut: AppHeaderLinkItem = {
+  id: 'log-out',
+  href: '/sign_out',
+  trackingTarget: 'avatar_log_out',
+  text: 'Log Out',
+  type: 'link',
+};
+
+export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
   return {
+    avatar: user.avatar,
+    displayName: user.displayName,
     id: 'profile',
-    renderElement: renderProfile,
-    type: 'render-element',
+    text: 'Profile',
+    popover: [
+      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
+      [profileLogOut],
+    ],
+    trackingTarget: 'topnav_pricing',
+    type: 'profile-dropdown',
+  };
+};
+
+export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
+  const popover = [];
+  popover.push([
+    profileMyProfile,
+    profileAccount,
+    profileMyHome,
+    profileBusiness,
+    profileHelpCenter,
+  ]);
+
+  const adminSection = [];
+  user.isAdmin && adminSection.push(profileAdmin);
+  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
+  user.isAdmin && adminSection.push(profileReportBug);
+  popover.push(adminSection);
+
+  popover.push([profileLogOut]);
+  return {
+    avatar: user.avatar,
+    displayName: user.displayName,
+    id: 'profile',
+    text: 'Profile',
+    popover,
+    trackingTarget: 'topnav_pricing',
+    type: 'profile-dropdown',
   };
 };
 

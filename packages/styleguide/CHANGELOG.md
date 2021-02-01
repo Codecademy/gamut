@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.1...@codecademy/styleguide@23.2.0) (2021-02-01)
+
+
+### Features
+
+* **AppHeaderProfileDropdown:** Pass through user avatar and display name ([#1330](https://github.com/Codecademy/client-modules/issues/1330)) ([dcbf9f3](https://github.com/Codecademy/client-modules/commit/dcbf9f3fcf9cbacd4396a3563bcd0293074c72c4))
+
+
+
+### [23.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.0...@codecademy/styleguide@23.1.1) (2021-02-01)
+
+
+### Bug Fixes
+
+* **lint:** Fix SB and Eslint config ([7591a72](https://github.com/Codecademy/client-modules/commit/7591a72a12fe07889dabc1eda689aa16c53a7830))
+
+
+
 ## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.1...@codecademy/styleguide@23.1.0) (2021-01-29)
 
 
