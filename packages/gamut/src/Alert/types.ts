@@ -3,5 +3,5 @@ export type BannerCTA = {
   text: string;
   onClick: () => void;
   disabled?: boolean;
-  newTab?: boolean;
+  openInSameTab?: boolean;
 };

@@ -110,7 +110,7 @@ export const Alert: React.FC<AlertProps> = ({
                 onClick={cta.onClick}
                 href={cta.href}
                 disabled={cta.disabled}
-                target={cta.newTab ? '_blank' : undefined}
+                target={cta.openInSameTab ? undefined : '_blank'}
               >
                 {cta.text}
               </ButtonDeprecated>

@@ -168,7 +168,7 @@ You can optionally display an icon that matches the type of the alert you are sh
 ### Call to action
 
 You can add a call to action if specific feedback prompts user action. This is not required as some
-feedback may not have an activity associated with it.
+feedback may not have an activity associated with it. By default the CTA will open in a new tab.
 
 <Canvas>
   <Story name="Call to Action">
@@ -190,10 +190,10 @@ feedback may not have an activity associated with it.
   </Story>
 </Canvas>
 
-You may optionally specify that the cta opens in a new tab.
+You may optionally specify if you don't want the cta to open in a new tab.
 
 <Canvas>
-  <Story name="Call to action that opens in new tab">
+  <Story name="Call to action that opens in the same tab">
     {(args) => (
       <Alert
         showIcon={false}
@@ -202,11 +202,11 @@ You may optionally specify that the cta opens in a new tab.
           href: 'https://google.com',
           onClick: action('Close'),
           text: 'Click Me',
-          newTab: true,
+          openInSameTab: true,
         }}
         onClose={action('Close')}
       >
-        This cta opens in a new tab.
+        This cta does not open in a new tab.
       </Alert>
     )}
   </Story>
