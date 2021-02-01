@@ -8,6 +8,7 @@ const CTAContainer = styled.div`
 
 export type CTAProps = {
   href: string;
+  mode?: 'dark' | 'light';
   className?: string;
   testId?: string;
   onCtaButtonClick?: () => void;
@@ -15,13 +16,14 @@ export type CTAProps = {
 
 export const CTA: React.FC<CTAProps> = ({
   href,
+  mode,
   className,
   testId,
   onCtaButtonClick,
   children,
 }) => (
   <CTAContainer className={className} data-testid={testId}>
-    <CTAButton href={href} onClick={onCtaButtonClick}>
+    <CTAButton href={href} onClick={onCtaButtonClick} mode={mode}>
       {children}
     </CTAButton>
   </CTAContainer>

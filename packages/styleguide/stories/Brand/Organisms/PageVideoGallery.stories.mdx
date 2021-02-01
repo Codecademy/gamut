@@ -33,6 +33,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
       text: 'Same as it ever was',
       href: 'https://codecademy.com',
     },
+    mode: 'light',
   }}
   parameters={{
     subtitle: `Video Gallery component for landing pages created in Contentful. Videos are lazy-loaded with optionally configurable placeholder images.`,
@@ -50,7 +51,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 ### With title, desc, and CTA
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="with cta">{(args) => <PageVideoGallery {...args} />}</Story>
 </Canvas>
 

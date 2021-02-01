@@ -47,10 +47,12 @@ export type PageVideo = {
 
 export type PageVideoGalleryProps = BaseProps & {
   videos: PageVideo[];
+  mode?: 'dark' | 'light';
 };
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   videos,
+  mode,
   title,
   desc,
   onAnchorClick,
@@ -58,8 +60,14 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   testId,
 }) => (
   <div>
-    {title && <Title isPageHeading>{title}</Title>}
-    {desc && <StyledDesc text={desc} onAnchorClick={onAnchorClick} />}
+    {title && (
+      <Title mode={mode} isPageHeading>
+        {title}
+      </Title>
+    )}
+    {desc && (
+      <StyledDesc text={desc} onAnchorClick={onAnchorClick} mode={mode} />
+    )}
     <Grid data-testid={testId}>
       {videos.map((video) => (
         <GridVideo
@@ -71,7 +79,7 @@ export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
       ))}
     </Grid>
     {cta && (
-      <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+      <CTA href={cta.href} onCtaButtonClick={cta.onClick} mode={mode}>
         {cta.text}
       </CTA>
     )}

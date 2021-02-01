@@ -23,16 +23,21 @@ const StyledCTA = styled(CTA)`
   }
 `;
 
-export const PagePrefooter: React.FC<BaseProps> = ({
+export type PagePrefooterProps = BaseProps & {
+  mode?: 'dark' | 'light';
+};
+
+export const PagePrefooter: React.FC<PagePrefooterProps> = ({
   title,
   desc,
   cta,
   onAnchorClick,
+  mode,
   testId,
 }) => {
-  const SectionTitle = title && <Title>{title}</Title>;
+  const SectionTitle = title && <Title mode={mode}>{title}</Title>;
   const Desc = desc && (
-    <Description text={desc} onAnchorClick={onAnchorClick} />
+    <Description text={desc} onAnchorClick={onAnchorClick} mode={mode} />
   );
 
   return cta ? (
@@ -41,7 +46,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
         {SectionTitle}
         {Desc}
       </FlexContent>
-      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick}>
+      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick} mode={mode}>
         {cta.text}
       </StyledCTA>
     </FlexContainer>
