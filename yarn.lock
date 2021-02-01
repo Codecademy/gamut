@@ -10078,19 +10078,19 @@ focus-group@^0.2.2:
   resolved "https://registry.npmjs.org/focus-group/-/focus-group-0.2.3.tgz#956a1124a1495f7d0f4f2dd4c612502abf4a45f9"
   integrity sha1-lWoRJKFJX30PTy3UxhJQKr9KRfk=
 
-focus-trap-react@^8.3.1:
-  version "8.3.1"
-  resolved "https://registry.npmjs.org/focus-trap-react/-/focus-trap-react-8.3.1.tgz#cf874e6a233de971ba0d4f840f3903a1a39af3ea"
-  integrity sha512-bM7j6AoQj+gkMcEg49/kxsYXvGgMcCniBK1688GjsChLwhrqXwSeS37fV5UWVjeHqsYKQu8s+vPqd8ZLFp07wQ==
+focus-trap-react@^8.4.1:
+  version "8.4.1"
+  resolved "https://registry.npmjs.org/focus-trap-react/-/focus-trap-react-8.4.1.tgz#b9d05e547f7bccf20a401dfb991a40ceac62be57"
+  integrity sha512-qMyVJ9WUQuyOQnTBL017xsruxeijd58+bND45XI2k9cRP8zAB811IfX97NfWo5JY5pAz5rUwa5F9XNDocPTbKw==
   dependencies:
-    focus-trap "^6.2.1"
+    focus-trap "^6.3.0"
 
-focus-trap@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.npmjs.org/focus-trap/-/focus-trap-6.2.1.tgz#20edaa4a5eb21d9c2c9859653747edbdf7a6bf0e"
-  integrity sha512-WX23tBrHkyx+ogYOGPyJFWEmpleZesEcoK4EvBgZd++hEzW6P+5H0o9suM0Cw+M9E4cKmGKngxXU7sYg5qTiRQ==
+focus-trap@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.npmjs.org/focus-trap/-/focus-trap-6.3.0.tgz#31c08f0b6099705f71f6e0a16d88fbcc4c012586"
+  integrity sha512-BBzvFfkPg5PqrVVCdQ1YOIVNKGvqG9YNVkiAUQFuDM66N8J9uADhs6mlYKrd30ofDJIzEniBnBKM7GO45iCzKQ==
   dependencies:
-    tabbable "^5.1.4"
+    tabbable "^5.1.5"
 
 focus-visible@^5.2.0:
   version "5.2.0"
@@ -18892,10 +18892,10 @@ symbol.prototype.description@^1.0.0:
     es-abstract "^1.17.0-next.1"
     has-symbols "^1.0.1"
 
-tabbable@^5.1.4:
-  version "5.1.4"
-  resolved "https://registry.npmjs.org/tabbable/-/tabbable-5.1.4.tgz#5278929c16d0d909c2cfcdfcfa89dd86bce5dd1a"
-  integrity sha512-M1thgfxQ6NGuiSv6I+392zkDcyE5f0DbZPkUQaxnFNu9n9UR/GuE0ii2Hf3l7CQHNiraYhD8W3GBRp35W/+kXg==
+tabbable@^5.1.5:
+  version "5.1.5"
+  resolved "https://registry.npmjs.org/tabbable/-/tabbable-5.1.5.tgz#efec48ede268d511c261e3b81facbb4782a35147"
+  integrity sha512-oVAPrWgLLqrbvQE8XqcU7CVBq6SQbaIbHkhOca3u7/jzuQvyZycrUKPCGr04qpEIUslmUlULbSeN+m3QrKEykA==
 
 table-layout@^1.0.0:
   version "1.0.1"

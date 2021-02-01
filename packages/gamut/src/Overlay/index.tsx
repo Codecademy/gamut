@@ -14,6 +14,10 @@ export type OverlayProps = {
    */
   clickOutsideCloses?: boolean;
   /**
+   * Whether to allow outside clicks in the overlay. No effect uniless clickOutsideCloses is false
+   */
+  allowOutsideClick?: boolean;
+  /**
    * Whether clicking the escape key should close the Overlay.
    */
   escapeCloses?: boolean;
@@ -37,6 +41,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideCloses = true,
+  allowOutsideClick = false,
   escapeCloses = true,
   staticPositioning = false,
   onRequestClose,
@@ -57,6 +62,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       >
         <FocusTrap
           focusTrapOptions={{
+            allowOutsideClick,
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
             onDeactivate: onRequestClose,
