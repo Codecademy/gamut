@@ -8,28 +8,23 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={Alert}
   parameters={{
     subtitle: `
-Alerts can be used to asynchronously display feedback or interactions
-with the user with various connotations.`,
+Alerts can be used to asynchronously display feedback or interactions with the user with various connotations.`,
     status: 'volatile',
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
   }}
+  args={{
+    showIcon: true,
+    cta: { text: 'Login' },
+    children:
+      'You have been logged out due to inactivity. Click the button to log in again.',
+    type: BannerType.Info,
+    lines: 1,
+  }}
 />
 
 <Canvas withSource="open">
-  <Story name="Alert">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Info}
-        cta={{ text: 'Login', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        {`You have been logged out due to inactivity.
-                Click the button to log in again.`}
-      </Alert>
-    )}
-  </Story>
+  <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 </Canvas>
 
 <Props story="Alert" />

@@ -7,8 +7,8 @@ import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   color: ${({ theme }) => theme.colors.navy};
-  text-decoration: none;
   display: block;
+  text-decoration: none;
   ${hoverStyles}
   ${focusStyles}
 `;

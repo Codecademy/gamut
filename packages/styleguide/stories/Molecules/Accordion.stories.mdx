@@ -20,11 +20,12 @@ such as a "hint" section in the LE or a list of department jobs on a careers pag
 />
 
 <Canvas withSource="open">
-  <Story
-    name="Accordion"
-    args={{ top: 'Click me!', children: 'Hidden Treasure!' }}
-  >
-    {(args) => <Accordion {...args} />}
+  <Story name="Accordion">
+    {(args) => (
+      <Accordion top="Click me!" {...args}>
+        Hidden treasure!
+      </Accordion>
+    )}
   </Story>
 </Canvas>
 

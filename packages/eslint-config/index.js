@@ -51,13 +51,17 @@ module.exports = {
         // in additional plugins, the base rules settings of turning this rules off were NOT
         // being respected. By moving them into this override definition, they are properly
         // being applied to subsequent plugin imports/extensions. Wild.
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/await-thenable': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/restrict-template-expressions': 'off',
-        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
         '@typescript-eslint/prefer-regexp-exec': 'off',
+        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/restrict-plus-operands': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
         '@typescript-eslint/unbound-method': 'off',
         'import/export': 'off',
         'import/no-named-as-default': 'off',
@@ -118,7 +122,6 @@ module.exports = {
 
     // These rules could be useful, but we haven't gotten around to trying them out
     '@typescript-eslint/array-type': 'off',
-    '@typescript-eslint/await-thenable': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
@@ -127,8 +130,6 @@ module.exports = {
     '@typescript-eslint/member-ordering': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-floating-promises': 'off',
-    '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-require-imports': 'off',
     '@typescript-eslint/no-unnecessary-condition': 'off',
@@ -137,7 +138,6 @@ module.exports = {
     '@typescript-eslint/prefer-includes': 'off',
     '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/require-array-sort-compare': 'off',
-    '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     'no-await-in-loop': 'off',
     'no-cond-assign': 'off',
