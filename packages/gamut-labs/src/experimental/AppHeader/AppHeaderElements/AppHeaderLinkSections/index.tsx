@@ -19,30 +19,25 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   item,
 }) => {
   return (
-    <>
+    <Box paddingX={16}>
       {item.type === 'profile-dropdown'
         ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) => {
             return linkSection.map((link: AppHeaderLinkItem, linkIndex) => {
-              const showTopSeparator = sectionIndex !== 0 && linkIndex === 0;
               return (
-                <Box key={link.id} paddingX={16}>
-                  <AppHeaderLinkMobile
-                    action={action}
-                    item={link}
-                    key={link.id}
-                    topSeparator={showTopSeparator}
-                  />
-                </Box>
+                <AppHeaderLinkMobile
+                  action={action}
+                  item={link}
+                  key={link.id}
+                  topSeparator={sectionIndex !== 0 && linkIndex === 0}
+                />
               );
             });
           })
         : item.popover.map((link: AppHeaderLinkItem) => {
             return (
-              <Box key={link.id} paddingX={16}>
-                <AppHeaderLinkMobile action={action} item={link} />
-              </Box>
+              <AppHeaderLinkMobile action={action} item={link} key={link.id} />
             );
           })}
-    </>
+    </Box>
   );
 };
