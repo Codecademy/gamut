@@ -18,7 +18,7 @@ export type ToggleProps = {
   checked: boolean;
   /** Called when the input value has changed */
   onChange: (event?: React.FormEvent<HTMLInputElement>) => void;
-  /** A hidden label used for accessibility this must be unique to the page */
+  /** A hidden label used for accessibility and control, unique to the page */
   label?: string;
   /** Color variations for background styles */
   variant?: ToggleVariants;
