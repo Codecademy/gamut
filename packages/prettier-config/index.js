@@ -22,7 +22,7 @@ module.exports = {
     {
       files: '*.{ts,tsx}',
       options: {
-        parser: 'typescript',
+        parser: 'babel-ts',
       },
     },
   ],

@@ -22,26 +22,17 @@ module.exports = {
     './addons/system/preset',
   ],
   stories: getStories(),
-
-  babel: (config: any) => {
-    config.plugins = config.plugins.map((plugin: any) => {
-      if (/emotion/.test(plugin[0])) {
-        return [
-          require('@emotion/babel-plugin'),
-          {
-            sourceMap: true,
-            autoLabel: 'always',
-            labelFormat: '[local]',
-            cssPropOptimization: true,
-          },
-        ];
-      }
-
-      return plugin;
-    });
-    return config;
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      tsconfigPath: '../tsconfig.json',
+      savePropValueAsString: true,
+    },
   },
+
   webpackFinal: (config: any) => {
+    config.module.rules[0].use[0].loader = require.resolve('babel-loader');
+    console.log(config.module.rules[0].use[0]);
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
