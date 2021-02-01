@@ -6,7 +6,10 @@ import { Box, BoxProps } from '../Box';
 export type PatternName =
   | 'diagonalStripesLoose'
   | 'diagonalStripesRegular'
-  | 'diagonalStripesDense';
+  | 'diagonalStripesDense'
+  | 'dotsLoose'
+  | 'dotsRegular'
+  | 'dotsDense';
 
 export interface PatternProps extends BoxProps {
   name: PatternName;
@@ -95,6 +98,45 @@ export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => (
                 <rect width="4" height="4" fill="white" />
               </clipPath>
             </defs>
+          </pattern>
+        )}
+        {name === 'dotsLoose' && (
+          <pattern
+            id="dotsLoose"
+            x="0"
+            y="0"
+            width="16"
+            height="16"
+            patternUnits="userSpaceOnUse"
+          >
+            <rect width="1" height="1" fill="currentColor" />
+            <rect x="8" y="8" width="1" height="1" fill="currentColor" />
+          </pattern>
+        )}
+        {name === 'dotsRegular' && (
+          <pattern
+            id="dotsRegular"
+            x="0"
+            y="0"
+            width="8"
+            height="8"
+            patternUnits="userSpaceOnUse"
+          >
+            <rect width="1" height="1" fill="currentColor" />
+            <rect x="4" y="4" width="1" height="1" fill="currentColor" />
+          </pattern>
+        )}
+        {name === 'dotsDense' && (
+          <pattern
+            id="dotsDense"
+            x="0"
+            y="0"
+            width="4"
+            height="4"
+            patternUnits="userSpaceOnUse"
+          >
+            <rect width="1" height="1" fill="currentColor" />
+            <rect x="2" y="2" width="1" height="1" fill="currentColor" />
           </pattern>
         )}
       </defs>
