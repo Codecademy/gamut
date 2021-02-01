@@ -1,8 +1,7 @@
-import { VideoProps } from '@codecademy/gamut';
-import { Column, LayoutGrid } from '@codecademy/gamut';
+import { Column, LayoutGrid, VideoProps } from '@codecademy/gamut';
 import React from 'react';
 
-import { CTA, Description, Title } from './';
+import { CTA, Description, Title } from '.';
 import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
 
@@ -27,7 +26,8 @@ const columnSize = (type: string | undefined) => {
   if (!type) return 12;
   if (type === 'image') {
     return 9;
-  } else if (type === 'video') {
+  }
+  if (type === 'video') {
     return 5;
   }
 };

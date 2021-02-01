@@ -3,10 +3,7 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import {
-  AppHeaderSubMenuMobile,
-  AppHeaderSubMenuMobileProps,
-} from './../index';
+import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '..';
 
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
@@ -39,7 +36,7 @@ const props: AppHeaderSubMenuMobileProps = {
       },
     ],
   },
-  handleClose: handleClose,
+  handleClose,
   onClick,
 };
 
