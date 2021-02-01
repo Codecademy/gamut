@@ -1,5 +1,6 @@
 import FocusTrap from 'focus-trap-react';
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
@@ -40,8 +41,10 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  useLayoutEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+  useIsomorphicLayoutEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;

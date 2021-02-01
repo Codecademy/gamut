@@ -7,6 +7,7 @@ export type AppHeaderItem =
   | AppHeaderTextButtonItem
   | AppHeaderFillButtonItem
   | AppHeaderDropdownItem
+  | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
 type AppHeaderBaseItem = {
@@ -26,6 +27,7 @@ export type AppHeaderLinkItem = AppHeaderBaseItem & {
   icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
+  topSeparator?: boolean;
   trackingTarget: string;
   type: 'link';
 };
@@ -50,6 +52,15 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
   text: string;
   trackingTarget: string;
   type: 'dropdown';
+};
+
+export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
+  avatar: string;
+  displayName: string;
+  popover: AppHeaderLinkItem[][];
+  text: string;
+  trackingTarget: string;
+  type: 'profile-dropdown';
 };
 
 export type AppHeaderRenderElementItem = AppHeaderBaseItem & {

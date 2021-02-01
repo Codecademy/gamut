@@ -1,5 +1,6 @@
+import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
@@ -42,4 +43,67 @@ Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown",
   </Story>
 </Canvas>
 
-<Props story={AppHeaderSubMenuMobile} />
+## SubMenu for mobile view with dividers
+
+<Canvas>
+  <Story
+    args={{
+      item: {
+        avatar: '',
+        displayName: '',
+        id: 'dividers',
+        text: 'Dividers',
+        popover: [
+          [
+            {
+              id: 'sublink-1',
+              icon: PersonIcon,
+              text: 'A Link With Icon',
+              href: 'http://codecademy.com',
+              trackingTarget: '',
+              type: 'link',
+            },
+            {
+              id: 'sublink-2',
+              icon: GearIcon,
+              text: 'Another Link With Icon',
+              href: 'http://codecademy.com',
+              trackingTarget: '',
+              type: 'link',
+            },
+          ],
+          [
+            {
+              id: 'sublink-3',
+              text: 'A Link In Another Section',
+              href: 'http://codecademy.com',
+              trackingTarget: '',
+              type: 'link',
+            },
+            {
+              id: 'sublink-4',
+              text: 'Another Link',
+              href: 'http://codecademy.com',
+              trackingTarget: '',
+              type: 'link',
+            },
+          ],
+          [
+            {
+              id: 'sublink-5',
+              text: 'One More Link',
+              href: 'http://codecademy.com',
+              trackingTarget: '',
+              type: 'link',
+            },
+          ],
+        ],
+        trackingTarget: '',
+        type: 'profile-dropdown',
+      },
+    }}
+    name="AppHeaderSubMenuMobile - Profile"
+  >
+    {(args) => <AppHeaderSubMenuMobile {...args} />}
+  </Story>
+</Canvas>

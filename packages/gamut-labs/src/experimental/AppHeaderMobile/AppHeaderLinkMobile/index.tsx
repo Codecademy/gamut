@@ -12,11 +12,25 @@ import {
 } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderLinkMobileProps = {
-  onClick: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
+  action: AppHeaderClickHandler;
+  topSeparator?: boolean;
 };
 
+type AppHeaderLinkButtonProps = { topSeparator: boolean };
+
+const SeparatorOuter = styled(Box)<AppHeaderLinkButtonProps>`
+  border-top: ${({ theme, topSeparator }) =>
+    topSeparator ? `1px solid ${theme.colors['gray-400']}` : ''};
+  margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
+`;
+
+const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
+  margin-top: ${({ topSeparator }) => (topSeparator ? '0.5rem' : '')};
+`;
+
 const AppHeaderLinkButtonOuter = styled(Anchor)`
+  padding: 0.5px 0;
   color: ${({ theme }) => theme.colors.navy};
   ${hoverStyles}
   ${focusStyles}
@@ -27,31 +41,37 @@ const AppHeaderLinkButtonInner = styled(Box)`
 `;
 
 export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
-  onClick,
+  action,
   item,
+  topSeparator = false,
 }) => {
   const Icon = item.icon;
 
   return (
-    <AppHeaderLinkButtonOuter
-      data-testid={item.dataTestId}
-      href={item.href}
-      onClick={(event: React.MouseEvent) => onClick(event, item)}
-      variant="interface"
-    >
-      <AppHeaderLinkButtonInner
-        lineHeight="base"
-        paddingY={8}
-        textAlign="left"
-        display="flex"
-      >
-        {Icon && (
-          <Box display="flex" alignContent="center" marginRight={16}>
-            <Icon size={24} aria-hidden />
-          </Box>
-        )}
-        {item.text}
-      </AppHeaderLinkButtonInner>
-    </AppHeaderLinkButtonOuter>
+    <SeparatorOuter topSeparator={topSeparator}>
+      <SeparatorInner topSeparator={topSeparator}>
+        <AppHeaderLinkButtonOuter
+          data-testid={item.dataTestId}
+          href={item.href}
+          onClick={(event: React.MouseEvent) => action(event, item)}
+          variant="interface"
+        >
+          <AppHeaderLinkButtonInner
+            lineHeight="base"
+            minWidth="0"
+            paddingY={8}
+            textAlign="left"
+            display="flex"
+          >
+            {Icon && (
+              <Box display="flex" alignContent="center" marginRight={16}>
+                <Icon size={24} aria-hidden />
+              </Box>
+            )}
+            {item.text}
+          </AppHeaderLinkButtonInner>
+        </AppHeaderLinkButtonOuter>
+      </SeparatorInner>
+    </SeparatorOuter>
   );
 };

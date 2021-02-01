@@ -16,19 +16,19 @@ const AppHeaderLinkButtonInner = styled(Box)`
 `;
 
 export type AppHeaderLinkProps = {
+  action: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
-  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
+  action,
   item,
-  onClick,
 }) => {
   return (
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      onClick={(event) => onClick(event, item)}
+      onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
       variant="interface"
     >

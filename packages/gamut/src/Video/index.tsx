@@ -16,7 +16,7 @@ const OverlayPlayButton = () => {
 export type VideoProps = {
   videoUrl: string;
   videoTitle?: string;
-  placeholderImage?: string;
+  placeholderImage?: string | boolean;
   autoplay?: boolean;
   controls?: boolean;
   loop?: boolean;
