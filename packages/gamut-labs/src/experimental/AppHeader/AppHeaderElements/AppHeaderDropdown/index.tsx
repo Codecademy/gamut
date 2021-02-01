@@ -26,7 +26,6 @@ const AppHeaderTextTargetButton = styled.button`
   font-weight: normal;
   min-width: 0;
   padding: 1rem 0;
-  font-size: 0;
   cursor: pointer;
   ${hoverStyles}
   ${focusStyles}

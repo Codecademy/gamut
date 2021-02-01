@@ -1,5 +1,6 @@
 import {
   BookFlipPageIcon,
+  CommunityIcon,
   HouseEntranceIcon,
 } from '@codecademy/gamut-icons/src';
 import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src';
@@ -16,6 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
     status: 'volatile',
   }}
   args={{
+    action: () => {},
     items: [
       {
         dataTestId: 'header-catalog',
@@ -34,6 +36,52 @@ import { PropsTable } from '~styleguide/blocks';
         href: '/learn',
         trackingTarget: 'topnav_home',
         type: 'link',
+      },
+      {
+        id: 'target',
+        text: 'Dropdown Target',
+        icon: CommunityIcon,
+        popover: [
+          {
+            id: 'sublink-1',
+            text: 'A Link',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-2',
+            text: 'Another Link',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+        ],
+        trackingTarget: '',
+        type: 'dropdown',
+      },
+      {
+        id: 'dropdown-target-2',
+        text: 'Dropdown Target 2',
+        icon: HouseEntranceIcon,
+        popover: [
+          {
+            id: 'sublink-1',
+            text: 'A Link',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-2',
+            text: 'Another Link',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+        ],
+        trackingTarget: '',
+        type: 'dropdown',
       },
     ],
     logo: {
