@@ -7,7 +7,7 @@ module.exports = {
       '@emotion',
       {
         sourceMap: true,
-        autoLabel: 'always',
+        autoLabel: 'dev-only',
         labelFormat: '[local]',
         cssPropOptimization: true,
       },
