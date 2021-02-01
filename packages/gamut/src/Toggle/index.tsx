@@ -14,12 +14,16 @@ export type LabelProps = {
 };
 
 export type ToggleProps = {
+  /** The state of the checkbox input (this can be out of sync with the input itself if not passed) */
   checked?: boolean;
   className?: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: (args: unknown) => void;
+  /** A hidden label used for accessibility this must be unique to the page */
   label?: string;
   disabled?: boolean;
+  /** Color variations for background styles */
   variant?: ToggleVariants;
+  /** Changes the dimensions of the element for using the component outside of a form context */
   size?: ToggleSizes;
 };
 

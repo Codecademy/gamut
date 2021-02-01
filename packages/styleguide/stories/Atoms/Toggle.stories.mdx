@@ -1,6 +1,7 @@
 import { Toggle } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { useState } from '@storybook/addons';
 
 <Meta
   title={title}
@@ -8,8 +9,9 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   parameters={{
     subtitle: 'A completely controlled boolean Toggle component (checkbox)',
     source: 'gamut',
+    status: 'stable',
+    figmaId: 'OoMThJj3Gk9NZGaTlECssl',
   }}
-  args={{ checked: true, label: 'Toggle' }}
 />
 
 Controlled atom component indicating a user-selectable boolean value.
@@ -23,34 +25,59 @@ Receives its `checked` prop from its parent. This is the default theme and size.
 
 ## Color Variants
 
-We currently support 2 colors for toggles
+We currently support 2 colors for toggles, this is likely to change. Blue is the default and preferred color especially when adjacent to other form elements.
 
 <Canvas>
-  <Story
-    name="Blue"
-    args={{
-      variant: 'blue',
-    }}
-  >
+  <Story name="blue" args={{ checked: true, variant: 'blue' }}>
     {(args) => <Toggle {...args} />}
   </Story>
-  <Story
-    name="Hyper"
-    args={{
-      variant: 'hyper',
-    }}
-  >
+  <Story name="hyper" args={{ checked: true, variant: 'hyper' }}>
     {(args) => <Toggle {...args} />}
   </Story>
 </Canvas>
 
-## Size Variants
+## Size
+
+We support 2 sizes for `<Toggle />`.
+
+- `medium`: The default and preferred size, especially if it is part of a form.
+- `small`: Used for UI toggles that are outside of a form context, and may need to fit into smaller areas.
 
 <Canvas>
-  <Story name="Medium" args={{ size: 'medium' }}>
+  <Story name="medium" args={{ size: 'medium' }}>
     {(args) => <Toggle {...args} />}
   </Story>
-  <Story name="Small" args={{ size: 'small' }}>
+  <Story name="small" args={{ size: 'small' }}>
     {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Disabled
+
+Disabling the input will change the opacity and cursor but still denote the current value.
+
+<Canvas>
+  <Story name="disabled" args={{ checked: false, disabled: true }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+  <Story name="disabled-checked" args={{ checked: true, disabled: true }}>
+    {(args) => <Toggle {...args} />}
+  </Story>
+</Canvas>
+
+## Interactive Example
+
+<Canvas>
+  <Story name="interactive" args={{ label: 'interactive' }}>
+    {(args) => {
+      const [checked, setChecked] = useState(args.checked);
+      return (
+        <Toggle
+          {...args}
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+        />
+      );
+    }}
   </Story>
 </Canvas>
