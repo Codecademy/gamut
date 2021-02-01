@@ -49,7 +49,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
       <Box aria-labelledby={`${item.text} menu`}>
         <FullMenuButton onClick={handleClose} type="button">
           <ArrowChevronLeftIcon size={12} aria-hidden />
-          <Box title={item.text} fontSize={16} paddingLeft={8}>
+          <Box fontSize={16} paddingLeft={8}>
             Full Menu
           </Box>
         </FullMenuButton>
@@ -57,11 +57,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           {item.text}
         </Heading>
         {item.popover.map((link: AppHeaderLinkItem) => {
-          return (
-            <Box key={link.id}>
-              <AppHeaderLink item={link} onClick={onClick} />
-            </Box>
-          );
+          return <AppHeaderLink key={item.id} item={link} onClick={onClick} />;
         })}
       </Box>
     </>
