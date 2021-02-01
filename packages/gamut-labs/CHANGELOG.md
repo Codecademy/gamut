@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.0.2...@codecademy/gamut-labs@8.1.0) (2021-02-01)
+
+
+### Features
+
+* **AppHeaderProfileDropdown:** Pass through user avatar and display name ([#1330](https://github.com/Codecademy/client-modules/issues/1330)) ([dcbf9f3](https://github.com/Codecademy/client-modules/commit/dcbf9f3fcf9cbacd4396a3563bcd0293074c72c4))
+
+
+
 ### [8.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.0.1...@codecademy/gamut-labs@8.0.2) (2021-01-29)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
