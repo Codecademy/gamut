@@ -14,7 +14,9 @@
     "../../typings/*.d.ts",
     "./*.d.ts",
     "../**/src/**/*",
-    "./.storybook/**/*.(ts|tx)",
-    "./stories/**/*.(ts|tx)"
+    "./.storybook/**/*.ts",
+    "./.storybook/**/*.tsx",
+    "./stories/**/*.ts",
+    "./stories/**/*.tsx"
   ]
 }
