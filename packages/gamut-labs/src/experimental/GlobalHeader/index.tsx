@@ -35,15 +35,15 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
       }
     case 'free':
       return freeHeaderItems(
+        props.user,
         props.renderSearch,
-        props.renderNotifications,
-        props.renderProfile
+        props.renderNotifications
       );
     case 'pro':
       return proHeaderItems(
+        props.user,
         props.renderSearch,
-        props.renderNotifications,
-        props.renderProfile
+        props.renderNotifications
       );
   }
 };
@@ -51,9 +51,9 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <AppHeader
+      action={props.action}
       className={styles.globalHeader}
       items={getAppHeaderItems(props)}
-      onClick={props.onClick}
     />
   );
 };

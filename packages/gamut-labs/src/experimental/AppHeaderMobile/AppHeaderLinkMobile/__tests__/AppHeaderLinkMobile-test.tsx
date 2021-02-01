@@ -6,9 +6,10 @@ import React from 'react';
 import { AppHeaderLinkMobile, AppHeaderLinkMobileProps } from '..';
 
 const testText = 'Test Link';
-const onClick = jest.fn();
+const action = jest.fn();
 
 const props: AppHeaderLinkMobileProps = {
+  action,
   item: {
     dataTestId: '',
     id: 'test-link',
@@ -18,7 +19,6 @@ const props: AppHeaderLinkMobileProps = {
     type: 'link',
     icon: () => <svg />,
   },
-  onClick,
 };
 
 const renderAppHeaderLinkMobile = () => {
@@ -30,9 +30,9 @@ const renderAppHeaderLinkMobile = () => {
 };
 
 describe('AppHeaderLinkMobile', () => {
-  it('calls onClick() when clicked', () => {
+  it('calls action() when clicked', () => {
     renderAppHeaderLinkMobile();
     screen.getByRole('link').click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 });
