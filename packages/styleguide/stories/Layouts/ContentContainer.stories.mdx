@@ -1,4 +1,5 @@
 import { ContentContainer } from '@codecademy/gamut/src';
+
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -14,8 +15,11 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 />
 
 ContentContainer can be used when creating page layouts to contain content
-within a maximum width, as well as centering that content and providing
+within the \$grid-xl maximum width of [1440px](/?path=/docs/foundations-layout--page#screensizes-and-media-queries), as well as centering that content and providing
 responsive padding at our different breakpoints.
+
+Use `ContentContainer` to keep page _content_ at a consistent maximum content width across various screen sizes and zooms.
+See [the Student Center](https://codecademy.com/student-center) for an example.
 
 <Canvas>
   <Story name="Content Container">
