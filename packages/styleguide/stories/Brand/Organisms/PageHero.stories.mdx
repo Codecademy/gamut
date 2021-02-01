@@ -1,9 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-
 import { PageHero } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Organisms/LandingPage/PageHero"
+  title={title}
   component={PageHero}
   args={{
     title:
@@ -11,24 +11,30 @@ import { PageHero } from '@codecademy/gamut-labs/src';
     desc:
       'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
     onAnchorClick: () =>
+      // eslint-disable-next-line no-console
       console.log('You clicked me an anchor tag inside Markdown!'),
     cta: {
       text: 'Supernatural',
       href:
         'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
       onClick: () => {
+        // eslint-disable-next-line no-console
         console.log('You could add event tracking here');
       },
     },
-    imgSrc:
-      'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
-    imgAlt:
-      'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+    media: {
+      type: 'image',
+      src:
+        'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
+      alt:
+        'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+    },
   }}
-  parameters={{ status: 'volatile' }}
+  parameters={{
+    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
+    status: 'volatile',
+  }}
 />
-
-Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.
 
 ### With CTA
 
@@ -36,12 +42,32 @@ Hero component for landing pages created in Contentful. All props are optional. 
   <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
 </Canvas>
 
-<Props story="With CTA" of={PageHero} />
+<Props story="With CTA" />
 
 ### Without CTA
 
 <Canvas withSource="open">
   <Story name="Without CTA">
     {(args) => <PageHero {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+### With Video
+
+<Canvas withSource="open">
+  <Story name="With Video">
+    {(args) => (
+      <PageHero
+        {...args}
+        media={{
+          type: 'video',
+          videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          videoTitle: 'Workout with Rick Sanchez',
+          placeholderImage: 'https://placekitten.com/400/300',
+          autoplay: true,
+        }}
+        title="What's it like to be a Software Engineer"
+      />
+    )}
   </Story>
 </Canvas>

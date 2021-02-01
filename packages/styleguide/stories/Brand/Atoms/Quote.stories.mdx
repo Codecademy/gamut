@@ -1,19 +1,20 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
-import { select, text } from '@storybook/addon-knobs';
 import { Quote } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Atoms/Quote"
+  title={title}
   component={Quote}
   args={{
     text:
       'Codecademy’s small lessons really help a person who has trouble focusing on long lessons.',
   }}
-  parameters={{ source: 'gamut-labs' }}
+  parameters={{
+    subtitle: `Emphasized text intended to be a direct quote, such as from a learner.
+Often with an \`Avatar\` or \`Testimonial\`.`,
+    source: 'gamut-labs',
+  }}
 />
-
-Emphasized text intended to be a direct quote, such as from a learner.
-Often with an `Avatar` or `Testimonial`.
 
 <Canvas withSource="open">
   <Story name="Quote">{(args) => <Quote {...args} />}</Story>

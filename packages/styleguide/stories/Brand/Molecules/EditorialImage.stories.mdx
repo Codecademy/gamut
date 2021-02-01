@@ -1,8 +1,9 @@
-import { Meta, Props, Canvas, Story } from '@storybook/addon-docs/dist/blocks';
 import { EditorialImage } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
-  title="Brand/Molecules/EditorialImage"
+  title={title}
   component={EditorialImage}
   args={{
     image:
@@ -10,10 +11,11 @@ import { EditorialImage } from '@codecademy/gamut-labs/src';
     alt: 'A picture of two Codecademy employees.',
     caption: 'You can remove this caption.',
   }}
-  parameters={{ source: 'gamut-labs' }}
+  parameters={{
+    subtitle: `An image used for editorial pages with an optional caption.`,
+    source: 'gamut-labs',
+  }}
 />
-
-An image used for editorial pages with an optional caption.
 
 <Canvas withSource="open" className="dark">
   <Story name="EditorialImage">{(args) => <EditorialImage {...args} />}</Story>

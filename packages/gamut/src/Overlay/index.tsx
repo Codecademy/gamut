@@ -1,10 +1,9 @@
-import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React from 'react';
-import { useLockBodyScroll } from 'react-use';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
-import styles from './styles.module.scss';
+import { FlexBox } from '../Box';
 
 export type OverlayProps = {
   children: React.ReactElement<any>;
@@ -47,18 +46,26 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  useLockBodyScroll(isOpen);
+  useIsomorphicLayoutEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   return (
     <BodyPortal>
-      <div
-        className={cx(
-          staticPositioning && styles.staticPositioning,
-          styles.container,
-          className
-        )}
+      <FlexBox
+        data-testid="overlay-content-container"
+        position={staticPositioning ? 'static' : 'fixed'}
+        justifyContent="center"
+        alignItems="center"
+        bottom="0"
+        left="0"
+        right="0"
+        top="0"
+        className={className}
       >
         <FocusTrap
           focusTrapOptions={{
@@ -70,7 +77,7 @@ export const Overlay: React.FC<OverlayProps> = ({
         >
           {children}
         </FocusTrap>
-      </div>
+      </FlexBox>
     </BodyPortal>
   );
 };

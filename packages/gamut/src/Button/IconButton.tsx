@@ -5,7 +5,7 @@ import { SizedButtonProps } from './shared';
 import { TextButton } from './TextButton';
 
 export type IconButtonProps = SizedButtonProps & {
-  children: never;
+  children?: never;
   icon: React.ComponentType<GamutIconProps>;
 };
 
