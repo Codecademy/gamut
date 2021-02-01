@@ -22,9 +22,9 @@ const mapItemToElement = (
 ) => {
   switch (item.type) {
     case 'link':
-      return <AppHeaderLinkMobile item={item} onClick={onClick} />;
+      return <AppHeaderLinkMobile item={item} action={onClick} />;
     case 'dropdown':
-      return <AppHeaderDropdown item={item} onClick={onClick} />;
+      return <AppHeaderDropdown item={item} action={onClick} />;
   }
 };
 
@@ -35,7 +35,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
 }) => {
   return (
     <>
-      <AppHeaderLogo item={logo} onClick={onClick} />
+      <AppHeaderLogo item={logo} action={onClick} />
       {items.map((item) => mapItemToElement(item, onClick))}
     </>
   );

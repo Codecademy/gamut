@@ -55,14 +55,14 @@ const mapItemToElement = (
     case 'logo':
       return (
         <AppHeaderTab key={item.id}>
-          <AppHeaderLogo item={item} onClick={onClick} />
+          <AppHeaderLogo item={item} action={onClick} />
         </AppHeaderTab>
       );
     case 'link':
-      return <AppHeaderLinkMobile item={item} onClick={onClick} />;
+      return <AppHeaderLinkMobile item={item} action={onClick} />;
     case 'dropdown':
       return (
-        <AppHeaderDropdown item={item} onClick={onClick} /> // mobile submenu component
+        <AppHeaderDropdown item={item} action={onClick} /> // mobile submenu component
       );
     case 'render-element':
       return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>; // ex search button
