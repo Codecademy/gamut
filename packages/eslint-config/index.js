@@ -59,6 +59,7 @@ module.exports = {
         '@typescript-eslint/require-await': 'off',
         '@typescript-eslint/prefer-regexp-exec': 'off',
         '@typescript-eslint/unbound-method': 'off',
+        'import/export': 'off',
         'import/no-named-as-default': 'off',
         'no-restricted-globals': 'off',
         'no-undef': 'off',
