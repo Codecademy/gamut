@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.5...@codecademy/gamut@20.1.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
 ### [20.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.4...@codecademy/gamut@20.0.5) (2021-01-29)
 
 **Note:** Version bump only for package @codecademy/gamut
