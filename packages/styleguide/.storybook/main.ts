@@ -25,14 +25,16 @@ module.exports = {
   typescript: {
     reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
-      tsconfigPath: '../tsconfig.json',
-      savePropValueAsString: true,
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop: any) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
     },
   },
 
   webpackFinal: (config: any) => {
     config.module.rules[0].use[0].loader = require.resolve('babel-loader');
-    console.log(config.module.rules[0].use[0]);
+
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );

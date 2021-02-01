@@ -1,11 +1,4 @@
-import styled from '@emotion/styled';
-import { swatches } from '@codecademy/gamut-styles';
+import { styled } from '@storybook/theming';
+import { allProps } from './styles';
 
-type BoxProps = { size: string };
-
-export const Box = styled.div<BoxProps>`
-  background-color: ${swatches.gray[400]};
-  display: inline-block;
-  width: ${({ size }) => size};
-  height: ${({ size }) => size};
-`;
+export const Box = styled.div(allProps);

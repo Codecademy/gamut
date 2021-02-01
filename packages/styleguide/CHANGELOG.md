@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.1...@codecademy/styleguide@23.1.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
 ### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.0...@codecademy/styleguide@23.0.1) (2021-01-29)
 
 **Note:** Version bump only for package @codecademy/styleguide
