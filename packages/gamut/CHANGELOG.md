@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.0.0...@codecademy/gamut@21.1.0) (2021-02-02)
+
+
+### Features
+
+* **Overlay:** Support allowOutsideClick prop ([21a876d](https://github.com/Codecademy/client-modules/commit/21a876deab9a788d55bd0e6f86204dbc2423e50c))
+
+
+
 ## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.1.0...@codecademy/gamut@21.0.0) (2021-02-02)
 
 
