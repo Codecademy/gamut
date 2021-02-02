@@ -12,6 +12,9 @@ import {
 const link1Href = 'https://codecademy.com';
 const link2Href = 'https://news.codecademy.com';
 
+const sublink1TestId = 'simple-link-1';
+const sublink2TestId = 'simple-link-2';
+
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
 const action = jest.fn();
@@ -30,8 +33,8 @@ const props: AppHeaderMainMenuMobileProps = {
         createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
       ],
     },
-    createMockAppHeaderLinkItem('simple-link-1', link1Href, 'simple link 1'),
-    createMockAppHeaderLinkItem('simple-link-2', link2Href, 'simple link 2'),
+    createMockAppHeaderLinkItem(sublink1TestId, link1Href, 'simple link 1'),
+    createMockAppHeaderLinkItem(sublink2TestId, link2Href, 'simple link 2'),
   ],
 };
 
@@ -56,5 +59,10 @@ describe('AppHeaderMainMenuMobile', () => {
     renderAppHeaderMainMenuMobile();
     const targetButton = screen.getByRole('button');
     expect(targetButton).toHaveTextContent('resources target');
+  });
+
+  it('does not render the submenu on load', () => {
+    expect(screen.queryByTestId(sublink1TestId)).not.toBeInTheDocument();
+    expect(screen.queryByTestId(sublink2TestId)).not.toBeInTheDocument();
   });
 });
