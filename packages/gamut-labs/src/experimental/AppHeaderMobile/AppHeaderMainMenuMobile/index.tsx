@@ -4,16 +4,13 @@ import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderItem,
-  AppHeaderLogoItem,
 } from '../../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
 import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 
 export type AppHeaderMainMenuMobileProps = {
-  // handleClose: ()=>void,
-  logo: AppHeaderLogoItem;
-  action: AppHeaderClickHandler; // to do: change to action
+  action: AppHeaderClickHandler;
   items: AppHeaderItem[];
 };
 
@@ -47,11 +44,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         return <AppHeaderLinkMobile item={item} action={action} />;
       case 'dropdown':
         return (
-          <AppHeaderSubMenuTarget
-            item={item}
-            action={action}
-            openSubMenu={handleOpenSubMenu}
-          />
+          <AppHeaderSubMenuTarget item={item} openSubMenu={handleOpenSubMenu} />
         );
     }
   };

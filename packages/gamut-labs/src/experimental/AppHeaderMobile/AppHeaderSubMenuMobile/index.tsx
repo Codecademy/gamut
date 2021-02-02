@@ -10,6 +10,7 @@ import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHead
 import {
   focusStyles,
   hoverStyles,
+  textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
@@ -17,19 +18,8 @@ export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
 };
 
 const FullMenuButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  display: flex;
-  align-items: center;
-  font-weight: normal;
-  line-height: 1.5;
   margin-bottom: ${pxRem(24)};
-  min-width: 0;
-  width: 100%;
-  padding: ${pxRem(2)} 0;
-  text-align: left;
-  white-space: nowrap;
+  ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
 `;
