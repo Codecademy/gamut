@@ -9,8 +9,13 @@ const cache = createEmotionCache();
  * Story functions must be called as a regular function to avoid full-remounts
  * See: https://github.com/storybookjs/storybook/issues/12255
  */
-export const withEmotion = (Story: any) => (
-  <CacheProvider value={cache}>
+
+export const withEmotion = (Story: any) => {
+  return process.env.NODE_ENV === 'test' ? (
     <ThemeContext.Provider value={theme}>{Story()}</ThemeContext.Provider>
-  </CacheProvider>
-);
+  ) : (
+    <CacheProvider value={cache}>
+      <ThemeContext.Provider value={theme}>{Story()}</ThemeContext.Provider>
+    </CacheProvider>
+  );
+};
