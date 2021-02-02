@@ -39,19 +39,19 @@ import { PropsTable } from '~styleguide/blocks';
       },
       {
         id: 'target',
-        text: 'Dropdown Target',
+        text: 'Community',
         icon: CommunityIcon,
         popover: [
           {
             id: 'sublink-1',
-            text: 'A Link',
+            text: 'forum',
             href: 'http://codecademy.com',
             trackingTarget: '',
             type: 'link',
           },
           {
             id: 'sublink-2',
-            text: 'Another Link',
+            text: 'chapters',
             href: 'http://codecademy.com',
             trackingTarget: '',
             type: 'link',
@@ -62,19 +62,19 @@ import { PropsTable } from '~styleguide/blocks';
       },
       {
         id: 'dropdown-target-2',
-        text: 'Dropdown Target 2',
+        text: 'Resources',
         icon: HouseEntranceIcon,
         popover: [
           {
             id: 'sublink-1',
-            text: 'A Link',
+            text: 'cheatsheets',
             href: 'http://codecademy.com',
             trackingTarget: '',
             type: 'link',
           },
           {
             id: 'sublink-2',
-            text: 'Another Link',
+            text: 'blog',
             href: 'http://codecademy.com',
             trackingTarget: '',
             type: 'link',
@@ -87,7 +87,9 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader.
+The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader. It takes in as a prop an array of app header items. It renders items of type "link" as AppHeaderMobileLinks and items of type "dropdown" as target components that open the AppHeaderSubMenuMobile when clicked. The two types - the links & targets - look almost the same to the user: they have an icon & text. The targets show an arrow to indicate that they're expandable. When the target component is clicked, it opens + populates the AppHeaderSubMenuMobile. (For example, resources is of type dropdown; when clicked it opens the submenu which contains links to the cheasheets + blog)
+
+The AppHeaderMainMenuMobile component uses state to control which view you are in: the main screen (the links with icons) or the submenu view.
 
 ### AppHeaderMainMenuMobile
 
