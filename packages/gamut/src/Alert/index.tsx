@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
-import cx from 'classnames';
-
 import {
-  CloseIcon,
   ArrowChevronDownIcon,
   ArrowChevronUpIcon,
+  CloseIcon,
 } from '@codecademy/gamut-icons';
+import cx from 'classnames';
+import React, { useState } from 'react';
 
+import { ButtonDeprecated } from '../ButtonDeprecated';
+import { ButtonDeprecatedBase } from '../ButtonDeprecatedBase';
 import { CardShell } from '../Card';
 import { Container } from '../FlexBox';
 import { Truncate } from '../Truncate';
-import { ButtonBase } from '../ButtonBase';
-import { Button } from '../Button';
-
-import { BannerType, BANNER_CONFIG } from './constants';
-import { BannerCTA } from './types';
-
+import { BANNER_CONFIG, BannerType } from './constants';
 import styles from './styles.module.scss';
+import { BannerCTA } from './types';
 
 export type AlertProps = {
   className?: string;
@@ -63,7 +60,7 @@ export const Alert: React.FC<AlertProps> = ({
       <Container align="start" justify="spaceAround" grow={1}>
         {showIcon && (
           <Container className={styles.section} justify="center" align="center">
-            <TypeIcon size={24} />
+            <TypeIcon size={24} aria-label={`${type}: `} />
           </Container>
         )}
         <Container
@@ -80,7 +77,8 @@ export const Alert: React.FC<AlertProps> = ({
             justify="spaceBetween"
           >
             <Truncate
-              lines={isExpanded ? undefined : lines}
+              expanded={isExpanded || !Boolean(lines)}
+              lines={lines || 1}
               onTruncate={setIsTruncated}
               className={styles.truncate}
             >
@@ -88,7 +86,7 @@ export const Alert: React.FC<AlertProps> = ({
             </Truncate>
             {showExpandToggle && (
               <Container inline>
-                <ButtonBase
+                <ButtonDeprecatedBase
                   className={cx(
                     styles.iconButton,
                     styles.iconButton__pushRight,
@@ -99,13 +97,13 @@ export const Alert: React.FC<AlertProps> = ({
                   onClick={() => setIsExpanded(!isExpanded)}
                 >
                   <ToggleIcon size={16} />
-                </ButtonBase>
+                </ButtonDeprecatedBase>
               </Container>
             )}
           </Container>
           {cta && (
             <Container className={styles.section} shrink={1}>
-              <Button
+              <ButtonDeprecated
                 caps
                 theme={type}
                 className={styles.actionButton}
@@ -114,21 +112,21 @@ export const Alert: React.FC<AlertProps> = ({
                 disabled={cta.disabled}
               >
                 {cta.text}
-              </Button>
+              </ButtonDeprecated>
             </Container>
           )}
         </Container>
         {onClose && (
           <Container className={styles.section} shrink={1} center>
-            <ButtonBase
+            <ButtonDeprecatedBase
               className={cx(styles.iconButton, {
                 [styles[`iconButton__${type}`]]: type,
               })}
               aria-label="Close Alert"
               onClick={onClose}
             >
-              <CloseIcon size={12} />
-            </ButtonBase>
+              <CloseIcon aria-hidden size={12} />
+            </ButtonDeprecatedBase>
           </Container>
         )}
       </Container>

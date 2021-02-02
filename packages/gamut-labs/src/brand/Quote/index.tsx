@@ -1,9 +1,10 @@
-import React from 'react';
-import styles from './styles.module.scss';
-import cx from 'classnames';
 import { VisualTheme } from '@codecademy/gamut';
+import cx from 'classnames';
+import React from 'react';
+
 import orangeQuotes from '../assets/orangeQuotes.svg';
 import purpleQuotes from '../assets/purpleQuotes.svg';
+import styles from './styles.module.scss';
 
 type QuoteProps = {
   text: string;
@@ -13,18 +14,16 @@ type QuoteProps = {
 
 export const Quote: React.FC<QuoteProps> = ({
   text,
-  theme = VisualTheme.LightMode,
+  theme = 'light',
   classNames = {},
 }) => (
   <div
     className={cx(
-      theme === VisualTheme.DarkMode
-        ? styles.darkContainer
-        : styles.lightContainer
+      theme === 'dark' ? styles.darkContainer : styles.lightContainer
     )}
   >
     <img
-      src={theme === VisualTheme.DarkMode ? purpleQuotes : orangeQuotes}
+      src={theme === 'dark' ? purpleQuotes : orangeQuotes}
       alt=""
       className={cx(styles.icon, classNames.icon)}
     />

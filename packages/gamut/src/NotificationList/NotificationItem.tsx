@@ -1,18 +1,14 @@
-import React from 'react';
 import cx from 'classnames';
-import moment from 'moment';
+import React from 'react';
+
 import { Truncate } from '../Truncate';
-import { Notification } from './typings';
 import { NotificationIcon } from './NotificationIcon';
 import styles from './styles/Notification.module.scss';
+import { Notification } from './typings';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
-};
-
-const formatTime = (notificationDate: string): string => {
-  return moment(notificationDate).fromNow();
 };
 
 export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
@@ -53,7 +49,7 @@ export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
         <div className={styles.text}>
           <Truncate lines={3}>{text}</Truncate>
         </div>
-        <div className={styles.time}>{formatTime(date)}</div>
+        <div className={styles.time}>{date}</div>
       </div>
     </TagName>
   );

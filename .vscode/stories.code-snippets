@@ -1,0 +1,72 @@
+{
+  "Component Story": {
+    "prefix": "component-story",
+    "body": [
+      "import { $1 } from '@codecademy/$2';",
+      "import title from '@codecademy/macros/lib/title.macro';",
+      "import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';",
+      "",
+      "import { PropsTable } from '~styleguide/blocks';",
+      "",
+      "<Meta",
+      "  title={title}",
+      "  component={$1}",
+      "  parameters={{",
+      "    subtitle: '$3',",
+      "    source: '$2',",
+      "    status: '$4',",
+      "    figmaId: '$5'",
+      "  }}",
+      "  args={{}}",
+      "/>",
+      "",
+      "<Canvas>",
+      "  <Story name=\"$1\">",
+      "    {(args) => <$1 {...args} />}",
+      "  </Story>",
+      "</Canvas>",
+      "",
+      "<PropsTable story=\"$1\"/>"
+    ],
+    "description": "Default Component Story Structure."
+  },
+  "Table of Contents Story": {
+    "prefix": "toc-story",
+    "body": [
+      "import title from '@codecademy/macros/lib/title.macro';",
+      "import { Meta } from '@storybook/addon-docs/dist/blocks';",
+      "",
+      "import { TableOfContents } from '~styleguide/blocks';",
+      "",
+      "<Meta",
+      "  title={title}",
+      "  parameters={{",
+      "    subtitle: '$3',",
+      "  }}",
+      "/>",
+      "",
+      "<TableOfContents />"
+    ],
+    "description": "TOC Story Structure."
+  },
+  "Canvas Block": {
+    "prefix": "canvas-block",
+    "body": [
+      "<Canvas>",
+      "  <Story name=\"$1\" args={{}}>",
+      "    {(args) => <$2 {...args} />}",
+      "  </Story>",
+      "</Canvas>"
+    ],
+    "description": "A single story block wrapped in a canvas"
+  },
+  "Story Block": {
+    "prefix": "story-block",
+    "body": [
+      "  <Story name=\"$1\" args={{}}>",
+      "    {(args) => <$2 {...args} />}",
+      "  </Story>"
+    ],
+    "description": "A single story block without a canvas"
+  }
+}

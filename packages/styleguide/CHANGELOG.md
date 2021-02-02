@@ -1,3 +1,943 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [23.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.2.0...@codecademy/styleguide@23.3.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.1...@codecademy/styleguide@23.2.0) (2021-02-01)
+
+
+### Features
+
+* **AppHeaderProfileDropdown:** Pass through user avatar and display name ([#1330](https://github.com/Codecademy/client-modules/issues/1330)) ([dcbf9f3](https://github.com/Codecademy/client-modules/commit/dcbf9f3fcf9cbacd4396a3563bcd0293074c72c4))
+
+
+
+### [23.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.0...@codecademy/styleguide@23.1.1) (2021-02-01)
+
+
+### Bug Fixes
+
+* **lint:** Fix SB and Eslint config ([7591a72](https://github.com/Codecademy/client-modules/commit/7591a72a12fe07889dabc1eda689aa16c53a7830))
+
+
+
+## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.1...@codecademy/styleguide@23.1.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.0...@codecademy/styleguide@23.0.1) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.4...@codecademy/styleguide@23.0.0) (2021-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** added functionality for PageHero to take images or videos as props
+
+### Features
+
+* **PageHero:** added functionality for PageHero to take images or videos as props ([3a9040f](https://github.com/Codecademy/client-modules/commit/3a9040f30c3a0784cec0e7cb2c6ac2f48251d586))
+
+
+
+### [22.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.3...@codecademy/styleguide@22.0.4) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.2...@codecademy/styleguide@22.0.3) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.1...@codecademy/styleguide@22.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [22.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.0...@codecademy/styleguide@22.0.1) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.2...@codecademy/styleguide@22.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
+### [21.24.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.1...@codecademy/styleguide@21.24.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* scr => src ([c194b40](https://github.com/Codecademy/client-modules/commit/c194b40c8ba49204e020cc0fdce85569f4d3e5ed))
+
+
+
+### [21.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.0...@codecademy/styleguide@21.24.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **styleguide:** import/export ([1b276f7](https://github.com/Codecademy/client-modules/commit/1b276f76d46f677e640e5a9651b16b273a3725be))
+
+
+
+## [21.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.23.0...@codecademy/styleguide@21.24.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+## [21.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.1...@codecademy/styleguide@21.23.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
+### [21.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.0...@codecademy/styleguide@21.22.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
+
+
+### Features
+
+* **Icons:** Adds initial Mini Bold streamline icons ([e3c521c](https://github.com/Codecademy/client-modules/commit/e3c521c5e2a4f207db079c942560c54c93125fa5))
+
+
+
+## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
+
+
+### Features
+
+* **Mobile Menu components:** mobile menu set up ([#1320](https://github.com/Codecademy/client-modules/issues/1320)) ([6d33a20](https://github.com/Codecademy/client-modules/commit/6d33a204de35bf3167773241af2ed77706bbcb89))
+
+
+
+### [21.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.1...@codecademy/styleguide@21.20.2) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.0...@codecademy/styleguide@21.20.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Change focus outline color and add export ([#1322](https://github.com/Codecademy/client-modules/issues/1322)) ([e5fe628](https://github.com/Codecademy/client-modules/commit/e5fe628ca7e347d6c65e6efc50271a006ef7a6e5))
+
+
+
+## [21.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.1...@codecademy/styleguide@21.20.0) (2021-01-25)
+
+
+### Features
+
+* **styleguide:** Storybook config clean up ([01c70c8](https://github.com/Codecademy/client-modules/commit/01c70c858259a3b7b5dbb1f409cadb5feb395b3e))
+
+
+
+### [21.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.0...@codecademy/styleguide@21.19.1) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.1...@codecademy/styleguide@21.19.0) (2021-01-22)
+
+
+### Features
+
+* **docs:** Refresh story writing meta docs ([ffc1573](https://github.com/Codecademy/client-modules/commit/ffc1573cf72e9a0a2b03dd7e4acc45888a797f7d))
+
+
+
+### [21.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.0...@codecademy/styleguide@21.18.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.17.0...@codecademy/styleguide@21.18.0) (2021-01-22)
+
+
+### Features
+
+* **GlobalHeader:** add GlobalHeader component ([#1306](https://github.com/Codecademy/client-modules/issues/1306)) ([7656137](https://github.com/Codecademy/client-modules/commit/7656137fd532dcaeff37408b6bc1f6e933807aee))
+
+
+
+## [21.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.1...@codecademy/styleguide@21.17.0) (2021-01-22)
+
+
+### Features
+
+* **AppHeader:** add AppHeader component ([#1300](https://github.com/Codecademy/client-modules/issues/1300)) ([040ca60](https://github.com/Codecademy/client-modules/commit/040ca60dfd4e98eb2c48aada2d40eab2a63425cf))
+
+
+
+### [21.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.0...@codecademy/styleguide@21.16.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.7...@codecademy/styleguide@21.16.0) (2021-01-22)
+
+
+### Features
+
+* **PageFeatures:** allow this component to render stats and no media, in addition to images and icons ([#1307](https://github.com/Codecademy/client-modules/issues/1307)) ([61370f5](https://github.com/Codecademy/client-modules/commit/61370f508390b3fbc4eb3aef660684c9253617a8))
+
+
+
+### [21.15.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.6...@codecademy/styleguide@21.15.7) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.5...@codecademy/styleguide@21.15.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](https://github.com/Codecademy/client-modules/commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
+### [21.15.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.4...@codecademy/styleguide@21.15.5) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.3...@codecademy/styleguide@21.15.4) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.2...@codecademy/styleguide@21.15.3) (2021-01-19)
+
+
+### Bug Fixes
+
+* **Storybook:** Update meta links to storybooks standard color ([9e1eae0](https://github.com/Codecademy/client-modules/commit/9e1eae07f368097586d626e45865333c98135968))
+
+
+
+### [21.15.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.1...@codecademy/styleguide@21.15.2) (2021-01-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.0...@codecademy/styleguide@21.15.1) (2021-01-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.14.2...@codecademy/styleguide@21.15.0) (2021-01-19)
+
+
+### Features
+
+* **Interstitial:** add focus mgmt to Interstitial ([18fcc9f](https://github.com/Codecademy/client-modules/commit/18fcc9f8bf7567b9df2b8dbed9c8c4ef6979a5aa))
+
+
+### Bug Fixes
+
+* **MDX:** Parsing Validation and ESlint for MDX WEB-1238 ([a9fc436](https://github.com/Codecademy/client-modules/commit/a9fc436b415d319bff2858cf75fff6afbb489f6f))
+
+
+
+### [21.14.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.14.1...@codecademy/styleguide@21.14.2) (2021-01-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.14.0...@codecademy/styleguide@21.14.1) (2021-01-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.14.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.13.1...@codecademy/styleguide@21.14.0) (2021-01-16)
+
+
+### Features
+
+* **styleguide:** Use file for story hierarchy  ([472ba5d](https://github.com/Codecademy/client-modules/commit/472ba5dc6e7ea22b0d32e8434f19f377edf0524d))
+
+
+
+### [21.13.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.13.0...@codecademy/styleguide@21.13.1) (2021-01-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.13.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.12.0...@codecademy/styleguide@21.13.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderDropdown:** dropdown AppHeaderElement ([#1279](https://github.com/Codecademy/client-modules/issues/1279)) ([1d7505f](https://github.com/Codecademy/client-modules/commit/1d7505fda48b247b295722859b5f64862f067b0f))
+
+
+
+## [21.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.11.0...@codecademy/styleguide@21.12.0) (2021-01-15)
+
+
+### Features
+
+* **AppHeaderLink:** link AppHeaderElement ([#1278](https://github.com/Codecademy/client-modules/issues/1278)) ([f75674f](https://github.com/Codecademy/client-modules/commit/f75674f07eee218c7ecd5628826334873d710b56))
+
+
+
+## [21.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.10.0...@codecademy/styleguide@21.11.0) (2021-01-14)
+
+
+### Features
+
+* **AppHeaderLogo:** logo button AppHeaderElement ([#1277](https://github.com/Codecademy/client-modules/issues/1277)) ([9e3f25b](https://github.com/Codecademy/client-modules/commit/9e3f25b837d0332db54973a5b5dfea2c3f430525))
+
+
+
+## [21.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.9.1...@codecademy/styleguide@21.10.0) (2021-01-13)
+
+
+### Features
+
+* **Pattern:** add new Pattern component ([#1271](https://github.com/Codecademy/client-modules/issues/1271)) ([c392c8f](https://github.com/Codecademy/client-modules/commit/c392c8fe647811354dff89a0cddf198cb4cb0b2b))
+
+
+
+### [21.9.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.9.0...@codecademy/styleguide@21.9.1) (2021-01-12)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.2...@codecademy/styleguide@21.9.0) (2021-01-11)
+
+
+### Features
+
+* **Styleguide:** Docs Navigation - GM-133 ([6dc2b48](https://github.com/Codecademy/client-modules/commit/6dc2b48b2e80598db19f4eac908a7f5deec90a80))
+
+
+
+### [21.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.1...@codecademy/styleguide@21.8.2) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.8.0...@codecademy/styleguide@21.8.1) (2021-01-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.2...@codecademy/styleguide@21.8.0) (2021-01-07)
+
+
+### Features
+
+* **Anchor:** add variants to anchor ([e3ad3c3](https://github.com/Codecademy/client-modules/commit/e3ad3c311ba1342c9c3e0e09d1f11b27bbb6c549))
+
+
+
+### [21.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.1...@codecademy/styleguide@21.7.2) (2021-01-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.7.0...@codecademy/styleguide@21.7.1) (2021-01-06)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.6...@codecademy/styleguide@21.7.0) (2021-01-04)
+
+
+### Features
+
+* **Styleguide:** Docs Page Wrapper for consistent meta information ([7d27225](https://github.com/Codecademy/client-modules/commit/7d27225bfdf759a623e8002ee663b3819c1836e5))
+
+
+
+### [21.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.5...@codecademy/styleguide@21.6.6) (2020-12-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.4...@codecademy/styleguide@21.6.5) (2020-12-21)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.3...@codecademy/styleguide@21.6.4) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.2...@codecademy/styleguide@21.6.3) (2020-12-18)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.1...@codecademy/styleguide@21.6.2) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.6.0...@codecademy/styleguide@21.6.1) (2020-12-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.5.1...@codecademy/styleguide@21.6.0) (2020-12-16)
+
+
+### Features
+
+* added size prop for buttons ([da17d06](https://github.com/Codecademy/client-modules/commit/da17d069e5ec4d9b7635d7900efb13190d0aa349))
+
+
+
+### [21.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.5.0...@codecademy/styleguide@21.5.1) (2020-12-15)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.3...@codecademy/styleguide@21.5.0) (2020-12-14)
+
+
+### Features
+
+* **Landing Page Components:** Allow passing callback for link clicks inside Markdown ([a2cef95](https://github.com/Codecademy/client-modules/commit/a2cef959e9107e5510de4d1b44f0b014230bfdbc))
+
+
+
+### [21.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.2...@codecademy/styleguide@21.4.3) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.1...@codecademy/styleguide@21.4.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [21.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.4.0...@codecademy/styleguide@21.4.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* **System:** Refactor props table to have some more features ([c23b68d](https://github.com/Codecademy/client-modules/commit/c23b68da93eb2951e63190d00fe1600bb780d5c7))
+
+
+
+## [21.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.3.0...@codecademy/styleguide@21.4.0) (2020-12-11)
+
+
+### Features
+
+* added gamut-illustrations package ([b2b53b8](https://github.com/Codecademy/client-modules/commit/b2b53b83d5db00f4c358bb91ca27c6593c0b2708))
+
+
+
+## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.1...@codecademy/styleguide@21.3.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [21.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.2.0...@codecademy/styleguide@21.2.1) (2020-12-11)
+
+
+### Bug Fixes
+
+* **styleguide:** Fix that md knob ([253bfcb](https://github.com/Codecademy/client-modules/commit/253bfcb6717fb36730ef6cce77d8046fc4b56fd5))
+
+
+
+## [21.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.6...@codecademy/styleguide@21.2.0) (2020-12-10)
+
+
+### Features
+
+* **Box:** Adds a set of utility Box components using system props ([3a2353e](https://github.com/Codecademy/client-modules/commit/3a2353e00b22fa2e93a5fa287dcd1f972b00c731))
+
+
+
+### [21.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.5...@codecademy/styleguide@21.1.6) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.4...@codecademy/styleguide@21.1.5) (2020-12-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.3...@codecademy/styleguide@21.1.4) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.2...@codecademy/styleguide@21.1.3) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.1...@codecademy/styleguide@21.1.2) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.1.0...@codecademy/styleguide@21.1.1) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.9...@codecademy/styleguide@21.1.0) (2020-12-07)
+
+
+### Features
+
+* Add optional onClick handler to landing page CTA button ([f0ec6be](https://github.com/Codecademy/client-modules/commit/f0ec6be21fe248dbc931633184a4dbfaada1fd52))
+
+
+
+### [21.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.8...@codecademy/styleguide@21.0.9) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.7...@codecademy/styleguide@21.0.8) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.6...@codecademy/styleguide@21.0.7) (2020-12-07)
+
+
+### Bug Fixes
+
+* **Styleguide:** Add sectioning in a nice way ([d61ac76](https://github.com/Codecademy/client-modules/commit/d61ac764cae59f90fb99a4188874fb246a251fab))
+
+
+
+### [21.0.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.5...@codecademy/styleguide@21.0.6) (2020-12-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.4...@codecademy/styleguide@21.0.5) (2020-12-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.3...@codecademy/styleguide@21.0.4) (2020-12-02)
+
+
+### Other Changes
+
+* **Styleguide:** add args to toggle story ([d6e6858](https://github.com/Codecademy/client-modules/commit/d6e6858bdb5aecf99a901a7738868afcc191deca))
+
+### [21.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.2...@codecademy/styleguide@21.0.3) (2020-12-02)
+
+### [21.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.1...@codecademy/styleguide@21.0.2) (2020-12-02)
+
+### [21.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.0.0...@codecademy/styleguide@21.0.1) (2020-12-01)
+
+## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@20.0.1...@codecademy/styleguide@21.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* replace VisualTheme enum with string type union (#1166)
+
+### Other Changes
+
+* replace VisualTheme enum with string type union ([#1166](https://github.com/Codecademy/client-modules/issues/1166)) ([30827e3](https://github.com/Codecademy/client-modules/commit/30827e3f47610b074f23cc51f3ab51dbb55bc609))
+
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@20.0.0...@codecademy/styleguide@20.0.1) (2020-12-01)
+
+
+### 🧹 Code Refactoring
+
+* rename landing page components and remove atoms from storybook ([997607c](https://github.com/Codecademy/client-modules/commit/997607c98e749c12fcbf24d176de6a30790c37f0))
+
+## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@19.0.2...@codecademy/styleguide@20.0.0) (2020-12-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* used Emotion for Anchor
+
+### ✨ Features
+
+* used Emotion for Anchor ([3d32ceb](https://github.com/Codecademy/client-modules/commit/3d32ceb1c3c242254712a50d154121d7ffa19032))
+
+### [19.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@19.0.1...@codecademy/styleguide@19.0.2) (2020-11-30)
+
+### [19.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@19.0.0...@codecademy/styleguide@19.0.1) (2020-11-30)
+
+## [19.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.3...@codecademy/styleguide@19.0.0) (2020-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* add landing page prefooter component (#1185)
+
+### ✨ Features
+
+* add landing page prefooter component ([#1185](https://github.com/Codecademy/client-modules/issues/1185)) ([f5aa7f6](https://github.com/Codecademy/client-modules/commit/f5aa7f6ba529dbe359bae5e654d6bc11baea9916))
+
+### [18.10.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.2...@codecademy/styleguide@18.10.3) (2020-11-24)
+
+### [18.10.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.1...@codecademy/styleguide@18.10.2) (2020-11-24)
+
+### [18.10.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.10.0...@codecademy/styleguide@18.10.1) (2020-11-20)
+
+
+### 🐛 Bug Fixes
+
+* default img alt to "", accept isPageHeading, update tests ([#1177](https://github.com/Codecademy/client-modules/issues/1177)) ([eb2501e](https://github.com/Codecademy/client-modules/commit/eb2501e8599c3f3061ab56caef1f28985926ad9f))
+
+## [18.10.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.9.0...@codecademy/styleguide@18.10.0) (2020-11-20)
+
+
+### ✨ Features
+
+* add landing page features section component ([#1175](https://github.com/Codecademy/client-modules/issues/1175)) ([9051740](https://github.com/Codecademy/client-modules/commit/90517405cf42d14abe672a3f4891911b80003d5c))
+
+## [18.9.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.3...@codecademy/styleguide@18.9.0) (2020-11-20)
+
+
+### ✨ Features
+
+* **Button:** Automatically switch to anchor tag when href is defined ([#1172](https://github.com/Codecademy/client-modules/issues/1172)) ([a7f539e](https://github.com/Codecademy/client-modules/commit/a7f539ed083100980610542b9052d7d519a50ca9))
+
+### [18.8.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.2...@codecademy/styleguide@18.8.3) (2020-11-19)
+
+
+### Other Changes
+
+* Remove deprecated icon stories ([#1168](https://github.com/Codecademy/client-modules/issues/1168)) ([816fdf1](https://github.com/Codecademy/client-modules/commit/816fdf14e86a1488009c68f7ead4c85fe5394416))
+
+### [18.8.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.1...@codecademy/styleguide@18.8.2) (2020-11-19)
+
+### [18.8.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.8.0...@codecademy/styleguide@18.8.1) (2020-11-19)
+
+
+### 📝 Documentation
+
+* Clarify landing page sub-components as atoms, not organisms ([#1173](https://github.com/Codecademy/client-modules/issues/1173)) ([be7d887](https://github.com/Codecademy/client-modules/commit/be7d8872ef513de65011f6dfc7f28a93b27b50db))
+
+## [18.8.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.2...@codecademy/styleguide@18.8.0) (2020-11-19)
+
+
+### ✨ Features
+
+* add landing page hero gamut component ([#1161](https://github.com/Codecademy/client-modules/issues/1161)) ([b1797b4](https://github.com/Codecademy/client-modules/commit/b1797b4439af0ee8d5c1fa9f7ba6574881438ba5))
+
+### [18.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.1...@codecademy/styleguide@18.7.2) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [18.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.7.0...@codecademy/styleguide@18.7.1) (2020-11-19)
+
+
+### Other Changes
+
+* Fix for knobs being carried over everywhere ([#1159](https://github.com/Codecademy/client-modules/issues/1159)) ([a1ce5d4](https://github.com/Codecademy/client-modules/commit/a1ce5d4405a231cdab55436d17cdfb3ab7b28e8b))
+
+## [18.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.6.0...@codecademy/styleguide@18.7.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Custom PropTable ([#1149](https://github.com/Codecademy/client-modules/issues/1149)) ([9fb1235](https://github.com/Codecademy/client-modules/commit/9fb1235bb7dd3aac4c1a8ee4e423a2e8c50323af))
+
+## [18.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.9...@codecademy/styleguide@18.6.0) (2020-11-19)
+
+
+### ✨ Features
+
+* **Styleguide:** Adds docgen parser for system props ([#1158](https://github.com/Codecademy/client-modules/issues/1158)) ([d144238](https://github.com/Codecademy/client-modules/commit/d144238fede0ae4624b31789a3c026c1f6da0fa2))
+
+### [18.5.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.8...@codecademy/styleguide@18.5.9) (2020-11-19)
+
+### [18.5.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.7...@codecademy/styleguide@18.5.8) (2020-11-17)
+
+### [18.5.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.6...@codecademy/styleguide@18.5.7) (2020-11-16)
+
+### [18.5.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.5...@codecademy/styleguide@18.5.6) (2020-11-13)
+
+
+### Other Changes
+
+* **Styles:** Assorted theme / variable additions ([#1144](https://github.com/Codecademy/client-modules/issues/1144)) ([9b04960](https://github.com/Codecademy/client-modules/commit/9b04960e42024c40608d355b0758f199dc6b2aa5))
+
+### [18.5.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.4...@codecademy/styleguide@18.5.5) (2020-11-13)
+
+### [18.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.3...@codecademy/styleguide@18.5.4) (2020-11-13)
+
+### [18.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.2...@codecademy/styleguide@18.5.3) (2020-11-13)
+
+### [18.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.1...@codecademy/styleguide@18.5.2) (2020-11-13)
+
+### [18.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.5.0...@codecademy/styleguide@18.5.1) (2020-11-12)
+
+## [18.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.4.1...@codecademy/styleguide@18.5.0) (2020-11-12)
+
+
+### ✨ Features
+
+* **markdown:** update overrides storybook for clarity ([#1137](https://github.com/Codecademy/client-modules/issues/1137)) ([046faeb](https://github.com/Codecademy/client-modules/commit/046faebb717e9da2900b7113c3bac24c993bcd10))
+
+### [18.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.4.0...@codecademy/styleguide@18.4.1) (2020-11-10)
+
+
+### Other Changes
+
+* Corrected (Fill)Button import in Popover story ([#1138](https://github.com/Codecademy/client-modules/issues/1138)) ([e5ea9da](https://github.com/Codecademy/client-modules/commit/e5ea9daf879f0d9f8b58ee1d6d4b0f9b0a07b08f))
+
+## [18.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.3.0...@codecademy/styleguide@18.4.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
+## [18.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.2.0...@codecademy/styleguide@18.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Text:** New Text primitive using system styles ([#1128](https://github.com/Codecademy/client-modules/issues/1128)) ([c1aa3ce](https://github.com/Codecademy/client-modules/commit/c1aa3cec67de3bc457092b1aa9f834d5746147c0))
+
+## [18.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.2...@codecademy/styleguide@18.2.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
+### [18.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.1...@codecademy/styleguide@18.1.2) (2020-11-10)
+
+### [18.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.1.0...@codecademy/styleguide@18.1.1) (2020-11-09)
+
+
+### Other Changes
+
+* icon story moved up to core + docs updated  ([#1135](https://github.com/Codecademy/client-modules/issues/1135)) ([4d3a613](https://github.com/Codecademy/client-modules/commit/4d3a613f77ff10f7b5688e0d94b3332fb95f21a7))
+
+## [18.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.1...@codecademy/styleguide@18.1.0) (2020-11-09)
+
+
+### ✨ Features
+
+* Minimally added focus-visible with postcss-focus-visible ([#1129](https://github.com/Codecademy/client-modules/issues/1129)) ([6ee3065](https://github.com/Codecademy/client-modules/commit/6ee30651a43c6a9fdd62d52f7b15cb96389cc8b6))
+
+### [18.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@18.0.0...@codecademy/styleguide@18.0.1) (2020-11-06)
+
+## [18.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.12.0...@codecademy/styleguide@18.0.0) (2020-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* deprecate Button and ButtonBase (#1069)
+
+### ✨ Features
+
+* deprecate Button and ButtonBase ([#1069](https://github.com/Codecademy/client-modules/issues/1069)) ([172b2ba](https://github.com/Codecademy/client-modules/commit/172b2ba023561e40cdc037c50402a7d6615cec64))
+
+## [17.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.2...@codecademy/styleguide@17.12.0) (2020-11-05)
+
+
+### ✨ Features
+
+* Start of the base landing page components section ([#1118](https://github.com/Codecademy/client-modules/issues/1118)) ([1d4d4e1](https://github.com/Codecademy/client-modules/commit/1d4d4e10897db293bba1a33af426f44864d053ee))
+
+
+### 🧹 Code Refactoring
+
+* remove disableOutsideClick prop in popover ([#1120](https://github.com/Codecademy/client-modules/issues/1120)) ([9ae3c95](https://github.com/Codecademy/client-modules/commit/9ae3c956d06e9af0765aece060d89b00bb2fd03c))
+
+### [17.11.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.1...@codecademy/styleguide@17.11.2) (2020-11-04)
+
+
+### Other Changes
+
+* **Dependencies:** Deps ([#1122](https://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](https://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](https://github.com/Codecademy/client-modules/issues/1079) [#1080](https://github.com/Codecademy/client-modules/issues/1080) [#1082](https://github.com/Codecademy/client-modules/issues/1082) [#1083](https://github.com/Codecademy/client-modules/issues/1083) [#1085](https://github.com/Codecademy/client-modules/issues/1085) [#1086](https://github.com/Codecademy/client-modules/issues/1086) [#1087](https://github.com/Codecademy/client-modules/issues/1087) [#1088](https://github.com/Codecademy/client-modules/issues/1088) [#1090](https://github.com/Codecademy/client-modules/issues/1090) [#1091](https://github.com/Codecademy/client-modules/issues/1091) [#1092](https://github.com/Codecademy/client-modules/issues/1092) [#1089](https://github.com/Codecademy/client-modules/issues/1089) [#1093](https://github.com/Codecademy/client-modules/issues/1093) [#1000](https://github.com/Codecademy/client-modules/issues/1000) [#1098](https://github.com/Codecademy/client-modules/issues/1098) [#1099](https://github.com/Codecademy/client-modules/issues/1099) [#1100](https://github.com/Codecademy/client-modules/issues/1100) [#1101](https://github.com/Codecademy/client-modules/issues/1101) [#1102](https://github.com/Codecademy/client-modules/issues/1102) [#1103](https://github.com/Codecademy/client-modules/issues/1103) [#1104](https://github.com/Codecademy/client-modules/issues/1104) [#1105](https://github.com/Codecademy/client-modules/issues/1105) [#1106](https://github.com/Codecademy/client-modules/issues/1106) [#1108](https://github.com/Codecademy/client-modules/issues/1108) [#1107](https://github.com/Codecademy/client-modules/issues/1107)
+
+### [17.11.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.11.0...@codecademy/styleguide@17.11.1) (2020-11-04)
+
 ## [17.11.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@17.10.3...@codecademy/styleguide@17.11.0) (2020-11-02)
 
 
@@ -1200,4 +2140,3 @@
 ### Other Changes
 
 * Update README.md ([87b96d8](https://github.com/Codecademy/client-modules/commit/87b96d8869507bcffdf1e51bde43900d563212ed))
-

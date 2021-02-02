@@ -1,7 +1,8 @@
-import React from 'react';
-import styles from './styles.module.scss';
 import cx from 'classnames';
+import React from 'react';
+
 import networkPin from './assets/networkPin.svg';
+import styles from './styles.module.scss';
 
 type BylineClassNamesProps = {
   bylineContainer?: string;
@@ -14,18 +15,23 @@ export type BylineProps = {
   firstName: string;
   occupation: string;
   location?: string;
-  classNames?: BylineClassNamesProps;
   company?: string;
   lastName?: string;
+  /**
+   * an object to overwrite any combo of, or all, of the default styles. Structured as:
+   * `{bylineContainer: styles.className, author: styles.className,
+   * jobContainer:styles.className, location: styles.className}`
+   */
+  classNames?: BylineClassNamesProps;
 };
 
 export const Byline: React.FC<BylineProps> = ({
   firstName,
   occupation,
   location,
-  classNames = {},
   company,
   lastName,
+  classNames = {},
 }) => (
   <div className={cx(styles.bylineContainer, classNames.bylineContainer)}>
     <span

@@ -51,6 +51,10 @@ export type EventDataTypes = {
     query: BaseEventAnyData;
     result: BaseEventAnyData;
   };
+  page: {
+    career_path_visited: PagePathVisitedData;
+    skill_path_visited: PagePathVisitedData;
+  };
 };
 
 /**
@@ -81,6 +85,8 @@ export type BaseEventAnyData = BaseEventData & {
 export type TrackingOptions = {
   /** tells backend not to merge user-identifying data onto the event payload */
   gdprSafe?: boolean;
+  /** tells frontend to send details to fullstory, which only accepts client-side events */
+  fullstory?: boolean;
 };
 
 /**
@@ -143,6 +149,7 @@ export type UserClickData = UserSharedData & {
   content_slug?: string;
   module_id?: string;
   track_slug?: string;
+  module_slug?: string;
   button?: string;
   type?: string;
   current_challenge_day?: string | number;
@@ -217,4 +224,9 @@ export type User = {
 export type UseUserResponse = {
   user?: User;
   status: string;
+};
+
+export declare type PagePathVisitedData = BaseEventData & {
+  path_id: string;
+  path_full_title: string;
 };

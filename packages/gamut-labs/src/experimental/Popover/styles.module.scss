@@ -8,14 +8,19 @@ $above: translateY(-100%);
 $below: translateY(0%);
 
 .popover {
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 20;
   background-color: white;
   border-radius: 4px;
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15);
+}
+
+.outline {
+  border: 1px solid $brand-dark-blue;
+  border-radius: 2px;
+  box-shadow: none;
 }
 
 .above-right {
@@ -37,21 +42,31 @@ $below: translateY(0%);
 .beak {
   width: 0;
   height: 0;
+  position: absolute;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
 
   border-bottom: 15px solid white;
 }
 
-.below-beak {
-  position: absolute;
+.below-left-beak {
   top: -15px;
   left: 20px;
 }
 
-.above-beak {
-  position: absolute;
+.above-left-beak {
   transform: rotate(180deg);
   top: calc(100% - 1px);
   left: 20px;
+}
+
+.below-right-beak {
+  top: -15px;
+  right: 20px;
+}
+
+.above-right-beak {
+  transform: rotate(180deg);
+  top: calc(100% - 1px);
+  right: 20px;
 }

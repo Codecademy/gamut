@@ -1,8 +1,8 @@
-import React from 'react';
-import cx from 'classnames';
 import { CloseIcon } from '@codecademy/gamut-icons';
+import cx from 'classnames';
+import React from 'react';
 
-import { Button } from '../Button';
+import { ButtonDeprecated } from '../ButtonDeprecated';
 import { CardShell } from '../Card';
 import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
@@ -56,6 +56,7 @@ export const Modal: React.FC<ModalProps> = ({
       <CardShell
         className={cx(styles.modalBody, className)}
         aria-hidden="false"
+        aria-modal="true"
         role="dialog"
         tabIndex={0}
       >
@@ -64,7 +65,7 @@ export const Modal: React.FC<ModalProps> = ({
             className={styles.closeButtonContainer}
             data-testid="modal-default-close-button"
           >
-            <Button
+            <ButtonDeprecated
               flat
               theme="brand-dark-blue"
               fitText
@@ -72,7 +73,7 @@ export const Modal: React.FC<ModalProps> = ({
               className={styles.closeButton}
             >
               <CloseIcon width={22} height={22} className={styles.closeIcon} />
-            </Button>
+            </ButtonDeprecated>
           </div>
         )}
         {children}

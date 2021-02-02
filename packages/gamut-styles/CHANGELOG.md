@@ -1,3 +1,132 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [7.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.3...@codecademy/gamut-styles@7.7.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
+
+
+### Bug Fixes
+
+* **styles:** Default button focus styles to focus-visible ([6493ee2](https://github.com/Codecademy/client-modules/commit/6493ee2703b9f3e723ce0f5283b8b7d60e3e153e))
+
+
+
+### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.1...@codecademy/gamut-styles@7.6.2) (2020-12-14)
+
+
+### Bug Fixes
+
+* **FillButton:** corrected hover styles on FillButton in dark mode ([bcde7ab](https://github.com/Codecademy/client-modules/commit/bcde7abfeaf94c5b288a30806c2eb8b333abdddf))
+
+
+
+### [7.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.0...@codecademy/gamut-styles@7.6.1) (2020-12-14)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.2...@codecademy/gamut-styles@7.6.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](https://github.com/Codecademy/client-modules/commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [7.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.1...@codecademy/gamut-styles@7.5.2) (2020-12-08)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [7.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.5.0...@codecademy/gamut-styles@7.5.1) (2020-12-07)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.8...@codecademy/gamut-styles@7.5.0) (2020-12-03)
+
+
+### Features
+
+* **focus-visible:** Add stylis plugin for focus-visible support WEB-1148 ([3bb685f](https://github.com/Codecademy/client-modules/commit/3bb685ff0763bd9190e919d0df216956c6cd3d8a))
+
+
+
+### [7.4.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.7...@codecademy/gamut-styles@7.4.8) (2020-11-30)
+
+
+### 🐛 Bug Fixes
+
+* **emotion:** change emotion style prefix to gamut ([50c7fb9](https://github.com/Codecademy/client-modules/commit/50c7fb90efaaa99d274ea99a7fc4d78600dded82))
+
+### [7.4.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.6...@codecademy/gamut-styles@7.4.7) (2020-11-30)
+
+
+### 🐛 Bug Fixes
+
+* **emotion:** Add emotion cache settings overrides and default speedy styles ([76e06e0](https://github.com/Codecademy/client-modules/commit/76e06e0ec78f689c99a607662c1672933d49c249))
+
+### [7.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.5...@codecademy/gamut-styles@7.4.6) (2020-11-19)
+
+### [7.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.4...@codecademy/gamut-styles@7.4.5) (2020-11-19)
+
+
+### Other Changes
+
+* Bump to true emotion 11 release ([#1148](https://github.com/Codecademy/client-modules/issues/1148)) ([d0ba23d](https://github.com/Codecademy/client-modules/commit/d0ba23d07a3a59e8b407ac3f24abedd8e8521e69))
+
+### [7.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.3...@codecademy/gamut-styles@7.4.4) (2020-11-19)
+
+### [7.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.2...@codecademy/gamut-styles@7.4.3) (2020-11-16)
+
+### [7.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.1...@codecademy/gamut-styles@7.4.2) (2020-11-13)
+
+
+### Other Changes
+
+* **Styles:** Assorted theme / variable additions ([#1144](https://github.com/Codecademy/client-modules/issues/1144)) ([9b04960](https://github.com/Codecademy/client-modules/commit/9b04960e42024c40608d355b0758f199dc6b2aa5))
+
+### [7.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.4.0...@codecademy/gamut-styles@7.4.1) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](https://github.com/Codecademy/client-modules/issues/1145)) ([496a122](https://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
+## [7.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.3.0...@codecademy/gamut-styles@7.4.0) (2020-11-10)
+
+
+### ✨ Features
+
+* add new Button ([#1119](https://github.com/Codecademy/client-modules/issues/1119)) ([a7ed112](https://github.com/Codecademy/client-modules/commit/a7ed112f8bea02cb53950bf470170fe857a4cbea))
+
+## [7.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.2.0...@codecademy/gamut-styles@7.3.0) (2020-11-10)
+
+
+### ✨ Features
+
+* **Styles:** Create system styles and gamut theme ([#1127](https://github.com/Codecademy/client-modules/issues/1127)) ([fb9d9cd](https://github.com/Codecademy/client-modules/commit/fb9d9cd6f64d5ca24025731186c009b84808e812))
+
 ## [7.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.1.1...@codecademy/gamut-styles@7.2.0) (2020-11-02)
 
 
@@ -626,4 +755,3 @@
 * fixed babel config ([56ef2fa](https://github.com/Codecademy/client-modules/commit/56ef2fa149f851d553ee84899cf79779a4ace54e))
 * Publish ([34caefe](https://github.com/Codecademy/client-modules/commit/34caefe2cc7f180bd3b88c38d746c6d4703f4a30))
 * rename gamut-identity ([52f14f2](https://github.com/Codecademy/client-modules/commit/52f14f20a98700ea00ebf5ce2374599190bdbddd))
-

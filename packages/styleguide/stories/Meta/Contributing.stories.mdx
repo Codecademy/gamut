@@ -1,14 +1,14 @@
-<!-- The normal import would be '@storybook/addon-links/react' -->
-<!-- but it is throwing a typescript error in the current alpha  -->
-
+import title from '@codecademy/macros/lib/title.macro';
+import { Meta } from '@storybook/addon-docs/dist/blocks';
 import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
-<Meta title="Meta/Contributing" />
-
-# Contributing
-
-Thanks so much for being interested in contributing to Gamut!
-We love working with Codecademy employees across all our teams.
+<Meta
+  title={title}
+  parameters={{
+    subtitle: `Thanks so much for being interested in contributing to Gamut!
+We love working with Codecademy employees across all our teams.`,
+  }}
+/>
 
 > 🏗 We're still building these opinions out; some of this information might still be in flux!
 
@@ -30,7 +30,6 @@ Consider saving this recommended format as an editor snippet:
 ```tsx
 import cx from 'classnames';
 import React from 'react';
-
 import styles from './styles.module.scss';
 
 export type MyComponentProps = { /* ... */ };
@@ -70,7 +69,7 @@ In that case it's reasonable to add a `className?: string` prop so that consumer
 Most components that have configurable themes use one of two APIs:
 
 - `style`: Allowing one or more colors to be passed as values from their parent, such as `Heading`
-- `theme`: A pre-configured list of allowed colors, such as `Button`
+- `theme`: A pre-configured list of allowed colors, such as `AccordionButton`
 
 We generally prefer components start off with the `style` prop when first created, to allow consumers to more easily flesh out how we'd want to use them.
 As we learn more and restrict component usage over time, we might switch to `theme`.

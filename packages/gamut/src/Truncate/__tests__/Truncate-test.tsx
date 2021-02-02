@@ -1,5 +1,6 @@
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
+
 import { Truncate } from '..';
 
 describe('Truncate', () => {
@@ -9,29 +10,15 @@ describe('Truncate', () => {
     expect(renderedTruncate.find('TruncateMarkup')).toBeDefined();
   });
 
-  it('renders a span by default if not truncating', () => {
-    const renderedTruncate = mount(<Truncate lines={false}>Hello</Truncate>);
+  it('renders a span by default if expanded', () => {
+    const renderedTruncate = mount(
+      <Truncate expanded lines={2}>
+        Hello
+      </Truncate>
+    );
 
     expect(renderedTruncate.find('TruncateMarkup').length).toBe(0);
     expect(renderedTruncate.find('span').length).toBe(1);
-  });
-
-  it('can be rendered as other elements if specified', () => {
-    let renderedTruncate = mount(
-      <Truncate lines={false} as="p">
-        Hello
-      </Truncate>
-    );
-
-    expect(renderedTruncate.find('p').length).toBe(1);
-
-    renderedTruncate = mount(
-      <Truncate lines={false} as="div">
-        Hello
-      </Truncate>
-    );
-
-    expect(renderedTruncate.find('div').length).toBe(1);
   });
 
   it('takes a callback to be called when text is truncated', () => {

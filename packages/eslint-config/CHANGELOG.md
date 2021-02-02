@@ -1,3 +1,90 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [3.1.6](http://github.com///compare/@codecademy/eslint-config@3.1.5...@codecademy/eslint-config@3.1.6) (2021-02-01)
+
+
+### Bug Fixes
+
+* **lint:** Fix SB and Eslint config ([7591a72](http://github.com///commit/7591a72a12fe07889dabc1eda689aa16c53a7830))
+
+
+
+### [3.1.5](http://github.com///compare/@codecademy/eslint-config@3.1.4...@codecademy/eslint-config@3.1.5) (2021-01-27)
+
+
+### Reverts
+
+* Revert "A few more disables, from the PRs" ([b7e7855](http://github.com///commit/b7e7855f84c3ca6b8453c92379118aa0d3c45f32))
+
+
+
+### [3.1.4](http://github.com///compare/@codecademy/eslint-config@3.1.3...@codecademy/eslint-config@3.1.4) (2021-01-27)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
+### [3.1.3](http://github.com///compare/@codecademy/eslint-config@3.1.2...@codecademy/eslint-config@3.1.3) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
+### [3.1.2](http://github.com///compare/@codecademy/eslint-config@3.1.1...@codecademy/eslint-config@3.1.2) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](http://github.com///commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
+### [3.1.1](http://github.com///compare/@codecademy/eslint-config@3.1.0...@codecademy/eslint-config@3.1.1) (2021-01-19)
+
+
+### Bug Fixes
+
+* **MDX:** Parsing Validation and ESlint for MDX WEB-1238 ([a9fc436](http://github.com///commit/a9fc436b415d319bff2858cf75fff6afbb489f6f))
+
+
+
+## [3.1.0](http://github.com///compare/@codecademy/eslint-config@3.0.7...@codecademy/eslint-config@3.1.0) (2020-12-11)
+
+
+### Features
+
+* onboarded eslint-plugin-simple-import-sort into ESLint plugin ([59d6fe5](http://github.com///commit/59d6fe54d9af4b3ba2a88f7c234f65fc63506c0c))
+
+
+
+### [3.0.7](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.6...@codecademy/eslint-config@3.0.7) (2020-11-18)
+
+
+### Other Changes
+
+* disable jsx-a11y/accessible-emoji ([#1167](http://github.com/Codecademy/client-modules/issues/1167)) ([84d9add](http://github.com/Codecademy/client-modules/commit/84d9add9859c6bbb547fdbb1aa2f346caedd5589))
+
+### [3.0.6](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.5...@codecademy/eslint-config@3.0.6) (2020-11-13)
+
+
+### 🐛 Bug Fixes
+
+* **System:** Typescript memory performance fixes ([#1145](http://github.com/Codecademy/client-modules/issues/1145)) ([496a122](http://github.com/Codecademy/client-modules/commit/496a122602d5fede07b4cc551666c338e9a25b10))
+
+### [3.0.5](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.4...@codecademy/eslint-config@3.0.5) (2020-11-04)
+
+
+### Other Changes
+
+* **Dependencies:** Deps ([#1122](http://github.com/Codecademy/client-modules/issues/1122)) ([f1a68de](http://github.com/Codecademy/client-modules/commit/f1a68de07fea75de02ab7f57a05108df01191397)), closes [#1079](http://github.com/Codecademy/client-modules/issues/1079) [#1080](http://github.com/Codecademy/client-modules/issues/1080) [#1082](http://github.com/Codecademy/client-modules/issues/1082) [#1083](http://github.com/Codecademy/client-modules/issues/1083) [#1085](http://github.com/Codecademy/client-modules/issues/1085) [#1086](http://github.com/Codecademy/client-modules/issues/1086) [#1087](http://github.com/Codecademy/client-modules/issues/1087) [#1088](http://github.com/Codecademy/client-modules/issues/1088) [#1090](http://github.com/Codecademy/client-modules/issues/1090) [#1091](http://github.com/Codecademy/client-modules/issues/1091) [#1092](http://github.com/Codecademy/client-modules/issues/1092) [#1089](http://github.com/Codecademy/client-modules/issues/1089) [#1093](http://github.com/Codecademy/client-modules/issues/1093) [#1000](http://github.com/Codecademy/client-modules/issues/1000) [#1098](http://github.com/Codecademy/client-modules/issues/1098) [#1099](http://github.com/Codecademy/client-modules/issues/1099) [#1100](http://github.com/Codecademy/client-modules/issues/1100) [#1101](http://github.com/Codecademy/client-modules/issues/1101) [#1102](http://github.com/Codecademy/client-modules/issues/1102) [#1103](http://github.com/Codecademy/client-modules/issues/1103) [#1104](http://github.com/Codecademy/client-modules/issues/1104) [#1105](http://github.com/Codecademy/client-modules/issues/1105) [#1106](http://github.com/Codecademy/client-modules/issues/1106) [#1108](http://github.com/Codecademy/client-modules/issues/1108) [#1107](http://github.com/Codecademy/client-modules/issues/1107)
+
 ### [3.0.4](http://github.com/Codecademy/client-modules/compare/@codecademy/eslint-config@3.0.3...@codecademy/eslint-config@3.0.4) (2020-10-16)
 
 
@@ -160,4 +247,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-

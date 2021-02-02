@@ -1,5 +1,6 @@
-import React, { TextareaHTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { forwardRef, TextareaHTMLAttributes } from 'react';
+
 import styles from './styles/TextArea.module.scss';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -11,7 +12,7 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
 };
 
-export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ error, htmlFor, className, id, ...rest }, ref) => {
     const classNames = cx(
       styles.TextArea,

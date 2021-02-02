@@ -24,7 +24,11 @@ module.exports = {
       '<rootDir>/script/jest/fileMock',
     '\\.(css|scss)$': '<rootDir>/script/jest/styleMock',
     '^~styleguide/blocks(.*)$':
-      '<rootDir>/packages/styleguide/.storybook/Blocks$1',
+      '<rootDir>/packages/styleguide/.storybook/components$1',
+    '^@codecademy\\/gamut$': '<rootDir>/packages/gamut/src',
+    '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
+    '^@codecademy\\/gamut-system$': '<rootDir>/packages/gamut-system/src',
+    '^@codecademy\\/macros$': '<rootDir>/packages/macros',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
   transform: {
@@ -34,7 +38,7 @@ module.exports = {
       '<rootDir>/packages/styleguide/node_modules/@storybook/addon-docs/jest-transform-mdx',
   },
   transformIgnorePatterns: ['./disable-transform-ignoring-for-node_modules'],
-  testRegex: '\\-test\\.(j|t)sx?$',
+  testRegex: '(\\.|-)(test|spec)\\.[jt]sx?$',
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleDirectories: ['node_modules'],
   collectCoverageFrom: ['packages/**/*.{js,jsx,ts,tsx}'],
@@ -48,5 +52,8 @@ module.exports = {
     '/example/',
     '/typings/',
   ],
-  coverageDirectory: './coverage',
+  reporters: process.env.CI ? ['default', 'jest-junit'] : ['default'],
+  coverageReporters: ['json', 'text', 'clover'],
+  coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
+  collectCoverage: process.env.CI ? true : false,
 };

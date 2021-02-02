@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 
+import { Pattern, PatternName } from '../Pattern';
 import styles from './styles.module.scss';
 
 export type ProgressBarProps = {
@@ -30,6 +31,11 @@ export type ProgressBarProps = {
    * Base color theme to extend from.
    */
   theme: 'blue' | 'yellow';
+
+  /**
+   * Whether to use a pattern background
+   */
+  pattern?: PatternName;
 };
 
 export type ProgressBarStyle = {
@@ -45,6 +51,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   percent,
   style = {},
   theme,
+  pattern,
 }) => {
   const { backgroundColor, barColor, fontColor } = style;
   const height = large ? 36 : 6;
@@ -54,6 +61,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <div
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
+      role="figure"
       className={cx(styles.progressBar, styles[theme], className)}
       style={{
         background: backgroundColor,
@@ -62,6 +70,15 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         height: `${height}px`,
       }}
     >
+      {pattern && (
+        <Pattern
+          textColor="navy"
+          width="100%"
+          position="absolute"
+          zIndex={0}
+          name={pattern}
+        />
+      )}
       <div
         className={styles.bar}
         data-testid="progress-bar-bar"

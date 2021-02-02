@@ -1,4 +1,5 @@
-import React, { SVGProps, HTMLAttributes } from 'react';
+import React, { HTMLAttributes, SVGProps } from 'react';
+
 import { iconMap } from './iconMap';
 
 /**

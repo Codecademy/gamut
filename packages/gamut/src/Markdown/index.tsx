@@ -1,21 +1,25 @@
-import React, { PureComponent } from 'react';
 import cx from 'classnames';
-import marked from 'marked';
-import insane from 'insane';
 import HtmlToReact from 'html-to-react';
+import insane from 'insane';
+import marked from 'marked';
+import React, { PureComponent } from 'react';
+
 import { omitProps } from '../utils/omitProps';
 import {
-  createTagOverride,
   createCodeBlockOverride,
+  createTagOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
-import { defaultSanitizationConfig } from './libs/sanitizationConfig';
-import { createPreprocessingInstructions } from './libs/preprocessing';
-import styles from './styles/index.module.scss';
 import { Iframe } from './libs/overrides/Iframe';
-import { MarkdownAnchor } from './libs/overrides/MarkdownAnchor';
-import { Table } from './libs/overrides/Table';
+import {
+  MarkdownAnchor,
+  MarkdownAnchorProps,
+} from './libs/overrides/MarkdownAnchor';
+import { Table, TableProps } from './libs/overrides/Table';
+import { createPreprocessingInstructions } from './libs/preprocessing';
+import { defaultSanitizationConfig } from './libs/sanitizationConfig';
+import styles from './styles/index.module.scss';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
@@ -40,6 +44,10 @@ export type MarkdownProps = {
   skipDefaultOverrides?: SkipDefaultOverridesSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
+  /**
+   * Callback when a markdown anchor tag is clicked
+   */
+  onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 export class Markdown extends PureComponent<MarkdownProps> {
@@ -51,6 +59,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       overrides: userOverrides = {},
       skipDefaultOverrides = {},
       inline = false,
+      onAnchorClick,
     } = this.props;
 
     if (!text) return null;
@@ -75,10 +84,22 @@ export class Markdown extends PureComponent<MarkdownProps> {
       !skipDefaultOverrides.a &&
         createTagOverride('a', {
           component: MarkdownAnchor,
+          processNode: (node, props) => {
+            // Note: this processNode override is necessary because wrapping this component
+            // in an anonymous functional component as with the Table below causes react rendering
+            // to crash with some chrome translation features.
+            // See https://codecademy.atlassian.net/browse/WEB-1214
+            return (
+              <MarkdownAnchor
+                onClick={onAnchorClick}
+                {...(props as MarkdownAnchorProps)}
+              />
+            );
+          },
         }),
       !skipDefaultOverrides.table &&
         createTagOverride('table', {
-          component: (props) => (
+          component: (props: TableProps) => (
             <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
           ),
           allowedAttributes: ['style'],

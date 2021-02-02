@@ -1,5 +1,5 @@
 import invariant from 'invariant';
-import { isPlainObject, omit, without, AnyKindOfDictionary } from 'lodash';
+import { AnyKindOfDictionary, isPlainObject, omit, without } from 'lodash';
 
 export type RemoveFrom<TContainer, TRemoved> = {
   [P in keyof TContainer]: P extends keyof TRemoved ? never : TContainer[P];

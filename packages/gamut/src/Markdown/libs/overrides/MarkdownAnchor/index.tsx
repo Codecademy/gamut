@@ -28,7 +28,7 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
   children,
   ...props
 }) => {
-  const asProps = {
+  const anchorProps = {
     ...props,
     target: '_blank',
     rel: 'noopener',
@@ -36,8 +36,8 @@ export const MarkdownAnchor: React.FC<MarkdownAnchorProps> = ({
 
   // remove noopener/noreferrer on relative & same origin urls
   if (matchesOrigin(props.href) || !absoluteURLPattern.test(props.href)) {
-    delete asProps.rel;
+    delete anchorProps.rel;
   }
 
-  return <Anchor asProps={asProps}>{children}</Anchor>;
+  return <Anchor {...anchorProps}>{children}</Anchor>;
 };

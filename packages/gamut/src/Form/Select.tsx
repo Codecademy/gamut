@@ -1,6 +1,7 @@
-import React, { ReactNode, SelectHTMLAttributes } from 'react';
-import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
+import { each, isArray, isObject } from 'lodash';
+import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
+
 import styles from './styles/Select.module.scss';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
@@ -10,7 +11,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   id?: string;
 };
 
-export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
     const className = cx(
       styles.Select,

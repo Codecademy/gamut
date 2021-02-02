@@ -1,21 +1,33 @@
+import { flex } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
-import cx from 'classnames';
 
-import { Button, ButtonProps } from '../../Button';
+import {
+  ButtonDeprecated,
+  ButtonDeprecatedProps,
+} from '../../ButtonDeprecated';
 import { Column, ColumnSizes } from '../../Layout';
 import { ResponsiveProperty } from '../../typings/responsive-properties';
-import styles from './styles.module.scss';
 
-export type GridFormSubmitPosition = 'left' | 'center' | 'right' | 'stretch';
+export type GridFormSubmitPosition = keyof typeof positions;
 
 export type GridFormSubmitProps = {
   contents: React.ReactNode;
-  disabled?: ButtonProps['disabled'];
+  disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
-  outline?: ButtonProps['outline'];
+  outline?: ButtonDeprecatedProps['outline'];
   size: ResponsiveProperty<ColumnSizes>;
-  theme?: ButtonProps['theme'];
+  theme?: ButtonDeprecatedProps['theme'];
 };
+
+const positions = {
+  left: 'flex-start',
+  center: 'center',
+  right: 'flex-end',
+  stretch: 'stretch',
+};
+
+const StyledColumn = styled(Column)(flex);
 
 export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   contents,
@@ -25,13 +37,20 @@ export const GridFormSubmit: React.FC<GridFormSubmitProps> = ({
   size,
   theme = 'brand-purple',
 }) => {
-  const positionStyle = styles[position];
-
   return (
-    <Column className={cx(styles.base, positionStyle)} size={size}>
-      <Button disabled={disabled} outline={outline} theme={theme} type="submit">
+    <StyledColumn
+      justifyContent={positions[position]}
+      alignItems="center"
+      size={size}
+    >
+      <ButtonDeprecated
+        disabled={disabled}
+        outline={outline}
+        theme={theme}
+        type="submit"
+      >
         {contents}
-      </Button>
-    </Column>
+      </ButtonDeprecated>
+    </StyledColumn>
   );
 };

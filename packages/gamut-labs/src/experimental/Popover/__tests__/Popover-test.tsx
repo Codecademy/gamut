@@ -1,11 +1,12 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
+import React from 'react';
+
 import { Popover, PopoverProps } from '..';
 
 const targetRefObj = {
   current: {
-    contains: () => true,
+    contains: () => false,
     getBoundingClientRect: () => {
       return {
         bottom: 298,
@@ -24,12 +25,17 @@ const targetRefObj = {
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
-    <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-      <div data-testid={'popover-content'}>
-        Howdy!
-        <button type="button" />
+    <>
+      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
+        <div data-testid="popover-content">
+          Howdy!
+          <button type="button" />
+        </div>
+      </Popover>
+      <div>
+        <h1 data-testid="outside-popover">hi</h1>
       </div>
-    </Popover>
+    </>
   );
 };
 
@@ -66,11 +72,8 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-
-    fireEvent.mouseDown(
-      screen.getByTestId('popover-content-container').parentElement!
-    );
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    fireEvent.mouseDown(screen.getByTestId('outside-popover'));
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not trigger onRequestClose callback when clicking inside', () => {
@@ -80,7 +83,7 @@ describe('Popover', () => {
       onRequestClose,
     });
     fireEvent.mouseDown(screen.getByTestId('popover-content-container'));
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
   it('triggers onRequestClose callback when escape key is triggered', () => {
@@ -89,8 +92,8 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    fireEvent.keyDown(baseElement, { key: 'Escape', keyCode: 27 });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    fireEvent.keyDown(baseElement, { key: 'escape', keyCode: 27 });
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('triggers onRequestClose callback when popover is out of viewport', () => {
@@ -121,7 +124,7 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(1);
+    expect(onRequestClose).toBeCalledTimes(1);
   });
 
   it('does not onRequestClose callback when popover is out of viewport', () => {
@@ -149,13 +152,12 @@ describe('Popover', () => {
       isOpen: true,
       onRequestClose,
     });
-    expect(onRequestClose.mock.calls.length).toBe(0);
+    expect(onRequestClose).toBeCalledTimes(0);
   });
 
-  it('does not show a beak if the prop is false', () => {
+  it('does not show a beak if the prop is not provided', () => {
     renderPopover({
       isOpen: true,
-      showBeak: false,
     });
 
     expect(screen.queryByTestId('popover-beak')).not.toBeInTheDocument();
@@ -164,13 +166,13 @@ describe('Popover', () => {
   it('shows a beak if the prop is true', () => {
     renderPopover({
       isOpen: true,
-      showBeak: true,
+      beak: 'right',
     });
 
     expect(screen.queryByTestId('popover-beak')).toBeInTheDocument();
   });
 
-  it("positions with default 'below', 'left', '20' value when position, align, offset props are not provided respectively", () => {
+  it("positions with default 'below', 'left', '20', '0' value when position, align, verticalOffset, horizontalOffset props are not provided respectively", () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
@@ -182,7 +184,7 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 319,
+        top: 318,
         left: 58,
       },
     });
@@ -202,13 +204,13 @@ describe('Popover', () => {
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 241,
+        top: 240,
         left: 841,
       },
     });
   });
 
-  it('positions with given offset value when provided', () => {
+  it('positions with given verticalOffset value when provided', () => {
     Object.defineProperty(window, 'scrollY', { value: 1 });
     Object.defineProperty(window, 'scrollX', { value: 1 });
 
@@ -216,7 +218,7 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 30,
+      verticalOffset: 29,
     });
 
     expect(
@@ -229,6 +231,27 @@ describe('Popover', () => {
     });
   });
 
+  it('positions with given horizontalOffset value when provided', () => {
+    Object.defineProperty(window, 'scrollY', { value: 1 });
+    Object.defineProperty(window, 'scrollX', { value: 1 });
+
+    const wrapped = mountPopover({
+      isOpen: true,
+      position: 'above',
+      align: 'right',
+      horizontalOffset: 30,
+    });
+
+    expect(
+      wrapped.find('[data-testid="popover-content-container"]').props()
+    ).toMatchObject({
+      style: {
+        top: 240,
+        left: 871,
+      },
+    });
+  });
+
   it('positions round to whole number when ', () => {
     Object.defineProperty(window, 'scrollY', { value: 1.5 });
     Object.defineProperty(window, 'scrollX', { value: 1.5 });
@@ -237,14 +260,14 @@ describe('Popover', () => {
       isOpen: true,
       position: 'above',
       align: 'right',
-      offset: 30,
+      verticalOffset: 30,
     });
 
     expect(
       wrapped.find('[data-testid="popover-content-container"]').props()
     ).toMatchObject({
       style: {
-        top: 232,
+        top: 230,
         left: 842,
       },
     });
