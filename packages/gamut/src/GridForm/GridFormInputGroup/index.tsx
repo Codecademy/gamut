@@ -19,7 +19,7 @@ export type GridFormInputGroupProps = {
   isFirstError?: boolean;
   field: GridFormField;
   register: UseFormMethods['register'];
-  setValue: (value: any) => void;
+  setValue: UseFormMethods['setValue'];
 };
 
 const StyledFormGroup = styled(FormGroup)`

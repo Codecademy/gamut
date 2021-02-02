@@ -34,14 +34,14 @@
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
     "react-aria-tabpanel": "^4.4.0",
-    "react-hook-form": "6.0.6",
+    "react-hook-form": "6.10.1",
     "react-player": "^2.3.1",
     "react-truncate-markup": "^5.1.0",
     "react-use": "^15.3.4"
   },
   "scripts": {
     "verify": "tsc --noEmit",
-    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
