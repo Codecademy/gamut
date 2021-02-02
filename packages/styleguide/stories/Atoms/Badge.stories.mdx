@@ -1,4 +1,4 @@
-import { Badge } from '@codecademy/gamut/src';
+import { Anchor, Badge } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -7,7 +7,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={Badge}
   parameters={{
     subtitle:
-      'A small text box with a dark background for displaying tags or emphasised information in a condensed area',
+      'A small text box with a dark background for displaying tags or emphasised information in a condensed area.',
     status: 'stable',
     source: 'gamut',
   }}
@@ -20,15 +20,19 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Props story="Badge" />
 
-Badges can be used within inline text.
+Badges are generally used as a standard way to highlight a short piece of text, likely a single word.
+Badges are inline and generally found next to some interface element to be called out.
+
+For example, non-admin Pro users can see a badge calling out Referrals in their dropdown profile menu.
 
 <Canvas>
   <Story name="Inline Badge">
     {(args) => (
       <>
-        <Badge>css</Badge>
-        <Badge>css</Badge>
-        <Badge>css</Badge>
+        <Anchor href="https://codecademy.com/referrals" variant="interface">
+          Referrals
+        </Anchor>
+        <Badge>new</Badge>
       </>
     )}
   </Story>
