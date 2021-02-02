@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.1.0...@codecademy/gamut@21.0.0) (2021-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** open cta in new tab by default (#1350)
+
+### Features
+
+* **Alert:** open cta in new tab by default ([#1350](https://github.com/Codecademy/client-modules/issues/1350)) ([c45ab6f](https://github.com/Codecademy/client-modules/commit/c45ab6fb49e9c94b8eb2610f80f12242dd85d006)), closes [#1330](https://github.com/Codecademy/client-modules/issues/1330)
+
+
+
+## [20.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.5...@codecademy/gamut@20.1.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
+### [20.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.4...@codecademy/gamut@20.0.5) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [20.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.3...@codecademy/gamut@20.0.4) (2021-01-29)
+
+
+### Bug Fixes
+
+* guard against undefined body in Overlay ([a8eab2b](https://github.com/Codecademy/client-modules/commit/a8eab2b3c6b2ca1ef6df3d0252287bd2f21693cd))
+
+
+
+### [20.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.2...@codecademy/gamut@20.0.3) (2021-01-28)
+
+
+### Bug Fixes
+
+* used useIsomorphicLayoutEffect instead of useLayoutEffect ([2475942](https://github.com/Codecademy/client-modules/commit/247594238dc33f7712d20c3c0b724c249429b482))
+
+
+
+### [20.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.1...@codecademy/gamut@20.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [20.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.0...@codecademy/gamut@20.0.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Truncate:** Fix truncation markup and makes props more flexible ([4f0f710](https://github.com/Codecademy/client-modules/commit/4f0f71050ce9b8dff5fe167d81ddd79bbbffc88f))
+
+
+
+## [20.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.12.0...@codecademy/gamut@20.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
 ## [19.12.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@19.11.7...@codecademy/gamut@19.12.0) (2021-01-27)
 
 

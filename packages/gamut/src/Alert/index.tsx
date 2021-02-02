@@ -77,7 +77,8 @@ export const Alert: React.FC<AlertProps> = ({
             justify="spaceBetween"
           >
             <Truncate
-              lines={isExpanded ? undefined : lines}
+              expanded={isExpanded || !Boolean(lines)}
+              lines={lines || 1}
               onTruncate={setIsTruncated}
               className={styles.truncate}
             >
@@ -109,6 +110,7 @@ export const Alert: React.FC<AlertProps> = ({
                 onClick={cta.onClick}
                 href={cta.href}
                 disabled={cta.disabled}
+                target={cta.openInSameTab ? undefined : '_blank'}
               >
                 {cta.text}
               </ButtonDeprecated>
