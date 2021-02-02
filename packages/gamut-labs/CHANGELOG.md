@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.2.0...@codecademy/gamut-labs@8.3.0) (2021-02-02)
+
+
+### Features
+
+* change LP components text color to navy ([76bb79a](https://github.com/Codecademy/client-modules/commit/76bb79a7d58da2bcdda487c0c95dd26ced648f20))
+
+
+
 ## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.1.6...@codecademy/gamut-labs@8.2.0) (2021-02-02)
 
 
