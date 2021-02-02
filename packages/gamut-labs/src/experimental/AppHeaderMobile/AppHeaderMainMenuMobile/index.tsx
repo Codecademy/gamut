@@ -24,7 +24,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
     event: React.MouseEvent,
     item: AppHeaderDropdownItem
   ) => {
-    action(event, item); // handles the tracking
+    action(event, item);
     setSubMenuItem(item);
   };
 
