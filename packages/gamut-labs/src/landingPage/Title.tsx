@@ -1,41 +1,36 @@
-import { Heading } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
-
-const StyledHeading = styled(Heading)`
-  max-width: 58rem;
-`;
+import { Text } from '../experimental/Text';
+import { Box } from '@codecademy/gamut';
 
 export type TitleProps = {
   isPageHeading?: boolean;
   className?: string;
-  testId?: string;
 };
 
 export const Title: React.FC<TitleProps> = ({
   isPageHeading,
   className,
-  testId,
   children,
 }) => (
-  <StyledHeading
-    as={isPageHeading ? 'h1' : 'h2'}
-    fontSize={
-      isPageHeading
-        ? {
-            lg: 'xxl',
-            sm: 'xl',
-            xs: 'lg',
-          }
-        : {
-            lg: 'lg',
-            xs: 'md',
-          }
-    }
-    className={className}
-    testId={testId}
-    hideMargin
-  >
-    {children}
-  </StyledHeading>
+  <Box maxWidth="58rem" className={className}>
+    <Text
+      as={isPageHeading ? 'h1' : 'h2'}
+      fontWeight="title"
+      fontSize={
+        isPageHeading
+          ? {
+              xs: 34,
+              sm: 44,
+              lg: 64,
+            }
+          : {
+              xs: 26,
+              lg: 34,
+            }
+      }
+      textColor="navy"
+    >
+      {children}
+    </Text>
+  </Box>
 );
