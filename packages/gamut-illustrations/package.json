@@ -4,7 +4,7 @@
     "url": "https://github.com/Codecademy/client-modules/issues"
   },
   "dependencies": {
-    "@codecademy/gamut": "^20.0.5",
+    "@codecademy/gamut": "^21.0.0",
     "@codecademy/gamut-styles": "^7.7.0",
     "@codecademy/gamut-system": "^0.2.1",
     "classnames": "^2.2.5"
@@ -40,5 +40,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.4.18"
+  "version": "0.4.20"
 }
