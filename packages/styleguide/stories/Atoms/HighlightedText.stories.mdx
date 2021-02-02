@@ -7,7 +7,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={HighlightedText}
   parameters={{
     subtitle: `Emphasized (bold) text with a light background color behind it. Use to
-showcase important words in a sentence.`,
+showcase important words in a sentence.  Works with white-space or end-lines.`,
     source: 'gamut',
   }}
   args={{ children: 'superpowers' }}
@@ -17,7 +17,7 @@ showcase important words in a sentence.`,
   <Story name="HighlightedText">
     {(args) => (
       <Text fontSize="md">
-        Would you like to have <HighlightedText />?
+        Would you like to have <HighlightedText {...args} />?
       </Text>
     )}
   </Story>
