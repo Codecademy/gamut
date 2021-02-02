@@ -33,8 +33,6 @@ module.exports = {
   },
 
   webpackFinal: (config: any) => {
-    config.module.rules[0].use[0].loader = require.resolve('babel-loader');
-
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
