@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.3...@codecademy/styleguide@24.1.0) (2021-02-02)
+
+
+### Features
+
+* Conversion team pairings on docs: Badge, HighlightedText, ToolTip ([#1337](https://github.com/Codecademy/client-modules/issues/1337)) ([a5bc4b4](https://github.com/Codecademy/client-modules/commit/a5bc4b46e6d6bd14ed87e8557d869d6499860d26))
+
+
+
 ### [24.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.2...@codecademy/styleguide@24.0.3) (2021-02-02)
 
 **Note:** Version bump only for package @codecademy/styleguide
