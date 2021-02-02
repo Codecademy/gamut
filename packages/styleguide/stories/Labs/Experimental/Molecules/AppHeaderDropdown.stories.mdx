@@ -2,7 +2,9 @@ import { Box } from '@codecademy/gamut';
 import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -42,7 +44,7 @@ A dropdown menu for use in AppHeader.
   </Story>
 </Canvas>
 
-<Props story="AppHeaderDropdown" />
+<PropsTable story="AppHeaderDropdown" />
 
 ### Dropdown - Profile
 

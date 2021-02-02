@@ -32,8 +32,6 @@ const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
 const AppHeaderLinkButtonOuter = styled(Anchor)`
   padding: 0.5px 0;
   color: ${({ theme }) => theme.colors.navy};
-  text-decoration: none;
-  display: block;
   ${hoverStyles}
   ${focusStyles}
 `;
