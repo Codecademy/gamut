@@ -40,7 +40,7 @@ export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideCloses = true,
-  allowOutsideClick = false,
+  allowOutsideClick,
   escapeCloses = true,
   staticPositioning = false,
   onRequestClose,
