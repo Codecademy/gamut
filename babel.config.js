@@ -14,9 +14,4 @@ module.exports = {
     ],
   ],
   ignore: [],
-  env: {
-    test: {
-      plugins: ['require-context-hook'],
-    },
-  },
 };

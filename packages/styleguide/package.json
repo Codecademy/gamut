@@ -36,7 +36,6 @@
     "@storybook/react": "6.1.15",
     "@storybook/theming": "6.1.15",
     "@types/react": "*",
-    "@types/react-color": "^3.0.1",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.2.2",
     "babel-preset-codecademy": "^2.3.0",
