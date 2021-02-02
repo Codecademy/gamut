@@ -1,6 +1,8 @@
 import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
@@ -34,8 +36,6 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 The AppHeaderSubMenuMobile component is used in the mobile version of the AppHeader.
 Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown", clicking on it opens a dropdown menu, on smaller screens, clicking on an AppHeaderItem of type "dropdown" opens the AppHeaderSubMenuMobile component. The component contains a title indicating the category of the menu (ex resources, community) and a list of links (forum, codecademy blog, etc).
-
-<Props of={AppHeaderSubMenuMobile} />
 
 ## SubMenu for mobile view
 
@@ -109,3 +109,5 @@ Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown",
     {(args) => <AppHeaderSubMenuMobile {...args} />}
   </Story>
 </Canvas>
+
+<PropsTable story="AppHeaderSubMenuMobile" />

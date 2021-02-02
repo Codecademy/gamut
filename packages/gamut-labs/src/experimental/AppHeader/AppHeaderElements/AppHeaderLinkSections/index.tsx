@@ -1,7 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import React from 'react';
 
-import { AppHeaderLinkMobile } from '../../../AppHeaderMobile';
+import { AppHeaderLinkMobile } from '../../../AppHeaderMobile/AppHeaderLinkMobile';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
