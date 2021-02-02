@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.2.0...@codecademy/styleguide@23.3.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
 ## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.1...@codecademy/styleguide@23.2.0) (2021-02-01)
 
 
