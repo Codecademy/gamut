@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [5.2.2](http://github.com///compare/@codecademy/webpack-config@5.2.1...@codecademy/webpack-config@5.2.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 ### [5.2.1](http://github.com///compare/@codecademy/webpack-config@5.2.0...@codecademy/webpack-config@5.2.1) (2020-12-04)
 
 **Note:** Version bump only for package @codecademy/webpack-config
