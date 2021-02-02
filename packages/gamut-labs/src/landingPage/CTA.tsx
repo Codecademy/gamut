@@ -2,13 +2,15 @@ import { CTAButton } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { ColorMode } from './types';
+
 const CTAContainer = styled.div`
   margin: 2rem 0 0;
 `;
 
 export type CTAProps = {
   href: string;
-  mode?: 'dark' | 'light';
+  mode?: ColorMode;
   className?: string;
   testId?: string;
   onCtaButtonClick?: () => void;

@@ -1,3 +1,5 @@
+export type ColorMode = 'dark' | 'light';
+
 export type BaseProps = {
   title?: string;
   /**

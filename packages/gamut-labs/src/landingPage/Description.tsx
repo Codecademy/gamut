@@ -1,19 +1,19 @@
 import { Markdown } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { BaseProps } from './types';
+import { BaseProps, ColorMode } from './types';
+import { modeVariants } from './variants';
 
-const DescriptionContainer = styled.div<{ mode?: 'dark' | 'light' }>`
+const DescriptionContainer = styled.div<{ mode?: ColorMode }>`
+  ${modeVariants}
   margin: 1rem 0 0;
   max-width: 38rem;
-  ${({ mode }) => mode === 'dark' && `color: ${colors.beige};`}
 `;
 
 export type DescriptionProps = {
   text: string;
-  mode?: 'dark' | 'light';
+  mode?: ColorMode;
   className?: string;
   testId?: string;
 } & Pick<BaseProps, 'onAnchorClick'>;

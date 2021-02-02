@@ -1,16 +1,18 @@
 import { Heading } from '@codecademy/gamut';
-import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-const StyledHeading = styled(Heading)<{ mode?: 'dark' | 'light' }>`
+import { ColorMode } from './types';
+import { modeVariants } from './variants';
+
+const StyledHeading = styled(Heading)<{ mode?: ColorMode }>`
+  ${modeVariants}
   max-width: 58rem;
-  ${({ mode }) => mode === 'dark' && `color: ${colors.beige};`}
 `;
 
 export type TitleProps = {
   isPageHeading?: boolean;
-  mode?: 'dark' | 'light';
+  mode?: ColorMode;
   className?: string;
   testId?: string;
 };
