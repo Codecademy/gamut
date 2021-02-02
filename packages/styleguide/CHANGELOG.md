@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.1.0...@codecademy/styleguide@24.2.0) (2021-02-02)
+
+
+### Features
+
+* **Mobile Menu:** mobile menu interactions ([aec9a6d](https://github.com/Codecademy/client-modules/commit/aec9a6dfb158e2f0b02dbf5a98bfe08e86a3f193))
+
+
+
 ## [24.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.3...@codecademy/styleguide@24.1.0) (2021-02-02)
 
 
