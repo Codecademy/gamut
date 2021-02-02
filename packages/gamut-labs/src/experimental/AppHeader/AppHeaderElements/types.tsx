@@ -47,6 +47,7 @@ export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
 };
 
 export type AppHeaderDropdownItem = AppHeaderBaseItem & {
+  icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
   trackingTarget: string;
