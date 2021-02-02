@@ -30,7 +30,7 @@ module.exports = {
           require('@emotion/babel-plugin'),
           {
             sourceMap: true,
-            autoLabel: 'dev-only',
+            autoLabel: 'always',
             labelFormat: '[local]',
           },
         ];
