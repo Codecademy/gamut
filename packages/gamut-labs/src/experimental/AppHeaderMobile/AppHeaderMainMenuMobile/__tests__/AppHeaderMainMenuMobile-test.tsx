@@ -74,10 +74,11 @@ describe('AppHeaderMainMenuMobile', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('renders submenu links when target button is clicked', () => {
+  it('calls the action function when the target button is clicked & renders the submenu with the appropriate links', () => {
     renderAppHeaderMainMenuMobile();
     const targetButton = screen.getByRole('button');
     targetButton.click();
+    expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(sublink1TestId)));
     expect(screen.getByTestId(idToTestId(sublink2TestId)));
   });
