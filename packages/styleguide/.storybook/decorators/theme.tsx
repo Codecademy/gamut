@@ -3,7 +3,14 @@ import { CacheProvider, ThemeContext } from '@emotion/react';
 
 import { theme, createEmotionCache } from '@codecademy/gamut-styles';
 
-const cache = createEmotionCache();
+const testSetting =
+  process.env.NODE_ENV === 'test'
+    ? {
+        container: undefined,
+      }
+    : undefined;
+
+const cache = createEmotionCache(testSetting);
 
 /**
  * Story functions must be called as a regular function to avoid full-remounts

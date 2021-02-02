@@ -30,9 +30,8 @@ module.exports = {
           require('@emotion/babel-plugin'),
           {
             sourceMap: true,
-            autoLabel: 'always',
+            autoLabel: 'dev-only',
             labelFormat: '[local]',
-            cssPropOptimization: true,
           },
         ];
       }
