@@ -40,6 +40,9 @@ describe('AccordionArea', () => {
     await act(async () => {
       jest.runAllTimers();
     });
+    // @ts-expect-error - component-test-setup has a bug right now where wrapper is of type ReactWrapper<unknown>
+    // In theory we'll fix this soon.
+    // In practice, you might consider using RTL over Enzyme anyway, for its superior React support ;)
     wrapper.setProps(wrapper.props());
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
