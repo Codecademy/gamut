@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.3.0...@codecademy/styleguide@24.0.0) (2021-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** open cta in new tab by default (#1350)
+
+### Features
+
+* **Alert:** open cta in new tab by default ([#1350](https://github.com/Codecademy/client-modules/issues/1350)) ([c45ab6f](https://github.com/Codecademy/client-modules/commit/c45ab6fb49e9c94b8eb2610f80f12242dd85d006)), closes [#1330](https://github.com/Codecademy/client-modules/issues/1330)
+
+
+
 ## [23.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.2.0...@codecademy/styleguide@23.3.0) (2021-02-01)
 
 
