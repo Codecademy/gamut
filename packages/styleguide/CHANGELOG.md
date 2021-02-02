@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [24.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.1...@codecademy/styleguide@24.2.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.0...@codecademy/styleguide@24.2.1) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [24.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.1.0...@codecademy/styleguide@24.2.0) (2021-02-02)
+
+
+### Features
+
+* **Mobile Menu:** mobile menu interactions ([aec9a6d](https://github.com/Codecademy/client-modules/commit/aec9a6dfb158e2f0b02dbf5a98bfe08e86a3f193))
+
+
+
+## [24.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.3...@codecademy/styleguide@24.1.0) (2021-02-02)
+
+
+### Features
+
+* Conversion team pairings on docs: Badge, HighlightedText, ToolTip ([#1337](https://github.com/Codecademy/client-modules/issues/1337)) ([a5bc4b4](https://github.com/Codecademy/client-modules/commit/a5bc4b46e6d6bd14ed87e8557d869d6499860d26))
+
+
+
+### [24.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.2...@codecademy/styleguide@24.0.3) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.1...@codecademy/styleguide@24.0.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.0...@codecademy/styleguide@24.0.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* **Feature:** Refactor the Feature component ([#1336](https://github.com/Codecademy/client-modules/issues/1336)) ([386f9dc](https://github.com/Codecademy/client-modules/commit/386f9dc82623d39992b4b7ea343a616f7a4fbf30))
+
+
+
+## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.3.0...@codecademy/styleguide@24.0.0) (2021-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** open cta in new tab by default (#1350)
+
+### Features
+
+* **Alert:** open cta in new tab by default ([#1350](https://github.com/Codecademy/client-modules/issues/1350)) ([c45ab6f](https://github.com/Codecademy/client-modules/commit/c45ab6fb49e9c94b8eb2610f80f12242dd85d006)), closes [#1330](https://github.com/Codecademy/client-modules/issues/1330)
+
+
+
 ## [23.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.2.0...@codecademy/styleguide@23.3.0) (2021-02-01)
 
 

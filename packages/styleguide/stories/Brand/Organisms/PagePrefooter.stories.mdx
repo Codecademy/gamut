@@ -27,17 +27,17 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
 />
 
-### With CTA
+## With CTA
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="With CTA">{(args) => <PagePrefooter {...args} />}</Story>
 </Canvas>
 
 <Props story="With CTA" />
 
-### Without CTA
+## Without CTA
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="Without CTA">
     {(args) => <PagePrefooter {...args} cta={undefined} />}
   </Story>
