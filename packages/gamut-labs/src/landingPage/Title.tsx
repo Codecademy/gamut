@@ -1,6 +1,7 @@
-import React from 'react';
-import { Text } from '../experimental/Text';
 import { Box } from '@codecademy/gamut';
+import React from 'react';
+
+import { Text } from '../experimental/Text';
 
 export type TitleProps = {
   isPageHeading?: boolean;
