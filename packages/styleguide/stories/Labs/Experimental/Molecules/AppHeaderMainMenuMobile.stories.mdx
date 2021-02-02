@@ -6,6 +6,7 @@ import {
 import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -87,7 +88,7 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader. It takes in as a prop an array of app header items. It renders items of type "link" as AppHeaderMobileLinks and items of type "dropdown" as target components that open the AppHeaderSubMenuMobile when clicked. The two types - the links & targets - look almost the same to the user: they have an icon & text. The targets show an arrow to indicate that they're expandable. When the target component is clicked, it opens + populates the AppHeaderSubMenuMobile. (For example, resources is of type dropdown; when clicked it opens the submenu which contains links to the cheasheets + blog)
+The AppHeaderMainMenuMobile component is used in the mobile version of the AppHeader. It takes in as a prop an array of app header items. It renders items of type "link" as <LinkTo kind="Labs/Experimental/Molecules/AppHeaderLinkMobile" story="AppHeaderLinkMobile">AppHeaderLinkMobile</LinkTo> and items of type "dropdown" as target components that open the <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo> when clicked. The two types - the links & targets - look almost the same to the user: they have an icon & text. The targets show an arrow to indicate that they're expandable. When the target component is clicked, it opens + populates the AppHeaderSubMenuMobile. (For example, resources is of type dropdown; when clicked it opens the submenu which contains links to the cheasheets + blog)
 
 The AppHeaderMainMenuMobile component uses state to control which view you are in: the main screen (the links with icons) or the submenu view.
 

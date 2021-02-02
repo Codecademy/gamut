@@ -38,9 +38,17 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   ) => {
     switch (item.type) {
       case 'link':
-        return <AppHeaderLinkMobile item={item} action={action} />;
+        return (
+          <AppHeaderLinkMobile key={item.id} item={item} action={action} />
+        );
       case 'dropdown':
-        return <AppHeaderSubMenuTarget item={item} openSubMenu={openSubMenu} />;
+        return (
+          <AppHeaderSubMenuTarget
+            key={item.id}
+            item={item}
+            openSubMenu={openSubMenu}
+          />
+        );
     }
   };
 
