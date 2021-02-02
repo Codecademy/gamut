@@ -18,21 +18,18 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   items,
   action,
 }) => {
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
-  const handleClose = () => {
-    setSubMenuOpen(false);
-    setSubMenuItem(undefined);
-  };
-
-  const handleOpenSubMenu = (
+  const openSubMenu = (
     event: React.MouseEvent,
     item: AppHeaderDropdownItem
   ) => {
     action(event, item); // handles the tracking
-    setSubMenuOpen(true);
     setSubMenuItem(item);
+  };
+
+  const closeSubMenu = () => {
+    setSubMenuItem(undefined);
   };
 
   const mapItemToElement = (
@@ -43,17 +40,15 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
       case 'link':
         return <AppHeaderLinkMobile item={item} action={action} />;
       case 'dropdown':
-        return (
-          <AppHeaderSubMenuTarget item={item} openSubMenu={handleOpenSubMenu} />
-        );
+        return <AppHeaderSubMenuTarget item={item} openSubMenu={openSubMenu} />;
     }
   };
 
   return (
     <>
-      {subMenuOpen && subMenuItem ? (
+      {!!subMenuItem ? (
         <AppHeaderSubMenuMobile
-          handleClose={handleClose}
+          handleClose={closeSubMenu}
           action={action}
           item={subMenuItem}
         />
