@@ -1,6 +1,8 @@
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderLinkMobile"
@@ -20,8 +22,6 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 A link for use in the mobile AppHeader.
 
-<Props of={AppHeaderLinkMobile} />
-
 ## Link - mobile view
 
 <Canvas>
@@ -29,3 +29,5 @@ A link for use in the mobile AppHeader.
     {(args) => <AppHeaderLinkMobile {...args} />}
   </Story>
 </Canvas>
+
+<PropsTable story="AppHeaderLinkMobile" />
