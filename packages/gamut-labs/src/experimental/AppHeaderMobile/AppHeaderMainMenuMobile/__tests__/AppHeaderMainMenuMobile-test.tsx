@@ -14,8 +14,8 @@ const action = jest.fn();
 const link1Href = 'https://codecademy.com';
 const link2Href = 'https://news.codecademy.com';
 
-const sublink1TestId = 'sublink-1';
-const sublink2TestId = 'sublink-2';
+const sublink1Id = 'sublink-1';
+const sublink2Id = 'sublink-2';
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
 
@@ -33,8 +33,8 @@ const props: AppHeaderMainMenuMobileProps = {
       trackingTarget: '',
       type: 'dropdown',
       popover: [
-        createMockAppHeaderLinkItem(sublink1TestId, sublink1Href, 'cheatsheet'),
-        createMockAppHeaderLinkItem(sublink2TestId, sublink2Href, 'blog'),
+        createMockAppHeaderLinkItem(sublink1Id, sublink1Href, 'cheatsheet'),
+        createMockAppHeaderLinkItem(sublink2Id, sublink2Href, 'blog'),
       ],
     },
     createMockAppHeaderLinkItem('simple-link-1', link1Href, 'simple link 1'),
@@ -67,19 +67,19 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('does not render the submenu on load', () => {
     expect(
-      screen.queryByTestId(idToTestId(sublink1TestId))
+      screen.queryByTestId(idToTestId(sublink1Id))
     ).not.toBeInTheDocument();
     expect(
-      screen.queryByTestId(idToTestId(sublink2TestId))
+      screen.queryByTestId(idToTestId(sublink2Id))
     ).not.toBeInTheDocument();
   });
 
-  it('calls the action function when the target button is clicked & renders the submenu with the appropriate links', () => {
+  it('renders a submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
     const targetButton = screen.getByRole('button');
     targetButton.click();
     expect(action).toHaveBeenCalled();
-    expect(screen.getByTestId(idToTestId(sublink1TestId)));
-    expect(screen.getByTestId(idToTestId(sublink2TestId)));
+    expect(screen.getByTestId(idToTestId(sublink1Id)));
+    expect(screen.getByTestId(idToTestId(sublink2Id)));
   });
 });
