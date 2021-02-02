@@ -2155,17 +2155,6 @@
     "@emotion/utils" "0.11.3"
     "@emotion/weak-memoize" "0.2.5"
 
-"@emotion/cache@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.npmjs.org/@emotion/cache/-/cache-11.0.0.tgz#473adcaf9e04c6a0e30fb1421e79a209a96818f8"
-  integrity sha512-NStfcnLkL5vj3mBILvkR2m/5vFxo3G0QEreYKDGHNHm9IMYoT/t3j6xwjx6lMI/S1LUJfVHQqn0m9wSINttTTQ==
-  dependencies:
-    "@emotion/memoize" "^0.7.4"
-    "@emotion/sheet" "^1.0.0"
-    "@emotion/utils" "^1.0.0"
-    "@emotion/weak-memoize" "^0.2.5"
-    stylis "^4.0.3"
-
 "@emotion/cache@^11.1.3":
   version "11.1.3"
   resolved "https://registry.npmjs.org/@emotion/cache/-/cache-11.1.3.tgz#c7683a9484bcd38d5562f2b9947873cf66829afd"
@@ -2257,19 +2246,6 @@
   version "0.7.5"
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.5.tgz#2c40f81449a4e554e9fc6396910ed4843ec2be50"
   integrity sha512-igX9a37DR2ZPGYtV6suZ6whr8pTFtyHL3K/oLUotxpSVO2ASaprmAe2Dkq7tBo7CRY7MMDrAa9nuQP9/YG8FxQ==
-
-"@emotion/react@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.npmjs.org/@emotion/react/-/react-11.0.0.tgz#6b39b5bb5e2d48d720a420ff885a95ff268dae0d"
-  integrity sha512-mMQOuJcCVHUHUKZMamCbNnuUEgEff1W1JL3/1jGXFN52Ik5R/2ccVb3FherYFkSJkkjkPC3dUfFSeisXVh9Spg==
-  dependencies:
-    "@babel/runtime" "^7.7.2"
-    "@emotion/cache" "^11.0.0"
-    "@emotion/serialize" "^1.0.0"
-    "@emotion/sheet" "^1.0.0"
-    "@emotion/utils" "^1.0.0"
-    "@emotion/weak-memoize" "^0.2.5"
-    hoist-non-react-statics "^3.3.1"
 
 "@emotion/react@^11.1.4":
   version "11.1.4"
