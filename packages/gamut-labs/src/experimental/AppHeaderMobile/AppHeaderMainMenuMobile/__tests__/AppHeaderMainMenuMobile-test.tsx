@@ -9,15 +9,19 @@ import {
   AppHeaderMainMenuMobileProps,
 } from './../index';
 
+const action = jest.fn();
+
 const link1Href = 'https://codecademy.com';
 const link2Href = 'https://news.codecademy.com';
 
-const sublink1TestId = 'simple-link-1';
-const sublink2TestId = 'simple-link-2';
-
+const sublink1TestId = 'sublink-1';
+const sublink2TestId = 'sublink-2';
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
-const action = jest.fn();
+
+const idToTestId = (id: string) => {
+  return `app-header-link-${id}`;
+};
 
 const props: AppHeaderMainMenuMobileProps = {
   action,
@@ -29,12 +33,12 @@ const props: AppHeaderMainMenuMobileProps = {
       trackingTarget: '',
       type: 'dropdown',
       popover: [
-        createMockAppHeaderLinkItem('sublink-1', sublink1Href, 'cheatsheet'),
-        createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
+        createMockAppHeaderLinkItem(sublink1TestId, sublink1Href, 'cheatsheet'),
+        createMockAppHeaderLinkItem(sublink2TestId, sublink2Href, 'blog'),
       ],
     },
-    createMockAppHeaderLinkItem(sublink1TestId, link1Href, 'simple link 1'),
-    createMockAppHeaderLinkItem(sublink2TestId, link2Href, 'simple link 2'),
+    createMockAppHeaderLinkItem('simple-link-1', link1Href, 'simple link 1'),
+    createMockAppHeaderLinkItem('simple-link-2', link2Href, 'simple link 2'),
   ],
 };
 
@@ -62,7 +66,19 @@ describe('AppHeaderMainMenuMobile', () => {
   });
 
   it('does not render the submenu on load', () => {
-    expect(screen.queryByTestId(sublink1TestId)).not.toBeInTheDocument();
-    expect(screen.queryByTestId(sublink2TestId)).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId(idToTestId(sublink1TestId))
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByTestId(idToTestId(sublink2TestId))
+    ).not.toBeInTheDocument();
+  });
+
+  it('renders submenu links when target button is clicked', () => {
+    renderAppHeaderMainMenuMobile();
+    const targetButton = screen.getByRole('button');
+    targetButton.click();
+    expect(screen.getByTestId(idToTestId(sublink1TestId)));
+    expect(screen.getByTestId(idToTestId(sublink2TestId)));
   });
 });
