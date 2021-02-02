@@ -14,7 +14,7 @@ import {
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
-  handleClose?: () => void;
+  handleClose: () => void;
 };
 
 const FullMenuButton = styled.button`

@@ -2,6 +2,8 @@ import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
+import { PropsTable } from '~styleguide/blocks';
+
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
   component={AppHeaderSubMenuMobile}
@@ -107,3 +109,5 @@ Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown",
     {(args) => <AppHeaderSubMenuMobile {...args} />}
   </Story>
 </Canvas>
+
+<PropsTable story="AppHeaderSubMenuMobile" />
