@@ -1,23 +1,15 @@
-import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
 import styles from './styles.module.scss';
 
 export type HighlightedTextProps = {
+  /**
+   * Text, with support for newlines and whitespace.
+   */
   children?: string;
-  wordProps?: HTMLAttributes<HTMLSpanElement>;
-  textProps?: HTMLAttributes<HTMLElement>;
 };
 
-export const HighlightedText: React.FC<HighlightedTextProps> = ({
-  children = '',
-  textProps = {},
-}) => {
-  const combinedProps = {
-    ...textProps,
-    className: cx(styles.highlightedText, textProps.className),
-  };
-
+export const HighlightedText = ({ children = '' }: HighlightedTextProps) => {
   const words = children
     .split(/(\s+)(\S+)/g)
     .filter(Boolean)
@@ -28,5 +20,5 @@ export const HighlightedText: React.FC<HighlightedTextProps> = ({
       </span>
     ));
 
-  return <em {...combinedProps}>{words}</em>;
+  return <em className={styles.highlightedText}>{words}</em>;
 };
