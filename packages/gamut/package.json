@@ -51,6 +51,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@codecademy/gamut-tests": "^1.0.0",
     "onchange": "^7.0.2"
   },
   "publishConfig": {
