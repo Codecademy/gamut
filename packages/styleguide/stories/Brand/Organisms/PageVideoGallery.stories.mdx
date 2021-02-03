@@ -40,18 +40,20 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
 />
 
-### Gallery only
+## With title, desc, and CTA
 
 <Canvas>
-  <Story name="video-gallery">
-    {(args) => <PageVideoGallery videos={args.videos} />}
+  <Story name="With Title, Desc, CTA">
+    {(args) => <PageVideoGallery {...args} />}
   </Story>
 </Canvas>
 
-### With title, desc, and CTA
+<Props story="With Title, Desc, CTA" />
 
-<Canvas withSource="open">
-  <Story name="with cta">{(args) => <PageVideoGallery {...args} />}</Story>
+## Gallery only
+
+<Canvas>
+  <Story name="Gallery Only">
+    {(args) => <PageVideoGallery videos={args.videos} />}
+  </Story>
 </Canvas>
-
-<Props story="with cta" />
