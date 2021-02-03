@@ -1,6 +1,10 @@
 import {
+  AccountingCoinsIcon,
+  BookFlipPageIcon,
+  CommunityIcon,
   GearIcon,
   HouseEntranceIcon,
+  NotebookIcon,
   PersonIcon,
   PieLineGraphIcon,
   SupportIcon,
@@ -38,6 +42,7 @@ export const proLogo: AppHeaderLogoItem = {
 
 export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
+  icon: HouseEntranceIcon,
   id: 'my-home',
   text: 'My Home',
   href: '/learn',
@@ -47,6 +52,7 @@ export const myHome: AppHeaderLinkItem = {
 
 export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
+  icon: BookFlipPageIcon,
   id: 'course-catalog',
   text: 'Course Catalog',
   href: '/catalog',
@@ -55,6 +61,7 @@ export const courseCatalog: AppHeaderLinkItem = {
 };
 
 export const resourcesDropdown: AppHeaderDropdownItem = {
+  icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
   popover: [
@@ -85,6 +92,7 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
 };
 
 export const communityDropdown: AppHeaderDropdownItem = {
+  icon: CommunityIcon,
   id: 'community',
   text: 'Community',
   popover: [
@@ -123,6 +131,7 @@ export const communityDropdown: AppHeaderDropdownItem = {
 };
 
 export const plansPricingDropdown: AppHeaderDropdownItem = {
+  icon: AccountingCoinsIcon,
   id: 'plans-pricing',
   text: 'Plans + Pricing',
   popover: [
