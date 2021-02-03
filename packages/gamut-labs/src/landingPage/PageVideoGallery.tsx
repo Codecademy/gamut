@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
-import { BaseProps, ColorMode } from './types';
+import { BaseProps, Mode } from './types';
 
 const Grid = styled.div`
   display: grid;
@@ -47,7 +47,7 @@ export type PageVideo = {
 
 export type PageVideoGalleryProps = BaseProps & {
   videos: PageVideo[];
-  mode?: ColorMode;
+  mode?: Mode;
 };
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({

@@ -1,4 +1,4 @@
-export type ColorMode = 'dark' | 'light';
+export type Mode = 'light' | 'dark';
 
 export type BaseProps = {
   title?: string;

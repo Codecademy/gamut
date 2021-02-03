@@ -1,19 +1,18 @@
 import { Box, Markdown } from '@codecademy/gamut';
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 
-import { BaseProps, ColorMode } from './types';
-import { modeVariants } from './variants';
+import { BaseProps } from './types';
+import { DarkModeProps, darkModeVariants } from './variants';
 
-const DescriptionContainer = styled(Box)<{ mode?: ColorMode }>`
-  ${modeVariants}
+const DescriptionContainer = styled(Box)<DarkModeProps>`
+  ${darkModeVariants}
   margin: 1rem 0 0;
   max-width: 38rem;
 `;
 
-export type DescriptionProps = {
+export type DescriptionProps = DarkModeProps & {
   text: string;
-  mode?: ColorMode;
   className?: string;
 } & Pick<BaseProps, 'onAnchorClick'>;
 

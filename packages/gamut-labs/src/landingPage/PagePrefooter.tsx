@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
-import { BaseProps, ColorMode } from './types';
+import { BaseProps } from './types';
+import { DarkModeProps } from './variants';
 
 const FlexContainer = styled(Container)`
   ${mediaQueries.sm} {
@@ -23,11 +24,7 @@ const StyledCTA = styled(CTA)`
   }
 `;
 
-export type PagePrefooterProps = BaseProps & {
-  mode?: ColorMode;
-};
-
-export const PagePrefooter: React.FC<PagePrefooterProps> = ({
+export const PagePrefooter: React.FC<BaseProps & DarkModeProps> = ({
   title,
   desc,
   cta,

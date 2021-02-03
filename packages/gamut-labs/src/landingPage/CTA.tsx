@@ -1,11 +1,10 @@
 import { Box, CTAButton } from '@codecademy/gamut';
 import React from 'react';
 
-import { ColorMode } from './types';
+import { DarkModeProps } from './variants';
 
-export type CTAProps = {
+export type CTAProps = DarkModeProps & {
   href: string;
-  mode?: ColorMode;
   className?: string;
   onCtaButtonClick?: () => void;
 };

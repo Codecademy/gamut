@@ -1,18 +1,16 @@
 import { Box } from '@codecademy/gamut';
-import React from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 
-import { ColorMode } from './types';
-import { modeVariants } from './variants';
 import { Text } from '../experimental/Text';
+import { DarkModeProps, darkModeVariants } from './variants';
 
-const StyledText = styled(Text)<{ mode?: ColorMode }>`
-  ${modeVariants}
+const StyledText = styled(Text)<DarkModeProps>`
+  ${darkModeVariants}
 `;
 
-export type TitleProps = {
+export type TitleProps = DarkModeProps & {
   isPageHeading?: boolean;
-  mode?: ColorMode;
   className?: string;
 };
 
