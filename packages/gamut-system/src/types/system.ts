@@ -86,11 +86,12 @@ export type System<
 > = {
   /** Higher order variant function, with two overloads */
   variant: {
-    /** Customizable prop interface */
-    <Prop extends Readonly<string>, Keys extends string>(config: {
-      prop: Prop;
-      variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
-    }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
+    /** Customizable default and prop interface */
+    <Prop extends Readonly<string>, Keys extends string>(
+      config: {
+        variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+      } & ({ prop: Prop } | { default: string })
+    ): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */
     <Keys extends string>(
       config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>

@@ -42,11 +42,29 @@ Using your variants:
   <Button variant="secondary" />
 ```
 
-There may be cases where you want to use a special key for your variants instead of the default `variant`. You may pass an arbitrary key for your prop to customize the prop type.
+You can define a default variant to apply when no variant prop is passed.
 
 ```tsx
 const colorVariant = variants({
-  key: 'colorVariant',
+  default: 'primary',
+  variants: {
+    primary: { color: 'blue' },
+    secondary: { color: 'green' },
+  },
+});
+
+const Text = styled.p`
+  ${colorVariant}
+`;
+
+<Text />; // color: blue
+```
+
+There may be cases where you want to use a special prop for your variants instead of the default `variant`. You may pass an arbitrary name for your prop to customize the prop type.
+
+```tsx
+const colorVariant = variants({
+  prop: 'colorVariant',
   variants: {
     primary: { color: 'blue' },
   },
