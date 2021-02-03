@@ -39,7 +39,6 @@ export * from './Pattern';
 export * from './ProgressBar';
 export * from './RadialProgress';
 export * from './Sidebar';
-export * from './SidebarButton';
 export * from './SkipToContent';
 export * from './Spinner';
 export * from './SplitInterstitial';
