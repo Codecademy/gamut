@@ -106,7 +106,7 @@ export const communityDropdown: AppHeaderDropdownItem = {
     {
       id: 'chapters',
       href: 'https://community.codecademy.com/',
-      trackingTarget: 'topnav_community_forums',
+      trackingTarget: 'topnav_community_chapters',
       text: 'Chapters',
       type: 'link',
     },
@@ -122,28 +122,21 @@ export const communityDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const plansPricingDropdown: AppHeaderDropdownItem = {
-  id: 'plans-pricing',
-  text: 'Plans + Pricing',
+export const pricingDropdown: AppHeaderDropdownItem = {
+  id: 'pricing',
+  text: 'Pro Pricing',
   popover: [
     {
       id: 'pro-membership',
       href: '/pricing',
       trackingTarget: 'topnav_pro_membership',
-      text: 'Pro Membership',
-      type: 'link',
-    },
-    {
-      id: 'for-business',
-      href: '/business',
-      trackingTarget: 'topnav_pricing_business',
-      text: 'For Business',
+      text: 'For Individuals',
       type: 'link',
     },
     {
       id: 'for-students',
       href: '/student-center',
-      trackingTarget: 'topnav_pricing_business',
+      trackingTarget: 'topnav_pricing_students',
       text: 'For Students',
       type: 'link',
     },
@@ -152,10 +145,10 @@ export const plansPricingDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const forEnterprise: AppHeaderLinkItem = {
-  id: 'for-enterprise',
+export const forBusiness: AppHeaderLinkItem = {
+  id: 'for-business',
   trackingTarget: 'topnav_business',
-  text: 'For Enterprise',
+  text: 'For Business',
   href: '/business',
   type: 'link',
 };
@@ -268,7 +261,7 @@ export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
       [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
       [profileLogOut],
     ],
-    trackingTarget: 'topnav_pricing',
+    trackingTarget: 'topnav_profile',
     type: 'profile-dropdown',
   };
 };
@@ -296,7 +289,7 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
     id: 'profile',
     text: 'Profile',
     popover,
-    trackingTarget: 'topnav_pricing',
+    trackingTarget: 'topnav_profile',
     type: 'profile-dropdown',
   };
 };

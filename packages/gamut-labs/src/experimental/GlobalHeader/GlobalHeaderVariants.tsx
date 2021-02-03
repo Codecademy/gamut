@@ -5,13 +5,13 @@ import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
   freeProfile,
   login,
   logo,
   myHome,
   notifications,
-  plansPricingDropdown,
+  pricingDropdown,
   proLogo,
   proProfile,
   resourcesDropdown,
@@ -31,8 +31,8 @@ const anonHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -79,8 +79,8 @@ export const freeHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -117,4 +117,9 @@ export const proHeaderItems = (
     left: leftItems,
     right: rightItems,
   };
+};
+
+export const loadingHeaderItems = {
+  left: [logo],
+  right: [],
 };

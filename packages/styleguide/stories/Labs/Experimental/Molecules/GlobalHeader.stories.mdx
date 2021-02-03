@@ -232,6 +232,16 @@ To mock this, a very basic action function is provided, which just prints out th
   </Story>
 </Canvas>
 
+### Loading
+
+A version of the header with just the logo, for use when data has not been fetched yet.
+
+<Canvas>
+  <Story name="Loading">
+    {(args) => <GlobalHeader action={() => {}} type="loading" />}
+  </Story>
+</Canvas>
+
 ## How It's All Connected in Gamut
 
 `GlobalHeader` passes to `AppHeader` the header items, and then `AppHeader` renders the header content using `AppBar` (with a `left` and `right` `AppBarSection`). The `AppHeader` has no knowledge of the user; it just takes as a prop an object that has a left property (an array of `AppHeaderItem`) to render on the left side of the header and a right property (an array of `AppHeaderItem`) to render on the right side of the header. These item objects which are passed in are mapped to `AppHeader` components.
