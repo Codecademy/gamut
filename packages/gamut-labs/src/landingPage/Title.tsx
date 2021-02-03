@@ -18,7 +18,7 @@ export type TitleProps = {
 
 export const Title: React.FC<TitleProps> = ({
   isPageHeading,
-  mode,
+  mode = 'light',
   className,
   children,
 }) => (

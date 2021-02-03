@@ -19,7 +19,7 @@ export type DescriptionProps = {
 
 export const Description: React.FC<DescriptionProps> = ({
   text,
-  mode,
+  mode = 'light',
   className,
   onAnchorClick,
 }) => (
