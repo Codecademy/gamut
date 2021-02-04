@@ -2,7 +2,7 @@ import { mapValues, isNumber, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import { kebabCase } from 'lodash';
 import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
-import { theme } from '@codecademy/gamut-styles/src/theme';
+import { Theme, theme } from '@codecademy/gamut-styles/src/theme';
 
 export type SystemControls = 'text' | 'select' | 'radio' | 'inline-radio';
 
@@ -19,7 +19,7 @@ const createDescription = (name: string) => {
   const cssProp = kebabCase(name);
   description.push(`Property: [${cssProp}](${MDN_URL}${cssProp})`);
 
-  const scale = PROP_META?.[name]?.scale;
+  const scale = PROP_META?.[name as keyof typeof PROP_META]?.scale;
 
   if (scale) {
     description.push(`Scale: [${scale}](${THEME_PATH}--${kebabCase(scale)})`);
@@ -57,13 +57,17 @@ const getControlType = (args: unknown[]): SystemControls => {
   return 'inline-radio';
 };
 
-const getPropCategory = (name: string) =>
-  Object.entries(PROP_GROUPS).find(([key, { propNames }]) =>
-    propNames.includes(name)
-  )[0];
+const getPropCategory = (name: string) => {
+  const [groupName] =
+    Object.entries(PROP_GROUPS).find(([key, { propNames }]) =>
+      propNames.includes(name)
+    ) || [];
+  return groupName;
+};
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
+
   return mapValues((arg) => {
     // Update theme props
     if (
@@ -87,7 +91,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
 
     // For as props we want to provide a standard description
     if (arg.name === 'as') {
-      const summary = arg?.table?.type?.summary;
+      const summary = arg?.table?.type?.summary ?? '';
       const options = sortScale(summary.split(' | '));
       const description = 'Change the element this component uses';
 
@@ -111,14 +115,16 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
       const { name } = arg;
       const control: ControlType = { type: 'text' };
 
-      const rawScale = arg?.table?.type?.summary;
+      const rawScale = arg?.table?.type?.summary ?? '';
       const options = rawScale && sortScale(getScale(rawScale).split(' | '));
 
       const isStringControl =
         rawScale.indexOf('string') > -1 || options.length < 2;
 
       if (!isStringControl) {
-        const scale = theme[PROP_META?.[name]?.scale];
+        const scaleKey = PROP_META?.[name as keyof typeof PROP_META]
+          ?.scale as keyof Theme;
+        const scale = theme?.[scaleKey];
         const argOptions = scale
           ? Object.keys(scale)
           : sanitizeOptions(options);
