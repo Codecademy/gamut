@@ -7,8 +7,8 @@ import styled from '@emotion/styled';
 
 import {
   SidebarBaseProps,
-  SidebarComponentsBaseProps,
   SidebarWrapperProps,
+  SidebarWidthProps,
   transitionDuration,
 } from './shared';
 
@@ -19,7 +19,7 @@ const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
-const SidebarContent = styled(motion.div)<SidebarComponentsBaseProps>`
+const SidebarContent = styled(motion.div)<SidebarWidthProps>`
   background-color: aliceblue;
   overflow: hidden;
   width: ${(props) => `${props.openWidth}rem`};
