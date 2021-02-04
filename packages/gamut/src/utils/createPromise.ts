@@ -1,7 +1,7 @@
 export type CreatedPromise<T> = {
   innerPromise: Promise<T>;
   reject: (reason?: any) => void;
-  resolve: (value?: T | PromiseLike<T> | undefined) => void;
+  resolve: (value: T | PromiseLike<T>) => void;
 };
 
 /**

@@ -18,7 +18,7 @@
     "babel-preset-codecademy": "^2.3.0",
     "jest-fetch-mock": "^3.0.3",
     "ts-jest": "^26.4.1",
-    "typescript": "^4.0.3"
+    "typescript": "*"
   },
   "scripts": {
     "verify": "tsc --noEmit",
