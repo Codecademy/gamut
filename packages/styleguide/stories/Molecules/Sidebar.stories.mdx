@@ -1,8 +1,8 @@
 import {
   Box,
   FlexBox,
-  Sidebar,
-  SidebarTab,
+  SidebarOverlay,
+  SidebarBox,
   TextButton,
   AccordionButton,
 } from '@codecademy/gamut/src';
@@ -11,7 +11,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
-  component={Sidebar}
+  component={SidebarOverlay}
   parameters={{
     subtitle:
       'A sidebar for fun -- it is usually an overlay but also can take up space!',
@@ -21,11 +21,10 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 />
 
 <Canvas>
-  <Story name="Sidebar">
+  <Story name="SidebarOverlay">
     {(args) => (
       <Box height="20rem">
-        <Sidebar
-          overlay
+        <SidebarOverlay
           openFrom={'left'}
           button={
             <TextButton height={'5rem'} width={'5rem'}>
@@ -42,7 +41,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
           all the Eldar who have ever lived, a formidable claim that would make
           him a deadly opponent indeed. Though he moves with the subtlety and
           grace of a zephyr, he attacks with the force of a hurricane.
-        </Sidebar>
+        </SidebarOverlay>
         <FlexBox>
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
@@ -56,17 +55,17 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   </Story>
 </Canvas>
 
-<Props story="Sidebar" />
+<Props story="SidebarOverlay" />
 
 ## I take up space. + I have a tab button. Deal with it.
 
 Sometimes Sidebars are just components that need to take up space. We get it. This one will take up the height of its parent container, so jot that down.
 
 <Canvas>
-  <Story name="SidebarTab">
+  <Story name="SidebarBox">
     {(args) => (
       <FlexBox height="20rem">
-        <SidebarTab expanded={true} {...args}>
+        <SidebarBox expanded={true} {...args}>
           Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
           the oldest of the Swooping Hawks and the first Exarch of those winged
           Aspect Warriors. Baharroth is the founder of the Eldar Warrior Path
@@ -75,7 +74,7 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
           all the Eldar who have ever lived, a formidable claim that would make
           him a deadly opponent indeed. Though he moves with the subtlety and
           grace of a zephyr, he attacks with the force of a hurricane.
-        </SidebarTab>
+        </SidebarBox>
         <FlexBox>
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
@@ -89,4 +88,4 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
   </Story>
 </Canvas>
 
-<Props story="SidebarTab" />
+<Props story="SidebarBox" />

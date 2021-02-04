@@ -1,5 +1,5 @@
-import { Container } from '@codecademy/gamut/src';
-import { SidebarTabButton } from './SidebarTabButton';
+import { FlexBox } from '@codecademy/gamut/src';
+import { SidebarButton } from './SidebarButton';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
@@ -8,7 +8,7 @@ import styled from '@emotion/styled';
 import { SidebarBaseProps, SidebarWrapperProps } from './shared';
 
 //In-space component
-const SidebarWrapper = styled(Container)<SidebarWrapperProps>`
+const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
   height: 100%;
   position: relative;
   width: ${(props) => `${props.openWidth}rem`};
@@ -22,7 +22,7 @@ const SidebarContent = styled(motion.div)<SidebarWrapperProps>`
 
 const transitionDuration = 0.35;
 
-export const SidebarTab: React.FC<SidebarBaseProps> = ({
+export const SidebarBox: React.FC<SidebarBaseProps> = ({
   children,
   expanded = false,
   openFrom = 'right',
@@ -41,7 +41,7 @@ export const SidebarTab: React.FC<SidebarBaseProps> = ({
   const xAnimationValue = openFrom === 'left' ? 0 : -504;
 
   return (
-    <SidebarWrapper openWidth={openWidth}>
+    <SidebarWrapper openWidth={openWidth} id="yolo">
       <SidebarContent
         aria-expanded={isSidebarOpen}
         initial={false}
@@ -53,7 +53,7 @@ export const SidebarTab: React.FC<SidebarBaseProps> = ({
       >
         {children}
       </SidebarContent>
-      <SidebarTabButton
+      <SidebarButton
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
         key={'navy'}

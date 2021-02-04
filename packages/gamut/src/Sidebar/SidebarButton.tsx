@@ -33,7 +33,7 @@ const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`
   transform: ${(props) => (props.expanded ? `rotate(180deg)` : `none`)};
 `;
 
-export const SidebarTabButton: React.FC<SidebarButtonProps> = ({
+export const SidebarButton: React.FC<SidebarButtonProps> = ({
   expanded,
   onClick,
   children,

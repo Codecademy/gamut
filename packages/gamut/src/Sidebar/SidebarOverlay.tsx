@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut/src';
-import { SidebarTabButton } from './SidebarTabButton';
+import { SidebarButton } from './SidebarButton';
 import { CloseIcon } from '@codecademy/gamut-icons/src';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { SidebarBaseProps, SidebarWrapperProps } from './shared';
 import styled from '@emotion/styled';
 
-export type SidebarFullPageProps = SidebarBaseProps & {
+export type SidebarOverlayProps = SidebarBaseProps & {
   button: React.ReactNode;
 };
 
@@ -24,7 +24,7 @@ const Drawer = styled(motion.div)<SidebarWrapperProps>`
 
 const transitionDuration = 0.35;
 
-export const Sidebar: React.FC<SidebarFullPageProps> = ({
+export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
   children,
   button,
   expanded = false,
@@ -40,13 +40,13 @@ export const Sidebar: React.FC<SidebarFullPageProps> = ({
 
   return (
     <>
-      <SidebarTabButton
+      <SidebarButton
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
         data-testid="arrow-sidebar-button"
       >
         {button}
-      </SidebarTabButton>
+      </SidebarButton>
       <AnimatePresence>
         {isSidebarOpen ? (
           <Drawer

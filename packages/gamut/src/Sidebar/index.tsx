@@ -1,2 +1,2 @@
-export * from './FullPageSidebar';
-export * from './TabSidebar';
+export * from './SidebarOverlay';
+export * from './SidebarBox';
