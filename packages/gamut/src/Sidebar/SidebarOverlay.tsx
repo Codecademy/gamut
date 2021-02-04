@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import {
   SidebarBaseProps,
   SidebarWrapperProps,
-  SidebarComponentSideProps,
   transitionDuration,
 } from './shared';
 import styled from '@emotion/styled';
