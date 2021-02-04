@@ -1,11 +1,22 @@
 import { VideoProps } from '@codecademy/gamut';
 import { Column, LayoutGrid } from '@codecademy/gamut';
+import { breakpoints } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
 import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
 
+const LeftColumn = styled(Column)`
+  align-content: center;
+`;
+
+const SpacerColumn = styled(Column)`
+  @media only screen and (max-width: ${breakpoints.sm}) {
+    display: none;
+  }
+`;
 export type ImageProps = {
   src: string;
   alt: string;
@@ -26,7 +37,7 @@ export type PageHeroProps = BaseProps & {
 const columnSize = (type: string | undefined) => {
   if (!type) return 12;
   if (type === 'image') {
-    return 9;
+    return 8;
   } else if (type === 'video') {
     return 5;
   }
@@ -42,7 +53,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
 }) => {
   return (
     <LayoutGrid testId={testId} rowGap="md">
-      <Column
+      <LeftColumn
         size={{
           xs: 12,
           sm: columnSize(media?.type),
@@ -55,7 +66,8 @@ export const PageHero: React.FC<PageHeroProps> = ({
             {cta.text}
           </CTA>
         )}
-      </Column>
+      </LeftColumn>
+      <SpacerColumn size={1} />
       {media && <PageHeroMedia media={media} />}
     </LayoutGrid>
   );
