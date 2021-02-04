@@ -1,3 +1,7 @@
+import { HandlerProps } from '@codecademy/gamut-system';
+
+import { darkModeVariants } from './variants';
+
 export type BaseProps = {
   title?: string;
   /**
@@ -26,3 +30,5 @@ export type BaseProps = {
 export type CTAOnClickCallback = (
   event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLLinkElement>
 ) => void;
+
+export type DarkModeProps = HandlerProps<typeof darkModeVariants>;
