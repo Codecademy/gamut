@@ -3,16 +3,23 @@ import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
 import {
   focusStyles,
   hoverStyles,
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderDropdownItem,
+  AppHeaderProfileDropdownItem,
+} from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
-  item: AppHeaderDropdownItem;
-  openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
+  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  openSubMenu: (
+    event: React.MouseEvent,
+    item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem
+  ) => void;
 };
 
 const AppHeaderTextTargetButton = styled.button`
@@ -33,7 +40,14 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   item,
   openSubMenu,
 }) => {
-  const Icon = item.icon;
+  const getIcon = () => {
+    if (item.type === 'dropdown') {
+      const Icon = item.icon;
+      return Icon && <Icon size={24} aria-hidden />;
+    } else {
+      return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
+    }
+  };
 
   return (
     <AppHeaderTextTargetButton
@@ -49,11 +63,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         display="flex"
       >
         <FlexBox alignItems="center">
-          {Icon && (
-            <Box marginRight={16}>
-              <Icon size={24} aria-hidden />
-            </Box>
-          )}
+          <Box marginRight={16}>{getIcon()}</Box>
           {item.text}
         </FlexBox>
         <FlexBox alignSelf="end">
