@@ -1,0 +1,55 @@
+import { Testimonial } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Testimonial}
+  args={{
+    testimonial: {
+      firstName: 'Lacey',
+      lastName: 'Bathala',
+      company: 'Microsoft',
+      quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+      imageUrl: 'https://content.codecademy.com/courses/free/boba.svg',
+    },
+    size: 'small',
+    theme: 'dark',
+  }}
+  parameters={{
+    subtitle: `A pull quote for use in an editorial page.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open" className="dark">
+  <Story name="Testimonial">{(args) => <Testimonial {...args} />}</Story>
+</Canvas>
+
+<Props story="Testimonial" />
+
+<Canvas className="dark" columns={1}>
+  <Story name="Medium" args={{ size: 'medium' }}>
+    {(args) => <Testimonial {...args} />}
+  </Story>
+  <Story name="Large" args={{ size: 'large' }}>
+    {(args) => <Testimonial {...args} />}
+  </Story>
+  <Story
+    name="No Avatar"
+    args={{
+      testamonial: {
+        firstName: 'Lacey',
+        lastName: 'Bathala',
+        company: 'Microsoft',
+        quote: 'Coding aint rocket science, it’s just falsely intimidating.',
+      },
+      size: 'large',
+    }}
+  >
+    {(args) => <Testimonial {...args} />}
+  </Story>
+  <Story name="Light Theme" args={{ theme: 'light' }}>
+    {(args) => <Testimonial {...args} />}
+  </Story>
+</Canvas>

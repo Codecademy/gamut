@@ -5,6 +5,11 @@ import {
   CTA,
   Description,
   Feature,
+  FeaturedDescription,
+  FeaturedIcon,
+  FeaturedImage,
+  FeaturedStat,
+  FeaturedTitle,
   PageFeatures,
   PageFeaturesProps,
   Title,
@@ -66,14 +71,10 @@ describe('PageFeatures', () => {
     const wrapper = renderComponent({
       features: [
         {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
           title: 'Software Engineer',
           desc: '**Software Engineer**. Example link [here](#).',
         },
         {
-          imgSrc: 'https://content.codecademy.com/courses/free/boba.svg',
-          imgAlt: 'Codey boba tea',
           title: 'Data Scientist',
           desc: '**Data Scientist**. Example link [here](#).',
         },
@@ -81,4 +82,46 @@ describe('PageFeatures', () => {
     });
     expect(wrapper.find(Feature)).toHaveLength(2);
   });
+
+  const features_tt = [
+    ['image', ['imgSrc', 'imgAlt', 'title', 'desc'], [1, 0, 0, 1, 1]],
+    ['icon', ['imgSrc', 'imgAlt', 'title', 'desc'], [0, 1, 0, 1, 1]],
+    ['stat', ['statText', 'title', 'desc'], [0, 0, 1, 1, 1]],
+    ['text', ['title', 'desc'], [0, 0, 0, 1, 1]],
+  ];
+
+  it.each(features_tt)(
+    'it renders %s feature',
+    (featuresMedia, fields, components) => {
+      const m = (featuresMedia === 'text'
+        ? undefined
+        : featuresMedia) as PageFeaturesProps['featuresMedia'];
+      const f = fields as string[];
+      const c = components as number[];
+      const wrapper = renderComponent({
+        featuresMedia: m,
+        features: [
+          {
+            imgSrc: f.includes('imgSrc')
+              ? 'https://placekitten.com/50/50'
+              : undefined,
+            imgAlt: f.includes('imgAlt') ? 'Alternate image text' : undefined,
+            statText: f.includes('statText') ? '100%' : undefined,
+            title: f.includes('title') ? 'Software Engineer' : undefined,
+            desc: f.includes('desc')
+              ? '**Software Engineer**. Example link [here](#).'
+              : undefined,
+          },
+        ],
+      });
+
+      expect(wrapper.find(Feature)).toHaveLength(1);
+
+      expect(wrapper.find(FeaturedImage)).toHaveLength(c[0]);
+      expect(wrapper.find(FeaturedIcon)).toHaveLength(c[1]);
+      expect(wrapper.find(FeaturedStat)).toHaveLength(c[2]);
+      expect(wrapper.find(FeaturedTitle)).toHaveLength(c[3]);
+      expect(wrapper.find(FeaturedDescription)).toHaveLength(c[4]);
+    }
+  );
 });

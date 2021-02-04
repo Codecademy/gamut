@@ -18,6 +18,7 @@ export const swatches = {
   },
   yellow: {
     '0': '#FFFAE5',
+    '400': '#CCA900',
     '500': '#FFD300',
   },
   pink: {

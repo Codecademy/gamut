@@ -1,0 +1,19 @@
+import { EditorialQuote } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={EditorialQuote}
+  args={{ quote: 'In an interstellar burst, I am back to save the universe.' }}
+  parameters={{
+    subtitle: `A pull quote for use in an editorial page.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open" className="dark">
+  <Story name="EditorialQuote">{(args) => <EditorialQuote {...args} />}</Story>
+</Canvas>
+
+<Props story="EditorialQuote" />

@@ -1,0 +1,44 @@
+import { PagePrefooter } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={PagePrefooter}
+  args={{
+    title:
+      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    desc:
+      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+    cta: {
+      text: 'Supernatural',
+      href:
+        'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('You could add event tracking here');
+      },
+    },
+    mode: 'light',
+  }}
+  parameters={{
+    subtitle: `Prefooter component for landing pages created in Contentful. All props are optional.`,
+    status: 'volatile',
+  }}
+/>
+
+## With CTA
+
+<Canvas>
+  <Story name="With CTA">{(args) => <PagePrefooter {...args} />}</Story>
+</Canvas>
+
+<Props story="With CTA" />
+
+## Without CTA
+
+<Canvas>
+  <Story name="Without CTA">
+    {(args) => <PagePrefooter {...args} cta={undefined} />}
+  </Story>
+</Canvas>

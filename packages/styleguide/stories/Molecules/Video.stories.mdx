@@ -1,0 +1,43 @@
+import { Video } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Video}
+  parameters={{
+    subtitle: `
+This is an example video player that can play both youtube and vimeo videos
+given a video URL`,
+    source: 'gamut',
+  }}
+  args={{
+    videoUrl: 'https://vimeo.com/145702525',
+    videoTitle: 'Super Science Friends',
+    onReady: (player) => {
+      player.wrapper.querySelector('iframe').tabIndex = 0;
+    },
+  }}
+/>
+
+<Canvas>
+  <Story name="Video">{(args) => <Video {...args} />}</Story>
+</Canvas>
+
+<Props story="Video" />
+
+# Video with PlaceholderImage
+
+<Canvas>
+  <Story
+    name="Video with PlaceholderImage"
+    args={{
+      videoUrl: 'https://www.youtube.com/watch?v=Yl8yy5tpVIM',
+      videoTitle: 'Workout with Rick Sanchez',
+      placeholderImage: 'https://placekitten.com/400/300',
+      autoplay: true,
+    }}
+  >
+    {(args) => <Video {...args} />}
+  </Story>
+</Canvas>

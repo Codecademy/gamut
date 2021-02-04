@@ -1,8 +1,12 @@
 import initStoryshots, { renderWithOptions } from '@storybook/addon-storyshots';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import glob from 'glob';
 import path from 'path';
 
-global.STORYSHOTS_TOTAL = 9;
+const STORYSHOT_GLOB = '../__tests__/storyshots/*-test.ts';
+const storyShots = glob.sync(STORYSHOT_GLOB, { cwd: __dirname });
+
+global.STORYSHOTS_TOTAL = storyShots.length;
 
 export const runSplitStoryshotsTests = (index: number) => {
   global.STORYSHOTS_INDEX = index;
@@ -10,9 +14,8 @@ export const runSplitStoryshotsTests = (index: number) => {
   initStoryshots({
     framework: 'react',
     test: renderWithOptions({
-      renderer: mount,
+      renderer: render,
     }),
-    storyKindRegex: /^((?!.*?Popover).(?!.*?Overlay).)*$/,
     configPath: path.join(__dirname, '../.storybook'),
   });
 };

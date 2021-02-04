@@ -1,0 +1,24 @@
+import { Avatar } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Avatar}
+  parameters={{
+    subtitle: `Small, circular profile photo that includes a colored drop shadow.
+Commonly paired with a \`Byline\`.with the user with various connotations.`,
+    source: 'gamut-labs',
+    figmaId: 'ReGfRNillGABAj5SlITalN',
+  }}
+  args={{
+    alt: 'The Codey character drinking Boba tea',
+    src: 'https://content.codecademy.com/courses/free/boba.svg',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Avatar">{(args) => <Avatar {...args} />}</Story>
+</Canvas>
+
+<Props story="Avatar" />

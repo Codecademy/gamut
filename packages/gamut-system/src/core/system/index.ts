@@ -1,6 +1,6 @@
 import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
 
-import * as BASE_CONFIG from '../../props';
+import * as BaseConfig from '../../props';
 import { AbstractTheme } from '../../types/config';
 import { System, SystemConfig } from '../../types/system';
 import { compose } from '../compose';
@@ -19,7 +19,7 @@ const create = <
   } as any;
 
   // Merge the the default prop configurations and user defined ones together.
-  const propGroups = merge(BASE_CONFIG, config || {});
+  const propGroups = merge(BaseConfig, config || {});
 
   // Iterate over all the property groups
   entries(propGroups).forEach(([groupKey, groupProps]) => {

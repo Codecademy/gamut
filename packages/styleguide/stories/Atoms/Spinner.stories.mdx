@@ -1,0 +1,20 @@
+import { Spinner } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Spinner}
+  parameters={{
+    subtitle: `Perpetually spinning circle, such as for a loading indicator. Similar to a
+\`ProgressBar\`.`,
+    source: 'gamut',
+  }}
+  args={{ size: 60 }}
+/>
+
+<Canvas>
+  <Story name="Spinner">{(args) => <Spinner {...args} />}</Story>
+</Canvas>
+
+<Props story="Spinner" />

@@ -46,7 +46,7 @@ $close-button-color: fade-out($color-gray-900, 0.4);
   padding: 0.75rem;
 
   &:hover,
-  &:focus {
+  &:focus-visible {
     background-color: fade-out($color-gray-900, 0.94);
     box-shadow: none;
     color: $close-button-color;

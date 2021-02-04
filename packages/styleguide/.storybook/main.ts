@@ -4,8 +4,8 @@ const getStories = require('./getStories');
 
 // https://github.com/storybookjs/storybook/issues/12262#issuecomment-681953346
 // make a shallow copy of an object, rejecting keys that match /emotion/
-function emotionless(object) {
-  let result = {};
+function emotionless<T extends Record<string, unknown>>(object: T) {
+  let result = {} as T;
   for (let key in object) {
     if (!/emotion/.test(key)) {
       result[key] = object[key];
@@ -18,34 +18,21 @@ module.exports = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-knobs/register',
     './addons/system/preset',
   ],
   stories: getStories(),
-
-  babel: (config) => {
-    config.plugins = config.plugins.map((plugin) => {
-      if (/emotion/.test(plugin[0])) {
-        return [
-          require('@emotion/babel-plugin'),
-          {
-            sourceMap: true,
-            autoLabel: 'always',
-            labelFormat: '[local]',
-            cssPropOptimization: true,
-          },
-        ];
-      }
-
-      return plugin;
-    });
-    return config;
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+      propFilter: (prop: any) =>
+        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
+    },
   },
-  webpackFinal: (config) => {
+
+  webpackFinal: (config: any) => {
     config.module.rules = config.module.rules.concat(
       configs.css().module.rules
     );
