@@ -1,10 +1,11 @@
 import { IconButton } from '@codecademy/gamut/src';
 import { SidebarButton } from './SidebarButton';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
 import {
+  DrawerBase,
   SidebarBaseProps,
   SidebarWrapperProps,
   transitionDuration,
@@ -15,12 +16,11 @@ export type SidebarOverlayProps = SidebarBaseProps & {
   button: React.ReactNode;
 };
 
-const Drawer = styled(motion.div)<SidebarWrapperProps>`
+const Drawer = styled(DrawerBase)<SidebarWrapperProps>`
   height: 100vh;
   position: fixed;
   top: 0;
   z-index: 2;
-  background-color: grey;
   width: ${(props) => `${props.openWidth}rem`};
   right: ${(props) => (props.openFrom === 'right' ? `0` : `auto`)};
   left: ${(props) => (props.openFrom === 'left' ? `0` : `auto`)};
