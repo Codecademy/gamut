@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.5...@codecademy/styleguide@25.0.0) (2021-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+
+### Miscellaneous Chores
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse  ([042259e](https://github.com/Codecademy/client-modules/commit/042259e51bfea3864187adfe7b0a409d86b68634))
+
+
+
+### [24.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.4...@codecademy/styleguide@24.2.5) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.3...@codecademy/styleguide@24.2.4) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [24.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.2...@codecademy/styleguide@24.2.3) (2021-02-03)
 
 **Note:** Version bump only for package @codecademy/styleguide

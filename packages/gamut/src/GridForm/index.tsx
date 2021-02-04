@@ -63,9 +63,13 @@ export function GridForm<
   submit,
   validation = 'onSubmit',
 }: GridFormProps<Values>) {
-  const { errors, handleSubmit, register, setValue, formState } = useForm<
-    Values
-  >({
+  const {
+    errors,
+    handleSubmit,
+    register,
+    setValue,
+    formState,
+  } = useForm<Values>({
     defaultValues: fields.reduce<any>(
       (defaultValues, field) => ({
         ...defaultValues,
