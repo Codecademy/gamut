@@ -37,9 +37,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
     folded: { width: 0 },
   };
 
-  const xExitValue = openFrom === 'left' ? 700 : -1000;
-  const xAnimationValue = openFrom === 'left' ? 0 : -504;
-
   return (
     <SidebarWrapper openWidth={openWidth} id="yolo">
       <SidebarContent
