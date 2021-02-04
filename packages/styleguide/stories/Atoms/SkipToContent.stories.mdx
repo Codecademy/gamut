@@ -6,17 +6,21 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   title={title}
   component={SkipToContent}
   parameters={{
-    subtitle: 'An invisible component to make pages keyboard accessible',
+    subtitle: 'An invisible component to make pages more keyboard accessible.',
     source: 'gamut',
   }}
 />
 
 A hidden-by-default link that becomes visible when the user ~Tab~
-s over it (gives it focus). This type of control is necessary for pages
-that have a bunch of stuff keyboard users would have to Tab through to get
-to the page's main content. It takes in the ID of the elemnt it scrolls to
-and focuses ([dev.to article explaining why](https://dev.to/robdodson/managing-focus-64l))
-To see it, keep tabbing around on this page.
+s over it (gives it focus). It takes in the ID of the element it will scroll to
+and focus ([dev.to article explaining why](https://dev.to/robdodson/managing-focus-64l)) on click (via mouse or keyboard).
+
+This type of control is necessary for pages that have a bunch of stuff keyboard users would have to Tab through to get
+to the page's main content (like navigations).
+
+For this component to work properly, there must be an element with the ID passed into this component and that element should have its `tabIndex` set to `-1`. If there is a sticky header, you may have to set the z-index of this component so it is visible and you may have to offset the height of the header in the target element so it properly scrolls into view.
+
+To see it, keep tabbing around on this page or visit [the catalog](https://www.codecademy.com/catalog/language/javascript) and navigate via tab to see it in action.
 
 <Canvas>
   <Story name="SkipToContent">
