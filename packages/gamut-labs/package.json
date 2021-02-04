@@ -27,7 +27,7 @@
     "@codecademy/gamut-system": "^0.2.2",
     "classnames": "^2.2.5",
     "react-hotkeys-hook": "^2.3.1",
-    "react-use": "15.3.4"
+    "react-use": "15.3.8"
   },
   "scripts": {
     "verify": "tsc --noEmit",
