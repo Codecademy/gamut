@@ -1,9 +1,6 @@
 import { variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
 
-import { Mode } from './types';
-
-export const darkModeVariants = variant<'mode', Mode>({
+export const darkModeVariants = variant({
   prop: 'mode',
   variants: {
     dark: {
@@ -14,5 +11,3 @@ export const darkModeVariants = variant<'mode', Mode>({
     },
   },
 });
-
-export type DarkModeProps = HandlerProps<typeof darkModeVariants>;

@@ -1,7 +1,7 @@
 import { Box, CTAButton } from '@codecademy/gamut';
 import React from 'react';
 
-import { DarkModeProps } from './variants';
+import { DarkModeProps } from './types';
 
 export type CTAProps = DarkModeProps & {
   href: string;

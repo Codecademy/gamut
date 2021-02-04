@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
-import { BaseProps, Mode } from './types';
+import { BaseProps, DarkModeProps } from './types';
 
 const Grid = styled.div`
   display: grid;
@@ -45,10 +45,10 @@ export type PageVideo = {
   placeholderImage?: string;
 };
 
-export type PageVideoGalleryProps = BaseProps & {
-  videos: PageVideo[];
-  mode?: Mode;
-};
+export type PageVideoGalleryProps = BaseProps &
+  DarkModeProps & {
+    videos: PageVideo[];
+  };
 
 export const PageVideoGallery: React.FC<PageVideoGalleryProps> = ({
   videos,

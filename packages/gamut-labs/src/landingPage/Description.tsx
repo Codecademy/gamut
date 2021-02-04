@@ -2,8 +2,8 @@ import { Box, Markdown } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { BaseProps } from './types';
-import { DarkModeProps, darkModeVariants } from './variants';
+import { BaseProps, DarkModeProps } from './types';
+import { darkModeVariants } from './variants';
 
 const DescriptionContainer = styled(Box)<DarkModeProps>`
   ${darkModeVariants}

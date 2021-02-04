@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { Text } from '../experimental/Text';
-import { DarkModeProps, darkModeVariants } from './variants';
+import { DarkModeProps } from './types';
+import { darkModeVariants } from './variants';
 
 const StyledText = styled(Text)<DarkModeProps>`
   ${darkModeVariants}

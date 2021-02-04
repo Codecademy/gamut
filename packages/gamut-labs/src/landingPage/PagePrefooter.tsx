@@ -4,8 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
-import { BaseProps } from './types';
-import { DarkModeProps } from './variants';
+import { BaseProps, DarkModeProps } from './types';
 
 const FlexContainer = styled(Container)`
   ${mediaQueries.sm} {
