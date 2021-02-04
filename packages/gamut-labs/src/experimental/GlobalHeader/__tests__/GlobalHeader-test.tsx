@@ -9,10 +9,10 @@ import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
   login,
   myHome,
-  plansPricingDropdown,
+  pricingDropdown,
   resourcesDropdown,
   signUp,
   upgradeToPro,
@@ -102,11 +102,11 @@ describe('GlobalHeader', () => {
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getByText(forBusiness.text);
     });
 
     test('login', () => {
@@ -200,11 +200,11 @@ describe('GlobalHeader', () => {
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getByText(forBusiness.text);
     });
 
     test('profileDropdown', () => {
