@@ -1,6 +1,8 @@
 # Variants
 
-There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have `variant`, a function that is meant to make creating these combinations easy and scalable.
+There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have
+- `variant`, a function that is meant to make creating these combinations easy and scalable
+- `HandlerProps`, a generic type that can be applied to styled components consuming a variant
 
 ```tsx
 import styled from '@emotion/styled';
@@ -70,7 +72,9 @@ const colorVariant = variants({
   },
 });
 
-const Text = styled.p`
+export type TextProps = HandlerProps<typeof colorVariant>;
+
+const Text = styled.p<TextProps>`
   ${colorVariant}
 `;
 
