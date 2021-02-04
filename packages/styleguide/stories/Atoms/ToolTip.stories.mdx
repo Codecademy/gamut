@@ -2,20 +2,21 @@ import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { upperFirst } from 'lodash';
+
+import { TooltipArea } from './TooltipArea';
 
 <Meta
   title={title}
   component={ToolTip}
-  subcomponents={{ ToolTipPosition }}
   parameters={{
     subtitle:
-      'A floating text component that positions itself relative to its targetw',
+      'A floating text component that positions itself relative to its target.',
     source: 'gamut',
     figmaId: 'cTJDwsS9s3I0KkLpKaETn2',
   }}
   args={{
-    children: `Like the term fortnight, a term for a two week period, antantwig refers
-        to a three week period.`,
+    children: `Like the term fortnight, a term for a two week period, antantwig refers to a three week period.`,
     focusable: true,
     id: 'tooltip',
     target: <InfoCircleIcon size={20} />,
@@ -32,7 +33,54 @@ surfacing additional information that may or may not be relevant _without_ clutt
 the core interface.
 
 <Canvas>
-  <Story name="ToolTip">{(args) => <ToolTip {...args} />}</Story>
+  <Story name="ToolTip">
+    {(args) => (
+      <TooltipArea>
+        Hello! &nbsp;
+        <ToolTip {...args} />
+      </TooltipArea>
+    )}
+  </Story>
 </Canvas>
 
-<Props story="ToolTip" />
+<Props exclude={['target']} story="ToolTip" />
+
+## Position
+
+Tooltips can be positioned both horizontally and vertically relative to their target.
+
+<Canvas>
+  <Story name="Position">
+    {(args) => {
+      return Object.values(ToolTipPosition).map((position) => {
+        return (
+          <TooltipArea key={position}>
+            {position.split('-').map(upperFirst).join(' ')}: &nbsp;
+            <ToolTip {...args} position={position} />
+          </TooltipArea>
+        );
+      });
+    }}
+  </Story>
+</Canvas>
+
+## Theme
+
+Tooltips can be of a `dark` or `light` visual theme.
+
+<Canvas>
+  <Story name="Theme">
+    {(args) => (
+      <>
+        <TooltipArea>
+          Dark: &nbsp;
+          <ToolTip {...args} theme="dark" />
+        </TooltipArea>
+        <TooltipArea>
+          Light: &nbsp;
+          <ToolTip {...args} theme="light" />
+        </TooltipArea>
+      </>
+    )}
+  </Story>
+</Canvas>

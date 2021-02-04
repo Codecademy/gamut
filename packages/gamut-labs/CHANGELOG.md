@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.3...@codecademy/gamut-labs@9.0.0) (2021-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+
+### Miscellaneous Chores
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse  ([042259e](https://github.com/Codecademy/client-modules/commit/042259e51bfea3864187adfe7b0a409d86b68634))
+
+
+
+### [8.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.2...@codecademy/gamut-labs@8.3.3) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [8.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.1...@codecademy/gamut-labs@8.3.2) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [8.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.0...@codecademy/gamut-labs@8.3.1) (2021-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.2.0...@codecademy/gamut-labs@8.3.0) (2021-02-02)
+
+
+### Features
+
+* change LP components text color to navy ([76bb79a](https://github.com/Codecademy/client-modules/commit/76bb79a7d58da2bcdda487c0c95dd26ced648f20))
+
+
+
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.1.6...@codecademy/gamut-labs@8.2.0) (2021-02-02)
+
+
+### Features
+
+* **Mobile Menu:** mobile menu interactions ([aec9a6d](https://github.com/Codecademy/client-modules/commit/aec9a6dfb158e2f0b02dbf5a98bfe08e86a3f193))
+
+
+
+### [8.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.1.5...@codecademy/gamut-labs@8.1.6) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [8.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.1.4...@codecademy/gamut-labs@8.1.5) (2021-02-02)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

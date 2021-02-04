@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "5.2.2",
+  "version": "5.2.3",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.2.2",
     "case-sensitive-paths-webpack-plugin": "^2.3.0",
     "css-loader": "^3.5.2",
     "cssnano": "^4.1.10",
