@@ -32,3 +32,7 @@ export type FreeHeader = LoggedInHeader & {
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
 };
+
+export type LoadingHeader = BaseHeader & {
+  type: 'loading';
+};
