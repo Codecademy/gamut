@@ -5,7 +5,12 @@ import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
 
-import { SidebarBaseProps, SidebarWrapperProps } from './shared';
+import {
+  SidebarBaseProps,
+  SidebarComponentsBaseProps,
+  SidebarWrapperProps,
+  transitionDuration,
+} from './shared';
 
 //In-space component
 const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
@@ -14,31 +19,30 @@ const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
-const SidebarContent = styled(motion.div)<SidebarWrapperProps>`
+const SidebarContent = styled(motion.div)<SidebarComponentsBaseProps>`
   background-color: aliceblue;
   overflow: hidden;
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
-const transitionDuration = 0.35;
-
 export const SidebarBox: React.FC<SidebarBaseProps> = ({
   children,
   expanded = false,
-  openFrom = 'right',
+  openFrom = 'left',
   openWidth = 30,
   testId,
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
+  const width = `${openWidth}rem`;
 
   const variants = {
-    expanded: { width: '25rem' },
+    expanded: { width: width },
     folded: { width: 0 },
   };
 
   return (
-    <SidebarWrapper openWidth={openWidth} id="yolo">
+    <SidebarWrapper openWidth={openWidth} openFrom={openFrom}>
       <SidebarContent
         aria-expanded={isSidebarOpen}
         initial={false}

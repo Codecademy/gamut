@@ -1,11 +1,18 @@
-export type SidebarBaseProps = {
-  children: React.ReactNode;
-  expanded?: boolean;
+export type SidebarWidthProps = {
   openWidth?: number;
-  openFrom?: 'left' | 'right';
-  testId?: string;
 };
 
-export type SidebarWrapperProps = {
-  openWidth: number;
+export type SidebarComponentSideProps = {
+  openFrom?: 'left' | 'right';
 };
+
+export type SidebarBaseProps = SidebarWidthProps &
+  SidebarComponentSideProps & {
+    children: React.ReactNode;
+    expanded?: boolean;
+    testId?: string;
+  };
+
+export type SidebarWrapperProps = SidebarWidthProps & SidebarComponentSideProps;
+
+export const transitionDuration = 0.35;

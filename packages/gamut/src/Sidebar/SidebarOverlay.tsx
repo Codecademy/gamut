@@ -1,42 +1,43 @@
 import { IconButton } from '@codecademy/gamut/src';
 import { SidebarButton } from './SidebarButton';
-import { CloseIcon } from '@codecademy/gamut-icons/src';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
 
-import { SidebarBaseProps, SidebarWrapperProps } from './shared';
+import {
+  SidebarBaseProps,
+  SidebarWrapperProps,
+  SidebarComponentSideProps,
+  transitionDuration,
+} from './shared';
 import styled from '@emotion/styled';
 
 export type SidebarOverlayProps = SidebarBaseProps & {
   button: React.ReactNode;
 };
 
-//Drawer component
 const Drawer = styled(motion.div)<SidebarWrapperProps>`
   height: 100vh;
   position: fixed;
   top: 0;
-  right: 0;
   z-index: 2;
   background-color: grey;
   width: ${(props) => `${props.openWidth}rem`};
+  right: ${(props) => (props.openFrom === 'right' ? `0` : `auto`)};
+  left: ${(props) => (props.openFrom === 'left' ? `0` : `auto`)};
 `;
-
-const transitionDuration = 0.35;
 
 export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
   children,
   button,
   expanded = false,
-  openFrom = 'right',
+  openFrom = 'left',
   openWidth = 30,
   testId,
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
-
-  const xExitValue = openFrom === 'left' ? 700 : -1000;
-  const xAnimationValue = openFrom === 'left' ? 0 : -504;
+  const initialX = openFrom === 'left' ? -1000 : 1000;
 
   return (
     <>
@@ -51,14 +52,15 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
         {isSidebarOpen ? (
           <Drawer
             aria-expanded={isSidebarOpen}
-            initial={{ x: xExitValue }}
-            animate={{ x: xAnimationValue }}
-            exit={{ x: xExitValue }}
+            initial={{ x: initialX }}
+            animate={{ x: 0 }}
+            exit={{ x: initialX }}
             transition={{ duration: transitionDuration }}
-            openWidth={openWidth}
             data-testid={testId}
+            openWidth={openWidth}
+            openFrom={openFrom}
           >
-            <IconButton icon={CloseIcon} onClick={() => toggleDrawer()} />
+            <IconButton icon={MiniDeleteIcon} onClick={() => toggleDrawer()} />
             {children}
           </Drawer>
         ) : null}
