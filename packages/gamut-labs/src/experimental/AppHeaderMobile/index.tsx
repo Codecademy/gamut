@@ -6,7 +6,7 @@ import {
   Overlay,
   TextButton,
 } from '@codecademy/gamut';
-import { MenuIcon } from '@codecademy/gamut-icons';
+import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src/experimental/AppHeaderMobile/AppHeaderMainMenuMobile';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
@@ -35,7 +35,7 @@ const AppHeaderTextButton = styled(TextButton)(focusStyles);
 const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 // will likely move from here --
-const MenuButton = styled.button`
+const IconButton = styled.button`
   background-color: transparent;
   border: 1px solid transparent;
   color: ${({ theme }) => theme.colors.navy};
@@ -54,11 +54,7 @@ const mapItemToElement = (
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
-      return (
-        <AppHeaderTab key={item.id}>
-          <AppHeaderLogo item={item} action={action} />
-        </AppHeaderTab>
-      );
+      return <AppHeaderLogo item={item} action={action} key={item.id} />;
     case 'render-element':
       return <AppHeaderTab key={item.id}>{item.renderElement()}</AppHeaderTab>;
     case 'link':
@@ -119,7 +115,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <AppBarSection position="right">
           {items.right.map((item) => mapItemToElement(item, action))}
           <AppHeaderTab>
-            <MenuButton
+            <IconButton
               type="button"
               data-testid="header-mobile-menu"
               aria-label="open navigation menu"
@@ -128,7 +124,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               }}
             >
               <MenuIcon height={20} width={20} />
-            </MenuButton>
+            </IconButton>
           </AppHeaderTab>
         </AppBarSection>
       </AppBar>
@@ -147,18 +143,21 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 {renderMobileLeftItems()}
               </AppBarSection>
               <AppBarSection position="right">
-                <button
+                <IconButton
                   type="button"
+                  aria-label="close menu"
                   onClick={() => {
-                    console.log('test');
+                    setMobileMenuOpen(false);
                   }}
                 >
-                  Close
-                </button>
+                  <CloseIcon width={20} height={20} />
+                </IconButton>
               </AppBarSection>
             </AppBar>
-            <h2>Search Component</h2>
-            <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
+            <div className={styles.overlayBody}>
+              <h3>Search Component - placeholder</h3>
+              <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
+            </div>
           </div>
         </Overlay>
       </Container>
