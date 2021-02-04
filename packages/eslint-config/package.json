@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/eslint-config",
-  "version": "3.1.5",
+  "version": "3.1.7",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "repository": {
@@ -20,8 +20,8 @@
     "eslint": "^6.5.1"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "4.4.1",
-    "@typescript-eslint/parser": "4.4.1",
+    "@typescript-eslint/eslint-plugin": "4.14.1",
+    "@typescript-eslint/parser": "4.14.1",
     "eslint-config-prettier": "6.15.0",
     "eslint-mdx": "^1.8.2",
     "eslint-plugin-import": "2.22.1",

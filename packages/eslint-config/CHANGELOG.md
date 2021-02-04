@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [3.1.7](http://github.com///compare/@codecademy/eslint-config@3.1.6...@codecademy/eslint-config@3.1.7) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/eslint-config
+
+
+
+
+
+### [3.1.6](http://github.com///compare/@codecademy/eslint-config@3.1.5...@codecademy/eslint-config@3.1.6) (2021-02-01)
+
+
+### Bug Fixes
+
+* **lint:** Fix SB and Eslint config ([7591a72](http://github.com///commit/7591a72a12fe07889dabc1eda689aa16c53a7830))
+
+
+
 ### [3.1.5](http://github.com///compare/@codecademy/eslint-config@3.1.4...@codecademy/eslint-config@3.1.5) (2021-01-27)
 
 
