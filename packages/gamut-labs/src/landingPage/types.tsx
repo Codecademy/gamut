@@ -18,10 +18,11 @@ export type BaseProps = {
   cta?: {
     text: string;
     href: string;
-    onClick?: (
-      event: React.MouseEvent<HTMLButtonElement> &
-        React.MouseEvent<HTMLLinkElement>
-    ) => void;
+    onClick?: CTAOnClickCallback;
   };
   testId?: string;
 };
+
+export type CTAOnClickCallback = (
+  event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLLinkElement>
+) => void;

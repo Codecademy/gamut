@@ -1,13 +1,12 @@
 import { Box, CTAButton } from '@codecademy/gamut';
 import React from 'react';
 
+import { CTAOnClickCallback } from './types';
+
 export type CTAProps = {
   href: string;
   className?: string;
-  onCtaButtonClick?: (
-    event: React.MouseEvent<HTMLButtonElement> &
-      React.MouseEvent<HTMLLinkElement>
-  ) => void;
+  onCtaButtonClick?: CTAOnClickCallback;
 };
 
 export const CTA: React.FC<CTAProps> = ({
