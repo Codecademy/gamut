@@ -18,7 +18,10 @@ export type BaseProps = {
   cta?: {
     text: string;
     href: string;
-    onClick?: () => void;
+    onClick?: (
+      event: React.MouseEvent<HTMLButtonElement> &
+        React.MouseEvent<HTMLLinkElement>
+    ) => void;
   };
   testId?: string;
 };

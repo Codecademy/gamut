@@ -4,7 +4,10 @@ import React from 'react';
 export type CTAProps = {
   href: string;
   className?: string;
-  onCtaButtonClick?: () => void;
+  onCtaButtonClick?: (
+    event: React.MouseEvent<HTMLButtonElement> &
+      React.MouseEvent<HTMLLinkElement>
+  ) => void;
 };
 
 export const CTA: React.FC<CTAProps> = ({
