@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 
-import { AppHeaderItemsProp } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   communityDropdown,
@@ -21,11 +20,20 @@ import {
 } from './GlobalHeaderItems';
 import { User } from './types';
 
+export type AppHeaderItemsProps = {
+  left: AppHeaderItem[];
+  right: AppHeaderItem[];
+};
+
+export type AppHeaderMobileItemsProps = AppHeaderItemsProps & {
+  mainMenu: AppHeaderItem[];
+};
+
 const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
@@ -48,23 +56,23 @@ const anonHeaderItems = (
 
 export const anonDefaultHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   return anonHeaderItems(true, true, renderSearch);
 };
 
-export const anonLandingHeaderItems = (): AppHeaderItemsProp => {
+export const anonLandingHeaderItems = (): AppHeaderItemsProps => {
   return anonHeaderItems(true, false);
 };
 
 export const anonLoginHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   return anonHeaderItems(false, true, renderSearch);
 };
 
 export const anonSignupHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   return anonHeaderItems(true, false, renderSearch);
 };
 
@@ -72,7 +80,7 @@ export const freeHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
@@ -99,7 +107,7 @@ export const proHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProp => {
+): AppHeaderItemsProps => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
