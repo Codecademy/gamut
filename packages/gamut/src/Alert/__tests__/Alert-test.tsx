@@ -82,6 +82,36 @@ describe('Alert', () => {
     expect(onCtaClick).toHaveBeenCalled();
   });
 
+  it('opens the cta in a new tab unless specified', () => {
+    const newTabAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick, href: '/hello' }}
+      >
+        Hello
+      </Alert>
+    );
+
+    const cta = newTabAlert.find('a').at(0);
+    expect(cta.prop('target')).toEqual('_blank');
+
+    const sameTabAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{
+          text: 'Click Me',
+          onClick: onCtaClick,
+          href: '/hello',
+          openInSameTab: true,
+        }}
+      >
+        Hello
+      </Alert>
+    );
+    const specialCta = sameTabAlert.find('a').at(0);
+    expect(specialCta.prop('target')).toEqual(undefined);
+  });
+
   it('truncates any children to a limited number of lines', () => {
     const renderedAlert = mount(
       <Alert

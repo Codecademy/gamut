@@ -10,7 +10,7 @@ references:
     working_directory: ~/repo
     environment:
       GITHUB_BOT_USERNAME: codecademydev
-      NODE_OPTIONS: '--max_old_space_size=4096'
+      NODE_OPTIONS: '--max_old_space_size=8196'
       CIRCLE_TEST_REPORTS: /tmp/test-results
 
   yarn_cache_key_1: &yarn_cache_key_1 v1-yarn-{{ arch}}-{{ checksum "yarn.lock" }}
