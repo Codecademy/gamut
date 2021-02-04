@@ -1,7 +1,9 @@
 import { Box, CTAButton } from '@codecademy/gamut';
 import React from 'react';
 
-export type CTAProps = {
+import { DarkModeProps } from './types';
+
+export type CTAProps = DarkModeProps & {
   href: string;
   className?: string;
   onCtaButtonClick?: () => void;
@@ -9,12 +11,13 @@ export type CTAProps = {
 
 export const CTA: React.FC<CTAProps> = ({
   href,
+  mode,
   className,
   onCtaButtonClick,
   children,
 }) => (
   <Box marginTop={32} className={className}>
-    <CTAButton href={href} onClick={onCtaButtonClick}>
+    <CTAButton href={href} onClick={onCtaButtonClick} mode={mode}>
       {children}
     </CTAButton>
   </Box>

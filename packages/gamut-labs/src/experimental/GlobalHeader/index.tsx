@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AppHeader } from '../AppHeader';
+import { AppHeader, AppHeaderItemsProp } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   anonDefaultHeaderItems,
@@ -8,19 +8,24 @@ import {
   anonLoginHeaderItems,
   anonSignupHeaderItems,
   freeHeaderItems,
+  loadingHeaderItems,
   proHeaderItems,
 } from './GlobalHeaderVariants';
 import styles from './styles.module.scss';
-import { AnonHeader, FreeHeader, ProHeader } from './types';
+import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type HeaderClickHandler = (
   event: React.MouseEvent,
   item: AppHeaderItem
 ) => void;
 
-export type GlobalHeaderProps = AnonHeader | FreeHeader | ProHeader;
+export type GlobalHeaderProps =
+  | AnonHeader
+  | FreeHeader
+  | ProHeader
+  | LoadingHeader;
 
-const getAppHeaderItems = (props: GlobalHeaderProps) => {
+const getAppHeaderItems = (props: GlobalHeaderProps): AppHeaderItemsProp => {
   switch (props.type) {
     case 'anon':
       switch (props.variant) {
@@ -45,6 +50,8 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
         props.renderSearch,
         props.renderNotifications
       );
+    case 'loading':
+      return loadingHeaderItems;
   }
 };
 
