@@ -180,8 +180,21 @@ Examples:
 `feat(Button)!: made a breaking change in the Button component`
 
 You should do this if your changes introduce any incompatibilities with previous versions of the module.
-
 This will indicate to package consumers that they need to refactor their usage of the module to upgrade.
+
+#### Breaking Changes Release Process
+
+Because client-modules is a separate repository from its consumers, it can be tricky to coordinate technically breaking changes.
+If your changes will require changes in any downstream repositories:
+
+1. Create a PR in client-modules to create alpha package versions
+2. Create PRs in the repositories using those alpha package versions
+3. Update each downstream PR description to link to the client-modules PR, and vice versa
+4. Once all PRs have been approved, merge your client-modules PR first
+5. Update your repository PRs to use the new (non-alpha) package versions once published
+6. Merge your repository PRs
+
+This process minimizes the likelihood of accidental breaking changes in Gamut negatively affecting development on our other repositories.
 
 **Body**
 
@@ -191,6 +204,6 @@ This goes in the description for your PR, between the `<!--- CHANGELOG-DESCRIPTI
 
 If you include the text `BREAKING CHANGE:` in your description it will trigger a major version bump. We prefer to use the `feat!:` syntax for breaking changes described above.
 
-### Publishing the storybook
+## Publishing Storybook
 
-1.  Storybook is built and published automatically when there are merges into the main branch
+Storybook is built and published automatically when there are merges into the main branch.
