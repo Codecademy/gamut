@@ -71,6 +71,9 @@ const {
   },
 });
 
+type AllProps = Parameters<typeof css>[0];
+export interface SystemProps extends AllProps {}
+
 export {
   css,
   variant,
