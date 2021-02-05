@@ -30,7 +30,11 @@ const { ESLint } = require('eslint');
 
 const runESLint = async () => {
   process.env.ESLINT_TYPE_AWARE = 'false';
-  const eslint = new ESLint({ fix: true, useEslintrc: false });
+  const eslint = new ESLint({
+    fix: true,
+    useEslintrc: false,
+    overrideConfigFile: argv.config,
+  });
   const results = await eslint.lintFiles(argv.files);
   await ESLint.outputFixes(results);
 };
