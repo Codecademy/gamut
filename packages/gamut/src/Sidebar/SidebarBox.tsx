@@ -1,6 +1,5 @@
 import { FlexBox } from '@codecademy/gamut/src';
 import { SidebarButton } from './SidebarButton';
-import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
@@ -16,6 +15,7 @@ import {
 const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
   height: 100%;
   position: relative;
+  margin-right: ${({ theme }) => theme.spacing[8]};
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
@@ -58,7 +58,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
       <SidebarButton
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
-        key={'navy'}
         tab
         data-testid="arrow-sidebar-button"
       />
