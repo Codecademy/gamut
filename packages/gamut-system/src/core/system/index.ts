@@ -1,24 +1,30 @@
-import { entries, keys, mapValues, merge, pick, uniq, values } from 'lodash';
+import { entries, mapValues, merge, values } from 'lodash';
 
 import * as BaseConfig from '../../props';
 import { AbstractTheme } from '../../types/config';
 import { System, SystemConfig } from '../../types/system';
 import { compose } from '../compose';
 import { createHandler } from '../createHandler';
-import { getDefaultPropKey } from '../utils';
 
-const getPseudoGroups = (config: any) => {
+const handlePseudoSelectors = (config: any = {}, styleFn: any) => {
   const base: any = {};
-  const pseudoGroups: any = {};
-  entries(config).forEach(([key, value]) => {
-    if (key.charAt(0) === ':') {
-      pseudoGroups[`&${key}`] = value;
+  const pseudo: any = {};
+
+  Object.keys(config).forEach((key) => {
+    if (key.indexOf('&') === 0) {
+      pseudo[key] = config[key];
     } else {
-      base[key] = value;
+      base[key] = config[key];
     }
   });
 
-  return [base, pseudoGroups];
+  return (props?: any) => {
+    const theme = props?.theme ?? {};
+    return {
+      ...styleFn({ ...base, theme }),
+      ...mapValues(pseudo, (styles) => styleFn({ ...styles, theme })),
+    };
+  };
 };
 
 const create = <
@@ -28,7 +34,7 @@ const create = <
   config?: Config
 ): System<Theme, Config> => {
   // Initializes the return object
-  const systemShape = {
+  const system = {
     properties: {},
   } as any;
 
@@ -44,61 +50,37 @@ const create = <
     const groupHandler = compose(...values(propHandlers));
 
     // Add them to the default props group.
-    systemShape.properties = {
-      ...systemShape.properties,
+    system.properties = {
+      ...system.properties,
       ...propHandlers,
     };
 
     // Add the composite group handler to the correct propGroups key
-    systemShape[groupKey] = groupHandler;
+    system[groupKey] = groupHandler;
   });
+
+  const allSystemProps = compose(...(values(system.properties) as any));
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
     const variants = config?.variants || config;
     const propKey = config?.prop || 'variant';
-    // Collect the props the resulting variant function will be responsible for templating.
-    const props = uniq(
-      values(variants)
-        .reduce((carry, variant) => carry.concat(keys(variant)), [])
-        .map((prop: string) => getDefaultPropKey(prop))
-    );
-    // Pick the correct handlers from the system (closure specific) and create a composite.
-    const handlers = pick(systemShape.properties, props as any);
-
-    const variantHandler = compose(...(values(handlers) as any));
 
     // Return the variant function
     return (props: any) => {
-      const [base] = getPseudoGroups(variants[props[propKey]] || {});
-
-      return {
-        ...variantHandler({ ...base, theme: props.theme }),
-      };
+      const variantProps = variants[props[propKey]];
+      return handlePseudoSelectors(variantProps, allSystemProps)(props);
     };
   };
 
   // add the function to the returned object
-  systemShape.variant = createVariant;
+  system.variant = createVariant;
 
-  const baseCssFn = compose(...(values(systemShape.properties) as any));
-
-  const css = (config: any) => {
-    const [base, pseudoGroups] = getPseudoGroups(config);
-    return (props: any) => {
-      return merge(
-        baseCssFn({ ...base, theme: props.theme }),
-        mapValues(pseudoGroups, (pseudo: any) => {
-          return baseCssFn({ ...pseudo, theme: props.theme });
-        })
-      );
-    };
+  return {
+    ...system,
+    css: (config: any) => handlePseudoSelectors(config, allSystemProps),
+    variant: createVariant,
   };
-
-  // add css function
-  systemShape.css = css;
-
-  return systemShape;
 };
 
 export const system = {

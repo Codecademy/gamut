@@ -1,5 +1,3 @@
-import { SimplePseudos } from 'csstype';
-
 import { BaseSystemConfig } from '../props';
 import {
   AbstractTheme,
@@ -9,12 +7,26 @@ import {
 } from './config';
 import { UnionToIntersection, WeakRecord } from './utils';
 
+type PseudoSelectors =
+  | 'hover'
+  | 'active'
+  | 'focus'
+  | 'focus-visible'
+  | 'focus-within'
+  | 'visited';
+
+type PseudoElements = 'before' | 'after';
+
 export type ComplexCss<
   Theme extends AbstractTheme,
   Config extends SystemConfig<Theme>
 > = AllSystemProps<Theme, Config> &
   {
-    [key in SimplePseudos]?: AllSystemProps<Theme, Config>;
+    [key in
+      | PseudoSelectors
+      | PseudoElements as `&:${key}`]?: key extends PseudoElements
+      ? { content: string } & AllSystemProps<Theme, Config>
+      : AllSystemProps<Theme, Config>;
   };
 
 export type CSSObject = Record<string, string | number>;

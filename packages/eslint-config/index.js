@@ -27,7 +27,6 @@ module.exports = {
         'unused-imports/no-unused-imports': 'error',
         'react/react-in-jsx-scope': 'off',
         'react/no-unescaped-entities': 'off',
-        'react/jsx-no-undef': 'off',
       },
     },
     {
@@ -41,6 +40,26 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
       ],
+      rules: {
+        // These rules could be useful, but we haven't gotten around to trying them out
+        // Additionally, they're moved into this override object (further nested from the rules
+        // key down lower in the file), because as a result of the `extends` command pulling
+        // in additional plugins, the base rules settings of turning this rules off were NOT
+        // being respected. By moving them into this override definition, they are properly
+        // being applied to subsequent plugin imports/extensions. Wild.
+        '@typescript-eslint/no-unsafe-member-access': 'off',
+        '@typescript-eslint/no-unsafe-call': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/restrict-template-expressions': 'off',
+        '@typescript-eslint/require-await': 'off',
+        '@typescript-eslint/prefer-regexp-exec': 'off',
+        '@typescript-eslint/unbound-method': 'off',
+        '@typescript-eslint/await-thenable': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        '@typescript-eslint/no-misused-promises': 'off',
+        '@typescript-eslint/restrict-plus-operands': 'off',
+      },
     },
   ],
 
@@ -93,14 +112,8 @@ module.exports = {
     'simple-import-sort/imports': 'error',
 
     // These rules could be useful, but we haven't gotten around to trying them out
-    '@typescript-eslint/no-unsafe-member-access': 'off',
-    '@typescript-eslint/no-unsafe-call': 'off',
-    '@typescript-eslint/no-unsafe-return': 'off',
-    '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/array-type': 'off',
-    '@typescript-eslint/await-thenable': 'off',
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/camelcase': 'off',
     '@typescript-eslint/explicit-member-accessibility': 'off',
@@ -108,21 +121,15 @@ module.exports = {
     '@typescript-eslint/member-ordering': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-floating-promises': 'off',
-    '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-require-imports': 'off',
     '@typescript-eslint/no-unnecessary-condition': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/prefer-includes': 'off',
-    '@typescript-eslint/prefer-regexp-exec': 'off',
     '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/require-array-sort-compare': 'off',
-    '@typescript-eslint/require-await': 'off',
-    '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
-    '@typescript-eslint/unbound-method': 'off',
     'import/named': 'off',
     'import/namespace': 'off',
     'import/no-unresolved': 'off',

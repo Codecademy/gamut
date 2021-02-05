@@ -2,40 +2,34 @@ import { Anchor, Box } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { focusStyles } from '../SharedStyles';
-import { AppHeaderLinkItem } from '../types';
+import { focusStyles, hoverStyles } from '../SharedStyles';
+import { AppHeaderClickHandler, AppHeaderLinkItem } from '../types';
 
-const AppHeaderLinkButtonOuter = styled(Anchor)(({ theme }) => {
-  return `
-  color: ${theme.colors.navy};
-  text-decoration: none;
-  display: block;
-  &:hover {
-    color: ${theme.colors.hyper};
-    text-decoration: none;
-  }
+const AppHeaderLinkButtonOuter = styled(Anchor)`
+  color: ${({ theme }) => theme.colors.navy};
+  ${hoverStyles}
   ${focusStyles}
 `;
-});
 
 const AppHeaderLinkButtonInner = styled(Box)`
   white-space: nowrap;
 `;
 
 export type AppHeaderLinkProps = {
+  action: AppHeaderClickHandler;
   item: AppHeaderLinkItem;
-  onClick: (event: React.MouseEvent) => {}; // TODO switch to HeaderClickHandler
 };
 
 export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
+  action,
   item,
-  onClick,
 }) => {
   return (
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      onClick={(event: React.MouseEvent) => onClick(event)} // TODO pass item through
+      onClick={(event) => action(event, item)}
+      target={item.newTab ? 'blank' : ''}
       variant="interface"
     >
       <AppHeaderLinkButtonInner

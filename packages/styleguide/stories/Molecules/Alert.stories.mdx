@@ -8,28 +8,23 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={Alert}
   parameters={{
     subtitle: `
-Alerts can be used to asynchronously display feedback or interactions
-with the user with various connotations.`,
+Alerts can be used to asynchronously display feedback or interactions with the user with various connotations.`,
     status: 'volatile',
     source: 'gamut',
     figmaId: 'TemYhRWOavsERWprDzRJCx',
   }}
+  args={{
+    showIcon: true,
+    cta: { text: 'Login' },
+    children:
+      'You have been logged out due to inactivity. Click the button to log in again.',
+    type: BannerType.Info,
+    lines: 1,
+  }}
 />
 
 <Canvas withSource="open">
-  <Story name="Alert">
-    {(args) => (
-      <Alert
-        showIcon
-        type={BannerType.Info}
-        cta={{ text: 'Login', onClick: action('CTA Click') }}
-        onClose={action('Close')}
-      >
-        {`You have been logged out due to inactivity.
-                Click the button to log in again.`}
-      </Alert>
-    )}
-  </Story>
+  <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 </Canvas>
 
 <Props story="Alert" />
@@ -172,8 +167,8 @@ You can optionally display an icon that matches the type of the alert you are sh
 
 ### Call to action
 
-You can add a call to action if specific feedback prompts user action. This is not requried as some
-feedback may not have an activity associated with it.
+You can add a call to action if specific feedback prompts user action. This is not required as some
+feedback may not have an activity associated with it. By default the CTA will open in a new tab.
 
 <Canvas>
   <Story name="Call to Action">
@@ -190,6 +185,28 @@ feedback may not have an activity associated with it.
       >
         Lorem ipsum dolor sit amet, blandit detracto vis an, purto latine
         torquatos eam ut.
+      </Alert>
+    )}
+  </Story>
+</Canvas>
+
+You may optionally specify if you don't want the cta to open in a new tab.
+
+<Canvas>
+  <Story name="Call to action that opens in the same tab">
+    {(args) => (
+      <Alert
+        showIcon={false}
+        type={BannerType.Notice}
+        cta={{
+          href: 'https://google.com',
+          onClick: action('Close'),
+          text: 'Click Me',
+          openInSameTab: true,
+        }}
+        onClose={action('Close')}
+      >
+        This cta does not open in a new tab.
       </Alert>
     )}
   </Story>

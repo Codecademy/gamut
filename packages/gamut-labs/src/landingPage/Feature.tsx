@@ -1,28 +1,75 @@
-import { Heading, Markdown } from '@codecademy/gamut';
+import { Box, Markdown } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
-const Icon = styled.img`
-  width: 4rem;
-  margin-top: 3rem;
+const Img = styled.img`
   margin-bottom: 2rem;
 `;
+export type FeaturedImageProps = {
+  src: string;
+  alt: string;
+};
+export const FeaturedImage: React.FC<FeaturedImageProps> = ({ src, alt }) => (
+  <Img alt={alt} src={src} width="100%" data-testid="feature-image" />
+);
 
-const Image = styled.img`
-  width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-`;
+export type FeaturedIconProps = {
+  src: string;
+  alt: string;
+};
+export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
+  <Img alt={alt} src={src} width="64px" data-testid="feature-icon" />
+);
 
-const StyledMarkdown = styled(Markdown)`
-  font-size: 1rem;
-`;
+export const FeaturedStat: React.FC = ({ children }) => (
+  <Text
+    as="div"
+    fontSize={{ xs: 44, lg: 64 }}
+    fontWeight="title"
+    data-testid="feature-stat"
+    textColor="navy"
+  >
+    {children}
+  </Text>
+);
+
+export type FeaturedTitleProps = {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
+export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
+  as,
+  children,
+}) => (
+  <Text
+    as={as || 'h3'}
+    fontSize={{ xs: 22, lg: 26 }}
+    fontWeight="title"
+    textColor="navy"
+  >
+    {children}
+  </Text>
+);
+
+export type FeaturedDescriptionProps = Pick<
+  BaseProps,
+  'desc' | 'onAnchorClick'
+>;
+export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
+  desc,
+  onAnchorClick,
+}) => (
+  <Box textColor="navy">
+    <Markdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
+  </Box>
+);
 
 const FeatureBlock = styled.div`
   flex: 1;
+  margin-top: 2rem;
   ${mediaQueries.sm} {
     &:not(:last-of-type) {
       margin-right: 1rem;
@@ -33,48 +80,9 @@ const FeatureBlock = styled.div`
     }
   }
 `;
-
 export type FeatureProps = {
-  /**
-   * Whether an icon or a full size image should be rendered
-   */
-  isIcon?: boolean;
-
-  /**
-   * Feature image URL
-   */
-  imgSrc: string;
-
-  /**
-   * Feature image alt text (for screen readers)
-   */
-  imgAlt?: string;
-} & Pick<BaseProps, 'title' | 'desc' | 'onAnchorClick' | 'testId'>;
-
-export const Feature: React.FC<FeatureProps> = ({
-  isIcon,
-  imgSrc,
-  imgAlt = '',
-  title,
-  desc,
-  onAnchorClick,
-  testId,
-}) => (
-  <FeatureBlock data-testid={testId}>
-    {isIcon ? (
-      <Icon src={imgSrc} alt={imgAlt} data-testid="feature-icon" />
-    ) : (
-      <Image src={imgSrc} alt={imgAlt} data-testid="feature-image" />
-    )}
-    {title && (
-      <Heading as="h3" hideMargin fontSize={{ xs: 'sm', sm: 'md' }}>
-        {title}
-      </Heading>
-    )}
-    {desc && (
-      <div>
-        <StyledMarkdown text={desc} onAnchorClick={onAnchorClick} />
-      </div>
-    )}
-  </FeatureBlock>
+  testId?: string;
+};
+export const Feature: React.FC<FeatureProps> = ({ testId, children }) => (
+  <FeatureBlock data-testid={testId}>{children}</FeatureBlock>
 );

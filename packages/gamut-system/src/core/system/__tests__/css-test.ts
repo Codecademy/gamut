@@ -1,11 +1,11 @@
 import { system } from '..';
 
-describe('system', () => {
+describe('css', () => {
   const { css } = system.create({});
 
   it('works', () => {
     const fn = css({
-      ':hover': {
+      '&:hover': {
         textAlign: 'center',
       },
     });

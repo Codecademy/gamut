@@ -1,5 +1,4 @@
 export * from './Avatar';
-export * from './BrandMonospace';
 export * from './Byline';
 export * from './EditorialMolecules';
 export * from './Header/HeaderContainer';

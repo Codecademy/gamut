@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 
 import { CTA, Description, Title } from './';
-import { BaseProps } from './types';
+import { BaseProps, DarkModeProps } from './types';
 
 const FlexContainer = styled(Container)`
   ${mediaQueries.sm} {
@@ -23,16 +23,17 @@ const StyledCTA = styled(CTA)`
   }
 `;
 
-export const PagePrefooter: React.FC<BaseProps> = ({
+export const PagePrefooter: React.FC<BaseProps & DarkModeProps> = ({
   title,
   desc,
   cta,
   onAnchorClick,
+  mode,
   testId,
 }) => {
-  const SectionTitle = title && <Title>{title}</Title>;
+  const SectionTitle = title && <Title mode={mode}>{title}</Title>;
   const Desc = desc && (
-    <Description text={desc} onAnchorClick={onAnchorClick} />
+    <Description text={desc} onAnchorClick={onAnchorClick} mode={mode} />
   );
 
   return cta ? (
@@ -41,7 +42,7 @@ export const PagePrefooter: React.FC<BaseProps> = ({
         {SectionTitle}
         {Desc}
       </FlexContent>
-      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick}>
+      <StyledCTA href={cta.href} onCtaButtonClick={cta.onClick} mode={mode}>
         {cta.text}
       </StyledCTA>
     </FlexContainer>

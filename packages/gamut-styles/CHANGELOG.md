@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [7.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.1...@codecademy/gamut-styles@7.7.2) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [7.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.0...@codecademy/gamut-styles@7.7.1) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.3...@codecademy/gamut-styles@7.7.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
+### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
+
+
+### Bug Fixes
+
+* **styles:** Default button focus styles to focus-visible ([6493ee2](https://github.com/Codecademy/client-modules/commit/6493ee2703b9f3e723ce0f5283b8b7d60e3e153e))
+
+
+
 ### [7.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.1...@codecademy/gamut-styles@7.6.2) (2020-12-14)
 
 

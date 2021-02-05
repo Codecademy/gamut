@@ -1,18 +1,12 @@
 import { Description } from '@storybook/addon-docs/blocks';
-import React, { useMemo } from 'react';
-import { getTitle, useKind, Kind } from './utils';
+import React from 'react';
+import { getTitle, useKind } from './utils';
 import { Box, Reset, SectionLink, SectionStatus } from './elements';
-
-interface SubsectionLink {
-  children: string;
-  kind: string;
-  story: string;
-}
 
 export const Section = ({ kind }: { kind: string }) => {
   const { title, subtitle, status, childrenKinds, components } = useKind(kind);
   const renderSubsection = () => {
-    let links = [];
+    let links: JSX.Element[] = [];
 
     if (childrenKinds.length > 0) {
       links = childrenKinds.map(({ kind }) => (

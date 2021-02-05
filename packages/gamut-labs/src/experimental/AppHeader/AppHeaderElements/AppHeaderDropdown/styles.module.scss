@@ -1,0 +1,30 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.copy {
+  display: inline-block;
+  text-align: center;
+  font-size: px-rem(16);
+  &::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
+.icon {
+  margin-left: px-rem(5);
+  color: $color-navy;
+  transition: transform 0.35s ease-out;
+}
+
+.open {
+  .copy {
+    font-weight: bold;
+  }
+  .icon {
+    transform: rotate(-180deg);
+  }
+}

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Logo } from '../../../../brand/Logo';
 import { focusStyles } from '../SharedStyles';
-import { AppHeaderLogoItem } from '../types';
+import { AppHeaderClickHandler, AppHeaderLogoItem } from '../types';
 
 const LogoButton = styled(Anchor)`
   display: inline-block;
@@ -18,18 +18,18 @@ const StyledLogo = styled(Logo)`
 `;
 
 export type AppHeaderLogoProps = {
+  action: AppHeaderClickHandler;
   item: AppHeaderLogoItem;
-  onClick: (event: React.MouseEvent) => {}; // eventually this will be of type HeaderClickHandler and take in a second parameter "item" (the react node)
 };
 
 export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
+  action,
   item,
-  onClick,
 }) => {
   return (
     <LogoButton
       data-testid={item.dataTestId}
-      onClick={(event: React.MouseEvent) => onClick(event)}
+      onClick={(event) => action(event, item)}
       href={item.href}
     >
       {<StyledLogo type={item.pro ? 'proMono' : 'default'} height={27} />}

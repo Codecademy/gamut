@@ -3,6 +3,418 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.0.1...@codecademy/styleguide@25.1.0) (2021-02-04)
+
+
+### Features
+
+* add dark mode to video gallery and prefooter ([8551755](https://github.com/Codecademy/client-modules/commit/8551755c3c4c8e637832c641754e0587f7860ced))
+
+
+
+### [25.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.0.0...@codecademy/styleguide@25.0.1) (2021-02-04)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Fixes for the static-sites transition ([#1361](https://github.com/Codecademy/client-modules/issues/1361)) ([0b88cca](https://github.com/Codecademy/client-modules/commit/0b88ccafc093c3cc4cad0e502864fe239f7e097e))
+
+
+
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.5...@codecademy/styleguide@25.0.0) (2021-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+
+### Miscellaneous Chores
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse  ([042259e](https://github.com/Codecademy/client-modules/commit/042259e51bfea3864187adfe7b0a409d86b68634))
+
+
+
+### [24.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.4...@codecademy/styleguide@24.2.5) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.3...@codecademy/styleguide@24.2.4) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.2...@codecademy/styleguide@24.2.3) (2021-02-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.1...@codecademy/styleguide@24.2.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.2.0...@codecademy/styleguide@24.2.1) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [24.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.1.0...@codecademy/styleguide@24.2.0) (2021-02-02)
+
+
+### Features
+
+* **Mobile Menu:** mobile menu interactions ([aec9a6d](https://github.com/Codecademy/client-modules/commit/aec9a6dfb158e2f0b02dbf5a98bfe08e86a3f193))
+
+
+
+## [24.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.3...@codecademy/styleguide@24.1.0) (2021-02-02)
+
+
+### Features
+
+* Conversion team pairings on docs: Badge, HighlightedText, ToolTip ([#1337](https://github.com/Codecademy/client-modules/issues/1337)) ([a5bc4b4](https://github.com/Codecademy/client-modules/commit/a5bc4b46e6d6bd14ed87e8557d869d6499860d26))
+
+
+
+### [24.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.2...@codecademy/styleguide@24.0.3) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.1...@codecademy/styleguide@24.0.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [24.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@24.0.0...@codecademy/styleguide@24.0.1) (2021-02-02)
+
+
+### Bug Fixes
+
+* **Feature:** Refactor the Feature component ([#1336](https://github.com/Codecademy/client-modules/issues/1336)) ([386f9dc](https://github.com/Codecademy/client-modules/commit/386f9dc82623d39992b4b7ea343a616f7a4fbf30))
+
+
+
+## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.3.0...@codecademy/styleguide@24.0.0) (2021-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** open cta in new tab by default (#1350)
+
+### Features
+
+* **Alert:** open cta in new tab by default ([#1350](https://github.com/Codecademy/client-modules/issues/1350)) ([c45ab6f](https://github.com/Codecademy/client-modules/commit/c45ab6fb49e9c94b8eb2610f80f12242dd85d006)), closes [#1330](https://github.com/Codecademy/client-modules/issues/1330)
+
+
+
+## [23.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.2.0...@codecademy/styleguide@23.3.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.1...@codecademy/styleguide@23.2.0) (2021-02-01)
+
+
+### Features
+
+* **AppHeaderProfileDropdown:** Pass through user avatar and display name ([#1330](https://github.com/Codecademy/client-modules/issues/1330)) ([dcbf9f3](https://github.com/Codecademy/client-modules/commit/dcbf9f3fcf9cbacd4396a3563bcd0293074c72c4))
+
+
+
+### [23.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.1.0...@codecademy/styleguide@23.1.1) (2021-02-01)
+
+
+### Bug Fixes
+
+* **lint:** Fix SB and Eslint config ([7591a72](https://github.com/Codecademy/client-modules/commit/7591a72a12fe07889dabc1eda689aa16c53a7830))
+
+
+
+## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.1...@codecademy/styleguide@23.1.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@23.0.0...@codecademy/styleguide@23.0.1) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.4...@codecademy/styleguide@23.0.0) (2021-01-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **PageHero:** added functionality for PageHero to take images or videos as props
+
+### Features
+
+* **PageHero:** added functionality for PageHero to take images or videos as props ([3a9040f](https://github.com/Codecademy/client-modules/commit/3a9040f30c3a0784cec0e7cb2c6ac2f48251d586))
+
+
+
+### [22.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.3...@codecademy/styleguide@22.0.4) (2021-01-29)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.2...@codecademy/styleguide@22.0.3) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [22.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.1...@codecademy/styleguide@22.0.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* **Alert:** Prevent JS test loop for line defaults ([2c1c467](https://github.com/Codecademy/client-modules/commit/2c1c467248c9161d0290feebcf7855f4e3cdeedd))
+
+
+
+### [22.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@22.0.0...@codecademy/styleguide@22.0.1) (2021-01-28)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.2...@codecademy/styleguide@22.0.0) (2021-01-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Toggle:** refactor to emotion and add focus styles
+
+### Features
+
+* **Toggle:** refactor to emotion and add focus styles ([54a17f4](https://github.com/Codecademy/client-modules/commit/54a17f4d25832416a33a7a4e09911c6fb1015999))
+
+
+
+### [21.24.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.1...@codecademy/styleguide@21.24.2) (2021-01-28)
+
+
+### Bug Fixes
+
+* scr => src ([c194b40](https://github.com/Codecademy/client-modules/commit/c194b40c8ba49204e020cc0fdce85569f4d3e5ed))
+
+
+
+### [21.24.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.24.0...@codecademy/styleguide@21.24.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* **styleguide:** import/export ([1b276f7](https://github.com/Codecademy/client-modules/commit/1b276f76d46f677e640e5a9651b16b273a3725be))
+
+
+
+## [21.24.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.23.0...@codecademy/styleguide@21.24.0) (2021-01-27)
+
+
+### Features
+
+* add 3-video gallery component ([a9175ec](https://github.com/Codecademy/client-modules/commit/a9175ece067e716476c85609d904f1e5e3ea9155))
+
+
+
+## [21.23.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.1...@codecademy/styleguide@21.23.0) (2021-01-27)
+
+
+### Features
+
+* **PageFeatures:** Allow the PageFeatures component to render in a grid ([#1312](https://github.com/Codecademy/client-modules/issues/1312)) ([4532a1e](https://github.com/Codecademy/client-modules/commit/4532a1e956ee56bf002f45b49fc529a9df147666))
+
+
+
+### [21.22.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.22.0...@codecademy/styleguide@21.22.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* re-add accordion animation ([cde0235](https://github.com/Codecademy/client-modules/commit/cde0235b8fbfea3f970a080efbb68b926ad2bf3a))
+
+
+
+## [21.22.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.21.0...@codecademy/styleguide@21.22.0) (2021-01-27)
+
+
+### Features
+
+* **Icons:** Adds initial Mini Bold streamline icons ([e3c521c](https://github.com/Codecademy/client-modules/commit/e3c521c5e2a4f207db079c942560c54c93125fa5))
+
+
+
+## [21.21.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.2...@codecademy/styleguide@21.21.0) (2021-01-27)
+
+
+### Features
+
+* **Mobile Menu components:** mobile menu set up ([#1320](https://github.com/Codecademy/client-modules/issues/1320)) ([6d33a20](https://github.com/Codecademy/client-modules/commit/6d33a204de35bf3167773241af2ed77706bbcb89))
+
+
+
+### [21.20.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.1...@codecademy/styleguide@21.20.2) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.20.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.20.0...@codecademy/styleguide@21.20.1) (2021-01-25)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Change focus outline color and add export ([#1322](https://github.com/Codecademy/client-modules/issues/1322)) ([e5fe628](https://github.com/Codecademy/client-modules/commit/e5fe628ca7e347d6c65e6efc50271a006ef7a6e5))
+
+
+
+## [21.20.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.1...@codecademy/styleguide@21.20.0) (2021-01-25)
+
+
+### Features
+
+* **styleguide:** Storybook config clean up ([01c70c8](https://github.com/Codecademy/client-modules/commit/01c70c858259a3b7b5dbb1f409cadb5feb395b3e))
+
+
+
+### [21.19.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.19.0...@codecademy/styleguide@21.19.1) (2021-01-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.19.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.1...@codecademy/styleguide@21.19.0) (2021-01-22)
+
+
+### Features
+
+* **docs:** Refresh story writing meta docs ([ffc1573](https://github.com/Codecademy/client-modules/commit/ffc1573cf72e9a0a2b03dd7e4acc45888a797f7d))
+
+
+
+### [21.18.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.18.0...@codecademy/styleguide@21.18.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.18.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.17.0...@codecademy/styleguide@21.18.0) (2021-01-22)
+
+
+### Features
+
+* **GlobalHeader:** add GlobalHeader component ([#1306](https://github.com/Codecademy/client-modules/issues/1306)) ([7656137](https://github.com/Codecademy/client-modules/commit/7656137fd532dcaeff37408b6bc1f6e933807aee))
+
+
+
+## [21.17.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.1...@codecademy/styleguide@21.17.0) (2021-01-22)
+
+
+### Features
+
+* **AppHeader:** add AppHeader component ([#1300](https://github.com/Codecademy/client-modules/issues/1300)) ([040ca60](https://github.com/Codecademy/client-modules/commit/040ca60dfd4e98eb2c48aada2d40eab2a63425cf))
+
+
+
+### [21.16.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.16.0...@codecademy/styleguide@21.16.1) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [21.16.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.7...@codecademy/styleguide@21.16.0) (2021-01-22)
+
+
+### Features
+
+* **PageFeatures:** allow this component to render stats and no media, in addition to images and icons ([#1307](https://github.com/Codecademy/client-modules/issues/1307)) ([61370f5](https://github.com/Codecademy/client-modules/commit/61370f508390b3fbc4eb3aef660684c9253617a8))
+
+
+
+### [21.15.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.6...@codecademy/styleguide@21.15.7) (2021-01-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.5...@codecademy/styleguide@21.15.6) (2021-01-20)
+
+
+### Bug Fixes
+
+* **styleguide:** Enable no jsx-no-undef on mdx ([06b9ceb](https://github.com/Codecademy/client-modules/commit/06b9cebf86429a825375e8532b1b550a5844ca28))
+
+
+
+### [21.15.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.4...@codecademy/styleguide@21.15.5) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [21.15.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.3...@codecademy/styleguide@21.15.4) (2021-01-20)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [21.15.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@21.15.2...@codecademy/styleguide@21.15.3) (2021-01-19)
 
 
