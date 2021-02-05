@@ -22,11 +22,11 @@ import {
   AppHeaderItem,
 } from './../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from './../AppHeaderMobile/AppHeaderLinkMobile';
-import { AppHeaderMobileItemsProps } from './../GlobalHeader/GlobalHeaderVariants';
+import { FormattedAppHeaderMobileItems } from './../GlobalHeader/GlobalHeaderVariants';
 import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
-  items: AppHeaderMobileItemsProps;
+  items: FormattedAppHeaderMobileItems;
   className?: string;
   action: AppHeaderClickHandler;
 };
@@ -34,7 +34,6 @@ export type AppHeaderMobileProps = {
 const AppHeaderTextButton = styled(TextButton)(focusStyles);
 const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
-// will likely move from here --
 const IconButton = styled.button`
   background-color: transparent;
   border: 1px solid transparent;
@@ -45,9 +44,6 @@ const IconButton = styled.button`
   ${focusStyles}
 `;
 
-/* for right now - this function is same as in AppHeader with small exceptions of using mobile version of link
- ISSUE: order of items is different between mobile + desktop
-ex. search, ex. separating elements to go in hamburger menu */
 const mapItemToElement = (
   item: AppHeaderItem,
   action: AppHeaderClickHandler
@@ -104,14 +100,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     setMobileMenuOpen(true);
   };
 
-  const renderMobileLeftItems = () => {
+  const renderLeftItems = () => {
     return items.left.map((item) => mapItemToElement(item, action));
   };
 
   return (
     <>
       <AppBar className={className}>
-        <AppBarSection position="left">{renderMobileLeftItems()}</AppBarSection>
+        <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
         <AppBarSection position="right">
           {items.right.map((item) => mapItemToElement(item, action))}
           <AppHeaderTab>
@@ -139,9 +135,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         >
           <div>
             <AppBar>
-              <AppBarSection position="left">
-                {renderMobileLeftItems()}
-              </AppBarSection>
+              <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
               <AppBarSection position="right">
                 <IconButton
                   type="button"

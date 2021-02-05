@@ -7,7 +7,7 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { AppHeaderItemsProps } from './../GlobalHeader/GlobalHeaderVariants';
+import { FormattedAppHeaderItems } from './../GlobalHeader/GlobalHeaderVariants';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -21,7 +21,7 @@ import {
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   className?: string;
-  items: AppHeaderItemsProps;
+  items: FormattedAppHeaderItems;
 };
 
 const AppHeaderTextButton = styled(TextButton)(focusStyles);

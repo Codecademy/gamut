@@ -20,12 +20,12 @@ import {
 } from './GlobalHeaderItems';
 import { User } from './types';
 
-export type AppHeaderItemsProps = {
+export type FormattedAppHeaderItems = {
   left: AppHeaderItem[];
   right: AppHeaderItem[];
 };
 
-export type AppHeaderMobileItemsProps = AppHeaderItemsProps & {
+export type FormattedAppHeaderMobileItems = FormattedAppHeaderItems & {
   mainMenu: AppHeaderItem[];
 };
 
@@ -33,7 +33,7 @@ const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
   renderSearch?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
@@ -56,23 +56,23 @@ const anonHeaderItems = (
 
 export const anonDefaultHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(true, true, renderSearch);
 };
 
-export const anonLandingHeaderItems = (): AppHeaderItemsProps => {
+export const anonLandingHeaderItems = (): FormattedAppHeaderItems => {
   return anonHeaderItems(true, false);
 };
 
 export const anonLoginHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(false, true, renderSearch);
 };
 
 export const anonSignupHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(true, false, renderSearch);
 };
 
@@ -80,7 +80,7 @@ export const freeHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
@@ -107,7 +107,7 @@ export const proHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProps => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,

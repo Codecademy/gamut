@@ -14,7 +14,7 @@ import {
   anonLandingHeaderItems,
   anonLoginHeaderItems,
   anonSignupHeaderItems,
-  AppHeaderMobileItemsProps,
+  FormattedAppHeaderMobileItems,
   freeHeaderItems,
   proHeaderItems,
 } from './GlobalHeaderVariants';
@@ -56,7 +56,7 @@ const getAppHeaderItems = (props: GlobalHeaderProps) => {
   }
 };
 
-const getMobileAppHeaderItems = (): AppHeaderMobileItemsProps => {
+const getMobileAppHeaderItems = (): FormattedAppHeaderMobileItems => {
   return {
     left: [
       {
