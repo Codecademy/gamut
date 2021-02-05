@@ -61,8 +61,10 @@ const create = <
 
   const allSystemProps = compose(...(values(system.properties) as any));
 
+  const css = (config: any) => handlePseudoSelectors(config, allSystemProps);
+
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
-  const createVariant = (config: any) => {
+  const variant = (config: any) => {
     const defaultKey = config?.default;
 
     const variants = config?.variants || config;
@@ -76,12 +78,10 @@ const create = <
   };
 
   // add the function to the returned object
-  system.variant = createVariant;
-
   return {
     ...system,
-    css: (config: any) => handlePseudoSelectors(config, allSystemProps),
-    variant: createVariant,
+    css,
+    variant,
   };
 };
 
