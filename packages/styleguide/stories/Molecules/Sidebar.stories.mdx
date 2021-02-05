@@ -13,8 +13,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   title={title}
   component={SidebarOverlay}
   parameters={{
-    subtitle:
-      'A sidebar for fun -- it is usually an overlay but also can take up space!',
+    subtitle: 'A sidebar. It is usually an overlay but also can take up space!',
     status: 'volatile',
     source: 'gamut',
   }}
@@ -66,7 +65,7 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
   <Story name="SidebarBox">
     {(args) => (
       <FlexBox height="20rem">
-        <SidebarBox expanded={true} {...args}>
+        <SidebarBox backgroundColor={'palePink'} expanded={true} {...args}>
           Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
           the oldest of the Swooping Hawks and the first Exarch of those winged
           Aspect Warriors. Baharroth is the founder of the Eldar Warrior Path

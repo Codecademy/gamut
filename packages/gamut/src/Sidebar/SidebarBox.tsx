@@ -6,21 +6,20 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
 import {
+  DrawerBase,
   SidebarBaseProps,
   SidebarWrapperProps,
   SidebarWidthProps,
   transitionDuration,
 } from './shared';
 
-//In-space component
 const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
   height: 100%;
   position: relative;
   width: ${(props) => `${props.openWidth}rem`};
 `;
 
-const SidebarContent = styled(motion.div)<SidebarWidthProps>`
-  background-color: aliceblue;
+const SidebarContent = styled(DrawerBase)<SidebarWidthProps>`
   overflow: hidden;
   width: ${(props) => `${props.openWidth}rem`};
 `;
@@ -31,6 +30,7 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
+  ...styleProps
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
@@ -51,6 +51,7 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         openWidth={openWidth}
         data-testid={testId}
+        {...styleProps}
       >
         {children}
       </SidebarContent>

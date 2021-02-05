@@ -35,7 +35,6 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
   testId,
   ...styleProps
 }) => {
-  console.log(styleProps);
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
   const initialX = openFrom === 'left' ? -1000 : 1000;
