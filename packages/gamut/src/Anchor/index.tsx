@@ -10,7 +10,9 @@ const anchorVariants = variant({
     },
   },
   interface: {
-    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+    },
   },
 });
 
