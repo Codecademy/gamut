@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { AppHeaderFillButton } from '../..';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
@@ -49,6 +50,16 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             item={item}
             openSubMenu={openSubMenu}
           />
+        );
+      case 'fill-button':
+        return (
+          <AppHeaderFillButton
+            data-testid={item.dataTestId}
+            href={item.href}
+            onClick={(event: React.MouseEvent) => action(event, item)}
+          >
+            {item.text}
+          </AppHeaderFillButton>
         );
     }
   };

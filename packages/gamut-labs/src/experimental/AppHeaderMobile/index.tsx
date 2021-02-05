@@ -6,11 +6,10 @@ import {
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
-import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src/experimental/AppHeaderMobile/AppHeaderMainMenuMobile';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement } from '..';
+import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
 import { FormattedMobileAppHeaderItems } from '../GlobalHeader/GlobalHeaderVariants';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
@@ -21,9 +20,9 @@ import { AppHeaderClickHandler } from './../AppHeader/AppHeaderElements/types';
 import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
-  items: FormattedMobileAppHeaderItems;
-  className?: string;
   action: AppHeaderClickHandler;
+  className?: string;
+  items: FormattedMobileAppHeaderItems;
 };
 
 const IconButton = styled.button`
@@ -37,9 +36,9 @@ const IconButton = styled.button`
 `;
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
-  items,
-  className,
   action,
+  className,
+  items,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -128,7 +127,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           onRequestClose={() => setMobileMenuOpen(false)}
         >
           <div>
-            <AppBar>
+            <AppBar className={className}>
               <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
               <AppBarSection position="right">
                 <IconButton

@@ -24,8 +24,8 @@ export type AppHeaderProps = {
   items: FormattedAppHeaderItems;
 };
 
-const AppHeaderTextButton = styled(TextButton)(focusStyles);
-const AppHeaderFillButton = styled(FillButton)(focusStyles);
+export const AppHeaderTextButton = styled(TextButton)(focusStyles);
+export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
@@ -82,9 +82,9 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-  items,
-  className,
   action,
+  className,
+  items,
 }) => {
   return (
     <AppBar className={className}>
