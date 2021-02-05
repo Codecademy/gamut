@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  AppBarSection,
-  ButtonDeprecatedBase,
-  Container,
-  Overlay,
-} from '@codecademy/gamut';
+import { AppBar, AppBarSection, ButtonDeprecatedBase } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
@@ -105,49 +99,37 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <AppBarSection position="right">
           {items.right.map((item) => mapItemToElement(action, item))}
           <AppHeaderTab>
-            <IconButton
-              type="button"
-              data-testid="header-mobile-menu"
-              aria-label="open navigation menu"
-              onClick={() => {
-                openMobileMenu();
-              }}
-            >
-              <MenuIcon height={20} width={20} />
-            </IconButton>
+            {mobileMenuOpen ? (
+              <IconButton
+                type="button"
+                aria-label="close menu"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <CloseIcon width={20} height={20} />
+              </IconButton>
+            ) : (
+              <IconButton
+                type="button"
+                data-testid="header-mobile-menu"
+                aria-label="open navigation menu"
+                onClick={() => {
+                  openMobileMenu();
+                }}
+              >
+                <MenuIcon height={20} width={20} />
+              </IconButton>
+            )}
           </AppHeaderTab>
         </AppBarSection>
       </AppBar>
-      <Container>
-        <Overlay
-          className={styles.overlay}
-          clickOutsideCloses
-          escapeCloses
-          isOpen={mobileMenuOpen}
-          onRequestClose={() => setMobileMenuOpen(false)}
-        >
-          <div>
-            <AppBar className={className}>
-              <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
-              <AppBarSection position="right">
-                <IconButton
-                  type="button"
-                  aria-label="close menu"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  <CloseIcon width={20} height={20} />
-                </IconButton>
-              </AppBarSection>
-            </AppBar>
-            <div className={styles.overlayBody}>
-              {renderSearch()}
-              <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
-            </div>
-          </div>
-        </Overlay>
-      </Container>
+      {mobileMenuOpen && (
+        <div className={styles.overlayBody}>
+          {renderSearch()}
+          <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
+        </div>
+      )}
     </>
   );
 };
