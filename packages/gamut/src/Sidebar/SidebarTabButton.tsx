@@ -7,21 +7,26 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-export type SidebarTabButtonProps = ButtonDeprecatedBaseProps & {
+export type ArrowButtonProps = ButtonDeprecatedBaseProps & {
+  backgroundColor: any;
+};
+
+export type SidebarTabButtonProps = ArrowButtonProps & {
   expanded: boolean;
   onClick: () => void;
-  tab?: boolean;
-  children?: React.ReactNode;
 };
 
 export type RotatingArrowProps = {
   expanded: boolean;
 };
 
-const ArrowButton = styled(ButtonDeprecated)`
+const ArrowButton = styled(ButtonDeprecated)<ArrowButtonProps>`
+  position: absolute;
+  left: 100%;
+  top: 2rem;
   display: flex;
   align-content: center;
-  background-color: blue;
+  background-color: ${(props) => props.backgroundColor};
   height: 3rem;
   min-width: 2.3rem;
   margin: 1rem 0;
@@ -34,6 +39,7 @@ const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`
 `;
 
 export const SidebarTabButton: React.FC<SidebarTabButtonProps> = ({
+  backgroundColor,
   expanded,
   onClick,
 }) => {
@@ -41,8 +47,10 @@ export const SidebarTabButton: React.FC<SidebarTabButtonProps> = ({
     <ArrowButton
       aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
       aria-expanded={expanded}
+      backgroundColor={backgroundColor}
       onClick={onClick}
     >
+      {console.log(backgroundColor)}
       <RotatingArrow height={25} width={25} expanded={expanded} aria-hidden />
     </ArrowButton>
   );

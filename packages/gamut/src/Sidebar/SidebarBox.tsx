@@ -1,4 +1,4 @@
-import { FlexBox } from '@codecademy/gamut/src';
+import { Box, FlexBox } from '@codecademy/gamut/src';
 import { SidebarTabButton } from './SidebarTabButton';
 import React, { useState } from 'react';
 
@@ -7,17 +7,9 @@ import styled from '@emotion/styled';
 import {
   DrawerBase,
   SidebarBaseProps,
-  SidebarWrapperProps,
   SidebarWidthProps,
   transitionDuration,
 } from './shared';
-
-const SidebarWrapper = styled(FlexBox)<SidebarWrapperProps>`
-  height: 100%;
-  position: relative;
-  margin-right: ${({ theme }) => theme.spacing[8]};
-  width: ${(props) => `${props.openWidth}rem`};
-`;
 
 const SidebarContent = styled(DrawerBase)<SidebarWidthProps>`
   overflow: hidden;
@@ -43,7 +35,12 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
   };
 
   return (
-    <SidebarWrapper openWidth={openWidth} openFrom={openFrom}>
+    <FlexBox
+      height="100%"
+      position="relative"
+      marginRight={48}
+      backgroundColor={backgroundColor}
+    >
       <SidebarContent
         aria-expanded={isSidebarOpen}
         initial={false}
@@ -52,10 +49,10 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         openWidth={openWidth}
         data-testid={testId}
-        backgroundColor={backgroundColor}
+        overflowX="hidden"
         {...styleProps}
       >
-        {children}
+        <Box width={width}>{children}</Box>
       </SidebarContent>
       <SidebarTabButton
         backgroundColor={backgroundColor}
@@ -63,6 +60,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         onClick={() => toggleDrawer()}
         data-testid="arrow-sidebar-button"
       />
-    </SidebarWrapper>
+    </FlexBox>
   );
 };
