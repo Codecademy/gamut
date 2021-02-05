@@ -91,11 +91,11 @@ export type System<
       Keys extends string,
       Default extends Keys,
       Prop extends Readonly<string> = 'variant'
-    >(
-      config: {
-        variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
-      } & ({ prop: Prop } | { default: Default })
-    ): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
+    >(config: {
+      prop?: Prop;
+      default?: Default;
+      variants: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>;
+    }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */
     <Keys extends string>(
       config: Readonly<Record<Keys, AllSystemProps<Theme, Config>>>

@@ -57,8 +57,7 @@ const create = <
 
     // Return the variant function
     return (props: any) => {
-      const variantProps =
-        variants[props[propKey]] || variants[defaultKey] || {};
+      const variantProps = variants[props[propKey] || defaultKey];
       return variantHandler({ ...variantProps, theme: props.theme });
     };
   };
