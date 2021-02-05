@@ -37,7 +37,15 @@ describe('css', () => {
         },
       });
 
-      expect(fn).toBeDefined();
+      expect(fn({ theme: { fontSize: { sm: '14px' } } })).toEqual({
+        '&:hover': {
+          fontSize: '14px',
+        },
+        '&:before': {
+          content: '',
+          fontSize: '14px',
+        },
+      });
     });
   });
 });

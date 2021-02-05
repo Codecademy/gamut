@@ -1,8 +1,20 @@
-import { assign, entries, isArray, isObject, set, values } from 'lodash';
+import {
+  assign,
+  entries,
+  get,
+  hasIn,
+  isArray,
+  isObject,
+  pick,
+  set,
+  values,
+} from 'lodash';
 
 import { AbstractTheme, HandlerMeta } from '../../types/config';
 import { CSSObject } from '../../types/css';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
+
+const GLOBALS = ['content'];
 
 export function createResponsiveStyleTemplate<
   Props extends { theme?: AbstractTheme }
@@ -15,6 +27,14 @@ export function createResponsiveStyleTemplate<
 
     const breakpointOrder = [BASE, ...Object.keys(breakpoints)];
     const responsive = {} as Record<typeof breakpointOrder[number], Props>;
+
+    GLOBALS.forEach((global) => {
+      const value = get(props, global);
+
+      if (value !== undefined) {
+        set(responsive, [BASE, global as any], value);
+      }
+    });
 
     // Iterate through all responsible props and create a base style configuration.
     propNames.forEach((propName) => {
@@ -60,7 +80,10 @@ export function createResponsiveStyleTemplate<
       // TODO: Only call the templateFns we have props for.1
       templates.forEach((styleFunction) => {
         if (!styleFunction) return;
-        const templateStyles = styleFunction({ ...bpProps, theme });
+        const templateStyles = {
+          ...pick(bpProps, GLOBALS),
+          ...styleFunction({ ...bpProps, theme }),
+        };
 
         // Smallest sizes are always on by default
         if (breakpoint === breakpointOrder[0]) {
