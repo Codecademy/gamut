@@ -4,12 +4,11 @@ import React, { ReactNode } from 'react';
 
 import { VisualTheme } from '../theming/VisualTheme';
 
-export enum ToolTipPosition {
-  BottomLeft = 'bottom-left',
-  BottomRight = 'bottom-right',
-  TopLeft = 'top-left',
-  TopRight = 'top-right',
-}
+export type ToolTipPosition =
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'top-left'
+  | 'top-right';
 
 const arrowWidth = `1rem`;
 const arrowHeight = `0.5rem`;
@@ -68,7 +67,8 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   &::after {
-    background: ${({ theme }) => theme.colors.white};
+    background: ${({ theme, variant }) =>
+      variant === 'dark' ? theme.colors.black : theme.colors.white};
   }
 
   ${TargetContainer}:hover + &,
@@ -79,7 +79,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   ${({ position }) =>
-    [ToolTipPosition.TopLeft, ToolTipPosition.TopRight].includes(position) &&
+    ['top-left', 'top-right'].includes(position) &&
     `
       bottom: ${containerOffsetVertical};
 
@@ -98,9 +98,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
   ${({ position }) =>
-    [ToolTipPosition.BottomLeft, ToolTipPosition.BottomRight].includes(
-      position
-    ) &&
+    ['bottom-left', 'bottom-right'].includes(position) &&
     `
       top: ${containerOffsetVertical};
 
@@ -119,7 +117,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
     `}
 
 ${({ position }) =>
-    [ToolTipPosition.BottomLeft, ToolTipPosition.TopLeft].includes(position) &&
+    ['bottom-left', 'top-left'].includes(position) &&
     `
       justify-content: flex-end;
       right: $container-offset-horizontal;
@@ -131,9 +129,7 @@ ${({ position }) =>
     `}
 
 ${({ position }) =>
-    [ToolTipPosition.BottomRight, ToolTipPosition.TopRight].includes(
-      position
-    ) &&
+    ['bottom-right', 'top-right'].includes(position) &&
     `
   left: ${containerOffsetHorizontal};
 
@@ -180,7 +176,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   children,
   focusable,
   id,
-  position = ToolTipPosition.TopRight,
+  position = 'top-right',
   target,
   tipClassName,
   variant = 'light',
@@ -197,7 +193,6 @@ export const ToolTip: React.FC<ToolTipProps> = ({
         {target}
       </TargetContainer>
       <ToolTipContainer
-        data-test="tooltip-container"
         className={tipClassName}
         id={id}
         position={position}

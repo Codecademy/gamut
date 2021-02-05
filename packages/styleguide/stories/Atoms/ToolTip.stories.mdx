@@ -1,4 +1,4 @@
-import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
+import { ToolTip } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
@@ -35,7 +35,7 @@ the core interface.
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <TooltipArea>
+      <TooltipArea tipPosition={args.position}>
         Hello! &nbsp;
         <ToolTip {...args} />
       </TooltipArea>
@@ -49,36 +49,40 @@ the core interface.
 
 Tooltips can be positioned both horizontally and vertically relative to their target.
 
+Note that you the implementer will need to adjust their horizontal position to match up to their target's focus point.
+
 <Canvas>
   <Story name="Position">
     {(args) => {
-      return Object.values(ToolTipPosition).map((position) => {
-        return (
-          <TooltipArea key={position}>
-            {position.split('-').map(upperFirst).join(' ')}: &nbsp;
-            <ToolTip {...args} position={position} />
-          </TooltipArea>
-        );
-      });
+      return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
+        (position) => {
+          return (
+            <TooltipArea key={position} tipPosition={position}>
+              {position.split('-').map(upperFirst).join(' ')}: &nbsp;
+              <ToolTip {...args} position={position} />
+            </TooltipArea>
+          );
+        }
+      );
     }}
   </Story>
 </Canvas>
 
-## Theme
+## Variant
 
-Tooltips can be of a `dark` or `light` visual theme.
+Tooltips can be of a `dark` or `light` visual variant.
 
 <Canvas>
-  <Story name="Theme">
+  <Story name="Variant">
     {(args) => (
       <>
-        <TooltipArea>
+        <TooltipArea tipPosition={args.position}>
           Dark: &nbsp;
-          <ToolTip {...args} theme="dark" />
+          <ToolTip {...args} variant="dark" />
         </TooltipArea>
-        <TooltipArea>
+        <TooltipArea tipPosition={args.position}>
           Light: &nbsp;
-          <ToolTip {...args} theme="light" />
+          <ToolTip {...args} variant="light" />
         </TooltipArea>
       </>
     )}
