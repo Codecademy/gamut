@@ -10748,14 +10748,6 @@ inquirer@^7.0.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-insane@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.npmjs.org/insane/-/insane-2.6.2.tgz#c2ab68bb3e006ab451560d1b446917329c0a8120"
-  integrity sha1-wqtouz4AarRRVg0bRGkXMpwKgSA=
-  dependencies:
-    assignment "2.0.0"
-    he "0.5.0"
-
 internal-slot@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/internal-slot/-/internal-slot-1.0.2.tgz#9c2e9fb3cd8e5e4256c6f45fe310067fcfa378a3"
@@ -16097,6 +16089,14 @@ sane@^4.0.3:
     micromatch "^3.1.4"
     minimist "^1.1.1"
     walker "~1.0.5"
+
+sanitize-markdown@^2.6.3:
+  version "2.6.3"
+  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.3.tgz#a50bd7a7c8d5a84d9e96a4020bf488431019fcfe"
+  integrity sha512-Tc5BzTtMpi3nT5RTN7QX4cDwULvQzhavfp9Tc0pqlh5a08ifwsgLOmsYt8lOjr/9A5Zk6M6Dy11EUQ3hOrzf6Q==
+  dependencies:
+    assignment "2.0.0"
+    he "0.5.0"
 
 sass-graph@2.2.5:
   version "2.2.5"
