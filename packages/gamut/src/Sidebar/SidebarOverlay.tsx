@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut/src';
-import { SidebarButton } from './SidebarButton';
+import { SidebarCloneButton } from './SidebarCloneButton';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
@@ -41,13 +41,12 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
 
   return (
     <>
-      <SidebarButton
-        expanded={isSidebarOpen}
+      <SidebarCloneButton
         onClick={() => toggleDrawer()}
         data-testid="arrow-sidebar-button"
       >
         {button}
-      </SidebarButton>
+      </SidebarCloneButton>
       <AnimatePresence>
         {isSidebarOpen ? (
           <Drawer

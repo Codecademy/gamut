@@ -7,7 +7,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-export type SidebarButtonProps = ButtonDeprecatedBaseProps & {
+export type SidebarTabButtonProps = ButtonDeprecatedBaseProps & {
   expanded: boolean;
   onClick: () => void;
   tab?: boolean;
@@ -33,16 +33,11 @@ const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`
   transform: ${(props) => (props.expanded ? `rotate(180deg)` : `none`)};
 `;
 
-export const SidebarButton: React.FC<SidebarButtonProps> = ({
+export const SidebarTabButton: React.FC<SidebarTabButtonProps> = ({
   expanded,
   onClick,
-  children,
 }) => {
-  return children ? (
-    React.cloneElement(children, {
-      onClick: onClick,
-    })
-  ) : (
+  return (
     <ArrowButton
       aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
       aria-expanded={expanded}

@@ -1,5 +1,5 @@
 import { FlexBox } from '@codecademy/gamut/src';
-import { SidebarButton } from './SidebarButton';
+import { SidebarTabButton } from './SidebarTabButton';
 import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
@@ -30,6 +30,7 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
+  backgroundColor = 'palePink',
   ...styleProps
 }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
@@ -51,14 +52,15 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         openWidth={openWidth}
         data-testid={testId}
+        backgroundColor={backgroundColor}
         {...styleProps}
       >
         {children}
       </SidebarContent>
-      <SidebarButton
+      <SidebarTabButton
+        backgroundColor={backgroundColor}
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
-        tab
         data-testid="arrow-sidebar-button"
       />
     </SidebarWrapper>
