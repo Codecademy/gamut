@@ -19,6 +19,7 @@ const VideoColumn = styled(Column)`
 `;
 
 const Image = styled.img`
+  align-self: center;
   width: 100%;
 `;
 
