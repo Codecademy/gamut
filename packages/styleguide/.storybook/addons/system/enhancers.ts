@@ -67,6 +67,7 @@ const getPropCategory = (name: string) => {
 
 const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
   const { argTypes } = parameters;
+  const parsedOptions: Record<string, any> = {};
 
   return mapValues((arg) => {
     // Update theme props
@@ -114,23 +115,25 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
     if (ALL_PROPS.includes(arg.name) && arg.description === '') {
       const { name } = arg;
       const control: ControlType = { type: 'text' };
+      const scaleKey = PROP_META?.[name as keyof typeof PROP_META]
+        ?.scale as keyof Theme;
+      const scale = theme?.[scaleKey];
 
-      const rawScale = arg?.table?.type?.summary ?? '';
-      const options = rawScale && sortScale(getScale(rawScale).split(' | '));
+      const rawScale = arg?.table?.type?.summary || '';
+      let argOptions = [];
 
-      const isStringControl =
-        rawScale.indexOf('string') > -1 || options.length < 2;
+      if (!rawScale.includes('string')) {
+        argOptions = rawScale && sortScale(getScale(rawScale).split(' | '));
 
-      if (!isStringControl) {
-        const scaleKey = PROP_META?.[name as keyof typeof PROP_META]
-          ?.scale as keyof Theme;
-        const scale = theme?.[scaleKey];
-        const argOptions = scale
-          ? Object.keys(scale)
-          : sanitizeOptions(options);
+        if (scale && parsedOptions[scaleKey]) {
+          argOptions = parsedOptions[scaleKey];
+        } else if (scale) {
+          parsedOptions[scaleKey] = sortScale(Object.keys(scale));
+          argOptions = parsedOptions[scaleKey];
+        }
 
         control.type = getControlType(argOptions);
-        control.options = argOptions;
+        control.options = sanitizeOptions(argOptions);
       }
 
       return {
@@ -141,7 +144,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
           category: getPropCategory(name),
           type: {
             ...arg?.table?.type,
-            summary: options.join(' | ') || rawScale,
+            summary: argOptions.join(' | ') || rawScale,
           },
         },
         control,
