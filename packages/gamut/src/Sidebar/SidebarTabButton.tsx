@@ -7,10 +7,6 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-export type ArrowButtonProps = ButtonDeprecatedBaseProps & {
-  backgroundColor: any;
-};
-
 export type SidebarTabButtonProps = ArrowButtonProps & {
   expanded: boolean;
   onClick: () => void;
@@ -20,13 +16,13 @@ export type RotatingArrowProps = {
   expanded: boolean;
 };
 
-const ArrowButton = styled(ButtonDeprecated)<ArrowButtonProps>`
+const ArrowButton = styled(ButtonDeprecated)`
   position: absolute;
   left: 100%;
   top: 2rem;
   display: flex;
   align-content: center;
-  background-color: ${(props) => props.backgroundColor};
+  background-color: inherit;
   height: 3rem;
   min-width: 2.3rem;
   margin: 1rem 0;
