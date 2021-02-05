@@ -20,7 +20,6 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
 };
 
-// will likely move from here --
 const IconButton = styled.button`
   background-color: transparent;
   border: 1px solid transparent;
@@ -42,14 +41,14 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     setMobileMenuOpen(true);
   };
 
-  const renderMobileLeftItems = () => {
+  const renderLeftItems = () => {
     return items.left.map((item) => mapItemToElement(action, item));
   };
 
   return (
     <>
       <AppBar className={className}>
-        <AppBarSection position="left">{renderMobileLeftItems()}</AppBarSection>
+        <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
         <AppBarSection position="right">
           {items.right.map((item) => mapItemToElement(action, item))}
           <AppHeaderTab>
@@ -76,9 +75,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         >
           <div>
             <AppBar>
-              <AppBarSection position="left">
-                {renderMobileLeftItems()}
-              </AppBarSection>
+              <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
               <AppBarSection position="right">
                 <IconButton
                   type="button"
