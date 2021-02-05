@@ -245,7 +245,7 @@ export interface Properties {
       | 'borderColorY';
   };
   backgroundColor: {
-    defaultScale: CSS.Properties['backgroundColor'];
+    defaultScale: CSS.Properties['backgroundColor'] | 'transparent';
   };
 }
 
