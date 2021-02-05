@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/eslint-config",
   "peerDependencies": {
-    "eslint": "^6.5.1"
+    "eslint": "^7.19.0"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.14.1",
@@ -36,7 +36,7 @@
     "eslint-plugin-unused-imports": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "6.5.1"
+    "eslint": "^7.19.0"
   },
   "publishConfig": {
     "access": "public"
