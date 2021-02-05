@@ -2,7 +2,7 @@
 
 set -eu
 
-export TYPE_AWARE=false
+export ESLINT_TYPE_AWARE=false
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 

@@ -1,4 +1,23 @@
+/**
+ * Set ESLINT_TYPE_AWARE=false to disable type-aware linting
+ * This greatly speeds up linting, which is useful for autofixing with --fix
+ */
 const TYPE_AWARE = process.env.ESLINT_TYPE_AWARE !== 'false';
+
+const typeAwareTypescriptConfig = () => {
+  return TYPE_AWARE
+    ? {
+        parserOptions: {
+          project: './tsconfig.json',
+          sourceType: 'module',
+        },
+
+        extends: [
+          'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        ],
+      }
+    : {};
+};
 
 module.exports = {
   env: {
@@ -38,19 +57,7 @@ module.exports = {
     {
       files: ['*.tsx', '*.ts'],
       parser: require.resolve('@typescript-eslint/parser'),
-
-      parserOptions: TYPE_AWARE
-        ? {
-            project: './tsconfig.json',
-            sourceType: 'module',
-          }
-        : {},
-
-      extends: [
-        TYPE_AWARE &&
-          'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ].filter(Boolean),
-
+      ...typeAwareTypescriptConfig(),
       rules: {
         // These rules could be useful, but we haven't gotten around to trying them out
         // Additionally, they're moved into this override object (further nested from the rules
