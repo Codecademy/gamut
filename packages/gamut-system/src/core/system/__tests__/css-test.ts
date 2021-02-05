@@ -8,6 +8,10 @@ describe('css', () => {
       '&:hover': {
         textAlign: 'center',
       },
+      '&:before': {
+        content: '',
+        backgroundColor: 'blue',
+      },
     });
 
     expect(fn).toBeDefined();
