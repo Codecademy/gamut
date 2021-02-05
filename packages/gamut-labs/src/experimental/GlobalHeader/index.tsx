@@ -105,6 +105,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       ) : (
         <AppHeaderMobile
           action={props.action}
+          className={styles.globalHeader}
           items={getMobileAppHeaderItems(props)}
         />
       )}
