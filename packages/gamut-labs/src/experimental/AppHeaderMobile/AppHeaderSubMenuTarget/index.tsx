@@ -9,17 +9,11 @@ import {
   hoverStyles,
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import {
-  AppHeaderDropdownItem,
-  AppHeaderProfileDropdownItem,
-} from '../../AppHeader/AppHeaderElements/types';
+import { AppHeaderDropdownItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
-  openSubMenu: (
-    event: React.MouseEvent,
-    item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem
-  ) => void;
+  item: AppHeaderDropdownItem;
+  openSubMenu: (event: React.MouseEvent, item: AppHeaderDropdownItem) => void;
 };
 
 const AppHeaderTextTargetButton = styled.button`

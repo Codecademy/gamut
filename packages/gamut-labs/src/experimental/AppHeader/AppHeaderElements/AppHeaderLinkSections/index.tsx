@@ -6,12 +6,11 @@ import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderLinkItem,
-  AppHeaderProfileDropdownItem,
 } from '../types';
 
 export type AppHeaderLinkSectionsProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderDropdownItem;
 };
 
 export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({

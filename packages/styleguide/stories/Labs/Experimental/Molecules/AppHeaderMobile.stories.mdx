@@ -3,11 +3,19 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import {
+  MOCK_DROPDOWN_1,
+  MOCK_DROPDOWN_2,
+  MOCK_LINK,
+  MOCK_PROFILE_DROPDOWN,
+} from './MockAppHeaderElements';
+
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderMobile"
   component={AppHeaderMobile}
   parameters={{ layout: 'padded', status: 'volatile' }}
   args={{
+    action: () => {},
     items: {
       left: [
         {
@@ -33,6 +41,12 @@ import { PropsTable } from '~styleguide/blocks';
           trackingTarget: 'tracking-target',
           type: 'fill-button',
         },
+      ],
+      mainMenu: [
+        MOCK_LINK,
+        MOCK_DROPDOWN_1,
+        MOCK_DROPDOWN_2,
+        MOCK_PROFILE_DROPDOWN,
       ],
     },
   }}
