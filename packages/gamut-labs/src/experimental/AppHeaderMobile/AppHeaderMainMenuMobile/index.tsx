@@ -4,6 +4,7 @@ import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderItem,
+  AppHeaderProfileDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
@@ -18,11 +19,13 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   items,
   action,
 }) => {
-  const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
+  const [subMenuItem, setSubMenuItem] = useState<
+    AppHeaderDropdownItem | AppHeaderProfileDropdownItem
+  >();
 
   const openSubMenu = (
     event: React.MouseEvent,
-    item: AppHeaderDropdownItem
+    item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem
   ) => {
     action(event, item);
     setSubMenuItem(item);

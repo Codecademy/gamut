@@ -27,7 +27,7 @@ export type AppHeaderProps = {
 const AppHeaderTextButton = styled(TextButton)(focusStyles);
 const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
-const mapItemToElement = (
+export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem
 ): ReactNode => {
