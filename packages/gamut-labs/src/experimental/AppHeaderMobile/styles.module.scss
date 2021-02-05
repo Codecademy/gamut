@@ -5,11 +5,10 @@
   height: 100vh;
   opacity: 1;
   background-color: white;
-  position: fixed; /* Stay in place */
-  z-index: 15; /* may ned to change */
+  position: fixed;
   left: 0;
   top: 0;
-  overflow-x: hidden; /* Disable horizontal scroll */
+  overflow-x: hidden;
   display: block;
 }
 
