@@ -52,6 +52,19 @@ describe('system', () => {
         color: 'blue',
       });
     });
+
+    it('can configure using a variants key without a prop or default key', () => {
+      const myVariant = variant({
+        variants: {
+          primary: { textColor: 'blue' },
+          secondary: { textColor: 'green' },
+        },
+      });
+
+      expect(myVariant({ variant: 'secondary' })).toEqual({
+        color: 'green',
+      });
+    });
   });
 
   describe('Custom Scales', () => {
