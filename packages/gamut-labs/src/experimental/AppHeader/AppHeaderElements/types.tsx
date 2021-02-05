@@ -46,6 +46,10 @@ export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
   type: 'fill-button';
 };
 
+export type AppHeaderDropdownItem =
+  | AppHeaderSimpleDropdownItem
+  | AppHeaderProfileDropdownItem;
+
 export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];

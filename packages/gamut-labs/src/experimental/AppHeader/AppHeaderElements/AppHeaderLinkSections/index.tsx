@@ -4,14 +4,13 @@ import React from 'react';
 import { AppHeaderLinkMobile } from '../../../AppHeaderMobile/AppHeaderLinkMobile';
 import {
   AppHeaderClickHandler,
+  AppHeaderDropdownItem,
   AppHeaderLinkItem,
-  AppHeaderProfileDropdownItem,
-  AppHeaderSimpleDropdownItem,
 } from '../types';
 
 export type AppHeaderLinkSectionsProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderDropdownItem;
 };
 
 export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({

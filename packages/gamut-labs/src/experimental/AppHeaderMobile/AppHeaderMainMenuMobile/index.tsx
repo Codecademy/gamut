@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import {
   AppHeaderClickHandler,
+  AppHeaderDropdownItem,
   AppHeaderItem,
-  AppHeaderProfileDropdownItem,
-  AppHeaderSimpleDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from '../AppHeaderLinkMobile';
 import { AppHeaderSubMenuMobile } from '../AppHeaderSubMenuMobile';
@@ -19,13 +18,11 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
   items,
   action,
 }) => {
-  const [subMenuItem, setSubMenuItem] = useState<
-    AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem
-  >();
+  const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
   const openSubMenu = (
     event: React.MouseEvent,
-    item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem
+    item: AppHeaderDropdownItem
   ) => {
     action(event, item);
     setSubMenuItem(item);

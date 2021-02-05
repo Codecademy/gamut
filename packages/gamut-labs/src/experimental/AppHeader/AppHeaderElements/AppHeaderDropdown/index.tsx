@@ -7,11 +7,7 @@ import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
-import {
-  AppHeaderClickHandler,
-  AppHeaderProfileDropdownItem,
-  AppHeaderSimpleDropdownItem,
-} from '../types';
+import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 import styles from './styles.module.scss';
 
 const AppHeaderTextTargetButton = styled.button`
@@ -31,7 +27,7 @@ const AppHeaderAvatarTargetButton = styled.button`
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderDropdownItem;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
