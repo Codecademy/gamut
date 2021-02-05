@@ -4,7 +4,7 @@
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
   "bin": {
-    "eslint-safe-fix": "./bin/eslint-safe-fix"
+    "eslint-fix": "./bin/eslint-fix.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/eslint-config",
   "peerDependencies": {
-    "eslint": "^6.5.1"
+    "eslint": "^7.0.0"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.14.1",
@@ -36,10 +36,11 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^1.0.1"
+    "eslint-plugin-unused-imports": "^1.0.1",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "eslint": "6.5.1"
+    "eslint": "7.19.0"
   },
   "publishConfig": {
     "access": "public"
