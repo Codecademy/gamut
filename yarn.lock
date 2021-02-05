@@ -16090,10 +16090,10 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
-sanitize-markdown@^2.6.3:
-  version "2.6.3"
-  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.3.tgz#a50bd7a7c8d5a84d9e96a4020bf488431019fcfe"
-  integrity sha512-Tc5BzTtMpi3nT5RTN7QX4cDwULvQzhavfp9Tc0pqlh5a08ifwsgLOmsYt8lOjr/9A5Zk6M6Dy11EUQ3hOrzf6Q==
+sanitize-markdown@^2.6.5:
+  version "2.6.5"
+  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.5.tgz#68eff33f91c429b8690cf32ee1d82ed87cc254ae"
+  integrity sha512-0qnzKsakRiMyPzLr7Ch7N6hmR/DscVqG0FGHYLe1WN/1WfNyfYzuxlDc21tbEBWdxdANtn8Po8T9KdNn5g5nqg==
   dependencies:
     assignment "2.0.0"
     he "0.5.0"
