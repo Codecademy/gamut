@@ -5,9 +5,9 @@ import {
   PersonIcon,
 } from '@codecademy/gamut-icons/src';
 import {
-  AppHeaderDropdownItem,
   AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
+  AppHeaderSimpleDropdownItem,
 } from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
 
 export const MOCK_LINK: AppHeaderLinkItem = {
@@ -19,7 +19,7 @@ export const MOCK_LINK: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const MOCK_DROPDOWN_1: AppHeaderDropdownItem = {
+export const MOCK_DROPDOWN_1: AppHeaderSimpleDropdownItem = {
   id: 'dropdown',
   text: 'Dropdown Target',
   icon: CommunityIcon,
@@ -43,7 +43,7 @@ export const MOCK_DROPDOWN_1: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const MOCK_DROPDOWN_2: AppHeaderDropdownItem = {
+export const MOCK_DROPDOWN_2: AppHeaderSimpleDropdownItem = {
   id: 'dropdown-target-2',
   text: 'Resources Target',
   icon: HouseEntranceIcon,

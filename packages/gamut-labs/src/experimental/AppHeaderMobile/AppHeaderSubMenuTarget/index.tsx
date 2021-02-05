@@ -10,15 +10,15 @@ import {
   textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
 import {
-  AppHeaderDropdownItem,
   AppHeaderProfileDropdownItem,
+  AppHeaderSimpleDropdownItem,
 } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuTargetProps = {
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem;
   openSubMenu: (
     event: React.MouseEvent,
-    item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem
+    item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem
   ) => void;
 };
 

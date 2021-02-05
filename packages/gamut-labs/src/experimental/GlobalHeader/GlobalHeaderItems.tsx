@@ -12,12 +12,12 @@ import {
 import { ReactNode } from 'react';
 
 import {
-  AppHeaderDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
+  AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
 import { User } from './types';
@@ -60,7 +60,7 @@ export const courseCatalog: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderDropdownItem = {
+export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
@@ -91,7 +91,7 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const communityDropdown: AppHeaderDropdownItem = {
+export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,
   id: 'community',
   text: 'Community',
@@ -130,7 +130,7 @@ export const communityDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const pricingDropdown: AppHeaderDropdownItem = {
+export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
   text: 'Pro Pricing',

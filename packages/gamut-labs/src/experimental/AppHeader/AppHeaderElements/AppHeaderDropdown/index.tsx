@@ -9,8 +9,8 @@ import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
 import {
   AppHeaderClickHandler,
-  AppHeaderDropdownItem,
   AppHeaderProfileDropdownItem,
+  AppHeaderSimpleDropdownItem,
 } from '../types';
 import styles from './styles.module.scss';
 
@@ -31,7 +31,7 @@ const AppHeaderAvatarTargetButton = styled.button`
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderSimpleDropdownItem | AppHeaderProfileDropdownItem;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
