@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
@@ -24,6 +24,8 @@ import {
 } from './GlobalHeaderVariants';
 import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
+
+const HEADER_HEIGHT = 81;
 
 export type HeaderClickHandler = (
   event: React.MouseEvent,
@@ -94,6 +96,59 @@ const getMobileAppHeaderItems = (
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const desktop = useBreakpointAtOrAbove('md');
+
+  const defaultScrollingState = {
+    isSearchVisible: false,
+    isScrollingDown: true,
+    isInHeaderRegion: true,
+    isScrollingFromHeaderRegion: true,
+    prevScrollPosition: 0,
+  };
+  const [scrollingState, setScrollingState] = useState(defaultScrollingState);
+
+  const handleScrolling = () => {
+    const currentScrollPosition = window.pageYOffset;
+
+    if (currentScrollPosition <= HEADER_HEIGHT) {
+      setScrollingState((prevState) => ({
+        ...prevState,
+        isInHeaderRegion: true,
+        isScrollingFromHeaderRegion: true,
+      }));
+    } else {
+      setScrollingState((prevState) => ({
+        ...prevState,
+        isInHeaderRegion: false,
+      }));
+    }
+
+    let isScrollingFromHeaderRegion = false;
+
+    if (currentScrollPosition > scrollingState.prevScrollPosition) {
+      setScrollingState((prevState) => {
+        if (
+          prevState.isScrollingDown &&
+          prevState.isScrollingFromHeaderRegion
+        ) {
+          isScrollingFromHeaderRegion = true;
+        }
+        return {
+          ...prevState,
+          isScrollingDown: true,
+          prevScrollPosition: currentScrollPosition,
+          isScrollingFromHeaderRegion,
+        };
+      });
+    } else {
+      setScrollingState((prevState) => ({
+        ...prevState,
+        isScrollingDown: false,
+        prevScrollPosition: currentScrollPosition,
+        isScrollingFromHeaderRegion,
+      }));
+    }
+  };
+
   return (
     <>
       {desktop ? (
