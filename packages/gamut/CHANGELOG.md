@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.1...@codecademy/gamut@21.3.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* remove deprecated elseif scss syntax ([6b36886](https://github.com/Codecademy/client-modules/commit/6b3688675eebcfbfe97d4e83462f000ffbdc07e6))
+
+
+
+### [21.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.0...@codecademy/gamut@21.3.1) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.3...@codecademy/gamut@21.3.0) (2021-02-05)
 
 
