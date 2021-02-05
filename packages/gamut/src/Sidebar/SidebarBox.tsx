@@ -40,6 +40,7 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
       position="relative"
       marginRight={48}
       backgroundColor={backgroundColor}
+      {...styleProps}
     >
       <SidebarContent
         aria-expanded={isSidebarOpen}
@@ -50,7 +51,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         openWidth={openWidth}
         data-testid={testId}
         overflowX="hidden"
-        {...styleProps}
       >
         <Box width={width}>{children}</Box>
       </SidebarContent>
