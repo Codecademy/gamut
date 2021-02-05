@@ -52,7 +52,15 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   visibility: hidden;
 
   ${({ theme, variant }) =>
-    variant === 'dark' && `background: ${theme.colors.black};`}
+    variant === 'dark'
+      ? `
+      background: ${theme.colors.black};
+      color: ${theme.colors.white};
+    `
+      : `
+      background: ${theme.colors.white};
+      color: ${theme.colors.black};
+    `}
 
   // Both before and after psuedo-elements are used because ::after's background should go over the container's
   // and ::before's box-shadow should be behind the container itself
@@ -67,8 +75,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   }
 
   &::after {
-    background: ${({ theme, variant }) =>
-      variant === 'dark' ? theme.colors.black : theme.colors.white};
+    background: inherit;
   }
 
   ${TargetContainer}:hover + &,
@@ -141,21 +148,12 @@ ${({ position }) =>
 `;
 
 const ToolTipBody = styled.div<{ variant: VisualTheme }>`
+  background: inherit;
+  color: inherit;
   display: inline-block;
   font-size: ${pxRem(14)};
   line-height: ${pxRem(18)};
   padding: 0.6rem 0.75rem;
-
-  ${({ theme, variant }) =>
-    variant === 'light'
-      ? `
-      background: ${theme.colors.white};
-      color: ${theme.colors.black};
-      `
-      : `
-      background: ${theme.colors.black};
-      color: ${theme.colors.white};
-      `}
 `;
 
 export type ToolTipProps = {
