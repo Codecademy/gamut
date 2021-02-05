@@ -1,58 +1,58 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { ProgressBar, ProgressBarProps } from '..';
+import { ProgressBar } from '..';
 
-const renderComponent = (overrides: Partial<ProgressBarProps> = {}) => {
-  return mount(<ProgressBar percent={50} theme="blue" {...overrides} />);
-};
+const renderWrapper = setupEnzyme(ProgressBar, {
+  percent: 50,
+  theme: 'blue',
+});
 
 describe('ProgressBar', () => {
   it('uses percentage as width when no minimumPercent is provided', () => {
-    const wrapped = renderComponent({ percent: 50 });
+    const { wrapper } = renderWrapper({ percent: 50 });
 
     expect(
-      wrapped.find('[data-testid="progress-bar-bar"]').prop('style')
+      wrapper.find('[data-testid="progress-bar-bar"]').prop('style')
     ).toHaveProperty('width', '50%');
   });
 
   it('uses percentage as width when it is greater than minimumPercent', () => {
-    const wrapped = renderComponent({ minimumPercent: 25, percent: 50 });
+    const { wrapper } = renderWrapper({ minimumPercent: 25, percent: 50 });
 
     expect(
-      wrapped.find('[data-testid="progress-bar-bar"]').prop('style')
+      wrapper.find('[data-testid="progress-bar-bar"]').prop('style')
     ).toHaveProperty('width', '50%');
   });
 
   it('uses minimumPercentage as width when it is greater than percent', () => {
-    const wrapped = renderComponent({ minimumPercent: 75, percent: 50 });
+    const { wrapper } = renderWrapper({ minimumPercent: 75, percent: 50 });
 
     expect(
-      wrapped.find('[data-testid="progress-bar-bar"]').prop('style')
+      wrapper.find('[data-testid="progress-bar-bar"]').prop('style')
     ).toHaveProperty('width', '75%');
   });
 
   it('does not include percentage visually when large is false', () => {
-    const wrapped = renderComponent({ large: false });
+    const { wrapper } = renderWrapper({ large: false });
 
-    expect(wrapped.text()).toEqual('');
+    expect(wrapper.text()).toEqual('');
   });
 
   it('includes percentage visually when large is true', () => {
-    const wrapped = renderComponent({ large: true });
+    const { wrapper } = renderWrapper({ large: true });
 
-    expect(wrapped.text()).toEqual('50%');
+    expect(wrapper.text()).toEqual('50%');
   });
 
   it('uses an svg when given a pattern', () => {
-    const wrapped = renderComponent({ pattern: 'diagonalStripesRegular' });
+    const { wrapper } = renderWrapper({ pattern: 'diagonalStripesRegular' });
 
-    expect(wrapped.find('svg').length).toBe(1);
+    expect(wrapper.find('svg').length).toBe(1);
   });
 
   it('does not use an svg when not given a pattern', () => {
-    const wrapped = renderComponent();
+    const { wrapper } = renderWrapper();
 
-    expect(wrapped.find('svg').length).toBe(0);
+    expect(wrapper.find('svg').length).toBe(0);
   });
 });
