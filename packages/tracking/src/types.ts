@@ -180,7 +180,7 @@ export type UserVisitData = UserSharedData & {
   page_name: string;
 
   /* additional properties */
-  plan?: string;
+  plan_code?: string;
   path_id?: string;
   post?: string;
   story_type?: string;
