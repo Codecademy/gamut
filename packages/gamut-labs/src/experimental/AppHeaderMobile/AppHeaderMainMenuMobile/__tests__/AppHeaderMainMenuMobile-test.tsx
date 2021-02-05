@@ -19,6 +19,11 @@ const sublink2Id = 'sublink-2';
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
 
+const profileLink1Id = 'profile-link-1';
+const profileLink2Id = 'profile-link-2';
+const profileLink1Href = 'test.io';
+const profileLink2Href = 'stackoverflow.com';
+
 const idToTestId = (id: string) => {
   return `app-header-link-${id}`;
 };
@@ -39,6 +44,31 @@ const props: AppHeaderMainMenuMobileProps = {
     },
     createMockAppHeaderLinkItem('simple-link-1', link1Href, 'simple link 1'),
     createMockAppHeaderLinkItem('simple-link-2', link2Href, 'simple link 2'),
+    {
+      dataTestId: '',
+      id: 'test-profile-link',
+      text: 'profile target',
+      displayName: 'name',
+      trackingTarget: '',
+      type: 'profile-dropdown',
+      avatar: '',
+      popover: [
+        [
+          createMockAppHeaderLinkItem(
+            profileLink1Id,
+            profileLink1Href,
+            'profile link'
+          ),
+        ],
+        [
+          createMockAppHeaderLinkItem(
+            profileLink2Id,
+            profileLink2Href,
+            'my account'
+          ),
+        ],
+      ],
+    },
   ],
 };
 
@@ -61,7 +91,7 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders a target button for the items with type dropdown', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getByRole('button');
+    const targetButton = screen.getAllByRole('button')[0];
     expect(targetButton).toHaveTextContent('resources target');
   });
 
@@ -76,10 +106,19 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders a submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getByRole('button');
+    const targetButton = screen.getAllByRole('button')[0];
     targetButton.click();
     expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(sublink1Id)));
     expect(screen.getByTestId(idToTestId(sublink2Id)));
+  });
+
+  it('renders the profile submenu when its target button is clicked', () => {
+    renderAppHeaderMainMenuMobile();
+    const targetButton = screen.getAllByRole('button')[1];
+    targetButton.click();
+    expect(action).toHaveBeenCalled();
+    expect(screen.getByTestId(idToTestId(profileLink1Id)));
+    expect(screen.getByTestId(idToTestId(profileLink2Id)));
   });
 });
