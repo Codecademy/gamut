@@ -1,22 +1,21 @@
-import { mount } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import { Pattern, PatternProps } from '..';
+import { Pattern } from '..';
 
-const renderComponent = (overrides: Partial<PatternProps> = {}) => {
-  return mount(<Pattern name="diagonalStripesRegular" {...overrides} />);
-};
+const renderWrapper = setupEnzyme(Pattern, {
+  name: 'diagonalStripesRegular',
+});
 
 describe('Pattern', () => {
   it('uses the pattern corresponding to the name given', () => {
-    const wrapped = renderComponent();
+    const { wrapper } = renderWrapper();
 
-    expect(wrapped.find('#clipDiagonalStripesRegular')).toBeTruthy();
+    expect(wrapper.find('#clipDiagonalStripesRegular')).toBeTruthy();
   });
 
   it('uses the pattern corresponding to another name given', () => {
-    const wrapped = renderComponent({ name: 'diagonalStripesDense' });
+    const { wrapper } = renderWrapper({ name: 'diagonalStripesDense' });
 
-    expect(wrapped.find('#clipDiagonalStripesDense')).toBeTruthy();
+    expect(wrapper.find('#clipDiagonalStripesDense')).toBeTruthy();
   });
 });
