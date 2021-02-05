@@ -2,8 +2,8 @@
 
 set -eu
 
-export ESLINT_TYPE_AWARE='false'
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 
 echo "Running eslint --fix on ${1}"
 
-$(npm bin)/eslint --config ./autofix.js --ignore-path .eslintignore --fix "$1" || exit 0
+$(npm bin)/eslint --config $DIR/../autofix.js --ignore-path .eslintignore --fix "$1" || exit 0

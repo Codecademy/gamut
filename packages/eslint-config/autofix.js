@@ -82,6 +82,8 @@ module.exports = {
 
     // These style rules conflict with Prettier but aren't disabled by its plugins
     '@typescript-eslint/quotes': 'off',
+
+    'arrow-body-style': 'off',
   },
 
   settings: {
