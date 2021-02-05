@@ -33,7 +33,9 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
   openFrom = 'left',
   openWidth = 30,
   testId,
+  ...styleProps
 }) => {
+  console.log(styleProps);
   const [isSidebarOpen, setSidebarOpen] = useState(expanded);
   const toggleDrawer = () => setSidebarOpen(!isSidebarOpen);
   const initialX = openFrom === 'left' ? -1000 : 1000;
@@ -58,6 +60,7 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
             data-testid={testId}
             openWidth={openWidth}
             openFrom={openFrom}
+            {...styleProps}
           >
             <IconButton icon={MiniDeleteIcon} onClick={() => toggleDrawer()} />
             {children}

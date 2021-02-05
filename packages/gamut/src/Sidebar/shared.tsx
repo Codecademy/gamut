@@ -4,14 +4,13 @@ import {
   flex,
   grid,
   layout,
-  space,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
 import { motion } from 'framer-motion';
 
 import styled from '@emotion/styled';
 
-const sidebarStyles = compose(background, color, flex, grid, layout, space);
+const sidebarStyles = compose(background, color, flex, grid, layout);
 
 export type SidebarStyles = HandlerProps<typeof sidebarStyles>;
 export interface SidebarStyleProps extends SidebarStyles {}
