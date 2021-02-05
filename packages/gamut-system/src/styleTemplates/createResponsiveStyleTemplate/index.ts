@@ -2,7 +2,6 @@ import {
   assign,
   entries,
   get,
-  hasIn,
   isArray,
   isObject,
   pick,
