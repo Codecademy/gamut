@@ -63,12 +63,14 @@ const create = <
 
   // Initialize the createVariant API inside the closure to ensure that we have access to all the possible handlers
   const createVariant = (config: any) => {
+    const defaultKey = config?.default;
+
     const variants = config?.variants || config;
     const propKey = config?.prop || 'variant';
 
     // Return the variant function
     return (props: any) => {
-      const variantProps = variants[props[propKey]];
+      const variantProps = variants[props[propKey] || defaultKey];
       return handlePseudoSelectors(variantProps, allSystemProps)(props);
     };
   };

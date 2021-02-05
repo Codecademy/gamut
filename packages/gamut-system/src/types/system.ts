@@ -87,9 +87,14 @@ export type System<
   css: (config: ComplexCss<Props>) => (props: { theme?: Theme }) => CSSObject;
   /** Higher order variant function, with two overloads */
   variant: {
-    /** Customizable prop interface */
-    <Prop extends Readonly<string>, Keys extends string>(config: {
-      prop: Prop;
+    /** Customizable default and prop interface */
+    <
+      Keys extends string,
+      Default extends Keys,
+      Prop extends Readonly<string> = 'variant'
+    >(config: {
+      prop?: Prop;
+      default?: Default;
       variants: Readonly<Record<Keys, ComplexCss<Props>>>;
     }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */

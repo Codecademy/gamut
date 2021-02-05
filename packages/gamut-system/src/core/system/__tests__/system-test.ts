@@ -38,6 +38,33 @@ describe('system', () => {
         color: 'green',
       });
     });
+
+    it('can configure a default variant', () => {
+      const myVariant = variant({
+        default: 'primary',
+        variants: {
+          primary: { textColor: 'blue' },
+          secondary: { textColor: 'green' },
+        },
+      });
+
+      expect(myVariant({})).toEqual({
+        color: 'blue',
+      });
+    });
+
+    it('can configure using a variants key without a prop or default key', () => {
+      const myVariant = variant({
+        variants: {
+          primary: { textColor: 'blue' },
+          secondary: { textColor: 'green' },
+        },
+      });
+
+      expect(myVariant({ variant: 'secondary' })).toEqual({
+        color: 'green',
+      });
+    });
   });
 
   describe('Custom Scales', () => {
