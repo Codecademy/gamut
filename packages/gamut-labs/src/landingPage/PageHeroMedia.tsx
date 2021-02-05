@@ -37,7 +37,7 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({ media }) => {
     case 'video':
       const videoArgs = omit(media, 'type');
       return (
-        <RightColumn size={6}>
+        <RightColumn size={5}>
           <StyledVideo {...videoArgs} />
         </RightColumn>
       );
