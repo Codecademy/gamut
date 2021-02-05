@@ -59,7 +59,7 @@ const getControlType = (args: unknown[]): SystemControls => {
 
 const getPropCategory = (name: string) => {
   const [groupName] =
-    Object.entries(PROP_GROUPS).find(([key, { propNames }]) =>
+    Object.entries(PROP_GROUPS).find(([key, { propNames = [] }]) =>
       propNames.includes(name)
     ) || [];
   return groupName;

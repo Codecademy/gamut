@@ -1,6 +1,6 @@
 import * as system from '@codecademy/gamut-styles/src/system';
 
-const { properties, variant, ...groups } = system;
+const { properties, variant, css, ...groups } = system;
 
 export const PROP_GROUPS = groups;
 

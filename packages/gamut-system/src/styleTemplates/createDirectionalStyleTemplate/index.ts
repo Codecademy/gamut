@@ -4,8 +4,8 @@ import {
   AbstractProps,
   StyleTemplate,
 } from '../../types/config';
+import { CSSObject } from '../../types/css';
 import { DirectionalProperty } from '../../types/properties';
-import { CSSObject } from '../../types/system';
 import { DIRECTIONAL_PROPS, DIRECTIONS } from './constants';
 
 /**

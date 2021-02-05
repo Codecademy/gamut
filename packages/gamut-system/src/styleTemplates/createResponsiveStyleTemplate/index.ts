@@ -1,7 +1,7 @@
 import { assign, entries, isArray, isObject, set, values } from 'lodash';
 
 import { AbstractTheme, HandlerMeta } from '../../types/config';
-import { CSSObject } from '../../types/system';
+import { CSSObject } from '../../types/css';
 import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
 
 export function createResponsiveStyleTemplate<
