@@ -24,8 +24,8 @@ export type AppHeaderProps = {
   items: FormattedAppHeaderItems;
 };
 
-const AppHeaderTextButton = styled(TextButton)(focusStyles);
-const AppHeaderFillButton = styled(FillButton)(focusStyles);
+export const AppHeaderTextButton = styled(TextButton)(focusStyles);
+export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
