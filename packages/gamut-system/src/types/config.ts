@@ -1,3 +1,5 @@
+import { Globals } from 'csstype';
+
 import { CSSObject } from './css';
 import {
   DirectionalProperty,
@@ -49,6 +51,7 @@ export type ThematicScaleValue<
       | SafeMapKey<Theme[Extract<Config, { scale: string }>['scale']]>
       | SafeMapKey<Extract<Config, { scale: ScaleMap }>['scale']>
       | Extract<Config, { scale: ScaleArray }>['scale'][number]
+      | Globals
   : DefaultPropScale<Config>;
 
 /** Property Configurations */
