@@ -18,6 +18,9 @@ export interface SidebarStyleProps extends SidebarStyles {}
 export const DrawerBase = styled(motion.div)<SidebarStyleProps>(sidebarStyles);
 
 export type SidebarWidthProps = {
+  /**
+   * chooses color of drop shadow
+   */
   openWidth?: number;
 };
 
@@ -28,8 +31,13 @@ export type SidebarComponentSideProps = {
 export type SidebarBaseProps = SidebarWidthProps &
   SidebarComponentSideProps &
   SidebarStyleProps & {
-    children: React.ReactNode;
+    /**
+     * chooses color of testing
+     */
     expanded?: boolean;
+    /**
+     * chooses color of drop shadow????
+     */
     testId?: string;
   };
 

@@ -13,6 +13,9 @@ import {
 import styled from '@emotion/styled';
 
 export type SidebarOverlayProps = SidebarBaseProps & {
+  /**
+   * chooses color of drop shadow
+   */
   button: React.ReactNode;
 };
 

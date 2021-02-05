@@ -24,23 +24,26 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
     {(args) => (
       <Box height="20rem">
         <SidebarOverlay
-          backgroundColor={'navy'}
-          openFrom={'left'}
+          backgroundColor="navy"
+          openFrom="left"
           button={
-            <TextButton height={'5rem'} width={'5rem'}>
+            <TextButton height="5rem" width="5rem">
               chiller time
             </TextButton>
           }
           {...args}
         >
-          Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
-          the oldest of the Swooping Hawks and the first Exarch of those winged
-          Aspect Warriors. Baharroth is the founder of the Eldar Warrior Path
-          that is represented today by the Swooping Hawks Aspect Shrines.
-          Baharroth is also known for his speed and is said to be the fastest of
-          all the Eldar who have ever lived, a formidable claim that would make
-          him a deadly opponent indeed. Though he moves with the subtlety and
-          grace of a zephyr, he attacks with the force of a hurricane.
+          <Box margin={16}>
+            Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
+            the oldest of the Swooping Hawks and the first Exarch of those
+            winged Aspect Warriors. Baharroth is the founder of the Eldar
+            Warrior Path that is represented today by the Swooping Hawks Aspect
+            Shrines. Baharroth is also known for his speed and is said to be the
+            fastest of all the Eldar who have ever lived, a formidable claim
+            that would make him a deadly opponent indeed. Though he moves with
+            the subtlety and grace of a zephyr, he attacks with the force of a
+            hurricane.
+          </Box>
         </SidebarOverlay>
         <FlexBox>
           An Avatar of Khaine is the term normally applied to the physical form
@@ -66,14 +69,17 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
     {(args) => (
       <FlexBox>
         <SidebarBox backgroundColor={'palePink'} expanded={true} {...args}>
-          Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
-          the oldest of the Swooping Hawks and the first Exarch of those winged
-          Aspect Warriors. Baharroth is the founder of the Eldar Warrior Path
-          that is represented today by the Swooping Hawks Aspect Shrines.
-          Baharroth is also known for his speed and is said to be the fastest of
-          all the Eldar who have ever lived, a formidable claim that would make
-          him a deadly opponent indeed. Though he moves with the subtlety and
-          grace of a zephyr, he attacks with the force of a hurricane.
+          <Box margin={16}>
+            Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
+            the oldest of the Swooping Hawks and the first Exarch of those
+            winged Aspect Warriors. Baharroth is the founder of the Eldar
+            Warrior Path that is represented today by the Swooping Hawks Aspect
+            Shrines. Baharroth is also known for his speed and is said to be the
+            fastest of all the Eldar who have ever lived, a formidable claim
+            that would make him a deadly opponent indeed. Though he moves with
+            the subtlety and grace of a zephyr, he attacks with the force of a
+            hurricane.
+          </Box>
         </SidebarBox>
         <FlexBox backgroundColor={'blue'} color={'white'}>
           An Avatar of Khaine is the term normally applied to the physical form
@@ -88,4 +94,4 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
   </Story>
 </Canvas>
 
-<Props story="SidebarBox" />
+<Props exclude={['button']} story="SidebarBox" />

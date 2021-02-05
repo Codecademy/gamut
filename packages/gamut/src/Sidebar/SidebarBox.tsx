@@ -55,7 +55,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
         <Box width={width}>{children}</Box>
       </SidebarContent>
       <SidebarTabButton
-        backgroundColor={backgroundColor}
         expanded={isSidebarOpen}
         onClick={() => toggleDrawer()}
         data-testid="arrow-sidebar-button"
