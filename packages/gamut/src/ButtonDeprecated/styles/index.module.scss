@@ -33,8 +33,7 @@ fieldset[disabled] a.btn {
 @each $name, $color in $btn-swatches {
   @if $name == "brand-yellow" {
     @include button-variants($name, $color-black, $color);
-  }
-  @elseif lightness($color) > 68 {
+  } @else if lightness($color) > 68 {
     @include button-variants($name, $color-black, $color);
   } @else {
     @include button-variants($name, $color-white, $color);
