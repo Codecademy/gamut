@@ -5,19 +5,21 @@ import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
+  freeProfile,
   login,
   logo,
   myHome,
   notifications,
-  plansPricingDropdown,
-  profile,
+  pricingDropdown,
   proLogo,
+  proProfile,
   resourcesDropdown,
   search,
   signUp,
   upgradeToPro,
 } from './GlobalHeaderItems';
+import { User } from './types';
 
 const anonHeaderItems = (
   renderLogin: boolean,
@@ -29,8 +31,8 @@ const anonHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -67,9 +69,9 @@ export const anonSignupHeaderItems = (
 };
 
 export const freeHeaderItems = (
+  user: User,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode,
-  renderProfile?: () => ReactNode
+  renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     logo,
@@ -77,14 +79,14 @@ export const freeHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderProfile && rightItems.push(profile(renderProfile));
+  rightItems.push(freeProfile(user));
   rightItems.push(upgradeToPro);
 
   return {
@@ -94,9 +96,9 @@ export const freeHeaderItems = (
 };
 
 export const proHeaderItems = (
+  user: User,
   renderSearch?: () => ReactNode,
-  renderNotifications?: () => ReactNode,
-  renderProfile?: () => ReactNode
+  renderNotifications?: () => ReactNode
 ): AppHeaderItemsProp => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
@@ -109,10 +111,15 @@ export const proHeaderItems = (
   const rightItems: AppHeaderItem[] = [];
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
-  renderProfile && rightItems.push(profile(renderProfile));
+  rightItems.push(proProfile(user));
 
   return {
     left: leftItems,
     right: rightItems,
   };
+};
+
+export const loadingHeaderItems = {
+  left: [logo],
+  right: [],
 };

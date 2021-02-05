@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### [0.1.10](http://github.com///compare/@codecademy/prettier-config@0.1.9...@codecademy/prettier-config@0.1.10) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/prettier-config
+
+
+
+
+
 ### [0.1.9](http://github.com/Codecademy/client-modules/compare/@codecademy/prettier-config@0.1.8...@codecademy/prettier-config@0.1.9) (2020-10-06)
 
 
@@ -54,4 +67,3 @@
 ### ✨ Features
 
 * Add shared config modules for eslint & prettier ([#224](http://github.com/Codecademy/client-modules/issues/224)) ([7fbeac6](http://github.com/Codecademy/client-modules/commit/7fbeac653543741010003d5fce81cf6bdb1b9291))
-

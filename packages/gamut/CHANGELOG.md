@@ -3,6 +3,78 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.2...@codecademy/gamut@21.2.3) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.1...@codecademy/gamut@21.2.2) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.0...@codecademy/gamut@21.2.1) (2021-02-03)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [21.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.1.1...@codecademy/gamut@21.2.0) (2021-02-02)
+
+
+### Features
+
+* Conversion team pairings on docs: Badge, HighlightedText, ToolTip ([#1337](https://github.com/Codecademy/client-modules/issues/1337)) ([a5bc4b4](https://github.com/Codecademy/client-modules/commit/a5bc4b46e6d6bd14ed87e8557d869d6499860d26))
+
+
+
+### [21.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.1.0...@codecademy/gamut@21.1.1) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [21.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.0.0...@codecademy/gamut@21.1.0) (2021-02-02)
+
+
+### Features
+
+* **Overlay:** Support allowOutsideClick prop ([21a876d](https://github.com/Codecademy/client-modules/commit/21a876deab9a788d55bd0e6f86204dbc2423e50c))
+
+
+
+## [21.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.1.0...@codecademy/gamut@21.0.0) (2021-02-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** open cta in new tab by default (#1350)
+
+### Features
+
+* **Alert:** open cta in new tab by default ([#1350](https://github.com/Codecademy/client-modules/issues/1350)) ([c45ab6f](https://github.com/Codecademy/client-modules/commit/c45ab6fb49e9c94b8eb2610f80f12242dd85d006)), closes [#1330](https://github.com/Codecademy/client-modules/issues/1330)
+
+
+
+## [20.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.5...@codecademy/gamut@20.1.0) (2021-02-01)
+
+
+### Features
+
+* **Pattern:** add dot patterns ([#1348](https://github.com/Codecademy/client-modules/issues/1348)) ([cf52343](https://github.com/Codecademy/client-modules/commit/cf52343bcb17d70db056fe65d2954c385c360a23))
+
+
+
 ### [20.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@20.0.4...@codecademy/gamut@20.0.5) (2021-01-29)
 
 **Note:** Version bump only for package @codecademy/gamut

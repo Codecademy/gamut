@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { BellIcon, PersonIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -9,58 +9,66 @@ import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
   login,
   myHome,
-  plansPricingDropdown,
+  pricingDropdown,
   resourcesDropdown,
   signUp,
   upgradeToPro,
 } from '../GlobalHeaderItems';
+import { User } from '../types';
 
-const onClick = jest.fn();
+const action = jest.fn();
+const user: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+};
 
 const anonHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'free',
+  user,
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'pro',
+  user,
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   renderSearch: () => <IconButton icon={SearchIcon} />,
   renderNotifications: () => <IconButton icon={BellIcon} />,
-  renderProfile: () => <IconButton icon={PersonIcon} />,
   type: 'pro',
+  user,
 };
 
 const renderGlobalHeader = (props: GlobalHeaderProps) => {
@@ -94,11 +102,11 @@ describe('GlobalHeader', () => {
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getByText(forBusiness.text);
     });
 
     test('login', () => {
@@ -192,11 +200,15 @@ describe('GlobalHeader', () => {
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getByText(forBusiness.text);
+    });
+
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
     });
 
     test('upgradeToPro', () => {
@@ -228,6 +240,10 @@ describe('GlobalHeader', () => {
     test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
+
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
+    });
   });
 
   describe('renders a custom element when provided one', () => {
@@ -242,15 +258,11 @@ describe('GlobalHeader', () => {
     test('notifications', () => {
       screen.getByTitle('Bell Icon');
     });
-
-    test('profile', () => {
-      screen.getByTitle('Person Icon');
-    });
   });
 
-  test('fires onClick upon clicking an element', () => {
+  test('fires action() upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
     screen.getAllByRole('button')[0].click();
-    expect(onClick).toHaveBeenCalled();
+    expect(action).toHaveBeenCalled();
   });
 });

@@ -4,33 +4,22 @@ import { pxRem } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { AppHeaderDropdownProps } from '../../..';
 import { Text } from '../../../experimental/Text';
-import { AppHeaderLink } from '../../AppHeader/AppHeaderElements/AppHeaderLink';
+import { AppHeaderDropdownProps } from '../../AppHeader/AppHeaderElements/AppHeaderDropdown';
+import { AppHeaderLinkSections } from '../../AppHeader/AppHeaderElements/AppHeaderLinkSections';
 import {
   focusStyles,
   hoverStyles,
+  textButtonStyles,
 } from '../../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderLinkItem } from '../../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
   handleClose: () => void;
 };
 
 const FullMenuButton = styled.button`
-  background-color: transparent;
-  border: 1px solid transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  display: flex;
-  align-items: center;
-  font-weight: normal;
-  line-height: 1.5;
   margin-bottom: ${pxRem(24)};
-  min-width: 0;
-  width: 100%;
-  padding: ${pxRem(2)} 0;
-  text-align: left;
-  white-space: nowrap;
+  ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
 `;
@@ -40,29 +29,23 @@ const Heading = styled(Text)`
 `;
 
 export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
+  action,
   handleClose,
   item,
-  onClick,
 }) => {
   return (
     <>
       <Box aria-labelledby={`${item.text} menu`}>
         <FullMenuButton onClick={handleClose} type="button">
           <ArrowChevronLeftIcon size={12} aria-hidden />
-          <Box title={item.text} fontSize={16} paddingLeft={8}>
+          <Box fontSize={16} paddingLeft={8}>
             Full Menu
           </Box>
         </FullMenuButton>
         <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
           {item.text}
         </Heading>
-        {item.popover.map((link: AppHeaderLinkItem) => {
-          return (
-            <Box key={link.id}>
-              <AppHeaderLink item={link} onClick={onClick} />
-            </Box>
-          );
-        })}
+        <AppHeaderLinkSections action={action} item={item} />
       </Box>
     </>
   );
