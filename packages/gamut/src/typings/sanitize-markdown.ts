@@ -7,5 +7,7 @@ declare module 'sanitize-markdown' {
   namespace sanitizeMarkdown {
     export const defaults: any;
   }
+
+  // eslint-disable-next-line import/no-default-export
   export default sanitizeMarkdown;
 }

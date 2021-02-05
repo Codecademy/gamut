@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
-import sanitizeMarkdown from 'sanitize-markdown';
 import marked from 'marked';
 import React, { PureComponent } from 'react';
+import sanitizeMarkdown from 'sanitize-markdown';
 
 import { omitProps } from '../utils/omitProps';
 import {
