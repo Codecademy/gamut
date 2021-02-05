@@ -82,9 +82,9 @@ export const mapItemToElement = (
 };
 
 export const AppHeader: React.FC<AppHeaderProps> = ({
-  items,
-  className,
   action,
+  className,
+  items,
 }) => {
   return (
     <AppBar className={className}>

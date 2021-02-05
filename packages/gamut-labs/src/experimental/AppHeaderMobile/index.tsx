@@ -20,9 +20,9 @@ import { AppHeaderClickHandler } from './../AppHeader/AppHeaderElements/types';
 import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
-  items: FormattedMobileAppHeaderItems;
-  className?: string;
   action: AppHeaderClickHandler;
+  className?: string;
+  items: FormattedMobileAppHeaderItems;
 };
 
 const IconButton = styled.button`
@@ -36,9 +36,9 @@ const IconButton = styled.button`
 `;
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
-  items,
-  className,
   action,
+  className,
+  items,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -127,7 +127,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           onRequestClose={() => setMobileMenuOpen(false)}
         >
           <div>
-            <AppBar>
+            <AppBar className={className}>
               <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
               <AppBarSection position="right">
                 <IconButton
