@@ -22,11 +22,11 @@ import {
   AppHeaderItem,
 } from './../AppHeader/AppHeaderElements/types';
 import { AppHeaderLinkMobile } from './../AppHeaderMobile/AppHeaderLinkMobile';
-import { AppHeaderMobileItemsProps } from './../GlobalHeader/GlobalHeaderVariants';
+import { FormattedAppHeaderMobileItems } from './../GlobalHeader/GlobalHeaderVariants';
 import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
-  items: AppHeaderMobileItemsProps;
+  items: FormattedAppHeaderMobileItems;
   className?: string;
   action: AppHeaderClickHandler;
 };

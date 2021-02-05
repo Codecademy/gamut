@@ -1,23 +1,26 @@
-import {
-  BookFlipPageIcon,
-  CommunityIcon,
-  HouseEntranceIcon,
-} from '@codecademy/gamut-icons/src';
 import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
-import { AppHeader, AppHeaderItemsProp } from '../AppHeader';
+import { AppHeader } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,
+  anonDefaultMobileHeaderItems,
   anonLandingHeaderItems,
+  anonLandingMobileHeaderItems,
   anonLoginHeaderItems,
+  anonLoginMobileHeaderItems,
   anonSignupHeaderItems,
-  AppHeaderMobileItemsProps,
+  anonSignupMobileHeaderItems,
+  FormattedAppHeaderItems,
+  FormattedMobileAppHeaderItems,
   freeHeaderItems,
+  freeMobileHeaderItems,
   loadingHeaderItems,
+  loadingMobileHeaderItems,
   proHeaderItems,
+  proMobileHeaderItems,
 } from './GlobalHeaderVariants';
 import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
@@ -33,15 +36,17 @@ export type GlobalHeaderProps =
   | ProHeader
   | LoadingHeader;
 
-const getAppHeaderItems = (props: GlobalHeaderProps): AppHeaderItemsProp => {
+const getAppHeaderItems = (
+  props: GlobalHeaderProps
+): FormattedAppHeaderItems => {
   switch (props.type) {
     case 'anon':
       switch (props.variant) {
-        case 'landing': // same for mobile
+        case 'landing':
           return anonLandingHeaderItems();
         case 'login':
           return anonLoginHeaderItems(props.renderSearch);
-        case 'signup': // same for mobile
+        case 'signup':
           return anonSignupHeaderItems(props.renderSearch);
         default:
           return anonDefaultHeaderItems(props.renderSearch);
@@ -63,100 +68,28 @@ const getAppHeaderItems = (props: GlobalHeaderProps): AppHeaderItemsProp => {
   }
 };
 
-const getMobileAppHeaderItems = (): AppHeaderMobileItemsProps => {
-  return {
-    left: [
-      {
-        id: 'logo-1',
-        href: 'http://codecademy.com',
-        pro: false,
-        trackingTarget: 'tracking-target',
-        type: 'logo',
-      },
-    ],
-    right: [
-      {
-        id: 'text-button',
-        text: 'Log in',
-        href: 'http://codecademy.com',
-        trackingTarget: 'tracking-target',
-        type: 'text-button',
-      },
-      {
-        id: 'fill-button',
-        text: 'Sign up',
-        href: 'http://codecademy.com',
-        trackingTarget: 'tracking-target',
-        type: 'fill-button',
-      },
-    ],
-    mainMenu: [
-      {
-        dataTestId: 'header-catalog',
-        icon: BookFlipPageIcon,
-        id: 'course-catalog',
-        text: 'Course Catalog',
-        href: '/catalog',
-        trackingTarget: 'topnav_catalog',
-        type: 'link',
-      },
-      {
-        dataTestId: 'header-home',
-        icon: HouseEntranceIcon,
-        id: 'my-home',
-        text: 'My Home',
-        href: '/learn',
-        trackingTarget: 'topnav_home',
-        type: 'link',
-      },
-      {
-        id: 'target',
-        text: 'Community',
-        icon: CommunityIcon,
-        popover: [
-          {
-            id: 'sublink-1',
-            text: 'forum',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-2',
-            text: 'chapters',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-        ],
-        trackingTarget: '',
-        type: 'dropdown',
-      },
-      {
-        id: 'dropdown-target-2',
-        text: 'Resources',
-        icon: HouseEntranceIcon,
-        popover: [
-          {
-            id: 'sublink-1',
-            text: 'cheatsheets',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-          {
-            id: 'sublink-2',
-            text: 'blog',
-            href: 'http://codecademy.com',
-            trackingTarget: '',
-            type: 'link',
-          },
-        ],
-        trackingTarget: '',
-        type: 'dropdown',
-      },
-    ],
-  };
+const getMobileAppHeaderItems = (
+  props: GlobalHeaderProps
+): FormattedMobileAppHeaderItems => {
+  switch (props.type) {
+    case 'anon':
+      switch (props.variant) {
+        case 'landing':
+          return anonLandingMobileHeaderItems();
+        case 'login':
+          return anonLoginMobileHeaderItems();
+        case 'signup':
+          return anonSignupMobileHeaderItems();
+        default:
+          return anonDefaultMobileHeaderItems();
+      }
+    case 'free':
+      return freeMobileHeaderItems(props.user, props.renderNotifications);
+    case 'pro':
+      return proMobileHeaderItems(props.user, props.renderNotifications);
+    case 'loading':
+      return loadingMobileHeaderItems;
+  }
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
@@ -172,7 +105,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       ) : (
         <AppHeaderMobile
           action={props.action}
-          items={getMobileAppHeaderItems()}
+          items={getMobileAppHeaderItems(props)}
         />
       )}
     </>
