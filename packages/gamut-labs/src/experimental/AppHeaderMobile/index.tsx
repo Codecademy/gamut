@@ -6,11 +6,10 @@ import {
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
-import { AppHeaderMainMenuMobile } from '@codecademy/gamut-labs/src/experimental/AppHeaderMobile/AppHeaderMainMenuMobile';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { mapItemToElement } from '..';
+import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
 import { FormattedMobileAppHeaderItems } from '../GlobalHeader/GlobalHeaderVariants';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
