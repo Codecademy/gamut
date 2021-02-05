@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.0.1...@codecademy/gamut-labs@9.1.0) (2021-02-04)
+
+
+### Features
+
+* add dark mode to video gallery and prefooter ([8551755](https://github.com/Codecademy/client-modules/commit/8551755c3c4c8e637832c641754e0587f7860ced))
+
+
+
+### [9.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.0.0...@codecademy/gamut-labs@9.0.1) (2021-02-04)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Fixes for the static-sites transition ([#1361](https://github.com/Codecademy/client-modules/issues/1361)) ([0b88cca](https://github.com/Codecademy/client-modules/commit/0b88ccafc093c3cc4cad0e502864fe239f7e097e))
+
+
+
+## [9.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.3...@codecademy/gamut-labs@9.0.0) (2021-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse 
+
+### Miscellaneous Chores
+
+* **BrandMono:** Remove Roboto Mono in favor of using Suisse  ([042259e](https://github.com/Codecademy/client-modules/commit/042259e51bfea3864187adfe7b0a409d86b68634))
+
+
+
+### [8.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.2...@codecademy/gamut-labs@8.3.3) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [8.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.1...@codecademy/gamut-labs@8.3.2) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [8.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@8.3.0...@codecademy/gamut-labs@8.3.1) (2021-02-03)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
