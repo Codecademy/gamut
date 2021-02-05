@@ -6,8 +6,18 @@ import {
 } from '@codecademy/gamut-icons/src';
 import {
   AppHeaderDropdownItem,
+  AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
 } from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
+
+export const MOCK_LINK: AppHeaderLinkItem = {
+  id: 'home',
+  href: 'https://codecademy.com/',
+  icon: HouseEntranceIcon,
+  text: 'Home',
+  trackingTarget: 'nav-link',
+  type: 'link',
+};
 
 export const MOCK_DROPDOWN_1: AppHeaderDropdownItem = {
   id: 'dropdown',
