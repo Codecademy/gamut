@@ -5,31 +5,8 @@ import {
   PropertyConfig,
   ThematicProps,
 } from './config';
+import { ComplexCss, CSSObject } from './css';
 import { UnionToIntersection, WeakRecord } from './utils';
-
-type PseudoSelectors =
-  | 'hover'
-  | 'active'
-  | 'focus'
-  | 'focus-visible'
-  | 'focus-within'
-  | 'visited';
-
-type PseudoElements = 'before' | 'after';
-
-export type ComplexCss<
-  Theme extends AbstractTheme,
-  Config extends SystemConfig<Theme>
-> = AllSystemProps<Theme, Config> &
-  {
-    [key in
-      | PseudoSelectors
-      | PseudoElements as `&:${key}`]?: key extends PseudoElements
-      ? { content: string } & AllSystemProps<Theme, Config>
-      : AllSystemProps<Theme, Config>;
-  };
-
-export type CSSObject = Record<string, string | number>;
 
 /** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
 type GroupConfig<Theme extends AbstractTheme> = Record<
@@ -104,22 +81,21 @@ export type AllSystemProps<
  */
 export type System<
   Theme extends AbstractTheme,
-  Config extends SystemConfig<Theme>
+  Config extends SystemConfig<Theme>,
+  Props = AllSystemProps<Theme, Config>
 > = {
-  css: (
-    config: ComplexCss<Theme, Config>
-  ) => (props: { theme?: Theme }) => CSSObject;
+  css: (config: ComplexCss<Props>) => (props: { theme?: Theme }) => CSSObject;
   /** Higher order variant function, with two overloads */
   variant: {
     /** Customizable prop interface */
     <Prop extends Readonly<string>, Keys extends string>(config: {
       prop: Prop;
-      variants: Readonly<Record<Keys, ComplexCss<Theme, Config>>>;
+      variants: Readonly<Record<Keys, ComplexCss<Props>>>;
     }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */
-    <Keys extends string>(
-      config: Readonly<Record<Keys, ComplexCss<Theme, Config>>>
-    ): (props: WeakRecord<'variant', Keys> & { theme?: Theme }) => CSSObject;
+    <Keys extends string>(config: Readonly<Record<Keys, ComplexCss<Props>>>): (
+      props: WeakRecord<'variant', Keys> & { theme?: Theme }
+    ) => CSSObject;
   };
   /** The intersection of all style properties (regardless of group) */
   properties: UnionToIntersection<
