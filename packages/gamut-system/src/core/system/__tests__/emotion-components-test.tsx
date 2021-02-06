@@ -17,6 +17,7 @@ describe('Styled components integration', () => {
       primary: { fontSize: '1rem', textColor: 'blue' },
       secondary: { fontSize: '0.85rem' },
     });
+
     const MyComponent = styled.div<
       HandlerProps<typeof typography> & HandlerProps<typeof textVariants>
     >`
