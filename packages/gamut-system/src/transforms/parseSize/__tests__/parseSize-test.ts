@@ -22,4 +22,8 @@ describe(parseSize, () => {
   it('returns none numeric values as is', () => {
     expect(parseSize('auto')).toEqual('auto');
   });
+
+  it('returns calc() values as is', () => {
+    expect(parseSize('calc(100% + 15px)')).toEqual('calc(100% + 15px)');
+  });
 });

@@ -8,6 +8,11 @@ export const parseSize = (value: string | number) => {
   if (isNumber(value)) {
     return percentageOrAbsolute(value);
   }
+
+  if (value.includes('calc')) {
+    return value;
+  }
+
   const [match, number, unit] = value.match(valueWithUnit) || [];
 
   if (match === undefined) {
