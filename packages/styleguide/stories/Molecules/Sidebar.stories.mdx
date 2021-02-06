@@ -62,13 +62,31 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 ## I take up space. + I have a tab button. Deal with it.
 
-Sometimes Sidebars are just components that need to take up space. We get it. This one will take up the height of its parent container, so jot that down.
+Sometimes Sidebars are just components that need to take up space. We get it. This one will take up the height of its parent container, so jot that down. If the parent container does not have a defined height, it will do some weird things.
 
 <Canvas>
   <Story name="SidebarBox">
     {(args) => (
-      <FlexBox>
-        <SidebarBox backgroundColor={'palePink'} expanded={true} {...args}>
+      <FlexBox
+        height="50rem"
+        width="100%"
+        padding="1rem"
+        backgroundColor="paleBlue"
+      >
+        <Box backgroundColor={'palePink'} textColor={'navy'} padding={'1rem'}>
+          An Avatar of Khaine is the term normally applied to the physical form
+          that the spirit of an Eldar God has managed to possess and animate.
+          This term is most often applied to the physical body possessed by a
+          fragment of the spirit of the Eldar God of War Kaela Mensha Khaine,
+          though the term can actually apply to any divine entity of the Warp
+          that has found some way to take on a corporeal form within realspace.
+        </Box>
+        <SidebarBox
+          backgroundColor={'navy'}
+          textColor={'white'}
+          expanded={true}
+          {...args}
+        >
           <Box margin={16}>
             Baharroth - Baharroth, "the Cry of the Wind," is the Winged Phoenix,
             the oldest of the Swooping Hawks and the first Exarch of those
@@ -81,17 +99,17 @@ Sometimes Sidebars are just components that need to take up space. We get it. Th
             hurricane.
           </Box>
         </SidebarBox>
-        <FlexBox backgroundColor={'blue'} color={'white'}>
+        <Box backgroundColor={'palePink'} textColor={'navy'} padding={'1rem'}>
           An Avatar of Khaine is the term normally applied to the physical form
           that the spirit of an Eldar God has managed to possess and animate.
           This term is most often applied to the physical body possessed by a
           fragment of the spirit of the Eldar God of War Kaela Mensha Khaine,
           though the term can actually apply to any divine entity of the Warp
           that has found some way to take on a corporeal form within realspace.
-        </FlexBox>
+        </Box>
       </FlexBox>
     )}
   </Story>
 </Canvas>
 
-<Props exclude={['button']} story="SidebarBox" />
+<Props exclude={['button']} story="SidebarBox" />'

@@ -3,22 +3,25 @@ import {
   ButtonDeprecatedBaseProps,
 } from '@codecademy/gamut/src';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
+import { SidebarComponentSideProps } from './shared';
 import React from 'react';
 
 import styled from '@emotion/styled';
 
-export type SidebarTabButtonProps = ButtonDeprecatedBaseProps & {
+export type SidebarTabButtonProps = ButtonDeprecatedBaseProps &
+  SidebarComponentSideProps & {
+    expanded: boolean;
+    onClick: () => void;
+  };
+
+export type RotatingArrowProps = SidebarComponentSideProps & {
   expanded: boolean;
-  onClick: () => void;
 };
 
-export type RotatingArrowProps = {
-  expanded: boolean;
-};
-
-const ArrowButton = styled(ButtonDeprecated)`
+const ArrowButton = styled(ButtonDeprecated)<SidebarComponentSideProps>`
   position: absolute;
-  left: 100%;
+  left: ${(props) => (props.openFrom === 'left' ? '100%' : 'initial')};
+  right: ${(props) => (props.openFrom === 'right' ? '100%' : 'initial')};
   top: 2rem;
   display: flex;
   align-content: center;
@@ -32,20 +35,38 @@ const ArrowButton = styled(ButtonDeprecated)`
 
 const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`
   transition: transform 0.35s ease-out;
-  transform: ${(props) => (props.expanded ? `rotate(180deg)` : `none`)};
+  transform: ${(props) =>
+    !props.expanded && props.openFrom === 'right'
+      ? `scaleX(-1) rotate(180deg)`
+      : props.expanded && props.openFrom === 'right'
+      ? `scaleX(-1)`
+      : props.expanded && props.openFrom === 'left'
+      ? `rotate(180deg)`
+      : `none`};
 `;
+
+//right && !expanded => addScaleCorrection(1)
+// right && expanded => scale(1)
 
 export const SidebarTabButton: React.FC<SidebarTabButtonProps> = ({
   expanded,
   onClick,
+  openFrom,
 }) => {
   return (
     <ArrowButton
       aria-label={expanded ? 'Collapse sidebar' : 'Expand sidebar'}
       aria-expanded={expanded}
       onClick={onClick}
+      openFrom={openFrom}
     >
-      <RotatingArrow height={25} width={25} expanded={expanded} aria-hidden />
+      <RotatingArrow
+        height={25}
+        width={25}
+        expanded={expanded}
+        openFrom={openFrom}
+        aria-hidden
+      />
     </ArrowButton>
   );
 };

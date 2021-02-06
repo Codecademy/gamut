@@ -31,21 +31,28 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
 
   const variants = {
     expanded: { width: width },
-    folded: { width: 0 },
+    hidden: { width: 0 },
   };
 
   return (
     <FlexBox
-      height="100%"
       position="relative"
-      marginRight={48}
+      marginRight={openFrom === 'left' ? 48 : 0}
+      marginLeft={openFrom === 'right' ? 48 : 0}
+      width="fit-content"
       backgroundColor={backgroundColor}
       {...styleProps}
     >
+      <SidebarTabButton
+        expanded={isSidebarOpen}
+        onClick={() => toggleDrawer()}
+        data-testid="arrow-sidebar-button"
+        openFrom={openFrom}
+      />
       <SidebarContent
         aria-expanded={isSidebarOpen}
         initial={false}
-        animate={isSidebarOpen ? 'expanded' : 'folded'}
+        animate={isSidebarOpen ? 'expanded' : 'hidden'}
         variants={variants}
         transition={{ duration: transitionDuration, ease: 'easeInOut' }}
         openWidth={openWidth}
@@ -54,11 +61,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
       >
         <Box width={width}>{children}</Box>
       </SidebarContent>
-      <SidebarTabButton
-        expanded={isSidebarOpen}
-        onClick={() => toggleDrawer()}
-        data-testid="arrow-sidebar-button"
-      />
     </FlexBox>
   );
 };

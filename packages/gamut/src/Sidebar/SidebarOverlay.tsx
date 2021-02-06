@@ -44,12 +44,6 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
 
   return (
     <>
-      <SidebarCloneButton
-        onClick={() => toggleDrawer()}
-        data-testid="arrow-sidebar-button"
-      >
-        {button}
-      </SidebarCloneButton>
       <AnimatePresence>
         {isSidebarOpen ? (
           <Drawer
@@ -68,6 +62,12 @@ export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
           </Drawer>
         ) : null}
       </AnimatePresence>
+      <SidebarCloneButton
+        onClick={() => toggleDrawer()}
+        data-testid="arrow-sidebar-button"
+      >
+        {button}
+      </SidebarCloneButton>
     </>
   );
 };
