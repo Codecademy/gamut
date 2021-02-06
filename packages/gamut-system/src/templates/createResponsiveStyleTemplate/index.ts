@@ -11,9 +11,7 @@ import {
 
 import { AbstractTheme, HandlerMeta } from '../../types/config';
 import { CSSObject } from '../../types/css';
-import { BASE, DEFAULT_MEDIA_QUERIES } from './constants';
-
-const GLOBALS = ['content'];
+import { BASE, DEFAULT_MEDIA_QUERIES, GLOBAL_PROPERTIES } from './constants';
 
 export function createResponsiveStyleTemplate<
   Props extends { theme?: AbstractTheme }
@@ -27,7 +25,7 @@ export function createResponsiveStyleTemplate<
     const breakpointOrder = [BASE, ...Object.keys(breakpoints)];
     const responsive = {} as Record<typeof breakpointOrder[number], Props>;
 
-    GLOBALS.forEach((global) => {
+    GLOBAL_PROPERTIES.forEach((global) => {
       const value = get(props, global);
 
       if (value !== undefined) {
@@ -80,7 +78,7 @@ export function createResponsiveStyleTemplate<
       templates.forEach((styleFunction) => {
         if (!styleFunction) return;
         const templateStyles = {
-          ...pick(bpProps, GLOBALS),
+          ...pick(bpProps, GLOBAL_PROPERTIES),
           ...styleFunction({ ...bpProps, theme }),
         };
 

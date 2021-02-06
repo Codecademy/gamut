@@ -7,3 +7,5 @@ export const DEFAULT_MEDIA_QUERIES = {
   lg: '@media (min-width: 1024px)',
   xl: '@media (min-width: 1248px)',
 };
+
+export const GLOBAL_PROPERTIES = ['content'];
