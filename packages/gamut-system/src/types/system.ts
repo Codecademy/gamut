@@ -5,7 +5,7 @@ import {
   PropertyConfig,
   ThematicProps,
 } from './config';
-import { ComplexCss, CSSObject } from './css';
+import { ComplexCSS, CSSObject } from './css';
 import { UnionToIntersection, WeakRecord } from './utils';
 
 /** A Group of Property Configurations EG: 'fontSize' | 'fontFamily' etc. */
@@ -84,7 +84,7 @@ export type System<
   Config extends SystemConfig<Theme>,
   Props = AllSystemProps<Theme, Config>
 > = {
-  css: (config: ComplexCss<Props>) => (props: { theme?: Theme }) => CSSObject;
+  css: (config: ComplexCSS<Props>) => (props: { theme?: Theme }) => CSSObject;
   /** Higher order variant function, with two overloads */
   variant: {
     /** Customizable default and prop interface */
@@ -95,10 +95,10 @@ export type System<
     >(config: {
       prop?: Prop;
       default?: Default;
-      variants: Readonly<Record<Keys, ComplexCss<Props>>>;
+      variants: Readonly<Record<Keys, ComplexCSS<Props>>>;
     }): (props: WeakRecord<Prop, Keys> & { theme?: Theme }) => CSSObject;
     /** Default `variant` interface */
-    <Keys extends string>(config: Readonly<Record<Keys, ComplexCss<Props>>>): (
+    <Keys extends string>(config: Readonly<Record<Keys, ComplexCSS<Props>>>): (
       props: WeakRecord<'variant', Keys> & { theme?: Theme }
     ) => CSSObject;
   };

@@ -8,7 +8,7 @@ type PseudoSelectors =
 
 type PseudoElements = 'before' | 'after';
 
-export type ComplexCss<Props extends unknown> = Props &
+export type ComplexCSS<Props extends unknown> = Props &
   {
     [key in
       | PseudoSelectors

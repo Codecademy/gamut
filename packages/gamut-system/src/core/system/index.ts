@@ -7,11 +7,11 @@ import {
   AbstractTheme,
   Handler,
 } from '../../types/config';
-import { ComplexCss, CSSObject } from '../../types/css';
+import { ComplexCSS, CSSObject } from '../../types/css';
 import { System, SystemConfig } from '../../types/system';
 import { compose } from '../compose';
 import { createHandler } from '../createHandler';
-import { splitSelectors } from '../utils/pseudoSelectors';
+import { handleSelectorStyles, splitSelectors } from '../utils/pseudoSelectors';
 
 const create = <
   Theme extends AbstractTheme,
@@ -68,15 +68,13 @@ const create = <
   const allSystemProps = compose(...values(system.properties));
 
   const css = (config: any = {}) => {
-    let cache: ComplexCss<CSSObject>;
+    let cache: ComplexCSS<CSSObject>;
     const [base, pseudos] = splitSelectors(config);
+    const styleFn = handleSelectorStyles(base, pseudos, allSystemProps);
 
-    return ({ theme = {} }) => {
+    return (props: { theme?: AbstractTheme }) => {
       if (cache) return cache;
-      const css = {
-        ...allSystemProps({ ...base, theme }),
-        ...mapValues(pseudos, (styles) => allSystemProps({ ...styles, theme })),
-      } as ComplexCss<CSSObject>;
+      const css = styleFn(props);
       cache = css;
       return css;
     };
@@ -88,7 +86,9 @@ const create = <
     const propKey: string = config?.prop || 'variant';
     const defaultKey: string = config?.default;
     const cache: Record<string, Record<string, CSSObject> | CSSObject> = {};
-    const variantSelectors = mapValues(variants, splitSelectors);
+    const variantSelectors = mapValues(variants, (config) =>
+      handleSelectorStyles(...splitSelectors(config), allSystemProps)
+    );
 
     // Return the variant function
     return ({
@@ -97,15 +97,11 @@ const create = <
     }: Record<typeof propKey, string>) => {
       if (!selectedVariant) return {};
 
-      const theme = rest.theme || {};
       const cachedCss = cache[selectedVariant];
       if (cachedCss) return cachedCss;
 
-      const [base, pseudos = {}] = variantSelectors[selectedVariant];
-      const css = {
-        ...allSystemProps({ ...base, theme }),
-        ...mapValues(pseudos, (styles) => allSystemProps({ ...styles, theme })),
-      } as ComplexCss<CSSObject>;
+      const variantFn = variantSelectors[selectedVariant];
+      const css = variantFn(rest);
 
       cache[selectedVariant] = css;
       return css;
