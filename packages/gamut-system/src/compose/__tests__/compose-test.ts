@@ -5,8 +5,8 @@ import { border, layout, typography } from '../../props';
 import {
   createDirectionalStyleTemplate,
   createStandardStyleTemplate,
-} from '../../styleTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../styleTemplates/createResponsiveStyleTemplate/constants';
+} from '../../templates';
+import { DEFAULT_MEDIA_QUERIES } from '../../templates/createResponsiveStyleTemplate/constants';
 import { compose } from '..';
 
 const display = createHandler(layout.display);

@@ -1,4 +1,4 @@
-import { createResponsiveStyleTemplate } from '../styleTemplates';
+import { createResponsiveStyleTemplate } from '../templates';
 import { AbstractProps, Handler } from '../types/config';
 import { UnionToIntersection } from '../types/utils';
 

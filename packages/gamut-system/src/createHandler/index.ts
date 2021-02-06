@@ -4,7 +4,7 @@ import {
   createDirectionalStyleTemplate,
   createResponsiveStyleTemplate,
   createStandardStyleTemplate,
-} from '../styleTemplates';
+} from '../templates';
 import {
   AbstractTheme,
   Handler,
