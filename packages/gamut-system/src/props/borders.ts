@@ -13,6 +13,17 @@ export const border = {
   },
   borderRadius: {
     propName: 'borderRadius',
+    dependentProps: [
+      'borderRadiusLeft',
+      'borderRadiusTop',
+      'borderRadiusBottom',
+      'borderRadiusRight',
+      'borderRadiusTopLeftRadius',
+      'borderRadiusTopRight',
+      'borderRadiusBottomRight',
+      'borderRadiusBottomLeft',
+    ],
+    type: 'directional',
   },
   borderStyle: {
     propName: 'borderStyle',

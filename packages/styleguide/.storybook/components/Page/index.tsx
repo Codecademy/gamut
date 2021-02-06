@@ -3,7 +3,6 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
-import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
@@ -12,6 +11,7 @@ export const Link = styled.a`
   display: inline-flex;
   line-height: 1;
   column-gap: 0.5rem;
+  font-weight: 700;
   align-items: flex-start;
   color: ${({ theme }) => theme.color.secondary};
   border-bottom: 2px solid transparent;
@@ -129,7 +129,7 @@ export const Page: React.FC = ({ children }) => {
               </HeaderCol>
               <HeaderCol>
                 <Link target="_blank" href={npmLink}>
-                  @codecademy/{source} <OpenIcon size={14} />
+                  @codecademy/{source}
                 </Link>
               </HeaderCol>
             </>
@@ -141,7 +141,7 @@ export const Page: React.FC = ({ children }) => {
               </HeaderCol>
               <HeaderCol>
                 <Link target="_blank" href={figmaLink}>
-                  Figma <OpenIcon size={14} />
+                  Figma
                 </Link>
               </HeaderCol>
             </>
