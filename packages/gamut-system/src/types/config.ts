@@ -117,7 +117,10 @@ export type StyleTemplate<Props extends AbstractProps> = (
 
 export type HandlerMeta<Props extends AbstractProps> = {
   propNames: Exclude<keyof Props, 'theme'>[];
-  styleTemplates: WeakRecord<keyof Props, StyleTemplate<Props>>;
+  styleTemplates: WeakRecord<
+    Exclude<keyof Props, 'theme'>,
+    StyleTemplate<Props>
+  >;
 };
 
 export type Handler<Props extends AbstractProps> = HandlerMeta<Props> &
