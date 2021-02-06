@@ -29,6 +29,15 @@ export interface Properties {
   };
   borderRadius: {
     defaultScale: CSS.Properties['borderRadius'];
+    dependentProps:
+      | 'borderRadiusLeft'
+      | 'borderRadiusTop'
+      | 'borderRadiusBottom'
+      | 'borderRadiusRight'
+      | 'borderRadiusTopLeftRadius'
+      | 'borderRadiusTopRight'
+      | 'borderRadiusBottomRight'
+      | 'borderRadiusBottomLeft';
   };
   borderStyle: {
     // Import fails on some peer versions this ensures that the type exists.  Enabling dependentProps causes union overflow
