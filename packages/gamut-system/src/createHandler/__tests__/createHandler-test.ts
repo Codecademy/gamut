@@ -67,15 +67,15 @@ describe(createHandler, () => {
   it('creates a directional style template if type is specified', () => {
     const { styleTemplates } = createHandler<
       Theme,
-      PropConfig & { type: 'directional' }
+      { propName: 'borderWidth'; type: 'directional' }
     >({
-      propName: 'height',
+      propName: 'borderWidth',
       type: 'directional',
     });
 
-    expect(styleTemplates.height?.toString()).toEqual(
+    expect(styleTemplates.borderWidth?.toString()).toEqual(
       createDirectionalStyleTemplate({
-        propName: 'height',
+        propName: 'borderWidth',
         transformValue: identity,
       }).toString()
     );

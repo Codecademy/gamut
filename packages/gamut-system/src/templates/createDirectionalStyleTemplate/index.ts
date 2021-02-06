@@ -54,23 +54,19 @@ const destructureByDirection = <
 
 export function createDirectionalStyleTemplate<
   Props extends AbstractProps,
-  Config extends AbstractPropertyConfig &
-    Required<Pick<AbstractPropertyConfig, 'propName' | 'transformValue'>>
+  Config extends AbstractPropertyConfig & { propName: DirectionalProperty }
 >(config: Config): StyleTemplate<Props> {
-  const { propName, transformValue } = config;
+  const { propName, transformValue = (val) => val } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
   return (props: Props): CSSObject => {
     const scaleTransform = getScaleFunction(props);
     // Initialize all directional props from base => specific direction
 
-    const propKey = propName as DirectionalProperty;
+    const propKey = propName;
     // Order props in their correct short hand order for consistency between components.
-    const orderedProps = destructureByDirection(
-      propName as DirectionalProperty,
-      props
-    );
-    const styles = {} as CSSObject;
+    const orderedProps = destructureByDirection(propName, props);
+    const styles: CSSObject = {};
 
     // Iterate over all possible directions
     orderedProps.forEach((direction, i) => {
@@ -79,7 +75,7 @@ export function createDirectionalStyleTemplate<
       if (propValue === undefined) return;
 
       // Look up valid directional prop name based on direction.
-      const prop = DIRECTIONAL_PROPS[propKey][i] as string;
+      const prop = DIRECTIONAL_PROPS[propKey][i];
       // Do final calculations
       styles[prop] = transformValue(propValue);
     });

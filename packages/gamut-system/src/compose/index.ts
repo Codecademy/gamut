@@ -4,6 +4,13 @@ import { createResponsiveStyleTemplate } from '../templates';
 import { AbstractProps, Handler } from '../types/config';
 import { UnionToIntersection } from '../types/utils';
 
+const isHandler = <T>(handler: unknown): handler is T => {
+  if (hasIn(handler, 'propNames') && hasIn(handler, 'styleTemplates')) {
+    return true;
+  }
+  return false;
+};
+
 export const compose = <
   Handlers extends Handler<AbstractProps>[],
   Props extends Partial<UnionToIntersection<Parameters<Handlers[number]>[0]>>
@@ -18,15 +25,8 @@ export const compose = <
     styleTemplates: Handler<Props>['styleTemplates'];
   };
 
-  const isHandler = (handler: unknown): handler is Handler<Props> => {
-    if (hasIn(handler, 'propNames') && hasIn(handler, 'styleTemplates')) {
-      return true;
-    }
-    return false;
-  };
-
   handlers.forEach((handler) => {
-    if (isHandler(handler)) {
+    if (isHandler<Handler<Props>>(handler)) {
       config.propNames = config.propNames.concat(handler.propNames);
       config.styleTemplates = Object.assign(
         config.styleTemplates,

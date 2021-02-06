@@ -7,12 +7,11 @@ import {
 
 export const createStandardStyleTemplate = <
   Props extends AbstractProps,
-  Config extends AbstractPropertyConfig &
-    Required<Pick<AbstractPropertyConfig, 'propName' | 'transformValue'>>
+  Config extends AbstractPropertyConfig
 >(
   config: Config
 ): StyleTemplate<Props> => {
-  const { property, propName: prop, transformValue } = config;
+  const { property, propName: prop, transformValue = (val) => val } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
   return (props: Props) => {
