@@ -9,7 +9,12 @@ import {
   values,
 } from 'lodash';
 
-import { AbstractTheme, HandlerMeta } from '../../types/config';
+import {
+  AbstractProps,
+  AbstractTheme,
+  HandlerMeta,
+  StyleTemplate,
+} from '../../types/config';
 import { CSSObject } from '../../types/css';
 import { BASE, DEFAULT_MEDIA_QUERIES, GLOBAL_PROPERTIES } from './constants';
 
@@ -72,7 +77,9 @@ export function createResponsiveStyleTemplate<
 
     // Iterate through each breakpoints sorted props
     entries(responsive).forEach(([breakpoint, bpProps]) => {
-      const templates = values(styleTemplates);
+      const templates = values(
+        styleTemplates
+      ) as StyleTemplate<AbstractProps>[];
 
       // TODO: Only call the templateFns we have props for.1
       templates.forEach((styleFunction) => {
