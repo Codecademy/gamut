@@ -16,9 +16,12 @@ import { DIRECTIONAL_PROPS } from './constants';
  * sorting properties at runtime and having consistent CSS for these particular props.
  */
 
-const destructureByDirection = (
-  propName: DirectionalProperty,
-  props: Record<string, unknown>
+const destructureByDirection = <
+  PropName extends DirectionalProperty,
+  Props extends Record<string, unknown>
+>(
+  propName: PropName,
+  props: Props
 ) => {
   if (propName === 'borderRadius') {
     const {
