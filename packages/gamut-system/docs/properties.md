@@ -87,17 +87,22 @@ There are 10 different property groups that we support by default each with a nu
 
 ## Borders
 
-| Prop              | CSS Property                          | defaultTransform |
-| ----------------- | ------------------------------------- | ---------------- |
-| borderWidth       | border-width                          |                  |
-| borderWidthX      | border-left-width, border-right-width |                  |
-| borderWidthY      | border-top-width, border-bottom-width |                  |
-| borderWidthTop    | border-top-width                      |                  |
-| borderWidthBottom | border-bottom-width                   |                  |
-| borderWidthLeft   | border-left-width                     |                  |
-| borderWidthRight  | border-right-width                    |                  |
-| borderRadius      | border-radius                         |                  |
-| borderStyle       | border-style                          |                  |
+| Prop              | CSS Property                            | defaultTransform |
+| ----------------- | --------------------------------------- | ---------------- |
+| borderWidth       | border-width                            |                  |
+| borderWidthX      | border-left-width, border-right-width   |                  |
+| borderWidthY      | border-top-width, border-bottom-width   |                  |
+| borderWidthTop    | border-top-width                        |                  |
+| borderWidthBottom | border-bottom-width                     |                  |
+| borderWidthLeft   | border-left-width                       |                  |
+| borderWidthRight  | border-right-width                      |                  |
+| borderStyleX      | border-left-styles, border-right-styles |                  |
+| borderStyleY      | border-top-styles, border-bottom-styles |                  |
+| borderStyleTop    | border-top-styles                       |                  |
+| borderStyleBottom | border-bottom-styles                    |                  |
+| borderStyleLeft   | border-left-styles                      |                  |
+| borderStyleRight  | border-right-styles                     |                  |
+| borderRadius      | border-radius                           |                  |
 
 ## Position
 
