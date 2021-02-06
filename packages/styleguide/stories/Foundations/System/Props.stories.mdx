@@ -1,0 +1,15 @@
+import docs from '@codecademy/gamut-system/docs/properties.md';
+import title from '@codecademy/macros/lib/title.macro';
+import { Description, Meta } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      'All system props accept a syntax that to generate responsive styles on a per prop basis',
+    source: 'gamut-styles',
+    status: 'stable',
+  }}
+/>
+
+<Description>{docs.replace('# Properties', '')}</Description>

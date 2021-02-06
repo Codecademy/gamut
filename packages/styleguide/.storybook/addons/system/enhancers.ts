@@ -12,7 +12,7 @@ export type ControlType = {
 };
 
 const MDN_URL = 'https://developer.mozilla.org/en-US/docs/Web/CSS/';
-const THEME_PATH = '/?path=/docs/foundations-theme';
+const THEME_PATH = '/?path=/docs/foundations-theme--page';
 
 const createDescription = (name: string) => {
   const description: string[] = [];

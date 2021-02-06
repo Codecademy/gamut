@@ -55,6 +55,8 @@ Output styles:
 }
 ```
 
+&nbsp;
+
 ## Default Breakpoints
 
 If you do not have a preference on the breakpoints that you use we default to this set:
@@ -66,6 +68,8 @@ If you do not have a preference on the breakpoints that you use we default to th
 | md    | `@media (min-width: 768px)`  |
 | lg    | `@media (min-width: 1024px)` |
 | xl    | `@media (min-width: 1248px)` |
+
+&nbsp;
 
 ## Custom Breakpoints
 

@@ -8,7 +8,7 @@ import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
 
-const Link = styled.a`
+export const Link = styled.a`
   display: inline-flex;
   line-height: 1;
   column-gap: 0.5rem;

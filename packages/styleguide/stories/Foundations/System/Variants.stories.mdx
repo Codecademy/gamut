@@ -1,0 +1,15 @@
+import docs from '@codecademy/gamut-system/docs/variants.md';
+import title from '@codecademy/macros/lib/title.macro';
+import { Description, Meta } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      "The variant API let's you conditionally add complex styles to any component with a single prop.",
+    source: 'gamut-styles',
+    status: 'stable',
+  }}
+/>
+
+<Description>{docs.replace('# Variants', '')}</Description>
