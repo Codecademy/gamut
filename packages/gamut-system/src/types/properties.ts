@@ -249,6 +249,8 @@ export interface Properties {
   };
 }
 
+export type Globals = Exclude<CSS.Globals, '-moz-initial'>;
+
 export type PropertyUnion = {
   [P in keyof Properties]: {
     propName: P;

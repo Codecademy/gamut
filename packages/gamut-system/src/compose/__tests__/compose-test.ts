@@ -1,12 +1,12 @@
 import { identity } from 'lodash';
 
-import { border, layout, typography } from '../../../props';
+import { createHandler } from '../../createHandler';
+import { border, layout, typography } from '../../props';
 import {
   createDirectionalStyleTemplate,
   createStandardStyleTemplate,
-} from '../../../styleTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
-import { createHandler } from '../../createHandler';
+} from '../../styleTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { compose } from '..';
 
 const display = createHandler(layout.display);

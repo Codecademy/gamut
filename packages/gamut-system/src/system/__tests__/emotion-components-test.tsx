@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import React from 'react';
 import render from 'react-test-renderer';
 
-import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
-import { HandlerProps } from '../../../types/config';
+import { DEFAULT_MEDIA_QUERIES } from '../../styleTemplates/createResponsiveStyleTemplate/constants';
+import { HandlerProps } from '../../types/config';
 import { system } from '..';
 
 expect.extend(matchers);

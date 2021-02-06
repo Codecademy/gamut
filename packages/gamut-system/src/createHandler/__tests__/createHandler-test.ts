@@ -3,8 +3,8 @@ import { identity } from 'lodash';
 import {
   createDirectionalStyleTemplate,
   createStandardStyleTemplate,
-} from '../../../styleTemplates';
-import { DEFAULT_MEDIA_QUERIES } from '../../../styleTemplates/createResponsiveStyleTemplate/constants';
+} from '../../styleTemplates';
+import { DEFAULT_MEDIA_QUERIES } from '../../styleTemplates/createResponsiveStyleTemplate/constants';
 import { createHandler } from '..';
 
 type Theme = {

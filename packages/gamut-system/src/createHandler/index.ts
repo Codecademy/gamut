@@ -4,14 +4,14 @@ import {
   createDirectionalStyleTemplate,
   createResponsiveStyleTemplate,
   createStandardStyleTemplate,
-} from '../../styleTemplates';
+} from '../styleTemplates';
 import {
   AbstractTheme,
   Handler,
   PropertyConfig,
   StyleTemplate,
   ThematicProps,
-} from '../../types/config';
+} from '../types/config';
 
 const STYLE_TEMPLATE_GENERATORS = {
   directional: createDirectionalStyleTemplate,

@@ -1,17 +1,17 @@
 import { entries, mapValues, merge, values } from 'lodash';
 
-import * as BaseConfig from '../../props';
+import { compose } from '../compose';
+import { createHandler } from '../createHandler';
+import * as BaseConfig from '../props';
 import {
   AbstractPropertyConfig,
   AbstractProps,
   AbstractTheme,
   Handler,
-} from '../../types/config';
-import { ComplexCSS, CSSObject } from '../../types/css';
-import { System, SystemConfig } from '../../types/system';
-import { compose } from '../compose';
-import { createHandler } from '../createHandler';
-import { handleSelectorStyles, splitSelectors } from '../utils/pseudoSelectors';
+} from '../types/config';
+import { ComplexCSS, CSSObject } from '../types/css';
+import { System, SystemConfig } from '../types/system';
+import { handleSelectorStyles, splitSelectors } from '../utils';
 
 const create = <
   Theme extends AbstractTheme,

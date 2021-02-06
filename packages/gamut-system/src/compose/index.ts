@@ -1,6 +1,6 @@
-import { createResponsiveStyleTemplate } from '../../styleTemplates';
-import { AbstractProps, Handler } from '../../types/config';
-import { UnionToIntersection } from '../../types/utils';
+import { createResponsiveStyleTemplate } from '../styleTemplates';
+import { AbstractProps, Handler } from '../types/config';
+import { UnionToIntersection } from '../types/utils';
 
 export const compose = <
   Handlers extends Handler<AbstractProps>[],

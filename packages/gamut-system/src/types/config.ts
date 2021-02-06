@@ -1,8 +1,7 @@
-import { Globals } from 'csstype';
-
 import { CSSObject } from './css';
 import {
   DirectionalProperty,
+  Globals,
   Properties,
   Property,
   PropName,

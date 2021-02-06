@@ -1,7 +1,7 @@
 import { isObject, mapValues } from 'lodash';
 
-import { AbstractProps, AbstractTheme, Handler } from '../../types/config';
-import { ComplexCSS, CSSObject } from '../../types/css';
+import { AbstractProps, AbstractTheme, Handler } from '../types/config';
+import { ComplexCSS, CSSObject } from '../types/css';
 
 const isPropObject = (
   key: string,
