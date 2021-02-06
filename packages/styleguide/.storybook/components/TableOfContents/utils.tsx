@@ -66,9 +66,9 @@ export function useKind(kind: string = '') {
       Object.entries(kindStore).map(([key, kind]) => ({
         ...kind,
         kind: key,
-        indexStory: !!kind.parameters.component
-          ? 'index'
-          : kind.parameters.title,
+        indexStory: kind.parameters.component
+          ? kebabCase(getTitle(key))
+          : 'page',
         status: kind.parameters.status || 'stable',
       })),
     []
@@ -90,6 +90,8 @@ export function useKind(kind: string = '') {
   const childrenKinds = allKinds
     .filter(getAdjacentKinds(path.join('/'), 0))
     .sort(sortByStatus);
+
+  console.log(allKinds);
 
   return {
     title: getTitle(kind),

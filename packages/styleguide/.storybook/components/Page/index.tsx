@@ -14,12 +14,6 @@ export const Link = styled.a`
   font-weight: 700;
   align-items: flex-start;
   color: ${({ theme }) => theme.color.secondary};
-  border-bottom: 2px solid transparent;
-
-  &:hover {
-    text-decoration: none;
-    border-bottom-color: ${({ theme }) => theme.color.secondary};
-  }
 `;
 
 const Header = styled.div`
@@ -76,7 +70,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
 
           return (
             <React.Fragment key={key}>
-              <SectionLink key={kind} kind={kindIndex}>
+              <SectionLink key={kind} kind={kindIndex} story="page">
                 {text}
               </SectionLink>
               <span>&gt;</span>

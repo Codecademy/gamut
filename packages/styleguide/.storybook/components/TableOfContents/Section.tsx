@@ -17,7 +17,7 @@ export const Section = ({ kind }: { kind: string }) => {
 
     if (childrenKinds.length > 0) {
       links = childrenKinds.map(({ kind }) => (
-        <SectionLink key={`${kind}-story`} kind={kind}>
+        <SectionLink key={`${kind}-story`} kind={kind} story={indexStory}>
           {getTitle(kind)}
         </SectionLink>
       ));
