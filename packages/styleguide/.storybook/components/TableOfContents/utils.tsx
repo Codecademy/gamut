@@ -83,15 +83,16 @@ export function useKind(kind: string = '') {
     );
   }, [component, subcomponents]);
 
-  const siblingKinds = allKinds
-    .filter(getAdjacentKinds(kind))
-    .sort(sortByStatus);
+  const siblingKinds = useMemo(
+    () => allKinds.filter(getAdjacentKinds(kind)).sort(sortByStatus),
+    [allKinds]
+  );
 
-  const childrenKinds = allKinds
-    .filter(getAdjacentKinds(path.join('/'), 0))
-    .sort(sortByStatus);
-
-  console.log(allKinds);
+  const childrenKinds = useMemo(
+    () =>
+      allKinds.filter(getAdjacentKinds(path.join('/'), 0)).sort(sortByStatus),
+    [allKinds]
+  );
 
   return {
     title: getTitle(kind),
