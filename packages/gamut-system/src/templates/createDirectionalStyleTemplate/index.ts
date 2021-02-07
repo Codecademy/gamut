@@ -56,10 +56,10 @@ export function createDirectionalStyleTemplate<
   Props extends AbstractProps,
   Config extends AbstractPropertyConfig & { propName: DirectionalProperty }
 >(config: Config): StyleTemplate<Props> {
-  const { propName, transformValue = (val) => val } = config;
+  const { propName, scale, transformValue } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
-  return (props: Props): CSSObject => {
+  const template = (props: Props): CSSObject => {
     const scaleTransform = getScaleFunction(props);
     // Initialize all directional props from base => specific direction
 
@@ -77,8 +77,13 @@ export function createDirectionalStyleTemplate<
       // Look up valid directional prop name based on direction.
       const prop = DIRECTIONAL_PROPS[propKey][i];
       // Do final calculations
-      styles[prop] = transformValue(propValue);
+      styles[prop] = transformValue ? transformValue(propValue) : propValue;
     });
     return styles;
   };
+
+  return Object.assign(template, {
+    type: 'directional',
+    scale: scale as string,
+  } as const);
 }

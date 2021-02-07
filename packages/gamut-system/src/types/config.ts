@@ -113,7 +113,9 @@ export type ThematicProps<
 
 export interface TemplateMeta {
   type?: 'directional' | 'standard';
+  readonly scale?: string;
 }
+
 export interface StyleTemplate<Props extends AbstractProps>
   extends TemplateMeta {
   (props: Props): CSSObject | undefined;

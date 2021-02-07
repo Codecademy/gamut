@@ -11,20 +11,22 @@ export const createStandardStyleTemplate = <
 >(
   config: Config
 ): StyleTemplate<Props> => {
-  const { property, propName: prop, transformValue = (val) => val } = config;
+  const { propName: prop, property = prop, scale, transformValue } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
-  return Object.assign(
-    (props: Props) => {
-      const getScalarValue = getScaleFunction(props);
-      const propValue = getScalarValue(props[prop]);
+  const template = (props: Props) => {
+    const getScalarValue = getScaleFunction(props);
+    const propValue = getScalarValue(props[prop]);
 
-      return propValue !== undefined
-        ? {
-            [property || prop]: transformValue(propValue),
-          }
-        : propValue;
-    },
-    { type: 'standard' } as const
-  );
+    if (propValue !== undefined) {
+      return {
+        [property]: transformValue ? transformValue(propValue) : propValue,
+      };
+    }
+  };
+
+  return Object.assign(template, {
+    type: 'standard',
+    scale: scale as Readonly<string>,
+  } as const);
 };
