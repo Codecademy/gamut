@@ -2,9 +2,9 @@ import {
   assign,
   entries,
   get,
+  hasIn,
   isArray,
   isObject,
-  pick,
   set,
   values,
 } from 'lodash';
@@ -24,22 +24,40 @@ export function createResponsiveStyleTemplate<
   propNames,
   styleTemplates,
 }: HandlerMeta<Props>): (props: Props) => CSSObject {
-  return ({ theme = {}, ...props }) => {
-    const { breakpoints = DEFAULT_MEDIA_QUERIES } = theme;
+  let styles: CSSObject = {};
+  let responsive: Record<string, Props> = {};
 
+  const templates = values(styleTemplates).filter(
+    Boolean
+  ) as StyleTemplate<AbstractProps>[];
+
+  return (props) => {
+    styles = {};
+    responsive = {};
+
+    const { theme = {}, ...styleProps } = props;
+    const { breakpoints = DEFAULT_MEDIA_QUERIES } = theme;
+    const breakpointMap: Record<string, string> = breakpoints;
     const breakpointOrder = [BASE, ...Object.keys(breakpoints)];
-    const responsive = {} as Record<typeof breakpointOrder[number], Props>;
+
+    const handledProps = propNames.filter((propName) =>
+      hasIn(styleProps, propName)
+    );
+
+    if (handledProps.length === 0) {
+      return styles;
+    }
 
     GLOBAL_PROPERTIES.forEach((global) => {
       const value = get(props, global);
 
       if (value !== undefined) {
-        set(responsive, [BASE, global as any], value);
+        styles[global] = value;
       }
     });
 
     // Iterate through all responsible props and create a base style configuration.
-    propNames.forEach((propName) => {
+    handledProps.forEach((propName) => {
       const propertyValue = props[propName];
 
       // Handle responsive configurations properly.
@@ -53,11 +71,7 @@ export function createResponsiveStyleTemplate<
           if (isArray(propertyValue)) {
             return propertyValue.forEach((value, mediaIndex) => {
               if (value !== undefined) {
-                return set(
-                  responsive,
-                  [breakpointOrder[mediaIndex], propName],
-                  value
-                );
+                set(responsive, [breakpointOrder[mediaIndex], propName], value);
               }
             });
           }
@@ -73,30 +87,22 @@ export function createResponsiveStyleTemplate<
       }
     });
 
-    let styles: CSSObject = {};
-
     // Iterate through each breakpoints sorted props
     entries(responsive).forEach(([breakpoint, bpProps]) => {
-      const templates = values(
-        styleTemplates
-      ) as StyleTemplate<AbstractProps>[];
-
+      const propsForBreakpoint = { ...bpProps, theme };
+      const mediaQuery = breakpointMap[breakpoint];
       // TODO: Only call the templateFns we have props for.1
       templates.forEach((styleFunction) => {
-        if (!styleFunction) return;
-        const templateStyles = {
-          ...pick(bpProps, GLOBAL_PROPERTIES),
-          ...styleFunction({ ...bpProps, theme }),
-        };
-
+        const templateStyles = styleFunction(propsForBreakpoint);
+        if (!templateStyles) {
+          return;
+        }
         // Smallest sizes are always on by default
-        if (breakpoint === breakpointOrder[0]) {
+        if (breakpoint === BASE) {
           styles = assign(styles, templateStyles);
         } else {
           // For all sizes higher, create a new media object.
-          const breakpointKey =
-            breakpoints[breakpoint as keyof typeof breakpoints];
-          styles[breakpointKey] = assign(styles[breakpointKey], templateStyles);
+          styles[mediaQuery] = assign(styles[mediaQuery], templateStyles);
         }
       });
     });

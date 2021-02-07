@@ -111,9 +111,13 @@ export type ThematicProps<
 
 /** Style Functions */
 
-export type StyleTemplate<Props extends AbstractProps> = (
-  props: Props
-) => CSSObject | undefined;
+export interface TemplateMeta {
+  type?: 'directional' | 'standard';
+}
+export interface StyleTemplate<Props extends AbstractProps>
+  extends TemplateMeta {
+  (props: Props): CSSObject | undefined;
+}
 
 export type HandlerMeta<Props extends AbstractProps> = {
   propNames: Exclude<keyof Props, 'theme'>[];

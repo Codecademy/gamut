@@ -14,14 +14,17 @@ export const createStandardStyleTemplate = <
   const { property, propName: prop, transformValue = (val) => val } = config;
   const getScaleFunction = createScaleValueTransformer(config);
 
-  return (props: Props) => {
-    const getScalarValue = getScaleFunction(props);
-    const propValue = getScalarValue(props[prop]);
+  return Object.assign(
+    (props: Props) => {
+      const getScalarValue = getScaleFunction(props);
+      const propValue = getScalarValue(props[prop]);
 
-    return propValue !== undefined
-      ? {
-          [property || prop]: transformValue(propValue),
-        }
-      : propValue;
-  };
+      return propValue !== undefined
+        ? {
+            [property || prop]: transformValue(propValue),
+          }
+        : propValue;
+    },
+    { type: 'standard' } as const
+  );
 };
