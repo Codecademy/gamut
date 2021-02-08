@@ -28,11 +28,12 @@
     "deploy": "gh-pages -b gh-pages -d dist"
   },
   "lint-staged": {
-    "**/*.{mdx,js,ts,tsx,json,css,scss}": [
+    "**/*.{mdx,js,ts,tsx,json}": [
+      "packages/eslint-config/bin/eslint-fix.js",
       "prettier --ignore-path .prettierignore --write"
     ],
-    "**/*.{mdx,js,ts,tsx,json}": [
-      "packages/eslint-config/bin/eslint-fix.js"
+    "**/*.{css,scss}": [
+      "prettier --ignore-path .prettierignore --write"
     ]
   },
   "repository": {
