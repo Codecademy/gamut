@@ -54,6 +54,14 @@ export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
   </Text>
 );
 
+const List = styled.ul`
+  padding: 0;
+  list-style-position: inside;
+`;
+const OrderedList = styled.ol`
+  padding: 0;
+  list-style-position: inside;
+`;
 export type FeaturedDescriptionProps = Pick<
   BaseProps,
   'desc' | 'onAnchorClick'
@@ -63,7 +71,19 @@ export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
   onAnchorClick,
 }) => (
   <Box textColor="navy">
-    <Markdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
+    <Markdown
+      text={desc}
+      spacing="none"
+      onAnchorClick={onAnchorClick}
+      overrides={{
+        ul: {
+          component: List,
+        },
+        ol: {
+          component: OrderedList,
+        },
+      }}
+    />
   </Box>
 );
 
