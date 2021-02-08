@@ -39,14 +39,20 @@ const anonLandingHeaderProps: GlobalHeaderProps = {
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'signup',
 };
@@ -65,8 +71,14 @@ const proHeaderProps: GlobalHeaderProps = {
 
 const renderElementProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
-  renderNotifications: () => <IconButton icon={BellIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
+  renderNotifications: {
+    desktop: () => <IconButton icon={BellIcon} />,
+    mobile: () => <IconButton icon={BellIcon} />,
+  },
   type: 'pro',
   user,
 };

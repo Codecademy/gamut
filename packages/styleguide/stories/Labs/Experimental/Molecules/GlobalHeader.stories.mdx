@@ -32,7 +32,7 @@ import { PropsTable } from '~styleguide/blocks';
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
         }}
       />
     )}
@@ -58,7 +58,7 @@ The following are available variations for the GlobalHeader component.
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
         }}
       />
     )}
@@ -78,7 +78,7 @@ The following are available variations for the GlobalHeader component.
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
         }}
       />
     )}
@@ -96,7 +96,7 @@ The following are available variations for the GlobalHeader component.
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
           isAdmin: true,
         }}
       />
@@ -115,7 +115,7 @@ The following are available variations for the GlobalHeader component.
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
           isAdmin: true,
           isCustomerSupport: true,
         }}
@@ -149,7 +149,19 @@ The following are available variations for the GlobalHeader component.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="anon"
         variant="login"
       />
@@ -164,7 +176,19 @@ The following are available variations for the GlobalHeader component.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="anon"
         variant="signup"
       />
@@ -181,13 +205,28 @@ To mock this, IconButtons are provided as placeholders.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderNotifications={() => <IconButton icon={BellIcon} />}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderNotifications={{
+          desktop: () => <IconButton icon={BellIcon} />,
+          mobile: () => <IconButton icon={BellIcon} />,
+        }}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="pro"
         user={{
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-          displayName: 'Codey',
+          userDisplayName: 'Codey',
         }}
       />
     )}
@@ -206,7 +245,7 @@ To mock this, IconButtons are provided as placeholders.
           user={{
             avatar:
               'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-            displayName: 'Codey',
+            userDisplayName: 'Codey',
           }}
         />
       </Box>
