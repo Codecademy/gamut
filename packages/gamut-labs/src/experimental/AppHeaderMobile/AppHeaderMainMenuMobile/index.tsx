@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ReactNode } from 'react';
 
 import { AppHeaderFillButton } from '../..';
 import {
@@ -13,11 +14,13 @@ import { AppHeaderSubMenuTarget } from '../AppHeaderSubMenuTarget';
 export type AppHeaderMainMenuMobileProps = {
   action: AppHeaderClickHandler;
   items: AppHeaderItem[];
+  renderSearch?: () => ReactNode;
 };
 
 export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = ({
   items,
   action,
+  renderSearch,
 }) => {
   const [subMenuItem, setSubMenuItem] = useState<AppHeaderDropdownItem>();
 
@@ -73,7 +76,10 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
           item={subMenuItem}
         />
       ) : (
-        items.map((item) => mapItemToElement(item, action))
+        <>
+          {renderSearch && renderSearch()}
+          {items.map((item) => mapItemToElement(item, action))}
+        </>
       )}
     </>
   );

@@ -115,9 +115,11 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </AppBarSection>
             </AppBar>
             <Box padding={16}>
-              {renderSearch && renderSearch()}
-
-              <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
+              <AppHeaderMainMenuMobile
+                items={items.mainMenu}
+                action={action}
+                renderSearch={renderSearch}
+              />
             </Box>
           </div>
         </StyledOverlay>
