@@ -6,7 +6,7 @@ const { hideBin } = require('yargs/helpers');
 const { argv } = yargs(hideBin(process.argv))
   .options('config', {
     alias: 'c',
-    description: 'path you your ESLint config',
+    description: 'path to your ESLint config',
     default: path.resolve(__dirname, '../index.js'),
   })
   .options('_', {
