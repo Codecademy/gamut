@@ -4,14 +4,6 @@ const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
 const { argv } = yargs(hideBin(process.argv))
-  .check((argv, options) => {
-    const filePaths = argv._;
-    if (filePaths.length > 1) {
-      throw new Error('Only 0 or 1 files may be passed.');
-    } else {
-      return true; // tell Yargs that the arguments passed the check
-    }
-  })
   .options('config', {
     alias: 'c',
     description: 'path you your ESLint config',
