@@ -54,6 +54,13 @@ export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
   </Text>
 );
 
+const StyledMarkdown = styled(Markdown)`
+  ul,
+  ol {
+    padding: 0;
+    list-style-position: inside;
+  }
+`;
 export type FeaturedDescriptionProps = Pick<
   BaseProps,
   'desc' | 'onAnchorClick'
@@ -63,7 +70,7 @@ export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
   onAnchorClick,
 }) => (
   <Box textColor="navy">
-    <Markdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
+    <StyledMarkdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
   </Box>
 );
 

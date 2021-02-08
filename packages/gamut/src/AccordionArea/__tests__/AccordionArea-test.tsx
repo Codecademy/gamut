@@ -1,37 +1,32 @@
-import { mount } from 'enzyme';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { AccordionArea, AccordionAreaProps } from '..';
+import { AccordionArea } from '..';
 
-const renderComponent = (overrides: Partial<AccordionAreaProps> = {}) => {
-  const props = {
-    children: <div data-testid="contents" />,
-    expanded: false,
-    top: 'Click me!',
-    ...overrides,
-  } as const;
-
-  return mount(<AccordionArea {...props} />);
-};
+const renderWrapper = setupEnzyme(AccordionArea, {
+  children: <div data-testid="contents" />,
+  expanded: false,
+  top: 'Click me!',
+});
 
 jest.useFakeTimers();
 
 describe('AccordionArea', () => {
   it('starts collapsed when expanded is not true', () => {
-    const wrapper = renderComponent({ expanded: false });
+    const { wrapper } = renderWrapper({ expanded: false });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('starts expanded when expanded is true', () => {
-    const wrapper = renderComponent({ expanded: true });
+    const { wrapper } = renderWrapper({ expanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
   it('expands when props change to expand', () => {
-    const wrapper = renderComponent({ expanded: false });
+    const { wrapper } = renderWrapper({ expanded: false });
 
     wrapper.setProps({ expanded: true });
 
@@ -39,12 +34,15 @@ describe('AccordionArea', () => {
   });
 
   it('contracts after a delay when set to not expanded after being expanded', async () => {
-    const wrapper = renderComponent({ expanded: true });
+    const { wrapper } = renderWrapper({ expanded: true });
 
     wrapper.setProps({ expanded: false });
     await act(async () => {
       jest.runAllTimers();
     });
+    // @ts-expect-error - component-test-setup has a bug right now where wrapper is of type ReactWrapper<unknown>
+    // In theory we'll fix this soon.
+    // In practice, you might consider using RTL over Enzyme anyway, for its superior React support ;)
     wrapper.setProps(wrapper.props());
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
