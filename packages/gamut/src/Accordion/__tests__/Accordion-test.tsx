@@ -1,36 +1,31 @@
-import { mount } from 'enzyme';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
-import { Accordion, AccordionProps } from '..';
+import { Accordion } from '..';
 
-const renderComponent = (overrides: Partial<AccordionProps> = {}) => {
-  const props = {
-    children: <div data-testid="contents" />,
-    top: 'Click me!',
-    ...overrides,
-  } as const;
-
-  return mount(<Accordion {...props} />);
-};
+const renderWrapper = setupEnzyme(Accordion, {
+  children: <div data-testid="contents" />,
+  top: 'Click me!',
+});
 
 jest.useFakeTimers();
 
 describe('Accordion', () => {
   it('starts collapsed when initiallyExpanded is not true', () => {
-    const wrapper = renderComponent({ initiallyExpanded: false });
+    const { wrapper } = renderWrapper({ initiallyExpanded: false });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(0);
   });
 
   it('starts expanded when initiallyExpanded is true', () => {
-    const wrapper = renderComponent({ initiallyExpanded: true });
+    const { wrapper } = renderWrapper({ initiallyExpanded: true });
 
     expect(wrapper.find(`[data-testid="contents"]`)).toHaveLength(1);
   });
 
   it('expands when its button is clicked', () => {
-    const wrapper = renderComponent({ initiallyExpanded: true });
+    const { wrapper } = renderWrapper({ initiallyExpanded: true });
 
     wrapper.find('button').simulate('click');
 
@@ -39,7 +34,7 @@ describe('Accordion', () => {
 
   it('calls onClick when its button is clicked and onClick is provided', () => {
     const onClick = jest.fn();
-    const wrapper = renderComponent({ onClick });
+    const { wrapper } = renderWrapper({ onClick });
 
     act(() => {
       wrapper.find('button').simulate('click');

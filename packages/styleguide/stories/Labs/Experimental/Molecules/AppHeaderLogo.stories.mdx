@@ -1,6 +1,8 @@
 import { AppHeaderLogo } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -22,7 +24,7 @@ A Codecademy logo button for use in AppHeader.
   <Story name="AppHeaderLogo">{(args) => <AppHeaderLogo {...args} />}</Story>
 </Canvas>
 
-<Props story="AppHeaderLogo" />
+<PropsTable story="AppHeaderLogo" />
 
 ## Pro
 

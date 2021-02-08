@@ -1,4 +1,5 @@
 import {
+  Box,
   Column,
   ColumnSizes,
   Container,
@@ -9,7 +10,16 @@ import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { CTA, Description, Feature, FeatureProps, Title } from '.';
+import {
+  CTA,
+  Description,
+  Feature,
+  FeaturedIcon,
+  FeaturedImage,
+  FeaturedStat,
+  Title,
+} from '.';
+import { FeaturedDescription, FeaturedTitle } from './Feature';
 import { BaseProps } from './types';
 
 const FlexContainer = styled(Container)`
@@ -20,44 +30,41 @@ const FlexContainer = styled(Container)`
 
 export type PageFeaturesProps = BaseProps & {
   maxCols?: 1 | 2 | 3 | 4;
-
-  /**
-   * Array of features, which consist of image, image alt, title, and description
-   */
-  features: Omit<FeatureProps, 'featuresMedia' | 'onAnchorClick'>[];
-
-  /**
-   * @deprecated - Whether an icon or a full size image should be rendered
-   */
-  isIcon?: boolean;
-
-  /**
-   * The primary visual element.
-   */
-  featuresMedia?: 'image' | 'icon' | 'stat' | 'none';
+  featuresMedia?: 'image' | 'icon' | 'stat';
+  features: {
+    title?: string;
+    desc?: string;
+    imgSrc?: string;
+    imgAlt?: string;
+    statText?: string;
+    testId?: string;
+  }[];
 };
 
 const rowRenderEach = (
-  items: FeatureProps[],
-  itemRenderer: (item: FeatureProps) => ReactNode
-): ReactNode => (
-  <FlexContainer nowrap column>
-    {items.map(itemRenderer)}
-  </FlexContainer>
-);
+  items: PageFeaturesProps['features'],
+  itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
+): ReactNode => {
+  /* eslint-disable react/no-array-index-key */
+  return (
+    <FlexContainer nowrap column>
+      {items.map((item, i) => (
+        <React.Fragment key={i}>{itemRenderer(item)}</React.Fragment>
+      ))}
+    </FlexContainer>
+  );
+  /* eslint-ensable react/no-array-index-key */
+};
 
 const gridRenderEach = (
   maxCols: NonNullable<PageFeaturesProps['maxCols']>,
-  items: FeatureProps[],
-  itemRenderer: (item: FeatureProps) => ReactNode
+  items: PageFeaturesProps['features'],
+  itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
 ): ReactNode => {
   const size = { xs: 12, sm: 12 / maxCols } as ResponsiveProperty<ColumnSizes>;
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid
-      columnGap={{ lg: 'lg', xs: 'sm' }}
-      rowGap={{ lg: 'lg', xs: 'sm' }}
-    >
+    <LayoutGrid columnGap={{ lg: 'lg', xs: 'sm' }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}
@@ -70,8 +77,8 @@ const gridRenderEach = (
 
 const renderEach = (
   maxCols: PageFeaturesProps['maxCols'],
-  items: FeatureProps[],
-  itemRenderer: (item: FeatureProps) => ReactNode
+  items: PageFeaturesProps['features'],
+  itemRenderer: (item: PageFeaturesProps['features'][0]) => ReactNode
 ): ReactNode => {
   if (maxCols === undefined) {
     return rowRenderEach(items, itemRenderer);
@@ -89,7 +96,6 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
   maxCols,
   features,
   featuresMedia,
-  isIcon,
   testId,
   onAnchorClick,
 }) => (
@@ -103,16 +109,32 @@ export const PageFeatures: React.FC<PageFeaturesProps> = ({
         </CTA>
       )}
     </div>
-    {renderEach(
-      maxCols,
-      features.map((feature) => ({
-        ...feature,
-        featuresMedia: featuresMedia || (isIcon ? 'icon' : 'image'),
-        onAnchorClick,
-      })) as FeatureProps[],
-      (feature) => (
-        <Feature key={feature.title} {...feature} />
-      )
-    )}
+    <Box marginTop={16}>
+      {renderEach(
+        maxCols,
+        features,
+        ({ testId, imgSrc, imgAlt, statText, title: featTitle, desc }) => (
+          <Feature testId={testId}>
+            {featuresMedia === 'image' && (
+              <FeaturedImage src={imgSrc!} alt={imgAlt!} />
+            )}
+            {featuresMedia === 'icon' && (
+              <FeaturedIcon src={imgSrc!} alt={imgAlt!} />
+            )}
+            {featuresMedia === 'stat' && (
+              <FeaturedStat>{statText}</FeaturedStat>
+            )}
+            {featTitle && (
+              <FeaturedTitle as={title ? 'h3' : 'h2'}>
+                {featTitle}
+              </FeaturedTitle>
+            )}
+            {desc && (
+              <FeaturedDescription desc={desc} onAnchorClick={onAnchorClick} />
+            )}
+          </Feature>
+        )
+      )}
+    </Box>
   </div>
 );

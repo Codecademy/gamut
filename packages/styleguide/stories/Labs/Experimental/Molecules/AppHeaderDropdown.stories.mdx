@@ -1,6 +1,10 @@
+import { Box } from '@codecademy/gamut';
+import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title={title}
@@ -40,4 +44,72 @@ A dropdown menu for use in AppHeader.
   </Story>
 </Canvas>
 
-<Props story="AppHeaderDropdown" />
+<PropsTable story="AppHeaderDropdown" />
+
+### Dropdown - Profile
+
+<Canvas>
+  <Story
+    args={{
+      item: {
+        avatar:
+          'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+        displayName: 'Codey',
+        id: 'profile',
+        text: 'Profile',
+        popover: [
+          {
+            id: 'sublink-1',
+            icon: PersonIcon,
+            text: 'A Link With Icon',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-2',
+            icon: GearIcon,
+            text: 'Another Link With Icon',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-3',
+            text: 'A Link In Another Section',
+            href: 'http://codecademy.com',
+            topSeparator: true,
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-4',
+            text: 'Another Link',
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+          {
+            id: 'sublink-5',
+            text: 'One More Link',
+            topSeparator: true,
+            href: 'http://codecademy.com',
+            trackingTarget: '',
+            type: 'link',
+          },
+        ],
+        trackingTarget: '',
+        type: 'profile-dropdown',
+      },
+    }}
+    name="AppHeaderProfileDropdown"
+  >
+    {(args) => (
+      <Box height="200">
+        <Box position="absolute" left="225">
+          <AppHeaderDropdown {...args} />
+        </Box>
+      </Box>
+    )}
+  </Story>
+</Canvas>

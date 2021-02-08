@@ -3,14 +3,16 @@ import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '..';
+import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
+import { AppHeaderSubMenuMobile, AppHeaderSubMenuMobileProps } from '../index';
 
 const sublink1Href = 'https://google.com';
 const sublink2Href = 'https://medium.com';
-const onClick = jest.fn();
+const action = jest.fn();
 const handleClose = jest.fn();
 
 const props: AppHeaderSubMenuMobileProps = {
+  action,
   item: {
     dataTestId: '',
     id: 'test-link',
@@ -18,26 +20,11 @@ const props: AppHeaderSubMenuMobileProps = {
     trackingTarget: '',
     type: 'dropdown',
     popover: [
-      {
-        dataTestId: '',
-        id: 'sublink-1',
-        text: 'forum',
-        href: sublink1Href,
-        trackingTarget: '',
-        type: 'link',
-      },
-      {
-        dataTestId: '',
-        id: 'sublink-2',
-        text: 'blog',
-        href: sublink2Href,
-        trackingTarget: '',
-        type: 'link',
-      },
+      createMockAppHeaderLinkItem('sublink-1', sublink1Href, 'forum'),
+      createMockAppHeaderLinkItem('sublink-2', sublink2Href, 'blog'),
     ],
   },
   handleClose,
-  onClick,
 };
 
 const renderAppHeaderSubMenuMobile = () => {

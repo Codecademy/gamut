@@ -18,18 +18,18 @@ const StyledLogo = styled(Logo)`
 `;
 
 export type AppHeaderLogoProps = {
+  action: AppHeaderClickHandler;
   item: AppHeaderLogoItem;
-  onClick: AppHeaderClickHandler;
 };
 
 export const AppHeaderLogo: React.FC<AppHeaderLogoProps> = ({
+  action,
   item,
-  onClick,
 }) => {
   return (
     <LogoButton
       data-testid={item.dataTestId}
-      onClick={(event) => onClick(event, item)}
+      onClick={(event) => action(event, item)}
       href={item.href}
     >
       <StyledLogo type={item.pro ? 'proMono' : 'default'} height={27} />

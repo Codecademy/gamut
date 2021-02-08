@@ -3,13 +3,21 @@ import { ReactNode } from 'react';
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
 type BaseHeader = {
-  onClick: AppHeaderClickHandler;
+  action: AppHeaderClickHandler;
   renderSearch?: () => ReactNode;
+};
+
+export type User = {
+  avatar: string;
+  displayName: string;
+  isAdmin?: boolean;
+  isCustomerSupport?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
   renderNotifications?: () => ReactNode;
   renderProfile?: () => ReactNode;
+  user: User;
 };
 
 export type AnonHeader = BaseHeader & {
@@ -23,4 +31,8 @@ export type FreeHeader = LoggedInHeader & {
 
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
+};
+
+export type LoadingHeader = BaseHeader & {
+  type: 'loading';
 };

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.3...@codecademy/gamut-system@0.3.0) (2021-02-05)
+
+
+### Features
+
+* add configurable default to variants ([#1362](https://github.com/Codecademy/client-modules/issues/1362)) ([35fbfbf](https://github.com/Codecademy/client-modules/commit/35fbfbf041b0abc13082067203ddffcb95e02dcc))
+
+
+
+### [0.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.2...@codecademy/gamut-system@0.2.3) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-system
+
+
+
+
+
+### [0.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.1...@codecademy/gamut-system@0.2.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-system
+
+
+
+
+
 ### [0.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.0...@codecademy/gamut-system@0.2.1) (2020-12-14)
 
 

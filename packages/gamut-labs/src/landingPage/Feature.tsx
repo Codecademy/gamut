@@ -1,4 +1,4 @@
-import { Markdown } from '@codecademy/gamut';
+import { Box, Markdown } from '@codecademy/gamut';
 import { mediaQueries } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -6,25 +6,70 @@ import React from 'react';
 import { Text } from '../experimental/Text';
 import { BaseProps } from './types';
 
-const Icon = styled.img`
-  width: 4rem;
-  margin-top: 3rem;
+const Img = styled.img`
   margin-bottom: 2rem;
 `;
+export type FeaturedImageProps = {
+  src: string;
+  alt: string;
+};
+export const FeaturedImage: React.FC<FeaturedImageProps> = ({ src, alt }) => (
+  <Img alt={alt} src={src} width="100%" data-testid="feature-image" />
+);
 
-const Image = styled.img`
-  width: 100%;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-`;
+export type FeaturedIconProps = {
+  src: string;
+  alt: string;
+};
+export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
+  <Img alt={alt} src={src} width="64px" data-testid="feature-icon" />
+);
 
-const StyledMarkdown = styled(Markdown)`
-  font-size: 1rem;
-  margin: 1rem 0 0;
-`;
+export const FeaturedStat: React.FC = ({ children }) => (
+  <Text
+    as="div"
+    fontSize={{ xs: 44, lg: 64 }}
+    fontWeight="title"
+    data-testid="feature-stat"
+    textColor="navy"
+  >
+    {children}
+  </Text>
+);
+
+export type FeaturedTitleProps = {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
+export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
+  as,
+  children,
+}) => (
+  <Text
+    as={as || 'h3'}
+    fontSize={{ xs: 22, lg: 26 }}
+    fontWeight="title"
+    textColor="navy"
+  >
+    {children}
+  </Text>
+);
+
+export type FeaturedDescriptionProps = Pick<
+  BaseProps,
+  'desc' | 'onAnchorClick'
+>;
+export const FeaturedDescription: React.FC<FeaturedDescriptionProps> = ({
+  desc,
+  onAnchorClick,
+}) => (
+  <Box textColor="navy">
+    <Markdown text={desc} spacing="none" onAnchorClick={onAnchorClick} />
+  </Box>
+);
 
 const FeatureBlock = styled.div`
   flex: 1;
+  margin-top: 2rem;
   ${mediaQueries.sm} {
     &:not(:last-of-type) {
       margin-right: 1rem;
@@ -35,92 +80,9 @@ const FeatureBlock = styled.div`
     }
   }
 `;
-
-type FeaturedImageProps = {
-  featuresMedia: 'image';
-  imgSrc: string;
-  imgAlt: string;
+export type FeatureProps = {
+  testId?: string;
 };
-
-type FeaturedIconProps = {
-  featuresMedia: 'icon';
-  imgSrc: string;
-  imgAlt: string;
-};
-
-type FeaturedStatProps = {
-  featuresMedia: 'stat';
-  statText: string;
-};
-
-type FeaturedNoMediaProps = {
-  featuresMedia: 'none';
-};
-
-type FeaturedMediaProps =
-  | FeaturedImageProps
-  | FeaturedIconProps
-  | FeaturedStatProps
-  | FeaturedNoMediaProps;
-
-const FeaturedMedia: React.FC<FeaturedMediaProps> = (props) => {
-  if (props.featuresMedia === 'image') {
-    return (
-      <Image
-        src={props.imgSrc}
-        alt={props.imgAlt}
-        data-testid="feature-image"
-      />
-    );
-  }
-
-  if (props.featuresMedia === 'icon') {
-    return (
-      <Icon src={props.imgSrc} alt={props.imgAlt} data-testid="feature-icon" />
-    );
-  }
-
-  if (props.featuresMedia === 'stat') {
-    return (
-      <Text
-        as="div"
-        marginTop={48}
-        fontSize={{ xs: 44, lg: 64 }}
-        fontWeight="title"
-        data-testid="feature-stat"
-      >
-        {props.statText}
-      </Text>
-    );
-  }
-
-  return null;
-};
-
-export type FeatureProps = Pick<
-  BaseProps,
-  'title' | 'desc' | 'onAnchorClick' | 'testId'
-> &
-  FeaturedMediaProps;
-
-export const Feature: React.FC<FeatureProps> = ({
-  title,
-  desc,
-  onAnchorClick,
-  testId,
-  ...featuredMediaProps
-}) => (
-  <FeatureBlock data-testid={testId}>
-    <FeaturedMedia {...featuredMediaProps} />
-    {title && (
-      <Text as="h3" fontSize={{ xs: 22, lg: 26 }} fontWeight="title">
-        {title}
-      </Text>
-    )}
-    {desc && (
-      <div>
-        <StyledMarkdown text={desc} onAnchorClick={onAnchorClick} />
-      </div>
-    )}
-  </FeatureBlock>
+export const Feature: React.FC<FeatureProps> = ({ testId, children }) => (
+  <FeatureBlock data-testid={testId}>{children}</FeatureBlock>
 );
