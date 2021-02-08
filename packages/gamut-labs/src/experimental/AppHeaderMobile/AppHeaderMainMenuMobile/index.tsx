@@ -1,3 +1,4 @@
+import { Box } from '@codecademy/gamut';
 import React, { useState } from 'react';
 import { ReactNode } from 'react';
 
@@ -56,13 +57,15 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'fill-button':
         return (
-          <AppHeaderFillButton
-            data-testid={item.dataTestId}
-            href={item.href}
-            onClick={(event: React.MouseEvent) => action(event, item)}
-          >
-            {item.text}
-          </AppHeaderFillButton>
+          <Box display="flex" justifyContent="center">
+            <AppHeaderFillButton
+              data-testid={item.dataTestId}
+              href={item.href}
+              onClick={(event: React.MouseEvent) => action(event, item)}
+            >
+              {item.text}
+            </AppHeaderFillButton>
+          </Box>
         );
     }
   };
