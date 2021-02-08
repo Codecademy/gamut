@@ -52,7 +52,7 @@ const props: AppHeaderMainMenuMobileProps = {
       dataTestId: '',
       id: 'test-profile-link',
       text: 'profile target',
-      userDisplayName: 'name',
+      userDisplayName: 'user name',
       trackingTarget: '',
       type: 'profile-dropdown',
       avatar: '',
@@ -118,7 +118,7 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders a submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getAllByRole('button')[0];
+    const targetButton = screen.getByText('resources target');
     targetButton.click();
     expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(sublink1Id)));
@@ -127,7 +127,7 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders the profile submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getAllByRole('button')[1];
+    const targetButton = screen.getByText('user name');
     targetButton.click();
     expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(profileLink1Id)));
