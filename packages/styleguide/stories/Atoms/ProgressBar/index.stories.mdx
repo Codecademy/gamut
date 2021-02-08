@@ -1,4 +1,10 @@
-import { Column, LayoutGrid, ProgressBar } from '@codecademy/gamut/src';
+import {
+  Box,
+  GridBox,
+  Column,
+  LayoutGrid,
+  ProgressBar,
+} from '@codecademy/gamut/src';
 import { colors } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
@@ -105,5 +111,26 @@ Using the new SVG Pattern component for the background. Here we are using the Di
     }}
   >
     {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+### Bordered Regular
+
+<Canvas column={2}>
+  <Story
+    name="Bordered - Regular"
+    args={{
+      percent: 50,
+      theme: 'bordered',
+      width: '150px',
+    }}
+  >
+    {(args) => (
+      <GridBox alignContent="center" height="8rem" backgroundColor="navy">
+        <Box padding="2rem">
+          <ProgressBar {...args} />
+        </Box>
+      </GridBox>
+    )}
   </Story>
 </Canvas>

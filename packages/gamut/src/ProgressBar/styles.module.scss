@@ -11,6 +11,11 @@
   &.yellow {
     background: $color-gray-100;
   }
+
+  &.bordered {
+    background: transparent;
+    border: solid 1px $color-white;
+  }
 }
 
 .bar {
@@ -26,6 +31,10 @@
 
   .yellow & {
     background: $color-yellow-500;
+  }
+
+  .bordered & {
+    background: $color-white;
   }
 }
 

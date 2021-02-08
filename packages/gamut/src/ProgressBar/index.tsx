@@ -30,7 +30,7 @@ export type ProgressBarProps = {
   /**
    * Base color theme to extend from.
    */
-  theme: 'blue' | 'yellow';
+  theme: 'blue' | 'yellow' | 'bordered';
 
   /**
    * Whether to use a pattern background
