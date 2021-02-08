@@ -1,3 +1,5 @@
+const localExtends = ['./rules/typescript', './rules/mdx'].map(require.resolve);
+
 module.exports = {
   env: {
     browser: true,
@@ -17,59 +19,7 @@ module.exports = {
     'prettier',
     'prettier/@typescript-eslint',
     'prettier/react',
-  ],
-
-  // ensure that ts eslint parser only runs for the correct files
-  overrides: [
-    {
-      plugins: ['unused-imports'],
-      files: ['*.mdx'],
-      parser: 'eslint-mdx',
-      // Add this for MDX specifically since we rely on TS in other
-      rules: {
-        'react/jsx-filename-extension': 'off',
-        'react/no-unescaped-entities': 'off',
-        'react/react-in-jsx-scope': 'off',
-        'unused-imports/no-unused-imports': 'error',
-      },
-    },
-    {
-      files: ['*.tsx', '*.ts'],
-      parser: require.resolve('@typescript-eslint/parser'),
-
-      parserOptions: {
-        project: './tsconfig.json',
-        sourceType: 'module',
-      },
-      extends: [
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
-      ],
-      rules: {
-        // These rules could be useful, but we haven't gotten around to trying them out
-        // Additionally, they're moved into this override object (further nested from the rules
-        // key down lower in the file), because as a result of the `extends` command pulling
-        // in additional plugins, the base rules settings of turning this rules off were NOT
-        // being respected. By moving them into this override definition, they are properly
-        // being applied to subsequent plugin imports/extensions. Wild.
-        '@typescript-eslint/await-thenable': 'off',
-        '@typescript-eslint/no-floating-promises': 'off',
-        '@typescript-eslint/no-misused-promises': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
-        '@typescript-eslint/no-unsafe-call': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off',
-        '@typescript-eslint/no-unsafe-return': 'off',
-        '@typescript-eslint/prefer-regexp-exec': 'off',
-        '@typescript-eslint/require-await': 'off',
-        '@typescript-eslint/restrict-plus-operands': 'off',
-        '@typescript-eslint/restrict-template-expressions': 'off',
-        '@typescript-eslint/unbound-method': 'off',
-        'import/export': 'off',
-        'import/no-named-as-default': 'off',
-        'no-restricted-globals': 'off',
-        'no-undef': 'off',
-        'react/forbid-prop-types': 'off',
-      },
-    },
+    ...localExtends,
   ],
 
   globals: {

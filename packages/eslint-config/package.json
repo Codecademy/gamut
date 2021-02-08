@@ -3,6 +3,9 @@
   "version": "3.1.6",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
+  "bin": {
+    "eslint-fix": "./bin/eslint-fix.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/client-modules/packages/eslint-config"
@@ -33,7 +36,8 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^1.0.1"
+    "eslint-plugin-unused-imports": "^1.0.1",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "eslint": "^7.19.0"
