@@ -8,7 +8,6 @@ import { MediaProps } from './PageHero';
 
 const RightColumn = styled(Column)`
   margin-left: 1rem;
-  align-content: center;
 
   @media only screen and (max-width: ${breakpoints.sm}) {
     display: none;
