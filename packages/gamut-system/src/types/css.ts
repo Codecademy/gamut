@@ -17,4 +17,6 @@ export type ComplexCSS<Props extends unknown> = Props &
       : Props;
   };
 
-export type CSSObject = Record<string, string | number>;
+export interface CSSObject {
+  [key: string]: string | number;
+}
