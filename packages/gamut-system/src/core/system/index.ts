@@ -43,6 +43,7 @@ const create = <
   const createVariant = (config: any) => {
     const variants = config?.variants || config;
     const propKey = config?.prop || 'variant';
+    const defaultKey = config?.default;
     // Collect the props the resulting variant function will be responsible for templating.
     const props = uniq(
       values(variants)
@@ -56,7 +57,7 @@ const create = <
 
     // Return the variant function
     return (props: any) => {
-      const variantProps = variants[props[propKey]] || {};
+      const variantProps = variants[props[propKey] || defaultKey];
       return variantHandler({ ...variantProps, theme: props.theme });
     };
   };
