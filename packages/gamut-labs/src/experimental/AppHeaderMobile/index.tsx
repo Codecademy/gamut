@@ -9,8 +9,8 @@ import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
-import { FormattedMobileAppHeaderItems } from '../../AppHeader/types';
 import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
+import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
   focusStyles,

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
+import {   FormattedAppHeaderItems, FormattedMobileAppHeaderItems, } from '../AppHeader/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,
@@ -13,8 +14,6 @@ import {
   anonLoginMobileHeaderItems,
   anonSignupHeaderItems,
   anonSignupMobileHeaderItems,
-  FormattedAppHeaderItems,
-  FormattedMobileAppHeaderItems,
   freeHeaderItems,
   freeMobileHeaderItems,
   loadingHeaderItems,
