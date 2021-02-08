@@ -1,7 +1,7 @@
-import { AppBar, AppBarSection, ButtonDeprecatedBase } from '@codecademy/gamut';
-import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { AppBar, AppBarSection } from '@codecademy/gamut';
+import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
 import { FormattedMobileAppHeaderItems } from '../GlobalHeader/GlobalHeaderVariants';
@@ -17,6 +17,7 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   className?: string;
   items: FormattedMobileAppHeaderItems;
+  renderSearch?: () => ReactNode;
 };
 
 const IconButton = styled.button`
@@ -33,23 +34,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   className,
   items,
+  renderSearch,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>('');
-
-  const searchPath = (query?: string, page?: number) => {
-    if (!query) {
-      return '/search';
-    }
-
-    const encodedQuery = encodeURIComponent(query);
-    return `/search?query=${encodedQuery}${page ? `&page=${page}` : ''}`;
-  };
-
-  const navigateToSearch = (searchTerm: string) => {
-    window.location.assign(searchPath(searchTerm));
-    setMobileMenuOpen(false);
-  };
 
   const openMobileMenu = () => {
     setMobileMenuOpen(true);
@@ -57,39 +44,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   const renderLeftItems = () => {
     return items.left.map((item) => mapItemToElement(action, item));
-  };
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setSearchValue(event.target.value);
-  };
-
-  const handleSubmit: React.FormEventHandler = (event) => {
-    event.preventDefault();
-    navigateToSearch(searchValue);
-  };
-
-  const renderSearch = () => {
-    return (
-      <form
-        className={styles.search}
-        id="search-form"
-        action="/search"
-        onSubmit={handleSubmit}
-      >
-        <input
-          name="query"
-          type="search"
-          placeholder="Search our catalog"
-          aria-label="search"
-          className={styles.input}
-          value={searchValue}
-          onChange={handleChange}
-        />
-        <ButtonDeprecatedBase className={styles.searchIcon}>
-          <SearchIcon />
-        </ButtonDeprecatedBase>
-      </form>
-    );
   };
 
   return (
@@ -126,7 +80,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
       </AppBar>
       {mobileMenuOpen && (
         <div className={styles.overlayBody}>
-          {renderSearch()}
+          {renderSearch && renderSearch()}
           <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
         </div>
       )}

@@ -45,23 +45,23 @@ const getAppHeaderItems = (
         case 'landing':
           return anonLandingHeaderItems();
         case 'login':
-          return anonLoginHeaderItems(props.renderSearch);
+          return anonLoginHeaderItems(props.renderSearch?.desktop);
         case 'signup':
-          return anonSignupHeaderItems(props.renderSearch);
+          return anonSignupHeaderItems(props.renderSearch?.desktop);
         default:
-          return anonDefaultHeaderItems(props.renderSearch);
+          return anonDefaultHeaderItems(props.renderSearch?.desktop);
       }
     case 'free':
       return freeHeaderItems(
         props.user,
-        props.renderSearch,
-        props.renderNotifications
+        props.renderSearch?.desktop,
+        props.renderNotifications?.desktop
       );
     case 'pro':
       return proHeaderItems(
         props.user,
-        props.renderSearch,
-        props.renderNotifications
+        props.renderSearch?.desktop,
+        props.renderNotifications?.desktop
       );
     case 'loading':
       return loadingHeaderItems;
@@ -84,9 +84,15 @@ const getMobileAppHeaderItems = (
           return anonDefaultMobileHeaderItems();
       }
     case 'free':
-      return freeMobileHeaderItems(props.user, props.renderNotifications);
+      return freeMobileHeaderItems(
+        props.user,
+        props.renderNotifications?.mobile
+      );
     case 'pro':
-      return proMobileHeaderItems(props.user, props.renderNotifications);
+      return proMobileHeaderItems(
+        props.user,
+        props.renderNotifications?.mobile
+      );
     case 'loading':
       return loadingMobileHeaderItems;
   }
@@ -107,6 +113,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           action={props.action}
           className={styles.globalHeader}
           items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
         />
       )}
     </>

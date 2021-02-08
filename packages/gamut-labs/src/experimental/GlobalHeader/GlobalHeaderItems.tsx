@@ -1,6 +1,7 @@
 import {
   AccountingCoinsIcon,
   BookFlipPageIcon,
+  BriefcaseIcon,
   CommunityIcon,
   GearIcon,
   HouseEntranceIcon,
@@ -155,6 +156,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
 };
 
 export const forBusiness: AppHeaderLinkItem = {
+  icon: BriefcaseIcon,
   id: 'for-business',
   trackingTarget: 'topnav_business',
   text: 'For Business',
