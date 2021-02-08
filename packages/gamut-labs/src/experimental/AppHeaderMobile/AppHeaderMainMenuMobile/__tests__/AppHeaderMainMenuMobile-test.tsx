@@ -48,7 +48,7 @@ const props: AppHeaderMainMenuMobileProps = {
       dataTestId: '',
       id: 'test-profile-link',
       text: 'profile target',
-      displayName: 'name',
+      userDisplayName: 'name',
       trackingTarget: '',
       type: 'profile-dropdown',
       avatar: '',
