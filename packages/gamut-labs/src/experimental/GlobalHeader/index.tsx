@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
-import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,
@@ -24,11 +23,6 @@ import {
 } from './GlobalHeaderVariants';
 import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
-
-export type HeaderClickHandler = (
-  event: React.MouseEvent,
-  item: AppHeaderItem
-) => void;
 
 export type GlobalHeaderProps =
   | AnonHeader
