@@ -1,7 +1,7 @@
 @import "~@codecademy/gamut-styles/utils";
 
 .overlay {
-  width: 100vh;
+  width: 100vw;
   height: 100vh;
   opacity: 1;
   background-color: white;
@@ -9,7 +9,6 @@
   left: 0;
   top: 0;
   overflow-x: hidden;
-  display: block;
 }
 
 .overlayBody {

@@ -6,6 +6,7 @@ import {
   Overlay,
 } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -23,6 +24,7 @@ export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
   className?: string;
   items: FormattedMobileAppHeaderItems;
+  zIndex: number;
 };
 
 const IconButton = styled.button`
@@ -35,10 +37,22 @@ const IconButton = styled.button`
   ${focusStyles}
 `;
 
+type OverlayProps = {
+  zIndex: number;
+};
+
+const StyledOverlay = styled(Overlay)<OverlayProps>(({ zIndex }) => {
+  return css`
+    display: block;
+    z-index: ${{ zIndex }};
+  `;
+});
+
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
   className,
   items,
+  zIndex,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<string>('');
@@ -119,12 +133,13 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         </AppBarSection>
       </AppBar>
       <Container>
-        <Overlay
+        <StyledOverlay
           className={styles.overlay}
           clickOutsideCloses
           escapeCloses
           isOpen={mobileMenuOpen}
           onRequestClose={() => setMobileMenuOpen(false)}
+          zIndex={zIndex}
         >
           <div>
             <AppBar className={className}>
@@ -146,7 +161,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
             </div>
           </div>
-        </Overlay>
+        </StyledOverlay>
       </Container>
     </>
   );

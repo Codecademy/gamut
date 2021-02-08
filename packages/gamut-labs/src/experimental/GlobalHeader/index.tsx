@@ -1,3 +1,4 @@
+import { Box } from '@codecademy/gamut';
 import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
@@ -97,11 +98,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           items={getAppHeaderItems(props)}
         />
       ) : (
-        <AppHeaderMobile
-          action={props.action}
-          className={styles.globalHeader}
-          items={getMobileAppHeaderItems(props)}
-        />
+        <Box zIndex={0}>
+          <AppHeaderMobile
+            action={props.action}
+            className={styles.globalHeader}
+            items={getMobileAppHeaderItems(props)}
+            zIndex={1}
+          />
+        </Box>
       )}
     </>
   );
