@@ -61,6 +61,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             <AppHeaderFillButton
               data-testid={item.dataTestId}
               href={item.href}
+              key={item.id}
               onClick={(event: React.MouseEvent) => action(event, item)}
             >
               {item.text}

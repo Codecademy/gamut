@@ -14,6 +14,10 @@ const action = jest.fn();
 const link1Href = 'https://codecademy.com';
 const link2Href = 'https://news.codecademy.com';
 
+const fillButtonTestId = 'app-header-link-sign-up';
+const fillButtonText = 'sign up';
+const fillButtonHref = 'codecademy.com/sign-up';
+
 const sublink1Id = 'sublink-1';
 const sublink2Id = 'sublink-2';
 const sublink1Href = 'https://google.com';
@@ -69,6 +73,14 @@ const props: AppHeaderMainMenuMobileProps = {
         ],
       ],
     },
+    {
+      id: 'sign-up-btn',
+      dataTestId: fillButtonTestId,
+      type: 'fill-button',
+      href: fillButtonHref,
+      text: fillButtonText,
+      trackingTarget: 'sign-up-tracking',
+    },
   ],
 };
 
@@ -81,12 +93,12 @@ const renderAppHeaderMainMenuMobile = () => {
 };
 
 describe('AppHeaderMainMenuMobile', () => {
-  it('renders links for the items with type link', () => {
+  it('renders links for the items with type link and type fill-button', () => {
     renderAppHeaderMainMenuMobile();
     const linkArray = screen
       .getAllByRole('link')
       .map((node) => node.getAttribute('href'));
-    expect(linkArray).toStrictEqual([link1Href, link2Href]);
+    expect(linkArray).toStrictEqual([link1Href, link2Href, fillButtonHref]);
   });
 
   it('renders a target button for the items with type dropdown', () => {
