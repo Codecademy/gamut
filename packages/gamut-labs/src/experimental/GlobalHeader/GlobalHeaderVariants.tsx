@@ -1,7 +1,10 @@
 import { ReactNode } from 'react';
 
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
-import { FormattedAppHeaderItems, FormattedMobileAppHeaderItems } from '../AppHeader/types';
+import {
+  FormattedAppHeaderItems,
+  FormattedMobileAppHeaderItems,
+} from '../AppHeader/types';
 import {
   communityDropdown,
   courseCatalog,
@@ -20,7 +23,6 @@ import {
   upgradeToPro,
 } from './GlobalHeaderItems';
 import { User } from './types';
-
 
 const anonHeaderItems = (
   renderLogin: boolean,

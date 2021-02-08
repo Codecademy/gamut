@@ -3,7 +3,10 @@ import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
-import {   FormattedAppHeaderItems, FormattedMobileAppHeaderItems, } from '../AppHeader/types';
+import {
+  FormattedAppHeaderItems,
+  FormattedMobileAppHeaderItems,
+} from '../AppHeader/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,

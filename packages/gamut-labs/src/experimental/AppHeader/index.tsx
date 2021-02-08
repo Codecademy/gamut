@@ -8,8 +8,7 @@ import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
-import
-{ AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
+import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';

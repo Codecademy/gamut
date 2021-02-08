@@ -16,7 +16,10 @@ import {
   focusStyles,
   hoverStyles,
 } from './../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderClickHandler, AppHeaderItem } from './../AppHeader/AppHeaderElements/types';
+import {
+  AppHeaderClickHandler,
+  AppHeaderItem,
+} from './../AppHeader/AppHeaderElements/types';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
@@ -60,7 +63,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   };
 
   const renderLeftItems = () => {
-    return items.left.map((item: AppHeaderItem) => mapItemToElement(action, item));
+    return items.left.map((item: AppHeaderItem) =>
+      mapItemToElement(action, item)
+    );
   };
 
   return (
@@ -69,7 +74,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <AppBar className={className}>
           <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
           <AppBarSection position="right">
-            {items.right.map((item: AppHeaderItem) => mapItemToElement(action, item))}
+            {items.right.map((item: AppHeaderItem) =>
+              mapItemToElement(action, item)
+            )}
             <AppHeaderTab>
               <IconButton
                 type="button"

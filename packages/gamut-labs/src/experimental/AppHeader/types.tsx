@@ -1,6 +1,4 @@
-import {
-  AppHeaderItem,
-} from './AppHeaderElements/types';
+import { AppHeaderItem } from './AppHeaderElements/types';
 
 export type FormattedAppHeaderItems = {
   left: AppHeaderItem[];
