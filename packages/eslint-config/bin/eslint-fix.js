@@ -29,7 +29,7 @@ const { argv } = yargs(hideBin(process.argv))
 const { ESLint } = require('eslint');
 
 const runESLint = async () => {
-  process.env.ESLINT_TYPE_AWARE = 'false';
+  process.env.ESLINT_FIX_ONLY = 'true';
   const eslint = new ESLint({
     fix: true,
     useEslintrc: false,
