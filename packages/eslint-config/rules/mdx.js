@@ -2,7 +2,6 @@ const mdxConfig = {
   plugins: ['unused-imports'],
   files: ['*.mdx'],
   parser: 'eslint-mdx',
-  // Add this for MDX specifically since we rely on TS in other
   rules: {
     'react/jsx-filename-extension': 'off',
     'react/no-unescaped-entities': 'off',
