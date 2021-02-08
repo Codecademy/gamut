@@ -1,5 +1,6 @@
 import {
   background,
+  border,
   color,
   flex,
   grid,
@@ -10,7 +11,7 @@ import { motion } from 'framer-motion';
 
 import styled from '@emotion/styled';
 
-const sidebarStyles = compose(background, color, flex, grid, layout);
+const sidebarStyles = compose(background, border, color, flex, grid, layout);
 
 export type SidebarStyles = HandlerProps<typeof sidebarStyles>;
 export interface SidebarStyleProps extends SidebarStyles {}

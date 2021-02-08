@@ -45,9 +45,6 @@ const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`
       : `none`};
 `;
 
-//right && !expanded => addScaleCorrection(1)
-// right && expanded => scale(1)
-
 export const SidebarTabButton: React.FC<SidebarTabButtonProps> = ({
   expanded,
   onClick,
