@@ -1,4 +1,10 @@
-import { AppBar, AppBarSection } from '@codecademy/gamut';
+import {
+  AppBar,
+  AppBarSection,
+  Box,
+  Container,
+  Overlay,
+} from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
@@ -11,7 +17,6 @@ import {
   hoverStyles,
 } from './../AppHeader/AppHeaderElements/SharedStyles';
 import { AppHeaderClickHandler } from './../AppHeader/AppHeaderElements/types';
-import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
@@ -28,6 +33,18 @@ const IconButton = styled.button`
   line-height: 1.5;
   ${hoverStyles}
   ${focusStyles}
+`;
+
+const StyledOverlay = styled(Overlay)`
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  background-color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
 `;
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
@@ -48,22 +65,12 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      <AppBar className={className}>
-        <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
-        <AppBarSection position="right">
-          {items.right.map((item) => mapItemToElement(action, item))}
-          <AppHeaderTab>
-            {mobileMenuOpen ? (
-              <IconButton
-                type="button"
-                aria-label="close menu"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <CloseIcon width={20} height={20} />
-              </IconButton>
-            ) : (
+      {!mobileMenuOpen && ( //need this bc AppBar has a hardcoded z-Index of 15
+        <AppBar className={className}>
+          <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
+          <AppBarSection position="right">
+            {items.right.map((item) => mapItemToElement(action, item))}
+            <AppHeaderTab>
               <IconButton
                 type="button"
                 data-testid="header-mobile-menu"
@@ -74,16 +81,40 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               >
                 <MenuIcon height={20} width={20} />
               </IconButton>
-            )}
-          </AppHeaderTab>
-        </AppBarSection>
-      </AppBar>
-      {mobileMenuOpen && (
-        <div className={styles.overlayBody}>
-          {renderSearch && renderSearch()}
-          <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
-        </div>
+            </AppHeaderTab>
+          </AppBarSection>
+        </AppBar>
       )}
+      <Container>
+        <StyledOverlay
+          clickOutsideCloses
+          escapeCloses
+          isOpen={mobileMenuOpen}
+          onRequestClose={() => setMobileMenuOpen(false)}
+        >
+          <div>
+            <AppBar className={className}>
+              <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
+              <AppBarSection position="right">
+                <IconButton
+                  type="button"
+                  aria-label="close menu"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <CloseIcon width={20} height={20} />
+                </IconButton>
+              </AppBarSection>
+            </AppBar>
+            <Box padding={16}>
+              {renderSearch && renderSearch()}
+
+              <AppHeaderMainMenuMobile items={items.mainMenu} action={action} />
+            </Box>
+          </div>
+        </StyledOverlay>
+      </Container>
     </>
   );
 };

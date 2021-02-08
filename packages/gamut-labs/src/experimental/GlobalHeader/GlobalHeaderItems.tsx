@@ -265,7 +265,7 @@ const profileLogOut: AppHeaderLinkItem = {
 export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
   return {
     avatar: user.avatar,
-    displayName: user.displayName,
+    userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
     popover: [
@@ -296,7 +296,7 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   popover.push([profileLogOut]);
   return {
     avatar: user.avatar,
-    displayName: user.displayName,
+    userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
     popover,

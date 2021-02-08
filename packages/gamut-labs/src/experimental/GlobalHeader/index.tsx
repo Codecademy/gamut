@@ -1,8 +1,8 @@
+import { Box } from '@codecademy/gamut';
 import React from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
-import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
 import {
   anonDefaultHeaderItems,
@@ -24,11 +24,6 @@ import {
 } from './GlobalHeaderVariants';
 import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
-
-export type HeaderClickHandler = (
-  event: React.MouseEvent,
-  item: AppHeaderItem
-) => void;
 
 export type GlobalHeaderProps =
   | AnonHeader
@@ -109,12 +104,14 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           items={getAppHeaderItems(props)}
         />
       ) : (
-        <AppHeaderMobile
-          action={props.action}
-          className={styles.globalHeader}
-          items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
-        />
+        <Box zIndex={0}>
+          <AppHeaderMobile
+            action={props.action}
+            className={styles.globalHeader}
+            items={getMobileAppHeaderItems(props)}
+            renderSearch={props.renderSearch?.mobile}
+          />
+        </Box>
       )}
     </>
   );

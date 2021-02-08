@@ -43,7 +43,7 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
           </Box>
         </FullMenuButton>
         <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
-          {item.type === 'profile-dropdown' ? item.displayName : item.text}
+          {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
         </Heading>
         <AppHeaderLinkSections action={action} item={item} />
       </Box>

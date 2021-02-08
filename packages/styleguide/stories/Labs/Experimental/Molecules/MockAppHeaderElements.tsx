@@ -70,7 +70,7 @@ export const MOCK_DROPDOWN_2: AppHeaderSimpleDropdownItem = {
 export const MOCK_PROFILE_DROPDOWN: AppHeaderProfileDropdownItem = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-  displayName: 'Katie',
+  userDisplayName: 'Katie',
   id: 'profile',
   text: 'Profile',
   popover: [
