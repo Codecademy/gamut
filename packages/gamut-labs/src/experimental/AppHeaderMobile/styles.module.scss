@@ -1,20 +1,5 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  opacity: 1;
-  background-color: white;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-x: hidden;
-}
-
-.overlayBody {
-  padding: 1rem;
-}
-
 .search {
   display: flex;
   width: 100%;

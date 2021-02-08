@@ -103,7 +103,6 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             action={props.action}
             className={styles.globalHeader}
             items={getMobileAppHeaderItems(props)}
-            zIndex={1}
           />
         </Box>
       )}
