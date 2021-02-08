@@ -12,6 +12,5 @@ const mdxConfig = {
 };
 
 module.exports = {
-  // ensure that ts eslint parser only runs for the correct files
   overrides: [mdxConfig],
 };
