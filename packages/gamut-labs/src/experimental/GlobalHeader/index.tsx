@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import cx from 'classnames';
+import { throttle } from 'lodash';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
@@ -95,6 +97,7 @@ const getMobileAppHeaderItems = (
 };
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  console.log('global header');
   const desktop = useBreakpointAtOrAbove('md');
 
   const defaultScrollingState = {
@@ -106,7 +109,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   };
   const [scrollingState, setScrollingState] = useState(defaultScrollingState);
 
-  const handleScrolling = () => {
+  const handleScrolling = useCallback(() => {
     const currentScrollPosition = window.pageYOffset;
 
     if (currentScrollPosition <= HEADER_HEIGHT) {
@@ -147,15 +150,45 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isScrollingFromHeaderRegion,
       }));
     }
-  };
+  }, [scrollingState]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttle(handleScrolling));
+
+    // returned function will be called on component unmount
+    return () => {
+      window.removeEventListener('scroll', throttle(handleScrolling));
+    };
+  }, [handleScrolling]);
 
   return (
     <>
       {desktop ? (
         <AppHeader
           action={props.action}
-          className={styles.globalHeader}
+          // className={styles.globalHeader}
           items={getAppHeaderItems(props)}
+          className={cx(
+            scrollingState.isInHeaderRegion
+              ? styles.globalHeader
+              : styles.scrollingHeader,
+            {
+              [styles.fadeTransition]:
+                scrollingState.isInHeaderRegion &&
+                !scrollingState.isScrollingDown,
+              [styles.slideTransition]:
+                !scrollingState.isInHeaderRegion &&
+                !scrollingState.isScrollingFromHeaderRegion,
+              [styles.hideHeader]:
+                scrollingState.isScrollingDown &&
+                !scrollingState.isInHeaderRegion &&
+                !scrollingState.isScrollingFromHeaderRegion,
+              [styles.showHeader]:
+                !scrollingState.isScrollingDown &&
+                !scrollingState.isScrollingFromHeaderRegion &&
+                !scrollingState.isInHeaderRegion,
+            }
+          )}
         />
       ) : (
         <AppHeaderMobile

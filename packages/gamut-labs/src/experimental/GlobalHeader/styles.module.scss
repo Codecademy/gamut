@@ -5,3 +5,30 @@
   box-shadow: none;
   width: 100%;
 }
+
+// jasmine's animation styles
+
+.scrollingHeader {
+  border-bottom: 1px solid $color-navy;
+  background-color: white;
+  position: sticky;
+  box-shadow: none;
+  z-index: 14;
+  transform: translateY(-100%);
+}
+
+.showHeader {
+  transform: translateY(0);
+}
+
+.hideHeader {
+  transform: translateY(-100%);
+}
+
+.slideTransition {
+  transition: transform 0.15s ease-in-out;
+}
+
+.fadeTransition {
+  transition: background 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
+}
