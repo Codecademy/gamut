@@ -16,7 +16,12 @@ const RightColumn = styled(Column)`
 `;
 
 const Image = styled.img`
+  align-self: center;
   width: 100%;
+`;
+
+const StyledVideo = styled(Video)`
+  align-self: center;
 `;
 
 export type PageHeroMediaProps = {
@@ -35,7 +40,7 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({ media }) => {
       const videoArgs = omit(media, 'type');
       return (
         <RightColumn size={5}>
-          <Video {...videoArgs} />
+          <StyledVideo {...videoArgs} />
         </RightColumn>
       );
   }
