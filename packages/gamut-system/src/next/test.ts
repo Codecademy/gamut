@@ -124,8 +124,8 @@ export const myVariant = variant({
     cool: { fontSize: [, 16, 14], padding: 16, paddingX: [4, , 16] },
   },
 });
-
-fontSize({ fontSize: [16], theme });
+fontFamily({ fontFamily: 'title', theme });
+fontSize({ fontSize: 16, theme });
 
 export const myCss = css({
   fontSize: [16, 14],
