@@ -7,9 +7,9 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { FormattedAppHeaderItems } from './../GlobalHeader/GlobalHeaderVariants';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
-import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
+import
+{ AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
 import { AppHeaderTab } from './AppHeaderElements/AppHeaderTab';
 import { focusStyles } from './AppHeaderElements/SharedStyles';
@@ -17,6 +17,7 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;

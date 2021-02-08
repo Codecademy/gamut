@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
+import { FormattedAppHeaderItems, FormattedMobileAppHeaderItems } from '../AppHeader/types';
 import {
   communityDropdown,
   courseCatalog,
@@ -20,14 +21,6 @@ import {
 } from './GlobalHeaderItems';
 import { User } from './types';
 
-export type FormattedAppHeaderItems = {
-  left: AppHeaderItem[];
-  right: AppHeaderItem[];
-};
-
-export type FormattedMobileAppHeaderItems = FormattedAppHeaderItems & {
-  mainMenu: AppHeaderItem[];
-};
 
 const anonHeaderItems = (
   renderLogin: boolean,

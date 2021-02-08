@@ -10,14 +10,14 @@ import { CloseIcon, MenuIcon, SearchIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
+import { FormattedMobileAppHeaderItems } from '../../AppHeader/types';
 import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
-import { FormattedMobileAppHeaderItems } from '../GlobalHeader/GlobalHeaderVariants';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
   focusStyles,
   hoverStyles,
 } from './../AppHeader/AppHeaderElements/SharedStyles';
-import { AppHeaderClickHandler } from './../AppHeader/AppHeaderElements/types';
+import { AppHeaderClickHandler, AppHeaderItem } from './../AppHeader/AppHeaderElements/types';
 import styles from './styles.module.scss';
 
 export type AppHeaderMobileProps = {
@@ -75,7 +75,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   };
 
   const renderLeftItems = () => {
-    return items.left.map((item) => mapItemToElement(action, item));
+    return items.left.map((item: AppHeaderItem) => mapItemToElement(action, item));
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -117,7 +117,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         <AppBar className={className}>
           <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
           <AppBarSection position="right">
-            {items.right.map((item) => mapItemToElement(action, item))}
+            {items.right.map((item: AppHeaderItem) => mapItemToElement(action, item))}
             <AppHeaderTab>
               <IconButton
                 type="button"
