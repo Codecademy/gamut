@@ -18,7 +18,7 @@ export type DescriptionProps = DarkModeProps & {
 
 export const Description: React.FC<DescriptionProps> = ({
   text,
-  mode = 'light',
+  mode,
   className,
   onAnchorClick,
 }) => (
