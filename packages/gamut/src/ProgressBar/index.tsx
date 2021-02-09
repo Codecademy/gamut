@@ -1,3 +1,5 @@
+import { colors, swatches } from '@codecademy/gamut-styles';
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import React from 'react';
 
@@ -44,6 +46,49 @@ export type ProgressBarStyle = {
   fontColor?: string;
 };
 
+export type ProgressBarComponentProps = {
+  backgroundTheme: string;
+};
+
+const progressBarThemes = {
+  blue: {
+    background: colors.blue[800],
+    barColor: colors.blue[500],
+  },
+  yellow: {
+    background: swatches.gray[100],
+    barColor: colors.yellow[500],
+  },
+  bordered: { background: 'transparent', barColor: colors.white },
+};
+
+const ProgressBarWrapper = styled.div<ProgressBarComponentProps>`
+  overflow: hidden;
+  position: relative;
+  background: ${(props) => progressBarThemes[props.backgroundTheme].background};
+  border: ${(props) =>
+    props.backgroundTheme === 'bordered' ? 'solid 1px white' : '0'};
+`;
+
+const Bar = styled.div<ProgressBarComponentProps>`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  transition: width 0.5s;
+  position: relative;
+  background: ${(props) => progressBarThemes[props.backgroundTheme].barColor};
+`;
+
+const DisplayedPercent = styled.span<ProgressBarComponentProps>`
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: right;
+  width: 100%;
+
+  border: ${(props) =>
+    props.backgroundTheme === 'yellow' ? 'black' : 'initial'};
+`;
+
 export const ProgressBar: React.FC<ProgressBarProps> = ({
   className,
   large,
@@ -58,11 +103,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   const radius = `${height / 2}px`;
 
   return (
-    <div
+    <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
+      backgroundTheme={theme}
+      className={className}
       role="figure"
-      className={cx(styles.progressBar, styles[theme], className)}
       style={{
         background: backgroundColor,
         borderRadius: radius,
@@ -79,8 +125,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           name={pattern}
         />
       )}
-      <div
-        className={styles.bar}
+      <Bar
+        backgroundTheme={theme}
         data-testid="progress-bar-bar"
         style={{
           background: barColor,
@@ -91,8 +137,12 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           }),
         }}
       >
-        {large && <span className={styles.displayedPercent}>{percent}%</span>}
-      </div>
-    </div>
+        {large && (
+          <DisplayedPercent backgroundTheme={theme}>
+            {percent}%
+          </DisplayedPercent>
+        )}
+      </Bar>
+    </ProgressBarWrapper>
   );
 };
