@@ -181,7 +181,7 @@ export const myVariant = variant({
   variants: {
     cool: { fontSize: [, 16, 14], padding: 16, paddingX: 4 },
   },
-});
+})({ theme });
 fontFamily({ fontFamily: 'accent', theme });
 fontSize({ fontSize: 14, theme });
 
@@ -189,4 +189,5 @@ export const myCss = css({
   fontSize: [16, 14],
   padding: 0,
   fontWeight: 'title',
+  theme,
 });

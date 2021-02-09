@@ -1,4 +1,4 @@
-import { AbstractTheme } from '../types/config';
+import { AbstractProps, AbstractTheme } from '../types/config';
 import { CSSObject } from '../types/css';
 import { Properties, PropName } from '../types/properties';
 
@@ -10,15 +10,19 @@ export type BaseConfig<T extends AbstractTheme> = {
   dependentProps?: Readonly<string[]>;
 };
 
-export type OnlyStrings<T> = T extends string ? T : never;
+export interface Config<T extends AbstractTheme, C extends BaseConfig<T>>
+  extends BaseConfig<T> {
+  propNames: PropKeys<T, C>[];
+}
 
-export type PropKeys<
-  T extends AbstractTheme,
-  C extends BaseConfig<T>
-> = Readonly<
+type OnlyStrings<T> = T extends string ? T : never;
+
+export type PropKeys<T extends AbstractTheme, C extends BaseConfig<T>> =
   | C['propName']
-  | Extract<C, { dependentProps: Readonly<string[]> }>['dependentProps'][number]
->;
+  | Extract<
+      C,
+      { dependentProps: Readonly<string[]> }
+    >['dependentProps'][number];
 
 // Props
 
@@ -44,42 +48,99 @@ export type ResponsiveProp<T> = T | MediaQueryMap<T>;
 
 export type AllProps<
   T extends AbstractTheme,
-  C extends Record<string, BaseConfig<T>>,
-  WithTheme extends boolean = false
+  C extends Record<string, BaseConfig<T>>
 > = {
   [Prop in keyof C as OnlyStrings<PropKeys<T, C[Prop]>>]?: Scale<T, C[Prop]>;
 } &
-  (WithTheme extends true ? ThemeProps<T> : {});
+  ThemeProps<T>;
 
 /** Styles */
 export interface ThemeProps<T extends AbstractTheme> {
   theme: T;
 }
 
-export interface StyleProps<T extends AbstractTheme, C extends BaseConfig<T>> {
-  (
-    props: {
-      [Prop in PropKeys<T, C> as `${OnlyStrings<Prop>}`]?: Scale<T, C>;
-    } &
-      ThemeProps<T>
-  ): CSSObject;
-}
+export type StyleProps<T extends AbstractTheme, C extends BaseConfig<T>> = {
+  [Prop in PropKeys<T, C> as `${OnlyStrings<Prop>}`]?: Scale<T, C>;
+} &
+  ThemeProps<T>;
 
 export type Scale<
   T extends AbstractTheme,
-  Config extends BaseConfig<T>
+  C extends BaseConfig<T>
 > = ResponsiveProp<
-  Config['scale'] extends keyof T
-    ? keyof T[Config['scale']]
-    : Properties[Config['propName']]['defaultScale']
+  C['scale'] extends keyof T
+    ? keyof T[C['scale']]
+    : Properties[C['propName']]['defaultScale']
 >;
 
-export type StyleFn<T extends AbstractTheme, C extends BaseConfig<T>> = {
-  styleFn: StyleProps<T, C>;
-  propNames: PropKeys<T, C>[];
+type PropFunction<
+  T extends AbstractTheme,
+  C extends Config<T, BaseConfig<T>>
+> = (props: StyleProps<T, C>) => CSSObject;
+
+export type StyleFn<
+  T extends AbstractTheme,
+  C extends Config<T, BaseConfig<T>>
+> = C & {
+  styleFn: PropFunction<T, C>;
 };
 
 export type ParserFn<
   T extends AbstractTheme,
-  C extends BaseConfig<T>
-> = StyleProps<T, C> & StyleFn<T, C>;
+  C extends Config<T, BaseConfig<T>>
+> = (props: StyleProps<T, C>) => CSSObject & StyleFn<T, C>;
+
+export interface WithTheme {
+  withTheme: {
+    <T extends AbstractTheme>(): {
+      bindMeta: BindMeta<T>;
+      createHandler: CreateHandler<T>;
+      createParser: CreateParser<T>;
+      withProps: WithProps<T>;
+    };
+  };
+}
+
+export interface CreateHandler<T extends AbstractTheme> {
+  <C extends Config<T, BaseConfig<T>>>(config: C): StyleFn<T, C>;
+}
+
+export interface CreateParser<T extends AbstractTheme> {
+  <C extends Config<T, BaseConfig<T>>, Fn extends StyleFn<T, C>>(config: Fn): [
+    (props: StyleProps<T, C>) => CSSObject,
+    StyleFn<T, C>
+  ];
+}
+
+export interface BindMeta<T extends AbstractTheme> {
+  <C extends BaseConfig<T>>(config: C): Config<T, BaseConfig<T>>;
+}
+export interface WithProps<T extends AbstractTheme> {
+  <P extends AbstractProps>(): {
+    createVariants: Variant<T, P>;
+    createCss: Css<T, P>;
+  };
+}
+export interface Variant<T extends AbstractTheme, Props extends AbstractProps> {
+  (): {
+    <
+      Keys extends string,
+      Default extends Keys,
+      Prop extends Readonly<string> = 'variant'
+    >(config: {
+      prop?: Prop;
+      default?: Default;
+      variants: Readonly<Record<Keys, Omit<Props, 'theme'>>>;
+    }): {
+      (props: Partial<Record<Prop, Keys>> & ThemeProps<T>): CSSObject;
+    };
+  };
+}
+
+export interface Css<T extends AbstractTheme, Props extends AbstractProps> {
+  (): {
+    (config: Props): {
+      <Returned extends { theme: T }>(props: Returned): CSSObject;
+    };
+  };
+}
