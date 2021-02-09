@@ -2,25 +2,19 @@ import { assign, get, isArray, isObject, merge } from 'lodash';
 
 import { AbstractProps, AbstractTheme } from '../types/config';
 import { CSSObject } from '../types/css';
-import { AllProps, BaseConfig, PropKeys, StyleFn } from './types';
+import { AllProps, BaseConfig, ParserFn, StyleFn } from './types';
 
-const safePass = <T>(props: unknown): props is T => {
-  return true;
-};
 const handler = {
   withTheme<T extends AbstractTheme>() {
     return {
-      createParser<C extends Record<string, StyleFn<T, BaseConfig<T>>>>(
-        config: C
+      createParser<Config extends BaseConfig<T>, Fn extends StyleFn<T, Config>>(
+        config: Fn
       ) {
-        type Props = AllProps<C, T, true>;
-        const propNames = Object.keys(config);
-
-        const propParser = (props: Props) => {
+        const propParser = ((props) => {
           let styles = {};
-          propNames.forEach((prop) => {
-            const handler = config[prop].styleFn;
-            const value = get(props, prop);
+          config.propNames.forEach((prop) => {
+            const handler = config.styleFn;
+            const value = get(props, `${prop}`);
             switch (typeof value) {
               case 'string':
               case 'number':
@@ -36,14 +30,12 @@ const handler = {
           });
 
           return styles;
-        };
+        }) as ParserFn<T, Config>;
 
-        propParser.config = config;
-
-        return propParser;
+        return Object.assign(propParser, config);
       },
       createHandler<C extends BaseConfig<T>>(config: C) {
-        const { prop, scale } = config;
+        const { propName: prop, scale } = config;
 
         const fn: StyleFn<T, C> = {
           styleFn: (props) => {
@@ -54,12 +46,15 @@ const handler = {
             };
           },
           ...config,
-          propNames: (config.dependentProps || []) as PropKeys<C>[],
+          propNames: [
+            prop,
+            ...(isArray(config.dependentProps) ? config.dependentProps : []),
+          ],
         };
 
-        return fn;
+        return this.createParser(fn);
       },
-      withProps() {
+      withProps<P extends AbstractProps>() {
         return {
           createVariants() {
             return <
@@ -94,24 +89,19 @@ export const variance = {
     return {
       create<C extends Record<string, BaseConfig<T>>>(config: C) {
         type Props = AllProps<T, C>;
-        type TransformMap = {
-          [P in keyof C]: StyleFn<T, C[P]>;
-        };
 
-        const {
-          createParser,
-          createHandler,
-          withProps,
-        } = handler.withTheme<T>();
+        type TransformMap = {
+          [P in keyof C]: ParserFn<T, C[P]>;
+        };
+        const { createHandler, withProps } = handler.withTheme<T>();
         const properties = {} as TransformMap;
 
         for (const prop in config) {
           const handler = createHandler(config[prop]);
           properties[prop] = handler;
-          createParser();
         }
 
-        const { createCss, createVariants } = withProps();
+        const { createCss, createVariants } = withProps<Props>();
 
         const variant = createVariants();
         const css = createCss();
