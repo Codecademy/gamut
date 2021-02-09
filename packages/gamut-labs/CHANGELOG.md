@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.7...@codecademy/gamut-labs@9.2.8) (2021-02-08)
+
+
+### Bug Fixes
+
+* increase feature column gaps ([7ab374f](https://github.com/Codecademy/client-modules/commit/7ab374ff835b32793aa4ff80deb95f3f602e4223))
+
+
+
+### [9.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.6...@codecademy/gamut-labs@9.2.7) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.5...@codecademy/gamut-labs@9.2.6) (2021-02-08)
+
+
+### Bug Fixes
+
+* use light variant by default ([29468e0](https://github.com/Codecademy/client-modules/commit/29468e0fc15097915ffdc31e51c8ea12bc19e785))
+
+
+
+### [9.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.4...@codecademy/gamut-labs@9.2.5) (2021-02-08)
+
+
+### Bug Fixes
+
+* remove indentation from lists in Feature descriptions ([#1377](https://github.com/Codecademy/client-modules/issues/1377)) ([32862ac](https://github.com/Codecademy/client-modules/commit/32862ac580c4415b185e9c272abfd19bd227115d))
+
+
+
 ### [9.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.3...@codecademy/gamut-labs@9.2.4) (2021-02-05)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

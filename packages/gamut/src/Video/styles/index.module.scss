@@ -30,6 +30,9 @@
   position: absolute;
   top: 0;
   left: 0;
+  & :focus-visible {
+    outline-offset: 3px;
+  }
 }
 
 .hoverButton {
