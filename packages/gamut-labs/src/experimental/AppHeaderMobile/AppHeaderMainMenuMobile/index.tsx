@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut';
+import { FlexBox } from '@codecademy/gamut';
 import React, { useState } from 'react';
 import { ReactNode } from 'react';
 
@@ -57,7 +57,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'fill-button':
         return (
-          <Box display="flex" justifyContent="center">
+          <FlexBox justifyContent="center">
             <AppHeaderFillButton
               data-testid={item.dataTestId}
               href={item.href}
@@ -66,11 +66,11 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             >
               {item.text}
             </AppHeaderFillButton>
-          </Box>
+          </FlexBox>
         );
       case 'text-button':
         return (
-          <Box display="flex" justifyContent="center">
+          <FlexBox justifyContent="center">
             <AppHeaderTextButton
               data-testid={item.dataTestId}
               href={item.href}
@@ -79,7 +79,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             >
               {item.text}
             </AppHeaderTextButton>
-          </Box>
+          </FlexBox>
         );
     }
   };
