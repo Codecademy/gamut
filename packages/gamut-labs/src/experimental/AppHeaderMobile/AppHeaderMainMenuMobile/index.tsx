@@ -2,7 +2,7 @@ import { Box } from '@codecademy/gamut';
 import React, { useState } from 'react';
 import { ReactNode } from 'react';
 
-import { AppHeaderFillButton } from '../..';
+import { AppHeaderFillButton, AppHeaderTextButton } from '../..';
 import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
@@ -66,6 +66,19 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
             >
               {item.text}
             </AppHeaderFillButton>
+          </Box>
+        );
+      case 'text-button':
+        return (
+          <Box display="flex" justifyContent="center">
+            <AppHeaderTextButton
+              data-testid={item.dataTestId}
+              href={item.href}
+              key={item.id}
+              onClick={(event: React.MouseEvent) => action(event, item)}
+            >
+              {item.text}
+            </AppHeaderTextButton>
           </Box>
         );
     }
