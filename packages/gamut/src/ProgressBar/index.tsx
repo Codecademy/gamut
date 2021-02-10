@@ -1,4 +1,4 @@
-import { colors, swatches } from '@codecademy/gamut-styles';
+import { deprecatedColors, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import React from 'react';
@@ -46,28 +46,46 @@ export type ProgressBarStyle = {
   fontColor?: string;
 };
 
+export type ProgressBarTheme = {
+  background: string;
+  barColor: string;
+};
+
+export type ProgressBarThemeObject = {
+  blue: ProgressBarTheme;
+  yellow: ProgressBarTheme;
+  bordered: ProgressBarTheme;
+};
+
+type ProgressBarThemeKeys = keyof ProgressBarThemeObject;
+
 export type ProgressBarComponentProps = {
-  backgroundTheme: string;
+  progressTheme: ProgressBarThemeKeys;
 };
 
 const progressBarThemes = {
   blue: {
-    background: colors.blue[800],
-    barColor: colors.blue[500],
+    background: deprecatedColors.blue[800],
+    barColor: theme.colors.blue,
+    fontColor: 'initial',
   },
   yellow: {
-    background: swatches.gray[100],
-    barColor: colors.yellow[500],
+    background: theme.colors[`gray-100`],
+    barColor: theme.colors[`yellow-500`],
+    fontColor: theme.colors.black,
   },
-  bordered: { background: 'transparent', barColor: colors.white },
+  bordered: {
+    background: 'transparent',
+    barColor: theme.colors.white,
+    fontColor: 'inherit',
+  },
 };
 
 const ProgressBarWrapper = styled.div<ProgressBarComponentProps>`
   overflow: hidden;
   position: relative;
-  background: ${(props) => progressBarThemes[props.backgroundTheme].background};
   border: ${(props) =>
-    props.backgroundTheme === 'bordered' ? 'solid 1px white' : '0'};
+    props.progressTheme === 'bordered' ? 'solid 1px white' : '0'};
 `;
 
 const Bar = styled.div<ProgressBarComponentProps>`
@@ -76,7 +94,6 @@ const Bar = styled.div<ProgressBarComponentProps>`
   height: 100%;
   transition: width 0.5s;
   position: relative;
-  background: ${(props) => progressBarThemes[props.backgroundTheme].barColor};
 `;
 
 const DisplayedPercent = styled.span<ProgressBarComponentProps>`
@@ -84,9 +101,8 @@ const DisplayedPercent = styled.span<ProgressBarComponentProps>`
   padding: 0.5rem;
   text-align: right;
   width: 100%;
-
   border: ${(props) =>
-    props.backgroundTheme === 'yellow' ? 'black' : 'initial'};
+    props.progressTheme === 'yellow' ? 'black' : 'initial'};
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -95,18 +111,20 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   minimumPercent = 0,
   percent,
   style = {},
-  theme,
+  theme = 'blue',
   pattern,
 }) => {
-  const { backgroundColor, barColor, fontColor } = style;
+  let { backgroundColor, barColor, fontColor } = style;
+  backgroundColor = progressBarThemes[theme].background;
+  barColor = progressBarThemes[theme].barColor;
+  fontColor = progressBarThemes[theme].fontColor;
+
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
-
   return (
     <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      backgroundTheme={theme}
       className={className}
       role="figure"
       style={{
@@ -115,6 +133,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         color: fontColor,
         height: `${height}px`,
       }}
+      progressTheme={theme}
     >
       {pattern && (
         <Pattern
@@ -126,7 +145,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         />
       )}
       <Bar
-        backgroundTheme={theme}
+        progressTheme={theme}
         data-testid="progress-bar-bar"
         style={{
           background: barColor,
@@ -138,9 +157,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         }}
       >
         {large && (
-          <DisplayedPercent backgroundTheme={theme}>
-            {percent}%
-          </DisplayedPercent>
+          <DisplayedPercent progressTheme={theme}>{percent}%</DisplayedPercent>
         )}
       </Bar>
     </ProgressBarWrapper>
