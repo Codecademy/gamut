@@ -55,8 +55,8 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         textAlign="left"
         display="flex"
       >
-        <FlexBox alignItems="center" columnGap={16}>
-          {getIcon()}
+        <FlexBox alignItems="center">
+          <Box marginRight={16}>{getIcon()}</Box>
           {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
         </FlexBox>
         <FlexBox alignSelf="end">
