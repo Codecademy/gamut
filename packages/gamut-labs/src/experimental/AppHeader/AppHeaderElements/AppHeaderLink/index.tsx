@@ -28,7 +28,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
       href={item.href}
-      onClick={(event) => action(event, item)}
+      onClick={(event: React.MouseEvent) => action(event, item)}
       target={item.newTab ? 'blank' : ''}
       variant="interface"
     >
