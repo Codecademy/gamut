@@ -61,15 +61,19 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     );
   };
 
+  const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
+    return items.map((item) => mapItemToElement(action, item));
+  };
+
   return (
     <>
       {!mobileMenuOpen && ( //need this bc AppBar has a hardcoded z-Index of 15
         <StyledAppBar>
-          <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
+          <AppBarSection position="left">
+            {mapItemsToElement(items.left)}
+          </AppBarSection>
           <AppBarSection position="right">
-            {items.right.map((item: AppHeaderItem) =>
-              mapItemToElement(action, item)
-            )}
+            {mapItemsToElement(items.right)}
             <AppHeaderTab>
               <IconButton
                 type="button"
