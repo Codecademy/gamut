@@ -111,7 +111,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 </IconButton>
               </AppBarSection>
             </StyledAppBar>
-            <Box padding={16}>
+            <Box paddingX={16}>
               <AppHeaderMainMenuMobile
                 items={items.mainMenu}
                 action={action}

@@ -17,6 +17,7 @@ export type AppHeaderSubMenuTargetProps = {
 };
 
 const AppHeaderTextTargetButton = styled.button`
+  padding: 0;
   ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
@@ -24,9 +25,7 @@ const AppHeaderTextTargetButton = styled.button`
 
 const AppHeaderLinkButtonInner = styled(Box)`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  white-space: nowrap;
   width: 100%;
 `;
 
@@ -52,7 +51,7 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       <AppHeaderLinkButtonInner
         lineHeight="base"
         minWidth="0"
-        paddingY={8}
+        paddingY={16}
         textAlign="left"
         display="flex"
       >
@@ -61,7 +60,9 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
           {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
         </FlexBox>
         <FlexBox alignSelf="end">
-          <ArrowChevronRightIcon size={12} aria-hidden />
+          <Box>
+            <ArrowChevronRightIcon size={12} aria-hidden />
+          </Box>
         </FlexBox>
       </AppHeaderLinkButtonInner>
     </AppHeaderTextTargetButton>

@@ -73,7 +73,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         onRequestClose={handleClose}
         targetRef={headerDropdownRef}
       >
-        <Box paddingY={12}>
+        <Box paddingX={24} paddingY={12}>
           <AppHeaderLinkSections action={action} item={item} />
         </Box>
       </Popover>

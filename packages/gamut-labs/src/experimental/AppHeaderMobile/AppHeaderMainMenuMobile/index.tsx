@@ -57,7 +57,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'fill-button':
         return (
-          <FlexBox justifyContent="center">
+          <FlexBox justifyContent="center" marginTop={32}>
             <AppHeaderFillButton
               data-testid={item.dataTestId}
               href={item.href}
