@@ -1,16 +1,9 @@
-import {
-  AppBar,
-  AppBarSection,
-  Box,
-  Container,
-  Overlay,
-} from '@codecademy/gamut';
+import { AppBarSection, Box, Container, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
-import { AppHeaderMainMenuMobile, mapItemToElement } from '..';
-import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
+import { mapItemToElement, StyledAppBar } from './../AppHeader';
 import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
   focusStyles,
@@ -20,10 +13,11 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './../AppHeader/AppHeaderElements/types';
+import { FormattedMobileAppHeaderItems } from './../AppHeader/types';
+import { AppHeaderMainMenuMobile } from './../AppHeaderMobile/AppHeaderMainMenuMobile';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
-  className?: string;
   items: FormattedMobileAppHeaderItems;
   renderSearch?: () => ReactNode;
 };
@@ -52,7 +46,6 @@ const StyledOverlay = styled(Overlay)`
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   action,
-  className,
   items,
   renderSearch,
 }) => {
@@ -71,7 +64,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   return (
     <>
       {!mobileMenuOpen && ( //need this bc AppBar has a hardcoded z-Index of 15
-        <AppBar className={className}>
+        <StyledAppBar>
           <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
           <AppBarSection position="right">
             {items.right.map((item: AppHeaderItem) =>
@@ -90,7 +83,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </IconButton>
             </AppHeaderTab>
           </AppBarSection>
-        </AppBar>
+        </StyledAppBar>
       )}
       <Container>
         <StyledOverlay
@@ -100,7 +93,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           onRequestClose={() => setMobileMenuOpen(false)}
         >
           <div>
-            <AppBar className={className}>
+            <StyledAppBar>
               <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
               <AppBarSection position="right">
                 <IconButton
@@ -113,7 +106,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                   <CloseIcon width={20} height={20} />
                 </IconButton>
               </AppBarSection>
-            </AppBar>
+            </StyledAppBar>
             <Box padding={16}>
               <AppHeaderMainMenuMobile
                 items={items.mainMenu}

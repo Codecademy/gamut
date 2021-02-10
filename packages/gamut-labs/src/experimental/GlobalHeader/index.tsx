@@ -24,7 +24,6 @@ import {
   proHeaderItems,
   proMobileHeaderItems,
 } from './GlobalHeaderVariants';
-import styles from './styles.module.scss';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 
 export type GlobalHeaderProps =
@@ -100,16 +99,11 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <>
       {desktop ? (
-        <AppHeader
-          action={props.action}
-          className={styles.globalHeader}
-          items={getAppHeaderItems(props)}
-        />
+        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
       ) : (
         <Box zIndex={0} position="relative">
           <AppHeaderMobile
             action={props.action}
-            className={styles.globalHeader}
             items={getMobileAppHeaderItems(props)}
             renderSearch={props.renderSearch?.mobile}
           />

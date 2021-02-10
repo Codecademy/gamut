@@ -91,7 +91,33 @@ const renderGlobalHeader = (props: GlobalHeaderProps) => {
   );
 };
 
+jest.mock('../../../lib/breakpointHooks', () => ({
+  useBreakpointAtOrAbove: jest
+    .fn(() => true)
+    .mockImplementationOnce(() => {
+      return true;
+    })
+    .mockImplementationOnce(() => {
+      return false;
+    }),
+}));
+
 describe('GlobalHeader', () => {
+  describe('responsiveness', () => {
+    beforeEach(() => {
+      renderGlobalHeader(anonHeaderProps);
+    });
+
+    test('desktop', () => {
+      expect(
+        screen.queryByTestId('header-mobile-menu')
+      ).not.toBeInTheDocument();
+    });
+    test('mobile', () => {
+      expect(screen.getByTestId('header-mobile-menu'));
+    });
+  });
+
   describe('anonymous users', () => {
     beforeEach(() => {
       renderGlobalHeader(anonHeaderProps);

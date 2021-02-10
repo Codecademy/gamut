@@ -20,9 +20,14 @@ import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
-  className?: string;
   items: FormattedAppHeaderItems;
 };
+
+export const StyledAppBar = styled(AppBar)`
+  padding: 0.75rem 0;
+  box-shadow: none;
+  width: 100%;
+`;
 
 export const AppHeaderTextButton = styled(TextButton)(focusStyles);
 export const AppHeaderFillButton = styled(FillButton)(focusStyles);
@@ -81,19 +86,15 @@ export const mapItemToElement = (
   }
 };
 
-export const AppHeader: React.FC<AppHeaderProps> = ({
-  action,
-  className,
-  items,
-}) => {
+export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
   return (
-    <AppBar className={className}>
+    <StyledAppBar>
       <AppBarSection position="left">
         {items.left.map((item) => mapItemToElement(action, item))}
       </AppBarSection>
       <AppBarSection position="right">
         {items.right.map((item) => mapItemToElement(action, item))}
       </AppBarSection>
-    </AppBar>
+    </StyledAppBar>
   );
 };
