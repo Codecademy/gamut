@@ -4,6 +4,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import { CoachmarkExample } from './Coachmark.examples';
+
 <Meta
   title={title}
   component={Coachmark}
@@ -17,7 +19,7 @@ import { PropsTable } from '~styleguide/blocks';
 />
 
 <Canvas>
-  <Story name="Coachmark">{(args) => <Coachmark {...args} />}</Story>
+  <Story name="Coachmark">{CoachmarkExample}</Story>
 </Canvas>
 
 <PropsTable story="Coachmark" />
