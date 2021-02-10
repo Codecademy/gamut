@@ -106,7 +106,7 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           items={getAppHeaderItems(props)}
         />
       ) : (
-        <Box zIndex={0}>
+        <Box zIndex={0} position="relative">
           <AppHeaderMobile
             action={props.action}
             className={styles.globalHeader}

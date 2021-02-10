@@ -17,6 +17,7 @@ export type AppHeaderSubMenuTargetProps = {
 };
 
 const AppHeaderTextTargetButton = styled.button`
+  padding: 0;
   ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
@@ -54,8 +55,8 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         textAlign="left"
         display="flex"
       >
-        <FlexBox alignItems="center">
-          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+        <FlexBox alignItems="center" columnGap={16}>
+          {getIcon()}
           {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
         </FlexBox>
         <FlexBox alignSelf="end">

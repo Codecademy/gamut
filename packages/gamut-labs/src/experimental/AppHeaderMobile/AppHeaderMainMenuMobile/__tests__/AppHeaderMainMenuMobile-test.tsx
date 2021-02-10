@@ -14,6 +14,10 @@ const action = jest.fn();
 const link1Href = 'https://codecademy.com';
 const link2Href = 'https://news.codecademy.com';
 
+const fillButtonTestId = 'app-header-link-sign-up';
+const fillButtonText = 'sign up';
+const fillButtonHref = 'codecademy.com/sign-up';
+
 const sublink1Id = 'sublink-1';
 const sublink2Id = 'sublink-2';
 const sublink1Href = 'https://google.com';
@@ -48,7 +52,7 @@ const props: AppHeaderMainMenuMobileProps = {
       dataTestId: '',
       id: 'test-profile-link',
       text: 'profile target',
-      userDisplayName: 'name',
+      userDisplayName: 'user name',
       trackingTarget: '',
       type: 'profile-dropdown',
       avatar: '',
@@ -69,6 +73,14 @@ const props: AppHeaderMainMenuMobileProps = {
         ],
       ],
     },
+    {
+      id: 'sign-up-btn',
+      dataTestId: fillButtonTestId,
+      type: 'fill-button',
+      href: fillButtonHref,
+      text: fillButtonText,
+      trackingTarget: 'sign-up-tracking',
+    },
   ],
 };
 
@@ -81,12 +93,12 @@ const renderAppHeaderMainMenuMobile = () => {
 };
 
 describe('AppHeaderMainMenuMobile', () => {
-  it('renders links for the items with type link', () => {
+  it('renders links for the items with type link and type fill-button', () => {
     renderAppHeaderMainMenuMobile();
     const linkArray = screen
       .getAllByRole('link')
       .map((node) => node.getAttribute('href'));
-    expect(linkArray).toStrictEqual([link1Href, link2Href]);
+    expect(linkArray).toStrictEqual([link1Href, link2Href, fillButtonHref]);
   });
 
   it('renders a target button for the items with type dropdown', () => {
@@ -106,7 +118,7 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders a submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getAllByRole('button')[0];
+    const targetButton = screen.getByText('resources target');
     targetButton.click();
     expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(sublink1Id)));
@@ -115,7 +127,7 @@ describe('AppHeaderMainMenuMobile', () => {
 
   it('renders the profile submenu when its target button is clicked', () => {
     renderAppHeaderMainMenuMobile();
-    const targetButton = screen.getAllByRole('button')[1];
+    const targetButton = screen.getByText('user name');
     targetButton.click();
     expect(action).toHaveBeenCalled();
     expect(screen.getByTestId(idToTestId(profileLink1Id)));

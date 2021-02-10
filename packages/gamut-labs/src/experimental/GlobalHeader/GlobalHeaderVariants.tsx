@@ -65,6 +65,8 @@ const anonMobileHeaderItems = (
     communityDropdown,
     pricingDropdown,
     forBusiness,
+    signUp,
+    login,
   ];
 
   return {
