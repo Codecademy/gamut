@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.2...@codecademy/gamut@21.3.3) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.1...@codecademy/gamut@21.3.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* remove deprecated elseif scss syntax ([6b36886](https://github.com/Codecademy/client-modules/commit/6b3688675eebcfbfe97d4e83462f000ffbdc07e6))
+
+
+
+### [21.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.0...@codecademy/gamut@21.3.1) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.3...@codecademy/gamut@21.3.0) (2021-02-05)
+
+
+### Features
+
+* added gamut-tests package around component-test-setup ([#1285](https://github.com/Codecademy/client-modules/issues/1285)) ([42f10fd](https://github.com/Codecademy/client-modules/commit/42f10fd7932d91ac7a7caceb6c875ace53a8e1b0))
+
+
+
 ### [21.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.2...@codecademy/gamut@21.2.3) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/gamut
