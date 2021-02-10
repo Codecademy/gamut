@@ -44,22 +44,8 @@ export type ProgressBarStyle = {
   fontColor?: string;
 };
 
-export type ProgressBarTheme = {
-  background: string;
-  barColor: string;
-  fontColor: string;
-};
-
-export type ProgressBarThemeObject = {
-  blue: ProgressBarTheme;
-  yellow: ProgressBarTheme;
-  bordered: ProgressBarTheme;
-};
-
-type ProgressBarThemeKeys = keyof ProgressBarThemeObject;
-
-export type ProgressBarComponentProps = {
-  progressTheme: ProgressBarThemeKeys;
+export type ProgressBarBordered = {
+  bordered: boolean;
 };
 
 const progressBarThemes = {
@@ -80,14 +66,13 @@ const progressBarThemes = {
   },
 };
 
-const ProgressBarWrapper = styled.div<ProgressBarComponentProps>`
+const ProgressBarWrapper = styled.div<ProgressBarBordered>`
   overflow: hidden;
   position: relative;
-  border: ${(props) =>
-    props.progressTheme === 'bordered' ? 'solid 1px' : '0'};
+  border: ${(props) => (props.bordered ? 'solid 1px' : '0')};
 `;
 
-const Bar = styled.div<ProgressBarComponentProps>`
+const Bar = styled.div`
   align-items: center;
   display: flex;
   height: 100%;
@@ -122,6 +107,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
+      bordered={theme === 'bordered'}
       className={className}
       role="figure"
       style={{
@@ -130,7 +116,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         color: fontColor,
         height: `${height}px`,
       }}
-      progressTheme={theme}
     >
       {pattern && (
         <Pattern
@@ -142,7 +127,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         />
       )}
       <Bar
-        progressTheme={theme}
         data-testid="progress-bar-bar"
         style={{
           background: barColor,
