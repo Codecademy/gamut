@@ -5,7 +5,7 @@ import {
   LayoutGrid,
   ProgressBar,
 } from '@codecademy/gamut/src';
-import { colors } from '@codecademy/gamut-styles';
+import { theme } from '@codecademy/gamut-styles';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -67,10 +67,11 @@ For the sake of rapid iteration, you can pass in custom style colors via the
   <Story
     name="Style Overrides"
     args={{
+      large: true,
+      percent: 45,
       style: {
-        backgroundColor: colors.red[900],
-        barColor: colors.red[600],
-        fontColor: colors.white,
+        barColor: theme.colors[`gray-200`],
+        fontColor: theme.colors.navy,
       },
     }}
   >

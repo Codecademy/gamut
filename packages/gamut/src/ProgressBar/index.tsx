@@ -65,7 +65,7 @@ const progressBarThemes = {
   blue: {
     background: deprecatedColors.blue[800],
     barColor: theme.colors.blue,
-    fontColor: 'initial',
+    fontColor: 'currentColor',
   },
   yellow: {
     background: theme.colors[`gray-100`],
@@ -75,7 +75,7 @@ const progressBarThemes = {
   bordered: {
     background: 'transparent',
     barColor: theme.colors.white,
-    fontColor: 'inherit',
+    fontColor: 'currentColor',
   },
 };
 
@@ -109,7 +109,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   minimumPercent = 0,
   percent,
   style = {},
-  theme = 'blue',
+  theme,
   pattern,
 }) => {
   const backgroundColor =
