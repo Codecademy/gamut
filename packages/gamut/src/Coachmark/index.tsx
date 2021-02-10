@@ -5,7 +5,6 @@ export type CoachmarkProps = {
   activeElClassName?: string;
   delay?: number;
   shouldShow: boolean;
-  showOverlay?: boolean;
   renderPopover: (onDismiss?: () => void) => JSX.Element;
   popoverProps: Partial<PopoverProps>;
 };
