@@ -42,6 +42,7 @@ export type ProgressBarProps = {
 export type ProgressBarStyle = {
   backgroundColor?: string;
   barColor?: string;
+  borderColor?: string;
   fontColor?: string;
 };
 
@@ -53,7 +54,7 @@ const progressBarBackgroundVariants = variant({
   default: 'blue',
   variants: {
     blue: {
-      backgroundColor: 'blue',
+      backgroundColor: 'navy',
     },
     yellow: {
       backgroundColor: `gray-100`,
@@ -70,7 +71,7 @@ const progressBarForegroundVariants = variant({
   default: 'blue',
   variants: {
     blue: {
-      backgroundColor: 'red',
+      backgroundColor: 'blue',
     },
     yellow: {
       backgroundColor: `yellow`,
@@ -134,7 +135,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
-  const { backgroundColor, barColor, fontColor } = style;
+  const { backgroundColor, barColor, borderColor, fontColor } = style;
+
   return (
     <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
@@ -143,6 +145,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       role="figure"
       style={{
         backgroundColor: backgroundColor,
+        borderColor: borderColor,
         borderRadius: radius,
         height: `${height}px`,
       }}
