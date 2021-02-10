@@ -112,10 +112,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   theme = 'blue',
   pattern,
 }) => {
-  let backgroundColor =
+  const backgroundColor =
     style.backgroundColor ?? progressBarThemes[theme].background;
-  let barColor = style.barColor ?? progressBarThemes[theme].barColor;
-  let fontColor = style.fontColor ?? progressBarThemes[theme].fontColor;
+  const barColor = style.barColor ?? progressBarThemes[theme].barColor;
+  const fontColor = style.fontColor ?? progressBarThemes[theme].fontColor;
 
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
