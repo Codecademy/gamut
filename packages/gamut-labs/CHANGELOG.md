@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.9...@codecademy/gamut-labs@9.2.10) (2021-02-10)
+
+
+### Bug Fixes
+
+* add event parameter to landing page CTA onClick ([bd770aa](https://github.com/Codecademy/client-modules/commit/bd770aa9eea726da587d809630993b016faa3f95))
+
+
+
 ### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.8...@codecademy/gamut-labs@9.2.9) (2021-02-09)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
