@@ -98,17 +98,16 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const desktop = useBreakpointAtOrAbove('md');
   return (
     <>
-      {desktop ? (
+      <Box display={desktop ? 'block' : 'none'}>
         <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-      ) : (
-        <Box zIndex={0} position="relative">
-          <AppHeaderMobile
-            action={props.action}
-            items={getMobileAppHeaderItems(props)}
-            renderSearch={props.renderSearch?.mobile}
-          />
-        </Box>
-      )}
+      </Box>
+      <Box display={desktop ? 'none' : 'block'} zIndex={0} position="relative">
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+        />
+      </Box>
     </>
   );
 };
