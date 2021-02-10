@@ -18,4 +18,8 @@
   background: none;
   border: none;
   text-align: center;
+
+  &:focus:not(&:focus-visible) {
+    outline: none;
+  }
 }
