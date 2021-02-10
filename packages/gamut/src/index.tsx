@@ -15,6 +15,7 @@ export * from './BodyPortal';
 export * from './Card/CardBody';
 export * from './Card/CardFooter';
 export * from './Card/CardShell';
+export * from './Coachmark';
 export * from './ContentContainer';
 export * from './FlexBox';
 export * from './FlexGrid';

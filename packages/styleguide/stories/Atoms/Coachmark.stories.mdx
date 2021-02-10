@@ -1,0 +1,23 @@
+import { Coachmark } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={Coachmark}
+  parameters={{
+    subtitle: '',
+    source: '',
+    status: '',
+    figmaId: '',
+  }}
+  args={{}}
+/>
+
+<Canvas>
+  <Story name="Coachmark">{(args) => <Coachmark {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="Coachmark" />
