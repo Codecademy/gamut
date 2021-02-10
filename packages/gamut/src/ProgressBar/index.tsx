@@ -1,10 +1,8 @@
 import { deprecatedColors, theme } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import React from 'react';
 
 import { Pattern, PatternName } from '../Pattern';
-import styles from './styles.module.scss';
 
 export type ProgressBarProps = {
   className?: string;
@@ -114,10 +112,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   theme = 'blue',
   pattern,
 }) => {
-  let { backgroundColor, barColor, fontColor } = style;
-  backgroundColor = progressBarThemes[theme].background;
-  barColor = progressBarThemes[theme].barColor;
-  fontColor = progressBarThemes[theme].fontColor;
+  let backgroundColor =
+    style.backgroundColor ?? progressBarThemes[theme].background;
+  let barColor = style.barColor ?? progressBarThemes[theme].barColor;
+  let fontColor = style.fontColor ?? progressBarThemes[theme].fontColor;
 
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
