@@ -1,6 +1,7 @@
-import { deprecatedColors, theme } from '@codecademy/gamut-styles';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React from 'react';
+import { HandlerProps } from '@codecademy/gamut-system';
 
 import { Pattern, PatternName } from '../Pattern';
 
@@ -30,7 +31,7 @@ export type ProgressBarProps = {
   /**
    * Base color theme to extend from.
    */
-  theme: 'blue' | 'yellow' | 'bordered';
+  variant: 'blue' | 'yellow' | 'bordered';
 
   /**
    * Whether to use a pattern background
@@ -48,43 +49,78 @@ export type ProgressBarBordered = {
   bordered: boolean;
 };
 
-const progressBarThemes = {
-  blue: {
-    background: deprecatedColors.blue[800],
-    barColor: theme.colors.blue,
-    fontColor: 'currentColor',
+const progressBarBackgroundVariants = variant({
+  default: 'blue',
+  variants: {
+    blue: {
+      backgroundColor: 'blue',
+    },
+    yellow: {
+      backgroundColor: `gray-100`,
+    },
+    bordered: {
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      textColor: 'white',
+    },
   },
-  yellow: {
-    background: theme.colors[`gray-100`],
-    barColor: theme.colors[`yellow-500`],
-    fontColor: theme.colors.black,
-  },
-  bordered: {
-    background: 'transparent',
-    barColor: theme.colors.white,
-    fontColor: theme.colors.white,
-  },
-};
+});
 
-const ProgressBarWrapper = styled.div<ProgressBarBordered>`
+const progressBarForegroundVariants = variant({
+  default: 'blue',
+  variants: {
+    blue: {
+      backgroundColor: 'red',
+    },
+    yellow: {
+      backgroundColor: `yellow`,
+    },
+    bordered: {
+      backgroundColor: 'white',
+    },
+  },
+});
+
+const progressBarTextVariants = variant({
+  default: 'blue',
+  variants: {
+    blue: {
+      textColor: 'white',
+    },
+    yellow: {
+      textColor: `black`,
+    },
+    bordered: {
+      textColor: 'black',
+    },
+  },
+});
+
+export type ProgressBarVariantProps = HandlerProps<
+  typeof progressBarBackgroundVariants
+>;
+
+export const ProgressBarWrapper = styled.div<ProgressBarVariantProps>`
   overflow: hidden;
   position: relative;
-  border: ${(props) => (props.bordered ? 'solid 1px' : '0')};
+  ${progressBarBackgroundVariants};
 `;
 
-const Bar = styled.div`
+const Bar = styled.div<ProgressBarVariantProps>`
   align-items: center;
   display: flex;
   height: 100%;
   transition: width 0.5s;
   position: relative;
+  ${progressBarForegroundVariants};
 `;
 
-const DisplayedPercent = styled.span`
+const DisplayedPercent = styled.span<ProgressBarVariantProps>`
   font-weight: bold;
   padding: 0.5rem;
   text-align: right;
   width: 100%;
+  ${progressBarTextVariants};
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -93,29 +129,24 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   minimumPercent = 0,
   percent,
   style = {},
-  theme,
   pattern,
+  variant = 'blue',
 }) => {
-  const backgroundColor =
-    style.backgroundColor ?? progressBarThemes[theme].background;
-  const barColor = style.barColor ?? progressBarThemes[theme].barColor;
-  const fontColor = style.fontColor ?? progressBarThemes[theme].fontColor;
-
   const height = large ? 36 : 6;
   const radius = `${height / 2}px`;
+  const { backgroundColor, barColor, fontColor } = style;
   return (
     <ProgressBarWrapper
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
-      bordered={theme === 'bordered'}
       className={className}
       role="figure"
       style={{
-        background: backgroundColor,
+        backgroundColor: backgroundColor,
         borderRadius: radius,
-        color: fontColor,
         height: `${height}px`,
       }}
+      variant={variant}
     >
       {pattern && (
         <Pattern
@@ -127,9 +158,10 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         />
       )}
       <Bar
+        variant={variant}
         data-testid="progress-bar-bar"
         style={{
-          background: barColor,
+          backgroundColor: barColor,
           width: `${Math.max(minimumPercent, percent)}%`,
           ...(large && {
             borderTopRightRadius: radius,
@@ -138,11 +170,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         }}
       >
         {large && (
-          <DisplayedPercent
-            style={{
-              color: fontColor,
-            }}
-          >
+          <DisplayedPercent variant={variant} style={{ color: fontColor }}>
             {percent}%
           </DisplayedPercent>
         )}

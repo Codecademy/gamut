@@ -19,7 +19,7 @@ import { bars } from './constants';
     source: 'gamut',
     status: 'volatile',
   }}
-  args={{ minimumPercent: 5, percent: 5, theme: 'blue' }}
+  args={{ minimumPercent: 5, percent: 5 }}
 />
 
 ProgressBars are to be used when you would like to indicate a known or
@@ -35,9 +35,9 @@ percentage label.
     {(args) => (
       <LayoutGrid columnGap="sm" rowGap="sm">
         {[0, 25, 50, 75, 100].map((percent) =>
-          bars.map(({ large, theme }) => (
-            <Column key={[percent, large, theme].join()} size={6}>
-              <ProgressBar large={large} percent={percent} theme={theme} />
+          bars.map(({ large, variant }) => (
+            <Column key={[percent, large, variant].join()} size={6}>
+              <ProgressBar large={large} percent={percent} variant={variant} />
             </Column>
           ))
         )}
@@ -92,7 +92,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
       pattern: 'diagonalStripesRegular',
       large: true,
       percent: 50,
-      theme: 'yellow',
+      variant: 'yellow',
     }}
   >
     {(args) => <ProgressBar {...args} />}
@@ -108,7 +108,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
       pattern: 'diagonalStripesDense',
       large: true,
       percent: 50,
-      theme: 'blue',
+      variant: 'blue',
     }}
   >
     {(args) => <ProgressBar {...args} />}
@@ -126,7 +126,7 @@ This is a variant of the the small version of the ProgressBar. It has a transpar
     name="Bordered - Regular"
     args={{
       percent: 50,
-      theme: 'bordered',
+      variant: 'bordered',
       width: '150px',
     }}
   >
@@ -147,7 +147,7 @@ This is a variant of the the small version of the ProgressBar. It has a transpar
     name="Bordered - Styled"
     args={{
       percent: 69,
-      theme: 'bordered',
+      variant: 'bordered',
       style: {
         barColor: theme.colors.navy,
         fontColor: theme.colors.navy,
