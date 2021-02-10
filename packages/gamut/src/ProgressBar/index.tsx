@@ -101,7 +101,7 @@ export type ProgressBarVariantProps = HandlerProps<
   typeof progressBarBackgroundVariants
 >;
 
-export const ProgressBarWrapper = styled.div<ProgressBarVariantProps>`
+const ProgressBarWrapper = styled.div<ProgressBarVariantProps>`
   overflow: hidden;
   position: relative;
   ${progressBarBackgroundVariants};
