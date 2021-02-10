@@ -22,13 +22,9 @@ export type BaseProps = {
   cta?: {
     text: string;
     href: string;
-    onClick?: CTAOnClickCallback;
+    onClick?: React.MouseEventHandler;
   };
   testId?: string;
 };
-
-export type CTAOnClickCallback = (
-  event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLLinkElement>
-) => void;
 
 export type DarkModeProps = HandlerProps<typeof darkModeVariants>;

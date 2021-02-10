@@ -1,12 +1,12 @@
 import { Box, CTAButton } from '@codecademy/gamut';
 import React from 'react';
 
-import { CTAOnClickCallback, DarkModeProps } from './types';
+import { DarkModeProps } from './types';
 
 export type CTAProps = DarkModeProps & {
   href: string;
   className?: string;
-  onCtaButtonClick?: CTAOnClickCallback;
+  onCtaButtonClick?: React.MouseEventHandler;
 };
 
 export const CTA: React.FC<CTAProps> = ({
