@@ -54,6 +54,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
           data-testid={item.dataTestId}
           href={item.href}
           onClick={(event: React.MouseEvent) => action(event, item)}
+          target={item.newTab ? 'blank' : ''}
           variant="interface"
         >
           <AppHeaderLinkButtonInner
