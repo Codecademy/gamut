@@ -247,6 +247,42 @@ value of left, center, right, or stretch.
   </Story>
 </Canvas>
 
+## Disabled Inputs
+
+If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
+
+<Canvas>
+  <Story name="Disabled Inputs">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            disabled: true,
+            label: 'Disabled text',
+            name: 'disabled-text',
+            size: 6,
+            type: 'text',
+          },
+          {
+            label: 'Enabled text',
+            name: 'enabled-text',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Right Submit!?',
+          position: 'right',
+          size: 12,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ## Submit Button color
 
 We can specify the color of our button by passing the theme prop with a
