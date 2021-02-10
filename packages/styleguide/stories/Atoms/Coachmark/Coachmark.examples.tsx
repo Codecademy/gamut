@@ -1,9 +1,5 @@
-import {
-  Coachmark,
-  CoachmarkProps,
-  FillButton,
-  Text,
-} from '@codecademy/gamut/src';
+import { FillButton, Text } from '@codecademy/gamut/src';
+import { Coachmark, CoachmarkProps } from '@codecademy/gamut-labs/src';
 import styled from '@emotion/styled';
 import { useState } from '@storybook/addons';
 import React from 'react';

@@ -1,5 +1,4 @@
-import { BodyPortal } from '@codecademy/gamut';
-import { Pattern, PatternName } from '@codecademy/gamut/src';
+import { BodyPortal, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';

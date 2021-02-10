@@ -1,5 +1,6 @@
-import { Popover, PopoverProps } from '@codecademy/gamut-labs/src/experimental';
 import React, { useEffect, useRef, useState } from 'react';
+
+import { Popover, PopoverProps } from '../Popover';
 
 export type CoachmarkProps = {
   activeElClassName?: string;
