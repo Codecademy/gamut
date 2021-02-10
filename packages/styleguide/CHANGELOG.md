@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.13...@codecademy/styleguide@25.2.0) (2021-02-10)
+
+
+### Features
+
+* **Mobile Menu Variants:** global header mobile  ([e0670b6](https://github.com/Codecademy/client-modules/commit/e0670b68b65dea9d03901b7798852b371c235ffe))
+
+
+
+### [25.1.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.12...@codecademy/styleguide@25.1.13) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [25.1.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.11...@codecademy/styleguide@25.1.12) (2021-02-10)
 
 **Note:** Version bump only for package @codecademy/styleguide

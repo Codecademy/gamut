@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.12...@codecademy/gamut-labs@9.3.0) (2021-02-10)
+
+
+### Features
+
+* **Mobile Menu Variants:** global header mobile  ([e0670b6](https://github.com/Codecademy/client-modules/commit/e0670b68b65dea9d03901b7798852b371c235ffe))
+
+
+
+### [9.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.11...@codecademy/gamut-labs@9.2.12) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [9.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.10...@codecademy/gamut-labs@9.2.11) (2021-02-10)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
