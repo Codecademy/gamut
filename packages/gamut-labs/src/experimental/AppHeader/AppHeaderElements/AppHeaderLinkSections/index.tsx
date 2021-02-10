@@ -18,7 +18,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   item,
 }) => {
   return (
-    <Box paddingX={16}>
+    <Box>
       {item.type === 'profile-dropdown'
         ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) => {
             return linkSection.map((link: AppHeaderLinkItem, linkIndex) => {
