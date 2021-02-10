@@ -2,7 +2,7 @@ import { Popover, PopoverProps } from '@codecademy/gamut-labs/src/experimental';
 import React, { useEffect, useRef, useState } from 'react';
 
 export type CoachmarkProps = {
-  activeClassName?: string;
+  activeElClassName?: string;
   delay?: number;
   shouldShow: boolean;
   showOverlay?: boolean;
@@ -13,7 +13,7 @@ export type CoachmarkProps = {
 export const Coachmark: React.FC<CoachmarkProps> = ({
   children,
   shouldShow,
-  activeClassName,
+  activeElClassName,
   delay = 500,
   renderPopover,
   popoverProps,
@@ -37,7 +37,9 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
 
   return (
     <div>
-      <div ref={activeElRef}>{children}</div>
+      <div ref={activeElRef} className={activeElClassName}>
+        {children}
+      </div>
       <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
         {renderPopover()}
       </Popover>

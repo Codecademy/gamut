@@ -4,15 +4,20 @@ import {
   FillButton,
   Text,
 } from '@codecademy/gamut/src';
+import styled from '@emotion/styled';
 import { useState } from '@storybook/addons';
 import React from 'react';
 
 export const CoachmarkExample = (args: CoachmarkProps) => {
   const [shouldShow, setShouldShow] = useState<boolean>(true);
 
+  const Container = styled.div`
+    padding: 0.5rem;
+  `;
+
   const renderPopover = () => (
-    <div>
-      <Text>Clicking me will change my color!</Text>
+    <Container>
+      <Text>You should really click me</Text>
       <FillButton
         onClick={() => {
           setShouldShow(false);
@@ -20,7 +25,7 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
       >
         Got it
       </FillButton>
-    </div>
+    </Container>
   );
 
   return (
@@ -30,7 +35,6 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
         renderPopover={renderPopover}
         delay={1000}
         shouldShow={shouldShow}
-        showOverlay
       >
         <FillButton onClick={() => {}}>Click me</FillButton>
       </Coachmark>

@@ -1,10 +1,17 @@
 import { BodyPortal } from '@codecademy/gamut';
+import { Pattern, PatternName } from '@codecademy/gamut/src';
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
+
+const RaisedDiv = styled.div`
+  z-index: 1;
+  background-color: ${({ theme }) => theme.colors.white};
+`;
 
 export type PopoverProps = {
   children: React.ReactElement<any>;
@@ -38,6 +45,10 @@ export type PopoverProps = {
    */
   isOpen: boolean;
   /**
+   * Whether to add a pattern background
+   */
+  pattern?: PatternName;
+  /**
    * Called when the Popover requests to be closed,
    * this could be due to clicking outside of the popover, or by clicking the escape key.
    */
@@ -62,6 +73,7 @@ export const Popover: React.FC<PopoverProps> = ({
   isOpen,
   onRequestClose,
   targetRef,
+  pattern,
 }) => {
   const [targetRect, setTargetRect] = useState<DOMRect>();
   const [isInViewport, setIsInViewport] = useState(true);
@@ -138,7 +150,20 @@ export const Popover: React.FC<PopoverProps> = ({
               data-testid="popover-beak"
             />
           )}
-          {children}
+          <RaisedDiv>{children}</RaisedDiv>
+          {pattern && (
+            <Pattern
+              width="100%"
+              height="100%"
+              position="absolute"
+              top={position === 'below' ? '8' : '-8'}
+              left={beak === 'left' ? '8' : '-8'}
+              borderRadius="2"
+              backgroundColor="white"
+              zIndex={0}
+              name={pattern}
+            />
+          )}
         </div>
       </FocusTrap>
     </BodyPortal>
