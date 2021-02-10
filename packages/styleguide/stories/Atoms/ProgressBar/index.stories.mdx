@@ -115,6 +115,10 @@ Using the new SVG Pattern component for the background. Here we are using the Di
   </Story>
 </Canvas>
 
+## Bordered variant
+
+This is a variant of the the small version of the ProgressBar. It has a transparent background and defaults to white, but you can use style overrides to change the color of the bar or border.
+
 ### Bordered Regular
 
 <Canvas column={2}>
@@ -133,5 +137,23 @@ Using the new SVG Pattern component for the background. Here we are using the Di
         </Box>
       </GridBox>
     )}
+  </Story>
+</Canvas>
+
+### Bordered Styled
+
+<Canvas column={2}>
+  <Story
+    name="Bordered - Styled"
+    args={{
+      percent: 69,
+      theme: 'bordered',
+      style: {
+        barColor: theme.colors.navy,
+        fontColor: theme.colors.navy,
+      },
+    }}
+  >
+    {(args) => <ProgressBar {...args} />}
   </Story>
 </Canvas>

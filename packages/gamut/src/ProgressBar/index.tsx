@@ -76,7 +76,7 @@ const progressBarThemes = {
   bordered: {
     background: 'transparent',
     barColor: theme.colors.white,
-    fontColor: 'currentColor',
+    fontColor: theme.colors.white,
   },
 };
 
@@ -84,7 +84,7 @@ const ProgressBarWrapper = styled.div<ProgressBarComponentProps>`
   overflow: hidden;
   position: relative;
   border: ${(props) =>
-    props.progressTheme === 'bordered' ? 'solid 1px white' : '0'};
+    props.progressTheme === 'bordered' ? 'solid 1px' : '0'};
 `;
 
 const Bar = styled.div<ProgressBarComponentProps>`
