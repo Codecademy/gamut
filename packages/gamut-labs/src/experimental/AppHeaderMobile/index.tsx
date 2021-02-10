@@ -55,12 +55,6 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
     setMobileMenuOpen(true);
   };
 
-  const renderLeftItems = () => {
-    return items.left.map((item: AppHeaderItem) =>
-      mapItemToElement(action, item)
-    );
-  };
-
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item) => mapItemToElement(action, item));
   };
@@ -98,7 +92,9 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
         >
           <div>
             <StyledAppBar>
-              <AppBarSection position="left">{renderLeftItems()}</AppBarSection>
+              <AppBarSection position="left">
+                {mapItemsToElement(items.left)}
+              </AppBarSection>
               <AppBarSection position="right">
                 <IconButton
                   type="button"
