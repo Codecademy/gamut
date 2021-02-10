@@ -47,6 +47,7 @@ export type ProgressBarStyle = {
 export type ProgressBarTheme = {
   background: string;
   barColor: string;
+  fontColor: string;
 };
 
 export type ProgressBarThemeObject = {
@@ -94,13 +95,11 @@ const Bar = styled.div<ProgressBarComponentProps>`
   position: relative;
 `;
 
-const DisplayedPercent = styled.span<ProgressBarComponentProps>`
+const DisplayedPercent = styled.span`
   font-weight: bold;
   padding: 0.5rem;
   text-align: right;
   width: 100%;
-  border: ${(props) =>
-    props.progressTheme === 'yellow' ? 'black' : 'initial'};
 `;
 
 export const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -155,7 +154,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
         }}
       >
         {large && (
-          <DisplayedPercent progressTheme={theme}>{percent}%</DisplayedPercent>
+          <DisplayedPercent
+            style={{
+              color: fontColor,
+            }}
+          >
+            {percent}%
+          </DisplayedPercent>
         )}
       </Bar>
     </ProgressBarWrapper>
