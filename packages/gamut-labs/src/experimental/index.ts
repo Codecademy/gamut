@@ -5,6 +5,7 @@ export * from './AppHeader';
 export * from './AppHeader/AppHeaderElements/AppHeaderDropdown';
 export * from './AppHeader/AppHeaderElements/AppHeaderLink';
 export * from './AppHeader/AppHeaderElements/AppHeaderLogo';
+export * from './AppHeaderMobile';
 export * from './AppHeaderMobile/AppHeaderLinkMobile';
 export * from './AppHeaderMobile/AppHeaderMainMenuMobile';
 export * from './AppHeaderMobile/AppHeaderSubMenuMobile';

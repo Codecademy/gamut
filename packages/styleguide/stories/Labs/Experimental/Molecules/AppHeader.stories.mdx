@@ -5,6 +5,8 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
+import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
+
 <Meta
   title="Labs/Experimental/Molecules/AppHeader"
   component={AppHeader}
@@ -26,28 +28,7 @@ import { PropsTable } from '~styleguide/blocks';
           text: 'AppHeaderLink',
           type: 'link',
         },
-        {
-          id: 'dropdown',
-          text: 'AppHeaderDropdown',
-          popover: [
-            {
-              id: 'sublink-1',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-            {
-              id: 'sublink-2',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-          ],
-          trackingTarget: 'tracking-target',
-          type: 'dropdown',
-        },
+        MOCK_DROPDOWN_1,
       ],
       right: [
         {
