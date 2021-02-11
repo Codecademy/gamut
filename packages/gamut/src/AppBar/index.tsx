@@ -21,7 +21,10 @@ export const AppBar: React.FC<AppBarProps> = ({
 
   return (
     <div className={classes}>
-      <ContentContainer className={styles.contentWrapper} wide={wide}>
+      <ContentContainer
+        className={styles.contentWrapper}
+        size={wide ? 'wide' : 'medium'}
+      >
         {children}
       </ContentContainer>
     </div>
