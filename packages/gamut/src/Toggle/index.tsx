@@ -100,7 +100,6 @@ export const Toggle: React.FC<ToggleProps> = ({
   return (
     <ToggleLabel
       className={className}
-      aria-label={label}
       htmlFor={label}
       variant={variant}
       disabled={disabled}
