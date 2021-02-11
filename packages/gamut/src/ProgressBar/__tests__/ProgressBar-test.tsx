@@ -32,14 +32,14 @@ describe('ProgressBar', () => {
     ).toHaveProperty('width', '75%');
   });
 
-  it('does not include percentage visually when large is false', () => {
-    const { wrapper } = renderWrapper({ large: false });
+  it('does not include percentage visually when size is small', () => {
+    const { wrapper } = renderWrapper({ size: 'small' });
 
     expect(wrapper.text()).toEqual('');
   });
 
-  it('includes percentage visually when large is true', () => {
-    const { wrapper } = renderWrapper({ large: true });
+  it('includes percentage visually when size is large', () => {
+    const { wrapper } = renderWrapper({ size: 'large' });
 
     expect(wrapper.text()).toEqual('50%');
   });
