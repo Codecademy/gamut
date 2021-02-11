@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.6...@codecademy/gamut@21.3.7) (2021-02-11)
+
+
+### Bug Fixes
+
+* **Toggle:** remove aria-label ([812065d](https://github.com/Codecademy/client-modules/commit/812065d9867d6f162b9a49ba2fa0855cb4fd4bb7))
+
+
+
 ### [21.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.5...@codecademy/gamut@21.3.6) (2021-02-10)
 
 
