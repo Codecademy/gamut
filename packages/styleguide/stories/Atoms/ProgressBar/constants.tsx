@@ -1,10 +1,10 @@
 export const bars = [
   {
-    large: false,
+    size: 'small',
     variant: 'blue',
   },
   {
-    large: true,
+    size: 'large',
     variant: 'yellow',
   },
 ] as const;

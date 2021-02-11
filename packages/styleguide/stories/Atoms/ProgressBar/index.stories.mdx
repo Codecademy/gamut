@@ -27,7 +27,7 @@ somewhat-known amount of progress along a fixed course. For example, you
 might show one on a quiz page indicating how many questions have been
 completed.
 
-Bars with `large` specified are thicker, and will display a
+Bars with the `large` size are thicker and will display a
 percentage label.
 
 <Canvas>
@@ -35,9 +35,9 @@ percentage label.
     {(args) => (
       <LayoutGrid columnGap="sm" rowGap="sm">
         {[0, 25, 50, 75, 100].map((percent) =>
-          bars.map(({ large, variant }) => (
-            <Column key={[percent, large, variant].join()} size={6}>
-              <ProgressBar large={large} percent={percent} variant={variant} />
+          bars.map(({ size, variant }) => (
+            <Column key={[percent, size, variant].join()} size={6}>
+              <ProgressBar size={size} percent={percent} variant={variant} />
             </Column>
           ))
         )}
@@ -58,28 +58,6 @@ progress, even if the technical progress number is zero. You can use the
   <Story name="Minimum Percentage">{(args) => <ProgressBar {...args} />}</Story>
 </Canvas>
 
-## Style Overrides
-
-For the sake of rapid iteration, you can pass in custom style colors via the
-`style` prop.
-
-<Canvas>
-  <Story
-    name="Style Overrides"
-    args={{
-      large: true,
-      percent: 45,
-      style: {
-        backgroundColor: theme.colors.pink,
-        barColor: theme.colors[`gray-200`],
-        fontColor: theme.colors.blue,
-      },
-    }}
-  >
-    {(args) => <ProgressBar {...args} />}
-  </Story>
-</Canvas>
-
 ## Pattern background
 
 Using the new SVG Pattern component for the background. Here we are using the DiagonalStripesRegular Pattern in navy in the large ProgressBar and the diagonalStripesDense pattern in the smaller ProgressBar.
@@ -91,7 +69,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
     name="Stripe - Regular"
     args={{
       pattern: 'diagonalStripesRegular',
-      large: true,
+      size: 'large',
       percent: 50,
       variant: 'yellow',
     }}
@@ -107,8 +85,7 @@ Using the new SVG Pattern component for the background. Here we are using the Di
     name="Stripe - Dense"
     args={{
       pattern: 'diagonalStripesDense',
-      large: true,
-      percent: 50,
+      percent: 33,
       variant: 'blue',
     }}
   >
@@ -118,43 +95,84 @@ Using the new SVG Pattern component for the background. Here we are using the Di
 
 ## Bordered variant
 
-This is a variant of the the small version of the ProgressBar. It has a transparent background and defaults to white, but you can use style overrides to change the color of the bar or border.
+This is a variant of the ProgressBar that has a transparent background and "bordered" look. borderedDarkMode should be displayed against a dark background and borderedLightMode should be placed against a light background.
 
-### Bordered Regular
+### Bordered Dark Mode
 
 <Canvas column={2}>
   <Story
-    name="Bordered - Regular"
+    name="Bordered - Dark Mode"
     args={{
       percent: 50,
-      variant: 'bordered',
+      variant: 'borderedDarkMode',
       width: '150px',
     }}
   >
     {(args) => (
-      <GridBox alignContent="center" height="8rem" backgroundColor="navy">
-        <Box padding="2rem">
-          <ProgressBar {...args} />
-        </Box>
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="navy"
+        padding={32}
+      >
+        <ProgressBar {...args} />
       </GridBox>
     )}
   </Story>
 </Canvas>
 
-### Bordered Styled
+### Bordered Light Mode
 
 <Canvas column={2}>
   <Story
-    name="Bordered - Styled"
+    name="Bordered - Light Mode"
     args={{
-      percent: 69,
-      variant: 'bordered',
-      style: {
-        borderColor: theme.colors.navy,
-        barColor: theme.colors.navy,
-      },
+      percent: 42,
+      variant: 'borderedLightMode',
+      width: '150px',
     }}
   >
-    {(args) => <ProgressBar {...args} />}
+    {(args) => (
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="palePink"
+        borderColor="navy"
+        borderStyle="solid"
+        borderWidth="1px"
+        padding={32}
+      >
+        <ProgressBar {...args} />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+### Bordered Dark Mode Large
+
+<Canvas column={2}>
+  <Story
+    name="Bordered - Light Mode - Large"
+    args={{
+      pattern: 'diagonalStripesDense',
+      percent: 71,
+      variant: 'borderedDarkMode',
+      width: '150px',
+      size: 'large',
+    }}
+  >
+    {(args) => (
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="navy"
+        borderColor="navy"
+        borderStyle="solid"
+        borderWidth="1px"
+        padding={32}
+      >
+        <ProgressBar {...args} />
+      </GridBox>
+    )}
   </Story>
 </Canvas>
