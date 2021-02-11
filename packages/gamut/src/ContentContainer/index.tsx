@@ -1,33 +1,30 @@
-import cx from 'classnames';
-import React from 'react';
+import { contentWidths, variant } from '@codecademy/gamut-styles';
+import { HandlerProps } from '@codecademy/gamut-system';
+import styled from '@emotion/styled';
 
-import styles from './styles.module.scss';
-
-export type ContentContainerProps = {
-  className?: string;
-  /**
-   * Component type to wrap children with.
-   */
-  as?: React.ElementType;
-  /**
-   * Toggle a containerWide className to be applied with no max-width and smaller padding
-   */
-  wide?: boolean;
-};
-
-export const ContentContainer: React.FC<ContentContainerProps> = ({
-  children,
-  className,
-  as: Element = 'div',
-  wide = false,
-}) => {
-  const classes = cx(
-    {
-      [styles.contentContainerWide]: wide,
+export const contentContainerVariants = variant({
+  prop: 'size',
+  default: 'medium',
+  variants: {
+    medium: {
+      paddingX: [16, 32, 64, , 96],
+      maxWidth: contentWidths.max,
     },
-    styles.contentContainer,
-    className
-  );
+    wide: {
+      paddingX: [, , 24, 32],
+      maxWidth: 0,
+    },
+  },
+});
 
-  return <Element className={classes}>{children}</Element>;
+export type ContentContainerProps = HandlerProps<
+  typeof contentContainerVariants
+> & {
+  className?: string;
 };
+
+export const ContentContainer = styled('div')<ContentContainerProps>`
+  ${contentContainerVariants}
+  height: 100%;
+  width: 100%;
+`;
