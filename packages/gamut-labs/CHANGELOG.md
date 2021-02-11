@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.0...@codecademy/gamut-labs@9.3.1) (2021-02-11)
+
+
+### Bug Fixes
+
+* **catalog link:** copy should catalog, not course catalog ([62bec44](https://github.com/Codecademy/client-modules/commit/62bec4415db36496a67dd12b52243bc4ef2a0ed2))
+
+
+
 ## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.12...@codecademy/gamut-labs@9.3.0) (2021-02-10)
 
 
