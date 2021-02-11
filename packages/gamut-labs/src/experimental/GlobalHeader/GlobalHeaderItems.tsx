@@ -55,7 +55,7 @@ export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
-  text: 'Course Catalog',
+  text: 'Catalog',
   href: '/catalog',
   trackingTarget: 'topnav_catalog',
   type: 'link',
