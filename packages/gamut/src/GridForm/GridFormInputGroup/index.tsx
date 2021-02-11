@@ -115,8 +115,8 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
     </StyledFormGroupLabel>
   );
 
-  const ariaLabelError = (error: string) =>
-    error === 'Required' ? `${props.field.label} ${error}` : error;
+  const ariaLabelPrefix = (error: string) =>
+    error === 'Required' ? props.field.label?.toString().replace('*', '') : '';
 
   return (
     <Column size={props.field.size}>
@@ -125,9 +125,9 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
         {props.error && (
           <FormError
             aria-live={props.isFirstError ? 'assertive' : 'off'}
-            aria-label={ariaLabelError(props.error)}
+            aria-label={ariaLabelPrefix(props.error)}
           >
-            TESTING
+            {props.error}
           </FormError>
         )}
         {getInput()}
