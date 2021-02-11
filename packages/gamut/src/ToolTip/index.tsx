@@ -1,4 +1,4 @@
-import { fontSmoothing, pxRem } from '@codecademy/gamut-styles';
+import { fontSmoothing, pxRem, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
@@ -51,16 +51,10 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   width: 16rem;
   visibility: hidden;
 
-  ${({ theme, variant }) =>
-    variant === 'dark'
-      ? `
-      background: ${theme.colors.black};
-      color: ${theme.colors.white};
-    `
-      : `
-      background: ${theme.colors.white};
-      color: ${theme.colors.black};
-    `}
+  ${variant({
+    dark: { backgroundColor: 'black', textColor: 'white' },
+    light: { backgroundColor: 'white', textColor: 'black' },
+  })}
 
   // Both before and after psuedo-elements are used because ::after's background should go over the container's
   // and ::before's box-shadow should be behind the container itself
@@ -123,7 +117,7 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
       }
     `}
 
-${({ position }) =>
+  ${({ position }) =>
     ['bottom-left', 'top-left'].includes(position) &&
     `
       justify-content: flex-end;
@@ -135,10 +129,10 @@ ${({ position }) =>
       }
     `}
 
-${({ position }) =>
+  ${({ position }) =>
     ['bottom-right', 'top-right'].includes(position) &&
     `
-  left: ${containerOffsetHorizontal};
+      left: ${containerOffsetHorizontal};
 
       &::after,
       &::before {
