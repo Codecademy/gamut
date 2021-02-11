@@ -1,6 +1,7 @@
 import {
   AccountingCoinsIcon,
   BookFlipPageIcon,
+  BriefcaseIcon,
   CommunityIcon,
   GearIcon,
   HouseEntranceIcon,
@@ -12,12 +13,12 @@ import {
 import { ReactNode } from 'react';
 
 import {
-  AppHeaderDropdownItem,
   AppHeaderFillButtonItem,
   AppHeaderLinkItem,
   AppHeaderLogoItem,
   AppHeaderProfileDropdownItem,
   AppHeaderRenderElementItem,
+  AppHeaderSimpleDropdownItem,
   AppHeaderTextButtonItem,
 } from '../AppHeader/AppHeaderElements/types';
 import { User } from './types';
@@ -54,13 +55,13 @@ export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
-  text: 'Course Catalog',
+  text: 'Catalog',
   href: '/catalog',
   trackingTarget: 'topnav_catalog',
   type: 'link',
 };
 
-export const resourcesDropdown: AppHeaderDropdownItem = {
+export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
   icon: NotebookIcon,
   id: 'resources',
   text: 'Resources',
@@ -91,7 +92,7 @@ export const resourcesDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const communityDropdown: AppHeaderDropdownItem = {
+export const communityDropdown: AppHeaderSimpleDropdownItem = {
   icon: CommunityIcon,
   id: 'community',
   text: 'Community',
@@ -130,7 +131,7 @@ export const communityDropdown: AppHeaderDropdownItem = {
   type: 'dropdown',
 };
 
-export const pricingDropdown: AppHeaderDropdownItem = {
+export const pricingDropdown: AppHeaderSimpleDropdownItem = {
   icon: AccountingCoinsIcon,
   id: 'pricing',
   text: 'Pro Pricing',
@@ -155,6 +156,7 @@ export const pricingDropdown: AppHeaderDropdownItem = {
 };
 
 export const forBusiness: AppHeaderLinkItem = {
+  icon: BriefcaseIcon,
   id: 'for-business',
   trackingTarget: 'topnav_business',
   text: 'For Business',
@@ -263,7 +265,7 @@ const profileLogOut: AppHeaderLinkItem = {
 export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
   return {
     avatar: user.avatar,
-    displayName: user.displayName,
+    userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
     popover: [
@@ -294,7 +296,7 @@ export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
   popover.push([profileLogOut]);
   return {
     avatar: user.avatar,
-    displayName: user.displayName,
+    userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
     popover,
