@@ -16,22 +16,23 @@ import {
   AppHeaderClickHandler,
   AppHeaderItem,
 } from './AppHeaderElements/types';
+import { FormattedAppHeaderItems } from './types';
 
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
-  className?: string;
-  items: AppHeaderItemsProp;
+  items: FormattedAppHeaderItems;
 };
 
-export type AppHeaderItemsProp = {
-  left: AppHeaderItem[];
-  right: AppHeaderItem[];
-};
+export const StyledAppBar = styled(AppBar)`
+  padding: 0.75rem 0;
+  box-shadow: none;
+  width: 100%;
+`;
 
-const AppHeaderTextButton = styled(TextButton)(focusStyles);
-const AppHeaderFillButton = styled(FillButton)(focusStyles);
+export const AppHeaderTextButton = styled(TextButton)(focusStyles);
+export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
-const mapItemToElement = (
+export const mapItemToElement = (
   action: AppHeaderClickHandler,
   item: AppHeaderItem
 ): ReactNode => {
@@ -85,19 +86,15 @@ const mapItemToElement = (
   }
 };
 
-export const AppHeader: React.FC<AppHeaderProps> = ({
-  items,
-  className,
-  action,
-}) => {
+export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
   return (
-    <AppBar className={className}>
+    <StyledAppBar>
       <AppBarSection position="left">
         {items.left.map((item) => mapItemToElement(action, item))}
       </AppBarSection>
       <AppBarSection position="right">
         {items.right.map((item) => mapItemToElement(action, item))}
       </AppBarSection>
-    </AppBar>
+    </StyledAppBar>
   );
 };

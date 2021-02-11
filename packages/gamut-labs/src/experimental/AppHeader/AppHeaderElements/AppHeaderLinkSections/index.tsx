@@ -6,12 +6,11 @@ import {
   AppHeaderClickHandler,
   AppHeaderDropdownItem,
   AppHeaderLinkItem,
-  AppHeaderProfileDropdownItem,
 } from '../types';
 
 export type AppHeaderLinkSectionsProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderDropdownItem;
 };
 
 export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
@@ -19,7 +18,7 @@ export const AppHeaderLinkSections: React.FC<AppHeaderLinkSectionsProps> = ({
   item,
 }) => {
   return (
-    <Box paddingX={16}>
+    <Box>
       {item.type === 'profile-dropdown'
         ? item.popover.map((linkSection: AppHeaderLinkItem[], sectionIndex) => {
             return linkSection.map((link: AppHeaderLinkItem, linkIndex) => {
