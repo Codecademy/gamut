@@ -1,7 +1,6 @@
 @import "~@codecademy/gamut-styles/utils";
 
-// Ensure styles override base button component styles
-.accordionButton.accordionButton {
+.accordionButton {
   align-items: center;
   display: flex;
   justify-content: space-between;

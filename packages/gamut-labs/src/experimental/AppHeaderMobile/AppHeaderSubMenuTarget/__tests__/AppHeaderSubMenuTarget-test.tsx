@@ -1,4 +1,4 @@
-import { AppHeaderDropdownItem } from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
+import { AppHeaderSimpleDropdownItem } from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -13,7 +13,7 @@ import {
 const sublink1Href = 'https://google.com';
 const openSubMenu = jest.fn();
 
-const mockItem: AppHeaderDropdownItem = {
+const mockItem: AppHeaderSimpleDropdownItem = {
   dataTestId: 'test-target',
   id: 'test-target',
   text: 'submenu target',

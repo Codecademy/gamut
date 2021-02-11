@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [21.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.5...@codecademy/gamut@21.3.6) (2021-02-10)
+
+
+### Reverts
+
+* fix(AccordionButton) bump specificity of accordion button styles ([c44961f](https://github.com/Codecademy/client-modules/commit/c44961f35ed1b8c71443e53b10d30ef02d4d6056)), closes [Codecademy/client-modules#1383](https://github.com/Codecademy/client-modules/issues/1383)
+
+
+
 ### [21.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.4...@codecademy/gamut@21.3.5) (2021-02-10)
 
 
