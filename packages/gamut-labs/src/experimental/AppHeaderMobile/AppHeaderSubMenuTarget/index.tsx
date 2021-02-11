@@ -29,6 +29,12 @@ const AppHeaderLinkButtonInner = styled(Box)`
   width: 100%;
 `;
 
+const DisplayNameText = styled.div`
+  max-width: 70vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   item,
   openSubMenu,
@@ -56,8 +62,13 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
         display="flex"
       >
         <FlexBox alignItems="center">
-          <Box marginRight={16}>{getIcon()}</Box>
-          {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+
+          {item.type === 'profile-dropdown' ? (
+            <DisplayNameText>{item.userDisplayName}</DisplayNameText>
+          ) : (
+            item.text
+          )}
         </FlexBox>
         <FlexBox alignSelf="end">
           <Box>
