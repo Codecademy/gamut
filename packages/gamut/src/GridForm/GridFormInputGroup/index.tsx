@@ -107,7 +107,10 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   };
 
   const label = (
-    <StyledFormGroupLabel htmlFor={props.field.id || props.field.name}>
+    <StyledFormGroupLabel
+      htmlFor={props.field.id || props.field.name}
+      aria-live="assertive"
+    >
       {props.field.label}
     </StyledFormGroupLabel>
   );
@@ -117,10 +120,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
       <StyledFormGroup>
         {props.field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
         {props.error && (
-          <FormError
-            aria-label={`${props.field.label} ${props.error}`}
-            aria-live={props.isFirstError ? 'assertive' : 'off'}
-          >
+          <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
             {props.error}
           </FormError>
         )}
