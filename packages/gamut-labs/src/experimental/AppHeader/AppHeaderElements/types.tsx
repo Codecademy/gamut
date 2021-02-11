@@ -6,7 +6,7 @@ export type AppHeaderItem =
   | AppHeaderLinkItem
   | AppHeaderTextButtonItem
   | AppHeaderFillButtonItem
-  | AppHeaderDropdownItem
+  | AppHeaderSimpleDropdownItem
   | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
@@ -46,7 +46,11 @@ export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
   type: 'fill-button';
 };
 
-export type AppHeaderDropdownItem = AppHeaderBaseItem & {
+export type AppHeaderDropdownItem =
+  | AppHeaderSimpleDropdownItem
+  | AppHeaderProfileDropdownItem;
+
+export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem & {
   icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
@@ -56,7 +60,7 @@ export type AppHeaderDropdownItem = AppHeaderBaseItem & {
 
 export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
   avatar: string;
-  displayName: string;
+  userDisplayName: string;
   popover: AppHeaderLinkItem[][];
   text: string;
   trackingTarget: string;
