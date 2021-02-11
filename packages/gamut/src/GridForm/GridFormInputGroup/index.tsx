@@ -107,10 +107,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
   };
 
   const label = (
-    <StyledFormGroupLabel
-      htmlFor={props.field.id || props.field.name}
-      aria-live="assertive"
-    >
+    <StyledFormGroupLabel htmlFor={props.field.id || props.field.name}>
       {props.field.label}
     </StyledFormGroupLabel>
   );
