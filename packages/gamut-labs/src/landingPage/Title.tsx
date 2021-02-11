@@ -17,7 +17,7 @@ export type TitleProps = DarkModeProps & {
 
 export const Title: React.FC<TitleProps> = ({
   isPageHeading,
-  mode = 'light',
+  mode,
   className,
   children,
 }) => (
