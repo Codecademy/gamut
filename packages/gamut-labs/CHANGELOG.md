@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.1...@codecademy/gamut-labs@9.3.2) (2021-02-11)
+
+
+### Bug Fixes
+
+* update font sizes within LP components at smaller than xs ([0fe480b](https://github.com/Codecademy/client-modules/commit/0fe480bd814641edf0ab0c2e11b557888f3a4639))
+
+
+
 ### [9.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.0...@codecademy/gamut-labs@9.3.1) (2021-02-11)
 
 
