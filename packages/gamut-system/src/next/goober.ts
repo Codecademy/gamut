@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, merge } from 'lodash';
 
 import { AbstractTheme } from '../types/config';
 import { CSSObject } from '../types/css';
@@ -103,16 +103,13 @@ export interface Theme {
   };
 }
 
-export interface MediaQuery<T> {
+export interface MediaQueryMap<T> {
   0?: T;
   1?: T;
   2?: T;
   3?: T;
   4?: T;
   5?: T;
-}
-
-export interface MediaQueryMap<T> extends MediaQuery<T> {
   base?: T;
   xs?: T;
   sm?: T;
@@ -197,11 +194,10 @@ export const variance = {
           Record<string, Prop<T>>,
           Record<string, Transform<T, Prop<T>>>
         >[],
-        Union extends UnionToIntersection<Parsers[number]>
+        Configs extends UnionToIntersection<Parsers[number]['config']>,
+        PropNames extends Parsers[number]['propNames'][number][]
       >(...parsers: Parsers) {
-        const { createTransform, createParser } = creator.withTheme<T>();
-
-        return {} as Union;
+        return {};
       },
       create<Config extends Record<string, Prop<T>>>(config: Config) {
         const { createTransform, createParser } = creator.withTheme<T>();
@@ -232,6 +228,3 @@ export const layout = create({
 });
 
 export const hello = compose(margin, layout);
-hello;
-
-hello({ margin: 4 });
