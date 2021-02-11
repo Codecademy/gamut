@@ -28,7 +28,7 @@ export const FeaturedIcon: React.FC<FeaturedIconProps> = ({ src, alt }) => (
 export const FeaturedStat: React.FC = ({ children }) => (
   <Text
     as="div"
-    fontSize={{ xs: 44, lg: 64 }}
+    fontSize={{ base: 44, lg: 64 }}
     fontWeight="title"
     data-testid="feature-stat"
     textColor="navy"
@@ -46,7 +46,7 @@ export const FeaturedTitle: React.FC<FeaturedTitleProps> = ({
 }) => (
   <Text
     as={as || 'h3'}
-    fontSize={{ xs: 22, lg: 26 }}
+    fontSize={{ base: 22, lg: 26 }}
     fontWeight="title"
     textColor="navy"
   >
