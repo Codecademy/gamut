@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.2...@codecademy/gamut-labs@9.3.3) (2021-02-11)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Spacing fixes ([b30e101](https://github.com/Codecademy/client-modules/commit/b30e10192d64dae25ebad333c4a711fbc834b44e))
+
+
+
 ### [9.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.1...@codecademy/gamut-labs@9.3.2) (2021-02-11)
 
 
