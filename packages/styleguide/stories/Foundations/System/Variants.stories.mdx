@@ -19,7 +19,7 @@ There may be cases where you want to change many props at the same time to achie
 import styled from '@emotion/styled';
 import { variant } from '@codecademy/gamut-styles';
 
-const buttonVariants = variants({
+const buttonVariants = variant({
   primary: {
     borderStyle: 'solid',
     borderWidth: '1px',
@@ -50,7 +50,7 @@ Using your variants:
 You can define a default variant to apply when no variant prop is passed.
 
 ```tsx
-const colorVariant = variants({
+const colorVariant = variant({
   default: 'primary',
   variants: {
     primary: { color: 'blue' },
@@ -66,7 +66,7 @@ const Text = styled.p(colorVariant)
 There may be cases where you want to use a special prop for your variants instead of the default `variant`. You may pass an arbitrary name for your prop to customize the prop type.
 
 ```tsx
-const colorVariant = variants({
+const colorVariant = variant({
   prop: 'colorVariant',
   variants: {
     primary: { color: 'blue' },
