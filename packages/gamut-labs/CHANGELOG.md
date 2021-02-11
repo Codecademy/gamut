@@ -3,6 +3,142 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.1...@codecademy/gamut-labs@9.3.2) (2021-02-11)
+
+
+### Bug Fixes
+
+* update font sizes within LP components at smaller than xs ([0fe480b](https://github.com/Codecademy/client-modules/commit/0fe480bd814641edf0ab0c2e11b557888f3a4639))
+
+
+
+### [9.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.0...@codecademy/gamut-labs@9.3.1) (2021-02-11)
+
+
+### Bug Fixes
+
+* **catalog link:** copy should catalog, not course catalog ([62bec44](https://github.com/Codecademy/client-modules/commit/62bec4415db36496a67dd12b52243bc4ef2a0ed2))
+
+
+
+## [9.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.12...@codecademy/gamut-labs@9.3.0) (2021-02-10)
+
+
+### Features
+
+* **Mobile Menu Variants:** global header mobile  ([e0670b6](https://github.com/Codecademy/client-modules/commit/e0670b68b65dea9d03901b7798852b371c235ffe))
+
+
+
+### [9.2.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.11...@codecademy/gamut-labs@9.2.12) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.10...@codecademy/gamut-labs@9.2.11) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.9...@codecademy/gamut-labs@9.2.10) (2021-02-10)
+
+
+### Bug Fixes
+
+* add event parameter to landing page CTA onClick ([bd770aa](https://github.com/Codecademy/client-modules/commit/bd770aa9eea726da587d809630993b016faa3f95))
+
+
+
+### [9.2.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.8...@codecademy/gamut-labs@9.2.9) (2021-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.7...@codecademy/gamut-labs@9.2.8) (2021-02-08)
+
+
+### Bug Fixes
+
+* increase feature column gaps ([7ab374f](https://github.com/Codecademy/client-modules/commit/7ab374ff835b32793aa4ff80deb95f3f602e4223))
+
+
+
+### [9.2.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.6...@codecademy/gamut-labs@9.2.7) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.5...@codecademy/gamut-labs@9.2.6) (2021-02-08)
+
+
+### Bug Fixes
+
+* use light variant by default ([29468e0](https://github.com/Codecademy/client-modules/commit/29468e0fc15097915ffdc31e51c8ea12bc19e785))
+
+
+
+### [9.2.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.4...@codecademy/gamut-labs@9.2.5) (2021-02-08)
+
+
+### Bug Fixes
+
+* remove indentation from lists in Feature descriptions ([#1377](https://github.com/Codecademy/client-modules/issues/1377)) ([32862ac](https://github.com/Codecademy/client-modules/commit/32862ac580c4415b185e9c272abfd19bd227115d))
+
+
+
+### [9.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.3...@codecademy/gamut-labs@9.2.4) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.2...@codecademy/gamut-labs@9.2.3) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.1...@codecademy/gamut-labs@9.2.2) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.2.0...@codecademy/gamut-labs@9.2.1) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [9.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.1.0...@codecademy/gamut-labs@9.2.0) (2021-02-05)
+
+
+### Features
+
+* added gamut-tests package around component-test-setup ([#1285](https://github.com/Codecademy/client-modules/issues/1285)) ([42f10fd](https://github.com/Codecademy/client-modules/commit/42f10fd7932d91ac7a7caceb6c875ace53a8e1b0))
+
+
+
 ## [9.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.0.1...@codecademy/gamut-labs@9.1.0) (2021-02-04)
 
 

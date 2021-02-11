@@ -1,24 +1,21 @@
 import { Box } from '@codecademy/gamut';
-import styled from '@emotion/styled';
 import React from 'react';
-
-const AvatarImage = styled.img`
-  width: 2.5rem;
-  height: 2.5rem;
-`;
 
 export type AppHeaderAvatarProps = {
   imageUrl: string;
+  avatarSize?: number;
 };
-
 export const AppHeaderAvatar: React.FC<AppHeaderAvatarProps> = ({
   imageUrl,
+  avatarSize = 40,
 }) => {
   return (
     <Box borderRadius="100%" overflow="hidden">
-      <AvatarImage
-        alt="My Account dropdown toggle"
+      <img
+        alt="My Account menu toggle"
         data-testid="avatar"
+        width={avatarSize}
+        height={avatarSize}
         src={imageUrl}
       />
     </Box>
