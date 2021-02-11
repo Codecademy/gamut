@@ -3,6 +3,119 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.2.2...@codecademy/styleguide@25.2.3) (2021-02-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.2.1...@codecademy/styleguide@25.2.2) (2021-02-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.2.0...@codecademy/styleguide@25.2.1) (2021-02-11)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.13...@codecademy/styleguide@25.2.0) (2021-02-10)
+
+
+### Features
+
+* **Mobile Menu Variants:** global header mobile  ([e0670b6](https://github.com/Codecademy/client-modules/commit/e0670b68b65dea9d03901b7798852b371c235ffe))
+
+
+
+### [25.1.13](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.12...@codecademy/styleguide@25.1.13) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.12](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.11...@codecademy/styleguide@25.1.12) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.11](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.10...@codecademy/styleguide@25.1.11) (2021-02-10)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.9...@codecademy/styleguide@25.1.10) (2021-02-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.8...@codecademy/styleguide@25.1.9) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.7...@codecademy/styleguide@25.1.8) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.6...@codecademy/styleguide@25.1.7) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.5...@codecademy/styleguide@25.1.6) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.4...@codecademy/styleguide@25.1.5) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [25.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.3...@codecademy/styleguide@25.1.4) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [25.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@25.1.2...@codecademy/styleguide@25.1.3) (2021-02-05)
 
 **Note:** Version bump only for package @codecademy/styleguide

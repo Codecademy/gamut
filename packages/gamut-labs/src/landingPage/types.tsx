@@ -22,7 +22,7 @@ export type BaseProps = {
   cta?: {
     text: string;
     href: string;
-    onClick?: () => void;
+    onClick?: React.MouseEventHandler;
   };
   testId?: string;
 };
