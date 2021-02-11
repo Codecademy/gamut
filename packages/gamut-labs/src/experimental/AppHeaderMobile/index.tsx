@@ -1,10 +1,15 @@
-import { AppBarSection, Box, Container, Overlay } from '@codecademy/gamut';
+import {
+  AppBarSection,
+  Box,
+  Container,
+  FlexBox,
+  Overlay,
+} from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
 import { mapItemToElement, StyledAppBar } from './../AppHeader';
-import { AppHeaderTab } from './../AppHeader/AppHeaderElements/AppHeaderTab';
 import {
   focusStyles,
   hoverStyles,
@@ -24,10 +29,9 @@ export type AppHeaderMobileProps = {
 
 const IconButton = styled.button`
   background-color: transparent;
-  border: 1px solid transparent;
+  border: transparent;
   color: ${({ theme }) => theme.colors.navy};
-  font-weight: normal;
-  line-height: 1.5;
+  line-height: 0.5rem;
   ${hoverStyles}
   ${focusStyles}
 `;
@@ -56,7 +60,15 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
   };
 
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
-    return items.map((item) => mapItemToElement(action, item));
+    return items.map((item, index) => (
+      <Box
+        key={item.id}
+        marginLeft={index === 0 ? 0 : 4}
+        marginRight={index === items.length - 1 ? 0 : 4}
+      >
+        {mapItemToElement(action, item)}
+      </Box>
+    ));
   };
 
   return (
@@ -68,7 +80,8 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           </AppBarSection>
           <AppBarSection position="right">
             {mapItemsToElement(items.right)}
-            <AppHeaderTab>
+
+            <FlexBox marginLeft={24}>
               <IconButton
                 type="button"
                 data-testid="header-mobile-menu"
@@ -79,7 +92,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               >
                 <MenuIcon height={20} width={20} />
               </IconButton>
-            </AppHeaderTab>
+            </FlexBox>
           </AppBarSection>
         </StyledAppBar>
       )}
@@ -96,15 +109,17 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
                 {mapItemsToElement(items.left)}
               </AppBarSection>
               <AppBarSection position="right">
-                <IconButton
-                  type="button"
-                  aria-label="close menu"
-                  onClick={() => {
-                    setMobileMenuOpen(false);
-                  }}
-                >
-                  <CloseIcon width={20} height={20} />
-                </IconButton>
+                <FlexBox>
+                  <IconButton
+                    type="button"
+                    aria-label="close menu"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                  >
+                    <CloseIcon width={20} height={20} />
+                  </IconButton>
+                </FlexBox>
               </AppBarSection>
             </StyledAppBar>
             <Box paddingX={16}>

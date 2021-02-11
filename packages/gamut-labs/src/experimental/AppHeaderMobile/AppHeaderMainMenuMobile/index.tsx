@@ -70,7 +70,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'text-button':
         return (
-          <FlexBox justifyContent="center" marginTop={32}>
+          <FlexBox justifyContent="center" marginTop={16}>
             <AppHeaderTextButton
               data-testid={item.dataTestId}
               href={item.href}
