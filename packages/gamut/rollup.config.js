@@ -7,18 +7,12 @@ import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import postcss from 'rollup-plugin-postcss';
 
-const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+const extensions = ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'];
 
 export default {
   input: './src/index.tsx',
 
   output: [
-    {
-      name: 'gamut',
-      sourcemap: true,
-      file: './dist/index-umd.js',
-      format: 'umd',
-    },
     {
       name: 'gamut',
       sourcemap: true,
@@ -44,7 +38,6 @@ export default {
       exclude: 'node_modules/**',
       extensions,
     }),
-    // typescript(),
     resolve({
       mainFields: ['module', 'main', 'jsnext:main', 'browser'],
       extensions,

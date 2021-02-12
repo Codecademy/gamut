@@ -11,7 +11,6 @@
   ],
   "module": "./dist/index-es.js",
   "main": "./dist/index-cjs.js",
-  "browser": "./dist/index-umd.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/client-modules.git"
@@ -46,7 +45,7 @@
     "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "build": "yarn build:clean && yarn build:rollup && yarn build:types",
     "build:rollup": "yarn build:clean && rollup --config",
     "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
