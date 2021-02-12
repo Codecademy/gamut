@@ -9,12 +9,34 @@ import styles from './styles.module.scss';
 
 type StyleProps = {
   outline?: boolean;
+  position?: 'above' | 'below';
+  beak?: 'right' | 'left';
 };
 
 const RaisedDiv = styled.div<StyleProps>`
   z-index: 1;
   border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
   background-color: ${({ theme }) => theme.colors.white};
+`;
+
+const Beak = styled.div<StyleProps>`
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid ${({ theme }) => theme.colors.white};
+  left: ${({ beak }) => beak === 'left' && '20px'};
+  right: ${({ beak }) => beak === 'right' && '20px'};
+  top: ${({ position }) =>
+    position === 'below' ? '-12px' : 'calc(100% - 3px);'};
+  transform: ${({ position }) => position === 'above' && 'rotate(180deg)'};
+`;
+
+const BeakOutline = styled(Beak)<StyleProps>`
+  border-bottom: 15px solid ${({ theme }) => theme.colors.navy};
+  top: ${({ position }) =>
+    position === 'below' ? '-14px' : 'calc(100% - 1px);'};
 `;
 
 export type PopoverProps = {
@@ -33,7 +55,7 @@ export type PopoverProps = {
    */
   horizontalOffset?: number;
   /**
-   * Whether to add outline style (i.e. used for dropdowns).
+   * Whether to add outline style (i.e. used for dropdowns and coachmarks).
    */
   outline?: boolean;
   /**
@@ -148,20 +170,8 @@ export const Popover: React.FC<PopoverProps> = ({
           data-testid="popover-content-container"
         >
           <RaisedDiv outline={outline}>
-            {beak && outline && (
-              <div
-                className={cx(
-                  styles.beakOutline,
-                  styles[`${position}-${beak}-beak-outline`]
-                )}
-              />
-            )}
-            {beak && (
-              <div
-                className={cx(styles.beak, styles[`${position}-${beak}-beak`])}
-                data-testid="popover-beak"
-              />
-            )}
+            {beak && outline && <BeakOutline position={position} beak={beak} />}
+            {beak && <Beak position={position} beak={beak} />}
             {children}
           </RaisedDiv>
           {pattern && (
