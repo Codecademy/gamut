@@ -18,7 +18,7 @@ import {
   FeaturedImage,
   FeaturedStat,
   Title,
-} from './';
+} from '.';
 import { FeaturedDescription, FeaturedTitle } from './Feature';
 import { BaseProps } from './types';
 

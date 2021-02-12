@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.4.36](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.4.35...@codecademy/gamut-illustrations@0.4.36) (2021-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
+### [0.4.35](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.4.34...@codecademy/gamut-illustrations@0.4.35) (2021-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-illustrations
+
+
+
+
+
 ### [0.4.34](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.4.33...@codecademy/gamut-illustrations@0.4.34) (2021-02-11)
 
 **Note:** Version bump only for package @codecademy/gamut-illustrations

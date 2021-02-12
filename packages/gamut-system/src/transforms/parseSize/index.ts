@@ -2,7 +2,7 @@ import { isNumber } from 'lodash';
 
 import { percentageOrAbsolute } from '../percentageOrAbsolute';
 
-const valueWithUnit = /(\-?\d*\.?\d+)(%|\w*)/;
+const valueWithUnit = /(-?\d*\.?\d+)(%|\w*)/;
 
 export const parseSize = (value: string | number) => {
   if (isNumber(value)) {
