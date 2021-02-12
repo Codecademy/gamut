@@ -1,7 +1,6 @@
 import { Box } from '@codecademy/gamut';
 import React from 'react';
 
-import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
 import {
   FormattedAppHeaderItems,
@@ -96,7 +95,7 @@ const getMobileAppHeaderItems = (
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return props.type === 'loading' ? (
-    <Box height="80">
+    <Box display="block" height="80">
       <AppHeader action={props.action} items={loadingHeaderItems} />
     </Box>
   ) : (
