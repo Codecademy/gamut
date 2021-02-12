@@ -93,16 +93,16 @@ Using the new SVG Pattern component for the background. Here we are using the Di
 
 ## Bordered variant
 
-This is a variant of the ProgressBar that has a transparent background and "bordered" look. borderedDarkMode should be displayed against a dark background and borderedLightMode should be placed against a light background.
+This is a variant of the ProgressBar that has a transparent background and "bordered" look. borderedLight should be displayed against a dark background and borderedDark should be placed against a light background.
 
-### Bordered Dark Mode
+### Bordered Light
 
 <Canvas column={2}>
   <Story
-    name="Bordered - Dark Mode"
+    name="Bordered - Light"
     args={{
       percent: 50,
-      variant: 'borderedDarkMode',
+      variant: 'borderedLight',
       width: '150px',
     }}
   >
@@ -119,14 +119,14 @@ This is a variant of the ProgressBar that has a transparent background and "bord
   </Story>
 </Canvas>
 
-### Bordered Light Mode
+### Bordered Dark
 
 <Canvas column={2}>
   <Story
-    name="Bordered - Light Mode"
+    name="Bordered - Dark"
     args={{
       percent: 42,
-      variant: 'borderedLightMode',
+      variant: 'borderedDark',
       width: '150px',
     }}
   >
@@ -146,15 +146,15 @@ This is a variant of the ProgressBar that has a transparent background and "bord
   </Story>
 </Canvas>
 
-### Bordered Dark Mode Large
+### Bordered Light Large
 
 <Canvas column={2}>
   <Story
-    name="Bordered - Light Mode - Large"
+    name="Bordered - Light - Large"
     args={{
       pattern: 'diagonalStripesDense',
       percent: 71,
-      variant: 'borderedDarkMode',
+      variant: 'borderedLight',
       width: '150px',
       size: 'large',
     }}
