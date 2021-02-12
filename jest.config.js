@@ -26,6 +26,7 @@ module.exports = {
     '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
     '^@codecademy\\/gamut-system$': '<rootDir>/packages/gamut-system/src',
     '^@codecademy\\/gamut-tests$': '<rootDir>/packages/gamut-tests/src',
+    '^@codecademy\\/variance$': '<rootDir>/packages/variance/src',
     '^@codecademy\\/macros$': '<rootDir>/packages/macros',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
