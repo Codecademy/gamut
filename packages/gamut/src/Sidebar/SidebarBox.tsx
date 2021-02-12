@@ -1,6 +1,7 @@
 import { Box, FlexBox } from '@codecademy/gamut/src';
 import { SidebarTabButton } from './SidebarTabButton';
 import React, { useState } from 'react';
+import { variant } from '@codecademy/gamut-styles';
 
 import styled from '@emotion/styled';
 
@@ -9,7 +10,27 @@ import {
   SidebarBaseProps,
   SidebarWidthProps,
   transitionDuration,
+  SidebarComponentSideProps,
 } from './shared';
+
+const sidebarOpenFromProps = variant({
+  default: 'left',
+  prop: 'openFrom',
+  variants: {
+    left: {
+      marginRight: 48,
+      marginLeft: 0,
+    },
+    right: {
+      marginRight: 0,
+      marginLeft: 48,
+    },
+  },
+});
+
+const SidebarWrapper = styled(FlexBox)<SidebarComponentSideProps>`
+  ${sidebarOpenFromProps};
+`;
 
 const SidebarContent = styled(DrawerBase)<SidebarWidthProps>`
   overflow: hidden;
@@ -35,10 +56,8 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
   };
 
   return (
-    <FlexBox
+    <SidebarWrapper
       position="relative"
-      marginRight={openFrom === 'left' ? 48 : 0}
-      marginLeft={openFrom === 'right' ? 48 : 0}
       width="fit-content"
       backgroundColor={backgroundColor}
       {...styleProps}
@@ -61,6 +80,6 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
       >
         <Box width={width}>{children}</Box>
       </SidebarContent>
-    </FlexBox>
+    </SidebarWrapper>
   );
 };
