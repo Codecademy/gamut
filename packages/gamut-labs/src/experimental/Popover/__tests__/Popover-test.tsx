@@ -1,3 +1,5 @@
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { mount } from 'enzyme';
 import React from 'react';
@@ -25,7 +27,7 @@ const targetRefObj = {
 
 const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
-    <>
+    <ThemeProvider theme={theme}>
       <Popover isOpen={true} targetRef={targetRefObj} {...props}>
         <div data-testid="popover-content">
           Howdy!
@@ -35,18 +37,20 @@ const renderPopover = (props?: Partial<PopoverProps>) => {
       <div>
         <h1 data-testid="outside-popover">hi</h1>
       </div>
-    </>
+    </ThemeProvider>
   );
 };
 
 const mountPopover = (props?: Partial<PopoverProps>) => {
   return mount(
-    <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-      <div data-testid={'popover-content'}>
-        Howdy!
-        <button type="button" />
-      </div>
-    </Popover>
+    <ThemeProvider theme={theme}>
+      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
+        <div data-testid={'popover-content'}>
+          Howdy!
+          <button type="button" />
+        </div>
+      </Popover>
+    </ThemeProvider>
   );
 };
 
@@ -271,5 +275,43 @@ describe('Popover', () => {
         left: 842,
       },
     });
+  });
+
+  it('does not outline beak if the outline prop is falsy', () => {
+    renderPopover({
+      isOpen: true,
+      beak: 'left',
+    });
+
+    expect(
+      screen.queryByTestId('popover-beak-outline')
+    ).not.toBeInTheDocument();
+  });
+
+  it('outlines beak if the outline prop is true', () => {
+    renderPopover({
+      isOpen: true,
+      beak: 'left',
+      outline: true,
+    });
+
+    expect(screen.queryByTestId('popover-beak-outline')).toBeInTheDocument();
+  });
+
+  it('does not show a pattern if the prop is not provided', () => {
+    renderPopover({
+      isOpen: true,
+    });
+
+    expect(screen.queryByTestId('popover-pattern')).not.toBeInTheDocument();
+  });
+
+  it('shows a pattern if the prop is provided', () => {
+    renderPopover({
+      isOpen: true,
+      pattern: 'dotsDense',
+    });
+
+    expect(screen.queryByTestId('popover-pattern')).toBeInTheDocument();
   });
 });

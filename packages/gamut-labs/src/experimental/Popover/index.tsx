@@ -170,12 +170,25 @@ export const Popover: React.FC<PopoverProps> = ({
           data-testid="popover-content-container"
         >
           <RaisedDiv outline={outline}>
-            {beak && outline && <BeakOutline position={position} beak={beak} />}
-            {beak && <Beak position={position} beak={beak} />}
+            {beak && outline && (
+              <BeakOutline
+                position={position}
+                beak={beak}
+                data-testid="popover-beak-outline"
+              />
+            )}
+            {beak && (
+              <Beak
+                position={position}
+                beak={beak}
+                data-testid="popover-beak"
+              />
+            )}
             {children}
           </RaisedDiv>
           {pattern && (
             <Pattern
+              data-testid="popover-pattern"
               width="100%"
               height="100%"
               position="absolute"
