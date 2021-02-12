@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.8...@codecademy/gamut@22.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
 ### [21.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.7...@codecademy/gamut@21.3.8) (2021-02-12)
 
 **Note:** Version bump only for package @codecademy/gamut
