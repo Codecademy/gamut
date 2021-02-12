@@ -96,7 +96,11 @@ const getMobileAppHeaderItems = (
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const desktop = useBreakpointAtOrAbove('md');
-  return (
+  return props.type === 'loading' ? (
+    <Box height="80">
+      <AppHeader action={props.action} items={loadingHeaderItems} />
+    </Box>
+  ) : (
     <>
       <Box display={desktop ? 'block' : 'none'} height="80">
         <AppHeader action={props.action} items={getAppHeaderItems(props)} />
