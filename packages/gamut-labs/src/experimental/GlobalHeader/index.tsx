@@ -93,28 +93,22 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  return props.type === 'loading' ? (
-    <Box display="block" height="80">
-      <AppHeader action={props.action} items={loadingHeaderItems} />
+export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
+  <>
+    <Box display={{ base: 'none', md: 'block' }} height="80">
+      <AppHeader action={props.action} items={getAppHeaderItems(props)} />
     </Box>
-  ) : (
-    <>
-      <Box display={{ base: 'none', md: 'block' }} height="80">
-        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-      </Box>
-      <Box
-        display={{ base: 'block', md: 'none' }}
-        height="64"
-        position="relative"
-        zIndex={0}
-      >
-        <AppHeaderMobile
-          action={props.action}
-          items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
-        />
-      </Box>
-    </>
-  );
-};
+    <Box
+      display={{ base: 'block', md: 'none' }}
+      height="64"
+      position="relative"
+      zIndex={0}
+    >
+      <AppHeaderMobile
+        action={props.action}
+        items={getMobileAppHeaderItems(props)}
+        renderSearch={props.renderSearch?.mobile}
+      />
+    </Box>
+  </>
+);
