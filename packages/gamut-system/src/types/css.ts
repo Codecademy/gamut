@@ -18,5 +18,5 @@ export type ComplexCSS<Props extends unknown> = Props &
   };
 
 export interface CSSObject {
-  [key: string]: string | number;
+  [key: string]: string | number | undefined;
 }

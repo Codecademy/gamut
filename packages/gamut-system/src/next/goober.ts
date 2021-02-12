@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { assign, get, identity, isArray, isObject, merge } from 'lodash';
 
 import { AbstractProps, AbstractTheme } from '../types/config';
 import { CSSObject } from '../types/css';
@@ -102,13 +102,15 @@ export interface Theme {
   };
 }
 
-export interface MediaQueryMap<T> {
+export interface MediaQueryArray<T> {
   0?: T;
   1?: T;
   2?: T;
   3?: T;
   4?: T;
   5?: T;
+}
+export interface MediaQueryMap<T> {
   base?: T;
   xs?: T;
   sm?: T;
@@ -117,37 +119,44 @@ export interface MediaQueryMap<T> {
   xl?: T;
 }
 
-export type ResponsiveProp<T> = T | MediaQueryMap<T>;
+export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
 
-interface Prop<T extends AbstractTheme> {
+export interface Prop<T extends AbstractTheme> {
   property: PropName;
   scale?: keyof T;
   transform?: (val: unknown) => string | number;
 }
 
-interface PropFns<T extends AbstractTheme> {
+export interface PropFns<T extends AbstractTheme> {
   prop: string;
   property: PropName;
   scale?: keyof T | unknown;
   transform?: ((val: unknown) => string | number) | unknown;
-  styleFn: (props: AbstractProps) => CSSObject;
+  styleFn: (value: unknown, prop: string, props: AbstractProps) => CSSObject;
 }
 
-type Scale<T extends AbstractTheme, Config extends Prop<T>> = ResponsiveProp<
+export type Scale<
+  T extends AbstractTheme,
+  Config extends Prop<T>
+> = ResponsiveProp<
   Config['scale'] extends keyof T
     ? keyof T[Config['scale']]
     : Properties[Config['property']]['defaultScale']
 >;
 
-interface Transform<
+export interface Transform<
   T extends AbstractTheme,
   P extends string,
   Config extends Prop<T>
 > {
-  (props: { [K in P]?: Scale<T, Config> }): CSSObject;
+  (
+    value: Scale<T, Config>,
+    prop: P,
+    props: { [K in P]?: Scale<T, Config> } & { theme?: T }
+  ): CSSObject;
 }
 
-interface PropTransformer<
+export interface PropTransformer<
   T extends AbstractTheme,
   P extends string,
   C extends Prop<T>
@@ -159,12 +168,12 @@ interface PropTransformer<
   styleFn: Transform<T, P, C>;
 }
 
-interface AbstractParser<T> {
+export interface AbstractParser<T> {
   (props: AbstractProps): CSSObject;
   propNames: string[];
   config: Record<string, PropFns<T>>;
 }
-interface Parser<
+export interface Parser<
   T extends AbstractTheme,
   Config extends Record<string, PropFns<T>>
 > {
@@ -172,38 +181,100 @@ interface Parser<
     props: {
       [P in keyof Config]?: Parameters<
         Config[P]['styleFn']
-      >[0][Config[P]['prop']];
-    }
+      >[2][Config[P]['prop']];
+    } & { theme?: T }
   ): CSSObject;
   propNames: (keyof Config)[];
   config: Config;
 }
 
-type Key<T> = T extends string ? T : never;
+export type Key<T> = T extends string ? T : never;
+
+const isMediaArray = (val: unknown): val is (string | number)[] => isArray(val);
+
+const isMediaMap = (val: unknown): val is MediaQueryMap<string | number> =>
+  isObject(val);
+
+const getBreakpoints = <T extends AbstractTheme>(props: { theme: T }) => {
+  const breakpoints = props.theme.breakpoints!;
+  const { xs, sm, md, lg, xl } = breakpoints;
+  return {
+    map: breakpoints,
+    array: [xs, sm, md, lg, xl],
+  };
+};
 
 export const creator = {
   withTheme<T extends AbstractTheme>() {
     return {
       createParser<Config extends Record<string, PropFns<T>>>(config: Config) {
-        return {} as Parser<T, Config>;
+        let cache: { map: T['breakpoints']; array: string[] };
+        const propNames = Object.keys(config);
+        const parser = (props: { theme: T }) => {
+          let styles = {};
+          const breakpoints = cache ?? getBreakpoints(props);
+          if (!cache) {
+            cache = breakpoints;
+          }
+          propNames.forEach((prop) => {
+            const transform = config[prop].styleFn;
+            const value = get(props, prop);
+            switch (typeof value) {
+              case 'string':
+              case 'number':
+                assign(styles, transform(value, prop, props));
+                break;
+              case 'object':
+                if (isMediaArray(value)) {
+                  const [base, ...rest] = value;
+                  if (base) assign(styles, transform(base, prop, props));
+                  const breakpointStyles = {};
+                  rest.forEach((val, i) => {
+                    merge(breakpointStyles, {
+                      [breakpoints.array[i]]: transform(val, prop, props),
+                    });
+                  });
+                  styles = merge(styles, breakpointStyles);
+                  break;
+                }
+                if (isMediaMap(value)) {
+                  const breakpointStyles = {};
+                  const { base = undefined, ...rest } = value;
+                  if (base) assign(styles, transform(base, prop, props));
+                  Object.keys(rest).forEach((bp: keyof typeof rest) => {
+                    merge(breakpointStyles, {
+                      [breakpoints.map![bp]]: transform(rest[bp], prop, props),
+                    });
+                  });
+                  styles = merge(styles, breakpointStyles);
+                  break;
+                }
+            }
+          });
+          return styles;
+        };
+
+        return assign(parser, { propNames, config }) as Parser<T, Config>;
       },
       createTransform<P extends string, Config extends Prop<T>>(
         prop: P,
         config: Config
       ): PropTransformer<T, P, Config> {
+        const transform = config.transform ?? identity;
+        const parseValue = (
+          value: unknown,
+          prop: string,
+          props: AbstractProps
+        ) => {
+          return transform(get(props, `theme.${config.scale}.${value}`, value));
+        };
+
         return {
           ...config,
           prop,
-          styleFn: (props) => {
-            const value = get(props, prop);
-            const scaleValue = get(
-              props,
-              `theme.${config.scale}.${value}`,
-              value
-            );
-
+          styleFn: (value, prop, props) => {
             return {
-              [config.property]: scaleValue,
+              [config.property]: parseValue(value, prop, props),
             };
           },
         };
@@ -254,22 +325,7 @@ export const variance = {
   },
 };
 
-const { create, compose } = variance.withTheme<Theme>();
-export const space = create({
+export const cool = variance.withTheme<Theme>().create({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
-
-export const layout = create({
-  width: { property: 'width' },
-  height: { property: 'height' },
-});
-
-space.config.margin.styleFn({ margin: 16 });
-space.config.margin.styleFn({});
-space.propNames;
-space({ padding: 4, margin: 16 });
-
-export const myComposed = compose(space, layout);
-myComposed({ width: '1', margin: 0 });
-myComposed.propNames;
