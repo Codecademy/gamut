@@ -1,9 +1,10 @@
 // rollup.config.js
+import babel from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import url from '@rollup/plugin-url';
 import autoExternal from 'rollup-plugin-auto-external';
-import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import copy from 'rollup-plugin-copy';
 import copyAssets from 'rollup-plugin-copy-imported-assets';
 import resolve from 'rollup-plugin-node-resolve';
 
@@ -37,11 +38,6 @@ export default {
 
   plugins: [
     autoExternal(),
-    // postcss({
-    //   extract: true,
-    //   modules: true,
-    //   use: ['sass'],
-    // }),
     copyAssets({
       include: /\.scss/,
     }),
@@ -56,6 +52,9 @@ export default {
     commonjs(),
     url(),
     json(),
+    copy({
+      targets: [{ src: 'src/typings/*', dest: 'dist/types/typings' }],
+    }),
   ],
 
   external: ['react', 'react-dom', '@codecademy/*'],

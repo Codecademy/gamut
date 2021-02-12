@@ -55,11 +55,12 @@
   "devDependencies": {
     "onchange": "^7.0.2",
     "rollup": "2.39.0",
-    "rollup-plugin-babel": "4.4.0",
+    "@rollup/plugin-babel": "5.2.3",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-postcss": "4.0.0",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-copy": "3.3.0",
     "rollup-plugin-copy-imported-assets": "1.4.1",
     "@rollup/plugin-url": "6.0.0",
     "@rollup/plugin-json": "4.1.0",
