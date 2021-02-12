@@ -7,9 +7,8 @@ import {
   layout,
 } from '@codecademy/gamut-styles';
 import { compose, HandlerProps } from '@codecademy/gamut-system';
-import { motion } from 'framer-motion';
-
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 const sidebarStyles = compose(background, border, color, flex, grid, layout);
 

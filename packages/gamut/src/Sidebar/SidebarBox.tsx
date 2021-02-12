@@ -1,17 +1,16 @@
 import { Box, FlexBox } from '@codecademy/gamut/src';
-import { SidebarTabButton } from './SidebarTabButton';
-import React, { useState } from 'react';
 import { variant } from '@codecademy/gamut-styles';
-
 import styled from '@emotion/styled';
+import React, { useState } from 'react';
 
 import {
   DrawerBase,
   SidebarBaseProps,
+  SidebarComponentSideProps,
   SidebarWidthProps,
   transitionDuration,
-  SidebarComponentSideProps,
 } from './shared';
+import { SidebarTabButton } from './SidebarTabButton';
 
 const sidebarOpenFromProps = variant({
   default: 'left',

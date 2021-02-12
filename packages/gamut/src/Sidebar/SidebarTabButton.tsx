@@ -3,10 +3,10 @@ import {
   ButtonDeprecatedBaseProps,
 } from '@codecademy/gamut/src';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
-import { SidebarComponentSideProps } from './shared';
+import styled from '@emotion/styled';
 import React from 'react';
 
-import styled from '@emotion/styled';
+import { SidebarComponentSideProps } from './shared';
 
 export type SidebarTabButtonProps = ButtonDeprecatedBaseProps &
   SidebarComponentSideProps & {

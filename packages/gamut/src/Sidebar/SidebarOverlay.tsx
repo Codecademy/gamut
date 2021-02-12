@@ -1,6 +1,6 @@
 import { IconButton } from '@codecademy/gamut/src';
-import { SidebarCloneButton } from './SidebarCloneButton';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
+import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
@@ -10,7 +10,7 @@ import {
   SidebarWrapperProps,
   transitionDuration,
 } from './shared';
-import styled from '@emotion/styled';
+import { SidebarCloneButton } from './SidebarCloneButton';
 
 export type SidebarOverlayProps = SidebarBaseProps & {
   /**
