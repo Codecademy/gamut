@@ -3,6 +3,9 @@
   "version": "3.1.7",
   "description": "Shared ESLint config for Codecademy",
   "main": "index.js",
+  "bin": {
+    "eslint-fix": "./bin/eslint-fix.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Codecademy/client-modules/packages/eslint-config"
@@ -17,23 +20,27 @@
   },
   "homepage": "https://github.com/Codecademy/client-modules/client-modules/packages/eslint-config",
   "peerDependencies": {
-    "eslint": "^6.5.1"
+    "eslint": "^7.19.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "4.14.1",
-    "@typescript-eslint/parser": "4.14.1",
-    "eslint-config-prettier": "6.15.0",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^7.2.0",
     "eslint-mdx": "^1.8.2",
-    "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-no-only-tests": "2.3.1",
-    "eslint-plugin-react": "7.16.0",
-    "eslint-plugin-react-hooks": "4.1.2",
-    "eslint-plugin-simple-import-sort": "6.0.1",
-    "eslint-plugin-unused-imports": "^1.0.1"
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jest-react": "^0.0.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-no-only-tests": "^2.4.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^1.0.1",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "eslint": "6.5.1"
+    "eslint": "^7.19.0"
   },
   "publishConfig": {
     "access": "public"

@@ -82,7 +82,7 @@ export const InputStepper: React.FC<InputStepperProps> = ({
 
   const onChangeEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = event.target.value || `${min}`;
-    const normalizedValue = normalize(parseInt(rawValue));
+    const normalizedValue = normalize(parseInt(rawValue, 10));
     if (normalizedValue === value) {
       return;
     }

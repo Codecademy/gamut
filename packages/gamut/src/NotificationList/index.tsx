@@ -29,9 +29,9 @@ export const NotificationList = (props: NotificationListProps) => {
     >
       {isEmpty(notifications) ? (
         <button className={styles.emptyText} type="button">
-          {'No new notifications.'}
+          No new notifications.
           <br />
-          {"You're all caught up!"}
+          You&apos;re all caught up!
         </button>
       ) : (
         notifications.map((notification: Notification) => {
