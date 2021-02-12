@@ -13,12 +13,6 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "directories": {
-    "lib": "src"
-  },
-  "files": [
-    "src"
-  ],
   "publishConfig": {
     "access": "public"
   },
