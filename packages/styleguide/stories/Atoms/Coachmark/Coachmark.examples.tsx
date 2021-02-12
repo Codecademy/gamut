@@ -29,7 +29,6 @@ export const CoachmarkExample = (args: CoachmarkProps) => {
       <Coachmark
         {...args}
         renderPopover={renderPopover}
-        delay={1000}
         shouldShow={shouldShow}
       >
         <FillButton onClick={() => {}}>Click me</FillButton>

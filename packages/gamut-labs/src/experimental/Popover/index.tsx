@@ -7,8 +7,13 @@ import { useWindowScroll, useWindowSize } from 'react-use';
 
 import styles from './styles.module.scss';
 
-const RaisedDiv = styled.div`
+type StyleProps = {
+  outline?: boolean;
+};
+
+const RaisedDiv = styled.div<StyleProps>`
   z-index: 1;
+  border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -137,19 +142,28 @@ export const Popover: React.FC<PopoverProps> = ({
           className={cx(
             styles.popover,
             styles[`${position}-${align}`],
-            outline && styles.outline,
             className
           )}
           style={getPopoverPosition()}
           data-testid="popover-content-container"
         >
-          {beak && (
-            <div
-              className={cx(styles.beak, styles[`${position}-${beak}-beak`])}
-              data-testid="popover-beak"
-            />
-          )}
-          <RaisedDiv>{children}</RaisedDiv>
+          <RaisedDiv outline={outline}>
+            {beak && outline && (
+              <div
+                className={cx(
+                  styles.beakOutline,
+                  styles[`${position}-${beak}-beak-outline`]
+                )}
+              />
+            )}
+            {beak && (
+              <div
+                className={cx(styles.beak, styles[`${position}-${beak}-beak`])}
+                data-testid="popover-beak"
+              />
+            )}
+            {children}
+          </RaisedDiv>
           {pattern && (
             <Pattern
               width="100%"

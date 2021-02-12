@@ -17,7 +17,7 @@ $below: translateY(0%);
 }
 
 .outline {
-  border: 1px solid $brand-dark-blue;
+  border: 1px solid $color-navy;
   border-radius: 2px;
   box-shadow: none;
 }
@@ -46,26 +46,58 @@ $below: translateY(0%);
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
 
-  border-bottom: 15px solid white;
+  border-bottom: 15px solid $color-white;
 }
 
 .below-left-beak {
-  top: -15px;
+  top: -12px;
   left: 20px;
 }
 
 .above-left-beak {
   transform: rotate(180deg);
-  top: calc(100% - 1px);
+  top: calc(100% - 3px);
   left: 20px;
 }
 
 .below-right-beak {
-  top: -15px;
+  top: -12px;
   right: 20px;
 }
 
 .above-right-beak {
+  transform: rotate(180deg);
+  top: calc(100% - 3px);
+  right: 20px;
+}
+
+.beakOutline {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  border-bottom: 15px solid $color-navy;
+}
+
+.below-left-beak-outline {
+  top: -14px;
+  left: 20px;
+}
+
+.above-left-beak-outline {
+  transform: rotate(180deg);
+  top: calc(100% - 1px);
+  left: 20px;
+}
+
+.below-right-beak-outline {
+  top: -14px;
+  right: 20px;
+}
+
+.above-right-beak-outline {
   transform: rotate(180deg);
   top: calc(100% - 1px);
   right: 20px;
