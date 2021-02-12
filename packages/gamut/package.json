@@ -11,7 +11,7 @@
   ],
   "module": "dist/index-es.js",
   "main": "dist/index-cjs.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/client-modules.git"

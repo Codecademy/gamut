@@ -2,8 +2,7 @@
   "extends": "../../tsconfig.json",
   "include": ["../../typings/*.d.ts", "./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
-    "outFile": "dist/index.js",
-    "outDir": "./dist",
+    "outDir": "./dist/types/",
     "module": "esnext"
   }
 }
