@@ -22,7 +22,7 @@ const getPathInformation = (f) => {
     .join('/');
 
   return {
-    title: title,
+    title,
     default: title,
   };
 };
