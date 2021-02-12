@@ -2538,14 +2538,6 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.8"
 
-"@rollup/plugin-typescript@8.1.1":
-  version "8.1.1"
-  resolved "https://registry.npmjs.org/@rollup/plugin-typescript/-/plugin-typescript-8.1.1.tgz#cadd6c381a92cc7e8148cc8b1eeba146020635d0"
-  integrity sha512-DPFy0SV8/GgHFL31yPFVo0G1T3yzwdw6R9KisBfO2zCYbDHUqDChSWr1KmtpGz/TmutpoGJjIvu80p9HzCEF0A==
-  dependencies:
-    "@rollup/pluginutils" "^3.1.0"
-    resolve "^1.17.0"
-
 "@rollup/plugin-url@6.0.0":
   version "6.0.0"
   resolved "https://registry.npmjs.org/@rollup/plugin-url/-/plugin-url-6.0.0.tgz#20fbc8cda9bc5f0c31d7225f633002ce73e920b0"
@@ -14720,6 +14712,13 @@ rollup-plugin-commonjs@10.1.0:
     magic-string "^0.25.2"
     resolve "^1.11.0"
     rollup-pluginutils "^2.8.1"
+
+rollup-plugin-copy-imported-assets@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/rollup-plugin-copy-imported-assets/-/rollup-plugin-copy-imported-assets-1.4.1.tgz#2dc3e5aaacc9ebc27589d05864e3f73510fd1819"
+  integrity sha512-7Ev6I2tgo1vVs7w2r01bVORkAk8E/xo4AhLbUzlScxPEyAcGSExU2R584akmm3XSV/QNg2CQZnfByDUsTPQ5BA==
+  dependencies:
+    rollup-pluginutils "^2.8.2"
 
 rollup-plugin-node-resolve@5.2.0:
   version "5.2.0"

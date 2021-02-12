@@ -9,8 +9,9 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "module": "./dist/index-es.js",
-  "main": "./dist/index-cjs.js",
+  "module": "dist/index-es.js",
+  "main": "dist/index-cjs.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:Codecademy/client-modules.git"
@@ -59,6 +60,7 @@
     "rollup-plugin-postcss": "4.0.0",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-copy-imported-assets": "1.4.1",
     "@rollup/plugin-url": "6.0.0",
     "@rollup/plugin-json": "4.1.0",
     "postcss": "8.2.6"
