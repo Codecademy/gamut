@@ -1,0 +1,45 @@
+{
+  "name": "@codecademy/variance",
+  "description": "Contraint based styles for flexibility",
+  "version": "0.0.1",
+  "keywords": [
+    "emotion",
+    "css",
+    "styles",
+    "css-in-js"
+  ],
+  "author": "codecaaron <aaron@codecademy.com>",
+  "homepage": "https://github.com/Codecademy/client-modules/variance",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "directories": {
+    "lib": "src"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codecademy/client-modules.git"
+  },
+  "scripts": {
+    "build:clean": "rm -rf ./dist",
+    "build:compile": "tsc",
+    "build:transpile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build": "yarn build:clean && yarn build:compile && yarn build:transpile",
+    "lernaBuildTask": "yarn build"
+  },
+  "peerDependencies": {
+    "csstype": ">=3.0.0",
+    "lodash": "^>=4.0.0"
+  },
+  "devDependencies": {
+    "@emotion/jest": "^11.1.0",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0"
+  }
+}
