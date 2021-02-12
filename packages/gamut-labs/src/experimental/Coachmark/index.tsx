@@ -7,7 +7,7 @@ export type CoachmarkProps = {
   delay?: number;
   shouldShow: boolean;
   renderPopover: (onDismiss?: () => void) => JSX.Element;
-  popoverProps: Partial<PopoverProps>;
+  popoverProps?: Partial<PopoverProps>;
 };
 
 export const Coachmark: React.FC<CoachmarkProps> = ({
@@ -36,13 +36,13 @@ export const Coachmark: React.FC<CoachmarkProps> = ({
   }, [shouldShow, delay]);
 
   return (
-    <div>
+    <>
       <div ref={activeElRef} className={activeElClassName}>
         {children}
       </div>
       <Popover {...popoverProps} targetRef={activeElRef} isOpen={isOpen}>
         {renderPopover()}
       </Popover>
-    </div>
+    </>
   );
 };
