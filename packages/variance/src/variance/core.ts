@@ -1,10 +1,10 @@
-import { AbstractProps } from '@codecademy/gamut-system/dist/types/config';
-import { CSSObject } from '@codecademy/gamut-system/dist/types/css';
 import { Properties } from 'csstype';
 import { assign, get, identity, isArray, isObject, merge } from 'lodash';
 
 import {
+  AbstractProps,
   AbstractTheme,
+  CSSObject,
   MediaQueryMap,
   ResponsiveProp,
   ThemeProps,
