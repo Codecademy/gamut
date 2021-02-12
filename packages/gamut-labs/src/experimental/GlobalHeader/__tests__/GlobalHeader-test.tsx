@@ -106,8 +106,8 @@ describe('GlobalHeader', () => {
      & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
     test('logo', () => {
       const logoElements = screen.getAllByTestId('header-logo');
-      expect(logoElements[0]).not.toBeVisible(); // desktop
-      expect(logoElements[1]).toBeVisible(); // mobile
+      expect(logoElements[0]).not.toBeVisible();
+      expect(logoElements[1]).toBeVisible();
     });
 
     test('courseCatalog', () => {
