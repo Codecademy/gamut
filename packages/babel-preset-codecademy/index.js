@@ -71,7 +71,6 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
         require('@babel/plugin-transform-runtime').default,
         {
           corejs: false,
-          regenerator: true,
           helpers: type === PACKAGE_APPLICATION,
           regenerator: true,
           useESModules: isEnvDevelopment || isEnvProduction,
