@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [9.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.5...@codecademy/gamut-labs@9.3.6) (2021-02-12)
+
+
+### Bug Fixes
+
+* reduce column gaps on mobile for LP components ([fa887a1](https://github.com/Codecademy/client-modules/commit/fa887a1f525f9c5434f4591ce01126a4d7fd5ae4))
+
+
+
 ### [9.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.4...@codecademy/gamut-labs@9.3.5) (2021-02-12)
 
 
