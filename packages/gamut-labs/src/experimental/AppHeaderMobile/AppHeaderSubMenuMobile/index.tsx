@@ -19,6 +19,7 @@ export type AppHeaderSubMenuMobileProps = AppHeaderDropdownProps & {
 
 const FullMenuButton = styled.button`
   margin-bottom: ${pxRem(24)};
+  padding: 0;
   ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
@@ -34,19 +35,17 @@ export const AppHeaderSubMenuMobile: React.FC<AppHeaderSubMenuMobileProps> = ({
   item,
 }) => {
   return (
-    <>
-      <Box aria-labelledby={`${item.text} menu`}>
-        <FullMenuButton onClick={handleClose} type="button">
-          <ArrowChevronLeftIcon size={12} aria-hidden />
-          <Box fontSize={16} paddingLeft={8}>
-            Full Menu
-          </Box>
-        </FullMenuButton>
-        <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
-          {item.text}
-        </Heading>
-        <AppHeaderLinkSections action={action} item={item} />
-      </Box>
-    </>
+    <Box aria-labelledby={`${item.text} menu`}>
+      <FullMenuButton onClick={handleClose} type="button">
+        <ArrowChevronLeftIcon size={12} aria-hidden />
+        <Box fontSize={16} marginLeft={8}>
+          Full Menu
+        </Box>
+      </FullMenuButton>
+      <Heading as="h1" fontSize={22} marginBottom={16} fontWeight="title">
+        {item.type === 'profile-dropdown' ? item.userDisplayName : item.text}
+      </Heading>
+      <AppHeaderLinkSections action={action} item={item} />
+    </Box>
   );
 };

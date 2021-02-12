@@ -46,7 +46,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   onAnchorClick,
 }) => {
   return (
-    <LayoutGrid testId={testId} rowGap="md" columnGap="lg">
+    <LayoutGrid testId={testId} rowGap="md" columnGap={{ xs: 'sm', sm: 'lg' }}>
       <LeftColumn
         size={{
           xs: 12,
