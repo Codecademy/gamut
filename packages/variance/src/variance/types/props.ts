@@ -1,8 +1,8 @@
 export type AbstractProps = Record<string, unknown>;
 
-export type BaseTheme = Readonly<{
-  readonly [key: string]: any;
-}>;
+export interface BaseTheme {
+  [key: string]: any;
+}
 
 export interface AbstractTheme extends BaseTheme {
   breakpoints?: {
@@ -19,7 +19,7 @@ export interface ThemeProps<T extends AbstractProps> {
 }
 
 export interface CSSObject {
-  [key: string]: string | number | undefined;
+  [key: string]: string | number | CSSObject | undefined;
 }
 
 export interface MediaQueryArray<T> {
@@ -40,3 +40,24 @@ export interface MediaQueryMap<T> {
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
+
+export type Chained = `&` | `>` | '~' | '+';
+
+export type SelectorLiterals =
+  | `&:${string}`
+  | `${Chained} ${string}`
+  | `[${string}]`;
+
+export type Selectors<T> = T extends SelectorLiterals ? T : never;
+
+export type SelectorMap<
+  Config extends AbstractProps,
+  Selectors extends string,
+  Props extends AbstractProps
+> = {
+  [K in keyof Config]: K extends Selectors
+    ? Props
+    : K extends keyof Props
+    ? Props[K]
+    : never;
+};

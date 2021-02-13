@@ -22,21 +22,21 @@ const theme = {
     64: '4rem',
   },
 };
-const { create, compose } = variance.withTheme<typeof theme>();
+const testVariance = variance.withTheme<typeof theme>();
 
-const space = create({
+const space = testVariance.create({
   margin: { property: 'margin', scale: 'spacing' },
   padding: { property: 'padding', scale: 'spacing' },
 });
 
-const layout = create({
+const layout = testVariance.create({
   width: { property: 'width', transform: parseSize },
   height: { property: 'height', transform: parseSize },
 });
 
 type Assert<X, Y> = X extends Y ? true : false;
 
-describe('do it', () => {
+describe('parsers', () => {
   it('has the correct config', () => {
     const propNamesRestricted: Assert<
       typeof space['propNames'],
@@ -158,13 +158,117 @@ describe('do it', () => {
     expect(layout({ height: '50', theme })).toEqual(res);
   });
   it('composes multiple parses', () => {
-    const composed = compose(layout, space);
+    const composed = testVariance.compose(layout, space);
 
     expect(composed({ height: '50', padding: [4, 16], theme })).toEqual({
       height: '50px',
       padding: '0.25rem',
       XS: {
         padding: '1rem',
+      },
+    });
+  });
+});
+
+describe('css', () => {
+  const css = testVariance.createCss({
+    width: { property: 'width', transform: parseSize },
+    height: { property: 'height', transform: parseSize },
+  });
+
+  it('creates a CSS Function', () => {
+    expect(css).toBeDefined();
+  });
+  it('produces css', () => {
+    const returnedFn = css({ width: '100%', height: '50' });
+
+    expect(returnedFn({ theme })).toEqual({ width: '100%', height: '50px' });
+  });
+  it('works with media queries', () => {
+    const returnedFn = css({ width: ['100%', '200%'], height: '50' });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      height: '50px',
+    });
+  });
+  it('allows selectors', () => {
+    const returnedFn = css({
+      width: ['100%', '200%'],
+      '&:hover': {
+        width: '150%',
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '150%',
+      },
+    });
+  });
+  it('allows selectors', () => {
+    const returnedFn = css({
+      '&:hover': {
+        width: ['100%', '200%'],
+      },
+    });
+
+    expect(returnedFn({ theme })).toEqual({
+      '&:hover': {
+        width: '100%',
+        XS: { width: '200%' },
+      },
+    });
+  });
+});
+
+describe('variants', () => {
+  const variant = testVariance.createVariant({
+    width: { property: 'width', transform: parseSize },
+    height: { property: 'height', transform: parseSize },
+  });
+
+  it('Creates a variant', () => {
+    const myVariant = variant({
+      cool: {
+        width: ['100%', '200%'],
+        '&:hover': {
+          width: '150%',
+        },
+      },
+    });
+
+    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '150%',
+      },
+    });
+  });
+  it('has a default variant', () => {
+    const myVariant = variant(
+      {
+        cool: {
+          width: ['100%', '200%'],
+          '&:hover': {
+            width: '150%',
+          },
+        },
+      },
+      {
+        defaultVariant: 'cool',
+      }
+    );
+
+    expect(myVariant({ theme, variant: 'cool' })).toEqual({
+      width: '100%',
+      XS: { width: '200%' },
+      '&:hover': {
+        width: '150%',
       },
     });
   });
