@@ -30,8 +30,8 @@ const postCssLoaderDefaults = {
   loader: 'postcss-loader',
   options: {
     sourceMap: true,
-    plugins: () =>
-      [
+    postcssOptions: {
+      plugins: [
         require('postcss-flexbugs-fixes'),
         require('postcss-focus-visible')({
           preserve: false,
@@ -40,15 +40,12 @@ const postCssLoaderDefaults = {
         require('autoprefixer')({ flexbox: 'no-2009' }),
         PROD && require('cssnano')({ preset: 'default' }),
       ].filter(Boolean),
+    },
   },
 };
 
 const extractPluginDefaults = {
   loader: MiniCssExtractPlugin.loader,
-  options: {
-    hmr: !PROD,
-    esModule: true,
-  },
 };
 
 const scssFilePattern = /\.scss?$/;
@@ -83,7 +80,9 @@ const css = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          onlyLocals: true,
+          modules: {
+            exportOnlyLocals: true,
+          },
         },
       }),
     ],
@@ -127,8 +126,10 @@ const scss = {
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          modules: cssModulesDefaults,
-          onlyLocals: true,
+          modules: {
+            ...cssModulesDefaults,
+            exportOnlyLocals: true,
+          },
           importLoaders: 2,
         },
       }),

@@ -38,9 +38,7 @@ const commonConfig = (options = {}) => {
             {
               ...loaders.files.default,
               options: {
-                name: DEV
-                  ? '[name].[contenthash].[ext]'
-                  : '[contenthash].[ext]',
+                name: DEV ? '[path][name].[ext]' : '[contenthash].[ext]',
                 ...fileLoaderOptions,
               },
             },
@@ -74,17 +72,16 @@ const commonConfig = (options = {}) => {
   };
 
   if (DEV) {
-    config = merge.smart(config, {
+    config = merge(config, {
       output: {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
       },
     });
   } else {
-    config = merge.smart(config, {
+    config = merge(config, {
       bail: true, // Don't try to continue through any errors
       optimization: {
-        moduleIds: 'hashed',
         minimize: true,
         minimizer: minimizer || [
           new TerserPlugin({
