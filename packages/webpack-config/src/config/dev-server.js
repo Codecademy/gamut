@@ -31,12 +31,7 @@ const devServerConfig = (options) => {
         chunkModules: false,
       },
       ...rest,
-    },
-
-    plugins: [
-      new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.NamedModulesPlugin(),
-    ],
+    }
   });
 };
 
