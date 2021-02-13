@@ -83,6 +83,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
     {
       id: 'blog',
       href: 'https://news.codecademy.com/',
+      newTab: true,
       trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
       type: 'link',
@@ -101,6 +102,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
       id: 'forums',
       href: 'https://discuss.codecademy.com/',
       trackingTarget: 'topnav_community_forums',
+      newTab: true,
       text: 'Forums',
       type: 'link',
     },
@@ -115,6 +117,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     {
       id: 'chapters',
       href: 'https://community.codecademy.com/',
+      newTab: true,
       trackingTarget: 'topnav_community_chapters',
       text: 'Chapters',
       type: 'link',
@@ -249,6 +252,7 @@ const profileCustomerSupport: AppHeaderLinkItem = {
 const profileReportBug: AppHeaderLinkItem = {
   id: 'report-bug',
   href: 'https://codecademy.atlassian.net/servicedesk/customer/portal/9',
+  newTab: true,
   trackingTarget: 'avatar_report_bug',
   text: 'Report a Bug [ADMIN]',
   type: 'link',
