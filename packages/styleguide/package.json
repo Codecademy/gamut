@@ -37,7 +37,7 @@
     "@storybook/theming": "6.1.15",
     "@types/react": "*",
     "autoprefixer": "^9.7.4",
-    "babel-preset-codecademy": "^2.3.0",
+    "babel-preset-codecademy": "4.0.0",
     "focus-visible": "^5.2.0",
     "invariant": "2.2.4",
     "jsdom": "16.4.0",

@@ -31,6 +31,11 @@ const commonConfig = (options = {}) => {
       path: path.resolve(options.context, 'dist'),
     },
 
+    optimization: {
+      chunkIds: DEV ? 'named' : 'deterministic',
+      moduleIds: DEV ? 'named' : 'deterministic',
+    },
+
     module: {
       strictExportPresence: true,
       rules: includeDefaults
