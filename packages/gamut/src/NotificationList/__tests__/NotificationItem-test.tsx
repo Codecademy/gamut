@@ -1,6 +1,7 @@
-import React from 'react';
 import { shallow } from 'enzyme';
-import NotificationItem from '../NotificationItem';
+import React from 'react';
+
+import { NotificationItem } from '../NotificationItem';
 
 const linkedNotification = {
   text: 'notification 2',
@@ -26,11 +27,22 @@ describe('NotificationItem', () => {
     expect(renderedNotification.name()).toBe('a');
   });
 
-  it('renders a div if no href is specified', () => {
+  it('renders a button if no href is specified', () => {
     const renderedNotification = shallow(
       <NotificationItem notification={noLinkNotification} />
     );
 
-    expect(renderedNotification.name()).toBe('div');
+    expect(renderedNotification.name()).toBe('button');
+  });
+
+  it('calls onClick when clicked', () => {
+    const onClick = jest.fn();
+    const renderedNotification = shallow(
+      <NotificationItem notification={noLinkNotification} onClick={onClick} />
+    );
+
+    renderedNotification.find('button').simulate('click');
+
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

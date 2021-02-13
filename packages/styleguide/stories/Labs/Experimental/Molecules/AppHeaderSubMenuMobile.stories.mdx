@@ -1,0 +1,44 @@
+import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import {
+  MOCK_DROPDOWN_1,
+  MOCK_PROFILE_DROPDOWN,
+} from './MockAppHeaderElements';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
+  component={AppHeaderSubMenuMobile}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: MOCK_DROPDOWN_1,
+  }}
+/>
+
+The AppHeaderSubMenuMobile component is used in the mobile version of the AppHeader.
+Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown", clicking on it opens a dropdown menu, on smaller screens, clicking on an AppHeaderItem of type "dropdown" opens the AppHeaderSubMenuMobile component. The component contains a title indicating the category of the menu (ex resources, community) and a list of links (forum, codecademy blog, etc).
+
+## SubMenu for mobile view
+
+<Canvas>
+  <Story name="AppHeaderSubMenuMobile">
+    {(args) => <AppHeaderSubMenuMobile {...args} />}
+  </Story>
+</Canvas>
+
+## SubMenu for mobile view with dividers
+
+<Canvas>
+  <Story
+    args={{
+      item: MOCK_PROFILE_DROPDOWN,
+    }}
+    name="AppHeaderSubMenuMobile - Profile"
+  >
+    {(args) => <AppHeaderSubMenuMobile {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="AppHeaderSubMenuMobile" />

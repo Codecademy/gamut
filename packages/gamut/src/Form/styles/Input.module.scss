@@ -1,0 +1,35 @@
+@import "variables";
+
+.Input {
+  font-size: 1rem;
+  text-indent: $form-padding;
+  padding: $form-padding 0;
+  outline: none;
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: border-color $transition-time;
+  font-weight: normal;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-gray-500;
+  }
+
+  &:focus {
+    border-color: $color-blue-400;
+  }
+}
+
+.error {
+  border-color: $color-red-700;
+  &:focus {
+    border-color: $color-red-400;
+  }
+}
+
+// text-indent causes the file input controls to cover the uploaded file name
+.fileInput {
+  text-indent: 0;
+  padding-left: $form-padding;
+}

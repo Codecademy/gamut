@@ -1,0 +1,14 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.contentContainer {
+  padding: 1.5rem 1rem 2rem;
+}
+
+.title {
+  font-size: px-rem(26px);
+  line-height: px-rem(34px);
+}
+
+.description {
+  color: $color-gray-700;
+}

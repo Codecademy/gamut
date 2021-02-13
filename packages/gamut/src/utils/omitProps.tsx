@@ -1,5 +1,5 @@
 import invariant from 'invariant';
-import { isPlainObject, omit, without, AnyKindOfDictionary } from 'lodash';
+import { AnyKindOfDictionary, isPlainObject, omit, without } from 'lodash';
 
 export type RemoveFrom<TContainer, TRemoved> = {
   [P in keyof TContainer]: P extends keyof TRemoved ? never : TContainer[P];
@@ -11,7 +11,7 @@ export type RemoveFrom<TContainer, TRemoved> = {
  * removes a provided array of props from a props object,
  * leaving necessary props like children intact
  */
-export default function omitProps<TOmittedProps extends {}, TProps extends {}>(
+export function omitProps<TOmittedProps extends {}, TProps extends {}>(
   initialPropsToOmit: TOmittedProps | (keyof TOmittedProps)[],
   props: TProps
 ): RemoveFrom<TOmittedProps, TProps> {
@@ -25,7 +25,7 @@ export default function omitProps<TOmittedProps extends {}, TProps extends {}>(
   );
 
   // allow all data-* props, mainly used for testing libraries
-  const dataProps = propsToOmit.filter(p => p.match(/^data-.*/));
+  const dataProps = propsToOmit.filter((p) => p.match(/^data-.*/));
 
   return omit(
     (props as unknown) as AnyKindOfDictionary,

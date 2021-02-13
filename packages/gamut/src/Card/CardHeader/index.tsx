@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import styles from './styles.scss';
+import React, { ReactNode } from 'react';
+
+import styles from './styles.module.scss';
 
 interface CardHeaderProps {
   backgroundColor?: string;
@@ -29,5 +30,3 @@ export function CardHeader(props: CardHeaderProps) {
     </div>
   );
 }
-
-export default CardHeader;

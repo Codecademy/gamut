@@ -1,14 +1,31 @@
-import React, { ReactElement, Component } from 'react';
 import { isNumber } from 'lodash';
-import TabPanel from '../TabPanel';
-import TabList from '../TabList';
+import React, { Component, ReactElement } from 'react';
+
+import { TabList } from '../TabList';
+import { TabPanel } from '../TabPanel';
 
 export interface TabsProps {
+  /**
+   * Changes this to a controlled component by only forcing this index to be active.
+   */
   activeTabIndex?: number;
+
   children: ReactElement<any, any>[];
+
   className?: string;
+
+  /**
+   * Index to start the active tab on, if not provided by `activeTabIndex`.
+   */
   defaultActiveTabIndex?: number;
+
+  /**
+   * Callback for when a tab index is requested to be active.
+   *
+   * @param activeTabIndex  New active tab index.
+   */
   onChange?: (activeTabIndex: number) => void;
+
   renderAllPanels?: boolean;
 }
 
@@ -29,9 +46,7 @@ export class Tabs extends Component<TabsProps> {
     }
   }
 
-  idPrefix = Math.random()
-    .toString()
-    .replace('.', '');
+  idPrefix = Math.random().toString().replace('.', '');
 
   createBaseId = (index: number) => `${this.idPrefix}-${index}`;
 
@@ -56,16 +71,16 @@ export class Tabs extends Component<TabsProps> {
       );
     }
 
-    const childrenArray = React.Children.toArray<ReactElement<any, any>>(
+    const childrenArray = React.Children.toArray(
       this.props.children
-    );
-    let clonedTabPanels = childrenArray.filter(c => c.type === TabPanel);
+    ) as ReactElement[];
+    let clonedTabPanels = childrenArray.filter((c) => c.type === TabPanel);
 
-    if (activeTabIndex >= clonedTabPanels.length) {
+    if (activeTabIndex! >= clonedTabPanels.length) {
       activeTabIndex = clonedTabPanels.length - 1;
     }
 
-    const tabListChild = childrenArray.find(c => c.type === TabList);
+    const tabListChild = childrenArray.find((c) => c.type === TabList)!;
     const clonedTabList = React.cloneElement(tabListChild, {
       activeTabIndex,
       onChange,
@@ -82,12 +97,10 @@ export class Tabs extends Component<TabsProps> {
     );
 
     return (
-      <div>
+      <div className={this.props.className}>
         {clonedTabList}
         {clonedTabPanels}
       </div>
     );
   }
 }
-
-export default Tabs;

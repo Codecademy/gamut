@@ -1,0 +1,33 @@
+import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
+import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title="Labs/Experimental/Molecules/AppHeaderLinkMobile"
+  component={AppHeaderLinkMobile}
+  parameters={{ layout: 'padded', status: 'volatile' }}
+  args={{
+    item: {
+      id: 'link',
+      icon: InfoCircleIcon,
+      href: 'http://codecademy.com',
+      text: 'Nav Link',
+      trackingTarget: 'track-link',
+      type: 'link',
+    },
+  }}
+/>
+
+A link for use in the mobile AppHeader.
+
+## Link - mobile view
+
+<Canvas>
+  <Story name="AppHeaderLinkMobile">
+    {(args) => <AppHeaderLinkMobile {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="AppHeaderLinkMobile" />

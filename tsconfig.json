@@ -11,9 +11,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false,
     "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
     "target": "esnext"
   },
-  "exclude": [
-    "**/node_modules"
-  ]
+  "exclude": ["**/node_modules"]
 }

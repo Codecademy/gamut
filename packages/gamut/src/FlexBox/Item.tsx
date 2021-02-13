@@ -1,15 +1,11 @@
 import React from 'react';
-import Container, { ContainerProps } from './Container';
 
-export class Item extends React.Component<ContainerProps> {
-  static displayName = 'Item';
-  static defaultProps = {
-    flex: false,
-  };
+import { Container, ContainerProps } from './Container';
 
-  render() {
-    return <Container {...this.props} />;
-  }
-}
+export const Item: React.FC<ContainerProps> = (props) => {
+  return <Container {...props} />;
+};
 
-export default Item;
+Item.defaultProps = {
+  flex: false,
+};

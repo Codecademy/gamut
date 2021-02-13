@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
-import React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import Markdown from '../index';
+import React from 'react';
+import { act } from 'react-dom/test-utils';
+
+import { Markdown } from '../index';
 
 const basicMarkdown = `
 # Heading 1
@@ -63,6 +65,21 @@ describe('<Markdown />', () => {
     });
   });
 
+  it('Skips rendering custom tables in markdown when skipProcessing.table is true', () => {
+    const table = `
+| Tables   |      Are      |  Cool |
+|----------|:-------------:|------:|
+| col 1 is |  left-aligned | $1600 |
+| col 2 is |    centered   |   $12 |
+| col 3 is | right-aligned |    $1 |
+    `;
+    const markdown = mount(
+      <Markdown skipDefaultOverrides={{ table: true }} text={table} />
+    );
+    expect(markdown.find('table').length).toEqual(1);
+    expect(markdown.find('div.tableWrapper table').length).toEqual(0);
+  });
+
   it('Wraps youtube iframes in a flexible container', () => {
     const markdown = mount(<Markdown text={youtubeMarkdown} />);
     expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
@@ -83,7 +100,7 @@ describe('<Markdown />', () => {
       const text = `
 # Heading
 
-\`\`\`
+\`\`\`js
 var test = true;
 \`\`\`
       `;
@@ -100,6 +117,7 @@ var test = true;
 
       const markdown = mount(<Markdown text={text} overrides={overrides} />);
       expect(markdown.find(CodeBlock).length).toEqual(1);
+      expect((markdown.find(CodeBlock).props() as any).language).toEqual('js');
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
@@ -161,11 +179,36 @@ var test = true;
   });
 
   describe('Markdown anchor links', () => {
+    it('Renders a link with text', () => {
+      const text = '[link](/url)';
+      const expectedText = `link`;
+      expect(text).not.toEqual(expectedText);
+      const markdown = mount(<Markdown text={text} />);
+      expect(markdown.text().trim()).toEqual(expectedText);
+    });
+
     it('Adds rel="noopener" to external links', () => {
       const markdown = mount(
         <Markdown text={`<a href="http://google.com">google</a>`} />
       );
       expect(markdown.find('a[rel="noopener"]').length).toEqual(1);
+    });
+
+    it('Allows onClicks callbacks', () => {
+      const onClick = jest.fn();
+
+      const markdown = mount(
+        <Markdown
+          text={`<a data-testid="testLink" href="http://google.com">google</a>`}
+          onAnchorClick={onClick}
+        />
+      );
+
+      act(() => {
+        markdown.find(`a[href="http://google.com"]`).simulate('click');
+      });
+
+      expect(onClick).toHaveBeenCalledTimes(1);
     });
   });
 

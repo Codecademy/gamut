@@ -1,0 +1,22 @@
+import { FormGroupLabel } from '@codecademy/gamut';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={FormGroupLabel}
+  parameters={{
+    subtitle: 'A label element to be tied to a group of elements',
+    source: 'gamut',
+    status: 'stable',
+  }}
+  args={{ children: 'I am a label' }}
+/>
+
+<Canvas>
+  <Story name="FormGroupLabel">{(args) => <FormGroupLabel {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="FormGroupLabel" />

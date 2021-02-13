@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 
-const devServerConfig = options => {
+const devServerConfig = (options) => {
   const { port = 3808, host = 'localhost', publicPath, ...rest } = options;
 
   return merge.smart({

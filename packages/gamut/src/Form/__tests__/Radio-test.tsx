@@ -1,6 +1,7 @@
-import React from 'react';
 import { shallow } from 'enzyme';
-import Radio from '../Radio';
+import React from 'react';
+
+import { Radio } from '../Radio';
 
 describe('<Radio>', () => {
   it('sets the input checked state when the prop is passed', () => {

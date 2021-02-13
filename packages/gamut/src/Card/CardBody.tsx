@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
 import cx from 'classnames';
-import s from './styles/CardBody.scss';
+import React, { ReactNode } from 'react';
+
+import styles from './styles/CardBody.module.scss';
 
 const defaultProps = {
   standardPadding: true,
@@ -9,6 +10,9 @@ const defaultProps = {
 export type CardBodyProps = {
   children: ReactNode | ReactNode[];
   className?: string;
+  /**
+   * Use standard height regardless of content.
+   */
   standardPadding?: boolean;
 };
 
@@ -19,7 +23,7 @@ export const CardBody = ({
 }: CardBodyProps) => {
   const bodyClasses = cx(
     {
-      [s.standardPadding]: standardPadding,
+      [styles.standardPadding]: standardPadding,
     },
     className
   );
@@ -28,5 +32,3 @@ export const CardBody = ({
 };
 
 CardBody.defaultProps = defaultProps;
-
-export default CardBody;

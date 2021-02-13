@@ -1,21 +1,17 @@
-import React from 'react';
 import cx from 'classnames';
-import moment from 'moment';
-import Truncate from 'react-truncate';
+import React from 'react';
+
+import { Truncate } from '../Truncate';
+import { NotificationIcon } from './NotificationIcon';
+import styles from './styles/Notification.module.scss';
 import { Notification } from './typings';
-import NotificationIcon from './NotificationIcon';
-import s from './styles/Notification.scss';
 
 export type NotificationItemProps = {
   onClick?: (event: object) => void;
   notification: Notification;
 };
 
-const formatTime = (notificationDate: string): string => {
-  return moment(notificationDate).fromNow();
-};
-
-export const NotificationItem = (props: NotificationItemProps) => {
+export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
   const { notification, onClick } = props;
   const {
     date,
@@ -27,17 +23,19 @@ export const NotificationItem = (props: NotificationItemProps) => {
     unread,
   } = notification;
 
-  const notificationClasses = cx(s.notification, {
-    [s.unread]: unread,
+  const notificationClasses = cx(styles.notification, {
+    [styles.unread]: unread,
   });
 
-  const TagName = link ? 'a' : 'div';
-  const tagProps = link ? { target: '_blank' } : { role: 'presentation' };
+  const [TagName, tagProps] = link
+    ? ([
+        'a',
+        { href: link, rel: 'noopener noreferrer', target: '_blank' },
+      ] as const)
+    : (['button', { type: 'button' }] as const);
 
   return (
     <TagName
-      href={link}
-      rel="noopener noreferrer"
       className={cx(notificationClasses)}
       onClick={onClick}
       {...tagProps}
@@ -47,16 +45,12 @@ export const NotificationItem = (props: NotificationItemProps) => {
         iconSlug={iconSlug}
         imageUrl={imageUrl}
       />
-      <div className={s.body}>
-        <div className={s.text}>
-          <Truncate lines={3} ellipsis="...">
-            {text}
-          </Truncate>
+      <div className={styles.body}>
+        <div className={styles.text}>
+          <Truncate lines={3}>{text}</Truncate>
         </div>
-        <div className={s.time}>{formatTime(date)}</div>
+        <div className={styles.time}>{date}</div>
       </div>
     </TagName>
   );
 };
-
-export default NotificationItem;

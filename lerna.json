@@ -1,12 +1,15 @@
 {
-  "lerna": "3.13.1",
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": ["packages/*"],
   "command": {
     "publish": {
-      "message": "chore(release): publish"
+      "message": "chore(release): publish",
+      "ignoreChanges": ["**/CHANGELOG.md"]
+    },
+    "version": {
+      "changelogPreset": "conventionalcommits"
     }
   }
 }

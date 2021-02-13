@@ -1,6 +1,7 @@
-import React from 'react';
 import cx from 'classnames';
-import styles from './styles.scss';
+import React from 'react';
+
+import styles from './styles.module.scss';
 
 interface CardContentProps {
   title: string;
@@ -19,5 +20,3 @@ export function CardContent(props: CardContentProps) {
     </div>
   );
 }
-
-export default CardContent;

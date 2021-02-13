@@ -1,0 +1,127 @@
+@import "variables";
+@import "mixins";
+
+//
+// Base styles
+//
+
+.btn {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  font-weight: $btn-font-weight;
+  @include font-smoothing;
+  border: 1px solid transparent;
+  border-radius: $btn-border-radius;
+  user-select: none;
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $btn-font-size-base,
+    $btn-line-height,
+    $btn-min-width-sm
+  );
+  transition: all 0.1s ease-in-out;
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
+}
+
+@each $name, $color in $btn-swatches {
+  @if $name == "brand-yellow" {
+    @include button-variants($name, $color-black, $color);
+  } @else if lightness($color) > 68 {
+    @include button-variants($name, $color-black, $color);
+  } @else {
+    @include button-variants($name, $color-white, $color);
+  }
+}
+
+.round {
+  border-radius: $btn-round-border-radius;
+}
+
+.square {
+  border-radius: 0;
+}
+//
+// Button Sizes
+//
+
+.large {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size(
+    $btn-padding-y-lg,
+    $btn-padding-x-lg,
+    $btn-font-size-lg,
+    $btn-line-height-lg,
+    $btn-min-width-lg
+  );
+}
+
+.small {
+  // line-height: ensure proper height of button next to small input
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-line-height-sm,
+    $btn-min-width-sm
+  );
+}
+
+//
+// Block button
+//
+
+.block {
+  display: flex;
+  width: 100%;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+.underline {
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  &.block {
+    width: 100%;
+  }
+}
+
+// "go" animation styles
+
+@keyframes lantern-pulse {
+  0% {
+    background-color: rgba($deprecated-color-mint, 0.2);
+  }
+  100% {
+    background-color: rgba($deprecated-color-mint, 0.5);
+  }
+}
+
+.go {
+  // lantern
+  &.btn-darkmint {
+    background-color: rgba($deprecated-color-mint, 0.5);
+    animation: lantern-pulse 2s infinite ease;
+    animation-direction: alternate;
+
+    &:hover {
+      animation: none;
+    }
+  }
+}

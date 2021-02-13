@@ -1,0 +1,39 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$default-size: px-rem(70px);
+$default-offset: px-rem(6px);
+
+.container {
+  position: relative;
+  width: $default-size + $default-offset;
+  height: $default-size + $default-offset;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    height: $default-size;
+    width: $default-size;
+  }
+
+  img {
+    border-radius: 50%;
+    position: absolute;
+    width: $default-size;
+    height: $default-size;
+  }
+}
+
+.lightContainer {
+  &:before {
+    background: $color-orange-400;
+  }
+}
+
+.darkContainer {
+  &:before {
+    background: $color-pink-700;
+  }
+}

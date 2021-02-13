@@ -1,9 +1,0 @@
-@import "~@codecademy/gamut-styles/utils";
-
-.bannerCardContainer {
-  display: grid;
-  grid-template-rows: 2fr 3fr auto;
-  border-radius: 0.75rem;
-  position: relative;
-  box-shadow: 0 2px 5px 0 rgba($color-black, 0.2);
-}

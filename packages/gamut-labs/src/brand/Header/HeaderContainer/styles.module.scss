@@ -1,0 +1,18 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.container {
+  background-color: $color-white;
+  box-shadow: 0 2px 4px 0 rgba($color-black, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 4;
+
+  @media print {
+    display: none;
+  }
+}
+
+.appBar {
+  min-height: $height-header;
+  padding: 0.65rem 0;
+}

@@ -1,0 +1,44 @@
+@import "variables";
+
+.Select {
+  position: relative;
+  width: 100%;
+  font-weight: normal;
+}
+
+.error {
+  border-color: $color-red-700;
+  &:focus {
+    border-color: $color-red-500;
+  }
+}
+
+.selectIcon {
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  top: 1.25rem;
+  width: 0.75rem;
+}
+
+.selectInput {
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: $border-radius;
+  border: 1px solid $color-gray-200;
+  width: 100%;
+  padding: $form-padding;
+  padding-right: 2.5rem;
+  background-color: $item-background;
+  font-size: 1rem;
+  transition: background-color $transition-time;
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $item-background-hover;
+    background-color: $item-background-hover;
+    transition: background-color $transition-time;
+  }
+}

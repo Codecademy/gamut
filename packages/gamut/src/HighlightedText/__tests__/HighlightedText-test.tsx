@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import HighlightedText from '..';
+import { HighlightedText } from '..';
 
 describe('HighlightedText', () => {
   it('preserves text children with whitespace', () => {

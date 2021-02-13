@@ -1,0 +1,36 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.quote {
+  position: relative;
+  font-size: 30px;
+  line-height: 36px;
+  color: $color-white;
+
+  @include screen-size-gte($grid-xs-min) {
+    font-size: 64px;
+    line-height: 70px;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: px-rem(-35px);
+    background: url("../../assets/orangeQuotes.svg");
+    background-size: cover;
+    height: px-rem(30px);
+    width: px-rem(44px);
+    @include screen-size-gte($grid-xs-min) {
+      height: px-rem(64px);
+      width: px-rem(95px);
+      top: px-rem(-80px);
+    }
+    @include sm-viewport {
+      height: px-rem(84px);
+      width: px-rem(124px);
+      left: px-rem(-124px);
+      top: px-rem(-16px);
+    }
+  }
+}

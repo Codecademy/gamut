@@ -1,0 +1,92 @@
+import {
+  CTAButton,
+  FillButton,
+  IconButton,
+  StrokeButton,
+  TextButton,
+} from '@codecademy/gamut/src';
+import { SearchIcon } from '@codecademy/gamut-icons/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  args={{
+    children: 'Click Me',
+    disabled: false,
+    href: '',
+    mode: 'light',
+    size: 'normal',
+  }}
+  parameters={{
+    subtitle: 'Button atoms for specfic use cases',
+    source: 'gamut',
+    figmaId: 'N6TfoPI5OA7GanX6Zl8nWj',
+  }}
+  component={TextButton}
+  argTypes={{
+    href: {
+      description: 'If defined, component will use an anchor tag',
+    },
+    mode: {
+      control: {
+        type: 'select',
+        options: ['dark', 'light'],
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['normal', 'small'],
+      },
+    },
+  }}
+/>
+
+We have several versions of buttons that you can use.
+Each supports a _light_ and _dark_ mode.
+
+See the [Figma designs](https://www.figma.com/file/N6TfoPI5OA7GanX6Zl8nWj/Buttons-%E2%9C%85?node-id=268%3A0) for a nice grid view of all the variants.
+All but CTA button support a size of either `normal` (default) or `small`.
+
+## CTA Button
+
+<Canvas>
+  <Story name="CTAButton">{(args) => <CTAButton {...args} />}</Story>
+</Canvas>
+
+<Props exclude={['size']} story="CTAButton" />
+
+## Fill Button
+
+<Canvas>
+  <Story name="FillButton">{(args) => <FillButton {...args} />}</Story>
+</Canvas>
+
+<Props story="FillButton" />
+
+## Stroke Button
+
+<Canvas>
+  <Story name="StrokeButton">{(args) => <StrokeButton {...args} />}</Story>
+</Canvas>
+
+<Props story="StrokeButton" />
+
+## Text Button
+
+<Canvas>
+  <Story name="TextButton">{(args) => <TextButton {...args} />}</Story>
+</Canvas>
+
+<Props story="TextButton" />
+
+## Icon Button
+
+<Canvas>
+  <Story name="IconButton">
+    {(args) => <IconButton icon={SearchIcon} {...args} />}
+  </Story>
+</Canvas>
+
+<Props story="IconButton" />

@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 
-const babelConfig = options => ({
+const babelConfig = (options) => ({
   module: {
     rules: [
       merge(

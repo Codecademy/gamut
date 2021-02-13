@@ -1,0 +1,25 @@
+import { Byline } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Byline}
+  args={{
+    firstName: 'Bill',
+    lastName: 'Murray',
+    occupation: 'Ghostbuster @ Ghostcademy',
+    location: 'New York, NY',
+  }}
+  parameters={{
+    subtitle: `Marketing display of a person's information, such as for a testimonial.
+Commonly paired with an \`Avatar\`.`,
+    source: 'gamut-labs',
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Byline">{(args) => <Byline {...args} />}</Story>
+</Canvas>
+
+<Props story="Byline" />

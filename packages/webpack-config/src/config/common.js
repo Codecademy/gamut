@@ -10,6 +10,7 @@ const commonConfig = (options = {}) => {
     env = ENV,
     minimizer,
     minimizerOptions = {},
+    fileLoaderOptions = {},
     includeDefaults = true,
   } = options;
   const DEV = env !== 'production';
@@ -37,8 +38,9 @@ const commonConfig = (options = {}) => {
               ...loaders.files.default,
               options: {
                 name: DEV
-                  ? '[name]-[contenthash].[ext]'
+                  ? '[name].[contenthash].[ext]'
                   : '[contenthash].[ext]',
+                ...fileLoaderOptions,
               },
             },
           ]
@@ -57,7 +59,7 @@ const commonConfig = (options = {}) => {
         '.ts',
         '.tsx',
       ],
-      modules: ['node_modules', 'node_modules/@codecademy'],
+      modules: ['node_modules'],
     },
 
     plugins: [
@@ -80,6 +82,7 @@ const commonConfig = (options = {}) => {
     config = merge.smart(config, {
       bail: true, // Don't try to continue through any errors
       optimization: {
+        moduleIds: 'hashed',
         minimize: true,
         minimizer: minimizer || [
           new TerserPlugin({

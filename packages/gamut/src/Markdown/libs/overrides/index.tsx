@@ -1,7 +1,7 @@
-import React from 'react';
-import { get } from 'lodash';
 import HtmlToReact from 'html-to-react';
 import camelCaseMap from 'html-to-react/lib/camel-case-attribute-names';
+import { get } from 'lodash';
+import React from 'react';
 
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions();
 
@@ -27,12 +27,24 @@ const attributeMap: { [key: string]: string } = {
   class: 'className',
 };
 
-export type OverrideSettings = {
-  component: React.ComponentType;
+export type OverrideSettingsBase = {
+  component?: React.ComponentType<any>;
   allowedAttributes?: string[];
   processNode?: (node: HTMLToReactNode, props: object) => React.ReactNode;
   shouldProcessNode?: (node: HTMLToReactNode) => boolean;
 };
+
+export interface OverrideSettingsComponent extends OverrideSettingsBase {
+  component: React.ComponentType<any>;
+}
+
+export interface OverrideSettingsProcessNode extends OverrideSettingsBase {
+  processNode: (node: HTMLToReactNode, props: object) => React.ReactNode;
+}
+
+export type OverrideSettings =
+  | OverrideSettingsComponent
+  | OverrideSettingsProcessNode;
 
 export type ManyOverrideSettings = {
   [i: string]: OverrideSettings;
@@ -91,6 +103,8 @@ export const createTagOverride = (
       return Override.processNode(node, props);
     }
 
+    if (!Override.component) return null;
+
     return <Override.component {...props} />;
   },
 });
@@ -109,8 +123,10 @@ export const createCodeBlockOverride = (
     },
 
     processNode(node: HTMLToReactNode, props: any) {
-      const language =
-        props.className && props.className.replace('language-', '');
+      const [, language = undefined] =
+        (props.className && props.className.match(/language-([^\s]+)/)) || [];
+
+      if (!Override.component) return null;
 
       return (
         <Override.component {...props} language={language}>
@@ -130,7 +146,7 @@ export const standardOverrides = [
   {
     shouldProcessNode(node: HTMLToReactNode) {
       // Parse text outside of code blocks
-      if (node.parent && ['code', 'pre'].indexOf(node.parent.name) >= 0) {
+      if (node.parent && ['code', 'pre'].indexOf(node.parent.name!) >= 0) {
         return false;
       }
       if (node.type === 'text') return true;

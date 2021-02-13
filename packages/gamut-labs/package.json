@@ -1,0 +1,46 @@
+{
+  "name": "@codecademy/gamut-labs",
+  "description": "Brand and experimental component library for Codecademy",
+  "version": "10.0.2",
+  "author": "Codecademy Engineering <dev@codecademy.com>",
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "dist/**/[A-Z]**/[A-Z]*.js",
+    "dist/**/[A-Z]**/index.js"
+  ],
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "peerDependencies": {
+    "@codecademy/gamut-tests": "^1.0.0",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "react": ">=16.8.1",
+    "react-dom": ">=16.8.1"
+  },
+  "dependencies": {
+    "@codecademy/gamut": "^22.0.0",
+    "@codecademy/gamut-styles": "^8.0.0",
+    "@codecademy/gamut-system": "^0.4.0",
+    "@codecademy/gamut-tests": "^2.0.0",
+    "classnames": "^2.2.5",
+    "react-hotkeys-hook": "^2.3.1",
+    "react-use": "15.3.8"
+  },
+  "scripts": {
+    "verify": "tsc --noEmit",
+    "build:compile": "babel ./src --out-dir ./dist --copy-files --copy-ignored --extensions \".ts,.tsx\"",
+    "build:clean": "rm -rf dist",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn build:clean && yarn build:compile && yarn build:types",
+    "lernaBuildTask": "yarn build"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

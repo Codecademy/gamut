@@ -1,39 +1,52 @@
-import React, { PureComponent } from 'react';
 import cx from 'classnames';
-import marked from 'marked';
-import insane from 'insane';
 import HtmlToReact from 'html-to-react';
-import omitProps from '../utils/omitProps';
+import insane from 'insane';
+import marked from 'marked';
+import React, { PureComponent } from 'react';
+
+import { omitProps } from '../utils/omitProps';
 import {
-  createTagOverride,
   createCodeBlockOverride,
+  createTagOverride,
   ManyOverrideSettings,
   standardOverrides,
 } from './libs/overrides';
-import defaultSanitizationConfig from './libs/sanitizationConfig';
+import { Iframe } from './libs/overrides/Iframe';
+import {
+  MarkdownAnchor,
+  MarkdownAnchorProps,
+} from './libs/overrides/MarkdownAnchor';
+import { Table, TableProps } from './libs/overrides/Table';
 import { createPreprocessingInstructions } from './libs/preprocessing';
-import s from './styles/index.scss';
-import Iframe from './libs/overrides/Iframe';
-import Anchor from './libs/overrides/Anchor';
-import Table from './libs/overrides/Table';
+import { defaultSanitizationConfig } from './libs/sanitizationConfig';
+import styles from './styles/index.module.scss';
 
 const htmlToReactParser = new HtmlToReact.Parser({
   xmlMode: true,
 });
 
-export const preprocessingInstructions = createPreprocessingInstructions(s);
+const preprocessingInstructions = createPreprocessingInstructions(styles);
 
-const isValidNode = function() {
-  return true;
+const isValidNode = () => true;
+
+export type SkipDefaultOverridesSettings = {
+  a?: boolean;
+  iframe?: boolean;
+  table?: boolean;
 };
 
-export interface MarkdownProps {
+export type MarkdownProps = {
   className?: string;
   inline?: boolean;
   overrides?: ManyOverrideSettings;
+  skipDefaultOverrides?: SkipDefaultOverridesSettings;
   spacing?: 'loose' | 'tight' | 'none';
   text?: string;
-}
+  /**
+   * Callback when a markdown anchor tag is clicked
+   */
+  onAnchorClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
+};
 
 export class Markdown extends PureComponent<MarkdownProps> {
   render() {
@@ -42,17 +55,19 @@ export class Markdown extends PureComponent<MarkdownProps> {
       text = '',
       className,
       overrides: userOverrides = {},
+      skipDefaultOverrides = {},
       inline = false,
+      onAnchorClick,
     } = this.props;
 
     if (!text) return null;
 
-    const spacingStyles = s[`spacing-${spacing}`];
+    const spacingStyles = styles[`spacing-${spacing}`];
     const classes = cx(spacingStyles, className);
 
     const Wrapper = inline ? 'span' : 'div';
 
-    const overrides = Object.keys(userOverrides).map(tagName => {
+    const overrides = Object.keys(userOverrides).map((tagName) => {
       if (tagName === 'CodeBlock') {
         return createCodeBlockOverride(tagName, userOverrides[tagName]);
       }
@@ -60,21 +75,36 @@ export class Markdown extends PureComponent<MarkdownProps> {
     });
 
     const processingInstructions = [
-      createTagOverride('iframe', {
-        component: Iframe,
-      }),
-      createTagOverride('a', {
-        component: Anchor,
-      }),
-      createTagOverride('table', {
-        component: props => (
-          <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
-        ),
-        allowedAttributes: ['style'],
-      }),
+      !skipDefaultOverrides.iframe &&
+        createTagOverride('iframe', {
+          component: Iframe,
+        }),
+      !skipDefaultOverrides.a &&
+        createTagOverride('a', {
+          component: MarkdownAnchor,
+          processNode: (node, props) => {
+            // Note: this processNode override is necessary because wrapping this component
+            // in an anonymous functional component as with the Table below causes react rendering
+            // to crash with some chrome translation features.
+            // See https://codecademy.atlassian.net/browse/WEB-1214
+            return (
+              <MarkdownAnchor
+                onClick={onAnchorClick}
+                {...(props as MarkdownAnchorProps)}
+              />
+            );
+          },
+        }),
+      !skipDefaultOverrides.table &&
+        createTagOverride('table', {
+          component: (props: TableProps) => (
+            <Table maxHeight={spacing === 'tight' ? 180 : 500} {...props} />
+          ),
+          allowedAttributes: ['style'],
+        }),
       ...overrides,
       ...standardOverrides,
-    ];
+    ].filter(Boolean);
 
     const markedOptions = {
       smartypants: true,
@@ -89,7 +119,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       ...defaultSanitizationConfig,
       allowedTags: [
         ...defaultSanitizationConfig.allowedTags,
-        ...Object.keys(userOverrides).map(tagName => tagName.toLowerCase()),
+        ...Object.keys(userOverrides).map((tagName) => tagName.toLowerCase()),
       ],
       allowedAttributes: {
         ...defaultSanitizationConfig.allowedAttributes,
@@ -98,7 +128,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
             ...acc,
             [tagName.toLowerCase()]: (
               userOverrides[tagName].allowedAttributes || []
-            ).map(attr => attr.toLowerCase()),
+            ).map((attr) => attr.toLowerCase()),
           };
         }, {}),
       },
@@ -124,5 +154,3 @@ export class Markdown extends PureComponent<MarkdownProps> {
     );
   }
 }
-
-export default Markdown;

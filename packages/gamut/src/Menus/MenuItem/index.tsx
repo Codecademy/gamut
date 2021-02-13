@@ -2,7 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 
 import { ChildComponentDescriptor } from '../../typings/react';
-import s from './styles.scss';
+import styles from './styles.module.scss';
 
 export type AsProps = {
   className?: string;
@@ -25,6 +25,7 @@ export type MenuItemProps = {
   asProps?: any;
 
   selected?: boolean;
+  ariaLabel?: string;
 };
 
 export const MenuItem: React.FC<MenuItemProps> = ({
@@ -32,16 +33,15 @@ export const MenuItem: React.FC<MenuItemProps> = ({
   asProps = {},
   selected,
   children,
+  ariaLabel,
 }) => {
-  const childClassName = cx(s.link, asProps.className);
+  const childClassName = cx(styles.link, asProps.className);
 
   return (
-    <li className={cx(s.menuItem, { [s.selected]: selected })}>
-      <As {...asProps} className={childClassName}>
+    <li className={cx(styles.menuItem, { [styles.selected]: selected })}>
+      <As {...asProps} className={childClassName} aria-label={ariaLabel}>
         {children}
       </As>
     </li>
   );
 };
-
-export default MenuItem;

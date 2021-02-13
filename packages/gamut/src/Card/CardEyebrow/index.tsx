@@ -1,8 +1,9 @@
-import React from 'react';
 import cx from 'classnames';
-import Icon from '../../Icon';
-import iconMap from '../../Icon/iconMap';
-import styles from './styles.scss';
+import React from 'react';
+
+import { Icon } from '../../deprecated/Icon';
+import { iconMap } from '../../deprecated/Icon/iconMap';
+import styles from './styles.module.scss';
 
 interface CardEyebrowProps {
   iconName?: keyof typeof iconMap;
@@ -38,5 +39,3 @@ export function CardEyebrow(props: CardEyebrowProps) {
     </div>
   );
 }
-
-export default CardEyebrow;

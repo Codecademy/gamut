@@ -1,0 +1,47 @@
+import { Logo } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Logo}
+  parameters={{
+    subtitle: `Our proud logo. There is no a in the middle. Use sparingly, and make sure
+it has a lot of visual distinction to stand out appropriately.`,
+    source: 'gamut-labs',
+    figmaId: 'q5fnSuZuxMo5EVS6ZQWzkj',
+  }}
+  args={{ width: 256, type: 'default', color: 'black' }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Logo">{(args) => <Logo {...args} />}</Story>
+</Canvas>
+
+<Props story="Logo" />
+
+Variants of the Codecademy logo you can play around with.
+
+<Canvas>
+  <Story name="Pro" args={{ type: 'pro' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Pro Alt" args={{ type: 'proAlt' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Pro Lockup" args={{ type: 'proLockup' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Pro Mono" args={{ type: 'proMono' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Premium" args={{ type: 'premium' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Program" args={{ type: 'program' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+  <Story name="Default" args={{ type: 'default' }}>
+    {(args) => <Logo {...args} />}
+  </Story>
+</Canvas>

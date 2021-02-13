@@ -1,7 +1,8 @@
 import cx from 'classnames';
-import React, { ReactNode, FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 
-import s from './styles.scss';
+import { omitProps } from '../../utils/omitProps';
+import styles from './styles.module.scss';
 
 export type TabProps = {
   active?: boolean;
@@ -12,54 +13,62 @@ export type TabProps = {
   disabled?: boolean;
   onChange?: (newTabIndex: number) => void;
   tabIndex?: number;
+  defaultTheme?: boolean;
 };
 
 export const Tab: FunctionComponent<TabProps> = ({
   active,
-  activeClassName,
   children,
+  activeClassName,
   className,
   disabled,
   id,
+  defaultTheme = true,
   onChange = () => {},
   tabIndex = 0,
+  ...rest
 }: TabProps) => {
-  const tabLinkClasses = cx(s.tab, {
-    [s.active]: active,
-    [activeClassName]: active && activeClassName !== undefined,
+  const tabClasses = cx(styles.tab, className, {
+    [styles.tab_default]: defaultTheme,
+    [styles.active]: active,
+    [styles.tab_default__active]: defaultTheme && active,
+    [activeClassName!]: active && activeClassName,
+    [styles.disabled]: disabled,
   });
+  const dataPropsToTransfer = omitProps([], rest);
+
   return (
-    <div className={cx(s.tabListItem, className)} role="tab">
-      <a
-        href={`${id}-panel`}
-        id={id}
-        className={tabLinkClasses}
-        onClick={e => {
+    <button
+      id={id}
+      className={tabClasses}
+      aria-selected={active}
+      aria-controls={`${id}-panel`}
+      onClick={(e: React.MouseEvent) => {
+        e.preventDefault();
+
+        if (disabled) {
+          return;
+        }
+
+        onChange(tabIndex);
+      }}
+      onKeyDown={(e: React.KeyboardEvent) => {
+        if (disabled) {
+          return;
+        }
+
+        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
+        if (e.key === ' ' || e.key === 'Enter') {
           e.preventDefault();
-
-          if (disabled) {
-            return;
-          }
-
           onChange(tabIndex);
-        }}
-        onKeyDown={e => {
-          if (disabled) {
-            return;
-          }
-
-          // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_link_role
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            onChange(tabIndex);
-          }
-        }}
-        tabIndex={disabled ? -1 : 0}
-      >
-        {children}
-      </a>
-    </div>
+        }
+      }}
+      role="tab"
+      tabIndex={disabled ? -1 : 0}
+      type="button"
+      {...dataPropsToTransfer}
+    >
+      {children}
+    </button>
   );
 };
-
-export default Tab;

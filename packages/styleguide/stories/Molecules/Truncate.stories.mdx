@@ -1,0 +1,45 @@
+import { Text, Truncate } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={Truncate}
+  parameters={{
+    subtitle: `
+Truncates can be used to asynchronously display feedback or interactions
+with the user with various connotations.
+`,
+    source: 'gamut',
+  }}
+  args={{
+    children: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur.`,
+  }}
+/>
+
+<Canvas withSource="open">
+  <Story name="Truncate">{(args) => <Truncate {...args} />}</Story>
+</Canvas>
+
+<Props story="Truncate" />
+
+<Canvas withSource="open">
+  <Story
+    name="Truncate Markup"
+    args={{
+      lines: 1,
+      children: (
+        <>
+          This works with <Text>any</Text> <Text>random</Text> markup! Try it
+          out.
+        </>
+      ),
+    }}
+  >
+    {(args) => <Truncate {...args} />}
+  </Story>
+</Canvas>

@@ -1,4 +1,4 @@
-import React, { SVGProps, FunctionComponent } from 'react';
+import React, { FunctionComponent, SVGProps } from 'react';
 
 export type SpinnerProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
@@ -153,5 +153,3 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
 };
 
 Spinner.defaultProps = defaultProps;
-
-export default Spinner;

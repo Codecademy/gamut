@@ -1,0 +1,28 @@
+@import "variables";
+
+.TextArea {
+  font-size: 1rem;
+  padding: $form-padding;
+  outline: none;
+  width: 100%;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  transition: border-color $transition-time;
+  font-weight: normal;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: $color-gray-500;
+  }
+
+  &:focus {
+    border-color: $color-green-600;
+  }
+}
+
+.error {
+  border-color: $color-red-700;
+  &:focus {
+    border-color: $color-red-500;
+  }
+}

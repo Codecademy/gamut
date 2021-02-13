@@ -1,6 +1,7 @@
-import React, { InputHTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/Input.scss';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
+
+import styles from './styles/Input.module.scss';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -12,24 +13,24 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   type?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
-  error,
-  htmlFor,
-  className,
-  ...rest
-}) => {
-  const classNames = cx(
-    s.Input,
-    {
-      [s.error]: error,
-    },
-    className
-  );
-  return <input {...rest} id={htmlFor} className={classNames} />;
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, htmlFor, className, id, ...rest }, ref) => {
+    const classNames = cx(
+      styles.Input,
+      {
+        [styles.fileInput]: rest.type === 'file',
+      },
+      {
+        [styles.error]: error,
+      },
+      className
+    );
+    return (
+      <input {...rest} id={id || htmlFor} ref={ref} className={classNames} />
+    );
+  }
+);
 
 Input.defaultProps = {
   type: 'text',
 };
-
-export default Input;

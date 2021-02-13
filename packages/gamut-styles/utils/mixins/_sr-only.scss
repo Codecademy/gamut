@@ -1,7 +1,7 @@
 // shamelessly stolen from bootstrap
 // https://github.com/twbs/bootstrap/blob/2085c142679563189dbc34ec6bf4b00e32b8f615/scss/mixins/_screen-reader.scss
 
-@mixin sr-only {
+@mixin screenreader-only {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -13,7 +13,12 @@
   border: 0;
 }
 
-@mixin sr-only-focusable {
+@mixin sr-only {
+  @warn "This is deprecated, please use screenreader-only";
+  @include screenreader-only;
+}
+
+@mixin screenreader-only-focusable {
   &:active,
   &:focus {
     position: static;
@@ -24,4 +29,9 @@
     white-space: normal;
     clip-path: none;
   }
+}
+
+@mixin sr-only-focusable {
+  @warn "This is deprecated, please use screenreader-only-focusable";
+  @include screenreader-only-focusable;
 }

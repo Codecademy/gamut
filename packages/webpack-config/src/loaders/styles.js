@@ -13,11 +13,17 @@ const cssLoaderDefaults = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
+    esModule: true,
     sourceMap: true,
     modules: {
       localIdentName: CSS_MODULE_IDENT,
     },
   },
+};
+
+const cssModulesDefaults = {
+  exportGlobals: true,
+  localIdentName: CSS_MODULE_IDENT,
 };
 
 const postCssLoaderDefaults = {
@@ -27,9 +33,21 @@ const postCssLoaderDefaults = {
     plugins: () =>
       [
         require('postcss-flexbugs-fixes'),
+        require('postcss-focus-visible')({
+          preserve: false,
+          replaceWith: '[data-focus-visible-added]',
+        }),
         require('autoprefixer')({ flexbox: 'no-2009' }),
         PROD && require('cssnano')({ preset: 'default' }),
       ].filter(Boolean),
+  },
+};
+
+const extractPluginDefaults = {
+  loader: MiniCssExtractPlugin.loader,
+  options: {
+    hmr: !PROD,
+    esModule: true,
   },
 };
 
@@ -41,27 +59,27 @@ const scssLoaderDefaults = {
   },
 };
 
+const styleLoaderDefaults = {
+  loader: 'style-loader',
+  options: {
+    esModule: true,
+  },
+};
+
 const css = {
   default: {
     test: cssFilePattern,
-    use: [
-      {
-        loader: 'style-loader',
-      },
-      merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults),
-    ],
+    sideEffects: true,
+    use: [styleLoaderDefaults, cssLoaderDefaults, postCssLoaderDefaults],
   },
   extracted: {
     test: cssFilePattern,
-    use: [
-      MiniCssExtractPlugin.loader,
-      merge(cssLoaderDefaults),
-      merge(postCssLoaderDefaults),
-    ],
+    sideEffects: true,
+    use: [extractPluginDefaults, cssLoaderDefaults, postCssLoaderDefaults],
   },
   server: {
     test: cssFilePattern,
+    sideEffects: true,
     use: [
       merge(cssLoaderDefaults, {
         options: {
@@ -75,43 +93,47 @@ const css = {
 const scss = {
   default: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
-      {
-        loader: 'style-loader',
-      },
+      styleLoaderDefaults,
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
+          importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
   extracted: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
-      MiniCssExtractPlugin.loader,
+      extractPluginDefaults,
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
+          importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
   server: {
     test: scssFilePattern,
+    sideEffects: true,
     use: [
       merge(cssLoaderDefaults, {
         options: {
-          modules: true,
+          modules: cssModulesDefaults,
           onlyLocals: true,
+          importLoaders: 2,
         },
       }),
-      merge(postCssLoaderDefaults),
-      merge(scssLoaderDefaults),
+      postCssLoaderDefaults,
+      scssLoaderDefaults,
     ],
   },
 };

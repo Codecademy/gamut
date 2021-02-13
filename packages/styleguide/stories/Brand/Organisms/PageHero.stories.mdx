@@ -1,0 +1,73 @@
+import { PageHero } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+
+<Meta
+  title={title}
+  component={PageHero}
+  args={{
+    title:
+      "I'd rather be listening to Grammy-Award winning 1999 hit Smooth by Santana",
+    desc:
+      'feat. [Rob Thomas of Matchbox Twenty](https://en.wikipedia.org/wiki/Rob_Thomas_(musician)) off the multi-platinum album',
+    onAnchorClick: () =>
+      // eslint-disable-next-line no-console
+      console.log('You clicked me an anchor tag inside Markdown!'),
+    cta: {
+      text: 'Supernatural',
+      href:
+        'https://open.spotify.com/album/10aiDpdFGyfCFEcqpx6XTq?si=xR1nDqVqROK6KYM8J-l_rw',
+      onClick: () => {
+        // eslint-disable-next-line no-console
+        console.log('You could add event tracking here');
+      },
+    },
+    media: {
+      type: 'image',
+      src:
+        'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
+      alt:
+        'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+    },
+  }}
+  parameters={{
+    subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
+    status: 'volatile',
+  }}
+/>
+
+## With CTA
+
+<Canvas>
+  <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
+</Canvas>
+
+<Props story="With CTA" />
+
+## Without CTA
+
+<Canvas>
+  <Story name="Without CTA">
+    {(args) => <PageHero {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+## With Video
+
+<Canvas>
+  <Story name="With Video">
+    {(args) => (
+      <PageHero
+        {...args}
+        media={{
+          type: 'video',
+          videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          videoTitle: 'Workout with Rick Sanchez',
+          placeholderImage: 'https://placekitten.com/400/300',
+          autoplay: true,
+        }}
+        title="What's it like to be a Software Engineer"
+      />
+    )}
+  </Story>
+</Canvas>

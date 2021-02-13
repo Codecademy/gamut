@@ -1,0 +1,29 @@
+@import "~@codecademy/gamut-styles/utils";
+
+$button-width: 11.25rem;
+
+.skipToContent {
+  background: $color-white;
+  color: $color-black;
+  cursor: pointer;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  opacity: 0;
+  padding: 1.5rem 0;
+  position: absolute;
+  text-decoration: none;
+  top: 100vh;
+  width: $button-width;
+
+  &:focus {
+    left: calc(50% - #{$button-width / 2});
+    opacity: 1;
+    top: 1rem;
+  }
+}
+
+.downArrowIcon {
+  margin-left: 0.5rem;
+  margin-right: -0.5rem;
+}

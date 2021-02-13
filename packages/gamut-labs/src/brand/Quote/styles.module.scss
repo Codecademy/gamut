@@ -1,0 +1,20 @@
+@import "~@codecademy/gamut-styles/utils";
+
+.lightContainer {
+  color: $brand-dark-blue;
+}
+
+.darkContainer {
+  color: $color-white;
+}
+
+.icon {
+  display: block;
+  margin-bottom: -2.5rem;
+}
+
+.text {
+  quotes: none;
+  font-size: px-rem(30px);
+  line-height: px-rem(42px);
+}

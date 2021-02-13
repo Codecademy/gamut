@@ -1,54 +1,65 @@
-import React, { ReactNode, HTMLAttributes } from 'react';
-import { isArray, isObject, each } from 'lodash';
 import cx from 'classnames';
-import s from './styles/Select.scss';
+import { each, isArray, isObject } from 'lodash';
+import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
-export type SelectProps = HTMLAttributes<HTMLSelectElement> & {
-  className?: string;
-  defaultValue?: string;
+import styles from './styles/Select.module.scss';
+
+export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+  error?: boolean;
   htmlFor?: string;
-  options?: string[] | {};
+  options?: string[] | Record<string, number | string>;
+  id?: string;
 };
 
-export const Select: React.FC<SelectProps> = props => {
-  const className = cx(s.Select, props.className);
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
+  (props, ref) => {
+    const className = cx(
+      styles.Select,
+      props.className,
+      props.error && styles.error
+    );
+    const { options, error, id, ...rest } = props;
 
-  // Generate list of options
-  const { options, ...propsToTransfer } = props;
+    let selectOptions: ReactNode[] = [];
 
-  let selectOptions: ReactNode[] = [];
+    if (isArray(options)) {
+      selectOptions = options.map((option) => {
+        const key = id ? `${id}-${option}` : option;
+        return (
+          <option key={key} value={option} data-testid={key}>
+            {option}
+          </option>
+        );
+      });
+    } else if (isObject(options)) {
+      each(options, (text, val) => {
+        const key = id ? `${id}-${val}` : val;
+        selectOptions.push(
+          <option key={key} value={val} data-testid={key}>
+            {text}
+          </option>
+        );
+      });
+    }
 
-  if (isArray(options)) {
-    selectOptions = options.map(option => (
-      <option key={option} value={option}>
-        {option}
-      </option>
-    ));
-  } else if (isObject(options)) {
-    each(options, (val, key) => {
-      selectOptions.push(
-        <option key={key} value={key}>
-          {val}
-        </option>
-      );
-    });
+    return (
+      <div className={className}>
+        <svg className={styles.selectIcon}>
+          <path
+            d="M1.175 0L5 3.825 8.825 0 10 1.183l-5 5-5-5z"
+            fill="#3E3E40"
+          />
+        </svg>
+        <select
+          {...rest}
+          className={styles.selectInput}
+          defaultValue={props.defaultValue || ''}
+          id={id || props.htmlFor}
+          ref={ref}
+        >
+          {selectOptions}
+        </select>
+      </div>
+    );
   }
-
-  return (
-    <div className={className}>
-      <svg className={s.selectIcon}>
-        <path d="M1.175 0L5 3.825 8.825 0 10 1.183l-5 5-5-5z" fill="#3E3E40" />
-      </svg>
-      <select
-        {...propsToTransfer}
-        className={s.selectInput}
-        defaultValue={props.defaultValue || ''}
-        id={props.htmlFor}
-      >
-        {selectOptions}
-      </select>
-    </div>
-  );
-};
-
-export default Select;
+);

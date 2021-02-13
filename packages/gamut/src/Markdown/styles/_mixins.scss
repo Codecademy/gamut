@@ -89,10 +89,7 @@
     margin: 0 0.0625rem;
     border-radius: 0.125rem;
     color: $deprecated-gamut-purple-900;
-    background-color: mix(
-      $deprecated-swatches-grey-200,
-      $deprecated-swatches-grey-100
-    );
+    background-color: mix($color-gray-200, $color-gray-100);
     white-space: normal;
     vertical-align: baseline;
     font-family: $font-monospace;
@@ -106,6 +103,7 @@
       white-space: pre-wrap;
       padding: 0;
       margin: 0;
+      color: inherit;
       background-color: transparent;
       font-family: $font-monospace;
     }
@@ -123,5 +121,21 @@
 
   .iframe {
     width: 100%;
+  }
+
+  .blockquote {
+    display: block;
+    font-family: $font-family-base;
+    padding-left: $base-margin;
+    border-left: ($base-margin / 2) solid $color-gray-200;
+    margin: 0;
+    margin-bottom: $base-margin;
+    font-style: italic;
+    // The Markdown processor combines multiple lines
+    // into a single tag if the same tag repeats line to line
+    // this is mainly for `<p>` tags since that's the default
+    > * {
+      white-space: pre-wrap;
+    }
   }
 }

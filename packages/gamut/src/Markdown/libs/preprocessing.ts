@@ -1,4 +1,5 @@
 import cx from 'classnames';
+
 import { HTMLToReactNode } from './overrides';
 
 type StylesObject = {
@@ -20,17 +21,18 @@ type StylesObject = {
 export const createPreprocessingInstructions = (styles: StylesObject) => {
   return [
     {
-      shouldPreprocessNode: function(node: HTMLToReactNode) {
+      shouldPreprocessNode(node: HTMLToReactNode) {
         return Boolean(node.name);
       },
-      preprocessNode: function(node: HTMLToReactNode) {
+      preprocessNode(node: HTMLToReactNode) {
         const classname = cx(
-          {
-            [`${styles[node.name]}`]: Boolean(styles[node.name]),
-          },
+          styles[node.name!],
           node.attribs && node.attribs.class
         );
-        node.attribs = { class: classname, ...node.attribs };
+
+        const attrs = { ...node.attribs };
+        if (classname) attrs.class = classname;
+        node.attribs = attrs;
       },
     },
   ];

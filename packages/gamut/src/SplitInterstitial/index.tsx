@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react';
 import blueCurve from './assets/blueCurve.svg';
 import purpleCurveBottomRight from './assets/purpleCurveBottomRight.svg';
 import purpleCurveTopLeft from './assets/purpleCurveTopLeft.svg';
-import styles from './styles.scss';
+import styles from './styles.module.scss';
 
 type SplitInterstitialSide = {
   children?: ReactNode;
@@ -36,13 +36,11 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
     <div className={cx(styles.splitInterstitial, className)}>
       <div className={cx(styles.side)}>{right.children}</div>
       <div className={cx(styles.side, styles.left)}>
-        {
-          <img
-            alt=""
-            className={cx(styles.topLeftImage, topLeftImage.className)}
-            src={topLeftImage.src || purpleCurveTopLeft}
-          />
-        }
+        <img
+          alt=""
+          className={cx(styles.topLeftImage, topLeftImage.className)}
+          src={topLeftImage.src || purpleCurveTopLeft}
+        />
         {bottomRightImage.src ? (
           <img
             alt=""
@@ -68,5 +66,3 @@ export const SplitInterstitial: React.FC<SplitInterstitialProps> = ({
     </div>
   );
 };
-
-export default SplitInterstitial;

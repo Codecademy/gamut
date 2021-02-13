@@ -1,19 +1,18 @@
-import cx from 'classnames';
-import React, { HTMLAttributes } from 'react';
+import React from 'react';
 
-import s from './styles.scss';
+import { Box } from '../Box';
 
-export type BadgeProps = {
-  rootProps?: HTMLAttributes<HTMLSpanElement>;
-};
-
-export const Badge: React.FC<BadgeProps> = ({ children, rootProps = {} }) => {
-  const combinedProps = {
-    ...rootProps,
-    className: cx(s.badge, rootProps.className),
-  };
-
-  return <span {...combinedProps}>{children}</span>;
-};
-
-export default Badge;
+export const Badge: React.FC = ({ children }) => (
+  <Box
+    backgroundColor="blue"
+    borderRadius="3px"
+    textColor="white"
+    display="inline-block"
+    fontSize={14}
+    marginX={8}
+    paddingY={4}
+    paddingX={12}
+  >
+    {children}
+  </Box>
+);

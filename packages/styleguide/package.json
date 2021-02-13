@@ -1,0 +1,57 @@
+{
+  "name": "@codecademy/styleguide",
+  "description": "Styleguide & Component library for codecademy.com",
+  "version": "26.0.2",
+  "author": "Codecademy Engineering",
+  "scripts": {
+    "start": "yarn storybook",
+    "storybook": "start-storybook -p 6006 -c .storybook --ci --quiet",
+    "build-storybook": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/storybook",
+    "build-storybook-alpha": "NODE_ENV=production build-storybook --quiet -c .storybook -o ../../dist/storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Codecademy/client-modules.git"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "7.12.9",
+    "@codecademy/gamut": "^22.0.0",
+    "@codecademy/gamut-icons": "^3.15.0",
+    "@codecademy/gamut-labs": "^10.0.2",
+    "@codecademy/gamut-styles": "^8.0.0",
+    "@codecademy/macros": "^2.0.0",
+    "@codecademy/webpack-config": "^6.0.0",
+    "@emotion/cache": "^11.1.3",
+    "@emotion/react": "^11.1.4",
+    "@emotion/styled": "^11.0.0",
+    "@storybook/addon-a11y": "6.1.15",
+    "@storybook/addon-actions": "6.1.15",
+    "@storybook/addon-controls": "6.1.15",
+    "@storybook/addon-docs": "6.1.15",
+    "@storybook/addon-essentials": "6.1.15",
+    "@storybook/addon-links": "6.1.15",
+    "@storybook/addon-storyshots": "6.1.15",
+    "@storybook/addons": "6.1.15",
+    "@storybook/react": "6.1.15",
+    "@storybook/theming": "6.1.15",
+    "@types/react": "*",
+    "autoprefixer": "^9.7.4",
+    "babel-preset-codecademy": "^2.3.0",
+    "focus-visible": "^5.2.0",
+    "invariant": "2.2.4",
+    "jsdom": "16.4.0",
+    "lodash": "4.17.20",
+    "polished": "^3.6.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "typescript": "*"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
+  }
+}

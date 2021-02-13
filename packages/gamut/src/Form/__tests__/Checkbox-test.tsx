@@ -1,6 +1,7 @@
+import { mount } from 'enzyme';
 import React from 'react';
-import { shallow } from 'enzyme';
-import Checkbox from '../Checkbox';
+
+import { Checkbox } from '../Checkbox';
 
 describe('<Checkbox>', () => {
   const defaultProps = {
@@ -9,7 +10,11 @@ describe('<Checkbox>', () => {
   };
 
   it('sets the input checked state when the prop is passed', () => {
-    const wrapper = shallow(<Checkbox {...defaultProps} checked />);
+    const onChange = jest.fn();
+
+    const wrapper = mount(
+      <Checkbox {...defaultProps} checked onChange={onChange} />
+    );
     expect(wrapper.find('input[type="checkbox"]').prop('checked')).toEqual(
       true
     );
@@ -18,7 +23,7 @@ describe('<Checkbox>', () => {
   it('calls the onChange callback when the input changes', () => {
     const onChangeCallback = jest.fn();
 
-    const wrapper = shallow(
+    const wrapper = mount(
       <Checkbox {...defaultProps} onChange={onChangeCallback} value="a" />
     );
     wrapper.find('input[type="checkbox"]').simulate('change', {
@@ -31,7 +36,7 @@ describe('<Checkbox>', () => {
   });
 
   it('accepts JSX in the label', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Checkbox {...defaultProps} label={<img alt="my cat" src="cat.jpg" />} />
     );
     expect(wrapper.find('img').length).toBe(1);

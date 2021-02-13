@@ -1,8 +1,9 @@
-import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
-import s from './styles/FormGroup.scss';
-import FormGroupDescription from './FormGroupDescription';
-import FormGroupLabel from './FormGroupLabel';
+import React, { HTMLAttributes } from 'react';
+
+import { FormGroupDescription } from './FormGroupDescription';
+import { FormGroupLabel } from './FormGroupLabel';
+import styles from './styles/FormGroup.module.scss';
 
 export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;
@@ -19,7 +20,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   className,
   ...rest
 }) => {
-  const classNames = cx(s.FormGroup, className);
+  const classNames = cx(styles.FormGroup, className);
 
   const labelComponent = label ? (
     <FormGroupLabel htmlFor={htmlFor}>{label}</FormGroupLabel>
@@ -39,5 +40,3 @@ export const FormGroup: React.FC<FormGroupProps> = ({
     </div>
   );
 };
-
-export default FormGroup;

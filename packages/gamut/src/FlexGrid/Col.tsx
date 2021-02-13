@@ -1,6 +1,7 @@
 import React from 'react';
-import omitProps from '../utils/omitProps';
-import style from './styles/index.scss';
+
+import { omitProps } from '../utils/omitProps';
+import style from './styles/index.module.scss';
 
 const propKeys = [
   'xs',
@@ -13,7 +14,7 @@ const propKeys = [
   'lgOffset',
   'reverse',
   'className',
-  'tagName',
+  'as',
   'children',
 ];
 
@@ -40,7 +41,7 @@ function getClassNames(props: ColProps) {
   }
 
   return (Object.keys(props) as (keyof typeof classMap & keyof typeof props)[])
-    .filter(key => classMap[key])
+    .filter((key) => classMap[key])
     .map(
       (key: keyof typeof classMap) =>
         style[
@@ -53,27 +54,34 @@ function getClassNames(props: ColProps) {
     .join(' ');
 }
 
-export type ColProps = {
+export type ColSizing = {
+  /** Size of the column on screen sizes greater than `xs` */
   xs?: boolean | number;
+  /** Size of the column on screen sizes greater than `sm` */
   sm?: boolean | number;
-  md: boolean | number;
-  lg: boolean | number;
+  /** Size of the column on screen sizes greater than `md` */
+  md?: boolean | number;
+  /** Size of the column on screen sizes greater than `lg` */
+  lg?: boolean | number;
+  /** Offset of the column on screen sizes greater than `xs` */
   xsOffset?: number;
+  /** Offset of the column on screen sizes greater than `sm` */
   smOffset?: number;
+  /** Offset of the column on screen sizes greater than `md` */
   mdOffset?: number;
+  /** Offset of the column on screen sizes greater than `lg` */
   lgOffset?: number;
-  tagName?: string;
+};
+
+export type ColProps = ColSizing & {
+  as?: React.ElementType;
   className?: string;
+  /** Reverses the column's flex-direction */
   reverse?: boolean;
 };
 
-export const Col = (props: ColProps) => {
+export const Col: React.FC<ColProps> = ({ as: Element = 'div', ...props }) => {
   const className = getClassNames(props);
 
-  return React.createElement(
-    props.tagName || 'div',
-    omitProps(propKeys, { ...props, className })
-  );
+  return <Element {...omitProps(propKeys, { ...props, className })} />;
 };
-
-export default Col;

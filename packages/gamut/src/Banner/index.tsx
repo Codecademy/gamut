@@ -1,8 +1,9 @@
+import { CloseIcon } from '@codecademy/gamut-icons';
 import cx from 'classnames';
-import React, { MouseEvent } from 'react';
-import styles from './styles.scss';
-import Button from '../Button';
-import CloseIcon from '../Icon/icons/CloseIcon';
+import React from 'react';
+
+import { ButtonDeprecated, ButtonDeprecatedProps } from '../ButtonDeprecated';
+import styles from './styles.module.scss';
 
 export enum BannerStyle {
   BorderBottom = 'border-bottom',
@@ -11,12 +12,28 @@ export enum BannerStyle {
 
 export type BannerProps = {
   classNames?: {
+    /**
+     * Class name for the container element.
+     */
     container?: string;
+    /**
+     * Class name for the content wrapper
+     */
     content?: string;
   };
+  /** Visual variations for banners */
   displayStyle?: BannerStyle;
+  /**
+   * Whether or not the banner should be visible.
+   */
   isClosed?: boolean;
-  onClose: (event: MouseEvent<HTMLButtonElement>) => void;
+  /**
+   * Callback called when the user closes the banner.
+   */
+  onClose: ButtonDeprecatedProps['onClick'];
+  /**
+   * An icon or jsx element to be displayed to the left of the content.
+   */
   icon?: React.ReactNode;
 };
 
@@ -25,7 +42,7 @@ const BANNER_CLASSES = {
   [BannerStyle.FullWidth]: styles.containerFullWidth,
 };
 
-const Banner: React.FC<BannerProps> = ({
+export const Banner: React.FC<BannerProps> = ({
   children,
   classNames = {},
   displayStyle = BannerStyle.FullWidth,
@@ -47,11 +64,9 @@ const Banner: React.FC<BannerProps> = ({
     >
       {icon && <div data-testid="icon-id">{icon}</div>}
       <div className={cx(styles.content, classNames.content)}>{children}</div>
-      <Button onClick={onClose} className={styles.closeButton}>
+      <ButtonDeprecated onClick={onClose} className={styles.closeButton}>
         <CloseIcon aria-label="dismiss" />
-      </Button>
+      </ButtonDeprecated>
     </div>
   );
 };
-
-export default Banner;
