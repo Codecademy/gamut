@@ -21,10 +21,10 @@ type StylesObject = {
 export const createPreprocessingInstructions = (styles: StylesObject) => {
   return [
     {
-      shouldPreprocessNode: function (node: HTMLToReactNode) {
+      shouldPreprocessNode(node: HTMLToReactNode) {
         return Boolean(node.name);
       },
-      preprocessNode: function (node: HTMLToReactNode) {
+      preprocessNode(node: HTMLToReactNode) {
         const classname = cx(
           styles[node.name!],
           node.attribs && node.attribs.class

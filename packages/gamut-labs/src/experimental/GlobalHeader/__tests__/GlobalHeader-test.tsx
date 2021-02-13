@@ -39,14 +39,20 @@ const anonLandingHeaderProps: GlobalHeaderProps = {
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'signup',
 };
@@ -63,10 +69,21 @@ const proHeaderProps: GlobalHeaderProps = {
   user,
 };
 
+const loadingHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'loading',
+};
+
 const renderElementProps: GlobalHeaderProps = {
   action,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
-  renderNotifications: () => <IconButton icon={BellIcon} />,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
+  renderNotifications: {
+    desktop: () => <IconButton icon={BellIcon} />,
+    mobile: () => <IconButton icon={BellIcon} />,
+  },
   type: 'pro',
   user,
 };
@@ -85,36 +102,40 @@ describe('GlobalHeader', () => {
       renderGlobalHeader(anonHeaderProps);
     });
 
+    /* since we're using css to toggle the display of the header between desktop & mobile, these tests check for visibility of elements
+     & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
     test('logo', () => {
-      screen.getByTestId('header-logo');
+      const logoElements = screen.getAllByTestId('header-logo');
+      expect(logoElements[0]).not.toBeVisible();
+      expect(logoElements[1]).toBeVisible();
     });
 
     test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
+      screen.getAllByText(courseCatalog.text);
     });
 
     test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
+      screen.getAllByText(resourcesDropdown.text);
     });
 
     test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
+      screen.getAllByText(communityDropdown.text);
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(pricingDropdown.text);
+      screen.getAllByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forBusiness.text);
+      screen.getAllByText(forBusiness.text);
     });
 
     test('login', () => {
-      screen.getByText(login.text);
+      screen.getAllByText(login.text);
     });
 
     test('signup', () => {
-      screen.getByText(signUp.text);
+      screen.getAllByText(signUp.text);
     });
   });
 
@@ -129,7 +150,7 @@ describe('GlobalHeader', () => {
       });
 
       test('shows login', () => {
-        screen.getByText(login.text);
+        screen.getAllByText(login.text);
       });
 
       test('does not show signup', () => {
@@ -151,7 +172,7 @@ describe('GlobalHeader', () => {
       });
 
       test('shows signup', () => {
-        screen.getByText(signUp.text);
+        screen.getAllByText(signUp.text);
       });
     });
 
@@ -161,11 +182,11 @@ describe('GlobalHeader', () => {
       });
 
       test('shows search', () => {
-        screen.getByTitle('Search Icon');
+        screen.getAllByTitle('Search Icon');
       });
 
       test('shows login', () => {
-        screen.getByText(login.text);
+        screen.getAllByText(login.text);
       });
 
       test('does not show sign up', () => {
@@ -180,7 +201,7 @@ describe('GlobalHeader', () => {
     });
 
     test('logo', () => {
-      screen.getByTestId('header-logo');
+      screen.getAllByTestId('header-logo');
     });
 
     test('myHome', () => {
@@ -222,7 +243,7 @@ describe('GlobalHeader', () => {
     });
 
     test('proLogo', () => {
-      screen.getByTestId('header-pro-logo');
+      screen.getAllByTestId('header-pro-logo');
     });
 
     test('myHome', () => {
@@ -246,6 +267,16 @@ describe('GlobalHeader', () => {
     });
   });
 
+  describe('loading', () => {
+    beforeEach(() => {
+      renderGlobalHeader(loadingHeaderProps);
+    });
+
+    test('logo', () => {
+      screen.getAllByTestId('header-logo');
+    });
+  });
+
   describe('renders a custom element when provided one', () => {
     beforeEach(() => {
       renderGlobalHeader(renderElementProps);
@@ -256,13 +287,13 @@ describe('GlobalHeader', () => {
     });
 
     test('notifications', () => {
-      screen.getByTitle('Bell Icon');
+      screen.getAllByTitle('Bell Icon');
     });
   });
 
   test('fires action() upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('button')[0].click();
+    screen.getAllByRole('link')[0].click();
     expect(action).toHaveBeenCalled();
   });
 });

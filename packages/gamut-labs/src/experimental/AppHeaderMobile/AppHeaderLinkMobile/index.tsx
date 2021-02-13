@@ -30,7 +30,7 @@ const SeparatorInner = styled(Box)<AppHeaderLinkButtonProps>`
 `;
 
 const AppHeaderLinkButtonOuter = styled(Anchor)`
-  padding: 0.5px 0;
+  padding: 1rem 0;
   color: ${({ theme }) => theme.colors.navy};
   ${hoverStyles}
   ${focusStyles}
@@ -53,13 +53,14 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
         <AppHeaderLinkButtonOuter
           data-testid={item.dataTestId}
           href={item.href}
-          onClick={(event: React.MouseEvent) => action(event, item)}
+          onClick={(event) => action(event, item)}
+          target={item.newTab ? 'blank' : ''}
           variant="interface"
         >
           <AppHeaderLinkButtonInner
             lineHeight="base"
             minWidth="0"
-            paddingY={8}
+            paddingY={16}
             textAlign="left"
             display="flex"
           >
