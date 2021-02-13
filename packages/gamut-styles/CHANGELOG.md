@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.3...@codecademy/gamut-styles@8.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
+### [7.7.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.2...@codecademy/gamut-styles@7.7.3) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [7.7.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.1...@codecademy/gamut-styles@7.7.2) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [7.7.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.7.0...@codecademy/gamut-styles@7.7.1) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [7.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.3...@codecademy/gamut-styles@7.7.0) (2021-01-29)
+
+
+### Features
+
+* **Styleguide:** Add specific theme and scale docs ([4062b54](https://github.com/Codecademy/client-modules/commit/4062b5444b8df37e183bf76865a07f938588d2c1))
+
+
+
 ### [7.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@7.6.2...@codecademy/gamut-styles@7.6.3) (2021-01-22)
 
 

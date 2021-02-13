@@ -82,6 +82,36 @@ describe('Alert', () => {
     expect(onCtaClick).toHaveBeenCalled();
   });
 
+  it('opens the cta in a new tab unless specified', () => {
+    const newTabAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick, href: '/hello' }}
+      >
+        Hello
+      </Alert>
+    );
+
+    const cta = newTabAlert.find('a').at(0);
+    expect(cta.prop('target')).toEqual('_blank');
+
+    const sameTabAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{
+          text: 'Click Me',
+          onClick: onCtaClick,
+          href: '/hello',
+          openInSameTab: true,
+        }}
+      >
+        Hello
+      </Alert>
+    );
+    const specialCta = sameTabAlert.find('a').at(0);
+    expect(specialCta.prop('target')).toEqual(undefined);
+  });
+
   it('truncates any children to a limited number of lines', () => {
     const renderedAlert = mount(
       <Alert
@@ -96,6 +126,20 @@ describe('Alert', () => {
     const renderedTruncated = renderedAlert.find('Truncate');
 
     expect(renderedTruncated.prop('lines')).toEqual(2);
+  });
+
+  it('automatically displays content as expanded if no lines are set', () => {
+    const renderedAlert = mount(
+      <Alert
+        onClose={onClose}
+        cta={{ text: 'Click Me', onClick: onCtaClick, href: '/hello' }}
+      >
+        Hello
+      </Alert>
+    );
+
+    const renderedTruncated = renderedAlert.find('Truncate');
+    expect(renderedTruncated.prop('expanded')).toEqual(true);
   });
 
   it('renders a clickable button to expand the truncated section', () => {
@@ -116,7 +160,7 @@ describe('Alert', () => {
 
     renderedAlert.update();
 
-    expect(renderedAlert.find('Truncate').prop('lines')).toEqual(undefined);
+    expect(renderedAlert.find('Truncate').prop('expanded')).toEqual(true);
   });
 
   it('renders a clickable button to collapse the truncated section when clicked twice', () => {
@@ -131,6 +175,7 @@ describe('Alert', () => {
     );
 
     const buttons = renderedAlert.find('button');
+    expect(buttons.length).toBe(3);
 
     buttons.at(0).simulate('click');
 

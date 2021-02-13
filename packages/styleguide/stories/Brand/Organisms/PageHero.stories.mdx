@@ -22,10 +22,13 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
         console.log('You could add event tracking here');
       },
     },
-    imgSrc:
-      'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
-    imgAlt:
-      'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+    media: {
+      type: 'image',
+      src:
+        'https://www.tshirtvortex.net/wp-content/uploads/2019/03/rathersmooth.jpg',
+      alt:
+        'A burly person with long blonde hair is seen from behind wearing a white t-shirt with bold black lettering that reads "I\'d rather be listening to Grammy-Award winning 1999 hit Smooth by Santana feat. Rob Thomas of Matchbox Twenty off the multi-platinum album Supernatural',
+    },
   }}
   parameters={{
     subtitle: `Hero component for landing pages created in Contentful. All props are optional. Image is hidden at sm screen size and below.`,
@@ -33,18 +36,38 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   }}
 />
 
-### With CTA
+## With CTA
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="With CTA">{(args) => <PageHero {...args} />}</Story>
 </Canvas>
 
 <Props story="With CTA" />
 
-### Without CTA
+## Without CTA
 
-<Canvas withSource="open">
+<Canvas>
   <Story name="Without CTA">
     {(args) => <PageHero {...args} cta={undefined} />}
+  </Story>
+</Canvas>
+
+## With Video
+
+<Canvas>
+  <Story name="With Video">
+    {(args) => (
+      <PageHero
+        {...args}
+        media={{
+          type: 'video',
+          videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+          videoTitle: 'Workout with Rick Sanchez',
+          placeholderImage: 'https://placekitten.com/400/300',
+          autoplay: true,
+        }}
+        title="What's it like to be a Software Engineer"
+      />
+    )}
   </Story>
 </Canvas>

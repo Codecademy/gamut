@@ -1,62 +1,67 @@
-import { Column, LayoutGrid } from '@codecademy/gamut';
-import { breakpoints } from '@codecademy/gamut-styles';
+import { Column, LayoutGrid, VideoProps } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { CTA, Description, Title } from './';
+import { CTA, Description, Title } from '.';
+import { PageHeroMedia } from './PageHeroMedia';
 import { BaseProps } from './types';
 
-const RightColumn = styled(Column)`
-  margin-left: 1rem;
-
-  @media only screen and (max-width: ${breakpoints.sm}) {
-    display: none;
-  }
+const LeftColumn = styled(Column)`
+  align-content: center;
 `;
 
-const Image = styled.img`
-  width: 100%;
-`;
+export type ImageProps = {
+  src: string;
+  alt: string;
+};
+
+export type MediaProps =
+  | ({
+      type: 'image';
+    } & ImageProps)
+  | ({
+      type: 'video';
+    } & VideoProps);
 
 export type PageHeroProps = BaseProps & {
-  /**
-   * Hero image URL
-   */
-  imgSrc?: string;
-  /**
-   * Hero image alt text (for screen readers)
-   */
-  imgAlt?: string;
+  media?: MediaProps;
+};
+
+const columnSize = (type: string | undefined) => {
+  if (!type) return 12;
+  if (type === 'image') {
+    return 9;
+  }
+  if (type === 'video') {
+    return 7;
+  }
 };
 
 export const PageHero: React.FC<PageHeroProps> = ({
   title,
   desc,
   cta,
-  imgSrc,
-  imgAlt = '',
+  media,
   testId,
   onAnchorClick,
-}) => (
-  <LayoutGrid testId={testId}>
-    <Column
-      size={{
-        xs: 12,
-        sm: imgSrc ? 9 : 12,
-      }}
-    >
-      {title && <Title isPageHeading>{title}</Title>}
-      {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
-      {cta && (
-        <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
-          {cta.text}
-        </CTA>
-      )}
-    </Column>
-    {imgSrc && (
-      <RightColumn size={3}>
-        <Image src={imgSrc} alt={imgAlt} />
-      </RightColumn>
-    )}
-  </LayoutGrid>
-);
+}) => {
+  return (
+    <LayoutGrid testId={testId} rowGap="md" columnGap={{ xs: 'sm', sm: 'lg' }}>
+      <LeftColumn
+        size={{
+          xs: 12,
+          sm: columnSize(media?.type),
+        }}
+      >
+        {title && <Title isPageHeading>{title}</Title>}
+        {desc && <Description text={desc} onAnchorClick={onAnchorClick} />}
+        {cta && (
+          <CTA href={cta.href} onCtaButtonClick={cta.onClick}>
+            {cta.text}
+          </CTA>
+        )}
+      </LeftColumn>
+      {media && <PageHeroMedia media={media} />}
+    </LayoutGrid>
+  );
+};

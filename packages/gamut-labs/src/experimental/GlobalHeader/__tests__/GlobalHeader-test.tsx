@@ -1,5 +1,5 @@
 import { IconButton } from '@codecademy/gamut';
-import { BellIcon, PersonIcon, SearchIcon } from '@codecademy/gamut-icons';
+import { BellIcon, SearchIcon } from '@codecademy/gamut-icons';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
@@ -9,58 +9,83 @@ import { GlobalHeader, GlobalHeaderProps } from '..';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
   login,
   myHome,
-  plansPricingDropdown,
+  pricingDropdown,
   resourcesDropdown,
   signUp,
   upgradeToPro,
 } from '../GlobalHeaderItems';
+import { User } from '../types';
 
-const onClick = jest.fn();
+const action = jest.fn();
+const user: User = {
+  avatar:
+    'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+  displayName: 'Codey',
+};
 
 const anonHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
 };
 
 const anonLandingHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'anon',
   variant: 'landing',
 };
 
 const anonLoginHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  action,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'login',
 };
 
 const anonSignUpHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
+  action,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
   type: 'anon',
   variant: 'signup',
 };
 
 const freeHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'free',
+  user,
 };
 
 const proHeaderProps: GlobalHeaderProps = {
-  onClick: onClick,
+  action,
   type: 'pro',
+  user,
+};
+
+const loadingHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'loading',
 };
 
 const renderElementProps: GlobalHeaderProps = {
-  onClick: onClick,
-  renderSearch: () => <IconButton icon={SearchIcon} />,
-  renderNotifications: () => <IconButton icon={BellIcon} />,
-  renderProfile: () => <IconButton icon={PersonIcon} />,
+  action,
+  renderSearch: {
+    desktop: () => <IconButton icon={SearchIcon} />,
+    mobile: () => <IconButton icon={SearchIcon} />,
+  },
+  renderNotifications: {
+    desktop: () => <IconButton icon={BellIcon} />,
+    mobile: () => <IconButton icon={BellIcon} />,
+  },
   type: 'pro',
+  user,
 };
 
 const renderGlobalHeader = (props: GlobalHeaderProps) => {
@@ -77,36 +102,40 @@ describe('GlobalHeader', () => {
       renderGlobalHeader(anonHeaderProps);
     });
 
+    /* since we're using css to toggle the display of the header between desktop & mobile, these tests check for visibility of elements
+     & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
     test('logo', () => {
-      screen.getByTestId('header-logo');
+      const logoElements = screen.getAllByTestId('header-logo');
+      expect(logoElements[0]).not.toBeVisible();
+      expect(logoElements[1]).toBeVisible();
     });
 
     test('courseCatalog', () => {
-      screen.getByText(courseCatalog.text);
+      screen.getAllByText(courseCatalog.text);
     });
 
     test('resourcesDropdown', () => {
-      screen.getByText(resourcesDropdown.text);
+      screen.getAllByText(resourcesDropdown.text);
     });
 
     test('communityDropdown', () => {
-      screen.getByText(communityDropdown.text);
+      screen.getAllByText(communityDropdown.text);
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getAllByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getAllByText(forBusiness.text);
     });
 
     test('login', () => {
-      screen.getByText(login.text);
+      screen.getAllByText(login.text);
     });
 
     test('signup', () => {
-      screen.getByText(signUp.text);
+      screen.getAllByText(signUp.text);
     });
   });
 
@@ -121,7 +150,7 @@ describe('GlobalHeader', () => {
       });
 
       test('shows login', () => {
-        screen.getByText(login.text);
+        screen.getAllByText(login.text);
       });
 
       test('does not show signup', () => {
@@ -143,7 +172,7 @@ describe('GlobalHeader', () => {
       });
 
       test('shows signup', () => {
-        screen.getByText(signUp.text);
+        screen.getAllByText(signUp.text);
       });
     });
 
@@ -153,11 +182,11 @@ describe('GlobalHeader', () => {
       });
 
       test('shows search', () => {
-        screen.getByTitle('Search Icon');
+        screen.getAllByTitle('Search Icon');
       });
 
       test('shows login', () => {
-        screen.getByText(login.text);
+        screen.getAllByText(login.text);
       });
 
       test('does not show sign up', () => {
@@ -172,7 +201,7 @@ describe('GlobalHeader', () => {
     });
 
     test('logo', () => {
-      screen.getByTestId('header-logo');
+      screen.getAllByTestId('header-logo');
     });
 
     test('myHome', () => {
@@ -192,11 +221,15 @@ describe('GlobalHeader', () => {
     });
 
     test('plansPricingDropdown', () => {
-      screen.getByText(plansPricingDropdown.text);
+      screen.getByText(pricingDropdown.text);
     });
 
     test('forEnterprise', () => {
-      screen.getByText(forEnterprise.text);
+      screen.getByText(forBusiness.text);
+    });
+
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
     });
 
     test('upgradeToPro', () => {
@@ -210,7 +243,7 @@ describe('GlobalHeader', () => {
     });
 
     test('proLogo', () => {
-      screen.getByTestId('header-pro-logo');
+      screen.getAllByTestId('header-pro-logo');
     });
 
     test('myHome', () => {
@@ -228,6 +261,20 @@ describe('GlobalHeader', () => {
     test('communityDropdown', () => {
       screen.getByText(communityDropdown.text);
     });
+
+    test('profileDropdown', () => {
+      screen.getByTestId('avatar');
+    });
+  });
+
+  describe('loading', () => {
+    beforeEach(() => {
+      renderGlobalHeader(loadingHeaderProps);
+    });
+
+    test('logo', () => {
+      screen.getAllByTestId('header-logo');
+    });
   });
 
   describe('renders a custom element when provided one', () => {
@@ -240,17 +287,13 @@ describe('GlobalHeader', () => {
     });
 
     test('notifications', () => {
-      screen.getByTitle('Bell Icon');
-    });
-
-    test('profile', () => {
-      screen.getByTitle('Person Icon');
+      screen.getAllByTitle('Bell Icon');
     });
   });
 
-  test('fires onClick upon clicking an element', () => {
+  test('fires action() upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('button')[0].click();
-    expect(onClick).toHaveBeenCalled();
+    screen.getAllByRole('link')[0].click();
+    expect(action).toHaveBeenCalled();
   });
 });

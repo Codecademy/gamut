@@ -1,7 +1,11 @@
 import { IconButton } from '@codecademy/gamut/src';
 import { FaviconIcon } from '@codecademy/gamut-icons/src';
 import { AppHeader } from '@codecademy/gamut-labs/src';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { MOCK_DROPDOWN_1 } from './MockAppHeaderElements';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeader"
@@ -24,28 +28,7 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
           text: 'AppHeaderLink',
           type: 'link',
         },
-        {
-          id: 'dropdown',
-          text: 'AppHeaderDropdown',
-          popover: [
-            {
-              id: 'sublink-1',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-            {
-              id: 'sublink-2',
-              href: 'http://codecademy.com',
-              trackingTarget: 'tracking-target',
-              text: 'AppHeaderLink',
-              type: 'link',
-            },
-          ],
-          trackingTarget: 'tracking-target',
-          type: 'dropdown',
-        },
+        MOCK_DROPDOWN_1,
       ],
       right: [
         {
@@ -76,10 +59,10 @@ AppHeader component for use in GlobalHeader. Uses AppBar to arrange items to the
 
 AppHeader is not intended to be used alone, but rather by GlobalHeader which determines the composition of each of the Pro, Free, and Anon versions of Codecademy's global navigation header and passes the corresponding items to AppHeader.
 
-<Props of={AppHeader} />
-
 ## AppHeader
 
 <Canvas>
   <Story name="AppHeader">{(args) => <AppHeader {...args} />}</Story>
 </Canvas>
+
+<PropsTable story="AppHeader" />

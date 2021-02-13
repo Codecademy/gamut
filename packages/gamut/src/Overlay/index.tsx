@@ -1,5 +1,6 @@
 import FocusTrap from 'focus-trap-react';
-import React, { useLayoutEffect } from 'react';
+import React from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
@@ -11,6 +12,10 @@ export type OverlayProps = {
    * Whether clicking on the screen outside of the container should close the Overlay.
    */
   clickOutsideCloses?: boolean;
+  /**
+   * Whether to allow outside clicks in the overlay. No effect unless clickOutsideCloses is false. Check before using this prop, as it can have accessiblity implications.
+   */
+  allowOutsideClick?: boolean;
   /**
    * Whether clicking the escape key should close the Overlay.
    */
@@ -35,13 +40,16 @@ export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideCloses = true,
+  allowOutsideClick,
   escapeCloses = true,
   staticPositioning = false,
   onRequestClose,
   isOpen,
 }) => {
-  useLayoutEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+  useIsomorphicLayoutEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -61,6 +69,7 @@ export const Overlay: React.FC<OverlayProps> = ({
       >
         <FocusTrap
           focusTrapOptions={{
+            allowOutsideClick,
             clickOutsideDeactivates: clickOutsideCloses,
             escapeDeactivates: escapeCloses,
             onDeactivate: onRequestClose,

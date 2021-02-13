@@ -13,12 +13,12 @@ const Link = styled.a`
   line-height: 1;
   column-gap: 0.5rem;
   align-items: flex-start;
-  color: #1ea7fd;
+  color: ${({ theme }) => theme.color.secondary};
   border-bottom: 2px solid transparent;
 
   &:hover {
     text-decoration: none;
-    border-bottom-color: #1ea7fd;
+    border-bottom-color: ${({ theme }) => theme.color.secondary};
   }
 `;
 
@@ -51,7 +51,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
   const links = [{ text: 'Gamut', kind: 'Gamut' }];
 
   path.forEach((kind, i) => {
-    const prevKind = i ? `${links[i - 1].kind}/` : '';
+    const prevKind = i ? `${links[i].kind}/` : '';
 
     const nextLink = {
       text: kind,
@@ -97,7 +97,7 @@ export const Page: React.FC = ({ children }) => {
     title,
     subtitle,
     parameters: { figmaId, source },
-  } = useKind(kind);
+  } = useKind(kind!);
 
   const npmLink = `https://www.npmjs.com/package/@codecademy/${source}`;
   const figmaLink = `https://www.figma.com/file/${figmaId}`;
@@ -105,9 +105,7 @@ export const Page: React.FC = ({ children }) => {
   return (
     <>
       <Header marginBottom="1rem">
-        <div>
-          <BreadCrumbs path={path} />
-        </div>
+        <BreadCrumbs path={path} />
         <HeaderRow>
           <HeaderCol>
             <Title>{title}</Title>

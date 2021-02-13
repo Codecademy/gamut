@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/webpack-config",
-  "version": "5.2.1",
+  "version": "6.0.0",
   "description": "Config files for webpack",
   "main": "src/index.js",
   "scripts": {
@@ -26,9 +26,9 @@
     "webpack-dev-server": ">=3.11.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.3",
-    "babel-preset-codecademy": "3.0.1",
-    "webpack": "^5.17.0"
+    "@babel/core": "7.12.9",
+    "babel-preset-codecademy": "^2.3.0",
+    "webpack": "^4.43.0"
   },
   "dependencies": {
     "babel-loader": "^8.2.2",

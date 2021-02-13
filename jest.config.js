@@ -4,10 +4,7 @@ module.exports = {
     __DEV__: true,
   },
   setupFiles: ['<rootDir>/script/jest/base-setup.js'],
-  setupFilesAfterEnv: [
-    '<rootDir>/script/jest/rtl-setup.ts',
-    '<rootDir>/node_modules/jest-enzyme/lib/index.js',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/script/jest/rtl-setup.ts'],
   moduleFileExtensions: [
     'js',
     'json',
@@ -28,6 +25,7 @@ module.exports = {
     '^@codecademy\\/gamut$': '<rootDir>/packages/gamut/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
     '^@codecademy\\/gamut-system$': '<rootDir>/packages/gamut-system/src',
+    '^@codecademy\\/gamut-tests$': '<rootDir>/packages/gamut-tests/src',
     '^@codecademy\\/macros$': '<rootDir>/packages/macros',
   },
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
@@ -55,5 +53,5 @@ module.exports = {
   reporters: process.env.CI ? ['default', 'jest-junit'] : ['default'],
   coverageReporters: ['json', 'text', 'clover'],
   coverageDirectory: process.env.CI ? '/tmp/test-results/jest' : './coverage',
-  collectCoverage: process.env.CI ? true : false,
+  collectCoverage: !!process.env.CI,
 };

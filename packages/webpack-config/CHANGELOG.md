@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](http://github.com///compare/@codecademy/webpack-config@5.2.3...@codecademy/webpack-config@6.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](http://github.com///commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
+### [5.2.3](http://github.com///compare/@codecademy/webpack-config@5.2.2...@codecademy/webpack-config@5.2.3) (2021-02-04)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
+### [5.2.2](http://github.com///compare/@codecademy/webpack-config@5.2.1...@codecademy/webpack-config@5.2.2) (2021-02-02)
+
+**Note:** Version bump only for package @codecademy/webpack-config
+
+
+
+
+
 ### [5.2.1](http://github.com///compare/@codecademy/webpack-config@5.2.0...@codecademy/webpack-config@5.2.1) (2020-12-04)
 
 **Note:** Version bump only for package @codecademy/webpack-config

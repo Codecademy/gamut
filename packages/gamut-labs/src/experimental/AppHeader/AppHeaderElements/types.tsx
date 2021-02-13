@@ -1,3 +1,4 @@
+import { GamutIconProps } from '@codecademy/gamut-icons';
 import { ReactNode } from 'react';
 
 export type AppHeaderItem =
@@ -5,7 +6,8 @@ export type AppHeaderItem =
   | AppHeaderLinkItem
   | AppHeaderTextButtonItem
   | AppHeaderFillButtonItem
-  | AppHeaderDropdownItem
+  | AppHeaderSimpleDropdownItem
+  | AppHeaderProfileDropdownItem
   | AppHeaderRenderElementItem;
 
 type AppHeaderBaseItem = {
@@ -22,8 +24,10 @@ export type AppHeaderLogoItem = AppHeaderBaseItem & {
 
 export type AppHeaderLinkItem = AppHeaderBaseItem & {
   href: string;
+  icon?: React.ComponentType<GamutIconProps>;
   newTab?: boolean;
   text: string;
+  topSeparator?: boolean;
   trackingTarget: string;
   type: 'link';
 };
@@ -42,11 +46,25 @@ export type AppHeaderFillButtonItem = AppHeaderBaseItem & {
   type: 'fill-button';
 };
 
-export type AppHeaderDropdownItem = AppHeaderBaseItem & {
+export type AppHeaderDropdownItem =
+  | AppHeaderSimpleDropdownItem
+  | AppHeaderProfileDropdownItem;
+
+export type AppHeaderSimpleDropdownItem = AppHeaderBaseItem & {
+  icon?: React.ComponentType<GamutIconProps>;
   popover: AppHeaderLinkItem[];
   text: string;
   trackingTarget: string;
   type: 'dropdown';
+};
+
+export type AppHeaderProfileDropdownItem = AppHeaderBaseItem & {
+  avatar: string;
+  userDisplayName: string;
+  popover: AppHeaderLinkItem[][];
+  text: string;
+  trackingTarget: string;
+  type: 'profile-dropdown';
 };
 
 export type AppHeaderRenderElementItem = AppHeaderBaseItem & {
