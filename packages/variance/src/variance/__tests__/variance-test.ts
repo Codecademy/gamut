@@ -174,15 +174,21 @@ describe('css', () => {
   const css = testVariance.createCss({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
+    margin: { property: 'margin', scale: 'spacing' },
+    padding: { property: 'padding', scale: 'spacing' },
   });
 
   it('creates a CSS Function', () => {
     expect(css).toBeDefined();
   });
   it('produces css', () => {
-    const returnedFn = css({ width: '100%', height: '50' });
+    const returnedFn = css({ margin: 4, width: '100%', height: '50' });
 
-    expect(returnedFn({ theme })).toEqual({ width: '100%', height: '50px' });
+    expect(returnedFn({ theme })).toEqual({
+      margin: '0.25rem',
+      width: '100%',
+      height: '50px',
+    });
   });
   it('works with media queries', () => {
     const returnedFn = css({ width: ['100%', '200%'], height: '50' });
@@ -229,11 +235,14 @@ describe('variants', () => {
   const variant = testVariance.createVariant({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
+    margin: { property: 'margin', scale: 'spacing' },
+    padding: { property: 'padding', scale: 'spacing' },
   });
 
   it('Creates a variant', () => {
     const myVariant = variant({
       cool: {
+        margin: 4,
         width: ['100%', '200%'],
         '&:hover': {
           width: '150%',
@@ -243,6 +252,7 @@ describe('variants', () => {
 
     expect(myVariant({ theme, variant: 'cool' })).toEqual({
       width: '100%',
+      margin: '0.25rem',
       XS: { width: '200%' },
       '&:hover': {
         width: '150%',
@@ -270,6 +280,22 @@ describe('variants', () => {
       '&:hover': {
         width: '150%',
       },
+    });
+  });
+  it('has a customized key', () => {
+    const myVariant = variant(
+      {
+        cool: {
+          width: '100%',
+        },
+      },
+      {
+        prop: 'sweet',
+      }
+    );
+
+    expect(myVariant({ theme, sweet: 'cool' })).toEqual({
+      width: '100%',
     });
   });
 });

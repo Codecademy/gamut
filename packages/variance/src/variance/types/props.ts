@@ -14,7 +14,7 @@ export interface AbstractTheme extends BaseTheme {
   };
 }
 
-export interface ThemeProps<T extends AbstractProps> {
+export interface ThemeProps<T extends AbstractTheme> {
   theme?: T;
 }
 

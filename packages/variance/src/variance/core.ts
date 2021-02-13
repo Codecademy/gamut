@@ -1,4 +1,4 @@
-import { get, merge } from 'lodash';
+import { get, identity, isObject, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -7,30 +7,15 @@ import {
   Parser,
   Prop,
   PropTransformer,
+  TransformerMap,
   Variant,
 } from './types/config';
-import {
-  AbstractTheme,
-  CSSObject,
-  MediaQueryMap,
-  ThemeProps,
-} from './types/props';
+import { AbstractTheme, CSSObject, ThemeProps } from './types/props';
 import { AllUnionKeys, Key, KeyFromUnion } from './types/utils';
+import { isMediaArray, isMediaMap } from './utils';
 
-const isMediaArray = (val: unknown): val is (string | number)[] =>
-  Array.isArray(val);
-
-const isMediaMap = (val: object): val is MediaQueryMap<string | number> =>
-  Object.keys(val).some((key) =>
-    ['base', 'xs', 'sm', 'md', 'lg', 'xl'].includes(key)
-  );
-
-const isObject = (val: unknown): val is object => typeof val === 'object';
-
-const identity = <T extends string | number>(val: T) => val;
-
-export const creator = {
-  withTheme<T extends AbstractTheme>() {
+export const variance = {
+  withTheme: function <T extends AbstractTheme>() {
     return {
       getBreakpoints: function (props: { theme: T }) {
         const breakpoints = props?.theme?.breakpoints;
@@ -43,7 +28,7 @@ export const creator = {
       },
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
-      >(config: Config) {
+      >(config: Config): Parser<T, Config> {
         let cache: { map: T['breakpoints']; array: string[] } | null;
         const propNames = Object.keys(config);
         const parser = (props: { theme: T }) => {
@@ -80,8 +65,9 @@ export const creator = {
                   const { base = undefined, ...rest } = value;
                   if (base) Object.assign(styles, transform(base, prop, props));
                   Object.keys(rest).forEach((bp: keyof typeof rest) => {
+                    const breakpointKey = get(breakpoints, `map.${bp}`);
                     merge(breakpointStyles, {
-                      [breakpoints.map![bp]]: transform(rest[bp], prop, props),
+                      [breakpointKey]: transform(rest[bp], prop, props),
                     });
                   });
 
@@ -93,10 +79,7 @@ export const creator = {
           return styles;
         };
 
-        return Object.assign(parser, { propNames, config }) as Parser<
-          T,
-          Config
-        >;
+        return Object.assign(parser, { propNames, config });
       },
       createTransform: function <P extends string, Config extends Prop<T>>(
         prop: P,
@@ -123,39 +106,24 @@ export const creator = {
           },
         };
       },
-    };
-  },
-};
-
-export const variance = {
-  withTheme: function <T extends AbstractTheme>() {
-    return {
       compose: function <Args extends AbstractParser<T>[]>(...parsers: Args) {
-        const styleFnCreator = creator.withTheme<T>();
         type MergedParser = {
           [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
             Args[number]['config'],
             K
           >;
         };
-        return styleFnCreator.createParser(
+        return this.createParser(
           parsers.reduce(
             (carry, parser) => ({ ...carry, ...parser.config }),
             {}
           ) as MergedParser
         );
       },
-      createCss: function <Config extends Record<string, Prop<T>>>(
-        config: Config
-      ): CSS<
-        T,
-        Parser<
-          T,
-          {
-            [P in Key<keyof Config>]: PropTransformer<T, Key<P>, Config[P]>;
-          }
-        >
-      > {
+      createCss: function <
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(config: Config): CSS<T, P> {
         const parser = this.create(config);
 
         return (cssProps) => {
@@ -183,12 +151,7 @@ export const variance = {
       },
       createVariant: function <
         Config extends Record<string, Prop<T>>,
-        P extends Parser<
-          T,
-          {
-            [P in Key<keyof Config>]: PropTransformer<T, Key<P>, Config[P]>;
-          }
-        >
+        P extends Parser<T, TransformerMap<T, Config>>
       >(config: Config): Variant<T, P> {
         const css: CSS<T, P> = this.createCss(config);
 
@@ -216,16 +179,15 @@ export const variance = {
       create: function <Config extends Record<string, Prop<T>>>(
         config: Config
       ) {
-        const styleFnCreator = creator.withTheme<T>();
         const transforms = {} as {
           [P in Key<keyof Config>]: PropTransformer<T, P, Config[P]>;
         };
 
         for (const prop in config) {
-          transforms[prop] = styleFnCreator.createTransform(prop, config[prop]);
+          transforms[prop] = this.createTransform(prop, config[prop]);
         }
 
-        const parser = styleFnCreator.createParser(transforms);
+        const parser = this.createParser(transforms);
         return parser;
       },
     };

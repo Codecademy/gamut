@@ -9,6 +9,7 @@ import {
   Selectors,
   ThemeProps,
 } from './props';
+import { Key } from './utils';
 
 export interface Prop<T extends AbstractTheme> {
   property: keyof Properties;
@@ -71,6 +72,13 @@ export interface PropTransformer<
   transform?: C['transform'];
   styleFn: Transform<T, P, C>;
 }
+
+export type TransformerMap<
+  T extends AbstractTheme,
+  Config extends Record<string, Prop<T>>
+> = {
+  [P in Key<keyof Config>]: PropTransformer<T, Key<P>, Config[P]>;
+};
 
 export interface Parser<
   T extends AbstractTheme,
