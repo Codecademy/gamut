@@ -34,7 +34,19 @@ const layout = create({
   height: { property: 'height', transform: parseSize },
 });
 
+type Assert<X, Y> = X extends Y ? true : false;
+
 describe('do it', () => {
+  it('has the correct config', () => {
+    const propNamesRestricted: Assert<
+      typeof space['propNames'],
+      ('margin' | 'padding')[]
+    > = true;
+
+    expect(propNamesRestricted);
+
+    expect(space.propNames.sort()).toEqual(['padding', 'margin'].sort());
+  });
   it('renders styles', () => {
     expect(space({ margin: 4, theme })).toEqual({ margin: '0.25rem' });
   });

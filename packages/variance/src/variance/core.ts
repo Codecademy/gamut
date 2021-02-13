@@ -1,5 +1,5 @@
 import { Properties } from 'csstype';
-import { assign, get, identity, isArray, isObject, merge } from 'lodash';
+import { get, merge } from 'lodash';
 
 import {
   AbstractProps,
@@ -14,14 +14,20 @@ import { AllUnionKeys, Key, KeyFromUnion } from './types/utils';
 export interface Prop<T extends AbstractTheme> {
   property: keyof Properties;
   scale?: keyof T;
-  transform?: (val: unknown) => string | number;
+  transform?: (
+    val: unknown,
+    prop?: string,
+    props?: AbstractProps
+  ) => string | number;
 }
 
 export interface AbstractPropTransformer<T extends AbstractTheme> {
   prop: string;
   property: keyof Properties;
   scale?: keyof T | unknown;
-  transform?: ((val: unknown) => string | number) | unknown;
+  transform?:
+    | ((val: unknown, prop?: string, props?: AbstractProps) => string | number)
+    | unknown;
   styleFn: (value: unknown, prop: string, props: AbstractProps) => CSSObject;
 }
 
@@ -84,13 +90,19 @@ export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
   (config: Parameters<P>[0]): (props: ThemeProps<T>) => CSSObject;
 }
 
-const isMediaArray = (val: unknown): val is (string | number)[] => isArray(val);
+const isMediaArray = (val: unknown): val is (string | number)[] =>
+  Array.isArray(val);
 
-const isMediaMap = (val: unknown): val is MediaQueryMap<string | number> =>
-  isObject(val);
+const isMediaMap = (val: object): val is MediaQueryMap<string | number> =>
+  Object.keys(val).some((key) =>
+    ['base', 'xs', 'sm', 'md', 'lg', 'xl'].includes(key)
+  );
+
+const identity = <T extends string | number>(val: T) => val;
 
 const getBreakpoints = <T extends AbstractTheme>(props: { theme: T }) => {
-  const breakpoints = props.theme.breakpoints!;
+  const breakpoints = props?.theme?.breakpoints;
+  if (!breakpoints) return null;
   const { xs, sm, md, lg, xl } = breakpoints;
   return {
     map: breakpoints,
@@ -104,12 +116,13 @@ export const creator = {
       createParser<Config extends Record<string, AbstractPropTransformer<T>>>(
         config: Config
       ) {
-        let cache: { map: T['breakpoints']; array: string[] };
+        let cache: { map: T['breakpoints']; array: string[] } | null;
         const propNames = Object.keys(config);
         const parser = (props: { theme: T }) => {
-          let styles = {};
-          const breakpoints = cache ?? getBreakpoints(props);
-          if (!cache) {
+          const styles = {};
+          const breakpoints =
+            cache === undefined ? getBreakpoints(props) : cache;
+          if (cache === undefined) {
             cache = breakpoints;
           }
           propNames.forEach((prop) => {
@@ -118,31 +131,33 @@ export const creator = {
             switch (typeof value) {
               case 'string':
               case 'number':
-                assign(styles, transform(value, prop, props));
+                Object.assign(styles, transform(value, prop, props));
                 break;
               case 'object':
+                if (!breakpoints) return;
+                const breakpointStyles = {};
+
                 if (isMediaArray(value)) {
                   const [base, ...rest] = value;
-                  if (base) assign(styles, transform(base, prop, props));
-                  const breakpointStyles = {};
+                  if (base) Object.assign(styles, transform(base, prop, props));
                   rest.forEach((val, i) => {
                     merge(breakpointStyles, {
                       [breakpoints.array[i]]: transform(val, prop, props),
                     });
                   });
-                  styles = merge(styles, breakpointStyles);
+                  merge(styles, breakpointStyles);
                   break;
                 }
                 if (isMediaMap(value)) {
-                  const breakpointStyles = {};
                   const { base = undefined, ...rest } = value;
-                  if (base) assign(styles, transform(base, prop, props));
+                  if (base) Object.assign(styles, transform(base, prop, props));
                   Object.keys(rest).forEach((bp: keyof typeof rest) => {
                     merge(breakpointStyles, {
                       [breakpoints.map![bp]]: transform(rest[bp], prop, props),
                     });
                   });
-                  styles = merge(styles, breakpointStyles);
+
+                  merge(styles, breakpointStyles);
                   break;
                 }
             }
@@ -150,28 +165,34 @@ export const creator = {
           return styles;
         };
 
-        return assign(parser, { propNames, config }) as Parser<T, Config>;
+        return Object.assign(parser, { propNames, config }) as Parser<
+          T,
+          Config
+        >;
       },
       createTransform<P extends string, Config extends Prop<T>>(
         prop: P,
         config: Config
       ): PropTransformer<T, P, Config> {
         const transform = config.transform ?? identity;
-        const parseValue = (
-          value: unknown,
-          prop: string,
-          props: AbstractProps
-        ) => {
-          return transform(get(props, `theme.${config.scale}.${value}`, value));
-        };
 
         return {
           ...config,
           prop,
           styleFn: (value, prop, props) => {
-            return {
-              [config.property]: parseValue(value, prop, props),
-            };
+            const styles: CSSObject = {};
+
+            const properties = Array.isArray(config.property)
+              ? config.property
+              : [config.property];
+            properties.forEach((property) => {
+              styles[property] = transform(
+                get(props, `theme.${config.scale}.${value}`, value),
+                prop,
+                props
+              );
+            });
+            return styles;
           },
         };
       },
