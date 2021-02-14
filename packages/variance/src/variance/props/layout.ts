@@ -1,18 +1,10 @@
 import { parseSize } from '../transforms';
 
 export const layout = {
-  display: {
-    property: 'display',
-  },
-  overflow: {
-    property: 'overflow',
-  },
-  overflowX: {
-    property: 'overflowX',
-  },
-  overflowY: {
-    property: 'overflowY',
-  },
+  display: { property: 'display' },
+  overflow: { property: 'overflow' },
+  overflowX: { property: 'overflowX' },
+  overflowY: { property: 'overflowY' },
   width: {
     property: 'width',
     transform: parseSize,
@@ -37,7 +29,5 @@ export const layout = {
     property: 'maxHeight',
     transform: parseSize,
   },
-  verticalAlign: {
-    property: 'verticalAlign',
-  },
+  verticalAlign: { property: 'verticalAlign' },
 } as const;

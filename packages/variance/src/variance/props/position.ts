@@ -1,9 +1,7 @@
 import { parseSize } from '../transforms';
 
 export const positioning = {
-  position: {
-    property: 'position',
-  },
+  position: { property: 'position' },
   top: {
     property: 'top',
     transform: parseSize,
@@ -20,7 +18,5 @@ export const positioning = {
     property: 'left',
     transform: parseSize,
   },
-  zIndex: {
-    property: 'zIndex',
-  },
+  zIndex: { property: 'zIndex' },
 } as const;

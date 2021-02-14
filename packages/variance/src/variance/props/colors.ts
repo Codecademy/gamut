@@ -1,13 +1,7 @@
 export const color = {
-  textColor: {
-    property: 'color',
-  },
-  backgroundColor: {
-    property: 'backgroundColor',
-  },
-  borderColor: {
-    property: 'borderColor',
-  },
+  textColor: { property: 'color' },
+  backgroundColor: { property: 'backgroundColor' },
+  borderColor: { property: 'borderColor' },
   borderColorX: {
     property: 'borderColor',
     properties: ['borderLeftColor', 'borderRightColor'],
@@ -16,16 +10,8 @@ export const color = {
     property: 'borderColorY',
     properties: ['borderTopColor', 'borderBottomColor'],
   },
-  borderColorLeft: {
-    property: 'borderLeftColor',
-  },
-  borderColorRight: {
-    property: 'borderRightColor',
-  },
-  borderColorTop: {
-    property: 'borderTopColor',
-  },
-  borderColorBottom: {
-    property: 'borderBottomColor',
-  },
+  borderColorLeft: { property: 'borderLeftColor' },
+  borderColorRight: { property: 'borderRightColor' },
+  borderColorTop: { property: 'borderTopColor' },
+  borderColorBottom: { property: 'borderBottomColor' },
 } as const;
