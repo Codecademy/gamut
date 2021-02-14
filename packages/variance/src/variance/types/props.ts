@@ -52,10 +52,10 @@ export type Selectors<T> = T extends SelectorLiterals ? T : never;
 
 export type SelectorMap<
   Config extends AbstractProps,
-  Selectors extends string,
+  SelectorKeys extends Selectors<keyof Config>,
   Props extends AbstractProps
 > = {
-  [K in keyof Config]: K extends Selectors
+  [K in keyof Config]: K extends SelectorKeys
     ? Props
     : K extends keyof Props
     ? Props[K]
