@@ -35,17 +35,14 @@ export const variance = {
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
       >(config: Config): Parser<T, Config> {
-        let cache: BreakpointCache<T>;
+        let breakpoints: BreakpointCache<T>;
         const propNames = Object.keys(config);
 
-        //
         const parser = (props: { theme: T }) => {
           const styles = {};
-          const breakpoints =
-            cache === undefined ? this.getBreakpoints(props) : cache;
-          if (cache === undefined) {
-            cache = breakpoints;
-          }
+          // Get the themes configured breakpoints
+          breakpoints = breakpoints ?? this.getBreakpoints(props);
+
           propNames.forEach((prop) => {
             const transform = config[prop].styleFn;
             const value = get(props, prop);
@@ -64,8 +61,8 @@ export const variance = {
                   if (base) Object.assign(styles, transform(base, prop, props));
 
                   rest.forEach((val, i) => {
-                    const breakpointKey = breakpoints.array[i];
-
+                    const breakpointKey = breakpoints?.array[i];
+                    if (!breakpointKey) return;
                     merge(breakpointStyles, {
                       [breakpointKey]: transform(val, prop, props),
                     });
@@ -78,7 +75,8 @@ export const variance = {
                   if (base) Object.assign(styles, transform(base, prop, props));
 
                   Object.keys(rest).forEach((bp: keyof typeof rest) => {
-                    const breakpointKey = get(breakpoints, `map.${bp}`);
+                    const breakpointKey = breakpoints?.map?.[bp];
+                    if (!breakpointKey) return;
                     merge(breakpointStyles, {
                       [breakpointKey]: transform(rest[bp], prop, props),
                     });

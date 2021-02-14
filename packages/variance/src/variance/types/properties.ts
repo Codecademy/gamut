@@ -5,7 +5,7 @@ type UnitOrPx = `${number}` | `${number}${string}`;
 type Unit = `${number} ${UnitOrPx}`;
 
 // Fles Shorthand
-type Flex = `${number} ${Unit}`;
+type Flex = UnitOrPx | Unit | `${number} ${Unit}`;
 
 // Border Shorthands
 type Border =
@@ -17,5 +17,5 @@ type Border =
 // Updated Shorthand Types
 export interface PropertyTypes extends Properties {
   border?: Border;
-  flex?: UnitOrPx | Unit | Flex;
+  flex?: Flex;
 }

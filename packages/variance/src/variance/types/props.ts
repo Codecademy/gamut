@@ -1,7 +1,7 @@
 export type AbstractProps = Record<string, unknown>;
 
 export interface BaseTheme {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export interface AbstractTheme extends BaseTheme {
