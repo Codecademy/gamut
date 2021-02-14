@@ -41,12 +41,18 @@ export interface MediaQueryMap<T> {
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
 
+export type BreakpointCache<T extends AbstractTheme> = {
+  map: T['breakpoints'];
+  array: string[];
+} | null;
+
 export type Chained = `&` | `>` | '~' | '+';
 
 export type SelectorLiterals =
+  | `[${string}]`
   | `&:${string}`
   | `${Chained} ${string}`
-  | `[${string}]`;
+  | `${string} ${Chained} ${string}`;
 
 export type Selectors<T> = T extends SelectorLiterals ? T : never;
 

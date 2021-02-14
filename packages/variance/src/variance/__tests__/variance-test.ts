@@ -1,6 +1,7 @@
 import { parseSize } from '@codecademy/gamut-system/src/transforms';
 
 import { variance } from '../core';
+import { margin } from '../props';
 
 const theme = {
   breakpoints: {
@@ -171,11 +172,22 @@ describe('parsers', () => {
 });
 
 describe('css', () => {
+  const marginTransform = jest.fn();
+
   const css = testVariance.createCss({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
-    margin: { property: 'margin', scale: 'spacing' },
+    margin: {
+      property: 'margin',
+      scale: 'spacing',
+      transform: marginTransform,
+    },
     padding: { property: 'padding', scale: 'spacing' },
+  });
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+    marginTransform.mockImplementation((val) => val);
   });
 
   it('creates a CSS Function', () => {
@@ -229,17 +241,43 @@ describe('css', () => {
       },
     });
   });
+  it('caches the response', () => {
+    const returnedFn = css({
+      margin: 4,
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    returnedFn({ theme });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    returnedFn({ theme });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('variants', () => {
+  const marginTransform = jest.fn();
+
   const variant = testVariance.createVariant({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
-    margin: { property: 'margin', scale: 'spacing' },
+    margin: {
+      property: 'margin',
+      scale: 'spacing',
+      transform: marginTransform,
+    },
     padding: { property: 'padding', scale: 'spacing' },
   });
 
-  it('Creates a variant', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+    marginTransform.mockImplementation((val) => val);
+  });
+
+  it('creates a variant function', () => {
     const myVariant = variant({
       cool: {
         margin: 4,
@@ -297,5 +335,58 @@ describe('variants', () => {
     expect(myVariant({ theme, sweet: 'cool' })).toEqual({
       width: '100%',
     });
+  });
+  it('caches the variant once called', () => {
+    const myVariant = variant({
+      cool: {
+        margin: 4,
+      },
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+  });
+  it('caches each variant individually', () => {
+    const myVariant = variant({
+      cool: {
+        margin: 4,
+      },
+      beans: {
+        margin: 8,
+      },
+      world: {
+        margin: 16,
+      },
+    });
+
+    expect(marginTransform).toHaveBeenCalledTimes(0);
+
+    myVariant({ theme, variant: 'cool' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(1);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(2);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+    myVariant({ theme, variant: 'world' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(3);
+
+    myVariant({ theme, variant: 'cool' });
+    myVariant({ theme, variant: 'beans' });
+    myVariant({ theme, variant: 'world' });
+
+    expect(marginTransform).toHaveBeenCalledTimes(3);
   });
 });
