@@ -81,6 +81,7 @@ export type ParserProps<
   [P in keyof Config]?: Parameters<Config[P]['styleFn']>[2][Config[P]['prop']];
 } &
   ThemeProps<T>;
+
 export interface Parser<
   T extends AbstractTheme,
   Config extends Record<string, AbstractPropTransformer<T>>
