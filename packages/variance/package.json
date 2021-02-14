@@ -1,6 +1,6 @@
 {
   "name": "@codecademy/variance",
-  "description": "Constraint based CSS in JS for ",
+  "description": "Constraint based CSS in JS for building rich design systems",
   "version": "0.0.1",
   "keywords": [
     "emotion",

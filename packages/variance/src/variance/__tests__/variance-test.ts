@@ -1,7 +1,6 @@
 import { parseSize } from '@codecademy/gamut-system/src/transforms';
 
 import { variance } from '../core';
-import { margin } from '../props';
 
 const theme = {
   breakpoints: {

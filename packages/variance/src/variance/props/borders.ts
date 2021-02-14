@@ -5,9 +5,11 @@ export const border = {
   },
   borderX: {
     property: 'border',
+    properties: ['borderLeft', 'borderRight'],
   },
   borderY: {
     property: 'border',
+    properties: ['borderTop', 'borderBottom'],
   },
   borderTop: {
     property: 'borderTop',
@@ -27,9 +29,11 @@ export const border = {
   },
   borderWidthX: {
     property: 'borderWidth',
+    properties: ['borderLeftWidth', 'borderRightWidth'],
   },
   borderWidthY: {
     property: 'borderWidth',
+    properties: ['borderTopWidth', 'borderBottomWidth'],
   },
   borderWidthLeft: {
     property: 'borderLeftWidth',
@@ -49,15 +53,19 @@ export const border = {
   },
   borderRadiusLeft: {
     property: 'borderRadius',
+    properties: ['borderTopLeftRadius', 'borderBottomLeftRadius'],
   },
   borderRadiusTop: {
     property: 'borderRadius',
+    properties: ['borderTopLeftRadius', 'borderTopRightRadius'],
   },
   borderRadiusBottom: {
     property: 'borderRadius',
+    properties: ['borderBottomLeftRadius', 'borderBottomRightRadius'],
   },
   borderRadiusRight: {
     property: 'borderRadius',
+    properties: ['borderTopRightRadius', 'borderBottomRightRadius'],
   },
   borderRadiusTopLeft: {
     property: 'borderTopLeftRadius',
@@ -77,9 +85,11 @@ export const border = {
   },
   borderStyleX: {
     property: 'borderStyle',
+    properties: ['borderLeftStyle', 'borderRightStyle'],
   },
   borderStyleY: {
     property: 'borderStyle',
+    properties: ['borderTopStyle', 'borderBottomStyle'],
   },
   borderStyleLeft: {
     property: 'borderLeftStyle',

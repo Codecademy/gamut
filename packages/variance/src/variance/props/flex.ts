@@ -1,4 +1,7 @@
 export const flex = {
+  flex: {
+    property: 'flex',
+  },
   flexBasis: {
     property: 'flexBasis',
   },

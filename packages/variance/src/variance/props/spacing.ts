@@ -1,7 +1,13 @@
 export const margin = {
   margin: { property: 'margin' },
-  marginX: { property: 'margin' }, // TODO add properties array
-  marginY: { property: 'margin' },
+  marginX: {
+    property: 'margin',
+    properties: ['marginLeft', 'marginRight'],
+  },
+  marginY: {
+    property: 'margin',
+    properties: ['marginTop', 'marginBottom'],
+  },
   marginLeft: { property: 'marginLeft' },
   marginRight: { property: 'marginRight' },
   marginTop: { property: 'marginTop' },
@@ -10,8 +16,14 @@ export const margin = {
 
 export const padding = {
   padding: { property: 'padding' },
-  paddingX: { property: 'padding' }, // TODO add properties array
-  paddingY: { property: 'padding' },
+  paddingX: {
+    property: 'padding',
+    properties: ['paddingLeft', 'paddingRight'],
+  },
+  paddingY: {
+    property: 'padding',
+    properties: ['paddingTop', 'paddingBottom'],
+  },
   paddingLeft: { property: 'paddingLeft' },
   paddingRight: { property: 'paddingRight' },
   paddingTop: { property: 'paddingTop' },
