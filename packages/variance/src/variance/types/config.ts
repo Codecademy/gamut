@@ -10,9 +10,12 @@ import {
 } from './props';
 import { Key } from './utils';
 
-export interface Prop<T extends AbstractTheme> {
+export interface BaseProperty {
   property: keyof PropertyTypes;
   properties?: (keyof PropertyTypes)[];
+}
+
+export interface Prop<T extends AbstractTheme> extends BaseProperty {
   scale?: keyof T;
   transform?: (
     val: unknown,
@@ -21,14 +24,9 @@ export interface Prop<T extends AbstractTheme> {
   ) => string | number;
 }
 
-export interface AbstractPropTransformer<T extends AbstractTheme> {
+export interface AbstractPropTransformer<T extends AbstractTheme>
+  extends Prop<T> {
   prop: string;
-  property: keyof PropertyTypes;
-  properties?: (keyof PropertyTypes)[];
-  scale?: keyof T | unknown;
-  transform?:
-    | ((val: unknown, prop?: string, props?: AbstractProps) => string | number)
-    | unknown;
   styleFn: (value: unknown, prop: string, props: AbstractProps) => CSSObject;
 }
 
@@ -47,7 +45,7 @@ export type Scale<
     : PropertyTypes[Config['property']]
 >;
 
-export interface Transform<
+export interface TransformFn<
   T extends AbstractTheme,
   P extends string,
   Config extends Prop<T>
@@ -63,13 +61,10 @@ export interface PropTransformer<
   T extends AbstractTheme,
   P extends string,
   C extends Prop<T>
-> extends AbstractPropTransformer<T> {
+> extends AbstractPropTransformer<T>,
+    Prop<T> {
   prop: P;
-  property: keyof PropertyTypes;
-  properties?: (keyof PropertyTypes)[];
-  scale?: C['scale'];
-  transform?: C['transform'];
-  styleFn: Transform<T, P, C>;
+  styleFn: TransformFn<T, P, C>;
 }
 
 export type TransformerMap<
@@ -79,18 +74,18 @@ export type TransformerMap<
   [P in Key<keyof Config>]: PropTransformer<T, Key<P>, Config[P]>;
 };
 
+export type ParserProps<
+  T extends AbstractTheme,
+  Config extends Record<string, AbstractPropTransformer<T>>
+> = {
+  [P in keyof Config]?: Parameters<Config[P]['styleFn']>[2][Config[P]['prop']];
+} &
+  ThemeProps<T>;
 export interface Parser<
   T extends AbstractTheme,
   Config extends Record<string, AbstractPropTransformer<T>>
 > {
-  (
-    props: {
-      [P in keyof Config]?: Parameters<
-        Config[P]['styleFn']
-      >[2][Config[P]['prop']];
-    } &
-      ThemeProps<T>
-  ): CSSObject;
+  (props: ParserProps<T, Config>): CSSObject;
   propNames: (keyof Config)[];
   config: Config;
 }
