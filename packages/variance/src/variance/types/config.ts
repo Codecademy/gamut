@@ -1,5 +1,4 @@
-import { Properties } from 'csstype';
-
+import { PropertyTypes } from './properties';
 import {
   AbstractProps,
   AbstractTheme,
@@ -12,8 +11,8 @@ import {
 import { Key } from './utils';
 
 export interface Prop<T extends AbstractTheme> {
-  property: keyof Properties;
-  properties?: (keyof Properties)[];
+  property: keyof PropertyTypes;
+  properties?: (keyof PropertyTypes)[];
   scale?: keyof T;
   transform?: (
     val: unknown,
@@ -24,8 +23,8 @@ export interface Prop<T extends AbstractTheme> {
 
 export interface AbstractPropTransformer<T extends AbstractTheme> {
   prop: string;
-  property: keyof Properties;
-  properties?: (keyof Properties)[];
+  property: keyof PropertyTypes;
+  properties?: (keyof PropertyTypes)[];
   scale?: keyof T | unknown;
   transform?:
     | ((val: unknown, prop?: string, props?: AbstractProps) => string | number)
@@ -45,7 +44,7 @@ export type Scale<
 > = ResponsiveProp<
   Config['scale'] extends keyof T
     ? keyof T[Config['scale']]
-    : Properties[Config['property']]
+    : PropertyTypes[Config['property']]
 >;
 
 export interface Transform<
@@ -66,8 +65,8 @@ export interface PropTransformer<
   C extends Prop<T>
 > extends AbstractPropTransformer<T> {
   prop: P;
-  property: keyof Properties;
-  properties?: (keyof Properties)[];
+  property: keyof PropertyTypes;
+  properties?: (keyof PropertyTypes)[];
   scale?: C['scale'];
   transform?: C['transform'];
   styleFn: Transform<T, P, C>;
