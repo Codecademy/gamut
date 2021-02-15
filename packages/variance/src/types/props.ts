@@ -14,9 +14,9 @@ export interface AbstractTheme extends BaseTheme {
   };
 }
 
-export interface ThemeProps<T extends AbstractTheme> {
+export type ThemeProps<T extends AbstractTheme> = {
   theme?: T;
-}
+};
 
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;
@@ -58,10 +58,9 @@ export type Selectors<T> = T extends SelectorLiterals ? T : never;
 
 export type SelectorMap<
   Config extends AbstractProps,
-  SelectorKeys extends Selectors<keyof Config>,
   Props extends AbstractProps
 > = {
-  [K in keyof Config]: K extends SelectorKeys
+  [K in keyof Config]: K extends Selectors<K>
     ? Props
     : K extends keyof Props
     ? Props[K]

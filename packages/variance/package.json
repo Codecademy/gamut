@@ -35,8 +35,8 @@
     "lodash": "^4.17.5"
   },
   "devDependencies": {
-    "@emotion/jest": "^11.1.0",
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/jest": "^11.2.0",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5"
   }
 }

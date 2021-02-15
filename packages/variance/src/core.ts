@@ -1,4 +1,4 @@
-import { get, identity, isObject, merge } from 'lodash';
+import { get, identity, isObject, merge, omit } from 'lodash';
 
 import {
   AbstractParser,
@@ -138,12 +138,15 @@ export const variance = {
         return (cssProps) => {
           let cache: CSSObject;
           const selectors = Object.keys(cssProps).filter((key) =>
-            key.match(/(&|>|\+|~)/g)
+            key.match(/(&|\>|\+|~)/g)
           );
 
           return ({ theme }) => {
             if (cache) return cache;
-            const css = parser({ ...cssProps, theme });
+            const baseCss = omit(cssProps, selectors);
+            const css = parser(
+              Object.assign(baseCss as Parameters<P>[0], { theme })
+            );
             selectors.forEach((selector) => {
               const selectorConfig = cssProps[selector];
               if (isObject(selectorConfig)) {
@@ -153,7 +156,6 @@ export const variance = {
               }
             });
             cache = css;
-
             return cache;
           };
         };
@@ -182,7 +184,7 @@ export const variance = {
 
           return ({ [prop]: selected = defaultVariant, ...props }) => {
             if (!selected) return {};
-            return variantFns[selected](props);
+            return variantFns[selected as Keys](props);
           };
         };
       },
