@@ -1,5 +1,6 @@
 import { get, identity, isObject, merge, omit } from 'lodash';
 
+import { BaseProps, baseProps } from './props';
 import {
   AbstractParser,
   AbstractPropTransformer,
@@ -165,14 +166,19 @@ export const variance = {
       // Single function to create variant and css
       createStatic: function <
         Config extends Record<string, Prop<T>>,
-        P extends Parser<T, TransformerMap<T, Config>>
+        Options extends { withBase: boolean },
+        MergeConfig extends Options['withBase'] extends true ? BaseProps : {},
+        P extends Parser<T, TransformerMap<T, MergeConfig & Config>>
       >(
-        config: Config
+        config: Config,
+        options?: Options
       ): {
         variant: Variant<T, P>;
         css: CSS<T, P>;
       } {
-        const css = this.createCss(config);
+        const css = this.createCss(
+          Object.assign(options?.withBase ? baseProps : {}, config)
+        );
         const variant = this.createVariant(css);
 
         return {

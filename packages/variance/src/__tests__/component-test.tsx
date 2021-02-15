@@ -61,3 +61,32 @@ describe('Variant integration', () => {
     });
   });
 });
+
+describe('CSS integration', () => {
+  const { css } = variance
+    .withTheme<{}>()
+    .createStatic({ bg: { property: 'background' } });
+
+  const Div = styled.div(
+    css({
+      bg: 'blue',
+      '&:hover': {
+        bg: 'green',
+      },
+      '> *': {
+        bg: 'navy',
+      },
+    })
+  );
+
+  it('generates pseudo selector styles', () => {
+    const renderView = renderer.create(<Div>Hello</Div>).toJSON();
+    expect(renderView).toHaveStyleRule('background', 'blue');
+    expect(renderView).toHaveStyleRule('background', 'green', {
+      target: ':hover',
+    });
+    expect(renderView).toHaveStyleRule('background', 'navy', {
+      target: '*',
+    });
+  });
+});
