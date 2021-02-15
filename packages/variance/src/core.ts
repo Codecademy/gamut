@@ -22,7 +22,7 @@ import { isMediaArray, isMediaMap } from './utils';
 export const variance = {
   withTheme: function <T extends AbstractTheme>() {
     return {
-      getBreakpoints: function (props: { theme: T }): BreakpointCache<T> {
+      getBreakpoints: function (props: ThemeProps<T>): BreakpointCache<T> {
         const breakpoints = props?.theme?.breakpoints;
         if (!breakpoints) return null;
 

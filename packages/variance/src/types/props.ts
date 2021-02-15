@@ -14,9 +14,12 @@ export interface AbstractTheme extends BaseTheme {
   };
 }
 
-export type ThemeProps<T extends AbstractTheme> = {
+export type ThemeProps<
+  T extends AbstractTheme,
+  Props extends AbstractProps = {}
+> = {
   theme?: T;
-};
+} & Props;
 
 export interface CSSObject {
   [key: string]: string | number | CSSObject | undefined;

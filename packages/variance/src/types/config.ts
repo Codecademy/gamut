@@ -52,7 +52,7 @@ export interface TransformFn<
   (
     value: Scale<T, Config>,
     prop: P,
-    props: { [K in P]?: Scale<T, Config> } & ThemeProps<T>
+    props: ThemeProps<T, { [K in P]?: Scale<T, Config> }>
   ): CSSObject;
 }
 
@@ -76,10 +76,14 @@ export type TransformerMap<
 export type ParserProps<
   T extends AbstractTheme,
   Config extends Record<string, AbstractPropTransformer<T>>
-> = {
-  [P in keyof Config]?: Parameters<Config[P]['styleFn']>[2][Config[P]['prop']];
-} &
-  ThemeProps<T>;
+> = ThemeProps<
+  T,
+  {
+    [P in keyof Config]?: Parameters<
+      Config[P]['styleFn']
+    >[2][Config[P]['prop']];
+  }
+>;
 
 export interface Parser<
   T extends AbstractTheme,
@@ -106,10 +110,14 @@ export interface Variant<
       prop?: PropKey;
       defaultVariant?: Keys;
     }
-  ): (props: { [X in PropKey]?: Keys } & { theme?: T }) => CSSObject;
+  ): <FinalProps extends ThemeProps<T, { [X in PropKey]?: Keys }>>(
+    props: FinalProps
+  ) => CSSObject;
 }
 export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
-  <Props extends AbstractProps>(config: SelectorMap<Props, Parameters<P>[0]>): (
-    props: ThemeProps<T>
+  <Props extends AbstractProps>(config: SelectorMap<Props, Parameters<P>[0]>): <
+    FinalProps extends ThemeProps<T>
+  >(
+    props: FinalProps
   ) => CSSObject;
 }
