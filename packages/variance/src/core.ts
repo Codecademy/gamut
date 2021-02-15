@@ -22,6 +22,7 @@ import { isMediaArray, isMediaMap } from './utils';
 export const variance = {
   withTheme: function <T extends AbstractTheme>() {
     return {
+      // Destructures the themes breakpoints into an ordered structure to traverse
       getBreakpoints: function (props: ThemeProps<T>): BreakpointCache<T> {
         const breakpoints = props?.theme?.breakpoints;
         if (!breakpoints) return null;
@@ -32,6 +33,7 @@ export const variance = {
           array: [xs, sm, md, lg, xl],
         };
       },
+      // PArser
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
       >(config: Config): Parser<T, Config> {
@@ -43,23 +45,29 @@ export const variance = {
           // Get the themes configured breakpoints
           breakpoints = breakpoints ?? this.getBreakpoints(props);
 
+          // Loops over all prop names on the configured config to check for configured styles
           propNames.forEach((prop) => {
             const transform = config[prop].styleFn;
             const value = get(props, prop);
+
             switch (typeof value) {
               case 'string':
               case 'number':
                 Object.assign(styles, transform(value, prop, props));
                 break;
+              // handle any props configured with the responsive notation
               case 'object':
                 if (!breakpoints) return;
                 const breakpointStyles = {};
 
+                // If it is an array the order of values is smallest to largest: [base, xs, ...]
                 if (isMediaArray(value)) {
                   const [base, ...rest] = value;
-
+                  // the first index is base styles
                   if (base) Object.assign(styles, transform(base, prop, props));
 
+                  // Map over each value in the array and merge the corresponding breakpoint styles
+                  // for that property.
                   rest.forEach((val, i) => {
                     const breakpointKey = breakpoints?.array[i];
                     if (!breakpointKey) return;
@@ -69,11 +77,14 @@ export const variance = {
                   });
                 }
 
+                // If it is an object with keys
                 if (isMediaMap(value)) {
                   const { base = undefined, ...rest } = value;
-
+                  // the keyof 'base' is base styles
                   if (base) Object.assign(styles, transform(base, prop, props));
 
+                  // Map over remaining keys and merge the corresponding breakpoint styles
+                  // for that property.
                   Object.keys(rest).forEach((bp: keyof typeof rest) => {
                     const breakpointKey = breakpoints?.map?.[bp];
                     if (!breakpointKey) return;
@@ -87,9 +98,11 @@ export const variance = {
           });
           return styles;
         };
-
+        // return the parser function with the resulting meta information for further composition
         return Object.assign(parser, { propNames, config });
       },
+      // Given a single property configuration enrich the config with a transform function
+      // that traverses the properties the function is responsible for.
       createTransform: function <P extends string, Config extends Prop<T>>(
         prop: P,
         config: Config
@@ -104,6 +117,8 @@ export const variance = {
           prop,
           styleFn: (value, prop, props) => {
             const styles: CSSObject = {};
+            // for each property look up the scale value from theme if passed and apply any
+            // final transforms to the value
             properties.forEach((property) => {
               styles[property] = transform(
                 get(props, `theme.${config.scale}.${value}`, value),
@@ -111,6 +126,7 @@ export const variance = {
                 props
               );
             });
+            // return the resulting styles object
             return styles;
           },
         };
@@ -129,45 +145,74 @@ export const variance = {
           ) as MergedParser
         );
       },
+      // Single function to create variant and css
+      createStatic: function <
+        Config extends Record<string, Prop<T>>,
+        P extends Parser<T, TransformerMap<T, Config>>
+      >(
+        config: Config
+      ): {
+        variant: Variant<T, P>;
+        css: CSS<T, P>;
+      } {
+        const css = this.createCss(config);
+        const variant = this.createVariant(css);
+
+        return {
+          css,
+          variant,
+        };
+      },
+      // Creates a higher order function that accepts static variance props and returns a function that can be called with theme
       createCss: function <
         Config extends Record<string, Prop<T>>,
         P extends Parser<T, TransformerMap<T, Config>>
       >(config: Config): CSS<T, P> {
+        // Create a parser from the passed configuration of props
         const parser = this.create(config);
 
         return (cssProps) => {
           let cache: CSSObject;
+          // Check any key that may match a selector and extract them
           const selectors = Object.keys(cssProps).filter((key) =>
             key.match(/(&|\>|\+|~)/g)
           );
 
           return ({ theme }) => {
+            // If cache has been set escape
             if (cache) return cache;
-            const baseCss = omit(cssProps, selectors);
-            const css = parser(
-              Object.assign(baseCss as Parameters<P>[0], { theme })
-            );
+            // Omit any props that are selector styles and generate the base CSS
+            const css = parser({
+              ...(omit(cssProps, selectors) as Parameters<P>[0]),
+              theme,
+            });
+            // For every key that matches a selector call the parser with the value of that key
             selectors.forEach((selector) => {
               const selectorConfig = cssProps[selector];
               if (isObject(selectorConfig)) {
+                // Set the key on our returned object to the generated CSS
                 css[selector] = parser(
                   Object.assign(selectorConfig, { theme })
                 );
               }
             });
+            // Set CSS to the cache
             cache = css;
             return cache;
           };
         };
       },
+      /** Creates a higher order function that accepts a set of keyed static props to return a
+       * function that accepts theme and a prop of any key on thee configuration object
+       */
       createVariant: function <
         Config extends Record<string, Prop<T>>,
-        P extends Parser<T, TransformerMap<T, Config>>
-      >(config: Config): Variant<T, P> {
-        const css: CSS<T, P> = this.createCss(config);
-
+        P extends Parser<T, TransformerMap<T, Config>>,
+        StyleFunc extends CSS<T, P>
+      >(css: StyleFunc): Variant<T, P> {
         return (variants, options) => {
           type Keys = keyof typeof variants;
+          // Set the default prop signature to variant if none has been configuraed.
           const prop = options?.prop || 'variant';
           const defaultVariant = options?.defaultVariant;
 
@@ -175,16 +220,18 @@ export const variance = {
             Keys,
             (props: ThemeProps<T>) => CSSObject
           >;
-
+          // For each of the variants create a CSS function from the configured props to be called when
+          // the return function is invoked.
           Object.keys(variants).forEach((key) => {
             const variantKey = key as Keys;
             const cssProps = variants[variantKey];
             variantFns[variantKey] = css(cssProps);
           });
 
+          // Return the initialed final props
           return ({ [prop]: selected = defaultVariant, ...props }) => {
-            if (!selected) return {};
-            return variantFns[selected as Keys](props);
+            // Call the correct css function with our defaulted key or return an empty object
+            return variantFns?.[selected as Keys]?.(props) ?? {};
           };
         };
       },

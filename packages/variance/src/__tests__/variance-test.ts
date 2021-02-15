@@ -173,7 +173,7 @@ describe('parsers', () => {
 describe('css', () => {
   const marginTransform = jest.fn();
 
-  const css = testVariance.createCss({
+  const { css } = testVariance.createStatic({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
@@ -260,7 +260,7 @@ describe('css', () => {
 describe('variants', () => {
   const marginTransform = jest.fn();
 
-  const variant = testVariance.createVariant({
+  const { variant } = testVariance.createStatic({
     width: { property: 'width', transform: parseSize },
     height: { property: 'height', transform: parseSize },
     margin: {
@@ -283,6 +283,7 @@ describe('variants', () => {
         width: ['100%', '200%'],
         '&:hover': {
           width: '150%',
+          margin: 16,
         },
       },
     });
@@ -293,6 +294,7 @@ describe('variants', () => {
       XS: { width: '200%' },
       '&:hover': {
         width: '150%',
+        margin: '1rem',
       },
     });
   });

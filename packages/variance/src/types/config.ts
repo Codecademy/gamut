@@ -110,7 +110,7 @@ export interface Variant<
       prop?: PropKey;
       defaultVariant?: Keys;
     }
-  ): <FinalProps extends ThemeProps<T, { [X in PropKey]?: Keys }>>(
+  ): <FinalProps extends ThemeProps<T, { [X in PropKey]?: Key<Keys> }>>(
     props: FinalProps
   ) => CSSObject;
 }

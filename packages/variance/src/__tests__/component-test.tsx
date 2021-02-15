@@ -8,9 +8,9 @@ import { variance } from '../core';
 expect.extend(matchers);
 
 describe('Variant integration', () => {
-  const variant = variance
+  const { variant } = variance
     .withTheme<{}>()
-    .createVariant({ bg: { property: 'background' } });
+    .createStatic({ bg: { property: 'background' } });
 
   const Test = styled.div`
     background: yellow;
