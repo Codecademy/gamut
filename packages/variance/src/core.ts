@@ -33,12 +33,29 @@ export const variance = {
           array: [xs, sm, md, lg, xl],
         };
       },
-      // PArser
+      // Get each prop name and sort it by the number of properties it handles, most props first, least props last
+      getPropNames: function (
+        config: Record<string, AbstractPropTransformer<T>>
+      ) {
+        return Object.keys(config).sort((a, b) => {
+          const aProps = config?.[a].properties;
+          const bProps = config?.[b].properties;
+          if (aProps && bProps) {
+            return bProps.length - aProps.length;
+          } else if (aProps) {
+            return -1;
+          } else if (bProps) {
+            return 1;
+          }
+          return 0;
+        });
+      },
+      // Parser to handle any set of configured props
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
       >(config: Config): Parser<T, Config> {
         let breakpoints: BreakpointCache<T>;
-        const propNames = Object.keys(config);
+        const propNames = this.getPropNames(config);
 
         const parser = (props: { theme: T }) => {
           const styles = {};
@@ -245,7 +262,7 @@ export const variance = {
           transforms[prop] = this.createTransform(prop, config[prop]);
         }
 
-        // Create a parser that handles are the props
+        // Create a parser that handles all the props within the config
         return this.createParser(transforms);
       },
     };
