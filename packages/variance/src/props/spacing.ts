@@ -1,4 +1,4 @@
-export const margin = {
+const margin = {
   margin: { property: 'margin' },
   marginX: {
     property: 'margin',
@@ -24,7 +24,7 @@ const marginShorthand = {
   mB: margin.marginBottom,
 };
 
-export const padding = {
+const padding = {
   p: { property: 'padding' },
   pX: {
     property: 'padding',
