@@ -1,2 +1,2 @@
-export * from './variance/core';
-export * from './variance/types/props';
+export * from './core';
+export * from './types/props';
