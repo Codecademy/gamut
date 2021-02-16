@@ -12,7 +12,7 @@ import {
 } from './shared';
 import { SidebarTabButton } from './SidebarTabButton';
 
-const sidebarOpenFromProps = variant({
+const sidebarBoxOpenFromProps = variant({
   default: 'left',
   prop: 'openFrom',
   variants: {
@@ -28,7 +28,7 @@ const sidebarOpenFromProps = variant({
 });
 
 const SidebarWrapper = styled(FlexBox)<SidebarComponentSideProps>`
-  ${sidebarOpenFromProps};
+  ${sidebarBoxOpenFromProps};
 `;
 
 const SidebarContent = styled(DrawerBase)<SidebarWidthProps>`

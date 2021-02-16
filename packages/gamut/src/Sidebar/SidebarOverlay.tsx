@@ -1,5 +1,6 @@
 import { IconButton } from '@codecademy/gamut/src';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
+import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
@@ -19,14 +20,28 @@ export type SidebarOverlayProps = SidebarBaseProps & {
   button: React.ReactNode;
 };
 
+const sidebarOverlayOpenFromProps = variant({
+  default: 'left',
+  prop: 'openFrom',
+  variants: {
+    left: {
+      right: 'auto',
+      left: 0,
+    },
+    right: {
+      right: 0,
+      left: 'auto',
+    },
+  },
+});
+
 const Drawer = styled(DrawerBase)<SidebarWrapperProps>`
   height: 100vh;
   position: fixed;
   top: 0;
   z-index: 2;
   width: ${(props) => `${props.openWidth}rem`};
-  right: ${(props) => (props.openFrom === 'right' ? `0` : `auto`)};
-  left: ${(props) => (props.openFrom === 'left' ? `0` : `auto`)};
+  ${sidebarOverlayOpenFromProps};
 `;
 
 export const SidebarOverlay: React.FC<SidebarOverlayProps> = ({
