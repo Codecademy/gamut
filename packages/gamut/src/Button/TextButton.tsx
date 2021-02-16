@@ -1,3 +1,4 @@
+import { spacing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -6,22 +7,16 @@ import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
-const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
+export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
+  buttonSizing,
+  ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
-
-    let sizeStyles = buttonSizing(size);
-    if (size === 'normal') {
-      sizeStyles = css`
-        ${sizeStyles}
-        padding: 0.5rem;
-      `;
-    }
 
     return css`
       border-radius: 3px;
+      padding-left: ${spacing[8]};
+      padding-right: ${spacing[8]};
       color: ${modeColors.background};
-      ${sizeStyles}
 
       ${TextButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};

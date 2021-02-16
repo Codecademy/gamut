@@ -8,14 +8,14 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
+  buttonSizing,
+  ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
-      border: 2px solid ${modeColors.background};
+      border-color: ${modeColors.background};
       border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
 
       ${StrokeButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};

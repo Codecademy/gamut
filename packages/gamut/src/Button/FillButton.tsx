@@ -7,14 +7,14 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
+  buttonSizing,
+  ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
       background-color: ${modeColors.background};
       border-radius: 3px;
       color: ${modeColors.foreground};
-      ${buttonSizing(size)}
 
       ${FillButtonOuter}:hover & {
         background-color: ${modeColors.backgroundDull};

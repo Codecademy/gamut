@@ -1,4 +1,10 @@
-import { colors, fontSize, pxRem, swatches } from '@codecademy/gamut-styles';
+import {
+  colors,
+  fontSize,
+  pxRem,
+  spacing,
+  swatches,
+} from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import type { HTMLProps } from 'react';
 
@@ -9,28 +15,32 @@ export type ButtonProps = Omit<
   mode?: 'dark' | 'light';
 };
 
-export type ButtonSize = 'normal' | 'small';
-
-export type SizedButtonProps = ButtonProps & {
-  size?: ButtonSize;
+export type ButtonSizeProps = {
+  size?: 'normal' | 'small';
 };
 
-const sizes = {
-  small: css`
-    font-size: ${fontSize[14]};
-    padding: 0.5rem;
-    line-height: 1;
-  `,
-  normal: css`
-    font-size: ${fontSize[16]};
-    line-height: ${pxRem(18)};
-    padding: 0.5rem 1rem;
-    line-height: 1;
-  `,
-};
+export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
-export const buttonSizing = (size?: ButtonSize) => {
-  return size ? sizes?.[size] : undefined;
+export const BORDER_WIDTH = 2;
+
+export const SIZE_UNITS = {
+  small: { height: 30, fSize: 14 },
+  normal: { height: 40, fSize: 16 },
+} as const;
+
+export const buttonSizing = ({ size }: ButtonSizeProps) => {
+  if (!size) return;
+
+  const { height, fSize } = SIZE_UNITS[size];
+  const vPadding = pxRem((height - BORDER_WIDTH * 2 - fSize) / 2);
+  const hPadding = size === 'normal' ? spacing[16] : spacing[8];
+
+  return css`
+    line-height: 1;
+    border: ${BORDER_WIDTH}px solid transparent;
+    font-size: ${fontSize[fSize]};
+    padding: ${vPadding} ${hPadding};
+  `;
 };
 
 export const modeColorGroups = {
