@@ -38,6 +38,6 @@
     "@emotion/jest": "^11.2.0",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
-    "@types/react-test-renderer": "^16.8.0"
+    "@types/react-test-renderer": "^17.0.1"
   }
 }
