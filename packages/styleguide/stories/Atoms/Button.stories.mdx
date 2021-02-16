@@ -9,6 +9,7 @@ import {
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { startCase } from 'lodash';
 
 <Meta
   title={title}
@@ -98,10 +99,11 @@ export const renderButtonScale = (mode, size = 'normal') => {
   return [
     <Box
       width="100%"
+      fontWeight="title"
       textColor={mode.includes('dark') ? 'white' : 'navy'}
       key={`${mode}-${size}-key`}
     >
-      {mode} - {size}
+      {startCase(`${mode} + ${size}`)}
     </Box>,
     ...buttons.map((Component) => {
       const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
@@ -127,16 +129,22 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
 - Use `light-alt` and `dark-alt` modes for secondary buttons.
 
 <Canvas>
-  <Story name="light">
+  <Story name="Variant Catalog">
     <Box
       display="grid"
       alignItems="center"
       justifyItems="start"
-      gridTemplateColumns="repeat(5, max-content)"
+      gridTemplateColumns="repeat(5, minmax(100px, max-content))"
       columnGap="2rem"
       rowGap="1rem"
       padding="1rem"
     >
+      <Box />
+      {buttons.map((Component) => (
+        <Box key={`${Component.name}-key`} fontWeight="title">
+          {Component.name}
+        </Box>
+      ))}
       {renderButtonScale('light')}
       {renderButtonScale('light', 'small')}
       {renderButtonScale('light-alt')}
@@ -146,7 +154,7 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
       display="grid"
       alignItems="center"
       justifyItems="start"
-      gridTemplateColumns="repeat(5, max-content)"
+      gridTemplateColumns="repeat(5, minmax(100px, max-content))"
       columnGap="2rem"
       rowGap="1rem"
       padding="1rem"
