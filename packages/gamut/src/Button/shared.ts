@@ -1,4 +1,4 @@
-import { colors, fontSize, swatches } from '@codecademy/gamut-styles';
+import { colors, fontSize, pxRem, swatches } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import type { HTMLProps } from 'react';
 
@@ -23,7 +23,8 @@ const sizes = {
   `,
   normal: css`
     font-size: ${fontSize[16]};
-    padding: 0.75rem 1rem;
+    line-height: ${pxRem(18)};
+    padding: 0.5rem 1rem;
     line-height: 1;
   `,
 };
