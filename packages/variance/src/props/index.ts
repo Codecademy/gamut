@@ -2,6 +2,7 @@ import { background } from './background';
 import { border } from './borders';
 import { color } from './colors';
 import { flex } from './flex';
+import { global } from './global';
 import { grid } from './grid';
 import { layout } from './layout';
 import { positioning } from './position';
@@ -10,6 +11,9 @@ import { spacing } from './spacing';
 import { typography } from './typography';
 
 export const baseProps = {
+  // static only props
+  ...global,
+  // standard props
   ...background,
   ...border,
   ...flex,

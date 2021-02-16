@@ -17,7 +17,7 @@ export interface BaseProperty {
 export interface Prop<T extends AbstractTheme> extends BaseProperty {
   scale?: keyof T;
   transform?: (
-    val: unknown,
+    val: string | number,
     prop?: string,
     props?: AbstractProps
   ) => string | number;

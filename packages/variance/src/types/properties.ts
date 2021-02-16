@@ -15,7 +15,8 @@ type Border =
   | `${string} ${LineStyle} ${string}`;
 
 // Updated Shorthand Types
-export interface PropertyTypes extends Properties {
+export interface PropertyTypes<TLength = never> extends Properties<TLength> {
   border?: Border;
   flex?: Flex;
+  content?: '""' | `"${string}"`;
 }
