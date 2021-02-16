@@ -1,18 +1,6 @@
 module.exports = {
   presets: ['codecademy', '@babel/preset-typescript'],
-  plugins: [
-    'macros',
-    'react-anonymous-display-name',
-    [
-      '@emotion',
-      {
-        sourceMap: true,
-        autoLabel: 'always',
-        labelFormat: '[local]',
-        cssPropOptimization: true,
-      },
-    ],
-  ],
+  plugins: ['macros', 'react-anonymous-display-name'],
   ignore: [],
   env: {
     test: {

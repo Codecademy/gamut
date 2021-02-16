@@ -47,6 +47,15 @@ module.exports = (api, { type = PACKAGE_LIBRARY } = {}) => {
       require('@babel/preset-react').default,
     ].filter(Boolean),
     plugins: [
+      [
+        require('@emotion/babel-plugin').default,
+        {
+          sourceMap: true,
+          autoLabel: 'always',
+          labelFormat: '[local]',
+          cssPropOptimization: false,
+        },
+      ],
       require('@babel/plugin-transform-destructuring').default,
       [require('@babel/plugin-proposal-decorators'), { legacy: true }],
       [
