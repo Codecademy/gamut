@@ -152,6 +152,7 @@ const ToolTipBody = styled.div<{ variant: VisualTheme }>`
 
 export type ToolTipProps = {
   children?: ReactNode;
+  className?: string;
 
   /**
    * Whether to manually add a tabIndex of 0, such as for tooltips containing actual buttons.
