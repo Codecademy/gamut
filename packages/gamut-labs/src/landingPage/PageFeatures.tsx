@@ -18,7 +18,7 @@ import {
   FeaturedImage,
   FeaturedStat,
   Title,
-} from './';
+} from '.';
 import { FeaturedDescription, FeaturedTitle } from './Feature';
 import { BaseProps } from './types';
 
@@ -64,7 +64,7 @@ const gridRenderEach = (
   const size = { xs: 12, sm: 12 / maxCols } as ResponsiveProperty<ColumnSizes>;
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid columnGap="xl">
+    <LayoutGrid columnGap={{ xs: 'sm', sm: 'xl' }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}

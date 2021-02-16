@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.3...@codecademy/gamut-labs@10.0.4) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.2...@codecademy/gamut-labs@10.0.3) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.1...@codecademy/gamut-labs@10.0.2) (2021-02-13)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.0...@codecademy/gamut-labs@10.0.1) (2021-02-12)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** Simplify loading header ([9c5ebc0](https://github.com/Codecademy/client-modules/commit/9c5ebc0bf45e73851310c4053a3341c6ee7034fc))
+
+
+
+## [10.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.7...@codecademy/gamut-labs@10.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
+### [9.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.6...@codecademy/gamut-labs@9.3.7) (2021-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [9.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.5...@codecademy/gamut-labs@9.3.6) (2021-02-12)
+
+
+### Bug Fixes
+
+* reduce column gaps on mobile for LP components ([fa887a1](https://github.com/Codecademy/client-modules/commit/fa887a1f525f9c5434f4591ce01126a4d7fd5ae4))
+
+
+
+### [9.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.4...@codecademy/gamut-labs@9.3.5) (2021-02-12)
+
+
+### Bug Fixes
+
+* **AppHeaderDropdown:** fix jumpiness of bold text when dropdown is opened ([#1394](https://github.com/Codecademy/client-modules/issues/1394)) ([932a00c](https://github.com/Codecademy/client-modules/commit/932a00c9c6304440cfd06b38e2ccb0a5438afe81))
+
+
+
+### [9.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.3...@codecademy/gamut-labs@9.3.4) (2021-02-11)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [9.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@9.3.2...@codecademy/gamut-labs@9.3.3) (2021-02-11)
 
 
