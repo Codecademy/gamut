@@ -167,6 +167,7 @@ export type ToolTipProps = {
 
 export const ToolTip: React.FC<ToolTipProps> = ({
   children,
+  className,
   focusable,
   id,
   position = 'top-right',
@@ -175,7 +176,7 @@ export const ToolTip: React.FC<ToolTipProps> = ({
   variant = 'light',
 }) => {
   return (
-    <TooltipWrapper>
+    <TooltipWrapper className={className}>
       <TargetContainer
         aria-labelledby={id}
         // ToolTips sometimes contain actual <button>s, which cannot be a child of a button.
