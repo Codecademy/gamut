@@ -1,6 +1,5 @@
-import { parseSize } from '@codecademy/gamut-system/src/transforms';
-
 import { variance } from '../core';
+import { parseSize } from '../transforms/';
 
 const theme = {
   breakpoints: {
@@ -36,7 +35,7 @@ const layout = testVariance.create({
 
 type Assert<X, Y> = X extends Y ? true : false;
 
-describe('css props', () => {
+describe('style props', () => {
   describe('parsers', () => {
     it('has the correct config', () => {
       const propNamesRestricted: Assert<
@@ -174,7 +173,7 @@ describe('css props', () => {
   });
 });
 
-describe('static css', () => {
+describe('static styles', () => {
   describe('css', () => {
     const marginTransform = jest.fn();
 
