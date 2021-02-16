@@ -7,7 +7,7 @@ import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderIte
 import {
   AppHeaderMainMenuMobile,
   AppHeaderMainMenuMobileProps,
-} from './../index';
+} from '../index';
 
 const action = jest.fn();
 

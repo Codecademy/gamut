@@ -27,9 +27,7 @@ const htmlToReactParser = new HtmlToReact.Parser({
 
 const preprocessingInstructions = createPreprocessingInstructions(styles);
 
-const isValidNode = function () {
-  return true;
-};
+const isValidNode = () => true;
 
 export type SkipDefaultOverridesSettings = {
   a?: boolean;

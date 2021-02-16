@@ -65,7 +65,7 @@ export type RowProps = {
   className?: string;
   /** Justify columns to `flex-end` on screen sizes greater than modifer */
   end?: ModificatorType;
-  /** Set the row to be the first item in the FlexGrid on screen sizes greater than modifer*/
+  /** Set the row to be the first item in the FlexGrid on screen sizes greater than modifer */
   first?: ModificatorType;
   /** Set the row to be the last item in the FlexGrid on screen sizes greater than modifer */
   last?: ModificatorType;

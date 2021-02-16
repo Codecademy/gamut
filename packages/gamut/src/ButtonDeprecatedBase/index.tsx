@@ -63,7 +63,7 @@ export const ButtonDeprecatedBase: React.FC<ButtonDeprecatedBaseProps> = (
   const defaultProps = {
     ...propsToTransfer,
     className: classes,
-    onClick: onClick,
+    onClick,
     'data-btn': true,
   };
 
