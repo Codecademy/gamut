@@ -38,7 +38,7 @@ const TextButtonOuter = styled(ButtonOutline)`
 `;
 
 export const TextButton: React.FC<
-  SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
+  SizedButtonProps & Parameters<typeof TextButtonOuter>[0]
 > = ({ children, mode, size, ...props }) => {
   return (
     <TextButtonOuter mode={mode} {...props}>

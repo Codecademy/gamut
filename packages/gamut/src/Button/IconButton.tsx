@@ -13,7 +13,7 @@ export const IconButton: React.FC<
   IconButtonProps & React.ComponentProps<typeof TextButton>
 > = ({ icon: Icon, size, ...props }) => {
   return (
-    <TextButton size={size} {...props}>
+    <TextButton size={size === 'normal' ? 'normal-condensed' : size} {...props}>
       <Icon size={size === 'small' ? 12 : 24} />
     </TextButton>
   );

@@ -1,27 +1,41 @@
 import { colors, fontSize, swatches } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import type { HTMLProps } from 'react';
 
-export type ButtonProps = HTMLProps<HTMLLinkElement> &
-  HTMLProps<HTMLButtonElement> & {
-    mode?: 'dark' | 'light';
-  };
+export type ButtonProps = Omit<
+  HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
+  'size'
+> & {
+  mode?: 'dark' | 'light';
+};
 
-export type ButtonSize = 'normal' | 'small';
+export type ButtonSize = 'normal' | 'small' | 'normal-condensed';
 
 export type SizedButtonProps = ButtonProps & {
   size?: ButtonSize;
 };
 
-export const buttonSizing = (size?: ButtonSize) =>
-  size === 'small'
-    ? `
-      font-size: ${fontSize[14]};
-      padding: 0.35rem 0.5rem;
-    `
-    : `
-      font-size: ${fontSize[16]};
-      padding: 0.75rem 1rem;
-    `;
+const sizes = {
+  'normal-condensed': css`
+    font-size: ${fontSize[16]};
+    padding: 0.5rem;
+    line-height: 1;
+  `,
+  small: css`
+    font-size: ${fontSize[14]};
+    padding: 0.5rem;
+    line-height: 1;
+  `,
+  normal: css`
+    font-size: ${fontSize[16]};
+    padding: 0.75rem 1rem;
+    line-height: 1;
+  `,
+};
+
+export const buttonSizing = (size?: ButtonSize) => {
+  return size ? sizes?.[size] : undefined;
+};
 
 export const modeColorGroups = {
   dark: {

@@ -97,11 +97,7 @@ export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
 export const renderButtonScale = (mode, size = 'normal') => {
   return (
     <>
-      <Box
-        width="100%"
-        textColor={mode.includes('dark') ? 'white' : 'navy'}
-        textTransform="capitalize"
-      >
+      <Box width="100%" textColor={mode.includes('dark') ? 'white' : 'navy'}>
         {mode} - {size}
       </Box>
       {buttons.map((Component) => {
