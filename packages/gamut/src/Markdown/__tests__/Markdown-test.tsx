@@ -95,6 +95,11 @@ describe('<Markdown />', () => {
     expect(markdown.find('span.spacing-tight').length).toEqual(1);
   });
 
+  it('does not crash on a value-less attribute', () => {
+    const markdown = mount(<Markdown text="<h1 class />" />);
+    expect(markdown.find('h1').length).toEqual(1);
+  });
+
   describe('Allows passing in a custom CodeBlock override', () => {
     it('Accepts a CodeBlock component directly', () => {
       const text = `

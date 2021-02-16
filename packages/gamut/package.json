@@ -30,7 +30,7 @@
     "focus-trap-react": "^8.4.1",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
-    "insane": "^2.6.2",
+    "sanitize-markdown": "^2.6.6",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
