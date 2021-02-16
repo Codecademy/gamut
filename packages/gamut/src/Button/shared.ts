@@ -33,6 +33,15 @@ export const modeColorGroups = {
     foreground: colors.black,
     shadow: colors.white,
   },
+  'dark-alt': {
+    background: colors.white,
+    backgroundDull: swatches.gray[200],
+    backgroundEmphasized: colors.navy,
+    backgroundMuted: swatches.gray[600],
+    foregroundMuted: swatches.gray[200],
+    foreground: colors.navy,
+    shadow: colors.white,
+  },
   light: {
     background: colors.hyper,
     backgroundDull: swatches.hyper[400],
@@ -41,5 +50,14 @@ export const modeColorGroups = {
     foregroundMuted: swatches.gray[600],
     foreground: colors.white,
     shadow: colors.black,
+  },
+  'light-alt': {
+    background: colors.navy,
+    backgroundDull: swatches.gray[600],
+    backgroundEmphasized: swatches.gray[100],
+    backgroundMuted: swatches.gray[200],
+    foregroundMuted: swatches.gray[600],
+    foreground: colors.white,
+    shadow: colors.navy,
   },
 };

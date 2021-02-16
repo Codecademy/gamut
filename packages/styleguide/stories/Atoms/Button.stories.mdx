@@ -1,4 +1,5 @@
 import {
+  Box,
   CTAButton,
   FillButton,
   IconButton,
@@ -90,3 +91,68 @@ All but CTA button support a size of either `normal` (default) or `small`.
 </Canvas>
 
 <Props story="IconButton" />
+
+export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
+
+export const renderButtonScale = (mode, size = 'normal') => {
+  return (
+    <>
+      <Box
+        width="100%"
+        textColor={mode.includes('dark') ? 'white' : 'navy'}
+        textTransform="capitalize"
+      >
+        {mode} - {size}
+      </Box>
+      {buttons.map((Component) => {
+        const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
+        if (Component.name === 'IconButton') {
+          return <Component {...props} icon={SearchIcon} />;
+        }
+        return <Component {...props}>Light</Component>;
+      })}
+    </>
+  );
+};
+
+## Button Variants
+
+We have 2 button color modes: `light` and `dark` which are meant to be used in their respective contexts. For differentiation we also provide an alternate color scheme for lower priority buttons when used adjacently. These are `light-alt` and `dark-alt` respectively.
+
+- **Don't** use a color mode outside of its context (no light buttons on navy backgrounds)
+- Use `light` and `dark` modes for your primary buttons.
+- Use `light-alt` and `dark-alt` modes for secondary buttons.
+
+<Canvas>
+  <Story name="light">
+    <Box
+      display="grid"
+      alignItems="center"
+      justifyItems="center"
+      gridTemplateColumns="repeat(5, max-content)"
+      columnGap="2rem"
+      rowGap="1rem"
+      padding="1rem"
+    >
+      {renderButtonScale('light')}
+      {renderButtonScale('light', 'small')}
+      {renderButtonScale('light-alt')}
+      {renderButtonScale('light-alt', 'small')}
+    </Box>
+    <Box
+      display="grid"
+      alignItems="center"
+      justifyItems="center"
+      gridTemplateColumns="repeat(5, max-content)"
+      columnGap="2rem"
+      rowGap="1rem"
+      padding="1rem"
+      backgroundColor="navy"
+    >
+      {renderButtonScale('dark')}
+      {renderButtonScale('dark', 'small')}
+      {renderButtonScale('dark-alt')}
+      {renderButtonScale('dark-alt', 'small')}
+    </Box>
+  </Story>
+</Canvas>
