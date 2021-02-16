@@ -1,4 +1,3 @@
-import { colors } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -22,7 +21,7 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${mode === 'light' ? colors.hyper : colors.yellow};
+        background: ${modeColors.background};
         color: ${modeColors.foreground};
       }
 

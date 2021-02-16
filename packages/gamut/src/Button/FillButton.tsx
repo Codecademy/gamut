@@ -10,7 +10,6 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
   ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
-
     return css`
       background-color: ${modeColors.background};
       border-radius: 3px;
@@ -18,6 +17,10 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
 
       ${FillButtonOuter}:hover & {
         background-color: ${modeColors.backgroundDull};
+      }
+
+      ${FillButtonOuter}:active & {
+        border-color: ${modeColors.background};
       }
 
       ${FillButtonOuter}:disabled &,

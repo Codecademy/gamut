@@ -129,41 +129,39 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
 - Use `light-alt` and `dark-alt` modes for secondary buttons.
 
 <Canvas>
-  <Story name="Variant Catalog">
-    <Box
-      display="grid"
-      alignItems="center"
-      justifyItems="start"
-      gridTemplateColumns="repeat(5, minmax(100px, max-content))"
-      columnGap="2rem"
-      rowGap="1rem"
-      padding="1rem"
-    >
-      <Box />
-      {buttons.map((Component) => (
-        <Box key={`${Component.name}-key`} fontWeight="title">
-          {Component.name}
-        </Box>
-      ))}
-      {renderButtonScale('light')}
-      {renderButtonScale('light', 'small')}
-      {renderButtonScale('light-alt')}
-      {renderButtonScale('light-alt', 'small')}
-    </Box>
-    <Box
-      display="grid"
-      alignItems="center"
-      justifyItems="start"
-      gridTemplateColumns="repeat(5, minmax(100px, max-content))"
-      columnGap="2rem"
-      rowGap="1rem"
-      padding="1rem"
-      backgroundColor="navy"
-    >
-      {renderButtonScale('dark')}
-      {renderButtonScale('dark', 'small')}
-      {renderButtonScale('dark-alt')}
-      {renderButtonScale('dark-alt', 'small')}
-    </Box>
-  </Story>
+  <Box
+    display="grid"
+    alignItems="center"
+    justifyItems="start"
+    gridTemplateColumns="repeat(5, minmax(100px, max-content))"
+    columnGap="2rem"
+    rowGap="1rem"
+    padding="1rem"
+  >
+    <Box />
+    {buttons.map((Component) => (
+      <Box key={`${Component.name}-key`} fontWeight="title">
+        {Component.name}
+      </Box>
+    ))}
+    {renderButtonScale('light')}
+    {renderButtonScale('light', 'small')}
+    {renderButtonScale('light-alt')}
+    {renderButtonScale('light-alt', 'small')}
+  </Box>
+  <Box
+    display="grid"
+    alignItems="center"
+    justifyItems="start"
+    gridTemplateColumns="repeat(5, minmax(100px, max-content))"
+    columnGap="2rem"
+    rowGap="1rem"
+    padding="1rem"
+    backgroundColor="navy"
+  >
+    {renderButtonScale('dark')}
+    {renderButtonScale('dark', 'small')}
+    {renderButtonScale('dark-alt')}
+    {renderButtonScale('dark-alt', 'small')}
+  </Box>
 </Canvas>

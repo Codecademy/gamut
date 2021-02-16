@@ -44,8 +44,8 @@ export const buttonSizing = ({ size }: ButtonSizeProps) => {
 export const modeColorGroups = {
   dark: {
     background: colors.yellow,
-    backgroundDull: colors.yellow[400],
-    backgroundEmphasized: swatches.gray[900],
+    backgroundDull: swatches.yellow[400],
+    backgroundEmphasized: swatches.blue[800],
     backgroundMuted: swatches.gray[600],
     foregroundMuted: swatches.gray[200],
     foreground: colors.black,
@@ -54,7 +54,7 @@ export const modeColorGroups = {
   'dark-alt': {
     background: colors.white,
     backgroundDull: swatches.gray[200],
-    backgroundEmphasized: colors.navy,
+    backgroundEmphasized: swatches.blue[800],
     backgroundMuted: swatches.gray[600],
     foregroundMuted: swatches.gray[200],
     foreground: colors.navy,
