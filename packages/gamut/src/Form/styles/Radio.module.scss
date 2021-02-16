@@ -33,10 +33,10 @@
 }
 
 .radioInput:checked + .radioLabel::before {
-  background-color: $color-blue-500;
+  background-color: $color-hyper;
   border: 0.25rem solid $color-white;
   border-radius: 100%;
-  box-shadow: 0 0 0 2px $color-blue-500;
+  box-shadow: 0 0 0 2px $color-hyper;
   width: px-rem(24px);
   height: px-rem(24px);
   min-width: px-rem(24px);
