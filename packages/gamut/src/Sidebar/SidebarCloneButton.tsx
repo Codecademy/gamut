@@ -12,7 +12,7 @@ export const SidebarCloneButton: React.FC<SidebarCloneButtonProps> = ({
 }) => {
   if (React.isValidElement(children)) {
     return React.cloneElement(children, {
-      onClick: onClick,
+      onClick,
     });
   }
   return null;

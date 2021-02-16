@@ -50,7 +50,7 @@ export const SidebarBox: React.FC<SidebarBaseProps> = ({
   const width = `${openWidth}rem`;
 
   const variants = {
-    expanded: { width: width },
+    expanded: { width },
     hidden: { width: 0 },
   };
 
