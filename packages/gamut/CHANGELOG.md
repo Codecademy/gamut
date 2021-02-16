@@ -3,6 +3,143 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.0...@codecademy/gamut@23.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.3...@codecademy/gamut@23.0.0) (2021-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1357)
+
+### Miscellaneous Chores
+
+* converted ToolTip to Emotion ([#1357](https://github.com/Codecademy/client-modules/issues/1357)) ([3f8a045](https://github.com/Codecademy/client-modules/commit/3f8a045f29b15f02da66fb10069064866c44a9e7))
+
+
+
+### [22.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.2...@codecademy/gamut@22.0.3) (2021-02-16)
+
+
+### Bug Fixes
+
+* used 'sanitize-markdown' fork of 'insane' ([f1863bf](https://github.com/Codecademy/client-modules/commit/f1863bf00015cf9f9a7551574c1ad842ebd38561))
+
+
+
+### [22.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.1...@codecademy/gamut@22.0.2) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [22.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.0...@codecademy/gamut@22.0.1) (2021-02-16)
+
+
+### Bug Fixes
+
+* **Markdown:** Relative <code> fontSize [TR2-440] ([e401a2f](https://github.com/Codecademy/client-modules/commit/e401a2fcc9ea605dfbfa91c7210af2553701a838))
+
+
+
+## [22.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.8...@codecademy/gamut@22.0.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
+### [21.3.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.7...@codecademy/gamut@21.3.8) (2021-02-12)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.3.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.6...@codecademy/gamut@21.3.7) (2021-02-11)
+
+
+### Bug Fixes
+
+* **Toggle:** remove aria-label ([812065d](https://github.com/Codecademy/client-modules/commit/812065d9867d6f162b9a49ba2fa0855cb4fd4bb7))
+
+
+
+### [21.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.5...@codecademy/gamut@21.3.6) (2021-02-10)
+
+
+### Reverts
+
+* fix(AccordionButton) bump specificity of accordion button styles ([c44961f](https://github.com/Codecademy/client-modules/commit/c44961f35ed1b8c71443e53b10d30ef02d4d6056)), closes [Codecademy/client-modules#1383](https://github.com/Codecademy/client-modules/issues/1383)
+
+
+
+### [21.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.4...@codecademy/gamut@21.3.5) (2021-02-10)
+
+
+### Bug Fixes
+
+* **AccordionButton:** bump specificity of accordion button styles ([cde5cee](https://github.com/Codecademy/client-modules/commit/cde5cee236788a4cbaeabf0ab63715b9cf3972b9))
+
+
+
+### [21.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.3...@codecademy/gamut@21.3.4) (2021-02-09)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.2...@codecademy/gamut@21.3.3) (2021-02-08)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [21.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.1...@codecademy/gamut@21.3.2) (2021-02-05)
+
+
+### Bug Fixes
+
+* remove deprecated elseif scss syntax ([6b36886](https://github.com/Codecademy/client-modules/commit/6b3688675eebcfbfe97d4e83462f000ffbdc07e6))
+
+
+
+### [21.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.3.0...@codecademy/gamut@21.3.1) (2021-02-05)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [21.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.3...@codecademy/gamut@21.3.0) (2021-02-05)
+
+
+### Features
+
+* added gamut-tests package around component-test-setup ([#1285](https://github.com/Codecademy/client-modules/issues/1285)) ([42f10fd](https://github.com/Codecademy/client-modules/commit/42f10fd7932d91ac7a7caceb6c875ace53a8e1b0))
+
+
+
 ### [21.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@21.2.2...@codecademy/gamut@21.2.3) (2021-02-04)
 
 **Note:** Version bump only for package @codecademy/gamut

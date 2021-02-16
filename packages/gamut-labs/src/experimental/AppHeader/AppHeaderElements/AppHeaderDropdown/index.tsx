@@ -1,17 +1,14 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
+import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
 import { AppHeaderAvatar } from '../AppHeaderAvatar';
 import { AppHeaderLinkSections } from '../AppHeaderLinkSections';
 import { focusStyles, hoverStyles, textButtonStyles } from '../SharedStyles';
-import {
-  AppHeaderClickHandler,
-  AppHeaderDropdownItem,
-  AppHeaderProfileDropdownItem,
-} from '../types';
+import { AppHeaderClickHandler, AppHeaderDropdownItem } from '../types';
 import styles from './styles.module.scss';
 
 const AppHeaderTextTargetButton = styled.button`
@@ -31,7 +28,7 @@ const AppHeaderAvatarTargetButton = styled.button`
 
 export type AppHeaderDropdownProps = {
   action: AppHeaderClickHandler;
-  item: AppHeaderDropdownItem | AppHeaderProfileDropdownItem;
+  item: AppHeaderDropdownItem;
 };
 
 export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
@@ -54,10 +51,12 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </AppHeaderAvatarTargetButton>
     ) : (
       <AppHeaderTextTargetButton
-        className={isOpen && styles.open}
+        className={cx(styles.target, isOpen && styles.open)}
         onClick={(event) => toggleIsOpen(event)}
       >
-        <span className={styles.copy}>{item.text}</span>
+        <span title={item.text} className={styles.copy}>
+          {item.text}
+        </span>
         <ArrowChevronDownFilledIcon
           size={12}
           className={styles.icon}
@@ -77,7 +76,7 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
         onRequestClose={handleClose}
         targetRef={headerDropdownRef}
       >
-        <Box paddingY={12}>
+        <Box paddingX={24} paddingY={12}>
           <AppHeaderLinkSections action={action} item={item} />
         </Box>
       </Popover>

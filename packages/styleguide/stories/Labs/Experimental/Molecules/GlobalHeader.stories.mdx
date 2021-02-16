@@ -149,7 +149,19 @@ The following are available variations for the GlobalHeader component.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="anon"
         variant="login"
       />
@@ -164,7 +176,19 @@ The following are available variations for the GlobalHeader component.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="anon"
         variant="signup"
       />
@@ -181,8 +205,23 @@ To mock this, IconButtons are provided as placeholders.
     {(args) => (
       <GlobalHeader
         action={() => {}}
-        renderNotifications={() => <IconButton icon={BellIcon} />}
-        renderSearch={() => <IconButton icon={SearchIcon} />}
+        renderNotifications={{
+          desktop: () => <IconButton icon={BellIcon} />,
+          mobile: () => <IconButton icon={BellIcon} />,
+        }}
+        renderSearch={{
+          desktop: () => <IconButton icon={SearchIcon} />,
+          mobile: () => (
+            <Box
+              borderColor="navy"
+              borderStyle="solid"
+              borderWidth="1px"
+              padding={8}
+            >
+              Mobile Search Bar [Placeholder]
+            </Box>
+          ),
+        }}
         type="pro"
         user={{
           avatar:
@@ -231,6 +270,16 @@ To mock this, a very basic action function is provided, which just prints out th
         type="anon"
       />
     )}
+  </Story>
+</Canvas>
+
+### Loading
+
+A version of the header with just the logo, for use when data has not been fetched yet.
+
+<Canvas>
+  <Story name="Loading">
+    {(args) => <GlobalHeader action={() => {}} type="loading" />}
   </Story>
 </Canvas>
 

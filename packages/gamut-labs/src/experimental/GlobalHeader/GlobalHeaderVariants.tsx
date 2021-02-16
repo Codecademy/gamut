@@ -1,17 +1,20 @@
 import { ReactNode } from 'react';
 
-import { AppHeaderItemsProp } from '../AppHeader';
 import { AppHeaderItem } from '../AppHeader/AppHeaderElements/types';
+import {
+  FormattedAppHeaderItems,
+  FormattedMobileAppHeaderItems,
+} from '../AppHeader/types';
 import {
   communityDropdown,
   courseCatalog,
-  forEnterprise,
+  forBusiness,
   freeProfile,
   login,
   logo,
   myHome,
   notifications,
-  plansPricingDropdown,
+  pricingDropdown,
   proLogo,
   proProfile,
   resourcesDropdown,
@@ -25,14 +28,14 @@ const anonHeaderItems = (
   renderLogin: boolean,
   renderSignUp: boolean,
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -46,41 +49,84 @@ const anonHeaderItems = (
   };
 };
 
+const anonMobileHeaderItems = (
+  renderLogin: boolean,
+  renderSignUp: boolean
+): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [logo];
+
+  const rightItems: AppHeaderItem[] = [];
+  renderLogin && rightItems.push(login);
+  renderSignUp && rightItems.push(signUp);
+
+  const mainMenuItems: AppHeaderItem[] = [
+    courseCatalog,
+    resourcesDropdown,
+    communityDropdown,
+    pricingDropdown,
+    forBusiness,
+    signUp,
+    login,
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
+  };
+};
+
 export const anonDefaultHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(true, true, renderSearch);
 };
 
-export const anonLandingHeaderItems = (): AppHeaderItemsProp => {
+export const anonDefaultMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, true);
+};
+
+export const anonLandingHeaderItems = (): FormattedAppHeaderItems => {
   return anonHeaderItems(true, false);
+};
+
+export const anonLandingMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false);
 };
 
 export const anonLoginHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(false, true, renderSearch);
+};
+
+export const anonLoginMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(false, true);
 };
 
 export const anonSignupHeaderItems = (
   renderSearch?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   return anonHeaderItems(true, false, renderSearch);
+};
+
+export const anonSignupMobileHeaderItems = (): FormattedMobileAppHeaderItems => {
+  return anonMobileHeaderItems(true, false);
 };
 
 export const freeHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     logo,
     myHome,
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    plansPricingDropdown,
-    forEnterprise,
+    pricingDropdown,
+    forBusiness,
   ];
 
   const rightItems: AppHeaderItem[] = [];
@@ -95,11 +141,38 @@ export const freeHeaderItems = (
   };
 };
 
+export const freeMobileHeaderItems = (
+  user: User,
+  renderNotifications?: () => ReactNode
+): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [logo];
+
+  const rightItems: AppHeaderItem[] = [];
+  renderNotifications && rightItems.push(notifications(renderNotifications));
+
+  const mainMenuItems: AppHeaderItem[] = [
+    myHome,
+    courseCatalog,
+    resourcesDropdown,
+    communityDropdown,
+    pricingDropdown,
+    forBusiness,
+    freeProfile(user),
+    upgradeToPro,
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
+  };
+};
+
 export const proHeaderItems = (
   user: User,
   renderSearch?: () => ReactNode,
   renderNotifications?: () => ReactNode
-): AppHeaderItemsProp => {
+): FormattedAppHeaderItems => {
   const leftItems: AppHeaderItem[] = [
     proLogo,
     myHome,
@@ -117,4 +190,39 @@ export const proHeaderItems = (
     left: leftItems,
     right: rightItems,
   };
+};
+
+export const proMobileHeaderItems = (
+  user: User,
+  renderNotifications?: () => ReactNode
+): FormattedMobileAppHeaderItems => {
+  const leftItems: AppHeaderItem[] = [proLogo];
+
+  const rightItems: AppHeaderItem[] = [];
+  renderNotifications && rightItems.push(notifications(renderNotifications));
+
+  const mainMenuItems: AppHeaderItem[] = [
+    myHome,
+    courseCatalog,
+    resourcesDropdown,
+    communityDropdown,
+    proProfile(user),
+  ];
+
+  return {
+    left: leftItems,
+    right: rightItems,
+    mainMenu: mainMenuItems,
+  };
+};
+
+export const loadingHeaderItems: FormattedAppHeaderItems = {
+  left: [logo],
+  right: [],
+};
+
+export const loadingMobileHeaderItems: FormattedMobileAppHeaderItems = {
+  left: [logo],
+  right: [],
+  mainMenu: [],
 };

@@ -2,9 +2,16 @@ import { ReactNode } from 'react';
 
 import { AppHeaderClickHandler } from '../AppHeader/AppHeaderElements/types';
 
+type RenderNotifications = {
+  desktop: () => ReactNode;
+  mobile: () => ReactNode;
+};
+type RenderProfile = { desktop: () => ReactNode; mobile: () => ReactNode };
+type RenderSearch = { desktop: () => ReactNode; mobile: () => ReactNode };
+
 type BaseHeader = {
   action: AppHeaderClickHandler;
-  renderSearch?: () => ReactNode;
+  renderSearch?: RenderSearch;
 };
 
 export type User = {
@@ -15,8 +22,8 @@ export type User = {
 };
 
 type LoggedInHeader = BaseHeader & {
-  renderNotifications?: () => ReactNode;
-  renderProfile?: () => ReactNode;
+  renderNotifications?: RenderNotifications;
+  renderProfile?: RenderProfile;
   user: User;
 };
 
@@ -31,4 +38,8 @@ export type FreeHeader = LoggedInHeader & {
 
 export type ProHeader = LoggedInHeader & {
   type: 'pro';
+};
+
+export type LoadingHeader = BaseHeader & {
+  type: 'loading';
 };

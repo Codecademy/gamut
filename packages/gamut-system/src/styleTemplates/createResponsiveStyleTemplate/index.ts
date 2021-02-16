@@ -46,8 +46,6 @@ export function createResponsiveStyleTemplate<
             });
           }
         }
-        default:
-          return;
       }
     });
 

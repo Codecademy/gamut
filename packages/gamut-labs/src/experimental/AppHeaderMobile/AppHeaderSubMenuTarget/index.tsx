@@ -3,6 +3,7 @@ import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { AppHeaderAvatar } from '../../AppHeader/AppHeaderElements/AppHeaderAvatar';
 import {
   focusStyles,
   hoverStyles,
@@ -16,6 +17,7 @@ export type AppHeaderSubMenuTargetProps = {
 };
 
 const AppHeaderTextTargetButton = styled.button`
+  padding: 0;
   ${textButtonStyles}
   ${hoverStyles}
   ${focusStyles}
@@ -23,17 +25,27 @@ const AppHeaderTextTargetButton = styled.button`
 
 const AppHeaderLinkButtonInner = styled(Box)`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  white-space: nowrap;
   width: 100%;
+`;
+
+const DisplayNameText = styled.div`
+  max-width: 70vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
   item,
   openSubMenu,
 }) => {
-  const Icon = item.icon;
+  const getIcon = () => {
+    if (item.type === 'dropdown') {
+      const Icon = item.icon;
+      return Icon && <Icon size={24} aria-hidden />;
+    }
+    return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
+  };
 
   return (
     <AppHeaderTextTargetButton
@@ -44,20 +56,23 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
       <AppHeaderLinkButtonInner
         lineHeight="base"
         minWidth="0"
-        paddingY={8}
+        paddingY={16}
         textAlign="left"
         display="flex"
       >
         <FlexBox alignItems="center">
-          {Icon && (
-            <Box marginRight={16}>
-              <Icon size={24} aria-hidden />
-            </Box>
+          <FlexBox marginRight={16}>{getIcon()}</FlexBox>
+
+          {item.type === 'profile-dropdown' ? (
+            <DisplayNameText>{item.userDisplayName}</DisplayNameText>
+          ) : (
+            item.text
           )}
-          {item.text}
         </FlexBox>
         <FlexBox alignSelf="end">
-          <ArrowChevronRightIcon size={12} aria-hidden />
+          <Box>
+            <ArrowChevronRightIcon size={12} aria-hidden />
+          </Box>
         </FlexBox>
       </AppHeaderLinkButtonInner>
     </AppHeaderTextTargetButton>
