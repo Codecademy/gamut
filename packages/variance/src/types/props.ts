@@ -1,5 +1,3 @@
-import { PropertyTypes } from './properties';
-
 export type AbstractProps = Record<string, unknown>;
 
 export interface BaseTheme {
