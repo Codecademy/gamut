@@ -9,17 +9,17 @@ import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
-import { mapItemToElement, StyledAppBar } from './../AppHeader';
+import { mapItemToElement, StyledAppBar } from '../AppHeader';
 import {
   focusStyles,
   hoverStyles,
-} from './../AppHeader/AppHeaderElements/SharedStyles';
+} from '../AppHeader/AppHeaderElements/SharedStyles';
 import {
   AppHeaderClickHandler,
   AppHeaderItem,
-} from './../AppHeader/AppHeaderElements/types';
-import { FormattedMobileAppHeaderItems } from './../AppHeader/types';
-import { AppHeaderMainMenuMobile } from './../AppHeaderMobile/AppHeaderMainMenuMobile';
+} from '../AppHeader/AppHeaderElements/types';
+import { FormattedMobileAppHeaderItems } from '../AppHeader/types';
+import { AppHeaderMainMenuMobile } from '../AppHeaderMobile/AppHeaderMainMenuMobile';
 
 export type AppHeaderMobileProps = {
   action: AppHeaderClickHandler;
@@ -73,7 +73,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
 
   return (
     <>
-      {!mobileMenuOpen && ( //need this bc AppBar has a hardcoded z-Index of 15
+      {!mobileMenuOpen && ( // need this bc AppBar has a hardcoded z-Index of 15
         <StyledAppBar>
           <AppBarSection position="left">
             {mapItemsToElement(items.left)}
