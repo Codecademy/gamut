@@ -20,6 +20,11 @@ export const selectableColorNames = Object.keys(colors).reduce<
   };
 }, {});
 
+/**
+ * Removes the h1 one dag from any external markdown so that we do not have 2 h1s on a story page.
+ *
+ * @param md Markdown to be formatted
+ */
 export const formatExternalMarkdown = (md: string) => {
   return md.replace(/(^|\n)(#\s.*)/g, '$1');
 };
