@@ -95,25 +95,27 @@ All but CTA button support a size of either `normal` (default) or `small`.
 export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
 
 export const renderButtonScale = (mode, size = 'normal') => {
-  return (
-    <>
-      <Box width="100%" textColor={mode.includes('dark') ? 'white' : 'navy'}>
-        {mode} - {size}
-      </Box>
-      {buttons.map((Component) => {
-        const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
-        if (Component.name === 'IconButton') {
-          return (
-            <Component
-              {...props}
-              icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
-            />
-          );
-        }
-        return <Component {...props}>{mode}</Component>;
-      })}
-    </>
-  );
+  return [
+    <Box
+      width="100%"
+      textColor={mode.includes('dark') ? 'white' : 'navy'}
+      key={`${mode}-${size}-key`}
+    >
+      {mode} - {size}
+    </Box>,
+    ...buttons.map((Component) => {
+      const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
+      if (Component.name === 'IconButton') {
+        return (
+          <Component
+            {...props}
+            icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
+          />
+        );
+      }
+      return <Component {...props}>{mode}</Component>;
+    }),
+  ];
 };
 
 ## Button Variants

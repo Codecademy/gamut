@@ -10,10 +10,18 @@ const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   ({ mode = 'light', size }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
 
+    let sizeStyles = buttonSizing(size);
+    if (size === 'normal') {
+      sizeStyles = css`
+        ${sizeStyles}
+        padding: 0.5rem;
+      `;
+    }
+
     return css`
       border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
+      ${sizeStyles}
 
       ${TextButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};

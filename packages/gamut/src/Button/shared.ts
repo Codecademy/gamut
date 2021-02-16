@@ -9,18 +9,13 @@ export type ButtonProps = Omit<
   mode?: 'dark' | 'light';
 };
 
-export type ButtonSize = 'normal' | 'small' | 'normal-condensed';
+export type ButtonSize = 'normal' | 'small';
 
 export type SizedButtonProps = ButtonProps & {
   size?: ButtonSize;
 };
 
 const sizes = {
-  'normal-condensed': css`
-    font-size: ${fontSize[16]};
-    padding: 0.5rem;
-    line-height: 1;
-  `,
   small: css`
     font-size: ${fontSize[14]};
     padding: 0.5rem;
