@@ -19,12 +19,12 @@
     "@codecademy/gamut-system": "^0.4.0"
   },
   "peerDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/react": ">=11.0.0",
+    "@emotion/styled": ">=11.0.0"
   },
   "devDependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0"
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5"
   },
   "license": "MIT",
   "publishConfig": {
