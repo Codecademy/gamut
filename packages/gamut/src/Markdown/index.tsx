@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import HtmlToReact from 'html-to-react';
-import insane from 'insane';
 import marked from 'marked';
 import React, { PureComponent } from 'react';
+import sanitizeMarkdown from 'sanitize-markdown';
 
 import { omitProps } from '../utils/omitProps';
 import {
@@ -134,7 +134,7 @@ export class Markdown extends PureComponent<MarkdownProps> {
       },
     };
 
-    const html = insane(rawHtml, sanitizationConfig);
+    const html = sanitizeMarkdown(rawHtml, sanitizationConfig);
 
     // Render html to a react tree
     const react = htmlToReactParser.parseWithInstructions(

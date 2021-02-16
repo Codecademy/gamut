@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.2...@codecademy/styleguide@27.0.0) (2021-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1357)
+
+### Miscellaneous Chores
+
+* converted ToolTip to Emotion ([#1357](https://github.com/Codecademy/client-modules/issues/1357)) ([3f8a045](https://github.com/Codecademy/client-modules/commit/3f8a045f29b15f02da66fb10069064866c44a9e7))
+
+
+
+### [26.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.1...@codecademy/styleguide@26.1.2) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [26.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.0...@codecademy/styleguide@26.1.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [26.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.0.3...@codecademy/styleguide@26.1.0) (2021-02-16)
+
+
+### Features
+
+* **Styleguide:** Gamut System docs and routing fixes ([3419737](https://github.com/Codecademy/client-modules/commit/34197379b9746938aa7d77b76d2201912026a59f))
+
+
+
 ### [26.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.0.2...@codecademy/styleguide@26.0.3) (2021-02-16)
 
 **Note:** Version bump only for package @codecademy/styleguide
