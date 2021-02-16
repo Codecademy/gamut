@@ -1,14 +1,11 @@
-import {
-  ButtonDeprecated,
-  ButtonDeprecatedBaseProps,
-} from '@codecademy/gamut/src';
 import { ArrowChevronRightIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
+import { ButtonOutline, ButtonOutlineProps } from '../Button/ButtonOutline';
 import { SidebarComponentSideProps } from './shared';
 
-export type SidebarTabButtonProps = ButtonDeprecatedBaseProps &
+export type SidebarTabButtonProps = ButtonOutlineProps &
   SidebarComponentSideProps & {
     expanded: boolean;
     onClick: () => void;
@@ -18,19 +15,23 @@ export type RotatingArrowProps = SidebarComponentSideProps & {
   expanded: boolean;
 };
 
-const ArrowButton = styled(ButtonDeprecated)<SidebarComponentSideProps>`
-  position: absolute;
-  left: ${(props) => (props.openFrom === 'left' ? '100%' : 'initial')};
-  right: ${(props) => (props.openFrom === 'right' ? '100%' : 'initial')};
-  top: 2rem;
-  display: flex;
-  align-content: center;
+const ArrowButton = styled(ButtonOutline)<SidebarComponentSideProps>`
   background-color: inherit;
+  border: 0;
+  border-radius: 0px 3px 3px 0px;
   color: inherit;
   height: 3rem;
+  padding: 1px;
+  position: absolute;
   min-width: 2.3rem;
   margin: 1rem 0;
-  padding: 0;
+  top: 2rem;
+  left: ${(props) => (props.openFrom === 'left' ? '100%' : 'initial')};
+  right: ${(props) => (props.openFrom === 'right' ? '100%' : 'initial')};
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px inherit;
+  }
 `;
 
 const RotatingArrow = styled(ArrowChevronRightIcon)<RotatingArrowProps>`

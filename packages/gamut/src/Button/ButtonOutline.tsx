@@ -50,7 +50,9 @@ const StyledButtonOutline = styled('button', {
 const linkTag = 'a';
 const buttonTag = 'button';
 
-type ButtonOutlineProps = React.ComponentProps<typeof StyledButtonOutline>;
+export type ButtonOutlineProps = React.ComponentProps<
+  typeof StyledButtonOutline
+>;
 
 export const ButtonOutline: React.FC<ButtonOutlineProps> = ({
   as = buttonTag,
