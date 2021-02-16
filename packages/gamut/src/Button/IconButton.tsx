@@ -1,9 +1,10 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
+import { pxRem } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { BORDER_WIDTH, SIZE_UNITS, SizedButtonProps } from './shared';
+import { SIZE_UNITS, SizedButtonProps } from './shared';
 import { TextButton, TextButtonInner } from './TextButton';
 
 export type IconButtonProps = SizedButtonProps & {
@@ -19,9 +20,9 @@ const ICON_SIZES = {
 const IconButtonOuter = styled(TextButton)(({ size }) => {
   if (!size) return '';
   const iconSize = ICON_SIZES[size];
-  const { height } = SIZE_UNITS[size];
-  const padding = `${(height - BORDER_WIDTH * 2 - iconSize) / 2}px`;
-  const dimensions = `${height}px`;
+  const { height, border } = SIZE_UNITS[size];
+  const padding = pxRem((height - border * 2 - iconSize) / 2);
+  const dimensions = pxRem(height);
 
   return css`
     ${TextButtonInner} {

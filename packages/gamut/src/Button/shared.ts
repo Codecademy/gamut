@@ -21,23 +21,21 @@ export type ButtonSizeProps = {
 
 export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
-export const BORDER_WIDTH = 2;
-
 export const SIZE_UNITS = {
-  small: { height: 30, fSize: 14 },
-  normal: { height: 40, fSize: 16 },
+  small: { height: 30, fSize: 14, border: 2 },
+  normal: { height: 40, fSize: 16, border: 2 },
 } as const;
 
 export const buttonSizing = ({ size }: ButtonSizeProps) => {
   if (!size) return;
 
-  const { height, fSize } = SIZE_UNITS[size];
-  const vPadding = pxRem((height - BORDER_WIDTH * 2 - fSize) / 2);
+  const { height, fSize, border } = SIZE_UNITS[size];
+  const vPadding = pxRem((height - border * 2 - fSize) / 2);
   const hPadding = size === 'normal' ? spacing[16] : spacing[8];
 
   return css`
     line-height: 1;
-    border: ${BORDER_WIDTH}px solid transparent;
+    border: ${border}px solid transparent;
     font-size: ${fontSize[fSize]};
     padding: ${vPadding} ${hPadding};
   `;

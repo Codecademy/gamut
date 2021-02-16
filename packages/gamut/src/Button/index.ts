@@ -3,4 +3,4 @@ export * from './FillButton';
 export * from './IconButton';
 export type { ButtonProps } from './shared';
 export * from './StrokeButton';
-export * from './TextButton';
+export { TextButton } from './TextButton';
