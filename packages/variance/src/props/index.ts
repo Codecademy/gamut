@@ -2,17 +2,17 @@ import { background } from './background';
 import { border } from './borders';
 import { color } from './colors';
 import { flex } from './flex';
-import { global } from './global';
 import { grid } from './grid';
 import { layout } from './layout';
 import { positioning } from './position';
 import { shadow } from './shadow';
 import { spacing } from './spacing';
+import { staticProps } from './staticProps';
 import { typography } from './typography';
 
 export const baseProps = {
   // static only props
-  ...global,
+  ...staticProps,
   // standard props
   ...background,
   ...border,
