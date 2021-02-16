@@ -36,8 +36,6 @@ export const PropGroupTag = styled.span<{ active?: boolean }>`
   font-size: 11px;
   font-family: ${({ theme }) => theme.typography.fonts.mono};
   font-weight: 700;
-  margin: ${spacing[4]};
-  margin-top: 0;
   border-radius: 4px;
   text-transform: uppercase;
   cursor: help;

@@ -34,19 +34,40 @@ interface SectionLinkProps {
   box?: boolean;
 }
 
-export const SectionLink = styled(LinkTo)<SectionLinkProps>(
-  ({ box, theme }) => {
+export const SectionLink = styled(LinkTo, {
+  shouldForwardProp: (prop) => prop !== 'box',
+})<SectionLinkProps>(({ box, theme }) => {
+  if (box) {
     return css`
-      box-shadow: ${box && boxShadows[1]};
-      border-radius: 4px;
-      font-size: inherit;
-      color: ${(!box && theme.color.secondary) || 'inherit'};
-      transition: 200ms box-shadow;
+      color: inherit;
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: ${boxShadows[1]};
+        border-radius: 4px;
+        transition: 200ms box-shadow;
+      }
 
       &:hover {
-        text-decoration: ${box ? 'none' : 'underline'};
-        box-shadow: ${box && boxShadows[2]};
+        text-decoration: none;
+
+        &:after {
+          box-shadow: ${boxShadows[2]};
+        }
       }
     `;
   }
-);
+  return css`
+    font-size: inherit;
+    color: ${theme.color.secondary};
+  `;
+});
+
+SectionLink.defaultProps = {
+  story: 'page',
+};
