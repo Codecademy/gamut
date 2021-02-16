@@ -71,7 +71,7 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: React.ReactNode;
+  label: string;
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';
