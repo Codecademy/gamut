@@ -25,7 +25,7 @@ export type ProgressBarProps = {
   /**
    * Base variant display themes.
    */
-  variant: 'blue' | 'yellow' | 'borderedLight' | 'borderedDark';
+  variant: 'blue' | 'yellow' | 'bordered-light' | 'bordered-dark';
 
   /**
    * Whether to use a pattern background
@@ -57,12 +57,12 @@ const progressBarBackgroundVariants = variant({
     yellow: {
       backgroundColor: `gray-100`,
     },
-    borderedLight: {
+    ['bordered-light']: {
       borderStyle: 'solid',
       borderWidth: '1px',
       textColor: 'white',
     },
-    borderedDark: {
+    ['bordered-dark']: {
       borderStyle: 'solid',
       borderWidth: '1px',
       textColor: 'navy',
@@ -81,11 +81,11 @@ const progressBarForegroundVariants = variant({
       backgroundColor: `yellow`,
       textColor: `black`,
     },
-    borderedLight: {
+    ['bordered-light']: {
       backgroundColor: 'white',
       textColor: 'navy',
     },
-    borderedDark: {
+    ['bordered-dark']: {
       backgroundColor: 'navy',
       textColor: 'white',
     },
