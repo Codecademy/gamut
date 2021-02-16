@@ -20,6 +20,26 @@
   transition: transform 0.35s ease-out;
 }
 
+.target {
+  min-width: 0;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+}
+
+.copy {
+  display: inline-block;
+  text-align: center;
+  &::after {
+    display: block;
+    content: attr(title);
+    font-weight: bold;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+}
+
 .open {
   .copy {
     font-weight: bold;
