@@ -1,5 +1,5 @@
 import { DocsContext } from '@storybook/addon-docs/blocks';
-import { uniq } from 'lodash';
+import { kebabCase, uniq } from 'lodash';
 import { useMemo, useContext } from 'react';
 
 export interface Kind {
@@ -7,12 +7,23 @@ export interface Kind {
 }
 
 export const INDEX_KIND = 'About';
-const STATUS_ORDER = ['stable', 'volatile', 'deprecated'];
 
-const getStatus = (kind: Kind) =>
-  STATUS_ORDER.indexOf(kind?.parameters?.status);
+const STATUS_ORDER: Record<string, number> = {
+  stable: 1,
+  volatile: 2,
+  deprecated: 3,
+};
 
-export const sortByStatus = (a: Kind, b: Kind) => getStatus(a) - getStatus(b);
+const getStatus = (kind: Kind) => STATUS_ORDER[kind?.status];
+
+export const sortByStatus = (a: Kind, b: Kind) => {
+  const aStatus = getStatus(a);
+  const bStatus = getStatus(b);
+  if (aStatus === bStatus) {
+    return a.order > b.order ? 1 : -1;
+  }
+  return aStatus > bStatus ? 1 : -1;
+};
 
 export const parsePath = (path: string) =>
   path.split('/').filter((slug) => slug !== INDEX_KIND);
@@ -55,6 +66,10 @@ export function useKind(kind: string = '') {
       Object.entries(kindStore).map(([key, kind]) => ({
         ...kind,
         kind: key,
+        indexStory: kind.parameters.component
+          ? kebabCase(getTitle(key))
+          : 'page',
+        status: kind.parameters.status || 'stable',
       })),
     []
   );
@@ -68,13 +83,16 @@ export function useKind(kind: string = '') {
     );
   }, [component, subcomponents]);
 
-  const siblingKinds = allKinds
-    .filter(getAdjacentKinds(kind))
-    .sort(sortByStatus);
+  const siblingKinds = useMemo(
+    () => allKinds.filter(getAdjacentKinds(kind)).sort(sortByStatus),
+    [allKinds]
+  );
 
-  const childrenKinds = allKinds
-    .filter(getAdjacentKinds(path.join('/'), 0))
-    .sort(sortByStatus);
+  const childrenKinds = useMemo(
+    () =>
+      allKinds.filter(getAdjacentKinds(path.join('/'), 0)).sort(sortByStatus),
+    [allKinds]
+  );
 
   return {
     title: getTitle(kind),
@@ -85,5 +103,6 @@ export function useKind(kind: string = '') {
     childrenKinds,
     components: componentNames,
     parameters: kindMeta?.parameters,
+    indexStory: !component ? 'page' : kebabCase(getTitle(kind)),
   };
 }
