@@ -1,4 +1,5 @@
 import { GamutIconProps } from '@codecademy/gamut-icons';
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { SizedButtonProps } from './shared';
@@ -14,7 +15,10 @@ export const IconButton: React.FC<
 > = ({ icon: Icon, size, ...props }) => {
   return (
     <TextButton size={size === 'normal' ? 'normal-condensed' : size} {...props}>
-      <Icon size={size === 'small' ? 12 : 24} />
+      <Icon
+        size={size === 'small' ? 14 : 24}
+        style={{ padding: size === 'small' ? '1px' : 0 }}
+      />
     </TextButton>
   );
 };

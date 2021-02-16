@@ -6,7 +6,7 @@ import {
   StrokeButton,
   TextButton,
 } from '@codecademy/gamut/src';
-import { SearchIcon } from '@codecademy/gamut-icons/src';
+import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -103,9 +103,14 @@ export const renderButtonScale = (mode, size = 'normal') => {
       {buttons.map((Component) => {
         const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
         if (Component.name === 'IconButton') {
-          return <Component {...props} icon={SearchIcon} />;
+          return (
+            <Component
+              {...props}
+              icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
+            />
+          );
         }
-        return <Component {...props}>Light</Component>;
+        return <Component {...props}>{mode}</Component>;
       })}
     </>
   );
@@ -124,7 +129,7 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
     <Box
       display="grid"
       alignItems="center"
-      justifyItems="center"
+      justifyItems="start"
       gridTemplateColumns="repeat(5, max-content)"
       columnGap="2rem"
       rowGap="1rem"
@@ -138,7 +143,7 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
     <Box
       display="grid"
       alignItems="center"
-      justifyItems="center"
+      justifyItems="start"
       gridTemplateColumns="repeat(5, max-content)"
       columnGap="2rem"
       rowGap="1rem"
