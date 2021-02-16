@@ -40,9 +40,9 @@ export const Button = styled.button<ButtonProps>`
 Using your variant:
 
 ```tsx
-  <Button variant="primary" />
+<Button variant="primary" />
 
-  <Button variant="secondary" />
+<Button variant="secondary" />
 ```
 
 You can define a default variant to apply when no variant prop is passed.
