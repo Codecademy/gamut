@@ -1,4 +1,4 @@
-import { ButtonDeprecatedBaseProps } from '@codecademy/gamut/src';
+import { ButtonDeprecatedBaseProps } from '@codecademy/gamut';
 import React from 'react';
 
 export type SidebarCloneButtonProps = ButtonDeprecatedBaseProps & {

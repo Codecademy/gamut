@@ -1,5 +1,5 @@
-import { IconButton } from '@codecademy/gamut/src';
-import { MiniDeleteIcon } from '@codecademy/gamut-icons/src';
+import { IconButton } from '@codecademy/gamut';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
