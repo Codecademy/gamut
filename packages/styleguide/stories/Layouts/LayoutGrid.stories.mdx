@@ -9,8 +9,8 @@ import { ExampleBox } from './Elements';
   component={LayoutGrid}
   subcomponents={{ Column }}
   parameters={{
-    subtitle: 'A CSS grid based 12 Column grid system using just grid items',
-    status: 'volatile',
+    subtitle: 'A CSS grid based 12 Column grid system using just grid items.',
+    status: 'stable',
     source: 'gamut',
   }}
 />
@@ -113,6 +113,13 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
 <Props story="LayoutGrid" />
 
 ## Grid Gaps
+
+Grid gaps are the space between cells both horizontally and vertically.
+If you would like to adjust the space between columns, set the `columnGap`.
+If you would like to adjust the space between rows, set the `rowGap`.
+Both these properties can take a [responsive size](?path=/docs/foundations-layout--page#screensizes-and-media-queries),allowing you to define gaps at each breakpoint.
+
+<!-- TODO: We should have page that surfaces the $gapSize in packages/gamut/src/Layout/styles/_variables.scss -->
 
 <Canvas>
   <Story name="Grid Gaps" args={{ rowGap: 'sm', columnGap: 'sm' }}>

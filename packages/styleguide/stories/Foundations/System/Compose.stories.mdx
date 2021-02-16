@@ -1,0 +1,17 @@
+import docs from '@codecademy/gamut-system/docs/compose.md';
+import title from '@codecademy/macros/lib/title.macro';
+import { Description, Meta } from '@storybook/addon-docs/dist/blocks';
+
+import { formatExternalMarkdown } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  parameters={{
+    subtitle:
+      'The compose function lets you combine many system props into one to improve performance and reusability',
+    source: 'gamut-styles',
+    status: 'stable',
+  }}
+/>
+
+<Description>{formatExternalMarkdown(docs)}</Description>

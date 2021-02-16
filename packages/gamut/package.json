@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "22.0.1",
+  "version": "23.0.0",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "**/*.css",
@@ -23,14 +23,13 @@
   },
   "dependencies": {
     "@codecademy/gamut-icons": "^3.15.0",
-    "@codecademy/gamut-styles": "^8.0.0",
-    "@codecademy/gamut-tests": "^2.0.0",
+    "@codecademy/gamut-styles": "^8.0.1",
+    "@codecademy/gamut-tests": "^2.0.1",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "focus-trap-react": "^8.4.1",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
-    "insane": "^2.6.2",
     "invariant": "^2.2.4",
     "lodash": "^4.17.5",
     "marked": "^0.7.0",
@@ -38,7 +37,8 @@
     "react-hook-form": "6.0.6",
     "react-player": "^2.3.1",
     "react-truncate-markup": "^5.1.0",
-    "react-use": "^15.3.8"
+    "react-use": "^15.3.8",
+    "sanitize-markdown": "^2.6.6"
   },
   "scripts": {
     "verify": "tsc --noEmit",

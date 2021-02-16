@@ -8,9 +8,12 @@ import { Box, ScaleColumn, ScaleRow } from '~styleguide/blocks';
 <Meta
   title={title}
   parameters={{
+    status: 'deprecated',
     subtitle: 'Our spacing and layout design tokens and guidelines',
   }}
 />
+
+**Deprecation Notice** These variables and access patterns are now deprecated. Please refer to [Theme](?path=/docs/foundations-theme--breakpoints) for the most up to date documentation when using the new visual identity.
 
 ## Screensizes and Media Queries
 
@@ -26,7 +29,7 @@ for these specific sizes to avoid unintended side effects. Here are their respec
   ))}
 </Canvas>
 
-### Usage Typescript
+### Usage - Typescript
 
 These can be used on their own arbitrarily as direct values through the `breakpoint` map:
 
