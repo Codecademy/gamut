@@ -19,3 +19,7 @@ export const selectableColorNames = Object.keys(colors).reduce<
     [colorKey]: colorKey,
   };
 }, {});
+
+export const formatExternalMarkdown = (md: string) => {
+  return md.replace(/(^|\n)(#\s.*)/g, '$1');
+};

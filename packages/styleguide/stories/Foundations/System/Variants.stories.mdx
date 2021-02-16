@@ -5,21 +5,21 @@ import { Meta } from '@storybook/addon-docs/dist/blocks';
   title={title}
   parameters={{
     subtitle:
-      "The variant API let's you conditionally add complex styles to any component with a single prop.",
+      'The variant API lets you conditionally add complex styles to any component with a single prop.',
     source: 'gamut-styles',
     status: 'stable',
   }}
 />
 
-There may be cases where you want to change many props at the same time to achieve a different effect. Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript. To make this easier we have
-
-- `variant`, a function that is meant to make creating these combinations easy and scalable
+There may be cases where you want to change many props at the same time to achieve a different effect.
+Coordinating these different prop variations can be a bit frustrating to do manually, in both typescript and plain javascript.
+To make this easier we have **`variant`**, a function that is meant to make creating these combinations easy and scalable.
 
 ```tsx
 import styled from '@emotion/styled';
 import { variant } from '@codecademy/gamut-styles';
 
-const buttonVariants = variant({
+const badgeVariants = variant({
   primary: {
     borderStyle: 'solid',
     borderWidth: '1px',
@@ -36,15 +36,15 @@ const buttonVariants = variant({
   },
 });
 
-export const Button = styled.button(buttonVariants);
+export const Badge = styled.span(badgeVariants);
 ```
 
 Using your variants:
 
 ```tsx
-  <Button variant="primary" />
+  <Badge variant="primary" />
 
-  <Button variant="secondary" />
+  <Badge variant="secondary" />
 ```
 
 You can define a default variant to apply when no variant prop is passed.
@@ -58,9 +58,9 @@ const colorVariant = variant({
   },
 });
 
-const Text = styled.p(colorVariant)
+const Badge = styled.p(colorVariant)
 
-<Text />; // color: blue
+<Badge />; // color: blue
 ```
 
 There may be cases where you want to use a special prop for your variants instead of the default `variant`. You may pass an arbitrary name for your prop to customize the prop type.
@@ -73,9 +73,9 @@ const colorVariant = variant({
   },
 });
 
-const Text = styled.p(colorVariant);
+const Badge = styled.p(colorVariant);
 
-<Text colorVariant="primary" />;
+<Badge colorVariant="primary" />;
 ```
 
 ### Composing Variants
