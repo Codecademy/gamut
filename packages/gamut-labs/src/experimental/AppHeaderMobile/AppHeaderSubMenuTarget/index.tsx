@@ -43,9 +43,8 @@ export const AppHeaderSubMenuTarget: React.FC<AppHeaderSubMenuTargetProps> = ({
     if (item.type === 'dropdown') {
       const Icon = item.icon;
       return Icon && <Icon size={24} aria-hidden />;
-    } else {
-      return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
     }
+    return <AppHeaderAvatar avatarSize={24} imageUrl={item.avatar} />;
   };
 
   return (

@@ -9,7 +9,7 @@ const renderOverlay = (props?: Partial<OverlayProps>) => {
     <Overlay onRequestClose={() => {}} {...props}>
       <div data-testid="overlay-content">
         Howdy!
-        <button type="button" />
+        <button aria-label="Button" type="button" />
       </div>
     </Overlay>
   );
@@ -20,7 +20,7 @@ const mountOverlay = (props?: Partial<OverlayProps>) => {
     <Overlay onRequestClose={() => {}} {...props}>
       <div data-testid="overlay-content">
         Howdy!
-        <button type="button" />
+        <button aria-label="Button" type="button" />
       </div>
     </Overlay>
   );
