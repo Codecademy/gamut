@@ -9,7 +9,6 @@ import {
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
-import { startCase } from 'lodash';
 
 <Meta
   title={title}
@@ -94,30 +93,52 @@ All but CTA button support a size of either `normal` (default) or `small`.
 <Props story="IconButton" />
 
 export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
+export const styles = ['light', 'light-alt', 'dark', 'dark-alt'];
+export const sizes = ['small', 'normal'];
 
-export const renderButtonScale = (mode, size = 'normal') => {
-  return [
+export const ButtonScale = () => {
+  const grid = [];
+  styles.forEach((mode) => {
+    sizes.forEach((size) => {
+      buttons.forEach((Component) => {
+        const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
+        if (Component.name === 'IconButton') {
+          return grid.push(
+            <Component
+              {...props}
+              icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
+            />
+          );
+        }
+        grid.push(<Component {...props}>{mode}</Component>);
+      });
+    });
+  });
+  return (
     <Box
-      width="100%"
-      fontWeight="title"
-      textColor={mode.includes('dark') ? 'white' : 'navy'}
-      key={`${mode}-${size}-key`}
+      display="grid"
+      alignItems="center"
+      justifyItems="start"
+      gridTemplateColumns="repeat(4, minmax(100px, max-content))"
+      gridAutoRows="3rem"
+      columnGap="2rem"
+      rowGap="1rem"
+      padding="1rem"
+      position="relative"
+      zIndex={0}
     >
-      {startCase(`${mode} + ${size}`)}
-    </Box>,
-    ...buttons.map((Component) => {
-      const props = { key: `${Component.name}-${mode}-${size}`, mode, size };
-      if (Component.name === 'IconButton') {
-        return (
-          <Component
-            {...props}
-            icon={size === 'small' ? MiniDeleteIcon : SearchIcon}
-          />
-        );
-      }
-      return <Component {...props}>{mode}</Component>;
-    }),
-  ];
+      <Box
+        position="absolute"
+        left="0"
+        right="0"
+        bottom="0"
+        zIndex={-1}
+        top={`${((grid.length / 4) * 4 + 1) / 2}rem`}
+        backgroundColor="navy"
+      />
+      {grid}
+    </Box>
+  );
 };
 
 ## Button Variants
@@ -129,39 +150,7 @@ We have 2 button color modes: `light` and `dark` which are meant to be used in t
 - Use `light-alt` and `dark-alt` modes for secondary buttons.
 
 <Canvas>
-  <Box
-    display="grid"
-    alignItems="center"
-    justifyItems="start"
-    gridTemplateColumns="repeat(5, minmax(100px, max-content))"
-    columnGap="2rem"
-    rowGap="1rem"
-    padding="1rem"
-  >
-    <Box />
-    {buttons.map((Component) => (
-      <Box key={`${Component.name}-key`} fontWeight="title">
-        {Component.name}
-      </Box>
-    ))}
-    {renderButtonScale('light')}
-    {renderButtonScale('light', 'small')}
-    {renderButtonScale('light-alt')}
-    {renderButtonScale('light-alt', 'small')}
-  </Box>
-  <Box
-    display="grid"
-    alignItems="center"
-    justifyItems="start"
-    gridTemplateColumns="repeat(5, minmax(100px, max-content))"
-    columnGap="2rem"
-    rowGap="1rem"
-    padding="1rem"
-    backgroundColor="navy"
-  >
-    {renderButtonScale('dark')}
-    {renderButtonScale('dark', 'small')}
-    {renderButtonScale('dark-alt')}
-    {renderButtonScale('dark-alt', 'small')}
-  </Box>
+  <Story name="Variant Catalog">
+    <ButtonScale />
+  </Story>
 </Canvas>
