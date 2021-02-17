@@ -7374,7 +7374,7 @@ error-stack-parser@^2.0.6:
   dependencies:
     stackframe "^1.1.1"
 
-es-abstract@^1.17.0-next.0, es-abstract@^1.17.2, es-abstract@^1.17.4:
+es-abstract@^1.17.0-next.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.2, es-abstract@^1.17.4:
   version "1.17.7"
   resolved "https://registry.npmjs.org/es-abstract/-/es-abstract-1.17.7.tgz#a4de61b2f66989fc7421676c1cb9787573ace54c"
   integrity sha512-VBl/gnfcJ7OercKA9MVaegWsBHFjV492syMudcnQZvt/Dw8ezpcOHYZXa/J96O8vx+g4x65YKhxOwDUh63aS5g==
@@ -7597,6 +7597,11 @@ eslint-plugin-jsx-a11y@^6.4.1:
     has "^1.0.3"
     jsx-ast-utils "^3.1.0"
     language-tags "^1.0.5"
+
+eslint-plugin-local-rules@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmjs.org/eslint-plugin-local-rules/-/eslint-plugin-local-rules-1.0.1.tgz#1a1f2659ad9297ea82a469d1f5b92b26d90ea3b0"
+  integrity sha512-spxkMBos6/ekNxO7khP2zj0j+tdNIhc3GWjXX397L/5R4ZM5huAIks6ADlZVRyiyUKbo/ABJgH/iP6cu9YYnyg==
 
 eslint-plugin-no-only-tests@^2.4.0:
   version "2.4.0"
