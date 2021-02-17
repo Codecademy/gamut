@@ -159,7 +159,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       size={size}
       variant={variant}
     >
-      {console.log(bordered, bordered ? 'bordered' : 'basic')}
       {pattern && (
         <Pattern
           textColor="navy"
