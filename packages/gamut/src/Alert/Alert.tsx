@@ -20,16 +20,14 @@ import { Truncate } from '../Truncate';
 export type AlertProps = {
   className?: string;
   /** Alert Variant String */
-  variant?: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
+  type?: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
   /** Call to Action Configuration */
   cta?: Omit<
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
-  >;
-  /**  */
-  /** CTA onClick */
+  > & { text: string };
 };
 
 const VARIANT_META = {
@@ -84,11 +82,11 @@ AlertBanner.defaultProps = {
 
 export const Alert: React.FC<AlertProps> = ({
   children,
-  variant = 'general',
+  type = 'general',
   cta,
   onClose,
 }) => {
-  const { icon: Icon, mode } = VARIANT_META[variant];
+  const { icon: Icon, mode } = VARIANT_META[type];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -102,7 +100,7 @@ export const Alert: React.FC<AlertProps> = ({
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
-      variant={variant}
+      variant={type}
     >
       <FlexBox
         height="2rem"
@@ -128,7 +126,9 @@ export const Alert: React.FC<AlertProps> = ({
       )}
       {cta && (
         <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
-          <FillButton {...cta} mode="dark" variant="secondary" size="small" />
+          <FillButton {...cta} mode="dark" variant="secondary" size="small">
+            {cta.children || cta.text}
+          </FillButton>
         </Box>
       )}
       {onClose && (
