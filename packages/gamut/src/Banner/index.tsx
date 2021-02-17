@@ -53,7 +53,9 @@ const BannerContainer = styled.div(
   `
 );
 
-export const Banner: React.FC<BannerProps> = ({
+export const Banner: React.FC<
+  BannerProps & React.ComponentProps<typeof BannerContainer>
+> = ({
   children,
   variant = 'navy',
   cta,
