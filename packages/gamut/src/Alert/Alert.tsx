@@ -33,7 +33,7 @@ export type AlertProps = {
   message: string;
 };
 
-export const VARIANT_META = {
+const VARIANT_META = {
   general: { order: 4, icon: MiniInfoCircleIcon, buttonMode: 'dark-alt' },
   success: { order: 2, icon: MiniCheckCircleIcon, buttonMode: 'dark-alt' },
   error: { order: 1, icon: MiniRemoveCircleIcon, buttonMode: 'dark-alt' },
@@ -68,7 +68,7 @@ const alertVariants = variant({
   },
 });
 
-export const AlertBanner = styled(Box)(
+const AlertBanner = styled(Box)(
   alertVariants,
   ({ theme }) => css`
     display: flex;
