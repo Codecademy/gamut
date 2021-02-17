@@ -1,5 +1,4 @@
-import { colors, pxRem, swatches } from '@codecademy/gamut-styles';
-import { css, Theme } from '@emotion/react';
+import { colors, swatches, variant } from '@codecademy/gamut-styles';
 import type { HTMLProps } from 'react';
 
 export type ButtonProps = Omit<
@@ -15,53 +14,26 @@ export type ButtonSizeProps = {
 
 export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
-export const SIZE_UNITS = {
-  small: { height: 32, fSize: 14, border: 2 },
-  normal: { height: 42, fSize: 16, border: 2 },
-} as const;
-
-export const buttonSizing = ({
-  size,
-  theme,
-}: ButtonSizeProps & { theme: Theme }) => {
-  if (!size) return;
-
-  const { height, fSize, border } = SIZE_UNITS[size];
-  const childElementOffset = size === 'normal' ? '-1px' : '0';
-  const hPadding = size === 'normal' ? theme.spacing[16] : theme.spacing[8];
-  const fontSize = theme.fontSize[fSize];
-
-  return css`
-    border: ${border}px solid transparent;
-    vertical-align: middle;
-    display: inline-block;
-    padding: ${theme.spacing[4]} ${hPadding};
-    font-size: ${fontSize};
-    height: ${pxRem(height)};
-
-    &:before,
-    &:after {
-      margin-left: -1px;
-      width: 1px;
-      content: '';
-      height: calc(${pxRem(height - border * 2)} - ${theme.spacing[8]});
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    > * {
-      display: inline-block;
-      vertical-align: middle;
-
-      &:first-child {
-        margin-left: ${childElementOffset};
-      }
-      &:last-child {
-        margin-right: ${childElementOffset};
-      }
-    }
-  `;
-};
+export const buttonSizing = variant({
+  prop: 'size',
+  default: 'normal',
+  variants: {
+    normal: {
+      fontSize: 16,
+      height: '42px',
+      minWidth: '42px',
+      paddingY: 4,
+      paddingX: 16,
+    },
+    small: {
+      fontSize: 14,
+      height: '32px',
+      minWidth: '32px',
+      paddingY: 4,
+      paddingX: 8,
+    },
+  },
+});
 
 export const modeColorGroups = {
   dark: {

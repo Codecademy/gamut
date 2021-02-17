@@ -9,15 +9,12 @@ export type IconButtonProps = SizedButtonProps & {
   icon: React.ComponentType<GamutIconProps>;
 };
 
-const ICON_SIZES = {
-  small: 12,
-  normal: 24,
-} as const;
-
 export const IconButton: React.FC<
   IconButtonProps & React.ComponentProps<typeof TextButton>
-> = ({ icon: Icon, ...props }) => (
-  <TextButton {...props}>
-    <Icon size={ICON_SIZES[props.size || 'normal']} />
-  </TextButton>
-);
+> = ({ icon: Icon, size, ...props }) => {
+  return (
+    <TextButton size={size} {...props}>
+      <Icon size={size === 'normal' ? 24 : 12} />
+    </TextButton>
+  );
+};

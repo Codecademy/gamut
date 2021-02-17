@@ -11,9 +11,8 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
     return css`
-      background-color: ${modeColors.background};
-      border-radius: 3px;
       color: ${modeColors.foreground};
+      background-color: ${modeColors.background};
 
       ${FillButtonOuter}:hover & {
         background-color: ${modeColors.backgroundDull};
@@ -25,8 +24,8 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
 
       ${FillButtonOuter}:disabled &,
       ${FillButtonOuter}[aria-disabled='true'] & {
-        background: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
+        background-color: ${modeColors.backgroundMuted};
       }
     `;
   }

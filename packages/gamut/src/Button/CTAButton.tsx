@@ -11,28 +11,28 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
     const modeColors = modeColorGroups[mode];
 
     return css`
-      background-color: ${modeColors.background};
       border-radius: 2px;
-      box-shadow: -4px 4px 0 0 ${modeColors.shadow};
-      color: ${modeColors.foreground};
-      font-family: ${theme.fontFamily.accent};
-      font-weight: bold;
       padding: 0.75rem 1.25rem;
+      font-family: ${theme.fontFamily.accent};
+      font-weight: ${theme.fontWeight.title};
+      color: ${modeColors.foreground};
+      background-color: ${modeColors.background};
+      box-shadow: -4px 4px 0 0 ${modeColors.shadow};
 
       ${CTAButtonOuter}:hover & {
         box-shadow: -8px 8px 0 0 ${modeColors.shadow};
       }
 
       ${CTAButtonOuter}:active & {
-        background: ${modeColors.shadow};
+        background-color: ${modeColors.shadow};
         box-shadow: none;
       }
 
       ${CTAButtonOuter}:disabled &,
       ${CTAButtonOuter}[aria-disabled='true'] & {
-        background: ${modeColors.backgroundMuted};
-        box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
         color: ${modeColors.foregroundMuted};
+        background-color: ${modeColors.backgroundMuted};
+        box-shadow: -4px 4px 0 1px ${modeColors.foregroundMuted};
       }
     `;
   }

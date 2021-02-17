@@ -12,7 +12,6 @@ export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
     const modeColors = modeColorGroups[mode];
 
     return css`
-      border-radius: 3px;
       padding-left: ${theme.spacing[8]};
       padding-right: ${theme.spacing[8]};
       color: ${modeColors.background};
@@ -27,8 +26,8 @@ export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
 
       ${TextButtonOuter}:disabled &,
       ${TextButtonOuter}[aria-disabled='true'] & {
-        background-color: transparent;
         color: ${modeColors.foregroundMuted};
+        background-color: transparent;
       }
     `;
   }

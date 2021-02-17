@@ -12,24 +12,23 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
     const modeColors = modeColorGroups[mode];
 
     return css`
-      border: 2px solid ${modeColors.background};
-      border-radius: 3px;
       color: ${modeColors.background};
+      border-color: ${modeColors.background};
 
       ${StrokeButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${modeColors.background};
         color: ${modeColors.foreground};
+        background-color: ${modeColors.background};
       }
 
       ${StrokeButtonOuter}:disabled &,
       ${StrokeButtonOuter}[aria-disabled='true'] & {
-        background-color: transparent;
-        border-color: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
+        border-color: ${modeColors.backgroundMuted};
+        background-color: transparent;
       }
     `;
   }
