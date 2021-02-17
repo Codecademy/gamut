@@ -41,6 +41,10 @@ const progressBarSizeVariants = variant({
       height: '6px',
       borderRadius: '3px',
     },
+    medium: {
+      height: '8px',
+      borderRadius: '80px',
+    },
     large: {
       height: '36px',
       borderRadius: '18px',

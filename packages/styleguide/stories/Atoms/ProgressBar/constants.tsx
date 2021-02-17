@@ -4,6 +4,10 @@ export const bars = [
     variant: 'blue',
   },
   {
+    size: 'medium',
+    variant: 'bordered-dark',
+  },
+  {
     size: 'large',
     variant: 'yellow',
   },

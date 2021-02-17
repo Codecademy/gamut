@@ -25,6 +25,8 @@ somewhat-known amount of progress along a fixed course. For example, you
 might show one on a quiz page indicating how many questions have been
 completed.
 
+ProgressBar comes in one of three sizes: `small`, `medium`, and `large`.
+
 Bars with the `large` size are thicker and will display a
 percentage label.
 
@@ -34,7 +36,7 @@ percentage label.
       <LayoutGrid columnGap="sm" rowGap="sm">
         {[0, 25, 50, 75, 100].map((percent) =>
           bars.map(({ size, variant }) => (
-            <Column key={[percent, size, variant].join()} size={6}>
+            <Column key={[percent, size, variant].join()} size={4}>
               <ProgressBar size={size} percent={percent} variant={variant} />
             </Column>
           ))
