@@ -6,6 +6,7 @@ import React, { useMemo } from 'react';
 
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
+import { createTagOverride } from '../Markdown/libs/overrides';
 
 type BannerVariants = 'navy' | 'yellow';
 
@@ -56,20 +57,24 @@ export const Banner: React.FC<
 }: BannerProps) => {
   const mode = variant === 'navy' ? 'dark' : 'light';
 
+  // Bind overrides with the correct props
   const overrides = useMemo(
     () => ({
       a: {
-        processNode: (node: unknown, props: { onClick: () => void }) => (
+        allowedAttributes: ['href'],
+        processNode: (node: unknown, props: { onClick?: () => void }) => (
           <TextButton
             {...props}
             mode={mode}
             size="small"
+            target="_BLANK"
             onClick={() => {
               props.onClick && props.onClick();
               onCtaClick && onCtaClick();
             }}
           />
         ),
+        component: TextButton,
       },
     }),
     [onCtaClick, mode]
@@ -79,8 +84,8 @@ export const Banner: React.FC<
     <BannerContainer variant={variant} {...rest}>
       <BannerContent
         overrides={overrides}
-        skipDefaultOverrides={{ a: true }}
         text={children}
+        skipDefaultOverrides={{ a: true }}
       />
       <IconButton
         mode={mode}
