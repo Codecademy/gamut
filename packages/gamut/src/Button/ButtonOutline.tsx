@@ -8,8 +8,8 @@ import { ButtonProps, modeColorGroups } from './shared';
 
 export const StyledButtonOutline = styled('button', {
   shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
-})<ButtonProps>(({ mode = 'light' }) => {
-  const modeColors = modeColorGroups[mode];
+})<ButtonProps>(({ mode = 'light', variant = 'primary' }) => {
+  const modeColors = modeColorGroups[mode][variant];
 
   return css`
     background: none;
@@ -22,7 +22,7 @@ export const StyledButtonOutline = styled('button', {
     font-family: inherit;
     font: inherit;
     line-height: normal;
-    margin: 0;
+    margin: -1px;
     padding: 1px;
     text-align: center;
     text-decoration: none;

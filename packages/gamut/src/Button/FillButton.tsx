@@ -8,8 +8,8 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light' }: SizedButtonProps) => {
-    const modeColors = modeColorGroups[mode];
+  ({ mode = 'light', variant = 'primary' }: SizedButtonProps) => {
+    const modeColors = modeColorGroups[mode][variant];
     return css`
       color: ${modeColors.foreground};
       background-color: ${modeColors.background};
@@ -35,10 +35,10 @@ const FillButtonOuter = styled(ButtonOutline)();
 
 export const FillButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <FillButtonOuter mode={mode} {...props}>
-      <FillButtonInner mode={mode} size={size}>
+    <FillButtonOuter mode={mode} variant={variant} {...props}>
+      <FillButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </FillButtonInner>
     </FillButtonOuter>

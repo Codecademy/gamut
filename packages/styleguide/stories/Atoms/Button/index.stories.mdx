@@ -95,11 +95,21 @@ All but CTA button support a size of either `normal` (default) or `small`.
 
 ## Button Variants
 
-We have 2 button color modes: `light` and `dark` which are meant to be used in their respective contexts. For differentiation we also provide an alternate color scheme for lower priority buttons when used adjacently. These are `light-alt` and `dark-alt` respectively.
+We have 2 button color modes: `light` and `dark`.
+For different priority buttons we provide `primary` and `secondary` variants.
 
+- **Do** Use `primary` for high priority actions (e.g. Submit).
+- **Do** Use `secondary` for low priority buttons (e.g. Close).
 - **Don't** use a color mode outside of its context (no light buttons on navy backgrounds)
-- Use `light` and `dark` modes for your primary buttons.
-- Use `light-alt` and `dark-alt` modes for secondary buttons.
+
+```tsx
+<FillButton mode="dark" variant="primary">
+  Submit
+</FillButton>
+<FillButton mode="dark" variant="secondary">
+  Cancel
+</FillButton>
+```
 
 ### Light Mode
 

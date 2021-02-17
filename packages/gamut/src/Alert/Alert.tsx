@@ -13,7 +13,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { Box, FlexBox } from '../Box';
+import { Box, FlexBox, GridBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
@@ -22,27 +22,26 @@ export type AlertProps = {
   /** Alert Variant String */
   variant: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
   /** Callback to be called when the close icon is clicked */
-  onClose?: () => void;
+  onClose: () => void;
   /** Call to Action Configuration */
-  cta?: string;
+  cta?: Omit<
+    React.ComponentProps<typeof FillButton>,
+    'variant' | 'mode' | 'size'
+  >;
   /**  */
-  href?: string;
   /** CTA onClick */
-  onClick?: () => void;
-  /** Message */
-  message: string;
 };
 
 const VARIANT_META = {
-  general: { order: 4, icon: MiniInfoCircleIcon, buttonMode: 'dark-alt' },
-  success: { order: 2, icon: MiniCheckCircleIcon, buttonMode: 'dark-alt' },
-  error: { order: 1, icon: MiniRemoveCircleIcon, buttonMode: 'dark-alt' },
+  general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
+  success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
+  error: { order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
   maintenance: {
     order: 3,
     icon: MiniWarningTriangleIcon,
-    buttonMode: 'light-alt',
+    mode: 'light',
   },
-  feature: { order: 5, icon: MiniStarIcon, buttonMode: 'light-alt' },
+  feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
 
 const alertVariants = variant({
@@ -68,16 +67,15 @@ const alertVariants = variant({
   },
 });
 
-const AlertBanner = styled(Box)(
+const AlertBanner = styled(GridBox)(
   alertVariants,
   ({ theme }) => css`
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    align-items: start;
     width: 100%;
     max-width: 820px;
     border: 2px solid ${theme.colors.navy};
     border-radius: 3px;
-    padding: ${theme.spacing[4]};
   `
 );
 
@@ -87,61 +85,57 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
-export const Alert: React.FC<AlertProps> = ({
-  className,
-  message,
-  variant = 'general',
-  cta,
-  href,
-  onClick,
-  onClose,
-}) => {
-  const { icon: Icon, buttonMode } = VARIANT_META[variant];
+export const Alert: React.FC<
+  AlertProps & React.ComponentProps<typeof AlertBanner>
+> = ({ children, variant = 'general', cta, onClick, onClose, ...rest }) => {
+  const { icon: Icon, mode } = VARIANT_META[variant];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
+  const columns = `max-content minmax(0, 1fr) repeat(${
+    truncated ? 3 : 2
+  }, max-content)`;
+
   return (
     <AlertBanner
-      variant={variant}
+      paddingX={4}
+      paddingY={4}
       columnGap={[4, 8, , 12]}
-      flexWrap={{ base: 'wrap', sm: 'nowrap' }}
+      gridTemplateColumns={columns}
+      {...rest}
+      variant={variant}
     >
-      <FlexBox padding={8} alignItems="center">
+      <FlexBox
+        height="2rem"
+        width="2rem"
+        alignItems="center"
+        justifyContent="center"
+      >
         <Icon size={16} />
       </FlexBox>
-      <FlexBox flexGrow={1} flexBasis={['50%', , 'auto']} paddingY={4}>
+      <Box paddingY={4}>
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {message}
+          {children}
         </Truncate>
-      </FlexBox>
+      </Box>
       {truncated && (
         <IconButton
-          mode={buttonMode}
+          mode={mode}
+          variant="secondary"
           size="small"
           icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
           onClick={() => setExpanded(!expanded)}
         />
       )}
       {cta && (
-        <FlexBox
-          flexBasis={['100%', , 'initial']}
-          marginLeft={[4, 8, 0]}
-          paddingX={[32, , 0]}
-          order={[4, , 'initial']}
-        >
-          <FillButton
-            mode="dark-alt"
-            href={href}
-            onClick={onClick}
-            size="small"
-          >
-            {cta}
-          </FillButton>
-        </FlexBox>
+        <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
+          <FillButton {...cta} mode="dark" variant="secondary" size="small" />
+        </Box>
       )}
       {onClose && (
         <IconButton
-          mode={buttonMode}
+          mode={mode}
+          variant="secondary"
           size="small"
           onClick={onClose}
           icon={MiniDeleteIcon}

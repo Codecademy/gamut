@@ -5,6 +5,8 @@ import { ColumnProps } from '../Layout/Column';
 export type BaseFormField<Value> = {
   defaultValue?: Value;
 
+  disabled?: boolean;
+
   /**
    * Whether the label should be hidden visually and not take up space.
    */

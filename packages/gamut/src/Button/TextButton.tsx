@@ -8,8 +8,8 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light', theme }) => {
-    const modeColors = modeColorGroups[mode];
+  ({ mode = 'light', variant = 'primary', theme }) => {
+    const modeColors = modeColorGroups[mode][variant];
 
     return css`
       padding-left: ${theme.spacing[8]};
@@ -37,10 +37,10 @@ const TextButtonOuter = styled(ButtonOutline)();
 
 export const TextButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <TextButtonOuter mode={mode} {...props}>
-      <TextButtonInner mode={mode} size={size}>
+    <TextButtonOuter mode={mode} variant={variant} {...props}>
+      <TextButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </TextButtonInner>
     </TextButtonOuter>
