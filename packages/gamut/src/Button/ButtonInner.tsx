@@ -1,4 +1,4 @@
-import { fontSmoothing, timing } from '@codecademy/gamut-styles';
+import { fontSmoothing, fontWeight, timing } from '@codecademy/gamut-styles';
 import isPropValid from '@emotion/is-prop-valid';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -13,6 +13,7 @@ export const ButtonInner = styled('span', {
     border: 2px solid transparent;
     border-radius: 3px;
     vertical-align: middle;
+    font-weight: ${fontWeight.title};
     transition: ${timing.fast} background-color, ${timing.fast} box-shadow,
       ${timing.fast} color;
 
