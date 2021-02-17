@@ -5,7 +5,7 @@ export type ButtonProps = Omit<
   HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
   'size'
 > & {
-  mode?: 'dark' | 'light';
+  mode?: 'dark' | 'light' | 'dark-alt' | 'light-alt';
 };
 
 export type ButtonSizeProps = {
