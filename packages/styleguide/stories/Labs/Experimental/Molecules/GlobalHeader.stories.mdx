@@ -294,3 +294,20 @@ Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6
 1. Add the appropriate item to the `GlobalHeaderItems.tsx` file, including the necessary properities like `id`, `href`, `text`, `type`, etc.
 2. Update `GlobalHeaderVariants.tsx` to include the new item for the user roles that need it.
 3. Update tests in `GlobalHeader-test.tsx`.
+
+### How to Access GlobalHeader's height
+
+You might be implementing an interaction that needs to be aware of the `GlobalHeader` height (for example when using [window.scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)). `GlobalHeader` has an imperative `height` handle which can be accessed on its ref:
+
+```jsx
+function MyComponent() {
+  const [height, setHeight] = React.useState(0);
+  const ref = React.useRef();
+
+  React.useLayoutEffect(() => {
+    setHeight(ref.current.height);
+  });
+
+  return <GlobalHeader ref={ref} />;
+}
+```
