@@ -1,11 +1,5 @@
 import { Box } from '@codecademy/gamut';
-import React, {
-  forwardRef,
-  useImperativeHandle,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { forwardRef, useImperativeHandle } from 'react';
 
 import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
@@ -102,28 +96,17 @@ const getMobileAppHeaderItems = (
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = forwardRef(
   (props, ref) => {
-    const [height, setHeight] = useState<number>(0);
-    const boxRef = useRef<HTMLDivElement>(null);
     const isDesktop = useBreakpointAtOrAbove('md');
+    const height = isDesktop ? 80 : 64;
 
-    useLayoutEffect(() => {
-      const onResize = () => {
-        setHeight(boxRef.current?.clientHeight || 0);
-      };
-      onResize();
-
-      window.addEventListener('resize', onResize);
-      return () => window.removeEventListener('resize', onResize);
-    });
-
-    useImperativeHandle(ref, () => ({ height }), [height]);
+    useImperativeHandle(ref, () => ({ height }));
 
     return isDesktop ? (
-      <Box height="80" ref={boxRef}>
+      <Box height={height.toString()}>
         <AppHeader action={props.action} items={getAppHeaderItems(props)} />
       </Box>
     ) : (
-      <Box height="64" position="relative" zIndex={0} ref={boxRef}>
+      <Box height={height.toString()} position="relative" zIndex={0}>
         <AppHeaderMobile
           action={props.action}
           items={getMobileAppHeaderItems(props)}
