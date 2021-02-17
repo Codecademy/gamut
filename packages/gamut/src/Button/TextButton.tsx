@@ -6,7 +6,7 @@ import { ButtonInner } from './ButtonInner';
 import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
-export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
+const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
   ({ mode = 'light', theme }) => {
     const modeColors = modeColorGroups[mode];
@@ -33,9 +33,7 @@ export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   }
 );
 
-const TextButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const TextButtonOuter = styled(ButtonOutline)();
 
 export const TextButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>

@@ -6,7 +6,7 @@ import React from 'react';
 
 import { ButtonProps, modeColorGroups } from './shared';
 
-const StyledButtonOutline = styled('button', {
+export const StyledButtonOutline = styled('button', {
   shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
 })<ButtonProps>(({ mode = 'light' }) => {
   const modeColors = modeColorGroups[mode];

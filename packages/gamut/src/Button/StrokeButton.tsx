@@ -34,9 +34,7 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
   }
 );
 
-const StrokeButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const StrokeButtonOuter = styled(ButtonOutline)();
 
 export const StrokeButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof StrokeButtonOuter>
