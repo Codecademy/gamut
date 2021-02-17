@@ -71,7 +71,7 @@ export type PopoverProps = {
    */
   isOpen: boolean;
   /**
-   * Whether to add a pattern background
+   * Whether to add a pattern background.
    */
   pattern?: PatternName;
   /**

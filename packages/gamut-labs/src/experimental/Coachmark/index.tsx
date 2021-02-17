@@ -3,10 +3,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Popover, PopoverProps } from '../Popover';
 
 export type CoachmarkProps = {
+  /**
+   * Applied to the element to which the coachmark points.
+   */
   activeElClassName?: string;
+  /**
+   * Amount of time (in ms) to delay rendering the coachmark.
+   */
   delay?: number;
+  /**
+   * Whether the coachmark is rendered.
+   */
   shouldShow: boolean;
+  /**
+   * Function that returns the contents of the coachmark.
+   */
   renderPopover: (onDismiss?: () => void) => JSX.Element;
+  /**
+   * Props to be passed into the popover component.
+   */
   popoverProps?: Partial<PopoverProps>;
 };
 

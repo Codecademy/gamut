@@ -17,7 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
   args={{
     renderPopover: () => (
       <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
-        <Text marginBottom={8}>You should really click me</Text>
+        <Text marginBottom={8}>You should click the button.</Text>
         <FillButton
           onClick={() => {
             setShouldShow(false);
@@ -37,7 +37,7 @@ import { PropsTable } from '~styleguide/blocks';
     {(args) => {
       return (
         <Coachmark {...args}>
-          <FillButton onClick={() => {}}>Click me</FillButton>
+          <FillButton onClick={() => {}}>A Button</FillButton>
         </Coachmark>
       );
     }}
