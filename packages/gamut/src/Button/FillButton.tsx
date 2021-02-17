@@ -31,9 +31,7 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   }
 );
 
-const FillButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const FillButtonOuter = styled(ButtonOutline)();
 
 export const FillButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>

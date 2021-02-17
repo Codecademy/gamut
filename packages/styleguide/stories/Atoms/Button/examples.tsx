@@ -27,8 +27,8 @@ export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
   modes[mode].forEach((mode: string) => {
     sizes.forEach((size) => {
       grid.push(
-        <Box key={`${size}-${mode}-key`} fontSize={14} fontWeight="title">
-          {mode} <br /> {size}
+        <Box key={`${size}-${mode}-key`} fontSize={14}>
+          {mode} <Box>{size}</Box>
         </Box>
       );
 

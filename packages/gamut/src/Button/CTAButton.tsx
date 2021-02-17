@@ -1,4 +1,4 @@
-import { fontFamily, fontWeight } from '@codecademy/gamut-styles';
+import { fontFamily } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -15,7 +15,6 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
       border-radius: 2px;
       padding: 0.75rem 1.25rem;
       font-family: ${fontFamily.accent};
-      font-weight: ${fontWeight.title};
       color: ${modeColors.foreground};
       background-color: ${modeColors.background};
       box-shadow: -4px 4px 0 0 ${modeColors.shadow};
