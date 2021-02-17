@@ -30,7 +30,6 @@ export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
       ${TextButtonOuter}[aria-disabled='true'] & {
         background-color: transparent;
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
       }
     `;
   }

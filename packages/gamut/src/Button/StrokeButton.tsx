@@ -8,7 +8,7 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light' }: SizedButtonProps) => {
+  ({ mode = 'light' }) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -30,7 +30,6 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
         background-color: transparent;
         border-color: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
       }
     `;
   }

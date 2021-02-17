@@ -9,7 +9,7 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light', size }: SizedButtonProps) => {
+  ({ mode = 'light' }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
     return css`
       background-color: ${modeColors.background};
@@ -28,7 +28,6 @@ const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
       ${FillButtonOuter}[aria-disabled='true'] & {
         background: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
       }
     `;
   }
