@@ -33,7 +33,7 @@ export const ButtonInner = styled('span', {
       &:first-of-type {
         margin-left: -1px;
       }
-      &::last-of-type {
+      &:last-of-type {
         margin-right: -1px;
       }
     }
