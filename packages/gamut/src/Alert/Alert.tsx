@@ -22,7 +22,7 @@ export type AlertProps = {
   /** Alert Variant String */
   variant?: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
   /** Callback to be called when the close icon is clicked */
-  onClose: () => void;
+  onClose?: () => void;
   /** Call to Action Configuration */
   cta?: Omit<
     React.ComponentProps<typeof FillButton>,
