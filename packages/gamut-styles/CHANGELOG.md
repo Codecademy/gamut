@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.0.1...@codecademy/gamut-styles@8.1.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
 ### [8.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.0.0...@codecademy/gamut-styles@8.0.1) (2021-02-16)
 
 **Note:** Version bump only for package @codecademy/gamut-styles
