@@ -10,7 +10,7 @@ export type ProgressBarProps = {
   /**
    * Whether to increase size and display the percentage as text.
    */
-  size?: 'small' | 'large';
+  size?: 'small' | 'medium' | 'large';
 
   /**
    * Minimum amount of the bar to fill in visually.
