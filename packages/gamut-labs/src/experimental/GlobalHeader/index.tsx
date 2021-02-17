@@ -1,6 +1,13 @@
 import { Box } from '@codecademy/gamut';
-import React from 'react';
+import React, {
+  forwardRef,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
+import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
 import {
   FormattedAppHeaderItems,
@@ -93,22 +100,36 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
-  <>
-    <Box display={{ base: 'none', md: 'block' }} height="80">
-      <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-    </Box>
-    <Box
-      display={{ base: 'block', md: 'none' }}
-      height="64"
-      position="relative"
-      zIndex={0}
-    >
-      <AppHeaderMobile
-        action={props.action}
-        items={getMobileAppHeaderItems(props)}
-        renderSearch={props.renderSearch?.mobile}
-      />
-    </Box>
-  </>
+export const GlobalHeader: React.FC<GlobalHeaderProps> = forwardRef(
+  (props, ref) => {
+    const [height, setHeight] = useState<number>(0);
+    const boxRef = useRef<HTMLDivElement>(null);
+    const isDesktop = useBreakpointAtOrAbove('md');
+
+    useLayoutEffect(() => {
+      const onResize = () => {
+        setHeight(boxRef.current?.clientHeight || 0);
+      };
+      onResize();
+
+      window.addEventListener('resize', onResize);
+      return () => window.removeEventListener('resize', onResize);
+    });
+
+    useImperativeHandle(ref, () => ({ height }), [height]);
+
+    return isDesktop ? (
+      <Box height="80" ref={boxRef}>
+        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
+      </Box>
+    ) : (
+      <Box height="64" position="relative" zIndex={0} ref={boxRef}>
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+        />
+      </Box>
+    );
+  }
 );
