@@ -27,14 +27,14 @@
   border-radius: 100%;
   box-shadow: 0 0 0 1px $color-gray-200;
   margin-right: $form-padding;
+  transition: 0.3s;
 }
 
 .radioLabel::after {
   content: "";
   display: block;
   position: absolute;
-  transition: transform 0.3s ease-in;
-  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-in-out;
   transform: scale(0);
   width: px-rem(20px);
   height: px-rem(20px);
