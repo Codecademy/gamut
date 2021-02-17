@@ -9,7 +9,7 @@ import {
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
@@ -17,13 +17,10 @@ import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
-export type AlertContainerProps = HandlerProps<typeof alertVariants>;
-export type AlertVariants = AlertContainerProps['variant'];
-
 export type AlertProps = {
   className?: string;
   /** Alert Variant String */
-  variant: AlertVariants;
+  variant: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
   /** Call to Action Configuration */
@@ -71,7 +68,24 @@ const alertVariants = variant({
   },
 });
 
-export const AlertBanner = styled(Box)<AlertContainerProps>(alertVariants);
+export const AlertBanner = styled(Box)(
+  alertVariants,
+  ({ theme }) => css`
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 820px;
+    border: 2px solid ${theme.colors.navy};
+    border-radius: 3px;
+    padding: ${theme.spacing[4]};
+  `
+);
+
+AlertBanner.defaultProps = {
+  role: 'status',
+  'aria-label': 'alert box',
+  'aria-live': 'polite',
+};
 
 export const Alert: React.FC<AlertProps> = ({
   className,
@@ -88,76 +102,51 @@ export const Alert: React.FC<AlertProps> = ({
 
   return (
     <AlertBanner
-      className={className}
       variant={variant}
-      role="status"
-      aria-label="alert box"
-      aria-live="polite"
-      width="100%"
-      maxWidth="820px"
-      padding={4}
-      paddingX={[4, , 8]}
-      borderColor="navy"
-      borderStyle="solid"
-      borderWidth="2px"
-      borderRadius="3px"
+      columnGap={[4, 8, , 12]}
+      flexWrap={{ base: 'wrap', sm: 'nowrap' }}
     >
-      <FlexBox
-        columnGap={[4, 8, , 12]}
-        rowGap={4}
-        alignItems="start"
-        lineHeight="base"
-        flexWrap={['wrap', , 'nowrap']}
-      >
-        <FlexBox padding={8} alignItems="center" height="2rem" width="2rem">
-          <Icon size={16} />
-        </FlexBox>
-        <FlexBox
-          justifySelf="stretch"
-          lineHeight="base"
-          flexGrow={1}
-          flexBasis={['50%', , 'auto']}
-          paddingY={4}
-          fontSize={16}
-        >
-          <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-            {message}
-          </Truncate>
-        </FlexBox>
-        {truncated && (
-          <IconButton
-            mode={buttonMode}
-            size="small"
-            icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
-            onClick={() => setExpanded(!expanded)}
-          />
-        )}
-        {cta && (
-          <FlexBox
-            flexBasis="initial"
-            justifyContent="flex-start"
-            paddingX={[32, , 0]}
-            order={[4, , 'initial']}
-          >
-            <FillButton
-              mode="dark-alt"
-              href={href}
-              onClick={onClick}
-              size="small"
-            >
-              {cta}
-            </FillButton>
-          </FlexBox>
-        )}
-        {onClose && (
-          <IconButton
-            mode={buttonMode}
-            size="small"
-            onClick={onClose}
-            icon={MiniDeleteIcon}
-          />
-        )}
+      <FlexBox padding={8} alignItems="center">
+        <Icon size={16} />
       </FlexBox>
+      <FlexBox flexGrow={1} flexBasis={['50%', , 'auto']} paddingY={4}>
+        <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+          {message}
+        </Truncate>
+      </FlexBox>
+      {truncated && (
+        <IconButton
+          mode={buttonMode}
+          size="small"
+          icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
+          onClick={() => setExpanded(!expanded)}
+        />
+      )}
+      {cta && (
+        <FlexBox
+          flexBasis={['100%', , 'initial']}
+          marginLeft={[4, 8, 0]}
+          paddingX={[32, , 0]}
+          order={[4, , 'initial']}
+        >
+          <FillButton
+            mode="dark-alt"
+            href={href}
+            onClick={onClick}
+            size="small"
+          >
+            {cta}
+          </FillButton>
+        </FlexBox>
+      )}
+      {onClose && (
+        <IconButton
+          mode={buttonMode}
+          size="small"
+          onClick={onClose}
+          icon={MiniDeleteIcon}
+        />
+      )}
     </AlertBanner>
   );
 };
