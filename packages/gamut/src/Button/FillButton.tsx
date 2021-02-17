@@ -7,39 +7,38 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
-    const modeColors = modeColorGroups[mode];
-
+  buttonSizing,
+  ({ mode = 'light', variant = 'primary' }: SizedButtonProps) => {
+    const modeColors = modeColorGroups[mode][variant];
     return css`
-      background-color: ${modeColors.background};
-      border-radius: 3px;
       color: ${modeColors.foreground};
-      ${buttonSizing(size)}
+      background-color: ${modeColors.background};
 
       ${FillButtonOuter}:hover & {
         background-color: ${modeColors.backgroundDull};
       }
 
+      ${FillButtonOuter}:active & {
+        border-color: ${modeColors.background};
+      }
+
       ${FillButtonOuter}:disabled &,
       ${FillButtonOuter}[aria-disabled='true'] & {
-        background: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
+        background-color: ${modeColors.backgroundMuted};
       }
     `;
   }
 );
 
-const FillButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const FillButtonOuter = styled(ButtonOutline)();
 
 export const FillButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof FillButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <FillButtonOuter mode={mode} {...props}>
-      <FillButtonInner mode={mode} size={size}>
+    <FillButtonOuter mode={mode} variant={variant} {...props}>
+      <FillButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </FillButtonInner>
     </FillButtonOuter>

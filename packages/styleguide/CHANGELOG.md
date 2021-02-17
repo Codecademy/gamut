@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [27.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.0...@codecademy/styleguide@27.2.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GridForm:** Add aria labels to GridForm Radio ([#1410](https://github.com/Codecademy/client-modules/issues/1410)) ([79262f5](https://github.com/Codecademy/client-modules/commit/79262f5b1fce8c5116dc9e33e7c46926873deaf3))
+
+
+
+## [27.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.1...@codecademy/styleguide@27.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
+### [27.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.0...@codecademy/styleguide@27.1.1) (2021-02-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [27.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.1...@codecademy/styleguide@27.1.0) (2021-02-17)
+
+
+### Features
+
+* allowed disabled inputs for GridForm ([1627bf8](https://github.com/Codecademy/client-modules/commit/1627bf8d1b4d5d3e24f6e1cd6fabda1573d23a24))
+
+
+
+### [27.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.0...@codecademy/styleguide@27.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [27.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.2...@codecademy/styleguide@27.0.0) (2021-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* converted ToolTip to Emotion (#1357)
+
+### Miscellaneous Chores
+
+* converted ToolTip to Emotion ([#1357](https://github.com/Codecademy/client-modules/issues/1357)) ([3f8a045](https://github.com/Codecademy/client-modules/commit/3f8a045f29b15f02da66fb10069064866c44a9e7))
+
+
+
+### [26.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.1...@codecademy/styleguide@26.1.2) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [26.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.0...@codecademy/styleguide@26.1.1) (2021-02-16)
 
 **Note:** Version bump only for package @codecademy/styleguide
