@@ -1,5 +1,4 @@
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import React from 'react';
 
 import { IconButton, TextButton } from '../../Button';
 import { Banner } from '..';
@@ -10,29 +9,29 @@ const onCtaClick = jest.fn();
 describe('Banner', () => {
   const renderWrapper = setupEnzyme(Banner, {
     onClose,
-    children: <span className="test">Hello</span>,
+    children: 'Hello world',
   });
 
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
-  it('renders children when closing has not been requested', () => {
+  it('renders children markdown children', () => {
     const { wrapper } = renderWrapper({});
 
-    expect(wrapper.find('span.test')).toHaveLength(1);
+    expect(wrapper.find('p').text()).toEqual('Hello world');
   });
 
-  it('renders a button when a cta is provided', () => {
+  it('renders a button when a cta is provided in markdown', () => {
     const { wrapper } = renderWrapper({
-      cta: 'Learn more',
-      href: '#',
       onCtaClick,
+      children: '[Hello](/)',
     });
 
     const CTA = wrapper.find(TextButton);
     expect(CTA).toHaveLength(2);
 
+    expect(CTA.at(0).text()).toEqual('Hello');
     CTA.at(0).simulate('click');
 
     expect(onCtaClick).toHaveBeenCalled();

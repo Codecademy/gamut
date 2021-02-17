@@ -2,36 +2,24 @@ import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { IconButton, TextButton } from '../Button';
+import { Markdown } from '../Markdown';
 
 type BannerVariants = 'navy' | 'yellow';
 
-export interface BaseBannerProps {
+export interface BannerProps {
   className?: string;
+  /** Markdown content */
+  children: string;
   /** Visual variations for banners */
   variant?: BannerVariants;
   /**  Callback called when the user closes the banner. */
   onClose: () => void;
-}
-
-export interface CTABanner extends BaseBannerProps {
-  /** Call to action text */
-  cta: string;
-  /** Link associated with CTA */
-  href: string;
   /** Call to action click callback */
   onCtaClick?: () => void;
 }
-
-export interface TextBanner extends BaseBannerProps {
-  cta?: never;
-  onCtaClick?: never;
-  href?: never;
-}
-
-type BannerProps = TextBanner | CTABanner;
 
 const BannerContainer = styled.div(
   variant({
@@ -53,37 +41,47 @@ const BannerContainer = styled.div(
   `
 );
 
+const BannerContent = styled(Markdown)`
+  font-size: inherit;
+`;
+
 export const Banner: React.FC<
-  BannerProps & React.ComponentProps<typeof BannerContainer>
+  React.ComponentProps<typeof BannerContainer> & BannerProps
 > = ({
   children,
   variant = 'navy',
-  cta,
-  href,
   onCtaClick,
   onClose,
   ...rest
-}) => {
+}: BannerProps) => {
   const mode = variant === 'navy' ? 'dark' : 'light';
+
+  const overrides = useMemo(
+    () => ({
+      a: {
+        processNode: (node: unknown, props: { onClick: () => void }) => (
+          <TextButton
+            {...props}
+            mode={mode}
+            size="small"
+            onClick={() => {
+              props.onClick && props.onClick();
+              onCtaClick && onCtaClick();
+            }}
+          />
+        ),
+      },
+    }),
+    [onCtaClick, mode]
+  );
 
   return (
     <BannerContainer variant={variant} {...rest}>
-      <span>
-        {children}
-        {cta && (
-          <>
-            &nbsp;
-            <TextButton
-              mode={mode}
-              size="small"
-              href={href}
-              onClick={onCtaClick}
-            >
-              {cta}
-            </TextButton>
-          </>
-        )}
-      </span>
+      <BannerContent
+        overrides={overrides}
+        skipDefaultOverrides={{ a: true }}
+        text={children}
+      />
       <IconButton
         mode={mode}
         variant="secondary"
