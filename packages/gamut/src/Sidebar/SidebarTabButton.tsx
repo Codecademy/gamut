@@ -21,11 +21,10 @@ const ArrowButton = styled(ButtonOutline)<SidebarComponentSideProps>`
   border-radius: 0px 3px 3px 0px;
   color: inherit;
   height: 3rem;
+  min-width: 2.3rem;
   padding: 1px;
   position: absolute;
-  min-width: 2.3rem;
-  margin: 1rem 0;
-  top: 2rem;
+  top: 1rem;
   left: ${(props) => (props.openFrom === 'left' ? '100%' : 'initial')};
   right: ${(props) => (props.openFrom === 'right' ? '100%' : 'initial')};
 
