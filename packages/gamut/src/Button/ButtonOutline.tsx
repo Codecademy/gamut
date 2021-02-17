@@ -22,7 +22,7 @@ const StyledButtonOutline = styled('button', {
     font-family: inherit;
     font: inherit;
     line-height: normal;
-    margin: 0;
+    margin: -1px;
     padding: 1px;
     text-align: center;
     text-decoration: none;

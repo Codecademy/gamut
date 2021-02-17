@@ -1,9 +1,9 @@
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { Box, FlexBox } from '../Box';
 import { IconButton, TextButton } from '../Button';
 
 type BannerVariants = 'navy' | 'yellow';
@@ -33,71 +33,59 @@ export interface TextBanner extends BaseBannerProps {
 
 type BannerProps = TextBanner | CTABanner;
 
-const BannerContainer = styled(FlexBox)<Pick<BaseBannerProps, 'variant'>>`
-  position: relative;
-  width: 100%;
-  min-height: 40px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  ${variant<BannerVariants>({
+const BannerContainer = styled.div(
+  variant({
     navy: { textColor: 'white', backgroundColor: 'navy' },
     yellow: { textColor: 'navy', backgroundColor: 'yellow' },
-  })}
-`;
+  }),
+  ({ theme }) => css`
+    display: grid;
+    width: 100%;
+    padding: ${theme.spacing[4]};
+    column-gap: ${theme.spacing[8]};
+    grid-template-columns: 2rem 1fr 2rem;
+    align-items: center;
+    text-align: center;
 
-const variantButtons = {
-  navy: {
-    text: 'dark',
-    icon: 'dark-alt',
-  },
-  yellow: {
-    text: 'light',
-    icon: 'light-alt',
-  },
-} as const;
+    &:before {
+      content: '';
+    }
+  `
+);
 
 export const Banner: React.FC<BannerProps> = ({
   children,
-  className,
   variant = 'navy',
   cta,
   href,
   onCtaClick,
   onClose,
+  ...rest
 }) => {
-  const { text, icon } = variantButtons[variant];
+  const mode = variant === 'navy' ? 'dark' : 'light';
+  const [button, iconButton] = [mode, `${mode}-alt`] as const;
 
   return (
-    <BannerContainer
-      columnGap={8}
-      paddingY={{ base: 8, sm: 4 }}
-      paddingX={{ base: 32, sm: 48 }}
-      flexWrap={{ base: 'wrap', sm: 'nowrap' }}
-      variant={variant}
-      className={className}
-    >
-      <span>{children}</span>
-      {cta && (
-        <TextButton mode={text} size="small" onClick={onCtaClick} href={href}>
-          <Box fontWeight="title">{cta}</Box>
-        </TextButton>
-      )}
-      <FlexBox
-        position="absolute"
-        top="0"
-        right="0"
-        alignItems="center"
-        height={{ base: 'auto', sm: '40px' }}
-        padding={8}
-      >
-        <IconButton
-          mode={icon}
-          size="small"
-          onClick={onClose}
-          icon={MiniDeleteIcon}
-        />
-      </FlexBox>
+    <BannerContainer variant={variant} {...rest}>
+      <span>
+        {children} &nbsp;
+        {cta && (
+          <TextButton
+            mode={button}
+            size="small"
+            href={href}
+            onClick={onCtaClick}
+          >
+            {cta}
+          </TextButton>
+        )}
+      </span>
+      <IconButton
+        mode={iconButton}
+        size="small"
+        icon={MiniDeleteIcon}
+        onClick={onClose}
+      />
     </BannerContainer>
   );
 };
