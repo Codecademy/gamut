@@ -18,7 +18,7 @@ import {
   FeaturedImage,
   FeaturedStat,
   Title,
-} from './';
+} from '.';
 import { FeaturedDescription, FeaturedTitle } from './Feature';
 import { BaseProps } from './types';
 
@@ -53,7 +53,7 @@ const rowRenderEach = (
       ))}
     </FlexContainer>
   );
-  /* eslint-ensable react/no-array-index-key */
+  /* eslint-enable react/no-array-index-key */
 };
 
 const gridRenderEach = (
@@ -64,7 +64,7 @@ const gridRenderEach = (
   const size = { xs: 12, sm: 12 / maxCols } as ResponsiveProperty<ColumnSizes>;
   /* eslint-disable react/no-array-index-key */
   return (
-    <LayoutGrid columnGap={{ lg: 'lg', xs: 'sm' }}>
+    <LayoutGrid columnGap={{ xs: 'sm', sm: 'xl' }}>
       {items.map((item, i) => (
         <Column key={i} size={size}>
           {itemRenderer(item)}

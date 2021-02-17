@@ -1,36 +1,19 @@
-import { GearIcon, PersonIcon } from '@codecademy/gamut-icons';
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
+
+import {
+  MOCK_DROPDOWN_1,
+  MOCK_PROFILE_DROPDOWN,
+} from './MockAppHeaderElements';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
   component={AppHeaderSubMenuMobile}
   parameters={{ layout: 'padded', status: 'volatile' }}
   args={{
-    item: {
-      id: 'target',
-      text: 'Dropdown Target',
-      popover: [
-        {
-          id: 'sublink-1',
-          text: 'A Link',
-          href: 'http://codecademy.com',
-          trackingTarget: '',
-          type: 'link',
-        },
-        {
-          id: 'sublink-2',
-          text: 'Another Link',
-          href: 'http://codecademy.com',
-          trackingTarget: '',
-          type: 'link',
-        },
-      ],
-      trackingTarget: '',
-      type: 'dropdown',
-    },
+    item: MOCK_DROPDOWN_1,
   }}
 />
 
@@ -50,59 +33,7 @@ Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown",
 <Canvas>
   <Story
     args={{
-      item: {
-        avatar: '',
-        displayName: '',
-        id: 'dividers',
-        text: 'Dividers',
-        popover: [
-          [
-            {
-              id: 'sublink-1',
-              icon: PersonIcon,
-              text: 'A Link With Icon',
-              href: 'http://codecademy.com',
-              trackingTarget: '',
-              type: 'link',
-            },
-            {
-              id: 'sublink-2',
-              icon: GearIcon,
-              text: 'Another Link With Icon',
-              href: 'http://codecademy.com',
-              trackingTarget: '',
-              type: 'link',
-            },
-          ],
-          [
-            {
-              id: 'sublink-3',
-              text: 'A Link In Another Section',
-              href: 'http://codecademy.com',
-              trackingTarget: '',
-              type: 'link',
-            },
-            {
-              id: 'sublink-4',
-              text: 'Another Link',
-              href: 'http://codecademy.com',
-              trackingTarget: '',
-              type: 'link',
-            },
-          ],
-          [
-            {
-              id: 'sublink-5',
-              text: 'One More Link',
-              href: 'http://codecademy.com',
-              trackingTarget: '',
-              type: 'link',
-            },
-          ],
-        ],
-        trackingTarget: '',
-        type: 'profile-dropdown',
-      },
+      item: MOCK_PROFILE_DROPDOWN,
     }}
     name="AppHeaderSubMenuMobile - Profile"
   >

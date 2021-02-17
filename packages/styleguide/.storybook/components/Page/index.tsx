@@ -3,23 +3,17 @@ import { Description, DocsContext, Title } from '@storybook/addon-docs/blocks';
 import { Badge } from '../Badge';
 import { spacing } from '../styles';
 import { styled } from '@storybook/theming';
-import { OpenIcon } from '@codecademy/gamut-icons';
 import { Parameters } from '@storybook/addons';
 import { useKind } from '../TableOfContents/utils';
 import { Box, SectionLink } from '../TableOfContents/elements';
 
-const Link = styled.a`
+export const Link = styled.a`
   display: inline-flex;
   line-height: 1;
   column-gap: 0.5rem;
+  font-weight: 700;
   align-items: flex-start;
   color: ${({ theme }) => theme.color.secondary};
-  border-bottom: 2px solid transparent;
-
-  &:hover {
-    text-decoration: none;
-    border-bottom-color: ${({ theme }) => theme.color.secondary};
-  }
 `;
 
 const Header = styled.div`
@@ -76,7 +70,7 @@ const BreadCrumbs: React.FC<{ path: string[] }> = ({ path }) => {
 
           return (
             <React.Fragment key={key}>
-              <SectionLink key={kind} kind={kindIndex}>
+              <SectionLink key={kind} kind={kindIndex} story="page">
                 {text}
               </SectionLink>
               <span>&gt;</span>
@@ -129,7 +123,7 @@ export const Page: React.FC = ({ children }) => {
               </HeaderCol>
               <HeaderCol>
                 <Link target="_blank" href={npmLink}>
-                  @codecademy/{source} <OpenIcon size={14} />
+                  @codecademy/{source}
                 </Link>
               </HeaderCol>
             </>
@@ -141,7 +135,7 @@ export const Page: React.FC = ({ children }) => {
               </HeaderCol>
               <HeaderCol>
                 <Link target="_blank" href={figmaLink}>
-                  Figma <OpenIcon size={14} />
+                  Figma
                 </Link>
               </HeaderCol>
             </>
