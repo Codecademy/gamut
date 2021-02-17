@@ -45,3 +45,29 @@ import { PropsTable } from '~styleguide/blocks';
 </Canvas>
 
 <PropsTable story="Coachmark" />
+
+## Coachmark Customizations
+
+Using the popoverProps, you can customize the look of the coachmark.
+For example, you can add an outline and pattern, as shown below.
+
+<Canvas>
+  <Story
+    name="Coachmark Customizations"
+    args={{
+      popoverProps: {
+        beak: 'left',
+        outline: true,
+        pattern: 'dotsDense',
+      },
+    }}
+  >
+    {(args) => {
+      return (
+        <Coachmark {...args}>
+          <FillButton onClick={() => {}}>A Button</FillButton>
+        </Coachmark>
+      );
+    }}
+  </Story>
+</Canvas>
