@@ -6,7 +6,6 @@ import React, { useMemo } from 'react';
 
 import { IconButton, TextButton } from '../Button';
 import { Markdown } from '../Markdown';
-import { createTagOverride } from '../Markdown/libs/overrides';
 
 type BannerVariants = 'navy' | 'yellow';
 
@@ -61,7 +60,7 @@ export const Banner: React.FC<
   const overrides = useMemo(
     () => ({
       a: {
-        allowedAttributes: ['href'],
+        allowedAttributes: ['href', 'target'],
         processNode: (node: unknown, props: { onClick?: () => void }) => (
           <TextButton
             {...props}
