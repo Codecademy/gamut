@@ -13,14 +13,14 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useState } from 'react';
 
-import { Box, FlexBox, GridBox } from '../Box';
+import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
 export type AlertProps = {
   className?: string;
   /** Alert Variant String */
-  variant: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
+  variant?: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
   /** Callback to be called when the close icon is clicked */
   onClose: () => void;
   /** Call to Action Configuration */
@@ -44,34 +44,31 @@ const VARIANT_META = {
   feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
 
-const alertVariants = variant({
-  general: {
-    backgroundColor: 'blue',
-    textColor: 'white',
-  },
-  success: {
-    backgroundColor: 'green',
-    textColor: 'white',
-  },
-  error: {
-    backgroundColor: 'red',
-    textColor: 'white',
-  },
-  maintenance: {
-    backgroundColor: 'orange',
-    textColor: 'navy',
-  },
-  feature: {
-    backgroundColor: 'blue-300',
-    textColor: 'navy',
-  },
-});
-
-const AlertBanner = styled(GridBox)(
-  alertVariants,
+const AlertBanner = styled(Box)(
+  variant({
+    general: {
+      backgroundColor: 'blue',
+      textColor: 'white',
+    },
+    success: {
+      backgroundColor: 'green',
+      textColor: 'white',
+    },
+    error: {
+      backgroundColor: 'red',
+      textColor: 'white',
+    },
+    maintenance: {
+      backgroundColor: 'orange',
+      textColor: 'navy',
+    },
+    feature: {
+      backgroundColor: 'blue-300',
+      textColor: 'navy',
+    },
+  }),
   ({ theme }) => css`
     display: grid;
-    align-items: start;
     width: 100%;
     max-width: 820px;
     border: 2px solid ${theme.colors.navy};
@@ -98,8 +95,8 @@ export const Alert: React.FC<
 
   return (
     <AlertBanner
-      paddingX={4}
-      paddingY={4}
+      padding={4}
+      alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
       {...rest}
