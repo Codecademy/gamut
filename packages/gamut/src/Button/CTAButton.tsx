@@ -1,4 +1,3 @@
-import { fontFamily } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -8,7 +7,7 @@ import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
+  ({ mode = 'light', theme }) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
@@ -16,7 +15,7 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
       border-radius: 2px;
       box-shadow: -4px 4px 0 0 ${modeColors.shadow};
       color: ${modeColors.foreground};
-      font-family: ${fontFamily.accent};
+      font-family: ${theme.fontFamily.accent};
       font-weight: bold;
       padding: 0.75rem 1.25rem;
 

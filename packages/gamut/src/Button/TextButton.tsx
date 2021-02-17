@@ -9,13 +9,13 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 export const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light' }: SizedButtonProps) => {
+  ({ mode = 'light', theme }) => {
     const modeColors = modeColorGroups[mode];
 
     return css`
       border-radius: 3px;
-      padding-left: ${spacing[8]};
-      padding-right: ${spacing[8]};
+      padding-left: ${theme.spacing[8]};
+      padding-right: ${theme.spacing[8]};
       color: ${modeColors.background};
 
       ${TextButtonOuter}:hover & {

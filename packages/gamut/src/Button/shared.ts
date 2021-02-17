@@ -1,11 +1,5 @@
-import {
-  colors,
-  fontSize,
-  pxRem,
-  spacing,
-  swatches,
-} from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { colors, pxRem, swatches } from '@codecademy/gamut-styles';
+import { css, Theme } from '@emotion/react';
 import type { HTMLProps } from 'react';
 
 export type ButtonProps = Omit<
@@ -22,22 +16,50 @@ export type ButtonSizeProps = {
 export type SizedButtonProps = ButtonProps & ButtonSizeProps;
 
 export const SIZE_UNITS = {
-  small: { height: 30, fSize: 14, border: 2 },
-  normal: { height: 40, fSize: 16, border: 2 },
+  small: { height: 32, fSize: 14, border: 2 },
+  normal: { height: 42, fSize: 16, border: 2 },
 } as const;
 
-export const buttonSizing = ({ size }: ButtonSizeProps) => {
+export const buttonSizing = ({
+  size,
+  theme,
+}: ButtonSizeProps & { theme: Theme }) => {
   if (!size) return;
 
   const { height, fSize, border } = SIZE_UNITS[size];
-  const vPadding = pxRem((height - border * 2 - fSize) / 2);
-  const hPadding = size === 'normal' ? spacing[16] : spacing[8];
+  const childElementOffset = size === 'normal' ? '-1px' : '0';
+  const hPadding = size === 'normal' ? theme.spacing[16] : theme.spacing[8];
+  const fontSize = theme.fontSize[fSize];
 
   return css`
-    line-height: 1;
     border: ${border}px solid transparent;
-    font-size: ${fontSize[fSize]};
-    padding: ${vPadding} ${hPadding};
+    vertical-align: middle;
+    display: inline-block;
+    padding: ${theme.spacing[4]} ${hPadding};
+    font-size: ${fontSize};
+    height: ${pxRem(height)};
+
+    &:before,
+    &:after {
+      margin-left: -1px;
+      width: 1px;
+      content: '';
+      height: calc(${pxRem(height - border * 2)} - ${theme.spacing[8]});
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+
+      &:first-child {
+        margin-left: ${childElementOffset};
+      }
+      &:last-child {
+        margin-right: ${childElementOffset};
+      }
+    }
   `;
 };
 

@@ -1,3 +1,4 @@
+import { spacing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -8,7 +9,7 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const FillButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light' }: SizedButtonProps) => {
+  ({ mode = 'light', size }: SizedButtonProps) => {
     const modeColors = modeColorGroups[mode];
     return css`
       background-color: ${modeColors.background};

@@ -12,7 +12,7 @@ const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
     const modeColors = modeColorGroups[mode];
 
     return css`
-      border-color: ${modeColors.background};
+      border: 2px solid ${modeColors.background};
       border-radius: 3px;
       color: ${modeColors.background};
 
