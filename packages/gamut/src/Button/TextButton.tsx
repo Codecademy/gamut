@@ -7,13 +7,14 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
-    const modeColors = modeColorGroups[mode];
+  buttonSizing,
+  ({ mode = 'light', variant = 'primary', theme }) => {
+    const modeColors = modeColorGroups[mode][variant];
 
     return css`
-      border-radius: 3px;
+      padding-left: ${theme.spacing[8]};
+      padding-right: ${theme.spacing[8]};
       color: ${modeColors.background};
-      ${buttonSizing(size)}
 
       ${TextButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};
@@ -25,24 +26,21 @@ const TextButtonInner = styled(ButtonInner)<SizedButtonProps>(
 
       ${TextButtonOuter}:disabled &,
       ${TextButtonOuter}[aria-disabled='true'] & {
-        background-color: transparent;
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
+        background-color: transparent;
       }
     `;
   }
 );
 
-const TextButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const TextButtonOuter = styled(ButtonOutline)();
 
 export const TextButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof TextButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <TextButtonOuter mode={mode} {...props}>
-      <TextButtonInner mode={mode} size={size}>
+    <TextButtonOuter mode={mode} variant={variant} {...props}>
+      <TextButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </TextButtonInner>
     </TextButtonOuter>
