@@ -41,6 +41,16 @@ const BannerContainer = styled.div(
   `
 );
 
+const BannerLink = styled(TextButton)(
+  ({ theme }) => css`
+    margin: 0 ${theme.spacing[4]};
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  `
+);
+
 const BannerContent = styled(Markdown)`
   font-size: inherit;
 `;
@@ -62,7 +72,7 @@ export const Banner: React.FC<
       a: {
         allowedAttributes: ['href', 'target'],
         processNode: (node: unknown, props: { onClick?: () => void }) => (
-          <TextButton
+          <BannerLink
             {...props}
             mode={mode}
             size="small"
@@ -73,7 +83,7 @@ export const Banner: React.FC<
             }}
           />
         ),
-        component: TextButton,
+        component: BannerLink,
       },
     }),
     [onCtaClick, mode]
