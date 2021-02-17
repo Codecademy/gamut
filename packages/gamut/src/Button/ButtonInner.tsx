@@ -28,10 +28,15 @@ export const ButtonInner = styled('span', {
       vertical-align: middle;
     }
 
-    > svg {
+    > * {
       vertical-align: middle;
-      margin-left: -1px;
-      margin-right: -1px;
+
+      &:first-of-type {
+        margin-left: -1px;
+      }
+      &:last-of-type {
+        margin-right: -1px;
+      }
     }
   `;
 });
