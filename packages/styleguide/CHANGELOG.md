@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.1...@codecademy/styleguide@27.1.0) (2021-02-17)
+
+
+### Features
+
+* allowed disabled inputs for GridForm ([1627bf8](https://github.com/Codecademy/client-modules/commit/1627bf8d1b4d5d3e24f6e1cd6fabda1573d23a24))
+
+
+
 ### [27.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.0...@codecademy/styleguide@27.0.1) (2021-02-16)
 
 **Note:** Version bump only for package @codecademy/styleguide
