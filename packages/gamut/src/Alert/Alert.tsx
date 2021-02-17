@@ -27,7 +27,7 @@ export type AlertProps = {
   cta?: Omit<
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
-  > & { text: string };
+  > & { text?: string };
   /** Message to display if the component has no children */
   message?: string;
 };
@@ -127,7 +127,7 @@ export const Alert: React.FC<AlertProps> = ({
           onClick={() => setExpanded(!expanded)}
         />
       )}
-      {cta && (
+      {cta && Boolean(cta.children ?? cta.text) && (
         <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
           <FillButton {...cta} mode="dark" variant="secondary" size="small">
             {cta.children ?? cta.text}
