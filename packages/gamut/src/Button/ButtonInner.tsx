@@ -12,7 +12,6 @@ export const ButtonInner = styled('span', {
     display: inline-block;
     border: 2px solid transparent;
     border-radius: 3px;
-    vertical-align: middle;
     font-weight: ${fontWeight.title};
     text-align: center;
     transition: ${timing.fast} background-color, ${timing.fast} box-shadow,
