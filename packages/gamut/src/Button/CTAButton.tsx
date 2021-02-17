@@ -39,12 +39,12 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
   }
 );
 
-const CTAButtonOuter = styled(ButtonOutline)`
+const CTAButtonOuter = styled(ButtonOutline)<{ variant?: 'primary' }>`
   padding: 1px 1px 5px 5px;
 `;
 
 export const CTAButton: React.FC<
-  React.ComponentProps<typeof CTAButtonOuter>
+  React.ComponentProps<typeof CTAButtonOuter> & { variant?: never }
 > = ({ children, mode, ...props }) => {
   return (
     <CTAButtonOuter mode={mode} {...props}>
