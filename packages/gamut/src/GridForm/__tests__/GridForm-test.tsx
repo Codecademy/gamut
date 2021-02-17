@@ -104,7 +104,7 @@ describe('GridForm', () => {
           fields={fields}
           onSubmit={onSubmit}
           submit={{ contents: <>Submit</>, size: 6 }}
-          validation={'onSubmit'}
+          validation="onSubmit"
         />
       );
 
@@ -129,7 +129,7 @@ describe('GridForm', () => {
           fields={fields}
           onSubmit={onSubmit}
           submit={{ contents: <>Submit</>, size: 6 }}
-          validation={'onChange'}
+          validation="onChange"
         />
       );
 
@@ -152,7 +152,7 @@ describe('GridForm', () => {
           fields={fields}
           onSubmit={onSubmit}
           submit={{ contents: <>Submit</>, size: 6 }}
-          validation={'onChange'}
+          validation="onChange"
         />
       );
 
@@ -179,7 +179,7 @@ describe('GridForm', () => {
           fields={[]}
           onSubmit={onSubmit}
           submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
-          validation={'onChange'}
+          validation="onChange"
         />
       );
 
