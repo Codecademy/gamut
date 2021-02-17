@@ -1,4 +1,3 @@
-import { spacing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
