@@ -82,9 +82,12 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
-export const Alert: React.FC<
-  AlertProps & React.ComponentProps<typeof AlertBanner>
-> = ({ children, variant = 'general', cta, onClick, onClose, ...rest }) => {
+export const Alert: React.FC<AlertProps> = ({
+  children,
+  variant = 'general',
+  cta,
+  onClose,
+}) => {
   const { icon: Icon, mode } = VARIANT_META[variant];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
@@ -99,7 +102,6 @@ export const Alert: React.FC<
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
-      {...rest}
       variant={variant}
     >
       <FlexBox

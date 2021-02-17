@@ -1,6 +1,8 @@
 import { Alert } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
-import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
 
 import { ALERTS } from './constants';
 
@@ -36,7 +38,7 @@ import { ALERTS } from './constants';
   <Story name="Alert">{(args) => <Alert {...args} />}</Story>
 </Canvas>
 
-<Props story="Alert" />
+<PropsTable story="Alert" />
 
 ## Alert Variants
 
