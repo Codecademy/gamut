@@ -20,8 +20,8 @@ export const buttonSizing = variant({
   variants: {
     normal: {
       fontSize: 16,
-      height: '42px',
-      minWidth: '42px',
+      height: '40px',
+      minWidth: '40px',
       paddingY: 4,
       paddingX: 16,
     },

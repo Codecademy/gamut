@@ -24,18 +24,14 @@ export const ButtonInner = styled('span', {
       width: 1px;
       height: 100%;
       margin-left: -1px;
+      margin-right: -1px;
       vertical-align: middle;
     }
 
-    > * {
+    > svg {
       vertical-align: middle;
-
-      &:first-of-type {
-        margin-left: -1px;
-      }
-      &:last-of-type {
-        margin-right: -1px;
-      }
+      margin-left: -1px;
+      margin-right: -1px;
     }
   `;
 });
