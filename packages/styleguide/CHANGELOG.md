@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.1...@codecademy/styleguide@27.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
 ### [27.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.0...@codecademy/styleguide@27.1.1) (2021-02-17)
 
 **Note:** Version bump only for package @codecademy/styleguide

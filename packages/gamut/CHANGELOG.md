@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.1.0...@codecademy/gamut@23.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
 ## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.1...@codecademy/gamut@23.1.0) (2021-02-17)
 
 
