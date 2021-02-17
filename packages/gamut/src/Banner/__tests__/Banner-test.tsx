@@ -1,4 +1,5 @@
-import { shallow } from 'enzyme';
+import { setupEnzyme } from '@codecademy/gamut-tests';
+import { render, shallow } from 'enzyme';
 import React from 'react';
 
 import { IconButton, TextButton } from '../../Button';
@@ -8,51 +9,39 @@ const onClose = jest.fn();
 const onCtaClick = jest.fn();
 
 describe('Banner', () => {
+  const renderWrapper = setupEnzyme(Banner, {
+    onClose,
+    children: <span className="test">Hello</span>,
+  });
+
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
   it('renders children when closing has not been requested', () => {
-    const children = <span className="test" />;
-    const component = shallow(<Banner onClose={onClose}>{children}</Banner>);
+    const { wrapper } = renderWrapper({});
 
-    expect(component.find('span.test')).toHaveLength(1);
+    expect(wrapper.find('span.test')).toHaveLength(1);
   });
 
   it('renders a button when a cta is provided', () => {
-    const component = shallow(
-      <Banner
-        cta="Learn more"
-        href="#"
-        onCtaClick={onCtaClick}
-        onClose={onClose}
-      />
-    );
-    const CTA = component.find(TextButton);
-    expect(CTA).toHaveLength(1);
+    const { wrapper } = renderWrapper({
+      cta: 'Learn more',
+      href: '#',
+      onCtaClick,
+    });
 
-    CTA.simulate('click');
+    const CTA = wrapper.find(TextButton);
+    expect(CTA).toHaveLength(2);
+
+    CTA.at(0).simulate('click');
 
     expect(onCtaClick).toHaveBeenCalled();
   });
-
-  it('renders a button when a cta is provided', () => {
-    const component = shallow(
-      <Banner
-        cta="Learn more"
-        href="#"
-        onCtaClick={onCtaClick}
-        onClose={onClose}
-      />
-    );
-
-    expect(component.find(TextButton)).toHaveLength(1);
-  });
-
   it('calls the onClose callback when the close icon is clicked', () => {
-    const component = shallow(<Banner onClose={onClose}>Hello</Banner>);
+    const { wrapper } = renderWrapper({});
 
-    component.find(IconButton).simulate('click');
+    wrapper.find(IconButton).simulate('click');
 
     expect(onClose).toHaveBeenCalled();
   });

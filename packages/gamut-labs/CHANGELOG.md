@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.0.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.8...@codecademy/gamut-labs@10.0.9) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GlobalHeader:** add Projects link to Resources dropdown ([#1414](https://github.com/Codecademy/client-modules/issues/1414)) ([4936988](https://github.com/Codecademy/client-modules/commit/49369884c3a97e3db79c166f9954177d5a495ec6))
+
+
+
+### [10.0.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.7...@codecademy/gamut-labs@10.0.8) (2021-02-17)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [10.0.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.6...@codecademy/gamut-labs@10.0.7) (2021-02-16)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

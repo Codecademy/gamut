@@ -24,6 +24,7 @@ export const ButtonInner = styled('span', {
       width: 1px;
       height: 100%;
       margin-left: -1px;
+      margin-right: -1px;
       vertical-align: middle;
     }
 
@@ -33,7 +34,7 @@ export const ButtonInner = styled('span', {
       &:first-of-type {
         margin-left: -1px;
       }
-      &::last-of-type {
+      &:last-of-type {
         margin-right: -1px;
       }
     }

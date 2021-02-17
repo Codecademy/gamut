@@ -63,25 +63,20 @@ export const Banner: React.FC<BannerProps> = ({
   ...rest
 }) => {
   const mode = variant === 'navy' ? 'dark' : 'light';
-  const [button, iconButton] = [mode, `${mode}-alt`] as const;
 
   return (
     <BannerContainer variant={variant} {...rest}>
       <span>
         {children} &nbsp;
         {cta && (
-          <TextButton
-            mode={button}
-            size="small"
-            href={href}
-            onClick={onCtaClick}
-          >
+          <TextButton mode={mode} size="small" href={href} onClick={onCtaClick}>
             {cta}
           </TextButton>
         )}
       </span>
       <IconButton
-        mode={iconButton}
+        mode={mode}
+        variant="secondary"
         size="small"
         icon={MiniDeleteIcon}
         onClick={onClose}

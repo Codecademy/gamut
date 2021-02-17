@@ -6,36 +6,21 @@ import {
   TextButton,
 } from '@codecademy/gamut/src';
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
-const modes = {
-  light: ['light', 'light-alt'],
-  dark: ['dark', 'dark-alt'],
-} as const;
-export const sizes = ['normal', 'small'] as const;
+const buttons = [FillButton, IconButton, StrokeButton, TextButton];
+const variants = ['primary', 'secondary'] as const;
+const sizes = ['normal', 'small'] as const;
 
 export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
-  const grid = [
-    <Box />,
-    ...buttons.map(({ name }) => (
-      <Box key={`${name}-key`} fontSize={14} fontWeight="title">
-        {name}
-      </Box>
-    )),
-  ] as ReactNode[];
-  modes[mode].forEach((mode: string) => {
+  const grid = buttons.map(({ name }) => <Box key={`${name}-key`}>{name}</Box>);
+  variants.forEach((variant: typeof variants[number]) => {
     sizes.forEach((size) => {
-      grid.push(
-        <Box key={`${size}-${mode}-key`} fontSize={14}>
-          {mode} <Box>{size}</Box>
-        </Box>
-      );
-
       buttons.forEach((Component) => {
         const props = {
-          key: `${Component.name}-${mode}-${size}`,
-          mode: mode as 'dark' | 'light',
+          key: `${Component.name}-${mode}-${variant}-${size}`,
+          mode,
+          variant,
           size,
         };
         if (Component.name === 'IconButton') {
@@ -56,14 +41,13 @@ export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
       display="grid"
       alignItems="center"
       justifyItems="start"
-      gridTemplateColumns="repeat(5, minmax(50px, max-content))"
+      gridTemplateColumns="repeat(4, minmax(50px, max-content))"
       gridAutoRows="3rem"
       columnGap={32}
       rowGap={16}
-      padding={16}
+      padding={32}
       backgroundColor={mode === 'dark' ? 'navy' : 'white'}
       textColor={mode === 'dark' ? 'white' : 'navy'}
-      zIndex={0}
     >
       {grid}
     </Box>

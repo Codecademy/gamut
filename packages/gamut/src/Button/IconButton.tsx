@@ -11,8 +11,10 @@ export type IconButtonProps = SizedButtonProps & {
 
 export const IconButton: React.FC<
   IconButtonProps & React.ComponentProps<typeof TextButton>
-> = ({ icon: Icon, size, ...props }) => (
-  <TextButton size={size} {...props}>
-    <Icon size={size === 'normal' ? 24 : 12} />
-  </TextButton>
-);
+> = ({ icon: Icon, size, ...props }) => {
+  return (
+    <TextButton size={size} {...props}>
+      <Icon size={size === 'small' ? 16 : 24} />
+    </TextButton>
+  );
+};
