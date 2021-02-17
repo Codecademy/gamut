@@ -8,8 +8,8 @@ import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
-    const modeColors = modeColorGroups[mode];
+  ({ mode = 'light', variant = 'primary' }: ButtonProps) => {
+    const modeColors = modeColorGroups[mode][variant];
 
     return css`
       background-color: ${modeColors.background};

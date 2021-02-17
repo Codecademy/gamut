@@ -8,19 +8,19 @@ import {
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 
-export const buttons = [FillButton, IconButton, StrokeButton, TextButton];
-
-export const sizes = ['normal', 'small'] as const;
+const buttons = [FillButton, IconButton, StrokeButton, TextButton];
+const variants = ['primary', 'secondary'] as const;
+const sizes = ['normal', 'small'] as const;
 
 export const ButtonScale = ({ mode }: { mode: 'dark' | 'light' }) => {
-  const modes = [mode, `${mode}-alt`] as const;
   const grid = buttons.map(({ name }) => <Box key={`${name}-key`}>{name}</Box>);
-  modes.forEach((mode: string) => {
+  variants.forEach((variant: typeof variants[number]) => {
     sizes.forEach((size) => {
       buttons.forEach((Component) => {
         const props = {
-          key: `${Component.name}-${mode}-${size}`,
-          mode: mode as 'dark' | 'light',
+          key: `${Component.name}-${mode}-${variant}-${size}`,
+          mode,
+          variant,
           size,
         };
         if (Component.name === 'IconButton') {

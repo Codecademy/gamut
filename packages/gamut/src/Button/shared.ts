@@ -5,7 +5,8 @@ export type ButtonProps = Omit<
   HTMLProps<HTMLLinkElement> & HTMLProps<HTMLButtonElement>,
   'size'
 > & {
-  mode?: 'dark' | 'light' | 'dark-alt' | 'light-alt';
+  mode?: 'dark' | 'light';
+  variant?: 'primary' | 'secondary';
 };
 
 export type ButtonSizeProps = {
@@ -37,39 +38,43 @@ export const buttonSizing = variant({
 
 export const modeColorGroups = {
   dark: {
-    background: colors.yellow,
-    backgroundDull: swatches.yellow[400],
-    backgroundEmphasized: swatches.blue[800],
-    backgroundMuted: swatches.gray[600],
-    foregroundMuted: swatches.gray[200],
-    foreground: colors.black,
-    shadow: colors.white,
-  },
-  'dark-alt': {
-    background: colors.white,
-    backgroundDull: swatches.gray[200],
-    backgroundEmphasized: swatches.blue[800],
-    backgroundMuted: swatches.gray[600],
-    foregroundMuted: swatches.gray[200],
-    foreground: colors.navy,
-    shadow: colors.white,
+    primary: {
+      background: colors.yellow,
+      backgroundDull: swatches.yellow[400],
+      backgroundEmphasized: swatches.blue[800],
+      backgroundMuted: swatches.gray[600],
+      foregroundMuted: swatches.gray[200],
+      foreground: colors.black,
+      shadow: colors.white,
+    },
+    secondary: {
+      background: colors.white,
+      backgroundDull: swatches.gray[200],
+      backgroundEmphasized: swatches.blue[800],
+      backgroundMuted: swatches.gray[600],
+      foregroundMuted: swatches.gray[200],
+      foreground: colors.navy,
+      shadow: colors.white,
+    },
   },
   light: {
-    background: colors.hyper,
-    backgroundDull: swatches.hyper[400],
-    backgroundEmphasized: swatches.gray[100],
-    backgroundMuted: swatches.gray[200],
-    foregroundMuted: swatches.gray[600],
-    foreground: colors.white,
-    shadow: colors.black,
-  },
-  'light-alt': {
-    background: colors.navy,
-    backgroundDull: swatches.gray[600],
-    backgroundEmphasized: swatches.gray[100],
-    backgroundMuted: swatches.gray[200],
-    foregroundMuted: swatches.gray[600],
-    foreground: colors.white,
-    shadow: colors.navy,
+    primary: {
+      background: colors.hyper,
+      backgroundDull: swatches.hyper[400],
+      backgroundEmphasized: swatches.gray[100],
+      backgroundMuted: swatches.gray[200],
+      foregroundMuted: swatches.gray[600],
+      foreground: colors.white,
+      shadow: colors.black,
+    },
+    secondary: {
+      background: colors.navy,
+      backgroundDull: swatches.gray[600],
+      backgroundEmphasized: swatches.gray[100],
+      backgroundMuted: swatches.gray[200],
+      foregroundMuted: swatches.gray[600],
+      foreground: colors.white,
+      shadow: colors.navy,
+    },
   },
 };

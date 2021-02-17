@@ -8,9 +8,8 @@ import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
   buttonSizing,
-  ({ mode = 'light' }) => {
-    const modeColors = modeColorGroups[mode];
-
+  ({ mode = 'light', variant = 'primary' }) => {
+    const modeColors = modeColorGroups[mode][variant];
     return css`
       color: ${modeColors.background};
       border-color: ${modeColors.background};
@@ -38,10 +37,10 @@ const StrokeButtonOuter = styled(ButtonOutline)();
 
 export const StrokeButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof StrokeButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <StrokeButtonOuter mode={mode} {...props}>
-      <StrokeButtonInner mode={mode} size={size}>
+    <StrokeButtonOuter mode={mode} variant={variant} {...props}>
+      <StrokeButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </StrokeButtonInner>
     </StrokeButtonOuter>
