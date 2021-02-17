@@ -6,7 +6,7 @@ import { GridFormRadioGroupField } from '../../types';
 
 export type GridFormRadioGroupInputProps = {
   className?: string;
-  field: Omit<GridFormRadioGroupField, 'label'>;
+  field: GridFormRadioGroupField;
   register: UseFormMethods['register'];
   setValue: (name: string, value: string) => void;
 };
@@ -22,6 +22,8 @@ export const GridFormRadioGroupInput: React.FC<GridFormRadioGroupInputProps> = (
       className={className}
       htmlForPrefix={field.name}
       name={field.name}
+      role="radiogroup"
+      aria-label={field.label}
       onChange={(event) => {
         const { value } = event.target;
         setValue(field.name, value);
