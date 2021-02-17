@@ -34,13 +34,18 @@
 
 .radioInput:checked + .radioLabel::before {
   background-color: $color-hyper;
-  border: 0.25rem solid $color-white;
+  border: px-rem(5px) solid $color-white;
   border-radius: 100%;
   box-shadow: 0 0 0 2px $color-hyper;
   width: px-rem(24px);
   height: px-rem(24px);
   min-width: px-rem(24px);
   min-height: px-rem(24px);
+}
+
+.radioInput:hover + .radioLabel::before {
+  box-shadow: 0 0 0 4px $color-hyper;
+  border: px-rem(5px) solid $color-white;
 }
 
 .radioInput:disabled:checked + .radioLabel::before {
