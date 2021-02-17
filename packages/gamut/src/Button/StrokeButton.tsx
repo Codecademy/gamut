@@ -1,4 +1,3 @@
-import { colors } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -8,45 +7,40 @@ import { ButtonOutline } from './ButtonOutline';
 import { buttonSizing, modeColorGroups, SizedButtonProps } from './shared';
 
 const StrokeButtonInner = styled(ButtonInner)<SizedButtonProps>(
-  ({ mode = 'light', size }: SizedButtonProps) => {
-    const modeColors = modeColorGroups[mode];
-
+  buttonSizing,
+  ({ mode = 'light', variant = 'primary' }) => {
+    const modeColors = modeColorGroups[mode][variant];
     return css`
-      border: 2px solid ${modeColors.background};
-      border-radius: 3px;
       color: ${modeColors.background};
-      ${buttonSizing(size)}
+      border-color: ${modeColors.background};
 
       ${StrokeButtonOuter}:hover & {
         background-color: ${modeColors.backgroundEmphasized};
       }
 
       ${StrokeButtonOuter}:active & {
-        background: ${mode === 'light' ? colors.hyper : colors.yellow};
         color: ${modeColors.foreground};
+        background-color: ${modeColors.background};
       }
 
       ${StrokeButtonOuter}:disabled &,
       ${StrokeButtonOuter}[aria-disabled='true'] & {
-        background-color: transparent;
-        border-color: ${modeColors.backgroundMuted};
         color: ${modeColors.foregroundMuted};
-        cursor: not-allowed;
+        border-color: ${modeColors.backgroundMuted};
+        background-color: transparent;
       }
     `;
   }
 );
 
-const StrokeButtonOuter = styled(ButtonOutline)`
-  padding: 1px;
-`;
+const StrokeButtonOuter = styled(ButtonOutline)();
 
 export const StrokeButton: React.FC<
   SizedButtonProps & React.ComponentProps<typeof StrokeButtonOuter>
-> = ({ children, mode, size, ...props }) => {
+> = ({ children, mode, size, variant, ...props }) => {
   return (
-    <StrokeButtonOuter mode={mode} {...props}>
-      <StrokeButtonInner mode={mode} size={size}>
+    <StrokeButtonOuter mode={mode} variant={variant} {...props}>
+      <StrokeButtonInner mode={mode} variant={variant} size={size}>
         {children}
       </StrokeButtonInner>
     </StrokeButtonOuter>

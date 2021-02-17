@@ -6,10 +6,10 @@ import React from 'react';
 
 import { ButtonProps, modeColorGroups } from './shared';
 
-const StyledButtonOutline = styled('button', {
+export const StyledButtonOutline = styled('button', {
   shouldForwardProp: (prop: string) => isPropValid(prop) && prop !== 'mode',
-})<ButtonProps>(({ mode = 'light' }: ButtonProps) => {
-  const modeColors = modeColorGroups[mode];
+})<ButtonProps>(({ mode = 'light', variant = 'primary' }) => {
+  const modeColors = modeColorGroups[mode][variant];
 
   return css`
     background: none;
@@ -23,7 +23,7 @@ const StyledButtonOutline = styled('button', {
     font: inherit;
     line-height: normal;
     margin: 0;
-    padding: 0;
+    padding: 1px;
     text-align: center;
     text-decoration: none;
     transition: ${timing.fast} box-shadow;
@@ -36,9 +36,12 @@ const StyledButtonOutline = styled('button', {
       user-select: none;
     }
 
+    &:focus {
+      outline: none;
+    }
+
     &:focus-visible {
       box-shadow: 0 0 0 2px ${modeColors.background};
-      outline: none;
     }
 
     &:hover {

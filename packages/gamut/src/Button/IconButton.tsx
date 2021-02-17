@@ -14,7 +14,7 @@ export const IconButton: React.FC<
 > = ({ icon: Icon, size, ...props }) => {
   return (
     <TextButton size={size} {...props}>
-      <Icon size={size === 'small' ? 12 : 24} />
+      <Icon size={size === 'small' ? 16 : 24} />
     </TextButton>
   );
 };
