@@ -22,12 +22,10 @@
 .radioLabel::before {
   content: "";
   display: block;
-  width: px-rem(24px);
-  height: px-rem(24px);
-  min-width: px-rem(24px);
-  min-height: px-rem(24px);
+  width: px-rem(20px);
+  height: px-rem(20px);
   border-radius: 100%;
-  border: 2px solid $color-gray-200;
+  border: 1px solid $color-gray-200;
   margin-right: $form-padding;
   transition: $transition-time;
 }
@@ -36,22 +34,18 @@
   background-color: $color-hyper;
   border: px-rem(5px) solid $color-white;
   border-radius: 100%;
-  box-shadow: 0 0 0 2px $color-hyper;
-  width: px-rem(24px);
-  height: px-rem(24px);
-  min-width: px-rem(24px);
-  min-height: px-rem(24px);
+  box-shadow: 0 0 0 1px $color-hyper;
 }
 
-.radioInput:hover + .radioLabel::before {
-  box-shadow: 0 0 0 4px $color-hyper;
+.radioInput:hover:not(:disabled) + .radioLabel::before {
+  box-shadow: 0 0 0 2px $color-hyper;
   border: px-rem(5px) solid $color-white;
 }
 
 .radioInput:disabled:checked + .radioLabel::before {
   background-color: $color-gray-200;
   border: 0.25rem solid $color-white;
-  box-shadow: 0 0 0 2px $color-gray-200;
+  box-shadow: 0 0 0 1px $color-gray-200;
 }
 
 .radioInput:disabled + .radioLabel {
