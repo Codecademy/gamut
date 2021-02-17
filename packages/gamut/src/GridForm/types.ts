@@ -5,6 +5,8 @@ import { ColumnProps } from '../Layout/Column';
 export type BaseFormField<Value> = {
   defaultValue?: Value;
 
+  disabled?: boolean;
+
   /**
    * Whether the label should be hidden visually and not take up space.
    */
@@ -71,7 +73,7 @@ export type GridFormRadioOption = {
 };
 
 export type GridFormRadioGroupField = BaseFormField<string> & {
-  label: React.ReactNode;
+  label: string;
   options: GridFormRadioOption[];
   validation?: ValidationRules;
   type: 'radio-group';

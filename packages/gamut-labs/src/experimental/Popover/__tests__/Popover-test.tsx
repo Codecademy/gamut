@@ -28,10 +28,10 @@ const targetRefObj = {
 const renderPopover = (props?: Partial<PopoverProps>) => {
   return render(
     <ThemeProvider theme={theme}>
-      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
+      <Popover isOpen targetRef={targetRefObj} {...props}>
         <div data-testid="popover-content">
           Howdy!
-          <button type="button" />
+          <button aria-label="Click me!" type="button" />
         </div>
       </Popover>
       <div>
@@ -44,10 +44,10 @@ const renderPopover = (props?: Partial<PopoverProps>) => {
 const mountPopover = (props?: Partial<PopoverProps>) => {
   return mount(
     <ThemeProvider theme={theme}>
-      <Popover isOpen={true} targetRef={targetRefObj} {...props}>
-        <div data-testid={'popover-content'}>
+      <Popover isOpen targetRef={targetRefObj} {...props}>
+        <div data-testid="popover-content">
           Howdy!
-          <button type="button" />
+          <button aria-label="Click me!" type="button" />
         </div>
       </Popover>
     </ThemeProvider>

@@ -12,6 +12,7 @@ export const textButtonStyles = css`
   line-height: 1.5;
   min-width: 0;
   width: 100%;
+  padding: 0;
   text-align: left;
   white-space: nowrap;
 `;

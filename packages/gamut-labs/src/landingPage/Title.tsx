@@ -28,12 +28,12 @@ export const Title: React.FC<TitleProps> = ({
       fontSize={
         isPageHeading
           ? {
-              xs: 34,
+              base: 34,
               sm: 44,
               lg: 64,
             }
           : {
-              xs: 26,
+              base: 26,
               lg: 34,
             }
       }

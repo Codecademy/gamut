@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.4.0...@codecademy/gamut-system@0.5.0) (2021-02-16)
+
+
+### Features
+
+* **Styleguide:** Gamut System docs and routing fixes ([3419737](https://github.com/Codecademy/client-modules/commit/34197379b9746938aa7d77b76d2201912026a59f))
+
+
+
+## [0.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.3.0...@codecademy/gamut-system@0.4.0) (2021-02-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* bumped ESLint packages to latest and added recommended & Jest linting
+
+### Features
+
+* bumped ESLint packages to latest and added recommended & Jest linting ([2e8af11](https://github.com/Codecademy/client-modules/commit/2e8af111b372f35f1cfca28cbc22744f7489615d))
+
+
+
 ## [0.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-system@0.2.3...@codecademy/gamut-system@0.3.0) (2021-02-05)
 
 

@@ -13,6 +13,7 @@ import {
 } from './Elements';
 import { useSystemProps } from './useSystemProps';
 import { Box } from '../TableOfContents/elements';
+import { Link } from '../Page';
 
 type PropTagProps = {
   prop: PropGroups;
@@ -55,7 +56,12 @@ export const PropsTable: React.FC<PropsTableProps> = ({
       {hasSystemProps && (
         <Box>
           <Box display="grid" gridTemplateColumns="minmax(0, 1fr) max-content">
-            <Title>System Props</Title>
+            <Title>
+              System Props -{' '}
+              <Link href="/?path=/docs/foundations-system-props--page">
+                Learn More
+              </Link>
+            </Title>
             <ToggleContainer>
               <ToggleLabel htmlFor="toggle-props">
                 Show all in table:
@@ -68,7 +74,12 @@ export const PropsTable: React.FC<PropsTableProps> = ({
               />
             </ToggleContainer>
           </Box>
-          <Box>
+          <Box
+            display="flex"
+            columnGap="0.5rem"
+            rowGap="0.5rem"
+            flexWrap="wrap"
+          >
             {allGroups.map((group) => (
               <PropTag
                 key={`${group}-group`}

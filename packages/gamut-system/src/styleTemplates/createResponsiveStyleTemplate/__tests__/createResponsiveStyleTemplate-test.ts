@@ -55,7 +55,7 @@ describe(createResponsiveStyleTemplate, () => {
     });
 
     expect(outputStyles).toEqual({
-      [DEFAULT_MEDIA_QUERIES['xs']]: {
+      [DEFAULT_MEDIA_QUERIES.xs]: {
         display: 'block',
       },
     });
@@ -67,7 +67,7 @@ describe(createResponsiveStyleTemplate, () => {
     });
 
     expect(outputStyles).toEqual({
-      [DEFAULT_MEDIA_QUERIES['xs']]: {
+      [DEFAULT_MEDIA_QUERIES.xs]: {
         display: 'block',
       },
     });
@@ -96,7 +96,7 @@ describe(createResponsiveStyleTemplate, () => {
 
     expect(outputStyles).toEqual({
       display: 'block',
-      [DEFAULT_MEDIA_QUERIES['md']]: {
+      [DEFAULT_MEDIA_QUERIES.md]: {
         width: '5px',
         height: '5px',
       },
