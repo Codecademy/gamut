@@ -25,7 +25,12 @@ export type ProgressBarProps = {
   /**
    * Base variant display themes.
    */
-  variant: 'blue' | 'yellow' | 'bordered-light' | 'bordered-dark';
+  variant: 'blue' | 'yellow' | 'dark' | 'light';
+
+  /**
+   * Base variant display themes.
+   */
+  bordered?: boolean;
 
   /**
    * Whether to use a pattern background
@@ -61,15 +66,25 @@ const progressBarBackgroundVariants = variant({
     yellow: {
       backgroundColor: `gray-100`,
     },
-    ['bordered-light']: {
-      borderStyle: 'solid',
-      borderWidth: '1px',
+    dark: {
       textColor: 'white',
     },
-    ['bordered-dark']: {
-      borderStyle: 'solid',
-      borderWidth: '1px',
+    light: {
       textColor: 'navy',
+    },
+  },
+});
+
+const progressBarBorderVariants = variant({
+  default: 'basic',
+  prop: 'border',
+  variants: {
+    basic: {
+      borderWidth: '0',
+    },
+    bordered: {
+      borderWidth: '1px',
+      borderStyle: 'solid',
     },
   },
 });
@@ -85,24 +100,29 @@ const progressBarForegroundVariants = variant({
       backgroundColor: `yellow`,
       textColor: `black`,
     },
-    ['bordered-light']: {
-      backgroundColor: 'white',
+    light: {
+      backgroundColor: 'navy',
       textColor: 'navy',
     },
-    ['bordered-dark']: {
-      backgroundColor: 'navy',
+    dark: {
+      backgroundColor: 'white',
       textColor: 'white',
     },
   },
 });
 
-type ProgressBarElementProps = Pick<ProgressBarProps, 'size' | 'variant'>;
+type ProgressBarElementProps = Pick<ProgressBarProps, 'variant' | 'size'>;
 
-const ProgressBarWrapper = styled.div<ProgressBarElementProps>`
+type ProgressBarElementWrapperProps = ProgressBarElementProps & {
+  border: 'basic' | 'bordered';
+};
+
+const ProgressBarWrapper = styled.div<ProgressBarElementWrapperProps>`
   overflow: hidden;
   position: relative;
   ${progressBarBackgroundVariants};
   ${progressBarSizeVariants};
+  ${progressBarBorderVariants};
 `;
 
 const Bar = styled.div<ProgressBarElementProps>`
@@ -126,6 +146,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   minimumPercent = 0,
   percent,
   pattern,
+  bordered,
   size = 'small',
   variant = 'blue',
 }) => {
@@ -134,9 +155,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       aria-label={`Progress: ${percent}%`}
       aria-live="polite"
       role="figure"
-      variant={variant}
+      border={bordered ? 'bordered' : 'basic'}
       size={size}
+      variant={variant}
     >
+      {console.log(bordered, bordered ? 'bordered' : 'basic')}
       {pattern && (
         <Pattern
           textColor="navy"

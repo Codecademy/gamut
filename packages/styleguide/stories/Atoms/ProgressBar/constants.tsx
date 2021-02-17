@@ -1,11 +1,11 @@
 export const bars = [
   {
     size: 'small',
-    variant: 'blue',
+    variant: 'yellow',
   },
   {
     size: 'medium',
-    variant: 'bordered-dark',
+    variant: 'blue',
   },
   {
     size: 'large',
