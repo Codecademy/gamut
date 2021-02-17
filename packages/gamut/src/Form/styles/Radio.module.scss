@@ -15,7 +15,6 @@
   display: flex;
   padding: $form-padding 0;
   align-items: center;
-  transition: $transition-time;
   cursor: pointer;
 }
 
@@ -27,7 +26,7 @@
   border-radius: 100%;
   border: 1px solid $color-gray-200;
   margin-right: $form-padding;
-  transition: $transition-time;
+  transition: 0.3s;
 }
 
 .radioInput:checked + .radioLabel::before {
