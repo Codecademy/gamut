@@ -67,11 +67,19 @@ export const Banner: React.FC<BannerProps> = ({
   return (
     <BannerContainer variant={variant} {...rest}>
       <span>
-        {children} &nbsp;
+        {children}
         {cta && (
-          <TextButton mode={mode} size="small" href={href} onClick={onCtaClick}>
-            {cta}
-          </TextButton>
+          <>
+            &nbsp;
+            <TextButton
+              mode={mode}
+              size="small"
+              href={href}
+              onClick={onCtaClick}
+            >
+              {cta}
+            </TextButton>
+          </>
         )}
       </span>
       <IconButton
