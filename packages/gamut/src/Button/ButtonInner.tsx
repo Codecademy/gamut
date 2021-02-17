@@ -14,16 +14,17 @@ export const ButtonInner = styled('span', {
     border-radius: 3px;
     vertical-align: middle;
     font-weight: ${fontWeight.title};
+    text-align: center;
     transition: ${timing.fast} background-color, ${timing.fast} box-shadow,
       ${timing.fast} color;
 
     &:before,
     &:after {
-      margin-left: -1px;
-      width: 1px;
       content: '';
-      height: 100%;
       display: inline-block;
+      width: 1px;
+      height: 100%;
+      margin-left: -1px;
       vertical-align: middle;
     }
 
