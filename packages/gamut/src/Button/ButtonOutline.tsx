@@ -23,7 +23,7 @@ const StyledButtonOutline = styled('button', {
     font: inherit;
     line-height: normal;
     margin: 0;
-    padding: 0;
+    padding: 1px;
     text-align: center;
     text-decoration: none;
     transition: ${timing.fast} box-shadow;
