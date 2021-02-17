@@ -1,10 +1,10 @@
-import { IconButton } from '@codecademy/gamut';
 import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 
+import { IconButton } from '../Button/IconButton';
 import {
   DrawerBase,
   SidebarBaseProps,
