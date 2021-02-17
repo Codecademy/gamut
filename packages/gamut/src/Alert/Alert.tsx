@@ -28,6 +28,8 @@ export type AlertProps = {
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
   > & { text: string };
+  /** Message to display if the component has no children */
+  message?: string;
 };
 
 const VARIANT_META = {
@@ -84,6 +86,7 @@ export const Alert: React.FC<AlertProps> = ({
   children,
   type = 'general',
   cta,
+  message,
   onClose,
 }) => {
   const { icon: Icon, mode } = VARIANT_META[type];
@@ -112,7 +115,7 @@ export const Alert: React.FC<AlertProps> = ({
       </FlexBox>
       <Box paddingY={4}>
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {children}
+          {children ?? message}
         </Truncate>
       </Box>
       {truncated && (
@@ -127,7 +130,7 @@ export const Alert: React.FC<AlertProps> = ({
       {cta && (
         <Box gridColumn={['2', , 'auto']} gridRow={['2', , 'auto']}>
           <FillButton {...cta} mode="dark" variant="secondary" size="small">
-            {cta.children || cta.text}
+            {cta.children ?? cta.text}
           </FillButton>
         </Box>
       )}
