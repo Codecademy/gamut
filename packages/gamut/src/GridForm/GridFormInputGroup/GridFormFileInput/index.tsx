@@ -20,6 +20,7 @@ export const GridFormFileInput: React.FC<GridFormFileInputProps> = ({
   return (
     <Input
       className={className}
+      disabled={field.disabled}
       error={error}
       htmlFor={field.name}
       name={field.name}
