@@ -40,15 +40,16 @@ export type AlertProps = {
 };
 
 const VARIANT_META = {
-  general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
-  success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
-  error: { order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
+  general: { role: 'status', order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
+  success: { role: 'alert', order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
+  error: { role: 'alert', order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
   maintenance: {
+    role: 'status',
     order: 3,
     icon: MiniWarningTriangleIcon,
     mode: 'light',
   },
-  feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
+  feature: { role: 'status', order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
 
 const AlertBanner = styled(Box)(
@@ -84,7 +85,6 @@ const AlertBanner = styled(Box)(
 );
 
 AlertBanner.defaultProps = {
-  role: 'status',
   'aria-label': 'alert box',
   'aria-live': 'polite',
 };
@@ -93,7 +93,6 @@ export const Alert: React.FC<AlertProps> = ({
   children,
   type = 'general',
   cta,
-  message,
   onClose,
 }) => {
   const { icon: Icon, mode } = VARIANT_META[type];
@@ -118,11 +117,11 @@ export const Alert: React.FC<AlertProps> = ({
         alignItems="center"
         justifyContent="center"
       >
-        <Icon size={16} />
+        <Icon size={16} aria-label={`${type}-icon`} />
       </FlexBox>
       <Box paddingY={4}>
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {children ?? message}
+          {children}
         </Truncate>
       </Box>
       {truncated && (
