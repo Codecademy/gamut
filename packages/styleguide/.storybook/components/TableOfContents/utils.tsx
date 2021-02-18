@@ -57,7 +57,9 @@ export function useKind(kind: string = '') {
   const { storyStore } = useContext(DocsContext);
   const kindStore: Record<string, Kind> = storyStore?._kinds ?? {};
   const kindMeta = storyStore?._kinds?.[kind];
-  const storiesStore = Object.keys(storyStore?._stories);
+  const allStories = useMemo(() => Object.keys(storyStore?._stories), [
+    storyStore?._stories,
+  ]);
 
   const { status, component, subcomponents, subtitle } = kindMeta?.parameters;
   const path = parsePath(kind);
@@ -68,7 +70,7 @@ export function useKind(kind: string = '') {
       Object.entries(kindStore).map(([key, kind]) => ({
         ...kind,
         kind: key,
-        indexStory: storiesStore
+        indexStory: allStories
           .find((k) => k.includes(kebabCase(key.replace('/', ''))))
           ?.split('--')[1],
         status: kind.parameters.status || 'stable',
@@ -105,7 +107,7 @@ export function useKind(kind: string = '') {
     childrenKinds,
     components: componentNames,
     parameters: kindMeta?.parameters,
-    indexStory: storiesStore
+    indexStory: allStories
       .find((k) => k.includes(kebabCase(kind.replace('/', ''))))
       ?.split('--')[1],
   };
