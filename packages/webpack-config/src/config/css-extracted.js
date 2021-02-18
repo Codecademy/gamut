@@ -7,8 +7,8 @@ const PROD = ENV === 'production';
 
 const cssExtracted = (options) => {
   const defaultExtractOptions = {
-    filename: PROD ? '[name].[contenthash].css' : '[name].css',
-    chunkFilename: PROD ? '[id].[contenthash].chunk.css' : '[id].chunk.css',
+    filename: PROD ? '[name].[contenthash:8].css' : '[name].css',
+    chunkFilename: PROD ? '[id].[contenthash:8].chunk.css' : '[id].chunk.css',
     ignoreOrder: true,
   };
 

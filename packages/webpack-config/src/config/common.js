@@ -26,9 +26,12 @@ const commonConfig = (options = {}) => {
     entry: path.resolve(options.context, 'src/main.js'),
 
     output: {
-      filename: DEV ? '[name].js' : '[name].[contenthash].js',
-      chunkFilename: DEV ? '[name].chunk.js' : '[name].[contenthash].chunk.js',
+      filename: DEV ? '[name].js' : '[name].[contenthash:8].js',
+      chunkFilename: DEV
+        ? '[name].chunk.js'
+        : '[name].[contenthash:8].chunk.js',
       path: path.resolve(options.context, 'dist'),
+      assetModuleFilename: DEV ? '[path][name].[ext]' : '[contenthash:8].[ext]',
     },
 
     optimization: {
@@ -43,7 +46,7 @@ const commonConfig = (options = {}) => {
             {
               ...loaders.files.default,
               options: {
-                name: DEV ? '[path][name].[ext]' : '[contenthash].[ext]',
+                name: DEV ? '[path][name].[ext]' : '[contenthash:8].[ext]',
                 ...fileLoaderOptions,
               },
             },
