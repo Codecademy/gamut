@@ -70,7 +70,6 @@ const commonConfig = (options = {}) => {
     },
 
     plugins: [
-      new CaseSensitivePathsPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': `"${ENV}"`,
         __DEV__: DEV,
@@ -85,6 +84,7 @@ const commonConfig = (options = {}) => {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]',
         devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]',
       },
+      plugins: [new CaseSensitivePathsPlugin()],
     });
   } else {
     config = merge(config, {
@@ -95,10 +95,25 @@ const commonConfig = (options = {}) => {
           new TerserPlugin({
             parallel: true,
             terserOptions: {
-              compress: {
-                inline: 1, // Fix for https://github.com/mishoo/UglifyJS2/issues/2842
+              parse: {
+                ecma: 8,
               },
+              compress: {
+                ecma: 5,
+                warnings: false,
+                comparisons: false,
+                inline: 2,
+              },
+              mangle: {
+                safari10: true,
+              },
+              keep_classnames: true,
               keep_fnames: true,
+              output: {
+                ecma: 5,
+                comments: false,
+                ascii_only: true,
+              },
               ...minimizerOptions.terserOptions,
             },
             ...minimizerOptions,
