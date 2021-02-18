@@ -41,7 +41,7 @@ module.exports.default = {
           return;
         }
 
-        if (node.source.value.includes('src')) {
+        if (node.source.value.includes('/src')) {
           context.report({
             messageId: 'removeSrc',
             node,
@@ -54,7 +54,7 @@ module.exports.default = {
   meta: {
     docs: {
       category: 'Possible Errors',
-      description: 'Ensure module paths are declared correctly',
+      description: 'Ensure Gamut import statements have proper module paths.',
       recommended: 'error',
     },
     fixable: true,
