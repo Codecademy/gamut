@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.1...@codecademy/styleguide@28.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* progress bar theme => variant
+
+### Features
+
+* progress bar theme => variant ([867e974](https://github.com/Codecademy/client-modules/commit/867e974613f89708096886aeba4ad71e37ea508a))
+
+
+
+### [27.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.0...@codecademy/styleguide@27.2.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GridForm:** Add aria labels to GridForm Radio ([#1410](https://github.com/Codecademy/client-modules/issues/1410)) ([79262f5](https://github.com/Codecademy/client-modules/commit/79262f5b1fce8c5116dc9e33e7c46926873deaf3))
+
+
+
 ## [27.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.1...@codecademy/styleguide@27.2.0) (2021-02-17)
 
 
