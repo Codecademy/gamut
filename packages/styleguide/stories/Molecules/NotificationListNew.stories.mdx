@@ -15,7 +15,10 @@ import { examples } from './NotificationList.stories.mdx';
     status: '',
     figmaId: '',
   }}
-  args={{ notifications: examples }}
+  args={{
+    handleDismiss: () => console.log('dismiss'),
+    notifications: examples,
+  }}
 />
 
 <Canvas>

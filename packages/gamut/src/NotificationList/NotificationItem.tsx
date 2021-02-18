@@ -13,6 +13,7 @@ export type NotificationItemProps = {
 
 export const NotificationItem: React.FC<NotificationItemProps> = (props) => {
   const { notification, onClick } = props;
+  console.log(notification);
   const {
     date,
     iconSettings,
