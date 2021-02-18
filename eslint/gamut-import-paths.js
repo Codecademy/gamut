@@ -31,7 +31,7 @@ module.exports.default = {
             });
           } else if (
             !importPath.includes('/gamut-styles') &&
-            !importPath.includes('src')
+            !importPath.includes('/src')
           ) {
             context.report({
               messageId: 'includeSrc',

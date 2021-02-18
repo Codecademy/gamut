@@ -1,3 +1,3 @@
 module.exports = {
-  'gamut-import-paths': require('./packages/gamut/temp/lint.js').default,
+  'gamut-import-paths': require('./eslint/gamut-import-paths').default,
 };
