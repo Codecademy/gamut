@@ -166,6 +166,7 @@ export type UserClickData = UserSharedData & {
   course_slug?: string;
   course_progress?: number;
   assessment_id?: string;
+  container_slugs?: string[];
 };
 
 /**
