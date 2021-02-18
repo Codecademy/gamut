@@ -20,23 +20,23 @@ const RaisedDiv = styled.div<StyleProps>`
 `;
 
 const Beak = styled.div<StyleProps>`
-  width: 0;
-  height: 0;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  border-${({ position }) => (position === 'below' ? 'left' : 'right')}:
+    1px
+    ${({ outline }) => (outline ? 'solid' : 'none')}
+    ${({ theme }) => theme.colors.black};
+  border-${({ position }) => (position === 'below' ? 'top' : 'bottom')}:
+    1px
+    ${({ outline }) => (outline ? 'solid' : 'none')}
+    ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid ${({ theme }) => theme.colors.white};
-  left: ${({ beak }) => beak === 'left' && '20px'};
-  right: ${({ beak }) => beak === 'right' && '20px'};
+  left: ${({ beak }) => beak === 'left' && '25px'};
+  right: ${({ beak }) => beak === 'right' && '25px'};
   top: ${({ position }) =>
-    position === 'below' ? '-12px' : 'calc(100% - 3px);'};
-  transform: ${({ position }) => position === 'above' && 'rotate(180deg)'};
-`;
-
-const BeakOutline = styled(Beak)<StyleProps>`
-  border-bottom: 15px solid ${({ theme }) => theme.colors.navy};
-  top: ${({ position }) =>
-    position === 'below' ? '-14px' : 'calc(100% - 1px);'};
+    position === 'below' ? '-10px' : 'calc(100% - 10px);'};
 `;
 
 export type PopoverProps = {
@@ -170,15 +170,9 @@ export const Popover: React.FC<PopoverProps> = ({
           data-testid="popover-content-container"
         >
           <RaisedDiv outline={outline}>
-            {beak && outline && (
-              <BeakOutline
-                position={position}
-                beak={beak}
-                data-testid="popover-beak-outline"
-              />
-            )}
             {beak && (
               <Beak
+                outline={outline}
                 position={position}
                 beak={beak}
                 data-testid="popover-beak"
