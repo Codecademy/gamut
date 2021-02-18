@@ -297,17 +297,13 @@ Check the [Navigation How-To Guide](https://docs.google.com/presentation/d/1YHG6
 
 ### How to Access GlobalHeader's height
 
-You might be implementing an interaction that needs to be aware of the `GlobalHeader` height (for example when using [window.scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)). `GlobalHeader` has an imperative `height` handle which can be accessed on its ref:
+You might be implementing an interaction that needs to be aware of the `GlobalHeader` height (for example when using [window.scrollTo](https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollTo)). `gamut-labs` exports a `useGlobalHeaderHeight` hook for this purpose:
 
 ```jsx
+import { useGlobalHeaderHeight } from 'gamut-labs';
+
 function MyComponent() {
-  const [height, setHeight] = React.useState(0);
-  const ref = React.useRef();
-
-  React.useLayoutEffect(() => {
-    setHeight(ref.current.height);
-  });
-
-  return <GlobalHeader ref={ref} />;
+  const height = useGlobalHeaderHeight();
+  ...
 }
 ```
