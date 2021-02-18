@@ -1,8 +1,8 @@
 import { contentWidths, variant } from '@codecademy/gamut-styles';
-import { HandlerProps } from '@codecademy/gamut-system';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export const contentContainerVariants = variant({
+const contentContainerVariants = variant({
   prop: 'size',
   default: 'medium',
   variants: {
@@ -17,14 +17,11 @@ export const contentContainerVariants = variant({
   },
 });
 
-export type ContentContainerProps = HandlerProps<
-  typeof contentContainerVariants
-> & {
-  className?: string;
-};
-
-export const ContentContainer = styled('div')<ContentContainerProps>`
-  ${contentContainerVariants}
-  height: 100%;
-  width: 100%;
-`;
+export const ContentContainer = styled.div(
+  contentContainerVariants,
+  () => css`
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+  `
+);
