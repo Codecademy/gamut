@@ -1,7 +1,14 @@
-import { Box, Container, FillButton } from '@codecademy/gamut/src';
+import {
+  Box,
+  Column,
+  Container,
+  FillButton,
+  FlexBox,
+  LayoutGrid,
+  PatternName,
+} from '@codecademy/gamut/src';
 import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
-import { useState } from '@storybook/addons';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
@@ -12,7 +19,7 @@ export const PopoverExample = (args: PopoverProps) => {
       <Box ref={activeElRef}>
         <FillButton
           onClick={() => {
-            setOpen(!open);
+            setOpen(true);
           }}
         >
           Open Popover
@@ -25,14 +32,37 @@ export const PopoverExample = (args: PopoverProps) => {
           targetRef={activeElRef}
           onRequestClose={() => setOpen(false)}
         >
-          <Container>
-            <Box fontSize={44}>Hooray!</Box>
-            <FillButton onClick={() => setOpen(false)}>
+          <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
+            <Box fontSize={16} marginBottom={8}>
+              Hooray!
+            </Box>
+            <FillButton size="small" onClick={() => setOpen(false)}>
               Close Popover
             </FillButton>
-          </Container>
+          </FlexBox>
         </Popover>
       </Container>
     </>
+  );
+};
+
+export const PatternedPopoversGrid = (args: PopoverProps) => {
+  return (
+    <LayoutGrid columnGap="sm" rowGap="xl">
+      {[
+        'diagonalStripesLoose',
+        'diagonalStripesRegular',
+        'diagonalStripesDense',
+        'dotsLoose',
+        'dotsRegular',
+        'dotsDense',
+      ].map((pattern: PatternName) => (
+        <Column key={pattern} size={4}>
+          <FlexBox justifyContent="center">
+            <PopoverExample {...args} pattern={pattern} />
+          </FlexBox>
+        </Column>
+      ))}
+    </LayoutGrid>
   );
 };
