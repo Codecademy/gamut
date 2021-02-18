@@ -1,14 +1,22 @@
-import { mount } from 'enzyme';
+import { contentWidths } from '@codecademy/gamut-styles';
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import { ContentContainer } from '..';
 
+type mockRenderProp = Record<'size', 'medium' | 'wide'>;
+
+const mockRender = (props: mockRenderProp) =>
+  render(<ContentContainer {...props} />);
+
 describe('ContentContainer', () => {
-  it('contains a wide container class when the "wide" prop is passed in as true', () => {
-    const wrapper = mount(<ContentContainer size="wide" />);
+  it('has maxWidth of 0 when size is wide', () => {
+    const { container } = mockRender({ size: 'wide' });
+    expect(container.firstChild).toHaveStyle(`maxWidth: 0`);
+  });
 
-    const rootClassNames = wrapper.childAt(0).prop('className');
-
-    expect(rootClassNames).toBe('contentContainerWide contentContainer');
+  it('has maxWidth of contentWidths.max when size is medium', () => {
+    const { container } = mockRender({ size: 'medium' });
+    expect(container.firstChild).toHaveStyle(`maxWidth: ${contentWidths.max}`);
   });
 });
