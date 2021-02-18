@@ -100,6 +100,7 @@ export const Banner: React.FC<
         mode={mode}
         variant="secondary"
         size="small"
+        aria-label="dismiss"
         icon={MiniDeleteIcon}
         onClick={onClose}
       />
