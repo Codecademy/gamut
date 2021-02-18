@@ -40,6 +40,7 @@
   height: px-rem(20px);
   background-color: $color-hyper;
   border-radius: 100%;
+  border: px-rem(5px) solid $color-white;
 }
 
 .radioInput:checked + .radioLabel::after {
