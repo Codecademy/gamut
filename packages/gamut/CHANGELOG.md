@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@24.0.0...@codecademy/gamut@25.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Banner:** Banner new visual identity [GM-123]
+
+### Features
+
+* **Banner:** Banner new visual identity [GM-123] ([07c26fb](https://github.com/Codecademy/client-modules/commit/07c26fbfcfcc0a3fbb2eba84adcc9dac6645876f))
+
+
+
 ## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.2.1...@codecademy/gamut@24.0.0) (2021-02-18)
 
 
