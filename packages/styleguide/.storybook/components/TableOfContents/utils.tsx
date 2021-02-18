@@ -58,7 +58,6 @@ export function useKind(kind: string = '') {
   const kindStore: Record<string, Kind> = storyStore?._kinds ?? {};
   const kindMeta = storyStore?._kinds?.[kind];
   const storiesStore = Object.keys(storyStore?._stories);
-  console.log('Store', storiesStore);
 
   const { status, component, subcomponents, subtitle } = kindMeta?.parameters;
   const path = parsePath(kind);
