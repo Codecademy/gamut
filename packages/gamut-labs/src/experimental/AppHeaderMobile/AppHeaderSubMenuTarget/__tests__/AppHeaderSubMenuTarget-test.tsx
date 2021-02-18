@@ -5,10 +5,7 @@ import { render, screen } from '@testing-library/react';
 import React from 'react';
 
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
-import {
-  AppHeaderSubMenuTarget,
-  AppHeaderSubMenuTargetProps,
-} from './../index';
+import { AppHeaderSubMenuTarget, AppHeaderSubMenuTargetProps } from '../index';
 
 const sublink1Href = 'https://google.com';
 const openSubMenu = jest.fn();
@@ -24,7 +21,7 @@ const mockItem: AppHeaderSimpleDropdownItem = {
 
 const props: AppHeaderSubMenuTargetProps = {
   item: mockItem,
-  openSubMenu: openSubMenu,
+  openSubMenu,
 };
 
 const renderAppHeaderSubMenuTarget = () => {

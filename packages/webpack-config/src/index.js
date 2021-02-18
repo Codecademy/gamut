@@ -4,14 +4,14 @@ const configs = require('./config');
 
 class WebpackConfig {
   constructor(initialValue = {}) {
-    this._configs = Object.assign({}, configs);
+    this._configs = { ...configs };
     Object.keys(this._configs).forEach((c) => {
       this[c] = (opts) => {
         this.merge(this._configs[c](opts, this));
         return this;
       };
     });
-    this._value = Object.assign({}, initialValue);
+    this._value = { ...initialValue };
   }
 
   get value() {
@@ -36,7 +36,7 @@ class WebpackConfig {
 
     const mergeableLoader = {
       module: {
-        rules: [Object.assign({}, loaderObject)],
+        rules: [{ ...loaderObject }],
       },
     };
 

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.15.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.14.1...@codecademy/gamut-icons@3.15.0) (2021-02-12)
+
+
+### Features
+
+* adding 3 new icons for business reporting ([44eb1cc](https://github.com/Codecademy/client-modules/commit/44eb1cc7b478532297a77b7f2abc45802b7130f6))
+
+
+
 ### [3.14.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.14.0...@codecademy/gamut-icons@3.14.1) (2021-02-02)
 
 **Note:** Version bump only for package @codecademy/gamut-icons

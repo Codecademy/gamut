@@ -30,6 +30,9 @@ Check with the design team if different padding/margin is required on a page lay
 
 ## Variant: Wide
 
+Use `ContentContainer` to keep page _content_ at a consistent maximum content width across various screen sizes and zooms.
+See [the Student Center](https://codecademy.com/student-center) for an example.
+
 <Canvas>
   <Story name="Wide" args={{ variant: 'wide' }}>
     {(args) => <ContentContainer {...args} />}

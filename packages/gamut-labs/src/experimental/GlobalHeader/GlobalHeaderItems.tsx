@@ -55,7 +55,7 @@ export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
-  text: 'Course Catalog',
+  text: 'Catalog',
   href: '/catalog',
   trackingTarget: 'topnav_catalog',
   type: 'link',
@@ -74,6 +74,13 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
       type: 'link',
     },
     {
+      id: 'projects',
+      href: '/projects',
+      trackingTarget: 'topnav_resources_projects',
+      text: 'Projects',
+      type: 'link',
+    },
+    {
       id: 'articles',
       href: '/articles',
       trackingTarget: 'topnav_resources_articles',
@@ -83,6 +90,7 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
     {
       id: 'blog',
       href: 'https://news.codecademy.com/',
+      newTab: true,
       trackingTarget: 'topnav_resources_blog',
       text: 'Blog',
       type: 'link',
@@ -101,6 +109,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
       id: 'forums',
       href: 'https://discuss.codecademy.com/',
       trackingTarget: 'topnav_community_forums',
+      newTab: true,
       text: 'Forums',
       type: 'link',
     },
@@ -115,6 +124,7 @@ export const communityDropdown: AppHeaderSimpleDropdownItem = {
     {
       id: 'chapters',
       href: 'https://community.codecademy.com/',
+      newTab: true,
       trackingTarget: 'topnav_community_chapters',
       text: 'Chapters',
       type: 'link',
@@ -249,6 +259,7 @@ const profileCustomerSupport: AppHeaderLinkItem = {
 const profileReportBug: AppHeaderLinkItem = {
   id: 'report-bug',
   href: 'https://codecademy.atlassian.net/servicedesk/customer/portal/9',
+  newTab: true,
   trackingTarget: 'avatar_report_bug',
   text: 'Report a Bug [ADMIN]',
   type: 'link',

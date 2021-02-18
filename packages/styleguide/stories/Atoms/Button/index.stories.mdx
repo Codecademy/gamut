@@ -9,6 +9,8 @@ import { SearchIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
+import { ButtonScale } from './examples';
+
 <Meta
   title={title}
   args={{
@@ -90,3 +92,37 @@ All but CTA button support a size of either `normal` (default) or `small`.
 </Canvas>
 
 <Props story="IconButton" />
+
+## Button Variants
+
+We have 2 button color modes: `light` and `dark`.
+For different priority buttons we provide `primary` and `secondary` variants.
+
+- **Do** Use `primary` for high priority actions (e.g. Submit).
+- **Do** Use `secondary` for low priority buttons (e.g. Close).
+- **Don't** use a color mode outside of its context (no light buttons on navy backgrounds)
+
+```tsx
+<FillButton mode="dark" variant="primary">
+  Submit
+</FillButton>
+<FillButton mode="dark" variant="secondary">
+  Cancel
+</FillButton>
+```
+
+### Light Mode
+
+<Canvas>
+  <Story name="Light Mode">
+    <ButtonScale mode="light" />
+  </Story>
+</Canvas>
+
+## Dark Mode
+
+<Canvas>
+  <Story name="Dark Mode">
+    <ButtonScale mode="dark" />
+  </Story>
+</Canvas>
