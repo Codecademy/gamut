@@ -3,24 +3,23 @@ import React, { HTMLAttributes } from 'react';
 
 import styles from './styles/FormGroupLabel.module.scss';
 
-export type FormGroupLabelProps = FormGroupLabelPropsWithFor &
-  FormGroupLabelPropsPlain;
-
-export type FormGroupLabelPropsWithFor = HTMLAttributes<HTMLLabelElement> & {
-  className?: string;
-  htmlFor?: string;
-};
-
-export type FormGroupLabelPropsPlain = HTMLAttributes<HTMLDivElement> & {
-  className?: string;
-};
+export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
+  HTMLAttributes<HTMLLabelElement> & {
+    disabled?: boolean;
+    htmlFor?: string;
+  };
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
-  htmlFor,
   className,
+  disabled,
+  htmlFor,
   ...rest
 }) => {
-  const classNames = cx(styles.FormGroupLabel, className);
+  const classNames = cx(
+    styles.FormGroupLabel,
+    disabled && styles.disabled,
+    className
+  );
 
   if (htmlFor) {
     return <label {...rest} htmlFor={htmlFor} className={classNames} />;

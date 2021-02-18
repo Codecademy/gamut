@@ -9757,14 +9757,6 @@ inquirer@^7.0.0:
     strip-ansi "^6.0.0"
     through "^2.3.6"
 
-insane@^2.6.2:
-  version "2.6.2"
-  resolved "https://registry.npmjs.org/insane/-/insane-2.6.2.tgz#c2ab68bb3e006ab451560d1b446917329c0a8120"
-  integrity sha1-wqtouz4AarRRVg0bRGkXMpwKgSA=
-  dependencies:
-    assignment "2.0.0"
-    he "0.5.0"
-
 internal-slot@^1.0.2:
   version "1.0.3"
   resolved "https://registry.npmjs.org/internal-slot/-/internal-slot-1.0.3.tgz#7347e307deeea2faac2ac6205d4bc7d34967f59c"
@@ -14810,6 +14802,14 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
+sanitize-markdown@^2.6.6:
+  version "2.6.6"
+  resolved "https://registry.npmjs.org/sanitize-markdown/-/sanitize-markdown-2.6.6.tgz#7d1b1e9d13601403b86c00be627040f5a934cb1e"
+  integrity sha512-YFS/3rzUnqtizs65vTV7d5c7dqFQPqhXRyM6/89zVzK2CHjeMjxiRxHE48x5EkxRuvO5Qb978zSNTmasTYO1Zw==
+  dependencies:
+    assignment "2.0.0"
+    he "0.5.0"
+
 sass-graph@2.2.5:
   version "2.2.5"
   resolved "https://registry.npmjs.org/sass-graph/-/sass-graph-2.2.5.tgz#a981c87446b8319d96dce0671e487879bd24c2e8"
@@ -16836,8 +16836,10 @@ watchpack@^1.7.4:
   resolved "https://registry.npmjs.org/watchpack/-/watchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha512-9P3MWk6SrKjHsGkLT2KHXdQ/9SNkyoJbabxnKOoJepsvJjJG8uYTR3yTPxPQvNDI3w4Nz1xnE0TLHK4RIVe/MQ==
   dependencies:
+    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
+    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"
