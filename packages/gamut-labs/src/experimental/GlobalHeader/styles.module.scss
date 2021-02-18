@@ -1,10 +1,5 @@
 @import "~@codecademy/gamut-styles/utils";
 
-.staticHeader,
-.stickyHeader {
-  box-shadow: none;
-}
-
 .staticHeader {
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -14,23 +9,36 @@
 .stickyHeader {
   border-bottom: 1px solid $color-navy;
   background-color: white;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1;
+  width: 100%;
 }
 
-.showHeader {
+.visible {
+  opacity: 1;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.transitionOpacity {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.translateDown {
   transform: translateY(0);
 }
 
-.hideHeader {
+.translateUp {
   transform: translateY(-100%);
 }
 
-.slideTransition {
+.transitionSlide {
   transition: transform 0.15s ease-in-out;
 }
 
-.fadeTransition {
-  transition: all 0.5s ease-in-out;
+.transitionFade {
+  transition: background 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
 }

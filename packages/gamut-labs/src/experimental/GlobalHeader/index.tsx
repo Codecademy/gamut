@@ -126,7 +126,7 @@ const defaultScrollingState = {
   isInHeaderRegion: true,
   isScrollingDown: true,
   isScrollingDownFromHeaderRegion: true,
-  prevScrollPosition: 0,
+  prevScrollPosition: window?.pageYOffset,
 };
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
@@ -139,9 +139,29 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     prevScrollPosition,
   } = scrollingState;
 
-  const handleScrolling = () => {
-    const currentScrollPosition = window.pageYOffset;
+  const handleScrolling = useCallback(() => {
+    const currentScrollPosition = window?.pageYOffset;
 
+    // handle down/up scrolling
+    if (currentScrollPosition > prevScrollPosition) {
+      setScrollingState((prevState) => {
+        return {
+          ...prevState,
+          isScrollingDown: true,
+          prevScrollPosition: currentScrollPosition,
+        };
+      });
+    } else {
+      setScrollingState((prevState) => {
+        return {
+          ...prevState,
+          isScrollingDown: false,
+          prevScrollPosition: currentScrollPosition,
+        };
+      });
+    }
+
+    // handle static header region
     if (currentScrollPosition <= 80) {
       setScrollingState((prevState) => ({
         ...prevState,
@@ -157,65 +177,78 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           prevState.isScrollingDownFromHeaderRegion,
       }));
     }
-
-    if (
-      currentScrollPosition > prevScrollPosition ||
-      currentScrollPosition === 0
-    ) {
-      setScrollingState((prevState) => {
-        return {
-          ...prevState,
-          isScrollingDown: true,
-          prevScrollPosition: currentScrollPosition,
-          isScrollingDownFromHeaderRegion:
-            prevState.isScrollingDown &&
-            prevState.isScrollingDownFromHeaderRegion,
-        };
-      });
-    } else {
-      setScrollingState((prevState) => ({
-        ...prevState,
-        isScrollingDown: false,
-        prevScrollPosition: currentScrollPosition,
-        isScrollingDownFromHeaderRegion: false,
-      }));
-    }
-  };
+  }, [prevScrollPosition]);
 
   const throttledHandleScroll = throttle(handleScrolling, 200);
 
   useEffect(() => {
-    window.addEventListener('scroll', throttledHandleScroll);
+    console.log(
+      'isScrollingDownFromHeaderRegion state set: ',
+      isScrollingDownFromHeaderRegion
+    );
+  }, [isScrollingDownFromHeaderRegion]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
 
     // returned function will be called on component unmount
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
     };
-  }, [throttledHandleScroll, isScrollingDown]);
+  }, [throttledHandleScroll, scrollingState]);
 
-  // className={cx(
-  //         isInHeaderRegion && [styles.staticHeader, styles.fadeTransition],
-  //         {
-  //           [styles.stickyHeader]:
-  //             !isInHeaderRegion || (isInHeaderRegion && !isScrollingDown),
-  //           [styles.fadeTransition]: isScrollingDownFromHeaderRegion,
-  //           [styles.slideTransition]:
-  //             !isInHeaderRegion && !isScrollingDownFromHeaderRegion,
-  //           [styles.showHeader]: !isScrollingDown,
-  //           [styles.hideHeader]:
-  //             isScrollingDown &&
-  //             !isInHeaderRegion &&
-  //             !isScrollingDownFromHeaderRegion,
-  //         }
-  //       )}
-
+  // not triggering fast enough, it seems like
+  // results in brief appearance of below sticky header when scrolling down from static header really fast
   return (
     <>
-      {isInHeaderRegion ? (
-        <GlobalHeader {...props} className={styles.staticHeader} />
-      ) : (
-        <GlobalHeader {...props} className={styles.stickyHeader} />
-      )}
+      <GlobalHeader
+        {...props}
+        className={cx(
+          styles.staticHeader,
+          !isScrollingDownFromHeaderRegion && styles.hidden
+        )}
+      />
+      <GlobalHeader
+        {...props}
+        className={cx(
+          styles.stickyHeader,
+          // scrolling down from top
+          isScrollingDownFromHeaderRegion && [styles.hidden],
+          // scrolling down
+          isScrollingDown && [styles.translateUp, styles.transitionSlide],
+          // scrolling up
+          !isScrollingDown &&
+            !isInHeaderRegion && [
+              styles.translateDown,
+              styles.transitionSlide,
+              styles.visible,
+            ],
+          isInHeaderRegion && [styles.transitionOpacity, styles.hidden]
+        )}
+      />
     </>
   );
+
+  // if (isInHeaderRegion || isScrollingDownFromHeaderRegion) {
+  //   return (
+  //     <GlobalHeader
+  //       {...props}
+  //       className={cx(styles.staticHeader, styles.transitionFade)}
+  //     />
+  //   );
+  // }
+
+  // return (
+  //   <GlobalHeader
+  //     {...props}
+  //     className={cx(
+  //       styles.stickyHeader,
+  //       styles.transitionSlide,
+  //       // scrolling down
+  //       isScrollingDown && [styles.translateUp],
+  //       // scrolling up
+  //       !isScrollingDown && [styles.translateDown]
+  //     )}
+  //   />
+  // );
 };
