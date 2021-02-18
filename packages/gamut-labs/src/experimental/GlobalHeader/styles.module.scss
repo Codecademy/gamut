@@ -8,16 +8,13 @@
 .staticHeader {
   background: transparent;
   border-bottom: 1px solid transparent;
-  position: sticky;
-  box-shadow: none;
+  position: static;
 }
 
 .stickyHeader {
   border-bottom: 1px solid $color-navy;
   background-color: white;
   position: sticky;
-  box-shadow: none;
-  transform: translateY(-100%);
   top: 0;
   z-index: 1;
 }

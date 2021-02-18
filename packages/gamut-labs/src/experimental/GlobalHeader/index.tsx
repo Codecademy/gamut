@@ -96,6 +96,32 @@ const getMobileAppHeaderItems = (
   }
 };
 
+export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  return (
+    <>
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        height="80"
+        className={props.className}
+      >
+        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
+      </Box>
+      <Box
+        display={{ base: 'block', md: 'none' }}
+        height="64"
+        position="relative"
+        zIndex={0}
+      >
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+        />
+      </Box>
+    </>
+  );
+};
+
 const defaultScrollingState = {
   isInHeaderRegion: true,
   isScrollingDown: true,
@@ -103,7 +129,7 @@ const defaultScrollingState = {
   prevScrollPosition: 0,
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   const [scrollingState, setScrollingState] = useState(defaultScrollingState);
 
   const {
@@ -167,41 +193,29 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     };
   }, [throttledHandleScroll, isScrollingDown]);
 
+  // className={cx(
+  //         isInHeaderRegion && [styles.staticHeader, styles.fadeTransition],
+  //         {
+  //           [styles.stickyHeader]:
+  //             !isInHeaderRegion || (isInHeaderRegion && !isScrollingDown),
+  //           [styles.fadeTransition]: isScrollingDownFromHeaderRegion,
+  //           [styles.slideTransition]:
+  //             !isInHeaderRegion && !isScrollingDownFromHeaderRegion,
+  //           [styles.showHeader]: !isScrollingDown,
+  //           [styles.hideHeader]:
+  //             isScrollingDown &&
+  //             !isInHeaderRegion &&
+  //             !isScrollingDownFromHeaderRegion,
+  //         }
+  //       )}
+
   return (
     <>
-      <Box
-        display={{ base: 'none', md: 'block' }}
-        height="80"
-        className={cx(
-          isInHeaderRegion && [styles.staticHeader, styles.fadeTransition],
-          {
-            [styles.stickyHeader]:
-              !isInHeaderRegion || (isInHeaderRegion && !isScrollingDown),
-            [styles.fadeTransition]: isScrollingDownFromHeaderRegion,
-            [styles.slideTransition]:
-              !isInHeaderRegion && !isScrollingDownFromHeaderRegion,
-            [styles.showHeader]: !isScrollingDown,
-            [styles.hideHeader]:
-              isScrollingDown &&
-              !isInHeaderRegion &&
-              !isScrollingDownFromHeaderRegion,
-          }
-        )}
-      >
-        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-      </Box>
-      <Box
-        display={{ base: 'block', md: 'none' }}
-        height="64"
-        position="relative"
-        zIndex={0}
-      >
-        <AppHeaderMobile
-          action={props.action}
-          items={getMobileAppHeaderItems(props)}
-          renderSearch={props.renderSearch?.mobile}
-        />
-      </Box>
+      {isInHeaderRegion ? (
+        <GlobalHeader {...props} className={styles.staticHeader} />
+      ) : (
+        <GlobalHeader {...props} className={styles.stickyHeader} />
+      )}
     </>
   );
 };
