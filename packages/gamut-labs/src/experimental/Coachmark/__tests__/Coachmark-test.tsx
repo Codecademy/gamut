@@ -44,4 +44,13 @@ describe('Coachmark', () => {
     renderCoachmark();
     expect(screen.queryByTestId('coachmark-popover-content')).toBeTruthy;
   });
+
+  it('renders Popover after the delay', () => {
+    jest.useFakeTimers();
+    renderCoachmark({ shouldShow: false, delay: 5000 });
+
+    expect(screen.queryByTestId('popover-content-container')).toBeFalsy;
+    jest.runAllTimers();
+    expect(screen.queryByTestId('popover-content-container')).toBeTruthy;
+  });
 });
