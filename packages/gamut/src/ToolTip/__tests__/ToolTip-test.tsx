@@ -1,34 +1,27 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render } from '@testing-library/react';
+import { mount } from 'enzyme';
 import React from 'react';
 
-import { ToolTip, ToolTipProps } from '..';
-
-const renderToolTip = (props: ToolTipProps) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <ToolTip {...props} />
-    </ThemeProvider>
-  );
-};
+import { ToolTip } from '..';
+import styles from '../styles.module.scss';
 
 describe('ToolTip', () => {
-  it('does not give its container a tabIndex when it is not focusable', () => {
-    const children = 'Hello';
-    const view = renderToolTip({ children, id: 'test-id' });
+  it('adds the dark class to the container name when its theme is dark', () => {
+    const wrapper = mount(<ToolTip id="test-id" theme="dark" />);
 
-    const container = view.getByLabelText(children);
+    const containerClassName = wrapper
+      .find({ role: 'tooltip' })
+      .prop('className');
 
-    expect(container).not.toHaveAttribute('tabIndex');
+    expect(containerClassName).toContain(styles.toolTipContainerDark);
   });
 
-  it('gives the container a tabIndex when it is focusable', () => {
-    const children = 'Hello';
-    const view = renderToolTip({ children, focusable: true, id: 'test-id' });
+  it('adds the light class to the container name when its theme is light', () => {
+    const wrapper = mount(<ToolTip id="test-id" theme="light" />);
 
-    const container = view.getByLabelText(children);
+    const containerClassName = wrapper
+      .find({ role: 'tooltip' })
+      .prop('className');
 
-    expect(container).toHaveAttribute('tabIndex', '0');
+    expect(containerClassName).toContain(styles.toolTipContainerLight);
   });
 });

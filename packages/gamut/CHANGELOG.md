@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [23.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.2.0...@codecademy/gamut@23.2.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GridForm:** Add aria labels to GridForm Radio ([#1410](https://github.com/Codecademy/client-modules/issues/1410)) ([79262f5](https://github.com/Codecademy/client-modules/commit/79262f5b1fce8c5116dc9e33e7c46926873deaf3))
+
+
+
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.1.0...@codecademy/gamut@23.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
+## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.1...@codecademy/gamut@23.1.0) (2021-02-17)
+
+
+### Features
+
+* allowed disabled inputs for GridForm ([1627bf8](https://github.com/Codecademy/client-modules/commit/1627bf8d1b4d5d3e24f6e1cd6fabda1573d23a24))
+
+
+
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.0...@codecademy/gamut@23.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.3...@codecademy/gamut@23.0.0) (2021-02-16)
 
 
