@@ -10,3 +10,4 @@ export * from './AppHeaderMobile/AppHeaderLinkMobile';
 export * from './AppHeaderMobile/AppHeaderMainMenuMobile';
 export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalHeader';
+export * from './GlobalHeader/hooks';

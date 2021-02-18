@@ -1,13 +1,13 @@
 import { Box } from '@codecademy/gamut';
 import React from 'react';
 
-import { useBreakpointAtOrAbove } from '../../lib/breakpointHooks';
 import { AppHeader } from '../AppHeader';
 import {
   FormattedAppHeaderItems,
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
+import { breakpoint, desktopHeight, mobileHeight } from './consts';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -94,10 +94,9 @@ const getMobileAppHeaderItems = (
   }
 };
 
-const breakpoint = 'md';
-const desktopHeight = 80;
-const mobileHeight = 64;
-
+// For performance reasons, this component renders the mobile and desktop versions
+// of itself simultaneously and switches between them using css (instead of using
+// any of the useBreakpoint hooks, which rely on js for the same behavior).
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
   <>
     <Box
@@ -120,8 +119,3 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
     </Box>
   </>
 );
-
-export function useGlobalHeaderHeight(): number {
-  const isDesktop = useBreakpointAtOrAbove(breakpoint);
-  return isDesktop ? desktopHeight : mobileHeight;
-}
