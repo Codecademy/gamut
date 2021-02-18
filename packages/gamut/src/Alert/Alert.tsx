@@ -40,16 +40,15 @@ export type AlertProps = {
 };
 
 const VARIANT_META = {
-  general: { role: 'status', order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
-  success: { role: 'alert', order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
-  error: { role: 'alert', order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
+  general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
+  success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
+  error: { order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
   maintenance: {
-    role: 'status',
     order: 3,
     icon: MiniWarningTriangleIcon,
     mode: 'light',
   },
-  feature: { role: 'status', order: 5, icon: MiniStarIcon, mode: 'light' },
+  feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
 
 const AlertBanner = styled(Box)(
@@ -85,6 +84,7 @@ const AlertBanner = styled(Box)(
 );
 
 AlertBanner.defaultProps = {
+  role: 'status',
   'aria-label': 'alert box',
   'aria-live': 'polite',
 };
