@@ -144,6 +144,7 @@ export const Alert: React.FC<AlertProps> = ({
       {onClose && (
         <IconButton
           mode={mode}
+          aria-label="Close Alert"
           variant="secondary"
           size="small"
           onClick={onClose}
