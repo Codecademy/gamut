@@ -17,10 +17,17 @@ import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
+export type AlertType =
+  | 'general'
+  | 'success'
+  | 'error'
+  | 'maintenance'
+  | 'feature';
+
 export type AlertProps = {
   className?: string;
   /** Alert Variant String */
-  type?: 'general' | 'success' | 'error' | 'maintenance' | 'feature';
+  type?: AlertType;
   /** Callback to be called when the close icon is clicked */
   onClose?: () => void;
   /** Call to Action Configuration */
