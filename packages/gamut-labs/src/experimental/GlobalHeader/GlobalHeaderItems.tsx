@@ -74,6 +74,13 @@ export const resourcesDropdown: AppHeaderSimpleDropdownItem = {
       type: 'link',
     },
     {
+      id: 'projects',
+      href: '/projects',
+      trackingTarget: 'topnav_resources_projects',
+      text: 'Projects',
+      type: 'link',
+    },
+    {
       id: 'articles',
       href: '/articles',
       trackingTarget: 'topnav_resources_articles',
