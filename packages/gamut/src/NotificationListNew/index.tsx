@@ -13,15 +13,10 @@ export type NotificationListNewProps = {
 
 export const NotificationListNew = (props: NotificationListNewProps) => {
   const { notifications, onNotificationClick, handleDismiss } = props;
-
+  const pattern = <Pattern name="dotsDense" height="1px" display="flex" />;
   return (
     <div>
-      <Pattern
-        name="dotsDense"
-        height="1px"
-        position="relative"
-        svgPosition="absolute"
-      />
+      {pattern}
       {isEmpty(notifications) ? (
         <div>Empty Notifications Placeholder </div>
       ) : (
@@ -34,12 +29,7 @@ export const NotificationListNew = (props: NotificationListNewProps) => {
                 handleClick={() => onNotificationClick?.(notification)}
                 handleDismiss={() => handleDismiss?.(notification)}
               />
-              <Pattern
-                name="dotsDense"
-                height="1px"
-                position="relative"
-                svgPosition="absolute"
-              />
+              {pattern}
             </>
           );
         })

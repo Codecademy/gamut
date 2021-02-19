@@ -1,10 +1,10 @@
-import { CloseIcon } from '@codecademy/gamut-icons';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
 import { Bell } from '@codecademy/gamut-illustrations';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
-import { Box, FlexBox, Text } from '..';
+import { Box, FlexBox, IconButton, Text } from '..';
 import { Notification } from '../NotificationList/typings';
 
 const StyledLink = styled.a`
@@ -14,20 +14,6 @@ const StyledLink = styled.a`
   &:hover {
     text-decoration: none;
     background-color: ${({ theme }) => theme.colors['gray-100']};
-  }
-`;
-
-const IconButton = styled.button`
-  background-color: transparent;
-  border: transparent;
-  color: ${({ theme }) => theme.colors.navy};
-  line-height: 0.5rem;
-  margin-left: 22px;
-  padding: 6px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors['gray-200']};
-    cursor: pointer;
   }
 `;
 
@@ -57,26 +43,25 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
   const renderNotificationContent = (): ReactElement => {
     return (
       <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
-        <FlexBox>
-          <Bell height={48} width={48} />
-          <Box paddingLeft={12} textColor="navy">
-            <Text as="span" fontSize="sm">
-              {text}
-            </Text>
-            <DateText as="span" fontSize="sm">
-              {date}
-            </DateText>
-          </Box>
-        </FlexBox>
+        <Bell height={48} width={48} />
+        <Box flexBasis={0} flexGrow={1} paddingLeft={12} textColor="navy">
+          <Text as="span" fontSize="sm">
+            {text}
+          </Text>
+          <DateText as="span" fontSize="sm">
+            {date}
+          </DateText>
+        </Box>
         {handleDismiss && (
           <FlexBox alignSelf="end" paddingLeft={8}>
             <IconButton
+              icon={MiniDeleteIcon}
               color={colors.navy}
-              onClick={(e) => dismissNotification(e)}
+              onClick={dismissNotification}
               aria-label="dismiss notificiation"
-            >
-              <CloseIcon height={10} width={10} />
-            </IconButton>
+              size="small"
+              variant="secondary"
+            />
           </FlexBox>
         )}
       </FlexBox>

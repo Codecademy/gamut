@@ -12,34 +12,19 @@ export type PatternName =
   | 'dotsRegular'
   | 'dotsDense';
 
-export type positionProps =
-  | 'static'
-  | 'relative'
-  | 'absolute'
-  | 'sticky'
-  | 'fixed';
-
-export type SvgProps = { position: positionProps };
-
 export interface PatternProps extends BoxProps {
   name: PatternName;
-  svgPosition?: positionProps;
 }
 
-const Svg = styled.svg<SvgProps>`
+const Svg = styled.svg`
   width: 100%;
   height: 100%;
-  position: ${({ position }) => position};
 `;
 
-export const Pattern: React.FC<PatternProps> = ({
-  name,
-  svgPosition = 'static',
-  ...props
-}) => {
+export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
   return (
     <Box {...props}>
-      <Svg position={svgPosition}>
+      <Svg>
         {defs(name)}
         <rect x="0" y="0" width="100%" height="100%" fill={`url(#${name})`} />
       </Svg>
