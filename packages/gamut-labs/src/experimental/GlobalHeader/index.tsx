@@ -127,6 +127,8 @@ const defaultScrollingState = {
   isScrollingDown: true,
   isScrollingDownFromHeaderRegion: true,
   prevScrollPosition: window?.pageYOffset,
+  // staticHeaderHidden: false,
+  // stickyHeaderHidden: true,
 };
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
@@ -137,7 +139,12 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     isInHeaderRegion,
     isScrollingDown,
     prevScrollPosition,
+    // staticHeaderHidden,
+    // stickyHeaderHidden,
   } = scrollingState;
+
+  // const staticHeader = useRef<HTMLDivElement>(null);
+  // const scrollingHeader = useRef<HTMLDivElement>(null);
 
   const handleScrolling = useCallback(() => {
     const currentScrollPosition = window?.pageYOffset;
@@ -162,7 +169,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     }
 
     // handle static header region
-    if (currentScrollPosition <= 80) {
+    if (currentScrollPosition === 0) {
       setScrollingState((prevState) => ({
         ...prevState,
         isInHeaderRegion: true,
@@ -179,14 +186,25 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     }
   }, [prevScrollPosition]);
 
+  // const handleTransitionEnd = useCallback(() => {
+  //   setScrollingState(() => {});
+  // }, []);
+
   const throttledHandleScroll = throttle(handleScrolling, 200);
 
-  useEffect(() => {
-    console.log(
-      'isScrollingDownFromHeaderRegion state set: ',
-      isScrollingDownFromHeaderRegion
-    );
-  }, [isScrollingDownFromHeaderRegion]);
+  // useEffect(() => {
+  //   scrollingHeader.current?.addEventListener(
+  //     'transitionend',
+  //     handleTransitionEnd
+  //   );
+
+  //   return () => {
+  //     scrollingHeader.current?.removeEventListener(
+  //       'transitionend',
+  //       handleTransitionEnd
+  //     );
+  //   };
+  // }, [handleTransitionEnd]);
 
   useEffect(() => {
     window.addEventListener('scroll', throttledHandleScroll, { passive: true });
@@ -197,23 +215,23 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     };
   }, [throttledHandleScroll, scrollingState]);
 
-  // not triggering fast enough, it seems like
-  // results in brief appearance of below sticky header when scrolling down from static header really fast
   return (
     <>
       <GlobalHeader
+        // ref={staticHeader}
         {...props}
         className={cx(
           styles.staticHeader,
-          !isScrollingDownFromHeaderRegion && styles.hidden
+          !isScrollingDownFromHeaderRegion && styles.visuallyHide
         )}
       />
       <GlobalHeader
+        // ref={scrollingHeader}
         {...props}
         className={cx(
           styles.stickyHeader,
           // scrolling down from top
-          isScrollingDownFromHeaderRegion && [styles.hidden],
+          isScrollingDownFromHeaderRegion && [styles.visuallyHide],
           // scrolling down
           isScrollingDown && [styles.translateUp, styles.transitionSlide],
           // scrolling up
@@ -221,34 +239,11 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             !isInHeaderRegion && [
               styles.translateDown,
               styles.transitionSlide,
-              styles.visible,
+              styles.visuallyShow,
             ],
-          isInHeaderRegion && [styles.transitionOpacity, styles.hidden]
+          isInHeaderRegion && [styles.transitionOpacity, styles.visuallyHide]
         )}
       />
     </>
   );
-
-  // if (isInHeaderRegion || isScrollingDownFromHeaderRegion) {
-  //   return (
-  //     <GlobalHeader
-  //       {...props}
-  //       className={cx(styles.staticHeader, styles.transitionFade)}
-  //     />
-  //   );
-  // }
-
-  // return (
-  //   <GlobalHeader
-  //     {...props}
-  //     className={cx(
-  //       styles.stickyHeader,
-  //       styles.transitionSlide,
-  //       // scrolling down
-  //       isScrollingDown && [styles.translateUp],
-  //       // scrolling up
-  //       !isScrollingDown && [styles.translateDown]
-  //     )}
-  //   />
-  // );
 };

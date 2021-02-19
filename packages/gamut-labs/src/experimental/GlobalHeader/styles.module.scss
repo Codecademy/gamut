@@ -15,16 +15,20 @@
   width: 100%;
 }
 
-.visible {
+.visuallyShow {
   opacity: 1;
 }
 
-.hidden {
+.visuallyHide {
   opacity: 0;
 }
 
-.transitionOpacity {
-  transition: opacity 0.5s ease-in-out;
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 .translateDown {
@@ -33,6 +37,10 @@
 
 .translateUp {
   transform: translateY(-100%);
+}
+
+.transitionOpacity {
+  transition: opacity 0.5s ease-in-out;
 }
 
 .transitionSlide {
