@@ -15,7 +15,7 @@ export interface AbstractTheme extends BaseTheme {
 }
 
 export type ThemeProps<
-  T extends AbstractTheme,
+  T extends AbstractTheme = AbstractTheme,
   Props extends AbstractProps = {}
 > = {
   theme?: T;
@@ -44,10 +44,10 @@ export interface MediaQueryMap<T> {
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
 
-export type BreakpointCache<T extends AbstractTheme> = {
+export type BreakpointCache<T extends AbstractTheme = AbstractTheme> = {
   map: T['breakpoints'];
-  array: string[];
-} | null;
+  array: (string | number)[];
+};
 
 export type Chained = `&` | `>` | '~' | '+';
 

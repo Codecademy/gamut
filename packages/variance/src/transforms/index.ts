@@ -30,3 +30,5 @@ export const parseSize = (value: string | number) => {
 
   return !unit ? percentageOrAbsolute(numericValue) : `${numericValue}${unit}`;
 };
+
+export const identity = <T extends string | number>(val: T) => val;
