@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Pattern } from '..';
 import { Notification } from '../NotificationList/typings';
+import { EmptyNotification } from './EmptyNotification';
 import { NotificationItemNew } from './NotificationItemNew';
 
 export type NotificationListNewProps = {
@@ -16,15 +17,11 @@ export const NotificationListNew = (props: NotificationListNewProps) => {
 
   return (
     <div>
+      <Pattern name="dotsDense" height="1px" position="relative" />
       {isEmpty(notifications) ? (
-        <button type="button">
-          No new notifications.
-          <br />
-          You&apos;re all caught up!
-        </button>
+        <EmptyNotification />
       ) : (
         <>
-          <Pattern name="dotsDense" height="1px" position="relative" />
           {notifications.map((notification: Notification) => {
             return (
               <>

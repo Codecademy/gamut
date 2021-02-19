@@ -24,4 +24,12 @@ import { examples } from './NotificationList.stories.mdx';
   </Story>
 </Canvas>
 
+## Empty Notification
+
+<Canvas>
+  <Story name="Empty" args={{ notifications: [] }}>
+    {(args) => <NotificationListNew {...args} />}
+  </Story>
+</Canvas>
+
 <PropsTable story="NotificationListNew" />
