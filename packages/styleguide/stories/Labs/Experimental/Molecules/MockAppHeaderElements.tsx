@@ -3,12 +3,12 @@ import {
   GearIcon,
   HouseEntranceIcon,
   PersonIcon,
-} from '@codecademy/gamut-icons/src';
+} from '@codecademy/gamut-icons';
 import {
   AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
   AppHeaderSimpleDropdownItem,
-} from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
+} from '@codecademy/gamut-labs';
 
 export const MOCK_LINK: AppHeaderLinkItem = {
   id: 'home',
