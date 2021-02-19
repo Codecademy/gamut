@@ -9,6 +9,7 @@ export type CoachmarkProps = {
   activeElClassName?: string;
   /**
    * Amount of time (in ms) to delay rendering the coachmark.
+   * @default 500
    */
   delay?: number;
   /**
