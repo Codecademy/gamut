@@ -17,12 +17,7 @@ import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
-export type AlertType =
-  | 'general'
-  | 'success'
-  | 'error'
-  | 'maintenance'
-  | 'feature';
+export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
 
 export type AlertProps = {
   className?: string;
@@ -43,7 +38,7 @@ const VARIANT_META = {
   general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
   success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
   error: { order: 1, icon: MiniRemoveCircleIcon, mode: 'dark' },
-  maintenance: {
+  notice: {
     order: 3,
     icon: MiniWarningTriangleIcon,
     mode: 'light',
@@ -53,25 +48,28 @@ const VARIANT_META = {
 
 const AlertBanner = styled(Box)(
   variant({
-    general: {
-      backgroundColor: 'blue',
-      textColor: 'white',
-    },
-    success: {
-      backgroundColor: 'green',
-      textColor: 'white',
-    },
-    error: {
-      backgroundColor: 'red',
-      textColor: 'white',
-    },
-    maintenance: {
-      backgroundColor: 'orange',
-      textColor: 'navy',
-    },
-    feature: {
-      backgroundColor: 'blue-300',
-      textColor: 'navy',
+    prop: 'type',
+    variants: {
+      general: {
+        backgroundColor: 'blue',
+        textColor: 'white',
+      },
+      success: {
+        backgroundColor: 'green',
+        textColor: 'white',
+      },
+      error: {
+        backgroundColor: 'red',
+        textColor: 'white',
+      },
+      notice: {
+        backgroundColor: 'orange',
+        textColor: 'navy',
+      },
+      feature: {
+        backgroundColor: 'blue-300',
+        textColor: 'navy',
+      },
     },
   }),
   ({ theme }) => css`
@@ -109,7 +107,7 @@ export const Alert: React.FC<AlertProps> = ({
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
-      variant={type}
+      type={type}
     >
       <FlexBox
         height="2rem"
