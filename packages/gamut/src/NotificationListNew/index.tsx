@@ -6,7 +6,6 @@ import { Notification } from '../NotificationList/typings';
 import { NotificationItemNew } from './NotificationItemNew';
 
 export type NotificationListNewProps = {
-  className?: string;
   handleDismiss?: (notification: Notification) => void;
   notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;

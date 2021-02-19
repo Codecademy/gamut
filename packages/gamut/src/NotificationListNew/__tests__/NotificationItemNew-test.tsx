@@ -58,7 +58,7 @@ describe('NotificationItemNew', () => {
     expect(handleClick).toHaveBeenCalled();
   });
 
-  it('does not renders a link if no href is specified', () => {
+  it('does not render a link if no href is specified', () => {
     renderNotificationItemNew(noLinkNotificationProps);
     expect(screen.queryByRole('link')).toBeFalsy();
   });
