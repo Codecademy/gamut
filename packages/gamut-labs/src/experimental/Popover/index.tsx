@@ -1,4 +1,4 @@
-import { BodyPortal } from '@codecademy/gamut/dist/BodyPortal';
+import { BodyPortal } from '@codecademy/gamut';
 import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
