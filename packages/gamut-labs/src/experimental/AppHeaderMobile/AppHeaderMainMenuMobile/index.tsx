@@ -1,6 +1,5 @@
 import { FlexBox } from '@codecademy/gamut';
-import React, { useState } from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import { AppHeaderFillButton, AppHeaderTextButton } from '../..';
 import {
@@ -86,7 +85,7 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
 
   return (
     <>
-      {!!subMenuItem ? (
+      {subMenuItem ? (
         <AppHeaderSubMenuMobile
           handleClose={closeSubMenu}
           action={action}

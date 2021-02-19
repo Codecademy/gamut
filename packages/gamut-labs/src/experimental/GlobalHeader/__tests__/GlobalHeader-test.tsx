@@ -69,6 +69,11 @@ const proHeaderProps: GlobalHeaderProps = {
   user,
 };
 
+const loadingHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'loading',
+};
+
 const renderElementProps: GlobalHeaderProps = {
   action,
   renderSearch: {
@@ -91,31 +96,7 @@ const renderGlobalHeader = (props: GlobalHeaderProps) => {
   );
 };
 
-jest.mock('../../../lib/breakpointHooks', () => ({
-  useBreakpointAtOrAbove: jest
-    .fn(() => true) // default implementation: desktop true
-    .mockImplementationOnce(() => {
-      return true;
-    })
-    .mockImplementationOnce(() => {
-      return false;
-    }),
-}));
-
 describe('GlobalHeader', () => {
-  describe('responsiveness', () => {
-    beforeEach(() => {
-      renderGlobalHeader(anonHeaderProps);
-    });
-
-    test('desktop', () => {
-      expect(screen.queryByTestId('header-mobile-menu')).not.toBeVisible();
-    });
-    test('mobile', () => {
-      expect(screen.getByTestId('header-mobile-menu')).toBeVisible();
-    });
-  });
-
   describe('anonymous users', () => {
     beforeEach(() => {
       renderGlobalHeader(anonHeaderProps);
@@ -125,8 +106,8 @@ describe('GlobalHeader', () => {
      & use 'getAllByTestId' b/c there will be duplicate elements in the DOM (since mobile & desktop render some of the same app header items) */
     test('logo', () => {
       const logoElements = screen.getAllByTestId('header-logo');
-      expect(logoElements[0]).toBeVisible(); // desktop
-      expect(logoElements[1]).not.toBeVisible(); // mobile
+      expect(logoElements[0]).not.toBeVisible();
+      expect(logoElements[1]).toBeVisible();
     });
 
     test('courseCatalog', () => {
@@ -286,6 +267,16 @@ describe('GlobalHeader', () => {
     });
   });
 
+  describe('loading', () => {
+    beforeEach(() => {
+      renderGlobalHeader(loadingHeaderProps);
+    });
+
+    test('logo', () => {
+      screen.getAllByTestId('header-logo');
+    });
+  });
+
   describe('renders a custom element when provided one', () => {
     beforeEach(() => {
       renderGlobalHeader(renderElementProps);
@@ -302,7 +293,7 @@ describe('GlobalHeader', () => {
 
   test('fires action() upon clicking an element', () => {
     renderGlobalHeader(renderElementProps);
-    screen.getAllByRole('button')[0].click();
+    screen.getAllByRole('link')[0].click();
     expect(action).toHaveBeenCalled();
   });
 });

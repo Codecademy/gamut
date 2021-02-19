@@ -70,40 +70,36 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   wrap?: boolean;
 }
 
-export class Container extends React.Component<ContainerProps> {
-  static displayName = 'Container';
+export const Container: React.FC<ContainerProps> = (props) => {
+  const classes = cx(props.className, {
+    [styles.flex]: props.flex && !props.inline,
+    [styles.inline]: props.flex && props.inline,
+    [styles.fld]: isNumber(props.grow) || isNumber(props.shrink),
+    [styles[`flg-${props.grow}`]]: isNumber(props.grow),
+    [styles[`fls-${props.shrink}`]]: isNumber(props.shrink),
+    [styles.row]: props.row,
+    [styles.col]: props.column,
+    [styles.wrap]: props.wrap,
+    [styles.nowrap]: props.nowrap,
+    [styles.rev]: props.reverse,
+    [styles.fit]: props.fit,
+    [styles['align-center']]: props.center && !props.align,
+    [styles['justify-center']]: props.center && !props.justify,
+    [styles[`align-${props.align}`]]: !!props.align,
+    [styles[`justify-${props.justify}`]]: !!props.justify,
+    [styles[`aself-${props.alignSelf}`]]: !!props.alignSelf,
+  });
 
-  static defaultProps = {
-    flex: true,
-    inline: false,
-  };
+  const propsToTransfer = omit(props, internalProps);
 
-  render() {
-    const classes = cx(this.props.className, {
-      [styles.flex]: this.props.flex && !this.props.inline,
-      [styles.inline]: this.props.flex && this.props.inline,
-      [styles.fld]: isNumber(this.props.grow) || isNumber(this.props.shrink),
-      [styles[`flg-${this.props.grow}`]]: isNumber(this.props.grow),
-      [styles[`fls-${this.props.shrink}`]]: isNumber(this.props.shrink),
-      [styles.row]: this.props.row,
-      [styles.col]: this.props.column,
-      [styles.wrap]: this.props.wrap,
-      [styles.nowrap]: this.props.nowrap,
-      [styles.rev]: this.props.reverse,
-      [styles.fit]: this.props.fit,
-      [styles['align-center']]: this.props.center && !this.props.align,
-      [styles['justify-center']]: this.props.center && !this.props.justify,
-      [styles[`align-${this.props.align}`]]: !!this.props.align,
-      [styles[`justify-${this.props.justify}`]]: !!this.props.justify,
-      [styles[`aself-${this.props.alignSelf}`]]: !!this.props.alignSelf,
-    });
+  return (
+    <div {...propsToTransfer} className={classes}>
+      {props.children}
+    </div>
+  );
+};
 
-    const propsToTransfer = omit(this.props, internalProps);
-
-    return (
-      <div {...propsToTransfer} className={classes}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+Container.defaultProps = {
+  flex: true,
+  inline: false,
+};

@@ -1,10 +1,14 @@
 export const bars = [
   {
-    large: false,
-    theme: 'blue',
+    size: 'small',
+    variant: 'yellow',
   },
   {
-    large: true,
-    theme: 'yellow',
+    size: 'medium',
+    variant: 'blue',
+  },
+  {
+    size: 'large',
+    variant: 'yellow',
   },
 ] as const;

@@ -1,6 +1,7 @@
 import { Box } from '@codecademy/gamut';
 import { ArrowChevronDownFilledIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
+import cx from 'classnames';
 import React, { useRef, useState } from 'react';
 
 import { Popover } from '../../../Popover';
@@ -50,10 +51,12 @@ export const AppHeaderDropdown: React.FC<AppHeaderDropdownProps> = ({
       </AppHeaderAvatarTargetButton>
     ) : (
       <AppHeaderTextTargetButton
-        className={isOpen && styles.open}
+        className={cx(styles.target, isOpen && styles.open)}
         onClick={(event) => toggleIsOpen(event)}
       >
-        <span className={styles.copy}>{item.text}</span>
+        <span title={item.text} className={styles.copy}>
+          {item.text}
+        </span>
         <ArrowChevronDownFilledIcon
           size={12}
           className={styles.icon}
