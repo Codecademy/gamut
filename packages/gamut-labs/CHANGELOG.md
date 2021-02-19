@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.13...@codecademy/gamut-labs@10.1.0) (2021-02-19)
+
+
+### Features
+
+* add new coachmark component ([f268e07](https://github.com/Codecademy/client-modules/commit/f268e07d55de5625c0a89295578b6bb43ea6e025))
+
+
+
 ### [10.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.12...@codecademy/gamut-labs@10.0.13) (2021-02-18)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
