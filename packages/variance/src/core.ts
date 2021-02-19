@@ -34,13 +34,14 @@ export const variance = {
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
       >(config: Config): Parser<T, Config> {
-        let breakpoints: BreakpointCache<T>;
+        let breakpoints: BreakpointCache;
         const propNames = orderPropNames(config);
 
         const parser = (props: { theme: T }) => {
           const styles = {};
           // Get the themes configured breakpoints
-          breakpoints = breakpoints ?? parseBreakpoints(props?.theme);
+          breakpoints = breakpoints ?? parseBreakpoints(props?.theme) ?? {};
+          const { map, array } = breakpoints;
 
           // Loops over all prop names on the configured config to check for configured styles
           propNames.forEach((prop) => {
@@ -56,8 +57,7 @@ export const variance = {
                 );
               // handle any props configured with the responsive notation
               case 'object':
-                if (!breakpoints) return;
-                const { map, array } = breakpoints;
+                if (!map && !array) return;
                 // If it is an array the order of values is smallest to largest: [base, xs, ...]
                 if (isMediaArray(value)) {
                   return merge(

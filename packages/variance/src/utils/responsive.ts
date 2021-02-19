@@ -16,7 +16,7 @@ const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
  */
 export const parseBreakpoints = <T extends AbstractTheme>(
   theme?: T
-): BreakpointCache<T> | null => {
+): BreakpointCache | null => {
   const breakpoints = theme?.breakpoints;
   if (!breakpoints) return null;
 
@@ -35,14 +35,22 @@ export const isMediaMap = (
 ): val is MediaQueryMap<string | number> =>
   intersection(Object.keys(val), BREAKPOINT_KEYS).length > 0;
 
-export const objectParser = <
-  T extends AbstractTheme,
-  C extends AbstractPropTransformer<T>
->(
-  value: MediaQueryMap<string | number>,
-  props: ThemeProps<T>,
-  config: C,
-  breakpoints: BreakpointCache['map']
+interface ResponsiveParser<
+  Bp extends MediaQueryMap<string | number> | (string | number)[]
+> {
+  <T extends AbstractTheme, C extends AbstractPropTransformer<T>>(
+    value: Bp,
+    props: ThemeProps<T>,
+    config: C,
+    breakpoints: Bp
+  ): CSSObject;
+}
+
+export const objectParser: ResponsiveParser<MediaQueryMap<string | number>> = (
+  value,
+  props,
+  config,
+  breakpoints
 ) => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;
@@ -63,14 +71,11 @@ export const objectParser = <
   return styles;
 };
 
-export const arrayParser = <
-  T extends AbstractTheme,
-  C extends AbstractPropTransformer<T>
->(
-  value: BreakpointCache['array'],
-  props: ThemeProps<T>,
-  config: C,
-  breakpoints: BreakpointCache['array']
+export const arrayParser: ResponsiveParser<(string | number)[]> = (
+  value,
+  props,
+  config,
+  breakpoints
 ): CSSObject => {
   const styles: CSSObject = {};
   const { styleFn, prop } = config;

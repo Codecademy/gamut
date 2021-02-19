@@ -4,14 +4,20 @@ export interface BaseTheme {
   [key: string]: unknown;
 }
 
+interface BreakpointKeys<T = string> {
+  xs: T;
+  sm: T;
+  md: T;
+  lg: T;
+  xl: T;
+}
+export interface BreakpointCache {
+  map: BreakpointKeys;
+  array: string[];
+}
+
 export interface AbstractTheme extends BaseTheme {
-  breakpoints?: {
-    xs: string;
-    sm: string;
-    md: string;
-    lg: string;
-    xl: string;
-  };
+  breakpoints?: BreakpointKeys;
 }
 
 export type ThemeProps<
@@ -20,10 +26,6 @@ export type ThemeProps<
 > = {
   theme?: T;
 } & Props;
-
-export interface CSSObject {
-  [key: string]: string | number | CSSObject | undefined;
-}
 
 export interface MediaQueryArray<T> {
   0?: T;
@@ -43,11 +45,6 @@ export interface MediaQueryMap<T> {
 }
 
 export type ResponsiveProp<T> = T | MediaQueryMap<T> | MediaQueryArray<T>;
-
-export type BreakpointCache<T extends AbstractTheme = AbstractTheme> = {
-  map: T['breakpoints'];
-  array: (string | number)[];
-};
 
 export type Chained = `&` | `>` | '~' | '+';
 
@@ -69,3 +66,7 @@ export type SelectorMap<
     ? Props[K]
     : never;
 };
+
+export interface CSSObject {
+  [key: string]: string | number | CSSObject | undefined;
+}
