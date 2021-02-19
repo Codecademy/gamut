@@ -12,9 +12,14 @@ export type PatternName =
   | 'dotsRegular'
   | 'dotsDense';
 
-type positionProps = 'static' | 'relative' | 'absolute' | 'sticky' | 'fixed';
+export type positionProps =
+  | 'static'
+  | 'relative'
+  | 'absolute'
+  | 'sticky'
+  | 'fixed';
 
-type SvgProps = { position: positionProps };
+export type SvgProps = { position: positionProps };
 
 export interface PatternProps extends BoxProps {
   name: PatternName;
