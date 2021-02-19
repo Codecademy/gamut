@@ -1,9 +1,7 @@
 const files = {
   default: {
-    loader: 'file-loader',
-    exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-    // prevent parsing as Asset Modules
-    type: 'javascript/auto',
+    exclude: [/\.(js|mjs|jsx|ts|tsx|css|scss)$/, /\.html$/, /\.json$/],
+    type: 'asset/resource',
   },
 };
 
