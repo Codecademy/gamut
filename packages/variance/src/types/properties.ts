@@ -1,4 +1,4 @@
-import { Globals, LineStyle, Properties } from 'csstype';
+import { Globals, LineStyle, StandardProperties } from 'csstype';
 
 // General
 type UnitOrPx = `${number}` | `${number}${string}`;
@@ -15,7 +15,8 @@ type Border =
   | `${string} ${LineStyle} ${string}`;
 
 // Updated Shorthand Types
-export interface PropertyTypes<TLength = never> extends Properties<TLength> {
+export interface PropertyTypes<TLength = never>
+  extends StandardProperties<TLength> {
   border?: Border;
   flex?: Flex;
   content?: '""' | `"${string}"`;

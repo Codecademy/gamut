@@ -58,7 +58,7 @@ export const variance = {
         let breakpoints: BreakpointCache<T>;
         const propNames = this.getPropNames(config);
 
-        const parser = (props: { theme: T }) => {
+        const parser = (props: { theme?: T }) => {
           const styles = {};
           // Get the themes configured breakpoints
           breakpoints = breakpoints ?? this.getBreakpoints(props);

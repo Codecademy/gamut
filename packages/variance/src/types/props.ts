@@ -1,10 +1,10 @@
 export type AbstractProps = Record<string, unknown>;
 
-export interface BaseTheme {
+export type BaseTheme = Readonly<{
   [key: string]: unknown;
-}
+}>;
 
-export interface AbstractTheme extends BaseTheme {
+export interface AbstractTheme {
   breakpoints?: {
     xs: string;
     sm: string;

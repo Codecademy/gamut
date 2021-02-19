@@ -139,6 +139,7 @@ const formatSystemProps: ArgTypesEnhancer = ({ parameters }) => {
         table: {
           ...arg.table,
           category: getPropCategory(name),
+          subcategory: kebabCase(name).split('-')[0],
           type: {
             ...arg?.table?.type,
             summary: options.join(' | ') || rawScale,

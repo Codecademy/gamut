@@ -25,6 +25,7 @@
     "@codecademy/gamut-icons": "^3.14.1",
     "@codecademy/gamut-styles": "^7.7.3",
     "@codecademy/gamut-tests": "^1.1.2",
+    "@codecademy/variance": "^0.0.1",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
     "focus-trap-react": "^8.4.1",

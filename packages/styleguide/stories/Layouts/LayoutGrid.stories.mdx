@@ -13,6 +13,8 @@ import { ExampleBox } from './Elements';
     status: 'volatile',
     source: 'gamut',
   }}
+  argTypes={{ columns: { table: { disable: true } } }}
+  args={{ gap: 16, columns: [12, 6, 6, 3, 3, 3, 3], rowHeight: '8rem' }}
 />
 
 A flexible grid that can support arbitrary rows of content, each of
@@ -24,87 +26,14 @@ Row and column gaps can be configured in a responsive way. For example, you migh
 have a particular set of gaps at small viewports and bigger ones on large viewports.
 
 <Canvas>
-  <Story
-    name="LayoutGrid"
-    args={{ rowGap: { xs: 'sm', lg: 'lg' }, columnGap: { xs: 'sm', lg: 'lg' } }}
-  >
-    {(args) => (
+  <Story name="LayoutGrid">
+    {({ columns, ...args }) => (
       <LayoutGrid {...args}>
-        <Column size={12}>
-          <ExampleBox>12</ExampleBox>
-        </Column>
-        <Column size={6}>
-          <ExampleBox>6</ExampleBox>
-        </Column>
-        <Column size={6}>
-          <ExampleBox>6</ExampleBox>
-        </Column>
-        <Column size={3}>
-          <ExampleBox>3</ExampleBox>
-        </Column>
-        <Column size={3}>
-          <ExampleBox>3</ExampleBox>
-        </Column>
-        <Column size={3}>
-          <ExampleBox>3</ExampleBox>
-        </Column>
-        <Column size={3}>
-          <ExampleBox>3</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={2}>
-          <ExampleBox>2</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
-        <Column size={1}>
-          <ExampleBox>1</ExampleBox>
-        </Column>
+        {columns.map((col, i) => (
+          <Column key={`${col}-general`} size={col} rows={(i % 2) + 1}>
+            <ExampleBox>{col}</ExampleBox>
+          </Column>
+        ))}
       </LayoutGrid>
     )}
   </Story>
