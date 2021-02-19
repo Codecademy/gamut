@@ -16,12 +16,15 @@ import { examples } from './NotificationList.stories.mdx';
     figmaId: '',
   }}
   args={{
-    handleDismiss: () => console.log('dismiss'),
     notifications: examples,
+    handleDismiss: () => {
+      // eslint-disable-next-line no-console
+      console.log('delete notification');
+    },
   }}
 />
 
-New notifications list component. Icon depends on notification type, else default bell icon displayed.
+New notifications list component. Each notification has in icon depending on its notification type, defaulting to a bell icon if none is provided.
 
 <Canvas>
   <Story name="NotificationListNew">

@@ -1,7 +1,4 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
-import { render, screen } from '@testing-library/react';
-import React from 'react';
+import { setupRtl } from '@codecademy/gamut-tests';
 
 import {
   NotificationItemNew,
@@ -35,37 +32,36 @@ const noLinkNotificationProps: NotificationItemNewProps = {
   handleDismiss,
 };
 
-const renderNotificationItemNew = (
-  notificationProps: NotificationItemNewProps
-) => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <NotificationItemNew {...notificationProps} />
-    </ThemeProvider>
-  );
-};
+const renderNotificationItemWithLink = setupRtl(
+  NotificationItemNew,
+  linkedNotificationProps
+);
+const renderNotificationItemWithNoLink = setupRtl(
+  NotificationItemNew,
+  noLinkNotificationProps
+);
 
 describe('NotificationItemNew', () => {
   it('renders a link if an href is specified', () => {
-    renderNotificationItemNew(linkedNotificationProps);
-    const href = screen.getByRole('link').getAttribute('href');
+    const { view } = renderNotificationItemWithLink();
+    const href = view.getByRole('link').getAttribute('href');
     expect(href).toStrictEqual(linkHref);
   });
 
   it('calls handleClick upon clicking a link', () => {
-    renderNotificationItemNew(linkedNotificationProps);
-    screen.getByRole('link').click();
+    const { view } = renderNotificationItemWithLink();
+    view.getByRole('link').click();
     expect(handleClick).toHaveBeenCalled();
   });
 
   it('does not render a link if no href is specified', () => {
-    renderNotificationItemNew(noLinkNotificationProps);
-    expect(screen.queryByRole('link')).toBeFalsy();
+    const { view } = renderNotificationItemWithNoLink();
+    expect(view.queryByRole('link')).toBeFalsy();
   });
 
   it('can be dismissed', () => {
-    renderNotificationItemNew(noLinkNotificationProps);
-    screen.getByRole('button').click();
+    const { view } = renderNotificationItemWithNoLink();
+    view.getByRole('button').click();
     expect(handleDismiss).toHaveBeenCalled();
   });
 });
