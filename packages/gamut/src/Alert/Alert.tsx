@@ -92,6 +92,7 @@ export const Alert: React.FC<AlertProps> = ({
   type = 'general',
   cta,
   onClose,
+  ...rest
 }) => {
   const { icon: Icon, mode } = VARIANT_META[type];
   const [expanded, setExpanded] = useState(false);
@@ -108,6 +109,7 @@ export const Alert: React.FC<AlertProps> = ({
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
       type={type}
+      {...rest}
     >
       <FlexBox
         height="2rem"
