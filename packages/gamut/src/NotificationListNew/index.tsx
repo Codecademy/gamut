@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash';
 import React from 'react';
 
 import { Pattern } from '..';
@@ -17,19 +18,23 @@ export const NotificationListNew = (props: NotificationListNewProps) => {
   return (
     <div>
       <Pattern name="dotsDense" height="1px" position="relative" />
-      {notifications.map((notification: Notification) => {
-        return (
-          <>
-            <NotificationItemNew
-              key={notification.id}
-              notification={notification}
-              handleClick={() => onNotificationClick?.(notification)}
-              handleDismiss={() => handleDismiss?.(notification)}
-            />
-            <Pattern name="dotsDense" height="1px" position="relative" />
-          </>
-        );
-      })}
+      {isEmpty(notifications) ? (
+        <div>Empty Notifications Placeholder </div>
+      ) : (
+        notifications.map((notification: Notification) => {
+          return (
+            <>
+              <NotificationItemNew
+                key={notification.id}
+                notification={notification}
+                handleClick={() => onNotificationClick?.(notification)}
+                handleDismiss={() => handleDismiss?.(notification)}
+              />
+              <Pattern name="dotsDense" height="1px" position="relative" />
+            </>
+          );
+        })
+      )}
     </div>
   );
 };
