@@ -35,42 +35,38 @@ const noLinkNotificationProps: NotificationItemNewProps = {
   handleDismiss,
 };
 
-const renderLinkedNotificationItemNew = () => {
+const renderNotificationItemNew = (link?: boolean) => {
   return render(
     <ThemeProvider theme={theme}>
-      <NotificationItemNew {...linkedNotificationProps} />
-    </ThemeProvider>
-  );
-};
-
-const renderNoLinkNotificationItemNew = () => {
-  return render(
-    <ThemeProvider theme={theme}>
-      <NotificationItemNew {...noLinkNotificationProps} />
+      {link ? (
+        <NotificationItemNew {...linkedNotificationProps} />
+      ) : (
+        <NotificationItemNew {...noLinkNotificationProps} />
+      )}
     </ThemeProvider>
   );
 };
 
 describe('NotificationItemNew', () => {
   it('renders a link if an href is specified', () => {
-    renderLinkedNotificationItemNew();
+    renderNotificationItemNew(true);
     const href = screen.getByRole('link').getAttribute('href');
     expect(href).toStrictEqual(linkHref);
   });
 
   it('calls handleClick upon clicking a link', () => {
-    renderLinkedNotificationItemNew();
+    renderNotificationItemNew(true);
     screen.getByRole('link').click();
     expect(handleClick).toHaveBeenCalled();
   });
 
   it('does not renders a link if no href is specified', () => {
-    renderNoLinkNotificationItemNew();
+    renderNotificationItemNew(false);
     expect(screen.queryByRole('link')).toBeFalsy();
   });
 
   it('can be dismissed', () => {
-    renderNoLinkNotificationItemNew();
+    renderNotificationItemNew(false);
     screen.getByRole('button').click();
     expect(handleDismiss).toHaveBeenCalled();
   });
