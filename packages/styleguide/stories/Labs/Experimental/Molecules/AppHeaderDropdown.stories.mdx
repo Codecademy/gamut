@@ -2,6 +2,7 @@ import { Box } from '@codecademy/gamut';
 import { AppHeaderDropdown } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -10,7 +11,13 @@ import { MOCK_PROFILE_DROPDOWN } from './MockAppHeaderElements';
 <Meta
   title={title}
   component={AppHeaderDropdown}
-  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    source: 'gamut-labs',
+    subtitle:
+      'An AppHeader subcomponent, used for both link dropdowns and the profile dropdown.',
+  }}
   args={{
     item: {
       id: 'target',
@@ -37,7 +44,7 @@ import { MOCK_PROFILE_DROPDOWN } from './MockAppHeaderElements';
   }}
 />
 
-A dropdown menu for use in AppHeader.
+A dropdown menu for use in <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo>.
 
 <Canvas>
   <Story name="AppHeaderDropdown">

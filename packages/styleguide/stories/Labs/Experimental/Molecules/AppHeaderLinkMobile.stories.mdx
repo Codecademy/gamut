@@ -1,13 +1,19 @@
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import { AppHeaderLinkMobile } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderLinkMobile"
   component={AppHeaderLinkMobile}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    subtitle:
+      'A styled Anchor with an optional icon and top separator for use in AppHeaderLinkSections and the mobile menu.',
+  }}
   args={{
     item: {
       id: 'link',
@@ -20,9 +26,7 @@ import { PropsTable } from '~styleguide/blocks';
   }}
 />
 
-A link for use in the mobile AppHeader.
-
-## Link - mobile view
+A link for use in <LinkTo kind="Labs/Experimental/Molecules/AppHeaderMainMenuMobile" story="AppHeaderMainMenuMobile">AppHeaderMainMenuMobile</LinkTo>, <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo>, and <LinkTo kind="Labs/Experimental/Molecules/AppHeaderDropdown" story="AppHeaderDropdown">AppHeaderDropdown</LinkTo>.
 
 <Canvas>
   <Story name="AppHeaderLinkMobile">

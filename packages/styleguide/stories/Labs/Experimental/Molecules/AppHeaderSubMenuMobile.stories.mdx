@@ -1,5 +1,6 @@
 import { AppHeaderSubMenuMobile } from '@codecademy/gamut-labs/src';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -11,22 +12,27 @@ import {
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderSubMenuMobile"
   component={AppHeaderSubMenuMobile}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    subtitle: 'The submenu for the mobile version of the AppHeader.',
+  }}
   args={{
     item: MOCK_DROPDOWN_1,
   }}
 />
 
-The AppHeaderSubMenuMobile component is used in the mobile version of the AppHeader.
-Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown", clicking on it opens a dropdown menu, on smaller screens, clicking on an AppHeaderItem of type "dropdown" opens the AppHeaderSubMenuMobile component. The component contains a title indicating the category of the menu (ex resources, community) and a list of links (forum, codecademy blog, etc).
+This component is used in the mobile version of the header (<LinkTo kind="Labs/Experimental/Molecules/AppHeaderMobile" story="AppHeaderMobile">AppHeaderMobile</LinkTo>).
 
-## SubMenu for mobile view
+Similar to in the desktop <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo>, when an AppHeaderItem has type "dropdown", clicking on it opens a dropdown menu, on smaller screens, clicking on an AppHeaderItem of type "dropdown" opens the <LinkTo kind="Labs/Experimental/Molecules/AppHeaderSubMenuMobile" story="AppHeaderSubMenuMobile">AppHeaderSubMenuMobile</LinkTo> component. The component contains a title indicating the category of the menu and a list of links.
 
 <Canvas>
   <Story name="AppHeaderSubMenuMobile">
     {(args) => <AppHeaderSubMenuMobile {...args} />}
   </Story>
 </Canvas>
+
+<PropsTable story="AppHeaderSubMenuMobile" />
 
 ## SubMenu for mobile view with dividers
 
@@ -40,5 +46,3 @@ Similar to in the desktop App Header, when an AppHeaderItem has type "dropdown",
     {(args) => <AppHeaderSubMenuMobile {...args} />}
   </Story>
 </Canvas>
-
-<PropsTable story="AppHeaderSubMenuMobile" />
