@@ -1,11 +1,11 @@
 import { CloseIcon } from '@codecademy/gamut-icons';
+import { Bell } from '@codecademy/gamut-illustrations';
 import { colors } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactElement } from 'react';
 
 import { Box, FlexBox, Text } from '..';
 import { Notification } from '../NotificationList/typings';
-import Bell from './assets/bell.svg';
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -58,7 +58,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
     return (
       <FlexBox paddingY={24} justifyContent="space-between" paddingX={32}>
         <FlexBox>
-          <img src={Bell} alt="" height={48} width={48} />
+          <Bell height={48} width={48} />
           <Box paddingLeft={12} textColor="navy">
             <Text as="span" fontSize="sm">
               {text}

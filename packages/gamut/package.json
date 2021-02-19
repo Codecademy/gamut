@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@codecademy/gamut-icons": "^4.0.0",
+    "@codecademy/gamut-illustrations": "^0.4.46",
     "@codecademy/gamut-styles": "^8.1.0",
     "@codecademy/gamut-tests": "^2.0.2",
     "@types/marked": "^1.1.0",
