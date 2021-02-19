@@ -41,17 +41,7 @@ const commonConfig = (options = {}) => {
 
     module: {
       strictExportPresence: true,
-      rules: includeDefaults
-        ? [
-            {
-              ...loaders.files.default,
-              options: {
-                name: DEV ? '[path][name].[ext]' : '[contenthash:8].[ext]',
-                ...fileLoaderOptions,
-              },
-            },
-          ]
-        : [],
+      rules: [includeDefaults && loaders.files.default].filter(Boolean),
     },
 
     resolve: {
