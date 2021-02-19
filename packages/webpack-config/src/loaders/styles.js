@@ -13,11 +13,6 @@ const cssLoaderDefaults = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
-    esModule: true,
-    sourceMap: true,
-    modules: {
-      localIdentName: CSS_MODULE_IDENT,
-    },
   },
 };
 
@@ -51,16 +46,10 @@ const extractPluginDefaults = {
 const scssFilePattern = /\.scss?$/;
 const scssLoaderDefaults = {
   loader: 'sass-loader',
-  options: {
-    sourceMap: true,
-  },
 };
 
 const styleLoaderDefaults = {
   loader: 'style-loader',
-  options: {
-    esModule: true,
-  },
 };
 
 const css = {
@@ -81,6 +70,7 @@ const css = {
       merge(cssLoaderDefaults, {
         options: {
           modules: {
+            auto: true,
             exportOnlyLocals: true,
           },
         },
