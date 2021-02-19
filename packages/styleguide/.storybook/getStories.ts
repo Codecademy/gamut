@@ -2,7 +2,7 @@ const glob = require('glob');
 const { intersection } = require('lodash');
 
 const DEFAULT_STORIES_GLOB = '../stories/**/*.stories.@(mdx|tsx)';
-const EXCLUDED_STORIES = ['Truncate', 'Popover'];
+const EXCLUDED_STORIES = ['Truncate', 'Popover', 'Coachmark'];
 
 const splitToChunks = (array: string[], parts: number) => {
   const copiedArray = array.concat([]);

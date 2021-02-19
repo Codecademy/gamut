@@ -1,5 +1,4 @@
-import { Banner, BannerStyle } from '@codecademy/gamut/src';
-import { AlertIcon } from '@codecademy/gamut-icons';
+import { Banner } from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -8,11 +7,14 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
   component={Banner}
   parameters={{
     subtitle: `Full-width banner to indicate important messaging at the top of a page or section.`,
-    status: 'deprecated',
+    status: 'stable',
     source: 'gamut',
-    figmaId: 'lsgaSKkOTN2FgSURwhQ6j5',
+    figmaId: 'wTwIV8YfAgZ8eNpKSEd0Gn',
   }}
-  args={{ children: 'Some Banner content!' }}
+  args={{
+    children:
+      'Happy Holidays! We have a Student discount for Codecademy **Pro**. [Learn More](https://gamut.codecademy.com)',
+  }}
 />
 
 <Canvas>
@@ -21,22 +23,21 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Props story="Banner" />
 
-## Full-Width Icon
+## Variants
 
-An informative icon can be added to the left of the banner.
-
-<Canvas>
-  <Story name="Icon Banner" args={{ icon: <AlertIcon /> }}>
+<Canvas isColumn>
+  <Story name="Navy" args={{ children: 'Navy', variant: 'navy' }}>
+    {(args) => <Banner {...args} />}
+  </Story>
+  <Story name="Yellow" args={{ children: 'Yellow', variant: 'yellow' }}>
     {(args) => <Banner {...args} />}
   </Story>
 </Canvas>
 
-## Bordered
+## Call to Action
 
-If your banner is on above similar content (?), add a BannerStyle to it.
-
-<Canvas>
-  <Story name="Bordered" args={{ displayStyle: BannerStyle.BorderBottom }}>
+<Canvas isColumn>
+  <Story name="Call to Action" args={{ cta: 'Learn more' }}>
     {(args) => <Banner {...args} />}
   </Story>
 </Canvas>
