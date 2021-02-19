@@ -64,7 +64,7 @@ const PatternContainer = styled.div<StyleProps>`
   background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
   top: ${({ position }) => (position === 'below' ? '8px' : '-8px')};
-  left: ${({ beak }) => (beak === 'left' ? '8px' : '-8px')};
+  left: ${({ align }) => (align === 'left' ? '8px' : '-8px')};
 `;
 
 export type PopoverProps = {
@@ -207,7 +207,7 @@ export const Popover: React.FC<PopoverProps> = ({
             {children}
           </RaisedDiv>
           {pattern && (
-            <PatternContainer position={position} beak={beak}>
+            <PatternContainer position={position} align={align}>
               <Pattern data-testid="popover-pattern" name={pattern} />
             </PatternContainer>
           )}
