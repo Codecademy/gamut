@@ -38,9 +38,12 @@
   transform: scale(0);
   width: px-rem(20px);
   height: px-rem(20px);
-  background-color: $color-hyper;
   border-radius: 100%;
   border: px-rem(5px) solid $color-white;
+}
+
+.radioInput:checked:not(:disabled) + .radioLabel::after {
+  background-color: $color-hyper;
 }
 
 .radioInput:checked + .radioLabel::after {
