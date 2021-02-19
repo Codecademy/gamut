@@ -15,8 +15,13 @@ import { examples } from './NotificationList.stories.mdx';
     status: '',
     figmaId: '',
   }}
-  args={{ notifications: examples }}
+  args={{
+    handleDismiss: () => console.log('dismiss'),
+    notifications: examples,
+  }}
 />
+
+New notifications list component. Icon depends on notification type, else default bell icon displayed.
 
 <Canvas>
   <Story name="NotificationListNew">
