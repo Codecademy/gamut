@@ -15,7 +15,7 @@ export const NotificationListNew = (props: NotificationListNewProps) => {
   const { notifications, onNotificationClick, handleDismiss } = props;
 
   return (
-    <>
+    <div>
       <Pattern name="dotsDense" height="1px" position="relative" />
       {notifications.map((notification: Notification) => {
         return (
@@ -23,13 +23,13 @@ export const NotificationListNew = (props: NotificationListNewProps) => {
             <NotificationItemNew
               key={notification.id}
               notification={notification}
-              onClick={() => onNotificationClick?.(notification)}
+              handleClick={() => onNotificationClick?.(notification)}
               handleDismiss={() => handleDismiss?.(notification)}
             />
             <Pattern name="dotsDense" height="1px" position="relative" />
           </>
         );
       })}
-    </>
+    </div>
   );
 };
