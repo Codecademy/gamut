@@ -185,7 +185,10 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').props()
+      wrapped
+        .find('[data-testid="popover-content-container"]')
+        .hostNodes()
+        .props()
     ).toMatchObject({
       style: {
         top: 318,
@@ -205,7 +208,10 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').props()
+      wrapped
+        .find('[data-testid="popover-content-container"]')
+        .hostNodes()
+        .props()
     ).toMatchObject({
       style: {
         top: 240,
@@ -226,7 +232,10 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').props()
+      wrapped
+        .find('[data-testid="popover-content-container"]')
+        .hostNodes()
+        .props()
     ).toMatchObject({
       style: {
         top: 231,
@@ -247,7 +256,10 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').props()
+      wrapped
+        .find('[data-testid="popover-content-container"]')
+        .hostNodes()
+        .props()
     ).toMatchObject({
       style: {
         top: 240,
@@ -268,34 +280,16 @@ describe('Popover', () => {
     });
 
     expect(
-      wrapped.find('[data-testid="popover-content-container"]').props()
+      wrapped
+        .find('[data-testid="popover-content-container"]')
+        .hostNodes()
+        .props()
     ).toMatchObject({
       style: {
         top: 230,
         left: 842,
       },
     });
-  });
-
-  it('does not outline beak if the outline prop is falsy', () => {
-    renderPopover({
-      isOpen: true,
-      beak: 'left',
-    });
-
-    expect(
-      screen.queryByTestId('popover-beak-outline')
-    ).not.toBeInTheDocument();
-  });
-
-  it('outlines beak if the outline prop is true', () => {
-    renderPopover({
-      isOpen: true,
-      beak: 'left',
-      outline: true,
-    });
-
-    expect(screen.queryByTestId('popover-beak-outline')).toBeInTheDocument();
   });
 
   it('does not show a pattern if the prop is not provided', () => {

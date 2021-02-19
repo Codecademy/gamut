@@ -1,22 +1,38 @@
 import { BodyPortal, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import FocusTrap from 'focus-trap-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
-
-import styles from './styles.module.scss';
 
 type StyleProps = {
   outline?: boolean;
   position?: 'above' | 'below';
   beak?: 'right' | 'left';
+  align?: 'right' | 'left';
 };
+
+const transform = {
+  right: 'translateX(-100%)',
+  left: 'translateX(0%)',
+  above: 'translateY(-100%)',
+  below: 'translateY(0%)',
+};
+
+const PopoverContainer = styled.div<StyleProps>`
+  position: fixed;
+  display: flex;
+  z-index: 1;
+  transform: ${({ position, align }) =>
+    position && align && `${transform[position]} ${transform[align]}`};
+`;
 
 const RaisedDiv = styled.div<StyleProps>`
   z-index: 1;
   border: 1px ${({ outline }) => (outline ? 'solid' : 'none')} black;
   background-color: ${({ theme }) => theme.colors.white};
+  ${({ outline }) =>
+    !outline &&
+    'box-shadow: 0 0 16px rgba(0, 0, 0, 0.1), 0 0 24px rgba(0, 0, 0, 0.15)'};
 `;
 
 const Beak = styled.div<StyleProps>`
@@ -159,13 +175,11 @@ export const Popover: React.FC<PopoverProps> = ({
           onDeactivate: onRequestClose,
         }}
       >
-        <div
+        <PopoverContainer
+          position={position}
+          align={align}
           ref={popoverRef}
-          className={cx(
-            styles.popover,
-            styles[`${position}-${align}`],
-            className
-          )}
+          className={className}
           style={getPopoverPosition()}
           data-testid="popover-content-container"
         >
@@ -194,7 +208,7 @@ export const Popover: React.FC<PopoverProps> = ({
               name={pattern}
             />
           )}
-        </div>
+        </PopoverContainer>
       </FocusTrap>
     </BodyPortal>
   );
