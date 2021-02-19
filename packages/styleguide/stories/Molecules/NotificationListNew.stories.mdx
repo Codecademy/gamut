@@ -1,0 +1,27 @@
+import { NotificationListNew } from '@codecademy/gamut/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+import { examples } from './NotificationList.stories.mdx';
+
+<Meta
+  title={title}
+  component={NotificationListNew}
+  parameters={{
+    subtitle: '',
+    source: 'gamut',
+    status: '',
+    figmaId: '',
+  }}
+  args={{ notifications: examples }}
+/>
+
+<Canvas>
+  <Story name="NotificationListNew">
+    {(args) => <NotificationListNew {...args} />}
+  </Story>
+</Canvas>
+
+<PropsTable story="NotificationListNew" />
