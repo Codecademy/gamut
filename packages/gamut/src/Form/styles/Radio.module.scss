@@ -25,7 +25,7 @@
   width: px-rem(20px);
   height: px-rem(20px);
   border-radius: 100%;
-  box-shadow: 0 0 0 1px $color-gray-600;
+  box-shadow: 0 0 0 1px $color-gray-500;
   margin-right: $form-padding;
   transition: 0.3s;
 }
@@ -60,11 +60,11 @@
 }
 
 .radioInput:disabled:checked + .radioLabel::before {
-  background-color: $color-gray-600;
+  background-color: $color-gray-500;
   border: 0.25rem solid $color-white;
-  box-shadow: 0 0 0 1px $color-gray-600;
+  box-shadow: 0 0 0 1px $color-gray-500;
 }
 
 .radioInput:disabled + .radioLabel {
-  color: $color-gray-600;
+  color: $color-gray-500;
 }
