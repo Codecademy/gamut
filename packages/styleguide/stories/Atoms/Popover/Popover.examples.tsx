@@ -1,5 +1,5 @@
-import { Box, Container, FillButton } from '@codecademy/gamut/src';
-import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
+import { Box, Container, FillButton } from '@codecademy/gamut';
+import { Popover, PopoverProps } from '@codecademy/gamut-labs';
 import { useState } from '@storybook/addons';
 import React, { useRef } from 'react';
 

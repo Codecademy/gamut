@@ -18,32 +18,17 @@ module.exports.default = {
           return;
         }
 
-        if (filename.includes('/styleguide/stories')) {
-          if (importPath.includes('/gamut-styles/src')) {
-            context.report({
-              messageId: 'removeSrc',
-              node,
-            });
-          } else if (importPath.includes('/gamut-styles/dist')) {
-            context.report({
-              messageId: 'removeDist',
-              node,
-            });
-          } else if (
-            !importPath.includes('/gamut-styles') &&
-            !importPath.includes('/src')
-          ) {
-            context.report({
-              messageId: 'includeSrc',
-              node,
-            });
-          }
+        if (importPath.includes('/src')) {
+          context.report({
+            messageId: 'removeSrc',
+            node,
+          });
           return;
         }
 
-        if (node.source.value.includes('/src')) {
+        if (importPath.includes('/dist')) {
           context.report({
-            messageId: 'removeSrc',
+            messageId: 'removeDist',
             node,
           });
         }
@@ -63,7 +48,6 @@ module.exports.default = {
         'There is no need to append /dist to the end of this module path.',
       removeSrc:
         'There is no need to append /src to the end of this module path.',
-      includeSrc: 'Append /src to the end of this module path.',
       useRelativeImport: 'Use a relative path for this import statement.',
     },
     type: 'suggestion',
