@@ -19,17 +19,16 @@ import { Truncate } from '../Truncate';
 
 export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
 
-export type AlertProps = {
-  className?: string;
-  /** Alert Variant String */
-  type?: AlertType;
-  /** Callback to be called when the close icon is clicked */
-  onClose?: () => void;
-  /** Call to Action Configuration */
-  cta?: Omit<
-    React.ComponentProps<typeof FillButton>,
-    'variant' | 'mode' | 'size'
-  > & { text?: string };
+export type AlertPlacements = 'inline' | 'floating';
+
+export type FloatingAlert = {
+  type: AlertType;
+  placement: 'floating';
+};
+
+export type InlineAlert = {
+  type: Exclude<AlertType, 'notice' | 'feature'>;
+  placement: 'inline';
 };
 
 const VARIANT_META = {
@@ -44,39 +43,57 @@ const VARIANT_META = {
   feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
 
-const AlertBanner = styled(Box)(
-  variant({
-    prop: 'type',
-    variants: {
-      general: {
-        backgroundColor: 'blue',
-        textColor: 'white',
-      },
-      success: {
-        backgroundColor: 'green',
-        textColor: 'white',
-      },
-      error: {
-        backgroundColor: 'red',
-        textColor: 'white',
-      },
-      notice: {
-        backgroundColor: 'orange',
-        textColor: 'navy',
-      },
-      feature: {
-        backgroundColor: 'blue-300',
-        textColor: 'navy',
-      },
+const placementVariants = variant({
+  prop: 'placement',
+  variants: {
+    inline: {},
+    floating: {
+      borderColor: 'navy',
     },
-  }),
-  ({ theme }) => css`
+  },
+});
+
+const alertVariants = variant({
+  prop: 'type',
+  variants: {
+    general: {
+      backgroundColor: 'blue',
+      borderColor: 'blue',
+      textColor: 'white',
+    },
+    success: {
+      backgroundColor: 'green',
+      borderColor: 'green',
+      textColor: 'white',
+    },
+    error: {
+      backgroundColor: 'red',
+      borderColor: 'red',
+      textColor: 'white',
+    },
+    notice: {
+      backgroundColor: 'orange',
+      borderColor: 'orange',
+      textColor: 'navy',
+    },
+    feature: {
+      backgroundColor: 'blue-300',
+      borderColor: 'blue-300',
+      textColor: 'navy',
+    },
+  },
+});
+
+const AlertBanner = styled(Box)<FloatingAlert | InlineAlert>(
+  css`
     display: grid;
     width: 100%;
     max-width: 820px;
-    border: 2px solid ${theme.colors.navy};
+    border: 2px solid currentColor;
     border-radius: 3px;
-  `
+  `,
+  alertVariants,
+  placementVariants
 );
 
 AlertBanner.defaultProps = {
@@ -85,14 +102,24 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
-export const Alert: React.FC<AlertProps> = ({
+export type AlertProps = {
+  className?: string;
+  /** Callback to be called when the close icon is clicked */
+  onClose?: () => void;
+  /** Call to Action Configuration */
+  cta?: Omit<
+    React.ComponentProps<typeof FillButton>,
+    'variant' | 'mode' | 'size'
+  > & { text?: string };
+};
+
+export const Alert: React.FC<AlertProps & (FloatingAlert | InlineAlert)> = ({
   children,
-  type = 'general',
   cta,
   onClose,
-  ...rest
+  ...props
 }) => {
-  const { icon: Icon, mode } = VARIANT_META[type];
+  const { icon: Icon, mode } = VARIANT_META[props.type];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
@@ -106,8 +133,7 @@ export const Alert: React.FC<AlertProps> = ({
       alignItems="start"
       columnGap={[4, 8, , 12]}
       gridTemplateColumns={columns}
-      type={type}
-      {...rest}
+      {...props}
     >
       <FlexBox
         height="2rem"
@@ -115,7 +141,7 @@ export const Alert: React.FC<AlertProps> = ({
         alignItems="center"
         justifyContent="center"
       >
-        <Icon size={16} aria-label={`${type}-icon`} />
+        <Icon size={16} aria-label={`${props.type}-icon`} />
       </FlexBox>
       <Box paddingY={4}>
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
@@ -150,4 +176,9 @@ export const Alert: React.FC<AlertProps> = ({
       )}
     </AlertBanner>
   );
+};
+
+Alert.defaultProps = {
+  type: 'general',
+  placement: 'floating',
 };

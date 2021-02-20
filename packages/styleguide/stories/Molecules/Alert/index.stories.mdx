@@ -18,7 +18,8 @@ import { ALERTS } from './constants';
     padded: true,
   }}
   args={{
-    variant: 'general',
+    type: 'general',
+    placement: 'floating',
     cta: {
       children: 'Learn More',
     },
@@ -27,57 +28,93 @@ import { ALERTS } from './constants';
   }}
 />
 
+<Story name="Alert">{(args) => <Alert {...args} />}</Story>
+
+<br />
+
 ## Usage Guidelines
 
-- Alerts should be displayed at the top of the page, below the navigation bar. (40px)
-- They’re persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
-- Floats/overlays over any content below it
+- There are 5 alert types. Choose the one that applies most to your case.
+- Displayed at the top of the page, below the navigation bar.
+- Persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
+- Floats/overlays over any content below it.
 - Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
+- **For Inline use**: Only use the inline variant (non-stroked) and only use Success, Error or General type, other types are for top-level use only.
 
-<Canvas>
-  <Story name="Alert">{(args) => <Alert {...args} />}</Story>
-</Canvas>
+<br />
 
-<PropsTable story="Alert" />
+## Alert Types
 
-## Alert Variants
+**General**
 
-<Canvas isColumn>
-  <Story name="general" args={ALERTS.general}>
-    {(args) => <Alert {...args} />}
-  </Story>
-  <Story name="success" args={ALERTS.success}>
-    {(args) => <Alert {...args} />}
-  </Story>
-  <Story name="error" args={ALERTS.error}>
-    {(args) => <Alert {...args} />}
-  </Story>
-  <Story name="notice" args={ALERTS.notice}>
-    {(args) => <Alert {...args} />}
-  </Story>
-  <Story name="feature" args={ALERTS.feature}>
-    {(args) => <Alert {...args} />}
-  </Story>
-</Canvas>
+<Story name="General" args={ALERTS.general}>
+  {(args) => <Alert {...args} />}
+</Story>
 
-## Truncated message
+**Success**
 
-<Canvas>
-  <Story
-    name="Truncated"
-    args={{
-      message:
-        'You can now do this new thing with this new feature we just added! Maintenance: Codecademy will be offline between 02:00 AM and 08:00 AM.  Couldn’t save your account changes because there is connection.',
-    }}
-  >
-    {(args) => <Alert {...args} />}
-  </Story>
-</Canvas>
+<Story name="Success" args={ALERTS.success}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+**Error**
+
+<Story name="Error" args={ALERTS.error}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+**Notice**
+
+<Story name="Notice" args={ALERTS.notice}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+**Feature**
+
+<Story name="Feature" args={ALERTS.feature}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+<br />
+
+## Inline Variant
+
+For inline use you can use these non-stroked versions for the General, Success and Error type.
+
+**General**
+
+<Story name="Inline General" args={{ ...ALERTS.general, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+**Success**
+
+<Story name="Inline Success" args={{ ...ALERTS.success, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+**Error**
+
+<Story name="Inline Error" args={{ ...ALERTS.error, placement: 'inline' }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+<br />
 
 ## No CTA
 
+<Story name="No CTA" args={{ cta: undefined }}>
+  {(args) => <Alert {...args} />}
+</Story>
+
+<br />
+
+## Code Playground
+
+Edit attributes and see what’s possible to do with this component or get the exact output you want.
+
 <Canvas>
-  <Story name="No CTA" args={{ cta: undefined }}>
-    {(args) => <Alert {...args} />}
-  </Story>
+  <Story name="Playground">{(args) => <Alert {...args} />}</Story>
 </Canvas>
+
+<PropsTable story="Playground" />
