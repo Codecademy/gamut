@@ -45,6 +45,8 @@ import { ALERTS } from './constants';
 
 ## Alert Types
 
+<br />
+
 **General**
 
 <Story name="General" args={ALERTS.general}>
@@ -96,14 +98,6 @@ For inline use you can use these non-stroked versions for the General, Success a
 **Error**
 
 <Story name="Inline Error" args={{ ...ALERTS.error, placement: 'inline' }}>
-  {(args) => <Alert {...args} />}
-</Story>
-
-<br />
-
-## No CTA
-
-<Story name="No CTA" args={{ cta: undefined }}>
   {(args) => <Alert {...args} />}
 </Story>
 
