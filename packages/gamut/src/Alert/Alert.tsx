@@ -30,8 +30,6 @@ export type AlertProps = {
     React.ComponentProps<typeof FillButton>,
     'variant' | 'mode' | 'size'
   > & { text?: string };
-  /** Message to display if the component has no children */
-  message?: string;
 };
 
 const VARIANT_META = {
