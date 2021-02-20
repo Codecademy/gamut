@@ -9,7 +9,7 @@ describe('Alert', () => {
   const renderView = setupEnzyme(Alert, {
     onClose,
     children: 'Hello',
-    variant: 'general',
+    variant: 'notice',
   });
 
   beforeEach(() => {

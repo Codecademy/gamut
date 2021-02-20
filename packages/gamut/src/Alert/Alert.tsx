@@ -17,20 +17,6 @@ import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
 import { Truncate } from '../Truncate';
 
-export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
-
-export type AlertPlacements = 'inline' | 'floating';
-
-export type FloatingAlert = {
-  type: AlertType;
-  placement: 'floating';
-};
-
-export type InlineAlert = {
-  type: Exclude<AlertType, 'notice' | 'feature'>;
-  placement: 'inline';
-};
-
 const VARIANT_META = {
   general: { order: 4, icon: MiniInfoCircleIcon, mode: 'dark' },
   success: { order: 2, icon: MiniCheckCircleIcon, mode: 'dark' },
@@ -42,6 +28,34 @@ const VARIANT_META = {
   },
   feature: { order: 5, icon: MiniStarIcon, mode: 'light' },
 } as const;
+
+export type AlertType = 'general' | 'success' | 'error' | 'notice' | 'feature';
+export type AlertPlacements = 'inline' | 'floating';
+
+export type AlertBase = {
+  type?: AlertType;
+  placement?: AlertPlacements;
+  className?: string;
+  /** Callback to be called when the close icon is clicked */
+  onClose?: () => void;
+  /** Call to Action Configuration */
+  cta?: Omit<
+    React.ComponentProps<typeof FillButton>,
+    'variant' | 'mode' | 'size'
+  > & { text?: string };
+};
+
+export type FloatingAlert = AlertBase & {
+  type?: AlertType;
+  placement?: 'floating';
+};
+
+export type InlineAlert = AlertBase & {
+  type?: Exclude<AlertType, 'notice' | 'feature'>;
+  placement?: 'inline';
+};
+
+export type AlertProps = FloatingAlert | InlineAlert;
 
 const placementVariants = variant({
   prop: 'placement',
@@ -84,7 +98,7 @@ const alertVariants = variant({
   },
 });
 
-const AlertBanner = styled(Box)<FloatingAlert | InlineAlert>(
+const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
   css`
     display: grid;
     width: 100%;
@@ -102,24 +116,14 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
-export type AlertProps = {
-  className?: string;
-  /** Callback to be called when the close icon is clicked */
-  onClose?: () => void;
-  /** Call to Action Configuration */
-  cta?: Omit<
-    React.ComponentProps<typeof FillButton>,
-    'variant' | 'mode' | 'size'
-  > & { text?: string };
-};
-
-export const Alert: React.FC<AlertProps & (FloatingAlert | InlineAlert)> = ({
+export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
   onClose,
   ...props
 }) => {
-  const { icon: Icon, mode } = VARIANT_META[props.type];
+  const type = props.type ?? 'general';
+  const { icon: Icon, mode } = VARIANT_META[type];
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
