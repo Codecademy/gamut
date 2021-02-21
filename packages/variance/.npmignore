@@ -3,3 +3,4 @@ src/
 *.ts
 *.tsx
 !*.d.ts
+__tests__
