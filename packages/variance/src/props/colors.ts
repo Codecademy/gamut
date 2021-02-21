@@ -1,5 +1,6 @@
 export const color = {
   textColor: { property: 'color' },
+  bgColor: { property: 'backgroundColor' },
   backgroundColor: { property: 'backgroundColor' },
   borderColor: { property: 'borderColor' },
   borderColorX: {

@@ -18,100 +18,60 @@ import {
   ThemeProps,
 } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
-import { isMediaArray, isMediaMap } from './utils';
+import { orderPropNames } from './utils/propNames';
+import {
+  arrayParser,
+  isMediaArray,
+  isMediaMap,
+  objectParser,
+  parseBreakpoints,
+} from './utils/responsive';
 
 export const variance = {
   withTheme: function <T extends AbstractTheme>() {
     return {
-      // Destructures the themes breakpoints into an ordered structure to traverse
-      getBreakpoints: function (props: ThemeProps<T>): BreakpointCache<T> {
-        const breakpoints = props?.theme?.breakpoints;
-        if (!breakpoints) return null;
-
-        const { xs, sm, md, lg, xl } = breakpoints;
-        return {
-          map: breakpoints,
-          array: [xs, sm, md, lg, xl],
-        };
-      },
-      // Get each prop name and sort it by the number of properties it handles, most props first, least props last
-      getPropNames: function (
-        config: Record<string, AbstractPropTransformer<T>>
-      ) {
-        return Object.keys(config).sort((a, b) => {
-          const aProps = config?.[a].properties;
-          const bProps = config?.[b].properties;
-          if (aProps && bProps) {
-            return bProps.length - aProps.length;
-          } else if (aProps) {
-            return -1;
-          } else if (bProps) {
-            return 1;
-          }
-          return 0;
-        });
-      },
       // Parser to handle any set of configured props
       createParser: function <
         Config extends Record<string, AbstractPropTransformer<T>>
       >(config: Config): Parser<T, Config> {
-        let breakpoints: BreakpointCache<T>;
-        const propNames = this.getPropNames(config);
+        let breakpoints: BreakpointCache;
+        const propNames = orderPropNames(config);
 
         const parser = (props: { theme?: T }) => {
           const styles = {};
           // Get the themes configured breakpoints
-          breakpoints = breakpoints ?? this.getBreakpoints(props);
+          breakpoints = breakpoints ?? parseBreakpoints(props?.theme) ?? {};
+          const { map, array } = breakpoints;
 
           // Loops over all prop names on the configured config to check for configured styles
           propNames.forEach((prop) => {
-            const transform = config[prop].styleFn;
+            const property = config[prop];
             const value = get(props, prop);
 
             switch (typeof value) {
               case 'string':
               case 'number':
-                Object.assign(styles, transform(value, prop, props));
-                break;
+                return Object.assign(
+                  styles,
+                  property.styleFn(value, prop, props)
+                );
               // handle any props configured with the responsive notation
               case 'object':
-                if (!breakpoints) return;
-                const breakpointStyles = {};
-
+                if (!map && !array) return;
                 // If it is an array the order of values is smallest to largest: [base, xs, ...]
                 if (isMediaArray(value)) {
-                  const [base, ...rest] = value;
-                  // the first index is base styles
-                  if (base) Object.assign(styles, transform(base, prop, props));
-
-                  // Map over each value in the array and merge the corresponding breakpoint styles
-                  // for that property.
-                  rest.forEach((val, i) => {
-                    const breakpointKey = breakpoints?.array[i];
-                    if (!breakpointKey) return;
-                    merge(breakpointStyles, {
-                      [breakpointKey]: transform(val, prop, props),
-                    });
-                  });
+                  return merge(
+                    styles,
+                    arrayParser(value, props, property, array)
+                  );
                 }
-
                 // If it is an object with keys
                 if (isMediaMap(value)) {
-                  const { base = undefined, ...rest } = value;
-                  // the keyof 'base' is base styles
-                  if (base) Object.assign(styles, transform(base, prop, props));
-
-                  // Map over remaining keys and merge the corresponding breakpoint styles
-                  // for that property.
-                  Object.keys(rest).forEach((bp: keyof typeof rest) => {
-                    const breakpointKey = breakpoints?.map?.[bp];
-                    if (!breakpointKey) return;
-                    merge(breakpointStyles, {
-                      [breakpointKey]: transform(rest[bp], prop, props),
-                    });
-                  });
+                  return merge(
+                    styles,
+                    objectParser(value, props, property, map)
+                  );
                 }
-                merge(styles, breakpointStyles);
             }
           });
           return styles;
@@ -135,14 +95,12 @@ export const variance = {
           prop,
           styleFn: (value, prop, props) => {
             const styles: CSSObject = {};
+            const path = `theme.${config.scale}.${value}`;
+            const scaleVal = get(props, path, value);
             // for each property look up the scale value from theme if passed and apply any
             // final transforms to the value
             properties.forEach((property) => {
-              styles[property] = transform(
-                get(props, `theme.${config.scale}.${value}`, value),
-                prop,
-                props
-              );
+              styles[property] = transform(scaleVal, prop, props);
             });
             // return the resulting styles object
             return styles;
