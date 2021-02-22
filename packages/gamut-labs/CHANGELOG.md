@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.3...@codecademy/gamut-labs@10.1.4) (2021-02-22)
+
+
+### Bug Fixes
+
+* remove z index from popover ([ef1750f](https://github.com/Codecademy/client-modules/commit/ef1750fac144f26da4db5459297c2de7e59001f7))
+
+
+
+### [10.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.2...@codecademy/gamut-labs@10.1.3) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.1...@codecademy/gamut-labs@10.1.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.0...@codecademy/gamut-labs@10.1.1) (2021-02-19)
 
 
