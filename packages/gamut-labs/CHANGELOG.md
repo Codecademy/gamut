@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.0...@codecademy/gamut-labs@10.1.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* popover pattern expands to the size of its container ([f74d723](https://github.com/Codecademy/client-modules/commit/f74d723010d96ce5e0ff463a1834a1e30a338976))
+
+
+
 ## [10.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.13...@codecademy/gamut-labs@10.1.0) (2021-02-19)
 
 
