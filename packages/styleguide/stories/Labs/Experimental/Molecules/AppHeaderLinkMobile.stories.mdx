@@ -7,7 +7,12 @@ import { PropsTable } from '~styleguide/blocks';
 <Meta
   title="Labs/Experimental/Molecules/AppHeaderLinkMobile"
   component={AppHeaderLinkMobile}
-  parameters={{ layout: 'padded', status: 'volatile' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    subtitle:
+      'A styled Anchor with an optional icon and top separator for use in AppHeaderLinkSections and the mobile menu.',
+  }}
   args={{
     item: {
       id: 'link',
@@ -19,10 +24,6 @@ import { PropsTable } from '~styleguide/blocks';
     },
   }}
 />
-
-A link for use in the mobile AppHeader.
-
-## Link - mobile view
 
 <Canvas>
   <Story name="AppHeaderLinkMobile">
