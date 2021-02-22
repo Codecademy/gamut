@@ -1,7 +1,6 @@
 import { AppHeaderLink } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-import LinkTo from '@storybook/addon-links/dist/react/components/link';
 
 import { PropsTable } from '~styleguide/blocks';
 
@@ -25,8 +24,6 @@ import { PropsTable } from '~styleguide/blocks';
     },
   }}
 />
-
-A simple link for use in the top-level of <LinkTo kind="Labs/Experimental/Molecules/AppHeader" story="AppHeader">AppHeader</LinkTo> (i.e., not in dropdowns or the mobile menu).
 
 <Canvas>
   <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>
