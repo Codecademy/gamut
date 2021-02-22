@@ -4,7 +4,7 @@ import { Notification } from '../../NotificationList/typings';
 import { NotificationListNew, NotificationListNewProps } from '..';
 
 const onNotificationClick = jest.fn();
-const handleDismiss = jest.fn();
+const onDismiss = jest.fn();
 
 const linkedNotification: Notification = {
   text: 'Notification 1',
@@ -23,7 +23,7 @@ const noLinkNotification: Notification = {
 
 const NotificationListProps: NotificationListNewProps = {
   notifications: [linkedNotification, noLinkNotification],
-  handleDismiss,
+  onDismiss,
   onNotificationClick,
 };
 
@@ -58,7 +58,7 @@ describe('NotificationListNew', () => {
     view.getAllByRole('button').map((dismissBtn) => {
       return dismissBtn.click();
     });
-    expect(handleDismiss).toHaveBeenCalledTimes(2);
+    expect(onDismiss).toHaveBeenCalledTimes(2);
   });
 
   it('renders a message when the user has no more notifications', () => {

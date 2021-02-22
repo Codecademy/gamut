@@ -6,7 +6,7 @@ import { Notification } from '../NotificationList/typings';
 import { NotificationItemNew } from './NotificationItemNew';
 
 export type NotificationListNewProps = {
-  handleDismiss?: (notification: Notification) => void;
+  onDismiss?: (notification: Notification) => void;
   notifications: Notification[];
   onNotificationClick?: (notification: Notification) => void;
 };
@@ -14,7 +14,7 @@ export type NotificationListNewProps = {
 export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   notifications,
   onNotificationClick,
-  handleDismiss,
+  onDismiss,
 }) => {
   const pattern = <Pattern name="dotsDense" height="1px" display="flex" />;
   return (
@@ -30,7 +30,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
                 key={notification.id}
                 notification={notification}
                 handleClick={() => onNotificationClick?.(notification)}
-                handleDismiss={() => handleDismiss?.(notification)}
+                handleDismiss={() => onDismiss?.(notification)}
               />
               {pattern}
             </>
