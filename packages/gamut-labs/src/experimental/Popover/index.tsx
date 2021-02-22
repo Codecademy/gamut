@@ -21,7 +21,6 @@ const transform = {
 const PopoverContainer = styled.div<StyleProps>`
   position: fixed;
   display: flex;
-  z-index: 1;
   transform: ${({ position, align }) =>
     position && align && `${transform[position]} ${transform[align]}`};
 `;
