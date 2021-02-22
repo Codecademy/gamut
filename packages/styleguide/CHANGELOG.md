@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.1...@codecademy/styleguide@29.1.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.0...@codecademy/styleguide@29.1.1) (2021-02-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.0.0...@codecademy/styleguide@29.1.0) (2021-02-19)
+
+
+### Features
+
+* add new coachmark component ([f268e07](https://github.com/Codecademy/client-modules/commit/f268e07d55de5625c0a89295578b6bb43ea6e025))
+
+
+
+## [29.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@28.0.0...@codecademy/styleguide@29.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Banner:** Banner new visual identity [GM-123]
+
+### Features
+
+* **Banner:** Banner new visual identity [GM-123] ([07c26fb](https://github.com/Codecademy/client-modules/commit/07c26fbfcfcc0a3fbb2eba84adcc9dac6645876f))
+
+
+
+## [28.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.1...@codecademy/styleguide@28.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* progress bar theme => variant
+
+### Features
+
+* progress bar theme => variant ([867e974](https://github.com/Codecademy/client-modules/commit/867e974613f89708096886aeba4ad71e37ea508a))
+
+
+
 ### [27.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.0...@codecademy/styleguide@27.2.1) (2021-02-17)
 
 
