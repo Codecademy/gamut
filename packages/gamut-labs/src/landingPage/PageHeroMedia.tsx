@@ -39,7 +39,9 @@ export const PageHeroMedia: React.FC<PageHeroMediaProps> = ({ media }) => {
       const videoArgs = omit(media, 'type');
       return (
         <RightColumn size={5}>
-          <StyledVideo {...videoArgs} />
+          <div role="presentation" aria-hidden="true">
+            <StyledVideo {...videoArgs} />
+          </div>
         </RightColumn>
       );
   }
