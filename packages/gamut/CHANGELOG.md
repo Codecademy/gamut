@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.1.0...@codecademy/gamut@25.2.0) (2021-02-22)
+
+
+### Features
+
+* **Radio:** changes color and adds hover behavior ([#1416](https://github.com/Codecademy/client-modules/issues/1416)) ([d397646](https://github.com/Codecademy/client-modules/commit/d397646d8fb2583a0d7d6ad352eb5305894a74a6))
+
+
+
 ## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.0.0...@codecademy/gamut@25.1.0) (2021-02-22)
 
 
