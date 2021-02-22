@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.0.0...@codecademy/gamut@25.1.0) (2021-02-22)
+
+
+### Features
+
+* **New Notifications components:** notifications list & notification ([3c1b92d](https://github.com/Codecademy/client-modules/commit/3c1b92d1e049f161ff5386f16cd48405d4c0bc2d))
+
+
+
 ## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@24.0.0...@codecademy/gamut@25.0.0) (2021-02-18)
 
 

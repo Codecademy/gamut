@@ -39,5 +39,5 @@
     "dist/**/[A-Z]**/[A-Z]*.js",
     "dist/**/[A-Z]**/index.js"
   ],
-  "version": "0.4.46"
+  "version": "0.5.0"
 }
