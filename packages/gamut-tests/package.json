@@ -12,7 +12,7 @@
     "rtl"
   ],
   "name": "@codecademy/gamut-tests",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "license": "MIT",
   "main": "./dist/index.js",
   "module": "dist/index.js",

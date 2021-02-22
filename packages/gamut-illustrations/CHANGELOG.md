@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.5.0...@codecademy/gamut-illustrations@0.6.0) (2021-02-22)
+
+
+### Features
+
+* add a illustration for business team ([97fa82b](https://github.com/Codecademy/client-modules/commit/97fa82b31345627a66fabbadcc056c755f80d48f))
+
+
+
 ## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.4.46...@codecademy/gamut-illustrations@0.5.0) (2021-02-22)
 
 
