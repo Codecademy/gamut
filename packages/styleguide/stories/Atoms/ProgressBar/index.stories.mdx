@@ -1,5 +1,9 @@
-import { Column, LayoutGrid, ProgressBar } from '@codecademy/gamut/src';
-import { colors } from '@codecademy/gamut-styles';
+import {
+  Column,
+  GridBox,
+  LayoutGrid,
+  ProgressBar,
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -13,7 +17,7 @@ import { bars } from './constants';
     source: 'gamut',
     status: 'volatile',
   }}
-  args={{ minimumPercent: 5, percent: 5, theme: 'blue' }}
+  args={{ minimumPercent: 5, percent: 5 }}
 />
 
 ProgressBars are to be used when you would like to indicate a known or
@@ -21,17 +25,19 @@ somewhat-known amount of progress along a fixed course. For example, you
 might show one on a quiz page indicating how many questions have been
 completed.
 
-Bars with `large` specified are thicker, and will display a
-percentage label if a font color is specified.
+ProgressBar comes in one of three sizes: `small`, `medium`, and `large`.
+
+Bars with the `large` size are thicker and will display a
+percentage label.
 
 <Canvas>
   <Story name="ProgressBar">
     {(args) => (
       <LayoutGrid columnGap="sm" rowGap="sm">
         {[0, 25, 50, 75, 100].map((percent) =>
-          bars.map(({ large, theme }) => (
-            <Column key={[percent, large, theme].join()} size={6}>
-              <ProgressBar large={large} percent={percent} theme={theme} />
+          bars.map(({ size, variant }) => (
+            <Column key={[percent, size, variant].join()} size={4}>
+              <ProgressBar size={size} percent={percent} variant={variant} />
             </Column>
           ))
         )}
@@ -52,26 +58,6 @@ progress, even if the technical progress number is zero. You can use the
   <Story name="Minimum Percentage">{(args) => <ProgressBar {...args} />}</Story>
 </Canvas>
 
-## Style Overrides
-
-For the sake of rapid iteration, you can pass in custom style colors via the
-`style` prop.
-
-<Canvas>
-  <Story
-    name="Style Overrides"
-    args={{
-      style: {
-        backgroundColor: colors.red[900],
-        barColor: colors.red[600],
-        fontColor: colors.white,
-      },
-    }}
-  >
-    {(args) => <ProgressBar {...args} />}
-  </Story>
-</Canvas>
-
 ## Pattern background
 
 Using the new SVG Pattern component for the background. Here we are using the DiagonalStripesRegular Pattern in navy in the large ProgressBar and the diagonalStripesDense pattern in the smaller ProgressBar.
@@ -83,9 +69,9 @@ Using the new SVG Pattern component for the background. Here we are using the Di
     name="Stripe - Regular"
     args={{
       pattern: 'diagonalStripesRegular',
-      large: true,
+      size: 'large',
       percent: 50,
-      theme: 'yellow',
+      variant: 'yellow',
     }}
   >
     {(args) => <ProgressBar {...args} />}
@@ -98,12 +84,95 @@ Using the new SVG Pattern component for the background. Here we are using the Di
   <Story
     name="Stripe - Dense"
     args={{
+      size: 'medium',
       pattern: 'diagonalStripesDense',
-      large: true,
-      percent: 50,
-      theme: 'blue',
+      percent: 33,
+      variant: 'blue',
     }}
   >
     {(args) => <ProgressBar {...args} />}
+  </Story>
+</Canvas>
+
+## Bordered variant
+
+This is a variant of the ProgressBar that has a transparent background and "bordered" look. `light` should always be displayed against a dark background and `dark` should be displayed against a light background.
+
+### Bordered Light
+
+<Canvas column={2}>
+  <Story
+    name="Dark"
+    args={{
+      percent: 50,
+      variant: 'dark',
+      bordered: true,
+    }}
+  >
+    {(args) => (
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="navy"
+        padding={32}
+      >
+        <ProgressBar {...args} />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+### Bordered Dark
+
+<Canvas column={2}>
+  <Story
+    name="Bordered - Light"
+    args={{
+      percent: 42,
+      variant: 'light',
+      medium: 'large',
+      bordered: true,
+    }}
+  >
+    {(args) => (
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="palePink"
+        borderColor="navy"
+        borderStyle="solid"
+        borderWidth="1px"
+        padding={32}
+      >
+        <ProgressBar {...args} />
+      </GridBox>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas column={2}>
+  <Story
+    name="Bordered - Light - Large"
+    args={{
+      pattern: 'diagonalStripesDense',
+      percent: 71,
+      variant: 'dark',
+      size: 'large',
+      bordered: true,
+    }}
+  >
+    {(args) => (
+      <GridBox
+        alignContent="center"
+        height="8rem"
+        backgroundColor="navy"
+        borderColor="navy"
+        borderStyle="solid"
+        borderWidth="1px"
+        padding={32}
+      >
+        <ProgressBar {...args} />
+      </GridBox>
+    )}
   </Story>
 </Canvas>

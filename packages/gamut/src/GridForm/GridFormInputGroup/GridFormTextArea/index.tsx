@@ -20,6 +20,7 @@ export const GridFormTextArea: React.FC<GridFormTextAreaProps> = ({
   return (
     <TextArea
       className={className}
+      disabled={field.disabled}
       error={error}
       htmlFor={field.name}
       name={field.name}

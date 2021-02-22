@@ -8,8 +8,8 @@ import { ButtonOutline } from './ButtonOutline';
 import { ButtonProps, modeColorGroups } from './shared';
 
 const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
-  ({ mode = 'light' }: ButtonProps) => {
-    const modeColors = modeColorGroups[mode];
+  ({ mode = 'light', variant = 'primary' }: ButtonProps) => {
+    const modeColors = modeColorGroups[mode][variant];
 
     return css`
       background-color: ${modeColors.background};
@@ -39,13 +39,13 @@ const CTAButtonInner = styled(ButtonInner)<ButtonProps>(
   }
 );
 
-const CTAButtonOuter = styled(ButtonOutline)`
+const CTAButtonOuter = styled(ButtonOutline)<{ variant?: 'primary' }>`
   padding: 1px 1px 5px 5px;
 `;
 
-export const CTAButton: React.FC<React.ComponentProps<
-  typeof CTAButtonOuter
->> = ({ children, mode, ...props }) => {
+export const CTAButton: React.FC<
+  React.ComponentProps<typeof CTAButtonOuter> & { variant?: never }
+> = ({ children, mode, ...props }) => {
   return (
     <CTAButtonOuter mode={mode} {...props}>
       <CTAButtonInner mode={mode}>{children}</CTAButtonInner>
