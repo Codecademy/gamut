@@ -1,65 +1,45 @@
-import { shallow } from 'enzyme';
-import React from 'react';
+import { setupEnzyme } from '@codecademy/gamut-tests';
 
-import styles from ' ../styles.module.scss';
-
-import { ButtonDeprecated } from '../../ButtonDeprecated';
+import { IconButton, TextButton } from '../../Button';
 import { Banner } from '..';
 
+const onClose = jest.fn();
+const onCtaClick = jest.fn();
+
 describe('Banner', () => {
-  it('renders children when closing has not been requested', () => {
-    const children = <span className="test" />;
-    const component = shallow(<Banner onClose={() => {}}>{children}</Banner>);
-
-    expect(component.find('span.test')).toHaveLength(1);
+  const renderWrapper = setupEnzyme(Banner, {
+    onClose,
+    children: 'Hello world',
   });
 
-  it('does not render anything if it is closed', () => {
-    const component = shallow(<Banner onClose={() => {}} isClosed />);
-
-    expect(component.children().length).toBe(0);
+  beforeEach(() => {
+    jest.resetAllMocks();
   });
 
-  it('renders a button always', () => {
-    const component = shallow(<Banner onClose={() => {}} />);
+  it('renders children markdown children', () => {
+    const { wrapper } = renderWrapper({});
 
-    expect(component.find(ButtonDeprecated)).toHaveLength(1);
+    expect(wrapper.find('p').text()).toEqual('Hello world');
   });
 
-  it('renders as full width by default', () => {
-    const component = shallow(<Banner onClose={() => {}} />);
+  it('renders a button when a cta is provided in markdown', () => {
+    const { wrapper } = renderWrapper({
+      onCtaClick,
+      children: '[Hello](/)',
+    });
 
-    expect(component.at(0).hasClass(styles.containerFullWidth)).toBe(true);
+    const CTA = wrapper.find(TextButton);
+    expect(CTA).toHaveLength(2);
+
+    expect(CTA.at(0).text()).toEqual('Hello');
+    CTA.at(0).simulate('click');
+
+    expect(onCtaClick).toHaveBeenCalled();
   });
-
-  it('renders with border bottom', () => {
-    const component = shallow(<Banner onClose={() => {}} />);
-
-    expect(component.at(0).hasClass(styles.containerFullWidth)).toBe(true);
-  });
-
-  it('does not render an icon when an no icon is provided', () => {
-    const component = shallow(<Banner onClose={() => {}} />);
-    component.update();
-
-    expect(component.find("div[data-testid='icon-id']")).toHaveLength(0);
-  });
-
-  it('renders an icon when an icon is provided', () => {
-    const TestIcon = () => <div />;
-    const component = shallow(
-      <Banner onClose={() => {}} icon={<TestIcon />} />
-    );
-
-    expect(component.find(TestIcon)).toHaveLength(1);
-    expect(component.find("div[data-testid='icon-id']")).toHaveLength(1);
-  });
-
   it('calls the onClose callback when the close icon is clicked', () => {
-    const onClose = jest.fn();
-    const component = shallow(<Banner onClose={onClose} />);
+    const { wrapper } = renderWrapper({});
 
-    component.find(ButtonDeprecated).simulate('click');
+    wrapper.find(IconButton).simulate('click');
 
     expect(onClose).toHaveBeenCalled();
   });
