@@ -11,14 +11,17 @@ export type NotificationListNewProps = {
   onNotificationClick?: (notification: Notification) => void;
 };
 
-export const NotificationListNew = (props: NotificationListNewProps) => {
-  const { notifications, onNotificationClick, handleDismiss } = props;
+export const NotificationListNew: React.FC<NotificationListNewProps> = ({
+  notifications,
+  onNotificationClick,
+  handleDismiss,
+}) => {
   const pattern = <Pattern name="dotsDense" height="1px" display="flex" />;
   return (
     <div>
       {pattern}
       {isEmpty(notifications) ? (
-        <div>Empty Notifications Placeholder </div>
+        <div>Empty Notifications Placeholder</div>
       ) : (
         notifications.map((notification: Notification) => {
           return (
