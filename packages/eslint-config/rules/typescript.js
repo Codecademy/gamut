@@ -1,12 +1,16 @@
 /**
  * ESLINT_FIX_ONLY is set by the eslint-fix script to disable slow parsing that isn't necessary for autofixing
  */
-const ESLINT_FIX_ONLY = process.env.ESLINT_FIX_ONLY === 'true';
 
 const tsConfig = {
   // ensure that ts eslint parser only runs for the correct files
   files: ['*.tsx', '*.ts'],
   parser: require.resolve('@typescript-eslint/parser'),
+  parserOptions: {
+    project: './tsconfig.json',
+    sourceType: 'module',
+  },
+  extends: ['plugin:@typescript-eslint/recommended-requiring-type-checking'],
   rules: {
     // These rules could be useful, but we haven't gotten around to trying them out
     // Additionally, they're moved into this override object (further nested from the rules
