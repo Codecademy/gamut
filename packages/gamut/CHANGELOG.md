@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.0...@codecademy/gamut@25.3.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **Button:** fix negligent selectors ([f86150b](https://github.com/Codecademy/client-modules/commit/f86150bbef7df0c25f06cf045a5b8e2a46a5e440))
+
+
+
 ## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.2...@codecademy/gamut@25.3.0) (2021-02-23)
 
 
