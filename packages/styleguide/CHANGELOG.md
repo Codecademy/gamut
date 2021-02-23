@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.5...@codecademy/styleguide@29.4.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
 ### [29.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.4...@codecademy/styleguide@29.3.5) (2021-02-23)
 
 

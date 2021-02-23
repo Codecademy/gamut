@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.6.0...@codecademy/gamut-illustrations@0.7.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
 ## [0.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-illustrations@0.5.0...@codecademy/gamut-illustrations@0.6.0) (2021-02-22)
 
 

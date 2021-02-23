@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Box, Pattern } from '..';
 import { Notification } from '../NotificationList/typings';
+import { EmptyNotification } from './EmptyNotification';
 import { NotificationItemNew } from './NotificationItemNew';
 
 export type NotificationListNewProps = {
@@ -25,7 +26,7 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
     <div>
       {pattern}
       {isEmpty(notifications) ? (
-        <div>Empty Notifications Placeholder</div>
+        <EmptyNotification />
       ) : (
         notifications.map((notification: Notification) => {
           return (

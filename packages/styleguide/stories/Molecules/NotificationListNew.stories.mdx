@@ -33,3 +33,13 @@ New notifications list component. Each notification has in icon depending on its
 </Canvas>
 
 <PropsTable story="NotificationListNew" />
+
+## Empty Notification
+
+Empty Notification content (message and image) is selected at random.
+
+<Canvas>
+  <Story name="Empty" args={{ notifications: [] }}>
+    {(args) => <NotificationListNew {...args} />}
+  </Story>
+</Canvas>
