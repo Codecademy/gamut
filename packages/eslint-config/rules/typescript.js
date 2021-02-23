@@ -38,16 +38,6 @@ const tsConfig = {
   },
 };
 
-if (!ESLINT_FIX_ONLY) {
-  tsConfig.parserOptions = {
-    project: './tsconfig.json',
-    sourceType: 'module',
-  };
-  tsConfig.extends = [
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-  ];
-}
-
 module.exports = {
   overrides: [tsConfig],
 };
