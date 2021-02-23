@@ -55,7 +55,7 @@ describe('NotificationListNew', () => {
 
   it('passes down a dismiss function to the notification component', () => {
     const { view } = renderNotificationsList();
-    view.getAllByRole('button').map((dismissBtn) => {
+    view.getAllByRole('button').map((dismissBtn: { click: () => any }) => {
       return dismissBtn.click();
     });
     expect(onDismiss).toHaveBeenCalledTimes(2);
@@ -63,6 +63,6 @@ describe('NotificationListNew', () => {
 
   it('renders a message when the user has no more notifications', () => {
     const { view } = renderEmptyNotificationsList();
-    view.getByText('Empty Notifications Placeholder');
+    view.getByTestId('empty-notification');
   });
 });
