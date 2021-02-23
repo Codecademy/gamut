@@ -7,7 +7,7 @@ const { argv } = yargs(hideBin(process.argv))
   .options('config', {
     alias: 'c',
     description: 'path to your ESLint config',
-    default: path.resolve(__dirname, '../index.js'),
+    default: path.resolve(__dirname, '../fix.js'),
   })
   .options('_', {
     description: 'A pattern to files you want to fix with ESLint',
