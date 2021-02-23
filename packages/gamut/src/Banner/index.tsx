@@ -1,72 +1,109 @@
-import { CloseIcon } from '@codecademy/gamut-icons';
-import cx from 'classnames';
-import React from 'react';
+import { MiniDeleteIcon } from '@codecademy/gamut-icons';
+import { variant } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import React, { useMemo } from 'react';
 
-import { ButtonDeprecated, ButtonDeprecatedProps } from '../ButtonDeprecated';
-import styles from './styles.module.scss';
+import { IconButton, TextButton } from '../Button';
+import { Markdown } from '../Markdown';
 
-export enum BannerStyle {
-  BorderBottom = 'border-bottom',
-  FullWidth = 'full-width',
+type BannerVariants = 'navy' | 'yellow';
+
+export interface BannerProps {
+  className?: string;
+  /** Markdown content */
+  children: string;
+  /** Visual variations for banners */
+  variant?: BannerVariants;
+  /**  Callback called when the user closes the banner. */
+  onClose: () => void;
+  /** Call to action click callback */
+  onCtaClick?: () => void;
 }
 
-export type BannerProps = {
-  classNames?: {
-    /**
-     * Class name for the container element.
-     */
-    container?: string;
-    /**
-     * Class name for the content wrapper
-     */
-    content?: string;
-  };
-  /** Visual variations for banners */
-  displayStyle?: BannerStyle;
-  /**
-   * Whether or not the banner should be visible.
-   */
-  isClosed?: boolean;
-  /**
-   * Callback called when the user closes the banner.
-   */
-  onClose: ButtonDeprecatedProps['onClick'];
-  /**
-   * An icon or jsx element to be displayed to the left of the content.
-   */
-  icon?: React.ReactNode;
-};
+const BannerContainer = styled.div(
+  variant({
+    navy: { textColor: 'white', backgroundColor: 'navy' },
+    yellow: { textColor: 'navy', backgroundColor: 'yellow' },
+  }),
+  ({ theme }) => css`
+    display: grid;
+    width: 100%;
+    padding: ${theme.spacing[4]};
+    column-gap: ${theme.spacing[8]};
+    grid-template-columns: 2rem 1fr 2rem;
+    align-items: center;
+    text-align: center;
 
-const BANNER_CLASSES = {
-  [BannerStyle.BorderBottom]: styles.containerBordered,
-  [BannerStyle.FullWidth]: styles.containerFullWidth,
-};
+    &:before {
+      content: '';
+    }
+  `
+);
 
-export const Banner: React.FC<BannerProps> = ({
+const BannerLink = styled(TextButton)(
+  ({ theme }) => css`
+    margin: 0 ${theme.spacing[4]};
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  `
+);
+
+const BannerContent = styled(Markdown)`
+  font-size: inherit;
+`;
+
+export const Banner: React.FC<
+  React.ComponentProps<typeof BannerContainer> & BannerProps
+> = ({
   children,
-  classNames = {},
-  displayStyle = BannerStyle.FullWidth,
-  isClosed = false,
+  variant = 'navy',
+  onCtaClick,
   onClose,
-  icon,
-}) => {
-  if (isClosed) {
-    return null;
-  }
+  ...rest
+}: BannerProps) => {
+  const mode = variant === 'navy' ? 'dark' : 'light';
+
+  // Bind overrides with the correct props
+  const overrides = useMemo(
+    () => ({
+      a: {
+        allowedAttributes: ['href', 'target'],
+        processNode: (node: unknown, props: { onClick?: () => void }) => (
+          <BannerLink
+            {...props}
+            mode={mode}
+            size="small"
+            target="_BLANK"
+            onClick={() => {
+              props.onClick && props.onClick();
+              onCtaClick && onCtaClick();
+            }}
+          />
+        ),
+        component: BannerLink,
+      },
+    }),
+    [onCtaClick, mode]
+  );
 
   return (
-    <div
-      className={cx(
-        styles.container,
-        classNames.container,
-        BANNER_CLASSES[displayStyle]
-      )}
-    >
-      {icon && <div data-testid="icon-id">{icon}</div>}
-      <div className={cx(styles.content, classNames.content)}>{children}</div>
-      <ButtonDeprecated onClick={onClose} className={styles.closeButton}>
-        <CloseIcon aria-label="dismiss" />
-      </ButtonDeprecated>
-    </div>
+    <BannerContainer variant={variant} {...rest}>
+      <BannerContent
+        overrides={overrides}
+        text={children}
+        skipDefaultOverrides={{ a: true }}
+      />
+      <IconButton
+        mode={mode}
+        variant="secondary"
+        size="small"
+        aria-label="dismiss"
+        icon={MiniDeleteIcon}
+        onClick={onClose}
+      />
+    </BannerContainer>
   );
 };
