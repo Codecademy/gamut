@@ -11,8 +11,11 @@ export type IconButtonProps = SizedButtonProps & {
 };
 
 const IconWrapper = styled.div`
-  display: inline-block;
+  display: inline-flex;
+  height: 100%;
+  width: 100%;
   margin: 0 -1px;
+  align-items: center;
 `;
 
 export const IconButton: React.FC<
