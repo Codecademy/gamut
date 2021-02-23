@@ -1,4 +1,6 @@
 import { Box } from '@codecademy/gamut';
+import { mediaQueries } from '@codecademy/gamut-styles';
+import { css, Global } from '@emotion/react';
 import React from 'react';
 
 import { AppHeader } from '../AppHeader';
@@ -7,7 +9,6 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
-import { breakpoint, desktopHeight, mobileHeight } from './consts';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -94,11 +95,25 @@ const getMobileAppHeaderItems = (
   }
 };
 
+const breakpoint = 'md';
+const desktopHeight = 80;
+const mobileHeight = 64;
+
+const globalStyles = css`
+  :root {
+    --global-header-height: ${mobileHeight};
+    ${mediaQueries.md} {
+      --global-header-height: ${desktopHeight};
+    }
+  }
+`;
+
 // For performance reasons, this component renders the mobile and desktop versions
 // of itself simultaneously and switches between them using css (instead of using
 // any of the useBreakpoint hooks, which rely on js for the same behavior).
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
   <>
+    <Global styles={globalStyles} />
     <Box
       display={{ base: 'none', [breakpoint]: 'block' }}
       height={desktopHeight.toString()}

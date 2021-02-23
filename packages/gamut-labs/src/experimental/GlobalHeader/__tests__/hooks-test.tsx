@@ -1,30 +1,29 @@
-import { render, screen } from '@testing-library/react';
+import { theme } from '@codecademy/gamut-styles';
+import { ThemeProvider } from '@emotion/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 
-import { useBreakpointAtOrAbove } from '../../../lib/breakpointHooks';
-import { desktopHeight, mobileHeight } from '../consts';
-import { useGlobalHeaderHeight } from '../hooks';
-
-jest.mock('../../../lib/breakpointHooks', () => ({
-  ...jest.requireActual<object>('../../../lib/breakpointHooks'),
-  useBreakpointAtOrAbove: jest.fn(),
-}));
+import { GlobalHeader } from '..';
+import { getGlobalHeaderHeight } from '../hooks';
 
 function TestComponent() {
-  const height = useGlobalHeaderHeight();
-  return <div>{height}</div>;
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalHeader action={jest.fn()} type="anon" />
+    </ThemeProvider>
+  );
 }
 
-describe('useGlobalHeaderHeight', () => {
+describe('getGlobalHeaderHeight', () => {
   it('should return the mobile header height below the breakpoint', () => {
-    (useBreakpointAtOrAbove as any).mockReturnValueOnce(false);
+    (window as any).innerWidth = 500;
     render(<TestComponent />);
-    screen.getByText(mobileHeight);
+    expect(getGlobalHeaderHeight()).toEqual(64);
   });
 
   it('should return the desktop header height above the breakpoint', () => {
-    (useBreakpointAtOrAbove as any).mockReturnValueOnce(true);
+    (window as any).innerWidth = 2000;
     render(<TestComponent />);
-    screen.getByText(desktopHeight);
+    expect(getGlobalHeaderHeight()).toEqual(80);
   });
 });
