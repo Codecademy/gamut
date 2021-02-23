@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.2...@codecademy/gamut@25.3.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.1...@codecademy/gamut@25.2.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **NotificationListNew:** Key and spacing issues ([7527e18](https://github.com/Codecademy/client-modules/commit/7527e18e560e53f41fe0474675ae44bee38eb064))
+
+
+
+### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.0...@codecademy/gamut@25.2.1) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.1.0...@codecademy/gamut@25.2.0) (2021-02-22)
+
+
+### Features
+
+* **Radio:** changes color and adds hover behavior ([#1416](https://github.com/Codecademy/client-modules/issues/1416)) ([d397646](https://github.com/Codecademy/client-modules/commit/d397646d8fb2583a0d7d6ad352eb5305894a74a6))
+
+
+
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.0.0...@codecademy/gamut@25.1.0) (2021-02-22)
+
+
+### Features
+
+* **New Notifications components:** notifications list & notification ([3c1b92d](https://github.com/Codecademy/client-modules/commit/3c1b92d1e049f161ff5386f16cd48405d4c0bc2d))
+
+
+
 ## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@24.0.0...@codecademy/gamut@25.0.0) (2021-02-18)
 
 
