@@ -29,14 +29,14 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
       ) : (
         notifications.map((notification: Notification) => {
           return (
-            <Box key={notification.id}>
+            <React.Fragment key={notification.id}>
               <NotificationItemNew
                 notification={notification}
                 handleClick={() => onNotificationClick?.(notification)}
                 handleDismiss={() => onDismiss?.(notification)}
               />
               {pattern}
-            </Box>
+            </React.Fragment>
           );
         })
       )}
