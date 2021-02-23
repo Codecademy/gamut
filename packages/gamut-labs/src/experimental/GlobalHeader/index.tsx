@@ -127,8 +127,6 @@ const defaultScrollingState = {
   isScrollingDown: true,
   isScrollingDownFromHeaderRegion: true,
   prevScrollPosition: window?.pageYOffset,
-  // staticHeaderHidden: false,
-  // stickyHeaderHidden: true,
 };
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
@@ -139,12 +137,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     isInHeaderRegion,
     isScrollingDown,
     prevScrollPosition,
-    // staticHeaderHidden,
-    // stickyHeaderHidden,
   } = scrollingState;
-
-  // const staticHeader = useRef<HTMLDivElement>(null);
-  // const scrollingHeader = useRef<HTMLDivElement>(null);
 
   const handleScrolling = useCallback(() => {
     const currentScrollPosition = window?.pageYOffset;
@@ -186,25 +179,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     }
   }, [prevScrollPosition]);
 
-  // const handleTransitionEnd = useCallback(() => {
-  //   setScrollingState(() => {});
-  // }, []);
-
   const throttledHandleScroll = throttle(handleScrolling, 200);
-
-  // useEffect(() => {
-  //   scrollingHeader.current?.addEventListener(
-  //     'transitionend',
-  //     handleTransitionEnd
-  //   );
-
-  //   return () => {
-  //     scrollingHeader.current?.removeEventListener(
-  //       'transitionend',
-  //       handleTransitionEnd
-  //     );
-  //   };
-  // }, [handleTransitionEnd]);
 
   useEffect(() => {
     window.addEventListener('scroll', throttledHandleScroll, { passive: true });
@@ -218,7 +193,6 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return (
     <>
       <GlobalHeader
-        // ref={staticHeader}
         {...props}
         className={cx(
           styles.staticHeader,
@@ -226,7 +200,6 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         )}
       />
       <GlobalHeader
-        // ref={scrollingHeader}
         {...props}
         className={cx(
           styles.stickyHeader,
