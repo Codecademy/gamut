@@ -19,7 +19,6 @@ export interface PatternProps extends BoxProps {
 const Svg = styled.svg`
   width: 100%;
   height: 100%;
-  position: absolute; // Can I do this? Or do I need to make this passable as a prop? This does mess up the story
 `;
 
 export const Pattern: React.FC<PatternProps> = ({ name, ...props }) => {
