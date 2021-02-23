@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import React from 'react';
 
-import { Pattern } from '..';
+import { Box, Pattern } from '..';
 import { Notification } from '../NotificationList/typings';
 import { NotificationItemNew } from './NotificationItemNew';
 
@@ -16,7 +16,11 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
   onNotificationClick,
   onDismiss,
 }) => {
-  const pattern = <Pattern name="dotsDense" height="1px" display="flex" />;
+  const pattern = (
+    <Box paddingX={32}>
+      <Pattern name="dotsDense" height="1px" display="flex" />
+    </Box>
+  );
   return (
     <div>
       {pattern}
@@ -25,15 +29,14 @@ export const NotificationListNew: React.FC<NotificationListNewProps> = ({
       ) : (
         notifications.map((notification: Notification) => {
           return (
-            <>
+            <Box key={notification.id}>
               <NotificationItemNew
-                key={notification.id}
                 notification={notification}
                 handleClick={() => onNotificationClick?.(notification)}
                 handleDismiss={() => onDismiss?.(notification)}
               />
               {pattern}
-            </>
+            </Box>
           );
         })
       )}
