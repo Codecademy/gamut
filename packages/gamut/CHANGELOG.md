@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.1...@codecademy/gamut@25.2.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **NotificationListNew:** Key and spacing issues ([7527e18](https://github.com/Codecademy/client-modules/commit/7527e18e560e53f41fe0474675ae44bee38eb064))
+
+
+
 ### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.0...@codecademy/gamut@25.2.1) (2021-02-22)
 
 **Note:** Version bump only for package @codecademy/gamut
