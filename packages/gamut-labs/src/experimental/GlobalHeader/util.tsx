@@ -1,7 +1,9 @@
+import { headerHeightVarName } from './consts';
+
 export function getGlobalHeaderHeight(): number {
   return parseInt(
     getComputedStyle(document.documentElement).getPropertyValue(
-      '--global-header-height'
+      headerHeightVarName
     ),
     10
   );

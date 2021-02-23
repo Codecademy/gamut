@@ -9,6 +9,7 @@ import {
   FormattedMobileAppHeaderItems,
 } from '../AppHeader/types';
 import { AppHeaderMobile } from '../AppHeaderMobile';
+import { headerHeightVarName } from './consts';
 import {
   anonDefaultHeaderItems,
   anonDefaultMobileHeaderItems,
@@ -101,9 +102,10 @@ const mobileHeight = 64;
 
 const globalStyles = css`
   :root {
-    --global-header-height: ${mobileHeight};
+    ${headerHeightVarName}: ${mobileHeight};
+
     ${mediaQueries.md} {
-      --global-header-height: ${desktopHeight};
+      ${headerHeightVarName}: ${desktopHeight};
     }
   }
 `;
