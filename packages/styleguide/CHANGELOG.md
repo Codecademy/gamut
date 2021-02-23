@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.2...@codecademy/styleguide@29.3.3) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.1...@codecademy/styleguide@29.3.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.0...@codecademy/styleguide@29.3.1) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.2.0...@codecademy/styleguide@29.3.0) (2021-02-22)
+
+
+### Features
+
+* **Radio:** changes color and adds hover behavior ([#1416](https://github.com/Codecademy/client-modules/issues/1416)) ([d397646](https://github.com/Codecademy/client-modules/commit/d397646d8fb2583a0d7d6ad352eb5305894a74a6))
+
+
+
+## [29.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.2...@codecademy/styleguide@29.2.0) (2021-02-22)
+
+
+### Features
+
+* **New Notifications components:** notifications list & notification ([3c1b92d](https://github.com/Codecademy/client-modules/commit/3c1b92d1e049f161ff5386f16cd48405d4c0bc2d))
+
+
+
+### [29.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.1...@codecademy/styleguide@29.1.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.0...@codecademy/styleguide@29.1.1) (2021-02-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.0.0...@codecademy/styleguide@29.1.0) (2021-02-19)
+
+
+### Features
+
+* add new coachmark component ([f268e07](https://github.com/Codecademy/client-modules/commit/f268e07d55de5625c0a89295578b6bb43ea6e025))
+
+
+
 ## [29.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@28.0.0...@codecademy/styleguide@29.0.0) (2021-02-18)
 
 
