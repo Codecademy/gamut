@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [8.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.1.0...@codecademy/gamut-styles@8.1.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **emotion:** Cache changes ([35b4ab7](https://github.com/Codecademy/client-modules/commit/35b4ab7a933a0bdad80e5641d9e191234a22a3ff))
+
+
+
 ## [8.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.0.1...@codecademy/gamut-styles@8.1.0) (2021-02-17)
 
 
