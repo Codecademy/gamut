@@ -21,7 +21,6 @@ const transform = {
 const PopoverContainer = styled.div<StyleProps>`
   position: fixed;
   display: flex;
-  z-index: 1;
   transform: ${({ position, align }) =>
     position && align && `${transform[position]} ${transform[align]}`};
 `;
@@ -208,7 +207,12 @@ export const Popover: React.FC<PopoverProps> = ({
           </RaisedDiv>
           {pattern && (
             <PatternContainer position={position} align={align}>
-              <Pattern data-testid="popover-pattern" name={pattern} />
+              <Pattern
+                data-testid="popover-pattern"
+                name={pattern}
+                width="100%"
+                height="100%"
+              />
             </PatternContainer>
           )}
         </PopoverContainer>

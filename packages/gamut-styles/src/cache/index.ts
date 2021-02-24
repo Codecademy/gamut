@@ -1,4 +1,5 @@
-import createCache, { Options } from '@emotion/cache';
+import createCache, { Options, StylisPlugin } from '@emotion/cache';
+import { prefixer } from 'stylis';
 
 import { focusVisible } from './stylisPlugins';
 
@@ -21,11 +22,15 @@ const getEmotionNode = () => {
   return node;
 };
 
-export const createEmotionCache = (optionOverrides?: Partial<Options>) =>
+export const createEmotionCache = (overrides?: Partial<Options>) =>
   createCache({
     key: EMOTION_KEY,
     speedy: true,
     container: getEmotionNode(),
-    stylisPlugins: [focusVisible],
-    ...optionOverrides,
+    ...overrides,
+    stylisPlugins: [
+      ...(overrides?.stylisPlugins ?? []),
+      focusVisible,
+      prefixer as StylisPlugin,
+    ],
   });
