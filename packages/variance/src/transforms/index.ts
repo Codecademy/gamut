@@ -1,4 +1,4 @@
-import { isNumber } from 'lodash';
+import isNumber from 'lodash/isNumber';
 
 export const percentageOrAbsolute = (coordinate: number) => {
   if (coordinate === 0) {
@@ -10,7 +10,7 @@ export const percentageOrAbsolute = (coordinate: number) => {
   return `${coordinate}px`;
 };
 
-const valueWithUnit = /(\-?\d*\.?\d+)(%|\w*)/;
+const valueWithUnit = /(-?\d*\.?\d+)(%|\w*)/;
 
 export const parseSize = (value: string | number) => {
   if (isNumber(value)) {

@@ -28,12 +28,11 @@ directly.
 `columnGap` and `rowGap` with the normal string or
 responsive layouts.
 
-<Props of={GridForm} />
-
 <Canvas>
   <Story name="GridForm" args={{ validation: 'onSubmit' }}>
     {(args) => (
       <GridForm
+        {...args}
         fields={[
           {
             label: 'Simple text',
@@ -147,7 +146,44 @@ responsive layouts.
           contents: 'Submit Me!?',
           size: 12,
         }}
-        {...args}
+      />
+    )}
+  </Story>
+</Canvas>
+
+<Props of={GridForm} />
+
+## Disabled Inputs
+
+If an input is not meant to be usable, such as when a portion of a form is disabled pending user action, you can make it visually disabled with a `disabled` field member.
+
+<Canvas>
+  <Story name="Disabled Inputs">
+    {(args) => (
+      <GridForm
+        fields={[
+          {
+            disabled: true,
+            label: 'Disabled text',
+            name: 'disabled-text',
+            size: 6,
+            type: 'text',
+          },
+          {
+            label: 'Enabled text',
+            name: 'enabled-text',
+            size: 6,
+            type: 'text',
+          },
+        ]}
+        onSubmit={async (values) => {
+          action('Form Submitted')(values);
+        }}
+        submit={{
+          contents: 'Right Submit!?',
+          position: 'right',
+          size: 12,
+        }}
       />
     )}
   </Story>

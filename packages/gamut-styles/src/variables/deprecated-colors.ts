@@ -109,7 +109,7 @@ export const brandColors = {
   red: deprecatedColors.red[500],
   orange: deprecatedColors.orange[400],
   yellow: deprecatedColors.yellow[500],
-  purple: deprecatedColors['royalBlue'],
+  purple: deprecatedColors.royalBlue,
   pink: deprecatedColors.pink[400],
   magenta: deprecatedColors.pink[700],
   mint: deprecatedColors.green[300],

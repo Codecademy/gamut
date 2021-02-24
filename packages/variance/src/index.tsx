@@ -1,2 +1,2 @@
-export * from './core';
+export { variance } from './core';
 export * from './types/props';

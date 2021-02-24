@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 
-import { MathBlock } from '../';
+import { MathBlock } from '..';
 
 describe('MathBlock', () => {
   describe('with valid LaTex', () => {

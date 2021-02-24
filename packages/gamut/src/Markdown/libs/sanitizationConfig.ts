@@ -1,8 +1,8 @@
-import insane from 'insane';
+import sanitizeMarkdown from 'sanitize-markdown';
 
 export const defaultSanitizationConfig = {
   allowedAttributes: {
-    ...insane.defaults.allowedAttributes,
+    ...sanitizeMarkdown.defaults.allowedAttributes,
     span: ['class'],
     code: ['class'],
     pre: ['class'],
@@ -23,7 +23,7 @@ export const defaultSanitizationConfig = {
     div: 'narrative-table-container',
   },
   allowedTags: [
-    ...insane.defaults.allowedTags,
+    ...sanitizeMarkdown.defaults.allowedTags,
     'video',
     'source',
     'font',

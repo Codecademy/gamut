@@ -1,6 +1,8 @@
-import { get, identity, isObject, merge, omit } from 'lodash';
+import get from 'lodash/get';
+import identity from 'lodash/identity';
+import merge from 'lodash/merge';
 
-import { BaseProps, baseProps } from './props';
+import { BaseProps } from './props';
 import {
   AbstractParser,
   AbstractPropTransformer,
@@ -9,14 +11,8 @@ import {
   Prop,
   PropTransformer,
   TransformerMap,
-  Variant,
 } from './types/config';
-import {
-  AbstractTheme,
-  BreakpointCache,
-  CSSObject,
-  ThemeProps,
-} from './types/props';
+import { AbstractTheme, BreakpointCache, CSSObject } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -28,12 +24,12 @@ import {
 } from './utils/responsive';
 
 export const variance = {
-  withTheme: function <T extends AbstractTheme>() {
+  withTheme<T extends AbstractTheme>() {
     return {
       // Parser to handle any set of configured props
-      createParser: function <
-        Config extends Record<string, AbstractPropTransformer<T>>
-      >(config: Config): Parser<T, Config> {
+      createParser<Config extends Record<string, AbstractPropTransformer<T>>>(
+        config: Config
+      ): Parser<T, Config> {
         let breakpoints: BreakpointCache;
         const propNames = orderPropNames(config);
 
@@ -81,7 +77,7 @@ export const variance = {
       },
       // Given a single property configuration enrich the config with a transform function
       // that traverses the properties the function is responsible for.
-      createTransform: function <P extends string, Config extends Prop<T>>(
+      createTransform<P extends string, Config extends Prop<T>>(
         prop: P,
         config: Config
       ): PropTransformer<T, P, Config> {
@@ -107,7 +103,7 @@ export const variance = {
           },
         };
       },
-      compose: function <Args extends AbstractParser<T>[]>(...parsers: Args) {
+      compose<Args extends AbstractParser<T>[]>(...parsers: Args) {
         type MergedParser = {
           [K in AllUnionKeys<Args[number]['config']>]: KeyFromUnion<
             Args[number]['config'],
@@ -122,108 +118,105 @@ export const variance = {
         );
       },
       // Single function to create variant and css
-      createStatic: function <
+      createStatic<
         Config extends Record<string, Prop<T>>,
         Options extends { withBase: boolean },
         MergeConfig extends Options['withBase'] extends true ? BaseProps : {},
         P extends Parser<T, TransformerMap<T, MergeConfig & Config>>
-      >(
-        config: Config,
-        options?: Options
-      ): {
-        variant: Variant<T, P>;
-        css: CSS<T, P>;
-      } {
-        const css = this.createCss(
-          Object.assign(options?.withBase ? baseProps : {}, config)
-        );
-        const variant = this.createVariant(css);
+      >(config: Config, options?: Options): never {
+        throw new Error('Not implemented');
+        // const css = this.createCss(
+        //   Object.assign(options?.withBase ? baseProps : {}, config)
+        // );
+        // const variant = this.createVariant(css);
 
-        return {
-          css,
-          variant,
-        };
+        // return {
+        //   css,
+        //   variant,
+        // };
       },
       // Creates a higher order function that accepts static variance props and returns a function that can be called with theme
-      createCss: function <
+      createCss<
         Config extends Record<string, Prop<T>>,
         P extends Parser<T, TransformerMap<T, Config>>
-      >(config: Config): CSS<T, P> {
-        // Create a parser from the passed configuration of props
-        const parser = this.create(config);
+      >(config: Config) {
+        throw new Error('Not implemented');
+        // // Create a parser from the passed configuration of props
+        // const parser = this.create(config);
 
-        return (cssProps) => {
-          let cache: CSSObject;
-          // Check any key that may match a selector and extract them
-          const selectors = Object.keys(cssProps).filter((key) =>
-            key.match(/(&|\>|\+|~)/g)
-          );
+        // return (cssProps) => {
+        //   let cache: CSSObject;
+        //   // Check any key that may match a selector and extract them
+        //   const selectors = Object.keys(cssProps).filter((key) =>
+        //     key.match(/(&|\>|\+|~)/g)
+        //   );
 
-          return ({ theme }) => {
-            // If cache has been set escape
-            if (cache) return cache;
-            // Omit any props that are selector styles and generate the base CSS
-            const css = parser({
-              ...(omit(cssProps, selectors) as Parameters<P>[0]),
-              theme,
-            });
-            // For every key that matches a selector call the parser with the value of that key
-            selectors.forEach((selector) => {
-              const selectorConfig = cssProps[selector];
-              if (isObject(selectorConfig)) {
-                // Set the key on our returned object to the generated CSS
-                css[selector] = parser(
-                  Object.assign(selectorConfig, { theme })
-                );
-              }
-            });
-            // Set CSS to the cache
-            cache = css;
-            return cache;
-          };
-        };
+        //   return ({ theme }) => {
+        //     // If cache has been set escape
+        //     if (cache) return cache;
+        //     // Omit any props that are selector styles and generate the base CSS
+        //     const css = parser({
+        //       ...(omit(cssProps, selectors) as Parameters<P>[0]),
+        //       theme,
+        //     });
+        //     // For every key that matches a selector call the parser with the value of that key
+        //     selectors.forEach((selector) => {
+        //       const selectorConfig = cssProps[selector];
+        //       if (isObject(selectorConfig)) {
+        //         // Set the key on our returned object to the generated CSS
+        //         css[selector] = parser(
+        //           Object.assign(selectorConfig, { theme })
+        //         );
+        //       }
+        //     });
+        //     // Set CSS to the cache
+        //     cache = css;
+        //     return cache;
+        //   }
+        // };
       },
       /** Creates a higher order function that accepts a set of keyed static props to return a
        * function that accepts theme and a prop of any key on thee configuration object
        */
-      createVariant: function <
+      createVariant<
         Config extends Record<string, Prop<T>>,
         P extends Parser<T, TransformerMap<T, Config>>,
         StyleFunc extends CSS<T, P>
-      >(css: StyleFunc): Variant<T, P> {
-        return (variants, options) => {
-          type Keys = keyof typeof variants;
-          // Set the default prop signature to variant if none has been configuraed.
-          const prop = options?.prop || 'variant';
-          const defaultVariant = options?.defaultVariant;
+      >(css: StyleFunc): never {
+        throw new Error('Not implemented');
+        // return (variants, options) => {
+        //   type Keys = keyof typeof variants;
+        //   // Set the default prop signature to variant if none has been configuraed.
+        //   const prop = options?.prop || 'variant';
+        //   const defaultVariant = options?.defaultVariant;
 
-          const variantFns = {} as Record<
-            Keys,
-            (props: ThemeProps<T>) => CSSObject
-          >;
-          // For each of the variants create a CSS function from the configured props to be called when
-          // the return function is invoked.
-          Object.keys(variants).forEach((key) => {
-            const variantKey = key as Keys;
-            const cssProps = variants[variantKey];
-            variantFns[variantKey] = css(cssProps);
-          });
+        //   const variantFns = {} as Record<
+        //     Keys,
+        //     (props: ThemeProps<T>) => CSSObject
+        //   >;
+        //   // For each of the variants create a CSS function from the configured props to be called when
+        //   // the return function is invoked.
+        //   Object.keys(variants).forEach((key) => {
+        //     const variantKey = key as Keys;
+        //     const cssProps = variants[variantKey];
+        //     variantFns[variantKey] = css(cssProps);
+        //   });
 
-          // Return the initialed final props
-          return ({ [prop]: selected = defaultVariant, ...props }) => {
-            // Call the correct css function with our defaulted key or return an empty object
-            return variantFns?.[selected as Keys]?.(props) ?? {};
-          };
-        };
+        //   // Return the initialed final props
+        //   return ({ [prop]: selected = defaultVariant, ...props }) => {
+        //     // Call the correct css function with our defaulted key or return an empty object
+        //     return variantFns?.[selected as Keys]?.(props) ?? {};
+        //   };
+        // };
       },
-      create: function <Config extends Record<string, Prop<T>>>(
-        config: Config
-      ) {
+      create<Config extends Record<string, Prop<T>>>(config: Config) {
         const transforms = {} as TransformerMap<T, Config>;
 
         // Create a transform function for each of the props
         for (const prop in config) {
-          transforms[prop] = this.createTransform(prop, config[prop]);
+          if (typeof prop === 'string') {
+            transforms[prop] = this.createTransform(prop, config[prop]);
+          }
         }
 
         // Create a parser that handles all the props within the config
