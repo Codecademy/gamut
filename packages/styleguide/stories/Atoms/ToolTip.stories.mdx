@@ -1,4 +1,4 @@
-import { ToolTip } from '@codecademy/gamut/src';
+import { ToolTip, ToolTipPosition } from '@codecademy/gamut/src';
 import { InfoCircleIcon } from '@codecademy/gamut-icons/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
@@ -24,16 +24,18 @@ import { TooltipArea } from './TooltipArea';
 />
 
 Small piece of extra information triggered on the focus or hover of a button or icon,
-such as extra requirements for a form surfaced from an informative (i) icon.
-They dissapear when the focus or hover are no longer active.
-Great for surfacing additional information that may or may not be relevant _without_ cluttering the core interface.
+such as extra requirements for a form surfaced from an informative (i) icon. They
+dissapear when the focus or hover are no longer active.
 
-> Tooltips cannot contain clickable elements (if your solution requires clickable elements, we suggest using a “Popover” instead).
+Tooltips cannot contain clickable elements (if your solution
+requires clickable elements, we suggest using a “Popover” instead) - Great for
+surfacing additional information that may or may not be relevant _without_ cluttering
+the core interface.
 
 <Canvas>
   <Story name="ToolTip">
     {(args) => (
-      <TooltipArea tipPosition={args.position}>
+      <TooltipArea>
         Hello! &nbsp;
         <ToolTip {...args} />
       </TooltipArea>
@@ -47,40 +49,36 @@ Great for surfacing additional information that may or may not be relevant _with
 
 Tooltips can be positioned both horizontally and vertically relative to their target.
 
-Note that you the implementer will need to adjust their horizontal position to match up to their target's focus point.
-
 <Canvas>
   <Story name="Position">
     {(args) => {
-      return ['bottom-left', 'bottom-right', 'top-left', 'top-right'].map(
-        (position) => {
-          return (
-            <TooltipArea key={position} tipPosition={position}>
-              {position.split('-').map(upperFirst).join(' ')}: &nbsp;
-              <ToolTip {...args} position={position} />
-            </TooltipArea>
-          );
-        }
-      );
+      return Object.values(ToolTipPosition).map((position) => {
+        return (
+          <TooltipArea key={position}>
+            {position.split('-').map(upperFirst).join(' ')}: &nbsp;
+            <ToolTip {...args} position={position} />
+          </TooltipArea>
+        );
+      });
     }}
   </Story>
 </Canvas>
 
-## Variant
+## Theme
 
-Tooltips can be of a `dark` or `light` visual variant.
+Tooltips can be of a `dark` or `light` visual theme.
 
 <Canvas>
-  <Story name="Variant">
+  <Story name="Theme">
     {(args) => (
       <>
-        <TooltipArea tipPosition={args.position}>
+        <TooltipArea>
           Dark: &nbsp;
-          <ToolTip {...args} variant="dark" />
+          <ToolTip {...args} theme="dark" />
         </TooltipArea>
-        <TooltipArea tipPosition={args.position}>
+        <TooltipArea>
           Light: &nbsp;
-          <ToolTip {...args} variant="light" />
+          <ToolTip {...args} theme="light" />
         </TooltipArea>
       </>
     )}
