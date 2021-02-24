@@ -17,6 +17,7 @@ import { PropsTable } from '~styleguide/blocks';
     htmlFor: 'example-input',
     name: 'example-input',
     defaultValue: 'Default Value',
+    placeholder: 'Placeholder',
     type: 'text',
   }}
 />
@@ -37,6 +38,7 @@ import { PropsTable } from '~styleguide/blocks';
       defaultValue: 'Text',
       name: 'example-text',
       type: 'text',
+      required: true,
     }}
   >
     {(args) => <Input {...args} />}

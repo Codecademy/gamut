@@ -1,32 +1,27 @@
-import cx from 'classnames';
+import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 
-import styles from './styles/Input.module.scss';
+import { inputStyles } from './shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   error?: boolean;
   htmlFor?: string;
+  label?: string;
   name?: string;
   placeholder?: string;
   required?: boolean;
   type?: string;
 };
 
+const InputBase = styled.input<InputProps>`
+  ${inputStyles}
+`;
+
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ error, htmlFor, className, id, ...rest }, ref) => {
-    const classNames = cx(
-      styles.Input,
-      {
-        [styles.fileInput]: rest.type === 'file',
-      },
-      {
-        [styles.error]: error,
-      },
-      className
-    );
     return (
-      <input {...rest} id={id || htmlFor} ref={ref} className={classNames} />
+      <InputBase {...rest} id={id || htmlFor} ref={ref} className={className} />
     );
   }
 );
