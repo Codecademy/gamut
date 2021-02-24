@@ -35,7 +35,7 @@ import { ALERTS } from './constants';
 ## Usage Guidelines
 
 - There are 5 alert types. Choose the one that applies most to your case.
-- Displayed at the top of the page, below the navigation bar.
+- Display alerts at the top of the page, below the navigation bar.
 - Persistent and non-modal, allowing the user to either ignore them or interact with them at any time.
 - Floats/overlays over any content below it.
 - Only use Feature alert for product/feature announcements that are specific to that page (e.g. Dashboard, Catalog, Profile, LE)
@@ -47,31 +47,31 @@ import { ALERTS } from './constants';
 
 <br />
 
-**General**
+### General
 
 <Story name="General" args={ALERTS.general}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Success**
+### Success
 
 <Story name="Success" args={ALERTS.success}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Error**
+### Error
 
 <Story name="Error" args={ALERTS.error}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Notice**
+### Notice
 
 <Story name="Notice" args={ALERTS.notice}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Feature**
+### Feature
 
 <Story name="Feature" args={ALERTS.feature}>
   {(args) => <Alert {...args} />}
@@ -83,19 +83,19 @@ import { ALERTS } from './constants';
 
 For inline use you can use these non-stroked versions for the General, Success and Error type.
 
-**General**
+### General
 
 <Story name="Inline General" args={{ ...ALERTS.general, placement: 'inline' }}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Success**
+### Success
 
 <Story name="Inline Success" args={{ ...ALERTS.success, placement: 'inline' }}>
   {(args) => <Alert {...args} />}
 </Story>
 
-**Error**
+### Error
 
 <Story name="Inline Error" args={{ ...ALERTS.error, placement: 'inline' }}>
   {(args) => <Alert {...args} />}

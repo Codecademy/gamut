@@ -1,7 +1,6 @@
 import {
   MiniCheckCircleIcon,
   MiniChevronDownIcon,
-  MiniChevronUpIcon,
   MiniDeleteIcon,
   MiniInfoCircleIcon,
   MiniRemoveCircleIcon,
@@ -11,7 +10,9 @@ import {
 import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
@@ -116,6 +117,27 @@ AlertBanner.defaultProps = {
   'aria-live': 'polite',
 };
 
+const AlertContent = styled(motion.div)(
+  ({ theme }) => css`
+    padding: ${theme.spacing[4]} 0;
+    overflow-y: hidden;
+  `
+);
+
+const transitionDuration = 0.2;
+
+const contentVariants = {
+  truncated: { height: '2rem' },
+  expanded: { height: 'auto' },
+};
+
+const CollapseButton = styled(IconButton)<{ expanded?: boolean }>`
+  svg {
+    transition: ${transitionDuration * 1000}ms transform;
+    transform: rotate(${({ expanded }) => (expanded ? '180deg' : '0deg')});
+  }
+`;
+
 export const Alert: React.FC<AlertProps> = ({
   children,
   cta,
@@ -145,19 +167,27 @@ export const Alert: React.FC<AlertProps> = ({
         alignItems="center"
         justifyContent="center"
       >
-        <Icon size={16} aria-label={`${props.type}-icon`} />
+        <Icon size={16} aria-hidden="true" />
       </FlexBox>
-      <Box paddingY={4}>
+      <AlertContent
+        variants={contentVariants}
+        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
+        aria-expanded={expanded}
+        initial={expanded ? 'expanded' : 'truncated'}
+        animate={expanded ? 'expanded' : 'truncated'}
+      >
         <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
           {children}
         </Truncate>
-      </Box>
+      </AlertContent>
       {truncated && (
-        <IconButton
+        <CollapseButton
+          aria-label={expanded ? 'Collapse' : 'Expand'}
           mode={mode}
           variant="secondary"
           size="small"
-          icon={expanded ? MiniChevronUpIcon : MiniChevronDownIcon}
+          expanded={expanded}
+          icon={MiniChevronDownIcon}
           onClick={() => setExpanded(!expanded)}
         />
       )}
