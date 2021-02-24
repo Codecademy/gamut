@@ -22,7 +22,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   className?: string;
-  onReady?: (player: ReactPlayer) => void;
+  onReady?: (player: ReactPlayer & { wrapper: HTMLElement }) => void;
   onPlay?: () => void;
 };
 
@@ -53,7 +53,7 @@ export const Video: React.FC<VideoProps> = ({
         loop={loop}
         muted={muted}
         playIcon={<OverlayPlayButton />}
-        onReady={(player: ReactPlayer) => {
+        onReady={(player: ReactPlayer & { wrapper: HTMLElement }) => {
           onReady?.(player);
           setLoading(false);
         }}
