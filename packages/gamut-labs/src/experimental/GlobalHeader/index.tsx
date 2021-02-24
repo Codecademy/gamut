@@ -126,7 +126,7 @@ const defaultScrollingState = {
   isInHeaderRegion: true,
   isScrollingDown: true,
   isScrollingDownFromHeaderRegion: true,
-  prevScrollPosition: window?.pageYOffset,
+  prevScrollPosition: window?.pageYOffset || 0,
 };
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
@@ -140,7 +140,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   } = scrollingState;
 
   const handleScrolling = useCallback(() => {
-    const currentScrollPosition = window?.pageYOffset;
+    const currentScrollPosition = window?.pageYOffset || 0;
 
     // handle down/up scrolling
     if (currentScrollPosition > prevScrollPosition) {
