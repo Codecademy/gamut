@@ -15,7 +15,7 @@ export const EmptyNotification = () => {
       alignItems="center"
       paddingTop={32}
       paddingBottom={48}
-      data-testId="empty-notification"
+      data-testid="empty-notification"
     >
       <FlexBox paddingBottom={16}>
         <Image width={80} height={60} />
