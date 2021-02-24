@@ -109,8 +109,8 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'block', md: 'none' }}
         height="64"
-        position="relative"
         zIndex={0}
+        className={props.className}
       >
         <AppHeaderMobile
           action={props.action}
