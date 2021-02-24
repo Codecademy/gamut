@@ -12,7 +12,6 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
