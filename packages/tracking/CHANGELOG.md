@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.3...@codecademy/tracking@0.5.0) (2021-02-18)
+
+
+### Features
+
+* add container_slugs to UserClickData tracking type ([ebb2d18](https://github.com/Codecademy/client-modules/commit/ebb2d1873505d7c09e14a0f714e5661914e8dd4a))
+
+
+
 ### [0.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/tracking@0.4.2...@codecademy/tracking@0.4.3) (2021-02-10)
 
 

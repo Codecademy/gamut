@@ -3,12 +3,12 @@ import {
   GearIcon,
   HouseEntranceIcon,
   PersonIcon,
-} from '@codecademy/gamut-icons/src';
+} from '@codecademy/gamut-icons';
 import {
   AppHeaderLinkItem,
   AppHeaderProfileDropdownItem,
   AppHeaderSimpleDropdownItem,
-} from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
+} from '@codecademy/gamut-labs';
 
 export const MOCK_LINK: AppHeaderLinkItem = {
   id: 'home',
@@ -70,7 +70,7 @@ export const MOCK_DROPDOWN_2: AppHeaderSimpleDropdownItem = {
 export const MOCK_PROFILE_DROPDOWN: AppHeaderProfileDropdownItem = {
   avatar:
     'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
-  userDisplayName: 'Katie',
+  userDisplayName: 'Codey',
   id: 'profile',
   text: 'Profile',
   popover: [

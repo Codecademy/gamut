@@ -3,6 +3,131 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.0...@codecademy/gamut-labs@10.2.1) (2021-02-25)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [10.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.10...@codecademy/gamut-labs@10.2.0) (2021-02-25)
+
+
+### Features
+
+* add linting for gamut imports ([17980c9](https://github.com/Codecademy/client-modules/commit/17980c9993c1334c4a3a6a875fe15dbcc1052c08))
+
+
+
+### [10.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.9...@codecademy/gamut-labs@10.1.10) (2021-02-24)
+
+
+### Bug Fixes
+
+* **app header mobile & notifs empty container:** add + fix test ids ([cb3b235](https://github.com/Codecademy/client-modules/commit/cb3b235f38c104809d887e2d77b812c7dcc60ed6))
+
+
+
+### [10.1.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.8...@codecademy/gamut-labs@10.1.9) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.8](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.7...@codecademy/gamut-labs@10.1.8) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.7](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.6...@codecademy/gamut-labs@10.1.7) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.5...@codecademy/gamut-labs@10.1.6) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.4...@codecademy/gamut-labs@10.1.5) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.3...@codecademy/gamut-labs@10.1.4) (2021-02-22)
+
+
+### Bug Fixes
+
+* remove z index from popover ([ef1750f](https://github.com/Codecademy/client-modules/commit/ef1750fac144f26da4db5459297c2de7e59001f7))
+
+
+
+### [10.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.2...@codecademy/gamut-labs@10.1.3) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.1...@codecademy/gamut-labs@10.1.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.0...@codecademy/gamut-labs@10.1.1) (2021-02-19)
+
+
+### Bug Fixes
+
+* popover pattern expands to the size of its container ([f74d723](https://github.com/Codecademy/client-modules/commit/f74d723010d96ce5e0ff463a1834a1e30a338976))
+
+
+
+## [10.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.13...@codecademy/gamut-labs@10.1.0) (2021-02-19)
+
+
+### Features
+
+* add new coachmark component ([f268e07](https://github.com/Codecademy/client-modules/commit/f268e07d55de5625c0a89295578b6bb43ea6e025))
+
+
+
+### [10.0.13](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.12...@codecademy/gamut-labs@10.0.13) (2021-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.0.12](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.11...@codecademy/gamut-labs@10.0.12) (2021-02-18)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [10.0.11](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.0.10...@codecademy/gamut-labs@10.0.11) (2021-02-17)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
