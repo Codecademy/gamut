@@ -94,7 +94,12 @@ export function GridForm<
 
           const isFirstError = !pastFirstError && errorMessage !== undefined;
           pastFirstError = pastFirstError || isFirstError;
-
+          const requiredBoolean = !!(
+            field.validation && field.validation.required
+          );
+          {
+            console.log(requiredBoolean);
+          }
           return (
             <GridFormInputGroup
               error={errorMessage as string}
@@ -103,6 +108,7 @@ export function GridForm<
               key={field.name}
               register={register}
               setValue={setValue}
+              required={requiredBoolean}
             />
           );
         })}

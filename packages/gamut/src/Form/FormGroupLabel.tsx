@@ -9,6 +9,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> & {
     disabled?: boolean;
     htmlFor?: string;
+    required?: boolean;
   };
 
 export const disabledLabelStyle = ({ disabled }) => {
@@ -37,9 +38,11 @@ const StyledDiv = styled.div<FormGroupLabelProps>`
 `;
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
+  children,
   className,
   disabled,
   htmlFor,
+  required,
   ...rest
 }) => {
   if (htmlFor) {
@@ -49,9 +52,17 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         htmlFor={htmlFor}
         disabled={disabled}
         className={className}
-      />
+      >
+        {children}
+
+        {required ? '*' : ''}
+      </StyledLabel>
     );
   }
 
-  return <StyledDiv {...rest} disabled={disabled} className={className} />;
+  return (
+    <StyledDiv {...rest} disabled={disabled} className={className}>
+      {children}
+    </StyledDiv>
+  );
 };

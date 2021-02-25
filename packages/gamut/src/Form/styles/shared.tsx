@@ -14,6 +14,7 @@ export const inputStyles = css`
   padding: 0.8rem 0;
   outline: none;
   width: 100%;
+  caret-color: ${theme.colors[`hyper-400`]};
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
   transition: ${theme.colors[`blue-900`]} 0.15s;
