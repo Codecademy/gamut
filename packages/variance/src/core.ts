@@ -89,12 +89,25 @@ export const variance = {
           prop,
           styleFn: (value, prop, props) => {
             const styles: CSSObject = {};
-            const path = `theme.${config.scale}.${value}`;
-            const scaleVal = get(props, path, value);
+            let scaleVal: string | number;
+            switch (typeof config.scale) {
+              case 'string': {
+                const path = `theme.${config.scale}.${value}`;
+                scaleVal = get(props, path, value);
+                break;
+              }
+              case 'object': {
+                scaleVal = get(config.scale, `${value}`);
+                break;
+              }
+              default:
+                scaleVal = value as string | number;
+            }
+
             // for each property look up the scale value from theme if passed and apply any
             // final transforms to the value
             properties.forEach((property) => {
-              styles[property] = transform(scaleVal, prop, props);
+              styles[property] = transform(scaleVal, property, props);
             });
             // return the resulting styles object
             return styles;
