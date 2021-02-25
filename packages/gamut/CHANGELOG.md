@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.3...@codecademy/gamut@25.3.4) (2021-02-25)
+
+
+### Bug Fixes
+
+* **video:** include wrapper in type ([c70d48e](https://github.com/Codecademy/client-modules/commit/c70d48e8a4a70a7244a7c4baa31118eb2a371d43))
+
+
+
 ### [25.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.2...@codecademy/gamut@25.3.3) (2021-02-24)
 
 
