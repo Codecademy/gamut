@@ -54,8 +54,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         className={className}
       >
         {children}
-
-        {required ? '*' : ''}
+        {required ? ' *' : ''}
       </StyledLabel>
     );
   }
@@ -63,6 +62,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   return (
     <StyledDiv {...rest} disabled={disabled} className={className}>
       {children}
+      {required ? ' *' : ''}
     </StyledDiv>
   );
 };
