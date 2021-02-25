@@ -1,9 +1,10 @@
-import styled from '@emotion/styled/types/base';
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import styles from './styles/Select.module.scss';
+import { errorStyle, inputStyles } from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;

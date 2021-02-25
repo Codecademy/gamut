@@ -20,7 +20,7 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
-  required: boolean;
+  required?: boolean;
 };
 
 const StyledFormGroup = styled(FormGroup)`
