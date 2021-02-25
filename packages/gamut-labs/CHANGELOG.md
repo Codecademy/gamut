@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.1.10](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.9...@codecademy/gamut-labs@10.1.10) (2021-02-24)
+
+
+### Bug Fixes
+
+* **app header mobile & notifs empty container:** add + fix test ids ([cb3b235](https://github.com/Codecademy/client-modules/commit/cb3b235f38c104809d887e2d77b812c7dcc60ed6))
+
+
+
 ### [10.1.9](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.1.8...@codecademy/gamut-labs@10.1.9) (2021-02-23)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
