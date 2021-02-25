@@ -82,6 +82,18 @@ import { PropsTable } from '~styleguide/blocks';
     {(args) => <Input {...args} />}
   </Story>
   <Story
+    name="Verified"
+    args={{
+      htmlFor: 'example-placeholder',
+      name: 'example-placeholder',
+      placeholder: 'Placeholder',
+      defaultValue: 'Verified Text',
+      verified: true,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+  <Story
     name="Placeholder"
     args={{
       htmlFor: 'example-placeholder',
