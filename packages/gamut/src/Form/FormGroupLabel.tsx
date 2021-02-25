@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-import { formBaseStyles, iconStyles } from './styles/shared';
+import { formBaseStyles } from './styles/shared';
 
 export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> & {

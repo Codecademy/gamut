@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
-import { errorStyle, iconStyles, inputStyles } from './styles/shared';
+import { errorStyle, inputIconStyles, inputStyles } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -24,10 +24,11 @@ const InputBase = styled.input<InputProps>`
 `;
 
 const StyledAlertIcon = styled(AlertIcon)`
-  ${iconStyles}
+  ${inputIconStyles}
 `;
+
 const StyledCheckCircledIcon = styled(CheckCircledIcon)`
-  ${iconStyles}
+  ${inputIconStyles}
 `;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(

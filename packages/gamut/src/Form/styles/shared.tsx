@@ -2,7 +2,7 @@ import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
 export const errorStyle = ({ errorState }) => {
-  const hulu = errorState
+  const errorStyle = errorState
     ? css`
         color: ${theme.colors.red};
         border-color: ${theme.colors.red} !important;
@@ -12,20 +12,24 @@ export const errorStyle = ({ errorState }) => {
         }
       `
     : null;
-  return hulu;
+  return errorStyle;
 };
 
-export const iconStyles = (props) => {
-  const { color } = props;
-  return css`
-    position: absolute;
-    right: 16px;
-    top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
-    color: ${theme.colors[color]};
-    height: 16px;
-    width: 16px;
-  `;
-};
+const iconStyles = css`
+  position: absolute;
+  right: 16px;
+  height: 16px;
+  width: 16px;
+`;
+
+export const inputIconStyles = css`
+  ${iconStyles}
+  top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
+`;
+export const selectIconStyles = css`
+  ${iconStyles}
+  top: calc(50% - ${pxRem(8)});
+`;
 
 export const formBaseStyles = css`
   color: ${theme.colors.navy};

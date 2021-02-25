@@ -1,12 +1,14 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import cx from 'classnames';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
-import styles from './styles/Select.module.scss';
-import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
+import {
+  errorStyle,
+  formBaseFieldStyles,
+  selectIconStyles,
+} from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -33,7 +35,7 @@ const SelectWrapper = styled.div`
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
-  ${iconStyles}
+  ${selectIconStyles}
 `;
 
 const SelectBase = styled.select<SelectProps>`
@@ -44,11 +46,7 @@ const SelectBase = styled.select<SelectProps>`
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {
-    const className = cx(
-      styles.Select,
-      props.className,
-      props.error && styles.error
-    );
+    const { className } = props;
     const { options, error, id, ...rest } = props;
 
     let selectOptions: ReactNode[] = [];
