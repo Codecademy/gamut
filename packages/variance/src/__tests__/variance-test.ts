@@ -1,5 +1,4 @@
 import { variance } from '../core';
-import { parseSize } from '../transforms';
 
 const theme = {
   breakpoints: {
@@ -29,8 +28,14 @@ const space = testVariance.create({
 });
 
 const layout = testVariance.create({
-  width: { property: 'width', transform: parseSize },
-  height: { property: 'height', transform: parseSize },
+  width: {
+    property: 'width',
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+  },
+  height: {
+    property: 'height',
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+  },
 });
 
 type Assert<X, Y> = X extends Y ? true : false;
@@ -154,16 +159,16 @@ describe('style props', () => {
       });
     });
     it('transforms props', () => {
-      const res = { height: '50px' };
-      expect(layout({ height: '50', theme })).toEqual(res);
+      const res = { height: '1.5rem' };
+      expect(layout({ height: '24px', theme })).toEqual(res);
     });
   });
   describe('compose', () => {
     it('combines multiple parsers into one parser', () => {
       const composed = testVariance.compose(layout, space);
 
-      expect(composed({ height: '50', padding: [4, 16], theme })).toEqual({
-        height: '50px',
+      expect(composed({ height: '24px', padding: [4, 16], theme })).toEqual({
+        height: '1.5rem',
         padding: '0.25rem',
         XS: {
           padding: '1rem',

@@ -5,7 +5,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { variance } from '../core';
-import { parseSize } from '../transforms';
 
 expect.extend(matchers);
 
@@ -37,8 +36,14 @@ const space = testVariance.create({
 });
 
 const layout = testVariance.create({
-  width: { property: 'width', transform: parseSize },
-  height: { property: 'height', transform: parseSize },
+  width: {
+    property: 'width',
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+  },
+  height: {
+    property: 'height',
+    transform: (val: string) => `${parseInt(val, 10) / 16}rem`,
+  },
 });
 
 describe('style props', () => {
@@ -66,27 +71,27 @@ describe('style props', () => {
     const renderView = renderer
       .create(
         <ThemeProvider theme={theme}>
-          <Test width="50">Hello</Test>
+          <Test width="48px">Hello</Test>
         </ThemeProvider>
       )
       .toJSON();
-    expect(renderView).toHaveStyleRule('width', '50px');
+    expect(renderView).toHaveStyleRule('width', '3rem');
   });
   it('composes props', () => {
     const Test = styled.div(testVariance.compose(layout, space));
     const renderView = renderer
       .create(
         <ThemeProvider theme={theme}>
-          <Test margin={[16, 32]} width={['50', '75']}>
+          <Test margin={[16, 32]} width={['24px', '32px']}>
             Hello
           </Test>
         </ThemeProvider>
       )
       .toJSON();
-    expect(renderView).toHaveStyleRule('width', '50px');
+    expect(renderView).toHaveStyleRule('width', '1.5rem');
     expect(renderView).toHaveStyleRule('margin', '1rem');
 
-    expect(renderView).toHaveStyleRule('width', '75px', {
+    expect(renderView).toHaveStyleRule('width', '2rem', {
       target: 'XS',
     });
     expect(renderView).toHaveStyleRule('margin', '2rem', {
