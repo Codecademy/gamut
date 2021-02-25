@@ -4,7 +4,7 @@ import {
   IconButton,
   StrokeButton,
   TextButton,
-} from '@codecademy/gamut/src';
+} from '@codecademy/gamut';
 import { MiniDeleteIcon, SearchIcon } from '@codecademy/gamut-icons';
 import React from 'react';
 

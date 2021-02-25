@@ -1,4 +1,4 @@
-import { Heading, Text } from '@codecademy/gamut/src';
+import { Heading, Text } from '@codecademy/gamut';
 import React from 'react';
 
 export const elements = {

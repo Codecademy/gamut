@@ -1,4 +1,4 @@
-import { Box } from '@codecademy/gamut/src';
+import { Box } from '@codecademy/gamut';
 import { colors } from '@codecademy/gamut-styles';
 import React from 'react';
 
