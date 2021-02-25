@@ -19,9 +19,10 @@ module.exports.default = {
         }
 
         if (importPath.includes('/src')) {
-          const indexOfSrc = node.source.range[0] + importPath.search('/src');
           context.report({
             fix: (fixer) => {
+              const indexOfSrc =
+                node.source.range[0] + importPath.search('/src');
               if (importPath.endsWith('/src')) {
                 return fixer.removeRange([indexOfSrc + 1, node.range[1] - 2]);
               }
@@ -33,9 +34,10 @@ module.exports.default = {
         }
 
         if (importPath.includes('/dist')) {
-          const indexOfDist = node.source.range[0] + importPath.search('/dist');
           context.report({
             fix: (fixer) => {
+              const indexOfDist =
+                node.source.range[0] + importPath.search('/dist');
               if (importPath.endsWith('/dist')) {
                 return fixer.removeRange([indexOfDist + 1, node.range[1] - 2]);
               }
