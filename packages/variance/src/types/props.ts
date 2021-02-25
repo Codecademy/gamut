@@ -1,9 +1,5 @@
 export type AbstractProps = Record<string, unknown>;
 
-export interface BaseTheme {
-  [key: string]: unknown;
-}
-
 interface BreakpointKeys<T = string> {
   xs: T;
   sm: T;
@@ -16,7 +12,7 @@ export interface BreakpointCache {
   array: string[];
 }
 
-export interface AbstractTheme extends BaseTheme {
+export interface AbstractTheme {
   breakpoints?: BreakpointKeys;
 }
 
