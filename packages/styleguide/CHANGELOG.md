@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.0...@codecademy/styleguide@29.5.1) (2021-02-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.3...@codecademy/styleguide@29.5.0) (2021-02-25)
+
+
+### Features
+
+* add linting for gamut imports ([17980c9](https://github.com/Codecademy/client-modules/commit/17980c9993c1334c4a3a6a875fe15dbcc1052c08))
+
+
+
 ### [29.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.2...@codecademy/styleguide@29.4.3) (2021-02-24)
 
 **Note:** Version bump only for package @codecademy/styleguide
