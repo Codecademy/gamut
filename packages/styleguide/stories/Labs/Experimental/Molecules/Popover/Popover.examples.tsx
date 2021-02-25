@@ -6,8 +6,8 @@ import {
   FlexBox,
   LayoutGrid,
   PatternName,
-} from '@codecademy/gamut/src';
-import { Popover, PopoverProps } from '@codecademy/gamut-labs/src';
+} from '@codecademy/gamut';
+import { Popover, PopoverProps } from '@codecademy/gamut-labs';
 import React, { useRef, useState } from 'react';
 
 export const PopoverExample = (args: PopoverProps) => {
