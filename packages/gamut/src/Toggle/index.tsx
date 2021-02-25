@@ -71,6 +71,7 @@ const ToggleLabel = styled.label<LabelProps>`
   cursor: pointer;
   border: 0;
   padding: 0;
+  position: relative;
 
   &[disabled] {
     cursor: not-allowed;
