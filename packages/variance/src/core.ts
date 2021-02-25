@@ -2,11 +2,9 @@ import get from 'lodash/get';
 import identity from 'lodash/identity';
 import merge from 'lodash/merge';
 
-import { BaseProps } from './props';
 import {
   AbstractParser,
   AbstractPropTransformer,
-  CSS,
   Parser,
   Prop,
   PropTransformer,
@@ -116,98 +114,6 @@ export const variance = {
             {}
           ) as MergedParser
         );
-      },
-      // Single function to create variant and css
-      createStatic<
-        Config extends Record<string, Prop<T>>,
-        Options extends { withBase: boolean },
-        MergeConfig extends Options['withBase'] extends true ? BaseProps : {},
-        P extends Parser<T, TransformerMap<T, MergeConfig & Config>>
-      >(config: Config, options?: Options): never {
-        throw new Error('Not implemented');
-        // const css = this.createCss(
-        //   Object.assign(options?.withBase ? baseProps : {}, config)
-        // );
-        // const variant = this.createVariant(css);
-
-        // return {
-        //   css,
-        //   variant,
-        // };
-      },
-      // Creates a higher order function that accepts static variance props and returns a function that can be called with theme
-      createCss<
-        Config extends Record<string, Prop<T>>,
-        P extends Parser<T, TransformerMap<T, Config>>
-      >(config: Config) {
-        throw new Error('Not implemented');
-        // // Create a parser from the passed configuration of props
-        // const parser = this.create(config);
-
-        // return (cssProps) => {
-        //   let cache: CSSObject;
-        //   // Check any key that may match a selector and extract them
-        //   const selectors = Object.keys(cssProps).filter((key) =>
-        //     key.match(/(&|\>|\+|~)/g)
-        //   );
-
-        //   return ({ theme }) => {
-        //     // If cache has been set escape
-        //     if (cache) return cache;
-        //     // Omit any props that are selector styles and generate the base CSS
-        //     const css = parser({
-        //       ...(omit(cssProps, selectors) as Parameters<P>[0]),
-        //       theme,
-        //     });
-        //     // For every key that matches a selector call the parser with the value of that key
-        //     selectors.forEach((selector) => {
-        //       const selectorConfig = cssProps[selector];
-        //       if (isObject(selectorConfig)) {
-        //         // Set the key on our returned object to the generated CSS
-        //         css[selector] = parser(
-        //           Object.assign(selectorConfig, { theme })
-        //         );
-        //       }
-        //     });
-        //     // Set CSS to the cache
-        //     cache = css;
-        //     return cache;
-        //   }
-        // };
-      },
-      /** Creates a higher order function that accepts a set of keyed static props to return a
-       * function that accepts theme and a prop of any key on thee configuration object
-       */
-      createVariant<
-        Config extends Record<string, Prop<T>>,
-        P extends Parser<T, TransformerMap<T, Config>>,
-        StyleFunc extends CSS<T, P>
-      >(css: StyleFunc): never {
-        throw new Error('Not implemented');
-        // return (variants, options) => {
-        //   type Keys = keyof typeof variants;
-        //   // Set the default prop signature to variant if none has been configuraed.
-        //   const prop = options?.prop || 'variant';
-        //   const defaultVariant = options?.defaultVariant;
-
-        //   const variantFns = {} as Record<
-        //     Keys,
-        //     (props: ThemeProps<T>) => CSSObject
-        //   >;
-        //   // For each of the variants create a CSS function from the configured props to be called when
-        //   // the return function is invoked.
-        //   Object.keys(variants).forEach((key) => {
-        //     const variantKey = key as Keys;
-        //     const cssProps = variants[variantKey];
-        //     variantFns[variantKey] = css(cssProps);
-        //   });
-
-        //   // Return the initialed final props
-        //   return ({ [prop]: selected = defaultVariant, ...props }) => {
-        //     // Call the correct css function with our defaulted key or return an empty object
-        //     return variantFns?.[selected as Keys]?.(props) ?? {};
-        //   };
-        // };
       },
       create<Config extends Record<string, Prop<T>>>(config: Config) {
         const transforms = {} as TransformerMap<T, Config>;

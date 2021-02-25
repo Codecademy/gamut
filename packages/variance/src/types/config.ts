@@ -4,10 +4,11 @@ import {
   AbstractTheme,
   CSSObject,
   ResponsiveProp,
-  SelectorMap,
   ThemeProps,
 } from './props';
 import { Key } from './utils';
+
+export type LiteralScale = Record<string | number, string | number>;
 
 export interface BaseProperty {
   property: keyof PropertyTypes;
@@ -15,7 +16,7 @@ export interface BaseProperty {
 }
 
 export interface Prop<T extends AbstractTheme> extends BaseProperty {
-  scale?: keyof T;
+  scale?: keyof T | LiteralScale;
   transform?: (
     val: string | number,
     prop?: string,
@@ -41,6 +42,8 @@ export type Scale<
 > = ResponsiveProp<
   Config['scale'] extends keyof T
     ? keyof T[Config['scale']]
+    : Config['scale'] extends LiteralScale
+    ? keyof Config['scale']
     : PropertyTypes[Config['property']]
 >;
 
@@ -92,32 +95,4 @@ export interface Parser<
   (props: ParserProps<T, Config>): CSSObject;
   propNames: (keyof Config)[];
   config: Config;
-}
-
-export interface Variant<
-  T extends AbstractTheme,
-  Parser extends AbstractParser<T>
-> {
-  <
-    Props extends Record<string, AbstractProps>,
-    Keys extends keyof Props,
-    PropKey extends Readonly<string> = 'variant'
-  >(
-    variants: {
-      [P in Keys]: SelectorMap<Props[P], Parameters<Parser>[0]>;
-    },
-    options?: {
-      prop?: PropKey;
-      defaultVariant?: Keys;
-    }
-  ): <FinalProps extends ThemeProps<T, { [X in PropKey]?: Key<Keys> }>>(
-    props: FinalProps
-  ) => CSSObject;
-}
-export interface CSS<T extends AbstractTheme, P extends AbstractParser<T>> {
-  <Props extends AbstractProps>(config: SelectorMap<Props, Parameters<P>[0]>): <
-    FinalProps extends ThemeProps<T>
-  >(
-    props: FinalProps
-  ) => CSSObject;
 }
