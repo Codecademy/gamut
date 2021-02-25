@@ -13,6 +13,12 @@ const OverlayPlayButton = () => {
   );
 };
 
+/**
+ * @remarks ReactPlayer has optional key 'wrapper' that we require for the onReady callback
+ */
+
+export type ReactPlayerWithWrapper = ReactPlayer & { wrapper: HTMLElement };
+
 export type VideoProps = {
   videoUrl: string;
   videoTitle?: string;
@@ -22,7 +28,7 @@ export type VideoProps = {
   loop?: boolean;
   muted?: boolean;
   className?: string;
-  onReady?: (player: ReactPlayer & { wrapper: HTMLElement }) => void;
+  onReady?: (player: ReactPlayerWithWrapper) => void;
   onPlay?: () => void;
 };
 
@@ -53,7 +59,7 @@ export const Video: React.FC<VideoProps> = ({
         loop={loop}
         muted={muted}
         playIcon={<OverlayPlayButton />}
-        onReady={(player: ReactPlayer & { wrapper: HTMLElement }) => {
+        onReady={(player: ReactPlayerWithWrapper) => {
           onReady?.(player);
           setLoading(false);
         }}
