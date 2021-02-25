@@ -1,26 +1,5 @@
 @import "variables";
 
-.Select {
-  position: relative;
-  width: 100%;
-  font-weight: normal;
-}
-
-.error {
-  border-color: $color-red-700;
-  &:focus {
-    border-color: $color-red-500;
-  }
-}
-
-.selectIcon {
-  pointer-events: none;
-  position: absolute;
-  right: 1rem;
-  top: 1.25rem;
-  width: 0.75rem;
-}
-
 .selectInput {
   display: block;
   -moz-appearance: none;

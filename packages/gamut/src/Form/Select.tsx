@@ -1,10 +1,12 @@
+import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import cx from 'classnames';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import styles from './styles/Select.module.scss';
-import { errorStyle, inputStyles } from './styles/shared';
+import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -13,8 +15,30 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   id?: string;
 };
 
-const SelectBase = styled.select`
-  ${inputStyles}
+export const selectWrapperStyles = css`
+  position: relative;
+  width: 100%;
+  font-weight: normal;
+`;
+
+export const selectInputStyles = css`
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+`;
+
+const SelectWrapper = styled.div`
+  ${selectWrapperStyles}
+`;
+
+const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
+  ${iconStyles}
+`;
+
+const SelectBase = styled.select<SelectProps>`
+  ${formBaseFieldStyles}
+  ${selectInputStyles}
   ${errorStyle}
 `;
 
@@ -50,23 +74,18 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     }
 
     return (
-      <div className={className}>
-        <svg className={styles.selectIcon}>
-          <path
-            d="M1.175 0L5 3.825 8.825 0 10 1.183l-5 5-5-5z"
-            fill="#3E3E40"
-          />
-        </svg>
+      <SelectWrapper className={className}>
+        <StyledChevronDownIcon color="blue" />
         <SelectBase
           {...rest}
-          className={styles.selectInput}
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}
+          errorState={props.error}
         >
           {selectOptions}
         </SelectBase>
-      </div>
+      </SelectWrapper>
     );
   }
 );

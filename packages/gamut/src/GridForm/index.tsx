@@ -97,9 +97,7 @@ export function GridForm<
           const requiredBoolean = !!(
             field.validation && field.validation.required
           );
-          {
-            console.log(requiredBoolean);
-          }
+
           return (
             <GridFormInputGroup
               error={errorMessage as string}

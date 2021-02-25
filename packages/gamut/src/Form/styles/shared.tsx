@@ -1,28 +1,48 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
+export const errorStyle = ({ errorState }) => {
+  const hulu = errorState
+    ? css`
+        color: ${theme.colors.red};
+        border-color: ${theme.colors.red} !important;
+
+        &:focus {
+          box-shadow: 0 0 0 1px ${theme.colors.red};
+        }
+      `
+    : null;
+  return hulu;
+};
+
+export const iconStyles = (props) => {
+  const { color } = props;
+  return css`
+    position: absolute;
+    right: 16px;
+    top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
+    color: ${theme.colors[color]};
+    height: 16px;
+    width: 16px;
+  `;
+};
+
 export const formBaseStyles = css`
   color: ${theme.colors.navy};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
-  margin-bottom: ${theme.spacing[8]};
 `;
 
-export const inputStyles = css`
+export const formBaseFieldStyles = css`
   ${formBaseStyles}
   cursor: pointer;
-  text-indent: 0.8rem;
-  padding: 0.8rem 0;
-  outline: none;
+  margin-bottom: ${theme.spacing[8]};
   width: 100%;
-  caret-color: ${theme.colors[`hyper-400`]};
+  padding: ${pxRem(11)} ${theme.spacing[8]};
+  outline: none;
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
   transition: ${theme.colors[`blue-900`]} 0.15s;
-  box-sizing: border-box;
-  padding: ${pxRem(11)} ${theme.spacing[8]};
-  text-indent: 0;
-
   &:hover {
     border-color: ${theme.colors.hyper};
   }
@@ -44,31 +64,9 @@ export const inputStyles = css`
   }
 `;
 
-export const iconStyles = (props) => {
-  const { color } = props;
-  return css`
-    position: absolute;
-    right: 16px;
-    top: calc(50% - 8px);
-    color: ${theme.colors[color]};
-    height: 16px;
-    width: 16px;
-  `;
-};
-
-export const errorStyle = ({ errorState }) => {
-  const hulu = errorState
-    ? css`
-        color: ${theme.colors.red};
-        border-color: ${theme.colors.red};
-        &:hover {
-          border-color: ${theme.colors.red};
-        }
-
-        &:focus {
-          box-shadow: 0 0 0 1px ${theme.colors.red};
-        }
-      `
-    : null;
-  return hulu;
-};
+export const inputStyles = css`
+  ${formBaseFieldStyles}
+  caret-color: ${theme.colors[`hyper-400`]};
+  box-sizing: border-box;
+  text-indent: 0;
+`;
