@@ -25,7 +25,7 @@ export type GridFormInputGroupProps = {
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
-
+  height: fit-content;
   // This is always the input
   > *:last-child {
     width: 100%;
@@ -117,12 +117,12 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
     <Column size={field.size}>
       <StyledFormGroup>
         {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+        {getInput()}
         {error && (
           <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
             {error}
           </FormError>
         )}
-        {getInput()}
       </StyledFormGroup>
     </Column>
   );

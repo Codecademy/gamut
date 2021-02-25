@@ -1,3 +1,4 @@
+import styled from '@emotion/styled/types/base';
 import cx from 'classnames';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
@@ -10,6 +11,11 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   options?: string[] | Record<string, number | string>;
   id?: string;
 };
+
+const SelectBase = styled.div<SelectProps>`
+  ${inputStyles}
+  ${errorStyle}
+`;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (props, ref) => {

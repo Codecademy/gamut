@@ -1,9 +1,10 @@
-import cx from 'classnames';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
+import { Box } from '../Box';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
-import styles from './styles/FormGroup.module.scss';
 
 export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   label?: string;
@@ -12,6 +13,16 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   description?: string;
   required?: boolean;
 };
+
+export const formGroupStyles = css`
+  position: relative;
+  margin-bottom: 1.5rem;
+  width: 100%;
+`;
+
+const FormGroupContainer = styled(Box)<FormGroupProps>`
+  ${formGroupStyles}
+`;
 
 export const FormGroup: React.FC<FormGroupProps> = ({
   label,
@@ -22,8 +33,6 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   required,
   ...rest
 }) => {
-  const classNames = cx(styles.FormGroup, className);
-
   const labelComponent = label ? (
     <FormGroupLabel htmlFor={htmlFor} required={required}>
       {label}
@@ -37,10 +46,10 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   ) : null;
 
   return (
-    <div {...rest} className={classNames}>
+    <FormGroupContainer {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
       {children}
-    </div>
+    </FormGroupContainer>
   );
 };

@@ -1,5 +1,11 @@
 @import "variables";
 
 .formError {
-  color: $color-red-700;
+  position: absolute;
+  left: 0;
+  top: 4.25rem;
+  color: $color-red-500;
+  margin-top: 0.1rem;
+  display: inline-block;
+  font-size: 0.75rem;
 }

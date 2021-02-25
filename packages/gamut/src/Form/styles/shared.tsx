@@ -5,6 +5,7 @@ export const formBaseStyles = css`
   color: ${theme.colors.navy};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
+  margin-bottom: ${theme.spacing[8]};
 `;
 
 export const inputStyles = css`
