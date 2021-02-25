@@ -1200,17 +1200,6 @@
     specificity "^0.4.1"
     stylis "^4.0.3"
 
-"@emotion/jest@^11.2.0":
-  version "11.2.0"
-  resolved "https://registry.npmjs.org/@emotion/jest/-/jest-11.2.0.tgz#c07f0023e17c61c3c67058e4dbd9b69e0de9b034"
-  integrity sha512-/IHfepppnbf5KHOuz5e145oKR2JOV0hz4chy3HHSz/JrIDa9EyQLGIo6ZqLku1XdieMYvnxaCA2ReJRo7EvUIQ==
-  dependencies:
-    "@babel/runtime" "^7.7.2"
-    "@emotion/css-prettifier" "^1.0.0"
-    chalk "^4.1.0"
-    specificity "^0.4.1"
-    stylis "^4.0.3"
-
 "@emotion/memoize@0.7.4":
   version "0.7.4"
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz#19bf0f5af19149111c40d98bb0cf82119f5d9eeb"
