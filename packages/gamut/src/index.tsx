@@ -34,6 +34,8 @@ export * from './Modal';
 export * from './NotificationList';
 export * from './NotificationList/NotificationIcon';
 export * from './NotificationList/NotificationItem';
+export * from './NotificationListNew';
+export * from './NotificationListNew/NotificationItemNew';
 export * from './Overlay';
 export * from './Pattern';
 export * from './ProgressBar';
