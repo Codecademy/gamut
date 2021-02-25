@@ -13,7 +13,7 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   id?: string;
 };
 
-const SelectBase = styled.div<SelectProps>`
+const SelectBase = styled.select`
   ${inputStyles}
   ${errorStyle}
 `;
@@ -57,7 +57,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             fill="#3E3E40"
           />
         </svg>
-        <select
+        <SelectBase
           {...rest}
           className={styles.selectInput}
           defaultValue={props.defaultValue || ''}
@@ -65,7 +65,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
         >
           {selectOptions}
-        </select>
+        </SelectBase>
       </div>
     );
   }
