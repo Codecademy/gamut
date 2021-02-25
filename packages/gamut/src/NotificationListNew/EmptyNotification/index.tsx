@@ -15,7 +15,8 @@ export const EmptyNotification = () => {
       alignItems="center"
       paddingTop={32}
       paddingBottom={48}
-      data-testid="empty-notification"
+      data-testId="empty-notification"
+      aria-live="assertive"
     >
       <FlexBox paddingBottom={16}>
         <Image width={80} height={60} />
