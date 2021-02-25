@@ -184,6 +184,7 @@ export const Popover: React.FC<PopoverProps> = ({
             return true;
           },
           onDeactivate: onRequestClose,
+          fallbackFocus: '#popover-content-container',
         }}
       >
         <PopoverContainer
@@ -193,6 +194,7 @@ export const Popover: React.FC<PopoverProps> = ({
           className={className}
           style={getPopoverPosition()}
           data-testid="popover-content-container"
+          id="popover-content-container"
         >
           <RaisedDiv outline={outline}>
             {beak && (
