@@ -1,4 +1,4 @@
-import * as icons from '@codecademy/gamut-icons/src/icons/regular';
+import * as icons from '@codecademy/gamut-icons';
 import { keys, omit, pick } from 'lodash';
 
 export const ICONS = icons;
