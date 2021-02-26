@@ -26,7 +26,10 @@ have a particular set of gaps at small viewports and bigger ones on large viewpo
 <Canvas>
   <Story
     name="LayoutGrid"
-    args={{ rowGap: { xs: 'sm', lg: 'lg' }, columnGap: { xs: 'sm', lg: 'lg' } }}
+    args={{
+      rowGap: { base: 'sm', lg: 'lg' },
+      columnGap: { base: 'sm', lg: 'lg' },
+    }}
   >
     {(args) => (
       <LayoutGrid {...args}>
@@ -175,10 +178,10 @@ As with column and row gaps, those numbers may be static or responsive.
         <Column size={8}>
           <ExampleBox />
         </Column>
-        <Column offset={{ xs: 6, md: 4, lg: 2 }} size={6}>
+        <Column offset={{ base: 6, md: 4, lg: 2 }} size={6}>
           <ExampleBox>sm: 6, md: 4, lg: 2</ExampleBox>
         </Column>
-        <Column offset={{ xs: 0, md: 4 }} size={6}>
+        <Column offset={{ base: 0, md: 4 }} size={6}>
           <ExampleBox>no offset sm, md: 4</ExampleBox>
         </Column>
       </LayoutGrid>
