@@ -2,7 +2,8 @@ import { mapValues, isNumber, map } from 'lodash/fp';
 import { ArgTypesEnhancer } from '@storybook/client-api';
 import { kebabCase } from 'lodash';
 import { ALL_PROPS, PROP_META, PROP_GROUPS } from './propMeta';
-import { Theme, theme } from '@codecademy/gamut-styles/src/theme';
+import { theme } from '@codecademy/gamut-styles/src/theme';
+import { Theme } from '@emotion/react';
 
 export type SystemControls = 'text' | 'select' | 'radio' | 'inline-radio';
 
