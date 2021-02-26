@@ -12,7 +12,11 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     required?: boolean;
   };
 
-export const disabledLabelStyle = ({ disabled }) => {
+type disabledLabelStyleProps = {
+  disabled: boolean;
+};
+
+export const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   if (disabled) {
     return css`
       color: ${theme.colors[`gray-300`]};

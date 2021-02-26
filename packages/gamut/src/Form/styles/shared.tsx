@@ -1,7 +1,11 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
-export const errorStyle = ({ errorState }) => {
+type errorStateProps = {
+  errorState: boolean;
+};
+
+export const errorStyle = ({ errorState }: errorStateProps) => {
   const errorStyle = errorState
     ? css`
         color: ${theme.colors.red};
@@ -47,6 +51,8 @@ export const formBaseFieldStyles = css`
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
   transition: ${theme.colors[`blue-900`]} 0.15s;
+  padding-right: 2.5rem;
+  min-width: auto;
   &:hover {
     border-color: ${theme.colors.hyper};
   }

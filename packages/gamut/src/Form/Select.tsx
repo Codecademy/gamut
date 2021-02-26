@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
+import { Box } from '../Box';
 import {
   errorStyle,
   formBaseFieldStyles,
@@ -21,6 +22,7 @@ export const selectWrapperStyles = css`
   position: relative;
   width: 100%;
   font-weight: normal;
+  min-width: 100px;
 `;
 
 export const selectInputStyles = css`
@@ -30,8 +32,9 @@ export const selectInputStyles = css`
   appearance: none;
 `;
 
-const SelectWrapper = styled.div`
+export const SelectWrapper = styled(Box)`
   ${selectWrapperStyles}
+  min-width: fit-content;
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
@@ -42,6 +45,8 @@ const SelectBase = styled.select<SelectProps>`
   ${formBaseFieldStyles}
   ${selectInputStyles}
   ${errorStyle}
+  padding-right: 2.5rem;
+  min-width: auto;
 `;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
