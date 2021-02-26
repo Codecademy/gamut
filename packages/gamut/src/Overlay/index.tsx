@@ -1,5 +1,5 @@
 import FocusTrap from 'focus-trap-react';
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
@@ -46,38 +46,51 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      const overlayContents = overlayRef.current?.firstChild;
+      if (!overlayContents?.contains(e.target as HTMLElement)) {
+        clickOutsideCloses && onRequestClose();
+      }
+    },
+    [clickOutsideCloses, onRequestClose]
+  );
+
   useIsomorphicLayoutEffect(() => {
     if (typeof document !== 'undefined') {
       document.body.style.overflow = isOpen ? 'hidden' : 'visible';
+      document.addEventListener('click', handleOutsideClick);
     }
+    return () => document?.removeEventListener('click', handleOutsideClick);
   }, [isOpen]);
 
   if (!isOpen) return null;
-
   return (
     <BodyPortal>
-      <FlexBox
-        data-testid="overlay-content-container"
-        position={staticPositioning ? 'static' : 'fixed'}
-        justifyContent="center"
-        alignItems="center"
-        bottom="0"
-        left="0"
-        right="0"
-        top="0"
-        className={className}
+      <FocusTrap
+        focusTrapOptions={{
+          allowOutsideClick,
+          escapeDeactivates: escapeCloses,
+          onDeactivate: onRequestClose,
+        }}
       >
-        <FocusTrap
-          focusTrapOptions={{
-            allowOutsideClick,
-            clickOutsideDeactivates: clickOutsideCloses,
-            escapeDeactivates: escapeCloses,
-            onDeactivate: onRequestClose,
-          }}
+        <FlexBox
+          data-testid="overlay-content-container"
+          position={staticPositioning ? 'static' : 'fixed'}
+          justifyContent="center"
+          alignItems="center"
+          bottom="0"
+          left="0"
+          right="0"
+          top="0"
+          className={className}
+          ref={overlayRef}
         >
           {children}
-        </FocusTrap>
-      </FlexBox>
+        </FlexBox>
+      </FocusTrap>
     </BodyPortal>
   );
 };
