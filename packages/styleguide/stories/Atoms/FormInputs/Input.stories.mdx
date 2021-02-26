@@ -105,11 +105,11 @@ import { PropsTable } from '~styleguide/blocks';
     {(args) => <Input {...args} />}
   </Story>
   <Story
-    name="Placeholder"
+    name="Cloned Component"
     args={{
       htmlFor: 'example-placeholder',
       name: 'example-placeholder',
-      placeholder: 'Placeholder',
+      placeholder: 'Cloned',
       defaultValue: undefined,
     }}
   >
@@ -118,6 +118,7 @@ import { PropsTable } from '~styleguide/blocks';
         reactRecurlyComponent={
           <input type="text" id="username" name="username" />
         }
+        error
         {...args}
       />
     )}

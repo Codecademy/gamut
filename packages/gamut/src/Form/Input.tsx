@@ -1,10 +1,11 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { css, jsx } from '@emotion/react';
+import { pxRem, theme } from '@codecademy/gamut-styles';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { Box } from '../Box';
-import { errorStyle, inputIconStyles, inputStyles } from './styles/shared';
+import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -15,31 +16,26 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   placeholder?: string;
   required?: boolean;
   type?: string;
-  errorState?: boolean;
   verified?: boolean;
   reactRecurlyComponent?: ReactNode;
 };
 
-const InputBase = styled.input<InputProps>`
-  ${inputStyles}
-  ${errorStyle}
+export const inputIconStyles = css`
+  ${iconStyles}
+  top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;
 
-const InputBaseStyles = css`
-  ${inputStyles}
+const InputBase = styled.input<InputProps>`
+  ${formBaseFieldStyles}
   ${errorStyle}
+  caret-color: ${theme.colors[`hyper-400`]};
+  box-sizing: border-box;
+  text-indent: 0;
 `;
-const cloneElement = (element, props) =>
-  jsx(element.type, {
-    key: element.key,
-    ref: element.ref,
-    ...element.props,
-    ...props,
-  });
 
 const RRWrapper = ({ children, inputProps }) => {
   const props = { ...children.props, ...inputProps };
-  return cloneElement(children, { ...props, css: InputBaseStyles });
+  return <InputBase {...props} />;
 };
 
 const StyledAlertIcon = styled(AlertIcon)`
@@ -80,7 +76,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             error={error}
             className={className}
-            errorState={error}
           />
         )}
         {error && <StyledAlertIcon color="red" />}

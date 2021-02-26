@@ -81,7 +81,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           defaultValue={props.defaultValue || ''}
           id={id || props.htmlFor}
           ref={ref}
-          errorState={props.error}
+          error={props.error}
         >
           {selectOptions}
         </SelectBase>

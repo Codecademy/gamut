@@ -2,11 +2,11 @@ import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
 type errorStateProps = {
-  errorState: boolean;
+  error?: boolean;
 };
 
-export const errorStyle = ({ errorState }: errorStateProps) => {
-  const errorStyle = errorState
+export const errorStyle = ({ error }: errorStateProps) => {
+  const errorStyle = error
     ? css`
         color: ${theme.colors.red};
         border-color: ${theme.colors.red} !important;
@@ -19,7 +19,7 @@ export const errorStyle = ({ errorState }: errorStateProps) => {
   return errorStyle;
 };
 
-const iconStyles = css`
+export const iconStyles = css`
   position: absolute;
   right: 16px;
   height: 16px;
@@ -27,10 +27,6 @@ const iconStyles = css`
   cursor: inherit;
 `;
 
-export const inputIconStyles = css`
-  ${iconStyles}
-  top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
-`;
 export const selectIconStyles = css`
   ${iconStyles}
   top: calc(50% - ${pxRem(8)});
@@ -73,11 +69,4 @@ export const formBaseFieldStyles = css`
     color: ${theme.colors[`gray-500`]};
     font-style: italic;
   }
-`;
-
-export const inputStyles = css`
-  ${formBaseFieldStyles}
-  caret-color: ${theme.colors[`hyper-400`]};
-  box-sizing: border-box;
-  text-indent: 0;
 `;
