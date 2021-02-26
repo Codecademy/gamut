@@ -1,4 +1,5 @@
 import { Box } from '@codecademy/gamut';
+import { useTheme } from '@emotion/react';
 import React from 'react';
 
 import { AppHeader } from '../AppHeader';
@@ -93,22 +94,31 @@ const getMobileAppHeaderItems = (
   }
 };
 
-export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => (
-  <>
-    <Box display={{ base: 'none', md: 'block' }} height="80">
-      <AppHeader action={props.action} items={getAppHeaderItems(props)} />
-    </Box>
-    <Box
-      display={{ base: 'block', md: 'none' }}
-      height="64"
-      position="relative"
-      zIndex={0}
-    >
-      <AppHeaderMobile
-        action={props.action}
-        items={getMobileAppHeaderItems(props)}
-        renderSearch={props.renderSearch?.mobile}
-      />
-    </Box>
-  </>
-);
+// For performance reasons, this component renders the mobile and desktop versions
+// of itself simultaneously and switches between them using css (instead of using
+// any of the useBreakpoint hooks, which rely on js for the same behavior).
+export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
+  const { elements } = useTheme();
+  return (
+    <>
+      <Box
+        display={{ base: 'none', md: 'block' }}
+        height={elements.headerHeight}
+      >
+        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
+      </Box>
+      <Box
+        display={{ base: 'block', md: 'none' }}
+        height={elements.headerHeight}
+        position="relative"
+        zIndex={0}
+      >
+        <AppHeaderMobile
+          action={props.action}
+          items={getMobileAppHeaderItems(props)}
+          renderSearch={props.renderSearch?.mobile}
+        />
+      </Box>
+    </>
+  );
+};
