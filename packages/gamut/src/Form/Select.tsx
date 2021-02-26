@@ -34,7 +34,6 @@ export const selectInputStyles = css`
 
 export const SelectWrapper = styled(Box)`
   ${selectWrapperStyles}
-  min-width: fit-content;
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
@@ -45,8 +44,6 @@ const SelectBase = styled.select<SelectProps>`
   ${formBaseFieldStyles}
   ${selectInputStyles}
   ${errorStyle}
-  padding-right: 2.5rem;
-  min-width: auto;
 `;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(

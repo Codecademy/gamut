@@ -1,6 +1,8 @@
+import styled from '@emotion/styled';
 import cx from 'classnames';
 import React, { forwardRef, TextareaHTMLAttributes } from 'react';
 
+import { errorStyle, formBaseFieldStyles } from './styles/shared';
 import styles from './styles/TextArea.module.scss';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -11,6 +13,12 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   required?: boolean;
   value?: string;
 };
+
+const StyledTextArea = styled.textarea`
+  ${formBaseFieldStyles}
+  ${errorStyle}
+  position: initial;
+`;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ error, htmlFor, className, id, ...rest }, ref) => {
@@ -23,7 +31,13 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     );
 
     return (
-      <textarea {...rest} id={id || htmlFor} className={classNames} ref={ref} />
+      <StyledTextArea
+        {...rest}
+        id={id || htmlFor}
+        className={className}
+        ref={ref}
+        errorState={error}
+      />
     );
   }
 );

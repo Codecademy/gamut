@@ -104,4 +104,22 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => <Input {...args} />}
   </Story>
+  <Story
+    name="Placeholder"
+    args={{
+      htmlFor: 'example-placeholder',
+      name: 'example-placeholder',
+      placeholder: 'Placeholder',
+      defaultValue: undefined,
+    }}
+  >
+    {(args) => (
+      <Input
+        reactRecurlyComponent={
+          <input type="text" id="username" name="username" />
+        }
+        {...args}
+      />
+    )}
+  </Story>
 </Canvas>

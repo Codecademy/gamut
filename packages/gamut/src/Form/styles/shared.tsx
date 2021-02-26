@@ -24,6 +24,7 @@ const iconStyles = css`
   right: 16px;
   height: 16px;
   width: 16px;
+  cursor: inherit;
 `;
 
 export const inputIconStyles = css`
