@@ -11,7 +11,6 @@ const commonConfig = (options = {}) => {
     env = ENV,
     minimizer,
     minimizerOptions = {},
-    fileLoaderOptions = {},
     includeDefaults = true,
   } = options;
   const DEV = env !== 'production';
