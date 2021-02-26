@@ -1,6 +1,6 @@
 import React from 'react';
-import { AnimatedGlobalHeader } from './AnimatedGlobalHeader';
 
+import { AnimatedGlobalHeader } from './AnimatedGlobalHeader';
 import { BasicGlobalHeader } from './BasicGlobalHeader';
 import { AnonHeader, FreeHeader, LoadingHeader, ProHeader } from './types';
 

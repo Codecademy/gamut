@@ -1,6 +1,7 @@
 import cx from 'classnames';
 import { throttle } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
+
 import { GlobalHeaderProps } from '..';
 import { BasicGlobalHeader } from '../BasicGlobalHeader';
 import styles from './styles.module.scss';
