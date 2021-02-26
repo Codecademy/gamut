@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import { throttle } from 'lodash';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { GlobalHeaderProps } from '..';
@@ -64,18 +63,16 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     }
   }, [prevScrollPosition]);
 
-  const throttledHandleScroll = throttle(handleScrolling, 200);
-
   useEffect(() => {
-    window?.addEventListener('scroll', throttledHandleScroll, {
+    window?.addEventListener('scroll', handleScrolling, {
       passive: true,
     });
 
     // returned function will be called on component unmount
     return () => {
-      window?.removeEventListener('scroll', throttledHandleScroll);
+      window?.removeEventListener('scroll', handleScrolling);
     };
-  }, [throttledHandleScroll, scrollingState]);
+  }, [handleScrolling]);
 
   return (
     <>
