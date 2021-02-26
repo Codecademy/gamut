@@ -1,5 +1,5 @@
-import FocusTrap from 'focus-trap-react';
 import React, { useCallback, useRef } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
@@ -12,10 +12,6 @@ export type OverlayProps = {
    * Whether clicking on the screen outside of the container should close the Overlay.
    */
   clickOutsideCloses?: boolean;
-  /**
-   * Whether to allow outside clicks in the overlay. No effect unless clickOutsideCloses is false. Check before using this prop, as it can have accessiblity implications.
-   */
-  allowOutsideClick?: boolean;
   /**
    * Whether clicking the escape key should close the Overlay.
    */
@@ -40,7 +36,6 @@ export const Overlay: React.FC<OverlayProps> = ({
   className,
   children,
   clickOutsideCloses = true,
-  allowOutsideClick,
   escapeCloses = true,
   staticPositioning = false,
   onRequestClose,
@@ -48,49 +43,38 @@ export const Overlay: React.FC<OverlayProps> = ({
 }) => {
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const handleOutsideClick = useCallback(
-    (e: MouseEvent) => {
-      const overlayContents = overlayRef.current?.firstChild;
-      if (!overlayContents?.contains(e.target as HTMLElement)) {
-        clickOutsideCloses && onRequestClose();
-      }
-    },
-    [clickOutsideCloses, onRequestClose]
-  );
+  const handleOutsideClick = useCallback(() => {
+    clickOutsideCloses && onRequestClose();
+  }, [clickOutsideCloses, onRequestClose]);
 
-  useIsomorphicLayoutEffect(() => {
-    if (typeof document !== 'undefined') {
-      document.body.style.overflow = isOpen ? 'hidden' : 'visible';
-      document.addEventListener('click', handleOutsideClick);
-    }
-    return () => document?.removeEventListener('click', handleOutsideClick);
-  }, [isOpen]);
+  const handleEscapeKey = useCallback(() => {
+    escapeCloses && onRequestClose();
+  }, [escapeCloses, onRequestClose]);
 
   if (!isOpen) return null;
+
   return (
     <BodyPortal>
-      <FocusTrap
-        focusTrapOptions={{
-          allowOutsideClick,
-          escapeDeactivates: escapeCloses,
-          onDeactivate: onRequestClose,
-        }}
+      <FlexBox
+        data-testid="overlay-content-container"
+        position={staticPositioning ? 'static' : 'fixed'}
+        justifyContent="center"
+        alignItems="center"
+        bottom="0"
+        left="0"
+        right="0"
+        top="0"
+        className={className}
+        ref={overlayRef}
       >
-        <FlexBox
-          data-testid="overlay-content-container"
-          position={staticPositioning ? 'static' : 'fixed'}
-          justifyContent="center"
-          alignItems="center"
-          bottom="0"
-          left="0"
-          right="0"
-          top="0"
-          className={className}
-          ref={overlayRef}
+        <FocusOn
+          enabled={isOpen}
+          onClickOutside={handleOutsideClick}
+          onEscapeKey={handleEscapeKey}
         >
           {children}
-        </FlexBox>
-      </FocusTrap>
+        </FocusOn>
+      </FlexBox>
     </BodyPortal>
   );
 };
