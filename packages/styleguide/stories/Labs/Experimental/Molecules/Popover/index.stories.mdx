@@ -2,7 +2,11 @@ import { Popover } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
-import { PatternedPopoversGrid, PopoverExample } from './Popover.examples';
+import {
+  PatternedPopoversGrid,
+  PopoverExample,
+  PopoverWithoutFocus,
+} from './Popover.examples';
 
 <Meta
   title={title}
@@ -45,6 +49,16 @@ Using the outline prop, you can add an outline to the popover.
   <Story name="Outline">
     {(args) => {
       return <PopoverExample {...args} outline />;
+    }}
+  </Story>
+</Canvas>
+
+## When the popover has no focusable element
+
+<Canvas>
+  <Story name="Popover ex 2">
+    {(args) => {
+      return <PopoverWithoutFocus {...args} />;
     }}
   </Story>
 </Canvas>

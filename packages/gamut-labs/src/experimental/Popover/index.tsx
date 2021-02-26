@@ -195,6 +195,7 @@ export const Popover: React.FC<PopoverProps> = ({
           style={getPopoverPosition()}
           data-testid="popover-content-container"
           id="popover-content-container"
+          tabIndex={-1}
         >
           <RaisedDiv outline={outline}>
             {beak && (
