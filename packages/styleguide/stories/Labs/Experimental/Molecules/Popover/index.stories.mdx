@@ -2,7 +2,11 @@ import { Popover } from '@codecademy/gamut-labs/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
-import { PatternedPopoversGrid, PopoverExample } from './Popover.examples';
+import {
+  PatternedPopoversGrid,
+  PopoverExample,
+  PopoverWithoutFocus,
+} from './Popover.examples';
 
 <Meta
   title={title}
@@ -57,6 +61,19 @@ Using the pattern prop, you can apply a patterned background to the popover.
   <Story name="Patterns">
     {(args) => {
       return <PatternedPopoversGrid {...args} />;
+    }}
+  </Story>
+</Canvas>
+
+## When the popover has no focusable element
+
+When there is no focusable child element in the popover, the popover container will receive focus.
+This is to resolve the error that the focus trap throws when there is no focusable element.
+
+<Canvas>
+  <Story name="Popover (without focusable element)">
+    {(args) => {
+      return <PopoverWithoutFocus {...args} />;
     }}
   </Story>
 </Canvas>
