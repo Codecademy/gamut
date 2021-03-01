@@ -8,10 +8,7 @@ import { Overlay, OverlayProps } from '../Overlay';
 import styles from './styles.module.scss';
 
 export type ModalOverlayProps = Partial<
-  Pick<
-    OverlayProps,
-    'clickOutsideCloses' | 'escapeCloses' | 'className' | 'allowOutsideClick'
-  >
+  Pick<OverlayProps, 'clickOutsideCloses' | 'escapeCloses' | 'className'>
 >;
 
 export type ModalProps = {
