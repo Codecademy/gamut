@@ -114,13 +114,14 @@ import { PropsTable } from '~styleguide/blocks';
     }}
   >
     {(args) => (
-      <Input
-        reactRecurlyComponent={
-          <input type="text" id="username" name="username" />
-        }
-        error
-        {...args}
-      />
+      <Input verified {...args}>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value="React Recurly"
+        />
+      </Input>
     )}
   </Story>
 </Canvas>

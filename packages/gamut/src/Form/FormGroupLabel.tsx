@@ -13,7 +13,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   };
 
 type disabledLabelStyleProps = {
-  disabled: boolean;
+  disabled?: boolean;
 };
 
 export const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {

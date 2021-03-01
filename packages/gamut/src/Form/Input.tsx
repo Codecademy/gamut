@@ -2,7 +2,12 @@ import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import React, {
+  forwardRef,
+  InputHTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from 'react';
 
 import { Box } from '../Box';
 import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
@@ -17,7 +22,6 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   verified?: boolean;
-  reactRecurlyComponent?: ReactNode;
 };
 
 export const inputIconStyles = css`
@@ -33,11 +37,6 @@ const InputBase = styled.input<InputProps>`
   text-indent: 0;
 `;
 
-const RRWrapper = ({ children, inputProps }) => {
-  const props = { ...children.props, ...inputProps };
-  return <InputBase {...props} />;
-};
-
 const StyledAlertIcon = styled(AlertIcon)`
   ${inputIconStyles}
 `;
@@ -46,29 +45,44 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
   ${inputIconStyles}
 `;
 
+// const CustomInputWrapper = React.() => {
+//   const props = { ...children.props, ...inputProps };
+//   const { id, htmlFor, className, ...rest } = props;
+//   return (
+//     {console.log(ref)}
+//     <InputBase ref={ref} id={id || htmlFor} className={className} {...rest} />
+//   );
+// };
+
+export const CustomInput = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
+    const childrenProps = children.props;
+    return (
+      <InputBase
+        {...rest}
+        id={id || htmlFor}
+        error={error}
+        className={className}
+        ref={ref}
+        {...childrenProps}
+      />
+    );
+  }
+);
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      error,
-      htmlFor,
-      className,
-      id,
-      verified,
-      children,
-      reactRecurlyComponent,
-      ...rest
-    },
-    ref
-  ) => {
+  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
     return (
       <Box position="relative">
-        {console.log(children)}
-        {reactRecurlyComponent ? (
-          <RRWrapper
-            inputProps={{ error, htmlFor, id, verified, ...rest, ref }}
+        {children ? (
+          <CustomInput
+            {...rest}
+            id={id || htmlFor}
+            error={error}
+            className={className}
+            ref={ref}
           >
-            {reactRecurlyComponent}
-          </RRWrapper>
+            {children}
+          </CustomInput>
         ) : (
           <InputBase
             {...rest}
