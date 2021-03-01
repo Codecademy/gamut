@@ -1,6 +1,4 @@
-import get from 'lodash/get';
-import identity from 'lodash/identity';
-import merge from 'lodash/merge';
+import { get, identity, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -10,7 +8,12 @@ import {
   PropTransformer,
   TransformerMap,
 } from './types/config';
-import { AbstractTheme, BreakpointCache, CSSObject } from './types/props';
+import {
+  AbstractTheme,
+  BreakpointCache,
+  CSSObject,
+  ThemeProps,
+} from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -22,19 +25,19 @@ import {
 } from './utils/responsive';
 
 export const variance = {
-  withTheme<T extends AbstractTheme>() {
+  withTheme<T extends AbstractTheme>(theme: T) {
+    const breakpoints = parseBreakpoints(theme);
+
     return {
       // Parser to handle any set of configured props
       createParser<Config extends Record<string, AbstractPropTransformer<T>>>(
         config: Config
       ): Parser<T, Config> {
-        let breakpoints: BreakpointCache;
         const propNames = orderPropNames(config);
 
-        const parser = (props: { theme: T }) => {
+        const parser = (props: ThemeProps<T>) => {
           const styles = {};
           // Get the themes configured breakpoints
-          breakpoints = breakpoints ?? parseBreakpoints(props?.theme) ?? {};
           const { map, array } = breakpoints;
 
           // Loops over all prop names on the configured config to check for configured styles

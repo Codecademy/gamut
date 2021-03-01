@@ -14,12 +14,9 @@ const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
-export const parseBreakpoints = <T extends AbstractTheme>(
-  theme?: T
-): BreakpointCache | null => {
-  const breakpoints = theme?.breakpoints;
-  if (!breakpoints) return null;
-
+export const parseBreakpoints = <T extends AbstractTheme>({
+  breakpoints,
+}: T): BreakpointCache => {
   const { xs, sm, md, lg, xl } = breakpoints;
   return {
     map: breakpoints,
