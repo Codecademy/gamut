@@ -104,11 +104,18 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => <Input {...args} />}
   </Story>
+</Canvas>
+
+### HOC Input
+
+This can also be used as a higher-order [component](https://reactjs.org/docs/higher-order-components.html) to style inputs with unique behavior.
+
+<Canvas>
   <Story
-    name="Cloned Component"
+    name="Higher Order Component"
     args={{
-      htmlFor: 'example-cloned',
-      name: 'example-placeholder',
+      htmlFor: 'example-HOC',
+      name: 'example-HOC',
       defaultValue: undefined,
     }}
   >
@@ -118,9 +125,28 @@ import { PropsTable } from '~styleguide/blocks';
           type="text"
           id="username"
           name="username"
-          placeholder="Cloned"
+          placeholder="HOC"
           onClick={() => {}}
           readOnly
+        />
+      </Input>
+    )}
+  </Story>
+  <Story
+    name="Higher Order Component Error"
+    args={{
+      htmlFor: 'example-HOC-error',
+      name: 'example-HOC-error',
+      defaultValue: 'Something incorrect you typed',
+    }}
+  >
+    {(args) => (
+      <Input error {...args}>
+        <input
+          type="text"
+          id="form-Input"
+          name="form-Input"
+          onClick={() => {}}
         />
       </Input>
     )}

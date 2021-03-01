@@ -32,7 +32,6 @@ const inputIconStyles = css`
 const InputBase = styled.input<InputProps>`
   ${formBaseFieldStyles}
   ${errorStyle}
-  caret-color: ${theme.colors[`hyper-400`]};
   box-sizing: border-box;
   text-indent: 0;
 `;

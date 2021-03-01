@@ -25,7 +25,6 @@ export type GridFormInputGroupProps = {
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
-  height: fit-content;
   // This is always the input
   > *:last-child {
     width: 100%;
