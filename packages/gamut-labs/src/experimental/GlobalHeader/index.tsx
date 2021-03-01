@@ -12,8 +12,8 @@ export type GlobalHeaderProps =
 
 export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   return props.animated ? (
-    <AnimatedGlobalHeader {...props} />
+    <AnimatedGlobalHeader {...props} data-testid="animated-global-header" />
   ) : (
-    <BasicGlobalHeader {...props} />
+    <BasicGlobalHeader {...props} data-testid="basic-global-header" />
   );
 };
