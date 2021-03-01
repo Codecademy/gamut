@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.4...@codecademy/gamut@25.3.5) (2021-03-01)
+
+
+### Bug Fixes
+
+* use sm columns in xs viewports by default for GridForm ([5aff967](https://github.com/Codecademy/client-modules/commit/5aff967e76b305e30737ab4a5b692e39886c2dba))
+
+
+
+### [25.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.3...@codecademy/gamut@25.3.4) (2021-02-25)
+
+
+### Bug Fixes
+
+* **video:** include wrapper in type ([c70d48e](https://github.com/Codecademy/client-modules/commit/c70d48e8a4a70a7244a7c4baa31118eb2a371d43))
+
+
+
 ### [25.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.2...@codecademy/gamut@25.3.3) (2021-02-24)
 
 

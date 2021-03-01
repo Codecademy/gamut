@@ -1,5 +1,5 @@
-import { FillButton, FlexBox } from '@codecademy/gamut/src';
-import { Coachmark, CoachmarkProps, Text } from '@codecademy/gamut-labs/src';
+import { FillButton, FlexBox } from '@codecademy/gamut';
+import { Coachmark, CoachmarkProps, Text } from '@codecademy/gamut-labs';
 import React, { useState } from 'react';
 
 export const CoachmarkExample = (args: CoachmarkProps) => {

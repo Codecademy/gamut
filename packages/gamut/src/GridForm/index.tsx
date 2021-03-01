@@ -9,6 +9,11 @@ import { GridFormField } from './types';
 
 export * from './types';
 
+const defaultColumnGap = {
+  xs: 'sm',
+  sm: 'lg',
+} as const;
+
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
   className?: string;
@@ -56,7 +61,7 @@ export function GridForm<
 >({
   children,
   className,
-  columnGap = 'lg',
+  columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
   rowGap = 'md',
