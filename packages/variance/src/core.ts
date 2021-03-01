@@ -8,12 +8,7 @@ import {
   PropTransformer,
   TransformerMap,
 } from './types/config';
-import {
-  AbstractTheme,
-  BreakpointCache,
-  CSSObject,
-  ThemeProps,
-} from './types/props';
+import { AbstractTheme, CSSObject, ThemeProps } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { orderPropNames } from './utils/propNames';
 import {
