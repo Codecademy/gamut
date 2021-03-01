@@ -168,6 +168,19 @@ export const Popover: React.FC<PopoverProps> = ({
     if (!isInViewport) onRequestClose?.();
   }, [targetRect, isInViewport, onRequestClose]);
 
+  const handleOutsideClick = useCallback(
+    (e: MouseEvent) => {
+      /**
+       * Allows targetRef to be or contain a button that toggles the popover open and closed.
+       * Without this check it would toggle closed then back open immediately.
+       */
+      if (!targetRef.current?.contains(e.target as Node)) {
+        onRequestClose?.();
+      }
+    },
+    [onRequestClose, targetRef]
+  );
+
   const popoverRef = useRef<HTMLDivElement>(null);
 
   if (!isOpen || !targetRef) return null;
@@ -175,11 +188,10 @@ export const Popover: React.FC<PopoverProps> = ({
   return (
     <BodyPortal>
       <FocusOn
-        onClickOutside={onRequestClose}
+        onClickOutside={handleOutsideClick}
         onEscapeKey={onRequestClose}
         scrollLock={false}
-        // This is closer to the current popover behavior... but why would we want it?
-        // shards={[targetRef]}
+        noIsolation
       >
         <PopoverContainer
           position={position}
