@@ -18,21 +18,21 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   id?: string;
 };
 
-export const selectWrapperStyles = css`
+const selectWrapperStyles = css`
   position: relative;
   width: 100%;
   font-weight: normal;
   min-width: 100px;
 `;
 
-export const selectInputStyles = css`
+const selectInputStyles = css`
   display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
 `;
 
-export const SelectWrapper = styled(Box)`
+const SelectWrapper = styled(Box)`
   ${selectWrapperStyles}
 `;
 
