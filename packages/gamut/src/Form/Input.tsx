@@ -24,7 +24,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   children?: CustomInputChild;
 };
 
-export const inputIconStyles = css`
+const inputIconStyles = css`
   ${iconStyles}
   top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;

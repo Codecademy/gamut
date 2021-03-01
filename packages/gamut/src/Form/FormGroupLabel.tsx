@@ -16,7 +16,7 @@ type disabledLabelStyleProps = {
   disabled?: boolean;
 };
 
-export const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
+const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   if (disabled) {
     return css`
       color: ${theme.colors[`gray-300`]};

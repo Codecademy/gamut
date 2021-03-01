@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
-export const errorSpanStyles = css`
+const errorSpanStyles = css`
   position: absolute;
   left: 0;
   top: calc(100% - ${theme.spacing[8]});
