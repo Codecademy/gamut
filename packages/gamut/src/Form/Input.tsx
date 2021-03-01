@@ -52,7 +52,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {console.log(rest)}
         {children ? (
           <>
-            {console.log('yo', children.props)}
             <InputBase
               id={id || htmlFor}
               ref={ref}
