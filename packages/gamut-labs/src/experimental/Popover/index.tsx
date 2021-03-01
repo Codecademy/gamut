@@ -1,7 +1,7 @@
 import { BodyPortal, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
-import FocusTrap from 'focus-trap-react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { FocusOn } from 'react-focus-on';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 type StyleProps = {
@@ -174,18 +174,12 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <BodyPortal>
-      <FocusTrap
-        focusTrapOptions={{
-          allowOutsideClick: (event) => {
-            if (!targetRef.current?.contains(event.target as Node)) {
-              onRequestClose?.();
-            }
-
-            return true;
-          },
-          onDeactivate: onRequestClose,
-          fallbackFocus: () => popoverRef.current!,
-        }}
+      <FocusOn
+        onClickOutside={onRequestClose}
+        onEscapeKey={onRequestClose}
+        scrollLock={false}
+        // This is closer to the current popover behavior... but why would we want it?
+        // shards={[targetRef]}
       >
         <PopoverContainer
           position={position}
@@ -218,7 +212,7 @@ export const Popover: React.FC<PopoverProps> = ({
             </PatternContainer>
           )}
         </PopoverContainer>
-      </FocusTrap>
+      </FocusOn>
     </BodyPortal>
   );
 };

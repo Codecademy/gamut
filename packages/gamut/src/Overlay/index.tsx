@@ -1,6 +1,5 @@
 import React, { useCallback, useRef } from 'react';
 import { FocusOn } from 'react-focus-on';
-import { useIsomorphicLayoutEffect } from 'react-use';
 
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
@@ -25,11 +24,6 @@ export type OverlayProps = {
    * Whether the overlay is rendered.
    */
   isOpen?: boolean;
-  /**
-   * Whether to use static positioning on the overlay. Defaults to false since by default Overlay's position is fixed.
-   * @default false
-   */
-  staticPositioning?: boolean;
 };
 
 export const Overlay: React.FC<OverlayProps> = ({
@@ -37,7 +31,6 @@ export const Overlay: React.FC<OverlayProps> = ({
   children,
   clickOutsideCloses = true,
   escapeCloses = true,
-  staticPositioning = false,
   onRequestClose,
   isOpen,
 }) => {
@@ -57,7 +50,7 @@ export const Overlay: React.FC<OverlayProps> = ({
     <BodyPortal>
       <FlexBox
         data-testid="overlay-content-container"
-        position={staticPositioning ? 'static' : 'fixed'}
+        position="fixed"
         justifyContent="center"
         alignItems="center"
         bottom="0"

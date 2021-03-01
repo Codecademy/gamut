@@ -28,7 +28,7 @@
     "@codecademy/gamut-tests": "^2.1.1",
     "@types/marked": "^1.1.0",
     "classnames": "^2.2.5",
-    "react-focus-on": "3.5.1",
+    "react-focus-on": "^3.5.1",
     "framer-motion": "^2.7.9",
     "html-to-react": "^1.4.2",
     "invariant": "^2.2.4",
