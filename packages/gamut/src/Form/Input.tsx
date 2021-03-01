@@ -49,18 +49,15 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
     return (
       <Box position="relative">
-        {console.log(rest)}
         {children ? (
-          <>
-            <InputBase
-              id={id || htmlFor}
-              ref={ref}
-              error={error}
-              className={className}
-              {...rest}
-              {...children.props}
-            />
-          </>
+          <InputBase
+            id={id || htmlFor}
+            ref={ref}
+            error={error}
+            className={className}
+            {...rest}
+            {...children.props}
+          />
         ) : (
           <InputBase
             {...rest}
