@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.3...@codecademy/gamut@25.3.4) (2021-02-25)
+
+
+### Bug Fixes
+
+* **video:** include wrapper in type ([c70d48e](https://github.com/Codecademy/client-modules/commit/c70d48e8a4a70a7244a7c4baa31118eb2a371d43))
+
+
+
+### [25.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.2...@codecademy/gamut@25.3.3) (2021-02-24)
+
+
+### Bug Fixes
+
+* **app header mobile & notifs empty container:** add + fix test ids ([cb3b235](https://github.com/Codecademy/client-modules/commit/cb3b235f38c104809d887e2d77b812c7dcc60ed6))
+
+
+
+### [25.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.1...@codecademy/gamut@25.3.2) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.0...@codecademy/gamut@25.3.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **Button:** fix negligent selectors ([f86150b](https://github.com/Codecademy/client-modules/commit/f86150bbef7df0c25f06cf045a5b8e2a46a5e440))
+
+
+
+## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.2...@codecademy/gamut@25.3.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.1...@codecademy/gamut@25.2.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **NotificationListNew:** Key and spacing issues ([7527e18](https://github.com/Codecademy/client-modules/commit/7527e18e560e53f41fe0474675ae44bee38eb064))
+
+
+
 ### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.0...@codecademy/gamut@25.2.1) (2021-02-22)
 
 **Note:** Version bump only for package @codecademy/gamut

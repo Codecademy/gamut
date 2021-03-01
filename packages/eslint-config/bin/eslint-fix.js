@@ -7,7 +7,7 @@ const { argv } = yargs(hideBin(process.argv))
   .options('config', {
     alias: 'c',
     description: 'path to your ESLint config',
-    default: path.resolve(__dirname, '../index.js'),
+    default: path.resolve(__dirname, '../fix.js'),
   })
   .options('_', {
     description: 'A pattern to files you want to fix with ESLint',
@@ -21,7 +21,6 @@ const { argv } = yargs(hideBin(process.argv))
 const { ESLint } = require('eslint');
 
 const runESLint = async () => {
-  process.env.ESLINT_FIX_ONLY = 'true';
   const eslint = new ESLint({
     fix: true,
     useEslintrc: false,

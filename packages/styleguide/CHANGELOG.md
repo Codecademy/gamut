@@ -3,6 +3,82 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.1...@codecademy/styleguide@29.5.2) (2021-03-01)
+
+
+### Bug Fixes
+
+* **popover:** provide fallbackFocus ([7a25f5b](https://github.com/Codecademy/client-modules/commit/7a25f5b31d5f20d4e49c851208ba1bf6002bbe6a))
+
+
+
+### [29.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.0...@codecademy/styleguide@29.5.1) (2021-02-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.3...@codecademy/styleguide@29.5.0) (2021-02-25)
+
+
+### Features
+
+* add linting for gamut imports ([17980c9](https://github.com/Codecademy/client-modules/commit/17980c9993c1334c4a3a6a875fe15dbcc1052c08))
+
+
+
+### [29.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.2...@codecademy/styleguide@29.4.3) (2021-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.1...@codecademy/styleguide@29.4.2) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.0...@codecademy/styleguide@29.4.1) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.5...@codecademy/styleguide@29.4.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
+### [29.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.4...@codecademy/styleguide@29.3.5) (2021-02-23)
+
+
+### Bug Fixes
+
+* TOC links ([0a91297](https://github.com/Codecademy/client-modules/commit/0a912972c095f58b9f91e0ef5c135905e3cc8ac1))
+
+
+
+### [29.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.3...@codecademy/styleguide@29.3.4) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [29.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.2...@codecademy/styleguide@29.3.3) (2021-02-22)
 
 **Note:** Version bump only for package @codecademy/styleguide
