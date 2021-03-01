@@ -14,14 +14,10 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   required?: boolean;
 };
 
-const formGroupStyles = css`
+const FormGroupContainer = styled(Box)<FormGroupProps>`
   position: relative;
   margin-bottom: 1.5rem;
   width: 100%;
-`;
-
-const FormGroupContainer = styled(Box)<FormGroupProps>`
-  ${formGroupStyles}
 `;
 
 export const FormGroup: React.FC<FormGroupProps> = ({

@@ -1,5 +1,4 @@
 import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
@@ -18,22 +17,11 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   id?: string;
 };
 
-const selectWrapperStyles = css`
+const SelectWrapper = styled(Box)`
   position: relative;
   width: 100%;
   font-weight: normal;
   min-width: 100px;
-`;
-
-const selectInputStyles = css`
-  display: block;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-`;
-
-const SelectWrapper = styled(Box)`
-  ${selectWrapperStyles}
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
@@ -42,8 +30,11 @@ const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
 
 const SelectBase = styled.select<SelectProps>`
   ${formBaseFieldStyles}
-  ${selectInputStyles}
   ${errorStyle}
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
 `;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
