@@ -37,7 +37,6 @@ export const variance = {
 
         const parser = (props: ThemeProps<T>) => {
           const styles = {};
-          // Get the themes configured breakpoints
           const { map, array } = breakpoints;
 
           // Loops over all prop names on the configured config to check for configured styles
@@ -54,7 +53,6 @@ export const variance = {
                 );
               // handle any props configured with the responsive notation
               case 'object':
-                if (!map && !array) return;
                 // If it is an array the order of values is smallest to largest: [base, xs, ...]
                 if (isMediaArray(value)) {
                   return merge(
@@ -62,7 +60,7 @@ export const variance = {
                     arrayParser(value, props, property, array)
                   );
                 }
-                // If it is an object with keys
+                // Check to see if value is an object matching the responsive syntax and generate the styles.
                 if (isMediaMap(value)) {
                   return merge(
                     styles,
