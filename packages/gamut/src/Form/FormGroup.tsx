@@ -14,7 +14,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   required?: boolean;
 };
 
-export const formGroupStyles = css`
+const formGroupStyles = css`
   position: relative;
   margin-bottom: 1.5rem;
   width: 100%;

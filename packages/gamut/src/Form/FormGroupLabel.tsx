@@ -24,7 +24,7 @@ export const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   }
 };
 
-export const formLabelStyles = css`
+const formLabelStyles = css`
   display: block;
   line-height: ${theme.spacing[24]};
 `;
