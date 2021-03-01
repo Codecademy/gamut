@@ -1,4 +1,4 @@
-import intersection from 'lodash/intersection';
+import { intersection } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
