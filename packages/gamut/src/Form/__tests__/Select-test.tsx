@@ -23,14 +23,14 @@ describe('Select', () => {
 
   it('sets the id prop on the select tag', () => {
     const wrapper = shallow(<Select {...defaultProps} />);
-
-    expect(wrapper.find('select').props().id).toBe(defaultProps.id);
+    console.log(wrapper.debug());
+    expect(wrapper.find('SelectBase').props().id).toBe(defaultProps.id);
   });
 
   it('renders the same number of option as options', () => {
     const wrapper = shallow(<Select {...defaultProps} />);
 
-    expect(wrapper.find('select').props().children).toHaveLength(
+    expect(wrapper.find('SelectBase').props().children).toHaveLength(
       defaultProps.options.length
     );
   });
