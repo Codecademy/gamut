@@ -2,15 +2,14 @@ import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, {
-  forwardRef,
-  InputHTMLAttributes,
-  ReactElement,
-  ReactNode,
-} from 'react';
+import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { Box } from '../Box';
 import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
+
+export type CustomInputChild = ReactNode & {
+  props?: ReactNode;
+};
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
@@ -22,6 +21,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   verified?: boolean;
+  children?: CustomInputChild;
 };
 
 export const inputIconStyles = css`
@@ -45,44 +45,32 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
   ${inputIconStyles}
 `;
 
-// const CustomInputWrapper = React.() => {
-//   const props = { ...children.props, ...inputProps };
-//   const { id, htmlFor, className, ...rest } = props;
-//   return (
-//     {console.log(ref)}
-//     <InputBase ref={ref} id={id || htmlFor} className={className} {...rest} />
-//   );
-// };
-
-export const CustomInput = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
-    const childrenProps = children.props;
-    return (
-      <InputBase
-        {...rest}
-        id={id || htmlFor}
-        error={error}
-        className={className}
-        ref={ref}
-        {...childrenProps}
-      />
-    );
-  }
-);
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
+  (
+    {
+      error,
+      htmlFor,
+      className,
+      id,
+      verified,
+      children,
+      defaultValue,
+      ...rest
+    },
+    ref
+  ) => {
     return (
       <Box position="relative">
         {children ? (
-          <CustomInput
-            {...rest}
+          <InputBase
             id={id || htmlFor}
+            ref={ref}
             error={error}
             className={className}
-            ref={ref}
-          >
-            {children}
-          </CustomInput>
+            defaultValue={children.props.defaultValue ?? defaultValue}
+            {...rest}
+            {...children.props}
+          />
         ) : (
           <InputBase
             {...rest}
@@ -90,6 +78,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             error={error}
             className={className}
+            defaultValue={defaultValue ?? ''}
           />
         )}
         {error && <StyledAlertIcon color="red" />}
