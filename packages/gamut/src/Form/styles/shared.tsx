@@ -50,6 +50,7 @@ export const formBaseFieldStyles = css`
   transition: ${theme.colors[`blue-900`]} 0.15s;
   padding-right: 2.5rem;
   min-width: auto;
+
   &:hover {
     border-color: ${theme.colors.hyper};
   }
