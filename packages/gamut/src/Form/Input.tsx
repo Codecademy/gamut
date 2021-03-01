@@ -46,31 +46,22 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
 `;
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      error,
-      htmlFor,
-      className,
-      id,
-      verified,
-      children,
-      defaultValue,
-      ...rest
-    },
-    ref
-  ) => {
+  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
     return (
       <Box position="relative">
+        {console.log(rest)}
         {children ? (
-          <InputBase
-            id={id || htmlFor}
-            ref={ref}
-            error={error}
-            className={className}
-            defaultValue={children.props.defaultValue ?? defaultValue}
-            {...rest}
-            {...children.props}
-          />
+          <>
+            {console.log('yo', children.props)}
+            <InputBase
+              id={id || htmlFor}
+              ref={ref}
+              error={error}
+              className={className}
+              {...rest}
+              {...children.props}
+            />
+          </>
         ) : (
           <InputBase
             {...rest}
@@ -78,7 +69,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             error={error}
             className={className}
-            defaultValue={defaultValue ?? ''}
           />
         )}
         {error && <StyledAlertIcon color="red" />}
