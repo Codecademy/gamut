@@ -1,0 +1,6 @@
+node_modules
+src/
+*.ts
+*.tsx
+!*.d.ts
+__tests__
