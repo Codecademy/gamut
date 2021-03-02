@@ -55,11 +55,10 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
         {handleDismiss && (
           <FlexBox alignSelf="end" paddingLeft={8}>
             <IconButton
-              data-testid={`dismiss-notification-${notification.id}`}
               icon={MiniDeleteIcon}
               color={colors.navy}
               onClick={dismissNotification}
-              aria-label="dismiss notificiation"
+              aria-label="dismiss notification"
               size="small"
               variant="secondary"
             />
