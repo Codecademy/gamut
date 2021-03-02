@@ -1,6 +1,6 @@
 import * as system from '@codecademy/gamut-styles/src/theme/props';
 
-const { properties, variant, ...groups } = system;
+const { shouldForwardProp, properties, variant, ...groups } = system;
 
 export const PROP_GROUPS = groups;
 
