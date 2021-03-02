@@ -18,7 +18,7 @@ const selectValue = stubSelectOptions[1];
 const textValue = 'Hooray!';
 
 const renderWrapper = setupEnzyme(GridForm, {
-  submit: { contents: 'Submit', size: 6 },
+  submit: { contents: <>Submit</>, size: 6 },
 });
 
 describe('GridForm', () => {
@@ -141,14 +141,7 @@ describe('GridForm', () => {
       (node as HTMLInputElement).value = 'Hooray!';
       node.dispatchEvent(new Event('input'));
     });
-    await act(async () => {
-      wrapper.find('form').simulate('submit');
-      await api.innerPromise;
-      await wrapper.update();
-    });
-
-    const result = await api.innerPromise;
-    console.log(wrapper.props());
+    console.log(wrapper.props);
     expect(
       wrapper.find('button[type="submit"]').prop('disabled')
     ).not.toBeTruthy();
