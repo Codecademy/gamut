@@ -1,3 +1,4 @@
+import { Box } from '@codecademy/gamut';
 import cx from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 
@@ -74,17 +75,50 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     };
   }, [handleScrolling]);
 
+  const stickyBox = document.getElementById('stickyBox');
+  const staticBox = document.getElementById('staticBox');
+  const placeholderBox = document.getElementById('headerPlaceholder');
+
+  stickyBox &&
+    stickyBox.addEventListener('transitionend', () => {
+      if (stickyBox.className.includes('transitionOpacity')) {
+        stickyBox.style.display = 'none';
+        console.log('sticky header display set to none');
+      }
+    });
+  stickyBox &&
+    placeholderBox &&
+    staticBox &&
+    stickyBox.addEventListener('transitionstart', () => {
+      if (stickyBox.className.includes('transitionOpacity')) {
+        placeholderBox.style.display = 'none';
+        staticBox.style.display = 'block';
+
+        console.log('static header display set to block');
+      }
+    });
+
+  if (staticBox && stickyBox && placeholderBox && !isScrollingDown) {
+    stickyBox.style.display = 'block';
+    staticBox.style.display = 'none';
+    placeholderBox.style.display = 'block';
+  }
+
   return (
+    // padding box would need to be smaller for mobile
     <>
-      <BasicGlobalHeader
-        {...props}
+      <Box id="headerPlaceholder" height="80" />
+      <Box
+        id="staticBox"
         className={cx(
           styles.staticHeader,
           !isScrollingDownFromHeaderRegion && styles.visuallyHide
         )}
-      />
-      <BasicGlobalHeader
-        {...props}
+      >
+        <BasicGlobalHeader {...props} />
+      </Box>
+      <Box
+        id="stickyBox"
         className={cx(
           styles.stickyHeader,
           // scrolling down from top
@@ -100,7 +134,9 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
             ],
           isInHeaderRegion && [styles.transitionOpacity, styles.visuallyHide]
         )}
-      />
+      >
+        <BasicGlobalHeader {...props} />
+      </Box>
     </>
   );
 };
