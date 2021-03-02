@@ -24,15 +24,12 @@ export interface CreateThemeVars {
 
 export const createThemeVars: CreateThemeVars = (theme, keys) => {
   // Create an empty theme to merge with the base theme object
-  type UpdatedThemeKeys = ThemeWithVariables<typeof theme, typeof keys>;
-  const updatedTheme = { ...theme } as UpdatedThemeKeys;
-
+  const updatedTheme = { ...theme };
   // Treat all CSS Variables as a plain emotion CSSObject to be added to.
   const vars: CSSObject = {};
 
   keys.forEach((key) => {
     const varsToRegister = theme[key];
-    updatedTheme[key] = {} as UpdatedThemeKeys[typeof key];
 
     for (const variable in varsToRegister) {
       if (hasIn(varsToRegister, variable)) {
