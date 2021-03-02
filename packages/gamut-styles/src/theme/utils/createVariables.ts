@@ -7,45 +7,43 @@ export const createVariables = (
   const cssVariables: CSSObject = {};
 
   for (const variable in tokens) {
-    if (hasIn(tokens, variable)) {
-      const varName = `--${variable}`;
-      const valuesToRegister = tokens[variable];
+    if (!hasIn(tokens, variable)) continue;
 
-      // For all variables in the theme scale add theme to the resulting CSS Object
-      switch (typeof valuesToRegister) {
-        // If the value is primitive just add it as is to the returned vars css object
-        case 'number':
-        case 'string':
-          cssVariables[varName] = valuesToRegister;
-          break;
-        // If the value is an object then attempt to parse it as a resposnive property
-        case 'object':
-          const { base, ...rest } = valuesToRegister;
+    const varName = `--${variable}`;
+    const valuesToRegister = tokens[variable];
 
-          // If base key is defined add it to the root values
-          if (base) {
-            cssVariables[varName] = base;
-          }
+    // For all variables in the theme scale add theme to the resulting CSS Object
+    switch (typeof valuesToRegister) {
+      // If the value is primitive just add it as is to the returned vars css object
+      case 'number':
+      case 'string':
+        cssVariables[varName] = valuesToRegister;
+        break;
+      // If the value is an object then attempt to parse it as a resposnive property
+      case 'object':
+        const { base, ...rest } = valuesToRegister;
 
-          // If there are remaining breakpoints that override the root value add them to style object
-          const selectors = Object.keys(rest);
-          if (selectors) {
-            const overridesBySelector: CSSObject = {};
-            selectors.forEach((selector) => {
-              overridesBySelector[selector] = {
-                [varName]: valuesToRegister[selector],
-              };
-            });
+        // If base key is defined add it to the root values
+        if (base) {
+          cssVariables[varName] = base;
+        }
 
-            // Merge to preserve all breakpoints
-            merge(cssVariables, overridesBySelector);
-          }
-          break;
-        default:
-          break;
-      }
+        // If there are remaining selectors / queries that override the root value add them to style object
+        const selectors = Object.keys(rest);
+        if (selectors) {
+          const overridesBySelector: CSSObject = {};
+          selectors.forEach((selector) => {
+            overridesBySelector[selector] = {
+              [varName]: valuesToRegister[selector],
+            };
+          });
 
-      // Add variable reference as the theme key's value
+          // Merge with the base object.
+          merge(cssVariables, overridesBySelector);
+        }
+        break;
+      default:
+        break;
     }
   }
   return cssVariables;
