@@ -200,7 +200,6 @@ export const Popover: React.FC<PopoverProps> = ({
           className={className}
           style={getPopoverPosition()}
           data-testid="popover-content-container"
-          role="dialog"
           tabIndex={-1}
         >
           <RaisedDiv outline={outline}>
