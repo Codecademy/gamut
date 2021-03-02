@@ -3,6 +3,172 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.6...@codecademy/gamut@25.4.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [25.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.5...@codecademy/gamut@25.3.6) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.4...@codecademy/gamut@25.3.5) (2021-03-01)
+
+
+### Bug Fixes
+
+* use sm columns in xs viewports by default for GridForm ([5aff967](https://github.com/Codecademy/client-modules/commit/5aff967e76b305e30737ab4a5b692e39886c2dba))
+
+
+
+### [25.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.3...@codecademy/gamut@25.3.4) (2021-02-25)
+
+
+### Bug Fixes
+
+* **video:** include wrapper in type ([c70d48e](https://github.com/Codecademy/client-modules/commit/c70d48e8a4a70a7244a7c4baa31118eb2a371d43))
+
+
+
+### [25.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.2...@codecademy/gamut@25.3.3) (2021-02-24)
+
+
+### Bug Fixes
+
+* **app header mobile & notifs empty container:** add + fix test ids ([cb3b235](https://github.com/Codecademy/client-modules/commit/cb3b235f38c104809d887e2d77b812c7dcc60ed6))
+
+
+
+### [25.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.1...@codecademy/gamut@25.3.2) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.0...@codecademy/gamut@25.3.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **Button:** fix negligent selectors ([f86150b](https://github.com/Codecademy/client-modules/commit/f86150bbef7df0c25f06cf045a5b8e2a46a5e440))
+
+
+
+## [25.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.2...@codecademy/gamut@25.3.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
+### [25.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.1...@codecademy/gamut@25.2.2) (2021-02-23)
+
+
+### Bug Fixes
+
+* **NotificationListNew:** Key and spacing issues ([7527e18](https://github.com/Codecademy/client-modules/commit/7527e18e560e53f41fe0474675ae44bee38eb064))
+
+
+
+### [25.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.2.0...@codecademy/gamut@25.2.1) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.1.0...@codecademy/gamut@25.2.0) (2021-02-22)
+
+
+### Features
+
+* **Radio:** changes color and adds hover behavior ([#1416](https://github.com/Codecademy/client-modules/issues/1416)) ([d397646](https://github.com/Codecademy/client-modules/commit/d397646d8fb2583a0d7d6ad352eb5305894a74a6))
+
+
+
+## [25.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.0.0...@codecademy/gamut@25.1.0) (2021-02-22)
+
+
+### Features
+
+* **New Notifications components:** notifications list & notification ([3c1b92d](https://github.com/Codecademy/client-modules/commit/3c1b92d1e049f161ff5386f16cd48405d4c0bc2d))
+
+
+
+## [25.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@24.0.0...@codecademy/gamut@25.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Banner:** Banner new visual identity [GM-123]
+
+### Features
+
+* **Banner:** Banner new visual identity [GM-123] ([07c26fb](https://github.com/Codecademy/client-modules/commit/07c26fbfcfcc0a3fbb2eba84adcc9dac6645876f))
+
+
+
+## [24.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.2.1...@codecademy/gamut@24.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* progress bar theme => variant
+
+### Features
+
+* progress bar theme => variant ([867e974](https://github.com/Codecademy/client-modules/commit/867e974613f89708096886aeba4ad71e37ea508a))
+
+
+
+### [23.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.2.0...@codecademy/gamut@23.2.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GridForm:** Add aria labels to GridForm Radio ([#1410](https://github.com/Codecademy/client-modules/issues/1410)) ([79262f5](https://github.com/Codecademy/client-modules/commit/79262f5b1fce8c5116dc9e33e7c46926873deaf3))
+
+
+
+## [23.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.1.0...@codecademy/gamut@23.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
+## [23.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.1...@codecademy/gamut@23.1.0) (2021-02-17)
+
+
+### Features
+
+* allowed disabled inputs for GridForm ([1627bf8](https://github.com/Codecademy/client-modules/commit/1627bf8d1b4d5d3e24f6e1cd6fabda1573d23a24))
+
+
+
+### [23.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@23.0.0...@codecademy/gamut@23.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [23.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@22.0.3...@codecademy/gamut@23.0.0) (2021-02-16)
 
 

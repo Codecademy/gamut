@@ -3,6 +3,252 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.0...@codecademy/styleguide@29.6.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **Styleguide:** Fixes destructuring for argtype enhances ([98e0021](https://github.com/Codecademy/client-modules/commit/98e00212b522fed40342682ed412c4bb98d84eec))
+
+
+
+## [29.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.4...@codecademy/styleguide@29.6.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [29.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.3...@codecademy/styleguide@29.5.4) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.2...@codecademy/styleguide@29.5.3) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.1...@codecademy/styleguide@29.5.2) (2021-03-01)
+
+
+### Bug Fixes
+
+* **popover:** provide fallbackFocus ([7a25f5b](https://github.com/Codecademy/client-modules/commit/7a25f5b31d5f20d4e49c851208ba1bf6002bbe6a))
+
+
+
+### [29.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.0...@codecademy/styleguide@29.5.1) (2021-02-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.3...@codecademy/styleguide@29.5.0) (2021-02-25)
+
+
+### Features
+
+* add linting for gamut imports ([17980c9](https://github.com/Codecademy/client-modules/commit/17980c9993c1334c4a3a6a875fe15dbcc1052c08))
+
+
+
+### [29.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.2...@codecademy/styleguide@29.4.3) (2021-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.1...@codecademy/styleguide@29.4.2) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.0...@codecademy/styleguide@29.4.1) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.5...@codecademy/styleguide@29.4.0) (2021-02-23)
+
+
+### Features
+
+* **NotificationListNew:** add empty notification ([e1cc1ec](https://github.com/Codecademy/client-modules/commit/e1cc1ecd58cb3b644bc4cd2392addc4e9733a33c))
+
+
+
+### [29.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.4...@codecademy/styleguide@29.3.5) (2021-02-23)
+
+
+### Bug Fixes
+
+* TOC links ([0a91297](https://github.com/Codecademy/client-modules/commit/0a912972c095f58b9f91e0ef5c135905e3cc8ac1))
+
+
+
+### [29.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.3...@codecademy/styleguide@29.3.4) (2021-02-23)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.2...@codecademy/styleguide@29.3.3) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.1...@codecademy/styleguide@29.3.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.3.0...@codecademy/styleguide@29.3.1) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.2.0...@codecademy/styleguide@29.3.0) (2021-02-22)
+
+
+### Features
+
+* **Radio:** changes color and adds hover behavior ([#1416](https://github.com/Codecademy/client-modules/issues/1416)) ([d397646](https://github.com/Codecademy/client-modules/commit/d397646d8fb2583a0d7d6ad352eb5305894a74a6))
+
+
+
+## [29.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.2...@codecademy/styleguide@29.2.0) (2021-02-22)
+
+
+### Features
+
+* **New Notifications components:** notifications list & notification ([3c1b92d](https://github.com/Codecademy/client-modules/commit/3c1b92d1e049f161ff5386f16cd48405d4c0bc2d))
+
+
+
+### [29.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.1...@codecademy/styleguide@29.1.2) (2021-02-22)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.1.0...@codecademy/styleguide@29.1.1) (2021-02-19)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.0.0...@codecademy/styleguide@29.1.0) (2021-02-19)
+
+
+### Features
+
+* add new coachmark component ([f268e07](https://github.com/Codecademy/client-modules/commit/f268e07d55de5625c0a89295578b6bb43ea6e025))
+
+
+
+## [29.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@28.0.0...@codecademy/styleguide@29.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Banner:** Banner new visual identity [GM-123]
+
+### Features
+
+* **Banner:** Banner new visual identity [GM-123] ([07c26fb](https://github.com/Codecademy/client-modules/commit/07c26fbfcfcc0a3fbb2eba84adcc9dac6645876f))
+
+
+
+## [28.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.1...@codecademy/styleguide@28.0.0) (2021-02-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* progress bar theme => variant
+
+### Features
+
+* progress bar theme => variant ([867e974](https://github.com/Codecademy/client-modules/commit/867e974613f89708096886aeba4ad71e37ea508a))
+
+
+
+### [27.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.2.0...@codecademy/styleguide@27.2.1) (2021-02-17)
+
+
+### Bug Fixes
+
+* **GridForm:** Add aria labels to GridForm Radio ([#1410](https://github.com/Codecademy/client-modules/issues/1410)) ([79262f5](https://github.com/Codecademy/client-modules/commit/79262f5b1fce8c5116dc9e33e7c46926873deaf3))
+
+
+
+## [27.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.1...@codecademy/styleguide@27.2.0) (2021-02-17)
+
+
+### Features
+
+* **Button:** Alternative (secondary) modes and consistent height [GM-126] ([d96d47f](https://github.com/Codecademy/client-modules/commit/d96d47fbdc8b94f9251ec7c123d101d38c4e3667))
+
+
+
+### [27.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.1.0...@codecademy/styleguide@27.1.1) (2021-02-17)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [27.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.1...@codecademy/styleguide@27.1.0) (2021-02-17)
+
+
+### Features
+
+* allowed disabled inputs for GridForm ([1627bf8](https://github.com/Codecademy/client-modules/commit/1627bf8d1b4d5d3e24f6e1cd6fabda1573d23a24))
+
+
+
+### [27.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@27.0.0...@codecademy/styleguide@27.0.1) (2021-02-16)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [27.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@26.1.2...@codecademy/styleguide@27.0.0) (2021-02-16)
 
 

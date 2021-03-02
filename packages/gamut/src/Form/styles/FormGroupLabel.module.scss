@@ -1,6 +1,14 @@
+@import "~@codecademy/gamut-styles/utils";
+
 .FormGroupLabel {
   display: block;
-  font-weight: bold;
   margin-bottom: 0.5rem;
   line-height: 1.25rem;
+
+  font-weight: bold;
+}
+
+.disabled {
+  font-weight: normal;
+  color: $color-gray-600;
 }

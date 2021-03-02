@@ -1,9 +1,9 @@
-import { AppHeaderSimpleDropdownItem } from '@codecademy/gamut-labs/src/experimental/AppHeader/AppHeaderElements/types';
 import { theme } from '@codecademy/gamut-styles';
 import { ThemeProvider } from '@emotion/react';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 
+import { AppHeaderSimpleDropdownItem } from '../../../AppHeader/AppHeaderElements/types';
 import { createMockAppHeaderLinkItem } from '../../../AppHeader/mockAppHeaderItems';
 import { AppHeaderSubMenuTarget, AppHeaderSubMenuTargetProps } from '../index';
 
