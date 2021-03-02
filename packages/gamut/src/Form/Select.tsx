@@ -26,6 +26,7 @@ const SelectWrapper = styled(Box)`
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
   ${selectIconStyles}
+  cursor: pointer;
 `;
 
 const SelectBase = styled.select<SelectProps>`
