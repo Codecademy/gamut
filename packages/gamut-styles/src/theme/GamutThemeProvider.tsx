@@ -2,9 +2,11 @@ import { css, Global, ThemeProvider } from '@emotion/react';
 import React from 'react';
 
 import { theme as rawTheme } from './theme';
-import { createThemeVars } from './utils/createThemeVars';
+import { createThemeVariables } from './utils/createVariables';
 
-export const { theme, cssVariables } = createThemeVars(rawTheme, ['elements']);
+export const { theme, cssVariables } = createThemeVariables(rawTheme, [
+  'elements',
+]);
 
 export const GamutThemeProvider: React.FC = ({ children }) => {
   return (
