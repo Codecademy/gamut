@@ -69,5 +69,6 @@ export const formBaseFieldStyles = css`
     border-color: ${theme.colors[`gray-500`]};
     color: ${theme.colors[`gray-500`]};
     font-style: italic;
+    cursor: disabled;
   }
 `;
