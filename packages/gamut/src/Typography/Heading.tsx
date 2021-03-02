@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { ContainerElementProps } from '../Layout/types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import styles from './styles/Heading.module.scss';
@@ -11,6 +10,8 @@ export type HeadingTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 export type HeadingProps = {
+  className?: string;
+  testId?: string;
   /** Heading tags h1 - h6 */
   as: HeadingTags;
   /** A font-size/font-family pair */
@@ -19,7 +20,7 @@ export type HeadingProps = {
   style?: AllowedStyles;
   /** Toggle default heading margin */
   hideMargin?: boolean;
-} & ContainerElementProps;
+};
 
 export const Heading: React.FC<HeadingProps> = ({
   children,

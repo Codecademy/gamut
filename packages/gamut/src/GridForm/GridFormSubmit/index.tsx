@@ -6,8 +6,8 @@ import {
   ButtonDeprecated,
   ButtonDeprecatedProps,
 } from '../../ButtonDeprecated';
-import { Column, ColumnSizes } from '../../Layout';
-import { ResponsiveProperty } from '../../typings/responsive-properties';
+import { Column } from '../../Layout';
+import { ColumnProps } from '../types';
 
 export type GridFormSubmitPosition = keyof typeof positions;
 
@@ -16,7 +16,7 @@ export type GridFormSubmitProps = {
   disabled?: ButtonDeprecatedProps['disabled'];
   position?: GridFormSubmitPosition;
   outline?: ButtonDeprecatedProps['outline'];
-  size: ResponsiveProperty<ColumnSizes>;
+  size: ColumnProps['size'];
   theme?: ButtonDeprecatedProps['theme'];
 };
 

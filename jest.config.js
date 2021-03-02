@@ -23,6 +23,7 @@ module.exports = {
     '^~styleguide/blocks(.*)$':
       '<rootDir>/packages/styleguide/.storybook/components$1',
     '^@codecademy\\/gamut$': '<rootDir>/packages/gamut/src',
+    '^@codecademy\\/gamut-labs$': '<rootDir>/packages/gamut-labs/src',
     '^@codecademy\\/gamut-styles$': '<rootDir>/packages/gamut-styles/src',
     '^@codecademy\\/gamut-system$': '<rootDir>/packages/gamut-system/src',
     '^@codecademy\\/gamut-tests$': '<rootDir>/packages/gamut-tests/src',

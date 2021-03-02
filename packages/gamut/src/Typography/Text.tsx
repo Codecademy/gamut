@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 
-import { ContainerElementProps } from '../Layout/types';
 import { ResponsiveProperty } from '../typings/responsive-properties';
 import { generateResponsiveClassnames } from '../utils/generateResponsiveClassnames';
 import styles from './styles/Text.module.scss';
@@ -11,13 +10,15 @@ export type TextTags = 'p' | 'span' | 'div';
 export type TextSizes = 'sm' | 'md' | 'lg';
 
 type TextProps = {
+  className?: string;
+  testId?: string;
   /** Text based tags */
   as?: TextTags;
   /** A font-size/font-family pair */
   fontSize?: ResponsiveProperty<TextSizes>;
   /** Allows you to pass color attributes directly to the tag */
   style?: AllowedStyles;
-} & ContainerElementProps;
+};
 
 export const Text: React.FC<TextProps> = ({
   children,

@@ -28,7 +28,7 @@ const theme = {
     64: '4rem',
   },
 };
-const testVariance = variance.withTheme<typeof theme>();
+const testVariance = variance.withTheme(theme);
 
 const space = testVariance.create({
   margin: { property: 'margin', scale: 'spacing' },

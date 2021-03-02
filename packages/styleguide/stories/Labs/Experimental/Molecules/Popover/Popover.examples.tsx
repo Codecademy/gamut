@@ -46,6 +46,35 @@ export const PopoverExample = (args: PopoverProps) => {
   );
 };
 
+export const PopoverWithoutFocus = (args: PopoverProps) => {
+  const [open, setOpen] = useState(false);
+  const activeElRef = useRef<HTMLDivElement>(null);
+
+  const toggleOpen = () => setOpen(!open);
+
+  return (
+    <>
+      <Box ref={activeElRef}>
+        <FillButton onClick={toggleOpen}>Open Popover</FillButton>
+      </Box>
+      <Container>
+        <Popover
+          {...args}
+          isOpen={open}
+          targetRef={activeElRef}
+          onRequestClose={() => setOpen(false)}
+        >
+          <FlexBox flexDirection="column" padding={16} alignItems="flex-start">
+            <Box fontSize={16} marginBottom={8}>
+              Nothing clickable here but the container has fallback focus
+            </Box>
+          </FlexBox>
+        </Popover>
+      </Container>
+    </>
+  );
+};
+
 export const PatternedPopoversGrid = (args: PopoverProps) => {
   return (
     <LayoutGrid columnGap="sm" rowGap="xl">

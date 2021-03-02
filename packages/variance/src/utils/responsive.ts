@@ -1,4 +1,4 @@
-import intersection from 'lodash/intersection';
+import { intersection } from 'lodash';
 
 import { AbstractPropTransformer } from '../types/config';
 import {
@@ -14,12 +14,9 @@ const BREAKPOINT_KEYS = ['base', 'xs', 'sm', 'md', 'lg', 'xl'];
 /**
  * Destructures the themes breakpoints into an ordered structure to traverse
  */
-export const parseBreakpoints = <T extends AbstractTheme>(
-  theme?: T
-): BreakpointCache | null => {
-  const breakpoints = theme?.breakpoints;
-  if (!breakpoints) return null;
-
+export const parseBreakpoints = ({
+  breakpoints,
+}: AbstractTheme): BreakpointCache => {
   const { xs, sm, md, lg, xl } = breakpoints;
   return {
     map: breakpoints,

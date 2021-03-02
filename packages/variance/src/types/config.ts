@@ -41,9 +41,13 @@ export type Scale<
   Config extends Prop<T>
 > = ResponsiveProp<
   Config['scale'] extends keyof T
-    ? keyof T[Config['scale']]
+    ?
+        | keyof T[Config['scale']]
+        | Exclude<PropertyTypes[Config['property']], object | any[]>
     : Config['scale'] extends LiteralScale
-    ? keyof Config['scale']
+    ?
+        | keyof Config['scale']
+        | Exclude<PropertyTypes[Config['property']], object | any[]>
     : PropertyTypes[Config['property']]
 >;
 

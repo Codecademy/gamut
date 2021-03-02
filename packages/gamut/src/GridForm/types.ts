@@ -1,6 +1,10 @@
+import { ComponentProps } from 'react';
 import { UseFormMethods, ValidationRules } from 'react-hook-form';
 
-import { ColumnProps } from '../Layout/Column';
+import { Column, LayoutGrid } from '../Layout';
+
+export type ColumnProps = ComponentProps<typeof Column>;
+export type LayoutGridProps = ComponentProps<typeof LayoutGrid>;
 
 export type BaseFormField<Value> = {
   defaultValue?: Value;

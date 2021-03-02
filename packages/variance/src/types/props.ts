@@ -13,7 +13,7 @@ export interface BreakpointCache {
 }
 
 export interface AbstractTheme {
-  breakpoints?: BreakpointKeys;
+  breakpoints: BreakpointKeys;
 }
 
 export type ThemeProps<

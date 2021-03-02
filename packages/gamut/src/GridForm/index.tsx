@@ -2,12 +2,17 @@ import React from 'react';
 import { FieldError, Mode, SubmitHandler, useForm } from 'react-hook-form';
 
 import { Form } from '../Form';
-import { LayoutGrid, LayoutGridProps } from '../Layout';
+import { LayoutGrid } from '../Layout';
 import { GridFormInputGroup } from './GridFormInputGroup';
 import { GridFormSubmit, GridFormSubmitProps } from './GridFormSubmit';
-import { GridFormField } from './types';
+import { GridFormField, LayoutGridProps } from './types';
 
 export * from './types';
+
+const defaultColumnGap = {
+  xs: 'sm',
+  sm: 'lg',
+} as const;
 
 export type GridFormProps<Values extends {}> = {
   children?: React.ReactNode;
@@ -56,7 +61,7 @@ export function GridForm<
 >({
   children,
   className,
-  columnGap = 'lg',
+  columnGap = defaultColumnGap,
   fields = [],
   onSubmit,
   rowGap = 'md',

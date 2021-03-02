@@ -1,6 +1,4 @@
-import get from 'lodash/get';
-import identity from 'lodash/identity';
-import merge from 'lodash/merge';
+import { get, identity, merge } from 'lodash';
 
 import {
   AbstractParser,
@@ -10,7 +8,7 @@ import {
   PropTransformer,
   TransformerMap,
 } from './types/config';
-import { AbstractTheme, BreakpointCache, CSSObject } from './types/props';
+import { AbstractTheme, CSSObject, ThemeProps } from './types/props';
 import { AllUnionKeys, KeyFromUnion } from './types/utils';
 import { orderPropNames } from './utils/propNames';
 import {
@@ -22,19 +20,18 @@ import {
 } from './utils/responsive';
 
 export const variance = {
-  withTheme<T extends AbstractTheme>() {
+  withTheme<T extends AbstractTheme>(theme: T) {
+    const breakpoints = parseBreakpoints(theme);
+
     return {
       // Parser to handle any set of configured props
       createParser<Config extends Record<string, AbstractPropTransformer<T>>>(
         config: Config
       ): Parser<T, Config> {
-        let breakpoints: BreakpointCache;
         const propNames = orderPropNames(config);
 
-        const parser = (props: { theme: T }) => {
+        const parser = (props: ThemeProps<T>) => {
           const styles = {};
-          // Get the themes configured breakpoints
-          breakpoints = breakpoints ?? parseBreakpoints(props?.theme) ?? {};
           const { map, array } = breakpoints;
 
           // Loops over all prop names on the configured config to check for configured styles
@@ -51,7 +48,6 @@ export const variance = {
                 );
               // handle any props configured with the responsive notation
               case 'object':
-                if (!map && !array) return;
                 // If it is an array the order of values is smallest to largest: [base, xs, ...]
                 if (isMediaArray(value)) {
                   return merge(
@@ -59,7 +55,7 @@ export const variance = {
                     arrayParser(value, props, property, array)
                   );
                 }
-                // If it is an object with keys
+                // Check to see if value is an object matching the responsive syntax and generate the styles.
                 if (isMediaMap(value)) {
                   return merge(
                     styles,
