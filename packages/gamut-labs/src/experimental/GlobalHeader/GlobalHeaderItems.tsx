@@ -242,6 +242,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
 
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
+  dataTestId: 'admin-link',
   href: '/admin',
   trackingTarget: 'avatar_admin',
   text: 'Admin',
