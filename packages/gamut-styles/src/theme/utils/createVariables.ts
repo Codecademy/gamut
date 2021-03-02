@@ -32,9 +32,10 @@ export interface CreateThemeVars {
 }
 
 const isBreakpoint = (
-  key: string
+  key: string,
+  breakpoints: Required<AbstractTheme>['breakpoints']
 ): key is keyof Required<AbstractTheme>['breakpoints'] =>
-  Object.keys(['xs', 'sm', 'md', 'lg', 'xl']).includes(key);
+  Object.keys(breakpoints).includes(key);
 
 export const createVariables = (
   tokens: Record<string, string | number | CSSObject>
@@ -103,12 +104,13 @@ export const createThemeVariables: CreateThemeVars = (theme, keys) => {
     }
 
     // Replace breakpoint aliases with the actual selector
-    const replacedBreakpointAliases = mapValues(tokensToSerialize, (val) => {
-      if (!isObject(val)) return val;
-      return mapKeys(val, (key) =>
-        isBreakpoint(key) ? theme.breakpoints[key] : key
-      );
-    });
+    const replacedBreakpointAliases = mapValues(tokensToSerialize, (val) =>
+      isObject(val)
+        ? mapKeys(val, (key) =>
+            isBreakpoint(key, theme.breakpoints) ? theme.breakpoints[key] : key
+          )
+        : val
+    );
 
     // Create the variables and merge with the rest of the vars
     merge(cssVariables, createVariables(replacedBreakpointAliases));
