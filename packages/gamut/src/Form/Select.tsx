@@ -26,6 +26,7 @@ const SelectWrapper = styled(Box)`
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
   ${selectIconStyles}
+  color: ${({ theme }) => theme.colors['blue-900']};
   pointer-events: none;
 `;
 
@@ -67,7 +68,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <SelectWrapper className={className}>
-        <StyledChevronDownIcon color="blue" />
+        <StyledChevronDownIcon color={error ? 'red' : undefined} />
         <SelectBase
           {...rest}
           defaultValue={props.defaultValue || ''}
