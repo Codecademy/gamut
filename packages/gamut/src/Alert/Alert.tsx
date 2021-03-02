@@ -149,7 +149,7 @@ export const Alert: React.FC<AlertProps> = ({
   const [truncated, setTruncated] = useState(false);
 
   const columns = `max-content minmax(0, 1fr) repeat(${
-    truncated ? 3 : 2
+    truncated && cta ? 3 : truncated || cta ? 2 : 1
   }, max-content)`;
 
   return (
