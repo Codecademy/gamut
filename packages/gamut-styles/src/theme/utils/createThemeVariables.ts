@@ -46,23 +46,26 @@ export const createThemeVariables: CreateThemeVars = (theme, keys) => {
   const cssVariables: CSSObject = {};
 
   keys.forEach((key) => {
-    const tokensToSerialize = theme[key];
+    const tokensToSerialize = { ...theme[key] };
     // Update the theme object with the new tokens
     for (const variable in tokensToSerialize) {
       if (hasIn(tokensToSerialize, variable)) {
-        const variableReference = `var(--${variable}_`;
+        const variableReference = `var(--${variable})`;
         updatedTheme[key][variable] = variableReference;
       }
     }
-
     // Replace breakpoint aliases with the actual selector
-    const replacedBreakpointAliases = mapValues(tokensToSerialize, (val) =>
-      isObject(val)
-        ? mapKeys(val, (key) =>
-            isBreakpoint(key, theme.breakpoints) ? theme.breakpoints[key] : key
-          )
-        : val
-    );
+    const replacedBreakpointAliases = mapValues(tokensToSerialize, (val) => {
+      if (isObject(val)) {
+        return mapKeys(val, (val, key) => {
+          return isBreakpoint(key, theme.breakpoints)
+            ? theme.breakpoints[key]
+            : key;
+        });
+      }
+
+      return val;
+    });
 
     // Create the variables and merge with the rest of the vars
     merge(cssVariables, createVariables(replacedBreakpointAliases));
