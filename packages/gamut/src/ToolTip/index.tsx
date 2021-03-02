@@ -15,7 +15,6 @@ const arrowHeight = `0.5rem`;
 const arrowPaddingHorizontal = `1.5rem`;
 const arrowPaddingVertical = `0.25rem`;
 
-const containerOffsetHorizontal = `calc(100% - (${arrowWidth} / 2) + ${arrowPaddingHorizontal})`;
 const containerOffsetVertical = `calc(100% + ${arrowHeight} + ${arrowPaddingVertical})`;
 
 const arrowOffsetHorizontal = `calc(${arrowPaddingHorizontal} - (${arrowWidth} / 2))`;
@@ -132,8 +131,6 @@ const ToolTipContainer = styled.div<ToolTipContainerProps>`
   ${({ position }) =>
     ['bottom-right', 'top-right'].includes(position) &&
     `
-      left: ${containerOffsetHorizontal};
-
       &::after,
       &::before {
         left: ${arrowOffsetHorizontal};
