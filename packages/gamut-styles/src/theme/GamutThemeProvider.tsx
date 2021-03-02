@@ -2,7 +2,7 @@ import { css, Global, ThemeProvider } from '@emotion/react';
 import React from 'react';
 
 import { theme as rawTheme } from './theme';
-import { createThemeVariables } from './utils/createVariables';
+import { createThemeVariables } from './utils/createThemeVariables';
 
 export const { theme, cssVariables } = createThemeVariables(rawTheme, [
   'elements',
