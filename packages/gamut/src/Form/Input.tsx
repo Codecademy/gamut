@@ -2,6 +2,7 @@ import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { uniqBy } from 'lodash';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
 import { Box } from '../Box';
@@ -46,20 +47,21 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
+    const props = children ? { ...rest, ...children.props } : rest;
+    console.log(props);
     return (
       <Box position="relative">
         {children ? (
           <InputBase
+            {...props}
             id={id || htmlFor}
             ref={ref}
             error={error}
             className={className}
-            {...rest}
-            {...children.props}
           />
         ) : (
           <InputBase
-            {...rest}
+            {...props}
             id={id || htmlFor}
             ref={ref}
             error={error}

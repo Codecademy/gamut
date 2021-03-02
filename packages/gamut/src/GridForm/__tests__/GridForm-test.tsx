@@ -140,8 +140,18 @@ describe('GridForm', () => {
       const node = wrapper.find('input[type="text"]').getDOMNode();
       (node as HTMLInputElement).value = 'Hooray!';
       node.dispatchEvent(new Event('input'));
+      wrapper.update();
     });
-    console.log(wrapper.props);
+
+    await act(async () => {
+      wrapper.find('input').simulate('change', { target: { value: 'foo' } });
+      console.log(wrapper.find('input'));
+    });
+
+    const newWrapperProps = wrapper.props();
+    wrapper.setProps({ newWrapperProps });
+    // console.log(wrapper.debug());
+
     expect(
       wrapper.find('button[type="submit"]').prop('disabled')
     ).not.toBeTruthy();
