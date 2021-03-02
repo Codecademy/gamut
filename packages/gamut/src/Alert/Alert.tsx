@@ -11,7 +11,7 @@ import { variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { Box, FlexBox } from '../Box';
 import { FillButton, IconButton } from '../Button';
@@ -148,9 +148,13 @@ export const Alert: React.FC<AlertProps> = ({
   const [expanded, setExpanded] = useState(false);
   const [truncated, setTruncated] = useState(false);
 
-  const columns = `max-content minmax(0, 1fr) repeat(${
-    truncated && cta ? 3 : truncated || cta ? 2 : 1
-  }, max-content)`;
+  const numberOfColumns = useMemo(() => {
+    if (truncated && Boolean(cta)) return 3;
+    if (truncated || Boolean(cta)) return 2;
+    return 1;
+  }, [truncated, cta]);
+
+  const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
 
   return (
     <AlertBanner
