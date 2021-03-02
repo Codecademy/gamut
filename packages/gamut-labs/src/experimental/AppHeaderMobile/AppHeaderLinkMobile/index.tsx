@@ -51,6 +51,7 @@ export const AppHeaderLinkMobile: React.FC<AppHeaderLinkMobileProps> = ({
     <SeparatorOuter topSeparator={topSeparator}>
       <SeparatorInner topSeparator={topSeparator}>
         <AppHeaderLinkButtonOuter
+          data-intellimize={item.dataIntellimizeId}
           data-testid={item.dataTestId}
           href={item.href}
           onClick={(event) => action(event, item)}
