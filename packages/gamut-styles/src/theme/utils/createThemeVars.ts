@@ -2,23 +2,32 @@ import { AbstractTheme } from '@codecademy/gamut-system';
 import { CSSObject } from '@emotion/react';
 import { get, hasIn, omit } from 'lodash';
 
-export type ThemeVariables<T extends AbstractTheme, K extends (keyof T)[]> = {
-  [Key in keyof Pick<T, K[number]>]: { [V in keyof T[Key]]: string };
+/**
+ * Returns an type of any object with { key: 'var(--key) }
+ */
+export type KeyAsVariable<T extends Record<string, any>> = {
+  [V in keyof T]: `var(--${Extract<V, string>})`;
 };
 
+/**
+ * Updates the theme type with the correct new values of css variable references
+ */
 export type ThemeWithVariables<
-  T extends AbstractTheme,
-  K extends (keyof T)[]
+  Theme extends AbstractTheme,
+  VariableKeys extends (keyof Theme)[]
 > = {
-  [Key in keyof T]: Key extends keyof ThemeVariables<T, K>
-    ? ThemeVariables<T, K>[Key]
-    : T[Key];
+  [Key in keyof Theme]: Key extends VariableKeys[number]
+    ? KeyAsVariable<Theme[Key]>
+    : Theme[Key];
 };
 
 export interface CreateThemeVars {
-  <T extends AbstractTheme, K extends (keyof T)[]>(theme: T, keys: K): {
+  <Theme extends AbstractTheme, VariableKeys extends (keyof Theme)[]>(
+    theme: Theme,
+    keys: VariableKeys
+  ): {
     vars: CSSObject;
-    theme: ThemeWithVariables<T, K>;
+    theme: ThemeWithVariables<Theme, VariableKeys>;
   };
 }
 
