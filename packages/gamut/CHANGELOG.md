@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.6...@codecademy/gamut@25.4.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
 ### [25.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.5...@codecademy/gamut@25.3.6) (2021-03-01)
 
 **Note:** Version bump only for package @codecademy/gamut
