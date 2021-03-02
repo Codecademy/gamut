@@ -1,6 +1,6 @@
 import { AbstractTheme } from '@codecademy/gamut-system';
 import { CSSObject } from '@emotion/react';
-import { get, hasIn, omit } from 'lodash';
+import { hasIn, merge } from 'lodash';
 
 /**
  * Returns an type of any object with { key: 'var(--key) }
@@ -22,20 +22,25 @@ export type ThemeWithVariables<
 };
 
 export interface CreateThemeVars {
-  <Theme extends AbstractTheme, VariableKeys extends (keyof Theme)[]>(
+  <Theme extends Required<AbstractTheme>, VariableKeys extends (keyof Theme)[]>(
     theme: Theme,
     keys: VariableKeys
   ): {
-    vars: CSSObject;
+    cssVariables: CSSObject;
     theme: ThemeWithVariables<Theme, VariableKeys>;
   };
 }
+
+const isBreakpoint = (
+  key: string
+): key is keyof Required<AbstractTheme>['breakpoints'] =>
+  Object.keys(['xs', 'sm', 'md', 'lg', 'xl']).includes(key);
 
 export const createThemeVars: CreateThemeVars = (theme, keys) => {
   // Create an empty theme to merge with the base theme object
   const updatedTheme = { ...theme };
   // Treat all CSS Variables as a plain emotion CSSObject to be added to.
-  const vars: CSSObject = {};
+  const cssVariables: CSSObject = {};
 
   keys.forEach((key) => {
     const varsToRegister = theme[key];
@@ -50,24 +55,31 @@ export const createThemeVars: CreateThemeVars = (theme, keys) => {
           // If the value is primitive just add it as is to the returned vars css object
           case 'number':
           case 'string':
-            vars[varName] = valuesToRegister;
+            cssVariables[varName] = valuesToRegister;
             break;
           // If the value is an object then attempt to parse it as a resposnive property
           case 'object':
-            Object.assign(vars, {
-              // Add the base as the default variable value
-              [varName]: get(valuesToRegister, 'base'),
-              // Add a variable override at each breakpoint specified
-              ...Object.keys(omit(valuesToRegister, 'base')).reduce(
-                (carry, key) => ({
-                  ...carry,
-                  [get(theme.breakpoints, key)]: {
-                    [varName]: valuesToRegister[key],
-                  },
-                }),
-                {}
-              ),
-            });
+            const { base, ...media } = valuesToRegister;
+
+            // If base key is defined add it to the root values
+            if (base) {
+              cssVariables[varName] = base;
+            }
+
+            // If there are remaining breakpoints that override the root value add them to style object
+            const mediaQueries = Object.keys(media).filter(isBreakpoint);
+            if (mediaQueries) {
+              const valuesByMediaQuery: CSSObject = {};
+              mediaQueries.forEach((key) => {
+                const breakpoint = theme.breakpoints[key];
+                valuesByMediaQuery[breakpoint] = {
+                  [varName]: valuesToRegister[key],
+                };
+              });
+
+              // Merge to preserve all breakpoints
+              merge(cssVariables, valuesByMediaQuery);
+            }
             break;
           default:
             break;
@@ -79,5 +91,5 @@ export const createThemeVars: CreateThemeVars = (theme, keys) => {
     }
   });
 
-  return { vars, theme: updatedTheme };
+  return { cssVariables, theme: updatedTheme };
 };
