@@ -20,7 +20,7 @@ export const createVariables = (
           break;
         // If the value is an object then attempt to parse it as a resposnive property
         case 'object':
-          const { base, ...otherSelectors } = valuesToRegister;
+          const { base, ...rest } = valuesToRegister;
 
           // If base key is defined add it to the root values
           if (base) {
@@ -28,17 +28,17 @@ export const createVariables = (
           }
 
           // If there are remaining breakpoints that override the root value add them to style object
-          const selectors = Object.keys(otherSelectors);
+          const selectors = Object.keys(rest);
           if (selectors) {
-            const valuesByMediaQuery: CSSObject = {};
-            selectors.forEach((key) => {
-              valuesByMediaQuery[key] = {
-                [varName]: valuesToRegister[key],
+            const overridesBySelector: CSSObject = {};
+            selectors.forEach((selector) => {
+              overridesBySelector[selector] = {
+                [varName]: valuesToRegister[selector],
               };
             });
 
             // Merge to preserve all breakpoints
-            merge(cssVariables, valuesByMediaQuery);
+            merge(cssVariables, overridesBySelector);
           }
           break;
         default:
