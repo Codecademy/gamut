@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [29.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.0...@codecademy/styleguide@29.6.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **Styleguide:** Fixes destructuring for argtype enhances ([98e0021](https://github.com/Codecademy/client-modules/commit/98e00212b522fed40342682ed412c4bb98d84eec))
+
+
+
+## [29.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.4...@codecademy/styleguide@29.6.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [29.5.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.3...@codecademy/styleguide@29.5.4) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.5.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.2...@codecademy/styleguide@29.5.3) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.1...@codecademy/styleguide@29.5.2) (2021-03-01)
+
+
+### Bug Fixes
+
+* **popover:** provide fallbackFocus ([7a25f5b](https://github.com/Codecademy/client-modules/commit/7a25f5b31d5f20d4e49c851208ba1bf6002bbe6a))
+
+
+
+### [29.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.0...@codecademy/styleguide@29.5.1) (2021-02-25)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [29.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.3...@codecademy/styleguide@29.5.0) (2021-02-25)
+
+
+### Features
+
+* add linting for gamut imports ([17980c9](https://github.com/Codecademy/client-modules/commit/17980c9993c1334c4a3a6a875fe15dbcc1052c08))
+
+
+
+### [29.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.2...@codecademy/styleguide@29.4.3) (2021-02-24)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [29.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.4.1...@codecademy/styleguide@29.4.2) (2021-02-23)
 
 **Note:** Version bump only for package @codecademy/styleguide

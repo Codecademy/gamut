@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore \"./**/*.{mdx,js,ts,tsx,json}\"",
-    "lint:fix": "eslint-fix \"./**/*.{mdx,js,ts,tsx,json}\"",
+    "lint:fix": "yarn lint --fix",
     "lerna": "lerna",
     "prettier": "prettier --ignore-path .prettierignore \"./**/*.{mdx,js,ts,tsx,json,css,scss}\"",
     "format": "yarn lint:fix && yarn prettier --write",
@@ -80,6 +80,7 @@
     "enzyme-adapter-react-16": "1.15.5",
     "enzyme-to-json": "3.3.5",
     "eslint": "^7.19.0",
+    "eslint-plugin-local-rules": "^1.0.1",
     "husky": "4.2.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "^26.6.3",

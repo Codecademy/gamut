@@ -3,6 +3,8 @@ module.exports = {
 
   extends: [require.resolve('./packages/eslint-config')],
 
+  plugins: ['local-rules'],
+
   overrides: [
     {
       files: ['**/typings/*', '*.d.ts'],
@@ -30,6 +32,7 @@ module.exports = {
               'ImportDeclaration[source.value=/^((?!module.scss).)*(.scss)$/]',
           },
         ],
+        'local-rules/gamut-import-paths': 'error',
       },
     },
   ],
