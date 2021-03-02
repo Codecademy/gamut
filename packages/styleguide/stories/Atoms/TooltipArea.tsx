@@ -5,7 +5,7 @@ import React from 'react';
 const tipPositionStyles: Record<ToolTipPosition, string> = {
   'bottom-left': `
     padding-bottom: 5rem;
-    padding-left: 12rem;
+    padding-left: 10rem;
 
     [role="tooltip"] {
       margin-left: -14rem;
@@ -13,9 +13,13 @@ const tipPositionStyles: Record<ToolTipPosition, string> = {
   `,
   'bottom-right': `
     padding-bottom: 5rem;
+
+    [role="tooltip"] {
+      margin-left: -0.65rem;
+    }
   `,
   'top-left': `
-    padding-left: 12rem;
+    padding-left: 10rem;
 
     [role="tooltip"] {
       margin-left: -14rem;
@@ -24,10 +28,15 @@ const tipPositionStyles: Record<ToolTipPosition, string> = {
   'top-right': `
     padding-left: 3rem;
     padding-top: 5rem;
+
+    [role="tooltip"] {
+      margin-left: -0.65rem;
+    }
   `,
 };
 
 const AreaBox = styled(Box)<{ tipPosition: ToolTipPosition }>`
+  padding: 1rem;
   ${({ tipPosition }) => tipPositionStyles[tipPosition]}
 `;
 
