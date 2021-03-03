@@ -15,26 +15,18 @@
   width: 100%;
 }
 
-.visuallyShow {
-  opacity: 1;
-}
-
-.visuallyHide {
-  opacity: 0;
-}
-
-.translateDown {
+.transitionSlideDown {
   transform: translateY(0);
-}
-
-.translateUp {
-  transform: translateY(-100%);
-}
-
-.transitionOpacity {
-  transition: opacity 0.5s ease-in-out;
-}
-
-.transitionSlide {
   transition: transform 0.15s ease-in-out;
+}
+
+.transitionSlideUp {
+  transform: translateY(-100%);
+  transition: transform 0.15s ease-in-out;
+}
+
+.transitionFadeOut {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
 }

@@ -3,7 +3,11 @@ import cx from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { GlobalHeaderProps } from '..';
-import { BasicGlobalHeader } from '../BasicGlobalHeader';
+import {
+  BasicGlobalHeader,
+  desktopHeight,
+  mobileHeight,
+} from '../BasicGlobalHeader';
 import styles from './styles.module.scss';
 
 const defaultScrollingState = {
@@ -75,68 +79,21 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     };
   }, [handleScrolling]);
 
-  const stickyBox = document.getElementById('stickyBox');
-  const staticBox = document.getElementById('staticBox');
-  const placeholderBox = document.getElementById('headerPlaceholder');
-
-  stickyBox &&
-    stickyBox.addEventListener('transitionend', () => {
-      if (stickyBox.className.includes('transitionOpacity')) {
-        stickyBox.style.display = 'none';
-        console.log('sticky header display set to none');
-      }
-    });
-  stickyBox &&
-    placeholderBox &&
-    staticBox &&
-    stickyBox.addEventListener('transitionstart', () => {
-      if (stickyBox.className.includes('transitionOpacity')) {
-        placeholderBox.style.display = 'none';
-        staticBox.style.display = 'block';
-
-        console.log('static header display set to block');
-      }
-    });
-
-  if (staticBox && stickyBox && placeholderBox && !isScrollingDown) {
-    stickyBox.style.display = 'block';
-    staticBox.style.display = 'none';
-    placeholderBox.style.display = 'block';
-  }
-
   return (
-    // padding box would need to be smaller for mobile
-    <>
-      <Box id="headerPlaceholder" height="80" />
-      <Box
-        id="staticBox"
+    <Box height={{ base: mobileHeight, md: desktopHeight }}>
+      <BasicGlobalHeader
         className={cx(
-          styles.staticHeader,
-          !isScrollingDownFromHeaderRegion && styles.visuallyHide
+          isScrollingDownFromHeaderRegion
+            ? styles.staticHeader
+            : styles.stickyHeader,
+          !isScrollingDown && styles.transitionSlideDown,
+          isScrollingDown &&
+            !isScrollingDownFromHeaderRegion &&
+            styles.transitionSlideUp,
+          isInHeaderRegion && styles.transitionFadeOut
         )}
-      >
-        <BasicGlobalHeader {...props} />
-      </Box>
-      <Box
-        id="stickyBox"
-        className={cx(
-          styles.stickyHeader,
-          // scrolling down from top
-          isScrollingDownFromHeaderRegion && [styles.visuallyHide],
-          // scrolling down
-          isScrollingDown && [styles.translateUp, styles.transitionSlide],
-          // scrolling up
-          !isScrollingDown &&
-            !isInHeaderRegion && [
-              styles.translateDown,
-              styles.transitionSlide,
-              styles.visuallyShow,
-            ],
-          isInHeaderRegion && [styles.transitionOpacity, styles.visuallyHide]
-        )}
-      >
-        <BasicGlobalHeader {...props} />
-      </Box>
-    </>
+        {...props}
+      />
+    </Box>
   );
 };
