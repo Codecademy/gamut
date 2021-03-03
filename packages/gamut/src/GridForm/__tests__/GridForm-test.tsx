@@ -143,7 +143,10 @@ describe('GridForm', () => {
         </ThemeProvider>
       );
 
-      wrapped.setProps(wrapped.props());
+      await act(async () => {
+        await wrapped.setProps(wrapped.props());
+      });
+      wrapped.update();
 
       expect(
         wrapped.find('button[type="submit"]').prop('disabled')
@@ -192,7 +195,6 @@ describe('GridForm', () => {
             fields={[]}
             onSubmit={onSubmit}
             submit={{ contents: <>Submit</>, disabled: true, size: 6 }}
-            validation="onChange"
           />
         </ThemeProvider>
       );
