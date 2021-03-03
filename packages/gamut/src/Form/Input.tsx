@@ -2,16 +2,13 @@ import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
+import React, { ComponentType, forwardRef, InputHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
 import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
 
-export type CustomInputChild = ReactNode & {
-  props?: ReactNode;
-};
-
-export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
+  id?: string;
   className?: string;
   error?: boolean;
   htmlFor?: string;
@@ -21,7 +18,13 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   required?: boolean;
   type?: string;
   verified?: boolean;
-  children?: CustomInputChild;
+};
+
+export type InputProps = InputHTMLAttributes<HTMLInputElement> &
+  InputComponentProps;
+
+export type InputWrapperProps = InputProps & {
+  component: ComponentType<any>;
 };
 
 const inputIconStyles = css`
@@ -29,16 +32,14 @@ const inputIconStyles = css`
   top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;
 
-const RRWrapper = styled.div<InputProps>`
-  input {
-    ${formBaseFieldStyles}
-    ${errorStyle}
-    box-sizing: border-box;
-    text-indent: 0;
-  }
+export const ReactRecurlyStyles = (props: any) => css`
+  ${formBaseFieldStyles}
+  ${errorStyle(props)}
+  box-sizing: border-box;
+  text-indent: 0;
 `;
 
-const InputBase = styled.input<InputProps>`
+const InputElement = styled.input<InputProps>`
   ${formBaseFieldStyles}
   ${errorStyle}
   box-sizing: border-box;
@@ -53,14 +54,23 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
   ${inputIconStyles}
 `;
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, htmlFor, className, id, verified, children, ...rest }, ref) => {
+export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
+  (
+    { error, htmlFor, className, id, verified, component: Component, ...rest },
+    ref
+  ) => {
     return (
       <Box position="relative">
-        {children ? (
-          <RRWrapper error={error}>{children}</RRWrapper>
+        {Component ? (
+          <Component
+            id={id || htmlFor}
+            ref={ref}
+            error={error}
+            className={className}
+            {...rest}
+          />
         ) : (
-          <InputBase
+          <InputElement
             {...rest}
             id={id || htmlFor}
             ref={ref}
