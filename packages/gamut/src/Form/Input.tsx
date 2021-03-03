@@ -1,6 +1,6 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { pxRem, theme } from '@codecademy/gamut-styles';
-import { css } from '@emotion/react';
+import { css, jsx } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { forwardRef, InputHTMLAttributes, ReactNode } from 'react';
 
@@ -28,6 +28,25 @@ const inputIconStyles = css`
   ${iconStyles}
   top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;
+const InputBaseStyles = css`
+  ${formBaseFieldStyles}
+  ${errorStyle}
+  box-sizing: border-box;
+  text-indent: 0;
+`;
+
+const cloneElement = (element, props) =>
+  jsx(element.type, {
+    key: element.key,
+    ref: element.ref,
+    ...element.props,
+    ...props,
+  });
+
+const RRWrapper = ({ children, inputProps }) => {
+  const props = { ...children.props, ...inputProps };
+  return cloneElement(children, { ...props, css: InputBaseStyles });
+};
 
 const InputBase = styled.input<InputProps>`
   ${formBaseFieldStyles}
@@ -49,13 +68,21 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const props = children ? { ...rest, ...children.props } : rest;
     return (
       <Box position="relative">
-        <InputBase
-          {...props}
-          id={id || htmlFor}
-          ref={ref}
-          error={error}
-          className={className}
-        />
+        {children ? (
+          <RRWrapper
+            inputProps={{ error, htmlFor, id, verified, ...props, ref }}
+          >
+            {children}
+          </RRWrapper>
+        ) : (
+          <InputBase
+            {...rest}
+            id={id || htmlFor}
+            ref={ref}
+            error={error}
+            className={className}
+          />
+        )}
         {error && <StyledAlertIcon color="red" />}
         {verified && <StyledCheckCircledIcon color="green" />}
       </Box>
