@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.1...@codecademy/gamut-labs@10.3.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* **global header:** for monolith migration work ([#1451](https://github.com/Codecademy/client-modules/issues/1451)) ([0fafe0c](https://github.com/Codecademy/client-modules/commit/0fafe0c2ab4bdb19a045ae6d5debf0caed0d58ef))
+
+
+
+### [10.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.0...@codecademy/gamut-labs@10.3.1) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ## [10.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.4...@codecademy/gamut-labs@10.3.0) (2021-03-02)
 
 
