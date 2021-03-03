@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
 
 import { Box } from '../Box';
+import { FormError } from './FormError';
 import { FormGroupDescription } from './FormGroupDescription';
 import { FormGroupLabel } from './FormGroupLabel';
 
@@ -11,6 +12,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   className?: string;
   description?: string;
   required?: boolean;
+  error?: string;
 };
 
 const FormGroupContainer = styled(Box)<FormGroupProps>`
@@ -26,6 +28,7 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   children,
   className,
   required,
+  error,
   ...rest
 }) => {
   const labelComponent = label ? (
@@ -39,12 +42,19 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {description}
     </FormGroupDescription>
   ) : null;
-
+  const clonedChildren = React.cloneElement(children, {
+    error: error,
+  });
   return (
     <FormGroupContainer {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
-      {children}
+      {children
+        ? React.cloneElement(children, {
+            error: error,
+          })
+        : null}
+      {error && <FormError aria-live="polite">{error}</FormError>}
     </FormGroupContainer>
   );
 };

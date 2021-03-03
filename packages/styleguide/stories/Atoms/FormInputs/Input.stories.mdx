@@ -1,4 +1,4 @@
-import { Input } from '@codecademy/gamut';
+import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -114,8 +114,8 @@ This can also be used as a higher-order [component](https://reactjs.org/docs/hig
   <Story
     name="Higher Order Component"
     args={{
-      htmlFor: 'example-HOC',
-      name: 'example-HOC',
+      htmlFor: 'exampleHOC',
+      name: 'exampleHOC',
       defaultValue: undefined,
     }}
   >
@@ -135,8 +135,8 @@ This can also be used as a higher-order [component](https://reactjs.org/docs/hig
   <Story
     name="Higher Order Component Error"
     args={{
-      htmlFor: 'example-HOC-error',
-      name: 'example-HOC-error',
+      htmlFor: 'exampleHOCError',
+      name: 'exampleHOCError',
       defaultValue: 'Something incorrect you typed',
     }}
   >
@@ -149,6 +149,27 @@ This can also be used as a higher-order [component](https://reactjs.org/docs/hig
           onClick={() => {}}
         />
       </Input>
+    )}
+  </Story>
+  <Story
+    name="Higher Order Component neeeew"
+    args={{
+      htmlFor: 'exampleHOCComp',
+      name: 'exampleHOCComp',
+      defaultValue: 'Something',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="An errored form group" error="this is not updog">
+        <Input error {...args}>
+          <input
+            type="text"
+            id="form-NKJN"
+            name="form-NKJNJN"
+            onClick={() => {}}
+          />
+        </Input>
+      </FormGroup>
     )}
   </Story>
 </Canvas>

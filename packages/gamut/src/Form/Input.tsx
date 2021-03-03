@@ -49,23 +49,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const props = children ? { ...rest, ...children.props } : rest;
     return (
       <Box position="relative">
-        {children ? (
-          <InputBase
-            {...props}
-            id={id || htmlFor}
-            ref={ref}
-            error={error}
-            className={className}
-          />
-        ) : (
-          <InputBase
-            {...props}
-            id={id || htmlFor}
-            ref={ref}
-            error={error}
-            className={className}
-          />
-        )}
+        <InputBase
+          {...props}
+          id={id || htmlFor}
+          ref={ref}
+          error={error}
+          className={className}
+        />
         {error && <StyledAlertIcon color="red" />}
         {verified && <StyledCheckCircledIcon color="green" />}
       </Box>
