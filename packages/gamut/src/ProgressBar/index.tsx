@@ -152,7 +152,6 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
 }) => {
   return (
     <ProgressBarWrapper
-      aria-label={`Progress: ${percent}%`}
       aria-live="polite"
       role="figure"
       border={bordered ? 'bordered' : 'basic'}
@@ -175,7 +174,11 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
           width: `${Math.max(minimumPercent, percent)}%`,
         }}
       >
-        {size === 'large' && <DisplayedPercent>{percent}%</DisplayedPercent>}
+        {size === 'large' && (
+          <DisplayedPercent aria-label={`Progress: ${percent}%`}>
+            {percent}%
+          </DisplayedPercent>
+        )}
       </Bar>
     </ProgressBarWrapper>
   );
