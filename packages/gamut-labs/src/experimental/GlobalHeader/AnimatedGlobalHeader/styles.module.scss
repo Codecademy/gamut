@@ -15,14 +15,16 @@
   width: 100%;
 }
 
-.transitionSlideDown {
-  transform: translateY(0);
-  transition: transform 0.15s ease-in-out;
+.transitionVisible {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
-.transitionSlideUp {
-  transform: translateY(-100%);
-  transition: transform 0.15s ease-in-out;
+.transitionHidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .transitionFadeOut {
