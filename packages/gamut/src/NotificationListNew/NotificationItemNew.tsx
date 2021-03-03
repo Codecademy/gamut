@@ -58,7 +58,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
               icon={MiniDeleteIcon}
               color={colors.navy}
               onClick={dismissNotification}
-              aria-label="dismiss notificiation"
+              aria-label="dismiss notification"
               size="small"
               variant="secondary"
             />
