@@ -42,18 +42,12 @@ export const FormGroup: React.FC<FormGroupProps> = ({
       {description}
     </FormGroupDescription>
   ) : null;
-  const clonedChildren = React.cloneElement(children, {
-    error: error,
-  });
+
   return (
     <FormGroupContainer {...rest} className={className}>
       {labelComponent}
       {descriptionComponent}
-      {children
-        ? React.cloneElement(children, {
-            error: error,
-          })
-        : null}
+      {children}
       {error && <FormError aria-live="polite">{error}</FormError>}
     </FormGroupContainer>
   );
