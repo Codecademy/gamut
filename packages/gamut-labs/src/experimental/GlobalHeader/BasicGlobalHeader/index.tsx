@@ -31,8 +31,8 @@ export type GlobalHeaderProps =
   | ProHeader
   | LoadingHeader;
 
-export const desktopHeight = '80';
-export const mobileHeight = '64';
+export const desktopHeight = 80;
+export const mobileHeight = 64;
 
 const getAppHeaderItems = (
   props: GlobalHeaderProps
@@ -101,14 +101,14 @@ export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     <>
       <Box
         display={{ base: 'none', md: 'block' }}
-        height={desktopHeight}
+        height={`${desktopHeight}`}
         className={props.animated ? props.className : undefined}
       >
         <AppHeader action={props.action} items={getAppHeaderItems(props)} />
       </Box>
       <Box
         display={{ base: 'block', md: 'none' }}
-        height={mobileHeight}
+        height={`${mobileHeight}`}
         className={props.animated ? props.className : undefined}
       >
         <AppHeaderMobile

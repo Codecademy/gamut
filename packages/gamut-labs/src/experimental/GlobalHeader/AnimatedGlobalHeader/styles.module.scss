@@ -20,6 +20,10 @@
   transition: transform 0.15s ease-in-out;
 }
 
+.slideUp {
+  transform: translateY(-100%);
+}
+
 .transitionSlideUp {
   transform: translateY(-100%);
   transition: transform 0.15s ease-in-out;

@@ -11,7 +11,8 @@ import {
 import styles from './styles.module.scss';
 
 const defaultScrollingState = {
-  isInHeaderRegion: true,
+  isAtTopOfPage: true,
+  isInsideHeaderRegion: true,
   isScrollingDown: true,
   isScrollingDownFromHeaderRegion: true,
   prevScrollPosition: typeof window === 'undefined' ? 0 : window?.pageYOffset,
@@ -22,7 +23,8 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
 
   const {
     isScrollingDownFromHeaderRegion,
-    isInHeaderRegion,
+    isAtTopOfPage,
+    isInsideHeaderRegion,
     isScrollingDown,
     prevScrollPosition,
   } = scrollingState;
@@ -54,13 +56,20 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     if (currentScrollPosition === 0) {
       setScrollingState((prevState) => ({
         ...prevState,
-        isInHeaderRegion: true,
+        isAtTopOfPage: true,
+        isInsideHeaderRegion: true,
         isScrollingDownFromHeaderRegion: true,
+      }));
+    } else if (currentScrollPosition < desktopHeight) {
+      setScrollingState((prevState) => ({
+        ...prevState,
+        isInsideHeaderRegion: true,
       }));
     } else {
       setScrollingState((prevState) => ({
         ...prevState,
-        isInHeaderRegion: false,
+        isAtTopOfPage: false,
+        isInsideHeaderRegion: false,
         isScrollingDownFromHeaderRegion:
           prevState.isScrollingDown &&
           prevState.isScrollingDownFromHeaderRegion,
@@ -80,17 +89,20 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   }, [handleScrolling]);
 
   return (
-    <Box height={{ base: mobileHeight, md: desktopHeight }}>
+    <Box height={{ base: `${mobileHeight}`, md: `${desktopHeight}` }}>
       <BasicGlobalHeader
         className={cx(
-          isScrollingDownFromHeaderRegion
+          isInsideHeaderRegion && isScrollingDownFromHeaderRegion
             ? styles.staticHeader
             : styles.stickyHeader,
           !isScrollingDown && styles.transitionSlideDown,
+          !isInsideHeaderRegion &&
+            isScrollingDownFromHeaderRegion &&
+            styles.slideUp,
           isScrollingDown &&
             !isScrollingDownFromHeaderRegion &&
             styles.transitionSlideUp,
-          isInHeaderRegion && styles.transitionFadeOut
+          isAtTopOfPage && styles.transitionFadeOut
         )}
         {...props}
       />
