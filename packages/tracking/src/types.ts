@@ -228,12 +228,12 @@ export type UseUserResponse = {
   status: string;
 };
 
-export declare type PagePathVisitedData = BaseEventData & {
+export type PagePathVisitedData = BaseEventData & {
   path_id: string;
   path_full_title: string;
 };
 
-export declare type CoursePageVisitedData = BaseEventData & {
+export type CoursePageVisitedData = BaseEventData & {
   course_id: string;
   course_full_title: string;
 };
