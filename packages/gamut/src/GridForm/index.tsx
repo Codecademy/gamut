@@ -10,7 +10,7 @@ import { GridFormField, LayoutGridProps } from './types';
 export * from './types';
 
 const defaultColumnGap = {
-  xs: 'sm',
+  base: 'sm',
   sm: 'lg',
 } as const;
 

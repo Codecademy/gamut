@@ -53,7 +53,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
     >
       <LeftColumn
         size={{
-          xs: 12,
+          base: 12,
           sm: columnSize(media?.type),
         }}
       >
