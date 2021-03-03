@@ -27,9 +27,11 @@ type LoggedInHeader = BaseHeader & {
   user: User;
 };
 
+export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
+
 export type AnonHeader = BaseHeader & {
   type: 'anon';
-  variant?: 'landing' | 'login' | 'signup';
+  variant?: AnonHeaderVariant;
 };
 
 export type FreeHeader = LoggedInHeader & {
