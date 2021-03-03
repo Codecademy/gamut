@@ -27,6 +27,7 @@ export const AppHeaderLink: React.FC<AppHeaderLinkProps> = ({
   return (
     <AppHeaderLinkButtonOuter
       data-testid={item.dataTestId}
+      data-intellimize={item.dataIntellimizeId}
       href={item.href}
       onClick={(event) => action(event, item)}
       target={item.newTab ? 'blank' : ''}

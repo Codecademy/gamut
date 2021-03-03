@@ -43,6 +43,7 @@ export const proLogo: AppHeaderLogoItem = {
 
 export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
+  dataIntellimizeId: 'header-home',
   icon: HouseEntranceIcon,
   id: 'my-home',
   text: 'My Home',
@@ -53,6 +54,7 @@ export const myHome: AppHeaderLinkItem = {
 
 export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
+  dataIntellimizeId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
   text: 'Catalog',
@@ -168,6 +170,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
 export const forBusiness: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'for-business',
+  dataIntellimizeId: 'header-business',
   trackingTarget: 'topnav_business',
   text: 'For Business',
   href: '/business',
@@ -242,6 +245,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
 
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
+  dataTestId: 'admin-link',
   href: '/admin',
   trackingTarget: 'avatar_admin',
   text: 'Admin',
