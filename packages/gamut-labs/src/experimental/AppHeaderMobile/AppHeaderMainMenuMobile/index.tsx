@@ -56,11 +56,10 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'fill-button':
         return (
-          <FlexBox justifyContent="center" marginTop={32}>
+          <FlexBox justifyContent="center" marginTop={32} key={item.id}>
             <AppHeaderFillButton
               data-testid={item.dataTestId}
               href={item.href}
-              key={item.id}
               onClick={(event: React.MouseEvent) => action(event, item)}
             >
               {item.text}
@@ -69,11 +68,10 @@ export const AppHeaderMainMenuMobile: React.FC<AppHeaderMainMenuMobileProps> = (
         );
       case 'text-button':
         return (
-          <FlexBox justifyContent="center" marginTop={16}>
+          <FlexBox justifyContent="center" marginTop={16} key={item.id}>
             <AppHeaderTextButton
               data-testid={item.dataTestId}
               href={item.href}
-              key={item.id}
               onClick={(event: React.MouseEvent) => action(event, item)}
             >
               {item.text}
