@@ -93,7 +93,9 @@ export const variance = {
                 break;
               }
               case 'object': {
-                scaleVal = get(config.scale, `${value}`);
+                scaleVal = get(config.scale, `${value}`, value) as
+                  | string
+                  | number;
                 break;
               }
               default:

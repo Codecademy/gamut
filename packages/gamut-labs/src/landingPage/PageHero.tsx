@@ -49,7 +49,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
     <LayoutGrid
       data-testid={testId}
       rowGap="md"
-      columnGap={{ xs: 'sm', sm: 'lg' }}
+      columnGap={{ base: 'sm', sm: 'lg' }}
     >
       <LeftColumn
         size={{

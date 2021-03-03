@@ -62,7 +62,7 @@ colors.blue;
 <Story name="Standard">
   <LayoutGrid rowGap="md" columnGap="md">
     {objectKeys(trueColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
+      <Column key={color} size={{ base: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
@@ -87,7 +87,7 @@ For usage on links, buttons, and other interactive elements on dark and light ba
 <Story name="Interactive">
   <LayoutGrid rowGap="md" columnGap="md">
     {Object.keys(interactiveColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
+      <Column key={color} size={{ base: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
@@ -109,7 +109,7 @@ For usage on links, buttons, and other interactive elements on dark and light ba
 <Story name="Base">
   <LayoutGrid rowGap="md" columnGap="md">
     {['black', 'white'].map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
+      <Column key={color} size={{ base: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
@@ -150,7 +150,7 @@ swatches.beige[0];
   {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(swatches).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
+        <Column key={color} size={{ base: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
               {parseCamelCase(`color-${color}`)}
@@ -188,7 +188,7 @@ deprecatedColors.blue[900];
       {objectKeys(deprecatedColors)
         .filter((color) => !excludedColors.includes(color))
         .map((color) => (
-          <Column key={color} size={{ xs: 6, sm: 3 }}>
+          <Column key={color} size={{ base: 6, sm: 3 }}>
             <Container flex={false}>
               <Heading as="h2" fontSize="xs">
                 {parseCamelCase(`color-${color}`)}
@@ -214,7 +214,7 @@ grayish purples and a few mid-range minty greens.
   {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(platformColors).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
+        <Column key={color} size={{ base: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
               Platform {startCase(color)}
@@ -240,7 +240,7 @@ The LE's code editor uses its own colors for text.
   {(args) => (
     <LayoutGrid rowGap="md" columnGap="md">
       {objectKeys(editorColors).map((color) => (
-        <Column key={color} size={{ xs: 6, sm: 3 }}>
+        <Column key={color} size={{ base: 6, sm: 3 }}>
           <Container flex={false}>
             <Heading as="h2" fontSize="xs">
               Editor {startCase(color)}
@@ -263,7 +263,7 @@ The LE's code editor uses its own colors for text.
 <Story name="Brand">
   <LayoutGrid rowGap="md" columnGap="md">
     {objectKeys(brandColors).map((color) => (
-      <Column key={color} size={{ xs: 6, sm: 3 }}>
+      <Column key={color} size={{ base: 6, sm: 3 }}>
         <Container flex={false}>
           <Heading as="h2" fontSize="xs">
             {startCase(color)}
