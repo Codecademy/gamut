@@ -28,12 +28,11 @@ const inputIconStyles = css`
   ${iconStyles}
   top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;
-const InputBaseStyles = css`
-  ${formBaseFieldStyles}
-  ${errorStyle}
-  box-sizing: border-box;
-  text-indent: 0;
-`;
+
+const InputBaseStyles = {
+  formBaseFieldStyles,
+  errorStyle,
+};
 
 const cloneElement = (element, props) =>
   jsx(element.type, {
