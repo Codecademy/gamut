@@ -23,6 +23,7 @@ const labelSizeVariants = variant({
   variants: {
     small: {
       lineHeight: 'title',
+      marginBottom: 4,
     },
     large: {
       fontSize: 22,

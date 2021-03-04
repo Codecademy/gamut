@@ -153,7 +153,21 @@ import { PropsTable } from '~styleguide/blocks';
     )}
   </Story>
   <Story
-    name="FormLargeExamples"
+    name="FormLargeExample"
+    args={{
+      htmlFor: 'example-123',
+      name: 'example-123',
+      placeholder: 'Placeholder',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am a large label" labelSize="large">
+        <Input {...args} />{' '}
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="FormLargeErrorExample"
     args={{
       htmlFor: 'example-123',
       defaultValue: '123',
