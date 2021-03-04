@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.0.0...@codecademy/gamut-icons@4.1.0) (2021-03-04)
+
+
+### Features
+
+* LocationPinIcon ([d327380](https://github.com/Codecademy/client-modules/commit/d32738000630d9437a97d570f807626b4f5ec937))
+
+
+
 ## [4.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@3.15.0...@codecademy/gamut-icons@4.0.0) (2021-02-18)
 
 

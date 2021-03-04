@@ -51,9 +51,12 @@ export type EventDataTypes = {
     query: BaseEventAnyData;
     result: BaseEventAnyData;
   };
+  // page events for email marketing
+  // potentially to be removed once we clean up user_visit event
   page: {
     career_path_visited: PagePathVisitedData;
     skill_path_visited: PagePathVisitedData;
+    course_page_visited: CoursePageVisitedData;
   };
 };
 
@@ -225,7 +228,12 @@ export type UseUserResponse = {
   status: string;
 };
 
-export declare type PagePathVisitedData = BaseEventData & {
+export type PagePathVisitedData = BaseEventData & {
   path_id: string;
   path_full_title: string;
+};
+
+export type CoursePageVisitedData = BaseEventData & {
+  course_id: string;
+  course_full_title: string;
 };
