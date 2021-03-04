@@ -7,7 +7,7 @@ import {
   MiniStarIcon,
   MiniWarningTriangleIcon,
 } from '@codecademy/gamut-icons';
-import { contentWidths, variant } from '@codecademy/gamut-styles';
+import { breakpoints, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
@@ -102,7 +102,7 @@ const AlertBanner = styled(Box)<Pick<AlertProps, 'type' | 'placement'>>(
   css`
     display: grid;
     width: 100%;
-    max-width: ${contentWidths.md};
+    max-width: calc(${breakpoints.md} - 4rem);
     border: 2px solid currentColor;
     border-radius: 3px;
   `,
