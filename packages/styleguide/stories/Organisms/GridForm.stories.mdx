@@ -489,3 +489,57 @@ field's value in a parent component before onSubmit gets triggered.
     }}
   </Story>
 </Canvas>
+
+## With tooltip
+
+With tooltip
+
+<Canvas>
+  <Story name="Tooltip">
+    {(args) => (
+      <>
+        <GridForm
+          fields={[
+            {
+              toolTip: {
+                id: 'yolo',
+              },
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 12,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Default Purple Submit!?',
+            size: 12,
+          }}
+        />
+        <GridForm
+          fields={[
+            {
+              toolTip: {
+                id: 'yolo',
+              },
+              label: 'Simple text',
+              name: 'simple-text',
+              size: 6,
+              type: 'text',
+            },
+          ]}
+          onSubmit={async (values) => {
+            action('Form Submitted')(values);
+          }}
+          submit={{
+            contents: 'Blue Submit!?',
+            size: 12,
+            theme: 'brand-blue',
+          }}
+        />
+      </>
+    )}
+  </Story>
+</Canvas>
