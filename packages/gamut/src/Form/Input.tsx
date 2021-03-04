@@ -1,5 +1,4 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
-import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { ComponentType, forwardRef, InputHTMLAttributes } from 'react';
