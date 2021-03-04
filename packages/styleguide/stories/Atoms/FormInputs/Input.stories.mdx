@@ -121,7 +121,21 @@ import { PropsTable } from '~styleguide/blocks';
 
 <Canvas>
   <Story
-    name="FormExmaples"
+    name="FormExamples"
+    args={{
+      htmlFor: 'example-123',
+      defaultValue: '123',
+      name: 'example-123',
+    }}
+  >
+    {(args) => (
+      <FormGroup label="i am a smol label">
+        <Input {...args} />{' '}
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="FormErrorExamples"
     args={{
       htmlFor: 'example-123',
       defaultValue: '123',
@@ -129,7 +143,33 @@ import { PropsTable } from '~styleguide/blocks';
       error: true,
     }}
   >
-    {(args) => <Input {...args} />}
+    {(args) => (
+      <FormGroup
+        label="i am also smol label, but something is wrong."
+        error="this is not updog."
+      >
+        <Input {...args} />{' '}
+      </FormGroup>
+    )}
+  </Story>
+  <Story
+    name="FormLargeExamples"
+    args={{
+      htmlFor: 'example-123',
+      defaultValue: '123',
+      name: 'example-123',
+      error: true,
+    }}
+  >
+    {(args) => (
+      <FormGroup
+        label="i am also large label, but something is wrong."
+        error="this is still not updog."
+        labelSize="large"
+      >
+        <Input {...args} />{' '}
+      </FormGroup>
+    )}
   </Story>
 </Canvas>
 

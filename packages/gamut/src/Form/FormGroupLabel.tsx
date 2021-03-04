@@ -55,7 +55,7 @@ const StyledDiv = styled.div<FormGroupLabelProps>`
   ${formBaseStyles}
   ${formLabelStyles}
   ${disabledLabelStyle}
-    ${labelSizeVariants}
+  ${labelSizeVariants}
 `;
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
