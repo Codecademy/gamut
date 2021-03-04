@@ -40,13 +40,13 @@ export const HubCard: React.FC<HubCardProps> = ({
     backgroundImage={`url(${backgroundImage})`}
     alignItems="center"
     paddingX={24}
-    height="180px"
+    height="11.25rem"
   >
-    <Box padding={24} backgroundColor="white" width="100%" maxWidth="280px">
-      <StyledText as="p" fontSize={16}>
+    <Box padding={24} backgroundColor="white" width="100%" maxWidth="17.5rem">
+      <StyledText as="div" fontSize={16}>
         {eyebrowTitle}
       </StyledText>
-      <StyledText as="h5" fontSize={22}>
+      <StyledText as="div" fontSize={22}>
         {title}
       </StyledText>
     </Box>
