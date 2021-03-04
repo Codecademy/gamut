@@ -8,7 +8,7 @@
     "url": "git@github.com:Codecademy/client-modules.git"
   },
   "dependencies": {
-    "@codecademy/gamut": "^25.4.3",
+    "@codecademy/gamut": "^26.0.1",
     "@codecademy/gamut-icons": "^4.1.0",
     "@codecademy/gamut-illustrations": "^0.7.6",
     "@codecademy/gamut-labs": "^10.4.6",
