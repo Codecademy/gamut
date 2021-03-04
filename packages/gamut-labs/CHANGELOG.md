@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.4...@codecademy/gamut-labs@10.4.0) (2021-03-04)
+
+
+### Features
+
+* deprecated useBreakpoint and friends ([263f35e](https://github.com/Codecademy/client-modules/commit/263f35e1bcb3c8eee0397cfa857f889ea69bd735))
+
+
+
 ### [10.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.3...@codecademy/gamut-labs@10.3.4) (2021-03-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
