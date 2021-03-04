@@ -1,8 +1,6 @@
 import { Box, FlexBox } from '@codecademy/gamut';
+import { LocationPinIcon } from '@codecademy/gamut-icons';
 import React from 'react';
-
-import networkPin from './assets/networkPin.svg';
-import styles from './styles.module.scss';
 
 export type BylineProps = {
   firstName: string;
@@ -45,12 +43,10 @@ export const Byline: React.FC<BylineProps> = ({
     </div>
     {location && (
       <FlexBox alignItems="center">
-        <img
-          alt="Location pin icon"
-          className={styles.networkPin}
-          src={networkPin}
-        />
-        <span>{location}</span>
+        <LocationPinIcon size={12} color="black" />
+        <Box as="span" marginLeft={12}>
+          {location}
+        </Box>
       </FlexBox>
     )}
   </FlexBox>
