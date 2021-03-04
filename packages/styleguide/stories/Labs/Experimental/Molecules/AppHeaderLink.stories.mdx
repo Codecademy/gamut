@@ -7,7 +7,13 @@ import { PropsTable } from '~styleguide/blocks';
 <Meta
   title={title}
   component={AppHeaderLink}
-  parameters={{ layout: 'padded', status: 'volatile', source: 'gamut-labs' }}
+  parameters={{
+    layout: 'padded',
+    status: 'volatile',
+    source: 'gamut-labs',
+    subtitle:
+      'A styled Anchor for use in the top-level AppHeader (not in dropdowns or the mobile menu).',
+  }}
   args={{
     item: {
       id: 'link',
@@ -18,8 +24,6 @@ import { PropsTable } from '~styleguide/blocks';
     },
   }}
 />
-
-A link for use in AppHeader.
 
 <Canvas>
   <Story name="AppHeaderLink">{(args) => <AppHeaderLink {...args} />}</Story>

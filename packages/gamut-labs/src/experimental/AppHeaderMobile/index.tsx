@@ -1,11 +1,6 @@
-import {
-  AppBarSection,
-  Box,
-  Container,
-  FlexBox,
-  Overlay,
-} from '@codecademy/gamut';
+import { AppBarSection, Box, FlexBox, Overlay } from '@codecademy/gamut';
 import { CloseIcon, MenuIcon } from '@codecademy/gamut-icons';
+import { breakpoints } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import React, { ReactNode, useState } from 'react';
 
@@ -46,6 +41,10 @@ const StyledOverlay = styled(Overlay)`
   left: 0;
   top: 0;
   overflow-x: hidden;
+
+  @media only screen and (min-width: ${breakpoints.md}) {
+    display: none;
+  }
 `;
 
 export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
@@ -96,42 +95,40 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
           </AppBarSection>
         </StyledAppBar>
       )}
-      <Container>
-        <StyledOverlay
-          clickOutsideCloses
-          escapeCloses
-          isOpen={mobileMenuOpen}
-          onRequestClose={() => setMobileMenuOpen(false)}
-        >
-          <div>
-            <StyledAppBar>
-              <AppBarSection position="left">
-                {mapItemsToElement(items.left)}
-              </AppBarSection>
-              <AppBarSection position="right">
-                <FlexBox>
-                  <IconButton
-                    type="button"
-                    aria-label="close menu"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                    }}
-                  >
-                    <CloseIcon width={20} height={20} />
-                  </IconButton>
-                </FlexBox>
-              </AppBarSection>
-            </StyledAppBar>
-            <Box paddingX={16}>
-              <AppHeaderMainMenuMobile
-                items={items.mainMenu}
-                action={action}
-                renderSearch={renderSearch}
-              />
-            </Box>
-          </div>
-        </StyledOverlay>
-      </Container>
+      <StyledOverlay
+        clickOutsideCloses
+        escapeCloses
+        isOpen={mobileMenuOpen}
+        onRequestClose={() => setMobileMenuOpen(false)}
+      >
+        <div data-testid="header-mobile-menu-dropdown">
+          <StyledAppBar>
+            <AppBarSection position="left">
+              {mapItemsToElement(items.left)}
+            </AppBarSection>
+            <AppBarSection position="right">
+              <FlexBox>
+                <IconButton
+                  type="button"
+                  aria-label="close menu"
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  <CloseIcon width={20} height={20} />
+                </IconButton>
+              </FlexBox>
+            </AppBarSection>
+          </StyledAppBar>
+          <Box paddingX={{ base: 16, sm: 32 }}>
+            <AppHeaderMainMenuMobile
+              items={items.mainMenu}
+              action={action}
+              renderSearch={renderSearch}
+            />
+          </Box>
+        </div>
+      </StyledOverlay>
     </>
   );
 };
