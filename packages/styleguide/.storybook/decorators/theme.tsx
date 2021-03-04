@@ -1,7 +1,10 @@
 import React from 'react';
-import { CacheProvider, ThemeContext } from '@emotion/react';
+import { CacheProvider } from '@emotion/react';
 
-import { theme, createEmotionCache } from '@codecademy/gamut-styles';
+import {
+  GamutThemeProvider,
+  createEmotionCache,
+} from '@codecademy/gamut-styles';
 
 const cache = createEmotionCache();
 
@@ -12,10 +15,10 @@ const cache = createEmotionCache();
 
 export const withEmotion = (Story: any) => {
   return process.env.NODE_ENV === 'test' ? (
-    <ThemeContext.Provider value={theme}>{Story()}</ThemeContext.Provider>
+    <GamutThemeProvider>{Story()}</GamutThemeProvider>
   ) : (
     <CacheProvider value={cache}>
-      <ThemeContext.Provider value={theme}>{Story()}</ThemeContext.Provider>
+      <GamutThemeProvider>{Story()}</GamutThemeProvider>
     </CacheProvider>
   );
 };
