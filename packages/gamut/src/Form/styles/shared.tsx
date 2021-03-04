@@ -24,7 +24,7 @@ export const iconStyles = css`
   right: 16px;
   height: 16px;
   width: 16px;
-  cursor: inherit;
+  pointer-events: none;
 `;
 
 export const selectIconStyles = css`
@@ -69,6 +69,6 @@ export const formBaseFieldStyles = css`
     border-color: ${theme.colors[`gray-500`]};
     color: ${theme.colors[`gray-500`]};
     font-style: italic;
-    cursor: disabled;
+    cursor: not-allowed;
   }
 `;
