@@ -155,6 +155,22 @@ export const Alert: React.FC<AlertProps> = ({
   }, [truncated, cta]);
 
   const columns = `max-content minmax(0, 1fr) repeat(${numberOfColumns}, max-content)`;
+  const content =
+    props.placement === 'inline' ? (
+      <Box paddingY={4}>{children}</Box>
+    ) : (
+      <AlertContent
+        variants={contentVariants}
+        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
+        aria-expanded={expanded}
+        initial={expanded ? 'expanded' : 'truncated'}
+        animate={expanded ? 'expanded' : 'truncated'}
+      >
+        <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
+          {children}
+        </Truncate>
+      </AlertContent>
+    );
 
   return (
     <AlertBanner
@@ -172,17 +188,7 @@ export const Alert: React.FC<AlertProps> = ({
       >
         <Icon size={16} aria-hidden="true" />
       </FlexBox>
-      <AlertContent
-        variants={contentVariants}
-        transition={{ duration: transitionDuration, ease: 'easeInOut' }}
-        aria-expanded={expanded}
-        initial={expanded ? 'expanded' : 'truncated'}
-        animate={expanded ? 'expanded' : 'truncated'}
-      >
-        <Truncate expanded={expanded} onTruncate={setTruncated} lines={1}>
-          {children}
-        </Truncate>
-      </AlertContent>
+      {content}
       {truncated && (
         <CollapseButton
           aria-label={expanded ? 'Collapse' : 'Expand'}

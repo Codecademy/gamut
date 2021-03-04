@@ -35,7 +35,7 @@ export const Truncate: React.FC<TruncateProps> = ({
       lines={lines}
       onTruncate={setIsTruncated}
     >
-      <span>
+      <Box as="span" display="inline-block" width="100%" className={className}>
         {React.Children.map(children, (child) =>
           isValidElement(child) || typeof child === 'string' ? (
             child
@@ -43,15 +43,17 @@ export const Truncate: React.FC<TruncateProps> = ({
             <TruncateMarkup.Atom>{child}</TruncateMarkup.Atom>
           )
         )}
-      </span>
+      </Box>
     </TruncateMarkup>
   );
 
   /** If lines is false do not attempt to truncate */
 
-  return (
-    <Box as="span" className={className}>
-      {expanded ? children : truncatedChildren}
+  return expanded ? (
+    <Box as="span" display="inline-block" width="100%" className={className}>
+      {children}
     </Box>
+  ) : (
+    truncatedChildren
   );
 };
