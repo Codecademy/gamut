@@ -18,6 +18,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
 
 const FormGroupContainer = styled(Box)<FormGroupProps>`
   position: relative;
+  padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
 `;

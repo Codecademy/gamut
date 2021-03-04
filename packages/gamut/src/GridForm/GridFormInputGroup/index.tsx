@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { UseFormMethods } from 'react-hook-form';
 
+import { Box } from '../../Box';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
@@ -114,15 +115,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
   return (
     <Column size={field.size}>
-      <StyledFormGroup>
-        {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
-        {getInput()}
-        {error && (
-          <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
-            {error}
-          </FormError>
-        )}
-      </StyledFormGroup>
+      <Box>
+        <StyledFormGroup>
+          {field.hideLabel ? <HiddenText>{label}</HiddenText> : label}
+          {getInput()}
+          {error && (
+            <FormError aria-live={isFirstError ? 'assertive' : 'off'}>
+              {error}
+            </FormError>
+          )}
+        </StyledFormGroup>
+      </Box>
     </Column>
   );
 };

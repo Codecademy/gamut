@@ -41,7 +41,6 @@ export const formBaseStyles = css`
 export const formBaseFieldStyles = css`
   ${formBaseStyles}
   cursor: pointer;
-  margin-bottom: ${theme.spacing[8]};
   width: 100%;
   padding: ${pxRem(11)} ${theme.spacing[8]};
   outline: none;
