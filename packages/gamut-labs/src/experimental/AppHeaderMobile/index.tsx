@@ -120,7 +120,7 @@ export const AppHeaderMobile: React.FC<AppHeaderMobileProps> = ({
               </FlexBox>
             </AppBarSection>
           </StyledAppBar>
-          <Box paddingX={16}>
+          <Box paddingX={{ base: 16, sm: 32 }}>
             <AppHeaderMainMenuMobile
               items={items.mainMenu}
               action={action}

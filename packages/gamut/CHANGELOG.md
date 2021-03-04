@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.1...@codecademy/gamut@26.0.0) (2021-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** New Visual Identity Alert [GM-119]
+
+### Features
+
+* **Alert:** New Visual Identity Alert [GM-119] ([c170e6f](https://github.com/Codecademy/client-modules/commit/c170e6ff3e78327ccc6f4875940ea19e26dd65b9))
+
+
+
+### [25.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.0...@codecademy/gamut@25.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.4...@codecademy/gamut@25.5.0) (2021-03-04)
+
+
+### Features
+
+* **StackingContext:** Adds consistent reset for root nodes [WEB-1329] ([c107fec](https://github.com/Codecademy/client-modules/commit/c107fec7ab2e57e5d706d25f2ff22caaab05a297))
+
+
+
+### [25.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.3...@codecademy/gamut@25.4.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.2...@codecademy/gamut@25.4.3) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.1...@codecademy/gamut@25.4.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.0...@codecademy/gamut@25.4.1) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.6...@codecademy/gamut@25.4.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [25.3.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.5...@codecademy/gamut@25.3.6) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.3.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.4...@codecademy/gamut@25.3.5) (2021-03-01)
+
+
+### Bug Fixes
+
+* use sm columns in xs viewports by default for GridForm ([5aff967](https://github.com/Codecademy/client-modules/commit/5aff967e76b305e30737ab4a5b692e39886c2dba))
+
+
+
 ### [25.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.3...@codecademy/gamut@25.3.4) (2021-02-25)
 
 
