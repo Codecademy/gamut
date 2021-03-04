@@ -3,6 +3,123 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.4...@codecademy/gamut-labs@10.4.5) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.3...@codecademy/gamut-labs@10.4.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.2...@codecademy/gamut-labs@10.4.3) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.1...@codecademy/gamut-labs@10.4.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.0...@codecademy/gamut-labs@10.4.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [10.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.4...@codecademy/gamut-labs@10.4.0) (2021-03-04)
+
+
+### Features
+
+* deprecated useBreakpoint and friends ([263f35e](https://github.com/Codecademy/client-modules/commit/263f35e1bcb3c8eee0397cfa857f889ea69bd735))
+
+
+
+### [10.3.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.3...@codecademy/gamut-labs@10.3.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.3.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.2...@codecademy/gamut-labs@10.3.3) (2021-03-03)
+
+
+### Bug Fixes
+
+* **global header:** export global header types  ([64987a3](https://github.com/Codecademy/client-modules/commit/64987a3de6d44edcf664535bcd653e64aeb06fb2)), closes [/github.com/codecademy-engineering/Codecademy/pull/22024#discussion_r585939943](https://github.com/Codecademy//github.com/codecademy-engineering/Codecademy/pull/22024/issues/discussion_r585939943)
+
+
+
+### [10.3.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.1...@codecademy/gamut-labs@10.3.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* **global header:** for monolith migration work ([#1451](https://github.com/Codecademy/client-modules/issues/1451)) ([0fafe0c](https://github.com/Codecademy/client-modules/commit/0fafe0c2ab4bdb19a045ae6d5debf0caed0d58ef))
+
+
+
+### [10.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.3.0...@codecademy/gamut-labs@10.3.1) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [10.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.4...@codecademy/gamut-labs@10.3.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
+### [10.2.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.3...@codecademy/gamut-labs@10.2.4) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.2.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.2...@codecademy/gamut-labs@10.2.3) (2021-03-01)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [10.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.1...@codecademy/gamut-labs@10.2.2) (2021-03-01)
+
+
+### Bug Fixes
+
+* **popover:** provide fallbackFocus ([7a25f5b](https://github.com/Codecademy/client-modules/commit/7a25f5b31d5f20d4e49c851208ba1bf6002bbe6a))
+
+
+
 ### [10.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.2.0...@codecademy/gamut-labs@10.2.1) (2021-02-25)
 
 **Note:** Version bump only for package @codecademy/gamut-labs

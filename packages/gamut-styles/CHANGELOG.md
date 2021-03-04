@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.2...@codecademy/gamut-styles@8.3.0) (2021-03-04)
+
+
+### Features
+
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([f4fd13c](https://github.com/Codecademy/client-modules/commit/f4fd13ce04762f75517117372c76d189ee0f0b99))
+
+
+
+### [8.2.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.1...@codecademy/gamut-styles@8.2.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+### [8.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.0...@codecademy/gamut-styles@8.2.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-styles
+
+
+
+
+
+## [8.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.1.1...@codecademy/gamut-styles@8.2.0) (2021-03-02)
+
+
+### Features
+
+* **props:** Adds custom shouldForwardProp to omit system props ([2048045](https://github.com/Codecademy/client-modules/commit/2048045c2710333a79b4b1f60a41d74128029cfd))
+
+
+
 ### [8.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.1.0...@codecademy/gamut-styles@8.1.1) (2021-02-23)
 
 

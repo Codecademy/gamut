@@ -1,6 +1,5 @@
 import { system } from '@codecademy/gamut-system';
-
-import { Theme } from './theme';
+import { Theme } from '@emotion/react';
 
 const {
   variant,
