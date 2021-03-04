@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-kit",
   "description": "Styleguide & Component library for Codecademy",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "repository": {
     "type": "git",
