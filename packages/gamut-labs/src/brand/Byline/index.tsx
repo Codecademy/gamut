@@ -43,7 +43,7 @@ export const Byline: React.FC<BylineProps> = ({
     </div>
     {location && (
       <FlexBox alignItems="center">
-        <LocationPinIcon size={12} color="black" />
+        <LocationPinIcon size={12} />
         <Box as="span" marginLeft={12}>
           {location}
         </Box>
