@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React, { forwardRef, TextareaHTMLAttributes } from 'react';
 
-import { errorStyle, formBaseFieldStyles } from './styles/shared';
+import { errorStyle, formFieldStyles } from './styles/shared';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
@@ -13,7 +13,7 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 };
 
 const StyledTextArea = styled.textarea`
-  ${formBaseFieldStyles}
+  ${formFieldStyles}
   ${errorStyle}
   position: initial;
 `;

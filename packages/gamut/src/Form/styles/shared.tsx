@@ -41,7 +41,6 @@ export const formBaseStyles = css`
 export const formBaseFieldStyles = css`
   ${formBaseStyles}
   width: 100%;
-  padding: ${pxRem(11)} ${theme.spacing[8]};
   outline: none;
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
@@ -69,4 +68,8 @@ export const formBaseFieldStyles = css`
     font-style: italic;
     cursor: not-allowed;
   }
+`;
+export const formFieldStyles = css`
+  ${formBaseFieldStyles}
+  padding: ${pxRem(11)} ${theme.spacing[8]};
 `;
