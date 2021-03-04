@@ -4,11 +4,7 @@ import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
-import {
-  errorStyle,
-  formBaseFieldStyles,
-  selectIconStyles,
-} from './styles/shared';
+import { errorStyle, formFieldStyles, selectIconStyles } from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -31,7 +27,7 @@ const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
 `;
 
 const SelectBase = styled.select<SelectProps>`
-  ${formBaseFieldStyles}
+  ${formFieldStyles}
   ${errorStyle}
   display: block;
   -moz-appearance: none;

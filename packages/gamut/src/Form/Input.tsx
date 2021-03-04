@@ -5,7 +5,12 @@ import styled from '@emotion/styled';
 import React, { ComponentType, forwardRef, InputHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
-import { errorStyle, formBaseFieldStyles, iconStyles } from './styles/shared';
+import {
+  errorStyle,
+  formBaseFieldStyles,
+  formFieldStyles,
+  iconStyles,
+} from './styles/shared';
 
 export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -40,7 +45,7 @@ export const ReactRecurlyStyles = (props: any) => css`
 `;
 
 const InputElement = styled.input<InputProps>`
-  ${formBaseFieldStyles}
+  ${formFieldStyles}
   ${errorStyle}
   box-sizing: border-box;
   text-indent: 0;

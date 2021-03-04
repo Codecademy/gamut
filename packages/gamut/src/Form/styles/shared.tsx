@@ -69,6 +69,7 @@ export const formBaseFieldStyles = css`
     cursor: not-allowed;
   }
 `;
+
 export const formFieldStyles = css`
   ${formBaseFieldStyles}
   padding: ${pxRem(11)} ${theme.spacing[8]};
