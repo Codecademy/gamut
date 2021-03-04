@@ -1,7 +1,6 @@
 import { FormGroup, Input } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
-
 import { PropsTable } from '~styleguide/blocks';
 
 <Meta
@@ -106,70 +105,31 @@ import { PropsTable } from '~styleguide/blocks';
   </Story>
 </Canvas>
 
-### HOC Input
+### iFrame Inputs
 
-This can also be used as a higher-order [component](https://reactjs.org/docs/higher-order-components.html) to style inputs with unique behavior.
+sometime you gotta use iframes. it's okay, we understand. and we have styles for it! in order to use them, you need to do something like this:
 
-<Canvas>
-  <Story
-    name="Higher Order Component"
-    args={{
-      htmlFor: 'exampleHOC',
-      name: 'exampleHOC',
-      defaultValue: undefined,
-    }}
-  >
-    {(args) => (
-      <Input verified {...args}>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="HOC"
-          onClick={() => {}}
-          readOnly
-        />
-      </Input>
-    )}
-  </Story>
-  <Story
-    name="Higher Order Component Error"
-    args={{
-      htmlFor: 'exampleHOCError',
-      name: 'exampleHOCError',
-      defaultValue: 'Something incorrect you typed',
-    }}
-  >
-    {(args) => (
-      <Input error {...args}>
-        <input
-          type="text"
-          id="form-Input"
-          name="form-Input"
-          onClick={() => {}}
-        />
-      </Input>
-    )}
-  </Story>
-  <Story
-    name="Higher Order Component FormGroup"
-    args={{
-      htmlFor: 'exampleHOCComp',
-      name: 'exampleHOCComp',
-      defaultValue: 'Something',
-    }}
-  >
-    {(args) => (
-      <FormGroup label="An errored form group" error="this is not updog">
-        <Input error {...args}>
-          <input
-            type="text"
-            id="form-LabelGroup"
-            name="form-LabelGroup"
-            onClick={() => {}}
-          />
-        </Input>
-      </FormGroup>
-    )}
-  </Story>
-</Canvas>
+```tsx
+import { Input, ReactRecurlyStyles } from '@codecademy/gamut';
+import styled from '@emotion/styled';
+import { GnarlyiFrame } from './constants';
+
+const StylediFrame = styled(GnarlyiFrame)`
+  ${ReactRecurlyStyles}
+`;
+
+export const SomeWrapper: React.FC = ({ props }) => {
+  return (
+    <>
+      <Input
+        component={StylediFrame}
+        onChange={() => {}}
+        onBlur={() => {}}
+        placeholder="Placeholder"
+      />
+    </>
+  );
+};
+```
+
+better copy tbd.
