@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.0.0...@codecademy/styleguide@30.0.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.7.0...@codecademy/styleguide@30.0.0) (2021-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** New Visual Identity Alert [GM-119]
+
+### Features
+
+* **Alert:** New Visual Identity Alert [GM-119] ([c170e6f](https://github.com/Codecademy/client-modules/commit/c170e6ff3e78327ccc6f4875940ea19e26dd65b9))
+
+
+
+## [29.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.9...@codecademy/styleguide@29.7.0) (2021-03-04)
+
+
+### Features
+
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([f4fd13c](https://github.com/Codecademy/client-modules/commit/f4fd13ce04762f75517117372c76d189ee0f0b99))
+
+
+
+### [29.6.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.8...@codecademy/styleguide@29.6.9) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.7...@codecademy/styleguide@29.6.8) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [29.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.6...@codecademy/styleguide@29.6.7) (2021-03-04)
 
 **Note:** Version bump only for package @codecademy/styleguide
