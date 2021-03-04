@@ -12,7 +12,6 @@ const contentContainerVariants = variant({
     },
     wide: {
       paddingX: [, , 24, 32],
-      maxWidth: 0,
     },
   },
 });
