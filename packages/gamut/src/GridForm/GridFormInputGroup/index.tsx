@@ -5,6 +5,7 @@ import { UseFormMethods } from 'react-hook-form';
 import { FormError, FormGroup, FormGroupLabel } from '../../Form';
 import { HiddenText } from '../../HiddenText';
 import { Column } from '../../Layout';
+import { ToolTip, ToolTipProps } from '../../ToolTip';
 import { GridFormField } from '../types';
 import { GridFormCheckboxInput } from './GridFormCheckboxInput';
 import { GridFormCustomInput } from './GridFormCustomInput';
@@ -20,6 +21,7 @@ export type GridFormInputGroupProps = {
   field: GridFormField;
   register: UseFormMethods['register'];
   setValue: (value: any) => void;
+  tooltip?: ToolTipProps;
 };
 
 const StyledFormGroup = styled(FormGroup)`
@@ -123,6 +125,17 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = (
           <FormError aria-live={props.isFirstError ? 'assertive' : 'off'}>
             {props.error}
           </FormError>
+        )}
+        {props.tooltip && (
+          <ToolTip
+            focusable
+            position={props.tooltip.position}
+            target={props.tooltip.target}
+            id={props.tooltip.id}
+            theme={props.tooltip.theme}
+          >
+            {props.tooltip.children}
+          </ToolTip>
         )}
         {getInput()}
       </StyledFormGroup>
