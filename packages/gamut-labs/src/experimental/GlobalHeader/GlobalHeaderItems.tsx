@@ -224,7 +224,7 @@ const profileMyHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-const profileBusiness: AppHeaderLinkItem = {
+const profileBusinessAccount: AppHeaderLinkItem = {
   id: 'business',
   icon: PieLineGraphIcon,
   href: '/business/plans',
@@ -277,35 +277,53 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
-  return {
-    avatar: user.avatar,
-    userDisplayName: user.displayName,
-    id: 'profile',
-    text: 'Profile',
-    popover: [
-      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
-      [profileLogOut],
-    ],
-    trackingTarget: 'topnav_profile',
-    type: 'profile-dropdown',
-  };
-};
-
-export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
   const popover = [];
   popover.push([
     profileMyProfile,
     profileAccount,
     profileMyHome,
-    profileBusiness,
+    profileHelpCenter,
+  ]);
+
+  !isMobile && user.isAccountManager && popover.push([profileBusinessAccount]);
+  popover.push([profileLogOut]);
+
+  return {
+    avatar: user.avatar,
+    userDisplayName: user.displayName,
+    id: 'profile',
+    text: 'Profile',
+    popover,
+    trackingTarget: 'topnav_profile',
+    type: 'profile-dropdown',
+  };
+};
+
+export const proProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const popover = [];
+  popover.push([
+    profileMyProfile,
+    profileAccount,
+    profileMyHome,
     profileHelpCenter,
   ]);
 
   const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin);
+  user.isAdmin && adminSection.push(profileAdmin, profileBusinessAccount);
   user.isCustomerSupport && adminSection.push(profileCustomerSupport);
   user.isAdmin && adminSection.push(profileReportBug);
+
+  !isMobile &&
+    user.isAccountManager &&
+    adminSection.push(profileBusinessAccount);
+
   popover.push(adminSection);
 
   popover.push([profileLogOut]);
