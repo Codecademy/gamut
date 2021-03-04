@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [25.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.0...@codecademy/gamut@25.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.4...@codecademy/gamut@25.5.0) (2021-03-04)
+
+
+### Features
+
+* **StackingContext:** Adds consistent reset for root nodes [WEB-1329] ([c107fec](https://github.com/Codecademy/client-modules/commit/c107fec7ab2e57e5d706d25f2ff22caaab05a297))
+
+
+
 ### [25.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.3...@codecademy/gamut@25.4.4) (2021-03-04)
 
 **Note:** Version bump only for package @codecademy/gamut

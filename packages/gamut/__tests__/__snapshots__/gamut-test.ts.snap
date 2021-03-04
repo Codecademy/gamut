@@ -9,6 +9,7 @@ Array [
   "Anchor",
   "AppBar",
   "AppBarSection",
+  "AppWrapper",
   "Badge",
   "Banner",
   "BannerType",
