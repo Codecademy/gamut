@@ -37,6 +37,7 @@ export const formBaseFieldStyles = css`
   ${formBaseStyles}
   width: 100%;
   outline: none;
+  background-color: ${theme.colors.white};
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
@@ -57,6 +58,7 @@ export const formBaseFieldStyles = css`
   }
 
   &:disabled {
+    opacity: 1;
     background-color: ${theme.colors[`gray-100`]};
     border-color: ${theme.colors[`gray-500`]};
     color: ${theme.colors[`gray-500`]};

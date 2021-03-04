@@ -17,12 +17,12 @@ const SelectWrapper = styled(Box)`
   position: relative;
   width: 100%;
   font-weight: normal;
-  min-width: 100px;
+  min-width: 110px;
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
   ${iconStyles}
-  color: ${({ theme }) => theme.colors['blue-900']};
+  color: currentColor;
 `;
 
 const SelectBase = styled.select<SelectProps>`
