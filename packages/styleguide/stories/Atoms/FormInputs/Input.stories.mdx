@@ -103,6 +103,34 @@ import { PropsTable } from '~styleguide/blocks';
   >
     {(args) => <Input {...args} />}
   </Story>
+  <Story
+    name="Disabled"
+    args={{
+      htmlFor: 'example-disabled',
+      name: 'example-disabled',
+      placeholder: 'Disabled',
+      disabled: true,
+      defaultValue: undefined,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
+</Canvas>
+
+### Form Groups + Inputs
+
+<Canvas>
+  <Story
+    name="FormExmaples"
+    args={{
+      htmlFor: 'example-123',
+      defaultValue: '123',
+      name: 'example-123',
+      error: true,
+    }}
+  >
+    {(args) => <Input {...args} />}
+  </Story>
 </Canvas>
 
 ### iFrame Inputs

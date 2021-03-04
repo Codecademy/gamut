@@ -1,4 +1,4 @@
-import { theme } from '@codecademy/gamut-styles';
+import { theme, variant } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { HTMLAttributes } from 'react';
@@ -10,11 +10,27 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
     disabled?: boolean;
     htmlFor?: string;
     required?: boolean;
+    size?: 'small' | 'large';
   };
 
 type disabledLabelStyleProps = {
   disabled?: boolean;
 };
+
+const labelSizeVariants = variant({
+  default: 'small',
+  prop: 'size',
+  variants: {
+    small: {
+      lineHeight: 'title',
+    },
+    large: {
+      fontSize: 22,
+      lineHeight: 'base',
+      fontWeight: 'title',
+    },
+  },
+});
 
 const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   if (disabled) {
@@ -26,19 +42,20 @@ const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
 
 const formLabelStyles = css`
   display: block;
-  line-height: ${theme.spacing[24]};
 `;
 
 const StyledLabel = styled.label<FormGroupLabelProps>`
   ${formBaseStyles}
   ${formLabelStyles}
   ${disabledLabelStyle}
+    ${labelSizeVariants}
 `;
 
 const StyledDiv = styled.div<FormGroupLabelProps>`
   ${formBaseStyles}
   ${formLabelStyles}
   ${disabledLabelStyle}
+    ${labelSizeVariants}
 `;
 
 export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
@@ -47,6 +64,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   disabled,
   htmlFor,
   required,
+  size,
   ...rest
 }) => {
   if (htmlFor) {
@@ -56,6 +74,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         htmlFor={htmlFor}
         disabled={disabled}
         className={className}
+        size={size}
       >
         {children}
         {required ? ' *' : ''}
@@ -64,7 +83,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   }
 
   return (
-    <StyledDiv {...rest} disabled={disabled} className={className}>
+    <StyledDiv {...rest} disabled={disabled} className={className} size={size}>
       {children}
       {required ? ' *' : ''}
     </StyledDiv>
