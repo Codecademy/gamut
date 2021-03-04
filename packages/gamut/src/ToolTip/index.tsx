@@ -24,6 +24,7 @@ export type ToolTipProps = {
   theme?: VisualTheme;
   tipClassName?: string;
   wrapperClassName?: string;
+  size?: number;
 };
 
 export const ToolTip: React.FC<ToolTipProps> = ({
