@@ -34,7 +34,6 @@ export type InputWrapperProps = InputProps & {
 
 const inputIconStyles = css`
   ${iconStyles}
-  top: calc(50% - (${pxRem(8)} + ${theme.spacing[4]}));
 `;
 
 export const ReactRecurlyStyles = (props: any) => css`

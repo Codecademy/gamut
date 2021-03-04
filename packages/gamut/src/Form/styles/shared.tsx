@@ -25,13 +25,8 @@ export const iconStyles = css`
   height: 16px;
   width: 16px;
   pointer-events: none;
-`;
-
-export const selectIconStyles = css`
-  ${iconStyles}
   top: calc(50% - ${pxRem(8)});
 `;
-
 export const formBaseStyles = css`
   color: ${theme.colors.navy};
   font-weight: normal;
@@ -44,7 +39,7 @@ export const formBaseFieldStyles = css`
   outline: none;
   border: 1px solid ${theme.colors[`blue-900`]};
   border-radius: 2px;
-  transition: ${theme.colors[`blue-900`]} 0.15s;
+  transition: all 0.2s ease-in-out;
   padding-right: 2.5rem;
   min-width: auto;
 

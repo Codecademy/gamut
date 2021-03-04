@@ -4,7 +4,7 @@ import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
-import { errorStyle, formFieldStyles, selectIconStyles } from './styles/shared';
+import { errorStyle, formFieldStyles, iconStyles } from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
@@ -21,9 +21,8 @@ const SelectWrapper = styled(Box)`
 `;
 
 const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
-  ${selectIconStyles}
+  ${iconStyles}
   color: ${({ theme }) => theme.colors['blue-900']};
-  pointer-events: none;
 `;
 
 const SelectBase = styled.select<SelectProps>`
