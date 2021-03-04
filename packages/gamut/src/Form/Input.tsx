@@ -24,7 +24,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> &
   InputComponentProps;
 
 export type InputWrapperProps = InputProps & {
-  component: ComponentType<any>;
+  component?: ComponentType<any>;
 };
 
 const inputIconStyles = css`
