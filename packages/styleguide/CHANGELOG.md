@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.0...@codecademy/styleguide@30.1.1) (2021-03-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.0.1...@codecademy/styleguide@30.1.0) (2021-03-05)
+
+
+### Features
+
+* **HubCard:** Created a new hub page card component ([794f369](https://github.com/Codecademy/client-modules/commit/794f369431b1c68191b76b771138275c710997f3))
+
+
+
+### [30.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.0.0...@codecademy/styleguide@30.0.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [30.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.7.0...@codecademy/styleguide@30.0.0) (2021-03-04)
 
 

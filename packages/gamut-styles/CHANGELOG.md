@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [8.3.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.3.0...@codecademy/gamut-styles@8.3.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* **styles:** Run emotion plugin ([c79b818](https://github.com/Codecademy/client-modules/commit/c79b818865a6ce370393543863ccbdf3cb46f5b7))
+
+
+
 ## [8.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-styles@8.2.2...@codecademy/gamut-styles@8.3.0) (2021-03-04)
 
 

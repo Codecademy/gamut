@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [10.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.5.0...@codecademy/gamut-labs@10.5.1) (2021-03-05)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [10.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.6...@codecademy/gamut-labs@10.5.0) (2021-03-05)
+
+
+### Features
+
+* **HubCard:** Created a new hub page card component ([794f369](https://github.com/Codecademy/client-modules/commit/794f369431b1c68191b76b771138275c710997f3))
+
+
+
+### [10.4.6](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.5...@codecademy/gamut-labs@10.4.6) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
 ### [10.4.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.4.4...@codecademy/gamut-labs@10.4.5) (2021-03-04)
 
 **Note:** Version bump only for package @codecademy/gamut-labs
