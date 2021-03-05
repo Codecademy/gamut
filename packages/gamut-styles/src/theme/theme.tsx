@@ -1,4 +1,4 @@
-import * as tokens from './variables';
+import * as tokens from '../variables';
 
 export const theme = {
   boxShadows: tokens.boxShadows,
@@ -9,8 +9,5 @@ export const theme = {
   fontWeight: tokens.fontWeight,
   colors: tokens.colors,
   spacing: tokens.spacing,
+  elements: tokens.elements,
 } as const;
-
-export type ThemeShape = typeof theme;
-
-export interface Theme extends ThemeShape {}
