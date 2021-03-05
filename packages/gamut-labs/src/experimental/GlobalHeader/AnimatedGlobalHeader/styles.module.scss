@@ -15,16 +15,28 @@
   width: 100%;
 }
 
-.transitionVisible {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s, opacity 0.5s linear;
+.transitionSlideDown {
+  transform: translateY(0);
+  transition: transform 0.15s ease-in-out;
+
+  // margin-top: 0;
+  // transition: margin-top 0.15s ease-in-out;
+
+  // visibility: visible;
+  // opacity: 1;
+  // transition: visibility 0s, opacity 0.5s linear;
 }
 
-.transitionHidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s, opacity 0.5s linear;
+.transitionSlideUp {
+  transform: translateY(-100%);
+  transition: transform 0.15s ease-in-out;
+
+  // margin-top: -80px;
+  // transition: margin-top 0.15s ease-in-out;
+
+  // visibility: hidden;
+  // opacity: 0;
+  // transition: visibility 0s, opacity 0.5s linear;
 }
 
 .transitionFadeOut {

@@ -1,7 +1,13 @@
 import { BodyPortal, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import FocusTrap from 'focus-trap-react';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 type StyleProps = {
@@ -150,13 +156,16 @@ export const Popover: React.FC<PopoverProps> = ({
     };
   }, [targetRect, verticalOffset, horizontalOffset, align, position]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTargetRect(targetRef?.current?.getBoundingClientRect());
+    if (targetRef?.current?.innerText === 'Resources')
+      console.log('set the target rect, here is top: ', targetRect?.top);
   }, [targetRef, isOpen, width, height, x, y]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    let inView;
     if (targetRect) {
-      const inView =
+      inView =
         targetRect.top >= 0 &&
         targetRect.left >= 0 &&
         targetRect.bottom <=
@@ -164,9 +173,11 @@ export const Popover: React.FC<PopoverProps> = ({
         targetRect.right <=
           (window.innerWidth || document.documentElement.clientWidth);
       setIsInViewport(inView);
+      if (targetRef?.current?.innerText === 'Resources')
+        console.log('set isInViewport: ', inView);
     }
-    if (!isInViewport) onRequestClose?.();
-  }, [targetRect, isInViewport, onRequestClose]);
+    if (!inView) onRequestClose?.(); // when inView === false, popover is closed
+  }, [targetRect, onRequestClose]);
 
   const popoverRef = useRef<HTMLDivElement>(null);
 

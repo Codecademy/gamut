@@ -305,3 +305,43 @@ A version of the header with just the logo, for use when data has not been fetch
     {(args) => <GlobalHeader action={() => {}} type="loading" />}
   </Story>
 </Canvas>
+
+### GlobalHeader With Animations
+
+<Canvas>
+  <Story name="GlobalHeader With Animations">
+    {(args) => (
+      <Box backgroundColor="beige" minHeight={4000}>
+        <GlobalHeader
+          action={() => {}}
+          animated
+          renderNotifications={{
+            desktop: () => <IconButton icon={BellIcon} />,
+            mobile: () => <IconButton icon={BellIcon} />,
+          }}
+          renderSearch={{
+            desktop: () => <IconButton icon={SearchIcon} />,
+            mobile: () => (
+              <Box
+                borderColor="navy"
+                borderStyle="solid"
+                borderWidth="1px"
+                padding={8}
+              >
+                Mobile Search Bar [Placeholder]
+              </Box>
+            ),
+          }}
+          type="pro"
+          user={{
+            avatar:
+              'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+            displayName: 'Codey',
+          }}
+        />
+        <IconButton icon={BellIcon} />
+        <IconButton icon={BellIcon} />
+      </Box>
+    )}
+  </Story>
+</Canvas>
