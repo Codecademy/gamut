@@ -31,9 +31,6 @@ export type GlobalHeaderProps =
   | ProHeader
   | LoadingHeader;
 
-export const desktopHeight = 80;
-export const mobileHeight = 64;
-
 const getAppHeaderItems = (
   props: GlobalHeaderProps
 ): FormattedAppHeaderItems => {
