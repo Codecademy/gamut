@@ -4,7 +4,34 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { examples } from './NotificationList.stories.mdx';
+export const notificationList = [
+  {
+    campaign: 'python-livestream',
+    date: '5 minutes',
+    type: 'curriculum_blast',
+    id: 'abc',
+    link:
+      'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
+    text: 'Check out our Python livestream!',
+    unread: true,
+  },
+  {
+    campaign: 'pro-trial',
+    type: 'marketing_update',
+    date: '3 hours',
+    id: '123',
+    text:
+      "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+  },
+  {
+    campaign: 'other-notification',
+    date: '2 days',
+    id: '1234',
+    link: 'http://google.com',
+    imageUrl: 'https://bit.ly/2Ckp4eW',
+    text: 'notiifcation with img url provided',
+  },
+];
 
 <Meta
   title={title}
@@ -16,7 +43,7 @@ import { examples } from './NotificationList.stories.mdx';
     figmaId: '',
   }}
   args={{
-    notifications: examples,
+    notifications: notificationList,
     onDismiss: () => {
       // eslint-disable-next-line no-console
       console.log('delete notification');
