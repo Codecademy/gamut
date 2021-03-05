@@ -19,14 +19,20 @@ export const errorStyle = ({ error }: errorStateProps) => {
   return errorStyle;
 };
 
-export const iconStyles = css`
+export const iconBaseStyles = css`
   position: absolute;
+  pointer-events: none;
+  color: currentColor;
+`;
+
+export const iconStyles = css`
+  ${iconBaseStyles}
   right: 16px;
   height: 16px;
   width: 16px;
-  pointer-events: none;
   top: calc(50% - ${pxRem(8)});
 `;
+
 export const formBaseStyles = css`
   color: ${theme.colors.navy};
   font-weight: normal;

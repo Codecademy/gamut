@@ -1,4 +1,8 @@
-import { ArrowChevronDownIcon } from '@codecademy/gamut-icons';
+import {
+  ArrowChevronDownIcon,
+  MiniChevronDownIcon,
+} from '@codecademy/gamut-icons';
+import { pxRem, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
 import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
@@ -11,7 +15,23 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
+  size?: 'small' | 'base';
 };
+
+const selectSizeVariants = variant({
+  default: 'base',
+  prop: 'size',
+  variants: {
+    small: {
+      height: '2rem',
+      paddingX: 8,
+      paddingY: 0,
+    },
+    base: {
+      height: 'auto',
+    },
+  },
+});
 
 const SelectWrapper = styled(Box)`
   position: relative;
@@ -20,14 +40,22 @@ const SelectWrapper = styled(Box)`
   min-width: 110px;
 `;
 
-const StyledChevronDownIcon = styled(ArrowChevronDownIcon)`
+const StyledDownIcon = styled(ArrowChevronDownIcon)`
   ${iconStyles}
-  color: currentColor;
+`;
+
+const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
+  ${iconStyles}
+  right: 12px;
+  height: 12px;
+  width: 12px;
+  top: calc(50% - ${pxRem(6)});
 `;
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
   ${errorStyle}
+  ${selectSizeVariants}
   display: block;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -35,10 +63,10 @@ const SelectBase = styled.select<SelectProps>`
 `;
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (props, ref) => {
-    const { className } = props;
-    const { options, error, id, ...rest } = props;
-
+  (
+    { className, defaultValue, options, error, id, htmlFor, size, ...rest },
+    ref
+  ) => {
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
@@ -63,13 +91,18 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <SelectWrapper className={className}>
-        <StyledChevronDownIcon color={error ? 'red' : undefined} />
+        {size === 'small' ? (
+          <StyledMiniDownIcon color={error ? 'red' : undefined} />
+        ) : (
+          <StyledDownIcon color={error ? 'red' : undefined} />
+        )}
         <SelectBase
           {...rest}
-          defaultValue={props.defaultValue || ''}
-          id={id || props.htmlFor}
+          defaultValue={defaultValue || ''}
+          id={id || htmlFor}
           ref={ref}
-          error={props.error}
+          error={error}
+          size={size}
         >
           {selectOptions}
         </SelectBase>
