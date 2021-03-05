@@ -21,8 +21,14 @@ import { PropsTable } from '~styleguide/blocks';
 
 <PropsTable story="FormGroupLabel" />
 
+### Label Variants
+
 <Canvas>
   <Story name="FormGroupLabelLarge">
+    {(args) => <FormGroupLabel size="large" {...args} />}
+  </Story>
+
+  <Story name="FormGroupLabelRequired">
     {(args) => <FormGroupLabel size="large" {...args} />}
   </Story>
 </Canvas>
