@@ -23,6 +23,9 @@ export const VENDOR_ICONS = pick(
     'FaviconIcon',
     'FaviconSolidIcon',
     'JavaIcon',
+    'AmexIcon',
+    'MastercardIcon',
+    'VisaIcon',
   ].sort()
 );
 
