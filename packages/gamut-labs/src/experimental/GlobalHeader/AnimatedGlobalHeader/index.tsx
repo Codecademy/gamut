@@ -1,34 +1,19 @@
 import { Box } from '@codecademy/gamut';
-import { theme } from '@codecademy/gamut-styles';
+import { useTheme } from '@emotion/react';
 import cx from 'classnames';
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
+import { useWindowScroll } from 'react-use';
 
 import { GlobalHeaderProps } from '..';
 import { BasicGlobalHeader } from '../BasicGlobalHeader';
 import styles from './styles.module.scss';
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const [isInHeaderRegion, setIsInHeaderRegion] = useState(true);
+  const { y } = useWindowScroll();
 
-  const handleScrolling = useCallback(() => {
-    const currentScrollPosition =
-      typeof window === 'undefined' ? 0 : window?.pageYOffset;
+  const isInHeaderRegion = y === 0;
 
-    currentScrollPosition === 0
-      ? setIsInHeaderRegion(true)
-      : setIsInHeaderRegion(false);
-  }, []);
-
-  useEffect(() => {
-    window?.addEventListener('scroll', handleScrolling, {
-      passive: true,
-    });
-
-    // returned function will be called on component unmount
-    return () => {
-      window?.removeEventListener('scroll', handleScrolling);
-    };
-  }, [handleScrolling]);
+  const theme = useTheme();
 
   return (
     <Box height={theme.elements.headerHeight}>
