@@ -1,5 +1,4 @@
-import { theme } from '@codecademy/gamut-styles';
-import { ThemeProvider } from '@emotion/react';
+import { GamutThemeProvider } from '@codecademy/gamut-styles';
 import {
   setupEnzyme as setupEnzymeBase,
   setupRtl as setupRtlBase,
@@ -13,9 +12,9 @@ function withThemeProvider<Props>(
   WrappedComponent: React.ComponentType<Props>
 ) {
   const WithBoundaryComponent: React.FC<Props> = (props) => (
-    <ThemeProvider theme={theme}>
+    <GamutThemeProvider>
       <WrappedComponent {...props} />
-    </ThemeProvider>
+    </GamutThemeProvider>
   );
 
   return WithBoundaryComponent;
