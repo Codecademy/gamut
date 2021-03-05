@@ -2,15 +2,15 @@
 
 .stickyHeader {
   border-bottom: 1px solid $color-navy;
-  background-color: $color-white;
+  background: $color-white;
   position: fixed;
   top: 0;
   z-index: 2;
   width: 100%;
+  transition: background 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
 }
 
 .transitionFadeOut {
   background: transparent;
   border-bottom: 1px solid transparent;
-  transition: background 0.5s ease-in-out, border-bottom 0.5s ease-in-out;
 }
