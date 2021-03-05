@@ -157,7 +157,7 @@ export const freeMobileHeaderItems = (
     communityDropdown,
     pricingDropdown,
     forBusiness,
-    freeProfile(user),
+    freeProfile(user, true),
     upgradeToPro,
   ];
 
@@ -206,7 +206,7 @@ export const proMobileHeaderItems = (
     courseCatalog,
     resourcesDropdown,
     communityDropdown,
-    proProfile(user),
+    proProfile(user, true),
   ];
 
   return {
