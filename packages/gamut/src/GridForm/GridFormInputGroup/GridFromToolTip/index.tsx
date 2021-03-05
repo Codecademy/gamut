@@ -11,11 +11,10 @@ export type GridFormToolTipProps = {
 
 const StyledToolTip = styled.span`
   position: relative;
-  right: 20px;
+  left: 95.76%;
   height: 16px;
   width: 16px;
-  bottom: 20px;
-  pointer-events: none;
+  bottom: 75px;
 `;
 
 export const GridFormToolTip: React.FC<GridFormToolTipProps> = ({
@@ -24,7 +23,10 @@ export const GridFormToolTip: React.FC<GridFormToolTipProps> = ({
   return (
     <StyledToolTip>
       <ToolTip
-        focusable
+        focusable={toolTip?.focusable}
+        wrapperClassName={toolTip?.wrapperClassName}
+        tipClassName={toolTip?.tipClassName}
+        theme={toolTip?.theme}
         position={toolTip?.position}
         target={<MiniInfoCircleIcon />}
         id={toolTip!.id}

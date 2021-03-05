@@ -13,7 +13,7 @@ import { GridFormRadioGroupInput } from './GridFormRadioGroupInput';
 import { GridFormSelectInput } from './GridFormSelectInput';
 import { GridFormTextArea } from './GridFormTextArea';
 import { GridFormTextInput } from './GridFormTextInput';
-import { GridFormToolTip } from './GridFromToolTip';
+import { GridFormToolTipWrapper } from './GridFormToolTipWrapper';
 
 export type GridFormInputGroupProps = {
   error?: string;
@@ -93,11 +93,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       default:
         return (
-          <GridFormTextInput
-            error={!!error}
-            field={field}
-            register={register}
-          />
+          <GridFormToolTipWrapper field={field}>
+            <GridFormTextInput
+              error={!!error}
+              field={field}
+              register={register}
+            />
+          </GridFormToolTipWrapper>
         );
     }
   };
