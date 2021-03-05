@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback } from 'react';
 import { FocusOn } from 'react-focus-on';
 
 import { BodyPortal } from '../BodyPortal';
