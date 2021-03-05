@@ -70,11 +70,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'select':
         return (
-          <GridFormSelectInput
-            error={!!error}
-            field={field}
-            register={register}
-          />
+          <GridFormToolTipWrapper field={field}>
+            <GridFormSelectInput
+              error={!!error}
+              field={field}
+              register={register}
+            />
+          </GridFormToolTipWrapper>
         );
 
       case 'file':

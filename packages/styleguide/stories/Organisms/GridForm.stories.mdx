@@ -503,38 +503,57 @@ With tooltip
             {
               toolTip: {
                 id: 'yolo',
+                theme: 'dark',
+                position: 'bottom-right',
+                children: 'fasdfas',
               },
-              label: 'Simple text',
-              name: 'simple-text',
-              size: 12,
-              type: 'text',
-            },
-          ]}
-          onSubmit={async (values) => {
-            action('Form Submitted')(values);
-          }}
-          submit={{
-            contents: 'Default Purple Submit!?',
-            size: 12,
-          }}
-        />
-        <GridForm
-          fields={[
-            {
-              toolTip: {
-                id: 'yolo',
-              },
-              label: 'Simple text',
-              name: 'simple-text',
+              label: 'Tool input',
+              name: 'tooltip-input',
               size: 6,
               type: 'text',
             },
+            {
+              toolTip: {
+                id: 'yolo',
+                theme: 'dark',
+                position: 'bottom-right',
+                children: 'fasdfas',
+              },
+              label: 'Select with tooltip',
+              name: 'tooltip-select',
+              options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
+              size: 5,
+              type: 'select',
+              validation: {
+                required: 'Please select an option',
+              },
+            },
+            {
+              label: 'Upload a cat image (we support pdf, jpeg, or png files)',
+              name: 'file-input',
+              size: 6,
+              type: 'file',
+              validation: {
+                required: true,
+                validate: (files) => {
+                  const { type } = files.item(0);
+                  const allowedTypes = [
+                    'application/pdf',
+                    'image/jpeg',
+                    'image/png',
+                  ];
+                  if (!allowedTypes.includes(type))
+                    return 'Please upload a pdf, jpeg, or png file.';
+                  return true;
+                },
+              },
+            },
           ]}
           onSubmit={async (values) => {
             action('Form Submitted')(values);
           }}
           submit={{
-            contents: 'Blue Submit!?',
+            contents: 'Submit',
             size: 12,
             theme: 'brand-blue',
           }}

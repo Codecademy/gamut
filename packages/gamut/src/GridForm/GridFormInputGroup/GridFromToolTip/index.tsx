@@ -12,8 +12,6 @@ export type GridFormToolTipProps = {
 const StyledToolTip = styled.span`
   position: relative;
   left: 95.76%;
-  height: 16px;
-  width: 16px;
   bottom: 75px;
 `;
 
