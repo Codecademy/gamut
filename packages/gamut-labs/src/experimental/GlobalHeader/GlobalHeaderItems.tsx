@@ -281,16 +281,13 @@ export const freeProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileHelpCenter,
-  ]);
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  !isMobile && user.isAccountManager && topSection.push(profileBusinessAccount);
+  topSection.push(profileHelpCenter);
 
-  !isMobile && user.isAccountManager && popover.push([profileBusinessAccount]);
-  popover.push([profileLogOut]);
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, bottomSection];
 
   return {
     avatar: user.avatar,
@@ -307,26 +304,19 @@ export const proProfile = (
   user: User,
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileHelpCenter,
-  ]);
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  !isMobile && user.isAccountManager && topSection.push(profileBusinessAccount);
+  topSection.push(profileHelpCenter);
 
-  const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin, profileBusinessAccount);
-  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
-  user.isAdmin && adminSection.push(profileReportBug);
+  const middleSection = [];
+  user.isAdmin && middleSection.push(profileAdmin, profileBusinessAccount);
+  user.isCustomerSupport && middleSection.push(profileCustomerSupport);
+  user.isAdmin && middleSection.push(profileReportBug);
 
-  !isMobile &&
-    user.isAccountManager &&
-    adminSection.push(profileBusinessAccount);
+  const bottomSection = [profileLogOut];
 
-  popover.push(adminSection);
+  const popover = [topSection, middleSection, bottomSection];
 
-  popover.push([profileLogOut]);
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
