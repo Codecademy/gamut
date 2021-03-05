@@ -19,6 +19,7 @@ export type User = {
   displayName: string;
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
+  isAccountManager?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
