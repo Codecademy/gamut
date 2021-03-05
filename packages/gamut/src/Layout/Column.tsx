@@ -16,7 +16,6 @@ const columns = {
   9: 9,
   10: 10,
   11: 11,
-  12: 12,
 };
 
 const columnProps = props.create({
@@ -28,12 +27,12 @@ const columnProps = props.create({
   },
   size: {
     property: 'gridColumnEnd',
-    scale: columns,
+    scale: { ...columns, 12: 12 },
     transform: (col: number) => `span ${col}`,
   },
   offset: {
     property: 'gridColumnStart',
-    scale: columns,
+    scale: { 0: 0, ...columns },
     transform: (col: number) => (col === 0 ? 'auto' : `${col + 1}`),
   },
 });
