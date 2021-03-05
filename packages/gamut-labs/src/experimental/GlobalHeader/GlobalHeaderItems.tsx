@@ -282,7 +282,9 @@ export const freeProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  !isMobile && user.isAccountManager && topSection.push(profileBusinessAccount);
+  if (!isMobile && user.isAccountManager) {
+    topSection.push(profileBusinessAccount);
+  }
   topSection.push(profileHelpCenter);
 
   const bottomSection = [profileLogOut];
@@ -305,13 +307,18 @@ export const proProfile = (
   isMobile?: boolean
 ): AppHeaderProfileDropdownItem => {
   const topSection = [profileMyProfile, profileAccount, profileMyHome];
-  !isMobile && user.isAccountManager && topSection.push(profileBusinessAccount);
+  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+    topSection.push(profileBusinessAccount);
+  }
   topSection.push(profileHelpCenter);
 
   const middleSection = [];
-  user.isAdmin && middleSection.push(profileAdmin, profileBusinessAccount);
-  user.isCustomerSupport && middleSection.push(profileCustomerSupport);
-  user.isAdmin && middleSection.push(profileReportBug);
+  if (user.isCustomerSupport) {
+    middleSection.push(profileCustomerSupport);
+  }
+  if (user.isAdmin) {
+    middleSection.push(profileReportBug);
+  }
 
   const bottomSection = [profileLogOut];
 
