@@ -62,6 +62,15 @@ Every PR that changes files in a package publishes alpha releases that you can u
 
 ### Working with pre-published changes
 
+Due to the inconsistencies of `yarn link` and symlinks in general in a lerna repo, we recommend using the `npm-link-better` package instead of `yarn link`.
+
+To use it, follow these instructions:
+
+1. in the terminal, `cd` into the root directory of the application that uses gamut (or any other client-modules package)
+1. Run `npm-link-better` to link the package you're working on and start watching for changes
+1. `npx npm-link-better@0.6.0 --copy --watch ../client-modules/packages/gamut` (`../client-modules` or wherever your client-modules repo is)
+1. Make changes in the package client-modules repo and build the package, and you should see the changes reflected in your application
+
 For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
 symlinks (the following instructions assume you have set up and built client-modules):
 
