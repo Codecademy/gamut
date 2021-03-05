@@ -313,6 +313,9 @@ export const proProfile = (
   topSection.push(profileHelpCenter);
 
   const middleSection = [];
+  if (user.isAdmin) {
+    middleSection.push(profileAdmin);
+  }
   if (user.isCustomerSupport) {
     middleSection.push(profileCustomerSupport);
   }
