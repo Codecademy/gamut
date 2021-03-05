@@ -1,5 +1,6 @@
 export * from './Card';
 export * from './Coachmark';
+export * from './HubCard';
 export * from './Popover';
 export * from './Text';
 export * from './AppHeader';
@@ -12,3 +13,4 @@ export * from './AppHeaderMobile/AppHeaderLinkMobile';
 export * from './AppHeaderMobile/AppHeaderMainMenuMobile';
 export * from './AppHeaderMobile/AppHeaderSubMenuMobile';
 export * from './GlobalHeader';
+export { AnonHeaderVariant } from './GlobalHeader/types';

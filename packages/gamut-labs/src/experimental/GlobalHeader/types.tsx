@@ -19,6 +19,7 @@ export type User = {
   displayName: string;
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
+  isAccountManager?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
@@ -27,9 +28,11 @@ type LoggedInHeader = BaseHeader & {
   user: User;
 };
 
+export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
+
 export type AnonHeader = BaseHeader & {
   type: 'anon';
-  variant?: 'landing' | 'login' | 'signup';
+  variant?: AnonHeaderVariant;
 };
 
 export type FreeHeader = LoggedInHeader & {

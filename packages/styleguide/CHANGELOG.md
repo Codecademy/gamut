@@ -3,6 +3,135 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.1...@codecademy/styleguide@30.1.2) (2021-03-05)
+
+
+### Bug Fixes
+
+* **global header:** add support for user role "account manager" ([0cc5ac4](https://github.com/Codecademy/client-modules/commit/0cc5ac4440033dcbe3873658c00def16674fc4ea))
+
+
+
+### [30.1.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.0...@codecademy/styleguide@30.1.1) (2021-03-05)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.0.1...@codecademy/styleguide@30.1.0) (2021-03-05)
+
+
+### Features
+
+* **HubCard:** Created a new hub page card component ([794f369](https://github.com/Codecademy/client-modules/commit/794f369431b1c68191b76b771138275c710997f3))
+
+
+
+### [30.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.0.0...@codecademy/styleguide@30.0.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.7.0...@codecademy/styleguide@30.0.0) (2021-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** New Visual Identity Alert [GM-119]
+
+### Features
+
+* **Alert:** New Visual Identity Alert [GM-119] ([c170e6f](https://github.com/Codecademy/client-modules/commit/c170e6ff3e78327ccc6f4875940ea19e26dd65b9))
+
+
+
+## [29.7.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.9...@codecademy/styleguide@29.7.0) (2021-03-04)
+
+
+### Features
+
+* **ThemeProvider:**  Adds GamutThemeProvider component and initial Global styles ([f4fd13c](https://github.com/Codecademy/client-modules/commit/f4fd13ce04762f75517117372c76d189ee0f0b99))
+
+
+
+### [29.6.9](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.8...@codecademy/styleguide@29.6.9) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.8](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.7...@codecademy/styleguide@29.6.8) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.7](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.6...@codecademy/styleguide@29.6.7) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.6](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.5...@codecademy/styleguide@29.6.6) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.5](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.4...@codecademy/styleguide@29.6.5) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.4](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.3...@codecademy/styleguide@29.6.4) (2021-03-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.2...@codecademy/styleguide@29.6.3) (2021-03-03)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.1...@codecademy/styleguide@29.6.2) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+### [29.6.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.6.0...@codecademy/styleguide@29.6.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **Styleguide:** Fixes destructuring for argtype enhances ([98e0021](https://github.com/Codecademy/client-modules/commit/98e00212b522fed40342682ed412c4bb98d84eec))
+
+
+
 ## [29.6.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@29.5.4...@codecademy/styleguide@29.6.0) (2021-03-02)
 
 

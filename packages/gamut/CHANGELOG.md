@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [26.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.0.0...@codecademy/gamut@26.0.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [26.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.1...@codecademy/gamut@26.0.0) (2021-03-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Alert:** New Visual Identity Alert [GM-119]
+
+### Features
+
+* **Alert:** New Visual Identity Alert [GM-119] ([c170e6f](https://github.com/Codecademy/client-modules/commit/c170e6ff3e78327ccc6f4875940ea19e26dd65b9))
+
+
+
+### [25.5.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.5.0...@codecademy/gamut@25.5.1) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+## [25.5.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.4...@codecademy/gamut@25.5.0) (2021-03-04)
+
+
+### Features
+
+* **StackingContext:** Adds consistent reset for root nodes [WEB-1329] ([c107fec](https://github.com/Codecademy/client-modules/commit/c107fec7ab2e57e5d706d25f2ff22caaab05a297))
+
+
+
+### [25.4.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.3...@codecademy/gamut@25.4.4) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.2...@codecademy/gamut@25.4.3) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.1...@codecademy/gamut@25.4.2) (2021-03-04)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
+### [25.4.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.4.0...@codecademy/gamut@25.4.1) (2021-03-02)
+
+**Note:** Version bump only for package @codecademy/gamut
+
+
+
+
+
 ## [25.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@25.3.6...@codecademy/gamut@25.4.0) (2021-03-02)
 
 

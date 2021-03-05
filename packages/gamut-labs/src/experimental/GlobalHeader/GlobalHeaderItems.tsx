@@ -43,6 +43,7 @@ export const proLogo: AppHeaderLogoItem = {
 
 export const myHome: AppHeaderLinkItem = {
   dataTestId: 'header-home',
+  dataIntellimizeId: 'header-home',
   icon: HouseEntranceIcon,
   id: 'my-home',
   text: 'My Home',
@@ -53,6 +54,7 @@ export const myHome: AppHeaderLinkItem = {
 
 export const courseCatalog: AppHeaderLinkItem = {
   dataTestId: 'header-catalog',
+  dataIntellimizeId: 'header-catalog',
   icon: BookFlipPageIcon,
   id: 'course-catalog',
   text: 'Catalog',
@@ -168,6 +170,7 @@ export const pricingDropdown: AppHeaderSimpleDropdownItem = {
 export const forBusiness: AppHeaderLinkItem = {
   icon: BriefcaseIcon,
   id: 'for-business',
+  dataIntellimizeId: 'header-business',
   trackingTarget: 'topnav_business',
   text: 'For Business',
   href: '/business',
@@ -221,7 +224,7 @@ const profileMyHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-const profileBusiness: AppHeaderLinkItem = {
+const profileBusinessAccount: AppHeaderLinkItem = {
   id: 'business',
   icon: PieLineGraphIcon,
   href: '/business/plans',
@@ -242,6 +245,7 @@ const profileHelpCenter: AppHeaderLinkItem = {
 
 const profileAdmin: AppHeaderLinkItem = {
   id: 'admin',
+  dataTestId: 'admin-link',
   href: '/admin',
   trackingTarget: 'avatar_admin',
   text: 'Admin',
@@ -273,38 +277,56 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && user.isAccountManager) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
+
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, bottomSection];
+
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
-    popover: [
-      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
-      [profileLogOut],
-    ],
+    popover,
     trackingTarget: 'topnav_profile',
     type: 'profile-dropdown',
   };
 };
 
-export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileBusiness,
-    profileHelpCenter,
-  ]);
+export const proProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
 
-  const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin);
-  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
-  user.isAdmin && adminSection.push(profileReportBug);
-  popover.push(adminSection);
+  const middleSection = [];
+  if (user.isAdmin) {
+    middleSection.push(profileAdmin);
+  }
+  if (user.isCustomerSupport) {
+    middleSection.push(profileCustomerSupport);
+  }
+  if (user.isAdmin) {
+    middleSection.push(profileReportBug);
+  }
 
-  popover.push([profileLogOut]);
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, middleSection, bottomSection];
+
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
