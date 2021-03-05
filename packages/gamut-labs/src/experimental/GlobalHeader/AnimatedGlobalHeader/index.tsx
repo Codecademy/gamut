@@ -1,14 +1,10 @@
 import { Box } from '@codecademy/gamut';
+import { theme } from '@codecademy/gamut-styles';
 import cx from 'classnames';
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { useBreakpointAtOrAbove } from '../../../lib/breakpointHooks';
 import { GlobalHeaderProps } from '..';
-import {
-  BasicGlobalHeader,
-  desktopHeight,
-  mobileHeight,
-} from '../BasicGlobalHeader';
+import { BasicGlobalHeader } from '../BasicGlobalHeader';
 import styles from './styles.module.scss';
 
 const defaultScrollingState = {
@@ -20,8 +16,6 @@ const defaultScrollingState = {
 };
 
 export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
-  const isDesktop = useBreakpointAtOrAbove('md');
-
   const [scrollingState, setScrollingState] = useState(defaultScrollingState);
 
   const {
@@ -64,7 +58,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         isScrollingDownFromHeaderRegion: true,
       }));
     } else if (
-      currentScrollPosition < (isDesktop ? desktopHeight : mobileHeight)
+      currentScrollPosition < parseInt(theme.elements.headerHeight, 10)
     ) {
       setScrollingState((prevState) => ({
         ...prevState,
@@ -80,7 +74,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           prevState.isScrollingDownFromHeaderRegion,
       }));
     }
-  }, [prevScrollPosition, isDesktop]);
+  }, [prevScrollPosition]);
 
   useEffect(() => {
     window?.addEventListener('scroll', handleScrolling, {
@@ -94,7 +88,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
   }, [handleScrolling]);
 
   return (
-    <Box height={{ base: `${mobileHeight}`, md: `${desktopHeight}` }}>
+    <Box height={theme.elements.headerHeight}>
       <BasicGlobalHeader
         className={cx(
           isInsideHeaderRegion && isScrollingDownFromHeaderRegion

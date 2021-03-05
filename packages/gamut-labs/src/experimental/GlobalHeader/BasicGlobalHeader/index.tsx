@@ -101,14 +101,14 @@ export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
     <>
       <Box
         display={{ base: 'none', md: 'block' }}
-        height={`${desktopHeight}`}
+        height="80"
         className={props.animated ? props.className : undefined}
       >
         <AppHeader action={props.action} items={getAppHeaderItems(props)} />
       </Box>
       <Box
         display={{ base: 'block', md: 'none' }}
-        height={`${mobileHeight}`}
+        height="64"
         className={props.animated ? props.className : undefined}
       >
         <AppHeaderMobile
