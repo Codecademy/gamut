@@ -10,9 +10,9 @@ export type GridFormToolTipProps = {
 };
 
 const StyledToolTip = styled.span`
-  position: relative;
-  left: 95.76%;
-  bottom: 75px;
+  position: absolute;
+  left: calc(100% - 1.5rem);
+  bottom: 50px;
 `;
 
 export const GridFormToolTip: React.FC<GridFormToolTipProps> = ({

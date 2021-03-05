@@ -1,4 +1,10 @@
-import { Column, GridForm, Input, LayoutGrid } from '@codecademy/gamut/src';
+import {
+  Column,
+  GridForm,
+  Input,
+  LayoutGrid,
+  Markdown,
+} from '@codecademy/gamut/src';
 import title from '@codecademy/macros/lib/title.macro';
 import { action } from '@storybook/addon-actions';
 import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
@@ -492,7 +498,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-With tooltip
+We can include the tooltip
 
 <Canvas>
   <Story name="Tooltip">
@@ -503,7 +509,6 @@ With tooltip
             {
               toolTip: {
                 id: 'yolo',
-                theme: 'dark',
                 position: 'bottom-right',
                 children: 'fasdfas',
               },
@@ -517,35 +522,17 @@ With tooltip
                 id: 'yolo',
                 theme: 'dark',
                 position: 'bottom-right',
-                children: 'fasdfas',
+                children: (
+                  <Markdown text="My grandmother used to tell me stories..." />
+                ),
               },
               label: 'Select with tooltip',
               name: 'tooltip-select',
               options: ['', 'Water', 'Earth', 'Fire', 'Air', 'Boomerang'],
-              size: 5,
+              size: 3,
               type: 'select',
               validation: {
                 required: 'Please select an option',
-              },
-            },
-            {
-              label: 'Upload a cat image (we support pdf, jpeg, or png files)',
-              name: 'file-input',
-              size: 6,
-              type: 'file',
-              validation: {
-                required: true,
-                validate: (files) => {
-                  const { type } = files.item(0);
-                  const allowedTypes = [
-                    'application/pdf',
-                    'image/jpeg',
-                    'image/png',
-                  ];
-                  if (!allowedTypes.includes(type))
-                    return 'Please upload a pdf, jpeg, or png file.';
-                  return true;
-                },
               },
             },
           ]}

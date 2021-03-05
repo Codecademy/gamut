@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import React from 'react';
 
 import { GridFormField } from '../../types';
@@ -7,15 +8,18 @@ export type GridForToolTipWrapper = {
   children: React.ReactNode;
   field: GridFormField;
 };
-
+const StyledWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
 export const GridFormToolTipWrapper: React.FC<GridForToolTipWrapper> = ({
   children,
   field,
 }) => {
   return (
-    <div>
+    <StyledWrapper>
       {children}
       {field.toolTip && <GridFormToolTip field={field} />}
-    </div>
+    </StyledWrapper>
   );
 };
