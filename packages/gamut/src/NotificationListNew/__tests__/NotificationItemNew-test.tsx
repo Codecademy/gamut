@@ -16,6 +16,7 @@ const linkedNotificationProps: NotificationItemNewProps = {
     date: '5 hours',
     link: linkHref,
     campaign: 'new campaign 1',
+    type: 'marketing_blast',
   },
   handleClick,
   handleDismiss,
@@ -27,8 +28,8 @@ const noLinkNotificationProps: NotificationItemNewProps = {
     id: '2',
     date: '3 days',
     campaign: 'new campaign 2',
+    type: 'curriculum_blast',
   },
-  handleClick,
   handleDismiss,
 };
 
@@ -58,6 +59,15 @@ describe('NotificationItemNew', () => {
     const { view } = renderNotificationItemWithNoLink();
     expect(view.queryByRole('link')).toBeFalsy();
   });
+
+  // fill in
+  it('renders the New icon for curriculum notifications', () => {});
+
+  it('renders the Megaphone icon for marketing notifications', () => {});
+
+  it('renders the default icon for notifications without type specified', () => {});
+
+  it('renders an image if image is provided', () => {});
 
   it('can be dismissed', () => {
     const { view } = renderNotificationItemWithNoLink();

@@ -31,7 +31,7 @@ const DateText = styled(Text)`
 
 export type NotificationItemNewProps = {
   notification: Notification;
-  handleClick: (event: object) => void; // will become tracking function
+  handleClick?: (event: object) => void;
   handleDismiss?: () => void;
 };
 
@@ -95,7 +95,7 @@ export const NotificationItemNew: React.FC<NotificationItemNewProps> = ({
           href={link}
           rel="noopener noreferrer"
           target="_blank"
-          onClick={(event) => handleClick(event)}
+          onClick={(event) => handleClick?.(event)}
         >
           {renderNotificationContent()}
         </StyledLink>
