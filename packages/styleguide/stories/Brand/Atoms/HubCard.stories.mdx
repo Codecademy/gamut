@@ -1,0 +1,37 @@
+import { HubCard } from '@codecademy/gamut-labs/src';
+import title from '@codecademy/macros/lib/title.macro';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
+
+import { PropsTable } from '~styleguide/blocks';
+
+<Meta
+  title={title}
+  component={HubCard}
+  args={{
+    title: 'Subject Title',
+    eyebrowTitle: 'Card Eyebrow',
+    backgroundPosition: 'left',
+    backgroundImage:
+      'https://static-assets.codecademy.com/assets/components/cards/explore-category-card/language/javascript.svg',
+  }}
+  parameters={{}}
+/>
+
+<Canvas>
+  <Story name="HubCard">{(args) => <HubCard {...args} />}</Story>
+</Canvas>
+
+<PropsTable story="HubCard" defaultGroups={['background']} />
+
+<Canvas>
+  <Story
+    name="Background Right"
+    args={{
+      backgroundImage:
+        'https://static-assets.codecademy.com/assets/components/cards/explore-category-card/subject/data-science.svg',
+      backgroundPosition: 'right',
+    }}
+  >
+    {(args) => <HubCard {...args} />}
+  </Story>
+</Canvas>
