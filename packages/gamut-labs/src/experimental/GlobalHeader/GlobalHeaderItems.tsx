@@ -224,7 +224,7 @@ const profileMyHome: AppHeaderLinkItem = {
   type: 'link',
 };
 
-const profileBusiness: AppHeaderLinkItem = {
+const profileBusinessAccount: AppHeaderLinkItem = {
   id: 'business',
   icon: PieLineGraphIcon,
   href: '/business/plans',
@@ -277,38 +277,56 @@ const profileLogOut: AppHeaderLinkItem = {
   type: 'link',
 };
 
-export const freeProfile = (user: User): AppHeaderProfileDropdownItem => {
+export const freeProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && user.isAccountManager) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
+
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, bottomSection];
+
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
     id: 'profile',
     text: 'Profile',
-    popover: [
-      [profileMyProfile, profileAccount, profileMyHome, profileHelpCenter],
-      [profileLogOut],
-    ],
+    popover,
     trackingTarget: 'topnav_profile',
     type: 'profile-dropdown',
   };
 };
 
-export const proProfile = (user: User): AppHeaderProfileDropdownItem => {
-  const popover = [];
-  popover.push([
-    profileMyProfile,
-    profileAccount,
-    profileMyHome,
-    profileBusiness,
-    profileHelpCenter,
-  ]);
+export const proProfile = (
+  user: User,
+  isMobile?: boolean
+): AppHeaderProfileDropdownItem => {
+  const topSection = [profileMyProfile, profileAccount, profileMyHome];
+  if (!isMobile && (user.isAccountManager || user.isAdmin)) {
+    topSection.push(profileBusinessAccount);
+  }
+  topSection.push(profileHelpCenter);
 
-  const adminSection = [];
-  user.isAdmin && adminSection.push(profileAdmin);
-  user.isCustomerSupport && adminSection.push(profileCustomerSupport);
-  user.isAdmin && adminSection.push(profileReportBug);
-  popover.push(adminSection);
+  const middleSection = [];
+  if (user.isAdmin) {
+    middleSection.push(profileAdmin);
+  }
+  if (user.isCustomerSupport) {
+    middleSection.push(profileCustomerSupport);
+  }
+  if (user.isAdmin) {
+    middleSection.push(profileReportBug);
+  }
 
-  popover.push([profileLogOut]);
+  const bottomSection = [profileLogOut];
+
+  const popover = [topSection, middleSection, bottomSection];
+
   return {
     avatar: user.avatar,
     userDisplayName: user.displayName,
