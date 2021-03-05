@@ -71,6 +71,11 @@ To use it, follow these instructions:
 1. `npx npm-link-better@0.6.0 --copy --watch ../client-modules/packages/gamut` (`../client-modules` or wherever your client-modules repo is)
 1. Make changes in the package client-modules repo and build the package, and you should see the changes reflected in your application
 
+To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`. Similar watch scripts exist in the other packages, but if not feel free to add one!
+
+<details>
+  <summary>Instructions for using `yarn link` instead (not recommended)</summary>
+  
 For quicker development cycles, it's possible to run a pre-published version of Gamut in another project. We do that using
 symlinks (the following instructions assume you have set up and built client-modules):
 
@@ -91,9 +96,8 @@ If your other project uses React, you must link that copy of React in Gamut:
 
 [See the docs](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react)
 for more information for why you have to do this.
-
-To run a watcher and build Gamut on changes, in `client_modules/packages/gamut` use `yarn build:watch`
-
+</details>
+  
 #### Troubleshooting
 
 If you run into compilation issues after linking, try `yarn install` in your other project and restarting its dev server
