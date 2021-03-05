@@ -34,8 +34,6 @@ export const Overlay: React.FC<OverlayProps> = ({
   onRequestClose,
   isOpen,
 }) => {
-  const overlayRef = useRef<HTMLDivElement>(null);
-
   const handleOutsideClick = useCallback(() => {
     clickOutsideCloses && onRequestClose();
   }, [clickOutsideCloses, onRequestClose]);
@@ -58,7 +56,6 @@ export const Overlay: React.FC<OverlayProps> = ({
         right="0"
         top="0"
         className={className}
-        ref={overlayRef}
       >
         <FocusOn
           enabled={isOpen}
