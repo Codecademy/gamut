@@ -1,7 +1,5 @@
 import { system } from '@codecademy/gamut-system';
-import isPropValid from '@emotion/is-prop-valid';
-
-import { Theme } from './theme';
+import { Theme } from '@emotion/react';
 
 const {
   variant,
@@ -71,16 +69,6 @@ const {
   },
 });
 
-const allProps = Object.keys(properties).reduce<string[]>(
-  (carry, prop: keyof typeof properties) => {
-    return [...carry, ...properties[prop].propNames];
-  },
-  []
-);
-
-const shouldForwardProp = (prop: string) =>
-  isPropValid(prop) && !allProps.includes(prop);
-
 export {
   variant,
   properties,
@@ -94,5 +82,4 @@ export {
   shadow,
   space,
   border,
-  shouldForwardProp,
 };
