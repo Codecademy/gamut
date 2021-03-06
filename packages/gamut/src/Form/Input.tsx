@@ -21,7 +21,7 @@ export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
   placeholder?: string;
   required?: boolean;
   type?: 'text' | 'number' | 'file';
-  verified?: boolean;
+  validated?: boolean;
 };
 
 export type InputProps = InputHTMLAttributes<HTMLInputElement> &
@@ -59,7 +59,7 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)`
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   (
-    { error, htmlFor, className, id, verified, component: Component, ...rest },
+    { error, htmlFor, className, id, validated, component: Component, ...rest },
     ref
   ) => {
     return (
@@ -82,7 +82,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           />
         )}
         {error && <StyledAlertIcon color="red" />}
-        {verified && <StyledCheckCircledIcon color="green" />}
+        {validated && <StyledCheckCircledIcon color="green" />}
       </Box>
     );
   }
