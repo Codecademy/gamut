@@ -33,6 +33,7 @@ export const LayoutGrid = styled(
   gridProps,
   css`
     display: grid;
+    width: 100%;
     grid-template-columns: repeat(12, minmax(0, 1fr));
   `
 );
