@@ -4,6 +4,14 @@ import { FocusOn } from 'react-focus-on';
 import { BodyPortal } from '../BodyPortal';
 import { FlexBox } from '../Box';
 
+const focusOnStyles = {
+  /**
+   * Prevent the focus-on wrapper from interfering with
+   * our normal flex modal layout
+   */
+  display: 'contents',
+};
+
 export type OverlayProps = {
   children: React.ReactElement<any>;
   className?: string;
@@ -61,6 +69,7 @@ export const Overlay: React.FC<OverlayProps> = ({
           enabled={isOpen}
           onClickOutside={handleOutsideClick}
           onEscapeKey={handleEscapeKey}
+          style={focusOnStyles}
         >
           {children}
         </FocusOn>
