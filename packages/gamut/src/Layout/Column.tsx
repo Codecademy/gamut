@@ -18,8 +18,39 @@ const columns = {
   11: 11,
 };
 
-const columnProps = props.create({
+const layoutProps = props.create({
   display: { property: 'display' },
+  w: { property: 'width' },
+  maxW: { property: 'maxWidth' },
+  minW: { property: 'minWidth' },
+  h: { property: 'height' },
+  maxH: { property: 'maxHeight' },
+  minH: { property: 'minHeight' },
+});
+
+const paddingProps = props.create({
+  p: {
+    property: 'padding',
+    properties: ['paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom'],
+    scale: 'spacing',
+  },
+  pX: {
+    property: 'padding',
+    properties: ['paddingLeft', 'paddingRight'],
+    scale: 'spacing',
+  },
+  pY: {
+    property: 'padding',
+    properties: ['paddingTop', 'paddingBottom'],
+    scale: 'spacing',
+  },
+  pT: { property: 'paddingTop', scale: 'spacing' },
+  pB: { property: 'paddingBottom', scale: 'spacing' },
+  pR: { property: 'paddingRight', scale: 'spacing' },
+  pL: { property: 'paddingLeft', scale: 'spacing' },
+});
+
+const gridProps = props.create({
   rowspan: {
     property: 'gridRowEnd',
     scale: rows,
@@ -36,6 +67,8 @@ const columnProps = props.create({
     transform: (col: number) => (col === 0 ? 'auto' : `${col + 1}`),
   },
 });
+
+const columnProps = props.compose(layoutProps, paddingProps, gridProps);
 
 export const Column = styled(
   'div',
