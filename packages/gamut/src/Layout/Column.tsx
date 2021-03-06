@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { createStyledConfig, props } from '../utils/variance';
@@ -51,7 +52,12 @@ const paddingProps = props.create({
 });
 
 const gridProps = props.create({
-  rowspan: {
+  rowOffset: {
+    property: 'gridRowStart',
+    scale: rows,
+    transform: (row: number) => (row === 0 ? 'auto' : row),
+  },
+  rowSize: {
     property: 'gridRowEnd',
     scale: rows,
     transform: (row) => `span ${row}`,
@@ -70,9 +76,10 @@ const gridProps = props.create({
 
 const columnProps = props.compose(layoutProps, paddingProps, gridProps);
 
-export const Column = styled(
-  'div',
-  createStyledConfig(columnProps.propNames)
-)(columnProps);
-
+export const Column = styled('div', createStyledConfig(columnProps.propNames))(
+  css`
+    grid-template-columns: minmax(0, 1fr);
+  `,
+  columnProps
+);
 Column.defaultProps = { display: 'grid' };
