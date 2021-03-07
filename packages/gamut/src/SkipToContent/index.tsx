@@ -1,4 +1,5 @@
 import { ArrowDownIcon } from '@codecademy/gamut-icons';
+import { timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import React from 'react';
@@ -19,17 +20,20 @@ const SkipToContentLink = styled.a(
     font-weight: ${theme.fontWeight.title};
     justify-content: center;
     opacity: 0;
-    padding: 1.5rem 0;
+    padding: ${theme.spacing[24]} 0;
     position: absolute;
     text-decoration: none;
+    transform: translate(-50%, -100%);
+    top: 0;
     left: -1000px;
     z-index: 15;
+    transition: opacity ${timing.fast} ease-in,
+      transform ${timing.fast} cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &:focus {
       opacity: 1;
       left: 50%;
-      transform: translate(-50%, 0);
-      top: calc(${theme.elements.headerHeight} + 1rem);
+      transform: translate(-50%, calc(100% + 1rem));
     }
   `
 );
