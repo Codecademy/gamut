@@ -11,7 +11,7 @@ export type SkipToContentProps = {
   contentId: string;
 };
 
-const animationCurve = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
+const animateFunction = `cubic-bezier(0.075, 0.82, 0.165, 1)`;
 
 const SkipToContentLink = styled.a(
   ({ theme }) => css`
@@ -30,8 +30,8 @@ const SkipToContentLink = styled.a(
     top: 0;
     left: 50%;
     z-index: 15;
-    transition: opacity ${timing.fast} ${animationCurve},
-      transform ${timing.fast} ${animationCurve};
+    transition: opacity ${timing.fast} ${animateFunction},
+      transform ${timing.fast} ${animateFunction};
 
     &:focus {
       outline-color: ${theme.colors.hyper};
