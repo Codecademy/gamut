@@ -34,6 +34,10 @@ const SkipToContentLink = styled.a(
     transition: opacity ${timing.fast} ${animateFunction},
       transform ${timing.fast} ${animateFunction};
 
+    &:hover {
+      text-decoration: none;
+    }
+
     &:focus {
       outline-color: ${theme.colors.hyper};
       opacity: 1;
@@ -51,10 +55,10 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
 
   return (
     <SkipToContentLink href={href} onClick={onClick} type="button" {...rest}>
-      <Box as="span" display="inline-block" marginRight={8}>
-        Skip to Content
+      Skip to Content
+      <Box marginLeft={8}>
+        <MiniArrowDownIcon aria-hidden />
       </Box>
-      <MiniArrowDownIcon aria-hidden />
     </SkipToContentLink>
   );
 };
