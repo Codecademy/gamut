@@ -17,6 +17,7 @@ Array [
   "ButtonDeprecated",
   "ButtonDeprecatedBase",
   "buttonPresetThemes",
+  "Card",
   "CardBody",
   "CardFooter",
   "CardShell",
