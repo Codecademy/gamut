@@ -30,6 +30,7 @@ const SkipToContentLink = styled.a(
     top: 0;
     left: 50%;
     z-index: 15;
+    width: 12rem;
     transition: opacity ${timing.fast} ${animateFunction},
       transform ${timing.fast} ${animateFunction};
 
@@ -50,10 +51,22 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
 
   return (
     <SkipToContentLink href={href} onClick={onClick} type="button" {...rest}>
-      <Box as="span" marginRight={8}>
+      <Box as="span" display="inline-block" marginRight={8}>
         Skip to Content
       </Box>
       <MiniArrowDownIcon aria-hidden />
     </SkipToContentLink>
   );
+};
+
+export const SkipToContentTarget = styled.div(
+  ({ theme }) => css`
+    margin-top: -${theme.elements.headerHeight};
+    position: absolute;
+  `
+);
+
+SkipToContentTarget.defaultProps = {
+  tabIndex: -1,
+  ...({ 'data-testid': 'skip-to-content-target' } as Record<string, string>),
 };
