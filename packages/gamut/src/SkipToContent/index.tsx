@@ -1,4 +1,4 @@
-import { ArrowDownIcon } from '@codecademy/gamut-icons';
+import { MiniArrowDownIcon } from '@codecademy/gamut-icons';
 import { timing } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
@@ -19,8 +19,9 @@ const SkipToContentLink = styled.a(
     display: flex;
     font-weight: ${theme.fontWeight.title};
     justify-content: center;
+    align-items: center;
     opacity: 0;
-    padding: ${theme.spacing[24]} 0;
+    padding: ${theme.spacing[24]} ${theme.spacing[16]};
     position: absolute;
     text-decoration: none;
     transform: translate(-50%, -100%);
@@ -31,9 +32,10 @@ const SkipToContentLink = styled.a(
       transform ${timing.fast} cubic-bezier(0.075, 0.82, 0.165, 1);
 
     &:focus {
+      outline-color: ${theme.colors.hyper};
       opacity: 1;
       left: 50%;
-      transform: translate(-50%, calc(100% + 1rem));
+      transform: translate(-50%, 1rem);
     }
   `
 );
@@ -50,7 +52,7 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
       <Box as="span" marginRight={8}>
         Skip to Content
       </Box>
-      <ArrowDownIcon aria-hidden />
+      <MiniArrowDownIcon aria-hidden />
     </SkipToContentLink>
   );
 };
