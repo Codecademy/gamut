@@ -80,7 +80,11 @@ export const mapItemToElement = (
   }
 };
 
-export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
+export const AppHeader: React.FC<AppHeaderProps> = ({
+  action,
+  items,
+  redirectParam,
+}) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
       <Box
@@ -88,7 +92,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
         marginLeft={index === 0 ? 0 : 8}
         marginRight={index === items.length - 1 ? 0 : 8}
       >
-        {mapItemToElement(action, item)}
+        {mapItemToElement(action, item, redirectParam)}
       </Box>
     ));
   };
