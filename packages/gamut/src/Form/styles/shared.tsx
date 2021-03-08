@@ -1,7 +1,7 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
-type errorStateProps = {
+export type errorStateProps = {
   error?: boolean;
 };
 
