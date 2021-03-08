@@ -8,6 +8,7 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
+import { addRedirectParam } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -21,6 +22,7 @@ import { FormattedAppHeaderItems } from './types';
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
+  redirectParam?: string;
 };
 
 export const StyledAppBar = styled(AppBar)`
@@ -34,7 +36,8 @@ export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
-  item: AppHeaderItem
+  item: AppHeaderItem,
+  redirectParam?: string
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
@@ -51,7 +54,11 @@ export const mapItemToElement = (
         <AppHeaderTextButton
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
-          href={item.href}
+          href={
+            item.redirect && redirectParam
+              ? addRedirectParam(item.href, redirectParam)
+              : item.href
+          }
         >
           {item.text}
         </AppHeaderTextButton>
@@ -60,7 +67,11 @@ export const mapItemToElement = (
       return (
         <AppHeaderFillButton
           data-testid={item.dataTestId}
-          href={item.href}
+          href={
+            item.redirect && redirectParam
+              ? addRedirectParam(item.href, redirectParam)
+              : item.href
+          }
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
           {item.text}

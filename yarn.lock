@@ -3455,6 +3455,11 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/jsuri@^1.3.30":
+  version "1.3.30"
+  resolved "https://registry.npmjs.org/@types/jsuri/-/jsuri-1.3.30.tgz#2feb9768b43fe0494a60d39d78172bd31a4e82a9"
+  integrity sha512-n3RoOl8LHzDX7gmgxVWU09cMiUn1chW0J70N6oOptOoLt8OWvyq8lpW9Mj4xvzHqJEiOMR+J1okPSL1XeBz1uw==
+
 "@types/katex@0.11.0":
   version "0.11.0"
   resolved "https://registry.npmjs.org/@types/katex/-/katex-0.11.0.tgz#b16c54ee670925ffef0616beae9e90c557e17334"
@@ -10760,6 +10765,11 @@ jsprim@^1.2.2:
     extsprintf "1.3.0"
     json-schema "0.2.3"
     verror "1.10.0"
+
+jsuri@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.npmjs.org/jsuri/-/jsuri-1.3.1.tgz#cd93fc6a87b255142cb7b0f479f00517ab9395ed"
+  integrity sha1-zZP8aoeyVRQst7D0efAFF6uTle0=
 
 "jsx-ast-utils@^2.4.1 || ^3.0.0", jsx-ast-utils@^3.1.0:
   version "3.2.0"

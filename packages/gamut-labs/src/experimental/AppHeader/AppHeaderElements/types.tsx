@@ -14,6 +14,7 @@ type AppHeaderBaseItem = {
   dataIntellimizeId?: string;
   dataTestId?: string;
   id: string;
+  redirect?: boolean;
 };
 
 export type AppHeaderLogoItem = AppHeaderBaseItem & {
