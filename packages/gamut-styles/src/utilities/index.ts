@@ -4,3 +4,4 @@ export * from './fontSmoothing';
 export * from './noSelect';
 export * from './responsive';
 export * from './screenReaderOnly';
+export * from './truncate';
