@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.0.1...@codecademy/gamut@26.1.0) (2021-03-08)
+
+
+### Features
+
+* **NotificationItemNew:** map notif type to icon if no image url provided ([7198f23](https://github.com/Codecademy/client-modules/commit/7198f23e64b79ab7b68489c7ea1df11d7c62a704))
+
+
+
 ### [26.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut@26.0.0...@codecademy/gamut@26.0.1) (2021-03-04)
 
 **Note:** Version bump only for package @codecademy/gamut
