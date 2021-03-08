@@ -1,10 +1,11 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { setupRtl } from '@codecademy/gamut-tests';
+import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 
 import { FocusTrap, FocusTrapProps } from '..';
 
-const renderFocusTrap = (props?: Partial<FocusTrapProps>) => {
-  return render(
+const FocusTrapContainer: React.FC<Partial<FocusTrapProps>> = (props) => {
+  return (
     <div data-testid="focus-trap-outside">
       <button aria-label="Button" type="button" data-testid="button-outside" />
       <FocusTrap {...props}>
@@ -20,6 +21,8 @@ const renderFocusTrap = (props?: Partial<FocusTrapProps>) => {
     </div>
   );
 };
+
+const renderFocusTrap = setupRtl(FocusTrapContainer);
 
 const focusTrapIsRendered = () => {
   return Boolean(screen.queryByTestId('focus-trap-content'));
@@ -39,10 +42,10 @@ describe('FocusTrap', () => {
 
   it('triggers onEscapeKey callback when escape key is triggered', () => {
     const onEscapeKey = jest.fn();
-    const { baseElement } = renderFocusTrap({
+    const { view } = renderFocusTrap({
       onEscapeKey,
     });
-    fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
+    fireEvent.keyDown(view.baseElement, { key: 'Escape', code: 'Escape' });
     expect(onEscapeKey.mock.calls.length).toBe(1);
   });
 
