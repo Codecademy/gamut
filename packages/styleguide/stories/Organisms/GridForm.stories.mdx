@@ -9,7 +9,7 @@ import { useState } from '@storybook/addons';
   component={GridForm}
   parameters={{
     subtitle: `This organism takes in plain JSON-like props and uses them to string
-together a valid form`,
+together a validated form`,
     source: 'gamut',
   }}
 />
@@ -89,7 +89,7 @@ responsive layouts.
           {
             label:
               "Validated, required text that must contain the word 'swag' twice",
-            name: 'valid-required-text',
+            name: 'validated-required-text',
             size: 5,
             type: 'text',
             validation: {
@@ -146,6 +146,7 @@ responsive layouts.
           contents: 'Submit Me!?',
           size: 12,
         }}
+        showRequired={true}
       />
     )}
   </Story>

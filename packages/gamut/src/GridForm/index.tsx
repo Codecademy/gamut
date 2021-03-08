@@ -34,6 +34,11 @@ export type GridFormProps<Values extends {}> = {
   onSubmit: SubmitHandler<Values>;
 
   /**
+   * Show asterisks next to required fields.
+   */
+  showRequired?: boolean;
+
+  /**
    * Layout grid row gap override.
    */
   rowGap?: LayoutGridProps['rowGap'];
@@ -67,6 +72,7 @@ export function GridForm<
   rowGap = 'md',
   submit,
   validation = 'onSubmit',
+  showRequired = false,
 }: GridFormProps<Values>) {
   const {
     errors,
@@ -112,6 +118,7 @@ export function GridForm<
               register={register}
               setValue={setValue}
               required={requiredBoolean}
+              showRequired={showRequired}
             />
           );
         })}

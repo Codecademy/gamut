@@ -9,7 +9,7 @@ export type FormGroupLabelProps = HTMLAttributes<HTMLDivElement> &
   HTMLAttributes<HTMLLabelElement> & {
     disabled?: boolean;
     htmlFor?: string;
-    required?: boolean;
+    showRequired?: boolean;
     size?: 'small' | 'large';
   };
 
@@ -64,7 +64,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   className,
   disabled,
   htmlFor,
-  required,
+  showRequired,
   size,
   ...rest
 }) => {
@@ -78,7 +78,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
         size={size}
       >
         {children}
-        {required ? ' *' : ''}
+        {showRequired ? ' *' : ''}
       </StyledLabel>
     );
   }
@@ -86,7 +86,7 @@ export const FormGroupLabel: React.FC<FormGroupLabelProps> = ({
   return (
     <StyledDiv {...rest} disabled={disabled} className={className} size={size}>
       {children}
-      {required ? ' *' : ''}
+      {showRequired ? ' *' : ''}
     </StyledDiv>
   );
 };

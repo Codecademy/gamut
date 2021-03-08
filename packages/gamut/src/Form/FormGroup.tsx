@@ -11,7 +11,7 @@ export type FormGroupProps = HTMLAttributes<HTMLDivElement> & {
   htmlFor?: string;
   className?: string;
   description?: string;
-  required?: boolean;
+  showRequired?: boolean;
   error?: string;
   labelSize?: 'small' | 'large';
 };
@@ -29,13 +29,17 @@ export const FormGroup: React.FC<FormGroupProps> = ({
   htmlFor,
   children,
   className,
-  required,
+  showRequired,
   error,
   labelSize,
   ...rest
 }) => {
   const labelComponent = label ? (
-    <FormGroupLabel htmlFor={htmlFor} required={required} size={labelSize}>
+    <FormGroupLabel
+      htmlFor={htmlFor}
+      showRequired={showRequired}
+      size={labelSize}
+    >
       {label}
     </FormGroupLabel>
   ) : null;
