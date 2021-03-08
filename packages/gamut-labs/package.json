@@ -37,14 +37,10 @@
     "build:clean": "rm -rf dist",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn build:clean && yarn build:compile && yarn build:types",
-    "build:watch": "yarn build && onchange ./src -- yarn build:compile && yarn build:types",
     "lernaBuildTask": "yarn build"
   },
   "license": "MIT",
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/jsuri": "^1.3.30"
   }
 }
