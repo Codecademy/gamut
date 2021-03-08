@@ -1,18 +1,13 @@
-import Uri from 'jsuri';
+export const addRedirectParam = (url: string, redirectParam: string) => {
+  const base = window.location.origin;
+  const uri = new URL(url, base);
+  const requestUri = new URL(redirectParam, base);
 
-export const addRedirectParam = (url: string, requestPath: string) => {
-  const uri = new Uri(url);
-  const currentUri = new Uri(requestPath);
-
-  let redirectTo;
-  if (currentUri.hasQueryParam('redirect')) {
-    redirectTo = currentUri.getQueryParamValue('redirect');
+  const redirect = requestUri.searchParams.get('redirect');
+  if (redirect) {
+    uri.searchParams.append('redirect', redirect);
   } else {
-    currentUri.deleteQueryParam('redirect');
-    redirectTo = currentUri.toString();
+    uri.searchParams.append('redirect', requestUri.toString());
   }
-
-  uri.addQueryParam('redirect', redirectTo);
-
   return uri.toString();
 };
