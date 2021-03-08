@@ -15,4 +15,13 @@ describe('formatUrlWithRedirect', () => {
     const uri = new URL(response);
     expect(uri.searchParams.get('redirect')).toBe(redirectUrl);
   });
+
+  it('maintains the initial redirect parameter if the redirect url included a redirect parameter of its own', () => {
+    const initialRedirectParam = 'google';
+    const redirectUrl =
+      window.location + '/catalog?redirect=' + initialRedirectParam;
+    const response = formatUrlWithRedirect(signupPath, redirectUrl);
+    const uri = new URL(response);
+    expect(uri.searchParams.get('redirect')).toBe('initialRedirectParam');
+  });
 });
