@@ -1,4 +1,4 @@
-import { FormGroup, Input } from '@codecademy/gamut';
+import { FormGroup, Input, ReactRecurlyStyles } from '@codecademy/gamut';
 import title from '@codecademy/macros/lib/title.macro';
 import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
@@ -7,6 +7,7 @@ import { PropsTable } from '~styleguide/blocks';
 <Meta
   title={title}
   component={Input}
+  subcomponent={ReactRecurlyStyles}
   parameters={{
     subtitle:
       'A general `<input />` element for handling "text", "number" and "file" input types',

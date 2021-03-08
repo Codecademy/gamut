@@ -1,17 +1,18 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { css } from '@emotion/react';
-import styled from '@emotion/styled';
-import React, { ComponentType, forwardRef, InputHTMLAttributes } from 'react';
+import styled, { StyledComponent } from '@emotion/styled';
+import React, { forwardRef, InputHTMLAttributes } from 'react';
 
 import { Box } from '../Box';
 import {
+  errorStateProps,
   errorStyle,
   formBaseFieldStyles,
   formFieldStyles,
   iconStyles,
 } from './styles/shared';
 
-export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
+export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
   error?: boolean;
@@ -24,20 +25,23 @@ export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
   validated?: boolean;
 };
 
-export type InputProps = InputHTMLAttributes<HTMLInputElement> &
-  InputComponentProps;
-
 export type InputWrapperProps = InputProps & {
-  component?: ComponentType<any>;
+  component?: StyledComponent<
+    InputProps,
+    React.DetailedHTMLProps<
+      InputHTMLAttributes<HTMLInputElement>,
+      HTMLInputElement
+    >
+  >;
 };
 
 const inputIconStyles = css`
   ${iconStyles}
 `;
 
-export const ReactRecurlyStyles = (props: any) => css`
+export const ReactRecurlyStyles = ({ error }: errorStateProps) => css`
   ${formBaseFieldStyles}
-  ${errorStyle(props)}
+  ${errorStyle({ error })}
   box-sizing: border-box;
   text-indent: 0;
 `;
@@ -49,13 +53,9 @@ const InputElement = styled.input<InputProps>`
   text-indent: 0;
 `;
 
-const StyledAlertIcon = styled(AlertIcon)`
-  ${inputIconStyles}
-`;
+const StyledAlertIcon = styled(AlertIcon)(inputIconStyles);
 
-const StyledCheckCircledIcon = styled(CheckCircledIcon)`
-  ${inputIconStyles}
-`;
+const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   (
