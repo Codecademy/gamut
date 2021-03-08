@@ -68,11 +68,11 @@ export const SkipToContentTarget = styled.div(({ theme, children }) => {
   if (children) {
     return css`
       padding-top: calc(${offset} + 1rem);
-      margin-top: -${offset};
+      margin-top: calc(${offset} * -1);
     `;
   }
   return css`
-    margin-top: -${offset};
+    margin-top: calc(${offset} * -1);
     position: absolute;
   `;
 });
