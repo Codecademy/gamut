@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
 import { setupEnzyme } from '@codecademy/gamut-tests';
-import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
 
