@@ -26,9 +26,7 @@ const hoverVariants = variant({
   standard: {
     textDecoration: 'underline',
   },
-  inline: {
-    textDecoration: 'none',
-  },
+  inline: {},
   interface: {
     textColor: 'hyper',
   },
@@ -70,6 +68,7 @@ export const Anchor = styled.a<AnchorProps>(
 
       &:hover,
       &:focus {
+        text-decoration: none;
         ${hoverVariants({ theme, variant })}
       }
       &:disabled,
