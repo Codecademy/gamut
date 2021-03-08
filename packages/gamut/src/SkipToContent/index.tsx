@@ -63,12 +63,19 @@ export const SkipToContent: React.FC<SkipToContentProps> = ({
   );
 };
 
-export const SkipToContentTarget = styled.div(
-  ({ theme }) => css`
-    margin-top: -${theme.elements.headerHeight};
+export const SkipToContentTarget = styled.div(({ theme, children }) => {
+  const offset = theme.elements.headerHeight;
+  if (children) {
+    return css`
+      padding-top: calc(${offset} + 1rem);
+      margin-top: -${offset};
+    `;
+  }
+  return css`
+    margin-top: -${offset};
     position: absolute;
-  `
-);
+  `;
+});
 
 SkipToContentTarget.defaultProps = {
   tabIndex: -1,
