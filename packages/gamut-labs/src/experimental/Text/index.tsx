@@ -14,10 +14,11 @@ export interface TextProps extends HandlerProps<typeof textStyles> {
   truncateLine?: boolean;
 }
 
-export const Text = styled('span', { shouldForwardProp })<TextProps>(
-  textStyles,
-  ({ truncateLine }) => truncateLine && truncate
-);
+export const Text = styled('span', { shouldForwardProp })<TextProps>`
+  color: inherit;
+  ${textStyles}
+  ${({ truncateLine }) => truncateLine && truncate}
+`;
 
 Text.defaultProps = {
   fontSize: 16,

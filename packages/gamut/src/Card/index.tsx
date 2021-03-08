@@ -36,12 +36,9 @@ interface CardProps extends BoxProps, CardVariantProps {
 
 export const Card = styled(Box)<BoxProps & CardProps>`
   ${cardVariants}
-  ${({ shadowOffset, variant }) => {
-    if (shadowOffset) {
-      const outlineColor = variant === 'navy' ? 'white' : 'none';
-      return createShadow(shadowOffset, outlineColor);
-    }
-  }}
+  ${({ shadowOffset, variant }) =>
+    shadowOffset &&
+    createShadow(shadowOffset, variant === 'navy' ? 'white' : 'none')}
 `;
 
 Card.defaultProps = {
