@@ -20,7 +20,7 @@ export type InputComponentProps = InputHTMLAttributes<HTMLInputElement> & {
   name?: string;
   placeholder?: string;
   required?: boolean;
-  type?: 'text' | 'number' | 'file';
+  type?: string;
   validated?: boolean;
 };
 
