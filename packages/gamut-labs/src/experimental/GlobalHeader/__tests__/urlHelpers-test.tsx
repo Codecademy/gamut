@@ -4,7 +4,7 @@ const loginPath = '/login';
 const signupPath = '/register';
 
 describe('formatUrlWithRedirect', () => {
-  it('returns the url parameter if no redirect param provided', () => {
+  it('returns the url parameter if no redirect url provided', () => {
     const response = formatUrlWithRedirect(loginPath);
     expect(response).toBe(loginPath);
   });
