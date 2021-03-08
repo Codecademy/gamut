@@ -147,6 +147,44 @@ The following are available variations for the GlobalHeader component.
   </Story>
 </Canvas>
 
+#### Business Account Manager - Pro
+
+<Canvas>
+  <Story name="Business Account Manager - Pro">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Kallie',
+          isAccountManager: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Business Account Manager - Free
+
+<Canvas>
+  <Story name="Business Account Manager - Free">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Kallie',
+          isAccountManager: true,
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
 ### Anonymous User
 
 #### Anonymous User - Default
