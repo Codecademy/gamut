@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-distracting-elements */
 
+import { setupEnzyme } from '@codecademy/gamut-tests';
 import { mount, ReactWrapper } from 'enzyme';
 import React from 'react';
 import { act } from 'react-dom/test-utils';
@@ -35,19 +36,21 @@ const youtubeMarkdown = `
 <iframe src="https://www.youtube.com/embed/KvgrQIK1yPY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 `;
 
+const renderWrapper = setupEnzyme(Markdown);
+
 describe('<Markdown />', () => {
   it('renders standard Markdown', () => {
-    const markdown = mount(<Markdown text={basicMarkdown} />);
-    expect(markdown.find('h1').length).toEqual(1);
-    expect(markdown.find('h3').length).toEqual(1);
-    expect(markdown.find('code').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    expect(wrapper.find('h1').length).toEqual(1);
+    expect(wrapper.find('h3').length).toEqual(1);
+    expect(wrapper.find('code').length).toEqual(1);
   });
 
   it('Renders html content in markdown', () => {
-    const markdown = mount(<Markdown text={htmlMarkdown} />);
-    expect(markdown.find('h1').length).toEqual(1);
-    expect(markdown.find('h3').length).toEqual(1);
-    expect(markdown.find('iframe').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: htmlMarkdown });
+    expect(wrapper.find('h1').length).toEqual(1);
+    expect(wrapper.find('h3').length).toEqual(1);
+    expect(wrapper.find('iframe').length).toEqual(1);
   });
 
   it('Renders custom tables in markdown', () => {
@@ -58,9 +61,9 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const markdown = mount(<Markdown text={table} />);
-    expect(markdown.find('div.tableWrapper table').length).toEqual(1);
-    expect(markdown.find('div.tableWrapper').prop('style')).toEqual({
+    const { wrapper } = renderWrapper({ text: table });
+    expect(wrapper.find('div.tableWrapper table').length).toEqual(1);
+    expect(wrapper.find('div.tableWrapper').prop('style')).toEqual({
       maxHeight: 180,
     });
   });
@@ -73,31 +76,32 @@ describe('<Markdown />', () => {
 | col 2 is |    centered   |   $12 |
 | col 3 is | right-aligned |    $1 |
     `;
-    const markdown = mount(
-      <Markdown skipDefaultOverrides={{ table: true }} text={table} />
-    );
-    expect(markdown.find('table').length).toEqual(1);
-    expect(markdown.find('div.tableWrapper table').length).toEqual(0);
+    const { wrapper } = renderWrapper({
+      skipDefaultOverrides: { table: true },
+      text: table,
+    });
+    expect(wrapper.find('table').length).toEqual(1);
+    expect(wrapper.find('div.tableWrapper table').length).toEqual(0);
   });
 
   it('Wraps youtube iframes in a flexible container', () => {
-    const markdown = mount(<Markdown text={youtubeMarkdown} />);
-    expect(markdown.find('[data-testid="yt-iframe"]').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: youtubeMarkdown });
+    expect(wrapper.find('[data-testid="yt-iframe"]').length).toEqual(1);
   });
 
   it('Wraps the markdown in a div by default (block)', () => {
-    const markdown = mount(<Markdown text={basicMarkdown} />);
-    expect(markdown.find('div.spacing-tight').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: basicMarkdown });
+    expect(wrapper.find('div.spacing-tight').length).toEqual(1);
   });
 
   it('Wraps the markdown in a span when inline', () => {
-    const markdown = mount(<Markdown text={basicMarkdown} inline />);
-    expect(markdown.find('span.spacing-tight').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: basicMarkdown, inline: true });
+    expect(wrapper.find('span.spacing-tight').length).toEqual(1);
   });
 
   it('does not crash on a value-less attribute', () => {
-    const markdown = mount(<Markdown text="<h1 class />" />);
-    expect(markdown.find('h1').length).toEqual(1);
+    const { wrapper } = renderWrapper({ text: `<h1 class />` });
+    expect(wrapper.find('h1').length).toEqual(1);
   });
 
   describe('Allows passing in a custom CodeBlock override', () => {
@@ -120,9 +124,9 @@ var test = true;
         },
       };
 
-      const markdown = mount(<Markdown text={text} overrides={overrides} />);
-      expect(markdown.find(CodeBlock).length).toEqual(1);
-      expect((markdown.find(CodeBlock).props() as any).language).toEqual('js');
+      const { wrapper } = renderWrapper({ text, overrides });
+      expect(wrapper.find(CodeBlock).length).toEqual(1);
+      expect((wrapper.find(CodeBlock).props() as any).language).toEqual('js');
     });
 
     it('When specifying a <code /> element override with a custom CodeBlock override, the CodeBlock wins', () => {
@@ -151,36 +155,37 @@ var test = true;
         },
       };
 
-      const markdown = mount(<Markdown text={text} overrides={overrides} />);
+      const { wrapper } = renderWrapper({ text, overrides });
 
-      expect(markdown.find(overrides.CodeBlock.component).length).toEqual(1);
+      expect(wrapper.find(overrides.CodeBlock.component).length).toEqual(1);
       // There should only be one <code /> override because the codeblock override overwrote it
-      expect(markdown.find(overrides.code.component).length).toEqual(1);
+      expect(wrapper.find(overrides.code.component).length).toEqual(1);
     });
   });
 
   it('Renders data attributes on the markdown wrapper', () => {
-    const markdown = mount(
-      <Markdown text={basicMarkdown} data-testid="cool" />
-    );
-    expect(markdown.find('div[data-testid="cool"]').length).toEqual(1);
+    const { wrapper } = renderWrapper({
+      text: basicMarkdown,
+      'data-testid': 'cool',
+    } as any);
+
+    expect(wrapper.find('div[data-testid="cool"]').length).toEqual(1);
   });
 
   it('Prevents errors on malformed image tags', () => {
-    const markdown = mount(
-      <Markdown text={`<img src="http://google.com/"></img>`} />
-    );
-    expect(markdown.find('img').length).toEqual(1);
+    const { wrapper } = renderWrapper({
+      text: `<img src="http://google.com/"></img>`,
+    });
+
+    expect(wrapper.find('img').length).toEqual(1);
   });
 
   it('Allows passing in class names', () => {
-    const markdown = mount(
-      <Markdown
-        text={`<div class="narrative-table-container"> # Cool </div>`}
-      />
-    );
+    const { wrapper } = renderWrapper({
+      text: `<div class="narrative-table-container"> # Cool </div>`,
+    });
 
-    expect(markdown.find('div.narrative-table-container').length).toEqual(1);
+    expect(wrapper.find('div.narrative-table-container').length).toEqual(1);
   });
 
   describe('Markdown anchor links', () => {
@@ -188,29 +193,28 @@ var test = true;
       const text = '[link](/url)';
       const expectedText = `link`;
       expect(text).not.toEqual(expectedText);
-      const markdown = mount(<Markdown text={text} />);
-      expect(markdown.text().trim()).toEqual(expectedText);
+      const { wrapper } = renderWrapper({ text });
+      expect(wrapper.text().trim()).toEqual(expectedText);
     });
 
     it('Adds rel="noopener" to external links', () => {
-      const markdown = mount(
-        <Markdown text={`<a href="http://google.com">google</a>`} />
-      );
-      expect(markdown.find('a[rel="noopener"]').length).toEqual(1);
+      const { wrapper } = renderWrapper({
+        text: `<a href="http://google.com">google</a>`,
+      });
+
+      expect(wrapper.find('a[rel="noopener"]').length).toEqual(1);
     });
 
     it('Allows onClicks callbacks', () => {
       const onClick = jest.fn();
 
-      const markdown = mount(
-        <Markdown
-          text={`<a data-testid="testLink" href="http://google.com">google</a>`}
-          onAnchorClick={onClick}
-        />
-      );
+      const { wrapper } = renderWrapper({
+        onAnchorClick: onClick,
+        text: `<a data-testid="testLink" href="http://google.com">google</a>`,
+      });
 
       act(() => {
-        markdown.find(`a[href="http://google.com"]`).simulate('click');
+        wrapper.find(`a[href="http://google.com"]`).simulate('click');
       });
 
       expect(onClick).toHaveBeenCalledTimes(1);
@@ -232,12 +236,12 @@ var test = true;
           component: TestComponent,
         },
       };
-      const markdown = mount(<Markdown text={text} overrides={overrides} />);
-      expect(markdown.find('strong').length).toEqual(1);
+      const { wrapper } = renderWrapper({ text, overrides });
+      expect(wrapper.find('strong').length).toEqual(1);
     });
 
     describe('Properties on overrides are handled', () => {
-      let markdown: ReactWrapper;
+      let markdown: ReturnType<typeof renderWrapper>['wrapper'];
 
       beforeAll(() => {
         const text = `
@@ -253,7 +257,8 @@ var test = true;
             allowedAttributes: ['name', 'isCodeBlock', 'isWebBrowser'],
           },
         };
-        markdown = mount(<Markdown text={text} overrides={overrides} />);
+        const { wrapper } = renderWrapper({ text, overrides });
+        markdown = wrapper;
       });
 
       it('Allows passing in allowed attributes to overrides', () => {
@@ -288,8 +293,8 @@ var test = true;
       const text = `This is some text with a &mdash; in the middle`;
       const expectedText = `This is some text with a \u2014 in the middle`;
       expect(text).not.toEqual(expectedText);
-      const markdown = mount(<Markdown inline text={text} />);
-      expect(markdown.text().trim()).toEqual(expectedText);
+      const { wrapper } = renderWrapper({ inline: true, text });
+      expect(wrapper.text().trim()).toEqual(expectedText);
     });
 
     it('does not replace `&mdash;` with `---`', () => {
@@ -297,8 +302,8 @@ var test = true;
         'This is `some code with a &mdash; in` the middle and this is a &mdash;';
       const expectedText = `This is some code with a &mdash; in the middle and this is a \u2014`;
       expect(text).not.toEqual(expectedText);
-      const markdown = mount(<Markdown inline text={text} />);
-      expect(markdown.text().trim()).toEqual(expectedText);
+      const { wrapper } = renderWrapper({ inline: true, text });
+      expect(wrapper.text().trim()).toEqual(expectedText);
     });
   });
 });
