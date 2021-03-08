@@ -23,7 +23,7 @@ const renderComponent = (overrides: Partial<GridFormInputGroupProps>) => {
 
   const wrapped = mount(
     <ThemeProvider theme={theme}>
-      <GridFormInputGroup {...props} />{' '}
+      <GridFormInputGroup {...props} />
     </ThemeProvider>
   );
 
