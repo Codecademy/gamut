@@ -8,7 +8,7 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
-import { addRedirectParam } from '../GlobalHeader/urlHelpers';
+import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -55,8 +55,8 @@ export const mapItemToElement = (
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
           href={
-            item.redirect && redirectParam
-              ? addRedirectParam(item.href, redirectParam)
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
         >
@@ -68,8 +68,8 @@ export const mapItemToElement = (
         <AppHeaderFillButton
           data-testid={item.dataTestId}
           href={
-            item.redirect && redirectParam
-              ? addRedirectParam(item.href, redirectParam)
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
               : item.href
           }
           onClick={(event: React.MouseEvent) => action(event, item)}

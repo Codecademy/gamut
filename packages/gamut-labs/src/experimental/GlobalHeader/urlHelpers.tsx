@@ -1,13 +1,16 @@
-export const addRedirectParam = (url: string, redirectParam: string) => {
+export const formatUrlWithRedirect = (url: string, redirectUrl?: string) => {
+  if (!redirectUrl) {
+    return url;
+  }
   const base = window.location.origin;
   const uri = new URL(url, base);
-  const requestUri = new URL(redirectParam, base);
+  const redirectUri = new URL(redirectUrl);
 
-  const redirect = requestUri.searchParams.get('redirect');
-  if (redirect) {
-    uri.searchParams.append('redirect', redirect);
+  const redirectParam = redirectUri.searchParams.get('redirect');
+  if (redirectParam) {
+    uri.searchParams.append('redirect', redirectParam);
   } else {
-    uri.searchParams.append('redirect', requestUri.toString());
+    uri.searchParams.append('redirect', redirectUri.toString());
   }
   return uri.toString();
 };
