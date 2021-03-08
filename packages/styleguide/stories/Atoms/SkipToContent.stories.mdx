@@ -4,7 +4,8 @@ import { Canvas, Meta, Props, Story } from '@storybook/addon-docs/dist/blocks';
 
 <Meta
   title={title}
-  component={{ SkipToContent, SkipToContentTarget }}
+  component={SkipToContent}
+  subcomponents={{ SkipToContentTarget }}
   parameters={{
     subtitle: 'An invisible component to make pages more keyboard accessible.',
     source: 'gamut',
