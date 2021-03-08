@@ -15,6 +15,7 @@ export const New: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>New Icon</title>
     <circle cx="24" cy="24" r="23.5" fill="white" stroke="#10162F" />
     <path
       d="M16.875 27.5V21.25L19.375 27.5V21.25"

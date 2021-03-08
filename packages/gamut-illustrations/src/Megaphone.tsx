@@ -15,6 +15,7 @@ export const Megaphone: React.FC<IllustrationProps> = ({
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <title>Megaphone Icon</title>
     <circle cx="24" cy="24" r="23.5" fill="white" stroke="#10162F" />
     <path
       d="M19.625 26.7083H17.75C16.9212 26.7083 16.1263 26.3791 15.5403 25.793C14.9542 25.207 14.625 24.4121 14.625 23.5833C14.625 22.7545 14.9542 21.9597 15.5403 21.3736C16.1263 20.7876 16.9212 20.4583 17.75 20.4583H19.625V26.7083Z"
