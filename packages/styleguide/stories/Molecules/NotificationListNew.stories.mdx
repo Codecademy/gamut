@@ -4,7 +4,39 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs/dist/blocks';
 
 import { PropsTable } from '~styleguide/blocks';
 
-import { examples } from './NotificationList.stories.mdx';
+export const notificationList = [
+  {
+    campaign: 'python-livestream',
+    date: '5 minutes',
+    type: 'curriculum_blast',
+    id: 'abc',
+    link:
+      'https://www.codecademy.com/courses/livestreams/projects/livestream-intro-to-statistics-in-python',
+    text: 'Check out our Python livestream!',
+  },
+  {
+    campaign: 'pro-trial',
+    type: 'marketing_blast',
+    date: '3 hours',
+    id: '123',
+    text:
+      "It's your last day of Pro Trial! Sign up with Codecademy Pro to get helpful features like quizzes and projects and practice on the Codecademy Go mobile app!",
+  },
+  {
+    campaign: 'other-notification',
+    date: '2 days',
+    id: '1234',
+    link: 'http://google.com',
+    imageUrl: 'https://bit.ly/2Ckp4eW',
+    text: 'notiifcation with img url provided',
+  },
+  {
+    campaign: 'pro-trial',
+    date: '3 hours',
+    id: '123',
+    text: 'Notification with no image or type provided; default Bell icon!',
+  },
+];
 
 <Meta
   title={title}
@@ -16,7 +48,7 @@ import { examples } from './NotificationList.stories.mdx';
     figmaId: '',
   }}
   args={{
-    notifications: examples,
+    notifications: notificationList,
     onDismiss: () => {
       // eslint-disable-next-line no-console
       console.log('delete notification');
@@ -24,7 +56,9 @@ import { examples } from './NotificationList.stories.mdx';
   }}
 />
 
-New notifications list component. Each notification has in icon depending on its notification type, defaulting to a bell icon if none is provided.
+New notifications list component. Each notification displays an icon corresponding to its notification type (ex. curriculum_blast or marketing_blast). If no type is provided, a default bell icon will be displayed.
+
+Sometimes the teams sending a notification would like to choose a unique icon for their notification. We still support this. If an imageUrl is provided, the notification will show the chosen image instead of the type icon. The recommendation from design, however, is to use the designated types.
 
 <Canvas>
   <Story name="NotificationListNew">

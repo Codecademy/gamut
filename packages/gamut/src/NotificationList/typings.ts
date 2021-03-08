@@ -13,6 +13,7 @@ export type Notification = {
   imageUrl?: string;
   link?: string;
   text: string;
+  type?: string;
   unread?: boolean;
   campaign: string;
 };
