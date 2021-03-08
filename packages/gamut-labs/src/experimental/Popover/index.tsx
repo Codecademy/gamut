@@ -1,7 +1,6 @@
-import { BodyPortal, Pattern, PatternName } from '@codecademy/gamut';
+import { BodyPortal, FocusTrap, Pattern, PatternName } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { FocusOn } from 'react-focus-on';
 import { useWindowScroll, useWindowSize } from 'react-use';
 
 type StyleProps = {
@@ -168,15 +167,15 @@ export const Popover: React.FC<PopoverProps> = ({
     if (!isInViewport) onRequestClose?.();
   }, [targetRect, isInViewport, onRequestClose]);
 
-  const handleOutsideClick = useCallback(
-    (e: MouseEvent) => {
+  const handleClickOutside = useCallback(
+    (e) => {
       /**
        * Allows targetRef to be or contain a button that toggles the popover open and closed.
        * Without this check it would toggle closed then back open immediately.
        */
-      if (!targetRef.current?.contains(e.target as Node)) {
-        onRequestClose?.();
-      }
+      if (targetRef.current?.contains(e.target as Node)) return;
+
+      onRequestClose?.();
     },
     [onRequestClose, targetRef]
   );
@@ -187,11 +186,10 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return (
     <BodyPortal>
-      <FocusOn
-        onClickOutside={handleOutsideClick}
+      <FocusTrap
+        allowPageInteraction
+        onClickOutside={handleClickOutside}
         onEscapeKey={onRequestClose}
-        scrollLock={false}
-        noIsolation
       >
         <PopoverContainer
           position={position}
@@ -224,7 +222,7 @@ export const Popover: React.FC<PopoverProps> = ({
             </PatternContainer>
           )}
         </PopoverContainer>
-      </FocusOn>
+      </FocusTrap>
     </BodyPortal>
   );
 };

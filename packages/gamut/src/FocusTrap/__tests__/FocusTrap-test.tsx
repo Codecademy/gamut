@@ -1,0 +1,68 @@
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+
+import { FocusTrap, FocusTrapProps } from '..';
+
+const renderFocusTrap = (props?: Partial<FocusTrapProps>) => {
+  return render(
+    <div data-testid="focus-trap-outside">
+      <button aria-label="Button" type="button" data-testid="button-outside" />
+      <FocusTrap {...props}>
+        <div data-testid="focus-trap-content">
+          Howdy!
+          <button
+            aria-label="Button"
+            type="button"
+            data-testid="button-inside"
+          />
+        </div>
+      </FocusTrap>
+    </div>
+  );
+};
+
+const focusTrapIsRendered = () => {
+  return Boolean(screen.queryByTestId('focus-trap-content'));
+};
+
+describe('FocusTrap', () => {
+  it('renders children', () => {
+    renderFocusTrap();
+    expect(focusTrapIsRendered()).toBeTruthy();
+  });
+
+  it('auto focuses on children', () => {
+    renderFocusTrap();
+    const expectedFocusedButton = screen.queryByTestId('button-inside');
+    expect(document.activeElement).toEqual(expectedFocusedButton);
+  });
+
+  it('triggers onEscapeKey callback when escape key is triggered', () => {
+    const onEscapeKey = jest.fn();
+    const { baseElement } = renderFocusTrap({
+      onEscapeKey,
+    });
+    fireEvent.keyDown(baseElement, { key: 'Escape', code: 'Escape' });
+    expect(onEscapeKey.mock.calls.length).toBe(1);
+  });
+
+  it('triggers onRequestClose callback when clicking outside the container', () => {
+    const onClickOutside = jest.fn();
+    renderFocusTrap({
+      onClickOutside,
+    });
+
+    // focus-on listens to mouseDown, not click
+    fireEvent.mouseDown(screen.getByTestId('focus-trap-outside'));
+    expect(onClickOutside.mock.calls.length).toBe(1);
+  });
+
+  it('does not trigger onClickOutside callback when clicking inside', () => {
+    const onClickOutside = jest.fn();
+    renderFocusTrap({
+      onClickOutside,
+    });
+    fireEvent.mouseDown(screen.getByTestId('focus-trap-content'));
+    expect(onClickOutside.mock.calls.length).toBe(0);
+  });
+});
