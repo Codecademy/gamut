@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-import { GridFormField } from '../../types';
+import { ToolTipProps } from '../../../ToolTip';
 import { GridFormToolTip } from '../GridFromToolTip';
 
 export type GridForToolTipWrapper = {
-  children: React.ReactNode;
-  field: GridFormField;
+  children: ReactNode;
+  tooltip?: ToolTipProps;
 };
 const StyledWrapper = styled.div`
   position: relative;
@@ -14,12 +14,12 @@ const StyledWrapper = styled.div`
 `;
 export const GridFormToolTipWrapper: React.FC<GridForToolTipWrapper> = ({
   children,
-  field,
+  tooltip,
 }) => {
   return (
     <StyledWrapper>
       {children}
-      {field.toolTip && <GridFormToolTip field={field} />}
+      {tooltip && <GridFormToolTip tooltip={tooltip} />}
     </StyledWrapper>
   );
 };

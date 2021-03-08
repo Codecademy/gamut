@@ -2,11 +2,10 @@ import { MiniInfoCircleIcon } from '@codecademy/gamut-icons';
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { ToolTip } from '../../../ToolTip';
-import { GridFormField } from '../../types';
+import { ToolTip, ToolTipProps } from '../../../ToolTip';
 
 export type GridFormToolTipProps = {
-  field: GridFormField;
+  tooltip: ToolTipProps;
 };
 
 const StyledToolTip = styled.span`
@@ -16,20 +15,20 @@ const StyledToolTip = styled.span`
 `;
 
 export const GridFormToolTip: React.FC<GridFormToolTipProps> = ({
-  field: { toolTip },
+  tooltip,
 }) => {
   return (
     <StyledToolTip>
       <ToolTip
-        focusable={toolTip?.focusable}
-        wrapperClassName={toolTip?.wrapperClassName}
-        tipClassName={toolTip?.tipClassName}
-        theme={toolTip?.theme}
-        position={toolTip?.position}
+        focusable={tooltip?.focusable}
+        wrapperClassName={tooltip?.wrapperClassName}
+        tipClassName={tooltip?.tipClassName}
+        theme={tooltip?.theme}
+        position={tooltip?.position}
         target={<MiniInfoCircleIcon />}
-        id={toolTip!.id}
+        id={tooltip.id}
       >
-        {toolTip?.children}
+        {tooltip?.children}
       </ToolTip>
     </StyledToolTip>
   );

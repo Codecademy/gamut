@@ -51,12 +51,14 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'custom':
         return (
-          <GridFormCustomInput
-            field={field}
-            register={register}
-            setValue={setValue}
-            error={error}
-          />
+          <GridFormToolTipWrapper tooltip={field.toolTip}>
+            <GridFormCustomInput
+              field={field}
+              register={register}
+              setValue={setValue}
+              error={error}
+            />
+          </GridFormToolTipWrapper>
         );
 
       case 'radio-group':
@@ -70,7 +72,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'select':
         return (
-          <GridFormToolTipWrapper field={field}>
+          <GridFormToolTipWrapper tooltip={field.toolTip}>
             <GridFormSelectInput
               error={!!error}
               field={field}
@@ -81,11 +83,13 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'file':
         return (
-          <GridFormFileInput
-            error={!!error}
-            field={field}
-            register={register}
-          />
+          <GridFormToolTipWrapper tooltip={field.toolTip}>
+            <GridFormFileInput
+              error={!!error}
+              field={field}
+              register={register}
+            />
+          </GridFormToolTipWrapper>
         );
 
       case 'textarea':
@@ -95,7 +99,7 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       default:
         return (
-          <GridFormToolTipWrapper field={field}>
+          <GridFormToolTipWrapper tooltip={field.toolTip}>
             <GridFormTextInput
               error={!!error}
               field={field}
