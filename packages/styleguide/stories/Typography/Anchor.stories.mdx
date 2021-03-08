@@ -40,7 +40,7 @@ It applies `text-decoration: underline` per our accessibility guidelines to dist
 
 ## Variants
 
-We provide 2 style variants for Anchor.
+We provide 3 style variants for Anchor.
 
 <Canvas>
   <Story name="Inline" args={{ variant: 'inline' }}>
@@ -63,24 +63,31 @@ We provide 2 style variants for Anchor.
   </Story>
 </Canvas>
 
+This interface style should only be used when link is not part of the body text and
+it doesn&apos;t make sense to use Text Button. Color can be customized by using textColor
+prop
+
 <Canvas>
   <Story name="Interface" args={{ variant: 'interface' }}>
     {(args) => {
       return (
         <Text>
-          This interface style should only be used when link is not part of the
-          body text and it doesn&apos;t make sense to use Text Button. Color can
-          be customized by using textColor prop. &nbsp;&nbsp;
           <Anchor
             {...args}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
+            fontSize={22}
+            fontWeight="title"
           >
             great video 1
-          </Anchor> | <Anchor
+          </Anchor>{' '}
+          |{' '}
+          <Anchor
             {...args}
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
             target="_blank"
+            fontSize={22}
+            fontWeight="title"
           >
             great video 2
           </Anchor>
@@ -96,9 +103,11 @@ Links are really hard to get right for accessibility!
 Most importantly: links must be _visually distinct_ from body text.
 For general links in body text, we use a visual underline to make it clear that they're links.
 
-<Text>
-  <Anchor href="/">This is a link</Anchor>. This is not.
-</Text>
+<Story name="Guidelines">
+  <Text>
+    <Anchor href="/">This is a link</Anchor>. This is not.
+  </Text>
+</Story>
 
 Only use the `interface` variant when your link text is clearly separated from body text in a way that implies a link. Otherwise, use the default (`inline`) Anchor style.
 
