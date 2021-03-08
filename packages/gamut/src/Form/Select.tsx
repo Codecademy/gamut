@@ -15,12 +15,12 @@ export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
-  size?: 'small' | 'base';
+  sizeVariant?: 'small' | 'base';
 };
 
 const selectSizeVariants = variant({
   default: 'base',
-  prop: 'size',
+  prop: 'sizeVariant',
   variants: {
     small: {
       height: '2rem',
@@ -64,7 +64,16 @@ const SelectBase = styled.select<SelectProps>`
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    { className, defaultValue, options, error, id, htmlFor, size, ...rest },
+    {
+      className,
+      defaultValue,
+      options,
+      error,
+      id,
+      htmlFor,
+      sizeVariant,
+      ...rest
+    },
     ref
   ) => {
     let selectOptions: ReactNode[] = [];
@@ -91,7 +100,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <SelectWrapper className={className}>
-        {size === 'small' ? (
+        {sizeVariant === 'small' ? (
           <StyledMiniDownIcon color={error ? 'red' : undefined} />
         ) : (
           <StyledDownIcon color={error ? 'red' : undefined} />
@@ -102,7 +111,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           id={id || htmlFor}
           ref={ref}
           error={error}
-          size={size}
+          sizeVariant={sizeVariant}
         >
           {selectOptions}
         </SelectBase>
