@@ -22,7 +22,7 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   placeholder?: string;
   required?: boolean;
   type?: string;
-  validated?: boolean;
+  valid?: boolean;
 };
 
 export type InputWrapperProps = InputProps & {
@@ -59,7 +59,7 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   (
-    { error, htmlFor, className, id, validated, component: Component, ...rest },
+    { error, htmlFor, className, id, valid, component: Component, ...rest },
     ref
   ) => {
     return (
@@ -82,7 +82,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
           />
         )}
         {error && <StyledAlertIcon color="red" />}
-        {validated && <StyledCheckCircledIcon color="green" />}
+        {valid && <StyledCheckCircledIcon color="green" />}
       </Box>
     );
   }
