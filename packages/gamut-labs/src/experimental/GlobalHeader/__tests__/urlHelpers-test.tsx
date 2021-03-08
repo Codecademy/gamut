@@ -22,6 +22,6 @@ describe('formatUrlWithRedirect', () => {
       window.location + '/catalog?redirect=' + initialRedirectParam;
     const response = formatUrlWithRedirect(signupPath, redirectUrl);
     const uri = new URL(response);
-    expect(uri.searchParams.get('redirect')).toBe('initialRedirectParam');
+    expect(uri.searchParams.get('redirect')).toBe(initialRedirectParam);
   });
 });
