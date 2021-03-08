@@ -101,9 +101,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <SelectWrapper className={className}>
         {sizeVariant === 'small' ? (
-          <StyledMiniDownIcon color={error ? 'red' : undefined} />
+          <StyledMiniDownIcon color={error ? 'red' : 'navy'} />
         ) : (
-          <StyledDownIcon color={error ? 'red' : undefined} />
+          <StyledDownIcon color={error ? 'red' : 'navy'} />
         )}
         <SelectBase
           {...rest}
