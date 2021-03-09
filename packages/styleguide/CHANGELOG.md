@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.4.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.3.0...@codecademy/styleguide@30.4.0) (2021-03-09)
+
+
+### Features
+
+* **Icons:** Adds new icons for Form updates ([5a21007](https://github.com/Codecademy/client-modules/commit/5a21007c5dc0a89a824ad6e561195af78e94513b))
+
+
+
 ## [30.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.1...@codecademy/styleguide@30.3.0) (2021-03-09)
 
 
