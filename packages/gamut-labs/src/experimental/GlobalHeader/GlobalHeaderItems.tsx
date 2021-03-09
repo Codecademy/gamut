@@ -353,6 +353,7 @@ export const login: AppHeaderTextButtonItem = {
   href: '/login',
   trackingTarget: 'topnav_login',
   type: 'text-button',
+  redirect: true,
 };
 
 export const signUp: AppHeaderFillButtonItem = {
@@ -362,4 +363,5 @@ export const signUp: AppHeaderFillButtonItem = {
   href: '/register',
   trackingTarget: 'topnav_signup',
   type: 'fill-button',
+  redirect: true,
 };
