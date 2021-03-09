@@ -41,7 +41,6 @@ export const conditionalStyles = ({
       border-color: ${colorStates.activated.borderColor};
     `;
   }
-  return;
 };
 
 export const iconBaseStyles = css`
