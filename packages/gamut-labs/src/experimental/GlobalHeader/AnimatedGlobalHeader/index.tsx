@@ -20,8 +20,7 @@ export const AnimatedGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <BasicGlobalHeader
         className={cx(
           styles.stickyHeader,
-          isInHeaderRegion && [styles.transitionFadeOut, styles.transitionSlow],
-          !isInHeaderRegion && styles.transitionFast
+          isInHeaderRegion && styles.transitionFadeOut
         )}
         {...props}
       />
