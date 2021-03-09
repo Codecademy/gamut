@@ -1,7 +1,7 @@
 {
   "name": "@codecademy/gamut-labs",
   "description": "Brand and experimental component library for Codecademy",
-  "version": "11.0.4",
+  "version": "11.0.5",
   "author": "Codecademy Engineering <dev@codecademy.com>",
   "sideEffects": [
     "*.css",
@@ -23,11 +23,12 @@
     "react-dom": ">=16.8.1"
   },
   "dependencies": {
-    "@codecademy/gamut": "^26.2.1",
+    "@codecademy/gamut": "^26.2.2",
     "@codecademy/gamut-styles": "^8.3.1",
     "@codecademy/gamut-system": "^0.5.1",
     "@codecademy/gamut-tests": "^2.2.1",
     "classnames": "^2.2.5",
+    "react-focus-on": "^3.5.1",
     "react-hotkeys-hook": "^2.3.1",
     "react-use": "15.3.8"
   },
