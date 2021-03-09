@@ -1,6 +1,23 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
+const colorStates = {
+  base: {
+    color: theme.colors.navy,
+    placeholder: theme.colors[`gray-500`],
+    backgroundColor: theme.colors.white,
+    borderColor: theme.colors['gray-200'],
+  },
+  hover: { borderColor: theme.colors.hyper },
+  disabled: {
+    color: theme.colors[`gray-500`],
+    backgroundColor: theme.colors[`gray-100`],
+    borderColor: theme.colors[`gray-500`],
+  },
+  error: { color: theme.colors.red, borderColor: theme.colors.red },
+  activated: { borderColor: theme.colors.navy },
+};
+
 export type conditionalStyleProps = {
   error?: boolean;
   activated?: boolean;
@@ -12,16 +29,16 @@ export const conditionalStyles = ({
 }: conditionalStyleProps) => {
   const conditionalStyle = error
     ? css`
-        color: ${theme.colors.red};
-        border-color: ${theme.colors.red} !important;
+        color: ${colorStates.error.color};
+        border-color: ${colorStates.error.borderColor};
 
         &:focus {
-          box-shadow: 0 0 0 1px ${theme.colors.red};
+          box-shadow: 0 0 0 1px ${colorStates.error.borderColor};
         }
       `
     : activated
     ? css`
-        border-color: ${theme.colors.navy};
+        border-color: ${colorStates.activated.borderColor};
       `
     : null;
   return conditionalStyle;
@@ -42,7 +59,7 @@ export const iconStyles = css`
 `;
 
 export const formBaseStyles = css`
-  color: ${theme.colors.navy};
+  color: ${colorStates.base.color};
   font-weight: normal;
   font-size: ${theme.fontSize[16]};
 `;
@@ -51,31 +68,31 @@ export const formBaseFieldStyles = css`
   ${formBaseStyles}
   width: 100%;
   outline: none;
-  background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors['gray-200']};
+  background-color: ${colorStates.base.backgroundColor};
+  border: 1px solid ${colorStates.base.borderColor};
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
   padding-right: 2.5rem;
   min-width: auto;
 
   &:hover {
-    border-color: ${theme.colors.hyper};
+    border-color: ${colorStates.hover.borderColor};
   }
 
   &:focus {
-    border-color: ${theme.colors.hyper};
-    box-shadow: inset 0 0 0 1px ${theme.colors.hyper};
+    border-color: ${colorStates.hover.borderColor};
+    box-shadow: inset 0 0 0 1px ${colorStates.hover.borderColor};
   }
   &::placeholder {
-    color: ${theme.colors[`gray-500`]};
+    color: ${colorStates.base.placeholder};
     font-style: italic;
   }
 
   &:disabled {
     opacity: 1;
-    background-color: ${theme.colors[`gray-100`]};
-    border-color: ${theme.colors[`gray-500`]};
-    color: ${theme.colors[`gray-500`]};
+    background-color: ${colorStates.disabled.backgroundColor};
+    border-color: ${colorStates.disabled.borderColor};
+    color: ${colorStates.disabled.color};
     font-style: italic;
     cursor: not-allowed;
   }
