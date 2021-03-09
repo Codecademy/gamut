@@ -46,7 +46,7 @@ export const HubCard: React.FC<HubCardProps> = ({
       <StyledText as="div" fontSize={16}>
         {eyebrowTitle}
       </StyledText>
-      <StyledText as="div" fontSize={22}>
+      <StyledText as="div" fontSize={22} fontWeight="title">
         {title}
       </StyledText>
     </Box>
