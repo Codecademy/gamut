@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [30.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.0...@codecademy/styleguide@30.2.1) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
+## [30.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.3...@codecademy/styleguide@30.2.0) (2021-03-08)
+
+
+### Features
+
+* **NotificationItemNew:** map notif type to icon if no image url provided ([7198f23](https://github.com/Codecademy/client-modules/commit/7198f23e64b79ab7b68489c7ea1df11d7c62a704))
+
+
+
+### [30.1.3](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.2...@codecademy/styleguide@30.1.3) (2021-03-08)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ### [30.1.2](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.1...@codecademy/styleguide@30.1.2) (2021-03-05)
 
 
