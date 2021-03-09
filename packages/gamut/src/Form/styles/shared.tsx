@@ -27,21 +27,21 @@ export const conditionalStyles = ({
   error,
   activated,
 }: conditionalStyleProps) => {
-  const conditionalStyle = error
-    ? css`
-        color: ${colorStates.error.color};
-        border-color: ${colorStates.error.borderColor};
+  if (error) {
+    return css`
+      color: ${colorStates.error.color};
+      border-color: ${colorStates.error.borderColor};
 
-        &:focus {
-          box-shadow: 0 0 0 1px ${colorStates.error.borderColor};
-        }
-      `
-    : activated
-    ? css`
-        border-color: ${colorStates.activated.borderColor};
-      `
-    : null;
-  return conditionalStyle;
+      &:focus {
+        box-shadow: 0 0 0 1px ${colorStates.error.borderColor};
+      }
+    `;
+  } else if (activated) {
+    return css`
+      border-color: ${colorStates.activated.borderColor};
+    `;
+  }
+  return;
 };
 
 export const iconBaseStyles = css`
