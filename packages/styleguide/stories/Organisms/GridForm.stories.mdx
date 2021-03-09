@@ -508,9 +508,10 @@ We can include the tooltip
           fields={[
             {
               toolTip: {
-                id: 'yolo',
-                position: 'bottom-right',
-                children: 'fasdfas',
+                id: 'tooltip-input',
+                position: 'bottom-left',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
               },
               label: 'Tool input',
               name: 'tooltip-input',
@@ -519,7 +520,7 @@ We can include the tooltip
             },
             {
               toolTip: {
-                id: 'yolo',
+                id: 'tooltip-select',
                 theme: 'dark',
                 position: 'bottom-right',
                 children: (
@@ -542,7 +543,7 @@ We can include the tooltip
           submit={{
             contents: 'Submit',
             size: 12,
-            theme: 'brand-blue',
+            theme: 'hyper',
           }}
         />
       </>
