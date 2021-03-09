@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.1.0...@codecademy/gamut-icons@4.2.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
 ## [4.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-icons@4.0.0...@codecademy/gamut-icons@4.1.0) (2021-03-04)
 
 
