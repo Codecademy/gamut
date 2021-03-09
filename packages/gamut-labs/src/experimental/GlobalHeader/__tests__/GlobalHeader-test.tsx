@@ -96,30 +96,6 @@ const renderGlobalHeader = (props: GlobalHeaderProps) => {
   );
 };
 
-const expectAnimatedGlobalHeader = () => {
-  expect(screen.findByTestId('animated-global-header')).toBeTruthy;
-  expect(screen.findByTestId('basic-global-header')).toBeFalsy;
-};
-
-describe('AnimatedGlobalHeader', () => {
-  test('animated global header displays when "animated" prop is true for anonymous users', () => {
-    renderGlobalHeader({ ...anonHeaderProps, animated: true });
-    expectAnimatedGlobalHeader();
-  });
-  test('animated global header displays when "animated" prop is true for anonymous users (variants)', () => {
-    renderGlobalHeader({ ...anonLandingHeaderProps, animated: true });
-    expectAnimatedGlobalHeader();
-  });
-  test('animated global header displays when "animated" prop is true for login page', () => {
-    renderGlobalHeader({ ...anonLoginHeaderProps, animated: true });
-    expectAnimatedGlobalHeader();
-  });
-  test('animated global header displays when "animated" prop is true for login page', () => {
-    renderGlobalHeader({ ...anonSignUpHeaderProps, animated: true });
-    expectAnimatedGlobalHeader();
-  });
-});
-
 describe('GlobalHeader', () => {
   describe('anonymous users', () => {
     beforeEach(() => {
