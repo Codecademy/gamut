@@ -19,6 +19,7 @@ export * from './Card/CardShell';
 export * from './ContentContainer';
 export * from './FlexBox';
 export * from './FlexGrid';
+export * from './FocusTrap';
 export * from './Form';
 export * from './GridForm';
 export * from './HiddenText';
