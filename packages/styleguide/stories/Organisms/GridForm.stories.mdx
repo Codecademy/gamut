@@ -498,7 +498,7 @@ field's value in a parent component before onSubmit gets triggered.
 
 ## With tooltip
 
-We can include the tooltip
+A field can now include a tooltip
 
 <Canvas>
   <Story name="Tooltip">
@@ -534,6 +534,62 @@ We can include the tooltip
               type: 'select',
               validation: {
                 required: 'Please select an option',
+              },
+            },
+            {
+              toolTip: {
+                id: 'tooltip-textarea',
+                position: 'bottom-left',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'Write a paragraph about tooltips',
+              name: 'textarea-input',
+              size: 12,
+              type: 'textarea',
+              validation: {
+                required: 'Please write something about tooltips!',
+              },
+            },
+            {
+              toolTip: {
+                id: 'tooltip-radio-group',
+                position: 'bottom-left',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'Preferred Modern Artist',
+              name: 'artist',
+              options: [
+                {
+                  label: 'Taylor Swift',
+                  value: 'taylor-swift',
+                },
+                {
+                  label: 'Beyonce',
+                  value: 'beyonce',
+                },
+              ],
+              size: 3,
+              type: 'radio-group',
+              validation: {
+                required: 'You gotta pick one!',
+              },
+            },
+            {
+              toolTip: {
+                id: 'tooltip-checkbox',
+                position: 'bottom-left',
+                children:
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+              },
+              label: 'End User License Agreement',
+              description: 'I promise that I read it',
+              name: 'eula-checkbox-required',
+              size: 4,
+              type: 'checkbox',
+              validation: {
+                required: 'Please check the box to agree to the terms.',
               },
             },
           ]}

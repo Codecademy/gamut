@@ -1,5 +1,5 @@
 import { mount, ReactWrapper } from 'enzyme';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 import { ToolTipProps } from '../../../ToolTip';
 import {
@@ -24,7 +24,6 @@ import { GridFormRadioGroupInput } from '../GridFormRadioGroupInput';
 import { GridFormSelectInput } from '../GridFormSelectInput';
 import { GridFormTextArea } from '../GridFormTextArea';
 import { GridFormTextInput } from '../GridFormTextInput';
-import { GridFormToolTipWrapper } from '../GridFormToolTipWrapper';
 import { GridFormToolTip } from '../GridFromToolTip';
 
 export const renderGridFormSelectInput = (
@@ -104,17 +103,6 @@ export const renderGridFormToolTip = (
   extraProps: ToolTipProps
 ): ReactWrapper => {
   return mount(<GridFormToolTip tooltip={extraProps} />);
-};
-
-export const renderGridFormToolTipWrapper = (
-  tooltip: ToolTipProps,
-  children: ReactNode
-): ReactWrapper => {
-  return mount(
-    <GridFormToolTipWrapper tooltip={tooltip}>
-      {children}
-    </GridFormToolTipWrapper>
-  );
 };
 
 export const getComponent = (componentName: string, extraProps: any) => {

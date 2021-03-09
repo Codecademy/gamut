@@ -51,14 +51,12 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'custom':
         return (
-          <GridFormToolTipWrapper tooltip={field.toolTip}>
-            <GridFormCustomInput
-              field={field}
-              register={register}
-              setValue={setValue}
-              error={error}
-            />
-          </GridFormToolTipWrapper>
+          <GridFormCustomInput
+            field={field}
+            register={register}
+            setValue={setValue}
+            error={error}
+          />
         );
 
       case 'radio-group':
@@ -72,24 +70,20 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       case 'select':
         return (
-          <GridFormToolTipWrapper tooltip={field.toolTip}>
-            <GridFormSelectInput
-              error={!!error}
-              field={field}
-              register={register}
-            />
-          </GridFormToolTipWrapper>
+          <GridFormSelectInput
+            error={!!error}
+            field={field}
+            register={register}
+          />
         );
 
       case 'file':
         return (
-          <GridFormToolTipWrapper tooltip={field.toolTip}>
-            <GridFormFileInput
-              error={!!error}
-              field={field}
-              register={register}
-            />
-          </GridFormToolTipWrapper>
+          <GridFormFileInput
+            error={!!error}
+            field={field}
+            register={register}
+          />
         );
 
       case 'textarea':
@@ -99,24 +93,24 @@ export const GridFormInputGroup: React.FC<GridFormInputGroupProps> = ({
 
       default:
         return (
-          <GridFormToolTipWrapper tooltip={field.toolTip}>
-            <GridFormTextInput
-              error={!!error}
-              field={field}
-              register={register}
-            />
-          </GridFormToolTipWrapper>
+          <GridFormTextInput
+            error={!!error}
+            field={field}
+            register={register}
+          />
         );
     }
   };
 
   const label = (
-    <StyledFormGroupLabel
-      disabled={field.disabled}
-      htmlFor={field.id || field.name}
-    >
-      {field.label}
-    </StyledFormGroupLabel>
+    <GridFormToolTipWrapper tooltip={field.toolTip}>
+      <StyledFormGroupLabel
+        disabled={field.disabled}
+        htmlFor={field.id || field.name}
+      >
+        {field.label}
+      </StyledFormGroupLabel>
+    </GridFormToolTipWrapper>
   );
 
   return (
