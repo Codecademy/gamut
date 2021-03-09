@@ -13,17 +13,11 @@ import React, { useRef, useState } from 'react';
 export const PopoverExample = (args: PopoverProps) => {
   const [open, setOpen] = useState(false);
   const activeElRef = useRef<HTMLDivElement>(null);
-
+  const toggleOpen = () => setOpen(!open);
   return (
     <>
       <Box ref={activeElRef}>
-        <FillButton
-          onClick={() => {
-            setOpen(true);
-          }}
-        >
-          Open Popover
-        </FillButton>
+        <FillButton onClick={toggleOpen}>Open Popover</FillButton>
       </Box>
       <Container>
         <Popover
