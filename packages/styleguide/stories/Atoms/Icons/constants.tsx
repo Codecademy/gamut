@@ -1,3 +1,4 @@
+// eslint-disable-next-line local-rules/gamut-import-paths
 import * as icons from '@codecademy/gamut-icons/src/icons/regular';
 import { keys, omit, pick } from 'lodash';
 
