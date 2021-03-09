@@ -30,6 +30,7 @@ Array [
   "FillButton",
   "FlexBox",
   "FlexGrid",
+  "FocusTrap",
   "Form",
   "FormError",
   "FormGroup",
