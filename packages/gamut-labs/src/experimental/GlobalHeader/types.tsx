@@ -33,6 +33,7 @@ type LoggedInHeader = BaseHeader & {
 export type AnonHeaderVariant = 'landing' | 'login' | 'signup';
 
 export type AnonHeader = BaseHeader & {
+  redirectParam?: string;
   type: 'anon';
   variant?: AnonHeaderVariant;
 };

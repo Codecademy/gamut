@@ -8,6 +8,7 @@ import {
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
 
+import { formatUrlWithRedirect } from '../GlobalHeader/urlHelpers';
 import { AppHeaderDropdown } from './AppHeaderElements/AppHeaderDropdown';
 import { AppHeaderLink } from './AppHeaderElements/AppHeaderLink';
 import { AppHeaderLogo } from './AppHeaderElements/AppHeaderLogo';
@@ -21,6 +22,7 @@ import { FormattedAppHeaderItems } from './types';
 export type AppHeaderProps = {
   action: AppHeaderClickHandler;
   items: FormattedAppHeaderItems;
+  redirectParam?: string;
 };
 
 export const StyledAppBar = styled(AppBar)`
@@ -34,7 +36,8 @@ export const AppHeaderFillButton = styled(FillButton)(focusStyles);
 
 export const mapItemToElement = (
   action: AppHeaderClickHandler,
-  item: AppHeaderItem
+  item: AppHeaderItem,
+  redirectParam?: string
 ): ReactNode => {
   switch (item.type) {
     case 'logo':
@@ -51,7 +54,11 @@ export const mapItemToElement = (
         <AppHeaderTextButton
           onClick={(event: React.MouseEvent) => action(event, item)}
           data-testid={item.dataTestId}
-          href={item.href}
+          href={
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
+              : item.href
+          }
         >
           {item.text}
         </AppHeaderTextButton>
@@ -60,7 +67,11 @@ export const mapItemToElement = (
       return (
         <AppHeaderFillButton
           data-testid={item.dataTestId}
-          href={item.href}
+          href={
+            item.redirect
+              ? formatUrlWithRedirect(item.href, redirectParam)
+              : item.href
+          }
           onClick={(event: React.MouseEvent) => action(event, item)}
         >
           {item.text}
@@ -69,7 +80,11 @@ export const mapItemToElement = (
   }
 };
 
-export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
+export const AppHeader: React.FC<AppHeaderProps> = ({
+  action,
+  items,
+  redirectParam,
+}) => {
   const mapItemsToElement = <T extends AppHeaderItem[]>(items: T) => {
     return items.map((item, index) => (
       <Box
@@ -77,7 +92,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({ action, items }) => {
         marginLeft={index === 0 ? 0 : 8}
         marginRight={index === items.length - 1 ? 0 : 8}
       >
-        {mapItemToElement(action, item)}
+        {mapItemToElement(action, item, redirectParam)}
       </Box>
     ));
   };
