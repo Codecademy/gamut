@@ -67,6 +67,7 @@ Array [
   "Select",
   "SideMenu",
   "SkipToContent",
+  "SkipToContentTarget",
   "Spinner",
   "SplitInterstitial",
   "StrokeButton",

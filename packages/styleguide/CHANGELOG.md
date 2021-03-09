@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.3.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.1...@codecademy/styleguide@30.3.0) (2021-03-09)
+
+
+### Features
+
+* **SkipToContent:** SkipToContent + SkipToContent target visual identity + emotion [GM-158] [EGG-701]  ([6e35189](https://github.com/Codecademy/client-modules/commit/6e351891cf499968d2ebd846c36cb299788b0ab5))
+
+
+
+### [30.2.1](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.2.0...@codecademy/styleguide@30.2.1) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/styleguide
+
+
+
+
+
 ## [30.2.0](https://github.com/Codecademy/client-modules/compare/@codecademy/styleguide@30.1.3...@codecademy/styleguide@30.2.0) (2021-03-08)
 
 
