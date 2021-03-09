@@ -102,7 +102,13 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         display={{ base: 'none', md: 'block' }}
         height={theme.elements.headerHeight}
       >
-        <AppHeader action={props.action} items={getAppHeaderItems(props)} />
+        <AppHeader
+          action={props.action}
+          items={getAppHeaderItems(props)}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
+        />
       </Box>
       <Box
         display={{ base: 'block', md: 'none' }}
@@ -114,6 +120,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           action={props.action}
           items={getMobileAppHeaderItems(props)}
           renderSearch={props.renderSearch?.mobile}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
         />
       </Box>
     </>
