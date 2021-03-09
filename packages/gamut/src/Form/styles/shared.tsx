@@ -36,7 +36,8 @@ export const conditionalStyles = ({
         box-shadow: 0 0 0 1px ${colorStates.error.borderColor};
       }
     `;
-  } else if (activated) {
+  }
+  if (activated) {
     return css`
       border-color: ${colorStates.activated.borderColor};
     `;
