@@ -1,12 +1,16 @@
 import { pxRem, theme } from '@codecademy/gamut-styles';
 import { css } from '@emotion/react';
 
-export type errorStateProps = {
+export type conditionalStyleProps = {
   error?: boolean;
+  activated?: boolean;
 };
 
-export const errorStyle = ({ error }: errorStateProps) => {
-  const errorStyle = error
+export const conditionalStyles = ({
+  error,
+  activated,
+}: conditionalStyleProps) => {
+  const conditionalStyle = error
     ? css`
         color: ${theme.colors.red};
         border-color: ${theme.colors.red} !important;
@@ -15,8 +19,12 @@ export const errorStyle = ({ error }: errorStateProps) => {
           box-shadow: 0 0 0 1px ${theme.colors.red};
         }
       `
+    : activated
+    ? css`
+        border-color: ${theme.colors.navy};
+      `
     : null;
-  return errorStyle;
+  return conditionalStyle;
 };
 
 export const iconBaseStyles = css`
@@ -44,7 +52,7 @@ export const formBaseFieldStyles = css`
   width: 100%;
   outline: none;
   background-color: ${theme.colors.white};
-  border: 1px solid ${theme.colors[`blue-900`]};
+  border: 1px solid ${theme.colors['gray-200']};
   border-radius: 2px;
   transition: all 0.2s ease-in-out;
   padding-right: 2.5rem;

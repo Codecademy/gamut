@@ -1,12 +1,12 @@
 import { AlertIcon, CheckCircledIcon } from '@codecademy/gamut-icons';
 import { css } from '@emotion/react';
 import styled, { StyledComponent } from '@emotion/styled';
-import React, { forwardRef, InputHTMLAttributes } from 'react';
+import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
 
 import { Box } from '../Box';
 import {
-  errorStateProps,
-  errorStyle,
+  conditionalStyleProps,
+  conditionalStyles,
   formBaseFieldStyles,
   formFieldStyles,
   iconStyles,
@@ -15,6 +15,7 @@ import {
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
+  activated?: boolean;
   error?: boolean;
   htmlFor?: string;
   label?: string;
@@ -39,16 +40,19 @@ const inputIconStyles = css`
   ${iconStyles}
 `;
 
-export const ReactRecurlyStyles = ({ error }: errorStateProps) => css`
+export const ReactRecurlyStyles = ({
+  error,
+  activated,
+}: conditionalStyleProps) => css`
   ${formBaseFieldStyles}
-  ${errorStyle({ error })}
+  ${conditionalStyles({ error, activated })}
   box-sizing: border-box;
   text-indent: 0;
 `;
 
 const InputElement = styled.input<InputProps>`
   ${formFieldStyles}
-  ${errorStyle}
+  ${conditionalStyles}
   box-sizing: border-box;
   text-indent: 0;
 `;
@@ -59,14 +63,17 @@ const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
   ({ error, className, id, valid, component: Component, ...rest }, ref) => {
+    const [activated, setActivated] = useState(false);
+
     return (
-      <Box position="relative">
+      <Box position="relative" onChange={() => setActivated(true)}>
         {Component ? (
           <Component
             {...rest}
             id={id || rest.htmlFor}
             ref={ref}
             error={error}
+            activated={activated}
             className={className}
           />
         ) : (
@@ -76,6 +83,7 @@ export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
             ref={ref}
             error={error}
             className={className}
+            activated={activated}
           />
         )}
         {error && <StyledAlertIcon color="red" />}

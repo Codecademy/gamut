@@ -5,13 +5,23 @@ import {
 import { pxRem, variant } from '@codecademy/gamut-styles';
 import styled from '@emotion/styled';
 import { each, isArray, isObject } from 'lodash';
-import React, { forwardRef, ReactNode, SelectHTMLAttributes } from 'react';
+import React, {
+  forwardRef,
+  ReactNode,
+  SelectHTMLAttributes,
+  useState,
+} from 'react';
 
 import { Box } from '../Box';
-import { errorStyle, formFieldStyles, iconStyles } from './styles/shared';
+import {
+  conditionalStyles,
+  formFieldStyles,
+  iconStyles,
+} from './styles/shared';
 
 export type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   error?: boolean;
+  activated?: boolean;
   htmlFor?: string;
   options?: string[] | Record<string, number | string>;
   id?: string;
@@ -54,7 +64,7 @@ const StyledMiniDownIcon = styled(MiniChevronDownIcon)`
 
 const SelectBase = styled.select<SelectProps>`
   ${formFieldStyles}
-  ${errorStyle}
+  ${conditionalStyles}
   ${selectSizeVariants}
   display: block;
   -moz-appearance: none;
@@ -67,6 +77,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
   ) => {
+    const [activated, setActivated] = useState(false);
     let selectOptions: ReactNode[] = [];
 
     if (isArray(options)) {
@@ -90,7 +101,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     }
 
     return (
-      <SelectWrapper className={className}>
+      <SelectWrapper className={className} onChange={() => setActivated(true)}>
         {sizeVariant === 'small' ? (
           <StyledMiniDownIcon color={error ? 'red' : 'navy'} />
         ) : (
@@ -103,6 +114,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
+          activated={activated}
         >
           {selectOptions}
         </SelectBase>

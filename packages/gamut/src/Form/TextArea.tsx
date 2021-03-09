@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import React, { forwardRef, TextareaHTMLAttributes } from 'react';
+import React, { forwardRef, TextareaHTMLAttributes, useState } from 'react';
 
-import { errorStyle, formFieldStyles } from './styles/shared';
+import { Box } from '../Box';
+import { conditionalStyles, formFieldStyles } from './styles/shared';
 
 export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   className?: string;
+  activated?: boolean;
   error?: boolean;
   htmlFor?: string;
   name?: string;
@@ -14,20 +16,24 @@ export type TextAreaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 
 const StyledTextArea = styled.textarea`
   ${formFieldStyles}
-  ${errorStyle}
+  ${conditionalStyles}
   position: initial;
 `;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   ({ error, className, id, ...rest }, ref) => {
+    const [activated, setActivated] = useState(false);
     return (
-      <StyledTextArea
-        {...rest}
-        id={id || rest.htmlFor}
-        className={className}
-        ref={ref}
-        error={error}
-      />
+      <Box onChange={() => setActivated(true)}>
+        <StyledTextArea
+          {...rest}
+          id={id || rest.htmlFor}
+          className={className}
+          ref={ref}
+          error={error}
+          activated={activated}
+        />
+      </Box>
     );
   }
 );
