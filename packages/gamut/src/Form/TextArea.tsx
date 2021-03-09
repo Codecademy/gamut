@@ -19,11 +19,11 @@ const StyledTextArea = styled.textarea`
 `;
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ error, htmlFor, className, id, ...rest }, ref) => {
+  ({ error, className, id, ...rest }, ref) => {
     return (
       <StyledTextArea
         {...rest}
-        id={id || htmlFor}
+        id={id || rest.htmlFor}
         className={className}
         ref={ref}
         error={error}

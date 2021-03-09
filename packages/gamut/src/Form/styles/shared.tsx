@@ -23,7 +23,6 @@ export const iconBaseStyles = css`
   position: absolute;
   pointer-events: none;
   color: currentColor;
-  background-color: ${theme.colors.white};
 `;
 
 export const iconStyles = css`

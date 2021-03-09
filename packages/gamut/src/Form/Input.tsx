@@ -58,24 +58,21 @@ const StyledAlertIcon = styled(AlertIcon)(inputIconStyles);
 const StyledCheckCircledIcon = styled(CheckCircledIcon)(inputIconStyles);
 
 export const Input = forwardRef<HTMLInputElement, InputWrapperProps>(
-  (
-    { error, htmlFor, className, id, valid, component: Component, ...rest },
-    ref
-  ) => {
+  ({ error, className, id, valid, component: Component, ...rest }, ref) => {
     return (
       <Box position="relative">
         {Component ? (
           <Component
-            id={id || htmlFor}
+            {...rest}
+            id={id || rest.htmlFor}
             ref={ref}
             error={error}
             className={className}
-            {...rest}
           />
         ) : (
           <InputElement
             {...rest}
-            id={id || htmlFor}
+            id={id || rest.htmlFor}
             ref={ref}
             error={error}
             className={className}

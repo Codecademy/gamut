@@ -64,16 +64,7 @@ const SelectBase = styled.select<SelectProps>`
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
-    {
-      className,
-      defaultValue,
-      options,
-      error,
-      id,
-      htmlFor,
-      sizeVariant,
-      ...rest
-    },
+    { className, defaultValue, options, error, id, sizeVariant, ...rest },
     ref
   ) => {
     let selectOptions: ReactNode[] = [];
@@ -108,7 +99,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         <SelectBase
           {...rest}
           defaultValue={defaultValue || ''}
-          id={id || htmlFor}
+          id={id || rest.htmlFor}
           ref={ref}
           error={error}
           sizeVariant={sizeVariant}
