@@ -65,11 +65,11 @@ const freeHeaderProps: GlobalHeaderProps = {
   user,
 };
 
-const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
+const freeShowTrialCTAHeaderProps: GlobalHeaderProps = {
   action,
   type: 'free',
   user: {
-    hasCompletedTrial: true,
+    proTrialCheckoutUrl: 'test-url',
     ...user,
   },
 };
@@ -252,14 +252,14 @@ describe('GlobalHeader', () => {
       screen.getByTestId('avatar');
     });
 
-    test('tryProForFree', () => {
-      screen.getByText(tryProForFree.text);
+    test('upgradeToPro', () => {
+      screen.getByText(upgradeToPro.text);
     });
 
-    describe('has completed trial', () => {
-      test('upgradeToPro', () => {
-        renderGlobalHeader(freeCompletedTrialHeaderProps);
-        screen.getByText(upgradeToPro.text);
+    describe('show trial CTA', () => {
+      test('tryProForFree', () => {
+        renderGlobalHeader(freeShowTrialCTAHeaderProps);
+        screen.getByText(tryProForFree('').text);
       });
     });
   });

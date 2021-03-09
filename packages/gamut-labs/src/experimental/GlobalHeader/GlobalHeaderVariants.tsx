@@ -135,7 +135,11 @@ export const freeHeaderItems = (
   renderSearch && rightItems.push(search(renderSearch));
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(freeProfile(user));
-  rightItems.push(user.hasCompletedTrial ? upgradeToPro : tryProForFree);
+  rightItems.push(
+    user.proTrialCheckoutUrl
+      ? tryProForFree(user.proTrialCheckoutUrl)
+      : upgradeToPro
+  );
 
   return {
     left: leftItems,
@@ -162,7 +166,11 @@ export const freeMobileHeaderItems = (
     freeProfile(user, true),
   ];
 
-  mainMenuItems.push(user.hasCompletedTrial ? upgradeToPro : tryProForFree);
+  mainMenuItems.push(
+    user.proTrialCheckoutUrl
+      ? tryProForFree(user.proTrialCheckoutUrl)
+      : upgradeToPro
+  );
 
   return {
     left: leftItems,

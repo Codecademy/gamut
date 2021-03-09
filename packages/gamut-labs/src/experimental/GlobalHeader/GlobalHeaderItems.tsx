@@ -338,14 +338,16 @@ export const proProfile = (
   };
 };
 
-export const tryProForFree: AppHeaderFillButtonItem = {
+export const tryProForFree = (
+  checkoutUrl: string
+): AppHeaderFillButtonItem => ({
   dataTestId: 'upgrade-link',
   id: 'try-pro',
   text: 'Try Pro For Free',
-  href: '/pro/membership',
+  href: checkoutUrl,
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
-};
+});
 
 export const upgradeToPro: AppHeaderFillButtonItem = {
   dataTestId: 'upgrade-link',
