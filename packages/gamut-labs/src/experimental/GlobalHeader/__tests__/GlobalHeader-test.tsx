@@ -15,6 +15,8 @@ import {
   pricingDropdown,
   resourcesDropdown,
   signUp,
+  tryProForFree,
+  unpausePro,
   upgradeToPro,
 } from '../GlobalHeaderItems';
 import { User } from '../types';
@@ -63,10 +65,28 @@ const freeHeaderProps: GlobalHeaderProps = {
   user,
 };
 
+const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'free',
+  user: {
+    hasCompletedTrial: true,
+    ...user,
+  },
+};
+
 const proHeaderProps: GlobalHeaderProps = {
   action,
   type: 'pro',
   user,
+};
+
+const proPausedHeaderProps: GlobalHeaderProps = {
+  action,
+  type: 'pro',
+  user: {
+    isPaused: true,
+    ...user,
+  },
 };
 
 const loadingHeaderProps: GlobalHeaderProps = {
@@ -232,8 +252,15 @@ describe('GlobalHeader', () => {
       screen.getByTestId('avatar');
     });
 
-    test('upgradeToPro', () => {
-      screen.getByText(upgradeToPro.text);
+    test('tryProForFree', () => {
+      screen.getByText(tryProForFree.text);
+    });
+
+    describe('has completed trial', () => {
+      test('upgradeToPro', () => {
+        renderGlobalHeader(freeCompletedTrialHeaderProps);
+        screen.getByText(upgradeToPro.text);
+      });
     });
   });
 
@@ -264,6 +291,13 @@ describe('GlobalHeader', () => {
 
     test('profileDropdown', () => {
       screen.getByTestId('avatar');
+    });
+
+    describe('is paused', () => {
+      test('unpause', () => {
+        renderGlobalHeader(proPausedHeaderProps);
+        screen.getByText(unpausePro.text);
+      });
     });
   });
 

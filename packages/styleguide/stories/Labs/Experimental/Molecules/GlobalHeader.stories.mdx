@@ -70,8 +70,10 @@ The following are available variations for the GlobalHeader component.
 
 ### Free User
 
+#### Free User - Default
+
 <Canvas>
-  <Story name="Free User">
+  <Story name="Free User - Default">
     {(args) => (
       <Box position="relative" zIndex={0}>
         <GlobalHeader
@@ -84,6 +86,25 @@ The following are available variations for the GlobalHeader component.
           }}
         />
       </Box>
+    )}
+  </Story>
+</Canvas>
+
+#### Free User - Trial Completed
+
+<Canvas>
+  <Story name="Free User - Trial Completed">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="free"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          hasCompletedTrial: true,
+        }}
+      />
     )}
   </Story>
 </Canvas>
@@ -102,6 +123,25 @@ The following are available variations for the GlobalHeader component.
           avatar:
             'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
           displayName: 'Codey',
+        }}
+      />
+    )}
+  </Story>
+</Canvas>
+
+#### Pro User - Paused
+
+<Canvas>
+  <Story name="Pro User - Paused">
+    {(args) => (
+      <GlobalHeader
+        action={() => {}}
+        type="pro"
+        user={{
+          avatar:
+            'https://www.gravatar.com/avatar/1c959a9a1e2f9f9f1ac06b05cccc1d60?s=150&d=retro',
+          displayName: 'Codey',
+          isPaused: true,
         }}
       />
     )}

@@ -20,6 +20,8 @@ export type User = {
   isAdmin?: boolean;
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
+  isPaused?: boolean;
+  hasCompletedTrial?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
