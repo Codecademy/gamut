@@ -55,13 +55,12 @@ export const Anchor = styled.a<AnchorProps>(
       position: relative;
       &:after {
         content: '';
-        transition: opacity ${timing.fast} ease-in-out;
         position: absolute;
-        left: -0.2em;
-        top: -0.35em;
-        width: calc(100% + 0.4em);
-        height: calc(100% + 0.7em);
-        border-radius: 2px;
+        left: -0.15em;
+        top: -0.25em;
+        width: calc(100% + 0.3em);
+        height: calc(100% + 0.5em);
+        border-radius: 4px;
         border: 2px solid ${theme.colors.hyper};
         opacity: 0;
       }
