@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.5...@codecademy/gamut-labs@11.1.0) (2021-03-09)
+
+
+### Features
+
+* **Global Header:** add redirect parameter ([0d67ea4](https://github.com/Codecademy/client-modules/commit/0d67ea4a93af4b50c1e2f55252a134afe6308f76)), closes [/github.com/codecademy-engineering/Codecademy/blob/develop/webpack/assets/libs/url.ts#L62](https://github.com/Codecademy//github.com/codecademy-engineering/Codecademy/blob/develop/webpack/assets/libs/url.ts/issues/L62)
+
+
+
+### [11.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.4...@codecademy/gamut-labs@11.0.5) (2021-03-09)
+
+
+### Bug Fixes
+
+* Replace focus-trap with focus-lock-on ([d65e3de](https://github.com/Codecademy/client-modules/commit/d65e3de3149a16603039218c81204a914da6c7cd))
+
+
+
+### [11.0.4](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.3...@codecademy/gamut-labs@11.0.4) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [11.0.3](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.2...@codecademy/gamut-labs@11.0.3) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [11.0.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.1...@codecademy/gamut-labs@11.0.2) (2021-03-09)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+### [11.0.1](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.0...@codecademy/gamut-labs@11.0.1) (2021-03-08)
+
+**Note:** Version bump only for package @codecademy/gamut-labs
+
+
+
+
+
+## [11.0.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.5.2...@codecademy/gamut-labs@11.0.0) (2021-03-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **Byline:** use Emotion for styles (#1464)
+
+### Code Refactoring
+
+* **Byline:** use Emotion for styles ([#1464](https://github.com/Codecademy/client-modules/issues/1464)) ([4b76254](https://github.com/Codecademy/client-modules/commit/4b76254cfc91e2cad617b52851447cd366817877))
+
+
+
 ### [10.5.2](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@10.5.1...@codecademy/gamut-labs@10.5.2) (2021-03-05)
 
 
