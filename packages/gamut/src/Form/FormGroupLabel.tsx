@@ -36,7 +36,7 @@ const labelSizeVariants = variant({
 const disabledLabelStyle = ({ disabled }: disabledLabelStyleProps) => {
   if (disabled) {
     return css`
-      color: ${theme.colors[`gray-300`]};
+      color: ${theme.colors[`gray-400`]};
     `;
   }
 };

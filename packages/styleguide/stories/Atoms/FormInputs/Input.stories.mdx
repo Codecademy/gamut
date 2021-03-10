@@ -150,7 +150,7 @@ import { PropsTable } from '~styleguide/blocks';
         label="i am also smol label, but something is wrong."
         error="this is not updog."
       >
-        <Input {...args} />{' '}
+        <Input {...args} />
       </FormGroup>
     )}
   </Story>
@@ -163,8 +163,8 @@ import { PropsTable } from '~styleguide/blocks';
     }}
   >
     {(args) => (
-      <FormGroup label="i am a large label" labelSize="large">
-        <Input {...args} />{' '}
+      <FormGroup label="i am a large disabled label" labelSize="large" disabled>
+        <Input disabled {...args} />{' '}
       </FormGroup>
     )}
   </Story>
@@ -194,7 +194,7 @@ import { PropsTable } from '~styleguide/blocks';
 Sometime you gotta use iframes. It's okay, we understand + we have styles for it! In order to style the iframe as a styled component and pass it into the Input compoenent like so:
 
 ```tsx
-import { Input, ReactRecurlyStyles } from '@codecademy/gamut';
+import { Input, ReactRecurlyStyles, FormGroup } from '@codecademy/gamut';
 import styled from '@emotion/styled';
 import { GnarlyiFrame } from './constants';
 
@@ -202,16 +202,17 @@ const StylediFrame = styled(GnarlyiFrame)`
   ${ReactRecurlyStyles}
 `;
 
-export const SomeWrapper: React.FC = ({ props }) => {
+export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
   return (
-    <>
+    <FormGroup error={errorMessage} disabled={disabled}>
       <Input
         component={StylediFrame}
         onChange={() => {}}
         onBlur={() => {}}
         placeholder="Placeholder"
+        error={errorMessage ? true : false}
       />
-    </>
+    </FormGroup>
   );
 };
 ```
