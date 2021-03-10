@@ -15,7 +15,6 @@ import {
 export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
   className?: string;
-  activated?: boolean;
   error?: boolean;
   htmlFor?: string;
   label?: string;
@@ -26,9 +25,13 @@ export type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   valid?: boolean;
 };
 
+export type StyledInputProps = InputProps & {
+  activated?: boolean;
+};
+
 export type InputWrapperProps = InputProps & {
   component?: StyledComponent<
-    InputProps,
+    StyledInputProps,
     React.DetailedHTMLProps<
       InputHTMLAttributes<HTMLInputElement>,
       HTMLInputElement
@@ -50,7 +53,7 @@ export const ReactRecurlyStyles = ({
   text-indent: 0;
 `;
 
-const InputElement = styled.input<InputProps>`
+const InputElement = styled.input<StyledInputProps>`
   ${formFieldStyles}
   ${conditionalStyles}
   box-sizing: border-box;
