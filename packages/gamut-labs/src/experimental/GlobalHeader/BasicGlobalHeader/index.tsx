@@ -115,7 +115,6 @@ export const BasicGlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
       <Box
         display={{ base: 'block', md: 'none' }}
         height={theme.elements.headerHeight}
-        zIndex={0}
         className={props.className}
       >
         <AppHeaderMobile
