@@ -136,9 +136,7 @@ export const freeHeaderItems = (
   renderNotifications && rightItems.push(notifications(renderNotifications));
   rightItems.push(freeProfile(user));
   rightItems.push(
-    user.hasCompletedTrial
-      ? upgradeToPro
-      : tryProForFree(user.proTrialCheckoutUrl)
+    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
   );
 
   return {
@@ -167,9 +165,7 @@ export const freeMobileHeaderItems = (
   ];
 
   mainMenuItems.push(
-    user.hasCompletedTrial
-      ? upgradeToPro
-      : tryProForFree(user.proTrialCheckoutUrl)
+    user.showProUpgrade ? upgradeToPro : tryProForFree(user.proTrialCheckoutUrl)
   );
 
   return {

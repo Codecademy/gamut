@@ -78,7 +78,7 @@ const freeCompletedTrialHeaderProps: GlobalHeaderProps = {
   action,
   type: 'free',
   user: {
-    hasCompletedTrial: true,
+    showProUpgrade: true,
     ...user,
   },
 };

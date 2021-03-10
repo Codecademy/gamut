@@ -21,8 +21,8 @@ export type User = {
   isCustomerSupport?: boolean;
   isAccountManager?: boolean;
   isPaused?: boolean;
-  hasCompletedTrial?: boolean;
   proTrialCheckoutUrl?: string;
+  showProUpgrade?: boolean;
 };
 
 type LoggedInHeader = BaseHeader & {
