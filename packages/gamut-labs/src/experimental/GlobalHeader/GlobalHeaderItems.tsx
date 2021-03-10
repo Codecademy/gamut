@@ -347,6 +347,7 @@ export const tryProForFree = (
   href: checkoutUrl || '/pro/membership',
   trackingTarget: 'topnav_pro_trial',
   type: 'fill-button',
+  redirect: true,
 });
 
 export const upgradeToPro: AppHeaderFillButtonItem = {
@@ -356,6 +357,7 @@ export const upgradeToPro: AppHeaderFillButtonItem = {
   href: '/pro/membership',
   trackingTarget: 'topnav_pro_upgrade',
   type: 'fill-button',
+  redirect: true,
 };
 
 export const unpausePro: AppHeaderFillButtonItem = {
@@ -365,6 +367,7 @@ export const unpausePro: AppHeaderFillButtonItem = {
   href: '/account/billing',
   trackingTarget: 'topnav_pro_unpause',
   type: 'fill-button',
+  redirect: true,
 };
 
 export const login: AppHeaderTextButtonItem = {
