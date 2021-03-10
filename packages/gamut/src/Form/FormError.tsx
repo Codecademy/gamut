@@ -13,5 +13,5 @@ const ErrorSpan = styled.span`
 `;
 
 export const FormError: React.FC<HTMLAttributes<HTMLSpanElement>> = (props) => {
-  return <ErrorSpan className={props.className} {...props} />;
+  return <ErrorSpan {...props} />;
 };

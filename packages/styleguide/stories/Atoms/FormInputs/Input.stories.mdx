@@ -191,16 +191,13 @@ import { PropsTable } from '~styleguide/blocks';
 
 ### iFrame Inputs
 
-Sometime you gotta use iframes. It's okay, we understand + we have styles for it! In order to style the iframe as a styled component and pass it into the Input compoenent like so:
+In order to style the iframe, we leverage the (withComponent)[https://styled-components.com/docs/api] API from styled-components and our iFrameWrapper.
 
 ```tsx
-import { Input, ReactRecurlyStyles, FormGroup } from '@codecademy/gamut';
-import styled from '@emotion/styled';
+import { Input, iFrameWrapper, FormGroup } from '@codecademy/gamut';
 import { GnarlyiFrame } from './constants';
 
-const StylediFrame = styled(GnarlyiFrame)`
-  ${ReactRecurlyStyles}
-`;
+const StylediFrame = iFrameWrapper.withComponent(GnarlyiFrame);
 
 export const CustomFormGroup: React.FC = ({ errorMessaged, disabled }) => {
   return (

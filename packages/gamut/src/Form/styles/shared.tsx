@@ -33,7 +33,8 @@ export const conditionalStyles = ({
       border-color: ${colorStates.error.borderColor};
 
       &:focus {
-        box-shadow: 0 0 0 1px ${colorStates.error.borderColor};
+        border-color: ${colorStates.error.borderColor};
+        box-shadow: inset 0 0 0 1px ${colorStates.error.borderColor};
       }
     `;
   }
