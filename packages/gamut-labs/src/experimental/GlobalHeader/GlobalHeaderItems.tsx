@@ -367,7 +367,6 @@ export const unpausePro: AppHeaderFillButtonItem = {
   href: '/account/billing',
   trackingTarget: 'topnav_pro_unpause',
   type: 'fill-button',
-  redirect: true,
 };
 
 export const login: AppHeaderTextButtonItem = {
