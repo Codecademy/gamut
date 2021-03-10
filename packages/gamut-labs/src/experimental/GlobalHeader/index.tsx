@@ -105,7 +105,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
         <AppHeader
           action={props.action}
           items={getAppHeaderItems(props)}
-          redirectParam={props.redirectParam}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
         />
       </Box>
       <Box
@@ -118,7 +120,9 @@ export const GlobalHeader: React.FC<GlobalHeaderProps> = (props) => {
           action={props.action}
           items={getMobileAppHeaderItems(props)}
           renderSearch={props.renderSearch?.mobile}
-          redirectParam={props.redirectParam}
+          redirectParam={
+            props.type === 'anon' ? props.redirectParam : undefined
+          }
         />
       </Box>
     </>
