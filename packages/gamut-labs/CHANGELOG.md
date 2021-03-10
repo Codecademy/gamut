@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.5...@codecademy/gamut-labs@11.1.0) (2021-03-09)
+
+
+### Features
+
+* **Global Header:** add redirect parameter ([0d67ea4](https://github.com/Codecademy/client-modules/commit/0d67ea4a93af4b50c1e2f55252a134afe6308f76)), closes [/github.com/codecademy-engineering/Codecademy/blob/develop/webpack/assets/libs/url.ts#L62](https://github.com/Codecademy//github.com/codecademy-engineering/Codecademy/blob/develop/webpack/assets/libs/url.ts/issues/L62)
+
+
+
 ### [11.0.5](https://github.com/Codecademy/client-modules/compare/@codecademy/gamut-labs@11.0.4...@codecademy/gamut-labs@11.0.5) (2021-03-09)
 
 
