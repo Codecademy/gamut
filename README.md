@@ -9,6 +9,10 @@ _Shared node modules for codecademy.com & co_
 
 This repository is a monorepo that we manage using [Lerna](https://lernajs.io/). That means that we publish several packages to npm from the same codebase, including:
 
+[`gamut-kit`: Include in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
+
+- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
+
 [`gamut`: Our React UI component library](/packages/gamut/README.md)
 
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut)
@@ -30,10 +34,6 @@ This repository is a monorepo that we manage using [Lerna](https://lernajs.io/).
 - [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-system.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-system)
 
 [`styleguide`: Styleguide Documentation & storybook development sandbox](/packages/styleguide/README.md)
-
-[`gamut-kit`: Include this package in your application instead of the individual packages to simplify version management. ](/packages/gamut-kit/README.md)
-
-- [![npm version](https://badge.fury.io/js/%40codecademy%2Fgamut-kit.svg)](https://badge.fury.io/js/%40codecademy%2Fgamut-kit)
 
 ## Local development
 
